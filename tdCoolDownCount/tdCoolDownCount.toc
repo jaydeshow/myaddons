@@ -1,0 +1,23 @@
+﻿## Interface: 20300
+## Title: tCC v4.1.9
+## Notes: Cooldown Count for Everything.|n|cff7fff7fAuthor|r :Taiduo [From China]
+## Title-zhCN: |cff7fff7f太多|r冷却 - tCC v4.1.9
+## Notes-zhCN: 显示技能冷却时间 |n|cff7fff7f作者|r :太多太多
+## Author: ldz5
+## Version: 4.19
+
+## SavedVariables: tCCDB
+## OptionalDeps: TrinityBars, tCT
+
+tdCoolDownCount.lua
+## 距离染色 不需要可以将下一行改为 ## tdRange.lua或删除
+tdRange.lua
+## 兼容插件 使用TrinityBars需要加载 不需要可以将下一行改为 ## tCC_AddOns.lua或删除
+tCC_AddOns.lua
+## 中部提示 使用tCT将不加载,不需要可以将下一行改为 ## tCC_Center.lua或删除
+tCC_Center.lua
+## 设置模块 用tdCoolDownOption或不需要设置界面则改为## tCC_Option.xml;不用则改为tCC_Option.xml
+## tCC_Option.xml
+
+tCT.lua
+

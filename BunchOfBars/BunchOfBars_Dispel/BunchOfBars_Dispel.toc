@@ -1,0 +1,8 @@
+## Interface: 20200
+## Title: BunchOfBars [|cffeda55fDispel|r]
+## Version: 1.0
+## Notes: Highlight dispellable units.
+## Author: Firik
+## Dependencies: BunchOfBars
+
+Dispel.lua

@@ -1,0 +1,39 @@
+------------------------------------------------------------------------
+r54501 | xuerian | 2007-11-13 11:16:34 -0500 (Tue, 13 Nov 2007) | 2 lines
+Changed paths:
+   M /trunk/XLootMonitor/XLootMonitor.toc
+
+XLootMonitor: Bumped toc (Dunweee)
+
+------------------------------------------------------------------------
+r54362 | yhwh | 2007-11-11 22:22:15 -0500 (Sun, 11 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/XLootMonitor/XLootMonitor.toc
+   A /trunk/XLootMonitor/localization.zhCN.lua
+
+XLootMonitor: zhCN added
+------------------------------------------------------------------------
+r54067 | xuerian | 2007-11-06 19:16:16 -0500 (Tue, 06 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/XLootMonitor/XLootMonitor.lua
+   M /trunk/XLootMonitor/XLootMonitorOptions.lua
+   M /trunk/XLootMonitor/localization.enUS.lua
+
+XLootMonitor: Added [class] and [classname] to custom exporter.
+------------------------------------------------------------------------
+r54066 | xuerian | 2007-11-06 19:01:42 -0500 (Tue, 06 Nov 2007) | 1 line
+Changed paths:
+   A /trunk/XLootMonitor/XLootHistory.lua
+   M /trunk/XLootMonitor/XLootMonitor.lua
+   M /trunk/XLootMonitor/XLootMonitorOptions.lua
+   M /trunk/XLootMonitor/localization.enUS.lua
+
+XLootMonitor: Added custom export format to History
+------------------------------------------------------------------------
+r52292 | speeddymon | 2007-10-16 11:06:23 -0400 (Tue, 16 Oct 2007) | 2 lines
+Changed paths:
+   M /trunk/XLootMonitor/XLootMonitor.toc
+
+XLootMonitor:
+- Bump TOC to 2.2.  No changes have been made other than the toc change, as workarounds exist to fix the stretched loot frames issue, including resetting your profile to defaults
+------------------------------------------------------------------------

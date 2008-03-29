@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Ui>
+	<Frame name="ValuationFrame" hidden="true">
+		<Scripts>
+			<OnLoad>
+				Valuation:OnLoad(self);
+			</OnLoad>
+			<OnEvent>
+				Valuation:OnEvent(event, ...);
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	
+	<GameTooltip name="ValuationTooltip" inherits="GameTooltipTemplate" hidden="true" />
+</Ui>
+

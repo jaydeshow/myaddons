@@ -1,0 +1,7 @@
+## Interface: 20300
+## Title: Forte Class Core
+## Notes: Powerful Class AddOn for Raiders
+## SavedVariables: FC_Saved
+## OptionalDeps: ForteWarlock
+## Dependencies:
+Forte_Core.xml

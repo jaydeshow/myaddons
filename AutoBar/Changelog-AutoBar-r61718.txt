@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r61718 | durcyn | 2008-02-17 06:05:05 -0500 (Sun, 17 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/embeds.xml
+
+AutoBar: invoke LibBabble-Spell-3.0 properly - you know, so it actually works.
+------------------------------------------------------------------------
+r60886 | sayclub | 2008-02-10 19:47:32 -0500 (Sun, 10 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-koKR.lua
+
+AutoBar : 
+- koKR Update
+------------------------------------------------------------------------

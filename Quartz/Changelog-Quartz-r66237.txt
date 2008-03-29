@@ -1,0 +1,85 @@
+------------------------------------------------------------------------
+r66237 | nymbia | 2008-03-26 21:23:02 -0400 (Wed, 26 Mar 2008) | 8 lines
+Changed paths:
+   M /trunk/ArenaPointer/ArenaPointer.toc
+   M /trunk/Doodle/Doodle.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-ClassSpell/LibPeriodicTable-3.1-ClassSpell.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Consumable/LibPeriodicTable-3.1-Consumable.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Gear/LibPeriodicTable-3.1-Gear.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-GearSet/LibPeriodicTable-3.1-GearSet.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLoot/LibPeriodicTable-3.1-InstanceLoot.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLootHeroic/LibPeriodicTable-3.1-InstanceLootHeroic.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Reputation/LibPeriodicTable-3.1-Reputation.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Tradeskill/LibPeriodicTable-3.1-Tradeskill.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-TradeskillResultMats/LibPeriodicTable-3.1-TradeskillResultMats.toc
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1.toc
+   M /trunk/Manufac/Manufac.toc
+   M /trunk/ManufacSnoop/ManufacSnoop.toc
+   M /trunk/PT3Bar/PT3Bar.toc
+   M /trunk/PT3Browser/PT3Browser.toc
+   M /trunk/Quartz/Buff/Quartz_Buff.toc
+   M /trunk/Quartz/Flight/Quartz_Flight.toc
+   M /trunk/Quartz/Focus/Quartz_Focus.toc
+   M /trunk/Quartz/GCD/Quartz_GCD.toc
+   M /trunk/Quartz/Interrupt/Quartz_Interrupt.toc
+   M /trunk/Quartz/Latency/Quartz_Latency.toc
+   M /trunk/Quartz/Mirror/Quartz_Mirror.toc
+   M /trunk/Quartz/Pet/Quartz_Pet.toc
+   M /trunk/Quartz/Player/Quartz_Player.toc
+   M /trunk/Quartz/Range/Quartz_Range.toc
+   M /trunk/Quartz/Swing/Quartz_Swing.toc
+   M /trunk/Quartz/Target/Quartz_Target.toc
+   M /trunk/Quartz/Timer/Quartz_Timer.toc
+   M /trunk/Quartz/Tradeskill/Quartz_Tradeskill.toc
+   M /trunk/Sniff/Sniff.toc
+   M /trunk/SpellBinder/SpellBinder.toc
+   M /trunk/StatStain/StatStain.toc
+   M /trunk/Stitch-1.1/Stitch-1.1.toc
+   M /trunk/StitchUI/StitchUI.toc
+
+.Nymbia's addons:
+- toc bumps for those that work.
+- No toc bumps for the others for various reasons:
+- CombatAnnounce: not using the new logs yet
+- ForkliftGnome: I think AddonLoader is the thing to use now.
+- GrindStatus: not using the new logs yet
+- MobMitigation: not using the new logs yet
+- Tattle: Not getting dataminer updates these days.  No idea what the state of this is, since I haven't done arenas in a while.
+------------------------------------------------------------------------
+r66231 | nymbia | 2008-03-26 20:52:45 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Quartz/Interrupt/Interrupt.lua
+   M /trunk/Quartz/Quartz.toc
+   M /trunk/Quartz/Swing/Swing.lua
+   M /trunk/Quartz/embeds.xml
+   M /trunk/Quartz/libs
+
+Quartz:
+- Merge in 2.4 branch
+------------------------------------------------------------------------
+r63528 | yleaf | 2008-03-04 03:46:11 -0500 (Tue, 04 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Quartz/locale/Quartz-zhCN.lua
+
+Quartz:
+- update zhCN locale
+------------------------------------------------------------------------
+r62949 | 7destiny | 2008-02-26 04:23:13 -0500 (Tue, 26 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/Quartz/locale/Quartz-koKR.lua
+
+Quartz:
+- Update locale koKR
+------------------------------------------------------------------------
+r62943 | isler | 2008-02-26 01:44:40 -0500 (Tue, 26 Feb 2008) | 3 lines
+Changed paths:
+   M /trunk/Quartz/Quartz.lua
+   M /trunk/Quartz/locale/Quartz-enUS.lua
+   M /trunk/Quartz/locale/Quartz-zhCN.lua
+   M /trunk/Quartz/locale/Quartz-zhTW.lua
+
+Quartz:
+- zhCN & zhTW update
+- Adds an Quartz button to the Feature Frame in Cosmos
+------------------------------------------------------------------------

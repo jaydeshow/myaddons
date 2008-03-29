@@ -1,0 +1,98 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+    <Script file="zAdd.lua"/>
+<!-- ToT General -->
+    <Frame name="zUF_Add_General" parent="UIParent">
+        <Scripts>
+            <OnUpdate>
+                zUF_Add_OnUpdate();
+            </OnUpdate>
+        </Scripts>
+    </Frame>
+<!-- ToT DeBuff  -->
+	<Button name="zTargetofTargetDebuffButtonTemplate" virtual="true">
+		<Size x="15" y="15"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentIcon" setAllPoints="true"/>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentBorder" file="Interface\Buttons\UI-Debuff-Overlays">
+					<Size x="17" y="17"/>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset x="0" y="0"/>
+					</Anchor>
+					</Anchors>
+					<TexCoords left="0.296875" right="0.5703125" top="0" bottom="0.515625"/>
+				</Texture>
+				<FontString name="$parentCount" inherits="GameTooltipTextSmall">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset x="-1" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_BOTTOMRIGHT", 15, -25);
+				GameTooltip:SetUnitDebuff("targettarget", this:GetID());
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+    <Frame name="zUF_TargetTargetDeBuffFrame" parent="TargetofTargetFrame">
+        <Anchors>
+            <Anchor point="TOPLEFT"/>
+            <Anchor point="BOTTOMRIGHT"/>
+        </Anchors>
+        <Frames>
+            <Button name="$parentDeBuff1" inherits="zTargetofTargetDebuffButtonTemplate" id="1">
+                <Anchors>
+                    <Anchor point="LEFT" relativePoint="RIGHT">
+                        <Offset x="1" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentDeBuff2" inherits="zTargetofTargetDebuffButtonTemplate" id="2">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parentDeBuff1" relativePoint="RIGHT">
+                        <Offset x="2" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentDeBuff3" inherits="zTargetofTargetDebuffButtonTemplate" id="3">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parentDeBuff2" relativePoint="RIGHT">
+                        <Offset x="2" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentDeBuff4" inherits="zTargetofTargetDebuffButtonTemplate" id="4">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parentDeBuff3" relativePoint="RIGHT">
+                        <Offset x="2" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentDeBuff5" inherits="zTargetofTargetDebuffButtonTemplate" id="5">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parentDeBuff4" relativePoint="RIGHT">
+                        <Offset x="2" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parentDeBuff6" inherits="zTargetofTargetDebuffButtonTemplate" id="6">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parentDeBuff5" relativePoint="RIGHT">
+                        <Offset x="2" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Button>
+        </Frames>
+    </Frame>
+</Ui>

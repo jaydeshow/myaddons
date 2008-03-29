@@ -1,0 +1,19 @@
+﻿## Interface: 20300
+
+## Title: zTip
+## Notes: Enhance Unit Tooltip, and customize tip position|n by Zero Fire
+## Author: Zero Fire
+
+## Title-zhCN: zTip |cffFF3300炽火|r|cff9382c9鼠标提示|r
+## Notes-zhCN: 人物信息提示增强及跟随鼠标|n 作者：炽火 Zero ℃
+## Author-zhCN: 炽火 Zero ℃
+
+## SavedVariables: zTipSaves
+
+## Version: 2.6
+## Email: zero.flamy@gmail.com
+
+zTip.lua
+zTipOption.lua
+
+localization.lua

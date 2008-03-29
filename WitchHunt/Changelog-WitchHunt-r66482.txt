@@ -1,0 +1,47 @@
+------------------------------------------------------------------------
+r66482 | durcyn | 2008-03-27 17:17:30 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/WitchHunt.lua
+
+WitchHunt: fix malformed options table line 51
+------------------------------------------------------------------------
+r66461 | ammo | 2008-03-27 16:10:13 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/WitchHunt.lua
+
+WitchHunt: disable instant casts by default
+------------------------------------------------------------------------
+r66167 | gamefaq | 2008-03-26 18:03:42 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/locales/deDE.lua
+
+WitchHunt: deDE Update
+------------------------------------------------------------------------
+r65994 | ammo | 2008-03-26 03:58:20 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/WitchHunt.lua
+
+WitchHunt: make sure it's a totem of doom in message filters
+------------------------------------------------------------------------
+r65668 | ammo | 2008-03-25 04:59:02 -0400 (Tue, 25 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/WitchHunt.lua
+   M /trunk/WitchHunt/WitchHunt.toc
+   D /trunk/WitchHunt/embeds.xml
+   M /trunk/WitchHunt/libs
+   A /trunk/WitchHunt/libs.xml (from /branches/WitchHunt/2.4/libs.xml:65666)
+   M /trunk/WitchHunt/locales/deDE.lua
+   M /trunk/WitchHunt/locales/enUS.lua
+   M /trunk/WitchHunt/locales/koKR.lua
+   M /trunk/WitchHunt/locales/zhCN.lua
+   M /trunk/WitchHunt/locales/zhTW.lua
+   A /trunk/WitchHunt/resize.tga (from /branches/WitchHunt/2.4/resize.tga:65666)
+
+WitchHunt: Merge 2.4 version to trunk
+------------------------------------------------------------------------
+r62962 | rabbit | 2008-02-26 07:24:21 -0500 (Tue, 26 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/WitchHunt.lua
+
+WitchHunt: Replace :IsFriendly with a simple UnitIsFriend check.
+------------------------------------------------------------------------

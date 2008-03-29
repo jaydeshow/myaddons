@@ -1,0 +1,16 @@
+## Interface: 20100
+## Title: MailTo Next
+## Version 1.4.1
+## Author: Jyin, (original by Vincent)
+## Notes: Mail management and tracking.
+## Notes-deDE: Mail Liste fr das Empf\195\164nger Feld
+## Notes-frFR: Liste de contacts pour le courier, apparait dans le champs A:
+## OptionalDeps: CmdHelp, CharacterProfiler
+## Dependencies: 
+## SavedVariables: MailTo_List, MailTo_Log, MailTo_Sendee, MailTo_Inbox, MailTo_Mail, MailTo_Option
+## SavedVariablesPerCharacter: MailTo_ReceivedLog, Mailable_FilterList
+localization.lua
+localization.cn.lua
+MailTo.xml
+MailTo.lua
+Mailable.lua

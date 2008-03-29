@@ -1,0 +1,58 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Frame name="FocusFrame_DebuffButtonTemplate" inherits="PartyBuffButtonTemplate" virtual="true" hidden="true">
+		<Size>
+			<AbsDimension x="16" y="16"/>
+		</Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentCount" inherits="NumberFontNormalSmall">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Cooldown name="$parentCooldown" inherits="CooldownFrameTemplate" reverse="true" hidden="true">
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Cooldown>
+		</Frames>
+		<Scripts>
+			<OnEnter>
+				if ( this:GetCenter() > GetScreenWidth()/2 ) then
+					GameTooltip:SetOwner(this, "ANCHOR_BOTTOMLEFT");
+				else
+					GameTooltip:SetOwner(this, "ANCHOR_BOTTOMRIGHT");
+				end
+				if ( UnitIsFriend("player", this:GetParent().unit) ) then
+					if (FF_ShowDebuffs.friend.type == "buffs") then
+						GameTooltip:SetUnitBuff(this:GetParent().unit, this:GetID());
+					else
+						GameTooltip:SetUnitDebuff(this:GetParent().unit, this:GetID());
+					end
+				else
+					if (FF_ShowDebuffs.enemy.type == "buffs") then
+						GameTooltip:SetUnitBuff(this:GetParent().unit, this:GetID());
+					else
+						GameTooltip:SetUnitDebuff(this:GetParent().unit, this:GetID());
+					end
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Frame>
+
+</Ui>

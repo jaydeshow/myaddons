@@ -1,0 +1,500 @@
+------------------------------------------------------------------------
+r66664 | daviesh | 2008-03-28 07:03:27 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- Documentation update
+------------------------------------------------------------------------
+r66653 | hegarol | 2008-03-28 05:42:57 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- Relase Notes update
+------------------------------------------------------------------------
+r66274 | daviesh | 2008-03-26 23:39:26 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+
+AtlasLoot:
+- Fixed the loot browser to show the reputation sets
+------------------------------------------------------------------------
+r66266 | daviesh | 2008-03-26 23:32:10 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+
+AtlasLoot:
+- Got rid of the (now removed) old PvP sets from the loot browser
+------------------------------------------------------------------------
+r66072 | daviesh | 2008-03-26 10:38:11 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/HooksandAPI.lua
+
+AtlasLoot:
+- Hotfix for Atlas's Titan implementation
+------------------------------------------------------------------------
+r65966 | trasher | 2008-03-26 02:04:21 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r65961 | isler | 2008-03-26 01:42:15 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ExtraText.lua
+
+AtlasLoot:
+- fix Tempest Keep Botanica  
+------------------------------------------------------------------------
+r65945 | daviesh | 2008-03-26 00:32:30 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/AtlasLoot.toc
+   D /trunk/AtlasLoot/Core/Atlas1.11Compat.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.xml
+   M /trunk/AtlasLoot/Core/ExtraText.lua
+   M /trunk/AtlasLoot/Core/HooksandAPI.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+   M /trunk/AtlasLoot/PvP/Battlegrounds.en.lua
+
+AtlasLoot:
+- Update for Patch 2.4
+------------------------------------------------------------------------
+r65652 | hegarol | 2008-03-25 03:45:39 -0400 (Tue, 25 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ExtraText.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- Added MT trash to the menu
+------------------------------------------------------------------------
+r65642 | hegarol | 2008-03-25 02:51:25 -0400 (Tue, 25 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+
+AtlasLoot:
+- Bugfix
+------------------------------------------------------------------------
+r65628 | arith | 2008-03-25 01:53:06 -0400 (Tue, 25 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.tw.lua
+
+AtlasLoot:
+- zhTW update for WoW 2.4
+------------------------------------------------------------------------
+r65538 | ascalia | 2008-03-24 09:10:47 -0400 (Mon, 24 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- fixed Sunwell Plateau and Magisters' Terrace
+------------------------------------------------------------------------
+r65527 | hegarol | 2008-03-24 08:09:59 -0400 (Mon, 24 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- new heroic items with 2.4 finished
+------------------------------------------------------------------------
+r65432 | daviesh | 2008-03-23 05:45:31 -0400 (Sun, 23 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+
+AtlasLoot:
+- Added a link to Vishas to the standalone loot browser
+------------------------------------------------------------------------
+r65420 | hegarol | 2008-03-23 02:52:22 -0400 (Sun, 23 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/TableRegister/loottables.fr.lua
+
+AtlasLoot:
+- fr bugfix
+------------------------------------------------------------------------
+r65347 | kurax | 2008-03-22 09:10:55 -0400 (Sat, 22 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/TableRegister/loottables.fr.lua
+
+AtlasLoot:
+- frFR typo fix
+------------------------------------------------------------------------
+r65337 | diablohu | 2008-03-22 07:06:50 -0400 (Sat, 22 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
+r65328 | hegarol | 2008-03-22 03:55:05 -0400 (Sat, 22 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Leather, Mail, Plate heroic Sunweel Isle rewards added
+------------------------------------------------------------------------
+r65146 | hegarol | 2008-03-20 07:18:14 -0400 (Thu, 20 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+
+AtlasLoot:
+- menu bugfix
+- german update
+- new heroic items
+------------------------------------------------------------------------
+r65132 | maqjav | 2008-03-20 05:48:39 -0400 (Thu, 20 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.es.lua
+
+AtlasLoot:
+- Fixed some small mistakes in esES locale.
+------------------------------------------------------------------------
+r65095 | hegarol | 2008-03-19 12:24:05 -0400 (Wed, 19 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+   M /trunk/AtlasLoot/Constants/constants.kr.lua
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/PvP.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Old 70 PvP sets removed
+- added Reputation sets to the menu
+------------------------------------------------------------------------
+r65075 | maqjav | 2008-03-19 08:14:47 -0400 (Wed, 19 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+
+AtlasLoot:
+- esES update.
+------------------------------------------------------------------------
+r65006 | arith | 2008-03-18 13:14:42 -0400 (Tue, 18 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/AtlasLoot.toc
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+
+AtlasLoot:
+- update TOC for tw; update constants.tw.lua
+------------------------------------------------------------------------
+r64945 | hegarol | 2008-03-18 05:56:43 -0400 (Tue, 18 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.de.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Lord Ahune added to the menu
+------------------------------------------------------------------------
+r64922 | arith | 2008-03-17 22:23:08 -0400 (Mon, 17 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- fixed the BT Start link issue
+------------------------------------------------------------------------
+r64846 | trasher | 2008-03-17 11:33:55 -0400 (Mon, 17 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r64822 | hegarol | 2008-03-17 08:23:43 -0400 (Mon, 17 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+
+AtlasLoot:
+- menu improvements
+------------------------------------------------------------------------
+r64751 | hegarol | 2008-03-16 16:24:04 -0400 (Sun, 16 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+
+AtlasLoot:
+- Rep PvP set update
+------------------------------------------------------------------------
+r64744 | hegarol | 2008-03-16 14:39:34 -0400 (Sun, 16 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.en.lua
+   M /trunk/AtlasLoot/Bossnames/bossnames.tw.lua
+   M /trunk/AtlasLoot/Core/PvP.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Bossname improvements
+------------------------------------------------------------------------
+r64715 | arith | 2008-03-16 09:26:24 -0400 (Sun, 16 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.tw.lua
+
+AtlasLoot:
+- some enhancement to remove non-necessary entries
+------------------------------------------------------------------------
+r64679 | arith | 2008-03-16 01:54:52 -0400 (Sun, 16 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.tw.lua
+
+AtlasLoot:
+- bossname enhancement
+------------------------------------------------------------------------
+r64612 | arith | 2008-03-15 12:34:58 -0400 (Sat, 15 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.tw.lua
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.cn.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.es.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.fr.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.tw.lua
+
+AtlasLoot:
+- bossnames.tw.lua fixes for Sets issue in TW
+loottabbles improvement and constants update
+------------------------------------------------------------------------
+r64589 | trasher | 2008-03-15 08:53:10 -0400 (Sat, 15 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r64568 | arith | 2008-03-15 07:01:44 -0400 (Sat, 15 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/TableRegister/loottables.es.lua
+
+AtlasLoot:
+- slim es file to remove entries which call from Babble functions
+------------------------------------------------------------------------
+r64553 | kurax | 2008-03-15 01:50:03 -0400 (Sat, 15 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
+r64524 | trasher | 2008-03-14 14:27:40 -0400 (Fri, 14 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r64503 | daviesh | 2008-03-14 11:06:12 -0400 (Fri, 14 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.en.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/Crafting.lua
+   M /trunk/AtlasLoot/Core/Search.lua
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Fixed some typo bugs that crept into the last update
+- Made the complete Alchemy profession available in 'Crafting' (no icons, as once patch 2.4 hits they wont be needed)
+------------------------------------------------------------------------
+r64493 | hegarol | 2008-03-14 08:17:40 -0400 (Fri, 14 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.de.lua
+   M /trunk/AtlasLoot/Bossnames/bossnames.en.lua
+   M /trunk/AtlasLoot/Bossnames/bossnames.es.lua
+   M /trunk/AtlasLoot/Bossnames/bossnames.fr.lua
+   M /trunk/AtlasLoot/Bossnames/bossnames.kr.lua
+   M /trunk/AtlasLoot/Bossnames/bossnames.tw.lua
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+   M /trunk/AtlasLoot/Constants/constants.kr.lua
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- German update
+- Bossname file improvements
+------------------------------------------------------------------------
+r64370 | arith | 2008-03-12 12:07:26 -0400 (Wed, 12 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.tw.lua
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.tw.lua
+
+AtlasLoot:
+- sync the constants changes to cn and es. 
+Enhance bossnames.tw.lua to use Babble and AL functions.
+Update loottables to use Babble and AL functions. Remove unnecessary entries in tw file.
+------------------------------------------------------------------------
+r64347 | trasher | 2008-03-12 08:51:50 -0400 (Wed, 12 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r64148 | arith | 2008-03-10 12:48:13 -0400 (Mon, 10 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.tw.lua
+
+AtlasLoot:
+- revised tw file to fix Sets not working in zhTW's problem
+------------------------------------------------------------------------
+r64145 | arith | 2008-03-10 11:57:39 -0400 (Mon, 10 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.tw.lua
+
+AtlasLoot:
+- update loottables to externalize some mob's text to contant, update de and zh-tw translation
+------------------------------------------------------------------------
+r64117 | hegarol | 2008-03-10 06:16:04 -0400 (Mon, 10 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Shattered Sun Offensive updated
+------------------------------------------------------------------------
+r63798 | hegarol | 2008-03-07 06:10:04 -0500 (Fri, 07 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- Release notes updated
+------------------------------------------------------------------------
+r63447 | hegarol | 2008-03-03 05:57:32 -0500 (Mon, 03 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/TableRegister/loottables.cn.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.de.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.es.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.fr.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.tw.lua
+
+AtlasLoot:
+- Lord Ahune added
+------------------------------------------------------------------------
+r63369 | isler | 2008-03-02 04:58:25 -0500 (Sun, 02 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/Atlas1.11Compat.lua
+
+AtlasLoot:
+- Karazhan loottable fix (no more quest needed)
+------------------------------------------------------------------------
+r63326 | maqjav | 2008-03-01 14:31:45 -0500 (Sat, 01 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+
+AtlasLoot:
+- esES update.
+------------------------------------------------------------------------
+r63196 | isler | 2008-02-28 23:13:04 -0500 (Thu, 28 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/Atlas1.11Compat.lua
+
+AtlasLoot:
+- Black Temple and Hyjal Summit loottable fix (no more quest needed)
+------------------------------------------------------------------------
+r63165 | kurax | 2008-02-28 13:44:40 -0500 (Thu, 28 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+   M /trunk/AtlasLoot/Constants/constants.kr.lua
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.xml
+   M /trunk/AtlasLoot/Core/LootButtons.lua
+   A /trunk/AtlasLoot/Core/WishList.lua
+
+AtlasLoot:
+- WishList improved: Now having unlimited spaces with subheadings and paging!
+------------------------------------------------------------------------
+r63087 | ascalia | 2008-02-27 17:10:36 -0500 (Wed, 27 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- sunwell update
+------------------------------------------------------------------------
+r63084 | kurax | 2008-02-27 15:59:58 -0500 (Wed, 27 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.cn.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.cn.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.tw.lua
+
+AtlasLoot:
+- zhCN & zhTW clean up, do not use Babbles in localization file since they're already used in master file
+------------------------------------------------------------------------
+r63045 | hegarol | 2008-02-27 07:22:32 -0500 (Wed, 27 Feb 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/TableRegister/loottables.de.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.fr.lua
+
+AtlasLoot:
+- loottables.de/fr cleanup
+
+------------------------------------------------------------------------
+r63023 | hegarol | 2008-02-27 03:50:24 -0500 (Wed, 27 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.en.lua
+
+AtlasLoot:
+- changes from last revision reverted. This was intended due to space issues.
+------------------------------------------------------------------------
+r62977 | kurax | 2008-02-26 08:57:32 -0500 (Tue, 26 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Bossnames/bossnames.en.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+
+AtlasLoot:
+- Boss names update, using more Babbles
+------------------------------------------------------------------------
+r62973 | kurax | 2008-02-26 08:31:44 -0500 (Tue, 26 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/LootButtons.lua
+
+AtlasLoot:
+- Items in WishList will showing their prices if available, instead of showing set name they belong to.
+------------------------------------------------------------------------

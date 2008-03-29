@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r65618 | seerah | 2008-03-25 00:30:38 -0400 (Tue, 25 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_PerformanceFu/FuBar_PerformanceFu.toc
+
+FuBar_PerformanceFu: toc bumpage, per ck
+------------------------------------------------------------------------
+r63874 | ananhaid | 2008-03-08 04:15:10 -0500 (Sat, 08 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_PerformanceFu/FuBar_PerformanceFu.toc
+   M /trunk/FuBar_PerformanceFu/locales/PerformanceFuLocale-zhCN.lua
+
+FuBar_PerformanceFu: 
+- zhCN update.
+------------------------------------------------------------------------

@@ -1,0 +1,26 @@
+﻿## Interface: 20300
+## Title: FuBar - |cffffffffGroup|r|cff00ff00Fu|r
+## Author: Rabbit
+## Version: 1
+## Notes: Combination of Titan LootType and Roll - stripped down and cleaned up.
+## Notes-esES: Combinación de Titan LootType y Roll - desmontado y limpiado.
+## Notes-zhTW: 強化團隊與隊伍選項功能，並可顯示組隊者、分配方式、骰裝功能強化。
+## Notes-zhCN: FuBar的模块之一，显示玩家的分配方式，拾取模式等组队信息。
+## X-Category: Miscellaneous
+## X-eMail: rabbit.magtheridon@gmail.com
+## X-Credits: Original FuBar_GroupFu, this is just a heavy branch.
+## OptionalDeps: Ace2, FuBarPlugin-2.0, FuBar, DewdropLib, TabletLib, Deformat, CrayonLib
+## X-Embeds: Ace2, FuBarPlugin-2.0, DewdropLib, TabletLib, Deformat, CrayonLib
+## SavedVariables: GroupFuDB
+
+embeds.xml
+
+GroupFuLocal-enUS.lua
+GroupFuLocal-deDE.lua
+GroupFuLocal-koKR.lua
+GroupFuLocal-zhTW.lua
+GroupFuLocal-zhCN.lua
+GroupFuLocal-esES.lua
+GroupFuLocal-frFR.lua
+GroupFu.lua
+

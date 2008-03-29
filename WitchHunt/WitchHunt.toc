@@ -1,0 +1,22 @@
+﻿## Interface: 20400
+## Title: WitchHunt
+## Notes: Simple Spell Alert
+## Notes-koKR: 간단한 주문 경고
+## Version: 3.0
+## Author: Ammo
+## OptionalDeps: Ace3, LibSink-2.0
+## X-Category: Interface Enhancements
+## X-eMail: wouter@muze.nl
+## X-Website: http://www.wowace.com
+## SavedVariables: WitchHunt3DB
+
+libs.xml
+
+locales\enUS.lua
+locales\koKR.lua
+locales\zhTW.lua
+locales\zhCN.lua
+locales\deDE.lua
+
+WitchHunt.lua
+

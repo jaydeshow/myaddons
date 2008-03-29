@@ -1,0 +1,125 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Button name="TargetofTargetTargetFrame" inherits="SecureUnitButtonTemplate" parent="TargetofTargetFrame" frameStrata="LOW" toplevel="true">
+		<Size x="80" y="40"/>
+		<Anchors>
+			<Anchor point="TOP" relativeTo="TargetofTargetFrame" relativePoint="BOTTOM">
+				<Offset x="67" y="-5"/>
+			</Anchor>
+		</Anchors>
+		<HitRectInsets>
+			<AbsInset left="3" right="33" top="3" bottom="3"/>
+		</HitRectInsets>
+		<Attributes>
+			<Attribute name="type" type="string" value="target" />
+			<Attribute name="unit" type="string" value="targettargettarget" />
+		</Attributes>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentPortrait">
+					<Size x="22" y="22"/>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="4" y="-3"/>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame setAllPoints="true">
+				<Frames>
+					<Frame setAllPoints="true">
+						<Layers>
+							<Layer level="ARTWORK">
+								<Texture name="$parentTexture" file="Interface\TargetingFrame\UI-SmallTargetingFrame">
+									<Size x="80" y="40"/>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="0" y="0"/>
+										</Anchor>
+									</Anchors>
+								</Texture>
+								<FontString name="$parentName" inherits="GameFontNormalSmall" justifyH="LEFT">
+									<Size x="80" y="10"/>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT">
+											<Offset x="28" y="30"/>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+				</Frames>
+			</Frame>
+			<StatusBar name="$parentHealthBar" inherits="TextStatusBar">
+				<Size x="42" y="5"/>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="30" y="-13"/>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEvent>
+						UnitFrameHealthBar_Update(this, arg1);
+					</OnEvent>
+				</Scripts>
+				<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+			</StatusBar>
+			<StatusBar name="$parentManaBar" inherits="TextStatusBar">
+				<Size x="42" y="5"/>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="30" y="-18"/>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEvent>
+						UnitFrameManaBar_Update(this, arg1);
+					</OnEvent>
+				</Scripts>
+				<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+			</StatusBar>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				local prefix = "TargetofTargetTargetFrame";
+				UnitFrame_Initialize("targettargettarget", getglobal(prefix.."Name"),getglobal(prefix.."Portrait"),
+					   getglobal(prefix.."HealthBar"), getglobal(prefix.."HealthBarText"),
+					   getglobal(prefix.."ManaBar"), getglobal(prefix.."ManaBarText"))
+				SetTextStatusBarTextZeroText(getglobal(prefix.."HealthBar"), TEXT(DEAD))
+				TargetofTargetName:SetPoint("BOTTOMLEFT", TargetofTargetFrame, "BOTTOMLEFT", 46, 0)
+				RegisterUnitWatch(this)
+			</OnLoad>
+			<OnEvent>
+				UnitFrame_OnEvent(event);
+			</OnEvent>
+			<OnEnter>
+				local newbieTip = SHOW_NEWBIE_TIPS
+				SHOW_NEWBIE_TIPS = "0"
+				UnitFrame_OnEnter()
+				SHOW_NEWBIE_TIPS = newbieTip
+			</OnEnter>
+			<OnLeave>
+				UnitFrame_OnLeave();
+			</OnLeave>
+			<OnShow>
+				UnitFrame_Update()
+			</OnShow>
+			<OnHide>
+				zCURRENT_TOTOT_Name = nil
+			</OnHide>
+			<OnUpdate>
+				if not UnitExists("targettargettarget") then return end
+				if zCURRENT_TOTOT_Name ~= UnitName("targettargettarget") then
+					zCURRENT_TOTOT_Name = UnitName("targettargettarget")
+					SetPortraitTexture(this.portrait, this.unit)
+					this.name:SetText(zCURRENT_TOTOT_Name)
+				end
+				UnitFrameHealthBar_Update(this.healthbar, this.unit)
+				UnitFrameManaBar_Update(this.manabar, this.unit)
+			</OnUpdate>
+		</Scripts>
+	</Button>
+</Ui>

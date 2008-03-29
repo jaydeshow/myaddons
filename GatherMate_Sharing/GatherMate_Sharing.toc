@@ -1,0 +1,16 @@
+﻿## Interface: 20400
+## Notes: Database sharing module for GatherMate
+## Notes-frFR: Module de partage de base de données pour GatherMate.
+## Title: GatherMate_Sharing
+## Author: Moonfann (aka Kagaro), Xinhuan
+## SavedVariables: GatherMate_SharingDB
+## X-Category: Map
+## Version: 1.0
+
+## Dependencies: GatherMate
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+
+embeds.xml
+Locales.xml
+GatherMate_Sharing.lua

@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r62927 | rabbit | 2008-02-25 20:27:51 -0500 (Mon, 25 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_GroupFu/FuBar_GroupFu.toc
+   M /trunk/FuBar_GroupFu/GroupFu.lua
+   M /trunk/FuBar_GroupFu/embeds.xml
+   M /trunk/FuBar_GroupFu/libs
+
+FuBar_GroupFu: Remove Roster-2.1, we don't need it.
+------------------------------------------------------------------------
+r61735 | rabbit | 2008-02-17 07:48:21 -0500 (Sun, 17 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_GroupFu/FuBar_GroupFu.toc
+   M /trunk/FuBar_GroupFu/GroupFu.lua
+   M /trunk/FuBar_GroupFu/embeds.xml
+   M /trunk/FuBar_GroupFu/libs
+
+FuBar_GroupFu: Remove Babble-Class-2.2.
+------------------------------------------------------------------------

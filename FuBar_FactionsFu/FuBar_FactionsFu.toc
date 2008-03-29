@@ -1,0 +1,26 @@
+## Interface: 20300
+
+## Title: FuBar - |cffffffffFactions|cff00ff00Fu|r
+## Notes: Shows your standings with the factions.
+## Notes-esES: Muestra tu prestigio entre las diferentes facciones.
+## Notes-zhTW: 持續追蹤聲望獲得情形。
+## Notes-zhCN: 持续追踪声望获取情况。
+## Author: Elkano
+## Version: 2.2
+## X-Website: http://elkano.wowinterface.com/
+## X-Email: elkano@gmx.de
+## X-Category: Interface Enhancements
+
+## OptionalDeps: Ace2, FuBar, FuBarPlugin-2.0, DewdropLib, TabletLib
+
+## SavedVariables: FuBar_FactionsFuDB
+
+embeds.xml
+
+Locales\FuBar_FactionsFu.enUS.lua
+Locales\FuBar_FactionsFu.frFR.lua
+Locales\FuBar_FactionsFu.esES.lua
+Locales\FuBar_FactionsFu.zhTW.lua
+Locales\FuBar_FactionsFu.zhCN.lua
+FuBar_FactionsFu.lua
+FuBar_FactionsFu.options.lua

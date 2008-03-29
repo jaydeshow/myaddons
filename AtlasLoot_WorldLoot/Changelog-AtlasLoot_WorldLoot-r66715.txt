@@ -1,0 +1,59 @@
+------------------------------------------------------------------------
+r66715 | kurax | 2008-03-28 12:16:57 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.cn.lua
+
+AtlasLoot_WorldLoot:
+- Update zhCN localizations
+------------------------------------------------------------------------
+r65951 | daviesh | 2008-03-26 00:33:27 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/AtlasLoot_WorldLoot.toc
+
+AtlasLoot_WorldLoot:
+- Update for Patch 2.4
+------------------------------------------------------------------------
+r64985 | arith | 2008-03-18 12:32:09 -0400 (Tue, 18 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/AtlasLoot_WorldLoot.toc
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.kr.lua
+
+AtlasLoot_WorldLoot:
+- TOC update for TW; revise WorldRaidBosses.kr.lua
+------------------------------------------------------------------------
+r64976 | kurax | 2008-03-18 11:18:42 -0400 (Tue, 18 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.cn.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.tw.lua
+
+AtlasLoot_WorldLoot:
+- zhCN & zhTW localizations update
+------------------------------------------------------------------------
+r64944 | hegarol | 2008-03-18 05:56:12 -0400 (Tue, 18 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.en.lua
+
+AtlasLoot_WorldLoot:
+- midsummer festival updated
+------------------------------------------------------------------------
+r64114 | hegarol | 2008-03-10 06:15:21 -0400 (Mon, 10 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.en.lua
+
+AtlasLoot_WorldLoot:
+- Lord Ahune updated
+------------------------------------------------------------------------
+r63799 | hegarol | 2008-03-07 06:10:28 -0500 (Fri, 07 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.en.lua
+
+AtlasLoot_WorldLoot:
+- Lord Ahune updated
+------------------------------------------------------------------------
+r63446 | hegarol | 2008-03-03 05:57:26 -0500 (Mon, 03 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.en.lua
+
+AtlasLoot_WorldLoot:
+- Lord Ahune added
+------------------------------------------------------------------------
