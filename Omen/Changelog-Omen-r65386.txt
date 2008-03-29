@@ -1,0 +1,16 @@
+------------------------------------------------------------------------
+r65386 | pettigrow | 2008-03-22 17:29:30 -0400 (Sat, 22 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/localization_frFR.lua
+
+Omen: frFR Update
+------------------------------------------------------------------------
+r63574 | nevcairiel | 2008-03-04 08:13:33 -0500 (Tue, 04 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Libs
+   M /trunk/Omen/Omen.toc
+   M /trunk/Omen/OmenMenu.lua
+   M /trunk/Omen/embeds.xml
+
+Omen: update to babble-class-3.0
+------------------------------------------------------------------------

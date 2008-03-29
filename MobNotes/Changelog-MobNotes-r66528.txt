@@ -1,0 +1,114 @@
+------------------------------------------------------------------------
+r66528 | oojoo | 2008-03-27 20:09:22 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: Fixed the deDE mob names plus deleted wrong moroes adds in all locales
+------------------------------------------------------------------------
+r66041 | rabbit | 2008-03-26 07:55:28 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/AbacusLib/AbacusLib.toc
+   M /trunk/AuraToChat/AuraToChat.toc
+   M /trunk/BananaDKP/BananaDKP.toc
+   M /trunk/CandyBar/CandyBar.toc
+   M /trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /trunk/Click2Cast/Click2Cast.toc
+   M /trunk/ClosetGnome/ClosetGnome.toc
+   M /trunk/ClosetGnome_Banker/ClosetGnome_Banker.toc
+   M /trunk/ClosetGnome_Tooltip/ClosetGnome_Tooltip.toc
+   M /trunk/CraftyGnome/CraftyGnome.toc
+   M /trunk/CrayonLib/CrayonLib.toc
+   M /trunk/Deformat/Deformat.toc
+   M /trunk/DewdropLib/DewdropLib.toc
+   M /trunk/ErrorMonster/ErrorMonster.toc
+   M /trunk/FuBar2/FuBar2.toc
+   M /trunk/FuBarPlugin-2.0/FuBarPlugin-2.0.toc
+   M /trunk/GnomeCharmer/GnomeCharmer.toc
+   M /trunk/GratuityLib/GratuityLib.toc
+   M /trunk/LibSink-2.0/LibSink-2.0.toc
+   M /trunk/MobNotes/MobNotes.toc
+   M /trunk/RosterLib/RosterLib.toc
+   M /trunk/SimpleBossWhisperer/SimpleBossWhisperer.toc
+   M /trunk/SimpleChatMods/SimpleChatMods.toc
+   M /trunk/SinkLib/SinkLib.toc
+   M /trunk/SpyGnome/SpyGnome.toc
+   M /trunk/TabletLib/TabletLib.toc
+   M /trunk/WindowLib/WindowLib.toc
+
+.Some bumps.
+------------------------------------------------------------------------
+r65069 | rabbit | 2008-03-19 06:13:30 -0400 (Wed, 19 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: Seriously, 6 syntax errors?
+------------------------------------------------------------------------
+r65060 | chuanhsing | 2008-03-19 03:49:57 -0400 (Wed, 19 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: update zhTW
+------------------------------------------------------------------------
+r65054 | cwdg | 2008-03-19 00:53:30 -0400 (Wed, 19 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: Update Blood Furnace trash, dump DB version
+------------------------------------------------------------------------
+r65051 | cwdg | 2008-03-18 23:52:22 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: update zhCN/enUS database, dump DB Version
+------------------------------------------------------------------------
+r64959 | chuanhsing | 2008-03-18 08:43:07 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: update zhTW
+------------------------------------------------------------------------
+r64950 | chuanhsing | 2008-03-18 07:40:32 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: add more zhTW records (thanks hepha)
+------------------------------------------------------------------------
+r64817 | cwdg | 2008-03-17 07:49:03 -0400 (Mon, 17 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes:--add zhCN/zhTW locales
+add zhCN/TW mobnames and notes in default database (rabbit, need to dump database version?)
+------------------------------------------------------------------------
+r64346 | rabbit | 2008-03-12 08:30:27 -0400 (Wed, 12 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: Touchups/fixes to existing notes, no new ones.
+------------------------------------------------------------------------
+r63480 | mikma | 2008-03-03 15:22:46 -0500 (Mon, 03 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: the typo in notes was annoying, so i bumped the db version 6 -> 6.1
+------------------------------------------------------------------------
+r63290 | ensabahnur | 2008-03-01 05:33:46 -0500 (Sat, 01 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: 
+- add deDE Mobnames (description maybe later too)
+------------------------------------------------------------------------
+r63279 | mikma | 2008-03-01 03:00:29 -0500 (Sat, 01 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+   M /trunk/MobNotes/MobNotes.toc
+
+MobNotes: interface version 20300, added Gruuls lair trash
+------------------------------------------------------------------------
+r63247 | mikma | 2008-02-29 13:47:36 -0500 (Fri, 29 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/MobNotes/MobNotes.lua
+
+MobNotes: iInterrubtable -> Interruptable
+------------------------------------------------------------------------

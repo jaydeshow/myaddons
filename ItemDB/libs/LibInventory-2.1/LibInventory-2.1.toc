@@ -1,0 +1,14 @@
+## Interface: 20200
+
+## Title: Lib: Inventory-2.1
+## Notes: A library that maintains a cache of items and their types.
+## Version: 2.1
+## Author: Elkano
+## X-Website: http://elkano.wowinterface.com/
+## X-Category: Library
+
+## X-WoWIPortal: elkano
+## LoadOnDemand: 1
+
+LibStub\LibStub.lua
+lib.xml

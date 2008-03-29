@@ -1,0 +1,55 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+<Script file="XDurability.lua"/>
+
+<GameTooltip name="XD_Tooltip" hidden="true" inherits="GameTooltipTemplate"/>
+
+
+<!-- 显示在装备槽上的文字。 -->
+<Frame name="XDurabilityText"  virtual="true" frameStrata="HIGH" toplevel="true">
+    <Size><AbsDimension x="40" y="20"/></Size>
+    <Anchors>
+		<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+			<Offset><AbsDimension x="0" y="-2"/></Offset>
+		</Anchor>
+	</Anchors>
+    <Layers>
+		<Layer level="BACKGROUND">
+			<FontString name="$parentText" inherits="NumberFontNormal"/>
+		</Layer>
+	</Layers>
+</Frame>
+
+<!-- 所有装备的平均耐久度。 -->
+<Frame name="XDurabilityFull" parent="PaperDollFrame" inherits="XDurabilityText">
+    <Anchors>
+		<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+			<Offset><AbsDimension x="65" y="95"/></Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+
+<!-- 修理费 -->
+<Frame name="XDurabilityCost" parent="PaperDollFrame" inherits="XDurabilityText">
+    <Anchors>
+		<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+			<Offset><AbsDimension x="65" y="80"/></Offset>
+		</Anchor>
+	</Anchors>
+</Frame>
+
+
+
+
+
+<Frame name="XDurabilityFrame">
+<Scripts>
+    <OnLoad>
+		XD_OnLoad();
+	</OnLoad>
+    <OnEvent>
+		XD_OnEvent(event);
+	</OnEvent>
+</Scripts>
+</Frame>
+
+</Ui>

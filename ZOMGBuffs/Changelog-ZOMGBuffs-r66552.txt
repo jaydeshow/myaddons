@@ -1,0 +1,958 @@
+------------------------------------------------------------------------
+r66552 | zeksie | 2008-03-27 21:21:27 -0400 (Thu, 27 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Fixed save/restore of keybindings with regards to setting mousewheel buffing.
+- Spell icons will now only appear with info messages due for chat/sink output.
+
+------------------------------------------------------------------------
+r66426 | zeksie | 2008-03-27 13:23:36 -0400 (Thu, 27 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Fixed talent querying stuff.
+- Fixed error with Spell Tracker icons after hiding the UI.
+
+------------------------------------------------------------------------
+r66379 | zeksie | 2008-03-27 09:24:46 -0400 (Thu, 27 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Exception icons will no longer show for raid members outside of the Blessing Manager's group selection.
+- Fixed error in self buffs with item enchants.
+
+------------------------------------------------------------------------
+r66106 | zeksie | 2008-03-26 12:48:52 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Fixed icon size for spell need messages.
+
+------------------------------------------------------------------------
+r66100 | zeksie | 2008-03-26 12:39:20 -0400 (Wed, 26 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/embeds.xml
+
+ZOMGBuffs:
+- Updraded to LibBabble-Spell/Class-3.0.
+- Fixed format error in bufftehraid.
+
+------------------------------------------------------------------------
+r65891 | zeksie | 2008-03-25 20:24:13 -0400 (Tue, 25 Mar 2008) | 10 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.toc
+
+ZOMGBuffs:
+- TOC Bump.
+- A few tables that weren't being recycled properly are now.
+- Drag'n'Drop in the Manager will now grey out invalid drop targets (Optional and requires support of graphics card).
+- Will no longer try to Spell Track a player who has left the raid when you enable this option.
+- Can now set a key binding for the Spell Tracker (FIRST icon only).
+- Won't wait for members for blesings if they're out of the defined group range in manager.
+- Exception icons in combat should now only be fully visible if the player is alive, and buffable.
+- Exceptions menu in Manager will now show correct selection of current buffs.
+
+------------------------------------------------------------------------
+r65587 | zeksie | 2008-03-24 21:24:56 -0400 (Mon, 24 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.zhCN.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs: Reagent reminder will work for single cast spells now too (Water Walking etc on Shaman), suffixed on existing info line.
+
+------------------------------------------------------------------------
+r65584 | zeksie | 2008-03-24 21:05:47 -0400 (Mon, 24 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Spell Tracker will behave more sensibly when a buff target moves out of range (Will keep timer ticking).
+- Spell Tracker will highlight bright red if the click target is not the same as intended tracking target, because of in-combat change.
+
+------------------------------------------------------------------------
+r65579 | zeksie | 2008-03-24 19:33:19 -0400 (Mon, 24 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs: Fixed error when trying to enable weapon enchants in Self Buffs module.
+
+------------------------------------------------------------------------
+r65570 | zeksie | 2008-03-24 18:22:20 -0400 (Mon, 24 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/embeds.xml
+
+ZOMGBuffs
+- Tweaked OptDefs.
+- Added LibSink-2.0 to externals, modules.xml, OptDefs.
+- Fixed nil error in SelfBuffs module when setting default expiry prelude to zero.
+
+------------------------------------------------------------------------
+r65567 | kurax | 2008-03-24 15:46:15 -0400 (Mon, 24 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.zhCN.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.zhCN.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.zhCN.lua
+
+ZOMGBuffs: Update zhCN localizations
+------------------------------------------------------------------------
+r65565 | zeksie | 2008-03-24 14:46:36 -0400 (Mon, 24 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs:
+- Bumped the compat version for manager to 65478 to highlight people that will be subject to the bug fixed on that release.
+- Fixed a rare startup bug in Manager if start not complete when Paladins in raid were changing templates.
+
+------------------------------------------------------------------------
+r65564 | zeksie | 2008-03-24 14:31:37 -0400 (Mon, 24 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: About box no longer spans wider than screen width.
+
+------------------------------------------------------------------------
+r65548 | zeksie | 2008-03-24 11:26:02 -0400 (Mon, 24 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.zhCN.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Can now set raid module buffs (single target only) as Learnable or not. A tracking icon is still created for relevant spells, but will hide when spell expires.
+- Improved positioning of track icons to be more consistant.
+
+------------------------------------------------------------------------
+r65509 | zeksie | 2008-03-23 22:43:34 -0400 (Sun, 23 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Updated OptDeps.
+- Fixed nil error in manager with auto assigning class roles in some cases.
+
+------------------------------------------------------------------------
+r65507 | kurax | 2008-03-23 21:59:06 -0400 (Sun, 23 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.zhCN.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.zhCN.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.zhCN.lua
+
+ZOMGBuffs: Update zhCN localizations
+------------------------------------------------------------------------
+r65506 | zeksie | 2008-03-23 21:32:24 -0400 (Sun, 23 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs: Oops. Fixed nil error in raid module. I swear, it worked a minute ago.
+
+------------------------------------------------------------------------
+r65505 | zeksie | 2008-03-23 21:17:40 -0400 (Sun, 23 Mar 2008) | 7 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Buff Timer threshold for raid popup to only show timer when buffs have less than specified time left.
+- Tracking icon will now correctly setup correctly when you exit combat if you changed the tracking target in-combat.
+- Tracker Won't warn that a buff expired on new target if you switched tracking targets from someone who had it at least once.
+- Fixed all ticks getting disabled for Blessing of Sacrifice, instead of only your own.
+- Fixed a spell tracker bug which would block blessings module from buffing previously tracked players on occasion.
+
+------------------------------------------------------------------------
+r65504 | kurax | 2008-03-23 20:49:38 -0400 (Sun, 23 Mar 2008) | 1 line
+Changed paths:
+   A /trunk/ZOMGBuffs/Locales/localization.zhCN.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.zhCN.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.zhCN.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.zhCN.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log/Locales/localization.zhCN.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.zhCN.lua
+
+ZOMGBuffs: Add zhCN localizations
+------------------------------------------------------------------------
+r65499 | zeksie | 2008-03-23 19:02:41 -0400 (Sun, 23 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs:
+- Fixed SetParent error when changing width of list.
+- Setting the Lock option now actually locks the icon.
+
+------------------------------------------------------------------------
+r65493 | zeksie | 2008-03-23 17:17:54 -0400 (Sun, 23 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs: Fixed UnitIsUnit error in ZOMGBuffs_SelfBuffs for shamans.
+
+------------------------------------------------------------------------
+r65478 | zeksie | 2008-03-23 15:09:24 -0400 (Sun, 23 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: Fixed a problem in manager which didn't send exception changes to other pala's ZOMGBlessings module, only to their Manager.
+------------------------------------------------------------------------
+r65472 | zeksie | 2008-03-23 14:24:23 -0400 (Sun, 23 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Added buff timer to the popup raid list. Optional.
+------------------------------------------------------------------------
+r65463 | zeksie | 2008-03-23 13:16:59 -0400 (Sun, 23 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZFrame.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+   M /trunk/ZOMGBuffs/ZOMGReagents.lua
+
+ZOMGBuffs:
+- AceLibrary usage changed to LibStub.
+- Implemented LibSink options Reminders sub-menu.
+
+------------------------------------------------------------------------
+r65449 | zeksie | 2008-03-23 11:29:53 -0400 (Sun, 23 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs: Fixed issue with stack count not always showing for Earth Shield on Spell Tracker.
+------------------------------------------------------------------------
+r65447 | zeksie | 2008-03-23 11:21:05 -0400 (Sun, 23 Mar 2008) | 6 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Fixed the BlessingsManager.lua:2649 index error.
+- Raid buff module will hide groups selection for non group buffers (people with only exclusive target spells).
+- Fixed localization for arena auto switch.
+- Fixed nil error in Log.
+
+------------------------------------------------------------------------
+r65370 | zeksie | 2008-03-22 15:33:51 -0400 (Sat, 22 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Reagent reminder now optional (under self buffs/behaviour).
+- Fixed nil error when loading from modules.xml.
+- Fixed warlock defaults for Learnable spells.
+
+------------------------------------------------------------------------
+r65363 | zeksie | 2008-03-22 15:00:19 -0400 (Sat, 22 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: Paladin initials in popup raid list are now unique when you have Paladins with names that start with the same 2 letters.
+
+------------------------------------------------------------------------
+r65361 | zeksie | 2008-03-22 14:29:00 -0400 (Sat, 22 Mar 2008) | 9 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZFrame.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs:
+- If tracking icon is needed in-combat, then a dummy NON-clickable one is created to display the spell's state. A real one is created when leaving combat to continue tracking thereafter.
+- Spell Tracker will no longer attempt to track spells on peope outside of party/raid.
+- Spell Tracker will not say buff is missing if a player goes out of visible range.
+- Spell Tracker will now work for Blessings of Freedom and Sacrifice (If you load the raid buff module).
+- Loading of raid buff module for Shaman, Paladin & Warlock now optional.
+- Fixed some global variables that should have been local.
+- Some communication with self/raid buffs module where exlusive spells are concerned. ie: Enable Lightnigh Shield on Self buffs, will disable Earth Shield on raid (if the earth shield target is you).
+
+------------------------------------------------------------------------
+r65348 | zeksie | 2008-03-22 09:13:33 -0400 (Sat, 22 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Fixed groupColours nil error. oop
+------------------------------------------------------------------------
+r65344 | zeksie | 2008-03-22 08:52:15 -0400 (Sat, 22 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: Manager will now skip assigning Blessing of Light when no Holy Paladins are present (as defined by your class split setup).
+------------------------------------------------------------------------
+r65338 | zeksie | 2008-03-22 07:53:34 -0400 (Sat, 22 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Fixed Blessing colouring, ooops.
+------------------------------------------------------------------------
+r65303 | zeksie | 2008-03-21 22:48:34 -0400 (Fri, 21 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   A /trunk/ZOMGBuffs/Textures/IconText.blp
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Sink output if it finds LibSink-2.0, only the default atm until I can figure out how to move the sink options menu.
+- Included missing texture (oops).
+
+------------------------------------------------------------------------
+r65291 | zeksie | 2008-03-21 20:13:13 -0400 (Fri, 21 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/README.txt
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Ability to make the floating icon use the main spell from your class instead of the ZOMGBuffs standard. oh, and WTB texture:SetBlendMode("MONOCHROME")
+- Shouldn't tell you it's waiting for people when there's nothing to do now.
+- Fixed localization error with warlocks.
+
+------------------------------------------------------------------------
+r65248 | zeksie | 2008-03-21 12:16:16 -0400 (Fri, 21 Mar 2008) | 12 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs:
+- New tick boxes in the raid popup list for single target raid buffs (Fear Ward, Amp/Damp Magic, Earth Shield, Unending Breath etc.) The checkboxes will show only for spells enabled in the BuffTehRaid module. Newly selected single target spells will default everyone to ON. You can toggle single players, toggle groups with Shift-LeftButton, toggle classes with Alt-LeftButton, or toggle everyone with RightButton.
+- These single type spells moved from Self Buffs to raid buffs module where appropriate.
+- New Buff Tracker icon with stacks/time remaining indcations for limited target spells such as Earth Shield & Fear Ward. Allowing easy rebuff and With configurable warning sound when the buff expires.
+- Tooltip list order for raid buffs is now consistant.
+- Unavailable spells will no longer appear on the raid buffs menu.
+- New option to adjust the faded level of blessing exception icons that show in combat.
+- Fixed occasional missing spells from menus and minimap tooltip.
+- Fixed raid popup keybindings were being lost on zoning.
+- Fixed another minor case of occasionally using group buffs when singles should be cast.
+- Won't auto template switch if you have a Blessings Manager generated template active, and won't switch to the same template more than once.
+
+------------------------------------------------------------------------
+r65117 | cinedelle | 2008-03-19 17:40:08 -0400 (Wed, 19 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.frFR.lua
+
+ZOMGBuffs:
+-update for Locales/localization.frFR.lua
+------------------------------------------------------------------------
+r65089 | zeksie | 2008-03-19 11:05:06 -0400 (Wed, 19 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs:
+- Wasn't hiding some menu options as it should be for non buff classes.
+- Fixed an issue that would occasionally buff Rogues or Warriors with single intellect/spirit.
+
+------------------------------------------------------------------------
+r65024 | zeksie | 2008-03-18 17:04:23 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: Tweaked group leadership detection, for the PP unpromoted warning.
+------------------------------------------------------------------------
+r65015 | zeksie | 2008-03-18 14:33:30 -0400 (Tue, 18 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs: Fixed bugs when loaded from modules.xml.
+
+------------------------------------------------------------------------
+r65010 | zeksie | 2008-03-18 13:39:29 -0400 (Tue, 18 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Fixed a nil error in ZOMGBuffs when leaving combat.
+- Fixed some issues with deciding when to do group vs. single raid buffs.
+- Fixed not being able to set the raid buffs rebuff time.
+
+------------------------------------------------------------------------
+r64992 | zeksie | 2008-03-18 12:51:50 -0400 (Tue, 18 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs:
+- Fixed the 'Singles in BGs' option.
+- Fixed the very obvious error in the state change detection for auto template switching...
+
+------------------------------------------------------------------------
+r64977 | zeksie | 2008-03-18 11:26:36 -0400 (Tue, 18 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+
+ZOMGBuffs: New Blessings Manager option to limit the number of groups considered for blessing assignments and players. See the Groups button on Manager frame. The default is 5. When generating a template, the group count is synchronised to other ZOMG users.
+
+------------------------------------------------------------------------
+r64965 | zeksie | 2008-03-18 09:39:57 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+
+ZOMGBuffs: Minor localisation fix.
+------------------------------------------------------------------------
+r64927 | zeksie | 2008-03-17 23:24:28 -0400 (Mon, 17 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs: New options to define the click behaviour in the popup raid list for all spells and targeting.
+
+------------------------------------------------------------------------
+r64875 | zeksie | 2008-03-17 14:34:16 -0400 (Mon, 17 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: Fixed index error in Manager when a paladin joins the raid.
+
+------------------------------------------------------------------------
+r64835 | zeksie | 2008-03-17 10:14:00 -0400 (Mon, 17 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Small commit to kick WAU.
+------------------------------------------------------------------------
+r64795 | zeksie | 2008-03-16 23:45:46 -0400 (Sun, 16 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs: Fixed 'state' error.
+
+------------------------------------------------------------------------
+r64792 | zeksie | 2008-03-16 22:56:53 -0400 (Sun, 16 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+
+ZOMGBuffs
+- Improved detection of PallyPower users.
+- Fixed some Template Generation problems with certain talent mixes. Should solve the problem of someone ending up with a blank assignment.
+- Single exceptions are now assigned to paladins with improved versions where possible.
+
+------------------------------------------------------------------------
+r64780 | zeksie | 2008-03-16 19:30:26 -0400 (Sun, 16 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Fixed Manager generation issue with exceptions when a paladin couldn't do specific buffs required.
+- New option to not do greater blessings or class buffs when in BGs.
+
+------------------------------------------------------------------------
+r64774 | zeksie | 2008-03-16 18:35:21 -0400 (Sun, 16 Mar 2008) | 6 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs
+- New option to count absent players (akf, offline, out of zone) as being present and counting towards the wait for raid option. (needs some feedback)
+- Defaulting the whispered blessing assignments to OFF, for palas without a buff mod.
+- Fixed nil error when visiting vendor.
+- Some checking to make sure modules are not double loaded when someone installs both packaged and unpackaged.
+
+------------------------------------------------------------------------
+r64714 | zeksie | 2008-03-16 09:20:30 -0400 (Sun, 16 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: Removed debug output
+------------------------------------------------------------------------
+r64671 | zeksie | 2008-03-15 23:31:20 -0400 (Sat, 15 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs
+- Reporting missing buffs will only list ones for classes present, and will not warn about missing Spirit unless it knows for sure a Spirit capable priest is present. Will also group missing blessings together by whole classes where applicable.
+
+------------------------------------------------------------------------
+r64670 | zeksie | 2008-03-15 23:04:45 -0400 (Sat, 15 Mar 2008) | 5 lines
+Changed paths:
+   A /trunk/ZOMGBuffs/Textures/Clock.blp
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs
+- Added mini status icon (clock) to indicate waiting for members of raid.
+- Fixed nil error in Manager when joining raid before startup complete.
+- List border defaults to off now, should have been off before cos it's fugly.
+
+------------------------------------------------------------------------
+r64656 | zeksie | 2008-03-15 20:31:17 -0400 (Sat, 15 Mar 2008) | 8 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.frFR.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs
+- The Mousewheel will now cycle through buffs in the Blessings Manager.
+- Fixed an issue where spell learning would sometimes not, usually after a failed autocast.
+- Fixed bm nil error in PP module.
+- Now updates the PP warning correctly if you are promoted/demoted while manager displayed.
+- Fixed not being able to toggle off self buffs in the menu.
+- Fixed the Unlock command from Manager menu. This now allows unknown paladin blessings to be edited. The lock is necessary to avoid comms conflicts at startup. This may change in time.
+
+------------------------------------------------------------------------
+r64617 | zeksie | 2008-03-15 13:32:01 -0400 (Sat, 15 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/embeds.xml
+
+ZOMGBuffs: Removed references to RollCall-1.0. No longer needed.
+
+------------------------------------------------------------------------
+r64614 | zeksie | 2008-03-15 13:17:32 -0400 (Sat, 15 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs
+- Fixed typo when respeccing and SPELLS_CHANGED fired.
+- Fixed single clicking blessings in Tablet tooltip, now cycles through buffs as it should.
+- Fixed occasional problem with GetRaidRosterInfo()
+
+------------------------------------------------------------------------
+r64592 | feu | 2008-03-15 09:46:25 -0400 (Sat, 15 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.frFR.lua
+
+ZOMGBuffs:
+- Updated & fixed frFR localization
+------------------------------------------------------------------------
+r64566 | cinedelle | 2008-03-15 05:35:24 -0400 (Sat, 15 Mar 2008) | 2 lines
+Changed paths:
+   A /trunk/ZOMGBuffs/Locales/localization.frFR.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.frFR.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.frFR.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.frFR.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log/Locales/localization.frFR.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.frFR.lua
+
+ZOMGBuffs :
+- Initial commit of the French localization files. Will be fine tune later :p
+------------------------------------------------------------------------
+r64540 | zeksie | 2008-03-14 19:22:02 -0400 (Fri, 14 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/README.txt
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+
+ZOMGBuffs
+- Fixed an issue with receive talents from Rock, when they translated to Blessings Manager.
+- Talent query code a lot more robust now.
+- PallyPower comms module will no longer nuke the talent inspector meta table.
+
+------------------------------------------------------------------------
+r64506 | zeksie | 2008-03-14 11:23:11 -0400 (Fri, 14 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Added options in general behaviour to not auto-buff when stealthed or shapeshifted.
+
+------------------------------------------------------------------------
+r64499 | zeksie | 2008-03-14 10:30:20 -0400 (Fri, 14 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/embeds.xml
+
+ZOMGBuffs: Embeds fix
+------------------------------------------------------------------------
+r64498 | zeksie | 2008-03-14 10:10:45 -0400 (Fri, 14 Mar 2008) | 12 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs
+- Added option to toggle whether a spell is learnable in self buffs module.
+- Added options to say whether spells should be learnable in or out of combat for all modules.
+- Added a warning icon to Blessings Manager frame when PallyPower users in in the raid and you are not promoted. Pally Power does not accept assignment changes from non-promoted players.
+- Blessings Manager inspect queueing tweak.
+- Fixed OnReceiveBroadcastTemplatePart (nil error)
+- Fixed compare error when talents for pala was picked up from ZOMGBuffs proper, instead of via Blessing Manager reply.
+- Removed Inner Focus from self buff module.
+- Version now shows as most up-to-date version of any module.
+- Self buffs list on menu will now exclude certain spells (like Frost Armor when Ice Armor is available).
+- Chat responder will now change the class setting instead of setting an exception if the request comes from a class with only one player.
+
+------------------------------------------------------------------------
+r64471 | zeksie | 2008-03-13 19:16:37 -0400 (Thu, 13 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+
+ZOMGBuffs: Fixed typo on template validation..
+------------------------------------------------------------------------
+r64466 | zeksie | 2008-03-13 16:11:22 -0400 (Thu, 13 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs
+- Fixed a problem when someone had loaded the ZOMGBlessingsPP module from the modules.xml setup, which was tricking other users of ZOMGBuffs to think they were a PallyPower user.
+
+------------------------------------------------------------------------
+r64453 | zeksie | 2008-03-13 12:51:22 -0400 (Thu, 13 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs
+- Fixed problem that would stop it checking for buffs if it the GCD was close to expiring.
+- Now checks current blessings template after a talent wipe for anything you can't do now.
+- Also does same check when loading a template to be sure it's still valid.
+
+------------------------------------------------------------------------
+r64429 | zeksie | 2008-03-13 08:52:31 -0400 (Thu, 13 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/embeds.xml
+
+ZOMGBuffs
+- Fixed clicking Blessing Manager icons in configure mode in some cases.
+- Fixed some externals.
+
+------------------------------------------------------------------------
+r64425 | zeksie | 2008-03-13 07:24:31 -0400 (Thu, 13 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/README.txt
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs
+- Fixed some oddities with the Drag/Drop mechanism in Manager, and made it more robust.
+- Fixed own paladin's buff wasn't changing when he set it by single clicking a buff in Manager.
+- Fixed externals \ -> /
+
+------------------------------------------------------------------------
+r64395 | zeksie | 2008-03-12 17:39:56 -0400 (Wed, 12 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Fixed reagents nil error when at vendor
+
+------------------------------------------------------------------------
+r64375 | zeksie | 2008-03-12 13:28:21 -0400 (Wed, 12 Mar 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/README.txt
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs
+- Fixed various issues with PallyPower Comms module
+- Fixed more issues with subgroup numbers working around the RosterLib bug.
+- Fixed Drag and Drop of blessings in manager.
+
+------------------------------------------------------------------------
+r64364 | zeksie | 2008-03-12 10:36:29 -0400 (Wed, 12 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs
+- Temporary workaround for a bug in RosterLib that gets the subgroups wrong on occasion.
+- Fixed idling when a group is out of range, and they come into range later. It will now periodically recheck them.
+
+------------------------------------------------------------------------
+r64357 | zeksie | 2008-03-12 09:34:41 -0400 (Wed, 12 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs
+- Fixed Keybindings not working when you previously had mousewheel buffing set.
+------------------------------------------------------------------------
+r64348 | zeksie | 2008-03-12 08:55:53 -0400 (Wed, 12 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs
+- Fixed ZOMGModulePrototype.lua:72 nil error.
+------------------------------------------------------------------------
+r64343 | zeksie | 2008-03-12 07:54:56 -0400 (Wed, 12 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs
+- Fixed some issues when running modules directly, rather than LoD.
+- Wait for class/group and Info display options now default to ON.
+
+------------------------------------------------------------------------
+r64336 | zeksie | 2008-03-12 06:14:28 -0400 (Wed, 12 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+   M /trunk/ZOMGBuffs/README.txt
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.toc
+
+ZOMGBuffs
+- Removed colourizing from toc files for author name (looked poop in WAU).
+- Won't depend on SharedMedia-3.0, but will use any that exist.
+
+------------------------------------------------------------------------
+r64315 | zeksie | 2008-03-11 23:53:21 -0400 (Tue, 11 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/README.txt
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+
+ZOMGBuffs
+- Fixed blank config error with Blessings Manager
+- Fixed wrong class expected in Raid Buffer
+
+------------------------------------------------------------------------
+r64310 | zeksie | 2008-03-11 22:56:38 -0400 (Tue, 11 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+
+ZOMGBuffs
+- And finally... some fixed externals.
+------------------------------------------------------------------------
+r64309 | zeksie | 2008-03-11 22:53:15 -0400 (Tue, 11 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+
+ZOMGBuffs:
+- Really fixed externals. Don't get me started on case sensitivity..
+------------------------------------------------------------------------
+r64308 | zeksie | 2008-03-11 22:50:51 -0400 (Tue, 11 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+   M /trunk/ZOMGBuffs/embeds.xml
+
+ZOMGBuffs:
+- Fixed externals
+------------------------------------------------------------------------
+r64306 | zeksie | 2008-03-11 22:43:02 -0400 (Tue, 11 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs
+
+ZOMGBuffs
+- Updated externals
+------------------------------------------------------------------------
+r64305 | zeksie | 2008-03-11 22:28:23 -0400 (Tue, 11 Mar 2008) | 2 lines
+Changed paths:
+   A /trunk/ZOMGBuffs
+   A /trunk/ZOMGBuffs/Locales
+   A /trunk/ZOMGBuffs/Locales/Locales.xml
+   A /trunk/ZOMGBuffs/Locales/localization.lua
+   A /trunk/ZOMGBuffs/README.txt
+   A /trunk/ZOMGBuffs/Textures
+   A /trunk/ZOMGBuffs/Textures/BantoBar.blp
+   A /trunk/ZOMGBuffs/Textures/Elements.blp
+   A /trunk/ZOMGBuffs/Textures/FrameBack.blp
+   A /trunk/ZOMGBuffs/Textures/Icon.blp
+   A /trunk/ZOMGBuffs/Textures/IconOff.blp
+   A /trunk/ZOMGBuffs/Textures/Overlay.blp
+   A /trunk/ZOMGBuffs/Textures/otravi-semi-full-border-grey.blp
+   A /trunk/ZOMGBuffs/ZFrame.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs.toc
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/Locales.xml
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/Locales/localization.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.toc
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Images
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Images/ZOMGManagerTab.blp
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/Locales.xml
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.toc
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.toc
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/Locales.xml
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.toc
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log/Locales
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log/Locales/Locales.xml
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log/Locales/localization.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_Log/ZOMGBuffs_Log.toc
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/Locales.xml
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+   A /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.toc
+   A /trunk/ZOMGBuffs/ZOMGModulePrototype.lua
+   A /trunk/ZOMGBuffs/ZOMGReagents.lua
+   A /trunk/ZOMGBuffs/changelog.txt
+   A /trunk/ZOMGBuffs/embeds.xml
+   A /trunk/ZOMGBuffs/faq.txt
+   A /trunk/ZOMGBuffs/filelist.wau
+   A /trunk/ZOMGBuffs/modules.xml
+
+ZOMGBuffs: Initial Commit
+- Raid buffing monitor, and auto rebuffer for all buffing classes.
+------------------------------------------------------------------------

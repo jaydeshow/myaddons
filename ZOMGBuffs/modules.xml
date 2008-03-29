@@ -1,0 +1,15 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Include file="ZOMGBuffs_Blessings\Locales\Locales.xml"/>
+	<Script file="ZOMGBuffs_Blessings\ZOMGBuffs_Blessings.lua"/>
+	<Include file="ZOMGBuffs_BlessingsManager\Locales\Locales.xml"/>
+	<Script file="ZOMGBuffs_BlessingsManager\ZOMGBuffs_BlessingsManager.lua"/>
+	<Include file="ZOMGBuffs_BlessingsPP\Locales\Locales.xml"/>
+	<Script file="ZOMGBuffs_BlessingsPP\ZOMGBuffs_BlessingsPP.lua"/>
+	<Include file="ZOMGBuffs_BuffTehRaid\Locales\Locales.xml"/>
+	<Script file="ZOMGBuffs_BuffTehRaid\ZOMGBuffs_BuffTehRaid.lua"/>
+	<Include file="ZOMGBuffs_Log\Locales\Locales.xml"/>
+	<Script file="ZOMGBuffs_Log\ZOMGBuffs_Log.lua"/>
+	<Include file="ZOMGBuffs_SelfBuffs\Locales\Locales.xml"/>
+	<Script file="ZOMGBuffs_SelfBuffs\ZOMGBuffs_SelfBuffs.lua"/>
+</Ui>
+

@@ -1,0 +1,5 @@
+<Bindings>
+  	<Binding name="AUTOSEARCH" header="WHODROP">
+  		WhoDrop:SearchingInstance();
+  	</Binding>
+</Bindings>

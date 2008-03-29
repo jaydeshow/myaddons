@@ -1,0 +1,19 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+<Button name="FriendminderSyncButton" hidden="false" parent="FriendsListFrame" inherits="UIPanelButtonTemplate" text="Sync">
+    <Size>
+		<AbsDimension x="60" y="21"/>
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT" relativeTo="FriendsFrameAddFriendButton" relativePoint="BOTTOMRIGHT">
+			<Offset>
+				<AbsDimension x="1" y="0"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick>FM:OnClick()</OnClick>
+		<OnEnter>FM:OnEnter()</OnEnter>
+		<OnLeave>FM:OnLeave()</OnLeave>
+	</Scripts>
+</Button>
+</Ui>

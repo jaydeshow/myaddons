@@ -1,0 +1,14 @@
+ItemDB/Changelog-ItemDB-r56383.txt
+ItemDB/localization.lua
+ItemDB/Bindings.xml
+ItemDB/ItemDB_DBFrame.lua
+ItemDB/ItemDB_Tools.lua
+ItemDB/embeds.xml
+ItemDB/ItemDB_DBFrame.xml
+ItemDB/ItemDB.toc
+ItemDB/libs/LibStub/LibStub.toc
+ItemDB/libs/LibStub/LibStub.lua
+ItemDB/libs/LibInventory-2.1/LibInventory-2.1.toc
+ItemDB/libs/LibInventory-2.1/LibInventory-2.1.lua
+ItemDB/libs/LibInventory-2.1/lib.xml
+ItemDB/libs/LibInventory-2.1/LibStub/LibStub.lua

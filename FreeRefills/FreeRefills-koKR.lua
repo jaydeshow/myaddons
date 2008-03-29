@@ -1,0 +1,30 @@
+﻿local L = AceLibrary("AceLocale-2.2"):new("FreeRefills")
+
+L:RegisterTranslations("koKR", function() return {
+	["Add"] = "추가",
+	["Add an item to the refill list. (Usage: /freerefills add [Item Link] #)"] = "리필 목록에 아이템을 추가합니다. (사용법: /freerefills add [아이템링크] #)",
+	["[Item Link] <number of items>"] = "[아이템 링크] <아이템 수량>",
+	["Add Stack"] = "묶음 추가",
+	["Add an item to the refill list by stack. (Usage: /freerefills addstack [Item Link] #)"] ="묶음량에 따라서 리필 목록에 아이템을 추가합니다. (사용법: /freerefills addstack [아이템 링크] #)",
+	["[Item Link] <number of stacks>"] = "[아이템 링크] <묶음의 양>",
+	["Remove"] = "제거",
+	["Remove an item from the refill list. (Usage: /freerefills del [Item Link])"] = "리필 목록에서 아이템을 제거합니다. (사용법: /freerefills del [아이템 링크])",
+	["[Item Link]"] = "[아이템 링크]",
+	["Overstock"] = "재고",
+	["Toggle Overstocking.  If an item is sold in stacks and cannot meet your exact requested amount, you can opt to buy slightly more (Overstock)."] = "재고관리 기능을 토글합니다.  만약에 아이템이 묶음으로 팔리고 정확한 요구량을 충족시키지 못할 경우에, 약간의 여유량을 가지고 아이템을 구입할 것입니다.",
+	["Process Merchant"] = "상점",
+	["Toggle Merchant Looting."] = "상점에서 아이템 구입 기능을 토글합니다.",
+	["Process Bank"] = "은행",
+	["Toggle Bank Looting."] = "은행에서 아이템 이동 기능을 토글합니다.",
+	["Clear"] = "초기화",
+	["Clear the refill list completely."] = "리필 목록을 완전히 초기화 합니다.",
+	["List"] = "목록",
+	["List the items in the refill list."] = "리필 목록을 출력합니다.",
+	["Added %s - Amount:%d"] = "추가된 아이템 ID#%s - 수량:%d",
+	["Removed %s."] = "제거된 아이템 %s",
+	["Item List Cleared"] = "아이템 목록이 초기화 되었습니다",
+	["Refill List: "] = "리필 목록: ",
+	["     None"] = "     없음",
+	["Invalid input; input must be '<item> #'."] = "잘못된 입력; '<아이템> #' 형식이어야 합니다",
+}
+end)

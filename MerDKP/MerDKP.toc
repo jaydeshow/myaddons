@@ -1,0 +1,10 @@
+## Interface: 20300
+## Title: |cff3fff3f[DKP]|r MerDKP
+## Title-zhCN: |cff3fff3f[DKP]|r MerDKP
+## Version: 2.0.7
+## Author: Mermaid
+## Notes: 游戏内多DKP查询
+## SavedVariables: MerDKPDB
+dkp_list.lua
+MerDKP.lua
+MerDKP.xml

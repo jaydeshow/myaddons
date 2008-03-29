@@ -1,0 +1,17 @@
+﻿## Interface: 20400
+## Title: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80Blessings Manager|r] by |cFFFF8080Zek|r
+## Notes: ZOMGBuffs, The Blessings Manager allows one raid leader/assistant/paladin to configure all paladin's blessings at once
+## Author: Zek
+## Version: $Revision: 65891 $
+## LoadOnDemand: 1
+## RequiredDeps: ZOMGBuffs
+## OptionalDeps: Ace2, Babble-2.2, RosterLib, GratuityLib, DewdropLib
+
+## X-Category: Buffs
+## X-eMail: zeksie@googlemail.com
+## X-License: GPL v2 or later
+## X-Donate: PayPal:pussicat AT ntlworld DOT com
+
+Locales\Locales.xml
+
+ZOMGBuffs_BlessingsManager.lua

@@ -1,0 +1,13 @@
+## Interface: 20300
+## Title: AuctionFilterPlus |cff3fcf26[Emerald]|r
+## Notes: Adds flyout filters and other features to the auction house.
+## Version: 20100-2
+## Author: Dsanai
+## E-Mail: gfdesignlv@gmail.com
+## SavedVariables: afp_SavedSettings, afp_SearchItems
+## OptionalDeps: EnhTooltip
+## LoadWith: Blizzard_AuctionUI
+## LoadOnDemand: 1
+## Dependencies: 
+AuctionFilterPlus.xml
+AuctionSort.xml

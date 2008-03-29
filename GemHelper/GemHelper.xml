@@ -1,0 +1,502 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="GemHelper_Localization.enUS.lua"/>
+	<Script file="GemHelper_Localization.deDE.lua"/>
+	<Script file="GemHelper_Localization.frFR.lua"/>
+	<Script file="GemHelper_Localization.koKR.lua"/>
+	<Script file="GemHelper_Localization.zhTW.lua"/>
+	<Script file="GemHelper_Localization.zhCN.lua"/>
+	<Script file="GemHelper_GemData.lua"/>
+	<Script file="GemHelper.lua"/>
+
+	<!-- Templates -->
+	<CheckButton name="GemHelperCheckButtonTemplate" inherits="OptionsCheckButtonTemplate" virtual="true">
+		<Scripts>
+			<OnClick>
+				GemHelper_CheckButton_OnClick(button);
+			</OnClick>
+		</Scripts>
+	</CheckButton>
+
+	<Frame name="GemHelperOptionBackground" virtual="true">
+		<Backdrop edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+	</Frame>
+
+	<Button name="GemHelper_ItemButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="250" y="16"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				getglobal(self:GetName().."Highlight"):SetVertexColor(1.0, 0.82, 0);
+			</OnLoad>
+			<OnClick>
+				GemHelper_ItemButton_OnClick(arg1);
+			</OnClick>
+			<OnEnter>
+				GemHelper_ItemButton_OnEnter();
+			</OnEnter>
+			<OnLeave>
+				GemHelper_ItemButton_OnLeave();
+			</OnLeave>
+		</Scripts>
+		<ButtonText name="$parentText" inherits="GameFontNormal" justifyH="LEFT">
+			<Size>
+				<AbsDimension x="275" y="12"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="10" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<!--<HighlightTexture name="$parentHighlight" file="Interface\Buttons\UI-Listbox-Highlight2" alphaMode="ADD"/>-->
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentHighlight" file="Interface\Buttons\UI-Listbox-Highlight2"/>
+			</Layer>
+		</Layers>
+		<NormalFont inherits="GameFontNormal" justifyH="LEFT"/>
+		<HighlightFont inherits="GameFontHighlight" justifyH="LEFT"/>
+		<DisabledFont inherits="GameFontDisable" justifyH="LEFT"/>
+	</Button>
+
+	<Button name="GemHelper_CollapseButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="24" y="24"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="3" right="3" top="3" bottom="3"/>
+		</HitRectInsets>
+		<Scripts>
+			<OnClick>
+				GemHelper_CollapseButton_OnClick();
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollUp-Up"/>
+		<PushedTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollUp-Down"/>
+		<DisabledTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollUp-Disabled"/>
+		<HighlightTexture file="Interface\Buttons\ButtonHilight-Round" alphaMode="ADD"/>
+	</Button>
+
+	<Button name="GemHelper_ResetButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="25" y="25"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="3" right="3" top="3" bottom="3"/>
+		</HitRectInsets>
+		<Scripts>
+			<OnClick>
+				GemHelper_ResetButton_OnClick();
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\Buttons\UI-RotationRight-Button-Up"/>
+		<PushedTexture file="Interface\Buttons\UI-RotationRight-Button-Down"/>
+		<HighlightTexture file="Interface\Buttons\ButtonHilight-Round" alphaMode="ADD"/>
+	</Button>
+
+	<!-- Main Frame -->
+	<Frame name="GemHelper_Frame" toplevel="true" movable="true" enableMouse="true" hidden="true" parent="UIParent" enableKeyboard="true">
+		<Size>
+			<AbsDimension x="555" y="570"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\AddOns\GemHelper\whitepixel" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="300" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString inherits="GameFontNormal" text="GEMHELPER_VERSION_TEXT">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-3" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="GemHelper_CloseButton" inherits="UIPanelCloseButton">
+				<HitRectInsets>
+					<AbsInset left="5" right="5" top="5" bottom="5"/>
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="1" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+
+			<Button name="GemHelper_ColorSwatch">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="GemHelper_CloseButton" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentSwatchBg">
+							<Size>
+								<AbsDimension x="14" y="14"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1.0" g="1.0" b="1.0"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						GemHelper_SelectBackgroundColor();
+					</OnClick>
+					<OnEnter>
+						getglobal(self:GetName().."SwatchBg"):SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+						GameTooltip:ClearLines();
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+						GameTooltip:SetText(GEMHELPER_CHANGEBGCOLOR_TEXT, nil, nil, nil, nil, 1);
+						GameTooltip:Show();
+					</OnEnter>
+					<OnLeave>
+						getglobal(self:GetName().."SwatchBg"):SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch"/>
+			</Button>
+
+			<Button name="GemHelper_DoneButton" inherits="OptionsButtonTemplate" text="GEMHELPER_DONE_TEXT">
+				<Size>
+					<AbsDimension x="80" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-20" y="18"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="GemHelper_PlusButton" inherits="OptionsButtonTemplate" text="+" hidden="true">
+				<Size>
+					<AbsDimension x="22" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="GemHelper_DoneButton" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if (ATSWFrame) then
+							if (ATSWFrame:IsShown()) then
+								ATSW_HideWindow();
+								self:SetText("+");
+							else
+								GemHelper_Orig_ATSW_ShowWindow();
+								self:SetText("-");
+							end
+						elseif (SkilletFrame) then
+							if (SkilletFrame:IsShown()) then
+								Skillet:HideTradeSkillWindow();
+								self:SetText("+");
+							else
+								GemHelper_Orig_Skillet_ShowWindow(Skillet);
+								self:SetText("-");
+							end
+						else
+							if (TradeSkillFrame:IsShown()) then
+								TradeSkillFrame_Hide();
+								self:SetText("+");
+							else
+								GemHelper_OrigTradeSkillFrame_Show();
+								self:SetText("-");
+							end
+						end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_LEFT");
+						GameTooltip:ClearLines();
+						GameTooltip:AddLine(GEMHELPER_OPENJC_TEXT, nil, nil, nil, 1);
+						GameTooltip:Show();
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+
+			<Button name="GemHelper_CreateAllButton" inherits="UIPanelButtonTemplate" text="CREATE_ALL">
+				<Size>
+					<AbsDimension x="80" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="GemHelper_Frame" relativePoint="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GemHelper_CreateAll_OnClick();
+						GemHelper_InputBox:ClearFocus();
+					</OnClick>
+					<OnEnter>
+						GemHelper_CheckCooldown();
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="GemHelper_DecrementButton">
+				<Size>
+					<AbsDimension x="23" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GemHelper_CreateAllButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GemHelper_Decrement_OnClick();
+						GemHelper_InputBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\ButtonHilight-Round" alphaMode="ADD"/>
+			</Button>
+			<EditBox name="GemHelper_InputBox" letters="3" historyLines="0" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="30" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GemHelper_DecrementButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="8" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+						</Texture>
+						<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="8" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+						</Texture>
+						<Texture name="$parentMiddle" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="10" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+								<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+							</Anchors>
+							<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnEnterPressed>
+						self:ClearFocus();
+					</OnEnterPressed>
+					<OnEscapePressed>
+						self:ClearFocus();
+					</OnEscapePressed>
+					<OnTextChanged>
+						if ( self:GetText() == "0" ) then
+							self:SetText("1");
+						end
+					</OnTextChanged> 
+					<OnEditFocusLost>
+						self:HighlightText(0, 0);
+					</OnEditFocusLost>
+					<OnEditFocusGained>
+						self:HighlightText();
+					</OnEditFocusGained>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"/>
+			</EditBox>
+			<Button name="GemHelper_IncrementButton">
+				<Size>
+					<AbsDimension x="23" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GemHelper_InputBox" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="2" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GemHelper_Increment_OnClick();
+						GemHelper_InputBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\ButtonHilight-Round" alphaMode="ADD"/>
+			</Button>
+			<Button name="GemHelper_CreateButton" inherits="UIPanelButtonTemplate" text="CREATE">
+				<Size>
+					<AbsDimension x="80" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="GemHelper_IncrementButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						GemHelper_Create_OnClick();
+						GemHelper_InputBox:ClearFocus();
+					</OnClick>
+					<OnEnter>
+						GemHelper_CheckCooldown();
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self:RegisterEvent("ADDON_LOADED");
+				self:RegisterEvent("TRADE_SKILL_SHOW");
+				self:RegisterEvent("TRADE_SKILL_CLOSE");
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnEvent>
+				GemHelper_OnEvent(event, arg1);
+			</OnEvent>
+			<OnShow>
+				self:RegisterEvent("UNIT_INVENTORY_CHANGED");
+				self:RegisterEvent("BAG_UPDATE");
+				self:RegisterEvent("TRADE_SKILL_UPDATE");
+				self:RegisterEvent("UPDATE_TRADESKILL_RECAST");
+				GemHelper_InputBox:SetNumber(1);
+				GemHelper_UserDropdown_OnShow();
+				GemHelper_Update();
+			</OnShow>
+			<OnHide>
+				self:UnregisterEvent("UNIT_INVENTORY_CHANGED");
+				self:UnregisterEvent("BAG_UPDATE");
+				self:UnregisterEvent("TRADE_SKILL_UPDATE");
+				self:UnregisterEvent("UPDATE_TRADESKILL_RECAST");
+				if (GemHelper_isJewelcraftingPanel()) then
+					if (SkilletFrame) then
+						if (not SkilletFrame:IsShown()) then
+							CloseTradeSkill();
+						end
+						return;
+					end
+					if (ATSWFrame) then
+						if (not ATSWFrame:IsShown()) then
+							CloseTradeSkill();
+						end
+						return;
+					end
+					if (not TradeSkillFrame:IsShown()) then
+						CloseTradeSkill();
+					end
+				end
+			</OnHide>
+			<OnDragStart>
+				self:StartMoving();
+			</OnDragStart>
+			<OnDragStop>
+				local _;
+				self:StopMovingOrSizing();
+				GemHelper_Save.pospoint, _, GemHelper_Save.posrelpoint, GemHelper_Save.posoffsetx, GemHelper_Save.posoffsety = self:GetPoint();
+				self:SetUserPlaced(nil);
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+</Ui>

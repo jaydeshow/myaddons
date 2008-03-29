@@ -1,0 +1,24 @@
+﻿## Interface: 20200
+## Title: Free Refills |cff7fff7f -Ace2-|r
+## Title-koKR: |CFFFF6633F|CFFFFFFFFree |CFFFF6633R|CFFFFFFFFefills |cff7fff7f -Ace2-|r
+## Title-zhCN: Free Refills 自由补购 |cff7fff7f -Ace2-|r
+## Notes: Automatic Refilling of User Defined Items
+## Notes-koKR: 사용자가 정의한 아이템의 재고 보충을 자동으로 실행합니다
+## Notes-zhCN: 自动补充玩家所设定的物品的数量
+## Version: 2.0
+## Author: |cffFA8072Kyahx|r
+## X-Category: Inventory
+## X-eMail: kyahx.pots@gmail.com
+## X-Website: http://kyahx.wowinterface.com
+## OptionalDeps: Ace2
+## SavedVariables: FreeRefillsDB
+
+embeds.xml
+
+FreeRefills-enUS.lua
+FreeRefills-koKR.lua
+FreeRefills-zhTW.lua
+FreeRefills-deDE.lua
+FreeRefills-zhCN.lua
+
+FreeRefills.lua
