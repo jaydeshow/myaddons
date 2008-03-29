@@ -1,0 +1,225 @@
+local BB = LibStub("LibBabble-Boss-3.0"):GetLookupTable()
+local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
+local BC = LibStub("LibBabble-Class-3.0"):GetLookupTable()
+local BO = AceLibrary("Babble-Ore-2.2")
+local BTS = AceLibrary("Babble-Tradeskill-2.2")
+local L  = AceLibrary("AceLocale-2.2"):new("Mendeleev")
+
+MENDELEEV_SETS = {
+	{
+		name = L["Gathering skills"],
+		setindex = "Tradeskill.Gather",
+		colour = "|cff8470FF",
+		header = L["Gathering skills"],
+		quality = 1,
+		sets = {
+			["Tradeskill.Gather.Fishing"] = BTS["Fishing"],
+			["Tradeskill.Gather.Disenchant"] = BTS["Disenchant"],
+			["Tradeskill.Gather.Herbalism"] = BTS["Herbalism"],
+			["Tradeskill.Gather.Mining"] = BTS["Mining"],
+			["Tradeskill.Gather.Skinning"] = BTS["Skinning"],
+			["Tradeskill.Gather.Pickpocketing"] = BTS["Pick Pocket"],
+			["Tradeskill.Gather.Prospecting"] = BTS["Prospecting"],
+		},
+	},
+	{
+		name = L["Crafted by"],
+		setindex = "Tradeskill.Crafted",
+		colour = "|cff8470ff",
+		header = L["Crafted by"],
+		useval = function (v) return " ("..v..")" end,
+		quality = 1,
+		sets = {
+			["Tradeskill.Crafted.Alchemy"] = BTS["Alchemy"],
+			["Tradeskill.Crafted.Blacksmithing.Basic"] = BTS["Blacksmithing"],
+			["Tradeskill.Crafted.Blacksmithing.Armorsmith"] = BTS["Armorsmith"],
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Axesmith"] = BTS["Master Axesmith"],
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Hammersmith"] = BTS["Master Hammersmith"],
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Swordsmith"] = BTS["Master Swordsmith"],
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Basic"] = BTS["Weaponsmith"],
+			["Tradeskill.Crafted.Cooking"] = BTS["Cooking"],
+			["Tradeskill.Crafted.Engineering.Basic"] = BTS["Engineering"],
+			["Tradeskill.Crafted.Engineering.Gnomish"] = BTS["Gnomish Engineering"],
+			["Tradeskill.Crafted.Engineering.Goblin"] = BTS["Goblin Engineering"],
+			["Tradeskill.Crafted.First Aid"] = BTS["First Aid"],
+			["Tradeskill.Crafted.Jewelcrafting"] = BTS["Jewelcrafting"],
+			["Tradeskill.Crafted.Leatherworking.Basic"] = BTS["Leatherworking"],
+			["Tradeskill.Crafted.Leatherworking.Dragonscale"] = BTS["Dragonscale Leatherworking"],
+			["Tradeskill.Crafted.Leatherworking.Elemental"] = BTS["Elemental Leatherworking"],
+			["Tradeskill.Crafted.Leatherworking.Tribal"] = BTS["Tribal Leatherworking"],
+			["Tradeskill.Crafted.Tailoring"] = BTS["Tailoring"],
+		},
+	},
+	{
+		name = L["Mine Gems"],
+		setindex = "Tradeskill.Gather.GemsInNodes",
+		colour = "|cffB0C4DE",
+		header = L["Found in"],
+		quality = 1,
+		sets = {
+			["Tradeskill.Gather.GemsInNodes.Copper Vein"] = BO["Copper Vein"],
+			["Tradeskill.Gather.GemsInNodes.Tin Vein"] = BO["Tin Vein"],
+			["Tradeskill.Gather.GemsInNodes.Silver Vein"] = BO["Silver Vein"],
+			["Tradeskill.Gather.GemsInNodes.Iron Deposit"] = BO["Iron Deposit"],
+			["Tradeskill.Gather.GemsInNodes.Gold Vein"] = BO["Gold Vein"],
+			["Tradeskill.Gather.GemsInNodes.Mithril Deposit"] = BO["Mithril Deposit"],
+			["Tradeskill.Gather.GemsInNodes.Truesilver Deposit"] = BO["Truesilver Deposit"],
+			["Tradeskill.Gather.GemsInNodes.Small Thorium Vein"] = BO["Small Thorium Vein"],
+			["Tradeskill.Gather.GemsInNodes.Hakkari Thorium Vein"] = BO["Hakkari Thorium Vein"],
+			["Tradeskill.Gather.GemsInNodes.Rich Thorium Vein"] = BO["Rich Thorium Vein"],
+			["Tradeskill.Gather.GemsInNodes.Dark Iron Deposit"] = BO["Dark Iron Deposit"],
+			["Tradeskill.Gather.GemsInNodes.Adamantite Deposit"] = BO["Adamantite Deposit"],
+			["Tradeskill.Gather.GemsInNodes.Fel Iron Deposit"] = BO["Fel Iron Deposit"],
+			["Tradeskill.Gather.GemsInNodes.Khorium Vein"] = BO["Khorium Vein"],
+			["Tradeskill.Gather.GemsInNodes.Rich Adamantite Deposit"] = BO["Rich Adamantite Deposit"],
+		},
+	},
+	{
+		name = L["Trade skills"],
+		setindex = "Tradeskill.Mat.ByProfession",
+		colour = "|cffF5DEB3",
+		header = L["Component in"],
+		quality = 1,
+		descfunc = function(skill, reagent) return Mendeleev:GetLinesForTradeskillReagent(skill, reagent) end,
+		sets = {
+			["Tradeskill.Mat.ByProfession.Alchemy"] = "Alchemy",
+			["Tradeskill.Mat.ByProfession.Blacksmithing.Armorsmith"] = "Blacksmithing.Armorsmith",
+			["Tradeskill.Mat.ByProfession.Blacksmithing.Basic"] = "Blacksmithing.Basic",
+			["Tradeskill.Mat.ByProfession.Blacksmithing.Weaponsmith.Axesmith"] = "Blacksmithing.Weaponsmith.Axesmith",
+			["Tradeskill.Mat.ByProfession.Blacksmithing.Weaponsmith.Basic"] = "Blacksmithing.Weaponsmith.Basic",
+			["Tradeskill.Mat.ByProfession.Blacksmithing.Weaponsmith.Hammersmith"]	= "Blacksmithing.Weaponsmith.Hammersmith",
+			["Tradeskill.Mat.ByProfession.Blacksmithing.Weaponsmith.Swordsmith"] = "Blacksmithing.Weaponsmith.Swordsmith",
+			["Tradeskill.Mat.ByProfession.Cooking"] = "Cooking",
+			["Tradeskill.Mat.ByProfession.Enchanting"] = "Enchanting",
+			["Tradeskill.Mat.ByProfession.Engineering.Basic"] = "Engineering.Basic",
+			["Tradeskill.Mat.ByProfession.Engineering.Gnomish"] = "Engineering.Gnomish",
+			["Tradeskill.Mat.ByProfession.Engineering.Goblin"] = "Engineering.Goblin",
+			["Tradeskill.Mat.ByProfession.First Aid"] = "First Aid",
+			["Tradeskill.Mat.ByProfession.Jewelcrafting"] = "Jewelcrafting",
+			["Tradeskill.Mat.ByProfession.Leatherworking.Basic"] = "Leatherworking.Basic",
+			["Tradeskill.Mat.ByProfession.Leatherworking.Dragonscale"] = "Leatherworking.Dragonscale",
+			["Tradeskill.Mat.ByProfession.Leatherworking.Elemental"] = "Leatherworking.Elemental",
+			["Tradeskill.Mat.ByProfession.Leatherworking.Tribal"] = "Leatherworking.Tribal",
+			["Tradeskill.Mat.ByProfession.Poisons"] = "Poisons",
+			["Tradeskill.Mat.ByProfession.Smelting"] = "Smelting",
+			["Tradeskill.Mat.ByProfession.Tailoring"] = "Tailoring",
+			["TradeskillResultMats.Reverse.Tailoring.Basic"] = "Tailoring.Basic",
+			["TradeskillResultMats.Reverse.Tailoring.Mooncloth"] = "Tailoring.Mooncloth",
+			["TradeskillResultMats.Reverse.Tailoring.Shadoweave"] = "Tailoring.Shadoweave",
+			["TradeskillResultMats.Reverse.Tailoring.Spellfire"] = "Tailoring.Spellfire",
+		},
+	},
+	{
+		name = L["Class Reagents"],
+		setindex = "Reagent.Class",
+		colour = "|cffff00ff",
+		header = L["Classes"],
+		quality = 1,
+		sets = {
+			["Reagent.Class.Paladin"] = BC["Paladin"],
+			["Reagent.Class.Druid"] = BC["Druid"],
+			["Reagent.Class.Mage"] = BC["Mage"],
+			["Reagent.Class.Priest"] = BC["Priest"],
+			["Reagent.Class.Rogue"] = BC["Rogue"],
+			["Reagent.Class.Shaman"] = BC["Shaman"],
+			["Reagent.Class.Warlock"] = BC["Warlock"],
+		},
+	},
+	{
+		name = L["Food type"],
+		setindex = "Consumable.Food",
+		colour = "|cff87CEFA",
+		header = L["Food type"],
+		quality = 1,
+		sets = {
+			["Consumable.Food.Bread"] = L["Bread"],
+			["Consumable.Food.Fish"] = L["Fish"],
+			["Consumable.Food.Meat"] = L["Meat"],
+			["Consumable.Food.Cheese"] = L["Cheese"],
+			["Consumable.Food.Fruit"] = L["Fruit"],
+			["Consumable.Food.Fungus"] = L["Fungus"],
+			["Consumable.Food.Misc"] = L["Misc"],
+		},
+	},
+	{
+		name = L["Recipe source"],
+		setindex = "Tradeskill.Recipe",
+		colour = "|cff8470FF",
+		header = L["Recipe source"],
+		useval = function (v) return " ("..v..")" end,
+		--PT3's value is minimum skill and not price
+		--[[useval = function (v)
+			v = math.floor(v)
+			if v == 0 then return "" end
+			local g = v > 9999 and floor(v/10000) or 0
+			v = v-(g*10000)
+			local s = v > 99 and floor(v/100) or 0
+			v = v-(s*100)
+			local c = v
+			return " ("..(g>0 and (g.."g ") or "").. (((g+s)>0) and (s.."s ") or "").. c.. "c)"
+		end, ]]
+		quality = 1,
+		sets = {
+			["Tradeskill.Recipe.Vendor"] = L["Vendor"],
+			["Tradeskill.Recipe.Drop"] = L["Drop"],
+			["Tradeskill.Recipe.Quest"] = L["Quest"],
+			["Tradeskill.Recipe.Crafted"] = L["Crafted"],
+		},
+	},
+	{
+		name = L["Booze"],
+		setindex = "Misc",
+		colour = "|cffB0C4DE",
+		header = " ",
+		useval = function (v) return string.format(L["%d%% alc/vol (%d proof)"], v, v*2) end,
+		quality = 1,
+		sets = {
+			["Misc.Booze"] = L["Booze"],
+		},
+	},
+	{
+		name = L["Darkmoon Faire"],
+		setindex = "QuestMats.Darkmoon Faire.Turnin",
+		colour = "|cffFFFF00",
+		header = L["Darkmoon Faire"],
+		useval = function (v) return string.format(L[" (%d tickets)"], v) end,
+		quality = 1,
+		sets = {
+			["QuestMats.Darkmoon Faire.Turnin.Engineering"] = BTS["Engineering"],
+			["QuestMats.Darkmoon Faire.Turnin.Greys"] = L["Junk Items"],
+			["QuestMats.Darkmoon Faire.Turnin.Leather"] = L["Leather"],
+			["QuestMats.Darkmoon Faire.Turnin.Blacksmithing"] = BTS["Blacksmithing"],
+		},
+	},
+	{
+		name = L["Darkmoon Faire Card"],
+		setindex = "QuestMats.Darkmoon Faire.Deck",
+		colour = "|cffFFFF00",
+		header = L["Darkmoon Faire Card"],
+		quality = 1,
+		sets = {
+			["QuestMats.Darkmoon Faire.Deck.Beasts"] = L["Blue Dragon Card"],
+			["QuestMats.Darkmoon Faire.Deck.Warlords"] = L["Heroism Card"],
+			["QuestMats.Darkmoon Faire.Deck.Portals"] = L["Twisting Nether Card"],
+			["QuestMats.Darkmoon Faire.Deck.Elementals"] = L["Maelstrom Card"],
+			["QuestMats.Darkmoon Faire.Deck.Blessings"] = L["Crusade Card"],
+			["QuestMats.Darkmoon Faire.Deck.Furies"] = L["Vengeance Card"],
+			["QuestMats.Darkmoon Faire.Deck.Lunacy"] = L["Madness Card"],
+			["QuestMats.Darkmoon Faire.Deck.Storms"] = L["Wrath Card"],
+		},
+	},
+	{
+		name = L["Lockpicking"],
+		setindex = "Misc",
+		colour = "|cffFFFF00",
+		header = " ",
+		useval = function (v) return string.format(" (%d)", v) end,
+		quality = 1,
+		sets = {
+			["Misc.Unlock.Skeleton Keys"] = L["Lockpicking"],
+			["Misc.Lockboxes"] = L["Lockpicking"],
+			["Misc.Unlock.Seaforium Charges"] = L["Lockpicking"],
+		}
+	},
+}
+

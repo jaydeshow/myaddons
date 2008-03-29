@@ -1,0 +1,28 @@
+﻿## Interface: 20400
+
+## Title: Little Wigs [|cffeda55fCoilfang Reservoir|r]
+## Title-frFR: Little Wigs [|cffeda55fRéservoir de Glisseroc|r]
+## Title-deDE: Little Wigs [|cffeda55fDer Echsenkessel|r]
+## Title-zhTW: Little Wigs [|cffeda55f盤牙洞穴|r]
+## Notes: Little Wigs Coilfang Reservoir Modules
+## Notes-frFR: Modules Little Wigs concernant le Réservoir de Glisseroc.
+## Notes-zhTW: Little Wigs 盤牙洞穴模組
+## Title-zhCN: Little Wigs [|cffeda55f盘牙水库|r]
+## Notes-zhCN: Little Wigs 盘牙水库模块
+## Author: Ulic
+## Version: 2.0
+## LoadOnDemand: 1
+
+## X-Website: http://www.wowace.com/index.php/LittleWigs
+## X-AceForum: 5751
+## X-Category: Party
+
+## X-BigWigs-Menu: Coilfang Reservoir
+## X-BigWigs-LoadInParty: 1
+## X-BigWigs-LoadInZone: The Steamvault
+
+## Dependencies: BigWigs
+
+Kalithresh.lua
+Steamrigger.lua
+Thespia.lua

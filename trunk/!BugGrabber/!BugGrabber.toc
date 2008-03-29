@@ -1,0 +1,16 @@
+﻿## Interface: 20400
+## Title: BugGrabber
+## Title-koKR: |CFF99FF99B|CFFFFFFFFug|CFF99FF99G|CFFFFFFFFrabber
+## Version: 2.1.2
+## Notes: Grabs bugs for the bug sack.
+## Notes-zhTW: 搜集錯誤訊息提供 BugSack 顯示。
+## Author: Rabbit
+## X-Credits: Rowne, Ramble, kergoth, ckknight, Fritti
+## X-License: GPL v2 or later.
+## X-Category: Development Tools
+## X-RelSite-WoWI: 5995
+## X-AceForum: 1769
+## SavedVariables: BugGrabberDB
+
+BugGrabber.lua
+

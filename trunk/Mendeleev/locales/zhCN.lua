@@ -1,0 +1,111 @@
+local L = AceLibrary("AceLocale-2.2"):new("Mendeleev")
+
+L:RegisterTranslations("zhCN", function() return {
+	["Toggle sets."] = "系列显示开/关。",
+	["Toggle sets from showing information in the tooltip."] = "指定是否在提示信息上显示系列信息。",
+	["Toggle sets in the %s category."] = "显示 %s 类别的开/关。",
+	["Toggle %s."] = " %s 显示开/关。",
+	["Show item level"] = "显示物品等级",
+	["Toggle showing the item level in the tooltip."] = "指定是否在提示信息上显示物品等级。",
+	["Show item identifier"] = "显示物品 ID",
+	["Toggle showing the item identifier in the tooltip."] = "指定是否在提示信息上显示物品 ID。",
+	["Show stack size"] = "显示堆叠数量",
+	["Toggle showing the stack size in the tooltip."] = "指定是否在提示信息上显示堆叠数量。",
+	["Show 'used in' tree"] = "显示商业技能信息",
+	["Toggle showing the 'used in' tree in the tooltip."] = "指定是否在提示信息上显示商业技能信息。",
+	["Limit 'used in' tree to craftable"] = "只显示可用的商业技能信息",
+	["Toggle limiting the 'used in' tree to items the char can craft."] = "指定是否只显示玩家可以使用的物品的商业技能信息。",
+	["Item ID"] = "物品 ID",
+	["iLevel"] = "物品等级",
+	["Stacksize"] = "堆叠数量",
+
+	["Crafted by"] = "制造于",
+	["Component in"] = "材料",
+
+	["Recipe source"] = "配方来源",
+	["Lockpicking"] = "开锁",	
+	["Gathering skills"] = "采集技能",
+	["Mine Gems"] = "采矿",
+	["Trade skills"] = "商业技能",
+	["Class Reagents"] = "职业施法材料",
+	["Food type"] = "食物类型",
+	["Booze"] = "酒精浓度",
+	["Elemental bosses"] = "元素首领",
+	["Outdoor bosses"] = "户外首领",
+	["Outdoor bosses - Outland"] = "户外首领 - 外域",
+	["Four Dragons"] = "翡翠四绿龙",
+
+	["Gathered by"] = "收集",
+	["Used by"] = "用途",
+	["Classes"] = "职业",
+	["Darkmoon Faire"] = "暗月马戏团",
+	["Darkmoon Faire Card"] = "暗月卡片",
+	["Found in"] = "发现",
+	["Dropped by"] = "掉落",
+	["Used in"] = "使用于",
+
+	["Fish"] = "鱼类",
+	["Meat"] = "肉类",
+	["Bread"] = "面包",
+	["Conjured"] = "魔法制造出来的物品",
+	["Cheese"] = "奶酪",
+	["Fruit"] = "水果",
+	["Misc"] = "其他",
+	["Fungus"] = "蘑菇",
+
+	-- Darkmoon Faire
+	["Junk Items"] = "灰色物品",
+	["Leather"] = "皮革",
+	["Blue Dragon Card"] = "暗月卡片：蓝龙",
+	["Heroism Card"] = "暗月卡片：英雄",
+	["Twisting Nether Card"] = "暗月卡片：虚空",
+	["Maelstrom Card"] = "暗月卡片：漩涡",
+	["Crusade Card"] = "暗月卡片：十字军",
+	["Vengeance Card"] = "暗月卡片：复仇",
+	["Madness Card"] = "暗月卡片：疯狂",
+	["Wrath Card"] = "暗月卡片：愤怒",
+
+	-- Sources
+	["Drop"] = "掉落",
+	["Vendor"] = "商人",
+	["Quest"] = "任务",
+	["Crafted"] = "制造",
+
+	["UBRS"] = "黑石塔上层",
+	["LBRS"] = "黑石塔下层",
+	
+	["Heroic"] = "英雄模式",
+	
+	-- Tier Sets
+	["Tier 1 Set"] 		= "等级1套装",
+	["Tier 2 Set"] 		= "等级2套装",
+	["Tier 2.5 Set"] 	= "安其拉神殿职业套装",
+	["Tier 3 Set"] 		= "等级3套装",
+	["Tier 4 Set"] 		= "等级4套装",
+	["Tier 5 Set"] 		= "等级5套装",
+	["Tier 6 Set"] 		= "等级6套装",
+	
+	-- Arena Sets
+	["Arena - Season 1 Set"] = "竞技场奖励套装：第1赛季",
+	["Arena - Season 2 Set"] = "竞技场奖励套装：第2赛季",
+	["Arena - Season 3 Set"] = "竞技场奖励套装：第3赛季",
+		
+	["Poisons"] = "制毒",
+	["%d%% alc/vol (%d proof)"] = "酒精浓度：%d%%",
+	[" (%d tickets)"] = " (%d张票)",
+
+	-- Categories
+	["Consumable"] = "容器",
+	["Gear"] = "装备",
+	["GearSet"] = "套装",
+	["InstanceLoot"] = "副本拾取",
+	["InstanceLootHeroic"] = "英雄副本拾取",
+	["Misc"] = "其他",
+	["QuestMats"] = "任务奖励",
+	["Reagent"] = "材料",
+	["Tradeskill"] = "商业技能",
+	
+	["Badge of Justice"] = "公正徽章",
+	["G'eras"] = "基厄拉斯",
+	["Smith Hauthaa"] = "铁匠霍尔萨",
+}end)

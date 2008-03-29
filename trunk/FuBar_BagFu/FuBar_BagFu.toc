@@ -1,0 +1,27 @@
+﻿## Interface: 20400
+## Title: FuBar - |cffffffffBag|r|cff00ff00Fu|r
+## Title-koKR: |CFF99FF99F|CFFFFFFFFu|CFF99FF99B|CFFFFFFFFar - |cffffffffBag|r|cff00ff00Fu|r
+## Notes: Keeps track of space left in your bags.
+## Notes-deDE: \195\156berwacht die Taschenpl\195\164tze.
+## Notes-frFR: Surveille et affiche la place disponible dans vos sacs.
+## Notes-koKR: 가방의 남은 빈 슬롯의 수를 표시합니다.
+## Notes-zhTW: 顯示背包的剩餘空格數量。
+## Notes-esES: Informa sobre el espacio restante en tus bolsas.
+## Author: phyber
+## Dependencies: FuBar
+## OptionalDeps: Ace2, DewdropLib, TabletLib, FuBarPlugin-2.0, CrayonLib
+## SavedVariables: BagFuDB
+## Version: 2.0
+## X-Category: Inventory
+## LoadOnDemand: 1
+
+embeds.xml
+
+BagFuLocale-enUS.lua
+BagFuLocale-deDE.lua
+BagFuLocale-frFR.lua
+BagFuLocale-koKR.lua
+BagFuLocale-zhCN.lua
+BagFuLocale-zhTW.lua
+BagFuLocale-esES.lua
+BagFu.lua

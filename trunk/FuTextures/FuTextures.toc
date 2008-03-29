@@ -1,0 +1,8 @@
+﻿## Interface: 20400
+## Title: FuTextures
+## Version: 2.0
+## Author: ckknight
+## Notes: A collection of textures for FuBar.
+## Notes-zhTW: 一個 FuBar 所使用的貼圖材質圖庫。
+## Dependencies: FuBar
+FuTextures.lua

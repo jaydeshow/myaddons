@@ -1,0 +1,233 @@
+﻿local GatherMate = LibStub("AceAddon-3.0"):GetAddon("GatherMate")
+local Collector = GatherMate:NewModule("Collector", "AceEvent-3.0")
+local L = LibStub("AceLocale-3.0"):GetLocale("GatherMate",true)
+
+-- prevSpell, curSpell are markers for what has been cast now and the lastcast
+-- buffsearchstring is for gas extartion detection of the aura event
+-- gatherevents if a flag for wether we are listening to events
+local prevSpell, curSpell, foundTarget, buffSearchString, gatherEvents
+local spells = { -- spellname to "database name"
+	[L["Mining"]] = "Mining",
+	[L["Herb Gathering"]] = "Herb Gathering",
+	[L["Fishing"]] = "Fishing",
+	[L["Extract Gas"]] = "Extract Gas",
+	[L["Opening"]] = "Treasure",
+	[L["Pick Lock"]] = "Treasure",
+}
+local tooltipLeftText1 = _G["GameTooltipTextLeft1"]
+local strfind, stringmatch = string.find, string.match
+local pii = math.pi
+local sin = math.sin
+local cos = math.cos
+local sub_string = GetLocale() == "deDE" and "%%%d$s" or "%%s"
+buffSearchString = string.gsub(AURAADDEDOTHERHELPFUL, sub_string, "(.+)")
+
+--[[
+	Get the direction the map arrow is facing
+]]
+local function getArrowDirection(...)
+	if(GetCVar("rotateMinimap") == "1") then return -MiniMapCompassRing:GetFacing()	end
+	for i=select("#",...),1,-1 do
+		local model=select(i,...)
+		if model:IsObjectType("Model") and not model:GetName() then	return model and model:GetFacing() end
+	end
+	return nil
+end
+
+--[[
+	Enable the collector
+]]
+function Collector:OnEnable()
+	self:RegisterEvent("PLAYER_ENTERING_WORLD", "ZoneChange")
+	self:ZoneChange()
+end
+
+--[[
+	Register the events we are interesting
+]]
+function Collector:RegisterGatherEvents()
+	self:RegisterEvent("UNIT_SPELLCAST_SENT","SpellStarted")
+	self:RegisterEvent("UNIT_SPELLCAST_STOP","SpellStopped")
+	self:RegisterEvent("UNIT_SPELLCAST_FAILED","SpellFailed")
+	self:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED","SpellFailed")
+	self:RegisterEvent("CURSOR_UPDATE","CursorChange")
+	self:RegisterEvent("UI_ERROR_MESSAGE","UIError")
+	self:RegisterEvent("LOOT_CLOSED","GatherCompleted")
+	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED", "GasBuffDetector")
+	gatherEvents = true
+end
+
+--[[
+	Unregister the events
+]]
+function Collector:UnregisterGatherEvents()
+	self:UnregisterEvent("UNIT_SPELLCAST_SENT")
+	self:UnregisterEvent("UNIT_SPELLCAST_SENT")
+	self:UnregisterEvent("UNIT_SPELLCAST_STOP")
+	self:UnregisterEvent("UNIT_SPELLCAST_FAILED")
+	self:UnregisterEvent("UNIT_SPELLCAST_INTERRUPTED")
+	self:UnregisterEvent("CURSOR_UPDATE")
+	self:UnregisterEvent("UI_ERROR_MESSAGE")
+	self:UnregisterEvent("LOOT_CLOSED")
+	self:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+	gatherEvents = false
+end
+
+--[[
+	Change of Zone event
+]]
+function Collector:ZoneChange()
+	local inInstance, instanceType = IsInInstance()
+	if inInstance and gatherEvents then
+		self:UnregisterGatherEvents()
+	elseif not gatherEvents then
+		self:RegisterGatherEvents()
+	end
+end
+
+--[[
+	This is a hack for scanning mote extraction, hopefully blizz will make the mote mobs visible so we can mouse over 
+	or get a better event instead of cha msg parsing
+]]
+function Collector:GasBuffDetector(b,timestamp, eventType, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId,spellName,spellSchool,auraType)
+	if foundTarget or (prevSpell and prevSpell ~= L["Extract Gas"]) then return end	
+	if eventType == "SPELL_AURA_APPLIED" and (auraType and auraType == "BUFF") and (spellName and spellName == L["Extract Gas"]) then
+		foundTarget = true
+		self:addItem(spellName,dstName)
+	end
+end
+
+--[[
+	Any time we close a loot window stop checking for targets ala the Fishing bobber
+]]
+function Collector:GatherCompleted()
+	prevSpell, curSpell = nil, nil
+	foundTarget = false
+end
+
+--[[
+	When the hand icon goes to a gear see if we can find a nde under the gear ala for the fishing bobber OR herb of mine
+]]
+function Collector:CursorChange()
+	if foundTarget then return end
+	if spells[prevSpell] then 
+		self:GetWorldTarget()
+	end
+end
+
+--[[
+	We stopped casting the spell
+]]
+function Collector:SpellStopped(event,unit)
+	if unit ~= "player" then return end
+	if spells[prevSpell] then
+		self:GetWorldTarget()
+	end
+	-- prev spel needs set since it is used for cursor changes
+	prevSpell, curSpell = curSpell, curSpell
+end
+
+--[[
+	We failed to cast
+]]
+function Collector:SpellFailed(event,unit)
+	if unit ~= "player" then return end
+	prevSpell, curSpell = nil, nil
+end
+
+--[[
+	UI Error from gathering when you dont have the required skill
+]]
+function Collector:UIError(event,msg)
+	local what = tooltipLeftText1:GetText();
+	if not what then return end
+	if strfind(msg, L["Mining"]) then
+		self:addItem(L["Mining"],what)
+	elseif strfind(msg, L["Herbalism"]) then
+		self:addItem(L["Herb Gathering"],what)
+	elseif strfind(msg, L["Pick Lock"]) or strfind(msg, L["Opening"]) then -- locked box or failed pick
+		self:addItem(L["Opening"], what)
+	end
+end
+
+--[[
+	spell cast started
+]]
+function Collector:SpellStarted(event,unit,spellcast,rank,target)
+	if unit ~= "player" then return end
+	foundTarget = false
+	if spells[spellcast] then
+		curSpell = spellcast
+		prevSpell = spellcast
+		self:GetWorldTarget()
+	else
+		prevSpell, curSpell = nil, nil
+	end
+end
+
+--[[
+	add an item to the map (we delgate to GatherMate)
+]]
+local lastNode = ""
+local lastNodeCoords = 0
+
+function Collector:addItem(skill,what)
+	local x, y = GetPlayerMapPosition("player")
+	if x == 0 and y == 0 then return nil end
+	local zone = GetRealZoneText()
+	local node_type = spells[skill]
+	if not node_type or not what then return end
+	local range = GatherMate.db.profile.cleanupRange[node_type]
+	-- special case for fishing and gas extraction guage the pointing direction
+	if node_type == "Fishing" or node_type == "Extract Gas" then
+		local yw, yh = GatherMate:GetZoneSize(zone)
+		x,y = self:GetFloatingNodeLocation(x, y, yw, yh)
+	end
+	local nid = GatherMate:GetIDForNode(node_type, what)
+	-- if we couldnt find the node id for what was found, exit the add
+	if not nid then return end 
+	local rares = self.rareNodes
+	-- run through the nearby's
+	local skip = false
+	local foundCoord = GatherMate:getID(x, y)
+	if foundCoord == lastNodeCoords and what == lastNode then return end
+	for coord, nodeID in GatherMate:FindNearbyNode(zone, x, y, node_type, range, true) do
+		if nodeID == nid or rares[nodeID] and rares[nodeID][nid]  then
+			GatherMate:RemoveNodeByID(zone, node_type, coord)
+		-- we're trying to add a rare node, but there is already a normal node present, skip the adding
+		elseif rares[nid] and rares[nid][nodeID] then
+			skip = true
+		end
+	end
+	if not skip then
+		GatherMate:AddNode(zone, x, y, node_type, what)
+		lastNode = what
+		lastNodeCoords = foundCoord
+	end
+end
+
+--[[
+	move the node 20 yards in the direction the player is looking at
+]]
+function Collector:GetFloatingNodeLocation(x,y,yardWidth,yardHeight)
+	local facing = getArrowDirection(Minimap:GetChildren())
+	if not facing then	-- happens when minimap rotation is on
+		return x,y
+	else
+		local rad = facing + pii
+		return x + sin(rad)*20/yardWidth, y + cos(rad)*20/yardHeight
+	end	
+end
+
+--[[
+	get the target your clicking on
+]]
+function Collector:GetWorldTarget()
+	if foundTarget or not spells[curSpell] then return end
+	local what = tooltipLeftText1:GetText();
+	local nodeID = GatherMate:GetIDForNode(spells[prevSpell], what)
+	if what and prevSpell and what ~= prevSpell and nodeID then
+		self:addItem(prevSpell,what)
+		foundTarget = true
+	end
+end

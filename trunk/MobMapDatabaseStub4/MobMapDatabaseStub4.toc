@@ -1,0 +1,10 @@
+﻿## Interface: 20300
+
+## Title: |cff0099FF<CWDG>|r|cffffffffMobMap数据库4|r
+## Notes: This is a load-on-demand addon stub for the MobMap recipe database.
+## Notes-zhCN: MobMap配方动态数据加载库.(必要!)
+
+## RequiredDeps: MobMap
+## LoadOnDemand: 1
+..\MobMap\MobMapDatabase_recipes.lua
+..\MobMap\MobMap_recipes.xml

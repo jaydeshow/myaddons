@@ -1,0 +1,35 @@
+local L = AceLibrary("AceLocale-2.2"):new("FuBar_FactionsFu")
+
+L:RegisterTranslations("esES", function() return {
+	TOOLTIP_HINT = "\nHaz |cffeda55fClic|r para cambiar la facci\195\179n vigilada.\n|cffeda55fMay\195\186sculas-Clic|r para introducir los datos en la caja de edici\195\179n del chat.\n|cffeda55fAlt-Clic|r para establecer como facci\195\179n de zona autom\195\161tica a la zona actual.",
+
+	["Text"] = "Texto",
+	["Text Settings"] = "Ajustes de texto",
+	["Show Name"] = "Mostrar nombre",
+	["Toggles display of watched faction's name"] = "Muestra el nombre de la facci\195\179n vigilada",
+	["Show Standing"] = "Mostrar prestigio",
+	["Toggles display of watched faction's current standing"] = "Muestra el prestigio actual con la facci\195\179n vigilada",
+	["Show Progress"] = "Mostrar progreso",
+	["Toggles display of watched faction's progress toward next standing"] = "Muestra el progreso hacia el nuevo nivel de prestigio con la facci\195\179n vigilada",
+	["Show Progress (in percent)"] = "Mostrar progreso (en porcentaje)",
+	["Toggles display of watched faction's progress toward next standing (in percent)"] = "Muestra el progreso hacia el nuevo nivel de prestigio con la facci\195\179n vigilada (en porcentaje)",
+	["Color"] = "Color",
+	["Color Settings"] = "Ajustes de color",
+	["Name"] = "Nombre",
+	["Sets color of the faction name"] = "Establece el color del nombre de la facci\195\179n",
+	["Reputation"] = "Reputaci\195\179n",
+	["Sets color of the faction reputation"] = "Establece el color de la reputaci\195\179n en la facci\195\179n",
+	["standing"] = "Prestigio",
+	["Sets color of the faction standing"] = "Establece el color del prestigio en la facci\195\179n",
+	["Other"] = "Otros",
+	["Other Settings"] = "Otros ajustes",
+	["Auto-Zone"] = "Auto-Zona",
+	["Toggles automatical adjustment of watched faction on zone change"] = "Ajusta autom\195\161ticamente la facci\195\179n vigilada cuando cambias de zona",
+	["Auto-Gain"] = "Auto-Ganar",
+	["Toggles automatical adjustment of watched faction on faction gain"] = "Ajusta autom\195\161ticamente la facci\195\179n vigilada cuando ganas prestigio con una facci\195\179n",
+
+	["None"] = "Ninguna",
+	["War Condition"] = "Condici\195\179n b\195\169lica",
+	["Blizzard's Default"] = "Por defecto de Blizzard",
+	["Incremental"] = "Incremental",
+} end)

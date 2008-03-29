@@ -1,0 +1,94 @@
+------------------------------------------------------------------------
+r66416 | jerry | 2008-03-27 13:01:48 -0400 (Thu, 27 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/Mendeleev/SetsGear.lua
+
+Mendeleev:
+- Fix colo(u)r
+- Add Badge of Justice Icon
+------------------------------------------------------------------------
+r66246 | ananhaid | 2008-03-26 22:29:11 -0400 (Wed, 26 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/locales/zhCN.lua
+
+Mendeleev:
+- zhCN Badges of Justice NPC update.
+------------------------------------------------------------------------
+r65952 | arrowmaster | 2008-03-26 00:33:30 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/Mendeleev/Mendeleev.lua
+
+Mendeleev: fix for new behaviour of GetItemInfo returning nil sometimes on first OnTooltipSetItem for uncached items
+------------------------------------------------------------------------
+r65112 | oojoo | 2008-03-19 16:20:41 -0400 (Wed, 19 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/locales/deDE.lua
+
+Mendeleev:
+deDE update for badges and stuff
+------------------------------------------------------------------------
+r65098 | ananhaid | 2008-03-19 13:24:24 -0400 (Wed, 19 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/locales/zhCN.lua
+
+Mendeleev:
+- zhCN update.
+------------------------------------------------------------------------
+r65086 | helium | 2008-03-19 10:51:54 -0400 (Wed, 19 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/Mendeleev/locales/enUS.lua
+   M /trunk/Mendeleev/locales/zhTW.lua
+
+Mendeleev:
+- added Gear catalogue in enUS
+- updated zhTW localization
+------------------------------------------------------------------------
+r65080 | ananhaid | 2008-03-19 09:23:24 -0400 (Wed, 19 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/locales/zhCN.lua
+
+Mendeleev:
+- zhCN update.
+------------------------------------------------------------------------
+r65079 | ananhaid | 2008-03-19 09:16:17 -0400 (Wed, 19 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/locales/zhCN.lua
+
+Mendeleev:
+- zhCN update.
+------------------------------------------------------------------------
+r65062 | jerry | 2008-03-19 04:48:55 -0400 (Wed, 19 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/Mendeleev.lua
+   M /trunk/Mendeleev/SetsGear.lua
+   M /trunk/Mendeleev/locales/enUS.lua
+
+Mendeleev: Add Badge of Justice Information (Vendor name and number of badges).
+
+------------------------------------------------------------------------
+r64489 | jerry | 2008-03-14 07:31:42 -0400 (Fri, 14 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/SetsGear.lua
+   M /trunk/Mendeleev/locales/enUS.lua
+
+Mendeleev: Add season 3 sets and fix season 2.
+
+------------------------------------------------------------------------
+r64339 | elkano | 2008-03-12 07:35:45 -0400 (Wed, 12 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/Mendeleev/Mendeleev.lua
+   M /trunk/Mendeleev/Mendeleev.toc
+
+Mendeleev: fixed double data on recipes
+------------------------------------------------------------------------
+r64231 | rabbit | 2008-03-11 09:07:56 -0400 (Tue, 11 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/Mendeleev/Mendeleev.lua
+   M /trunk/Mendeleev/Mendeleev.toc
+   M /trunk/Mendeleev/Sets.lua
+   M /trunk/Mendeleev/SetsGear.lua
+   M /trunk/Mendeleev/embeds.xml
+   M /trunk/Mendeleev/libs
+
+Mendeleev: Use LibBabble-Class-3.0.
+------------------------------------------------------------------------

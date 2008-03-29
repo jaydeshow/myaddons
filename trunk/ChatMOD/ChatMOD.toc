@@ -1,0 +1,30 @@
+## Interface: 20300
+## Title: ChatMOD |cff66CCCCrev|cffFF0000116
+## Author: Marco 'solariz' Goetze
+## Version: 116
+## Notes: General Purpose full featured Chat Enhancement Collection
+## eMail: http://www.solariz.de
+## URL: http://www.solariz.de/6-0-chatmod.html
+## OptionalDeps: chronos, timex
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## X-Category: Chat
+## SavedVariables: SCCN_mousescroll,SCCN_hidechanname,SCCN_colornicks,SCCN_topeditbox,SCCN_timestamp,SCCN_hyperlinker,SCCN_selfhighlight,SCCN_clickinvite,SCCN_editboxkeys,SCCN_chatstring,SCCN_selfhighlightmsg,SCCN_ts_format,SCCN_HideChatButtons,SCCN_Highlight_Text,SCCN_Highlight,SCCN_shortchanname,SCCN_AutoDismount,SCCN_AutoGossipSkip,SCCN_Chan_Replace,SCCN_Chan_ReplaceWith,SCCN_chatsound,SCCN_InChatHighlight,SCCN_AllSticky,SCCN_NOFADE,SCCN_disablewhocheck,SCCN_chatscrollicon,SCCN_SCROLLBACK_BUFFER,SCCN_displayusage,SCCN_CHATLINK,SCCN_CHATCOLORNAME,SCCN_SHOWLEVEL,SCCN_COM_GUILD
+## SavedVariablesPerCharacter: SCCN_storage,SCCNScrollDown_Y,SCCNScrollDown_X
+inc\revision.lua
+localization\all.lua
+localization\default.lua
+localization\zhCN.lua
+localization\zhTW.lua
+inc\init_defaults.lua
+inc\CLINK.lua
+inc\com.lua
+inc\ChatMOD.lua
+xml\solColorChatNicksForm.xml
+xml\solColorChatNicks_scroller.xml
+xml\solHyperlinker.xml
+xml\Config_Form.xml
+xml\Highlight_Form.xml
+xml\ShortChan_Form.xml
+xml\ChatSound_Form.xml
+xml\ScrollDown.xml

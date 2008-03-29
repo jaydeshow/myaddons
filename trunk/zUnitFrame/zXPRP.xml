@@ -1,0 +1,102 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+    <Script file="zXPRP.lua"/>
+    <Frame name="zUF_XPRP_Genreal" parent="UIParent" hidden="true">
+        <Scripts>
+            <OnLoad>
+                zUF_XPRP_OnLoad();
+            </OnLoad>
+            <OnEvent>
+                zUF_XPRP_OnEvent(event);
+            </OnEvent>
+        </Scripts>
+    </Frame>
+    <Frame name="zUF_PlayerFrameXPRP" parent="PlayerFrame">
+        <Frames>
+            <Frame>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString name="$parentText" inherits="GameTooltipTextSmall">
+                            <Anchors>
+                                <Anchor point="CENTER" relativeTo="PlayerFrame" relativePoint="CENTER">
+                                    <Offset x="90" y="-19"/>
+                                </Anchor>
+                            </Anchors>
+                            <Shadow>
+                                <Offset x="1" y="-1"/>
+                                <Color r="0" g="0" b="0"/>
+                            </Shadow>
+                            <Color r="1" g="1" b="0"/>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnLoad>
+                        this:SetFrameLevel(this:GetFrameLevel() + 1);
+                    </OnLoad>
+                </Scripts>
+            </Frame>
+            <StatusBar name="$parentBar" inherits="TextStatusBar">
+                <Size x="190" y="12"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="PlayerFrame" relativePoint="TOPLEFT">
+                        <Offset x="107" y="-65"/>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Frame>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture name="$parentBkg">
+                                    <Size x="10" y="6"/>
+                                    <Anchors>
+                                        <Anchor point="BOTTOM" relativeTo="PlayerFrame">
+                                            <Offset x="-28" y="22"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="0" g="0" b="0" a="0.5"/>
+                                </Texture>
+                                <Texture name="$parentBkgExt">
+                                    <Size x="192" y="12"/>
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="PlayerFrame">
+                                            <Offset x="105" y="-64"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="0" g="0" b="0" a="0.5"/>
+                                </Texture>
+                            </Layer>
+                            <Layer level="OVERLAY">
+                                <Texture name="$parentBorder" file="Interface\AddOns\zUnitFrame\zXPRP">
+                                    <Size x="146" y="32"/>
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="PlayerFrame">
+                                            <Offset x="78" y="-57"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <TexCoords left="0" right="0.5703125" top="0" bottom="1"/>
+                                </Texture>
+                                <Texture name="$parentBorderExt" file="Interface\AddOns\zUnitFrame\zXPRP">
+                                    <Size x="80" y="32"/>
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="PlayerFrame">
+                                            <Offset x="224" y="-57"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <TexCoords left="0.5703125" right="0.8828125" top="0" bottom="1"/>
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                </Frames>
+                <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+                <BarColor r="0.1" g="0.5" b="0"/>
+                <Scripts>
+                    <OnLoad>
+                        this:SetFrameLevel(this:GetFrameLevel() + 1);
+                    </OnLoad>
+                </Scripts>
+            </StatusBar>
+        </Frames>
+    </Frame>
+</Ui>

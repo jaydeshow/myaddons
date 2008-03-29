@@ -1,0 +1,17 @@
+------------------------------------------------------------------------
+r63060 | ananhaid | 2008-02-27 10:41:17 -0500 (Wed, 27 Feb 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_FactionsFu/FuBar_FactionsFu.toc
+   A /trunk/FuBar_FactionsFu/Locales/FuBar_FactionsFu.zhCN.lua
+
+FuBar_FactionsFu
+- Add zhCN Locale.
+------------------------------------------------------------------------
+r62954 | elkano | 2008-02-26 05:32:29 -0500 (Tue, 26 Feb 2008) | 3 lines
+Changed paths:
+   M /trunk/FuBar_FactionsFu/FuBar_FactionsFu.lua
+
+FuBar_FactionsFu
+- some small performance tweaks
+- shift-click on the FuBar plugin will now post the watched faction to the chat editbox
+------------------------------------------------------------------------

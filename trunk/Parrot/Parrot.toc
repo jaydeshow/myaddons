@@ -1,0 +1,34 @@
+﻿## Interface: 20300
+## Title: Parrot 1.0
+## Notes: Floating Combat Text of awesomeness. Caw. It'll eat your crackers.
+## Notes-zhCN: 绝妙的浮动战斗记录指示器。
+## Author: ckknight
+## X-eMail: ckknight AT gmail DOT com
+## X-Website: http://www.wowace.com/
+## X-Category: Combat
+## SavedVariables: ParrotDB
+## OptionalDeps: LibRock-1.0
+## X-Embeds: LibRock-1.0, LibRockDB-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockHook-1.0, LibRockConsole-1.0, LibRockConfig-1.0, LibRockLocale-1.0, LibRockModuleCore-1.0, LibParser-4.0, LibSharedMedia-2.0, LibSpecialEvents-Aura-3.0, LibBabble-Spell-3.0
+## X-WoWIPortal: ckknight
+## X-License: GPL v2 or later
+## X-Donate: PayPal:ckknight AT gmail DOT com
+## X-IssueTracker: Wowace:10025
+
+embeds.xml
+
+Code\Parrot.lua
+Code\AnimationStyles.lua
+Code\CombatEvents.lua
+Code\Display.lua
+Code\ScrollAreas.lua
+Code\Suppressions.lua
+Code\TriggerConditions.lua
+Code\Triggers.lua
+
+Data\AnimationStyles.lua
+Data\CombatEvents.lua
+Data\TriggerConditions.lua
+Data\Auras.lua
+Data\Cooldowns.lua
+Data\Loot.lua
+Data\CombatStatus.lua

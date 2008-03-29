@@ -1,0 +1,10 @@
+------------------------------------------------------------------------
+r60921 | elkano | 2008-02-11 04:37:26 -0500 (Mon, 11 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_GuildFu/FuBar_GuildFu.lua
+   M /trunk/FuBar_GuildFu/FuBar_GuildFu.toc
+   M /trunk/FuBar_GuildFu/Libs
+   M /trunk/FuBar_GuildFu/embeds.xml
+
+FuBar_GuildFu: removed RosterLib
+------------------------------------------------------------------------

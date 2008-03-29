@@ -1,0 +1,20 @@
+﻿## Interface: 20300
+## Version: 1.00
+## Title: Recipe Radar (updated)
+## Title-zhCN:专业配方图纸售卖地查询 Recipe Radar
+## Author: Jay Miller, updated by Blawler,Translated by laeolonge
+## Notes: Locates vendors who sell recipes in the current region or by profession.
+## Notes-deDE: Lokalisiert H?ndler, die Rezepte im Strombereich oder durch Beruf verkaufen.
+## Notes-frFR: Localise les marchands qui vendent des recettes, par région ou par profession.
+## Notes-esES: Localiza a vendedores que venden recetas en la región actual o por la profesión.
+## Notes-zhTW: 位於售賣食譜在當前區域或者專業.
+## SavedVariables: RecipeRadar_SkillDB RecipeRadar_NameCache
+## SavedVariablesPerCharacter: RecipeRadar_Options RecipeRadar_Filters
+Localization.lua
+Globals.lua
+FrameTemplates.xml
+Maps.xml
+MinimapButton.xml
+AvailabilityTooltip.xml
+RecipeRadar.xml
+OptionsFrame.xml

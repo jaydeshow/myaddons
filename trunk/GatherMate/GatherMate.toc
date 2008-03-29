@@ -1,0 +1,24 @@
+﻿## Interface: 20400
+## Notes: Collects Herbs, Mines, Gas Clouds and Fishing locations and adds them to the worldmap and minimap
+## Notes-frFR: Enregistre les positions des herbes, mines, nuages de gaz et poissons et les ajoute sur la carte du monde et la minicarte.
+## Notes-koKR: 약초, 광맥, 가스, 낚시 위치를 저장하여 월드맵과 미니맵에 표시합니다.
+## Title: GatherMate
+## Author: Moonfann (aka Kagaro), Xinhuan, Ammo, Nevcairiel
+## SavedVariables: GatherMateDB, GatherMateHerbDB, GatherMateMineDB, GatherMateFishDB, GatherMateGasDB, GatherMateTreasureDB
+## X-Category: Map
+## Version: 1.0
+## X-License: GPL v2
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+embeds.xml
+Locales.xml
+
+GatherMate.lua
+Collector.lua
+Display.lua
+Constants.lua
+Config.lua

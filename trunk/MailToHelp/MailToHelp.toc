@@ -1,0 +1,7 @@
+﻿## Interface: 20100
+## Title: |cff7fff7f[信息]|rMailto Next_CmdHelp
+## Author: Vincent of Blackhand (D.A.Down)
+## Notes: 为Milto Next提供命令帮助.
+## LoadOnDemand: 1
+## Dependencies:
+CmdHelp.lua

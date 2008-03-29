@@ -1,0 +1,31 @@
+﻿## Interface: 20300
+## Title: Mendeleev |cff7fff7f -Ace2-|r
+## Version: 2.0
+## Notes: Adds various information based on PeriodicTable to item tooltips.
+## Notes-esES: Añade información a los tooltip de objeto basándose en PeriodicTable.
+## Notes-zhTW: 在提示中顯示物品的詳細資訊，包括掉落位置、聲望要求、用途等。
+## Notes-zhCN: 在提示中显示物品的详细信息，包括掉落位置、声望要求、用途等。基于PeriodicTable。
+## Author: Rabbit
+## X-Credits: MoonWolf for the orginal PT1-based version, Kemayo, Elkano, Nymbia (PT3).
+## OptionalDeps: Ace2, LibBabble-Boss-3.0, LibBabble-Zone-3.0, LibBabble-Class-3.0, Babble-2.2, LibPeriodicTable-3.1, AtlasLoot
+## X-Category: Inventory
+## SavedVariables: MendeleevDB
+## X-Embeds: Ace2, LibBabble-Boss-3.0, LibBabble-Zone-3.0, LibBabble-Class-3.0, Babble-Ore-2.2, Babble-Tradeskill-2.2, LibPeriodicTable-3.1
+
+embeds.xml
+
+locales\enUS.lua
+locales\zhCN.lua
+locales\zhTW.lua
+locales\koKR.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\esES.lua
+
+Mendeleev.lua
+Sets.lua
+Set_Instances_1-40.lua
+Set_Instances_41-60.lua
+Set_Instances_61-70.lua
+SetsGear.lua
+

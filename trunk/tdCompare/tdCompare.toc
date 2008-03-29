@@ -1,0 +1,9 @@
+﻿## Interface: 20300
+## Title: tdCompare
+## Notes: Simple item compare tooltips
+## Title-zhCN: |cff7fff7f太多|r装备比较
+## Notes-zhCN: 小巧的装备比较
+## Author: Taiduo
+## Version: 1.0.5
+
+tdCompare.lua

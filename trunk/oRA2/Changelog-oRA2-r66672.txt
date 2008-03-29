@@ -1,0 +1,299 @@
+------------------------------------------------------------------------
+r66672 | whyv | 2008-03-28 07:59:49 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/oRA2_Leader.toc
+   M /trunk/oRA2/Optional/oRA2_Optional.toc
+   M /trunk/oRA2/Participant/oRA2_Participant.toc
+   M /trunk/oRA2/oRA2.toc
+
+oRA2: toc bumped 20300 -> 20400
+------------------------------------------------------------------------
+r66042 | rabbit | 2008-03-26 07:58:59 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Participant/MainTank.lua
+
+oRA2: Bugfix.
+------------------------------------------------------------------------
+r66023 | rabbit | 2008-03-26 06:26:19 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Participant/MainTank.lua
+
+oRA2: Fix tank death announcements.
+------------------------------------------------------------------------
+r65380 | pettigrow | 2008-03-22 17:22:55 -0400 (Sat, 22 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+   M /trunk/oRA2/Leader/Durability.lua
+   M /trunk/oRA2/Leader/Item.lua
+   M /trunk/oRA2/Leader/Latency.lua
+   M /trunk/oRA2/Leader/Loot.lua
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Leader/RaidWarn.lua
+   M /trunk/oRA2/Leader/Ready.lua
+   M /trunk/oRA2/Leader/Resist.lua
+   M /trunk/oRA2/Optional/CoolDown.lua
+   M /trunk/oRA2/Optional/Group.lua
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+   M /trunk/oRA2/Optional/Resurrection.lua
+   M /trunk/oRA2/Optional/Version.lua
+   M /trunk/oRA2/Optional/Zone.lua
+   M /trunk/oRA2/Options.lua
+   M /trunk/oRA2/Participant/Item.lua
+   M /trunk/oRA2/Participant/MainTank.lua
+   M /trunk/oRA2/Participant/Ready.lua
+
+oRA2: frFR Update
+------------------------------------------------------------------------
+r65215 | yleaf | 2008-03-21 02:17:24 -0400 (Fri, 21 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Item.lua
+
+oRA2: update zhCN locale
+------------------------------------------------------------------------
+r65152 | whyv | 2008-03-20 07:48:41 -0400 (Thu, 20 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Item.lua
+
+oRA2: zhTW update
+------------------------------------------------------------------------
+r65133 | rabbit | 2008-03-20 05:58:13 -0400 (Thu, 20 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Invite.lua
+
+oRA2: Leader/Invite: Check if people are in our group already before we add them to the invite list.
+------------------------------------------------------------------------
+r65009 | 7destiny | 2008-03-18 13:33:48 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Item.lua
+
+oRA2: - koKR Update
+------------------------------------------------------------------------
+r65004 | kilrogg | 2008-03-18 13:13:59 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Item.lua
+
+oRA2: bugfix (sorry 'bout that)
+------------------------------------------------------------------------
+r64997 | ammo | 2008-03-18 13:02:22 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Item.lua
+
+oRA2: no change of default behaviour. Ask me or GTFO.
+------------------------------------------------------------------------
+r64996 | kilrogg | 2008-03-18 12:56:09 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Item.lua
+
+oRA2: - added option (on by default) to use itemID for item checks if available (for cross-language compatibility)
+------------------------------------------------------------------------
+r64490 | rabbit | 2008-03-14 07:34:34 -0400 (Fri, 14 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Participant/Ready.lua
+
+oRA2: Participant/Ready: Syntax fix.
+------------------------------------------------------------------------
+r64487 | ammo | 2008-03-14 05:20:21 -0400 (Fri, 14 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Participant/Ready.lua
+   M /trunk/oRA2/oRA2.toc
+
+oRA2: remove paintchips from participant/ready and from optdep in .toc
+------------------------------------------------------------------------
+r63883 | rabbit | 2008-03-08 06:40:22 -0500 (Sat, 08 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/MainTank.lua
+
+oRA2: Heh, syntax error ^^
+------------------------------------------------------------------------
+r63882 | rabbit | 2008-03-08 06:38:52 -0500 (Sat, 08 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/MainTank.lua
+
+oRA2: Make sure that when someone sets a main tank from the menu we get the units real name, since people tend to enter it lowercase.
+------------------------------------------------------------------------
+r63871 | ananhaid | 2008-03-08 02:54:14 -0500 (Sat, 08 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/oRA2/Leader/Durability.lua
+   M /trunk/oRA2/Leader/Latency.lua
+   M /trunk/oRA2/Leader/Loot.lua
+   M /trunk/oRA2/Leader/RaidWarn.lua
+   M /trunk/oRA2/Optional/Resurrection.lua
+   M /trunk/oRA2/Participant/RaidWarn.lua
+
+oRA2: 
+- zhCN checked.
+------------------------------------------------------------------------
+r63866 | whyv | 2008-03-07 22:29:17 -0500 (Fri, 07 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+   M /trunk/oRA2/Leader/Invite.lua
+   M /trunk/oRA2/Leader/Loot.lua
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Optional/Group.lua
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+   M /trunk/oRA2/Optional/Resurrection.lua
+   M /trunk/oRA2/Participant/MainTank.lua
+
+oRA2: check and update zhTW locale 
+------------------------------------------------------------------------
+r63721 | rabbit | 2008-03-06 00:53:10 -0500 (Thu, 06 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+
+oRA2: Apply the same "fix" to PT.
+------------------------------------------------------------------------
+r63713 | rabbit | 2008-03-05 21:49:43 -0500 (Wed, 05 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Invite.lua
+
+oRA2: Invite: Hopefully fixed rank based invites.
+------------------------------------------------------------------------
+r63472 | rabbit | 2008-03-03 11:28:38 -0500 (Mon, 03 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Invite.lua
+
+oRA2: Leader/Invite: Make sure GetRaidRosterInfo didn't return nil.
+------------------------------------------------------------------------
+r63427 | 7destiny | 2008-03-03 02:48:35 -0500 (Mon, 03 Mar 2008) | 4 lines
+Changed paths:
+   M /trunk/oRA2/Leader/MainTank.lua
+
+oRA2: - koKR Update
+
+
+
+------------------------------------------------------------------------
+r63341 | rabbit | 2008-03-01 18:42:40 -0500 (Sat, 01 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Optional/MainTank.lua
+
+oRA2: Optional/MainTank: Default to the warrior color for main tank health display in case UnitClass returns something weird.
+------------------------------------------------------------------------
+r63297 | rabbit | 2008-03-01 09:19:25 -0500 (Sat, 01 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Optional/CoolDown.lua
+
+oRA2: Optional/CoolDown: Fix cooldown bar colors.
+------------------------------------------------------------------------
+r63260 | rabbit | 2008-02-29 17:38:03 -0500 (Fri, 29 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Participant/MainTank.lua
+
+oRA2: Use proper event names (oRA_...).
+------------------------------------------------------------------------
+r63219 | rabbit | 2008-02-29 06:27:48 -0500 (Fri, 29 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Optional/Group.lua
+
+oRA2: Optional/Group: Check if units exist before notifying about group changes to try and prevent an error.
+------------------------------------------------------------------------
+r63190 | rabbit | 2008-02-28 19:55:45 -0500 (Thu, 28 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Libs
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+   M /trunk/oRA2/embeds.xml
+
+oRA2: Removed PaintChips-2.0.
+------------------------------------------------------------------------
+r63189 | rabbit | 2008-02-28 19:19:06 -0500 (Thu, 28 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/Invite.lua
+
+oRA2: Leader/Invite: Fix rank invites.
+------------------------------------------------------------------------
+r63139 | 7destiny | 2008-02-28 05:25:02 -0500 (Thu, 28 Feb 2008) | 4 lines
+Changed paths:
+   M /trunk/oRA2/Leader/Invite.lua
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+
+oRA2: - koKR Update
+
+
+
+------------------------------------------------------------------------
+r63127 | rabbit | 2008-02-28 02:43:00 -0500 (Thu, 28 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+   M /trunk/oRA2/LoadOnDemand.lua
+
+oRA2: Add back the oRA_PlayerPromoted event + fake trigger.
+------------------------------------------------------------------------
+r63125 | rabbit | 2008-02-28 02:19:37 -0500 (Thu, 28 Feb 2008) | 10 lines
+Changed paths:
+   M /trunk/FuBar_oRA2CooldownFu/oRA2CooldownFu.lua
+   M /trunk/oRA2/Core.lua
+   M /trunk/oRA2/Leader/Durability.lua
+   M /trunk/oRA2/Leader/Invite.lua
+   M /trunk/oRA2/Leader/Item.lua
+   M /trunk/oRA2/Leader/Latency.lua
+   M /trunk/oRA2/Leader/Loot.lua
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Leader/RaidWarn.lua
+   M /trunk/oRA2/Leader/Ready.lua
+   M /trunk/oRA2/Leader/Resist.lua
+   M /trunk/oRA2/Libs
+   M /trunk/oRA2/LoadOnDemand.lua
+   M /trunk/oRA2/Optional/CoolDown.lua
+   M /trunk/oRA2/Optional/Group.lua
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+   M /trunk/oRA2/Optional/Resurrection.lua
+   M /trunk/oRA2/Optional/Version.lua
+   M /trunk/oRA2/Optional/Zone.lua
+   M /trunk/oRA2/Participant/Item.lua
+   M /trunk/oRA2/Participant/MainTank.lua
+   M /trunk/oRA2/Participant/Participant.lua
+   M /trunk/oRA2/Participant/RaidWarn.lua
+   M /trunk/oRA2/Participant/Ready.lua
+   M /trunk/oRA2/embeds.xml
+   M /trunk/oRA2/oRA2.toc
+   M /trunk/oRA2_PvPDetection/Pvp.lua
+
+.oRA2:
+ * Invites based on rank now also accept the index, and if the rank you specify can listen to officer chat, the invite message will be posted there instead of guildchat.
+ * Cleanups of all modules, :IsValidRequest removed, replaced by some :IsPromoted and UnitInRaid checks where applicable.
+ * Roster-2.1 removed completely, since Unit* functions accept names.
+ * When players join a raid, they will now request the main tank list from the leader.
+ * Menus reworded and re-descriptionized slightly.
+ * Colors player names in the menus for main/player tanks.
+ * 3rd party PvP module now uses oRA addon messages, like it should.
+ * oRA_MainTankUpdate no longer randomly passes the main tank table around as an event argument. Just read oRA.maintanktable if you're interested.
+ * oRA no longer tracks AFK and DND status, since UnitIsAFK and UnitIsDND were added some time ago.
+------------------------------------------------------------------------
+r62992 | ammo | 2008-02-26 13:56:20 -0500 (Tue, 26 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+
+oRA2: slap vhaarr
+------------------------------------------------------------------------
+r62983 | rabbit | 2008-02-26 11:41:30 -0500 (Tue, 26 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+   M /trunk/oRA2/Optional/Version.lua
+
+oRA2: Hopefully fixed the version check.
+------------------------------------------------------------------------
+r62959 | rabbit | 2008-02-26 06:37:12 -0500 (Tue, 26 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+   M /trunk/oRA2/Leader/Durability.lua
+   M /trunk/oRA2/Leader/Invite.lua
+   M /trunk/oRA2/Leader/Item.lua
+   M /trunk/oRA2/Leader/Latency.lua
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Optional/CoolDown.lua
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+   M /trunk/oRA2/Optional/Resurrection.lua
+   M /trunk/oRA2/Optional/Version.lua
+   M /trunk/oRA2/Optional/Zone.lua
+   M /trunk/oRA2/Participant/Participant.lua
+
+oRA2: Random cleanups, get rid of most of our Roster-2.1 and PaintChips references.
+------------------------------------------------------------------------

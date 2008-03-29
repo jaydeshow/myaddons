@@ -1,0 +1,32 @@
+﻿## Interface: 20400
+## Title: FuBar 3.0
+## Notes: A panel that modules can plug into.
+## Notes-deDE: Eine Leiste in der sich Module einbinden können.
+## Notes-frFR: Un panneau entièrement modulable.
+## Notes-zhCN: 插件式信息面板。
+## Notes-zhTW: 插件式訊息面板。
+## Notes-esES: Un panel donde puedes colocar plugins
+## Author: ckknight
+## X-eMail: ckknight AT gmail DOT com
+## X-Website: http://www.wowace.com/
+## X-Category: Interface Enhancements
+## SavedVariables: FuBar2DB
+## OptionalDeps: LibRock-1.0
+## X-Embeds: LibRock-1.0, LibRockConfig-1.0, LibRockEvent-1.0, LibRockLocale-1.0, LibRockHook-1.0, LibRockDB-1.0, LibRockTimer-1.0, LibJostle-3.0
+## X-WoWIPortal: ckknight
+## X-License: GPL v2 or later
+## X-Donate: PayPal:ckknight AT gmail DOT com
+## X-IssueTracker: Wowace:10023
+
+embeds.xml
+
+FuBar-Locale-enUS.lua
+FuBar-Locale-deDE.lua
+FuBar-Locale-frFR.lua
+FuBar-Locale-koKR.lua
+FuBar-Locale-zhCN.lua
+FuBar-Locale-zhTW.lua
+FuBar-Locale-esES.lua
+
+FuBar_Panel.lua
+FuBar.lua

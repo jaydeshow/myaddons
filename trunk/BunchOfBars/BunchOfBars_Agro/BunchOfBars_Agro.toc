@@ -1,0 +1,8 @@
+## Interface: 20200
+## Title: BunchOfBars [|cffeda55fAgro|r]
+## Version: 1.0
+## Notes: Agro monitor used by the health bar.
+## Author: Firik
+## Dependencies: BunchOfBars
+
+Agro.lua

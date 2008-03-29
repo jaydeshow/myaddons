@@ -1,0 +1,226 @@
+------------------------------------------------------------------------
+r54336 | Firik | 2007-11-11 09:32:32 -0500 (Sun, 11 Nov 2007) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/Range/Range.lua
+
+BunchOfBars:
+- using Lesser Heal instead of Flash Heal cause it's a level 1 spell
+------------------------------------------------------------------------
+r54155 | Firik | 2007-11-08 09:17:40 -0500 (Thu, 08 Nov 2007) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/Tooltip/Tooltip.lua
+   M /trunk/BunchOfBars/VoiceIcon/VoiceIcon.lua
+
+BunchOfBars:
+- some minor fixes/changes
+------------------------------------------------------------------------
+r53932 | Firik | 2007-11-05 06:33:51 -0500 (Mon, 05 Nov 2007) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/Maintank/Maintank.lua
+
+BunchOfBars:
+- added support for blizzards buildin maintank table
+------------------------------------------------------------------------
+r53931 | Firik | 2007-11-05 06:06:41 -0500 (Mon, 05 Nov 2007) | 3 lines
+Changed paths:
+   A /trunk/BunchOfBars/Buffs
+   A /trunk/BunchOfBars/Buffs/Buffs.lua
+   A /trunk/BunchOfBars/Buffs/BunchOfBars_Buffs.toc
+   M /trunk/BunchOfBars/filelist.wau
+   M /trunk/BunchOfBars/modules.xml
+
+BunchOfBars:
+- new "Buffs" module (more fitting name) to replace the "Hots" module
+- the "Buffs" module now shows a dynamic amount of buffs instead of the old static 5
+------------------------------------------------------------------------
+r53930 | Firik | 2007-11-05 06:05:56 -0500 (Mon, 05 Nov 2007) | 2 lines
+Changed paths:
+   D /trunk/BunchOfBars/Hots
+
+BunchOfBars:
+- removing the old "Hots" module
+------------------------------------------------------------------------
+r53645 | Firik | 2007-11-01 10:34:39 -0400 (Thu, 01 Nov 2007) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/Core.lua
+
+BunchOfBars:
+- fixed a bug where all modules were disabled by default
+------------------------------------------------------------------------
+r52985 | Firik | 2007-10-23 08:52:55 -0400 (Tue, 23 Oct 2007) | 3 lines
+Changed paths:
+   M /trunk/BunchOfBars/Core.lua
+   M /trunk/BunchOfBars/Dispel/Dispel.lua
+   M /trunk/BunchOfBars/Layout.lua
+
+BunchOfBars:
+- added "Upset Tummy" to be ignored (so annoying in raids)
+
+------------------------------------------------------------------------
+r52895 | Firik | 2007-10-22 08:53:58 -0400 (Mon, 22 Oct 2007) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/HealthBar/HealthBar.lua
+   M /trunk/BunchOfBars/RaidIcon/RaidIcon.lua
+   M /trunk/BunchOfBars/VoiceIcon/VoiceIcon.lua
+
+BunchOfBars:
+- forgot some ,
+------------------------------------------------------------------------
+r52894 | Firik | 2007-10-22 08:39:25 -0400 (Mon, 22 Oct 2007) | 5 lines
+Changed paths:
+   M /trunk/BunchOfBars/Core.lua
+   M /trunk/BunchOfBars/Dispel/Dispel.lua
+   M /trunk/BunchOfBars/HealEstimate/HealEstimate.lua
+   M /trunk/BunchOfBars/HealthBar/HealthBar.lua
+   M /trunk/BunchOfBars/HealthBarText/HealthBarText.lua
+   M /trunk/BunchOfBars/Hots/Hots.lua
+   M /trunk/BunchOfBars/Layout.lua
+   M /trunk/BunchOfBars/ManaBar/ManaBar.lua
+   M /trunk/BunchOfBars/Name/Name.lua
+   M /trunk/BunchOfBars/Prototype.lua
+   M /trunk/BunchOfBars/Range/Range.lua
+
+BunchOfBars:
+- new option to class color health bars
+- changed the debuffs menu so you can enable/disable debuffs
+- added some new buffs to the hots module
+- moved some code around
+------------------------------------------------------------------------
+r52863 | next96 | 2007-10-22 02:55:54 -0400 (Mon, 22 Oct 2007) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/HealthBar/HealthBar.lua
+   M /trunk/BunchOfBars/ManaBar/ManaBar.lua
+   M /trunk/BunchOfBars/RaidIcon/RaidIcon.lua
+   M /trunk/BunchOfBars/Threshold/Threshold.lua
+   M /trunk/BunchOfBars/VoiceIcon/VoiceIcon.lua
+
+BunchOfBars:
+- Update locale koKR
+------------------------------------------------------------------------
+r52561 | ammo | 2007-10-19 07:55:16 -0400 (Fri, 19 Oct 2007) | 2 lines
+Changed paths:
+   D /trunk/BunchOfBars/bunchofbarslod.bat
+   D /trunk/BunchOfBars/bunchofbarslod.sh
+
+BunchOfBars: delete shell scripts on request by Firik
+
+------------------------------------------------------------------------
+r52560 | Firik | 2007-10-19 07:51:45 -0400 (Fri, 19 Oct 2007) | 3 lines
+Changed paths:
+   D /trunk/BunchOfBars/Textures/Line.tga
+   A /trunk/BunchOfBars/Threshold
+   A /trunk/BunchOfBars/Threshold/BunchOfBars_Threshold.toc
+   A /trunk/BunchOfBars/Threshold/Threshold.lua
+   M /trunk/BunchOfBars/filelist.wau
+   M /trunk/BunchOfBars/modules.xml
+
+BunchOfBars:
+- New Threshold module
+- removed unused texture
+------------------------------------------------------------------------
+r52507 | Firik | 2007-10-18 18:24:18 -0400 (Thu, 18 Oct 2007) | 7 lines
+Changed paths:
+   M /trunk/BunchOfBars/Agro/Agro.lua
+   M /trunk/BunchOfBars/Agro/BunchOfBars_Agro.toc
+   M /trunk/BunchOfBars/Core.lua
+   M /trunk/BunchOfBars/Dispel/BunchOfBars_Dispel.toc
+   M /trunk/BunchOfBars/Dispel/Dispel.lua
+   M /trunk/BunchOfBars/HealEstimate/BunchOfBars_HealEstimate.toc
+   A /trunk/BunchOfBars/HealEstimate/Druid.lua
+   M /trunk/BunchOfBars/HealEstimate/HealEstimate.lua
+   A /trunk/BunchOfBars/HealEstimate/HealEstimate.xml
+   A /trunk/BunchOfBars/HealEstimate/Paladin.lua
+   A /trunk/BunchOfBars/HealEstimate/Priest.lua
+   A /trunk/BunchOfBars/HealEstimate/Shaman.lua
+   D /trunk/BunchOfBars/HealLines
+   M /trunk/BunchOfBars/HealthBar/BunchOfBars_HealthBar.toc
+   M /trunk/BunchOfBars/HealthBar/HealthBar.lua
+   M /trunk/BunchOfBars/HealthBarText/BunchOfBars_HealthBarText.toc
+   M /trunk/BunchOfBars/Highlight/BunchOfBars_Highlight.toc
+   M /trunk/BunchOfBars/Hots/BunchOfBars_Hots.toc
+   M /trunk/BunchOfBars/Hots/Hots.lua
+   M /trunk/BunchOfBars/LICENSE.txt
+   M /trunk/BunchOfBars/Layout.lua
+   M /trunk/BunchOfBars/Maintank/BunchOfBars_Maintank.toc
+   A /trunk/BunchOfBars/ManaBar
+   A /trunk/BunchOfBars/ManaBar/BunchOfBars_ManaBar.toc
+   A /trunk/BunchOfBars/ManaBar/ManaBar.lua
+   M /trunk/BunchOfBars/Name/BunchOfBars_Name.toc
+   M /trunk/BunchOfBars/Prototype.lua
+   M /trunk/BunchOfBars/RaidIcon/BunchOfBars_RaidIcon.toc
+   M /trunk/BunchOfBars/RaidIcon/RaidIcon.lua
+   M /trunk/BunchOfBars/Range/BunchOfBars_Range.toc
+   M /trunk/BunchOfBars/Range/Range.lua
+   M /trunk/BunchOfBars/Tooltip/BunchOfBars_Tooltip.toc
+   M /trunk/BunchOfBars/Tooltip/Tooltip.lua
+   M /trunk/BunchOfBars/VoiceIcon/BunchOfBars_VoiceIcon.toc
+   M /trunk/BunchOfBars/VoiceIcon/VoiceIcon.lua
+   M /trunk/BunchOfBars/filelist.wau
+   M /trunk/BunchOfBars/modules.xml
+
+BunchOfBars:
+- Removed the HealLines module (will become a seperate mod soon)
+- Added some new debuffs
+- lots of small fixes/updates
+- Removed the update check
+- Added the ManaBar module which show the mana/rage/energy
+- Added simple calculations to the HealEstimate module for when DrDamage is not installed
+------------------------------------------------------------------------
+r52475 | ammo | 2007-10-18 12:05:52 -0400 (Thu, 18 Oct 2007) | 2 lines
+Changed paths:
+   D /trunk/BunchOfBars/bunchofbarsnolod.bat
+
+BunchOfBars: remove .bat file on request of Firik
+
+------------------------------------------------------------------------
+r52274 | Firik | 2007-10-16 07:36:29 -0400 (Tue, 16 Oct 2007) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/BunchOfBars.toc
+   M /trunk/BunchOfBars/HealthBarText/HealthBarText.lua
+   M /trunk/BunchOfBars/Name/Name.lua
+   M /trunk/BunchOfBars/VoiceIcon/BunchOfBars_VoiceIcon.toc
+
+BunchOfBars:
+- New option to control the width of the Name area
+------------------------------------------------------------------------
+r52134 | Firik | 2007-10-15 07:18:46 -0400 (Mon, 15 Oct 2007) | 1 line
+Changed paths:
+   M /trunk/BunchOfBars/filelist.wau
+
+BunchOfBars: Added VoiceIcon to filelist.wau
+------------------------------------------------------------------------
+r52132 | Firik | 2007-10-15 06:23:58 -0400 (Mon, 15 Oct 2007) | 7 lines
+Changed paths:
+   M /trunk/BunchOfBars/Agro/Agro.lua
+   M /trunk/BunchOfBars/BunchOfBars.toc
+   M /trunk/BunchOfBars/Core.lua
+   M /trunk/BunchOfBars/Dispel/Dispel.lua
+   M /trunk/BunchOfBars/HealEstimate/HealEstimate.lua
+   M /trunk/BunchOfBars/HealLines/HealLines.lua
+   M /trunk/BunchOfBars/HealthBar/HealthBar.lua
+   M /trunk/BunchOfBars/HealthBarText/HealthBarText.lua
+   M /trunk/BunchOfBars/Highlight/Highlight.lua
+   M /trunk/BunchOfBars/Hots/Hots.lua
+   M /trunk/BunchOfBars/Layout.lua
+   M /trunk/BunchOfBars/Maintank/Maintank.lua
+   M /trunk/BunchOfBars/Name/Name.lua
+   D /trunk/BunchOfBars/Options.lua
+   A /trunk/BunchOfBars/Prototype.lua
+   M /trunk/BunchOfBars/RaidIcon/BunchOfBars_RaidIcon.toc
+   M /trunk/BunchOfBars/RaidIcon/RaidIcon.lua
+   M /trunk/BunchOfBars/Range/Range.lua
+   M /trunk/BunchOfBars/Tooltip/Tooltip.lua
+   A /trunk/BunchOfBars/VoiceIcon
+   A /trunk/BunchOfBars/VoiceIcon/BunchOfBars_VoiceIcon.toc
+   A /trunk/BunchOfBars/VoiceIcon/VoiceIcon.lua
+   A /trunk/BunchOfBars/embeds.xml
+   A /trunk/BunchOfBars/modules.xml
+
+BunchOfBars:
+- Fixed lots of bugs
+- Added VoiceIcon module for the buildin voice chat
+- HealLines module is disabled by default
+- Now possible to filter by name or party/class combination
+- Working with the new modules.xml and embeds.xml
+- Added lots of new debuffs to the Dispel module
+------------------------------------------------------------------------

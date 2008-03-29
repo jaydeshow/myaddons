@@ -1,0 +1,8 @@
+## Interface: 20200
+## Title: BunchOfBars [|cffeda55fVoiceIcon|r]
+## Version: 1.0
+## Notes: Shows when someone is talking.
+## Author: Firik
+## Dependencies: BunchOfBars_HealthBar
+
+VoiceIcon.lua

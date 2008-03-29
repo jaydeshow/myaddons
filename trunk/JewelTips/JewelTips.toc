@@ -1,0 +1,12 @@
+## Interface: 20300
+## Title: JewelTips |cff7fff7f -Ace2-|r
+## Notes: Show extra information about Jewels and Enchants in tooltips.
+## Author: Siz
+## Version: 0.5.6
+## OptionalDeps: Ace2, Babble-2.2
+## X-Embeds: Ace2, Babble-2.2
+## X-Category: Interface Enhancements
+
+embeds.xml
+
+JewelTips.lua

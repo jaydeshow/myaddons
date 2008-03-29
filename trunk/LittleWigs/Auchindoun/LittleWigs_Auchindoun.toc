@@ -1,0 +1,29 @@
+﻿## Interface: 20400
+
+## Title: Little Wigs [|cffeda55fAuchindoun|r]
+## Title-zhTW: Little Wigs [|cffeda55f奧齊頓|r]
+## Notes: Little Wigs Auchindoun Modules
+## Notes-frFR: Modules Little Wigs concernant Auchindoun.
+## Notes-zhTW: Little Wigs 奧齊頓模組
+## Title-zhCN: Little Wigs [|cffeda55f奥金顿|r]
+## Notes-zhCN: Little Wigs 奥金顿模块
+## Author: Ulic
+## Version: 2.0
+## LoadOnDemand: 1
+
+## X-Website: http://www.wowace.com/index.php/LittleWigs
+## X-AceForum: 5751
+## X-Category: Party
+
+## X-BigWigs-Menu: Auchindoun
+## X-BigWigs-LoadInParty: 1
+## X-BigWigs-LoadInZone: Auchenai Crypts, Mana-Tombs, Sethekk Halls, Shadow Labyrinth
+
+## Dependencies: BigWigs
+
+Ikiss.lua
+Pandemonius.lua
+Maladaar.lua
+Murmur.lua
+Syth.lua
+Vorpil.lua

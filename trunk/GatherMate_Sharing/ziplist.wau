@@ -1,0 +1,16 @@
+GatherMate_Sharing/Changelog-GatherMate_Sharing-r65823.txt
+GatherMate_Sharing/GatherMate_Sharing.lua
+GatherMate_Sharing/GatherMate_Sharing.toc
+GatherMate_Sharing/Locales.xml
+GatherMate_Sharing/embeds.xml
+GatherMate_Sharing/Locales/GatherMate_Sharing-deDE.lua
+GatherMate_Sharing/Locales/GatherMate_Sharing-ruRU.lua
+GatherMate_Sharing/Locales/GatherMate_Sharing-enUS.lua
+GatherMate_Sharing/Locales/GatherMate_Sharing-koKR.lua
+GatherMate_Sharing/Locales/GatherMate_Sharing-zhTW.lua
+GatherMate_Sharing/Locales/GatherMate_Sharing-frFR.lua
+GatherMate_Sharing/Locales/GatherMate_Sharing-esES.lua
+GatherMate_Sharing/Locales/GatherMate_Sharing-zhCN.lua
+GatherMate_Sharing/Libs/AceComm-3.0/ChatThrottleLib.lua
+GatherMate_Sharing/Libs/AceComm-3.0/AceComm-3.0.lua
+GatherMate_Sharing/Libs/AceComm-3.0/AceComm-3.0.xml

@@ -1,0 +1,11 @@
+------------------------------------------------------------------------
+r58514 | swearl | 2008-01-15 02:19:29 -0500 (Tue, 15 Jan 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+   M /trunk/Cartographer_QuestInfo/QuestData-A.lua
+   M /trunk/Cartographer_QuestInfo/QuestData-C.lua
+   M /trunk/Cartographer_QuestInfo/QuestData-H.lua
+
+Cartographer_QuestInfo:
+- Quest database update to version 1.9.20
+------------------------------------------------------------------------

@@ -1,0 +1,20 @@
+## Interface: 20100
+## Title: FuBar - |cffffffffWhisper|r|cff00ff00Fu|r
+## Notes: Keeps track of whispers sent/received
+## Notes-koKR: 받은 귓속발과 보낸 귓속말을 저장하고 표시합니다.
+## Notes-zhTW: 追蹤 發送/接收 密語
+## Notes-zhCN: 跟踪发送、接收密语记录。
+## Author: Roartindon/Silvermoon (Spam mod by Azonia)
+## X-Category: Interface Enhancements
+## Dependencies: FuBar
+## OptionalDeps: Ace2, DewdropLib, TabletLib, FuBarPlugin-2.0
+## SavedVariables: WhisperFuDB
+## Version: 2.0
+## LoadOnDemand: 1
+
+WhisperFuLocale-enUS.lua
+WhisperFuLocale-koKR.lua
+WhisperFuLocale-zhTW.lua
+WhisperFuLocale-zhCN.lua
+WhisperFu.lua
+WhisperFuSpamKeys.lua

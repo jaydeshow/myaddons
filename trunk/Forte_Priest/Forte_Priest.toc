@@ -1,0 +1,8 @@
+## Interface: 20300
+## Title: Forte Priest
+## Notes: Forte Priest Module
+## SavedVariables:
+## OptionalDeps:Forte_Casting, Forte_Timer, Forte_Cooldown
+## Dependencies:Forte_Core
+Localization.lua
+Forte_Priest.lua

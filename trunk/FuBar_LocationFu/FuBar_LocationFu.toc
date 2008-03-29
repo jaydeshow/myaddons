@@ -1,0 +1,31 @@
+﻿## Interface: 20400
+## Title: FuBar - |cffffffffLocation|r|cff00ff00Fu|r
+## Title-koKR: |CFF99FF99F|CFFFFFFFFu|CFF99FF99B|CFFFFFFFFar - |cffffffffLocation|cff00ff00Fu|r
+## Notes: Keeps track of your current location.
+## Notes-koKR: 현재 지역에 대한 정보를 표시합니다.
+## Notes-zhTW: 持續追蹤角色目前的位置。
+## Notes-esES: Informa de tu localizacion actual
+## Notes-frFR: Indique votre position actuelle et bien d'autres choses.
+## Author: ckknight
+## X-eMail: ckknight AT gmail DOT com
+## X-Donate: PayPal:ckknight AT gmail DOT com
+## X-Website: http://www.wowace.com/
+## X-Category: Map
+## Dependencies: FuBar
+## OptionalDeps: LibRock-1.0, LibRockConfig-1.0, LibRockDB-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockLocale-1.0, LibBabble-Spell-3.0, LibBabble-Zone-3.0, LibFuBarPlugin-3.0, LibJostle-3.0, LibTourist-3.0, Ace2, TabletLib
+## X-Embeds: LibRock-1.0, LibRockConfig-1.0, LibRockDB-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockLocale-1.0, LibBabble-Spell-3.0, LibBabble-Zone-3.0, LibFuBarPlugin-3.0, LibJostle-3.0, LibTourist-3.0, Ace2, TabletLib
+## SavedVariables: LocationFuDB
+## Version: 3.0
+## LoadOnDemand: 1
+
+embeds.xml
+
+LocationFuLocale-enUS.lua
+LocationFuLocale-deDE.lua
+LocationFuLocale-frFR.lua
+LocationFuLocale-koKR.lua
+LocationFuLocale-zhCN.lua
+LocationFuLocale-zhTW.lua
+LocationFuLocale-esES.lua
+
+LocationFu.lua

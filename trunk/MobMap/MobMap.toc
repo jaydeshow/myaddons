@@ -1,0 +1,12 @@
+﻿## Interface: 20300
+## Title: |cff0099FF<CWDG>|r|cffffffffMobMap|r
+## Version: 158
+## Notes: An ingame universal database (v1.58)
+## Notes-zhCN: 超强的游戏内置数据库.包含任务助手,采集助手以及包含WOW所有怪物/NPC/物品的坐标.
+## RequiredDeps: 
+## SavedVariables: mobmap_positions,mobmap_scanning,mobmap_language,mobmap_quests,mobmap_merchantstock,mobmap_tradeskills,mobmap_loot,mobmap_game_version,mobmap_objects,mobmap_trainer
+## SavedVariablesPerCharacter: mobmap_enabled,mobmap_minimap,mobmap_dot_transparency,mobmap_display_database_loading_info,mobmap_button_position,mobmap_show_world_map_tooltips,mobmap_dot_scaling_behavior,mobmap_recipe_list_sorting,mobmap_request_item_details,mobmap_hide_questlog_buttons,mobmap_hide_questtracker_buttons,mobmap_window_height,mobmap_optimize_response_times,mobmap_minimap_button_visible
+AstrolabeLoad.xml
+MobMap.xml
+HuffmanDecoder.lua
+utf8.lua

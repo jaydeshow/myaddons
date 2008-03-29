@@ -1,0 +1,7 @@
+﻿## Interface: 20300
+## Title: |cff0099FF<CWDG>|r|cffffffffMobMap数据库8|r
+## Notes: This is a load-on-demand addon stub for the MobMap pickup database access components.
+## Notes-zhCN: MobMap拾取动态数据加载库.(必要!)
+## RequiredDeps: MobMap
+## LoadOnDemand: 1
+..\MobMap\MobMap_pickupdb.xml

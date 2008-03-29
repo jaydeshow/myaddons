@@ -1,0 +1,13 @@
+## Interface: 20200
+## Notes: Minimap and world map enhancements
+## Title: Mappy
+## Version: 1.1.3
+## OptionalDeps: 
+## RequiredDeps: 
+## SavedVariables: gMappy_Settings
+
+MCDebugLib.lua
+MCEventLib.lua
+MCSchedulerLib.lua
+
+Mappy.lua

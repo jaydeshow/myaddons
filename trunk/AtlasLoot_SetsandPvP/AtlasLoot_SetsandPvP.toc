@@ -1,0 +1,31 @@
+﻿## Interface: 20400
+## Title: AtlasLoot_SetsandPvP
+## Title-deDE: AtlasLoot |cFF0099FF[Sets und PvP]|r
+## Title-zhCN: AtlasLoot |cFF0099FF[套装与PvP奖励]|r
+## Title-zhTW: |r|cFF0099FF[地圖]|rAL 套裝/PvP獎勵
+## Notes: AtlasLoot loot tables Sets and PvP Rewards
+## Notes-deDE: AtlasLoot Loot-Tabellen für PvP-Belohnungen und Sets
+## Notes-zhCN: AtlasLoot Enhanced 的套装与PvP奖励物品信息
+## Notes-zhTW: AtlasLoot 各種套裝與 PvP 物品資料庫
+## Author: Daviesh
+## Version: 4.04.00
+## X-eMail: oma_daviesh@hotmail.com
+## X-Category: Map
+## X-License: GPL v2
+## X-Website: http://www.atlasloot.net
+## Dependencies: AtlasLoot
+## LoadOnDemand: 1
+
+sets.en.lua
+sets.tw.lua
+sets.cn.lua
+BattlegroundPvP.en.lua
+BattlegroundPvP.tw.lua
+BattlegroundPvP.kr.lua
+BattlegroundPvP.cn.lua
+GeneralPvP.en.lua
+GeneralPvP.tw.lua
+GeneralPvP.cn.lua
+WorldPvP.en.lua
+WorldPvP.tw.lua
+WorldPvP.cn.lua

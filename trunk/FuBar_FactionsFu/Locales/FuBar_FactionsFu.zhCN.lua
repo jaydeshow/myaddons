@@ -1,0 +1,35 @@
+local L = AceLibrary("AceLocale-2.2"):new("FuBar_FactionsFu")
+
+L:RegisterTranslations("zhCN", function() return {
+	TOOLTIP_HINT = "\n|cffeda55f左键：|r改变监视的阵营。\n|cffeda55fShift-左键：|r向聊天输入窗口发送资料。\n|cffeda55fAlt-左键：|r设定此阵营为该地区的自动监视阵营。",
+
+	["Text"] = "文字",
+	["Text Settings"] = "文字设定",
+	["Show Name"] = "显示名称",
+	["Toggles display of watched faction's name"] = "切换显示阵营名称",
+	["Show Standing"] = "显示声望等级",
+	["Toggles display of watched faction's current standing"] = "切换显示阵营声望等级",
+	["Show Progress"] = "显示进度",
+	["Toggles display of watched faction's progress toward next standing"] = "切换显示阵营声望到下一等级的进度",
+	["Show Progress (in percent)"] = "显示进度百分比",
+	["Toggles display of watched faction's progress toward next standing (in percent)"] = "切换显示阵营声望到下一等级的进度百分比",
+	["Color"] = "颜色",
+	["Color Settings"] = "颜色设定",
+	["Name"] = "名称",
+	["Sets color of the faction name"] = "设定阵营名称颜色",
+	["Reputation"] = "声望",
+	["Sets color of the faction reputation"] = "设定阵营声望的颜色",
+	["standing"] = "声望等级",
+	["Sets color of the faction standing"] = "设定阵营声望等级的颜色",
+	["Other"] = "其他",
+	["Other Settings"] = "其他设定",
+	["Auto-Zone"] = "自动选择所在地区",
+	["Toggles automatical adjustment of watched faction on zone change"] = "自动选择所在地区切换所要观察的阵营",
+	["Auto-Gain"] = "自动根据声望获取",
+	["Toggles automatical adjustment of watched faction on faction gain"] = "自动根据声望获取切换所要观察的阵营",
+
+	["None"] = "无",
+	["War Condition"] = "战斗状态",
+	["Blizzard's Default"] = "系统预设",
+	["Incremental"] = "渐进",
+} end)

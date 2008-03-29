@@ -1,0 +1,33 @@
+## Interface: 20300
+
+## Title: FuBar - |cffffffffGuild|cff00ff00Fu|r
+## Notes: Displays online guild mates.
+## Notes-koKR: 접속중인 길드원의 정보를 표시합니다.
+## Notes-esES: Muestra tus companyeros de hermandad conectados.
+## Notes-zhTW: 持續追蹤線上公會名單。
+## Author: Elkano
+## Version: 2.4
+## X-Website: http://elkano.wowinterface.com/
+## X-Email: elkano@gmx.de
+## X-Category: Interface Enhancements
+
+## X-RelSite-WoWI: 5254
+## X-RelSite-Curse: 4857
+## X-WoWIPortal: elkano
+## X-Embeds: Ace2, FuBarPlugin-2.0, DewdropLib, TabletLib, Babble-2.2, TouristLib
+
+## OptionalDeps: Ace2, FuBar, FuBarPlugin-2.0, DewdropLib, TabletLib, Babble-2.2, TouristLib, AuldLangSyne, CT_PlayerNotes
+
+## SavedVariables: FuBar_GuildFuDB
+
+embeds.xml
+
+FuBar_GuildFuLocals.enUS.lua
+FuBar_GuildFuLocals.koKR.lua
+FuBar_GuildFuLocals.deDE.lua
+FuBar_GuildFuLocals.frFR.lua
+FuBar_GuildFuLocals.zhCN.lua
+FuBar_GuildFuLocals.zhTW.lua
+FuBar_GuildFuLocals.esES.lua
+FuBar_GuildFu.lua
+FuBar_GuildFuOptions.lua

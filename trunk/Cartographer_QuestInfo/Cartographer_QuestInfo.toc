@@ -1,0 +1,29 @@
+﻿## Interface: 20100
+
+## Title: Cartographer |r[|cffeda55fQuestInfo|r]
+## Notes: A Quest Data Library
+
+## Title-zhCN: |cFF00FF00[地图]|r任务资料 Cartographer |r[|cffeda55fQuestInfo|r]
+## Notes-zhCN: 制图大师的配件，提供任务资料库
+
+## Title-zhTW: |cFF00FF00[地圖]|r任務資訊 Cartographer |r[|cffeda55fQuestInfo|r]
+## Notes-zhTW: 製圖大師模組，提供任務資料庫
+
+## Author: purple
+## SavedVariables: Cartographer_QuestInfoDB
+## Version: 1.9.20
+## X-Category: Map
+## RequiredDeps: Cartographer
+## OptionalDeps: Cartographer_Notes, Cartographer_Quests, Cartographer_QuestObjectives, Quixote
+
+embeds.xml
+
+Locale-enUS.lua
+Locale-zhTW.lua
+Locale-zhCN.lua
+Addon.lua
+Buttons.xml
+QuestData-C.lua
+QuestData-A.lua
+QuestData-H.lua
+

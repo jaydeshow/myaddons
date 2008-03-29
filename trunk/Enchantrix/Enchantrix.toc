@@ -1,0 +1,39 @@
+## Title: Enchantrix
+## Notes: Display information in item tooltips pertaining to the results of disenchanting said item.  [5.0.PRE.2876] This AddOn is licenced under the GNU GPL, see GPL.txt for details.
+## Title-zhCN: <|cFF0099FFAuctioneer|r> 附魔助手 - Enchantrix
+## Notes-zhCN: 在提示中显示附魔分解后的物品、估算加工成本价格等。（支持附魔、珠宝、工程、锻造等加工技能）
+##
+## Interface: 20300
+## LoadOnDemand: 1
+## Dependencies: EnhTooltip, Stubby
+## OptionalDeps: !nLog, Babylonian, DebugLib, Configator, SlideBar
+## SavedVariables: EnchantConfig, EnchantedLocal, EnchantedItemTypes, NonDisenchantablesLocal, ProspectedLocal
+## SavedVariablesPerCharacter: AutoDisenchantIgnoreList
+##
+## Version: 5.0.PRE.2876 (BillyGoat)
+## Revision: $Id: Enchantrix.toc 2643 2007-12-08 21:04:39Z ccox $
+## URL: http://enchantrix.org
+##
+EnxManifest.lua
+
+Libs\Load.xml
+
+EnxObjects.lua
+
+EnxStrings.lua
+EnxLocale.lua
+
+Data\EnxNonDisenchant.lua
+
+EnxSettings.lua
+EnxMiniIcon.lua
+EnxCommand.lua
+EnxConfig.lua
+EnxConstants.lua
+EnxStorage.lua
+EnxTooltip.lua
+EnxUtil.lua
+EnxAutoDisenchant.lua
+EnxMain.lua
+
+EnxAucUtil.lua

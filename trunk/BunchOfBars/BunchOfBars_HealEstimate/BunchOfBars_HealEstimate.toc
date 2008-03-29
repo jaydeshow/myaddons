@@ -1,0 +1,10 @@
+## Interface: 20200
+## Title: BunchOfBars [|cffeda55fHealEstimate|r]
+## Version: 1.0
+## Notes: Show the estimated health gain from your heals.
+## Author: Firik
+## X-Credits: Nymbia
+## Dependencies: BunchOfBars_HealthBar
+## OptionalDeps: DrDamage
+
+HealEstimate.xml

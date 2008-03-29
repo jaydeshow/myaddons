@@ -1,0 +1,14 @@
+﻿## Interface: 20300
+## Title: Baud Bag
+## Notes: Allows you to combine bags as well as customize their display.
+## Author: Baudzilla
+## Title-zhCN: 背包整合 Baud Bag
+## Notes-zhCN: 以整合方式显示你的背包和银行,含整理功能|N(第一次登陆请先输入命令选择顺序：顺序/jp asc 逆序/jp desc)
+## Author-zhCN: Baudzilla|N本地化:Isler
+## Title-zhTW: 背包整合 Baud Bag
+## Notes-zhTW: 以整合方式顯示你的背包和銀行,含整理功能|N(第一次登陸請先輸入命令選擇順序：順序/jp asc 逆序/jp desc)
+## Author-zhTW: Baudzilla|N本地化:Isler
+## Version: 1.296
+## SavedVariablesPerCharacter: BaudBag_Cfg, BaudBag_Cache, JPack
+BaudBag.xml
+BaudBag-Options.xml
