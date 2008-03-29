@@ -1,0 +1,21 @@
+## Interface: 20400
+
+## Title: Baby Wigs [|cffeda55fThe Deadmines|r]
+## Notes: Big Wigs The Deadmines Modules
+## Author: Crindappy@Bronzebeard-US
+## Version: 0.1
+## LoadOnDemand: 1
+
+## X-Category: Party
+
+## X-BigWigs-Menu: The Deadmines
+## X-BigWigs-LoadInParty: 1
+## X-BigWigs-LoadInZone: The Deadmines
+
+## Dependencies: BigWigs BabyWigs
+
+PatReminders.lua
+Sneed.lua
+MrSmite.lua
+VanCleef.lua
+

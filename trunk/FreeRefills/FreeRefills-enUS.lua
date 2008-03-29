@@ -1,0 +1,30 @@
+﻿local L = AceLibrary("AceLocale-2.2"):new("FreeRefills")
+
+L:RegisterTranslations("enUS", function() return {
+	["Add"] = true,
+	["Add an item to the refill list. (Usage: /freerefills add [Item Link] #)"] = true,
+	["[Item Link] <number of items>"] = true,
+	["Add Stack"] = true,
+	["Add an item to the refill list by stack. (Usage: /freerefills addstack [Item Link] #)"] = true,
+	["[Item Link] <number of stacks>"] = true,
+	["Remove"] = true,
+	["Remove an item from the refill list. (Usage: /freerefills del [Item Link])"] = true,
+	["[Item Link]"] = true,
+	["Overstock"] = true,
+	["Toggle Overstocking.  If an item is sold in stacks and cannot meet your exact requested amount, you can opt to buy slightly more (Overstock)."] = true,
+	["Process Merchant"] = true,
+	["Toggle Merchant Looting."] = true,
+	["Process Bank"] = true,
+	["Toggle Bank Looting."] = true,
+	["Clear"] = true,
+	["Clear the refill list completely."] = true,
+	["List"] = true,
+	["List the items in the refill list."] = true,
+	["Added %s - Amount:%d"] = true,
+	["Removed %s."] = true,
+	["Item List Cleared"] = true,
+	["Refill List: "] = true,
+	["     None"] = true,
+	["Invalid input; input must be '<item> #'."] = true,
+}
+end)

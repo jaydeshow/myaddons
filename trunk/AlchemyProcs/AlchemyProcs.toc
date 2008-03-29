@@ -1,0 +1,16 @@
+## Interface: 23000
+## Title: Alchemy Procs
+## Notes: Tracks total alchemy procs
+## Notes-zhCN: 炼金爆击统计
+## SavedVariables: AlchemyProcsOptions
+## SavedVariablesPerCharacter: AlchemyProcs
+## Version: 1.0
+## Author: Michael Phiobos Swanson
+## Author-zh: 月舞星光@奥蕾莉亚
+
+localization.enUS.lua
+localization.zhCN.lua
+constants.lua
+
+AlchemyProcs.lua
+AlchemyProcsGUI.lua

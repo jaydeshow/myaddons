@@ -1,0 +1,30 @@
+﻿local L = AceLibrary("AceLocale-2.2"):new("FreeRefills")
+
+L:RegisterTranslations("deDE", function() return {
+	["Add"] = "Hinzuf\195\188gen",
+	["Add an item to the refill list. (Usage: /freerefills add [Item Link] #)"] = "F\195\188gt einen Gegenstand zur Auff\195\188llliste hinzu. (Syntax: /freerefills add [Gegenstandslink] #)",
+	["[Item Link] <number of items>"] = "[Gegenstandslink] <Anzahl der Gegenst\195\164nde>",
+	["Add Stack"] = "Stapel hinzuf\195\188gen",
+	["Add an item to the refill list by stack. (Usage: /freerefills addstack [Item Link] #)"] = "F\195\188gt einen Gegenstand stapelweise zur Auff\195\188llliste hinzu. (Syntax: /freerefills addstack [Gegenstandslink] #)",
+	["[Item Link] <number of stacks>"] = "[Gegenstandslink] <Anzahl der Stapel>",
+	["Remove"] = "Entfernen",
+	["Remove an item from the refill list. (Usage: /freerefills del [Item Link])"] = "Entfernt einen Gegenstand von der Auff\195\188llliste. (Syntax: /freerefills del [Gegenstandslink])",
+	["[Item Link]"] = "[Gegenstandslink]",
+	["Overstock"] = "\195\156berbevorraten",
+	["Toggle Overstocking.  If an item is sold in stacks and cannot meet your exact requested amount, you can opt to buy slightly more (Overstock)."] = "\195\156berbevorraten umschalten. Wenn ein Gegenstand nur in Stapeln verkauft wird und nicht genau in der ben\195\182tigten Menge erh\195\164ltlich ist, kann man damit etwas mehr einkaufen (\195\188berbevorraten).",
+	["Process Merchant"] = "Aktiv beim H\195\164ndler",
+	["Toggle Merchant Looting."] = "H\195\164ndlerkauf umschalten.",
+	["Process Bank"] = "Aktiv auf der Bank",
+	["Toggle Bank Looting."] = "Bankleerung umschalten.",
+	["Clear"] = "Leeren",
+	["Clear the refill list completely."] = "Leert die Auff\195\188llliste vollst\195\164ndig.",
+	["List"] = "Auflisten",
+	["List the items in the refill list."] = "Listet die Gegenst\195\164nde auf der Auff\195\188llliste auf.",
+	["Added %s - Amount:%d"] = "%s hinzugef\195\188gt - Anzahl: %d",
+	["Removed %s."] = "%s entfernt.",
+	["Item List Cleared"] = "Auff\195\188llliste geleert.",
+	["Refill List: "] = "Auff\195\188llliste:",
+	["     None"] = "     Leer",
+	["Invalid input; input must be '<item> #'."] = "Ung\195\188ltige Angabe; Syntax ist '<Gegenstand> #'.",
+}
+end)

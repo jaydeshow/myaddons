@@ -1,0 +1,19 @@
+## Interface: 20200
+
+## Title: Elkano's ItemDB
+## Notes: Allows you to browse your clients database
+## Author: Elkano
+## Version: 1.2
+## X-Website: http://elkano.wowinterface.com/
+## X-Email: elkano@gmx.de
+## X-Category: Interface Enhancements
+
+## X-RelSite-WoWI: 
+## X-RelSite-Curse: 
+## X-WoWIPortal: elkano
+## X-Embeds: LibInventory-2.1
+
+## OptionalDeps: LibInventory-2.1
+
+embeds.xml
+ItemDB_DBFrame.xml

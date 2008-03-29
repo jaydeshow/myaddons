@@ -1,0 +1,15 @@
+## Interface: 20400
+
+## Title: Baby Wigs |cff7fff7f -Ace2-|r
+## Notes: Boss warnings for low-level 5-man instances. (Yes, I was bored)
+## Author: Crindappy@Bronzebeard-US
+## Version: 0.1
+
+## X-BigWigs-LoadInParty: 1
+## X-BigWigs-LoadInZone: The Deadmines
+
+## X-Category: Party
+## Dependencies: BigWigs
+## OptionalDeps: Ace2
+
+modules.xml

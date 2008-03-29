@@ -1,0 +1,545 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+
+	<Script file="AuctionFilterPlus.lua"/>
+	<Script file="Localization.EN.lua"/>
+	<Script file="Localization.CN.lua"/>
+	<Script file="Localization.TW.lua"/>
+
+	<Button name="afp_AuctionSearchButtonTemplate" virtual="true" framelevel="100">
+		<ButtonText name="$parentText" justifyH="LEFT"/>
+		<NormalFont inherits="GameFontNormal"/>
+		<HighlightFont inherits="GameFontHighlight"/>
+		<DisabledFont inherits="GameFontDisable"/>
+		<Size>
+			<AbsDimension x="170" y="22"/>
+		</Size>
+		<Scripts>
+			<OnClick>
+				AuctionFrameTab_OnClick(1);
+				if(BrowseMinLevel and BrowseMaxLevel and BrowseDropDown and IsUsableCheckButton) then
+					BrowseMinLevel:SetText("")
+					BrowseMaxLevel:SetText("")
+					UIDropDownMenu_SetText("",BrowseDropDown)
+					UIDropDownMenu_SetSelectedName(BrowseDropDown)
+					AuctionFrameBrowse.selectedClassIndex = nil;
+					AuctionFrameBrowse.selectedClass = nil;
+					IsUsableCheckButton:SetChecked(false);
+					AuctionFrameFilters_Update();
+				end
+				BrowseName:SetText(this:GetText());
+				AuctionFrameBrowse_Search();
+			</OnClick>
+			<OnUpdate>
+				if (CanSendAuctionQuery()) then
+					this:Enable();
+				else
+					this:Disable();
+				end
+			</OnUpdate>
+			<OnShow>
+				this:SetFrameLevel(this:GetParent():GetFrameLevel()+1);
+			</OnShow>
+		</Scripts>
+	</Button>
+
+	<CheckButton name="afp_UICheckButtonTemplate" virtual="true" inherits="UICheckButtonTemplate">
+		<Size>
+			<AbsDimension x="24" y="24"/>
+		</Size>
+		<Scripts>
+			<OnEnter>
+				afp_AuctionFrameBrowse_OnEnter();
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				afp_AuctionFrameBrowse_Update();
+			</OnClick>
+			<OnShow>
+				this:SetFrameLevel(this:GetParent():GetFrameLevel()+1);
+			</OnShow>
+		</Scripts>
+	</CheckButton>
+
+	<Button name="afp_FlyoutButton" inherits="UIPanelButtonTemplate" text="AFP_BUTTON_TEXT_FILTER" framestrata="HIGH" hidden="true" movable="true">
+		<Size>
+			<AbsDimension x="70" y="19"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="UIParent" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="3" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				afp_FlyoutButton_OnClick();
+			</OnClick>
+			<OnLoad>
+				AuctionFilterPlus_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				AuctionFilterPlus_OnEvent();
+			</OnEvent>
+		</Scripts>
+	</Button>
+
+	<Button name="afp_FlyoutClear" parent="UIParent" framestrata="HIGH" inherits="UIPanelButtonTemplate" hidden="true" movable="true" text="AFP_BUTTON_TEXT_CLEAR">
+		<Size>
+			<AbsDimension x="65" y="19"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="afp_FlyoutFrame" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="0" y="-1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				afp_FlyoutClear_OnClick();
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<Button name="afp_FlyoutSetButton" parent="UIParent" framestrata="HIGH" inherits="UIPanelButtonTemplate" hidden="true" movable="true" text="AFP_BUTTON_TEXT_SETBUTTON">
+		<Size>
+			<AbsDimension x="65" y="19"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="afp_FlyoutClear" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				local txt = "";
+				for i=1,table.getn(afp_SearchItems) do
+					if(i~=1) then txt=txt..","; end
+					txt = txt..afp_SearchItems[i];
+				end
+				ChatFrame_OpenChat("/setbutton "..txt, DEFAULT_CHAT_FRAME);
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<Button name="afp_FlyoutSave" parent="UIParent" framestrata="HIGH" inherits="UIPanelButtonTemplate" hidden="true" movable="true" text="AFP_BUTTON_TEXT_SAVE">
+		<Size>
+			<AbsDimension x="118" y="19"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="afp_FlyoutFrame" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="-1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				afp_FlyoutSave_OnClick();
+      </OnClick>
+		</Scripts>
+	</Button>
+
+	<Button name="afp_FlyoutLoad" parent="UIParent" framestrata="HIGH" inherits="UIPanelButtonTemplate" hidden="true" movable="true" text="AFP_BUTTON_TEXT_LOAD">
+		<Size>
+			<AbsDimension x="118" y="19"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="afp_FlyoutSave" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnClick>
+				afp_FlyoutLoad_OnClick();
+      </OnClick>
+		</Scripts>
+	</Button>
+
+	<Frame name="afp_FlyoutFrame" framestrata="MEDIUM" parent="UIParent" hidden="true" movable="true">
+		<Size>
+			<AbsDimension x="185" y="170"/><!-- NOTE:  Change in LUA -->
+		</Size>
+		<Anchor point="TOPLEFT" relativeTo="AuctionFrameBrowse" relativePoint="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="1" y="0"/>
+			</Offset>
+		</Anchor>
+		
+		<Backdrop name="afp_FlyoutFrameBackdrop" bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true" framestrata="BACKGROUND">
+			<BackgroundInsets>
+				<AbsInset left="4" right="4" top="4" bottom="4" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+		</Backdrop>
+
+	<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="afp_OptionText_HideUnaffordable" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_UNAFFORD">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_HideUnaffordable" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_HideNoBuyout" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_NOBUYOUT">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_HideNoBuyout" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_PricePerUnit" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_PERUNIT">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_PricePerUnit" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_StacksOf20" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_STACK20">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_StacksOf20" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_StacksOf10" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_STACK10">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_StacksOf10" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_StacksOf5" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_STACK5">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_StacksOf5" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_ExactName" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_EXACTNAME">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_ExactName" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_ShowBestDeals" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_SHOWBESTDEALS">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_ShowBestDeals" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="afp_OptionText_GreyUnbid" inherits="GameFontNormal" text="AFP_TOOLTIP_TITLE_GREYUNBID">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="afp_OptionButton_GreyUnbid" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<CheckButton name="afp_OptionButton_HideUnaffordable" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="11" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="afp_OptionButton_HideNoBuyout" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_HideUnaffordable" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="afp_OptionButton_PricePerUnit" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_HideNoBuyout" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton><!-- SKIP LINE HERE -->
+			<CheckButton name="afp_OptionButton_StacksOf20" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_PricePerUnit" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="afp_OptionButton_StacksOf10" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_StacksOf20" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="afp_OptionButton_StacksOf5" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_StacksOf10" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton><!-- SKIP LINE HERE -->
+			<CheckButton name="afp_OptionButton_ExactName" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_StacksOf5" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="afp_OptionButton_ShowBestDeals" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_ExactName" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="afp_OptionButton_GreyUnbid" inherits="afp_UICheckButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="afp_OptionButton_ShowBestDeals" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="afp_SearchButton1" id="1" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_OptionButton_GreyUnbid" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton2" id="2" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton1" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton3" id="3" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton4" id="4" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton5" id="5" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton4" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton6" id="6" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton5" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton7" id="7" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton6" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton8" id="8" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton7" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton9" id="9" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton8" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton10" id="10" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton9" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton11" id="11" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton10" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton12" id="12" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton11" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton13" id="13" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton12" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton14" id="14" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton13" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton15" id="15" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton14" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton16" id="16" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton15" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton17" id="17" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton16" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton18" id="18" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton17" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton19" id="19" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton18" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="afp_SearchButton20" id="20" inherits="afp_AuctionSearchButtonTemplate" text="Hello">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="afp_SearchButton19" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnShow>
+				afp_FixParents(); -- Text loaded first, so need to reset its locations
+			</OnShow>
+		</Scripts>
+	</Frame>
+
+</Ui>

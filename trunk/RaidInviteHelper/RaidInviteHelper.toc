@@ -1,0 +1,18 @@
+## Interface: 20100
+## Title: RaidInviteHelper  |cff7fff7f -Ace2-|r
+## Notes: Raid invite helper for the busy raid leader.  Invite via whisper, by guild rank, etc.
+## Author: xb95
+## Version: 0.1
+## X-Category: Interface Enhancements 
+## OptionalDeps: Ace2
+## SavedVariables: RaidInviteHelperDB
+## SavedVariablesPerCharacter: RaidInviteHelperDBPC
+
+libs\AceLibrary\AceLibrary.lua
+libs\AceOO-2.0\AceOO-2.0.lua
+libs\AceAddon-2.0\AceAddon-2.0.lua
+libs\AceDB-2.0\AceDB-2.0.lua
+libs\AceConsole-2.0\AceConsole-2.0.lua
+libs\AceEvent-2.0\AceEvent-2.0.lua
+
+Core.lua

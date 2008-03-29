@@ -1,0 +1,11 @@
+## Interface: 20200
+## Title-zhCN: XDurability
+## Author: xnotepad
+## Version: 0.1.2
+## Notes-zhCN: 在人物界面显示装备耐久度信息。
+## eMail: xnotepad@gmail.com
+## URL: xnotepad@gmail.com
+## DefaultState: Enabled
+## LoadOnDemand: 0
+XDurability.xml
+

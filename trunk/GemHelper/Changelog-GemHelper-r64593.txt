@@ -1,0 +1,8 @@
+------------------------------------------------------------------------
+r64593 | kunda | 2008-03-15 09:49:26 -0400 (Sat, 15 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/GemHelper/GemHelper.toc
+   M /trunk/GemHelper/GemHelper_Localization.deDE.lua
+
+GemHelper: deDE update
+------------------------------------------------------------------------

@@ -1,0 +1,16 @@
+﻿## Interface: 20300
+## Title: GemHelper v1.5
+## Version: 1.5
+## Notes: Search, filter and craft gems in the game!
+## Notes-deDE: Edelsteine suchen, filtern und herstellen!
+## Notes-zhTW: 提供一介面讓玩家搜尋、過濾、加工珠寶!
+## Notes-zhCN: 提供一介面让玩家搜寻、过滤、加工珠宝!
+## Author: Xinhuan
+## SavedVariables: GemHelper_Save, GemHelper_SaveCraft
+## OptionalDeps: AdvancedTradeSkillWindow, Skillet
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Crafting: true
+## X-LoadOn-Slash: /gemhelper, /gh
+
+GemHelper.xml

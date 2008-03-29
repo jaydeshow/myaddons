@@ -1,0 +1,16 @@
+## Interface: 20300
+## Title: BeastSpell(野兽学识)
+## Notes: 免费的野兽知识，强化的训练的面板|n作者：互补古蓝
+## Author: 互补古蓝 - tjox@163.net
+## Version: 1.0 beta1
+## SavedVariables:  BeastSpell_Wild
+## SavedVariablesPerCharacter: BeastSpell_Self
+
+Spell_db.lua
+BeastSpell.lua
+
+rightMenu.lua
+
+Train_db.lua
+Train.lua
+Train.xml

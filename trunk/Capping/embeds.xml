@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Script file="libs\AceLibrary\AceLibrary.lua"/>
+	<Script file="libs\AceOO-2.0\AceOO-2.0.lua"/>
+	
+	<Script file="libs\Dewdrop-2.0\Dewdrop-2.0.lua"/>
+	<Script file="libs\CandyBar-2.0\CandyBar-2.0.lua"/>
+	<Script file="libs\LibSharedMedia-2.0\LibStub\LibStub.lua"/>
+	<Script file="libs\LibSharedMedia-2.0\LibSharedMedia-2.0.lua"/>
+</Ui>

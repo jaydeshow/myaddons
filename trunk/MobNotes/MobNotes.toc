@@ -1,0 +1,10 @@
+## Interface: 20400
+## Title: MobNotes
+## Notes: Allows you to add notes to mob tooltips.
+## Author: Rabbit
+## X-eMail: rabbit.magtheridon@gmail.com
+## Version: 1.1
+## SavedVariables: MobNotesDB
+
+MobNotes.lua
+

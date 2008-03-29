@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="ITEMDB_STRING_BINDING_TOGGLE" header="ITEMDB_STRING_BINDING_HEADER">
+		ItemDB_DBFrame_ToggleUI();
+	</Binding>
+</Bindings>

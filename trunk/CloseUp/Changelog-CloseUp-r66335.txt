@@ -1,0 +1,18 @@
+------------------------------------------------------------------------
+r66335 | totalpackage | 2008-03-27 05:50:37 -0400 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/CloseUp
+   M /trunk/CloseUp/CloseUp.toc
+   M /trunk/CloseUp/core.lua
+
+CloseUp
+- toc to 20400
+------------------------------------------------------------------------
+r64311 | totalpackage | 2008-03-11 23:15:20 -0400 (Tue, 11 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/CloseUp/CloseUp.toc
+   M /trunk/CloseUp/core.lua
+
+CloseUp
+- toc update, enabled warlock's pets support
+------------------------------------------------------------------------

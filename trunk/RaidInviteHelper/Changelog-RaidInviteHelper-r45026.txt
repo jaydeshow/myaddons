@@ -1,0 +1,48 @@
+------------------------------------------------------------------------
+r45026 | xb95 | 2007-07-27 19:52:16 -0400 (Fri, 27 Jul 2007) | 2 lines
+Changed paths:
+   M /trunk/RaidInviteHelper/RaidInviteHelper.toc
+
+RaidInviteHelper:
+- more verbose description (mostly so the post commit hooks will smack the wiki around)
+------------------------------------------------------------------------
+r44952 | xb95 | 2007-07-27 00:33:00 -0400 (Fri, 27 Jul 2007) | 4 lines
+Changed paths:
+   A /trunk/RaidInviteHelper (from /trunk/xbRaidInvites:44950)
+   D /trunk/xbRaidInvites
+
+RaidInviteHelper:
+- move xbRaidInvites -> RaidInviteHelper
+
+
+------------------------------------------------------------------------
+r44950 | xb95 | 2007-07-27 00:27:33 -0400 (Fri, 27 Jul 2007) | 2 lines
+Changed paths:
+   M /trunk/xbRaidInvites
+   M /trunk/xbRaidInvites/Core.lua
+   A /trunk/xbRaidInvites/RaidInviteHelper.toc (from /trunk/xbRaidInvites/xbRaidInvites.toc:44949)
+   M /trunk/xbRaidInvites/readme.txt
+   D /trunk/xbRaidInvites/xbRaidInvites.toc
+
+xbRaidInvites:
+- renaming to RaidInviteHelper on ckknight's recommendation (the folder rename will come next)
+------------------------------------------------------------------------
+r44942 | xb95 | 2007-07-26 21:11:59 -0400 (Thu, 26 Jul 2007) | 2 lines
+Changed paths:
+   M /trunk/xbRaidInvites
+
+xbRaidInvites:
+- update properties
+------------------------------------------------------------------------
+r44941 | xb95 | 2007-07-26 20:54:28 -0400 (Thu, 26 Jul 2007) | 3 lines
+Changed paths:
+   A /trunk/xbRaidInvites
+   A /trunk/xbRaidInvites/Core.lua
+   A /trunk/xbRaidInvites/Libs
+   A /trunk/xbRaidInvites/readme.txt
+   A /trunk/xbRaidInvites/xbRaidInvites.toc
+
+xbRaidInvites: initial commit
+- sends invites if people whisper the configurable keyword, handles raid conversion
+- (my first addon; short and simple but not done)
+------------------------------------------------------------------------

@@ -1,0 +1,2944 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+<!--
+	==============================================================================
+	==                                                                            ==
+	== PoliteWhisper.xml - Main XML layout for PoliteWhisper Extended WoW add-on. ==
+	==                                                                            ==
+	================================================================================
+
+ -->
+
+	<Script file="localization.lua" />
+	<Script file="PoliteWhisper.lua" />
+	<Script file="version.lua" />
+	
+	<!-- Main application frame -->
+	<Frame name="PoliteWhisper_Frame" parent="UIParent" enableMouse="true" movable="true">
+		<Size><AbsDimension x="520" y="465" /></Size>
+		<Anchors><Anchor point="CENTER" /></Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize><AbsValue val="32" /></EdgeSize>
+			<TileSize><AbsValue val="32" /></TileSize>
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+		</Backdrop>
+
+		<!-- Layers contain the non-button items on the frame, in this case a title
+		header -->
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size><AbsDimension x="356" y="64" /></Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset><AbsDimension x="0" y="12" /></Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString inherits="GameFontNormal" text="PW_TITLE">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="Header">
+								<Offset><AbsDimension x="0" y="-14" /></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<!-- Underneath the application frame, we have four sub-frames, one for
+		each of the tabs -->
+		<Frames>
+			<Frame name="PoliteWhisper_Finder" hidden="false">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="20" y="-30" /></Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset><AbsDimension x="-20" y="20" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentIUT" inherits="ChatFontNormal" text="PW_INVITE_TO" justifyH="LEFT">
+							<Anchors><Anchor point="TOPLEFT" /></Anchors>
+						</FontString>
+
+						<FontString name="$parentL1" inherits="ChatFontNormal" text="PW_LEVEL_COLON" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentIUT" relativePoint="RIGHT">
+									<Offset><AbsDimension x="280" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentHC" inherits="GameFontNormal" text="PW_HEROIC_MODE" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentL1" relativePoint="RIGHT">
+									<Offset><AbsDimension y="-24" x="10" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentDa" inherits="ChatFontNormal" text="PW_HYPHEN" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentL1" relativePoint="RIGHT">
+									<Offset><AbsDimension x="30" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentSPC" inherits="GameFontNormal" text="PW_SEARCH_CLASSES" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentIUT">
+									<Offset><AbsDimension y="-18" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentDr" inherits="ChatFontNormal" text="PW_D_DRUID" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentSPC">
+									<Offset><AbsDimension x="30" y="-23" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentH" inherits="ChatFontNormal" text="PW_D_HUNTER" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentDr">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentM" inherits="ChatFontNormal" text="PW_D_MAGE" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentH">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentPa" inherits="ChatFontNormal" text="PW_D_PALADIN" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentDr">
+									<Offset><AbsDimension x="120" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentPr" inherits="ChatFontNormal" text="PW_D_PRIEST" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentPa">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentR" inherits="ChatFontNormal" text="PW_D_ROGUE" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentPr">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentS" inherits="ChatFontNormal" text="PW_D_SHAMAN" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentPa">
+									<Offset><AbsDimension x="120" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentWl" inherits="ChatFontNormal" text="PW_D_WARLOCK" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentS">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentW" inherits="ChatFontNormal" text="PW_D_WARRIOR" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentWl">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player1" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentSPC">
+									<Offset><AbsDimension y="-115" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player2" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player1">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player3" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player2">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player4" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player3">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player5" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player4">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player6" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player5">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player7" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player6">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player8" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player7">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player9" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player8">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player10" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player9">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player11" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player10">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Player12" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player11">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class1" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Player1">
+									<Offset><AbsDimension x="90" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class2" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class1">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class3" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class2">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class4" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class3">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class5" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class4">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class6" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class5">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class7" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class6">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class8" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class7">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class9" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class8">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class10" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class9">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class11" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class10">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Class12" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class11">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level1" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Class1">
+									<Offset><AbsDimension x="70" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level2" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level1">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level3" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level2">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level4" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level3">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level5" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level4">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level6" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level5">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level7" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level6">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level8" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level7">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level9" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level8">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level10" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level9">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level11" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level10">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Level12" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level11">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone1" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Level1">
+									<Offset><AbsDimension x="50" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone2" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone1">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone3" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone2">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone4" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone3">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone5" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone4">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone6" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone5">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone7" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone6">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone8" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone7">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone9" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone8">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone10" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone9">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone11" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone10">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Zone12" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Zone11">
+									<Offset><AbsDimension y="-25" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Chat4" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT">
+									<Offset><AbsDimension y="25" /></Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1" g="0" b="1" a="1" />
+						</FontString>
+
+						<FontString name="PoliteWhisper_Chat3" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Chat4">
+									<Offset><AbsDimension y="15" /></Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1" g="0" b="1" a="1" />
+						</FontString>
+
+						<FontString name="PoliteWhisper_Chat2" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Chat3">
+									<Offset><AbsDimension y="15" /></Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1" g="0" b="1" a="1" />
+						</FontString>
+
+						<FontString name="PoliteWhisper_Chat1" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Chat2">
+									<Offset><AbsDimension y="15" /></Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1" g="0" b="1" a="1" />
+						</FontString>
+					</Layer>
+				</Layers>
+
+				<!-- Interactive controls, such as buttons, are within a Frames
+				element, but not a frame themself. Weird. -->
+				<Frames>
+					<EditBox name="PoliteWhisper_Dungeon" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentIUT" relativePoint="RIGHT">
+								<Offset><AbsDimension x="10" y="10" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="240" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								this:ClearFocus();
+								PoliteWhisper_Search();
+							</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_MinLevel:SetFocus();</OnTabPressed>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<Frame name="PoliteWhisper_DungeonDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Dungeon">
+								<Offset><AbsDimension x="-26" y="-2" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<EditBox name="PoliteWhisper_MinLevel" letters="2" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentDa">
+								<Offset><AbsDimension x="-21" y="2" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="25" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								this:ClearFocus();
+								PoliteWhisper_Search();
+							</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_MaxLevel:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_UpdateList();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<EditBox name="PoliteWhisper_MaxLevel" letters="2" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentDa">
+								<Offset><AbsDimension x="9" y="2" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="25" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								this:ClearFocus();
+								PoliteWhisper_Search();
+							</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Dungeon:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_UpdateList();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<CheckButton name="PoliteWhisper_HeroicEnable" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_MinLevel">
+								<Offset><AbsDimension x="-30" y="-19" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateLevels(); PoliteWhisper_SetOptions();</OnClick>
+							<OnLoad>PoliteWhisper_UpdateHeroicCheckbox();</OnLoad>
+						</Scripts>
+					</CheckButton>
+
+
+					<Button name="PoliteWhisper_SearchButton" inherits="OptionsButtonTemplate" text="PW_SEARCH">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset><AbsDimension x="-10" y="-55" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="110" y="30" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_Search();</OnClick>
+						</Scripts>
+					</Button>
+
+					<Frame name="PoliteWhisper_DruidDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentDr">
+								<Offset><AbsDimension x="-18" y="7" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<Frame name="PoliteWhisper_HunterDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH">
+								<Offset><AbsDimension x="-18" y="7" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<Frame name="PoliteWhisper_PaladinDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentPa">
+								<Offset><AbsDimension x="-18" y="7" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<Frame name="PoliteWhisper_PriestDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentPr">
+								<Offset><AbsDimension x="-18" y="7" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<Frame name="PoliteWhisper_ShamanDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentS">
+								<Offset><AbsDimension x="-18" y="7" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<Frame name="PoliteWhisper_WarriorDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentW">
+								<Offset><AbsDimension x="-18" y="7" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<CheckButton name="PoliteWhisper_Shaman" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentS">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Warlock" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentWl">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Warrior" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentW">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Paladin" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentPa">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Priest" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentPr">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Rogue" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentR">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Druid" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentDr">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Hunter" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<CheckButton name="PoliteWhisper_Mage" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentM">
+								<Offset><AbsDimension x="-30" y="8" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_UpdateList();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<Button name="$parentN" inherits="OptionsButtonTemplate" text="PW_NAME">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentSPC">
+								<Offset><AbsDimension x="-25" y="-91" /></Offset>
+							</Anchor>
+						</Anchors>
+						<NormalTexture />
+						<PushedTexture />
+						<DisabledTexture />
+						<HighlightTexture />
+						<Scripts>
+							<OnClick>PoliteWhisper_SortOn("Name");</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="$parentC" inherits="OptionsButtonTemplate" text="PW_CLASS">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentN">
+								<Offset><AbsDimension x="85" /></Offset>
+							</Anchor>
+						</Anchors>
+						<NormalTexture />
+						<PushedTexture />
+						<DisabledTexture />
+						<HighlightTexture />
+						<Scripts>
+							<OnClick>PoliteWhisper_SortOn("Class");</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="$parentL2" inherits="OptionsButtonTemplate" text="PW_LEVEL">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentC">
+								<Offset><AbsDimension x="60" /></Offset>
+							</Anchor>
+						</Anchors>
+						<NormalTexture />
+						<PushedTexture />
+						<DisabledTexture />
+						<HighlightTexture />
+						<Scripts>
+							<OnClick>PoliteWhisper_SortOn("Level");</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Zone" inherits="OptionsButtonTemplate" text="PW_NOTES">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentL2">
+								<Offset><AbsDimension x="60" /></Offset>
+							</Anchor>
+						</Anchors>
+						<NormalTexture />
+						<PushedTexture />
+						<DisabledTexture />
+						<HighlightTexture />
+						<Scripts>
+							<OnClick>PoliteWhisper_ToggleU();</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask1" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset><AbsDimension x="-20" y="-130" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(1);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask2" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask1">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(2);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask3" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask2">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(3);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask4" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask3">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(4);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask5" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask4">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(5);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask6" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask5">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(6);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask7" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask6">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(7);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask8" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask7">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(8);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask9" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask8">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(9);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask10" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask9">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(10);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask11" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask10">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(11);</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Ask12" inherits="OptionsButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ask11">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_OnAsk(12);</OnClick>
+						</Scripts>
+					</Button>
+
+					<EditBox name="PoliteWhisper_Talk" autoFocus="false">
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" />
+						</Anchors>
+						<Size><AbsDimension x="320" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>PoliteWhisper_Speak();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<Frame name="PoliteWhisper_OtherDrop" inherits="UIDropDownMenuTemplate">
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset><AbsDimension x="20" y="-5" /></Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+
+					<Button name="PoliteWhisper_Invite" inherits="OptionsButtonTemplate" text="PW_INVITE">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_OtherDrop">
+								<Offset><AbsDimension x="15" y="30" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="160" y="28" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_InviteUser();</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_Decline" inherits="OptionsButtonTemplate" text="PW_USER_DECLINED">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Invite">
+								<Offset><AbsDimension y="30" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="160" y="28" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_Declined();</OnClick>
+						</Scripts>
+					</Button>
+
+					<Slider name="PoliteWhisper_ScrollBar" orientation="VERTICAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset><AbsDimension y="-124" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="16" y="300" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_UpdateList();</OnValueChanged>
+						</Scripts>
+					</Slider>
+				</Frames>
+			</Frame>
+
+			<Frame name="PoliteWhisper_NoInvite" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="20" y="-30" /></Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset><AbsDimension x="-20" y="20" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentI1" inherits="ChatFontNormal" text="PW_IGNORE_WARN1">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parent" />
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentI2" inherits="ChatFontNormal" text="PW_IGNORE_WARN2">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentI1">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentI3" inherits="ChatFontNormal" text="PW_IGNORE_WARN3">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentI2">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentI4" inherits="GameFontNormal" text="PW_NAME">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentI3">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentI5" inherits="GameFontNormal" text="PW_NOTES">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentI4">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore1" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentI4">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore2" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore1">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore3" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore2">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore4" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore3">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore5" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore4">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore6" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore5">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore7" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore6">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore8" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore7">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore9" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore8">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore10" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore9">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore11" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore10">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore12" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore11">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore13" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore12">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore14" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore13">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Ignore15" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Ignore14">
+									<Offset><AbsDimension y="-20" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN1" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore1">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN2" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore2">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN3" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore3">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN4" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore4">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN5" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore5">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN6" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore6">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN7" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore7">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN8" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore8">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN9" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore9">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN10" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore10">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN11" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore11">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN12" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore12">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN13" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore13">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN14" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore14">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_IgnoreN15" inherits="ChatFontNormal">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore15">
+									<Offset><AbsDimension x="110" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+				 </Layer>
+				</Layers>
+
+				<!-- Interactive controls, such as buttons, are within a Frames
+				element, but not a frame themself. Weird. -->
+				<Frames>
+					<Slider name="PoliteWhisper_IgnoreBar" orientation="VERTICAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset><AbsDimension y="-60" /></Offset>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset><AbsDimension y="45" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="16" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_UpdateIgnore();</OnValueChanged>
+						</Scripts>
+					</Slider>
+
+					<Button name="PoliteWhisper_IgAdd" inherits="OptionsButtonTemplate" text="PW_ADD">
+						<Anchors><Anchor point="BOTTOMLEFT" /></Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_IgnoreAdd();</OnClick>
+						</Scripts>
+					</Button>
+
+					<Button name="PoliteWhisper_IgDel" inherits="OptionsButtonTemplate" text="PW_DELETE">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_IgAdd">
+								<Offset><AbsDimension x="90" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_IgnoreDelete();</OnClick>
+						</Scripts>
+					</Button>
+
+					<EditBox name="PoliteWhisper_Ignore" autoFocus="false">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_IgAdd">
+								<Offset><AbsDimension x="8" y="25" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="100" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Notes:SetFocus();</OnTabPressed>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<EditBox name="PoliteWhisper_Notes" autoFocus="false">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Ignore" relativePoint="RIGHT">
+								<Offset><AbsDimension x="10" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension x="100" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Ignore:SetFocus();</OnTabPressed>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+				</Frames>
+			</Frame>
+
+			<Frame name="PoliteWhisper_Config" hidden="false">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="20" y="-30" /></Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset><AbsDimension x="-20" y="20" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentMM" inherits="GameFontNormal" text="PW_MINIMAP_BUTTON" justifyH="LEFT">
+							<Anchors><Anchor point="TOPLEFT" /></Anchors>
+						</FontString>
+
+						<FontString name="$parentMME" inherits="ChatFontNormal" text="PW_ENABLE" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentMM">
+									<Offset><AbsDimension x="35" y="-23" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentMMP" inherits="ChatFontNormal" text="PW_POSITION" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentMME">
+									<Offset><AbsDimension x="-35" y="-30" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentMMD" inherits="ChatFontNormal" text="PW_DISTANCE" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentMMP">
+									<Offset><AbsDimension y="-30" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString inherits="ChatFontNormal" text="PW_VERSION" justifyH="RIGHT">
+							<Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+
+				<!-- Interactive controls, such as buttons, are within a Frames
+				element, but not a frame themself. Weird. -->
+				<Frames>
+					<CheckButton name="PoliteWhisper_MiniMapEnable" inherits="OptionsCheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentMM">
+								<Offset><AbsDimension y="-15" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>PoliteWhisper_SetOptions();</OnClick>
+						</Scripts>
+					</CheckButton>
+
+					<Slider name="PoliteWhisper_MiniMapAngle" orientation="HORIZONTAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentMMP">
+								<Offset><AbsDimension x="75" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="400" y="15" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_SetOptions();</OnValueChanged>
+						</Scripts>
+					</Slider>
+
+					<Slider name="PoliteWhisper_MiniMapDist" orientation="HORIZONTAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentMMD">
+								<Offset><AbsDimension x="75" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="400" y="15" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_SetOptions();</OnValueChanged>
+						</Scripts>
+					</Slider>
+				</Frames>
+			</Frame>
+
+			<Frame name="PoliteWhisper_Custom" hidden="false">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="20" y="-30" /></Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset><AbsDimension x="-20" y="20" /></Offset>
+					</Anchor>
+				</Anchors>
+				
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentNote1" inherits="GameFontNormal" text="PW_CUSTOM1">
+							<Anchors>
+								<Anchor point="TOPLEFT" />
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentNote2" inherits="GameFontNormal" text="PW_CUSTOM2">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote1">
+									<offset><AbsDimension y="-40" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentNote3" inherits="GameFontNormal" text="PW_CUSTOM3">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote2">
+									<offset><AbsDimension y="-40" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentNote4" inherits="GameFontNormal" text="PW_CUSTOM4">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote3">
+									<offset><AbsDimension y="-40" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentNote5" inherits="GameFontNormal" text="PW_CUSTOM5">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote4">
+									<offset><AbsDimension y="-40" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentNote6" inherits="GameFontNormal" text="PW_CUSTOM6">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote5">
+									<offset><AbsDimension y="-40" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentNote7" inherits="GameFontNormal" text="PW_CUSTOM7">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote6">
+									<offset><AbsDimension y="-40" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentNote8" inherits="GameFontNormal" text="PW_CUSTOM8">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote7">
+									<offset><AbsDimension y="-40" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags1" inherits="ChatFontNormal" text="PW_TAG_P_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentNote8">
+									<offset><AbsDimension y="-50" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags2" inherits="ChatFontNormal" text="PW_TAG_L_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTags1">
+									<offset><AbsDimension y="-15" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags3" inherits="ChatFontNormal" text="PW_TAG_C_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTags2">
+									<offset><AbsDimension y="-15" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags4" inherits="ChatFontNormal" text="PW_TAG_D_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTags3">
+									<offset><AbsDimension y="-15" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags5" inherits="ChatFontNormal" text="PW_TAG_R_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTags4">
+									<offset><AbsDimension y="-15" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags6" inherits="ChatFontNormal" text="PW_TAG_N_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTags5">
+									<offset><AbsDimension x="260" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags7" inherits="ChatFontNormal" text="PW_TAG_G_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTags5">
+									<offset><AbsDimension y="-15" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentTags8" inherits="ChatFontNormal" text="PW_TAG_B_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTags6">
+									<offset><AbsDimension y="-15" /></offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+					
+				<!-- Interactive controls, such as buttons, are within a Frames
+				element, but not a frame themself. Weird. -->
+					
+				<Frames>
+
+					<EditBox name="PoliteWhisper_Custom1" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<offset><AbsDimension y="-15" x="5" /></offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom2:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+					
+					<Button name="PoliteWhisper_TestCustom1" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom1" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(1);</OnClick>
+						</Scripts>
+					</Button>
+
+					<EditBox name="PoliteWhisper_Custom2" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Custom1">
+								<Offset><AbsDimension y="-40" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom3:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+					
+					<Button name="PoliteWhisper_TestCustom2" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom2" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(2);</OnClick>
+						</Scripts>
+					</Button>        
+					
+					<EditBox name="PoliteWhisper_Custom3" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Custom2">
+								<Offset><AbsDimension y="-40" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom4:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+					
+					<Button name="PoliteWhisper_TestCustom3" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom3" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(3);</OnClick>
+						</Scripts>
+					</Button>         
+					 
+					<EditBox name="PoliteWhisper_Custom4" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Custom3">
+								<Offset><AbsDimension y="-40" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom5:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<Button name="PoliteWhisper_TestCustom4" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom4" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(4);</OnClick>
+						</Scripts>
+					</Button>
+
+					<EditBox name="PoliteWhisper_Custom5" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Custom4">
+								<Offset><AbsDimension y="-40" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom6:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+					
+					<Button name="PoliteWhisper_TestCustom5" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom5" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(5);</OnClick>
+						</Scripts>
+					</Button>        
+					
+					<EditBox name="PoliteWhisper_Custom6" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Custom5">
+								<Offset><AbsDimension y="-40" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom7:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+					
+					<Button name="PoliteWhisper_TestCustom6" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom6" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(6);</OnClick>
+						</Scripts>
+					</Button>        
+					
+					<EditBox name="PoliteWhisper_Custom7" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Custom6">
+								<Offset><AbsDimension y="-40" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom8:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+					
+					<Button name="PoliteWhisper_TestCustom7" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom7" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(7);</OnClick>
+						</Scripts>
+					</Button>        
+					
+					<EditBox name="PoliteWhisper_Custom8" autoFocus="false">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Custom7">
+								<Offset><AbsDimension y="-40" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="430" y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>this:ClearFocus();</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Custom1:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_SetOptions();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+					
+					<Button name="PoliteWhisper_TestCustom8" inherits="OptionsButtonTemplate" text="PW_TEST">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Custom8" relativePoint="RIGHT">
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="40" y="20" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_TestCustom(8);</OnClick>
+						</Scripts>
+					</Button>        
+
+					<Button name="PoliteWhisper_ResetCustomWhispersButton" inherits="OptionsButtonTemplate" text="PW_RESET">
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeTo="PoliteWhisper_TestCustom8">
+								<Offset><AbsDimension y="-25" x="2" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Size><AbsDimension x="100" y="28" /></Size>
+						<Scripts>
+							<OnClick>PoliteWhisper_ResetCustomWhispers();</OnClick>
+						</Scripts>
+					</Button>
+										
+				</Frames>
+			</Frame>
+
+
+			<Frame name="PoliteWhisper_Party" hidden="false">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="20" y="-30" /></Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset><AbsDimension x="-20" y="20" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentP1" inherits="ChatFontNormal" text="PW_PARTY1" justifyH="LEFT">
+							<Anchors><Anchor point="TOPLEFT" /></Anchors>
+						</FontString>
+
+						<FontString name="$parentP2" inherits="ChatFontNormal" text="PW_PARTY2" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentP1">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentP3" inherits="ChatFontNormal" text="PW_PARTY3" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentP2">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentP4" inherits="ChatFontNormal" text="PW_PARTY4" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentP3">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentP5" inherits="ChatFontNormal" text="PW_PARTY5" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentP4">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentP6" inherits="ChatFontNormal" text="PW_PARTY6" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentP5">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentP7" inherits="ChatFontNormal" text="PW_PARTY7" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentP6">
+									<Offset><AbsDimension y="-15" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Party1" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentP7">
+									<Offset><AbsDimension y="-35" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Party2" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Party1">
+									<Offset><AbsDimension y="-80" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Party3" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Party2">
+									<Offset><AbsDimension y="-80" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+
+						<FontString name="PoliteWhisper_Party4" inherits="ChatFontNormal" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="PoliteWhisper_Party3">
+									<Offset><AbsDimension y="-80" /></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+
+				<!-- Interactive controls, such as buttons, are within a Frames
+				element, but not a frame themself. Weird. -->
+				<Frames>
+					<EditBox name="PoliteWhisper_Notes1" autoFocus="false">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party1">
+								<Offset><AbsDimension x="100" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								this:ClearFocus();
+								PoliteWhisper_Search();
+							</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Notes2:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_UpdateParty();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<EditBox name="PoliteWhisper_Notes2" autoFocus="false">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party2">
+								<Offset><AbsDimension x="100" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								this:ClearFocus();
+								PoliteWhisper_Search();
+							</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Notes3:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_UpdateParty();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<EditBox name="PoliteWhisper_Notes3" autoFocus="false">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party3">
+								<Offset><AbsDimension x="100" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								this:ClearFocus();
+								PoliteWhisper_Search();
+							</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Notes4:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_UpdateParty();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<EditBox name="PoliteWhisper_Notes4" autoFocus="false">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party4">
+								<Offset><AbsDimension x="100" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="20" /></Size>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentL" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset><AbsDimension x="-5" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentR" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="8" y="20" /></Size>
+									<Anchors>
+										<Anchor point="RIGHT">
+											<Offset><AbsDimension x="0" y="0" /></Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625" />
+								</Texture>
+								<Texture name="$parentM" file="Interface\Common\Common-Input-Border">
+									<Size><AbsDimension x="10" y="20" /></Size>
+									<Anchors>
+										<Anchor point="LEFT" relativeTo="$parentL" relativePoint="RIGHT" />
+										<Anchor point="RIGHT" relativeTo="$parentR" relativePoint="LEFT"/>
+									</Anchors>
+									<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnterPressed>
+								this:ClearFocus();
+								PoliteWhisper_Search();
+							</OnEnterPressed>
+							<OnEscapePressed>this:ClearFocus();</OnEscapePressed>
+							<OnEditFocusLost>this:HighlightText(0, 0);</OnEditFocusLost>
+							<OnEditFocusGained>this:HighlightText();</OnEditFocusGained>
+							<OnTabPressed>PoliteWhisper_Notes1:SetFocus();</OnTabPressed>
+							<OnTextChanged>PoliteWhisper_UpdateParty();</OnTextChanged>
+						</Scripts>
+						<FontString inherits="ChatFontNormal" />
+					</EditBox>
+
+					<Slider name="PoliteWhisper_Rating1" orientation="HORIZONTAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party1">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="16" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_UpdateParty();</OnValueChanged>
+						</Scripts>
+					</Slider>
+
+					<Frame name="PoliteWhisper_Sad1">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Rating1">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\sad.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Medium1">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="CENTER" relativeTo="PoliteWhisper_Rating1">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\med.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Happy1">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="PoliteWhisper_Rating1">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\happy.tga" />
+					</Frame>
+
+					<Slider name="PoliteWhisper_Rating2" orientation="HORIZONTAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party2">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="16" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_UpdateParty();</OnValueChanged>
+						</Scripts>
+					</Slider>
+
+					<Frame name="PoliteWhisper_Sad2">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Rating2">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\sad.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Medium2">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="CENTER" relativeTo="PoliteWhisper_Rating2">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\med.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Happy2">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="PoliteWhisper_Rating2">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\happy.tga" />
+					</Frame>
+
+					<Slider name="PoliteWhisper_Rating3" orientation="HORIZONTAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party3">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="16" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_UpdateParty();</OnValueChanged>
+						</Scripts>
+					</Slider>
+
+					<Frame name="PoliteWhisper_Sad3">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Rating3">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\sad.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Medium3">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="CENTER" relativeTo="PoliteWhisper_Rating3">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\med.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Happy3">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="PoliteWhisper_Rating3">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\happy.tga" />
+					</Frame>
+
+					<Slider name="PoliteWhisper_Rating4" orientation="HORIZONTAL" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Party4">
+								<Offset><AbsDimension y="-25" /></Offset>
+							</Anchor>
+							<Anchor point="RIGHT" />
+						</Anchors>
+						<Size><AbsDimension y="16" /></Size>
+						<Scripts>
+							<OnValueChanged>PoliteWhisper_UpdateParty();</OnValueChanged>
+						</Scripts>
+					</Slider>
+
+					<Frame name="PoliteWhisper_Sad4">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="PoliteWhisper_Rating4">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\sad.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Medium4">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="CENTER" relativeTo="PoliteWhisper_Rating4">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\med.tga" />
+					</Frame>
+
+					<Frame name="PoliteWhisper_Happy4">
+						<Size><AbsDimension x="32" y="32" /></Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="PoliteWhisper_Rating4">
+								<Offset><AbsDimension y="-20" /></Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\AddOns\PoliteWhisper\happy.tga" />
+					</Frame>
+				</Frames>
+			</Frame>
+
+			<!-- Tab buttons are within the Frames element, but not one of the sub-
+			frames themselves that hold the tabbed content -->
+			<Button name="$parentTab1" inherits="CharacterFrameTabButtonTemplate" id="1" text="PW_PARTY_FINDER">
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="BOTTOMLEFT">
+						<Offset><AbsDimension x="60" y="-10" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>PoliteWhisper_GoTab(1);</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentTab2" inherits="CharacterFrameTabButtonTemplate" id="2" text="PW_DO_NOT_INVITE">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTab1" relativePoint="RIGHT">
+						<Offset><AbsDimension x="-16" y="0" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>PoliteWhisper_GoTab(2);</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentTab3" inherits="CharacterFrameTabButtonTemplate" id="3" text="PW_CONFIGURATION">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTab2" relativePoint="RIGHT">
+						<Offset><AbsDimension x="-16" y="0" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>PoliteWhisper_GoTab(3);</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentTab4" inherits="CharacterFrameTabButtonTemplate" id="4" text="PW_CUSTOMWHISPERS">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTab3" relativePoint="RIGHT">
+						<Offset><AbsDimension x="-16" y="0" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>PoliteWhisper_GoTab(4);</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentTab5" inherits="CharacterFrameTabButtonTemplate" id="5" text="PW_PARTY">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTab4" relativePoint="RIGHT">
+						<Offset><AbsDimension x="-16" y="0" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>PoliteWhisper_GoTab(5);</OnClick>
+				</Scripts>
+			</Button>
+			
+			<!-- Close button -->
+			<Button inherits="OptionsButtonTemplate" text="X">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset><AbsDimension x="-4" y="-3" /></Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="20" y="20" /></Size>
+				<Scripts>
+					<OnClick>PoliteWhisper_Close();</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+
+		<Scripts>
+			<OnLoad>PoliteWhisper_OnLoad();</OnLoad>
+			<OnShow>
+				PlaySound("igCharacterInfoOpen");
+				PanelTemplates_SetTab(PoliteWhisper_Frame, 1);
+				PoliteWhisper_Finder:Show()
+				PoliteWhisper_NoInvite:Hide()
+			</OnShow>
+			<OnEvent>PoliteWhisper_OnEvent();</OnEvent>
+			<OnUpdate>PoliteWhisper_OnUpdate();</OnUpdate>
+			<OnHide>PlaySound("igCharacterInfoClose");</OnHide>
+			<OnDragStart>this:StartMoving();</OnDragStart>
+			<OnDragStop>this:StopMovingOrSizing();</OnDragStop>
+		</Scripts>
+	</Frame>
+
+<Button name="PoliteWhisper_MiniMap" parent="MinimapBackdrop" movable="true" toplevel="true">
+	<Size><AbsDimension x="32" y="32" /></Size>
+	<Anchors>
+		<Anchor point="CENTER" relativeTo="MinimapBackdrop">
+			<Offset><AbsDimension x="-39" y="-39" /></Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick>
+			if (PoliteWhisper_Visible)
+			then
+					PoliteWhisper_Close();
+			else
+					PoliteWhisper_Invoke();
+			end
+		</OnClick>
+		<OnLoad>this:RegisterForClicks("LeftButtonDown", "RightButtonDown");</OnLoad>
+	</Scripts>
+	<NormalTexture file="Interface\AddOns\PoliteWhisper\pw.tga" />
+	<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight" />
+</Button>
+
+</Ui>

@@ -1,0 +1,34 @@
+------------------------------------------------------------------------
+r66037 | rabbit | 2008-03-26 07:31:40 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   D /trunk/BugSack/Bindings.xml
+   M /trunk/BugSack/BugSack.lua
+   M /trunk/BugSack/BugSack.toc
+
+BugSack: Removed bindings.xml
+------------------------------------------------------------------------
+r64141 | kunda | 2008-03-10 11:39:11 -0400 (Mon, 10 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/BugSack/BugSack-deDE.lua
+
+BugSack: minor deDE fixes
+------------------------------------------------------------------------
+r63743 | rabbit | 2008-03-06 09:49:50 -0500 (Thu, 06 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/BugSack/BugSack-deDE.lua
+   M /trunk/BugSack/BugSack-enUS.lua
+   M /trunk/BugSack/BugSack-esES.lua
+   M /trunk/BugSack/BugSack-koKR.lua
+   M /trunk/BugSack/BugSack-zhCN.lua
+   M /trunk/BugSack/BugSack-zhTW.lua
+   M /trunk/BugSack/BugSack.lua
+   M /trunk/BugSack/embeds.xml
+
+BugSack: Nuked the keybindings, they have been nonfunctional for a long time anyway.
+------------------------------------------------------------------------
+r62964 | rabbit | 2008-02-26 07:38:25 -0500 (Tue, 26 Feb 2008) | 1 line
+Changed paths:
+   M /trunk/BugSack/BugSack.lua
+
+BugSack: Use LibSharedMedia-2.0 instead of SharedMedia-1.0.
+------------------------------------------------------------------------

@@ -1,0 +1,28 @@
+------------------------------------------------------------------------
+r56383 | elkano | 2007-12-01 07:57:40 -0500 (Sat, 01 Dec 2007) | 1 line
+Changed paths:
+   M /trunk/ItemDB
+   D /trunk/ItemDB/libs
+
+ItemDB: fixed externals
+------------------------------------------------------------------------
+r56050 | kunda | 2007-11-26 07:31:32 -0500 (Mon, 26 Nov 2007) | 1 line
+Changed paths:
+   A /trunk/ItemDB/libs
+
+ItemDB: fixed externals: lib/LibInventory-2.1/ not lib/LibInventoryLib-2.1/
+------------------------------------------------------------------------
+r54198 | funkydude | 2007-11-09 03:27:59 -0500 (Fri, 09 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/ItemDB/ItemDB.toc
+
+ItemDB: don't put LibStub in your x-embeds
+------------------------------------------------------------------------
+r54195 | funkydude | 2007-11-09 01:56:16 -0500 (Fri, 09 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/ItemDB
+   M /trunk/ItemDB/ItemDB.toc
+   M /trunk/ItemDB/embeds.xml
+
+ItemDB: embed LibStub
+------------------------------------------------------------------------

@@ -1,0 +1,388 @@
+﻿<Ui>
+
+<Button name="TJ_BG_ButtonTemplate" inherits="SecureUnitButtonTemplate" virtual="true">
+	<Size>
+		<AbsDimension x="15" y="15"/>
+	</Size>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="$parentIcon"/>
+		</Layer>
+	</Layers>
+	<NormalTexture file="Interface\Buttons\UI-Quickslot2" setAllPoints="true">
+		<TexCoords left="0.203125" right="0.8125" top="0.203125" bottom="0.8125"/>
+		<!--左12、上12，右、下13
+		<TexCoords left="0.1875" right="0.796875" top="0.1875" bottom="0.796875"/>
+		<TexCoords left="0.203125" right="0.78125" top="0.203125" bottom="0.78125"/>
+		-->
+	</NormalTexture>
+	<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square"/>
+	<!--PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/-->
+	<PushedTexture alphaMode="ADD" file="Interface\Buttons\CheckButtonHilight"/>
+	<Frames>
+		<Cooldown name="$parentCooldown" inherits="CooldownFrameTemplate">
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="-1"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Cooldown>
+	</Frames>
+	<Scripts>
+		<OnEnter>
+			TJ_BG_SpellButtonName(this.tag, this.row, this.id);
+		</OnEnter>
+		<OnLeave>
+			GameTooltip:Hide();
+		</OnLeave>
+	</Scripts>
+</Button>
+
+<Button name="TJ_BG_Button2Template" virtual="true">
+	<Size>
+		<AbsDimension x="24" y="24"/>
+	</Size>
+	<NormalTexture file="Interface\BUTTONS\UI-Quickslot-Depress"/>
+	<HighlightTexture alphaMode="ADD" file="Interface\Buttons\CheckButtonHilight"/>
+	<Scripts>
+		<OnClick>
+			TJ_BG_SetSpell(this.row, this.id);
+		</OnClick>
+		<OnDragStart>
+			TJ_BG_CatchSpell(this.row, this.id);
+		</OnDragStart>
+		<!--OnDragStop>
+			TJ_BG_SetSpell(this.row, this.id);
+		</OnDragStop-->
+		<OnEnter>
+			TJ_BG_GetSpell(this.row, this.id);
+		</OnEnter>
+		<OnLeave>
+			GameTooltip:Hide();
+		</OnLeave>
+	</Scripts>
+</Button>
+
+<Button name="TJ_BG_TabTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+	<Size>
+		<AbsDimension x="60" y="25"/>
+	</Size>
+	<Scripts>
+		<OnClick>
+			TJ_BG_Tab_Onclick(this:GetID());
+		</OnClick>
+	</Scripts>
+</Button>
+
+<Button name="TJ_BG_MenuButtonTemplate" virtual="true">
+	<Size>
+		<AbsDimension x="110" y="18"/>
+	</Size>
+	<Layers>
+		<Layer level="OVERLAY">
+			<FontString name="$parentText" inherits="GameFontNormal"/>
+		</Layer>
+	</Layers>
+	<HighlightTexture alphaMode="ADD" file="interface\Glues\CharacterSelect\Glues-CharacterSelect-Highlight.blp"/>
+	<Scripts>
+		<OnClick>
+			TJ_BG_MenuButton_Click(this.value);
+		</OnClick>
+	</Scripts>
+</Button>
+
+<Button name="TJ_BG_PointButtonTemplate" toplevel="true" virtual="true">
+	<Size>
+		<AbsDimension x="24" y="24"/>
+	</Size>
+	<NormalTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up"/>
+	<PushedTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down"/>
+	<DisabledTexture file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Disabled"/>
+	<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="$parentBGTexture" file="Interface\Common\Common-Input-Border">
+				<Size>
+					<AbsDimension x="128" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativePoint="LEFT"/>
+				</Anchors>
+				<TexCoords left="0" right="1" top="0" bottom="0.625"/>
+			</Texture>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_MainText" inherits="GameFontNormal" justifyH="LEFT">
+				<Size>
+					<AbsDimension x="100" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentBGTexture">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="$parent_Label" inherits="GameFontNormal" justifyH="RIGHT">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parentBGTexture" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnClick>
+			TJ_BG_DropDown_Click( this:GetName() );
+		</OnClick>
+		<OnHide>
+			TJ_BG_DropDown_OnHide();
+		</OnHide>
+	</Scripts>
+</Button>
+
+<EditBox name="TJ_BG_EditBoxTemplate" letters="4" historyLines="0" autoFocus="false" virtual="true">
+	<Size>
+		<AbsDimension x="64" y="20"/>
+	</Size>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<FontString name="$parent_Label" inherits="GameFontNormal" justifyH="RIGHT">
+				<Anchors>
+					<Anchor point="RIGHT" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="-10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+				<Size>
+					<AbsDimension x="32" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0" right="0.25" top="0" bottom="0.625"/>
+			</Texture>
+			<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+				<Size>
+					<AbsDimension x="32" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+				</Anchors>
+				<TexCoords left="0.75" right="1" top="0" bottom="0.625"/>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnEditFocusLost>
+			TJ_BG_Update();
+		</OnEditFocusLost>
+		<OnEnterPressed>
+			TJ_BG_Update();
+		</OnEnterPressed>
+	</Scripts>
+	<FontString inherits="ChatFontNormal"/>
+</EditBox>
+
+
+
+<Frame name="TJ_BG_Frame" parent="UIParent" movable="true" hidden="true">
+	<Size>
+		<AbsDimension x="380" y="350"/>
+	</Size>
+	<Anchors>
+		<Anchor point="CENTER"/>
+	</Anchors>
+	<Layers>
+		<Layer level="ARTWORK">
+			<Texture file="Interface\HelpFrame\HelpFrame-TopLeft">
+				<Size>
+					<AbsDimension x="256" y="256"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+			</Texture>
+			<Texture file="Interface\HelpFrame\HelpFrame-TopRight">
+				<Size>
+					<AbsDimension x="128" y="256"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT"/>
+				</Anchors>
+			</Texture>
+			<Texture file="Interface\HelpFrame\HelpFrame-BotLeft">
+				<Size>
+					<AbsDimension x="256" y="256"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT"/>
+				</Anchors>
+			</Texture>
+			<Texture file="Interface\HelpFrame\HelpFrame-BotRight">
+				<Size>
+					<AbsDimension x="128" y="256"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT"/>
+				</Anchors>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Frames>
+		<Button inherits="UIPanelCloseButton">
+			<Anchors>
+				<Anchor point="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-42" y="-3"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_Tab1" inherits="TJ_BG_TabTemplate" text="自己" id="1">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="20" y="-20"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_Tab2" inherits="TJ_BG_TabTemplate" text="目标" id="2">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="TJ_BG_Tab1" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="15" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_Tab3" inherits="TJ_BG_TabTemplate" text="队友" id="3">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="TJ_BG_Tab2" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="15" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_Tab4" inherits="TJ_BG_TabTemplate" text="队友宠" id="4">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="TJ_BG_Tab3" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="15" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_Tab5" inherits="TJ_BG_TabTemplate" text="TOT" id="5">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="20" y="-305"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_Tab6" inherits="TJ_BG_TabTemplate" text="焦点" id="6">
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="TJ_BG_Tab5" relativePoint="RIGHT">
+					<Offset>
+						<AbsDimension x="15" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+	</Frames>
+	<Scripts>
+		<OnLoad>
+			TJ_BG_OnLoad();
+		</OnLoad>
+		<OnEvent>
+			TJ_BG_OnEvent();
+		</OnEvent>
+		<OnMouseDown>
+			this:StartMoving();
+		</OnMouseDown>
+		<OnMouseUp>
+			this:StopMovingOrSizing();
+		</OnMouseUp>
+	</Scripts>
+</Frame>
+
+<Frame name="TJ_BG_DownMenu" parent="TJ_BG_Frame" frameStrata="DIALOG" toplevel="true" hidden="true">
+	<Size>
+		<AbsDimension x="130" y="170"/>
+	</Size>
+	<Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border">
+		<BackgroundInsets>
+			<AbsInset left="5" right="5" top="5" bottom="5"/>
+		</BackgroundInsets>
+	</Backdrop>
+	<Frames>
+		<Button name="TJ_BG_MenuButton_1" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-10" y="-10"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_MenuButton_2" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="TJ_BG_MenuButton_1" relativePoint="BOTTOM"/>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_MenuButton_3" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="TJ_BG_MenuButton_2" relativePoint="BOTTOM"/>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_MenuButton_4" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="TJ_BG_MenuButton_3" relativePoint="BOTTOM"/>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_MenuButton_5" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="TJ_BG_MenuButton_4" relativePoint="BOTTOM"/>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_MenuButton_6" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="TJ_BG_MenuButton_5" relativePoint="BOTTOM"/>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_MenuButton_7" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="TJ_BG_MenuButton_6" relativePoint="BOTTOM"/>
+			</Anchors>
+		</Button>
+		<Button name="TJ_BG_MenuButton_8" inherits="TJ_BG_MenuButtonTemplate">
+			<Anchors>
+				<Anchor point="TOP" relativeTo="TJ_BG_MenuButton_7" relativePoint="BOTTOM"/>
+			</Anchors>
+		</Button>
+	</Frames>
+	<Scripts>
+		<OnLoad>
+			TJ_BG_DownMenu_OnLoad();
+		</OnLoad>
+	</Scripts>
+</Frame>
+
+</Ui>

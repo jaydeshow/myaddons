@@ -1,0 +1,47 @@
+﻿## Interface: 20300
+## Title: Recount
+## Title-zhCN: |cff7fff7f-Ace2-|r Recount
+## Notes: Records Damage and Healing for Graph Based Display
+## Notes-zhCN: 基于 Graph 裤开发的伤害/治疗统计插件
+## Notes-zhTW: 基於 Graph 所開發的傷害/治療統計插件
+## Author: Cryect
+## OptionalDeps: Ace2, LibSharedMedia-3.0, LibBabble-Spell-3.0, LibBabble-Boss-3.0, Threat-1.0, SW_Stats, SW_FixLogStrings, LibGraph-2.0, FixLogStrings, SharedMedia-2.0
+## SavedVariables: RecountDB
+## SavedVariablesPerCharacter: RecountPerCharDB
+## X-Category: Combat
+## X-Embeds: Ace2, CallbackHandler-1.0, LibSharedMedia-3.0, LibBabble-Spell-3.0, LibBabble-Boss-3.0, Threat-1.0, SpecialEventsEmbed, Babble-2.2, Parser-3.0, LibGraph-2.0, RosterLib, DewdropLib
+
+embeds.xml
+
+locales\Recount-enUS.lua
+locales\Recount-frFR.lua
+locales\Recount-deDE.lua
+locales\Recount-koKR.lua
+locales\Recount-esES.lua
+locales\Recount-zhTW.lua
+locales\Recount-zhCN.lua
+
+Recount.lua
+FixLogStrings.lua
+
+Fonts.lua
+colors.lua
+Widgets.lua
+WindowOrder.lua
+
+Fights.lua
+pets.lua
+Recount_Modes.lua
+Tracker.lua
+healbuffs.lua
+Sync.lua
+deletion.lua
+
+GUI_Main.lua
+GUI_Detail.lua
+GUI_DeathGraph.lua
+GUI_Graph.lua
+GUI_Reset.lua
+GUI_Report.lua
+GUI_Config.lua
+GUI_Realtime.lua

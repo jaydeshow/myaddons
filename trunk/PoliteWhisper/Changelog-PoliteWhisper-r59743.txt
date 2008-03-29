@@ -1,0 +1,132 @@
+------------------------------------------------------------------------
+r59743 | shen | 2008-01-30 10:57:52 -0500 (Wed, 30 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/PoliteWhisper.xml
+   M /trunk/PoliteWhisper/localization.lua
+   M /trunk/PoliteWhisper/version.lua
+
+PoliteWhisper Extended: More bugfixes, some german translation of heroic dungeons, disable heroic more checkbox for levels 1-69.
+------------------------------------------------------------------------
+r59684 | shen | 2008-01-29 17:30:52 -0500 (Tue, 29 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+
+PoliteWhisper Extended: fixed "attempt to index a nil value" error when whispering a mage, rogue or warlock.
+------------------------------------------------------------------------
+r59448 | shen | 2008-01-26 11:32:28 -0500 (Sat, 26 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/PoliteWhisper.xml
+   M /trunk/PoliteWhisper/localization.lua
+   M /trunk/PoliteWhisper/version.lua
+
+PoliteWhisper Extended: Added support for Heroic 5-man instances (English only for now)
+------------------------------------------------------------------------
+r59437 | shen | 2008-01-26 08:48:59 -0500 (Sat, 26 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/PoliteWhisper.xml
+   M /trunk/PoliteWhisper/localization.lua
+   M /trunk/PoliteWhisper/version.lua
+
+PoliteWhisper Extended: German translation and minor fixes.
+------------------------------------------------------------------------
+r59393 | shen | 2008-01-25 10:51:50 -0500 (Fri, 25 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.xml
+   M /trunk/PoliteWhisper/localization.lua
+   M /trunk/PoliteWhisper/version.lua
+
+PoliteWhisper Extended: More localization.
+------------------------------------------------------------------------
+r59387 | shen | 2008-01-25 08:58:10 -0500 (Fri, 25 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/localization.lua
+
+PoliteWhisper Extended: Fixed typo in Italian translation and added translation of classes in group makeup.
+------------------------------------------------------------------------
+r59385 | shen | 2008-01-25 08:35:52 -0500 (Fri, 25 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/PoliteWhisper.xml
+   M /trunk/PoliteWhisper/localization.lua
+
+PoliteWhisper Extended: Fixed longstanding issue where overriding the spoken language wouldn't use translated class names in some cases.
+------------------------------------------------------------------------
+r59361 | shen | 2008-01-24 23:57:18 -0500 (Thu, 24 Jan 2008) | 1 line
+Changed paths:
+   A /trunk/PoliteWhisper/README
+   M /trunk/PoliteWhisper/localization.lua
+
+PoliteWhisper Extended: Added README
+------------------------------------------------------------------------
+r59360 | shen | 2008-01-24 23:52:56 -0500 (Thu, 24 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/localization.lua
+
+PoliteWhisper Extended: German localization
+------------------------------------------------------------------------
+r59357 | shen | 2008-01-24 23:36:25 -0500 (Thu, 24 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+
+PoliteWhisper Extended: Fixed issue where whispers wouldn't appear when upgrading from original PoliteWhisper
+------------------------------------------------------------------------
+r59238 | shen | 2008-01-23 16:28:55 -0500 (Wed, 23 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/PoliteWhisper.toc
+   M /trunk/PoliteWhisper/PoliteWhisper.xml
+   M /trunk/PoliteWhisper/localization.lua
+
+PoliteWhisper Extended: UI tweaks and localization changes.
+------------------------------------------------------------------------
+r58996 | shen | 2008-01-20 16:44:10 -0500 (Sun, 20 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/localization.lua
+
+PoliteWhisper Extended: Some localization issues.
+------------------------------------------------------------------------
+r58649 | shen | 2008-01-17 06:59:22 -0500 (Thu, 17 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/PoliteWhisper.toc
+   M /trunk/PoliteWhisper/localization.lua
+   M /trunk/PoliteWhisper/version.lua
+
+PoliteWhisper Extended: Polished up a bit.
+------------------------------------------------------------------------
+r58648 | shen | 2008-01-17 06:48:57 -0500 (Thu, 17 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper/PoliteWhisper.lua
+   M /trunk/PoliteWhisper/PoliteWhisper.toc
+   M /trunk/PoliteWhisper/PoliteWhisper.xml
+   M /trunk/PoliteWhisper/localization.lua
+   M /trunk/PoliteWhisper/version.lua
+
+PoliteWhisper Extended: Intermediate version. Added rudimentary support for customizing whispers by use of tags.
+------------------------------------------------------------------------
+r58637 | shen | 2008-01-17 04:45:55 -0500 (Thu, 17 Jan 2008) | 1 line
+Changed paths:
+   M /trunk/PoliteWhisper
+   A /trunk/PoliteWhisper/PoliteWhisper.lua
+   A /trunk/PoliteWhisper/PoliteWhisper.toc
+   A /trunk/PoliteWhisper/PoliteWhisper.xml
+   A /trunk/PoliteWhisper/happy.tga
+   A /trunk/PoliteWhisper/localization.lua
+   A /trunk/PoliteWhisper/med.tga
+   A /trunk/PoliteWhisper/pw.tga
+   A /trunk/PoliteWhisper/sad.tga
+   A /trunk/PoliteWhisper/version.lua
+
+PoliteWhisper Extended: Original non-extended version by gre7g.
+------------------------------------------------------------------------
+r58618 | shen | 2008-01-16 17:05:25 -0500 (Wed, 16 Jan 2008) | 1 line
+Changed paths:
+   A /trunk/PoliteWhisper
+
+Created folder remotely
+------------------------------------------------------------------------
