@@ -1,7 +1,7 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: AuctionFrameBrowse.lua 2469 2007-11-14 06:08:37Z jslagle $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: AuctionFrameBrowse.lua 2973 2008-03-28 05:50:36Z kandoko $
 
 	Auctioneer Browse tab
 
@@ -28,7 +28,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 --]]
 
-Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/UserInterface/AuctionFrameBrowse.lua $", "$Rev: 2469 $")
+Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/UserInterface/AuctionFrameBrowse.lua $", "$Rev: 2973 $")
 
 -------------------------------------------------------------------------------
 -- Function Prototypes
@@ -177,6 +177,10 @@ function postAuctionFrameFiltersUpdateClassesHook()
 		if (obj) then
 			obj:SetParent("AuctionFilterButton"..i)
 			obj:SetPoint("RIGHT", "AuctionFilterButton"..i, "RIGHT", -5,0)
+			if getglobal("AuctioneerFilterButton"..i) then
+				local level = obj:GetFrameLevel()
+				obj:SetFrameLevel(level + 1)
+			end
 		end
 	end
 end

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster frFR locale (incomplete)
-Revision: $Revision: 65999 $
+Revision: $Revision: 73696 $
 Translated by:
 - Tixu@Curse
 - Silaor
@@ -244,7 +244,7 @@ L:RegisterTranslations("frFR", function() return {
 	["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "DS Ombre <- DS Ombre, DS, Intel, Esprit, Endu",
 	-- /rb sum stat heal
 	["Sum Healing"] = "Cumul Soins",
-	["Healing <- Healing, Intellect, Spirit, Strength"] = "Soins <- Soins, Intel, Esprit, Force",
+	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "Soins <- Soins, Intel, Esprit, Agi, Force",
 	-- /rb sum stat hit
 	["Sum Hit Chance"] = "Cumul Toucher",
 	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "Toucher <- Toucher, Score Arme",
@@ -372,7 +372,7 @@ L:RegisterTranslations("frFR", function() return {
 	["numberPatterns"] = {
 		{pattern = " de (%d+)", addInfo = "AfterNumber",},
 		{pattern = "(%d+) \195\160 votre ", addInfo = "AfterNumber",},
-		{pattern = "%+(%d+)", addInfo = "AfterStat",},
+		{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 		{pattern = "ajoute (%d+) (à|au)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 	},
 	["separators"] = {

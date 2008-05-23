@@ -23,7 +23,7 @@ if Quartz:HasModule('Focus') then
 end
 local QuartzFocus = Quartz:NewModule('Focus')
 
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 local math_min = math.min
 local unpack = unpack
@@ -194,6 +194,7 @@ function QuartzFocus:OnInitialize()
 		
 		showfriendly = true,
 		showhostile = true,
+		showtarget = true,
 	})
 end
 
@@ -208,7 +209,9 @@ function QuartzFocus:OnEnable()
 	self:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED")
 	self:RegisterEvent("UNIT_SPELLCAST_CHANNEL_INTERRUPTED", "UNIT_SPELLCAST_INTERRUPTED")
 	self:RegisterEvent("PLAYER_FOCUS_CHANGED")
-	self:RegisterEvent("SharedMedia_SetGlobal", function(mtype, override)
+	-- maybe only register PLAYER_TARGET_CHANGED if the db.profile.showtarget option is false and also do register/unregister in the set() func?
+	self:RegisterEvent("PLAYER_TARGET_CHANGED", "PLAYER_FOCUS_CHANGED")
+	media.RegisterCallback(self, "LibSharedMedia_SetGlobal", function(mtype, override)
 		if mtype == "statusbar" then
 			castBar:SetStatusBarTexture(media:Fetch("statusbar", override))
 		end
@@ -247,6 +250,11 @@ function QuartzFocus:UNIT_SPELLCAST_START(unit)
 	end
 	if not db.profile.showhostile then
 		if UnitIsEnemy('player', 'focus') then
+			return
+		end
+	end
+	if not db.profile.showtarget then
+		if UnitIsUnit('target', 'focus') then
 			return
 		end
 	end
@@ -297,6 +305,11 @@ function QuartzFocus:UNIT_SPELLCAST_CHANNEL_START(unit)
 	end
 	if not db.profile.showhostile then
 		if UnitIsEnemy('player', 'focus') then
+			return
+		end
+	end
+	if not db.profile.showtarget then
+		if UnitIsUnit('target', 'focus') then
 			return
 		end
 	end
@@ -414,6 +427,11 @@ function QuartzFocus:UNIT_SPELLCAST_DELAYED(unit)
 			return
 		end
 	end
+	if not db.profile.showtarget then
+		if UnitIsUnit('target', 'focus') then
+			return
+		end
+	end
 	local oldStart = startTime
 	local spell, rank, displayName, icon
 	spell, rank, displayName, icon, startTime, endTime = UnitCastingInfo(unit)
@@ -452,6 +470,11 @@ function QuartzFocus:PLAYER_FOCUS_CHANGED()
 	end
 	if not db.profile.showhostile then
 		if UnitIsEnemy('player', 'focus') then
+			return
+		end
+	end
+	if not db.profile.showtarget then
+		if UnitIsUnit('target', 'focus') then
 			return
 		end
 	end
@@ -749,6 +772,15 @@ do
 				get = get,
 				set = set,
 				passValue = 'showhostile',
+				order = 101,
+			},
+			showtarget = {
+				type = 'toggle',
+				name = L["Show if Target"],
+				desc = L["Show this castbar if focus is also target"],
+				get = get,
+				set = set,
+				passValue = 'showtarget',
 				order = 101,
 			},
 			h = {

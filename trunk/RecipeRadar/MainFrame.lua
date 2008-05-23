@@ -1,6 +1,6 @@
 
 -- MainFrame.lua: main Recipe Radar window code
--- $Id: MainFrame.lua 743 2007-02-06 06:22:50Z jnmiller $
+-- $Id: MainFrame.lua 1022 2008-03-07 20:57:50Z jnmiller $
 
 function RecipeRadar_MainFrame_Init()
 
@@ -195,6 +195,7 @@ function RecipeRadar_HideRecipeDetails()
    RecipeDetailName:Hide()
    RecipeDetailIcon:Hide()
    RecipeDetailCostText:Hide()
+   RecipeDetailSpecialText:Hide()
    RecipeDetailMoneyFrame:Hide()
    RecipeDetailNoteText:Hide()
    RecipeDetailRequirements:Hide()
@@ -234,11 +235,11 @@ function RecipeRadar_SetSelection(vendor, recipe, region_name)
       SetMoneyFrameColor("RecipeDetailMoneyFrame", 1.0, 0.1, 0.1);
    end
    if (recipe.Cost > 0) then  -- 0 denotes a non-monetary cost
-      MoneyFrame_Update("RecipeDetailMoneyFrame", recipe.Cost);
+      RecipeDetailSpecialText:Hide()
    else
-      getglobal("RecipeDetailMoneyFrameGoldButtonText"):
-            SetText(RRS("Special"));
+      RecipeDetailSpecialText:Show()
    end
+   MoneyFrame_Update("RecipeDetailMoneyFrame", recipe.Cost);
 
    -- some vendors have special requirements
    if (RecipeRadar_GetRecipeReqsString(recipe)) then

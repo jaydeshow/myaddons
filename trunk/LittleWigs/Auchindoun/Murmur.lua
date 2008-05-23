@@ -4,11 +4,8 @@
 
 local boss = BB["Murmur"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
-local L2 = AceLibrary("AceLocale-2.2"):new("BigWigsCommonWords")
 
 local pName = UnitName("player")
-local db = nil
-local fmt = string.format
 
 ----------------------------
 --      Localization      --
@@ -42,25 +39,26 @@ L:RegisterTranslations("enUS", function() return {
 } end)
 
 L:RegisterTranslations("koKR", function() return {
-	touch_message_you = "당신은 폭탄입니다!",
-	touch_message_other = "%s님이 폭탄입니다!",
+	touch_message = "%s에 %s!",
+	touch_message_you = "당신은 울림의 손길!",
+	touch_message_other = "%s에 울림의 손길!",
 
-	touchtimer = "폭발 시점에 대한 바",
-	touchtimer_desc = "울림의 손길에 걸린 사람이 폭발할 때 까지의 13초 바를 표시합니다.",
+	touchtimer = "울림의 손길 폭발에 대한 바",
+	touchtimer_desc = "울림의 손길에 걸린 플레이어가 폭발까지의 13초 바를 보여줍니다.",
 	touchtimer_bar = "%s: 울림의 손길",
 
-	youtouch = "자신의 폭탄 알림",
-	youtouch_desc = "당신이 폭탄일 때 알립니다.",
+	youtouch = "자신의 손길 알림",
+	youtouch_desc = "당신의 울림의 손길에 대해 알립니다.",
 
-	othertouch = "타인의 폭탄 알림",
-	othertouch_desc = "타인이 폭탄일 때 알립니다.",
+	othertouch = "타인의 손길 알림",
+	othertouch_desc = "타인의 울림의 손길에 대해 알립니다.",
 
 	icon = "폭탄 공격대 아이콘",
-	icon_desc = "폭탄인 사람에게 공격대 아이콘을 지정합니다. (승급자 이상 권한 요구)",
+	icon_desc = "울림의 손길에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 
 	sonicboom = "음파 폭발",
 	sonicboom_desc = "음파 폭발 시전 시 경고합니다.",
-	sonicboom_trigger = "대기에서 에너지를 흡수합니다...", -- check
+	sonicboom_trigger = "대기에서 에너지를 흡수합니다...",
 	sonicboom_alert = "5초 이내 음파 폭발!",
 	sonicboom_bar = "음파 폭발 시전!",
 } end)
@@ -90,21 +88,22 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("frFR", function() return {
-	touch_message_you = "Vous êtes la bombe !",
-	touch_message_other = "%s est la bombe !",
+	touch_message = "%s a le %s !",
+	touch_message_you = "Vous avez le Toucher de Marmon !",
+	touch_message_other = "%s a le Toucher de Marmon !",
 
-	touchtimer = "Délais avant explosion de la bombe",
-	touchtimer_desc = "Affiche une barre de 13 secondes indiquant quand la bombe explose sur la cible.",
+	touchtimer = "Délais avant fin du Toucher",
+	touchtimer_desc = "Affiche une barre de 13 secondes indiquant quand le Toucher de Marmon se termine sur la cible.",
 	touchtimer_bar = "%s : Toucher de Marmon",
 
-	youtouch = "Bombe (vous)",
-	youtouch_desc = "Préviens quand vous êtes la bombe.",
+	youtouch = "Toucher de Marmon sur vous",
+	youtouch_desc = "Préviens quand vous subissez les effets du Toucher de Marmon.",
 
-	othertouch = "Bombe (les autres)",
-	othertouch_desc = "Préviens quand les autres sont la bombe.",
+	othertouch = "Toucher de Marmon sur les autres",
+	othertouch_desc = "Préviens quand un autre joueur subit les effets du Toucher de Marmon.",
 
 	icon = "Icône",
-	icon_desc = "Place une icône de raid sur la personne qui est la bombe (nécessite d'être promu ou mieux).",
+	icon_desc = "Place une icône de raid sur le dernier joueur affecté par le Toucher de Marmon (nécessite d'être promu ou mieux).",
 
 	sonicboom = "Grondement sonore",
 	sonicboom_desc = "Préviens quand Marmon commence à lancer son Grondement sonore.",
@@ -155,9 +154,9 @@ L:RegisterTranslations("zhCN", function() return {
 	icon_desc = "在被成为炸弹的队友打上团队标记。（需要助理或更高权限）",
 
 	sonicboom = "音爆",
-	sonicboom_desc = "当摩摩尔开始施放音爆发出警告。",
+	sonicboom_desc = "当开始施放音爆时发出警告。",
 	sonicboom_trigger = "从空气中吸取能量……",
-	sonicboom_alert = "5秒后发动 音爆！快速跑出音爆范围～",
+	sonicboom_alert = "5秒后，发动音爆！快速跑出音爆范围！",
 	sonicboom_bar = "<正在施放音爆>",
 } end)
 
@@ -195,43 +194,41 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"sonicboom", -1, "touchtimer", "youtouch", "othertouch", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 74084 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Touch", 33711, 38794)
+	self:AddCombatListener("SPELL_CAST_START", "Boom", 33923, 38796)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Touch", 33711, 33760, 38794) -- from wowhead, 33711 is probably the correct one
-	self:RegisterEvent("CHAT_MSG_MONSTER_EMOTE")
-
-	db = self.db.profile
 end
 
 ------------------------------
 --      Event Handlers      --
 ------------------------------
 
-function mod:Touch(player, spellID)
-	if player == pName and db.youtouch then
-		self:Message(L["touch_message_you"], "Personal", true)
-		self:Message(fmt(L["touch_message_other"], player), "Attention", nil, nil, true)		
-	elseif db.othertouch then
-		self:Message(fmt(L["touch_message_other"], player), "Attention")
+function mod:Touch(player, spellId)
+	if player == pName and self.db.profile.youtouch then
+		self:LocalMessage(L["touch_message_you"], "Personal", spellId, "Alarm")
+		self:WideMessage(L["touch_message_other"]:format(player))
+	elseif self.db.profile.othertouch then
+		self:IfMessage(L["touch_message_other"]:format(player), "Attention", spellId)
 		self:Whisper(player, L["touch_message_you"])
 	end
-	if player and db.touchtimer then
-		self:Bar(fmt(L["touchtimer_bar"], player), 13, spellID, "Red")
+	if self.db.profile.touchtimer then
+		self:Bar(L["touchtimer_bar"]:format(player), 13, spellID, "Red")
 	end
-	if player and db.icon then
+	if self.db.profile.icon then
 		self:Icon(player)
 	end	
 end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if db.sonicboom and msg:find(L["sonicboom_trigger"]) then
-		self:Message(L["sonicboom_alert"], "Important")
-		self:Bar(L["sonicboom_bar"], 5, "Spell_Nature_AstralRecal", "Red")
+function mod:Boom()
+	if self.db.profile.sonicboom then
+		self:IfMessage(L["sonicboom_alert"], "Important", 33923)
+		self:Bar(L["sonicboom_bar"], 5, 33923, "Red")
 	end
 end

@@ -42,66 +42,66 @@ end
 -- zBar2 defaults
 zBar2.defaults = {
 	["*"] = {saves = {num = 12, inset = 0, layout = "line", linenum = 2, alpha = 1,},},
-	["zExBar1"] = { saves = { num=6,},
-		pos = {"CENTER",0,0},
+	["zExBar1"] = { saves = { num=12,},
+		pos = {"CENTER",300,0},
 	},
-	["zShadow1"] = { saves = {num=6, max=6,},
-		pos = {"CENTER",72,0},
-	},
-	["zExBar2"] = { saves = { num=6,},
+	["zShadow1"] = { saves = {num=0, max=6, hide=true, hideTab=true,},
 		pos = {"CENTER",-72,0},
 	},
-	["zShadow2"] = { saves = {num=6, max=6,},
+	["zExBar2"] = { saves = { num=12,},
+		pos = {"CENTER",220,0},
+	},
+	["zShadow2"] = { saves = {num=0, max=6, hide=true, hideTab=true,},
 		pos = {"CENTER",-144,0},
 	},
 
 	["zMainBar"] = {
 		saves = {linenum = 12, hideTab=true,},
-		pos = {"BOTTOM",-100,60-24},
+		pos = {"BOTTOM",-100,60},
 	},
 	["zMultiR2"] = {
 		saves = {linenum = 1,},
-		pos ={"BOTTOMRIGHT",-47,530-24},
+		pos ={"BOTTOMRIGHT",-47,530},
 	},
 	["zMultiR1"] = {
 		saves = {linenum = 1,},
-		pos ={"BOTTOMRIGHT",-7,530-24},
+		pos ={"BOTTOMRIGHT",-7,530},
 	},
 	["zMultiBR"] = {
 		saves = {linenum = 12, hideTab=true,},
-		pos ={"BOTTOM",-100,132-24},
+		pos ={"BOTTOM",-100,132},
 	},
 	["zMultiBL"] = {
 		saves = {linenum = 12, hideTab=true,},
-		pos ={"BOTTOM",-100,96-24},
+		pos ={"BOTTOM",-100,96},
 	},
 
 	["zPetBar"] = {
 		saves = {num = 10, inset = 6, linenum = 10, max = 10, scale = 0.8,
 			hideTab=true,hideHotkey=true,},
-		pos = {"BOTTOM",-100,222-24/0.8},
+		pos = {"BOTTOM",-100,242-24/0.8},
 	},
 	["zStanceBar"] = {
 		saves = {num=10, inset = 10, linenum = 10, max = 10, scale = 0.8,
 			hideTab=true,hideHotkey=true,},
-		pos = {"BOTTOM",-100,222-24/0.8},
+		pos = {"BOTTOM",-100,242-24/0.8},
 	},
 	["zPossessBar"] = {
 		saves = {num=2, inset = 10, linenum = 2, max = 2, scale = 0.8,
 			hideTab=true,hideHotkey=true,},
-		pos = {"BOTTOM",330,222-24/0.8},
+		pos = {"BOTTOM",330,242-24/0.8},
 	},
 	["zBagBar"] = {
 		saves = {num=6, linenum=6, max=6, scale=0.75, hideTab=true, invert=true},
-		pos = {"BOTTOMRIGHT",-3,106-24/0.75},
+		pos = {"BOTTOMRIGHT",-3,120-24/0.75},
 	},
 	["zMicroBar"] = {
 		saves = {num=8, linenum=8, max=8, scale=0.73, hideTab=true,},
-		pos = {"BOTTOMRIGHT",-190,68-24/0.73},
+		pos = {"BOTTOMRIGHT",-190,82-24/0.73},
 	},
 	["zXPBar"] = {
 		saves = {num = 3, max = 3, scale=0.422,},
-		pos = {"BOTTOM",230, 333-24/0.422},
+		pos = {"BOTTOM",230, 393-24/0.422},
 	},
 	["zCastBar"] = {
 		saves = {num = 2, max = 2, hideTab=true,},

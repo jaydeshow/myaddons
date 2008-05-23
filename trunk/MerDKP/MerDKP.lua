@@ -55,7 +55,7 @@ M.opt = {
 	CurrentRaid = nil, --当前团队or所有DKP
 	SaveDkplist = nil, --保存记录到本地
 	ConfirmSend = nil, --发送前确认
-	HideWhisper = true, --是否显示|隐藏查询的纪录
+	HideWhisper = nil, --是否显示|隐藏查询的纪录
 	IgnoreOffline = nil, --不显示离线成员
 	InitClasses = true, --载入后 检查职业并分类
 	

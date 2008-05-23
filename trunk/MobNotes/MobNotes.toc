@@ -1,6 +1,8 @@
 ## Interface: 20400
 ## Title: MobNotes
 ## Notes: Allows you to add notes to mob tooltips.
+## Notes-zhCN: 允许你增加注解到怪物的工具提示。
+## Notes-zhTW: 允許你增加註解到怪物的工具提示。
 ## Author: Rabbit
 ## X-eMail: rabbit.magtheridon@gmail.com
 ## Version: 1.1

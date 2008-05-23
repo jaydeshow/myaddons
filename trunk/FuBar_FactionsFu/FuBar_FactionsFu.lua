@@ -1,4 +1,4 @@
-local deformat = AceLibrary("Deformat-2.0")
+--~ local deformat = AceLibrary("Deformat-2.0")
 local tablet = AceLibrary("Tablet-2.0")
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_FactionsFu")
 
@@ -16,7 +16,7 @@ local gender = UnitSex("player")
 
 FuBar_FactionsFu = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceConsole-2.0", "AceDB-2.0", "AceHook-2.1", "FuBarPlugin-2.0")
 local FuBar_FactionsFu = FuBar_FactionsFu
-FuBar_FactionsFu.revision = tonumber(string.sub("$Revision: 62954 $", 12, -3)) or 1
+FuBar_FactionsFu.revision = tonumber(string.sub("$Revision: 74036 $", 12, -3)) or 1
 
 FuBar_FactionsFu.hasIcon = "Interface\\Icons\\Spell_Holy_SealOfSalvation"
 FuBar_FactionsFu.canHideText = true
@@ -407,19 +407,19 @@ function FuBar_FactionsFu:Hook_ExpandFactionHeader(id)
 	self.db.char.collapsed[name] = nil
 end
 
-function FuBar_FactionsFu:CHAT_MSG_COMBAT_FACTION_CHANGE()
-	local faction, change
---	self:Print("FACTION_STANDING_CHANGED:", deformat(arg1, FACTION_STANDING_CHANGED))
---	self:Print("FACTION_STANDING_INCREASED", deformat(arg1, FACTION_STANDING_INCREASED))
---	self:Print("FACTION_STANDING_DECREASED", deformat(arg1, FACTION_STANDING_DECREASED))
-	faction, change = deformat(arg1, FACTION_STANDING_INCREASED)
-	if faction and change then
-		self.SessionChanges[faction] = (self.SessionChanges[faction] or 0) + change
-	else
-		faction, change = deformat(arg1, FACTION_STANDING_DECREASED)
-		if faction and change then
-			self.SessionChanges[faction] = (self.SessionChanges[faction] or 0) - change
-		end
-	end
-	self:UpdateTooltip()
-end
+--~ function FuBar_FactionsFu:CHAT_MSG_COMBAT_FACTION_CHANGE()
+--~ 	local faction, change
+--~ --	self:Print("FACTION_STANDING_CHANGED:", deformat(arg1, FACTION_STANDING_CHANGED))
+--~ --	self:Print("FACTION_STANDING_INCREASED", deformat(arg1, FACTION_STANDING_INCREASED))
+--~ --	self:Print("FACTION_STANDING_DECREASED", deformat(arg1, FACTION_STANDING_DECREASED))
+--~ 	faction, change = deformat(arg1, FACTION_STANDING_INCREASED)
+--~ 	if faction and change then
+--~ 		self.SessionChanges[faction] = (self.SessionChanges[faction] or 0) + change
+--~ 	else
+--~ 		faction, change = deformat(arg1, FACTION_STANDING_DECREASED)
+--~ 		if faction and change then
+--~ 			self.SessionChanges[faction] = (self.SessionChanges[faction] or 0) - change
+--~ 		end
+--~ 	end
+--~ 	self:UpdateTooltip()
+--~ end

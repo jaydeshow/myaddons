@@ -315,11 +315,15 @@ end
 -- Save health data for current target in health database
 --
 function MI2_SaveTargetHealthData( updateOnly )
-	if MI2_Target.index and MI2_HpData and MI2_HpData.newMax then
-	    local newHpMax = MI2_HpData.newMax
-	    local newQuality = MI2_HpData.newQuality
+	-- nothing to do if there is no health data
+	if MI2_HpData == nil then return end
+	
+    local newHpMax = MI2_HpData.newMax
+    local newQuality = MI2_HpData.newQuality
+
+	if newHpMax and newQuality and newQuality >= MI2_HpData.dbQuality then
 	    if MI2_HpData.pct and MI2_HpData.pct < 10 then newQuality = 1 end
-		if newQuality == MI2_HpData.dbQuality then
+		if newQuality == MI2_HpData.dbQuality and newQuality < 3 then
 		    local delta = newHpMax / 100 + 1
 		    if MI2_HpData.dbQuality == 1 or abs(MI2_HpData.dbMax - newHpMax) > delta then
 				newHpMax = (MI2_HpData.dbMax + newHpMax) / 2

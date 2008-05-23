@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: XLoot |cFF77BBFFMonitor|r
 ## Notes: A live monitor of loot picked up by yourself and your group
 ## Notes-esES: Monitoriza el botín que recoges tanto tú como tu grupo

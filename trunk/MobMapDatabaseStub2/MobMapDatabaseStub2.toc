@@ -1,4 +1,4 @@
-﻿## Interface: 20300
+## Interface: 20400
 
 ## Title: |cff0099FF<CWDG>|r|cffffffffMobMap数据库2|r
 ## Notes: This is a load-on-demand addon stub for the MobMap quest database.

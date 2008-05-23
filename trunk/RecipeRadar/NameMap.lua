@@ -1,6 +1,6 @@
-
+﻿
 -- NameMap.lua: recipes named differently after learning
--- Auto generated on 10/10/2007 10:09:54 AM
+-- Auto generated on 3/5/2008 3:33:53 PM
 
 RecipeRadar_NameMap = {
 
@@ -23,11 +23,8 @@ RecipeRadar_NameMap = {
       ["Transmute: Skyfire Diamond"] = "Transmute Skyfire Diamond",
       -- Enchanting
       ["Enchant Bracer - Healing Power"] = "Enchant Bracer - Healing",
-      ["Enchant Ring - Striking"] = "Enchant Ring - Weapon Might",
-      ["Enchant Weapon - Unholy Weapon"] = "Enchant Weapon - Unholy",
       -- Leatherworking
       ["Felstalker Bracer"] = "Felstalker Bracers",
-      ["Redeemed Soul Mocassins"] = "Redeemed Soul Moccasins",
       -- Cooking
       ["Mithril Headed Trout"] = "Mithril Head Trout",
       -- Jewelcrafting
@@ -59,11 +56,8 @@ RecipeRadar_NameMap = {
       ["Transmute: Skyfire Diamond"] = "Transmute Skyfire Diamond",
       -- Enchanting
       ["Enchant Bracer - Healing Power"] = "Enchant Bracer - Healing",
-      ["Enchant Ring - Striking"] = "Enchant Ring - Weapon Might",
-      ["Enchant Weapon - Unholy Weapon"] = "Enchant Weapon - Unholy",
       -- Leatherworking
       ["Felstalker Bracer"] = "Felstalker Bracers",
-      ["Redeemed Soul Mocassins"] = "Redeemed Soul Moccasins",
       -- Cooking
       ["Mithril Headed Trout"] = "Mithril Head Trout",
       -- Jewelcrafting
@@ -85,7 +79,9 @@ RecipeRadar_NameMap = {
       ["Transmutieren: Erde zu Wasser"] = "Erde zu Wasser transmutieren",
       ["Transmutieren: Feuer zu Erde"] = "Feuer zu Erde transmutieren",
       ["Transmutieren: Wasser zu Luft"] = "Wasser zu Luft transmutieren",
-      ["Fl�schchen mit oberster Macht"] = "Fl�schchen der obersten Macht",
+      ["Fläschchen mit destillierter Weisheit"] = "Fläschchen der destillierten Weisheit",
+      ["Fläschchen mit oberster Macht"] = "Fläschchen der obersten Macht",
+      ["Fläschchen mit chromatischem Widerstand"] = "Fläschchen des chromatischen Widerstands",
       ["Super Manatrank"] = "Erstklassiger Manatrank",
       ["Transmutieren: Urluft zu Feuer"] = "Urluft zu Feuer transmutieren",
       ["Transmutieren: Urerde zu Wasser"] = "Urerde zu Wasser transmutieren",
@@ -105,10 +101,10 @@ RecipeRadar_NameMap = {
       -- Enchanting
       ["Zweihandwaffen - Beweglichkeit"] = "Zweihandwaffe - Beweglichkeit",
       ["Armschiene - Heilkraft"] = "Armschiene - Heilung",
-      ["Ring - Schlagen"] = "Ring - Waffenmacht",
       -- Engineering
       ["Gnomen-Universalfernbedienung"] = "Gnomenuniversalfernbedienung",
       ["Tiefentaucherhelm"] = "Helm des Tiefseetauchers",
+      ["Adamantitpatronen"] = "Maschine für Adamantitpatronen",
       -- Leatherworking
       ["Urzeitliche Fledermaushautwams"] = "Urzeitliches Fledermaushautwams",
       -- Tailoring
@@ -119,66 +115,156 @@ RecipeRadar_NameMap = {
       -- Cooking
       ["Westfall-Eintopf"] = "Westfalleintopf",
       ["Teufelsfinne"] = "Teufelsfinne Supreme",
-      ["Geschw�rzter Basilisk"] = "Schwarzgebratener Basilisk",
+      ["Geschwärzter Basilisk"] = "Schwarzgebratener Basilisk",
       -- Jewelcrafting
       ["Figur - Schwarzer Perlenpanther"] = "Schwarzer Perlenpanther",
       ["Figur - Echtsilberkrebs"] = "Echtsilberkrebs",
-      ["K�nigsschattendraenit"] = "K�niglicher Schattendraenit",
+      ["Königsschattendraenit"] = "Königlicher Schattendraenit",
       ["Figur - Teufelsstahleber"] = "Teufelsstahleber",
-      ["Figur - D�mmersteinkrebs"] = "D�mmersteinkrebs",
+      ["Figur - Dämmersteinkrebs"] = "Dämmersteinkrebs",
       ["Figur - Lebendige Rubinschlange"] = "Lebendige Rubinschlange",
       ["Figur - Talasiteule"] = "Talasiteule",
       ["Figur - Nachtaugenpanther"] = "Nachtaugenpanther",
    },
 
    ["frFR"] = {
+      -- Alchemy
+      ["Transmutation : Fer en Or"] = "Transmutation du fer en or",
+      ["Transmutation : Mithril en Vrai-argent"] = "Transmutation du mithril en vrai-argent",
+      ["Elixir de puissance de l'ombre"] = "Elixir de puissance de l'Ombre",
+      ["Transmutation : Terre en Eau"] = "Transmutation de la Terre en Eau",
+      ["Transmutation : Feu en Terre"] = "Transmutation du Feu en Terre",
+      ["Transmutation : Eau en Air"] = "Transmutation de l'Eau en Air",
+      ["Transmutation : Feu élémentaire"] = "Transmutation du feu élémentaire",
+      ["Transmutation primordiale : Air en Feu"] = "Transmutation primordiale (Air en Feu)",
+      ["Transmutation primordiale : Terre en Eau"] = "Transmutation primordiale (Terre en Eau)",
+      ["Transmutation primordiale : Feu en Terre"] = "Transmutation primordiale (Feu en Terre)",
+      ["Transmutation primordiale : Eau en Air"] = "Transmutation primordiale (Eau en Air)",
+      ["Transmutation primordiale : Pouvoir"] = "Transmutation primordiale (Pouvoir)",
+      ["Transmutation : Diamant tonneterre"] = "Transmutation de diamant tonneterre",
+      ["Transmutation : Diamant brûleciel"] = "Transmutation de diamant brûleciel",
+      -- Blacksmithing
+      ["Epée d'acier lunaire"] = "Epée large en acier lunaire",
+      ["Kriss d'ébène"] = "Coutelas d'ébène",
+      ["Gardien de sauvegarde inférieure"] = "Gardien de sauvegarde inférieur",
+      -- Enchanting
+      ["Ench. de plastron (Mana mineur)"] = "Enchantement de plastron (Mana mineur)",
+      ["Ench. de plastron (Mana inférieur)"] = "Enchantement de plastron (Mana inférieur)",
+      ["Ench. d'arme 2M (Intelligence inférieure)"] = "Enchantement d'arme 2M (Intelligence inférieure)",
+      ["Ench. de cape (Agilité mineure)"] = "Enchantement de cape (Agilité mineure)",
+      ["Ench. de bottes (Agilité mineure)"] = "Bottes enchantées (Agilité mineure)",
+      ["Ench. de brassards (Force inférieure)"] = "Enchantement de brassards (Force inférieure)",
+      ["Ench. de brassards (Déviation inférieure)"] = "Enchantement de brassards (Déviation inférieure)",
+      ["Ench. de brassards (Déviation)"] = "Enchantement de brassards (Déviation)",
+      ["Ench. de bouclier (Endurance supérieure)"] = "Enchantement de bouclier (Endurance supérieure)",
+      ["Ench. de plastron (Vie majeure)"] = "Enchantement de plastron (Vie majeure)",
+      ["Ench. de cape (Défense excellente)"] = "Enchantement de cape (Défense excellent)",
+      ["Ench. d'arme (Force)"] = "Enchantement d'arme (Force)",
+      ["Ench. d'arme (Agilité)"] = "Enchantement d'arme (Agilité)",
+      ["Ench. de brassards (Régénération de mana)"] = "Enchantement de brassards (Régénération de mana)",
+      ["Ench. d'arme 2M (Agilité)"] = "Enchantement d'arme 2M (Agilité)",
+      ["Ench. de brassards (Pouvoir de guérison)"] = "Enchantement de brassards (Soin)",
+      ["Ench. d'arme (Esprit renforcé)"] = "Enchant Weapon - Mighty Spirit",
+      ["Ench. d'arme (Intelligence renforcée)"] = "Enchantement d'arme (Intelligence renforcée)",
+      ["Ench. de gants (Menace)"] = "Enchantement de gants (Menace)",
+      ["Ench. de gants (Agilité excellente)"] = "Enchantement de gants (Agilité excellente)",
+      ["Ench. de cape (Résistance au Feu supérieure)"] = "Enchantement de cape (Résistance au Feu supérieure)",
+      ["Ench. de cape (Résistance à la Nature supérieure)"] = "Enchantement de cape (Résistance à la Nature supérieure)",
+      ["Ench. de cape (Camouflage)"] = "Enchantement de cape (Camouflage)",
+      ["Ench. de cape (Discrétion)"] = "Enchantement de cape (Discrétion)",
+      ["Ench. de cape (Esquive)"] = "Enchantement de cape (Esquive)",
+      ["Ench. de brassards (Soins excellents)"] = "Enchantement de brassard (Soins excellents)",
+      ["Ench. de bouclier (Intelligence)"] = "Enchantement de bouclier (Intelligence)",
+      ["Ench. de cape (Pénétration des sorts)"] = "Enchantement de cape (Pénétration des sorts)",
+      ["Ench. de bouclier (Endurance majeure)"] = "Enchantement de bouclier (Endurance majeure)",
+      ["Ench. d'arme (Frappe majeure)"] = "Enchantement d'arme (Frappe majeure)",
+      ["Ench. de plastron (Caractéristiques exceptionnelles)"] = "Enchantement de plastron (Caractéristiques exceptionelles)",
+      ["Ench. de gants (Soins majeurs)"] = "Enchantement de gants (Soins majeurs)",
+      ["Ench. d'arme (Soins majeurs)"] = "Enchantement d'arme (Soins majeurs)",
+      ["Ench. d'arme (Agilité supérieure)"] = "Enchantement d'arme (Agilité supérieure)",
+      ["Ench. d'anneau (Frappe)"] = "Enchantement d'anneau (Frappe)",
+      ["Ench. d'anneau (Puissance des sorts)"] = "Enchantement d'anneau (Puissance des sorts)",
+      ["Ench. de gants (Frappe-sort)"] = "Enchantement de gants (Frappe-sort)",
+      ["Ench. de gants (Puissance des sorts majeure)"] = "Enchantement de gants (Puissance des sorts majeure)",
+      ["Ench. d'anneau (Pouvoir de guérison)"] = "Enchantement d'anneau (Pouvoir de guérison)",
+      ["Ench. d'anneau (Caractéristiques)"] = "Enchantement d'anneau (Caractéristiques)",
+      -- Engineering
+      ["Rouage en thorium"] = "Rouages en thorium",
+      ["Lunettes de détection ultra-spectroscopiques"] = "Lunettes de détection ultra-spectroscopique",
+      -- Leatherworking
+      ["Ceinture en cuir clouté de gemmes"] = "Ceinture en cuir cloutée de gemmes",
+      ["Demi-bottes de l'aube"] = "Bottines de l'aube",
+      ["Bottes en gangrécailles enchantées"] = "Bottes enchantées en gangrécailles",
+      ["Gants en gangrécailles enchantés"] = "Gants enchantés en gangrécailles",
+      ["Jambières en gangrécailles enchantées"] = "Jambières enchantées en gangrécailles",
+      ["Bottes du Sabot-fourchu enchantées"] = "Bottes enchantées du sabot-fourchu",
+      ["Gants du Sabot-fourchu enchantés"] = "Gants enchantés du sabot-fourchu",
+      ["Jambières du Sabot-fourchu enchantées"] = "Jambières enchantées du sabot-fourchu",
+      ["Armure de jambe de cobra du Néant"] = "Armure de jambe en cobra du Néant",
+      -- Cooking
+      ["Biscuit au pain d'épices"] = "Biscuit de pain d'épice",
+      ["Délice de gangre-queue"] = "Délice de gangrequeue",
+      ["Bâtonnet de palourdes"] = "Bâtonnets de palourdes",
+      ["Steack dimensionnel"] = "Steak dimensionnel",
+      -- Jewelcrafting
+      ["Figurine - Panthère de perle noire"] = "Panthère de perle noire",
+      ["Figurine - Crabe en vrai-argent"] = "Crabe en vrai-argent",
+      ["Coeur de Don Julio"] = "Coeur de don Julio",
+      ["Étoile filante"] = "Etoile filante",
+      ["Sang d'Ambre"] = "Sang d'ambre",
+      ["Diamant tonneterre de fringance"] = "Diamant tonneterre tonifiant",
+      ["Diamant tonneterre de perspicacité"] = "Diamant tonneterre perspicace",
+      ["Figurine - Sanglier en gangracier"] = "Sanglier en gangracier",
+      ["Figurine - Crabe de pierre d'aube"] = "Crabe de pierre d'aube",
+      ["Figurine - Serpent de rubis vivant"] = "Serpent de rubis vivant",
+      ["Figurine - Chouette de talasite"] = "Chouette de talasite",
+      ["Figurine - Panthère d'oeil de nuit"] = "Panthère d'oeil de nuit",
+      ["Saphir empyréen satiné"] = "Shapir empyréen satiné",
+      ["Oeil de lion resplendissant"] = "Oeil de nuit resplendissant",
+      ["Pyrolithe toute-puissante"] = "Pyrolithe tout-puissant",
+      ["Pyrolithe pernicieuse"] = "Pyrolithe pernicieux",
    },
 
    ["esES"] = {
       -- Alchemy
       ["Pocin de Proteccin contra lo Sagrado"] = "pocin de proteccin contra lo Sagrado",
-      ["Pocin de Proteccin contra el Fuego"] = "pocin de proteccin contra el Fuego",
-      ["Pocin de Proteccin contra la Escarcha"] = "pocin de proteccin contra la Escarcha",
-      ["Pocin de Proteccin contra las Sombras"] = "pocin de proteccin contra las Sombras",
       ["Transmutar: arcanita"] = "transmutar arcanita",
       ["Transmutar: hierro a oro"] = "transmutar hierro a oro",
       ["Transmutar: mitril a veraplata"] = "transmutar mitril a veraplata",
-      ["Transmutar: fuego a tierra"] = "transmutar fuego a tierra",
+      ["Transmutar: fuego a tierra"] = "transmutar fuego en tierra",
       ["Transmutar: aire en fuego"] = "transmutar aire en fuego",
-      ["Transmutar: tierra a agua"] = "transmutar tierra en agua",
-      ["Transmutar: agua a aire"] = "transmutar agua a aire",
+      ["Transmutar: tierra a agua"] = "transmutar tierra a agua",
+      ["Transmutar: agua a aire"] = "transmutar agua en aire",
       ["Transmutar: fuego elemental"] = "transmutar fuego elemental",
-      ["Frasco de los Titanes"] = "frasco de los titanes",
       ["Transmutar: aire primigenio a fuego primigenio"] = "transmutar aire primigenio en fuego",
       ["Transmutar: tierra primigenia a agua primigenia"] = "transmutar tierra primigenia a agua",
       ["Transmutar: fuego primigenio a tierra primigenia"] = "transmutar fuego primigenio a tierra",
       ["Transmutar: podero primigenio"] = "transmutar poder primigenio",
-      ["Transmutar: agua primigenia a aire primigenio"] = "Transmutar agua primigenia a aire",
+      ["Transmutar: agua primigenia a aire primigenio"] = "transmutar agua primigenia a aire",
       ["Transmutar: diamante de tormenta de tierra"] = "transmutar diamante de tormenta de tierra",
       ["Transmutar: diamante de fuego celeste"] = "transmutar diamante de fuego celeste",
       ["Transmutar: diamante de fuego celeste"] = "transmutar diamante de fuego celeste",
       ["Transmutar: fuego primigenio a tierra primigenia"] = "Transmutar fuego primigenio a tierra",
       -- Blacksmithing
-      ["Cinturn Fauces de Madera pesado"] = "cinturn Fauces de Madera grueso",
-      ["Botas Fauces de Madera pesadas"] = "botas Fauces de Madera gruesas",
       ["Guanteletes alma de sangre"] = "guanteletes Alma de sangre",
       ["Sobrehombros alma de sangre"] = "sobrehombros Alma de sangre",
+      ["Coraza Parrafrrea"] = "coraza parrafrrea",
+      ["Guantes Parrafrrea"] = "guantes parrafrrea",
+      ["Cinturn Parrafrrea"] = "cinturn parrafrrea",
       ["Contrapeso de adamantita"] = "contrapeso de arcanita",
       -- Enchanting
       ["Encantar arma 2M: intelecto inferior"] = "encantar arma de 2M: intelecto inferior",
+      ["Encantar arma: fuerza"] = "encantar arma: fortaleza",
       ["Encantar brazal: poder de sanacin"] = "encantar brazal: sanacin",
       ["Encantar capa: resistencia al Fuego superior"] = "encantar capa: Resistencia al Fuego superior",
       ["Encantar arma 2M: agilidad"] = "encantar arma de 2M: agilidad",
       ["Encantar anillo: golpear"] = "encantar anillo: podero de arma",
       -- Engineering
-      ["Granada de torio"] = "Thorium Grenade",
-      ["Trasto de torio"] = "Thorium Widget",
+      ["Trasto de torio"] = "trastos wow de torio",
       -- Leatherworking
-      ["Capa de cra negra"] = "Black Whelp Cloak",
       ["Brazales de escrpido pesados"] = "brazales de escrpido gruesos",
       ["Yelmo de escrpido pesado"] = "yelmo de escrpido grueso",
-      ["Cinturn de can del Ncleo"] = "cinturn del can del Ncleo",
-      ["Botas de can del Ncleo"] = "botas de can del ncleo",
+      ["Coraza Escupefuego"] = "coraza escupefuego",
       ["Brazales acecharenas"] = "brazales Acecharenas",
       ["Guanteletes acecharenas"] = "guanteletes Acecharenas",
       ["Coraza acecharenas"] = "coraza Acecharenas",
@@ -186,14 +272,13 @@ RecipeRadar_NameMap = {
       ["Brazal de acechador vil"] = "brazales de acechador vil",
       ["Jubn uagrieta pesado"] = "jubn de uagrieta grueso",
       ["Leotardos uagrieta encantados"] = "leotardos de uagrieta encantados",
+      ["Carcaj de mil plumas"] = "carcaj de las mil plumas",
       -- Tailoring
-      ["Bolsa de las Sombras de bano"] = "Bolsa de sombra de bano",
-      ["Capa de Evasin Arcana"] = "capa de evasin Arcana",
+      ["Bolsa de las Sombras de bano"] = "bolsa de Sombra de bano",
       ["Tnica de tejido de sombra congelado"] = "toga de tejido de sombra congelado",
       ["Hilo de hechizo de oro"] = "hilo de hechizo dorado",
       -- Cooking
-      ["Delicia de furia de Loch Modan"] = "Loch Frenzy Delight",
-      ["Ponche de huevo"] = "Egg Nog",
+      ["Bacalao Piedrescama"] = "bacalao piedrescama",
       -- Jewelcrafting
       ["Figurilla: cangrejo de veraplata"] = "cangrejo de veraplata",
       ["Figurilla: pantera de perla negra"] = "pantera de perla negra",
@@ -202,11 +287,58 @@ RecipeRadar_NameMap = {
       ["Figurilla: jabal de acero vil"] = "jabal de acero vil",
       ["Figurilla: serpiente de rub vivo"] = "serpiente de rub vivo",
       ["Figurilla: pantera de ojo de noche"] = "pantera de ojo de noche",
-      ["Anillo de proteccin arcana"] = "anillo de proteccin Arcana",
       ["Figurilla: bho de talasita"] = "bho de talasita",
+      ["Piedra del alba mstica"] = "Mystic Dawnstone",
+      ["Sol carmes"] = "Crimson Sun",
+      ["Corazn de Don Julio"] = "Don Julio&#039;s Heart",
    },
 
    ["zhTW"] = {
+      -- Alchemy
+      ["轉化:轉鐵成金"] = "轉鐵成金",
+      ["轉化:奧金"] = "轉化奧金",
+      ["轉化:轉氣成火"] = "轉氣成火",
+      ["轉化:轉土成水"] = "轉土成水",
+      ["轉化:土轉生命"] = "土轉生命",
+      ["轉化:轉火成土"] = "轉火成土",
+      ["轉化:死靈化水"] = "死靈化水",
+      ["轉化:轉水成氣"] = "轉水成氣",
+      ["轉化:水轉死靈"] = "水轉死靈",
+      ["轉化:生命歸土"] = "生命歸土",
+      -- Alchemy
+      ["轉化:元素火焰"] = "轉化元素火焰",
+      ["轉化:原始空氣轉原始之火"] = "原始空氣轉化原始之火",
+      ["轉化:原始大地轉原始之水"] = "原始大地轉化原始之水",
+      ["轉化:原始之火轉原始大地"] = "原始之火轉化原始大地",
+      ["轉化:原始之水轉原始空氣"] = "原始之水轉化原始空氣",
+      ["轉化:原始力量"] = "轉化原始力量",
+      ["轉化:大地風暴鑽石"] = "轉化大地風暴鑽石",
+      ["轉化:天火鑽石"] = "轉化天火鑽石",
+      -- Blacksmithing
+      ["綠鐵戰靴"] = "綠鐵長靴",
+      -- Blacksmithing
+      ["拋光鋼鐵戰靴"] = "拋光鋼鐵長靴",
+      ["金鱗戰靴"] = "金鱗長靴",
+      -- Blacksmithing
+      ["黑鐵戰靴"] = "黑鐵長靴",
+      ["黑色毀滅者手套"] = "毀滅者之黑握",
+      ["次級護盾護咒"] = "次級護盾禦符",
+      ["強效護盾護咒"] = "強效護盾禦符",
+      ["紅色浩劫戰靴"] = "紅色浩劫長靴",
+      -- Enchanting
+      ["附魔護腕 - 治療能量"] = "附魔護腕 - 治療",
+      -- Leatherworking
+      ["硬化蠍殼戰靴"] = "硬化蠍殼長靴",
+      ["蠻皮戰靴"] = "蠻皮長靴",
+      -- Leatherworking
+      ["魔暴龍皮護腿"] = "魔暴龍護腿",
+      ["黑色龍鱗戰靴"] = "黑色龍鱗長靴",
+      ["眼鏡蛇鱗頭套"] = "眼鏡蛇鱗兜帽",
+      ["自然之擁長靴"] = "自然之擁之靴",
+      -- Tailoring
+      ["紅色節慶褲子"] = "節慶衣服",
+      -- Tailoring
+      ["復仇披風"] = "復仇裹布",
    },
 
 }

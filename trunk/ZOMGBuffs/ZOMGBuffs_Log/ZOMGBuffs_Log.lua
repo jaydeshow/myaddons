@@ -4,16 +4,13 @@ if (ZOMGLog) then
 end
 
 local L = LibStub("AceLocale-2.2"):new("ZOMGLog")
-local R = LibStub("AceLocale-2.2"):new("ZOMGReagents")
-local BS = LibStub("LibBabble-Spell-3.0"):GetLookupTable()
-local roster = LibStub("Roster-2.1")
 local ZFrame
 
 local z = ZOMGBuffs
 local mod = z:NewModule("ZOMGLog")
 ZOMGLog = mod
 
-z:CheckVersion("$Revision: 66100 $")
+z:CheckVersion("$Revision: 70639 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 
@@ -132,7 +129,11 @@ end
 function mod:GetString(index)
 	local a = self.db.profile.log[index]
 	if (a and a[1] and self.registeredDecodes[a[1]]) then
-		return format("%s %s> %s", date("%X",a[2]), z:ColourUnitByName(a[3]), self.registeredDecodes[a[1]](select(4, unpack(a))))
+		local lineColour = "|cFFFFFFFF"
+		if (a[1] == "bless") then
+			lineColour = "|cFFFF8080"
+		end
+		return format("%s%s|r %s> %s", lineColour, date("%X",a[2]), z:ColourUnitByName(a[3], true), self.registeredDecodes[a[1]](select(4, unpack(a))))
 	end
 end
 
@@ -143,8 +144,7 @@ function mod:CreateLogFrame()
 	local logFrame = ZFrame:Create(self, "|cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFFFFFFFFLog|r", "Log", 1, 0.7, 0)
 	self.logFrame = logFrame
 
-	logFrame:SetSize(500, 280)
-	logFrame:SetSizable(true)
+	logFrame:SetSize(580, 280)
 	logFrame:RestorePosition()
 
 	logFrame.line = {}
@@ -278,9 +278,34 @@ end
 -- OnModuleEnable
 function mod:OnModuleEnable()
 	self.registeredDecodes = {}
-	for name, module in z:IterateModulesWithMethod("OnLogEnabled") do
-		module:OnLogEnabled()
-	end
+
+	self:Register("bless",
+		function(code, a, b, c, d)
+			if (code == "change") then
+				return format(L["Changed %s's template - %s from %s to %s"], z:ColourUnitByName(a), z:ColourClass(b), (c and z:ColourBlessing(c,nil,true)) or "none", (d and z:ColourBlessing(d,nil,true)) or "none")
+			elseif (code == "exception") then
+				return format(L["Changed %s's exception - %s from %s to %s"], z:ColourUnitByName(a), z:ColourUnitByName(b), (c and z:ColourBlessing(c,nil,true)) or "none", (d and z:ColourBlessing(d,nil,true)) or "none")
+			elseif (code == "select") then
+				return format(L["Loaded template '%s'"], tostring(a))
+			elseif (code == "save") then
+				return format(L["Saved template '%s'"], tostring(a))
+			end
+		end
+	)
+
+	self:Register("man",
+		function(code, a, b, c, d, remote)
+			if (code == "gen") then
+				return format(L["Generated automatic template"])
+			elseif (code == "change") then
+				return format(L["%s %s's template - %s from %s to %s"], remote and L["Remotely changed"] or L["Changed"], z:ColourUnitByName(a), z:ColourClass(b), (c and z:ColourBlessing(c,nil,true)) or "none", (d and z:ColourBlessing(d,nil,true)) or "none")
+			elseif (code == "exception") then
+				return format(L["%s %s's exception - %s from %s to %s"], remote and L["Remotely changed"] or L["Changed"], z:ColourUnitByName(a), z:ColourUnitByName(b), (c and z:ColourBlessing(c,nil,true)) or "none", (d and z:ColourBlessing(d,nil,true)) or "none")
+			elseif (code == "clearcell") then
+				return format(L["Cleared %s's exceptions for %s"], z:ColourUnitByName(a), z:ColourClass(b))
+			end
+		end
+	)
 end
 
 -- OnModuleDisable

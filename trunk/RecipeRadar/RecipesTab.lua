@@ -1,6 +1,6 @@
 
 -- RecipesTab.lua: handles clicking and drawing for the Recipes tab
--- $Id: RecipesTab.lua 650 2006-12-06 18:40:39Z jnmiller $
+-- $Id: RecipesTab.lua 1022 2008-03-07 20:57:50Z jnmiller $
 
 ------------------------------------------------------------------------
 -- Main window refresh code

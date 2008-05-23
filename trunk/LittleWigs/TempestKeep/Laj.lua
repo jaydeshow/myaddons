@@ -4,10 +4,6 @@
 
 local boss = BB["Laj"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
-local L2 = AceLibrary("AceLocale-2.2"):new("BigWigsCommonWords")
-
-local db = nil
-local fmt = string.format
 
 ----------------------------
 --      Localization      --
@@ -23,14 +19,14 @@ L:RegisterTranslations("enUS", function() return {
 
 L:RegisterTranslations("koKR", function() return {
 	allergic = "알레르기 반응",
-	allergic_desc = "알레르기 반응에 대한 알림",
+	allergic_desc = "알레르기 반응에 대해 알립니다.",
 	allergic_message = "%s 알레르기!",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
 	allergic = "過敏反應",
 	allergic_desc = "過敏反應警報",
-	allergic_message = "過敏反應: %s",
+	allergic_message = "過敏反應: [%s]",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -61,17 +57,15 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"allergic", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 71982 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Allergies", 34697, 34700) --Probably just 34697 check and remove
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Allergies", 34697)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-
-	db = self.db.profile
 end
 
 ------------------------------
@@ -79,6 +73,7 @@ end
 ------------------------------
 
 function mod:Allergies(player)
-	if not db.allergic then return end
-	self:Message(fmt(L["allergic_message"], player), "Important", nil, nil, nil, 34697)
+	if self.db.profile.allergic then
+		self:IfMessage(L["allergic_message"]:format(player), "Important", 34697)
+	end
 end

@@ -1,4 +1,4 @@
-local BabbleZone = AceLibrary("Babble-Zone-2.2");
+local BabbleZone = LibStub("LibBabble-Zone-3.0"):GetLookupTable();
 local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 local ORANGE = "|cffFF8400";

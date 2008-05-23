@@ -74,12 +74,12 @@ L:RegisterTranslations("enUS", function() return {
 	phase4_soon_message = "Phase 4 soon!",
 	phase4_message = "Phase 4 - Maiev Incoming!",
 
-	flameburst = "Flame Burst",
-	flameburst_desc = "Warns when Illidan will use Flame Burst",
-	flameburst_message = "Flame Burst!",
-	flameburst_cooldown_bar = "Flame Burst cooldown",
-	flameburst_cooldown_warn = "Flame Burst soon!",
-	flameburst_warn = "Flame Burst in 5sec!",
+	burst = "Flame Burst",
+	burst_desc = "Warns when Illidan will use Flame Burst",
+	burst_message = "Flame Burst!",
+	burst_cooldown_bar = "Flame Burst cooldown",
+	burst_cooldown_warn = "Flame Burst soon!",
+	burst_warn = "Flame Burst in 5sec!",
 
 	enrage_trigger = "Feel the hatred of ten thousand years!",
 	enrage_message = "Enraged!",
@@ -90,72 +90,140 @@ L:RegisterTranslations("enUS", function() return {
 	illi_start = "Akama. Your duplicity is hardly surprising. I should have slaughtered you and your malformed brethren long ago.",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	berserk_trigger = "¡NO estáis preparados!",
+
+	parasite = "Maligno de las Sombras parasitario (Parasitic Shadowfiend)",
+	parasite_desc = "Avisar quién tiene Maligno de las Sombras parasitario.",
+	parasite_you = "¡Tienes un parasitario!",
+	parasite_other = "¡%s tiene un parasitario!",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores con Malignos de las Sombras parasitarios.",
+
+	barrage = "Tromba oscura (Dark Barrage)",
+	barrage_desc = "Avisar quién tiene Tromba oscura.",
+	barrage_message = "¡%s tiene Tromba oscura!",
+	barrage_warn = "¡Tromba oscura en breve!",
+	barrage_warn_bar = "~Tromba oscura",
+	barrage_bar = "Tromba oscura: %s",
+
+	eyeblast = "Explosión ocular (Eye Blast)",
+	eyeblast_desc = "Avisar cuando se lanza Explosión ocular.",
+	eyeblast_trigger = "¡Mirad a los ojos del Traidor!",
+	eyeblast_message = "¡Explosión ocular!",
+
+	shear = "Cortar (Shear)",
+	shear_desc = "Avisar quién tiene Cortar.",
+	shear_message = "¡Cortar en %s!",
+	shear_bar = "Cortar: %s",
+
+	flame = "Llamas agonizantes (Agonizing Flames)",
+	flame_desc = "Avisar quién tiene Llamas agonizantes.",
+	flame_message = "¡%s tiene Llamas agonizantes!",
+
+	demons = "Demonios de las Sombras (Shadow Demons)",
+	demons_desc = "Avisar cuando Illidan invoca demonios de las Sombras.",
+	demons_message = "¡Demonios de las Sombras!",
+	demons_warn = "¡Demonios en breve!",
+
+	phase = "Fases",
+	phase_desc = "Avisar cuando Illidan cambia de fase.",
+	phase2_soon_message = "Fase 2 en breve",
+	phase2_message = "¡Fase 2 - Hojas de Azzinoth!",
+	phase3_message = "¡Fase 3!",
+	demon_phase_trigger = "¡Observad el poder...del demonio interior!",
+	demon_phase_message = "¡Forma demoníaca!",
+	demon_bar = "~Fase normal",
+	demon_warning = "¡Forma demoníaca termina en ~ 5 seg!",
+	normal_bar = "~Fase demoníaca",
+	normal_warning = "¡Posible fase demoníaca en ~5 seg!",
+	phase4_trigger = "¿Esto es todo, mortales? ¿Es esta toda la furia qué podéis reunir?",
+	phase4_soon_message = "Fase 4 en breve",
+	phase4_message = "¡Fase 4 - Maiev entra!",
+
+	burst = "Ráfaga de llamas (Flame Burst)",
+	burst_desc = "Avisa cuando Illidan lanza Ráfaga de llamas",
+	burst_message = "¡Ráfaga de llamas!",
+	burst_cooldown_bar = "~Ráfaga de llamas",
+	burst_cooldown_warn = "¡Ráfaga de llamas en breve!",
+	burst_warn = "¡Ráfaga de llamas en 5 seg!",
+
+	enrage_trigger = "¡Sentid el odio de diez mil años!",
+	enrage_message = "¡Se enfurece!",
+
+	["Flame of Azzinoth"] = "Llama de Azzinoth",
+
+	--very first yell to start engage timer
+	illi_start = "Akama. Tu hipocresía no me sorprende. Debí acabar contigo y con tus malogrados hermanos hace tiempo.",
+} end )
+
 L:RegisterTranslations("frFR", function() return {
 	berserk_trigger = "Vous n'êtes pas prêts !",
 
 	parasite = "Ombrefiel parasite",
 	parasite_desc = "Préviens quand un joueur subit les effets de l'Ombrefiel parasite.",
-	parasite_you = "Vous avez un parasite !",
-	parasite_other = "%s a un parasite !",
+	parasite_you = "Vous avez un parasite !",
+	parasite_other = "%s a un parasite !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par l'Ombrefiel parasite (nécessite d'être promu ou mieux).",
 
 	barrage = "Barrage noir",
 	barrage_desc = "Préviens quand un joueur subit les effets du Barrage noir.",
-	barrage_message = "%s subit le Barrage !",
-	barrage_warn = "Barrage imminent !",
+	barrage_message = "%s subit le Barrage !",
+	barrage_warn = "Barrage imminent !",
 	barrage_warn_bar = "~Prochain Barrage",
-	barrage_bar = "Barrage : %s",
+	barrage_bar = "Barrage : %s",
 
 	eyeblast = "Energie oculaire",
 	eyeblast_desc = "Préviens quand l'Energie oculaire est incanté.",
 	eyeblast_trigger = "Soutenez le regard du Traître !",
-	eyeblast_message = "Energie oculaire !",
+	eyeblast_message = "Energie oculaire !",
 
 	shear = "Tonte",
 	shear_desc = "Préviens quand un joueur subit les effets de la Tonte.",
-	shear_message = "Tonte sur %s !",
-	shear_bar = "Tonte : %s",
+	shear_message = "Tonte sur %s !",
+	shear_bar = "Tonte : %s",
 
 	flame = "Flammes déchirantes",
 	flame_desc = "Préviens quand un joueur subit les effets des Flammes déchirantes.",
-	flame_message = "%s a les Flammes déchirantes !",
+	flame_message = "%s a les Flammes déchirantes !",
 
 	demons = "Démons des ombres",
 	demons_desc = "Préviens quand Illidan invoque des démons des ombres.",
-	demons_message = "Démons des ombres !",
-	demons_warn = "Démons imminent !",
+	demons_message = "Démons des ombres !",
+	demons_warn = "Démons imminent !",
 
 	phase = "Phases",
 	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
-	phase2_soon_message = "Phase 2 imminente !",
-	phase2_message = "Phase 2 - Lames d'Azzinoth !",
-	phase3_message = "Phase 3 !",
+	phase2_soon_message = "Phase 2 imminente !",
+	phase2_message = "Phase 2 - Lames d'Azzinoth !",
+	phase3_message = "Phase 3 !",
 	demon_phase_trigger = "Contemplez la puissance... du démon intérieur !",
-	demon_phase_message = "Forme de démon !",
+	demon_phase_message = "Forme de démon !",
 	demon_bar = "Prochaine phase normale",
-	demon_warning = "Fin du démon dans ~5 sec. !",
+	demon_warning = "Fin du démon dans ~5 sec. !",
 	normal_bar = "~Phase démon probable",
-	normal_warning = "Phase démon probablement dans ~5 sec. !",
+	normal_warning = "Phase démon probablement dans ~5 sec. !",
 	phase4_trigger = "C'est tout, mortels ? Est-ce là toute la fureur que vous pouvez évoquer ?",
-	phase4_soon_message = "Phase 4 imminente !",
-	phase4_message = "Phase 4 - Arrivée de Maiev !",
+	phase4_soon_message = "Phase 4 imminente !",
+	phase4_message = "Phase 4 - Arrivée de Maiev !",
 
-	flameburst = "Explosion de flammes",
-	flameburst_desc = "Préviens quand Illidan utilise son Explosion de flammes.",
-	flameburst_message = "Explosion de flammes !",
-	flameburst_cooldown_bar = "~Cooldown Explosion",
-	flameburst_cooldown_warn = "Explosion de flammes imminente !",
-	flameburst_warn = "Explosion de flammes dans 5 sec. !",
+	burst = "Explosion de flammes",
+	burst_desc = "Préviens quand Illidan utilise son Explosion de flammes.",
+	burst_message = "Explosion de flammes !",
+	burst_cooldown_bar = "~Cooldown Explosion",
+	burst_cooldown_warn = "Explosion de flammes imminente !",
+	burst_warn = "Explosion de flammes dans 5 sec. !",
 
 	enrage_trigger = "Goûtez à dix mille ans de haine !",
-	enrage_message = "Enragé !",
+	enrage_message = "Enragé !",
 
 	["Flame of Azzinoth"] = "Flamme d'Azzinoth",
 
-	--very first yell to start engage timer
-	illi_start = "Akama. Ta duplicité n'est pas très étonnante. J'aurai dû vous massacrer depuis longtemps, toi et ton frère déformé.",
+	--very first yell to start engage timer (dans un futur patch "tes frères" à la place de "ton frère" (sans doute) http://forums.wow-europe.com/thread.html?topicId=3404772373&sid=2)
+	illi_start = "Akama. Ta duplicité n'est pas très étonnante. J'aurais dû vous massacrer depuis longtemps, toi et ton frère déformé.",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -163,15 +231,15 @@ L:RegisterTranslations("koKR", function() return {
 
 	parasite = "어둠의 흡혈마귀",
 	parasite_desc = "어둠의 흡혈마귀에 걸린 플레이어를 알립니다.",
-	parasite_you = "당신에 흡혈마귀!",
-	parasite_other = "%s에 흡혈마귀!",
+	parasite_you = "당신은 흡혈마귀!",
+	parasite_other = "%s 흡혈마귀!",
 
 	icon = "전술 표시",
-	icon_desc = "어둠의 흡혈마귀에 걸린 플레이어에 전술 표시를 지정합니다 (승급자 이상 권한 필요).",
+	icon_desc = "어둠의 흡혈마귀에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 
 	barrage = "암흑의 보호막",
 	barrage_desc = "암흑의 보호막에 걸린 플레이어를 알립니다.",
-	barrage_message = "%s에 집중포화!",
+	barrage_message = "%s 집중포화!",
 	barrage_warn = "잠시 후 집중포화!",
 	barrage_warn_bar = "집중포화 대기시간",
 	barrage_bar = "집중포화: %s",
@@ -183,12 +251,12 @@ L:RegisterTranslations("koKR", function() return {
 
 	shear = "베어내기",
 	shear_desc = "베어내기에 걸린 플레이어를 알립니다.",
-	shear_message = "%s에 베어내기!",
+	shear_message = "%s 베어내기!",
 	shear_bar = "베어내기: %s",
 
 	flame = "고뇌의 불꽃",
 	flame_desc = "고뇌의 불꽃에 걸린 플레이어를 알립니다.",
-	flame_message = "%s에 고뇌의 불꽃!",
+	flame_message = "%s 고뇌의 불꽃!",
 
 	demons = "어둠의 악마",
 	demons_desc = "어둠의 악마 소환 시 알립니다.",
@@ -210,12 +278,12 @@ L:RegisterTranslations("koKR", function() return {
 	phase4_soon_message = "잠시 후 4 단계!",
 	phase4_message = "4 단계 - 마이에브 등장!",
 
-	flameburst = "화염 폭발",
-	flameburst_desc = "일리단이 화염 폭발 사용 시 알립니다.",
-	flameburst_message = "화염 폭발!",
-	flameburst_cooldown_bar = "화염 폭발 대기시간",
-	flameburst_cooldown_warn = "잠시 후 화염 폭발!",
-	flameburst_warn = "약 5초 이내 화염 폭발!",
+	burst = "화염 폭발",
+	burst_desc = "일리단이 화염 폭발 사용 시 알립니다.",
+	burst_message = "화염 폭발!",
+	burst_cooldown_bar = "화염 폭발 대기시간",
+	burst_cooldown_warn = "잠시 후 화염 폭발!",
+	burst_warn = "약 5초 이내 화염 폭발!",
 
 	enrage_trigger = "만년 동안 응어리진 증오를 보여주마!",
 	enrage_message = "격노!",
@@ -230,12 +298,12 @@ L:RegisterTranslations("zhCN", function() return {
 	berserk_trigger = "你们这是自寻死路！",
 
 	parasite = "寄生暗影魔",
-	parasite_desc = "当队员中寄生暗影魔时发出警告。",
+	parasite_desc = "当玩家中寄生暗影魔时发出警告。",
 	parasite_you = ">你< 寄生暗影魔！",
 	parasite_other = "寄生暗影魔：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "为中了寄生暗影魔的队员打上团队标记。(需要权限)",
+	icon_desc = "为中了寄生暗影魔的队员打上团队标记。（需要权限）",
 
 	barrage = "黑暗壁垒",
 	barrage_desc = "当玩家中了黑暗壁垒时发出警报。",
@@ -250,40 +318,40 @@ L:RegisterTranslations("zhCN", function() return {
 	eyeblast_message = "魔眼冲击！",
 
 	shear = "剪切",
-	shear_desc = "剪切玩家警报。",
+	shear_desc = "当剪切玩家时发出警报。",
 	shear_message = "剪切：>%s<！",
 	shear_bar = "<剪切：%s>",
 
 	flame = "苦痛之焰",
-	flame_desc = "当中了苦痛之焰时发出警报。",
+	flame_desc = "当玩家中了苦痛之焰时发出警报。",
 	flame_message = "苦痛之焰：>%s<！",
 
 	demons = "影魔",
-	demons_desc = "当伊利丹召唤影魔时发出警报。",
+	demons_desc = "当召唤影魔时发出警报。",
 	demons_message = "影魔！",
 	demons_warn = "即将 影魔！",
 
 	phase = "阶段",
-	phase_desc = "当伊利丹进入不同阶段发出警报。",
-	phase2_soon_message = "即将 -  第二阶段！",
+	phase_desc = "当进入不同阶段发出警报。",
+	phase2_soon_message = "即将 - 第二阶段！",
 	phase2_message = "第二阶段 - 埃辛诺斯双刃！",
 	phase3_message = "第三阶段！",
 	demon_phase_trigger = "感受我体内的恶魔之力吧！",
 	demon_phase_message = "恶魔形态！",
 	demon_bar = "<下一普通阶段>",
-	demon_warning = "恶魔阶段 ~5秒后结束！",
+	demon_warning = "恶魔阶段 约5秒后结束！",
 	normal_bar = "<可能 恶魔阶段>",
-	normal_warning = "~5秒后, 可能恶魔阶段！",
+	normal_warning = "约5秒后，可能恶魔阶段！",
 	phase4_trigger = "你们就这点本事吗？这就是你们全部的能耐？",
 	phase4_soon_message = "即将 - 第四阶段！",
 	phase4_message = "第四阶段 - 玛维·影歌来临！",
 
-	flameburst = "烈焰爆击",
-	flameburst_desc = "当伊利丹使用烈焰爆击发出警报",
-	flameburst_message = "烈焰爆击!",
-	flameburst_cooldown_bar = "烈焰爆击 冷却",
-	flameburst_cooldown_warn = "即将 烈焰爆击!",
-	flameburst_warn = "5秒后 烈焰爆击!",
+	burst = "烈焰爆击",
+	burst_desc = "当施放烈焰爆击发出警报。",
+	burst_message = "烈焰爆击！",
+	burst_cooldown_bar = "烈焰爆击 冷却",
+	burst_cooldown_warn = "即将 烈焰爆击！",
+	burst_warn = "5秒后，烈焰爆击！",
 
 	enrage_trigger = "感受一万年的仇恨吧！",
 	enrage_message = "狂暴！",
@@ -346,12 +414,12 @@ L:RegisterTranslations("deDE", function() return {
 	phase4_soon_message = "Phase 4 bald!",
 	phase4_message = "Phase 4 - Maiev kommt!",
 
-	flameburst = "Flammenschlag",
-	flameburst_desc = "Warnt wenn Illidan Flammenschlag benutzen wird.",
-	flameburst_message = "Flammenschlag!",
-	flameburst_cooldown_bar = "Flammenschlag cooldown",
-	flameburst_cooldown_warn = "Flammenschlag bald!",
-	flameburst_warn = "Flammenschlag in 5sek!",
+	burst = "Flammenschlag",
+	burst_desc = "Warnt wenn Illidan Flammenschlag benutzen wird.",
+	burst_message = "Flammenschlag!",
+	burst_cooldown_bar = "Flammenschlag cooldown",
+	burst_cooldown_warn = "Flammenschlag bald!",
+	burst_warn = "Flammenschlag in 5sek!",
 
 	enrage_trigger = "Fühlt dem Haß von 10 tausend Jahren!",
 	enrage_message = "Wütend!",
@@ -368,17 +436,17 @@ L:RegisterTranslations("zhTW", function() return {
 	parasite = "寄生暗影惡魔",
 	parasite_desc = "當隊員中寄生暗影惡魔時發出警告",
 	parasite_you = "你中了>寄生暗影惡魔<!",
-	parasite_other = "寄生暗影惡魔：[%s]",
+	parasite_other = "寄生暗影惡魔: [%s]",
 
 	icon = "團隊標記",
-	icon_desc = "為中了寄生暗影魔的隊員打上團隊標記.",
+	icon_desc = "為中了寄生暗影魔的隊員打上團隊標記 (需要權限)",
 
 	barrage = "黑暗侵襲",
 	barrage_desc = "當玩家中了黑暗侵襲時發出警報",
-	barrage_message = "%s 中了黑暗侵襲!",
-	barrage_warn = "侵襲即將來臨!",
-	barrage_warn_bar = "~下一次侵襲",
-	barrage_bar = "侵襲：[%s]",
+	barrage_message = "黑暗侵襲: [%s]",
+	barrage_warn = "黑暗侵襲即將來臨!",
+	barrage_warn_bar = "<下一次黑暗侵襲>",
+	barrage_bar = "黑暗侵襲: [%s]",
 
 	eyeblast = "暗眼衝擊波",
 	eyeblast_desc = "當施放暗眼衝擊波時發出警報",
@@ -387,12 +455,12 @@ L:RegisterTranslations("zhTW", function() return {
 
 	shear = "銳減",
 	shear_desc = "當玩家受到銳減時警報",
-	shear_message = "銳減：[%s]",
-	shear_bar = "銳減：[%s]",
+	shear_message = "銳減: [%s]",
+	shear_bar = "<銳減: [%s]>",
 
 	flame = "苦惱之焰",
 	flame_desc = "當玩家中了苦惱之焰時發出警報",
-	flame_message = "苦惱之焰：[%s]",
+	flame_message = "苦惱之焰: [%s]",
 
 	demons = "暗影惡魔",
 	demons_desc = "當召喚暗影惡魔時發出警報",
@@ -406,20 +474,20 @@ L:RegisterTranslations("zhTW", function() return {
 	phase3_message = "階段 3!",
 	demon_phase_trigger = "感受我體內的惡魔之力吧!",
 	demon_phase_message = "惡魔型態!",
-	demon_bar = "下一個普通階段",
+	demon_bar = "<下一個普通階段>",
 	demon_warning = "5 秒後惡魔型態!",
-	normal_bar = "~可能惡魔型態",
+	normal_bar = "<可能惡魔型態>",
 	normal_warning = "5 秒後可能惡魔型態",
 	phase4_trigger = "你們就這點本事嗎?這就是你們全部的能耐?",
 	phase4_soon_message = "階段 4 即將來臨!",
 	phase4_message = "階段 4 - 瑪翼夫來臨!",
 
-	flameburst = "烈焰爆擊",
-	flameburst_desc = "當即將施放烈焰爆擊時發出警報",
-	flameburst_message = "烈焰爆擊!",
-	flameburst_cooldown_bar = "烈焰爆擊冷卻",
-	flameburst_cooldown_warn = "烈焰爆擊即將來臨!",
-	flameburst_warn = "烈焰爆擊 5 秒內來臨!",
+	burst = "烈焰爆擊",
+	burst_desc = "當即將施放烈焰爆擊時發出警報",
+	burst_message = "烈焰爆擊!",
+	burst_cooldown_bar = "<烈焰爆擊冷卻>",
+	burst_cooldown_warn = "烈焰爆擊即將來臨!",
+	burst_warn = "烈焰爆擊 5 秒內來臨!",
 
 	enrage_trigger = "感受一萬年的仇恨吧!",
 	enrage_message = "狂怒!",
@@ -437,9 +505,9 @@ L:RegisterTranslations("zhTW", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
-mod.toggleoptions = {"berserk", "phase", "parasite", "shear", "eyeblast", "barrage", "flame", "demons", "flameburst", "enrage", "proximity", "bosskill"}
+mod.toggleoptions = {"berserk", "phase", "parasite", "shear", "eyeblast", "barrage", "flame", "demons", "burst", "enrage", "proximity", "bosskill"}
 mod.wipemobs = {L["Flame of Azzinoth"]}
-mod.revision = tonumber(("$Revision: 66531 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -448,8 +516,8 @@ mod.proximitySilent = true
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_DAMAGE", "FlameBurst", 41131) -- spell cast by the player at 5 yards radius
-	self:AddCombatListener("SPELL_CAST_SUCCESS ", "Phase2", 39855)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "FlameBurst", 41126)
+	self:AddCombatListener("SPELL_SUMMON", "Phase2", 39855)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Parasite", 41914, 41917)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Barrage", 40585)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Shear", 41032)
@@ -469,18 +537,13 @@ end
 --      Event Handlers      --
 ------------------------------
 
-local last = 0
 function mod:FlameBurst(_, spellID)
-	local time = GetTime()
-	if (time - last) > 5 then
-		last = time
-		if db.flameburst then
-			bCount = bCount + 1
-			self:IfMessage(L["flameburst_message"], "Important", spellID, "Alert")
-			if bCount < 3 then -- He'll only do three times before transforming again
-				self:Bar(L["flameburst"], 20, spellID)
-				self:DelayedMessage(15, L["flameburst_warn"], "Positive")
-			end
+	if db.burst then
+		bCount = bCount + 1
+		self:IfMessage(L["burst_message"], "Important", spellID, "Alert")
+		if bCount < 3 then -- He'll only do three times before transforming again
+			self:Bar(L["burst"], 20, spellID)
+			self:DelayedMessage(15, L["burst_warn"], "Positive")
 		end
 	end
 end
@@ -564,9 +627,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			self:ScheduleEvent("BWIlliDemonOver", "BigWigs_Message", 60, L["demon_warning"], "Attention")
 			self:ScheduleEvent("BWIlliNormal", self.Normal, 60, self)
 		end
-		if db.flameburst then
-			self:DelayedMessage(15, L["flameburst_cooldown_warn"], "Positive")
-			self:Bar(L["flameburst_cooldown_bar"], 20, "Spell_Fire_BlueRainOfFire")
+		if db.burst then
+			self:DelayedMessage(15, L["burst_cooldown_warn"], "Positive")
+			self:Bar(L["burst_cooldown_bar"], 20, "Spell_Fire_BlueRainOfFire")
 		end
 	elseif msg == L["phase4_trigger"] then
 		if db.phase then
@@ -617,12 +680,12 @@ function mod:Deaths(unit)
 		if flamesDead == 2 then
 			if db.phase then
 				self:Message(L["phase3_message"], "Important", nil, "Alarm")
-				self:TriggerEvent("BigWigs_ShowProximity", self) -- Proximity Warning
 				self:Bar(L["normal_bar"], 75, "Spell_Shadow_Metamorphosis")
 				self:ScheduleEvent("BWIlliNormalSoon", "BigWigs_Message", 70, L["normal_warning"], "Attention")
 			end
 			self:CancelScheduledEvent("BarrageWarn")
 			self:TriggerEvent("BigWigs_StopBar", self, L["barrage_warn_bar"])
+			self:TriggerEvent("BigWigs_ShowProximity", self) -- Proximity Warning
 		end
 	elseif unit == boss then
 		self:GenericBossDeath(unit)

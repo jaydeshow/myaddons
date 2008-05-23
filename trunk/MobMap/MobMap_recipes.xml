@@ -10,7 +10,7 @@
 			<Layer level="OVERLAY">
 				<FontString name="$parentRecipeLevel" justifyH="RIGHT" justifyV="TOP" hidden="false" inherits="GameFontNormalSmall" text="375">
 					<Size>
-						<AbsDimension x="28" y="12"/>
+						<AbsDimension x="24" y="12"/>
 					</Size>
 					 <Anchors>
 						<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPLEFT">

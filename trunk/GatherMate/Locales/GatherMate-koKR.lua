@@ -4,6 +4,7 @@ Korean
 local L = LibStub("AceLocale-3.0"):NewLocale("GatherMate","koKR")
 if not L then return end
 
+-- Spell names for Collector module
 L["Mining"] = "채광"
 L["Fishing"] = "낚시"
 L["Herb Gathering"] = "약초채집"
@@ -12,11 +13,11 @@ L["Herbalism"] = "약초 채집"
 L["Engineering"] = "기계공학"
 L["Opening"] = "열기"
 L["Pick Lock"] = "자물쇠 따기"
-
 -- Display module
 L["GatherMate Pin Options"] = "GatherMate 설정"
 L["Delete: "] = "삭제: "
 L["Add this location to Cartographer_Waypoints"] = "현재 위치를 Cartographer_Waypoints 추가합니다."
+L["Add this location to TomTom waypoints"] = "현재 위치를 TomTom 웨이포인트에 추가합니다."
 
 L["Always show"] = "항상 보기"
 L["Only with profession"] = "전문기술이 있을때만"
@@ -49,19 +50,36 @@ L["Show Minimap Icons"]="미니맵 아이콘 보기"
 L["Toggle showing Minimap icons."] = "미니맵에 아이콘을 표시합니다."
 L["Show World Map Icons"] = "월드맵 아이콘 보기"
 L["Toggle showing World Map icons."] = "월드맵에 아이콘을 표시합니다."
+L["Keybind to toggle Minimap Icons"] = "미니맵의 아이콘 표시 단축키를 지정합니다."
 L["Icon Scale"] = "아이콘 크기"
 L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."] = "월드맵과 미니맵에 표시되는 아이콘의을 크게 또는 작게 바꿉니다."
 L["Icon Alpha"] = "아이콘 투명도"
 L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."] = "아이콘의 투명조를 조절합니다. 이 사항은 월드맵에만 적용됩니다."
 L["Miscellaneous"] = "기타"
--- Cleanup subtree
+-- Cleanup subtree (now Database Maintenance)
+L["Database Maintenance"] = "데이터베이스 유지"
 L["Cleanup_Desc"] = "수집한 데이터가 쌓이게 되면 겹치게 되고 알아볼 수 없게 됩니다. 이 때 데이터를 정리할 수 있습니다. 각 전문기술별로 노드에 대해서 인접한 노드를 삭제하여 알아보기 쉽도록 도와줍니다."
 L["Cleanup radius"] = "반경내 정리"
-L["CLEANUP_RADIUS_DESC"] = "현재 반경내의 중복된 노드를 삭제합니다. 기본값은 가스에는 |cFFFFFFFF50|r미터, 나머지는 |cFFFFFFFF15|r미터 입니다. 이 설정은 노드가 추가될때도 적용됩니다."
+L["CLEANUP_RADIUS_DESC"] = "현재 반경내의 중복된 노드를 삭제합니다. 기본값은 가스에는 |cffffd20050|r미터, 나머지는 |cffffd20015|r미터 입니다. 이 설정은 노드가 추가될때도 적용됩니다."
 L["Cleanup Database"] = "데이터 정리"
 L["Cleanup your database by removing duplicates. This takes a few moments, be patient."] = "데이터정리를 통해서 중복된 노드를 삭제합니다. 이 과정은 약간의 시간이 소요됩니다."
 L["Processing "] = "진행중 "
 L["Cleanup Complete."] = "정리 완료"
+L["Delete Specific Nodes"] = "특정 노드 삭제"
+L["DELETE_SPECIFIC_DESC"] = "현재 지역의 모든 노드를 삭제합니다. 단 데이터베이스 잠금상태에서는 삭제할 수 없습니다."
+L["Select Database"] = "데이터베이스 선택"
+L["Select Node"] = "노드 선택"
+L["Select Zone"] = "지역 선택"
+L["Delete"] = "삭제"
+L["Delete selected node from selected zone"] = "선택한 지역에서 선택된 노드를 삭제합니다."
+L["Are you sure you want to delete all of the selected node from the selected zone?"] = "선택된 지역의 모든 노드를 삭제하시겠습니까?"
+L["Delete Entire Database"] = "모든 데이터베이스 삭제"
+L["DELETE_ENTIRE_DESC"] = "선택한 데이터베이스에서 모든 지역의 모든 노드를 삭제합니다."
+L["Are you sure you want to delete all nodes from this database?"] = 현재 데이터베이스의 모든 노드를 삭제하시겠습니까?"
+L["Database Locking"] = "데이터베이스 고정"
+L["DATABASE_LOCKING_DESC"] = "고정하면 더이상 데이터메이스에 추가되지 않습니다. 이것은 클린업이나 입력한 것도 포함됩니다."
+L["Database locking"] = "데이터베이스 잠금"
+
 -- Tracking options
 L["Tracking Circle Color"] = "아이콘 테두리 색상"
 L["Color of the tracking circle."] = "미니맵에 표시되는 아이콘의 테두리 색상을 설정합니다."
@@ -141,6 +159,8 @@ L["Frequently Asked Questions"] = "중요한 질문과 답변"
 local NL = LibStub("AceLocale-3.0"):NewLocale("GatherMateNodes","koKR")
 if not NL then return end
 
+local NL = LibStub("AceLocale-3.0"):NewLocale("GatherMateNodes","koKR")
+-- fish schools
 NL["Floating Wreckage"] = "표류하는 잔해"
 NL["Patch of Elemental Water"] = "정기가 흐르는 물 웅덩이"
 NL["Floating Debris"] = "표류하는 파편"
@@ -156,6 +176,7 @@ NL["Highland Mixed School"] = "고원의 물고기 떼"
 NL["Pure Water"] = "깨끗한 물"
 NL["Bluefish School"] = "게르치 떼"
 NL["Feltail School"] = "지옥꼬리퉁돔 떼"
+NL["Brackish Mixed School"] = true
 NL["Mudfish School"] = "미꾸라지 떼"
 NL["School of Darter"] = "School of Darter"
 NL["Sporefish School"] = "포자물고기 떼"
@@ -258,7 +279,7 @@ NL["Practice Lockbox"] = true
 NL["Battered Footlocker"] = "찌그러진 사물함"
 NL["Waterlogged Footlocker"] = "흠뻑 젖은 사물함"
 NL["Dented Footlocker"] = "움푹 파인 사물함"
-NL["Mossy Footlocker"] = true
+NL["Mossy Footlocker"] = "이끼투성이 사물함"
 NL["Scarlet Footlocker"] = "붉은 사물함"
 NL["Burial Chest"] = true
 NL["Fel Iron Chest"] = "지옥무쇠 궤짝"

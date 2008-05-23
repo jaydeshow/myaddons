@@ -95,38 +95,6 @@ TIP : use the "import only unknown Mobs" if you know that there is a large amoun
 TIP2 : You can also use this Import feature to import databases of the "MobHealth" AddOn. Use the instructions exactly as listed above, but in step 2 rename "MobHealth.lua" (the MobHealth database file from "savedvariables" folder) to "MI2_Import.lua".
 
 
-*****************************************
-***  Conversion of DropRate Database  ***
-*****************************************
-The integrated DropRate converter can convert the contents of a DropRate database into MobInfo database entries. Yet in order for the converter to work an additional item database must be installed. THIS IS ABSOLUTELY MANDATORY !
-
-Right now the DropRate conversion supports the following item database tools: ItemSync (from Derkyle), LootLink and LootLink Enhanced (from Telo and Brodrick) and KS_Items (from Kaelten). You MUST have one of these AddOns installed and you MUST have a sufficiently large database. Why is this so important ? Because DropRate recorded only the item names, which is highly inefficient. All modern tools use instead mainly the item ID code. Yet name to code conversion is tricky, because the WoW client does not support this. Instead an item database is required that knows item names and that can convert a given item name into an item ID code. The AddOns that MobInfo currently supports all offer this feature.
-
-Using LootLink is recommended for the conversion because AddOns sites like "http://ui.worldofwar.net" host huge downloadable LootLink item databases that ensure a high conversion success rate. After successful conversion LootLink (or any other item database tool) can be uninstalled, if you dont want to keep it.
-
-Note that whenever the item database AddOn does not know an item from the DropRate database this item can NOT be converted into the MobInfo database. Therefore Mobs with unknown items can only be partially converted. The unknown items will be missing from the Mobs when looking at their MobInfo data.
-
-Here is how to make the conversion:
-
-1) You must have the following AddOns installed and active: MobInfo, DropRate, and either ItemSync, LootLink or KC_Items. I'd like to mention that I made all my tests with ItemSync and it worked very well.
-
-2) Backup your MobInfo database as explained in the "How to Backup your MobInfo database" chapter. Similarely backup your DropRate database. The conversion will modify both databases ! Therefore it is very important to have backups of the originals so that you can go back to the state before the conversion, in case you encounter a problem, or in case you are not happy with the result
-
-3) To start the conversion enter "/mi2 convertDropRate" at the chat prompt. The conversion result will appear in the standard chat log window.
-
-4) Logout from WoW to make WoW save your modified database files.
-
-5) Now have a look at the file "savedvariables/DropRate.lua" (this is the DropRate database in the "savedvariables" folder). This database has been modified by the converter. All data that was converted successfully has been removed from the database called "drdb". All entries that still exist in "drdb" represent data (Mobs or other stuff) that the converter has not converted. Non Mob data will always remain because MobInfo does not support this (chests, mining, etc). If Mobs remain it means that the Mob references unknown and thus unconvertable items.
-
-6) If the conversion result is OK you can simply leave things as they are. If very many items were not converted then you should try to obtain a larger items database and start the conversion again from step 3. You can repeat the conversion as often as you like because the converted removes all successfully converted data from the DropRate database.
-
-NOTE: During normal game play you should NEVER (!) have both DropRate and MobInfo running. Doing so will result in incorrect data when you start the converter. Both AddOns will record the same data and starting the converter will copy the DropRate data into the MobInfo database, which will incorrectly double some of the data for the Mob. You should ONLY have both AddOns active at the same time for the purpose of doing a conversion.
-
-7) If the conversion encounters an error, or in case you are unhappy with the result of the conversion, please use the backups you made in step 2 to go back to your previous databases. To restore your databases you MUST first exit WoW. Then simply copy the backups of "MobInfo.lua" and "DropRate.lua" into your "savedvariables" folder. Start WoW again and you should have your old data back. Please observe the NOTE above and NEVER play with MobInfo and DropRate active at the same time.
-
-
-
-
 ***-----------------------------------------------***
 ***-----------------------------------------------***
       F. A. Q. - Frequently Asked Questions
@@ -168,10 +136,21 @@ About once every half year I update the MobInfo table with the most up-to-date p
 ***-----------------------------------------------***
 ***-----------------------------------------------***
 
+3.61
+  * fixed: kills for Mobs that give no XP were not being counted  
+  * conversion support for "DropRate" data removed
+  
+3.60
+  * updated to be compatible with WoW 2.40
+  * fixed: Mob class not being shown correctly (thanks to Zergreth for heads up and the fix)
+  * fixed: health values from Beast Lore will no longer get lost
+  * fixed: show BeastLore extra info correctly in MobInfo tooltip
+  * fixed: nil bug on line 304 when using CowTip			  
+
 3.52
   * updated the MobInfo built-in item price table
   * show NPC profession in NPC tooltip
-  * use unit interaction color (green, yellow, red) for tooltip frame	  
+  * use unit interaction color (green, yellow, red) for MobInfo tooltip frame	  
 
 3.51
   * fixed a nil bug when hovering over items in item search result

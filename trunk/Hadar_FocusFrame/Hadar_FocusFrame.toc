@@ -1,10 +1,11 @@
-## Interface: 20200
-## Title: Hadar's Focus Frame (v1.06)
-## Version: 1.06
+## Interface: 20400
+## Title: Hadar's Focus Frame (v1.09)
+## Version: 1.09
 ## Notes: A frame to show your "Focus" target and the target of your Focus target.
 ## Author: Hadar <Sunder> - Khaz Modan
-## SavedVariables: FF_ShowDebuffs
+## SavedVariables: FF_Options
 ## SavedVariablesPerCharacter:
+
 Hadar_FocusFrame.xml
 Hadar_FocusFrame.lua
-
+Hadar_FocusFrame_Options.xml

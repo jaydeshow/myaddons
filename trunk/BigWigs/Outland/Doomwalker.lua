@@ -38,28 +38,52 @@ L:RegisterTranslations("enUS", function() return {
 	enrage_message = "Enrage!",
 } end)
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "No continuéis. Seréis eliminados.",
+	engage_message = "¡Caminante del Destino en combate, Terremoto en ~30 seg!",
+
+	overrun = "Infestar (Overrun)",
+	overrun_desc = "Avisar cuando Caminante del Destino utiliza Infestar.",
+	overrun_trigger1 = "Velocidad máxima.",
+	overrun_trigger2 = "Trayectoria fijada.",
+	overrun_message = "¡Infestar!",
+	overrun_soon_message = "Infestar en breve",
+	overrun_bar = "~Infestar",
+
+	earthquake = "Terremoto (Earthquake)",
+	earthquake_desc = "Avisar cuando Caminante del Destino utiliza Terremoto.",
+	earthquake_message = "¡Terremoto! ¡Sig. en ~70 seg!",
+	earthquake_bar = "~Terremoto",
+	earthquake_trigger1 = "Iniciando perturbación tectónica.",
+	earthquake_trigger2 = "Magnitud ajustada. Liberar.",
+
+	enrage_soon_message = "¡Enfurecer en breve!",
+	enrage_trigger = "%s se enfurece.",
+	enrage_message = "¡Enfurecimiento!",
+} end)
+
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Cessez toute activité. Vous allez être éliminés.",
-	engage_message = "Marche-funeste engagé, Séisme dans ~30 sec. !",
+	engage_message = "Marche-funeste engagé, Séisme dans ~30 sec. !",
 
 	overrun = "Renversement",
-	overrun_desc = "Préviens quand Marche-funeste utilise sa capacité Renversement.",
+	overrun_desc = "Prévient quand Marche-funeste utilise sa capacité Renversement.",
 	overrun_trigger1 = "Vitesse maximale enclenchée.",
 	overrun_trigger2 = "Trajectoire verrouillée.",
-	overrun_message = "Renversement !",
-	overrun_soon_message = "Renversement imminent !",
-	overrun_bar = "~Cooldown Renversement",
+	overrun_message = "Renversement !",
+	overrun_soon_message = "Renversement imminent !",
+	overrun_bar = "~Recharge Renversement",
 
 	earthquake = "Séisme",
-	earthquake_desc = "Préviens quand Marche-funeste utilise sa capacité Séisme.",
-	earthquake_message = "Séisme ! Prochain dans ~70 sec. !",
-	earthquake_bar = "~Cooldown Séisme",
+	earthquake_desc = "Prévient quand Marche-funeste utilise sa capacité Séisme.",
+	earthquake_message = "Séisme ! Prochain dans ~70 sec. !",
+	earthquake_bar = "~Recharge Séisme",
 	earthquake_trigger1 = "Début de la perturbation tectonique.",
 	earthquake_trigger2 = "Magnitude réglée. Déclenchement.",
 
-	enrage_soon_message = "Enrager imminent !",
+	enrage_soon_message = "Enrager imminent !",
 	enrage_trigger = "%s devient fou furieux !",
-	enrage_message = "Enrager !",
+	enrage_message = "Enrager !",
 } end)
 
 L:RegisterTranslations("koKR", function() return {
@@ -111,34 +135,34 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	engage_trigger = "別在繼續下去。你將會被消除的。",
-	engage_message = "與厄運行者進入戰鬥，30 秒後發動地震！",
+	engage_message = "與厄運行者進入戰鬥，30 秒後發動地震!",
 
 	overrun = "超越",
 	overrun_desc = "當厄運行者發動 超越 技能時發出警報",
 	overrun_trigger1 = "啟用最大速度。",
 	overrun_trigger2 = "軌道鎖定。",
-	overrun_message = "發動超越！",
-	overrun_soon_message = "即將發動超越！",
-	overrun_bar = "超越冷卻",
+	overrun_message = "發動超越!",
+	overrun_soon_message = "即將發動超越!",
+	overrun_bar = "<超越冷卻>",
 
 	earthquake = "地震術",
 	earthquake_desc = "當厄運行者發動地震術時發出警報",
-	earthquake_message = "地震術！ 70 秒後再次發動！",
-	earthquake_bar = "地震術 冷卻",
+	earthquake_message = "地震術! 70 秒後再次發動!",
+	earthquake_bar = "<地震術冷卻>",
 	earthquake_trigger1 = "構造瓦解開始。",
 	earthquake_trigger2 = "強度設定。卸除。",
 
-	enrage_soon_message = "即將狂怒！",
+	enrage_soon_message = "即將狂怒!",
 	enrage_trigger = "%s變得憤怒了!",
-	enrage_message = "狂怒！",
+	enrage_message = "狂怒!",
 } end)
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "停止前进。否则你们将被消灭。",
-	engage_message = "末日行者激活 30秒后发动地震术！",
+	engage_message = "末日行者激活！约30秒后，发动地震术！",
 
 	overrun = "泛滥",
-	overrun_desc = "当末日行者使用泛滥技能时发出警报。",
+	overrun_desc = "当施放泛滥技能时发出警报。",
 	overrun_trigger1 = "提升至最高速度。",
 	overrun_trigger2 = "轨道锁定。",
 	overrun_message = "泛滥！",
@@ -146,8 +170,8 @@ L:RegisterTranslations("zhCN", function() return {
 	overrun_bar = "<泛滥 冷却>",
 
 	earthquake = "地震术",
-	earthquake_desc = "当末日行者施放地震术时发出警告。",
-	earthquake_message = "地震术！~70秒后再次发动！",
+	earthquake_desc = "当施放地震术时发出警告。",
+	earthquake_message = "地震术！约70秒后，再次发动！",
 	earthquake_bar = "<地震术 冷却>",
 	earthquake_trigger1 = "地面破坏程序启动。",
 	earthquake_trigger2 = "范围确认。释放。",
@@ -166,7 +190,7 @@ mod.zonename = BZ["Shadowmoon Valley"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = boss
 mod.toggleoptions = {"overrun", "earthquake", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 65832 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

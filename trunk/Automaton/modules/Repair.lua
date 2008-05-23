@@ -44,10 +44,10 @@ elseif locale == "zhCN" then L = {
 elseif locale == "zhTW" then L = {
 	["Repair"] = "自動修裝",
 	["Automatically repair all inventory items when at merchant"] = "自動修理裝備",
---	["Use Guild Bank Funds"] = "",
---	["With this option enabled, Repair will try to repair from guild bank funds before using your personal money."] = "",
+	["Use Guild Bank Funds"] = "使用公會銀行金錢",
+	["With this option enabled, Repair will try to repair from guild bank funds before using your personal money."] = "此選項開啟後，將在使用自己金錢前試著用公會銀行金錢修理裝備。",
 	["Repairing all items for %s."] = "此次共修理了 : %s",
---	["Repairing all items for %s from guild bank funds."] = "",
+	["Repairing all items for %s from guild bank funds."] = "此次使用公會銀行修理了 ： %s",
 	["You cannot afford to repair. Go farm you poor newbie."] = "你身上沒有組購的修裝費用!",
 }
 end

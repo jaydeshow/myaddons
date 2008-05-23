@@ -1,7 +1,19 @@
+
+local function _strcontains(str,find)
+	str=strlower(str);
+	find=strlower(find)
+	if str==find then
+		return 1
+	end
+	return strfind(str,find,1,true)
+end
+
 local function __Print(msg)
 	DEFAULT_CHAT_FRAME:AddMessage(msg,192,0,192,0)
 end
 
+local function __test()
+end
 
 --TODO:cache the result!
 local function __GetSpellIndex(spell)
@@ -15,10 +27,10 @@ local function __GetSpellIndex(spell)
 			break
 		end
 		local fullname = name.."("..rank..")";
-		local match=strfind(fullname,spell);
+		local match=_strcontains(fullname,spell);
 		if not match then
 			local texture=GetSpellTexture(i,BOOKTYPE_SPELL)
-			match=strfind(texture,spell);
+			match=_strcontains(texture,spell);
 		end
 		if match then
 			if index==0 then
@@ -41,12 +53,30 @@ local function __GetSpellIndex(spell)
 	
 	return index,count
 end
-
-function IsSpellCastable(spell)
+function AM_InRange(spell)
+	local index,count=__GetSpellIndex(spell)
+	if index then
+		if IsSpellInRange(index,BOOKTYPE_SPELL)~=0 then
+			return true
+		end
+	end
+end
+function AM_InCD(spell)
+	local index,count=__GetSpellIndex(spell)
+	if index then
+		local start,duration,enable=GetSpellCooldown(index,BOOKTYPE_SPELL)
+		if (start>0 and duration>2) then
+			return true
+		end
+	else
+		return true
+	end
+end
+function IsSpellCastable(spell,target)
 
 	local index,count=__GetSpellIndex(spell)
 	if index then
-		if IsUsableSpell(index,BOOKTYPE_SPELL) and IsSpellInRange(index,BOOKTYPE_SPELL)~=0 then
+		if IsUsableSpell(index,BOOKTYPE_SPELL,target) and IsSpellInRange(index,BOOKTYPE_SPELL,target)~=0 then
 			local start,duration,enable=GetSpellCooldown(index,BOOKTYPE_SPELL)
 			if not (start>0 and duration>2) then
 				return spell;
@@ -78,10 +108,64 @@ function FindCastableSpell(...)
 	end
 end
 
-function UnitHasSpellEffect(unit,spell)
+function UnitBuffIndex(unit,nameoricon)
+	local i=0
+	for i=1,16 do
+		local name, rank, iconTexture, count, duration, timeLeft = UnitBuff(unit, i);
+		if name and iconTexture then
+			if _strcontains(name,nameoricon) then
+				return i,name, rank, iconTexture, count, duration, timeLeft
+			end
+			if _strcontains(iconTexture,nameoricon) then
+				return i,name, rank, iconTexture, count, duration, timeLeft
+			end
+		end
+	end
+end
+
+function UnitDebuffIndex(unit,nameoricon,notimecheck)
+	local i=0
+	for i=1,16 do
+		local name, rank, iconTexture, count,debuffType, duration, timeLeft = UnitDebuff(unit, i);
+		if name and iconTexture then
+			if _strcontains(name,nameoricon) then
+				return i,name, rank, iconTexture, count,debuffType, duration, timeLeft
+			end
+			if _strcontains(iconTexture,nameoricon) then
+				return i,name, rank, iconTexture, count,debuffType, duration, timeLeft
+			end
+		end
+	end
+end
+
+function UnitDebuffStack(unit,nameoricon,notimecheck)
+	local i=0
+	for i=1,16 do
+		local name, rank, iconTexture, count,debuffType, duration, timeLeft = UnitDebuff(unit, i);
+		if name and iconTexture then
+			if _strcontains(name,nameoricon) and (notimecheck or timeLeft~=nil) then
+				return count
+			end
+			if _strcontains(iconTexture,nameoricon) and (notimecheck or timeLeft~=nil) then
+				return count
+			end
+		end
+	end
+end
+
+function UnitHasSpellEffect(unit,spell,notimecheck)
 	if not UnitExists(unit) then
 		return nil
 	end
+	local index,name, rank, iconTexture, count, duration, timeLeft=UnitBuffIndex(unit,spell,notimecheck)
+	if index then
+		return timeLeft or notimecheck or 20
+	end
+	local index,name, rank, iconTexture, count,debuffType, duration, timeLeft=UnitDebuffIndex(unit,spell,notimecheck)
+	if index then
+		return timeLeft or notimecheck or 20
+	end
+	
 	local index,count=__GetSpellIndex(spell)
 	if not index then
 		return nil
@@ -93,12 +177,12 @@ function UnitHasSpellEffect(unit,spell)
 	local i=0
 	for i=1,16 do
 		local name, rank, iconTexture, count, duration, timeLeft = UnitBuff(unit, i);
-		if texture==iconTexture and timeLeft~=nil then
-			return timeLeft
+		if texture==iconTexture and (notimecheck or timeLeft~=nil) then
+			return timeLeft or notimecheck
 		end
 		local name, rank, iconTexture, count, debuffType, duration, timeLeft = UnitDebuff(unit, i);
-		if texture==iconTexture and timeLeft~=nil then
-			return timeLeft
+		if texture==iconTexture and (notimecheck or timeLeft~=nil) then
+			return timeLeft or notimecheck
 		end
 	end
 	return nil
@@ -149,29 +233,96 @@ function CalcCondition(exp)
 end
 
 
-local function HandleCondition(type,msg)
+function AM_HandleCondition(type,msg,target)
 	if type=="" or not type then
 		return CalcCondition(msg)
 	end
 	if type=="CAST" or type=="CASTABLE" then
 		return IsSpellCastable(msg)
 	end
-	if type=="TB" then
-		if not UnitExists("target") then
-			return nil
+	if type=="RANGE" then
+		return AM_InRange(msg)
+	end
+	if type=="CD" then
+		return AM_InCD(msg)
+	end
+	if type=="FB" or type=="ADDFB" or type=="FBX" or type=="ADDFBX" then
+		if target then
+			if not UnitExists(target) then
+				return nil
+			end
+		else
+			if UnitExists("target") and UnitIsFriend("target","player") then
+				target="target"
+			else
+				target="player"
+			end
 		end
-		if not UnitHasSpellEffect("target",msg) then
-			return 1
+		if type=="FBX" or type=="ADDFBX" then
+			if not UnitHasSpellEffect(target,msg,20) then
+				return 1
+			end
+		else
+			if not UnitHasSpellEffect(target,msg) then
+				return 1
+			end
 		end
 		return nil
 	end
-	if type=="PB" then
+	if type=="TB" or type=="ADDTB" or type=="TBX" or type=="ADDTBX" then
+		if not target then
+			target="target"
+		end
+		if not UnitExists(target) then
+			return nil
+		end
+		if type=="TBX" or type=="ADDTBX" then
+			if not UnitHasSpellEffect(target,msg,20) then
+				return 1
+			end
+		else
+			if not UnitHasSpellEffect(target,msg) then
+				return 1
+			end
+		end
+		return nil
+	end
+	if type=="PB" or type=="ADDPB" then
 		if not UnitHasSpellEffect("player",msg) then
 			return 1
 		end
 		return nil
 	end
+	if type=="PBX" or type=="ADDPBX" then
+		if not UnitHasSpellEffect("player",msg,20) then
+			return 1
+		end
+		return nil
+	end
+	local numtype,num=strmatch(type,"([a-zA-Z])([0-9]+)")
+	if numtype and num then
+		if numtype=="R" then
+			if UnitMana("player")>=tonumber(num) then
+				return 1
+			end
+		end
+		if numtype=="L" then
+			if UnitHealth("player")*100/UnitHealthMax("player")<=tonumber(num) then
+				return 1
+			end
+		end
+		return nil
+	end
 	return 1; --unknown condition maybe parse error..
+end
+local function HandleConditions(msg,target,...)
+	local i
+	for i=1,select("#", ...) do
+		if not AM_HandleCondition(select(i,...),msg,target) then
+			return nil
+		end
+	end
+	return true
 end
 
 local function HandleLineIf(result)
@@ -184,25 +335,23 @@ local function HandleLineIf(result)
 end
 local function HandleLineElseIf(result)
 	if scope.isif then
-		if not scope.result then
-			scope.result=result
-		end
+		scope.result=result
 	else
 		__Print(" do not use /elseif without /if ");
 	end
 	return true;
 end
-local function HandleLine(command,msg)
+function AM_HandleLine(command,msg)
 	if command=="/SKIPNONE" then
 		scope.skipline=0;
 		return true;
 	end
 	if strmatch(command,"/IF([^%s]*)") then
-		HandleLineIf(HandleCondition(strmatch(command,"/IF([^%s]*)"),msg))
+		HandleLineIf(AM_HandleCondition(strmatch(command,"/IF([^%s]*)"),msg))
 		return true;
 	end
 	if strmatch(command,"/ELSEIF([^%s]*)") then
-		HandleLineElseIf(HandleCondition(strmatch(command,"/ELSEIF([^%s]*)"),msg))
+		HandleLineElseIf(AM_HandleCondition(strmatch(command,"/ELSEIF([^%s]*)"),msg))
 		return true;
 	end
 	if command=="/ELSE" then
@@ -240,6 +389,7 @@ local function HandleLine(command,msg)
 
 	if scope.skipline>0 then
 --__Print("skiping line.."..scope.skipline);
+--		__Print("skipline.."..command..msg)
 		scope.skipline=scope.skipline-1;
 		return true;
 	end
@@ -250,16 +400,21 @@ local function HandleLine(command,msg)
 			return true
 		end
 
-		if not IsSpellCastable(action) then
+		if not IsSpellCastable(action,target) then
 			return true
 		end
-
-		local condition,type,spell = strmatch(msg, "^%[([a-z]+):%d+([a-z]+)%]%s+(.*)");
-		if spell then
-			if not type then
-				return false
+		
+		if target then
+			if not UnitExists(target) then
+				return true
 			end
-			if HandleCondition(strupper(type),spell) then
+		else
+			--target="target"
+		end
+
+		local types = strmatch(msg, ":%d?([a-zA-Z][a-zA-Z0-9%+]+)");
+		if types then
+			if HandleConditions(action,target,strsplit("+",strupper(types))) then
 				return false
 			end
 			return true
@@ -276,23 +431,15 @@ end
 
 local _ChatEdit_HandleChatType_=ChatEdit_HandleChatType;
 function ChatEdit_HandleChatType(editBox, msg, command, send)
-	if _ChatEdit_HandleChatType_(editBox, msg, command, send) then
-		return true;
-	end
-	if not send then
-		return false
-	end
-	if editBox:GetName()~="MacroEditBox" then
-		return false;
-	end
-	if HandleLine(command,msg) then
-		ChatEdit_OnEscapePressed(editBox)
-		return true;
+
+	if send and editBox:GetName()=="MacroEditBox" then
+		if AM_HandleLine(command,msg) then
+			ChatEdit_OnEscapePressed(editBox)
+			return 1;
+		end
 	end
 
-	--__Print("continue "..editBox:GetText());
-
-	return false;
+	return _ChatEdit_HandleChatType_(editBox, msg, command, send)
 end
 
 function SkipLine(line)
@@ -316,152 +463,28 @@ function SKIPIF(msg)
 		end
 	end
 end
+function DOIF(msg)
+	if msg then
+		if not CalcCondition(msg) then
+			SkipLine(1)
+		end
+	end
+end
 
 SlashCmdList["SKIPLINEIF"]=SKIPLINEIF;
 SLASH_SKIPLINEIF1="/SKIPLINEIF";
 SlashCmdList["SKIPIF"]=SKIPIF;
 SLASH_SKIPIF1="/SKIPIF";
 
+SlashCmdList["DOIF"]=DOIF;
+SLASH_DOIF1="/DOIF";
 
 
 
 
-local nextaction=nil;
-
-function Next(line,callback,...)
-	local item={};
-	action.line=line;
-	action.func=callback;
-	local i;
-	local n=select("#",...);
-	for i=1,n do
-		action["arg"..i]=select(i,...);
-	end
-	if nextaction==nil then
-		nextaction=action;
-	else
-		nextaction.next=action;
-	end
-end
-
-local function ActionBegin(msg)
-	nextaction=nil;
-	if msg~="" then
-		local func=getglobal(msg);
-		if func then
-			func();
-		end
-	end
-end
-local function ActionNext(msg)
-	if not nextaction then
-		return nil;
-	end
-	_call_action=nextaction;
-	nextaction=nextaction.next;
-	return _call_action.line;
-end
-local function ActionNextButton(msg)
-	if not nextaction then
-		return nil;
-	end
-	return "/click NextMacroButton";
-end
 
 
 
-
-local function macrobox_Translate_Text(text)
-
-	local cmd = strmatch(text, "^(/[^%s]+)");
-	if not cmd then
-		return nil
-	end
-
-	local msg = "";
-	if ( cmd ~= text ) then
-		msg = strsub(text, strlen(cmd) + 2);
-	end
-
-	cmd = strupper(cmd);
-
-	local scriptcmd=strmatch(cmd,"^(/[^%s]+)!SCRIPT$");
-	if scriptcmd then
-		cmd=scriptcmd;
-		if msg~="" then
-			msg=CalcExpression(msg)
-		end
-	end
-
-
-	if cmd=="/BEGIN" then
-		return ActionBegin(msg) or "";
-	elseif cmd=="/NEXT" then
-		return ActionNext(msg) or "";
-	elseif cmd=="/NEXTBUTTON" then
-		return ActionNextButton(msg) or "";
-	end
-
-	if cmd=="/CASTABLE" then
-		local spell=FindCastableSpell(strsplit(",",msg))
-		if spell then
-			return "/cast "..spell;
-		else
-			return "";
-		end
-	end
-	if cmd=="/TODOCOMMAND" then
-			
-	end
-
-	local func=ReplaceCmdList[strsub(cmd,2)];
-	if func then
-		return func(msg);
-	end
-
-
-	if scriptcmd then
-		if msg=="" then
-			return scriptcmd;
-		end
-		return scriptcmd.." "..msg;
-	end
-end
-
-local function pre_MacroLine(box,text)
-
-	_call_action=nil;
-
-	if strfind(text,"/")~=1 then return end;
-	if box._setting_text_ then return end;
-	local newtext=macrobox_Translate_Text(text)
-	if newtext then
-__Print("override .. "..newtext);
---TODO:very important here, how to set the text with secure?
-		box._setting_text_=true;
-		box:SetMultiLine(true)
-		box:SetText(newtext.."\n\n\n");
-		box:SetMultiLine(false)
-		box._setting_text_=false;
-	end
-end
-local function post_MacroLine(editBox, send)
-	if editBox:GetName()~="MacroEditBox" then
-		return;
-	end
-	local action=_call_action;
-	_call_action=nil;
-	if action and action.func then
-		action.func(action.arg1,action.arg2,action.arg3,action.arg4,action.arg5,action.arg6,action.arg7,action.arg8,action.arg9,action.arg10,action.arg11,action.arg12);
-	end
-end
-
---hooksecurefunc(macrobox,"SetText",pre_MacroLine);
---hooksecurefunc("ChatEdit_ParseText",post_MacroLine);
-
-
-
---a good reason for use XueXing..
 function IF_XUEXING()
 	if not UnitAffectingCombat("player") then
 		return false;
@@ -490,15 +513,60 @@ function IF_CSPELL(spell)
 	end
 end
 
+function IF_CHAOFENG()
+	if not UnitExists("target") then
+		return false
+	end
+	if UnitIsPlayer("target") then
+		return false
+	end
+	if UnitIsFriend("target","player") then
+		return false
+	end
+	if not UnitIsFriend("targettarget","player") then
+		return false
+	end
+	if UnitIsUnit("targettarget","player") then
+		return false
+	end
+	return true;
+end
+
+function IF_WEISUO()
+	if not UnitExists("target") then
+		return false
+	end
+	if UnitIsPlayer("target") then
+		return false
+	end
+	if UnitIsFriend("target","player") then
+		return false
+	end
+	if UnitIsUnit("targettarget","player") then
+		return true
+	end
+	return false
+end
+
+AM__GetSpellIndex=__GetSpellIndex;
 
 
 
-function AM_InRange(spell)
-	local index,count=__GetSpellIndex(spell)
-	if index then
-		if IsSpellInRange(index,BOOKTYPE_SPELL)~=0 then
-			return true
+
+function PrintBuffs()
+	local i=0
+	for i=1,16 do
+		local name, rank, iconTexture, count, duration, timeLeft = UnitBuff("player", i);
+		if name and iconTexture then
+			__Print(name..":"..iconTexture)
 		end
 	end
 end
-AM__GetSpellIndex=__GetSpellIndex;
+
+function message(msg)
+	__Print(msg)
+end
+function SetUIPanel()
+end
+
+__Print("AutoMacro Loaded.");

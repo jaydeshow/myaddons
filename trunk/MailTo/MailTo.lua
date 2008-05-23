@@ -2,6 +2,9 @@
     Written by Jyin of Silverhand, (copyright (c) 2005-2007)
     
     version history:
+    1.4.4	Fixed another initialization error. Took out code that was attempting to fill the sendee list automatically
+    1.4.3	Fixed the error of fresh install
+    1.4.2	The sendee list is now faction specific. *** WARNING the lists will be EMPTYED ***
     1.4.1	Invoking /inbox command now will check the log and nofity delivered items.
     1.4		Changed the way timer works now support timing mailing to inter/intra account mail.
     1.32	Bug Fix for /mtl
@@ -162,7 +165,7 @@ local TCy = {r=0.85, g=0.85, b=0.25}
 local TCg = {r=0.25, g=0.85, b=0.25}
 local TCw = {r=1.00, g=1.00, b=1.00}
 local MailTo_Selected, MailTo_Name, MailTo_SavedName
-local Server,Player,Mail,Mail_server,Mail_name,Cash
+local Server,Player,Mail,Mail_server,Mail_name,Cash, Faction
 local Startup,MailCount,OpenTime,Last_Click = true,false,0,0
 local DELAY = 61*60 -- item delivery delay
 local DAY = 24*60*60
@@ -231,12 +234,15 @@ function MailTo_Init()
     SLASH_INBOX1 = "/inbox"
     Player = UnitName("player")
     Server = GetCVar("realmName")
-    if MailTo_Inbox[Server] then
-      if not MailTo_Inbox[Server][Player] and not MailTo_InList(Player) then
-        MailTo_ListAdd(Player)
-      end
-    else MailTo_Inbox[Server]={} end
+    Faction, _ = UnitFactionGroup("player")
+--    if MailTo_Inbox[Server] then
+--      if not MailTo_Inbox[Server][Player] and not MailTo_InList(Player) then
+--        MailTo_ListAdd(Player)
+--      end
+--    else MailTo_Inbox[Server]={} end
+    if not MailTo_Inbox[Server] then MailTo_Inbox[Server]={} end
     if not MailTo_List[Server] then MailTo_List[Server]={} end
+    if not MailTo_List[Server][Faction] then MailTo_List[Server][Faction]={} end
     if not MailTo_Mail[Server] then MailTo_Mail[Server]={} end
     local ix = next(MailTo_Mail)
     if next(MailTo_Mail,ix) then
@@ -375,10 +381,15 @@ function MailTo_InboxItem_OnClick(ix)
         end
       end
       if item and not skip then
-        item,hi,dl = GetInboxItem(ix)
-        print(format(MAILTO_RECEIVED,item,from,sub))
-        if delete then GetInboxText(ix) end
-        TakeInboxItem(ix)
+      	local itemIndex
+      	-- for itemIndex = ATTACHMENTS_MAX_RECEIVE, 1, -1 do
+			item,hi,dl = GetInboxItem(ix, itemIndex)
+			-- if item then
+				print(format(MAILTO_RECEIVED,item,from,sub))
+			-- end
+			TakeInboxItem(ix, itemIndex)
+		-- end
+		if delete then GetInboxText(ix) end
         if single then skip = true end
       end
       local text,str,flag = GetInboxText(ix);
@@ -691,7 +702,7 @@ function MailTo_command(msg)
       return
     end
     if msg=="clear" then
-      MailTo_List[Server] = {}
+      MailTo_List[Server][Faction] = {}
       print(MAILTO_CLEARED)
       return
     end
@@ -747,7 +758,7 @@ function MailTo_command(msg)
       return
     end
     local list = ''
-    for i,name in pairs(MailTo_List[Server]) do
+    for i,name in pairs(MailTo_List[Server][Faction]) do
       if list~='' then list = list..', ' end
       list = list..name
     end
@@ -932,13 +943,13 @@ function MailTo_InFrame_Remove()
     if not next(MailTo_Inbox[name.s]) then MailTo_Inbox[name.s] = nil end
     MailTo_Mail[name.s][name.n] = nil
     if not next(MailTo_Mail[name.s]) then MailTo_Mail[name.s] = nil end
-    for i,n in pairs(MailTo_List[Server]) do
+    for i,n in pairs(MailTo_List[Server][Faction]) do
       if n==name.n then
-        tremove(MailTo_List[Server],i)
+        tremove(MailTo_List[Server][Faction],i)
         break
       end
     end
-    if(not next(MailTo_List[value.s])) then MailTo_List[name.s] = nil; end
+    if(not next(MailTo_List[value.s][Faction])) then MailTo_List[name.s][Faction] = nil; end
     print(format(MAILTO_REMOVE2,name.n,name.s))
     HideUIPanel(MailTo_InFrame)
 end
@@ -1029,7 +1040,7 @@ function MailTo_ToList_Init()
 		if MailTo_Selected then
 			info.text = string.format(MAILTO_F_REMOVE,MailTo_Name)
 			info.func = MailTo_ListRemove
-		elseif table.getn(MailTo_List[Server])<UIDROPDOWNMENU_MAXBUTTONS then
+		elseif table.getn(MailTo_List[Server][Faction]) < UIDROPDOWNMENU_MAXBUTTONS then
 			info.text = string.format(MAILTO_F_ADD,MailTo_Name)
 			info.func = MailTo_ListAdd
 		else
@@ -1038,7 +1049,7 @@ function MailTo_ToList_Init()
 		end
 		if info then UIDropDownMenu_AddButton(info) end
 	end
-	for key, name in ipairs(MailTo_List[Server]) do
+	for key, name in ipairs(MailTo_List[Server][Faction]) do
 		info = {text=name,value=key,func=MailTo_ListSelect}
 		if key==MailTo_Selected then info.checked = 1 end
 		UIDropDownMenu_AddButton(info)
@@ -1048,7 +1059,7 @@ end
 function MailTo_ListSelect()
     local value = this.value
     if value then
-      MailTo_SavedName = MailTo_List[Server][value]
+      MailTo_SavedName = MailTo_List[Server][Faction][value]
       SendMailNameEditBox:SetText(MailTo_SavedName)
       SendMailNameEditBox:HighlightText(0,-1)
       SendMailSubjectEditBox:SetFocus()
@@ -1057,19 +1068,19 @@ end
 
 function MailTo_ListAdd(name)
     if not name then name = MailTo_Name end
-    tinsert(MailTo_List[Server],name)
-    sort(MailTo_List[Server])
+    tinsert(MailTo_List[Server][Faction],name)
+    sort(MailTo_List[Server][Faction])
     print(name..MAILTO_ADDED)
 end
 
 function MailTo_ListRemove()
-    tremove(MailTo_List[Server],MailTo_Selected)
+    tremove(MailTo_List[Server][Faction],MailTo_Selected)
     print(MailTo_Name..MAILTO_REMOVED)
 end
 
 function MailTo_InList(MCname)
     local LCname = string.lower(MCname)
-    for key,name in pairs(MailTo_List[Server]) do
+    for key,name in pairs(MailTo_List[Server][Faction]) do
       if LCname==string.lower(name) then return key end
     end
 end

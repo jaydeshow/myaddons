@@ -61,30 +61,30 @@ L:RegisterTranslations("enUS", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Venez… mourir.",
-	engage_message = "%s engagé !",
+	engage_message = "%s engagé !",
 
 	grow = "Croissance",
-	grow_desc = "Compte les croissances de Grull et préviens de ses arrivées.",
-	grow_message = "Croissance : (%d)",
+	grow_desc = "Compte les Croissances de Grull et prévient de leurs arrivées.",
+	grow_message = "Croissance : (%d)",
 	grow_bar = "Croissance (%d)",
 
 	grasp = "Emprise",
-	grasp_desc = "Avertissements et délais pour Emprise du seigneur gronn.",
-	grasp_message = "Heurt terrestre - Emprise dans ~10 sec !",
+	grasp_desc = "Avertissements et délais pour l'Emprise du seigneur gronn.",
+	grasp_message = "Heurt terrestre - Fracasser dans ~10 sec !",
 	grasp_warning = "Heurt terrestre imminent",
-	grasp_bar = "~Cooldown Heurt terrestre",
+	grasp_bar = "~Recharge Heurt terrestre",
 
 	cavein = "Eboulement sur vous",
-	cavein_desc = "Préviens quand vous êtes sous un éboulement.",
-	cavein_message = "Eboulement sur VOUS !",
+	cavein_desc = "Prévient quand vous subissez les effets de l'Eboulement.",
+	cavein_message = "Eboulement sur VOUS !",
 
 	silence = "Silence",
-	silence_desc = "Préviens quand Gruul lance son Silence de zone (Réverbération).",
+	silence_desc = "Prévient quand Gruul lance son Silence de zone (Réverbération).",
 	silence_message = "Silence de zone",
-	silence_warning = "Silence de zone imminent !",
-	silence_bar = "~Cooldown Silence",
+	silence_warning = "Silence de zone imminent !",
+	silence_bar = "~Recharge Silence",
 
-	shatter_message = "Fracasser !",
+	shatter_message = "Fracasser !",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
@@ -130,8 +130,8 @@ L:RegisterTranslations("koKR", function() return {
 	grasp_warning = "잠시 후 땅 울리기",
 	grasp_bar = "~땅 울리기 대기시간",
 
-	cavein = "당신의 함몰",
-	cavein_desc = "당신의 함몰에 대한 경고입니다.",
+	cavein = "자신의 함몰",
+	cavein_desc = "자신이 함몰에 걸렸을 때 알립니다.",
 	cavein_message = "당신은 함몰!",
 
 	silence = "침묵 경고",
@@ -149,14 +149,14 @@ L:RegisterTranslations("zhTW", function() return {
 
 	grow = "成長警告",
 	grow_desc = "計算並當戈魯爾成長時發送警告",
-	grow_message = "成長 : (%d)",
+	grow_message = "成長: (%d)",
 	grow_bar = "成長 (%d)",
 
 	grasp = "破碎警告",
 	grasp_desc = "當戈魯爾施放大地猛擊跟破碎時發送警告並顯示計時條",
 	grasp_message = "大地猛擊 - 10 秒內破碎",
-	grasp_warning = "大地猛擊即將來臨！",
-	grasp_bar = "大地猛擊",
+	grasp_warning = "大地猛擊即將來臨!",
+	grasp_bar = "<大地猛擊>",
 
 	cavein = "塌下警告",
 	cavein_desc = "當你在塌下的範圍時發送警告",
@@ -166,7 +166,7 @@ L:RegisterTranslations("zhTW", function() return {
 	silence_desc = "當戈魯爾施放範圍沉默時發送警告 (迴響)",
 	silence_message = "迴響 - 範圍沉默",
 	silence_warning = "戈魯爾即將施放迴響",
-	silence_bar = "迴響",
+	silence_bar = "<迴響>",
 
 	shatter_message = "破碎",
 } end)
@@ -176,23 +176,23 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_message = "%s 激活！",
 
 	grow = "成长",
-	grow_desc = "计算并当屠龙者格鲁尔成长时发出警告。",
-	grow_message = "成长： >%d<！",
-	grow_bar = "<成长 (%d)》",
+	grow_desc = "计算并当成长时发出警告。",
+	grow_message = "成长：>%d<！",
+	grow_bar = "<成长：%d>",
 
 	grasp = "碎裂",
 	grasp_desc = "碎裂警报计时条。",
-	grasp_message = "大地冲击 - 10秒后破碎！",
-	grasp_warning = "大地冲击 即将发动",
+	grasp_message = "大地冲击！约10秒后，破碎！",
+	grasp_warning = "即将 大地冲击！",
 	grasp_bar = "<大地冲击 冷却>",
 
 	cavein = "洞穴震颤",
-	cavein_desc = "当你中了洞穴震颤发出警报。",
+	cavein_desc = "当你受到洞穴震颤时发出警报。",
 	cavein_message = ">你< 洞穴震颤！",
 
 	silence = "沉默",
-	silence_desc = "当格鲁尔群体沉默发出警报。",
-	silence_message = "群体沉默",
+	silence_desc = "当群体沉默时发出警报。",
+	silence_message = "群体沉默！",
 	silence_warning = "即将 群体沉默！",
 	silence_bar = "<沉默>",
 
@@ -200,31 +200,31 @@ L:RegisterTranslations("zhCN", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "Venid… y morid.",
-	engage_message = "%s Activado!",
+	engage_trigger = "Venid... y morid.",
+	engage_message = "¡%s Activado!",
 
-	grow = "Crecimiento",
+	grow = "Crecimiento (Grow)",
 	grow_desc = "Cuenta y avisa de los crecimientos de Gruul",
 	grow_message = "Crece: (%d)",
-	grow_bar = "Crecimiento (%d)",
+	grow_bar = "~Crecimiento (%d)",
 
-	grasp = "Rujido",
-	grasp_desc = "Rujidos avisos y timers.",
-	grasp_message = "Patadon al suelo - Congelacion  en ~10sec!",
-	grasp_warning = "Patadon al suelo pronto",
-	grasp_bar = "~Cooldown de Patadon al suelo",
+	grasp = "Embate en el suelo (Ground Slam)",
+	grasp_desc = "Avisos de Embate en el suelo y trizar (Shatter).",
+	grasp_message = "¡Embate en el suelo! - Trizar en ~10seg",
+	grasp_warning = "Posible Embate",
+	grasp_bar = "~Embate",
 
-	cavein = "Cueva en ti",
-	cavein_desc = "Avisa de la caida de la cueva en ti.",
-	cavein_message = "Sepultado!",
+	cavein = "Sepultar (Cave In)",
+	cavein_desc = "Avisa cuando Gruul utiliza Sepultar.",
+	cavein_message = "¡Sepultar!",
 
-	silence = "Silencio",
-	silence_desc = "Avisa cuando Gruul castea silencio (Reverberacion).",
-	silence_message = "AOE Silencio",
-	silence_warning = "AOE Silencio pronto!",
-	silence_bar = "~Silence Cooldown",
+	silence = "Reverberación (Silencio área)",
+	silence_desc = "Avisa cuando Gruul lanza silencio de área. (Reverberación)",
+	silence_message = "¡Reverberación - Silencio de área!",
+	silence_warning = "Posible Reverberación",
+	silence_bar = "~Reverberación",
 
-	shatter_message = "Petrificacion!",
+	shatter_message = "Trizar",
 } end)
 
 ----------------------------------
@@ -236,7 +236,7 @@ mod.zonename = BZ["Gruul's Lair"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = boss
 mod.toggleoptions = {"grasp", "grow", -1, "cavein", "silence", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 65935 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 74481 $"):sub(12, -3))
 mod.proximityCheck = function(unit)
 	for k, v in pairs(bandages) do
 		if IsItemInRange(k, unit) == 1 then
@@ -271,7 +271,7 @@ end
 
 function mod:CaveIn(player)
 	if player == pName and db.cavein then
-		self:IfMessage(L["cavein_message"], "Personal", 36240, "Alarm")
+		self:LocalMessage(L["cavein_message"], "Personal", 36240, "Alarm")
 	end
 end
 
@@ -279,7 +279,12 @@ function mod:Grow(_, spellID)
 	if db.grow then
 		self:IfMessage(L["grow_message"]:format(growcount), "Important", spellID)
 		growcount = growcount + 1
-		self:Bar(L["grow_bar"]:format(growcount), 30, spellID)
+		if growcount < 31 then
+			self:Bar(L["grow_bar"]:format(growcount), 30, spellID)
+		else
+			growcount = 1
+			self:Bar(L["grow_bar"]:format(growcount), 300, spellID)
+		end
 	end
 end
 

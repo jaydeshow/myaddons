@@ -1,13 +1,15 @@
 ﻿assert(Cartographer, "Cartographer not found!")
-local revision = tonumber(string.sub("$Revision: 56068 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 68203 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2007-11-26 15:54:07 -0500 (Mon, 26 Nov 2007) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-04-05 21:38:01 -0400 (Sat, 05 Apr 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_InstanceNotes")
-local BB = AceLibrary("Babble-Boss-2.2")
+local B = Rock("LibBabble-Boss-3.0")
+local BB = B:GetLookupTable()
+local BBB = B:GetBaseLookupTable()
 
 Cartographer_InstanceNotes = Cartographer:NewModule("InstanceNotes")
 
@@ -39,7 +41,7 @@ function Cartographer_InstanceNotes:OnInitialize()
 		local lvlElitePattern = "Lvl ([%d%?]+) Elite (.*)" -- Lvl 54 Elite Dragon
 	
 		local function simpleTryConvert(s)
-			if BB:HasBaseTranslation(s) then
+			if BBB[s] then
 				return BB[s]
 			elseif L:HasBaseTranslation(s) then
 				return L[s]

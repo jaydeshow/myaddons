@@ -1,22 +1,19 @@
-﻿---------------------------------------------------------
---- German localization by
------- Naitsabes
------- Jenina (Lothar, EU)
------- Cutter (Blackmoore, EU)
+﻿-- German localization by
+-- Naitsabes, Jenina (Lothar, EU), Cutter (Blackmoore, EU), kunda
 
 if (GetLocale() == "deDE") then
 
-GEMHELPER_VERSION_TEXT		= "Gem Helper v1.5";
-GEMHELPER_DONE_TEXT		= "Fertig";
+GEMHELPER_VERSION_TEXT		= "Gem Helper v1.7"
+GEMHELPER_DONE_TEXT		= "Fertig"
 
-GEMHELPER_ERRORTOOLTIP_L1	= "Unsicherer Gegenstand";
-GEMHELPER_ERRORTOOLTIP_L2	= "Gegenstand-ID: ";
-GEMHELPER_ERRORTOOLTIP_L3	= "Dieser Gegenstand ist unsicher. Um diesen Gegenstand sehen zu können ohne einen Verbindungsabbruch zu riskieren, musst Du ihn zunächst irgendwo im Spiel gesehen haben. Blizzard schreibt diese Einschränkung seit Patch 1.10 vor.";
-GEMHELPER_ERRORTOOLTIP_L4	= "Du kannst versuchen per Rechtsklick eine Anfrage an den Server zu senden. Dies kann zu einem Verbindungsabbruch führen.";
-GEMHELPER_QUERY_MESSAGE		= "Sende Anfrage an den Server für ";
+GEMHELPER_ERRORTOOLTIP_L1	= "Unsicherer Gegenstand"
+GEMHELPER_ERRORTOOLTIP_L2	= "Gegenstand-ID: "
+GEMHELPER_ERRORTOOLTIP_L3	= "Dieser Gegenstand ist unsicher. Um diesen Gegenstand sehen zu können ohne einen Verbindungsabbruch zu riskieren, musst Du ihn zunächst irgendwo im Spiel gesehen haben. Blizzard schreibt diese Einschränkung seit Patch 1.10 vor."
+GEMHELPER_ERRORTOOLTIP_L4	= "Du kannst versuchen per Rechtsklick eine Anfrage an den Server zu senden. Dies kann zu einem Verbindungsabbruch führen."
+GEMHELPER_QUERY_MESSAGE		= "Sende Anfrage an den Server für "
 
-GEMHELPER_OPENJC_TEXT		= "Öffne/Schließe normales JS Handelsfenster.";
-GEMHELPER_CHANGEBGCOLOR_TEXT	= "Hintergrundfarbe ändern.";
+GEMHELPER_OPENJC_TEXT		= "Öffne/Schließe normales JS Handelsfenster."
+GEMHELPER_CHANGEBGCOLOR_TEXT	= "Hintergrundfarbe ändern."
 
 -- GEMHELPER_JEWELCRAFTING_TEXT must match the text written on the top of default Jewelcrafting UI
 -- window, which should also be the same as the text written in your Character --> Skills -->
@@ -27,7 +24,7 @@ GEMHELPER_CHANGEBGCOLOR_TEXT	= "Hintergrundfarbe ändern.";
 -- im Fenster Carakter -> Fertigkeiten -> Berufe entsprechen. Dieser Text wird abgefragt um
 -- festzustellen ob der Spieler Juwelenschleifen gelernt hat und ob das original Berufsfenster
 -- gerade geöffnet ist.
-GEMHELPER_JEWELCRAFTING_TEXT	= "Juwelenschleifen";
+GEMHELPER_JEWELCRAFTING_TEXT	= "Juwelenschleifen"
 
 GEMHELPER_CHECKBUTTON_TEXT	= {
 	[1] = "Nach Farbe filtern",
@@ -72,6 +69,7 @@ GEMHELPER_CHECKBUTTON_TEXT	= {
 	[65] = "Willenskraft",
 	[66] = "Abhärtungswertung",
 
+	[70] = "Zaubertempowertung",
 	[71] = "Trefferwertung",
 	[72] = "Kritische Trefferwertung",
 	[73] = "Angriffskraft",
@@ -95,7 +93,7 @@ GEMHELPER_CHECKBUTTON_TEXT	= {
 	[104] = "Zeige Instanzloot Steine",
 
 	[111] = "Original UI ersetzen",
-};
+}
 
 -- Data for German localization
 GemHelper_GemLocaleData = {
@@ -136,13 +134,13 @@ GemHelper_GemLocaleData = {
 	[24062] = {["n"] = "Robuster Talasit",					["d"] = "Herstellbar, 1 Talasit"},
 	[24036] = {["n"] = "Glitzernder lebendiger Rubin",			["d"] = "Herstellbar, 1 Lebendiger Rubin"},
 	[24050] = {["n"] = "Schimmernder Dämmerstein",				["d"] = "Herstellbar, 1 Dämmerstein"},
-	[24061] = {["n"] = "Glitzernder Edeltopaz",				["d"] = "Herstellbar, 1 Edeltopaz"},
+	[24061] = {["n"] = "Glitzernder Edeltopas",				["d"] = "Herstellbar, 1 Edeltopas"},
 	[24056] = {["n"] = "Leuchtendes Nachtauge",				["d"] = "Herstellbar, 1 Nachtauge"},
-	[24058] = {["n"] = "Gravierter Edeltopaz",				["d"] = "Herstellbar, 1 Edeltopaz"},
+	[24058] = {["n"] = "Gravierter Edeltopas",				["d"] = "Herstellbar, 1 Edeltopas"},
 	[24067] = {["n"] = "Gezackter Talasit",					["d"] = "Herstellbar, 1 Talasit"},
-	[24060] = {["n"] = "Glänzender Edeltopaz",				["d"] = "Herstellbar, 1 Edeltopaz"},
+	[24060] = {["n"] = "Glänzender Edeltopas",				["d"] = "Herstellbar, 1 Edeltopas"},
 	[24037] = {["n"] = "Irisierender Stern der Elune",			["d"] = "Herstellbar, 1 Stern der Elune"},
-	[24059] = {["n"] = "Mächtiger Edeltopaz",				["d"] = "Herstellbar, 1 Edeltopaz"},
+	[24059] = {["n"] = "Mächtiger Edeltopas",				["d"] = "Herstellbar, 1 Edeltopas"},
 	[24066] = {["n"] = "Strahlender Talasit",				["d"] = "Herstellbar, 1 Talasit"},
 	[24051] = {["n"] = "Massiver Dämmerstein",				["d"] = "Herstellbar, 1 Dämmerstein"},
 	[24057] = {["n"] = "Königliches Nachtauge",				["d"] = "Herstellbar, 1 Nachtauge"},
@@ -272,8 +270,8 @@ GemHelper_GemLocaleData = {
 	[31863] = {["n"] = "Ausbalanciertes Nachtauge",			["d"] = "Herstellbar, 1 Nachtauge"},
 	[31861] = {["n"] = "Großer Dämmerstein",			["d"] = "Herstellbar, 1 Dämmerstein"},
 	[31865] = {["n"] = "Energieerfülltes Nachtauge",		["d"] = "Herstellbar, 1 Nachtauge"},
-	[31867] = {["n"] = "Verschleierter Edeltopas",			["d"] = "Herstellbar, 1 Edeltopaz"},
-	[31868] = {["n"] = "Tückischer Edeltopas",			["d"] = "Herstellbar, 1 Edeltopaz"},
+	[31867] = {["n"] = "Verschleierter Edeltopas",			["d"] = "Herstellbar, 1 Edeltopas"},
+	[31868] = {["n"] = "Tückischer Edeltopas",			["d"] = "Herstellbar, 1 Edeltopas"},
 	[32836] = {["n"] = "Geläuterte Schattenperle",			["d"] = "Herstellbar, 1 Schattenperle, 1 Geläutertes draenisches Wasser"},
 	[32833] = {["n"] = "Geläuterte Jaggalperle",			["d"] = "Herstellbar, 1 Jaggalperle, 1 Geläutertes draenisches Wasser"},
 	[32409]	= {["n"] = "Unerbittlicher Erdsturmdiamant",		["d"] = "Herstellbar, 1 Erdsturmdiamant"},
@@ -347,6 +345,22 @@ GemHelper_GemLocaleData = {
 	-- Added in Gem Helper v1.5 (patch 2.3.0)
 	[34220] = {["n"] = "Wechselhafter Himmelsfeuerdiamant",	["d"] = "Herstellbar, 1 Himmelsfeuerdiamant"},
 	[34256] = {["n"] = "Bezaubertes Juwel der Amani",	["d"] = "Questbelohnung - Zul'Aman"},
-};
+
+	-- Added in Gem Helper v1.6 (patch 2.4.0)
+	[35503] = {["n"] = "Glimmender Himmelsfeuerdiamant",	["d"] = "Herstellbar, 1 Himmelsfeuerdiamant"},
+	[35501] = {["n"] = "Ewiger Erdsturmdiamant",	["d"] = "Herstellbar, 1 Erdsturmdiamant"},
+	[35707] = {["n"] = "Majestätisches Nachtauge",			["d"] = "Herstellbar, 1 Nachtauge"},
+	[34831] = {["n"] = "Auge des Meeres",	["d"] = "Questbelohnung - Tägliche Angelquest"},
+	[35758] = {["n"] = "Beständiger Gischtsmaragd",		["d"] = "Herstellbar, 1 Gischtsmaragd"},
+	[35759] = {["n"] = "Kraftvoller Gischtsmaragd",		["d"] = "Herstellbar, 1 Gischtsmaragd"},
+	[35760] = {["n"] = "Tollkühner Pyrostein",			["d"] = "Herstellbar, 1 Pyrostein"},
+	[35761] = {["n"] = "Spiegelndes Löwenauge",		["d"] = "Herstellbar, 1 Löwenauge"},
+
+	-- Added in Gem Helper v1.7 (patch 2.4.2)
+	[37503] = {["n"] = "Geläuterter Schattensangamethyst",		["d"] = "Herstellbar, 1 Schattensangamethyst"},
+	[35315] = {["n"] = "Spiegelnder Dämmerstein",		["d"] = "Herstellbar, 1 Dämmerstein"},
+	[35316] = {["n"] = "Tollkühner Edeltopas",			["d"] = "Herstellbar, 1 Edeltopas"},
+	[35318] = {["n"] = "Kraftvoller Talasit",		["d"] = "Herstellbar, 1 Talasit"},
+}
 
 end

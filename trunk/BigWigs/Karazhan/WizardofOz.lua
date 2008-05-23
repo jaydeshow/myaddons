@@ -51,12 +51,12 @@ L:RegisterTranslations("frFR", function() return {
 
 	spawns = "Délais d'activité",
 	spawns_desc = "Affiche plusieurs barres indiquant quand les différents personnages passent à l'action.",
-	spawns_bar = "%s attaque !",
+	spawns_bar = "%s attaque !",
 	spawns_warning = "%s dans 5 sec.",
 
 	light = "Chaîne d'éclairs",
-	light_desc = "Préviens quand la Chaîne d'éclairs est incantée.",
-	light_message = "Chaîne d'éclairs !",
+	light_desc = "Prévient quand la Chaîne d'éclairs est incantée.",
+	light_message = "Chaîne d'éclairs !",
 } end)
 
 L:RegisterTranslations("koKR", function() return {
@@ -78,7 +78,7 @@ L:RegisterTranslations("zhCN", function() return {
 	spawns = "启动时间",
 	spawns_desc = "每个角色激活时间计时。",
 	spawns_bar = "%s 开始攻击！",
-	spawns_warning = "%s 将在 5秒后 开始攻击",
+	spawns_warning = "%s 5秒后，开始攻击！",
 
 	light = "闪电链",
 	light_desc = "老巫婆施放闪电链时发出警报。",
@@ -99,16 +99,16 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "^Oh, Tito, tenemos que encontrar la forma de volver a casa!",
+	engage_trigger = "^¡Oh, Tito, solo tenemos que buscar la manera de volver a casa!",
 
-	spawns = "Timers de Activacion",
-	spawns_desc = "Timers para cuando los persoanjes se activan.",
-	spawns_bar = "%s attacks!",
-	spawns_warning = "%s en 5 sec",
+	spawns = "Activación",
+	spawns_desc = "Contadores para cuando los persoanjes se activan.",
+	spawns_bar = "¡%s ataca!",
+	spawns_warning = "¡%s en 5 sec!",
 
-	light = "Cadena de Relampagos",
-	light_desc = "Avisa del casteo de Cadena de Relampagos.",
-	light_message = "Cadena de Relampagos!",
+	light = "Cadena de relámpagos (Chain Lightning)",
+	light_desc = "Avisa del lanzamiento de Cadena de relámpagos.",
+	light_message = "¡Cadena de relámpagos!",
 } end)
 
 ----------------------------------
@@ -119,7 +119,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {roar, tinhead, strawman, dorothee}
 mod.toggleoptions = {"spawns", "light", "bosskill"}
-mod.revision = tonumber(("$Revision: 65914 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

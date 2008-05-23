@@ -29,6 +29,23 @@ L:RegisterTranslations("enUS", function() return {
 	["Fathom-Guard Caribdis"] = true, --priest
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	enrage_trigger = "¡Guardias, atención! Tenemos visita...",
+
+	totem = "Tótem escupefuego (Spitfire Totem)",
+	totem_desc = "Avisar sobre Tótem escupefuego y sobre quién lo lanza.",
+	totem_message1 = "Mareavess: Tótem escupefuego",
+	totem_message2 = "Karathress: Tótem escupefuego",
+
+	heal = "Ola de sanación (Healing Wave)",
+	heal_desc = "Avisar cuando Caribdis lanza Ola de sanación.",
+	heal_message = "¡Caribdis - Ola de sanación!",
+
+	["Fathom-Guard Sharkkis"] = "Guardia de las profundidades Tiburkkis", --hunter
+	["Fathom-Guard Tidalvess"] = "Guardia de las profundidades Mareavess", --shaman
+	["Fathom-Guard Caribdis"] = "Guardia de las profundidades Caribdis", --priest
+} end )
+
 L:RegisterTranslations("deDE", function() return {
 	totem = "Feuerspuckendes Totem",
 	totem_desc = "Warnt vor dem Feuerspuckenden Totem und wer es aufstellt.",
@@ -69,13 +86,13 @@ L:RegisterTranslations("frFR", function() return {
 	enrage_trigger = "Gardes, en position ! Nous avons de la visite…",
 
 	totem = "Totem crache-feu",
-	totem_desc = "Préviens quand un Totem crache-feu est posé et indique son possesseur.",
-	totem_message1 = "Marevess : Totem crache-feu",
-	totem_message2 = "Karathress : Totem crache-feu",
+	totem_desc = "Prévient quand un Totem crache-feu est posé et indique son possesseur.",
+	totem_message1 = "Marevess : Totem crache-feu",
+	totem_message2 = "Karathress : Totem crache-feu",
 
 	heal = "Soins",
-	heal_desc = "Préviens quand Caribdis incante un soin.",
-	heal_message = "Caribdis incante un soin !",
+	heal_desc = "Prévient quand Caribdis incante un soin.",
+	heal_message = "Caribdis incante un soin !",
 
 	["Fathom-Guard Sharkkis"] = "Garde-fonds Squallis", --hunter
 	["Fathom-Guard Tidalvess"] = "Garde-fonds Marevess", --shaman
@@ -87,12 +104,12 @@ L:RegisterTranslations("zhTW", function() return {
 
 	totem = "飛火圖騰",
 	totem_desc = "飛火圖騰施放警示",
-	totem_message1 = "提達費斯：飛火圖騰",
-	totem_message2 = "卡拉薩瑞斯：飛火圖騰",
+	totem_message1 = "提達費斯: 飛火圖騰!",
+	totem_message2 = "卡拉薩瑞斯: 飛火圖騰!",
 
 	heal = "治療術",
 	heal_desc = "當卡利迪斯施放治療術時警示",
-	heal_message = "治療波 - 快中斷！",
+	heal_message = "治療波 - 快中斷!",
 
 	["Fathom-Guard Sharkkis"] = "深淵守衛沙卡奇斯",
 	["Fathom-Guard Tidalvess"] = "深淵守衛提達費斯",
@@ -103,13 +120,13 @@ L:RegisterTranslations("zhCN", function() return {
 	enrage_trigger = "卫兵！提高警惕！我们有客人来了……",
 
 	totem = "溅火图腾",
-	totem_desc = "当溅火图腾被施放发出警报。",
+	totem_desc = "当施放溅火图腾时发出警报。",
 	totem_message1 = "泰达维斯：>溅火图腾<！",
 	totem_message2 = "卡拉瑟雷斯：>溅火图腾<！",
 
 	heal = "治疗",
-	heal_desc = "当卡莉蒂丝施放治疗术发出警报。",
-	heal_message = "卡莉蒂丝正在施放治疗！",
+	heal_desc = "当卡莉蒂丝施放治疗术时发出警报。",
+	heal_message = "卡莉蒂丝 - 施放治疗！",
 
 	["Fathom-Guard Sharkkis"] = "深水卫士沙克基斯", --hunter
 	["Fathom-Guard Tidalvess"] = "深水卫士泰达维斯", --shaman
@@ -124,15 +141,15 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = {boss, L["Fathom-Guard Sharkkis"], L["Fathom-Guard Tidalvess"], L["Fathom-Guard Caribdis"]}
 mod.toggleoptions = {"heal", "totem", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 65808 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_CAST_START", "Heal", 43548, 38330)
-	self:AddCombatListener("SPELL_CAST_SUCCESS", "Totem", 38236)
+	self:AddCombatListener("SPELL_CAST_START", "Heal", 38330)
+	self:AddCombatListener("SPELL_SUMMON", "Totem", 38236)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
@@ -151,10 +168,10 @@ function mod:Heal()
 	end
 end
 
-function mod:Totem(unit, spellID)
+function mod:Totem(_, spellID, source)
 	if not db.totem then return end
 
-	if unit == boss then
+	if source == boss then
 		self:IfMessage(L["totem_message2"], "Urgent", spellID, "Alarm")
 	else
 		self:IfMessage(L["totem_message1"], "Attention", spellID)

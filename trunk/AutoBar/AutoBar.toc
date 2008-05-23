@@ -1,4 +1,4 @@
-﻿## Interface: 20300
+﻿## Interface: 20400
 ## Title: AutoBar |cff7fff7f -Ace2-|r
 ## Title-deDE: AutoBar |cff7fff7f -Ace2-|r
 ## Title-frFR: AutoBar |cff7fff7f -Ace2-|r
@@ -6,7 +6,7 @@
 ## Title-zhCN: 消耗品助手 |cff7fff7f -Ace2-|r
 ## Title-zhTW: AutoBar |cff7fff7f -Ace2-|r
 ## Author: Toadkiller
-## Version: 2.03.00.31 beta
+## Version: 2.04.02.53 beta
 ## Notes: Dynamic bars with buttons that automatically add potions, water, food and other items you specify into a button for use. Does not use action slots.
 ## Notes-koKR: 자동으로 물약, 음료, 음식등이 포함된 버튼을 제공하며 슬롯에 사용할 아이템을 별도로 추가할 수 있습니다. 이것은 액션 슬롯에 여유를 가져다 줄것입니다.
 ## Notes-zhCN: 一组可配置的按钮，能自动从背包中寻找设定的物品供方便使用。
@@ -21,14 +21,16 @@
 ## X-RelSite-WoWI: 5502
 ## X-RelSite-Curse: 9853
 ## X-Credits: Diablo for teaching us how to guzzle potions. Saien for first enabling guzzling in WoW.  Sayclub (Korean) | PDI175, lostcup (Chinese traditional and simplified) | Teodred, curexx (German), Cinedelle (French), shiftos (Spanish)
-## OptionalDeps: Ace2, FuBar, OmniCC, DewdropLib, LibStickyFrames-1.0, LibPeriodicTable-3.1, TabletLib, FuBarPlugin-2.0, Waterfall-1.0, LibBabble-Spell-3.0
-## X-Embeds: Ace2, DewdropLib, LibStickyFrames-1.0, LibPeriodicTable-3.1, TabletLib, FuBarPlugin-2.0, Waterfall-1.0, LibBabble-Spell-3.0
+## OptionalDeps: Ace2, DewdropLib, LibBabble-Zone-3.0, LibKeyBound-1.0, LibPeriodicTable-3.1, LibStickyFrames-1.0, LibStickyFrames-2.0, TabletLib, FuBarPlugin-2.0, Waterfall-1.0, FuBar, OmniCC, ButtonFacade
+## X-Embeds: Ace2, DewdropLib, LibBabble-Zone-3.0, LibKeyBound-1.0, LibPeriodicTable-3.1, LibStickyFrames-1.0, LibStickyFrames-2.0, TabletLib, FuBarPlugin-2.0, Waterfall-1.0
 ## X-Wiki-BugTracker: [http://code.google.com/p/autobar/issues/list Google Code]
-## SavedVariables: AutoBar_Config, AutoBarDB
-## SavedVariablesPerCharacter: AutoBarDBPC
+## SavedVariables: AutoBarDB
 
 # Libraries
 embeds.xml
+
+AutoBarConsole-1.0.lua
+Core.lua
 
 # Localization
 Locale-enUS.lua
@@ -39,10 +41,7 @@ Locale-deDE.lua
 Locale-frFR.lua
 Locale-esES.lua
 
-AutoBarConsole-1.0.lua
-
-# Core
-Core.lua
+AutoBarDB.lua
 AutoBarOptions.lua
 AutoBarSearch.lua
 AutoBarClassBar.lua
@@ -50,6 +49,5 @@ AutoBarClassButton.lua
 AutoBarClassPopupButton.lua
 AutoBarButton.lua
 AutoBarCategory.lua
-Style.lua
 AutoBarFuBar.lua
 

@@ -2,12 +2,17 @@
 	local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 	local L  = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 	
+	local showDropRate = function (v)
+		v = tonumber(v)
+		return v and (" (%.1f%%)"):format(v / 10) or ""
+	end
+
 	table.insert(MENDELEEV_SETS, {
 		name = BZ["Ragefire Chasm"],
 		setindex = "InstanceLoot.Ragefire Chasm",
 		colour = "|cffB0C4DE",
 		header = BZ["Ragefire Chasm"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Ragefire Chasm.Bazzalan"] = BB["Bazzalan"],
@@ -22,7 +27,7 @@
 		setindex = "InstanceLoot.The Deadmines",
 		colour = "|cffB0C4DE",
 		header = BZ["The Deadmines"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.The Deadmines.Brainwashed Noble"] = BB["Brainwashed Noble"],
@@ -44,7 +49,7 @@
 		setindex = "InstanceLoot.Wailing Caverns",
 		colour = "|cffB0C4DE",
 		header = BZ["Wailing Caverns"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Wailing Caverns.Boahn"] = BB["Boahn"],
@@ -67,7 +72,7 @@
 		setindex = "InstanceLoot.Shadowfang Keep",
 		colour = "|cffB0C4DE",
 		header = BZ["Shadowfang Keep"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Shadowfang Keep.Archmage Arugal"] = BB["Archmage Arugal"],
@@ -86,7 +91,7 @@
 		setindex = "InstanceLoot.The Stockade",
 		colour = "|cffB0C4DE",
 		header = BZ["The Stockade"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.The Stockade.Bazil Thredd"] = BB["Bazil Thredd"],
@@ -103,7 +108,7 @@
 		setindex = "InstanceLoot.Blackfathom Deeps",
 		colour = "|cffB0C4DE",
 		header = BZ["Blackfathom Deeps"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Blackfathom Deeps.Aku'mai"] = BB["Aku'mai"],
@@ -120,7 +125,7 @@
 		setindex = "InstanceLoot.Gnomeregan",
 		colour = "|cffB0C4DE",
 		header = BZ["Gnomeregan"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Gnomeregan.Crowd Pummeler 9-60"] = BB["Crowd Pummeler 9-60"],
@@ -138,7 +143,7 @@
 		setindex = "InstanceLoot.Razorfen Kraul",
 		colour = "|cffB0C4DE",
 		header = BZ["Razorfen Kraul"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Razorfen Kraul.Agathelos the Raging"] = BB["Agathelos the Raging"],
@@ -155,7 +160,7 @@
 		setindex = "InstanceLoot.Razorfen Downs",
 		colour = "|cffB0C4DE",
 		header = BZ["Razorfen Downs"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Razorfen Downs.Amnennar the Coldbringer"] = BB["Amnennar the Coldbringer"],
@@ -172,7 +177,7 @@
 		setindex = "InstanceLoot.Scarlet Monastery",
 		colour = "|cffB0C4DE",
 		header = BZ["Scarlet Monastery"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Scarlet Monastery.Arcanist Doan"] = BB["Arcanist Doan"],

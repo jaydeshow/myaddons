@@ -28,14 +28,14 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_lists.xml"] or not DcrLoadedFil
 end
 
 local D   = Dcr;
-D:SetDateAndRevision("$Date: 2008-03-24 17:44:56 -0400 (Mon, 24 Mar 2008) $", "$Revision: 65569 $");
+D:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
 
 
 local L	    = D.L;
 local BC    = D.BC;
-local BS    = D.BS;
 local AceOO = D.AOO;
 local DC    = DcrC;
+local DS    = DC.DS;
 
 
 -- initialize our MicroUnitF class
@@ -55,7 +55,7 @@ MicroUnitF.UnitToMUF		    = {};
 MicroUnitF.Number		    = 0;
 MicroUnitF.UnitShown		    = 0;
 MicroUnitF.UnitsDebuffedInRange	    = 0;
-D.ForLLDebuffedUnitsNum	    = 0;
+D.ForLLDebuffedUnitsNum		    = 0;
 
 
 -- using power 2 values just to OR them but only CHARMED_STATUS is ORed (it's a C style bitfield)
@@ -353,6 +353,8 @@ function MicroUnitF:Force_FullUpdate () -- {{{
 	    MF.TooltipUpdate = 0; -- force help tooltip to update
 	    --MF_f = MF.Frame;
 
+	    MF.ChronoFontString:SetTextColor(unpack(MF_colors[D.LOC.COLORCHRONOS]));
+
 	    D:ScheduleEvent("Update"..MF.CurrUnit, MF.Update, D.profile.DebuffsFrameRefreshRate * i, MF, false, false);
 	end
     end
@@ -553,9 +555,9 @@ function MicroUnitF:OnEnter() -- {{{
 		    TooltipText = TooltipText .. "\n" .. string.format("%s", D:ColorText(Debuff.Name, "FF" .. DC.TypeColors[Debuff.Type])) .. (DebuffApps>0 and string.format(" (%d)", DebuffApps) or "");
 
 		    -- Create a warning if the Unstable Affliction is detected
-		    if Debuff.Name == BS["Unstable Affliction"] then
+		    if Debuff.Name == DS["Unstable Affliction"] then
 		    --if Debuff.Name == "Malédiction de Stalvan" then -- to test easily
-			D:Println("|cFFFF0000 ==> %s !!|r (%s)", BS["Unstable Affliction"], D:MakePlayerName((D:PetUnitName(	  Unit, true    ))));
+			D:Println("|cFFFF0000 ==> %s !!|r (%s)", DS["Unstable Affliction"], D:MakePlayerName((D:PetUnitName(	  Unit, true    ))));
 			PlaySoundFile("Sound\\Doodad\\G_NecropolisWound.wav");
 		    end
 
@@ -721,6 +723,9 @@ function MicroUnitF.prototype:init(Container,ID, Unit, FrameNum) -- {{{
 	self.IsCharmed		= false;
 	self.UpdateCountDown	= 3;
 	self.LastAttribUpdate	= 0;
+	self.LitTime		= false;
+	self.Chrono		= false;
+	self.PrevChrono		= false;
 
 	-- create the frame
 	self.Frame  = CreateFrame ("Button", "DcrMicroUnit"..ID, self.Parent, "DcrMicroUnitTemplateSecure");
@@ -759,6 +764,10 @@ function MicroUnitF.prototype:init(Container,ID, Unit, FrameNum) -- {{{
 	self.InnerTexture:SetHeight(7);
 	self.InnerTexture:SetWidth(7);
 	self.InnerTexture:SetTexture(unpack(MF_colors[CHARMED_STATUS]));
+
+	-- Chrono Font string
+	self.ChronoFontString = self.Frame:CreateFontString("DcrMicroUnit"..ID.."Chrono", "OVERLAY", "DcrMicroUnitChronoFont");
+	self.ChronoFontString:SetTextColor(unpack(MF_colors[D.LOC.COLORCHRONOS]));
 
 	-- a reference to this object
 	self.Frame.Object = self;
@@ -909,15 +918,14 @@ do
 
 	    --self.Frame:SetAttribute(string.format(AvailableButtons[Prio], "spell"), Spell);
 	    self.Frame:SetAttribute(string.format(AvailableButtons[Prio], "macrotext"), string.format("%s/cast [target=mouseover] %s%s",
-	    (D.Status.FoundSpells[Spell][2] == BOOKTYPE_SPELL and "/stopcasting\n" or ""),
+	    ((not D.Status.FoundSpells[Spell][1]) and "/stopcasting\n" or ""),
 	    Spell,
 	    (DC.SpellsToUse[Spell].Rank and "(" .. (string.gsub(DC.RANKNUMTRANS, '%d+', DC.SpellsToUse[Spell].Rank)) .. ")" or "")  ));
 
-	    --D.Status.FoundSpells[Spell][3]
 	    
 	    --[[
 	    D:Debug("XX-> macro: ",string.format(AvailableButtons[Prio], "macrotext"), string.format("%s/cast [target=mouseover] %s%s",
-	    (D.Status.FoundSpells[Spell][2] == BOOKTYPE_SPELL and "/stopcasting\n" or ""),
+	    ((not D.Status.FoundSpells[Spell][1]) and "/stopcasting\n" or ""),
 	    Spell,
 	    (DC.SpellsToUse[Spell].Rank and "(" .. (string.gsub(DC.RANKNUMTRANS, '%d+', DC.SpellsToUse[Spell].Rank)) .. ")" or "")  ));
 	    --]]
@@ -977,16 +985,19 @@ do
     --		- The Alpha of the center and borders
     --	    This function also set the Status of the MUF that will be used in the tooltip
     --]=]
-    local DebuffType, Unit, PreviousStatus, BorderAlpha, Class, ClassColor, ReturnValue, RangeStatus, Alpha, PrioChanged;
+    local DebuffType, Unit, PreviousStatus, BorderAlpha, Class, ClassColor, ReturnValue, RangeStatus, Alpha, PrioChanged, PrevChrono, Time;
     local profile = {};
 
-    local IsSpellInRange = _G.IsSpellInRange;
-    local UnitClass = _G.UnitClass;
-    local UnitExists = _G.UnitExists;
-    local UnitIsVisible = _G.UnitIsVisible;
-    local UnitLevel = _G.UnitLevel;
-    local unpack = _G.unpack;
-    local select = _G.select;
+    -- global access optimization
+    local IsSpellInRange    = _G.IsSpellInRange;
+    local UnitClass	    = _G.UnitClass;
+    local UnitExists	    = _G.UnitExists;
+    local UnitIsVisible	    = _G.UnitIsVisible;
+    local UnitLevel	    = _G.UnitLevel;
+    local unpack	    = _G.unpack;
+    local select	    = _G.select;
+    local GetTime	    = _G.GetTime;
+    local floor		    = _G.floor;
 
     function MicroUnitF.prototype:SetColor() -- {{{
 
@@ -1008,6 +1019,11 @@ do
 	    if PreviousStatus ~= ABSENT then
 		self.Color = MF_colors[ABSENT];
 		self.UnitStatus = ABSENT;
+		if self.LitTime then
+		    self.LitTime = false;
+		    self.ChronoFontString:SetText(" ");
+
+		end
 	    end
 
 	    -- UnitIsVisible() behavior is not 100% reliable so we also use UnitLevel() that will return -1 when the Unit is too far...
@@ -1015,6 +1031,11 @@ do
 	    if PreviousStatus ~= FAR then
 		self.Color = MF_colors[FAR];
 		self.UnitStatus = FAR;
+		if self.LitTime then
+		    self.LitTime = false;
+		    self.ChronoFontString:SetText(" ");
+
+		end
 	    end
 
 	    -- If the Unit is invisible
@@ -1023,6 +1044,11 @@ do
 		if PreviousStatus ~= STEALTHED then
 		    self.Color = MF_colors[STEALTHED];
 		    self.UnitStatus = STEALTHED;
+		    if self.LitTime then
+			self.LitTime = false;
+			self.ChronoFontString:SetText(" ");
+
+		    end
 		end
 
 		-- if unit is blacklisted
@@ -1030,6 +1056,11 @@ do
 		if PreviousStatus ~= BLACKLISTED then
 		    self.Color = MF_colors[BLACKLISTED];
 		    self.UnitStatus = BLACKLISTED;
+		    if self.LitTime then
+			self.LitTime = false;
+			self.ChronoFontString:SetText(" ");
+
+		    end
 		end
 
 		-- if the unit has some debuffs we can handle
@@ -1052,6 +1083,24 @@ do
 		    RangeStatus = false;
 		end
 
+		-- update the chrono
+		if profile.DebuffsFrameChrono then
+		    if self.LitTime then
+			Time = GetTime();
+			PrevChrono = self.Chrono;
+
+			self.Chrono = floor(Time - self.LitTime + 0.5);
+
+			if self.Chrono ~= PrevChrono then
+			    self.ChronoFontString:SetText( ((self.Chrono < 60) and self.Chrono or (floor(self.Chrono / 60) .. "\'") ));
+			end
+		    else
+			self.LitTime = GetTime();
+			
+		    end
+		end
+
+
 		-- set the status according to RangeStatus
 		if (not RangeStatus or RangeStatus == 0) then
 		    Alpha = 0.40;
@@ -1067,6 +1116,28 @@ do
 
 		    MicroUnitF.UnitsDebuffedInRange = MicroUnitF.UnitsDebuffedInRange + 1;
 
+
+		    --[[
+		    -- update the countdown
+		    --TimeLeft = self.Debuffs[1].TimeLeft;
+		    SpottedTime = self.Debuffs[1].TimeStamp;
+		    if SpottedTime then
+
+			Time = GetTime();
+			-- T 10 spt 6 TL 7 --> 3 ==> TL - (T - SpT)
+			PrevCountDown = self.CountDown;
+			self.CountDown = floor((Time - SpottedTime) + 0.5);
+
+			if self.CountDown >= 0 and self.CountDown ~= PrevCountDown then
+				self.CountDownFontString:SetText( ((self.CountDown < 60) and self.CountDown or (floor(self.CountDown / 60) .. "\'") ));
+			end
+
+		    elseif self.CountDown then
+			self.CountDown = false;
+			self.CountDownFontString:SetText(" ");
+		    end
+		    --]]
+
 		    if (not D.Status.SoundPlayed) then
 			D:PlaySound (self.CurrUnit);
 		    end
@@ -1075,6 +1146,11 @@ do
 		-- the unit has nothing special, set the status to normal
 		self.Color = MF_colors[NORMAL];
 		self.UnitStatus = NORMAL;
+		if self.LitTime then
+		    self.LitTime = false;
+		    self.ChronoFontString:SetText(" ");
+
+		end
 	    end
 	end
 
@@ -1330,4 +1406,4 @@ local MF_Textures = { -- unused
 
 -- }}}
 
-DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = true;
+DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = "$Revision: 70967 $";

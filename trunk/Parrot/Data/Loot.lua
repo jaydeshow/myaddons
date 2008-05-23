@@ -1,13 +1,13 @@
-local VERSION = tonumber(("$Revision: 48210 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 73895 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-09-05 05:05:20 -0400 (Wed, 05 Sep 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-14 18:14:30 -0400 (Wed, 14 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
-local L = Parrot:L("Parrot_Loot")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Loot")
 
 Parrot:RegisterCombatEvent{
 	category = "Notification",
@@ -73,9 +73,9 @@ local function utf8trunc(text, num)
 	return text:sub(1, i-1)
 end
 
-local GOLD_ABBR = utf8trunc(_G.GOLD, 1)
-local SILVER_ABBR = utf8trunc(_G.SILVER, 1)
-local COPPER_ABBR = utf8trunc(_G.COPPER, 1)
+local GOLD_ABBR = _G.GOLD_AMOUNT:sub(4,4)
+local SILVER_ABBR = _G.SILVER_AMOUNT:sub(4,4)
+local COPPER_ABBR = _G.COPPER_AMOUNT:sub(4,4)
 if GOLD_ABBR:len() == 1 then
 	GOLD_ABBR = GOLD_ABBR:lower()
 end

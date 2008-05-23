@@ -1,6 +1,6 @@
 --[[
 	EnhTooltip - Additional function hooks to allow hooks into more tooltips
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: TinyMoneyFrame.lua 2193 2007-09-18 06:10:48Z mentalpower $
 	URL: http://auctioneeraddon.com/dl/EnhTooltip
 

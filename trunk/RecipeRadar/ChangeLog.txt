@@ -1,6 +1,26 @@
 
 Recipe Radar ChangeLog
 
+v1.27; April 7, 2008
+
+- Fixed the lockup bug on some zone changes.
+- Fixed a bug that triggered when two players have the same profession but
+  different specialties.
+- Users should no longer see the question mark icon for uncached recipes.
+- Adjusted some vendor attributes.
+
+v1.26; March 31, 2008
+
+- Fixed the "'DongleStub' (a nil value)" bug.
+- Fixed zhTW recipe parsing.
+
+v1.25; March 28, 2008
+
+- Added new v2.4 recipes.
+- Added Shattered Sun Offensive faction content.
+- Added support for square and rotating minimaps.
+- Fixed Ashtongue Deathsworn reputation parsing.
+
 v1.24; October 10, 2007
 
 - Included the new recipes added in v2.2.

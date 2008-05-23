@@ -1,11 +1,27 @@
+-- setting upvalues
+
+local _G				= getfenv(0)
+
+local ipairs			= _G.ipairs
+local select			= _G.select
+
+local table_insert		= _G.table.insert
+local table_remove		= _G.table.remove
+local table_sort		= _G.table.sort
+
+local GetGuildRosterInfo	= _G.GetGuildRosterInfo
+local GetNumGuildMembers	= _G.GetNumGuildMembers
+local IsAddOnLoaded			= _G.IsAddOnLoaded
+local UnitInParty			= _G.UnitInParty
+local UnitInRaid			= _G.UnitInRaid
+
 local tablet = AceLibrary("Tablet-2.0")
-local BC = AceLibrary("Babble-Class-2.2")
 local T = AceLibrary("Tourist-2.0")
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_GuildFu")
 
 FuBar_GuildFu = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceConsole-2.0", "AceDB-2.0", "FuBarPlugin-2.0")
 local FuBar_GuildFu = FuBar_GuildFu
-FuBar_GuildFu.revision = tonumber(string.sub("$Revision: 60921 $", 12, -3)) or 1
+FuBar_GuildFu.revision = tonumber(string.sub("$Revision: 73182 $", 12, -3)) or 1
 
 FuBar_GuildFu.hasIcon = true
 FuBar_GuildFu.hasNoColor = true
@@ -171,14 +187,14 @@ FuBar_GuildFu.sorts ={
 local tablecache = {}
 local function recycleplayertable(t)
 	while #t > 0 do
-		table.insert(tablecache, table.remove(t))
+		table_insert(tablecache, table_remove(t))
 	end
 	return t
 end
 local function getplayertable(...)
 	local t
 	if #tablecache > 0 then
-		t = table.remove(tablecache)
+		t = table_remove(tablecache)
 	else
 		t = {}
 	end
@@ -194,16 +210,16 @@ function FuBar_GuildFu:OnDataUpdate()
 		local playersShown = 0
 		local playersOnline = 0
 		local numGuildMembers = GetNumGuildMembers(true)
-		local name, rank, rankIndex, level, class, zone, note, officernote, online, status
+		local name, rank, rankIndex, level, class, zone, note, officernote, online, status, classconst
 		for i = 1, numGuildMembers, 1 do
-			name, rank, rankIndex, level, class, zone, note, officernote, online, status = GetGuildRosterInfo(i)
+			name, rank, rankIndex, level, class, zone, note, officernote, online, status, classconst = GetGuildRosterInfo(i)
 			if note == "" then note = nil end
 			if officernote == "" then officernote = nil end
 			if online then
 				playersOnline = playersOnline + 1
-				if self:checkFilter(class, level, zone) then
+				if self:checkFilter(classconst, level, zone) then
 					playersShown = playersShown + 1
-					table.insert(players, getplayertable(name or UNKNOWN, rank or UNKNOWN, rankIndex or -1, level or -1, class or UNKNOWN, zone or UNKNOWN, status, note, officernote))
+					table.insert(players, getplayertable(name or UNKNOWN, rank or UNKNOWN, rankIndex or -1, level or -1, class or UNKNOWN, zone or UNKNOWN, status, note, officernote, classconst))
 				end
 			end
 		end
@@ -277,6 +293,9 @@ function FuBar_GuildFu:OnTextUpdate()
 	end
 end
 
+local AuldLangSyne_notes
+local CT_PlayerNotes_loaded
+
 function FuBar_GuildFu:OnTooltipUpdate()
 	local settings_tooltip = self.db.profile.tooltip
 	local cat
@@ -300,8 +319,8 @@ function FuBar_GuildFu:OnTooltipUpdate()
 		return
 	end
 
-	local AuldLangSyne_notes = AuldLangSyne and AuldLangSyne:HasModule("Note") and AuldLangSyne:GetModule("Note")
-	local CT_PlayerNotes_loaded = IsAddOnLoaded("CT_PlayerNotes")
+	AuldLangSyne_notes = AuldLangSyne_notes or AuldLangSyne and AuldLangSyne:HasModule("Note") and AuldLangSyne:GetModule("Note")
+	CT_PlayerNotes_loaded = CT_PlayerNotes_loaded or IsAddOnLoaded("CT_PlayerNotes")
 
 	if settings_tooltip.motd_show then
 		self.guildMOTD = GetGuildRosterMOTD()
@@ -319,24 +338,24 @@ function FuBar_GuildFu:OnTooltipUpdate()
 	end
 
 	local cols = {}
-	table.insert(cols, L["Name"])
+	table_insert(cols, L["Name"])
 	if settings_tooltip.class_show then
-		table.insert(cols, L["Class"])
+		table_insert(cols, L["Class"])
 	end
 	if settings_tooltip.level_show then
-		table.insert(cols, L["Level"])
+		table_insert(cols, L["Level"])
 	end
 	if settings_tooltip.zone_show then
-		table.insert(cols, L["Zone"])
+		table_insert(cols, L["Zone"])
 	end
 	if (settings_tooltip.note_showpublic
 		or (settings_tooltip.note_showofficer and CanViewOfficerNote())
 		or (AuldLangSyne_notes and settings_tooltip.note_showauldlangsyne)
 		or (CT_PlayerNotes_loaded and settings_tooltip.note_showctplayernotes)) then
-		table.insert(cols, L["Notes"])
+		table_insert(cols, L["Notes"])
 	end
 	if settings_tooltip.rank_show then
-		table.insert(cols, L["Rank"])
+		table_insert(cols, L["Rank"])
 	end
 
 	cat = tablet:AddCategory(
@@ -356,21 +375,22 @@ function FuBar_GuildFu:OnTooltipUpdate()
 	local line = {}
 	local colcount
 	local temptext
-	local classcolorR, classcolorG, classcolorG
+	local classcolor
 	local levelcolor
 	local zonecolorR, zonecolorG, zonecolorB
-	for i = 1, #self.players do
-		classcolorR, classcolorG, classcolorB = BC:GetColor(self.players[i][5])
-		levelcolor = GetDifficultyColor(self.players[i][4])
-		if settings_tooltip.name_status and self.players[i][7] ~= "" then
-			line['text'] = self.players[i][7].." "..self.players[i][1]
+	local reverse_class = self.reverse_class
+	for _, data in ipairs(self.players) do
+		classcolor = RAID_CLASS_COLORS[data[10]]
+		levelcolor = GetDifficultyColor(data[4])
+		if settings_tooltip.name_status and data[7] ~= "" then
+			line['text'] = data[7].." "..data[1]
 		else
-			line['text'] = self.players[i][1]
+			line['text'] = data[1]
 		end
 		if settings_tooltip.name_color == "CLASS" then
-			line['textR'] = classcolorR
-			line['textG'] = classcolorG
-			line['textB'] = classcolorB
+			line['textR'] = classcolor.r
+			line['textG'] = classcolor.g
+			line['textB'] = classcolor.b
 		else
 			line['textR'] = 1
 			line['textG'] = 1
@@ -379,15 +399,15 @@ function FuBar_GuildFu:OnTooltipUpdate()
 		colcount = 1
 		if settings_tooltip.class_show then
 			colcount = colcount + 1
-			line['text'..colcount] = self.players[i][5]
+			line['text'..colcount] = data[5]
 			line['justify'..colcount] = settings_tooltip.class_align
-			line['text'..colcount..'R'] = classcolorR
-			line['text'..colcount..'G'] = classcolorG
-			line['text'..colcount..'B'] = classcolorB
+			line['text'..colcount..'R'] = classcolor.r
+			line['text'..colcount..'G'] = classcolor.g
+			line['text'..colcount..'B'] = classcolor.b
 		end
 		if settings_tooltip.level_show then
 			colcount = colcount + 1
-			line['text'..colcount] = self.players[i][4]
+			line['text'..colcount] = data[4]
 			line['justify'..colcount] = settings_tooltip.level_align
 			line['text'..colcount..'R'] = levelcolor.r
 			line['text'..colcount..'G'] = levelcolor.g
@@ -395,12 +415,12 @@ function FuBar_GuildFu:OnTooltipUpdate()
 		end
 		if settings_tooltip.zone_show then
 			colcount = colcount + 1
-			line['text'..colcount] = self.players[i][6]
+			line['text'..colcount] = data[6]
 			line['justify'..colcount] = settings_tooltip.zone_align
 			if settings_tooltip.zone_color == "FACTION" then
-				zonecolorR, zonecolorG, zonecolorB = T:GetFactionColor(self.players[i][6])
+				zonecolorR, zonecolorG, zonecolorB = T:GetFactionColor(data[6])
 			elseif settings_tooltip.zone_color == "LEVEL" then
-				zonecolorR, zonecolorG, zonecolorB = T:GetLevelColor(self.players[i][6])
+				zonecolorR, zonecolorG, zonecolorB = T:GetLevelColor(data[6])
 			else
 				zonecolorR, zonecolorG, zonecolorB = 1, 1, 0
 			end
@@ -415,16 +435,16 @@ function FuBar_GuildFu:OnTooltipUpdate()
 			colcount = colcount + 1
 			temptext = ""
 			if settings_tooltip.note_showpublic then
-				temptext = ((self.players[i][8] and (" ["..self.players[i][8].."] ")) or " - ")
+				temptext = ((data[8] and (" ["..data[8].."] ")) or " - ")
 			end
 			if settings_tooltip.note_showofficer and CanViewOfficerNote() then
-				temptext = temptext..((self.players[i][9] and (" ["..self.players[i][9].."] ")) or " - ")
+				temptext = temptext..((data[9] and (" ["..data[9].."] ")) or " - ")
 			end
 			if AuldLangSyne_notes and settings_tooltip.note_showauldlangsyne then
-				temptext = temptext ..((AuldLangSyne_notes.db.realm.guild[self.players[i][1]] and (" {"..AuldLangSyne_notes.db.realm.guild[self.players[i][1]].."} ")) or "")
+				temptext = temptext ..((AuldLangSyne_notes.db.realm.guild[data[1]] and (" {"..AuldLangSyne_notes.db.realm.guild[data[1]].."} ")) or "")
 			end
 			if CT_PlayerNotes_loaded and settings_tooltip.note_showctplayernotes then
-				temptext = temptext ..((CT_GuildNotes[self.players[i][1]] and (" {"..CT_GuildNotes[self.players[i][1]].."} ")) or "")
+				temptext = temptext ..((CT_GuildNotes[data[1]] and (" {"..CT_GuildNotes[data[1]].."} ")) or "")
 			end
 			line['text'..colcount] = temptext
 			line['justify'..colcount] = settings_tooltip.note_align
@@ -434,7 +454,7 @@ function FuBar_GuildFu:OnTooltipUpdate()
 		end
 		if settings_tooltip.rank_show then
 			colcount = colcount + 1
-			line['text'..colcount] = self.players[i][2]
+			line['text'..colcount] = data[2]
 			line['justify'..colcount] = settings_tooltip.rank_align
 			line['text'..colcount..'R'] = 1
 			line['text'..colcount..'G'] = 1
@@ -442,10 +462,10 @@ function FuBar_GuildFu:OnTooltipUpdate()
 		end
 		line['func'] = 'OnNameClick'
 		line['arg1'] = self
-		line['arg2'] = self.players[i][1]
+		line['arg2'] = data[1]
 		if settings_tooltip.group_show then
 			line['hasCheck'] = true
-			line['checked'] = (UnitInParty(self.players[i][1]) or UnitInRaid(self.players[i][1])) and true
+			line['checked'] = (UnitInParty(data[1]) or UnitInRaid(data[1])) and true
 -- 'checkIcon', self.factions[i].isCollapsed and "Interface\\Buttons\\UI-PlusButton-Up" or "Interface\\Buttons\\UI-MinusButton-Up",
 		end
 
@@ -468,15 +488,15 @@ end
 
 function FuBar_GuildFu:checkFilter(class, level, zone)
 	local settings_filter = self.db.profile.filter
-	if not settings_filter.class_druid and class == BC["Druid"] then return false end
-	if not settings_filter.class_hunter and class == BC["Hunter"] then return false end
-	if not settings_filter.class_mage and class == BC["Mage"] then return false end
-	if not settings_filter.class_paladin and class == BC["Paladin"] then return false end
-	if not settings_filter.class_priest and class == BC["Priest"] then return false end
-	if not settings_filter.class_rogue and class == BC["Rogue"] then return false end
-	if not settings_filter.class_shaman and class == BC["Shaman"] then return false end
-	if not settings_filter.class_warlock and class == BC["Warlock"] then return false end
-	if not settings_filter.class_warrior and class == BC["Warrior"] then return false end
+	if not settings_filter.class_druid		and class == "DRUID"		then return false end
+	if not settings_filter.class_hunter		and class == "HUNTER"	then return false end
+	if not settings_filter.class_mage		and class == "MAGE"		then return false end
+	if not settings_filter.class_paladin	and class == "PALADIN"	then return false end
+	if not settings_filter.class_priest		and class == "PRIEST"	then return false end
+	if not settings_filter.class_rogue		and class == "ROGUE"		then return false end
+	if not settings_filter.class_shaman		and class == "SHAMAN"	then return false end
+	if not settings_filter.class_warlock	and class == "WARLOCK"	then return false end
+	if not settings_filter.class_warrior	and class == "WARRIOR"	then return false end
 	
 	if not settings_filter.level_0109 and level < 10 then return false end
 	if not settings_filter.level_1019 and level >= 10 and level < 20 then return false end

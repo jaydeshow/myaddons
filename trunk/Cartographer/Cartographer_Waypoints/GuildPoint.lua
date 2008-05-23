@@ -12,6 +12,18 @@ L:AddTranslations("zhTW", function() return {
 	["Guild Member not locatable"] = "查找不到公會成員的地點",
 } end)
 
+L:AddTranslations("zhCN", function() return {
+	["Pending update"] = "等待更新中...",
+	["Waiting for Location update"] = "等待位置更新中...",
+	["Guild Member not locatable"] = "查找不到公会成员的地点。",
+} end)
+
+L:AddTranslations("esES", function() return {
+	["Pending update"] = "Actualización pendiente",
+	["Waiting for Location update"] = "Esperando una actualización de la Localización",
+	["Guild Member not locatable"] = "Miembro de la Hermandad no localizable",
+} end)
+
 local RollCall = Rock("LibRollCall-2.0")
 local Tourist = Rock("LibTourist-3.0")
 local NameCache = {}
@@ -22,17 +34,17 @@ GuildPoint.Watcher = {}
 
 GuildPoint.Pending = L["Pending update"]
 
--- Store the guildmember in the static class for later 
+-- Store the guildmember in the static class for later
 -- reference. WaypointID is the guildmember name.
 function GuildPoint:init(memberName)
 	AceLibrary.argCheck(self, memberName, 2, "string")
-	
+
 	for name in RollCall:GetIterator("NAME") do
 		if string.find(string.lower(name), string.lower(memberName)) then
 			Waypoint.init(self, name)
 			if not GuildPoint.Watcher[name] then
 				GuildPoint.Watcher[name] = self
-			end	
+			end
 			break
 		end
 	end
@@ -43,7 +55,7 @@ end
 function GuildPoint:MatchNote(memberName)
 	return self.WaypointID == memberName
 end
-	
+
 function GuildPoint:UpdateLocation(zone, _x, _y)
 	local ezone = RollCall:GetEnglishZone(self.WaypointID)
 	local x,y = Tourist:TransposeZoneCoordinate(_x, _y, ezone, RollCall:GetZone(self.WaypointID))
@@ -69,10 +81,10 @@ function GuildPoint:ToString()
 end
 
 function GuildPoint:IsReady()
-	if self.Zone ~= "Limbo" and self.x ~= -1 and self.y ~= -1 then 
-		return true 
+	if self.Zone ~= "Limbo" and self.x ~= -1 and self.y ~= -1 then
+		return true
 	else
-		if not self.firstCheck then 
+		if not self.firstCheck then
 			self.firstCheck = time()
 		else
 			local delay = time() - self.firstCheck - (RollCall:GetNumOnline()/5)

@@ -1,4 +1,4 @@
-## Interface: 20200
+## Interface: 20400
 ## Author: Warbaby-二区暗影之月<凌翼>
 ## Title: |cFFFFFFFF[基]|rFriendsMenuXP-玩家菜单增强
 ## Notes: 玩家超链接、查询列表、好友列表、工会列表中点击玩家名字增加更多选择。此外，按住alt点玩家链接可以邀请，按住ctrl点玩家链接选定目标。

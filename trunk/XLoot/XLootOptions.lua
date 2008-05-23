@@ -301,14 +301,25 @@ function XLoot:DoOptions()
 						step = 0.05,
 						order = 5
 					},
+					alpha = {
+						type = "range",
+						name = L["Alpha"],
+						desc = L["Alpha"],
+						get = function() return db.alpha end,
+						set = function(v) db.alpha = v self.frame:SetAlpha(v) end,
+						min = 0.05,
+						max = 1,
+						step = 0.05,
+						order = 6
+					},
 					aspacer = {
 						type = "header",
-						order = 6
+						order = 7
 					},
 					aheader1 = {
 						type = "header",
 						name = hcolor..L["catFrameAppearance"],
-						order = 7
+						order = 8
 					},
 					qualityborder = {
 						type = "toggle",

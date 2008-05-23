@@ -88,33 +88,33 @@ L:RegisterTranslations("frFR", function() return {
 	engage_message = "Phase 1 - Forme trolle",
 
 	form = "Changement de forme",
-	form_desc = "Préviens quand Zul'jin change de forme.",
+	form_desc = "Prévient quand Zul'jin change de forme.",
 	form_bear_trigger = "J'ai des nouveaux tours… comme mon frère ours…",
-	form_bear_message = "80% Phase 2 - Forme d'ours !",
+	form_bear_message = "80% Phase 2 - Forme d'ours !",
 	form_eagle_trigger = "L'aigle, il vous trouvera partout !",
-	form_eagle_message = "60% Phase 3 - Forme d'aigle !",
+	form_eagle_message = "60% Phase 3 - Forme d'aigle !",
 	form_lynx_trigger = "J'vous présente mes nouveaux frères : griffe et croc !",
-	form_lynx_message = "40% Phase 4 - Forme de lynx !",
+	form_lynx_message = "40% Phase 4 - Forme de lynx !",
 	form_dragonhawk_trigger = "Pas besoin d'lever les yeux au ciel pour voir l'faucon-dragon !",
-	form_dragonhawk_message = "20% Phase 5 - Forme de faucon-dragon !",
+	form_dragonhawk_message = "20% Phase 5 - Forme de faucon-dragon !",
 
 	throw = "Lancer effroyable",
-	throw_desc = "Préviens quand un joueur subit les effets du Lancer effroyable.",
+	throw_desc = "Prévient quand un joueur subit les effets du Lancer effroyable.",
 	throw_message = "%s a le Lancer effroyable",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par le Lancer effroyable ou la Rage de griffes (nécessite d'être promu ou mieux).",
 
 	paralyze = "Paralysie",
-	paralyze_desc = "Préviens de l'arrivée de la Paralysie progressive et de la Paralysie qui s'en suit.",
-	paralyze_warning = "Paralysie progressive - Paralysie totale dans 5 sec. !",
-	paralyze_message = "Paralysés !",
+	paralyze_desc = "Prévient de l'arrivée de la Paralysie progressive et de la Paralysie qui s'en suit.",
+	paralyze_warning = "Paralysie progressive - Paralysie totale dans 5 sec. !",
+	paralyze_message = "Paralysés !",
 	paralyze_bar = "Paralysie effective",
 	paralyze_warnbar = "Prochaine Paralysie",
 	paralyze_soon = "Paralysie progressive dans 5 sec.",
 
 	claw = "Rage de griffes",
-	claw_desc = "Préviens quand un joueur subit les effets de la Rage de griffes.",
+	claw_desc = "Prévient quand un joueur subit les effets de la Rage de griffes.",
 	claw_message = "Rage de griffes sur %s",
 } end )
 
@@ -138,7 +138,7 @@ L:RegisterTranslations("koKR", function() return {
 	throw_message = "%s 치명상",
 
 	icon = "전술 표시",
-	icon_desc = "치명상과 광기의 발톱 대상이된 플레이어에 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
+	icon_desc = "치명상과 광기의 발톱 대상이된 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 
 	paralyze = "마비",
 	paralyze_desc = "마비와 섬뜩한 마비 효과에 대한 경고입니다.",
@@ -155,7 +155,7 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "我最厉害！",
-	engage_message = "第一阶段 - 人类阶段",
+	engage_message = "第一阶段 - 人类阶段！",
 
 	form = "形态转变",
 	form_desc = "祖尔金变形警报。",
@@ -169,19 +169,19 @@ L:RegisterTranslations("zhCN", function() return {
 	form_dragonhawk_message = "20% 第五阶段 - 龙鹰形态！",
 
 	throw = "重伤投掷",
-	throw_desc = "当受到重伤投掷发出警报。",
+	throw_desc = "当玩家受到重伤投掷时发出警报。",
 	throw_message = "重伤投掷：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "为受到重伤投掷或利爪之怒打上团队标记。(需要权限)",
+	icon_desc = "为受到重伤投掷或利爪之怒打上团队标记。（需要权限）",
 
 	paralyze = "麻痹蔓延",
-	paralyze_desc = "受到麻痹蔓延或中了麻痹发出警报。",
-	paralyze_warning = "麻痹蔓延 - 麻痹 5秒！",
+	paralyze_desc = "当玩家受到麻痹蔓延或中了麻痹时发出警报。",
+	paralyze_warning = "麻痹蔓延 - 麻痹5秒！",
 	paralyze_message = "已麻痹！",
 	paralyze_bar = "<即将 麻痹>",
 	paralyze_warnbar = "<下一麻痹蔓延>",
-	paralyze_soon = "5秒后 麻痹",
+	paralyze_soon = "5秒后，麻痹！",
 
 	claw = "利爪之怒",
 	claw_desc = "受到利爪之怒发出警报。",
@@ -205,57 +205,57 @@ L:RegisterTranslations("zhTW", function() return {
 
 	throw = "嚴重擲傷",
 	throw_desc = "警告誰受到了嚴重擲傷.",
-	throw_message = "嚴重擲傷：[%s]",
+	throw_message = "嚴重擲傷: [%s]",
 
 	icon = "標記圖示",
 	icon_desc = "為被嚴重擲傷的玩家設置團隊標記（需要權限）",
 
 	paralyze = "慢性麻痹",
 	paralyze_desc = "警示慢性麻痺及隨之而來的癱瘓效果。",
-	paralyze_warning = "慢性麻痺 - 5 秒內癱瘓！",
-	paralyze_message = "癱瘓！",
-	paralyze_bar = "慢性麻痺計時",
-	paralyze_warnbar = "下一次慢性麻痺",
-	paralyze_soon = "5 秒內慢性麻痺！",
+	paralyze_warning = "慢性麻痺 - 5 秒內癱瘓!",
+	paralyze_message = "癱瘓!",
+	paralyze_bar = "<慢性麻痺計時>",
+	paralyze_warnbar = "<下一次慢性麻痺>",
+	paralyze_soon = "5 秒內慢性麻痺!",
 
 	claw = "利爪之怒",
 	claw_desc = "警告誰受到利爪之怒",
-	claw_message = "利爪之怒：[%s]",
+	claw_message = "利爪之怒: [%s]",
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "\194\161No hay nadie m\195\161s bruto que yo!",
-	engage_message = "Fase 1 - Fase de humano",
+	engage_trigger = "¡No hay nadie más bruto que yo!",
+	engage_message = "Fase 1 - Fase humana",
 
-	form = "Cambio de forma",
-	form_desc = "Avisa cuando Zul'jin cambia de forma.",
+	form = "Cambios de forma",
+	form_desc = "Avisar cuando Zul'jin cambia de forma.",
 	form_bear_trigger = "Tengo algunos trucos nuevos... como mi hermano el oso...",
-	form_bear_message = "\194\16180% Fase 2 - Forma de Oso!",
-	form_eagle_trigger = "\194\161No pod\195\169is esconderos del \195\161guila!!",
-	form_eagle_message = "\194\16160% Fase 3 - Forma de Aguila!",
-	form_lynx_trigger = "\194\161Dejad que os presente a mis nuevos hermanos: colmillo y garra!",
-	form_lynx_message = "\194\16140% Fase 4 - Forma de Lince!",
-	form_dragonhawk_trigger = "\194\161No ten\195\169is que mirar al cielo para ver al dracohalc\195\179n!",
-	form_dragonhawk_message = "\194\16120% Fase 5 - Forma de Dracohalc\195\179n!",
+	form_bear_message = "¡80% Fase 2 - Forma de Oso!",
+	form_eagle_trigger = "¡No podéis esconderos del águila!",
+	form_eagle_message = "¡60% Fase 3 - Forma de Águila!",
+	form_lynx_trigger = "¡Dejad que os presente a mis nuevos hermanos: colmillo y garra!",
+	form_lynx_message = "¡40% Fase 4 - Forma de Lince!",
+	form_dragonhawk_trigger = "¡No tenéis que mirar al cielo para ver al dracohalcón!",
+	form_dragonhawk_message = "¡20% Fase 5 - Forma de Dracohalcón!",
 
-	throw = "Lanzamiento doloroso",
-	throw_desc = "Avisa quien sufre Lanzamiento doloroso.",
-	throw_message = "%s sufre Lanzamiento doloroso",
+	throw = "Lanzamiento doloroso (Grievous Throw)",
+	throw_desc = "Avisar quién tiene Lanzamiento doloroso.",
+	throw_message = "Lanzamiento doloroso: %s",
 
-	icon = "Icono de Banda",
-	icon_desc = "Coloca un Icono de Banda en el jugador afectado por Lanzamiento doloroso o Ira de zarpa. (requiere asistente o superior)",
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores afectados por Lanzamiento doloroso. (Requiere derechos de banda)",
 
-	paralyze = "Paralizado",
-	paralyze_desc = "Avisa de Par\195\161lisis progresiva y el efecto de Paralizado posterior.",
-	paralyze_warning = "\194\161Par\195\161lisis progresiva - Paralizado en 5 seg!",
-	paralyze_message = "\194\161Paralizado!",
-	paralyze_bar = "Inc Paralizado",
-	paralyze_warnbar = "Siguiente Par\195\161lisis",
-	paralyze_soon = "Par\195\161lisis progresiva en 5 seg",
+	paralyze = "Parálisis progresiva (Creeping Paralysis)",
+	paralyze_desc = "Avisar sobre Parálisis progresiva y su posterior Paralizar.",
+	paralyze_warning = "¡Parálisis progresiva - Paralizar en 5 seg!",
+	paralyze_message = "¡Paralizado!",
+	paralyze_bar = "~Paralizar",
+	paralyze_warnbar = "~Parálisis progresiva",
+	paralyze_soon = "Parálisis progresiva en 5 seg",
 
-	claw = "Ira de zarpa",
-	claw_desc = "Avisa quien tiene Ira de zarpae.",
-	claw_message = "Ira de zarpa en %s",
+	claw = "Ira de zarpa (Claw Rage)",
+	claw_desc = "Avisar quién tiene Ira de zarpa.",
+	claw_message = "Ira de zarpa: %s",
 } end )
 
 
@@ -267,7 +267,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"form", "paralyze", -1, "throw", "claw", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 65872 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -275,7 +275,7 @@ mod.revision = tonumber(("$Revision: 65872 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Throw", 43093)
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Paralyze", 43095)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Paralyze", 43095)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "ClawRage", 43150)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 

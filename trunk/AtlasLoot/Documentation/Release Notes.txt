@@ -4,10 +4,26 @@ This mod is distributed under Version 2 of the GPL.  A copy of the GPL is includ
 
 -Daviesh
 
+v4.05.01
+Crafted items are not viewable in the dressing room
+Added new TCG loot from "Hunt of Illidan" (no IDs yet)
+Many minor loot fixes/additions/translations
+
 Patch Notes
+v4.05.00
+New and improved searching system (some nice work from Kurax there)
+All professions data available in the crafting module
+More efficient memory use due to optimisations implemented in Patch 2.4
+Added translations for all items
+Completed Arena Season 4
+Added M'uru loot table
+Many minor loot fixes/additions
+
 v4.04.01
 Fixed the Atlas/Titan integration issue
 Added new TBC set (The Fists of Fury)
+Fixed the LBRS extra buttons
+Upgrade to Babble 3.0
 Many minor loot fixes/additions
 
 v4.04.00

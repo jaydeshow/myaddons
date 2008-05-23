@@ -60,12 +60,12 @@ L:RegisterTranslations("zhCN", function() return {
 	["Proximity"] = "近距离",
 	["Close Players"] = "近距离玩家",
 	["Options for the Proximity Display."] = "设置近距离显示。",
-	["|cff777777Nobody|r"] = "|cff777777无人|r",
+	["|cff777777Nobody|r"] = "|cff777777没有玩家|r",
 	["Sound"] = "声音",
 	["Play sound on proximity."] = "近距离时声音提示。",
 	["Disabled"] = "禁用",
-	["Disable the proximity display for all modules that use it."] = "禁用所有 Boss 模块使用此功能。",
-	["The proximity display has been disabled for %s, please use the boss modules options to enable it again."] = "为%s禁用近距离显示功能，若要再次使用请设置 Boss 模块选项。",
+	["Disable the proximity display for all modules that use it."] = "禁用所有首领模块使用此功能。",
+	["The proximity display has been disabled for %s, please use the boss modules options to enable it again."] = "为%s禁用近距离显示功能，若要再次使用请设置首领模块选项。",
 
 	proximity = "近距离显示",
 	proximity_desc = "显示近距离窗口，列出距离你很近的玩家。",
@@ -139,13 +139,13 @@ L:RegisterTranslations("deDE", function() return {
 L:RegisterTranslations("zhTW", function() return {
 	["Proximity"] = "鄰近顯示",
 	["Close Players"] = "鄰近玩家",
-	["Options for the Proximity Display."] = "設定鄰近顯示選項。",
+	["Options for the Proximity Display."] = "設定鄰近顯示選項",
 	["|cff777777Nobody|r"] = "|cff777777無人|r",
 	["Sound"] = "音效",
-	["Play sound on proximity."] = "當有人太靠近時發出音效。",
+	["Play sound on proximity."] = "當有人太靠近時發出音效",
 	["Disabled"] = "停用",
-	["Disable the proximity display for all modules that use it."] = "停用鄰近顯示功能。",
-	["The proximity display has been disabled for %s, please use the boss modules options to enable it again."] = "模組 %s 的鄰近顯示功能已停用，請用模組選單啟用它。",
+	["Disable the proximity display for all modules that use it."] = "停用鄰近顯示功能",
+	["The proximity display has been disabled for %s, please use the boss modules options to enable it again."] = "%s 模組的鄰近顯示功能已停用，請用模組選單啟用它。",
 
 	proximity = "鄰近顯示",
 	proximity_desc = "在適當的情形下，當有人太靠近時，現示清單。",
@@ -178,7 +178,7 @@ L:RegisterTranslations("esES", function() return {
 -----------------------------------------------------------------------
 
 local plugin = BigWigs:NewModule("Proximity")
-plugin.revision = tonumber(("$Revision: 64572 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
 plugin.defaultDB = {
 	posx = nil,
 	posy = nil,

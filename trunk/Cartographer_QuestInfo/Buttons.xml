@@ -1,13 +1,14 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
 
-	<Button name="CQI_StartButton" parent="QuestLogDetailScrollFrame" hidden="true">
+	<Button name="CQI_StartButton" parent="QuestLogDetailScrollChildFrame" hidden="true">
 		<Size>
 			<AbsDimension x="18" y="18"/>
 		</Size>
 		<Anchors>
-			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollFrame" relativePoint="TOPRIGHT">
+			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollChildFrame" relativePoint="TOPRIGHT">
 				<Offset>
-					<AbsDimension x="-30" y="-6"/>
+					<AbsDimension x="-50" y="-5"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
@@ -49,14 +50,14 @@
 		</Scripts>
 	</Button>
 
-	<Button name="CQI_EndButton" parent="QuestLogDetailScrollFrame" hidden="true">
+	<Button name="CQI_EndButton" parent="QuestLogDetailScrollChildFrame" hidden="true">
 		<Size>
 			<AbsDimension x="18" y="18"/>
 		</Size>
 		<Anchors>
-			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollFrame" relativePoint="TOPRIGHT">
+			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollChildFrame" relativePoint="TOPRIGHT">
 				<Offset>
-					<AbsDimension x="-10" y="-6"/>
+					<AbsDimension x="-30" y="-5"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
@@ -91,6 +92,55 @@
 			</OnClick>
 			<OnEnter>
 				Cartographer_QuestInfo:OnButtonTooltip("end");
+			</OnEnter>
+			<OnLeave>
+				CQI_Tooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+	<Button name="CQI_InfoButton" parent="QuestLogDetailScrollChildFrame" hidden="true">
+		<Size>
+			<AbsDimension x="18" y="18"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollChildFrame" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-10" y="-5"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\GossipFrame\BinderGossipIcon">
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<NormalTexture>
+			<Size>
+				<AbsDimension x="20" y="20"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativePoint="CENTER"/>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestTitleHighlight">
+			<Size>
+				<AbsDimension x="20" y="20"/>
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativePoint="CENTER"/>
+			</Anchors>
+		</HighlightTexture>
+		<Scripts>
+			<OnClick>
+				Cartographer_QuestInfo:OnInfoClick(arg1);
+			</OnClick>
+			<OnEnter>
+				Cartographer_QuestInfo:OnInfoTooltip();
 			</OnEnter>
 			<OnLeave>
 				CQI_Tooltip:Hide();

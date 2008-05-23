@@ -5,7 +5,7 @@ Recipe Radar
 
 http://www.cryptofreak.org/projects/reciperadar
 
-$Id: README.txt 659 2006-12-12 23:12:35Z jnmiller $
+$Id: README.txt 1031 2008-03-27 05:41:46Z jnmiller $
 
 
 Installation
@@ -42,14 +42,15 @@ mostly automated way, so some coordinates are incorrect.  If you come upon
 a vendor whose mapped location does not match their actual location, please
 let me know!  The most helpful thing you can do is this quick process:
 
-   1) Unmap all but the problematic vendor.
-   2) Move your toon exactly on top of the vendor.
-   3) Type '/rrdr debug vendor'.
+   1) Target the mis-mapped vendor.
+   2) Move your character exactly on top of the vendor.
+   3) Enter the following slash command on a single line:
+
+      /script SetMapToCurrentZone() local x, y = GetPlayerMapPosition("player")  RecipeRadar_Print(format("'%s': [%.3f, %.3f]", UnitName("target"), x, y))
+
    4) Record the text you see.  It should resemble this:
    
-      Debugging Drac Roughcut
-      Database Coords: 0.356, 0.491
-      Player Coords: 0.35588067770004, 0.48890501260757
+      'Drac Roughcut': [0.356, 0.489]
    
    5) File a bug report and include this text.
 
@@ -60,10 +61,8 @@ Acknowledgements
 ~~~~~~~~~~~~~~~~
 - I'd like to thank Nimrah for passing on Technetium's TGAtoBLP2 code.
   It dropped the almost 50 maps from 343k each to 130k each!
-- I stole the clean, simple minimap button code from Atlas, as well
-  as the nice version display idea.
-- The minimap mapping methods and constants are all from the original
-  MapNotes - awesome work, it was.
+- Esamynn is responsible for Astrolabe, a high-quality, generic mapping
+  addon that Recipe Radar now relies on.
 
 
 Thanks for trying Recipe Radar!  Enjoy!

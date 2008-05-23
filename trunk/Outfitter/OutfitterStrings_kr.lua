@@ -59,7 +59,7 @@
 	Outfitter.cWithdrawBagsFullError = "가방이 가득 차서 %s|1을;를; 벗을 수 없습니다."
 	Outfitter.cItemNotFoundError = "%s 아이템을 찾을 수 없습니다."
 	Outfitter.cItemAlreadyUsedError = "%s|1은;는; 이미 다른 슬롯에서 사용중이므로 %s 슬롯에 착용할 수 없습니다."
-	Outfitter.cAddingItem = "Outfitter: %s|1을;를; %s 세트에 추가합니다."
+	Outfitter.cAddingItem = "%s|1을;를; %s 세트에 추가합니다."
 	Outfitter.cNameAlreadyUsedError = "오류: 사용중인 이름입니다."
 	Outfitter.cNoItemsWithStatError = "경고: 해당 능력을 가진 아이템이 없습니다."
 
@@ -393,8 +393,6 @@
 
 	Outfitter.cMissingItemsLabel = "찾을 수 없는 아이템: "
 	Outfitter.cBankedItemsLabel = "은행에 있는 아이템: "
-
-	Outfitter.cRepairAllBags = "Outfitter: 모든 아이템 수리"
 
 	Outfitter.cStatsCategory = "능력치"
 	Outfitter.cMeleeCategory = "근접"

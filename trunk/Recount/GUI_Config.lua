@@ -1,9 +1,9 @@
 local SM = LibStub:GetLibrary("LibSharedMedia-3.0")
 local Graph = LibStub:GetLibrary("LibGraph-2.0")
--- local Graph = AceLibrary("Graph-1.0")
 
-local L = AceLibrary("AceLocale-2.2"):new("Recount")
-local BC = AceLibrary("Babble-Class-2.2")
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale( "Recount" )
+local BC = LibStub("LibBabble-Class-3.0"):GetLookupTable()
 
 -- Elsia: Note, most strings here haven't been localized. Need to grab all button and text labels here and put into localization registration.
 -- Just started with the color selection ones to give an example. See Recount.lua.
@@ -25,6 +25,7 @@ local EditableColors={
 	},
 	["Bar"]={
 		"Bar Text",
+		"Total Bar",
 	},
 	["Class"]={
 		"Druid",
@@ -37,6 +38,7 @@ local EditableColors={
 		"Warlock",
 		"Warrior",
 		"Pet",
+--		"Guardian",
 		"Mob",
 	}
 }
@@ -52,7 +54,10 @@ local ClassStrings={
 	["WARLOCK"]=true,
 	["WARRIOR"]=true,
 	["PET"]=false, -- Elsia: These two are not supported by RAID_CLASS_COLORS or Babble-Class
+--	["GUARDIAN"]=false,
 	["MOB"]=false,
+	["HOSTILE"]=false,
+	["UNGROUPED"]=false,
 }
 
 function me:LBC(Name) -- Allow localization of unit strings via Babble-Class
@@ -87,6 +92,8 @@ function Recount:ResetDefaultClassColors()
 		v = Recount:FixUnitString(v)
 		if v=="PET" then
 			Recount.Colors:SetColor("Class", "PET", { r = 0.09, g = 0.61, b = 0.55 })
+--		elseif v=="GUARDIAN" then
+--			Recount.Colors:SetColor("Class", "GUARDIAN", { r = 0.61, g = 0.09, b = 0.09 })
 		elseif v=="MOB" then
 			Recount.Colors:SetColor("Class", "MOB", { r = 0.58, g = 0.24, b = 0.63 })
 		else
@@ -94,6 +101,7 @@ function Recount:ResetDefaultClassColors()
 		end
 	end
 	Recount.Colors:SetColor("Bar", "Bar Text", { r = 1, g = 1, b = 1})
+	Recount.Colors:SetColor("Bar", "Total Bar", { r = 0.75, g = 0.75, b = 0.75})
 end
 
 
@@ -204,14 +212,10 @@ function me:CreateClassColorSelection(parent)
 	theFrame.Title:SetText(L["Bar Color Selection"])
 	
 	local i=1
-	--theFrame.ClassTitle=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	--theFrame.ClassTitle:SetPoint("TOP",theFrame,"TOP",0,-2-i*14)
-	--theFrame.ClassTitle:SetText("Bar Font Color")
-	--i=i+1
 	for k,v in pairs(EditableColors.Bar) do
 		theFrame.Rows[i]=me:CreateColorRow(theFrame)
 		theFrame.Rows[i]:SetRow("Bar",v)
-		theFrame.Rows[i]:SetPoint("TOP",theFrame,"TOP",4,-4-i*14)
+		theFrame.Rows[i]:SetPoint("TOP",theFrame,"TOP",4,-2-i*14)
 		i=i+1
 		if i>16 then
 			return
@@ -219,13 +223,13 @@ function me:CreateClassColorSelection(parent)
 	end
 	
 	theFrame.ClassTitle=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	theFrame.ClassTitle:SetPoint("TOP",theFrame,"TOP",0,-6-i*14)
+	theFrame.ClassTitle:SetPoint("TOP",theFrame,"TOP",0,-2-i*14)
 	theFrame.ClassTitle:SetText(L["Class Colors"])
 	i=i+1
 	for k,v in pairs(EditableColors.Class) do
 		theFrame.Rows[i]=me:CreateColorRow(theFrame)
 		theFrame.Rows[i]:SetRow("Class",v)
-		theFrame.Rows[i]:SetPoint("TOP",theFrame,"TOP",4,-6-i*14)
+		theFrame.Rows[i]:SetPoint("TOP",theFrame,"TOP",4,-2-i*14)
 		i=i+1
 		if i>16 then
 			return
@@ -306,7 +310,7 @@ function me:CreateFilterRow(parent,label,header)
 
 	theFrame.ShowData=CreateFrame("CheckButton",nil,theFrame)
 	me:ConfigureCheckbox(theFrame.ShowData)
-	theFrame.ShowData:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true);  else this:SetChecked(false); end  me:SaveFilterConfig()  end)
+	theFrame.ShowData:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true);  else this:SetChecked(false); end  me:SaveFilterConfig(); Recount:RefreshMainWindow() end)
 
 	theFrame.RecordData=CreateFrame("CheckButton",nil,theFrame)
 	me:ConfigureCheckbox(theFrame.RecordData)
@@ -349,11 +353,11 @@ function me:SetupFilterOptions(parent)
 	theFrame:SetWidth(196)
 	theFrame:SetPoint("TOPLEFT",parent,"TOPLEFT",2,-34)
 
-	theFrame.Title_Show=me:CreateIconFrame(theFrame,"Interface/Icons/INV_Misc_Eye_01","Show","Is this shown in the main window?")
-	theFrame.Title_Data=me:CreateIconFrame(theFrame,"Interface/Icons/INV_Misc_Note_02","Record Data","Whether data is recorded for this type")
-	theFrame.Title_Time=me:CreateIconFrame(theFrame,"Interface/Icons/INV_Misc_PocketWatch_02","Record Time Data","Whether time data is recorded for this type (used for graphs can be a |cffff2020memory hog|r if you are concerned about memory)")
-	theFrame.Title_Deaths=me:CreateIconFrame(theFrame,"Interface/Icons/Ability_Creature_Cursed_02","Record Deaths","Records when deaths occur and the past few actions involving this type")
-	theFrame.Title_Buffs=me:CreateIconFrame(theFrame,"Interface/Icons/Ability_Warrior_SavageBlow","Record Buffs/Debuffs","Records the times and applications of buff/debuffs on this type")
+	theFrame.Title_Show=me:CreateIconFrame(theFrame,"Interface/Icons/INV_Misc_Eye_01",L["Show"],L["Is this shown in the main window?"])
+	theFrame.Title_Data=me:CreateIconFrame(theFrame,"Interface/Icons/INV_Misc_Note_02",L["Record Data"],L["Whether data is recorded for this type"])
+	theFrame.Title_Time=me:CreateIconFrame(theFrame,"Interface/Icons/INV_Misc_PocketWatch_02",L["Record Time Data"],L["Whether time data is recorded for this type (used for graphs can be a |cffff2020memory hog|r if you are concerned about memory)"])
+	theFrame.Title_Deaths=me:CreateIconFrame(theFrame,"Interface/Icons/Ability_Creature_Cursed_02",L["Record Deaths"],L["Records when deaths occur and the past few actions involving this type"])
+	theFrame.Title_Buffs=me:CreateIconFrame(theFrame,"Interface/Icons/Ability_Warrior_SavageBlow",L["Record Buffs/Debuffs"],L["Records the times and applications of buff/debuffs on this type"])
 	
 	theFrame.Title_Show:SetPoint("RIGHT",theFrame.Title_Data,"LEFT",-2,0)
 	theFrame.Title_Data:SetPoint("RIGHT",theFrame.Title_Time,"LEFT",-2,0)
@@ -383,9 +387,11 @@ function me:SetupFilterOptions(parent)
 	Filters.Ungrouped=me:CreateFilterRow(theFrame,"  "..L["Ungrouped"])
 	Filters.Ungrouped:SetPoint("TOP",Filters.Grouped,"BOTTOM",0,-1)
 
+	Filters.Hostile=me:CreateFilterRow(theFrame,"  "..L["Hostile"])
+	Filters.Hostile:SetPoint("TOP",Filters.Ungrouped,"BOTTOM",0,-1)
 
 	Filters.Pet=me:CreateFilterRow(theFrame,L["Pets"],true)
-	Filters.Pet:SetPoint("TOP",Filters.Ungrouped,"BOTTOM",0,-1)
+	Filters.Pet:SetPoint("TOP",Filters.Hostile,"BOTTOM",0,-1)
 
 	theFrame.TitleMobs=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 	theFrame.TitleMobs:SetText(" "..L["Mobs"])
@@ -403,11 +409,10 @@ function me:SetupFilterOptions(parent)
 	Filters.Unknown=me:CreateFilterRow(theFrame,L["Unknown"],true)
 	Filters.Unknown:SetPoint("TOP",Filters.Boss,"BOTTOM",0,-1)
 
-	theFrame.Title=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	theFrame.GlobalData=me:CreateSavedCheckbox(L["Global Data Collection"],theFrame,"Data","GlobalData")
-	theFrame.GlobalData:SetPoint("TOPLEFT",Filters.Unknown,"BOTTOMLEFT",0,-1)
-	theFrame.GlobalData:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.GlobalDataCollect = true; else this:SetChecked(false); Recount.db.char.GlobalDataCollect = false; end end)
-	
+	theFrame.MergePets=me:CreateSavedCheckbox(L["Merge Pets w/ Owners"],theFrame,"Data","MergePets")
+	theFrame.MergePets:SetPoint("TOPLEFT",Filters.Unknown,"BOTTOMLEFT",0,-1)
+	theFrame.MergePets:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MergePets = true; Recount.db.profile.Filters.Show["Pet"]=false else this:SetChecked(false); Recount.db.profile.MergePets = false; Recount.db.profile.Filters.Show["Pet"]=true end me.FilterOptions.Filters.Pet.ShowData:SetChecked(Recount.db.profile.Filters.Show["Pet"]); Recount:FullRefreshMainWindow(); Recount:RefreshMainWindow() end)
+
 end
 
 
@@ -423,7 +428,7 @@ function me:BarTextureDropDown_Initialize()
 	local LookingFor
 
 	if not LookingFor then
-		LookingFor=Recount.db.char.BarTexture
+		LookingFor=Recount.db.profile.BarTexture
 	end
 
 	if not LookingFor then
@@ -431,7 +436,7 @@ function me:BarTextureDropDown_Initialize()
 	end
 
 	for k,v in pairs(BarTextures) do
-		info = {};
+		local info = {};
 		info.text = v;
 		info.value = k;
 		info.func = me.SetBarTexture;
@@ -457,7 +462,7 @@ end
 
 function me:UpdateStatusBars()
 	for _, v in pairs(me.TextureOptions.Rows) do
-		if v.SetTo==Recount.db.char.BarTexture then
+		if v.SetTo==Recount.db.profile.BarTexture then
 			v.Texture:SetVertexColor(0.2,0.9,0.2)
 		else
 			v.Texture:SetVertexColor(0.9,0.2,0.2)
@@ -477,6 +482,7 @@ function me:CreateSelectStatusBar(parent)
 	frame.SetTexture=me.SetSelectStatusBar
 	frame:EnableMouse()
 	frame:SetScript("OnMouseDown",function() Recount:SetBarTextures(this.SetTo)
+						me:SetTestBarTexture(this.SetTo)
 						me:UpdateStatusBars() end)
 	return frame
 end
@@ -493,6 +499,113 @@ function me:RefreshStatusBars()
 	end
 
 	me:UpdateStatusBars()
+end
+
+function me:SetTestBarTexture(handle)
+	local Texture=SM:Fetch(SM.MediaType.STATUSBAR,handle) -- "statusbar"
+	me.BarOptions.TestBar.StatusBar:SetStatusBarTexture(Texture)
+end
+
+
+
+function me:SetTestBar(num,left,right,value,color)
+
+	local Row=me.BarOptions.TestBar
+	Row:Show()
+	Row.StatusBar:SetValue(value)
+	Row.LeftText:SetText(left)
+	Row.RightText:SetText(right)
+	Row.Name=left
+
+	if color then
+		Row.StatusBar:SetStatusBarColor(color.r,color.g,color.b,1)
+	end
+	
+	Row.LeftText:SetTextColor(Recount.db.profile.Colors.Bar["Bar Text"].r,Recount.db.profile.Colors.Bar["Bar Text"].g,Recount.db.profile.Colors.Bar["Bar Text"].b,1);
+	Row.RightText:SetTextColor(Recount.db.profile.Colors.Bar["Bar Text"].r,Recount.db.profile.Colors.Bar["Bar Text"].g,Recount.db.profile.Colors.Bar["Bar Text"].b,1);
+end
+
+function me:RefreshTestBar()
+	local lefttext = Recount.db.profile.MainWindow.BarText.RankNum and "1. "..Recount.PlayerName or Recount.PlayerName
+	local righttext = Recount:FormatLongNums(37815)
+	if Recount.db.profile.MainWindow.BarText.PerSec then
+		righttext = righttext .. string.format(" (%s","93.2")
+		if Recount.db.profile.MainWindow.BarText.Percent then
+			righttext = righttext .. string.format(", %.1f%%)",100.0)
+		else
+			righttext = righttext .. ")"
+		end
+	elseif Recount.db.profile.MainWindow.BarText.Percent then
+		righttext = righttext .. string.format(" (%.1f%%)",100.0)
+	end
+		
+	local _, enClass = UnitClass("player")
+	me:SetTestBar(0,lefttext,righttext,100,Recount.db.profile.Colors.Class[enClass])	
+end
+
+function me:CreateBarSelection(parent)
+	me.BarOptions=CreateFrame("Frame",nil,parent)
+
+	local theFrame=me.BarOptions
+
+	theFrame:SetHeight(200)
+	theFrame:SetWidth(200)
+	theFrame:SetPoint("TOPLEFT",parent,"TOPLEFT",000,-34)
+
+	--[[theFrame.Background=theFrame:CreateTexture(nil,"BACKGROUND")
+	theFrame.Background:SetAllPoints(theFrame)
+	theFrame.Background:SetTexture(0,0,0,0.3)]]
+
+	theFrame.Title=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	theFrame.Title:SetText(L["Bar Text Options"])
+	theFrame.Title:SetPoint("TOP",theFrame,"TOP",0,-2)
+	
+	local row=CreateFrame("Button","Recount_ConfigWindow_BarOptions_TestBar",theFrame)
+	
+	row:SetPoint("TOPLEFT",theFrame,"TOPLEFT",2,-16)
+	row:SetHeight(14)
+	row:SetWidth(196)
+	Recount:SetupBar(row)
+	local Font, Height, Flags = row.LeftText:GetFont()
+	row.LeftText:SetFont(Font, 14*0.75, Flags)
+	local Font, Height, Flags = row.RightText:GetFont()
+	row.RightText:SetFont(Font, 14*0.75, Flags)
+
+	Recount.Colors:RegisterFont("Bar","Bar Text",row.LeftText)
+	Recount.Colors:RegisterFont("Bar","Bar Text",row.RightText)
+	theFrame.TestBar = row
+
+	me:RefreshTestBar()
+	
+	theFrame.RankNum=me:CreateSavedCheckbox(L["Rank Number"],theFrame,"Window","RankNum")
+	theFrame.RankNum:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-23-14)
+	theFrame.RankNum:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.BarText.RankNum = true; Recount:RefreshMainWindow(); me:RefreshTestBar() else this:SetChecked(false); Recount.db.profile.MainWindow.BarText.RankNum = false; Recount:RefreshMainWindow(); me:RefreshTestBar()end end)
+	
+	theFrame.PerSec=me:CreateSavedCheckbox(L["Per Second"],theFrame,"Window","PerSec")
+	theFrame.PerSec:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-40-14)
+	theFrame.PerSec:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.BarText.PerSec = true; Recount:RefreshMainWindow();me:RefreshTestBar() else this:SetChecked(false); Recount.db.profile.MainWindow.BarText.PerSec = false; Recount:RefreshMainWindow(); me:RefreshTestBar()end end)
+	
+	theFrame.Percent=me:CreateSavedCheckbox(L["Percent"],theFrame,"Window","Percent")
+	theFrame.Percent:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-57-14)
+	theFrame.Percent:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.BarText.Percent = true; Recount:RefreshMainWindow();me:RefreshTestBar() else this:SetChecked(false); Recount.db.profile.MainWindow.BarText.Percent = false; Recount:RefreshMainWindow(); me:RefreshTestBar()end end)
+
+	theFrame.Title2=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	theFrame.Title2:SetText(L["Number Format"])
+	theFrame.Title2:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-77-14)
+
+	theFrame.Standard=me:CreateSavedCheckbox(L["Standard"],theFrame,"Window","Standard")
+	theFrame.Standard:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-91-14)
+	theFrame.Standard:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); this:GetParent().Commas:SetChecked(false); this:GetParent().Short:SetChecked(false); Recount.db.profile.MainWindow.BarText.NumFormat = 1; Recount:RefreshMainWindow(); me:RefreshTestBar() else this:SetChecked(true); end end)
+	
+	theFrame.Commas=me:CreateSavedCheckbox(L["Commas"],theFrame,"Window","Commas")
+	theFrame.Commas:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-108-14)
+	theFrame.Commas:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); this:GetParent().Standard:SetChecked(false); this:GetParent().Short:SetChecked(false); Recount.db.profile.MainWindow.BarText.NumFormat = 2; Recount:RefreshMainWindow();me:RefreshTestBar() else this:SetChecked(true); end end)
+	
+	theFrame.Short=me:CreateSavedCheckbox(L["Short"],theFrame,"Window","Short")
+	theFrame.Short:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-125-14)
+	theFrame.Short:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); this:GetParent().Standard:SetChecked(false); this:GetParent().Commas:SetChecked(false); Recount.db.profile.MainWindow.BarText.NumFormat = 3; Recount:RefreshMainWindow();me:RefreshTestBar() else this:SetChecked(true); end end)
+
+	
 end
 
 function me:CreateTextureSelection(parent)
@@ -552,7 +665,7 @@ end
 
 function me:UpdateFonts()
 	for _, v in pairs(me.FontOptions.Rows) do
-		if v.SetTo==Recount.db.char.Font then
+		if v.SetTo==Recount.db.profile.Font then
 			v.Texture:SetVertexColor(0.2,0.9,0.2)
 		else
 			v.Texture:SetVertexColor(0.9,0.2,0.2)
@@ -650,7 +763,7 @@ function me:SetupWindowOptions(parent)
 	theFrame.ResetWinButton:SetScript("OnClick",function() Recount:ResetPositions() end)
 	theFrame.ResetWinButton:SetText(L["Reset Positions"])
 	
-	slider = CreateFrame("Slider", "Recount_ConfigWindow_Scaling_Slider", theFrame,"OptionsSliderTemplate")
+	local slider = CreateFrame("Slider", "Recount_ConfigWindow_Scaling_Slider", theFrame,"OptionsSliderTemplate")
 	theFrame.ScalingSlider=slider
 	slider:SetOrientation("HORIZONTAL")
 	slider:SetMinMaxValues(0.5, 1.5)
@@ -658,19 +771,19 @@ function me:SetupWindowOptions(parent)
 	slider:SetWidth(180)
 	slider:SetHeight(16)
 	slider:SetPoint("TOP", theFrame, "TOP", 0, -58)
-	slider:SetScript("OnValueChanged",function() Recount.db.char.Scaling=math.floor(this:GetValue()*100+0.5)/100;getglobal(this:GetName().."Text"):SetText(L["Window Scaling"]..": "..Recount.db.char.Scaling);Recount:ScaleWindows(Recount.db.char.Scaling) end)
-	slider:SetScript("OnMouseUp", function() me:ScaleConfigWindow(Recount.db.char.Scaling) end)
+	slider:SetScript("OnValueChanged",function() Recount.db.profile.Scaling=math.floor(this:GetValue()*100+0.5)/100;getglobal(this:GetName().."Text"):SetText(L["Window Scaling"]..": "..Recount.db.profile.Scaling);Recount:ScaleWindows(Recount.db.profile.Scaling) end)
+	slider:SetScript("OnMouseUp", function() me:ScaleConfigWindow(Recount.db.profile.Scaling) end)
 	getglobal(slider:GetName().."High"):SetText("1.5");
 	getglobal(slider:GetName().."Low"):SetText("0.5");
-	getglobal(slider:GetName().."Text"):SetText(L["Window Scaling"]..": "..Recount.db.char.Scaling)
+	getglobal(slider:GetName().."Text"):SetText(L["Window Scaling"]..": "..Recount.db.profile.Scaling)
 
-	theFrame.ShowCurAndLast=me:CreateSavedCheckbox(L["Autoswitch Shown Fight"],theFrame,"Window","ShowCurAndLast")
+--[[	theFrame.ShowCurAndLast=me:CreateSavedCheckbox(L["Autoswitch Shown Fight"],theFrame,"Window","ShowCurAndLast")
 	theFrame.ShowCurAndLast:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-82)
 	theFrame.ShowCurAndLast:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.Window.ShowCurAndLast = true; else this:SetChecked(false); Recount.db.profile.Window.ShowCurAndLast = false; end end)
-
+]] -- Elsia: Making this default in modified form
 	theFrame.LockWin=me:CreateSavedCheckbox(L["Lock Windows"],theFrame,"Window","LockWin")
-	theFrame.LockWin:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-99)
-	theFrame.LockWin:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.Locked = true; Recount:LockWindows(true) else this:SetChecked(false); Recount.db.char.Locked = false; Recount:LockWindows(false) end end)
+	theFrame.LockWin:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-82)
+	theFrame.LockWin:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.Locked = true; Recount:LockWindows(true); else this:SetChecked(false); Recount.db.profile.Locked = false; Recount:LockWindows(false); end end)
 
 end
 
@@ -687,7 +800,7 @@ function me:SetupDeletionOptions(parent)
 	
 	theFrame.Autodelete=me:CreateSavedCheckbox(L["Autodelete Time Data"],theFrame,"Data","AutodeleteTime")
 	theFrame.Autodelete:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-23)
-	theFrame.Autodelete:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.AutoDelete = true; else this:SetChecked(false); Recount.db.char.AutoDelete = false; end end)
+	theFrame.Autodelete:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.AutoDelete = true; else this:SetChecked(false); Recount.db.profile.AutoDelete = false; end end)
 
 
 	theFrame.TitleInstance=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
@@ -696,15 +809,14 @@ function me:SetupDeletionOptions(parent)
 	
 	theFrame.AutodeleteI=me:CreateSavedCheckbox(L["Delete on Entry"],theFrame,"Data","AutodeleteInstance") -- Elsia: Bye Autodeletecombatants
 	theFrame.AutodeleteI:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-63)	
-	theFrame.AutodeleteI:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.AutoDeleteNewInstance = true; else this:SetChecked(false); Recount.db.char.AutoDeleteNewInstance = false; end Recount.SetupInstanceCheck() end)
-
+	theFrame.AutodeleteI:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.AutoDeleteNewInstance = true; theFrame.AutodeleteINew:Enable(); theFrame.AutodeleteIConf:Enable() else this:SetChecked(false); Recount.db.profile.AutoDeleteNewInstance = false; theFrame.AutodeleteINew:Disable(); theFrame.AutodeleteIConf:Disable() end Recount:DetectInstanceChange() end)
 	theFrame.AutodeleteINew=me:CreateSavedCheckbox(L["New"],theFrame,"Data","AutodeleteInstanceNew") -- Elsia: Bye Autodeletecombatants
 	theFrame.AutodeleteINew:SetPoint("TOPLEFT",theFrame,"TOPLEFT",132,-63)	
-	theFrame.AutodeleteINew:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.DeleteNewInstanceOnly = true; else this:SetChecked(false); Recount.db.char.DeleteNewInstanceOnly = false; end end)
+	theFrame.AutodeleteINew:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.DeleteNewInstanceOnly = true; else this:SetChecked(false); Recount.db.profile.DeleteNewInstanceOnly = false; end end)
 
 	theFrame.AutodeleteIConf=me:CreateSavedCheckbox(L["Confirmation"],theFrame,"Data","AutodeleteInstanceConf") -- Elsia: Bye Autodeletecombatants
 	theFrame.AutodeleteIConf:SetPoint("TOPLEFT",theFrame,"TOPLEFT",36,-80)	
-	theFrame.AutodeleteIConf:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.ConfirmDeleteInstance = true; else this:SetChecked(false); Recount.db.char.ConfirmDeleteInstance = false; end end)
+	theFrame.AutodeleteIConf:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.ConfirmDeleteInstance = true; else this:SetChecked(false); Recount.db.profile.ConfirmDeleteInstance = false; end end)
 
 	theFrame.TitleInstance=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 	theFrame.TitleInstance:SetText(L["Group Based Deletion"])
@@ -712,19 +824,19 @@ function me:SetupDeletionOptions(parent)
 	
 	theFrame.AutodeleteG=me:CreateSavedCheckbox(L["Delete on New Group"],theFrame,"Data","AutodeleteGroup") -- Elsia: Bye Autodeletecombatants
 	theFrame.AutodeleteG:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-120)	
-	theFrame.AutodeleteG:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.DeleteJoinGroup = true; Recount:InitPartyBasedDeletion() else this:SetChecked(false); Recount.db.char.DeleteJoinGroup= false; Recount:ReleasePartyBasedDeletion() end end)
+	theFrame.AutodeleteG:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.DeleteJoinGroup = true; theFrame.AutodeleteGConf:Enable(); Recount:InitPartyBasedDeletion() else this:SetChecked(false); Recount.db.profile.DeleteJoinGroup= false; theFrame.AutodeleteGConf:Disable(); Recount:ReleasePartyBasedDeletion() end end)
 
 	theFrame.AutodeleteGConf=me:CreateSavedCheckbox(L["Confirmation"],theFrame,"Data","AutodeleteGroupConf") -- Elsia: Bye Autodeletecombatants
 	theFrame.AutodeleteGConf:SetPoint("TOPLEFT",theFrame,"TOPLEFT",36,-139)	
-	theFrame.AutodeleteGConf:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.ConfirmDeleteGroup = true; else this:SetChecked(false); Recount.db.char.ConfirmDeleteGroup = false; end end)
+	theFrame.AutodeleteGConf:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.ConfirmDeleteGroup = true; else this:SetChecked(false); Recount.db.profile.ConfirmDeleteGroup = false; end end)
 
 	theFrame.AutodeleteR=me:CreateSavedCheckbox(L["Delete on New Raid"],theFrame,"Data","AutodeleteRaid") -- Elsia: Bye Autodeletecombatants
 	theFrame.AutodeleteR:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-154)	
-	theFrame.AutodeleteR:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.DeleteJoinRaid = true; Recount:InitPartyBasedDeletion() else this:SetChecked(false); Recount.db.char.DeleteJoinRaid= false; Recount:ReleasePartyBasedDeletion() end end)
+	theFrame.AutodeleteR:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.DeleteJoinRaid = true; theFrame.AutodeleteRConf:Enable(); Recount:InitPartyBasedDeletion() else this:SetChecked(false); Recount.db.profile.DeleteJoinRaid= false; theFrame.AutodeleteRConf:Disable(); Recount:ReleasePartyBasedDeletion() end end)
 
 	theFrame.AutodeleteRConf=me:CreateSavedCheckbox(L["Confirmation"],theFrame,"Data","AutodeleteRaidConf") -- Elsia: Bye Autodeletecombatants
 	theFrame.AutodeleteRConf:SetPoint("TOPLEFT",theFrame,"TOPLEFT",36,-171)	
-	theFrame.AutodeleteRConf:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.ConfirmDeleteRaid = true; else this:SetChecked(false); Recount.db.char.ConfirmDeleteRaid = false; end end)
+	theFrame.AutodeleteRConf:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.ConfirmDeleteRaid = true; else this:SetChecked(false); Recount.db.profile.ConfirmDeleteRaid = false; end end)
 
 end
 
@@ -811,6 +923,20 @@ function me:SetupRealtimeOptions(parent)
 	theFrame.BWButton:SetText(L["Bandwidth"])
 end
 
+local ZoneLabels = 
+{
+	["none"] = L["Outside Instances"],
+	["party"] = L["Party Instances"],
+	["raid"] = L["Raid Instances"],
+	["pvp"] = L["Battlegrounds"],
+	["arena"] = L["Arenas"]
+}
+
+local ZoneOrder = 
+{
+	"none", "party", "raid", "pvp", "arena"
+}
+
 function me:SetupMiscOptions(parent)
 	me.MiscOptions=CreateFrame("Frame",nil,parent)
 	local theFrame=me.MiscOptions
@@ -821,72 +947,51 @@ function me:SetupMiscOptions(parent)
 
 	theFrame.Title=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 	theFrame.Title:SetText(L["Recount Version"])
-	theFrame.Title:SetPoint("TOP",theFrame,"TOP",0,-2)
+	theFrame.Title:SetPoint("TOP",theFrame,"TOP",-20,-2)
 	
 	theFrame.VersionText=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 	theFrame.VersionText:SetTextColor(1,1,1,1)
 	theFrame.VersionText:SetText(Recount.Version)
-	theFrame.VersionText:SetPoint("TOP",theFrame,"TOP",0,-26)
-
+	theFrame.VersionText:SetPoint("LEFT",theFrame.Title,"RIGHT",4,0) -- TOP theFrame TOP -20
+	
 	theFrame.VerChkButton=CreateFrame("Button",nil,theFrame,"OptionsButtonTemplate")
 	theFrame.VerChkButton:SetWidth(120)
 	theFrame.VerChkButton:SetHeight(24)
-	theFrame.VerChkButton:SetPoint("TOPLEFT",theFrame,"TOPLEFT",40,-44)
+	theFrame.VerChkButton:SetPoint("TOPLEFT",theFrame,"TOPLEFT",40,-18)
 	theFrame.VerChkButton:SetScript("OnClick",function() Recount.ReportVersions() end)
 	theFrame.VerChkButton:SetText(L["Check Versions"])
 
-	theFrame.Title=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	theFrame.Title:SetText(L["Data Options"])
-	theFrame.Title:SetPoint("TOP",theFrame,"TOP",0,-81)
--- Elsia: Sacrificed these two lines to make space for Sync toggle, edit: desacrified in the process of ditching save/revert
-	theFrame.Title=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	theFrame.Sync=me:CreateSavedCheckbox(L["Sync Data"],theFrame,"Data","Sync")
-	theFrame.Sync:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-98)
-	theFrame.Sync:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount:ConfigComm(); Recount.db.char.EnableSync = true  else this:SetChecked(false); Recount.db.char.EnableSync = false; Recount:FreeComm() end end)
+	theFrame.Title2=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	theFrame.Title2:SetText(L["Content-based Filters"])
+	theFrame.Title2:SetPoint("TOP",theFrame,"TOP",0,-45)
 
---	theFrame.AutodeleteC=me:CreateSavedCheckbox("Autodelete Combatants",theFrame,"Data","AutodeleteChars") -- Elsia: Bye Autodeletecombatants
---	theFrame.AutodeleteC:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-50)	
---	theFrame.AutodeleteC:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.AutoDeleteCombatants = true; else this:SetChecked(false); Recount.db.char.AutoDeleteCombatants = false; end end)
+	local i = 0
+	for _,k in pairs(ZoneOrder) do
+		theFrame[k]=me:CreateSavedCheckbox(ZoneLabels[k],theFrame,"Data",k)
+		theFrame[k]:SetPoint("TOPLEFT",theFrame,"TOPLEFT",10,-59-i*16)
+		theFrame[k]:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.ZoneFilters[k] = true; local _,inst=IsInInstance(); Recount:SetZoneFilter(inst); Recount:RefreshMainWindow(); else this:SetChecked(false); Recount.db.profile.ZoneFilters[k] = false; local _,inst=IsInInstance(); Recount:SetZoneFilter(inst); Recount:RefreshMainWindow() end end)
+		i = i+1
+	end
 
---	local slider = CreateFrame("Slider", "Recount_ConfigWindow_TimeData_Slider", theFrame,"OptionsSliderTemplate")
---	theFrame.TimeDataSlider=slider
---	slider:SetOrientation("HORIZONTAL")
---	slider:SetMinMaxValues(30, 300)
---	slider:SetValueStep(5)
---	slider:SetValue(30)
---	slider:SetWidth(180)
---	slider:SetHeight(16)
---	slider:SetPoint("TOP", theFrame, "TOP", 0, -83)
---	slider:SetScript("OnValueChanged",function() getglobal(this:GetName().."Text"):SetText("Save Data For: "..this:GetValue().. " Minutes"); Recount.db.char.AutoDeleteTime=this:GetValue() end)
---	getglobal(slider:GetName().."High"):SetText("300");
---	getglobal(slider:GetName().."Low"):SetText("30");
---	getglobal(slider:GetName().."Text"):SetText("Save Data For: "..slider:GetValue().. " Minutes")
+	theFrame.GlobalData=me:CreateSavedCheckbox(L["Global Data Collection"],theFrame,"Data","GlobalData")
+	theFrame.GlobalData:SetPoint("TOPLEFT",theFrame,"TOPLEFT",10,-59-i*16-3)
+	theFrame.GlobalData:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.GlobalDataCollect = true; for k,_ in pairs(ZoneLabels) do theFrame[k]:Enable() end if Recount.db.profile.HideCollect then Recount.MainWindow:Show() end else this:SetChecked(false); Recount.db.profile.GlobalDataCollect = false; for k,_ in pairs(ZoneLabels) do theFrame[k]:Disable() end if Recount.db.profile.HideCollect then Recount.MainWindow:Hide() end end end)
 
-	theFrame.CombatLogRange=me:CreateSavedCheckbox(L["Set Combat Log Range"],theFrame,"Data","SetCombatLog")
-	theFrame.CombatLogRange:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-113)
-	theFrame.CombatLogRange:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.UseCombatLogRange = true;  else this:SetChecked(false); Recount.db.char.UseCombatLogRange = false;  end if Recount.db.char.UseCombatLogRange then Recount:SetLogRange(Recount.db.char.CombatLogRange) else Recount:SetLogRange(200) end end) -- Elsia: Changed default to 200
+	i = i+1
+	
+	theFrame.HideCollect=me:CreateSavedCheckbox(L["Hide When Not Collecting"],theFrame,"Data","HideCollect")
+	theFrame.HideCollect:SetPoint("TOPLEFT",theFrame,"TOPLEFT",10,-59-i*16-6)
+	theFrame.HideCollect:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.HideCollect = true; local _,inst=IsInInstance(); Recount:SetZoneFilter(inst) else this:SetChecked(false); Recount.db.profile.HideCollect = false; local _,inst=IsInInstance(); Recount:SetZoneFilter(inst) end end)
 
-	local slider = CreateFrame("Slider", "Recount_ConfigWindow_CombatLogRange_Slider", theFrame,"OptionsSliderTemplate")
-	theFrame.CombatLogRangeSlider=slider
-	slider:SetOrientation("HORIZONTAL")
-	slider:SetMinMaxValues(40, 200)
-	slider:SetValueStep(5)
-	slider:SetValue(40)
-	slider:SetWidth(180)
-	slider:SetHeight(16)
-	slider:SetPoint("TOP", theFrame, "TOP", 0, -147)
-	slider:SetScript("OnValueChanged",function() getglobal(this:GetName().."Text"):SetText(L["Combat Log Range"]..": "..this:GetValue().. " "..L["Yds"]); Recount.db.char.CombatLogRange=this:GetValue() end)
-	getglobal(slider:GetName().."High"):SetText("200");
-	getglobal(slider:GetName().."Low"):SetText("40");
-	getglobal(slider:GetName().."Text"):SetText(L["Combat Log Range"]..": "..slider:GetValue().. " "..L["Yds"])
+	theFrame.Title3=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	theFrame.Title3:SetText(L["Fight Segmentation"])
+	theFrame.Title3:SetPoint("TOP",theFrame,"TOP",0,-88-i*16-4)
 
-	theFrame.MergePets=me:CreateSavedCheckbox(L["Merge Pets w/ Owners"],theFrame,"Data","MergePets")
-	theFrame.MergePets:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-177)
-	theFrame.MergePets:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MergePets = true; Recount.db.char.Filters.Show["Pet"]=false else this:SetChecked(false); Recount.db.char.MergePets = false; Recount.db.char.Filters.Show["Pet"]=true end me.FilterOptions.Filters.Pet.ShowData:SetChecked(Recount.db.char.Filters.Show["Pet"]); Recount:FullRefreshMainWindow() end)
+	i = i+1
 
-	theFrame.FixLog=me:CreateSavedCheckbox(L["Fix Ambiguous Log Strings"],theFrame,"Data","FixLogStrings")
-	theFrame.FixLog:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-193)
-	theFrame.FixLog:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.UseFixLog = true; else this:SetChecked(false); Recount.db.char.UseFixLog = false; end end)
+	theFrame.SegmentBosses=me:CreateSavedCheckbox(L["Keep Only Boss Segments"],theFrame,"Data","SegmentBosses")
+	theFrame.SegmentBosses:SetPoint("TOPLEFT",theFrame,"TOPLEFT",10,-88-i*16-2)
+	theFrame.SegmentBosses:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.SegmentBosses = true; else this:SetChecked(false); Recount.db.profile.SegmentBosses = false; end end)
 end
 
 function me:SetupButtonOptions(parent)
@@ -912,7 +1017,7 @@ function me:SetupButtonOptions(parent)
 	theFrame.ReportButton=CreateFrame("CheckButton",nil,theFrame)
 	me:ConfigureCheckbox(theFrame.ReportButton)
 	theFrame.ReportButton:SetPoint("TOPLEFT",theFrame,"TOPLEFT",8,-18-16)
-	theFrame.ReportButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.Buttons.ReportButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.char.MainWindow.Buttons.ReportButton = false; Recount:SetupMainWindowButtons() end end)
+	theFrame.ReportButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.Buttons.ReportButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.profile.MainWindow.Buttons.ReportButton = false; Recount:SetupMainWindowButtons() end end)
 
 	theFrame.Report_Icon=theFrame:CreateTexture(nil,"OVERLAY")
 	theFrame.Report_Icon:SetWidth(16)
@@ -927,7 +1032,7 @@ function me:SetupButtonOptions(parent)
 	theFrame.FileButton=CreateFrame("CheckButton",nil,theFrame)
 	me:ConfigureCheckbox(theFrame.FileButton)
 	theFrame.FileButton:SetPoint("TOP",theFrame.ReportButton,"BOTTOM",0,-2)
-	theFrame.FileButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.Buttons.FileButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.char.MainWindow.Buttons.FileButton = false; Recount:SetupMainWindowButtons() end end)
+	theFrame.FileButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.Buttons.FileButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.profile.MainWindow.Buttons.FileButton = false; Recount:SetupMainWindowButtons() end end)
 
 	theFrame.File_Icon=theFrame:CreateTexture(nil,"OVERLAY")
 	theFrame.File_Icon:SetWidth(16)
@@ -942,7 +1047,7 @@ function me:SetupButtonOptions(parent)
 	theFrame.ConfigButton=CreateFrame("CheckButton",nil,theFrame)
 	me:ConfigureCheckbox(theFrame.ConfigButton)
 	theFrame.ConfigButton:SetPoint("TOPLEFT",theFrame,"TOPLEFT",100,-18-16)
-	theFrame.ConfigButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.Buttons.ConfigButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.char.MainWindow.Buttons.ConfigButton = false; Recount:SetupMainWindowButtons() end end)
+	theFrame.ConfigButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.Buttons.ConfigButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.profile.MainWindow.Buttons.ConfigButton = false; Recount:SetupMainWindowButtons() end end)
 
 	theFrame.Config_Icon=theFrame:CreateTexture(nil,"OVERLAY")
 	theFrame.Config_Icon:SetWidth(16)
@@ -957,7 +1062,7 @@ function me:SetupButtonOptions(parent)
 	theFrame.ResetButton=CreateFrame("CheckButton",nil,theFrame)
 	me:ConfigureCheckbox(theFrame.ResetButton)
 	theFrame.ResetButton:SetPoint("TOP",theFrame.ConfigButton,"BOTTOM",0,-2)
-	theFrame.ResetButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.Buttons.ResetButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.char.MainWindow.Buttons.ResetButton = false; Recount:SetupMainWindowButtons() end end)
+	theFrame.ResetButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.Buttons.ResetButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.profile.MainWindow.Buttons.ResetButton = false; Recount:SetupMainWindowButtons() end end)
 
 	theFrame.Reset_Icon=theFrame:CreateTexture(nil,"OVERLAY")
 	theFrame.Reset_Icon:SetWidth(16)
@@ -972,7 +1077,7 @@ function me:SetupButtonOptions(parent)
 	theFrame.LeftButton=CreateFrame("CheckButton",nil,theFrame) -- Elsia: Added paging icon toggle support
 	me:ConfigureCheckbox(theFrame.LeftButton)
 	theFrame.LeftButton:SetPoint("TOP",theFrame.FileButton,"BOTTOM",0,-2)
-	theFrame.LeftButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.Buttons.LeftButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.char.MainWindow.Buttons.LeftButton = false; Recount:SetupMainWindowButtons() end end)
+	theFrame.LeftButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.Buttons.LeftButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.profile.MainWindow.Buttons.LeftButton = false; Recount:SetupMainWindowButtons() end end)
 
 	theFrame.Left_Icon=theFrame:CreateTexture(nil,"OVERLAY")
 	theFrame.Left_Icon:SetWidth(16)
@@ -987,7 +1092,7 @@ function me:SetupButtonOptions(parent)
 	theFrame.RightButton=CreateFrame("CheckButton",nil,theFrame) -- Elsia: Added paging icon toggle support
 	me:ConfigureCheckbox(theFrame.RightButton)
 	theFrame.RightButton:SetPoint("TOP",theFrame.ResetButton,"BOTTOM",0,-2)
-	theFrame.RightButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.Buttons.RightButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.char.MainWindow.Buttons.RightButton = false; Recount:SetupMainWindowButtons() end end)
+	theFrame.RightButton:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.Buttons.RightButton = true; Recount:SetupMainWindowButtons() else this:SetChecked(false); Recount.db.profile.MainWindow.Buttons.RightButton = false; Recount:SetupMainWindowButtons() end end)
 
 	theFrame.Right_Icon=theFrame:CreateTexture(nil,"OVERLAY")
 	theFrame.Right_Icon:SetWidth(16)
@@ -1002,13 +1107,13 @@ function me:SetupButtonOptions(parent)
 	local slider = CreateFrame("Slider", "Recount_ConfigWindow_RowHeight_Slider", theFrame,"OptionsSliderTemplate")
 	theFrame.RowHeightSlider=slider
 	slider:SetOrientation("HORIZONTAL")
-	slider:SetMinMaxValues(8, 24)
+	slider:SetMinMaxValues(8, 35)
 	slider:SetValueStep(1)
 	slider:SetWidth(180)
 	slider:SetHeight(16)
 	slider:SetPoint("TOP", theFrame, "TOP", 0, -96-16) -- Elsia: TODO this number will need adjusting to accommodate the paging config change
-	slider:SetScript("OnValueChanged",function() getglobal(this:GetName().."Text"):SetText(L["Row Height"]..": "..this:GetValue());Recount.db.char.MainWindow.RowHeight=this:GetValue();Recount:BarsChanged() end)
-	getglobal(slider:GetName().."High"):SetText("24");
+	slider:SetScript("OnValueChanged",function() getglobal(this:GetName().."Text"):SetText(L["Row Height"]..": "..this:GetValue());Recount.db.profile.MainWindow.RowHeight=this:GetValue();Recount:BarsChanged() end)
+	getglobal(slider:GetName().."High"):SetText("35");
 	getglobal(slider:GetName().."Low"):SetText("8");
 	getglobal(slider:GetName().."Text"):SetText(L["Row Height"]..": "..slider:GetValue())
 
@@ -1020,29 +1125,38 @@ function me:SetupButtonOptions(parent)
 	slider:SetWidth(180)
 	slider:SetHeight(16)
 	slider:SetPoint("TOP", theFrame, "TOP", 0, -130-16)
-	slider:SetScript("OnValueChanged",function() getglobal(this:GetName().."Text"):SetText(L["Row Spacing"]..": "..this:GetValue());Recount.db.char.MainWindow.RowSpacing=this:GetValue();Recount:BarsChanged() end)
+	slider:SetScript("OnValueChanged",function() getglobal(this:GetName().."Text"):SetText(L["Row Spacing"]..": "..this:GetValue());Recount.db.profile.MainWindow.RowSpacing=this:GetValue();Recount:BarsChanged() end)
 	getglobal(slider:GetName().."High"):SetText("4");
 	getglobal(slider:GetName().."Low"):SetText("0");
 	getglobal(slider:GetName().."Text"):SetText(L["Row Spacing"]..": "..slider:GetValue())
 
-	theFrame.AutoHide=CreateFrame("CheckButton",nil,theFrame)
-	me:ConfigureCheckbox(theFrame.AutoHide)
-	theFrame.AutoHide:SetPoint("TOPLEFT",theFrame,"TOPLEFT",12,-160-16)
-	theFrame.AutoHide:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.AutoHide = true; else this:SetChecked(false); Recount.db.char.MainWindow.AutoHide = false; end end)
+	theFrame.TotalBar=CreateFrame("CheckButton",nil,theFrame)
+	me:ConfigureCheckbox(theFrame.TotalBar)
+	theFrame.TotalBar:SetPoint("TOPLEFT",theFrame,"TOPLEFT",12,-158-16)
+	theFrame.TotalBar:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.HideTotalBar = false; Recount:RefreshMainWindow(); Recount:BarsChanged(); else this:SetChecked(false); Recount.db.profile.MainWindow.HideTotalBar = true; Recount:RefreshMainWindow(); Recount:BarsChanged(); end end)
 
-	theFrame.AutohideText=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	theFrame.AutohideText:SetText(L["Autohide On Combat"])
-	theFrame.AutohideText:SetPoint("LEFT",theFrame.AutoHide,"RIGHT",8,0)
+	theFrame.TotalBarText=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	theFrame.TotalBarText:SetText(L["Show Total Bar"])
+	theFrame.TotalBarText:SetPoint("LEFT",theFrame.TotalBar,"RIGHT",8,0)
 
 	theFrame.ShowSB=CreateFrame("CheckButton",nil,theFrame)
 	me:ConfigureCheckbox(theFrame.ShowSB)
-	theFrame.ShowSB:SetPoint("TOPLEFT",theFrame,"TOPLEFT",12,-177-16)
-	theFrame.ShowSB:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.char.MainWindow.ShowScrollbar = true; else this:SetChecked(false); Recount.db.char.MainWindow.ShowScrollbar = false; end Recount:RefreshMainWindow() end)
+	theFrame.ShowSB:SetPoint("TOPLEFT",theFrame,"TOPLEFT",12,-175-16)
+	theFrame.ShowSB:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.ShowScrollbar = true; Recount:ShowScrollbarElements("Recount_MainWindow_ScrollBar") else this:SetChecked(false); Recount.db.profile.MainWindow.ShowScrollbar = false; Recount:HideScrollbarElements("Recount_MainWindow_ScrollBar") end Recount:RefreshMainWindow() end)
 
 	theFrame.ShowSBText=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
 	theFrame.ShowSBText:SetText(L["Show Scrollbar"])
 	theFrame.ShowSBText:SetPoint("LEFT",theFrame.ShowSB,"RIGHT",8,0)
 	
+	theFrame.AutoHide=CreateFrame("CheckButton",nil,theFrame)
+	me:ConfigureCheckbox(theFrame.AutoHide)
+	theFrame.AutoHide:SetPoint("TOPLEFT",theFrame,"TOPLEFT",12,-192-16)
+	theFrame.AutoHide:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.MainWindow.AutoHide = true; else this:SetChecked(false); Recount.db.profile.MainWindow.AutoHide = false; end end)
+
+	theFrame.AutohideText=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	theFrame.AutohideText:SetText(L["Autohide On Combat"])
+	theFrame.AutohideText:SetPoint("LEFT",theFrame.AutoHide,"RIGHT",8,0)
+
 end
 
 
@@ -1133,6 +1247,7 @@ function me:CreateAppearanceOptions(parent)
 	Tab.Background:SetVertexColor(1.0,0.2,0.2)
 	Tab.Background:SetAllPoints(Tab)
 
+	me:CreateBarSelection(theFrame)
 	me:CreateTextureSelection(theFrame)
 	me:CreateFontSelection(theFrame)
 	theFrame:Hide()
@@ -1204,21 +1319,6 @@ function me:CreateConfigWindow()
 
 	local theFrame=me.ConfigWindow
 	
--- Elsia: This is where the save and revert buttons died
---	theFrame.SaveButton=CreateFrame("Button",nil,theFrame,"OptionsButtonTemplate")
---	theFrame.SaveButton:SetWidth(90)
---	theFrame.SaveButton:SetHeight(24)
---	theFrame.SaveButton:SetPoint("BOTTOMRIGHT",theFrame,"BOTTOM",-2,4)
---	theFrame.SaveButton:SetScript("OnClick",function() me:SaveConfig() end)
---	theFrame.SaveButton:SetText("Save")
-
---	theFrame.RevertButton=CreateFrame("Button",nil,theFrame,"OptionsButtonTemplate")
---	theFrame.RevertButton:SetWidth(90)
---	theFrame.RevertButton:SetHeight(24)
---	theFrame.RevertButton:SetPoint("BOTTOMLEFT",theFrame,"BOTTOM",2,4)
---	theFrame.RevertButton:SetScript("OnClick",function() me:LoadConfig() end)
---	theFrame.RevertButton:SetText("Revert")
-	
 	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,200,12,200,233,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1}) -- Elsia: Changed 32->12 for longer separators given no save/revert
 	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,400,12,400,233,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
 	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,2,233,598,233,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
@@ -1230,63 +1330,73 @@ function me:CreateConfigWindow()
 	me:CreateWindowOptions(theFrame)
 	me:CreateColorOptions(theFrame)
 	
-	--me:CreateColorSelection(theFrame)
-
 	--Need to add it to our window ordering system
 	Recount:AddWindow(theFrame)
+	Recount:LockWindows(Recount.db.profile.Locked)
+	Recount.ConfigWindow = theFrame
 end
 
 function me:LoadConfig()
 	for k, v in pairs(me.FilterOptions.Filters) do
-		v.ShowData:SetChecked(Recount.db.char.Filters.Show[k])
-		v.RecordData:SetChecked(Recount.db.char.Filters.Data[k])
-		v.RecordTime:SetChecked(Recount.db.char.Filters.TimeData[k])
-		v.TrackDeaths:SetChecked(Recount.db.char.Filters.TrackDeaths[k])		
+		v.ShowData:SetChecked(Recount.db.profile.Filters.Show[k])
+		v.RecordData:SetChecked(Recount.db.profile.Filters.Data[k])
+		v.RecordTime:SetChecked(Recount.db.profile.Filters.TimeData[k])
+		v.TrackDeaths:SetChecked(Recount.db.profile.Filters.TrackDeaths[k])		
 	end
 
-	me.FilterOptions.GlobalData:SetChecked(Recount.db.char.GlobalDataCollect)
+	me.MiscOptions.GlobalData:SetChecked(Recount.db.profile.GlobalDataCollect)
+	me.MiscOptions.HideCollect:SetChecked(Recount.db.profile.HideCollect)
+	me.MiscOptions.SegmentBosses:SetChecked(Recount.db.profile.SegmentBosses)
 	
-	for k, v in pairs(Recount.db.char.MainWindow.Buttons) do
+	for k, v in pairs(ZoneLabels) do
+		me.MiscOptions[k]:SetChecked(Recount.db.profile.ZoneFilters[k])
+	end
+	
+	for k, v in pairs(Recount.db.profile.MainWindow.Buttons) do
 		me.ButtonOptions[k]:SetChecked(v)
 	end
 
-	me.ButtonOptions.RowHeightSlider:SetValue(Recount.db.char.MainWindow.RowHeight)
-	me.ButtonOptions.RowSpacingSlider:SetValue(Recount.db.char.MainWindow.RowSpacing)
-	me.ButtonOptions.AutoHide:SetChecked(Recount.db.char.MainWindow.AutoHide)
-	me.ButtonOptions.ShowSB:SetChecked(Recount.db.char.MainWindow.ShowScrollbar)
+	me.ButtonOptions.RowHeightSlider:SetValue(Recount.db.profile.MainWindow.RowHeight)
+	me.ButtonOptions.RowSpacingSlider:SetValue(Recount.db.profile.MainWindow.RowSpacing)
+	me.ButtonOptions.AutoHide:SetChecked(Recount.db.profile.MainWindow.AutoHide)
+	me.ButtonOptions.TotalBar:SetChecked(not Recount.db.profile.MainWindow.HideTotalBar)
+	me.ButtonOptions.ShowSB:SetChecked(Recount.db.profile.MainWindow.ShowScrollbar)
 	
-	me.WindowOptions.ScalingSlider:SetValue(Recount.db.char.Scaling)
-	me.WindowOptions.ShowCurAndLast:SetChecked(Recount.db.profile.Window.ShowCurAndLast)
-	me.WindowOptions.LockWin:SetChecked(Recount.db.char.Locked)
+	me.WindowOptions.ScalingSlider:SetValue(Recount.db.profile.Scaling)
+--	me.WindowOptions.ShowCurAndLast:SetChecked(Recount.db.profile.Window.ShowCurAndLast)
+	me.WindowOptions.LockWin:SetChecked(Recount.db.profile.Locked)
 
-	me.MiscOptions.Sync:SetChecked(Recount.db.char.EnableSync)
+--	me.MiscOptions.Sync:SetChecked(Recount.db.profile.EnableSync)
 
-	me.DeletionOptions.Autodelete:SetChecked(Recount.db.char.AutoDelete)
---	me.DeletionOptions.AutodeleteC:SetChecked(Recount.db.char.AutoDeleteCombatants)
-	me.DeletionOptions.AutodeleteI:SetChecked(Recount.db.char.AutoDeleteNewInstance)
-	me.DeletionOptions.AutodeleteIConf:SetChecked(Recount.db.char.ConfirmDeleteInstance)
-	me.DeletionOptions.AutodeleteINew:SetChecked(Recount.db.char.DeleteNewInstanceOnly)
-	me.DeletionOptions.AutodeleteG:SetChecked(Recount.db.char.DeleteJoinGroup)
-	me.DeletionOptions.AutodeleteGConf:SetChecked(Recount.db.char.ConfirmDeleteGroup)
-	me.DeletionOptions.AutodeleteR:SetChecked(Recount.db.char.DeleteJoinRaid)
-	me.DeletionOptions.AutodeleteRConf:SetChecked(Recount.db.char.ConfirmDeleteRaid)
+	me.DeletionOptions.Autodelete:SetChecked(Recount.db.profile.AutoDelete)
+	me.DeletionOptions.AutodeleteI:SetChecked(Recount.db.profile.AutoDeleteNewInstance)
+	me.DeletionOptions.AutodeleteIConf:SetChecked(Recount.db.profile.ConfirmDeleteInstance)
+	me.DeletionOptions.AutodeleteINew:SetChecked(Recount.db.profile.DeleteNewInstanceOnly)
+	me.DeletionOptions.AutodeleteG:SetChecked(Recount.db.profile.DeleteJoinGroup)
+	me.DeletionOptions.AutodeleteGConf:SetChecked(Recount.db.profile.ConfirmDeleteGroup)
+	me.DeletionOptions.AutodeleteR:SetChecked(Recount.db.profile.DeleteJoinRaid)
+	me.DeletionOptions.AutodeleteRConf:SetChecked(Recount.db.profile.ConfirmDeleteRaid)
 
 	
-	me.MiscOptions.MergePets:SetChecked(Recount.db.char.MergePets)
---	me.MiscOptions.TimeDataSlider:SetValue(Recount.db.char.AutoDeleteTime)
-	me.MiscOptions.CombatLogRange:SetChecked(Recount.db.char.UseCombatLogRange)
-	me.MiscOptions.CombatLogRangeSlider:SetValue(Recount.db.char.CombatLogRange)
-	me.MiscOptions.FixLog:SetChecked(Recount.db.char.UseFixLog)
+	me.FilterOptions.MergePets:SetChecked(Recount.db.profile.MergePets)
 
-	me:ScaleConfigWindow(Recount.db.char.Scaling)
+	me:ScaleConfigWindow(Recount.db.profile.Scaling)
+	
+	me.BarOptions.RankNum:SetChecked(Recount.db.profile.MainWindow.BarText.RankNum)
+	me.BarOptions.PerSec:SetChecked(Recount.db.profile.MainWindow.BarText.PerSec)
+	me.BarOptions.Percent:SetChecked(Recount.db.profile.MainWindow.BarText.Percent)
+
+	me.BarOptions.Standard:SetChecked(Recount.db.profile.MainWindow.BarText.NumFormat == 1)
+	me.BarOptions.Commas:SetChecked(Recount.db.profile.MainWindow.BarText.NumFormat == 2)
+	me.BarOptions.Short:SetChecked(Recount.db.profile.MainWindow.BarText.NumFormat == 3)
 end
 
 function me:SaveFilterConfig()
 	for k, v in pairs(me.FilterOptions.Filters) do
-		Recount.db.char.Filters.Show[k]=v.ShowData:GetChecked()==1
-		Recount.db.char.Filters.Data[k]=v.RecordData:GetChecked()==1
-		Recount.db.char.Filters.TimeData[k]=v.RecordTime:GetChecked()==1
-		Recount.db.char.Filters.TrackDeaths[k]=v.TrackDeaths:GetChecked()==1
+		Recount.db.profile.Filters.Show[k]=v.ShowData:GetChecked()==1
+		Recount.db.profile.Filters.Data[k]=v.RecordData:GetChecked()==1
+		Recount.db.profile.Filters.TimeData[k]=v.RecordTime:GetChecked()==1
+		Recount.db.profile.Filters.TrackDeaths[k]=v.TrackDeaths:GetChecked()==1
 	end
 	Recount:FullRefreshMainWindow()
 end
@@ -1294,59 +1404,46 @@ end
 --[ Elsia: This is now obsolete, RIP save
 function me:SaveConfig()
 	for k, v in pairs(me.FilterOptions.Filters) do
-		Recount.db.char.Filters.Show[k]=v.ShowData:GetChecked()==1
-		Recount.db.char.Filters.Data[k]=v.RecordData:GetChecked()==1
-		Recount.db.char.Filters.TimeData[k]=v.RecordTime:GetChecked()==1
-		Recount.db.char.Filters.TrackDeaths[k]=v.TrackDeaths:GetChecked()==1
+		Recount.db.profile.Filters.Show[k]=v.ShowData:GetChecked()==1
+		Recount.db.profile.Filters.Data[k]=v.RecordData:GetChecked()==1
+		Recount.db.profile.Filters.TimeData[k]=v.RecordTime:GetChecked()==1
+		Recount.db.profile.Filters.TrackDeaths[k]=v.TrackDeaths:GetChecked()==1
 	end
 
-	for k, v in pairs(Recount.db.char.MainWindow.Buttons) do
-		Recount.db.char.MainWindow.Buttons[k]=(me.ButtonOptions[k]:GetChecked()==1)
+	for k, v in pairs(Recount.db.profile.MainWindow.Buttons) do
+		Recount.db.profile.MainWindow.Buttons[k]=(me.ButtonOptions[k]:GetChecked()==1)
 	end
-	Recount.db.char.MainWindow.AutoHide=me.ButtonOptions.AutoHide:GetChecked()==1
+	Recount.db.profile.MainWindow.AutoHide=me.ButtonOptions.AutoHide:GetChecked()==1
+	Recount.db.profile.MainWindow.HideTotalBar=me.ButtonOptions.TotalBar:GetChecked()~=1
 
-	Recount.db.char.EnableSync=me.MiscOptions.Sync:GetChecked()==1
+--	Recount.db.profile.EnableSync=me.MiscOptions.Sync:GetChecked()==1
 
-	Recount.db.char.AutoDelete=me.DeletionOptions.Autodelete:GetChecked()==1
---	Recount.db.char.AutoDeleteCombatants=me.DeletionOptions.AutodeleteC:GetChecked()==1
---	Recount.db.char.AutoDeleteTime=me.DeletionOptions.TimeDataSlider:GetValue()
+	Recount.db.profile.AutoDelete=me.DeletionOptions.Autodelete:GetChecked()==1
 
-	Recount.db.char.AutoDeleteNewInstance=me.DeletionOptions.AutodeleteI:GetChecked()==1
-	Recount.db.char.ConfirmDeleteInstance=me.DeletionOptions.AutodeleteIConf:GetChecked()==1
-	Recount.db.char.DeleteNewInstanceOnly=me.DeletionOptions.AutodeleteINew:GetChecked()==1
+	Recount.db.profile.AutoDeleteNewInstance=me.DeletionOptions.AutodeleteI:GetChecked()==1
+	Recount.db.profile.ConfirmDeleteInstance=me.DeletionOptions.AutodeleteIConf:GetChecked()==1
+	Recount.db.profile.DeleteNewInstanceOnly=me.DeletionOptions.AutodeleteINew:GetChecked()==1
 
-	Recount.db.char.DeleteJoinGroup=me.DeletionOptions.AutodeleteG:GetChecked()==1
-	Recount.db.char.ConfirmDeleteGroup=me.DeletionOptions.AutodeleteGConf:GetChecked()==1
-	Recount.db.char.DeleteJoinRaid=me.DeletionOptions.AutodeleteR:GetChecked()==1
-	Recount.db.char.ConfirmDeleteRaid=me.DeletionOptions.AutodeleteRConf:GetChecked()==1
+	Recount.db.profile.DeleteJoinGroup=me.DeletionOptions.AutodeleteG:GetChecked()==1
+	Recount.db.profile.ConfirmDeleteGroup=me.DeletionOptions.AutodeleteGConf:GetChecked()==1
+	Recount.db.profile.DeleteJoinRaid=me.DeletionOptions.AutodeleteR:GetChecked()==1
+	Recount.db.profile.ConfirmDeleteRaid=me.DeletionOptions.AutodeleteRConf:GetChecked()==1
 
-	if (not Recount.db.char.MergePets) and (me.MiscOptions.MergePets:GetChecked()==1) then -- Elsia: Toggle Pet display if merge changed
-		Recount.db.char.Filters.Show["Pet"]=false
-		me.FilterOptions.Filters.Pet.ShowData:SetChecked(Recount.db.char.Filters.Show["Pet"])
-	elseif Recount.db.char.MergePets and (me.MiscOptions.MergePets:GetChecked()~=1) then
-		Recount.db.char.Filters.Show["Pet"]=true
-		me.FilterOptions.Filters.Pet.ShowData:SetChecked(Recount.db.char.Filters.Show["Pet"])
+	if (not Recount.db.profile.MergePets) and (me.FilterOptions.MergePets:GetChecked()==1) then -- Elsia: Toggle Pet display if merge changed
+		Recount.db.profile.Filters.Show["Pet"]=false
+		me.FilterOptions.Filters.Pet.ShowData:SetChecked(Recount.db.profile.Filters.Show["Pet"])
+	elseif Recount.db.profile.MergePets and (me.FilterOptions.MergePets:GetChecked()~=1) then
+		Recount.db.profile.Filters.Show["Pet"]=true
+		me.FilterOptions.Filters.Pet.ShowData:SetChecked(Recount.db.profile.Filters.Show["Pet"])
 	end
 
-	me:ScaleConfigWindow(Recount.db.char.Scaling) -- Elsia: Refresh display as we changed options
+	me:ScaleConfigWindow(Recount.db.profile.Scaling) -- Elsia: Refresh display as we changed options
 
 	-- Elsia: Leave it alone otherwise, people can show the pets that way if they want to, but merge will force display on and off when changed.
 	
-	Recount.db.char.MergePets=me.MiscOptions.MergePets:GetChecked()==1
+	Recount.db.profile.MergePets=me.FilterOptions.MergePets:GetChecked()==1
 	
-	Recount.db.char.UseFixLog=me.MiscOptions.FixLog:GetChecked()==1
-
-	Recount.db.profile.Window.ShowCurAndLast=me.WindowOptions.ShowCurAndLast:GetChecked()==1
-
-	Recount.db.char.UseCombatLogRange=me.MiscOptions.CombatLogRange:GetChecked()==1
-	Recount.db.char.CombatLogRange=me.MiscOptions.CombatLogRangeSlider:GetValue()
-
-	if Recount.db.char.UseCombatLogRange then
-		Recount:SetLogRange(Recount.db.char.CombatLogRange)
-	else
-		Recount:SetLogRange(40)  -- Elsia: Was SetLogRangeDefault() but the function doesn't exist. No bother, 40 is default.
-	end
-
+--	Recount.db.profile.Window.ShowCurAndLast=me.WindowOptions.ShowCurAndLast:GetChecked()==1
 
 	Recount.MainWindow.DispTableSorted={}
 	Recount.MainWindow.DispTableLookup={}
@@ -1366,6 +1463,9 @@ end
 
 
 function Recount:ConfigWindowStatus()
+	local below
+	local above
+
 	if me.ConfigWindow.Below then
 		below = me.ConfigWindow.Below:GetName()
 	else

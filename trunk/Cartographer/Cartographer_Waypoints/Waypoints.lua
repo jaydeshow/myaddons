@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 63590 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 74405 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-03-04 12:21:17 -0500 (Tue, 04 Mar 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-05-19 07:16:32 -0400 (Mon, 19 May 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -48,7 +48,7 @@ L:AddTranslations("enUS", function() return {
 	["Set the size of the waypoint arrow"] = true,
 	["Opacity"] = true,
 	["Set how opaque or transparent the waypoint arrow is"] = true,
-	
+
 	["%.0f yd"] = true,
 	["%.0f m"] = true,
 } end)
@@ -164,38 +164,44 @@ L:AddTranslations("frFR", function() return {
 } end)
 
 L:AddTranslations("esES", function() return {
-	["Waypoints"] = "Puntos de ruta",
-	["Module which shows an arrow to direct you to a specified note or location."] = "M\195\179dulo que muestra una flecha que te dirije a una nota o lugar especificado",
-	["Guildmember %s not found."] = "No se ha encontrado al miembro de hermandad %s.",
-	["No party member %s found."] = "No se ha encontrado al miembro del grupo %s",
+	["Waypoints"] = "Puntos de Ruta",
+	["Waypoint"] = "Punto de Ruta",
+	["Module which shows an arrow to direct you to a specified note or location."] = "Módulo que muestra una flecha que te dirije a una nota o lugar especificado.",
+	["Guildmember %s not found."] = "No se ha encontrado al miembro de la hermandad %s.",
+	["No party member %s found."] = "No se ha encontrado al miembro del grupo %s.",
 	["No matching note in zone: %s"] = "No concuerda ninguna nota en la zona: %s",
-	["Cannot find note in closest matching zone: %s"] = "No se puede encontrar la nota en el nombre de zona m\195\161s parecido: %s",
-	["Invalid note entry."] = "Nota introducida no v\195\161lida.",
-	["Waypoints cleared."] = "Puntos de ruta borrados.",
+	["Cannot find note in closest matching zone: %s"] = "No se puede encontrar la nota en el nombre de zona más parecido: %s",
+	["Invalid note entry."] = "Nota introducida no válida.",
+	["Waypoints cleared."] = "Puntos de Ruta borrados.",
 	["For usage, see '/waypoint help'"] = "Para usar mira /waypoint help",
 	["Commands are:"] = "Los comandos son:",
-	["General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>"] = "General: /waypoint [a\195\177adir] <notesearch> O <0-100>,<0-100> [t\195\173tulo] [z-zona] O g-<busquedaDeNombreDeHermandad> OR p-<busquedaDeNombreDeGrupo>",
+	["General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>"] = "General: /waypoint [añadir] <notesearch> O <0-100>,<0-100> [título] [z-zona] O g-<busquedaDeNombreDeHermandad> OR p-<busquedaDeNombreDeGrupo>",
 	["Clear  : /noway"] = "Borrar  : /noway",
 	["View   : /wayq"] = "Ver   : /wayq",
 	["Move to end of queue"] = "Mover al final de la cola",
-	["Lock waypoint arrow"] = "Bloquear flecha de punto de ruta",
-	["Lock the waypoint arrow in place"] = "Inmoviliza la flecha del punto de ruta",
+	["Lock waypoint arrow"] = "Bloquear flecha de Punto de Ruta",
+	["Lock the waypoint arrow in place"] = "Inmoviliza la flecha del Punto de Ruta",
 
 
 	["Console-waypoint-commands"] = {"/way", "/waypoint" },
 	["Console-temp-waypoint-commands"] = {"/tway", "/tloc" },
-	["Clear waypoint"] = "Borrar punto de ruta",
+	["Clear waypoint"] = "Borrar Punto de Ruta",
 	["No matching zone"] = "No se ha encontrado la zona",
-	["Waypoint Queue:"] = "Cola de puntos de ruta:",
-	["Waypoint Queue Empty."] = "Cola de puntos de ruta vac\195\173a.",
+	["Waypoint Queue:"] = "Cola de Puntos de Ruta:",
+	["Waypoint Queue Empty."] = "Cola de Puntos de Ruta vacía.",
 	["Clearing up queue"] = "Borrando la cola",
 
-	["Show CorpsePoint"] = "Mostrar el lugar del cad\195\161ver",
-	["Show waypoint to corpse on death"] = "Muestra el punto de ruta del cad\195\161ver cuando mueres",
+	["Show CorpsePoint"] = "Mostrar el lugar del cadáver",
+	["Show waypoint to corpse on death"] = "Muestra el punto de ruta del cadáver cuando mueres",
 	["Show Waypoint icons"] = "Mostrar iconos de puntos de ruta",
-	["Show the next waypoint on the minimap and all waypoints on the main"] = "Muestra el siguiente punto de ruta en el minimapa y todos en el mapa principal",
+	["Show the next waypoint on the minimap and all waypoints on the main"] = "Muestra el siguiente Punto de Ruta en el minimapa y todos en el mapa principal",
 	["Show boring death messages"] = "Mostrar mensajes de muerte aburridos",
-	["Switch to not so entertaining messages on death."] = "Muestra los mensajes no tan entretenidos al morir",
+	["Switch to not so entertaining messages on death."] = "Muestra mensajes no tan entretenidos al morir.",
+
+	["Size"] = "Tamaño",
+	["Set the size of the waypoint arrow"] = "Establece el tamaño de la flecha del Punto de Ruta",
+	["Opacity"] = "Opacidad",
+	["Set how opaque or transparent the waypoint arrow is"] = "Establece el nivel de opacidad o transparencia de la flecha del Punto de Ruta",
 } end)
 
 L:AddTranslations("zhTW", function() return {
@@ -237,40 +243,47 @@ L:AddTranslations("zhTW", function() return {
 } end)
 
 L:AddTranslations("zhCN", function() return {
-	["Waypoints"] = "路径点",
-	["Module which shows an arrow to direct you to a specified note or location."] = "显示箭头指引你到指定的目的地.",
-	["Guildmember %s not found."] = "找不到公会成员%s。",
-	["No party member %s found."] = "找不到队伍成员%s。",
-	["No matching note in zone: %s"] = "区域 %s 中找不到符合的注视",
-	["Cannot find note in closest matching zone: %s"] = "在最接近的区域中找不到注释: %s",
-	["Invalid note entry."] = "无效的注释.",
-	["Waypoints cleared."] = "路径点已清除.",
-	["For usage, see '/waypoint help'"] = "查询使用方法输入'/waypoint help'",
-	["Commands are:"] = "命令是:",
-	["General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>"] = "一般: /waypoint [add] <notesearch> 或 <0-100>,<0-100> [title] [z-zone] 或 g-<guildnamesearch> 或 p-<partynamesearch>",
-	["Clear  : /noway"] = "清除: /noway",
-	["View   : /wayq"] = "查看: /wayq",
+	["Waypoints"] = "路径",
+	["Waypoint"] = "路径",
+	["Module which shows an arrow to direct you to a specified note or location."] = "显示箭头指引你到指定的目的地。",
+	["Guildmember %s not found."] = "找不到公会成员<%s>。",
+	["No party member %s found."] = "找不到队伍成员<%s>。",
+	["No matching note in zone: %s"] = "区域<%s>中找不到符合的注释。",
+	["Cannot find note in closest matching zone: %s"] = "在最接近的区域中找不到注释：%s",
+	["Invalid note entry."] = "无效的注释。",
+	["Waypoints cleared."] = "路径已清除。",
+	["For usage, see '/waypoint help'"] = "查询使用方法输入：/waypoint help",
+	["Commands are:"] = "命令：",
+	["General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>"] = "一般：/waypoint [add] <notesearch> 或 <0-100>,<0-100> [title] [z-zone] 或 g-<guildnamesearch> 或 p-<partynamesearch>",
+	["Clear  : /noway"] = "清除：/noway",
+	["View   : /wayq"] = "查看：/wayq",
 	["Move to end of queue"] = "移动到队列尾部",
-	["Lock waypoint arrow"] = "锁定路径点箭头",
-	["Lock the waypoint arrow in place"] = "锁定路径点箭头位置",
+	["Lock waypoint arrow"] = "锁定路径箭头",
+	["Lock the waypoint arrow in place"] = "锁定路径箭头位置",
+--	["Append new waypoints."] = "添加新的路径",
+--	["Place new waypoints at the end of the queue."] = "在最后队列添加新的路径。",
 
 	["Console-waypoint-commands"] = {"/way", "/waypoint" },
 	["Console-temp-waypoint-commands"] = {"/tway", "/tloc" },
-	["Clear waypoint"] = "清除路径点",
+	["Clear waypoint"] = "清除路径",
 	["No matching zone"] = "没有符合的区域",
-	["Waypoint Queue:"] = "路径点队列:",
-	["Waypoint Queue Empty."] = "路径点队列已清空",
+	["Waypoint Queue:"] = "路径队列：",
+	["Waypoint Queue Empty."] = "路径队列已清空。",
 	["Clearing up queue"] = "正在清除队列",
 
 	["Show CorpsePoint"] = "显示尸体地点",
-	["Show waypoint to corpse on death"] = "死亡时显示尸体的路径点",
-	["Show Waypoint icons"] = "显示路径点图标",
-	["Show the next waypoint on the minimap and all waypoints on the main"] = "在小地图显示下一个路径点, 在世界地图显示所有的路径点",
+	["Show waypoint to corpse on death"] = "死亡时显示尸体的路径",
+	["Show Waypoint icons"] = "显示路径图标",
+	["Show the next waypoint on the minimap and all waypoints on the main"] = "在小地图显示下一个路径, 在世界地图显示所有的路径。",
 	["Show boring death messages"] = "显示正常的死亡信息",
-	["Switch to not so entertaining messages on death."] = "切换显示正常的死亡信息",
+	["Switch to not so entertaining messages on death."] = "切换显示正常的死亡信息。",
+	["Size"] = "大小",
+	["Set the size of the waypoint arrow"] = "设置路径箭头的大小",
+	["Opacity"] = "不透明",
+	["Set how opaque or transparent the waypoint arrow is"] = "设置路径箭头透明或不透明",
 
-	["%.0f yd"] = "%.0f码",
-	["%.0f m"] = "%.0f米",
+	["%.0f yd"] = "%.0f 码",
+	["%.0f m"] = "%.0f 米",
 } end)
 
 Cartographer_Waypoints = Cartographer:NewModule("Waypoints", "LibRockHook-1.0", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockComm-1.0", "LibRockConsole-1.0")
@@ -323,14 +336,14 @@ end
 Cartographer_Waypoints.getXY = getXY
 
 local delimiters = {[" "] = true, [","] = true, ["-"]=true}
-	
+
 
 -- I apologise for this function. It works, but it isn't pretty.
 -- Just take it for granted that it explodes on the delimiter, but
 -- takes into account quotation marks, as long as the quotation marks
 -- are around more than one word.
 local function explode(...)
-	
+
 	if select("#",...) == 2 and delimiters[select(1,...)] then
 		return explode(string.split(select(1, ...), select(2, ...)))
 	end
@@ -348,7 +361,7 @@ local function explode(...)
 			end
 			quote = nil
 		else
-			if quote then 
+			if quote then
 				quote = quote.." "..word
 			else
 				quote = word
@@ -360,7 +373,7 @@ end
 
 
 local function PushQueue(waypoint, append)
-	if append then 
+	if append then
 		table.insert(Queue, waypoint)
 	else
 --[[		if self.db.profile.appendPoint then
@@ -376,7 +389,7 @@ local function PopQueue()
 
 	if corn.OnMap and corn.POIID and Waypoint.MapDB[corn.Zone] and Waypoint.MapDB[corn.Zone][corn.POIID] then
 		Waypoint.MapDB[corn.Zone][corn.POIID].focus = nil
-	
+
 		if #Queue > 0 then
 			local waypoint = Queue[1]
 			if waypoint.POIID and Waypoint.MapDB[waypoint.Zone] and Waypoint.MapDB[waypoint.Zone][waypoint.POIID] then
@@ -395,7 +408,7 @@ function Cartographer_Waypoints:OnInitialize()
 		scale = 1,
 		alpha = 1,
 	})
-	
+
 	if Cartographer_Notes then
 		Cartographer_Notes:RegisterNotesDatabase("Waypoints", Waypoint.MapDB, Waypoint)
 	end
@@ -404,7 +417,7 @@ function Cartographer_Waypoints:OnInitialize()
 	self.title = L["Waypoints"]
 	Cartographer.options.args.Waypoints = {
 		name = L["Waypoints"],
-		desc = L["Module which shows an arrow to direct you to a specified note or location."], 
+		desc = L["Module which shows an arrow to direct you to a specified note or location."],
 		type = 'group',
 		args = {
 			toggle = {
@@ -599,15 +612,15 @@ initMeOnce = function ()
 
 		-- This function will take the explode by delimiter and then further explode
 		-- each entry by '-' and then insert them into a table
-		-- For an argument string like 'Cabbage p-Womble z-Zangarmarsh Frogs" you'll end 
+		-- For an argument string like 'Cabbage p-Womble z-Zangarmarsh Frogs" you'll end
 		-- up with a table looking like:
-		-- { 
+		-- {
 		--   arg1 = "Cabbage",
 		--   p = "Womble",
 		--   z = "Zangarmarsh",
 		--   arg2 = "Frogs"
 		-- }
-		-- 
+		--
 		local function parseOptions(text, delimiter)
 			if not delimiter then delimiter = " " end
 			local args, options, count = explode(delimiter, text), {}, 1
@@ -636,7 +649,7 @@ initMeOnce = function ()
 				options.z = L["No matching zone"]
 			end
 		end
-		-- Okay, horribly convoluted. 
+		-- Okay, horribly convoluted.
 		-- Basically we want to handle the following possiblities for note based waypoints
 		--		/way 23,34
 		--		/way add 23,34
@@ -645,7 +658,7 @@ initMeOnce = function ()
 		--		/way CurrentNoteSearchName
 		--		/way add CurrentNoteSearchName
 		if options.arg1 then -- check for x,y
-			
+
 			if tonumber(options.arg1) and tonumber(options.arg2) then -- /way 23 34
 				options.arg1 = options.arg1..","..options.arg2
 				options.arg2 = options.arg3 or nil
@@ -686,7 +699,7 @@ initMeOnce = function ()
 							title = L["Waypoint"]
 						end
 					end
-				else 
+				else
 					x, y = select(2, Cartographer_Notes:FindNearestNote(options.arg1, options.z))
 					if not x then
 						if imprecise then
@@ -731,7 +744,7 @@ initMeOnce = function ()
 				end
 			end
 		end
-		
+
 		if waypoint then
 			if options.arg1 and options.arg1 == "add" then
 				PushQueue(waypoint, 1)
@@ -762,7 +775,7 @@ initMeOnce = function ()
 			self:Print("    "..v:ToString())
 		end
 	end
-	
+
 	local t = { unpack(L["Console-waypoint-commands"]) }
 	for _,v in ipairs(L["Console-temp-waypoint-commands"]) do
 		t[#t+1] = v
@@ -771,7 +784,7 @@ initMeOnce = function ()
 		waypointCommand(text)
 	end, unpack(t))
 	t = nil
-	
+
 	self:AddSlashCommand(function() getQueue() end, "/wayq")
 
 	self:AddSlashCommand(function()
@@ -781,7 +794,7 @@ initMeOnce = function ()
 		end
 		Queue = {}
 	end, "/noway")
-	
+
 	if not playerModel then
 		local t = { Minimap:GetChildren() }
 		for i = #t, 1, -1 do
@@ -820,7 +833,7 @@ function Cartographer_Waypoints:OnDisable()
 end
 
 function Cartographer_Waypoints:PLAYER_ALIVE() -- We're locked, loaded, dead and not in a battleground
-	if CorpsePoint and self.db.profile.corpsePoint and UnitIsDeadOrGhost("player") 
+	if CorpsePoint and self.db.profile.corpsePoint and UnitIsDeadOrGhost("player")
             and select(2, IsInInstance()) ~= "pvp" and not IsActiveBattlefieldArena() then
 		self:PLAYER_UNGHOST()
 		local waypoint = CorpsePoint:new()
@@ -925,7 +938,7 @@ function Cartographer_Waypoints:AddWaypoint(waypoint)
 		return
 	end
 	PushQueue(waypoint)
-	
+
 	local showOnMap = waypoint.ShowOnMap
 	if type(showOnMap) == "function" then
 		showOnMap = showOnMap(waypoint)
@@ -978,7 +991,7 @@ function Cartographer_Waypoints:SetWaypointHitDistance(v)
 		waypointHitDistance = v
 	end
 end
-	
+
 local _54_div_math_pi = 54/math.pi
 local math_rad_90 = math.rad(90)
 local math_atan2 = math.atan2
@@ -990,6 +1003,7 @@ local rotateMinimap = GetCVar("rotateMinimap") == "1"
 function Cartographer_Waypoints:UpdateWaypoint()
 	local realZoneText = GetRealZoneText()
 	local px, py = Cartographer:GetCurrentPlayerPosition()
+	if px==nil then return end		-- Sinus: GetCurrentPlayerPosition() sometimes erroneously returns nil several times upon login, killing valid waypoints set up immediately at login time. It's better to ignore waypoints if player position seems bogus.
 	local waypoint = #Queue and Queue[1] or nil
 
 	if BZR[realZoneText] then
@@ -1012,20 +1026,20 @@ function Cartographer_Waypoints:UpdateWaypoint()
 		waypoint = Queue[1]
 		return
 	end
-	
+
 	if not waypointFrame then
 		return
 	end
-	
+
 	if not waypointFrame:IsShown() then
 		waypointFrame:Show()
 	end
-	
+
 	local dist = waypoint:GetDistance()
 	if not dist then
 		dist = 0
 	end
-	if dist <= waypointHitDistance and waypoint:IsReady() then 
+	if dist <= waypointHitDistance and waypoint:IsReady() then
 		--self:Print("Waypoint hit")
 		PopQueue() -- Don't call :Cancel() here because we are passing the waypoint in the event triggers
 		self:DispatchEvent("WaypointHit",waypoint)
@@ -1040,7 +1054,7 @@ function Cartographer_Waypoints:UpdateWaypoint()
 		waypoint:Cancel()
 		return
 	end
-	
+
 	if dist <=10 then
 		if not waypointFrame.up then
             waypointFrame.tex:SetTexture(nil)
@@ -1065,9 +1079,9 @@ function Cartographer_Waypoints:UpdateWaypoint()
 		end
 	end
 	local x,y = Tourist:TransposeZoneCoordinate(waypoint.x, waypoint.y, waypoint.Zone, realZoneText)
-	
+
 	local rad
-	if waypoint:IsReady() and x and y then 
+	if waypoint:IsReady() and x and y then
 		if not waypointFrame.up then
 			local diffX, diffY = x - (px or 0), y - (py or 0)
 			rad = -math_atan2(diffY*2/3, diffX)
@@ -1087,7 +1101,7 @@ function Cartographer_Waypoints:UpdateWaypoint()
 	else
 		waypointFrame.tex:SetTexCoord(0, 0, 0, 0)
 		waypointFrame.tex:SetVertexColor(Crayon.COLOR_HEX_SILVER)
-	end	
+	end
 	waypointFrame.dist:SetText(yardString:format(dist))
 	waypointFrame.title:SetText(waypoint:ToString())
 	if i == 0 then
@@ -1116,7 +1130,7 @@ function Cartographer_Waypoints:OnProfileEnable()
 	end
 end
 
-		
+
 Cartographer_Waypoints.OnCommReceive = {
 	POSITION = function(self, prefix, distribution, sender, zone, _x, _y)
 		if(GuildPoint.Watcher[sender] and #Queue > 0 and Queue[1].WaypointID == sender) then

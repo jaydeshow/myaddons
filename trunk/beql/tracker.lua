@@ -311,10 +311,13 @@ function beql:Hooks_QuestWatch_Update()
 	
 	for i=1, GetNumQuestWatches() do
 		questIndex = GetQuestIndexForWatch(i)
+		qID = nil;
 		if questIndex then 
-			-- MarsQuestOrganizer fix
 			questLogTitleText, _, _, _, _, _ = GetQuestLogTitle(questIndex)
-			qTitle,qLvl,qTag,qRec,qStat,qObj,qZone,qID = beqlQ:GetQuestByName(questLogTitleText)
+			-- Fix submitted by Ben Schreiber for MarsQuestOrganizer
+			if questLogTitleText then	
+				qTitle,qLvl,qTag,qRec,qStat,qObj,qZone,qID = beqlQ:GetQuestByName(questLogTitleText)
+			end
 		end
 		if qID then
 			isRemoved = false

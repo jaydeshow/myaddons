@@ -1,5 +1,6 @@
-
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -120,18 +121,18 @@ L:RegisterTranslations("frFR", function() return {
 	["Options for ready checks and votes."] = "Options concernant les appels et les votes.",
 	["Ready"] = "Prêt",
 	["Not Ready"] = "Pas prêt",
-	["Are you Ready?"] = "Êtes-vous prêt ?",
+	["Are you Ready?"] = "Êtes-vous prêt ?",
 	["Yes"] = "Oui",
 	["No"] = "Non",
 	["Ready Check"] = "Appel",
 	["Perform a ready check."] = "Fait l'appel.",
 	["Close"] = "Fermer",
 	["<CTRaid> %s has performed a ready check."] = "<CTRaid> %s fait l'appel.",
-	["AFK: "] = "ABS : ",
-	["Not Ready: "] = "Pas prêt : ",
-	["Yes: %d No: %d AFK: %d"] = "Oui : %d Non : %d ABS : %d",
+	["AFK: "] = "ABS : ",
+	["Not Ready: "] = "Pas prêt : ",
+	["Yes: %d No: %d AFK: %d"] = "Oui : %d Non : %d ABS : %d",
 	["Vote Results for: "] = "Résultat du vote pour : ",
-	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid> %s a lancé un vote : %s",
+	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid> %s a lancé un vote : %s",
 	["Vote"] = "Vote",
 	["Perform a vote."] = "Soumet un vote au raid.",
 	["<vote>"] = "<vote>",
@@ -143,25 +144,29 @@ L:RegisterTranslations("frFR", function() return {
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	["Options for ready checks and votes."] = "Optionen f\195\188r Bereichtschaftschecks und Abstimmungen.",
+	["Options for ready checks and votes."] = "Optionen für Bereitschaftschecks und Abstimmungen.",
 	["Ready"] = "Bereitschaft",
 	["Not Ready"] = "Nicht Bereit",
-	["Are you Ready?"] = "Bist du Bereit?",
+	["Are you Ready?"] = "Bist Du Bereit?",
 	["Yes"] = "Ja",
 	["No"] = "Nein",
 	["Ready Check"] = "Bereitschaftscheck",
 	["Perform a ready check."] = "Startet einen Bereitschaftscheck.",
-	["Close"] = "Schlie\195\159en",
-	["<CTRaid> %s has performed a ready check."] = "<oRA2> %s hat einen Bereitschaftcheck gestartet.",
+	["Close"] = "Schließen",
+	["<CTRaid> %s has performed a ready check."] = "<CTRaid> %s hat einen Bereitschaftscheck gestartet.",
 	["AFK: "] = "AFK: ",
 	["Not Ready: "] = "Nicht Bereit: ",
 	["Yes: %d No: %d AFK: %d"] = "Ja: %d Nein: %d AFK: %d",
-	["Vote Results for: "] = "Abstimmungsergebnis f\195\188r: ",
-	["<CTRaid> %s has performed a vote: %s"] = "<oRA2> %s hat eine Abstimmung gestartet.",
+	["Vote Results for: "] = "Abstimmungsergebnis für: ",
+	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid> %s hat eine Abstimmung gestartet: %s",
 	["Vote"] = "Abstimmung",
-	["Perform a vote."] = "Starte eine Abstimmung.",
+	["Perform a vote."] = "Startet eine Abstimmung.",
 	["<vote>"] = "<abstimmen>",
-	["Leader/Ready"] = "Anf\195\188hrer/Bereitschaft",
+	["Leader/Ready"] = "Anführer/Bereitschaft",
+	["Show Results"] = "Zeige Ergebnisse",
+	["Show Other Results"] = "Zeige Ergebnisse von anderen",
+	["Show Results when someone else starts a readycheck. (Requires assistant/leader)"] = "Zeigt Ergebnisse, wenn ein anderer einen Bereitschaftscheck gestartet hast. (Benötigt Assistent/Anführer)",
+	["Show Results when you start a readycheck."] = "Zeigt Ergebnisse, wenn Du einen Bereitschaftscheck gestartet hast.",
 } end)
 
 ----------------------------------
@@ -371,10 +376,11 @@ end
 --------------------------
 
 function mod:ReportReadyStatus()
+	if not ready then return end
 	local noreply, notready = "", ""
-	for name, ready in pairs(ready) do
-		if ready == "no reply" then noreply = noreply..name.." "
-		elseif ready == "not ready" then notready = notready..name.." "
+	for name, status in pairs(ready) do
+		if status == "no reply" then noreply = noreply..name.." "
+		elseif status == "not ready" then notready = notready..name.." "
 		end
 	end
 	if noreply ~= "" then self:Print(L["AFK: "]..noreply) end
@@ -382,6 +388,7 @@ function mod:ReportReadyStatus()
 end
 
 function mod:ReportVoteStatus()
+	if not votes then return end
 	local noreply, yes, no = 0,0,0
 	for name, vote in pairs(votes) do
 		if vote == "no reply" then noreply = noreply + 1

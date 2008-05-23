@@ -1,5 +1,7 @@
 -- Elsia: For delete on instance entry
 -- Deletes data whenever a new, not the same instance is entered. This should safe-guard against corpse-run-reenters and the like.
+local revision = tonumber(string.sub("$Revision: 73362 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
 
 function Recount:DetectInstanceChange() -- Elsia: With thanks to Loggerhead
 
@@ -7,35 +9,28 @@ function Recount:DetectInstanceChange() -- Elsia: With thanks to Loggerhead
 
 	if zone == nil or zone == "" then
 		-- zone hasn't been loaded yet, try again in 5 secs.
-		self:ScheduleEvent(self.DetectInstanceChange,5,self)
-		--self:Print("Unable to determine zone - retrying in 5 secs")
+		self:ScheduleTimer("DetectInstanceChange",5)
 		return
 	end
 
-	local ct = 0; for k,v in pairs(Recount.db.char.combatants) do ct = ct + 1; break; end
+	local inInstance, instanceType = IsInInstance()
+	if Recount.SetZoneFilter  then Recount:SetZoneFilter(instanceType) end -- Use zone-based filters.
+
+	if not Recount.db.profile.AutoDeleteNewInstance then return end
+	
+	local ct = 0; for k,v in pairs(Recount.db2.combatants) do ct = ct + 1; break; end
 	if ct==0 then -- Elsia: Already deleted
 		return
 	end
-
-	inInstance, instanceType = IsInInstance()
 	
-	if inInstance and (Recount.db.char.DeleteNewInstanceOnly == false or Recount.db.char.LastInstanceName ~= zone) then
+	if inInstance and (not Recount.db.profile.DeleteNewInstanceOnly or Recount.db.profile.LastInstanceName ~= zone) and CurrentDataCollect then
 	   
-		if Recount.db.char.ConfirmDeleteInstance == true then
+		if Recount.db.profile.ConfirmDeleteInstance == true then
 			Recount:ShowReset() -- Elsia: Confirm & Delete!
 		else
 			Recount:ResetData()		-- Elsia: Delete!
 		end
-		Recount.db.char.LastInstanceName = zone -- Elsia: We'll set the instance even if the user opted to not delete...
-	end
-end
-
-function Recount:SetupInstanceCheck()
-	if Recount.db.char.AutoDeleteNewInstance == true then
-	   	Recount:RegisterEvent("ZONE_CHANGED_NEW_AREA","DetectInstanceChange")
-		Recount:DetectInstanceChange()
-	else
-		Recount:UnregisterEvent("ZONE_CHANGED_NEW_AREA")
+		Recount.db.profile.LastInstanceName = zone -- Elsia: We'll set the instance even if the user opted to not delete...
 	end
 end
 
@@ -43,7 +38,7 @@ end
 
 function Recount:PartyMembersChanged()
 
-	local ct = 0; for k,v in pairs(Recount.db.char.combatants) do ct = ct + 1; break; end
+	local ct = 0; for k,v in pairs(Recount.db2.combatants) do ct = ct + 1; break; end
 	if ct==0 then -- Elsia: Already deleted
 		return
 	end
@@ -51,20 +46,24 @@ function Recount:PartyMembersChanged()
 	local NumRaidMembers = GetNumRaidMembers()
 	local NumPartyMembers = GetNumPartyMembers()
 
-	if Recount.db.char.DeleteJoinRaid == true and Recount.inRaid == false and NumRaidMembers > 0 then
-		if Recount.db.char.ConfirmDeleteRaid == true then
+	if Recount.db.profile.DeleteJoinRaid and not Recount.inRaid and NumRaidMembers > 0 then
+		if Recount.db.profile.ConfirmDeleteRaid then
 			Recount:ShowReset() -- Elsia: Confirm & Delete!
 		else
 			Recount:ResetData()		-- Elsia: Delete!
 		end
+		
+		if Recount.RequestVersion then Recount:RequestVersion() end -- Elsia: If LazySync is present request version when entering raid
 	end
 
-	if Recount.db.char.DeleteJoinGroup == true and Recount.inGroup == false and NumPartyMembers > 0 and NumRaidMembers == 0 then
-		if Recount.db.char.ConfirmDeleteGroup == true then
+	if Recount.db.profile.DeleteJoinGroup and not Recount.inGroup and NumPartyMembers > 0 and NumRaidMembers == 0 then
+		if Recount.db.profile.ConfirmDeleteGroup then
 			Recount:ShowReset() -- Elsia: Confirm & Delete!
 		else
 			Recount:ResetData()		-- Elsia: Delete!
 		end
+
+		if Recount.RequestVersion then Recount:RequestVersion() end -- Elsia: If LazySync is present request version when entering party
 	end
 	
 	Recount.inGroup = false
@@ -76,8 +75,9 @@ function Recount:PartyMembersChanged()
 
 	if NumRaidMembers > 0 then
 	   Recount.inRaid = true
-	   -- Recount.db.char.lastinraid = time()  -- Elsia: Not currently using time.
 	end
+	
+	if Recount.GroupCheck then Recount:GroupCheck() end -- Elsia: Reevaluate group flagging on group changes.
 end
 
 function Recount:InitPartyBasedDeletion()
@@ -90,15 +90,14 @@ function Recount:InitPartyBasedDeletion()
 	if NumPartyMembers > 0 and NumRaidMembers == 0 then Recount.inGroup = true end
 	if NumRaidMembers > 0 then Recount.inRaid = true end
 
-	if Recount:IsEventRegistered("PARTY_MEMBERS_CHANGED") == false then
-		Recount:RegisterEvent("PARTY_MEMBERS_CHANGED","PartyMembersChanged")
-	end
+	Recount:RegisterEvent("PARTY_MEMBERS_CHANGED","PartyMembersChanged")
+	
+	Recount:RegisterEvent("RAID_ROSTER_UPDATE","PartyMembersChanged")
 end
 
 function Recount:ReleasePartyBasedDeletion()
-	if Recount.db.char.DeleteJoinGroup == false and Recount.db.char.DeleteJoinRaid == false then
-		if Recount:IsEventRegistered("PARTY_MEMBERS_CHANGED") then
-			Recount:UnregisterEvent("PARTY_MEMBERS_CHANGED")
-		end
+	if Recount.db.profile.DeleteJoinGroup == false and Recount.db.profile.DeleteJoinRaid == false then
+		Recount:UnregisterEvent("PARTY_MEMBERS_CHANGED")
+		Recount:UnregisterEvent("RAID_ROSTER_UPDATE")
 	end
 end

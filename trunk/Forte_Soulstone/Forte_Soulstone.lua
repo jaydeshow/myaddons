@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 local FW = FW;
 local SS = FW:Module("Soulstone");
 

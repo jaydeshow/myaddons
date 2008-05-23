@@ -1,9 +1,9 @@
-﻿-- MobMap - an ingame mob position database - v1.58
+﻿-- MobMap - an ingame mob position database - v1.61
 -- language file Chinese 
 
 -- Chinese db by CWDG 月色狼影 digmouse
 
-MOBMAP_VERSION = "MobMap v1.58";
+MOBMAP_VERSION = "MobMap v1.62";
 
 if (GetLocale()=="zhCN") then
 	MOBMAP_COMMANDS1 = "MobMap \230\142\167\229\136\182\229\145\189\228\187\164:"
@@ -160,6 +160,9 @@ if (GetLocale()=="zhCN") then
 	MOBMAP_OPTIMIZE_RESPONSE_TIMES_CHECKBOX_INFO = "此选项需使用更多内存,但可以提高搜索速度.选择与不选择此设置都不会影响MobMap的功能.";
 	MOBMAP_SHOW_MINIMAP_BUTTON_CHECKBOX = "显示小地图按钮";
 	MOBMAP_SHOW_MINIMAP_BUTTON_CHECKBOX_INFO = "你可以使用小地图上的按钮快速打开MobMap.你可以随意拖拉按钮到小地图任何位置或者屏幕的任何位置.";
+	MOBMAP_DOT_COLOR_SETTING = "标记颜色";
+	MOBMAP_DOT_OUTER_COLOR_BUTTON = "外边框颜色";
+	MOBMAP_DOT_INNER_COLOR_BUTTON = "标记点颜色";
 
 	MOBMAP_QUEST_TYPES = {
 		[0] = "\229\141\149\231\139\172",
@@ -218,6 +221,10 @@ if (GetLocale()=="zhCN") then
 	MOBMAP_MONITOR_SPELL_PROSPECTING = "选矿";
 	MOBMAP_MONITOR_SPELL_PICKPOCKETING = "搜索";
 	MOBMAP_MONITOR_SPELL_DISENCHANTING = "分解";
+
+	MOBMAP_GOLD = "Gold";
+	MOBMAP_SILVER = "Silber";
+	MOBMAP_COPPER = "Kupfer";
 
 else
 	MOBMAP_COMMANDS1 = "MobMap commands:"
@@ -374,6 +381,9 @@ else
 	MOBMAP_OPTIMIZE_RESPONSE_TIMES_CHECKBOX_INFO = "This option uses more memory to speed up certain search queries. Checking or unchecking this option does not influence the functionality of MobMap.";
 	MOBMAP_SHOW_MINIMAP_BUTTON_CHECKBOX = "Show minimap button";
 	MOBMAP_SHOW_MINIMAP_BUTTON_CHECKBOX_INFO = "You can use the minimap button to quickly open MobMap at any time. You can drag the button around the minimap or drag it off the minimap and place it anywhere on the screen.";
+	MOBMAP_DOT_COLOR_SETTING = "Coordinate dot colors";
+	MOBMAP_DOT_OUTER_COLOR_BUTTON = "Outer color";
+	MOBMAP_DOT_INNER_COLOR_BUTTON = "Inner color";
 
 
 	MOBMAP_QUEST_TYPES = {
@@ -433,4 +443,8 @@ else
 	MOBMAP_MONITOR_SPELL_PROSPECTING = "prospecting";
 	MOBMAP_MONITOR_SPELL_PICKPOCKETING = "pick pocket";
 	MOBMAP_MONITOR_SPELL_DISENCHANTING = "disenchant";
+
+	MOBMAP_GOLD = "Gold";
+	MOBMAP_SILVER = "Silver";
+	MOBMAP_COPPER = "Copper";
 end

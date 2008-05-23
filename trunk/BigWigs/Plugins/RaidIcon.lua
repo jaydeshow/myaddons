@@ -96,9 +96,9 @@ L:RegisterTranslations("zhTW", function() return {
 	["Place Raid Icons"] = "標記團隊圖示",
 	["Toggle placing of Raid Icons on players."] = "切換是否在玩家身上標記團隊圖示",
 
-	["Icon"] = "圖標",
-	["Set Icon"] = "設置圖示",
-	["Set which icon to place on players."] = "設置玩家身上標記的圖示。",
+	["Icon"] = "圖示",
+	["Set Icon"] = "設定圖示",
+	["Set which icon to place on players."] = "設定玩家身上標記的圖示",
 
 	["Star"] = "星星",
 	["Circle"] = "圓圈",
@@ -161,25 +161,25 @@ L:RegisterTranslations("frFR", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	["Raid Icons"] = "Iconos de Banda",
-	["Configure which icon Big Wigs should use when placing raid target icons on players for important 'bomb'-type boss abilities."] = "Configura que \195\173conos deber\195\173a usar BigWigs al colocarlos sobre jugadores en importantes habilidades del jefe tipo 'Bomba'",
+	["Raid Icons"] = "Iconos de banda",
+	["Configure which icon Big Wigs should use when placing raid target icons on players for important 'bomb'-type boss abilities."] = "Configura qué iconos colocará BigWigs sobre jugadores afectados por habilidades de Jefe tipo 'Bomba' u otras.",
 
 	["RaidIcon"] = "Icono de banda",
 
 	["Place"] = "Colocar",
-	["Place Raid Icons"] = "Colocar \195\173conos de banda",
-	["Toggle placing of Raid Icons on players."] = "Activa colocar iconos de banda sobre jugadores",
+	["Place Raid Icons"] = "Activar iconos en jugadores",
+	["Toggle placing of Raid Icons on players."] = "Activa la colocación de iconos de banda sobre jugadores.",
 
 	["Icon"] = "Icono",
-	["Set Icon"] = "Establecer Icono",
-	["Set which icon to place on players."] = "Establece que Icono colocar sobre los jugadores",
+	["Set Icon"] = "Establecer icono",
+	["Set which icon to place on players."] = "Establece qué icono se colocará sobre los jugadores.",
 
-	["Use the %q icon when automatically placing raid icons for boss abilities."] = "Usar el \195\173cono %q cuando coloque automaticamente \195\173conos de banda para habilidades de Jefes",
+	["Use the %q icon when automatically placing raid icons for boss abilities."] = "Usar el icono %q al colocar automáticamente iconos de banda para habilidades de Jefes.",
 
 	["Star"] = "Estrella",
-	["Circle"] = "Circulo",
+	["Circle"] = "Círculo",
 	["Diamond"] = "Diamante",
-	["Triangle"] = "Triangulo",
+	["Triangle"] = "Triángulo",
 	["Moon"] = "Luna",
 	["Square"] = "Cuadrado",
 	["Cross"] = "Cruz",
@@ -192,7 +192,7 @@ L:RegisterTranslations("esES", function() return {
 
 local plugin = BigWigs:NewModule("Raid Icons")
 
-plugin.revision = tonumber(("$Revision: 62918 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
 plugin.defaultDB = {
 	place = true,
 	icon = 8,

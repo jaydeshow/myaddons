@@ -1,6 +1,5 @@
 local L = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 local PT = LibStub("LibPeriodicTable-3.1")
-local BTS = AceLibrary("Babble-Tradeskill-2.2")
 
 local _G = getfenv(0)
 
@@ -9,10 +8,19 @@ local cache = {}
 local scanned = {}
 
 Mendeleev = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceDB-2.0", "AceHook-2.1", "AceEvent-2.0")
-local Mendeleev = Mendeleev
-local GetItemInfo = GetItemInfo
-local table_insert = table.insert
-local table_sort = table.sort
+local Mendeleev		= Mendeleev
+local GetItemInfo	= _G.GetItemInfo
+
+local ipairs		= _G.ipairs
+local pairs			= _G.pairs
+local type			= _G.type
+
+local string_format	= _G.string.format
+local string_match	= _G.string.match
+local string_rep	= _G.string.rep
+
+local table_insert	= _G.table.insert
+local table_sort	= _G.table.sort
 
 local options = {
 	type = "group",
@@ -37,6 +45,13 @@ local options = {
 			get = function() return Mendeleev.db.profile.showItemID end,
 			set = function(v) Mendeleev.db.profile.showItemID = v end,
 		},
+		itemCount = {
+			type = "toggle",
+			name = L["Show item count"],
+			desc = L["Toggle showing the item count in the tooltip."],
+			get = function() return Mendeleev.db.profile.showItemCount end,
+			set = function(v) Mendeleev.db.profile.showItemCount = v end,
+		},
 		stackSize = {
 			type = "toggle",
 			name = L["Show stack size"],
@@ -58,12 +73,19 @@ local options = {
 			get = function() return Mendeleev.db.profile.limitUsedInTree end,
 			set = function(v) Mendeleev.db.profile.limitUsedInTree = v end,
 		},
+		usedInTreeIcons = {
+			type = "toggle",
+			name = L["Show icons in 'used in' tree"],
+			desc = L["Toggle showing of icons in the 'used in' tree."],
+			get = function() return Mendeleev.db.profile.UsedInTreeIcons end,
+			set = function(v) Mendeleev.db.profile.UsedInTreeIcons = v end,
+		},
 	},
 }
 
 function Mendeleev:OnInitialize()
 	self.title = "Mendeleev"
-	self.revision = tonumber(("$Revision: 65952 $"):match("%d+"))
+	self.revision = tonumber(("$Revision: 73823 $"):match("%d+"))
 	self.version = self.version .. "." .. self.revision
 	
 	_G.MENDELEEV_TITLE = self.title
@@ -74,9 +96,11 @@ function Mendeleev:OnInitialize()
 	self:RegisterDefaults("profile", {
 		showItemLevel = false,
 		showItemID = false,
+		showItemCount = false,
 		showStackSize = true,
 		showUsedInTree = true,
 		limitUsedInTree = false,
+		UsedInTreeIcons = true,
 		sets = {},
 	})
 
@@ -89,14 +113,14 @@ function Mendeleev:OnInitialize()
 		if not t[parent] then
 			t[parent] = {
 				name = L[parent],
-				desc = string.format(L["Toggle sets in the %s category."], parent),
+				desc = string_format(L["Toggle sets in the %s category."], L[parent]),
 				type = "group",
 				args = {},
 			}
 		end
 		t[parent].args[key] = {
 			name = v.name,
-			desc = string.format(L["Toggle %s."], v.name),
+			desc = string_format(L["Toggle %s."], v.name),
 			type = "toggle",
 			get  = function() return not self.db.profile.sets[key] end,
 			set  = function(val) self.db.profile.sets[key] = not val end,
@@ -109,6 +133,10 @@ end
 function Mendeleev:OnEnable(first)
 	self:HookScript(GameTooltip, "OnTooltipSetItem")
 	self:HookScript(GameTooltip, "OnTooltipCleared")
+	self:HookScript(ShoppingTooltip1, "OnTooltipSetItem")
+	self:HookScript(ShoppingTooltip1, "OnTooltipCleared")
+	self:HookScript(ShoppingTooltip2, "OnTooltipSetItem")
+	self:HookScript(ShoppingTooltip2, "OnTooltipCleared")
 	
 	if AtlasLootTooltip then
 		self:HookScript(AtlasLootTooltip, "OnTooltipSetItem")
@@ -164,30 +192,30 @@ function Mendeleev:GetUsedInTable(skill, reagentid)
 end
 
 local tradeskillNames = {
-	["Alchemy"] = BTS["Alchemy"],
-	["Blacksmithing.Armorsmith"] = BTS["Armorsmith"],
-	["Blacksmithing.Basic"] = BTS["Blacksmithing"],
-	["Blacksmithing.Weaponsmith.Axesmith"] = BTS["Master Axesmith"],
-	["Blacksmithing.Weaponsmith.Basic"] = BTS["Weaponsmith"],
-	["Blacksmithing.Weaponsmith.Hammersmith"] = BTS["Master Hammersmith"],
-	["Blacksmithing.Weaponsmith.Swordsmith"] = BTS["Master Swordsmith"],
-	["Cooking"] = BTS["Cooking"],
-	["Enchanting"] = BTS["Enchanting"],
-	["Engineering.Basic"] = BTS["Engineering"],
-	["Engineering.Gnomish"] = BTS["Gnomish Engineering"],
-	["Engineering.Goblin"] = BTS["Goblin Engineering"],
-	["First Aid"] = BTS["First Aid"],
-	["Jewelcrafting"] = BTS["Jewelcrafting"],
-	["Leatherworking.Basic"] = BTS["Leatherworking"],
-	["Leatherworking.Dragonscale"] = BTS["Dragonscale Leatherworking"],
-	["Leatherworking.Elemental"] = BTS["Elemental Leatherworking"],
-	["Leatherworking.Tribal"] = BTS["Tribal Leatherworking"],
-	["Poisons"] = L["Poisons"],
-	["Smelting"] = BTS["Smelting"],
-	["Tailoring.Basic"] = BTS["Tailoring"],
-	["Tailoring.Mooncloth"] = BTS["Mooncloth Tailoring"],
-	["Tailoring.Shadoweave"] = BTS["Shadoweave Tailoring"],
-	["Tailoring.Spellfire"] = BTS["Spellfire Tailoring"],
+	["Alchemy"] = GetSpellInfo(2259),
+	["Blacksmithing.Armorsmith"] = GetSpellInfo(9788),
+	["Blacksmithing.Basic"] = GetSpellInfo(2018),
+	["Blacksmithing.Weaponsmith.Axesmith"] = GetSpellInfo(17041),
+	["Blacksmithing.Weaponsmith.Basic"] = GetSpellInfo(9787),
+	["Blacksmithing.Weaponsmith.Hammersmith"] = GetSpellInfo(17040),
+	["Blacksmithing.Weaponsmith.Swordsmith"] = GetSpellInfo(17039),
+	["Cooking"] = GetSpellInfo(2550),
+	["Enchanting"] = GetSpellInfo(7411),
+	["Engineering.Basic"] = GetSpellInfo(4036),
+	["Engineering.Gnomish"] = GetSpellInfo(20220),
+	["Engineering.Goblin"] = GetSpellInfo(20221),
+	["First Aid"] = GetSpellInfo(3273),
+	["Jewelcrafting"] = GetSpellInfo(25229),
+	["Leatherworking.Basic"] = GetSpellInfo(2108),
+	["Leatherworking.Dragonscale"] = GetSpellInfo(10657),
+	["Leatherworking.Elemental"] = GetSpellInfo(10659),
+	["Leatherworking.Tribal"] = GetSpellInfo(10661),
+	["Poisons"] = GetSpellInfo(2842),
+	["Smelting"] = GetSpellInfo(2575),
+	["Tailoring.Basic"] = GetSpellInfo(3908),
+	["Tailoring.Mooncloth"] = GetSpellInfo(26798),
+	["Tailoring.Shadoweave"] = GetSpellInfo(26801),
+	["Tailoring.Spellfire"] = GetSpellInfo(26797),
 }
 
 function Mendeleev:GetLinesForTradeskillReagent(skill, reagent)
@@ -200,7 +228,7 @@ function Mendeleev:GetLinesForTradeskillReagent(skill, reagent)
 		count = count + 1
 		local name = GetItemInfo(item) or item
 		if name then
-			table_insert(ret, string.format("%s (%s)", name, num))
+			table_insert(ret, string_format("%s (%s)", name, num))
 		end
 	end
 	if count > 0 then
@@ -281,21 +309,21 @@ function Mendeleev:GetUsedInTree(id, history)
 		for k, v in pairs(usedin) do
 			if id2skill[k] and ((IsShiftKeyDown() or not self.db.profile.limitUsedInTree) or id2skill[k] >= 0) then
 				if history:find(">"..k.."<") then
-					table.insert(data, {k, GetItemInfo(k) or false, id2skill[k], "..."})
+					table_insert(data, {k, GetItemInfo(k) or false, id2skill[k], "..."})
 				else
 					local tdata, tskill = self:GetUsedInTree(k, history..">"..k.."<")
 					if tskill > skill then
 						skill = tskill
 					end
-					table.insert(data, tdata)
+					table_insert(data, tdata)
 				end
 			end
 		end
 	end
-	table.sort(data, SortUsedInTree)
-	table.insert(data, 1, id)
-	table.insert(data, 2, GetItemInfo(id) or false)
-	table.insert(data, 3, skill)
+	table_sort(data, SortUsedInTree)
+	table_insert(data, 1, id)
+	table_insert(data, 2, GetItemInfo(id) or false)
+	table_insert(data, 3, skill)
 	return data, skill
 end
 
@@ -305,36 +333,44 @@ function Mendeleev:GetUsedInList(tree, level, counttable, countmult)
 		[0] = "|cffbbbbbb",
 		[1] = "|cff00cc00",
 		[2] = "|cffffff00",
-		[3] = "|cffFF6600",
+		[3] = "|cffff6600",
 		[4] = "|cffff0000",
 	}
+
+	local UsedInTreeIcons = self.db.profile.UsedInTreeIcons
 
 	local list = {}
 	local didpoints = false
 	for i = 4, #tree do
 		local v = tree[i]
 		if level < 2 or v[3] > 0 then
-			table.insert(list, string.rep("    ", level).."- "..colour[id2skill[v[1]] or -1]..(v[2] or v[1]).."|r")
-			table.insert(list, countmult * counttable[v[1]])
+			if UsedInTreeIcons then
+				local icontag = GetItemIcon(v[1])
+				icontag = icontag and "|T"..icontag..":10|t " or ""
+				table_insert(list, string_rep("    ", level).."- "..colour[id2skill[v[1]] or -1]..icontag..(v[2] or v[1]).."|r")
+			else
+				table_insert(list, string_rep("    ", level).."- "..colour[id2skill[v[1]] or -1]..(v[2] or v[1]).."|r")
+			end
+			table_insert(list, countmult * counttable[v[1]])
 			if type(v[4]) == "table" then
 				local slist = self:GetUsedInList(v, level+1, cacheUsedInFull[v[1]], countmult * counttable[v[1]])
 				if #slist > 0 then
 					if v[3] > 0 then
 						for _, line in pairs(slist) do
-							table.insert(list, line)
+							table_insert(list, line)
 						end
 					else
-						table.insert(list, string.rep("    ", level+1).."- "..colour[0].."...|r")
-						table.insert(list, "")
+						table_insert(list, string_rep("    ", level+1).."- "..colour[0].."...|r")
+						table_insert(list, "")
 					end
 				end
 			elseif v[4] == "..." then
-				table.insert(list, string.rep("    ", level+1).."...")
-				table.insert(list, "")
+				table_insert(list, string_rep("    ", level+1).."...")
+				table_insert(list, "")
 			end
 		elseif v[3] == 0 and not didpoints then
-			table.insert(list, string.rep("    ", level).."- "..colour[0].."...|r")
-			table.insert(list, "")
+			table_insert(list, string_rep("    ", level).."- "..colour[0].."...|r")
+			table_insert(list, "")
 			didpoints = true
 		end
 	end
@@ -350,7 +386,7 @@ function Mendeleev:ScanTradeSkill()
 			if type ~= "header" then
 				local item = GetTradeSkillItemLink(i)
 				if item then
-					local id = string.match(item, "item:(%d+):")
+					local id = string_match(item, "item:(%d+):")
 					if id then
 						id2skill[tonumber(id)] = skillquals[type]
 					end
@@ -367,7 +403,7 @@ function Mendeleev:ScanCraft()
 			if type ~= "header" then
 				local item = GetCraftItemLink(i)
 				if item then
-					local id = string.match(item, "enchant:(%d+):")
+					local id = string_match(item, "enchant:(%d+):")
 					if id then
 						id2skill[tonumber(id)] = skillquals[type]
 					end
@@ -427,6 +463,14 @@ function Mendeleev:OnTooltipSetItem(tooltip, ...)
 					tooltip:AddDoubleLine(" ", line)
 				end
 			end
+		end
+	end
+
+	if db.showItemCount then
+		local count = GetItemCount(item, false)
+		local bankcount = GetItemCount(item, true) - count
+		if count + bankcount > 0 then
+			tooltip:AddDoubleLine(L["You have"], count..(bankcount > 0 and (" (+"..bankcount..")") or ""))
 		end
 	end
 

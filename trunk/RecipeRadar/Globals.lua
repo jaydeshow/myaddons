@@ -1,8 +1,8 @@
 
 -- Globals.lua: global/saved variables and some related initialization code
--- $Id: Globals.lua 997 2007-07-24 06:36:54Z jnmiller $
+-- $Id: Globals.lua 1038 2008-04-08 04:38:49Z jnmiller $
 
-RECIPERADAR_VERSION = "1.24"
+RECIPERADAR_VERSION = "1.27"
 
 RECIPERADAR_VENDORS_DISPLAYED = 8
 RECIPERADAR_VENDOR_HEIGHT = 16
@@ -78,10 +78,6 @@ RecipeRadar_Teams = {
    ["Neutral"] = {
       Name = RRS("Neutral"),
       Color = RecipeRadar_Colors.Neutral,
-   },
-   ["Hostile"] = {
-      Name = RRS("Hostile"),
-      Color = RecipeRadar_Colors.Horde,
    },
 
 }
@@ -174,6 +170,8 @@ RecipeRadar_Factions = {
    RRS("The Violet Eye"),
    RRS("The Scale of the Sands"),
    RRS("Keepers of Time"),
+   RRS("Ashtongue Deathsworn"),
+   RRS("Shattered Sun Offensive"),
 
 }
 

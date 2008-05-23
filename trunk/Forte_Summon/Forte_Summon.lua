@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 local FW = FW;
 local SU = FW:Module("Summon");
 
@@ -252,7 +252,7 @@ local function SU_InMyInstance(name,index)
 	
 end
 
-local function SU_AddSummon(unit)
+--[[local function SU_AddSummon(unit)
 	local prior = 1;-- default out of range priority
 	local unitName = UnitName(unit);
 	local cIndex = FW:FIND(Coordinates,unitName);
@@ -294,6 +294,64 @@ local function SU_AddSummon(unit)
 				NisFar = NisFar + 1;
 			end
 		end
+		FW:INSERT(su,unitName, unit,(FW:IsWarlock(unit) or 2),prior,GetTime(),SUMMON_PRIOR.NORMAL,unitName);
+	end
+	if cIndex then FW:REMOVE_INDEX(Coordinates,cIndex); end-- speed up searching player coordinates a bit, deleting the player i've done
+end]]
+
+local function SU_AddSummon(unit)
+	local prior = 1;-- default out of range priority
+	local unitName = UnitName(unit);
+	local cIndex = FW:FIND(Coordinates,unitName);
+	local index = FW:FIND(su,unitName);
+	if index then -- if it exists, means this unit has special properties
+		su[index+1] = unit; -- update unit id even if this is a special prior!
+		if su[index+5]==SUMMON_PRIOR.IGNORE and su[index+4] <= GetTime() then -- whisper and ignore priority expire
+			--FW:ShowDebug("removing ignore on "..unitName);
+			FW:REMOVE_INDEX(su,index);
+		end
+		return;
+	end
+	
+	-- automatic adding
+	if not UnitIsDeadOrGhost(unit) and UnitIsConnected(unit) and not UnitIsUnit(unit,"player") and not CheckInteractDistance(unit, 4) then -- alive,connected and outside follow range
+		if pc then -- outside instance
+		
+			if FW.Settings.SummonOldMode and SU_InInstance(unitName,cIndex) then
+				return;
+			else -- this unit isnt in an instance
+				Nis30y = Nis30y + 1;
+				if not cIndex or Coordinates[cIndex+1] ~= pc then -- this unit is on another continent, give high prior
+					prior = 2; --
+					NisFar = NisFar + 1;
+				else
+					prior = math.sqrt(math.pow(px-Coordinates[cIndex+2],2) + math.pow( WorldMapRatio*(py-Coordinates[cIndex+3]) ,2));
+					if prior <= SUMMON_DISTANCE[pc] then
+						if not FW.Settings.SummonCloser then
+							return; -- too close to need a summon
+						end
+					else
+						NisFar = NisFar + 1;
+					end
+				end
+			end
+		else -- inside instance 
+			if not FW.Settings.SummonOldMode or SU_InMyInstance(unitName,cIndex) then
+				Nis30y = Nis30y + 1;
+				if UnitIsVisible(unit) then
+					if FW.Settings.SummonCloser then
+						prior = 0;
+					else
+						return;
+					end
+				else
+					NisFar = NisFar + 1;
+				end
+			else -- not inside my instance, ignore
+				return;
+			end		
+		end
+		
 		FW:INSERT(su,unitName, unit,(FW:IsWarlock(unit) or 2),prior,GetTime(),SUMMON_PRIOR.NORMAL,unitName);
 	end
 	if cIndex then FW:REMOVE_INDEX(Coordinates,cIndex); end-- speed up searching player coordinates a bit, deleting the player i've done
@@ -502,7 +560,8 @@ FW:SetMainCategory(FW.L.SUMMON_ASSISTANT,FW.ICON_SU,8,"DEFAULT","FWSUFrame");
 		FW:RegisterOption(FW.CHK,1,FW.NON,FW.L.SHOW_CLOSE,		FW.L.SHOW_CLOSE_TT,		"SummonCloser");
 		FW:RegisterOption(FW.MSG,1,FW.NON,FW.L.QUEUE_SUMMON,		FW.L.QUEUE_SUMMON_TT,		"SummonKeyword");
 		FW:RegisterOption(FW.CHK,1,FW.NON,FW.L.SHOW_MEETING_STONE,	FW.L.SHOW_MEETING_STONE_TT,	"SummonMeetingStone");
-
+		FW:RegisterOption(FW.CHK,1,FW.NON,FW.L.OLD_SUMMONING_MODE,	FW.L.OLD_SUMMONING_MODE_TT,	"SummonOldMode");
+		
 	FW:SetSubCategory(FW.L.SIZING,FW.ICON_SIZE,4);
 		FW:RegisterOption(FW.NUM,1,FW.NON,FW.L.BAR_WIDTH,		"",	"SummonWidth",		SU_SummonShow);
 		FW:RegisterOption(FW.NUM,1,FW.NON,FW.L.BAR_HEIGHT,		"",	"SummonHeight",		SU_SummonShow);
@@ -543,6 +602,7 @@ FW.Default.SummonKeywordMsg = "summon";
 FW.Default.SummonExpand = false;
 FW.Default.SummonSpace = 1;
 FW.Default.SummonMeetingStone = false;
+FW.Default.SummonOldMode = false;
 
 FW.Default.ColorSummonClose = 	{0.60,0.60,0.60};
 FW.Default.ColorSummonFar = 	{1.00,1.00,1.00};

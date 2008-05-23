@@ -1,9 +1,8 @@
-AtlasLoot/Changelog-AtlasLoot-r66664.txt
+AtlasLoot/Changelog-AtlasLoot-r74763.txt
 AtlasLoot/embeds.xml
 AtlasLoot/AtlasLoot.toc
 AtlasLoot/Documentation/gpl-v2.zhTW.txt
 AtlasLoot/Documentation/Release Notes.txt
-AtlasLoot/Documentation/Using AtlasLoot Search.en.txt
 AtlasLoot/Documentation/gpl-v2.txt
 AtlasLoot/Images/silver.tga
 AtlasLoot/Images/bronze.tga
@@ -36,6 +35,7 @@ AtlasLoot/TableRegister/loottables.kr.lua
 AtlasLoot/TableRegister/loottables.cn.lua
 AtlasLoot/TableRegister/loottables.en.lua
 AtlasLoot/TableRegister/loottables.de.lua
+AtlasLoot/Libs/LibStub/LibStub.lua
 AtlasLoot/Core/WorldEvent.lua
 AtlasLoot/Core/ExtraText.lua
 AtlasLoot/Core/AtlasLootFu.lua
@@ -64,30 +64,3 @@ AtlasLoot/Bossnames/bossnames.en.lua
 AtlasLoot/DefaultFrame/AtlaslootDefaultFrame.lua
 AtlasLoot/DefaultFrame/AtlaslootDefaultFrame.xml
 AtlasLoot/DefaultFrame/DewDropDown.lua
-AtlasLoot/Libs/AceAddon-2.0/AceAddon-2.0.toc
-AtlasLoot/Libs/AceAddon-2.0/AceAddon-2.0.lua
-AtlasLoot/Libs/Babble-Boss-2.2/Babble-Boss-2.2.lua
-AtlasLoot/Libs/Babble-Boss-2.2/Babble-Boss-2.2.toc
-AtlasLoot/Libs/Babble-Zone-2.2/Babble-Zone-2.2.lua
-AtlasLoot/Libs/Babble-Zone-2.2/Babble-Zone-2.2.toc
-AtlasLoot/Libs/Tablet-2.0/Tablet-2.0.lua
-AtlasLoot/Libs/Babble-Tradeskill-2.2/Babble-Tradeskill-2.2.toc
-AtlasLoot/Libs/Babble-Tradeskill-2.2/Babble-Tradeskill-2.2.lua
-AtlasLoot/Libs/Babble-Inventory-2.2/Babble-Inventory-2.2.lua
-AtlasLoot/Libs/Babble-Inventory-2.2/Babble-Inventory-2.2.toc
-AtlasLoot/Libs/AceDB-2.0/AceDB-2.0.lua
-AtlasLoot/Libs/AceDB-2.0/AceDB-2.0.toc
-AtlasLoot/Libs/Babble-Faction-2.2/Babble-Faction-2.2.lua
-AtlasLoot/Libs/Babble-Faction-2.2/Babble-Faction-2.2.toc
-AtlasLoot/Libs/AceLocale-2.2/AceLocale-2.2.lua
-AtlasLoot/Libs/AceLocale-2.2/AceLocale-2.2.toc
-AtlasLoot/Libs/FuBarPlugin-2.0/FuBarPlugin-2.0.lua
-AtlasLoot/Libs/AceEvent-2.0/AceEvent-2.0.lua
-AtlasLoot/Libs/AceEvent-2.0/AceEvent-2.0.toc
-AtlasLoot/Libs/Dewdrop-2.0/Dewdrop-2.0.lua
-AtlasLoot/Libs/AceLibrary/AceLibrary.lua
-AtlasLoot/Libs/AceLibrary/AceLibrary.toc
-AtlasLoot/Libs/Babble-Class-2.2/Babble-Class-2.2.toc
-AtlasLoot/Libs/Babble-Class-2.2/Babble-Class-2.2.lua
-AtlasLoot/Libs/AceOO-2.0/AceOO-2.0.toc
-AtlasLoot/Libs/AceOO-2.0/AceOO-2.0.lua

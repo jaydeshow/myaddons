@@ -1,4 +1,6 @@
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -62,8 +64,8 @@ L:RegisterTranslations("koKR", function() return {
 } end)
 
 L:RegisterTranslations("zhCN", function() return {
-	["MainTank"] = "MT 目标",
-	["Options for the maintanks."] = "MT 目标选项。",
+	["MainTank"] = "MT",
+	["Options for the maintanks."] = "MT 选项。",
 	["Set"] = "设定 MT",
 	["Set a maintank."]= "设定 MT。",
 	["<nr> <name>"] = "<数量> <名字>",
@@ -74,7 +76,6 @@ L:RegisterTranslations("zhCN", function() return {
 	["Removed maintank: "] = "移除 MT：",
 	["Set maintank: "] = "设定 MT：",
 	["Leader/MainTank"] = "团长/MT",
-	["Broadcast"] = "广播",
 	["Broadcast"] = "广播 MT",
 	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "向团队广播 MT。",
 
@@ -100,7 +101,6 @@ L:RegisterTranslations("zhTW", function() return {
 	["Removed maintank: "] = "移除主坦",
 	["Set maintank: "] = "設定主坦: ",
 	["Leader/MainTank"] = "領隊/主坦",
-	["Broadcast"] = "廣播",
 	["Broadcast"] = "廣播主坦",
 	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "向團隊廣播主坦列表，如果某人沒自動更新到列表時。",
 
@@ -114,51 +114,53 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("frFR", function() return {
-	["MainTank"] = "MainTank",
-	["Options for the maintanks."] = "Options concernant les maintanks.",
-	["Set"] = "Ajouter un maintank",
-	["Set a maintank."]= "Ajoute un maintank.",
+	["MainTank"] = "Tanks principaux",
+	["Options for the maintanks."] = "Options concernant les tanks principaux.",
+	["Set"] = "Définir",
+	["Set a maintank."]= "Définit un tank principal.",
 	["<nr> <name>"] = "<n°> <nom>",
 	["<nr>"] = "<n°>",
 	["<name>"] = "<nom>",
-	["Remove"] = "Enlever un maintank",
-	["Remove a maintank."] = "Enlève un maintank.",
-	["Removed maintank: "] = "Maintank enlevé : ",
-	["Set maintank: "] = "Maintank ajouté : ",
+	["Remove"] = "Enlever",
+	["Remove a maintank."] = "Enlève un tank principal.",
+	["Removed maintank: "] = "Tank principal enlevé : ",
+	["Set maintank: "] = "Tank principal définit : ",
 	["Leader/MainTank"] = "Chef/MainTank",
 	["Broadcast"] = "Diffuser",
-	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "Diffuse votre liste des maintanks au raid, au cas où quelqu'un ne les a pas reçus automatiquement.",
+	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "Diffuse votre liste des tanks principaux au raid, au cas où quelqu'un ne les a pas reçus automatiquement.",
 
 	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
 
-	["Set target on a free mt-slot"] = "Ajouter la cible à un emplacement libre des MTs",
+	["Set target on a free mt-slot"] = "Ajoute la cible à un emplacement libre des tanks principaux.",
 	["Free"] = "Libre",
 	["All"] = "Tous",
-	["Delete all Maintanks"] = "Supprimer tous les maintanks",
+	["Delete all Maintanks"] = "Supprime tous les tanks principaux.",
 	["<Not Assigned>"] = "<Non assigné>",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
 	["MainTank"] = "MainTank",
-	["Options for the maintanks."] = "Optionen f\195\188r MainTanks.",
+	["Options for the maintanks."] = "Optionen für MainTanks.",
 	["Set"] = "Setze MainTank",
-	["Set a maintank."]= "F\195\188ge einen MainTank hinzu.",
-	["<nr> <name>"] = "<Nr> <Name>",
-	["<nr>"] = "<Nr>",
-	["<name>"] = "<Name>",
+	["Set a maintank."] = "Fügt einen MainTank hinzu.",
+	["<nr> <name>"] = "<nr> <name>",
+	["<nr>"] = "<nr>",
+	["<name>"] = "<name>",
 	["Remove"] = "Entferne MainTank",
-	["Remove a maintank."] = "Entferne einen MainTank aus der Liste",
-	["Removed maintank: "] = "MainTank gel\195\182scht: ",
+	["Remove a maintank."] = "Entfernt einen MainTank aus der Liste.",
+	["Removed maintank: "] = "MainTank gelöscht: ",
 	["Set maintank: "] = "MainTank gesetzt: ",
-	["Leader/MainTank"] = "Anf\195\188hrer/MainTank",
-	["Broadcast"] = "Verbreiten",
+	["Leader/MainTank"] = "Anführer/MainTank",
 	["Broadcast"] = "Verbreite MainTanks",
-	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "Sende dem Schlachtzug deine MainTanks.",
+	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "Sendet dem Schlachtzug Deine MainTank List, falls diese nicht automatisch übertragen wurde.",
+
 	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
-	["Set target on a free mt-slot"] = "Setze das Ziel auf einen verf\195\188gbaren MainTank-Platz",
+
+	["Set target on a free mt-slot"] = "Setzt Dein Ziel auf einen freien MainTank Platz.",
+	["Free"] = "Freier MT Platz",
 	["All"] = "Alle",
-	["Delete all Maintanks"] = "L\195\182sche alle MainTanks",
-	["<Not Assigned>"] = "<Nicht zugewiesen>",
+	["Delete all Maintanks"] = "Lösche alle MainTanks",
+	["<Not Assigned>"] = "<nicht zugewiesen>",
 } end)
 
 ----------------------------------
@@ -360,12 +362,8 @@ mod.consoleOptions = {
 ------------------------------
 
 function mod:OnEnable()
-	if not oRA.maintanktable then
-		oRA.maintanktable = oRA.db.profile.maintanktable or {}
-	end
 	self:RegisterEvent("oRA_MainTankUpdate")
 	self:RegisterEvent("oRA_JoinedRaid", "oRA_MainTankUpdate")
-	self:RegisterEvent("RAID_ROSTER_UPDATE", "oRA_MainTankUpdate")
 	self:RegisterCheck("GETMT", "oRA_Broadcast")
 end
 
@@ -375,11 +373,14 @@ end
 
 local nameString = "%d. %s"
 function mod:oRA_MainTankUpdate()
+	if not oRA.maintanktable then return end
 	local opt = oRA.consoleOptions.args.mt.args
 	for k = 1, 10 do
-		if oRA.maintanktable[k] and UnitInRaid(oRA.maintanktable[k]) then
-			opt.remove.args[k].name = nameString:format(k, self.coloredNames[oRA.maintanktable[k]])
-			opt.set.args[k].name = nameString:format(k, self.coloredNames[oRA.maintanktable[k]])
+		local mt = oRA.maintanktable[k]
+		if mt then
+			local n = nameString:format(k, self.coloredNames[mt])
+			opt.remove.args[k].name = n 
+			opt.set.args[k].name = n
 		else
 			opt.remove.args[k].name = tostring(k).."."
 			opt.set.args[k].name = tostring(k).."."
@@ -393,8 +394,7 @@ end
 
 function mod:Set(index, player)
 	if not oRA:IsPromoted() then return end
-	if not UnitInRaid(player) then return end
-	local name = UnitName(player)
+	local name = UnitExists(player) and UnitName(player) or player:gsub("^%l", string.upper)
 	oRA:SendMessage("SET " .. index .. " " .. name)
 	self:Print(L["Set maintank: "] .. "[".. index .. "] [" .. name .."]")
 end
@@ -416,11 +416,32 @@ function mod:oRA_Broadcast()
 	end
 end
 
+function mod:SetNextMainTank()
+	local name = UnitName("target")
+	if not name then name = UnitName("mouseover") end
+	if not name or not UnitInRaid(name) then return end
+	for i = 1, 10 do
+		if not oRA.maintanktable[i] then
+			self:Set(i, name)
+			break
+		end
+	end
+end
+
+function mod:ClearLastMainTank()
+	for i = 10, 1, -1 do
+		if oRA.maintanktable[i] then
+			self:Remove(i)
+			break
+		end
+	end
+end
+
 ------------------------------
 --      Tooltip Updating    --
 ------------------------------
 
-local function tooltipClick(num)
+function mod:TooltipClick(num)
 	local name = UnitName("target")
 	if oRA.maintanktable[num] then
 		if not name then
@@ -434,29 +455,21 @@ local function tooltipClick(num)
 end
 
 local na = "|cffcccccc"..L["<Not Assigned>"].."|r"
-local notValid = setmetatable({}, {__index = function(self, key)
-	self[key] = "|cffcccccc<"..key..">|r"
-	return self[key]
-end})
-
 function mod:OnTooltipUpdate()
 	if not oRA:IsPromoted() then return end
 	local cat = tablet:AddCategory(
 		"columns", 2,
 		"text", "#",
 		"text2", L["MainTank"],
-		"child_func", tooltipClick
+		"child_func", self.TooltipClick,
+		"child_arg1", self
 	)
 	for i = 1, 10 do
 		local p = oRA.maintanktable[i]
 		if p then
-			if UnitInRaid(p) then
-				cat:AddLine("text", i, "text2", self.coloredNames[p], "arg1", i)
-			else
-				cat:AddLine("text", i, "text2", notValid[p], "arg1", i)
-			end
+			cat:AddLine("text", i, "text2", self.coloredNames[p], "arg2", i)
 		else
-			cat:AddLine("text", i, "text2", na, "arg1", i)
+			cat:AddLine("text", i, "text2", na, "arg2", i)
 		end
 	end
 end

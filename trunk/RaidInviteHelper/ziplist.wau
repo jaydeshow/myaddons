@@ -1,16 +1,4 @@
 RaidInviteHelper/Changelog-RaidInviteHelper-r45026.txt
-RaidInviteHelper/Core.lua
 RaidInviteHelper/RaidInviteHelper.toc
+RaidInviteHelper/Core.lua
 RaidInviteHelper/readme.txt
-RaidInviteHelper/libs/AceAddon-2.0/AceAddon-2.0.toc
-RaidInviteHelper/libs/AceAddon-2.0/AceAddon-2.0.lua
-RaidInviteHelper/libs/AceDB-2.0/AceDB-2.0.lua
-RaidInviteHelper/libs/AceDB-2.0/AceDB-2.0.toc
-RaidInviteHelper/libs/AceEvent-2.0/AceEvent-2.0.lua
-RaidInviteHelper/libs/AceEvent-2.0/AceEvent-2.0.toc
-RaidInviteHelper/libs/AceLibrary/AceLibrary.lua
-RaidInviteHelper/libs/AceLibrary/AceLibrary.toc
-RaidInviteHelper/libs/AceConsole-2.0/AceConsole-2.0.toc
-RaidInviteHelper/libs/AceConsole-2.0/AceConsole-2.0.lua
-RaidInviteHelper/libs/AceOO-2.0/AceOO-2.0.toc
-RaidInviteHelper/libs/AceOO-2.0/AceOO-2.0.lua

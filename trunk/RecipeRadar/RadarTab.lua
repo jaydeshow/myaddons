@@ -1,6 +1,6 @@
 
 -- RadarTab.lua: handles clicking and drawing for the Radar tab
--- $Id: RadarTab.lua 650 2006-12-06 18:40:39Z jnmiller $
+-- $Id: RadarTab.lua 1022 2008-03-07 20:57:50Z jnmiller $
 
 function RecipeRadar_RadarTab_Init()
 

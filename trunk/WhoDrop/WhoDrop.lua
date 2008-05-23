@@ -14,12 +14,16 @@ local self = WhoDrop
 local UFaction
 
 local L = AceLibrary("AceLocale-2.2"):new("WhoDrop")
-local BB = AceLibrary("Babble-Boss-2.2")
-local BZ = AceLibrary("Babble-Zone-2.2")
-local BF = AceLibrary("Babble-Faction-2.2")
-local BT = AceLibrary("Babble-Tradeskill-2.2")
-local BC = AceLibrary("Babble-Class-2.2")
-local BI = AceLibrary("Babble-Inventory-2.2")
+local BFAC = LibStub("LibBabble-Faction-3.0")
+local BF = BFAC:GetLookupTable()
+local BBOSS = LibStub("LibBabble-Boss-3.0")
+local BB = BBOSS:GetLookupTable()
+local BZONE = LibStub("LibBabble-Zone-3.0")
+local BZ = BZONE:GetLookupTable()
+local BCLASS = LibStub("LibBabble-Class-3.0")
+local BC = BCLASS:GetLookupTable()
+local BINV = LibStub("LibBabble-Inventory-3.0")
+local BI = BINV:GetLookupTable()
 local BQ = nil
 local TempTable = { }
 
@@ -313,28 +317,28 @@ function WhoDrop:FindLocal(name)
 		end
 	end]]
 
+
 	if string.find(name, "-Hero") then
 		_,_,name = string.find(name, "(.+)-Hero")
 		return BZ[name].."("..L["Hero"]..")"
 	elseif L:HasBaseTranslation(name) then
 		return L[name]
-	elseif BB:HasBaseTranslation(name) then
+	elseif BBOSS:GetBaseLookupTable()[name] then
 		return BB[name]
-	elseif BF:HasBaseTranslation(name) then
+	elseif BFAC:GetBaseLookupTable()[name] then
 		return BF[name]
-	elseif BT:HasBaseTranslation(name) then
-		return BT[name]
-	elseif BC:HasBaseTranslation(name) then
+	elseif BCLASS:GetBaseLookupTable()[name] then
 		return BC[name]
-	elseif BI:HasBaseTranslation(name) then
+	elseif BINV:GetBaseLookupTable()[name] then
 		return BI[name]
-	elseif BZ:HasBaseTranslation(name) then
+	elseif BZONE:GetBaseLookupTable()[name] then
 		return BZ[name]
 	elseif self.db.profile.quest and BQ ~= nil and BQ:HasBaseTranslation(name) then
 		return BQ[name]
 	else
 		return name
 	end
+
 end
 
 function WhoDrop:BuildTable()

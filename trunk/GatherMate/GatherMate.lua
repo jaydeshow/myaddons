@@ -1,8 +1,7 @@
 ﻿--[[
-	This addon designed to be as lightweiht as possible.
-	It will only track, Mine, Herb, Fish and Gas nodes. IF you want treasure and all the extra bells and whistles
-	I suggest you use Cartographer or Gatherer. This mods whole purpose is to be lean and simple feature
-	complete. If someone creates another addon to enhance this then so be it, but the core mod is gona be small.
+	This addon designed to be as lightweight as possible.
+	It will only track, Mine, Herb, Fish, Gas and some Treasure nodes.
+	This mods whole purpose is to be lean, simple and feature complete.
 ]]
 -- Mixin AceEvent
 local GatherMate = LibStub("AceAddon-3.0"):NewAddon("GatherMate","AceConsole-3.0","AceEvent-3.0")
@@ -45,6 +44,13 @@ local defaults = {
 			["Mining"]         = 15,
 			["Extract Gas"]    = 50,
 			["Treasure"]		   = 15,
+		},
+		dbLocks = {
+			["Herb Gathering"] = false,
+			["Fishing"]        = false,
+			["Mining"]         = false,
+			["Extract Gas"]    = false,
+			["Treasure"]	   = false,			
 		},
 		importers = {
 			["*"] = { 
@@ -121,7 +127,11 @@ end
 	Clearing function
 ]]
 function GatherMate:ClearDB(dbx)
-	-- for our own DBs we just dicard the table and be happy
+	-- for our own DBs we just discard the table and be happy
+	-- db lock check
+	if GatherMate.db.profile.dbLocks[dbx] then
+		return
+	end
 	if dbx == "Herb Gathering" then	GatherMateHerbDB = {}; gmdbs[dbx] = GatherMateHerbDB
 	elseif dbx == "Fishing" then GatherMateFishDB = {}; gmdbs[dbx] = GatherMateFishDB
 	elseif dbx == "Extract Gas" then GatherMateGasDB = {}; gmdbs[dbx] = GatherMateGasDB
@@ -129,6 +139,7 @@ function GatherMate:ClearDB(dbx)
 	elseif dbx == "Treasure" then GatherMateTreasureDB = {}; gmdbs[dbx] = GatherMateTreasureDB
 	else -- for custom DBs we dont know the global name, so we clear it old-fashion style
 		local db = gmdbs[dbx]
+		if not db then error("Trying to clear unknown database: "..dbx) end
 		for k in pairs(db) do
 			db[k] = nil
 		end
@@ -162,6 +173,10 @@ function GatherMate:AddNode(zone, x, y, nodeType, name)
 	local db = gmdbs[nodeType]
 	local id = self:getID(x, y)
 	local zoneID = self.zoneData[zone][3]
+	-- db lock check
+	if GatherMate.db.profile.dbLocks[nodeType] then
+		return
+	end
 	--LibStub("AceConsole-3.0"):Print("Type "..nodeType.." at "..x.." and "..y.. " as "..id.." :: "..name)
 	db[zoneID] = db[zoneID] or {}
 	db[zoneID][id] = self.nodeIDs[nodeType][name]
@@ -174,10 +189,18 @@ end
 ]]
 function GatherMate:InjectNode(zoneID, coords, nodeType, nodeID)
 	local db = gmdbs[nodeType]
+	-- db lock check
+	if GatherMate.db.profile.dbLocks[nodeType] then
+		return
+	end
 	db[zoneID] = db[zoneID] or {}
 	db[zoneID][coords] = nodeID
 end
 function GatherMate:DeleteNode(zoneID, coords, nodeType)
+	-- db lock check
+	if GatherMate.db.profile.dbLocks[nodeType] then
+		return
+	end
 	local db = gmdbs[nodeType][zoneID]
 	if db then
 		db[coords] = nil
@@ -310,6 +333,10 @@ end
 ]]
 function GatherMate:RemoveNodeByID(zone, nodeType, coord)
 	local zoneID = self.zoneData[zone][3]
+	-- db lock check
+	if GatherMate.db.profile.dbLocks[nodeType] then
+		return
+	end
 	local db = gmdbs[nodeType][zoneID]
 	if db[coord] then
 		local t = self.reverseNodeIDs[nodeType][db[coord]]
@@ -340,5 +367,22 @@ function GatherMate:CleanupDB()
 	end
 	self:SendMessage("GatherMateCleanup")
 	self:Print(L["Cleanup Complete."])
+end
+
+--[[
+	Function to delete all of a specified node from a specific zone
+]]
+function GatherMate:DeleteNodeFromZone(nodeType, nodeID, zone)
+	local zoneID = self.zoneData[zone][3]
+	local db = gmdbs[nodeType][zoneID]
+	if db then
+		for coord, node in pairs(db) do
+			if node == nodeID then
+				--self:Print("Deleting node at "..coord.." containing "..nodeID)
+				self:RemoveNodeByID(zone, nodeType, coord)
+			end
+		end
+		self:SendMessage("GatherMateCleanup")
+	end
 end
 

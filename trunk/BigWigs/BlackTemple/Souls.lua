@@ -24,7 +24,6 @@ L:RegisterTranslations("enUS", function() return {
 	engage_trigger = "Pain and suffering are all that await you!",
 
 	enrage_start = "Enrage in ~47sec",
-	enrage_trigger = "%s becomes enraged!",
 	enrage_message = "Enraged for 15sec!",
 	enrage_bar = "<Enraged>",
 	enrage_next = "Enrage Over - Next in ~32sec",
@@ -58,11 +57,47 @@ L:RegisterTranslations("enUS", function() return {
 	scream_bar = "~Soul Scream Cooldown",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "¡Solo os esperan dolor y sufrimiento!",
+
+	enrage_start = "Enfurecer en ~47 seg",
+	enrage_message = "¡Enfurecido durante 15 seg!",
+	enrage_bar = "<Enfurecido>",
+	enrage_next = "Fin Enfurecer - Sig. en ~32 seg",
+	enrage_nextbar = "Siguiente Enfurecer",
+	enrage_warning = "¡Enfurecer en 5 seg!",
+
+	desire_trigger  = "Puedes tener todo lo que desees... pagando su precio.",
+	desire_cot = "Shi shi rikk rukadare shi tichar kar x gular ", --Curse of Tongues trigger
+	desire_start = "Esencia de Deseo - Sin maná en 160 seg",
+	desire_bar = "Sin maná",
+	desire_warn = "¡Sin maná en 30 seg!",
+
+	runeshield = "Escudo de runa (Rune Shield)",
+	runeshield_desc = "Contadores para saber cuándo Esencia de Deseo ganará Escudo de runa.",
+	runeshield_message = "¡Escudo de runa!",
+	runeshield_nextbar = "~Escudo de runa",
+	runeshield_warn = "Escudo de runa en ~3 seg",
+
+	deaden = "Embotado (Deaden)",
+	deaden_desc = "Avisar cuando se va a lanzar Embotado.",
+	deaden_message = "¡Lanzando Embotado!",
+	deaden_warn = "Embotado en ~5 seg.",
+	deaden_nextbar = "~Embotado.",
+
+	spite = "Maldad (Spite)",
+	spite_desc = "Avisar quién tiene Maldad.",
+	spite_message = "Maldad en %s",
+
+	scream = "Alarido del alma (Soul Scream)",
+	scream_desc = "Mostrar una barra de reutilización de Alarido del alma.",
+	scream_bar = "~Alarido del alma",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	engage_trigger = "너희를 기다리는 건 고통과 슬픔뿐이야!",
 
 	enrage_start = "약 47초 후 격노",
-	enrage_trigger = "%s|1이;가; 분노에 휩싸입니다!",
 	enrage_message = "15초 동안 격노!",
 	enrage_bar = "<격노>",
 	enrage_next = "격노 종료 - 다음은 약 32초 후",
@@ -76,7 +111,7 @@ L:RegisterTranslations("koKR", function() return {
 	desire_warn = "30초 후 마나 0!",
 
 	runeshield = "룬 보호막",
-	runeshield_desc = "욕망의 정수가 룬 보호막을 얻을 떄에 대한 타이머 입니다.",
+	runeshield_desc = "욕망의 정수가 룬 보호막 획득에 대한 타이머 입니다.",
 	runeshield_message = "룬 보호막!",
 	runeshield_nextbar = "다음 룬 보호막",
 	runeshield_warn = "약 3초 후 룬 보호막",
@@ -100,28 +135,27 @@ L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Douleur et souffrance, voilà tout ce qui vous attend !",
 
 	enrage_start = "Enrager dans ~47 sec.",
-	enrage_trigger = "%s devient fou furieux !",
-	enrage_message = "Enragé pendant 15 sec. !",
+	enrage_message = "Enragé pendant 15 sec. !",
 	enrage_bar = "<Enragé>",
 	enrage_next = "Fin de l'Enrager - Prochain dans ~32 sec.",
 	enrage_nextbar = "Prochain Enrager",
-	enrage_warning = "Enrager dans 5 sec. !",
+	enrage_warning = "Enrager dans 5 sec. !",
 
 	desire_trigger = "Vous pouvez avoir tout ce que vous désirez... en y mettant le prix.",
 	desire_cot = "Maev revola refir veni re daz maev azrathu il o kieldaz no veni ", --Curse of Tongues trigger
 	desire_start = "Essence du désir - Zéro mana dans 160 sec.",
 	desire_bar = "Zéro mana",
-	desire_warn = "Zéro mana dans 30 sec. !",
+	desire_warn = "Zéro mana dans 30 sec. !",
 
 	runeshield = "Bouclier runique",
 	runeshield_desc = "Délais concernant le Bouclier runique de l'Essence du désir.",
-	runeshield_message = "Bouclier runique !",
+	runeshield_message = "Bouclier runique !",
 	runeshield_nextbar = "Prochain Bouclier runique",
 	runeshield_warn = "Bouclier runique dans ~3 sec.",
 
 	deaden = "Emousser",
 	deaden_desc = "Préviens quand Emousser est incanté.",
-	deaden_message = "Emousser en incantation !",
+	deaden_message = "Emousser en incantation !",
 	deaden_warn = "Emousser dans ~5 sec.",
 	deaden_nextbar = "Prochain Emousser",
 
@@ -130,7 +164,7 @@ L:RegisterTranslations("frFR", function() return {
 	spite_message = "Dépit sur %s",
 
 	scream = "Cri de l'âme",
-	scream_desc = "Affiche une barre de cooldown pour le Cri de l'âme.",
+	scream_desc = "Affiche une barre pour le temps de recharge du Cri de l'âme.",
 	scream_bar = "~Cooldown Cri de l'âme",
 } end )
 
@@ -138,7 +172,6 @@ L:RegisterTranslations("deDE", function() return {
 	engage_trigger = "Auf Euch warten nur Schmerz und Leid!",
 
 	enrage_start = "Wutanfall in ~47sec",
-	enrage_trigger = "%s wird wütend!",
 	enrage_message = "Wutanfall für 15sek!",
 	enrage_bar = "<Wutanfall>",
 	enrage_next = "Wutanfall Vorbei - Nächster in ~32sec",
@@ -175,34 +208,33 @@ L:RegisterTranslations("deDE", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "等待你们的只有痛苦与折磨！",
 
-	enrage_start = "~47秒后 激怒",
-	enrage_trigger = "%s变得愤怒了！",
+	enrage_start = "约47秒后，激怒！",
 	enrage_message = "愤怒 15秒！",
 	enrage_bar = "<愤怒>",
-	enrage_next = "愤怒结束 ~32秒后再次发动",
+	enrage_next = "愤怒结束，约32秒后再次发动。",
 	enrage_nextbar = "<下一愤怒>",
-	enrage_warning = "5秒后 愤怒！",
+	enrage_warning = "5秒后，愤怒！",
 
 	desire_trigger  = "你可以获得任何你想要的东西……只要付得起代价。",
 	desire_cot = "Shi shi rikk rukadare shi tichar kar x gular", --Curse of Tongues trigger
-	desire_start = "欲望精华 - 160秒后 零法力",
+	desire_start = "欲望精华！160秒后零法力。",
 	desire_bar = "<零法力>",
-	desire_warn = "30秒后 零法力！",
+	desire_warn = "30秒后，零法力！",
 
 	runeshield = "符文护盾",
 	runeshield_desc = "欲望精华获得了符文护盾计时。",
 	runeshield_message = "符文护盾！",
 	runeshield_nextbar = "<下一符文护盾>",
-	runeshield_warn = "3秒后 符文护盾.",
+	runeshield_warn = "3秒后，符文护盾！",
 
 	deaden = "衰减",
-	deaden_desc = "当衰减施放时发出警报。",
-	deaden_message = "正施放 衰减！",
-	deaden_warn = "~5秒后 衰减！",
+	deaden_desc = "当施放衰减施放时发出警报。",
+	deaden_message = "正在施放 衰减！",
+	deaden_warn = "约5秒后，衰减！",
 	deaden_nextbar = "<下一衰减>",
 
 	spite = "敌意",
-	spite_desc = "当谁中了敌意发出警报。",
+	spite_desc = "当玩家受到敌意时发出警报。",
 	spite_message = "敌意：>%s<！",
 
 	scream = "灵魂尖啸",
@@ -213,18 +245,17 @@ L:RegisterTranslations("zhCN", function() return {
 L:RegisterTranslations("zhTW", function() return {
 	engage_trigger = "等待你們的只有痛苦與折磨﹗",
 
-	enrage_start = "憤怒在 ~47sec",
-	enrage_trigger = "受難精華變得憤怒了!",
-	enrage_message = "憤怒 15 秒!",
+	enrage_start = "約 47 秒後憤怒!",
+	enrage_message = "憤怒! 持續 15 秒!",
 	enrage_bar = "<憤怒>",
-	enrage_next = "憤怒結束 - 下一次 ~32秒",
-	enrage_nextbar = "下一次憤怒",
-	enrage_warning = "憤怒在 5 秒內!",
+	enrage_next = "憤怒結束 - 約 32 秒後下一次!",
+	enrage_nextbar = "<下一次憤怒>",
+	enrage_warning = "約 5 秒內憤怒!",
 
 	desire_trigger  = "你可以得到任何你想要的東西……只要付得起代價。",
 	desire_cot = "[惡魔語] Zennshinagas", -- 語言詛咒觸發
 	desire_start = "慾望精華 - 160 秒內沒魔",
-	desire_bar = "沒魔",
+	desire_bar = "<沒魔>",
 	desire_warn = "30 秒內沒魔!",
 
 	runeshield = "符文護盾",
@@ -234,18 +265,18 @@ L:RegisterTranslations("zhTW", function() return {
 	runeshield_warn = "3 秒內符文護盾",
 
 	deaden = "麻木",
-	deaden_desc = "當麻木開始施放時警告",
+	deaden_desc = "當麻木開始施放時警報",
 	deaden_message = "正在施放麻木!",
-	deaden_warn = "5 秒內麻木",
-	deaden_nextbar = "下一次麻木",
+	deaden_warn = "約 5 秒內施放麻木",
+	deaden_nextbar = "<下一次麻木>",
 
 	spite = "惡意",
-	spite_desc = "警告誰有惡意",
-	spite_message = "惡意：[%s]",
+	spite_desc = "警告誰中了惡意",
+	spite_message = "惡意: [%s]",
 
 	scream = "靈魂尖嘯",
 	scream_desc = "顯示靈魂尖嘯冷卻條",
-	scream_bar = "~靈魂尖嘯冷卻",
+	scream_bar = "<靈魂尖嘯冷卻>",
 } end )
 
 ----------------------------------
@@ -255,21 +286,21 @@ L:RegisterTranslations("zhTW", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = {desire, suffering, anger}
-mod.toggleoptions = {"enrage", "drain", -1, "runeshield", "deaden", -1, "spite", "scream", "bosskill"}
-mod.revision = tonumber(("$Revision: 65892 $"):sub(12, -3))
+mod.toggleoptions = {"enrage", "runeshield", "deaden", -1, "spite", "scream", "bosskill"}
+mod.revision = tonumber(("$Revision: 74408 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Spite", 41377)
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Shield", 41431)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Spite", 41376, 41377)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Enrage", 41305)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Shield", 41431)
 	self:AddCombatListener("SPELL_CAST_START", "Deaden", 41410)
-	self:AddCombatListener("SPELL_CAST_SUCCESS", "Scream", 41545) -- verify this is the correct combat event
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Scream", 41545)
 	self:AddCombatListener("UNIT_DIED", "Deaths")
 
-	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 
 	db = self.db.profile
@@ -283,6 +314,16 @@ function mod:Spite(player)
 	if db.spite then
 		spiteIt[player] = true
 		self:ScheduleEvent("BWSpiteWarn", self.SpiteWarn, 0.3, self)
+	end
+end
+
+function mod:Enrage(_, spellID)
+	if db.enrage then
+		self:IfMessage(L["enrage_message"], "Attention", spellID, "Alert")
+		self:Bar(L["enrage_bar"], 15, spellID)
+		self:DelayedMessage(15, L["enrage_next"], "Attention")
+		self:DelayedMessage(42, L["enrage_warning"], "Urgent")
+		self:Bar(L["enrage_nextbar"], 47, spellID)
 	end
 end
 
@@ -327,16 +368,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			self:Bar(L["deaden_nextbar"], 28, "Spell_Shadow_SoulLeech_1")
 			self:DelayedMessage(23, L["deaden_warn"], "Urgent")
 		end
-	end
-end
-
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	if msg == L["enrage_trigger"] and db.enrage then
-		self:Message(L["enrage_message"], "Attention", nil, "Alert")
-		self:Bar(L["enrage_bar"], 15, "Spell_Shadow_UnholyFrenzy")
-		self:DelayedMessage(15, L["enrage_next"], "Attention")
-		self:DelayedMessage(42, L["enrage_warning"], "Urgent")
-		self:Bar(L["enrage_nextbar"], 47, "Spell_Shadow_UnholyFrenzy")
 	end
 end
 

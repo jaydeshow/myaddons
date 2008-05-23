@@ -54,6 +54,44 @@ L:RegisterTranslations("enUS", function() return {
 	whisper_soon = "~Demons Cooldown",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	enrage_trigger = "¡Al fin acaba mi destierro!",
+
+	whirlwind = "Torbellino (Whirlwind)",
+	whirlwind_desc = "Temporizadores de Torbellino.",
+	whirlwind_gain = "Torbellino durante 12 seg",
+	whirlwind_fade = "Fin Torbellino",
+	whirlwind_bar = "<Torbellino>",
+	whirlwind_bar2 = "~Torbellino",
+	whirlwind_warn = "Posible Torbellino",
+
+	phase = "Fase demonio",
+	phase_desc = "Tiempos estimados para fase demonio.",
+	phase_trigger = "¡Desaparece, elfo pusilánime. ¡Yo mando ahora!",
+	phase_demon = "Fase demonio durante 60 seg",
+	phase_demonsoon = "¡Fase demonio en 5 seg!",
+	phase_normalsoon = "Fase normal en 5 seg",
+	phase_normal = "¡Fase normal!",
+	demon_bar = "<Fase demonio>",
+	demon_nextbar = "~Fase demonio",
+
+	mindcontrol = "Control mental (Mind Control)",
+	mindcontrol_desc = "Avisar qué jugadores están siendo controlados mentalmente.",
+	mindcontrol_warning = "Control mental: %s",
+
+	image = "Imagen",
+	image_desc = "Alertas de división de imagen al 15%.",
+	image_trigger = "¡No... no! ¿Qué has hecho? ¡Yo soy el maestro! ¿Me oyes? ¡Yo... ahggg! No...puedo contenerme.",
+	image_message = "¡15% - Imagen creada!",
+	image_warning = "Imagen en breve",
+
+	whisper = "Silbido insidioso (Insidious Whisper)",
+	whisper_desc = "Avisar quién tiene Silbido insidioso.",
+	whisper_message = "Demonio: %s",
+	whisper_bar = "<Demonios desaparecen>",
+	whisper_soon = "~Demonios",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	enrage_trigger = "드디어, 내가 풀려났도다!",
 
@@ -100,34 +138,34 @@ L:RegisterTranslations("frFR", function() return {
 	whirlwind_gain = "Tourbillon pendant 12 sec.",
 	whirlwind_fade = "Fin du Tourbillon",
 	whirlwind_bar = "Tourbillon",
-	whirlwind_bar2 = "~Cooldown Tourbillon",
-	whirlwind_warn = "Fin du cooldown Tourbillon - Imminent !",
+	whirlwind_bar2 = "~Recharge Tourbillon",
+	whirlwind_warn = "Fin du temps de recharge de Tourbillon - Imminent !",
 
 	phase = "Phase démon",
 	phase_desc = "Affiche une estimation de la phase démon.",
 	phase_trigger = "Hors d'ici, elfe insignifiant. Je prends le contrôle !",
 	phase_demon = "Phase démon pendant 60 sec.",
-	phase_demonsoon = "Phase démon dans 5 sec. !",
+	phase_demonsoon = "Phase démon dans 5 sec. !",
 	phase_normalsoon = "Phase normal dans 5 sec.",
-	phase_normal = "Phase normale !",
+	phase_normal = "Phase normale !",
 	demon_bar = "Phase démon",
 	demon_nextbar = "Prochaine phase démon",
 
 	mindcontrol = "Contrôle mental",
-	mindcontrol_desc = "Préviens quand un joueur subit les effets du Contrôle mental.",
-	mindcontrol_warning = "Contrôle mental : %s",
+	mindcontrol_desc = "Prévient quand un joueur subit les effets du Contrôle mental.",
+	mindcontrol_warning = "Contrôle mental : %s",
 
 	image = "Image",
-	image_desc = "Préviens quand l'image est créée à 15%.",
+	image_desc = "Prévient quand l'image est créée à 15%.",
 	image_trigger = "Non… Non ! Mais qu'avez-vous fait ? C'est moi le maître ! Vous entendez ? Moi ! Je suis… Aaargh ! Impossible… de… retenir…",
-	image_message = "15% - Image créée !",
-	image_warning = "Image imminente !",
+	image_message = "15% - Image créée !",
+	image_warning = "Image imminente !",
 
 	whisper = "Murmure insidieux",
-	whisper_desc = "Préviens quand des joueurs subissent le Murmure insidieux.",
-	whisper_message = "Démon : %s",
+	whisper_desc = "Prévient quand des joueurs subissent le Murmure insidieux.",
+	whisper_message = "Démon : %s",
 	whisper_bar = "Disparition des démons",
-	whisper_soon = "~Cooldown Démons",
+	whisper_soon = "~Recharge Démons",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -173,37 +211,37 @@ L:RegisterTranslations("zhCN", function() return {
 
 	whirlwind = "旋风斩",
 	whirlwind_desc = "旋风斩计时条。",
-	whirlwind_gain = "旋风斩 - 12秒",
-	whirlwind_fade = "旋风斩 结束",
+	whirlwind_gain = "旋风斩！12秒。",
+	whirlwind_fade = "旋风斩 结束！",
 	whirlwind_bar = "<旋风斩>",
 	whirlwind_bar2 = "<旋风斩 冷却>",
-	whirlwind_warn = "冷却结束 - 即将发动",
+	whirlwind_warn = "冷却结束，即将 旋风斩！",
 
 	phase = "恶魔形态",
 	phase_desc = "恶魔形态计时。",
 	phase_trigger = "滚开吧，脆弱的精灵。现在我说了算！",
-	phase_demon = "恶魔形态 - 60秒",
-	phase_demonsoon = "5秒后 恶魔形态！",
-	phase_normalsoon = "5秒后 正常形态",
+	phase_demon = "恶魔形态！60秒。",
+	phase_demonsoon = "5秒后，恶魔形态！",
+	phase_normalsoon = "5秒后，正常形态！",
 	phase_normal = "正常形态！",
 	demon_bar = "<恶魔形态>",
 	demon_nextbar = "<下一恶魔阶段>",
 
 	mindcontrol = "精神控制",
-	mindcontrol_desc = "当玩家受到精神控制发出警报。",
+	mindcontrol_desc = "当玩家受到精神控制时发出警报。",
 	mindcontrol_warning = "精神控制：>%s<！",
 
 	image = "镜像",
-	image_desc = "15%镜像分裂警报。",
+	image_desc = "当15%镜像分裂时发出警报。",
 	image_trigger = "不……不！你在干什么？我才是主宰！你听到没有？我……啊啊啊啊！控制……不住了。",
 	image_message = "15% - 镜像出现！",
 	image_warning = "即将 镜像！",
 
 	whisper = "因斯迪安低语",
-	whisper_desc = "当玩家受到因斯迪安低语发出警报。",
-	whisper_message = "恶魔：>%s<！",
-	whisper_bar = "<恶魔消失>",
-	whisper_soon = "~恶魔 冷却",
+	whisper_desc = "当玩家受到因斯迪安低语时发出警报。",
+	whisper_message = "心魔：>%s<！",
+	whisper_bar = "<心魔消失>",
+	whisper_soon = "心魔 冷却！",
 }end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -212,36 +250,36 @@ L:RegisterTranslations("zhTW", function() return {
 	whirlwind = "旋風斬",
 	whirlwind_desc = "旋風斬計時",
 	whirlwind_gain = "旋風斬 - 持續 12 秒。",
-	whirlwind_fade = "旋風斬終止！",
-	whirlwind_bar = "旋風斬",
-	whirlwind_bar2 = "旋風斬冷卻",
-	whirlwind_warn = "冷卻結束 - 旋風斬即將來臨！",
+	whirlwind_fade = "旋風斬結束!",
+	whirlwind_bar = "<旋風斬>",
+	whirlwind_bar2 = "<旋風斬冷卻>",
+	whirlwind_warn = "旋風斬冷卻結束 - 即將施放旋風斬!",
 
 	phase = "惡魔型態",
 	phase_desc = "惡魔型態計時",
 	phase_trigger = "消失吧，微不足道的精靈。現在開始由我掌管!",
-	phase_demon = "惡魔型態 - 持續 60 秒！",
-	phase_demonsoon = "5 秒內進入惡魔型態！",
-	phase_normalsoon = "5 秒內回到普通型態！",
-	phase_normal = "普通型態 - 旋風斬即將來臨！",
-	demon_bar = "惡魔型態",
-	demon_nextbar = "下一次惡魔型態",
+	phase_demon = "惡魔型態 - 持續 60 秒!",
+	phase_demonsoon = "5 秒內進入惡魔型態!",
+	phase_normalsoon = "5 秒內回到普通型態!",
+	phase_normal = "普通型態 - 即將施放旋風斬!",
+	demon_bar = "<惡魔型態>",
+	demon_nextbar = "<下一次惡魔型態>",
 
 	mindcontrol = "心靈控制",
-	mindcontrol_desc = "當隊友受到心控時警告",
-	mindcontrol_warning = "心控：[%s]",
+	mindcontrol_desc = "當隊友受到心靈控制時警告",
+	mindcontrol_warning = "心靈控制: [%s]",
 
 	image = "影分身",
 	image_desc = "15% 分身警告",
 	image_trigger = "不…不!你做了什麼?我是主人!你沒聽見我在說話嗎?我…..啊!無法…控制它。",
-	image_message = "15% - 分身出現！",
-	image_warning = "分身即將出現！",
+	image_message = "15% - 分身出現!",
+	image_warning = "分身即將出現!",
 
 	whisper = "陰險之語",
 	whisper_desc = "當隊友受到陰險之語時警告",
-	whisper_message = "內心的惡靈：[%s]",
-	whisper_bar = "惡靈消失計時",
-	whisper_soon = "惡靈冷卻",
+	whisper_message = "內心的惡靈: [%s]",
+	whisper_bar = "<內心的惡靈消失計時>",
+	whisper_soon = "內心的惡靈冷卻",
 } end )
 
 ----------------------------------
@@ -252,7 +290,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"enrage", "whirlwind", "phase", "image", "whisper", "mindcontrol", "bosskill"}
-mod.revision = tonumber(("$Revision: 65808 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

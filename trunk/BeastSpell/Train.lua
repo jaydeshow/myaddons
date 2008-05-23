@@ -1,9 +1,6 @@
-﻿local ips, btnID, myTP;
+﻿local ips, btnID, updateButton;
+local myTP = 0;
 local myPetSpell = {};
-local BST_Species2 = {
-	"奥术抗性", "火焰抗性", "冰霜抗性", "自然抗性", "暗影抗性",
-	"持久耐力", "自然护甲", "躲闪", "毒蛇反射", "低吼", "畏缩",
-};
 
 function BeastSpell_TrainFrame_Init()
 	local j, k, name, btn;
@@ -19,6 +16,7 @@ function BeastSpell_TrainFrame_Init()
 			btn:RegisterForClicks("AnyUp");
 			btn.id = n;
 			btn.name = name;
+			btn.keyDown = 3;
 			btnID[name] = n;
 			getglobal("BST_TrainButton".. n .."Icon"):SetTexture("Interface\\Icons\\".. BST_Data[name]["icon"] );
 			btn.icon = getglobal("BST_TrainButton".. n .."Icon");
@@ -79,6 +77,7 @@ function BeastSpell_TrainFrame_OnEvent(event)
 	end;
 end;
 
+--[[
 local GetPetSpells = function()
 	--UnitIsVisible("pet")
 	if(not UnitExists("pet") )then
@@ -100,31 +99,40 @@ local GetPetSpells = function()
 		j = j + 1;
 	end;
 end;
-
---获取等级
-local function BST_NextLevel(spelLv, t)
-	if(not t["Lv"])then
-		return 0;
+--]]
+local GetPetSpells = function()
+	--UnitIsVisible("pet")
+	if(not UnitExists("pet") )then
+		return;
 	end;
-	local j = spelLv + 1;
-	for j = spelLv + 1, t["max"], 1 do
-		if(t["Lv"][j] and t["Lv"][j] > 0)then
-			return j;
+	myPetSpell = {};
+	local craftName, craftRank, craftType;
+	local spellName, spellRank, rank;
+	local j = 1;
+	while( GetSpellName(j, BOOKTYPE_PET) )do
+		spellName, spellRank = GetSpellName(j, BOOKTYPE_PET);
+		--spellIcon = GetSpellTexture(j, BOOKTYPE_PET);
+		_, _, spellRank = string.find(spellRank, "(%d+)");
+		if(spellRank == nil)then
+			spellRank = "1";
+		end;
+		myPetSpell[spellName] = tonumber(spellRank);
+		j = j + 1;
+	end;
+	for j = 1, GetNumCrafts(), 1 do
+		craftName, craftRank, craftType = GetCraftInfo(j);
+		if(craftType == "used" and myPetSpell[craftName])then
+			_, _, craftRank = string.find(craftRank, "(%d+)");
+			if(craftRank == nil)then
+				rank = 1;
+			else
+				rank = tonumber(craftRank);
+			end;
+			if(not myPetSpell[craftName] or myPetSpell[craftName] < rank)then
+				myPetSpell[craftName] = rank;
+			end;
 		end;
 	end;
-	return 0;
-end;
-local function BST_SuitableLevel(spelLv, t)
-	if(not t["Lv"])then
-		return 0;
-	end;
-	local j = spelLv + 1;
-	for j = t["max"], spelLv + 1, -1 do
-		if(t["Lv"][j] and t["Lv"][j] > 0 and t["Lv"][j] <= UnitLevel("pet") and t["TP"][j] <= myTP)then
-			return j;
-		end;
-	end;
-	return 0;
 end;
 
 --格式化对应技能的图标
@@ -160,6 +168,153 @@ local function BST_TrainButton_Init(spell)
 		btn.rank:SetVertexColor(1, 0.82, 0);
 		--btn.rankborder:SetVertexColor(1, 1, 0.5);
 	end;
+end;
+
+-------------------------------
+--获取等级
+local function BST_NextLevel(spelLv, t)
+	if(not t["Lv"])then
+		return 0;
+	end;
+	local j = spelLv + 1;
+	for j = spelLv + 1, t["max"], 1 do
+		if(t["Lv"][j] and t["Lv"][j] > 0)then
+			return j;
+		end;
+	end;
+	return 0;
+end;
+local function BST_SuitableLevel(spelLv, t)
+	if(not t["Lv"])then
+		return 0;
+	end;
+	local j = spelLv + 1;
+	local usedTP = 0;
+	if(t["TP"][spelLv])then
+		usedTP = t["TP"][spelLv];
+	end;
+	for j = t["max"], spelLv + 1, -1 do
+		if(t["Lv"][j] and t["Lv"][j] > 0 and t["Lv"][j] <= UnitLevel("pet") and t["TP"][j] - usedTP <= myTP)then
+			return j;
+		end;
+	end;
+	return 0;
+end;
+--生成GameTootip
+local function BST_LvInfoAddTootip(txt, spell, nowLv, nextLv, t)
+	local costTP, costTxt;
+	if(t["TP"][nowLv])then
+		costTP = t["TP"][nextLv] - t["TP"][nowLv];
+	else
+		costTP = t["TP"][nextLv];
+	end;
+	if(costTP > myTP)then
+		costTxt = "|cFFff0000".. costTP .."|r";
+	else
+		costTxt = "|cFF00ff00".. costTP .."|r";
+	end;
+	local leftTxt = txt .." ".. (nextLv).."/".. t["max"];
+	local rightTxt = "TP".. t["TP"][nextLv] .." (".. costTxt ..")";
+	GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 1, 1, 1);
+	--所需等级
+	if( UnitLevel("pet") < t["Lv"][nextLv] )then
+		GameTooltip:AddLine(BS_REQ_LEVEL .. t["Lv"][nextLv], 1, 0, 0);
+	end;
+	if( not ips[spell][tostring(nextLv)] )then
+		GameTooltip:AddLine(BS_UNLEARNT, 1, 0, 0);
+	end;
+	--文字说明
+	if(t["txt"])then
+		if(t["txt"][nextLv])then
+			GameTooltip:AddLine(t["txt"][nextLv], 1, 0.82, 0, 1);
+		elseif(t["txt"][1])then
+			GameTooltip:AddLine(t["txt"][1], 1, 0.82, 0, 1);
+		end;
+	end;
+end;
+--更新--------------------更新鼠标提示--------------
+local function BST_SetTootip()
+	if(not updateButton)then
+		if(IsAltKeyDown() and this.keyDown == 1)then
+			return;
+		elseif(not IsAltKeyDown() and this.keyDown == 0)then
+			return;
+		end;
+	else
+		this = updateButton;
+	end;
+	if( IsAltKeyDown() )then
+		this.keyDown = 1;
+	else
+		this.keyDown = 0;
+	end;
+
+	local spell = this.name;
+	if(not BST_Data[spell])then
+		return;
+	end;
+
+	GameTooltip:SetOwner(this,"ANCHOR_LEFT");
+	local t = BST_Data[spell];
+	local spelLv = 0;
+	if(not myPetSpell[spell])then
+		spelLv = 0;
+		GameTooltip:SetText(spell);
+	else
+		spelLv = myPetSpell[spell];
+		GameTooltip:AddDoubleLine(spell, BS_LEVEL .. spelLv, 1, 1, 1, 0.6, 0.6, 0.6);
+	end;
+	--消耗、CD
+	if(t["til"])then
+		local f, _, energy, cd = string.find(t["til"], "(.-)|(.+)");
+		if(not f)then
+			GameTooltip:AddLine(t["til"], 1, 1, 1);
+		else
+			GameTooltip:AddDoubleLine(energy, cd, 1, 1, 1, 1, 1, 1);
+		end;
+	end;
+	if(this.enable == 1 and UnitExists("pet") and not IsAltKeyDown() )then
+		--技能的文字说明
+		if(t["txt"])then
+			if(t["txt"][spelLv])then
+				GameTooltip:AddLine(t["txt"][spelLv], 1, 0.82, 0, 1);
+			elseif(spelLv > 0 and t["txt"][1])then
+				GameTooltip:AddLine(t["txt"][1], 1, 0.82, 0, 1);
+			end;
+		end;
+		--下一级和最适等级
+		this.nextLv = BST_NextLevel(spelLv, t);
+		this.suitLv = BST_SuitableLevel(spelLv, t);
+		if(this.suitLv > spelLv and this.nextLv == this.suitLv)then
+			BST_LvInfoAddTootip(BS_NEXT_SUIT_LEVEL, spell, spelLv, this.nextLv, t);
+		else
+			if(this.nextLv > spelLv)then
+				BST_LvInfoAddTootip(BS_NEXT_LEVEL, spell, spelLv, this.nextLv, t);
+			end;
+			if(this.suitLv > spelLv)then
+				BST_LvInfoAddTootip(BS_SUIT_LEVEL, spell, spelLv, this.suitLv, t);
+			end;
+		end;
+	else
+		local j, leftTxt, rightTxt;
+		for j = 1, t["max"], 1 do
+			leftTxt = BS_LEVEL .. j .."/".. t["max"];
+			if(t["Lv"][j] < 1)then
+				rightTxt = BS_DONT_EXIST;
+				GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 1, 0, 0);
+			elseif(not ips[spell] or not ips[spell][tostring(j)])then
+				rightTxt = BS_UNLEARNT;
+				GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 1, 0, 0);
+			else
+				rightTxt = BS_LEARNT;
+				GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 0, 1, 0);
+			end;
+			if(t["txt"] and t["txt"][j])then
+				GameTooltip:AddLine(t["txt"][j], 1, 0.82, 0, 1);
+			end;
+		end;
+	end;
+	GameTooltip:Show();
 end;
 
 function BeastSpell_TrainFrame_OnUpdate()
@@ -200,114 +355,18 @@ function BeastSpell_TrainFrame_OnUpdate()
 		BST_TrainButton_Init(BST_Species2[k])
 		k = k + 1;
 	end;
-	k = 1;
-	while(BST_Species[petType][k])do
-		BST_TrainButton_Init(BST_Species[petType][k])
-		k = k + 1;
-	end;
-end;
-
---生成GameTootip
-local function BST_LvInfoAddTootip(txt, nowLv, nextLv, t)
-	local costTP, costTxt;
-	if(t["TP"][nowLv])then
-		costTP = t["TP"][nextLv] - t["TP"][nowLv];
-	else
-		costTP = t["TP"][nextLv];
-	end;
-	if(costTP > myTP)then
-		costTxt = "|cFFff0000".. costTP .."|r";
-	else
-		costTxt = "|cFF00ff00".. costTP .."|r";
-	end;
-	local leftTxt = txt .." ".. (nextLv).."/".. t["max"];
-	local rightTxt = "TP".. t["TP"][nextLv] .." (".. costTxt ..")";
-	GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 1, 1, 1);
-	--所需等级
-	if( UnitLevel("pet") < t["Lv"][nextLv] )then
-		GameTooltip:AddLine("需要宠物等级 ".. t["Lv"][nextLv], 1, 0, 0);
-	end;
-	--文字说明
-	if(t["txt"])then
-		if(t["txt"][nextLv])then
-			GameTooltip:AddLine(t["txt"][nextLv], 1, 0.82, 0, 1);
-		elseif(t["txt"][1])then
-			GameTooltip:AddLine(t["txt"][1], 1, 0.82, 0, 1);
+	if(BST_Species[petType])then
+		k = 1;
+		while(BST_Species[petType][k])do
+			BST_TrainButton_Init(BST_Species[petType][k])
+			k = k + 1;
 		end;
 	end;
-end;
-local function BST_SetTootip(update)
-	if(not update and this.keyDown )then
-		if(IsAltKeyDown() and this.keyDown == 1)then
-			return;
-		elseif(not IsAltKeyDown() and this.keyDown == 0)then
-			return;
-		end;
+	if(updateButton)then
+		updateButton.keyDown = 3;
+		BST_SetTootip();
+		updateButton = nil;
 	end;
-
-	local spell = this.name;
-	if(not BST_Data[spell])then
-		return;
-	end;
-	GameTooltip:SetOwner(this,"ANCHOR_LEFT");
-	local t = BST_Data[spell];
-	local spelLv;
-	if(not myPetSpell[spell])then
-		spelLv = 0;
-		GameTooltip:SetText(spell);
-	else
-		spelLv = myPetSpell[spell];
-		GameTooltip:AddDoubleLine(spell, "等级 ".. spelLv, 1, 1, 1, 0.6, 0.6, 0.6);
-	end;
-	--消耗、CD
-	if(t["til"])then
-		local f, _, energy, cd = string.find(t["til"], "(.-)|(.+)");
-		if(not f)then
-			GameTooltip:AddLine(t["til"], 1, 1, 1);
-		else
-			GameTooltip:AddDoubleLine(energy, cd, 1, 1, 1, 1, 1, 1);
-		end;
-	end;
-	if(this.enable == 1 and UnitExists("pet") and not IsAltKeyDown() )then
-		this.keyDown = 0;
-		--技能的文字说明
-		if(t["txt"])then
-			if(t["txt"][spelLv])then
-				GameTooltip:AddLine(t["txt"][spelLv], 1, 0.82, 0);
-			elseif(spelLv > 0 and t["txt"][1])then
-				GameTooltip:AddLine(t["txt"][1], 1, 0.82, 0);
-			end;
-		end;
-		--下一级和最适等级
-		this.nextLv = BST_NextLevel(spelLv, t);
-		if(this.nextLv > spelLv)then
-			BST_LvInfoAddTootip("下一级", spelLv, this.nextLv, t);
-		end;
-		this.suitLv = BST_SuitableLevel(spelLv, t);
-		if(this.suitLv > spelLv)then
-			BST_LvInfoAddTootip("最适等级", spelLv, this.suitLv, t);
-		end;
-	else
-		this.keyDown = 1;
-		local j, leftTxt, rightTxt;
-		for j = 1, t["max"], 1 do
-			leftTxt = "等级 ".. j .."/".. t["max"];
-			if(t["Lv"][j] < 1)then
-				rightTxt = "不存在";
-				GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 1, 0, 0);
-			elseif(not ips[spell] or not ips[spell][tostring(j)])then
-				rightTxt = "未学";
-				GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 1, 0, 0);
-			else
-				rightTxt = "拥有";
-				GameTooltip:AddDoubleLine(leftTxt, rightTxt, 1, 1, 1, 0, 1, 0);
-			end;
-			if(t["txt"] and t["txt"][j])then
-				GameTooltip:AddLine(t["txt"][j], 1, 0.82, 0, 1);
-			end;
-		end;
-	end;
-	GameTooltip:Show();
 end;
 
 function BST_TrainButton_OnEnter()
@@ -327,19 +386,19 @@ function BST_TrainButton_OnLeave()
 	GameTooltip:Hide();
 end;
 function BST_TrainButton_Click()
-	if(this.enable == 0)then
+	if(this.enable == 0 or this.nextLv < 1)then
 		return;
 	end;
 	local spell = this.name;
 	if( arg1 == "RightButton" ) then
 		BST_RightMenu:SetPoint("TOPLEFT", this, "TOPRIGHT", 0, 0);
-		BST_TrainButton_RightMenu_OnShow(BST_Data[spell], ips[spell], this.nextLv);
+		BST_TrainButton_RightMenu_OnShow(BST_Data[spell], ips[spell], this.nextLv, myTP);
 	else
-		if(ips[spell] and this.suitLv > 0)then
+		if( ips[spell] and this.suitLv > 0 and ips[spell][tostring(this.suitLv)] )then
 			local index = ips[spell][tostring(this.suitLv)];
 			DoCraft(index);
-			BeastSpell_TrainFrame_OnUpdate();
-			BST_SetTootip(1);
+			--BeastSpell_TrainFrame_OnUpdate();
+			updateButton = this;
 		end;
 	end;
 end;

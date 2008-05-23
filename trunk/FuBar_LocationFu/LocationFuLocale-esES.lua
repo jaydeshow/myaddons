@@ -15,29 +15,30 @@ L:AddTranslations("esES", function() return {
 	["Show your recommended zones in the tooltip"] = "Muestra tus zonas recomendadas en el tooltip",
 	["Zone:"] = "Zona:",
 	["Subzone:"] = "Subzona:",
+	["Fishing:"] = "Pesca:",
 	["Arena"] = "Arena",
 	["Friendly"] = "Amistoso",
 	["Contested"] = "En Disputa",
 	["Hostile"] = "Hostil",
-	["Sanctuary"] = "Santuario",
 	["Status:"] = "Estado:",
+	["Sanctuary"] = "Santuario",
 	["Coordinates:"] = "Coordenadas:",
 	["Level range:"] = "Rango de niveles:",
 	["Instances"] = "Instancias",
 	["Recommended zones"] = "Zonas recomendadas",
 	["Recommended instances"] = "Instancias recomendadas",
 	["Continent:"] = "Continente:",
-	
+
 	["    Walk path from %s to %s:"] = "    Ruta desde %s hasta %s:",
 	["    No path found"] = "    No se ha encontrado ninguna ruta",
-	
+
 	["%d-man"] = "%d-hombres", -- as in a 40-man raid
-	
-	["Atlas-hint"] = "Clic para abrir Atlas",
-	["Standard-hint"] = "Clic para abrir el mapa",
-	["Shift-hint"] = "Clic-May\195\186sculas para insertar tu posici\195\179n en la caja de edici\195\179n de la ventana de chat",
-	["Ctrl-hint"] = "Ctrl-Clic para abrir el mapa",
-	["Ctrl-Atlas-hint"] = "Ctrl-Clic para abrir Atlas",
-	
+
+	["Atlas-hint"] = "\nHaz |cffeda55fClick|r para abrir Atlas",
+	["Standard-hint"] = "\nHaz |cffeda55fClick|r para abrir el mapa",
+	["Shift-hint"] = "\n|cffeda55fMay\195\186s+Click|r para insertar tu posici\195\179n en la caja de edici\195\179n de la ventana de chat",
+	["Ctrl-hint"] = "\n|cffeda55fCtrl+Click|r para abrir el mapa",
+	["Ctrl-Atlas-hint"] = "\n|cffeda55fCtrl+Click|r para abrir Atlas",
+
 	["AceConsole-options"] = {"/locfu", "/locationfu"},
 } end)

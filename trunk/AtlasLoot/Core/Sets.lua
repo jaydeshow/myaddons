@@ -1,7 +1,6 @@
-local BabbleTrade=AceLibrary("Babble-Tradeskill-2.2");
-local BabbleClass = AceLibrary("Babble-Class-2.2");
-local BabbleZone = AceLibrary("Babble-Zone-2.2");
-local BabbleInventory=AceLibrary("Babble-Inventory-2.2");
+local BabbleClass = LibStub("LibBabble-Class-3.0"):GetLookupTable();
+local BabbleZone = LibStub("LibBabble-Zone-3.0"):GetLookupTable();
+local BabbleInventory = LibStub("LibBabble-Inventory-3.0"):GetLookupTable();
 local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 local RED = "|cffff0000";
@@ -225,7 +224,7 @@ function AtlasLoot70TokenMenu()
     AtlasLootMenuItem_4.lootpage="HardModeResist";
     AtlasLootMenuItem_4:Show();
     --Hard Mode Tokens: Cloaks
-    AtlasLootMenuItem_19_Name:SetText(BabbleInventory["Cloak"]);
+    AtlasLootMenuItem_19_Name:SetText(AL["Cloak"]);
     AtlasLootMenuItem_19_Extra:SetText("");
     AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\Spell_Holy_ChampionsBond");
     AtlasLootMenuItem_19.lootpage="HardModeCloaks";
@@ -243,7 +242,7 @@ function AtlasLoot70TokenMenu()
     AtlasLootMenuItem_21.lootpage="HardModeAccessories";
     AtlasLootMenuItem_21:Show();
     --Hard Mode Tokens: Weapons
-    AtlasLootMenuItem_8_Name:SetText(BabbleInventory["Weapons"]);
+    AtlasLootMenuItem_8_Name:SetText(AL["Weapons"]);
     AtlasLootMenuItem_8_Extra:SetText("");
     AtlasLootMenuItem_8_Icon:SetTexture("Interface\\Icons\\Spell_Holy_ChampionsBond");
     AtlasLootMenuItem_8.lootpage="HardModeWeapons";

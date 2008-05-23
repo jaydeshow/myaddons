@@ -1,4 +1,4 @@
-﻿-- MobMap - an ingame mob position database - v1.58
+﻿-- MobMap - an ingame mob position database - v1.61
 -- main code file
 
 -- coded 2007 by Slarti on EU-Blackhand
@@ -122,7 +122,6 @@ mobmap_trainer = {};
 mobmap_monitor = {};
 mobmap_monitor_quest = {};
 mobmap_language = nil;
-mobmap_dot_transparency = 1.0;
 mobmap_button_position = 1;
 mobmap_display_database_loading_info = false;
 mobmap_show_world_map_tooltips = true;
@@ -133,6 +132,8 @@ mobmap_hide_reagent_buttons = false;
 mobmap_window_height = 430;
 mobmap_optimize_response_times = false;
 mobmap_minimap_button_visible = true;
+mobmap_outer_dot_color = {["r"] = 0, ["g"] = 0, ["b"] = 0, ["a"] = 1};
+mobmap_inner_dot_color = {["r"] = 1, ["g"] = 1, ["b"] = 1, ["a"] = 1};
 
 
 mobmap_disabled = false;
@@ -257,6 +258,8 @@ function MobMap_ParseQuestObjective(objective, typeID)--fix
 		filtered = string.match(filtered, "^营救(.*)")
 	elseif string.match(filtered, "^与(.*)交谈") ~= nil then
 		filtered = string.match(filtered, "^与(.*)交谈")
+	elseif string.match(filtered, "^标记(.*)") ~= nil then
+		filtered = string.match(filtered, "^标记(.*)")
 	end
 	-- End
 
@@ -398,27 +401,17 @@ function MobMap_ParseQuestObjective(objective, typeID)--fix
 	end
 end
 
-
-
-
-
 function MobMap_ParseQuestTitle(questtitle)
 	MobMap_LoadDatabase(MOBMAP_QUEST_DATABASE);
-	local questid=MobMap_GetQuestIDByName(questtitle, UnitFactionGroup("player"));
-	if(questid) then
-		MobMap_ShowQuestDetails(questid);
-	else
+	if(MobMap_ShowQuestDetailsByTitle(questtitle)==false) then
 		MobMap_DisplayMessage(MOBMAP_QUEST_TITLE_NOT_FOUND);		
 	end
 end
 
 function MobMap_ParseQuestTitleOrObjective(unknowntext)
 	MobMap_LoadDatabase(MOBMAP_QUEST_DATABASE);
-	local questid=MobMap_GetQuestIDByName(unknowntext, UnitFactionGroup("player"));
-	if(questid) then
-		MobMap_ShowQuestDetails(questid);
-	else
-		MobMap_ParseQuestObjective(unknowntext);		
+	if(MobMap_ShowQuestDetailsByTitle(unknowntext)==false) then
+		MobMap_ParseQuestObjective(unknowntext);
 	end
 end
 
@@ -646,7 +639,8 @@ function MobMap_ScanMerchant()
 	local merchantName=UnitName("npc");
 	if(merchantName==nil) then return; end
 	local merchantItemCount=GetMerchantNumItems();
-	local merchantData={};
+
+	if(mobmap_merchantstock[merchantName]==nil) then mobmap_merchantstock[merchantName]={}; end
 
 	local item;
 	for item=1, merchantItemCount, 1 do
@@ -664,6 +658,8 @@ function MobMap_ScanMerchant()
 				itemData["limited"]=0;
 			end
 
+			local dataComplete=true;
+
 			if(extendedCost) then
 				local honorPoints, arenaPoints, itemCount = GetMerchantItemCostInfo(item);
 				itemData["honorprice"]=honorPoints;
@@ -671,6 +667,7 @@ function MobMap_ScanMerchant()
 				local token;
 				for token=1, itemCount, 1 do
 					local itemTexture, itemValue = GetMerchantItemCostItem(item, token);
+					if(itemTexture and itemValue) then
 					MobMapScanTooltip:Show();
 					MobMapScanTooltip:SetOwner(UIParent, "ANCHOR_NONE");
 					MobMapScanTooltip:SetMerchantCostItem(item, token);
@@ -679,14 +676,15 @@ function MobMap_ScanMerchant()
 					if(itemName) then
 						itemData["token"..token]=itemName.."|"..itemTexture.."|"..itemValue;
 					end
+					else
+						dataComplete=false;
+					end
 				end
 			end
 
-			merchantData[tostring(item)]=itemData;
+			if(dataComplete==true) then mobmap_merchantstock[merchantName][tostring(item)]=itemData; end
 		end
 	end
-
-	mobmap_merchantstock[merchantName]=merchantData;
 end
 
 mobmap_original_GetTradeSkillInfo=nil;
@@ -1143,9 +1141,9 @@ end
 function MobMap_PlaceMobMapButtonFrame()
 	if(Cartographer) then--fix bywolftankk
 		MobMapDotParentFrame:SetFrameStrata(WorldMapPositioningGuide:GetFrameStrata());
-		MobMapDotParentFrame:SetWidth(WorldMapPositioningGuide:GetWidth()*2);
-		MobMapDotParentFrame:SetHeight(WorldMapPositioningGuide:GetHeight()*2);
-		MobMapDotParentFrame:SetScale(WorldMapFrame:GetScale()*3);
+		MobMapDotParentFrame:SetWidth(WorldMapPositioningGuide:GetWidth());
+		MobMapDotParentFrame:SetHeight(WorldMapPositioningGuide:GetHeight());
+		MobMapDotParentFrame:SetScale(WorldMapFrame:GetScale());
 		MobMapDotParentFrame:ClearAllPoints();
 		MobMapDotParentFrame:SetAllPoints(WorldMapPositioningGuide);
 		MobMapButtonFrame:SetParent(UIParent);
@@ -1562,6 +1560,7 @@ function MobMapQuestWatchButtons_Update()
 						button.unknowntext=nil;
 						button:Show();
 					end
+					--DEFAULT_CHAT_FRAME: AddMessage(questobj)
 				end
 			else
 				if(button~=nil) then button:Hide(); end
@@ -1582,7 +1581,7 @@ function MobMapQuestWatchButtons_Update()
 						button:SetPoint("RIGHT","EQL3_QuestWatchLine"..i,"LEFT",0,0);
 						button:SetAlpha(0.6);
 					end
-					if(string.find(questobj, "^Quest Tracker.*")==nil) then
+					if(string.find(questobj, "^追踪任务.*")==nil) then
 						local filteredtitle=string.match(questobj,".*%] (.*)");
 						if(filteredtitle~=nil) then
 							questobj=filteredtitle;
@@ -1832,7 +1831,6 @@ function MobMap_DisplayPositionData(posdata, mobid, ihid)
 				frame=CreateFrame("Button","MobMapDot"..x.."_"..v.y,parentframe,"MobMapDotFrameTemplate");
 				frame:SetPoint("TOPLEFT",WorldMapPositioningGuide,"TOPLEFT",x*frame:GetWidth(),-67-v.y*frame:GetHeight());
 				frame:SetFrameLevel(WorldMapPositioningGuide:GetFrameLevel()+21);
-				frame:SetAlpha(mobmap_dot_transparency);
 				frame.xcoord=x;
 				frame.ycoord=v.y;
 			end
@@ -1849,6 +1847,10 @@ function MobMap_DisplayPositionData(posdata, mobid, ihid)
 				table.insert(frame.ihidtable,ihid);
 			end
 			mobmap_displayed_dot_count=mobmap_displayed_dot_count+1;
+			getglobal(frame:GetName().."Texture"):SetVertexColor(mobmap_outer_dot_color.r,mobmap_outer_dot_color.g,mobmap_outer_dot_color.b);
+			getglobal(frame:GetName().."Texture"):SetAlpha(mobmap_outer_dot_color.a);
+			getglobal(frame:GetName().."Texture2"):SetVertexColor(mobmap_inner_dot_color.r,mobmap_inner_dot_color.g,mobmap_inner_dot_color.b);
+			getglobal(frame:GetName().."Texture2"):SetAlpha(mobmap_inner_dot_color.a);
 			frame:Show();
 		end
 	end
@@ -2462,7 +2464,6 @@ end
 -- options frame
 
 function MobMap_OptionsFrame_OnShow()
-	MobMapOptionsFrameDotOpacitySlider:SetValue(mobmap_dot_transparency*100);
 	MobMapOptionsFrameWindowHeightSlider:SetValue(mobmap_window_height);
 	MobMapOptionsFrameAlternateButtonPosCheckButton:SetChecked(mobmap_button_position==2);
 	MobMapOptionsFrameAlternateButtonPos2CheckButton:SetChecked(mobmap_button_position==3);
@@ -2475,6 +2476,7 @@ function MobMap_OptionsFrame_OnShow()
 	MobMapOptionsFrameHideQuestLogButtonsCheckButton:SetChecked(mobmap_hide_questlog_buttons);
 	MobMapOptionsFrameHideQuestTrackerButtonsCheckButton:SetChecked(mobmap_hide_questtracker_buttons);
 	MobMapOptionsFrameHideReagentButtonsCheckButton:SetChecked(mobmap_hide_reagent_buttons);
+	MobMap_OptionsFrame_SetDotColors();
 end
 
 function MobMap_ResizeWindow()
@@ -2526,6 +2528,56 @@ function MobMap_ResizeWindow()
 		MobMapPickupZoneListScrollFrame:SetHeight(mobmap_window_height-150);
 		MobMapPickupZoneListScrollFrameInnerTexture:SetHeight(mobmap_window_height-170);
 	end
+end
+
+mobmap_color_selector_target = nil;
+
+function MobMap_DisplayColorSelector(target)
+	if(ColorPickerFrame:IsShown()) then
+		ColorPickerFrame:Hide();
+	else
+		mobmap_color_selector_target=target;
+		ColorPickerFrame.previousValues={["r"]=target.r, ["g"]=target.g, ["b"]=target.b, ["a"]=target.a};
+		ColorPickerFrame.cancelFunc=MobMap_ColorPicker_Cancelled;
+		ColorPickerFrame.opacityFunc=MobMap_ColorPicker_SetColor;
+		ColorPickerFrame.func=MobMap_ColorPicker_SetColor;
+		ColorPickerFrame.hasOpacity=true;
+		ColorPickerFrame.opacity=1-target.a;
+		ColorPickerFrame:SetColorRGB(target.r, target.g, target.b);
+		ColorPickerFrame:ClearAllPoints();
+		ColorPickerFrame:SetFrameStrata("TOOLTIP");
+		ColorPickerFrame:SetPoint("LEFT", "MobMapFrame", "LEFT", (MobMapFrame:GetWidth()-ColorPickerFrame:GetWidth())/2, 0);
+		ColorPickerFrame:Show();
+	end
+end
+
+function MobMap_ColorPicker_SetColor()
+	if(mobmap_color_selector_target) then
+		local r, g, b = ColorPickerFrame:GetColorRGB();
+		local a=1-OpacitySliderFrame:GetValue();
+		mobmap_color_selector_target.r=r;
+		mobmap_color_selector_target.g=g;
+		mobmap_color_selector_target.b=b;
+		mobmap_color_selector_target.a=a;
+		MobMap_OptionsFrame_SetDotColors();
+	end
+end
+
+function MobMap_ColorPicker_Cancelled()
+	if(mobmap_color_selector_target) then
+		mobmap_color_selector_target.r=ColorPickerFrame.previousValues.r;
+		mobmap_color_selector_target.g=ColorPickerFrame.previousValues.g;
+		mobmap_color_selector_target.b=ColorPickerFrame.previousValues.b;
+		mobmap_color_selector_target.a=ColorPickerFrame.previousValues.a;
+	end
+	mobmap_color_selector_target=nil;
+end
+
+function MobMap_OptionsFrame_SetDotColors()
+	MobMapOptionsFrameDotColorSettingsExampleTexture:SetVertexColor(mobmap_outer_dot_color.r, mobmap_outer_dot_color.g, mobmap_outer_dot_color.b);
+	MobMapOptionsFrameDotColorSettingsExampleTexture:SetAlpha(mobmap_outer_dot_color.a);
+	MobMapOptionsFrameDotColorSettingsExampleTexture2:SetVertexColor(mobmap_inner_dot_color.r, mobmap_inner_dot_color.g, mobmap_inner_dot_color.b);
+	MobMapOptionsFrameDotColorSettingsExampleTexture2:SetAlpha(mobmap_inner_dot_color.a);
 end
 
 -- general utilities
@@ -2586,11 +2638,11 @@ end
 
 function MobMap_GetMoneyFromMoneyString(str)
 	local gold, silver, copper;
-	gold=string.match(str,"(%d+) "..GOLD);
+	gold=string.match(str,"(%d+) "..MOBMAP_GOLD);
 	if(gold==nil) then gold=0; end
-	silver=string.match(str,"(%d+) "..SILVER);
+	silver=string.match(str,"(%d+) "..MOBMAP_SILVER);
 	if(silver==nil) then silver=0; end
-	copper=string.match(str,"(%d+) "..COPPER);
+	copper=string.match(str,"(%d+) "..MOBMAP_COPPER);
 	if(copper==nil) then copper=0; end	
 	return gold*10000+silver*100+copper;
 end
@@ -2732,7 +2784,7 @@ function MobMap_LoadDatabase(dbtype, doLoadDependencies, doGC)
 			UpdateAddOnMemoryUsage();
 			local usedRAM=math.floor(GetAddOnMemoryUsage("MobMapDatabaseStub"..dbtype)+0.5);
 			if(mobmap_display_database_loading_info==true) then
-				MobMap_DisplayMessage("MobMap"..whatWasLoaded.."数据"..whatExactly.."刚才动态加载消耗了"..loadTime.." 秒(+ "..gcTime.." 秒 GC 时间) 及占用"..usedRAM.." KB插件内存");
+				MobMap_DisplayMessage("MobMap"..whatWasLoaded.."数据"..whatExactly.."刚才动态加载消耗了"..loadTime.."秒(+"..gcTime.."秒GC时间)及占用"..usedRAM.."KB插件内存");
 			end
 			return true;
 		end

@@ -5,8 +5,6 @@
 local boss = BB["Wrath-Scryer Soccothrates"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 
-local db = nil
-
 ----------------------------
 --      Localization      --
 ----------------------------
@@ -25,11 +23,10 @@ L:RegisterTranslations("zhTW", function() return {
 	knock_message = "近戰被擊退!",
 } end )
 
---天怒预言者苏克拉底
 L:RegisterTranslations("zhCN", function() return {
 	knock = "击退",
-	knock_desc = "击退警报",
-	knock_message = "近战被击退!",
+	knock_desc = "当被击退时发出警报。",
+	knock_message = "近战被击退！",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -40,7 +37,7 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("koKR", function() return {
 	knock = "지옥 대포 정렬",
-	knock_desc = "지옥 대포 정렬에 대한 경고",
+	knock_desc = "지옥 대포 정렬에 대해 알립니다.",
 	knock_message = "지옥 대포 정렬!",
 } end )
 
@@ -60,18 +57,15 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"knock", "bosskill"}
-mod.revision = tonumber(("$Revision: 66169 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 68702 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	-- There are about a bazillion Knock Away spells on wowhead, need to find the right one
-	--self:AddCombatListener("SPELL_CAST_START", "Knock", #####)
+	self:AddCombatListener("SPELL_CAST_START", "Knock", 36512)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-
-	db = self.db.profile
 end
 
 ------------------------------
@@ -79,7 +73,7 @@ end
 ------------------------------
 
 function mod:Knock()
-	if db.knock then
+	if self.db.profile.knock then
 		self:Message(L["knock_message"], "Important")
 	end
 end

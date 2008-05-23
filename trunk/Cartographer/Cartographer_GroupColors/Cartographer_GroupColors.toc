@@ -6,6 +6,7 @@
 ## X-Name-koKR: 그룹 색상
 ## X-Name-zhTW: 小隊顏色
 ## X-Name-esES: Colores de Grupo
+## X-Name-zhCN: 小队颜色
 ## X-ModuleName: GroupColors
 ## Notes: Module which turns all your party's and your raid's POIs into circles colored based on class, and shows a number on them based on their raid group.
 ## Notes-deDE: Modul, das Spieler Deiner Gruppe oder Deines Raids als farbigen Punkt in ihrer jeweiligen Klassenfarbe und mit Raid-Gruppennummer auf der Weltkarte anzeigt.
@@ -13,21 +14,16 @@
 ## Notes-koKR: 모든 당신의 파티 및 공격대원들의 위치를 직업에 따른 서클과 숫자를 통해 보여줍니다.
 ## Notes-zhTW: 在地圖上將隊伍和團隊隊友圓點依職業著色，並顯示號碼表示他們所在小隊的模組。
 ## Notes-esES: Módulo que convierte todos los PdIs de tu grupo y banda en círculos coloreados basados en clase, y muestra un número sobre ellos basado en su grupo de banda
+## Notes-zhCN: 在地图上将队伍或团队成员根据职业着色, 并显示所在小队队号数字。
 ## Author: ckknight
 ## DefaultState: enabled
 ## LoadOnDemand: 1
 ## Dependencies: Cartographer
-## OptionalDeps: Ace2
+## OptionalDeps:
 ## X-Category: Map
 ## X-eMail: ckknight@gmail.com
 ## X-Website: http://ckknight.wowinterface.com/
 ## X-License: GPL v2 or later
 ## Version: 2.0
-
-#Libs\AceLibrary\AceLibrary.lua
-#Libs\AceOO-2.0\AceOO-2.0.lua
-#Libs\AceEvent-2.0\AceEvent-2.0.lua
-#Libs\AceAddon-2.0\AceAddon-2.0.lua
-#Libs\AceLocale-2.2\AceLocale-2.2.lua
 
 GroupColors.lua

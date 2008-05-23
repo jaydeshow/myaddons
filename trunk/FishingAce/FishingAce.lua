@@ -1,4 +1,4 @@
-FishingAce = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceEvent-2.0", "AceHook-2.1", "AceDB-2.0")
+﻿FishingAce = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceEvent-2.0", "AceHook-2.1", "AceDB-2.0")
 
 local L = AceLibrary("AceLocale-2.2"):new("FishingAce")
 
@@ -37,6 +37,12 @@ local options = {
 }
 
 local FISHINGLURES = {
+   [34861] = {
+      ["n"] = "Sharpened Fish Hook",       		  -- 100 for 10 minutes
+      ["b"] = 100,
+      ["s"] = 100,
+      ["d"] = 10,
+   },
    [6533] = {
       ["n"] = "Aquadynamic Fish Attractor",       -- 100 for 10 minutes
       ["b"] = 100,

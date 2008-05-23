@@ -104,12 +104,6 @@ L:RegisterTranslations("zhCN", function() return {
 		"以全局模板自动分配当前的圣骑士，同时还检查天赋设置，因此例如拥有强化力量祝福天赋的骑士将会被优先分配Buff力量祝福。\r\r"..
 		"|cFFFFFFFF群发按钮|r\r"..
 		"将当前的祝福配置重新群发一遍，用在某人掉线重新登录魔兽这样的情况上。\r\r",
-	["Generated automatic template"]			= "自动模板已生成",
-	["%s %s's template - %s from %s to %s"]		= "%s %s的模板 - %s 来自 %s 给 %s",
-	["%s %s's exception - %s from %s to %s"]	= "%s %s的例外 - %s 来自 %s 给 %s",
-	["Remotely changed"]						= "已远端更改",
-	["Changed"]									= "已更改",
-	["Cleared %s's exceptions for %s"]			= "清除了%s的例外给%s",
 	["Warning!"]								= "警告！",
 	["PallyPower users are in the raid and you are NOT promoted\rPallyPower only accepts assignment changes from promoted players"] = "团队里有PallyPower用户，而你不是团队助理\rPallyPower只接受助理以上的玩家的分配",
 	["Generating Blessing Assignments for groups 1 to %d"] = "为队伍1至%d生成祝福分配方案",
@@ -119,6 +113,13 @@ L:RegisterTranslations("zhCN", function() return {
 	["Synchronised group count with %s to %d because of pending blessing assignments"] = "已与 %s 同步队伍数量为 %d 因为未处理的祝福分配",
 	["%s skipped because no %s present"]		= "已跳过 %s 因为没有 %s 存在",
 	["Holy"]									= "神圣",
+	["Greyouts"]								= "无效指示",
+	["Grey out invalid Drag'n'Drop target cells"] = "将无效的拖放目标格子灰掉",
+	["Show Exceptions"]							= "显示例外",
+	["Show first 3 exception icons if any exist for a cell. Note that this option is automatically enabled for cells which do not have a greater blessing defined"] = "如果某个格有例外则显示其前三个例外图标。注意当某格子没有定义强效祝福的时候该功能自动启用。",
+	["Use Guild Roster"]						= "使用公会名单",
+	["Ranks"]									= "级别",
+	["Select the guild ranks to include"]		= "选择要包含的公会级别",
 
 	-- Chat responder blessings recognition:
 	-- If not appropriate to translate into more than one thing, just make them all the same

@@ -1,10 +1,9 @@
 local Capping = Capping
 local self = Capping
 local L = CappingLocale
-local candy = AceLibrary("CandyBar-2.0")
 
 local lastsync = 0
-local strfind, strlower = strfind, strlower
+local strfind, strlower, strmatch = strfind, strlower, strmatch
 local capture_time = 243
 
 --------------------------
@@ -19,7 +18,7 @@ function Capping:StartAV()
 	self:RegisterTempEvent("QUEST_PROGRESS", "AVQuests")
 	self:RegisterTempEvent("QUEST_COMPLETE", "AVQuests")
 	
-	self:RegisterTempEvent("CHAT_MSG_ADDON")
+	self:RegisterTempEvent("CHAT_MSG_ADDON", "AVSync")
 end
 
 -- determines if a node's a graveyard or tower
@@ -32,23 +31,25 @@ local function NodeType(node)
 	return "graveyard"
 end
 
---------------------------------------------------------------
-function Capping:CHAT_MSG_ADDON(prefix, message, chan, sender)
---------------------------------------------------------------
-	if prefix ~= "cap" or chan ~= "BATTLEGROUND" or sender == UnitName("player") then return end
+------------------------------------------------------
+function Capping:AVSync(prefix, message, chan, sender)
+------------------------------------------------------
+	if prefix ~= "cap" or sender == UnitName("player") then return end
 	if message == "r" then
-		if lastsync + 20 < GetTime() then
+		local ctime = GetTime()
+		if lastsync + 20 < ctime then
 			for value,color in pairs(self:GetActiveBars()) do
-				local active, totalTime, elapsed, running = candy:Status(value)
-				if active and running then
-					SendAddonMessage("cap", format("%s@%d@%d@%s", value, totalTime, elapsed, color), "BATTLEGROUND")
+				local f = self:GetBar(value)
+				if f and f:IsShown() then
+					SendAddonMessage("cap", format("%s@%d@%d@%s", value, f.duration, f.duration - f.remaining, color), "BATTLEGROUND")
 				end
 			end
-			lastsync = GetTime()
+			lastsync = ctime
 		end
 	else
-		local name, maxTime, elapsed, color = strmatch(message, "^(.+)@(%d+)@(%d+)@(.+)")
-		if name and elapsed and not candy:Status(name) then
+		local name, duration, elapsed, color = strmatch(message, "^(.+)@(%d+)@(%d+)@(.+)")
+		local f = self:GetBar(name)
+		if name and elapsed and (not f or not f:IsShown()) then
 			local icon
 			if name == L["Ivus begins moving"] then 
 				icon = "Interface\\Icons\\Spell_Nature_NaturesBlessing"
@@ -57,9 +58,8 @@ function Capping:CHAT_MSG_ADDON(prefix, message, chan, sender)
 			else 
 				icon = self:GetIconData(color, NodeType(name))
 			end
-			maxTime, elapsed = tonumber(maxTime), tonumber(elapsed)
-			self:StartBar(name, maxTime, icon, color or "info1")
-			candy:SetTimeLeft(name, maxTime - elapsed)
+			duration = tonumber(duration)
+			self:StartBar(name, duration, duration - tonumber(elapsed), icon, color or "info2")
 		end
 	end
 end
@@ -73,34 +73,20 @@ end
 -------------------------------
 function Capping:AVAssaults(a1)
 -------------------------------
-	if strfind(a1, L["avunderattack"]) then
-		local node, faction
-		_,_,node = strfind(a1, L["avunderattack"])
-		if strfind(a1, L["Horde"]) then 
-			faction = L["Horde"] 
-		else 
-			faction = L["Alliance"] 
-		end
-		node = gsub(node, L["The "], "")
-		if faction == L["Horde"] then 
-			self:StopBar(node)
-			self:StartBar(node, capture_time, self:GetIconData("horde", NodeType(node)), "horde")
-		else
-			self:StopBar(node)
-			self:StartBar(node, capture_time, self:GetIconData("alliance", NodeType(node)), "alliance")
-		end
-	elseif strfind(a1, L["avtaken"]) then
-		local _,_,node = strfind(a1, L["avtaken"])
-		node = gsub(node, L["The "], "")
+	if strmatch(a1, L["avunderattack"]) then
+		local node = gsub( strmatch(a1, L["avunderattack"]), L["The "], "" )
+		local faction = (strfind(a1, L["Horde"]) and "horde") or "alliance"
+		self:StartBar(node, capture_time, capture_time, self:GetIconData(faction, NodeType(node)), faction)
+	elseif strmatch(a1, L["avtaken"]) then
+		local node = gsub( strmatch(a1, L["avtaken"]), L["The "], "" )
 		self:StopBar(node)
-	elseif strfind(a1, L["avdestroyed"]) then
-		local _,_,node = strfind(a1, L["avdestroyed"])
-		node = gsub(node, L["The "], "")
+	elseif strmatch(a1, L["avdestroyed"]) then
+		local node = gsub( strmatch(a1, L["avdestroyed"]), L["The "], "" )
 		self:StopBar(node)
 	elseif strfind(a1, L["Wicked, wicked, mortals!"]) then 
-		self:StartBar(L["Ivus begins moving"], 603, "Interface\\Icons\\Spell_Nature_NaturesBlessing", "alliance")
+		self:StartBar(L["Ivus begins moving"], 603, 603, "Interface\\Icons\\Spell_Nature_NaturesBlessing", "alliance")
 	elseif strfind(a1, L["The Ice Lord has arrived!"]) or strfind(a1, L["WHO DARES SUMMON LOKHOLAR"]) then
-		self:StartBar(L["Lokholar begins moving"], 603, "Interface\\Icons\\Spell_Frost_Glacier", "horde")
+		self:StartBar(L["Lokholar begins moving"], 603, 603, "Interface\\Icons\\Spell_Frost_Glacier", "horde")
 	end
 end			
 
@@ -110,8 +96,7 @@ function Capping:SnowfallHorde(a1)
 ----------------------------------
 	--Initial capture of Snowfall for horde
 	if strfind(strlower(a1), strlower(sf)) then
-		self:StopBar(sf)
-		self:StartBar(sf, capture_time, self:GetIconData("horde", "graveyard"), "horde")
+		self:StartBar(sf, capture_time, capture_time, self:GetIconData("horde", "graveyard"), "horde")
 	end
 end
 -------------------------------------
@@ -119,8 +104,7 @@ function Capping:SnowfallAlliance(a1)
 -------------------------------------
 	--Initial capture of Snowfall for alliance
 	if strfind(strlower(a1), strlower(sf)) then
-		self:StopBar(sf)
-		self:StartBar(sf, capture_time, self:GetIconData("alliance", "graveyard"), "alliance")
+		self:StartBar(sf, capture_time, capture_time, self:GetIconData("alliance", "graveyard"), "alliance")
 	end
 end
 

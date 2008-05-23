@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster koKR locale
-Revision: $Revision: 65999 $
+Revision: $Revision: 73696 $
 Translated by: 
 - kcgcom, fenlis (jungseop.park@gmail.com)
 ]]
@@ -273,7 +273,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "암흑 주문 공격력 <- 암흑 주문 공격력, 주문 공격력, 지능, 정신력, 체력",
 	-- /rb sum stat heal
 	["Sum Healing"] = "치유량",
-	["Healing <- Healing, Intellect, Spirit, Strength"] = "치유량 <- 치유량, 지능, 정신력, 힘",
+	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "치유량 <- 치유량, 지능, 정신력, 민첩, 힘",
 	-- /rb sum stat hit
 	["Sum Hit Chance"] = "적중률",
 	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "적중률 <- 적중도, 무기 숙력도",
@@ -496,10 +496,10 @@ L:RegisterTranslations("koKR", function() return {
 	-- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 	["numberPatterns"] = {
 		{pattern = "(%d+)만큼 증가합니다.", addInfo = "AfterNumber",},
-		{pattern = "%+(%d+)", addInfo = "AfterNumber",},
+		{pattern = "([%+%-]%d+)", addInfo = "AfterNumber",},
 --		{pattern = "grant.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 --		{pattern = "add.-(%d+)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
-		{pattern = "(%d+)([^%d%%]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+		{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 	},
 	["separators"] = {
 		"/", " and ", ",", "%. ", " for ", "&", ":"

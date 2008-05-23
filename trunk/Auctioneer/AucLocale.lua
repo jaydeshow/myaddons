@@ -1,6 +1,6 @@
 --[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: AucLocale.lua 2451 2007-11-12 23:47:09Z Luke1410 $
 
 	AucLocale

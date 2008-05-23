@@ -6,6 +6,7 @@
 ## X-Name-koKR: 미 탐색 지역
 ## X-Name-zhTW: 迷霧
 ## X-Name-esES: Faro Antiniebla
+## X-Name-zhCN: 迷雾
 ## X-ModuleName: Foglight
 ## Notes: Module to show unexplored areas on the map.
 ## Notes-deDE: Modul zur Aufdeckung nicht erkundeter Bereiche auf der Weltkarte.
@@ -13,22 +14,16 @@
 ## Notes-koKR: 지도에 탐험하지 못한 지역을 보여줍니다.
 ## Notes-zhTW: 顯示地圖尚未探索地區的模組。
 ## Notes-esES: Módulo que muestra las zonas inexploradas del mapa
+## Notes-zhCN: 显示地图尚未探索地区模块。
 ## Author: ckknight
 ## DefaultState: enabled
 ## LoadOnDemand: 1
 ## Dependencies: Cartographer
-## OptionalDeps: Ace2
+## OptionalDeps: 
 ## X-Category: Map
 ## X-eMail: ckknight@gmail.com
 ## X-Website: http://ckknight.wowinterface.com/
 ## X-License: GPL v2 or later
 ## Version: 2.0
-
-#Libs\AceLibrary\AceLibrary.lua
-#Libs\AceOO-2.0\AceOO-2.0.lua
-#Libs\AceEvent-2.0\AceEvent-2.0.lua
-#Libs\AceAddon-2.0\AceAddon-2.0.lua
-#Libs\AceHook-2.1\AceHook-2.1
-#Libs\AceLocale-2.2\AceLocale-2.2.lua
 
 Foglight.lua

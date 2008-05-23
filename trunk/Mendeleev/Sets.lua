@@ -2,7 +2,6 @@ local BB = LibStub("LibBabble-Boss-3.0"):GetLookupTable()
 local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 local BC = LibStub("LibBabble-Class-3.0"):GetLookupTable()
 local BO = AceLibrary("Babble-Ore-2.2")
-local BTS = AceLibrary("Babble-Tradeskill-2.2")
 local L  = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 
 MENDELEEV_SETS = {
@@ -13,13 +12,13 @@ MENDELEEV_SETS = {
 		header = L["Gathering skills"],
 		quality = 1,
 		sets = {
-			["Tradeskill.Gather.Fishing"] = BTS["Fishing"],
-			["Tradeskill.Gather.Disenchant"] = BTS["Disenchant"],
-			["Tradeskill.Gather.Herbalism"] = BTS["Herbalism"],
-			["Tradeskill.Gather.Mining"] = BTS["Mining"],
-			["Tradeskill.Gather.Skinning"] = BTS["Skinning"],
-			["Tradeskill.Gather.Pickpocketing"] = BTS["Pick Pocket"],
-			["Tradeskill.Gather.Prospecting"] = BTS["Prospecting"],
+			["Tradeskill.Gather.Fishing"] = GetSpellInfo(13615),
+			["Tradeskill.Gather.Disenchant"] = GetSpellInfo(13262),
+			["Tradeskill.Gather.Herbalism"] = GetSpellInfo(9134),
+			["Tradeskill.Gather.Mining"] = GetSpellInfo(12560),
+			["Tradeskill.Gather.Skinning"] = GetSpellInfo(13697),
+			["Tradeskill.Gather.Pickpocketing"] = GetSpellInfo(5167),
+			["Tradeskill.Gather.Prospecting"] = GetSpellInfo(32177),
 		},
 	},
 	{
@@ -30,24 +29,24 @@ MENDELEEV_SETS = {
 		useval = function (v) return " ("..v..")" end,
 		quality = 1,
 		sets = {
-			["Tradeskill.Crafted.Alchemy"] = BTS["Alchemy"],
-			["Tradeskill.Crafted.Blacksmithing.Basic"] = BTS["Blacksmithing"],
-			["Tradeskill.Crafted.Blacksmithing.Armorsmith"] = BTS["Armorsmith"],
-			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Axesmith"] = BTS["Master Axesmith"],
-			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Hammersmith"] = BTS["Master Hammersmith"],
-			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Swordsmith"] = BTS["Master Swordsmith"],
-			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Basic"] = BTS["Weaponsmith"],
-			["Tradeskill.Crafted.Cooking"] = BTS["Cooking"],
-			["Tradeskill.Crafted.Engineering.Basic"] = BTS["Engineering"],
-			["Tradeskill.Crafted.Engineering.Gnomish"] = BTS["Gnomish Engineering"],
-			["Tradeskill.Crafted.Engineering.Goblin"] = BTS["Goblin Engineering"],
-			["Tradeskill.Crafted.First Aid"] = BTS["First Aid"],
-			["Tradeskill.Crafted.Jewelcrafting"] = BTS["Jewelcrafting"],
-			["Tradeskill.Crafted.Leatherworking.Basic"] = BTS["Leatherworking"],
-			["Tradeskill.Crafted.Leatherworking.Dragonscale"] = BTS["Dragonscale Leatherworking"],
-			["Tradeskill.Crafted.Leatherworking.Elemental"] = BTS["Elemental Leatherworking"],
-			["Tradeskill.Crafted.Leatherworking.Tribal"] = BTS["Tribal Leatherworking"],
-			["Tradeskill.Crafted.Tailoring"] = BTS["Tailoring"],
+			["Tradeskill.Crafted.Alchemy"] = GetSpellInfo(2259),
+			["Tradeskill.Crafted.Blacksmithing.Basic"] = GetSpellInfo(2018),
+			["Tradeskill.Crafted.Blacksmithing.Armorsmith"] = GetSpellInfo(9788),
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Axesmith"] = GetSpellInfo(17041),
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Hammersmith"] = GetSpellInfo(17040),
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Swordsmith"] = GetSpellInfo(17039),
+			["Tradeskill.Crafted.Blacksmithing.Weaponsmith.Basic"] = GetSpellInfo(9787),
+			["Tradeskill.Crafted.Cooking"] = GetSpellInfo(2550),
+			["Tradeskill.Crafted.Engineering.Basic"] = GetSpellInfo(4036),
+			["Tradeskill.Crafted.Engineering.Gnomish"] = GetSpellInfo(20220),
+			["Tradeskill.Crafted.Engineering.Goblin"] = GetSpellInfo(20221),
+			["Tradeskill.Crafted.First Aid"] = GetSpellInfo(3273),
+			["Tradeskill.Crafted.Jewelcrafting"] = GetSpellInfo(25229),
+			["Tradeskill.Crafted.Leatherworking.Basic"] = GetSpellInfo(2108),
+			["Tradeskill.Crafted.Leatherworking.Dragonscale"] = GetSpellInfo(10657),
+			["Tradeskill.Crafted.Leatherworking.Elemental"] = GetSpellInfo(10659),
+			["Tradeskill.Crafted.Leatherworking.Tribal"] = GetSpellInfo(10661),
+			["Tradeskill.Crafted.Tailoring"] = GetSpellInfo(3908),
 		},
 	},
 	{
@@ -185,10 +184,10 @@ MENDELEEV_SETS = {
 		useval = function (v) return string.format(L[" (%d tickets)"], v) end,
 		quality = 1,
 		sets = {
-			["QuestMats.Darkmoon Faire.Turnin.Engineering"] = BTS["Engineering"],
+			["QuestMats.Darkmoon Faire.Turnin.Engineering"] = GetSpellInfo(4036),
 			["QuestMats.Darkmoon Faire.Turnin.Greys"] = L["Junk Items"],
 			["QuestMats.Darkmoon Faire.Turnin.Leather"] = L["Leather"],
-			["QuestMats.Darkmoon Faire.Turnin.Blacksmithing"] = BTS["Blacksmithing"],
+			["QuestMats.Darkmoon Faire.Turnin.Blacksmithing"] = GetSpellInfo(2018),
 		},
 	},
 	{

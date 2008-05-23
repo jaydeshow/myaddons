@@ -43,6 +43,9 @@ L:RegisterTranslations("zhTW", function() return {
 	["Memory"] = "記憶體",
 	["CPU per second"] = "每秒CPU用量",
 	["Memory since garbage collection"] = "回收後的記憶體",
+	
+	["Show totals for multipart addons"] = "顯示帶有多部分的插件",
+	["Show memory usage of multipart addons as the total of all the individual parts."] = "顯示帶有多部份插件每一個部份的記憶體用量",
 
 	-- Tooltip strings
 	["Framerate"] = "畫面幀數",

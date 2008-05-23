@@ -1,7 +1,7 @@
 --[[
 	PanelScroller
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: PanelScroller.lua 68 2008-02-12 08:05:07Z mentalpower $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: PanelScroller.lua 76 2008-03-23 14:23:35Z kandoko $
 	URL: http://auctioneeraddon.com/dl/
 
 	License:
@@ -124,6 +124,7 @@ function kit:MouseScroll(direction)
 end
 
 -- Performs a scroll along the specified axis by a given percentage of the window size
+--This % will always be 1 page of datain the vertical direction
 function kit:ScrollByPercent(axis, percent)
 	local scrollbar, curpos, winsize, scrollrange
 	if axis == "HORIZONTAL" then
@@ -131,15 +132,27 @@ function kit:ScrollByPercent(axis, percent)
 		scrollrange = self.hSize
 		winsize = self.hWin
 		curpos = self.hPos
+		--horizontal will be % of  total size
+		percent = (winsize*percent)
 	elseif axis == "VERTICAL" then
 		scrollbar = self.vScroll
 		scrollrange = self.vSize
 		winsize = self.vWin
 		curpos = self.vPos
+		--vertical is 1 page of data varies by # of  data rows in that scrollframe or (winsize*percent)
+		if self:GetParent().sheet and self:GetParent().sheet.rows then
+			if percent > 0 then
+				percent = #self:GetParent().sheet.rows 
+			else 
+				percent = -#self:GetParent().sheet.rows 
+			end
+		else
+			percent = (winsize*percent)
+		end
 	else
 		return error("Unkown axis for scrolling, must be one of HORIZONTAL or VERTICAL")
 	end
-	scrollbar:SetValue(math.max(0, math.min(curpos + (winsize*percent), scrollrange)))
+	scrollbar:SetValue(math.max(0, math.min(curpos + (percent), scrollrange)))
 	self:ScrollSync()
 end
 

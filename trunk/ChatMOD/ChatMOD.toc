@@ -1,10 +1,10 @@
-## Interface: 20300
-## Title: ChatMOD |cff66CCCCrev|cffFF0000116
-## Author: Marco 'solariz' Goetze
-## Version: 116
-## Notes: General Purpose full featured Chat Enhancement Collection
+﻿## Interface: 20400
+## Title-zhTW: CHATMOD
+## Notes-zhTW: 自動記錄上一個發言頻道、顯示發言的時間、聊天框中可用滑鼠滾輪捲動、自定頻道的物品連結、輸入訊息時不需按 Alt 鍵即可使用方向鍵移動游標
+## Version: 118
+
 ## eMail: http://www.solariz.de
-## URL: http://www.solariz.de/6-0-chatmod.html
+## URL: http://www.solariz.de/world-of-warcraft/chatmod/
 ## OptionalDeps: chronos, timex
 ## DefaultState: Enabled
 ## LoadOnDemand: 0

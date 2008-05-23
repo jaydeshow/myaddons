@@ -13,9 +13,9 @@ CorpsePoint.ShowOnMap = true
 L:AddTranslations("enUS", function() return {
 	["Corpse"] = true,
 	["CorpseNames"] = {"Corpse", -- Insert cultural humour for death here. This is all fairly english based stuff, so change for translations
-		"Location of demise", 
-		"Compost Heap", 
-		"Ex-Parrot Location", 
+		"Location of demise",
+		"Compost Heap",
+		"Ex-Parrot Location",
 		"Worm Food Factory",
 		"Note to self: Don't hug the bear",
 		"This many steps away from the light...",
@@ -62,81 +62,76 @@ L:AddTranslations("enUS", function() return {
 } end)
 
 L:AddTranslations("esES", function() return {
-		["CorpseNames"] = {"Cad\195\161ver", -- Insert cultural humour for death here. This is all fairly english based stuff, so change for translations
-		"Lugar de fallecimiento", 
---		"Mont\195\179n de esti\195\169rcol", 
---		"Ex-Parrot Location", 
-		"F\195\161brica de comida para gusanos",
+	["Corpse"] = "Cadáver",
+	["CorpseNames"] = {"Cadáver", -- Insert cultural humour for death here. This is all fairly english based stuff, so change for translations
+		"Lugar de fallecimiento",
+		"Montón de estiércol",
+		"Localización del Ex-Loro",
+		"Fábrica de comida para gusanos",
 		"Nota mental: No abrazar al oso",
---		"Muchos pasos lejos de la luz...",
+		"Muchos pasos lejos de la luz...",
 		"Esta es la forma que tiene la Naturaleza de decirte que te lo tomes con calma",
---		"Well you're a silly sausage, aren't you?",
-		"Vaya, eso fu\195\169 un error",
---		"No, no, Guard, turn, parry, dodge, spin and -then- thrust",
---		"Pese a que todas las se\195\177ales lo negasen, era obviamente temporada de patos",
-		"Has tenido d\195\173as peores",
-		"Bueno... siempre te quedar\195\161 Paris",
+		"Bueno eres un tonto salchicha, ¿no?",
+		"Vaya, eso fué un error",
+		"No no, Guardia, doblar, desviar, esquivar, girar y luego empujar",
+		"Pese a que todas las señales lo negasen, era obviamente temporada de patos",
+		"Has tenido días peores",
+		"Bueno... siempre te quedará Paris",
 		"Culpa al Cazador",
 		"Culpa al Sacerdote",
-		"Culpa a Canad\195\161",
-		"EST\195\129 OSCURO AQU\195\141, \194\191EH?",
+		"Culpa a Canadá",
+		"ESTÁ OSCURO AQUÍ, ¿EH?",
 		"Bueno, no puedes decir que no te lo estabas buscando...",
 		"Trae una pala",
 		"Un gnomo hubiese esquivado eso.",
 		"Deja de llorar, no ayuda.",
-		"Culpa a la televisi\195\179n",
+		"Culpa a la televisión",
 		"Culpa a WoW",
-		"Si no te hubiesen desinflado en el \195\186ltimo parche...",
+		"Si no te hubiesen desinflado en el último parche...",
 		"Recuerda ponerte un par de calcetines limpios.",
---		"Want me to freshen your drink while you're slacking?",
-		"AYUAD LOL",
---		"Less slacking, more healing.",
-		"Uf, consigue m\195\161s puntos de salud.",
+		"¿Quieres que refresque tu bebida mientras te debilitas?",
+		"AYUDA LOL",
+		"Menos debilitarse, más curar.",
+		"Uf, consigue más puntos de salud.",
 		"VENDO: [Frasco de los Titanes]",
-		"\194\191Era eso un tauren o un alce?",
-		"Espero que *esta* vez aprendieses tu lecci\195\179n.",
-		"\194\161Mosquis!",
---		"The dead tell no Duck Tales.",
+		"¿Era eso un tauren o un alce?",
+		"Espero que *esta* vez aprendieses tu lección.",
+		"¡Mosquis!",
+		"Los muertos hablan de cuentos de muertos.",
 		"Culpa al sanador",
 		"No culpes a Noruega, es un lugar tan bonito",
-		"\194\161Es temporada de conejos!",
-		"Un p\195\173caro hubiese usado Esfumarse.",
-		"\194\161ZOMG GNAKEADO!",
+		"¡Es temporada de conejos!",
+		"Un pícaro hubiese usado Esfumarse.",
+		"¡ZOMG GNAKEADO!",
 		"No puedes culpar a tu teclado esta vez.",
-		"Solo... uno... m\195\161s... bah.",
-		"Nada que una taza de caf\195\169 no pueda arreglar.",
-		"\194\191Quiz\195\161s te dejaste la lavadora encendida?",
-		"Ser\195\161 mejor que vayas a ver qu\195\169 quiere tu perro.",
+		"Solo... uno... más... bah.",
+		"Nada que una taza de café no pueda arreglar.",
+		"¿Quizás te dejaste la lavadora encendida?",
+		"Será mejor que vayas a ver qué quiere tu perro.",
 		"No bebas y mueras.",
-		"El helado est\195\161 por aqu\195\173.",
-		"Cerveza. Por. Aqu\195\173.",
+		"El helado está por aquí.",
+		"Cerveza. Por. Aquí.",
 		"Mira siempre el lado brillante de la vida",
---		"Tiene bollos con mantequilla para el t\195\169.",
 		"No importa lo que hagas...",
-		"A B C D E F G",
-		"1 2 3 4 5 6 7 8 9 10",
---		"Le ama carnalmente...",
---		"Cyril Connolly?",
---		"El mismo S\195\179crates estaba permanentemente cabreado.",
---		"Un peque\195\177o pensador adorable, pero un indeseable cuando se enoja.",
 		"Impecable caminata",
+
 		"No imites a Clark Gable.",
 		"En ocasiones veo muertos",
 		"Peligro es mi apellido",
-		"Corre, Forrest...\194\161Corre!",
-		"\194\161No me siento las piernas!",
+		"Corre, Forrest...¡Corre!",
+		"¡No me siento las piernas!",
 		"No he reparado en gastos",
-		"Estoy a 30 minutos de ah\195\173, llegar\195\169 en 10",
---		"Si quieres mirar mal a alguien b\195\186scate un espejo",
-		"\194\161No hay dolor! \194\161No hay dolor!",
-		"\194\161Corred, insensatos!",
-		"Nunca imagin\195\169 morir peleando al lado de un elfo",
-		"No son los a\195\177os querida, son los kil\195\179metros",
+		"Estoy a 30 minutos de ahí, llegaré en 10",
+		"Si quieres mirar mal a alguien búscate un espejo",
+		"¡No hay dolor! ¡No hay dolor!",
+		"¡Corred, insensatos!",
+		"Nunca imaginé morir peleando al lado de un elfo",
+		"No son los años querida, son los kilómetros",
 		"Mueve el dedo gordo...",
-		"Volver\195\169",
-		"\194\161Inconcebible!",
+		"Volveré",
+		"¡Inconcebible!",
 		"Sigue al conejo blanco",
- },
+	},
 } end)
 
 L:AddTranslations("koKR", function() return {
@@ -152,8 +147,8 @@ L:AddTranslations("koKR", function() return {
 
 L:AddTranslations("deDE", function() return {
 	["CorpseNames"] = {
-		"Der Ort des Untergangs", 
-		"Komposthaufen", 
+		"Der Ort des Untergangs",
+		"Komposthaufen",
 		"Fabrik für Wurmfutter",
 		"Merke: Nicht mit dem Bär kuscheln",
 		"Ich sehe Licht am Ende des Pfeils...",
@@ -199,19 +194,32 @@ L:AddTranslations("deDE", function() return {
 L:AddTranslations("zhTW", function() return {
 	["Corpse"] = "屍體",
 	["CorpseNames"] = {"屍體", -- Insert cultural humour for death here. This is all fairly english based stuff, so change for translations
-		"陳屍地點", 
-		"命案現場", 
-		"鮪魚", 
+		"陳屍地點",
+		"命案現場",
+		"鮪魚",
 		"快回火星吧，地球是很危險的!",
 		"小強! 你不能死啊!",
 		"生人勿近...",
 	},
 } end)
+
 L:AddTranslations("zhCN", function() return {
+	["Corpse"] = "尸体",
 	["CorpseNames"] = {"尸体", -- Insert cultural humour for death here. This is all fairly english based stuff, so change for translations
 		"尸体",
 		"葬身之地",
+		"小强！你不能死啊！",
+		"这个时候不能责怪你的键盘。",
+		"都怪治疗职业～～～",
+		"都怪牧师～～～",
+		"都怪猎人～～～",
 		"和谐的坟墓",
+		"带一把铁铲，埋葬你自己。",
+		"握槽！又便当了！",
+		"总是看美好的一面人生，不是么？",
+		"诺森德埋骨地",
+		"为什么上个补丁没 Nerf 它？",
+		"地精科技、企鹅动力！",
 	},
 } end)
 
@@ -239,14 +247,14 @@ end
 -- 1. Locate the continent on which it's on
 -- 2. Cycle through the zones til we find it
 -- 3. Use the zone and local (to them) map coords to send to Cartographer.
--- The Cartographer map puts all waypoints into suspension on show so as not to lock 
+-- The Cartographer map puts all waypoints into suspension on show so as not to lock
 -- the map, since we're playing around with it so much to get locations.
 function CorpsePoint:UpdateZone()
 
 
 
 	local x, y = 0, 0
-	
+
 	if self.Continent ~= -1 then -- If we have a cached continent we are on
 		SetMapZoom(self.Continent)
 		x, y = GetCorpseMapPosition() -- See if we're still on that continent

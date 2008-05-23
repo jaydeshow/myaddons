@@ -54,18 +54,18 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Votre comportement est inacceptable.",
-	engage_message = "Damoiselle engagée ! Repentir dans ~33 sec.",
+	engage_message = "Damoiselle engagée ! Repentir dans ~33 sec.",
 
 	repentance = "Repentir",
-	repentance_desc = "Préviens quand la Damoiselle de vertu est susceptible d'utiliser son Repentir.",
-	repentance_message = "Repentir ! Prochain pas avant ~33 sec.",
-	repentance_warning = "Fin du cooldown Repentir - Imminent !",
+	repentance_desc = "Prévient quand la Damoiselle de vertu est susceptible d'utiliser son Repentir.",
+	repentance_message = "Repentir ! Prochain pas avant ~33 sec.",
+	repentance_warning = "Fin du temps de recharge de Repentir - Imminent !",
 	repentance_bar = "Repentir",
-	repentance_nextbar = "~Cooldown Repentir",
+	repentance_nextbar = "~Recharge Repentir",
 
 	holyfire = "Flammes sacrées",
-	holyfire_desc = "Préviens quand un joueur subit les effets des Flammes sacrées.",
-	holyfire_message = "Flammes sacrées : %s",
+	holyfire_desc = "Prévient quand un joueur subit les effets des Flammes sacrées.",
+	holyfire_message = "Flammes sacrées : %s",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par les Flammes sacrées (nécessite d'être promu ou mieux).",
@@ -76,37 +76,37 @@ L:RegisterTranslations("koKR", function() return {
 	engage_message = "고결의 여신 전투 개시! 약 33초 후 참회",
 
 	repentance = "참회",
-	repentance_desc = "참회 예상 시간입니다.",
+	repentance_desc = "참회에 대한 예측 타이머입니다.",
 	repentance_message = "참회! 다음은 약 33초 후!",
 	repentance_warning = "참회 쿨다운 종료 - 잠시후 시전!",
 	repentance_bar = "참회",
 	repentance_nextbar = "참회 쿨다운",
 
 	holyfire = "신성한 불꽃",
-	holyfire_desc = "신성한 불꽃에 걸린 사람에 대한 경고입니다.",
+	holyfire_desc = "신성한 불꽃에 걸린 플레이어를 알립니다.",
 	holyfire_message = "신성한 불꽃: %s",
 
 	icon = "전술 표시",
-	icon_desc = "신성한 불꽃에 걸린 사람에게 전술 표시를 지정합니다 (승급자 이상의 권한 필요).",
+	icon_desc = "신성한 불꽃에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상의 권한 필요)",
 } end)
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "你们的行为是不可饶恕的。",
-	engage_message = "战斗开始！ ~33秒释放 悔改！",
+	engage_message = "战斗开始！约33秒后，释放悔改！",
 
 	repentance = "悔改",
 	repentance_desc = "悔改冷却时间提醒。",
-	repentance_message = "悔改! ~33秒后发动",
-	repentance_warning = "悔改 冷却结束 - 即将发动！",
+	repentance_message = "悔改！约33秒后发动。",
+	repentance_warning = "悔改 冷却结束，即将发动！",
 	repentance_bar = "<悔改>",
 	repentance_nextbar = "悔改 冷却！",
 
 	holyfire = "神圣之火",
-	holyfire_desc = "当受到神圣之火影响时发出警报。",
-	holyfire_message = "神圣之火： >%s<！",
+	holyfire_desc = "当玩家受到神圣之火影响时发出警报。",
+	holyfire_message = "神圣之火：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "标记受到神圣之火的队员。(需要权限)",
+	icon_desc = "标记受到神圣之火的队员。（需要权限）",
 } end)
 
 L:RegisterTranslations("zhTW", function() return {
@@ -128,22 +128,22 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "No se tolerar\195\161 tu comportamiento.",
-	engage_message = "Doncella Activa! Arrepentimiento en ~33sec",
+	engage_trigger = "No se tolerará tu comportamiento.",
+	engage_message = "¡Doncella en combate! Arrepentimiento en ~33 seg",
 
-	repentance = "Arrepentimiento",
-	repentance_desc = "Tiempo estimado al Arrepentimiento.",
-	repentance_message = "Pr\195\179ximo Arrepentimiento! en ~33sec",
-	repentance_warning = "Fin del Enfriamiento de Arrepentimiento - Lanzamiento pr\195\179ximo!",
-	repentance_bar = "Arrepentimiento",
-	repentance_nextbar = "Enfriamiento de Arrepentimiento",
+	repentance = "Arrepentimiento (Repentance)",
+	repentance_desc = "Tiempo estimado de Arrepentimiento.",
+	repentance_message = "Sig. Arrepentimiento en ~33 seg",
+	repentance_warning = "¡Arrepentimiento en breve!",
+	repentance_bar = "<Arrepentimiento>",
+	repentance_nextbar = "~Arrepentimiento",
 
-	holyfire = "Fuego Sagrado",
-	holyfire_desc = "Avisa cuando alguien sufre Fuego Sagrado.",
+	holyfire = "Fuego Sagrado (Holy Fire)",
+	holyfire_desc = "Avisar quién tiene Fuego Sagrado.",
 	holyfire_message = "Fuego Sagrado: %s",
 
-	icon = "Icono de Raid",
-	icon_desc = "Pone un icono de raid en el jugador afectado por Fuego Sagrado(requiere promoted o mayor).",
+	icon = "Icono de banda",
+	icon_desc = "Pone un icono de banda sobre jugadores afectados por Fuego Sagrado. (Requiere derechos de banda)",
 } end)
 
 ----------------------------------
@@ -154,7 +154,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"repentance", -1, "holyfire", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 65942 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

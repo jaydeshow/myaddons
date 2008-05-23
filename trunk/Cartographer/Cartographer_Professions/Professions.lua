@@ -1,13 +1,12 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 57321 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 72981 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2007-12-22 03:02:24 -0500 (Sat, 22 Dec 2007) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-05-07 12:01:40 -0400 (Wed, 07 May 2008) $", 8, 17)
 end
 
-local bs = Rock("LibBabble-Spell-3.0"):GetUnstrictLookupTable()
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_Professions")
 L:AddTranslations("enUS", function() return {
 	["Professions"] = true,
@@ -57,12 +56,13 @@ L:AddTranslations("frFR", function() return {
 L:AddTranslations("esES", function() return {
 	["Professions"] = "Profesiones",
 	["Always"] = "Siempre",
-	["With Profession"] = "Con Profesi\195\179n",
+	["With Profession"] = "Con Profesión",
+	["When active"] = "Cuando Activa",
 	["Never"] = "Nunca",
-	["Stub for loading Cartographer module addons based on your professions."] = "Carga los m\195\179dulos del accesorio Cartographer basados en tus profesiones",
+	["Stub for loading Cartographer module addons based on your professions."] = "Carga los módulos del accesorio Cartographer basados en tus profesiones",
 	["Unable to load addon `%s': %s"] = "No se ha podido cargar el accesorio `%s': %s",
 	["Load all professions"] = "Cargar todas las profesiones",
-	["This option will load all the profession modules including those you currently dont know."] = "Esta opci\195\179n cargar\195\161 todos los m\195\179dulos de profesi\195\179n incluyendo aquellos que no conoces actualmente",
+	["This option will load all the profession modules including those you currently dont know."] = "Esta opción cargará todos los módulos de profesión incluyendo aquellos que no conoces actualmente",
 } end)
 
 L:AddTranslations("zhTW", function() return {
@@ -81,14 +81,22 @@ L:AddTranslations("zhCN", function() return {
 	["Professions"] = "专业技能",
 	["Always"] = "总是",
 	["With Profession"] = "配合专业技能",
-	["Never"] = "绝不",
-	["Stub for loading Cartographer module addons based on your professions."] = "根据你的专业加载 Cartographer 模块.",
-	["Unable to load addon `%s': %s"] = "无法加载插件 `%s': %s",
-	["Load all professions"] = "載入所有專業技能",
-	["This option will load all the profession modules including those you currently dont know."] = "再如所有专业技能模块，不管你有没有学",
+	["When active"] = "当启用时",
+	["Never"] = "从不",
+	["Stub for loading Cartographer module addons based on your professions."] = "根据你的专业技能加载 Cartographer 模块。",
+	["Unable to load addon `%s': %s"] = "无法加载插件 '%s'：%s",
+	["Load all professions"] = "加载所有专业技能",
+	["This option will load all the profession modules including those you currently dont know."] = "加载所有专业技能模块，不管你有没有学习。",
 } end)
 
 local mod = Cartographer:NewModule('Professions', 'LibRockEvent-1.0', 'LibRockConsole-1.0')
+
+local bs = {
+	["Mining"] = GetSpellInfo(2575), --2575 Mining
+	["Herbalism"] = GetSpellInfo(9134), -- 9134 Herbalism
+	["Fishing"] = GetSpellInfo(7620), -- 7620 Fishing
+	["Engineering"] = GetSpellInfo(4036), -- 4036 Engineering
+}
 
 function mod:OnInitialize()
 	self.name    = L["Professions"]
@@ -103,6 +111,7 @@ function mod:OnInitialize()
 	Cartographer:RegisterDefaults("Professions", "profile", {
 		profs = {},
 	})
+
 
 	local opts = {
 		name = L["Professions"],
@@ -131,11 +140,11 @@ function mod:OnInitialize()
 				name = profLocale,
 				desc = profLocale,
 				type = 'text',
-				get = function() 
-					return self:LoadProfPref(profLocale) 
+				get = function()
+					return self:LoadProfPref(profLocale)
 				end,
-				set = function(v) 
-					self:SetProfLoad(profLocale,v) 
+				set = function(v)
+					self:SetProfLoad(profLocale,v)
 				end,
 				disabled = function() return not Cartographer:IsModuleActive(self) end,
 				validate = {

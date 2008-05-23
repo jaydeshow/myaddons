@@ -5,6 +5,7 @@
 ## Notes: Automatic Refilling of User Defined Items
 ## Notes-koKR: 사용자가 정의한 아이템의 재고 보충을 자동으로 실행합니다
 ## Notes-zhCN: 自动补充玩家所设定的物品的数量
+## Notes-zhTW: 自動補充玩家所設定的物品的數量
 ## Version: 2.0
 ## Author: |cffFA8072Kyahx|r
 ## X-Category: Inventory

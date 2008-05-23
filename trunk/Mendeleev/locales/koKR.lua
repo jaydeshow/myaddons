@@ -88,7 +88,23 @@ L:RegisterTranslations("koKR", function() return {
 	-- Arena Sets
 	["Arena - Season 1 Set"] = "투기장 - 시즌 1 셋트",
 	["Arena - Season 2 Set"] = "투기장 - 시즌 2 셋트",
+	["Arena - Season 3 Set"] = "투기장 - 시즌 3 셋트",
+	
+	["%d%% alc/vol (%d proof)"] = "%d%% alc/vol (%d 도)",
+	[" (%d tickets)"] = " (%d 티켓)",
 
-	["Poisons"] = "독 조제",
+	-- Categories
+	["Consumable"] = "소비용품",
+	["Gear"] = "장비",
+	["GearSet"] = "세트장비",
+	["InstanceLoot"] = "던전획득",
+	["InstanceLootHeroic"] = "영웅던전획득",
+	["Misc"] = "기타",
+	["QuestMats"] = "퀘스트재료",
+	["Reagent"] = "재료",
+	["Tradeskill"] = "전문기술",
+	
+	["Badge of Justice"] = "정의의 휘장",
+	["G'eras"] = "게라스",
+	["Smith Hauthaa"] = "Smith Hauthaa", -- check
 }end)
-

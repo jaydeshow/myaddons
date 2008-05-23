@@ -41,14 +41,14 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	phase = "Phase",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	phase2_trigger = "%s appelle son maître !",
 	phase2_message = "Phase 2 - %s & Attumen",
 	phase3_trigger = "Viens, Minuit, allons disperser cette insignifiante racaille !",
 	phase3_message = "Phase 3 - %s",
 
 	curse = "Tanks maudits",
-	curse_desc = "Préviens quand un tank est maudit par la Présence immatérielle.",
+	curse_desc = "Prévient quand un tank est maudit par la Présence immatérielle.",
 	curse_message = "Tank maudit - %s",
 } end)
 
@@ -61,22 +61,22 @@ L:RegisterTranslations("koKR", function() return {
 	phase3_trigger = "이랴! 이 오합지졸을 데리고 실컷 놀아보자!",
 	phase3_message = "3 단계 - %s",
 
-	curse = "저주 걸린 전사",
+	curse = "탱커 저주",
 	curse_desc = "탱커가 무형의 저주에 걸렸을 때 경고합니다.",
-	curse_message = "저주 걸린 전사 - %s",
+	curse_message = "탱커 저주 - %s",
 } end)
 
 L:RegisterTranslations("zhCN", function() return {
 	phase = "阶段警报",
 	phase_desc = "当进入下一阶段时发出警告。",
 	phase2_trigger = "%s呼喊着她的主人！",
-	phase2_message = "第二阶段 - %s & 阿图门",
+	phase2_message = "第二阶段 - %s和阿图门",
 	phase3_trigger = "来吧，午夜，让我们解决这群乌合之众！",
 	phase3_message = "第三阶段 - %s",
 
 	curse = "诅咒警报",
 	curse_desc = "当近战受到无形的诅咒时发出警告。",
-	curse_message = ">%s< 中了无形 - 速度解除！",
+	curse_message = "无形：>%s<！- 速度解除！",
 } end)
 
 L:RegisterTranslations("zhTW", function() return {
@@ -93,16 +93,16 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	phase = "Fase",
-	phase_desc = "Aviso cuando entra en una nueva Fase.",
-	phase2_trigger = "%s llama a su maestro!",
+	phase = "Fases",
+	phase_desc = "Avisar sobre cambios de fase.",
+	phase2_trigger = "¡%s llama a su maestro!",
 	phase2_message = "Fase 2 - %s & Attumen",
-	phase3_trigger = "Vamos, Medianoche, dispersemos esta muchedumbre insignificante!",
+	phase3_trigger = "¡Ven, Medianoche, vamos a dispersar a estos pusilánimes!",
 	phase3_message = "Fase 3 - %s",
 
-	curse = "Tanques Malditos",
-	curse_desc = "Avisa cuando un guerrero o un druida es afectado por Presencia intangible.",
-	curse_message = "Tanque Maldito - %s",
+	curse = "Presencia intangible (Intangible Presence)",
+	curse_desc = "Avisar cuando un guerrero o un druida tiene Presencia intangible.",
+	curse_message = "Presencia intangible - %s",
 } end)
 
 ----------------------------------
@@ -113,7 +113,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {horse, boss}
 mod.toggleoptions = {"phase", "curse", "bosskill"}
-mod.revision = tonumber(("$Revision: 65914 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -58,31 +58,58 @@ L:RegisterTranslations("enUS", function() return {
 	burstsay_message = "Air Burst on me!",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "Vuestra resistencia es insignificante.",
+
+	grip = "Apretón de la Legión (Grip of the Legion)",
+	grip_desc = "Avisar quién tiene Apretón de la Legión.",
+	grip_you = "¡Apretón de la Legión en TI!",
+	grip_other = "¡Apretón en %s!",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores afectados por Apretón de la Legión. (Requiere derechos de banda)",
+
+	fear = "Miedo (Fear)",
+	fear_desc = "Contadores para Miedo.",
+	fear_message = "Miedo, sig. en ~ 42seg!",
+	fear_bar = "~Miedo",
+	fear_warning = "¡Miedo en breve!",
+
+	burst = "Ráfaga de aire (Air Burst)",
+	burst_desc = "Avisar quién tiene Ráfaga de aire.",
+	burst_other = "Ráfaga de aire en -%s-",
+	burst_you = "¡Ráfaga de aire en TI!",
+
+	burstsay = "Decir Ráfaga de aire",
+	burstsay_desc = "Alertar en el canal Decir cuando eres el objetivo de Ráfaga de aire, puede ayudar a compañeros cercanos con bocadillos de chat activos.",
+	burstsay_message = "¡Ráfaga de aire en mí!",
+} end )
+
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Votre résistance est futile.",
 
 	grip = "Poigne de la Légion",
-	grip_desc = "Préviens quand un joueur subit les effets de la Poigne de la Légion.",
-	grip_you = "Poigne sur VOUS !",
-	grip_other = "Poigne sur %s !",
+	grip_desc = "Prévient quand un joueur subit les effets de la Poigne de la Légion.",
+	grip_you = "Poigne sur VOUS !",
+	grip_other = "Poigne sur %s !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par la Poigne de la Légion.",
 
 	fear = "Peur",
 	fear_desc = "Délais concernant les Peurs.",
-	fear_message = "Peur, prochain dans ~42 sec. !",
-	fear_bar = "~Cooldown Peur",
-	fear_warning = "Fin du cooldown Peur - Imminent !",
+	fear_message = "Peur, prochain dans ~42 sec. !",
+	fear_bar = "~Recharge Peur",
+	fear_warning = "Fin du temps de recharge de Peur - Imminent !",
 
 	burst = "Jaillissement d'air",
-	burst_desc = "Préviens sur qui le Jaillissement d'air est incanté.",
+	burst_desc = "Prévient sur qui le Jaillissement d'air est incanté.",
 	burst_other = "Jaillissement d'air sur -%s-",
-	burst_you = "Jaillissement d'air sur VOUS !",
+	burst_you = "Jaillissement d'air sur VOUS !",
 
 	burstsay = "Dire - Jaillissement d'air",
-	burstsay_desc = "Fais dire à votre personnage que vous êtes ciblé par le Jaillissement d'air quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue d'activés.",
-	burstsay_message = "Jaillissement d'air sur moi !",
+	burstsay_desc = "Fait dire à votre personnage que vous êtes ciblé par le Jaillissement d'air quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue d'activés.",
+	burstsay_message = "Jaillissement d'air sur moi !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -90,11 +117,11 @@ L:RegisterTranslations("koKR", function() return {
 
 	grip = "군단의 손아귀",
 	grip_desc = "군단의 손아귀에 걸린 사람을 알립니다.",
-	grip_you = "당신에 손아귀!",
-	grip_other = "%s에 손아귀!",
+	grip_you = "당신은 손아귀!",
+	grip_other = "%s 손아귀!",
 
 	icon = "전술 표시",
-	icon_desc = "군단의 손아귀에 걸린 플레이어에 전술 표시를 지정합니다.",
+	icon_desc = "군단의 손아귀에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 
 	fear = "공포",
 	fear_desc = "공포 타이머입니다.",
@@ -105,7 +132,7 @@ L:RegisterTranslations("koKR", function() return {
 	burst = "대기 파열",
 	burst_desc = "대기 파열 시전 대상을 알립니다.",
 	burst_other = "-%s- 대기 파열",
-	burst_you = "당신에 대기 파열!",
+	burst_you = "당신은 대기 파열!",
 
 	burstsay = "대기 파열 알림",
 	burstsay_desc = "자신이 대기 파열의 대상이 되었을 때 일반 대화로 알립니다.",
@@ -143,16 +170,16 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "你们的抵抗是毫无意义的。",
 
 	grip = "军团之握",
-	grip_desc = "警报谁中了军团之握。",
+	grip_desc = "当玩家受到军团之握时发出警报。",
 	grip_you = ">你< 军团之握！",
 	grip_other = "军团之握：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "给中了军团之握的队友打上团队标记。(需要权限)",
+	icon_desc = "给中了军团之握的队友打上团队标记。（需要权限）",
 
 	fear = "恐惧",
 	fear_desc = "恐惧计时。",
-	fear_message = "恐惧！ ~42秒后再次发动",
+	fear_message = "恐惧！约42秒后再次发动。",
 	fear_bar = "<恐惧 冷却>",
 	fear_warning = "恐惧冷却结束 - 即将发动！",
 
@@ -161,9 +188,9 @@ L:RegisterTranslations("zhCN", function() return {
 	burst_other = "空气爆裂：>%s<！",
 	burst_you = ">你< 空气爆裂！",
 
-	burstsay = "空气爆裂(说)",
-	burstsay_desc = "当你为空气爆裂目标时警报周围,以帮助附近的队友远离。",
-	burstsay_message = "我中了 空气爆裂！ 离开我......",
+	burstsay = "空气爆裂（说）",
+	burstsay_desc = "当你为空气爆裂目标时警报周围，以帮助附近的队友远离。",
+	burstsay_message = "我中了空气爆裂！离开我...",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -172,23 +199,23 @@ L:RegisterTranslations("zhTW", function() return {
 	grip = "軍團之握",
 	grip_desc = "受到軍團之握時發送警告",
 	grip_you = "軍團之握在你身上!",
-	grip_other = "軍團之握：[%s]",
+	grip_other = "軍團之握: [%s]",
 
 	icon = "團隊標記",
 	icon_desc = "在受到軍團之握的隊友頭上標記 (需要權限)",
 
 	fear = "恐懼術",
 	fear_desc = "恐懼術計時器",
-	fear_message = "恐懼術, 42 秒後再次發動!",
-	fear_bar = "~恐懼術冷卻中",
-	fear_warning = "恐懼術冷卻完畢 - 即將來臨!",
+	fear_message = "恐懼術! 42 秒後再次發動!",
+	fear_bar = "<恐懼術冷卻>",
+	fear_warning = "恐懼術冷卻完畢 - 即將發動!",
 
 	burst = "空氣炸裂",
 	burst_desc = "當空氣炸裂施放時時發送警告",
-	burst_other = "空氣炸裂：[%s]",
+	burst_other = "空氣炸裂: [%s]",
 	burst_you = "空氣炸裂在你身上!",
 
-	burstsay = "空氣炸裂(說)",
+	burstsay = "空氣炸裂 (說)",
 	burstsay_desc = "當你為空氣爆裂目標時警報周圍，以幫助附近的隊友遠離。",
 	burstsay_message = "空氣炸裂在我身上!",
 } end )
@@ -201,7 +228,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"grip", "icon", "fear", "burst", "burstsay", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 66562 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then
@@ -218,7 +245,7 @@ mod.proximitySilent = true
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Grip", 31972)
-	self:AddCombatListener("SPELL_AURA_DISPELLED", "GripRemoved", 31972)
+	self:AddCombatListener("SPELL_AURA_DISPELLED", "GripRemoved")
 	self:AddCombatListener("SPELL_CAST_START", "Burst", 32014)
 	self:AddCombatListener("SPELL_CAST_START", "Fear", 31970)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
@@ -247,9 +274,11 @@ function mod:Grip(player, spellID)
 	end
 end
 
-function mod:GripRemoved(player)
-	if db.grip then
-		self:TriggerEvent("BigWigs_StopBar", self, fmt(L["grip_other"], player))
+function mod:GripRemoved(player, _, _, spellID)
+	if spellID and spellID == 31972 then
+		if db.grip then
+			self:TriggerEvent("BigWigs_StopBar", self, fmt(L["grip_other"], player))
+		end
 	end
 end
 

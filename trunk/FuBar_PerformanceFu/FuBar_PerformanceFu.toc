@@ -12,9 +12,9 @@
 ## X-Website: http://www.wowace.com/
 ## X-Category: Interface Enhancements
 ## X-FuBar-Dependent: 1
-## X-Embeds: Ace2, AbacusLib, CrayonLib, DewdropLib, FuBarPlugin-2.0, TabletLib
+## X-Embeds: Ace2, AbacusLib, LibCrayon-3.0, DewdropLib, FuBarPlugin-2.0, TabletLib
 ## LoadManagers: FuBar
-## OptionalDeps: Ace2, AbacusLib, CrayonLib, DewdropLib, FuBarPlugin-2.0, TabletLib
+## OptionalDeps: Ace2, AbacusLib, LibCrayon-3.0, DewdropLib, FuBarPlugin-2.0, TabletLib
 ## Version: 2.0
 ## SavedVariables: PerformanceFuDB
 

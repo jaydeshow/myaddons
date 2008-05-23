@@ -1,14 +1,14 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
-    <Script file="DewDropDown.lua"/>
-    <Script file="AtlaslootDefaultFrame.lua"/>
-    
-    <Button name="AtlasLootDefaultFrameButtonTemplate" inherits="OptionsButtonTemplate" virtual="true">
-        <Size>
+	<Script file="DewDropDown.lua"/>
+	<Script file="AtlaslootDefaultFrame.lua"/>
+	
+	<Button name="AtlasLootDefaultFrameButtonTemplate" inherits="OptionsButtonTemplate" virtual="true">
+		<Size>
 			<AbsDimension x="105" y="20"/>
 		</Size>
-    </Button>
-    
-    <Frame name="AtlasLootDefaultFrame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent" enableKeyboard="true">
+	</Button>
+	
+	<Frame name="AtlasLootDefaultFrame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent" enableKeyboard="true">
 		<Size>
 			<AbsDimension x="600" y="665"/>
 		</Size>
@@ -26,8 +26,8 @@
 				<AbsValue val="32"/>
 			</EdgeSize>
 		</Backdrop>
-        <Frames>
-            <Button name="$parent_CloseButton" inherits="UIPanelCloseButton">
+		<Frames>
+			<Button name="$parent_CloseButton" inherits="UIPanelCloseButton">
 				<Anchors>
 					<Anchor point="TOPRIGHT" relativeTo="AtlasLootDefaultFrame" relativePoint="TOPRIGHT">
 						<Offset>
@@ -35,136 +35,136 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-                <Scripts>
-                    <OnClick>
-                        AtlasLootDefaultFrame:Hide();
-                    </OnClick>
-                    <OnShow>
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
-                </Scripts>
+				<Scripts>
+					<OnClick>
+						AtlasLootDefaultFrame:Hide();
+					</OnClick>
+					<OnShow>
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
+				</Scripts>
 			</Button>
-              <Button name="$parent_LoadModules" inherits="AtlasLootDefaultFrameButtonTemplate">
-                <Anchors>
-                    <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
-                        <Offset>
-                            <AbsDimension x="-38" y="-15"/>
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-                <Scripts>
+			  <Button name="$parent_LoadModules" inherits="AtlasLootDefaultFrameButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-38" y="-15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
 					<OnClick>
 						AtlasLoot_LoadAllModules();
 					</OnClick>
-                    <OnShow>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                        this:SetText(AL["Load Modules"]);
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Load Modules"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
 				</Scripts>
-            </Button>
-	    <Button name="$parent_Options" inherits="AtlasLootDefaultFrameButtonTemplate">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
-                        <Offset>
-                            <AbsDimension x="15" y="-15"/>
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-                <Scripts>
+			</Button>
+			<Button name="$parent_Options" inherits="AtlasLootDefaultFrameButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
 					<OnClick>
 						AtlasLootOptions_Toggle();
 					</OnClick>
-                    <OnShow>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                        this:SetText(AL["Options"]);
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Options"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
 				</Scripts>
-            </Button>
-            <Button name="$parent_Menu" inherits="OptionsButtonTemplate">
-                <Size>
-			        <AbsDimension x="130" y="20"/>
-		        </Size>
-                <Anchors>
-                    <Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
-                        <Offset>
-                            <AbsDimension x="-130" y="-40"/>
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-                <Scripts>
+			</Button>
+			<Button name="$parent_Menu" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="130" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="-130" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
 					<OnClick>
-                        if AtlasLoot_Dewdrop:IsOpen() then
-                            AtlasLoot_Dewdrop:Close();
-                        else
-						    AtlasLoot_Dewdrop:Open(this);
-                        end
+						if AtlasLoot_Dewdrop:IsOpen() then
+							AtlasLoot_Dewdrop:Close();
+						else
+							AtlasLoot_Dewdrop:Open(this);
+						end
 					</OnClick>
-                    <OnShow>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                        this:SetText(AL["Select Loot Table"]);
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Select Loot Table"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
 				</Scripts>
-            </Button>
-            <Button name="$parent_SubMenu" inherits="OptionsButtonTemplate">
-                <Size>
-			        <AbsDimension x="130" y="20"/>
-		        </Size>
-                <Anchors>
-                    <Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
-                        <Offset>
-                            <AbsDimension x="130" y="-40"/>
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-                <Scripts>
+			</Button>
+			<Button name="$parent_SubMenu" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="130" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="130" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
 					<OnClick>
-                        if AtlasLoot_DewdropSubMenu:IsOpen() then
-                            AtlasLoot_DewdropSubMenu:Close();
-                        else
-						    AtlasLoot_DewdropSubMenu:Open(this);
-                        end
+						if AtlasLoot_DewdropSubMenu:IsOpen() then
+							AtlasLoot_DewdropSubMenu:Close();
+						else
+							AtlasLoot_DewdropSubMenu:Open(this);
+						end
 					</OnClick>
-                    <OnShow>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                        this:SetText(AL["Select Sub-Table"]);
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Select Sub-Table"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
 				</Scripts>
-            </Button>
-            <Frame name="$parent_LootBackground">
-                <Size>
-			        <AbsDimension x="515" y="515"/>
-		        </Size>
-                <Anchors>
+			</Button>
+			<Frame name="$parent_LootBackground">
+				<Size>
+					<AbsDimension x="515" y="515"/>
+				</Size>
+				<Anchors>
 					<Anchor point="BOTTOM" relativeTo="$parent" relativePoint="BOTTOM">
 						<Offset>
 							<AbsDimension x="0" y="65"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
-                <Layers>
-                    <Layer level="BACKGROUND">
-				        <Texture name="$parent_Back">
-					        <Anchors>
-						        <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
-						        <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
-					        </Anchors>
-					        <Color r="0" g="0" b="1" a="0.5"/>
-				        </Texture>
-			        </Layer>
-                </Layers>
-            </Frame>
-            <EditBox name="AtlasLootDefaultFrameSearchBox" inherits="InputBoxTemplate" letters="100">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parent_Back">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
+								<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
+							</Anchors>
+							<Color r="0" g="0" b="1" a="0.5"/>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<EditBox name="AtlasLootDefaultFrameSearchBox" inherits="InputBoxTemplate" letters="100">
 				<Size>
-					<AbsDimension x="200" y="32"></AbsDimension>
+					<AbsDimension x="180" y="32" />
 				</Size>
 				<Anchors>
 					<Anchor point="BOTTOM" relativeTo="$parent" relativePoint="BOTTOM">
 						<Offset>
-							<AbsDimension x="0" y="30"/>
+							<AbsDimension x="-70" y="30"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -174,32 +174,56 @@
 						this:SetTextInsets(0, 8, 0, 0);
 					</OnLoad>
 					<OnEnterPressed>
-						AtlasLoot_Search(this:GetText());
+						AtlasLoot:Search(this:GetText());
 						this:ClearFocus();
 					</OnEnterPressed>
 				</Scripts>
 				<FontString name="AtlasLootDefaultFrameSearchString" inherits="GameFontNormal"></FontString>
 			</EditBox>
-            <Button name="AtlasLootDefaultFrameSearchButton" inherits="UIPanelButtonTemplate2" parent="AtlasLootDefaultFrameSearchBox">
+			<Button name="AtlasLootDefaultFrameSearchButton" inherits="UIPanelButtonTemplate2" parent="AtlasLootDefaultFrameSearchBox">
 				<Size>
 					<AbsDimension x="69" y="32"/>
 				</Size>
 				<Anchors>
 					<Anchor point="LEFT" relativePoint="RIGHT">
 						<Offset>
-							<AbsDimension x="1" y="0"/>
+							<AbsDimension x="0" y="0"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 				<Scripts>
-                    <OnShow>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                        this:SetText(AL["Search"]);
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Search"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
 					<OnClick>
-						AtlasLoot_Search(AtlasLootDefaultFrameSearchBox:GetText());
+						AtlasLoot:Search(AtlasLootDefaultFrameSearchBox:GetText());
 						AtlasLootDefaultFrameSearchBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="AtlasLootDefaultFrameSearchOptionsButton" parent="AtlasLootDefaultFrameSearchButton">
+				<Size>
+					<AbsDimension x="28" y="28" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="AtlasLootDefaultFrameSearchButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-6" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+				<Scripts>
+					<OnShow>
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
+					<OnClick>
+						AtlasLoot:ShowSearchOptions(this);
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -208,47 +232,69 @@
 					<AbsDimension x="58" y="32"/>
 				</Size>
 				<Anchors>
-					<Anchor point="RIGHT" relativePoint="LEFT">
+					<Anchor point="LEFT" relativeTo="AtlasLootDefaultFrameSearchOptionsButton" relativePoint="RIGHT">
 						<Offset>
-							<AbsDimension x="-7" y="0"/>
+							<AbsDimension x="-2" y="0"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 				<Scripts>
-                    <OnShow>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                        this:SetText(AL["Clear"]);
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Clear"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
 					<OnClick>
 						AtlasLootDefaultFrameSearchBox:SetText("");
 						AtlasLootDefaultFrameSearchBox:ClearFocus();
 					</OnClick>
 				</Scripts>
 			</Button>
-            <Button name="AtlasLootDefaultFrameWishListButton" inherits="UIPanelButtonTemplate2" parent="AtlasLootDefaultFrame">
+			<Button name="AtlasLootDefaultFrameLastResultButton" inherits="UIPanelButtonTemplate2" parent="AtlasLootDefaultFrameSearchBox">
 				<Size>
-					<AbsDimension x="105" y="32"/>
+					<AbsDimension x="100" y="32"/>
 				</Size>
 				<Anchors>
-					<Anchor point="RIGHT" relativeTo="AtlasLootDefaultFrameSearchClearButton" relativePoint="LEFT">
+					<Anchor point="LEFT" relativeTo="AtlasLootDefaultFrameSearchClearButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Last Result"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
+					<OnClick>
+						AtlasLoot:ShowSearchResult();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="AtlasLootDefaultFrameWishListButton" inherits="UIPanelButtonTemplate2" parent="AtlasLootDefaultFrame">
+				<Size>
+					<AbsDimension x="100" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="AtlasLootDefaultFrameSearchBox" relativePoint="LEFT">
 						<Offset>
 							<AbsDimension x="-7" y="0"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 				<Scripts>
-                    <OnClick>
+					<OnClick>
 						AtlasLoot_ShowWishList();
 					</OnClick>
-                    <OnShow>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                        this:SetText(AL["WishList"]);
-				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
-			        </OnShow>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["WishList"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
 				</Scripts>
 			</Button>
-        </Frames>
+		</Frames>
 		<Layers>
 			<Layer level="ARTWORK">
 				<Texture name="$parentHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -272,7 +318,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-                <FontString name="$parent_Notice" inherits="GameFontNormal">
+				<FontString name="$parent_Notice" inherits="GameFontNormal">
 					<Anchors>
 						<Anchor point="BOTTOM">
 							<Offset>
@@ -281,51 +327,51 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-            </Layer>
-            <Layer level="OVERLAY">
-                <FontString name="$parent_SelectedCategory" inherits="GameFontNormal" text="Test">
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_SelectedCategory" inherits="GameFontNormal" text="Test">
 					<Anchors>
 						<Anchor point="TOP">
-						    <Offset>
-							    <AbsDimension x="0" y="-50"/>
-						    </Offset>
-					    </Anchor>
+							<Offset>
+								<AbsDimension x="0" y="-50"/>
+							</Offset>
+						</Anchor>
 					</Anchors>
 				</FontString>
-                <FontString name="$parent_SelectedTable" inherits="GameFontNormal" text="Test">
+				<FontString name="$parent_SelectedTable" inherits="GameFontNormal" text="Test">
 					<Anchors>
 						<Anchor point="TOP">
-						    <Offset>
-							    <AbsDimension x="0" y="-50"/>
-						    </Offset>
-					    </Anchor>
+							<Offset>
+								<AbsDimension x="0" y="-50"/>
+							</Offset>
+						</Anchor>
 					</Anchors>
 				</FontString>
 			</Layer>
 		</Layers>
-        <Scripts>
-            <OnLoad>
-                this:RegisterForDrag("LeftButton");
-                this:SetMovable(1);
-                this:SetBackdropColor(0.75, 0, 0.75);
-                local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-                getglobal("AtlasLootDefaultFrame_Notice"):SetText(AL["This is a loot browser only.  To view maps as well, install either Atlas or Alphamap."]);
-            </OnLoad>
-            <OnShow>
-                AtlasLootDefaultFrame_OnShow();
-            </OnShow>
-            <OnHide>
-                AtlasLootDefaultFrame_OnHide();
-            </OnHide>
-            <OnDragStart>
-                this:StartMoving();
-                this.isMoving = true;
-            </OnDragStart>
-            <OnDragStop>
-                this:StopMovingOrSizing();
-                this.isMoving = false;
-            </OnDragStop>
-        </Scripts>
-    </Frame>
-    
+		<Scripts>
+			<OnLoad>
+				this:RegisterForDrag("LeftButton");
+				this:SetMovable(1);
+				this:SetBackdropColor(0.75, 0, 0.75);
+				local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+				getglobal("AtlasLootDefaultFrame_Notice"):SetText(AL["This is a loot browser only.  To view maps as well, install either Atlas or Alphamap."]);
+			</OnLoad>
+			<OnShow>
+				AtlasLootDefaultFrame_OnShow();
+			</OnShow>
+			<OnHide>
+				AtlasLootDefaultFrame_OnHide();
+			</OnHide>
+			<OnDragStart>
+				this:StartMoving();
+				this.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				this:StopMovingOrSizing();
+				this.isMoving = false;
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+	
 </Ui>

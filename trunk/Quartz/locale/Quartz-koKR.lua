@@ -103,6 +103,7 @@ L:RegisterTranslations("koKR", function()
 		["Hide Samwise Icon"] = "Samwise 아이콘 숨김",
 		["Show for Friends"] = "우호적 대상 표시",
 		["Show for Enemies"] = "적대적 대상 표시",
+		["Show if Target"] = "대상이 있을 경우 표시",
 		["Target Name"] = "대상 이름",
 		["Display target name of spellcasts after spell name"] = "주문 이름 뒤에 주문을 시전하는 대상의 이름을 표시합니다.",
 		
@@ -208,6 +209,7 @@ L:RegisterTranslations("koKR", function()
 		["Hide the icon for spells with no icon"] = "아이콘이 없는 주문에 대해 아이콘을 숨깁니다.",
 		["Show this castbar for friendly units"] = "우호적 대상에 대한 시전바를 표시합니다.",
 		["Show this castbar for hostile units"] = "적대적 대상에 대한 시전바를 표시합니다.",
+		["Show this castbar if focus is also target"] = "주시 대상이 있는 경우 시전바를 표시합니다.",
 		["Set an exact X value for this bar's position."] = "해당 바의 위치에 대해 정확한 X 좌표를 설정합니다.",
 		["Set an exact Y value for this bar's position."] = "해당 바의 위치에 대해 정확한 Y 좌표를 설정합니다.",
 		

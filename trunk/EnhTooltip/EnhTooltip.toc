@@ -1,15 +1,15 @@
 ## Title: EnhTooltip
-## Notes: Used to display enhanced tooltips under the original tooltip or in the original tooltip, contains hooking functions for almost all major in game item tooltips [5.0.PRE.2876] This AddOn is licenced under the GNU GPL, see GPL.txt for details.
+## Notes: Used to display enhanced tooltips under the original tooltip or in the original tooltip, contains hooking functions for almost all major in game item tooltips [5.0.PRE.3087] This AddOn is licenced under the GNU GPL, see GPL.txt for details.
 ## Title-zhCN: <|cFF0099FFAuctioneer|r> 增强物品信息条 - EnhTooltip
 ## Notes-zhCN: 显示一个独立或整合的增强物品信息条，用于显示物品售买价，拍卖行信息等
 ##
-## Interface: 20300
+## Interface: 20400
 ## LoadOnDemand: 1
 ## Dependencies: Stubby
 ## OptionalDeps: !nLog
 ##
-## Version: 5.0.PRE.2876 (BillyGoat)
-## Revision: $Id: EnhTooltip.toc 2467 2007-11-13 21:59:01Z mentalpower $
+## Version: 5.0.PRE.3087 (BillyGoat)
+## Revision: $Id: EnhTooltip.toc 2952 2008-03-25 03:29:55Z MentalPower $
 ## URL: http://auctioneeraddon.com/dl/EnhTooltip
 
 Libs\Load.xml

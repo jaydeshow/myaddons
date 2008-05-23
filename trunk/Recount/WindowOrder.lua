@@ -1,3 +1,6 @@
+local revision = tonumber(string.sub("$Revision: 71617 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
+
 --Code for organizing the frame order
 local TopWindow
 local AddToScale={}
@@ -18,7 +21,7 @@ function Recount:SetLevel(frame,level)
 	LevelDiff = level-frame:GetFrameLevel()
 	frame:SetFrameLevel(level)
 
-	SetLevel_ProcessChildFrames(frame:GetChildren())
+	--SetLevel_ProcessChildFrames(frame:GetChildren()) --Elsia: If I understood correctly children now inherit frame levels so this should not be needed.
 end
 
 function Recount:InitOrder()
@@ -61,10 +64,13 @@ function Recount:AddWindow(window)
 	end
 	AllWindows[#AllWindows+1]=window
 
-	window.isLocked=Recount.db.char.Locked
+	window.isLocked=Recount.db.profile.Locked
 end
 
 function Recount:ScaleWindows(scale,first)
+
+	--local this
+
 	--Reuses some of my code from IMBA to scale without moving the windows
 	for _, v in pairs(AddToScale) do
 		if not first then
@@ -110,7 +116,39 @@ end
 
 function Recount:LockWindows(lock)
 	for _, v in pairs(AllWindows) do
-		v.isLocked=lock
-		v:EnableMouse(not lock)
+		if v.DragBottomRight then
+			v.isLocked=lock -- Only lock windows whose position is stored.
+			v:EnableMouse(not lock)
+			if lock then
+				v.DragBottomRight:Hide()
+				v.DragBottomLeft:Hide()
+			else
+				v.DragBottomRight:Show()
+				v.DragBottomLeft:Show()
+			end
+		else
+			v.isLocked=false
+			v:EnableMouse(true)
+		end
 	end
 end
+
+function Recount:HideRealtimeWindows()
+	for _, v in pairs (AllWindows) do
+		if v.tracking then
+			v:Hide()
+		end
+	end
+end
+
+--[[function Recount:ShowGrips(state)
+	local theFrame = Recount.MainWindow
+	if state then
+		theFrame.DragBottomRight:Show()
+		theFrame.DragBottomLeft:Show()
+	else
+		theFrame.DragBottomRight:Hide()
+		theFrame.DragBottomLeft:Hide()
+	end
+end
+]]

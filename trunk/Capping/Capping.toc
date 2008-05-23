@@ -3,13 +3,14 @@
 ## Author: TotalPackage
 ## Notes: Battleground timers and other goodies.
 ## Notes-zhTW: 顯示戰場上的狀態條。
-## Version: 2.4.001
+## Notes-zhCN: 战场计时器和其他的玩意。
+## Version: 2.4.010
 
 ## SavedVariables: CappingDB
 
 ## X-Category: Battlegrounds/PvP
-## OptionalDeps: Ace2, DewdropLib, CandyBar, LibSharedMedia-2.0
-## X-Embeds: Ace2, DewdropLib, CandyBar, LibSharedMedia-2.0
+## OptionalDeps: Ace2, LibStub, DewdropLib, LibSharedMedia-3.0
+## X-Embeds: DewdropLib, LibSharedMedia-3.0
 
 embeds.xml
 
@@ -21,8 +22,7 @@ locals\localization-zhTW.lua
 locals\localization-zhCN.lua
 
 core.lua
-
-battlegrounds\WSG.lua
 battlegrounds\AB.lua
 battlegrounds\AV.lua
 battlegrounds\EotS.lua
+battlegrounds\WSG.lua

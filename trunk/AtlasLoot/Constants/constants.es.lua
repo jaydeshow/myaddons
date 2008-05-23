@@ -34,7 +34,8 @@ AL:RegisterTranslations("esES", function() return {
     --["Post-Burning Crusade"] = true,
     ["Choose Table ..."] = "Elige una tabla...",
     ["Close Menu"] = "Cerrar menú",
-    ["Unknown"] = "Unknown",
+    ["Unknown"] = "Desconocido",
+    ["Skill Required:"] = "Habilidad necesaria",
 
     --Text for Options Panel
     ["Atlasloot Options"] = "Opciones Atlasloot",
@@ -59,6 +60,15 @@ AL:RegisterTranslations("esES", function() return {
     ["AutoQuery items on loot tables |cffff0000(disconnection risk)|r"] = "Auto-preguntar por objetos en tablas |cffff0000(riesgo)|r",
     ["Done"] = "Hecho",
     ["WishList"] = "Lista deseada",
+    ["Search Result: %s"] = "Buscar resultado: %s",
+    ["Last Result"] = "Último resultado",
+    ["Search on"] = "Buscar en",
+    ["All modules"] = "Todos los módulos",
+    ["If checked, AtlasLoot will load and search across all the modules."] = "Si lo marcas, AtlasLoot lo cargará y buscará por todos los módulos.",
+    ["Search options"] = "Buscar opciones",
+    ["Partial matching"] = "Coincidencia parcial",
+    ["If checked, AtlasLoot search item names for a partial match."] = "Si lo marcas, AtlasLoot buscará el nombre de los objetos con una coincidencia parcial.",
+    ["You don't have any module selected to search on!"] = "¡No tienes marcado ningún módulo donde buscar!",
 
     --Slash commands
     ["reset"] = "Reiniciar",
@@ -107,17 +117,12 @@ AL:RegisterTranslations("esES", function() return {
     ["Load Modules"] = "Cargar módulos",
     ["Crafting"] = "Fabricados",
 
-    --Trades
-	["Apprentice"] = "Aprendiz",
-	["Journeyman"] = "Oficial",
-	["Expert"] = "Experto",
-	["Artisan"] = "Artesano",
-	--["Master"] = true,
-
     --First time user
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "Bienvenido a AtlasLoot Enhanced. Por favor, tómate un momento para elegir tus preferencias.",
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = "Nueva característica en 4.02.01 : Escribe '/atlasloot options' para ver el menú de opciones y '/atlasloot reset' para reiniciar AtlasLoot después de desconectarte.",
     ["New feature in 4.03.00: Introducing the Wishlist!  Simply alt-click on any item to add it to the wishlist.  To delete an item from the wishlist, open up your wishlist and alt-click the item to remove it.  It's that simple.  Buttons to view the wishlist have been added to the Atlas interface and the loot browser."] = "Nueva característica en 4.03.00 : Introduciendo la lista de deseos. Simplemente haz alt-click en cualquier objeto que quieras añadir a tu lista de deseos. Para borrar un objeto de la lista, abre la lista de deseos y haz alt-click en el objeto que quieras borrar. Es muy simple. Se han añadido botones para ver la lista de deseos en el interfaz del Atlas y en el buscador de botines.",
+    ["New feature in 4.05.00: Advanced searching functionality is now available. You can type in a partial item name, for example typing 'elixir' gives all items in the database with 'elixir' in the name.  Big thanks to Kurax for his help."] = "Nueva característica en 4.05.00: Disponible nuevo sistema búsqueda avanzado. Puedes escribir el nombre parcial de un objeto, por ejemplo escribiendo 'elixir' encontrarás todos los objetos que contengan la palabra 'elixir' en la base de datos.  Muchas gracias a Kurax por su ayuda.",
+    ["New feature in 4.05.00: All professions are now included in the AtlasLoot_Crafting module."] = "Nueva característica en 4.05.00: Todas las profesiones se han incluido en el módulo AtlasLoot_Crafting.",
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences for tooltips and links in the chat window.\n\n  This options screen can be reached again at any later time by typing '/atlasloot'."] = "Bienvenido a Atlasloot Enhanced. Por favor tómate un momento para elegir tus preferencias en cada bocadillo y enlaces de la ventana de chat.\n\n Puedes volver a abrir esta ventana de opciones escribiendo '/atlasloot'.",
     ["Setup"] = "Configuración",
 
@@ -152,7 +157,9 @@ AL:RegisterTranslations("esES", function() return {
     ["Fish"] = "Pescado", --Comprobar
     ["Combat Pet"] = "Mascota de combate", --Comprobar
     ["Fireworks"] = "Fuegos artificiales",
-
+    --Extra inventory stuff
+    ["Cloak"] = "Capa",
+    ["Weapons"] = "Armas",
     --Labels for loot descriptions
     ["Classes:"] = "Clases",
     ["This Item Begins a Quest"] = "Este objeto empieza una misión",
@@ -599,21 +606,21 @@ AL:RegisterTranslations("esES", function() return {
     ["Warlord's Battlegear"] = "Equipo de batalla de Señor de la Guerra",
 
     --Outland Faction Reputation PvP Sets
-    ["Dragonhide Battlegear"] = "Equipo de batalla de pellejo de dragón", --Comprobar
-    ["Wyrmhide Battlegear"] = "Equipo de batalla de pellejo de vermis", --Comprobar
-    ["Kodohide Battlegear"] = "Equipo de batalla de pellejo de kodo", --Comprobar
-    ["Stalker's Chain Battlegear"] = "Equipo de batalla cadena de Stalker", --Comprobar
-    ["Evoker's Silk Battlegear"] = "Equipo de batalla de seda de Evoker", --Comprobar
-    ["Crusader's Scaled Battlegear"] = "Equipo de batalla de escamas de Cruzado", --Comprobar
-    ["Crusader's Ornamented Battlegear"] = "Equipo de batalla ornamentado de Cruzado", --Comprobar
-    ["Satin Battlegear"] = "Satin Battlegear", --FALTA
-    ["Mooncloth Battlegear"] = "Mooncloth Battlegear", --FALTA
-    ["Opportunist's Battlegear"] = "Opportunist's Battlegear", --FALTA
-    ["Seer's Linked Battlegear"] = "Seer's Linked Battlegear", --FALTA
-    ["Seer's Mail Battlegear"] = "Seer's Mail Battlegear", --FALTA
-    ["Seer's Ringmail Battlegear"] = "Seer's Ringmail Battlegear", --FALTA
-    ["Dreadweave Battlegear"] = "Dreadweave Battlegear", --FALTA
-    ["Savage's Plate Battlegear"] = "Savage's Plate Battlegear", --FALTA
+    ["Dragonhide Battlegear"] = "Equipo de batalla de pellejo de dragón",
+    ["Wyrmhide Battlegear"] = "Equipo de batalla de pellejo de vermis",
+    ["Kodohide Battlegear"] = "Equipo de batalla de pellejo de kodo",
+    ["Stalker's Chain Battlegear"] = "Equipo de batalla de anillas de acechador",
+    ["Evoker's Silk Battlegear"] = "Equipo de batalla de seda evocador",
+    ["Crusader's Scaled Battledgear"] = "Equipo de batalla escamada de cruzado",
+    ["Crusader's Ornamented Battledgear"] = "Equipo de batalla ornamentado de cruzado",
+    ["Satin Battlegear"] = "Equipo de batalla de satén",
+    ["Mooncloth Battlegear"] = "Equipo de batalla de tela lunar",
+    ["Opportunist's Battlegear"] = "Equipo de batalla de oportunista",
+    ["Seer's Linked Battlegear"] = "Equipo de batalla de eslabones de vidente",
+    ["Seer's Mail Battlegear"] = "Equipo de batalla de malla de vidente",
+    ["Seer's Ringmail Battlegear"] = "Equipo de batalla de cota guarnecida de vidente",
+    ["Dreadweave Battlegear"] = "Equipo de batalla de tejido de tinieblas",
+    ["Savage's Plate Battlegear"] = "Equipo de batalla de placas salvajes",
 
     --Arena Epic Sets
     ["Gladiator's Sanctuary"] = "Santuario de Gladiador",
@@ -670,6 +677,7 @@ AL:RegisterTranslations("esES", function() return {
     ["Tier 6 Sets"] = "Conjuntos T6",
     ["PvP Sets (Level 60)"] = "Conjuntos JcJ (Nivel 60)",
     ["PvP Sets (Level 70)"] = "Conjuntos JcJ (Nivel 70)",
+    ["PvP Reputation Sets (Level 70)"] = "Conjuntos JcJ por Reputación (Nivel 70)",
     ["PvP Rewards (Level 60)"] = "Recompensas JcJ (Nivel 60)",
     ["PvP Rewards (Level 70)"] = "Recompensas JcJ (Nivel 70)",
     ["PvP Accessories (Level 60)"] = "Accesorios JcJ (Nivel 60)",
@@ -733,6 +741,7 @@ AL:RegisterTranslations("esES", function() return {
     ["Level 50-60"] = "Niveles 50-60",
     ["BT Patterns/Plans"] = "Recetas/Planos del Templo Oscuro",
     ["Hyjal Summit Designs"] = "Diseños de la Cumbre de Hyjal",
+    ["SP Patterns/Plans"] = "Recinto de Esclavos Recetas/Planos",
 
     --NPCs missing from BabbleBoss
     ["Trash Mobs"] = "Bichos varios",
@@ -860,9 +869,13 @@ AL:RegisterTranslations("esES", function() return {
     ["Rajaxx's Captains"] = "Capitanes de Rajaxx",
     ["Razorfen Spearhide"] = "Lanceur de Tranchebauge",
     ["Rethilgore"] = "Rethilgore",
+    ["Kalldan Felmoon"] = "Kalldan Lunavil",
+    ["Magregan Deepshadow"] = "Magregan Sombraprofunda",
+--    ["Lord Ahune"] = true,
 
     --Zones
     ["World Drop"] = "Hallazgos del Mundo",
+    ["Sunwell Isle"] = "Isla de Kel'Danas",
 	
 	--Shortcuts for Bossname files
     ["LBRS"] = "CRNI",
@@ -915,6 +928,8 @@ AL:RegisterTranslations("esES", function() return {
     ["The Talon King's Coffer"] = "El cofre del Rey Talon",
     ["Krom Stoutarm's Chest"] = "Tesoro de Krom Rudebras",
     ["Garrett Family Chest"] = "Tesoro de la familia Garrett",
+    ["Reinforced Fel Iron Chest"] = "Cofre reforzado de hierro vil",
+    ["DM North Tribute Chest"] = "Cofre del tributo de LM norte",
 
     --World Events
     ["Abyssal Council"] = "Consejo abisal",

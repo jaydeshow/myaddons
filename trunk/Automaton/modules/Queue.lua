@@ -56,6 +56,9 @@ L:RegisterTranslations("zhTW", function() return {
 	["Joins battleground queues when the battlefield window is displayed."] = "啟用後自動接受戰場排隊",
 	["Joining %s..."] = "進入 %s...",
 	["Joining %s in 1:40..."] = "1分40秒後入 %s ...",
+	["Join only if not already in a Battleground"] = "只在不處於別的戰場時進入",
+	["Restricts joining to only when you are not currently in a BG (will still allow you to be in the queue)"] = "限制為只有當你不處於某個戰場時才自動進入（即便不自動進入也不會取消你當前的隊列）",
+
 } end)
 
 L:RegisterTranslations("zhCN", function() return {

@@ -1,33 +1,43 @@
-﻿## Interface: 20300
-## Version: 1.0b
-## X-Build: $Revision: 63574 $
-## X-ReleaseDate: $Date: 2008-03-04 08:13:33 -0500 (Tue, 04 Mar 2008) $
-## Title: Omen |cff7fff7f -Ace2-|r
-## Notes: A lightweight, flexible, multi-target threat meter [beta, use at own risk!]
+## Interface: 20400
+## Version: 2.0
+## X-Build: $Revision: 73114 $
+## X-ReleaseDate: $Date: 2008-03-27 01:18:39 -0700 (Thu, 27 Mar 2008) $
+## Title: Omen2
+## Notes: A lightweight, flexible, multi-target threat meter.
 ## Notes-frFR: Un "threat meter" léger, flexible et multi-cibles.
-## Notes-zhCN: 一个灵活的，多目标的，低资源占用的威胁值计量器，官方版由Taburiss汉化。
-## Author: Antiarc
-## OptionalDeps: Ace2, FuBar, Threat-1.0, SW_Stats, SinkLib, SpecialEvents-Aura-2.0, Babble-2.2, DewdropLib, LibSharedMedia-2.0, SharedMedia-2.0, LibBabble-Spell-3.0, LibBabble-Boss-3.0, LibBabble-Class-3.0
+## Notes-zhCN: 一个灵活的，多目标的，低资源占用的威胁值计量器。
+## Notes-zhTW: 一個輕量級、有彈性、可監視多個目標的仇恨統計插件。
+## Notes-koKR: 다중-대상에 대한 위협수준 미터기로 보여줍니다.
+## Author: Antiarc (cheald@gmail dot com)
+## OptionalDeps: Ace3, Threat-2.0, LibSharedMedia-3.0, SharedMedia, LibGUIDRegistry-0.1, LibSink-2.0, LibDropdown-1.0, oRA2, FuBar
 ## X-Category: Combat
-## SavedVariables: OmenDB
-## SavedVariablesPerCharacter: OmenDBPC
-## X-Embeds: Ace2, LibSharedMedia-2.0, FuBarPlugin-2.0, Threat-1.0, SpecialEventsEmbed, Babble-2.2, Parser-3.0, SinkLib, DewdropLib, LibBabble-Spell-3.0, LibBabble-Boss-3.0, LibBabble-Class-3.0
-## X-Donate: PayPal:cheald AT gmail DOT com
+## SavedVariables: Omen2DB, Omen2DefaultProfile
+## SavedVariablesPerCharacter: Omen2DBPC
+## X-Embeds: Ace3, Threat-2.0, LibSharedMedia-3.0, LibGUIDRegistry-0.1, LibSink-2.0
 
 embeds.xml
 
-localization_enUS.lua
-localization_deDE.lua
-localization_koKR.lua
-localization_frFR.lua
-localization_zhTW.lua
-localization_zhCN.lua
-localization_esES.lua
+Libs\LibFuBarPlugin-3.0\lib.xml
 
-DefaultSkins.lua
+Localization\enUS.lua
+Localization\frFR.lua
+Localization\deDE.lua
+Localization\koKR.lua
+Localization\zhCN.lua
+Localization\zhTW.lua
 
 Omen.lua
-OmenDisplay.lua
-OmenMenu.lua
-OmenThreatBar.lua
+Options.lua
+Frame.lua
+Bar.lua
+Media.lua
+Skins.lua
+Config.lua
+ModuleBase.lua
 
+Modules\SingleTarget\module.xml
+Modules\AOE\module.xml
+Modules\Healer\module.xml
+Modules\Overview\module.xml
+
+Cleanup.lua

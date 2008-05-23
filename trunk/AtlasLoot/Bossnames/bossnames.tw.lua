@@ -5,8 +5,8 @@ especially on tables from many locations where we need to indicate where the
 loot came from.
 ]]
 if (GetLocale() == 	"zhTW") then
-local BabbleBoss = AceLibrary("Babble-Boss-2.2");
-local BabbleZone = AceLibrary("Babble-Zone-2.2");
+local BabbleBoss = LibStub("LibBabble-Boss-3.0"):GetLookupTable();
+local BabbleZone = LibStub("LibBabble-Zone-3.0"):GetLookupTable();
 local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 	AtlasLootBossNames["AuchAuchenaiCrypts"] = {

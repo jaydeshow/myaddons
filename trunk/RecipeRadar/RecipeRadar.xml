@@ -479,6 +479,16 @@
                         </Anchor>
                      </Anchors>
                   </FontString>
+                  <FontString name="RecipeDetailSpecialText" inherits="GameFontNormal" justifyH="LEFT" hidden="true">
+                     <Color r="1" g="1" b="1"/>
+                     <Anchors>
+                        <Anchor point="LEFT" relativeTo="RecipeDetailCostText" relativePoint="RIGHT">
+                           <Offset>
+                              <AbsDimension x="5" y="0"/>
+                           </Offset>
+                        </Anchor>
+                     </Anchors>
+                  </FontString>
                   <FontString name="RecipeDetailNoteText" inherits="GameFontNormalSmall" justifyH="LEFT" text="NOTE_COLON">
                      <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="RecipeDetailCostText" relativePoint="BOTTOMLEFT">
@@ -564,6 +574,11 @@
                   </Scripts>
                </Frame>
             </Frames>
+            <Scripts>
+               <OnLoad>
+                  RecipeDetailSpecialText:SetText(RRS("Special"))
+               </OnLoad>
+            </Scripts>
          </Frame>
 
          <Frame name="RecipeRadarMapFrame">

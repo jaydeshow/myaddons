@@ -1,7 +1,7 @@
 --[[
 	ScrollSheet
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: ScrollSheet.lua 68 2008-02-12 08:05:07Z mentalpower $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: ScrollSheet.lua 84 2008-04-18 03:18:13Z RockSlice $
 	URL: http://auctioneeraddon.com/dl/
 
 	License:
@@ -26,7 +26,7 @@
 --]]
 
 local LIBRARY_VERSION_MAJOR = "ScrollSheet"
-local LIBRARY_VERSION_MINOR = 1
+local LIBRARY_VERSION_MINOR = 2
 
 --[[-----------------------------------------------------------------
 
@@ -145,7 +145,6 @@ function kit:SetData(input, instyle)
 		recycle(style, i)
 	end
 
-
 	-- Clone/Copy the data portion of the input table into the data table,
 	-- and the style portion into the style table.
 	local pos, content
@@ -191,7 +190,67 @@ function kit:SetData(input, instyle)
 	self:PerformSort()
 end
 
+--This function only enables the display of the selected row.  The row still gets selected, and kit:GetSelection() will still work
+function kit:EnableSelect(enable)
+	if enable then
+		self.enableselect = true
+	else
+		self.enableselect = false
+	end
+end
+
+function kit:GetSelection()
+	local selection = {}
+	if self.selected then
+		for i = 1, self.hSize do
+			local pos = i + ((self.selected-1)*self.hSize)
+			selection[i] = self.data[pos]
+		end
+	end
+	return selection
+end
+
+function kit:RowSelect(row, mouseButton)
+	if mouseButton == "RightButton" then
+		return
+	end
+	local selected
+	if row then
+		selected = row + math.floor(self.panel.vPos)
+		if self.selected ~= self.sort[selected] then
+			self.selected = self.sort[selected]
+		else
+			self.selected = nil
+		end
+	end
+	
+	for i = 1, #self.rows do
+		for j = 1, #self.rows[i] do
+			self.rows[i][j]["highlight"]:SetAlpha(0)
+		end
+	end
+	if self.enableselect and self.selected then
+		if not row then
+			for i = 1, #self.sort do
+				if self.sort[i] == self.selected then
+					selected = i
+				end
+			end
+			if selected then
+				row = selected - math.floor(self.panel.vPos)
+			end
+		end
+		if row and (row > 0) and (row <= #self.rows) then
+			for j = 1, #self.rows[row] do
+				self.rows[row][j]["highlight"]:SetAlpha(0.2)
+			end
+		end
+	end
+end
+
 function kit:ButtonClick(column, mouseButton)
+	if mouseButton == "RightButton" then lib.moveColumn(self, column, mouseButton) return end
+	
 	if (self.curSort == column) then
 		self.curDir = self.curDir * -1
 	else
@@ -253,6 +312,7 @@ function kit:PerformSort()
 	end
 
 	sortDataSet(self.data, self.sort, self.hSize, self.curSort, self.curDir)
+	
 	self.panel:Update()
 end
 
@@ -299,13 +359,15 @@ function kit:Render()
 			end
 		end
 	end
+	self:RowSelect()
 end
 
 local PanelScroller = LibStub:GetLibrary("PanelScroller")
 
-function lib:Create(frame, layout, onEnter, onLeave, onClick)
+function lib:Create(frame, layout, onEnter, onLeave, onClick, onResize, onSelect)
 	local sheet
 	local name = (frame:GetName() or "").."ScrollSheet"
+	
 	local id = 1
 	while (_G[name..id]) do
 		id = id + 1
@@ -335,21 +397,18 @@ function lib:Create(frame, layout, onEnter, onLeave, onClick)
 			button:SetPoint("TOPLEFT", labels[i-1].button, "TOPRIGHT", 3,0)
 			totalWidth = totalWidth + 3
 		end
-		--If the module does not provide a minimum Column width or the Width is too small for text, resize to fit
+		
 		local label = content:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
 		label:SetText(layout[i][1])
 
 		local colWidth = layout[i][3] or 0
-		if label:GetStringWidth() + 20 > colWidth then
-			colWidth = floor(label:GetStringWidth() + 20)
-		end
-
+		
 		totalWidth = totalWidth + colWidth
 		button:SetWidth(colWidth)
 		button:SetHeight(16)
 		button:SetID(i)
 		button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
-		button:SetScript("OnClick", function(self, ...) sheet:ButtonClick(self:GetID(), ...) end)
+		button:SetScript("OnMouseDown", function(self, ...) sheet:ButtonClick(self:GetID(), ...) end)
 
 		local texture = content:CreateTexture(nil, "ARTWORK")
 		texture:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
@@ -401,39 +460,50 @@ function lib:Create(frame, layout, onEnter, onLeave, onClick)
 				cell:SetPoint("TOPLEFT", labels[i], "BOTTOMLEFT", 0,0)
 				cell:SetPoint("TOPRIGHT", labels[i], "BOTTOMRIGHT", 0,0)
 
-				if (layout[i][2] == "TOOLTIP") then
-					local width = layout[i][3] or 10
-					local row, index = rowNum, i
+				local width = layout[i][3] or 10
+				local row, index = rowNum, i
 
-					button:SetHeight(16)
-					button:SetWidth(width)
+				button:SetHeight(16)
+				button:SetWidth(width)
+				button:SetPoint("TOPLEFT", labels[i], "BOTTOMLEFT", 0,0)
+				button:SetID(rowNum)
+				button:SetScript("OnMouseDown", function(self, ...) sheet:RowSelect(self:GetID(), ...) if onSelect then onSelect() end end)
+				if (layout[i][2] == "TOOLTIP") then
 					button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
-					button:SetPoint("TOPLEFT", labels[i], "BOTTOMLEFT", 0,0)
 					button:SetScript("OnEnter", function() onEnter(button, row, index) end)
 					button:SetScript("OnLeave", function() onLeave(button, row, index) end)
 
 					if onClick then button:SetScript("OnClick", function() onClick(button, row, index) end) end
-					cell.button = button --store in cell so we can refrence the button
 				end
+				cell.button = button --store in cell so we can refrence the button
 			else
 				cell:SetPoint("TOPLEFT", rows[rowNum-1][i], "BOTTOMLEFT", 0,0)
 				cell:SetPoint("TOPRIGHT", rows[rowNum-1][i], "BOTTOMRIGHT", 0,0)
 
-				if (layout[i][2] == "TOOLTIP") then
-					local width = layout[i][3] or 0
-					local row, index = rowNum, i
+				local width = layout[i][3] or 0
+				local row, index = rowNum, i
 
-					button:SetHeight(16)
-					button:SetWidth(width)
+				button:SetHeight(16)
+				button:SetWidth(width)
+				button:SetPoint("TOPLEFT", rows[rowNum-1][i], "BOTTOMLEFT", 0,0)
+				button:SetID(rowNum)
+				button:SetScript("OnMouseDown", function(self, ...) sheet:RowSelect(self:GetID(), ...) if onSelect then onSelect() end end)
+				if (layout[i][2] == "TOOLTIP") then
 					button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
-					button:SetPoint("TOPLEFT", rows[rowNum-1][i], "BOTTOMLEFT", 0,0)
 					button:SetScript("OnEnter", function() onEnter(button, row, index) end)
 					button:SetScript("OnLeave", function() onLeave(button, row, index) end)
 
 					if onClick then button:SetScript("OnClick", function() onClick(button, row, index) end) end
-					cell.button = button
 				end
+				cell.button = button
 			end
+			local highlight = cell.button:CreateTexture(nil, "ARTWORK")
+			highlight:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+			highlight:SetTexCoord(0.2, 0.9, 0, 0.9)
+			highlight:SetPoint("TOPLEFT", cell.button, "TOPLEFT", 0, 0)
+			highlight:SetPoint("BOTTOMRIGHT", cell.button, "BOTTOMRIGHT", 0, 0)
+			highlight:SetAlpha(0)
+			cell.highlight = highlight
 			cell:SetHeight(14)
 			cell:SetJustifyV("CENTER")
 			if (layout[i][2] == "TEXT") then
@@ -465,6 +535,7 @@ function lib:Create(frame, layout, onEnter, onLeave, onClick)
 		labels = labels,
 		rows = rows,
 		hSize = #labels,
+		resize = onResize,
 		data = {},
 		style = {},
 		sort = {},
@@ -478,12 +549,11 @@ function lib:Create(frame, layout, onEnter, onLeave, onClick)
 	return sheet
 end
 
-function lib:ReCreate(frame, layout, onEnter, onLeave, onClick)
+function lib:ReCreate(frame, layout, onEnter, onLeave, onClick, onResize, onSelect)
 	local sheet
 	local name = frame.sheet.name
 	local content = frame.sheet.content
 	local panel = frame.sheet.panel
-
 	local totalWidth = 0;
 
 	local labels = {}
@@ -510,7 +580,7 @@ function lib:ReCreate(frame, layout, onEnter, onLeave, onClick)
 		button:SetHeight(16)
 		button:SetID(i)
 
-		button:SetScript("OnClick", function(self, ...) sheet:ButtonClick(self:GetID(), ...) end)
+		button:SetScript("OnMouseDown", function(self, ...) sheet:ButtonClick(self:GetID(), ...) end)
 
 
 		local texture = frame.sheet.labels[i].texture
@@ -575,41 +645,52 @@ function lib:ReCreate(frame, layout, onEnter, onLeave, onClick)
 				cell:SetPoint("TOPLEFT", labels[i], "BOTTOMLEFT", 0,0)
  				cell:SetPoint("TOPRIGHT", labels[i], "BOTTOMRIGHT", 0,0)
 
- 				if (layout[i][2] == "TOOLTIP") then
-					local width = layout[i][3] or 10
- 					local row, index = rowNum, i
+				local width = layout[i][3] or 10
+				local row, index = rowNum, i
 
-					button:SetHeight(16)
-					button:SetWidth(width)
-					button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
-					button:SetPoint("TOPLEFT", labels[i], "BOTTOMLEFT", 0,0)
+				button:SetHeight(16)
+				button:SetWidth(width)
+				button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+				button:SetPoint("TOPLEFT", labels[i], "BOTTOMLEFT", 0,0)
+				button:SetID(rowNum)
+				button:SetScript("OnMouseDown", function(self, ...) sheet:RowSelect(self:GetID(), ...) if onSelect then onSelect() end end)
+ 				if (layout[i][2] == "TOOLTIP") then
 					button:SetScript("OnEnter", function() onEnter(button, row, index) end)
 					button:SetScript("OnLeave", function() onLeave(button, row, index) end)
 
 					if onClick then button:SetScript("OnClick", function() onClick(button, row, index) end) end
 
-					if buttonTable[1] then table.remove(buttonTable, 1) end
 				end
+				if buttonTable[1] then table.remove(buttonTable, 1) end
 			else
 				cell:SetPoint("TOPLEFT", rows[rowNum-1][i], "BOTTOMLEFT", 0,0)
 				cell:SetPoint("TOPRIGHT", rows[rowNum-1][i], "BOTTOMRIGHT", 0,0)
 
-				if (layout[i][2] == "TOOLTIP") then
-					local width = layout[i][3] or 0
-					local row, index = rowNum, i
+				local width = layout[i][3] or 0
+				local row, index = rowNum, i
 
-					button:SetHeight(16)
-					button:SetWidth(width)
-					button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
-					button:SetPoint("TOPLEFT", rows[rowNum-1][i], "BOTTOMLEFT", 0,0)
+				button:SetHeight(16)
+				button:SetWidth(width)
+				button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+				button:SetPoint("TOPLEFT", rows[rowNum-1][i], "BOTTOMLEFT", 0,0)
+				button:SetID(rowNum)
+				button:SetScript("OnMouseDown", function(self, ...) sheet:RowSelect(self:GetID(), ...) if onSelect then onSelect() end end)
+				if (layout[i][2] == "TOOLTIP") then
 					button:SetScript("OnEnter", function() onEnter(button, row, index) end)
 					button:SetScript("OnLeave", function() onLeave(button, row, index) end)
 
 					if onClick then button:SetScript("OnClick", function() onClick(button, row, index) end) end
 
-					if buttonTable[1] then table.remove(buttonTable, 1) end
 				end
+				if buttonTable[1] then table.remove(buttonTable, 1) end
 			end
+			local highlight = cell.button:CreateTexture(nil, "ARTWORK")
+			highlight:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+			highlight:SetTexCoord(0.2, 0.9, 0, 0.9)
+			highlight:SetPoint("TOPLEFT", cell.button, "TOPLEFT", 0, 0)
+			highlight:SetPoint("BOTTOMRIGHT", cell.button, "BOTTOMRIGHT", 0, 0)
+			highlight:SetAlpha(0)
+			cell.highlight = highlight
 			cell:SetHeight(14)
 			cell:SetJustifyV("CENTER")
 			if (layout[i][2] == "TEXT") then
@@ -641,6 +722,7 @@ function lib:ReCreate(frame, layout, onEnter, onLeave, onClick)
 		labels = labels,
 		rows = rows,
 		hSize = #labels,
+		resize = onResize,
 		data = frame.sheet.data,
 		style = frame.sheet.style,
 		sort = frame.sheet.sort,
@@ -652,4 +734,32 @@ function lib:ReCreate(frame, layout, onEnter, onLeave, onClick)
 
 	_G[name] = sheet
 	return sheet
+end
+function  lib.moveColumn(self, column)
+	if self.resize then 
+		if IsControlKeyDown() then --reset column to default
+			self.resize(self, column, nil) --sends nil as width, this will reset column to defaults
+		else
+			local originalScript = self.labels[column].button:GetScript("OnMouseDown") --store the original Sort onclick script will reset it when we are done resizing
+			
+			local point, relativeTo, relativePoint, xOfs, yOfs = self.labels[column].button:GetPoint() --Store the anchor point since its niled when resized
+			--limit the size we will allow buttons to get
+			local height = self.labels[column].button:GetHeight()
+			self.labels[column].button:SetResizable(true)
+			self.labels[column].button:SetMaxResize(400, height)
+			self.labels[column].button:SetMinResize(13, height) --Makes the nice ... elipsies line up
+			--set the resize script	
+			self.labels[column].button:SetScript("OnMouseDown", function() self.labels[column].button:StartSizing(self.labels[column].button) end)
+			--resets the original onclick as well as setting new anchor points for our buttons
+			self.labels[column].button:SetScript("OnMouseUp", function() 
+										self.labels[column].button:StopMovingOrSizing() 
+										self.labels[column].button:SetScript("OnMouseDown", originalScript) 
+										self.labels[column].button:ClearAllPoints()
+										self.labels[column].button:SetPoint(point, relativeTo, relativePoint, xOfs,yOfs)
+										self.resize(self, column, self.labels[column].button:GetWidth()) --sends new width info to the module
+						end)
+			--start resizing self			
+			self.labels[column].button:StartSizing(self.labels[column].button)
+		end
+	end
 end

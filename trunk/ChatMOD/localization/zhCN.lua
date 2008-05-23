@@ -1,5 +1,5 @@
-﻿-- 汉化: Duke
--- Last Update 10/15/2007
+﻿-- 汉化: Duke 2008/04/10
+
 if ( GetLocale() == "zhCN" ) then
 	SCCN_INIT_CHANNEL_LOCAL			= "常规";
 	SCCN_GUI_HIGHLIGHT1				= "在这对话输入你要 SCCN 显示的词。 每行输入一个词";
@@ -89,7 +89,7 @@ if ( GetLocale() == "zhCN" ) then
 	SCCN_STRIPCHAN[9]		= "战场";
 -- ItemLink Channels
     SCCN_ILINK[1]                   = "综合 -";
-    SCCN_ILINK[2]                   = "交易 -";
+    SCCN_ILINK[2]                   = "交易 -"
     SCCN_ILINK[3]                   = "寻求组队 -";
     SCCN_ILINK[4]                   = "本地防务 -";
     SCCN_ILINK[5]                   = "世界防务";

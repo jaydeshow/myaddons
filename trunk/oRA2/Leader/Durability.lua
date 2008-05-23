@@ -1,5 +1,6 @@
-
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -83,15 +84,15 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("deDE", function() return {
 	["Durability"] = "Haltbarkeit",
-	["Leader/Durability"] = "Anf\195\188hrer/Haltbarkeit",
-	["Options for durability checks."] = "Optionen f\195\188r den Haltbarkeits-Check.",
-	["Perform durability check"] = "Haltbarkeit \195\156berpr\195\188fen",
-	["Check the raid's durability."] = "\195\156berpr\195\188fe die Haltbarkeits-Werte des Schlachtzugs.",
+	["Leader/Durability"] = "Anführer/Haltbarkeit",
+	["Options for durability checks."] = "Optionen für den Haltbarkeits-Check.",
+	["Perform durability check"] = "Starte einen Haltbarkeits-Check",
+	["Check the raid's durability."] = "Überprüft die Haltbarkeitswerte des Schlachtzugs.",
 	["Name"] = "Name",
 	["Percent"] = "Prozent",
-	["Broken"] = "Zerbrochen",
+	["Broken"] = "Beschädigt",
 	["Perc"] = "Proz",
-	["Close"] = "Schlie\195\159en",
+	["Close"] = "Schließen",
 	["Refresh"] = "Erneuern",
 } end )
 
@@ -129,11 +130,12 @@ end
 -- Event Handlers --
 --------------------
 
+local pName = UnitName("player")
 function mod:oRA_DurabilityResponse(msg, author)
 	local cur, max, broken, requestby = select(3, msg:find("^DUR (%d+) (%d+) (%d+) ([^%s]+)$"))
-	if cur and requestby and requestby == UnitName("player") then
+	if cur and requestby and requestby == pName then
 		local p = math.floor(cur / max * 100)
-		self:AddPlayer( author, p, broken )
+		self:AddPlayer(author, p, broken)
 		oRA:UpdateWindow()
 	end
 end
@@ -156,7 +158,7 @@ function mod:PerformDurabilityCheck()
 	oRA:OpenWindow(L["Durability"], durability, RefreshDurability, L["Name"], 130, L["Perc"], 80, L["Broken"], 80)
 end
 
-function mod:AddPlayer( nick, perc, broken )
+function mod:AddPlayer(nick, perc, broken)
 	table.insert(durability, self:new(self.coloredNames[nick], perc, broken or 0))
 end
 

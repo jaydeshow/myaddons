@@ -12,7 +12,7 @@ XLoot.deformat = deformat
 
 local _G = getfenv(0)
 
-XLootMonitor.revision  = tonumber((string.gsub("$Revision: 54067 $", "^%$Revision: (%d+) %$$", "%1")))
+XLootMonitor.revision  = tonumber((string.gsub("$Revision: 71796 $", "^%$Revision: (%d+) %$$", "%1")))
 
 function XLootMonitor:OnInitialize()
 	self.db = XLoot:AcquireDBNamespace("XLootMonitorDB")
@@ -509,6 +509,14 @@ function XLootMonitor:RollSelect(ty, who, item)
 	row.fsloot:SetText(item)
 	row.fsplayer:SetText(who)
 	local c = RAID_CLASS_COLORS[class]
+	
+	-- Debug pattern matching
+	if (not who or not c or not class) and SEEL_LastEvent then
+		XLoot:Print(("Please post this in XLoot's Thread: %s"):format(SEEL_LastEvent))
+		XLoot:Print(("c: %s; who: %s; class: %s"):format(who or "nil", c or "nil", class or "nil"))
+		return nil
+	end
+	
 	row.fsplayer:SetVertexColor(c.r, c.g, c.b)
 	XLoot:SizeRow(stack, row)
 	if ty == "need" then texture ="Interface\\Buttons\\UI-GroupLoot-Dice-Up"

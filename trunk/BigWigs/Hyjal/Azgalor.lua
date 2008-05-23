@@ -34,21 +34,41 @@ L:RegisterTranslations("enUS", function() return {
 	icon_desc = "Place a Raid Icon on the player afflicted by Doom (requires promoted or higher).",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	doom = "Condena (Doom)",
+	doom_desc = "Avisar sobre Condena.",
+	doom_other = "Condena en %s",
+	doom_you = "¡Condena en TI!",
+
+	howl = "Aullido de Azgalor (Howl of Azgalor)",
+	howl_desc = "Avisar de Aullido de Azgalor.",
+	howl_bar = "~Aullido (Silencio)",
+	howl_message = "Silencio de área",
+	howl_warning = "¡Silencio de área en breve!",
+
+	fire = "Lluvia de Fuego",
+	fire_desc = "Avisar cuando te afecta Lluvia de Fuego.",
+	fire_you = "¡Lluvia de Fuego en TI!",
+
+	icon = "Icono",
+	icon_desc = "Poner un icono de banda sobre los jugadores afectados por Condena. (Requiere derechos de banda)",
+} end )
+
 L:RegisterTranslations("frFR", function() return {
 	doom = "Destin funeste",
-	doom_desc = "Préviens quand un joueur subit les effets du Destin funeste.",
+	doom_desc = "Prévient quand un joueur subit les effets du Destin funeste.",
 	doom_other = "Destin funeste sur %s",
-	doom_you = "Destin funeste sur VOUS !",
+	doom_you = "Destin funeste sur VOUS !",
 
 	howl = "Hurlement d'Azgalor",
-	howl_desc = "Préviens de l'arrivée des Hurlements d'Azgalor.",
-	howl_bar = "~Cooldown Hurlement",
+	howl_desc = "Prévient de l'arrivée des Hurlements d'Azgalor.",
+	howl_bar = "~Recharge Hurlement",
 	howl_message = "Silence de zone",
-	howl_warning = "Silence de zone imminent !",
+	howl_warning = "Silence de zone imminent !",
 
 	fire = "Pluie de feu",
-	fire_desc = "Préviens quand la Pluie de feu est sur vous.",
-	fire_you = "Pluie de feu sur VOUS !",
+	fire_desc = "Prévient quand la Pluie de feu est sur vous.",
+	fire_you = "Pluie de feu sur VOUS !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par le Destin funeste (nécessite d'être promu ou mieux).",
@@ -57,8 +77,8 @@ L:RegisterTranslations("frFR", function() return {
 L:RegisterTranslations("koKR", function() return {
 	doom = "파멸",
 	doom_desc = "파멸에 대한 경고입니다.",
-	doom_other = "%s에 파멸",
-	doom_you = "당신에 파멸!",
+	doom_other = "%s 파멸",
+	doom_you = "당신은 파멸!",
 
 	 howl = "아즈갈로의 울부짖음",
 	 howl_desc = "아즈갈로의 울부짖음을 경보합니다.",
@@ -68,10 +88,10 @@ L:RegisterTranslations("koKR", function() return {
 
 	 fire = "불의 비",
 	 fire_desc = "자신에게 불의 비가 내릴때를 알림니다.",
-	 fire_you = "당신에 불의 비!",
+	 fire_you = "당신은 불의 비!",
 
 	icon = "전술 표시",
-	icon_desc = "파멸에 걸린 플레이어에 전술 표시를 지정합니다. (승급자 이상 권한 요구).",
+	icon_desc = "파멸에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -102,7 +122,7 @@ L:RegisterTranslations("zhTW", function() return {
 
 	howl = "亞茲加洛之吼",
 	howl_desc = "亞茲加洛之吼警報",
-	howl_bar = "~亞茲加洛之吼冷卻",
+	howl_bar = "<亞茲加洛之吼冷卻>",
 	howl_message = "群體沉默",
 	howl_warning = "即將發動群體沉默!",
 
@@ -116,7 +136,7 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	doom = "厄运",
-	doom_desc = "厄运警报。",
+	doom_desc = "当玩家受到厄运时发出警报。",
 	doom_other = "厄运：>%s<！",
 	doom_you = ">你< 厄运！",
 
@@ -127,11 +147,11 @@ L:RegisterTranslations("zhCN", function() return {
 	howl_warning = "即将 群体沉默！",
 
 	fire = "火焰之雨",
-	fire_desc = "当你受到火焰之雨发出警报。",
+	fire_desc = "当你受到火焰之雨时发出警报。",
 	fire_you = ">你< 火焰之雨！",
 
 	icon = "团队标记",
-	icon_desc = "给受到诅咒的队员打上标记。(需要权限)",
+	icon_desc = "给受到诅咒的队员打上标记。（需要权限）",
 } end )
 
 ----------------------------------
@@ -142,7 +162,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"doom", "howl", "fire", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 66560 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -168,7 +188,7 @@ end
 
 function mod:RainOfFire(player)
 	if db.fire and player == pName then
-		self:IfMessage(L["fire_you"], "Urgent", 31340, "Alarm")
+		self:LocalMessage(L["fire_you"], "Urgent", 31340, "Alarm")
 	end
 end
 

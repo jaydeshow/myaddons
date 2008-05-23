@@ -1,9 +1,9 @@
 ﻿assert(Cartographer, "Cartographer not found!")
-local revision = tonumber(string.sub("$Revision: 66680 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 68896 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-03-28 08:58:29 -0400 (Fri, 28 Mar 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-04-10 05:40:01 -0400 (Thu, 10 Apr 2008) $", 8, 17)
 end
 
 Cartographer_InstanceNotesDB = {

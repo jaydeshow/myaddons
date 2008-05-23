@@ -20,7 +20,6 @@ L:RegisterTranslations("enUS", function() return {
 	tablethint_disabled = "|cffeda55fClick|r to enable.",
 	["oRA is currently disabled."] = true,
 	["oRA Options"] = true,
-	["Active boss modules"] = true,
 	["Hidden"] = true,
 	["Shown"] = true,
 	["Minimap"] = true,
@@ -32,7 +31,6 @@ L:RegisterTranslations("koKR", function() return {
 	tablethint_disabled = "|cffeda55f클릭시|r 사용합니다.",
 	["oRA is currently disabled."] = "oRA 는 현재 사용중지 중입니다.",
 	["oRA Options"] = "oRA 설정",
-	["Active boss modules"] = "보스 모듈 활성화",
 	["Hidden"] = "숨김",
 	["Shown"] = "표시",
 	["Minimap"] = "미니맵",
@@ -41,11 +39,10 @@ L:RegisterTranslations("koKR", function() return {
 
 
 L:RegisterTranslations("zhCN", function() return {
-	tablethint = "|cffeda55fCtrl-Alt-点击|r 来关闭 oRA。|cffeda55f按住 Alt-拖动|r来移动 MT、PT和监视框架。",
+	tablethint = "|cffeda55fCtrl-Alt-点击|r 来关闭 oRA。|cffeda55f按住 Alt-拖动|r来移动 MT、PT 和监视框架。",
 	tablethint_disabled = "|cffeda55f点击|r 激活。",
 	["oRA is currently disabled."] = "oRA 目前已关闭。",
 	["oRA Options"] = "oRA 选项",
-	["Active boss modules"] = "激活 Boss 模块",
 	["Hidden"] = "隐藏",
 	["Shown"] = "显示",
 	["Minimap"] = "小地图",
@@ -55,13 +52,12 @@ L:RegisterTranslations("zhCN", function() return {
 L:RegisterTranslations("zhTW", function() return {
 	tablethint = "|cffeda55fCtrl-Alt-點擊|r 可關閉 oRA。 |cffeda55fAlt-拖曳|r 可移動 MT、PT 及監視框架。",
 	tablethint_disabled = "oRA 目前已關閉。|cffeda55f點擊|r可啟動 oRA。",
-	["oRA is currently disabled."] = "oRA 目前已關閉。",
+	["oRA is currently disabled."] = "oRA 目前已關閉",
 	["oRA Options"] = "oRA 選項",
-	["Active boss modules"] = "啟動BOSS模組",
 	["Hidden"] = "隱藏",
 	["Shown"] = "顯示",
 	["Minimap"] = "小地圖",
-	["Toggle the minimap button."] = "顯示小地圖按鈕。",
+	["Toggle the minimap button."] = "顯示小地圖按鈕",
 } end)
 
 L:RegisterTranslations("frFR", function() return {
@@ -69,7 +65,6 @@ L:RegisterTranslations("frFR", function() return {
 	tablethint_disabled = "|cffeda55fCliquez|r pour l'activer.",
 	["oRA is currently disabled."] = "oRA est actuellement désactivé.",
 	["oRA Options"] = "Options concernant oRA.",
-	["Active boss modules"] = "Modules boss actifs",
 	["Hidden"] = "Masqué",
 	["Shown"] = "Affiché",
 	["Minimap"] = "Minicarte",
@@ -77,15 +72,14 @@ L:RegisterTranslations("frFR", function() return {
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	tablethint = "|cffeda55fStrg+Alt+Klicken|r um oRA2 zu Deaktivieren. |cffeda55fAlt+Drag|r zum verschieben der MT, PT und Fenster.",
-	tablethint_disabled = "|cffeda55fKlicken|r um oRA2 zu Aktivieren.",
-	["oRA is currently disabled."] = "oRA2 ist deaktiviert.",
-	["oRA Options"] = "oRA2 Optionen",
-	["Active boss modules"] = "Aktive Boss-Module",
+	tablethint = "|cffeda55fShift+Klicken|r um die oRA Konfiguration zu öffnen. |cffeda55fStrg+Alt+Klicken|r um oRA zu deaktivieren. |cffeda55fAlt+Drag|r zum verschieben der MT, PT und Fenster.",
+	tablethint_disabled = "|cffeda55fKlicken|r um oRA zu aktivieren.",
+	["oRA is currently disabled."] = "oRA ist deaktiviert.",
+	["oRA Options"] = "oRA Optionen",
 	["Hidden"] = "Ausblenden",
 	["Shown"] = "Anzeigen",
 	["Minimap"] = "Minikarte",
-	["Toggle the minimap button."] = "Zeiget den Schalter an der Minikarte.",
+	["Toggle the minimap button."] = "Minikarten Button ein-/ausblenden.",
 } end)
 
 ----------------------------------
@@ -125,7 +119,6 @@ mod.clickableTooltip = true
 function mod:OnInitialize()
 	self:RegisterDB("oRAFubarDB")
 
-
 	-- XXX total hack
 	self.OnMenuRequest = oRA.consoleOptions
 	local args = AceLibrary("FuBarPlugin-2.0"):GetAceOptionsDataTable(mod)
@@ -164,12 +157,12 @@ end
 -----------------------------
 
 function mod:OnTooltipUpdate()
---	local cat = Tablet:AddCategory("columns", 1)
---	cat:AddLine("text", L["oRA Options"], "justify", "CENTER")
 	if oRA:IsActive() then
 		Tablet:SetHint(L["tablethint"])
-		for k, module in pairs(oRA.moduletooltips) do
-			module:OnTooltipUpdate()
+		for n, m in oRA:IterateModules() do
+			if m.OnTooltipUpdate and oRA:IsModuleActive(m) then
+				m:OnTooltipUpdate()
+			end
 		end
 	else
 		local cat = Tablet:AddCategory("colums", 1)

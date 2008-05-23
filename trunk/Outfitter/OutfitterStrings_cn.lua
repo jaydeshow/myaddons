@@ -1,11 +1,4 @@
 ﻿if GetLocale() == "zhCN" then
-Outfitter = {}
-MCDebugLib:InstallDebugger("Outfitter", Outfitter, {r=0.6,g=1,b=0.8})
-
-Outfitter.cVersion = "4.1.1"
-
-Outfitter.cTitle = "Outfitter"
-Outfitter.cTitleVersion = Outfitter.cTitle.." "..Outfitter.cVersion
 
 Outfitter.cSingleItemFormat = "%s"
 Outfitter.cTwoItemFormat = "%s and %s"
@@ -60,7 +53,7 @@ Outfitter.cSwimmingOutfit = "游泳"
 Outfitter.cLowHealthOutfit = "低生命/法力"
 Outfitter.cHasBuffOutfit = "身具Buff"
 Outfitter.cInZonesOutfit = "在地区"
-Outfitter.cSoloOutfit = "Solo"
+Outfitter.cSoloOutfit = "Solo/小队/团队"
 Outfitter.cFallingOutfit = "跌落"
 
 Outfitter.cArgentDawnOutfitDescription = "在瘟疫之地自动换装"
@@ -151,17 +144,22 @@ Outfitter.cItemStatFormats =
 		{Format = "坐骑移动速度略微提升", Value = 3, Types = {"Riding"}},
 		{Format = "秘银马刺", Value = 3, Types = {"Riding"}},
 	
-		"提高法术和魔法效果所造成的伤害和治疗效果，最多(%d+)点",
-	"Increases (.+) done by up to (%d+) and (healing) done by up to (%d+)",
-	"Increases (healing) done by up to (%d+) and damage done by up to (%d+) for all (magical spells and effects)",
-	"Increases the (.+) of your .+ by (%d+)",
-	"Increases your (.+) by (%d+)",
-	"Improves your (.+) by (%d+)",
-	"Increases (.+) by up to (%d+)",
-	"Increases (.+) by (%d+)",
-	"%+(%d+) (.+) and %+(%d+) (.+)", -- Multi-stat items like secondary-color gems
-	"%+(%d+) (.+)/%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
-	"%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
+    "提高法术和魔法效果所造成的伤害和治疗效果，最多(%d+)点",
+    "使所有法术和魔法效果所造成的伤害和治疗效果提高最多(%d+)点",
+    "使你的法术伤害提高最多(%d+)点，以及你的治疗效果最多(%d+)点",
+    "提高所有法术和魔法效果所造成的伤害和治疗效果(%d+)点",
+    "^(.-)提高最多([%d%.]+)点(.-)$",
+    "^(.-)提高最多([%d%.]+)(.-)$",
+    "^(.-)，最多([%d%.]+)点(.-)$",
+    "^(.-)，最多([%d%.]+)(.-)$",
+    "^(.-)最多([%d%.]+)点(.-)$",
+    "^(.-)最多([%d%.]+)(.-)$",
+    "^(.-)提高([%d%.]+)点(.-)$",
+    "^(.-)提高([%d%.]+)(.-)$",
+    "%+(%d+) (.+)，%+(%d+) (.+)", -- Multi-stat items like secondary-color gems
+    "%+(%d+) (.+)，%+(%d+) (.+)，%+(%d+) (.+)", -- Multi-stat items like secondary-color gems
+    "%+(%d+) (.+)/%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
+    "%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
 	
 	"提高 (.+) %+(%d+)",
 	"提升 (.+) by (%d+)",
@@ -528,4 +526,9 @@ Outfitter.cOutfitBarLockPositionLabel = "锁定位置"
 Outfitter.cOutfitBarHideBackgroundLabel = "隐藏背景"
 
 Outfitter.cPositionLockedError = "Outfit Bar 不能被移动因为你已经锁定了它的位置"
+
+Outfitter.cMustBeAtBankError = "你必须保持你的银行为打开状态来创建一个未找到物品列表"
+Outfitter.cMissingItemReportIntro = "未找到物品（如果一件物品被多个套装使用它将在列表中出现多次）:"
+Outfitter.cNoMissingItems = "没有装备未找到"
+
 end

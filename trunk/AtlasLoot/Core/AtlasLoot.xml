@@ -218,90 +218,6 @@
                         </Anchor>
 					</Anchors>
 				</FontString>
-                <FontString name="$parent_PriceText1" inherits="GameFontNormalSmall" justifyH="RIGHT" hidden="true" text="333333">
-					<Size>
-						<AbsDimension x="45" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_Name" relativePoint="BOTTOMLEFT">
-                            <Offset>
-								<AbsDimension x="0" y="-1"/>
-							</Offset>
-                        </Anchor>
-					</Anchors>
-				</FontString>
-                <Texture name="$parent_PriceIcon1" hidden="true">
-					<Size>
-						<AbsDimension x="12" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceText1" relativePoint="TOPRIGHT" />
-					</Anchors>
-				</Texture>
-                <FontString name="$parent_PriceText2" inherits="GameFontNormalSmall" justifyH="RIGHT" hidden="true" text="120">
-					<Size>
-						<AbsDimension x="22" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceIcon1" relativePoint="TOPRIGHT"/>
-					</Anchors>
-				</FontString>
-                <Texture name="$parent_PriceIcon2" hidden="true">
-					<Size>
-						<AbsDimension x="12" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceText2" relativePoint="TOPRIGHT" />
-					</Anchors>
-				</Texture>
-                <FontString name="$parent_PriceText3" inherits="GameFontNormalSmall" justifyH="RIGHT" hidden="true" text="120">
-					<Size>
-						<AbsDimension x="22" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceIcon2" relativePoint="TOPRIGHT"/>
-					</Anchors>
-				</FontString>
-                <Texture name="$parent_PriceIcon3" hidden="true">
-					<Size>
-						<AbsDimension x="12" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceText3" relativePoint="TOPRIGHT" />
-					</Anchors>
-				</Texture>
-                <FontString name="$parent_PriceText4" inherits="GameFontNormalSmall" justifyH="RIGHT" hidden="true" text="120">
-					<Size>
-						<AbsDimension x="22" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceIcon3" relativePoint="TOPRIGHT"/>
-					</Anchors>
-				</FontString>
-                <Texture name="$parent_PriceIcon4" hidden="true">
-					<Size>
-						<AbsDimension x="12" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceText4" relativePoint="TOPRIGHT" />
-					</Anchors>
-				</Texture>
-                <FontString name="$parent_PriceText5" inherits="GameFontNormalSmall" justifyH="RIGHT" hidden="true" text="120">
-					<Size>
-						<AbsDimension x="22" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceIcon4" relativePoint="TOPRIGHT"/>
-					</Anchors>
-				</FontString>
-                <Texture name="$parent_PriceIcon5" hidden="true">
-					<Size>
-						<AbsDimension x="12" y="12"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="$parent_PriceText5" relativePoint="TOPRIGHT" />
-					</Anchors>
-				</Texture>
 			</Layer>
             <Layer level="BACKGROUND">
                 <Texture name="$parent_Unsafe" hidden="true">
@@ -1314,12 +1230,12 @@
             </Button>
             <EditBox name="AtlasLootSearchBox" inherits="InputBoxTemplate" letters="100">
 				<Size>
-					<AbsDimension x="200" y="35"></AbsDimension>
+					<AbsDimension x="160" y="35"></AbsDimension>
 				</Size>
 				<Anchors>
 					<Anchor point="BOTTOM" relativeTo="$parent" relativePoint="BOTTOM">
 						<Offset>
-							<AbsDimension x="0" y="20"/>
+							<AbsDimension x="-123" y="20"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -1329,7 +1245,7 @@
 						this:SetTextInsets(0, 8, 0, 0);
 					</OnLoad>
 					<OnEnterPressed>
-						AtlasLoot_Search(this:GetText());
+						AtlasLoot:Search(this:GetText());
 						this:ClearFocus();
 					</OnEnterPressed>
 				</Scripts>
@@ -1342,7 +1258,7 @@
 				<Anchors>
 					<Anchor point="LEFT" relativePoint="RIGHT">
 						<Offset>
-							<AbsDimension x="1" y="0"/>
+							<AbsDimension x="0" y="0"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -1353,8 +1269,32 @@
 				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
 			        </OnShow>
 					<OnClick>
-						AtlasLoot_Search(AtlasLootSearchBox:GetText());
+						AtlasLoot:Search(AtlasLootSearchBox:GetText());
 						AtlasLootSearchBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="AtlasLootSearchOptionsButton" parent="AtlasLootSearchButton">
+				<Size>
+					<AbsDimension x="28" y="28" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="AtlasLootSearchButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-6" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+				<Scripts>
+					<OnShow>
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
+					<OnClick>
+						AtlasLoot:ShowSearchOptions(this);
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -1363,9 +1303,9 @@
 					<AbsDimension x="58" y="32"/>
 				</Size>
 				<Anchors>
-					<Anchor point="RIGHT" relativePoint="LEFT">
+					<Anchor point="LEFT" relativeTo="AtlasLootSearchOptionsButton" relativePoint="RIGHT">
 						<Offset>
-							<AbsDimension x="-7" y="0"/>
+							<AbsDimension x="-2" y="0"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -1378,6 +1318,25 @@
 					<OnClick>
 						AtlasLootSearchBox:SetText("");
 						AtlasLootSearchBox:ClearFocus();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="AtlasLootLastResultButton" inherits="AtlasLootPanelButtonTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="AtlasLootSearchClearButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+						this:SetText(AL["Last Result"]);
+						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+					</OnShow>
+					<OnClick>
+						AtlasLoot:ShowSearchResult();
 					</OnClick>
 				</Scripts>
 			</Button>

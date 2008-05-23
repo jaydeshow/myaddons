@@ -4,8 +4,9 @@
 
 local boss = BB["Kael'thas Sunstrider"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss.."(MT)")
-local db = nil
+
 local glapseannounced = nil
+local started = nil
 
 ----------------------------
 --      Localization      --
@@ -15,23 +16,23 @@ L:RegisterTranslations("enUS", function() return {
 	cmd = "Kael'thas",
 
 	glapse = "Gravity Lapse",
-	glapse_desc = "Warn for Gravity Lapse",
+	glapse_desc = "Warn for Gravity Lapse.",
 	glapse_message = "Gravity Lapse Soon!",
 	glapse_bar = "Gravity Lapse",
 
 	phoenix = "Summon Phoenix",
-	phoenix_desc = "Warn when a Phoenix is summoned",
+	phoenix_desc = "Warn when a Phoenix is summoned.",
 	phoenix_message = "Phoenix summoned!",
 
 	flamestrike = "Flame Strike",
-	flamestrike_desc = "Warn when a Flame Strike is cast",
+	flamestrike_desc = "Warn when a Flame Strike is cast.",
 	flamestrike_message = "Flame Strike!",
 
 	barrier = "Shock Barrier (Heroic)",
-	barrier_desc = "Warn when Kael'thas gains Shock Barrier",
+	barrier_desc = "Warn when Kael'thas gains Shock Barrier.",
 	barrier_message = "Shock Barrier Up!",
-	barrier_next_bar = "~ Next Shield Barrier",
-	barrier_soon_message = "Shield Barrier Soon!",
+	barrier_next_bar = "~ Next Shock Barrier",
+	barrier_soon_message = "Shock Barrier Soon!",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -52,7 +53,7 @@ L:RegisterTranslations("koKR", function() return {
 	barrier_desc = "캘타스가 충격 방벽 얻었을 때 알립니다.",
 	barrier_message = "충격 방벽!",
 	barrier_next_bar = "~ 다음 방어 방벽",
-	barrier_soon_message = "잠시후 방어 방벽!",
+	barrier_soon_message = "잠시 후 방어 방벽!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -78,24 +79,46 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	glapse = "引力失效",
-	glapse_desc = "当引力失效发出警报。",
+	glapse_desc = "当引力失效时发出警报。",
 	glapse_message = "即将 引力失效！",
 	glapse_bar = "<引力失效>",
 
 	phoenix = "召唤凤凰",
-	phoenix_desc = "当凤凰被召唤发出警报。",
-	phoenix_message = "凤凰 -> 召唤！",
+	phoenix_desc = "当凤凰被召唤时发出警报。",
+	phoenix_message = "召唤 - 凤凰！",
 
 	flamestrike = "烈焰打击",
 	flamestrike_desc = "当烈焰打击施放时发出警报。",
 	flamestrike_message = "烈焰打击！",
 
 	barrier = "震击屏障（英雄）",
-	barrier_desc = "当凯尔萨斯获得震击屏障发出警报。",
+	barrier_desc = "当获得震击屏障时发出警报。",
 	barrier_message = "震击屏障！",
 	barrier_next_bar = "<下一震击屏障>",
 	barrier_soon_message = "即将 震击屏障！",
 } end )
+
+L:RegisterTranslations("zhTW", function() return {
+	glapse = "重力流逝",
+	glapse_desc = "當凱爾薩斯發動重力流逝時發出警告",
+	glapse_message = "即將發動重力流逝!",
+	glapse_bar = "<重力流逝>",
+
+	phoenix = "召喚鳳凰",
+	phoenix_desc = "當凱爾薩斯召喚鳳凰時發出警告",
+	phoenix_message = "鳳凰 - 已召喚!",
+
+	flamestrike = "烈焰風暴",
+	flamestrike_desc = "當凱爾薩斯發動烈焰風暴時發出警告",
+	flamestrike_message = "烈焰風暴!",
+
+	barrier = "震擊屏障（英雄）", -- need check
+	barrier_desc = "當凱爾薩斯獲得震擊屏障發出警告", -- need check
+	barrier_message = "震擊屏障 開啟!", -- need check
+	barrier_next_bar = "<下一次震擊屏障>", -- need check
+	barrier_soon_message = "即將施放震擊屏障!", -- need check
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -105,7 +128,7 @@ mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"glapse", "phoenix", "flamestrike", -1, "barrier", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 74082 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -118,14 +141,13 @@ function mod:OnEnable()
 	self:RegisterEvent("UNIT_HEALTH")
 	self:AddCombatListener("SPELL_CAST_START", "Lapse", 44224)
 	self:AddCombatListener("SPELL_SUMMON", "Phoenix", 44194)
-	self:AddCombatListener("SPELL_SUMMON", "FlameStrike", 44192)
+	self:AddCombatListener("SPELL_SUMMON", "FlameStrike", 44192, 46162)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Barrier", 46165)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "CheckForEngage")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 
 	self:RegisterEvent("BigWigs_RecvSync")
-
-	db = self.db.profile
 end
 
 ------------------------------
@@ -133,33 +155,43 @@ end
 ------------------------------
 
 function mod:UNIT_HEALTH(arg1)
-	if not db.glapse then return end
+	if not self.db.profile.glapse then return end
 	if UnitName(arg1) == boss then
 		local health = UnitHealth(arg1)
 		if health > 48 and health <= 52 and not glapseannounced then
 			glapseannounced = true
-			self:Message(L["glapse_message"], "Important", nil, nil, nil, 44224)
-		elseif health > 30 and glapseannounced then
+			self:IfMessage(L["glapse_message"], "Important", 44224)
+		elseif health > 60 and glapseannounced then
 			glapseannounced = nil
 		end
 	end
+	if glapseannounced and self.db.profile.barrier then
+		self:CancelScheduledEvent("barrier")
+		self:TriggerEvent("BigWigs_StopBar", self, L["barrier_next_bar"])
+	end	
 end
 
 function mod:Lapse()
-	if db.glapse then 
+	if self.db.profile.glapse then 
 		self:Bar(L["glapse_bar"], 35, 44224)
 	end
 end
 
 function mod:Phoenix()
-	if db.phoenix then
-		self:Message(L["phoenix_message"], "Important", nil, nil, nil, 44194)
+	if self.db.profile.phoenix then
+		self:IfMessage(L["phoenix_message"], "Urgent", 44194)
 	end
 end
 
 function mod:FlameStrike()
-	if db.flamestrike then
-		self:Message(L["flamestrike_message"], "Important", nil, nil, nil, 44192)
+	if self.db.profile.flamestrike then
+		self:IfMessage(L["flamestrike_message"], "Important", 44192)
+	end
+end
+
+function mod:Barrier()
+	if self.db.profile.barrier then
+		self:IfMessage(L["barrier_message"], "Important", 46165)
 	end
 end
 
@@ -169,9 +201,9 @@ function mod:BigWigs_RecvSync(sync, rest, nick)
 		if self:IsEventRegistered("PLAYER_REGEN_DISABLED") then
 			self:UnregisterEvent("PLAYER_REGEN_DISABLED")
 		end
-		if db.barrier and GetInstanceDifficulty() == 2 then
-			self:Bar(L["barrier_next_bar"], 60) --need a spellId for Shield Barrier
-			self:DelayedMessage(50, L["barrier_soon_message"], "Attention")
+		if self.db.profile.barrier and GetInstanceDifficulty() == 2 then
+			self:Bar(L["barrier_next_bar"], 60, 46165)
+			self:ScheduleEvent("barrier", "BigWigs_Message", 50, L["barrier_soon_message"], "Attention")
 		end
 	end
 end

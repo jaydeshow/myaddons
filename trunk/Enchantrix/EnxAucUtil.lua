@@ -1,7 +1,7 @@
 --[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: EnxAucUtil.lua 2732 2008-01-08 10:13:01Z Kinesia $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: EnxAucUtil.lua 2946 2008-03-23 06:48:20Z kinesia $
 	URL: http://enchantrix.org/
 
 	This is an addon for World of Warcraft that add a list of what an item
@@ -52,7 +52,7 @@ local priceTableAge
 function lib.IsValidAlgorithm(hyperlink)
 	if not get("export.aucadv") then return false end
     
-    if get("ScanValueType") == "adv:stat:appraiser" then return false end  -- Stops infinite loop from using Appraiser prices which uses Market Price which uses Enchantrix.
+    if get("ScanValueType") == "adv:stat:Appraiser" then return false end  -- Stops infinite loop from using Appraiser prices which uses Market Price which uses Enchantrix.
 
 	local linkType,itemId,property,factor = AucAdvanced.DecodeLink(hyperlink)
 	if (linkType ~= "item") then return false end
@@ -66,6 +66,7 @@ end
 local array
 function lib.GetPriceArray(link)
 	local usable, itemId = lib.IsValidAlgorithm(link)
+    if not usable then return end
 	if array then recycle(array) end
 	array = acquire()
 

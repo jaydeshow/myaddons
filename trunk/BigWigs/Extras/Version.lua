@@ -139,7 +139,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Query already running, please wait 5 seconds before trying again."] = "正在查询中，请等待5秒后再次尝试。",
 	["Querying versions for "] = "正在检测版本",
 	["Big Wigs Version Query"] = "BigWigs 版本检测",
-	["Close window"] = "关闭窗口", -- I know, it's really a Tablet.
+	["Close window"] = "关闭窗口",
 	["Showing version for "] = "显示版本：",
 	["Green versions are newer than yours, red are older, and white are the same."] = "绿色版本比您的新，红色比您的低，白色与您的版本相同。",
 	["Player"] = "玩家",
@@ -164,20 +164,20 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	["Version Query"] = "檢查版本",
-	["Commands for querying the raid for Big Wigs versions."] = "用於檢查 BigWigs 的版本",
-	["Query already running, please wait 5 seconds before trying again."] = "檢查中，若要再次檢查，請稍後 5 秒",
+	["Commands for querying the raid for Big Wigs versions."] = "檢查團隊的 Big Wigs 的版本",
+	["Query already running, please wait 5 seconds before trying again."] = "檢查中，若要再次檢查，請稍後 5 秒。",
 	["Querying versions for "] = "檢查版本 ",
 	["Big Wigs Version Query"] = "Big Wigs 版本檢查",
 	["Close window"] = "關閉窗口", -- I know, it's really a Tablet.
 	["Showing version for "] = "顯示版本 ",
-	["Green versions are newer than yours, red are older, and white are the same."] = "綠色的版本比你的新，紅色的比較舊，白色則表示版本相同",
+	["Green versions are newer than yours, red are older, and white are the same."] = "綠色的版本比你的新，紅色的比較舊，白色則表示版本相同。",
 	["Player"] = "玩家",
 	["Version"] = "版本",
 	["Current zone"] = "目前區域",
 	["<zone>"] = "<區域>",
-	["Version query done."] = "完成檢查版本",
+	["Version query done."] = "檢查版本完成",
 	["Runs a version query on your current zone."] = "檢查目前區域的版本",
-	["Closes the version query window."] = "關掉目前的檢查版本視窗",
+	["Closes the version query window."] = "關閉檢查版本視窗",
 	["current"] = "目前",
 	["Runs a version query on the given zone."] = "檢查指定區域的版本",
 	["Zone"] = "區域",
@@ -189,7 +189,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["Replies"] = "回應人數",
 	["Ancient"] = "舊版本",
 	["There seems to be a newer version of Big Wigs available for you, please upgrade."] = "發現 BigWigs 新版本，可以考慮升級。",
-	["Notify people with older versions that there is a new version available."] = "通知使用舊版本使用者升級到最新版本。",
+	["Notify people with older versions that there is a new version available."] = "通知使用舊版本使用者升級到最新版本",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -221,33 +221,33 @@ L:RegisterTranslations("frFR", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	["Version Query"] = "Interrogatorio de versi\195\179n",
-	["Commands for querying the raid for Big Wigs versions."] = "Comandos para interrogar a la banda sobre versiones de BigWigs",
-	["Query already running, please wait 5 seconds before trying again."] = "Interrogatorio en proceso, por favor, espere 5 segundos antes de intentarlo de nuevo",
+	["Version Query"] = "Interrogatorio de versión",
+	["Commands for querying the raid for Big Wigs versions."] = "Comandos para interrogar a la banda sobre versiones de BigWigs.",
+	["Query already running, please wait 5 seconds before trying again."] = "Interrogatorio en proceso, por favor, espera 5 seg antes de intentarlo de nuevo",
 	["Querying versions for "] = "Interrogando versiones de ",
-	["Big Wigs Version Query"] = "Interrogatorio de la versi\195\179n de Big Wigs",
+	["Big Wigs Version Query"] = "Interrogatorio de la versión de Big Wigs",
 	["Close window"] = "Cerrar ventana", -- I know, it's really a Tablet.
-	["Showing version for "] = "Mostrando versi\195\179n de ",
-	["Green versions are newer than yours, red are older, and white are the same."] = "En verde versiones m\195\161s modernas, en rojo m\195\161s antiguas, en blanco iguales",
+	["Showing version for "] = "Mostrando versión de ",
+	["Green versions are newer than yours, red are older, and white are the same."] = "En verde versiones más modernas, en rojo más antiguas, en blanco iguales",
 	["Player"] = "Jugador",
-	["Version"] = "Versi\195\179n",
+	["Version"] = "Versión",
 	["Current zone"] = "Zona actual",
 	["<zone>"] = "<zona>",
-	["Version query done."] = "Interrogatorio de versi\195\179n realizada",
-	["Runs a version query on your current zone."] = "Ejecuta un interrogatorio de versi\195\179n en tu zona actual",
-	["Closes the version query window."] = "Cierra la ventana de interrogatorio de versi\195\179n",
+	["Version query done."] = "Interrogatorio de versión realizado",
+	["Runs a version query on your current zone."] = "Realiza un interrogatorio de versión en tu zona actual",
+	["Closes the version query window."] = "Cierra la ventana de interrogatorio de versión",
 	["current"] = "Actual",
-	["Runs a version query on the given zone."] = "Ejecuta un interrogatorio de versi\195\179n en la zona dada",
+	["Runs a version query on the given zone."] = "Realiza un interrogatorio de versión en la zona dada",
 	["Zone"] = "Zona",
 	["zone"] = "zona",
 	["N/A"] = "N/A",
 	["Not loaded"] = "No cargado",
 	["BigWigs"] = "BigWigs",
-	["Runs a version query on the BigWigs core."] = "Ejecuta un interrogatorio de versi\195\179n en el n\195\186cleo de BigWigs",
+	["Runs a version query on the BigWigs core."] = "Realiza un interrogatorio de versión de núcleo de BigWigs",
 	["Replies"] = "Respuestas",
 	["Ancient"] = "Antigua",
-	["There seems to be a newer version of Big Wigs available for you, please upgrade."] = "Parece que hay una nueva versi\195\179n de Big Wigs disponible para t\195\173, por favor actualicese",
-	["Notify people with older versions that there is a new version available."] = "Notificar a gente con versiones antiguas que hay una nueva versi\195\179n disponible",
+	["There seems to be a newer version of Big Wigs available for you, please upgrade."] = "Parece que hay una nueva versión de Big Wigs disponible para ti, por favor actualízala",
+	["Notify people with older versions that there is a new version available."] = "Notificar a gente con versiones antiguas que hay una nueva versión disponible",
 } end )
 
 ---------------------------------
@@ -256,12 +256,8 @@ L:RegisterTranslations("esES", function() return {
 
 local plugin = BigWigs:NewModule("Version Query")
 
-plugin.revision = tonumber(("$Revision: 64572 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71441 $"):sub(12, -3))
 plugin.external = true
-
-local function disabled()
-	return not BigWigs:HasModule("Comm")
-end
 
 plugin.consoleCmd = L["Version"]
 plugin.consoleOptions = {
@@ -276,14 +272,12 @@ plugin.consoleOptions = {
 			desc = L["Runs a version query on the BigWigs core."],
 			passValue = "BigWigs",
 			func = "QueryVersion",
-			disabled = disabled,
 		},
 		[L["current"]] = {
 			type = "execute",
 			name = L["Current zone"],
 			desc = L["Runs a version query on your current zone."],
 			func = "QueryVersion",
-			disabled = disabled,
 		},
 		[L["zone"]] = {
 			type = "text",
@@ -292,7 +286,6 @@ plugin.consoleOptions = {
 			usage = L["<zone>"],
 			get = false,
 			set = "QueryVersion",
-			disabled = disabled,
 		},
 	}
 }
@@ -488,10 +481,6 @@ function plugin:QueryVersion(zone)
 
 	if not tablet then
 		tablet = AceLibrary:HasInstance("Tablet-2.0") and AceLibrary("Tablet-2.0") or nil
-		if not tablet then
-			error("You need a copy of the Tablet-2.0 library to be able to *run* a version check right now. This should be fixed shortly.")
-			return
-		end
 	end
 
 	if type(zone) ~= "string" or zone == "" then zone = GetRealZoneText() end

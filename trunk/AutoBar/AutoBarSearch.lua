@@ -7,7 +7,7 @@ Website: http://www.wowace.com/
 -- http://code.google.com/p/autobar/
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 55356 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 74033 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -15,18 +15,17 @@ end
 
 
 local AceOO = AceLibrary("AceOO-2.0")
-local LBS = LibStub("LibBabble-Spell-3.0")
-local BS = LBS:GetLookupTable()
-local BZ = AceLibrary:GetInstance("Babble-Zone-2.2")
+local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
+--local BZ = AceLibrary:GetInstance("Babble-Zone-2.2")
 
 AutoBarSearch = {}
 AutoBarSearch.spells = {}
+AutoBarSearch.macros = {}
 
 AutoBarSearch.dirtyBags = {}
 local searchSpace, items, playerLevel
 
 AutoBarSearch.zoneGroup = {}
-AutoBarSearch.zoneGroup[BZ["Serpentshrine Cavern"]] = "Blades Edge"
 AutoBarSearch.zoneGroup[BZ["Serpentshrine Cavern"]] = "Coilfang"
 AutoBarSearch.zoneGroup[BZ["The Slave Pens"]] = "Coilfang"
 AutoBarSearch.zoneGroup[BZ["The Steamvault"]] = "Coilfang"
@@ -35,6 +34,21 @@ AutoBarSearch.zoneGroup[BZ["The Arcatraz"]] = "Tempest Keep"
 AutoBarSearch.zoneGroup[BZ["The Botanica"]] = "Tempest Keep"
 AutoBarSearch.zoneGroup[BZ["The Eye"]] = "Tempest Keep"
 AutoBarSearch.zoneGroup[BZ["The Mechanar"]] = "Tempest Keep"
+
+AutoBarSearch.subZoneGroup = {}
+AutoBarSearch.subZoneGroup[BZ["Serpentshrine Cavern"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Forge Camp: Terror"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Vortex Pinnacle"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Rivendark's Perch"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Ogri'la"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Obsidia's Perch"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Skyguard Outpost"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Shartuul's Transporter"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Forge Camp: Wrath"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Bash'ir Landing"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Crystal Spine"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Insidion's Perch"]] = "BE Plateaus"
+AutoBarSearch.subZoneGroup[BZ["Furywing's Perch"]] = "BE Plateaus"
 
 -- Recycle lists will avoid garbage collection and memory thrashing but potentially grow over time
 -- A simple 2 list aproach that recycles objects specific to that type of list so the bulk of operations should be only initing recycled objects.
@@ -72,24 +86,24 @@ end
 
 -- The search space with all items to look for
 -- Tracks client buttons that are looking (for proper deletion)
---		{ itemId = {buttonName, ...} }
+--		{ itemId = {buttonKey, ...} }
 local SearchSpace = AceOO.Class(Recycle)
 
--- Add a list of itemIds for the given buttonName
-function SearchSpace.prototype:Add(itemId, buttonName)
+-- Add a list of itemIds for the given buttonKey
+function SearchSpace.prototype:Add(itemId, buttonKey)
 	local clientButtons = self.dataList[itemId]
 	if (not clientButtons) then
 		clientButtons = self:Create()
 		self.dataList[itemId] = clientButtons
 	end
-	clientButtons[buttonName] = true
+	clientButtons[buttonKey] = true
 end
 
--- Remove a list of itemIds for the given buttonName
-function SearchSpace.prototype:Delete(itemId, buttonName)
+-- Remove a list of itemIds for the given buttonKey
+function SearchSpace.prototype:Delete(itemId, buttonKey)
 	local clientButtons = self.dataList[itemId]
 	if (clientButtons) then
-		clientButtons[buttonName] = nil
+		clientButtons[buttonKey] = nil
 	end
 	if (# clientButtons == 0) then
 		self:Recycle(clientButtons)
@@ -100,8 +114,8 @@ end
 -- Remove and Recycle all items
 function SearchSpace.prototype:Reset()
 	for itemId, clientButtons in pairs(self.dataList) do
-		for i, buttonName in ipairs(clientButtons) do
-			clientButtons[buttonName] = nil
+		for i, buttonKey in pairs(clientButtons) do
+			clientButtons[buttonKey] = nil
 		end
 		self:Recycle(clientButtons)
 		self.dataList[itemId] = nil
@@ -140,13 +154,13 @@ function Items.prototype:init()
 	Items.super.prototype.init(self)
 end
 
--- Add a list of itemIds for the given buttonName
-function Items.prototype:Add(itemList, buttonName, category, slotIndex)
+-- Add a list of itemIds for the given buttonKey
+function Items.prototype:Add(itemList, buttonKey, category, slotIndex)
 --AutoBar:Print("Items.prototype:Add    category " .. tostring(category) .. " itemList " .. tostring(itemList))
-	if (not self.dataList[buttonName]) then
-		self.dataList[buttonName] = {}
+	if (not self.dataList[buttonKey]) then
+		self.dataList[buttonKey] = {}
 	end
-	local buttonItems = self.dataList[buttonName]
+	local buttonItems = self.dataList[buttonKey]
 	for i, itemId in pairs(itemList) do
 		local itemData = buttonItems[itemId]
 		if (not itemData) then
@@ -155,7 +169,7 @@ function Items.prototype:Add(itemList, buttonName, category, slotIndex)
 			itemData.category = category
 			itemData.slotIndex = slotIndex
 			itemData.categoryIndex = i
-			AutoBarSearch.space:Add(itemId, buttonName)
+			AutoBarSearch.space:Add(itemId, buttonKey)
 		elseif (slotIndex > itemData.slotIndex or (slotIndex == itemData.slotIndex and i >= itemData.categoryIndex)) then
 			itemData.category = category
 			itemData.slotIndex = slotIndex
@@ -164,57 +178,36 @@ function Items.prototype:Add(itemList, buttonName, category, slotIndex)
 	end
 end
 
--- Remove a list of itemIds for the given buttonName
+-- Remove a list of itemIds for the given buttonKey
 -- ToDo: on deletion reapply lower priority ones / track them from the start?
-function Items.prototype:Delete(itemList, buttonName, category, slotIndex)
+function Items.prototype:Delete(itemList, buttonKey, category, slotIndex)
 	for i, itemId in pairs(itemList) do
-		local buttonItems = self.dataList[buttonName]
+		local buttonItems = self.dataList[buttonKey]
 		local itemData = buttonItems[itemId]
 		if (itemData and slotIndex == itemData.slotIndex) then
 			buttonItems[itemId] = nil
 			self:Recycle(itemData)
-			AutoBarSearch.space:Delete(itemId, buttonName)
+			AutoBarSearch.space:Delete(itemId, buttonKey)
 		end
 	end
-end
-
--- Rearrange item slot and categoryIndex if given.
-function Items.prototype:Rearrange(buttonName, slotIndexA, slotIndexB, category, categoryIndexA, categoryIndexB)
---AutoBar:Print("Items.prototype:Rearrange    buttonName " .. tostring(buttonName) .. " slotIndexA " .. tostring(slotIndexA) .. " slotIndexB " .. tostring(slotIndexB) .. " category " .. tostring(category) .. " categoryIndexA " .. tostring(categoryIndexA) .. " categoryIndexB " .. tostring(categoryIndexB))
-	local buttonItems = self.dataList[buttonName]
-	for itemId, itemData in pairs(buttonItems) do
-		-- Swap all in the affected slotIndexes
-		if (itemData.slotIndex == slotIndexA) then
-			itemData.slotIndex = slotIndexB
-		elseif (itemData.slotIndex == slotIndexB) then
-			itemData.slotIndex = slotIndexA
-		end
-
-		-- Also adjust categoryIndex if necessary
-		if (itemData.category == category) then
-			if (itemData.categoryIndex == categoryIndexA) then
-				itemData.categoryIndex = categoryIndexB
-			elseif (itemData.categoryIndex == categoryIndexB) then
-				itemData.categoryIndex = categoryIndexA
-			end
-		end
-	end
-	AutoBarSearch.sorted:Rearrange(buttonName, slotIndexA, slotIndexB, category, categoryIndexA, categoryIndexB)
 end
 
 -- Remove and Recycle all items
 function Items.prototype:Reset()
-	for buttonName, buttonItems in pairs(self.dataList) do
+	for buttonKey, buttonItems in pairs(self.dataList) do
 		for itemId, itemData in pairs(buttonItems) do
 			buttonItems[itemId] = nil
 		end
 		self:Recycle(itemData)
+		if (not AutoBar.buttonList[buttonKey]) then
+			self.dataList[buttonKey] = nil
+		end
 	end
 end
 
 -- Testing & Debug function only
 function Items.prototype:Contains(id)
-	for buttonName, buttonItems in pairs(self.dataList) do
+	for buttonKey, buttonItems in pairs(self.dataList) do
 		for itemId, itemData in pairs(buttonItems) do
 			if (itemId == id) then
 				if (not AutoBarSearch.trace) then
@@ -238,53 +231,46 @@ function Items.prototype:Populate()
 				if (categoryInfo.spell) then
 --AutoBar:Print("Items.prototype:Populate   slotItem " .. tostring(slotItem))
 --DevTools_Dump(AutoBarCategoryList["Spell.Portals"])
-					return slotItem, categoryInfo.items, nil
+					return slotItem, categoryInfo.items, nil, categoryInfo.macroList
 				elseif (categoryInfo.spells) then
-					return slotItem, categoryInfo.items, categoryInfo.spells
+					return slotItem, categoryInfo.items, categoryInfo.spells, categoryInfo.macroList
 				else
-					return slotItem, categoryInfo.items, nil
+					return slotItem, categoryInfo.items, nil, categoryInfo.macroList
 				end
 			else
-				return nil, nil, nil;
+				return nil, nil, nil, nil, nil
 			end
-		elseif (type(slotItem) == "number") then
-			tempList[1] = slotItem
-			return nil, tempList, nil;
-		elseif (type(slotItem) == "table") then
-			return nil, slotItem, nil;
 		else
---AutoBar:Print("Items.prototype:Populate    GetItems unknown type " .. tostring(type(slotItem)))
+			AutoBar:Print("Items.prototype:Populate    GetItems unknown type " .. tostring(type(slotItem)))
 		end
 	end
 
-	for buttonName, button in pairs(AutoBar.buttonList) do
+	for buttonKey, button in pairs(AutoBar.buttonList) do
 		if (button and button[1]) then
 			for slotIndex = 1, # button, 1 do
-				category, itemList, spells = GetItems(button[slotIndex])
---AutoBar:Print("Items.prototype:Populate    itemList " .. tostring(itemList) .. " buttonName " .. tostring(buttonName) .. " category " .. tostring(category))
+				local category, itemList, spells, macroList = GetItems(button[slotIndex])
 				if (itemList) then
-					self:Add(itemList, buttonName, category, slotIndex)
+					self:Add(itemList, buttonKey, category, slotIndex)
 				end
 				if (spells) then
---AutoBar:Print("Items.prototype:Populate Add   spells " .. tostring(spells) .. " buttonName " .. tostring(buttonName) .. " category " .. tostring(category))
-					self:Add(spells, buttonName, category, slotIndex)
+					self:Add(spells, buttonKey, category, slotIndex)
 				end
-			end
-			if (button.buttonDB.rememberLastUsed) then
-				AutoBarSearch.rememberLastUsed[buttonName] = button
-			else
-				AutoBarSearch.rememberLastUsed[buttonName] = nil
+				if (macroList) then
+--AutoBar:Print("Items.prototype:Populate Add   macroList " .. tostring(macroList) .. " buttonKey " .. tostring(buttonKey) .. " category " .. tostring(category))
+					self:Add(macroList, buttonKey, category, slotIndex)
+				end
 			end
 		end
 	end
 
 end
+--/dump AutoBarSearch.sorted["AutoBarCustomButton7"]
 
 -- Return the buttons search list.
 -- Do not manipulate the list.  It is only for performance when checking if an itemId is searched for
-function Items.prototype:GetList(buttonName)
-	if (buttonName) then
-		return self.dataList[buttonName]
+function Items.prototype:GetList(buttonKey)
+	if (buttonKey) then
+		return self.dataList[buttonKey]
 	else
 		return self.dataList
 	end
@@ -402,9 +388,9 @@ function Stuff.prototype:ScanInventory()
 	end
 end
 
--- Scan spells.
+
+-- Scan available Spells
 function Stuff.prototype:ScanSpells()
-	-- Scan available spells
 	for spellName, spellInfo in pairs(AutoBarSearch.spells) do
 --AutoBar:Print("Stuff.prototype:ScanSpells    spellName " .. tostring(spellName));
 		spellInfo.canCast = AutoBarSearch:CanCastSpell(spellName)
@@ -418,10 +404,39 @@ function Stuff.prototype:ScanSpells()
 	end
 end
 
+
+-- Scan available Macros
+function Stuff.prototype:ScanMacros()
+	for macroId, macroInfo in pairs(AutoBarSearch.macros) do
+		if (macroInfo.macroIndex) then
+			local name, iconTexture, body = GetMacroInfo(macroInfo.macroIndex)
+			if (body) then
+				self:Add(macroId, nil, nil, macroId)
+			else
+				self:Delete(macroId, nil, nil, macroId)
+			end
+		elseif (macroInfo.macroText) then
+			self:Add(macroId, nil, nil, macroId)
+		else
+			self:Delete(macroId, nil, nil, macroId)
+		end
+	end
+end
+
+
+-- Scan bags only to support shuffling of stuff manually added or moved during combat.
+function Stuff.prototype:ScanCombat()
+	AutoBar:LogEventStart("Stuff.prototype:ScanCombat")
+	for bag = 0, 4, 1 do
+		self:ScanBag(bag)
+	end
+	AutoBar:LogEventEnd("Stuff.prototype:ScanCombat")
+end
+
+
 -- Scan the requested Stuff.
 function Stuff.prototype:Scan()
 	playerLevel = UnitLevel("player")
-	local bag
 	AutoBar:LogEventStart("Stuff.prototype:Scan")
 	for bag = 0, 4, 1 do
 		if (AutoBarSearch.dirtyBags[bag]) then
@@ -440,6 +455,11 @@ function Stuff.prototype:Scan()
 --AutoBar:Print("Stuff.prototype:Scan    scanning spells ");
 		self:ScanSpells()
 		AutoBarSearch.dirtyBags.spells = nil
+	end
+	if (AutoBarSearch.dirtyBags.macros) then
+--AutoBar:Print("Stuff.prototype:Scan    scanning spells ");
+		self:ScanMacros()
+		AutoBarSearch.dirtyBags.macros = nil
 	end
 	AutoBar:LogEventEnd("Stuff.prototype:Scan")
 end
@@ -536,11 +556,13 @@ function Found.prototype:Add(itemId, bag, slot, spell)
 	else
 		-- Item previously found so just record additional location
 		local bFound = nil
-		local nItems = # itemData
 		local i = 1
-		while (i <= nItems) do
+		while (true) do
 			if (itemData[i] == bag and itemData[i + 1] == slot and itemData[i + 2] == spell) then
 				bFound = true
+				break
+			end
+			if (not (itemData[i] or itemData[i + 1] or itemData[i + 2])) then
 				break
 			end
 			i = i + 3
@@ -558,25 +580,23 @@ end
 function Found.prototype:Delete(itemId, bag, slot, spell)
 	local itemData = self.dataList[itemId]
 	if (itemData) then
-		local nItems = # itemData
 --AutoBar:Print("Found.prototype:Delete    itemId " .. tostring(itemId) .. " bag " .. tostring(bag) .. " slot " .. tostring(slot) .. " nItems " .. tostring(nItems))
 		local i = 1
-		while (i <= nItems) do
+		repeat
 			if (itemData[i] == bag and itemData[i + 1] == slot and itemData[i + 2] == spell) then
-				local lastIndex = math.modf((nItems - 1) / 3) * 3 + 1
---AutoBar:Print("Found.prototype:Delete    itemData[i] " .. tostring(itemData[i]) .. " itemData[i + 1] " .. tostring(itemData[i + 1]) .. " itemData[i + 2] " .. tostring(itemData[i + 2]) .. " i " .. tostring(i) .. " lastIndex " .. tostring(lastIndex))
-				if (lastIndex > i) then
-					itemData[i] = itemData[lastIndex]
-					itemData[i + 1] = itemData[lastIndex + 1]
-					itemData[i + 2] = itemData[lastIndex + 2]
-				end
-				itemData[lastIndex + 2] = nil
-				itemData[lastIndex + 1] = nil
-				itemData[lastIndex] = nil
+--AutoBar:Print("Found.prototype:Delete    itemData[i] " .. tostring(itemData[i]) .. " itemData[i + 1] " .. tostring(itemData[i + 1]) .. " itemData[i + 2] " .. tostring(itemData[i + 2]) .. " i " .. tostring(i))
+				-- Move rest back
+				local j = i
+				repeat
+					itemData[j] = itemData[j + 3]
+					itemData[j + 1] = itemData[j + 4]
+					itemData[j + 2] = itemData[j + 5]
+					j = j + 1
+				until (not (itemData[j] or itemData[j + 1] or itemData[j + 2]))
 				break
 			end
 			i = i + 3
-		end
+		until (not (itemData[i] or itemData[i + 1] or itemData[i + 2]))
 
 		-- Item is now totally gone so remove it everywhere
 		if (not (itemData[1] or itemData[2] or itemData[3])) then
@@ -596,6 +616,49 @@ function Found.prototype:Reset()
 		self.dataList[itemId] = nil
 		self:Recycle(itemData)
 		-- Clearing out itemData handled in Add
+	end
+end
+
+-- Return number of slots for the itemId
+function Found.prototype:GetTotalSlots(itemId)
+	local itemData = self.dataList[itemId]
+	local lastIndex
+	if (itemData) then
+		local nItems = # itemData
+		local i = 3
+		while (true) do
+			if (itemData[i] or itemData[i + 1] or itemData[i + 2]) then
+				i = i + 3
+			else
+				break
+			end
+		end
+		lastIndex = i / 3
+	end
+	return lastIndex
+end
+
+-- Return bag, slot, spell at index for the itemId
+function Found.prototype:GetItemData(itemId, index)
+	local itemData = self.dataList[itemId]
+	if (index) then
+		local offset = index * 3
+		return itemData[offset - 2], itemData[offset - 1], itemData[offset]
+	elseif (itemData) then
+		return itemData[1], itemData[2], itemData[3]
+	else
+		return nil, nil, nil
+	end
+end
+
+-- Nil out bag, slot, spell at index for the itemId
+function Found.prototype:ClearItemData(itemId, index)
+	local itemData = self.dataList[itemId]
+	if (index) then
+		local offset = index * 3
+		itemData[offset - 2] = nil
+		itemData[offset - 1] = nil
+		itemData[offset] = nil
 	end
 end
 
@@ -647,62 +710,65 @@ end
 
 -- Add the brand new item to any interrested buttons
 function Current.prototype:Merge(itemId)
-	for buttonName, searchItems in pairs(items) do
+	for buttonKey, searchItems in pairs(items) do
 		if (searchItems and searchItems[itemId]) then
 			local itemData = searchItems[itemId]
-			self:Add(buttonName, itemId)
---AutoBar:Print("Current.prototype:Merge    itemId " .. tostring(itemId) .. " buttonName " .. tostring(buttonName))
-			AutoBarSearch.sorted:Add(buttonName, itemId, itemData.slotIndex, itemData.categoryIndex)
+			self:Add(buttonKey, itemId)
+--AutoBar:Print("Current.prototype:Merge    itemId " .. tostring(itemId) .. " buttonKey " .. tostring(buttonKey))
+			AutoBarSearch.sorted:Add(buttonKey, itemId, itemData.slotIndex, itemData.categoryIndex)
 		end
 	end
 end
 
 -- Purge the defunct item from its client buttons
 function Current.prototype:Purge(itemId)
-	for buttonName, searchItems in pairs(items) do
+	for buttonKey, searchItems in pairs(items) do
 		if (searchItems and searchItems[itemId]) then
-			self:Delete(buttonName, itemId)
---AutoBar:Print("Current.prototype:Purge    itemId " .. tostring(itemId) .. " buttonName " .. tostring(buttonName))
-			AutoBarSearch.sorted:Delete(buttonName, itemId)
+			self:Delete(buttonKey, itemId)
+--AutoBar:Print("Current.prototype:Purge    itemId " .. tostring(itemId) .. " buttonKey " .. tostring(buttonKey))
+			AutoBarSearch.sorted:Delete(buttonKey, itemId)
 		end
 	end
 end
 
--- Add the found item to the list of itemIds for the given buttonName
-function Current.prototype:Add(buttonName, itemId)
-	if (not self.dataList[buttonName]) then
-		self.dataList[buttonName] = {}
+-- Add the found item to the list of itemIds for the given buttonKey
+function Current.prototype:Add(buttonKey, itemId)
+	if (not self.dataList[buttonKey]) then
+		self.dataList[buttonKey] = {}
 	end
-	local buttonItems = self.dataList[buttonName]
+	local buttonItems = self.dataList[buttonKey]
 	buttonItems[itemId] = true
 end
 
--- Remove the found item from the list of itemIds for the given buttonName
+-- Remove the found item from the list of itemIds for the given buttonKey
 -- ToDo: on deletion reapply lower priority ones / track them from the start?
-function Current.prototype:Delete(buttonName, itemId)
-	if (not self.dataList[buttonName]) then
-		self.dataList[buttonName] = {}
+function Current.prototype:Delete(buttonKey, itemId)
+	if (not self.dataList[buttonKey]) then
+		self.dataList[buttonKey] = {}
 	end
-	local buttonItems = self.dataList[buttonName]
+	local buttonItems = self.dataList[buttonKey]
 	buttonItems[itemId] = nil
 end
 
 -- Remove and Recycle all items
 function Current.prototype:Reset()
-	for buttonName, buttonItems in pairs(self.dataList) do
+	for buttonKey, buttonItems in pairs(self.dataList) do
 		for itemId, itemData in pairs(buttonItems) do
 			buttonItems[itemId] = nil
+		end
+		if (not AutoBar.buttonList[buttonKey]) then
+			self.dataList[buttonKey] = nil
 		end
 	end
 end
 
 -- Testing & Debug function only
 function Current.prototype:Contains(id)
-	for buttonName, buttonItems in pairs(self.dataList) do
+	for buttonKey, buttonItems in pairs(self.dataList) do
 		for itemId, itemData in pairs(buttonItems) do
 			if (itemId == id) then
 				if (not AutoBarSearch.trace) then
-					AutoBar:Print("Current.prototype:Contains    itemId " .. tostring(itemId).." at buttonName " .. tostring(buttonName))
+					AutoBar:Print("Current.prototype:Contains    itemId " .. tostring(itemId).." at buttonKey " .. tostring(buttonKey))
 				end
 				return true
 			end
@@ -713,9 +779,9 @@ end
 
 -- Return the buttons found list.
 -- Do not manipulate the list.  It is only for performance.
-function Current.prototype:GetList(buttonName)
-	if (buttonName) then
-		return self.dataList[buttonName]
+function Current.prototype:GetList(buttonKey)
+	if (buttonKey) then
+		return self.dataList[buttonKey]
 	else
 		return self.dataList
 	end
@@ -735,12 +801,12 @@ function Sorted.prototype:init()
 	self.dirty = nil		-- True if some list needs sorting
 end
 
--- Add the found item to the list of itemIds for the given buttonName
-function Sorted.prototype:Add(buttonName, itemId, slotIndex, categoryIndex)
-	if (not self.dataList[buttonName]) then
-		self.dataList[buttonName] = {}
+-- Add the found item to the list of itemIds for the given buttonKey
+function Sorted.prototype:Add(buttonKey, itemId, slotIndex, categoryIndex)
+	if (not self.dataList[buttonKey]) then
+		self.dataList[buttonKey] = {}
 	end
-	local buttonItems = self.dataList[buttonName]
+	local buttonItems = self.dataList[buttonKey]
 	local bFound = nil
 
 if (not itemId) then
@@ -765,17 +831,17 @@ end
 		sortedItemData.slotIndex = slotIndex
 		sortedItemData.categoryIndex = categoryIndex
 	end
-	self.dirtyList[buttonName] = true
+	self.dirtyList[buttonKey] = true
 	self.dirty = true
 end
 
--- Remove the found item from the list of itemIds for the given buttonName
+-- Remove the found item from the list of itemIds for the given buttonKey
 -- ToDo: on deletion reapply lower priority ones / track them from the start?
-function Sorted.prototype:Delete(buttonName, itemId)
-	if (not self.dataList[buttonName]) then
-		self.dataList[buttonName] = {}
+function Sorted.prototype:Delete(buttonKey, itemId)
+	if (not self.dataList[buttonKey]) then
+		self.dataList[buttonKey] = {}
 	end
-	local buttonItems = self.dataList[buttonName]
+	local buttonItems = self.dataList[buttonKey]
 
 	for i, sortedItemData in ipairs(buttonItems) do
 		if (sortedItemData.itemId == itemId) then
@@ -784,7 +850,7 @@ function Sorted.prototype:Delete(buttonName, itemId)
 			break
 		end
 	end
-	self.dirtyList[buttonName] = true
+	self.dirtyList[buttonKey] = true
 	self.dirty = true
 end
 
@@ -794,107 +860,76 @@ local function SortBySlotCategory(a, b)
 		if (a.slotIndex == b.slotIndex and a.categoryIndex and b.categoryIndex) then
 			return a.categoryIndex > b.categoryIndex;
 		else
-			return a.slotIndex > b.slotIndex;
+			return a.slotIndex > b.slotIndex
 		end
 	else
-		return true;
+		return true
 	end
 end
 
--- Update any dirty lists.
--- If index is specified then sort it only and do not change dirty state
-function Sorted.prototype:DirtyButtons(buttonName)
+-- Dirty buttonKey or all Buttons if buttonKey is nil.
+function Sorted.prototype:DirtyButtons(buttonKey)
 	self.dirty = true
-	if (buttonName) then
-		self.dirtyList[buttonName] = true
+	if (buttonKey) then
+		self.dirtyList[buttonKey] = true
 	else
-		for buttonName in pairs(self.dataList) do
-			self.dirtyList[buttonName] = true
+		for buttonKey in pairs(self.dataList) do
+			self.dirtyList[buttonKey] = true
 		end
 	end
 end
 
 -- Update any dirty lists.
 -- If index is specified then sort it only and do not change dirty state
-function Sorted.prototype:Update(buttonName)
+function Sorted.prototype:Update(buttonKey)
 	local oldDirty = nil
-	if (buttonName) then
+	if (buttonKey) then
 		oldDirty = self.dirty
 		self.dirty = true
-		self.dirtyList[buttonName] = true
+		self.dirtyList[buttonKey] = true
 	end
 	if (self.dirty) then
-		for buttonName, sortList in pairs(self.dataList) do
-			if (self.dirtyList[buttonName]) then
+		for buttonKey, sortList in pairs(self.dataList) do
+			if (self.dirtyList[buttonKey]) then
 				if (sortList) then
 					table.sort(sortList, SortBySlotCategory)
-					self:SetBest(buttonName)
+					self:SetBest(buttonKey)
 				end
-				self.dirtyList[buttonName] = nil
-				AutoBarButton.dirtyButton[buttonName] = true
+				self.dirtyList[buttonKey] = nil
+				AutoBarButton.dirtyButton[buttonKey] = true
 			end
 		end
 		self.dirty = oldDirty
 	end
 end
-
--- Rearrange item slot and categoryIndex if given.
-function Sorted.prototype:Rearrange(buttonName, slotIndexA, slotIndexB, category, categoryIndexA, categoryIndexB)
---AutoBar:Print("Sorted.prototype:Rearrange    buttonName " .. tostring(buttonName) .. " slotIndexA " .. tostring(slotIndexA) .. " slotIndexB " .. tostring(slotIndexB) .. " category " .. tostring(category) .. " categoryIndexA " .. tostring(categoryIndexA) .. " categoryIndexB " .. tostring(categoryIndexB))
-	local sortList = self.dataList[buttonName]
-	local buttonItems = items[buttonName]
-	local dirty = nil
-	for i, sortedItemData in ipairs(sortList) do
-		-- Swap all in the affected slotIndexes
---AutoBar:Print("Sorted.prototype:Rearrange   pre  " .. tostring(i) .. " sortedItemData.itemId " .. tostring(sortedItemData.itemId) .. " sortedItemData.slotIndex " .. tostring(sortedItemData.slotIndex))
-		if (sortedItemData.slotIndex == slotIndexA) then
-			sortedItemData.slotIndex = slotIndexB
-			dirty = true
-		elseif (sortedItemData.slotIndex == slotIndexB) then
-			sortedItemData.slotIndex = slotIndexA
-			dirty = true
-		end
---AutoBar:Print("Sorted.prototype:Rearrange   post " .. tostring(i) .. " sortedItemData.itemId " .. tostring(sortedItemData.itemId) .. " sortedItemData.slotIndex " .. tostring(sortedItemData.slotIndex))
-
-		-- Also adjust categoryIndex if necessary
-		if (categoryIndexA and categoryIndexB) then
-			if (buttonItems[sortedItemData.itemId].category == category) then
-				if (sortedItemData.categoryIndex == categoryIndexA) then
-					sortedItemData.categoryIndex = categoryIndexB
-					dirty = true
-				elseif (sortedItemData.categoryIndex == categoryIndexB) then
-					sortedItemData.categoryIndex = categoryIndexA
-					dirty = true
-				end
-			end
-		end
-	end
-	if (dirty) then
-		self.dirty = true
-		self.dirtyList[buttonName] = true
-	end
-end
+--/dump AutoBarSearch.sorted.dirtyList["AutoBarCustomButton7"]
+--/dump AutoBarSearch.sorted.dataList["AutoBarCustomButton7"]
 
 -- Remove and Recycle all items
 function Sorted.prototype:Reset()
 	self.dirty = true
-	for buttonName, buttonItems in pairs(self.dataList) do
+	for buttonKey, buttonItems in pairs(self.dataList) do
 		for i, sortedItemData in pairs(buttonItems) do
 			buttonItems[i] = nil
 			self:Recycle(sortedItemData)
 		end
-		self.dirtyList[buttonName] = true
+		if (not AutoBar.buttonList[buttonKey]) then
+			self.dataList[buttonKey] = nil
+			self.dirtyList[buttonKey] = nil
+		else
+			self.dirtyList[buttonKey] = true
+		end
 	end
 	self.dirty = true
 end
 
 -- Testing & Debug function only
 function Sorted.prototype:Contains(itemId)
-	for buttonName, buttonItems in pairs(self.dataList) do
+	for buttonKey, buttonItems in pairs(self.dataList) do
 		for i, sortedItemData in ipairs(buttonItems) do
 			if (itemId == sortedItemData.itemId) then
 				if (not AutoBarSearch.trace) then
-					AutoBar:Print("Sorted.prototype:Contains    itemId " .. tostring(itemId).." at buttonName " .. tostring(buttonName))
+					AutoBar:Print("Sorted.prototype:Contains    itemId " .. tostring(itemId).." at buttonKey " .. tostring(buttonKey))
 				end
 				return true
 			end
@@ -904,20 +939,20 @@ function Sorted.prototype:Contains(itemId)
 end
 
 -- Dirty a specific button
-function Sorted.prototype:SetDirty(buttonName)
+function Sorted.prototype:SetDirty(buttonKey)
 	self.dirty = true
-	self.dirtyList[buttonName] = true
+	self.dirtyList[buttonKey] = true
 end
 
 -- Completely reset everything and then rescan.
-function Sorted.prototype:GetInfo(buttonName, index)
-	local sortedItems = self.dataList[buttonName]
+function Sorted.prototype:GetInfo(buttonKey, index)
+	local sortedItems = self.dataList[buttonKey]
 	if (not sortedItems) then
-		return nil, nil, nil, nil
+		return nil, nil, nil, nil, nil
 	end
 
 	local found = AutoBarSearch.found:GetList()
-	local bag, slot, spell, itemId, nItems
+	local bag, slot, spell, itemId, macroId
 	if (sortedItems[index]) then
 		itemId = sortedItems[index].itemId
 		if (found[itemId]) then
@@ -926,14 +961,21 @@ function Sorted.prototype:GetInfo(buttonName, index)
 			spell = found[itemId][3]
 		end
 	end
-	return bag, slot, spell, itemId
+	if (spell and spell:find("^macro")) then
+		macroId = spell
+		spell = nil
+	end
+	return bag, slot, spell, itemId, macroId
 end
+-- /dump AutoBarSearch.items.dataList["AutoBarCustomButtonPlanning Mods"]
+-- /dump AutoBarSearch.found:GetList()["customMacroCustomMinnaplanaMah Macro"]
+-- /dump AutoBarSearch.sorted:GetList("AutoBarCustomButtonPlanning Mods")["customMacroCustomMinnaplanaMah Macro"]
 
 -- Return the buttons sorted list.
 -- Do not manipulate the list.  It is only for performance.
-function Sorted.prototype:GetList(buttonName)
-	if (buttonName) then
-		return self.dataList[buttonName]
+function Sorted.prototype:GetList(buttonKey)
+	if (buttonKey) then
+		return self.dataList[buttonKey]
 	else
 		return self.dataList
 	end
@@ -947,30 +989,50 @@ local function swap(list, a, b)
 	end
 end
 
+-- Swap item to front if found
+function Sorted.prototype:SwapToFront(sortedItems, itemId)
+	for sortedIndex, sortedItemData in ipairs(sortedItems) do
+		if (itemId == sortedItemData.itemId) then
+			swap(sortedItems, 1, sortedIndex)
+			return true
+		end
+	end
+	return nil
+end
+
 -- After sorting make sure first item is usable
-function Sorted.prototype:SetBest(buttonName)
-	local sortedItems = AutoBarSearch.sorted:GetList(buttonName)
-	local searchItems = AutoBarSearch.items:GetList()[buttonName]
-	assert(searchItems, "Sorted.prototype:SetBest items["..tostring(buttonName).."] is nil")
-	local itemId, category, categoryInfo
-	local found = nil
+function Sorted.prototype:SetBest(buttonKey)
+	local sortedItems = AutoBarSearch.sorted:GetList(buttonKey)
+	local searchItems = AutoBarSearch.items:GetList()[buttonKey]
+	assert(searchItems, "Sorted.prototype:SetBest items["..tostring(buttonKey).."] is nil")
+	local itemId, category, categoryInfo, found
 
-	if (AutoBarSearch.rememberLastUsed[buttonName]) then
-		itemId = AutoBarSearch.rememberLastUsed[buttonName]:GetLastUsed()
-
-		for sortedIndex, sortedItemData in ipairs(sortedItems) do
-			local good = true
-			if (itemId == sortedItemData.itemId) then
-				swap(sortedItems, 1, sortedIndex)
-				return
-			end
+	local buttonDB = AutoBar.buttonDBList[buttonKey]
+	if (buttonDB.equipped) then
+		local name, itemId = AutoBar.LinkDecode(GetInventoryItemLink("player", buttonDB.equipped))
+		if (self:SwapToFront(sortedItems, itemId)) then
+			return
+		else
+			--ToDo: handle unknown items
 		end
 	end
 
+	-- Move arrangeOnUse item to front of list
+	local buttonData = AutoBar.db.char.buttonDataList[buttonKey]
+	if (buttonData and buttonData.arrangeOnUse) then
+		itemId = buttonData.arrangeOnUse
+		if (self:SwapToFront(sortedItems, itemId)) then
+			return
+		end
+
+		-- Remove item if not found
+		buttonData.arrangeOnUse = nil
+	end
+
 	-- Restore correct sorting
-	if (self.promotedList[buttonName]) then
-		swap(sortedItems, 1, self.promotedList[buttonName])
-		self.promotedList[buttonName] = nil
+	if (self.promotedList[buttonKey]) then
+		swap(sortedItems, 1, self.promotedList[buttonKey])
+		self.promotedList[buttonKey] = nil
 	end
 
 	for sortedIndex, sortedItemData in ipairs(sortedItems) do
@@ -984,17 +1046,14 @@ function Sorted.prototype:SetBest(buttonName)
 			if (categoryInfo.location and categoryInfo.location ~= zone) then
 --AutoBar:Print("Sorted:SetBest in zone " .. tostring(zone) .. " categoryInfo.location " .. tostring(categoryInfo.location))
 				local zoneGroup = AutoBarSearch.zoneGroup[zone]
---AutoBar:Print("Sorted:SetBest zoneGroup " .. tostring(zoneGroup))
 				if (zoneGroup ~= categoryInfo.location) then
+--AutoBar:Print("Sorted:SetBest failed zoneGroup " .. tostring(zoneGroup) .. " categoryInfo.location " .. tostring(categoryInfo.location))
 					good = nil
 				end
 			end
 			if (categoryInfo.battleground and not AutoBar.inBG) then
 				good = nil
 			else
-				if (not fallback) then
-					fallback = index;
-				end
 				if (categoryInfo.nonCombat and AutoBar.inCombat) then
 					good = nil
 --				elseif (categoryInfo.limit) then
@@ -1022,7 +1081,7 @@ function Sorted.prototype:SetBest(buttonName)
 			-- Swap it to first spot if not already there
 			if (sortedIndex ~= 1) then
 				swap(sortedItems, 1, sortedIndex)
-				self.promotedList[buttonName] = sortedIndex
+				self.promotedList[buttonKey] = sortedIndex
 			end
 			break
 		end
@@ -1033,20 +1092,12 @@ end
 -- Returns true if a spell can be cast at all
 -- Therefore returns true if IsUsableSpell returns true or only mana is lacking or it exists in the spellbook
 function AutoBarSearch:CanCastSpell(spellName)
---	usable, noMana = IsUsableSpell(spellName)
---	if (not usable) then
---		if (not noMana) then
-			local spellInfo = AutoBarSearch.spells[spellName]
-			if (not spellInfo or not spellInfo.canCast) then
-				return false
-			else
-				return true
-			end
---		else
---			return true;
---		end
---	end
---	return true;
+	local spellInfo = AutoBarSearch.spells[spellName]
+	if (not spellInfo or not spellInfo.canCast) then
+		return false
+	else
+		return true
+	end
 end
 
 
@@ -1084,6 +1135,24 @@ function AutoBarSearch:RegisterSpell(spellName)
 end
 
 
+-- Register a macro or customMacro
+-- macroId is one of
+-- 	"macro" .. macroIndex
+-- 	"macroCustom" .. categoryKey .. "\n" .. macroName
+-- {macroId = {macroIndex}|{macroName,macroText}}
+function AutoBarSearch:RegisterMacro(macroId, macroIndex, macroName, macroText)
+	local macroInfo = AutoBarSearch.macros[macroId]
+	if (not macroInfo) then
+		macroInfo = {}
+		AutoBarSearch.macros[macroId] = macroInfo
+	end
+
+	macroInfo.macroIndex = macroIndex
+	macroInfo.macroName = macroName
+	macroInfo.macroText = macroText
+end
+
+
 -- Only call this once
 function AutoBarSearch:Initialize()
 --AutoBar:Print("AutoBarSearch:Initialize")
@@ -1099,7 +1168,6 @@ function AutoBarSearch:Initialize()
 
 	searchSpace = AutoBarSearch.space:GetList()
 	items = AutoBarSearch.items:GetList()
-	AutoBarSearch.rememberLastUsed = {}
 end
 
 -- Empty everything
@@ -1124,6 +1192,7 @@ function AutoBarSearch:Reset()
 	end
 	AutoBarSearch.dirtyBags.inventory = true
 	AutoBarSearch.dirtyBags.spells = true
+	AutoBarSearch.dirtyBags.macros = true
 	AutoBarSearch.dirty = true
 	AutoBarSearch.stuff:Scan()
 	AutoBarSearch.sorted:Update()
@@ -1139,6 +1208,7 @@ function AutoBarSearch:UpdateScan()
 	end
 	AutoBarSearch.dirtyBags.inventory = true
 	AutoBarSearch.dirtyBags.spells = true
+	AutoBarSearch.dirtyBags.macros = true
 	AutoBarSearch.dirty = true
 
 	AutoBarSearch.stuff:Scan()
@@ -1166,14 +1236,14 @@ end
 
 
 -- Testing & Debug function only
-function AutoBarSearch:DumpSlot(buttonName)
-	AutoBar:Print("\n\n   AutoBarSearch:DumpSlot " .. tostring(buttonName))
+function AutoBarSearch:DumpSlot(buttonKey)
+	AutoBar:Print("\n\n   AutoBarSearch:DumpSlot " .. tostring(buttonKey))
 	AutoBar:Print("items ")
-	DevTools_Dump(AutoBarSearch.items:GetList(buttonName))
+	DevTools_Dump(AutoBarSearch.items:GetList(buttonKey))
 	AutoBar:Print("current ")
-	DevTools_Dump(AutoBarSearch.current:GetList(buttonName))
+	DevTools_Dump(AutoBarSearch.current:GetList(buttonKey))
 	AutoBar:Print("sorted ")
-	DevTools_Dump(AutoBarSearch.sorted:GetList(buttonName))
+	DevTools_Dump(AutoBarSearch.sorted:GetList(buttonKey))
 end
 
 
@@ -1358,7 +1428,8 @@ end
 
 -- /script AutoBarSearch:Contains("Travel Form")
 -- /dump (AutoBarSearch.sorted:GetList("CustomButton33"))
--- /dump (AutoBarSearch.sorted:GetList("AutoBarButtonStance"))
+-- /dump (AutoBarSearch.sorted:GetList("AutoBarButtonCooldownPotionMana"))
+-- /dump (AutoBarSearch.sorted:Update("AutoBarButtonCooldownPotionMana"))
 -- /script DevTools_Dump(AutoBarSearch.space:GetList())
 -- /script DevTools_Dump(AutoBarSearch.sorted:GetList())
 -- /script DevTools_Dump(AutoBarSearch.sorted:GetList("Custom1"))
@@ -1369,6 +1440,3 @@ end
 -- /script AutoBarSearch:DumpSlot(23)
 -- /script AutoBarSearch:Empty()
 -- /script AutoBarSearch:Reset()
--- /dump AutoBar.buttonList["Custom1"][1]
-
--- /script AutoBarSearch.items:Rearrange(buttonName, slotIndexA, slotIndexB, category, categoryIndexA, categoryIndexB)

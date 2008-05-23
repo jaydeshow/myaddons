@@ -6,8 +6,6 @@ end
 -- ZOMGBUffs, Pally Power comunication module, for those Paladins who've not yet seen the light
 
 local L = LibStub("AceLocale-2.2"):new("ZOMGBlessingsPP")
-local BS = LibStub("LibBabble-Spell-3.0"):GetLookupTable()
-local roster = LibStub("Roster-2.1")
 local bm
 
 -- Traffic
@@ -81,13 +79,17 @@ do
 end
 
 -- PowerChat
+local reqHistory = {}
 function mod:ProcessChat(sender, msg)
 	if (not self.AllPallys) then
 		return
 	end
 
 	if (msg == "REQ") then
-		self:SendSelf()
+		if (not reqHistory[sender] or reqHistory[sender] < GetTime() - 15) then
+			reqHistory[sender] = GetTime()
+			self:SendSelf()
+		end
 
 	elseif (strfind(msg, "^SELF")) then
 		local numbers, assign = strmatch(msg, "SELF ([0-9n]*)@([0-9n]*)")
@@ -147,7 +149,7 @@ function mod:ProcessChat(sender, msg)
 			local zomgSpellType = ppSpellOrder[spellIndex + 0]
 			local className = ppClassOrder[classIndex + 0]
 			if (className) then
-				bm:OnReceiveTemplatePart(name, className, zomgSpellType)
+				bm:OnReceiveTemplatePart(sender, name, className, zomgSpellType)
 			end
 		end
 
@@ -158,7 +160,7 @@ function mod:ProcessChat(sender, msg)
 			local zomgSpellType = ppSpellOrder[spellIndex + 0]
 			--local className = ppClassOrder[classIndex + 0]		-- ZOMG doesn't care about class index
 
-			bm:OnReceiveTemplatePart(sender, tname, zomgSpellType)
+			bm:OnReceiveTemplatePart(sender, sender, tname, zomgSpellType)
 		end
 
 	elseif (strfind(msg, "^MASSIGN")) then
@@ -167,7 +169,7 @@ function mod:ProcessChat(sender, msg)
 		if (name) then
 			local zomgSpellType = ppSpellOrder[spellIndex + 0]
 			for i,class in ipairs(ppClassOrder) do
-				bm:OnReceiveTemplatePart(name, class, zomgSpellType)
+				bm:OnReceiveTemplatePart(sender, name, class, zomgSpellType)
 			end
 		end
 
@@ -197,9 +199,10 @@ function mod:GiveTemplatePart(name, class, buff)
 	else
 		-- A player name was given, instead of a class name
 		-- NASSIGN PaladinName classIndex TargetName buffIndex		- Single exception
-		local unit = roster:GetUnitObjectFromName(class)
+		local unit = z:GetUnitID(class)
 		if (unit) then
-			ppClassID = ppClassIndex[unit.class]
+			local _, unitclass = UnitClass(unit)
+			ppClassID = ppClassIndex[unitclass]
 			if (ppClassID) then
 				self:SendMessage(format("NASSIGN %s %d %s %d", name, ppClassID, class, ppSpellID or 0))
 			end
@@ -219,10 +222,11 @@ function mod:GiveTemplate(name, template)
 	-- Exceptions
 	for classOrName,zomgBuffType in pairs(template) do
 		if (not ppClassIndex[classOrName] and classOrName ~= "modified" and classOrName ~= "default" and classOrName ~= "state") then
-			local unit = roster:GetUnitObjectFromName(classOrName)
+			local unit = z:GetUnitID(classOrName)
 			if (unit) then
+				local _, unitclass = UnitClass(unit)
 				local ppSpellID = ppSpellIndex[zomgBuffType]
-				local ppClassID = ppClassIndex[unit.class]
+				local ppClassID = ppClassIndex[unitclass]
 
 				if (ppSpellID and ppClassID) then
 					self:SendMessage(format("NASSIGN %s %d %s %d", name, ppClassID, classOrName, ppSpellID))
@@ -368,9 +372,10 @@ function mod:SendSelf()
 		for classOrName,zomgBuffType in pairs(template) do
 			if (classOrName ~= "default" and classOrName ~= "modified" and classOrName ~= "state") then
 				if (not ppClassIndex[classOrName]) then
-					local unit = roster:GetUnitObjectFromName(classOrName)
+					local unit = z:GetUnitID(classOrName)
 					if (unit) then
-						local ppClassID = ppClassIndex[unit.class]
+						local _, unitclass = UnitClass(unit)
+						local ppClassID = ppClassIndex[unitclass]
 						local ppSpellID = ppSpellIndex[zomgBuffType]
 						if (ppClassID and ppSpellID) then
 							tinsert(AssignList, format("%s %s %s %s", self.player, ppClassID, classOrName, ppSpellID))
@@ -398,6 +403,7 @@ end
 -- SendMessage
 function mod:SendMessage(msg)
 	local Type = (GetNumRaidMembers() > 0 and "RAID") or "PARTY"
+	SendAddonMessage(ppPrefix, "ZOMG", Type)
 	SendAddonMessage(ppPrefix, msg, Type)
 --self:Print("SendAddonMesage(%q, %q, %q)", ppPrefix, msg, Type)
 end

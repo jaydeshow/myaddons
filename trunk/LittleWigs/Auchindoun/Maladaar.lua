@@ -5,9 +5,6 @@
 local boss = BB["Exarch Maladaar"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 
-local db = nil
-local fmt = string.format
-
 ----------------------------
 --      Localization      --
 ----------------------------
@@ -28,7 +25,8 @@ L:RegisterTranslations("enUS", function() return {
 L:RegisterTranslations("koKR", function() return {
 	soul = "잃어버린 영혼 ",
 	soul_desc = "잃어버린 영혼에 대한 경고",
-	soul_message = "잠시후 영혼을 훔칩니다!",
+	soul_message = "영혼을 도난당함!",
+	soul_message_new = "%s에 잃어버린 영혼!",
 
 	avatar = "순교자의 화신",
 	avatar_desc = "순교자의 화신 소환 경고",
@@ -50,6 +48,7 @@ L:RegisterTranslations("frFR", function() return {
 	soul = "Âme volée",
 	soul_desc = "Préviens quand une âme est volée.",
 	soul_message = "Une âme a été volée !",
+	soul_message_new = "L'âme de %s a été volée !",
 
 	avatar = "Avatar du martyr",
 	avatar_desc = "Préviens quand l'Avatar du martyr est invoqué.",
@@ -86,7 +85,7 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Auchenai Crypts"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"soul", "avatar", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 70742 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -94,10 +93,8 @@ mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED","Soul", 32346)
-	--self:AddCombatListener("SPELL_CAST_START","Avatar", 32346) -- Can't find the spellId for this on wowhead
+	self:AddCombatListener("SPELL_CAST_START","Avatar", 32424)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-
-	db = self.db.profile
 end
 
 ------------------------------
@@ -105,13 +102,13 @@ end
 ------------------------------
 
 function mod:Soul(player)
-	if db.soul then
-		self:Message(fmt(L["soul_message_new"], player), "Attention")
+	if self.db.profile.soul then
+		self:IfMessage(L["soul_message_new"]:format(player), "Attention", 32346)
 	end
 end
 
 function mod:Avatar()
-	if db.avatar then
+	if self.db.profile.avatar then
 		self:Message(L["avatar_message"], "Attention")
 	end
 end

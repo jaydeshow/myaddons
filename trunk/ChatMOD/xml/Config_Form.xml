@@ -38,7 +38,7 @@
           </Anchors>
           <TexCoords left="0.2" right="0.8" top="0" bottom="0.6" />
         </Texture>
-        <FontString name="$parentTitleString" font="Fonts\ZYKai_T.TTF" text="SCCN_Config">
+        <FontString name="$parentTitleString" font="Fonts\FRIZQT__.TTF" text="SCCN_Config">
           <Size>
             <AbsDimension x="140" y="0" />
           </Size>
@@ -50,7 +50,7 @@
             </Anchor>
           </Anchors>
           <FontHeight>
-            <AbsValue val="15" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="0.8196079" b="0" />
           <Shadow>
@@ -77,9 +77,9 @@
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" setAllPoints="true" font="Fonts\ZYKai_T.TTF" text="by Marco Goetze, www.SOLARiZ.de" monochrome="true" justifyH="RIGHT">
+            <FontString name="$parentLabel" setAllPoints="true" font="Fonts\FRIZQT__.TTF" text="by Marco Goetze, [url]www.SOLARiZ.de[/url]" monochrome="true" justifyH="RIGHT">
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="0.7529412" g="0.7529412" b="0.7529412" />
               <Shadow>
@@ -112,10 +112,10 @@
             <AbsInset left="3" right="3" top="6" bottom="6" />
           </BackgroundInsets>
           <TileSize>
-            <AbsValue val="11" />
+            <AbsValue val="13" />
           </TileSize>
           <EdgeSize>
-            <AbsValue val="11" />
+            <AbsValue val="13" />
           </EdgeSize>
         </Backdrop>
         <Frames>
@@ -133,7 +133,7 @@
             </Anchors>
             <Layers>
               <Layer>
-                <FontString name="$parentLabel" setAllPoints="true" font="Fonts\ZYKai_T.TTF" text="This placeholders are available: $h = Hour in 24h format, $t = Hour in 12h format, $m = Minute, $s = Second, $p = AM / PM. You can use html color codes like #FF0000. If you want to toggle of the timestamp then just leav this textbox empty." justifyV="TOP" justifyH="LEFT">
+                <FontString name="$parentLabel" setAllPoints="true" font="Fonts\FRIZQT__.TTF" text="This placeholders are available: $h = Hour in 24h format, $t = Hour in 12h format, $m = Minute, $s = Second, $p = AM / PM. You can use html color codes like #FF0000. If you want to toggle of the timestamp then just leav this textbox empty." justifyV="TOP" justifyH="LEFT">
                   <FontHeight>
                     <AbsValue val="9" />
                   </FontHeight>
@@ -165,15 +165,15 @@
                 <AbsInset left="3" right="3" top="6" bottom="6" />
               </BackgroundInsets>
               <TileSize>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </TileSize>
               <EdgeSize>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </EdgeSize>
             </Backdrop>
             <FontString font="Fonts\ARIALN.TTF" maxLines="1">
               <FontHeight>
-                <AbsValue val="14" />
+                <AbsValue val="12" />
               </FontHeight>
               <Color r="1" g="1" b="1" />
               <Shadow>
@@ -202,9 +202,9 @@
             </Anchors>
             <Layers>
               <Layer>
-                <FontString name="$parentLabel" setAllPoints="true" font="Fonts\ZYKai_T.TTF" text="Timestamp Configuration">
+                <FontString name="$parentLabel" setAllPoints="true" font="Fonts\FRIZQT__.TTF" text="Timestamp Configuration">
                   <FontHeight>
-                    <AbsValue val="14" />
+                    <AbsValue val="12" />
                   </FontHeight>
                   <Color r="1" g="0.8196079" b="0" />
                   <Shadow>
@@ -233,13 +233,13 @@
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="LOADING">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="LOADING">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="14" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -286,12 +286,12 @@ SCCN_Highlight_Form:Show();
         </HighlightTexture>
         <ButtonText name="$parentText">
           <FontHeight>
-            <AbsValue val="11" />
+            <AbsValue val="10" />
           </FontHeight>
         </ButtonText>
-        <NormalFont inherits="GameFontNormal" font="Fonts\ZYKai_T.TTF">
+        <NormalFont inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="0.8196079" b="0" />
           <Shadow>
@@ -301,9 +301,9 @@ SCCN_Highlight_Form:Show();
             </Offset>
           </Shadow>
         </NormalFont>
-        <HighlightFont inherits="GameFontHighlight" font="Fonts\ZYKai_T.TTF">
+        <HighlightFont inherits="GameFontHighlight" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="1" b="1" />
           <Shadow>
@@ -313,9 +313,9 @@ SCCN_Highlight_Form:Show();
             </Offset>
           </Shadow>
         </HighlightFont>
-        <DisabledFont inherits="GameFontDisable" font="Fonts\ZYKai_T.TTF">
+        <DisabledFont inherits="GameFontDisable" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="0.4980392" g="0.4980392" b="0.4980392" />
           <Shadow>
@@ -340,13 +340,13 @@ SCCN_Highlight_Form:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -392,12 +392,12 @@ SCCNConfigForm:Hide();
         </HighlightTexture>
         <ButtonText name="$parentText">
           <FontHeight>
-            <AbsValue val="11" />
+            <AbsValue val="10" />
           </FontHeight>
         </ButtonText>
-        <NormalFont inherits="GameFontNormal" font="Fonts\ZYKai_T.TTF">
+        <NormalFont inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="0.8196079" b="0" />
           <Shadow>
@@ -407,9 +407,9 @@ SCCNConfigForm:Hide();
             </Offset>
           </Shadow>
         </NormalFont>
-        <HighlightFont inherits="GameFontHighlight" font="Fonts\ZYKai_T.TTF">
+        <HighlightFont inherits="GameFontHighlight" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="1" b="1" />
           <Shadow>
@@ -419,9 +419,9 @@ SCCNConfigForm:Hide();
             </Offset>
           </Shadow>
         </HighlightFont>
-        <DisabledFont inherits="GameFontDisable" font="Fonts\ZYKai_T.TTF">
+        <DisabledFont inherits="GameFontDisable" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="0.4980392" g="0.4980392" b="0.4980392" />
           <Shadow>
@@ -446,13 +446,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -483,7 +483,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Color Nicknames">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Color Nicknames">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -492,7 +492,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -528,13 +528,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -565,7 +565,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Mousewheel Chatscroll">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Mousewheel Chatscroll">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -574,7 +574,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -614,7 +614,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Editbox on Top">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Editbox on Top">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -623,7 +623,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -659,13 +659,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -696,7 +696,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Click URL's">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Click URL's">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -705,7 +705,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -741,13 +741,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -778,7 +778,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="No &lt;alt&gt; keys needed">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="No &lt;alt&gt; keys needed">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -787,7 +787,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -823,13 +823,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -856,13 +856,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -893,7 +893,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Clickable Invite's">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Clickable Invite's">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -902,7 +902,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -942,7 +942,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Hide chat Buttons">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Hide chat Buttons">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -951,7 +951,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -987,13 +987,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1024,7 +1024,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Gossip Skip">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Gossip Skip">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -1033,7 +1033,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1069,13 +1069,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1102,13 +1102,13 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1139,7 +1139,7 @@ SCCNConfigForm:Hide();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Taxi Auto Dismount">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Taxi Auto Dismount">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -1148,7 +1148,7 @@ SCCNConfigForm:Hide();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1201,12 +1201,12 @@ SCCNShortchanForm:Show();
         </HighlightTexture>
         <ButtonText name="$parentText">
           <FontHeight>
-            <AbsValue val="11" />
+            <AbsValue val="10" />
           </FontHeight>
         </ButtonText>
-        <NormalFont inherits="GameFontNormal" font="Fonts\ZYKai_T.TTF">
+        <NormalFont inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="0.8196079" b="0" />
           <Shadow>
@@ -1216,9 +1216,9 @@ SCCNShortchanForm:Show();
             </Offset>
           </Shadow>
         </NormalFont>
-        <HighlightFont inherits="GameFontHighlight" font="Fonts\ZYKai_T.TTF">
+        <HighlightFont inherits="GameFontHighlight" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="1" b="1" />
           <Shadow>
@@ -1228,9 +1228,9 @@ SCCNShortchanForm:Show();
             </Offset>
           </Shadow>
         </HighlightFont>
-        <DisabledFont inherits="GameFontDisable" font="Fonts\ZYKai_T.TTF">
+        <DisabledFont inherits="GameFontDisable" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="0.4980392" g="0.4980392" b="0.4980392" />
           <Shadow>
@@ -1272,12 +1272,12 @@ SCCNchatsound:Show();
         </HighlightTexture>
         <ButtonText name="$parentText">
           <FontHeight>
-            <AbsValue val="11" />
+            <AbsValue val="10" />
           </FontHeight>
         </ButtonText>
-        <NormalFont inherits="GameFontNormal" font="Fonts\ZYKai_T.TTF">
+        <NormalFont inherits="GameFontNormal" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="0.8196079" b="0" />
           <Shadow>
@@ -1287,9 +1287,9 @@ SCCNchatsound:Show();
             </Offset>
           </Shadow>
         </NormalFont>
-        <HighlightFont inherits="GameFontHighlight" font="Fonts\ZYKai_T.TTF">
+        <HighlightFont inherits="GameFontHighlight" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="1" g="1" b="1" />
           <Shadow>
@@ -1299,9 +1299,9 @@ SCCNchatsound:Show();
             </Offset>
           </Shadow>
         </HighlightFont>
-        <DisabledFont inherits="GameFontDisable" font="Fonts\ZYKai_T.TTF">
+        <DisabledFont inherits="GameFontDisable" font="Fonts\FRIZQT__.TTF">
           <FontHeight>
-            <AbsValue val="14" />
+            <AbsValue val="12" />
           </FontHeight>
           <Color r="0.4980392" g="0.4980392" b="0.4980392" />
           <Shadow>
@@ -1330,7 +1330,7 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Sticky Chat">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Sticky Chat">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -1339,7 +1339,7 @@ SCCNchatsound:Show();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1375,13 +1375,13 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1408,13 +1408,13 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1445,7 +1445,7 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="No Chattext Fading">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="No Chattext Fading">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -1454,7 +1454,7 @@ SCCNchatsound:Show();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1494,7 +1494,7 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Scroll Notify Icon">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Scroll Notify Icon">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -1503,7 +1503,7 @@ SCCNchatsound:Show();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1539,13 +1539,13 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1576,7 +1576,7 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Show Level in Name">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Show Level in Name">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -1585,7 +1585,7 @@ SCCNchatsound:Show();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1621,13 +1621,13 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1658,7 +1658,7 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentText" font="Fonts\ZYKai_T.TTF" text="Color Nick's in Text">
+            <FontString name="$parentText" font="Fonts\FRIZQT__.TTF" text="Color Nick's in Text">
               <Anchors>
                 <Anchor point="LEFT" relativePoint="RIGHT">
                   <Offset>
@@ -1667,7 +1667,7 @@ SCCNchatsound:Show();
                 </Anchor>
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="10" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1703,13 +1703,13 @@ SCCNchatsound:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="Fonts\ZYKai_T.TTF" text="$parentLabel1" justifyH="LEFT">
+            <FontString name="$parentLabel" font="Fonts\FRIZQT__.TTF" text="$parentLabel1" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
               </Anchors>
               <FontHeight>
-                <AbsValue val="11" />
+                <AbsValue val="13" />
               </FontHeight>
               <Color r="1" g="0.8196079" b="0" />
               <Shadow>
@@ -1743,4 +1743,4 @@ end
 </OnMouseUp>
     </Scripts>
   </Frame>
-</Ui>
+</Ui> 

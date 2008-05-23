@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: AucSnapshotDB.lua 2801 2008-01-27 23:00:49Z rockslice $
 
 	SnapshotDB - the AH snapshot database

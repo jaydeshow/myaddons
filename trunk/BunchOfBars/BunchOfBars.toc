@@ -1,13 +1,15 @@
-## Interface: 20200
+## Interface: 20300
 ## Title: BunchOfBars |cff7fff7f -Ace2-|r
 ## Version: 1.0
 ## Notes: Modular and lightweight party/raid frames.
 ## Author: Firik
 ## X-Category: UnitFrame
 ## SavedVariables: BunchOfBarsDB
-## OptionalDeps: Ace2, oRA2, CT_RaidAssist, DrDamage
-## X-Embeds: Ace2, Babble-Spell-2.2, Dewdrop-2.0, DogTag-1.0, FuBarPlugin-2.0, SharedMediaLib
+## OptionalDeps: Ace2, oRA2, CT_RaidAssist, DrDamage, LibHealComm-3.0
+## X-Embeds: Ace2, Babble-Spell-2.2, Dewdrop-2.0, DogTag-1.0, FuBarPlugin-2.0, SharedMediaLib, LibHealComm-3.0
 
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
 embeds.xml
 
 Core.lua

@@ -28,13 +28,13 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_Events.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-03-15 20:56:53 -0400 (Sat, 15 Mar 2008) $", "$Revision: 64659 $");
+D:SetDateAndRevision("$Date: 2008-04-19 13:50:24 -0400 (Sat, 19 Apr 2008) $", "$Revision: 70492 $");
 
 
 local L	    = D.L;
 local BC    = D.BC;
-local BS    = D.BS;
 local DC    = DcrC;
+local DS    = DC.DS;
 
 local RaidRosterCache		= { };
 local SortingTable		= { };
@@ -160,6 +160,7 @@ DC.ClassNameToNum = D:tReverse(DC.ClassNumToName);
 do
 
     local D = D;
+    local _ = false; -- a local dummy trash vrariable
 
     function IsInSkipList ( name, group, classNum ) -- {{{
 	if (D.Status.InternalSkipList[name] or D.Status.InternalSkipList[group] or D.Status.InternalSkipList[classNum]) then

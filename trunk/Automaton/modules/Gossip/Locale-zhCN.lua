@@ -1,4 +1,5 @@
 --By Kurax Kuang
+--update by wangmarsfa
 --Credits to Thomas Mo(昏睡墨鱼)@CWDG
 local L = AceLibrary("AceLocale-2.2"):new("Automaton_Gossip")
 
@@ -9,22 +10,30 @@ L:RegisterTranslations("zhCN", function() return {
 --------------
 -- Gossip Text
 --------------
+
 ["<Touch the unstable rift crystal.>"] = "<Touch the unstable rift crystal.>", -- Need translation, MC entrance
 ["<Place my hand on the orb.>"] = "<Place my hand on the orb.>", -- Need translation, BWL entrance
+["Transport me to the Molten Core, Lothos."] = "Transport me to the Molten Core, Lothos.",
 ["Thank you, Stable Master. Please take the animal."] = "Thank you, Stable Master. Please take the animal.", -- Need translation, AV quest
 ["With pleasure. These things stink!"] = "With pleasure. These things stink!", -- Need translation, AV quest
 ["Trick or Treat!"] = "不给糖就捣乱！",
 ["Grant me your mark, wise ancient."] = "赐予我你的印记吧，睿智的古树。",
 ["Grant me your mark, mighty ancient."] = "赐予我你的印记吧，强大的古树。",
 ["Please take me to the master's lair."] = "请带我去主人的巢穴。",
-["I require a chrono-beacon, Sa'at."] = "我需要一个时空道标，萨艾特。",
 ["I need a pack of incendiary bombs."] = "我需要燃烧弹包。",
 ["I'm ready to go to Durholde Keep."] = "我准备好去敦霍尔德城堡了。",
+["I require a chrono-beacon, Sa'at."] = "我需要一个时空道标，萨艾特。",
 ["Naturalist, please grant me your boon."] = "Naturalist, please grant me your boon.", -- Need translation, in SP, before the final boss
+["I would be grateful for any aid you can provide, Priestess."] = "I would be grateful for any aid you can provide, Priestess.",
 
 -------------
 -- Quest Text
 -------------
+
+-- Fishing
+["Apprentice Angler"] = "钓鱼学徒",
+["Speckled Tastyfish"] = "斑点可口鱼",
+
 -- Alterac Valley quests
 ["Empty Stables"] = "补充坐骑",
 ["Ram Hide Harnesses"] = "羊皮坐具",
@@ -130,15 +139,15 @@ L:RegisterTranslations("zhCN", function() return {
 ["Heavy Leather"] = "重皮",
 ["Incendosaur Scale"] = "熏火龙的鳞片",
 ["Coal"] = "煤块",
-["Favor Amongst the Brotherhood, Dark Iron Ore"] = "Favor Amongst the Brotherhood, Dark Iron Ore", -- Need translation, in BRD
+["Favor Amongst the Brotherhood, Dark Iron Ore"] = "兄弟会的好感 - 黑铁矿石",
 ["Dark Iron Ore"] = "黑铁矿石",
-["Favor Amongst the Brotherhood, Blood of the Mountain"] = "Favor Amongst the Brotherhood, Blood of the Mountain", -- Need translation, in BRD
+["Favor Amongst the Brotherhood, Blood of the Mountain"] = "兄弟会的好感 - 山脉之血",
 ["Blood of the Mountain"] = "山脉之血",
-["Favor Amongst the Brotherhood, Core Leather"] = "Favor Amongst the Brotherhood, Core Leather", -- Need translation, in BRD
+["Favor Amongst the Brotherhood, Core Leather"] = "兄弟会的好感 - 熔火犬皮",
 ["Core Leather"] = "熔火犬皮",
-["Favor Amongst the Brotherhood, Fiery Core"] = "Favor Amongst the Brotherhood, Fiery Core", -- Need translation, in BRD
+["Favor Amongst the Brotherhood, Fiery Core"] = "兄弟会的好感 - 炽热之核",
 ["Fiery Core"] = "炽热之核",
-["Favor Amongst the Brotherhood, Lava Core"] = "Favor Amongst the Brotherhood, Lava Core", -- Need translation, in BRD
+["Favor Amongst the Brotherhood, Lava Core"] = "兄弟会的好感 - 熔岩之核",
 ["Lava Core"] = "熔岩之核",
 
 -- City faction
@@ -245,7 +254,9 @@ L:RegisterTranslations("zhCN", function() return {
 ["Horde Commendation Signet"] = "部落荣誉徽章",
 ["Alliance Commendation Signet"] = "联盟荣誉徽章",
 
+	-------------
 -- Burning Crusade
+	-------------
 
 --Scryers
 ["More Firewing Signets"] = "更多火翼徽记",
@@ -258,6 +269,8 @@ L:RegisterTranslations("zhCN", function() return {
 ["Arcane Tome"] = "奥法宝典",
 
 --Aldor
+["Strained Supplies"] = "物资紧张",
+["Dreadfang Venom Sac"] = "巨牙毒囊",
 ["More Marks of Sargeras"] = "更多萨格拉斯印记",
 ["Single Mark of Sargeras"] = "单枚萨格拉斯印记",
 ["Mark of Sargeras"] = "萨格拉斯印记",
@@ -298,8 +311,9 @@ L:RegisterTranslations("zhCN", function() return {
 
 -- Nagrand
 
--- Garadar
-["More Warbeads!"] = "更多作战念珠",
+	-- Garadar/Telaar
+["More Warbeads"] = "更多作战念珠",
+["More Warbeads!"] = "更多作战念珠！",
 ["Obsidian Warbeads"] = "黑曜石作战念珠",
 
 -- Halaa
@@ -318,6 +332,10 @@ L:RegisterTranslations("zhCN", function() return {
 -- Area 52
 ["Another Heap of Ethereals"] = "更多叛徒的徽记",
 ["Zaxxis Insignia"] = "萨克希斯徽记",
+	
+-- Ethereum
+["Ethereum Prisoner I.D. Catalogue"] = "复仇军囚犯的标识牌",
+["Ethereum Prisoner I.D. Tag"] = "复仇军囚犯标识牌",
 
 -- Shadowmoon Valley
 
@@ -325,4 +343,12 @@ L:RegisterTranslations("zhCN", function() return {
 ["Accepting All Eggs"] = "所有的龙卵",
 ["Netherwing Egg"] = "灵翼龙卵",
 
+	-- 2.4 Battleground mark turn-in
+  ["Concerted Efforts"] = "共同的努力",
+  ["For Great Honor"] = "无上的荣耀",
+  ["Alterac Valley Mark of Honor"] = "奥特兰克山谷荣誉奖章",
+	["Arathi Basin Mark of Honor"] = "阿拉希盆地荣誉奖章",
+	["Warsong Gulch Mark of Honor"] = "战歌峡谷荣誉奖章",
+	["Eye of the Storm Mark of Honor"] = "风暴之眼荣誉奖章",
+			
 } end )

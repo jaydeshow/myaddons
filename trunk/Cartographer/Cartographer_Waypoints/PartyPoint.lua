@@ -8,6 +8,14 @@ L:AddTranslations("zhTW", function() return {
 	["%s is not locatable."] = "查找不到%s的地點。",
 } end)
 
+L:AddTranslations("zhCN", function() return {
+	["%s is not locatable."] = "查找不到%s的地点。",
+} end)
+
+L:AddTranslations("esES", function() return {
+	["%s is not locatable."] = "%s no es localizable.",
+} end)
+
 local Roster = AceLibrary("Roster-2.1")
 local Tourist = Rock("LibTourist-3.0")
 
@@ -36,7 +44,7 @@ end
 function PartyPoint:MatchNote(memberName)
 	return self.WaypointID == id
 end
-	
+
 function PartyPoint:GetDistance()
 	self:UpdateZone()
 	if self.Continent == -1 then
@@ -57,7 +65,7 @@ end
 --    1. Scan the continent they were originally on for them
 --       * if not found, step back and rescan the continents.
 --    2. Store the new zone/continent.
--- The Cartographer map puts all waypoints into suspension on show so as not to lock 
+-- The Cartographer map puts all waypoints into suspension on show so as not to lock
 -- the map, since we're playing around with it so much to get locations.
 function PartyPoint:UpdateZone()
 	if self.WaypointID ~= Roster:GetUnitObjectFromUnit(self.PartyID).name then -- sanity check
@@ -65,7 +73,7 @@ function PartyPoint:UpdateZone()
 	end
 
 	local x, y = 0, 0
-	
+
 	if self.Continent ~= -1 then -- If we have a cached continent we are on
 		SetMapZoom(self.Continent)
 		x, y = GetPlayerMapPosition(self.PartyID) -- See if we're still on that continent
@@ -118,7 +126,7 @@ end
 
 -- Is the member connected and in contiguous space?
 function PartyPoint:IsValid()
-	return self.PartyID and self.PartyID ~= "noparty" and UnitIsConnected(self.PartyID) and self.Continent ~= -1 
+	return self.PartyID and self.PartyID ~= "noparty" and UnitIsConnected(self.PartyID) and self.Continent ~= -1
 end
 
 function PartyPoint:IsReady()

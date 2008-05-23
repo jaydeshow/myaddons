@@ -1,16 +1,17 @@
-local VERSION = tonumber(("$Revision: 48593 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 73474 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-09-10 23:06:36 -0400 (Mon, 10 Sep 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-11 11:44:45 -0400 (Sun, 11 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("Cooldowns", "LibRockEvent-1.0", "LibRockTimer-1.0")
 
-local L = Parrot:L("Parrot_Cooldowns")
-local BSL = Rock("LibBabble-Spell-3.0"):GetLookupTable()
+-- local L = Parrot:L("Parrot_Cooldowns")
+-- TODO make modular
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Cooldowns")
 
 local newList, del = Rock:GetRecyclingFunctions("Parrot", "newList", "del")
 
@@ -44,17 +45,21 @@ local spellNameToID = {}
 local spellNameToTree = {}
 
 function mod:ResetCooldownState()
-	local GCD = 1.5
-	if spellNameToID[BSL["Shoot"]] then
-		local _, shootCooldown = GetSpellCooldown(spellNameToID[BSL["Shoot"]], "spell")
+	local GCD = 1.5 -- TODO global cooldown can be reduced with spell-haste
+	-- 3018 = ranged shoot
+	-- 5019 = wand shoot
+	if spellNameToID[GetSpellInfo(3018)] then
+		local _, shootCooldown = GetSpellCooldown(GetSpellInfo(3018))
 		if shootCooldown > GCD then
 			GCD = shootCooldown
 		end
 	end
+	
 	for name, id in pairs(spellNameToID) do
 		local start, duration = GetSpellCooldown(id, "spell")
 		cooldowns[name] = start > 0 and duration > GCD
 	end
+	
 end
 function mod:ResetSpells()
 	for k in pairs(spellNameToID) do
@@ -77,22 +82,34 @@ function mod:ResetSpells()
 end
 
 local groups = {
-	[BSL["Freezing Trap"]] = L["Traps"],
-	[BSL["Frost Trap"]] = L["Traps"],
-	[BSL["Immolation Trap"]] = L["Traps"],
-	[BSL["Snake Trap"]] = L["Traps"],
-	[BSL["Explosive Trap"]] = L["Traps"],
-	[BSL["Frost Shock"]] = L["Shocks"],
-	[BSL["Flame Shock"]] = L["Shocks"],
-	[BSL["Earth Shock"]] = L["Shocks"],
-	[BSL["Divine Shield"]] = BSL["Divine Shield"],
-	[BSL["Divine Protection"]] = BSL["Divine Shield"],
+	--[BSL["Freezing Trap"]]
+	[GetSpellInfo(14311)] = L["Traps"],
+	--[BSL["Frost Trap"]]
+	[GetSpellInfo(13809)] = L["Traps"],
+	--[BSL["Immolation Trap"]] 
+	[GetSpellInfo(27023)] = L["Traps"],
+-- 	[BSL["Snake Trap"]] 
+	[GetSpellInfo(34600)] = L["Traps"],
+-- 	[BSL["Explosive Trap"]] 
+	[GetSpellInfo(27025)] = L["Traps"],
+-- 	[BSL["Frost Shock"]] 
+	[GetSpellInfo(25464)] = L["Shocks"],
+-- 	[BSL["Flame Shock"]] 
+	[GetSpellInfo(25457)] = L["Shocks"],
+	--[BSL["Earth Shock"]] 
+	[GetSpellInfo(25454)] = L["Shocks"],
+-- 	[BSL["Divine Shield"]] 
+	[GetSpellInfo(1020)] = GetSpellInfo(1020),
+-- 	[BSL["Divine Protection"]] 
+	[GetSpellInfo(5573)] = GetSpellInfo(1020),
 }
 
 function mod:OnUpdate()
 	local GCD = 1.5
-	if spellNameToID[BSL["Shoot"]] then
-		local _, shootCooldown = GetSpellCooldown(spellNameToID[BSL["Shoot"]], "spell")
+	-- 3018 = ranged shoot
+	-- 5019 = wand shoot
+	if spellNameToID[GetSpellInfo(3018)] then
+		local _, shootCooldown = GetSpellCooldown(spellNameToID[GetSpellInfo(3018)], "spell")
 		if shootCooldown > GCD then
 			GCD = shootCooldown
 		end

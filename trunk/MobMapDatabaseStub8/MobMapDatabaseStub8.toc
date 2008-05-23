@@ -1,4 +1,4 @@
-﻿## Interface: 20300
+## Interface: 20400
 ## Title: |cff0099FF<CWDG>|r|cffffffffMobMap数据库8|r
 ## Notes: This is a load-on-demand addon stub for the MobMap pickup database access components.
 ## Notes-zhCN: MobMap拾取动态数据加载库.(必要!)

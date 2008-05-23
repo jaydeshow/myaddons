@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 local FW_Debug = false;
 FW = {}; -- core table
@@ -31,11 +31,12 @@ local ipairs = ipairs;
 local pairs = pairs;
 local select = select;
 
-local VERSION = "v0.984";
+local VERSION = "v0.985";
 local PREFIX = "ForteWarlock";
 local ENABLE = false;
 
-FW.NONE = "None";
+local NUM_PROFILE_LIST = 15;
+local NUM_FILTER_LIST = 3;
 
 FW.BORDER = 3;
 
@@ -564,26 +565,33 @@ end]]
 ---------------------------------------------------------------------------
 
 function FW:OnEvent(event)
-
-	--[[if event == "INSPECT_TALENT_READY" then
-		local debug = GetTime().." "..event;
-		if arg1 then debug = debug.." "..tostring(arg1); end
-		if arg2 then debug = debug.." "..tostring(arg2); end
-		if arg3 then debug = debug.." "..tostring(arg3); end
-		if arg4 then debug = debug.." "..tostring(arg4); end
-		if arg5 then debug = debug.." "..tostring(arg5); end
-		if arg6 then debug = debug.." "..tostring(arg6); end
-		if arg7 then debug = debug.." "..tostring(arg7); end
-		if arg8 then debug = debug.." "..tostring(arg8); end
-		if arg9 then debug = debug.." "..tostring(arg9); end
-		FW:Show(debug,0,1,1);
-		
-		if InspectFrame and InspectFrame.unit then FW:Show(InspectFrame.unit);end
+	--[[if event~="CHAT_MSG_ADDON" then
+	local debug = GetTime().." "..event;
+	if arg1 then debug = debug.." 1:"..tostring(arg1); end
+	if arg2 then debug = debug.." 2:"..tostring(arg2); end
+	if arg3 then debug = debug.." 3:"..tostring(arg3); end
+	if arg4 then debug = debug.." 4:"..tostring(arg4); end
+	if arg5 then debug = debug.." 5:"..tostring(arg5); end
+	if arg6 then debug = debug.." 6:"..tostring(arg6); end
+	if arg7 then debug = debug.." 7:"..tostring(arg7); end
+	if arg8 then debug = debug.." 8:"..tostring(arg8); end
+	if arg9 then debug = debug.." 9:"..tostring(arg9); end
+	if arg10 then debug = debug.." 10:"..tostring(arg10); end
+	if arg11 then debug = debug.." 11:"..tostring(arg11); end
+	if arg12 then debug = debug.." 12:"..tostring(arg12); end
+	if arg13 then debug = debug.." 13:"..tostring(arg13); end
+	if arg14 then debug = debug.." 14:"..tostring(arg14); end
+	if arg15 then debug = debug.." 15:"..tostring(arg15); end
+	if arg16 then debug = debug.." 16:"..tostring(arg16); end
+	if arg17 then debug = debug.." 17:"..tostring(arg17); end
+	if arg18 then debug = debug.." 18:"..tostring(arg18); end
+	if arg19 then debug = debug.." 19:"..tostring(arg19); end
+	FW:Show(debug,0,1,1);
 	end]]
 	
 	if FW_Events[event] then 
 		for k,v in ipairs(FW_Events[event]) do
-			v();
+			v(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17, arg18, arg19);
 		end
 	end
 end
@@ -775,7 +783,12 @@ local function FW_InitConfig()
 	if FC_Saved.Profiles[FW.PLAYER.." "..FW.SERVER] then
 		FW:UseProfile(FW.PLAYER.." "..FW.SERVER,1);
 	elseif FC_Saved.Profiles[strlower(FW.PLAYER).." "..strlower(FW.SERVER)] then
-		FW:UseProfile(strlower(FW.PLAYER).." "..strlower(FW.SERVER));
+		FW:UseProfile(strlower(FW.PLAYER).." "..strlower(FW.SERVER),1);
+	
+	elseif FC_Saved.Profiles[FW.CLASS] then
+		FW:UseProfile(FW.CLASS,1);
+	elseif FC_Saved.Profiles[strlower(FW.CLASS)] then
+		FW:UseProfile(strlower(FW.CLASS),1);
 	else
 		FW:UseProfile(FC_Saved.PROFILE,1);
 	end
@@ -1124,7 +1137,7 @@ function FW:BestSoulstone() -- returns name of best soulstone you can create, is
 	if FW.CLASS == "WARLOCK" then
 		local i = 1
 		local high = 1;
-
+		local spellName, spellRank;
 		while true do
 			spellName, spellRank = GetSpellName(i, BOOKTYPE_SPELL);
 			if not spellName then break; end
@@ -1137,9 +1150,9 @@ function FW:BestSoulstone() -- returns name of best soulstone you can create, is
 			end
 			i = i + 1;
 		end
-		return FW.ID_SOULSTONE [high][1];
+		return FW.ID_SOULSTONE[high][1];
 	else
-		return FW.NONE;
+		return FW.L.NONE;
 	end
 end
 
@@ -1167,7 +1180,7 @@ function FW:BestHealthstone()
 		local high = math.ceil(index/3);
 		return FW.ID_HEALTHSTONE[index][1],index,high;
 	else
-		return FW.NONE,0,0;
+		return FW.L.NONE,0,0;
 	end
 end
 
@@ -2066,10 +2079,10 @@ function FW:SetOptionsFont()
 	for i, data in ipairs(FW_FontList) do
 		getglobal("FWFontList"..i):SetFont( data[1] ,FW.Settings.OptionsFontSize+2);
 	end
-	for i=1, 15, 1 do
+	for i=1,NUM_PROFILE_LIST,1 do
 		getglobal("FWProfileList"..i):SetFont(FW.Settings.OptionsFont,FW.Settings.OptionsFontSize);
 	end
-	for i=1, 3, 1 do
+	for i=1,NUM_FILTER_LIST,1 do
 		getglobal("FWFilterList"..i):SetFont(FW.Settings.OptionsFont,FW.Settings.OptionsFontSize);
 	end
 end
@@ -2278,7 +2291,7 @@ local function FW_BuildOptions2()
 	f:SetFrameStrata("DIALOG")
 	f:SetWidth(150);
 	f:Hide();
-	for i=1, 15, 1 do
+	for i=1,NUM_PROFILE_LIST,1 do
 		f=CreateFrame("Button","FWProfileList"..i,FWProfileList,"FWProfileButtonTemplate");
 		f:SetPoint("TOPLEFT",FWProfileList, "TOPLEFT",5,13-i*18);
 		f:Show();
@@ -2289,7 +2302,7 @@ local function FW_BuildOptions2()
 	f:SetFrameStrata("DIALOG")
 	f:SetWidth(150);
 	f:Hide();
-	for i=1, 3, 1 do
+	for i=1,NUM_FILTER_LIST,1 do
 		f=CreateFrame("Button","FWFilterList"..i,FWFilterList,"FWFilterButtonTemplate");
 		f:SetPoint("TOPLEFT",FWFilterList, "TOPLEFT",5,13-i*18);
 		f:Show();
@@ -2306,7 +2319,7 @@ function FW:FilterList()
 		getglobal("FWFilterList"..i):Show();
 	end
 	FWFilterList:SetHeight(i*18+8);
-	for j=i+1,3,1 do
+	for j=i+1,NUM_FILTER_LIST,1 do
 		getglobal("FWFilterList"..j):Hide();
 	end
 	FWFilterList:Show();
@@ -2321,7 +2334,7 @@ function FW:ProfileList()
 		getglobal("FWProfileList"..i):Show();
 	end
 	FWProfileList:SetHeight(i*18+8);
-	for j=i+1,15,1 do
+	for j=i+1,NUM_PROFILE_LIST,1 do
 		getglobal("FWProfileList"..j):Hide();
 	end
 	FWProfileList:Show();
@@ -2361,7 +2374,7 @@ function FW:RegisterEvents()
 		FW:RegisterTimedEvent("UpdateInterval",		FW_TimedClearBuffers);
 	end);
 	FW:RegisterLoadEvent(FW_InitFramePositions);
-	FW:RegisterLoadEvent(FW_PartyRaid);
+	FW:RegisterDelayedLoadEvent(FW_PartyRaid);
 	FW:RegisterDelayedLoadEvent(FW_MakeSpeccInfo);--doesnt work at load event
 	
 	FW:RegisterToEvent("PLAYER_REGEN_ENABLED",	FW_LeaveCombat);
@@ -2385,6 +2398,8 @@ function FW:RegisterEvents()
 	
 	FW:RegisterEnterPartyRaid(FW_VersionCheck);
 	FW:RegisterEnterPartyRaid(FW_GetSpeccInfo);
+	
+	--FW:RegisterToEvent("COMBAT_LOG_EVENT",nil);
 end
 
 FW:AddCommand("commands",
@@ -2516,7 +2531,7 @@ function FW:LocalizedData()
 		{FW.L.MASTER_HS,	22104,	FW.L.MASTER..IMP_HS[1],	2,6},
 		{FW.L.MASTER_HS,	22105,	FW.L.MASTER..IMP_HS[2],	3,6},
 		
-		[0]={FW.NONE, 0, FW.NONE,0,0},
+		[0]={FW.L.NONE, 0, FW.L.NONE,0,0},
 	};
 
 	FW.ID_SOULSTONE = {

@@ -1,9 +1,10 @@
-﻿## Interface: 20300
+﻿## Interface: 20400
 ## Title: XLoot |cff7fff7f -Ace2-|r
 ## Notes: A remake of the built-in lootframe. |cffff4488By Xuerian|r.
 ## Notes-esES: Un reemplazo de la ventana de botín. |cffff4488Por Xuerian|r.
-## Notes-zhTW: 拾取物品增強
+## Notes-zhTW: 拾取物品增強 |cffff4488By Xuerian|r.
 ## Notes-deDE: Ein Remake des eingebauten Lootfensters. |cffff4488By Xuerian|r.
+## Notes-zhCN: 拾取物品增强 |cffff4488By Xuerian|r。
 ## Version: 0.9
 ## Author: Xuerian
 ## X-Category: Inventory
@@ -16,20 +17,7 @@
 ## X-Embeds: Ace2, DewdropLib, Deformat, AnchorsAway, SpecialEventsEmbed
 ## SavedVariables: XLootDB
 
-libs\AceLibrary\AceLibrary.lua
-libs\AceOO\AceOO-2.0.lua
-libs\AceEvent\AceEvent-2.0.lua
-libs\AceAddon\AceAddon-2.0.lua
-libs\AceHook\AceHook-2.1.lua
-libs\AceLocale\AceLocale-2.2.lua
-libs\AceDB\AceDB-2.0.lua
-libs\AceConsole\AceConsole-2.0.lua
-libs\AceModuleCore\AceModuleCore-2.0.lua
-libs\AnchorsAway\AnchorsAway-1.0.lua
-
-libs\Dewdrop\Dewdrop-2.0.lua
-libs\Deformat\Deformat-2.0.lua
-libs\SpecialEvents-Loot\SpecialEvents-Loot-1.0.lua
+embeds.xml
 
 XLoot.lua
 XLootSkin.lua
@@ -39,10 +27,10 @@ XLootUtilities.lua
 XLootRowTools.lua
 XLootTooltip.lua
 
-localization.enUS.lua
-localization.koKR.lua
-localization.zhTW.lua
-localization.zhCN.lua
-localization.deDE.lua
-localization.frFR.lua
-localization.esES.lua
+locales\enUS.lua
+locales\koKR.lua
+locales\zhTW.lua
+locales\zhCN.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\esES.lua

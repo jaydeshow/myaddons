@@ -34,25 +34,46 @@ L:RegisterTranslations("enUS", function() return {
 	twist_message = "Twisted Reflection: %s",
 } end)
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger1 = "¡La Legión lo conquistará todo!",
+	engage_trigger2 = "¡Todo mortal perecerá!",
+
+	enrage_trigger = "%s se enfurece.",
+	enrage_warning1 = "%s Activado - Enfurecer en 50-60seg",
+	enrage_warning2 = "¡Enfurecer en breve!",
+	enrage_message = "¡Efurecido durante 10seg!",
+	enrage_finished = "Fin enfurecer - Próx. en 50-60seg",
+	enrage_bar = "~Enfurecer",
+	enraged_bar = "<Enfurecido>",
+
+	mark = "Marca de Kazzak (Mark)",
+	mark_desc = "Avisar sobre Marca de Kazzak en ti.",
+	mark_message = "Marca de Kazzak en TI",
+
+	twist = "Reflejo retorcido (Twisted Reflection)",
+	twist_desc = "Avisar quién tiene Reflejo retorcido.",
+	twist_message = "Reflejo retorcido: %s",
+} end)
+
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger1 = "La Légion envahira l'univers !",
 	engage_trigger2 = "Que les mortels périssent tous !",
 
 	enrage_trigger = "%s devient fou furieux !",
 	enrage_warning1 = "%s engagé - Enrager dans 50-60 sec.",
-	enrage_warning2 = "Enrager imminent !",
-	enrage_message = "Enragé pendant 10 sec. !",
+	enrage_warning2 = "Enrager imminent !",
+	enrage_message = "Enragé pendant 10 sec. !",
 	enrage_finished = "Fin de l'Enrager - Prochain dans 50-60 sec.",
 	enrage_bar = "~Enrager",
 	enraged_bar = "<Enragé>",
 
 	mark = "Marque",
-	mark_desc = "Préviens quand vous avez la Marque de Kazzak.",
+	mark_desc = "Prévient quand vous avez la Marque de Kazzak.",
 	mark_message = "Marque de Kazzak sur VOUS",
 
 	twist = "Reflet tordu",
-	twist_desc = "Préviens quand quelqu'un subit les effets de Reflet tordu.",
-	twist_message = "Reflet tordu : %s",
+	twist_desc = "Prévient quand quelqu'un subit les effets de Reflet tordu.",
+	twist_message = "Reflet tordu : %s",
 } end)
 
 L:RegisterTranslations("koKR", function() return {
@@ -68,8 +89,8 @@ L:RegisterTranslations("koKR", function() return {
 	enraged_bar = "<격노>",
 
 	mark = "징표",
-	mark_desc = "당신에 카자크의 징표 시 알립니다.",
-	mark_message = "당신에 카자크의 징표",
+	mark_desc = "자신이 카자크의 징표에 걸렸을 때 알립니다.",
+	mark_message = "당신은 카자크의 징표",
 
 	twist = "어긋난 반사",
 	twist_desc = "어긋난 반사에 걸린 사람에 대한 경고입니다.",
@@ -81,20 +102,20 @@ L:RegisterTranslations("zhTW", function() return {
 	engage_trigger2 = "所有的凡人都將死亡!",
 
 	enrage_trigger = "%s變得憤怒了!",
-	enrage_warning1 = "與 %s 進入戰鬥！ 50-60 秒後狂怒！",
-	enrage_warning2 = "即將狂怒！",
-	enrage_message = "狂怒狀態 10 秒！",
-	enrage_finished = "狂怒結束！ 50-60 秒後再次狂怒！",
-	enrage_bar = "狂怒",
+	enrage_warning1 = "與 %s 進入戰鬥! 50-60 秒後狂怒!",
+	enrage_warning2 = "即將狂怒!",
+	enrage_message = "狂怒狀態 10 秒!",
+	enrage_finished = "狂怒結束! 50-60 秒後再次狂怒!",
+	enrage_bar = "<狂怒>",
 	enraged_bar = "<已狂怒>",
 
 	mark = "印記",
 	mark_desc = "當你受到卡札克的印記時發出警報",
-	mark_message = "你受到卡札克的印記！",
+	mark_message = "你受到卡札克的印記!",
 
 	twist = "扭曲反射",
 	twist_desc = "當隊友受到扭曲反射時發出警報",
-	twist_message = "扭曲反射：[%s]",
+	twist_message = "扭曲反射: [%s]",
 } end)
 
 L:RegisterTranslations("zhCN", function() return {
@@ -102,19 +123,19 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_trigger2 = "所有的凡人都将灭亡！",
 
 	enrage_trigger = "%s变得愤怒了！",
-	enrage_warning1 = "%s 激活 - 50-60秒后 激怒",
-	enrage_warning2 = "即将激怒！",
-	enrage_message = "10秒后 激怒",
-	enrage_finished = "激活结束 - 50-60秒后再次发动",
-	enrage_bar = "<狂怒>",
-	enraged_bar = "<已狂怒>",
+	enrage_warning1 = "%s 激活 - 50-60秒后，激怒！",
+	enrage_warning2 = "即将 激怒！",
+	enrage_message = "10秒后，激怒！",
+	enrage_finished = "激活结束！50-60秒后，再次发动。",
+	enrage_bar = "<激怒>",
+	enraged_bar = "<已激怒>",
 
 	mark = "印记",
-	mark_desc = "当你受到卡扎克的印记发出警报。",
+	mark_desc = "当你受到卡扎克的印记时发出警报。",
 	mark_message = ">你< 卡扎克的印记！",
 
 	twist = "扭曲反射",
-	twist_desc = "当队友受到扭曲反射发出警报。",
+	twist_desc = "当玩家受到扭曲反射时发出警报。",
 	twist_message = "扭曲反射：>%s<！",
 } end)
 
@@ -127,7 +148,7 @@ mod.zonename = BZ["Hellfire Peninsula"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = boss
 mod.toggleoptions = {"enrage", "mark", "twist", "bosskill"}
-mod.revision = tonumber(("$Revision: 65832 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -150,7 +171,7 @@ end
 
 function mod:Mark(player)
 	if player == pName and db.mark then
-		self:Message(L["mark_message"], "Personal", 32960, "Alarm")
+		self:LocalMessage(L["mark_message"], "Personal", 32960, "Alarm")
 	end
 end
 

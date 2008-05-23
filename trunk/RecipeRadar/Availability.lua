@@ -1,6 +1,6 @@
 
 -- Availability.lua: logic for the availability of recipes to characters
--- $Id: Availability.lua 700 2007-01-18 04:57:09Z jnmiller $
+-- $Id: Availability.lua 1039 2008-04-08 05:13:09Z jnmiller $
 
 -----------------------------------------------------------------------------
 -- Generic, abstracted availability entry points
@@ -117,6 +117,7 @@ function RecipeRadar_Availability_CreateTooltip(recipe)
       -- do the rest only if the character has the profession
       if (player_info.Professions[recipe.Type] and
             player_info.Professions[recipe.Type].Rank > 0 and
+            RecipeRadar_SkillDB_HasSpec(player, recipe) and
             RecipeRadar_SkillDB_HasMisc(player, recipe)) then
 
          -- get player's rank

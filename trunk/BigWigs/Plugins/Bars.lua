@@ -6,7 +6,7 @@
 
 local L = AceLibrary("AceLocale-2.2"):new("BigWigsBars")
 
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 local mType = media.MediaType and media.MediaType.STATUSBAR or "statusbar"
 local dew = AceLibrary("Dewdrop-2.0")
 local count = 1
@@ -189,39 +189,39 @@ L:RegisterTranslations("zhTW", function() return {
 	["Options for the timer bars."] = "計時條設置",
 
 	["Show anchor"] = "顯示錨點",
-	["Show the bar anchor frame."] = "顯示計時條框架錨點。",
+	["Show the bar anchor frame."] = "顯示計時條框架錨點",
 
 	["Enable menu"] = "開啟選單",
-	["Show the bar configuration menu on Alt-Rightclick.\n\nNote that when this option is enabled, you can no longer Alt-Click game world items beneath the bars."] = "Alt+右鍵顯示計時條設定選單。\n\n備註:當啟用選單後，在計時條下方，你不再能 Alt+左鍵點擊世界物品。",
+	["Show the bar configuration menu on Alt-Rightclick.\n\nNote that when this option is enabled, you can no longer Alt-Click game world items beneath the bars."] = "Alt+右鍵顯示計時條設定選單。\n\n備註: 當啟用選單後，在計時條下方，你不再能 Alt+左鍵點擊世界物品。",
 
 	["Scale"] = "縮放",
-	["Set the bar scale."] = "設置計時條縮放比例。",
+	["Set the bar scale."] = "設置計時條縮放比例",
 
 	["Grow upwards"] = "向上排列",
-	["Toggle bars grow upwards/downwards from anchor."] = "切換計時條從錨點向下/向上排列。",
+	["Toggle bars grow upwards/downwards from anchor."] = "切換計時條從錨點向下/向上排列",
 
 	["Texture"] = "材質",
-	["Set the texture for the timer bars."] = "設定計時條的材質。",
+	["Set the texture for the timer bars."] = "設定計時條的材質",
 
 	["Test"] = "測試",
 	["Close"] = "關閉",
 
 	["Emphasize"] = "突顯",
-	["Emphasize bars that are close to completion (<10sec). Also note that bars started at less than 15 seconds initially will be emphasized right away."] = "當計時條快結束時(少於 10 秒)，以突顯方式展示。如果本來就少於 15 秒，則一開始就會以突顯方式顯示。",
+	["Emphasize bars that are close to completion (<10sec). Also note that bars started at less than 15 seconds initially will be emphasized right away."] = "當計時條快結束時(少於 10 秒)，以突顯方式顯示。如果本來就少於 15 秒，則一開始就會以突顯方式顯示。",
 
 	["Enable"] = "啟用",
-	["Enables emphasizing bars."] = "啟用突顯顯計時條。",
+	["Enables emphasizing bars."] = "啟用突顯計時條",
 	["Flash"] = "閃爍",
-	["Flashes the background red for bars that are emphasized."] = "以紅色閃爍背景的方式來突顯。",
+	["Flashes the background red for bars that are emphasized."] = "以紅色閃爍背景的方式來突顯",
 	["Move"] = "移動",
-	["Move bars that are emphasized to a second anchor."] = "將要凸顯得計時條移動到不同的位置。",
-	["Set the scale for emphasized bars."] = "設置突顯計時條縮放比例。",
+	["Move bars that are emphasized to a second anchor."] = "將要突顯的計時條移動到不同的位置",
+	["Set the scale for emphasized bars."] = "設置突顯計時條縮放比例",
 
 	["Reset position"] = "重置位置",
 	["Reset the anchor position, moving it to the center of your screen."] = "重置定位點，將它移至螢幕中央。",
 
 	["Reverse"] = "反向",
-	["Toggles if bars are reversed (fill up instead of emptying)."] = "以反向的方式顯示(填滿而非變空)。",
+	["Toggles if bars are reversed (fill up instead of emptying)."] = "以反向的方式顯示 (填滿而非變空)",
 	
 	font = "Fonts\\bHEI01B.TTF"
 } end)
@@ -316,44 +316,44 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("esES", function() return {
 	["Bars"] = "Barras",
-	["Emphasized Bars"] = "Barras Enfatizadas",
+	["Emphasized Bars"] = "Destacadas",
 
-	["Options for the timer bars."] = "Opciones para las barras temporizadoras",
+	["Options for the timer bars."] = "Opciones para las barras temporizadoras.",
 
 	["Show anchor"] = "Mostrar ancla",
-	["Show the bar anchor frame."] = "Mostrar el ancla de la ventana de la barra",
+	["Show the bar anchor frame."] = "Muestra una ventana que representa dónde se anclan las barras.",
 
-	["Enable menu"] = "Activar menu",
-	["Show the bar configuration menu on Alt-Rightclick.\n\nNote that when this option is enabled, you can no longer Alt-Click game world items beneath the bars."] = "Muestra el menu de configuraci\195\179n en Alt-Cilck dcho.\n\nCuando esta opci\195\179n est\195\161 activada no puedes Alt-Click los objetos por debajo de las barras",
+	["Enable menu"] = "Activar menú",
+	["Show the bar configuration menu on Alt-Rightclick.\n\nNote that when this option is enabled, you can no longer Alt-Click game world items beneath the bars."] = "Muestra el menú de configuración de barra con Alt-Clic derecho.\n\nActivar esta opción no te permitirá hacer Alt-Clic sobre elementos del mundo de juego que aparezcan detrás de una barra.",
 
 	["Scale"] = "Escala",
-	["Set the bar scale."] = "Establece la escala de las barras",
+	["Set the bar scale."] = "Establece la escala de las barras.",
 
 	["Grow upwards"] = "Crecer hacia arriba",
-	["Toggle bars grow upwards/downwards from anchor."] = "Muestra las barras hacia arriba/abajo desde el ancla",
+	["Toggle bars grow upwards/downwards from anchor."] = "Muestra las barras hacia arriba/abajo desde el ancla.",
 
 	["Texture"] = "Textura",
-	["Set the texture for the timer bars."] = "Establece la textura para las barras temporizadoras",
+	["Set the texture for the timer bars."] = "Establece la textura para las barras temporizadoras.",
 
 	["Test"] = "Probar",
 	["Close"] = "Cerrar",
 
-	["Emphasize"] = "Emfatizar",
-	["Emphasize bars that are close to completion (<10sec). Also note that bars started at less than 15 seconds initially will be emphasized right away."] = "Enfatiza las barras que est\195\161n a punto de completarse (<10 seg). Las barras que empezados a menos de 15 seg tambi\195\169 ser\195\161n enfatizadas",
+	["Emphasize"] = "Barras destacadas",
+	["Emphasize bars that are close to completion (<10sec). Also note that bars started at less than 15 seconds initially will be emphasized right away."] = "Destaca las barras que están a punto de finalizar (<10seg). Las barras iniciadas con un tiempo inferior a 15 segundos se destacan desde el principio.",
 
 	["Enable"] = "Activar",
-	["Enables emphasizing bars."] = "Activa las barras enfatizadas",
+	["Enables emphasizing bars."] = "Activa las barras destacadas.",
 	["Flash"] = "Destelleo",
-	["Flashes the background red for bars that are emphasized."] = "Destellea el fondo en rojo para las barras que son enfatizadas",
+	["Flashes the background red for bars that are emphasized."] = "Destellea el fondo en rojo para las barras destacadas.",
 	["Move"] = "Mover",
-	["Move bars that are emphasized to a second anchor."] = "Mueve las barras que son enfatizadas a un segundo ancla",
-	["Set the scale for emphasized bars."] = "Establece la escala para las barras enfatizadas",
+	["Move bars that are emphasized to a second anchor."] = "Mueve las barras destacadas a otro punto de anclaje.",
+	["Set the scale for emphasized bars."] = "Establece la escala para las barras destacadas.",
 
-	["Reset position"] = "Resetear posici\195\179n",
-	["Reset the anchor position, moving it to the center of your screen."] = "Resetea la posici\195\179n del ancla, moviendola al centro de la pantalla",
+	["Reset position"] = "Reiniciar posición",
+	["Reset the anchor position, moving it to the center of your screen."] = "Reinicia la posición del ancla, moviéndola al centro de la pantalla.",
 
 	["Reverse"] = "Invertir",
-	["Toggles if bars are reversed (fill up instead of emptying)."] = "Muestra las barras invirtiendolas (se llenan en vez de vaciarse).",
+	["Toggles if bars are reversed (fill up instead of emptying)."] = "Invierte la dirección de llenado de las barras (se llenan en vez de vaciarse).",
 	
 	font = "Fonts\\FRIZQT__.TTF",
 } end)
@@ -363,7 +363,7 @@ L:RegisterTranslations("esES", function() return {
 -----------------------------------------------------------------------
 
 local plugin = BigWigs:NewModule("Bars", "CandyBar-2.0")
-plugin.revision = tonumber(("$Revision: 63870 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
 plugin.defaultDB = {
 	altclick = true,
 	growup = false,

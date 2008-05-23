@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster enUS locale
-Revision: $Revision: 65999 $
+Revision: $Revision: 73696 $
 Translated by: 
 - Whitetooth (hotdogee [at] gmail [dot] com)
 ]]
@@ -273,7 +273,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = true,
 	-- /rb sum stat heal
 	["Sum Healing"] = true,
-	["Healing <- Healing, Intellect, Spirit, Strength"] = true,
+	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = true,
 	-- /rb sum stat hit
 	["Sum Hit Chance"] = true,
 	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = true,
@@ -495,11 +495,12 @@ L:RegisterTranslations("enUS", function() return {
 	-- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 	["numberPatterns"] = {
 		{pattern = " by (%d+)", addInfo = "AfterNumber",},
-		{pattern = "%+(%d+)", addInfo = "AfterStat",},
+		{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 		{pattern = "grant.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 		{pattern = "add.-(%d+)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 		-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
-		{pattern = "(%d+)([^%d%%]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+		-- Added [^|] so that it doesn't match enchant strings (JewelTips)
+		{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 	},
 	["separators"] = {
 		"/", " and ", ",", "%. ", " for ", "&", ":"

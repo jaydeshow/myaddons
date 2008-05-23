@@ -1,22 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
 
-<Script file="BunchOfBars_Agro\Agro.lua"/>
-<Script file="BunchOfBars_Buffs\Buffs.lua"/>
-<Script file="BunchOfBars_Dispel\Dispel.lua"/>
-<Script file="BunchOfBars_HealthBar\HealthBar.lua"/>
-<Script file="BunchOfBars_HealthBarText\HealthBarText.lua"/>
-<Script file="BunchOfBars_Highlight\Highlight.lua"/>
-<Script file="BunchOfBars_Maintank\Maintank.lua"/>
-<Script file="BunchOfBars_ManaBar\ManaBar.lua"/>
-<Script file="BunchOfBars_Name\Name.lua"/>
-<Script file="BunchOfBars_RaidIcon\RaidIcon.lua"/>
-<Script file="BunchOfBars_Range\Range.lua"/>
-<Script file="BunchOfBars_Threshold\Threshold.lua"/>
-<Script file="BunchOfBars_Tooltip\Tooltip.lua"/>
-<Script file="BunchOfBars_VoiceIcon\VoiceIcon.lua"/>
-<Script file="BunchOfBars_Target\Target.lua"/>
-
-<Include file="BunchOfBars_HealEstimate\HealEstimate.xml"/>
-
+<Script file="Name\Name.lua"/>
+<Script file="HealthBar\HealthBar.lua"/>
+<Script file="HealthBarText\HealthBarText.lua"/>
+<Script file="Agro\Agro.lua"/>
+<Script file="Highlight\Highlight.lua"/>
+<Script file="Range\Range.lua"/>
+<Script file="Buffs\Buffs.lua"/>
+<Script file="Dispel\Dispel.lua"/>
+<Script file="Maintank\Maintank.lua"/>
+<Script file="RaidIcon\RaidIcon.lua"/>
+<Script file="VisualHeal\VisualHeal.lua"/>
+<Script file="Tooltip\Tooltip.lua"/>
+<Script file="VoiceIcon\VoiceIcon.lua"/>
+<Script file="ManaBar\ManaBar.lua"/>
+<Script file="Threshold\Threshold.lua"/>
 
 </Ui>

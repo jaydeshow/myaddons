@@ -5,7 +5,7 @@
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("BigWigsSound")
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 local mType = media.MediaType and media.MediaType.SOUND or "sound"
 local db = nil
 
@@ -42,7 +42,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Sounds"] = "효과음",
 	["Options for sounds."] = "효과음에 대한 설정입니다.",
 
-	["Set the sound to use for %q.\n\nCtrl-Click a sound to preview."] = "%q에 사용할 효과음을 설정합니다(미리듣기는 CTRL-클릭).",
+	["Set the sound to use for %q.\n\nCtrl-Click a sound to preview."] = "%q에 사용할 효과음을 설정합니다.\n\n미리듣기는 CTRL-클릭하세요.",
 	["Use sounds"] = "효과음 사용",
 	["Toggle all sounds on or off."] = "모든 효과음을 켜거나 끕니다.",
 	["Default only"] = "기본음",
@@ -68,7 +68,7 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	["Sounds"] = "聲音",
-	["Options for sounds."] = "聲音的選項",
+	["Options for sounds."] = "聲音選項",
 
 	["Alarm"] = "鬧鈴",
 	["Info"] = "資訊",
@@ -77,8 +77,8 @@ L:RegisterTranslations("zhTW", function() return {
 	["Victory"] = "勝利",
 
 	["Use sounds"] = "使用聲音",
-	["Toggle all sounds on or off."] = "切換是否使用聲音。",
-	["Default only"] = "只用預設",
+	["Toggle all sounds on or off."] = "切換是否使用聲音",
+	["Default only"] = "僅用預設",
 	["Use only the default sound."] = "只用預設聲音",
 } end)
 
@@ -121,13 +121,13 @@ L:RegisterTranslations("esES", function() return {
 	["Options for sounds."] = "Opciones de los sonidos",
 
 	["Alarm"] = "Alarma",
-	["Info"] = "Informaci\195\179n",
+	["Info"] = "Información",
 	["Alert"] = "Alerta",
 	["Long"] = "Largo",
 	["Victory"] = "Victoria",
 
-	["Set the sound to use for %q.\n\nCtrl-Click a sound to preview."] = "Establece el sonido a usar para %q (Ctrl-Click en un sonido para escucharlo)",
-	["Toggle all sounds on or off."] = "Activa o desactiva todos los sonidos",
+	["Set the sound to use for %q.\n\nCtrl-Click a sound to preview."] = "Establece el sonido a usar para %q (Ctrl-Click en un sonido para escucharlo).",
+	["Toggle all sounds on or off."] = "Activa o desactiva todos los sonidos.",
 	["Default only"] = "Solo por defecto",
 	["Use only the default sound."] = "Usar solo el sonido por defecto",
 } end)
@@ -138,7 +138,7 @@ L:RegisterTranslations("esES", function() return {
 
 local plugin = BigWigs:NewModule("Sounds")
 
-plugin.revision = tonumber(("$Revision: 63633 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
 plugin.defaultDB = {
 	defaultonly = false,
 	sound = true,

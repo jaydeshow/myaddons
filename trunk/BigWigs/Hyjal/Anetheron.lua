@@ -32,23 +32,42 @@ L:RegisterTranslations("enUS", function() return {
 	swarm_bar = "~Swarm Cooldown",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "¡Sois defensores de un mundo condenado! ¡Huid y quizá prolonguéis vuestras patéticas vidas!",
+
+	inferno = "Averno (Inferno)",
+	inferno_desc = "Contadores aproximados de Averno.",
+	inferno_message = "¡Lanzando Averno en %s!",
+	inferno_you = "¡Lanzando Averno en TI!",
+	inferno_warning = "Averno en breve",
+	inferno_bar = "~Averno",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre los jugadores que reciben Averno. (Requiere derechos de banda)",
+
+	swarm = "Enjambre de carroña (Carrion Swarm)",
+	swarm_desc = "Contadores aproximados para Enjambre de carroña.",
+	swarm_message = "¡Enjambre! - Sig. en ~11sec",
+	swarm_bar = "~Enjambre",
+} end )
+
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Vous défendez un monde condamné ! Fuyez si vous voulez avoir une chance de faire durer vos vies pathétiques !",
 
 	inferno = "Inferno",
 	inferno_desc = "Temps de recharge approximatif pour l'Inferno.",
-	inferno_message = "Incante un inferno sur %s !",
-	inferno_you = "Incante un inferno sur VOUS !",
-	inferno_warning = "Inferno imminent !",
-	inferno_bar = "~Cooldown Inferno",
+	inferno_message = "Incante un inferno sur %s !",
+	inferno_you = "Incante un inferno sur VOUS !",
+	inferno_warning = "Inferno imminent !",
+	inferno_bar = "~Recharge Inferno",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur sur qui un inferno est incanté (nécessite d'être promu ou mieux).",
 
 	swarm = "Vol de charognards",
 	swarm_desc = "Temps de recharge approximatif pour le Vol de charognards.",
-	swarm_message = "Essaim ! - Prochain dans ~11 sec.",
-	swarm_bar = "~Cooldown Essaim",
+	swarm_message = "Essaim ! - Prochain dans ~11 sec.",
+	swarm_bar = "~Recharge Essaim",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -56,13 +75,13 @@ L:RegisterTranslations("koKR", function() return {
 
 	inferno = "불지옥",
 	inferno_desc = "대략적인 불지옥 대기시간 타이머입니다.",
-	inferno_message = "%s에 불지옥 시전 중!",
-	inferno_you = "당신에 불지옥 시전 중!",
+	inferno_message = "%s에게 불지옥 시전 중!",
+	inferno_you = "당신에게 불지옥 시전 중!",
 	inferno_warning = "잠시 후 불지옥!",
 	inferno_bar = "~불지옥 대기시간",
 
 	icon = "전술 표시",
-	icon_desc = "불지옥의 시전 대상의 플레이어에 전술 표시를 지정합니다 (승급자 이상 권한 요구).",
+	icon_desc = "불지옥의 시전 대상의 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 
 	swarm = "흡혈박쥐 떼",
 	swarm_desc = "대략적인 흡혈박쥐 떼 대기시간 타이머입니다.",
@@ -97,7 +116,7 @@ L:RegisterTranslations("zhTW", function() return {
 	inferno_message = "地獄火: [%s]",
 	inferno_you = "你中了地獄火!",
 	inferno_warning = "地獄火即將到來!",
-	inferno_bar = "~地獄火 Cooldown",
+	inferno_bar = "<地獄火冷卻>",
 
 	icon = "團隊標記",
 	icon_desc = "在受到地獄火的隊友頭上標記 (需要權限)",
@@ -105,7 +124,7 @@ L:RegisterTranslations("zhTW", function() return {
 	swarm = "腐肉成群",
 	swarm_desc = "腐肉成群冷卻計時器",
 	swarm_message = "腐肉成群! - 11 秒後下一次",
-	swarm_bar = "~腐肉成群冷卻",
+	swarm_bar = "<腐肉成群冷卻>",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -119,11 +138,11 @@ L:RegisterTranslations("zhCN", function() return {
 	inferno_bar = "<地狱火 冷却>",
 
 	icon = "团队标记",
-	icon_desc = "为在玩家上施放地狱火的玩家打上团队标记。(需要权限)",
+	icon_desc = "为在玩家上施放地狱火的玩家打上团队标记。（需要权限）",
 
 	swarm = "腐臭虫群",
 	swarm_desc = "腐臭虫群冷却计时。",
-	swarm_message = "虫群！ ~11秒后下一波",
+	swarm_message = "腐臭虫群！ 约11秒后下一波。",
 	swarm_bar = "<虫群 冷却>",
 } end )
 
@@ -135,7 +154,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"inferno", "icon", "swarm", "bosskill"}
-mod.revision = tonumber(("$Revision: 66557 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

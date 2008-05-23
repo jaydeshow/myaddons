@@ -231,6 +231,7 @@ AtlasLootBossButtons = {
         "LBRSWyrmthalak";
         "LBRSFelguard";
         "";
+        "";
         "LBRSTrash";
         "T0SET";
         };
@@ -1036,9 +1037,10 @@ AtlasLootBossButtons = {
         "";
         "";
         "SPMuru";
-	"";
+        "";
         "SPKiljaeden";
         "";
+        "SPPatterns";
         "SPTrash";
         };
     

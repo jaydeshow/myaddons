@@ -3,11 +3,11 @@
 -- Last Updated: 6/28/2007
 -- missing some of black temple boss names.
 
-local BabbleBoss = AceLibrary("Babble-Boss-2.2");
-local BabbleZone = AceLibrary("Babble-Zone-2.2");
+local BabbleBoss = LibStub("LibBabble-Boss-3.0"):GetLookupTable();
+local BabbleZone = LibStub("LibBabble-Zone-3.0"):GetLookupTable();
 
 	AtlasLootBossNames["AuchShadowLabyrinth"] = {
-		"선동자 검은심장".." ("..BabbleZone["Shadow Labyrinth"]..")";
+		" ".." ("..BabbleZone["Shadow Labyrinth"]..")";
 		BabbleBoss["Grandmaster Vorpil"].." ("..BabbleZone["Shadow Labyrinth"]..")";
 		BabbleBoss["Murmur"].." ("..BabbleZone["Shadow Labyrinth"]..")";
 	};

@@ -3,7 +3,7 @@ local L = AceLibrary("AceLocale-2.2"):new("XLoot")
 
 XLoot = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceDB-2.0", "AceConsole-2.0", "AceHook-2.1", "AceModuleCore-2.0")-- Shhhhh
 
-XLoot.revision  = tonumber((string.gsub("$Revision: 54117 $", "^%$Revision: (%d+) %$$", "%1")))
+XLoot.revision  = tonumber((string.gsub("$Revision: 73744 $", "^%$Revision: (%d+) %$$", "%1")))
 
 XLoot:SetModuleMixins("AceEvent-2.0", "AceConsole-2.0", "AceHook-2.1")
 XLoot.dewdrop = AceLibrary("Dewdrop-2.0")
@@ -14,6 +14,7 @@ function XLoot:OnInitialize()
 	self:RegisterDB("XLootDB")
 	self.dbDefaults = {
 		scale = 1.0,
+		alpha = 1.0,
 		cursor = true,
 		debug = false,
 		smartsnap = true,
@@ -375,7 +376,7 @@ function XLoot:Update()
 		end
 	end
 	-- LootLoop
-	local curslot, button, frame, texture, item, quantity, quality, color, qualitytext, textobj, infoobj, qualityobj
+	local slot, curslot, button, frame, texture, item, quantity, quality, color, qualitytext, textobj, infoobj, qualityobj
 	local curshift, qualityTower, framewidth  = 0, 0, 0
 	for slot = 1, numLoot do
 		texture, item, quantity, quality = GetLootSlotInfo(slot)
@@ -485,10 +486,10 @@ function XLoot:Update()
 		end
 	end
 	
-	if slot == curshift then --Collapse lower buttons
-		curshift = curshift -1
-		--self:msg("Collapsing end slot "..slot..", curshift now "..curshift)
-	end
+	--if slot == curshift then --Collapse lower buttons
+	--	curshift = curshift -1
+	--	--self:msg("Collapsing end slot "..slot..", curshift now "..curshift)
+	--end
 	
 	XLootFrame:SetScale(db.scale)
 	local color = ITEM_QUALITY_COLORS[qualityTower]
@@ -547,6 +548,7 @@ end
 
 function XLoot:SetSlotInfo(slot, button) -- Yay wowwiki demo
 	local link =  GetLootSlotLink(slot)
+	if not link then return nil end -- Avoid errors for now.
 	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc = GetItemInfo(link)
 	local oldLoc = itemEquipLoc
 	self:SetBindText(self:GetBindOn(itemLink), button.bind)
@@ -711,6 +713,7 @@ function XLoot:SetupFrames()
 	self:Skin(XLootFrame)
    
    self.frame:SetScale(self.db.profile.scale)
+   self.frame:SetAlpha(self.db.profile.alpha)
     
    	-- Close button
 	self.closebutton = CreateFrame("Button", "XLootCloseButton", XLootFrame)
@@ -931,7 +934,8 @@ function XLoot:ParseCoinString(tstr)
 	return total
 end
 
-local coinage = { { GOLD, 0, "ffd700" }, { SILVER, 0, "c7c7cf" }, { COPPER, 0, "eda55f" } }
+
+local coinage = { { GOLD_AMOUNT, 0, "ffd700" }, { SILVER_AMOUNT, 0, "c7c7cf" }, { COPPER_AMOUNT, 0, "eda55f" } }
 local moneystr_tmp = {}
 function XLoot:ParseMoney(total, short, nocolor)
 	local coinage = coinage
@@ -951,10 +955,10 @@ function XLoot:ParseMoney(total, short, nocolor)
 			else
 				if nocolor then
 					table.insert(moneystr_tmp,
-							("%d %s"):format(v[2], v[1]))
+							v[1]:format(v[2]))
 				else
 					table.insert(moneystr_tmp,
-							("|cFF%s%d %s"):format(v[3], v[2], v[1]))
+							(("|cFF%s%s"):format(v[3], v[1])):format(v[2]))
 				end
 			end
 		end

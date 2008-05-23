@@ -90,21 +90,18 @@ do
 	    ["AceDebug-2.0"]		= 34168,
 	    ["AceEvent-2.0"]		= 66043,
 	    ["AceDB-2.0"]		= 56534,
-	    ["AceConsole-2.0"]		= 48940,
+	    ["AceConsole-2.0"]		= 67789,
 	    ["AceLocale-2.2"]		= 40629,
 	    ["AceAddon-2.0"]	        = 57245,
 	    ["SpecialEvents-Aura-2.0"]  = 59749,
-	    --["Babble-Class-2.2"]	= 54287 * 100000 + 40629, -- 40629 is AceLocale revision
-	    --["Babble-Spell-2.2"]	= 58622 * 100000 + 40629, -- 40629 is AceLocale revision
 	    ["Dewdrop-2.0"]		= 56529,
-	    ["Waterfall-1.0"]		= 56985,
+	    ["Waterfall-1.0"]		= 67025,
 	    ["Tablet-2.0"]		= 64130,
 	    ["FuBarPlugin-2.0"]		= 63898,
 	}; -- }}}
 
 	--LibStub:GetLibrary
 	local UseLibStub = {
-	    ["LibBabble-Spell-3.0"] = 66012,
 	    ["LibBabble-Class-3.0"] = 63957,
 	};
 
@@ -176,12 +173,19 @@ do
 
 	-- if no fatal error let this file update the date and revision of Decursive
 	if DcrDiagStatus ~= 2 then
-	    Dcr:SetDateAndRevision("$Date: 2008-03-26 18:57:59 -0400 (Wed, 26 Mar 2008) $", "$Revision: 66196 $");
+	    Dcr:SetDateAndRevision("$Date: 2008-04-27 17:49:45 -0400 (Sun, 27 Apr 2008) $", "$Revision: 71833 $");
 	end
 
 	-- if the diagnostic was requested by the user, we also test AceEvent functionalities {{{ -
 	if force and FromCommand and DcrDiagStatus == 0 then
+
 	    PrintMessage("|cFF00FF00No problem found in shared libraries or Decursive files!|r");
+
+	    PrintMessage("Now checking spell translations...");
+	    if Dcr:GetSpellsTranslations(true) then
+		PrintMessage("|cFF00FF00No error found in spell translations!|r");
+	    end
+
 	    PrintMessage("Now checking the event management library...");
 	    PrintMessage("If, in about 2 seconds, the message \"|cFF00FF00Event library functionning properly|r\" does not appear then there is a problem");
 

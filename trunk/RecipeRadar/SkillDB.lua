@@ -1,6 +1,6 @@
 
 -- SkillDB.lua: interface to the characters' known skill database
--- $Id: SkillDB.lua 997 2007-07-24 06:36:54Z jnmiller $
+-- $Id: SkillDB.lua 1022 2008-03-07 20:57:50Z jnmiller $
 
 function RecipeRadar_SkillDB_Init()
 

@@ -67,6 +67,56 @@ L:RegisterTranslations("enUS", function() return {
 	debrisinc_warning = "Debris Soon!",
 } end)
 
+L:RegisterTranslations("esES", function() return {
+	escape = "Libreación",
+	escape_desc = "Cuenta atrás hasta la liberación de Magtheridon..",
+	escape_trigger1 = "¡Las cuerdas de %%s empiezan a aflojarse!",
+	escape_trigger2 = "¡He... sido... liberado!",
+	escape_warning1 = "¡%s Activado - Liberado en 2min!",
+	escape_warning2 = "¡Liberado en 1min!",
+	escape_warning3 = "¡Liberado en 30sec!",
+	escape_warning4 = "¡Liberado en 10sec!",
+	escape_warning5 = "¡Liberado en 3sec!",
+	escape_bar = "Liberado en...",
+	escape_message = "¡%s Liberado!",
+
+	abyssal = "Abisal ardiente (Burning Abyssal)",
+	abyssal_desc = "Avisar cuando se crea un Abisal ardiente.",
+	abyssal_message = "Abisal ardiente creado (%d)",
+
+	heal = "Curación",
+	heal_desc = "Avisar cuando Canalizador Fuego Infernal empieza a curar.",
+	heal_message = "¡Curando!",
+
+	nova = "Nova explosiva (Blast Nova)",
+	nova_desc = "Temporizadores estimados de Nova explosiva.",
+	nova_ = "Nova explosiva!", -- The start exclamation symbol '¡' is missing because this message is used as a trigger, must be left in esES without the symbol. Whon't work otherwise.
+	nova_bar = "~Nova explosiva",
+	nova_warning = "Posible Nova explosiva",
+	nova_cast = "¡Lanzando Nova!",
+
+	banish = "Desterrar (Banish)",
+	banish_desc = "Avisar cuando destierras a Magtheridon.",
+	banish_trigger = "¡No... otra vez, no!",
+	banish_message = "Desterrado por ~10seg",
+	banish_over_message = "¡Desterrar se desvanece!",
+	banish_bar = "Desterrado",
+
+	exhaust = "Extenuación mental (Mind Exhaustion)",
+	exhaust_desc = "Temporizadores para Extenuación mental en jugadores.",
+	exhaust_bar = "[%s] Extenuación mental",
+
+	debris = "Escombros en ti (Debris)",
+	debris_desc = "Avisar sobre Escombros en ti.",
+	debris_message = "¡Escombros en TI!",
+
+	debrisinc = "Escombros (Debris)",
+	debrisinc_desc = "Avisar sobre Escombros al 30%.",
+	debrisinc_trigger = "¡No me dejaré encerrar tan fácilmente! ¡Que tiemblen las paredes de esta prisión... y se derrumben!",
+	debrisinc_message = "¡30% - Escombros!",
+	debrisinc_warning = "Escombros en breve",
+} end)
+
 L:RegisterTranslations("deDE", function() return {
 	escape = "Ausbruch",
 	escape_desc = "Countdown bis Magtheridon ausbricht",
@@ -122,34 +172,34 @@ L:RegisterTranslations("frFR", function() return {
 	escape_desc = "Compte à rebours avant que Magtheridon ne soit libre.",
 	escape_trigger1 = "Les liens de %%s commencent à se relâcher !",
 	escape_trigger2 = "Me... voilà... déchaîné !",
-	escape_warning1 = "%s engagé - Libre dans 2 min. !",
-	escape_warning2 = "Libre dans 1 min. !",
-	escape_warning3 = "Libre dans 30 sec. !",
-	escape_warning4 = "Libre dans 10 sec. !",
-	escape_warning5 = "Libre dans 3 sec. !",
+	escape_warning1 = "%s engagé - Libre dans 2 min. !",
+	escape_warning2 = "Libre dans 1 min. !",
+	escape_warning3 = "Libre dans 30 sec. !",
+	escape_warning4 = "Libre dans 10 sec. !",
+	escape_warning5 = "Libre dans 3 sec. !",
 	escape_bar = "Libération…",
-	escape_message = "%s libéré !",
+	escape_message = "%s libéré !",
 
 	abyssal = "Abyssal ardent",
-	abyssal_desc = "Préviens quand un Abyssal ardent est créé.",
+	abyssal_desc = "Prévient quand un Abyssal ardent est créé.",
 	abyssal_message = "Abyssal ardent créé (%d)",
 
 	heal = "Soin",
-	heal_desc = "Préviens quand un Canaliste des Flammes infernales commence à soigner.",
-	heal_message = "Se soigne !",
+	heal_desc = "Prévient quand un Canaliste des Flammes infernales commence à soigner.",
+	heal_message = "Se soigne !",
 
 	nova = "Nova explosive",
 	nova_desc = "Estimation du temps de la Nova explosive.",
 	nova_ = "nova explosive",
-	nova_bar = "~Cooldown Nova explosive",
+	nova_bar = "~Recharge Nova explosive",
 	nova_warning = "Nova explosive imminente",
-	nova_cast = "Incante une Nova explosive !",
+	nova_cast = "Incante une Nova explosive !",
 
 	banish = "Bannir",
-	banish_desc = "Préviens quand vous bannissez Magtheridon.",
+	banish_desc = "Prévient quand vous bannissez Magtheridon.",
 	banish_trigger = "Pas encore ! Pas encore...",
 	banish_message = "Banni pendant ~10 sec.",
-	banish_over_message = "Fin du ban !",
+	banish_over_message = "Fin du ban !",
 	banish_bar = "Banni",
 
 	exhaust = "Désactiver les barres d'Epuisement",
@@ -157,14 +207,14 @@ L:RegisterTranslations("frFR", function() return {
 	exhaust_bar = "[%s] épuisé",
 
 	debris = "Débris sur vous",
-	debris_desc = "Préviens quand les débris tombent sur vous.",
-	debris_message = "Débris sur VOUS !",
+	debris_desc = "Prévient quand les débris tombent sur vous.",
+	debris_message = "Débris sur VOUS !",
 
 	debrisinc = "Débris",
-	debrisinc_desc = "Préviens quand les débris tombent à 30%.",
+	debrisinc_desc = "Prévient quand les débris tombent à 30%.",
 	debrisinc_trigger = "Que les murs de cette prison tremblent",
-	debrisinc_message = "30% - Arrivée des débris !",
-	debrisinc_warning = "Débris imminent !",
+	debrisinc_message = "30% - Arrivée des débris !",
+	debrisinc_warning = "Débris imminent !",
 } end)
 
 L:RegisterTranslations("koKR", function() return {
@@ -189,7 +239,7 @@ L:RegisterTranslations("koKR", function() return {
 	heal_message = "치유 시전!",
 
 	nova = "파열의 회오리",
-	nova_desc = "파열의 회오리 지속시간에 대한 바입니다.",
+	nova_desc = "파열의 회오리에 대한 예측 타이머입니다.",
 	nova_ = "파열의 회오리",
 	nova_bar = "~파열의 회오리 대기시간",
 	nova_warning = "곧 파열의 회오리",
@@ -206,9 +256,9 @@ L:RegisterTranslations("koKR", function() return {
 	exhaust_desc = "정신 방출에 걸린 플레이어에 대한 타이머 바입니다.",
 	exhaust_bar = "[%s] 정신 방출",
 
-	debris = "당신에 파편",
-	debris_desc = "당신이 파편에 걸렸을때 알립니다.",
-	debris_message = "당신에 파편!",
+	debris = "자신의 파편",
+	debris_desc = "자신이 파편에 걸렸을 때 알립니다.",
+	debris_message = "당신은 파편!",
 
 	debrisinc = "파편",
 	debrisinc_desc = "30%일 때 파편에 대한 경고입니다.",
@@ -222,33 +272,33 @@ L:RegisterTranslations("zhCN", function() return {
 	escape_desc = "玛瑟里顿获得自由倒计时。",
 	escape_trigger1 = "%s快要从他的禁锢中挣脱了！",
 	escape_trigger2 = "我……自由了！",
-	escape_warning1 = "%s 激活- 2分钟后获得自由",
-	escape_warning2 = "1分后 自由！",
-	escape_warning3 = "30秒后 自由！",
-	escape_warning4 = "10秒后 自由！",
-	escape_warning5 = "3秒后 自由！",
+	escape_warning1 = "%s 激活！2分钟后，获得自由！",
+	escape_warning2 = "60秒后，自由！",
+	escape_warning3 = "30秒后，自由！",
+	escape_warning4 = "10秒后，自由！",
+	escape_warning5 = "3秒后，自由！",
 	escape_bar = "<已释放>",
 	escape_message = "%s 已释放！",
 
 	abyssal = "深渊燃魔",
-	abyssal_desc = "当创建一个深渊燃魔时发出警报。",
-	abyssal_message = "深渊燃魔创建 (%d)",
+	abyssal_desc = "当创造深渊燃魔时发出警报。",
+	abyssal_message = "深渊燃魔：>%d<！",
 
 	heal = "治疗",
-	heal_desc = "当地狱火导魔者施放治疗发出警报。",
+	heal_desc = "当地狱火导魔者施放治疗时发出警报。",
 	heal_message = "治疗！",
 
 	nova = "冲击新星",
 	nova_desc = "冲击新星计时。",
-	nova_ = "冲击新星",
+	nova_ = "冲击新星！",
 	nova_bar = "<冲击新星 冷却>",
 	nova_warning = "即将 冲击新星",
-	nova_cast = "开始施放冲击新星！",
+	nova_cast = "开始施放 冲击新星！",
 
 	banish = "放逐术",
-	banish_desc = "当你放逐玛瑟里顿发出警报。",
+	banish_desc = "当你放逐玛瑟里顿时发出警报。",
 	banish_trigger = "不！不！！",
-	banish_message = "放逐成功 - 10秒 ",
+	banish_message = "放逐成功！约10秒。",
 	banish_over_message = "放逐消失！",
 	banish_bar = "<放逐中>",
 
@@ -256,7 +306,7 @@ L:RegisterTranslations("zhCN", function() return {
 	exhaust_desc = "心灵疲惫记时条。",
 	exhaust_bar = "<心灵疲惫：%s>",
 
-	debris = "碎片(你)",
+	debris = "碎片（你）",
 	debris_desc = "当你中了碎片发出警报。",
 	debris_message = ">你< 碎片！",
 
@@ -272,15 +322,15 @@ L:RegisterTranslations("zhTW", function() return {
 	escape_desc = "倒數計時，直到 瑪瑟里頓 獲得自由",
 	escape_trigger1 = "束縛開始變弱",
 	escape_trigger2 = "我……被……釋放了!",
-	escape_warning1 = "與 %s 進入戰鬥 - 2 分鐘後獲得自由！",
-	escape_warning2 = "1 分鐘後獲得自由！",
-	escape_warning3 = "30 秒後獲得自由！",
-	escape_warning4 = "10 秒後獲得自由！",
-	escape_warning5 = "3 秒後獲得自由！",
-	escape_bar = "被釋放...",
-	escape_message = "%s 被釋放了！",
+	escape_warning1 = "與 %s 進入戰鬥 - 2 分鐘後獲得自由!",
+	escape_warning2 = "1 分鐘後獲得自由!",
+	escape_warning3 = "30 秒後獲得自由!",
+	escape_warning4 = "10 秒後獲得自由!",
+	escape_warning5 = "3 秒後獲得自由!",
+	escape_bar = "<被釋放>",
+	escape_message = "%s 被釋放了!",
 
-	abyssal = "燃燒的冥淵火", --智缺迪偷改了名字
+	abyssal = "燃燒的冥淵火",
 	abyssal_desc = "當地獄火導魔師創造燃燒的冥淵火時發出警報",
 	abyssal_message = "燃燒的冥淵火已創造 (%d)",
 
@@ -290,9 +340,9 @@ L:RegisterTranslations("zhTW", function() return {
 
 	nova = "衝擊新星",
 	nova_desc = "衝擊新星計時",
-	nova_ = "衝擊新星!", --！改成!
-	nova_bar = "衝擊新星冷卻",
-	nova_warning = "即將施放衝擊新星！",
+	nova_ = "衝擊新星!",
+	nova_bar = "<衝擊新星冷卻>",
+	nova_warning = "即將施放衝擊新星!",
 	nova_cast = "開始施放衝擊新星!",
 
 	banish = "驅逐",
@@ -300,18 +350,18 @@ L:RegisterTranslations("zhTW", function() return {
 	banish_trigger = "別再來了!別再來了……",
 	banish_message = "驅逐成功 - 衝擊新星巳中斷",
 	banish_over_message = "驅逐效果消失!",
-	banish_bar = "驅逐中",
+	banish_bar = "<驅逐中>",
 
 	exhaust = "關閉心靈耗損計時條",
 	exhaust_desc = "玩家中心靈耗損時計時器",
-	exhaust_bar = "心靈耗損：[%s]",
+	exhaust_bar = "心靈耗損: [%s]",
 
 	debris = "你中了殘骸",
 	debris_desc = "當你中了殘骸時發出警報",
 	debris_message = "你中了殘骸!",
 
 	debrisinc = "殘骸",
-	debrisinc_desc = "當王血量30%時殘骸即將開始警報",
+	debrisinc_desc = "當王血量 30% 時殘骸即將開始警報",
 	debrisinc_trigger = "我不會這麼輕易就被擊敗!讓這座監獄的牆壁震顫……然後崩塌!",
 	debrisinc_message = "30% - 殘骸來臨!",
 	debrisinc_warning = "殘骸即將來臨!",
@@ -325,8 +375,8 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Magtheridon's Lair"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = {channeler, boss}
-mod.toggleoptions = {"escape", "abyssal", "heal", -1, "nova", "banish", -1, "debris", "debrisinc", -1, "exhaust", "bosskill"}
-mod.revision = tonumber(("$Revision: 65953 $"):sub(12, -3))
+mod.toggleoptions = {"escape", "abyssal", "heal", -1, "nova", "banish", -1, "debris", "debrisinc", -1, "exhaust", "enrage", "bosskill"}
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -357,13 +407,13 @@ end
 
 function mod:Exhaustion(player)
 	if not db.exhaust then
-		self:Bar(L["exhaust_bar"]:format(player), 75, 44032)
+		self:Bar(L["exhaust_bar"]:format(player), 30, 44032)
 	end
 end
 
 function mod:Debris(player)
 	if player == pName and db.debris then
-		self:IfMessage(L["debris_message"], "Important", 30632, "Alert")
+		self:LocalMessage(L["debris_message"], "Important", 30632, "Alert")
 	end
 end
 
@@ -412,6 +462,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		if db.nova then
 			self:Bar(L["nova_bar"], 58, "Spell_Fire_SealOfFire")
 			self:DelayedMessage(56, L["nova_warning"], "Urgent")
+		end
+		if db.enrage then
+			self:Enrage(1200, nil, true)
 		end
 	elseif msg == L["banish_trigger"] then
 		if db.banish then

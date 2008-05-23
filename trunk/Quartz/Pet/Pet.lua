@@ -23,7 +23,7 @@ if Quartz:HasModule('Pet') then
 end
 local QuartzPet = Quartz:NewModule('Pet')
 
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 local math_min = math.min
 local unpack = unpack
@@ -206,7 +206,7 @@ function QuartzPet:OnEnable()
 	self:RegisterEvent("UNIT_SPELLCAST_CHANNEL_STOP")
 	self:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED")
 	self:RegisterEvent("UNIT_SPELLCAST_CHANNEL_INTERRUPTED", "UNIT_SPELLCAST_INTERRUPTED")
-	self:RegisterEvent("SharedMedia_SetGlobal", function(mtype, override)
+	media.RegisterCallback(self, "LibSharedMedia_SetGlobal", function(mtype, override)
 		if mtype == "statusbar" then
 			castBar:SetStatusBarTexture(media:Fetch("statusbar", override))
 		end

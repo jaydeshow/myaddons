@@ -1,11 +1,9 @@
 local L = LibStub("AceLocale-2.2"):new("ZOMGBuffs")
-local BabbleSpell = LibStub("LibBabble-Spell-3.0")
-local BS = BabbleSpell:GetLookupTable()
 local BC = LibStub("LibBabble-Class-3.0"):GetLookupTable()
 local Sink, SinkVersion = LibStub("LibSink-2.0")
 local SM = LibStub("LibSharedMedia-3.0")
-local roster = LibStub("Roster-2.1")
 local tablet = LibStub("Tablet-2.0")
+local dewdrop = LibStub("Dewdrop-2.0")
 local RockComm
 local FrameArray = {}
 local AllFrameArray = {}
@@ -13,6 +11,20 @@ local secureCalls = {}
 local playerClass, playerName
 local buffClass, lastCheckFail
 local talentMeta
+
+local InCombatLockdown	= InCombatLockdown
+local IsUsableSpell		= IsUsableSpell
+local GetSpellCooldown	= GetSpellCooldown
+local GetSpellInfo		= GetSpellInfo
+local UnitBuff			= UnitBuff
+local UnitCanAssist		= UnitCanAssist
+local UnitClass			= UnitClass
+local UnitIsConnected	= UnitIsConnected
+local UnitInParty		= UnitInParty
+local UnitIsPVP			= UnitIsPVP
+local UnitInRaid		= UnitInRaid
+local UnitIsUnit		= UnitIsUnit
+local UnitPowerType		= UnitPowerType
 
 local wow24 = GetBuildInfo() < "1.0.0" or GetBuildInfo() >= "2.4.0"
 
@@ -82,6 +94,7 @@ do
 			t[''] = true
 			t[''] = nil
 			list[t] = true
+			setmetatable(t, nil)
 		end
 	end
 	function deepDel(t)
@@ -95,6 +108,7 @@ do
 			t[''] = true
 			t[''] = nil
 			list[t] = true
+			setmetatable(t, nil)
 		end
 	end
 	function copy(old)
@@ -109,6 +123,7 @@ do
 				n[k] = v
 			end
 		end
+		setmetatable(n, getmetatable(old))
 		return n
 	end
 end
@@ -123,37 +138,66 @@ z.new, z.del, z.deepDel, z.copy = new, del, deepDel, copy
 z.classOrder = classOrder
 z.classIndex = classIndex
 
-z.allBuffs = {
-	{opt = "mark",	list = {[BS["Mark of the Wild"]] = true,		[BS["Gift of the Wild"]] = true},	class = "DRUID",			type = "MARK",		icon = BabbleSpell:GetSpellIcon("Mark of the Wild")},
-	{opt = "sta",	list = {[BS["Power Word: Fortitude"]] = true,	[BS["Prayer of Fortitude"]] = true},	class = "PRIEST",		type = "STA",		icon = BabbleSpell:GetSpellIcon("Power Word: Fortitude")},
-	{opt = "int",	list = {[BS["Arcane Intellect"]] = true,		[BS["Arcane Brilliance"]] = true},	class = "MAGE",				type = "INT",		icon = BabbleSpell:GetSpellIcon("Arcane Intellect"),	manaOnly = true},
-	{opt = "spirit",list = {[BS["Divine Spirit"]] = true,			[BS["Prayer of Spirit"]] = true},	class = "PRIEST",			type = "SPIRIT",	icon = BabbleSpell:GetSpellIcon("Divine Spirit"),	manaOnly = true},
-	{opt = "shadow",list = {[BS["Shadow Protection"]] = true,		[BS["Prayer of Shadow Protection"]] = true}, class = "PRIEST",	type = "SPIRIT",	icon = BabbleSpell:GetSpellIcon("Shadow Protection")},
-	{opt = "food",	list = {[L["Well Fed"]] = true},																				type = "FOOD",		icon = "Interface\\Icons\\Spell_Misc_Food"},
-	{opt = "flask",																													type = "FLASK",		icon = "Interface\\Icons\\INV_Potion_1"},
-}
-
-z.buffs = z.allBuffs
-
 z.blessingColour = {BOK = "|cFFFF80FF", BOM = "|cFFFF5050", BOL = "|cFF80FF80", BOS = "|cFFFFA0A0", BOW = "|cFF8080FF", SAC = "|cFFFF0000", SAN = "|cFF4040C0", BOF = "|cFFFFCC19", BOP = "|cFF00FF00"}
 do
-	z.blessings	= {
-		[BS["Blessing of Light"]]				= {type = "BOL", dur = 5,					short = L["Light"]},
-		[BS["Greater Blessing of Light"]]		= {type = "BOL", dur = 30,	class = true},
-		[BS["Blessing of Salvation"]]			= {type = "BOS", dur = 5,					short = L["Salvation"]},
-		[BS["Greater Blessing of Salvation"]]	= {type = "BOS", dur = 30,	class = true},
-		[BS["Blessing of Wisdom"]]				= {type = "BOW", dur = 5,					short = L["Wisdom"]},
-		[BS["Greater Blessing of Wisdom"]]		= {type = "BOW", dur = 30,	class = true},
-		[BS["Blessing of Might"]]				= {type = "BOM", dur = 5,					short = L["Might"]},
-		[BS["Greater Blessing of Might"]]		= {type = "BOM", dur = 30,	class = true},
-		[BS["Blessing of Kings"]]				= {type = "BOK", dur = 5,					short = L["Kings"]},
-		[BS["Greater Blessing of Kings"]]		= {type = "BOK", dur = 30,	class = true},
-		[BS["Blessing of Sanctuary"]]			= {type = "SAN", dur = 5,					short = L["Sanctuary"]},
-		[BS["Greater Blessing of Sanctuary"]]	= {type = "SAN", dur = 30,	class = true},
-		[BS["Blessing of Sacrifice"]]			= {type = "SAC", dur = 0.5,		noTemplate = true},
-		[BS["Blessing of Freedom"]]				= {type = "BOF", dur = 0.267,	noTemplate = true},
-		[BS["Blessing of Protection"]]			= {type = "BOP", dur = 0.2,		noTemplate = true},
+	local allBuffs = {
+		{opt = "mark",	ids = {26990, 26991},	class = "DRUID",	type = "MARK"},		-- Mark of the Wild, Gift of the Wild
+		{opt = "sta",	ids = {25389, 25392},	class = "PRIEST",	type = "STA"},		-- Power Word: Fortitude, Prayer of Fortitude
+		{opt = "int",	ids = {27126, 27127},	class = "MAGE",		type = "INT", manaOnly = true},	-- Arcane Intellect, Arcane Brilliance
+		{opt = "spirit",ids = {25312, 32999},	class = "PRIEST",	type = "SPIRIT", manaOnly = true},	-- Divine Spirit, Prayer of Spirit
+		{opt = "shadow",ids = {25433, 39374},	class = "PRIEST",	type = "SPIRIT"},	-- Shadow Protection, Prayer of Shadow Protection
+		{opt = "food",	ids = {46899},								type = "FOOD"},		-- Well Fed
+		{opt = "flask",												type = "FLASK",		icon = "Interface\\Icons\\INV_Potion_1"},
 	}
+
+	z.allBuffs = {}
+	for i,info in pairs(allBuffs) do
+		if (info.ids) then
+			local name, _, icon = GetSpellInfo(info.ids[1])
+			assert(name and icon)
+			info.icon = icon
+			--local name2, _, icon2 = GetSpellInfo(name)
+			--if (name2 and icon ~= icon2) then
+			--	z:Print("Icon mismatch for "..name)
+			--end
+			info.list = {}
+			for j,id in ipairs(info.ids) do
+				local name = GetSpellInfo(id)
+				info.list[name] = true
+			end
+			info.list[name] = true
+		end
+		tinsert(z.allBuffs, info)
+	end
+	z.buffs = {}
+	for i,info in pairs(z.allBuffs) do
+		z.buffs[i] = info
+	end
+
+	local blessings	= {
+		{id = 27144, type = "BOL", dur = 5,					short = L["Light"]},	-- Blessing of Light
+		{id = 27145, type = "BOL", dur = 30,	class = true},						-- Greater Blessing of Light
+		{id = 1038,  type = "BOS", dur = 5,					short = L["Salvation"]},-- Blessing of Salvation
+		{id = 25895, type = "BOS", dur = 30,	class = true},						-- Greater Blessing of Salvation
+		{id = 27142, type = "BOW", dur = 5,					short = L["Wisdom"]},	-- Blessing of Wisdom
+		{id = 27143, type = "BOW", dur = 30,	class = true},						-- Greater Blessing of Wisdom
+		{id = 27140, type = "BOM", dur = 5,					short = L["Might"]},	-- Blessing of Might
+		{id = 27141, type = "BOM", dur = 30,	class = true},						-- Greater Blessing of Might
+		{id = 20217, type = "BOK", dur = 5,					short = L["Kings"]},	-- Blessing of Kings
+		{id = 25898, type = "BOK", dur = 30,	class = true},						-- Greater Blessing of Kings
+		{id = 27168, type = "SAN", dur = 5,					short = L["Sanctuary"]},-- Blessing of Sanctuary
+		{id = 27169, type = "SAN", dur = 30,	class = true},						-- Greater Blessing of Sanctuary
+		{id = 27148, type = "SAC", dur = 0.5,	noTemplate = true},					-- Blessing of Sacrifice
+		{id = 1044,  type = "BOF", dur = 0.267,	noTemplate = true},					-- Blessing of Freedom
+		{id = 5599,  type = "BOP", dur = 0.2,	noTemplate = true},					-- Blessing of Protection
+	}
+	z.blessings = {}
+	for i,info in pairs(blessings) do
+		local name, _, icon = GetSpellInfo(info.id)
+		info.icon = icon
+		z.blessings[name] = info
+	end
+	
 	z.blessingsIndex = {}
 	for k,v in pairs(z.blessings) do
 		if (not z.blessingsIndex[v.type]) then
@@ -167,10 +211,13 @@ do
 		if (v.short) then
 			z.blessingsIndex[v.type].short = v.short
 		end
+		if (v.icon) then
+			z.blessingsIndex[v.type].icon = v.icon
+		end
 	end
 end
 
-z.version = tonumber(string.sub("$Revision: 66552 $", 12, -3)) or 1
+z.version = tonumber(string.sub("$Revision: 74102 $", 12, -3)) or 1
 z.versionCompat = 65478
 z.title = L["TITLE"]
 z.titleColour = L["TITLECOLOUR"]
@@ -179,7 +226,17 @@ z.defaultMinimapPosition = 330
 z.cannotDetachTooltip = true
 z.clickableTooltip = true
 z.versionRoster = {}
-z.zoneFlag = true
+z.zoneFlag = GetTime()
+
+-- propercase
+local function propercase(str)
+	return str and (strupper(strsub(str, 1, 1))..strlower(strsub(str, 2)))
+end
+
+z.classReverse = new()
+for i,class in pairs(z.classOrder) do
+	z.classReverse[BC[propercase(class)]] = class
+end
 
 -- CheckVersion
 function z:CheckVersion(ver)
@@ -190,7 +247,90 @@ function z:CheckVersion(ver)
 		end
 	end
 end
- 
+
+-- err
+local function err(self, message, ...)
+	if type(self) ~= "table" then
+		return error(("Bad argument #1 to `err' (table expected, got %s)"):format(type(self)), 2)
+	end
+	
+	local stack = debugstack(self == z and 2 or 3)
+	if not message then
+		local second = stack:match("\n(.-)\n")
+		message = "error raised! " .. second
+	else
+		local arg = { ... } -- not worried about table creation, as errors don't happen often
+		
+		for i = 1, #arg do
+			arg[i] = tostring(arg[i])
+		end
+		for i = 1, 10 do
+			table.insert(arg, "nil")
+		end
+		message = message:format(unpack(arg))
+	end
+	
+	if getmetatable(self) and getmetatable(self).__tostring then
+		message = ("%s: %s"):format(tostring(self), message)
+	elseif type(rawget(self, 'GetLibraryVersion')) == "function" and AceLibrary:HasInstance(self:GetLibraryVersion()) then
+		message = ("%s: %s"):format(self:GetLibraryVersion(), message)
+	elseif type(rawget(self, 'class')) == "table" and type(rawget(self.class, 'GetLibraryVersion')) == "function" and AceLibrary:HasInstance(self.class:GetLibraryVersion()) then
+		message = ("%s: %s"):format(self.class:GetLibraryVersion(), message)
+	end
+	
+	local first = stack:gsub("\n.*", "")
+	local file = first:gsub(".*\\(.*).lua:%d+: .*", "%1")
+	file = file:gsub("([%(%)%.%*%+%-%[%]%?%^%$%%])", "%%%1")
+	
+	
+	local i = 0
+	for s in stack:gmatch("\n([^\n]*)") do
+		i = i + 1
+		if not s:find(file .. "%.lua:%d+:") and not s:find("%(tail call%)") then
+			file = s:gsub("^.*\\(.*).lua:%d+: .*", "%1")
+			file = file:gsub("([%(%)%.%*%+%-%[%]%?%^%$%%])", "%%%1")
+			break
+		end
+	end
+	local j = 0
+	for s in stack:gmatch("\n([^\n]*)") do
+		j = j + 1
+		if j > i and not s:find(file .. "%.lua:%d+:") and not s:find("%(tail call%)") then
+			return error(message, j+1)
+		end
+	end
+	return error(message, 2)
+end
+
+-- argCheck
+function z.argCheck(self, arg, num, kind, kind2, kind3, kind4, kind5)
+	if type(num) ~= "number" then
+		return err(self, "Bad argument #3 to `argCheck' (number expected, got %s)", type(num))
+	elseif type(kind) ~= "string" then
+		return err(self, "Bad argument #4 to `argCheck' (string expected, got %s)", type(kind))
+	end
+	arg = type(arg)
+	if arg ~= kind and arg ~= kind2 and arg ~= kind3 and arg ~= kind4 and arg ~= kind5 then
+		local stack = debugstack(self == z and 2 or 3)
+		local func = stack:match("`argCheck'.-([`<].-['>])")
+		if not func then
+			func = stack:match("([`<].-['>])")
+		end
+		if kind5 then
+			return err(self, "Bad argument #%s to %s (%s, %s, %s, %s, or %s expected, got %s)", tonumber(num) or 0/0, func, kind, kind2, kind3, kind4, kind5, arg)
+		elseif kind4 then
+			return err(self, "Bad argument #%s to %s (%s, %s, %s, or %s expected, got %s)", tonumber(num) or 0/0, func, kind, kind2, kind3, kind4, arg)
+		elseif kind3 then
+			return err(self, "Bad argument #%s to %s (%s, %s, or %s expected, got %s)", tonumber(num) or 0/0, func, kind, kind2, kind3, arg)
+		elseif kind2 then
+			return err(self, "Bad argument #%s to %s (%s or %s expected, got %s)", tonumber(num) or 0/0, func, kind, kind2, arg)
+		else
+			return err(self, "Bad argument #%s to %s (%s expected, got %s)", tonumber(num) or 0/0, func, kind, arg)
+		end
+	end
+end
+
+
 local function getOption(v)
 	return z.db.profile[v]
 end
@@ -283,11 +423,8 @@ z.options = {
 					desc = L["Use mousewheel to trigger auto buffing"],
 					get = getOption,
 					set = function(v,n)
-						if (z.db.profile.keybinding) then
-							SetBinding(z.db.profile.keybinding, nil)
-							z.db.profile.keybinding = nil
-						end
 						setOption(v,n)
+						z.db.profile.keybinding = nil
 						z:SetKeyBindings()
 					end,
 					passValue = "mousewheel",
@@ -300,9 +437,6 @@ z.options = {
 					validate = "keybinding",
 					get = getOption,
 					set = function(v,n)
-						if (z.db.profile.keybinding) then
-							SetBinding(z.db.profile.keybinding, nil)
-						end
 						if (n == "MOUSEWHEELUP" or n == "MOUSEWHEELDOWN") then
 							z.db.profile.mousewheel = true
 							z.db.profile.keybinding = nil
@@ -363,16 +497,6 @@ z.options = {
 					get = getOption,
 					set = setOptionUpdate,
 					passValue = "skippvp",
-					order = 108,
-				},
-				singlesInBG = {
-					type = 'toggle',
-					name = L["Singles in BGs"],
-					desc = L["Only use single target buffs in battlegrounds"],
-					hidden = notRebuffer,
-					get = getOption,
-					set = setOptionUpdate,
-					passValue = "singlesInBG",
 					order = 108,
 				},
 				notresting = {
@@ -442,6 +566,38 @@ z.options = {
 					order = 150,
 					hidden = notRebuffer,
 				},
+				singlesAlways = {
+					type = 'toggle',
+					name = L["Singles Always"],
+					desc = L["Only use single target buffs"],
+					hidden = notRebuffer,
+					get = getOption,
+					set = setOptionUpdate,
+					passValue = "singlesAlways",
+					order = 160,
+				},
+				singlesInBG = {
+					type = 'toggle',
+					name = L["Singles in BGs"],
+					desc = L["Only use single target buffs in battlegrounds"],
+					hidden = notRebuffer,
+					disabled = function() return z.db.profile.singlesAlways end,
+					get = getOption,
+					set = setOptionUpdate,
+					passValue = "singlesInBG",
+					order = 161,
+				},
+				singlesInArena = {
+					type = 'toggle',
+					name = L["Singles in Arena"],
+					desc = L["Only use single target buffs in arenas"],
+					hidden = notRebuffer,
+					disabled = function() return z.db.profile.singlesAlways end,
+					get = getOption,
+					set = setOptionUpdate,
+					passValue = "singlesInArena",
+					order = 162,
+				},
 				pets = {
 					type = 'toggle',
 					name = L["Buff Pets"],
@@ -450,7 +606,7 @@ z.options = {
 					set = setPCOption,
 					passValue = "buffpets",
 					hidden = notRebuffer,
-					order = 152,
+					order = 200,
 				},
 			},
 		},
@@ -571,7 +727,7 @@ z.options = {
 					desc = L["Load the Raid Buff module. Usually for Mages, Druids & Priests, this module can also track single target spells such as Earth Shield & Blessing of Sacrifice, and allow raid buffing of Undending Breath and so on"],
 					get = getPCOption,
 					set = function(k,v)
-						self.db.char.loadraidbuffmodule = v
+						z.db.char.loadraidbuffmodule = v
 						if (v) then
 							LoadAddOn("ZOMGBuffs_BuffTehRaid")
 							self.actions = nil
@@ -595,6 +751,15 @@ z.options = {
 					set = setOption,
 					passValue = "spellIcons",
 					order = 35,
+				},
+				short = {
+					type = 'toggle',
+					name = L["Short Names"],
+					desc = L["Use short spell names where appropriate"],
+					get = getOption,
+					set = setOption,
+					passValue = "short",
+					order = 40,
 				},
 				space2 = {
 					type = 'header',
@@ -724,8 +889,8 @@ z.options = {
 							args = {
 								sta = {
 									type = 'toggle',
-									name = BS["Power Word: Fortitude"],
-									desc = BS["Power Word: Fortitude"],
+									name = GetSpellInfo(36004),		-- Power Word: Fortitude
+									desc = GetSpellInfo(36004),		-- Power Word: Fortitude
 									get = getTrackOption,
 									set = setTrackOption,
 									passValue = "sta",
@@ -733,8 +898,8 @@ z.options = {
 								},
 								mark = {
 									type = 'toggle',
-									name = BS["Mark of the Wild"],
-									desc = BS["Mark of the Wild"],
+									name = GetSpellInfo(39233),		-- Mark of the Wild
+									desc = GetSpellInfo(39233),		-- Mark of the Wild
 									get = getTrackOption,
 									set = setTrackOption,
 									passValue = "mark",
@@ -742,8 +907,8 @@ z.options = {
 								},
 								int = {
 									type = 'toggle',
-									name = BS["Arcane Intellect"],
-									desc = BS["Arcane Intellect"],
+									name = GetSpellInfo(39235),		-- Arcane Intellect
+									desc = GetSpellInfo(39235),		-- Arcane Intellect
 									get = getTrackOption,
 									set = setTrackOption,
 									passValue = "int",
@@ -751,8 +916,8 @@ z.options = {
 								},
 								spirit = {
 									type = 'toggle',
-									name = BS["Divine Spirit"],
-									desc = BS["Divine Spirit"],
+									name = GetSpellInfo(39234),		-- Divine Spirit
+									desc = GetSpellInfo(39234),		-- Divine Spirit
 									get = getTrackOption,
 									set = setTrackOption,
 									passValue = "spirit",
@@ -760,8 +925,8 @@ z.options = {
 								},
 								shadow = {
 									type = 'toggle',
-									name = BS["Shadow Protection"],
-									desc = BS["Shadow Protection"],
+									name = GetSpellInfo(28537),		-- Shadow Protection
+									desc = GetSpellInfo(28537),		-- Shadow Protection
 									get = getTrackOption,
 									set = setTrackOption,
 									passValue = "shadow",
@@ -778,8 +943,8 @@ z.options = {
 								},
 								food = {
 									type = 'toggle',
-									name = L["Well Fed"],
-									desc = L["Well Fed"],
+									name = GetSpellInfo(46899),		-- Well Fed
+									desc = GetSpellInfo(46899),		-- Well Fed
 									get = getTrackOption,
 									set = setTrackOption,
 									passValue = "food",
@@ -863,6 +1028,15 @@ z.options = {
 									order = 3,
 								},
 							},
+						},
+						showroles = {
+							type = 'toggle',
+							name = L["Show Roles"],
+							desc = L["Show player role icons"],
+							get = getOption,
+							set = setOption,
+							passValue = "showroles",
+							order = 125,
 						},
 						space2 = {
 							type = 'header',
@@ -1044,6 +1218,196 @@ z.OnMenuRequest = z.options
 function z:IsRebuffer()
 	for name, module in self:IterateModulesWithMethod("RebuffQuery") do
 		return true
+	end
+end
+
+
+-- Custom roster iterator
+do
+	local unitCache, unitCacheMode
+	
+	local function SetCacheMode(m)
+		if (unitCacheMode ~= m) then
+			unitCacheMode = m
+			local meta
+			if (m == "raid") then
+				meta = function(self, i)
+					local n = "raid"..i
+					self[i] = n
+					return n
+				end
+			else
+				meta = function(self, i)
+					local n = i == 0 and "player" or "party"..i
+					self[i] = n
+					return n
+				end
+			end
+			
+			unitCache = setmetatable({}, {__mode = "kv", __index = meta})
+		end
+	end
+
+	-- Speciallized Roster iterator to always put ME first
+	-- Also benefits from not having any delay in setup between RAID_ROSTER_UPDATE and RosterLib's update
+	local function iter(t)
+		local index = t.index
+		local pets = t.pets
+
+		if (not index) then
+			if (not playerClass) then
+				playerClass = playerClass or select(2, UnitClass("player"))
+			end
+
+			if (GetNumRaidMembers() > 0) then
+				SetCacheMode("raid")
+				local End = GetNumRaidMembers()
+				t.End = End
+				t.type = "raid"
+				t.index = 0
+				local unit = unitCache[End]		-- YOU are always the last raid member
+				t.unit = unit
+				t.doPet = pets
+				t.mine = pets
+				local _, _, subgroup = GetRaidRosterInfo(End)
+				return unit, playerName, playerClass, subgroup, End
+			else
+				SetCacheMode("party")
+				t.End = GetNumPartyMembers()
+				t.type = "party"
+				t.index = 0
+				t.doPet = pets
+				t.unit = "player"
+				return "player", playerName, playerClass, 1, 0
+			end
+		end
+
+		local unit
+		local class = "Unknown"
+		if (pets and t.doPet) then
+			if (t.unit == "player") then
+				unit = "pet"
+			elseif (t.mine) then
+				t.mine = nil
+				unit = "raidpet"..t.End
+			else
+				unit = format("%spet%d", t.type, index)
+			end
+			if (UnitExists(unit)) then
+				class = "PET"
+			else
+				t.doPet = nil
+			end
+		end
+
+		if (not pets or not t.doPet) then
+			index = index + 1
+			if (index > t.End) then
+				t = del(t)
+				return nil
+			end
+
+			unit = unitCache[index]
+			if (UnitIsUnit(unit, "player")) then
+				index = index + 1
+				if (index > t.End) then
+					t = del(t)
+					return nil
+				end
+
+				unit = unitCache[index]
+			end
+			class = select(2, UnitClass(unit))
+		end
+
+		t.doPet = not t.doPet
+
+		local name, server = UnitName(unit)
+		if (server and server ~= "") then
+			name = format("%s-%s", name, server)
+		end
+		t.unit = unit
+		t.index = index
+		t.unit = unit
+		local _, subgroup
+		if (t.type == "raid") then
+			_, _, subgroup = GetRaidRosterInfo(index)
+		else
+			subgroup = 1
+		end
+		if (not class) then
+			-- Unknown Unit at this time, so we'll wait for the UNIT_NAME_UPDATE and re-check any we're missing
+			z:RegisterEvent("UNIT_NAME_UPDATE")
+			if (not z.unknownUnits) then
+				z.unknownUnits = new()
+			end
+			z.unknownUnits[unit] = true
+			class = UNKNOWN
+		end
+		return unit, name, class, subgroup, index
+	end
+
+	-- IterateRoster
+	function z:IterateRoster(pets)
+		local t = new()
+		t.pets = pets
+		return iter, t
+	end
+	
+	function z:UNIT_NAME_UPDATE(unit)
+		if (self.unknownUnits[unit]) then
+			self.unknownUnits[unit] = nil
+			local _, class = UnitClass(unit)
+			self.classcount[class] = self.classcount[class] + 1
+
+			self:TriggerClickUpdate(unit)
+
+			if (not next(self.unknownUnits)) then
+				self.unknownUnits = del(self.unknownUnits)
+				self:UnregisterEvent("UNIT_NAME_UPDATE")
+				-- Got all now, do full roster update to be sure
+				self:OnRaidRosterUpdate()
+			end
+		end
+	end
+	
+	function z:UnitRank(who)
+		local index = UnitInRaid(who)
+		if (index) then
+			local name, rank, group = GetRaidRosterInfo(index + 1)
+			return rank
+		elseif (GetNumPartyMembers() > 0) then
+			local index = GetPartyLeaderIndex()
+			if (UnitIsUnit(who, "player")) then
+				return index == 0 and 2 or 0
+			else
+				local name = UnitName("party"..index)
+				return name == who and 2 or 0
+			end
+		end
+	end
+
+	function z:GetUnitID(name)
+		local unit = UnitInRaid(name)
+		if (unit) then
+			return "raid"..(unit + 1)
+		end
+		if (UnitIsUnit(name, "player")) then
+			return "player"
+		end
+		if (UnitInParty(name)) then
+			for i = 1,4 do
+				local test = "party"..i
+				if (UnitIsUnit(test, name)) then
+					return test
+				end
+			end
+		end
+		for unit,unitname in z:IterateRoster(true) do
+			if (UnitIsUnit(name, unit)) then
+				return unit
+			end
+		end
 	end
 end
 
@@ -1295,7 +1659,7 @@ do
 --z:Print("INSPECT_TALENT_READY - lastName = %q", tostring(lastInspectName))
 		if (not lastInspectInvalid) then
 --z:Print("- Valid inspect")
-			if (unit and UnitInRaid(lastInspectUnit) or UnitInParty(lastInspectUnit)) then
+			if (lastInspectUnit and UnitInRaid(lastInspectUnit) or UnitInParty(lastInspectUnit)) then
 				self:ReadTalents(lastInspectName, lastInspectUnit, true)
 			end
 		end
@@ -1313,18 +1677,14 @@ do
 			lastInspectTime = 0
 			for i,name in ipairs(z.inspectQueue) do
 --z:Print("- Removing %s from queue", name)
-				z.inspectQueue[i] = nil
-
-				local unit = roster:GetUnitObjectFromName(name)
-				if (unit) then
-					local unitid = unit.unitid
-					if (UnitExists(unitid) and UnitIsVisible(unitid) and UnitIsConnected(unitid) and not UnitIsUnit("player", unitid) and CheckInteractDistance(unitid, 4)) then
-						-- Trigger next queued inspect
+				tremove(z.inspectQueue, i)
+				if (UnitExists(name) and UnitIsVisible(name) and UnitIsConnected(name) and not UnitIsUnit("player", name) and CheckInteractDistance(name, 4)) then
+					-- Trigger next queued inspect
 --z:Print("- Calling notify")
-						NotifyInspect(unitid)
-						return
-					end
+					NotifyInspect(name)
+					return
 				end
+
 				any = true
 			end
 			if (any) then
@@ -1345,22 +1705,20 @@ do
 			return
 		end
 
-		local unit = roster:GetUnitObjectFromName(name)
-		if (unit and unit.online) then
-			local unitid = unit.unitid
-			if (UnitIsUnit("player", unitid)) then
-				z:ReadTalents(playerName, unitid)
+		if (UnitIsConnected(name)) then
+			if (UnitIsUnit("player", name)) then
+				z:ReadTalents(playerName, name)
 
-			elseif (UnitExists(unitid) and UnitIsVisible(unitid) and (not InspectFrame or not InspectFrame.unit) and lastInspectPending == 0 and not UnitIsUnit("player", unitid) and CheckInteractDistance(unitid, 4)) then
+			elseif (UnitExists(name) and UnitIsVisible(name) and (not InspectFrame or not InspectFrame.unit) and lastInspectPending == 0 and not UnitIsUnit("player", name) and CheckInteractDistance(name, 4)) then
 --z:Print("- IN range, do real inspect")
 				lastInspectInvalid = nil
 				lastInspectTime = 0
 				-- Setup for inspect in case we can't ask them via RockComm
-				NotifyInspect(unitid)
+				NotifyInspect(name)
 
-			elseif (InspectFrame and InspectFrame.unit and UnitIsUnit(InspectFrame.unit, unitid)) then
+			elseif (InspectFrame and InspectFrame.unit and UnitIsUnit(InspectFrame.unit, name)) then
 --z:Print("- IN inspect frame")
-				z:ReadTalents(UnitName(unitid), unitid, true)
+				z:ReadTalents(name, name, true)
 
 			else
 --z:Print("- Add to queue")
@@ -1379,7 +1737,7 @@ do
 
 				if (RockComm) then
 --z:Print("- Ask rock")
-					local name, server = UnitName(unitid)
+					local name, server = UnitName(name)
 					if (server and server ~= "") then
 						if (z:IsInBattlegrounds()) then
 							name = format("%s-%s", name, server)
@@ -1406,7 +1764,7 @@ do
 		if (z.inspectQueue) then
 			for i,find in ipairs(z.inspectQueue) do
 				if (find == name) then
-					z.inspectQueue[i] = nil
+					tremove(z.inspectQueue, i)
 					break
 				end
 			end
@@ -1438,7 +1796,7 @@ do
 				local n = {[1] = nums[1], [2] = nums[2], [3] = nums[3], string = format("%d/%d/%d", nums[1], nums[2], nums[3])}
 				z.talentSpecs[sender] = n
 				if (z.inspectQueue) then
-					z.inspectQueue[sender] = nil
+					z:RemoveFromInspectQueue(sender)
 				end
 				AnalyzeTalents(z.talentSpecs[sender], data)
 
@@ -1462,6 +1820,17 @@ do
 			bm:SplitColumnDrawAll()
 		end
 	end
+
+	-- GetSpec
+	function z:GetTalentSpec(unitname)
+		if (self.InitTalentQuery) then
+			self:InitTalentQuery()
+		end
+		if (not self.talentSpecs) then
+			self.talentSpecs = setmetatable({}, talentMeta)
+		end
+		return z.talentSpecs[unitname]
+	end
 end
 
 -- GetBlessingFromType
@@ -1473,7 +1842,7 @@ function z:GetBlessingFromType(t)
 end
 
 -- LinkSpellRaw
-function z:LinkSpellRaw(name)
+function z:LinkSpellRaw(name, overrideName)
 	if (z.linkSpells and wow24) then
 		local spellLink = GetSpellLink(name)
 		local spellID
@@ -1481,24 +1850,20 @@ function z:LinkSpellRaw(name)
 			spellID = spellLink:match("|Hspell:(%d+)|h")
 
 			if (spellID) then
-				return format("|Hspell:%d|h%s|h|r", spellID, name)
+				return format("|Hspell:%d|h%s|h|r", spellID, overrideName or name)
 			end
 		end
 	end
 
-	return name
+	return overrideName or name
 end
 
 -- LinkSpell
-function z:LinkSpell(name, hexColor, icon)
+function z:LinkSpell(name, hexColor, icon, overrideName)
 	if (z.linkSpells and wow24 and icon) then
 		local icon
 		if (self.db.profile.spellIcons) then
 			icon = select(3, GetSpellInfo(name))
-			if (not icon) then
-				-- Shouldn't ever happen
-				icon = BabbleSpell:GetSpellIcon(name)
-			end
 			if (icon) then
 				icon = format("|T%s:0|t", icon)
 			else
@@ -1508,18 +1873,18 @@ function z:LinkSpell(name, hexColor, icon)
 			icon = ""
 		end
 
-		return format("%s%s%s|r", icon, hexColor or "|cFFFFFF80", self:LinkSpellRaw(name))
+		return format("%s%s%s|r", icon, hexColor or "|cFFFFFF80", self:LinkSpellRaw(name, overrideName))
 	end
 
-	return format("%s%s|r", hexColor or "|cFFFFFF80", name)
+	return format("%s%s|r", hexColor or "|cFFFFFF80", overrideName or name)
 end
 
 -- ColourBlessing
 function z:ColourBlessing(Type, Class, short, icon)
 	if (Type and z.blessingColour[Type]) then
-		Class = (short and 3) or (Class and 2) or 1
-		local buffName = select(Class, z:GetBlessingFromType(Type))
-		return self:LinkSpell(buffName, z.blessingColour[Type], icon)
+		local singleName, greaterName, shortName = z:GetBlessingFromType(Type)
+		local buffName = Class and greaterName or singleName
+		return self:LinkSpell(buffName, z.blessingColour[Type], icon, short and shortName)
 	else
 		return "none"
 	end
@@ -1554,6 +1919,10 @@ end
 
 -- UnitHasBuff
 function z:UnitHasBuff(unit, buffName)
+	if (type(buffName) == "number") then
+		buffName = GetSpellInfo(buffName)
+		assert(buffName, "Invalid spell ID")
+	end
 	for i = 1,40 do
 		local name = UnitBuff(unit, i)
 		if (not name) then
@@ -1565,14 +1934,39 @@ function z:UnitHasBuff(unit, buffName)
 	end
 end
 
+-- MediaCallback
+function z:MediaCallback(mediatype, key)
+	if (mediatype == "statusbar" and key == self.db.profile.bartexture and self.waitingForBarTex) then
+		self.waitingForBarTex = nil
+		self:SetAllBarTextures()
+	elseif (mediatype == "font" and key == self.db.char.fontface and self.waitingForFont) then
+		self.waitingForFont = nil
+		self:ApplyFont()
+	end
+
+	if (not self.waitingForBarTex and not self.waitingForFont) then
+		SM.UnregisterCallback(self, "LibSharedMedia_Registered")
+		SM.UnregisterCallback(self, "LibSharedMedia_SetGlobal")
+	end
+end
+
+-- GetBarTexture
+function z:GetBarTexture()
+	local tex = "Interface\\AddOns\\ZOMGBuffs\\Textures\\BantoBar"
+	if (SM) then
+		tex = SM:Fetch("statusbar", self.db.profile.bartexture)
+		if (not tex) then
+			self.waitingForBarTex = true
+			SM.RegisterCallback(self, "LibSharedMedia_Registered", "MediaCallback")
+			SM.RegisterCallback(self, "LibSharedMedia_SetGlobal", "MediaCallback")
+		end
+	end
+	return tex
+end
+
 -- SetAllBarTextures()
 function z:SetAllBarTextures()
-	local tex
-	if (SM) then
-		tex = SM:Fetch("statusbar", z.db.profile.bartexture)
-	else
-		tex = "Interface\\AddOns\\ZOMGBuffs\\Textures\\BantoBar"
-	end
+	local tex = self:GetBarTexture()
 	self:OptionsShowList()
 	for k,cell in pairs(AllFrameArray) do
 		cell.bar:SetStatusBarTexture(tex)
@@ -1581,7 +1975,13 @@ end
 
 -- GetFont
 function z:GetFont()
-	return (SM and SM:Fetch("font", self.db.char.fontface) or ""), self.db.char.fontsize, self.db.char.fontoutline
+	local font = SM and SM:Fetch("font", self.db.char.fontface)
+	if (not font) then
+		self.waitingForFont = true
+		SM.RegisterCallback(self, "LibSharedMedia_Registered", "MediaCallback")
+		SM.RegisterCallback(self, "LibSharedMedia_SetGlobal", "MediaCallback")
+	end
+	return font or "", self.db.char.fontsize, self.db.char.fontoutline
 end
 
 -- ApplyFont
@@ -1612,7 +2012,10 @@ end
 -- ColourUnit
 function z:ColourUnit(unitid)
 	if (unitid) then
-		local name = UnitName(unitid) or ""
+		local name = UnitName(unitid)
+		if (not name) then
+			return unitid
+		end
 		if (strfind(unitid, "pet")) then
 			local ownerid = unitid:gsub("pet", "")
 			if (ownerid and UnitExists(ownerid)) then
@@ -1625,20 +2028,7 @@ function z:ColourUnit(unitid)
 		return "badunit:"..tostring(unitid)
 	end
 end
-
--- ColourUnitByName
-function z:ColourUnitByName(name)
-	local unit = roster:GetUnitObjectFromName(name)
-	if (unit) then
-		return self:ColourUnit(unit.unitid)
-	end
-	return tostring(name)
-end
-
--- propercase
-local function propercase(str)
-	return str and (strupper(strsub(str, 1, 1))..strlower(strsub(str, 2)))
-end
+z.ColourUnitByName = z.ColourUnit
 
 -- ColourClass
 function z:ColourClass(upperClass, prefix, suffix)
@@ -1855,9 +2245,9 @@ function z:Report(option)
 		local blessingsGot = new()
 		local spiritedPriests
 		if (self.classcount.PRIEST > 0) then
-			for unit in roster:IterateRoster() do
-				if (unit.class == "PRIEST") then
-					local spec = rawget(z.talentSpecs, unit.name)
+			for unit, name, class, subgroup, index in self:IterateRoster() do
+				if (class == "PRIEST") then
+					local spec = rawget(z.talentSpecs, name)
 					if (spec) then
 						if (spec.canSpirit) then
 							spiritedPriests = true
@@ -1868,11 +2258,10 @@ function z:Report(option)
 			end
 		end
 
-		for unit in roster:IterateRoster() do
+		for partyid, name, class, subgroup, index in self:IterateRoster() do
 			flags.STA, flags.MARK, flags.INT, flags.SPIRIT, flags.BLESSINGS = nil, nil, nil, nil, nil
-			local partyid = unit.unitid
-			if (unit.online and not UnitIsDeadOrGhost(partyid)) then
-				groupCounts[unit.subgroup] = groupCounts[unit.subgroup] + 1
+			if (UnitIsConnected(partyid) and not UnitIsDeadOrGhost(partyid)) then
+				groupCounts[subgroup] = groupCounts[subgroup] + 1
 				for i = 1,40 do
 					local name, rank, buff, count, max, dur = UnitBuff(partyid, i)
 					if (not name) then
@@ -1900,40 +2289,40 @@ function z:Report(option)
 					if (not list.STA) then
 						list.STA = new()
 					end
-					tinsert(list.STA, unit.name)
-					groupList[unit.subgroup].STA = (groupList[unit.subgroup].STA or 0) + 1
+					tinsert(list.STA, name)
+					groupList[subgroup].STA = (groupList[subgroup].STA or 0) + 1
 				end
 				if (not flags.MARK and self.classcount.DRUID > 0) then
 					if (not list.MARK) then
 						list.MARK = new()
 					end
-					tinsert(list.MARK, unit.name)
-					groupList[unit.subgroup].MARK = (groupList[unit.subgroup].MARK or 0) + 1
+					tinsert(list.MARK, name)
+					groupList[subgroup].MARK = (groupList[subgroup].MARK or 0) + 1
 				end
-				if (not (unit.class == "ROGUE" or unit.class == "WARRIOR")) then
+				if (not (class == "ROGUE" or class == "WARRIOR")) then
 					if (not flags.INT and self.classcount.MAGE > 0) then
 						if (not list.INT) then
 							list.INT = new()
 						end
-						tinsert(list.INT, unit.name)
-						groupList[unit.subgroup].INT = (groupList[unit.subgroup].INT or 0) + 1
+						tinsert(list.INT, name)
+						groupList[subgroup].INT = (groupList[subgroup].INT or 0) + 1
 					end
 					if (not flags.SPIRIT and spiritedPriests) then
 						if (not list.SPIRIT) then
 							list.SPIRIT = new()
 						end
-						tinsert(list.SPIRIT, unit.name)
-						groupList[unit.subgroup].SPIRIT = (groupList[unit.subgroup].SPIRIT or 0) + 1
+						tinsert(list.SPIRIT, name)
+						groupList[subgroup].SPIRIT = (groupList[subgroup].SPIRIT or 0) + 1
 					end
 				end
-				if (not flags.BLESSINGS or flags.BLESSINGS < self.classcount.PALADIN) then
+				if ((flags.BLESSINGS or 0) < self.classcount.PALADIN) then
 					if (not list.BLESSINGS) then
 						list.BLESSINGS = new()
 					end
-					tinsert(list.BLESSINGS, unit.name)
-					blessingsMissing[unit.class] = (blessingsMissing[unit.class] or 0) + 1
+					tinsert(list.BLESSINGS, name)
+					blessingsMissing[class] = (blessingsMissing[class] or 0) + 1
 				else
-					blessingsGot[unit.class] = (blessingsGot[unit.class] or 0) + 1
+					blessingsGot[class] = (blessingsGot[class] or 0) + 1
 				end
 			end
 		end
@@ -1944,10 +2333,10 @@ function z:Report(option)
 				for k,v in pairs(groupList[i]) do
 					if (v == groupCounts[i]) then
 						tinsert(list[k], 1, format(L["Group %d"], i))
-						for unit in roster:IterateRoster() do
-							if (unit.subgroup == i) then
+						for unit, name, class, subgroup, index in self:IterateRoster() do
+							if (subgroup == i) then
 								for j = 1,#list[k] do
-									if (list[k][j] == unit.name) then
+									if (list[k][j] == name) then
 										tremove(list[k], j)
 										break
 									end
@@ -1963,10 +2352,10 @@ function z:Report(option)
 			if ((blessingsMissing[class] or 0) > 0) then
 				if ((blessingsGot[class] or 0) == 0) then
 					tinsert(list.BLESSINGS, BC[propercase(class)])
-					for unit in roster:IterateRoster() do
-						if (unit.class == class) then
+					for unit, unitname, unitclass, subgroup, index in self:IterateRoster() do
+						if (class == unitclass) then
 							for j,name in ipairs(list.BLESSINGS) do
-								if (name == unit.name) then
+								if (name == unitname) then
 									tremove(list.BLESSINGS, j)
 									break
 								end
@@ -2093,7 +2482,7 @@ function z:CanCheckBuffs(allowCombat, soloBuffs)
 	
 	if (self.rosterInvalid and not soloBuffs) then
 		return false, "Waiting for RosterLib update"
-	elseif (self.zoneFlag) then
+	elseif (self.zoneFlag and self.zoneFlag < GetTime() - 5) then
 		lastCheckFail = L["ZONED"]
 	elseif (UnitIsDeadOrGhost("player")) then
 		lastCheckFail = L["DEAD"]
@@ -2129,17 +2518,17 @@ function z:CanCheckBuffs(allowCombat, soloBuffs)
 		return false, "Waiting for global cooldown"
 	end
 
-	if (not InCombatLockdown()) then
+	if (not lastCheckFail and not InCombatLockdown()) then
 		if (IsResting() and self.db.profile.notresting) then
 			lastCheckFail = L["RESTING"]
 			icon = "resting"
-		elseif (IsMounted() and self.db.profile.notmounted) then
+		elseif ((IsMounted() or IsFlying()) and self.db.profile.notmounted) then
 			lastCheckFail = L["MOUNTED"]
 			icon = "mounted"
-		elseif (self:UnitHasBuff("player", BS["Drink"])) then
+		elseif (self:UnitHasBuff("player", 46755)) then		-- Drink
 			lastCheckFail = L["DRINKING"]
 			icon = "drink"
-		elseif (self:UnitHasBuff("player", BS["Food"])) then
+		elseif (self:UnitHasBuff("player", 46898)) then		-- Food
 			lastCheckFail = L["EATING"]
 			icon = "food"
 		elseif (UnitChannelInfo("player")) then
@@ -2148,7 +2537,7 @@ function z:CanCheckBuffs(allowCombat, soloBuffs)
 			icon = "icon"
 			icontex = texture
 		elseif (playerClass == "PRIEST" and self.db.profile.notWithSpiritTap) then
-			if (self:UnitHasBuff("player", BS["Spirit Tap"])) then
+			if (self:UnitHasBuff("player", 15338)) then		-- Spirit Tap
 				lastCheckFail = L["SPIRITTAP"]
 				icon = "spirittap"
 			end
@@ -2213,10 +2602,10 @@ function z:SetStatusIcon(t, spellIcon)
 		status = "Interface\\Icons\\INV_Drink_07"
 
 	elseif (t == "spirittap") then
-		status = BabbleSpell:GetSpellIcon("Spirit Tap")
+		status = select(3, GetSpellInfo(15338))			-- Spirit Tap
 
 	elseif (t == "remote") then
-		status = BabbleSpell:GetSpellIcon("Mind Control")
+		status = select(3, GetSpellInfo(45112))			-- Mind Control
 
 	elseif (t == "nocontrol") then
 		status = "Interface\\Icons\\Ability_Rogue_BloodyEye"
@@ -2284,25 +2673,26 @@ function z:SetStatusIcon(t, spellIcon)
 end
 
 -- Set1CellAttr
-local cellAttributeChanges
+local cellAttributeChanges = nil
 local function Set1CellAttr(self, k, v)
 	if (self:GetAttribute(k) ~= v) then
 		if (InCombatLockdown() and not z.canChangeFlagsIC) then		-- canChangeFlagsIC is active during a cells creation, the only valid time we can change attr in combat
 			local unit = self:GetAttribute("unit")
 			local name = unit and UnitName(unit)
 
-			if (not cellAttributeChanges) then
-				cellAttributeChanges = new()
-			end
-
-			for l,w in pairs(cellAttributeChanges) do
-				if (w[1] == name and w[2] == k) then
-					w[3] = v
-					return true
+			if (name) then
+				if (not cellAttributeChanges) then
+					cellAttributeChanges = new()
 				end
+				if (not cellAttributeChanges[name]) then
+					cellAttributeChanges[name] = new()
+				end
+				cellAttributeChanges[name][k] = v
+			--else
+			--	z:Print("Set1CellAttr: No name for unit %q", tostring(unit))
+			--	XXX = cellAttributeChanges and copy(cellAttributeChanges)
 			end
 
-			tinsert(cellAttributeChanges, new(name, k, v))
 			return true			-- true = invalid for the moment until out of combat
 		else
 			self:SetAttribute(k, v)
@@ -2329,11 +2719,14 @@ end
 function z:ClearClickSpells(cell)
 	if (cell and cell.attr) then
 		cell.invalidAttributes = nil
-		for key,action in pairs(cell.attr) do
-			if (Set1CellAttr(cell, key, nil)) then
-				cell.invalidAttributes = L["Empty"]
+		if (not InCombatLockdown()) then
+			-- If in combat, then unit is probably nil and we'll clear the cell when we need this cell again anyway
+			for key,action in pairs(cell.attr) do
+				if (Set1CellAttr(cell, key, nil)) then
+					cell.invalidAttributes = L["Empty"]
+				end
+				cell.attr[key] = nil
 			end
-			cell.attr[key] = nil
 		end
 	end
 end
@@ -2346,6 +2739,9 @@ end
 -- SetupForSpell
 function z:SetupForSpell(unit, spell, mod, reagentCount)
 	local icon = self.icon
+	if (not icon) then
+		return
+	end
 	if (spell) then
 		if (icon:GetAttribute("spell") or self.icon:GetAttribute("item")) then
 			return
@@ -2379,7 +2775,7 @@ function z:SetupForSpell(unit, spell, mod, reagentCount)
 		else
 			self.icon.count:Hide()
 		end
-		self:SetStatusIcon(t, BabbleSpell:GetSpellIcon(spell))
+		self:SetStatusIcon(t, mod:GetSpellIcon(spell))
 		self.icon.auto:Show()
 	else
 		self:ClearNotice()
@@ -2420,7 +2816,7 @@ function z:SetupForItem(slot, item, mod, spell, castTime)
 			icon.count:Hide()
 		end
 	elseif (spell) then
-		self:SetStatusIcon(nil, BabbleSpell:GetSpellIcon(spell))
+		self:SetStatusIcon(nil, mod:GetSpellIcon(spell))
 		icon.auto:Show()
 		icon.count:Hide()
 	else
@@ -2517,12 +2913,14 @@ function z:OnStartup()
 	icon:HookScript("OnLeave", CellOnLeave)
 	icon:HookScript("OnClick",
 		function(self, button)
+			local command
 			if (z.db.profile.mousewheel) then
-				if (button == "MOUSEWHEELUP") then
-					CameraZoomIn(1)
-				elseif (button == "MOUSEWHEELDOWN") then
-					CameraZoomOut(1)
-				end
+				command = GetBindingAction(button)
+			elseif (z.db.profile.keybinding) then
+				command = GetBindingAction(z.db.profile.keybinding)
+			end
+			if (command) then
+				pcall(RunBinding, command)
 			end
 
 			if (self:GetAttribute("*type*")) then
@@ -2584,11 +2982,9 @@ function z:OnStartup()
 		z:InitCell(self)
 
 		-- Get initial list item spell, even works in-combat! zomg
-		if (z.SetClickSpells) then
-			z.canChangeFlagsIC = true
-			z:SetClickSpells(self)
-			z.canChangeFlagsIC = nil
-		end
+		z.canChangeFlagsIC = true
+		z:UpdateOneCellSpells(self)
+		z.canChangeFlagsIC = nil
 	end
 
 	members:SetAttribute("template", "SecureUnitButtonTemplate")
@@ -2675,20 +3071,11 @@ local function onCellAttrChanged(self, name, value)
 
 				self:DrawCell()
 
-				if (z.SetClickSpells) then
-					z:ClearClickSpells(self)
-					z:SetTargetClick(self)
-					z:SetClickSpells(self)
-				end
+				z:UpdateOneCellSpells(self)
 			end
 		else
-			if (cellAttributeChanges) then
-				for k,v in pairs(cellAttributeChanges) do
-					if (v[1] == self.lastName) then
-						del(cellAttributeChanges[k])
-						cellAttributeChanges[k] = nil
-					end
-				end
+			if (cellAttributeChanges and self.lastName) then
+				cellAttributeChanges[self.lastName] = deepDel(cellAttributeChanges[self.lastName])
 			end
 
 			z:ClearClickSpells(self)
@@ -2723,8 +3110,8 @@ local function MakePalaIcons(self)
 			prev = b
 		end
 	end
+	prev = self.buff[#z.buffs]
 	if (self.palaIcon[1]) then
-		prev = self.buff[#z.buffs]
 		self.palaIcon[1]:ClearAllPoints()
 		if (not prev) then
 			self.palaIcon[1]:SetPoint("TOPLEFT")
@@ -2735,12 +3122,21 @@ local function MakePalaIcons(self)
 		for i = 1,#self.palaIcon do
 			self.palaIcon[i]:Hide()
 		end
+
+		if (z.db.profile.track.blessings and z.classcount.PALADIN > 0) then
+			prev = self.palaIcon[z.classcount.PALADIN]
+		end
 	end
 
-	local icons = #z.buffs + ((z.db.profile.track.blessings and z.classcount.PALADIN) or 0) + ((btr and btr.tickColumns and #btr.tickColumns) or 0)
+	--local icons = #z.buffs + ((z.db.profile.track.blessings and z.classcount.PALADIN) or 0) + ((btr and btr.tickColumns and #btr.tickColumns) or 0)
 
 	self.bar:ClearAllPoints()
-	self.bar:SetPoint("TOPLEFT", icons * z.db.char.height, 0)
+	if (prev) then
+		--self.bar:SetPoint("TOPLEFT", icons * z.db.char.height, 0)
+		self.bar:SetPoint("TOPLEFT", prev, "TOPRIGHT")
+	else
+		self.bar:SetPoint("TOPLEFT")
+	end
 	self.bar:SetPoint("BOTTOMRIGHT")
 end
 
@@ -2978,9 +3374,9 @@ local function DrawCell(self)
 						if (single and class) then
 							b:Show()
 							if (Type[1] == 1) then
-								tex = BabbleSpell:GetSpellIcon(single)
+								tex = z.blessings[single].icon
 							else
-								tex = BabbleSpell:GetSpellIcon(class)
+								tex = z.blessings[class].icon
 							end
 							b:SetTexture(tex)
 
@@ -3008,10 +3404,13 @@ local function DrawCell(self)
 					end
 				end
 
-				del(shouldHave)
+				deepDel(shouldHave)
 				z.buffRoster = nil
 
 			elseif (z.buffRoster) then
+				-- No Blessings Manager loaded, so we'll make a guess at
+				-- what they should have compared to what they did have
+
 				local lastFlags = z.buffRoster[unitname]
 				if (not lastFlags) then
 					lastFlags = {}
@@ -3118,7 +3517,19 @@ local function DrawCell(self)
 		end
 	end
 
-	self.name:SetText(unitname)
+	if (z.db.profile.showroles) then
+		local icon
+		if (GetPartyAssignment("MAINTANK", partyid)) then
+			icon = "|TInterface\\GroupFrame\\UI-Group-MainTankIcon:0|t"
+		elseif (GetPartyAssignment("MAINASSIST", partyid)) then
+			icon = "|TInterface\\GroupFrame\\UI-Group-MainAssistIcon:0|t"
+		end
+
+		self.name:SetFormattedText("%s %s", unitname, icon or "")
+	else
+		self.name:SetText(unitname)
+	end
+
 	if (UnitIsConnected(partyid) and not UnitIsDeadOrGhost(partyid)) then
 		if (self.invalidAttributes or not highlight or (not rebuffer and got >= need)) then
 			self.name:SetTextColor(c.r / 3, c.g / 3, c.b / 3)
@@ -3295,20 +3706,6 @@ function z:DrawGroupNumbers()
 end
 
 -- UpdateOneCellSpells
-function z:UpdateOneCellSpellsByName(name)
-	local search = roster:GetUnitObjectFromName(name)
-	if (search) then
-		local id = search.unitid
-		for unit,frame in pairs(FrameArray) do
-			if (UnitIsUnit(unit.unitid, id)) then
-				self:UpdateOneCellSpells(frame)
-				return
-			end
-		end
-	end
-end
-
--- UpdateOneCellSpells
 function z:UpdateOneCellSpells(frame)
 	self:ClearClickSpells(frame)
 	self:SetTargetClick(frame)
@@ -3327,10 +3724,8 @@ end
 -- TriggerClickUpdate
 function z:TriggerClickUpdate(unit)
 	local f = FrameArray[unit]
-	if (f and self.SetClickSpells) then
-		self:ClearClickSpells(f)
-		self:SetTargetClick(f)
-		self:SetClickSpells(f)
+	if (f) then
+		self:UpdateOneCellSpells(f)
 	end
 end
 
@@ -3441,7 +3836,9 @@ function CellOnEnter(self)
 								GameTooltip:AddLine(format(L["%s%s%s|r to target"], buttonColour, leftModDesc, rightModDesc[rightMod]))
 							end
 						else
-							GameTooltip:AddLine(format(L["%s%s%s|r to cast %s%s|r%s"], buttonColour, leftModDesc, rightModDesc[rightMod], spellColour, spell, unitShow))
+							--GameTooltip:AddLine(format(L["%s%s%s|r to cast %s%s|r%s"], buttonColour, leftModDesc, rightModDesc[rightMod], spellColour, spell, unitShow))
+							GameTooltip:AddDoubleLine(format("%s%s%s|r", buttonColour, leftModDesc, rightModDesc[rightMod]),
+													format("%s%s|r%s", spellColour, spell, unitShow))
 						end
 						line = line + 1
 					end
@@ -3459,13 +3856,6 @@ function CellOnEnter(self)
 	if (self ~= z.icon) then
 		if (self.invalidAttributes) then
 			GameTooltip:AddLine(format(L["Out-of-date spell (should be %s). Will be updated when combat ends"], self.invalidAttributes), 1, 0, 0, 1)
-		end
-
-		-- Just for testing
-		local testunit = self:GetAttribute("unit")
-		local testname = self.name:GetText()
-		if (testname ~= UnitName(testunit)) then
-			GameTooltip:AddLine("\r\rOops! Funky unit mismatch error. Refresh list by changing sort order and back.\r(UnitName() = "..tostring(UnitName(testunit))..", text name = "..tostring(self.name:GetText())..")", 1, 0.4, 0.4, 1)
 		end
 	else
 		if (lastCheckFail) then
@@ -3585,8 +3975,10 @@ function z:InitCell(cell)
 
 	cell.palaIcon = {}
 
+	local tex = self:GetBarTexture()
+	
 	cell.bar = CreateFrame("StatusBar", nil, cell)
-	cell.bar:SetStatusBarTexture(SM and SM:Fetch("statusbar", z.db.profile.bartexture) or "Interface\\AddOns\\ZOMGBuffs\\Textures\\BantoBar")
+	cell.bar:SetStatusBarTexture(tex)
 	cell.bar:SetStatusBarColor(1, 1, 0.5, 0.5)
 	cell.bar:SetMinMaxValues(0, 1)
 	cell.bar:SetValue(0)
@@ -3606,7 +3998,8 @@ function z:InitCell(cell)
 	local a, b, c = self:GetFont()
 	cell.name = cell.bar:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	cell.name:SetFont(a, b, c)
-	cell.name:SetAllPoints(cell.bar)
+	cell.name:SetPoint("TOPLEFT", 2, 0)
+	cell.name:SetPoint("BOTTOMRIGHT")
 	cell.name:SetJustifyH("LEFT")
 
 	cell.DrawCell = DrawCell
@@ -3630,96 +4023,128 @@ function z:SecureCall(f, s)
 	end
 end
 
+local dummy = CreateFrame("Frame")
+dummy:Hide()
+dummy:SetScript("OnUpdate",
+	function(self)
+		if (z.rosterInvalid) then
+			z.rosterInvalid = nil
+			z:OnRaidRosterUpdate()
+		end
+		self:Hide()
+	end)
+
 -- RAID_ROSTER_UPDATED
 function z:RAID_ROSTER_UPDATED()
---self:Print("self.rosterInvalid = true")
-	self.rosterInvalid = true
-end
-
--- CheckRoster
-function z:CheckRoster()
-	if (self.rosterInvalid) then
---self:Print("self.rosterInvalid = nil")
-		self.rosterInvalid = nil
+	if (GetNumRaidMembers() > 0) then
+		if (self:IsEventRegistered("PARTY_MEMBERS_CHANGED")) then
+			self:UnregisterEvent("PARTY_MEMBERS_CHANGED")
+		end
+	else
+		if (not self:IsEventRegistered("PARTY_MEMBERS_CHANGED")) then
+			self:RegisterEvent("PARTY_MEMBERS_CHANGED", "RAID_ROSTER_UPDATED")
+		end
 	end
 
+	self.unknownUnits = del(self.unknownUnits)
+	if (self:IsEventRegistered("UNIT_NAME_UPDATE")) then
+		self:UnregisterEvent("UNIT_NAME_UPDATE")
+	end
+
+	self:DrawGroupNumbers()
+	self.rosterInvalid = true
+	dummy:Show()
+end
+
+-- OnRaidRosterUpdate
+function z:OnRaidRosterUpdate()
 	local delList = copy(z.versionRoster)
 	local any
 
 	self.classcount = setmetatable({}, {__index = function() return 0 end})
-	for unit in roster:IterateRoster() do
-		self.classcount[unit.class] = self.classcount[unit.class] + 1
-		delList[unit.name] = nil
-		any = true
+	for unit, unitname, unitclass, subgroup, index in self:IterateRoster() do
+		if (unitname ~= UNKNOWN) then
+			self.classcount[unitclass] = self.classcount[unitclass] + 1
+			delList[unitname] = nil
+			any = true
+		end
 	end
 	self:SetBuffsList()
 
 	if (any) then
 		for name,ver in pairs(delList) do
 			z.versionRoster[name] = nil
+			if (z.oldPots) then
+				z.oldPots[name] = nil
+			end
+			if (z.buffRoster) then
+				z.buffRoster[name] = nil
+			end
 		end
-		del(delList)
 	end
 
 	if (GetNumRaidMembers() == 0 and GetNumPartyMembers() == 0) then
 		deepDel(self.buffRoster)
 		self.buffRoster = new()
-		self.wasInGroup = nil
+		
+		if (self.wasInGroup) then
+			reqHistorySpec = {}
+			reqHistoryCap = {}
+			reqHistoryBT = {}
+			reqHistoryHello = {}
+			self.wasInGroup = nil
+		end
 	else
 		if (not self.wasInGroup) then
+			reqHistorySpec = {}
+			reqHistoryCap = {}
+			reqHistoryBT = {}
+			reqHistoryHello = {}
 			self:SendCommMessage("GROUP", "HELLO", self.version)
 			self.wasInGroup = true
 		end
 	end
 
-	-- RosterLib triggers a RosterLib_RosterUpdated event when it's first processed the roster
+	-- Roster changed, so trigger a check if nothing queued
 	if (self.icon and self.icon:GetAttribute("*type*") == nil) then
 		self:RequestSpells()
 	end
 
-	self:DrawGroupNumbers()
-
-	for name, module in self:IterateModulesWithMethod("CheckRoster") do
-		module:CheckRoster()
+	for name, module in self:IterateModulesWithMethod("OnRaidRosterUpdate") do
+		module:OnRaidRosterUpdate()
 	end
 
 	if (self.MaybeLoadManager) then
 		self:MaybeLoadManager()
 	end
 
-	local any
-	for unit in roster:IterateRoster() do
-		-- To validate that RosterLib has started
-		any = true
-		break
-	end
+	self.StartupDone = true
+	self:UpdateCellSpells()
 
-	if (any and not self.StartupDone) then
-		self.StartupDone = true
-		self:UpdateCellSpells()
-	end
+	del(delList)
 end
 
--- z:RosterUnitChanged()
-function z:RosterUnitChanged(newID, newName, newClass, newGroup, newRank, oldName, oldID, oldClass, oldGroup, oldRank)
-	if (oldName and not newName) then
-		if (self.buffRoster) then
-			self.buffRoster[oldName] = nil
-		end
-		if (self.oldPots) then
-			self.oldPots[oldName] = nil
-		end
-		self:SetupForSpell()
-		self:RequestSpells()
+-- RegisterBuffer
+function z:RegisterBuffer(mod, priority)
+	-- Priority if not given will be next one in list
+	if (not self.registeredBuffers) then
+		self.registeredBuffers = {}
+	end
+	if (priority) then
+		tinsert(self.registeredBuffers, 1, mod)
+	else
+		tinsert(self.registeredBuffers, mod)
 	end
 end
 
 -- z:RequestSpells()
 function z:RequestSpells()
-	for name, module in self:IterateModulesWithMethod("CheckBuffs") do
-		module:CheckBuffs()
-		if (self.icon:GetAttribute("*type*")) then
-			break
+	if (self.registeredBuffers) then
+		for i,module in ipairs(self.registeredBuffers) do
+			module:CheckBuffs()
+			if (self.icon:GetAttribute("*type*")) then
+				break
+			end
 		end
 	end
 end
@@ -3791,7 +4216,12 @@ end
 -- UNIT_SPELLCAST_SENT
 function z:UNIT_SPELLCAST_SENT(player, spell, rank, targetName)
 	if (player == "player") then
-		self.globalCooldownEnd = GetTime() + 1.5
+		local start, dur = GetSpellCooldown(spell)
+		if (start) then
+			self.globalCooldownEnd = start + dur
+		else
+			self.globalCooldownEnd = GetTime() + 1.5
+		end
 		self.lastCastS = spell
 		self.lastCastR = rank
 		self.lastCastN = targetName
@@ -3805,25 +4235,39 @@ function z:UNIT_SPELLCAST_SUCCEEDED(player, spell, rank)
 			z:SayWhatWeDid(spell, self.lastCastN, rank)
 		end
 
+		local curIconSpell = self.icon:GetAttribute("spell")
+		local curIconTarget = self.icon:GetAttribute("unit")
+		if (curIconSpell == spell and curIconTarget and ((self.lastCastN == "" and curIconTarget == "player") or (self.lastCastN and UnitIsUnit(curIconTarget, self.lastCastN)))) then
+			-- We lagged a lot apparently, and we've just cast the spell that's on the icon, so clear it and re-check
+			self:SetupForSpell()
+			self.globalCooldownEnd = GetTime() + 0.5
+		end
+
 		if (spell == self.lastCastS and rank == self.lastCastR) then
-			if (self.icon.mod) then
-				for name, module in self:IterateModulesWithMethod("OneOfYours") do
-					if (module == self.icon.mod) then
-						if (module:OneOfYours(spell)) then
-							-- Clear current queued spell in case user has cast one from same module
-							self:CheckForChange(module)
-						end
-					end
-				end
-			end
+			-- if (self.icon.mod) then
+				-- for name, module in self:IterateModulesWithMethod("OneOfYours") do
+					-- if (module == self.icon.mod) then
+						-- if (module:OneOfYours(spell)) then
+							-- -- Clear current queued spell in case user has cast one from same module
+							-- self:CheckForChange(module)
+						-- end
+					-- end
+				-- end
+			-- end
 
 			for name, module in self:IterateModulesWithMethod("SpellCastSucceeded") do
 				module:SpellCastSucceeded(self.lastCastS, self.lastCastR, self.lastCastN, not self.clickCast, self.clickList)
 			end
 		end
+
 		if (self.globalCooldownEnd > GetTime()) then
 			self:GlobalCDSchedule()
+		else
+			if (self.icon and not self.icon:GetAttribute("*type*")) then
+				self:RequestSpells()
+			end
 		end
+
 		self.lastCastS, self.lastCastR, self.lastCastN = nil, nil, nil
 		self.clickCast = nil
 		self.clickList = nil
@@ -3859,15 +4303,16 @@ function z:PLAYER_REGEN_ENABLED()
 		for unitid,cell in pairs(FrameArray) do
 			local name = UnitName(unitid)
 			if (name) then
-				for i,entry in pairs(cellAttributeChanges) do
-					if (entry[1] == name) then
-						cell:SetAttribute(entry[2], entry[3])
-						cell.invalidAttributes = nil
-						if (not cell.attr) then
-							cell.attr = new()
-						end
-						cell.attr[entry[2]] = entry[3]
+				local attr = cellAttributeChanges[name]
+				if (attr) then
+					if (not cell.attr) then
+						cell.attr = new()
 					end
+					for k,v in pairs(attr) do
+						cell:SetAttribute(k, v)
+						cell.attr[k] = v
+					end
+					cell.invalidAttributes = nil
 				end
 			end
 		end
@@ -3918,21 +4363,48 @@ end
 
 -- PLAYER_AURAS_CHANGED
 function z:PLAYER_AURAS_CHANGED()
-	if (self:UnitHasBuff("player", BS["Food"]) or self:UnitHasBuff("player", BS["Drink"])) then
+	if (self:UnitHasBuff("player", 46755) or self:UnitHasBuff("player", 46898)) then	-- Food/Drink
 		self:SetupForSpell()
 	end
 end
 
 -- UNIT_SPELLCAST_CHANNEL_START
-function z:UNIT_SPELLCAST_CHANNEL_START()
-	if (UnitChannelInfo("player")) then
+function z:UNIT_SPELLCAST_CHANNEL_START(player, spell, rank)
+	if (UnitIsUnit(player, "player")) then
 		self:SetupForSpell()
 	end
 end
 
+-- UNIT_PET
+-- When a pet is activated, trigger a check for them.
+-- Everyone else might be buffed and nothing scheduled for checking for a long time
+function z:UNIT_PET(ownerid)
+	if (self.icon and not self.icon:GetAttribute("*type*")) then
+		local petid
+
+		-- Since we'll get a UNIT_PET event for raid1 and party1 and potentially player all from
+		-- the same unit, we'll limit those events here depending what sort of group we're in:
+		if (GetNumRaidMembers() > 0 and strfind(ownerid, "^raid(%d+)$")) then
+			petid = ownerid:gsub("^raid(%d+)", "raidpet%1")
+		elseif (GetNumPartyMembers() > 0 and strfind(ownerid, "^party(%d+)$")) then
+			petid = ownerid:gsub("^party(%d+)", "partypet%1")
+		elseif (ownerid == "player") then
+			petid = "pet"
+		end
+
+		if (petid and UnitExists(petid) and UnitCanAssist("player", petid)) then
+			for name, module in self:IterateModulesWithMethod("RebuffQuery") do
+				if (module:RebuffQuery(petid)) then
+					module:CheckBuffs()
+				end
+			end
+		end
+	end	
+end
+
 -- PLAYER_LEAVING_WORLD
 function z:PLAYER_LEAVING_WORLD()
-	self.zoneFlag = true
+	self.zoneFlag = GetTime()
 	self:CancelScheduledEvent("ZOMGBuffs_PeriodicListCheck")
 	self:CancelScheduledEvent("ZOMGBuffs_GlobalCooldownEnd")
 	self:SetupForSpell()
@@ -3940,7 +4412,7 @@ end
 
 -- PLAYER_ENTERING_WORLD
 function z:PLAYER_ENTERING_WORLD()
-	self.zoneFlag = true
+	self.zoneFlag = GetTime()
 	self:SetupForSpell()
 	self:DrawAllCells()
 	self:CancelScheduledEvent("ZOMGBuffs_PeriodicListCheck")
@@ -3951,7 +4423,7 @@ end
 
 -- FinishedZoning
 function z:FinishedZoning()
-	self:CheckRoster()
+	self:OnRaidRosterUpdate()
 	self.zoneFlag = false
 	self:RequestSpells()
 end
@@ -3974,38 +4446,15 @@ function z:SetKeyBindings()
 		return
 	end
 
-	if (not self.db.profile.oldMouseWheelUpBinding) then
-		for i = 1,GetNumBindings() do
-			local s = ""
-			local command, key1, key2 = GetBinding(i)
-
-			if (key1 and self.db.profile.keybinding and key1 == self.db.profile.keybinding) then
-				self.db.profile.oldKeyBinding = command
-			elseif (key1 and key1 == "MOUSEWHEELUP" and command ~= "ZOMGBuffsButton") then
-				self.db.profile.oldMouseWheelUpBinding = (command ~= "CAMERAZOOMIN" and command) or nil
-			elseif (key1 and key1 == "MOUSEWHEELDOWN" and command ~= "ZOMGBuffsButton") then
-				self.db.profile.oldMouseWheelDownBinding = (command ~= "CAMERAZOOMOUT" and command) or nil
-			end
-		end
-	end
+	ClearOverrideBindings(self.icon)
 
 	if (self.db.profile.mousewheel and self.enabled) then
-		SetBindingClick("MOUSEWHEELUP", self.icon:GetName(), "MOUSEWHEELUP")
-		SetBindingClick("MOUSEWHEELDOWN", self.icon:GetName(), "MOUSEWHEELDOWN")
-	else
-		SetBinding("MOUSEWHEELUP", self.db.profile.oldMouseWheelUpBinding or "CAMERAZOOMIN")
-		self.db.profile.oldMouseWheelUpBinding = nil
-		SetBinding("MOUSEWHEELDOWN", self.db.profile.oldMouseWheelDownBinding or "CAMERAZOOMOUT")
-		self.db.profile.oldMouseWheelDownBinding = nil
+		SetOverrideBindingClick(self.icon, true, "MOUSEWHEELUP", self.icon:GetName(), "MOUSEWHEELUP")
+		SetOverrideBindingClick(self.icon, true, "MOUSEWHEELDOWN", self.icon:GetName(), "MOUSEWHEELDOWN")
 	end
 
 	if (self.db.profile.keybinding) then
-		if (self.enabled) then
-			SetBindingClick(self.db.profile.keybinding, self.icon:GetName(), "LeftButton")
-		else
-			SetBinding(self.db.profile.keybinding, self.db.profile.oldKeyBinding)
-			self.db.profile.oldKeyBinding = nil
-		end
+		SetOverrideBindingClick(self.icon, true, self.db.profile.keybinding, self.icon:GetName(), "LeftButton")
 	end
 end
 
@@ -4095,11 +4544,22 @@ function z:MERCHANT_SHOW()
 		return
 	end
 
+	if (self.lastMerchantBuy and GetTime() < self.lastMerchantBuy + 5) then
+		return
+	end
+	self.lastMerchantBuy = GetTime()
+
 	local list = new()
+	local level = UnitLevel("player")
 	for name, module in z:IterateModules() do
 		if (module.reagents and module.db and module.db.char and module.db.char.reagents) then
-			for k,v in pairs(module.reagents) do
-				list[k] = module.db.char.reagents[k] or v[1]
+			for itemname,info in pairs(module.reagents) do
+				if ((not info.maxLevel or level <= info.maxLevel) and (not info.minLevel or level >= info.minLevel)) then
+					local num = module.db.char.reagents[itemname]
+					if (num and num > 0) then
+						list[itemname] = num
+					end
+				end
 			end
 		end
 	end
@@ -4207,92 +4667,116 @@ function z:CHAT_MSG_WHISPER(msg, sender, language, d, e, status)
 	end
 end
 
--- MatchChat
-function z:MatchChat(event, msg)
-	if (not msg or msg == "" or not self:IsActive()) then
-		return
-	end
-
-	if (event == "CHAT_MSG_WHISPER") then
-		for match in pairs(self.chatMatch) do
+do
+	local function chatFilter(msg)
+		for match in pairs(z.chatMatch) do
 			if (strsub(msg, 1, strlen(match)) == match) then
 				return true
 			end
 		end
-	elseif (event == "CHAT_MSG_WHISPER_INFORM") then
-		if (strsub(msg, 1, strlen(self.chatAnswer)) == self.chatAnswer) then
+	end
+
+	local function chatFilterInform(msg)
+		if (strsub(msg, 1, strlen(z.chatAnswer)) == z.chatAnswer) then
 			return true
 		end
 	end
-end
 
--- HookChat
-function z:HookChat()
-	self:Hook("ChatFrame_MessageEventHandler",function()
-		if (self:MatchChat(event, arg1)) then return end
-		return self.hooks["ChatFrame_MessageEventHandler"](event)
-		end, true)
-
-	if IsAddOnLoaded("Cellular") then
-		self:Hook(Cellular, "CHAT_MSG_WHISPER", function()
-			if (self:MatchChat(event, arg1)) then return end
-			return self.hooks[Cellular]["CHAT_MSG_WHISPER"](Cellular)
-		end,
-		true)
-		self:Hook(Cellular, "CHAT_MSG_WHISPER_INFORM", function()
-			if (self:MatchChat(event, arg1)) then return end
-			return self.hooks[Cellular]["CHAT_MSG_WHISPER_INFORM"](Cellular,arg1,arg2)
-		end, true)
+	-- MatchChat
+	function z:MatchChat(event, msg)
+		if (not msg or msg == "" or not self:IsActive()) then
+			return
+		end
+		if (event == "CHAT_MSG_WHISPER") then
+			return chatFilter(msg)
+		elseif (event == "CHAT_MSG_WHISPER_INFORM") then
+			return chatFilterInform(msg)
+		end
 	end
 
-	if IsAddOnLoaded("WIM") then
-		self:Hook("WIM_ChatFrame_MessageEventHandler",function(event, internalEvent)
-			if (self:MatchChat(event, arg1)) then return end
-			return self.hooks["WIM_ChatFrame_MessageEventHandler"](event, internalEvent)
-		end, true)
+	-- HookChat
+	function z:HookChat()
+		ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", chatFilter)
+		ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER_INFORM", chatFilterInform)
+
+		if (IsAddOnLoaded("Cellular") and Cellular) then
+			self:Hook(Cellular, "CHAT_MSG_WHISPER", function()
+				if (self:MatchChat(event, arg1)) then return end
+				return self.hooks[Cellular]["CHAT_MSG_WHISPER"](Cellular)
+			end,
+			true)
+			self:Hook(Cellular, "CHAT_MSG_WHISPER_INFORM", function()
+				if (self:MatchChat(event, arg1)) then return end
+				return self.hooks[Cellular]["CHAT_MSG_WHISPER_INFORM"](Cellular,arg1,arg2)
+			end, true)
+		end
+
+		if (WIM_ChatFrame_MessageEventHandler) then
+			self:Hook("WIM_ChatFrame_MessageEventHandler",function(event, internalEvent)
+				if (self:MatchChat(event, arg1)) then return end
+				return self.hooks["WIM_ChatFrame_MessageEventHandler"](event, internalEvent)
+			end, true)
+		end
+	end
+
+	-- z:UnhookChat
+	function z:UnhookChat()
+		ChatFrame_RemoveMessageEventFilter("CHAT_MSG_WHISPER", chatFilter)
+		ChatFrame_RemoveMessageEventFilter("CHAT_MSG_WHISPER_INFORM", chatFilterInform)
 	end
 end
 
 -- CHAT_MSG_COMBAT_FRIENDLY_DEATH
-function z:CHAT_MSG_COMBAT_FRIENDLY_DEATH(msg)
-	if (self.icon) then
-		local deadName = strmatch(msg, L["PERSONDIES"])
-		if (deadName) then
-			local unit = self.icon:GetAttribute("unit")
-			local name = unit and UnitExists(unit) and UnitName(unit)
-			if (name and name == deadName) then
-				self:SetupForSpell()
-				self:RequestSpells()
-			end
-		end
-	end
-end
+-- function z:CHAT_MSG_COMBAT_FRIENDLY_DEATH(msg)
+	-- if (self.icon) then
+		-- local deadName = strmatch(msg, L["PERSONDIES"])
+		-- if (deadName) then
+			-- local unit = self.icon:GetAttribute("unit")
+			-- local name = unit and UnitExists(unit) and UnitName(unit)
+			-- if (name and name == deadName) then
+				-- self:SetupForSpell()
+				-- self:RequestSpells()
+			-- end
+		-- end
+	-- end
+-- end
 
 -- MODIFIER_STATE_CHANGED
 function z:MODIFIER_STATE_CHANGED()
 	self:DrawAllCells()
 end
 
+local reqHistorySpec = {}
+local reqHistoryCap = {}
+local reqHistoryBT = {}
+local reqHistoryHello = {}
 -- OnCommReceive
 z.OnCommReceive = {
 	REQUESTSPEC = function(self, prefix, sender, channel)
-		local a, b, c = select(3, GetTalentTabInfo(1)), select(3, GetTalentTabInfo(2)), select(3, GetTalentTabInfo(3))
-		z:SendComm(sender, "SPEC", {a, b, c})
+		if (not reqHistorySpec[sender] or reqHistorySpec[sender] < GetTime() - 15) then
+			reqHistorySpec[sender] = GetTime()
+			local a, b, c = select(3, GetTalentTabInfo(1)), select(3, GetTalentTabInfo(2)), select(3, GetTalentTabInfo(3))
+			z:SendComm(sender, "SPEC", {a, b, c})
+		end
 	end,
 	SPEC = function(self, prefix, sender, channel, spec)
 		z:OnReceiveSpec(sender, spec)
 	end,
 	HELLO = function(self, prefix, sender, channel, version)
 		if (version) then
-			if (type(version) == "string") then
-				version = 0		-- Flags as beta
+			if (not reqHistoryHello[sender] or reqHistoryHello[sender] < GetTime() - 15) then
+				reqHistoryHello[sender] = GetTime()
+
+				if (type(version) == "string") then
+					version = 0		-- Flags as beta
+				end
+				z.versionRoster[sender] = version
+				if (version > z.maxVersionSeen) then
+					z.maxVersionSeen = version
+				end
+				z:SendComm(sender, "VERSION", z.version)
+				z:OnReceiveVersion(sender, version)
 			end
-			z.versionRoster[sender] = version
-			if (version > z.maxVersionSeen) then
-				z.maxVersionSeen = version
-			end
-			z:SendComm(sender, "VERSION", z.version)
-			z:OnReceiveVersion(sender, version)
 		end
 	end,
 	VERSION = function(self, prefix, sender, channel, version)
@@ -4308,35 +4792,43 @@ z.OnCommReceive = {
 		end
 	end,
 	REQUESTCAPABILITY = function(self, prefix, sender, channel)
-		local cap
-		if (playerClass == "PALADIN") then
-			local c1 = IsSpellInRange(BS["Blessing of Kings"], "player") == 1  -- IsUsableSpell(BS["Blessing of Kings"])
-			local c3 = IsSpellInRange(BS["Blessing of Sanctuary"], "player") == 1  -- IsUsableSpell(BS["Blessing of Sanctuary"])
-			local might = select(5, GetTalentInfo(3, 1))
-			local wisdom = select(5, GetTalentInfo(1, 10))
-			cap = {canKings = c1, canSanctuary = c3, impMight = might, impWisdom = wisdom}
-		elseif (playerClass == "PRIEST") then
-			local c1, c2 = IsUsableSpell(BS["Divine Spirit"])
-			cap = {canSpirit = c1 or c2}
+		if (not reqHistoryCap[sender] or reqHistoryCap[sender] < GetTime() - 15) then
+			reqHistoryCap[sender] = GetTime()
+
+			local cap
+			if (playerClass == "PALADIN") then
+				local c1 = select(5, GetTalentInfo(2, 6)) == 1		-- Kings
+				local c3 = select(5, GetTalentInfo(2, 14)) == 1		-- Sanctuary
+				local might = select(5, GetTalentInfo(3, 1))		-- Might
+				local wisdom = select(5, GetTalentInfo(1, 10))		-- Wisdom
+				cap = {canKings = c1, canSanctuary = c3, impMight = might, impWisdom = wisdom}
+			elseif (playerClass == "PRIEST") then
+				local c1 = select(5, GetTalentInfo(1, 14)) == 1		-- Spirit
+				cap = {canSpirit = c1}
+			end
+			z:SendComm(sender, "CAPABILITY", cap)
 		end
-		z:SendComm(sender, "CAPABILITY", cap)
 	end,
 	CAPABILITY = function(self, prefix, sender, channel, cap)
 		z:OnReceiveCapability(sender, cap)
 	end,
 	REQUESTBUFFTIMES = function(self, prefix, sender, channel)
-		local buffTimes = new()
-		for i = 1,40 do
-			local name, rank, tex, dur, maxDur = UnitBuff("player", i)
-			if (not name) then
-				break
+		if (not reqHistoryBT[sender] or reqHistoryBT[sender] < GetTime() - 15) then
+			reqHistoryBT[sender] = GetTime()
+
+			local buffTimes = new()
+			for i = 1,40 do
+				local name, rank, tex, dur, maxDur = UnitBuff("player", i)
+				if (not name) then
+					break
+				end
+				if (maxDur > 10) then
+					buffTimes[name] = new(maxDur, dur)
+				end
 			end
-			if (maxDur > 10) then
-				buffTimes[name] = new(maxDur, dur)
-			end
+			z:SendComm(sender, "BUFFTIMES", buffTimes)
+			del(buffTimes)
 		end
-		z:SendComm(sender, "BUFFTIMES", buffTimes)
-		del(buffTimes)
 	end,
 	GIVETEMPLATEPART = function(self, prefix, sender, channel, name, class, buff)
 		z:OnReceiveTemplatePart(sender, name, class, buff)
@@ -4361,18 +4853,20 @@ end
 
 -- OnReceiveSpec
 function z:OnReceiveCapability(sender, cap)
-	if (not self.talentSpecs) then
-		self.talentSpecs = setmetatable({}, talentMeta)
+	if (cap) then
+		if (not self.talentSpecs) then
+			self.talentSpecs = setmetatable({}, talentMeta)
+		end
+		if (not rawget(self.talentSpecs, sender)) then
+			self.talentSpecs[sender] = {}
+		end
+	
+		for k,v in pairs(cap) do
+			self.talentSpecs[sender][k] = v
+		end
+	
+		self:CallMethodOnAllModules("OnReceiveCapability", sender, cap)
 	end
-	if (not rawget(self.talentSpecs, sender)) then
-		self.talentSpecs[sender] = {}
-	end
-
-	for k,v in pairs(cap) do
-		self.talentSpecs[sender][k] = v
-	end
-
-	self:CallMethodOnAllModules("OnReceiveCapability", sender, cap)
 end
 
 -- OnReceiveTemplatePart
@@ -4440,6 +4934,7 @@ function z:OnInitialize()
 		channel = "Raid",				-- Report channel
 		skippvp = true,					-- Don't directly buff PVP players
 		singlesInBG = true,				-- Don't use greater blessings/class buffs in battlegrounds
+		singlesInArena = true,			-- Don't use greater blessings/class buffs in arenas
 		groupno = true,
 		alwaysLoadManager = false,
 		notWithSpiritTap = true,
@@ -4459,6 +4954,7 @@ function z:OnInitialize()
 		click = z:DefaultClickBindings(),
 		buffreminder = "None",
 		spellIcons = true,
+		showroles = true,
 	} )
 	self:RegisterDefaults("char", {
 		firstStartup = true,
@@ -4520,7 +5016,7 @@ function z:OnInitialize()
 
 	self.globalCooldownEnd = 0
 	playerClass = playerClass or select(2, UnitClass("player"))
-	
+
 	self.OnInitialize = nil
 end
 
@@ -4541,9 +5037,9 @@ end
 function z:GetGroupNumber(unit)
 	-- Fix for rosterlib's occasional group barf
 	if (GetNumRaidMembers() > 0) then
-		local id = strmatch(unit, "(%d+)")
+		local id = UnitInRaid(unit)		--strmatch(unit, "(%d+)")
 		if (id) then
-			id = id + 0
+			id = id + 1
 			local subgroup = select(3, GetRaidRosterInfo(id))
 			return subgroup
 		end
@@ -4553,10 +5049,9 @@ end
 
 -- SendComm
 function z:SendComm(fname, ...)
-	local unit = roster:GetUnitObjectFromName(fname)
-	if (unit and UnitIsConnected(unit.unitid)) then
+	if (UnitExists(fname) and UnitIsConnected(fname)) then
 		if (self:IsInBattlegrounds()) then
-			local name, server = UnitName(unit.unitid)
+			local name, server = UnitName(fname)
 			if (server and server ~= "") then
 				self:SendCommMessage("WHISPER", format("%s-%s", name, server), ...)
 			else
@@ -4570,9 +5065,9 @@ end
 
 -- SendAll
 function z:SendClass(class, ...)
-	for unit in roster:IterateRoster() do
-		if (unit.class == class and UnitIsConnected(unit.unitid)) then
-			local name, server = UnitName(unit.unitid)
+	for unit, unitname, unitclass, subgroup, index in self:IterateRoster() do
+		if (unitclass == class and UnitIsConnected(unit)) then
+			local name, server = UnitName(unit)
 			if (server and server ~= "") then
 				if (self:IsInBattlegrounds()) then
 					self:SendCommMessage("WHISPER", format("%s-%s", name, server), ...)
@@ -4607,9 +5102,10 @@ end
 
 -- SetBuffsList
 function z:SetBuffsList()
-	self.buffs = {}
-	for k,v in pairs(z.allBuffs) do
-		if (self.db.profile.track[v.opt] and (not v.class or z.classcount[v.class] > 0)) then
+	del(self.buffs)
+	self.buffs = new()
+	for k,v in pairs(self.allBuffs) do
+		if (self.db.profile.track[v.opt] and (not v.class or self.classcount[v.class] > 0)) then
 			tinsert(self.buffs, v)
 		end
 	end
@@ -4784,7 +5280,6 @@ function z:OnEnableOnce()
 	}
 
 	playerClass = playerClass or select(2, UnitClass("player"))
-
 	for i = 1,GetNumAddOns() do
 		local name,_,_,enabled,loadable = GetAddOnInfo(i)
 		if (name and loadable and strfind(name, "ZOMGBuffs_")) then
@@ -4794,13 +5289,15 @@ function z:OnEnableOnce()
 				local c = GetAddOnMetadata(i, "X-Classes")
 				if (c) then
 					load = strfind(strupper(c), playerClass)
-				end
-				c = GetAddOnMetadata(i, "X-Classes-Optional")
-				if (c) then
-					if (strfind(strupper(c), playerClass)) then
-						self.canloadraidbuffmodule = true
-						if (self.db.char.loadraidbuffmodule) then
-							load = true
+					if (not load) then
+						c = GetAddOnMetadata(i, "X-Classes-Optional")
+						if (c) then
+							if (strfind(strupper(c), playerClass)) then
+								self.canloadraidbuffmodule = true
+								if (self.db.char.loadraidbuffmodule) then
+									load = true
+								end
+							end
 						end
 					end
 				else
@@ -4808,7 +5305,7 @@ function z:OnEnableOnce()
 				end
 				if (load) then
 					local match = matchList[name]
-					if (not match or not matchList[match]) then
+					if (not match or not _G[matchList[match]]) then
 						LoadAddOn(i)
 					end
 				end
@@ -4831,6 +5328,16 @@ function z:OnEnableOnce()
 
 	self.actions = nil
 	self:SetClickConfigMenu()
+
+	-- Replace old keybindings with the defaults that we messed up before r69331
+	local command = GetBindingAction("MOUSEWHEELUP")
+	if (command == "CLICK ZOMGBuffsButton:MOUSEWHEELUP") then
+		SetBinding("MOUSEWHEELUP", "CAMERAZOOMIN")
+	end
+	command = GetBindingAction("MOUSEWHEELDOWN")
+	if (command == "CLICK ZOMGBuffsButton:MOUSEWHEELDOWN") then
+		SetBinding("MOUSEWHEELDOWN", "CAMERAZOOMOUT")
+	end
 
 	self.linkSpells = true
 	self.OnEnableOnce = nil
@@ -4857,7 +5364,7 @@ function z:OnEnable()
 	self:RegisterComm(self.commPrefix, "GROUP", "OnCommReceive")
 
 	self:SetClickConfigMenu()
-	self:CheckRoster()
+	self:OnRaidRosterUpdate()
 
 	if (z.db.char.firstStartup) then
 		z.db.char.firstStartup = false
@@ -4877,8 +5384,7 @@ function z:OnEnable()
 	self:SetKeyBindings()
 
 	self:RegisterEvent("RAID_ROSTER_UPDATED")
-	self:RegisterEvent("RosterLib_UnitChanged", "RosterUnitChanged")
-	self:RegisterBucketEvent("RosterLib_RosterUpdated", 0.1, "CheckRoster")	-- This is also our starting point to start looking for buffs to do
+	self:RegisterEvent("PARTY_MEMBERS_CHANGED", "RAID_ROSTER_UPDATED")
 	self:RegisterEvent("UNIT_AURA")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED")
@@ -4890,6 +5396,7 @@ function z:OnEnable()
 	self:RegisterEvent("UNIT_SPELLCAST_CHANNEL_START")
 	self:RegisterEvent("UNIT_SPELLCAST_STOP")
 	self:RegisterEvent("ADDON_LOADED")
+	self:RegisterEvent("UNIT_PET")
 
 	self:RegisterEvent("PLAYER_CONTROL_LOST")
 	self:RegisterEvent("PLAYER_CONTROL_GAINED")
@@ -4897,7 +5404,7 @@ function z:OnEnable()
 	self:RegisterEvent("INSPECT_TALENT_READY")
 	self:RegisterEvent("PLAYER_AURAS_CHANGED")
 	self:RegisterEvent("CHAT_MSG_WHISPER")
-	self:RegisterEvent("CHAT_MSG_COMBAT_FRIENDLY_DEATH")		-- Might need to change with new combat log system?
+	--self:RegisterEvent("CHAT_MSG_COMBAT_FRIENDLY_DEATH")		-- Might need to change with new combat log system?
 
 	self.chatMatch = {}
 	local i = 1
@@ -4932,60 +5439,6 @@ function z:OnDisable()
 	self.chatAnswer = nil
 	self.groupColours = nil
 	self:UnhookAll()
+	self:UnhookChat()
 end
 
---[[
--- Speciallized Roster iterator to always put ME first
--- Also benefits from not having any delay in setup between RAID_ROSTER_UPDATE and RosterLib's update
-local function iter(t)
-	local index = t.index
-	local pets = t.pets
-
-	if (not index) then
-		if (GetNumRaidMembers() > 0) then
-			t.type = "raid"
-			t.index = 0
-			local unit = "raid"..UnitInRaid("player")
-			t.unit = unit
-			local name = UnitName(unit)
-			local class = select(2, UnitClass(unit))
-			return unit, name, class, UnitInRaid("player")
-		else
-			t.End = GetNumPartyMembers()
-			t.type = "party"
-			t.index = 0
-			return "player", playerName, playerClass, 0
-		end
-	end
-
-	local unit
-	repeat
-		if (pets and t.doPet) then
-			t.doPet = nil
-			unit = format(%spet%d", t.type, index)
-			if (UnitExists(unit)) then
-				break
-			end
-		end
-
-		index = index + 1
-		if (index > t.End) then
-			t = del(t)
-			return nil
-		end
-		unit = t.type .. index
-		t.doPet = pets
-	until (index > t.End and not UnitIsUnit(unit, "player"))
-
-	local name = UnitName(unit)
-	local class = select(2, UnitClass(unit))
-	return unit, name, class, index
-end
-
--- IterateRoster
-function z:IterateRoster(pets)
-	local t = new()
-	t.pets = pets
-	return iter, t
-end
-]]

@@ -24,7 +24,7 @@ end
 local QuartzPlayer = Quartz:NewModule('Player')
 local self = QuartzPlayer
 
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 local math_min = math.min
 local unpack = unpack
@@ -187,7 +187,8 @@ do
 		end
 		
 		if db.profile.targetname and self.targetName and (self.targetName ~= '') then
-			castBarText:SetText(castBarText:GetText() .. " -> " .. self.targetName);
+			local castText = castBarText:GetText() or nil
+			if castText then castBarText:SetText(castText .. " -> " .. self.targetName) end
 		end
 	end
 end
@@ -272,7 +273,7 @@ function QuartzPlayer:OnEnable()
 	self:RegisterEvent("UNIT_SPELLCAST_CHANNEL_STOP")
 	self:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED")
 	self:RegisterEvent("UNIT_SPELLCAST_CHANNEL_INTERRUPTED", "UNIT_SPELLCAST_INTERRUPTED")
-	self:RegisterEvent("SharedMedia_SetGlobal", function(mtype, override)
+	media.RegisterCallback(self, "LibSharedMedia_SetGlobal", function(mtype, override)
 		if mtype == "statusbar" then
 			castBar:SetStatusBarTexture(media:Fetch("statusbar", override))
 		end

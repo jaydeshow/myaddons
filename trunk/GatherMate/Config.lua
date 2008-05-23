@@ -4,8 +4,29 @@ local Display = GatherMate:GetModule("Display")
 local L = LibStub("AceLocale-3.0"):GetLocale("GatherMate", false)
 
 --[[
-	Code here for configing the mod, and making the minimap button
+	Code here for configuring the mod, and making the minimap button
 ]]
+
+-- Setup keybinds (these need to be global strings to show up properly in ESC -> Key Bindings)
+BINDING_HEADER_GatherMate = L["GatherMate"]
+BINDING_NAME_TOGGLE_GATHERMATE_MINIMAPICONS = L["Keybind to toggle Minimap Icons"]
+
+-- A helper function for keybindings
+local KeybindHelper = {}
+do
+	local t = {}
+	function KeybindHelper:MakeKeyBindingTable(...)
+		for k in pairs(t) do t[k] = nil end
+		for i = 1, select("#", ...) do
+			local key = select(i, ...)
+			if key ~= "" then
+				tinsert(t, key)
+			end
+		end
+		return t
+	end
+end
+
 
 local prof_options = {
 	["always"]          = L["Always show"],
@@ -127,8 +148,44 @@ options.args.display.args.general = {
 					type = "toggle",
 					arg = "showWorldMap",
 				},
-				iconScale = {
+				togglekey = {
 					order = 3,
+					name = L["Keybind to toggle Minimap Icons"],
+					desc = L["Keybind to toggle Minimap Icons"],
+					type = "keybinding",
+					width = "double",
+					get = function(info)
+						return table.concat(KeybindHelper:MakeKeyBindingTable(GetBindingKey("TOGGLE_GATHERMATE_MINIMAPICONS")), ", ")
+					end,
+					set = function(info, key)
+						if key == "" then
+							local t = KeybindHelper:MakeKeyBindingTable(GetBindingKey("TOGGLE_GATHERMATE_MINIMAPICONS"))
+							for i = 1, #t do
+								SetBinding(t[i])
+							end
+						else
+							local oldAction = GetBindingAction(key)
+							local frame = LibStub("AceConfigDialog-3.0").OpenFrames["GatherMate"]
+							if frame then
+								if ( oldAction ~= "" and oldAction ~= "TOGGLE_GATHERMATE_MINIMAPICONS" ) then
+									frame:SetStatusText(KEY_UNBOUND_ERROR:format(GetBindingText(oldAction, "BINDING_NAME_")))
+								else
+									frame:SetStatusText(KEY_BOUND)
+								end
+							end
+							SetBinding(key, "TOGGLE_GATHERMATE_MINIMAPICONS")
+						end
+						SaveBindings(GetCurrentBindingSet())
+					end,
+				},
+				space = {
+					order = 4,
+					name = "",
+					desc = "",
+					type = "description",
+				},
+				iconScale = {
+					order = 5,
 					name = L["Icon Scale"],
 					desc = L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."],
 					type = "range",
@@ -136,7 +193,7 @@ options.args.display.args.general = {
 					arg = "scale",
 				},
 				iconAlpha = {
-					order = 4,
+					order = 6,
 					name = L["Icon Alpha"],
 					desc = L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."],
 					type = "range",
@@ -144,7 +201,7 @@ options.args.display.args.general = {
 					arg = "alpha",
 				},
 				minimapNodeRange = {
-					order = 5,
+					order = 7,
 					type = "toggle",
 					name = L["Show Nodes on Minimap Border"],
 					width = "double",
@@ -152,7 +209,7 @@ options.args.display.args.general = {
 					arg = "nodeRange",
 				},
 				tracking = {
-					order = 6,
+					order = 8,
 					name = L["Tracking Circle Color"],
 					desc = L["Color of the tracking circle."],
 					type = "group",
@@ -243,16 +300,21 @@ options.args.display.args.general = {
 	},
 }
 
--- Setup some storage arrays by db to sort node names alphabetically
+-- Setup some storage arrays by db to sort node names and zones alphabetically
 local sortedFilter = setmetatable({}, {__index = function(t, k)
-		local new = {}
+	local new = {}
+	if k == "zones" then
+		for name, zonetable in pairs(GatherMate.zoneData) do
+			new[name] = name
+		end
+	else
 		for name, id in pairs(GatherMate.nodeIDs[k]) do
 			new[name] = name
 		end
-		rawset(t, k, new)
-		return new
 	end
-})
+	rawset(t, k, new)
+	return new
+end})
 
 -- Setup some helper functions
 local ConfigFilterHelper = {}
@@ -486,12 +548,170 @@ options.args.display.args.filters.args.treasure = {
 	},
 }
 
+local selectedDatabase, selectedNode, selectedZone = "Extract Gas", 0, nil
+
 -- Cleanup config tree
 options.args.cleanup = {
  	type = "group",
-	name = L["Cleanup Database"],
+	name = L["Database Maintenance"],
 	order = 5,
 	args = {
+		cleanup = {
+			order = 20,
+			name = L["Cleanup Database"],
+			type = "group",
+			args = {
+				cleanup = {
+					order = 10,
+					name = L["Cleanup Database"],
+					type = "group",
+					guiInline = true,
+					args = {
+						desc = {
+							order = 0,
+							type = "description",
+							name = L["Cleanup_Desc"],
+						},
+						cleanup = {
+							name = L["Cleanup Database"],
+							desc = L["Cleanup your database by removing duplicates. This takes a few moments, be patient."],
+							type = "execute",
+							handler = GatherMate,
+							func = "CleanupDB",
+							order = 20,
+						},
+					},
+				},
+				deleteSelective = {
+					order = 20,
+					name = L["Delete Specific Nodes"],
+					type = "group",
+					guiInline = true,
+					args = {
+						desc = {
+							order = 0,
+							type = "description",
+							name = L["DELETE_SPECIFIC_DESC"],
+						},
+						selectDB = {
+							order = 30,
+							name = L["Select Database"],
+							desc = L["Select Database"],
+							type = "select",
+							values = {
+								["Fishing"] = L["Fishes"],
+								["Treasure"] = L["Treasure"],
+								["Herb Gathering"] = L["Herb Bushes"],
+								["Mining"] = L["Mineral Veins"],
+								["Extract Gas"] = L["Gas Clouds"],
+							},
+							get = function() return selectedDatabase end,
+							set = function(k, v)
+								selectedDatabase = v
+								selectedNode = 0
+							end,
+						},
+						selectNode = {
+							order = 40,
+							name = L["Select Node"],
+							desc = L["Select Node"],
+							type = "select",
+							values = function()
+								return sortedFilter[selectedDatabase]
+							end,
+							get = function() return selectedNode end,
+							set = function(k, v) selectedNode = v end,
+						},
+						selectZone = {
+							order = 50,
+							name = L["Select Zone"],
+							desc = L["Select Zone"],
+							type = "select",
+							values = sortedFilter["zones"],
+							get = function() return selectedZone end,
+							set = function(k, v) selectedZone = v end,
+						},
+						delete = {
+							order = 60,
+							name = L["Delete"],
+							desc = L["Delete selected node from selected zone"],
+							type = "execute",
+							confirm = true,
+							confirmText = L["Are you sure you want to delete all of the selected node from the selected zone?"],
+							func = function()
+								if selectedZone and selectedNode ~= 0 then
+									GatherMate:DeleteNodeFromZone(selectedDatabase, GatherMate.nodeIDs[selectedDatabase][selectedNode], selectedZone)
+								end
+							end,
+							disabled = function()
+								return selectedNode == 0 or selectedZone == nil
+							end,
+						},
+					},
+				},
+				delete = {
+					order = 30,
+					name = L["Delete Entire Database"],
+					type = "group",
+					guiInline = true,
+					func = function(info)
+						GatherMate:ClearDB(info.arg)
+					end,
+					args = {
+						desc = {
+							order = 0,
+							type = "description",
+							name = L["DELETE_ENTIRE_DESC"],
+						},
+						Mine = {
+							order = 5,
+							name = L["Mineral Veins"],
+							desc = L["Delete Entire Database"],
+							type = "execute",
+							arg = "Mining",
+							confirm = true,
+							confirmText = L["Are you sure you want to delete all nodes from this database?"],
+						},
+						Herb = {
+							order = 5,
+							name = L["Herb Bushes"],
+							desc = L["Delete Entire Database"],
+							type = "execute",
+							arg = "Herb Gathering",
+							confirm = true,
+							confirmText = L["Are you sure you want to delete all nodes from this database?"],
+						},
+						Fish = {
+							order = 5,
+							name = L["Fishes"],
+							desc = L["Delete Entire Database"],
+							type = "execute",
+							arg = "Fishing",
+							confirm = true,
+							confirmText = L["Are you sure you want to delete all nodes from this database?"],
+						},
+						Gas = {
+							order = 5,
+							name = L["Gas Clouds"],
+							desc = L["Delete Entire Database"],
+							type = "execute",
+							arg = "Extract Gas",
+							confirm = true,
+							confirmText = L["Are you sure you want to delete all nodes from this database?"],
+						},
+						Treasure = {
+							order = 5,
+							name = L["Treasure"],
+							desc = L["Delete Entire Database"],
+							type = "execute",
+							arg = "Treasure",					
+							confirm = true,
+							confirmText = L["Are you sure you want to delete all nodes from this database?"],
+						},
+					},
+				},
+			},
+		},
 		desc = {
 			order = 0,
 			type = "description",
@@ -556,13 +776,59 @@ options.args.cleanup = {
 				}
 			},
 		},
-		cleanup = {
-			name = L["Cleanup Database"],
-			desc = L["Cleanup your database by removing duplicates. This takes a few moments, be patient."],
-			type = "execute",
-			handler = GatherMate,
-			func = "CleanupDB",
-			order = 20,
+		dblocking = {
+			order = 11,
+			name = L["Database Locking"],
+			type = "group",
+			guiInline = true,
+			get = function(info)
+				return db.dbLocks[info.arg]
+			end,
+			set = function(info,v)
+				db.dbLocks[info.arg] = v
+			end,
+			args = {
+				desc = {
+					order = 0,
+					type = "description",
+					name = L["DATABASE_LOCKING_DESC"],
+				},
+				Mine = {
+					order = 5,
+					name = L["Mineral Veins"],
+					desc = L["Database locking"],
+					type = "toggle",
+					arg = "Mining",
+				},
+				Herb = {
+					order = 5,
+					name = L["Herb Bushes"],
+					desc = L["Database locking"],
+					type = "toggle",
+					arg = "Herb Gathering",
+				},
+				Fish = {
+					order = 5,
+					name = L["Fishes"],
+					desc = L["Database locking"],
+					type = "toggle",
+					arg = "Fishing",
+				},
+				Gas = {
+					order = 5,
+					name = L["Gas Clouds"],
+					desc = L["Database locking"],
+					type = "toggle",
+					arg = "Extract Gas",
+				},
+				Treasure = {
+					order = 5,
+					name = L["Treasure"],
+					desc = L["Database locking"],
+					type = "toggle",
+					arg = "Treasure",					
+				}				
+			}
 		},
 	},
 }

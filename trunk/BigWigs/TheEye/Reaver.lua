@@ -49,6 +49,34 @@ L:RegisterTranslations("enUS", function() return {
 	knock_message = "Knock Away: %s",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "¡Alerta! Estáis marcados para exterminación.",
+
+	orbyou = "Orbe Arcano en ti",
+	orbyou_desc = "Avisar cuando tienes Orbe Arcano.",
+	orb_you = "¡Orbe en TI!",
+
+	orbsay = "Orbe Arcano - Decir",
+	orbsay_desc = "Avisar en el canal Decir cuando eres el objetivo de un Orbe Arcano, puede ayudar a jugadores cercanos con bocadillos de chat activos.",
+	orb_say = "¡Orbe en MÍ!",
+
+	orbother = "Orbe Arcano en otros",
+	orbother_desc = "Avisar sobre Orbe Arcano en otros.",
+	orb_other = "Orbe(%s)",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores objetivo de Orbe Arcano. (Requiere derechos de banda)",
+
+	pounding = "Aporreo (Pounding)",
+	pounding_desc = "Mostrar barras de tiempo para Aporreo.",
+	pounding_nextbar = "~Aporreo",
+
+	knock = "Empujar (Knock Away)",
+	knock_desc = "Mostrar una barra de tiempo para Empujar.",
+	knock_bar = "~Empujar",
+	knock_message = "Empujar: %s",
+} end )
+
 L:RegisterTranslations("deDE", function() return {
 	engage_trigger = "Alarm! Eliminierung eingeleitet!",
 
@@ -81,15 +109,15 @@ L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Alerte ! Vous êtes désigné pour extermination.",
 
 	orbyou = "Orbe des arcanes sur vous",
-	orbyou_desc = "Préviens quand vous êtes ciblé par l'Orbe des arcanes.",
-	orb_you = "Orbe des arcanes sur VOUS !",
+	orbyou_desc = "Prévient quand vous êtes ciblé par l'Orbe des arcanes.",
+	orb_you = "Orbe des arcanes sur VOUS !",
 
 	orbsay = "Dire - Orbe des arcanes",
 	orbsay_desc = "Fais dire à votre personnage qu'il est ciblé par l'Orbe des arcanes quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue d'activés.",
-	orb_say = "Orbe sur moi !",
+	orb_say = "Orbe sur moi !",
 
 	orbother = "Orbe des arcanes sur les autres",
-	orbother_desc = "Préviens quand les autres sont ciblés par l'Orbe des arcanes.",
+	orbother_desc = "Prévient quand les autres sont ciblés par l'Orbe des arcanes.",
 	orb_other = "Orbe(%s)",
 
 	icon = "Icône",
@@ -97,12 +125,12 @@ L:RegisterTranslations("frFR", function() return {
 
 	pounding = "Martèlement",
 	pounding_desc = "Affiche des barres temporelles pour les Martèlements.",
-	pounding_nextbar = "~Cooldown Martèlement",
+	pounding_nextbar = "~Recharge Martèlement",
 
 	knock = "Repousser au loin",
 	knock_desc = "Affiche une barre temporelle indiquant quand le Saccageur du Vide est suceptible d'utiliser son Repousser au loin.",
-	knock_bar = "~Cooldown Repousser au loin",
-	knock_message = "Repousser au loin : %s",
+	knock_bar = "~Recharge Repousser au loin",
+	knock_message = "Repousser au loin : %s",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -110,10 +138,10 @@ L:RegisterTranslations("koKR", function() return {
 
 	orbyou = "자신의 비전 보주",
 	orbyou_desc = "자신의 비전 보주를 알립니다.",
-	orb_you = "당신에 비전 보주!",
+	orb_you = "당신은 비전 보주!",
 
 	orbsay = "비전 보주 대화",
-	orbsay_desc = "당신이 비전 보주의 대상이 되었을 때 대화를 출력합니다.",
+	orbsay_desc = "자신이 비전 보주의 대상이 되었을 때 일반 대화로 출력합니다.",
 	orb_say = "나에게 보주!",
 
 	orbother = "타인의 비전 보주",
@@ -121,7 +149,7 @@ L:RegisterTranslations("koKR", function() return {
 	orb_other = "보주(%s)",
 
 	icon = "전술 표시",
-	icon_desc = "비전 보주 대상이된 플레이어에게 전술 표시를 지정합니다 (승급자 이상 권한 필요).",
+	icon_desc = "비전 보주 대상이된 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 
 	pounding = "울림",
 	pounding_desc = "울림에 대한 타이머 바를 표시합니다.",
@@ -130,35 +158,35 @@ L:RegisterTranslations("koKR", function() return {
 	knock = "날려버리기",
 	knock_desc = "날려버리기 대기시간 바를 표시합니다.",
 	knock_bar = "~날려버리기 대기시간",
-	--knock_message = "Knock Away: %s",
+	knock_message = "날려버리기: %s",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "警报！消灭入侵者。",
 
-	orbyou = "奥术宝珠(你)",
-	orbyou_desc = "你中奥术宝珠发出警报。",
+	orbyou = "奥术宝珠（你）",
+	orbyou_desc = "当你受到奥术宝珠时发出警报。",
 	orb_you = ">你< 奥术宝珠！",
 
-	orbsay = "奥术宝珠(说)",
+	orbsay = "奥术宝珠（说）",
 	orbsay_desc = "当你目标是奥术宝珠输出到普通聊天中，能及时帮助临近队友。",
 	orb_say = "奥术宝珠瞄准我！请躲开！",
 
-	orbother = "奥术宝珠(其他)",
-	orbother_desc = "其他队友中了奥术宝珠发出警报。",
+	orbother = "奥术宝珠（其他玩家）",
+	orbother_desc = "其他玩家受到奥术宝珠时发出警报。",
 	orb_other = "奥术宝珠：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "为中了奥术宝珠打上团队标记。(需要权限)",
+	icon_desc = "为中了奥术宝珠打上团队标记。（需要权限）",
 
 	pounding = "重击",
 	pounding_desc = "显示重击记时条。",
-	pounding_nextbar = "~重击 冷却",
+	pounding_nextbar = "<重击 冷却>",
 
 	knock = "击退",
 	knock_desc = "击退冷却计时条。",
 	knock_bar = "<击退 冷却>",
-	--knock_message = "Knock Away: %s",
+	knock_message = "击退：>%s<！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -166,27 +194,27 @@ L:RegisterTranslations("zhTW", function() return {
 
 	orbyou = "秘法寶珠瞄準你",
 	orbyou_desc = "當秘法寶珠目標為你時警告",
-	orb_you = "秘法寶珠在你身上！",
+	orb_you = "秘法寶珠在你身上!",
 
 	orbsay = "以 Say 通知秘法寶珠",
-	orbsay_desc = "當秘法寶珠目標為你時，以 Say 通知周圍隊員。",
-	orb_say = "秘法寶珠瞄準我！請避開！",
+	orbsay_desc = "當秘法寶珠目標為你時，以 Say 通知周圍隊員",
+	orb_say = "秘法寶珠瞄準我!請避開!",
 
 	orbother = "秘法寶珠瞄準其他人",
-	orbother_desc = "當秘法寶珠在團員身上時警示。",
-	orb_other = "寶珠目標：[%s]",
+	orbother_desc = "當秘法寶珠在團員身上時警示",
+	orb_other = "寶珠目標: [%s]",
 
 	icon = "團隊標記",
 	icon_desc = "當團員為秘法寶珠目標時，設置團隊標記（需要權限）",
 
 	pounding = "猛擊",
-	pounding_desc = "顯示猛擊計時條。",
-	pounding_nextbar = "猛擊冷卻",
+	pounding_desc = "顯示猛擊計時條",
+	pounding_nextbar = "<猛擊冷卻>",
 
 	knock = "擊退",
-	knock_desc = "擊退冷卻計時條。",
-	knock_bar = "~擊退冷卻計時",
-	--knock_message = "Knock Away: %s",
+	knock_desc = "擊退冷卻計時條",
+	knock_bar = "<擊退冷卻計時>",
+	knock_message = "擊退: [%s]",
 } end )
 
 ----------------------------------
@@ -198,7 +226,7 @@ mod.zonename = BZ["Tempest Keep"]
 mod.otherMenu = "The Eye"
 mod.enabletrigger = boss
 mod.toggleoptions = {"enrage", "pounding", "knock", -1, "orbyou", "orbsay", "orbother", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 66285 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -207,6 +235,7 @@ mod.revision = tonumber(("$Revision: 66285 $"):sub(12, -3))
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "KnockAway", 25778)
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Pounding", 34162)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Orb", 34172, 34190)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
@@ -230,6 +259,11 @@ function mod:Pounding()
 	if db.pounding then
 		self:Bar(L["pounding_nextbar"], 13, 34162)
 	end
+end
+
+function mod:Orb(player, spellID)
+	if not player then return end
+	self:Result(player)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)

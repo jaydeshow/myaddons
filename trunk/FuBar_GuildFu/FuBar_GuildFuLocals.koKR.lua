@@ -1,3 +1,6 @@
+﻿local revision = tonumber(string.sub("$Revision: 73182 $", 12, -3)) or 1
+if revision > FuBar_GuildFu.revision then FuBar_GuildFu.revision = revision end
+
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_GuildFu")
 
 L:RegisterTranslations("koKR", function() return {
@@ -90,13 +93,21 @@ L:RegisterTranslations("koKR", function() return {
 	["Warrior"] = "전사",
 	["Toggles display of Warriors"] = "전사의 표시를 토글합니다",
 	["Level Filter Settings"] = "레벨별 필터 설정",
+	[" 1- 9"] = " 1- 9",
 	["Toggles display of level 1 to 9 chars"] = "1-9레벨 사이의 캐릭터의 표시를 토글합니다",
+	["10-19"] = "10-19",
 	["Toggles display of level 10 to 19 chars"] = "10-19레벨 사이의 캐릭터의 표시를 토글합니다",
+	["20-29"] = "20-29",
 	["Toggles display of level 20 to 29 chars"] = "20-29레벨 사이의 캐릭터의 표시를 토글합니다",
+	["30-39"] = "30-39",
 	["Toggles display of level 30 to 39 chars"] = "30-39레벨 사이의 캐릭터의 표시를 토글합니다",
+	["40-49"] = "40-49",
 	["Toggles display of level 40 to 49 chars"] = "40-49레벨 사이의 캐릭터의 표시를 토글합니다",
+	["50-59"] = "50-59",
 	["Toggles display of level 50 to 59 chars"] = "50-59레벨 사이의 캐릭터의 표시를  토글합니다",
+	["60-69"] = "60-69",
 	["Toggles display of level 60 to 69 chars"] = "60-69레벨 사이의 캐릭터의 표시를  토글합니다",
+	["70"] = "70",
 	["Toggles display of level 70 chars"] = "70레벨 캐릭터의 표시를 토글합니다",
 	["Zone Filter Settings"] = "지역 필터 설정",
 	["In Battleground"] = "전장",

@@ -1,3 +1,6 @@
+﻿local revision = tonumber(string.sub("$Revision: 73182 $", 12, -3)) or 1
+if revision > FuBar_GuildFu.revision then FuBar_GuildFu.revision = revision end
+
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_GuildFu")
 
 L:RegisterTranslations("zhTW", function() return {

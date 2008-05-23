@@ -1,5 +1,5 @@
 <Bindings>
-  <Binding name="Assist MT1" header="oRA2">--[[ dummy ]]</Binding>
+  <Binding name="Assist MT1" header="oRA2MT">--[[ dummy ]]</Binding>
   <Binding name="Assist MT2">--[[ dummy ]]</Binding>
   <Binding name="Assist MT3">--[[ dummy ]]</Binding>
   <Binding name="Assist MT4">--[[ dummy ]]</Binding>
@@ -21,38 +21,45 @@
   <Binding name="Target MT9">--[[ dummy ]]</Binding>
   <Binding name="Target MT10">--[[ dummy ]]</Binding>
 
-  <Binding name="Set MT1">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(1) end
+  <Binding name="Set Next" description="Sets your target or mouseover as a main tank in the next free slot.">
+    if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):SetNextMainTank() end
   </Binding>
-  <Binding name="Set MT2">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(2) end
-  </Binding>
-  <Binding name="Set MT3">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(3) end
-  </Binding>
-  <Binding name="Set MT4">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(4) end
-  </Binding>
-  <Binding name="Set MT5">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(5) end
-  </Binding>
-  <Binding name="Set MT6">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(6) end
-  </Binding>
-  <Binding name="Set MT7">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(7) end
-  </Binding>
-  <Binding name="Set MT8">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(8) end
-  </Binding>
-  <Binding name="Set MT9">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(9) end
-  </Binding>
-  <Binding name="Set MT10">
-	if oRA:HasModule( "LeaderMT" ) then oRA:GetModule( "LeaderMT" ):TooltipClick(10) end
+  <Binding name="Clear Last" description="Clears the highest used main tank slot.">
+    if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):ClearLastMainTank() end
   </Binding>
 
-  <Binding name="Assist PT1">--[[ dummy ]]</Binding>
+  <Binding name="Set MT1">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(1) end
+  </Binding>
+  <Binding name="Set MT2">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(2) end
+  </Binding>
+  <Binding name="Set MT3">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(3) end
+  </Binding>
+  <Binding name="Set MT4">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(4) end
+  </Binding>
+  <Binding name="Set MT5">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(5) end
+  </Binding>
+  <Binding name="Set MT6">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(6) end
+  </Binding>
+  <Binding name="Set MT7">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(7) end
+  </Binding>
+  <Binding name="Set MT8">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(8) end
+  </Binding>
+  <Binding name="Set MT9">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(9) end
+  </Binding>
+  <Binding name="Set MT10">
+	if oRA:HasModule("LeaderMT") then oRA:GetModule("LeaderMT"):TooltipClick(10) end
+  </Binding>
+
+  <Binding name="Assist PT1" header="oRA2PT">--[[ dummy ]]</Binding>
   <Binding name="Assist PT2">--[[ dummy ]]</Binding>
   <Binding name="Assist PT3">--[[ dummy ]]</Binding>
   <Binding name="Assist PT4">--[[ dummy ]]</Binding>
@@ -76,36 +83,35 @@
 
 
   <Binding name="Set PT1">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(1) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(1) end  
   </Binding>
   <Binding name="Set PT2">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(2) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(2) end  
   </Binding>
   <Binding name="Set PT3">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(3) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(3) end  
   </Binding>
   <Binding name="Set PT4">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(4) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(4) end  
   </Binding>
   <Binding name="Set PT5">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(5) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(5) end  
   </Binding>
   <Binding name="Set PT6">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(6) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(6) end  
   </Binding>
   <Binding name="Set PT7">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(7) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(7) end  
   </Binding>
   <Binding name="Set PT8">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(8) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(8) end  
   </Binding>
   <Binding name="Set PT9">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(9) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(9) end  
   </Binding>
   <Binding name="Set PT10">
-	if oRA:HasModule( "OptionalPT" ) then oRA:GetModule( "OptionalPT" ):TooltipClick(10) end  
+	if oRA:HasModule("OptionalPT") then oRA:GetModule("OptionalPT"):TooltipClick(10) end  
   </Binding>
 
 </Bindings>
-
 

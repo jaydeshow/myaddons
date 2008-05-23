@@ -301,7 +301,9 @@ local function MI2_UpdateGameTooltip( mobData, mobName, unit )
 
 	if mobData.class then
 		local txt = GameTooltipTextLeft2:GetText()
-		GameTooltipTextLeft2:SetText( txt.." "..mobData.class )
+		if txt then
+			GameTooltipTextLeft2:SetText( txt.." "..mobData.class )
+		end
 	end
 
 	local opt, value, itemText

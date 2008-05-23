@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: Fishing Ace! |cff7fff7f -Ace2-|r
 ## Version: 0.4.2h
 ## Notes: Simple right click casting.
@@ -9,8 +9,8 @@
 ## X-Category: Tradeskill
 ## X-AceForum: http://www.wowace.com/forums/index.php?topic=4654.0.html
 ## X-RelSite-UI.WoW: http://wowui.incgamers.com/?p=mod&m=3939
-## X-Embeds: Ace2, TabletLib, Deformat, GratuityLib, ItemBonusLib
-## OptionalDeps: Ace2, TabletLib, Deformat, GratuityLib, ItemBonusLib
+## X-Embeds: Ace2
+## OptionalDeps: Ace2
 ## SavedVariablesPerCharacter: FishingBuddyDBPC
 
 embeds.xml

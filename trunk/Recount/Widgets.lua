@@ -1,3 +1,6 @@
+local revision = tonumber(string.sub("$Revision: 67838 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
+
 function Recount:CreateFrame(Name, Title, Height, Width, ShowFunc, HideFunc)
 	local theFrame=CreateFrame("Frame", Name,UIParent)
 
@@ -132,11 +135,17 @@ function Recount:HideScrollbarElements(name)
 	local Up=getglobal(name.."ScrollBarScrollUpButton")
 	local Down=getglobal(name.."ScrollBarScrollDownButton")
 
+
 	Thumb:Hide()
 	Up:Hide()
+	Up:EnableMouse(false)
 	if Up.Overlay then Up.Overlay:Hide() end
 	Down:Hide()
+	Down:EnableMouse(false)
 	if Down.Overlay then Down.Overlay:Hide() end
+	
+	local scrollbar=getglobal(name.."ScrollBar")
+	scrollbar:EnableMouse(false)
 end
 
 function Recount:ShowScrollbarElements(name)
@@ -145,9 +154,13 @@ function Recount:ShowScrollbarElements(name)
 	local Down=getglobal(name.."ScrollBarScrollDownButton")
 
 	Thumb:Show()
+	Up:EnableMouse(true)
 	Up:Show()
 	if Up.Overlay then Up.Overlay:Show() end
+	Down:EnableMouse(true)
 	Down:Show()
 	if Down.Overlay then Down.Overlay:Show() end
+	local scrollbar=getglobal(name.."ScrollBar")
+	scrollbar:EnableMouse(true)
 end
 

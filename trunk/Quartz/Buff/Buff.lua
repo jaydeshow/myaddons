@@ -15,7 +15,7 @@
 	with this program; if not, write to the Free Software Foundation, Inc.,
 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ]]
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 local L = AceLibrary("AceLocale-2.2"):new("Quartz")
 
 local Quartz = Quartz
@@ -158,7 +158,7 @@ function QuartzBuff:OnEnable()
 	self:RegisterBucketEvent("UNIT_AURA", 0.5)
 	self:RegisterEvent("PLAYER_TARGET_CHANGED", "UpdateBars")
 	self:RegisterEvent("PLAYER_FOCUS_CHANGED", "UpdateBars")
-	self:RegisterEvent("SharedMedia_SetGlobal", function(mtype, override)
+	media.RegisterCallback(self, "LibSharedMedia_SetGlobal", function(mtype, override)
 		if mtype == "statusbar" then
 			for i, v in pairs(targetbars) do
 				v:SetStatusBarTexture(media:Fetch("statusbar", override))

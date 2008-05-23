@@ -19,6 +19,8 @@ function beql:InitQuestLog()
 
 	if not beql.db.profile.simplequestlog then
 		
+		-- Code from DoubleWide by Iriel
+		-- {
 		QuestLogFrame:SetAttribute("UIPanelLayout-width", 680)
 		QuestLogFrame:SetWidth(718)
 		QuestLogFrame:SetHeight(561)
@@ -87,6 +89,8 @@ function beql:InitQuestLog()
 				region:SetTexture(path)
 			end
 		end
+		-- }
+		-- Code from DoubleWide by Iriel
 
 		beql.MinimizeButton = CreateFrame("Button","MinimizeButton", QuestLogFrame, "UIPanelButtonTemplate")
 		beql.MinimizeButton:SetNormalTexture("Interface\\AddOns\\beql\\Images\\minimize_up")
@@ -352,7 +356,12 @@ function beql:Hooks_QuestLogTitleButton_OnClick(button)
 		-- Otherwise try to track it or put it into chat
 		if ( ChatFrameEditBox:IsVisible() ) then
 			--ChatFrameEditBox:Insert(strsub(strtrim(this:GetText()),11))
-			ChatFrameEditBox:Insert(gsub(this:GetText(), " *(.*)", "%1"))
+			local questLink = GetQuestLink(questIndex);
+			if ( questLink ) then
+				ChatEdit_InsertLink(questLink);
+			else
+				ChatFrameEditBox:Insert(gsub(this:GetText(), " *(.*)", "%1"))
+			end
 		else
 			-- Shift-click toggles quest-watch on this quest.
 			if ( IsQuestWatched(questIndex) ) then
@@ -379,9 +388,9 @@ function beql:Hooks_QuestLogTitleButton_OnClick(button)
 	end	
 	
 	QuestLog_SetSelection(questIndex)
-	if IsAddOnLoaded("Lightheaded") then
-		LightHeaded:QuestLogTitleButton_OnClick(frame, button)
-	end
+--	if IsAddOnLoaded("Lightheaded") then
+--		LightHeaded:QuestLogTitleButton_OnClick(frame, button)
+--	end
 	QuestLog_Update()
 end
 

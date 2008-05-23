@@ -1,9 +1,8 @@
-local BabbleClass = AceLibrary("Babble-Class-2.2");
-local BabbleBoss = AceLibrary("Babble-Boss-2.2");
-local BabbleTrade=AceLibrary("Babble-Tradeskill-2.2");
-local BabbleInventory=AceLibrary("Babble-Inventory-2.2");
-local BabbleFaction = AceLibrary("Babble-Faction-2.2");
-local BabbleZone = AceLibrary("Babble-Zone-2.2");
+local BabbleClass = LibStub("LibBabble-Class-3.0"):GetLookupTable();
+local BabbleBoss = LibStub("LibBabble-Boss-3.0"):GetLookupTable();
+local BabbleInventory = LibStub("LibBabble-Inventory-3.0"):GetLookupTable();
+local BabbleFaction = LibStub("LibBabble-Faction-3.0"):GetLookupTable();
+local BabbleZone = LibStub("LibBabble-Zone-3.0"):GetLookupTable();
 local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 --------------------------------------------------------------------------------
@@ -23,29 +22,29 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#c9#", BabbleClass["Warrior"]);
 
     -- Professions
-    text = gsub(text, "#p1#", BabbleTrade["Alchemy"]);
-    text = gsub(text, "#p2#", BabbleTrade["Blacksmithing"]);
-    text = gsub(text, "#p3#", BabbleTrade["Cooking"]);
-    text = gsub(text, "#p4#", BabbleTrade["Enchanting"]);
-    text = gsub(text, "#p5#", BabbleTrade["Engineering"]);
-    text = gsub(text, "#p6#", BabbleTrade["First Aid"]);
-    text = gsub(text, "#p7#", BabbleTrade["Leatherworking"]);
-    text = gsub(text, "#p8#", BabbleTrade["Tailoring"]);
-    text = gsub(text, "#p9#", BabbleTrade["Dragonscale Leatherworking"]);
-    text = gsub(text, "#p10#", BabbleTrade["Tribal Leatherworking"]);
-    text = gsub(text, "#p11#", BabbleTrade["Elemental Leatherworking"]);
-    text = gsub(text, "#p12#", BabbleTrade["Jewelcrafting"]);
-    text = gsub(text, "#p13#", BabbleTrade["Armorsmith"]);
-    text = gsub(text, "#p14#", BabbleTrade["Master Axesmith"]);
-    text = gsub(text, "#p15#", BabbleTrade["Master Swordsmith"]);
-    text = gsub(text, "#p16#", BabbleTrade["Weaponsmith"]);
-    text = gsub(text, "#p17#", BabbleTrade["Gnomish Engineering"]);
-    text = gsub(text, "#p18#", BabbleTrade["Goblin Engineering"]);
-    text = gsub(text, "#p19#", BabbleTrade["Mooncloth Tailoring"]);
-    text = gsub(text, "#p20#", BabbleTrade["Shadoweave Tailoring"]);
-    text = gsub(text, "#p21#", BabbleTrade["Spellfire Tailoring"]);
-    text = gsub(text, "#p22#", BabbleTrade["Master Hammersmith"]);
-    text = gsub(text, "#p23#", BabbleTrade["Mining"]);
+    text = gsub(text, "#p1#", (GetSpellInfo(2259)));	-- Alchemy
+    text = gsub(text, "#p2#", (GetSpellInfo(2018)));	-- Blacksmithing
+    text = gsub(text, "#p3#", (GetSpellInfo(2550)));	-- Cooking
+    text = gsub(text, "#p4#", (GetSpellInfo(7411)));	-- Enchanting
+    text = gsub(text, "#p5#", (GetSpellInfo(4036)));	-- Engineering
+    text = gsub(text, "#p6#", (GetSpellInfo(3273)));	-- First Aid
+    text = gsub(text, "#p7#", (GetSpellInfo(2108)));	-- Leatherworking
+    text = gsub(text, "#p8#", (GetSpellInfo(3908)));	-- Tailoring
+    text = gsub(text, "#p9#", (GetSpellInfo(10656)));	-- Dragonscale Leatherworking
+    text = gsub(text, "#p10#", (GetSpellInfo(10660)));	-- Tribal Leatherworking
+    text = gsub(text, "#p11#", (GetSpellInfo(10658)));	-- Elemental Leatherworking
+    text = gsub(text, "#p12#", (GetSpellInfo(25229)));	-- Jewelcrafting
+    text = gsub(text, "#p13#", (GetSpellInfo(9788)));	-- Armorsmith
+    text = gsub(text, "#p14#", (GetSpellInfo(17041)));	-- Master Axesmith
+    text = gsub(text, "#p15#", (GetSpellInfo(17039)));	-- Master Swordsmith
+    text = gsub(text, "#p16#", (GetSpellInfo(9787)));	-- Weaponsmith
+    text = gsub(text, "#p17#", (GetSpellInfo(20220)));	-- Gnomish Engineering
+    text = gsub(text, "#p18#", (GetSpellInfo(20221)));	-- Goblin Engineering
+    text = gsub(text, "#p19#", (GetSpellInfo(26798)));	-- Mooncloth Tailoring
+    text = gsub(text, "#p20#", (GetSpellInfo(26801)));	-- Shadoweave Tailoring
+    text = gsub(text, "#p21#", (GetSpellInfo(26797)));	-- Spellfire Tailoring
+    text = gsub(text, "#p22#", (GetSpellInfo(17040)));	-- Master Hammersmith
+    text = gsub(text, "#p23#", (GetSpellInfo(2575)));	-- Mining
 
     -- Reputation
     text = gsub(text, "#r1#", BabbleFaction["Neutral"]);
@@ -210,6 +209,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#ud17#", AL["Robotic Homing Chicken"]);
     text = gsub(text, "#ud18#", AL["Paper Airplane"]);
     text = gsub(text, "#ud19#", AL["Servants of the Betrayer"]);
+    text = gsub(text, "#ud20#", AL["Hunt for Illidan"]);
 
     -- ZG Tokens
     text = gsub(text, "#zgt1#", AL["Primal Hakkari Kossack"]);
@@ -778,8 +778,8 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#pvprep701_3#", AL["Kodohide Battlegear"]);
     text = gsub(text, "#pvprep702#", AL["Stalker's Chain Battlegear"]);
     text = gsub(text, "#pvprep703#", AL["Evoker's Silk Battlegear"]);
-    text = gsub(text, "#pvprep704_1#", AL["Crusader's Scaled Battlegear"]);
-    text = gsub(text, "#pvprep704_2#", AL["Crusader's Ornamented Battlegear"]);
+    text = gsub(text, "#pvprep704_1#", AL["Crusader's Scaled Battledgear"]);
+    text = gsub(text, "#pvprep704_2#", AL["Crusader's Ornamented Battledgear"]);
     text = gsub(text, "#pvprep705_1#", AL["Satin Battlegear"]);
     text = gsub(text, "#pvprep705_2#", AL["Mooncloth Battlegear"]);
     text = gsub(text, "#pvprep706#", AL["Opportunist's Battlegear"]);
@@ -827,40 +827,40 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "=ds=", "|cffFFd200");
 
     -- Currency Icons
-    text = gsub(text, "#gold#", "Interface\\AddOns\\AtlasLoot\\Images\\gold");
-    text = gsub(text, "#silver#", "Interface\\AddOns\\AtlasLoot\\Images\\silver");
-    text = gsub(text, "#copper#", "Interface\\AddOns\\AtlasLoot\\Images\\bronze");
-    text = gsub(text, "#wsg#", "Interface\\Icons\\INV_Misc_Rune_07");
-    text = gsub(text, "#ab#", "Interface\\Icons\\INV_Jewelry_Amulet_07");
-    text = gsub(text, "#av#", "Interface\\Icons\\INV_Jewelry_Necklace_21");
-    text = gsub(text, "#eos#", "Interface\\Icons\\Spell_Nature_EyeOfTheStorm");
-    text = gsub(text, "#arena#", "Interface\\PVPFrame\\PVP-ArenaPoints-Icon");
-    text = gsub(text, "#markthrallmar#", "Interface\\Icons\\INV_Misc_Token_Thrallmar");
-    text = gsub(text, "#markhhold#", "Interface\\Icons\\INV_Misc_Token_HonorHold");
-    text = gsub(text, "#halaabattle#", "Interface\\Icons\\INV_Misc_Rune_08");
-    text = gsub(text, "#halaaresearch#", "Interface\\Icons\\INV_Misc_Rune_09");
-    text = gsub(text, "#spiritshard#", "Interface\\Icons\\INV_Jewelry_FrostwolfTrinket_04");
-    text = gsub(text, "#heroic#", "Interface\\Icons\\Spell_Holy_ChampionsBond");
-    text = gsub(text, "#darkmoon#", "Interface\\Icons\\INV_Misc_Ticket_Darkmoon_01");
-    text = gsub(text, "#ccombat#", "Interface\\Icons\\INV_Jewelry_Talisman_06");
-    text = gsub(text, "#ctactical#", "Interface\\Icons\\INV_Jewelry_Amulet_02");
-    text = gsub(text, "#clogistics#", "Interface\\Icons\\INV_Jewelry_Necklace_16");
-    text = gsub(text, "#cremulos#", "Interface\\Icons\\INV_Jewelry_Necklace_14");
-    text = gsub(text, "#ccenarius#", "Interface\\Icons\\INV_Jewelry_Necklace_12");
-    text = gsub(text, "#zandalar#", "Interface\\Icons\\INV_Misc_Coin_08");
-    text = gsub(text, "#glowcap#", "Interface\\Icons\\INV_Mushroom_02");
-    text = gsub(text, "#ogrilashard#", "Interface\\Icons\\INV_Misc_Apexis_Shard");
-    text = gsub(text, "#ogrilacrystal#", "Interface\\Icons\\INV_Misc_Apexis_Crystal");
-    text = gsub(text, "#horde#", "Interface\\AddOns\\AtlasLoot\\Images\\Horde");
-    text = gsub(text, "#alliance#", "Interface\\AddOns\\AtlasLoot\\Images\\Alliance");
+    text = gsub(text, "#gold#", "|TInterface\\AddOns\\AtlasLoot\\Images\\gold:0|t");
+    text = gsub(text, "#silver#", "|TInterface\\AddOns\\AtlasLoot\\Images\\silver:0|t");
+    text = gsub(text, "#copper#", "|TInterface\\AddOns\\AtlasLoot\\Images\\bronze:0|t");
+    text = gsub(text, "#wsg#", "|TInterface\\Icons\\INV_Misc_Rune_07:0|t");
+    text = gsub(text, "#ab#", "|TInterface\\Icons\\INV_Jewelry_Amulet_07:0|t");
+    text = gsub(text, "#av#", "|TInterface\\Icons\\INV_Jewelry_Necklace_21:0|t");
+    text = gsub(text, "#eos#", "|TInterface\\Icons\\Spell_Nature_EyeOfTheStorm:0|t");
+    text = gsub(text, "#arena#", "|TInterface\\PVPFrame\\PVP-ArenaPoints-Icon:0|t");
+    text = gsub(text, "#markthrallmar#", "|TInterface\\Icons\\INV_Misc_Token_Thrallmar:0|t");
+    text = gsub(text, "#markhhold#", "|TInterface\\Icons\\INV_Misc_Token_HonorHold:0|t");
+    text = gsub(text, "#halaabattle#", "|TInterface\\Icons\\INV_Misc_Rune_08:0|t");
+    text = gsub(text, "#halaaresearch#", "|TInterface\\Icons\\INV_Misc_Rune_09:0|t");
+    text = gsub(text, "#spiritshard#", "|TInterface\\Icons\\INV_Jewelry_FrostwolfTrinket_04:0|t");
+    text = gsub(text, "#heroic#", "|TInterface\\Icons\\Spell_Holy_ChampionsBond:0|t");
+    text = gsub(text, "#darkmoon#", "|TInterface\\Icons\\INV_Misc_Ticket_Darkmoon_01:0|t");
+    text = gsub(text, "#ccombat#", "|TInterface\\Icons\\INV_Jewelry_Talisman_06:0|t");
+    text = gsub(text, "#ctactical#", "|TInterface\\Icons\\INV_Jewelry_Amulet_02:0|t");
+    text = gsub(text, "#clogistics#", "|TInterface\\Icons\\INV_Jewelry_Necklace_16:0|t");
+    text = gsub(text, "#cremulos#", "|TInterface\\Icons\\INV_Jewelry_Necklace_14:0|t");
+    text = gsub(text, "#ccenarius#", "|TInterface\\Icons\\INV_Jewelry_Necklace_12:0|t");
+    text = gsub(text, "#zandalar#", "|TInterface\\Icons\\INV_Misc_Coin_08:0|t");
+    text = gsub(text, "#glowcap#", "|TInterface\\Icons\\INV_Mushroom_02:0|t");
+    text = gsub(text, "#ogrilashard#", "|TInterface\\Icons\\INV_Misc_Apexis_Shard:0|t");
+    text = gsub(text, "#ogrilacrystal#", "|TInterface\\Icons\\INV_Misc_Apexis_Crystal:0|t");
+    text = gsub(text, "#horde#", "|TInterface\\AddOns\\AtlasLoot\\Images\\Horde:0|t");
+    text = gsub(text, "#alliance#", "|TInterface\\AddOns\\AtlasLoot\\Images\\Alliance:0|t");
 
     englishFaction, _ = UnitFactionGroup("player")
     if englishFaction == "Horde" then
-        text = gsub(text, "#faction#", "Interface\\AddOns\\AtlasLoot\\Images\\Horde");
-        text = gsub(text, "#factionoutlandPvP#", "Interface\\AddOns\\AtlasLoot\\Images\\Horde");
+        text = gsub(text, "#faction#", "|TInterface\\AddOns\\AtlasLoot\\Images\\Horde:0|t");
+        text = gsub(text, "#factionoutlandPvP#", "|TInterface\\AddOns\\AtlasLoot\\Images\\Horde:0|t");
     else
-        text = gsub(text, "#faction#", "Interface\\AddOns\\AtlasLoot\\Images\\Alliance");
-        text = gsub(text, "#factionoutlandPvP#", "Interface\\AddOns\\AtlasLoot\\Images\\Alliance");
+        text = gsub(text, "#faction#", "|TInterface\\AddOns\\AtlasLoot\\Images\\Alliance:0|t");
+        text = gsub(text, "#factionoutlandPvP#", "|TInterface\\AddOns\\AtlasLoot\\Images\\Alliance:0|t");
     end
 
     return text;

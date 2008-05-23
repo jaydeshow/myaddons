@@ -1163,6 +1163,24 @@
 		</Scripts>
 	</Button>
 
+	<Button name="MobMapNextQuestButton" virtual="true">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<NormalTexture file="Interface\AddOns\MobMap\NextButton"/>
+		<PushedTexture file="Interface\AddOns\MobMap\NextButtonDown"/>
+		<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+	</Button>
+
+	<Button name="MobMapPrevQuestButton" virtual="true">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<NormalTexture file="Interface\AddOns\MobMap\PrevButton"/>
+		<PushedTexture file="Interface\AddOns\MobMap\PrevButtonDown"/>
+		<HighlightTexture file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+	</Button>
+
 	<Frame name="MobMapQuestDetailFrame" toplevel="true" frameStrata="FULLSCREEN_DIALOG" hidden="true" enableMouse="true" movable="true">
 		<TitleRegion setAllPoints="true"/>
 		<Anchors>
@@ -1202,7 +1220,7 @@
 					</Layer>
 				</Layers>				
 			</Frame>
-			<Button name="MobMapQuestDetailFrameCloseButton" inherits="UIPanelCloseButton">
+			<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
                 <Anchors>
                     <Anchor point="TOPRIGHT" relativeTo="MobMapQuestDetailFrame" relativePoint="TOPRIGHT">
                         <Offset>
@@ -1212,18 +1230,47 @@
                 </Anchors>
 				<Scripts>
 					<OnClick>
+						mobmap_quest_details_idlist=nil;
 						this:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+            </Button>
+			<Button name="$parentNextButton" inherits="MobMapNextQuestButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativeTo="MobMapQuestDetailFrame" relativePoint="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-24" y="-4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+				<Scripts>
+					<OnClick>
+						MobMap_NextQuestDetail();
+					</OnClick>
+				</Scripts>
+            </Button>
+			<Button name="$parentPrevButton" inherits="MobMapPrevQuestButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativeTo="MobMapQuestDetailFrame" relativePoint="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-44" y="-4"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+				<Scripts>
+					<OnClick>
+						MobMap_PrevQuestDetail();
 					</OnClick>
 				</Scripts>
             </Button>
 			<Frame name="$parentTitle">
 				<Size>
-					<AbsDimension x="300" y="18"/>
+					<AbsDimension x="300" y="30"/>
 				</Size>
 				<Anchors>
-					<Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
 						<Offset>
-							<AbsDimension x="0" y="-16"/>
+							<AbsDimension x="10" y="-16"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -1231,7 +1278,7 @@
 					<Layer level="OVERLAY">
 						<FontString name="$parentText" justifyH="CENTER" justifyV="TOP" hidden="false" inherits="GameFontNormal" text="">
 							<Size>
-								<AbsDimension x="300" y="20"/>
+								<AbsDimension x="300" y="30"/>
 							</Size>
 							<Color r="1.0" g="1.0" b="1.0" a="1.0"/>
 						</FontString>

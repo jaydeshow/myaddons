@@ -1,5 +1,6 @@
-
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -73,14 +74,14 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("deDE", function() return {
 	["Zone"] = "Zonen",
-	["Options for zone checks."] = "Optionen f\195\188r den Zonen-Check",
+	["Options for zone checks."] = "Optionen für den Zonen-Check.",
 	["Refresh"] = "Erneuern",
-	["Close"] = "Schlie\195\159en",
+	["Close"] = "Schließen",
 	["Unknown"] = "Unbekannt",
 	["Name"] = "Name",
 	["Optional/Zone"] = "Wahlweise/Zonen",
-	["Perform zone check"] = "Zonen checken",
-	["Check the raid's location."] = "\195\156berpr\195\188ft die Standorte der Schlachtzugsmitglieder.",
+	["Perform zone check"] = "Starte einen Zonen-Check",
+	["Check the raid's location."] = "Überprüft die Standorte der Schlachtzugsmitglieder.",
 } end )
 
 ----------------------------------

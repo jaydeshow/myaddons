@@ -1,6 +1,6 @@
 
 -- Maps.lua: generic mapping code and map "base class"
--- $Id: Maps.lua 800 2007-02-27 17:59:13Z jnmiller $
+-- $Id: Maps.lua 1022 2008-03-07 20:57:50Z jnmiller $
 
 -- Initializes the state of the map overlays and settings.
 function RecipeRadar_Maps_Init()

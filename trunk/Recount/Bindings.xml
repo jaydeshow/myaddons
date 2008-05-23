@@ -16,12 +16,13 @@
 	<Binding name="RECOUNT_INTERRUPTS">Recount:SetMainWindowMode(13)</Binding>
 	<Binding name="RECOUNT_CCBREAKER">Recount:SetMainWindowMode(14)</Binding>
 	<Binding name="RECOUNT_ACTIVITY">Recount:SetMainWindowMode(15)</Binding>
-	<Binding name="RECOUNT_THREAT">Recount:SetMainWindowMode(16)</Binding>
 	<Binding name="RECOUNT_MANA">Recount:SetMainWindowMode(17)</Binding>
 	<Binding name="RECOUNT_ENERGY">Recount:SetMainWindowMode(18)</Binding>
 	<Binding name="RECOUNT_RAGE">Recount:SetMainWindowMode(19)</Binding>
 	<Binding name="RECOUNT_REPORT_MAIN">Recount:ShowReport("Main",Recount.ReportData)</Binding>
 	<Binding name="RECOUNT_REPORT_DETAILS">Recount:ShowReport("Detail",Recount.ReportDetail)</Binding>
 	<Binding name="RECOUNT_RESET_DATA">Recount:ShowReset()</Binding>
-
+	<Binding name="RECOUNT_SHOW_MAIN">Recount.MainWindow:Show();Recount:RefreshMainWindow()</Binding>
+	<Binding name="RECOUNT_HIDE_MAIN">Recount.MainWindow:Hide()</Binding>
+	<Binding name="RECOUNT_TOGGLE_MAIN">if Recount.MainWindow:IsShown() then Recount.MainWindow:Hide() else Recount.MainWindow:Show();Recount:RefreshMainWindow() end</Binding>
 </Bindings>

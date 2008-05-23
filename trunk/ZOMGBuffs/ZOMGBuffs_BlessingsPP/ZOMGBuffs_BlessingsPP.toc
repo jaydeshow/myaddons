@@ -2,9 +2,10 @@
 ## Title: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80PallyPower Comms|r] by |cFFFF8080Zek|r
 ## Notes: ZOMGBuffs, Pally Power communications module
 ## Author: Zek
-## Version: $Revision: 65891 $
+## Version: $Revision: 68049 $
 ## LoadOnDemand: 1
 ## RequiredDeps: ZOMGBuffs, ZOMGBuffs_BlessingsManager
+## OptDeps: Ace2
 
 ## X-Category: Buffs
 ## X-eMail: zeksie@googlemail.com

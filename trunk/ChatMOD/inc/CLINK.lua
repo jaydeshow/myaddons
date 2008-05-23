@@ -23,6 +23,8 @@ function ChatMOD_CLINK_CreateLink (chatstring)
 		   --		1.10 item links: to possibly be reactivated in a future version.
 		   --		chatstring = string.gsub (chatstring, "|c(%x+)|H(item):(%d-):(%d-):(%d-):(%d-)|h%[([^%]]-)%]|h|r", "{CLINK:%2:%1:%3:%4:%5:%6:%7}")
 		   --		Old item links: backward compatibility.
+		   chatstring = string.gsub (chatstring, "|c(%x+)|H(quest):(%d-:%d-)|h%[([^%]]-)%]|h|r", "{CLINK:%2:%1:%3:%4}")
+		   chatstring = string.gsub (chatstring, "|c(%x+)|H(spell):(.-)|h%[([^%]]-)%]|h|r", "{CLINK:%2:%1:%3:%4}")
 		   chatstring = string.gsub (chatstring, "|c(%x+)|Hitem:(%d-:%d-:%d-:%d-:%d-:%d-:%d-:%d-)|h%[([^%]]-)%]|h|r", "{CLINK:item:%1:%2:%3}")
 		   chatstring = string.gsub (chatstring, "|c(%x+)|H(enchant):(%d-)|h%[([^%]]-)%]|h|r", "{CLINK:enchant:%2:%1:%3:%4}")
 	   end
@@ -32,6 +34,8 @@ end
 
 function ChatMOD_CLINK_Decompose (chatstring)
 	if chatstring then
+		chatstring = string.gsub (chatstring, "{CLINK:quest:(%x+):(%d-:%d-):([^}]-)}", "|c%1|Hquest:%2|h[%3]|h|r")
+		chatstring = string.gsub (chatstring, "{CLINK:spell:(%x+):(.-):([^}]-)}", "|c%1|Hspell:%2|h[%3]|h|r")
 		chatstring = string.gsub (chatstring, "{CLINK:item:(%x+):(%d-:%d-:%d-:%d-:%d-:%d-:%d-:%d-):([^}]-)}", "|c%1|Hitem:%2|h[%3]|h|r")
 		chatstring = string.gsub (chatstring, "{CLINK:enchant:(%x+):(%d-):([^}]-)}", "|c%1|Henchant:%2|h[%3]|h|r")
 		-- For backward compatibility (yeah, I should have done it before...).

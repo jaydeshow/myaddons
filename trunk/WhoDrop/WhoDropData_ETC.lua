@@ -63,9 +63,9 @@ WhoDropNote = {
 ]]
 
 local L = AceLibrary("AceLocale-2.2"):new("WhoDrop")
-local BF = AceLibrary("Babble-Faction-2.2")
-local BB = AceLibrary("Babble-Boss-2.2")
-local BZ = AceLibrary("Babble-Zone-2.2")
+local BF = LibStub("LibBabble-Faction-3.0"):GetLookupTable()
+local BB = LibStub("LibBabble-Boss-3.0"):GetLookupTable()
+local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 
 WhoDropEtcData = {
 	["Reputaion|4"] = {

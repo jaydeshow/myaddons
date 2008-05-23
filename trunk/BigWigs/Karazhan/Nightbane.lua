@@ -78,33 +78,33 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	fear = "Rugissement",
-	fear_desc = "Préviens quand Plaie-de-nuit lance son Rugissement puissant.",
-	fear_message = "Rugissement dans 2 sec. !",
+	fear_desc = "Prévient quand Plaie-de-nuit lance son Rugissement puissant.",
+	fear_message = "Rugissement dans 2 sec. !",
 	fear_warning = "Rugissement imminent",
-	fear_bar = "Rugissement !",
-	fear_nextbar = "~Cooldown Rugissement",
+	fear_bar = "Rugissement !",
+	fear_nextbar = "~Recharge Rugissement",
 
 	charr = "Terre calcinée sur vous",
-	charr_desc = "Préviens quand vous êtes dans la Terre calcinée.",
-	charr_message = "Terre calcinée sur VOUS !",
+	charr_desc = "Prévient quand vous êtes dans la Terre calcinée.",
+	charr_message = "Terre calcinée sur VOUS !",
 
 	phase = "Phases",
-	phase_desc = "Préviens quand Plaie-de-nuit passe d'une phase à l'autre.",
+	phase_desc = "Prévient quand Plaie-de-nuit passe d'une phase à l'autre.",
 	airphase_trigger = "Misérable vermine. Je vais vous exterminer des airs !",
 	landphase_trigger1 = "Assez ! Je vais atterrir et vous écraser moi-même !",
 	landphase_trigger2 = "Insectes ! Je vais vous montrer de quel bois je me chauffe !",
-	airphase_message = "Décollage !",
-	landphase_message = "Atterrissage !",
+	airphase_message = "Décollage !",
+	landphase_message = "Atterrissage !",
 	summon_trigger = "Dans le lointain, un être ancien s'éveille…",
 
 	engage = "Engagement",
-	engage_desc = "Préviens quand Plaie-de-nuit est engagé.",
+	engage_desc = "Prévient quand Plaie-de-nuit est engagé.",
 	engage_trigger = "Fous ! Je vais mettre un terme rapide à vos souffrances !",
 	engage_message = "%s engagé",
 
 	bones = "Pluie d'os",
-	bones_desc = "Préviens quand la Pluie d'os est canalisée.",
-	bones_message = "Pluie d'os de zone !",
+	bones_desc = "Prévient quand la Pluie d'os est canalisée.",
+	bones_message = "Pluie d'os de zone !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -115,9 +115,9 @@ L:RegisterTranslations("koKR", function() return {
 	fear_bar = "공포!",
 	fear_nextbar = "~공포 대기시간",
 
-	charr = "당신에 불타버린 대지",
-	charr_desc = "당신이 불타버린 대지에 걸렸을 때 알립니다.",
-	charr_message = "당신에 불타버린 대지!",
+	charr = "자신의 불타버린 대지",
+	charr_desc = "자신이 불타버린 대지에 걸렸을 때 알립니다.",
+	charr_message = "당신은 불타버린 대지!",
 
 	phase = "단계",
 	phase_desc = "파멸의 어둠의 단계 변경 시 알립니다.",
@@ -139,19 +139,19 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	fear = "恐惧警报",
-	fear_desc = "低沉咆哮警报。",
-	fear_message = "2秒后 恐惧",
-	fear_warning = "即将恐惧！",
+	fear = "恐惧",
+	fear_desc = "当施放低沉咆哮时发出警报。",
+	fear_message = "2秒后，恐惧！",
+	fear_warning = "即将 恐惧！",
 	fear_bar = "<恐惧>",
 	fear_nextbar = "<恐惧 冷却>",
 
-	charr = "灼烧土地警报",
-	charr_desc = "当你中了灼烧土地发出警报。",
+	charr = "灼烧土地",
+	charr_desc = "当你受到灼烧土地发出警报。",
 	charr_message = ">你< 灼烧土地！",
 
 	phase = "阶段警报",
-	phase_desc = "当夜之魇进入下阶段发送预警。",
+	phase_desc = "当进入下阶段时发出警报。",
 	airphase_trigger = "可怜的渣滓。我要腾空而起，让你尝尝毁灭的滋味！",
 	landphase_trigger1 = "够了！我要落下来把你们打得粉碎！",
 	landphase_trigger2 = "没用的虫子！让你们见识一下我的力量吧！",
@@ -160,12 +160,12 @@ L:RegisterTranslations("zhCN", function() return {
 	summon_trigger = "一个远古的生物在远处被唤醒了……",
 
 	engage = "激活",
-	engage_desc = "进入战斗后发出警报。",
+	engage_desc = "当进入战斗后发出警报。",
 	engage_trigger = "愚蠢的家伙！我会很快终结你们的痛苦！",
-	engage_message = "%s 激活",
+	engage_message = "%s 激活！",
 
 	bones = "白骨之雨",
-	bones_desc = "当团队中了白骨之雨后发出警报。",
+	bones_desc = "当玩家受到白骨之雨时发出警报。",
 	bones_message = "白骨之雨",
 } end )
 
@@ -203,32 +203,32 @@ L:RegisterTranslations("zhTW", function() return {
 L:RegisterTranslations("esES", function() return {
 	fear = "Alerta de miedo",
 	fear_desc = "Avisa de Rugido bramante.",
-	fear_message = "\194\161Miedo en 2 seg!",
+	fear_message = "¡Miedo en 2 seg!",
 	fear_warning = "Miedo Pronto",
-	fear_bar = "\194\161Miedo!",
-	fear_nextbar = "~Miedo Cooldown",
+	fear_bar = "¡Miedo!",
+	fear_nextbar = "~Miedo",
 
-	charr = "Tierra carbonizada en t\195\173",
-	charr_desc = "Avisa cuando est\195\161s en Tierra carbonizada.",
-	charr_message = "\194\161Tierra carbonizada en t\195\173!",
+	charr = "Tierra carbonizada en ti",
+	charr_desc = "Avisa cuando estás en Tierra carbonizada.",
+	charr_message = "¡Tierra carbonizada en ti!",
 
 	phase = "Fases",
 	phase_desc = "Avisa cuando Nocturno cambia de fase.",
-	airphase_trigger = "Miserable alimaña. \194\161Te exterminar\195\169 del aire!",
-	landphase_trigger1 = "\194\161Ya basta! Voy a aterrizar y a aplastarte yo mismo.",
-	landphase_trigger2 = "\194\161Insectos! \194\161Os enseñar\195\169 mi fuerza de cerca!",
-	airphase_message = "\194\161Volando!",
-	landphase_message = "\194\161Aterrizando!",
+	airphase_trigger = "Miserable alimaña. ¡Te exterminaré del aire!",
+	landphase_trigger1 = "¡Ya basta! Voy a aterrizar y a aplastarte yo mismo.",
+	landphase_trigger2 = "¡Insectos! ¡Os enseñaré mi fuerza de cerca!",
+	airphase_message = "¡Volando!",
+	landphase_message = "¡Aterrizando!",
 	summon_trigger = "Un ser antiguo se despierta en la distancia...",
 
 	engage = "Activado",
-	engage_desc = "Alerta activada.",
-	engage_trigger = "\194\161Necios! \194\161Voy a acabar r\195\161pidamente con tu sufrimiento!",
+	engage_desc = "Avisar cuando se entra en combate con Nocturno.",
+	engage_trigger = "¡Necios! ¡Voy a acabar rápidamente con tu sufrimiento!",
 	engage_message = "%s Activado",
 
-	bones = "Lluvia de huesos",
-	bones_desc = "Avisa de cuando Lluvia de huesos es canalizada.",
-	bones_message = "\194\161AoE Lluvia de huesos!",
+	bones = "Lluvia de huesos (Rain of Bones)",
+	bones_desc = "Avisa de cuando se canaliza Lluvia de huesos.",
+	bones_message = "¡Canalizando Lluvia de huesos!",
 } end )
 
 ----------------------------------
@@ -239,7 +239,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"engage", "phase", "fear", "charr", "bones", "bosskill"}
-mod.revision = tonumber(("$Revision: 66262 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -271,7 +271,7 @@ end
 
 function mod:CharredEarth(player)
 	if UnitIsUnit(player, "player") and self.db.profile.charr then
-		self:IfMessage(L["charr_message"], "Personal", 30129, "Alarm")
+		self:LocalMessage(L["charr_message"], "Personal", 30129, "Alarm")
 	end
 end
 

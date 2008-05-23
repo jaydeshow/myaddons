@@ -106,6 +106,7 @@ L:RegisterTranslations("zhCN", function()
 		["Hide Samwise Icon"] = "隐藏无用图标",
 		["Show for Friends"] = "显示给朋友",
 		["Show for Enemies"] = "显示给敌人",
+		["Show if Target"] = "目标则显示",
 		["Target Name"] = "目标名称",
 		["Display target name of spellcasts after spell name"] = "在法术名称后显示施法目标名字",
 		
@@ -211,6 +212,7 @@ L:RegisterTranslations("zhCN", function()
 		["Hide the icon for spells with no icon"] = "隐藏法术图标",
 		["Show this castbar for friendly units"] = "为友好单位显示此施法条",
 		["Show this castbar for hostile units"] = "为敌对单位显示此施法条",
+		["Show this castbar if focus is also target"] = "如果锁定与目标相同，则显示此施法条",
 		["Set an exact X value for this bar's position."] = "为施法条设置一个精确的X值",
 		["Set an exact Y value for this bar's position."] = "为施法条设置一个精确的Y值",
 		

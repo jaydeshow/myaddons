@@ -1,5 +1,5 @@
 ﻿-- [[
--- Last Updated: 03/22/2008
+-- Last Updated: 4/11/2008
 -- Initial translation by: 560889223
 -- Maintained by: Diablohu
 -- Credits to: Kurax Kuang (gmmgmm at gmail.com)
@@ -21,7 +21,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Priority:"] = "优先: ",
     ["Click boss name to view loot."] = "点击首领名以浏览掉落",
     ["Various Locations"] = "多个位置",
-    ["This is a loot browser only.  To view maps as well, install either Atlas or Alphamap."] = "该窗口只是一个掉落浏览器。若想同时查看地图，请安装 Atlas 或 Alphmap 插件。",
+    ["This is a loot browser only.  To view maps as well, install either Atlas or Alphamap."] = "该窗口只是一个掉落浏览器。若想同时查看地图，请安装 Atlas 或 Alphamap 插件。",
     ["Toggle AL Panel"] = "AtlasLoot 面板",
     [" is safe."] = "的连接是安全的。",
     ["Server queried for "] = "已向服务器申请查询",
@@ -68,6 +68,15 @@ AL:RegisterTranslations("zhCN", function() return {
     ["AutoQuery items on loot tables |cffff0000(disconnection risk)|r"] = "打开掉落表后自动进行查询 |cffff0000(有掉线风险)|r",
     ["Done"] = "确定",
     ["WishList"] = "装备需求表",
+    ["Search Result: %s"] = "搜索结果：%s",
+    ["Last Result"] = "上次搜索",
+    ["Search on"] = "搜索于",
+    ["All modules"] = "全部模块",
+    ["If checked, AtlasLoot will load and search across all the modules."] = "如果选中，AtlasLoot会载入并扫描所有的模块。",
+    ["Search options"] = "搜索选项",
+    ["Partial matching"] = "部分匹配",
+    ["If checked, AtlasLoot search item names for a partial match."] = "如果选中，AtlasLoot会将输入文字作为物品名称的一部分进行匹配。",
+    ["You don't have any module selected to search on!"] = "你没有选择任何用于搜索的模块。",
 
     --Slash commands
     ["reset"] = "reset",
@@ -93,7 +102,7 @@ AL:RegisterTranslations("zhCN", function() return {
     --LoD Module required has loaded, but loot table is missing
     [" could not be accessed, the following module may be out of date: "] = "无法进行操作，以下模块可能已过期：",
 
-     --LoD module loaded successfully
+	--LoD module loaded successfully
     ["sucessfully loaded."] = "已成功载入",
 
     --Need a big dataset for searching
@@ -115,13 +124,6 @@ AL:RegisterTranslations("zhCN", function() return {
     ["World Events"] = "世界事件",
     ["Load Modules"] = "载入所有数据",
     ["Crafting"] = "制造的物品",
-
-    --Trades
-    ["Apprentice"] = "初级",
-    ["Journeyman"] = "中级",
-    ["Expert"] = "高级",
-    ["Artisan"] = "专家级",
-    ["Master"] = "大师级",
 
     --First time user
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "欢迎使用 Atlasloot Enhanced，请花少许时间进行参数设置",
@@ -161,6 +163,10 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Fish"] = "鱼",
     ["Combat Pet"] = "战斗宠物",
     ["Fireworks"] = "焰火",
+	    
+    --Extra inventory stuff
+    ["Cloak"] = "披风",
+    ["Weapons"] = "武器",
 
     --Labels for loot descriptions
     ["Classes:"] = "职业:",
@@ -201,7 +207,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["First Prize"] = "第一名奖励",
     ["Rare Fish Rewards"] = "稀有鱼种奖励",
     ["Rare Fish"] = "稀有鱼种",
-    ["Tradable against sunmote + item above"] = "使用太阳微粒和以上物品可交换物品",
+    ["Tradable against sunmote + item above"] = "用太阳之尘和上个物品兑换得到",
 	["Rare"] = "稀有",
 	["Heroic"] = "英雄模式",
 	["Summon"] = "召唤",
@@ -220,14 +226,14 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Saltwater Snapjaw"] = "海水钳嘴龟",
     --["King Mukla"] = true,
     --["Rest and Relaxation"] = true,
-    --["Fortune Telling"] = true,
+    ["Fortune Telling"] = "算命",
     --["Goblin Gumbo"] = true,
     --["Gone Fishin'"] = true,
-    --["Spectral Tiger"] = true,
---    ["March of the Legion"] = true,
---    ["Kiting"] = true,
---    ["Robotic Homing Chicken"] = true,
---    ["Paper Airplane"] = true,
+    ["Spectral Tiger"] = "幽灵虎",
+	--["March of the Legion"] = true,
+	--["Kiting"] = true,
+	--["Robotic Homing Chicken"] = true,
+	["Paper Airplane"] = "纸飞机",
 
     --Battleground Brackets
     ["Misc. Rewards"] = "其他奖励",
@@ -613,8 +619,8 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Kodohide Battlegear"] = "科多皮套装",
     ["Stalker's Chain Battlegear"] = "潜伏者的链甲套装",
     ["Evoker's Silk Battlegear"] = "祈求者的丝质套装",
-    ["Crusader's Scaled Battlegear"] = "十字军的板鳞甲套装",
-    ["Crusader's Ornamented Battlegear"] = "十字军的雕饰板甲套装",
+    ["Crusader's Scaled Battledgear"] = "十字军的板鳞甲套装",
+    ["Crusader's Ornamented Battledgear"] = "十字军的雕饰板甲套装",
     ["Satin Battlegear"] = "绸缎套装",
     ["Mooncloth Battlegear"] = "月布套装",
     ["Opportunist's Battlegear"] = "机遇者的套装",
@@ -679,6 +685,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Tier 6 Sets"] = "等级6套装",
     ["PvP Sets (Level 60)"] = "PvP奖励套装 (等级 60)",
     ["PvP Sets (Level 70)"] = "PvP奖励套装 (等级 70)",
+    ["PvP Reputation Sets (Level 70)"] = "PvP声望套装 (等级 70)",
     ["PvP Rewards (Level 60)"] = "PvP奖励 (等级 60)",
     ["PvP Rewards (Level 70)"] = "PvP奖励 (等级 70)",
     ["PvP Accessories (Level 60)"] = "PvP奖励杂物 (等级 60)",
@@ -742,6 +749,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Level 50-60"] = "等级 50-60",
     ["BT Patterns/Plans"] = "黑暗神殿掉落的图纸",
     ["Hyjal Summit Designs"] = "海加尔峰掉落的图纸",
+    ["SP Patterns/Plans"] = "太阳之井高地掉落图纸",
 
     --NPCs missing from BabbleBoss
     ["Trash Mobs"] = "普通怪物",

@@ -1,6 +1,6 @@
 ﻿mobmap_dbinfo = {
 	["version"] = "0011",
-	["buildtime"] = 1208494552,
+	["buildtime"] = 1207594552,
 	["language"] = "sch",
 	["mobcount"] = 13245,
 	["questcount"] = 5947,

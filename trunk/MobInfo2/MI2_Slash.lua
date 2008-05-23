@@ -461,9 +461,6 @@ function MI2_SlashParse( msg )
 	elseif cmd == 'version' then
 		chattext( ' MobInfo-2 Version '..miVersionNo )
 		return
-	elseif cmd == 'convertdroprate' then
-		MI2_StartDropRateConversion()
-		return
 	elseif cmd == 'update' and MI2_UpdatePrices then
 		MI2_UpdatePrices()
 		return

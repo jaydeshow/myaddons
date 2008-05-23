@@ -1,4 +1,6 @@
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -39,7 +41,7 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	["MainTank"] = "MT 目标",
+	["MainTank"] = "MT",
 	["Options for the maintanks."] = "MT 选项。",
 	["The local maintank list has been refreshed."] = "本地 MT 名单已刷新。",
 	["Refresh"] = "刷新 MT",
@@ -57,38 +59,38 @@ L:RegisterTranslations("zhTW", function() return {
 	["Options for the maintanks."] = "主坦選項",
 	["The local maintank list has been refreshed."] = "個人主坦名單已更新",
 	["Refresh"] = "更新",
-	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "更新個人主坦名單，特別是主坦名單已經變動而因某些理由沒有更新。\n\n請注意此選項並不會從團隊裡的人取得名單，僅僅只是更新個人的顯示",
+	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "更新個人主坦名單，特別是主坦名單已經變動而因某些理由沒有更新。\n\n請注意此選項並不會從團隊裡的人取得名單，僅僅只是更新個人的顯示。",
 	["Participant/MainTank"] = "隊員/主坦",
 	["Notify deaths"] = "死亡通知",
 	["Notifies you when a main tank dies."] = "當主坦死亡時通知你",
-	["Tank %s has died!"] = "主坦 %s 已死亡！",
+	["Tank %s has died!"] = "主坦 %s 已死亡!",
 
-	maintankdies = "^(.+)死亡了．",
+	maintankdies = "^(.+)死亡了。",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	["MainTank"] = "MainTank",
-	["Options for the maintanks."] = "Options concernant les maintanks.",
-	["The local maintank list has been refreshed."] = "La liste locale des maintanks a été rafraîchie.",
+	["MainTank"] = "Tanks principaux",
+	["Options for the maintanks."] = "Options concernant les tanks principaux.",
+	["The local maintank list has been refreshed."] = "La liste locale des tanks principaux a été rafraîchie.",
 	["Refresh"] = "Rafraîchir",
-	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "Rafraîchit la liste locale des maintanks, au cas où des changements n'ont pas été répercutés dans l'affichage pour certaines raisons.\n\nNotez que ceci ne va pas chercher la liste des maintanks chez les autres joueurs, mais met à jour uniquement votre affichage local.",
+	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "Rafraîchit la liste locale des tanks principaux, au cas où des changements n'ont pas été répercutés dans l'affichage pour certaines raisons.\n\nNotez que ceci ne va pas chercher la liste des tanks principaux chez les autres joueurs, mais met à jour uniquement votre affichage local.",
 	["Participant/MainTank"] = "Participant/MainTank",
 	["Notify deaths"] = "Annoncer les morts",
-	["Notifies you when a main tank dies."] = "Préviens quand un maintank meurt.",
-	["Tank %s has died!"] = "Le tank %s est mort !",
+	["Notifies you when a main tank dies."] = "Prévient quand un tank principal meurt.",
+	["Tank %s has died!"] = "Le tank %s est mort !",
 
 	maintankdies = "^([^%s]+) meurt%.$",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
 	["MainTank"] = "MainTank",
-	["Options for the maintanks."] = "Optionen f\195\188r MainTanks.",
+	["Options for the maintanks."] = "Optionen für MainTanks.",
 	["The local maintank list has been refreshed."] = "Die lokale MainTank-Liste wurde erneuert.",
-	["Refresh"] = "Erneuere MainTank-Liste",
-	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "Erneuert die lokale MainTank-Liste.",
+	["Refresh"] = "Erneuern",
+	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "Erneuert die lokale MainTank-Liste, falls lokale Änderungen vorgenommen wurden, aber die Anzeige sich aus irgendwelchen Gründen nicht aktualisiert hat.\n\nHinweis: Dies ruft NICHT die MainTank-Liste anderer Personen des Schlachtzugs ab, sondern aktualisiert nur Deine lokale Anzeige.",
 	["Participant/MainTank"] = "Teilnehmer/MainTank",
-	["Notify deaths"] = "Melde MainTank-Tot",
-	["Notifies you when a main tank dies."] = "Benachrichtigt dich wenn einer der MainTanks stirbt.",
+	["Notify deaths"] = "Melde MainTank Tot",
+	["Notifies you when a main tank dies."] = "Benachrichtigt Dich, wenn einer der MainTanks stirbt.",
 	["Tank %s has died!"] = "MainTank %s ist gestorben!",
 
 	maintankdies = "^([^%s]+) stirbt%.$",
@@ -142,9 +144,15 @@ end
 function mod:OnEnable()
 	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 	self:RegisterEvent("oRA_JoinedRaid")
-	self:RegisterEvent("oRA_LeftRaid")
 	self:RegisterCheck("SET", "oRA_SetMainTank")
 	self:RegisterCheck("R", "oRA_RemoveMainTank")
+end
+
+function mod:OnDisable()
+	for k in pairs(oRA.maintanktable) do
+		oRA.maintanktable[k] = nil
+	end
+	oRA.db.profile.maintanktable = nil
 end
 
 -------------------------------
@@ -170,14 +178,29 @@ function mod:COMBAT_LOG_EVENT_UNFILTERED(_, event, _, _, _, _, tank)
 	end
 end
 
-function mod:oRA_SetMainTank(msg, author)
-	local num, name = select(3, msg:find("^SET (%d+) (.+)$"))
-	if not num or not name then return end
+do
+	local tanks = {}
+	local function reallySetTanks()
+		local changed = nil
+		for num, name in pairs(tanks) do
+			if not oRA.maintanktable[num] or (oRA.maintanktable[num] and oRA.maintanktable[num] ~= name) then
+				oRA.maintanktable[num] = name
+				changed = true
+			end
+		end
+		for k in pairs(tanks) do tanks[k] = nil end
+		if changed then
+			oRA.db.profile.maintanktable = oRA.maintanktable
+			mod:TriggerEvent("oRA_MainTankUpdate")
+		end
+	end
 
-	self:RemoveTank(name)
-	oRA.maintanktable[tonumber(num)] = name
-	oRA.db.profile.maintanktable = oRA.maintanktable
-	self:TriggerEvent("oRA_MainTankUpdate")
+	function mod:oRA_SetMainTank(msg, author)
+		local num, name = select(3, msg:find("^SET (%d+) (.+)$"))
+		if not num or not name then return end
+		tanks[tonumber(num)] = name
+		self:ScheduleEvent("oRAPMT_ReallySetTanks", reallySetTanks, 2)
+	end
 end
 
 function mod:oRA_RemoveMainTank(msg, author)
@@ -190,12 +213,6 @@ end
 
 function mod:oRA_JoinedRaid()
 	oRA:SendMessage("GETMT", true)
-end
-
-function mod:oRA_LeftRaid()
-	oRA.maintanktable = {}
-	oRA.db.profile.maintanktable = nil
-	self:TriggerEvent("oRA_MainTankUpdate")
 end
 
 -------------------------------

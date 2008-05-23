@@ -59,20 +59,20 @@ L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "^Ah, vous arrivez juste à temps.",
 
 	sacrifice = "Sacrifice",
-	sacrifice_desc = "Préviens quand un joueur est sacrifié.",
-	sacrifice_message = "%s est sacrifié !",
-	sacrifice_bar = "Sacrifice : %s",
-	sacrifice_soon = "Sacrifice imminent !",
+	sacrifice_desc = "Prévient quand un joueur est sacrifié.",
+	sacrifice_message = "%s est sacrifié !",
+	sacrifice_bar = "Sacrifice : %s",
+	sacrifice_soon = "Sacrifice imminent !",
 	sacrifice_soonbar = "~Sacrifice probable",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le joueur sacrifié (nécessite d'être promu ou mieux).",
 
 	weak = "Affaibli",
-	weak_desc = "Préviens quand Terestian est affaibli.",
-	weak_message = "Affaibli pendant ~45 sec. !",
-	weak_warning1 = "Fin de l'Affaiblissement dans ~5 sec. !",
-	weak_warning2 = "Affaiblissement terminé !",
+	weak_desc = "Prévient quand Terestian est affaibli.",
+	weak_message = "Affaibli pendant ~45 sec. !",
+	weak_warning1 = "Fin de l'Affaiblissement dans ~5 sec. !",
+	weak_warning2 = "Affaiblissement terminé !",
 	weak_bar = "~Fin Affaiblissement",
 } end )
 
@@ -81,13 +81,13 @@ L:RegisterTranslations("koKR", function() return {
 
 	sacrifice = "희생",
 	sacrifice_desc = "플레이어의 희생에 대한 경고입니다.",
-	sacrifice_message = "%s님이 희생되었습니다!",
+	sacrifice_message = "%s 희생됨!",
 	sacrifice_bar = "희생: %s",
-	sacrifice_soon = "잠시후 희생!",
+	sacrifice_soon = "잠시 후 희생!",
 	sacrifice_soonbar = "~희생 대기시간",
 
 	icon = "전술 표시",
-	icon_desc = "희생에 걸린 플레이어에게 전술 표시를 지정합니다 (승급자 이상 요구).",
+	icon_desc = "희생에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 요구)",
 
 	weak = "약화",
 	weak_desc = "약화 상태에 대한 경고입니다.",
@@ -102,18 +102,18 @@ L:RegisterTranslations("zhCN", function() return {
 
 	sacrifice = "牺牲",
 	sacrifice_desc = "当玩家受到牺牲时发出警报。",
-	sacrifice_message = ">%s< 牺牲！ - 注意停手！",
+	sacrifice_message = ">%s< 牺牲！- 注意停手！",
 	sacrifice_bar = "<牺牲：%s>",
 	sacrifice_soon = "即将 牺牲！",
 	sacrifice_soonbar = "<可能 牺牲>",
 
 	icon = "团队标记",
-	icon_desc = "受到牺牲效果的队友打上标记。(需要权限)",
+	icon_desc = "受到牺牲效果的队友打上标记。（需要权限）",
 
 	weak = "虚弱",
-	weak_desc = "虚弱阶段发出警报。",
-	weak_message = "进入虚弱状态！ ~45秒",
-	weak_warning1 = "~5秒后 虚弱状态结束！",
+	weak_desc = "当虚弱阶段时发出警报。",
+	weak_message = "进入虚弱状态！约45秒。",
+	weak_warning1 = "约5秒后，虚弱状态结束！",
 	weak_warning2 = "虚弱结束！",
 	weak_bar = "<虚弱>",
 } end )
@@ -140,24 +140,24 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "Ah, justo a tiempo. \194\161Los rituales van a empezar!",
+	engage_trigger = "Ah, justo a tiempo. ¡Los rituales van a empezar!",
 
 	sacrifice = "Sacrificio",
 	sacrifice_desc = "Avisa del Sacrificio de los jugadores.",
-	sacrifice_message = "\164\161%s esta siendo sacrificado!",
+	sacrifice_message = "¡%s esta siendo sacrificado!",
 	sacrifice_bar = "Sacrificio: %s",
-	sacrifice_soon = "\194\161Sacrificio Pronto!",
+	sacrifice_soon = "¡Sacrificio Pronto!",
 	sacrifice_soonbar = "~Posible Sacrificio",
 
-	icon = "Icono de Raid",
-	icon_desc = "Pone un icono de raid en el jugador sacrificado (requiere promoted o mayor).",
+	icon = "Icono de banda",
+	icon_desc = "Pone un icono de banda en el jugador sacrificado. (Requiere derechos de banda)",
 
-	weak = "Debilitado",
+	weak = "Debilidad",
 	weak_desc = "Avisa de estado de debilidad.",
-	weak_message = "\194\161Debilitado por ~45seg!",
-	weak_warning1 = "Debilitado finaliza en ~5seg!",
-	weak_warning2 = "\194\161Debilidad finalizado!",
-	weak_bar = "~Debilidad desaparece",
+	weak_message = "¡Debilidad durante ~45seg!",
+	weak_warning1 = "¡Debilidad finaliza en ~5seg!",
+	weak_warning2 = "¡Debilidad finalizada!",
+	weak_bar = "~Debilidad finaliza",
 } end )
 
 ----------------------------------
@@ -168,7 +168,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"weak", "enrage", -1, "sacrifice", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 66281 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

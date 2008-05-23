@@ -86,14 +86,14 @@ FW.L.NORMAL = "Normal";
 FW.L.LESSER = "Lesser";
 FW.L.MINOR = "Minor";
 
-FW.L.YELLOW_STAR = "<Yellow Star>";
-FW.L.ORANGE_CIRCLE = "<Orange Circle>";
-FW.L.PRUPLE_DIAMOND = "<Purple Diamond>";
-FW.L.GREEN_TRIANGLE = "<Green Triangle>";
-FW.L.MOON = "<Moon>";
-FW.L.BLUE_SQUARE = "<Blue Square>";
-FW.L.CROSS = "<Cross>";
-FW.L.SKULL = "<Skull>";
+FW.L.YELLOW_STAR = "{rt1}";
+FW.L.ORANGE_CIRCLE = "{rt2}";
+FW.L.PRUPLE_DIAMOND = "{rt3}";
+FW.L.GREEN_TRIANGLE = "{rt4}";
+FW.L.MOON = "{rt5}";
+FW.L.BLUE_SQUARE = "{rt6}";
+FW.L.CROSS = "{rt7}";
+FW.L.SKULL = "{rt8}";
 
 FW.L.FILTER_NONE = "normal";
 FW.L.FILTER_IGNORE = "|cffff0000ignore|r";
@@ -282,14 +282,14 @@ FW.L.NORMAL = "Normal";
 FW.L.LESSER = "Lesser";
 FW.L.MINOR = "Minor";
 
-FW.L.YELLOW_STAR = "<Yellow Star>";
-FW.L.ORANGE_CIRCLE = "<Orange Circle>";
-FW.L.PRUPLE_DIAMOND = "<Purple Diamond>";
-FW.L.GREEN_TRIANGLE = "<Green Triangle>";
-FW.L.MOON = "<Moon>";
-FW.L.BLUE_SQUARE = "<Blue Square>";
-FW.L.CROSS = "<Cross>";
-FW.L.SKULL = "<Skull>";
+FW.L.YELLOW_STAR = "{rt1}";
+FW.L.ORANGE_CIRCLE = "{rt2}";
+FW.L.PRUPLE_DIAMOND = "{rt3}";
+FW.L.GREEN_TRIANGLE = "{rt4}";
+FW.L.MOON = "{rt5}";
+FW.L.BLUE_SQUARE = "{rt6}";
+FW.L.CROSS = "{rt7}";
+FW.L.SKULL = "{rt8}";
 
 FW.L.FILTER_NONE = "normal";
 FW.L.FILTER_IGNORE = "|cffff0000ignore|r";
@@ -478,14 +478,14 @@ FW.L.NORMAL = "Normal";
 FW.L.LESSER = "Lesser";
 FW.L.MINOR = "Minor";
 
-FW.L.YELLOW_STAR = "<Yellow Star>";
-FW.L.ORANGE_CIRCLE = "<Orange Circle>";
-FW.L.PRUPLE_DIAMOND = "<Purple Diamond>";
-FW.L.GREEN_TRIANGLE = "<Green Triangle>";
-FW.L.MOON = "<Moon>";
-FW.L.BLUE_SQUARE = "<Blue Square>";
-FW.L.CROSS = "<Cross>";
-FW.L.SKULL = "<Skull>";
+FW.L.YELLOW_STAR = "{rt1}";
+FW.L.ORANGE_CIRCLE = "{rt2}";
+FW.L.PRUPLE_DIAMOND = "{rt3}";
+FW.L.GREEN_TRIANGLE = "{rt4}";
+FW.L.MOON = "{rt5}";
+FW.L.BLUE_SQUARE = "{rt6}";
+FW.L.CROSS = "{rt7}";
+FW.L.SKULL = "{rt8}";
 
 FW.L.FILTER_NONE = "normal";
 FW.L.FILTER_IGNORE = "|cffff0000ignore|r";
@@ -679,14 +679,15 @@ FW.L.NORMAL = "普通糖";
 FW.L.LESSER = "次级糖";
 FW.L.MINOR = "初级糖";
 
-FW.L.YELLOW_STAR = "<星星标记>";
-FW.L.ORANGE_CIRCLE = "<大饼标记>";
-FW.L.PRUPLE_DIAMOND = "<菱形标记>";
-FW.L.GREEN_TRIANGLE = "<三角标记>";
-FW.L.MOON = "<月球标记>";
-FW.L.BLUE_SQUARE = "<方块标记>";
-FW.L.CROSS = "<十字标记>";
-FW.L.SKULL = "<骷髅标记>";
+--{圆形}{月亮}{骷髅}{方块}{星形}{菱形}{十字}{三角}
+FW.L.YELLOW_STAR = "{rt1}";
+FW.L.ORANGE_CIRCLE = "{rt2}";
+FW.L.PRUPLE_DIAMOND = "{rt3}";
+FW.L.GREEN_TRIANGLE = "{rt4}";
+FW.L.MOON = "{rt5}";
+FW.L.BLUE_SQUARE = "{rt6}";
+FW.L.CROSS = "{rt7}";
+FW.L.SKULL = "{rt8}";
 
 FW.L.FILTER_NONE = "恢复";
 FW.L.FILTER_IGNORE = "|cffff0000屏蔽|r";
@@ -882,14 +883,14 @@ FW.L.NORMAL = "普通糖";
 FW.L.LESSER = "次級糖";
 FW.L.MINOR = "初級糖";
 
-FW.L.YELLOW_STAR = "<星星標記>";
-FW.L.ORANGE_CIRCLE = "<大餅標記>";
-FW.L.PRUPLE_DIAMOND = "<菱形標記>";
-FW.L.GREEN_TRIANGLE = "<三角標記>";
-FW.L.MOON = "<月球標記>";
-FW.L.BLUE_SQUARE = "<方塊標記>";
-FW.L.CROSS = "<十字標記>";
-FW.L.SKULL = "<骷髏標記>";
+FW.L.YELLOW_STAR = "{rt1}";
+FW.L.ORANGE_CIRCLE = "{rt2}";
+FW.L.PRUPLE_DIAMOND = "{rt3}";
+FW.L.GREEN_TRIANGLE = "{rt4}";
+FW.L.MOON = "{rt5}";
+FW.L.BLUE_SQUARE = "{rt6}";
+FW.L.CROSS = "{rt7}";
+FW.L.SKULL = "{rt8}";
 
 FW.L.FILTER_NONE = "恢復";
 FW.L.FILTER_IGNORE = "|cffff0000遮罩|r";
@@ -1043,9 +1044,9 @@ else	-- standard english version
 	--zones
 	FW.L.COILFANG_RESERVOIR = "Serpentshrine Cavern";
 	--units
-	FW.L.HELLFIRE_CHANNELER = "Hellfire Channeler"
+	FW.L.HELLFIRE_CHANNELER = "Hellfire Channeler";
 	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "Grand Astromancer Capernian";
-	FW.L.LORD_SANGUINAR = "Lord Sanguinar"
+	FW.L.LORD_SANGUINAR = "Lord Sanguinar";
 	FW.L.MASTER_ENGINEER_TELONICUS = "Master Engineer Telonicus";
 	FW.L.THALADRED_THE_DARKENER = "Thaladred the Darkener";
 	FW.L.FATHOM_GUARD_SHARKKIS = "Fathom-Guard Sharkkis";
@@ -1080,14 +1081,14 @@ FW.L.NORMAL = "Normal";
 FW.L.LESSER = "Lesser";
 FW.L.MINOR = "Minor";
 
-FW.L.YELLOW_STAR = "<Yellow Star>";
-FW.L.ORANGE_CIRCLE = "<Orange Circle>";
-FW.L.PRUPLE_DIAMOND = "<Purple Diamond>";
-FW.L.GREEN_TRIANGLE = "<Green Triangle>";
-FW.L.MOON = "<Moon>";
-FW.L.BLUE_SQUARE = "<Blue Square>";
-FW.L.CROSS = "<Cross>";
-FW.L.SKULL = "<Skull>";
+FW.L.YELLOW_STAR = "{rt1}";
+FW.L.ORANGE_CIRCLE = "{rt2}";
+FW.L.PRUPLE_DIAMOND = "{rt3}";
+FW.L.GREEN_TRIANGLE = "{rt4}";
+FW.L.MOON = "{rt5}";
+FW.L.BLUE_SQUARE = "{rt6}";
+FW.L.CROSS = "{rt7}";
+FW.L.SKULL = "{rt8}";
 
 FW.L.FILTER_NONE = "normal";
 FW.L.FILTER_IGNORE = "|cffff0000ignore|r";
@@ -1097,13 +1098,15 @@ FW.L.MODULE_NONE = "|cffff0000None|r";
 
 FW.L.NOTARGET = "<No Target>";
 FW.L.UNKNOWN = "<Unknown>";
-FW.L.NOBODY = "<Nobody>"
+FW.L.NOBODY = "<Nobody>";
+
+FW.L.NONE = "None";
 
 FW.L.ENABLE  = "Enable";
 FW.L.LOCK = "Lock (disable option functions)";
 FW.L.EXPAND_UP = "Expand up";
 FW.L.EXPAND_UP_TT = "Determines if the bar lists should be expanded upwards or downwards.";
-FW.L.BAR_SPACING = "Bar spacing"
+FW.L.BAR_SPACING = "Bar spacing";
 FW.L.COMBAT_HINT = "Some sizing changes you make here will only apply outside of combat.";
 FW.L.ORA_HINT = "For people without ForteWarlock but with oRA, someone with FW has to be promoted.";
 
@@ -1137,7 +1140,7 @@ FW.L.SHOW_BARS_TT = "Show the bars. You can hide them in case you only want to s
 FW.L.MAX_SHOWN = "Maximum shown";
 
 FW.L.SELF_MESSAGES = "Self Messages";
-FW.L.SELF_MESSAGES_HINT1 = "This allows you to display usefull messages to yourself. They are shown in your 'default' chat frame."
+FW.L.SELF_MESSAGES_HINT1 = "This allows you to display usefull messages to yourself. They are shown in your 'default' chat frame.";
 FW.L.RAID_MESSAGES = "Party/Raid Messages";
 FW.L.RAID_MESSAGES_HINT1 = "This allows you to display messages to others based on spells you cast.";
 FW.L.RAID_MESSAGES_HINT2 = "You can disable all messages to party/raid and/or channel, or every message separately.";
@@ -1149,7 +1152,7 @@ FW.L.SHOW_IN_CHANNEL_TT = "Set the channel name or number in which you want some
 -- standard usage tips to append
 FW.L.USE_FILTER = "First type in the item or spell that you want to change (auto-fills). Then you can select if you want to show it normally (normal), hide it (ignore) or change its color (color). If you selected you want to change the color, you get a color picker from clicking square on the right.";
 FW.L.USE_COLOR_PICKER = "Click the colored square to open up the color picker. If there's a slider on the right, you can also change the transparency.";
-FW.L.USE_TEXTURE = "Mouse over the left textured bar and select a texture from the dropdown menu. You can also use any other texture by giving its path."
+FW.L.USE_TEXTURE = "Mouse over the left textured bar and select a texture from the dropdown menu. You can also use any other texture by giving its path.";
 FW.L.USE_FONT = "Mouse over the left font area and select a font from the dropdown menu. The center editbox can be used to change the font size. You can also use any other font by giving its path.";
 FW.L.USE_EDITBOX = "Don't forget you have to press enter to confirm changes to the editboxes!";
 FW.L.USE_MSG2 = "The first checkbox will enable this message in your party or raid. The second checkbox will enable it in the channel you set above.";
@@ -1203,23 +1206,7 @@ FW.L.LOADING_DELAY = "Loading delay";
 FW.L.UPDATE_INTERVAL_CORE = "Update interval core";
 FW.L.UPDATE_INTERVAL_ANIMATIONS = "Update interval animations";
 
-
-
 end
---[[
-if GetLocale() == "zhCN" then
-	FW:RegisterFont("Fonts\\ZYHei.TTF","???");
-	FW:RegisterFont("Fonts\\ZYKai_T.TTF","???");
-	FW:SetDefaultFont("Fonts\\ZYHei.TTF",10);
-
-elseif GetLocale() == "zhTW" then
-	FW:RegisterFont("Fonts\\bLEI00D.TTF","????");
-	FW:RegisterFont("Fonts\\bHEI01B.TTF","????");
-	FW:SetDefaultFont("Fonts\\bLEI00D.TTF",10);
-end
-]]
-
-
 
 FW:LocalizedData();
 

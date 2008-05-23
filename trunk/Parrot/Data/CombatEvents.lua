@@ -1,45 +1,45 @@
-﻿local VERSION = tonumber(("$Revision: 51436 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 74471 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-10-08 19:07:51 -0400 (Mon, 08 Oct 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-19 19:35:29 -0400 (Mon, 19 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
-local mod = Parrot:NewModule("CombatEventsData", "LibRockEvent-1.0", "LibParser-4.0")
-
-local BS = Rock("LibBabble-Spell-3.0")
-local BSR = BS:GetReverseLookupTable()
+local mod = Parrot:NewModule("CombatEventsData", "LibRockEvent-1.0")
 
 local _, playerClass = _G.UnitClass("player")
 
-local L = Parrot:L("Parrot_CombatEvents_Data", {
-	["Miss!"] = MISS .. "!",
-	["Dodge!"] = DODGE .. "!",
-	["Parry!"] = PARRY .. "!",
-	["Block!"] = BLOCK .. "!",
-	["Absorb!"] = ABSORB .. "!",
-	["Immune!"] = IMMUNE .. "!",
-	["Resist!"] = RESIST .. "!",
-	["Reflect!"] = REFLECT .. "!",
-	["Interrupt!"] = INTERRUPT .. "!",
-	["Pet Miss!"] = PET .. " " .. MISS .. "!",
-	["Pet Dodge!"] = PET .. " " .. DODGE .. "!",
-	["Pet Parry!"] = PET .. " " .. PARRY .. "!",
-	["Pet Block!"] = PET .. " " .. BLOCK .. "!",
-	["Pet Absorb!"] = PET .. " " .. ABSORB .. "!",
-	["Pet Immune!"] = PET .. " " .. IMMUNE .. "!",
-	["Pet Resist!"] = PET .. " " .. RESIST .. "!",
-	["Pet Reflect!"] = PET .. " " .. REFLECT .. "!",
-	["Pet Interrupt!"] = PET .. " " .. INTERRUPT .. "!",
-})
+-- local L = Parrot:L("Parrot_CombatEvents_Data", {
+-- 	["Miss!"] = MISS .. "!",
+-- 	["Dodge!"] = DODGE .. "!",
+-- 	["Parry!"] = PARRY .. "!",
+-- 	["Block!"] = BLOCK .. "!",
+-- 	["Absorb!"] = ABSORB .. "!",
+-- 	["Immune!"] = IMMUNE .. "!",
+-- 	["Resist!"] = RESIST .. "!",
+-- 	["Reflect!"] = REFLECT .. "!",
+-- 	["Interrupt!"] = INTERRUPT .. "!",
+-- 	["Pet Miss!"] = PET .. " " .. MISS .. "!",
+-- 	["Pet Dodge!"] = PET .. " " .. DODGE .. "!",
+-- 	["Pet Parry!"] = PET .. " " .. PARRY .. "!",
+-- 	["Pet Block!"] = PET .. " " .. BLOCK .. "!",
+-- 	["Pet Absorb!"] = PET .. " " .. ABSORB .. "!",
+-- 	["Pet Immune!"] = PET .. " " .. IMMUNE .. "!",
+-- 	["Pet Resist!"] = PET .. " " .. RESIST .. "!",
+-- 	["Pet Reflect!"] = PET .. " " .. REFLECT .. "!",
+-- 	["Pet Interrupt!"] = PET .. " " .. INTERRUPT .. "!",
+-- })
+
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatEvents_Data")
 
 local newList, del = Rock:GetRecyclingFunctions("Parrot", "newList", "del")
 
 local onEnableFuncs = {}
 function mod:OnEnable()
-	assert(Rock("LibSpecialEvents-Aura-3.0")) -- force a load
+	-- not needed anymore
+	--assert(Rock("LibSpecialEvents-Aura-3.0")) -- force a load
 	
 	for _,v in ipairs(onEnableFuncs) do
 		v()
@@ -56,6 +56,11 @@ local coloredDamageAmount = function(info)
 	else
 		return info.amount
 	end
+end
+
+local damageTypeString = function(info)
+	return L[info.damageType]
+
 end
 
 Parrot:RegisterFilterType("Incoming damage", L["Incoming damage"], 0)
@@ -246,19 +251,33 @@ local function retrieveAbilityName(info)
 	return Parrot:GetModule("CombatEvents"):GetAbbreviatedSpell(info.abilityName)
 end
 
-local function retrieveIconFromAbilityName(info)
-	local spell = BSR[info.abilityName]
-	if spell then
-		return BS:GetSpellIcon(spell)
-	end
+local function retrieveExtraAbilityName(info)
+	return Parrot:GetModule("CombatEvents"):GetAbbreviatedSpell(info.extraAbilityName)
 end
 
-local function retrieveIconFrom1(info)
-	local spell = BSR[info[1]]
-	if spell then
-		return BS:GetSpellIcon(spell)
+
+-- this table is needed because some spells emit Spellids 
+-- to the combatlog that have wrong icons
+-- maps the spellid emitted by the comabat log to the spellID from the spell with the icon
+local dumbIconOverride = {
+	[31818] = select(3, GetSpellInfo(27222)), -- Life Tap
+	[22482] = select(3, GetSpellInfo(13877)), -- Blade Flurry
+}
+
+local function retrieveIconFromAbilityName(info)
+	
+	local icon
+
+	if(info.spellID) then
+		icon = dumbIconOverride[info.spellID] or select(3, GetSpellInfo(info.spellID))
+	else
+		--shouldn't be needed though, but to be sure
+		icon = select(3, GetSpellInfo(info.abilityName))
 	end
+
+	return icon
 end
+
 
 Parrot:RegisterThrottleType("Skill damage", L["Skill damage"], 0.1, true)
 
@@ -277,7 +296,7 @@ Parrot:RegisterCombatEvent{
 	tagTranslations = {
 		Name = "sourceName",
 		Amount = coloredDamageAmount,
-		Type = "damageTypeLocal",
+		Type = damageTypeString,
 		Skill = retrieveAbilityName,
 		Icon = retrieveIconFromAbilityName,
 	},
@@ -340,7 +359,7 @@ Parrot:RegisterCombatEvent{
 	tagTranslations = {
 		Name = "sourceName",
 		Amount = coloredDamageAmount,
-		Type = "damageTypeLocal",
+		Type = damageTypeString,
 		Skill = retrieveAbilityName,
 		Icon = retrieveIconFromAbilityName,
 	},
@@ -560,7 +579,7 @@ Parrot:RegisterCombatEvent{
 	subCategory = L["Skills"],
 	name = "Spell interrupts",
 	localName = L["Skill interrupts"],
-	defaultTag = "([Skill]) " .. L["Interrupt!"],
+	defaultTag = "([Skill]) " .. L["Interrupt!"] .. "{[ExtraSkill]}",
 	parserEvent = {
 		eventType = "Interrupt",
 		recipientID = "player",
@@ -568,11 +587,13 @@ Parrot:RegisterCombatEvent{
 	tagTranslations = {
 		Name = "sourceName",
 		Skill = retrieveAbilityName,
+		ExtraSkill = retrieveExtraAbilityName,
 		Icon = retrieveIconFromAbilityName,
 	},
 	tagTranslationsHelp = {
 		Name = L["The name of the enemy that attacked you."],
 		Skill = L["The spell or ability that the enemy attacked you with."],
+		ExtraSkill = L["Skill you were interrupted in casting"]
 	},
 	color = "ffff00", -- yellow
 }
@@ -586,6 +607,65 @@ Parrot:RegisterCombatEvent{
 	name = "Heals",
 	localName = L["Heals"],
 	defaultTag = "([Skill] - [Name]) +[Amount]",
+	parserEvent = {
+		eventType = "Heal",
+		recipientID = "player",
+		isHoT = false,
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Amount = "realAmount",
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the ally that healed you."],
+		Skill = L["The spell or ability that the ally healed you with."],
+		Amount = L["The amount of healing done."],
+	},
+	color = "00ff00", -- green
+	canCrit = true,
+	filterType = { "Incoming heals", 'realAmount' },
+	throttle = { "Heals", 'abilityName', { 'throttleCount', 'isCrit', function(info)
+		local numNorm = info.throttleCount_isCrit_false or 0
+		local numCrit = info.throttleCount_isCrit_true or 0
+		info.isCrit = numCrit > 0
+		if numNorm == 1 then
+			if numCrit == 1 then
+				return L[" (%d heal, %d crit)"]:format(1, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return nil
+			else -- >= 2
+				return L[" (%d heal, %d crits)"]:format(1, numCrit)
+			end
+		elseif numNorm == 0 then
+			if numCrit == 1 then
+				-- just one crit
+				return nil
+			else -- >= 2
+				return L[" (%d crits)"]:format(numCrit)
+			end
+		else -- >= 2
+			if numCrit == 1 then
+				return L[" (%d heals, %d crit)"]:format(numNorm, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return L[" (%d heals)"]:format(numNorm)
+			else -- >= 2
+				return L[" (%d heals, %d crits)"]:format(numNorm, numCrit)
+			end
+		end
+	end }, sourceName = L["Multiple"] },
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Heals"],
+	name = "Self heals",
+	localName = L["Self heals"],
+	defaultTag = "([Skill]) +[Amount]",
 	parserEvent = {
 		eventType = "Heal",
 		recipientID = "player",
@@ -677,6 +757,42 @@ Parrot:RegisterCombatEvent{
 
 Parrot:RegisterCombatEvent{
 	category = "Incoming",
+	subCategory = L["Heals"],
+	name = "Self heals over time",
+	localName = L["Self heals over time"],
+	defaultTag = "([Skill]) +[Amount]",
+	parserEvent = {
+		eventType = "Heal",
+		recipientID = "player",
+		isHoT = true,
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Amount = "realAmount",
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the ally that healed you."],
+		Skill = L["The spell or ability that the ally healed you with."],
+		Amount = L["The amount of healing done."],
+	},
+	throttle = { "DoTs and HoTs", 'abilityName', { 'throttleCount', function(info)
+		local numNorm = info.throttleCount or 0
+		if numNorm == 1 then
+			-- just one hit
+			return nil
+		else
+			return L[" (%d heals)"]:format(numNorm)
+		end
+	end }, sourceName = L["Multiple"] },
+	color = "00ff00", -- green
+	filterType = { "Incoming heals", 'realAmount' },
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
 	name = "Environmental damage",
 	localName = L["Environmental damage"],
 	defaultTag = "-[Amount] [Type]",
@@ -693,6 +809,566 @@ Parrot:RegisterCombatEvent{
 		Type = L["The type of damage done."],
 	},
 	color = "ff0000", -- red
+}
+
+-------------------------------------------------------------------------------
+--incoming Pet events----------------------------------------------------------
+-------------------------------------------------------------------------------
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet melee"],
+	name = "Pet melee damage",
+	localName = L["Pet melee damage"],
+	defaultTag = "(Pet) -[Amount]",
+	parserEvent = {
+		eventType = "Damage",
+		recipientID = "pet",
+		abilityName = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Amount = coloredDamageAmount,
+	},
+	tagTranslationsHelp = {
+		Name = "The name of the enemy that attacked your pet.",-- L[],
+		Amount = L["The amount of damage done."],
+	},
+	color = "ff0000", -- red
+	canCrit = true,
+	filterType = { "Incoming damage", 'amount' },
+	throttle = { "Melee damage", 'recipientID', { 'throttleCount', 'isCrit', function(info)
+		local numNorm = info.throttleCount_isCrit_false or 0
+		local numCrit = info.throttleCount_isCrit_true or 0
+		info.isCrit = numCrit > 0
+		if numNorm == 1 then
+			if numCrit == 1 then
+				return L[" (%d hit, %d crit)"]:format(1, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return nil
+			else -- >= 2
+				return L[" (%d hit, %d crits)"]:format(1, numCrit)
+			end
+		elseif numNorm == 0 then
+			if numCrit == 1 then
+				-- just one crit
+				return nil
+			else -- >= 2
+				return L[" (%d crits)"]:format(numCrit)
+			end
+		else -- >= 2
+			if numCrit == 1 then
+				return L[" (%d hits, %d crit)"]:format(numNorm, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return L[" (%d hits)"]:format(numNorm)
+			else -- >= 2
+				return L[" (%d hits, %d crits)"]:format(numNorm, numCrit)
+			end
+		end
+	end }, sourceName = L["Multiple"] },
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet skill DoTs",
+	localName = L["Pet skill DoTs"],
+	defaultTag = "(Pet) -[Amount]",
+	parserEvent = {
+		eventType = "Damage",
+		recipientID = "pet",
+		abilityName_not = false,
+		isDoT = true,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Amount = coloredDamageAmount,
+		Type = damageTypeString,
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+		Amount = L["The amount of damage done."],
+		Type = L["The type of damage done."],
+		Skill = L["The spell or ability that the enemy attacked you with."],
+	},
+	color = "ff0000", -- red
+	throttle = { "DoTs and HoTs", 'abilityName', { 'throttleCount', function(info)
+		local numNorm = info.throttleCount or 0
+		if numNorm == 1 then
+			-- just one hit
+			return nil
+		else -- >= 2
+			return L[" (%d hits)"]:format(numNorm)
+		end
+	end }, sourceName = L["Multiple"] },
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet melee"],
+	name = "Pet melee misses",
+	localName = L["Pet melee misses"],
+	defaultTag = L["Pet Miss!"],
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Miss",
+		recipientID = "pet",
+		abilityName = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet melee"],
+	name = "Pet melee dodges",
+	localName = L["Pet melee dodges"],
+	defaultTag = L["Pet Dodge!"],
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Dodge",
+		recipientID = "pet",
+		abilityName = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet melee"],
+	name = "Pet melee parries",
+	localName = L["Pet melee parries"],
+	defaultTag = L["Pet Parry!"],
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Parry",
+		recipientID = "pet",
+		abilityName = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet melee"],
+	name = "Pet melee blocks",
+	localName = L["Pet melee blocks"],
+	defaultTag = L["Pet Block!"],
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Block",
+		recipientID = "pet",
+		abilityName = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet melee"],
+	name = "Pet melee absorbs",
+	localName = L["Pet melee absorbs"],
+	defaultTag = L["Pet Absorb!"],
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Absorb",
+		recipientID = "pet",
+		abilityName = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+	},
+	color = "ffff00", -- yellow
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet melee"],
+	name = "Pet melee immunes",
+	localName = L["Pet melee immunes"],
+	defaultTag = L["Pet Immune!"],
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Immune",
+		recipientID = "pet",
+		abilityName = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+	},
+	color = "ffff00", -- yellow
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet skill damage",
+	localName = L["Pet skill damage"],
+	defaultTag = "(Pet) -[Amount]",
+	parserEvent = {
+		eventType = "Damage",
+		recipientID = "pet",
+		abilityName_not = false,
+		isDoT = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Amount = coloredDamageAmount,
+		Type = damageTypeString,
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy that attacked you."],
+		Amount = L["The amount of damage done."],
+		Type = L["The type of damage done."],
+		Skill = L["The spell or ability that the enemy attacked you with."],
+	},
+	color = "ff0000", -- red
+	canCrit = true,
+	throttle = { "Skill damage", 'abilityName', { 'throttleCount', 'isCrit', function(info)
+		local numNorm = info.throttleCount_isCrit_false or 0
+		local numCrit = info.throttleCount_isCrit_true or 0
+		info.isCrit = numCrit > 0
+		if numNorm == 1 then
+			if numCrit == 1 then
+				return L[" (%d hit, %d crit)"]:format(1, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return nil
+			else -- >= 2
+				return L[" (%d hit, %d crits)"]:format(1, numCrit)
+			end
+		elseif numNorm == 0 then
+			if numCrit == 1 then
+				-- just one crit
+				return nil
+			else -- >= 2
+				return L[" (%d crits)"]:format(numCrit)
+			end
+		else -- >= 2
+			if numCrit == 1 then
+				return L[" (%d hits, %d crit)"]:format(numNorm, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return L[" (%d hits)"]:format(numNorm)
+			else -- >= 2
+				return L[" (%d hits, %d crits)"]:format(numNorm, numCrit)
+			end
+		end
+	end }, sourceName = L["Multiple"] },
+	filterType = { "Incoming damage", 'amount' },
+}
+
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet ability misses",
+	localName = L["Pet ability misses"],
+	defaultTag = L["Pet Miss!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Miss",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet ability dodges",
+	localName = L["Pet ability dodges"],
+	defaultTag = L["Pet Dodge!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Dodge",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet ability parries",
+	localName = L["Pet ability parries"],
+	defaultTag = L["Pet Parry!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Parry",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet ability blocks",
+	localName = L["Pet ability blocks"],
+	defaultTag = L["Pet Block!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Block",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "0000ff", -- blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet spell resists",
+	localName = L["Pet spell resists"],
+	defaultTag = L["Pet Resist!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Resist",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "7f7fb2", -- blue-gray
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet skill absorbs",
+	localName = L["Pet skill"],
+	defaultTag = L["Pet Absorb!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Absorb",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "7f7fff", -- light blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet skill immunes",
+	localName = L["Pet skill immunes"],
+	defaultTag = L["Pet Immune!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Immune",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "7f7fff", -- light blue
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet skill reflects",
+	localName = L["Pet skill reflects"],
+	defaultTag = L["Pet Reflect!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Reflect",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "7f7fff", -- light blue
+	canCrit = true,
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet skills"],
+	name = "Pet skill evades",
+	localName = L["Pet skill evades"],
+	defaultTag = L["Evade!"] .. " ([Skill])",
+	parserEvent = {
+		eventType = "Miss",
+		missType = "Evade",
+		recipientID = "pet",
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "sourceName",
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy your pet attacked."],
+		Skill = L["The ability or spell your pet used."],
+	},
+	color = "ff7fff", -- pink
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Incoming",
+	subCategory = L["Pet heals"],
+	name = "Pet heals",
+	localName = L["Pet heals"],
+	defaultTag = L["(Pet) +[Amount]"],
+	parserEvent = {
+		eventType = "Heal",
+		recipientID = "pet",
+		isHoT = false,
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "destName",
+		Skill = retrieveAbilityName,
+		Amount = "realAmount",
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the ally that healed you."],
+		Skill = L["The spell or ability that the ally healed you with."],
+		Amount = L["The amount of healing done."],
+	},
+	color = "00ff00", -- green
+	canCrit = true,
+	filterType = { "Incoming heals", 'realAmount' },
+	throttle = { "Heals", 'abilityName', { 'throttleCount', 'isCrit', function(info)
+		local numNorm = info.throttleCount_isCrit_false or 0
+		local numCrit = info.throttleCount_isCrit_true or 0
+		info.isCrit = numCrit > 0
+		if numNorm == 1 then
+			if numCrit == 1 then
+				return L[" (%d heal, %d crit)"]:format(1, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return nil
+			else -- >= 2
+				return L[" (%d heal, %d crits)"]:format(1, numCrit)
+			end
+		elseif numNorm == 0 then
+			if numCrit == 1 then
+				-- just one crit
+				return nil
+			else -- >= 2
+				return L[" (%d crits)"]:format(numCrit)
+			end
+		else -- >= 2
+			if numCrit == 1 then
+				return L[" (%d heals, %d crit)"]:format(numNorm, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return L[" (%d heals)"]:format(numNorm)
+			else -- >= 2
+				return L[" (%d heals, %d crits)"]:format(numNorm, numCrit)
+			end
+		end
+	end }, sourceName = L["Multiple"] },
 }
 
 ------------------------------------------------------------------------------
@@ -926,7 +1602,7 @@ Parrot:RegisterCombatEvent{
 	tagTranslations = {
 		Name = "recipientName",
 		Amount = coloredDamageAmount,
-		Type = "damageTypeLocal",
+		Type = damageTypeString,
 		Skill = retrieveAbilityName,
 		Icon = retrieveIconFromAbilityName,
 	},
@@ -987,7 +1663,7 @@ Parrot:RegisterCombatEvent{
 	tagTranslations = {
 		Name = "recipientName",
 		Amount = coloredDamageAmount,
-		Type = "damageTypeLocal",
+		Type = damageTypeString,
 		Skill = retrieveAbilityName,
 		Icon = retrieveIconFromAbilityName,
 	},
@@ -1216,7 +1892,7 @@ Parrot:RegisterCombatEvent{
 	subCategory = L["Skills"],
 	name = "Spell interrupts",
 	localName = L["Skill interrupts"],
-	defaultTag = L["Interrupt!"] .. " ([Skill])",
+	defaultTag = L["Interrupt!"] .. " ([Skill]) {[ExtraSkill]}",
 	parserEvent = {
 		eventType = "Interrupt",
 		sourceID = "player",
@@ -1225,11 +1901,13 @@ Parrot:RegisterCombatEvent{
 	tagTranslations = {
 		Name = "recipientName",
 		Skill = retrieveAbilityName,
+		ExtraSkill = retrieveExtraAbilityName,
 		Icon = retrieveIconFromAbilityName,
 	},
 	tagTranslationsHelp = {
 		Name = L["The name of the enemy you attacked."],
 		Skill = L["The spell or ability that you used."],
+		ExtraSkill = L["The spell you interrupted"]
 	},
 	color = "ffff00", -- yellow
 }
@@ -1322,6 +2000,68 @@ Parrot:RegisterCombatEvent{
 	end }, sourceName = L["Multiple"] },
 }
 
+
+Parrot:RegisterCombatEvent{
+	category = "Outgoing",
+	subCategory = L["Heals"],
+	name = "Self heals",
+	localName = L["Self heals"],
+	defaultTag = "+[Amount] ([Skill])",
+	parserEvent = {
+		eventType = "Heal",
+		sourceID = "player",
+		recipientID_not = "player",
+		isHoT = false,
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "recipientName",
+		Skill = retrieveAbilityName,
+		Amount = "realAmount",
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the ally you healed."],
+		Skill = L["The spell or ability that you used."],
+		Amount = L["The amount of healing done."],
+	},
+	color = "00ff00", -- green
+	canCrit = true,
+	defaultDisabled = true,
+	filterType = { "Outgoing heals", 'realAmount' },
+	throttle = { "Heals", 'abilityName', { 'throttleCount', 'isCrit', function(info)
+		local numNorm = info.throttleCount_isCrit_false or 0
+		local numCrit = info.throttleCount_isCrit_true or 0
+		info.isCrit = numCrit > 0
+		if numNorm == 1 then
+			if numCrit == 1 then
+				return L[" (%d heal, %d crit)"]:format(1, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return nil
+			else -- >= 2
+				return L[" (%d heal, %d crits)"]:format(1, numCrit)
+			end
+		elseif numNorm == 0 then
+			if numCrit == 1 then
+				-- just one crit
+				return nil
+			else -- >= 2
+				return L[" (%d crits)"]:format(numCrit)
+			end
+		else -- >= 2
+			if numCrit == 1 then
+				return L[" (%d heals, %d crit)"]:format(numNorm, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return L[" (%d heals)"]:format(numNorm)
+			else -- >= 2
+				return L[" (%d heals, %d crits)"]:format(numNorm, numCrit)
+			end
+		end
+	end }, sourceName = L["Multiple"] },
+}
+
 Parrot:RegisterCombatEvent{
 	category = "Outgoing",
 	subCategory = L["Heals"],
@@ -1358,6 +2098,46 @@ Parrot:RegisterCombatEvent{
 	color = "00ff00", -- green
 	filterType = { "Outgoing heals", 'realAmount' },
 }
+
+Parrot:RegisterCombatEvent{
+	category = "Outgoing",
+	subCategory = L["Heals"],
+	name = "Self heals over time",
+	localName = L["Self heals over time"],
+	defaultTag = "+[Amount] ([Skill])",
+	
+	parserEvent = {
+		eventType = "Heal",
+		sourceID = "player",
+		recipientID_not = "player",
+		isHoT = true,
+		abilityName_not = false,
+	},
+	tagTranslations = {
+		Name = "recipientName",
+		Skill = retrieveAbilityName,
+		Amount = "realAmount",
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the ally you healed."],
+		Skill = L["The spell or ability that you used."],
+		Amount = L["The amount of healing done."],
+	},
+	throttle = { "DoTs and HoTs", 'abilityName', { 'throttleCount', function(info)
+		local numNorm = info.throttleCount or 0
+		if numNorm == 1 then
+			-- just one heal
+			return nil
+		else -- >= 2
+			return L[" (%d heals)"]:format(numNorm)
+		end
+	end }, recipientName = L["Multiple"] },
+	color = "00ff00", -- green
+	filterType = { "Outgoing heals", 'realAmount' },
+	defaultDisabled = true,
+}
+
 
 Parrot:RegisterCombatEvent{
 	category = "Outgoing",
@@ -1552,7 +2332,7 @@ Parrot:RegisterCombatEvent{
 	tagTranslations = {
 		Name = "recipientName",
 		Amount = coloredDamageAmount,
-		Type = "damageTypeLocal",
+		Type = damageTypeString,
 		Skill = retrieveAbilityName,
 		Icon = retrieveIconFromAbilityName,
 	},
@@ -1564,6 +2344,44 @@ Parrot:RegisterCombatEvent{
 	},
 	color = "0000ff", -- blue
 	canCrit = true,
+}
+
+Parrot:RegisterCombatEvent{
+	category = "Outgoing",
+	subCategory = L["Skills"],
+	name = "Pet skill DoTs",
+	localName = L["Pet skill DoTs"],
+	defaultTag = "[Amount] ([Skill])",
+	parserEvent = {
+		eventType = "Damage",
+		sourceID = "pet",
+		recipientID_not = "pet",
+		abilityName_not = false,
+		isDoT = true,
+	},
+	tagTranslations = {
+		Name = "recipientName",
+		Amount = coloredDamageAmount,
+		Type = damageTypeString,
+		Skill = retrieveAbilityName,
+		Icon = retrieveIconFromAbilityName,
+	},
+	tagTranslationsHelp = {
+		Name = L["The name of the enemy you attacked."],
+		Amount = L["The amount of damage done."],
+		Type = L["The type of damage done."],
+		Skill = L["The spell or ability that you used."],
+	},
+	throttle = { "DoTs and HoTs", 'abilityName', { 'throttleCount', function(info)
+		local numNorm = info.throttleCount or 0
+		if numNorm == 1 then
+			-- just one hit
+			return nil
+		else
+			return L[" (%d hits)"]:format(numNorm)
+		end
+	end }, recipientName = L["Multiple"] },
+	color = "ffff00", -- yellow
 }
 
 Parrot:RegisterCombatEvent{
@@ -1845,6 +2663,7 @@ Parrot:RegisterCombatEvent{
 }
 
 onEnableFuncs[#onEnableFuncs+1] = function()
+	--[[ Parser is deprecated. FIXME.
 	mod:AddParserListener({
 		eventType = "Leech",
 		sourceGainedID = "player",
@@ -1852,6 +2671,7 @@ onEnableFuncs[#onEnableFuncs+1] = function()
 	}, function(info)
 		Parrot:TriggerCombatEvent("Notification", "Power gain", info)
 	end)
+	--]]
 end
 
 Parrot:RegisterCombatEvent{
@@ -1937,20 +2757,16 @@ Parrot:RegisterCombatEvent{
 	name = "Honor gains",
 	localName = L["Honor gains"],
 	defaultTag = "+[Amount] " .. HONOR_CONTRIBUTION_POINTS,
-	parserEvent = {
-		eventType = "Honor",
-		amount_gt = 0,
-		isHonorable = true,
-	},
+	
 	tagTranslations = {
 		Amount = "amount",
-		Name = "sourceName",
-		Rank = "sourceRank",
+-- 		Name = "sourceName", -- not supported anymore
+-- 		Rank = "sourceRank", -- not supported anymore
 	},
 	tagTranslationHelp = {
 		Amount = L["The amount of honor gained."],
-		Name = L["The name of the enemy slain."],
-		Rank = L["The rank of the enemy slain."],
+		-- Name = L["The name of the enemy slain."],
+		-- Rank = L["The rank of the enemy slain."],
 	},
 	color = "7f7fb2", -- blue-gray
 }
@@ -1987,7 +2803,7 @@ Parrot:RegisterCombatEvent{
 		amount_lt = 0,
 	},
 	tagTranslations = {
-		Amount = function(info) return -info.amount end,
+		Amount = function(info) return info.amount end,
 		Faction = "faction",
 	},
 	tagTranslationHelp = {
@@ -2026,11 +2842,11 @@ Parrot:RegisterCombatEvent{
 		recipientID = "player",
 	},
 	tagTranslations = {
-		Name = "sourceName",
+		-- Name = "sourceName", -- not supported anymore by the event
 		Amount = "amount",
 	},
 	tagTranslationHelp = {
-		Name = L["The name of the enemy slain."],
+		-- Name = L["The name of the enemy slain."], not supported anymore by the event
 		Amount = L["The amount of experience points gained."]
 	},
 	color = "bf4ccc", -- magenta
@@ -2092,11 +2908,6 @@ if playerClass == "WARLOCK" then
 		name = "Soul shard gains",
 		localName = L["Soul shard gains"],
 		defaultTag = "+[Name]",
-		parserEvent = {
-			eventType = "Create",
-			itemString_match = "item:6265:[%-%d:]+",
-			isCreated = true,
-		},
 		tagTranslations = {
 			Name = "itemName",
 			Icon = function(info)

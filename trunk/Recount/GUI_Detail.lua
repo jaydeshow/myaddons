@@ -1,11 +1,14 @@
 local Graph = LibStub:GetLibrary("LibGraph-2.0")
-local L = AceLibrary("AceLocale-2.2"):new("Recount")
--- local Graph = AceLibrary("Graph-1.0")
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale( "Recount" )
 local me={}
 local Epsilon=0.000000000000000001
 
+local revision = tonumber(string.sub("$Revision: 73286 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
+
 local RowHeight=14
-function RecountSortFunc(a,b)
+local function RecountSortFunc(a,b)
 	if a[2]>b[2] then
 		return true
 	end
@@ -132,7 +135,7 @@ function Recount:FillUpperDetailTable(Data)
 
 	local UpperTable=Recount.DetailWindow.PieMode.UpperTable
 
-	for k,v in pairs(UpperTable) do 
+	for k,v in ipairs(UpperTable) do 
 		FreeTables[#FreeTables+1]=v
 		UpperTable[k]=nil
 	end
@@ -146,8 +149,9 @@ function Recount:FillUpperDetailTable(Data)
 			UpperTable[#UpperTable][1]=k
 			UpperTable[#UpperTable][2]=v.amount
 			UpperTable[#UpperTable][3]=v.Details
+			UpperTable[#UpperTable][6]=v.count
 		else
-			UpperTable[#UpperTable+1]={k,v.amount,v.Details}
+			UpperTable[#UpperTable+1]={k,v.amount,v.Details,nil,nil,v.count}
 		end
 		
 		
@@ -162,7 +166,7 @@ function Recount:FillUpperDetailTable(Data)
 
 	local MaxNum=table.maxn(UpperTable)
 
-	for k,v in pairs(UpperTable) do
+	for k,v in ipairs(UpperTable) do
 		v[4]=100*v[2]/total
 
 		if k~=MaxNum then
@@ -202,6 +206,7 @@ function me:RefreshUpperDetails()
 			row.Key:SetVertexColor(entry[5][1],entry[5][2],entry[5][3],1.0)
 			row.Count:SetText(i+offset)
 			row.Name:SetText(entry[1])
+			row.ACount:SetText(entry[6])
 			row.Amount:SetText(entry[2])
 			row.Percent:SetText(string.format("%.1f",entry[4]).."%")
 			row.Data=entry[3]
@@ -240,7 +245,7 @@ function Recount:FillLowerDetailTable(Data)
 	local dispTable=Recount.DetailWindow.PieMode.LowerTable
 	local total=0
 
-	for k,v in pairs(dispTable) do 
+	for k,v in ipairs(dispTable) do 
 		FreeTables[#FreeTables+1]=v
 		dispTable[k]=nil
 	end
@@ -276,7 +281,7 @@ function Recount:FillLowerDetailTable(Data)
 
 	local MaxNum=table.maxn(dispTable)
 
-	for k,v in pairs(dispTable) do
+	for k,v in ipairs(dispTable) do
 		v[6]=100*v[2]/total
 		v[7]=HitTypeColors[v[1]]
 
@@ -328,6 +333,7 @@ end
 
 --The titles are slightly different for various modes
 --.TopNames = Names of the entries for the top data
+--.TopCount = Names of the count for the top data
 --.TopAmount = What we call the amount for the top
 --.BotNames = Names of the entries for the bottom
 --.BotMin = The minimum label for bottom
@@ -343,6 +349,7 @@ function Recount:SetupDetailTitles(ForWho,MainTitle,Titles)
 	end
 	local Labels=Recount.DetailWindow.PieMode.TopRowLabels
 	Labels.Name:SetText(Titles.TopNames)
+	Labels.ACount:SetText(Titles.TopCount)
 	Labels.Amount:SetText(Titles.TopAmount)
 
 	Labels=Recount.DetailWindow.PieMode.BotRowLabels
@@ -375,16 +382,22 @@ end
 function me:RefreshDeathDetails()
 	local Row,DataRow
 	local Data=Recount.DetailWindow.DeathMode.Data
-	local size=table.getn(Data)
-
+	local size
+	
+	if data then
+		size = table.getn(Data)
+	else
+		size = 0
+	end
+		
 	FauxScrollFrame_Update(Recount.DetailWindow.DeathMode.ScrollBar1, size, 17, 18)
 
 	local offset = FauxScrollFrame_GetOffset(Recount.DetailWindow.DeathMode.ScrollBar1)
-	local Selected = (Recount.DetailWindow.DeathMode.SelectedNum or 0)-offset
+	local Selected = (Recount.DetailWindow.DeathMode.SelectedNum or 1)-offset
 
 	for i=1,17 do
-		Row=Recount.DetailWindow.DeathMode.Deaths[i]
-		DataRow=Data[i+offset]
+		Row=Recount.DetailWindow.DeathMode.Deaths[i] or 0
+		DataRow=Data and Data[i+offset]
 		if DataRow then
 			Row.Data=DataRow
 			Row.Time:SetText(date("%H:%M:%S",DataRow.DeathAt))
@@ -426,6 +439,8 @@ function Recount:WrapFontString(fontstring,maxwidth)
 end
 
 function Recount:SetDeathLogDetails(id)
+	Recount:DPrint("id: "..id)
+	Recount:DPrint(debugstack(2, 3, 2))
 	for i=1,17 do
 		Recount.DetailWindow.DeathMode.Deaths[i].Selected:Hide()
 	end
@@ -491,11 +506,13 @@ function me:ShowDeathGraph()
 						Heals=Recount:GetTable()
 					end
 					Heals[#Heals+1]={time,Data.EventNum[k]}
+					Recount:DPrint("Heal: "..time.." "..Data.EventNum[k])
 				elseif Data.MessageType[k]=="DAMAGE" then
 					if Hits==nil then
 						Hits=Recount:GetTable()
 					end
 					Hits[#Hits+1]={time,Data.EventNum[k]}
+					Recount:DPrint("Hits: "..time.." "..Data.EventNum[k])
 				end
 			end
 		end
@@ -594,8 +611,8 @@ function me:RefreshDeathLogDetails()
 	local RowOffset=0
 
 	if Data then
-		for i=1,18 do
-			if i+RowOffset>18 then
+		for i=1,20 do
+			if i+RowOffset>20 then
 				break
 			end
 
@@ -613,7 +630,7 @@ function me:RefreshDeathLogDetails()
 				Row:Show()
 				
 				NextLine=Recount:WrapFontString(Row.Msg,235)
-				if NextLine~="" and (i+RowOffset)<18 then
+				if NextLine~="" and (i+RowOffset)<20 then
 					RowOffset=RowOffset+1
 					Row=Recount.DetailWindow.DeathMode.DeathLog[i+RowOffset]
 					Row.Time:SetText("")
@@ -623,7 +640,7 @@ function me:RefreshDeathLogDetails()
 				end
 
 				NextLine=Recount:WrapFontString(Row.Msg,235)
-				if NextLine~="" and (i+RowOffset)<18 then
+				if NextLine~="" and (i+RowOffset)<20 then
 					RowOffset=RowOffset+1
 					Row=Recount.DetailWindow.DeathMode.DeathLog[i+RowOffset]
 					Row.Time:SetText("")
@@ -636,7 +653,7 @@ function me:RefreshDeathLogDetails()
 			end
 		end
 	else
-		for i=1,18 do
+		for i=1,20 do
 			Recount.DetailWindow.DeathMode.DeathLog[i]:Hide()
 		end
 	end
@@ -673,7 +690,7 @@ function me:CreateSummaryColumn(Title,Color)
 	local theFrame=CreateFrame("Frame",nil,Recount.DetailWindow.SummaryMode)
 
 	theFrame:SetWidth(47)
-	theFrame:SetHeight(156)
+	theFrame:SetHeight(156+26)
 
 	theFrame.Background=theFrame:CreateTexture(nil,"BACKGROUND")
 	theFrame.Background:SetAllPoints(theFrame)
@@ -705,7 +722,21 @@ function me:CreateSummaryColumn(Title,Color)
 	theFrame.Resisted:SetFont("Fonts\\ARIALN.TTF",11)
 	Recount:AddFontString(theFrame.Resisted)
 
-	local i=3
+	theFrame.Blocked=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormalSmall")
+	theFrame.Blocked:SetTextColor(1,1,1)
+	theFrame.Blocked:SetText("-")
+	theFrame.Blocked:SetPoint("TOP",theFrame,"TOP",0,RowSpacing*3)
+	theFrame.Blocked:SetFont("Fonts\\ARIALN.TTF",11)
+	Recount:AddFontString(theFrame.Blocked)
+
+	theFrame.Absorbed=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormalSmall")
+	theFrame.Absorbed:SetTextColor(1,1,1)
+	theFrame.Absorbed:SetText("-")
+	theFrame.Absorbed:SetPoint("TOP",theFrame,"TOP",0,RowSpacing*4)
+	theFrame.Absorbed:SetFont("Fonts\\ARIALN.TTF",11)
+	Recount:AddFontString(theFrame.Absorbed)
+
+	local i=5
 	
 	for _, k in pairs(SummaryHitTypes) do
 		theFrame[k]=theFrame:CreateFontString(nil,"OVERLAY","GameFontNormalSmall")
@@ -741,7 +772,7 @@ local SummaryActive={
 	Shadow=false,
 }
 
-function me:LoadSummaryData(damage,resisted,hitData)
+function me:LoadSummaryData(damage,resisted,hitData,blocked,absorbed)
 	local SummaryMode=Recount.DetailWindow.SummaryMode
 	local damageFrame
 
@@ -750,6 +781,8 @@ function me:LoadSummaryData(damage,resisted,hitData)
 		damageFrame=SummaryMode[dt]
 		damageFrame.Damage:SetText("-")
 		damageFrame.Resisted:SetText("-")
+		damageFrame.Blocked:SetText("-")
+		damageFrame.Absorbed:SetText("-")
 		for _, ht in pairs(SummaryHitTypes) do
 			damageFrame[ht]:SetText("-")
 			damageFrame[ht.."P"]:SetText("-")
@@ -761,47 +794,72 @@ function me:LoadSummaryData(damage,resisted,hitData)
 	SummaryActive.Melee=true
 	SummaryActive.Physical=true
 
-	for k, v in pairs(damage) do
---		local revk = L:GetReverseTranslation(k) -- Elsia: This is needed to that damage types which come in localized can be used as English table references.
-		if SummaryMode[k] then
-			SummaryMode[k].Damage:SetText(v)
-			if SummaryMode[k].Damage~=0 then
-				SummaryActive[k]=true
-			end
-		end
-	end
-
-	for k, v in pairs(resisted) do
---		local revk = L:GetReverseTranslation(k)
-		if SummaryMode[k] then
-		SummaryMode[k].Resisted:SetText(v)
-			if SummaryMode[k].Resisted~=0 then
-				SummaryActive[k]=true
-			end
-		end
-	end
-
-	for k, v in pairs(hitData) do
---		local k = L:GetReverseTranslation(k)
-		damageFrame=SummaryMode[k]
-		if damageFrame then
-			local Total=v.amount
-			for k2, v2 in pairs(v.Details) do
-				if k2=="Tick" then
-					Total=Total-v2.count
-				end
-			end
-			for k2, v2 in pairs(v.Details) do
-				if damageFrame[k2] then
-					damageFrame[k2]:SetText(v2.count)
-					damageFrame[k2.."P"]:SetText((math.floor(1000*v2.count/Total+0.5)/10).."%")
+	if damage then
+		for k, v in pairs(damage) do
+			if SummaryMode[k] then
+				SummaryMode[k].Damage:SetText(v)
+				if SummaryMode[k].Damage~=0 then
 					SummaryActive[k]=true
-					
+				end
+			end
+		end
+	end
+	
+	if resisted then
+		for k, v in pairs(resisted) do
+			if SummaryMode[k] then
+				SummaryMode[k].Resisted:SetText(v)
+				if SummaryMode[k].Resisted~=0 then
+					SummaryActive[k]=true
 				end
 			end
 		end
 	end
 
+	if blocked then
+		for k, v in pairs(blocked) do
+			if SummaryMode[k] then
+				SummaryMode[k].Blocked:SetText(v)
+				if SummaryMode[k].Blocked~=0 then
+					SummaryActive[k]=true
+				end
+			end
+		end
+	end
+
+	if absorbed then
+		for k, v in pairs(absorbed) do
+			if SummaryMode[k] then
+				SummaryMode[k].Absorbed:SetText(v)
+				if SummaryMode[k].Absorbed~=0 then
+					SummaryActive[k]=true
+				end
+			end
+		end
+	end
+
+	if hitData then
+		for k, v in pairs(hitData) do
+			damageFrame=SummaryMode[k]
+			if damageFrame then
+				local Total=v.amount
+				for k2, v2 in pairs(v.Details) do
+					if k2=="Tick" then
+						Total=Total-v2.count
+					end
+				end
+				for k2, v2 in pairs(v.Details) do
+					if damageFrame[k2] then
+						damageFrame[k2]:SetText(v2.count)
+						damageFrame[k2.."P"]:SetText((math.floor(1000*v2.count/Total+0.5)/10).."%")
+						SummaryActive[k]=true
+						
+					end
+				end
+			end
+		end
+	end
+		
 	local numShown=0
 	for k, v in pairs(SummaryActive) do
 		if v then
@@ -811,7 +869,7 @@ function me:LoadSummaryData(damage,resisted,hitData)
 			SummaryMode[k]:Hide()
 		end
 	end
-	local Width=390/numShown
+	local Width=(390+30)/numShown
 	for k, v in pairs(SummaryActive) do
 		if v then
 			SummaryMode[k]:SetWidth(Width-2)
@@ -825,7 +883,7 @@ function me:LoadSummaryData(damage,resisted,hitData)
 		if SummaryMode[v]:IsShown() then
 			SummaryMode[v]:SetPoint("TOPLEFT",Previous,"TOPRIGHT",2,0)
 			Previous=SummaryMode[v]
-			local i=3
+			local i=5
 			for _, k in pairs(SummaryHitTypes) do
 				SummaryMode[v][k]:SetPoint("TOP",SummaryMode[v],"TOP",-Width,-12.8*i)
 				SummaryMode[v][k.."P"]:SetPoint("TOP",SummaryMode[v],"TOP",Width,-12.8*i)
@@ -854,6 +912,16 @@ function me:ReportElement(loc,loc2)
 		SendChatMessage(L["Resisted"]..": "..Num,loc,nil,loc2)
 	end
 
+	Num=self.Blocked:GetText()
+	if Num~="-" then
+		SendChatMessage(L["Blocked"]..": "..Num,loc,nil,loc2)
+	end
+
+	Num=self.Absorbed:GetText()
+	if Num~="-" then
+		SendChatMessage(L["Absorbed"]..": "..Num,loc,nil,loc2)
+	end
+
 	for _, HitType in pairs(SummaryHitTypes) do 
 		Num=self[HitType]:GetText()
 		Per=self[HitType.."P"]:GetText()
@@ -880,9 +948,9 @@ function me:SetValue(v)
 end
 
 function me:CreateDataItem(parent,text,value,font)
-	theFrame=CreateFrame("Frame",nil,parent)
+	local theFrame=CreateFrame("Frame",nil,parent)
 
-	theFrame:SetWidth(150)
+	theFrame:SetWidth(150+(50/3))
 
 	if not font then
 		font="GameFontNormalSmall"
@@ -917,9 +985,9 @@ function me:GetTextTitle()
 end
 
 function me:CreateTitle(parent,text,font)
-	theFrame=CreateFrame("Frame",nil,parent)
+	local theFrame=CreateFrame("Frame",nil,parent)
 
-	theFrame:SetWidth(150)
+	theFrame:SetWidth(150+(50/3))
 
 	if not font then
 		font="GameFontNormalSmall"
@@ -958,6 +1026,8 @@ end
 local SummaryLabels={
 	L["Damage"],
 	L["Resisted"],
+	L["Blocked"],
+	L["Absorbed"],
 	L["Glancing"],
 	L["Hit"],
 	L["Crushing"],
@@ -976,12 +1046,12 @@ function me:CreateSummaryMode()
 
 	theFrame:ClearAllPoints()
 	theFrame:SetPoint("BOTTOM",Recount.DetailWindow)
-	theFrame:SetHeight(320-32)
-	theFrame:SetWidth(450)
+	theFrame:SetHeight(320-32+26)
+	theFrame:SetWidth(450+50)
 
 	theFrame.AttackLabels=CreateFrame("Frame",nil,theFrame)
-	theFrame.AttackLabels:SetWidth(55)
-	theFrame.AttackLabels:SetHeight(156)
+	theFrame.AttackLabels:SetWidth(55+20)
+	theFrame.AttackLabels:SetHeight(156+26)
 	theFrame.AttackLabels:SetPoint("BOTTOMLEFT",theFrame,"BOTTOMLEFT",0,2)
 
 
@@ -1022,7 +1092,7 @@ function me:CreateSummaryMode()
 	--Damage Data
 	theFrame.Damage=CreateFrame("Frame",nil,theFrame)
 	theFrame.Damage:SetHeight(105)
-	theFrame.Damage:SetWidth(149)
+	theFrame.Damage:SetWidth(149+(50/3))
 	theFrame.Damage:SetPoint("TOPLEFT",theFrame,"TOPLEFT",1,2)
 	theFrame.Damage:SetFrameLevel(theFrame:GetFrameLevel())
 	theFrame.Damage.Report=me.ReportSummarySet
@@ -1051,20 +1121,22 @@ function me:CreateSummaryMode()
 	theFrame.Damage.Misc=me:CreateDataItem(theFrame.Damage,L["Avg. DOTs Up"]..":",0)
 	theFrame.Damage.Misc:SetPoint("TOP",theFrame.Damage.Focus,"BOTTOM",0,0)
 
-	Recount.Colors:RegisterTexture("Window","Title",Graph:DrawLine(theFrame,150,290,150,186,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
+	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,150+(50/3),290+26,150+(50/3),186+26,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
 
 	--Pet Damage
 	theFrame.Pet=CreateFrame("Frame",nil,theFrame)
 	theFrame.Pet:SetHeight(105)
-	theFrame.Pet:SetWidth(150)
+	theFrame.Pet:SetWidth(150+(50/3))
 	theFrame.Pet:SetPoint("LEFT",theFrame.Damage,"RIGHT")
 	theFrame.Pet:SetFrameLevel(theFrame:GetFrameLevel())
 	theFrame.Pet.Report=me.ReportSummarySet
 
 	theFrame.Pet.SelectMe=me.SelectSummaryItem
 	theFrame.Pet:EnableMouse()
-	theFrame.Pet:SetScript("OnMouseDown",theFrame.Pet.SelectMe)
-	
+	theFrame.Pet:SetScript("OnMouseDown",function()
+							Recount.DetailWindow.SummaryMode.CurrentPet = Recount.DetailWindow.SummaryMode.CurrentPet +1
+							Recount:UpdateSummaryMode(Recount.MainWindow.Selected)
+							theFrame.Pet.SelectMe(theFrame.Pet) end)
 
 	theFrame.Pet.Selected=theFrame.Damage:CreateTexture(nil,"BACKGROUND")
 	theFrame.Pet.Selected:SetTexture(1.0,0.0,0,0.1)
@@ -1084,13 +1156,17 @@ function me:CreateSummaryMode()
 	theFrame.Pet.Time:SetPoint("TOP",theFrame.Pet.Taken,"BOTTOM",0,0)
 	theFrame.Pet.Focus=me:CreateDataItem(theFrame.Pet,L["Pet Focus"]..":",0)
 	theFrame.Pet.Focus:SetPoint("TOP",theFrame.Pet.Time,"BOTTOM",0,0)
+	theFrame.Pet.Page=theFrame.Pet:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	theFrame.Pet.Page:SetText("")
+	theFrame.Pet.Page:SetPoint("TOP",theFrame.Pet.Focus,"BOTTOM",0,0)
+	Recount:AddFontString(theFrame.Pet.Page)
 
-	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,300,290,300,186,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
+	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,300+(50*2/3),290+26,300+(50*2/3),186+26,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
 
 	--Healing Line
 	theFrame.Healing=CreateFrame("Frame",nil,theFrame)
 	theFrame.Healing:SetHeight(105)
-	theFrame.Healing:SetWidth(149)
+	theFrame.Healing:SetWidth(149+(50/3))
 	theFrame.Healing:SetPoint("LEFT",theFrame.Pet,"RIGHT")
 	theFrame.Healing:SetFrameLevel(theFrame:GetFrameLevel())
 	theFrame.Healing.Report=me.ReportSummarySet
@@ -1119,15 +1195,16 @@ function me:CreateSummaryMode()
 	theFrame.Healing.Misc=me:CreateDataItem(theFrame.Healing,L["Avg. HOTs Up"]..":",0)
 	theFrame.Healing.Misc:SetPoint("TOP",theFrame.Healing.Focus,"BOTTOM",0,0)
 
-	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,1,186,449,186,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
+	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(theFrame,1,186+26,449+50,186+26,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
 	
 	theFrame.DamageMode=true
+	theFrame.CurrentPet=1
 
 	--Frame for switching between done/taken
 	theFrame.AttackSummary=CreateFrame("Frame",nil,theFrame)
 	local AttackSummary=theFrame.AttackSummary
 
-	AttackSummary:SetWidth(270)
+	AttackSummary:SetWidth(270+50)
 	AttackSummary:SetHeight(20)
 	AttackSummary:SetPoint("TOP",theFrame,"TOP",0,-106)
 	
@@ -1149,7 +1226,7 @@ function me:CreateSummaryMode()
 							else
 								AttackSummary.Text:SetText(L["Attack Summary Incoming (Click for Outgoing)"])
 							end
-							Recount:UpdateSummaryMode(Recount.DetailWindow.SummaryMode.Name)
+							Recount:UpdateSummaryMode(Recount.MainWindow.Selected)
 						end)
 
 	theFrame:Hide()
@@ -1158,15 +1235,16 @@ end
 function me:CalculateFocus(t)
 	local Total=0
 	local Focus,Temp
-
-	for _,v in pairs(t) do
-		Total=Total+v.amount
-	end
-	
 	Focus=0
-	for _,v in pairs(t) do
-		Temp=v.amount/Total
-		Focus=Focus+Temp*Temp
+
+	if t then
+		for _,v in pairs(t) do
+			Total=Total+v.amount
+		end
+		for _,v in pairs(t) do
+			Temp=v.amount/Total
+			Focus=Focus+Temp*Temp
+		end
 	end
 	
 	return math.floor(10/Focus+0.5)/10, math.floor(Focus*100+0.5)
@@ -1174,7 +1252,7 @@ end
 
 function Recount:UpdateSummaryMode(name)
 	local Num, Focus
-	local data=Recount.db.char.combatants[name]
+	local data=Recount.db2.combatants[name]
 	Recount.DetailWindow.SummaryTitle=L["Summary Report for"].." "..name
 	Recount.DetailWindow.Showing=name
 
@@ -1182,27 +1260,64 @@ function Recount:UpdateSummaryMode(name)
 		Recount.DetailWindow.Title:SetText(Recount.DetailWindow.SummaryTitle)
 	end
 
-	
-	local TotalTime=data.Fights[Recount.CurDataSet].TimeHeal+data.Fights[Recount.CurDataSet].TimeDamage+Epsilon
+	local data2 = data.Fights[Recount.db.profile.CurDataSet]
+
+	local timedamage = data2.TimeDamage or 0
+	local TotalTime=(data2.TimeHeal or 0)+(timedamage or 0)+Epsilon
 	local theFrame=Recount.DetailWindow.SummaryMode
 
-	theFrame.Damage.Total:SetValue(data.Fights[Recount.CurDataSet].Damage)
-	theFrame.Damage.Taken:SetValue(data.Fights[Recount.CurDataSet].DamageTaken)
-	theFrame.Damage.PerSec:SetValue((math.floor(10*data.Fights[Recount.CurDataSet].Damage/(data.Fights[Recount.CurDataSet].ActiveTime+Epsilon)+0.5)/10))	
-	theFrame.Damage.Time:SetValue(data.Fights[Recount.CurDataSet].TimeDamage.."s ("..math.floor(100*data.Fights[Recount.CurDataSet].TimeDamage/TotalTime+0.5).."%)")
-	theFrame.Damage.Misc:SetValue(math.floor(10*data.Fights[Recount.CurDataSet].DOT_Time/(data.Fights[Recount.CurDataSet].ActiveTime+Epsilon)+0.5)/10)
+	local damage = data2.Damage or 0
+	local activetime = (data2.ActiveTime or 0)+Epsilon
+	local damagetake = data2.DamageTaken or 0
+	local dot_time = data2.DOT_Time or 0
+	theFrame.Damage.Total:SetValue(damage)
+	theFrame.Damage.Taken:SetValue(damagetaken)
+	theFrame.Damage.PerSec:SetValue((math.floor(10*damage/(activetime)+0.5)/10))	
+	theFrame.Damage.Time:SetValue(timedamage.."s ("..math.floor(100*timedamage/TotalTime+0.5).."%)")
+	theFrame.Damage.Misc:SetValue(math.floor(10*dot_time/(activetime)+0.5)/10)
 
 	--Set Pet Data
-	if data.Pet then
-		local pet=Recount.db.char.combatants[data.Pet]
-		theFrame.Pet.Title:SetValue(data.Pet)
-		theFrame.Pet.Total:SetValue(pet.Fights[Recount.CurDataSet].Damage.." ("..math.floor(100*pet.Fights[Recount.CurDataSet].Damage/(pet.Fights[Recount.CurDataSet].Damage+data.Fights[Recount.CurDataSet].Damage+Epsilon)+0.5).."%)")
-		theFrame.Pet.Taken:SetValue(pet.Fights[Recount.CurDataSet].DamageTaken)
-		theFrame.Pet.PerSec:SetValue((math.floor(10*pet.Fights[Recount.CurDataSet].Damage/(pet.Fights[Recount.CurDataSet].ActiveTime+Epsilon)+0.5)/10))
-		theFrame.Pet.Time:SetValue(pet.Fights[Recount.CurDataSet].TimeDamage)
-		Num, Focus = me:CalculateFocus(pet.Fights[Recount.CurDataSet].TimeDamaging)
+	if data.Pet and #data.Pet>0 then
+		if Recount.DetailWindow.SummaryMode.CurrentPet > #data.Pet then Recount.DetailWindow.SummaryMode.CurrentPet = 1 end
+		--if not Recount.db2.combatants[data.Pet[Recount.DetailWindow.SummaryMode.CurrentPet] ] then
+		--	Recount:Print("uninitialized Pet: "..data.Pet[Recount.DetailWindow.SummaryMode.CurrentPet].." "..#data.Pet.." please report")
+		--end
+		while not Recount.db2.combatants[data.Pet[Recount.DetailWindow.SummaryMode.CurrentPet] ]  and #data.Pet > 0 do
+			for k,v in pairs(data.Pet) do
+				if v == data.Pet[Recount.DetailWindow.SummaryMode.CurrentPet] then
+					--Recount:Print("removed: "..v)
+					table.remove(data.Pet,k) -- Elsia: Remove deleted pet
+				--else
+					--Recount:Print("eek")
+				end
+			end
+			Recount.DetailWindow.SummaryMode.CurrentPet = Recount.DetailWindow.SummaryMode.CurrentPet +1
+			if Recount.DetailWindow.SummaryMode.CurrentPet > #data.Pet then Recount.DetailWindow.SummaryMode.CurrentPet = 1 end
+		end
+	end
+	
+	if data.Pet and #data.Pet > 0 then
+		local currentPet = Recount.DetailWindow.SummaryMode.CurrentPet
+		local pet=Recount.db2.combatants[data.Pet[currentPet] ]
+		theFrame.Pet.Title:SetValue(pet.Name)
+		local petdata2 = pet.Fights[Recount.db.profile.CurDataSet]
+		local petdamage = petdata2 and petdata2.Damage or 0
+		local petdamagetaken = petdata2 and petdata2.DamageTaken or 0
+		local petactivetime = (petdata2 and petdata2.ActiveTime or 0)+Epsilon
+		local pettimedamage = petdata2 and petdata2.TimeDamage or 0
+		local pettimedamaging = petdata2 and petdata2.TimeDamaging
+		theFrame.Pet.Total:SetValue(petdamage.." ("..math.floor(100*petdamage/(petdamage+damage+Epsilon)+0.5).."%)")
+		theFrame.Pet.Taken:SetValue(petdamagetaken)
+		theFrame.Pet.PerSec:SetValue((math.floor(10*petdamage/petactivetime+0.5)/10))
+		theFrame.Pet.Time:SetValue(pettimedamage)
+		Num, Focus = me:CalculateFocus(pettimedamaging)
 		theFrame.Pet.Focus:SetValue(Num.." ("..Focus.."%)")
 
+		if #data.Pet > 1 then
+			theFrame.Pet.Page:SetText(L["Click for next Pet"])
+		else
+			theFrame.Pet.Page:SetText(" ")
+		end
 	else
 		theFrame.Pet.Title:SetValue(L["No Pet"])
 		theFrame.Pet.Total:SetValue("0")
@@ -1210,46 +1325,41 @@ function Recount:UpdateSummaryMode(name)
 		theFrame.Pet.Taken:SetValue("0")
 		theFrame.Pet.Time:SetValue("0")
 		theFrame.Pet.Focus:SetValue("0")
+		theFrame.Pet.Page:SetText(" ")
 	end
 
+	local healing = data2.Healing or 0
+	local overhealing = data2.Overhealing or 0
+	local healingtaken = data2.HealingTaken or 0
+	local timeheal = data2.TimeHeal or 0
+	local hot_time = data2.HOT_Time or 0
+	
+	theFrame.Healing.Total:SetValue(healing.." ("..(math.floor(10*healing/(activetime)+0.5)/10)..")")
+	theFrame.Healing.Taken:SetValue(healingtaken)
+	theFrame.Healing.Overhealing:SetValue(overhealing.." ("..(math.floor(1000*overhealing/(overhealing+healing+Epsilon)+0.5)/10).."%)")
+	theFrame.Healing.Time:SetValue(timeheal.."s ("..math.floor(100*timeheal/TotalTime+0.5).."%)")
+	theFrame.Healing.Misc:SetValue(math.floor(10*hot_time/(activetime)+0.5)/10)
+
 	
 
-	theFrame.Healing.Total:SetValue(data.Fights[Recount.CurDataSet].Healing.." ("..(math.floor(10*data.Fights[Recount.CurDataSet].Healing/(data.Fights[Recount.CurDataSet].ActiveTime+Epsilon)+0.5)/10)..")")
-	theFrame.Healing.Taken:SetValue(data.Fights[Recount.CurDataSet].HealingTaken)
-	theFrame.Healing.Overhealing:SetValue(data.Fights[Recount.CurDataSet].Overhealing.." ("..(math.floor(1000*data.Fights[Recount.CurDataSet].Overhealing/(data.Fights[Recount.CurDataSet].Overhealing+data.Fights[Recount.CurDataSet].Healing+Epsilon)+0.5)/10).."%)")
-	theFrame.Healing.Time:SetValue(data.Fights[Recount.CurDataSet].TimeHeal.."s ("..math.floor(100*data.Fights[Recount.CurDataSet].TimeHeal/TotalTime+0.5).."%)")
-	theFrame.Healing.Misc:SetValue(math.floor(10*data.Fights[Recount.CurDataSet].HOT_Time/(data.Fights[Recount.CurDataSet].ActiveTime+Epsilon)+0.5)/10)
+	local timedamaging = data2.TimeDamaging
 
-	
-
-	
-
-	Num, Focus = me:CalculateFocus(data.Fights[Recount.CurDataSet].TimeDamaging)
+	Num, Focus = me:CalculateFocus(timedamaging)
 	theFrame.Damage.Focus:SetValue(Num.." ("..Focus.."%)")
 
-	Num, Focus = me:CalculateFocus(data.Fights[Recount.CurDataSet].TimeHealing)
+	local timehealing = data2.TimeHealing
+	
+	Num, Focus = me:CalculateFocus(timehealing)
 	theFrame.Healing.Focus:SetValue(Num.." ("..Focus.."%)")
 	
 
 	theFrame.Name=name
 	if theFrame.DamageMode then
-		me:LoadSummaryData(data.Fights[Recount.CurDataSet].ElementDone,data.Fights[Recount.CurDataSet].ElementDoneResist,data.Fights[Recount.CurDataSet].ElementHitsDone)
+		me:LoadSummaryData(data2.ElementDone,data2.ElementDoneResist,data2.ElementHitsDone,data2.ElementDoneBlock,data2.ElementDoneAbsorb)
 	else
-		me:LoadSummaryData(data.Fights[Recount.CurDataSet].ElementTaken,data.Fights[Recount.CurDataSet].ElementTakenResist,data.Fights[Recount.CurDataSet].ElementHitsTaken)
+		me:LoadSummaryData(data2.ElementTaken,data2.ElementTakenResist,data2.ElementHitsTaken,data2.ElementTakenBlock,data2.ElementTakenAbsorb)
 	end
 end
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 --Create Detail Window Function
@@ -1260,8 +1370,8 @@ function Recount:CreateDetailWindow()
 
 	theFrame:ClearAllPoints()
 	theFrame:SetPoint("CENTER",UIParent)
-	theFrame:SetHeight(320)
-	theFrame:SetWidth(450)
+	theFrame:SetHeight(320+26)
+	theFrame:SetWidth(450+50)
 	theFrame:SetFrameLevel(Recount.MainWindow:GetFrameLevel()+10)
 
 	theFrame:SetBackdrop({
@@ -1288,8 +1398,8 @@ function Recount:CreateDetailWindow()
 	theFrame:SetScript("OnMouseUp", function() 
 						if ( this.isMoving ) then
 						  local point,relativeTo,relativePoint,xOfs,yOfs = this:GetPoint(1)
-						  Recount.db.char.DetailWindowX=xOfs
-						  Recount.db.char.DetailWindowY=yOfs
+						  Recount.db.profile.DetailWindowX=xOfs
+						  Recount.db.profile.DetailWindowY=yOfs
 						  this:StopMovingOrSizing();
 						  this.isMoving = false;
 						 end
@@ -1301,8 +1411,8 @@ function Recount:CreateDetailWindow()
 	theFrame:SetScript("OnHide", function()
 						if ( this.isMoving ) then
 						  local point,relativeTo,relativePoint,xOfs,yOfs = this:GetPoint(1)
-						  Recount.db.char.DetailWindowX=xOfs
-						  Recount.db.char.DetailWindowY=yOfs
+						  Recount.db.profile.DetailWindowX=xOfs
+						  Recount.db.profile.DetailWindowY=yOfs
 						  this:StopMovingOrSizing();
 						  this.isMoving = false;
 						 end
@@ -1375,8 +1485,8 @@ function Recount:CreateDetailWindow()
 
 	PieMode:ClearAllPoints()
 	PieMode:SetPoint("BOTTOM",theFrame)
-	PieMode:SetHeight(320-32)
-	PieMode:SetWidth(450)
+	PieMode:SetHeight(320-32+26)
+	PieMode:SetWidth(450+50)
 
 	PieMode.TopPieChart=Graph:CreateGraphPieChart("Recount_DetailWindow_TopPieChart",PieMode,"LEFT","LEFT",0,72.5,150,150)--56.5,150,150)
 	PieMode.BotPieChart=Graph:CreateGraphPieChart("Recount_DetailWindow_BotPieChart",PieMode,"LEFT","LEFT",0,-72.5,150,150)---88,150,150)
@@ -1387,8 +1497,8 @@ function Recount:CreateDetailWindow()
 	PieMode.TopRowLabels=CreateFrame("FRAME",nil,PieMode)
 	local Labels=PieMode.TopRowLabels
 
-	Labels:SetPoint("TOPLEFT",PieMode,"TOP",-70,0)
-	Labels:SetWidth(270)
+	Labels:SetPoint("TOPLEFT",PieMode,"TOP",-70-25,0)
+	Labels:SetWidth(270+50)
 	Labels:SetHeight(RowHeight)
 
 	Labels.Key=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
@@ -1406,8 +1516,13 @@ function Recount:CreateDetailWindow()
 	Labels.Name:SetText(L["Name of Ability"])
 	Recount:AddFontString(Labels.Name)
 
+	Labels.ACount=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
+	Labels.ACount:SetPoint("RIGHT",Labels,"RIGHT",-120,0)
+	Labels.ACount:SetText(L["Count"])
+	Recount:AddFontString(Labels.ACount)
+
 	Labels.Amount=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	Labels.Amount:SetPoint("RIGHT",Labels,"RIGHT",-40,0)
+	Labels.Amount:SetPoint("RIGHT",Labels,"RIGHT",-50,0)
 	Labels.Amount:SetText(L["Damage"])
 	Recount:AddFontString(Labels.Amount)
 
@@ -1426,9 +1541,9 @@ function Recount:CreateDetailWindow()
 		Row:SetScript("OnEnter", function() Recount:SelectUpperDetailTable(this.id) end)
 		Row:SetScript("OnMouseDown", function() Recount:LockUpperDetailTable(this.id) end)
 
-		Row:SetWidth(270)
+		Row:SetWidth(270+50)
 		Row:SetHeight(RowHeight)
-		Row:SetPoint("TOPLEFT",PieMode,"TOP",-70,-(RowHeight+2)*i)
+		Row:SetPoint("TOPLEFT",PieMode,"TOP",-70-25,-(RowHeight+2)*i)
 
 		Row.Background=Row:CreateTexture(nil,"BACKGROUND")
 		Row.Background:SetAllPoints(Row)
@@ -1461,8 +1576,14 @@ function Recount:CreateDetailWindow()
 		Row.Name:SetTextColor(1.0,1.0,1.0,1.0)
 		Recount:AddFontString(Row.Name)
 
+		Row.ACount=Row:CreateFontString(nil,"OVERLAY","GameFontNormal")
+		Row.ACount:SetPoint("RIGHT",Row,"RIGHT",-120,0)
+		Row.ACount:SetText("815")
+		Row.ACount:SetTextColor(1.0,1.0,1.0,1.0)
+		Recount:AddFontString(Row.ACount)
+
 		Row.Amount=Row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-		Row.Amount:SetPoint("RIGHT",Row,"RIGHT",-40,0)
+		Row.Amount:SetPoint("RIGHT",Row,"RIGHT",-50,0)
 		Row.Amount:SetText("12345")
 		Row.Amount:SetTextColor(1.0,1.0,1.0,1.0)
 		Recount:AddFontString(Row.Amount)
@@ -1490,8 +1611,8 @@ function Recount:CreateDetailWindow()
 	PieMode.BotRowLabels=CreateFrame("FRAME",nil,PieMode)
 	local Labels=PieMode.BotRowLabels
 
-	Labels:SetPoint("TOPLEFT",PieMode,"TOP",-70,-Halfway)
-	Labels:SetWidth(270)
+	Labels:SetPoint("TOPLEFT",PieMode,"TOP",-70-25,-Halfway) -- This is 50/2, the added width of the bars in the view.
+	Labels:SetWidth(270+50)
 	Labels:SetHeight(RowHeight)
 
 	Labels.Key=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
@@ -1510,22 +1631,22 @@ function Recount:CreateDetailWindow()
 	Recount:AddFontString(Labels.Name)
 
 	Labels.Min=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	Labels.Min:SetPoint("RIGHT",Labels,"RIGHT",-160,0)
+	Labels.Min:SetPoint("RIGHT",Labels,"RIGHT",-185,0)
 	Labels.Min:SetText(L["Min"])
 	Recount:AddFontString(Labels.Min)
 
 	Labels.Avg=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	Labels.Avg:SetPoint("RIGHT",Labels,"RIGHT",-120,0)
+	Labels.Avg:SetPoint("RIGHT",Labels,"RIGHT",-140,0)
 	Labels.Avg:SetText(L["Avg"])
 	Recount:AddFontString(Labels.Avg)
 
 	Labels.Max=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	Labels.Max:SetPoint("RIGHT",Labels,"RIGHT",-80,0)
+	Labels.Max:SetPoint("RIGHT",Labels,"RIGHT",-95,0)
 	Labels.Max:SetText(L["Max"])
 	Recount:AddFontString(Labels.Max)
 
 	Labels.Count=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	Labels.Count:SetPoint("RIGHT",Labels,"RIGHT",-40,0)
+	Labels.Count:SetPoint("RIGHT",Labels,"RIGHT",-50,0)
 	Labels.Count:SetText(L["Count"])
 	Recount:AddFontString(Labels.Count)
 
@@ -1543,9 +1664,9 @@ function Recount:CreateDetailWindow()
 		Row:EnableMouse(true)
 		Row:SetScript("OnEnter", function() me:SelectLowerDetailTable(this.id) end)
 
-		Row:SetWidth(270)
+		Row:SetWidth(270+50)
 		Row:SetHeight(RowHeight)
-		Row:SetPoint("TOPLEFT",PieMode,"TOP",-70,-Halfway-(RowHeight+2)*i)
+		Row:SetPoint("TOPLEFT",PieMode,"TOP",-70-25,-Halfway-(RowHeight+2)*i)
 
 		Row.Background=Row:CreateTexture(nil,"BACKGROUND")
 		Row.Background:SetAllPoints(Row)
@@ -1571,25 +1692,25 @@ function Recount:CreateDetailWindow()
 		Recount:AddFontString(Row.Name)
 
 		Row.Min=Row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-		Row.Min:SetPoint("RIGHT",Row,"RIGHT",-160,0)
+		Row.Min:SetPoint("RIGHT",Row,"RIGHT",-185,0)
 		Row.Min:SetText("32")
 		Row.Min:SetTextColor(1.0,1.0,1.0,1.0)
 		Recount:AddFontString(Row.Min)
 
 		Row.Avg=Row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-		Row.Avg:SetPoint("RIGHT",Row,"RIGHT",-120,0)
+		Row.Avg:SetPoint("RIGHT",Row,"RIGHT",-140,0)
 		Row.Avg:SetText("32")
 		Row.Avg:SetTextColor(1.0,1.0,1.0,1.0)
 		Recount:AddFontString(Row.Avg)
 
 		Row.Max=Row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-		Row.Max:SetPoint("RIGHT",Row,"RIGHT",-80,0)
+		Row.Max:SetPoint("RIGHT",Row,"RIGHT",-95,0)
 		Row.Max:SetText("32")
 		Row.Max:SetTextColor(1.0,1.0,1.0,1.0)
 		Recount:AddFontString(Row.Max)
 
 		Row.Count=Row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-		Row.Count:SetPoint("RIGHT",Row,"RIGHT",-40,0)
+		Row.Count:SetPoint("RIGHT",Row,"RIGHT",-50,0)
 		Row.Count:SetText("32")
 		Row.Count:SetTextColor(1.0,1.0,1.0,1.0)
 		Recount:AddFontString(Row.Count)
@@ -1609,14 +1730,14 @@ function Recount:CreateDetailWindow()
 
 	DeathMode:ClearAllPoints()
 	DeathMode:SetPoint("BOTTOM",theFrame)
-	DeathMode:SetHeight(320-32)
-	DeathMode:SetWidth(450)
+	DeathMode:SetHeight(320-32+26)
+	DeathMode:SetWidth(450+50)
 
 	DeathMode.DeathLabels=CreateFrame("FRAME",nil,DeathMode)
 	local Labels=DeathMode.DeathLabels
 
 	Labels:SetPoint("TOPLEFT",DeathMode,"TOPLEFT",2,0)
-	Labels:SetWidth(150)
+	Labels:SetWidth(150+25-10)
 	Labels:SetHeight(RowHeight)
 
 	Labels.Times=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
@@ -1625,7 +1746,7 @@ function Recount:CreateDetailWindow()
 	Recount:AddFontString(Labels.Times)
 
 	Labels.Who=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	Labels.Who:SetPoint("LEFT",Labels,"LEFT",50,0)
+	Labels.Who:SetPoint("RIGHT",Labels,"RIGHT",-10,0)
 	Labels.Who:SetText(L["Killed By"])
 	Recount:AddFontString(Labels.Who)
 
@@ -1642,7 +1763,7 @@ function Recount:CreateDetailWindow()
 		Row:SetScript("OnLeave",function() Row.Highlighted:Hide() end)
 		Row:SetScript("OnMouseDown",function() Recount:SetDeathLogDetails(this.id) end)
 
-		Row:SetWidth(125)
+		Row:SetWidth(125+25+25-10)
 		Row:SetHeight(RowHeight)
 		Row:SetPoint("TOPLEFT",DeathMode,"TOPLEFT",2,-(RowHeight+2)*i)
 
@@ -1663,7 +1784,7 @@ function Recount:CreateDetailWindow()
 		Recount:AddFontString(Row.Time)
 		
 		Row.Who=Row:CreateFontString(nil,"OVERLAY","GameFontNormal")
-		Row.Who:SetPoint("LEFT",Row,"LEFT",50,0)
+		Row.Who:SetPoint("RIGHT",Row,"RIGHT",-10,0)
 		Row.Who:SetText("Test")
 		Row.Who:SetTextColor(1.0,1.0,1.0,1.0)
 		Recount:AddFontString(Row.Who)
@@ -1680,7 +1801,7 @@ function Recount:CreateDetailWindow()
 	local Labels=DeathMode.DeathLogLabels
 
 	Labels:SetPoint("TOPRIGHT",DeathMode,"TOPRIGHT",0,0)
-	Labels:SetWidth(300)
+	Labels:SetWidth(300+25-10)
 	Labels:SetHeight(RowHeight)
 
 	Labels.Times=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
@@ -1689,18 +1810,18 @@ function Recount:CreateDetailWindow()
 	Recount:AddFontString(Labels.Times)
 
 	Labels.Who=Labels:CreateFontString(nil,"OVERLAY","GameFontNormal")
-	Labels.Who:SetPoint("LEFT",Labels,"LEFT",40,-1)
+	Labels.Who:SetPoint("LEFT",Labels,"LEFT",40+20,-1)
 	Labels.Who:SetText(L["Combat Messages"])
 	Recount:AddFontString(Labels.Who)
 
 	DeathMode.DeathLog={}
 
-	for i=1,18 do
+	for i=1,20 do
 		local Row=CreateFrame("FRAME",nil,DeathMode)
 
 		Row.id=i
 
-		Row:SetWidth(275)
+		Row:SetWidth(270+25-10)
 		Row:SetHeight(13)
 		Row:SetPoint("TOPRIGHT",DeathMode,"TOPRIGHT",-25,-14-13*(i-1))
 
@@ -1726,17 +1847,17 @@ function Recount:CreateDetailWindow()
 		DeathMode.DeathLog[i]=Row
 	end
 	
-	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(DeathMode,150,1,150,DeathMode:GetHeight()+1,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
+	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(DeathMode,150+25,1,150+25,DeathMode:GetHeight()+1+13,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
 
 	DeathMode.ScrollBar2=CreateFrame("SCROLLFRAME",DeathMode:GetName().."_Scrollbar2",DeathMode,"FauxScrollFrameTemplate")
 	DeathMode.ScrollBar2:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(12, me.RefreshDeathLogDetails) end)
 	DeathMode.ScrollBar2:SetPoint("TOPLEFT",DeathMode.DeathLog[1],"TOPLEFT")	
-	DeathMode.ScrollBar2:SetPoint("BOTTOMRIGHT",DeathMode.DeathLog[18],"BOTTOMRIGHT")
+	DeathMode.ScrollBar2:SetPoint("BOTTOMRIGHT",DeathMode.DeathLog[20],"BOTTOMRIGHT")
 
 
 	DeathMode.Damage=CreateFrame("CheckButton",nil,DeathMode)
 	me:ConfigureDeathCheckbox(DeathMode.Damage)
-	DeathMode.Damage:SetPoint("TOPLEFT",DeathMode.DeathLog[18],"BOTTOMLEFT",0,-4)
+	DeathMode.Damage:SetPoint("TOPLEFT",DeathMode.DeathLog[20],"BOTTOMLEFT",0,-4)
 
 	DeathMode.DamageText=DeathMode:CreateFontString(nil,"OVERLAY","GameFontNormal")
 	DeathMode.DamageText:SetText(L["Damage"])
@@ -1763,7 +1884,7 @@ function Recount:CreateDetailWindow()
 
 	DeathMode.Incoming=CreateFrame("CheckButton",nil,DeathMode)
 	me:ConfigureDeathCheckbox(DeathMode.Incoming)
-	DeathMode.Incoming:SetPoint("TOPLEFT",DeathMode.DeathLog[18],"BOTTOMLEFT",0,-20)
+	DeathMode.Incoming:SetPoint("TOPLEFT",DeathMode.DeathLog[20],"BOTTOMLEFT",0,-20)
 
 	DeathMode.IncomingText=DeathMode:CreateFontString(nil,"OVERLAY","GameFontNormal")
 	DeathMode.IncomingText:SetText(L["Incoming"])
@@ -1787,11 +1908,11 @@ function Recount:CreateDetailWindow()
 	DeathMode.ShowDeathGraph:SetText(L["Show Graph"])
 
 
-	Recount.DetailWindow.DeathMode.Damage:SetChecked(Recount.db.char.FilterDeathType.DAMAGE)
-	Recount.DetailWindow.DeathMode.Heal:SetChecked(Recount.db.char.FilterDeathType.HEAL)
-	Recount.DetailWindow.DeathMode.Misc:SetChecked(Recount.db.char.FilterDeathType.MISC)
-	Recount.DetailWindow.DeathMode.Incoming:SetChecked(Recount.db.char.FilterDeathIncoming[true])
-	Recount.DetailWindow.DeathMode.Outgoing:SetChecked(Recount.db.char.FilterDeathIncoming[false])
+	Recount.DetailWindow.DeathMode.Damage:SetChecked(Recount.db.profile.FilterDeathType.DAMAGE)
+	Recount.DetailWindow.DeathMode.Heal:SetChecked(Recount.db.profile.FilterDeathType.HEAL)
+	Recount.DetailWindow.DeathMode.Misc:SetChecked(Recount.db.profile.FilterDeathType.MISC)
+	Recount.DetailWindow.DeathMode.Incoming:SetChecked(Recount.db.profile.FilterDeathIncoming[true])
+	Recount.DetailWindow.DeathMode.Outgoing:SetChecked(Recount.db.profile.FilterDeathIncoming[false])
 
 	Recount:SetupScrollbar(DeathMode:GetName().."_Scrollbar1")
 	Recount:SetupScrollbar(DeathMode:GetName().."_Scrollbar2")
@@ -1814,14 +1935,14 @@ function Recount:CreateDetailWindow()
 end
 
 function me:DetermineDeathFilters()
-	Recount.db.char.FilterDeathType.DAMAGE=Recount.DetailWindow.DeathMode.Damage:GetChecked()==1
-	Recount.db.char.FilterDeathType.HEAL=Recount.DetailWindow.DeathMode.Heal:GetChecked()==1
-	Recount.db.char.FilterDeathType.MISC=Recount.DetailWindow.DeathMode.Misc:GetChecked()==1
+	Recount.db.profile.FilterDeathType.DAMAGE=Recount.DetailWindow.DeathMode.Damage:GetChecked()==1
+	Recount.db.profile.FilterDeathType.HEAL=Recount.DetailWindow.DeathMode.Heal:GetChecked()==1
+	Recount.db.profile.FilterDeathType.MISC=Recount.DetailWindow.DeathMode.Misc:GetChecked()==1
 
-	Recount.db.char.FilterDeathIncoming[true]=Recount.DetailWindow.DeathMode.Incoming:GetChecked()==1
-	Recount.db.char.FilterDeathIncoming[false]=Recount.DetailWindow.DeathMode.Outgoing:GetChecked()==1
+	Recount.db.profile.FilterDeathIncoming[true]=Recount.DetailWindow.DeathMode.Incoming:GetChecked()==1
+	Recount.db.profile.FilterDeathIncoming[false]=Recount.DetailWindow.DeathMode.Outgoing:GetChecked()==1
 
-	me:FilterDeathData(Recount.db.char.FilterDeathType,Recount.db.char.FilterDeathIncoming)
+	me:FilterDeathData(Recount.db.profile.FilterDeathType,Recount.db.profile.FilterDeathIncoming)
 	me:RefreshDeathLogDetails()
 end
 
@@ -1859,7 +1980,7 @@ function Recount:ReportDetail(amount,loc,loc2)
 			SendChatMessage("Recount - "..Recount.DetailWindow.TitleText,loc,nil,loc2)
 			for i=1,amount do
 				Entry=UpperTable[i]
-				SendChatMessage(i..". "..Entry[1].." "..Entry[2].." ("..math.floor(Entry[4]+0.5).."%)",loc,nil,loc2)
+				SendChatMessage(i..". "..(Entry[1] or "").." "..(Entry[6] or "").." "..(Entry[2] or "").." ("..math.floor(Entry[4]+0.5).."%)",loc,nil,loc2)
 			end
 		else
 			local LowerTable=Recount.DetailWindow.PieMode.LowerTable

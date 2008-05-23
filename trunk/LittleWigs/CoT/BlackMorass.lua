@@ -92,8 +92,8 @@ L:RegisterTranslations("koKR", function() return {
 	portal_message15s = "약 15초 이내 %s!",
 	portal_message140s = "약 140초 이내 %s!",
 
-	disable_trigger = "우리는 승리한다. 단지 시간문제일 뿐...", -- check
-	disable_message = "%s|1을;를; 지켰습니다!",
+	disable_trigger = "우리는 승리한다. 단지 시간문제일 뿐...",
+	disable_message = "%s를 지켰습니다!",
 
 	death_trigger = "(.+)|1이;가; 죽었습니다%.",
 	reset_trigger = "안 돼! 이런 나약한 무리에게 당하다니!",
@@ -148,13 +148,13 @@ L:RegisterTranslations("zhCN", function() return {
 	portal_desc = "通知全队注意下一传送门即将打开。",
 
 	portalbar = "传送门记时条",
-	portalbar_desc = "显示下一个传送们打开的计时。",
+	portalbar_desc = "显示下一个传送门打开的计时。",
 
-	portal_bar = "~%s: 波 %s",
-	multiportal_bar = "~同时存在多个传送门",
+	portal_bar = "~%s：波 %s",
+	multiportal_bar = "<同时存在多个传送门>",
 
-	portal_message15s = "15秒后 - %s !",
-	portal_message140s = "140秒后 %s !",
+	portal_message15s = "15秒后 - %s ！",
+	portal_message140s = "140秒后 %s ！",
 
 	disable_trigger = "我们会胜利的。这只是个……时间问题。",
 	disable_message = "%s 获救了！",
@@ -212,7 +212,7 @@ mod.zonename = BZ["The Black Morass"]
 mod.synctoken = "The Black Morass"
 mod.enabletrigger = boss
 mod.toggleoptions = {"portal", "portalbar", -1, "hasten", -1, "frenzy", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 73641 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -223,7 +223,6 @@ function mod:OnEnable()
 	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("UPDATE_WORLD_STATES")
-	self:RegisterEvent("CHAT_MSG_COMBAT_HOSTILE_DEATH")
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("CHAT_MSG_MONSTER_EMOTE")
 

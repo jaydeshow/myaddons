@@ -27,7 +27,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["localization.lua"] then
     return;
 end
 
-Dcr:SetDateAndRevision("$Date: 2008-02-17 17:07:32 -0500 (Sun, 17 Feb 2008) $", "$Revision: 61809 $");
+Dcr:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
 
 -- Acelocal register for esES // {{{
 local L = Dcr.L;
@@ -78,18 +78,6 @@ L:RegisterTranslations("esES", function() return {
     [LOC.PET_FEL_CAST]	=	"Devorar magia",
     [LOC.PET_DOOM_CAST]	=	"Disipar magia",
 
-    [LOC.SPELL_POLYMORPH]	    =	'Polimorfia', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_CURE_DISEASE]	    =	'Curar enfermedad', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_ABOLISH_DISEASE]	    =	'Suprimir enfermedad', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_PURIFY]		    =	'Purificar', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_CLEANSE]		    =	'Limpiar', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_DISPELL_MAGIC]	    =	'Disipar magia', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_CURE_POISON]	    =	'Curar envenenamiento', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_ABOLISH_POISON]	    =	'Suprimir veneno', -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_REMOVE_LESSER_CURSE] =	"Eliminar maldición inferior", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_REMOVE_CURSE]	    =	"Eliminar maldición", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_PURGE]		    =	'Purgar', -- This translation is for reference only the one used is from the library BabbleSpell
-
     [BINDING_NAME_DCRSHOW]	=	BINDING_NAME_DCRSHOW,
 
     [BINDING_NAME_DCRPRADD]	=	BINDING_NAME_DCRPRADD,
@@ -138,23 +126,7 @@ L:RegisterTranslations("esES", function() return {
     -- $t is target name
     [LOC.SPELL_FOUND]	=	LOC.SPELL_FOUND,
 
-    -- spells and potions
-    [LOC.DREAMLESSSLEEP]	= LOC.DREAMLESSSLEEP,
-    [LOC.GDREAMLESSSLEEP]	= LOC.GDREAMLESSSLEEP,
-    [LOC.MDREAMLESSSLEEP]	= LOC.MDREAMLESSSLEEP,
-    [LOC.ANCIENTHYSTERIA]	= LOC.ANCIENTHYSTERIA,
-    [LOC.IGNITE]		= LOC.IGNITE,
-    [LOC.TAINTEDMIND]	= LOC.TAINTEDMIND,
-    [LOC.MAGMASHAKLES]	= LOC.MAGMASHAKLES,
-    [LOC.CRIPLES]		= LOC.CRIPLES,
-    [LOC.DUSTCLOUD]		= LOC.DUSTCLOUD,
-    [LOC.WIDOWSEMBRACE]	= LOC.WIDOWSEMBRACE,
-    [LOC.CURSEOFTONGUES]	= LOC.CURSEOFTONGUES,  -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SONICBURST]	= LOC.SONICBURST,
-    [LOC.THUNDERCLAP]	= LOC.THUNDERCLAP,
-    [LOC.DELUSIONOFJINDO]	= LOC.DELUSIONOFJINDO,
-
-    [LOC.MUTATINGINJECTION] = LOC.MUTATINGINJECTION,
+    
     [LOC.DEFAULT_MACROKEY] = "NONE", -- Ideally the key just beneath the "escape" key. Leave to "NONE" (do not translate) if you don't set a real key name.
     [LOC.OPT_LIVELIST] = LOC.OPT_LIVELIST,
     [LOC.OPT_LIVELIST_DESC] = LOC.OPT_LIVELIST_DESC,
@@ -188,6 +160,8 @@ L:RegisterTranslations("esES", function() return {
     [LOC.MISSINGUNIT]		= LOC.MISSINGUNIT,
     [LOC.COLORALERT]		= LOC.COLORALERT,
     [LOC.COLORSTATUS]		= LOC.COLORSTATUS,
+    [LOC.COLORCHRONOS]		= LOC.COLORCHRONOS,
+    [LOC.COLORCHRONOS_DESC]	= LOC.COLORCHRONOS_DESC,
 
     [LOC.OPT_AUTOHIDEMFS]	    = LOC.OPT_AUTOHIDEMFS,
     [LOC.OPT_AUTOHIDEMFS_DESC]	    = LOC.OPT_AUTOHIDEMFS_DESC,
@@ -204,6 +178,8 @@ L:RegisterTranslations("esES", function() return {
     [LOC.OPT_GROWDIRECTION_DESC] = LOC.OPT_GROWDIRECTION_DESC,
     [LOC.OPT_SHOWBORDER] =  LOC.OPT_SHOWBORDER,
     [LOC.OPT_SHOWBORDER_DESC] =  LOC.OPT_SHOWBORDER_DESC,
+    [LOC.OPT_SHOWCHRONO] = LOC.OPT_SHOWCHRONO,
+    [LOC.OPT_SHOWCHRONO_DESC] = LOC.OPT_SHOWCHRONO_DESC,
     [LOC.OPT_MAXMFS] = LOC.OPT_MAXMFS,
     [LOC.OPT_MAXMFS_DESC] = LOC.OPT_MAXMFS_DESC,
     [LOC.OPT_UNITPERLINES] = LOC.OPT_UNITPERLINES,

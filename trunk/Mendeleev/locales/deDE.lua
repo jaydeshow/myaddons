@@ -56,14 +56,14 @@ L:RegisterTranslations("deDE", function() return {
 	-- Darkmoon Faire
 	["Junk Items"] = "Ramsch Gegenstände",
 	["Leather"] = "Leder",
-	["Blue Dragon Card"] = "Dunkelmondkarte: Blauer Drache",
-	["Heroism Card"] = "Dunkelmondkarte: Heldentum",
-	["Twisting Nether Card"] = "Dunkelmondkarte: Wirbelndes Chaos",
-	["Maelstrom Card"] = "Dunkelmondkarte: Maelstrom",
-	["Crusade Card"] = "Dunkelmondkarte: Kreuzzug",
-	["Vengeance Card"] = "Dunkelmondkarte: Vergeltung",
-	["Madness Card"] = "Dunkelmondkarte: Wahnsinn",
-	["Wrath Card"] = "Dunkelmondkarte: Zorn",
+	["Blue Dragon Card"] = "Dunkelmond-Karte: Blauer Drache",
+	["Heroism Card"] = "Dunkelmond-Karte: Heldentum",
+	["Twisting Nether Card"] = "Dunkelmond-Karte: Wirbelnder Nether",
+	["Maelstrom Card"] = "Dunkelmond-Karte: Maelstrom",
+	["Crusade Card"] = "Dunkelmond-Karte: Kreuzzug",
+	["Vengeance Card"] = "Dunkelmond-Karte: Vergeltung",
+	["Madness Card"] = "Dunkelmond-Karte: Wahnsinn",
+	["Wrath Card"] = "Dunkelmond-Karte: Zorn",
 
 	-- Sources
 	["Drop"] = "Drop",
@@ -90,12 +90,12 @@ L:RegisterTranslations("deDE", function() return {
 	["Arena - Season 2 Set"] = "Arena - Saison 2 Set",
 	["Arena - Season 3 Set"] = "Arena - Saison 3 Set",
 
-	["Poisons"] = "Gifte",
 	["%d%% alc/vol (%d proof)"] = " %d%% Vol.",
 	[" (%d tickets)"] = " (%d Tickets)",
 
 	-- Categories
 	--["Consumable"] = "Verbrauchbar", -- not used
+	--["Gear"] = "Ausrüstung", -- not used
 	--["GearSet"] = "AusrüstungsSets", -- not used
 	--["InstanceLoot"] = "InstanzLoot", -- not used
 	--["InstanceLootHeroic"] = "InstanzLootHeroisch", -- not used
@@ -106,5 +106,5 @@ L:RegisterTranslations("deDE", function() return {
 	
 	["Badge of Justice"] = "Abzeichen der Gerechtigkeit",
 	["G'eras"] = "G'eras",
-	--["Smith Hauthaa"] = true,
+	["Smith Hauthaa"] = "Schmiedin Hauthaa",
 }end)

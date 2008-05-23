@@ -12,8 +12,8 @@
 ## X-Website: http://www.wowace.com/
 ## X-Category: Map
 ## Dependencies: FuBar
-## OptionalDeps: LibRock-1.0, LibRockConfig-1.0, LibRockDB-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockLocale-1.0, LibBabble-Spell-3.0, LibBabble-Zone-3.0, LibFuBarPlugin-3.0, LibJostle-3.0, LibTourist-3.0, Ace2, TabletLib
-## X-Embeds: LibRock-1.0, LibRockConfig-1.0, LibRockDB-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockLocale-1.0, LibBabble-Spell-3.0, LibBabble-Zone-3.0, LibFuBarPlugin-3.0, LibJostle-3.0, LibTourist-3.0, Ace2, TabletLib
+## OptionalDeps: LibRock-1.0, LibRockConfig-1.0, LibRockDB-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockLocale-1.0, LibBabble-Zone-3.0, LibFuBarPlugin-3.0, LibJostle-3.0, LibTourist-3.0, Ace2, TabletLib
+## X-Embeds: LibRock-1.0, LibRockConfig-1.0, LibRockDB-1.0, LibRockEvent-1.0, LibRockTimer-1.0, LibRockLocale-1.0, LibBabble-Zone-3.0, LibFuBarPlugin-3.0, LibJostle-3.0, LibTourist-3.0, Ace2, TabletLib
 ## SavedVariables: LocationFuDB
 ## Version: 3.0
 ## LoadOnDemand: 1

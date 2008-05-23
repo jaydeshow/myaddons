@@ -1,174 +1,172 @@
-if GetLocale() == "zhTW" then
-Outfitter = {}
-MCDebugLib:InstallDebugger("Outfitter", Outfitter, {r=0.6,g=1,b=0.8})
-
-Outfitter.cVersion = "4.1.1"
-
-Outfitter.cTitle = "Outfitter"
-Outfitter.cTitleVersion = Outfitter.cTitle.." "..Outfitter.cVersion
+ï»¿if GetLocale() == "zhTW" then
 
 Outfitter.cSingleItemFormat = "%s"
 Outfitter.cTwoItemFormat = "%s and %s"
 Outfitter.cMultiItemFormat = "%s{{, %s}} and %s"
 
-Outfitter.cNameLabel = "Ãû·Q£º"
-Outfitter.cCreateUsingTitle = "ƒ»¯·½Ïò£º"
-Outfitter.cUseCurrentOutfit = "Ê¹ÓÃ®”Ç°Ì×Ñb"
-Outfitter.cUseEmptyOutfit = "ĞÂ½¨¿Õ°×Ì×Ñb"
-Outfitter.cAutomationLabel = "×Ô„Ó£º"
+Outfitter.cNameLabel = "åç¨±ï¼š"
+Outfitter.cCreateUsingTitle = "å„ªåŒ–æ–¹å‘ï¼š"
+Outfitter.cUseCurrentOutfit = "ä½¿ç”¨ç•¶å‰å¥—è£"
+Outfitter.cUseEmptyOutfit = "æ–°å»ºç©ºç™½å¥—è£"
+Outfitter.cAutomationLabel = "è‡ªå‹•ï¼š"
 
 Outfitter.cOutfitterTabTitle = "Outfitter"
-Outfitter.cOptionsTabTitle = "ßxí—"
-Outfitter.cAboutTabTitle = "êPÓÚ"
+Outfitter.cOptionsTabTitle = "é¸é …"
+Outfitter.cAboutTabTitle = "é—œäº"
 
-Outfitter.cNewOutfit = "ĞÂ½¨Ì×Ñb"
-Outfitter.cRenameOutfit = "ÖØÃüÃûÌ×Ñb"
+Outfitter.cNewOutfit = "æ–°å»ºå¥—è£"
+Outfitter.cRenameOutfit = "é‡å‘½åå¥—è£"
 
-Outfitter.cCompleteOutfits = "È«²¿Ì×Ñb"
-Outfitter.cAccessoryOutfits = "¸½ŒÙÌ×Ñb"
-Outfitter.cOddsNEndsOutfits = "ÁãËéÎïÆ·"
+Outfitter.cCompleteOutfits = "å…¨éƒ¨å¥—è£"
+Outfitter.cAccessoryOutfits = "é™„å±¬å¥—è£"
+Outfitter.cOddsNEndsOutfits = "é›¶ç¢ç‰©å“"
 
-Outfitter.cGlobalCategory = "ÌØÊâÌ×Ñb"
-Outfitter.cNormalOutfit = "ÆÕÍ¨"
-Outfitter.cNakedOutfit = "Âãów"
+Outfitter.cGlobalCategory = "ç‰¹æ®Šå¥—è£"
+Outfitter.cNormalOutfit = "æ™®é€š"
+Outfitter.cNakedOutfit = "è£¸é«”"
 
 Outfitter.cScriptCategoryName = {}
 Outfitter.cScriptCategoryName.PVP = "PvP"
-Outfitter.cScriptCategoryName.TRADE = "¼¤»î"
-Outfitter.cScriptCategoryName.GENERAL = "Ò»°ã"
+Outfitter.cScriptCategoryName.TRADE = "æ¿€æ´»"
+Outfitter.cScriptCategoryName.GENERAL = "ä¸€èˆ¬"
 
-Outfitter.cArgentDawnOutfit = "ãyÉ«ÀèÃ÷"
-Outfitter.cCityOutfit = "³ÇƒÈÕ¹Ê¾"
-Outfitter.cBattlegroundOutfit = "‘ğˆö"
-Outfitter.cAVOutfit = "‘ğˆö£ºŠWÌØÌm¿ËÉ½Ã}"
-Outfitter.cABOutfit = "‘ğˆö£º°¢À­Ï£ÅèµØ"
-Outfitter.cArenaOutfit = "‘ğˆö£º¸‚¼¼ˆö"
-Outfitter.cEotSOutfit = "‘ğˆö£ºïL±©Ö®ÑÛ"
-Outfitter.cWSGOutfit = "‘ğˆö£º‘ğ¸è{¹È"
-Outfitter.cDiningOutfit = "³ÔºÈ"
-Outfitter.cFishingOutfit = "áô~"
-Outfitter.cHerbalismOutfit = "²İËŒW"
-Outfitter.cMiningOutfit = "²ÉµV"
-Outfitter.cFireResistOutfit = "¿¹ĞÔ£º»ğÑæ"
-Outfitter.cNatureResistOutfit = "¿¹ĞÔ£º×ÔÈ»"
-Outfitter.cShadowResistOutfit = "¿¹ĞÔ£º°µÓ°"
-Outfitter.cArcaneResistOutfit = "¿¹ĞÔ£ºŠWĞg"
-Outfitter.cFrostResistOutfit = "¿¹ĞÔ£º±ùËª"
-Outfitter.cRidingOutfit = "òT³Ë"
-Outfitter.cSkinningOutfit = "„ƒÆ¤"
-Outfitter.cSwimmingOutfit = "ÓÎÓ¾"
-Outfitter.cLowHealthOutfit = "µÍÉúÃü/·¨Á¦"
-Outfitter.cHasBuffOutfit = "Éí¾ßBuff"
-Outfitter.cInZonesOutfit = "ÔÚµØ…^"
-Outfitter.cSoloOutfit = "Solo"
-Outfitter.cFallingOutfit = "µøÂä"
+Outfitter.cArgentDawnOutfit = "éŠ€è‰²é»æ˜"
+Outfitter.cCityOutfit = "åŸå…§å±•ç¤º"
+Outfitter.cBattlegroundOutfit = "æˆ°å ´"
+Outfitter.cAVOutfit = "æˆ°å ´ï¼šå¥§ç‰¹è˜­å…‹å±±è„ˆ"
+Outfitter.cABOutfit = "æˆ°å ´ï¼šé˜¿æ‹‰å¸Œç›†åœ°"
+Outfitter.cArenaOutfit = "æˆ°å ´ï¼šç«¶æŠ€å ´"
+Outfitter.cEotSOutfit = "æˆ°å ´ï¼šé¢¨æš´ä¹‹çœ¼"
+Outfitter.cWSGOutfit = "æˆ°å ´ï¼šæˆ°æ­Œå³½è°·"
+Outfitter.cDiningOutfit = "åƒå–"
+Outfitter.cFishingOutfit = "é‡£é­š"
+Outfitter.cHerbalismOutfit = "è‰è—¥å­¸"
+Outfitter.cMiningOutfit = "é‡‡ç¤¦"
+Outfitter.cFireResistOutfit = "æŠ—æ€§ï¼šç«ç„°"
+Outfitter.cNatureResistOutfit = "æŠ—æ€§ï¼šè‡ªç„¶"
+Outfitter.cShadowResistOutfit = "æŠ—æ€§ï¼šæš—å½±"
+Outfitter.cArcaneResistOutfit = "æŠ—æ€§ï¼šå¥§è¡“"
+Outfitter.cFrostResistOutfit = "æŠ—æ€§ï¼šå†°éœœ"
+Outfitter.cRidingOutfit = "é¨ä¹˜"
+Outfitter.cSkinningOutfit = "å‰çš®"
+Outfitter.cSwimmingOutfit = "æ¸¸æ³³"
+Outfitter.cLowHealthOutfit = "ä½ç”Ÿå‘½/æ³•åŠ›"
+Outfitter.cHasBuffOutfit = "èº«å…·Buff"
+Outfitter.cInZonesOutfit = "åœ¨åœ°å€"
+Outfitter.cSoloOutfit = "Solo/å°éšŠ/åœ˜éšŠ"
+Outfitter.cFallingOutfit = "è·Œè½"
 
-Outfitter.cArgentDawnOutfitDescription = "ÔÚÎÁÒßÖ®µØ×Ô„Ó“QÑb"
-Outfitter.cRidingOutfitDescription = "òT³Ë•r×Ô„Ó“QÑb"
-Outfitter.cDiningOutfitDescription = "³ÔºÈ•r×Ô„Ó“QÑb"
-Outfitter.cBattlegroundOutfitDescription = "ÔÚ‘ğˆöƒÈ×Ô„Ó“QÑb"
-Outfitter.cArathiBasinOutfitDescription = "ÔÚ°¢À­Ï£ÅèµØƒÈ×Ô„Ó“QÑb"
-Outfitter.cAlteracValleyOutfitDescription = "ÔÚŠWÌØÌm¿ËÉ½¹ÈƒÈ×Ô„Ó“QÑb"
-Outfitter.cWarsongGulchOutfitDescription = "ÔÚ‘ğ¸è{¹ÈƒÈ×Ô„Ó“QÑb"
-Outfitter.cEotSOutfitDescription = "ÔÚïL±©Ö®ÑÛƒÈ×Ô„Ó“QÑb"
-Outfitter.cArenaOutfitDescription = "ÔÚPVP¸‚¼¼ˆöƒÈ×Ô„Ó“QÑb"
-Outfitter.cCityOutfitDescription = "ÓÑ·½Ö÷³ÇƒÈ×Ô„Ó“QÑb"
-Outfitter.cSwimmingOutfitDescription = "ÓÎÓ¾•r×Ô„Ó“QÑb"
-Outfitter.cFishingOutfitDescription = "ßMÈë‘ğ¶·•ş×Ô„Ó“QÏÂ²¢ÔÚÃ“ëx‘ğ¶·•rÖØĞÂÑb‚ä"
-Outfitter.cSpiritOutfitDescription = "»ØÄ§•r(Ã“ëx5ÃëÒ„t)×Ô„ÓÑb‚ä´ËÌ×"
-Outfitter.cHerbalismDescription = "Êó˜Ë»¬ß^ï@Ê¾é³ÈÉ«»ò¼tÉ«µÄ²İËüc•r×Ô„Ó“QÑb"
-Outfitter.cMiningDescription = "Êó˜Ë»¬ß^ï@Ê¾é³ÈÉ«»ò¼tÉ«µÄµVüc•r×Ô„Ó“QÑb"
-Outfitter.cLockpickingDescription = "Êó˜Ë»¬ß^ï@Ê¾é³ÈÉ«»ò¼tÉ«µÄæi•r×Ô„Ó“QÑb"
-Outfitter.cSkinningDescription = "Êó˜Ë»¬ß^ï@Ê¾é³ÈÉ«»ò¼tÉ«µÄ¿É„ƒÆ¤ÉúÎï•r×Ô„Ó“QÑb"
-Outfitter.cLowHealthDescription = "ÉúÃü»òÕß·¨Á¦µÍÓÚÌØ¶¨Öµ•r×Ô„Ó“QÑb"
-Outfitter.cHasBuffDescription = "®”Éí¾ßÌØ¶¨Ãû·Qbuff•r×Ô„Ó“QÑb"
-Outfitter.SpiritRegenOutfitDescription = "»ØÄ§•r(Ã“ëx5ÃëÒ„t)×Ô„ÓÑb‚ä´ËÌ×"
-Outfitter.cDruidCasterFormDescription = "²»ÔÚÈÎºÎµÂô”ÒÁĞÎ‘B•r×Ô„Ó“QÑb"
-Outfitter.cPriestShadowformDescription = "°µÓ°ĞÎ‘B×Ô„Ó“QÑb"
-Outfitter.cShamanGhostWolfDescription = "ÓÄì`ÀÇĞÎ‘B×Ô„Ó“QÑb"
-Outfitter.cHunterMonkeyDescription = "ì`ºïÊØ×o×Ô„Ó“QÑb"
-Outfitter.cHunterHawkDescription = "ĞÛú—ÊØ×o×Ô„Ó“QÑb"
-Outfitter.cHunterCheetahDescription = "«C±ªÊØ×o×Ô„Ó“QÑb"
-Outfitter.cHunterPackDescription = "±ªÈºÊØ×o×Ô„Ó“QÑb"
-Outfitter.cHunterBeastDescription = "Ò°«FÊØ×o×Ô„Ó“QÑb"
-Outfitter.cHunterWildDescription = "Ò°ĞÔÊØ×o×Ô„Ó“QÑb"
-Outfitter.cHunterViperDescription = "òñÉßÊØ×o×Ô„Ó“QÑb"
-Outfitter.cHunterFeignDeathDescription = "¼ÙËÀ×Ô„Ó“QÑb"
-Outfitter.cMageEvocateDescription = "¼¤»î î‘B×Ô„Ó“QÑb"
-Outfitter.cWarriorBerserkerStanceDescription = "¿ñ±©×Ë‘B×Ô„Ó“QÑb"
-Outfitter.cWarriorDefensiveStanceDescription = "·ÀÓù×Ë‘B×Ô„Ó“QÑb"
-Outfitter.cWarriorBattleStanceDescription = "‘ğ¶·×Ë‘B×Ô„Ó“QÑb"
-Outfitter.cInZonesOutfitDescription = "®”ÄãÔÚÒÔÏÂ…^ÓòµÄ•rºò×Ô„Ó“QÑb"
-Outfitter.cSoloOutfitDescription = "Î´½Mê •r×Ô„Ó“QÑb"
-Outfitter.cFallingOutfitDescription = "Ä¸ß¿ÕË¤ÏÂ•r×Ô„Ó“QÑb"
+Outfitter.cArgentDawnOutfitDescription = "åœ¨ç˜Ÿç–«ä¹‹åœ°è‡ªå‹•æ›è£"
+Outfitter.cRidingOutfitDescription = "é¨ä¹˜æ™‚è‡ªå‹•æ›è£"
+Outfitter.cDiningOutfitDescription = "åƒå–æ™‚è‡ªå‹•æ›è£"
+Outfitter.cBattlegroundOutfitDescription = "åœ¨æˆ°å ´å…§è‡ªå‹•æ›è£"
+Outfitter.cArathiBasinOutfitDescription = "åœ¨é˜¿æ‹‰å¸Œç›†åœ°å…§è‡ªå‹•æ›è£"
+Outfitter.cAlteracValleyOutfitDescription = "åœ¨å¥§ç‰¹è˜­å…‹å±±è°·å…§è‡ªå‹•æ›è£"
+Outfitter.cWarsongGulchOutfitDescription = "åœ¨æˆ°æ­Œå³½è°·å…§è‡ªå‹•æ›è£"
+Outfitter.cEotSOutfitDescription = "åœ¨é¢¨æš´ä¹‹çœ¼å…§è‡ªå‹•æ›è£"
+Outfitter.cArenaOutfitDescription = "åœ¨PVPç«¶æŠ€å ´å…§è‡ªå‹•æ›è£"
+Outfitter.cCityOutfitDescription = "å‹æ–¹ä¸»åŸå…§è‡ªå‹•æ›è£"
+Outfitter.cSwimmingOutfitDescription = "æ¸¸æ³³æ™‚è‡ªå‹•æ›è£"
+Outfitter.cFishingOutfitDescription = "é€²å…¥æˆ°æ–—æœƒè‡ªå‹•æ›ä¸‹å¹¶åœ¨è„«é›¢æˆ°æ–—æ™‚é‡æ–°è£å‚™"
+Outfitter.cSpiritOutfitDescription = "å›é­”æ™‚(è„«é›¢5ç§’è¦å‰‡)è‡ªå‹•è£å‚™æ­¤å¥—"
+Outfitter.cHerbalismDescription = "é¼ æ¨™æ»‘éé¡¯ç¤ºç‚ºæ©™è‰²æˆ–ç´…è‰²çš„è‰è—¥é»æ™‚è‡ªå‹•æ›è£"
+Outfitter.cMiningDescription = "é¼ æ¨™æ»‘éé¡¯ç¤ºç‚ºæ©™è‰²æˆ–ç´…è‰²çš„ç¤¦é»æ™‚è‡ªå‹•æ›è£"
+Outfitter.cLockpickingDescription = "é¼ æ¨™æ»‘éé¡¯ç¤ºç‚ºæ©™è‰²æˆ–ç´…è‰²çš„é–æ™‚è‡ªå‹•æ›è£"
+Outfitter.cSkinningDescription = "é¼ æ¨™æ»‘éé¡¯ç¤ºç‚ºæ©™è‰²æˆ–ç´…è‰²çš„å¯å‰çš®ç”Ÿç‰©æ™‚è‡ªå‹•æ›è£"
+Outfitter.cLowHealthDescription = "ç”Ÿå‘½æˆ–è€…æ³•åŠ›ä½äºç‰¹å®šå€¼æ™‚è‡ªå‹•æ›è£"
+Outfitter.cHasBuffDescription = "ç•¶èº«å…·ç‰¹å®šåç¨±buffæ™‚è‡ªå‹•æ›è£"
+Outfitter.SpiritRegenOutfitDescription = "å›é­”æ™‚(è„«é›¢5ç§’è¦å‰‡)è‡ªå‹•è£å‚™æ­¤å¥—"
+Outfitter.cDruidCasterFormDescription = "ä¸åœ¨ä»»ä½•å¾·é­¯ä¼Šå½¢æ…‹æ™‚è‡ªå‹•æ›è£"
+Outfitter.cPriestShadowformDescription = "æš—å½±å½¢æ…‹è‡ªå‹•æ›è£"
+Outfitter.cShamanGhostWolfDescription = "å¹½éˆç‹¼å½¢æ…‹è‡ªå‹•æ›è£"
+Outfitter.cHunterMonkeyDescription = "éˆçŒ´å®ˆè­·è‡ªå‹•æ›è£"
+Outfitter.cHunterHawkDescription = "é›„é·¹å®ˆè­·è‡ªå‹•æ›è£"
+Outfitter.cHunterCheetahDescription = "çµè±¹å®ˆè­·è‡ªå‹•æ›è£"
+Outfitter.cHunterPackDescription = "è±¹ç¾¤å®ˆè­·è‡ªå‹•æ›è£"
+Outfitter.cHunterBeastDescription = "é‡ç¸å®ˆè­·è‡ªå‹•æ›è£"
+Outfitter.cHunterWildDescription = "é‡æ€§å®ˆè­·è‡ªå‹•æ›è£"
+Outfitter.cHunterViperDescription = "è°è›‡å®ˆè­·è‡ªå‹•æ›è£"
+Outfitter.cHunterFeignDeathDescription = "å‡æ­»è‡ªå‹•æ›è£"
+Outfitter.cMageEvocateDescription = "æ¿€æ´»ç‹€æ…‹è‡ªå‹•æ›è£"
+Outfitter.cWarriorBerserkerStanceDescription = "ç‹‚æš´å§¿æ…‹è‡ªå‹•æ›è£"
+Outfitter.cWarriorDefensiveStanceDescription = "é˜²å¾¡å§¿æ…‹è‡ªå‹•æ›è£"
+Outfitter.cWarriorBattleStanceDescription = "æˆ°æ–—å§¿æ…‹è‡ªå‹•æ›è£"
+Outfitter.cInZonesOutfitDescription = "ç•¶ä½ åœ¨ä»¥ä¸‹å€åŸŸçš„æ™‚å€™è‡ªå‹•æ›è£"
+Outfitter.cSoloOutfitDescription = "æœªçµ„éšŠæ™‚è‡ªå‹•æ›è£"
+Outfitter.cFallingOutfitDescription = "å¾é«˜ç©ºæ‘”ä¸‹æ™‚è‡ªå‹•æ›è£"
 
-Outfitter.cMountSpeedFormat = "ËÙ¶ÈÌá¸ß(%d+)%%%."; -- For detecting when mounted
-Outfitter.cFlyingMountSpeedFormat = "ïwĞĞËÙ¶ÈÌá¸ß(%d+)%%%"; -- For detecting when mounted
+Outfitter.cMountSpeedFormat = "é€Ÿåº¦æé«˜(%d+)%%%."; -- For detecting when mounted
+Outfitter.cFlyingMountSpeedFormat = "é£›è¡Œé€Ÿåº¦æé«˜(%d+)%%%"; -- For detecting when mounted
 
-Outfitter.cBagsFullError = "Outfitter: ²»ÄÜÒÆ³ı%s£ºÈ«²¿±³°ü¶¼MÁË"
-Outfitter.cDepositBagsFullError = "Outfitter: £¬²»ÄÜ´æ·Å%s£ºÈ«²¿ãyĞĞ±³°ü¶¼MÁË"
-Outfitter.cWithdrawBagsFullError = "Outfitter: ²»ÄÜÈ¡³ö%s£ºÈ«²¿±³°ü¶¼MÁË£¬"
-Outfitter.cItemNotFoundError = "Outfitter: Î´ÕÒµ½%s"
-Outfitter.cItemAlreadyUsedError = "Outfitter: ²»ÄÜŒ¢%s·ÅÈë%s£ºÒÑ½›´©´÷ÔÚÁíÒ»‚€Î»ÖÃ"
-Outfitter.cAddingItem = "Outfitter: Ìí¼Ó %s µ½Ì×Ñb£º%s"
-Outfitter.cNameAlreadyUsedError = "åeÕ`£º´ËÃû×ÖÒÑ½›±»Ê¹ÓÃ"
-Outfitter.cNoItemsWithStatError = "¾¯¸æ£º›]ÓĞÑb‚ä°üº¬ß@‚€ŒÙĞÔ"
-Outfitter.cCantUnequipCompleteError = "Outfitter: ²»ÄÜ“QÏÂ %s£¬Òòé²»ÄÜ“QÏÂÈ«²¿Ì×Ñb£¨Äã±ØíšÑb‚äÁíÒ»Ì×È«²¿Ì×Ñb£©¡£"
+Outfitter.cBagsFullError = "Outfitter: ä¸èƒ½ç§»é™¤%sï¼šå…¨éƒ¨èƒŒåŒ…éƒ½æ»¿äº†"
+Outfitter.cDepositBagsFullError = "Outfitter: ï¼Œä¸èƒ½å­˜æ”¾%sï¼šå…¨éƒ¨éŠ€è¡ŒèƒŒåŒ…éƒ½æ»¿äº†"
+Outfitter.cWithdrawBagsFullError = "Outfitter: ä¸èƒ½å–å‡º%sï¼šå…¨éƒ¨èƒŒåŒ…éƒ½æ»¿äº†ï¼Œ"
+Outfitter.cItemNotFoundError = "Outfitter: æœªæ‰¾åˆ°%s"
+Outfitter.cItemAlreadyUsedError = "Outfitter: ä¸èƒ½å°‡%sæ”¾å…¥%sï¼šå·²ç¶“ç©¿æˆ´åœ¨å¦ä¸€å€‹ä½ç½®"
+Outfitter.cAddingItem = "Outfitter: æ·»åŠ  %s åˆ°å¥—è£ï¼š%s"
+Outfitter.cNameAlreadyUsedError = "éŒ¯èª¤ï¼šæ­¤åå­—å·²ç¶“è¢«ä½¿ç”¨"
+Outfitter.cNoItemsWithStatError = "è­¦å‘Šï¼šæ²’æœ‰è£å‚™åŒ…å«é€™å€‹å±¬æ€§"
+Outfitter.cCantUnequipCompleteError = "Outfitter: ä¸èƒ½æ›ä¸‹ %sï¼Œå› ç‚ºä¸èƒ½æ›ä¸‹å…¨éƒ¨å¥—è£ï¼ˆä½ å¿…é ˆè£å‚™å¦ä¸€å¥—å…¨éƒ¨å¥—è£ï¼‰ã€‚"
 
-Outfitter.cEnableAll = "†¢ÓÃËùÓĞ"
-Outfitter.cEnableNone = "½ûÓÃËùÓĞ"
+Outfitter.cEnableAll = "å•Ÿç”¨æ‰€æœ‰"
+Outfitter.cEnableNone = "ç¦ç”¨æ‰€æœ‰"
 
-Outfitter.cConfirmDeleteMsg = "Äã´_ÕJÒª„h³ıÌ×Ñb£º%s£¿"
-Outfitter.cConfirmRebuildMsg = "Äã´_ÕJÒªÖØ½¨Ì×Ñb£º%s£¿"
-Outfitter.cRebuild = "ÖØ½¨"
+Outfitter.cConfirmDeleteMsg = "ä½ ç¢ºèªè¦åˆªé™¤å¥—è£ï¼š%sï¼Ÿ"
+Outfitter.cConfirmRebuildMsg = "ä½ ç¢ºèªè¦é‡å»ºå¥—è£ï¼š%sï¼Ÿ"
+Outfitter.cRebuild = "é‡å»º"
 
-Outfitter.cWesternPlaguelands = "Î÷ÎÁÒßÖ®µØ"
-Outfitter.cEasternPlaguelands = "–|ÎÁÒßÖ®µØ"
-Outfitter.cStratholme = "Ë¹Ì¹Ë÷Ä·"
-Outfitter.cScholomance = "Í¨ì`ŒWÔº"
-Outfitter.cNaxxramas = "¼{¿ËË_¬”Ë¹"
-Outfitter.cAlteracValley = "ŠWÌØÌm¿ËÉ½¹È"
-Outfitter.cArathiBasin = "°¢À­Ï£ÅèµØ"
-Outfitter.cWarsongGulch = "‘ğ¸è{¹È"
-Outfitter.cEotS = "ïL±©Ö®ÑÛ"
-Outfitter.cIronforge = "èF t±¤"
-Outfitter.cCityOfIronforge = "èF t±¤"
-Outfitter.cDarnassus = "ß_¼{ÌKË¹"
-Outfitter.cStormwind = "±©ïL³Ç"
-Outfitter.cOrgrimmar = "ŠW¸ñÈğ¬”"
-Outfitter.cThunderBluff = "À×öªÑÂ"
-Outfitter.cUndercity = "ÓÄ°µ³Ç"
-Outfitter.cSilvermoon = "ãyÔÂ³Ç"
-Outfitter.cExodar = "°£Ë÷ß_"
-Outfitter.cShattrath = "É³ËşË¹³Ç"
-Outfitter.cAQ40 = "°²ÆäÀ­"
-Outfitter.cBladesEdgeArena = "µ¶ähÉ½¸‚¼¼ˆö"
-Outfitter.cNagrandArena = "¼{¸ñÌm¸‚¼¼ˆö"
-Outfitter.cRuinsOfLordaeron = "Âåµ¤‚UĞæ"
+Outfitter.cWesternPlaguelands = "è¥¿ç˜Ÿç–«ä¹‹åœ°"
+Outfitter.cEasternPlaguelands = "æ±ç˜Ÿç–«ä¹‹åœ°"
+Outfitter.cStratholme = "æ–¯å¦ç´¢å§†"
+Outfitter.cScholomance = "é€šéˆå­¸é™¢"
+Outfitter.cNaxxramas = "ç´å…‹è–©ç‘ªæ–¯"
+Outfitter.cAlteracValley = "å¥§ç‰¹è˜­å…‹å±±è°·"
+Outfitter.cArathiBasin = "é˜¿æ‹‰å¸Œç›†åœ°"
+Outfitter.cWarsongGulch = "æˆ°æ­Œå³½è°·"
+Outfitter.cEotS = "é¢¨æš´ä¹‹çœ¼"
+Outfitter.cIronforge = "éµçˆå ¡"
+Outfitter.cCityOfIronforge = "éµçˆå ¡"
+Outfitter.cDarnassus = "é”ç´è˜‡æ–¯"
+Outfitter.cStormwind = "æš´é¢¨åŸ"
+Outfitter.cOrgrimmar = "å¥§æ ¼ç‘ç‘ª"
+Outfitter.cThunderBluff = "é›·éœ†å´–"
+Outfitter.cUndercity = "å¹½æš—åŸ"
+Outfitter.cSilvermoon = "éŠ€æœˆåŸ"
+Outfitter.cExodar = "åŸƒç´¢é”"
+Outfitter.cShattrath = "æ²™å¡”æ–¯åŸ"
+Outfitter.cAQ40 = "å®‰å…¶æ‹‰"
+Outfitter.cBladesEdgeArena = "åˆ€é‹’å±±ç«¶æŠ€å ´"
+Outfitter.cNagrandArena = "ç´æ ¼è˜­ç«¶æŠ€å ´"
+Outfitter.cRuinsOfLordaeron = "æ´›ä¸¹å€«å»¢å¢Ÿ"
 
 Outfitter.cItemStatFormats =
 {
-		{Format = "×øòTÒÆ„ÓËÙ¶ÈÂÔÎ¢ÌáÉı", Value = 3, Types = {"Riding"}},
-		{Format = "ÃØãyñR´Ì", Value = 3, Types = {"Riding"}},
+		{Format = "åé¨ç§»å‹•é€Ÿåº¦ç•¥å¾®æå‡", Value = 3, Types = {"Riding"}},
+		{Format = "ç§˜éŠ€é¦¬åˆº", Value = 3, Types = {"Riding"}},
 	
-		"Ìá¸ß·¨ĞgºÍÄ§·¨Ğ§¹ûËùÔì³ÉµÄ‚ûº¦ºÍÖÎ¯ŸĞ§¹û£¬×î¶à(%d+)üc",
-	"Increases (.+) done by up to (%d+) and (healing) done by up to (%d+)",
-	"Increases (healing) done by up to (%d+) and damage done by up to (%d+) for all (magical spells and effects)",
-	"Increases the (.+) of your .+ by (%d+)",
-	"Increases your (.+) by (%d+)",
-	"Improves your (.+) by (%d+)",
-	"Increases (.+) by up to (%d+)",
-	"Increases (.+) by (%d+)",
-	"%+(%d+) (.+) and %+(%d+) (.+)", -- Multi-stat items like secondary-color gems
-	"%+(%d+) (.+)/%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
-	"%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
+    "æé«˜æ³•è¡“å’Œé­”æ³•æ•ˆæœæ‰€é€ æˆçš„å‚·å®³å’Œæ²»ç™‚æ•ˆæœï¼Œæœ€å¤š(%d+)é»",
+    "ä½¿æ‰€æœ‰æ³•è¡“å’Œé­”æ³•æ•ˆæœæ‰€é€ æˆçš„å‚·å®³å’Œæ²»ç™‚æ•ˆæœæé«˜æœ€å¤š(%d+)é»",
+    "ä½¿ä½ çš„æ³•è¡“å‚·å®³æé«˜æœ€å¤š(%d+)é»ï¼Œä»¥åŠä½ çš„æ²»ç™‚æ•ˆæœæœ€å¤š(%d+)é»",
+    "æé«˜æ‰€æœ‰æ³•è¡“å’Œé­”æ³•æ•ˆæœæ‰€é€ æˆçš„å‚·å®³å’Œæ²»ç™‚æ•ˆæœ(%d+)é»",
+    "^(.-)æé«˜æœ€å¤š([%d%.]+)é»(.-)$",
+    "^(.-)æé«˜æœ€å¤š([%d%.]+)(.-)$",
+    "^(.-)ï¼Œæœ€å¤š([%d%.]+)é»(.-)$",
+    "^(.-)ï¼Œæœ€å¤š([%d%.]+)(.-)$",
+    "^(.-)æœ€å¤š([%d%.]+)é»(.-)$",
+    "^(.-)æœ€å¤š([%d%.]+)(.-)$",
+    "^(.-)æé«˜([%d%.]+)é»(.-)$",
+    "^(.-)æé«˜([%d%.]+)(.-)$",
+    "%+(%d+) (.+)ï¼Œ%+(%d+) (.+)", -- Multi-stat items like secondary-color gems
+    "%+(%d+) (.+)ï¼Œ%+(%d+) (.+)ï¼Œ%+(%d+) (.+)", -- Multi-stat items like secondary-color gems
+    "%+(%d+) (.+)/%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
+    "%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
 	
-	"Ìá¸ß (.+) %+(%d+)",
-	"ÌáÉı (.+) by (%d+)",
+	"æé«˜ (.+) %+(%d+)",
+	"æå‡ (.+) by (%d+)",
 	
-	"»ØÍ (%d+) (.+)",
+	"å›å¾© (%d+) (.+)",
 	
-		"%+(%d+) (%w+)·¨Ğg‚ûº¦",
+		"%+(%d+) (%w+)æ³•è¡“å‚·å®³",
 	
 	"(%d+) (.+)",
 	"(.+) %+(%d+)",
@@ -176,356 +174,361 @@ Outfitter.cItemStatFormats =
 
 Outfitter.cItemStatPhrases =
 {
-		["ÄÍÁ¦"] = "Stamina",
-		["ÖÇÁ¦"] = "Intellect",
-		["Ãô½İ"] = "Agility",
-		["Á¦Á¿"] = "Stength",
-		["¾«Éñ"] = "Spirit",
-		["ËùÓĞŒÙĞÔ"] = {"Stamina", "Intellect", "Agility", "Strength", "Spirit"},
+		["è€åŠ›"] = "Stamina",
+		["æ™ºåŠ›"] = "Intellect",
+		["æ•æ·"] = "Agility",
+		["åŠ›é‡"] = "Stength",
+		["ç²¾ç¥"] = "Spirit",
+		["æ‰€æœ‰å±¬æ€§"] = {"Stamina", "Intellect", "Agility", "Strength", "Spirit"},
 	
-		["×o¼×"] = "Armor",
+		["è­·ç”²"] = "Armor",
 	
-		["·¨Á¦Öµ"] = "Mana",
-		["ÉúÃüÖµ"] = "Health",
+		["æ³•åŠ›å€¼"] = "Mana",
+		["ç”Ÿå‘½å€¼"] = "Health",
 	
-		["»ğÑæ¿¹ĞÔ"] = "FireResist",
-		["×ÔÈ»¿¹ĞÔ"] = "NatureResist",
-		["±ùËª¿¹ĞÔ"] = "FrostResist",
-		["°µÓ°¿¹ĞÔ"] = "ShadowResist",
-		["ŠWĞg¿¹ĞÔ"] = "ArcaneResist",
-		["ËùÓĞ¿¹ĞÔ"] = {"FireResist", "NatureResist", "FrostResist", "ShadowResist", "ArcaneResist"},
+		["ç«ç„°æŠ—æ€§"] = "FireResist",
+		["è‡ªç„¶æŠ—æ€§"] = "NatureResist",
+		["å†°éœœæŠ—æ€§"] = "FrostResist",
+		["æš—å½±æŠ—æ€§"] = "ShadowResist",
+		["å¥§è¡“æŠ—æ€§"] = "ArcaneResist",
+		["æ‰€æœ‰æŠ—æ€§"] = {"FireResist", "NatureResist", "FrostResist", "ShadowResist", "ArcaneResist"},
 	
-		["·ÀÓùµÈ¼‰"] = "DefenseRating",
-		["ígĞÔµÈ¼‰"] = "ResilienceRating",
-		["¹¥“ôŠ¶È"] = {"Attack", "RangedAttack"},
-		["ßh³Ì¹¥“ôŠ¶È"] = "RangedAttack",
-		["±¬“ôµÈ¼‰"] = "MeleeCritRating",
-		["ÃüÖĞµÈ¼‰"] = "MeleeHitRating",
-		["¶ãéWµÈ¼‰"] = "DodgeRating",
-		["ÕĞ¼ÜµÈ¼‰"] = "ParryRating",
-		["¸ñ“õ"] = "Block",
-		["¸ñ“õÖµ"] = "Block",
-		["ÎäÆ÷‚ûº¦"] = "MeleeDmg",
-		["½ü‘ğ‚ûº¦"] = "MeleeDmg",
-		["‚ûº¦"] = "MeleeDmg",
+		["é˜²å¾¡ç­‰ç´š"] = "DefenseRating",
+		["éŸŒæ€§ç­‰ç´š"] = "ResilienceRating",
+		["æ”»æ“Šå¼·åº¦"] = {"Attack", "RangedAttack"},
+		["é ç¨‹æ”»æ“Šå¼·åº¦"] = "RangedAttack",
+		["çˆ†æ“Šç­‰ç´š"] = "MeleeCritRating",
+		["å‘½ä¸­ç­‰ç´š"] = "MeleeHitRating",
+		["èº²é–ƒç­‰ç´š"] = "DodgeRating",
+		["æ‹›æ¶ç­‰ç´š"] = "ParryRating",
+		["æ ¼æ“‹"] = "Block",
+		["æ ¼æ“‹å€¼"] = "Block",
+		["æ­¦å™¨å‚·å®³"] = "MeleeDmg",
+		["è¿‘æˆ°å‚·å®³"] = "MeleeDmg",
+		["å‚·å®³"] = "MeleeDmg",
 	
-		["·¨Ğg±¬“ôµÈ¼‰"] = "SpellCritRating",
-		["·¨Ğg±¬“ô"] = "SpellCritRating",
-		["·¨ĞgÃüÖĞµÈ¼‰"] = "SpellHitRating",
-		["·¨Ğg´©Í¸"] = "SpellPen",
-	    ["·¨Ğg¼±ËÙµÈ¼‰"] = "SpellHasteRating",
+		["æ³•è¡“çˆ†æ“Šç­‰ç´š"] = "SpellCritRating",
+		["æ³•è¡“çˆ†æ“Š"] = "SpellCritRating",
+		["æ³•è¡“å‘½ä¸­ç­‰ç´š"] = "SpellHitRating",
+		["æ³•è¡“ç©¿é€"] = "SpellPen",
+	    ["æ³•è¡“æ€¥é€Ÿç­‰ç´š"] = "SpellHasteRating",
 	
 	["damage and healing done by magical spells and effects"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg", "Healing"},
-		["·¨Ğg‚ûº¦"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
-		["Ä§·¨‚ûº¦ºÍĞ§¹û"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
+		["æ³•è¡“å‚·å®³"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
+		["é­”æ³•å‚·å®³å’Œæ•ˆæœ"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
 	
-		["»ğÑæ"] = "FireDmg",
-		["°µÓ°"] = "ShadowDmg",
-		["±ùËª"] = "FrostDmg",
-		["ŠWĞg"] = "ArcaneDmg",
-		["×ÔÈ»"] = "NatureDmg",
+		["ç«ç„°"] = "FireDmg",
+		["æš—å½±"] = "ShadowDmg",
+		["å†°éœœ"] = "FrostDmg",
+		["å¥§è¡“"] = "ArcaneDmg",
+		["è‡ªç„¶"] = "NatureDmg",
 	
 	["healing done by spells and effects"] = "Healing",
-		["ÖÎ¯Ÿ"] = "Healing",
-		["ÖÎ¯Ÿ·¨Ğg"] = "Healing",
+		["æ²»ç™‚"] = "Healing",
+		["æ²»ç™‚æ³•è¡“"] = "Healing",
 	
-		["áô~"] = "Fishing",
-		["²İËŒW"] = "Herbalism",
-		["²ÉµV"] = "Mining",
-		["„ƒÆ¤"] = "Skinning",
-		["×øòTËÙ¶È"] = "Riding",
+		["é‡£é­š"] = "Fishing",
+		["è‰è—¥å­¸"] = "Herbalism",
+		["é‡‡ç¤¦"] = "Mining",
+		["å‰çš®"] = "Skinning",
+		["åé¨é€Ÿåº¦"] = "Riding",
 	
-		["Ã¿5Ãë·¨Á¦"] = {"ManaRegen", "CombatManaRegen"},
+		["æ¯5ç§’æ³•åŠ›"] = {"ManaRegen", "CombatManaRegen"},
 	["mana regen"] = {"ManaRegen", "CombatManaRegen"},
 	["health per 5 sec"] = {"HealthRegen", "CombatHealthRegen"},
 	["health regen"] = {"HealthRegen", "CombatHealthRegen"},
 }
 
-Outfitter.cAgilityStatName = "Ãô½İ"
-Outfitter.cArmorStatName = "×o¼×"
-Outfitter.cDefenseStatName = "·ÀÓù"
-Outfitter.cIntellectStatName = "ÖÇÁ¦"
-Outfitter.cSpiritStatName = "¾«Éñ"
-Outfitter.cStaminaStatName = "ÄÍÁ¦"
-Outfitter.cStrengthStatName = "Á¦Á¿"
-Outfitter.cTotalStatsName = "ËùÓĞŒÙĞÔ"
-Outfitter.cHealthStatName = "ÉúÃüÖµ"
-Outfitter.cManaStatName = "·¨Á¦Öµ"
+Outfitter.cAgilityStatName = "æ•æ·"
+Outfitter.cArmorStatName = "è­·ç”²"
+Outfitter.cDefenseStatName = "é˜²å¾¡"
+Outfitter.cIntellectStatName = "æ™ºåŠ›"
+Outfitter.cSpiritStatName = "ç²¾ç¥"
+Outfitter.cStaminaStatName = "è€åŠ›"
+Outfitter.cStrengthStatName = "åŠ›é‡"
+Outfitter.cTotalStatsName = "æ‰€æœ‰å±¬æ€§"
+Outfitter.cHealthStatName = "ç”Ÿå‘½å€¼"
+Outfitter.cManaStatName = "æ³•åŠ›å€¼"
 
-Outfitter.cManaRegenStatName = "·¨Á¦»ÖÍ"
-Outfitter.cCombatManaRegenStatName = "5Ãë»ØÄ§(‘ğ¶·)"
-Outfitter.cHealthRegenStatName = "ÉúÃü»ÖÍ"
-Outfitter.cCombatHealthRegenStatName = "5Ãë»ØÑª(‘ğ¶·)"
+Outfitter.cManaRegenStatName = "æ³•åŠ›æ¢å¾©"
+Outfitter.cCombatManaRegenStatName = "5ç§’å›é­”(æˆ°æ–—)"
+Outfitter.cHealthRegenStatName = "ç”Ÿå‘½æ¢å¾©"
+Outfitter.cCombatHealthRegenStatName = "5ç§’å›è¡€(æˆ°æ–—)"
 
-Outfitter.cSpellCritStatName = "·¨Ğg±¬“ô"
-Outfitter.cSpellHitStatName = "·¨ĞgÃüÖĞ"
-Outfitter.cSpellDmgStatName = "·¨Ğg‚ûº¦"
-Outfitter.cSpellHasteStatName = "·¨Ğg¼±ËÙ"
-Outfitter.cFrostDmgStatName = "±ùËª‚ûº¦"
-Outfitter.cFireDmgStatName = "»ğÑæ‚ûº¦"
-Outfitter.cArcaneDmgStatName = "ŠWĞg‚ûº¦"
-Outfitter.cShadowDmgStatName = "°µÓ°‚ûº¦"
-Outfitter.cNatureDmgStatName = "×ÔÈ»‚ûº¦"
-Outfitter.cHealingStatName = "ÖÎ¯Ÿ"
+Outfitter.cSpellCritStatName = "æ³•è¡“çˆ†æ“Š"
+Outfitter.cSpellHitStatName = "æ³•è¡“å‘½ä¸­"
+Outfitter.cSpellDmgStatName = "æ³•è¡“å‚·å®³"
+Outfitter.cSpellHasteStatName = "æ³•è¡“æ€¥é€Ÿ"
+Outfitter.cFrostDmgStatName = "å†°éœœå‚·å®³"
+Outfitter.cFireDmgStatName = "ç«ç„°å‚·å®³"
+Outfitter.cArcaneDmgStatName = "å¥§è¡“å‚·å®³"
+Outfitter.cShadowDmgStatName = "æš—å½±å‚·å®³"
+Outfitter.cNatureDmgStatName = "è‡ªç„¶å‚·å®³"
+Outfitter.cHealingStatName = "æ²»ç™‚"
 
-Outfitter.cMeleeCritStatName = "ÎïÀí±¬“ô"
-Outfitter.cMeleeHitStatName = "ÎïÀíÃüÖĞ"
-Outfitter.cMeleeHasteStatName = "·¨Ğg¼±ËÙµÈ¼‰"
-Outfitter.cMeleeDmgStatName = "½ü‘ğ‚ûº¦"
-Outfitter.cAttackStatName = "¹¥“ôŠ¶È"
-Outfitter.cRangedAttackStatName = "ßh³Ì¹¥“ôŠ¶È"
-Outfitter.cDodgeStatName = "¶ãéW"
-Outfitter.cParryStatName = "ÕĞ¼Ü"
-Outfitter.cBlockStatName = "¸ñ“õ"
-Outfitter.cResilienceStatName = "ígĞÔ"
+Outfitter.cMeleeCritStatName = "ç‰©ç†çˆ†æ“Š"
+Outfitter.cMeleeHitStatName = "ç‰©ç†å‘½ä¸­"
+Outfitter.cMeleeHasteStatName = "æ³•è¡“æ€¥é€Ÿç­‰ç´š"
+Outfitter.cMeleeDmgStatName = "è¿‘æˆ°å‚·å®³"
+Outfitter.cAttackStatName = "æ”»æ“Šå¼·åº¦"
+Outfitter.cRangedAttackStatName = "é ç¨‹æ”»æ“Šå¼·åº¦"
+Outfitter.cDodgeStatName = "èº²é–ƒ"
+Outfitter.cParryStatName = "æ‹›æ¶"
+Outfitter.cBlockStatName = "æ ¼æ“‹"
+Outfitter.cResilienceStatName = "éŸŒæ€§"
 
-Outfitter.cArcaneResistStatName = "ŠWĞg¿¹ĞÔ"
-Outfitter.cFireResistStatName = "»ğÑæ¿¹ĞÔ"
-Outfitter.cFrostResistStatName = "±ùËª¿¹ĞÔ"
-Outfitter.cNatureResistStatName = "×ÔÈ»¿¹ĞÔ"
-Outfitter.cShadowResistStatName = "°µÓ°¿¹ĞÔ"
+Outfitter.cArcaneResistStatName = "å¥§è¡“æŠ—æ€§"
+Outfitter.cFireResistStatName = "ç«ç„°æŠ—æ€§"
+Outfitter.cFrostResistStatName = "å†°éœœæŠ—æ€§"
+Outfitter.cNatureResistStatName = "è‡ªç„¶æŠ—æ€§"
+Outfitter.cShadowResistStatName = "æš—å½±æŠ—æ€§"
 
-Outfitter.cFishingStatName = "áô~"
-Outfitter.cHerbalismStatName = "²İËŒW"
-Outfitter.cMiningStatName = "²ÉµV"
-Outfitter.cSkinningStatName = "„ƒÆ¤"
+Outfitter.cFishingStatName = "é‡£é­š"
+Outfitter.cHerbalismStatName = "è‰è—¥å­¸"
+Outfitter.cMiningStatName = "é‡‡ç¤¦"
+Outfitter.cSkinningStatName = "å‰çš®"
 
-Outfitter.cOptionsTitle = "Outfitter ßxí—"
-Outfitter.cShowMinimapButton = "ï@Ê¾Ğ¡µØˆD°´âo"
-Outfitter.cShowMinimapButtonOnDescription = "êPé]£º²»ÔÚĞ¡µØˆDÉÏï@Ê¾ Outfitter °´âo"
-Outfitter.cShowMinimapButtonOffDescription = "é_†¢£ºÔÚĞ¡µØˆDÉÏï@Ê¾ Outfitter °´âo"
-Outfitter.cAutoSwitch = "½ûÓÃ×Ô„ÓÇĞ“QÌ×Ñb"
-Outfitter.cAutoSwitchOnDescription = "é_†¢£º½ûÓÃ×Ô„ÓÇĞ“QÌ×Ñb"
-Outfitter.cAutoSwitchOffDescription = "êPé]£ºé_†¢×Ô„ÓÇĞ“QÌ×Ñb"
-Outfitter.cTooltipInfo = "ÔÚÎïÆ·ÌáÊ¾ÉÏï@Ê¾'ÓÃÓÚ£º'"
-Outfitter.cTooltipInfoOnDescription = "êPé]£º²»ÔÚÌáÊ¾ÉÏï@Ê¾' ÓÃÓÚ£º'ĞÅÏ¢£¨Èç¹ûÄãÓöµ½ÁËĞÔÄÜ†–î}£¬ßx“ñß@‚€ßxí—£©"
-Outfitter.cTooltipInfoOffDescription = "é_†¢£ºÔÚÌáÊ¾ÉÏï@Ê¾'ÓÃÓÚ£º' ĞÅÏ¢"
-Outfitter.cRememberVisibility = "î^²¿ºÍ±³²¿ÔOÖÃ"
-Outfitter.cRememberVisibilityOnDescription = "êPé]£ºËùÓĞî^²¿ºÍ±³²¿Ñb‚äÊ¹ÓÃ½yÒ»µÄï@/ë[ÔOÖÃ"
-Outfitter.cRememberVisibilityOffDescription = "é_†¢£ºÓ›×¡²¢Ê¹ÓÃÃ¿¼şî^²¿ºÍ±³²¿Ñb‚ä¸÷×ÔµÄï@/ë[ÔOÖÃ"
-Outfitter.cShowHotkeyMessages = "ï@Ê¾¿ì½İæI“QÑbĞÅÏ¢"
-Outfitter.cShowHotkeyMessagesOnDescription = "êPé]£ºÊ¹ÓÃ¿ì½İæI“QÑb•r²»ï@Ê¾ĞÅÏ¢"
-Outfitter.cShowHotkeyMessagesOffDescription = "é_†¢£ºÊ¹ÓÃ¿ì½İæI“QÑb•r²»ï@Ê¾ĞÅÏ¢"
-Outfitter.cShowOutfitBar = "ï@Ê¾outfit bar"
-Outfitter.cShowOutfitBarDescription = "ï@Ê¾Ò»‚€§ˆD˜ËµÄ„Ó×÷—lÄã¿ÉÒÔüc“ô“QÑb"
-Outfitter.cEquipOutfitMessageFormat = "Outfitter: %s ÒÑÑb‚ä"
-Outfitter.cUnequipOutfitMessageFormat = "Outfitter: %s Î´Ñb‚ä"
+Outfitter.cOptionsTitle = "Outfitter é¸é …"
+Outfitter.cShowMinimapButton = "é¡¯ç¤ºå°åœ°åœ–æŒ‰éˆ•"
+Outfitter.cShowMinimapButtonOnDescription = "é—œé–‰ï¼šä¸åœ¨å°åœ°åœ–ä¸Šé¡¯ç¤º Outfitter æŒ‰éˆ•"
+Outfitter.cShowMinimapButtonOffDescription = "é–‹å•Ÿï¼šåœ¨å°åœ°åœ–ä¸Šé¡¯ç¤º Outfitter æŒ‰éˆ•"
+Outfitter.cAutoSwitch = "ç¦ç”¨è‡ªå‹•åˆ‡æ›å¥—è£"
+Outfitter.cAutoSwitchOnDescription = "é–‹å•Ÿï¼šç¦ç”¨è‡ªå‹•åˆ‡æ›å¥—è£"
+Outfitter.cAutoSwitchOffDescription = "é—œé–‰ï¼šé–‹å•Ÿè‡ªå‹•åˆ‡æ›å¥—è£"
+Outfitter.cTooltipInfo = "åœ¨ç‰©å“æç¤ºä¸Šé¡¯ç¤º'ç”¨äºï¼š'"
+Outfitter.cTooltipInfoOnDescription = "é—œé–‰ï¼šä¸åœ¨æç¤ºä¸Šé¡¯ç¤º' ç”¨äºï¼š'ä¿¡æ¯ï¼ˆå¦‚æœä½ é‡åˆ°äº†æ€§èƒ½å•é¡Œï¼Œé¸æ“‡é€™å€‹é¸é …ï¼‰"
+Outfitter.cTooltipInfoOffDescription = "é–‹å•Ÿï¼šåœ¨æç¤ºä¸Šé¡¯ç¤º'ç”¨äºï¼š' ä¿¡æ¯"
+Outfitter.cRememberVisibility = "é ­éƒ¨å’ŒèƒŒéƒ¨è¨­ç½®"
+Outfitter.cRememberVisibilityOnDescription = "é—œé–‰ï¼šæ‰€æœ‰é ­éƒ¨å’ŒèƒŒéƒ¨è£å‚™ä½¿ç”¨çµ±ä¸€çš„é¡¯/éš±è¨­ç½®"
+Outfitter.cRememberVisibilityOffDescription = "é–‹å•Ÿï¼šè¨˜ä½å¹¶ä½¿ç”¨æ¯ä»¶é ­éƒ¨å’ŒèƒŒéƒ¨è£å‚™å„è‡ªçš„é¡¯/éš±è¨­ç½®"
+Outfitter.cShowHotkeyMessages = "é¡¯ç¤ºå¿«æ·éµæ›è£ä¿¡æ¯"
+Outfitter.cShowHotkeyMessagesOnDescription = "é—œé–‰ï¼šä½¿ç”¨å¿«æ·éµæ›è£æ™‚ä¸é¡¯ç¤ºä¿¡æ¯"
+Outfitter.cShowHotkeyMessagesOffDescription = "é–‹å•Ÿï¼šä½¿ç”¨å¿«æ·éµæ›è£æ™‚ä¸é¡¯ç¤ºä¿¡æ¯"
+Outfitter.cShowOutfitBar = "é¡¯ç¤ºoutfit bar"
+Outfitter.cShowOutfitBarDescription = "é¡¯ç¤ºä¸€å€‹å¸¶åœ–æ¨™çš„å‹•ä½œæ¢ä½ å¯ä»¥é»æ“Šæ›è£"
+Outfitter.cEquipOutfitMessageFormat = "Outfitter: %s å·²è£å‚™"
+Outfitter.cUnequipOutfitMessageFormat = "Outfitter: %s æœªè£å‚™"
 
-Outfitter.cAboutTitle = "êPÓÚ Outfitter"
-Outfitter.cAuthor = "John Stephen ºÍ Bruce Quinton ÔOÓ‹¾Œ‘£¬ %s Ò²ÓĞØ•«I¡£"
-Outfitter.cTestersTitle = "Outfitter 4 œyÔ‡Õß"
+Outfitter.cAboutTitle = "é—œäº Outfitter"
+Outfitter.cAuthor = "John Stephen å’Œ Bruce Quinton è¨­è¨ˆç·¨å¯«ï¼Œ %s ä¹Ÿæœ‰è²¢ç»ã€‚"
+Outfitter.cTestersTitle = "Outfitter 4 æ¸¬è©¦è€…"
 Outfitter.cTestersNames = "%s"
-Outfitter.cSpecialThanksTitle = "ÌØ„e¸ĞÖx"
+Outfitter.cSpecialThanksTitle = "ç‰¹åˆ¥æ„Ÿè¬"
 Outfitter.cSpecialThanksNames = "%s"
 Outfitter.cTranslationCredit = "Translations by %s"
 Outfitter.cURL = "wobbleworks.com"
 
-Outfitter.cOpenOutfitter = "´òé_ Outfitter"
+Outfitter.cOpenOutfitter = "æ‰“é–‹ Outfitter"
 
-Outfitter.cKeyBinding = "°´æI½‰¶¨"
+Outfitter.cKeyBinding = "æŒ‰éµç¶å®š"
 
 	BINDING_HEADER_OUTFITTER_TITLE = Outfitter.cTitle;
-	BINDING_NAME_OUTFITTER_OUTFIT = "´òé_ Outfitter"
+	BINDING_NAME_OUTFITTER_OUTFIT = "æ‰“é–‹ Outfitter"
 
-	BINDING_NAME_OUTFITTER_OUTFIT1  = "Ì×Ñb 1"
-	BINDING_NAME_OUTFITTER_OUTFIT2  = "Ì×Ñb 2"
-	BINDING_NAME_OUTFITTER_OUTFIT3  = "Ì×Ñb 3"
-	BINDING_NAME_OUTFITTER_OUTFIT4  = "Ì×Ñb 4"
-	BINDING_NAME_OUTFITTER_OUTFIT5  = "Ì×Ñb 5"
-	BINDING_NAME_OUTFITTER_OUTFIT6  = "Ì×Ñb 6"
-	BINDING_NAME_OUTFITTER_OUTFIT7  = "Ì×Ñb 7"
-	BINDING_NAME_OUTFITTER_OUTFIT8  = "Ì×Ñb 8"
-	BINDING_NAME_OUTFITTER_OUTFIT9  = "Ì×Ñb 9"
-	BINDING_NAME_OUTFITTER_OUTFIT10 = "Ì×Ñb 10"
+	BINDING_NAME_OUTFITTER_OUTFIT1  = "å¥—è£ 1"
+	BINDING_NAME_OUTFITTER_OUTFIT2  = "å¥—è£ 2"
+	BINDING_NAME_OUTFITTER_OUTFIT3  = "å¥—è£ 3"
+	BINDING_NAME_OUTFITTER_OUTFIT4  = "å¥—è£ 4"
+	BINDING_NAME_OUTFITTER_OUTFIT5  = "å¥—è£ 5"
+	BINDING_NAME_OUTFITTER_OUTFIT6  = "å¥—è£ 6"
+	BINDING_NAME_OUTFITTER_OUTFIT7  = "å¥—è£ 7"
+	BINDING_NAME_OUTFITTER_OUTFIT8  = "å¥—è£ 8"
+	BINDING_NAME_OUTFITTER_OUTFIT9  = "å¥—è£ 9"
+	BINDING_NAME_OUTFITTER_OUTFIT10 = "å¥—è£ 10"
 
-Outfitter.cShow = "ï@Ê¾"
-Outfitter.cHide = "ë[²Ø"
-Outfitter.cDontChange = "²»×÷¸Ä×ƒ"
+Outfitter.cShow = "é¡¯ç¤º"
+Outfitter.cHide = "éš±è—"
+Outfitter.cDontChange = "ä¸ä½œæ”¹è®Š"
 
-Outfitter.cHelm = "î^¿ø"
-Outfitter.cCloak = "ÅûïL"
+Outfitter.cHelm = "é ­ç›”"
+Outfitter.cCloak = "æŠ«é¢¨"
 
-Outfitter.cAutomation = "×Ô„Ó"
+Outfitter.cAutomation = "è‡ªå‹•"
 
-Outfitter.cDisableOutfit = "½ûÓÃÌ×Ñb"
-Outfitter.cDisableAlways = "¿‚ÊÇ½ûÓÃ"
-Outfitter.cDisableOutfitInBG = "ÔÚ‘ğˆö½ûÓÃ"
-Outfitter.cDisableOutfitInCombat = "‘ğ¶·ÖĞ½ûÓÃ"
-Outfitter.cDisableOutfitInAQ40 = "ÔÚ°²ÆäÀ­½ûÓÃ"
-Outfitter.cDisableOutfitInNaxx = "ÔÚ¼{¿ËË_¬”Ë¹½ûÓÃ "
-Outfitter.cDisabledOutfitName = "%s£¨½ûÓÃ£©"
+Outfitter.cDisableOutfit = "ç¦ç”¨å¥—è£"
+Outfitter.cDisableAlways = "ç¸½æ˜¯ç¦ç”¨"
+Outfitter.cDisableOutfitInBG = "åœ¨æˆ°å ´ç¦ç”¨"
+Outfitter.cDisableOutfitInCombat = "æˆ°æ–—ä¸­ç¦ç”¨"
+Outfitter.cDisableOutfitInAQ40 = "åœ¨å®‰å…¶æ‹‰ç¦ç”¨"
+Outfitter.cDisableOutfitInNaxx = "åœ¨ç´å…‹è–©ç‘ªæ–¯ç¦ç”¨ "
+Outfitter.cDisabledOutfitName = "%sï¼ˆç¦ç”¨ï¼‰"
 
 Outfitter.cOutfitBar = "Outfit Bar"
-Outfitter.cShowInOutfitBar = "ÔÚoutfit barÉÏï@Ê¾"
-Outfitter.cChangeIcon = "ßx“ñˆD˜Ë..."
+Outfitter.cShowInOutfitBar = "åœ¨outfit barä¸Šé¡¯ç¤º"
+Outfitter.cChangeIcon = "é¸æ“‡åœ–æ¨™..."
 
-Outfitter.cMinimapButtonTitle = "Outfitter Ğ¡µØˆD°´âo"
-Outfitter.cMinimapButtonDescription = "üc“ôßx“ñ²»Í¬Ì×Ñb»òÕßÍÏ„Óµ½ĞÂÎ»ÖÃ¡£"
+Outfitter.cMinimapButtonTitle = "Outfitter å°åœ°åœ–æŒ‰éˆ•"
+Outfitter.cMinimapButtonDescription = "é»æ“Šé¸æ“‡ä¸åŒå¥—è£æˆ–è€…æ‹–å‹•åˆ°æ–°ä½ç½®ã€‚"
 
 Outfitter.cClassName = {}
-Outfitter.cDruidClassName = "µÂô”ÒÁ"
-Outfitter.cHunterClassName = "«CÈË"
-Outfitter.cMageClassName = "·¨Ÿ"
-Outfitter.cPaladinClassName = "Ê¥òTÊ¿"
-Outfitter.cPriestClassName = "ÄÁŸ"
-Outfitter.cRogueClassName = "“ĞĞÕß"
-Outfitter.cShamanClassName = "Ë_M¼ÀË¾"
-Outfitter.cWarlockClassName = "ĞgÊ¿"
-Outfitter.cWarriorClassName = "‘ğÊ¿"
+Outfitter.cDruidClassName = "å¾·é­¯ä¼Š"
+Outfitter.cHunterClassName = "çµäºº"
+Outfitter.cMageClassName = "æ³•å¸«"
+Outfitter.cPaladinClassName = "åœ£é¨å£«"
+Outfitter.cPriestClassName = "ç‰§å¸«"
+Outfitter.cRogueClassName = "æ½›è¡Œè€…"
+Outfitter.cShamanClassName = "è–©æ»¿ç¥­å¸"
+Outfitter.cWarlockClassName = "è¡“å£«"
+Outfitter.cWarriorClassName = "æˆ°å£«"
 
-Outfitter.cBattleStance = "‘ğ¶·×Ë‘B"
-Outfitter.cDefensiveStance = "·ÀÓù×Ë‘B"
-Outfitter.cBerserkerStance = "¿ñ±©×Ë‘B"
+Outfitter.cBattleStance = "æˆ°æ–—å§¿æ…‹"
+Outfitter.cDefensiveStance = "é˜²å¾¡å§¿æ…‹"
+Outfitter.cBerserkerStance = "ç‹‚æš´å§¿æ…‹"
 
-Outfitter.cWarriorBattleStance = "‘ğÊ¿£º‘ğ¶·×Ë‘B"
-Outfitter.cWarriorDefensiveStance = "‘ğÊ¿£º·ÀÓù×Ë‘B"
-Outfitter.cWarriorBerserkerStance = "‘ğÊ¿£º¿ñ±©×Ë‘B"
+Outfitter.cWarriorBattleStance = "æˆ°å£«ï¼šæˆ°æ–—å§¿æ…‹"
+Outfitter.cWarriorDefensiveStance = "æˆ°å£«ï¼šé˜²å¾¡å§¿æ…‹"
+Outfitter.cWarriorBerserkerStance = "æˆ°å£«ï¼šç‹‚æš´å§¿æ…‹"
 
-Outfitter.cBearForm = "ĞÜĞÎ‘B"
-Outfitter.cFlightForm = "ïwĞĞĞÎ‘B"
-Outfitter.cSwiftFlightForm = "Ñ¸½İïwĞĞĞÎ‘B"
-Outfitter.cCatForm = "«C±ªĞÎ‘B"
-Outfitter.cAquaticForm = "Ë®ÉúĞÎ‘B"
-Outfitter.cTravelForm = "ÂÃĞĞĞÎ‘B"
-Outfitter.cDireBearForm = "¾ŞĞÜĞÎ‘B"
-Outfitter.cMoonkinForm = "—n«FĞÎ‘B"
-Outfitter.cTreeOfLifeForm = "ÉúÃüÖ®˜ä"
+Outfitter.cBearForm = "ç†Šå½¢æ…‹"
+Outfitter.cFlightForm = "é£›è¡Œå½¢æ…‹"
+Outfitter.cSwiftFlightForm = "è¿…æ·é£›è¡Œå½¢æ…‹"
+Outfitter.cCatForm = "çµè±¹å½¢æ…‹"
+Outfitter.cAquaticForm = "æ°´ç”Ÿå½¢æ…‹"
+Outfitter.cTravelForm = "æ—…è¡Œå½¢æ…‹"
+Outfitter.cDireBearForm = "å·¨ç†Šå½¢æ…‹"
+Outfitter.cMoonkinForm = "æ¢Ÿç¸å½¢æ…‹"
+Outfitter.cTreeOfLifeForm = "ç”Ÿå‘½ä¹‹æ¨¹"
 
-Outfitter.cGhostWolfForm = "ÓÄ»êÖ®ÀÇ"
+Outfitter.cGhostWolfForm = "å¹½é­‚ä¹‹ç‹¼"
 
-Outfitter.cStealth = "“ĞĞ"
+Outfitter.cStealth = "æ½›è¡Œ"
 
-Outfitter.cDruidCasterForm = "µÂô”ÒÁ£ºÊ©·¨ĞÎ‘B"
-Outfitter.cDruidBearForm = "µÂô”ÒÁ£ºĞÜĞÎ‘B"
-Outfitter.cDruidCatForm = "µÂô”ÒÁ£º«C±ªĞÎ‘B"
-Outfitter.cDruidAquaticForm = "µÂô”ÒÁ£ºË®ÉúĞÎ‘B"
-Outfitter.cDruidTravelForm = "µÂô”ÒÁ£ºÂÃĞĞĞÎ‘B"
-Outfitter.cDruidMoonkinForm = "µÂô”ÒÁ£º—n«FĞÎ‘B"
-Outfitter.cDruidFlightForm = "µÂô”ÒÁ£ºïwĞĞĞÎ‘B"
-Outfitter.cDruidSwiftFlightForm = "µÂô”ÒÁ£ºÑ¸½İïwĞĞĞÎ‘B"
-Outfitter.cDruidTreeOfLifeForm = "µÂô”ÒÁ£ºÉúÃüÖ®˜ä"
-Outfitter.cDruidProwl = "µÂô”ÒÁ£ºÓ°¶İ"
-Outfitter.cProwl = "Ó°¶İ"
+Outfitter.cDruidCasterForm = "å¾·é­¯ä¼Šï¼šæ–½æ³•å½¢æ…‹"
+Outfitter.cDruidBearForm = "å¾·é­¯ä¼Šï¼šç†Šå½¢æ…‹"
+Outfitter.cDruidCatForm = "å¾·é­¯ä¼Šï¼šçµè±¹å½¢æ…‹"
+Outfitter.cDruidAquaticForm = "å¾·é­¯ä¼Šï¼šæ°´ç”Ÿå½¢æ…‹"
+Outfitter.cDruidTravelForm = "å¾·é­¯ä¼Šï¼šæ—…è¡Œå½¢æ…‹"
+Outfitter.cDruidMoonkinForm = "å¾·é­¯ä¼Šï¼šæ¢Ÿç¸å½¢æ…‹"
+Outfitter.cDruidFlightForm = "å¾·é­¯ä¼Šï¼šé£›è¡Œå½¢æ…‹"
+Outfitter.cDruidSwiftFlightForm = "å¾·é­¯ä¼Šï¼šè¿…æ·é£›è¡Œå½¢æ…‹"
+Outfitter.cDruidTreeOfLifeForm = "å¾·é­¯ä¼Šï¼šç”Ÿå‘½ä¹‹æ¨¹"
+Outfitter.cDruidProwl = "å¾·é­¯ä¼Šï¼šå½±é"
+Outfitter.cProwl = "å½±é"
 
-Outfitter.cPriestShadowform = "ÄÁŸ£º°µÓ°ĞÎ‘B"
+Outfitter.cPriestShadowform = "ç‰§å¸«ï¼šæš—å½±å½¢æ…‹"
 
-Outfitter.cRogueStealth = "±IÙ\£º“ĞĞ"
-Outfitter.cLockpickingOutfit = "±IÙ\:é_æi"
+Outfitter.cRogueStealth = "ç›œè³Šï¼šæ½›è¡Œ"
+Outfitter.cLockpickingOutfit = "ç›œè³Š:é–‹é–"
 
-Outfitter.cShamanGhostWolf = "Ë_M¼ÀË¾£ºÓÄ»êÖ®ÀÇ"
+Outfitter.cShamanGhostWolf = "è–©æ»¿ç¥­å¸ï¼šå¹½é­‚ä¹‹ç‹¼"
 
-Outfitter.cHunterMonkey = "«CÈË£ºì`ºïÊØ×o"
-Outfitter.cHunterHawk =  "«CÈË£ºĞÛú—ÊØ×o"
-Outfitter.cHunterCheetah =  "«CÈË£º«C±ªÊØ×o"
-Outfitter.cHunterPack =  "«CÈË£º±ªÈºÊØ×o"
-Outfitter.cHunterBeast =  "«CÈË£ºÒ°«FÊØ×o"
-Outfitter.cHunterWild =  "«CÈË£ºÒ°ĞÔÊØ×o"
-Outfitter.cHunterViper = "«CÈË£ºòñÉßÊØ×o"
-Outfitter.cHunterFeignDeath = "«CÈË£º¼ÙËÀ"
+Outfitter.cHunterMonkey = "çµäººï¼šéˆçŒ´å®ˆè­·"
+Outfitter.cHunterHawk =  "çµäººï¼šé›„é·¹å®ˆè­·"
+Outfitter.cHunterCheetah =  "çµäººï¼šçµè±¹å®ˆè­·"
+Outfitter.cHunterPack =  "çµäººï¼šè±¹ç¾¤å®ˆè­·"
+Outfitter.cHunterBeast =  "çµäººï¼šé‡ç¸å®ˆè­·"
+Outfitter.cHunterWild =  "çµäººï¼šé‡æ€§å®ˆè­·"
+Outfitter.cHunterViper = "çµäººï¼šè°è›‡å®ˆè­·"
+Outfitter.cHunterFeignDeath = "çµäººï¼šå‡æ­»"
 
-Outfitter.cMageEvocate = "·¨Ÿ£º†¾ĞÑ"
+Outfitter.cMageEvocate = "æ³•å¸«ï¼šå–šé†’"
 
-Outfitter.cAspectOfTheCheetah = "«C±ªÊØ×o"
-Outfitter.cAspectOfThePack = "±ªÈºÊØ×o"
-Outfitter.cAspectOfTheBeast = "Ò°«FÊØ×o"
-Outfitter.cAspectOfTheWild = "Ò°ĞÔÊØ×o"
-Outfitter.cAspectOfTheViper = "òñÉßÊØ×o"
-Outfitter.cEvocate = "†¾ĞÑ"
+Outfitter.cAspectOfTheCheetah = "çµè±¹å®ˆè­·"
+Outfitter.cAspectOfThePack = "è±¹ç¾¤å®ˆè­·"
+Outfitter.cAspectOfTheBeast = "é‡ç¸å®ˆè­·"
+Outfitter.cAspectOfTheWild = "é‡æ€§å®ˆè­·"
+Outfitter.cAspectOfTheViper = "è°è›‡å®ˆè­·"
+Outfitter.cEvocate = "å–šé†’"
 
-Outfitter.cCompleteCategoryDescripton = "È«²¿Ì×ÑbÖ¸¶¨ÁËÃ¿‚€Î»ÖÃµÄÑb‚ä£¬“QÑb•rŒ¢Ìæ“QËùÓĞÌ×Ñb¡£"
-Outfitter.cAccessoryCategoryDescription = "¸½ŒÙÌ×ÑbÖ»ÊÇÖ¸¶¨ÁË²¿·ÖÎ»ÖÃµÄÑb‚ä¡£Ï²šgµÄÔ’Äã¿ÉÒÔÍ¬•rÑb‚ä×Ì×¸½ŒÙÌ×Ñb"
-Outfitter.cOddsNEndsCategoryDescription = "ÁãËéÎïÆ·ÊÇËùÓĞÎ´³ö¬FÓÚÈÎºÎÌ×ÑbµÄÑb‚äÁĞ±í¡£Ö÷ÒªÓÃÌÊÇ¿ÉÒÔ×ŒÄã´_ÕJÊ¹ÓÃÁËËùÓĞÑb‚ä»òÕß›]ÓĞ”y§¶àÓàµÄÀ¬»ø¡£"
+Outfitter.cCompleteCategoryDescripton = "å…¨éƒ¨å¥—è£æŒ‡å®šäº†æ¯å€‹ä½ç½®çš„è£å‚™ï¼Œæ›è£æ™‚å°‡æ›¿æ›æ‰€æœ‰å¥—è£ã€‚"
+Outfitter.cAccessoryCategoryDescription = "é™„å±¬å¥—è£åªæ˜¯æŒ‡å®šäº†éƒ¨åˆ†ä½ç½®çš„è£å‚™ã€‚å–œæ­¡çš„è©±ä½ å¯ä»¥åŒæ™‚è£å‚™å¹¾å¥—é™„å±¬å¥—è£"
+Outfitter.cOddsNEndsCategoryDescription = "é›¶ç¢ç‰©å“æ˜¯æ‰€æœ‰æœªå‡ºç¾äºä»»ä½•å¥—è£çš„è£å‚™åˆ—è¡¨ã€‚ä¸»è¦ç”¨è™•æ˜¯å¯ä»¥è®“ä½ ç¢ºèªä½¿ç”¨äº†æ‰€æœ‰è£å‚™æˆ–è€…æ²’æœ‰æ”œå¸¶å¤šä½™çš„åƒåœ¾ã€‚"
 
-Outfitter.cRebuildOutfitFormat = "ÖØ½¨ %s"
+Outfitter.cRebuildOutfitFormat = "é‡å»º %s"
 
-Outfitter.cSlotEnableTitle = "ÔÊÔSÎ»ÖÃ"
-Outfitter.cSlotEnableDescription = "ßx“ñ£ºÈç¹ûÄãÏ£ÍûÔÚÇĞ“QÖÁ®”Ç°Ì×Ñb•r¸ü“Qß@‚€Î»ÖÃµÄÑb‚ä£»²»ßx£ºß@‚€Î»ÖÃÔÚÇĞ“QÖÁ®”Ç°Ì×Ñb•r²»•şÓĞÈÎºÎ¸Ä×ƒ¡£"
+Outfitter.cSlotEnableTitle = "å…è¨±ä½ç½®"
+Outfitter.cSlotEnableDescription = "é¸æ“‡ï¼šå¦‚æœä½ å¸Œæœ›åœ¨åˆ‡æ›è‡³ç•¶å‰å¥—è£æ™‚æ›´æ›é€™å€‹ä½ç½®çš„è£å‚™ï¼›ä¸é¸ï¼šé€™å€‹ä½ç½®åœ¨åˆ‡æ›è‡³ç•¶å‰å¥—è£æ™‚ä¸æœƒæœ‰ä»»ä½•æ”¹è®Šã€‚"
 
-Outfitter.cFinger0SlotName = "½äÖ¸£¨ÉÏ£©"
-Outfitter.cFinger1SlotName = "½äÖ¸£¨ÏÂ£©"
+Outfitter.cFinger0SlotName = "æˆ’æŒ‡ï¼ˆä¸Šï¼‰"
+Outfitter.cFinger1SlotName = "æˆ’æŒ‡ï¼ˆä¸‹ï¼‰"
 
-Outfitter.cTrinket0SlotName = "ï—Æ·£¨ÉÏ£©"
-Outfitter.cTrinket1SlotName = "ï—Æ·£¨ÏÂ£©"
+Outfitter.cTrinket0SlotName = "é£¾å“ï¼ˆä¸Šï¼‰"
+Outfitter.cTrinket1SlotName = "é£¾å“ï¼ˆä¸‹ï¼‰"
 
-Outfitter.cOutfitCategoryTitle = "·Öî"
-Outfitter.cBankCategoryTitle = "ãyĞĞ"
-Outfitter.cDepositToBank = "´æ·ÅËùÓĞÑb‚äµ½ãyĞĞ"
-Outfitter.cDepositUniqueToBank = "´æ·ÅÎ¨Ò»Ñb‚äµ½ãyĞĞ"
-Outfitter.cWithdrawFromBank = "ÄãyĞĞÈ¡³öÑb‚ä"
+Outfitter.cOutfitCategoryTitle = "åˆ†é¡"
+Outfitter.cBankCategoryTitle = "éŠ€è¡Œ"
+Outfitter.cDepositToBank = "å­˜æ”¾æ‰€æœ‰è£å‚™åˆ°éŠ€è¡Œ"
+Outfitter.cDepositUniqueToBank = "å­˜æ”¾å”¯ä¸€è£å‚™åˆ°éŠ€è¡Œ"
+Outfitter.cWithdrawFromBank = "å¾éŠ€è¡Œå–å‡ºè£å‚™"
 
-Outfitter.cMissingItemsLabel = "Î´ÕÒµ½£º"
-Outfitter.cBankedItemsLabel = "ãyĞĞ£º"
+Outfitter.cMissingItemsLabel = "æœªæ‰¾åˆ°ï¼š"
+Outfitter.cBankedItemsLabel = "éŠ€è¡Œï¼š"
 
-Outfitter.cRepairAllBags = "Outfitter: ĞŞÀí”y§µÄËùÓĞÑb‚ä"
-Outfitter.cStatsCategory = "ŒÙĞÔ"
-Outfitter.cMeleeCategory = "½ü‘ğ"
-Outfitter.cSpellsCategory = "ÖÎ¯ŸºÍ·¨Ğg"
-Outfitter.cRegenCategory = "»ÖÍ"
-Outfitter.cResistCategory = "¿¹ĞÔ"
-Outfitter.cTradeCategory = "ÉÌ˜I¼¼ÄÜ"
+Outfitter.cRepairAllBags = "Outfitter: ä¿®ç†æ”œå¸¶çš„æ‰€æœ‰è£å‚™"
+Outfitter.cStatsCategory = "å±¬æ€§"
+Outfitter.cMeleeCategory = "è¿‘æˆ°"
+Outfitter.cSpellsCategory = "æ²»ç™‚å’Œæ³•è¡“"
+Outfitter.cRegenCategory = "æ¢å¾©"
+Outfitter.cResistCategory = "æŠ—æ€§"
+Outfitter.cTradeCategory = "å•†æ¥­æŠ€èƒ½"
 
-Outfitter.cTankPoints = "Ì¹üc"
-Outfitter.cCustom = "×Ô¶¨Áx"
+Outfitter.cTankPoints = "å¦é»"
+Outfitter.cCustom = "è‡ªå®šç¾©"
 
-Outfitter.cScriptFormat = "Ä_±¾ (%s)"
-Outfitter.cScriptSettings = "ÔOÖÃ..."
-Outfitter.cNoScript = "Ÿo"
-Outfitter.cDisableScript = "½ûÓÃÄ_±¾"
-Outfitter.cDisableIn = "½ûÓÃ¸ü¶à"
-Outfitter.cEditScriptTitle = "Ì×Ñb£º%s µÄÄ_±¾"
-Outfitter.cEditScriptEllide = "×Ô¶¨Áx..."
-Outfitter.cEventsLabel = "ÊÂ¼ş£º"
-Outfitter.cScriptLabel = "Ä_±¾£º"
-Outfitter.cSetCurrentItems = "Ê¹ÓÃ®”Ç°Ñb‚ä"
-Outfitter.cConfirmSetCurrentMsg = "Äã´_ÕJÒªÊ¹ÓÃ®”Ç°Ñb‚ä¸üĞÂÌ×Ñb£º%s£¿\n×¢£ºÖ»ÓĞ®”Ç°†¢ÓÃµÄÎ»ÖÃ²Å•ş±»¸üĞÂ \n -- ÄãÒ²¿ÉÒÔÔÚÒÔºó†¢ÓÃÆäËüÎ»ÖÃ¡£"
-Outfitter.cSetCurrent = "¸üĞÂ"
-Outfitter.cTyping = "İ”Èë..."
-Outfitter.cScriptErrorFormat = "åeÕ`°lÉúÔÚ %d ĞĞ£º%s"
-Outfitter.cExtractErrorFormat = "%[×Ö·û´® \"Ì×ÑbÄ_±¾\"%]:(%d+):(.*)"
-Outfitter.cPresetScript = "îAÔOÄ_±¾£º"
-Outfitter.cCustomScript = "×Ô¶¨Áx"
-Outfitter.cSettings = "ÔOÖÃ"
-Outfitter.cSource = "Ô´"
+Outfitter.cScriptFormat = "è…³æœ¬ (%s)"
+Outfitter.cScriptSettings = "è¨­ç½®..."
+Outfitter.cNoScript = "ç„¡"
+Outfitter.cDisableScript = "ç¦ç”¨è…³æœ¬"
+Outfitter.cDisableIn = "ç¦ç”¨æ›´å¤š"
+Outfitter.cEditScriptTitle = "å¥—è£ï¼š%s çš„è…³æœ¬"
+Outfitter.cEditScriptEllide = "è‡ªå®šç¾©..."
+Outfitter.cEventsLabel = "äº‹ä»¶ï¼š"
+Outfitter.cScriptLabel = "è…³æœ¬ï¼š"
+Outfitter.cSetCurrentItems = "ä½¿ç”¨ç•¶å‰è£å‚™"
+Outfitter.cConfirmSetCurrentMsg = "ä½ ç¢ºèªè¦ä½¿ç”¨ç•¶å‰è£å‚™æ›´æ–°å¥—è£ï¼š%sï¼Ÿ\næ³¨ï¼šåªæœ‰ç•¶å‰å•Ÿç”¨çš„ä½ç½®æ‰æœƒè¢«æ›´æ–° \n -- ä½ ä¹Ÿå¯ä»¥åœ¨ä»¥åå•Ÿç”¨å…¶å®ƒä½ç½®ã€‚"
+Outfitter.cSetCurrent = "æ›´æ–°"
+Outfitter.cTyping = "è¼¸å…¥..."
+Outfitter.cScriptErrorFormat = "éŒ¯èª¤ç™¼ç”Ÿåœ¨ %d è¡Œï¼š%s"
+Outfitter.cExtractErrorFormat = "%[å­—ç¬¦ä¸² \"å¥—è£è…³æœ¬\"%]:(%d+):(.*)"
+Outfitter.cPresetScript = "é è¨­è…³æœ¬ï¼š"
+Outfitter.cCustomScript = "è‡ªå®šç¾©"
+Outfitter.cSettings = "è¨­ç½®"
+Outfitter.cSource = "æº"
 Outfitter.cInsertFormat = "<- %s"
 
-Outfitter.cContainerBagSubType = "ÈİÆ÷"
-Outfitter.cUsedByPrefix = "ÓÃÓÚÌ×Ñb£º"
+Outfitter.cContainerBagSubType = "å®¹å™¨"
+Outfitter.cUsedByPrefix = "ç”¨äºå¥—è£ï¼š"
 
-Outfitter.cNone = "Ÿo"
-Outfitter.cTooltipMultibuffSeparator1 = " ºÍ "
+Outfitter.cNone = "ç„¡"
+Outfitter.cTooltipMultibuffSeparator1 = " å’Œ "
 Outfitter.cTooltipMultibuffSeparator2 = " / "
-Outfitter.cNoScriptSettings = "ß@‚€Ä_±¾›]ÓĞÔOÖÃßxí—¡£"
-Outfitter.cMissingItemsSeparator = "£¬"
-Outfitter.cUnequipOthers = "Ñb‚äºó£¬“QÏÂÆäËû¸½ŒÙÌ×Ñb"
+Outfitter.cNoScriptSettings = "é€™å€‹è…³æœ¬æ²’æœ‰è¨­ç½®é¸é …ã€‚"
+Outfitter.cMissingItemsSeparator = "ï¼Œ"
+Outfitter.cUnequipOthers = "è£å‚™åï¼Œæ›ä¸‹å…¶ä»–é™„å±¬å¥—è£"
 
-Outfitter.cConfirmResetMsg = "Äã´_¶¨ÒªÖØÖÃß@‚€½ÇÉ«µÄOutfitterÔOÖÃ£¿Œ¢•ş„h³ıËùÓĞÌ×Ñb²¢ÖØ½¨Ä¬ÕJÌ×Ñb¡£"
-Outfitter.cReset = "ÖØÖÃ"
+Outfitter.cConfirmResetMsg = "ä½ ç¢ºå®šè¦é‡ç½®é€™å€‹è§’è‰²çš„Outfitterè¨­ç½®ï¼Ÿå°‡æœƒåˆªé™¤æ‰€æœ‰å¥—è£å¹¶é‡å»ºé»˜èªå¥—è£ã€‚"
+Outfitter.cReset = "é‡ç½®"
 
-Outfitter.cIconFilterLabel = "ËÑË÷£º"
-Outfitter.cIconSetLabel = "ˆD˜Ë£º"
+Outfitter.cIconFilterLabel = "æœç´¢ï¼š"
+Outfitter.cIconSetLabel = "åœ–æ¨™ï¼š"
 
-Outfitter.cCantReloadUI = "Äã±ØíšÖØĞÂ†¢„ÓÄ§«FíÍê³ÉOutfitterµÄß@´Î°æ±¾¸üĞÂ"
-Outfitter.cChooseIconTitle = "é %s Ì×Ñbßx“ñÒ»‚€ˆD˜Ë"
-Outfitter.cOutfitterDecides = "Outfitter Œ¢éÄãßx“ñÒ»‚€ˆD˜Ë"
+Outfitter.cCantReloadUI = "ä½ å¿…é ˆé‡æ–°å•Ÿå‹•é­”ç¸ä¾†å®ŒæˆOutfitterçš„é€™æ¬¡ç‰ˆæœ¬æ›´æ–°"
+Outfitter.cChooseIconTitle = "ç‚º %s å¥—è£é¸æ“‡ä¸€å€‹åœ–æ¨™"
+Outfitter.cOutfitterDecides = "Outfitter å°‡ç‚ºä½ é¸æ“‡ä¸€å€‹åœ–æ¨™"
 
-Outfitter.cSuggestedIcons = "½¨×hÊ¹ÓÃˆD˜Ë"
-Outfitter.cSpellbookIcons = "ÄãµÄ¼¼ÄÜ•ø"
-Outfitter.cYourItemIcons = "ÄãµÄ±³°ü"
-Outfitter.cEveryIcon = "È«²¿ˆD˜Ë"
-Outfitter.cItemIcons = "È«²¿ˆD˜Ë£¨Ö»°üº¬ÎïÆ·£©"
-Outfitter.cAbilityIcons = "È«²¿ˆD˜Ë£¨Ö»°üº¬¼¼ÄÜ£©"
+Outfitter.cSuggestedIcons = "å»ºè­°ä½¿ç”¨åœ–æ¨™"
+Outfitter.cSpellbookIcons = "ä½ çš„æŠ€èƒ½æ›¸"
+Outfitter.cYourItemIcons = "ä½ çš„èƒŒåŒ…"
+Outfitter.cEveryIcon = "å…¨éƒ¨åœ–æ¨™"
+Outfitter.cItemIcons = "å…¨éƒ¨åœ–æ¨™ï¼ˆåªåŒ…å«ç‰©å“ï¼‰"
+Outfitter.cAbilityIcons = "å…¨éƒ¨åœ–æ¨™ï¼ˆåªåŒ…å«æŠ€èƒ½ï¼‰"
 
-Outfitter.cRequiresLockpicking = "ĞèÒªé_æi"
+Outfitter.cRequiresLockpicking = "éœ€è¦é–‹é–"
 Outfitter.cUseDurationTooltipLineFormat = "^Use: .* for (%d+) sec"
 
-Outfitter.cOutfitBarSizeLabel = "³ß´ç"
-Outfitter.cOutfitBarSmallSizeLabel = "Ğ¡"
-Outfitter.cOutfitBarLargeSizeLabel = "´ó"
-Outfitter.cOutfitBarAlphaLabel = "Í¸Ã÷¶È"
-Outfitter.cOutfitBarCombatAlphaLabel = "‘ğ¶·Í¸Ã÷¶È"
-Outfitter.cOutfitBarVerticalLabel = "´¹Ö±ÅÅÁĞ"
-Outfitter.cOutfitBarLockPositionLabel = "æi¶¨Î»ÖÃ"
-Outfitter.cOutfitBarHideBackgroundLabel = "ë[²Ø±³¾°"
+Outfitter.cOutfitBarSizeLabel = "å°ºå¯¸"
+Outfitter.cOutfitBarSmallSizeLabel = "å°"
+Outfitter.cOutfitBarLargeSizeLabel = "å¤§"
+Outfitter.cOutfitBarAlphaLabel = "é€æ˜åº¦"
+Outfitter.cOutfitBarCombatAlphaLabel = "æˆ°æ–—é€æ˜åº¦"
+Outfitter.cOutfitBarVerticalLabel = "å‚ç›´æ’åˆ—"
+Outfitter.cOutfitBarLockPositionLabel = "é–å®šä½ç½®"
+Outfitter.cOutfitBarHideBackgroundLabel = "éš±è—èƒŒæ™¯"
 
-Outfitter.cPositionLockedError = "Outfit Bar ²»ÄÜ±»ÒÆ„ÓÒòéÄãÒÑ½›æi¶¨ÁËËüµÄÎ»ÖÃ"
+Outfitter.cPositionLockedError = "Outfit Bar ä¸èƒ½è¢«ç§»å‹•å› ç‚ºä½ å·²ç¶“é–å®šäº†å®ƒçš„ä½ç½®"
+
+Outfitter.cMustBeAtBankError = "ä½ å¿…é ˆä¿æŒä½ çš„éŠ€è¡Œç‚ºæ‰“é–‹ç‹€æ…‹ä¾†å‰µå»ºä¸€å€‹æœªæ‰¾åˆ°ç‰©å“åˆ—è¡¨"
+Outfitter.cMissingItemReportIntro = "æœªæ‰¾åˆ°ç‰©å“ï¼ˆå¦‚æœä¸€ä»¶ç‰©å“è¢«å¤šå€‹å¥—è£ä½¿ç”¨å®ƒå°‡åœ¨åˆ—è¡¨ä¸­å‡ºç¾å¤šæ¬¡ï¼‰:"
+Outfitter.cNoMissingItems = "æ²’æœ‰è£å‚™æœªæ‰¾åˆ°"
+
 end

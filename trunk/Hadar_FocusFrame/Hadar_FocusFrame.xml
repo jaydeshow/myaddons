@@ -30,22 +30,22 @@
 		</Frames>
 		<Scripts>
 			<OnEnter>
-				if ( this:GetCenter() > GetScreenWidth()/2 ) then
-					GameTooltip:SetOwner(this, "ANCHOR_BOTTOMLEFT");
+				if ( self:GetCenter() > GetScreenWidth()/2 ) then
+					GameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT");
 				else
-					GameTooltip:SetOwner(this, "ANCHOR_BOTTOMRIGHT");
+					GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT");
 				end
-				if ( UnitIsFriend("player", this:GetParent().unit) ) then
-					if (FF_ShowDebuffs.friend.type == "buffs") then
-						GameTooltip:SetUnitBuff(this:GetParent().unit, this:GetID());
+				if ( UnitIsFriend("player", self:GetParent().unit) ) then
+					if (FF_Options.friend.type == "buffs") then
+						GameTooltip:SetUnitBuff(self:GetParent().unit, self:GetID());
 					else
-						GameTooltip:SetUnitDebuff(this:GetParent().unit, this:GetID());
+						GameTooltip:SetUnitDebuff(self:GetParent().unit, self:GetID());
 					end
 				else
-					if (FF_ShowDebuffs.enemy.type == "buffs") then
-						GameTooltip:SetUnitBuff(this:GetParent().unit, this:GetID());
+					if (FF_Options.enemy.type == "buffs") then
+						GameTooltip:SetUnitBuff(self:GetParent().unit, self:GetID());
 					else
-						GameTooltip:SetUnitDebuff(this:GetParent().unit, this:GetID());
+						GameTooltip:SetUnitDebuff(self:GetParent().unit, self:GetID());
 					end
 				end
 			</OnEnter>

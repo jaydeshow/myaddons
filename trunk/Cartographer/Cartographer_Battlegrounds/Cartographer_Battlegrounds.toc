@@ -6,6 +6,7 @@
 ## X-Name-koKR: 전장
 ## X-Name-zhTW: 戰場
 ## X-Name-esES: Campos de Batalla
+## X-Name-zhCN: 战场
 ## X-ModuleName: Battlegrounds
 ## Notes: Module which provides maps of battlegrounds.
 ## Notes-deDE: Modul, das Schlachtfeldkarten zur Verfügung stellt.
@@ -13,24 +14,16 @@
 ## Notes-koKR: 전장 지도 모듈을 제공합니다.
 ## Notes-zhTW: 提供戰場地圖的模組。
 ## Notes-esES: Módulo que provee mapas de los campos de batalla.
+## Notes-zhCN: 提供战场地图模块。
 ## Author: ckknight
 ## DefaultState: enabled
 ## LoadOnDemand: 1
 ## Dependencies: Cartographer
-## OptionalDeps: Ace2, Babble-2.2, TouristLib
+## OptionalDeps: LibBabble-Zone-2.2, LibTourist-3.0
 ## X-Category: Map
 ## X-eMail: ckknight@gmail.com
 ## X-Website: http://ckknight.wowinterface.com/
 ## X-License: GPL v2 or later
 ## Version: 2.0
-
-#Libs\AceLibrary\AceLibrary.lua
-#Libs\AceOO-2.0\AceOO-2.0.lua
-#Libs\AceEvent-2.0\AceEvent-2.0.lua
-#Libs\AceAddon-2.0\AceAddon-2.0.lua
-#Libs\AceHook-2.1\AceHook-2.1.lua
-#Libs\AceLocale-2.2\AceLocale-2.2.lua
-#Libs\Babble-Zone-2.2\Babble-Zone-2.2.lua
-#Libs\Tourist-2.0\Tourist-2.0.lua
 
 Battlegrounds.lua

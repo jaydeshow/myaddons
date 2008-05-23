@@ -96,7 +96,7 @@ function zBarT:UpdateButtons()
 					if PetActionBarFrame.showgrid > 0 or GetPetActionInfo(i) then
 						button:Show()
 					end
-				elseif not button.action or (button.showgrid > 0 or HasAction(button.action)) then
+				elseif not button.action or (button.showgrid ~=nil and button.showgrid > 0 or HasAction(button.action)) then
 					button:Show()
 				end
 				button:SetAttribute("showstates", nil)

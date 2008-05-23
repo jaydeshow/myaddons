@@ -1,11 +1,13 @@
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("oRAOMainTank")
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 local combatUpdate = nil
 
@@ -319,79 +321,84 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	-- ["mt"] = "",
 	["MainTank"] = "MainTank",
 	["Optional/MainTank"] = "Wahlweise/MainTank",
-	["Options for the maintanks."] = "Optionen f\195\188r MainTanks.",
+	["Options for the maintanks."] = "Optionen für MainTanks.",
 	["Targettarget"] = "Ziel des Zieles",
-	["Toggle TargetTarget frames."] = "Aktivert den Rahmen f\195\188r das Ziel des Zieles.",
-	["Scale"] = "Gr\195\182\195\159e",
-	["Set frame scale."] = "Setze die Rahmengr\195\182\195\159e",
+	["Toggle TargetTarget frames."] = "Aktiviert den Rahmen für das Ziel des Zieles.",
+	["Scale"] = "Größe",
+	["Set frame scale."] = "Setzt die Rahmengröße.",
 	["Alpha"] = "Transparenz",
-	["Set frame alpha."] = "Setze die Rahmentransparenz.",
+	["Set frame alpha."] = "Setzt die Rahmentransparenz.",
 	["Raidicon"] = "Schlachtzugssymbole",
-	["Toggle raid icons."] = "Aktiviere die Schlachtzugssymbole.",
+	["Toggle raid icons."] = "Schlachtzugssymbole ein-/ausblenden.",
 	["Frames"] = "Rahmen",
-	["Options for the maintank frames."] = "Optionen f\195\188r den MainTank Rahmen.",
-	["Growup"] = "Aufbauen",
+	["Options for the maintank frames."] = "Optionen für den MainTank Rahmen.",
+	["Growup"] = "Aufbauend",
 	["Toggle growup."] = "Baut den Rahmen nach oben auf.",
 	["Inverse"] = "Umkehren",
-	["Toggle inverse healthbar."] = "Aktiviert das Umkehren des Lebensbalkens.",
+	["Toggle inverse healthbar."] = "Umkehren des Lebensbalkens ein-/ausschalten.",
 	["Deficit"] = "Defizit",
-	["Toggle deficit health."] = "Aktiviert das Anzeigen des Lebensdefizits.",
+	["Toggle deficit health."] = "Anzeige des Lebensdefizits ein-/ausschalten.",
 	["Clickcast"] = "Klickzaubern",
-	["Toggle clickcast support."] = "Klickzaubern ein-/ausschaltern.",
+	["Toggle clickcast support."] = "Klickzaubern ein-/ausschalten.",
 	["Clicktarget"] = "Klickziel",
 	["Define clicktargets."] = "Definiere Klickziel.",
-	["Define the clicktarget for maintank."] = "Definiere den Klickzauber f\195\188r MainTanks.",
-	["Define the clicktarget for target."] = "Definiere den Klickzauber f\195\188r Ziele.",
-	["Define the clicktarget for targettarget."] = "Definiere den Klickzauber f\195\188r Ziele der Ziele.",
+	["Define the clicktarget for maintank."] = "Definiere den Klickzauber für MainTanks.",
+	["Define the clicktarget for target."] = "Definiere den Klickzauber für Ziele.",
+	["Define the clicktarget for targettarget."] = "Definiere den Klickzauber für Ziel des Zieles.",
 	["Target"] = "Ziel",
 	["Maintank"] = "MainTank",
 	["TargetTarget"] = "Ziel des Zieles",
-	["Set the maximum number of main tanks you want to show."] = "Anzahl der MainTank-Leisten.",
+	["Set the maximum number of main tanks you want to show."] = "Anzahl der angezeigten MainTanks.",
 	["Amount"] = "Anzahl MainTanks",
 	["Classcolor"] = "Klassenfarbe",
-	["Color healthbars by class."] = "F\195\164rbt den Lebensbalken je nach Klasse ein.",
+	["Color healthbars by class."] = "Färbt den Lebensbalken je nach Klasse ein.",
 	["Enemycolor"] = "Feindfarbe",
-	["Set the color for enemies. (used when classcolor is enabled)"] = "Setzt die Farbe feindlich gesinnter Spieler.",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Setzt die Farbe für Gegner. ('Klassenfarbe' muß aktiviert sein)",
 	["Color Aggro"] = "Aggro Farbe",
-	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Farbe für den Aggrostatus der MainTanks setzten. Orange hat Aggro, Gr\195\188n tankt, Rot hat keine Aggro.",
+	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Farbe für den Aggrostatus der MainTanks setzen. Orange hat Aggro, Grün tankt, Rot hat keine Aggro.",
 	["Backdrop"] = "Hintergrund",
-	["Toggle the backdrop."] = "Aktiviert den Hintergrund der MainTanks.",
+	["Toggle the backdrop."] = "Hintergrund ein-/ausschalten.",
 	["Highlight"] = "Hervorheben",
-	["Toggle highlighting your target."] = "Hebt hervor welchen MainTank du im Ziel hast.",
-	["Reverse"] = "R\195\188ckw\195\164rts",
-	["Toggle reverse order."] = "Aktiviert die Sortierung R\195\188ckw\195\164rts.",
+	["Toggle highlighting your target."] = "Hervorheben Deines Ziels ein-/ausschalten.",
+	["Reverse"] = "Rückwärts",
+	["Toggle reverse order."] = "Rückwärtssortierung ein-/ausschalten.",
 	["Numbers"] = "Nummern",
-	["Toggle showing of MT numbers."] = "Aktiviert die Anzeige der MT Nummern.",
+	["Toggle showing of MT numbers."] = "Anzeige der MT Nummern ein-/ausschalten.",
 	["Tooltips"] = "Tooltips",
-	["Toggle showing of tooltips."] = "Aktiviert das Anzeigen der Tooltips.",
+	["Toggle showing of tooltips."] = "Tooltipanzeige ein-/ausschalten.",
 	["Show"] = "Zeigen",
-	["Show maintank."] = "Zeige MainTanks",
-	["Show target."] = "Zeige Ziele",
-	["Show targettarget."] = "Zeige Ziel des Zieles",
-	["Define which frames you want to see."] = "Definiert welche Rahmen du anzeigen willst.",
+	["Show maintank."] = "Zeige MainTank.",
+	["Show target."] = "Zeige Ziele.",
+	["Show targettarget."] = "Zeige Ziel des Zieles.",
+	["Define which frames you want to see."] = "Definiert welchen Rahmen Du anzeigen willst.",
 	["Layout"] = "Layout",
-	["Set the layout for the MT frames."] = "Setzt das Layout f\195\188r die PT Rahmen.",
+	["Set the layout for the MT frames."] = "Setzt das Layout für die MT Rahmen.",
 	["Vertical"] = "Vertikal",
 	["Horizontal"] = "Horizontal",
 	
 	["Style"] = "Aussehen",
-	["Set the frame style."] = "Setzt das Aussehen der Rahmen.",
+	["Set the frame style."] = "Setzt das Aussehen des Rahmens.",
 	["<style>"] = "<style>",
 	
 	["Default"] = "Standart",
 	["Compact"] = "Kompakt",
 
-	["Backwards"] = "R\195\188ckw\195\164rts",
-	["Order MT|MTT|MTTT Backwards."] = "Sortiert MT|MTT|MTTT R\195\188ckw\195\164rts.",
+	["Backwards"] = "Rückwärts",
+	["Order MT|MTT|MTTT Backwards."] = "Sortiert MT|MTT|MTTT rückwärts.",
+
+	["Lock"] = "Sperren",
+	["Lock the MT frames."] = "Sperrt den MT Rahmen.",
+
+	["Reset Position"] = "Position zurücksetzen",
+	["Moves MT Window back to the center of your screen"] = "Schiebt den MT Rahmen zur Mitte des Bildschirms zurück",
 } end)
 
 L:RegisterTranslations("frFR", function() return {
-	--["MainTank"] = true,
+	["MainTank"] = "Tanks principaux",
 	["Optional/MainTank"] = "Optionnel/MainTank",
-	["Options for the maintanks."] = "Optons concernant les maintanks.",
+	["Options for the maintanks."] = "Options concernant les tanks principaux.",
 	["Targettarget"] = "Cible de la cible",
 	["Toggle TargetTarget frames."] = "Affiche ou non les cadres de la cible de la cible.",
 	["Scale"] = "Échelle",
@@ -401,10 +408,10 @@ L:RegisterTranslations("frFR", function() return {
 	["Raidicon"] = "Icônes de raid",
 	["Toggle raid icons."] = "Affiche ou non les icônes de raid.",
 	["Frames"] = "Cadres",
-	["Options for the maintank frames."] = "Options concernant les cadres des maintanks.",
+	["Options for the maintank frames."] = "Options concernant les cadres des tanks principaux.",
 	["Growup"] = "Vers le haut",
-	["Toggle growup."] = "Ajoute ou non les MTs vers le haut.",
-	["Inverse"] = "Inverser",
+	["Toggle growup."] = "Ajoute ou non les nouvelles entrées vers le haut.",
+	["Inverse"] = "Inverser les vies",
 	["Toggle inverse healthbar."] = "Inverse ou non le sens de remplissage des barres de vie.",
 	["Deficit"] = "Déficit",
 	["Toggle deficit health."] = "Affiche ou non le déficit en vie.",
@@ -412,20 +419,20 @@ L:RegisterTranslations("frFR", function() return {
 	["Toggle clickcast support."] = "Active ou non le support des addons de \"clickcasting\".",
 	--["Clicktarget"] = true,
 	["Define clicktargets."] = "Détermine la cible des clics.",
-	["Define the clicktarget for maintank."] = "Détermine la cible lors du clic sur le cadre du MT.",
+	["Define the clicktarget for maintank."] = "Détermine la cible lors du clic sur le cadre du tank principal.",
 	["Define the clicktarget for target."] = "Détermine la cible lors du clic sur le cadre de la cible.",
 	["Define the clicktarget for targettarget."] = "Détermine la cible lors du clic sur le cadre de la cible de la cible.",
 	["Target"] = "Cible",
-	["Maintank"] = "Maintank",
+	["Maintank"] = "Tanks principaux",
 	["TargetTarget"] = "Cible de la cible",
-	["Set the maximum number of main tanks you want to show."] = "Nombre de MTs à afficher.",
-	["Amount"] = "Nombre de MTs",
-	["Classcolor"] = "Couleur classe",
-	["Color healthbars by class."] = "Colore les barres de vie selon la classe.",
-	["Enemycolor"] = "Couleur ennemi",
-	["Set the color for enemies. (used when classcolor is enabled)"] = "Détermine la couleur pour les ennemis. (utilisé si \"Couleur classe\" est coché)",
+	["Set the maximum number of main tanks you want to show."] = "Définit le nombre maximal de tanks principaux que vous voulez afficher.",
+	["Amount"] = "Nombre",
+	["Classcolor"] = "Couleur de la classe",
+	["Color healthbars by class."] = "Colorie les barres de vie selon la classe.",
+	["Enemycolor"] = "Couleur des ennemis",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Détermine la couleur des ennemis (utilisé si \"Couleur de la classe\" est coché).",
 	["Color Aggro"] = "Couleur d'aggro",
-	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Indique le statut de l'aggro des MTs selon la couleur de leurs noms. Orange s'ils ont la cible, Vert s'ils tankent, Rouge s'ils n'ont pas l'aggro.",
+	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Indique le statut de l'aggro des tanks principaux selon la couleur de leurs noms. Orange s'ils ont la cible, Vert s'ils tankent leur cible, Rouge s'ils n'ont pas l'aggro.",
 	["Backdrop"] = "Fond",
 	["Toggle the backdrop."] = "Affiche ou non le fond.",
 	["Highlight"] = "Surbrillance",
@@ -433,34 +440,34 @@ L:RegisterTranslations("frFR", function() return {
 	["Reverse"] = "Inverser l'ordre",
 	["Toggle reverse order."] = "Inverse ou non l'ordre d'affichage.",
 	["Numbers"] = "Numéros",
-	["Toggle showing of MT numbers."] = "Affiche ou non les numéros des MTs.",
+	["Toggle showing of MT numbers."] = "Affiche ou non les numéros des tanks principaux.",
 	["Tooltips"] = "Infobulles",
 	["Toggle showing of tooltips."] = "Affiche ou non les infobulles.",
 	["Show"] = "Afficher",
-	["Show maintank."] = "Affiche le maintank.",
+	["Show maintank."] = "Affiche le tank principal.",
 	["Show target."] = "Affiche la cible.",
 	["Show targettarget."] = "Affiche la cible de la cible.",
 	["Define which frames you want to see."] = "Détermine les cadres que vous souhaitez voir.",
 	["Layout"] = "Disposition",
-	["Set the layout for the MT frames."] = "Détermine l'orientation des cadres des MTs.",
-	--["Vertical"] = true,
-	--["Horizontal"] = true,
+	["Set the layout for the MT frames."] = "Détermine l'orientation des cadres des tanks principaux.",
+	["Vertical"] = "Vertical",
+	["Horizontal"] = "Horizontal",
 
-	--["Style"] = true,
+	["Style"] = "Style",
 	["Set the frame style."] = "Détermine le style des cadres.",
-	--["<style>"] = true,
+	["<style>"] = "<style>",
 
 	["Default"] = "Défaut",
-	--["Compact"] = true,
+	["Compact"] = "Compact",
 
 	["Backwards"] = "Ordre inverse",
 	["Order MT|MTT|MTTT Backwards."] = "Ordonne MT|MTT|MTTT en sens inverse.",
 
 	["Lock"] = "Verrouiller",
-	["Lock the MT frames."] = "Verrouille les cadres des MTs.",
+	["Lock the MT frames."] = "Verrouille les cadres des tanks principaux.",
 
-	["Reset Position"] = "Réinitialise la position",
-	["Moves MT Window back to the center of your screen"] = "Replace la fenêtre des MTs au centre de l'écran",
+	["Reset Position"] = "RÀZ de la position",
+	["Moves MT Window back to the center of your screen"] = "Replace la fenêtre des tanks principaux au centre de l'écran.",
 } end)
 
 ----------------------------------
@@ -746,7 +753,7 @@ mod.consoleOptions = {
 --      Initialization      --
 ------------------------------
 
-function mod:OnEnable()
+function mod:OnRegister()
 	self.secureframes = {}
 	self.styles = {}
 
@@ -756,16 +763,21 @@ function mod:OnEnable()
 	self:RegisterStyle(L["Compact"], compactstyle)
 
 	if not self.styles[self.db.profile.style] then self.db.profile.style = L["Default"] end
+end
 
+function mod:OnEnable()
 	self:RegisterEvent("oRA_MainTankUpdate")
-	self:RegisterEvent("oRA_LeftRaid")
 	self:RegisterEvent("oRA_JoinedRaid", "oRA_MainTankUpdate")
-	self:RegisterBucketEvent("RAID_ROSTER_UPDATE", 2, "oRA_MainTankUpdate")
-	self:RegisterEvent("UPDATE_BINDINGS","UpdateAssistBindings")
 
 	self:RegisterEvent("oRA_BarTexture")
-
+	self:RegisterEvent("UPDATE_BINDINGS", "UpdateAssistBindings")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
+end
+
+function mod:OnDisable()
+	if self.mainframe then
+		self.mainframe:Hide()
+	end
 end
 
 ------------------------------
@@ -773,19 +785,9 @@ end
 ------------------------------
 
 function mod:PLAYER_REGEN_ENABLED()
-	if not self.mainframe then
-		self:SetupFrames()
-	end
-
 	if combatUpdate then
 		combatUpdate = nil
 		self:oRA_MainTankUpdate()
-	end
-end
-
-function mod:oRA_LeftRaid()
-	if self.mainframe then
-		self.mainframe:Hide()
 	end
 end
 
@@ -808,11 +810,11 @@ function mod:oRA_MainTankUpdate()
 		end
 	end
 
-	if showmt and self.mainframe and self.header then
+	if showmt then
 		self.mainframe:Show()
 		self.header:SetAttribute("nameList", table.concat(mts,","))
 		self.header:Show()
-	elseif self.mainframe and self.header then
+	else
 		self.mainframe:Hide()
 		self.header:Hide()
 	end

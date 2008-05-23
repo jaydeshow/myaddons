@@ -1,14 +1,13 @@
-------------------------------
+﻿------------------------------
 --      Are you local?      --
 ------------------------------
 
+local entropius = BB["Entropius"]
 local boss = BB["M'uru"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 
 local db = nil
 local started = nil
-local pName = UnitName("player")
-local inDark = {}
 
 ----------------------------
 --      Localization      --
@@ -32,24 +31,66 @@ L:RegisterTranslations("enUS", function() return {
 	humanoid_desc = "Warn when the Humanoid Adds spawn.",
 	humanoid_next = "Next Humanoids",
 	humanoid_soon = "Humanoids in 5sec!",
+
+	fiends = "Dark Fiends",
+	fiends_desc = "Warn for Dark Fiends spawning.",
+	fiends_message = "Dark Fiends Inc!",
+
+	phase = "Phases",
+	phase_desc = "Warn for phase changes.",
+	phase2_message = "Phase 2",
+} end )
+
+L:RegisterTranslations("esES", function() return {
+	darkness = "Oscuridad (Darkness)",
+	darkness_desc = "Avisar quién tiene Oscuridad.",
+	darkness_message = "Oscuridad: %s",
+	darkness_next = "~Oscuridad",
+	darkness_soon = "Oscuridad en 5 seg",
+
+	void = "Centinela del vacío (Void Sentinel)",
+	void_desc = "Avisar cuando aparece un centinela del vacío.",
+	void_next = "~Centinela",
+	void_soon = "Centinela en 5 seg",
+
+	humanoid = "Añadidos humanoides",
+	humanoid_desc = "Avisar cuando aparecen los humanoides.",
+	humanoid_next = "~Humanoides",
+	humanoid_soon = "Humanoides en 5 seg",
+
+	fiends = "Malignos oscuros (Dark Fiends)",
+	fiends_desc = "Avisar cuando aparecen Malignos oscuros.",
+	fiends_message = "¡Malignos oscuros!",
+
+	phase = "Fases",
+	phase_desc = "Avisar sobre las distintas fases del encuentro.",
+	phase2_message = "¡Fase 2!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
 	darkness = "Ténèbres",
-	darkness_desc = "Préviens quand un joueur subit les effets des Ténèbres.",
-	darkness_message = "Ténèbres : %s",
+	darkness_desc = "Prévient quand un joueur subit les effets des Ténèbres.",
+	darkness_message = "Ténèbres : %s",
 	darkness_next = "Prochaines Ténèbres",
-	darkness_soon = "Ténèbres dans 5 sec. !",
+	darkness_soon = "Ténèbres dans 5 sec. !",
 
 	void = "Sentinelles du Vide",
-	void_desc = "Préviens quand les Sentinelles du Vide apparaissent.",
+	void_desc = "Prévient quand les Sentinelles du Vide apparaissent.",
 	void_next = "Prochaine Sentinelle",
-	void_soon = "Sentinelle dans 5 sec. !",
+	void_soon = "Sentinelle dans 5 sec. !",
 
 	humanoid = "Renforts humanoïdes",
-	humanoid_desc = "Préviens quand les renforts humanoïdes apparaissent.",
+	humanoid_desc = "Prévient quand les renforts humanoïdes apparaissent.",
 	humanoid_next = "Prochains humanoïdes",
-	humanoid_soon = "Humanoïdes dans 5 sec. !",
+	humanoid_soon = "Humanoïdes dans 5 sec. !",
+
+	fiends = "Sombres fiels",
+	fiends_desc = "Prévient quand les Sombres fiels apparaissent.",
+	fiends_message = "Arrivée des Sombres fiels !",
+
+	phase = "Phases",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
+	phase2_message = "Phase 2 !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -57,53 +98,103 @@ L:RegisterTranslations("koKR", function() return {
 	darkness_desc = "어둠에 걸린 플레이어를 알립니다.",
 	darkness_message = "어둠: %s",
 	darkness_next = "다음 어둠",
-	darkness_soon = "5초 이내 어둠!",
+	darkness_soon = "5초 후 어둠!",
 
 	void = "공허의 파수병",
 	void_desc = "공허의 파수병의 소환을 알립니다.",
 	void_next = "다음 공허의 파수병",
 	void_soon = "5초 이내 파수병!",
 
-	humanoid = "타락한 엘프 소환",
-	humanoid_desc = "타락한 엘프 소환을 알립니다.",
+	humanoid = "타락한 엘프",
+	humanoid_desc = "타락한 엘프 등장을 알립니다.",
 	humanoid_next = "다음 타락한 엘프",
 	humanoid_soon = "5초 이내 타락한 엘프!",
+
+	fiends = "어둠 마귀",
+	fiends_desc = "어둠 마귀 소환을 알립니다.",
+	fiends_message = "잠시 후 어둠 마귀!",
+
+	phase = "단계",
+	phase_desc = "단계 변경을 알립니다.",
+	phase2_message = "2 단계!",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
 	darkness = "黑暗",--Darkness
-	darkness_desc = "当中了黑暗时发出警报。",
+	darkness_desc = "当玩家受到黑暗时发出警报。",
 	darkness_message = "黑暗：>%s<！ ",
 	darkness_next = "<下一黑暗>",
 	darkness_soon = "5秒后，黑暗！",
 
 	void = "虚空戒卫",--Void Sentinel
 	void_desc = "当虚空戒卫刷新时发出警报。",
-	void_next = "<下一波虚空戒卫>",
+	void_next = "<下一虚空戒卫>",
 	void_soon = "5秒后，虚空戒卫刷新！",
 
 	humanoid = "人型生物",--Humanoids
 	humanoid_desc = "人型生物刷新时发出警报。",
-	humanoid_next = "<下一波人型生物>",
+	humanoid_next = "<下一人型生物>",
 	humanoid_soon = "5秒后，人型生物刷新！",
+
+	fiends = "黑暗魔",
+	fiends_desc = "黑暗魔刷新时发出警报。",
+	fiends_message = "黑暗魔 出现！",
+
+	phase = "阶段",
+	phase_desc = "当进入不同阶段发出警报。",
+	phase2_message = "第二阶段！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
 	darkness = "黑暗",
-	darkness_desc = "警示誰受到黑暗效果。",
-	darkness_message = "黑暗：[%s]",
+	darkness_desc = "警報誰受到黑暗效果",
+	darkness_message = "黑暗: [%s]",
 	darkness_next = "下一次黑暗",
-	darkness_soon = "5 秒內黑暗！",
+	darkness_soon = "約 5 秒內施放黑暗!",
 
 	void = "虛無哨兵",
-	void_desc = "當虛無哨兵出現時警示。",
+	void_desc = "當虛無哨兵出現時發出警報",
 	void_next = "下一波虛無哨兵",
-	void_soon = "5 秒內虛無哨兵出現！",
+	void_soon = "約 5 秒內虛無哨兵出現!",
 
 	humanoid = "虛無哨兵召喚者",
-	humanoid_desc = "當虛無哨兵召喚者出現時警示。",
+	humanoid_desc = "當虛無哨兵召喚者出現時發出警報",
 	humanoid_next = "下一波召喚者",
-	humanoid_soon = "5 秒內召喚者出現！",
+	humanoid_soon = "約 5 秒內召喚者出現!",
+
+	--fiends = "Dark Fiends",
+	--fiends_desc = "Warn for Dark Fiends spawning.",
+	--fiends_message = "Dark Fiends Inc!",
+
+	--phase = "Phases",
+	--phase_desc = "Warn for phase changes.",
+	--phase2_message = "Phase 2!",
+} end )
+
+L:RegisterTranslations("deDE", function() return {
+	darkness = "Dunkelheit",
+	darkness_desc = "Warnung wer von Dunkelheit betroffen ist.",
+	darkness_message = "Dunkelheit: %s",
+	darkness_next = "Nächste Dunkelheit",
+	darkness_soon = "Dunkelheit in 5sek!",
+
+	void = "Leerenwache",
+	void_desc = "Warnung wenn eine Leerenwache erscheint.",
+	void_next = "Nächste Leerenwache",
+	void_soon = "Leerenwache in 5 sek!",
+
+	humanoid = "Menschliche Wache",
+	humanoid_desc = "Warnung wenn Menschliche Wachen erscheinen.",
+	humanoid_next = "Nächste Wachen",
+	humanoid_soon = "Wachen in 5sec!",
+
+	fiends = "Finsteres Scheusal",
+	fiends_desc = "Warnung wenn Finsteres Scheusale erscheinen.",
+	fiends_message = "Finsteres Scheusale Inc!",
+
+	phase = "Phasen",
+	phase_desc = "Warnung bei Phasenänderrungen.",
+	phase2_message = "Phase 2",
 } end )
 
 ----------------------------------
@@ -113,8 +204,8 @@ L:RegisterTranslations("zhTW", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
-mod.toggleoptions = {"darkness", "void", "humanoid", "bosskill"}
-mod.revision = tonumber(("$Revision: 66409 $"):sub(12, -3))
+mod.toggleoptions = {"phase", -1, "darkness", "void", "humanoid", "fiends", "enrage", "bosskill"}
+mod.revision = tonumber(("$Revision: 74408 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -122,7 +213,9 @@ mod.revision = tonumber(("$Revision: 66409 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Darkness", 45996)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Fiends", 45934)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Portals", 46177)
+	self:AddCombatListener("UNIT_DIED", "Deaths")
 
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "CheckForEngage")
@@ -136,30 +229,56 @@ end
 --      Event Handlers      --
 ------------------------------
 
-function mod:Darkness(player, spellID)
-	if not db.darkness then return end
-
-	if player == boss then
-		self:Bar(L["darkness_message"], 20, spellID)
-		self:IfMessage(L["darkness_message"]:format(player), "Urgent", spellID)
+function mod:Darkness(unit, spellID)
+	if unit == boss and db.darkness then
+		self:Bar(L["darkness"], 20, spellID)
+		self:IfMessage(L["darkness_message"]:format(unit), "Positive", spellID)
 		self:Bar(L["darkness_next"], 45, spellID)
-		self:DelayedMessage(40, L["darkness_soon"], "Attention")
-	else
-		inDark[player] = true
-		self:ScheduleEvent("BWMuruDark", self.DarkWarn, 0.4, self)
+		self:ScheduleEvent("DarknessWarn", "BigWigs_Message", 40, L["darkness_soon"], "Positive")
 	end
 end
 
-function mod:DarkWarn()
-	local msg = nil
-	for k in pairs(inDark) do
-		if not msg then
-			msg = k
-		else
-			msg = msg .. ", " .. k
+local last = 0
+function mod:Fiends()
+	local time = GetTime()
+	if (time - last) > 5 then
+		last = time
+		if db.fiends then
+			self:Message(L["fiends_message"], "Important", true, nil, nil, 45934)
 		end
 	end
-	self:IfMessage(L["darkness_message"]:format(msg), "Urgent", 45996)
+end
+
+function mod:Portals()
+	if not db.phase then return end
+
+	self:Message(L["phase2_message"], "Attention")
+	self:CancelScheduledEvent("VoidWarn")
+	self:CancelScheduledEvent("HumanoidWarn")
+	self:CancelScheduledEvent("Void")
+	self:CancelScheduledEvent("Humanoid")
+	self:CancelScheduledEvent("DarknessWarn")
+	self:TriggerEvent("BigWigs_StopBar", self, L["void_next"])
+	self:TriggerEvent("BigWigs_StopBar", self, L["humanoid_next"])
+	self:TriggerEvent("BigWigs_StopBar", self, L["darkness_next"])
+end
+
+function mod:Deaths(unit)
+	if unit == entropius then
+		self:GenericBossDeath(boss)
+	end
+end
+
+function mod:RepeatVoid()
+	self:Bar(L["void_next"], 30, 46087)
+	self:ScheduleEvent("VoidWarn", "BigWigs_Message", 25, L["void_soon"], "Attention")
+	self:ScheduleEvent("Void", self.RepeatVoid, 30, self)
+end
+
+function mod:RepeatHumanoid()
+	self:Bar(L["humanoid_next"], 60, 46087)
+	self:ScheduleEvent("HumanoidWarn", "BigWigs_Message", 55, L["humanoid_soon"], "Urgent")
+	self:ScheduleEvent("Humanoid", self.RepeatHumanoid, 60, self)
 end
 
 function mod:BigWigs_RecvSync(sync, rest, nick)
@@ -168,19 +287,21 @@ function mod:BigWigs_RecvSync(sync, rest, nick)
 		if self:IsEventRegistered("PLAYER_REGEN_DISABLED") then
 			self:UnregisterEvent("PLAYER_REGEN_DISABLED")
 		end
-		for k in pairs(inDark) do inDark[k] = nil end
 		if db.darkness then
 			self:Bar(L["darkness_next"], 45, 45996)
-			self:DelayedMessage(40, L["darkness_soon"], "Attention")
+			self:DelayedMessage(40, L["darkness_soon"], "Positive")
 		end
 		if db.void then
-			self:Bar(L["void_next"], 35, 46087)
-			self:DelayedMessage(30, L["void_soon"], "Positive")
+			self:Bar(L["void_next"], 30, 46087)
+			self:DelayedMessage(25, L["void_soon"], "Attention")
+			self:ScheduleEvent("Void", self.RepeatVoid, 30, self)
 		end
 		if db.humanoid then
-			self:Bar(L["humanoid_next"], 70, 46087)
-			self:DelayedMessage(65, L["void_soon"], "Positive")
+			self:Bar(L["humanoid_next"], 10, 46087)
+			self:ScheduleEvent("Humanoid", self.RepeatHumanoid, 10, self)
+		end
+		if db.enrage then
+			self:Enrage(600)
 		end
 	end
 end
-

@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 56068 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 73088 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2007-11-26 15:54:07 -0500 (Mon, 26 Nov 2007) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-05-08 07:48:10 -0400 (Thu, 08 May 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-ZoneInfo")
@@ -12,7 +12,7 @@ local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-ZoneIn
 L:AddTranslations("enUS", function() return {
 	["Zone Info"] = true,
 	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = true,
-	
+
 	["Instances"] = true,
 	["%d-man"] = true,
 } end)
@@ -20,7 +20,7 @@ L:AddTranslations("enUS", function() return {
 L:AddTranslations("koKR", function() return {
 	["Zone Info"] = "지역 정보",
 	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "해당 지역에 위치한 인던 및 참여할 수 있는 인원(예. 5명, 40명)등을 표시합니다.",
-	
+
 	["Instances"] = "인스턴스",
 	["%d-man"] = "%d명",
 } end)
@@ -28,7 +28,7 @@ L:AddTranslations("koKR", function() return {
 L:AddTranslations("deDE", function() return {
 	["Zone Info"] = "Zoneninfo",
 	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "Modul, das Euch zu jedem Gebiet die Stufe sowie vorhandene Instanzen mit deren Level und jeweiliger Begrenzung der Spielerzahl anzeigt.",
-	
+
 	["Instances"] = "Instanzen",
 	["%d-man"] = "%d Spieler",
 } end)
@@ -36,15 +36,15 @@ L:AddTranslations("deDE", function() return {
 L:AddTranslations("frFR", function() return {
 	["Zone Info"] = "Infos de zone",
 	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "Module affichant au passage de la souris sur une zone : la fourchette de niveaux de la zone, les instances s'y trouvant, leurs niveaux, et le nombre de joueurs que l'instance peut accueillir (par ex. 5j, 40j).",
-	
+
 	--["Instances"] = true,
 	["%d-man"] = "%dj",
 } end)
 
 L:AddTranslations("esES", function() return {
-	["Zone Info"] = "Informaci\195\179n de Zona",
-	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "M\195\179dulo que muestra los niveles e instancias de la zona y los niveles y n\195\186mero de hombres necesarios para las instancias (p.ej. 5-hombres, 40-hombres) cuando se pasa el cursor por encima",
-	
+	["Zone Info"] = "Información de la Zona",
+	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "Módulo que muestra los niveles e instancias de la zona y los niveles y número de hombres necesarios para las instancias (p.ej. 5-hombres, 40-hombres) cuando se pasa el cursor por encima.",
+
 	["Instances"] = "Instancias",
 	["%d-man"] = "%d-hombres",
 } end)
@@ -52,20 +52,20 @@ L:AddTranslations("esES", function() return {
 L:AddTranslations("zhTW", function() return {
 	["Zone Info"] = "地區資訊",
 	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "顯示游標所在地區資訊的模組，在世界地圖上顯示此地區的適合等級，此地區的副本和副本的人數限制 (例如: 5人、40人)。",
-	
+
 	["Instances"] = "副本",
 	["%d-man"] = "%d人",
 } end)
+
 L:AddTranslations("zhCN", function() return {
 	["Zone Info"] = "区域信息",
-	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "显示鼠标所指的区域信息, 在世界地图上显示该区域的适合等级, 该区域的副本及副本人数限制(例如5人, 40人).",
+	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "显示鼠标所指的区域信息, 在世界地图上显示该区域的适合等级，该区域的副本及副本人数限制（例如5人、40人）。",
 
 	["Instances"] = "副本",
 	["%d-man"] = "%d人",
 } end)
 
 local Tourist = Rock("LibTourist-3.0")
-local bs = Rock("LibBabble-Spell-3.0"):GetLookupTable()
 
 Cartographer_ZoneInfo = Cartographer:NewModule("ZoneInfo")
 local Cartographer_ZoneInfo = Cartographer_ZoneInfo
@@ -89,13 +89,13 @@ function Cartographer_ZoneInfo:OnInitialize()
 		},
 		handler = self,
 	}
-	
+
 end
 
 function Cartographer_ZoneInfo:OnEnable()
 	if not self.frame then
 		self.frame = CreateFrame("Frame", "CartographerZoneInfo", WorldMapFrame)
-		
+
 		self.frame.text = WorldMapFrameAreaFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightLarge")
 		local text = self.frame.text
 		local font, size = GameFontHighlightLarge:GetFont()
@@ -128,7 +128,7 @@ function WorldMapButton_OnUpdate(...)
 		lastZone = nil
 		return
 	end
-	
+
 	local underAttack = false
 	local zone = WorldMapFrameAreaLabel:GetText()
 	if zone then
@@ -168,13 +168,14 @@ function WorldMapButton_OnUpdate(...)
 			for i=1, numSkills do
 				local _, skillRank
 				skillName, _, _, skillRank, _, _, _, _, _, _, _, _, _ = GetSkillLineInfo(i);
-				if skillName == bs["Fishing"] then
+				local fishingSpell = GetSpellInfo(7620) -- 7620 Fishing
+				if skillName == fishingSpell then
 					local r,g,b = 1,1,0
 					local r1,g1,b1 = 1,0,0
 					if minFish < skillRank then
 						r1,g1,b1 = 0,1,0
 					end
-					fishing_skill_text = string.format("|cff%02x%02x%02x%s|r |cff%02x%02x%02x[%d]|r",r * 255, g * 255, b * 255,bs["Fishing"], r1 * 255, g1 * 255, b1 * 255, minFish)
+					fishing_skill_text = string.format("|cff%02x%02x%02x%s|r |cff%02x%02x%02x[%d]|r",r * 255, g * 255, b * 255,fishingSpell, r1 * 255, g1 * 255, b1 * 255, minFish)
 				end
 			end
 			if not fishing_skill_text then
@@ -200,7 +201,7 @@ function WorldMapButton_OnUpdate(...)
 			else
 				WorldMapFrameAreaDescription:SetText(string.gsub(WorldMapFrameAreaDescription:GetText(), " |cff.+$", "") .. levelText .. sizeText)
 			end
-		end		
+		end
 		if Tourist:DoesZoneHaveInstances(zone) then
 			if lastZone ~= zone then
 				lastZone = zone

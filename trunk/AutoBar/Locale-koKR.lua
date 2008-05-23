@@ -4,9 +4,8 @@
 -- Courtesy of Sayclub
 --
 
-local L = AceLibrary("AceLocale-2.2"):new("AutoBar")
-
-L:RegisterTranslations("koKR", function() return {
+if (GetLocale() == "koKR") then
+	AutoBar.locale = {
 		["AutoBar"] = "AutoBar",
 		["CONFIG_WINDOW"] = "설정 창",
 		["SLASHCMD_LONG"] = "/autobar",
@@ -18,18 +17,16 @@ L:RegisterTranslations("koKR", function() return {
 		["Toggle the config panel"] = "설정 패널 열기",
 		["Empty"] = "빈창",
 
-	-- Waterfall
-	["Macro Text"] = "매크로 이름",
-	["Show the button Macro Text"] = "버튼에 매크로 이름을 표시합니다.",
-	["Show Hotkey Text"] = "단축키 표시",
-	["Show Hotkey Text for %s"] = "%s|1을;를; 위해 단축키를 표시합니다.",
-	["Show Grid"] = "격자 표시",
-	["Show the grid of the bar even while locked."] = "바를 고정시키는 동안 격자를 표시합니다.",
+		-- Waterfall
 		["Alpha"] = "투명도",
 		["Change the alpha of the bar."] = "바의 투명도를 변경합니다.",
+		["Add Button"] = "버튼 추가",
 		["Align Buttons"] = "버튼 순서 정렬",
 		["Always Show"] = "항상 표시";
 		["Always Show %s, even if empty."] = "빈창을 포함하여, 항상 %s|1을;를; 표시합니다.";
+		["Announce to Party"] = "파티에 알림",
+		["Announce to Raid"] = "공격대에 알림",
+		["Announce to Say"] = "일반 알림",
 		["Bars"] = "바들",
 		["Battlegrounds only"] = "전장에서만",
 		["Button Width"] = "버튼 너비",
@@ -39,23 +36,32 @@ L:RegisterTranslations("koKR", function() return {
 		["Category"] = "카테고리",
 		["Categories"] = "카테고리",
 		["Categories for %s"] = "%s|1을;를; 위한 카테고리",
+		["Clamp Bars to screen"] = "화면에 바 고정",
+		["Clamped Bars can not be positioned off screen"] = "화면 밖으로 바가 벗어나지 않도록 고정시킵니다.",
 		["Collapse Buttons"] = "버튼 접기",
 		["Collapse Buttons that have nothing in them."] = "아무것도 등록되지 않은 버튼을 숨김니다.",
 		["Configuration for %s"] = "%s|1을;를; 위한 설정",
-		["Delete"] = "삭제",
+		["Delete this Custom Button completely"] = "이 사용자 버튼 삭제",
 		["Dialog"] = "Dialog",  -- Check
+		["Disable Conjure Button"] = "생성 버튼 비활성화",
 		["Docked to"] = "위치 변경",
+		["Done"] = "완료";
 		["Enabled"] = "사용",
 		["Enable %s."] = "%s|1을;를; 사용",
-		["No Popup"] = "팝업 없음";
-		["No Popup for %s"] = "%s|1을;를; 위한 팝업 없음";
-		["Show Count Text"] = "갯수 표시";
-		["Show Count Text for %s"] = "%s|1을;를; 위해 갯수를 표시합니다.";
-		["Show Empty Buttons"] = "빈 버튼들 표시";
-		["Show Empty Buttons for %s"] = "%s|1을;를; 위한 빈 버튼 표시";
-		["Number of columns for %s"] = "%s|1을;를; 위한 컬럼 숫자",
-		["FadeOut"] = "점점 사라짐",
-		["Fade out the Bar when not hovering over it."] = "바 위에 있지 않을때 점점 사라짐니다.",
+		["FadeOut"] = "투명화",
+		["Fade out the Bar when not hovering over it."] = "바 위에 오버하지 않을때 투명화게 만듭니다.",
+		["FadeOut Time"] = "투명화 시간",
+		["FadeOut takes this amount of time."] = "투명화 시간을 설정합니다.",
+		["FadeOut Alpha"] = "투명화 투명도",
+		["FadeOut stops at this Alpha level."] = "투명화 투명도 레벨을 설정합니다.",
+		["FadeOut Cancels in combat"] = "전투 상태시 투명화 취소",
+		["FadeOut is cancelled when entering combat."] = "전투 상태시 투명화가 취소됩니다.",
+		["FadeOut Cancels on Shift"] = "Shift키 입력시 투명화 취소",
+		["FadeOut is cancelled when holding down the Shift key."] = "Shift키 입력시 투명화가 취소됩니다.",
+		["FadeOut Cancels on Ctrl"] = "Ctrl키 입력시 투명화 취소",
+		["FadeOut is cancelled when holding down the Ctrl key."] = "Ctrl키 입력시 투명화가 취소됩니다.",
+		["FadeOut Cancels on Alt"] = "Alt키 입력시 투명화 취소",
+		["FadeOut is cancelled when holding down the Alt key."] = "Alt키 입력시 투명화가 취소됩니다.",
 		["Frame Level"] = "창 레벨",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "다른 UI 위나 아래에 나타나는 팝업 버튼 및 창의 레벨을 조정합니다.",
 		["General"] = "일반",
@@ -64,11 +70,20 @@ L:RegisterTranslations("koKR", function() return {
 		["Item"] = "아이템",
 		["Items"] = "아이템들",
 		["Location"] = "위치",
+		["Macro Text"] = "매크로 이름",
+		["Show the button Macro Text"] = "버튼에 매크로 이름을 표시합니다.",
 		["Medium"] = "매체",
 		["Name"] = "이름",
 		["New"] = "신규",
+		["New Macro"] = "신규 매크로",
+		["No Popup"] = "팝업 없음";
+		["No Popup for %s"] = "%s|1을;를; 위한 팝업 없음";
 		["Non Combat Only"] = "비전투시만",
 		["Not directly usable"] = "직접 사용 불가",
+		["Number of columns for %s"] = "%s|1을;를; 위한 컬럼 숫자",
+		["Dropdown UI"] = "Dropdown UI",
+		["Options GUI"] = "Options GUI",
+		["Skin the Buttons"] = "Skin the Buttons",
 		["Order"] = "순서",
 		["Change the order of %s in the Bar"] = "%s 바의 순서를 변경합니다.",
 		["Padding"] = "간격",
@@ -76,26 +91,59 @@ L:RegisterTranslations("koKR", function() return {
 		["Popup Direction"] = "팝업 위치",
 		["Refresh"] = "재실행",
 		["Refresh all the bars & buttons"] = "모든 바 & 버튼의 다시 읽습니다.",
+		["Remove"] = "제거",
+		["Remove this Button from the Bar"] = "바에서 이 버튼을 제거합니다.",
 		["Reset"] = "초기화",
 		["Reset Bars"] = "바 초기화",
+		["Reset everything to default values for all characters.  Custom Bars, Buttons and Categories remain unchanged."] = "모든 캐릭터를 위해 기본값으로 초기화 합니다. 사용자 바와 버튼, 카테고리는 변하지 않습니다.",
 		["Reset the Bars to default Bar settings"] = "바들의 설정을 기본값으로 초기화합니다.",
+		["Revert"] = "되돌리기";
+		["Right Click casts "] = "우 클릭 시전 ",
 		["Rows"] = "줄",
 		["Number of rows for %s"] = "%s|1을;를; 위한 줄의 숫자",
+		["RightClick SelfCast"] = "자신에게 시전 우클릭",
+		["SelfCast using Right click"] = "자신에게 시전을 우클릭으로 사용합니다.",
+		["Key Bindings"] = KEY_BINDINGS,
+		["Assign Bindings for Buttons on your Bars."] = "Assign Bindings for Buttons on your Bars.",
 		["Scale"] = "비율",
 		["Change the scale of the bar."] = "바의 비율을 변경합니다.",
+		["Shared Layout"] = "배치 공유",
+		["Share the Bar Visual Layout"] = "바의 시각적 배치를 공유합니다.",
+		["Shared Buttons"] = "버튼 공유",
+		["Share the Bar Button List"] = "바 버튼 목록을 공유합니다.",
+		["Shared Position"] = "위치 공유",
+		["Share the Bar Position"] = "바 위치를 공유합니다.",
 		["Shift Dock Left/Right"] = "좌/우 위치 변경",
 		["Shift Dock Up/Down"] = "상/하 위치 변경",
+		["Show Count Text"] = "갯수 표시";
+		["Show Count Text for %s"] = "%s|1을;를; 위해 갯수를 표시합니다.";
+		["Show Empty Buttons"] = "빈 버튼들 표시";
+		["Show Empty Buttons for %s"] = "%s|1을;를; 위한 빈 버튼 표시";
+		["Show Extended Tooltips"] = "Show Extended Tooltips";
+		["Show Hotkey Text"] = "단축키 표시",
+		["Show Hotkey Text for %s"] = "%s|1을;를; 위해 단축키를 표시합니다.",
+		["Show Tooltips"] = "툴팁 표시";
+		["Show Tooltips for %s"] = "%s|1을;를; 위해 툴팁을 표시합니다.";
+		["Show Tooltips in Combat"] = "전투중 툴팁 표시";
+		["Shuffle"] = "Shuffle",
+		["Shuffle replaces depleted items during combat with the next best item"] = "Shuffle replaces depleted items during combat with the next best item",
 		["Snap Bars while moving"] = "바를 움직이는 동안 스냅 고정",
 		["Sticky Frames"] = "접착 창",
 		["Style"] = "스타일",
-		["Change the style of the bar."] = "바의 스타일을 변경합니다.",
+		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "바의 스타일을 변경합니다. non-Blizzard 스타일을 위해 ButtonFacade가 필요합니다.",
 		["Targeted"] = "대상",
-		["Waterfall-1.0 is required to access the GUI."] = "Waterfall-1.0|1을;를; 사용하셔야 GUI 설정을 하실 수 있습니다.",
 		["<Any String>"] = "<모든 문자>",
 		["Move the Bars"] = "바 이동",
 		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "바를 이동시키기 위해 드래그합니다. 바를 숨기(빨강)거나 표시(녹색)하기 위해 좌클릭을 합니다. 바 설정을 위해 우클릭을 합니다.",
 		["Move the Buttons"] = "버튼 이동",
 		["Drag a Button to move it, right click to configure the Button."] = "버튼을 이동시키기 위해 드래그합니다. 버튼 설정을 위해 우클릭하세요.",
+
+		["{circle}"] = "{동그라미}",
+		["{diamond}"] = "{다이아몬드}",
+		["{skull}"] = "{해골}",
+		["{square}"] = "{square}",
+		["{star}"] = "{별}",
+		["{triangle}"] = "{세모}",
 
 		["TOPLEFT"] = "좌측 상단",
 		["LEFT"] = "좌측",
@@ -108,22 +156,21 @@ L:RegisterTranslations("koKR", function() return {
 		["BOTTOMRIGHT"] = "우측 하단",
 
 		-- AutoBarFuBar
-		["FuBarPlugin Config"] = "FuBar 플러그인 설정",
-		["Configure the FuBar Plugin"] = "FuBar 플러그인을 설정합니다.",
-		["Button lock"] = "버튼 잠금",
-		["Bar lock"] = "바 잠금",
-		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f더블-클릭|r GUI 설정 열기\n|cffeda55fShift-클릭|r 바 위치 토글",
-		["Waterfall-1.0 is required to access the GUI."] = "Waterfall-1.0|1을;를; 사용하셔야 GUI설정을 하실 수 있습니다.",
+--		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f더블-클릭|r GUI 설정창 열기.\n|cffeda55fCtrl-클릭|r 버튼 잠금 토글. |cffeda55fShift-클릭|r 바 자금 토글.",
 
-		["Self Casting"] = "자신에게 시전",
-		["Configure Self Casting options"] = "자신에게 시전 옵션 설정",
-		["Modifier SelfCast"] = "자신에게 시전 변경",
-		["SelfCast using the Interface SelfCast Modifier"] = "자신에게 시전 인터페이스의 자신에게 시전 변경 사용합니다.",
-		["RightClick SelfCast"] = "자신에게 시전 우클릭",
-		["SelfCast using Right click"] = "자신에게 시전을 우클릭으로 사용합니다.",
+		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
+		["Left-Click"] = "Left-Click",
+		["Right-Click"] = "Right-Click",
+		["Alt-Click"] = "Alt-Click",
+		["Ctrl-Click"] = "Ctrl-Click",
+		["Shift-Click"] = "Shift-Click",
+		["Ctrl-Shift-Click"] = "Ctrl-Shift-Click",
+		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade is required to Skin the Buttons",
+		["Waterfall-1.0 is required to access the GUI"] = "GUI 설정을 하기위해 Waterfall-1.0이 필요합니다",
 
 		-- Bar Names
 		["AutoBarClassBarBasic"] = "기본",
+		["AutoBarClassBarExtras"] = "추가",
 		["AutoBarClassBarDruid"] = "드루이드",
 		["AutoBarClassBarHunter"] = "사냥꾼",
 		["AutoBarClassBarMage"] = "마법사",
@@ -145,15 +192,17 @@ L:RegisterTranslations("koKR", function() return {
 		["AutoBarButtonBuff"] = "버프",
 		["AutoBarButtonBuffWeapon1"] = "주무기 버프",
 		["AutoBarButtonBuffWeapon2"] = "보조무기 버프",
+		["AutoBarButtonCharge"] = "Charge",
 		["AutoBarButtonClassBuff"] = "직업 버프",
 		["AutoBarButtonClassPet"] = "직업 소환수",
 		["AutoBarButtonConjure"] = "창조",
-		["AutoBarButtonCooldownPotionHealth"] = "물약 대시시간: 생명력",
-		["AutoBarButtonCooldownPotionMana"] = "물약 대시시간: 마나",
-		["AutoBarButtonCooldownPotionRejuvenation"] = "물약 대시시간: 회복",
-		["AutoBarButtonCooldownStoneHealth"] = "조각상 대시시간: 생명력",
-		["AutoBarButtonCooldownStoneMana"] = "조각상 대시시간: 마나",
-		["AutoBarButtonCooldownStoneRejuvenation"] = "조각상 대시시간: 회복",
+		["AutoBarButtonCooldownDrums"] = "대기시간: 북소리",
+		["AutoBarButtonCooldownPotionHealth"] = "물약 대기시간: 생명력",
+		["AutoBarButtonCooldownPotionMana"] = "물약 대기시간: 마나",
+		["AutoBarButtonCooldownPotionRejuvenation"] = "물약 대기시간: 회복",
+		["AutoBarButtonCooldownStoneHealth"] = "조각상 대기시간: 생명력",
+		["AutoBarButtonCooldownStoneMana"] = "조각상 대기시간: 마나",
+		["AutoBarButtonCooldownStoneRejuvenation"] = "조각상 대기시간: 회복",
 		["AutoBarButtonCrafting"] = "보석세공",
 		["AutoBarButtonElixirBattle"] = "전투 비약",
 		["AutoBarButtonElixirGuardian"] = "강화 비약",
@@ -177,6 +226,7 @@ L:RegisterTranslations("koKR", function() return {
 		["AutoBarButtonPets"] = "소환수들",
 		["AutoBarButtonQuest"] = "퀘스트",
 		["AutoBarButtonRecovery"] = "마나 / 분노 / 기력",
+		["AutoBarButtonRotationDrums"] = "회전: 북소리",
 		["AutoBarButtonSpeed"] = "속도",
 		["AutoBarButtonStance"] = "태세",
 		["AutoBarButtonStealth"] = "은신",
@@ -187,8 +237,9 @@ L:RegisterTranslations("koKR", function() return {
 		["AutoBarButtonTotemWater"] = "물의 토템",
 		["AutoBarButtonTrack"] = "추적",
 		["AutoBarButtonTrap"] = "덫",
-		["AutoBarButtonTrinket1"] = "장신구1",
-		["AutoBarButtonTrinket2"] = "장신구2",
+		["AutoBarButtonTrinket1"] = "장신구 1",
+		["AutoBarButtonTrinket2"] = "장신구 2",
+		["AutoBarButtonWarlockStones"] = "흑마법사 석 창조",
 		["AutoBarButtonWater"] = "음료수",
 		["AutoBarButtonWaterBuff"] = "음료 버프",
 
@@ -199,23 +250,22 @@ L:RegisterTranslations("koKR", function() return {
 		["AutoBarButtonFlight"] = "폭풍까마귀",
 		["AutoBarButtonNormal"] = "보통",
 
-
 		-- AutoBarClassButton.lua
 		["Num Pad "] = "숫자패드 ",
 		["Mouse Button "] = "마우스 버튼 ",
-		["Middle Mouse"] = "마우스 가운데 버튼",
-		["Backspace"] = "Backspace",
-		["Spacebar"] = "스페이스 바",
-		["Delete"] = "Delete",
-		["Home"] = "Home",
-		["End"] = "End",
-		["Insert"] = "Insert",
-		["Page Up"] = "Page Up",
-		["Page Down"] = "Page Down",
-		["Down Arrow"] = "아래 화살표",
-		["Up Arrow"] = "위 화살표",
-		["Left Arrow"] = "왼쪽 화살표",
-		["Right Arrow"] = "오른쪽 화살표",
+		["Middle Mouse"] = KEY_BUTTON3,
+		["Backspace"] = KEY_BACKSPACE,
+		["Spacebar"] = KEY_SPACE,
+		["Delete"] = KEY_DELETE,
+		["Home"] = KEY_HOME,
+		["End"] = KEY_END,
+		["Insert"] = KEY_INSERT,
+		["Page Up"] = KEY_PAGEUP,
+		["Page Down"] = KEY_PAGEDOWN,
+		["Down Arrow"] = KEY_DOWN,
+		["Up Arrow"] = KEY_UP,
+		["Left Arrow"] = KEY_LEFT,
+		["Right Arrow"] = KEY_RIGHT,
 		["|c00FF9966C|r"] = "|c00FF9966C|r",
 		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["|c009966CCA|r"] = "|c009966CCA|r",
@@ -243,19 +293,16 @@ L:RegisterTranslations("koKR", function() return {
 		["Dreamlayout"] = "Dreamlayout",
 		["AUTOBAR_CONFIG_DISABLERIGHTCLICKSELFCAST"] = "우 클릭시 자신에게 시전 안함";
 		["AUTOBAR_CONFIG_REMOVECAT"] = "현재 카테고리 삭제";
-		["Rows"] = "줄";
 		["Columns"] = "컬럼";
 		["AUTOBAR_CONFIG_GAPPING"] = "아이콘 간격";
 		["AUTOBAR_CONFIG_ALPHA"] = "아이콘 투명도";
 		["AUTOBAR_CONFIG_WIDTHHEIGHTUNLOCKED"] = "버튼 높이 및 너비\n동시 변경 해제";
 		["AUTOBAR_CONFIG_SHOWCATEGORYICON"] = "카테고리 아이콘 표시";
-		["Show Tooltips"] = "툴팁 표시";
-		["Show Tooltips for %s"] = "%s|1을;를; 위해 툴팁을 표시합니다.";
 		["AUTOBAR_CONFIG_POPUPONSHIFT"] = "Shift 키 팝업";
 		["Rearrange Order on Use"] = "사용 순서 재배치";
 		["Rearrange Order on Use for %s"] = "%s|1을;를; 위해 사용 순서를 재배치합니다.";
 		["Right Click Targets Pet"] = "우 클릭시 대상의 소환수";
-		["AUTOBAR_CONFIG_DOCKTONONE"] = "없음";
+		["None"] = "없음";
 		["AUTOBAR_CONFIG_BT3BAR"] = "BarTender3 바";
 		["AUTOBAR_CONFIG_DOCKTOMAIN"] = "메인 메뉴";
 		["AUTOBAR_CONFIG_DOCKTOCHATFRAME"] = "대화 창";
@@ -265,8 +312,9 @@ L:RegisterTranslations("koKR", function() return {
 		["AUTOBAR_CONFIG_NOTFOUND"] = "(찾을수 없음 : 아이템 ";
 		["AUTOBAR_CONFIG_SLOTEDITTEXT"] = " 배치 (편집 클릭)";
 		["AUTOBAR_CONFIG_CHARACTER"] = "캐릭터";
-		["AUTOBAR_CONFIG_SHARED"] = "공유";
-		["AUTOBAR_CONFIG_CLASS"] = "직업";
+		["Shared"] = "공유";
+		["Account"] = "계정";
+		["Class"] = "직업";
 		["AUTOBAR_CONFIG_BASIC"] = "기본";
 		["AUTOBAR_CONFIG_USECHARACTER"] = "캐릭터 배치 사용";
 		["AUTOBAR_CONFIG_USESHARED"] = "공유 배치 사용";
@@ -274,6 +322,7 @@ L:RegisterTranslations("koKR", function() return {
 		["AUTOBAR_CONFIG_USEBASIC"] = "기본 배치 사용";
 		["AUTOBAR_CONFIG_HIDECONFIGTOOLTIPS"] = "설정 툴팁 숨김";
 		["AUTOBAR_CONFIG_OSKIN"] = "oSkin 사용";
+		["Log Events"] = "Log Events";
 		["Log Performance"] = "기록 실행";
 		["AUTOBAR_CONFIG_CHARACTERLAYOUT"] = "캐릭터 배치";
 		["AUTOBAR_CONFIG_SHAREDLAYOUT"] = "공유 배치";
@@ -285,11 +334,13 @@ L:RegisterTranslations("koKR", function() return {
 		["AUTOBAR_CONFIG_EDITSHARED"] = "공유 배치 편집";
 		["AUTOBAR_CONFIG_EDITCLASS"] = "직업 배치 편집";
 		["AUTOBAR_CONFIG_EDITBASIC"] = "기본 배치 편집";
+		["Share the config"] = "Share the config";
 
 		-- AutoBarCategory
 		["Misc.Engineering.Fireworks"] = "폭죽",
 		["Tradeskill.Tool.Fishing.Lure"] = "낚시 미끼",
 		["Tradeskill.Tool.Fishing.Gear"] = "낚시 기어",
+		["Tradeskill.Tool.Fishing.Other"] = "낚시 물건",
 		["Tradeskill.Tool.Fishing.Tool"] = "낚싯대",
 
 		["Consumable.Food.Bonus"] = "음식: 모든 증가 음식";
@@ -331,9 +382,10 @@ L:RegisterTranslations("koKR", function() return {
 		["Consumable.Buff.Shield"] = "버프: 방패";
 		["Consumable.Weapon Buff"] = "버프: 무기";
 
-		["Misc.Usable.Permanent"] = "계속 사용 가능한 아이템";  -- Permanently Usable Items
-		["Misc.Usable.Quest"] = "사용 가능한 퀘스트 아이템";  -- "Usable Quest Items"
-		["Misc.Usable.Replenished"] = "보충된 아이템";  -- Replenished Items
+		["Misc.Usable.BossItem"] = "Boss Items";
+		["Misc.Usable.Permanent"] = "계속 사용 가능한 아이템";
+		["Misc.Usable.Quest"] = "사용 가능한 퀘스트 아이템";
+		["Misc.Usable.Replenished"] = "보충된 아이템";
 
 		["Consumable.Cooldown.Potion.Health.Basic"] = "치유 물약";
 		["Consumable.Cooldown.Potion.Health.Blades Edge"] = "치유 물약: 칼날 산맥";
@@ -364,6 +416,8 @@ L:RegisterTranslations("koKR", function() return {
 		["Consumable.Food.Edible.Basic.Non-Conjured"] = "음식: 증가 없음";
 		["Consumable.Food.Percent.Basic"] = "음식: % 생명력 회복";
 		["Consumable.Food.Percent.Bonus"] = "음식: % 생명력 회복 (버프)";
+		["Consumable.Food.Edible.Combo.Non-Conjured"] = "음식: 생명력 & 마나 회복, 비-창조";
+		["Consumable.Food.Edible.Combo.Conjured"] = "음식: 생명력 & 마나 회복, 창조";
 		["Consumable.Food.Combo Percent"] = "음식: % 생명력 & 마나 회복";
 		["Consumable.Food.Combo Health"] = "음식 & 음료 동시";
 		["Consumable.Food.Edible.Bread.Conjured"] = "음식: 마법사 창조";
@@ -387,16 +441,22 @@ L:RegisterTranslations("koKR", function() return {
 
 		["Consumable.Anti-Venom"] = "해독제";
 
+		["Consumable.Warlock.Firestone"] = "화염석";
+		["Consumable.Warlock.Soulstone"] = "영혼석";
+		["Consumable.Warlock.Spellstone"] = "주문석";
 		["Consumable.Cooldown.Stone.Health.Warlock"] = "생명석";
 		["Spell.Warlock.Create Firestone"] = "화염석 창조";
 		["Spell.Warlock.Create Healthstone"] = "생명석 창조";
 		["Spell.Warlock.Create Soulstone"] = "영혼석 창조";
 		["Spell.Warlock.Create Spellstone"] = "주문석 창조";
 		["Consumable.Cooldown.Stone.Mana.Mana Stone"] = "마나석";
-		["Consumable.Mage.Conjure Mana Stone"] = "마나석 창조";
+		["Spell.Mage.Conjure Mana Stone"] = "마나석 창조";
 		["Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep"] = "숙면의 물약";
 		["Consumable.Cooldown.Potion.Rejuvenation"] = "회복 물약";
 		["Consumable.Cooldown.Stone.Health.Statue"] = "돌 조각상";
+		["Consumable.Cooldown.Drums"] = "대기시간: 북소리";
+		["Consumable.Cooldown.Potion"] = "대기시간: 물약";
+		["Consumable.Cooldown.Stone"] = "대기시간: 석";
 		["Consumable.Leatherworking.Drums"] = "북소리";
 		["Consumable.Tailor.Net"] = "그물";
 
@@ -445,40 +505,21 @@ L:RegisterTranslations("koKR", function() return {
 		["Consumable.Buff.Speed"] = "버프: 신속의 물약";
 		["Consumable.Buff Type.Battle"] = "버프: 전투 비약";
 		["Consumable.Buff Type.Guardian"] = "버프: 강화 비약";
-		["Consumable.Buff Type.Both"] = "버프: 전투와 강화 비약";
+		["Consumable.Buff Type.Flask"] = "버프: 영약";
 		["AUTOBAR_CLASS_SOULSHARDS"] = "영혼석";
-		["Reagent.Ammo.Arrow"] = "화살";
-		["Reagent.Ammo.Bullet"] = "탄환";
-		["Reagent.Ammo.Thrown"] = "투척 무기류";
+		["Misc.Reagent.Ammo.Arrow"] = "화살";
+		["Misc.Reagent.Ammo.Bullet"] = "탄환";
+		["Misc.Reagent.Ammo.Thrown"] = "투척 무기류";
 		["Misc.Explosives"] = "폭발물";
 		["Misc.Mount.Normal"] = "탈것";
 		["Misc.Mount.Summoned"] = "탈것: 소환";
 		["Misc.Mount.Ahn'Qiraj"] = "탈것: 안퀴라즈";
 		["Misc.Mount.Flying"] = "탈것: 비행";
-
-		["Revert"] = "되돌리기";
-		["Done"] = "완료";
 	}
-end);
-
-
-if (GetLocale()=="koKR") then
 
 --AUTOBAR_CHAT_MESSAGE1 = "이 캐릭터에 대한 전 버전의 설정값이 있습니다. 삭제하십시오. 설정 업데이트를 시도하지 않고 있습니다.";
---AUTOBAR_CHAT_MESSAGE2 = "아이템 이름 대신 아이템의 ID를 이용하기 위해, 복수 아이템 버튼 #%d를 #%d로 변경합니다.";
---AUTOBAR_CHAT_MESSAGE3 = "아이템 이름 대신 아이템의 ID를 이용하기 위해, 단일 아이템 버튼 #%d로 변경합니다.";
 --
 ----  AutoBar_Config.xml
---AUTOBAR_CONFIG_VIEWTEXT = "슬롯을 편집하려면 슬롯 탭의 아래에 슬롯 편집 섹션에서 선택합니다.";
---AUTOBAR_CONFIG_SLOTVIEWTEXT = "결합된 계층 보기 (편집 불가)";
---AUTOBAR_CONFIG_DETAIL_CATEGORIES = "(Shift 클릭 : 카테고리 조사)";
---AUTOBAR_CONFIG_DRAGHANDLE = "위치 이동 : 마우스 좌 클릭후 끌기\n잠금/해제 : 마우스 좌 클릭\n옵션 : 마우스 우 클릭";
---AUTOBAR_CONFIG_EMPTYSLOT = "빈 슬롯";
---AUTOBAR_CONFIG_CLEARSLOT = "슬롯 비움";
---AUTOBAR_CONFIG_SETSHARED = "공유 프로파일:";
---AUTOBAR_CONFIG_SETSHAREDTIP = "사용할 공유 프로파일을 선택하세요.\n공유된 프로파일에 대한 변화는 그것을 사용하고 있는 모든 캐릭터에게 영향을 줍니다.";
---
---AUTOBAR_CONFIG_TAB_SLOTS = "슬롯";
 --AUTOBAR_CONFIG_TAB_BAR = "바";
 --AUTOBAR_CONFIG_TAB_POPUP = "팝업";
 --AUTOBAR_CONFIG_TAB_PROFILE = "프로파일";
@@ -489,15 +530,6 @@ if (GetLocale()=="koKR") then
 --AUTOBAR_TOOLTIP6 = " [제한된 사용]";
 --AUTOBAR_TOOLTIP7 = " [재사용]";
 AUTOBAR_TOOLTIP8 = "\n(주 무기에 적용 좌 클릭\n보조 무기에 적용 우 클릭)";
---
---AUTOBAR_CONFIG_USECHARACTERTIP = "캐릭터 계층 아이템은 이 캐릭터에만 특별히 적용합니다.";
---AUTOBAR_CONFIG_USESHAREDTIP = "공유되는 계층 아이템이 똑같은 공유 계층을 사용하는 다른 캐릭터에 의하여 함께 공유됩니다.\n특정한 계층은 프로파일 탭 위에 선택될 수 있습니다.";
---AUTOBAR_CONFIG_USECLASSTIP = "직업 계층 아이템이 직업 계층을 사용하는 똑같은 직업의 모든 캐릭터에 의하여 함께 공유됩니다.";
---AUTOBAR_CONFIG_USEBASICTIP = "기본 계층 아이템이 모든 캐릭터에 의하여 기본 계층을 사용하면서 함께 공유됩니다.";
---AUTOBAR_CONFIG_CHARACTERLAYOUTTIP = "시각적인 배치에 대한 변경은 이 캐릭터에 영향을 줍니다.";
---AUTOBAR_CONFIG_SHAREDLAYOUTTIP = "시각적인 배치에 대한 변경은 같이 공유되는 프로파일을 사용하고 있는 모든 캐릭터들에 영향을 줍니다.";
---AUTOBAR_CONFIG_TIPOVERRIDE = "이 계층 위의 슬롯 아이템은 더 낮은 계층 위의 그 슬롯의 아이템 위로 올라갑니다.\n";
---AUTOBAR_CONFIG_TIPOVERRIDDEN = "이 계층 위의 슬롯 아이템은 더 높은 계층 위의 아이템에 의하여 아래로 내려갑니다.\n";
 --AUTOBAR_CONFIG_TIPAFFECTSCHARACTER = "변경은 현재 캐릭터만 영향을 줍니다.";
 --AUTOBAR_CONFIG_TIPAFFECTSALL = "변경은 모든 캐릭터에 영향을 줍니다.";
 --AUTOBAR_CONFIG_SETUPSINGLE = "싱글 구성";
@@ -524,6 +556,5 @@ AUTOBAR_TOOLTIP18 = "\n전투시만";
 --AUTOBAR_TOOLTIP20 = "\n제한된 사용: "
 --AUTOBAR_TOOLTIP21 = "체력 회복 요구";
 --AUTOBAR_TOOLTIP22 = "마나 회복 요구";
---AUTOBAR_TOOLTIP23 = "단일 아이템 버튼\n\n";
 
 end

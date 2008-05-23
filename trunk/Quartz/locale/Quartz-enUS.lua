@@ -103,6 +103,7 @@ L:RegisterTranslations("enUS", function()
 		["Hide Samwise Icon"] = true,
 		["Show for Friends"] = true,
 		["Show for Enemies"] = true,
+		["Show if Target"] = true,
 		["Target Name"] = true,
 		["Display target name of spellcasts after spell name"] = true,
 		
@@ -208,6 +209,7 @@ L:RegisterTranslations("enUS", function()
 		["Hide the icon for spells with no icon"] = true,
 		["Show this castbar for friendly units"] = true,
 		["Show this castbar for hostile units"] = true,
+		["Show this castbar if focus is also target"] = true,
 		["Set an exact X value for this bar's position."] = true,
 		["Set an exact Y value for this bar's position."] = true,
 		

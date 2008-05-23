@@ -1,12 +1,31 @@
 
 -- RecipeData.lua: all recipes organized by profession
--- Auto generated on 10/10/2007 10:09:51 AM
+-- Auto generated on 4/7/2008 11:41:53 PM
 
 RecipeRadar_RecipeData = {
 
 
 [RRS("Alchemy")] = {
    Recipes = {
+      {
+         ID = 13477,
+         Type = RRS("Alchemy"),
+         Skill = 260,
+         Cost = 10000,
+         Locations = {
+            { Region = RRS("Darnassus"), Vendor = RRS("Ulthir"), Team = "Alliance" },
+         },
+      },
+      {
+         ID = 13478,
+         Type = RRS("Alchemy"),
+         Skill = 265,
+         Cost = 10000,
+         Locations = {
+            { Region = RRS("Ironforge"), Vendor = RRS("Soolie Berryfizz"), Team = "Alliance" },
+            { Region = RRS("Orgrimmar"), Vendor = RRS("Kor'geld"), Team = "Horde" },
+         },
+      },
       {
          ID = 5640,
          Type = RRS("Alchemy"),
@@ -52,16 +71,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 6054,
-         Type = RRS("Alchemy"),
-         Skill = 135,
-         Cost = 900,
-         Locations = {
-            { Region = RRS("Ashenvale"), Vendor = RRS("Harklan Moongrove"), Team = "Alliance" },
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Christoph Jeffcoat"), Team = "Horde" },
-         },
-      },
-      {
          ID = 6055,
          Type = RRS("Alchemy"),
          Skill = 165,
@@ -91,26 +100,6 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Feralas"), Vendor = RRS("Bronk"), Team = "Horde" },
             { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Glyx Brewright"), Team = "Neutral" },
             { Region = RRS("Tanaris"), Vendor = RRS("Alchemist Pestlezugg"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 6068,
-         Type = RRS("Alchemy"),
-         Skill = 165,
-         Cost = 1500,
-         Locations = {
-            { Region = RRS("Thousand Needles"), Vendor = RRS("Montarr"), Team = "Horde" },
-            { Region = RRS("Duskwood"), Vendor = RRS("Bliztik"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 9296,
-         Type = RRS("Alchemy"),
-         Skill = 240,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Skeletal Flayer"), Team = "Hostile" },
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Slavering Ghoul"), Team = "Hostile" },
          },
       },
       {
@@ -144,10 +133,48 @@ RecipeRadar_RecipeData = {
          },
       },
       {
+         ID = 6068,
+         Type = RRS("Alchemy"),
+         Skill = 165,
+         Cost = 1500,
+         Locations = {
+            { Region = RRS("Thousand Needles"), Vendor = RRS("Montarr"), Team = "Horde" },
+            { Region = RRS("Duskwood"), Vendor = RRS("Bliztik"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 6054,
+         Type = RRS("Alchemy"),
+         Skill = 135,
+         Cost = 900,
+         Locations = {
+            { Region = RRS("Ashenvale"), Vendor = RRS("Harklan Moongrove"), Team = "Alliance" },
+            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Christoph Jeffcoat"), Team = "Horde" },
+         },
+      },
+      {
+         ID = 14634,
+         Type = RRS("Alchemy"),
+         Skill = 200,
+         Cost = 2500,
+         Locations = {
+            { Region = RRS("Alterac Mountains"), Vendor = RRS("Bro'kin"), Team = "Neutral" },
+         },
+      },
+      {
          ID = 9303,
          Type = RRS("Alchemy"),
          Skill = 225,
          Cost = 8000,
+         Locations = {
+            { Region = RRS("Tanaris"), Vendor = RRS("Alchemist Pestlezugg"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 12958,
+         Type = RRS("Alchemy"),
+         Skill = 275,
+         Cost = 50000,
          Locations = {
             { Region = RRS("Tanaris"), Vendor = RRS("Alchemist Pestlezugg"), Team = "Neutral" },
          },
@@ -171,31 +198,21 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 12958,
+         ID = 13501,
+         Type = RRS("Alchemy"),
+         Skill = 295,
+         Cost = 30000,
+         Locations = {
+            { Region = RRS("Western Plaguelands"), Vendor = RRS("Magnus Frostwake"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 13483,
          Type = RRS("Alchemy"),
          Skill = 275,
-         Cost = 50000,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Alchemist Pestlezugg"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 13477,
-         Type = RRS("Alchemy"),
-         Skill = 260,
          Cost = 10000,
          Locations = {
-            { Region = RRS("Darnassus"), Vendor = RRS("Ulthir"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 13478,
-         Type = RRS("Alchemy"),
-         Skill = 265,
-         Cost = 10000,
-         Locations = {
-            { Region = RRS("Ironforge"), Vendor = RRS("Soolie Berryfizz"), Team = "Alliance" },
-            { Region = RRS("Orgrimmar"), Vendor = RRS("Kor'geld"), Team = "Horde" },
+            { Region = RRS("Blackrock Depths"), Vendor = RRS("Plugger Spazzring"), Team = "Neutral" },
          },
       },
       {
@@ -209,15 +226,6 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Tirisfal Glades"), Vendor = RRS("Argent Quartermaster Hasana"), Team = "Neutral" },
             { Region = RRS("Western Plaguelands"), Vendor = RRS("Argent Quartermaster Lightspark"), Team = "Neutral" },
             { Region = RRS("Eastern Plaguelands"), Vendor = RRS("Quartermaster Miranda Breechlock"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 13483,
-         Type = RRS("Alchemy"),
-         Skill = 275,
-         Cost = 10000,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Plugger Spazzring"), Team = "Neutral" },
          },
       },
       {
@@ -241,115 +249,14 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 13491,
+         ID = 20013,
          Type = RRS("Alchemy"),
-         Skill = 280,
-         Cost = 0,
+         Skill = 285,
+         Cost = 50000,
+         Faction = RRS("Zandalar Tribe"),
+         Level = 8,
          Locations = {
-            { Region = RRS("Felwood"), Vendor = RRS("Jadefire Rogue"), Team = "Hostile" },
-            { Region = RRS("Azshara"), Vendor = RRS("Legashi Rogue"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13494,
-         Type = RRS("Alchemy"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Firebrand Invoker"), Team = "Hostile" },
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Firebrand Pyromancer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13495,
-         Type = RRS("Alchemy"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Frostmaul Giant"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13496,
-         Type = RRS("Alchemy"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Rotting Behemoth"), Team = "Hostile" },
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Decaying Horror"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13497,
-         Type = RRS("Alchemy"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Cobalt Mageweaver"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13499,
-         Type = RRS("Alchemy"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Eastern Plaguelands"), Vendor = RRS("Shadowmage"), Team = "Hostile" },
-            { Region = RRS("Eastern Plaguelands"), Vendor = RRS("Dark Adept"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13501,
-         Type = RRS("Alchemy"),
-         Skill = 295,
-         Cost = 30000,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Magnus Frostwake"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 13519,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("General Drakkisath"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13520,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Balnazzar"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13521,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Scholomance"), Vendor = RRS("Ras Frostwhisper"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 13522,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Gyth"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14634,
-         Type = RRS("Alchemy"),
-         Skill = 200,
-         Cost = 2500,
-         Locations = {
-            { Region = RRS("Alterac Mountains"), Vendor = RRS("Bro'kin"), Team = "Neutral" },
+            { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Rin'wosho the Trader"), Team = "Neutral" },
          },
       },
       {
@@ -359,28 +266,6 @@ RecipeRadar_RecipeData = {
          Cost = 50000,
          Faction = RRS("Zandalar Tribe"),
          Level = 7,
-         Locations = {
-            { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Rin'wosho the Trader"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 20012,
-         Type = RRS("Alchemy"),
-         Skill = 275,
-         Cost = 50000,
-         Faction = RRS("Zandalar Tribe"),
-         Level = 5,
-         Locations = {
-            { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Rin'wosho the Trader"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 20013,
-         Type = RRS("Alchemy"),
-         Skill = 285,
-         Cost = 50000,
-         Faction = RRS("Zandalar Tribe"),
-         Level = 8,
          Locations = {
             { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Rin'wosho the Trader"), Team = "Neutral" },
          },
@@ -397,6 +282,17 @@ RecipeRadar_RecipeData = {
          },
       },
       {
+         ID = 20012,
+         Type = RRS("Alchemy"),
+         Skill = 275,
+         Cost = 50000,
+         Faction = RRS("Zandalar Tribe"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Rin'wosho the Trader"), Team = "Neutral" },
+         },
+      },
+      {
          ID = 20761,
          Type = RRS("Alchemy"),
          Skill = 300,
@@ -405,17 +301,6 @@ RecipeRadar_RecipeData = {
          Level = 5,
          Locations = {
             { Region = RRS("Blackrock Depths"), Vendor = RRS("Lokhtos Darkbargainer"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 21547,
-         Type = RRS("Alchemy"),
-         Skill = 250,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Searing Gorge"), Vendor = RRS("Dark Iron Taskmaster"), Team = "Hostile" },
-            { Region = RRS("Searing Gorge"), Vendor = RRS("Dark Iron Slaver"), Team = "Hostile" },
-            { Region = RRS("Searing Gorge"), Vendor = RRS("Dark Iron Watchman"), Team = "Hostile" },
          },
       },
       {
@@ -429,14 +314,13 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 22906,
+         ID = 22909,
          Type = RRS("Alchemy"),
-         Skill = 335,
-         Cost = 0,
-         Faction = RRS("Sporeggar"),
-         Level = 8,
+         Skill = 345,
+         Cost = 50000,
          Locations = {
-            { Region = RRS("Zangarmarsh"), Vendor = RRS("Mycah"), Team = "Neutral" },
+            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Daga Ramba"), Team = "Horde" },
+            { Region = RRS("Zangarmarsh"), Vendor = RRS("Haalrun"), Team = "Alliance" },
          },
       },
       {
@@ -461,16 +345,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 22909,
-         Type = RRS("Alchemy"),
-         Skill = 345,
-         Cost = 50000,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Daga Ramba"), Team = "Horde" },
-            { Region = RRS("Zangarmarsh"), Vendor = RRS("Haalrun"), Team = "Alliance" },
-         },
-      },
-      {
          ID = 22910,
          Type = RRS("Alchemy"),
          Skill = 350,
@@ -479,6 +353,61 @@ RecipeRadar_RecipeData = {
          Level = 7,
          Locations = {
             { Region = RRS("Shattrath City"), Vendor = RRS("Nakodu"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 31357,
+         Type = RRS("Alchemy"),
+         Skill = 300,
+         Cost = 40000,
+         Faction = RRS("Lower City"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Shattrath City"), Vendor = RRS("Nakodu"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 31356,
+         Type = RRS("Alchemy"),
+         Skill = 300,
+         Cost = 40000,
+         Faction = RRS("Cenarion Expedition"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Zangarmarsh"), Vendor = RRS("Fedryen Swiftspear"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 31355,
+         Type = RRS("Alchemy"),
+         Skill = 300,
+         Cost = 40000,
+         Faction = RRS("Keepers of Time"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Tanaris"), Vendor = RRS("Alurmi"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 31354,
+         Type = RRS("Alchemy"),
+         Skill = 300,
+         Cost = 40000,
+         Faction = RRS("The Sha'tar"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Shattrath City"), Vendor = RRS("Almaador"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 22906,
+         Type = RRS("Alchemy"),
+         Skill = 335,
+         Cost = 0,
+         Faction = RRS("Sporeggar"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Zangarmarsh"), Vendor = RRS("Mycah"), Team = "Neutral" },
          },
       },
       {
@@ -504,61 +433,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 22920,
-         Type = RRS("Alchemy"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Mechanar"), Vendor = RRS("Nethermancer Sepethrea"), Team = "Hostile" },
-            { Region = RRS("The Mechanar"), Vendor = RRS("Sunseeker Astromage"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22921,
-         Type = RRS("Alchemy"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Mana-Tombs"), Vendor = RRS("Nexus-Prince Shaffar"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22923,
-         Type = RRS("Alchemy"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Nagrand"), Vendor = RRS("Vir'aani Arcanist"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22924,
-         Type = RRS("Alchemy"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Shadow Council Warlock"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22925,
-         Type = RRS("Alchemy"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Abyssal Flamebringer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22927,
-         Type = RRS("Alchemy"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Old Hillsbrad Foothills"), Vendor = RRS("Captain Skarloc"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 30443,
          Type = RRS("Alchemy"),
          Skill = 350,
@@ -567,74 +441,6 @@ RecipeRadar_RecipeData = {
          Level = 7,
          Locations = {
             { Region = RRS("Nagrand"), Vendor = RRS("Trader Narasu"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 31354,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 40000,
-         Faction = RRS("The Sha'tar"),
-         Level = 8,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("Almaador"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 31355,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 40000,
-         Faction = RRS("Keepers of Time"),
-         Level = 8,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Alurmi"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 31356,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 40000,
-         Faction = RRS("Cenarion Expedition"),
-         Level = 8,
-         Locations = {
-            { Region = RRS("Zangarmarsh"), Vendor = RRS("Fedryen Swiftspear"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 31357,
-         Type = RRS("Alchemy"),
-         Skill = 300,
-         Cost = 40000,
-         Faction = RRS("Lower City"),
-         Level = 8,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("Nakodu"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 31680,
-         Type = RRS("Alchemy"),
-         Skill = 335,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Terrormaster"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Shadow Council Warlock"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Mo'arg Weaponsmith"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Wrathwalker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 31681,
-         Type = RRS("Alchemy"),
-         Skill = 345,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Deathforge Imp"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Deathforge Guardian"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Deathforge Tinkerer"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Deathforge Smith"), Team = "Hostile" },
          },
       },
       {
@@ -781,23 +587,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 31682,
-         Type = RRS("Alchemy"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Torloth the Magnificent"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Spellbinder"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Blood Knight"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Soldier"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Bloodwarder"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Illidari Watcher"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Archmage"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Centurion"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Cavalier"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 32070,
          Type = RRS("Alchemy"),
          Skill = 320,
@@ -829,39 +618,55 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Deadwind Pass"), Vendor = RRS("Apprentice Darius"), Team = "Neutral" },
          },
       },
+      {
+         ID = 35755,
+         Type = RRS("Alchemy"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35752,
+         Type = RRS("Alchemy"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35754,
+         Type = RRS("Alchemy"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35753,
+         Type = RRS("Alchemy"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
    },
 },
 
 [RRS("Blacksmithing")] = {
    Recipes = {
-      {
-         ID = 11610,
-         Type = RRS("Blacksmithing"),
-         Skill = 265,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Grizzle"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11611,
-         Type = RRS("Blacksmithing"),
-         Skill = 275,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Ribbly's Crony"), Team = "Hostile" },
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Hammered Patron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11612,
-         Type = RRS("Blacksmithing"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Ribbly Screwspigot"), Team = "Hostile" },
-         },
-      },
       {
          ID = 12162,
          Type = RRS("Blacksmithing"),
@@ -881,88 +686,6 @@ RecipeRadar_RecipeData = {
          Locations = {
             { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Vharr"), Team = "Horde" },
             { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Jaquilina Dramet"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 12706,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Dustwallow Marsh"), Vendor = RRS("Strashaz Serpent Guard"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12707,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Scarlet Cavalier"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12714,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Dustwallow Marsh"), Vendor = RRS("Strashaz Warrior"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12718,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Dustwallow Marsh"), Vendor = RRS("Strashaz Myrmidon"), Team = "Hostile" },
-            { Region = RRS("Dustwallow Marsh"), Vendor = RRS("Tidelord Rrurgaz"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12719,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Scarlet Smith"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12828,
-         Type = RRS("Blacksmithing"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Burning Steppes"), Vendor = RRS("Volchan"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12833,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Maleki the Pallid"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12839,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Cannon Master Willey"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12836,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Foreman Marcrid"), Team = "Hostile" },
          },
       },
       {
@@ -1038,42 +761,6 @@ RecipeRadar_RecipeData = {
          Cost = 40000,
          Locations = {
             { Region = RRS("Western Plaguelands"), Vendor = RRS("Magnus Frostwake"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 12834,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Goraluk Anvilcrack"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12835,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Quartermaster Zigris"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12837,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Goraluk Anvilcrack"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 12838,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Bannok Grimaxe"), Team = "Hostile" },
          },
       },
       {
@@ -1367,24 +1054,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 22220,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Ruins of Ahn'Qiraj"), Vendor = RRS("Moam"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22222,
-         Type = RRS("Blacksmithing"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Temple of Ahn'Qiraj"), Vendor = RRS("The Prophet Skeram"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 22766,
          Type = RRS("Blacksmithing"),
          Skill = 300,
@@ -1437,118 +1106,6 @@ RecipeRadar_RecipeData = {
          Level = 8,
          Locations = {
             { Region = RRS("Ruins of Ahn'Qiraj"), Vendor = RRS("Lieutenant General Andorov"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 23605,
-         Type = RRS("Blacksmithing"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Auchenai Crypts"), Vendor = RRS("Auchenai Monk"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23606,
-         Type = RRS("Blacksmithing"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Arcatraz"), Vendor = RRS("Unchained Doombringer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23607,
-         Type = RRS("Blacksmithing"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadow Labyrinth"), Vendor = RRS("Cabal Fanatic"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23608,
-         Type = RRS("Blacksmithing"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Nagrand"), Vendor = RRS("Murkblood Raider"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23609,
-         Type = RRS("Blacksmithing"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Deathforge Guardian"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23610,
-         Type = RRS("Blacksmithing"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Disembodied Protector"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23611,
-         Type = RRS("Blacksmithing"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Nagrand"), Vendor = RRS("Boulderfist Warrior"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23612,
-         Type = RRS("Blacksmithing"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Anger Guard"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Enraged Air Spirit"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Enraged Fire Spirit"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23613,
-         Type = RRS("Blacksmithing"),
-         Skill = 370,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Ashtongue Warrior"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Crazed Murkblood Miner"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Crazed Murkblood Foreman"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23615,
-         Type = RRS("Blacksmithing"),
-         Skill = 370,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Mana-Tombs"), Vendor = RRS("Nexus Stalker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23617,
-         Type = RRS("Blacksmithing"),
-         Skill = 370,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Botanica"), Vendor = RRS("High Botanist Freywinn"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23639,
-         Type = RRS("Blacksmithing"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Sunfury Bloodwarder"), Team = "Hostile" },
          },
       },
       {
@@ -1907,18 +1464,6 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Black Temple"), Vendor = RRS("Okuno"), Team = "Neutral" },
          },
       },
-      {
-         ID = 33174,
-         Type = RRS("Blacksmithing"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Enraged Earth Spirit"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Enraged Water Spirit"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Enraged Air Spirit"), Team = "Hostile" },
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Enraged Fire Spirit"), Team = "Hostile" },
-         },
-      },
    },
 },
 
@@ -1934,89 +1479,6 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Orgrimmar"), Vendor = RRS("Kithas"), Team = "Horde" },
             { Region = RRS("Silverpine Forest"), Vendor = RRS("Leo Sarn"), Team = "Horde" },
             { Region = RRS("Thunder Bluff"), Vendor = RRS("Nata Dawnstrider"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 11150,
-         Type = RRS("Enchanting"),
-         Skill = 145,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Wetlands"), Vendor = RRS("Dark Iron Demolitionist"), Team = "Hostile" },
-            { Region = RRS("Wetlands"), Vendor = RRS("Dark Iron Dwarf"), Team = "Hostile" },
-            { Region = RRS("Wetlands"), Vendor = RRS("Dark Iron Saboteur"), Team = "Hostile" },
-            { Region = RRS("Wetlands"), Vendor = RRS("Dark Iron Tunneler"), Team = "Hostile" },
-            { Region = RRS("Wetlands"), Vendor = RRS("Balgaras the Foul"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11151,
-         Type = RRS("Enchanting"),
-         Skill = 145,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stonetalon Mountains"), Vendor = RRS("Vengeful Ancient"), Team = "Hostile" },
-            { Region = RRS("Stonetalon Mountains"), Vendor = RRS("Blackened Ancient"), Team = "Hostile" },
-            { Region = RRS("Stonetalon Mountains"), Vendor = RRS("Charred Ancient"), Team = "Hostile" },
-            { Region = RRS("Ashenvale"), Vendor = RRS("Crazed Ancient"), Team = "Hostile" },
-            { Region = RRS("Ashenvale"), Vendor = RRS("Withered Ancient"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11152,
-         Type = RRS("Enchanting"),
-         Skill = 145,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Torn Fin Coastrunner"), Team = "Hostile" },
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Torn Fin Tidehunter"), Team = "Hostile" },
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Torn Fin Oracle"), Team = "Hostile" },
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Torn Fin Muckdweller"), Team = "Hostile" },
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Scargil"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11166,
-         Type = RRS("Enchanting"),
-         Skill = 200,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Arathi Highlands"), Vendor = RRS("Zalas Witherbark"), Team = "Hostile" },
-            { Region = RRS("Arathi Highlands"), Vendor = RRS("Witherbark Shadow Hunter"), Team = "Hostile" },
-            { Region = RRS("Arathi Highlands"), Vendor = RRS("Witherbark Headhunter"), Team = "Hostile" },
-            { Region = RRS("Arathi Highlands"), Vendor = RRS("Witherbark Berserker"), Team = "Hostile" },
-            { Region = RRS("Arathi Highlands"), Vendor = RRS("Nimar the Slayer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11203,
-         Type = RRS("Enchanting"),
-         Skill = 215,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Venture Co. Strip Miner"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11205,
-         Type = RRS("Enchanting"),
-         Skill = 225,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Swamp of Sorrows"), Vendor = RRS("Swampwalker Elder"), Team = "Hostile" },
-            { Region = RRS("Swamp of Sorrows"), Vendor = RRS("Swampwalker"), Team = "Hostile" },
-            { Region = RRS("Swamp of Sorrows"), Vendor = RRS("Tangled Horror"), Team = "Hostile" },
-            { Region = RRS("Swamp of Sorrows"), Vendor = RRS("Molt Thorn"), Team = "Hostile" },
-            { Region = RRS("Swamp of Sorrows"), Vendor = RRS("Mire Lord"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 11207,
-         Type = RRS("Enchanting"),
-         Skill = 265,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Pyromancer Loregrain"), Team = "Hostile" },
          },
       },
       {
@@ -2087,15 +1549,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 11813,
-         Type = RRS("Enchanting"),
-         Skill = 265,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Lord Roccor"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 16217,
          Type = RRS("Enchanting"),
          Skill = 265,
@@ -2103,16 +1556,6 @@ RecipeRadar_RecipeData = {
          Locations = {
             { Region = RRS("Darnassus"), Vendor = RRS("Mythrin'dir"), Team = "Alliance" },
             { Region = RRS("Undercity"), Vendor = RRS("Daniel Bartlett"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 16252,
-         Type = RRS("Enchanting"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Scarlet Spellbinder"), Team = "Hostile" },
-            { Region = RRS("Eastern Plaguelands"), Vendor = RRS("Scarlet Archmage"), Team = "Hostile" },
          },
       },
       {
@@ -2136,32 +1579,12 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 11206,
-         Type = RRS("Enchanting"),
-         Skill = 225,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Scofflaw"), Team = "Hostile" },
-            { Region = RRS("Alterac Mountains"), Vendor = RRS("Syndicate Assasin"), Team = "Hostile" },
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Assasin"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 16221,
          Type = RRS("Enchanting"),
          Skill = 275,
          Cost = 10000,
          Locations = {
             { Region = RRS("Winterspring"), Vendor = RRS("Qia"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 16223,
-         Type = RRS("Enchanting"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Anguished Highborne"), Team = "Hostile" },
          },
       },
       {
@@ -2180,70 +1603,6 @@ RecipeRadar_RecipeData = {
          Cost = 20000,
          Locations = {
             { Region = RRS("Moonglade"), Vendor = RRS("Lorelae Wintersong"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 16246,
-         Type = RRS("Enchanting"),
-         Skill = 295,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Deadwind Pass"), Vendor = RRS("Deadwind Warlock"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16247,
-         Type = RRS("Enchanting"),
-         Skill = 295,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Blackhand Elite"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16248,
-         Type = RRS("Enchanting"),
-         Skill = 295,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Thuzadin Shadowcaster"), Team = "Hostile" },
-            { Region = RRS("Terokkar Forest"), Vendor = RRS("Bonechewer Backbreaker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16249,
-         Type = RRS("Enchanting"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Crimson Sorcerer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16250,
-         Type = RRS("Enchanting"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Spirestone Warlord"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16254,
-         Type = RRS("Enchanting"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Scholomance"), Vendor = RRS("Spectral Researcher"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16255,
-         Type = RRS("Enchanting"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Scholomance"), Vendor = RRS("Scholomance Adept"), Team = "Hostile" },
          },
       },
       {
@@ -2475,123 +1834,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 22530,
-         Type = RRS("Enchanting"),
-         Skill = 320,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Ethereum Nullifier"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22533,
-         Type = RRS("Enchanting"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Steamvault"), Vendor = RRS("Coilfang Oracle"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22534,
-         Type = RRS("Enchanting"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Bloodmaul Geomancer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22543,
-         Type = RRS("Enchanting"),
-         Skill = 320,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Mana-Tombs"), Vendor = RRS("Ethereal Priest"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22544,
-         Type = RRS("Enchanting"),
-         Skill = 340,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Auchenai Crypts"), Vendor = RRS("Raging Skeleton"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22545,
-         Type = RRS("Enchanting"),
-         Skill = 370,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Karazhan"), Vendor = RRS("Phantom Stagehand"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22551,
-         Type = RRS("Enchanting"),
-         Skill = 340,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Sunfury Researcher"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22554,
-         Type = RRS("Enchanting"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Shattered Halls"), Vendor = RRS("Shattered Hand Centurion"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22555,
-         Type = RRS("Enchanting"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Bash'ir Spell-Thief"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22556,
-         Type = RRS("Enchanting"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Arcatraz"), Vendor = RRS("Eredar Deathbringer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22559,
-         Type = RRS("Enchanting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Karazhan"), Vendor = RRS("Moroes"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22560,
-         Type = RRS("Enchanting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Karazhan"), Vendor = RRS("Shade of Aran"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22561,
-         Type = RRS("Enchanting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Karazhan"), Vendor = RRS("Terestian Illhoof"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 25848,
          Type = RRS("Enchanting"),
          Skill = 350,
@@ -2795,24 +2037,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 28276,
-         Type = RRS("Enchanting"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Eclipsion Archmage"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 28277,
-         Type = RRS("Enchanting"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Voidshrieker"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 22552,
          Type = RRS("Enchanting"),
          Skill = 340,
@@ -2895,10 +2119,11 @@ RecipeRadar_RecipeData = {
          Type = RRS("Enchanting"),
          Skill = 375,
          Cost = 200000,
-         Faction = RRS("The Scale of the Sands"),
-         Level = 7,
+         Faction = RRS("Lower City"),
+         Level = 6,
          Locations = {
             { Region = RRS("Tanaris"), Vendor = RRS("Andormu"), Team = "Neutral" },
+            { Region = RRS("Shattrath City"), Vendor = RRS("Nakodu"), Team = "Neutral" },
          },
       },
       {
@@ -2912,39 +2137,33 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Deadwind Pass"), Vendor = RRS("Apprentice Darius"), Team = "Neutral" },
          },
       },
+      {
+         ID = 34872,
+         Type = RRS("Enchanting"),
+         Skill = 360,
+         Cost = 150000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35500,
+         Type = RRS("Enchanting"),
+         Skill = 360,
+         Cost = 150000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
    },
 },
 
 [RRS("Engineering")] = {
    Recipes = {
-      {
-         ID = 4411,
-         Type = RRS("Engineering"),
-         Skill = 125,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Gnomeregan"), Vendor = RRS("Mekgineer Thermaplugg"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 4413,
-         Type = RRS("Engineering"),
-         Skill = 160,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Gnomeregan"), Vendor = RRS("Mekgineer Thermaplugg"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22729,
-         Type = RRS("Engineering"),
-         Skill = 275,
-         Cost = 8000,
-         Locations = {
-            { Region = RRS("Orgrimmar"), Vendor = RRS("Sovik"), Team = "Horde" },
-            { Region = RRS("Ironforge"), Vendor = RRS("Gearcutter Cogspinner"), Team = "Alliance" },
-         },
-      },
       {
          ID = 18649,
          Type = RRS("Engineering"),
@@ -2953,36 +2172,6 @@ RecipeRadar_RecipeData = {
          Locations = {
             { Region = RRS("Stormwind City"), Vendor = RRS("Darian Singh"), Team = "Alliance" },
             { Region = RRS("Ironforge"), Vendor = RRS("Gearcutter Cogspinner"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 18653,
-         Type = RRS("Engineering"),
-         Skill = 265,
-         Cost = 0,
-         Specialty = RRS("Goblin Engineer"),
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Plugger Spazzring"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 18654,
-         Type = RRS("Engineering"),
-         Skill = 265,
-         Cost = 0,
-         Specialty = RRS("Gnomish Engineer"),
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Weapon Technician"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 18661,
-         Type = RRS("Engineering"),
-         Skill = 260,
-         Cost = 0,
-         Specialty = RRS("Gnomish Engineer"),
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Weapon Technician"), Team = "Hostile" },
          },
       },
       {
@@ -3080,66 +2269,12 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 16045,
-         Type = RRS("Engineering"),
-         Skill = 270,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Azshara"), Vendor = RRS("Spitelash Siren"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16048,
-         Type = RRS("Engineering"),
-         Skill = 275,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Doomforge Craftsman"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16049,
-         Type = RRS("Engineering"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Weapon Technician"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 16050,
          Type = RRS("Engineering"),
          Skill = 285,
          Cost = 20000,
          Locations = {
             { Region = RRS("Winterspring"), Vendor = RRS("Xizzer Fizzbolt"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 16052,
-         Type = RRS("Engineering"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Crimson Inquisitor"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16054,
-         Type = RRS("Engineering"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Cobalt Mageweaver"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 16056,
-         Type = RRS("Engineering"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Eastern Plaguelands"), Vendor = RRS("Mossflayer Shadowhunter"), Team = "Hostile" },
          },
       },
       {
@@ -3179,24 +2314,6 @@ RecipeRadar_RecipeData = {
          Cost = 10000,
          Locations = {
             { Region = RRS("Winterspring"), Vendor = RRS("Xizzer Fizzbolt"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 18657,
-         Type = RRS("Engineering"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Solakar Flamewreath"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 18658,
-         Type = RRS("Engineering"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Crimson Inquisitor"), Team = "Hostile" },
          },
       },
       {
@@ -3287,24 +2404,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 23800,
-         Type = RRS("Engineering"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Doomforge Engineer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23806,
-         Type = RRS("Engineering"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Mo'arg Weaponsmith"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 23807,
          Type = RRS("Engineering"),
          Skill = 335,
@@ -3312,24 +2411,6 @@ RecipeRadar_RecipeData = {
          Locations = {
             { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Daggle Ironshaper"), Team = "Alliance" },
             { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Mixie Farshot"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 23808,
-         Type = RRS("Engineering"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Sunfury Bowman"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 23809,
-         Type = RRS("Engineering"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Karazhan"), Vendor = RRS("Attumen the Huntsman"), Team = "Hostile" },
          },
       },
       {
@@ -3410,15 +2491,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 23887,
-         Type = RRS("Engineering"),
-         Skill = 355,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Steamvault"), Vendor = RRS("Mekgineer Steamrigger"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 32381,
          Type = RRS("Engineering"),
          Skill = 275,
@@ -3429,21 +2501,13 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 33804,
+         ID = 22729,
          Type = RRS("Engineering"),
-         Skill = 335,
-         Cost = 0,
+         Skill = 275,
+         Cost = 8000,
          Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Sunfury Archer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 34114,
-         Type = RRS("Engineering"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Gan'arg Analyzer"), Team = "Hostile" },
+            { Region = RRS("Ironforge"), Vendor = RRS("Gearcutter Cogspinner"), Team = "Alliance" },
+            { Region = RRS("Orgrimmar"), Vendor = RRS("Sovik"), Team = "Horde" },
          },
       },
    },
@@ -3471,420 +2535,6 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Ashenvale"), Vendor = RRS("Lardan"), Team = "Alliance" },
             { Region = RRS("Thousand Needles"), Vendor = RRS("Jandia"), Team = "Horde" },
             { Region = RRS("Arathi Highlands"), Vendor = RRS("Keena"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 15763,
-         Type = RRS("Leatherworking"),
-         Skill = 295,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Azshara"), Vendor = RRS("Cliff Breaker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 8399,
-         Type = RRS("Leatherworking"),
-         Skill = 235,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Rogue"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 8401,
-         Type = RRS("Leatherworking"),
-         Skill = 245,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Rogue"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 8397,
-         Type = RRS("Leatherworking"),
-         Skill = 220,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Shadow Mage"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 8395,
-         Type = RRS("Leatherworking"),
-         Skill = 220,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Bandit"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 8398,
-         Type = RRS("Leatherworking"),
-         Skill = 225,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Thief"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 8402,
-         Type = RRS("Leatherworking"),
-         Skill = 250,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Scofflaw"), Team = "Hostile" },
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Assasin"), Team = "Hostile" },
-            { Region = RRS("Tanaris"), Vendor = RRS("Andre Firebeard"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 8400,
-         Type = RRS("Leatherworking"),
-         Skill = 240,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Scofflaw"), Team = "Hostile" },
-            { Region = RRS("Tanaris"), Vendor = RRS("Wastewander Assasin"), Team = "Hostile" },
-            { Region = RRS("Tanaris"), Vendor = RRS("Andre Firebeard"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15733,
-         Type = RRS("Leatherworking"),
-         Skill = 270,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Temple of Atal'Hakkar"), Vendor = RRS("Murk Worm"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15770,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Anvilrage Marshal"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15781,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Anvilrage Captain"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15760,
-         Type = RRS("Leatherworking"),
-         Skill = 290,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Hinterlands"), Vendor = RRS("Vilebranch Hideskinner"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15771,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Western Plaguelands"), Vendor = RRS("Decaying Horror"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15730,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("General Drakkisath"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15749,
-         Type = RRS("Leatherworking"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Firebrand Grunt"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15753,
-         Type = RRS("Leatherworking"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Azshara"), Vendor = RRS("Arkkoran Oracle"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 25729,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Old Hillsbrad Foothills"), Vendor = RRS("Durnholde Rifleman"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 25731,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Sethekk Halls"), Vendor = RRS("Sethekk Ravenguard"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 29669,
-         Type = RRS("Leatherworking"),
-         Skill = 340,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Sethekk Halls"), Vendor = RRS("Time-Lost Shadowmage"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 29675,
-         Type = RRS("Leatherworking"),
-         Skill = 340,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Black Morass"), Vendor = RRS("Chrono Lord Deja"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 25728,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadow Labyrinth"), Vendor = RRS("Blackheart the Inciter"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 29672,
-         Type = RRS("Leatherworking"),
-         Skill = 340,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Arcatraz"), Vendor = RRS("Gargantuan Abyssal"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 29673,
-         Type = RRS("Leatherworking"),
-         Skill = 340,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Steamvault"), Vendor = RRS("Hydromancer Thespia"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15761,
-         Type = RRS("Leatherworking"),
-         Skill = 295,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Winterfall Totemic"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15747,
-         Type = RRS("Leatherworking"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Winterfall Den Watcher"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15779,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Winterfall Ursa"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15738,
-         Type = RRS("Leatherworking"),
-         Skill = 275,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Burning Steppes"), Vendor = RRS("Blackrock Soldier"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15732,
-         Type = RRS("Leatherworking"),
-         Skill = 270,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Burning Steppes"), Vendor = RRS("Firegut Brute"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15775,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Firebrand Legionnaire"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15748,
-         Type = RRS("Leatherworking"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Burning Steppes"), Vendor = RRS("Blackrock Slayer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15774,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Burning Steppes"), Vendor = RRS("Blackrock Battlemaster"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15727,
-         Type = RRS("Leatherworking"),
-         Skill = 265,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blasted Lands"), Vendor = RRS("Portal Seeker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 29674,
-         Type = RRS("Leatherworking"),
-         Skill = 340,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Slave Pens"), Vendor = RRS("Mennu the Betrayer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15776,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Scholomance"), Vendor = RRS("Scholomance Dark Summoner"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15773,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Scholomance"), Vendor = RRS("Spectral Researcher"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15777,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Crimson Battle Mage"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15768,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Ghoul Ravener"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15739,
-         Type = RRS("Leatherworking"),
-         Skill = 275,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Felwood"), Vendor = RRS("Jaedenar Cultist"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15744,
-         Type = RRS("Leatherworking"),
-         Skill = 280,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Felwood"), Vendor = RRS("Jadefire Trickster"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 25730,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Black Morass"), Vendor = RRS("Rift Keeper"), Team = "Hostile" },
-            { Region = RRS("The Black Morass"), Vendor = RRS("Rift Lord"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 34491,
-         Type = RRS("Leatherworking"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Terokkar Forest"), Vendor = RRS("Gordunni Head-Splitter"), Team = "Hostile" },
-            { Region = RRS("Terokkar Forest"), Vendor = RRS("Gordunni Elementalist"), Team = "Hostile" },
-            { Region = RRS("Terokkar Forest"), Vendor = RRS("Gordunni Soulreaper"), Team = "Hostile" },
-            { Region = RRS("Terokkar Forest"), Vendor = RRS("Gordunni Back-Breaker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15764,
-         Type = RRS("Leatherworking"),
-         Skill = 295,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Azshara"), Vendor = RRS("Son of Arkkoroc"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15728,
-         Type = RRS("Leatherworking"),
-         Skill = 265,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Azshara"), Vendor = RRS("Legashi Rogue"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 21548,
-         Type = RRS("Leatherworking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Silithus"), Vendor = RRS("The Windreaver"), Team = "Hostile" },
-            { Region = RRS("Winterspring"), Vendor = RRS("Princess Tempestria"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 15752,
-         Type = RRS("Leatherworking"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Felwood"), Vendor = RRS("Deadwood Shaman"), Team = "Hostile" },
          },
       },
       {
@@ -4215,17 +2865,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 34200,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 160000,
-         Faction = RRS("Lower City"),
-         Level = 7,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("Nakodu"), Team = "Neutral" },
-         },
-      },
-      {
          ID = 19332,
          Type = RRS("Leatherworking"),
          Skill = 300,
@@ -4521,7 +3160,7 @@ RecipeRadar_RecipeData = {
          Skill = 365,
          Cost = 120000,
          Faction = RRS("The Sha'tar"),
-         Level = 8,
+         Level = 6,
          Locations = {
             { Region = RRS("Shattrath City"), Vendor = RRS("Almaador"), Team = "Neutral" },
          },
@@ -4532,7 +3171,7 @@ RecipeRadar_RecipeData = {
          Skill = 370,
          Cost = 120000,
          Faction = RRS("Keepers of Time"),
-         Level = 8,
+         Level = 6,
          Locations = {
             { Region = RRS("Tanaris"), Vendor = RRS("Alurmi"), Team = "Neutral" },
          },
@@ -4695,17 +3334,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 34175,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 160000,
-         Faction = RRS("Kurenai"),
-         Level = 6,
-         Locations = {
-            { Region = RRS("Nagrand"), Vendor = RRS("Trader Narasu"), Team = "Alliance" },
-         },
-      },
-      {
          ID = 25743,
          Type = RRS("Leatherworking"),
          Skill = 350,
@@ -4717,45 +3345,12 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 34172,
-         Type = RRS("Leatherworking"),
-         Skill = 345,
-         Cost = 160000,
-         Faction = RRS("The Mag'har"),
-         Level = 6,
-         Locations = {
-            { Region = RRS("Nagrand"), Vendor = RRS("Provisioner Nasela"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 34174,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 160000,
-         Faction = RRS("The Mag'har"),
-         Level = 6,
-         Locations = {
-            { Region = RRS("Nagrand"), Vendor = RRS("Provisioner Nasela"), Team = "Horde" },
-         },
-      },
-      {
          ID = 29218,
          Type = RRS("Leatherworking"),
          Skill = 350,
          Cost = 120000,
          Faction = RRS("Kurenai"),
          Level = 7,
-         Locations = {
-            { Region = RRS("Nagrand"), Vendor = RRS("Trader Narasu"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 34173,
-         Type = RRS("Leatherworking"),
-         Skill = 345,
-         Cost = 160000,
-         Faction = RRS("Kurenai"),
-         Level = 6,
          Locations = {
             { Region = RRS("Nagrand"), Vendor = RRS("Trader Narasu"), Team = "Alliance" },
          },
@@ -4844,17 +3439,6 @@ RecipeRadar_RecipeData = {
          Cost = 60000,
          Faction = RRS("Thrallmar"),
          Level = 6,
-         Locations = {
-            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Quartermaster Urgronn"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 34201,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 160000,
-         Faction = RRS("Thrallmar"),
-         Level = 7,
          Locations = {
             { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Quartermaster Urgronn"), Team = "Horde" },
          },
@@ -5008,17 +3592,6 @@ RecipeRadar_RecipeData = {
          Cost = 120000,
          Faction = RRS("Honor Hold"),
          Level = 8,
-         Locations = {
-            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Logistics Officer Ulrike"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 34218,
-         Type = RRS("Leatherworking"),
-         Skill = 350,
-         Cost = 160000,
-         Faction = RRS("Honor Hold"),
-         Level = 7,
          Locations = {
             { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Logistics Officer Ulrike"), Team = "Alliance" },
          },
@@ -5186,32 +3759,88 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Deadwind Pass"), Vendor = RRS("Apprentice Darius"), Team = "Neutral" },
          },
       },
+      {
+         ID = 34174,
+         Type = RRS("Leatherworking"),
+         Skill = 350,
+         Cost = 160000,
+         Faction = RRS("The Mag'har"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Nagrand"), Vendor = RRS("Provisioner Nasela"), Team = "Horde" },
+         },
+      },
+      {
+         ID = 34175,
+         Type = RRS("Leatherworking"),
+         Skill = 350,
+         Cost = 160000,
+         Faction = RRS("Kurenai"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Nagrand"), Vendor = RRS("Trader Narasu"), Team = "Alliance" },
+         },
+      },
+      {
+         ID = 34172,
+         Type = RRS("Leatherworking"),
+         Skill = 345,
+         Cost = 160000,
+         Faction = RRS("The Mag'har"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Nagrand"), Vendor = RRS("Provisioner Nasela"), Team = "Horde" },
+         },
+      },
+      {
+         ID = 34173,
+         Type = RRS("Leatherworking"),
+         Skill = 345,
+         Cost = 160000,
+         Faction = RRS("Kurenai"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Nagrand"), Vendor = RRS("Trader Narasu"), Team = "Alliance" },
+         },
+      },
+      {
+         ID = 34201,
+         Type = RRS("Leatherworking"),
+         Skill = 350,
+         Cost = 160000,
+         Faction = RRS("Thrallmar"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Quartermaster Urgronn"), Team = "Horde" },
+         },
+      },
+      {
+         ID = 34218,
+         Type = RRS("Leatherworking"),
+         Skill = 350,
+         Cost = 160000,
+         Faction = RRS("Honor Hold"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Logistics Officer Ulrike"), Team = "Alliance" },
+         },
+      },
+      {
+         ID = 34200,
+         Type = RRS("Leatherworking"),
+         Skill = 350,
+         Cost = 160000,
+         Faction = RRS("Lower City"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Shattrath City"), Vendor = RRS("Nakodu"), Team = "Neutral" },
+         },
+      },
    },
 },
 
 [RRS("Tailoring")] = {
    Recipes = {
-      {
-         ID = 5773,
-         Type = RRS("Tailoring"),
-         Skill = 150,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Duskwood"), Vendor = RRS("Defias Enchanter"), Team = "Hostile" },
-            { Region = RRS("Darkshore"), Vendor = RRS("Dark Strand Voidcaller"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 5775,
-         Type = RRS("Tailoring"),
-         Skill = 185,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Alterac Mountains"), Vendor = RRS("Syndicate Spy"), Team = "Hostile" },
-            { Region = RRS("Dustwallow Marsh"), Vendor = RRS("Theramore Infiltrator"), Team = "Hostile" },
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Shadowy Assasin"), Team = "Hostile" },
-         },
-      },
       {
          ID = 7089,
          Type = RRS("Tailoring"),
@@ -5302,195 +3931,6 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Duskwood"), Vendor = RRS("Sheri Zipstitch"), Team = "Alliance" },
             { Region = RRS("Undercity"), Vendor = RRS("Millie Gregorian"), Team = "Horde" },
             { Region = RRS("The Barrens"), Vendor = RRS("Ranik"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 14471,
-         Type = RRS("Tailoring"),
-         Skill = 260,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Searing Gorge"), Vendor = RRS("Twilight Fire Guard"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14476,
-         Type = RRS("Tailoring"),
-         Skill = 270,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Searing Gorge"), Vendor = RRS("Twilight Fire Guard"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14482,
-         Type = RRS("Tailoring"),
-         Skill = 275,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Burning Steppes"), Vendor = RRS("Thaurissan Firewalker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14486,
-         Type = RRS("Tailoring"),
-         Skill = 275,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Mountain"), Vendor = RRS("Overmaster Pyron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14490,
-         Type = RRS("Tailoring"),
-         Skill = 280,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Burning Steppes"), Vendor = RRS("Thaurissan Firewalker"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14493,
-         Type = RRS("Tailoring"),
-         Skill = 285,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Winterspring"), Vendor = RRS("Cobalt Mageweaver"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14512,
-         Type = RRS("Tailoring"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Stratholme"), Vendor = RRS("Balnazzar"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14513,
-         Type = RRS("Tailoring"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Firebrand Pyromancer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 14514,
-         Type = RRS("Tailoring"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Scholomance"), Vendor = RRS("Darkmaster Gandling"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 21903,
-         Type = RRS("Tailoring"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Karazhan"), Vendor = RRS("Phantom Attendant"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 21904,
-         Type = RRS("Tailoring"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Karazhan"), Vendor = RRS("Phantom Valet"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 21905,
-         Type = RRS("Tailoring"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Arcatraz"), Vendor = RRS("Arcatraz Sentinel"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 21906,
-         Type = RRS("Tailoring"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Mechanar"), Vendor = RRS("Sunseeker Astromage"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 21907,
-         Type = RRS("Tailoring"),
-         Skill = 370,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Mechanar"), Vendor = RRS("Pathaleon the Calculator"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 22309,
-         Type = RRS("Tailoring"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Dire Maul"), Vendor = RRS("Magister Kalendris"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24308,
-         Type = RRS("Tailoring"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Arcatraz"), Vendor = RRS("Dalliah the Doomsayer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24309,
-         Type = RRS("Tailoring"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadow Labyrinth"), Vendor = RRS("Murmur"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24311,
-         Type = RRS("Tailoring"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Botanica"), Vendor = RRS("Warp Splinter"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24312,
-         Type = RRS("Tailoring"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Shattered Halls"), Vendor = RRS("Grand Warlock Nethekurse"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24310,
-         Type = RRS("Tailoring"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Botanica"), Vendor = RRS("Thorngrin the Tender"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24313,
-         Type = RRS("Tailoring"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Steamvault"), Vendor = RRS("Warlord Kalithresh"), Team = "Hostile" },
          },
       },
       {
@@ -6358,43 +4798,6 @@ RecipeRadar_RecipeData = {
 [RRS("Cooking")] = {
    Recipes = {
       {
-         ID = 3736,
-         Type = RRS("Cooking"),
-         Skill = 150,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Darren Malvew"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 3737,
-         Type = RRS("Cooking"),
-         Skill = 175,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Chef Jessen"), Team = "Alliance" },
-            { Region = RRS("Hillsbrad Foothills"), Vendor = RRS("Christoph Jeffcoat"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 5482,
-         Type = RRS("Cooking"),
-         Skill = 10,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Teldrassil"), Vendor = RRS("Zarrin"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 5487,
-         Type = RRS("Cooking"),
-         Skill = 90,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Barrens"), Vendor = RRS("Grub"), Team = "Horde" },
-         },
-      },
-      {
          ID = 16072,
          Type = RRS("Cooking"),
          Skill = 125,
@@ -6579,69 +4982,6 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Desolace"), Vendor = RRS("Janet Hommers"), Team = "Alliance" },
             { Region = RRS("Desolace"), Vendor = RRS("Kireena"), Team = "Horde" },
             { Region = RRS("Desolace"), Vendor = RRS("Vendor-Tron 1000"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 18267,
-         Type = RRS("Cooking"),
-         Skill = 275,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Dire Maul"), Vendor = RRS("Pusillin"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 33869,
-         Type = RRS("Cooking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("The Rokk"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 33870,
-         Type = RRS("Cooking"),
-         Skill = 325,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("The Rokk"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 33871,
-         Type = RRS("Cooking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("The Rokk"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 33873,
-         Type = RRS("Cooking"),
-         Skill = 325,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("The Rokk"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 33875,
-         Type = RRS("Cooking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("The Rokk"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 33925,
-         Type = RRS("Cooking"),
-         Skill = 1,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shattrath City"), Vendor = RRS("The Rokk"), Team = "Neutral" },
          },
       },
       {
@@ -6896,6 +5236,7 @@ RecipeRadar_RecipeData = {
          Locations = {
             { Region = RRS("The Hinterlands"), Vendor = RRS("Truk Wildbeard"), Team = "Alliance" },
             { Region = RRS("Tanaris"), Vendor = RRS("Dirge Quikcleave"), Team = "Neutral" },
+            { Region = RRS("Tanaris"), Vendor = RRS("Innkeeper Fizzgrimble"), Team = "Neutral" },
          },
       },
       {
@@ -7022,7 +5363,7 @@ RecipeRadar_RecipeData = {
          ID = 16110,
          Type = RRS("Cooking"),
          Skill = 225,
-         Cost = 10000,
+         Cost = 12000,
          Locations = {
             { Region = RRS("Felwood"), Vendor = RRS("Malygen"), Team = "Alliance" },
             { Region = RRS("Felwood"), Vendor = RRS("Bale"), Team = "Horde" },
@@ -7076,6 +5417,9 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Orgrimmar"), Vendor = RRS("Penney Copperpinch"), Team = "Horde" },
             { Region = RRS("Thunder Bluff"), Vendor = RRS("Seersa Copperpinch"), Team = "Neutral" },
             { Region = RRS("Undercity"), Vendor = RRS("Nardstrum Copperpinch"), Team = "Horde" },
+            { Region = RRS("Shattrath City"), Vendor = RRS("Eebee Jinglepocket"), Team = "Neutral" },
+            { Region = RRS("The Exodar"), Vendor = RRS("Wolgren Jinglepocket"), Team = "Alliance" },
+            { Region = RRS("Silvermoon City"), Vendor = RRS("Hotoppik Copperpinch"), Team = "Horde" },
          },
       },
       {
@@ -7089,6 +5433,9 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Orgrimmar"), Vendor = RRS("Penney Copperpinch"), Team = "Horde" },
             { Region = RRS("Thunder Bluff"), Vendor = RRS("Seersa Copperpinch"), Team = "Neutral" },
             { Region = RRS("Undercity"), Vendor = RRS("Nardstrum Copperpinch"), Team = "Horde" },
+            { Region = RRS("Shattrath City"), Vendor = RRS("Eebee Jinglepocket"), Team = "Neutral" },
+            { Region = RRS("The Exodar"), Vendor = RRS("Wolgren Jinglepocket"), Team = "Alliance" },
+            { Region = RRS("Silvermoon City"), Vendor = RRS("Hotoppik Copperpinch"), Team = "Horde" },
          },
       },
       {
@@ -7116,6 +5463,12 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Ghostlands"), Vendor = RRS("Master Chef Mouldier"), Team = "Horde" },
             { Region = RRS("The Exodar"), Vendor = RRS("Phea"), Team = "Alliance" },
             { Region = RRS("Silvermoon City"), Vendor = RRS("Quelis"), Team = "Horde" },
+            { Region = RRS("Wetlands"), Vendor = RRS("Galley Chief Grace"), Team = "Alliance" },
+            { Region = RRS("Feralas"), Vendor = RRS("Galley Chief Alunwea"), Team = "Alliance" },
+            { Region = RRS("Darkshore"), Vendor = RRS("Galley Chief Gathers"), Team = "Alliance" },
+            { Region = RRS("Darkshore"), Vendor = RRS("Galley Chief Halumvorea"), Team = "Alliance" },
+            { Region = RRS("Darkshore"), Vendor = RRS("Galley Chief Mariss"), Team = "Alliance" },
+            { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Galley Chief Steelbelly"), Team = "Neutral" },
          },
       },
       {
@@ -7143,6 +5496,12 @@ RecipeRadar_RecipeData = {
             { Region = RRS("Ghostlands"), Vendor = RRS("Master Chef Mouldier"), Team = "Horde" },
             { Region = RRS("The Exodar"), Vendor = RRS("Phea"), Team = "Alliance" },
             { Region = RRS("Silvermoon City"), Vendor = RRS("Quelis"), Team = "Horde" },
+            { Region = RRS("Wetlands"), Vendor = RRS("Galley Chief Grace"), Team = "Alliance" },
+            { Region = RRS("Feralas"), Vendor = RRS("Galley Chief Alunwea"), Team = "Alliance" },
+            { Region = RRS("Darkshore"), Vendor = RRS("Galley Chief Gathers"), Team = "Alliance" },
+            { Region = RRS("Darkshore"), Vendor = RRS("Galley Chief Halumvorea"), Team = "Alliance" },
+            { Region = RRS("Darkshore"), Vendor = RRS("Galley Chief Mariss"), Team = "Alliance" },
+            { Region = RRS("Stranglethorn Vale"), Vendor = RRS("Galley Chief Steelbelly"), Team = "Neutral" },
          },
       },
       {
@@ -7167,30 +5526,12 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 27684,
-         Type = RRS("Cooking"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Legassi"), Team = "Neutral" },
-         },
-      },
-      {
          ID = 27685,
          Type = RRS("Cooking"),
          Skill = 1,
          Cost = 40,
          Locations = {
             { Region = RRS("Eversong Woods"), Vendor = RRS("Landraelanis"), Team = "Horde" },
-         },
-      },
-      {
-         ID = 27686,
-         Type = RRS("Cooking"),
-         Skill = 1,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Azuremyst Isle"), Vendor = RRS("Acteon"), Team = "Alliance" },
          },
       },
       {
@@ -7367,6 +5708,36 @@ RecipeRadar_RecipeData = {
          Locations = {
             { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Sassa Weldwell"), Team = "Alliance" },
             { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Xerintha Ravenoak"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 34413,
+         Type = RRS("Cooking"),
+         Skill = 325,
+         Cost = 10000,
+         Locations = {
+            { Region = RRS("Orgrimmar"), Vendor = RRS("Penney Copperpinch"), Team = "Horde" },
+            { Region = RRS("Ironforge"), Vendor = RRS("Wulmort Jinglepocket"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35564,
+         Type = RRS("Cooking"),
+         Skill = 250,
+         Cost = 18000,
+         Locations = {
+            { Region = RRS("Felwood"), Vendor = RRS("Bale"), Team = "Horde" },
+            { Region = RRS("Felwood"), Vendor = RRS("Malygen"), Team = "Alliance" },
+         },
+      },
+      {
+         ID = 35566,
+         Type = RRS("Cooking"),
+         Skill = 250,
+         Cost = 18000,
+         Locations = {
+            { Region = RRS("Felwood"), Vendor = RRS("Bale"), Team = "Horde" },
+            { Region = RRS("Felwood"), Vendor = RRS("Malygen"), Team = "Alliance" },
          },
       },
    },
@@ -7621,24 +5992,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 21955,
-         Type = RRS("Jewelcrafting"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Spire"), Vendor = RRS("Quartermaster Zigris"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 21956,
-         Type = RRS("Jewelcrafting"),
-         Skill = 300,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blackrock Depths"), Vendor = RRS("Golem Lord Argelmach"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 31401,
          Type = RRS("Jewelcrafting"),
          Skill = 375,
@@ -7713,24 +6066,6 @@ RecipeRadar_RecipeData = {
          Level = 7,
          Locations = {
             { Region = RRS("Zangarmarsh"), Vendor = RRS("Fedryen Swiftspear"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 24172,
-         Type = RRS("Jewelcrafting"),
-         Skill = 370,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Botanica"), Vendor = RRS("Sunseeker Botanist"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24173,
-         Type = RRS("Jewelcrafting"),
-         Skill = 370,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Old Hillsbrad Foothills"), Vendor = RRS("Epoch Hunter"), Team = "Hostile" },
          },
       },
       {
@@ -8050,16 +6385,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 23130,
-         Type = RRS("Jewelcrafting"),
-         Skill = 300,
-         Cost = 40000,
-         Locations = {
-            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Kalaen"), Team = "Horde" },
-            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Tatiana"), Team = "Alliance" },
-         },
-      },
-      {
          ID = 23135,
          Type = RRS("Jewelcrafting"),
          Skill = 300,
@@ -8067,51 +6392,6 @@ RecipeRadar_RecipeData = {
          Locations = {
             { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Kalaen"), Team = "Horde" },
             { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Tatiana"), Team = "Alliance" },
-         },
-      },
-      {
-         ID = 24158,
-         Type = RRS("Jewelcrafting"),
-         Skill = 350,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Dark Conclave Shadowmancer"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24159,
-         Type = RRS("Jewelcrafting"),
-         Skill = 355,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("The Steamvault"), Vendor = RRS("Coilfang Sorceress"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24160,
-         Type = RRS("Jewelcrafting"),
-         Skill = 355,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Sethekk Halls"), Vendor = RRS("Darkweaver Syth"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24161,
-         Type = RRS("Jewelcrafting"),
-         Skill = 360,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Vekh'nir Dreadhawk"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 24162,
-         Type = RRS("Jewelcrafting"),
-         Skill = 365,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Netherstorm"), Vendor = RRS("Mageslayer"), Team = "Hostile" },
          },
       },
       {
@@ -8168,6 +6448,16 @@ RecipeRadar_RecipeData = {
          },
       },
       {
+         ID = 23130,
+         Type = RRS("Jewelcrafting"),
+         Skill = 300,
+         Cost = 40000,
+         Locations = {
+            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Kalaen"), Team = "Horde" },
+            { Region = RRS("Hellfire Peninsula"), Vendor = RRS("Tatiana"), Team = "Alliance" },
+         },
+      },
+      {
          ID = 25903,
          Type = RRS("Jewelcrafting"),
          Skill = 365,
@@ -8187,94 +6477,6 @@ RecipeRadar_RecipeData = {
          Level = 6,
          Locations = {
             { Region = RRS("Karazhan"), Vendor = RRS("Ythyar"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 31870,
-         Type = RRS("Jewelcrafting"),
-         Skill = 325,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Bash'ir's Harbinger"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Apexis Guardian"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Braxxus"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Rivendark"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Insidion"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Zarcsin"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Obsidia"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Mo'arg Incinerator"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Furywing"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Galvanoth"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 31871,
-         Type = RRS("Jewelcrafting"),
-         Skill = 325,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Apexis Guardian"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Braxxus"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Rivendark"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Insidion"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Zarcsin"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Obsidia"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Mo'arg Incinerator"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Furywing"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Galvanoth"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 31872,
-         Type = RRS("Jewelcrafting"),
-         Skill = 325,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Bash'ir's Harbinger"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Apexis Guardian"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Braxxus"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Rivendark"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Insidion"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Zarcsin"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Obsidia"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Mo'arg Incinerator"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Furywing"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Galvanoth"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 31873,
-         Type = RRS("Jewelcrafting"),
-         Skill = 325,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Apexis Guardian"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Braxxus"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Rivendark"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Insidion"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Zarcsin"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Obsidia"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Mo'arg Incinerator"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Furywing"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Galvanoth"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 31874,
-         Type = RRS("Jewelcrafting"),
-         Skill = 325,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Bash'ir's Harbinger"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Apexis Guardian"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Braxxus"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Rivendark"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Insidion"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Zarcsin"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Obsidia"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Mo'arg Incinerator"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Furywing"), Team = "Hostile" },
-            { Region = RRS("Blade's Edge Mountains"), Vendor = RRS("Galvanoth"), Team = "Hostile" },
          },
       },
       {
@@ -8323,32 +6525,6 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 32285,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 32289,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
-         },
-      },
-      {
          ID = 32290,
          Type = RRS("Jewelcrafting"),
          Skill = 375,
@@ -8357,84 +6533,6 @@ RecipeRadar_RecipeData = {
          Level = 5,
          Locations = {
             { Region = RRS("Hyjal Summit"), Vendor = RRS("Indormi"), Team = "Neutral" },
-         },
-      },
-      {
-         ID = 32295,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 32296,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 32297,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 32298,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 32303,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
-         },
-      },
-      {
-         ID = 32307,
-         Type = RRS("Jewelcrafting"),
-         Skill = 375,
-         Cost = 0,
-         Locations = {
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Archimonde"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Azgalor"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Kaz'rogal"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Rage Winterchill"), Team = "Hostile" },
-            { Region = RRS("Hyjal Summit"), Vendor = RRS("Anetheron"), Team = "Hostile" },
          },
       },
       {
@@ -8791,12 +6889,509 @@ RecipeRadar_RecipeData = {
          },
       },
       {
-         ID = 34689,
+         ID = 35505,
          Type = RRS("Jewelcrafting"),
-         Skill = 365,
-         Cost = 0,
+         Skill = 370,
+         Cost = 150000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
          Locations = {
-            { Region = RRS("Shadowmoon Valley"), Vendor = RRS("Coilskar Siren"), Team = "Hostile" },
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35502,
+         Type = RRS("Jewelcrafting"),
+         Skill = 370,
+         Cost = 150000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35697,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35699,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35695,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35696,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35698,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 250000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35708,
+         Type = RRS("Jewelcrafting"),
+         Skill = 350,
+         Cost = 120000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35769,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 500000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35766,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 500000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35767,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 500000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35768,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 500000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Eldara Dawnrunner"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35264,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35244,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35261,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35250,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35263,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35249,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35260,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35248,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35262,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35256,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35245,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35255,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35246,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 5,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35269,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35254,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35253,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35268,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35239,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35266,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35240,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35238,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35251,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 6,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35252,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35259,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35241,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35271,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 7,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35267,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35270,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35258,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35242,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35247,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35265,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35257,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
+         },
+      },
+      {
+         ID = 35243,
+         Type = RRS("Jewelcrafting"),
+         Skill = 375,
+         Cost = 60000,
+         Faction = RRS("Shattered Sun Offensive"),
+         Level = 8,
+         Locations = {
+            { Region = RRS("Isle of Quel'Danas"), Vendor = RRS("Shaani"), Team = "Neutral" },
          },
       },
    },

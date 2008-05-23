@@ -1,6 +1,6 @@
 local Graph = LibStub:GetLibrary("LibGraph-2.0")
-local L = AceLibrary("AceLocale-2.2"):new("Recount")
--- local Graph = AceLibrary("Graph-1.0")
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale( "Recount" )
 local me={}
 
 function me:CreateDeathGraphWindow()
