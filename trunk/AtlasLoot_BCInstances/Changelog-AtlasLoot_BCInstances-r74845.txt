@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r74845 | kurax | 2008-05-22 19:23:29 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
+
+AtlasLoot_BCInstances:
+- Update zhCN locale
+------------------------------------------------------------------------
 r74784 | hegarol | 2008-05-22 07:52:54 -0400 (Thu, 22 May 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
