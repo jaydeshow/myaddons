@@ -1,4 +1,32 @@
 ------------------------------------------------------------------------
+r74910 | toadkiller | 2008-05-23 06:18:59 -0400 (Fri, 23 May 2008) | 2 lines
+Changed paths:
+   A /trunk/LibKeyBound-1.0/CallbackHandler-1.0
+   A /trunk/LibKeyBound-1.0/CallbackHandler-1.0/CallbackHandler-1.0.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0.toc
+   A /trunk/LibKeyBound-1.0/LibStub
+   A /trunk/LibKeyBound-1.0/LibStub/LibStub.lua
+
+LibKeyBound-1.0:
+-- Add LibStub and CallbackHandler-1.0 by just copying them in.  This should make a standalone LibKeyBound-1.0 self sufficient.
+------------------------------------------------------------------------
+r74853 | StiviS | 2008-05-22 20:50:58 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esES.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0:
+- esES updated
+------------------------------------------------------------------------
+r74841 | toadkiller | 2008-05-22 19:13:17 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-deDE.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esES.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esMX.lua
+
+LibKeyBound-1.0:
+-- deDE, esES, esMX locale files (untranslated)
+------------------------------------------------------------------------
 r74792 | toadkiller | 2008-05-22 10:20:08 -0400 (Thu, 22 May 2008) | 2 lines
 Changed paths:
    M /trunk/LibKeyBound-1.0

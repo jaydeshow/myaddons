@@ -1,4 +1,18 @@
 ------------------------------------------------------------------------
+r74823 | xinhuan | 2008-05-22 15:03:46 -0400 (Thu, 22 May 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/ModuleBase.lua
+   M /trunk/Omen/Modules/Healer/Healer.lua
+   M /trunk/Omen/Modules/SingleTarget/SingleTarget.lua
+
+Omen: Fix auto-collapse issues I introduced earlier. Additionally, fix errors that result if you used Test Bars in Healer mode, then some event caused threat to update the display which wasn't reset properly.
+------------------------------------------------------------------------
+r74820 | xinhuan | 2008-05-22 13:53:29 -0400 (Thu, 22 May 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Modules/Healer/Healer.lua
+
+Omen: Fix mysterious phantom and title bars that appear offset in column 3 when NOT in healer mode and someone sets a Blizzard/ORA2 Main Tank, causing the healer mode to create bars of threat. I.e The healer mode is naughty and being active when it shouldn't be. [Removed RAID_ROSTER_UPDATE event registration in OnInitialize()]
+------------------------------------------------------------------------
 r74806 | xinhuan | 2008-05-22 11:18:52 -0400 (Thu, 22 May 2008) | 1 line
 Changed paths:
    M /trunk/Omen/Modules/AOE/AOE.lua

@@ -1,4 +1,26 @@
 ------------------------------------------------------------------------
+r74877 | xinhuan | 2008-05-23 00:51:21 -0400 (Fri, 23 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/Auchindoun/ShadowLabyrinth/Blackheart.lua
+   D /trunk/Threat-2.0/Threat-2.0/NPCModules/Azeroth/Onyxia.lua
+   D /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Bloodboil.lua
+   D /trunk/Threat-2.0/Threat-2.0/NPCModules/CavernsOfTime
+   A /trunk/Threat-2.0/Threat-2.0/NPCModules/MoltenCore
+   A /trunk/Threat-2.0/Threat-2.0/NPCModules/MoltenCore/Shazzrah.lua
+   A /trunk/Threat-2.0/Threat-2.0/NPCModules/Naxxramas/Kelthuzad.lua
+   D /trunk/Threat-2.0/Threat-2.0/NPCModules/TempestKeep/Arcatraz
+   D /trunk/Threat-2.0/Threat-2.0/NPCModules/TempestKeep/TheEye/VoidReaver.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
+   M /trunk/Threat-2.0/Threat-2.0/lib.xml
+
+Threat-2.0: Delete Onyxia, Bloodboil, Temporus, Soccothrates, Void Reaver modules. Add their Knock Away spellIDs directly into ThreatNPCModuleCore instead. Add Shazzrah, Kelthuzad modules.
+------------------------------------------------------------------------
+r74826 | xinhuan | 2008-05-22 15:49:57 -0400 (Thu, 22 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Capture guid->names from the combat log earlier, so that SPELL_SUMMONed pet names get recorded on summon.
+------------------------------------------------------------------------
 r74642 | xinhuan | 2008-05-21 07:21:24 -0400 (Wed, 21 May 2008) | 1 line
 Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
@@ -181,48 +203,5 @@ Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
 
 Threat-2.0: fix a potential issue with the hostile<->party action check
-
-------------------------------------------------------------------------
-r70660 | antiarc | 2008-04-20 19:31:22 -0400 (Sun, 20 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
-
-Threat-2.0: Hey, let's fix paladin taunt too!
-------------------------------------------------------------------------
-r70658 | antiarc | 2008-04-20 19:26:03 -0400 (Sun, 20 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
-
-Threat-2.0: Taunt/Growl fix
-------------------------------------------------------------------------
-r70635 | nevcairiel | 2008-04-20 17:06:39 -0400 (Sun, 20 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Illidan.lua
-
-Threat-2.0: disable Illidan P5 reset until we can prove if he really resets.
-------------------------------------------------------------------------
-r70586 | nevcairiel | 2008-04-20 07:50:38 -0400 (Sun, 20 Apr 2008) | 5 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/Auchindoun/ShadowLabyrinth/Blackheart.lua
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Bloodboil.lua
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Illidan.lua
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/CavernsOfTime/BlackMorass/Temporus.lua
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/Outland/Doomwalker.lua
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/TempestKeep/Arcatraz/Soccothrates.lua
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/TempestKeep/TheEye/VoidReaver.lua
-   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
-
-Threat-2.0: 
-- modify the NPCModuleCore RegisterSpellHandler to a new signature, RegisterSpellHandler(event, func, ...), NPC Modules now need to supply a SPELL event type which they want to react one
-- modified all NPC modules for that change
-- fixed some random bugs in the CLEU handler involving buff gains/losses on NPCs (should fix leotheras and vashj resets)
-- added Illidan P5 (Shadow Prison) Reset, and fixed P2->P3 transition reset
-------------------------------------------------------------------------
-r70584 | charon | 2008-04-20 06:35:31 -0400 (Sun, 20 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
-
-Threat-2.0: clean up NPC ModifyThreat()
 
 ------------------------------------------------------------------------
