@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r69428 | nemes | 2008-04-12 23:38:30 -0400 (Sat, 12 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/LibTourist-3.0/LibTourist-3.0.toc
+
+LibTourist-3.0:
+- TOC->2.4
+
+------------------------------------------------------------------------
+r64725 | ckknight | 2008-03-16 10:58:36 -0400 (Sun, 16 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibTourist-3.0/LibTourist-3.0.lua
+
+LibTourist-3.0 - fix upgrade issue with oldLib being a number value.
+------------------------------------------------------------------------

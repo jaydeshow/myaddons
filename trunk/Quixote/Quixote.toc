@@ -1,0 +1,15 @@
+## Interface: 20300
+## LoadOnDemand: 1
+## Title: Lib: Quixote
+## Notes: A library providing an easy interface to Blizzard's quest functions.
+## Author: Kemayo
+## eMail: kemayo@gmail.com
+## X-Category: Library
+## X-License: LGPL v2.1
+## OptionalDeps: Ace2, Deformat
+## X-AceLibrary-Quixote-1.0: true
+
+embeds.xml
+
+Quixote-1.0\Quixote-1.0.lua
+

@@ -1,0 +1,58 @@
+v7:
+修正UnitDebuff函数的使用错误. 这个错误导致错误判断目标是否为自身DEBUFF.
+增加了 AutoDispel 测试版 - 用于一键驱散! 
+该测试版只是用于验证一键驱散的可行做法.
+所以这个版本功能有限. 没有提供优先级/忽略的算法.
+也就说这个版本将驱散第一个找到的DEBUFF. 而不理这个DEBUFF是否严重..
+而将来也不会提供任何对PVP的驱散优先级的支持.
+
+
+
+
+v6:
+
+修正可能由空格引起的不能运作的问题.
+
+现在不需要特意加上[harm:1tb]这样的写法了. 新写法为
+/cast [:tb] 法术 
+如此类推
+
+增加了对 [target=mouseover]或[targettarget]或其他unit的支持.
+
+增加了PBX,TBX的判断. 通常情况下PB,TB是判断自己的法术. 而PBX,TBX则也判断不属于自己的法术.
+
+增加了FB,FBX的判断. 在不指定target的情况,如果目标不是友方,则判断自身BUFF来施法. 例如  
+/cast [:fb] 回春术
+
+增加了对怒气/能量的支持: 例如 
+/cast [:r45] 英勇打击 
+(当怒气大于等于45时)
+
+增加了对生命百分比的支持: 例如 
+/cast [:l20] 破釜沉舟 
+(当生命小于等于20%时)
+
+增加了/doif指令. 用于去掉/end来节省字数. 例如
+/doif IF_CSPELL()
+/cast 盾击
+
+
+现在UnitHasSpellEffect可以根据BUFF/DEBUFF的名字或图标路径了.
+例如 
+/if UnitHasSpellEffect("player","CheatDeath")
+/cast 极强效治疗石
+/end
+
+一些举例:
+
+/cast [target=mouseover,:tb] 野性印记
+这样你可以很容易用鼠标帮团队里的人加上BUFF. 有加上BUFF的则跳过.
+
+
+
+
+
+
+
+
+

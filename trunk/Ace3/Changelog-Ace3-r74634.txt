@@ -1,0 +1,42 @@
+------------------------------------------------------------------------
+r74634 | nevcairiel | 2008-05-21 04:21:34 -0400 (Wed, 21 May 2008) | 1 line
+Changed paths:
+   M /trunk/Ace3/changelog.txt
+
+Ace3 - set revision number in changelog properly <.<
+------------------------------------------------------------------------
+r74633 | nevcairiel | 2008-05-21 04:20:50 -0400 (Wed, 21 May 2008) | 4 lines
+Changed paths:
+   M /trunk/Ace3/Ace3.lua
+   M /trunk/Ace3/AceConfig-3.0/AceConfigCmd-3.0/AceConfigCmd-3.0.lua
+   M /trunk/Ace3/AceConsole-3.0/AceConsole-3.0.lua
+   M /trunk/Ace3/AceGUI-3.0/AceGUI-3.0.lua
+   M /trunk/Ace3/AceGUI-3.0/AceGUI-3.0.xml
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-BlizOptionsGroup.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-Button.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-CheckBox.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-ColorPicker.lua
+   A /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-DropDown-Items.lua (from /branches/Ace3/RC1/AceGUI-3.0/widgets/AceGUIWidget-DropDown-Items.lua:74631)
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-DropDown.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-DropDownGroup.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-EditBox.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-Frame.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-Heading.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-Icon.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-InlineGroup.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-Keybinding.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-Label.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-MultiLineEditBox.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-ScrollFrame.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-SimpleGroup.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-Slider.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-TabGroup.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-TreeGroup.lua
+   M /trunk/Ace3/AceTimer-3.0/AceTimer-3.0.lua
+   M /trunk/Ace3/changelog.txt
+
+Ace3 - (merge 74632)
+- New DropDown Widget!
+- New Artwork and style for the TabGroup
+- for full details, see changelog.txt
+------------------------------------------------------------------------

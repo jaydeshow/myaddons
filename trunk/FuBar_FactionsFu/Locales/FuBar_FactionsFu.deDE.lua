@@ -1,0 +1,35 @@
+local L = AceLibrary("AceLocale-2.2"):new("FuBar_FactionsFu")
+
+L:RegisterTranslations("deDE", function() return {
+	TOOLTIP_HINT = "\n|cffeda55fKlick|r um beobachtete Fraktion zu ändern.\n|cffeda55fShift-Klick|r um Daten in den Chat zu kopieren.\n|cffeda55fAlt-Klick|r um Fraktion als automatische Zonenfraktion der momentanen Zone festzulegen.\n|cffeda55fStrg-Klick|r um Fraktion auf Inaktiv bzw. Aktiv zu setzen.",
+
+	["Text"] = "Text",
+	["Text Settings"] = "Texteinstellungen",
+	["Show Name"] = "Zeige Namen",
+	["Toggles display of watched faction's name"] = "Name der beobachteten Fraktion ein-/ausblenden.",
+	["Show Standing"] = "Zeige Rang",
+	["Toggles display of watched faction's current standing"] = "Rang der beobachteten Fraktion ein-/ausblenden.",
+	["Show Progress"] = "Zeige Fortschritt",
+	["Toggles display of watched faction's progress toward next standing"] = "Fortschritt der beobachteten Fraktion relativ zum nächsthöheren Rang ein-/ausblenden.",
+	["Show Progress (in percent)"] = "Zeige Fortschritt (in Prozent)",
+	["Toggles display of watched faction's progress toward next standing (in percent)"] = "Fortschritt (in Prozent) der beobachteten Fraktion relativ zum nächsthöheren Rang ein-/ausblenden.",
+	["Color"] = "Farbe",
+	["Color Settings"] = "Farbeneinstellungen",
+	["Name"] = "Name",
+	["Sets color of the faction name"] = "Farbe für den Fraktionsnamen festlegen",
+	["Reputation"] = "Ruf",
+	["Sets color of the faction reputation"] = "Farbe für Fraktionsruf festlegen",
+	["standing"] = "Rang",
+	["Sets color of the faction standing"] = "Farbe für Fraktionsrang festlegen",
+	["Other"] = "Andere",
+	["Other Settings"] = "Andere Einstellungen",
+	["Auto-Zone"] = "Auto-Zone",
+	["Toggles automatical adjustment of watched faction on zone change"] = "Automatisches Wechseln der beobachteten Fraktion bei einem Zonenwechsel aktivieren/deaktivieren",
+	["Auto-Gain"] = "Auto-Zuwachs",
+	["Toggles automatical adjustment of watched faction on faction gain"] = "Automatisches Wechseln der beobachteten Fraktion bei einem Rufzuwachs aktivieren/deaktivieren",
+
+	["None"] = "Keine",
+	["War Condition"] = "Kriegszustand",
+	["Blizzard's Default"] = "Blizzard Standard",
+	["Incremental"] = "Stufenweise",
+} end)

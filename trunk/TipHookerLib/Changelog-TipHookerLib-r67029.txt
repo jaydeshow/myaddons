@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r67029 | whitetooth | 2008-03-30 01:22:17 -0400 (Sun, 30 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/TipHookerLib/TipHooker-1.0/TipHooker-1.0.lua
+
+TipHookerLib: 
+- AtlasQuest support
+------------------------------------------------------------------------
+r65730 | whitetooth | 2008-03-25 08:54:51 -0400 (Tue, 25 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/TipHookerLib/TipHookerLib.toc
+
+TipHookerLib: 
+- toc 20400
+------------------------------------------------------------------------

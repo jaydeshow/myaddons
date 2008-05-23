@@ -1,0 +1,75 @@
+------------------------------------------------------------------------
+r74662 | kurax | 2008-05-21 11:00:16 -0400 (Wed, 21 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.cn.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.de.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.es.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.fr.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.kr.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.tw.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.cn.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.de.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.es.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.fr.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.kr.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.tw.lua
+
+AtlasLoot_WorldLoot:
+- Add a check to locale files to avoid errors
+------------------------------------------------------------------------
+r73923 | daviesh | 2008-05-15 03:01:18 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/AtlasLoot_WorldLoot.toc
+
+AtlasLoot_WorldLoot:
+- v4.05.00 finalised
+------------------------------------------------------------------------
+r73519 | kurax | 2008-05-11 20:12:50 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.de.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.es.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.fr.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.kr.lua
+
+AtlasLoot_WorldLoot:
+- Minor bugfix
+------------------------------------------------------------------------
+r73462 | kurax | 2008-05-11 07:57:59 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/AtlasLoot_WorldLoot.toc
+
+AtlasLoot_WorldLoot:
+- Update toc
+------------------------------------------------------------------------
+r73454 | kurax | 2008-05-11 07:33:49 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   A /trunk/AtlasLoot_WorldLoot/WorldEvents.de.lua
+   A /trunk/AtlasLoot_WorldLoot/WorldEvents.es.lua
+   A /trunk/AtlasLoot_WorldLoot/WorldEvents.fr.lua
+   A /trunk/AtlasLoot_WorldLoot/WorldEvents.kr.lua
+   A /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.de.lua
+   A /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.es.lua
+   A /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.fr.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.kr.lua
+
+AtlasLoot_WorldLoot:
+- Add deDE/esES/frFR/koKR locale
+------------------------------------------------------------------------
+r73397 | kurax | 2008-05-10 19:01:29 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.cn.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.tw.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.cn.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.tw.lua
+
+AtlasLoot_WorldLoot: Update zhCN/zhTW locale
+------------------------------------------------------------------------
+r72376 | kurax | 2008-05-01 19:04:31 -0400 (Thu, 01 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_WorldLoot/WorldEvents.en.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.en.lua
+   M /trunk/AtlasLoot_WorldLoot/WorldRaidBosses.kr.lua
+
+AtlasLoot_WorldLoot:
+- Eliminate the icon data
+------------------------------------------------------------------------

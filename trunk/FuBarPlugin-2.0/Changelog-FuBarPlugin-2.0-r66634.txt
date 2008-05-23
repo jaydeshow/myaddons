@@ -1,0 +1,47 @@
+------------------------------------------------------------------------
+r66634 | helium | 2008-03-28 04:28:31 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/FuBarPlugin-2.0/FuBarPlugin-2.0.toc
+
+FuBarPlugin-2.0: TOC 20400
+------------------------------------------------------------------------
+r66041 | rabbit | 2008-03-26 07:55:28 -0400 (Wed, 26 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/AbacusLib/AbacusLib.toc
+   M /trunk/AuraToChat/AuraToChat.toc
+   M /trunk/BananaDKP/BananaDKP.toc
+   M /trunk/CandyBar/CandyBar.toc
+   M /trunk/ChatThrottleLib/ChatThrottleLib.toc
+   M /trunk/Click2Cast/Click2Cast.toc
+   M /trunk/ClosetGnome/ClosetGnome.toc
+   M /trunk/ClosetGnome_Banker/ClosetGnome_Banker.toc
+   M /trunk/ClosetGnome_Tooltip/ClosetGnome_Tooltip.toc
+   M /trunk/CraftyGnome/CraftyGnome.toc
+   M /trunk/CrayonLib/CrayonLib.toc
+   M /trunk/Deformat/Deformat.toc
+   M /trunk/DewdropLib/DewdropLib.toc
+   M /trunk/ErrorMonster/ErrorMonster.toc
+   M /trunk/FuBar2/FuBar2.toc
+   M /trunk/FuBarPlugin-2.0/FuBarPlugin-2.0.toc
+   M /trunk/GnomeCharmer/GnomeCharmer.toc
+   M /trunk/GratuityLib/GratuityLib.toc
+   M /trunk/LibSink-2.0/LibSink-2.0.toc
+   M /trunk/MobNotes/MobNotes.toc
+   M /trunk/RosterLib/RosterLib.toc
+   M /trunk/SimpleBossWhisperer/SimpleBossWhisperer.toc
+   M /trunk/SimpleChatMods/SimpleChatMods.toc
+   M /trunk/SinkLib/SinkLib.toc
+   M /trunk/SpyGnome/SpyGnome.toc
+   M /trunk/TabletLib/TabletLib.toc
+   M /trunk/WindowLib/WindowLib.toc
+
+.Some bumps.
+------------------------------------------------------------------------
+r63898 | ananhaid | 2008-03-08 08:47:41 -0500 (Sat, 08 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBarPlugin-2.0/FuBarPlugin-2.0/FuBarPlugin-2.0.lua
+   M /trunk/FuBarPlugin-2.0/FuBarPlugin-2.0.toc
+
+FuBarPlugin-2.0: 
+- zhCN checked.
+------------------------------------------------------------------------

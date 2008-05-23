@@ -1,0 +1,17 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Include file="Givers\Givers.xml"/>
+<Include file="Details\Details.xml"/>
+<Include file="Tracker\Tracker.xml"/>
+<Include file="Sound\Sound.xml"/>
+<Include file="Tooltips\Tooltips.xml"/>
+<Include file="PartyNotify\PartyNotify.xml"/>
+<Include file="PlayerNotify\PlayerNotify.xml"/>
+<Include file="Blizz\Blizz.xml"/>
+<Include file="Announce\Announce.xml"/>
+<Include file="Comments\Comments.xml"/>
+<Include file="Detached\Detached.xml"/>
+<Include file="PartyLog\PartyLog.xml"/>
+
+</Ui>

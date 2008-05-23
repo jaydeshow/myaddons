@@ -1,0 +1,545 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="localisation.lua"/>
+	<Script file="HoloFriends_funcs.lua"/>
+	<Script file="HoloFriends_dialogs.lua"/>
+	<Script file="HoloFriends_popUpMenus.lua"/>
+	<Script file="HoloFriends_friends.lua"/>
+	<Script file="HoloFriends_ignore.lua"/>
+	<Button name="HoloFriendsNameButtonTemplate" virtual="true" movable="true">
+		<Size>
+			<AbsDimension x="295" y="16"/>
+		</Size>
+		<Frames>
+			<CheckButton name="$parentServer">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="20" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HoloFriends_CheckBox_OnClick();
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+				<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+				<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+				<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+			</CheckButton>
+		</Frames>
+		<Layers>
+			<Layer level="BORDER">
+				<Texture name="$parentClassIcon" file="Interface\Glues\CharacterCreate\UI-CharacterCreate-Classes">
+					<Size>
+						<AbsDimension x="16" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="36" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentName" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="240" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentClassIcon" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				this:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnDragStart>
+				HoloFriends_NameButton_OnDragStart();
+			</OnDragStart>
+			<OnDragStop>
+				HoloFriends_NameButton_OnDragStop();
+			</OnDragStop>
+			<OnClick>
+				HoloFriends_NameButton_OnClick(arg1);
+				PlaySound("igMainMenuOptionCheckBoxOn");
+			</OnClick>
+			<OnEnter>
+				HoloFriends_NameButton_SetTooltip();
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<NormalTexture name="$parentTexture" file="Interface\Buttons\UI-MinusButton-UP">
+			<Size>
+				<AbsDimension x="16" y="16"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="3" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture name="$parentHighlight" file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
+	</Button>
+	<Frame name="HoloFriendsFrame" hidden="true" parent="FriendsFrame" setAllPoints="true">
+		<Frames>
+			<Frame name="HoloFriendsDropDown" inherits="UIDropDownMenuTemplate"/>
+			<Button name="HoloFriendsFrameToggleTab1" inherits="TabButtonTemplate" text="FRIENDS" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FriendsFrame">
+						<Offset>
+							<AbsDimension x="70" y="-39"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						PanelTemplates_SelectTab(this);
+						PanelTemplates_TabResize(0);
+						getglobal(this:GetName().."HighlightTexture"):SetWidth(this:GetTextWidth() + 31);
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="HoloFriendsFrameToggleTab2" inherits="TabButtonTemplate" text="IGNORE" id="2">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="HoloFriendsFrameToggleTab1" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						PanelTemplates_DeselectTab(this);
+					</OnShow>
+					<OnClick>
+						FriendsFrame.showFriendsList = nil;
+						FriendsFrame_Update();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HoloFriendsAddFriendButton" inherits="UIPanelButtonTemplate" text="ADD_FRIEND">
+				<Size>
+					<AbsDimension x="131" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="FriendsFrame">
+						<Offset>
+							<AbsDimension x="17" y="107"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HoloFriends_AddFriend();
+					</OnClick>
+					<OnEnter>
+						GameTooltip_AddNewbieTip(ADD_FRIEND, 1.0, 1.0, 1.0, NEWBIE_TOOLTIP_ADDFRIEND, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="HoloFriendsRemoveFriendButton" inherits="UIPanelButtonTemplate" text="REMOVE_FRIEND">
+				<Size>
+					<AbsDimension x="131" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="HoloFriendsAddFriendButton" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HoloFriends_RemoveFriend();
+					</OnClick>
+					<OnEnter>
+						GameTooltip_AddNewbieTip(REMOVE_FRIEND, 1.0, 1.0, 1.0, NEWBIE_TOOLTIP_REMOVEFRIEND, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+      
+			<Button name="HoloFriendsShareButton" inherits="UIPanelButtonTemplate">
+				<Size>
+					<AbsDimension x="30" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="HoloFriendsAddFriendButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="18" y="-13"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+            HoloFriendsShareButton:Disable();
+            HoloFriendsShareFrame:Show();
+					</OnClick>
+					<OnEnter>
+						GameTooltip_AddNewbieTip(HOLOFRIENDS_SHARETITLE, 1.0, 1.0, 1.0, HOLOFRIENDS_SHAREBTNTOOLTIP, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+        
+    		<NormalTexture name="$parentTexture" file="Interface\Icons\INV_Misc_Note_02.blp"/>
+    		<HighlightTexture name="$parentHighlight" file="Interface\Buttons\ButtonHilight-Square.blp" alphaMode="ADD"/>
+        <PushedTexture name="$parentPushed" file="Interface\Icons\INV_Misc_Note_02.blp" alphaMode="ADD"/>
+        <DisabledTexture name="$parentDisabled" file="Interface\Icons\INV_Misc_Note_02.blp" alphaMode="ADD"/>
+			</Button>
+            
+			<Button name="HoloFriendsAddGroupButton" inherits="UIPanelButtonTemplate" text="HOLOFRIENDS_ADDGROUP">
+				<Size>
+					<AbsDimension x="131" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="HoloFriendsAddFriendButton" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="66" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						StaticPopup_Show("HOLOFRIENDS_ADDGROUP");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="HoloFriendsRemoveGroupButton" inherits="UIPanelButtonTemplate" text="HOLOFRIENDS_REMOVEGROUP">
+				<Size>
+					<AbsDimension x="131" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="HoloFriendsAddGroupButton" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HoloFriendsFuncs_RemoveGroup(HoloFriends_GetList(), HoloFriends_GetSelectedEntry(), FRIENDS);
+            HoloFriends_DeselectEntry();
+            HoloFriends_List_Update();
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<CheckButton name="HoloFriendsShowOfflineButton" virtual="true">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="FriendsFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-40" y="-35"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontHighlightSmall" text="HOLOFRIENDS_SHOWOFFLINE">
+							<Anchors>
+								<Anchor point="RIGHT" relativePoint="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						this:RegisterEvent("VARIABLES_LOADED");
+					</OnLoad>
+					<OnEvent>
+						if ( event == "VARIABLES_LOADED" ) then
+							this:UnregisterEvent("VARIABLES_LOADED");
+							this:SetChecked(HOLOFRIENDS_SHOW_OFFLINE_FRIENDS);
+						end
+					</OnEvent>
+					<OnClick>
+						if ( this:GetChecked() ) then
+							HOLOFRIENDS_SHOW_OFFLINE_FRIENDS = 1;
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						else
+							HOLOFRIENDS_SHOW_OFFLINE_FRIENDS = 0;
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						end
+						HoloFriends_List_Update();
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+				<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+				<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+				<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+			</CheckButton>
+			<Button name="HoloFriendsScanExtrasButton" inherits="UIPanelButtonTemplate" text="HOLOFRIENDS_SCAN">
+				<Size>
+					<AbsDimension x="100" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="HoloFriendsShowOfflineButton" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="0" y="4"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						HoloFriends_ScanExtraFriends_ClickScan()
+					</OnClick>
+				</Scripts>
+			</Button>
+      
+			<Button name="HoloFriendsNameButton1" inherits="HoloFriendsNameButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FriendsFrame">
+						<Offset>
+							<AbsDimension x="23" y="-80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton2" inherits="HoloFriendsNameButtonTemplate" id="2">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton1" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton3" inherits="HoloFriendsNameButtonTemplate" id="3">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton4" inherits="HoloFriendsNameButtonTemplate" id="4">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton5" inherits="HoloFriendsNameButtonTemplate" id="5">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton4" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton6" inherits="HoloFriendsNameButtonTemplate" id="6">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton5" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton7" inherits="HoloFriendsNameButtonTemplate" id="7">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton6" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton8" inherits="HoloFriendsNameButtonTemplate" id="8">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton7" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton9" inherits="HoloFriendsNameButtonTemplate" id="9">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton8" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton10" inherits="HoloFriendsNameButtonTemplate" id="10">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton9" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton11" inherits="HoloFriendsNameButtonTemplate" id="11">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton10" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton12" inherits="HoloFriendsNameButtonTemplate" id="12">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton11" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton13" inherits="HoloFriendsNameButtonTemplate" id="13">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton12" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton14" inherits="HoloFriendsNameButtonTemplate" id="14">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton13" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton15" inherits="HoloFriendsNameButtonTemplate" id="15">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton14" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton16" inherits="HoloFriendsNameButtonTemplate" id="16">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton15" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton17" inherits="HoloFriendsNameButtonTemplate" id="17">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton16" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButton18" inherits="HoloFriendsNameButtonTemplate" id="18">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton17" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="HoloFriendsNameButtonDrag" inherits="HoloFriendsNameButtonTemplate" id="19">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="HoloFriendsNameButton1" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<ScrollFrame name="HoloFriendsScrollFrame" inherits="FauxScrollFrameTemplate">
+
+				<Size>
+					<AbsDimension x="318" y="304"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FriendsFrame">
+						<Offset>
+							<AbsDimension x="0" y="-75"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+        
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(FRIENDS_FRAME_IGNORE_HEIGHT, HoloFriends_List_Update);
+					</OnVerticalScroll>
+          <OnShow>
+            HoloFriends_List_Update()
+          </OnShow>
+				</Scripts>
+			</ScrollFrame>
+		</Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="HoloFriendsOnline" inherits="GameFontHighlightSmall" justifyH="LEFT" text="HOLOFRIENDS_ONLINE">
+					<Size>
+						<AbsDimension x="150" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="23" y="132"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:RegisterEvent("VARIABLES_LOADED");
+			</OnLoad>
+			<OnHide>
+				HoloFriends_OnHide();
+			</OnHide>
+			<OnEvent>
+				HoloFriends_OnEvent(event);
+			</OnEvent>
+			<OnUpdate>
+				HoloFriends_OnUpdate();
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</Ui>

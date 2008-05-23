@@ -1,0 +1,35 @@
+------------------------------------------------------------------------
+r68950 | xbeeps | 2008-04-10 13:52:53 -0400 (Thu, 10 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/VisualHeal/VisualHeal.lua
+
+BunchOfBars:
+- Fix the problem with the VisualHeal bar not aligning properly with the health bar at all times. This was caused by the update function no longer being hooked on the health bar update function, which means that the health bar update function is not guaranteed to run before the VisualHeal bar update function.
+------------------------------------------------------------------------
+r68817 | xbeeps | 2008-04-09 17:27:07 -0400 (Wed, 09 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/BunchOfBars/BunchOfBars.toc
+   M /trunk/BunchOfBars/Libs
+   M /trunk/BunchOfBars/embeds.xml
+
+BunchOfBars:
+- Get rid of LibBabble-Spell-3.0 (not used anymore by BoB). With very little work Babble-Spell-2.2 can be pruned as well, as only DogTag-1.0 has it as an optional dependency and it is only used directly for a few simple look-ups that can now be replaced by GetSpellInfo easily.
+------------------------------------------------------------------------
+r64946 | Firik | 2008-03-18 06:48:09 -0400 (Tue, 18 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/BunchOfBars/Dispel/Dispel.lua
+
+BunchOfBars: It is now possible to specify at how many debuffs the Dispell module should show.
+------------------------------------------------------------------------
+r64384 | Firik | 2008-03-12 15:17:15 -0400 (Wed, 12 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/BunchOfBars/Core.lua
+   M /trunk/BunchOfBars/HealthBarText/HealthBarText.lua
+   M /trunk/BunchOfBars/Layout.lua
+   M /trunk/BunchOfBars/Prototype.lua
+   M /trunk/BunchOfBars/VisualHeal/VisualHeal.lua
+
+BunchOfBars:
+- VisualHeal module contained some bugs
+- other minor fixes
+------------------------------------------------------------------------

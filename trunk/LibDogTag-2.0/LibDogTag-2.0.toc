@@ -1,0 +1,13 @@
+﻿## Interface: 20300
+## LoadOnDemand: 1
+## Title: Lib: DogTag-2.0
+## Notes: A library to provide a markup syntax for unit frame FontStrings
+## Author: ckknight
+## eMail: ckknight@gmail.com
+## Version: 1.0
+## X-Category: Library
+## OptionalDeps: LibRock-1.0, Babble-2.2, Babble-Spell-2.2, LibBabble-Spell-3.0, MobHealth, MobInfo2, Threat-1.0, RangeCheck-1.0, LibDruidMana-1.0, LibMobHealth-4.0
+## X-License: LGPL v2.1
+
+LibStub\LibStub.lua
+lib.xml

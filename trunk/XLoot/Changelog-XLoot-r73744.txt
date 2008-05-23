@@ -1,0 +1,162 @@
+------------------------------------------------------------------------
+r73744 | xuerian | 2008-05-13 18:17:43 -0400 (Tue, 13 May 2008) | 1 line
+Changed paths:
+   M /trunk/XLoot/XLoot.lua
+
+XLoot: Update to new coin strings
+------------------------------------------------------------------------
+r72125 | xuerian | 2008-04-29 16:08:07 -0400 (Tue, 29 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/XLoot/XLoot.lua
+
+XLoot: Commented out useless code causing a error.
+------------------------------------------------------------------------
+r71999 | xuerian | 2008-04-28 17:52:21 -0400 (Mon, 28 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/XLoot/embeds.xml
+
+XLoot: Second fix of the same dang typo. Alliance can diaf.
+------------------------------------------------------------------------
+r71996 | xuerian | 2008-04-28 17:26:53 -0400 (Mon, 28 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/XLoot/embeds.xml
+
+XLoot: Fixed embeds.xml errors.
+------------------------------------------------------------------------
+r71840 | xuerian | 2008-04-27 18:18:15 -0400 (Sun, 27 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/XLoot/XLoot.toc
+
+XLoot: Oooops >.> 
+------------------------------------------------------------------------
+r71839 | xuerian | 2008-04-27 18:16:42 -0400 (Sun, 27 Apr 2008) | 1 line
+Changed paths:
+   A /trunk/XLoot/locales (from /trunk/XLoot/localization:71798)
+   R /trunk/XLoot/locales/deDE.lua (from /trunk/XLoot/localization/deDE.lua:71838)
+   R /trunk/XLoot/locales/enUS.lua (from /trunk/XLoot/localization/enUS.lua:71838)
+   R /trunk/XLoot/locales/esES.lua (from /trunk/XLoot/localization/esES.lua:71838)
+   R /trunk/XLoot/locales/frFR.lua (from /trunk/XLoot/localization/frFR.lua:71838)
+   R /trunk/XLoot/locales/koKR.lua (from /trunk/XLoot/localization/koKR.lua:71838)
+   D /trunk/XLoot/locales/localization.zhTW.lua
+   R /trunk/XLoot/locales/zhCN.lua (from /trunk/XLoot/localization/zhCN.lua:71838)
+   R /trunk/XLoot/locales/zhTW.lua (from /trunk/XLoot/localization/zhTW.lua:71838)
+   D /trunk/XLoot/localization
+
+XLoot: <Cough, nelson voice> HAAA-HAAA. Restart wow again. Some raider is going to kill me...
+------------------------------------------------------------------------
+r71799 | xuerian | 2008-04-27 13:54:28 -0400 (Sun, 27 Apr 2008) | 1 line
+Changed paths:
+   D /trunk/XLoot/localization/localization.zhTW.lua
+
+XLoot: Fixed errant localization file.
+------------------------------------------------------------------------
+r71797 | xuerian | 2008-04-27 13:45:45 -0400 (Sun, 27 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/XLoot/XLoot.lua
+   M /trunk/XLoot/XLoot.toc
+   A /trunk/XLoot/embeds.xml
+   A /trunk/XLoot/localization
+   A /trunk/XLoot/localization/deDE.lua
+   A /trunk/XLoot/localization/enUS.lua
+   A /trunk/XLoot/localization/esES.lua
+   A /trunk/XLoot/localization/frFR.lua
+   A /trunk/XLoot/localization/koKR.lua
+   A /trunk/XLoot/localization/localization.zhTW.lua (from /trunk/XLoot/localization.zhTW.lua:71796)
+   A /trunk/XLoot/localization/zhCN.lua
+   A /trunk/XLoot/localization/zhTW.lua
+   D /trunk/XLoot/localization.deDE.lua
+   D /trunk/XLoot/localization.enUS.lua
+   D /trunk/XLoot/localization.esES.lua
+   D /trunk/XLoot/localization.frFR.lua
+   D /trunk/XLoot/localization.koKR.lua
+   D /trunk/XLoot/localization.zhCN.lua
+   D /trunk/XLoot/localization.zhTW.lua
+
+XLoot: Switched to embeds.xml structure (I think), added a sanity check, reorganized localization files. Newline restrictions can diaf.
+
+
+------------------------------------------------------------------------
+r71715 | ananhaid | 2008-04-27 01:37:04 -0400 (Sun, 27 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/XLoot/XLoot.toc
+   M /trunk/XLoot/localization.zhCN.lua
+
+XLoot: 
+- zhCN update.
+------------------------------------------------------------------------
+r71292 | scorpio0920 | 2008-04-24 14:27:47 -0400 (Thu, 24 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/XLoot/XLoot.toc
+   M /trunk/XLoot/localization.zhTW.lua
+
+XLoot:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r71234 | 7destiny | 2008-04-24 07:30:09 -0400 (Thu, 24 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/XLoot/localization.koKR.lua
+
+XLoot: koKR Update
+------------------------------------------------------------------------
+r71178 | xuerian | 2008-04-23 22:27:44 -0400 (Wed, 23 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/XLoot/XLoot.lua
+   M /trunk/XLoot/XLootOptions.lua
+   M /trunk/XLoot/localization.enUS.lua
+
+XLoot: Added a Alpha option.
+------------------------------------------------------------------------
+r69499 | ammo | 2008-04-13 04:24:08 -0400 (Sun, 13 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/AuldLangSyne/AuldLangSyne.toc
+   M /trunk/AuldLangSyne/Backup/AuldLangSyne_Backup.toc
+   M /trunk/AuldLangSyne/FriendList/AuldLangSyne_FriendList.toc
+   M /trunk/AuldLangSyne/Fu/AuldLangSyne_Fu.toc
+   M /trunk/AuldLangSyne/GuildList/AuldLangSyne_GuildList.toc
+   M /trunk/AuldLangSyne/Info/AuldLangSyne_Info.toc
+   M /trunk/AuldLangSyne/Note/AuldLangSyne_Note.toc
+   M /trunk/AuldLangSyne/Panel/AuldLangSyne_Panel.toc
+   M /trunk/AuldLangSyne/Sync/AuldLangSyne_Sync.toc
+   M /trunk/BanzaiAlert/BanzaiAlert.toc
+   M /trunk/Cartographer_Mailboxes/Cartographer_Mailboxes.toc
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+   M /trunk/Cartographer_QuestObjectives/Cartographer_QuestObjectives.toc
+   M /trunk/Cartographer_Trainers/Cartographer_Trainers.toc
+   M /trunk/Cartographer_Vendors/Cartographer_Vendors.toc
+   M /trunk/ElkBuffBars/ElkBuffBars.toc
+   M /trunk/FreeRefills/FreeRefills.toc
+   M /trunk/FuBar_ArenaFu/FuBar_ArenaFu.toc
+   M /trunk/FuBar_EmoteFu2/FuBar_EmoteFu2.toc
+   M /trunk/FuBar_GroupFu/FuBar_GroupFu.toc
+   M /trunk/FuBar_ReagentFu/FuBar_ReagentFu.toc
+   M /trunk/FuBar_RegenFu/FuBar_RegenFu.toc
+   M /trunk/ItemBonusLib/ItemBonusLib.toc
+   M /trunk/LibBabble-Faction-3.0/LibBabble-Faction-3.0.toc
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.toc
+   M /trunk/PaintChipsLib/PaintChipsLib.toc
+   M /trunk/Quixote/Quixote.toc
+   M /trunk/RollCall-1.0/RollCall-1.0.toc
+   M /trunk/Skillet/Skillet.toc
+   M /trunk/SpecialEventsEmbed/SpecialEventsEmbed.toc
+   M /trunk/SpellEventsLib/SpellEventsLib.toc
+   M /trunk/StatFrameLib/StatFrameLib.toc
+   M /trunk/TankPoints/TankPoints.toc
+   M /trunk/TheSocial-1.0/TheSocial-1.0.toc
+   M /trunk/TouristLib/TouristLib.toc
+   M /trunk/XLoot/XLoot.toc
+   M /trunk/XLootGroup/XLootGroup.toc
+   M /trunk/XLootMaster/XLootMaster.toc
+   M /trunk/ezIcons/ezIcons.toc
+   M /trunk/myBindings2/myBindings2.toc
+
+.Undo all of Scorpio0920 schanges. You will lose your SVN account.
+I wish you were on IRC #wowace on freenode.net so we can have a chat.
+
+------------------------------------------------------------------------
+r69492 | scorpio0920 | 2008-04-13 03:53:01 -0400 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/XLoot/XLoot.toc
+
+XLoot:
+- toc to 2.4
+------------------------------------------------------------------------

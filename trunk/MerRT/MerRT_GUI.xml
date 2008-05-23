@@ -1,0 +1,2225 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="MerRT_GUI.lua"/>
+	<Button name="MerRT_FilterButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="194" y="20"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+			</OnLoad>
+			<OnClick>
+				MerRT.RaidListOnClick(arg1)
+			</OnClick>
+		</Scripts>
+		<NormalTexture name="$parentNormalTexture" file="Interface\AuctionFrame\UI-AuctionFrame-FilterBg">
+			<TexCoords left="0" right="0.53125" top="0" bottom="0.625"/>
+		</NormalTexture>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD"/>
+		<ButtonText name="$parentNormalText">
+			<Size>
+				<AbsDimension x="162" y="12"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="4" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GameFontNormalSmall" justifyH="LEFT"/>
+		<HighlightFont inherits="GameFontHighlightSmall" justifyH="LEFT"/>
+	</Button>
+	<Button name="MerRT_MembersColumnHeaderTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<Scripts>
+			<OnClick>
+				MerRT.SortTable("member", this.sortType)
+			</OnClick>
+		</Scripts>
+		<NormalFont inherits="GameFontNormal"/>
+		<HighlightFont inherits="GameFontHighlight"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="MerRT_MembersButtonTemplate" virtual="true" hidden="true">
+		<Size>
+			<AbsDimension x="370" y="18"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parentNum" inherits="GameTooltipTextSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="20" y="16"/>
+					</Size>
+					<Color r="0.6" g="0.6" b="0"/>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentName" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="112" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentClass" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="74" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentEarn" inherits="GameTooltipTextSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="48" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentClass" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSpend" inherits="GameTooltipTextSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="50" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentEarn" relativePoint="RIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSurplus" inherits="GameTooltipTextSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="70" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentSpend" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="-16" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				getglobal(this:GetName() .. "bg"):SetAlpha(0.1);
+			</OnLoad>
+			<OnClick>
+				MerRT.PlayersOnClick(arg1)
+			</OnClick>
+			<OnEnter>
+				MerRT.PlayersOnMouseOver()
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+		<NormalTexture name="$parentbg" file="Interface\Tooltips\UI-Tooltip-Background" hidden="true">
+			<Size>
+				<AbsDimension x="370" y="17"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT"/>
+			</Anchors>
+		</NormalTexture>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>			
+	</Button>
+	<Button name="MerRT_LootsColumnHeaderTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<Scripts>
+			<OnClick>
+				MerRT.SortTable("loot", this.sortType)
+			</OnClick>
+		</Scripts>
+		<NormalFont inherits="GameFontNormal"/>
+		<HighlightFont inherits="GameFontHighlight"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="MerRT_LootsButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="30" y="30"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">				
+				<Texture name="$parentLeft" file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+					<Size>
+						<AbsDimension x="10" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="30" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+					<Size>
+						<AbsDimension x="10" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="320" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.75" right="0.828125" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+					<Size>
+						<AbsDimension x="10" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+						<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.75" top="0" bottom="1.0"/>
+				</Texture>				
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentIconTexture">
+					<Size>
+						<AbsDimension x="29" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentMouseOver" file="Interface\HelpFrame\HelpFrameButton-Highlight" hidden="true">
+					<Size>
+						<AbsDimension x="336" y="29"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="32" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="1.0" top="0" bottom="0.578125"/>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-2" y="3"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentItem" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="173" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentIconTexture">
+							<Offset>
+								<AbsDimension x="5" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentLooter"  inherits="GameTooltipTextSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="98" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentItem">
+							<Offset>
+								<AbsDimension x="4" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentCost" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="48" y="28"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentLooter">
+							<Offset>
+								<AbsDimension x="-17" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>				
+			</Layer>			
+		</Layers>
+		<Frames>
+			<Button name="$parentHitArea">
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="32" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="320" y="29"/>
+				</Size>
+				<Scripts>
+					<OnLoad>
+						this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+					</OnLoad>
+					<OnEnter>
+						getglobal(this:GetParent():GetName() .. "MouseOver"):Show();
+					</OnEnter>
+					<OnLeave>
+						getglobal(this:GetParent():GetName() .. "MouseOver"):Hide();
+					</OnLeave>
+					<OnClick>
+						MerRT.LootsOnClick(arg1)
+					</OnClick>
+				</Scripts>
+			</Button>			
+		</Frames>
+		<Scripts>
+			<OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+				if ( this.link and GetItemInfo(this.link) ) then
+					GameTooltip:SetHyperlink(this.link)
+					GameTooltip:Show()
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				if IsShiftKeyDown() and ChatFrameEditBox:IsVisible() and this.link and GetItemInfo(this.link) then
+					ChatFrameEditBox:Insert("|c"..this.color.."|H"..this.link.."|h["..this.item.."]|h|r")
+				end
+			</OnClick>
+		</Scripts>
+		<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+	</Button>
+	<Button name="MerRT_BossColumnHeaderTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="10" y="24"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="53" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.75"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.75"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont inherits="GameFontNormal"/>
+		<HighlightFont inherits="GameFontHighlight"/>
+		<HighlightTexture name="$parentHighlightTexture" file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="$parentLeft">
+					<Offset>
+						<AbsDimension x="-2" y="5"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT" relativeTo="$parentRight">
+					<Offset>
+						<AbsDimension x="2" y="-7"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+	<Button name="MerRT_BossButtonTemplate" virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="370" y="18"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parentNum" inherits="GameTooltipTextSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="20" y="16"/>
+					</Size>
+					<Color r="0.6" g="0.6" b="0"/>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentName" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="132" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="18" y="-1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTimer" inherits="GameTooltipTextSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="100" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentNumber" inherits="GameTooltipTextSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="48" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentTimer" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentDKP" inherits="GameTooltipTextSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="60" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentNumber" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="-6" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+			</OnLoad>
+			<OnClick>
+				MerRT.BossesOnClick(arg1)
+			</OnClick>
+		</Scripts>
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>			
+	</Button>
+	
+	
+	<Frame name="MerRTFrame" toplevel="true" movable="true" enableMouse="true" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="640" y="512"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<HitRectInsets>
+			<AbsInset left="0" right="30" top="0" bottom="70"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentPortraitTexture" file="Interface\QuestFrame\UI-QuestLog-BookIcon">
+					<Size>
+						<AbsDimension x="60" y="60"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="8" y="-6"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>	
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentTopLeft" file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+					<Size>
+						<AbsDimension x="256" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentTop" file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+					<Size>
+						<AbsDimension x="256" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTopLeft" relativePoint="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.32" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentTopRight" file="Interface\PaperDollInfoFrame\UI-Character-General-TopRight">
+					<Size>
+						<AbsDimension x="128" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT"/>
+					</Anchors>
+				</Texture>				
+				<Texture name="$parentBotLeft" file="Interface\PaperDollInfoFrame\SkillFrame-BotLeft">
+					<Size>
+						<AbsDimension x="256" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentBot" file="Interface\PaperDollInfoFrame\SkillFrame-BotLeft">
+					<Size>
+						<AbsDimension x="256" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentBotLeft" relativePoint="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.36" right="0.8" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentBotRight" file="Interface\PaperDollInfoFrame\SkillFrame-BotRight">
+					<Size>
+						<AbsDimension x="128" y="256"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentTitleText" inherits="GameFontNormal">
+					<Size>
+						<AbsDimension x="300" y="14"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="-6" y="-17"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentDropDown" inherits="UIDropDownMenuTemplate"/>
+			<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-30" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			
+			<Frame name="$parentFilter" setAllPoints="true">
+				<Size>
+					<AbsDimension x="200" y="333"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="22" y="-75"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\AuctionFrame\UI-AuctionFrame-Browse-BotLeft">
+							<Size>
+								<AbsDimension x="200" y="120"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.1" right="0.726" top="0" bottom="0.55"/>
+						</Texture>
+						<Texture file="Interface\AuctionFrame\UI-AuctionFrame-Browse-BotLeft">
+							<Size>
+								<AbsDimension x="200" y="120"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-120"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.1" right="0.726" top="0" bottom="0.55"/>
+						</Texture>
+						<Texture name="$parentBot" file="Interface\AuctionFrame\UI-AuctionFrame-Browse-BotLeft">
+							<Size>
+								<AbsDimension x="200" y="93"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-240"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.1" right="0.726" top="0" bottom="0.55"/>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\WorldStateFrame\WorldStateFinalScoreFrame-TopBackground">
+							<Size>
+								<AbsDimension x="200" y="34"/>
+							</Size>							
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+							<TexCoords left="0" right="2.0" top="0" bottom="1.0"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentCreateRaid" inherits="UIPanelButtonTemplate" text="NEW">
+                        <Size>
+                            <AbsDimension x="48" y="24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="1" y="-1"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>
+								MerRT:CreateRaid()
+								MerRT.UpdateRaidList()
+								MerRT.UpdateSubFrames()
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+					<Button name="$parentStartRaid" inherits="UIPanelButtonTemplate" text="开始">
+                        <Size>
+                            <AbsDimension x="48" y="24"/>
+                        </Size>
+                        <Anchors>
+							<Anchor point="LEFT" relativeTo="$parentCreateRaid" relativePoint="RIGHT"/>
+						</Anchors>
+                        <Scripts>
+                            <OnClick>
+								MerRT:StartRaid(MerRT.tmp.selectid)
+								MerRT.UpdateRaidList()
+								MerRT.UpdateSubFrames()
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+					<Button name="$parentEndRaid" inherits="UIPanelButtonTemplate" text="结束">
+                        <Size>
+                            <AbsDimension x="48" y="24"/>
+                        </Size>
+                        <Anchors>
+							<Anchor point="LEFT" relativeTo="$parentStartRaid" relativePoint="RIGHT"/>
+						</Anchors>
+                        <Scripts>
+                            <OnClick>
+								MerRT:EndRaid()
+								MerRT.UpdateRaidList()
+								MerRT.UpdateSubFrames()
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+					<Button name="$parentSurplusRaid" inherits="UIPanelButtonTemplate" text="结算">
+                        <Size>
+                            <AbsDimension x="48" y="24"/>
+                        </Size>
+                        <Anchors>
+							<Anchor point="LEFT" relativeTo="$parentEndRaid" relativePoint="RIGHT"/>
+						</Anchors>
+                        <Scripts>
+                            <OnClick>
+								MerRT:SurplusRaid(MerRT.tmp.selectid)
+								MerRT.UpdateSubFrames()
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+					<Button name="$parentButton1" inherits="MerRT_FilterButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="-1" y="-30"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton2" inherits="MerRT_FilterButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton3" inherits="MerRT_FilterButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton4" inherits="MerRT_FilterButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton5" inherits="MerRT_FilterButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton6" inherits="MerRT_FilterButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton7" inherits="MerRT_FilterButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton8" inherits="MerRT_FilterButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton9" inherits="MerRT_FilterButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton10" inherits="MerRT_FilterButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton9" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton11" inherits="MerRT_FilterButtonTemplate" id="11">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton10" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton12" inherits="MerRT_FilterButtonTemplate" id="12">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton11" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton13" inherits="MerRT_FilterButtonTemplate" id="13">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton12" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton14" inherits="MerRT_FilterButtonTemplate" id="14">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton13" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton15" inherits="MerRT_FilterButtonTemplate" id="15">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton14" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<ScrollFrame name="$parentScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="188" y="305"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="168" y="-28"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="ARTWORK">
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="30" y="256"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="5"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="0.8828125"/>
+								</Texture>
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="30" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(20, MerRT.UpdateRaidList);
+							</OnVerticalScroll>
+						</Scripts>
+					</ScrollFrame>	
+				</Frames>
+				<Scripts>
+					<OnShow>
+						MerRT.UpdateRaidList()
+						MerRT.UpdateSubFrames()
+					</OnShow>			
+				</Scripts>
+			</Frame>
+			
+			<Button name="$parentTab1" inherits="CharacterFrameTabButtonTemplate" id="1" text="BOSS">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-37" y="43"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MerRT.SubFrames_SelectTab( this:GetID() )
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTab2" inherits="CharacterFrameTabButtonTemplate" id="2" text="拾取">
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parentTab1" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="14" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MerRT.SubFrames_SelectTab( this:GetID() )
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTab3" inherits="CharacterFrameTabButtonTemplate" id="3" text="成员">
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parentTab2" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="14" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MerRT.SubFrames_SelectTab( this:GetID() )
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Frame name="MerRT_PlayersFrame" setAllPoints="true" hidden="false">
+				<Size>
+					<AbsDimension x="372" y="333"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-45" y="-75"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\WorldStateFrame\WorldStateFinalScoreFrame-TopBackground">
+							<Size>
+								<AbsDimension x="372" y="30"/>
+							</Size>							
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+							<TexCoords left="0" right="2.0" top="0" bottom="1.0"/>
+						</Texture>						
+					</Layer>
+					<Layer level="OVERLAY">
+						<Texture name="$parent_OVERLAY_Right" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="8" y="22"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="32"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+						</Texture>
+						<Texture name="$parent_OVERLAY_Middle" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="180" y="22"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT" relativeTo="$parent_OVERLAY_Right" relativePoint="LEFT"/>
+							</Anchors>
+							<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+						</Texture>
+						<Texture name="$parent_OVERLAY_Left" file="Interface\Common\Common-Input-Border">
+							<Size>
+								<AbsDimension x="8" y="22"/>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT" relativeTo="$parent_OVERLAY_Middle" relativePoint="LEFT"/>
+							</Anchors>
+							<TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+						</Texture>
+						<FontString name="$parentTotal" inherits="GameFontNormalSmall" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="200" y="16"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativeTo="$parentHorizontalBarLeft" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="14" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<CheckButton name="$parentMouseOverCheck" checked="true">	
+						<Size>
+							<AbsDimension x="20" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parent_OVERLAY_Right" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="0" y="-1"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<HitRectInsets>
+							<AbsInset left="-100" right="0" top="0" bottom="0"/>
+						</HitRectInsets>
+						<Layers>
+							<Layer level="OVERLAY">
+								<FontString name="$parentText" inherits="GameFontHighlightSmall" text="鼠标经过显示详情">
+									<Anchors>
+										<Anchor point="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-26" y="-1"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</FontString>
+							</Layer>
+						</Layers>
+						<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+						<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+						<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+						<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+						<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+					</CheckButton>
+					<Button name="$parentAddButton" inherits="UIPanelButtonTemplate" text="添加成员">
+						<Size>
+							<AbsDimension x="80" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="4" y="-24"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								MerRT.AddPlayer()
+							</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentInputBox" letters="120" autoFocus="false" inherits="InputBoxTemplate">
+						<Size>
+							<AbsDimension x="98" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentAddButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnShow>
+								this:SetText("");
+							</OnShow>
+						</Scripts>
+					</EditBox>
+					<Button name="$parentGatherButton" inherits="UIPanelButtonTemplate" text="集合分">
+						<Size>
+							<AbsDimension x="80" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentInputBox" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								MerRT.UpdateGather()
+							</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentGatherBox" letters="120" autoFocus="false" inherits="InputBoxTemplate">
+						<Size>
+							<AbsDimension x="92" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentGatherButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-4" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnShow>
+								this:SetText("");
+							</OnShow>
+						</Scripts>
+					</EditBox>
+					<Button name="$parentColumnHeader1" inherits="MerRT_MembersColumnHeaderTemplate" text="NAME">
+						<Anchors>
+							<Anchor point="TOPLEFT"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(128);
+								this.sortType = "name";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader2" inherits="MerRT_MembersColumnHeaderTemplate" text="CLASS">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader1" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(77);
+								this.sortType = "class";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader3" inherits="MerRT_MembersColumnHeaderTemplate" text="获得">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader2" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(50);
+								this.sortType = "t_earn";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader4" inherits="MerRT_MembersColumnHeaderTemplate" text="花費">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader3" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(50);
+								this.sortType = "m_loot";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader5" inherits="MerRT_MembersColumnHeaderTemplate" text="结算">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader4" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(75);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentButton1" inherits="MerRT_MembersButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-26"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton2" inherits="MerRT_MembersButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton1" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton3" inherits="MerRT_MembersButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton2" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton4" inherits="MerRT_MembersButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton3" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton5" inherits="MerRT_MembersButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton4" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton6" inherits="MerRT_MembersButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton5" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton7" inherits="MerRT_MembersButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton6" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton8" inherits="MerRT_MembersButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton7" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton9" inherits="MerRT_MembersButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton8" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton10" inherits="MerRT_MembersButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton9" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton11" inherits="MerRT_MembersButtonTemplate" id="11">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton10" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton12" inherits="MerRT_MembersButtonTemplate" id="12">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton11" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton13" inherits="MerRT_MembersButtonTemplate" id="13">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton12" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton14" inherits="MerRT_MembersButtonTemplate" id="14">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton13" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton15" inherits="MerRT_MembersButtonTemplate" id="15">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton14" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton16" inherits="MerRT_MembersButtonTemplate" id="16">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton15" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton17" inherits="MerRT_MembersButtonTemplate" id="17">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton16" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<ScrollFrame name="$parentScrollFrame" inherits="FauxScrollFrameTemplate" hidden="true">
+						<Size>
+							<AbsDimension x="360" y="306"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-23" y="-27"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(18, MerRT.UpdatePlayers);
+							</OnVerticalScroll>
+						</Scripts>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="226"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="4"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="0.8828125"/>
+								</Texture>
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+								</Texture>
+							</Layer>
+						</Layers>
+					</ScrollFrame>									
+				</Frames>
+			</Frame>
+			<Frame name="MerRT_LootsFrame" setAllPoints="true" hidden="true">
+				<Size>
+					<AbsDimension x="372" y="333"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-45" y="-75"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\WorldStateFrame\WorldStateFinalScoreFrame-TopBackground">
+							<Size>
+								<AbsDimension x="372" y="30"/>
+							</Size>							
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+							<TexCoords left="0" right="2.0" top="0" bottom="1.0"/>
+						</Texture>						
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentAddButton" inherits="UIPanelButtonTemplate" text="添加物品">
+						<Size>
+							<AbsDimension x="80" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="4" y="-24"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								MerRT.AddItem()
+							</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentInputBox" letters="120" autoFocus="false" inherits="InputBoxTemplate">
+						<Size>
+							<AbsDimension x="180" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentAddButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnShow>
+								this:SetText("");
+							</OnShow>
+						</Scripts>
+					</EditBox>
+					<CheckButton name="$parentCheckButton"  inherits="UICheckButtonTemplate">
+						<Size>
+							<AbsDimension x="22" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentInputBox" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-80" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<HitRectInsets>
+							<AbsInset left="0" right="-50" top="0" bottom="0"/>
+						</HitRectInsets>
+						<Scripts>
+							<OnLoad>
+								getglobal(this:GetName() .. "Text"):SetText("当前团队");
+							</OnLoad>
+						</Scripts>
+					</CheckButton>
+					<Button name="$parentColumnHeader1" inherits="MerRT_LootsColumnHeaderTemplate" text="NAME">
+						<Anchors>
+							<Anchor point="TOPLEFT"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(210);
+								this.sortType = "color";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader2" inherits="MerRT_LootsColumnHeaderTemplate" text="拾取者">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader1" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(100);
+								this.sortType = "looter";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader3" inherits="MerRT_LootsColumnHeaderTemplate" text="花費">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader2" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(68);
+								this.sortType = "dkp";
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentButton1" inherits="MerRT_LootsButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-28"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton2" inherits="MerRT_LootsButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton1" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton3" inherits="MerRT_LootsButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton2" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton4" inherits="MerRT_LootsButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton3" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton5" inherits="MerRT_LootsButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton4" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton6" inherits="MerRT_LootsButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton5" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton7" inherits="MerRT_LootsButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton6" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton8" inherits="MerRT_LootsButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton7" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton9" inherits="MerRT_LootsButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton8" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton10" inherits="MerRT_LootsButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton9" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<ScrollFrame name="$parentScrollFrame" inherits="FauxScrollFrameTemplate" hidden="true">
+						<Size>
+							<AbsDimension x="372" y="306"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-23" y="-27"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(30, MerRT.UpdateLoots);
+							</OnVerticalScroll>
+						</Scripts>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="226"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="4"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="0.8828125"/>
+								</Texture>
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+								</Texture>
+							</Layer>
+						</Layers>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			<Frame name="MerRT_BossKillsFrame" setAllPoints="true" hidden="true">
+				<Size>
+					<AbsDimension x="372" y="333"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-45" y="-75"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture file="Interface\WorldStateFrame\WorldStateFinalScoreFrame-TopBackground">
+							<Size>
+								<AbsDimension x="372" y="29"/>
+							</Size>							
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+							<TexCoords left="0" right="2.0" top="0" bottom="1.0"/>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<Texture name="$parentHorizontalBarLeft" file="Interface\ClassTrainerFrame\UI-ClassTrainer-HorizontalBar">
+							<Size>
+								<AbsDimension x="256" y="12"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-4" y="-190"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="1.0" top="0" bottom="0.25"/>
+						</Texture>
+						<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-HorizontalBar">
+							<Size>
+								<AbsDimension x="125" y="12"/>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentHorizontalBarLeft" relativePoint="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0" right="0.29296875" top="0.25" bottom="0.5"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentAddButton" inherits="UIPanelButtonTemplate" text="添加BOSS">
+						<Size>
+							<AbsDimension x="80" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="4" y="-24"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								MerRT.AddBoss()
+							</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentInputBox" letters="120" autoFocus="false" inherits="InputBoxTemplate">
+						<Size>
+							<AbsDimension x="180" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentAddButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-8" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnShow>
+								this:SetText("");
+							</OnShow>
+						</Scripts>
+					</EditBox>
+					<CheckButton name="$parentCheckButton"  inherits="UICheckButtonTemplate">
+						<Size>
+							<AbsDimension x="22" y="22"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentInputBox" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="-80" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<HitRectInsets>
+							<AbsInset left="0" right="-50" top="0" bottom="0"/>
+						</HitRectInsets>
+						<Scripts>
+							<OnLoad>
+								getglobal(this:GetName() .. "Text"):SetText("当前团队");
+							</OnLoad>
+						</Scripts>
+					</CheckButton>
+					<Button name="$parentColumnHeader1" inherits="MerRT_BossColumnHeaderTemplate" text="NAME">
+						<Anchors>
+							<Anchor point="TOPLEFT"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(142);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader2" inherits="MerRT_BossColumnHeaderTemplate" text="击杀时间">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader1" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(110);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader3" inherits="MerRT_BossColumnHeaderTemplate" text="人数">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader2" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(50);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentColumnHeader4" inherits="MerRT_BossColumnHeaderTemplate" text="DKP">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentColumnHeader3" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="-2" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								WhoFrameColumn_SetWidth(75);
+							</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentButton1" inherits="MerRT_BossButtonTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-26"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="$parentButton2" inherits="MerRT_BossButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton1" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton3" inherits="MerRT_BossButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton2" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton4" inherits="MerRT_BossButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton3" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton5" inherits="MerRT_BossButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton4" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton6" inherits="MerRT_BossButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton5" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton7" inherits="MerRT_BossButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton6" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton8" inherits="MerRT_BossButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton7" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<Button name="$parentButton9" inherits="MerRT_BossButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButton8" relativePoint="BOTTOMLEFT"/>									
+						</Anchors>
+					</Button>
+					<ScrollFrame name="$parentScrollFrame" inherits="FauxScrollFrameTemplate" hidden="true">
+						<Size>
+							<AbsDimension x="360" y="165"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-23" y="-27"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(18, MerRT.UpdateBossKilled);
+							</OnVerticalScroll>
+						</Scripts>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="30" y="150"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="4"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="0.8828125"/>
+								</Texture>
+								<Texture file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="30" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.4140625"/>
+								</Texture>
+							</Layer>
+						</Layers>
+					</ScrollFrame>
+					<Frame name="$parentDetailsFrame">
+						<Size>
+							<AbsDimension x="370" y="132"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentHorizontalBarLeft" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="4" y="1"/>
+								</Offset>
+							</Anchor>
+						</Anchors>						
+						<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+							<EdgeSize>
+								<AbsValue val="16"/>
+							</EdgeSize>
+							<TileSize>
+								<AbsValue val="16"/>
+							</TileSize>
+							<BackgroundInsets>
+								<AbsInset left="4" right="4" top="4" bottom="4"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Frames>
+							<ScrollFrame name="$parentDetails" inherits="UIPanelScrollFrameTemplate">
+								<Size>
+									<AbsDimension x="335" y="120"/>
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT">
+										<Offset>
+											<AbsDimension x="6" y="-6"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<ScrollChild>
+									<EditBox name="$parentBox" multiLine="true" letters="99999" autoFocus="false" enableMouse="false">
+										<Size>
+											<AbsDimension x="330" y="120"/>
+										</Size>
+										<Scripts>
+											<OnTextChanged>
+												local scrollBar = getglobal(this:GetParent():GetName().."ScrollBar")
+												this:GetParent():UpdateScrollChildRect();
+												local min, max = scrollBar:GetMinMaxValues();
+												if ( max > 0 and (this.max ~= max) ) then
+													this.max = max;
+													scrollBar:SetValue(max);
+												end
+											</OnTextChanged>
+											<OnEscapePressed>
+												this:ClearFocus();
+											</OnEscapePressed>
+										</Scripts>
+										<FontString inherits="GameFontHighlightSmall"/>
+									</EditBox>
+								</ScrollChild>
+							</ScrollFrame>
+						</Frames>
+						<Scripts>
+							<OnLoad>
+								this:SetBackdropBorderColor(0.6, 0.6, 0.6);
+								this:SetBackdropColor(0.4, 0.4, 0.4, 0.25);
+							</OnLoad>
+						</Scripts>
+					</Frame>					
+				</Frames>
+			</Frame>
+			
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				PanelTemplates_SetNumTabs(this, 3)
+				PanelTemplates_SetTab(this, 3)
+			</OnLoad>
+			<OnMouseDown>
+				if (arg1 == "LeftButton") then
+					this:StartMoving();
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				if (arg1 == "LeftButton") then
+					this:StopMovingOrSizing();
+				end
+			</OnMouseUp>
+		</Scripts>
+	</Frame>	
+	<Frame name="MerRT_PopupFrame" toplevel="true" movable="true" enableMouse="true" parent="MerRTFrame" hidden="true">
+        <Size>
+            <AbsDimension x="320" y="106"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER">
+				<Offset>
+					<AbsDimension x="0" y="30"/>
+				</Offset>
+			</Anchor>
+        </Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parentText" inherits="GameFontNormal">
+                    <Size>
+                        <AbsDimension x="200" y="28"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="-12"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+				<Texture name="$parentAlertIcon" file="Interface\DialogFrame\DialogAlertIcon">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="12" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+            </Layer>
+        </Layers>
+        <Frames>
+			<EditBox name="$parentEditBox" inherits="InputBoxTemplate" hidden="true">
+				<Size>
+					<AbsDimension x="160" y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="CENTER"/>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						MerRT_SubmitPopupFrame(MerRT_PopupFrame.action, MerRT_PopupFrame.key, MerRT_PopupFrame.id)
+                       this:GetParent():Hide();
+					</OnEnterPressed>
+					<OnEscapePressed>
+						this:GetParent():Hide();
+					</OnEscapePressed>
+				</Scripts>
+			</EditBox>
+            <Button name="$parentOkayButton" inherits="GameMenuButtonTemplate" text="OKAY">
+                <Size>
+                    <AbsDimension x="80" y="24"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="-45" y="13"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+						MerRT_SubmitPopupFrame(MerRT_PopupFrame.action, MerRT_PopupFrame.key, MerRT_PopupFrame.id)
+                        this:GetParent():Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parentCancelButton" inherits="GameMenuButtonTemplate" text="CANCEL">
+                <Size>
+                    <AbsDimension x="80" y="24"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="45" y="13"/>
+                        </Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						this:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>	
+	<Frame name="MerRT_ReportFrame" toplevel="true" movable="true" parent="UIParent" enableMouse="true" hidden="true">
+		<Size>
+			<AbsDimension x="550" y="500"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="8" right="8" top="10" bottom="10"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="256" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentHeaderText" inherits="GameFontNormal" text="RAID报表">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentHeaderTexture">
+							<Offset>
+								<AbsDimension x="0" y="-14"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<ScrollFrame name="$parentScrollFrame" inherits="UIPanelScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="500" y="430"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ScrollChild>
+					<EditBox name="MerRT_ReportFrameScrollFrameChild" multiLine="true" letters="100000">
+						<Size>
+							<AbsDimension x="500" y="430"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnTextChanged>
+								local scrollBar = getglobal(this:GetParent():GetName().."ScrollBar")
+								this:GetParent():UpdateScrollChildRect();
+								local min, max = scrollBar:GetMinMaxValues();
+								if ( max > 0 and (this.max ~= max) ) then
+									this.max = max;
+									scrollBar:SetValue(max);
+								end
+							</OnTextChanged>
+							<OnEscapePressed>
+								this:ClearFocus();
+							</OnEscapePressed>
+						</Scripts>
+						<FontString inherits="GameTooltipTextSmall"/>
+					</EditBox>
+				</ScrollChild>
+			</ScrollFrame>
+			<Button name="$parentCloseButton" inherits="GameMenuButtonTemplate" text="CLOSE">
+				<Size>
+					<AbsDimension x="125" y="25"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM" >
+						<Offset>
+							<AbsDimension x="0" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MerRT_ReportFrame:Hide();
+					</OnClick>
+				</Scripts>
+			</Button>			
+		</Frames>
+	</Frame>	
+	<Button name="MerRTMinimapButton" parent="Minimap" toplevel="true" movable="true" enableMouse="true" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="34" y="34"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="MinimapBackdrop">
+				<Offset>
+					<AbsDimension x="-63" y="-13"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				this.tooltipText = "MerRT 2.4.x \nShift+右键移动图标";	
+			</OnLoad>
+			<OnEnter>
+				if ( this.tooltipText ) then
+					GameTooltip:SetOwner(this, "ANCHOR_LEFT");
+					GameTooltip:SetText(this.tooltipText, nil, nil, nil, nil, 1);
+					GameTooltip:Show();
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				if MerRTFrame:IsShown() then
+					MerRTFrame:Hide()
+				else
+					MerRTFrame:Show()
+				end
+			</OnClick>
+			<OnMouseDown>
+				if (arg1 == "RightButton") then
+					if IsShiftKeyDown() then
+						this:StartMoving();
+					else
+						MerRT.OptionsOnClick()
+					end
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				this:StopMovingOrSizing();
+			</OnMouseUp>
+		</Scripts>		
+		<NormalTexture file="Interface\AddOns\MerRT\Minibutton"/>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+	</Button>
+</Ui>

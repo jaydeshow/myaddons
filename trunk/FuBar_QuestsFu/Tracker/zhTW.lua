@@ -1,0 +1,20 @@
+﻿local L = AceLibrary("AceLocale-2.2"):new("QuestsFu_Tracker")
+L:RegisterTranslations("zhTW", function() return {
+	["Tracker"] = "追蹤框架",
+	["Autowatch"] = "自動追蹤任務",
+	["Automatically add quests to the tracker when appropriate"] = "自動將適當任務增加到追蹤框架中",
+	["Use own tracker"] = "使用自訂框架",
+	["Replace the default quest tracker with a slightly more featureful one"] = "使用自訂的追蹤框架取代系統預設追蹤框架",
+	["Login"] = "登入",
+	["Re-add quests you were watching before you logged out"] = "自動追蹤上次登出時追蹤的任務",
+	["Zone"] = "地區",
+	["Add quests to the tracker when you enter their zone"] = "自動追蹤所在地區的任務",
+	["Subzone"] = "子地區",
+	["Add quests to the tracker when you enter their subzone"] = "自動追蹤所在子地區的任務",
+	["Gained"] = "取得",
+	["Add quests to the tracker when they are first gained"] = "自動追蹤剛取得的任務",
+	["Progress"] = "進度",
+	["Add quests to the tracker when you make progress on them"] = "自動追蹤有任務進度的任務",
+	["Remove completed"] = "移除已完成",
+	["Remove quests from the tracker when you complete their objectives"] = "自動移除已完成所有目標的任務",
+} end)

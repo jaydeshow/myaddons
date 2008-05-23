@@ -1,8 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fName|r]
-## Version: 1.0
-## Notes: Unit names.
-## Author: Firik
-## Dependencies: BunchOfBars
-
-Name.lua

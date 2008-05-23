@@ -1,0 +1,70 @@
+------------------------------------------------------------------------
+r71390 | ckknight | 2008-04-24 22:33:29 -0400 (Thu, 24 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - actually set clearedLast
+------------------------------------------------------------------------
+r71145 | ckknight | 2008-04-23 17:32:31 -0400 (Wed, 23 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - remove debug line, fix a logic error
+------------------------------------------------------------------------
+r71141 | ckknight | 2008-04-23 17:28:46 -0400 (Wed, 23 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - only run the OnUpdate every 2 seconds
+------------------------------------------------------------------------
+r70755 | ckknight | 2008-04-21 13:03:52 -0400 (Mon, 21 Apr 2008) | 3 lines
+Changed paths:
+   A /trunk/LibGuildPositions-1.0/CallbackHandler-1.0
+   A /trunk/LibGuildPositions-1.0/CallbackHandler-1.0/CallbackHandler-1.0.lua
+   A /trunk/LibGuildPositions-1.0/CallbackHandler-1.0/CallbackHandler-1.0.xml
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.toc
+
+LibGuildPositions-1.0 - use CallbackHandler-1.0
+- don't use the oldLib system, as CallbackHandler-1.0 messes up that way.
+- callbacks are "Position", name, x, y, zone and "Clear", name
+------------------------------------------------------------------------
+r70531 | xinhuan | 2008-04-19 19:31:09 -0400 (Sat, 19 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0: Add a hook to stop the Guild Control Panel from resetting every 15 seconds (for guildmasters) as this library calls GuildRoster() every 15 seconds.
+------------------------------------------------------------------------
+r70508 | ckknight | 2008-04-19 15:57:26 -0400 (Sat, 19 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - fix a logic error in sending positions
+- don't receive messages from yourself
+- make sure to actually set the last sent time
+------------------------------------------------------------------------
+r70431 | ckknight | 2008-04-19 05:29:26 -0400 (Sat, 19 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - fix ChatThrottleLib support
+------------------------------------------------------------------------
+r70418 | ckknight | 2008-04-19 03:39:20 -0400 (Sat, 19 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - add an expire time for each guild member that lasts 2 minutes. After said 2 minutes are up and no new messages have arrived from the guild member, it is assumed that the guildie reloadui'd without the lib enabled or something similar.
+- if standing in one place and not moving, send a single message every 90 seconds.
+------------------------------------------------------------------------
+r70416 | ckknight | 2008-04-19 03:11:49 -0400 (Sat, 19 Apr 2008) | 2 lines
+Changed paths:
+   A /trunk/LibGuildPositions-1.0
+   A /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+   A /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.toc
+   A /trunk/LibGuildPositions-1.0/LibStub
+   A /trunk/LibGuildPositions-1.0/LibStub/LibStub.lua
+   A /trunk/LibGuildPositions-1.0/lib.xml
+
+LibGuildPositions-1.0 - initial commit
+This communicates your position with guild members as well as providing position information about guild members.
+------------------------------------------------------------------------

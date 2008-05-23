@@ -1,0 +1,19 @@
+﻿## Interface: 20400
+## Title: Icetip
+## Notes: 提示增强.
+## Version: 1.6
+## Author: 月色狼影
+## E-Mail: wolftankk@gmail.com
+## X-URL: http://cwowaddon.com
+## SavedVariables: IcetipDB
+
+locale\localization.lua
+locale\localization.en.lua
+
+core.lua
+option.lua
+module\talent.lua
+module\anchor.lua
+module\backdrop.lua
+module\buff.lua
+GUIframe.lua

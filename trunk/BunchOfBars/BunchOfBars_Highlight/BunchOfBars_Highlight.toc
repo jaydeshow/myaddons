@@ -1,8 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fHighlight|r]
-## Version: 1.0
-## Notes: Highlight mouseover and target frames.
-## Author: Firik
-## Dependencies: BunchOfBars
-
-Highlight.lua

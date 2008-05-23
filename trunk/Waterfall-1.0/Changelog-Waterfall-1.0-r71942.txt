@@ -1,0 +1,43 @@
+------------------------------------------------------------------------
+r71942 | toadkiller | 2008-04-28 09:43:42 -0400 (Mon, 28 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Waterfall-1.0/Waterfall-1.0/Waterfall-1.0.lua
+
+Waterfall-1.0 : 
+-- WaterfallDragLink Instant Cast tooltip text for 0 castTime.
+
+------------------------------------------------------------------------
+r71941 | toadkiller | 2008-04-28 09:39:00 -0400 (Mon, 28 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Waterfall-1.0/Waterfall-1.0/Waterfall-1.0.lua
+
+Waterfall-1.0 : 
+-- WaterfallDragLink support for built in macros, rip out LibBabbleSpell, fix icons for items, spells and macros.
+
+------------------------------------------------------------------------
+r67025 | orionshock | 2008-03-30 00:40:48 -0400 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/Waterfall-1.0/Waterfall-1.0/Waterfall-1.0.lua
+
+Waterfall-1.0: fix typo on line one with the block comment start
+------------------------------------------------------------------------
+r67019 | toadkiller | 2008-03-29 23:35:25 -0400 (Sat, 29 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Waterfall-1.0/Waterfall-1.0/Waterfall-1.0.lua
+
+Waterfall-1.0: 
+- And removing the debug line
+------------------------------------------------------------------------
+r67018 | toadkiller | 2008-03-29 23:25:13 -0400 (Sat, 29 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Waterfall-1.0/Waterfall-1.0/Waterfall-1.0.lua
+
+Waterfall-1.0: 
+-Fix column dropdown for case where items < columns
+------------------------------------------------------------------------
+r66643 | helium | 2008-03-28 04:29:48 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/Waterfall-1.0/Waterfall-1.0.toc
+
+Waterfall-1.0: TOC 20400
+------------------------------------------------------------------------

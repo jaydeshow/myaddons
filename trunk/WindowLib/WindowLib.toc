@@ -1,0 +1,13 @@
+﻿## Interface: 20400
+## LoadOnDemand: 1
+## Title: Lib: Window-1.0
+## Notes: A library that handles the basics of "window" style frames
+## Author: Mikk
+## eMail: dpsgnome@mail.com
+## X-Category: Library
+## OptionalDeps: Ace2
+## X-AceLibrary-Window-1.0: true
+## X-License: Public Domain
+
+embeds.xml
+Window-1.0\Window-1.0.lua

@@ -1,0 +1,20 @@
+local L = AceLibrary("AceLocale-2.2"):new("QuestsFu_Tracker")
+L:RegisterTranslations("enUS", function() return {
+	["Tracker"] = true,
+	["Autowatch"] = true,
+	["Automatically add quests to the tracker when appropriate"] = true,
+	["Use own tracker"] = true,
+	["Replace the default quest tracker with a slightly more featureful one"] = true,
+	["Login"] = true,
+	["Re-add quests you were watching before you logged out"] = true,
+	["Zone"] = true,
+	["Add quests to the tracker when you enter their zone"] = true,
+	["Subzone"] = true,
+	["Add quests to the tracker when you enter their subzone"] = true,
+	["Gained"] = true,
+	["Add quests to the tracker when they are first gained"] = true,
+	["Progress"] = true,
+	["Add quests to the tracker when you make progress on them"] = true,
+	["Remove completed"] = true,
+	["Remove quests from the tracker when you complete their objectives"] = true,
+} end)

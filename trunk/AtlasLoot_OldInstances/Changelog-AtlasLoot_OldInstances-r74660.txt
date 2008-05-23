@@ -1,0 +1,77 @@
+------------------------------------------------------------------------
+r74660 | kurax | 2008-05-21 10:59:42 -0400 (Wed, 21 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.cn.lua
+   M /trunk/AtlasLoot_OldInstances/original.de.lua
+   M /trunk/AtlasLoot_OldInstances/original.es.lua
+   M /trunk/AtlasLoot_OldInstances/original.fr.lua
+   M /trunk/AtlasLoot_OldInstances/original.kr.lua
+   M /trunk/AtlasLoot_OldInstances/original.tw.lua
+
+AtlasLoot_OldInstances:
+- Add a check to locale files to avoid errors
+------------------------------------------------------------------------
+r74409 | kurax | 2008-05-19 07:42:07 -0400 (Mon, 19 May 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.cn.lua
+   M /trunk/AtlasLoot_OldInstances/original.de.lua
+   M /trunk/AtlasLoot_OldInstances/original.es.lua
+   M /trunk/AtlasLoot_OldInstances/original.fr.lua
+   M /trunk/AtlasLoot_OldInstances/original.kr.lua
+   M /trunk/AtlasLoot_OldInstances/original.tw.lua
+
+AtlasLoot_OldInstances: Update locales
+------------------------------------------------------------------------
+r74386 | hegarol | 2008-05-19 05:27:02 -0400 (Mon, 19 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.en.lua
+
+AtlasLoot_OldInstances:
+- 2.4.2 changes (Main Hand --> One-Hand)
+------------------------------------------------------------------------
+r73920 | daviesh | 2008-05-15 03:01:02 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/AtlasLoot_OldInstances.toc
+
+AtlasLoot_OldInstances:
+- v4.05.00 finalised
+------------------------------------------------------------------------
+r73459 | kurax | 2008-05-11 07:53:37 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/AtlasLoot_OldInstances.toc
+
+AtlasLoot_OldInstances:
+- Update toc
+------------------------------------------------------------------------
+r73452 | kurax | 2008-05-11 07:30:43 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   A /trunk/AtlasLoot_OldInstances/original.de.lua
+   A /trunk/AtlasLoot_OldInstances/original.es.lua
+   A /trunk/AtlasLoot_OldInstances/original.fr.lua
+   A /trunk/AtlasLoot_OldInstances/original.kr.lua
+
+AtlasLoot_OldInstances:
+- Add deDE/esES/frFR/koKR locale
+------------------------------------------------------------------------
+r73383 | kurax | 2008-05-10 18:10:04 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.cn.lua
+   M /trunk/AtlasLoot_OldInstances/original.tw.lua
+
+AtlasLoot_OldInstances: Update zhCN/zhTW locale
+------------------------------------------------------------------------
+r73324 | kurax | 2008-05-10 12:20:28 -0400 (Sat, 10 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.cn.lua
+   M /trunk/AtlasLoot_OldInstances/original.tw.lua
+
+AtlasLoot_OldInstances:
+- Update zhTW locale
+------------------------------------------------------------------------
+r72367 | kurax | 2008-05-01 18:08:46 -0400 (Thu, 01 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.en.lua
+
+AtlasLoot_OldInstances:
+- Eliminate the icon data
+------------------------------------------------------------------------

@@ -1,0 +1,35 @@
+local L = AceLibrary("AceLocale-2.2"):new("FuBar_FactionsFu")
+
+L:RegisterTranslations("koKR", function() return {
+	TOOLTIP_HINT = "\n|cffeda55f클릭|r - 해당 진영으로 변경.\n|cffeda55fShift-클릭|r - 대화 입력창에 자료 붙여넣기.\n|cffeda55fAlt-클릭|r - 현재 지역에 맞추어 자동으로 해당 지역 진영으로 설정.\n|cffeda55fCtrl-클릭|r - 평판 활성화/비활성화 전환.",
+
+	["Text"] = "문자",
+	["Text Settings"] = "문자 설정입니다.",
+	["Show Name"] = "이름 표시",
+	["Toggles display of watched faction's name"] = "해당 진영의 이름을 표시 전환합니다.",
+	["Show Standing"] = "관계 표시",
+	["Toggles display of watched faction's current standing"] = "해당 진영의 현재 관계를 표시 전환합니다.",
+	["Show Progress"] = "진행 표시",
+	["Toggles display of watched faction's progress toward next standing"] = "해당 진영의 다음 관계까지 진행 표시 전환합니다.",
+	["Show Progress (in percent)"] = "진행 표시(퍼센트)",
+	["Toggles display of watched faction's progress toward next standing (in percent)"] = "해당 진영의 다음 관계까지 진행(퍼센트) 표시 전환합니다.",
+	["Color"] = "색상",
+	["Color Settings"] = "색상 설정입니다.",
+	["Name"] = "이름",
+	["Sets color of the faction name"] = "진영 이름의 색상을 설정합니다.",
+	["Reputation"] = "평판",
+	["Sets color of the faction reputation"] = "진영 평판의 색상을 설정합니다.",
+	["standing"] = "관계",
+	["Sets color of the faction standing"] = "진영 관계의 색상을 설정합니다.",
+	["Other"] = "기타",
+	["Other Settings"] = "기타 설정입니다.",
+	["Auto-Zone"] = "자동 지역",
+	["Toggles automatical adjustment of watched faction on zone change"] = "자동적으로 변경된 지역으로 현재 진영을 전환합니다.",
+	["Auto-Gain"] = "자동 획득",
+	["Toggles automatical adjustment of watched faction on faction gain"] = "자동적으로 획득한 진영으로 현재 진영을 전환합니다.",
+
+	["None"] = "없음",
+	["War Condition"] = "전쟁 상태",
+	["Blizzard's Default"] = "기본 블리자드",
+	["Incremental"] = "증분",
+} end)

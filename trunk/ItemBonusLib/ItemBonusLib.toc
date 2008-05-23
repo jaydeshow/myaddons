@@ -1,0 +1,14 @@
+## Interface: 20200
+## LoadOnDemand: 1
+## Title: Lib: ItemBonusLib
+## Notes: Scans your Equipment for cumulative item bonuses and sums them up.
+## Author: Jerry 
+## X-Credits: ideas, structure and regex from crowley@headshot.de. additional regex from Eridan
+## OptionalDeps: Ace2, GratuityLib, Deformat
+## X-Category: Library
+## X-AceForum: 3083
+## X-AceLibrary-ItemBonusLib-1.0: true
+
+embeds.xml
+
+ItemBonusLib-1.0\ItemBonusLib-1.0.lua

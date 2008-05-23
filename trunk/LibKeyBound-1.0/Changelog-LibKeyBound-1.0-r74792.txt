@@ -1,0 +1,140 @@
+------------------------------------------------------------------------
+r74792 | toadkiller | 2008-05-22 10:20:08 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0
+
+LibKeyBound-1.0:
+-- tsvn logtemplate
+------------------------------------------------------------------------
+r74778 | scorpion | 2008-05-22 07:00:11 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhCN.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhTW.lua
+
+LibKeyBound-1.0:
+ - Update zhTW & zhCN localization.
+------------------------------------------------------------------------
+r74773 | toadkiller | 2008-05-22 06:09:14 -0400 (Thu, 22 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Allow toggle to be called without self
+-- More careful unregistering of events
+------------------------------------------------------------------------
+r74769 | toadkiller | 2008-05-22 03:52:43 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- remove debug assert
+------------------------------------------------------------------------
+r74765 | toadkiller | 2008-05-22 03:16:32 -0400 (Thu, 22 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- RegisterEvent changed to the default RegisterCallback used in CallBackHandler.
+-- Color added for highlighting buttons with in this mode.
+------------------------------------------------------------------------
+r74761 | toadkiller | 2008-05-22 01:49:22 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   D /trunk/LibKeyBound-1.0/LibKeyBound-1.0/macro.lua
+   D /trunk/LibKeyBound-1.0/LibKeyBound-1.0/spell.lua
+
+LibKeyBound-1.0:
+-- Delete obsolete files
+------------------------------------------------------------------------
+r74760 | toadkiller | 2008-05-22 01:48:07 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0
+
+LibKeyBound-1.0:
+-- log template
+------------------------------------------------------------------------
+r74758 | toadkiller | 2008-05-22 01:34:40 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0 : 
+-- Move spell.lua and macro.lua inside LibKeyBound-1.0.lua
+------------------------------------------------------------------------
+r74755 | toadkiller | 2008-05-22 01:05:00 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0 : 
+-- move CallbackHandler-1.0 include to toc
+------------------------------------------------------------------------
+r74753 | toadkiller | 2008-05-22 00:49:19 -0400 (Thu, 22 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0 : 
+-- uncomment slash keys
+------------------------------------------------------------------------
+r74657 | toadkiller | 2008-05-21 10:11:56 -0400 (Wed, 21 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0.lua : 
+-- Skip the CallbackHandler RegisterEvent bullshit
+-- Now displays symptoms of working
+------------------------------------------------------------------------
+r74648 | toadkiller | 2008-05-21 08:46:10 -0400 (Wed, 21 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0: 
+-- Mess with CallbackHandler
+------------------------------------------------------------------------
+r74638 | toadkiller | 2008-05-21 06:25:38 -0400 (Wed, 21 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Fix LibStub strings
+------------------------------------------------------------------------
+r74604 | toadkiller | 2008-05-20 20:35:05 -0400 (Tue, 20 May 2008) | 2 lines
+Changed paths:
+   D /trunk/LibKeyBound-1.0/LibKeyBound-1.0/keyBound.xml
+
+LibKeyBound-1.0:
+- Delete old file
+------------------------------------------------------------------------
+r74519 | toadkiller | 2008-05-20 06:51:55 -0400 (Tue, 20 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0.toc
+
+LibKeyBound-1.0:
+-- Minor toc change
+------------------------------------------------------------------------
+r74514 | toadkiller | 2008-05-20 06:34:24 -0400 (Tue, 20 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Fix header info
+------------------------------------------------------------------------
+r74510 | toadkiller | 2008-05-20 06:08:43 -0400 (Tue, 20 May 2008) | 2 lines
+Changed paths:
+   A /trunk/LibKeyBound-1.0
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-enUS.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-frFR.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-koKR.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhCN.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhTW.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/keyBound.xml
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/macro.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0/spell.lua
+   A /trunk/LibKeyBound-1.0/LibKeyBound-1.0.toc
+
+LibKeyBound-1.0  :
+- Initial dry checkin
+------------------------------------------------------------------------

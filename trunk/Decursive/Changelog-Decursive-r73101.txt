@@ -1,0 +1,183 @@
+------------------------------------------------------------------------
+r73101 | scorpio0920 | 2008-05-08 09:58:40 -0400 (Thu, 08 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- Modify [D.LOC.PET_FEL_CAST] (Thanks s8095324)
+------------------------------------------------------------------------
+r71842 | archarodim | 2008-04-27 18:24:22 -0400 (Sun, 27 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive/Decursive.toc
+   M /trunk/Decursive/WhatsNew.txt
+
+Decursive:
+- Set the correct release date in WhatsNew.txt
+- Fix a missing dot at the end of TOC English description
+------------------------------------------------------------------------
+r71833 | archarodim | 2008-04-27 17:49:45 -0400 (Sun, 27 Apr 2008) | 4 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DIAG.lua
+   M /trunk/Decursive/Decursive.toc
+   M /trunk/Decursive/QuoiDeNeuf.txt
+   M /trunk/Decursive/Readme.txt
+   M /trunk/Decursive/WhatsNew.txt
+   M /trunk/Decursive/lisez-moi.txt
+   M /trunk/Decursive/readme4wikki.txt
+
+Decursive:
+- Updated minimum dependencies revision in Dcr_DIAG.lua
+- Updated information files for public release.
+- Version to 2.1.0 Final
+------------------------------------------------------------------------
+r70967 | archarodim | 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_opt.lua
+   M /trunk/Decursive/Decursive.toc
+   M /trunk/Decursive/localization.cn.lua
+   M /trunk/Decursive/localization.de.lua
+   M /trunk/Decursive/localization.es.lua
+   M /trunk/Decursive/localization.fr.lua
+   M /trunk/Decursive/localization.kr.lua
+   M /trunk/Decursive/localization.lua
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- It's now possible to set the color of the chronometers.
+------------------------------------------------------------------------
+r70941 | archarodim | 2008-04-22 14:34:25 -0400 (Tue, 22 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.cn.lua
+   M /trunk/Decursive/localization.de.lua
+   M /trunk/Decursive/localization.es.lua
+   M /trunk/Decursive/localization.fr.lua
+   M /trunk/Decursive/localization.kr.lua
+   M /trunk/Decursive/localization.lua
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- Removed all spell locals in non English localization files.
+------------------------------------------------------------------------
+r70810 | archarodim | 2008-04-21 19:52:27 -0400 (Mon, 21 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_lists.lua
+   M /trunk/Decursive/Decursive.lua
+
+Decursive:
+- Fix an initialization problem: AceAddon is not passing the "first" argument equal to true to OnEnable() when the mod is activated manually for the first time.
+- It's no longer possible to show various Decursive windows when the mod is in standby, this will probably fix the nil errors with the priority list window some users were getting.
+------------------------------------------------------------------------
+r70794 | archarodim | 2008-04-21 18:06:54 -0400 (Mon, 21 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+
+Decursive:
+- (code cleanup) Change spell scanning algorithm to use GetSpellInfo() instead of scanning all available spells.
+Note: Make sure all your spells are properly detected before going in raid after updating to this revision.
+------------------------------------------------------------------------
+r70590 | archarodim | 2008-04-20 09:10:20 -0400 (Sun, 20 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Decursive.toc
+
+Decursive:
+- Farewell LibBabble-Spell-3.0... (removed it from the Table Of Content)
+------------------------------------------------------------------------
+r70569 | isler | 2008-04-20 01:31:43 -0400 (Sun, 20 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.cn.lua
+
+Decursive:
+- zhCN update 
+------------------------------------------------------------------------
+r70501 | archarodim | 2008-04-19 14:42:35 -0400 (Sat, 19 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DIAG.lua
+
+Decursive:
+- Removed libbable-spell from Diagnostic check.
+------------------------------------------------------------------------
+r70499 | archarodim | 2008-04-19 14:38:20 -0400 (Sat, 19 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_DIAG.lua
+   M /trunk/Decursive/Dcr_opt.lua
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- Little fixes to previous commit
+- /dcrdiag now checks for spell translations problems
+------------------------------------------------------------------------
+r70492 | archarodim | 2008-04-19 13:50:24 -0400 (Sat, 19 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_Events.lua
+   M /trunk/Decursive/Dcr_LiveList.lua
+   M /trunk/Decursive/Dcr_Raid.lua
+   M /trunk/Decursive/Dcr_lists.lua
+   M /trunk/Decursive/Dcr_opt.lua
+   M /trunk/Decursive/Dcr_utils.lua
+   M /trunk/Decursive/Decursive.lua
+   M /trunk/Decursive/embeds.xml
+   M /trunk/Decursive/localization.lua
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- Replaced Babble-Spell by GetSpellInfo()
+- Thanks to GetSpellInfo(), all filtered afflictions will always have the right translation.
+------------------------------------------------------------------------
+r69712 | ottokang | 2008-04-14 09:02:36 -0400 (Mon, 14 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- zhTW update
+------------------------------------------------------------------------
+r69276 | scorpio0920 | 2008-04-12 08:57:21 -0400 (Sat, 12 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- Update zhTW localization. (Thanks s8095324)
+------------------------------------------------------------------------
+r69239 | scorpio0920 | 2008-04-12 02:32:07 -0400 (Sat, 12 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- Update zhTW localization. (Thanks s8095324)
+------------------------------------------------------------------------
+r68827 | archarodim | 2008-04-09 18:53:55 -0400 (Wed, 09 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DebuffsFrame.xml
+
+Decursive:
+- Adjusted chronometers position (they were a little off-centered)
+------------------------------------------------------------------------
+r68826 | archarodim | 2008-04-09 18:44:06 -0400 (Wed, 09 Apr 2008) | 4 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_DebuffsFrame.xml
+   M /trunk/Decursive/Dcr_opt.lua
+   M /trunk/Decursive/Decursive.lua
+   M /trunk/Decursive/QuoiDeNeuf.txt
+   M /trunk/Decursive/Readme.txt
+   M /trunk/Decursive/WhatsNew.txt
+   M /trunk/Decursive/localization.cn.lua
+   M /trunk/Decursive/localization.de.lua
+   M /trunk/Decursive/localization.es.lua
+   M /trunk/Decursive/localization.fr.lua
+   M /trunk/Decursive/localization.kr.lua
+   M /trunk/Decursive/localization.lua
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+- NEW chronometer on the MUFs: When a unit is debuffed the number of seconds elapsed is displayed on its MUF (option enabled by default)
+- More code speed optimizations (proxy variables and function calls at critical places)
+- Maybe a fix for the rare MF_colors nil bug a couple of users experienced.
+------------------------------------------------------------------------

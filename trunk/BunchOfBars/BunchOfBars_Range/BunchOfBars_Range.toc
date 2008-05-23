@@ -1,8 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fRange|r]
-## Version: 1.0
-## Notes: Fade out the frames of unit's who aren't near.
-## Author: Firik
-## Dependencies: BunchOfBars
-
-Range.lua

@@ -1,8 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fThreshold|r]
-## Version: 1.0
-## Notes: Shows a small line on the health bars at a value you define.
-## Author: Firik
-## Dependencies: BunchOfBars_HealthBar
-
-Threshold.lua

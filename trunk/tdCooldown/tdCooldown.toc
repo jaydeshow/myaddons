@@ -1,0 +1,17 @@
+﻿## Interface: 20400
+## Title: tdCooldown
+## Notes: Cooldown Count for Everything.
+## Title-zhCN: |cff7fff7f太多|r冷却 20400.9 beta
+## Author: ldz5
+## Version: 20400.9
+
+## SavedVariables: tCDDB
+## SavedVariablesPerCharacter: tCDblackData, tCDcoolingData
+
+localization\localization.lua
+localization\localization.cn.lua
+localization\localization.tw.lua
+tdCooldown.lua
+bar.xml
+tdRange.lua
+

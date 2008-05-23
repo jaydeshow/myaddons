@@ -1,0 +1,17 @@
+﻿## Interface: 20400
+## Title: Lib: TipHooker-1.0
+## Notes: A Library for hooking tooltips.
+## Notes-zhTW: 用來Hook物品提示的函式庫
+## Author: Whitetooth@Cenarius (hotdogee@巴哈姆特baha)
+## Version: $Revision: 1 $
+## LastUpdate: $Date: 2007 $
+## OptionalDeps: Ace2
+## X-Category: Library
+## X-Embeds: Ace2
+## X-AceLibrary-TipHooker-1.0: true
+## X-License: LGPL v2.1
+## X-Encoding: UTF-8
+
+embeds.xml
+
+TipHooker-1.0\TipHooker-1.0.lua

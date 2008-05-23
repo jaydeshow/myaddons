@@ -1,0 +1,9 @@
+## Interface: 20300
+## Title: Forte Cooldown
+## Notes: Forte Cooldown Module
+## SavedVariables:
+## OptionalDeps:
+## Dependencies:Forte_Core
+Localization.lua
+Forte_Cooldown.xml
+

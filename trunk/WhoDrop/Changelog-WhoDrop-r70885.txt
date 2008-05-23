@@ -1,0 +1,39 @@
+------------------------------------------------------------------------
+r70885 | scorpio0920 | 2008-04-22 06:40:36 -0400 (Tue, 22 Apr 2008) | 2 lines
+Changed paths:
+   A /trunk/WhoDrop/WhoDrop.Locales.zhTW.lua
+   M /trunk/WhoDrop/WhoDrop.toc
+
+WhoDrop
+- Added zhTW localization.
+------------------------------------------------------------------------
+r69414 | ackis | 2008-04-12 22:58:12 -0400 (Sat, 12 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/WhoDrop
+   M /trunk/WhoDrop/WhoDrop.toc
+
+WhoDrop
+- Fix ToC
+------------------------------------------------------------------------
+r68998 | ackis | 2008-04-10 18:44:02 -0400 (Thu, 10 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/WhoDrop/WhoDropData_Drop.lua
+
+WhoDrop
+ - Bugfix from last night
+------------------------------------------------------------------------
+r68893 | ackis | 2008-04-10 05:26:20 -0400 (Thu, 10 Apr 2008) | 4 lines
+Changed paths:
+   M /trunk/WhoDrop
+   M /trunk/WhoDrop/WhoDrop.lua
+   M /trunk/WhoDrop/WhoDrop.toc
+   M /trunk/WhoDrop/WhoDropData_Drop.lua
+   M /trunk/WhoDrop/WhoDropData_ETC.lua
+   M /trunk/WhoDrop/WhoDropData_Quest.lua
+   M /trunk/WhoDrop/embeds.xml
+
+WhoDrop
+- fixed embeds
+- removed babble tradeskill
+- converted babble libs to use 3.0 versions
+------------------------------------------------------------------------

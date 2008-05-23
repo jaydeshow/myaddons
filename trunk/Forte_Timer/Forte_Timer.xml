@@ -1,0 +1,270 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="Forte_Timer.lua"/>
+
+	<StatusBar name="FWSTBarTemplate" virtual="true" minValue="0" maxValue="1" defaultValue="1" hidden="true">
+		<Size>
+			<AbsDimension x="135" y="12"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="$parentRaidTargetIcon" file="Interface\TargetingFrame\UI-RaidTargetingIcons" hidden="true">
+					<Size>
+						<AbsDimension x="12" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentName" inherits="GameFontHighlightSmall" justifyH="CENTER"/>
+				<FontString name="$parentTime" inherits="GameFontHighlightSmall" justifyH="RIGHT"/>
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="12" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBack" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar">
+					<Size>
+						<AbsDimension x="135" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+	
+		</Layers>
+		<Frames>
+			<Button name="$parentButton">
+				<Size>
+					<AbsDimension x="12" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-1" y="0"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-1" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture name ="$parentTexture" file="Interface\AddOns\Forte_Core\Textures\ST">
+					<TexCoords left="0.133" right="0.867" top="0.133" bottom="0.867"/>
+				</NormalTexture>
+				<Scripts>
+					<OnLoad>
+						this:RegisterForClicks("RightButtonUp");
+					</OnLoad>
+					<OnClick>
+						FW:RemoveTimer_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<BarTexture file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+		<BarColor r="1" g=".33" b="0"/>
+	</StatusBar>
+	
+	<Frame name="FWSTLabelTemplate" hidden="false" virtual="true" text="timer label">
+		<Size>
+			<AbsDimension x="135" y="1"/>
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontHighlightSmall" justifyH="CENTER">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="LEFT"/>
+						<Anchor point="RIGHT" relativePoint="RIGHT"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	<Frame name="FWSTFrame" movable="true" toplevel="true" parent="UIParent" hidden="false">
+		<Size>
+			<AbsDimension x="155" y="20" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="FWSTTexture" file="Interface\AddOns\Forte_Core\Textures\ST">
+					<Size>
+						<AbsDimension x="16" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="2" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="1" top="0" bottom="1"/>
+				</Texture>
+				<FontString name="FWSTFrameTitle" inherits="GameFontHighlightSmall" justifyH="CENTER" text="spell timer">
+					<Size x="155" y="20"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="$parent" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="FWSTFrameExpand" file="Interface\Buttons\UI-SortArrow">
+					<Size>
+						<AbsDimension x="16" y="8"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-2" y="-6"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="FWSTFrameSide" file="Interface\Buttons\UI-SortArrow">
+					<Size>
+						<AbsDimension x="8" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-18" y="-6"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="1" top="0" bottom="1"/>
+				</Texture>
+			</Layer>
+
+		</Layers>
+		<Frames>
+			<Button name="FWSTFrameExpandButton">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-2" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						FW:STFrameExpand_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="FWSTFrameSideButton">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-18" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						FW:STFrameSide_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnMouseDown>
+				FW:StartMoving(arg1);
+			</OnMouseDown>
+			<OnMouseUp>
+				FW:StopMoving();
+				FW:STFrame_OnClick(arg1);
+			</OnMouseUp>
+			<OnLoad>
+				FW:TimerOnload();
+			</OnLoad>
+		</Scripts> 
+	</Frame>
+	
+	<Frame name="FWSTBars" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="155" y="20" />
+		</Size>
+		<Frames>
+			<StatusBar name="FWSTBar1" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar2" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar3" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar4" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar5" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar6" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar7" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar8" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar9" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar10" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar11" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar12" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar13" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar14" inherits="FWSTBarTemplate"/>
+			<StatusBar name="FWSTBar15" inherits="FWSTBarTemplate"/>
+			
+			<Frame name="FWSTLabel1" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel2" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel3" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel4" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel5" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel6" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel7" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel8" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel9" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel10" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel11" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel12" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel13" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel14" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel15" inherits="FWSTLabelTemplate"/>
+			<Frame name="FWSTLabel16" inherits="FWSTLabelTemplate"/>
+		</Frames>
+	</Frame>
+	
+	<Frame name="FWSTBackground" parent="UIParent" hidden="false">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="FWSTBars" relativePoint="TOPLEFT"/>
+			<Anchor point="BOTTOMRIGHT" relativeTo="FWSTBars" relativePoint="BOTTOMRIGHT"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\AddOns\Forte_Core\Textures\Background" edgeFile="Interface\AddOns\Forte_Core\Textures\Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="5"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="5"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+	</Frame>
+</Ui>

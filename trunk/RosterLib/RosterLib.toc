@@ -1,0 +1,16 @@
+﻿## Interface: 20400
+## LoadOnDemand: 1
+## Author: Maia
+## Title: Lib: RosterLib
+## Notes: Embeddable library to track raid/party roster
+## Version: 2.1
+## LastUpdate: $Date: 2008-03-26 07:55:28 -0400 (Wed, 26 Mar 2008) $
+## X-ReleaseDate: "$Date: 2008-03-26 07:55:28 -0400 (Wed, 26 Mar 2008) $"
+## X-Website: http://www.wowace.com
+## X-Email: maia.proudmoore@gmail.com
+## X-Category: Library
+## X-AceLibrary-Roster-2.1: true
+
+## OptionalDeps: Ace2
+
+Roster-2.1\Roster-2.1.lua

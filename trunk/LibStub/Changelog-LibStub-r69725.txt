@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r69725 | nevcairiel | 2008-04-14 11:59:02 -0400 (Mon, 14 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibStub/LibStub.toc
+
+LibStub: Yes, LibStub still works for 2.4 - even if no user should ever need to download this, correct interface version in the .toc feels good!
+------------------------------------------------------------------------

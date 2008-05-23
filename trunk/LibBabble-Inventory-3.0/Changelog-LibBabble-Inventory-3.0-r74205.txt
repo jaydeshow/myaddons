@@ -1,0 +1,68 @@
+------------------------------------------------------------------------
+r74205 | archarodim | 2008-05-17 18:55:22 -0400 (Sat, 17 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0:
+- Fix 'Pet' translation for frFR (many others are missing)
+------------------------------------------------------------------------
+r74141 | kunda | 2008-05-17 07:04:35 -0400 (Sat, 17 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0: deDE update
+------------------------------------------------------------------------
+r74125 | Thaoky | 2008-05-17 02:44:32 -0400 (Sat, 17 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0:
+- frFR: "Premiers Soins" is now "Secourisme"
+------------------------------------------------------------------------
+r74050 | ananhaid | 2008-05-16 06:15:13 -0400 (Fri, 16 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0: 
+- zhCN update.
+------------------------------------------------------------------------
+r73872 | StiviS | 2008-05-14 16:01:05 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.toc
+
+LibBabble-Inventory-3.0:
+- esES updated
+------------------------------------------------------------------------
+r73813 | 7destiny | 2008-05-14 06:17:24 -0400 (Wed, 14 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0: koKR Update
+------------------------------------------------------------------------
+r73797 | odlaw | 2008-05-14 04:04:17 -0400 (Wed, 14 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0:
+- Added Materials under Trade Goods
+- Added Mount under Miscellaneous
+------------------------------------------------------------------------
+r71408 | StiviS | 2008-04-25 04:27:44 -0400 (Fri, 25 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0: esES updated
+------------------------------------------------------------------------
+r71396 | sayclub | 2008-04-25 00:24:27 -0400 (Fri, 25 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0: koKR update.
+------------------------------------------------------------------------
+r70577 | maqjav | 2008-04-20 05:51:15 -0400 (Sun, 20 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0: esES update.
+------------------------------------------------------------------------

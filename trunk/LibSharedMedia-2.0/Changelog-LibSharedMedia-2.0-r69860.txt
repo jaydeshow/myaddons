@@ -1,0 +1,49 @@
+------------------------------------------------------------------------
+r69860 | joshborke | 2008-04-15 07:38:59 -0400 (Tue, 15 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.toc
+
+LibSharedMedia-2.0: add that the mod is based on SharedMedialLib-1.0 by elkano
+------------------------------------------------------------------------
+r69845 | sayclub | 2008-04-15 03:17:17 -0400 (Tue, 15 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
+
+LibSharedMedia-2.0: 
+- Update koKR local
+------------------------------------------------------------------------
+r69822 | next96 | 2008-04-14 22:09:37 -0400 (Mon, 14 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
+
+LibSharedMedia-2.0: 
+- koKR return delete (retry)
+------------------------------------------------------------------------
+r69741 | joshborke | 2008-04-14 13:23:51 -0400 (Mon, 14 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.toc
+
+LibSharedMedia-2.0: changed the author and other metadata to ckknight as elkano had no part whatsoever in this version of the library
+------------------------------------------------------------------------
+r69681 | next96 | 2008-04-14 00:07:16 -0400 (Mon, 14 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
+
+LibSharedMedia-2.0: 
+- sorry revert koKR ;(
+------------------------------------------------------------------------
+r69672 | next96 | 2008-04-13 23:20:46 -0400 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
+
+LibSharedMedia-2.0: 
+- koKR return delete
+------------------------------------------------------------------------
+r67256 | helium | 2008-03-31 06:08:56 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.toc
+
+LibSharedMedia-2.0: TOC 20400
+------------------------------------------------------------------------

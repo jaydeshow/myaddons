@@ -1,8 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fBuffs|r]
-## Version: 1.0
-## Notes: Show hots and buffs.
-## Author: Firik
-## Dependencies: BunchOfBars
-
-Buffs.lua

@@ -1,0 +1,8 @@
+﻿## Interface: 20400
+## Title: |cff3fff3f[DKP记录]|r 活动记录
+## Version: 3.0.1
+## Author: Mermaid
+## Notes: 纪录团队活动情况的插件
+## SavedVariables: Mer_RaidTracker
+MerRT.lua
+MerRT_GUI.xml

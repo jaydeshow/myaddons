@@ -1,0 +1,408 @@
+------------------------------------------------------------------------
+r71966 | kurax | 2008-04-28 12:42:56 -0400 (Mon, 28 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/Localization/zhCN.lua
+
+LibDogTag-3.0: Make namespaces on help treeview localizable
+------------------------------------------------------------------------
+r70276 | ckknight | 2008-04-17 21:30:11 -0400 (Thu, 17 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - remove debug line
+------------------------------------------------------------------------
+r70275 | ckknight | 2008-04-17 21:29:26 -0400 (Thu, 17 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - instead of showing the circle as a bullet point, use a utf bulletpoint character. This is to fix searching for "target", which would return everything before.
+------------------------------------------------------------------------
+r68630 | scorpio0920 | 2008-04-08 14:17:43 -0400 (Tue, 08 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/lib.xml
+
+LibDogTag-3.0
+- Added zhTW Localization. (Thanks s8095324)
+------------------------------------------------------------------------
+r68628 | scorpio0920 | 2008-04-08 14:15:21 -0400 (Tue, 08 Apr 2008) | 2 lines
+Changed paths:
+   A /trunk/LibDogTag-3.0/Localization/zhTW.lua
+
+LibDogTag-3.0
+- Added zhTW Localization. (Thanks s8095324)
+------------------------------------------------------------------------
+r68112 | ckknight | 2008-04-05 00:49:07 -0400 (Sat, 05 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+
+LibDogTag-3.0 - fix hasEvent to check callbacks
+------------------------------------------------------------------------
+r68105 | ckknight | 2008-04-05 00:07:28 -0400 (Sat, 05 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/Misc.lua
+   M /trunk/LibDogTag-3.0/Compiler.lua
+
+LibDogTag-3.0 - make FormatDuration and Icon static tags
+- make compilations that return only static strings bypass unneeded checks
+------------------------------------------------------------------------
+r68103 | ckknight | 2008-04-04 23:49:26 -0400 (Fri, 04 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+
+LibDogTag-3.0 - make sure not to clean out the codes of something that has a callback still on it.
+- don't clear out codes in combat
+------------------------------------------------------------------------
+r68004 | ckknight | 2008-04-04 00:49:15 -0400 (Fri, 04 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - bugfix to callbacks being called more than once
+- add the ability to supply an extra argument for callbacks
+------------------------------------------------------------------------
+r68003 | ckknight | 2008-04-04 00:38:14 -0400 (Fri, 04 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/Helpers.lua
+
+LibDogTag-3.0 - change callback system internals.
+------------------------------------------------------------------------
+r67995 | ckknight | 2008-04-03 23:38:58 -0400 (Thu, 03 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/Helpers.lua
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - change API so that specifying multiple namespaces is done by a single string separated by semicolons rather than a tuple of strings.
+------------------------------------------------------------------------
+r67821 | kurax | 2008-04-03 03:26:19 -0400 (Thu, 03 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/Localization/zhCN.lua
+
+LibDogTag-3.0: Add a zhCN translation for in-game syntax tutorial.
+------------------------------------------------------------------------
+r67805 | ckknight | 2008-04-03 02:02:09 -0400 (Thu, 03 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/TextManip.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - add a Replace tag.
+------------------------------------------------------------------------
+r67784 | ckknight | 2008-04-02 23:52:29 -0400 (Wed, 02 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - literal numbers that have no modifiers or anything of that nature will be taken out of their [] barriers with :CleanCode()
+fixes DOGTAG-27, sorta.
+------------------------------------------------------------------------
+r67602 | ckknight | 2008-04-01 22:48:31 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - fix an issue where [ThingyThatReturnsFalse and 'hi'] ['test'] would return nothing instead of just test.
+------------------------------------------------------------------------
+r67571 | ckknight | 2008-04-01 19:08:19 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - fix an issue where something like "[One][Two] [Three]" would turn into "[One Two]  Three]" instead of "[One Two] [Three]"
+------------------------------------------------------------------------
+r67439 | arrowmaster | 2008-04-01 03:16:23 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibAbacus-3.0/LibAbacus-3.0.toc
+   M /trunk/LibAvion-2.0/LibAvion-2.0.toc
+   M /trunk/LibBabble-CreatureType-3.0/LibBabble-CreatureType-3.0.toc
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.toc
+   M /trunk/LibBoneUtils-1.0/LibBoneUtils-1.0.toc
+   M /trunk/LibCooldown-1.0/LibCooldown-1.0.toc
+   M /trunk/LibCrayon-3.0/LibCrayon-3.0.toc
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.toc
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.toc
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.toc
+   M /trunk/LibDruidMana-1.0/LibDruidMana-1.0.toc
+   M /trunk/LibFuBarPlugin-3.0/LibFuBarPlugin-3.0.toc
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.toc
+   M /trunk/LibJostle-3.0/LibJostle-3.0.toc
+   M /trunk/LibMMButton-1.0/LibMMButton-1.0.toc
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.toc
+   M /trunk/LibParser-4.0/LibParser-4.0.toc
+   M /trunk/LibRangeCheck-2.0/LibRangeCheck-2.0.toc
+   M /trunk/LibRock-1.0/LibRock-1.0.toc
+   M /trunk/LibRockComm-1.0/LibRockComm-1.0.toc
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.toc
+   M /trunk/LibRockDB-1.0/LibRockDB-1.0.toc
+   M /trunk/LibRockEvent-1.0/LibRockEvent-1.0.toc
+   M /trunk/LibRockHook-1.0/LibRockHook-1.0.toc
+   M /trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+   M /trunk/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc
+   M /trunk/LibRockTimer-1.0/LibRockTimer-1.0.toc
+   M /trunk/LibRollCall-2.0/LibRollCall-2.0.toc
+   M /trunk/LibRoman-1.0/LibRoman-1.0.toc
+   M /trunk/LibSpecialEvents-Aura-3.0/LibSpecialEvents-Aura-3.0.toc
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.toc
+
+.You are not a special or unique snowflake. Get back in line and use the 'Lib: ...' title format like everybody else to save the sanity of those of us looking through an alpha sorted addon list
+------------------------------------------------------------------------
+r67097 | ckknight | 2008-03-30 11:40:32 -0400 (Sun, 30 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/Misc.lua
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - verify the form that examples are in.
+- fix the Contains example
+------------------------------------------------------------------------
+r67093 | ckknight | 2008-03-30 11:27:47 -0400 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - dynamically generate the list of namespaces from the registered tags instead of always using Base and Unit
+------------------------------------------------------------------------
+r67090 | ckknight | 2008-03-30 11:04:53 -0400 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+
+LibDogTag-3.0 - possibly fix issue with event list not being created.
+------------------------------------------------------------------------
+r67038 | kurax | 2008-03-30 03:47:32 -0400 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Localization/zhCN.lua
+
+LibDogTag-3.0: zhCN Bug fix
+------------------------------------------------------------------------
+r67032 | ckknight | 2008-03-30 02:11:15 -0400 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+
+LibDogTag-3.0 - every 15 seconds, look for dead functions (i.e. functions not manually evaluated in the last 180 seconds and not registered to any fontstrings) and nil them. This is especially noticeable when you're using the sandbox which creates functions every time a character is pressed.
+------------------------------------------------------------------------
+r67031 | kurax | 2008-03-30 01:40:57 -0400 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Localization/zhCN.lua
+   M /trunk/LibDogTag-3.0/lib.xml
+
+LibDogTag-3.0: Forgot to add zhCN.lua to lib.xml
+------------------------------------------------------------------------
+r67028 | ckknight | 2008-03-30 01:14:41 -0400 (Sun, 30 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+
+LibDogTag-3.0 - every 15 seconds, look for dead functions (i.e. functions not manually evaluated in the last 180 seconds and not registered to any fontstrings) and nil them. This is especially noticeable when you're using the sandbox which creates functions every time a character is pressed.
+------------------------------------------------------------------------
+r66995 | ckknight | 2008-03-29 20:13:47 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/Helpers.lua
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+   M /trunk/LibDogTag-3.0/Parser.lua
+
+LibDogTag-3.0 - add Autodoc documentation
+------------------------------------------------------------------------
+r66929 | ckknight | 2008-03-29 12:39:53 -0400 (Sat, 29 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - fix issues with ['+' 1234] getting rid of the + at the start.
+- make the syntax page on the ingame help simpler code-wise.
+------------------------------------------------------------------------
+r66885 | ckknight | 2008-03-29 04:47:15 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - fix issues with :Color("999999"), no longer sees the "999999" as a number;
+------------------------------------------------------------------------
+r66882 | ckknight | 2008-03-29 04:30:43 -0400 (Sat, 29 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - set scroll bar to the top whenever there's a category change
+- when typing something into search, automatically switch to the Search Results category.
+- add backgrounds to the search and test input editboxes, change the background of the output fontstring.
+------------------------------------------------------------------------
+r66881 | ckknight | 2008-03-29 04:17:01 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Parser.lua
+
+LibDogTag-3.0 - change the syntax a bit, make numbers pink (same as strings) and operators a light fuchsia, which should help : and the like show up better.
+------------------------------------------------------------------------
+r66880 | ckknight | 2008-03-29 04:07:02 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - only update search results 0.5 seconds after typing something into the search box.
+------------------------------------------------------------------------
+r66879 | ckknight | 2008-03-29 03:58:49 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - for the ingame help, make the output box have a black background to match the other places that tags are shown.
+------------------------------------------------------------------------
+r66877 | ckknight | 2008-03-29 03:49:14 -0400 (Sat, 29 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/Parser.lua
+
+LibDogTag-3.0 - make :CleanCode also fix casing.
+- change the sandbox on the ingame help to be a lot nicer and easier to understand.
+------------------------------------------------------------------------
+r66868 | ckknight | 2008-03-29 02:10:01 -0400 (Sat, 29 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/Parser.lua
+
+LibDogTag-3.0 - make help use a left tree view and an html pane on the right instead of a tab system.
+- optimize help immensely
+Note: work still needs to be done on the help, mostly the sandbox.
+------------------------------------------------------------------------
+r66834 | ckknight | 2008-03-28 23:04:13 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - rename the " " operator "concat" internally.
+------------------------------------------------------------------------
+r66810 | ckknight | 2008-03-28 20:46:21 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - fix ingame help to pick up colors properly
+------------------------------------------------------------------------
+r66808 | ckknight | 2008-03-28 20:25:41 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+
+LibDogTag-3.0 - fix issue where an event that takes multiple args is used multiple times in one tag sequence, e.g. [HasAura("Blessing of Freedom") or HasAura("Blessing of Protection")]
+------------------------------------------------------------------------
+r66800 | ckknight | 2008-03-28 19:43:26 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - simplify ColorizeCode to not stick |r's in unnecessarily.
+------------------------------------------------------------------------
+r66793 | ckknight | 2008-03-28 18:59:56 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/Operators.lua
+
+LibDogTag-3.0 - make = and ~= work if the left side is nil. Use :Hide instead of ~= to do a saner check for that.
+------------------------------------------------------------------------
+r66788 | ckknight | 2008-03-28 18:43:55 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - fix parser to not see ["95e495"] (or something along those lines) as a number.
+------------------------------------------------------------------------
+r66774 | ckknight | 2008-03-28 18:02:56 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/Helpers.lua
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - clear codes after adding a tag.
+- wait 1 frame after the request to clear codes.
+------------------------------------------------------------------------
+r66767 | ckknight | 2008-03-28 17:32:51 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - add :ClearNamespace, which will be used by sublibraries when upgrading.
+------------------------------------------------------------------------
+r66763 | ckknight | 2008-03-28 17:15:39 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - make upgrading a lot cleaner and don't horribly break.
+------------------------------------------------------------------------
+r66739 | ckknight | 2008-03-28 14:36:13 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Cleanup.lua
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - fix an issue with string to number forcing.
+- add in tests for upgrading, not done yet.
+------------------------------------------------------------------------
+r66718 | ckknight | 2008-03-28 12:28:04 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+
+LibDogTag-3.0 - fix the help's sandbox dropdown thing
+------------------------------------------------------------------------
+r66698 | ckknight | 2008-03-28 11:21:24 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/TextManip.lua
+
+LibDogTag-3.0 - fix Substring documentation
+------------------------------------------------------------------------
+r66647 | kurax | 2008-03-28 05:00:58 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Localization/zhCN.lua
+
+LibDogTag-3.0: Add zhCN translation for docs
+------------------------------------------------------------------------
+r66646 | kurax | 2008-03-28 04:38:12 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/Misc.lua
+
+LibDogTag-3.0: Make colors localizable for doc purpose
+------------------------------------------------------------------------
+r66620 | ckknight | 2008-03-28 03:33:53 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Compiler.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - fix an issue with aliases that have aliases as arguments
+------------------------------------------------------------------------
+r66606 | ckknight | 2008-03-28 02:01:31 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/TextManip.lua
+
+LibDogTag-3.0 - fix VeryShort doc
+------------------------------------------------------------------------
+r66605 | kurax | 2008-03-28 01:53:57 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Categories/Operators.lua
+
+LibDogTag-3.0: Doc typo fix, should be "is not equal" rather than "is equal" for ~= operator
+------------------------------------------------------------------------
+r66599 | ckknight | 2008-03-28 01:05:36 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - make else-if statements use the syntax "elseif" instead of "else if", mostly to match lua. Both versions work fine.
+------------------------------------------------------------------------
+r66595 | ckknight | 2008-03-28 00:39:03 -0400 (Fri, 28 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Help.lua
+   M /trunk/LibDogTag-3.0/Parser.lua
+   M /trunk/LibDogTag-3.0/test.lua
+
+LibDogTag-3.0 - if statements now have "end" on the end, for clarity. It serves no real purpose otherwise. This doesn't break any tags that leave off "end".
+- make the literal '||' stay as '||' instead of '\124\124'.
+- make CleanCode indent if statements. This does not indent the ternary ?! syntax, though, just if-then-else-end
+------------------------------------------------------------------------
