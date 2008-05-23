@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r72789 | StiviS | 2008-05-05 14:11:17 -0400 (Mon, 05 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-2.0/Localization/esES.lua
+
+LibDogTag-2.0: 
+- esES updated
+------------------------------------------------------------------------
+r72749 | StiviS | 2008-05-05 11:30:57 -0400 (Mon, 05 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-2.0/Localization/esES.lua
+
+LibDogTag-2.0: 
+- esES updated
+------------------------------------------------------------------------

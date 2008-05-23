@@ -1,0 +1,15 @@
+<Bindings>
+	<Binding name="MOBNOTES_PRINT" header="MOBNOTES">
+		local name = UnitName("target")
+		local note = MobNotes_GetNote(name)
+		if not note then return end
+		if GetNumRaidMembers() > 0 then
+			SendChatMessage(name .. ": " .. note, "RAID")
+		elseif GetNumPartyMembers() > 0 then
+			SendChatMessage(name .. ": " .. note, "PARTY")
+		else
+			SendChatMessage(name .. ": " .. note, "SAY")
+		end
+	</Binding>
+</Bindings>
+

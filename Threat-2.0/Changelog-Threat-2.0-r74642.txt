@@ -1,0 +1,228 @@
+------------------------------------------------------------------------
+r74642 | xinhuan | 2008-05-21 07:21:24 -0400 (Wed, 21 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
+
+Threat-2.0: Send 0 threat for dead targets that are niled out. Previously they were not niled out, so threat was sent anyway.
+------------------------------------------------------------------------
+r74631 | xinhuan | 2008-05-21 03:29:54 -0400 (Wed, 21 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Nil out threat to dead mobs even if it is 0, rather than only if it is greater than 0. Hopefully fixes lingering threat issues (and avoid calculating healing threat on dead mobs). No blacklist involved.
+------------------------------------------------------------------------
+r74629 | xinhuan | 2008-05-21 03:16:51 -0400 (Wed, 21 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Revert last commit first, because it probably breaks Romeo/Juliet and Kael'thas advisors.
+------------------------------------------------------------------------
+r74625 | xinhuan | 2008-05-21 02:58:58 -0400 (Wed, 21 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Get rid of lingering threat on dead mobs by blacklisting them as they die. This improves healing threat and dead corpses will no longer show lingering threat from players with this threat revision.
+------------------------------------------------------------------------
+r74612 | xinhuan | 2008-05-20 22:52:31 -0400 (Tue, 20 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Fix Fungal Bloom (Loatheb) by moving it from BuffModifiers to DebuffModifiers.
+------------------------------------------------------------------------
+r74569 | antiarc | 2008-05-20 15:07:27 -0400 (Tue, 20 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatBlacklist.lua
+
+Threat-2.0: Blacklist Dark Fiends from the M'uru encounter.
+------------------------------------------------------------------------
+r74516 | xinhuan | 2008-05-20 06:40:08 -0400 (Tue, 20 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Fix Seethe (Essence of Anger in Black Temple) threat multiplier from x2 to x3 and Spiteful Fury (Spiteful Temptress in Arcatraz) threat multiplier from x5 to x6.
+------------------------------------------------------------------------
+r74464 | xinhuan | 2008-05-19 18:44:01 -0400 (Mon, 19 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Add UNIT_DESTROYED handler (aliased to UNIT_DIED).
+------------------------------------------------------------------------
+r74199 | charon | 2008-05-17 17:35:36 -0400 (Sat, 17 May 2008) | 6 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Merge improved class module CLEU handler
+
+This changes the CLEU handling to a function-table-driven approach,
+improving performance somewhat (one test showed 12% less time spent
+there).
+
+------------------------------------------------------------------------
+r74185 | charon | 2008-05-17 16:20:50 -0400 (Sat, 17 May 2008) | 4 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/Tests/class/druid.lua
+   M /trunk/Threat-2.0/Threat-2.0/Tests/test.lua
+   M /trunk/Threat-2.0/Threat-2.0/Tests/test_stubs.lua
+
+Threat-2.0: unit test improvements
+- Draft a druid-specific test, so far it tests some feral stuff
+- Add more stubs and ability to override some of them
+
+------------------------------------------------------------------------
+r74184 | charon | 2008-05-17 16:19:05 -0400 (Sat, 17 May 2008) | 2 lines
+Changed paths:
+   A /trunk/Threat-2.0/Threat-2.0/Tests/class
+   A /trunk/Threat-2.0/Threat-2.0/Tests/class/druid.lua
+
+Threat-2.0: touch some files to please precommit
+
+------------------------------------------------------------------------
+r74101 | xinhuan | 2008-05-16 19:50:05 -0400 (Fri, 16 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Fix order of precedence of operators issue that is causing SPELL_PERIODIC_HEAL events to get ignored.
+------------------------------------------------------------------------
+r74073 | xinhuan | 2008-05-16 12:10:42 -0400 (Fri, 16 May 2008) | 3 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Shaman.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0:
+- Remove threat handler for Lightning Capacitor. It deals full threat from the damage, not half.
+- Cleanup half the Shaman module to apply Elemental Precision on all Nature/Fire/Frost spells rather than just specific shaman damage spells. This mainly affects The Lightning Capacitor proc and nature healing spells.
+------------------------------------------------------------------------
+r73937 | xinhuan | 2008-05-15 05:30:59 -0400 (Thu, 15 May 2008) | 1 line
+Changed paths:
+   A /trunk/Threat-2.0/Threat-2.0/NPCModules/Azeroth/Onyxia.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
+   M /trunk/Threat-2.0/Threat-2.0/lib.xml
+
+Threat-2.0: Add Onyxia NPC module from Dead_Masters, currently only works in Phase 1.
+------------------------------------------------------------------------
+r73934 | xinhuan | 2008-05-15 05:05:40 -0400 (Thu, 15 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
+
+Threat-2.0: Potential fix for paladin taunt, solution from Reynard, reference http://www.wowace.com/forums/index.php?topic=13487.0
+------------------------------------------------------------------------
+r73134 | nevcairiel | 2008-05-08 15:12:19 -0400 (Thu, 08 May 2008) | 1 line
+Changed paths:
+   A /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Council.lua
+   M /trunk/Threat-2.0/Threat-2.0/lib.xml
+
+Threat-2.0: add a very simple module to reset threat on Veras Darkshadow in the Illidari Council encounter when he vanishes
+------------------------------------------------------------------------
+r73015 | nevcairiel | 2008-05-07 15:48:54 -0400 (Wed, 07 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatUtils.lua
+
+Threat-2.0: small tweaks to OnCommReceived
+------------------------------------------------------------------------
+r72500 | xinhuan | 2008-05-03 03:33:39 -0400 (Sat, 03 May 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/lib.xml
+
+Threat-2.0: So umm, I figured out why Nightbane and Solarian weren't resetting threat between phase changes. It's because the module files for them weren't loaded in lib.xml.
+------------------------------------------------------------------------
+r71636 | xinhuan | 2008-04-26 10:19:08 -0400 (Sat, 26 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
+
+Threat-2.0: Add a nil check to prevent errors
+------------------------------------------------------------------------
+r71625 | xinhuan | 2008-04-26 08:27:27 -0400 (Sat, 26 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
+
+Threat-2.0: Insert the player's GUID on login (in P_E_W) into the name lookup table so that front end test modes can use the player's GUID.
+------------------------------------------------------------------------
+r71620 | charon | 2008-04-26 07:42:00 -0400 (Sat, 26 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Pet.lua
+
+Threat-2.0: jump on the locals bandwagon
+
+------------------------------------------------------------------------
+r71227 | whyv | 2008-04-24 06:29:11 -0400 (Thu, 24 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
+
+Threat-2.0: Remove Knock Away ID same as Void Reaver cause a 50% threat reduction.
+------------------------------------------------------------------------
+r71153 | charon | 2008-04-23 18:15:17 -0400 (Wed, 23 Apr 2008) | 4 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
+   M /trunk/Threat-2.0/Threat-2.0/lib.xml
+
+Threat-2.0: Check comms against the blacklist too
+This avoids problems with older clients that send us threat on
+blacklisted mobs, which would affect healing/energy threat.
+
+------------------------------------------------------------------------
+r71134 | charon | 2008-04-23 16:33:41 -0400 (Wed, 23 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatBlacklist.lua
+
+Threat-2.0: Blacklist Fel Geyser (Bloodboil encounter)
+
+------------------------------------------------------------------------
+r70991 | antiarc | 2008-04-22 19:46:47 -0400 (Tue, 22 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: 
+- Fix OnInit problems for addons that are LOD and embed Threat-2.0
+- Fix for totems that heal peeplez before they register as friendly.
+------------------------------------------------------------------------
+r70955 | charon | 2008-04-22 16:17:37 -0400 (Tue, 22 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: fix a potential issue with the hostile<->party action check
+
+------------------------------------------------------------------------
+r70660 | antiarc | 2008-04-20 19:31:22 -0400 (Sun, 20 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
+
+Threat-2.0: Hey, let's fix paladin taunt too!
+------------------------------------------------------------------------
+r70658 | antiarc | 2008-04-20 19:26:03 -0400 (Sun, 20 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
+
+Threat-2.0: Taunt/Growl fix
+------------------------------------------------------------------------
+r70635 | nevcairiel | 2008-04-20 17:06:39 -0400 (Sun, 20 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Illidan.lua
+
+Threat-2.0: disable Illidan P5 reset until we can prove if he really resets.
+------------------------------------------------------------------------
+r70586 | nevcairiel | 2008-04-20 07:50:38 -0400 (Sun, 20 Apr 2008) | 5 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/Auchindoun/ShadowLabyrinth/Blackheart.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Bloodboil.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Illidan.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/CavernsOfTime/BlackMorass/Temporus.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/Outland/Doomwalker.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/TempestKeep/Arcatraz/Soccothrates.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/TempestKeep/TheEye/VoidReaver.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
+
+Threat-2.0: 
+- modify the NPCModuleCore RegisterSpellHandler to a new signature, RegisterSpellHandler(event, func, ...), NPC Modules now need to supply a SPELL event type which they want to react one
+- modified all NPC modules for that change
+- fixed some random bugs in the CLEU handler involving buff gains/losses on NPCs (should fix leotheras and vashj resets)
+- added Illidan P5 (Shadow Prison) Reset, and fixed P2->P3 transition reset
+------------------------------------------------------------------------
+r70584 | charon | 2008-04-20 06:35:31 -0400 (Sun, 20 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
+
+Threat-2.0: clean up NPC ModifyThreat()
+
+------------------------------------------------------------------------

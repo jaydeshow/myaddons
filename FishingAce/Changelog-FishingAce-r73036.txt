@@ -1,0 +1,29 @@
+------------------------------------------------------------------------
+r73036 | gagorian | 2008-05-07 19:05:17 -0400 (Wed, 07 May 2008) | 2 lines
+Changed paths:
+   M /trunk/FishingAce/FishingAce.toc
+
+FishingAce:
+- Removed TabletLib, Deformat, GratuityLib and ItemBonusLib from OptDepts and X-Embeds since they were used nowhere in the addon. Strange stuff!
+------------------------------------------------------------------------
+r69278 | scorpio0920 | 2008-04-12 09:07:25 -0400 (Sat, 12 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/FishingAce/Locale-zhTW.lua
+
+FishingAce:
+- Update zhTW localization. (Thanks s8095324)
+------------------------------------------------------------------------
+r69257 | ananhaid | 2008-04-12 04:33:01 -0400 (Sat, 12 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/FishingAce/FishingAce.toc
+   M /trunk/FishingAce/Locale-zhCN.lua
+
+FishingAce:
+- 2.4 toc,zhCN update.
+------------------------------------------------------------------------
+r68874 | gnarfoz | 2008-04-10 01:04:56 -0400 (Thu, 10 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/FishingAce/FishingAce.lua
+
+FishingAce - added itemid 34861 "Sharpened Fish Hook" to the list of lures
+------------------------------------------------------------------------

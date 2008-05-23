@@ -1,0 +1,10 @@
+<Ui>
+
+	<Script file="AzDialog.lua"/>
+
+	<Script file="Scanner.lua"/>
+	<Script file="Examiner.lua"/>
+
+	<Script file="Data.lua"/>
+
+</Ui>

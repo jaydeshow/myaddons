@@ -1,0 +1,23 @@
+local L = AceLibrary("AceLocale-2.2"):new("QuestsFu_Comments")
+L:RegisterTranslations("enUS", function() return {
+	["Comments"] = true,
+	["Display quest comments"] = true,
+	["LightHeaded"] = true,
+	["Location unknown"] = true,
+	["LightHeaded Info"] = true,
+	["Quest ID: "] = true,
+	["Shareable: "] = true,
+	["Level: "] = true,
+	["Required Level: "] = true,
+	["Starts: "] = true,
+	["Ends: "] = true,
+	["Experience: "] = true,
+	["Reputation:"] = true,
+	["Quest Series:"] = true,
+	["Quest "] = true,
+	["LightHeaded Comments"] = true,
+	["No comments found..."] = true,
+	["Comments are all from WowHead"] = true,
+	["Yes"] = true,
+	["No"] = true,
+} end)

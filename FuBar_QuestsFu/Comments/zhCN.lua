@@ -1,0 +1,23 @@
+﻿local L = AceLibrary("AceLocale-2.2"):new("QuestsFu_Comments")
+L:RegisterTranslations("zhCN", function() return {
+	["Comments"] = "备注",
+	["Display quest comments"] = "显示任务备注",
+	["LightHeaded"] = "LightHeaded 资料库",
+	["Location unknown"] = "未知区域",
+	["LightHeaded Info"] = "LightHeaded 信息",
+	["Quest ID: "] = "任务编号: ",
+	["Shareable: "] = "可分享: ",
+	["Level: "] = "等级: ",
+	["Required Level: "] = "需要等级: ",
+	["Starts: "] = "开始: ",
+	["Ends: "] = "结束: ",
+	["Experience: "] = "经验值: ",
+	["Reputation:"] = "声望: ",
+	["Quest Series:"] = "任务系列: ",
+	["Quest "] = "任务 ",
+	["LightHeaded Comments"] = "LightHeaded 备注",
+	["No comments found..."] = "没有备注...",
+	["Comments are all from WowHead"] = "备注来源为 WowHead",
+	["Yes"] = "是",
+	["No"] = "否",
+} end)

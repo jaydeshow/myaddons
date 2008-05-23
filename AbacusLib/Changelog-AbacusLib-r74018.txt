@@ -1,0 +1,48 @@
+------------------------------------------------------------------------
+r74018 | ananhaid | 2008-05-15 21:19:22 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AbacusLib/Abacus-2.0/Abacus-2.0.lua
+
+AbacusLib: 
+- add zhCN locale.
+------------------------------------------------------------------------
+r73867 | StiviS | 2008-05-14 15:49:37 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AbacusLib/Abacus-2.0/Abacus-2.0.lua
+   M /trunk/AbacusLib/AbacusLib.toc
+
+AbacusLib: 
+- esES added
+------------------------------------------------------------------------
+r73847 | durcyn | 2008-05-14 13:47:00 -0400 (Wed, 14 May 2008) | 1 line
+Changed paths:
+   M /trunk/AbacusLib/Abacus-2.0/Abacus-2.0.lua
+
+AbacusLib: backport proper GOLD/SILVER/COPPER fix from 3.0
+------------------------------------------------------------------------
+r73819 | kunda | 2008-05-14 08:13:12 -0400 (Wed, 14 May 2008) | 1 line
+Changed paths:
+   M /trunk/AbacusLib/Abacus-2.0/Abacus-2.0.lua
+
+AbacusLib: deDE update
+------------------------------------------------------------------------
+r73816 | belazor | 2008-05-14 07:06:31 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AbacusLib/Abacus-2.0/Abacus-2.0.lua
+
+AbacusLib:
+- Fix pluralisation problem with DAYS_ABBR, HOURS_ABBR, MINUTES_ABBR and SECONDS_ABBR
+------------------------------------------------------------------------
+r73814 | belazor | 2008-05-14 06:20:45 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AbacusLib/Abacus-2.0/Abacus-2.0.lua
+
+AbacusLib:
+- Fixed GOLD, SILVER and COPPER to have the _AMOUNT suffix.
+------------------------------------------------------------------------
+r71250 | rabbit | 2008-04-24 11:30:33 -0400 (Thu, 24 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/AbacusLib/Abacus-2.0/Abacus-2.0.lua
+
+.Abacus-2.0: The GOLD, COPPER and SILVER globalstrings are no longer available in 2.4.2, rely on local translations instead.
+------------------------------------------------------------------------

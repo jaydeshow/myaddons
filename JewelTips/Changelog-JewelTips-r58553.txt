@@ -1,8 +1,0 @@
-------------------------------------------------------------------------
-r58553 | 7destiny | 2008-01-15 11:22:42 -0500 (Tue, 15 Jan 2008) | 2 lines
-Changed paths:
-   M /trunk/JewelTips/JewelTips.lua
-
-JewelTips:
-- Added enchantID(Enchant Cloak - Stealth)
-------------------------------------------------------------------------

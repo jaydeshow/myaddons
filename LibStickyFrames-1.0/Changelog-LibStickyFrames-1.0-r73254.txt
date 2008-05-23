@@ -1,0 +1,69 @@
+------------------------------------------------------------------------
+r73254 | toadkiller | 2008-05-09 20:11:45 -0400 (Fri, 09 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.lua
+
+LibStickyFrames-1.0:
+-- Initial code for cluster drag
+------------------------------------------------------------------------
+r72908 | toadkiller | 2008-05-06 20:36:24 -0400 (Tue, 06 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.lua
+
+LibStickyFrames-1.0:
+-- Remove Blizzard Bars & chat frame from LibStickyFrames-1.0.  Client mods can add them if necessary.
+------------------------------------------------------------------------
+r69499 | ammo | 2008-04-13 04:24:08 -0400 (Sun, 13 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/AuldLangSyne/AuldLangSyne.toc
+   M /trunk/AuldLangSyne/Backup/AuldLangSyne_Backup.toc
+   M /trunk/AuldLangSyne/FriendList/AuldLangSyne_FriendList.toc
+   M /trunk/AuldLangSyne/Fu/AuldLangSyne_Fu.toc
+   M /trunk/AuldLangSyne/GuildList/AuldLangSyne_GuildList.toc
+   M /trunk/AuldLangSyne/Info/AuldLangSyne_Info.toc
+   M /trunk/AuldLangSyne/Note/AuldLangSyne_Note.toc
+   M /trunk/AuldLangSyne/Panel/AuldLangSyne_Panel.toc
+   M /trunk/AuldLangSyne/Sync/AuldLangSyne_Sync.toc
+   M /trunk/BanzaiAlert/BanzaiAlert.toc
+   M /trunk/Cartographer_Mailboxes/Cartographer_Mailboxes.toc
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+   M /trunk/Cartographer_QuestObjectives/Cartographer_QuestObjectives.toc
+   M /trunk/Cartographer_Trainers/Cartographer_Trainers.toc
+   M /trunk/Cartographer_Vendors/Cartographer_Vendors.toc
+   M /trunk/ElkBuffBars/ElkBuffBars.toc
+   M /trunk/FreeRefills/FreeRefills.toc
+   M /trunk/FuBar_ArenaFu/FuBar_ArenaFu.toc
+   M /trunk/FuBar_EmoteFu2/FuBar_EmoteFu2.toc
+   M /trunk/FuBar_GroupFu/FuBar_GroupFu.toc
+   M /trunk/FuBar_ReagentFu/FuBar_ReagentFu.toc
+   M /trunk/FuBar_RegenFu/FuBar_RegenFu.toc
+   M /trunk/ItemBonusLib/ItemBonusLib.toc
+   M /trunk/LibBabble-Faction-3.0/LibBabble-Faction-3.0.toc
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.toc
+   M /trunk/PaintChipsLib/PaintChipsLib.toc
+   M /trunk/Quixote/Quixote.toc
+   M /trunk/RollCall-1.0/RollCall-1.0.toc
+   M /trunk/Skillet/Skillet.toc
+   M /trunk/SpecialEventsEmbed/SpecialEventsEmbed.toc
+   M /trunk/SpellEventsLib/SpellEventsLib.toc
+   M /trunk/StatFrameLib/StatFrameLib.toc
+   M /trunk/TankPoints/TankPoints.toc
+   M /trunk/TheSocial-1.0/TheSocial-1.0.toc
+   M /trunk/TouristLib/TouristLib.toc
+   M /trunk/XLoot/XLoot.toc
+   M /trunk/XLootGroup/XLootGroup.toc
+   M /trunk/XLootMaster/XLootMaster.toc
+   M /trunk/ezIcons/ezIcons.toc
+   M /trunk/myBindings2/myBindings2.toc
+
+.Undo all of Scorpio0920 schanges. You will lose your SVN account.
+I wish you were on IRC #wowace on freenode.net so we can have a chat.
+
+------------------------------------------------------------------------
+r69472 | scorpio0920 | 2008-04-13 03:38:36 -0400 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.toc
+
+LibStickyFrames-1.0:
+- toc to 2.4
+------------------------------------------------------------------------

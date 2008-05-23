@@ -1,0 +1,14 @@
+﻿## Interface: 20400
+## Title: tdCooldown_Option
+## Notes: tdCooldown's options.
+## Title-zhCN: |cff7fff7f太多|r冷却 设置
+## Author: ldz5
+## Version: 20400.9
+## Dependencies: tdCooldown
+## LoadOnDemand: 1
+
+localization\localization.lua
+localization\localization.cn.lua
+localization\localization.tw.lua
+tdCooldown_Option.lua
+

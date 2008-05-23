@@ -1,0 +1,20 @@
+------------------------------------------------------------------------
+r68964 | xinhuan | 2008-04-10 15:04:52 -0400 (Thu, 10 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibGraph-2.0/LibGraph-2.0/LibGraph-2.0.lua
+
+LibGraph-2.0: Optimize the library slightly by upvalueing all the math.blah function calls and constants.
+------------------------------------------------------------------------
+r65819 | xinhuan | 2008-03-25 15:34:33 -0400 (Tue, 25 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0: Update TOC to 20400
+------------------------------------------------------------------------
+r65159 | nevcairiel | 2008-03-20 09:11:30 -0400 (Thu, 20 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibGraph-2.0/LibGraph-2.0.toc
+
+LibGraph-2.0: 
+- adjust .toc title for library format
+------------------------------------------------------------------------

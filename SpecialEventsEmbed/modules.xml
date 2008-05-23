@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Script file="SpecialEvents-Aura-2.0\SpecialEvents-Aura-2.0.lua"/>
+<Script file="SpecialEvents-Bags-2.0\SpecialEvents-Bags-2.0.lua"/>
+<Script file="SpecialEvents-Equipped-2.0\SpecialEvents-Equipped-2.0.lua"/>
+<Script file="SpecialEvents-LearnSpell-2.0\SpecialEvents-LearnSpell-2.0.lua"/>
+<Script file="SpecialEvents-Loot-1.0\SpecialEvents-Loot-1.0.lua"/>
+<Script file="SpecialEvents-Mail-2.0\SpecialEvents-Mail-2.0.lua"/>
+<Script file="SpecialEvents-Movement-2.0\SpecialEvents-Movement-2.0.lua"/>
+<Script file="SpecialEvents-Mount-2.0\SpecialEvents-Mount-2.0.lua"/>
+
+</Ui>

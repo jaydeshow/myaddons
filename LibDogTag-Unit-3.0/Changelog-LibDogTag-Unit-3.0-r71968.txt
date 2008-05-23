@@ -1,0 +1,293 @@
+------------------------------------------------------------------------
+r71968 | kurax | 2008-04-28 12:57:46 -0400 (Mon, 28 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Cast.lua
+
+LibDogTag-Unit-3.0: Fix a bug of unintended 'L' variable redeclaration
+------------------------------------------------------------------------
+r69240 | ellipsis | 2008-04-12 02:38:30 -0400 (Sat, 12 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0: added MainTankIcon, MainAssistIcon, and MasterLooterIcon (all untested in raid).
+------------------------------------------------------------------------
+r68910 | scorpio0920 | 2008-04-10 07:31:01 -0400 (Thu, 10 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/zhTW.lua
+
+LibDogTag-Unit-3.0
+- Fixed typo. XD
+------------------------------------------------------------------------
+r68909 | kurax | 2008-04-10 07:14:39 -0400 (Thu, 10 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/zhTW.lua
+
+LibDogTag-Unit-3.0: Keep the version processing in line please.
+------------------------------------------------------------------------
+r68908 | scorpio0920 | 2008-04-10 07:11:00 -0400 (Thu, 10 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/zhTW.lua
+
+LibDogTag-Unit-3.0:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r68853 | ellipsis | 2008-04-09 22:06:35 -0400 (Wed, 09 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Experience.lua
+
+LibDogTag-Unit-3.0: fixed RestXP when not rested.
+------------------------------------------------------------------------
+r68631 | scorpio0920 | 2008-04-08 14:18:15 -0400 (Tue, 08 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/lib.xml
+
+LibDogTag-Unit-3.0
+- Added zhTW Localization. (Thanks s8095324)
+------------------------------------------------------------------------
+r68629 | scorpio0920 | 2008-04-08 14:16:53 -0400 (Tue, 08 Apr 2008) | 2 lines
+Changed paths:
+   A /trunk/LibDogTag-Unit-3.0/Localization/zhTW.lua
+
+LibDogTag-Unit-3.0
+- Added zhTW Localization. (Thanks s8095324)
+------------------------------------------------------------------------
+r68104 | ckknight | 2008-04-04 23:59:48 -0400 (Fri, 04 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.lua
+
+LibDogTag-Unit-3.0 - small optimization by assuming that the player unit always exists
+------------------------------------------------------------------------
+r67439 | arrowmaster | 2008-04-01 03:16:23 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibAbacus-3.0/LibAbacus-3.0.toc
+   M /trunk/LibAvion-2.0/LibAvion-2.0.toc
+   M /trunk/LibBabble-CreatureType-3.0/LibBabble-CreatureType-3.0.toc
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.toc
+   M /trunk/LibBoneUtils-1.0/LibBoneUtils-1.0.toc
+   M /trunk/LibCooldown-1.0/LibCooldown-1.0.toc
+   M /trunk/LibCrayon-3.0/LibCrayon-3.0.toc
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.toc
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.toc
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.toc
+   M /trunk/LibDruidMana-1.0/LibDruidMana-1.0.toc
+   M /trunk/LibFuBarPlugin-3.0/LibFuBarPlugin-3.0.toc
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.toc
+   M /trunk/LibJostle-3.0/LibJostle-3.0.toc
+   M /trunk/LibMMButton-1.0/LibMMButton-1.0.toc
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.toc
+   M /trunk/LibParser-4.0/LibParser-4.0.toc
+   M /trunk/LibRangeCheck-2.0/LibRangeCheck-2.0.toc
+   M /trunk/LibRock-1.0/LibRock-1.0.toc
+   M /trunk/LibRockComm-1.0/LibRockComm-1.0.toc
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.toc
+   M /trunk/LibRockDB-1.0/LibRockDB-1.0.toc
+   M /trunk/LibRockEvent-1.0/LibRockEvent-1.0.toc
+   M /trunk/LibRockHook-1.0/LibRockHook-1.0.toc
+   M /trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+   M /trunk/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc
+   M /trunk/LibRockTimer-1.0/LibRockTimer-1.0.toc
+   M /trunk/LibRollCall-2.0/LibRollCall-2.0.toc
+   M /trunk/LibRoman-1.0/LibRoman-1.0.toc
+   M /trunk/LibSpecialEvents-Aura-3.0/LibSpecialEvents-Aura-3.0.toc
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.toc
+
+.You are not a special or unique snowflake. Get back in line and use the 'Lib: ...' title format like everybody else to save the sanity of those of us looking through an alpha sorted addon list
+------------------------------------------------------------------------
+r67435 | ellipsis | 2008-04-01 02:53:49 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0: Slight optimization of [IsMasterLooter] 'cause I was lazy the first time.
+------------------------------------------------------------------------
+r67434 | ellipsis | 2008-04-01 02:49:37 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0: [IsMasterLooter] should probably check if the unit is actually the master looter, not just if they're in your raid.
+------------------------------------------------------------------------
+r67002 | ellipsis | 2008-03-29 20:44:07 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Characteristics.lua
+
+LibDogTag-Unit-3.0: removed special handling of elites in DifficultyColor; the color is now based solely on the mob's level.
+------------------------------------------------------------------------
+r66942 | ellipsis | 2008-03-29 15:16:39 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Characteristics.lua
+
+LibDogTag-Unit-3.0: Classification tags now update properly when units change classifications (e.g. elite->normal in the new daily)
+------------------------------------------------------------------------
+r66930 | ckknight | 2008-03-29 12:59:38 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/TooltipScanning.lua
+
+LibDogTag-Unit-3.0 - add a note to the Zone doc that it only works if you can't see the unit.
+------------------------------------------------------------------------
+r66884 | ckknight | 2008-03-29 04:45:10 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/DruidMana.lua
+
+LibDogTag-Unit-3.0 - remove a bad assert
+------------------------------------------------------------------------
+r66883 | ckknight | 2008-03-29 04:38:56 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/DruidMana.lua
+
+LibDogTag-Unit-3.0 - fix DruidMana tags.
+------------------------------------------------------------------------
+r66866 | ckknight | 2008-03-29 02:08:53 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Threat.lua
+   M /trunk/LibDogTag-Unit-3.0/test.lua
+
+LibDogTag-Unit-3.0 - fix Threat tags, sorta.
+------------------------------------------------------------------------
+r66799 | ellipsis | 2008-03-28 19:32:28 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0: Added PvPIcon tag. Due to Blizz limitations, it can't scale with text like other icons, and will leave a gap on the left. Sorry.
+------------------------------------------------------------------------
+r66783 | ellipsis | 2008-03-28 18:17:57 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0: Added RaidIcon tag
+------------------------------------------------------------------------
+r66775 | ckknight | 2008-03-28 18:03:35 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/test.lua
+
+LibDogTag-Unit-3.0 - test upgrading LibDogTag-Unit-3.0
+------------------------------------------------------------------------
+r66770 | ellipsis | 2008-03-28 17:47:39 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Threat.lua
+
+LibDogTag-Unit-3.0: fix Threat event handler args
+------------------------------------------------------------------------
+r66768 | ckknight | 2008-03-28 17:34:02 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Auras.lua
+   M /trunk/LibDogTag-Unit-3.0/Categories/Cast.lua
+   M /trunk/LibDogTag-Unit-3.0/Categories/Experience.lua
+   M /trunk/LibDogTag-Unit-3.0/Categories/GuildNote.lua
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+   M /trunk/LibDogTag-Unit-3.0/Categories/TooltipScanning.lua
+   M /trunk/LibDogTag-Unit-3.0/Cleanup.lua
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.lua
+   M /trunk/LibDogTag-Unit-3.0/test.lua
+
+LibDogTag-Unit-3.0 - update API
+- use :ClearNamespace
+------------------------------------------------------------------------
+r66702 | ckknight | 2008-03-28 11:36:03 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.lua
+
+LibDogTag-Unit-3.0 - fix issues with [AFK] and [Dead] not picking up properly.
+------------------------------------------------------------------------
+r66699 | ckknight | 2008-03-28 11:21:56 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Power.lua
+
+LibDogTag-Unit-3.0 - fix documentation for HasMP
+------------------------------------------------------------------------
+r66692 | ckknight | 2008-03-28 10:51:54 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Threat.lua
+
+LibDogTag-Unit-3.0 - possibly set playerGuid properly
+------------------------------------------------------------------------
+r66668 | kurax | 2008-03-28 07:21:13 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/zhCN.lua
+
+LibDogTag-Unit-3.0: Update zhCN docs, I mean it
+------------------------------------------------------------------------
+r66645 | ckknight | 2008-03-28 04:35:42 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Health.lua
+
+LibDogTag-Unit-3.0 - fix PercentHP if offline.
+------------------------------------------------------------------------
+r66623 | ckknight | 2008-03-28 03:38:34 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Health.lua
+
+LibDogTag-Unit-3.0 - if you're in ghost form, you should have 0 hp, not 1, imho.
+------------------------------------------------------------------------
+r66621 | ckknight | 2008-03-28 03:33:56 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/test.lua
+
+LibDogTag-Unit-3.0 - add some tests
+------------------------------------------------------------------------
+r66618 | ellipsis | 2008-03-28 03:15:11 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0: typo fix HasLibrary -> HasInstance
+------------------------------------------------------------------------
+r66617 | ckknight | 2008-03-28 03:08:11 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0 - remove debug statements.
+------------------------------------------------------------------------
+r66616 | ckknight | 2008-03-28 03:07:33 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0 - clear group members table
+- this should fix Offline bugs.
+------------------------------------------------------------------------
+r66613 | ellipsis | 2008-03-28 02:56:46 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Auras.lua
+
+LibDogTag-Unit-3.0: fixed negative AuraDuration
+------------------------------------------------------------------------
+r66612 | ckknight | 2008-03-28 02:49:32 -0400 (Fri, 28 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0 - add [IsMainTank], which tries to check oRA and CTRA.
+- add [IsMainAssist]
+DOGTAG-4
+------------------------------------------------------------------------
+r66611 | ckknight | 2008-03-28 02:24:55 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0 - make [FKey] return the actual keybinding instead of just F1-5
+DOGTAG-3
+------------------------------------------------------------------------
+r66609 | ckknight | 2008-03-28 02:13:12 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Characteristics.lua
+
+LibDogTag-Unit-3.0 - make DifficultyColor add 3 levels when seeing an elite instead of making it level 99 always.
+DOGTAG-20
+------------------------------------------------------------------------
+r66607 | ckknight | 2008-03-28 02:03:42 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Health.lua
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0 - fix some documentation examples where Text was used
+------------------------------------------------------------------------
+r66593 | ckknight | 2008-03-28 00:29:25 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Characteristics.lua
+
+LibDogTag-Unit-3.0 - add SmartClass
+------------------------------------------------------------------------
+r66591 | kurax | 2008-03-28 00:10:11 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/zhCN.lua
+
+LibDogTag-Unit-3.0: Update zhCN docs for aura tags
+------------------------------------------------------------------------

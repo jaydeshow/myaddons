@@ -1,0 +1,12 @@
+﻿## Interface: 20400
+## Title: CritSound
+## Notes: Plays critical damage sound each time you crit
+## Title-zhCN: 爆击音效
+## Notes-zhCN: 当你的技能爆击时播放"Critical Damage"的音效
+## X-Repple: 辅助
+## Version: 1.2
+## Author: Isler
+## E-mail: isler@live.com
+## DefaultState: Enabled
+
+CritSound.xml

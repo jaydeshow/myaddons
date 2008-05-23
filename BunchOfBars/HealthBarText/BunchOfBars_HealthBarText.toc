@@ -1,0 +1,9 @@
+## Interface: 20300
+## Title: BunchOfBars [|cffeda55fHealthBarText|r]
+## Version: 1.0
+## Notes: Layover text for the health bar.
+## Author: Firik
+## Dependencies: BunchOfBars
+## OptionalDeps: BunchOfBars_HealthBar
+
+HealthBarText.lua

@@ -1,0 +1,286 @@
+------------------------------------------------------------------------
+r74663 | kurax | 2008-05-21 11:00:19 -0400 (Wed, 21 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP:
+- Add a check to locale files to avoid errors
+------------------------------------------------------------------------
+r74410 | kurax | 2008-05-19 07:42:32 -0400 (Mon, 19 May 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP: Update locales
+------------------------------------------------------------------------
+r74389 | hegarol | 2008-05-19 05:46:04 -0400 (Mon, 19 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- new TCG loot
+------------------------------------------------------------------------
+r74247 | kurax | 2008-05-18 01:10:16 -0400 (Sun, 18 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP:
+- Update locales
+------------------------------------------------------------------------
+r73966 | scorpio0920 | 2008-05-15 09:57:47 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Fixed Halaani Bag: 10 -> 18 slot
+------------------------------------------------------------------------
+r73965 | hegarol | 2008-05-15 09:37:57 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- price tag for medallion fixed
+------------------------------------------------------------------------
+r73922 | daviesh | 2008-05-15 03:01:11 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/AtlasLoot_SetsandPvP.toc
+
+AtlasLoot_SetsandPvP:
+- v4.05.00 finalised
+------------------------------------------------------------------------
+r73916 | hegarol | 2008-05-15 02:58:15 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- Revert changes from last update
+------------------------------------------------------------------------
+r73829 | kurax | 2008-05-14 09:18:15 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP:
+- Update locales
+------------------------------------------------------------------------
+r73796 | hegarol | 2008-05-14 03:20:51 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- 2.4.2 changes
+------------------------------------------------------------------------
+r73790 | hegarol | 2008-05-14 02:15:07 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- 2.4.2 changes
+------------------------------------------------------------------------
+r73461 | kurax | 2008-05-11 07:57:00 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/AtlasLoot_SetsandPvP.toc
+
+AtlasLoot_SetsandPvP:
+- Update toc
+------------------------------------------------------------------------
+r73453 | kurax | 2008-05-11 07:31:09 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   A /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.de.lua
+   A /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.es.lua
+   A /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.fr.lua
+   A /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.kr.lua
+   A /trunk/AtlasLoot_SetsandPvP/GeneralPvP.de.lua
+   A /trunk/AtlasLoot_SetsandPvP/GeneralPvP.es.lua
+   A /trunk/AtlasLoot_SetsandPvP/GeneralPvP.fr.lua
+   A /trunk/AtlasLoot_SetsandPvP/GeneralPvP.kr.lua
+   A /trunk/AtlasLoot_SetsandPvP/WorldPvP.de.lua
+   A /trunk/AtlasLoot_SetsandPvP/WorldPvP.es.lua
+   A /trunk/AtlasLoot_SetsandPvP/WorldPvP.fr.lua
+   A /trunk/AtlasLoot_SetsandPvP/WorldPvP.kr.lua
+   A /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   A /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   A /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   A /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+
+AtlasLoot_SetsandPvP:
+- Add deDE/esES/frFR/koKR locale
+------------------------------------------------------------------------
+r73396 | kurax | 2008-05-10 19:00:07 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP: Update zhCN/zhTW locale
+------------------------------------------------------------------------
+r72935 | kurax | 2008-05-07 02:03:27 -0400 (Wed, 07 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+
+AtlasLoot_SetsandPvP:
+- Update zhCN/zhTW locale
+------------------------------------------------------------------------
+r72501 | kurax | 2008-05-03 05:09:56 -0400 (Sat, 03 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+
+AtlasLoot_SetsandPvP:
+- Update zhCN/zhTW locale
+------------------------------------------------------------------------
+r72409 | hegarol | 2008-05-02 03:30:19 -0400 (Fri, 02 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Arena Season 4 update
+------------------------------------------------------------------------
+r72400 | kurax | 2008-05-02 02:08:45 -0400 (Fri, 02 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- Convert all new placeholders back to their original names
+------------------------------------------------------------------------
+r72398 | kurax | 2008-05-02 01:04:46 -0400 (Fri, 02 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+
+AtlasLoot_SetsandPvP:
+- S4 names updates for zhCN
+------------------------------------------------------------------------
+r72392 | kurax | 2008-05-02 00:22:19 -0400 (Fri, 02 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- Combine all price texts into one, this should shrink tables significantly
+------------------------------------------------------------------------
+r72389 | kurax | 2008-05-01 23:05:06 -0400 (Thu, 01 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Typo fix
+------------------------------------------------------------------------
+r72387 | scorpio0920 | 2008-05-01 21:40:06 -0400 (Thu, 01 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+
+AtlasLoot_SetsandPvP:
+- Update zhTW localization.
+-- Remove some space character.
+------------------------------------------------------------------------
+r72383 | kurax | 2008-05-01 21:15:25 -0400 (Thu, 01 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.en.lua
+   D /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- Data optimization: migrate all price icons into its embed format
+- Remove koKR data file because it hasn't been update for one year and mess the mod on koKR client
+------------------------------------------------------------------------
+r72375 | kurax | 2008-05-01 18:55:04 -0400 (Thu, 01 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- Eliminate the icon data
+------------------------------------------------------------------------
+r72362 | hegarol | 2008-05-01 17:52:46 -0400 (Thu, 01 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Arena Season 4 update
+------------------------------------------------------------------------
+r72349 | whyv | 2008-05-01 15:18:24 -0400 (Thu, 01 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+
+AtlasLoot_SetsandPvP:
+- update zhTW, zhCN
+------------------------------------------------------------------------
+r72315 | hegarol | 2008-05-01 09:00:00 -0400 (Thu, 01 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Arena Season 4 update
+------------------------------------------------------------------------
+r72176 | hegarol | 2008-04-30 06:45:36 -0400 (Wed, 30 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Arena Season 4 update
+------------------------------------------------------------------------
+r72164 | daviesh | 2008-04-30 04:38:02 -0400 (Wed, 30 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Update to prototype embedded textures in fontstrings.
+------------------------------------------------------------------------

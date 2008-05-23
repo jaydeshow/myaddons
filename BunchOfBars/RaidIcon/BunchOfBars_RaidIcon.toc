@@ -1,0 +1,8 @@
+## Interface: 20300
+## Title: BunchOfBars [|cffeda55fRaidIcon|r]
+## Version: 1.0
+## Notes: Shows raid icons put on raid members.
+## Author: Firik
+## Dependencies: BunchOfBars_HealthBar
+
+RaidIcon.lua

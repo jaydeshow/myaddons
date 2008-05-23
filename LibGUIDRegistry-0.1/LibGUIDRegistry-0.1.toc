@@ -1,0 +1,9 @@
+## Interface: 20400
+## X-Category: Library
+## OptionalDeps: Ace3, CallbackHandler-1.0
+## LoadOnDemand: 1
+
+LibStub\LibStub.lua
+CallbackHandler-1.0\CallbackHandler-1.0.xml
+LibGUIDRegistry-0.1\lib.xml
+#LibGUIDRegistry-0.2\lib.xml

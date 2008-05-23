@@ -1,0 +1,14 @@
+﻿## Interface: 20300
+## LoadOnDemand: 1
+
+## Title: Lib: PaintChipsLib
+## Notes: Color managing library
+## Author: Tekkub Stoutwrithe
+## X-Build: $Revision: 69499 $
+## X-ReleaseDate: "$Date: 2008-04-13 04:24:08 -0400 (Sun, 13 Apr 2008) $"
+## X-Website: http://www.wowace.com/
+## X-Email: tekkub@gmail.com
+## X-Category: Library
+## X-AceLibrary-PaintChips-2.0: true
+
+PaintChips-2.0\PaintChips-2.0.lua

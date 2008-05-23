@@ -1,0 +1,14 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ C:ProjectsWoWBinInterfaceFrameXMLUI.xsd">
+
+<Script file="CritSound.lua"/>
+    <Frame name="CritSound_Frame">
+        <Scripts>
+            <OnLoad>
+                CritSound_OnLoad();
+            </OnLoad>
+            <OnEvent>
+                CritSound_OnEvent(event,...);
+            </OnEvent>
+        </Scripts>
+    </Frame>
+</Ui>

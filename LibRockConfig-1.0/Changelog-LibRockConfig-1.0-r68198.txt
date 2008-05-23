@@ -1,0 +1,136 @@
+------------------------------------------------------------------------
+r68198 | jjsheets | 2008-04-05 20:33:51 -0400 (Sat, 05 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Fix to make sure that recycled string controls use the correct OnEnterPressed and OnTextChanged scripts.  Single-liners would sometimes not accept an Enter key if it is a recycled multiline.
+------------------------------------------------------------------------
+r68102 | ckknight | 2008-04-04 23:08:13 -0400 (Fri, 04 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix issue where putting in a literal color string into an editbox would return wrong values.
+------------------------------------------------------------------------
+r67439 | arrowmaster | 2008-04-01 03:16:23 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibAbacus-3.0/LibAbacus-3.0.toc
+   M /trunk/LibAvion-2.0/LibAvion-2.0.toc
+   M /trunk/LibBabble-CreatureType-3.0/LibBabble-CreatureType-3.0.toc
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.toc
+   M /trunk/LibBoneUtils-1.0/LibBoneUtils-1.0.toc
+   M /trunk/LibCooldown-1.0/LibCooldown-1.0.toc
+   M /trunk/LibCrayon-3.0/LibCrayon-3.0.toc
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.toc
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.toc
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.toc
+   M /trunk/LibDruidMana-1.0/LibDruidMana-1.0.toc
+   M /trunk/LibFuBarPlugin-3.0/LibFuBarPlugin-3.0.toc
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.toc
+   M /trunk/LibJostle-3.0/LibJostle-3.0.toc
+   M /trunk/LibMMButton-1.0/LibMMButton-1.0.toc
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.toc
+   M /trunk/LibParser-4.0/LibParser-4.0.toc
+   M /trunk/LibRangeCheck-2.0/LibRangeCheck-2.0.toc
+   M /trunk/LibRock-1.0/LibRock-1.0.toc
+   M /trunk/LibRockComm-1.0/LibRockComm-1.0.toc
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.toc
+   M /trunk/LibRockDB-1.0/LibRockDB-1.0.toc
+   M /trunk/LibRockEvent-1.0/LibRockEvent-1.0.toc
+   M /trunk/LibRockHook-1.0/LibRockHook-1.0.toc
+   M /trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+   M /trunk/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc
+   M /trunk/LibRockTimer-1.0/LibRockTimer-1.0.toc
+   M /trunk/LibRollCall-2.0/LibRollCall-2.0.toc
+   M /trunk/LibRoman-1.0/LibRoman-1.0.toc
+   M /trunk/LibSpecialEvents-Aura-3.0/LibSpecialEvents-Aura-3.0.toc
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.toc
+
+.You are not a special or unique snowflake. Get back in line and use the 'Lib: ...' title format like everybody else to save the sanity of those of us looking through an alpha sorted addon list
+------------------------------------------------------------------------
+r67413 | jjsheets | 2008-03-31 23:53:36 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Fixed bug on line 6817 caused by inline group resizing with multiline string controls.
+------------------------------------------------------------------------
+r67369 | jjsheets | 2008-03-31 18:01:11 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: Fixed JIRA ticket ROCK-146.
+------------------------------------------------------------------------
+r67254 | helium | 2008-03-31 06:08:28 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: updated zhTW localization
+------------------------------------------------------------------------
+r66918 | ckknight | 2008-03-29 11:10:19 -0400 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - apparently I removed a line accidentally which prevented automatic editbox expansion.
+------------------------------------------------------------------------
+r66801 | ckknight | 2008-03-28 19:44:02 -0400 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - using trickery, fix the delete key and the right-arrow key for syntax-colored editboxes.
+- also use :GetCursorPosition and :SetCursorPosition properly.
+------------------------------------------------------------------------
+r66637 | helium | 2008-03-28 04:28:45 -0400 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+
+LibRockConfig-1.0: TOC 20400
+------------------------------------------------------------------------
+r66480 | ckknight | 2008-03-27 17:14:38 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix editboxes clearing when pressing escape.
+------------------------------------------------------------------------
+r66448 | ckknight | 2008-03-27 14:45:24 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix another nil bug
+------------------------------------------------------------------------
+r66443 | ckknight | 2008-03-27 14:28:57 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix nil issue
+------------------------------------------------------------------------
+r66414 | ckknight | 2008-03-27 12:52:51 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - reposition slider editboxes slightly
+------------------------------------------------------------------------
+r66412 | ckknight | 2008-03-27 12:47:25 -0400 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add a bit more spacing to multiline edit boxes
+------------------------------------------------------------------------
+r66290 | ckknight | 2008-03-27 01:25:54 -0400 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - for the string type, add syntaxHighlighter function, which will feed in a string and get a colored string out of it.
+- e.g. syntaxHighlighter = function(text) return LibStub("LibDogTag-3.0"):ColorizeCode(text) end ;-)
+------------------------------------------------------------------------
+r65058 | jjsheets | 2008-03-19 03:08:29 -0400 (Wed, 19 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Fixed a bug with new Multiline string control causing warning indicator to show up when using Multilines.
+------------------------------------------------------------------------
+r65052 | jjsheets | 2008-03-19 00:04:53 -0400 (Wed, 19 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Added support for Multi-Line string controls.
+------------------------------------------------------------------------

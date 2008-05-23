@@ -1,0 +1,13 @@
+﻿## Interface: 20300
+## LoadOnDemand: 1
+
+## Author: Tekkub Stoutwrithe
+## Title: Lib: Special Events [|cffeda55fMount|r]
+## Notes: Some handy events that should exist in the default UI
+## X-Category: Library
+
+## X-AceLibrary-SpecialEvents-Mount-2.0: true
+
+## OptionalDeps: Ace2, GratuityLib
+
+SpecialEvents-Mount-2.0.lua

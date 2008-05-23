@@ -1,0 +1,22 @@
+﻿## Interface: 20300
+## LoadOnDemand: 1
+
+## Author: Tekkub Stoutwrithe
+## Title: Lib: Special Events
+## Notes: Some handy events that should exist in the default UI
+## X-Category: Library
+
+## X-AceLibrary-SpecialEvents-Aura-2.0: true
+## X-AceLibrary-SpecialEvents-Bags-2.0: true
+## X-AceLibrary-SpecialEvents-LearnSpell-2.0: true
+## X-AceLibrary-SpecialEvents-Loot-1.0: true
+## X-AceLibrary-SpecialEvents-Mail-2.0: true
+## X-AceLibrary-SpecialEvents-Mount-2.0: true
+## X-AceLibrary-SpecialEvents-Movement-2.0: true
+
+## OptionalDeps: Ace2, Deformat, GratuityLib
+## X-Embeds: Ace2, Deformat, GratuityLib
+
+embeds.xml
+
+modules.xml

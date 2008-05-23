@@ -1,9 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fTarget|r]
-## Version: 1.0
-## Notes: Layover text for the health bar.
-## Author: iCat
-## Dependencies: BunchOfBars
-## OptionalDeps: BunchOfBars_Target
-
-Target.lua

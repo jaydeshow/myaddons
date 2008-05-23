@@ -1,0 +1,16 @@
+﻿## Interface: 20400
+## LoadOnDemand: 1
+## Title: Lib: Abacus-2.0
+## Notes: A library to provide tools for formatting money and time.
+## Notes-esES: Una libreria con utilidades para formatear dinero y tiempo.
+## Author: ckknight
+## OptionalDeps: Ace2
+## X-Embeds: Ace2
+## X-eMail: ckknight@gmail.com
+## X-Category: Library
+## X-AceLibrary-Abacus-2.0: true
+## X-License: LGPL v2.1
+
+embeds.xml
+
+Abacus-2.0\Abacus-2.0.lua

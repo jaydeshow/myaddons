@@ -1,0 +1,51 @@
+------------------------------------------------------------------------
+r74036 | elkano | 2008-05-16 03:12:09 -0400 (Fri, 16 May 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_FactionsFu/FuBar_FactionsFu.lua
+   M /trunk/FuBar_FactionsFu/FuBar_FactionsFu.toc
+   M /trunk/FuBar_FactionsFu/Libs
+   M /trunk/FuBar_FactionsFu/embeds.xml
+
+FuBar_FactionsFu: removed unused Deformat-2.0
+------------------------------------------------------------------------
+r73662 | 7destiny | 2008-05-13 03:53:43 -0400 (Tue, 13 May 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_FactionsFu/Locales/FuBar_FactionsFu.koKR.lua
+
+FuBar_FactionsFu
+- koKR Update
+------------------------------------------------------------------------
+r72985 | elkano | 2008-05-07 12:29:15 -0400 (Wed, 07 May 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_FactionsFu/Libs
+   M /trunk/FuBar_FactionsFu/Locales/FuBar_FactionsFu.deDE.lua
+   M /trunk/FuBar_FactionsFu/embeds.xml
+
+FuBar_FactionsFu: some fixes and cleanups
+------------------------------------------------------------------------
+r72866 | 7destiny | 2008-05-06 11:28:18 -0400 (Tue, 06 May 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_FactionsFu/FuBar_FactionsFu.toc
+   A /trunk/FuBar_FactionsFu/Locales/FuBar_FactionsFu.koKR.lua
+
+FuBar_FactionsFu
+- added koKR
+------------------------------------------------------------------------
+r72853 | kunda | 2008-05-06 09:24:58 -0400 (Tue, 06 May 2008) | 5 lines
+Changed paths:
+   M /trunk/FuBar_FactionsFu/FuBar_FactionsFu.toc
+   A /trunk/FuBar_FactionsFu/Locales/FuBar_FactionsFu.deDE.lua
+
+FuBar_FactionsFu:
+- added deDE
+- toc: Interface: 20400
+- toc: added X-Embeds
+- toc: added Deformat to X-Embeds & OptionalDeps
+------------------------------------------------------------------------
+r70906 | StiviS | 2008-04-22 08:14:46 -0400 (Tue, 22 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_FactionsFu/Locales/FuBar_FactionsFu.esES.lua
+
+FuBar_FactionsFu
+- esES updated
+------------------------------------------------------------------------

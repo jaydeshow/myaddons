@@ -1,0 +1,7 @@
+﻿## Interface: 20400
+## Notes: Adds icons to your chat.
+## Notes-zhCN: 在聊天窗口显示图标 砍瓜 汉化
+## Version: 0.9 beta
+## SavedVariables: ChatIconsDB
+
+ChatIcons.lua

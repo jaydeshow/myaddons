@@ -1,0 +1,27 @@
+------------------------------------------------------------------------
+r72189 | scorpio0920 | 2008-04-30 11:06:50 -0400 (Wed, 30 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/beql/beql.toc
+   M /trunk/beql/locales/localization-tw.lua
+
+beql:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r68277 | bayi | 2008-04-06 09:31:38 -0400 (Sun, 06 Apr 2008) | 4 lines
+Changed paths:
+   M /trunk/beql/beql.lua
+   M /trunk/beql/beql.toc
+   M /trunk/beql/questlog.lua
+   M /trunk/beql/tracker.lua
+
+beql: 
+- Fixed MarsQuestOrganizer Compatibility
+- Added Support for 2.4 Quest Links
+- Fixed a nil error Bug
+------------------------------------------------------------------------
+r68268 | isler | 2008-04-06 07:57:28 -0400 (Sun, 06 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/beql/questlog.lua
+
+beql: - fix for new quest link
+------------------------------------------------------------------------

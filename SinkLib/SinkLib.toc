@@ -1,0 +1,14 @@
+## Interface: 20400
+## LoadOnDemand: 1
+## Title: Lib: Sink-1.0
+## Notes: Library that handles chat output.
+## Author: Rabbit
+## eMail: rabbit.magtheridon@mail.com
+## X-Category: Library
+## OptionalDeps: Ace2, SharedMedia-1.0
+## X-AceLibrary-Sink-1.0: true
+## X-License: GPLv2 or later
+
+embeds.xml
+Sink-1.0\Sink-1.0.lua
+

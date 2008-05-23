@@ -1,0 +1,66 @@
+------------------------------------------------------------------------
+r71767 | isler | 2008-04-27 09:16:40 -0400 (Sun, 27 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Fizzle/embeds.xml
+
+Fizzle:
+- add LibCrayon-3.0
+------------------------------------------------------------------------
+r71676 | phyber | 2008-04-26 17:31:13 -0400 (Sat, 26 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Fizzle/Libs
+
+Fizzle:
+- Fix missing AceGUI-3.0 external.
+------------------------------------------------------------------------
+r71568 | yleaf | 2008-04-25 21:09:47 -0400 (Fri, 25 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/Fizzle/Fizzle.toc
+   D /trunk/Fizzle/FizzleLocale-enUS.lua
+   D /trunk/Fizzle/FizzleLocale-koKR.lua
+   D /trunk/Fizzle/FizzleLocale-zhCN.lua
+   D /trunk/Fizzle/FizzleLocale-zhTW.lua
+   M /trunk/Fizzle/Locales/zhCN.lua
+
+Fizzle:
+-zhCN update
+-remove some unusable locale files
+------------------------------------------------------------------------
+r71520 | phyber | 2008-04-25 15:47:34 -0400 (Fri, 25 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/Fizzle/Core.lua
+   M /trunk/Fizzle/Fizzle.toc
+   M /trunk/Fizzle/Inspect.lua
+   M /trunk/Fizzle/Libs
+   A /trunk/Fizzle/Locales
+   A /trunk/Fizzle/Locales/enUS.lua (from /trunk/Fizzle/FizzleLocale-enUS.lua:71431)
+   A /trunk/Fizzle/Locales/koKR.lua (from /trunk/Fizzle/FizzleLocale-koKR.lua:71431)
+   A /trunk/Fizzle/Locales/locales.xml
+   A /trunk/Fizzle/Locales/zhCN.lua (from /trunk/Fizzle/FizzleLocale-zhCN.lua:71431)
+   A /trunk/Fizzle/Locales/zhTW.lua (from /trunk/Fizzle/FizzleLocale-zhTW.lua:71431)
+   M /trunk/Fizzle/embeds.xml
+
+Fizzle:
+- Updated to Ace3.
+------------------------------------------------------------------------
+r66336 | phyber | 2008-03-27 05:53:46 -0400 (Thu, 27 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/Fizzle/Fizzle.toc
+   M /trunk/Fizzle/Libs
+   M /trunk/Fizzle/embeds.xml
+
+Fizzle:
+- Remove Tablet stuff too, which was also related to the repair costs.
+- Remove Gratuity external, haven't needed this for a while now.
+------------------------------------------------------------------------
+r66334 | phyber | 2008-03-27 05:48:53 -0400 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   M /trunk/Fizzle/Core.lua
+   M /trunk/Fizzle/Fizzle.toc
+   M /trunk/Fizzle/Libs
+   D /trunk/Fizzle/RepairCost.lua
+   M /trunk/Fizzle/embeds.xml
+
+Fizzle:
+- Remove old forgotten repair cost thing, along with Abacus.
+------------------------------------------------------------------------

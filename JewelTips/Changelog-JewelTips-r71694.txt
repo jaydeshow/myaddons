@@ -1,0 +1,73 @@
+------------------------------------------------------------------------
+r71694 | Ghostar | 2008-04-26 21:13:40 -0400 (Sat, 26 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.lua
+
+JewelTips:
+-Added four enchants
+------------------------------------------------------------------------
+r71630 | Ghostar | 2008-04-26 09:10:36 -0400 (Sat, 26 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.toc
+
+JewelTips:
+-add zhCN infortmation in TOC
+------------------------------------------------------------------------
+r69710 | scorpio0920 | 2008-04-14 07:57:49 -0400 (Mon, 14 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.lua
+
+JewelTips:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r69521 | scorpio0920 | 2008-04-13 07:56:18 -0400 (Sun, 13 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.lua
+   M /trunk/JewelTips/JewelTips.toc
+
+JewelTips:
+- Update zhTW localization.
+- Added Notes-zhTW.
+------------------------------------------------------------------------
+r69015 | siz | 2008-04-10 21:11:39 -0400 (Thu, 10 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.lua
+
+JewelTips: (Thanks Ghostar)
+- Fixed "Enchant Gloves - Superior Agility"
+- Added two enchants
+------------------------------------------------------------------------
+r68334 | siz | 2008-04-06 18:05:27 -0400 (Sun, 06 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.lua
+
+JewelTips:
+- Added some enchants
+------------------------------------------------------------------------
+r67983 | siz | 2008-04-03 23:06:09 -0400 (Thu, 03 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.lua
+
+JewelTips:
+- Added an enchant
+------------------------------------------------------------------------
+r67974 | siz | 2008-04-03 22:34:07 -0400 (Thu, 03 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/JewelTips
+   M /trunk/JewelTips/JewelTips.lua
+   M /trunk/JewelTips/JewelTips.toc
+   M /trunk/JewelTips/embeds.xml
+
+JewelTips:
+- Use GetItemIcon()
+- Use GetSpellInfo() instead of Babble-Tradeskill-2.2
+------------------------------------------------------------------------
+r66826 | siz | 2008-03-28 22:09:50 -0400 (Fri, 28 Mar 2008) | 3 lines
+Changed paths:
+   M /trunk/JewelTips/JewelTips.lua
+   M /trunk/JewelTips/JewelTips.toc
+
+JewelTips:
+- Added some enchants
+- Updated TOC to 20400
+------------------------------------------------------------------------

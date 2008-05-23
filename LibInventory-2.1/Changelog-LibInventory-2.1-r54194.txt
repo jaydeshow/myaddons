@@ -1,0 +1,122 @@
+------------------------------------------------------------------------
+r54194 | funkydude | 2007-11-09 01:45:26 -0500 (Fri, 09 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/Cartographer/embeds.xml
+   M /trunk/Cartographer/libs
+   M /trunk/CowTip/embeds.xml
+   M /trunk/CowTip/libs
+   M /trunk/FuBar/embeds.xml
+   M /trunk/FuBar/libs
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.toc
+   M /trunk/LibBabble-Inventory-3.0/lib.xml
+   M /trunk/LibBabble-Spell-3.0/LibBabble-Spell-3.0.toc
+   M /trunk/LibBabble-Spell-3.0/lib.xml
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.toc
+   M /trunk/LibBabble-Zone-3.0/lib.xml
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.toc
+   M /trunk/LibDogTag-2.0/lib.xml
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.toc
+   M /trunk/LibGratuity-3.0/lib.xml
+   M /trunk/LibInventory-2.1/LibInventory-2.1.toc
+   M /trunk/LibInventory-2.1/lib.xml
+   M /trunk/LibRock-1.0/LibRock-1.0.toc
+   M /trunk/LibRock-1.0/lib.xml
+   M /trunk/LibRoman-1.0/LibRoman-1.0.toc
+   M /trunk/LibRoman-1.0/lib.xml
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.toc
+   M /trunk/LibSharedMedia-2.0/lib.xml
+   M /trunk/PitBull/embeds.xml
+   M /trunk/PitBull/libs
+
+.trunk: revert back to having LibStub in toc's so we don't load 5 billion copies when we have addons with embeds. Authors, if you use a library that uses LibStub, embed the LibStub tag version with it, not the trunk. Carto/CowTip/FuBar/PitBull have been changed accordingly.
+------------------------------------------------------------------------
+r54172 | funkydude | 2007-11-08 20:09:28 -0500 (Thu, 08 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Spell-3.0/LibBabble-Spell-3.0.toc
+   M /trunk/LibBabble-Spell-3.0/lib.xml
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.toc
+   M /trunk/LibBabble-Zone-3.0/lib.xml
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.toc
+   M /trunk/LibDogTag-2.0/lib.xml
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.toc
+   M /trunk/LibGratuity-3.0/lib.xml
+   M /trunk/LibInventory-2.1/LibInventory-2.1.toc
+   D /trunk/LibInventory-2.1/LibStub.lua
+   M /trunk/LibInventory-2.1/lib.xml
+   M /trunk/LibRoman-1.0/LibRoman-1.0.toc
+   M /trunk/LibRoman-1.0/lib.xml
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.toc
+   M /trunk/LibSharedMedia-2.0/lib.xml
+
+.trunk: move LS reference to xml file instead of toc for remaining libs
+------------------------------------------------------------------------
+r54069 | funkydude | 2007-11-06 19:51:32 -0500 (Tue, 06 Nov 2007) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.toc
+   A /trunk/LibBabble-Inventory-3.0/LibStub
+   A /trunk/LibBabble-Inventory-3.0/LibStub/LibStub.lua
+   M /trunk/LibBabble-Spell-3.0/LibBabble-Spell-3.0.lua
+   M /trunk/LibBabble-Spell-3.0/LibBabble-Spell-3.0.toc
+   A /trunk/LibBabble-Spell-3.0/LibStub
+   A /trunk/LibBabble-Spell-3.0/LibStub/LibStub.lua
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.toc
+   A /trunk/LibBabble-Zone-3.0/LibStub
+   A /trunk/LibBabble-Zone-3.0/LibStub/LibStub.lua
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.lua
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.toc
+   A /trunk/LibDogTag-2.0/LibStub
+   A /trunk/LibDogTag-2.0/LibStub/LibStub.lua
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.lua
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.toc
+   A /trunk/LibGratuity-3.0/LibStub
+   A /trunk/LibGratuity-3.0/LibStub/LibStub.lua
+   M /trunk/LibInventory-2.1/LibInventory-2.1.toc
+   A /trunk/LibInventory-2.1/LibStub
+   A /trunk/LibInventory-2.1/LibStub/LibStub.lua
+   M /trunk/LibRock-1.0/LibRock-1.0.lua
+   M /trunk/LibRock-1.0/LibRock-1.0.toc
+   A /trunk/LibRock-1.0/LibStub
+   A /trunk/LibRock-1.0/LibStub/LibStub.lua
+   M /trunk/LibRoman-1.0/LibRoman-1.0.lua
+   M /trunk/LibRoman-1.0/LibRoman-1.0.toc
+   A /trunk/LibRoman-1.0/LibStub
+   A /trunk/LibRoman-1.0/LibStub/LibStub.lua
+
+.trunk: Fix various libraries to use LibStub properly
+------------------------------------------------------------------------
+r53418 | ammo | 2007-10-29 04:50:23 -0400 (Mon, 29 Oct 2007) | 2 lines
+Changed paths:
+   M /trunk/LibInventory-2.1/LibInventory-2.1.lua
+
+LibInventory-2.1: remove a few lines on request of Elkano, damn I feel like a puppet
+
+------------------------------------------------------------------------
+r52021 | elkano | 2007-10-14 11:27:56 -0400 (Sun, 14 Oct 2007) | 4 lines
+Changed paths:
+   M /trunk/LibInventory-2.1
+   M /trunk/LibInventory-2.1/LibInventory-2.1.lua
+   M /trunk/LibInventory-2.1/LibInventory-2.1.toc
+   A /trunk/LibInventory-2.1/LibStub.lua
+   M /trunk/LibInventory-2.1/lib.xml
+
+LibInventory-2.1
+- some small optimizations
+- scan cache on login
+- added LibStub file
+------------------------------------------------------------------------
+r51695 | elkano | 2007-10-11 07:33:23 -0400 (Thu, 11 Oct 2007) | 1 line
+Changed paths:
+   A /trunk/LibInventory-2.1/LibInventory-2.1.lua
+   A /trunk/LibInventory-2.1/LibInventory-2.1.toc
+   A /trunk/LibInventory-2.1/lib.xml
+
+LibInventory-2.1 - initial commit
+------------------------------------------------------------------------
+r51694 | elkano | 2007-10-11 07:30:41 -0400 (Thu, 11 Oct 2007) | 1 line
+Changed paths:
+   A /trunk/LibInventory-2.1
+
+Created folder remotely
+------------------------------------------------------------------------

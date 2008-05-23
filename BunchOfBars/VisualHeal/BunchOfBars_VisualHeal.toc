@@ -1,0 +1,7 @@
+## Interface: 20300
+## Title: BunchOfBars [|cffeda55fVisualHeal|r]
+## Notes: Visualises healing done by you and your party/raid members directly on the unit frames.
+## Author: xbeeps
+## Dependencies: BunchOfBars
+
+VisualHeal.lua

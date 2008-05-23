@@ -1,0 +1,35 @@
+------------------------------------------------------------------------
+r74640 | bam | 2008-05-21 06:55:17 -0400 (Wed, 21 May 2008) | 2 lines
+Changed paths:
+   M /trunk/ItemPrice-1.1/ItemPrice-1.1.lua
+
+ItemPrice-1.1:
+- Price updates.
+------------------------------------------------------------------------
+r74520 | nemes | 2008-05-20 07:15:52 -0400 (Tue, 20 May 2008) | 4 lines
+Changed paths:
+   M /trunk/ItemPrice-1.1
+   M /trunk/ItemPrice-1.1/ItemPrice-1.1.toc
+   A /trunk/ItemPrice-1.1/LibStub
+   A /trunk/ItemPrice-1.1/LibStub/LibStub.lua
+   A /trunk/ItemPrice-1.1/lib.xml
+
+ItemPrice-1.1:
+- include LibStub, rather than making it an external
+- use lib.xml to load the library contents
+
+------------------------------------------------------------------------
+r74148 | bam | 2008-05-17 09:25:57 -0400 (Sat, 17 May 2008) | 2 lines
+Changed paths:
+   M /trunk/ItemPrice-1.1/ItemPrice-1.1.lua
+
+ItemPrice-1.1:
+- Price updates.
+------------------------------------------------------------------------
+r71919 | bam | 2008-04-28 05:24:27 -0400 (Mon, 28 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/ItemPrice-1.1/ItemPrice-1.1.lua
+
+ItemPrice-1.1:
+- Price updates.
+------------------------------------------------------------------------

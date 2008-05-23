@@ -1,0 +1,62 @@
+﻿## Title: Ackis Recipe List
+## Notes: Displays a list of missing recipes for your trade skills.  Works with all trade skills, including rogue poisons and hunter beast training.
+## Notes-enUS: Displays a list of missing recipes for your trade skills.  Works with all trade skills, including rogue poisons and hunter beast training.
+## Notes-enGB: Displays a list of missing recipes for your trade skills.  Works with all trade skills, including rogue poisons and hunter beast training.
+## Notes-frFR: Affiche une liste des recettes manquantes de vos métiers. Fonctionne avec tous les métiers, y compris les poisons des voleurs et les capacités des familiers des chasseurs.
+## Notes-deDE: Zeigt eine Liste der Rezepte, die Ihr noch nicht mit eurem Beruf gelernt habt.  Funktioniert mit allen Berufen sowie den klassenspezifischen Berufen. (noch nicht vollständig übersetzt)
+## Notes-esES: Muestra una lista de recetas inexistentes para sus Habilidades de Comercio. Funciona con todas las habilidades comerciales, incluidas venenos y entrenamiento de bestias del cazador.
+## Notes-zhCN: 全面详细的商业技能信息插件，包括毒药和宠物技能.
+## Author: Ackis
+## eMail: ackis AT shaw DOT ca
+## X-email: ackis AT shaw DOT ca
+
+## Interface: 20400
+## Version: 0.88
+## X-Revision: $Rev: 74332 $
+## X-Date: $Date: 2008-05-18 17:28:26 -0400 (Sun, 18 May 2008) $
+
+## X-credits: FGWarmonger, Speeddymon, Xinhuan, Zhinjio
+
+## X-Category: Tradeskill
+## X-Localizations: enUS, enGB, frFR, zhCN, zhTW, deDE, koKR, esES
+## X-Website: http://www.wowace.com/wiki/AckisRecipeList
+## X-Feedback: http://www.wowace.com/forums/index.php?topic=11798.0
+## X-AceForum: 11798
+## X-LoadOn-Slash: /arl
+
+## Dependencies:
+## X-Embeds: Ace3, LibStub, CallbackHandler-1.0, LibCrayon-3.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0
+## OptionalDeps: Ace3, LibStub, CallbackHandler-1.0, LibCrayon-3.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, Skillet, ATSW, Manufac
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+## SavedVariables: AckisRecipeListDB
+## SavedVariablesPerCharacter: AckisRecipeListDBPC
+
+embeds.xml
+
+Locals\ARLLocals-enUS.lua
+Locals\ARLLocals-koKR.lua
+Locals\ARLLocals-frFR.lua
+Locals\ARLLocals-zhCN.lua
+Locals\ARLLocals-zhTW.lua
+Locals\ARLLocals-deDE.lua
+Locals\ARLLocals-esES.lua
+
+AckisRecipeList.lua
+ARLFrame.lua
+ARLText.lua
+
+RecipeDB\ARL-Alchemy.lua
+RecipeDB\ARL-BeastTrain.lua
+RecipeDB\ARL-BlackSmith.lua
+RecipeDB\ARL-Cook.lua
+RecipeDB\ARL-Enchant.lua
+RecipeDB\ARL-Engineer.lua
+RecipeDB\ARL-FirstAid.lua
+RecipeDB\ARL-Jewelcraft.lua
+RecipeDB\ARL-LeatherWork.lua
+RecipeDB\ARL-RoguePoison.lua
+RecipeDB\ARL-Smelt.lua
+RecipeDB\ARL-Tailor.lua
+RecipeDB\ARL-Vendor.lua

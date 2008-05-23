@@ -1,8 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fManaBar|r]
-## Version: 1.0
-## Notes: Unit Mana Bar.
-## Author: Firik
-## Dependencies: BunchOfBars_HealthBar
-
-ManaBar.lua

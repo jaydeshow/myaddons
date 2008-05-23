@@ -1,8 +1,0 @@
-## Interface: 20200
-## Title: BunchOfBars [|cffeda55fTooltip|r]
-## Version: 1.0
-## Notes: Show tooltip on mouseover.
-## Author: Firik
-## Dependencies: BunchOfBars
-
-Tooltip.lua

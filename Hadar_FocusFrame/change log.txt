@@ -1,0 +1,62 @@
+Hadar's Focus Frame Change Log:
+
+ver 1.09
+* Moved options windows to the new Interface options section int he default UI.
+	- Press Esc, then Interface.  In the AddOn's section choose "Hadar's Focus Frame".
+
+ver 1.08 (01/01/2008)
+* Fixed an issue with frame scaling at initial loading.
+
+ver 1.07a
+* Removed a line of code that may have been causing taint.
+
+ver 1.07 (11-12-2007)
+* Updated for patch 2.3
+* Added a new Options window.  "/ff options" to open the options.
+* Added ability to scale the window.
+
+ver 1.06 (9-26-2007)
+* Updated TOC for 2.2 patch.
+
+ver 1.05 (7/22/07)
+* Added 4 debuffs icons for each target.
+* You can toggle if friendly units or enemy units show buffs, debuffs, or dispellable debuffs
+with the following commands:
+/ff friend buffs|debuffs|dispellable (ex: /ff friend buffs)
+/ff enemy buffs|debuffs|dispellable (ex: /ff enemy debuffs)
+* You can show or hide the buff or debuff icons with the following commands:
+/ff hide buffs
+/ff show buffs
+* Raid icons are now shown to the right of the name.
+
+ver 1.04a (5/24/07)
+* Fixed a memory problem.
+
+ver 1.04 (5/18/07)
+* Added clear focus functionality. Right-Click handle with no target selected to clear focus.
+* Added window movement lock/unlock toggle command (/ff lock).
+
+ver 1.03b (01-09-07)
+* TOC version change only.
+
+ver 1.03a
+* Bug fixes.
+
+ver 1.03
+* Added colored backgrounds to the name to signify the focus'/focus target's
+reaction to the player. (Aggro, friendly, etc)
+
+ver. 1.02a
+* Bug fix for channeling spells/abilities
+
+ver. 1.02
+* Changed the frame Layout
+* Added percents to health bar
+* Updated the internal workings
+
+ver. 1.01
+* Added Right-Click to window handle to set the focus
+* Added /ff command to show/hide window
+
+ver. 1.00
+* Initial version

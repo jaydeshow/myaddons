@@ -1,0 +1,106 @@
+------------------------------------------------------------------------
+r74241 | 7destiny | 2008-05-18 00:35:02 -0400 (Sun, 18 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- koKR Update
+------------------------------------------------------------------------
+r74026 | ananhaid | 2008-05-15 22:56:44 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- zhCN update.
+------------------------------------------------------------------------
+r73945 | toadkiller | 2008-05-15 06:31:17 -0400 (Thu, 15 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+-- esMX
+-- Blades Edge Plateau zonelets.
+------------------------------------------------------------------------
+r73902 | chuanhsing | 2008-05-14 20:09:18 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- update zhTW
+------------------------------------------------------------------------
+r73821 | kunda | 2008-05-14 08:35:36 -0400 (Wed, 14 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0: deDE update
+------------------------------------------------------------------------
+r73815 | 7destiny | 2008-05-14 06:26:17 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- koKR Update
+------------------------------------------------------------------------
+r73806 | belazor | 2008-05-14 05:09:51 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Added Stonard
+------------------------------------------------------------------------
+r73443 | StiviS | 2008-05-11 05:51:53 -0400 (Sun, 11 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Added UTF-8 unicode signature to file
+- esES: Fix 'Razorfen Downs'
+------------------------------------------------------------------------
+r72978 | rabbit | 2008-05-07 11:41:54 -0400 (Wed, 07 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0: Revert StiviS' commit.
+------------------------------------------------------------------------
+r72975 | StiviS | 2008-05-07 11:29:13 -0400 (Wed, 07 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Added nil check to fix warn error in empty strings translations
+------------------------------------------------------------------------
+r72828 | cwdg | 2008-05-06 02:05:08 -0400 (Tue, 06 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- zhCN locale update
+------------------------------------------------------------------------
+r72788 | StiviS | 2008-05-05 14:10:33 -0400 (Mon, 05 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- esES updated
+------------------------------------------------------------------------
+r72763 | StiviS | 2008-05-05 12:40:02 -0400 (Mon, 05 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- esES updated
+------------------------------------------------------------------------
+r72747 | StiviS | 2008-05-05 11:23:02 -0400 (Mon, 05 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- esES updated
+------------------------------------------------------------------------
+r71697 | StiviS | 2008-04-26 21:51:53 -0400 (Sat, 26 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- esES updated
+------------------------------------------------------------------------

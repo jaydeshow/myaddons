@@ -1,0 +1,26 @@
+## Interface: 20400
+## Version: 08.04.08
+## Title: ExaminerX |cff7fff7f -Ace2-|r
+## Author: Ryn (Earthen Ring EU), port to Ace2 by Purple
+## Notes: Advanced Inspection Mod of Gear, Talents, Honor and Arena Details.
+## Title-zhCN: |cFF00FF00[界面]|r观察助手 ExaminerX |cff7fff7f -Ace2-|r
+## Notes-zhCN: 提供观察其他玩家装备和属性的高级功能
+## Title-zhTW: |cFF00FF00[介面]|r檢視助手 ExaminerX |cff7fff7f -Ace2-|r
+## Notes-zhTW: 提供進階檢視其他玩家裝備及屬性功能
+## SavedVariables: Examiner_Config, Examiner_Cache
+## RequiredDeps: 
+## OptionalDeps: Ace2, StatLogicLib
+## X-Category: Interface Enhancements
+
+#############
+# Libraries #
+#############
+UTF8\utf8data.lua
+UTF8\utf8.lua
+embeds.xml
+StatLogic-1.0\StatLogic-1.0.lua
+
+########
+# Core #
+########
+Examiner.xml

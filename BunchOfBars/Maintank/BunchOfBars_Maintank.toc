@@ -1,0 +1,8 @@
+## Interface: 20300
+## Title: BunchOfBars [|cffeda55fMaintank|r]
+## Version: 1.0
+## Notes: Scale maintank frames to make them more noticable.
+## Author: Firik
+## Dependencies: BunchOfBars
+
+Maintank.lua

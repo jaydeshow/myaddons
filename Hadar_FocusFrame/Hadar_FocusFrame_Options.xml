@@ -1,0 +1,239 @@
+<Ui>
+	<Script file="Hadar_FocusFrame_Options.lua"/>
+ 
+	<CheckButton name="FocusFrame_OptionsCheckButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="26" y="26"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="-100" top="0" bottom="0"/>
+		</HitRectInsets>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontHighlight">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="0" y="1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+		<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+	 	<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+		<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+		<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>		
+	</CheckButton>
+
+	<Frame name="FocusFrame_Options" parent="InterfaceOptionsFramePanelContainer">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTitle" text="FOCUSFRAME_OPTIONS_TITLE" inherits="GameFontNormalLarge" justifyh="LEFT" justifyv="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="16" y="-16"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSubText" text="FOCUSFRAME_OPTIONS_SUBTEXT" inherits="GameFontHighlightSmall" nonSpaceWrap="true" maxLines="3" justifyh="LEFT" justifyv="TOP">
+					<Size>
+						<AbsDimension y="32" x="0"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-8"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="-32" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentScale" inherits="GameFontNormal" text="Scale">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentSubText">
+						<Offset>
+							<AbsDimension x="0" y="-150"/>
+						</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+			</Layer>
+		</Layers>
+	
+		<Scripts>
+			<OnLoad>
+				FocusFrame_Options_OnLoad(self);
+				self:RegisterEvent("VARIABLES_LOADED");
+			</OnLoad>
+			<OnShow>
+				FocusFrame_Options_OnShow();
+			</OnShow>
+			<OnEvent>
+				if ( event == "VARIABLES_LOADED" ) then
+					FocusFrame_Options_OnVariableLoad();
+				end
+			</OnEvent>
+		</Scripts>
+		
+		
+		<Frames>
+			<CheckButton name="$parentBuffsCheckButton" inherits="FocusFrame_OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentSubText" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-2" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText("Show Buffs or Debuffs");
+					</OnLoad>
+					<OnClick>
+						if ( self:GetChecked() ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						FocusFrame_OptionsBuffsCheckButton_OnClick(self:GetChecked());
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<Frame name="$parentFriendDropDown" inherits="UIDropDownMenuTemplate" enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentBuffsCheckButton" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="-13" y="-24"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" text="Friend">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="16" y="3"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterEvent("VARIABLES_LOADED");
+					</OnLoad>
+					<OnEnter>
+
+					</OnEnter>
+					<OnEvent>
+						if ( event == "VARIABLES_LOADED" ) then
+							FocusFrame_OptionsFriendDropDown_OnLoad();
+						end
+					</OnEvent>
+					<OnLeave>
+						
+					</OnLeave>
+				</Scripts>
+			</Frame>
+
+			<Frame name="$parentEnemyDropDown" inherits="UIDropDownMenuTemplate" enableMouse="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentBuffsCheckButton" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="120" y="-24"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontHighlight" text="Enemy">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="16" y="3"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:RegisterEvent("VARIABLES_LOADED");
+					</OnLoad>
+					<OnEnter>
+
+					</OnEnter>
+					<OnEvent>
+						if ( event == "VARIABLES_LOADED" ) then
+							FocusFrame_OptionsEnemyDropDown_OnLoad();
+						end
+					</OnEvent>
+					<OnLeave>
+						
+					</OnLeave>
+				</Scripts>
+			</Frame>
+
+			<!-- Window Scale --> 
+			<Slider name="$parentScaleSlider" inherits="OptionsSliderTemplate" minValue="50" maxValue="200" valueStep="1" defaultValue="100">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentScale" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="20" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						FocusFrame_OptionsScaleSliderLow:SetText("50%");
+						FocusFrame_OptionsScaleSliderHigh:SetText("200%");
+					</OnLoad>	
+					<OnValueChanged>
+						FocusFrame_OptionsScaleSlider_OnValueChanged();
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+			
+			<!-- Lock Window --> 
+			<CheckButton name="$parentLockCheckButton" inherits="FocusFrame_OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentBuffsCheckButton" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-125"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText("Lock Frame");
+					</OnLoad>
+					<OnClick>
+						if ( self:GetChecked() ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						FocusFrame_OptionsLockCheckButton_OnClick();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+		</Frames>
+		
+	</Frame>
+	
+</Ui>
+
