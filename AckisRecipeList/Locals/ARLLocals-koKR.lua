@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-05-20 10:47:51 -0400 (Tue, 20 May 2008) $
-$Rev: 74541 $
+$Date: 2008-05-23 11:22:16 -0400 (Fri, 23 May 2008) $
+$Rev: 74936 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -84,12 +84,44 @@ L["OpenTradeSkillWindow"] = "전문기술 창을 연 후에 기술 검색 해주
 L["Close"] = "닫기"
 L["ScanButton"] = "기술 검색"
 L["Scan Skills"] = "기술 검색"
+L["FILTER_OPEN"] = "필터 >>>"
+L["FILTER_CLOSE"] = "<<< 필터"
+L["Reset"] = "초기화"
+L["Sort"] = "정렬"
+L["World Drop"] = "월드 드랍"
+L["Mob Drop"] = "몹 드랍"
+L["Quest"] = "퀘스트"
+L["Reputation"] = "평판"
+L["Instance"] = "인스턴스 던전"
+L["BoP"] = "획득시 귀속"
+L["Horde"] = "호드" 
+L["Alliance"] = "얼라이언스"
+L["Known"] = "배움"
+L["Unknown"] = "배우지 않음"
 
 -- Tooltip Text
 L["Scan Skills Long"] = "ARL에서 빠진 제조법 검색"
 L["Close Window"] = "ARL 창 닫기"
 L["Expand All"] = "모든 제조법 표시"
 L["Collapse All"] = "모든 제조법 숨김"
+L["FILTER_OPEN_TT"] = "필터 설정을 엽니다."
+L["FILTER_CLOSE_TT"] = "필터 설정을 닫습니다."
+L["RESET_TT"] = "검색어를 삭제합니다."
+L["SORT_TT"] = "정렬방법을 변경합니다."
+L["VENDOR_TT"] = "상인이 판매하는 제조법을 선택합니다."
+L["TRAINER_TT"]= "상급자에게 배울 수 있는 제조법을 선택합니다."
+L["WORLD_TT"] = "월드드랍 제조법을 선택합니다."
+L["MOB_TT"] = "특정 몹 드랍 제조법을 선택합니다."
+L["QUEST_TT"] = "퀘스트 보상 제조법을 선택합니다."
+L["SEASON_TT"] = "계절축제 제조법을 선택합니다."
+L["REP_TT"] = "평판 보상 제조법을 선택합니다."
+L["INSTANCE_TT"] = "인스턴스 던전 드랍 제조법을 선택합니다."
+L["BOP_TT"] = "획득시 귀속 제조법만 선택합니다."
+L["HORDE_TT"] = "호드만 배울 수 있는 제조법을 선택합니다."
+L["ALLIANCE_TT"] = "얼라이언스만 배울 수 있는 제조법을 선택합니다."
+L["KNOWN_TT"] = "배운 제조법을 선택합니다."
+L["UNKNOWN_TT"] = "배우지 않은 제조법을 선택합니다."
+
 -- Recipe Database
 L["Trainer"] = "상급자"
 L["LimitedSupply"] = "한정 판매"

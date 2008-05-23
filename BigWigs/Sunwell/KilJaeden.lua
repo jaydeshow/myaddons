@@ -93,7 +93,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
 mod.toggleoptions = {"bomb", "orb", "bloom", "bosskill"}
-mod.revision = tonumber(("$Revision: 74911 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 74942 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -132,7 +132,7 @@ function mod:Orb()
 	if (time - last) > 10 then
 		last = time
 		if db.orb then
-			self:IfMessage(L["orb_shooting"], "Attention", 45680)
+			self:IfMessage(L["orb_shooting"], "Attention", 45680, "Alert")
 		end
 	end
 end

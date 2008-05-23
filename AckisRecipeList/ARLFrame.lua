@@ -5,16 +5,20 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-05-22 11:16:24 -0400 (Thu, 22 May 2008) $
-$Rev: 74805 $
+$Date: 2008-05-23 11:36:27 -0400 (Fri, 23 May 2008) $
+$Rev: 74937 $
 
 ****************************************************************************************
 ]]--
 
 local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
-local Crayon	= LibStub("LibCrayon-3.0")
 
 local addon = AckisRecipeList
+
+local string = string
+local ipairs = ipairs
+local tinsert = tinsert
+local CraftIsPetTraining = CraftIsPetTraining
 
 -- Prototype: http://i30.tinypic.com/2hoxncl.jpg
 -- I want to turn the GUI into that, but prettier... most functionality is in already, all the tables etc are created, just need to actually use the information now.
@@ -175,15 +179,15 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 
 			if (sorttype == "Skill") or (sorttype == "Aquisition") then
 				if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
-					temprecipetext = Crayon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. RecipeName
+					temprecipetext = addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. RecipeName
 				else
-					temprecipetext = Crayon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. RecipeName
+					temprecipetext = addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. RecipeName
 				end
 			elseif (sorttype == "Name") then
 				if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
-					temprecipetext = RecipeName .. " - " .. Crayon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
+					temprecipetext = RecipeName .. " - " .. addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
 				else
-					temprecipetext = RecipeName .. " - " .. Crayon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
+					temprecipetext = RecipeName .. " - " .. addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
 				end
 			end
 
@@ -378,9 +382,9 @@ function addon.ToggleFilters()
 		addon.Frame:ClearAllPoints()
 		addon.Frame:SetWidth(309)
 		addon.Frame:SetHeight(447)
-		ARL_bgTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\main]] )
-		ARL_bgTexture:SetAllPoints( addon.Frame )
-		ARL_bgTexture:SetTexCoord( 0, (309/512), 0, (447/512) )
+		addon.bgTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\main]] )
+		addon.bgTexture:SetAllPoints( addon.Frame )
+		addon.bgTexture:SetTexCoord( 0, (309/512), 0, (447/512) )
 		addon.Frame._Expanded = false
 		addon.Frame:SetPoint( "BOTTOMLEFT", UIParent, "BOTTOMLEFT", xPos, yPos )
 		-- Change the text and tooltip for the filter button
@@ -408,9 +412,9 @@ function addon.ToggleFilters()
 		addon.Frame:ClearAllPoints()
 		addon.Frame:SetWidth(480)
 		addon.Frame:SetHeight(447)
-		ARL_bgTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\expanded]] )
-		ARL_bgTexture:SetAllPoints( addon.Frame )
-		ARL_bgTexture:SetTexCoord( 0, (480/512), 0, (447/512) )
+		addon.bgTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\expanded]] )
+		addon.bgTexture:SetAllPoints( addon.Frame )
+		addon.bgTexture:SetTexCoord( 0, (480/512), 0, (447/512) )
 		addon.Frame._Expanded = true
 		addon.Frame:SetPoint( "BOTTOMLEFT", UIParent, "BOTTOMLEFT", xPos, yPos )
 		-- Change the text and tooltip for the filter button
@@ -852,10 +856,10 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 						}
 			}) ]]--
 
-			ARL_bgTexture = addon.Frame:CreateTexture( "ARL_bgTexture", "ARTWORK" )
-			ARL_bgTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\main]] )
-			ARL_bgTexture:SetAllPoints( addon.Frame )
-			ARL_bgTexture:SetTexCoord( 0, (309/512), 0, (447/512) )
+			addon.bgTexture = addon.Frame:CreateTexture( "AckisRecipeList.bgTexture", "ARTWORK" )
+			addon.bgTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\main]] )
+			addon.bgTexture:SetAllPoints( addon.Frame )
+			addon.bgTexture:SetTexCoord( 0, (309/512), 0, (447/512) )
 			addon.Frame:SetFrameStrata( "BACKGROUND" )
 			addon.Frame:SetHitRectInsets( 5, 5, 5, 5 )
 

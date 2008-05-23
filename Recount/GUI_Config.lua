@@ -91,17 +91,19 @@ function Recount:ResetDefaultClassColors()
 	for k,v in pairs(EditableColors.Class) do
 		v = Recount:FixUnitString(v)
 		if v=="PET" then
-			Recount.Colors:SetColor("Class", "PET", { r = 0.09, g = 0.61, b = 0.55 })
+			Recount.Colors:SetColor("Class", "PET", { r = 0.09, g = 0.61, b = 0.55, a = 1 })
 --		elseif v=="GUARDIAN" then
 --			Recount.Colors:SetColor("Class", "GUARDIAN", { r = 0.61, g = 0.09, b = 0.09 })
 		elseif v=="MOB" then
-			Recount.Colors:SetColor("Class", "MOB", { r = 0.58, g = 0.24, b = 0.63 })
+			Recount.Colors:SetColor("Class", "MOB", { r = 0.58, g = 0.24, b = 0.63, a = 1 })
 		else
-			Recount.Colors:SetColor("Class", v, RAID_CLASS_COLORS[v]) 
+			local classcols = RAID_CLASS_COLORS[v]
+			classcols.a = 1
+			Recount.Colors:SetColor("Class", v, classcols) 
 		end
 	end
-	Recount.Colors:SetColor("Bar", "Bar Text", { r = 1, g = 1, b = 1})
-	Recount.Colors:SetColor("Bar", "Total Bar", { r = 0.75, g = 0.75, b = 0.75})
+	Recount.Colors:SetColor("Bar", "Bar Text", { r = 1, g = 1, b = 1, a = 1})
+	Recount.Colors:SetColor("Bar", "Total Bar", { r = 0.75, g = 0.75, b = 0.75, a=1})
 end
 
 

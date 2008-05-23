@@ -10,7 +10,7 @@ local FilterSize	= 20
 local RampUp		= 5
 local RampDown		= 10
       
-Recount.Version = tonumber(string.sub("$Revision: 73484 $", 12, -3))
+Recount.Version = tonumber(string.sub("$Revision: 74938 $", 12, -3))
 
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
@@ -259,21 +259,21 @@ local Default_Profile={
 			["Detail Window"]={
 			},
 			["Class"]={
-				["HUNTER"] = { r = 0.67, g = 0.83, b = 0.45 },
-				["WARLOCK"] = { r = 0.58, g = 0.51, b = 0.79 },
-				["PRIEST"] = { r = 1.0, g = 1.0, b = 1.0 },
-				["PALADIN"] = { r = 0.96, g = 0.55, b = 0.73 },
-				["MAGE"] = { r = 0.41, g = 0.8, b = 0.94 },
-				["ROGUE"] = { r = 1.0, g = 0.96, b = 0.41 },
-				["DRUID"] = { r = 1.0, g = 0.49, b = 0.04 },
-				["SHAMAN"] = { r = 0.14, g = 0.35, b = 1.0 },
-				["WARRIOR"] = { r = 0.78, g = 0.61, b = 0.43 },
-				["PET"] = { r = 0.09, g = 0.61, b = 0.55 },
+				["HUNTER"] = { r = 0.67, g = 0.83, b = 0.45, a=1 },
+				["WARLOCK"] = { r = 0.58, g = 0.51, b = 0.79, a=1 },
+				["PRIEST"] = { r = 1.0, g = 1.0, b = 1.0, a=1 },
+				["PALADIN"] = { r = 0.96, g = 0.55, b = 0.73, a=1 },
+				["MAGE"] = { r = 0.41, g = 0.8, b = 0.94, a=1 },
+				["ROGUE"] = { r = 1.0, g = 0.96, b = 0.41, a=1 },
+				["DRUID"] = { r = 1.0, g = 0.49, b = 0.04, a=1 },
+				["SHAMAN"] = { r = 0.14, g = 0.35, b = 1.0, a=1 },
+				["WARRIOR"] = { r = 0.78, g = 0.61, b = 0.43, a=1 },
+				["PET"] = { r = 0.09, g = 0.61, b = 0.55, a=1 },
 --				["GUARDIAN"] = { r = 0.61, g = 0.09, b = 0.09 },
-				["MOB"] = { r = 0.58, g = 0.24, b = 0.63 },
-				["UNKNOWN"] = { r = 0.1, g = 0.1, b = 0.1 },
-				["HOSTILE"] = { r = 0.7, g = 0.1, b = 0.1 },
-				["UNGROUPED"] = { r = 0.63, g = 0.58, b = 0.24 },
+				["MOB"] = { r = 0.58, g = 0.24, b = 0.63, a=1 },
+				["UNKNOWN"] = { r = 0.1, g = 0.1, b = 0.1, a=1 },
+				["HOSTILE"] = { r = 0.7, g = 0.1, b = 0.1, a=1 },
+				["UNGROUPED"] = { r = 0.63, g = 0.58, b = 0.24, a=1 },
 			},
 			["Realtime"]={
 			},

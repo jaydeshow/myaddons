@@ -54,7 +54,9 @@ end
 function Colors:GetColor(Branch,Name)
 	if Branch=="Class" then		
 		if not Recount.db.profile.Colors[Branch][Name] then
-			return RAID_CLASS_COLORS[Name]
+			local classcol = RAID_CLASS_COLORS[Name]
+			classcol.a = 1
+			return classcol
 		end
 	elseif Branch=="Realtime" then
 		if not Recount.db.profile.Colors[Branch][Name] then
@@ -64,6 +66,9 @@ function Colors:GetColor(Branch,Name)
 				return {r=0.2,g=0.0,b=0.0,a=0.4}
 			end
 		end
+	end
+	if not Recount.db.profile.Colors[Branch][Name].a then
+		Recount.db.profile.Colors[Branch][Name].a = 1
 	end
 	return Recount.db.profile.Colors[Branch][Name]
 end
@@ -78,11 +83,12 @@ function Colors:SetColor(Branch,Name,c)
 	Recount.db.profile.Colors[Branch][Name].g=c.g
 	Recount.db.profile.Colors[Branch][Name].b=c.b
 
-	if c.a  and Branch~= "Class" then
+--[[	if c.a  and Branch~= "Class" then
 		Recount.db.profile.Colors[Branch][Name].a=c.a
 	elseif c.a and Branch == "Class" then
 		Recount.db.profile.Colors[Branch][Name].a=nil
-	end
+	end]]
+	Recount.db.profile.Colors[Branch][Name].a=c.a
 
 	Colors:UpdateColor(Branch,Name)
 end
@@ -317,7 +323,28 @@ function Colors:EditColor(Branch,Name,Attach)
 
 	ColorPickerFrame:ClearAllPoints()
 	if Attach then
-		ColorPickerFrame:SetPoint("RIGHT",Attach,"LEFT",0,0);
+		local leftPos = Attach:GetLeft() -- Elsia: Side code adapted from Mirror
+		local rightPos = Attach:GetRight()
+		local side
+		local oside
+		if not rightPos then
+			rightPos = 0
+		end
+		if not leftPos then
+			leftPos = 0
+		end
+
+		local rightDist = GetScreenWidth() - rightPos
+
+		if leftPos and rightDist < leftPos then
+			side = "LEFT"
+			oside = "RIGHT"
+		else
+			side = "RIGHT"
+			oside = "LEFT"
+		end
+	
+		ColorPickerFrame:SetPoint(oside,Attach,side,0,0);
 	end
 	ColorPickerFrame:Show()
 end
