@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 73937 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 74877 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then
 	_G.ThreatLib_MINOR_VERSION = MINOR_VERSION
@@ -153,10 +153,48 @@ end
 local halveThreat = function(mob, target) ModifyThreat(mob, target, 0.5, 0) end
 local threatHalveSpellIDs = {
 	-- Wing Buffet
-	18500, 23339, 29905, 37157, 37319, 41572, 32914, 38110, 31475, 38593,
+	-- We have assumed that all Wing Buffet effects reduce threat by half by default
+	--18500, -- Onyxia, Wing Buffet, recorded combatlog says this spell doesn't actually land on anyone and only exists in SPELL_CAST_START from Onyxia
+	23339, -- Ebonroc, Firemaw, Flamegor, Wing Buffet, needs testing
+	29905, -- Shadikith the Glider, Wing Buffet
+	37157, -- Triggered by Phoenix-Hawk ability 37165 called Dive, Wing Buffet
+	37319, -- Phoenix-Hawk Hatchling, Wing Buffet
+	41572, -- Used by nothing known, Wing Buffet
+	32914, -- Used by 7 common mobs in Outlands, Wing Buffet
+	38110, -- Cobalt Serpent, Wing Buffet
+	--31475, 38593, -- Epoch Hunter/Temporus, Wing Buffet, we think their Wing Buffet doesn't reduce threat
+	--29328, -- Sapphiron's Wing Buffet, this spell is not used by Sapphiron
 	
 	-- Knock Away
-	21737, 40434, 37102, 32959, 31389, 23382, 18945, 18813, 18670, 10101
+	-- We have assumed that all Knock Away effects reduce threat by half by default
+	-- 21737, Applies aura to periodically do spellID 25778
+	10101, -- Used by 25 mobs (some are bosses), Knock Away
+	11130, -- Gurubashi Berserker, Mekgineer Thermaplugg, Qiraji Champion, Teremus the Devourer, Knock Away
+	18670, -- Used by 8 mobs (some are bosses), Knock Away
+	18813, -- Drillmaster Zurok, Earthen Templar, Shadowmoon Weapon Master, Swamplord Musel'ek, Knock Away
+	18945, -- Molten Giant, Cyrukh the Firelord, Knock Away
+	20686, -- Used by nothing known, Knock Away
+	23382, -- Used by nothing known, Knock Away
+	31389, -- Luzran, Rokdar the Sundered Lord, Knock Away
+	32959, -- Cragskaar, Goliathon, Gurok the Usurper, Knock Away
+	36512, -- Wrath-Scryer Soccothrates, Knock Away
+	37102, -- Crystalcore Devastator, Knock Away
+	40434, -- Gezzarak the Huntress, Knock Away
+	
+	33707, -- Blackheart the Inciter, War Stomp
+}
+
+local threeQuarterThreat = function(mob, target) ModifyThreat(mob, target, 0.75, 0) end
+local threatThreeQuarterSpellIDs = {
+	25778, -- Void Reaver, Fathom Lurker, Fathom Sporebat, Underbog Lord, Knock Away
+	19633, -- Onyxia, Knock Away
+	20566, -- Ragnaros, Wrath of Ragnaros
+	40486, -- Gurtogg Bloodboil, Eject (we ignore spellID 40597 which has a stun component rather than a knock back component)
+}
+
+local wipeThreat = function(mob, target) ModifyThreat(mob, target, 0, 0) end
+local threatWipeSpellIDs = {
+	26102, -- Ouro, Sand Blast
 }
 
 function ThreatLibNPCModuleCore:OnInitialize()
@@ -166,6 +204,12 @@ function ThreatLibNPCModuleCore:OnInitialize()
 	
 	for i = 1, #threatHalveSpellIDs do
 		self.ModifyThreatSpells[threatHalveSpellIDs[i]] = halveThreat
+	end
+	for i = 1, #threatThreeQuarterSpellIDs do
+		self.ModifyThreatSpells[threatThreeQuarterSpellIDs[i]] = threeQuarterThreat
+	end
+	for i = 1, #threatWipeSpellIDs do
+		self.ModifyThreatSpells[threatWipeSpellIDs[i]] = wipeThreat
 	end
 end
 

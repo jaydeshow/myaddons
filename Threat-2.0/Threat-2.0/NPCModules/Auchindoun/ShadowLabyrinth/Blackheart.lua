@@ -1,12 +1,11 @@
 ﻿local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 70586 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 74877 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
 ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 	local ThreatLib = _G.ThreatLib
 	local BLACKHEART_ID = 18667
-	ThreatLib:Debug("Registering Blackheart ID...")
 	ThreatLib:GetModule("NPCCore"):RegisterModule(BLACKHEART_ID, function(Blackheart)
 		Blackheart:RegisterTranslation("enUS", function() return {
 			["Time for fun!"] = "Time for fun!",
@@ -37,22 +36,12 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 
 		function Blackheart:Init()
 			self:RegisterCombatant(BLACKHEART_ID, true)
-
 			self:RegisterChatEvent("yell", blackheartPhase, self.phaseTransition)
-			
-			-- Register all known War Stomp IDs; with testing we can cut this down to 1 spell.
-			local func = function(self, mobGUID, targetGUID, spellId) 
-				self.ModifyThreatOnTargetGUID(mobGUID, targetGUID, 0.5, 0)
-			end
-			self:RegisterSpellHandler(
-				"SPELL_DAMAGE",
-				func,
-				45, 11876, 11593, 16727, 16740, 24375, 25188, 27758, 28125, 28725, 31408, 31480, 31755, 33707, 35238, 36835, 38632, 38750, 38911, 39313, 40936, 41534
-			)
 		end
 		
 		function Blackheart:phaseTransition()
 			self:WipeRaidThreatOnMob(BLACKHEART_ID)
 		end
+		-- Note, War Stomp spellID 33707 is in the ThreatNPCModuleCore already
 	end)
 end

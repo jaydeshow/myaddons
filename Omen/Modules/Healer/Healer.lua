@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 74806 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 74823 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local columns = {}
@@ -97,9 +97,6 @@ function Healer:OnInitialize()
 	self:RegisterConfigDefaults(configOptions)
 	self:RegisterOptions(options)
 	self:SetColumnSpacing(self:GetOption("Column.Spacing"))
-	if not oRA then
-		Healer:SetMTSource("Blizzard")
-	end
 	
 	if AceLibrary and AceLibrary:HasInstance("AceEvent-2.0") then
 		AceLibrary("AceEvent-2.0"):embed(oRA2Listener)
@@ -225,6 +222,12 @@ function Healer:ThreatUpdated(event, srcGUID, dstGUID, threat)
 	if self.testing then
 		self:ReleaseBars()
 		self.testing = false
+		local source = self:GetOption("Source")
+		if source == "oRA2" then
+			self:oRAUpdateMainTanks()
+		elseif source == "Blizzard" then
+			self:GetBlizzardTanks()
+		end
 	end
 	for k, v in pairs(tankPositions) do
 		if dstGUID == UnitGUID(tankGUIDs[k] .. "-target") then
@@ -319,6 +322,16 @@ function Healer:Test()
 end
 
 function Healer:UNIT_TARGET(event, unit)
+	if self.testing then
+		self:ReleaseBars()
+		self.testing = false
+		local source = self:GetOption("Source")
+		if source == "oRA2" then
+			self:oRAUpdateMainTanks()
+		elseif source == "Blizzard" then
+			self:GetBlizzardTanks()
+		end
+	end
 	if tankPositions[UnitGUID(unit)] then
 		self:UpdateThreatOnTank(unit)
 	end

@@ -5,6 +5,7 @@
 ## Notes-deDE: LibKeyBound ist eine Bibliothek, die bei der keybindings helfen.
 ## Notes-frFR: Une biblioth簵e d'aide �a keybindings.
 ## Notes-esES: Una biblioteca para ayudar con las keybindings.
+## Notes-esMX: Una biblioteca para ayudar con las keybindings.
 ## Author: Gello, Maul, Tuller, Toadkiller
 ## X-Category: Library
 ## X-Credits: ClickBinder by Gello and TrinityBinder by Maul -> keyBound by Tuller -> LibKeyBound library by Toadkiller
@@ -14,5 +15,5 @@
 ## X-License: Intention is to release into public domain once permission from above authors is received.  Meanwhile their licensing provisions prevail.
 
 LibStub\LibStub.lua
-CallbackHandler-1.0\CallbackHandler-1.0.xml
+CallbackHandler-1.0\CallbackHandler-1.0.lua
 LibKeyBound-1.0\lib.xml

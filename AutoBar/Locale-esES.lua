@@ -13,7 +13,7 @@ if (GetLocale() == "esES") then
 		["Button"] = "Botón",
 		["EDITSLOT"] = "Editar Casilla",
 		["VIEWSLOT"] = "Ver Casilla",
-		["LOAD_ERROR"] = "|cff00ff00Error al cargar AutoBarConfig. Asegúrate de que lo tienes instalado y activado.|r Error: ",
+		["LOAD_ERROR"] = "|cff00ff00Error al cargar AutoBarConfig. Asegúrese de tenerlo instalado y activado.|r Error: ",
 		["Toggle the config panel"] = "Alternar el panel de configuración",
 		["Empty"] = "Vacío",
 
@@ -41,8 +41,8 @@ if (GetLocale() == "esES") then
 		["Collapse Buttons"] = "Colapsar Botones",
 		["Collapse Buttons that have nothing in them."] = "Colapsar Botones que no tienen nada.",
 		["Configuration for %s"] = "Configuración para %s",
-		["Delete this Custom Button completely"] = "Eliminar este Botón Personalizado completamente",
-		["Dialog"] = "Dialogo",
+		["Delete this Custom Button completely"] = "Eliminar completamente este Botón Personalizado",
+		["Dialog"] = "Diálogo",
 		["Disable Conjure Button"] = "Desactivar Botón de Conjuro",
 		["Docked to"] = "Anclado a",
 		["Done"] = "Hecho";
@@ -51,11 +51,11 @@ if (GetLocale() == "esES") then
 		["FadeOut"] = "Desvanecer",
 		["Fade out the Bar when not hovering over it."] = "Desvanece la Barra cuando no estás sobre ella.",
 		["FadeOut Time"] = "Duración de Desvanecer",
-		["FadeOut takes this amount of time."] = "El tiempo que tarde en desvanecerse",
-		["FadeOut Alpha"] = "Alfa de Desvanecer",
-		["FadeOut stops at this Alpha level."] = "Desvanecer se detiene en este nivel de Alfa.",
+		["FadeOut takes this amount of time."] = "El tiempo que tarda en desvanecerse",
+		["FadeOut Alpha"] = "Transparencia de Desvanecer",
+		["FadeOut stops at this Alpha level."] = "Desvanecer se detiene en este nivel de Transparencia.",
 		["FadeOut Cancels in combat"] = "Cancelar Desvanecer en combate",
-		["FadeOut is cancelled when entering combat."] = "Desvanecer es cancelado cuando entras en combate.",
+		["FadeOut is cancelled when entering combat."] = "Desvanecer es cancelado cuando entra en combate.",
 		["FadeOut Cancels on Shift"] = "Cancelar Desvanecer al pulsar Shift",
 		["FadeOut is cancelled when holding down the Shift key."] = "Desvanecer se cancela al pulsar la tecla Shift.",
 		["FadeOut Cancels on Ctrl"] = "Cancelar Desvanecer al pulsar Ctrl",
@@ -81,14 +81,14 @@ if (GetLocale() == "esES") then
 		["Non Combat Only"] = "Solo Fuera de Combate",
 		["Not directly usable"] = "No utilizable de forma directa",
 		["Number of columns for %s"] = "Número de columnas para %s",
-		["Dropdown UI"] = "Dropdown UI",
-		["Options GUI"] = "Options GUI",
-		["Skin the Buttons"] = "Skin the Buttons",
+		["Dropdown UI"] = "UI Desplegable",
+		["Options GUI"] = "Opciones del GUI",
+		["Skin the Buttons"] = "Piel en Botones",
 		["Order"] = "Orden",
 		["Change the order of %s in the Bar"] = "Cambia el orden de %s en la Barra",
 		["Padding"] = "Separación",
 		["Change the padding of the bar."] = "Cambia la separación en la barra",
-		["Popup Direction"] = "Dirección de Ventana Emergente de botones",
+		["Popup Direction"] = "Dirección de la Ventana Emergente de botones",
 		["Refresh"] = "Actualizar",
 		["Refresh all the bars & buttons"] = "Actualizar todas las barras y botones",
 		["Remove"] = "Eliminar",
@@ -104,7 +104,7 @@ if (GetLocale() == "esES") then
 		["RightClick SelfCast"] = "Click-Derecho lanzar a uno mismo",
 		["SelfCast using Right click"] = "Lanzar hechizos sobre uno mismo haciendo click Derecho",
 		["Key Bindings"] = KEY_BINDINGS,
-		["Assign Bindings for Buttons on your Bars."] = "Assign Bindings for Buttons on your Bars.",
+		["Assign Bindings for Buttons on your Bars."] = "Asigna Atajos de Teclado para los Botones de sus Barras.",
 		["Scale"] = "Escala",
 		["Change the scale of the bar."] = "Cambia la escala de la barra.",
 		["Shared Layout"] = "Compartir Estilo",
@@ -119,18 +119,18 @@ if (GetLocale() == "esES") then
 		["Show Count Text for %s"] = "Mostrar el Texto del Contador para %s";
 		["Show Empty Buttons"] = "Mostrar los Botones Vacíos";
 		["Show Empty Buttons for %s"] = "Mostrar los Botones Vacíos %s";
-		["Show Extended Tooltips"] = "Mostar Tooltips Extendidos";
+		["Show Extended Tooltips"] = "Mostar Bocadillos Extendidos";
 		["Show Hotkey Text"] = "Muestra la Tecla rápida del botón",
-		["Show Hotkey Text for %s"] = "Muestra la Tecla rápida del botón for %s",
-		["Show Tooltips"] = "Mostrar los Tooltips";
-		["Show Tooltips for %s"] = "Mostrar los Tooltips para %s";
-		["Show Tooltips in Combat"] = "Mostrar los Tooltips en Combate";
+		["Show Hotkey Text for %s"] = "Muestra la Tecla rápida del botón para %s",
+		["Show Tooltips"] = "Mostrar los Bocadillos";
+		["Show Tooltips for %s"] = "Mostrar los Bocadillos para %s";
+		["Show Tooltips in Combat"] = "Mostrar los Bocadillos en Combate";
 		["Shuffle"] = "Mezclar",
 		["Shuffle replaces depleted items during combat with the next best item"] = "Mezclar substituye objetos agotados durante el combate por el siguiente mejor objeto",
 		["Snap Bars while moving"] = "Barras Pegajosas al moverse",
 		["Sticky Frames"] = "Paneles Acoplables",
 		["Style"] = "Estilo",
-		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "Cambia el estilo de la barra.  Requires ButtonFacade for non-Blizzard styles.",
+		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "Cambia el estilo de la barra.  Requiere ButtonFacade para estilos diferentes a los de Blizzard.",
 		["Targeted"] = "Seleccionado.";
 		["<Any String>"] = "<Alguna Cadena>",
 		["Move the Bars"] = "Mover las Barras",
@@ -191,12 +191,12 @@ if (GetLocale() == "esES") then
 		["AutoBarButtonBattleStandards"] = "Normas de Batalla",
 		["AutoBarButtonBuff"] = "Buff",
 		["AutoBarButtonBuffWeapon1"] = "Buff: Arma Mano Principal",
-		["AutoBarButtonBuffWeapon2"] = "Buff: Arma Otra Mano",
-		["AutoBarButtonCharge"] = "Charge",
+		["AutoBarButtonBuffWeapon2"] = "Buff: Arma Mano Secundaria",
+		["AutoBarButtonCharge"] = "Cargar",
 		["AutoBarButtonClassBuff"] = "Buff: Clase",
 		["AutoBarButtonClassPet"] = "Mascota de Clase",
 		["AutoBarButtonConjure"] = "Conjuro",
-		["AutoBarButtonCooldownDrums"] = "Reutilización: Sueños",
+		["AutoBarButtonCooldownDrums"] = "Reutilización: Bidones",
 		["AutoBarButtonCooldownPotionHealth"] = "Reutilización: Salud",
 		["AutoBarButtonCooldownPotionMana"] = "Reutilización: Maná",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "Reutilización: Rejuvenecer",
@@ -224,9 +224,9 @@ if (GetLocale() == "esES") then
 		["AutoBarButtonPickLock"] = "Coger Cerradura",
 		["AutoBarButtonMount"] = "Montar",
 		["AutoBarButtonPets"] = "Mascotas",
-		["AutoBarButtonQuest"] = "Misiones",
+		["AutoBarButtonQuest"] = "Misión",
 		["AutoBarButtonRecovery"] = "Maná / Ira / Energía",
-		["AutoBarButtonRotationDrums"] = "Rotación: Sueños",
+		["AutoBarButtonRotationDrums"] = "Rotación: Bidones",
 		["AutoBarButtonSpeed"] = "Velocidad",
 		["AutoBarButtonStance"] = "Postura",
 		["AutoBarButtonStealth"] = "Sigilo",
@@ -251,7 +251,7 @@ if (GetLocale() == "esES") then
 		["AutoBarButtonNormal"] = "Normal",
 
 		-- AutoBarClassButton.lua
-		["Num Pad "] = "Teclado Numerico ",
+		["Num Pad "] = "Teclado Numérico ",
 		["Mouse Button "] = "Botón Ratón ",
 		["Middle Mouse"] = KEY_BUTTON3,
 		["Backspace"] = KEY_BACKSPACE,
@@ -289,7 +289,7 @@ if (GetLocale() == "esES") then
 		--  AutoBarConfig.lua
 		["EMPTY"] = "Vacío";
 		["Default"] = "Por defecto",
-		["Zoomed"] = "Agrandado",
+		["Zoomed"] = "Ampliado",
 		["Dreamlayout"] = "Dreamlayout",
 		["AUTOBAR_CONFIG_DISABLERIGHTCLICKSELFCAST"] = "Desactivar Autolanzar con Click-Derecho";
 		["AUTOBAR_CONFIG_REMOVECAT"] = "Eliminar la Categoría Actual";
@@ -360,7 +360,7 @@ if (GetLocale() == "esES") then
 		["Consumable.Buff.Armor"] = "Buff: Armadura";
 		["Consumable.Buff.Regen Health"] = "Buff: Regenerar Salud";
 		["Consumable.Buff.Agility"] = "Buff: Agilidad";
-		["Consumable.Buff.Intellect"] = "Buff:l Intelecto";
+		["Consumable.Buff.Intellect"] = "Buff: Intelecto";
 		["Consumable.Buff.Protection"] = "Buff: Protección";
 		["Consumable.Buff.Spirit"] = "Buff: Espíritu";
 		["Consumable.Buff.Stamina"] = "Buff: Estamina";
@@ -453,7 +453,7 @@ if (GetLocale() == "esES") then
 		["Spell.Mage.Conjure Mana Stone"] = "Conjurar Piedras de Maná";
 		["Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep"] = "Poción de letargo sin sueños";
 		["Consumable.Cooldown.Potion.Rejuvenation"] = "Pociones de Rejuvenecimiento";
-		["Consumable.Cooldown.Stone.Health.Statue"] = "Estátuas de piedra";
+		["Consumable.Cooldown.Stone.Health.Statue"] = "Estátuas de Piedra";
 		["Consumable.Cooldown.Drums"] = "Reutilización: Bidones";
 		["Consumable.Cooldown.Potion"] = "Reutilización: Poción";
 		["Consumable.Cooldown.Stone"] = "Reutilización: Piedra";

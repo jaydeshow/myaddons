@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 74631 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 74826 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -666,14 +666,14 @@ cleuHandlers.UNIT_DESTROYED = cleuHandlers.UNIT_DIED
 function prototype:COMBAT_LOG_EVENT_UNFILTERED(event, ...)
 	local timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags = ...
 	
+	guidLookup[srcGUID] = srcName
+	guidLookup[dstGUID] = dstName
+
 	-- We don't need to handle SPELL_SUMMON, and it's causing issues with shaman totems. Just kill it.
 	if eventtype == "SPELL_SUMMON" then return end
 	
 	-- This catches heals/energizes from totems -> players, before the totems are friendly. Prevent them from being put into the threat table.
 	if (eventtype == "SPELL_PERIODIC_HEAL" or eventtype == "SPELL_PERIODIC_ENERGIZE") and srcFlags == FAKE_HOSTILE then return end
-	
-	guidLookup[srcGUID] = srcName
-	guidLookup[dstGUID] = dstName
 	
 	-- Some mobs we really don't want to track, like Crypt Scarabs. Just return immediately.
 	-- Oddly, they don't have death or despawn events in the combat log, either. WHEE.
