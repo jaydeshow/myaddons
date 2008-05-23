@@ -1,9 +1,0 @@
-﻿## Interface: 20100
-## Version: 1.01
-## Author: Abin
-## Title: Fix_BlizzardUI - Blzzard UI Error Fixes
-## Title-zhCN: Fix_BlizzardUI - |cff00ff00暴雪自身UI错误修复|r
-## Notes: Fixes Blizzard_InspectUI error & raid buttons Un-clickable issue.
-## Notes-zhCN: 修复Blizzard_InspectUI错误和团队界面无法点击选择队员的问题。
-..\Blizzard_InspectUI\InspectHonorFrame.xml
-Fix_BlizzardUI.xml
