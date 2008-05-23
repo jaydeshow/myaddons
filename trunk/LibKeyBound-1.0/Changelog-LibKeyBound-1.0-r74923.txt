@@ -1,4 +1,21 @@
 ------------------------------------------------------------------------
+r74923 | toadkiller | 2008-05-23 08:47:24 -0400 (Fri, 23 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esMX.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0:
+-- Update esMX
+-- Add rest of missing locales to lib.xml
+------------------------------------------------------------------------
+r74921 | gamefaq | 2008-05-23 08:31:27 -0400 (Fri, 23 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-deDE.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0:
+Translated deDE File and fixed missing deDE entry in lib.xml file.
+------------------------------------------------------------------------
 r74910 | toadkiller | 2008-05-23 06:18:59 -0400 (Fri, 23 May 2008) | 2 lines
 Changed paths:
    A /trunk/LibKeyBound-1.0/CallbackHandler-1.0
