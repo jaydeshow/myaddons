@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r74942 | funkydude | 2008-05-23 12:43:13 -0400 (Fri, 23 May 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell/KilJaeden: Add sound to orb warning
+------------------------------------------------------------------------
 r74911 | 7destiny | 2008-05-23 06:24:14 -0400 (Fri, 23 May 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/Sunwell/KilJaeden.lua
