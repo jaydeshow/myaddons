@@ -23,6 +23,7 @@ local MACRO_TEXT_FORMAT = [[
 /cast %s 
 ]]
 
+
 function TradeTabs:OnEvent(event,...)
 	self:UnregisterEvent(event)
 	if not IsLoggedIn() then
@@ -31,7 +32,7 @@ function TradeTabs:OnEvent(event,...)
 		self:RegisterEvent("PLAYER_REGEN_ENABLED")
 		self.queue = self.queue or {}
 		self.queue[event] = true
-	else
+	else	
 		if self.queue then
 			for v in pairs(self.queue) do
 				self.queue[v] = nil
@@ -42,9 +43,10 @@ function TradeTabs:OnEvent(event,...)
 		end
 		if event == "TRADE_SKILL_SHOW" or event == "CRAFT_SHOW" then
 			self:Initialize(event)
-		end
+		end		
 	end
 end
+
 
 function TradeTabs:Initialize(event)
 	if not self.tradeSpells then
@@ -55,12 +57,15 @@ function TradeTabs:Initialize(event)
 	if SkilletFrame then
 		parent = SkilletFrame
 		self:UnregisterAllEvents()
+	elseif ATSWFrame then
+		parent = ATSWFrame
+		self:UnregisterAllEvents()
 	elseif event == "TRADE_SKILL_SHOW" then
 		parent = TradeSkillFrame
 	elseif event == "CRAFT_SHOW" then
 		parent = CraftFrame
-	end
-
+	end	
+	
 	local prev = self:BuildTabs(self.tradeSpells,nil,parent,"CraftFrame")
 	self:BuildTabs(self.craftSpells,prev,parent,"TradeSkillFrame")
 end
@@ -71,7 +76,7 @@ function TradeTabs:BuildTabs(list,prev,parent,hideFrame)
 		local point,relPoint,x,y = "TOPLEFT","BOTTOMLEFT",0,-17
 		if not prev then
 			prev,relPoint,x,y = parent,"TOPRIGHT",-32,-64
-			if parent == SkilletFrame then x = 0 end -- Special case. ew
+			if (parent == SkilletFrame) or (IsAddOnLoaded("Skinner")) then x = 0 end-- Special case. ew
 		end
 		tab:SetPoint(point,prev,relPoint,x,y)
 		prev = tab
@@ -91,26 +96,26 @@ function TradeTabs:InitSpells()
 
 	self.tradeSpells = {}
 	self.craftSpells = {}
-
+	
 	for i=1,MAX_SPELLS do
 		local n = GetSpellName(i,"spell")
 		if tradeSpells[n] then
 			self.tradeSpells[n] = i
 		elseif craftSpells[n] then
 			self.craftSpells[n] = i
-		end
+		end		
 	end
 end
 
-local function onEnter(self)
-	GameTooltip:SetOwner(self,"ANCHOR_RIGHT") GameTooltip:SetText(self.tooltip)
-	self:GetParent():LockHighlight()
+local function onEnter(self) 
+    GameTooltip:SetOwner(self,"ANCHOR_RIGHT") GameTooltip:SetText(self.tooltip) 
+    self:GetParent():LockHighlight()
 end
 
-local function onLeave(self)
-	GameTooltip:Hide()
-	self:GetParent():UnlockHighlight()
-end
+local function onLeave(self) 
+    GameTooltip:Hide()
+    self:GetParent():UnlockHighlight()
+end   
 
 local function updateSelection(self)
 	if IsCurrentSpell(self.spellID,"spell") then
@@ -123,26 +128,27 @@ local function updateSelection(self)
 end
 
 local function createClickStopper(button)
-	local f = CreateFrame("Frame",nil,button)
-	f:SetAllPoints(button)
-	f:EnableMouse(true)
-	f:SetScript("OnEnter",onEnter)
-	f:SetScript("OnLeave",onLeave)
-	button.clickStopper = f
-	f.tooltip = button.tooltip
-	f:Hide()
+    local f = CreateFrame("Frame",nil,button)
+    f:SetAllPoints(button)
+    f:EnableMouse(true)
+    f:SetScript("OnEnter",onEnter)
+    f:SetScript("OnLeave",onLeave)
+    button.clickStopper = f
+    f.tooltip = button.tooltip
+    f:Hide()
 end
 
-function TradeTabs:CreateTab(spell,spellID,parent,hideFrame)
-	local button = CreateFrame("CheckButton",nil,parent,"SpellBookSkillLineTabTemplate,SecureActionButtonTemplate")
-	button.tooltip = spell
-	button.hideFrame = hideFrame
-	button:Show()
-	button:SetAttribute("type","macro")
-	button:SetAttribute("macrotext",MACRO_TEXT_FORMAT:format(hideFrame,spell))
-	button.spellID = spellID
-	button:SetNormalTexture(GetSpellTexture(spellID, "spell"))
 
+function TradeTabs:CreateTab(spell,spellID,parent,hideFrame)
+    local button = CreateFrame("CheckButton",nil,parent,"SpellBookSkillLineTabTemplate,SecureActionButtonTemplate")
+    button.tooltip = spell
+    button.hideFrame = hideFrame
+	button:Show()
+    button:SetAttribute("type","macro")
+    button:SetAttribute("macrotext",MACRO_TEXT_FORMAT:format(hideFrame,spell))
+    button.spellID = spellID
+    button:SetNormalTexture(GetSpellTexture(spellID, "spell"))
+	
 	button:SetScript("OnEvent",updateSelection)
 	button:RegisterEvent("TRADE_SKILL_SHOW")
 	button:RegisterEvent("TRADE_SKILL_CLOSE")
@@ -150,8 +156,8 @@ function TradeTabs:CreateTab(spell,spellID,parent,hideFrame)
 	button:RegisterEvent("CRAFT_CLOSE")
 	button:RegisterEvent("CURRENT_SPELL_CAST_CHANGED")
 
-	createClickStopper(button)
-	updateSelection(button)
+    createClickStopper(button)
+    updateSelection(button)
 	return button
 end
 

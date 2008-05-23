@@ -1,13 +1,9 @@
 ## Interface: 20400
-
 ## Title: TradeTabs
 ## Notes: Adds spellbook-style tabs to the TradeSkillFrame and CraftFrame for easy swapping between production skills
-## Notes-zhCN: 为你的专业技能窗口,添加快速切换至其它专业技能的按钮.
-
 ## Author: tard
-## Version 1.4
+## Version 1.4 eidt2
 ## X-Category: Tradeskill
 ## LoadOnDemand: 1
 ## LoadWith: Blizzard_TradeSkillUI, Blizzard_CraftUI
-
 TradeTabs.lua
