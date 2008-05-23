@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 74798 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 74823 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local base = {bars = {}, registeredGUIDs = {}}
@@ -145,7 +145,11 @@ function base:ResetBars(column)
 				maxHeight = math_max(self.columns[i].maxHeight, maxHeight)
 			end
 		end
-		Omen.Anchor:SetHeight(Omen.Title:GetHeight() + Omen.ModuleList:GetHeight() + maxHeight + 4)
+		if maxHeight == 0 then
+			Omen.Anchor:SetHeight(Omen.Title:GetHeight() + Omen.ModuleList:GetHeight() + Omen.Options["Skin.Bars.Height"] + Omen.Options["Skin.Bars.Spacing"] + 11)
+		else
+			Omen.Anchor:SetHeight(Omen.Title:GetHeight() + Omen.ModuleList:GetHeight() + maxHeight + 4)
+		end
 	end
 	self:MaybeAutoHide()
 end

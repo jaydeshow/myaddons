@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 74775 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 74872 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -599,7 +599,13 @@ function AutoBarButton:SetTooltip(button)
 	if (GetCVar("UberTooltips") == "1") then
 		GameTooltip_SetDefaultAnchor(GameTooltip, self)
 	else
-		GameTooltip:SetOwner(self, "ANCHOR_PRESERVE")
+		local x = self:GetRight();
+		if ( x >= ( GetScreenWidth() / 2 ) ) then
+			GameTooltip:SetOwner(self, "ANCHOR_LEFT");
+		else
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+		end
+--		GameTooltip:SetOwner(self, "ANCHOR_PRESERVE")
 	end
 
 	-- Add Button or Bar name
@@ -1889,7 +1895,7 @@ AutoBar.Class["AutoBarButtonCooldownPotionRejuvenation"] = AutoBarButtonCooldown
 function AutoBarButtonCooldownPotionRejuvenation.prototype:init(parentBar, buttonDB)
 	AutoBarButtonCooldownPotionRejuvenation.super.prototype.init(self, parentBar, buttonDB)
 
---	self:AddCategory("Consumable.Cooldown.Potion.Rejuvenation")
+	self:AddCategory("Consumable.Cooldown.Potion.Rejuvenation")
 end
 
 
@@ -1901,7 +1907,7 @@ function AutoBarButtonCooldownStoneRejuvenation.prototype:init(parentBar, button
 	AutoBarButtonCooldownStoneRejuvenation.super.prototype.init(self, parentBar, buttonDB)
 
 	if (AutoBar.CLASS ~= "ROGUE" and AutoBar.CLASS ~= "WARRIOR") then
-		self:AddCategory("Consumable.Cooldown.Potion.Rejuvenation")
+--		self:AddCategory("Consumable.Cooldown.Potion.Rejuvenation")
 	end
 end
 

@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 74806 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 74823 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local bars
@@ -208,6 +208,12 @@ local options = {
 			set = function(info, v)
 				SingleTarget:SetOption("ShowTitleBar", v)
 				ShowTitle = v
+				if not v then
+					local titleBar, newTitle = SingleTarget:AcquireBar("TITLE", true)
+					if titleBar then
+						SingleTarget:ReleaseBar(titleBar)
+					end
+				end
 				SingleTarget:ArrangeBars()
 				Omen:ResizeBars()
 			end
@@ -706,10 +712,7 @@ end
 
 function SingleTarget:DisplayThreatForGUID(guid)
 	for i = 1, #bars do
-		local bar = bars[i]
-		if not bar.isTitle then
-			bar.value = 0
-		end
+		bars[i].value = 0
 	end
 	for k, v in Threat:IterateGroupThreatForTarget(guid) do
 		if v > 0 then
@@ -761,11 +764,9 @@ function SingleTarget:PLAYER_TARGET_CHANGED()
 	if not hostileUnit then
 		-- clear all display except the title if shown, but don't release bars
 		for i = 1, #bars do
-			local bar = bars[i]
-			if not bar.isTitle then
-				bar.frame:Hide()
-			end
+			bars[i].value = 0
 		end
+		self:ArrangeBars()
 		self:SetTitle(nil)
 		return
 	end

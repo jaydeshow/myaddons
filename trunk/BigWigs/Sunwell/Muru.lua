@@ -69,7 +69,7 @@ L:RegisterTranslations("esES", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	darkness = "Ténèbres",
-	darkness_desc = "Prévient quand un joueur subit les effets des Ténèbres.",
+	darkness_desc = "Prévient quand quelqu'un subit les effets des Ténèbres.",
 	darkness_message = "Ténèbres : %s",
 	darkness_next = "Prochaines Ténèbres",
 	darkness_soon = "Ténèbres dans 5 sec. !",
@@ -205,7 +205,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"phase", -1, "darkness", "void", "humanoid", "fiends", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 74408 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 74903 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

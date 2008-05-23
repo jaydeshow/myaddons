@@ -31,8 +31,8 @@ L["gathermate"]="gathermate" -- slash command
 L["Display Settings"] = "顯示設置"
 ------ General subtree
 L["General"] = "一般設置"
-L["Show Databases"] = "顯示資料庫"
-L["Selected databases are shown on both the World Map and Minimap."] = "選擇在世界地圖和迷你地圖上顯示資料庫。"
+L["Show Databases"] = "顯示數據庫"
+L["Selected databases are shown on both the World Map and Minimap."] = "選擇在世界地圖和小地圖上顯示數據庫。"
 L["Show Mining Nodes"]="顯示礦脈"
 L["Toggle showing mining nodes."]="切換顯示礦脈採集點。"
 L["Show Herbalism Nodes"]="顯示草藥"
@@ -44,26 +44,37 @@ L["Toggle showing gas clouds."]="切換顯示氣雲(微粒採集點)。"
 L["Show Treasure Nodes"]="顯示寶藏"
 L["Toggle showing treasure nodes."]="切換顯示財寶地點。"
 L["Icons"] = "圖示"
-L["Control various aspects of node icons on both the World Map and Minimap."] = "控制你想要在世界地圖和迷你地圖上顯示的多種節點圖示。"
-L["Show Minimap Icons"]="顯示迷你地圖圖示"
+L["Control various aspects of node icons on both the World Map and Minimap."] = "控制你想要在世界地圖和小地圖上顯示的多種節點圖示。"
+L["Show Minimap Icons"]="顯示小地圖圖示"
 L["Toggle showing Minimap icons."] = "切換顯示圖示與否(在小地圖上)。"
 L["Show World Map Icons"] = "顯示世界地圖圖示"
 L["Toggle showing World Map icons."] = "切換顯示圖示與否(在世界地圖上)。"
+L["Keybind to toggle Minimap Icons"] = "設定熱鍵切換顯示小地圖的圖示與否"
 L["Icon Scale"] = "圖示縮放"
-L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."] = "圖示縮放，這個選項讓你把世界地圖和迷你地圖上的圖示放大或縮小。"
+L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."] = "圖示縮放，這個選項讓你把世界地圖和小地圖上的圖示放大或縮小。"
 L["Icon Alpha"] = "圖示透明度"
 L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."] = "圖示透明度，這個選項讓你更改圖示的透明度，僅作用於世界地圖！"
 L["Miscellaneous"] = "雜項"
 -- Cleanup subtree (now Database Maintenance)
 L["Database Maintenance"] = "數據庫維護"
-L["Cleanup_Desc"] = "經過一段時間後，你的資料庫可能會非常大，清理資料可以讓你的相同專業的在一定範圍內的資料合併為一個，以避免重複。"
+L["Cleanup_Desc"] = "經過一段時間後，你的數據庫可能會非常大，清理資料可以讓你的相同專業的在一定範圍內的資料合併為一個，以避免重複。"
 L["Cleanup radius"] = "清理半徑"
 L["CLEANUP_RADIUS_DESC"] = "設置以碼為單位的半徑，在半徑內的資料將被清除。預設值設置為 |cffffd20050|r 碼（氣雲）/ |cffffd20015|r 碼（其他採集資料）。這些設置也被用於增加的節點。"
 L["Cleanup Database"] = "清理資料"
-L["Cleanup your database by removing duplicates. This takes a few moments, be patient."] = "清理你的資料庫，移除重復資料。這個過程可能持續幾分鐘，請耐心等待。"
+L["Cleanup your database by removing duplicates. This takes a few moments, be patient."] = "清理你的數據庫，移除重復資料。這個過程可能持續幾分鐘，請耐心等待。"
 L["Processing "] = "正在處理……"
 L["Cleanup Complete."] = "清理結束！"
-
+L["Delete Specific Nodes"] = "刪除選定的資源點"
+L["DELETE_SPECIFIC_DESC"] = "從選定的區域刪除所有選定的資源點. 您必須停用數據庫鎖定才能運作."
+L["Select Database"] = "選擇數據庫"
+L["Select Node"] = "選擇資源點"
+L["Select Zone"] = "選擇地區"
+L["Delete"] = "刪除"
+L["Delete selected node from selected zone"] = "從選定的區域刪除所有選定的資源點"
+L["Are you sure you want to delete all of the selected node from the selected zone?"] = "您確定要從選定的區域刪除所有選定的資源點嗎?"
+L["Delete Entire Database"] = "刪除整個數據庫"
+L["DELETE_ENTIRE_DESC"] = "這將會忽略數據庫鎖定並從選定的數據庫內所有的區域刪除所有的資源點."
+L["Are you sure you want to delete all nodes from this database?"] = "您確定要刪除這數據庫所有的資源點嗎?"
 L["Database Locking"] = "數據庫鎖定"
 L["DATABASE_LOCKING_DESC"] = "數據庫鎖定功能可讓您凍結一個數據庫的狀態。一旦鎖定您將不再能夠添加，刪除或修改數據庫。這包括清理和輸入。"
 L["Database locking"] = "數據庫鎖定"
@@ -75,8 +86,8 @@ L["Tracking Distance"] = "追蹤距離"
 L["The distance in yards to a node before it turns into a tracking circle"] = "在一個節點變成追蹤環之前的距離。"
 L["Show Tracking Circle"] = "顯示追蹤環"
 L["Toggle showing the tracking circle."] = "切換是否顯示追蹤環。"
-L["Show Nodes on Minimap Border"] = "迷你地圖邊界顯示"
-L["Shows more Nodes that are currently out of range on the minimap's border."] = "在迷你地圖邊界上顯示哪些超出迷你地圖的節點。"
+L["Show Nodes on Minimap Border"] = "小地圖邊界顯示"
+L["Shows more Nodes that are currently out of range on the minimap's border."] = "在小地圖邊界上顯示哪些超出小地圖的節點。"
 ------ Filters subtree
 L["Filters"] = "過濾"
 L["Herb filter"] = "草藥過濾"
@@ -98,20 +109,20 @@ L["Fishes"] = "魚群"
 L["Mineral Veins"] = "礦脈"
 L["Herb Bushes"] = "草藥"
 L["Treasure"] = "財寶"
-L["Filter_Desc"] = "選擇你想要在世界地圖和迷你地圖上顯示的節點類型，不選擇的類型將僅記錄在資料庫中。"
+L["Filter_Desc"] = "選擇你想要在世界地圖和小地圖上顯示的節點類型，不選擇的類型將僅記錄在數據庫中。"
 ---- Import tree
 L["Import Data"] = "匯入資料"
 L["Import GatherMateData"] = "匯入 GatherMateData"
 L["Importing_Desc"] = "匯入允許 GatherMate 從其他來源獲取節點資料。匯入結束後，你最好進行一次資料清理。"
-L["Load GatherMateData and import the data to your database."] = "載入 GatherMateData 並把其中的資料匯入你的資料庫"
+L["Load GatherMateData and import the data to your database."] = "載入 GatherMateData 並把其中的資料匯入你的數據庫"
 L["GatherMateData has been imported."] = "GatherMateData 已經被匯入。"
 L["Failed to load GatherMateData due to "] = "載入 GatherMateData 失敗："
 L["Merge"] = "合併"
 L["Overwrite"] = "覆蓋"
 L["Import Style"] = "匯入模式"
-L["Merge will add GatherMateData to your database. Overwrite will replace your database with the data in GatherMateData"] = "合併將 GatherMateDate 資料加入你的資料庫，覆蓋將用 GatherMateData 中的資料替換你現有的資料庫"
-L["Databases to Import"] = "匯入的資料庫"
-L["Databases you wish to import"] = "你想要匯入的資料庫"
+L["Merge will add GatherMateData to your database. Overwrite will replace your database with the data in GatherMateData"] = "合併將 GatherMateDate 資料加入你的數據庫，覆蓋將用 GatherMateData 中的資料替換你現有的數據庫"
+L["Databases to Import"] = "匯入的數據庫"
+L["Databases you wish to import"] = "你想要匯入的數據庫"
 L["Auto Import"] = "自動匯入"
 L["Automatically import when ever you update your data module, your current import choice will be used."] = "當你升級你的資料模組的時候自動匯入升級後的資料，你目前的匯入選項將控制匯入的資料類型。"
 L["Auto import complete for addon "] = "自動匯入資料源："
@@ -138,8 +149,8 @@ L["Copy From"] = "複製於："
 L["Copy the settings from another profile into the active profile."] = "從其他配置檔複製到目前配置檔"
 L["Delete existing and unused profiles from the database to save space, and cleanup the GatherMate SavedVariables file."] = "刪除位元使用的配置，以清理 GatherMate 的 SavedVariables 檔。"
 L["Delete a Profile"] = "刪除配置"
-L["Deletes a profile from the database."] = "從資料庫中刪除一個配置"
-L["Are you sure you want to delete the selected profile?"] = "你確認要刪除該配置？"
+L["Deletes a profile from the database."] = "從數據庫中刪除一個配置"
+L["Are you sure you want to delete the selected profile?"] = "你確定要刪除該配置？"
 -- FAQ
 L["FAQ"] = "常見問題"
 L["Frequently Asked Questions"] = "常見問題解答"
@@ -150,9 +161,9 @@ L["FAQ_TEXT"] = [[
 GatherMate 本身沒有內建的資料. 當你在進行採集之後, GatherMate 便會增加及更新你地圖上的資源點. 還有, 請撿查一下顯示設置.
 
 |cffffd200
-為什麼在地圖上有的資源點, 但迷你地圖上卻沒有?
+為什麼在地圖上有的資源點, 但小地圖上卻沒有?
 |r
-|cffffff78Minimap Button Bag|r (也可能是其它類似的插件) 會覆蓋迷你地圖上的按鈕. 請關上它.
+|cffffff78Minimap Button Bag|r (也可能是其它類似的插件) 會覆蓋小地圖上的按鈕. 請關上它.
 
 |cffffd200
 怎樣可取得現成的資料?
@@ -161,11 +172,11 @@ GatherMate 本身沒有內建的資料. 當你在進行採集之後, GatherMate 
 
 1. |cffffff78GatherMate_Data|r - 這個是 LoD (按需要時載入)的插件,包含了 WowHead 收集的資源點並每周會作資料更新. 提供自動更新的選項
 
-2. |cffffff78GatherMate_CartImport|r - 這插件讓你把現存 |cffffff78Cartographer_<Profession>|r 的資料庫匯入到 GatherMate. 但一定要 |cffffff78Cartographer_<Profession>|r 模組和 GatherMate_CartImport 一起載入運作才能順利匯入資料.
+2. |cffffff78GatherMate_CartImport|r - 這插件讓你把現存 |cffffff78Cartographer_<Profession>|r 的數據庫匯入到 GatherMate. 但一定要 |cffffff78Cartographer_<Profession>|r 模組和 GatherMate_CartImport 一起載入運作才能順利匯入資料.
 
 注意:匯入資料到 GatherMate 並非自動運作. 你要自己按匯入資料的按鈕.
 
-這不同於 |cffffff78Cartographer_Data|r 能容許你作個別的修改資料, 當載入 |cffffff78Cartographer_Data|r 時會覆寫你現存的資料庫和已發現的資源點.
+這不同於 |cffffff78Cartographer_Data|r 能容許你作個別的修改資料, 當載入 |cffffff78Cartographer_Data|r 時會覆寫你現存的數據庫和已發現的資源點.
 
 |cffffd200
 會否加入其它的顯示, 如郵箱和飛行管理員等等?

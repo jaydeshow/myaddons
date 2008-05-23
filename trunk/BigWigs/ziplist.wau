@@ -1,4 +1,4 @@
-BigWigs/Changelog-BigWigs-r74733.txt
+BigWigs/Changelog-BigWigs-r74911.txt
 BigWigs/bigwigslod.bat
 BigWigs/Core.lua
 BigWigs/modules.xml
@@ -17,6 +17,7 @@ BigWigs/Sunwell/BigWigs_Sunwell.toc
 BigWigs/Sunwell/Muru.lua
 BigWigs/Sunwell/Kalecgos.lua
 BigWigs/Sunwell/Twins.lua
+BigWigs/Sunwell/KilJaeden.lua
 BigWigs/BlackTemple/BigWigs_BlackTemple.toc
 BigWigs/BlackTemple/Teron.lua
 BigWigs/BlackTemple/Souls.lua
