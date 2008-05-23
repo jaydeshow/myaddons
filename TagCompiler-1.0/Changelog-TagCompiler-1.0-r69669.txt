@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r69669 | seerah | 2008-04-13 23:06:25 -0400 (Sun, 13 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/TagCompiler-1.0/TagCompiler-1.0.toc
+
+TagCompiler-1.0: reverting one of Scorpio0920's stupid toc bumps
+------------------------------------------------------------------------
+r69485 | scorpio0920 | 2008-04-13 03:46:05 -0400 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/TagCompiler-1.0/TagCompiler-1.0.toc
+
+TagCompiler-1.0:
+- toc to 2.4
+------------------------------------------------------------------------
