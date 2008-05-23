@@ -5,14 +5,13 @@ ARLText.lua
 
 Text based output functions for all of AckisRecipeList
 
-$Date: 2008-05-18 15:39:27 -0400 (Sun, 18 May 2008) $
-$Rev: 74321 $
+$Date: 2008-05-23 11:10:00 -0400 (Fri, 23 May 2008) $
+$Rev: 74935 $
 
 ****************************************************************************************
 ]]--
 
 local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
-local Crayon	= LibStub("LibCrayon-3.0")
 
 local addon = AckisRecipeList
 
@@ -28,11 +27,11 @@ function addon:PrintRecipeInfo(RecipeName)
 
 	if (addon.MissingRecipeListing[RecipeName]["Acquire"] ~= nil) then
 
-		DEFAULT_CHAT_FRAME:AddMessage(Crayon:Purple(L["MissingRecipePrefix"]) .. Crayon:Green(RecipeName .. " - [" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. addon.br .. addon.MissingRecipeListing[RecipeName]["Acquire"])
+		DEFAULT_CHAT_FRAME:AddMessage(self:Purple(L["MissingRecipePrefix"]) .. self:Green(RecipeName .. " - [" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. addon.br .. addon.MissingRecipeListing[RecipeName]["Acquire"])
 
 	else
 
-		DEFAULT_CHAT_FRAME:AddMessage(Crayon:Purple(L["MissingRecipePrefix"]) .. Crayon:Green(RecipeName .. " - [" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]"))
+		DEFAULT_CHAT_FRAME:AddMessage(self:Purple(L["MissingRecipePrefix"]) .. self:Green(RecipeName .. " - [" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]"))
 
 	end
 
@@ -45,13 +44,13 @@ function addon:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSp
 	if (CurrentSpeciality == "") then
 
 		-- Identify scan occuring in chat
-		DEFAULT_CHAT_FRAME:AddMessage(Crayon:Copper(addon.ARLTitle))
-		DEFAULT_CHAT_FRAME:AddMessage(Crayon:Purple(L["InitiateScan"]:format(CurrentProfession, CurrentProfessionLevel)))
+		DEFAULT_CHAT_FRAME:AddMessage(self:Copper(addon.ARLTitle))
+		DEFAULT_CHAT_FRAME:AddMessage(self:Purple(L["InitiateScan"]:format(CurrentProfession, CurrentProfessionLevel)))
 
 	else
 
 		-- Identify scan occuring in chat
-		DEFAULT_CHAT_FRAME:AddMessage(Crayon:Purple(L["InitiateScanSpecial"]:format(CurrentProfession, CurrentSpeciality, CurrentProfessionLevel)))
+		DEFAULT_CHAT_FRAME:AddMessage(self:Purple(L["InitiateScanSpecial"]:format(CurrentProfession, CurrentSpeciality, CurrentProfessionLevel)))
 	
 	end
 
@@ -62,7 +61,7 @@ end
 function addon:PrintRecipeListSummary()
 
 	local NumMissingRecipes = addon.NumberOfRecipes - addon.FoundRecipes
-	DEFAULT_CHAT_FRAME:AddMessage(Crayon:Purple(L["RecipeListSummary"]:format(addon.FoundRecipes, addon.NumberOfRecipes, math.floor(addon.FoundRecipes / addon.NumberOfRecipes * 100), NumMissingRecipes)))
+	DEFAULT_CHAT_FRAME:AddMessage(self:Purple(L["RecipeListSummary"]:format(addon.FoundRecipes, addon.NumberOfRecipes, math.floor(addon.FoundRecipes / addon.NumberOfRecipes * 100), NumMissingRecipes)))
 
 end
 
@@ -121,6 +120,6 @@ end
 
 function addon:printMissingSkill(RecipeName)
 
-	self:Print(Crayon:Red(RecipeName) .. Crayon:White(L["MissingFromDB"]))
+	self:Print(self:Red(RecipeName) .. self:White(L["MissingFromDB"]))
 
 end

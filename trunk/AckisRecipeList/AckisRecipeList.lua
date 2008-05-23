@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList v0.84
-$Date: 2008-05-21 19:23:56 -0400 (Wed, 21 May 2008) $
-$Rev: 74721 $
+$Date: 2008-05-23 11:36:27 -0400 (Fri, 23 May 2008) $
+$Rev: 74937 $
 
 Author: Ackis on Illidan US Horde
 ****************************************************************************************
@@ -12,8 +12,6 @@ Please see Wowace.com for more information.
 ****************************************************************************************
 ]]
 
---/dump GetMouseFocus()
-local Crayon	= LibStub("LibCrayon-3.0")
 local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
 local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
 
@@ -21,7 +19,7 @@ AckisRecipeList = LibStub("AceAddon-3.0"):NewAddon("AckisRecipeList", "AceConsol
 
 local addon = AckisRecipeList
 
--- Global variables
+-- Global variables which are used between multiple files
 addon.RecipeListing = nil
 addon.MissingRecipeListing = nil
 addon.VendorList = nil
@@ -37,24 +35,41 @@ addon.ResetOkayARL = nil
 addon.ScanButton = nil
 addon.Frame = nil
 
+-- Make global API calls local to speed things up
+local GetNumCrafts = GetNumCrafts
+local GetNumTradeSkills = GetNumTradeSkills
+local GetSpellInfo = GetSpellInfo
+local GetSpellName = GetSpellName
+local GetCraftInfo = GetCraftInfo
+local GetCraftName = GetCraftName
+local GetTradeSkillLine = GetTradeSkillLine
+local GetTradeSkillInfo = GetTradeSkillInfo
+local CraftIsPetTraining = CraftIsPetTraining
+local select = select
+local format = format
+local string = string
+local tostring = tostring
+local pairs = pairs
+local table = table
+local next = next
+local UnitLevel = UnitLevel
+local UnitClass = UnitClass
+local GetAddOnMetadata = GetAddOnMetadata
+local InterfaceOptionsFrame_OpenToFrame = InterfaceOptionsFrame_OpenToFrame
+local BOOKTYPE_SPELL = BOOKTYPE_SPELL
+
 -- Constants which are used everytime the add-on is loaded
 local addonversion = GetAddOnMetadata("AckisRecipeList", "Version")
 local addonwiki = GetAddOnMetadata("AckisRecipeList", "X-Website")
 local addoncredits = GetAddOnMetadata("AckisRecipeList", "X-Credits")
 local addonwebsite = GetAddOnMetadata("AckisRecipeList", "X-Feedback")
 local addonlocals = GetAddOnMetadata("AckisRecipeList", "X-Localizations")
-addon.ARLTitle = "Ackis Recipe List v." .. addonversion
-addon.br = "\n    - "
 local nagrandfac = BFAC["Kurenai"] .. "\\" .. BFAC["The Mag'har"]
 local hellfirefac = BFAC["Honor Hold"] .. "\\" .. BFAC["Thrallmar"]
 
--- Local variables
--- Make global API calls local to speed things up
-local GetNumCrafts = GetNumCrafts
-local GetSpellInfo = GetSpellInfo
-local GetCraftInfo = GetCraftInfo
-local GetTradeSkillInfo = GetTradeSkillInfo
-local select = select
+-- Global constants which are used between multiple files
+addon.ARLTitle = "Ackis Recipe List v." .. addonversion
+addon.br = "\n    - "
 
 local playerFaction = UnitFactionGroup("player")
 
@@ -67,7 +82,7 @@ local playerFaction = UnitFactionGroup("player")
 -- Returns configuration options for ARL
 local function giveARLOptions()
 
-	command_options = {
+	local command_options = {
 	    type = "group",
 	    args =
 		{
@@ -125,82 +140,87 @@ local function giveARLOptions()
 	}
 
 	return command_options
+
 end
 
 -- Returns configuration options for profiling
 local function giveProfiles()
+
 	local profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(addon.db)
 	return profiles
+
 end
 
 -- Returns configuration options for display
 local function giveDisplay()
 
-		display =
+	local display =
+	{
+		type = "group",
+		name = L["Display"],
+		desc = L["DISPLAY_OPTIONS"],
+		order = 1,
+		args =
 		{
-			type = "group",
-			name = L["Display"],
-			desc = L["DISPLAY_OPTIONS"],
-			order = 1,
-			args =
+			desc =
 			{
-				desc =
-				{
-					order = 1,
-					type = "description",
-					name = L["DISPLAY_OPTIONS"] .. "\n",
-				},
-				longdesc = 
-				{
-					order = 2,
-					type = "description",
-					name = L["DISPLAY_OPTIONS_LONG"] .. "\n",
-				},
-				usegui =
-				{
-					name	= L["Use GUI"],
-					desc	= L["GUI_TOGGLE"],
-					type	= "toggle",
-					get		= function() return addon.db.profile.usegui end,
-					set		= function() addon.db.profile.usegui = not addon.db.profile.usegui end,
-					order	= 3,
-				},
-				testgui =
-				{
-					name	= "Test GUI",
-					desc	= "New test GUI don't use this please.",
-					type	= "toggle",
-					get		= function() return addon.db.profile.testgui end,
-					set		= function() addon.db.profile.testgui = not addon.db.profile.testgui end,
-					order	= 3,
-				},
-				includefiltered =
-				{
-					name	= L["Include Filtered"],
-					desc	= L["FILTERCOUNT_TOGGLE"],
-					type	= "toggle",
-					get		= function() return addon.db.profile.includefiltered end,
-					set		= function() addon.db.profile.includefiltered = not addon.db.profile.includefiltered end,
-					order	= 4,
-				},
-				closegui =
-				{
-					name	= L["Close GUI"],
-					desc	= L["CLOSEGUI_TOGGLE"],
-					type	= "toggle",
-					get		= function() return addon.db.profile.closeguionskillclose end,
-					set		= function() addon.db.profile.closeguionskillclose = not addon.db.profile.closeguionskillclose end,
-					order	= 5,
-				},
-			}
+				order = 1,
+				type = "description",
+				name = L["DISPLAY_OPTIONS"] .. "\n",
+			},
+			longdesc = 
+			{
+				order = 2,
+				type = "description",
+				name = L["DISPLAY_OPTIONS_LONG"] .. "\n",
+			},
+			usegui =
+			{
+				name	= L["Use GUI"],
+				desc	= L["GUI_TOGGLE"],
+				type	= "toggle",
+				get		= function() return addon.db.profile.usegui end,
+				set		= function() addon.db.profile.usegui = not addon.db.profile.usegui end,
+				order	= 3,
+			},
+			testgui =
+			{
+				name	= "Test GUI",
+				desc	= "New test GUI don't use this please.",
+				type	= "toggle",
+				get		= function() return addon.db.profile.testgui end,
+				set		= function() addon.db.profile.testgui = not addon.db.profile.testgui end,
+				order	= 3,
+			},
+			includefiltered =
+			{
+				name	= L["Include Filtered"],
+				desc	= L["FILTERCOUNT_TOGGLE"],
+				type	= "toggle",
+				get		= function() return addon.db.profile.includefiltered end,
+				set		= function() addon.db.profile.includefiltered = not addon.db.profile.includefiltered end,
+				order	= 4,
+			},
+			closegui =
+			{
+				name	= L["Close GUI"],
+				desc	= L["CLOSEGUI_TOGGLE"],
+				type	= "toggle",
+				get		= function() return addon.db.profile.closeguionskillclose end,
+				set		= function() addon.db.profile.closeguionskillclose = not addon.db.profile.closeguionskillclose end,
+				order	= 5,
+			},
 		}
-		return display
+	}
+
+	return display
 
 end
 
 -- Returns configuraion options for filter
 local function giveFilter()
-	filter =
+
+	local filter =
 	{
 		type = "group",
 		name = L["Filter"],
@@ -480,11 +500,13 @@ local function giveFilter()
 	}
 
 	return filter
+
 end
 
 -- Returns configuraion options for sorintg
 local function giveSorting()
-	sorting =
+
+	local sorting =
 	{
 		type = "group",
 		name = L["Sort"],
@@ -516,7 +538,9 @@ local function giveSorting()
 				},
 		},
 	}
+
 	return sorting
+
 end
 
 --[[
@@ -1172,26 +1196,26 @@ do
 		for i=1,numvars,3 do
 			local QuestName, QuestFaction, QuestLoc = select(i,...)
 			if (QuestFaction == BFAC["Alliance"]) then
-				if (AckisRecipeList.db.profile.faction or playerFaction == BFAC["Alliance"]) then
+				if (addon.db.profile.faction or playerFaction == BFAC["Alliance"]) then
 					if (i+2 == numvars) then
-						table.insert(t,Crayon:Cyan(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
+						table.insert(t,self:Cyan(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 					else
-						table.insert(t,Crayon:Cyan(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
+						table.insert(t,self:Cyan(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
 					end
 				end
 			elseif (QuestFaction == BFAC["Horde"]) then
-				if (AckisRecipeList.db.profile.faction or playerFaction == BFAC["Horde"]) then
+				if (addon.db.profile.faction or playerFaction == BFAC["Horde"]) then
 					if (i+2 == numvars) then
-						table.insert(t,Crayon:Red(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
+						table.insert(t,self:Red(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 					else
-						table.insert(t,Crayon:Red(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
+						table.insert(t,self:Red(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
 					end
 				end
 			elseif (QuestFaction == BFAC["Neutral"]) then
 				if (i+2 == numvars) then
-					table.insert(t,Crayon:Gold(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
+					table.insert(t,self:Gold(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 				else
-					table.insert(t,Crayon:Gold(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
+					table.insert(t,self:Gold(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
 				end
 			end
 		end
@@ -1261,15 +1285,15 @@ do
 		for i=1,(numvars-1),1 do
 			local CurrentCheck = select(i, ...)
 			if (addon.VendorList[CurrentCheck]["Faction"] == BFAC["Alliance"]) then
-				if (AckisRecipeList.db.profile.faction or playerFaction == BFAC["Alliance"]) then
-					table.insert(t,Crayon:Cyan(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
+				if (addon.db.profile.faction or playerFaction == BFAC["Alliance"]) then
+					table.insert(t,self:Cyan(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
 				end
 			elseif (addon.VendorList[CurrentCheck]["Faction"] == BFAC["Horde"]) then
-				if (AckisRecipeList.db.profile.faction or playerFaction == BFAC["Horde"]) then
-					table.insert(t,Crayon:Red(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
+				if (addon.db.profile.faction or playerFaction == BFAC["Horde"]) then
+					table.insert(t,self:Red(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
 				end
 			elseif (addon.VendorList[CurrentCheck]["Faction"] == BFAC["Neutral"]) then
-				table.insert(t,Crayon:Gold(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
+				table.insert(t,self:Gold(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
 			else
 				table.insert(t,format("%s - %s: %s",  addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"]))
 			end
@@ -1285,13 +1309,13 @@ end
 
 function addon:AddSingleReputation(RepLevel, Faction)
 	if (RepLevel == BFAC["Friendly"]) then
-		return format("%s: %s - %s",L["Reputation"],Faction,Crayon:White(RepLevel))
+		return format("%s: %s - %s",L["Reputation"],Faction,self:White(RepLevel))
 	elseif (RepLevel == BFAC["Honored"]) then
-		return format("%s: %s - %s",L["Reputation"],Faction,Crayon:Green(RepLevel))
+		return format("%s: %s - %s",L["Reputation"],Faction,self:Green(RepLevel))
 	elseif (RepLevel == BFAC["Revered"]) then
-		return format("%s: %s - %s",L["Reputation"],Faction,Crayon:Blue(RepLevel))
+		return format("%s: %s - %s",L["Reputation"],Faction,self:Blue(RepLevel))
 	elseif (RepLevel == BFAC["Exalted"]) then
-		return format("%s: %s - %s",L["Reputation"],Faction,Crayon:Purple(RepLevel))
+		return format("%s: %s - %s",L["Reputation"],Faction,self:Purple(RepLevel))
 	else
 		return format("%s: %s - %s",L["Reputation"],Faction,RepLevel)
 	end
@@ -1430,7 +1454,7 @@ local function InitializeCraftRecipes(CurrentProfession)
 	else
 
 		CurrentProfessionLevel = 0
-		self:Print(L["UnknownTradeSkill"]:format(CurrentProfession))
+		addon:Print(L["UnknownTradeSkill"]:format(CurrentProfession))
 
 	end
 
@@ -1576,7 +1600,7 @@ function addon:AckisRecipeList_Command()
 			SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
 		end
 
-		if (AckisRecipeList.db.profile.usegui) then
+		if (addon.db.profile.usegui) then
 			self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
 		else
 			self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
@@ -1602,7 +1626,7 @@ function addon:AckisRecipeList_Command()
 		elseif (sorttype == "Aquisition") then
 			SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
 		end
-		if (AckisRecipeList.db.profile.usegui) then
+		if (addon.db.profile.usegui) then
 			self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
 		else
 			self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
