@@ -9,15 +9,15 @@ end
 local LKB = LibStub("LibKeyBound-1.0")
 
 LKB.locale = {
-	Enabled = "Bindings mode enabled";
-	Disabled = "Bindings mode disabled";
-	ClearTip = format("Press %s to clear all bindings", GetBindingText("ESCAPE", "KEY_"));
-	NoKeysBoundTip = "No current bindings";
-	ClearedBindings = "Removed all bindings from %s";
-	BoundKey = "Set %s à %s";
-	UnboundKey = "Unbound %s from %s";
-	CannotBindInCombat = "Cannot bind keys in combat";
-	CombatBindingsEnabled = "Exiting combat, keybinding mode enabled";
-	CombatBindingsDisabled = "Entering combat, keybinding mode disabled";
-	BindingsHelp = "Hover over a button, then press a key to set its binding.  To clear a button's current keybinding, press %s.";
+	Enabled = 'Modo Atajos activado';
+	Disabled = 'Modo Atajos desactivado';
+	ClearTip = format('Pulsa %s para limpiar todos los atajos', GetBindingText('ESCAPE', 'KEY_'));
+	NoKeysBoundTip = 'No existen atajos';
+	ClearedBindings = 'Eliminados todos los atajos de %s';
+	BoundKey = 'Establecer %s a %s';
+	UnboundKey = 'Quitado atajo %s de %s';
+	CannotBindInCombat = 'No se pueden atajar teclas en combate';
+	CombatBindingsEnabled = 'Saliendo de combate, modo de Atajos de Teclado activado';
+	CombatBindingsDisabled = 'Entrando en combate, modo de Atajos de Teclado desactivado';
+	BindingsHelp = "Sitúese en un botón, entonces pulse una tecla para establecer su atajo.  Para limpiar el Atajo del botón actual, pulse %s.";
 }
