@@ -36,10 +36,18 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	channel = "法力通道",
-	channel_desc = "当塞林·火心从魔能水晶获取法力时发出警报。",
+	channel_desc = "当从魔能水晶获取法力时发出警报。",
 	channel_message = "法力通道！",
-	channel_trigger = "channel from the nearby Fel Crystal",--need check
+	channel_trigger = "开始吸取附近魔能水晶的能量……",
 } end )
+
+L:RegisterTranslations("zhTW", function() return {
+	channel = "法力通道",
+	channel_desc = "當賽林·炎心以魔能水晶獲取法力時發出警報",
+	channel_message = "法力通道!",
+	channel_trigger = "從附近的惡魔水晶進行導引……",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -49,7 +57,7 @@ mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"channel","bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72163 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

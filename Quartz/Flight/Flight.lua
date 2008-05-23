@@ -41,10 +41,10 @@ if InFlight then
 		self.hooks[object].StartTimer(object, ...)
 		
 		local f = InFlightBar
-		
 		local _, duration = f:GetMinMaxValues()
-		local destination = f.locText:GetText()
-		
+		local _, locText = f:GetRegions()
+		local destination = locText:GetText()
+
 		self:BeginFlight(duration, destination)
 	end
 elseif ToFu then

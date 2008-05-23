@@ -106,7 +106,7 @@ R:RegisterTranslations("zhCN", function() return{
 	["Symbol of Divinity"]		= "神圣符印",
 	["Symbol of Kings"]			= "神圣符印",
 	["Wild Berries"]			= "野生漿果",
-	["Wild Quillvine"]			= "野生羽蔓",
+	["Wild Quillvine"]			= "野生刺藤",
 	["Wild Thornroot"]			= "野生棘根草",
 } end)
 

@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 56068 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 73088 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2007-11-26 15:54:07 -0500 (Mon, 26 Nov 2007) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-05-08 07:48:10 -0400 (Thu, 08 May 2008) $", 8, 17)
 end
 
 -- if you want to add data to the defaults, send ckknight@gmail.com your
@@ -16,7 +16,7 @@ local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Foglig
 L:AddTranslations("enUS", function() return {
 	["Foglight"] = true,
 	["Module to show unexplored areas on the map."] = true,
-	
+
 	["Unexplored color"] = true,
 	["Change the color of the unexplored areas"] = true,
 } end)
@@ -24,7 +24,7 @@ L:AddTranslations("enUS", function() return {
 L:AddTranslations("koKR", function() return {
 	["Foglight"] = "미 탐색 지역",
 	["Module to show unexplored areas on the map."] = "지도에 탐험하지 못한 지역을 표시합니다.",
-	
+
 	["Unexplored color"] = "색상",
 	["Change the color of the unexplored areas"] = "탐험하지 못한 지역의 색상을 변경합니다.",
 } end)
@@ -32,7 +32,7 @@ L:AddTranslations("koKR", function() return {
 L:AddTranslations("deDE", function() return {
 	["Foglight"] = "Licht im Nebel",
 	["Module to show unexplored areas on the map."] = "Modul zur Aufdeckung nicht erkundeter Bereiche auf der Weltkarte.",
-	
+
 	["Unexplored color"] = "Farbe nicht erkundeter Bereiche",
 	["Change the color of the unexplored areas"] = "Ändert die Farbe von nicht erkundeten Bereichen.",
 } end)
@@ -47,25 +47,26 @@ L:AddTranslations("frFR", function() return {
 
 L:AddTranslations("esES", function() return {
 	["Foglight"] = "Faro Antiniebla",
-	["Module to show unexplored areas on the map."] = "M\195\179dulo que muestra las zonas inexploradas del mapa",
-	
+	["Module to show unexplored areas on the map."] = "Módulo que muestra las zonas inexploradas del mapa",
+
 	["Unexplored color"] = "Color de lo inexplorado",
-	["Change the color of the unexplored areas"] = "Cambia el color de las \195\161reas inexploradas",
+	["Change the color of the unexplored areas"] = "Cambia el color de las áreas inexploradas",
 } end)
 
 L:AddTranslations("zhTW", function() return {
 	["Foglight"] = "未探索地區",
 	["Module to show unexplored areas on the map."] = "顯示地圖尚未探索地區的模組。",
-	
+
 	["Unexplored color"] = "未探索顏色",
 	["Change the color of the unexplored areas"] = "改變尚未探索地區的顏色",
 } end)
+
 L:AddTranslations("zhCN", function() return {
 	["Foglight"] = "未探索地区",
-	["Module to show unexplored areas on the map."] = "显示地图未探索地区",
+	["Module to show unexplored areas on the map."] = "显示地图未探索地区。",
 
 	["Unexplored color"] = "未探索颜色",
-	["Change the color of the unexplored areas"] = "改变尚未探索地区的颜色",
+	["Change the color of the unexplored areas"] = "改变尚未探索地区的颜色。",
 } end)
 
 local math_mod = math.fmod
@@ -191,17 +192,17 @@ function Cartographer_Foglight:OnInitialize()
 				["FURLBROWSPUMPKINFARM"] = 12217179346,
 			},
 			["Badlands"] = {
-				["APOCRYPHANSREST"] = 332878001407,
+				["APOCRYPHANSREST"] = 332878053632,
 				["THEDUSTBOWL"] = 213841628430,
 				["THEMAKERSTERRACE"] = 7924298997,
-				["CAMPCAGG"] = 459574309119,
+				["CAMPCAGG"] = 459574345984,
 				["CAMPBOFF"] = 366671585535,
 				["LETHLORRAVINE"] = 118752746866,
 				["AGMONDSEND"] = 418047605001,
 				["CAMPKOSH"] = 52117598428,
 				["ANGORFORTRESS"] = 159254782147,
-				["MIRAGEFLATS"] = 412472295709,
-				["KARGATH"] = 158914051312,
+				["MIRAGEFLATS"] = 412472312064,
+				["KARGATH"] = 158914052352,
 				["DUSTWINDGULCH"] = 224934442229,
 				["VALLEYOFFANGS"] = 275244095718,
 				["HAMMERTOESDIGSITE"] = 129315835080,
@@ -291,7 +292,7 @@ function Cartographer_Foglight:OnInitialize()
 				["GARRENSHAUNT"] = 156213932206,
 				["BRIGHTWATERLAKE"] = 149865922761,
 				["DEATHKNELL"] = 352425555189,
-				["BRILL"] = 321612052608,
+				["BRILL"] = 321612152960,
 				["NIGHTMAREVALE"] = 375116733683,
 				["COLDHEARTHMANOR"] = 351610732694,
 				["AGAMANDMILLS"] = 149601601792,
@@ -880,6 +881,7 @@ function Cartographer_Foglight:OnInitialize()
 				["FairbreezeVilliage"] = 414869356800,
 				["DuskwitherGrounds"] = 272291332352,
 				["LakeElrendar"] = 506344969344,
+				["AzurebreezeCoast"] = 245514895616,
 			},
 			["ShadowmoonValley"] = {
 				["LegionHold"] = 166539559424,
@@ -940,10 +942,14 @@ function Cartographer_Foglight:OnInitialize()
 				["OshuGun"] = 358806272512,
 				["WindyreedPass"] = 85452914944,
 			},
+			["Sunwell"] = {
+				["SunsReachHarbor"] = 270847607296,
+				["SunsReachSanctum"] = 4558684672,
+			},
 			['*'] = {}
 		}
 	})
-	
+
 	Cartographer.options.args.Foglight = {
 		name = L["Foglight"],
 		desc = L["Module to show unexplored areas on the map."],
@@ -977,7 +983,7 @@ function Cartographer_Foglight:OnEnable(first)
 	if WorldMapFrame:IsShown() then
 		WorldMapFrame_Update()
 	end
-	
+
 	-- Fix for 2.3 so db reset isn't needed, remove this after a while since it only needs to be run once
 	if first then
 		for z,t in pairs(self.db.account.errata) do
@@ -1019,15 +1025,15 @@ function Cartographer_Foglight:WorldMapFrame_UpdateOverlays()
 	if not WorldMapFrame:IsShown() then
 		return
 	end
-	
+
 	local mapFileName, textureHeight = GetMapInfo()
 	if not mapFileName then
 		return
 	end
-	
+
 	local prefix = "Interface\\WorldMap\\"..mapFileName.."\\"
 	local zoneTable = self.overlayInfo[mapFileName]
-	
+
 	local numOverlays = self.hooks.GetNumMapOverlays()
 	local len = string.len(prefix)+1
 	for i=1, numOverlays do
@@ -1039,13 +1045,13 @@ function Cartographer_Foglight:WorldMapFrame_UpdateOverlays()
 			zoneTable[tname] = num
 		end
 	end
-	
+
 	local textureCount = 0
-	
+
 	for tname, num in pairs(zoneTable) do
 		local textureName = prefix .. tname
 		local textureWidth, textureHeight, offsetX, offsetY = math_mod(num, 1024), math_mod(math_floor(num / 1024), 1024), math_mod(math_floor(num / 1048576), 1024), math_floor(num / 1073741824)
-		
+
 		-- HACK: override *known incorrect* data with hard-coded fixes.
 		if textureName == "Interface\\WorldMap\\Tirisfal\\BRIGHTWATERLAKE" then
 			if offsetX == 587 then

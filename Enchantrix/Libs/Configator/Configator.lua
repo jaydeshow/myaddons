@@ -1,7 +1,7 @@
 --[[
 	Configator - A library to help you create a gui config
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: Configator.lua 68 2008-02-12 08:05:07Z mentalpower $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: Configator.lua 84 2008-04-18 03:18:13Z RockSlice $
 	URL: http://auctioneeraddon.com/dl/
 
 	License:
@@ -54,7 +54,7 @@ USAGE:
 ]]
 
 local LIBRARY_VERSION_MAJOR = "Configator"
-local LIBRARY_VERSION_MINOR = 12
+local LIBRARY_VERSION_MINOR = 14
 
 do -- LibStub
 	-- LibStub is a simple versioning stub meant for use in Libraries.  http://www.wowace.com/wiki/LibStub for more info
@@ -187,7 +187,7 @@ function lib:Create(setter, getter, dialogWidth, dialogHeight, gapWidth, gapHeig
 		gui:SetPoint("CENTER", "UIParent", "CENTER")
 	end
 	gui:Hide()
-	gui:SetFrameStrata("DIALOG")
+	gui:SetFrameStrata("HIGH")
 	gui:SetToplevel(true)
 	gui:SetMovable(true)
 	gui:EnableMouse(true)

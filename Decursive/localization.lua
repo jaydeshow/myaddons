@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_utils.lua"] then
     return;
 end
 
-Dcr:SetDateAndRevision("$Date: 2008-02-17 17:07:32 -0500 (Sun, 17 Feb 2008) $", "$Revision: 61809 $");
+Dcr:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
 
 Dcr.LOC = {};
 
@@ -82,18 +82,18 @@ LOC.PET_FEL_CAST  = "Devour Magic";
 LOC.PET_DOOM_CAST = "Dispel Magic";
 
 
-LOC.SPELL_POLYMORPH	      = 'Polymorph';  -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_CURE_DISEASE        = 'Cure Disease'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_ABOLISH_DISEASE     = 'Abolish Disease'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_PURIFY              = 'Purify'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_CLEANSE             = 'Cleanse'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_DISPELL_MAGIC       = 'Dispel Magic'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_CURE_POISON         = 'Cure Poison'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_ABOLISH_POISON      = 'Abolish Poison'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_REMOVE_LESSER_CURSE = 'Remove Lesser Curse'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_REMOVE_CURSE        = 'Remove Curse'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_PURGE               = 'Purge'; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SPELL_CYCLONE	      = 'Cyclone'; -- This translation is for reference only the one used is from the library BabbleSpell
+LOC.SPELL_POLYMORPH	      = 'Polymorph'; -- NO NEED TO TRANSLATE
+LOC.SPELL_CURE_DISEASE        = 'Cure Disease'; -- NO NEED TO TRANSLATE
+LOC.SPELL_ABOLISH_DISEASE     = 'Abolish Disease'; -- NO NEED TO TRANSLATE
+LOC.SPELL_PURIFY              = 'Purify'; -- NO NEED TO TRANSLATE
+LOC.SPELL_CLEANSE             = 'Cleanse'; -- NO NEED TO TRANSLATE
+LOC.SPELL_DISPELL_MAGIC       = 'Dispel Magic'; -- NO NEED TO TRANSLATE
+LOC.SPELL_CURE_POISON         = 'Cure Poison'; -- NO NEED TO TRANSLATE
+LOC.SPELL_ABOLISH_POISON      = 'Abolish Poison';-- NO NEED TO TRANSLATE
+LOC.SPELL_REMOVE_LESSER_CURSE = 'Remove Lesser Curse'; -- NO NEED TO TRANSLATE
+LOC.SPELL_REMOVE_CURSE        = 'Remove Curse'; -- NO NEED TO TRANSLATE
+LOC.SPELL_PURGE               = 'Purge'; -- NO NEED TO TRANSLATE
+LOC.SPELL_CYCLONE	      = 'Cyclone'; -- NO NEED TO TRANSLATE
 
 BINDING_NAME_DCRSHOW    = "Show or hide Decursive Main Bar\n(live-list anchor)";
 
@@ -147,25 +147,23 @@ LOC.SPELL_FOUND      = "%s spell found!";
 
 
 -- spells and potions
-LOC.DREAMLESSSLEEP = "Dreamless Sleep";
-LOC.GDREAMLESSSLEEP = "Greater Dreamless Sleep";
-LOC.MDREAMLESSSLEEP = "Major Dreamless Sleep";
-LOC.ANCIENTHYSTERIA = "Ancient Hysteria";
-LOC.IGNITE		= "Ignite Mana";
-LOC.TAINTEDMIND	= "Tainted Mind";
-LOC.MAGMASHAKLES	= "Magma Shackles";
-LOC.CRIPLES		= "Cripple";
-LOC.DUSTCLOUD	= "Dust Cloud";
-LOC.WIDOWSEMBRACE	= "Widow's Embrace";
-LOC.CURSEOFTONGUES	= "Curse of Tongues"; -- This translation is for reference only the one used is from the library BabbleSpell
-LOC.SONICBURST	= "Sonic Burst";
-LOC.THUNDERCLAP	= "Thunderclap";
-LOC.DELUSIONOFJINDO = "Delusions of Jin'do";
-
-LOC.MUTATINGINJECTION = "Mutating Injection";
-
-DCR_LOC_SILENCE		= "Silence";  -- This translation is for reference only the one used is from the library BabbleSpell
-DCR_LOC_MINDVISION	= "Mind Vision";  -- This translation is for reference only the one used is from the library BabbleSpell
+LOC.DREAMLESSSLEEP	= "Dreamless Sleep";		-- NO NEED TO TRANSLATE 
+LOC.GDREAMLESSSLEEP	= "Greater Dreamless Sleep";	-- NO NEED TO TRANSLATE 
+LOC.MDREAMLESSSLEEP	= "Major Dreamless Sleep";	-- NO NEED TO TRANSLATE
+LOC.ANCIENTHYSTERIA	= "Ancient Hysteria";		-- NO NEED TO TRANSLATE
+LOC.IGNITE		= "Ignite Mana";		-- NO NEED TO TRANSLATE
+LOC.TAINTEDMIND		= "Tainted Mind";		-- NO NEED TO TRANSLATE
+LOC.MAGMASHAKLES	= "Magma Shackles";		-- NO NEED TO TRANSLATE
+LOC.CRIPLES		= "Cripple";			-- NO NEED TO TRANSLATE
+LOC.DUSTCLOUD		= "Dust Cloud";			-- NO NEED TO TRANSLATE
+LOC.WIDOWSEMBRACE	= "Widow's Embrace";		-- NO NEED TO TRANSLATE
+LOC.CURSEOFTONGUES	= "Curse of Tongues";		-- NO NEED TO TRANSLATE
+LOC.SONICBURST		= "Sonic Burst";		-- NO NEED TO TRANSLATE
+LOC.THUNDERCLAP		= "Thunderclap";		-- NO NEED TO TRANSLATE -- unused
+LOC.DELUSIONOFJINDO	= "Delusions of Jin'do";	-- NO NEED TO TRANSLATE
+LOC.MUTATINGINJECTION	= "Mutating Injection";		-- NO NEED TO TRANSLATE
+LOC.DCR_LOC_SILENCE	= "Silence";			-- NO NEED TO TRANSLATE
+LOC.DCR_LOC_MINDVISION	= "Mind Vision";		-- NO NEED TO TRANSLATE
 
 -- NEW LOCALS FOR 2.0
 
@@ -218,9 +216,13 @@ LOC.OPT_MUFSCOLORS_DESC = "Change the colors of the Micro Unit Frames.";
 LOC.MISSINGUNIT = "Missing unit";
 LOC.COLORALERT = "Set the color alert when a '%s' is required.";
 LOC.COLORSTATUS = "Set the color for the '%s' MUF status.";
+LOC.COLORCHRONOS = "Chronometers";
+LOC.COLORCHRONOS_DESC = "Set the chronometers' color";
 
 LOC.OPT_SHOWBORDER = "Show the class-colored borders";
 LOC.OPT_SHOWBORDER_DESC = "A colored border will be displayed around the MUFs representing the unit's class";
+LOC.OPT_SHOWCHRONO = "Show chronometers";
+LOC.OPT_SHOWCHRONO_DESC = "The number of seconds elapsed since a unit has been afflicted is displayed";
 LOC.OPT_MAXMFS  = "Max units shown";
 LOC.OPT_MAXMFS_DESC = "Defines the max number of micro unit frame to display";
 LOC.OPT_UNITPERLINES = 'Number of units per line';
@@ -540,10 +542,14 @@ L:RegisterTranslations("enUS", function() return {
     [LOC.MISSINGUNIT]		= true,
     [LOC.COLORALERT]		= true,
     [LOC.COLORSTATUS]		= true,
+    [LOC.COLORCHRONOS]		= true,
+    [LOC.COLORCHRONOS_DESC]	= true,
 
     [LOC.OPT_MUFSCOLORS] = true,
     [LOC.OPT_SHOWBORDER] = true,
     [LOC.OPT_SHOWBORDER_DESC] = true,
+    [LOC.OPT_SHOWCHRONO] = true,
+    [LOC.OPT_SHOWCHRONO_DESC] = true,
     [LOC.OPT_MAXMFS] = true,
     [LOC.OPT_MAXMFS_DESC] = true,
     [LOC.OPT_UNITPERLINES] = true,

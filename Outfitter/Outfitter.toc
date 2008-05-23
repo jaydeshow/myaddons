@@ -1,12 +1,12 @@
-## Interface: 20300
+## Interface: 20400
 ## Author: John Stephen and Bruce Quinton
 ## Title: Outfitter
-## Version: 4.1.1
+## Version: 4.2.1
 ## Notes: Clothing and weapon management and automated equipment changes
 ## OptionalDeps: TankPoints
 ## RequiredDeps: 
 ## SavedVariablesPerCharacter: gOutfitter_Settings
-## SavedVaraibles: gOutfitter_GlobalSettings
+## SavedVariables: gOutfitter_GlobalSettings
 
 MCDebugLib.lua
 MCSchedulerLib.lua

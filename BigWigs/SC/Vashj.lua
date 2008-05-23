@@ -72,6 +72,59 @@ L:RegisterTranslations("enUS", function() return {
 	loot_update = "Core on > %s",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	["Tainted Elemental"] = "Elemental máculo",
+
+	engage_trigger1 = "No quería rebajarme y tener contacto con vuestra clase, pero no me dejáis elección...",
+	engage_trigger2 = "¡Os desprecio, desechos de la superficie!",
+	engage_trigger3 = "¡Victoria para Lord Illidan!",
+	engage_trigger4 = "¡Os partiré de cabo a rabo!",
+	engage_trigger5 = "¡Muerte para los intrusos!",
+	engage_message = "Entrando en fase 1",
+
+	phase = "Fases",
+	phase_desc = "Avisar sobre cambios de fase.",
+	phase2_trigger = "¡Ha llegado el momento! ¡Que no quede ni uno en pie!",
+	phase2_soon_message = "Fase 2 en breve",
+	phase2_message = "¡Fase 2 - Entran refuerzos!",
+	phase3_trigger = "Os vendrá bien cubriros.",
+	phase3_message = "¡Fase 3 - Enfurecer en 4min!",
+
+	static = "Carga estática (Static Charge)",
+	static_desc = "Avisar quién tiene Carga estática.",
+	static_charge_message = "¡Carga estática en %s!",
+	static_fade = "Carga estática acaba de desvanecerse.",
+	static_warnyou = "¡Carga estática en TI!",
+
+	icon = "Icono",
+	icon_desc = "Poner un icono sobre jugadores afectados por Carga estática y sobre aquellos que despojan núcleos.",
+
+	elemental = "Elementales máculos (Tainted Elemental)",
+	elemental_desc = "Avisar cuando aparecen Elementales máculos durante la fase 2.",
+	elemental_bar = "~Elementales máculos",
+	elemental_soon_message = "Elementales máculos en breve",
+
+	strider = "Zancudos Colmillo Torcido (Coilfang Striders)",
+	strider_desc = "Avisar cuando aparecen Zancudos Colmillo Torcido durante la fase 2.",
+	strider_bar = "~Zancudo",
+	strider_soon_message = "Zancudo Colmillo Torcido en breve",
+
+	naga = "Élite Colmillo Torcido (Coilfang Elite)",
+	naga_desc = "Avisar cuando aparecen Élites Colmillo Torcido durante la fase 2.",
+	naga_bar = "~Élite Naga",
+	naga_soon_message = "Élite Colmillo Torcido en breve",
+
+	barrier = "Caída de Barreras mágicas",
+	barrier_desc = "Avisar cuand caen las Barreras mágicas.",
+	barrier_down_message = "¡Barrera %d/4 caída!",
+	barrier_fades_trigger = "Barrera mágica se desvanece de Lady Vashj.",
+
+	loot = "Núcleos máculos (Tainted Cores)",
+	loot_desc = "Avisar quién despoja Núcleos máculos.",
+	loot_message = "¡%s despoja un Núcleo máculo!",
+	loot_update = "Núcleo en > %s",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	["Tainted Elemental"] = "오염된 정령",
 
@@ -94,10 +147,10 @@ L:RegisterTranslations("koKR", function() return {
 	static_desc = "전하 충전에 걸린 플레이어를 알립니다.",
 	static_charge_message = "%s 전하 충전!",
 	static_fade = "당신의 전하 충전 사라짐.",
-	static_warnyou = "당신에 전하 충전!",
+	static_warnyou = "당신은 전하 충전!",
 
 	icon = "전술 표시",
-	icon_desc = "전하 충전에 걸린 플레이어와 핵을 획득한 플레이어에게 전술 표시를 지정합니다 (승급자 이상 권한 요구).",
+	icon_desc = "전하 충전에 걸린 플레이어와 핵을 획득한 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 
 	elemental = "오염된 정령 등장",
 	elemental_desc = "2 단계에서 오염된 정령 등장 시 경고합니다.",
@@ -136,45 +189,45 @@ L:RegisterTranslations("frFR", function() return {
 	engage_message = "Début de la phase 1",
 
 	phase = "Phases",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	phase2_trigger = "L'heure est venue ! N'épargnez personne !",
-	phase2_soon_message = "Phase 2 imminente !",
-	phase2_message = "Phase 2, arrivée des adds !",
+	phase2_soon_message = "Phase 2 imminente !",
+	phase2_message = "Phase 2, arrivée des renforts !",
 	phase3_trigger = "Il faudrait peut-être vous mettre à l'abri.",
-	phase3_message = "Phase 3 - Enrager dans 4 min. !",
+	phase3_message = "Phase 3 - Enrager dans 4 min. !",
 
 	static = "Charge statique",
-	static_desc = "Préviens quand la Charge statique affecte un joueur.",
-	static_charge_message = "Charge statique sur %s !",
+	static_desc = "Prévient quand la Charge statique affecte un joueur.",
+	static_charge_message = "Charge statique sur %s !",
 	static_fade = "Charge statique vient de se dissiper.",
-	static_warnyou = "Charge statique sur VOUS !",
+	static_warnyou = "Charge statique sur VOUS !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur les joueurs affectés par la Charge statique et sur ceux qui ramassent les noyaux.",
 
 	elemental = "Elémentaires souillés",
-	elemental_desc = "Préviens quand les Elémentaires souillés apparaissent durant la phase 2.",
+	elemental_desc = "Prévient quand les Elémentaires souillés apparaissent durant la phase 2.",
 	elemental_bar = "Prochain élémentaire souillé",
-	elemental_soon_message = "Elémentaire souillé imminent !",
+	elemental_soon_message = "Elémentaire souillé imminent !",
 
 	strider = "Trotteurs de Glissecroc",
-	strider_desc = "Préviens quans les Trotteurs de Glissecroc apparaissent durant la phase 2.",
+	strider_desc = "Prévient quand les Trotteurs de Glissecroc apparaissent durant la phase 2.",
 	strider_bar = "Prochain trotteur",
-	strider_soon_message = "Trotteur imminent !",
+	strider_soon_message = "Trotteur imminent !",
 
 	naga = "Nagas élites de Glissecroc",
-	naga_desc = "Préviens quand les Nagas élites de Glissecroc apparaissent durant la phase 2.",
+	naga_desc = "Prévient quand les Nagas élites de Glissecroc apparaissent durant la phase 2.",
 	naga_bar = "Prochain naga",
-	naga_soon_message = "Naga imminent !",
+	naga_soon_message = "Naga imminent !",
 
 	barrier = "Dissipation des barrières",
-	barrier_desc = "Préviens quand les barrières se dissipent.",
-	barrier_down_message = "Barrière %d/4 dissipée !",
+	barrier_desc = "Prévient quand les barrières se dissipent.",
+	barrier_down_message = "Barrière %d/4 dissipée !",
 	barrier_fades_trigger = "Barrière magique sur Dame Vashj vient de se dissiper.",
 
 	loot = "Noyau contaminé",
-	loot_desc = "Préviens quand un joueur ramasse un Noyau contaminé.",
-	loot_message = "%s a ramassé un noyau !",
+	loot_desc = "Prévient quand un joueur ramasse un Noyau contaminé.",
+	loot_message = "%s a ramassé un noyau !",
 	loot_update = "Noyau sur > %s",
 } end )
 
@@ -237,26 +290,26 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_trigger1 = "我不想贬低自己来获取你的宽容，但是你让我别无选择……",
 	engage_trigger2 = "我唾弃你们，地表的渣滓！",
 	engage_trigger3 = "伊利丹大人必胜！",
-	engage_trigger4 = "我要把你们全都杀死！",--check the change
-	engage_trigger5 = "入侵者都要受死！伊利丹大人必胜！",
-	engage_message = "进入第一阶段",
+	engage_trigger4 = "逃吧，否则就来受死！",
+	engage_trigger5 = "入侵者都要受死！",
+	engage_message = "进入第一阶段！",
 
 	phase = "阶段警报",
-	phase_desc = "首领进入不同阶段发出警报。",
+	phase_desc = "当进入不同阶段时发出警报。",
 	phase2_trigger = "机会来了！一个活口都不要留下！",
-	phase2_soon_message = "即将 第二阶段",
+	phase2_soon_message = "即将 第二阶段！",
 	phase2_message = "第二阶段 - 援兵 来临！",
 	phase3_trigger = "你们最好找掩护。",
-	phase3_message = "第三阶段 - 4分钟后激怒！",
+	phase3_message = "第三阶段 - 4分钟后，激怒！",
 
 	static = "静电冲能",
-	static_desc = "中了静电充能发出警报。",
+	static_desc = "当受到静电充能时发出警报。",
 	static_charge_message = "静电充能：>%s<！",
 	static_fade = "静电充能效果从你身上消失了。",
 	static_warnyou = ">你< 静电充能！",
 
 	icon = "标记",
-	icon_desc = "给中了静电冲能和污染之核的玩家打上标记。(需要权限)",
+	icon_desc = "给中了静电冲能和污染之核的玩家打上标记。（需要权限）",
 
 	elemental = "被污染的元素",
 	elemental_desc = "在第二阶段，被污染的元素计时条。",
@@ -292,49 +345,49 @@ L:RegisterTranslations("zhTW", function() return {
 	engage_trigger3 = "伊利丹王必勝!",
 	engage_trigger4 = "我要把你們全部殺死!", -- need chatlog.
 	engage_trigger5 = "入侵者都要死!",
-	engage_message = "第一階段 - 開戰！",
+	engage_message = "第一階段 - 開戰!",
 
 	phase = "階段警示",
 	phase_desc = "當瓦許進入不同的階段時警示",
 	phase2_trigger = "機會來了!一個活口都不要留下!",
-	phase2_soon_message = "即將進入第二階段！",
-	phase2_message = "第二階段 - 護衛出現！",
+	phase2_soon_message = "即將進入第二階段!",
+	phase2_message = "第二階段 - 護衛出現!",
 	phase3_trigger = "你們最好找掩護。",
-	phase3_message = "第三階段 - 4 分鐘內狂怒！",
+	phase3_message = "第三階段 - 4 分鐘內狂怒!",
 
 	static = "靜電衝鋒",
 	static_desc = "當玩家受到靜電衝鋒時警示",
-	static_charge_message = "靜電衝鋒：[%s]",
+	static_charge_message = "靜電衝鋒: [%s]",
 	static_fade = "靜電衝鋒效果從你身上消失了。",
-	static_warnyou = "靜電衝鋒：[你]",
+	static_warnyou = "靜電衝鋒: [你]",
 
 	icon = "團隊標記",
 	icon_desc = "對受到靜電衝鋒及拾取核心的玩家設置團隊標記（需要權限）",
 
 	elemental = "污染的元素警示",
 	elemental_desc = "當第二階段污染的元素出現時警示",
-	elemental_bar = "污染的元素計時",
-	elemental_soon_message = "污染的元素即將出現！優先集火！",
+	elemental_bar = "<污染的元素計時>",
+	elemental_soon_message = "污染的元素即將出現!優先集火!",
 
 	strider = "盤牙旅行者警示",
 	strider_desc = "當第二階段盤牙旅行者出現時警示",
-	strider_bar = "盤牙旅行者計時",
-	strider_soon_message = "盤牙旅行者即將出現！牧師漸隱！",
+	strider_bar = "<盤牙旅行者計時>",
+	strider_soon_message = "盤牙旅行者即將出現!牧師漸隱!",
 
 	naga = "盤牙精英警示",
 	naga_desc = "當第二階段盤牙精英出現時警示",
 	naga_bar = "盤牙精英計時",
-	naga_soon_message = "盤牙精英即將出現！中央坦克注意！",
+	naga_soon_message = "盤牙精英即將出現!中央坦克注意!",
 
 	barrier = "魔法屏障消失警示",
 	barrier_desc = "當瓦許女士的魔法屏障消失時警示",
-	barrier_down_message = "魔法屏障 %d/4 解除！",
+	barrier_down_message = "魔法屏障 %d/4 解除!",
 	barrier_fades_trigger = "魔法屏障效果從瓦許女士身上消失。",
 
 	loot = "受污染的核心警示",
 	loot_desc = "提示誰拾取了受污染的核心",
-	loot_message = "%s 撿到核心！快使用妙傳！",
-	loot_update = "拿到受污染的核心：[%s]",
+	loot_message = "%s 撿到核心!快使用妙傳!",
+	loot_update = "拿到受污染的核心: [%s]",
 } end )
 
 ----------------------------------
@@ -346,7 +399,7 @@ mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
 mod.wipemobs = {elite, strider, L["Tainted Elemental"]}
 mod.toggleoptions = {"phase", -1, "static", "icon", -1, "elemental", "strider", "naga", "loot", "barrier", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 66283 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

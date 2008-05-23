@@ -10,6 +10,7 @@ local playerName = nil
 local coreSyncs = {
 	BossEngaged = 5,
 	BossDeath = 5,
+	MultiBossDeath = 5,
 }
 
 ----------------------------------
@@ -17,7 +18,7 @@ local coreSyncs = {
 ----------------------------------
 
 local plugin = BigWigs:NewModule("Comm")
-plugin.revision = tonumber(("$Revision: 61447 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 72078 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

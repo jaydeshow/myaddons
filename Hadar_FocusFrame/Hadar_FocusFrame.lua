@@ -1,5 +1,5 @@
 --[[------------------------------------------------------
-Hadar's Focus Frame (ver. 1.06)
+Hadar's Focus Frame (ver. 1.09)
 *	Creates a movable frame that will show the Health, mana
 	and casting bars of the Focus unit and the target of the
 	focus unit.  
@@ -11,13 +11,13 @@ Usage:
 	/ff enemy buffs|debuffs|dispellable -- Sets the buffs/debuffs to show for enemy units
 	/ff show buffs -- Shows the buff/debuff icons
 	/ff hide buffs -- Hides the buff/debuff icons
+	/ff options -- Shows the options window
 
 * LEFT CLICK and drag the window handle to MOVE the window.
 * RIGHT CLICK the window handle to SET your current target as your focus target.  
 * RIGHT CLICK the window handle to with no target to CLEAR your focus target.  	
 
 ]]--------------------------------------------------------
-
 
 local FF_MAX_DEBUFF_ICONS = 4;
 
@@ -328,7 +328,7 @@ function focusFrame_RefreshBuffs(button, showBuffs, unit)
 			name, rank, icon, debuffStack, debuffType, duration, timeLeft = UnitDebuff(unit, i);
 			debuffBorder:Show();
 		-- Show dispellable debuffs (value nil or anything ~= 0 or 1)
-		else
+		elseif ( showBuffs == "dispellable" ) then
 			name, rank, icon, debuffStack, debuffType, duration, timeLeft = UnitDebuff(unit, i, SHOW_DISPELLABLE_DEBUFFS);
 			debuffBorder:Show();
 		end
@@ -455,11 +455,11 @@ local function focusFrame_BarsFrameUpdate(barsFrame)
 		barsFrame.bar[3]:Hide();
 	end
 	
-	if (FF_ShowDebuffs.shown) then
+	if (FF_Options.showBuffs) then
 		if (UnitIsFriend(unit, "player")) then
-			focusFrame_RefreshBuffs(barsFrame, FF_ShowDebuffs.friend.type, unit);
+			focusFrame_RefreshBuffs(barsFrame, FF_Options.friend.type, unit);
 		else
-			focusFrame_RefreshBuffs(barsFrame, FF_ShowDebuffs.enemy.type, unit);
+			focusFrame_RefreshBuffs(barsFrame, FF_Options.enemy.type, unit);
 		end
 	end
 			
@@ -480,14 +480,19 @@ end
 ---------------------------
 local function focusFrame_OnEvent(self, event)
 	if (event == "ADDON_LOADED" and arg1 == "Hadar_FocusFrame") then
-		if (not FF_ShowDebuffs) then
-			FF_ShowDebuffs = {
-				shown = true, 
+			
+		if (not FF_Options) then
+			FF_Options = {
+				scale = 100,
+				lock = false,
+				showBuffs = true,
 				friend = {type = "debuffs"},
 				enemy = {type = "debuffs"}
 			};
 		end
-
+		
+		focusMain:SetMovable(not FF_Options.lock);
+		focusMain:SetScale(FF_Options.scale / 100);
 		focusFrame_OnUpdate();
 	end			
 end
@@ -500,9 +505,19 @@ focusEventFrame:SetScript("OnUpdate",function() focusFrame_OnUpdate(); end);
 focusEventFrame:SetScript("OnEvent",function(self, event) focusFrame_OnEvent(self, event); end);
 focusEventFrame:RegisterEvent("ADDON_LOADED");
 
-------------------------
--- Slash command handler
-------------------------
+------------
+--Hide Buffs
+------------
+function focusFrame_HideBuffs()
+	for i = 1, FF_MAX_DEBUFF_ICONS do
+		getglobal(focusMain.barFrames[1]:GetName().."Debuff"..i):Hide();
+		getglobal(focusMain.barFrames[2]:GetName().."Debuff"..i):Hide();
+	end
+end
+
+-----------------------
+--Slash command handler
+-----------------------
 local function focusFrame_SlashHandler(cmd)
 	if (cmd ~= "") then
 		
@@ -512,28 +527,31 @@ local function focusFrame_SlashHandler(cmd)
 			if ( focusMain:IsMovable() ) then
 				focusFrame_Print("Focus Frame Locked");
 				focusMain:SetMovable(false);
+				FF_Options.lock = true;
 			else
 				focusFrame_Print("Focus Frame Unlocked");
 				focusMain:SetMovable(true);
+				FF_Options.lock = false;
 			end
 
 		elseif (args[1] == "friend" or args[1] == "enemy") then
 			if (args[2] == "buffs" or args[2] == "debuffs" or args[2] == "dispellable") then
-				FF_ShowDebuffs[args[1]].type = args[2];
+				FF_Options[args[1]].type = args[2];
 				focusFrame_Print(args[1]..": "..args[2]);
 			end
-			
+
 		elseif (args[1] == "hide" and args[2] == "buffs") then
-			FF_ShowDebuffs.shown = false;
+			FF_Options.showBuffs = false;
 			focusFrame_Print("Hiding FocusFrame buff/debuff icons.");
-			for i = 1, FF_MAX_DEBUFF_ICONS do
-				getglobal(focusMain.barFrames[1]:GetName().."Debuff"..i):Hide();
-				getglobal(focusMain.barFrames[2]:GetName().."Debuff"..i):Hide();
-			end
-					
+			focusFrame_HideBuffs();
+
 		elseif (args[1] == "show" and args[2] == "buffs") then
-			FF_ShowDebuffs.shown = true;
+			FF_Options.showBuffs = true;
 			focusFrame_Print("Showing FocusFrame buff/debuff icons.");
+		
+		elseif (args[1] == "options") then
+			InterfaceOptionsFrame_OpenToFrame("Hadar's Focus Frame")
+		
 		end
 
 	else

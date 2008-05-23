@@ -1,53 +1,19 @@
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("oRAParticipant")
-local BS = LibStub("LibBabble-Spell-3.0"):GetLookupTable()
-
-local buffs = {
-	[BS["Power Word: Fortitude"]] = { 1, 1},
-	[BS["Prayer of Fortitude"]] = {1, 2},
-	[BS["Mark of the Wild"]] = {2, 1},
-	[BS["Gift of the Wild"]] = {2, 2},
-	[BS["Arcane Intellect"]] = {3, 1},
-	[BS["Arcane Brilliance"]] = {3, 2},
-	-- 4 missing from CTRA as well.
-	[BS["Shadow Protection"]] = {5, 1},
-	[BS["Prayer of Shadow Protection"]] = {5, 2},
-	[BS["Power Word: Shield"]] = {6, 0},
-	[BS["Soulstone Resurrection"]] = {7, 0},
-	[BS["Divine Spirit"]] = {8, 1},
-	[BS["Prayer of Spirit"]] = {8, 2},
-	[BS["Thorns"]] = {9, 0},
-	[BS["Fear Ward"]] = {10, 0},
-	[BS["Blessing of Might"]] = {11, 1},
-	[BS["Greater Blessing of Might"]] = {11, 2},
-	[BS["Blessing of Wisdom"]] = {12, 1},
-	[BS["Greater Blessing of Wisdom"]] = {12, 2},
-	[BS["Blessing of Kings"]] = {13, 1},
-	[BS["Greater Blessing of Kings"]] = {13, 2},
-	[BS["Blessing of Salvation"]] = {14, 1},
-	[BS["Greater Blessing of Salvation"]] = {14, 2},
-	[BS["Blessing of Light"]] = {15, 1},
-	[BS["Greater Blessing of Light"]] = {15, 2},
-	[BS["Blessing of Sanctuary"]] = {16, 1},
-	[BS["Greater Blessing of Sanctuary"]] = {16, 2},
-	[BS["Renew"]] = {17, 0},
-	[BS["Rejuvenation"]] = {18, 0},
-	[BS["Regrowth"]] = {19, 0},
-	[BS["Amplify Magic"]] = {20, 0},
-	[BS["Dampen Magic"]] = {21, 0},
-}
 
 local spells = {
-	[BS["Rebirth"]] = true,
-	[BS["Resurrection"]] = true,
-	[BS["Redemption"]] = true,
-	[BS["Ancestral Spirit"]] = true,
-	[BS["Reincarnation"]] = true,
+	[(GetSpellInfo(20484))] = true, -- Rebirth
+	[(GetSpellInfo(2006))] = true, -- Resurrection
+	[(GetSpellInfo(7328))] = true, -- Redemption
+	[(GetSpellInfo(2008))] = true, -- Ancestral Spirit
+	[(GetSpellInfo(20608))] = true, -- Reincarnation
 }
 
 local iscasting = nil
@@ -77,12 +43,12 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("frFR", function() return {
-	-- Can be "Cadavre de (nickname)" or "Cadavre d'(nickname)"
-	["^Corpse of (.+)$"] = "^Cadavre d[e'] ?(.+)$",
+	["Participant"] = "Participant",
+	["^Corpse of (.+)$"] = "^Cadavre |2 (.+)$",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	["^Corpse of (.+)$"] = "^Leiche von (.+)$",
+	["^Corpse of (.+)$"] = "^Leichnam von (.+)$",
 } end)
 
 ----------------------------------
@@ -99,10 +65,6 @@ mod.name = L["Participant"]
 ------------------------------
 
 function mod:OnEnable()
-	-- Buffs gained / Lost / refreshed
-	self:RegisterEvent("SpecialEvents_PlayerBuffGained", "SpecialEvents_PlayerBuff")
-	self:RegisterEvent("SpecialEvents_PlayerBuffLost")
-	self:RegisterEvent("SpecialEvents_PlayerBuffRefreshed", "SpecialEvents_PlayerBuff")
 	-- CoolDowns
 	local _, c = UnitClass("player")
 	if c == "DRUID" or c == "WARLOCK" or c == "PALADIN" then
@@ -129,19 +91,6 @@ end
 --      Event Handlers      --
 ------------------------------
 
-function mod:SpecialEvents_PlayerBuff(buff, index, count, icon, rank, duration, timeleft)
-	if buffs[buff] then
-		oRA:SendMessage("RN " .. floor((timeleft or 0) + .5) .. " " .. buffs[buff][1] .. " " .. buffs[buff][2])
-	end
-end
-
-function mod:SpecialEvents_PlayerBuffLost(buff)
-	if buffs[buff] then
-		-- we send 1 second left on this buff.
-		oRA:SendMessage("RN 1 ".. buffs[buff][1] .. " " .. buffs[buff][2])
-	end
-end
-
 function mod:PLAYER_ALIVE()
 	shamanResTime = GetTime()
 end
@@ -153,27 +102,22 @@ function mod:BAG_UPDATE()
 
 	local newankhs = GetItemCount(17030)
 	if newankhs == (ankhs - 1) then
-		local cooldown = 60
-		for tab = 1, GetNumTalentTabs(), 1 do
-			for talent = 1, GetNumTalents(tab), 1 do
-				local name, _, _, _, rank = GetTalentInfo(tab, talent)
-				if name == BS["Improved Reincarnation"] then
-					cooldown = cooldown - (rank*10)
-					break
-				end
-			end
-		end	
+		local _, _, _, _, rank = GetTalentInfo(3, 3)
+		local cooldown = 60 - (rank * 10)
 		oRA:SendMessage("CD 2 " .. cooldown)
 	end
 	ankhs = newankhs
 end
 
+local rebirth = GetSpellInfo(20484) -- Rebirth
+local soulstone = GetSpellInfo(20707) -- Soulstone Resurrection
+local divine = GetSpellInfo(19752) -- Divine Intervention
 function mod:UNIT_SPELLCAST_SUCCEEDED(unit, spell, rank)
-	if spell == BS["Rebirth"] then
+	if spell == rebirth then -- 20484
 		oRA:SendMessage("CD 1 20")
-	elseif spell == BS["Soulstone Resurrection"] then
+	elseif spell == soulstone then -- 20707
 		oRA:SendMessage("CD 3 30")
-	elseif spell == BS["Divine Intervention"] then
+	elseif spell == divine then --19752
 		oRA:SendMessage("CD 4 60", true) -- only oRA2 clients will receive this cooldown I just numbered on.
 	end
 	-- call for resurrection check
@@ -181,7 +125,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(unit, spell, rank)
 end
 
 function mod:UNIT_SPELLCAST_SENT(unit, spell, rank, target)
-	if not target or target == "" then target = mousedowntarget end -- set from worldframeonmousedown
+	if not target or target == "" or target == UNKNOWN then target = mousedowntarget end -- set from worldframeonmousedown
 	if unit == "player" and spells[spell] and target then
 		iscasting = true
 		oRA:SendMessage("RES " .. target)

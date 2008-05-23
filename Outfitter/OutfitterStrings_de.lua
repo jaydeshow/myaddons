@@ -316,7 +316,7 @@
 	Outfitter.cAquaticForm = "Wassergestalt"
 	Outfitter.cTravelForm = "Reisegestalt"
 	Outfitter.cDireBearForm = "Terrorbärengestalt"
-	Outfitter.cMoonkinForm = "Moonkingestalt"
+	Outfitter.cMoonkinForm = "Mondkingestalt"
 	Outfitter.cTreeOfLifeForm = "Baum des Lebens"
 	Outfitter.cGhostWolfForm = "Geisterwolf"
 	Outfitter.cFlightForm = "Fluggestalt"
@@ -330,7 +330,7 @@
 	Outfitter.cDruidFlightForm = "Druide: Fluggestalt"
 	Outfitter.cDruidSwiftFlightForm = "Druide: Schnelle Fluggestalt"
 	Outfitter.cDruidTravelForm = "Druide: Reisegestalt"
-	Outfitter.cDruidMoonkinForm = "Druide: Moonkingestalt"
+	Outfitter.cDruidMoonkinForm = "Druide: Mondkingestalt"
 	Outfitter.cDruidProwl = "Druide: Prowl"
 	Outfitter.cDruidTreeOfLifeForm = "Druide: Baum des Lebens";	
 	Outfitter.cProwl = "Pirschen"

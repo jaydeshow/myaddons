@@ -27,7 +27,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["localization.lua"] then
     return;
 end
 
-Dcr:SetDateAndRevision("$Date: 2008-02-17 17:07:32 -0500 (Sun, 17 Feb 2008) $", "$Revision: 61809 $");
+Dcr:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
 
 
 -- Acelocal register for koKR // {{{
@@ -90,19 +90,6 @@ L:RegisterTranslations("koKR", function() return {
 	[LOC.PET_FEL_CAST]	=	"마법 삼키기",
 	[LOC.PET_DOOM_CAST]	=	"마법 무효화",
 
-	[LOC.SPELL_POLYMORPH]	=	"변이", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_CURE_DISEASE]	=	"질병 치료", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_ABOLISH_DISEASE]	=	"질병 해제", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_PURIFY]		=	"순화", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_CLEANSE]		=	"정화", -- 성기사 -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_DISPELL_MAGIC]	=	"마법 무효화", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_CURE_POISON]	=	"해독", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_ABOLISH_POISON]	=	"독 해제", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_REMOVE_LESSER_CURSE] =	"하급 저주 해제", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_REMOVE_CURSE]	=	"저주 해제", -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_PURGE]		=	"정화", -- 주술사 -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SPELL_CYCLONE]	=	"회오리바람", -- This translation is for reference only the one used is from the library BabbleSpell
-
 	[BINDING_NAME_DCRSHOW]    	= "Decursive 메인바 표시/숨김\n(실시간 목록 고정위치)",
     
 	[BINDING_NAME_DCRMUFSHOWHIDE] =	"작은 유닛 프레임 표시/숨김",
@@ -155,23 +142,8 @@ L:RegisterTranslations("koKR", function() return {
 	-- $t is target name
 	[LOC.SPELL_FOUND]      	= "%s 주문 발견!",
 
-	-- spells and potions
-	[LOC.DREAMLESSSLEEP]	= "숙면",
-	[LOC.GDREAMLESSSLEEP]	= "상급 숙면",
-	[LOC.MDREAMLESSSLEEP]	= "최상급 숙면",
-	[LOC.ANCIENTHYSTERIA]	= "고대의 격분",
-	[LOC.IGNITE]		= "마나 점화",
-	[LOC.TAINTEDMIND]		= "부패한 정신",
-	[LOC.MAGMASHAKLES]		= "용암 족쇄",
-	[LOC.CRIPLES]		= "신경 마비",
-	[LOC.DUSTCLOUD]		= "먼지 구름",
-	[LOC.WIDOWSEMBRACE]		= "귀부인의 은총",
-	[LOC.CURSEOFTONGUES]	= "언어의 저주",  -- This translation is for reference only the one used is from the library BabbleSpell
-	[LOC.SONICBURST]		= "음파 폭발",
-	[LOC.THUNDERCLAP]		= "천둥벼락",
-	[LOC.DELUSIONOFJINDO]	= "진도의 망상",
-	[LOC.MUTATINGINJECTION] 	= "돌연변이 유발", -- check
-    -- NEW LOCALS FOR 2.0
+	
+	-- NEW LOCALS FOR 2.0
 	[LOC.DEFAULT_MACROKEY] = "NONE", -- Ideally the key just beneath the "escape" key. Leave to "NONE" (do not translate) if you don't set a real key name.
 	[LOC.OPT_LIVELIST] = "실시간 목록",
 	[LOC.OPT_LIVELIST_DESC] = "실시간 목록에 대한 설정입니다.",
@@ -206,6 +178,8 @@ L:RegisterTranslations("koKR", function() return {
 	[LOC.MISSINGUNIT]		= "잘못된 대상",
 	[LOC.COLORALERT]		= "'%s'이 필요할때의 알림 색상을 설정합니다.",
 	[LOC.COLORSTATUS]		= "MUF 상태가 '%s'일때 색상을 설정합니다.",
+	[LOC.COLORCHRONOS]		= LOC.COLORCHRONOS,
+	[LOC.COLORCHRONOS_DESC]		= LOC.COLORCHRONOS_DESC,
 
     [LOC.OPT_AUTOHIDEMFS]	    = LOC.OPT_AUTOHIDEMFS,
     [LOC.OPT_AUTOHIDEMFS_DESC]	    = LOC.OPT_AUTOHIDEMFS_DESC,
@@ -221,6 +195,8 @@ L:RegisterTranslations("koKR", function() return {
 
 	[LOC.OPT_SHOWBORDER] = "직업 색상 테두리 표시",
 	[LOC.OPT_SHOWBORDER_DESC] = "MUF에 유닛의 직업에 따른 색상을 테두리로 표시합니다.",
+    [LOC.OPT_SHOWCHRONO] = LOC.OPT_SHOWCHRONO,
+    [LOC.OPT_SHOWCHRONO_DESC] = LOC.OPT_SHOWCHRONO_DESC,
 	[LOC.OPT_MAXMFS]  = "표시할 최대 유닛",
 	[LOC.OPT_MAXMFS_DESC] = "표시할 작은 유닛 프레임의 최대 개수를 지정합니다.",
 	[LOC.OPT_UNITPERLINES] = "한줄에 표시할 유닛의 수",

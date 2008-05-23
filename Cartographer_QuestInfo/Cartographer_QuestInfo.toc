@@ -1,29 +1,37 @@
-﻿## Interface: 20100
+## Interface: 20400
 
-## Title: Cartographer |r[|cffeda55fQuestInfo|r]
+## Title: Cartographer [|cffeda55fQuestInfo|r]
+## Title-zhCN: Cartographer [|cffeda55f任务查询|r]
+## Title-zhTW: Cartographer [|cffeda55f任務資訊|r]
 ## Notes: A Quest Data Library
-
-## Title-zhCN: |cFF00FF00[地图]|r任务资料 Cartographer |r[|cffeda55fQuestInfo|r]
-## Notes-zhCN: 制图大师的配件，提供任务资料库
-
-## Title-zhTW: |cFF00FF00[地圖]|r任務資訊 Cartographer |r[|cffeda55fQuestInfo|r]
-## Notes-zhTW: 製圖大師模組，提供任務資料庫
+## Notes-zhCN: 这是 Cartographer 的扩展模块,提供任务查询及资料库.
+## Notes-zhTW: 製圖大師模組，提供任務資料庫功能
 
 ## Author: purple
 ## SavedVariables: Cartographer_QuestInfoDB
-## Version: 1.9.20
+## Version: 2.4.1.0510
 ## X-Category: Map
 ## RequiredDeps: Cartographer
 ## OptionalDeps: Cartographer_Notes, Cartographer_Quests, Cartographer_QuestObjectives, Quixote
 
 embeds.xml
 
-Locale-enUS.lua
-Locale-zhTW.lua
-Locale-zhCN.lua
-Addon.lua
-Buttons.xml
-QuestData-C.lua
-QuestData-A.lua
-QuestData-H.lua
+Data\Quest.lua
+Data\NPC.lua
+Data\Zone.lua
+Data\Name-enUS.lua
+Data\Name-zhTW.lua
+Data\Name-zhCN.lua
 
+Locale\Locale-enUS.lua
+Locale\Locale-zhTW.lua
+Locale\Locale-zhCN.lua
+
+Core.lua
+Map.lua
+LocationFrame.lua
+SeriesFrame.lua
+QuestFuPatch.lua
+QuestLogPatch.lua
+
+Buttons.xml

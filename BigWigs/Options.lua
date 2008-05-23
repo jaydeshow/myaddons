@@ -37,7 +37,7 @@ L:RegisterTranslations("frFR", function() return {
 	["|cffeda55fClick|r to enable."] = "|cffeda55fClic|r pour activer.",
 	["|cffeda55fShift-Click|r to open configuration window."] = "|cffeda55fShift-Clic|r pour ouvrir la fenêtre de configuration.",
 	["Big Wigs is currently disabled."] = "Big Wigs est actuellement désactivé.",
-	["Active boss modules:"] = "Modules de boss actifs :",
+	["Active boss modules:"] = "Modules de boss actifs :",
 	["All running modules have been reset."] = "Tous les modules actifs ont été réinitialisés.",
 	["All running modules have been disabled."] = "Tous les modules actifs ont été désactivés.",
 	["Menu"] = "Menu",
@@ -97,23 +97,24 @@ L:RegisterTranslations("deDE", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	["|cff00ff00Module running|r"] = "|cff00ff00Modulo activo|r",
-	["|cffeda55fClick|r to reset all running modules. |cffeda55fAlt-Click|r to disable them. |cffeda55fCtrl-Alt-Click|r to disable Big Wigs completely."] = "|cffeda55fClic|r para resetear los modulos activos. |cffeda55fAlt+Clic|r para desactivarlos. |cffeda55fCtrl-Alt+Clic|r para desactivar por completo Big Wigs.",
+	["|cff00ff00Module running|r"] = "|cff00ff00Módulo activo|r",
+	["|cffeda55fClick|r to reset all running modules. |cffeda55fAlt-Click|r to disable them. |cffeda55fCtrl-Alt-Click|r to disable Big Wigs completely."] = "|cffeda55fClic|r para reiniciar los módulos activos.|n|cffeda55fAlt+Clic|r para desactivarlos.|n|cffeda55fCtrl-Alt+Clic|r para desactivar por completo BigWigs.|n",
 	["|cffeda55fClick|r to enable."] = "|cffeda55fClic|r para activar.",
-	["|cffeda55fShift-Click|r to open configuration window."] = "|cffeda55fShift-Clic|r para abrir la ventana de configuracion.",
-	["Big Wigs is currently disabled."] = "Big Wigs esta desactivado.",
-	["Active boss modules:"] = "Modulos de boss activos :",
-	["All running modules have been reset."] = "Todos los modulos activos han sido reseteados.",
-	["All running modules have been disabled."] = "Todos los modulos activos han sido desactivados.",
-	["Menu"] = "Menu",
-	["Menu options."] = "Opciones del menu.",
+	["|cffeda55fShift-Click|r to open configuration window."] = "|cffeda55fShift-Clic|r para abrir la ventana de configuración.",
+	["Big Wigs is currently disabled."] = "Big Wigs está desactivado.",
+	["Active boss modules:"] = "Módulos de jefe activos :",
+	["All running modules have been reset."] = "Todos los módulos activos han sido reiniciados.",
+	["All running modules have been disabled."] = "Todos los módulos activos han sido desactivados.",
+	["Menu"] = "Menú",
+	["Menu options."] = "Opciones del menú.",
 } end)
 
 ----------------------------
 --      FuBar Plugin      --
 ----------------------------
 
-local BigWigsOptions = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceDB-2.0", "FuBarPlugin-2.0")
+BigWigsOptions = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AceDB-2.0", "FuBarPlugin-2.0")
+local BigWigsOptions = BigWigsOptions
 
 BigWigsOptions.hasIcon = true
 
@@ -132,7 +133,6 @@ function BigWigsOptions:OnInitialize()
 	self.hasNoColor = true
 	self.hasIcon = "Interface\\AddOns\\BigWigs\\Icons\\core-enabled"
 	self.defaultMinimapPosition = 180
-	self.clickableTooltip = true
 	self.hideWithoutStandby = true
 	self.hideMenuTitle = true
 	self.OnMenuRequest = BigWigs.cmdtable

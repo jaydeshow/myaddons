@@ -51,7 +51,6 @@ L:RegisterTranslations("enUS", function() return {
 
 	flurry = "Flurry",
 	flurry_desc = "Warn when Maulgar is close to Flurry and gains Flurry.",
-	flurry_trigger = "You will not defeat the hand of Gruul!",
 	flurry_message = "50% - Flurry!",
 	flurry_warning = "Flurry Soon!",
 
@@ -60,41 +59,80 @@ L:RegisterTranslations("enUS", function() return {
 	smash_bar = "~Arcing Smash",
 } end)
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "¡Los Gronn son el auténtico poder de Terrallende!",
+
+	heal = "Rezo de sanación (Prayer of Healing)",
+	heal_desc = "Avisar cuando Ciego el Vidente empieza a lanzar una curación.",
+	heal_message = "¡Ciego lanzando Rezo de sanación!",
+	heal_bar = "Rezo de sanación",
+
+	shield = "Escudo (Shield)",
+	shield_desc = "Avisar cuando Ciego el Vidente gana Palabra de poder superior: escudo.",
+	shield_message = "¡Escudo en Ciego el Vidente!",
+
+	spellshield = "Escudo contra hechizos (Spell Shield)",
+	spellshield_desc = "Avisar cuando Krosh Manofuego gana Escudo contra hechizos.",
+	spellshield_message = "¡Escudo hechizos en Krosh!",
+	spellshield_bar = "Escudo hechizos",
+
+	summon = "Invocar a manáfago salvaje",
+	summon_desc = "Avisar cuando Olm el Invocador empieza a lanzar Invocar a manáfago salvaje.",
+	summon_message = "¡Invocando manáfago!",
+	summon_bar = "~Manáfago",
+
+	whirlwind = "Torbellino (Whirlwind)",
+	whirlwind_desc = "Avisar cuando Maulgar gana Torbellino.",
+	whirlwind_message = "¡Maulgar - Torbellino durante 15seg!",
+	whirlwind_bar = "<Torbellino>",
+	whirlwind_nextbar = "~Torbellino",
+	whirlwind_warning1 = "¡Maulgar Activado - Torbellino en ~50seg!",
+	whirlwind_warning2 = "Torbellino en breve",
+
+	flurry = "Aluvión (Flurry)",
+	flurry_desc = "Avisar cuando Maulgar gana Aluvión.",
+	flurry_message = "¡50% - Aluvión!",
+	flurry_warning = "Aluvión en breve",
+
+	smash = "Machaque arqueado (Arcing Smash)",
+	smash_desc = "Mostrar una barra para el tiempo estimado de Machaque arqueado.",
+	smash_bar = "~Machaque arqueado",
+} end)
+
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Les gronns sont la seule vraie puissance de l'Outreterre !",
 
 	heal = "Soin",
-	heal_desc = "Préviens quand Oeillaveugle le Voyant commence à lancer un soin.",
-	heal_message = "Oeillaveugle incante une Prière de soins !",
+	heal_desc = "Prévient quand Oeillaveugle le Voyant commence à lancer un soin.",
+	heal_message = "Oeillaveugle incante une Prière de soins !",
 	heal_bar = "Soin en cours",
 
 	shield = "Bouclier",
-	shield_desc = "Préviens quand Oeillaveugle le Voyant gagne Mot de pouvoir : Bouclier.",
-	shield_message = "Bouclier sur Oeillaveugle !",
+	shield_desc = "Prévient quand Oeillaveugle le Voyant gagne Mot de pouvoir : Bouclier.",
+	shield_message = "Bouclier sur Oeillaveugle !",
 
 	spellshield = "Bouclier anti-sort",
-	spellshield_desc = "Préviens quand Krosh Brasemain gagne Bouclier anti-sort.",
-	spellshield_message = "Bouclier anti-sort sur Krosh !",
+	spellshield_desc = "Prévient quand Krosh Brasemain gagne Bouclier anti-sort.",
+	spellshield_message = "Bouclier anti-sort sur Krosh !",
 	spellshield_bar = "Prochain Bouclier",
 
 	summon = "Chasseur corrompu sauvage",
-	summon_desc = "Préviens quand Olm l'Invocateur commence à lancer Invocation d'un chasseur corrompu sauvage.",
-	summon_message = "Chasseur corrompu en cours d'invocation !",
-	summon_bar = "~Cooldown Chasseur corrompu",
+	summon_desc = "Prévient quand Olm l'Invocateur commence à lancer Invocation d'un chasseur corrompu sauvage.",
+	summon_message = "Chasseur corrompu en cours d'invocation !",
+	summon_bar = "~Recharge Chasseur corrompu",
 
 	whirlwind = "Tourbillon",
-	whirlwind_desc = "Préviens quand Maulgar gagne Tourbillon.",
-	whirlwind_message = "Maulgar - Toubillon pendant 15 sec. !",
+	whirlwind_desc = "Prévient quand Maulgar gagne Tourbillon.",
+	whirlwind_message = "Maulgar - Toubillon pendant 15 sec. !",
 	whirlwind_bar = "Tourbillon",
-	whirlwind_nextbar = "~Cooldown Tourbillon",
-	whirlwind_warning1 = "Maulgar engagé - Tourbillon dans ~50 sec. !",
-	whirlwind_warning2 = "Tourbillon imminent !",
+	whirlwind_nextbar = "~Recharge Tourbillon",
+	whirlwind_warning1 = "Maulgar engagé - Tourbillon dans ~50 sec. !",
+	whirlwind_warning2 = "Tourbillon imminent !",
 
 	flurry = "Rafale",
-	flurry_desc = "Préviens quand Maulgar est proche de Rafale et quand il gagne Rafale.",
-	flurry_trigger = "Vous ne terrasserez pas la main de Gruul !",
-	flurry_message = "50% - Rafale !",
-	flurry_warning = "Rafale imminente !",
+	flurry_desc = "Prévient quand Maulgar est proche de Rafale et quand il gagne Rafale.",
+	flurry_message = "50% - Rafale !",
+	flurry_warning = "Rafale imminente !",
 
 	smash = "Frappe en arc de cercle",
 	smash_desc = "Affiche une barre pour Frappe en arc de cercle.",
@@ -130,7 +168,6 @@ L:RegisterTranslations("deDE", function() return {
 
 	flurry = "Schlaghagel",
 	flurry_desc = "Warnt wenn Maulgar kurz vor dem Schlaghagel steht und wenn er es bekommt",
-	flurry_trigger = "Ihr werdet die Hand von Gruul nicht besiegen!",
 	flurry_message = "50% - Schlaghagel!",
 	flurry_warning = "Schlaghagel bald!",
 
@@ -171,7 +208,6 @@ L:RegisterTranslations("koKR", function() return {
 
 	flurry = "질풍",
 	flurry_desc = "마울가르의 질풍 효과 근접 및 획득 시 경고합니다.",
-	flurry_trigger = "그룰님의 손아귀에서 벗어나지 못할 것이다!",
 	flurry_message = "50% - 질풍!",
 	flurry_warning = "잠시 후 질풍!",
 
@@ -184,37 +220,36 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "戈隆才是外域的主宰！",
 
 	heal = "治疗",
-	heal_desc = "当盲眼先知开始施放治疗发出警报。",
-	heal_message = "盲眼先知 治疗祷言！",
+	heal_desc = "当开始施放治疗时发出警报。",
+	heal_message = "盲眼先知 - 治疗祷言！",
 	heal_bar = "<治疗>",
 
-	shield = "盾",
-	shield_desc = "当盲眼获得强效真言术：盾发出警报。",
-	shield_message = "盲眼先知 盾！",
+	shield = "真言术：盾",
+	shield_desc = "当获得强效真言术：盾时发出警报。",
+	shield_message = "盲眼先知 真言术：盾！",
 
 	spellshield = "法术护盾",
-	spellshield_desc = "当克洛什·火拳获得法术护盾发出警报。",
-	spellshield_message = "克洛什 法术护盾",
+	spellshield_desc = "当克洛什·火拳获得法术护盾时发出警报。",
+	spellshield_message = "克洛什 法术护盾！",
 	spellshield_bar = "<下一法术护盾>",
 
 	summon = "召唤地狱犬",
-	summon_desc = "当召唤者沃尔姆施放召唤地狱犬发出警报。",
-	summon_message = "地狱犬 开始召唤",
+	summon_desc = "当召唤者沃尔姆施放召唤地狱犬时发出警报。",
+	summon_message = "开始召唤 地狱犬！",
 	summon_bar = "<地狱犬 计时>",
 
 	whirlwind = "旋风斩",
-	whirlwind_desc = "当莫加尔获得旋风斩发出警报。",
-	whirlwind_message = "莫加尔 - 旋风斩 - 15秒",
+	whirlwind_desc = "当莫加尔获得旋风斩时发出警报。",
+	whirlwind_message = "莫加尔 - 旋风斩！15秒。",
 	whirlwind_bar = "<旋风斩>",
 	whirlwind_nextbar = "<旋风斩 冷却>",
-	whirlwind_warning1 = "莫加尔 激活 - ~50秒后旋风斩",
-	whirlwind_warning2 = "即将旋风斩！",
+	whirlwind_warning1 = "莫加尔 激活！约50秒后，旋风斩！",
+	whirlwind_warning2 = "即将 旋风斩！",
 
 	flurry = "乱舞",
 	flurry_desc = "当莫加尔乱舞消失及获得乱舞发出警报。",
-	flurry_trigger = "休想打败格鲁尔之手！",
 	flurry_message = "50% - 乱舞！",
-	flurry_warning = "即将乱舞！",
+	flurry_warning = "即将 乱舞！",
 
 	smash = "圆弧斩",
 	smash_desc = "显示一个圆弧斩大约时间条。",
@@ -225,7 +260,7 @@ L:RegisterTranslations("zhTW", function() return {
 	heal = "治療警告",
 	heal_desc = "當先知盲眼開始施放治療時發送警告",
 	heal_message = "先知盲眼施放群體治療 - 請中斷",
-	heal_bar = "治療",
+	heal_bar = "<治療>",
 
 	shield = "真言術:盾警告",
 	shield_desc = "當先知盲眼開始施放強效真言術:盾時發送警告",
@@ -234,30 +269,29 @@ L:RegisterTranslations("zhTW", function() return {
 	spellshield = "法術護盾警告",
 	spellshield_desc = "當克羅斯·火手施放法術護盾時發送警告",
 	spellshield_message = "火手施放法術護盾 - 法師偷取！",
-	spellshield_bar = "法術護盾",
+	spellshield_bar = "<法術護盾>",
 
 	summon = "召喚警告",
 	summon_desc = "當召喚者歐莫開始施放召喚野生地獄獵犬時發送警告",
 	summon_message = "野生地獄獵犬要出來咬人嚕",
-	summon_bar = "召喚倒數",
+	summon_bar = "<召喚倒數>",
 
 	whirlwind = "旋風斬警告",
 	whirlwind_desc = "當大君王莫卡爾獲得旋風斬時發送警告",
 	whirlwind_message = "大君王莫卡爾 - 旋風斬 15 秒",
-	whirlwind_bar = "旋風斬",
-	whirlwind_nextbar = "旋風斬倒數",
+	whirlwind_bar = "<旋風斬>",
+	whirlwind_nextbar = "<下一次旋風斬>",
 	whirlwind_warning1 = "進入戰鬥 - 50 秒後施放旋風斬",
 	whirlwind_warning2 = "大君王莫卡爾即將施放旋風斬",
 
 	flurry = "亂舞警告",
 	flurry_desc = "當大君王莫卡爾即將亂舞及獲得亂舞時發送警告",
-	flurry_trigger = "你擊敗不了戈魯爾之手!",
 	flurry_message = "50% - 亂舞",
 	flurry_warning = "大君王莫卡爾即將施放亂舞",
 
 	smash = "圓弧斬提示",
 	smash_desc = "顯示圓弧斬倒數計時條",
-	smash_bar = "圓弧斬",
+	smash_bar = "<圓弧斬>",
 } end)
 
 ----------------------------------
@@ -269,7 +303,7 @@ mod.zonename = BZ["Gruul's Lair"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = {boss, mage, lock, priest, shaman}
 mod.toggleoptions = {"shield", "spellshield", "heal", -1, "summon", -1, "whirlwind", "flurry", "smash", "bosskill"}
-mod.revision = tonumber(("$Revision: 65832 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -278,10 +312,11 @@ mod.revision = tonumber(("$Revision: 65832 $"):sub(12, -3))
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Shield", 33147)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "SpellShield", 33054)
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Whirlwind", 33238, 33239, 36981, 39232, 37641) -- guessed these might be it, might also not be it
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Whirlwind", 33238)
 	self:AddCombatListener("SPELL_CAST_START", "Summon", 33131)
 	self:AddCombatListener("SPELL_CAST_START", "Prayer", 33152)
-	self:AddCombatListener("SPELL_DAMAGE", "Smash", 38761)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Smash", 39144)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Flurry", 33232)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	self:RegisterEvent("UNIT_HEALTH")
@@ -294,14 +329,14 @@ end
 --      Event Handlers      --
 ------------------------------
 
-function mod:Shield()
+function mod:Shield(_, spellID)
 	if db.shield then
-		self:IfMessage(L["shield_message"], "Important", 33147)
+		self:IfMessage(L["shield_message"], "Important", spellID)
 	end
 end
 
-function mod:SpellShield(_, spellID)
-	if db.spellshield then
+function mod:SpellShield(unit, spellID)
+	if unit == mage and db.spellshield then
 		self:IfMessage(L["spellshield_message"], "Attention", spellID, "Info")
 		self:Bar(L["spellshield_bar"], 30, spellID)
 	end
@@ -323,31 +358,35 @@ function mod:Summon(_, spellID)
 	end
 end
 
-function mod:Prayer()
+function mod:Prayer(_, spellID)
 	if db.heal then
-		self:IfMessage(L["heal_message"], "Important", 33152, "Alarm")
+		self:IfMessage(L["heal_message"], "Important", spellID, "Alarm")
 	end
 end
 
-function mod:Smash()
+function mod:Smash(_, spellID)
 	if db.smash then
-		self:Bar(L["smash_bar"], 10, 38761)
+		self:Bar(L["smash_bar"], 10, spellID)
+	end
+end
+
+function mod:Flurry(_, spellID)
+	if db.flurry then
+		self:IfMessage(L["flurry_message"], "Important", spellID)
 	end
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if db.flurry and msg == L["flurry_trigger"] then
-		self:Message(L["flurry_message"], "Important")
-	elseif msg == L["engage_trigger"] then
+	if msg == L["engage_trigger"] then
 		flurryannounced = nil
 
 		if db.whirlwind then
 			self:Message(L["whirlwind_warning1"], "Attention")
 			self:DelayedMessage(45, L["whirlwind_warning2"], "Urgent")
-			self:Bar(L["whirlwind_nextbar"], 50, "Ability_Whirlwind")
+			self:Bar(L["whirlwind_nextbar"], 50, 33238)
 		end
 		if db.spellshield then
-			self:Bar(L["spellshield_bar"], 30, "Spell_MageArmor")
+			self:Bar(L["spellshield_bar"], 30, 33054)
 		end
 	end
 end

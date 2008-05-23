@@ -30,8 +30,6 @@ commonWords:RegisterTranslations("enUS", function() return {
 	berserk_min = "Berserk in %d min",
 	berserk_sec = "Berserk in %d sec",
 	berserk = "Berserk",
-
-	RF = "Righteous Fury",
 } end)
 
 commonWords:RegisterTranslations("deDE", function() return {
@@ -49,8 +47,6 @@ commonWords:RegisterTranslations("deDE", function() return {
 	berserk_min = "Berserker in %d min",
 	berserk_sec = "Berserker in %d sek",
 	berserk = "Berserker",
-
-	RF = "Zorn der Gerechtigkeit",
 } end )
 
 commonWords:RegisterTranslations("koKR", function() return {
@@ -68,8 +64,6 @@ commonWords:RegisterTranslations("koKR", function() return {
 	berserk_min = "%d분 후 광폭화",
 	berserk_sec = "%d초 후 광폭화",
 	berserk = "광폭화",
-
-	RF = "정의의 격노",
 } end )
 
 commonWords:RegisterTranslations("zhCN", function() return {
@@ -87,27 +81,23 @@ commonWords:RegisterTranslations("zhCN", function() return {
 	berserk_min = "%d分后无敌！",
 	berserk_sec = "%d秒后无敌！",
 	berserk = "无敌",
-
-	RF = "正义之怒",
 } end )
 
 commonWords:RegisterTranslations("zhTW", function() return {
 	you = "你",
 	are = "到了",
 
-	enrage_start = "%s 狂怒 - %d分後狂怒",
+	enrage_start = "%s 狂怒 - %d 分後狂怒",
 	enrage_end = "%s 已狂怒",
-	enrage_min = "%d分後狂怒！",
-	enrage_sec = "%d秒後狂怒！",
+	enrage_min = "%d 分後狂怒",
+	enrage_sec = "%d 秒後狂怒",
 	enrage = "狂怒",
 
-	--berserk_start = "%s Engaged - Berserk in %d min",
-	--berserk_end = "%s goes Berserk",
-	--berserk_min = "Berserk in %d min",
-	--berserk_sec = "Berserk in %d sec",
-	--berserk = "Berserk",
-
-	RF = "正義之怒",
+	berserk_start = "%s 開戰 - %d 分後狂暴",
+	berserk_end = "%s 變得狂暴",
+	berserk_min = "%d 分後狂暴",
+	berserk_sec = "%d 秒後狂暴",
+	berserk = "狂暴",
 } end )
 
 commonWords:RegisterTranslations("frFR", function() return {
@@ -125,27 +115,23 @@ commonWords:RegisterTranslations("frFR", function() return {
 	berserk_min = "Berserk dans %d min.",
 	berserk_sec = "Berserk dans %d sec.",
 	berserk = "Berserk",
-
-	RF = "Fureur vertueuse",
 } end )
 
 commonWords:RegisterTranslations("esES", function() return {
-	you = "Tu",
-	are = "estas",
+	you = "Tú",
+	are = "estás",
 
-	enrage_start = "%s Activado - Furor en %dmin",
+	enrage_start = "%s Iniciado - Enfurecimiento en %d min",
 	enrage_end = "%s Enfurecido",
 	enrage_min = "Enfurecimiento en %d min",
-	enrage_sec = "Enfurecimiento en %d sec",
-	enrage = "Enfurecimiento",
+	enrage_sec = "Enfurecimiento en %d seg",
+	enrage = "Enfurecer",
 
-	--berserk_start = "%s Engaged - Berserk in %d min",
-	--berserk_end = "%s goes Berserk",
-	--berserk_min = "Berserk in %d min",
-	--berserk_sec = "Berserk in %d sec",
-	--berserk = "Berserk",
-
-	RF = "Furia justa",
+	berserk_start = "%s Iniciado - Rabia en %d min",
+	berserk_end = "%s entra en Rabia",
+	berserk_min = "Rabia en %d min",
+	berserk_sec = "Rabia en %d seg",
+	berserk = "Rabia",
 } end)
 
 function BigWigs.modulePrototype:OnInitialize()
@@ -250,10 +236,14 @@ function BigWigs.modulePrototype:IsBossModule()
 	return self.zonename and self.enabletrigger and true
 end
 
-function BigWigs.modulePrototype:GenericBossDeath(msg)
+function BigWigs.modulePrototype:GenericBossDeath(msg, multi)
 	local b = self:ToString()
 	if msg == b then
-		self:Sync("BossDeath " .. b)
+		if multi then
+			self:Sync("MultiBossDeath " .. b)
+		else
+			self:Sync("BossDeath " .. b)
+		end
 	end
 end
 
@@ -411,11 +401,11 @@ do
 	local icons = setmetatable({}, {__index =
 		function(self, key)
 			if not key then return end
-			if type(key) == "number" then
-				local _, _, idIcon = GetSpellInfo(key)
-				self[key] = idIcon
-			else self[key] = "Interface\\Icons\\" .. key end
-			return self[key]
+			local value = nil
+			if type(key) == "number" then value = select(3, GetSpellInfo(key))
+			else value = "Interface\\Icons\\" .. key end
+			self[key] = value
+			return value
 		end
 	})
 
@@ -457,16 +447,16 @@ do
 		min = commonWords["berserk_min"],
 		sec = commonWords["berserk_sec"],
 		stop = commonWords["berserk_end"],
-		bar = commonWords["berserk"],
-		icon = "Spell_Nature_Reincarnation",
+		bar = GetSpellInfo(43),
+		icon = 20484,
 	}
 	local enrage = {
 		start = commonWords["enrage_start"],
 		min = commonWords["enrage_min"],
 		sec = commonWords["enrage_sec"],
 		stop = commonWords["enrage_end"],
-		bar = commonWords["enrage"],
-		icon = "Spell_Shadow_UnholyFrenzy",
+		bar = GetSpellInfo(12880),
+		icon = 12880,
 	}
 	function BigWigs.modulePrototype:Enrage(seconds, isBerserk, noEngageMessage)
 		local w = isBerserk and berserk or enrage

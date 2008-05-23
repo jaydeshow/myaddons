@@ -106,6 +106,81 @@ L:RegisterTranslations("enUS", function() return {
 	dead_message = "%s dies",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "^Energía. Poder.",
+	engage_message = "Fase 1",
+
+	conflag = "Conflagración (Conflagration)",
+	conflag_desc = "Avisar quién tiene Conflagración.",
+	conflag_spell = "Conflagración",
+	conflag_message = "¡Conflagración en %s!",
+
+	gaze = "Mirada (Gaze)",
+	gaze_desc = "Avisar cuando Thaladred mira a un jugador.",
+	gaze_trigger = "mira a (%S+)!$",
+	gaze_message = "¡Mirada en %s!",
+	gaze_bar = "~Mirada",
+	gaze_you = "¡Mirada en TI!",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores que reciben la mirada de Thaladred.",
+
+	fear = "Miedo (Fear)",
+	fear_desc = "Avisar cuando se lanza Rugido bramante.",
+	fear_soon_message = "¡Miedo en breve!",
+	fear_message = "¡Miedo!",
+	fear_bar = "~Miedo",
+	fear_spell = "Rugido bramante",
+
+	rebirth = "Renacer del Fénix",
+	rebirth_desc = "Temporizadores aproximados para el Renacer del Fénix.",
+	rebirth_trigger1 = "¡Anar'anel belore!",
+	rebirth_trigger2 = "¡Por el poder del Sol!",
+	rebirth_warning = "Posible Renacer en ~5seg",
+	rebirth_bar = "~Posible Renacer",
+
+	pyro = "Piroexplosión (Pyroblast)",
+	pyro_desc = "Mostrar un temporizador de 60 seg. para Piroexplosión.",
+	pyro_trigger = "%s lanza una piroexplosión",
+	pyro_warning = "Piroexplosión en 5seg",
+	pyro_message = "¡Lanzando Piroexplosión!",
+
+	toyall = "Juguete remoto (Remote Toy)",
+	toyall_desc = "Avisar cuando un jugador tiene Juguete remoto. Solo en Fase 2 para prevenir spam.",
+	toyall_message = "Juguete: %s",
+
+	phase = "Fases",
+	phase_desc = "Avisar sobre las distintas fases del encuentro.",
+	thaladred_inc_trigger = "¡Veamos cómo aguantan vuestros nervios contra el Ensombrecedor, Thaladred!",
+	sanguinar_inc_trigger = "Habéis sobrevivido a algunos de mis mejores consejeros... pero nadie puede resistir el poder del Martillo de Sangre. ¡He aquí Lord Sanguinar!",
+	capernian_inc_trigger = "Capernian se encargará de que vuestra visita sea breve.",
+	telonicus_inc_trigger = "Bien hecho. Parecéis dignos de probar vuestras habilidades con mi maestro ingeniero Telonicus.",
+	weapons_inc_trigger = "Como veis, dispongo de un amplio arsenal...",
+	phase3_trigger = "Quizás os subestimé. Sería injusto que os enfrentarais a los cuatro consejeros al mismo tiempo, pero... nunca se le ha brindado un trato justo a mi gente. Así que os devuelvo el favor.",
+	phase4_trigger = "Desafortunadamente hay veces en las que tienes que hacer las cosas con tus propias manos. ¡Balamore shanal!",
+
+	flying_trigger = "¡No he llegado hasta aquí para que me detengáis! ¡El futuro que he planeado no se pondrá en peligro! ¡Vais a probar el verdadero poder!",
+	gravity_trigger1 = "Veamos cómo os sienta tener el mundo al revés.",
+	gravity_trigger2 = "Hay que andar con pies de plomo.",
+	gravity_bar = "~Gravedad cero",
+	gravity_message = "¡Gravedad cero!",
+	flying_message = "Fase 5 - Gravedad cero en 1min",
+
+	weapons_inc_message = "¡Fase 2 - Armas!",
+	phase3_message = "¡Fase 3 - Consejeros y Armas!",
+	phase4_message = "¡Fase 4 - Kael'thas!",
+	phase4_bar = "Kael'thas entra",
+
+	mc = "Control mental (Mind Control)",
+	mc_desc = "Avisar quién tiene Control mental.",
+	mc_message = "Control mental: %s",
+
+	revive_bar = "Añadidos revividos",
+	revive_warning = "¡Añadidos reviven en 5seg!",
+
+	dead_message = "%s muere",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	engage_trigger = "^나의 백성은",
 	engage_message = "1 단계",
@@ -120,10 +195,10 @@ L:RegisterTranslations("koKR", function() return {
 	gaze_trigger = "([^%s]+)|1을;를; 노려봅니다!$",
 	gaze_message = "%s 주시!",
 	gaze_bar = "~주시 대기 시간",
-	gaze_you = "당신에 주시!",
+	gaze_you = "당신을 주시!",
 
 	icon = "전술 표시",
-	icon_desc = "탈라드레드의 주시 대상이된 플레이어에 전술 표시를 지정합니다 (승급자 이상 권한 필요).",
+	icon_desc = "탈라드레드의 주시 대상이된 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 
 	fear = "공포",
 	fear_desc = "우레와 같은 울부짖음에 대한 경고입니다.",
@@ -172,7 +247,7 @@ L:RegisterTranslations("koKR", function() return {
 	phase4_bar = "잠시 후 캘타스",
 
 	mc = "정신 지배",
-	mc_desc = "정신 지배에 걸린 사람을 알립니다.",
+	mc_desc = "정신 지배에 걸린 플레이어를 알립니다.",
 	mc_message = "정신 지배: %s",
 
 	revive_bar = "조언가 부활",
@@ -186,46 +261,46 @@ L:RegisterTranslations("frFR", function() return {
 	engage_message = "Phase 1",
 
 	conflag = "Déflagration",
-	conflag_desc = "Préviens quand un joueur subit les effets de la Déflagration.",
+	conflag_desc = "Prévient quand un joueur subit les effets de la Déflagration.",
 	conflag_spell = "Déflagration",
-	conflag_message = "Déflag. sur %s !",
+	conflag_message = "Déflag. sur %s !",
 
 	gaze = "Focalisation",
-	gaze_desc = "Préviens quand Thaladred se focalise sur un joueur.",
+	gaze_desc = "Prévient quand Thaladred se focalise sur un joueur.",
 	gaze_trigger = "pose ses yeux sur (%S+) !$",
-	gaze_message = "Focalisation sur %s !",
-	gaze_bar = "Cooldown Focalisation",
-	gaze_you = "Focalisation sur VOUS !",
+	gaze_message = "Focalisation sur %s !",
+	gaze_bar = "Recharge Focalisation",
+	gaze_you = "Focalisation sur VOUS !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur la personne surveillée par Thaladred (nécessite d'être promu ou mieux).",
 
 	fear = "Rugissement",
-	fear_desc = "Préviens quand le Seigneur Sanguinar utilise son Rugissement puissant.",
-	fear_soon_message = "Rugissement imminent !",
-	fear_message = "Rugissement !",
-	fear_bar = "Cooldown Rugissement",
+	fear_desc = "Prévient quand le Seigneur Sanguinar utilise son Rugissement puissant.",
+	fear_soon_message = "Rugissement imminent !",
+	fear_message = "Rugissement !",
+	fear_bar = "Recharge Rugissement",
 	fear_spell = "Rugissement puissant",
 
 	rebirth = "Renaissance du phénix",
-	rebirth_desc = "Préviens quand le phénix est suceptible de renaitre.",
+	rebirth_desc = "Prévient quand le phénix est suceptible de renaitre.",
 	rebirth_trigger1 = "Anar'anel belore !",
 	rebirth_trigger2 = "Par le pouvoir du soleil !",
-	rebirth_warning = "Renaissance probable dans 5 sec. !",
+	rebirth_warning = "Renaissance probable dans 5 sec. !",
 	rebirth_bar = "~Renaissance probable",
 
 	pyro = "Explosion pyrotechnique",
 	pyro_desc = "Affiche un compte à rebours de 60 secondes pour l'Explosion pyrotechnique.",
 	pyro_trigger = "%s commence à lancer une explosion pyrotechnique !",
-	pyro_warning = "Explosion pyrotechnique dans 5 sec. !",
-	pyro_message = "Explosion pyrotechnique en incantation !",
+	pyro_warning = "Explosion pyrotechnique dans 5 sec. !",
+	pyro_message = "Explosion pyrotechnique en incantation !",
 
 	toyall = "Jouet à distance",
-	toyall_desc = "Préviens quand un joueur subit les effets du Jouet à distance. S'affiche uniquement en phase 2 pour éviter un spam excessif.",
-	toyall_message = "Jouet : %s",
+	toyall_desc = "Prévient quand un joueur subit les effets du Jouet à distance. S'affiche uniquement en phase 2 pour éviter un spam excessif.",
+	toyall_message = "Jouet : %s",
 
 	phase = "Phases",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	thaladred_inc_trigger = "Impressionnant. Voyons comment tiendront vos nerfs face à l'Assombrisseur, Thaladred !",
 	sanguinar_inc_trigger = "Vous avez tenu tête à certains de mes plus talentueux conseillers… Mais personne ne peut résister à la puissance du Marteau de sang. Je vous présente le seigneur Sanguinar !",
 	capernian_inc_trigger = "Capernian fera en sorte que votre séjour ici ne se prolonge pas.",
@@ -238,20 +313,20 @@ L:RegisterTranslations("frFR", function() return {
 	gravity_trigger1 = "Voyons comment vous vous débrouillerez une fois la tête en bas.",
 	gravity_trigger2 = "On a du mal à garder les pieds sur terre ?",
 	gravity_bar = "Prochaine Rupture",
-	gravity_message = "Rupture de gravité !",
+	gravity_message = "Rupture de gravité !",
 	flying_message = "Phase 5 - Rupture de gravité dans 1 min.",
 
-	weapons_inc_message = "Phase 2 - Arrivée des armes !",
-	phase3_message = "Phase 3 - Conseillers et armes !",
-	phase4_message = "Phase 4 - Arrivée de Kael'thas !",
+	weapons_inc_message = "Phase 2 - Arrivée des armes !",
+	phase3_message = "Phase 3 - Conseillers et armes !",
+	phase4_message = "Phase 4 - Arrivée de Kael'thas !",
 	phase4_bar = "Arrivée de Kael'thas",
 
 	mc = "Contrôle mental",
-	mc_desc = "Préviens quand des joueurs subissent les effets du Contrôle mental.",
-	mc_message = "Contrôle mental : %s",
+	mc_desc = "Prévient quand des joueurs subissent les effets du Contrôle mental.",
+	mc_message = "Contrôle mental : %s",
 
 	revive_bar = "Retour des conseillers",
-	revive_warning = "Retour des conseillers dans 5 sec. !",
+	revive_warning = "Retour des conseillers dans 5 sec. !",
 
 	dead_message = "%s meurt",
 } end )
@@ -334,26 +409,26 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "魔法，能量，我的人民陷入其中不能自拔……自从太阳之井被摧毁之后就是如此。欢迎来到未来。真遗憾，你们无法阻止什么。没有人可以阻止我了！Selama ashal’anore！",
-	engage_message = "第一阶段 - 四顾问",
+	engage_message = "第一阶段 - 四顾问！",
 
 	conflag = "燃烧",
-	conflag_desc = "当一队友中了燃烧发出警报。",
+	conflag_desc = "当玩家受到燃烧时发出警报。",
 	conflag_spell = "燃烧",
 	conflag_message = "燃烧：>%s <！",
 
 	gaze = "凝视",
-	gaze_desc = "当亵渎者萨拉德雷凝视队友发出警报。",
+	gaze_desc = "当亵渎者萨拉德雷凝视玩家时发出警报。",
 	gaze_trigger = "凝视着(.+)！$",
 	gaze_message = "凝视：>%s<！",
 	gaze_bar = "<凝视 冷却>",
 	gaze_you = ">你< 凝视！",
 
 	icon = "团队标记",
-	icon_desc = "给受到凝视的队友打上团队标记。(需要权限)",
+	icon_desc = "给受到凝视的队友打上团队标记。（需要权限）",
 
 	fear = "恐惧",
-	fear_desc = "当施放低沉咆哮发出警报。",
-	fear_soon_message = "即将恐惧！",
+	fear_desc = "当施放低沉咆哮时发出警报。",
+	fear_soon_message = "即将 恐惧！",
 	fear_message = "恐惧！",
 	fear_bar = "<恐惧 冷却>",
 	fear_spell = "低沉咆哮",
@@ -362,13 +437,13 @@ L:RegisterTranslations("zhCN", function() return {
 	rebirth_desc = "凤凰复生计时条。",
 	rebirth_trigger1 = "Anar'anel belore!",
 	rebirth_trigger2 = "以太阳之名！",
-	rebirth_warning = "~5秒后 凤凰复生！",
+	rebirth_warning = "约5秒后，凤凰复生！",
 	rebirth_bar = "<凤凰重生>",
 
 	pyro = "炎爆术",
 	pyro_desc = "显示60秒的炎爆术记时条。",
 	pyro_trigger = "%s开始施放炎爆术！",
-	pyro_warning = "5秒后 炎爆术！",
+	pyro_warning = "5秒后，炎爆术！",
 	pyro_message = "正在施放 炎爆术！",
 
 	toyall = "遥控玩具",
@@ -390,7 +465,7 @@ L:RegisterTranslations("zhCN", function() return {
 	gravity_trigger2 = "站不住脚了吗？",
 	gravity_bar = "<下一引力失效>",
 	gravity_message = "引力失效！",
-	flying_message = "第五阶段 - 1分钟后引力失效",
+	flying_message = "第五阶段 - 1分钟后引力失效！",
 
 	weapons_inc_message = "第二阶段 - 准备与神器作战！",
 	phase3_message = "第三阶段 - 四顾问复生！",
@@ -398,57 +473,57 @@ L:RegisterTranslations("zhCN", function() return {
 	phase4_bar = "<凯尔萨斯 来临>",
 
 	mc = "精神控制",
-	mc_desc = "当队友被精神控制发出警报。",
+	mc_desc = "当玩家受到精神控制时发出警报。",
 	mc_message = "精神控制：>%s<！",
 
 	revive_bar = "<凤凰复活>",
-	revive_warning = "5秒后 凤凰复活",
+	revive_warning = "5秒后，凤凰复活！",
 
 	dead_message = "%s死亡了。",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
-	engage_trigger = "魔法，能量，我的人民陷入其中不能自拔……自從太陽之井被摧毀之後就是如此。歡迎來到未來。真遺憾，你們無法阻止什麼。沒有人可以阻止我了﹗",
-	engage_message = "第一階段 - 四顧問！",
+	engage_trigger = "能量。力量。我的人民陷入其中不能自拔……自從太陽之井被摧毀之後就顯得更加明顯。歡迎來到未來。真遺憾，你們無法阻止什麼。沒有人可以阻止我了﹗(薩拉斯語)為了人民的正義!",
+	engage_message = "第一階段 - 四顧問!",
 
 	conflag = "燃燒",
-	conflag_desc = "當玩家受到燃燒時警告。",
+	conflag_desc = "當玩家受到燃燒時發出警告",
 	conflag_spell = "燃燒",
-	conflag_message = "燃燒：%s",
+	conflag_message = "燃燒: [%s]",
 
 	gaze = "凝視",
-	gaze_desc = "當目標受到凝視時警示",
+	gaze_desc = "警報誰受到凝視",
 	gaze_trigger = "凝視著([^%s]+)!$",
-	gaze_message = "凝視：[%s] - 快跑！",
-	gaze_bar = "凝視冷卻",
+	gaze_message = "凝視: [%s] - 快跑!",
+	gaze_bar = "<凝視冷卻>",
 	gaze_you = "凝視著你!",
 
 	icon = "團隊標記",
-	icon_desc = "當目標受到凝視時設置骷髏標記",
+	icon_desc = "當目標受到凝視時設置骷髏標記 (需要權限)",
 
 	fear = "恐懼",
 	fear_desc = "低沉咆哮警示",
-	fear_soon_message = "即將恐懼！",
-	fear_message = "恐懼！",
-	fear_bar = "恐懼冷卻",
+	fear_soon_message = "即將恐懼!",
+	fear_message = "恐懼!",
+	fear_bar = "<恐懼冷卻>",
 	fear_spell = "低沉咆哮",
 
 	rebirth = "鳳凰復生",
 	rebirth_desc = "顯示鳳凰復生的計時",
 	rebirth_trigger1 = "(薩拉斯語)以太陽之名!",
 	rebirth_trigger2 = "(薩拉斯語)以太陽之名!",
-	rebirth_warning = "五秒內鳳凰可能復生！",
-	rebirth_bar = "大略復生時間",
+	rebirth_warning = "約 5 秒內鳳凰可能復生!",
+	rebirth_bar = "<估計復生時間>",
 
 	pyro = "炎爆術",
 	pyro_desc = "顯示一個 60 秒的炎爆術計時",
 	pyro_trigger = "開始施放炎爆術",
-	pyro_warning = "五秒內施放炎爆術！",
-	pyro_message = "炎爆術！",
+	pyro_warning = "約 5 秒內施放炎爆術!",
+	pyro_message = "炎爆術!",
 
 	toyall = "遙控玩具",
 	toyall_desc = "當玩家受到遙控玩具影響時警示，僅作用在第二階段，避免洗頻",
-	toyall_message = "遙控玩具：[%s]",
+	toyall_message = "遙控玩具: [%s]",
 
 	phase = "階段警示",
 	phase_desc = "開啟各階段警示",
@@ -465,19 +540,19 @@ L:RegisterTranslations("zhTW", function() return {
 	gravity_trigger2 = "站不住腳了嗎?",
 	gravity_bar = "下一次重力流逝",
 	gravity_message = "重力流逝！",
-	flying_message = "第五階段 - 1 分鐘內重力流逝！",
+	flying_message = "第五階段 - 1 分鐘內重力流逝!",
 
-	weapons_inc_message = "第二階段 - 武器即將出現！",
-	phase3_message = "第三階段 - 顧問群重生！",
-	phase4_message = "第四階段 - 王子來臨！",
-	phase4_bar = "凱爾薩斯來臨",
+	weapons_inc_message = "第二階段 - 武器即將出現!",
+	phase3_message = "第三階段 - 顧問群重生!",
+	phase4_message = "第四階段 - 王子來臨!",
+	phase4_bar = "<凱爾薩斯來臨>",
 
 	mc = "精神控制",
-	mc_desc = "精神控制警示",
-	mc_message = "精神控制：[%s]",
+	mc_desc = "精神控制警報",
+	mc_message = "精神控制: [%s]",
 
 	revive_bar = "顧問重生",
-	revive_warning = "顧問在五秒內活動！Tank、Healer 準備就位！",
+	revive_warning = "顧問在 5 秒內活動! 坦克、治療準備就位!",
 } end )
 
 ----------------------------------
@@ -490,7 +565,7 @@ mod.otherMenu = "The Eye"
 mod.enabletrigger = { boss, capernian, sanguinar, telonicus, thaladred }
 mod.wipemobs = { axe, mace, dagger, staff, sword, bow, shield }
 mod.toggleoptions = { "phase", -1, "conflag", "mc", "toyall", "gaze", "icon", "fear", "pyro", "rebirth", "proximity", "bosskill" }
-mod.revision = tonumber(("$Revision: 66463 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 74266 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------
@@ -500,10 +575,10 @@ mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) en
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Conflag", 37018)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Toy", 37027)
-	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 36798)
-	self:AddCombatListener("SPELL_CAST_START", "FearCast", 39427, 36922, 40636, 44863) -- Really need to figure out which one.
-	self:AddCombatListener("SPELL_MISSED", "Fear", 39427, 36922, 40636, 44863) -- Really need to figure out which one.
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Fear", 39427, 36922, 40636, 44863) -- Really need to figure out which one.
+	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 36797)
+	self:AddCombatListener("SPELL_CAST_START", "FearCast", 44863)
+	self:AddCombatListener("SPELL_MISSED", "Fear", 44863)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Fear", 44863)
 	self:AddCombatListener("UNIT_DIED", "Deaths")
 
 
@@ -549,10 +624,15 @@ function mod:FearCast()
 	end
 end
 
+local last = 0
 function mod:Fear(_, spellID)
-	if db.fear then
-		self:IfMessage(L["fear_message"], "Attention", spellID)
-		self:Bar(L["fear_bar"], 30, spellID)
+	local time = GetTime()
+	if (time - last) > 5 then
+		last = time
+		if db.fear then
+			self:IfMessage(L["fear_message"], "Attention", spellID)
+			self:Bar(L["fear_bar"], 30, spellID)
+		end
 	end
 end
 

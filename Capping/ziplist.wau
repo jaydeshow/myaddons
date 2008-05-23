@@ -1,4 +1,4 @@
-Capping/Changelog-Capping-r66332.txt
+Capping/Changelog-Capping-r74508.txt
 Capping/Capping.toc
 Capping/embeds.xml
 Capping/core.lua
@@ -14,13 +14,3 @@ Capping/locals/localization-zhTW.lua
 Capping/locals/localization-koKR.lua
 Capping/locals/localization-frFR.lua
 Capping/locals/localization-deDE.lua
-Capping/libs/Dewdrop-2.0/Dewdrop-2.0.lua
-Capping/libs/AceLibrary/AceLibrary.lua
-Capping/libs/AceLibrary/AceLibrary.toc
-Capping/libs/CandyBar-2.0/CandyBar-2.0.lua
-Capping/libs/LibSharedMedia-2.0/LibSharedMedia-2.0.toc
-Capping/libs/LibSharedMedia-2.0/lib.xml
-Capping/libs/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
-Capping/libs/LibSharedMedia-2.0/LibStub/LibStub.lua
-Capping/libs/AceOO-2.0/AceOO-2.0.toc
-Capping/libs/AceOO-2.0/AceOO-2.0.lua

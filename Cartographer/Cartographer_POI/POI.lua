@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 56068 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 73088 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2007-11-26 15:54:07 -0500 (Mon, 26 Nov 2007) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-05-08 07:48:10 -0400 (Thu, 08 May 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_POI")
@@ -23,7 +23,7 @@ L:AddTranslations("deDE", function() return {
 L:AddTranslations("esES", function() return {
 	["POI"] = "PdI",
 
-	["Module to manage points of interest."] = "M\195\179dulo que gestiona los puntos de inter\195\169s",
+	["Module to manage points of interest."] = "Módulo que gestiona los puntos de interés",
 } end)
 
 L:AddTranslations("koKR", function() return {
@@ -43,10 +43,11 @@ L:AddTranslations("frFR", function() return {
 
 	["Module to manage points of interest."] = "Module de gestion des endroits importants des villes.",
 } end)
+
 L:AddTranslations("zhCN", function() return {
 	["POI"] = "信息点",
 
-	["Module to manage points of interest."] = "管理信息点",
+	["Module to manage points of interest."] = "管理信息点模块。",
 } end)
 
 local path = debugstack(1, 1, 0)
@@ -97,7 +98,7 @@ function mod:OnInitialize()
 
 	self.db = Cartographer:AcquireDBNamespace("POI")
 	Cartographer:RegisterDefaults("POI", "profile", { pois = {} })
-	
+
 end
 
 function mod:OnEnable()

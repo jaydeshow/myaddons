@@ -8,7 +8,7 @@
 ## Notes-zhCN: AtlasLoot Enhanced 的《燃烧的远征》的副本掉落信息
 ## Notes-zhTW: AtlasLoot 燃燒的遠征副本掉落物品資料庫
 ## Author: Daviesh
-## Version: 4.04.00
+## Version: 4.05.00
 ## X-eMail: oma_daviesh@hotmail.com
 ## X-Category: Map
 ## X-License: GPL v2
@@ -17,5 +17,9 @@
 ## LoadOnDemand: 1
 
 burningcrusade.en.lua
-burningcrusade.tw.lua
 burningcrusade.cn.lua
+burningcrusade.de.lua
+burningcrusade.es.lua
+burningcrusade.fr.lua
+burningcrusade.kr.lua
+burningcrusade.tw.lua

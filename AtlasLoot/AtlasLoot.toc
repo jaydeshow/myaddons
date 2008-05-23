@@ -1,14 +1,14 @@
-## Interface: 20400
+﻿## Interface: 20400
 ## Title: AtlasLoot Enhanced
 ## Notes: Shows the possible loot from the bosses
 ## Author: Daviesh
-## Version: 4.04.00
+## Version: 4.05.0
 ## X-eMail: oma_daviesh@hotmail.com
 ## X-Credits: Asurn, Pernicus, Hegarol, Cellelach, many others
 ## X-Category: Map
 ## X-License: GPL v2
 ## X-Website: http://www.atlasloot.net
-## X-Embeds: Ace2, Babble-2.2, DewdropLib, FuBarPlugin-2.0, TabletLib
+## X-Embeds: Ace2, DewdropLib, FuBarPlugin-2.0, TabletLib, LibBabble-Boss-3.0, LibBabble-Class-3.0, LibBabble-Faction-3.0, LibBabble-Inventory-3.0, LibBabble-Zone-3.0
 ## Title-deDE: AtlasLoot Enhanced
 ## Notes-deDE: Shows the possible loot from the bosses
 ## Title-frFR: AtlasLoot Enhanced
@@ -25,7 +25,7 @@
 ## RealTitle-zhTW: [地圖]AL 物品掉落[主程式]
 ## SavedVariables: AtlasLootOptions, AtlasLootFuDB, AtlasLootDB
 ## SavedVariablesPerCharacter: AtlasLootCharDB
-## OptionalDeps: Alphamap, AtlasLoader, LootLink, ItemSync, FuBar, TabletLib, DewdropLib, FuBarPlugin-2.0, FuBar, Ace2, Babble-2.2, EquipCompare
+## OptionalDeps: Alphamap, AtlasLoader, LootLink, ItemSync, FuBar, TabletLib, DewdropLib, FuBarPlugin-2.0, FuBar, Ace2, EquipCompare, LibBabble-Boss-3.0, LibBabble-Class-3.0, LibBabble-Faction-3.0, LibBabble-Inventory-3.0, LibBabble-Zone-3.0
 
 embeds.xml
 

@@ -5,13 +5,9 @@
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("BigWigsRaidWarn")
-local sentWhispers = nil
 
-local UnitInRaid = UnitInRaid
-local IsRaidLeader = IsRaidLeader
-local IsRaidOfficer = IsRaidOfficer
-local SendChatMessage = SendChatMessage
-local GetNumPartyMembers = GetNumPartyMembers
+local sentWhispers = nil
+local output = "*** %s ***"
 
 ----------------------------
 --      Localization      --
@@ -60,8 +56,8 @@ L:RegisterTranslations("koKR", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	["RaidWarning"] = "团队通知",
 
-	["Broadcast over RaidWarning"] = "通过团队通知(RW)发送警报信息。",
-	["Broadcast"] = "广播(RW)",
+	["Broadcast over RaidWarning"] = "通过团队通知（RW）发送警报信息。",
+	["Broadcast"] = "广播（RW）",
 	["Toggle broadcasting your BigWigs messages over the raid warning channel to the rest of the raid.\n\nNote that you will not see these broadcasts yourself unless you've disabled BossBlock."] = "在 Raid 空闲时，通过团队警报频道发送您的 BigWigs 信息。\n\n备注：若你不想看到这些信息，只需禁用\"信息阻止\"。",
 
 	["Whisper"] = "密语",
@@ -74,7 +70,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Broadcast to chat"] = "广播到聊天频道",
 	["Toggle broadcasting messages to either party or raid chat instead of the raid warning channel for boss messages.\n\nSame thing here; you will not see your own messages unless BossBlock is disabled."] = "通过广播 Boss 信息到每个队伍或者团队频道代替团队警告频道\n\n同样；若你不想看到这些信息，只需禁用\"信息阻止\"。",
 
-	desc = "设置除本地输出之外的，BigWigs 发送的 Boss 预警信息。",
+	desc = "设置除本地输出之外的，BigWigs 发送的首领预警信息。",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -92,7 +88,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["Toggle showing whispers sent by BigWigs locally, for example when players have things like the plague and similar."] = "切換是否顯示本地發送的警報密語，例如當玩家有溫疫時。",
 
 	["Broadcast to chat"] = "使用團隊聊天",
-	["Toggle broadcasting messages to either party or raid chat instead of the raid warning channel for boss messages.\n\nSame thing here; you will not see your own messages unless BossBlock is disabled."] = "切換是否使用團隊聊天來代替團隊警告頻道來播放首領的訊息",
+	["Toggle broadcasting messages to either party or raid chat instead of the raid warning channel for boss messages.\n\nSame thing here; you will not see your own messages unless BossBlock is disabled."] = "切換是否使用團隊聊天來代替團隊警告頻道來廣播首領的訊息",
 
 	desc = "團隊警告選項",
 } end )
@@ -132,37 +128,37 @@ L:RegisterTranslations("frFR", function() return {
 	["Toggle showing whispers sent by BigWigs locally, for example when players have things like the plague and similar."] = "Affiche ou non localement les chuchotements envoyés par BigWigs, par exemple quand les joueurs sont affectés par des choses telles que la peste ou similaire.",
 
 	["Broadcast to chat"] = "Diffuser sur le canal",
-	["Toggle broadcasting messages to either party or raid chat instead of the raid warning channel for boss messages.\n\nSame thing here; you will not see your own messages unless BossBlock is disabled."] = "Diffuse ou non les messages soit sur le canal Groupe, soit sur le canal Raid au lieu de l'Avertissement Raid.\n\nMême chose ici : vous ne verrez pas vos propres messages à moins que Bloquer BossMods ne soit désactivé.",
+	["Toggle broadcasting messages to either party or raid chat instead of the raid warning channel for boss messages.\n\nSame thing here; you will not see your own messages unless BossBlock is disabled."] = "Diffuse ou non les messages soit sur le canal Groupe, soit sur le canal Raid au lieu de l'Avertissement Raid.\n\nMême chose ici : vous ne verrez pas vos propres messages à moins que Bloquer BossMods ne soit désactivé.",
 
 	desc = "Vous permet de déterminer où BigWigs doit envoyer ses messages en plus de ses messages locaux.",
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	["RaidWarning"] = "Aviso de Banda",
+	["RaidWarning"] = "Aviso de banda",
 
-	["Broadcast over RaidWarning"] = "Difundir por encima de Aviso de Banda",
-	["Broadcast"] = "Difundir",
-	["Toggle broadcasting your BigWigs messages over the raid warning channel to the rest of the raid.\n\nNote that you will not see these broadcasts yourself unless you've disabled BossBlock."] = "Activa difundir los mensajes de BigWigs sobre el canal de aviso de banda al resto de la banda.\n\nNotar que no ver\195\161s estas difusiones propias si no has desactivado los Bloques de Jefes",
+	["Broadcast over RaidWarning"] = "Emitir en Aviso de Banda",
+	["Broadcast"] = "Emitir en Aviso de banda",
+	["Toggle broadcasting your BigWigs messages over the raid warning channel to the rest of the raid.\n\nNote that you will not see these broadcasts yourself unless you've disabled BossBlock."] = "Activa la emisión de tus mensajes BigWigs a través del canal de Aviso de banda para el resto de la banda.\n\nTen en cuenta que no verás estos mensajes si tienes activado el plugin de Ocultar mensajes.",
 
 	["Whisper"] = "Susurrar",
 	["Whisper warnings"] = "Susurrar avisos",
-	["Toggle whispering warnings to players."] = "Activa los susurros de avisos a los jugadores",
+	["Toggle whispering warnings to players."] = "Activa el susurro de avisos a los jugadores.",
 
 	["Show whispers"] = "Mostrar susurros",
-	["Toggle showing whispers sent by BigWigs locally, for example when players have things like the plague and similar."] = "Ativa mostrar los susurros que manda BigWigs localmente, por ejemplo cuando los jugadores tienen la plaga y similares",
+	["Toggle showing whispers sent by BigWigs locally, for example when players have things like the plague and similar."] = "Ativa el mostrar los susurros que manda BigWigs localmente, por ejemplo cuando los jugadores tienen la plaga y similares.",
 
-	["Broadcast to chat"] = "Difusi\195\179n en chat",
-	["Toggle broadcasting messages to either party or raid chat instead of the raid warning channel for boss messages.\n\nSame thing here; you will not see your own messages unless BossBlock is disabled."] = "Activa la difusi\195\179n de mensajes en la ventana de chat de grupo o banda en vez de avisos de banda para los mensajes de los Jefes.\n\nIgual aqu\195\173; no ver\195\161s tus propios mensajes hasta que Bloques de JEfes est\195\169 desactivado.",
+	["Broadcast to chat"] = "Emitir en chat",
+	["Toggle broadcasting messages to either party or raid chat instead of the raid warning channel for boss messages.\n\nSame thing here; you will not see your own messages unless BossBlock is disabled."] = "Activa la emisión de mensajes en el chat de grupo o banda en lugar de en Aviso de banda para mensajes de Jefes.\n\nTen en cuenta que no verás estos mensajes si tienes activado el plugin de Ocultar mensajes.",
 
-	desc = "Configura donde deber\195\173a mandar BigWigs sus mensajes de Jefes adem\195\161s de la salida local",
+	desc = "Te permite configurar dónde enviará BigWigs los mensajes de jefes además de en local.",
 } end )
 
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
 
-local plugin = BigWigs:NewModule("RaidWarning", "AceHook-2.1")
-plugin.revision = tonumber(("$Revision: 63870 $"):sub(12, -3))
+local plugin = BigWigs:NewModule("RaidWarning")
+plugin.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 plugin.defaultDB = {
 	whisper = false,
 	broadcast = false,
@@ -206,33 +202,38 @@ plugin.consoleOptions = {
 --      Initialization      --
 ------------------------------
 
+local function filter()
+	if not plugin.db.profile.showwhispers and sentWhispers[arg1] then
+		BigWigs:Debug("Suppressing self-sent whisper.", event, arg1)
+		return true
+	end
+end
+
 function plugin:OnEnable()
 	self:RegisterEvent("BigWigs_Message")
 	self:RegisterEvent("BigWigs_SendTell")
 
 	sentWhispers = {}
-
-	self:Hook("ChatFrame_MessageEventHandler", "WhisperHandler", true)
+	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", filter)
+	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER_INFORM", filter)
 end
 
 function plugin:BigWigs_Message(msg, color, noraidsay)
-	if not self.db.profile.broadcast or not msg or noraidsay then
-		return
-	end
+	if not msg or noraidsay or not self.db.profile.broadcast then return end
+
+	local inRaid = UnitInRaid("player")
 	-- In a 5-man group, everyone can use the raid warning channel.
-	if UnitInRaid("player") and not IsRaidLeader() and not IsRaidOfficer() then
+	if inRaid and not IsRaidLeader() and not IsRaidOfficer() then
 		return
-	elseif GetNumPartyMembers() == 0 and not UnitInRaid("player") then
+	elseif GetNumPartyMembers() == 0 and not inRaid then
 		return
 	end
+
+	local o = output:format(msg)
 	if self.db.profile.useraidchannel then
-		if UnitInRaid("player") then
-			SendChatMessage("*** "..msg.." ***", "RAID")
-		else
-			SendChatMessage("*** "..msg.." ***", "PARTY")
-		end
+		SendChatMessage(o, inRaid and "RAID" or "PARTY")
 	else
-		SendChatMessage("*** "..msg.." ***", "RAID_WARNING")
+		SendChatMessage(o, "RAID_WARNING")
 	end
 end
 
@@ -241,13 +242,5 @@ function plugin:BigWigs_SendTell(player, msg)
 	if UnitInRaid("player") and not IsRaidLeader() and not IsRaidOfficer() then return end
 	sentWhispers[msg] = true
 	SendChatMessage(msg, "WHISPER", nil, player)
-end
-
-function plugin:WhisperHandler(event)
-	if not self.db.profile.showwhispers and sentWhispers[arg1] then
-		BigWigs:Debug("Suppressing self-sent whisper.", event, arg1)
-		return
-	end
-	return self.hooks["ChatFrame_MessageEventHandler"](event)
 end
 

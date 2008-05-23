@@ -49,6 +49,8 @@ end
 
 -- Wrapper that calls the correct Get*Info for crafts and trades as appropriate
 function Skillet:GetTradeSkillInfo(index)
+    if (not index) then return end
+
     local skillName, skillType, numAvailable, isExpanded;
     if self:IsCraft() then
         skillName, craftSubSpellName, skillType, numAvailable, isExpanded = GetCraftInfo(index)

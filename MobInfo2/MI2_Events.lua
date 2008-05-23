@@ -1,4 +1,4 @@
-﻿--
+--
 -- MI2_Events.lua
 --
 -- Handlers for all WoW events that MobInfo subscribes to. This includes
@@ -261,7 +261,6 @@ function MI2_OnTargetChanged()
 
 	if name and level and (UnitCanAttack("player","target") or UnitIsPlayer("target")) then
 		MI2_Target = { name=name, level=level }
-		--MI2_Target.class = UnitClass("target")
 
 		-- set index to either player or mob and store matching health database
 		if  UnitIsPlayer("target")  then
@@ -508,12 +507,37 @@ end -- MI2_EventSelfBuff()
 -- died.
 --
 local function MI2_EventHostileDeath()
+
+-- This function and event appears to have disappeared with WoW 2.4
+-- after some further testing and investigation it can most likely
+-- be removed from the code
+
 	local s,e, creatureName = string.find( arg1, MI2_ChatScanStrings[2] )
 	if creatureName then
 		if MI2_DebugEvents > 0 then midebug("no XP kill event: mob="..creatureName ) end
 		MI2_RecordKill( creatureName )
 	end
 end -- MI2_EventHostileDeath()
+
+-----------------------------------------------------------------------------
+-- MI2_UnitDied()
+--
+-- Combat log event handler : a unit has died in your vicinity
+-- This is the replacement for the no longer functioning "MI2_EventHostileDeath()"
+--
+local function MI2_UnitDied()
+
+--midebug("event="..tostring(event)..", a1="..tostring(arg1)..", a2="..tostring(arg2)..", a3="..tostring(arg3)..", a4="..tostring(arg4))
+--midebug("event="..tostring(event)..", a5="..tostring(arg5)..", a6="..tostring(arg6)..", a7="..tostring(arg7)..", a8="..tostring(arg8))
+
+	local creatureName = arg7
+	if creatureName then
+		if MI2_DebugEvents > 0 then midebug("no XP kill event: mob="..creatureName ) end
+		MI2_RecordKill( creatureName )
+	end
+
+end -- MI2_UnitDied()
+
 
 
 -----------------------------------------------------------------------------
@@ -523,6 +547,7 @@ end -- MI2_EventHostileDeath()
 -- and gave us XP points
 --
 function MI2_EventCreatureDiesXP()
+
 	local s,e, creature, xp = string.find( arg1, MI2_ChatScanStrings[3] )
 	if creature and xp then
 		if MI2_DebugEvents > 0 then midebug("kill event with XP: mob="..creature..", xp="..xp ) end
@@ -627,10 +652,25 @@ end -- MI2_InitializeEventTable()
 -- MobInfo main event handler function, gets called for all registered events
 -- uses table with event handler info
 --
-function MI2_OnEvent( event )	
+function MI2_OnEvent()	
 	--midebug("event="..event..", a1="..(arg1 or "<nil>")..", a2="..(arg2 or "<nil>")..", a3="..(arg3 or "<nil>")..", a4="..(arg4 or "<nil>"))
 	MI2_EventHandlers[event].f()
 end -- MI2_OnEvent
+
+
+-----------------------------------------------------------------------------
+-- MI2_OnCombatLogEvent()
+--
+-- MobInfo main event handler function, gets called for all registered events
+-- uses table with event handler info
+--
+function MI2_OnCombatLogEvent()	
+	--midebug("event="..event..", a1="..(arg1 or "<nil>")..", a2="..(arg2 or "<nil>")..", a3="..(arg3 or "<nil>")..", a4="..(arg4 or "<nil>"))
+	local realEvent = MI2_EventHandlers[arg2]
+	if realEvent then
+		realEvent.f()
+	end
+end -- MI2_OnCombatLogEvent
 
 
 -----------------------------------------------------------------------------
@@ -645,6 +685,7 @@ function MI2_OnLoad()
 	-- "items"=item tracking event, "loc"=mob location event, "char"=char specific event
 	MI2_EventHandlers = {
 		VARIABLES_LOADED = {f=MI2_VariablesLoaded},
+		COMBAT_LOG_EVENT_UNFILTERED = {f=MI2_OnCombatLogEvent, always=1},
 		UNIT_COMBAT = {f=MI2_EventUnitCombat, always=1},
 		UNIT_HEALTH = {f=MI2_EventUnitHealth, always=1},
 		UNIT_MANA = {f=MI2_EventUnitMana, always=1},
@@ -661,6 +702,7 @@ function MI2_OnLoad()
 		CHAT_MSG_SPELL_SELF_BUFF = {f=MI2_EventSelfBuff, basic=1, items=1},
 
 		CHAT_MSG_COMBAT_HOSTILE_DEATH = {f=MI2_EventHostileDeath, char=1},
+		UNIT_DIED = {f=MI2_UnitDied, char=1},
 		CHAT_MSG_COMBAT_SELF_HITS = {f=MI2_EventSelfMelee, char=1},
 		CHAT_MSG_SPELL_SELF_DAMAGE = {f=MI2_EventSelfSpell, char=1},
 		CHAT_MSG_SPELL_PERIODIC_CREATURE_DAMAGE = {f=MI2_EventSpellPeriodic, char=1},

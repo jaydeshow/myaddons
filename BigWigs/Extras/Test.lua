@@ -3,7 +3,6 @@
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("BigWigsTest")
-local fmt = string.format
 
 ----------------------------
 --      Localization      --
@@ -50,22 +49,22 @@ L:RegisterTranslations("zhCN", function() return {
 	["Local test"] = "本地测试",
 	["Perform a local test of BigWigs."] = "执行 BigWigs 本地测试。",
 	["Sync test"] = "同步测试",
-	["Perform a sync test of BigWigs."] = "执行 BigWigs 同步测试（需要助理或更高权限）。",
-	["Testing Sync"] = "同步测试中......",
+	["Perform a sync test of BigWigs."] = "执行 BigWigs 同步测试（需要权限）。",
+	["Testing Sync"] = "同步测试中...",
 } end)
 
 L:RegisterTranslations("zhTW", function() return {
 	["Test"] = "測試",
 	["Test Bar "] = "測試計時條",
 	["Testing"] = "測試中",
-	["OMG Bear!"] = "天哪！蘇聯北極熊！",
+	["OMG Bear!"] = "天哪! 蘇聯北極熊!",
 	["*RAWR*"] = "*RAWR*",
-	["Victory!"] = "勝利！",
+	["Victory!"] = "勝利!",
 	["Commands for testing bars, messages and synchronization."] = "測試選項",
 	["Local test"] = "本地測試",
-	["Perform a local test of BigWigs."] = "執行一次本地測試。",
+	["Perform a local test of BigWigs."] = "執行 BigWigs 本地測試",
 	["Sync test"] = "同步測試",
-	["Perform a sync test of BigWigs."] = "執行一次同步測試（需要助手或領隊權限）。",
+	["Perform a sync test of BigWigs."] = "執行 BigWigs 同步測試（需要助手或領隊權限）",
 	["Testing Sync"] = "同步測試中",
 } end)
 
@@ -103,14 +102,14 @@ L:RegisterTranslations("esES", function() return {
 	["Test"] = "Probar",
 	["Test Bar "] = "Barra de prueba",
 	["Testing"] = "Probando",
-	["OMG Bear!"] = "\194\161Dios mio, Oso!",
-	["*RAWR*"] = "*RAWR*",
-	["Victory!"] = "\194\161Victoria!",
-	["Commands for testing bars, messages and synchronization."] = "Comando para probar las barras, mensajes y sincronizaci\195\179n",
+	["OMG Bear!"] = "¡¡¡ Oh dios mío, un oso praderil !!!",
+	["*RAWR*"] = "*RAAAAWRRR*",
+	["Victory!"] = "¡Victoria!",
+	["Commands for testing bars, messages and synchronization."] = "Comandos para probar las barras, mensajes y sincronización.",
 	["Local test"] = "Prueba local",
-	["Perform a local test of BigWigs."] = "Realiza una prueba local de BigWigs",
+	["Perform a local test of BigWigs."] = "Realiza una prueba local de BigWigs.",
 	["Sync test"] = "Prueba de sinc.",
-	["Perform a sync test of BigWigs."] = "Realiza una prueba de sincronizaci\195\179n de BigWigs",
+	["Perform a sync test of BigWigs."] = "Realiza una prueba de sincronización de BigWigs.",
 	["Testing Sync"] = "Probando sinc.",
 } end)
 
@@ -119,7 +118,7 @@ L:RegisterTranslations("esES", function() return {
 ----------------------------------
 
 local plugin = BigWigs:NewModule("Test")
-plugin.revision = tonumber(("$Revision: 65097 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
 plugin.external = true
 
 plugin.consoleCmd = L["Test"]
@@ -159,20 +158,20 @@ end
 function plugin:BigWigs_RecvSync(sync)
 	if sync == "TestSync" then
 		self:Message(L["Testing Sync"], "Positive")
-		self:Bar(L["Testing Sync"], 10, "Spell_Frost_FrostShock", true, "Green", "Blue", "Yellow", "Red")
+		self:Bar(L["Testing Sync"], 10, "Spell_Frost_FrostShock", true, 0, 0, 1)
 	end
 end
 
 function plugin:BigWigs_Test()
-	self:Bar(fmt("%s%d", L["Test Bar "], 4), 30, "Spell_Nature_ResistNature")
+	self:Bar(("%s%d"):format(L["Test Bar "], 4), 30, 34976)
 
 	self:Message(L["Testing"], "Attention", true, "Long", nil, 25596)
 	self:DelayedMessage(10, L["OMG Bear!"], "Important", true, "Alert", nil, 7903)
 	self:DelayedMessage(20, L["*RAWR*"], "Urgent", true, "Alarm", nil, 27006)
 	self:DelayedMessage(30, L["Victory!"], "Bosskill", true, "Victory", nil, 34976)
 
-	self:Bar(fmt("%s%d", L["Test Bar "], 3), 20, "Spell_Nature_ResistNature")
-	self:Bar(fmt("%s%d", L["Test Bar "], 2), 10, "Spell_Nature_ResistNature")
-	self:Bar(fmt("%s%d", L["Test Bar "], 1), 5, "Spell_Nature_ResistNature", true, "red")
+	self:Bar(("%s%d"):format(L["Test Bar "], 3), 20, 27006)
+	self:Bar(("%s%d"):format(L["Test Bar "], 2), 10, 7903)
+	self:Bar(("%s%d"):format(L["Test Bar "], 1), 5, 25596, true, 1, 0, 0)
 end
 

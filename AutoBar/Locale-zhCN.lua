@@ -4,9 +4,8 @@
 -- Courtesy of PDI175, lostcup
 --
 
-local L = AceLibrary("AceLocale-2.2"):new("AutoBar")
-
-L:RegisterTranslations("zhCN", function() return {
+if (GetLocale() == "zhCN") then
+	AutoBar.locale = {
 		["AutoBar"] = "消耗品助手",
 		["CONFIG_WINDOW"] = "设置窗口",
 		["SLASHCMD_LONG"] = "/autobar",
@@ -14,23 +13,21 @@ L:RegisterTranslations("zhCN", function() return {
 		["Button"] = "按钮",
 		["EDITSLOT"] = "编辑按钮",
 		["VIEWSLOT"] = "察看按钮",
-		["LOAD_ERROR"] = "|cff00ff00载入 AutoBarConfig 发生错误。 请确定是否有这个插件，并启用插件。|r 错误：",
+		["LOAD_ERROR"] = "|cff00ff00载入 AutoBarConfig 发生错误。请确定是否有这个插件，并启用插件。|r 错误：",
 		["Toggle the config panel"] = "切换消耗品助手设置窗口",
 		["Empty"] = "空白",
 
 		-- Waterfall
-	["Macro Text"] = "宏标签",
-	["Show the button Macro Text"] = "在按钮上显示宏标签",
-	["Show Hotkey Text"] = "在按钮上显示热键名称",
-	["Show Hotkey Text for %s"] = "在按钮上显示 %s 的热键名称",
-	["Show Grid"] = "显示空按钮",
-	["Show the grid of the bar even while locked."] = "即使是锁定动作条依然显示空按钮",
 		["Alpha"] = "半透明",
-		["Change the alpha of the bar."] = "改变动作条半透明",
+		["Change the alpha of the bar."] = "改变物品列半透明",
+		["Add Button"] = "Add Button",
 		["Align Buttons"] = "按钮排列方向";
 		["Always Show"] = "总是显示";
 		["Always Show %s, even if empty."] = "即使是空的，也总是显示 %s。";
-		["Bars"] = "动作条",
+		["Announce to Party"] = "通报到小队",
+		["Announce to Raid"] = "通报到团队",
+		["Announce to Say"] = "通报到 '说'",
+		["Bars"] = "物品列",
 		["Battlegrounds only"] = "只能在战场使用";
 		["Button Width"] = "按钮宽度";
 		["Change the button width."] = "变更按钮的宽度",
@@ -39,91 +36,141 @@ L:RegisterTranslations("zhCN", function() return {
 		["Category"] = "类别",
 		["Categories"] = "类别",
 		["Categories for %s"] = "%s 的类别",
+		["Clamp Bars to screen"] = "限制物品列在萤幕内",
+		["Clamped Bars can not be positioned off screen"] = "限制物品列无法移出萤幕范围",
 		["Collapse Buttons"] = "缩减按钮",
 		["Collapse Buttons that have nothing in them."] = "当按钮位置无任何设置时，将不显示。",
 		["Configuration for %s"] = "%s 的组态",
-		["Delete"] = "删除",
+		["Delete this Custom Button completely"] = "完全删除此自订按钮",
 		["Dialog"] = "对话框",
+		["Disable Conjure Button"] = "取消魔法制造按钮",
 		["Docked to"] = "依附于";
+		["Done"] = "完成";
 		["Enabled"] = "开启",
 		["Enable %s."] = "开启 %s",
-		["No Popup"] = "不弹出";
-		["No Popup for %s"] = "不弹出 %s";
-		["Show Count Text"] = "隐显示数量显示";
-		["Show Count Text for %s"] = "显示 %s 的数量显示";
-		["Show Empty Buttons"] = "显示空按钮";
-		["Show Empty Buttons for %s"] = "显示 %s 空按钮";
-		["Number of columns for %s"] = "%s 栏的数量",
 		["FadeOut"] = "渐隐",
-		["Fade out the Bar when not hovering over it."] = "当滑鼠没通过上方时渐隐",
+		["Fade out the Bar when not hovering over it."] = "当鼠标没通过上方时渐隐",
+		["FadeOut Time"] = "渐隐时间",
+		["FadeOut takes this amount of time."] = "渐隐使用时间",
+		["FadeOut Alpha"] = "渐隐透明度",
+		["FadeOut stops at this Alpha level."] = "渐隐停止透明度",
+		["FadeOut Cancels in combat"] = "战斗中取消渐隐",
+		["FadeOut is cancelled when entering combat."] = "当进入战斗状态后取消渐隐",
+		["FadeOut Cancels on Shift"] = "Shift 取消渐隐",
+		["FadeOut is cancelled when holding down the Shift key."] = "压住 Shift 键时取消渐隐效果",
+		["FadeOut Cancels on Ctrl"] = "Ctrl 取消渐隐",
+		["FadeOut is cancelled when holding down the Ctrl key."] = "压住 Ctrl 键时取消渐隐效果",
+		["FadeOut Cancels on Alt"] = "Alt 取消渐隐",
+		["FadeOut is cancelled when holding down the Alt key."] = "压住 Alt 键时取消渐隐效果",
 		["Frame Level"] = "框架等级",
-		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "调整动作条和弹出按钮的框架等级，以免遮挡其他界面框架或被遮挡",
+		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "调整物品列和弹出按钮的框架等级，以免遮挡其他界面框架或被遮挡",
 		["General"] = "一般",
 		["Hide"] = "隐藏",
 		["Hide %s"] = "隐藏 %s",
 		["Item"] = "物品",
 		["Items"] = "物品",
 		["Location"] = "使用地点：";
+		["Macro Text"] = "宏标签",
+		["Show the button Macro Text"] = "在按钮上显示宏标签",
 		["Medium"] = "中等",
 		["Name"] = "名称",
 		["New"] = "新增",
+		["New Macro"] = "新宏",
+		["No Popup"] = "不弹出";
+		["No Popup for %s"] = "不弹出 %s";
 		["Non Combat Only"] = " [仅用于非战斗状态]";
 		["Not directly usable"] = "不能直接使用";
+		["Number of columns for %s"] = "%s 栏的数量",
+		["Dropdown UI"] = "下拉 UI",
+		["Options GUI"] = "选项 GUI",
+		["Skin the Buttons"] = "按钮皮肤",
 		["Order"] = "反向",
-		["Change the order of %s in the Bar"] = "变更 %s 动作条的排列方向",
+		["Change the order of %s in the Bar"] = "变更 %s 物品列的排列方向",
 		["Padding"] = "间距",
-		["Change the padding of the bar."] = "改变动作条按钮间距",
+		["Change the padding of the bar."] = "改变物品列按钮间距",
 		["Popup Direction"] = "按钮弹出方向";
 		["Refresh"] = "更新",
-		["Refresh all the bars & buttons"] = "更新所有的动作条及按钮",
+		["Refresh all the bars & buttons"] = "更新所有的物品列及按钮",
+		["Remove"] = "移除",
+		["Remove this Button from the Bar"] = "从物品列移除按钮",
 		["Reset"] = "重置为默认";
-		["Reset Bars"] = "重制动作条",
-		["Reset the Bars to default Bar settings"] = "重置动作条为默认设定值",
+		["Reset Bars"] = "重制物品列",
+		["Reset everything to default values for all characters.  Custom Bars, Buttons and Categories remain unchanged."] = "重置所有角色的设定到默认值。自定义物品列，按钮和类别维持不变。",
+		["Reset the Bars to default Bar settings"] = "重置物品列为默认设定值",
+		["Revert"] = "复原";
+		["Right Click casts "] = "右键点击施放 ",
 		["Rows"] = "行";
 		["Number of rows for %s"] = "%s 的列数",
+		["RightClick SelfCast"] = "右键自我施法",
+		["SelfCast using Right click"] = "使用右键自我施法",
+		["Key Bindings"] = KEY_BINDINGS,
+		["Assign Bindings for Buttons on your Bars."] = "分配物品条榜定的按钮。",
 		["Scale"] = "缩放",
-		["Change the scale of the bar."] = "改变动作条缩放",
+		["Change the scale of the bar."] = "改变物品列缩放",
+		["Shared Layout"] = "已共用的配置",
+		["Share the Bar Visual Layout"] = "共用物品列的视觉配置",
+		["Shared Buttons"] = "已共用的按钮",
+		["Share the Bar Button List"] = "共用物品列按钮清单",
+		["Shared Position"] = "已共用的位置",
+		["Share the Bar Position"] = "共用物品列的位置",
 		["Shift Dock Left/Right"] = "调整左右依附距离";
 		["Shift Dock Up/Down"] = "调整上下依附距离";
-		["Snap Bars while moving"] = "移动时缩起动作条",
+		["Show Count Text"] = "隐显示数量显示";
+		["Show Count Text for %s"] = "显示 %s 的数量显示";
+		["Show Empty Buttons"] = "显示空按钮";
+		["Show Empty Buttons for %s"] = "显示 %s 空按钮";
+		["Show Extended Tooltips"] = "显示额外提示信息";
+		["Show Hotkey Text"] = "在按钮上显示热键名称",
+		["Show Hotkey Text for %s"] = "在按钮上显示 %s 的热键名称",
+		["Show Tooltips"] = "显示提示信息";
+		["Show Tooltips for %s"] = "显示 %s 的提示信息";
+		["Show Tooltips in Combat"] = "战斗中显示提示信息";
+		["Shuffle"] = "随机排列",
+		["Shuffle replaces depleted items during combat with the next best item"] = "战斗期间随机选取下一个优化物品取代已耗尽的物品。",
+		["Snap Bars while moving"] = "移动时缩起物品列",
 		["Sticky Frames"] = "锁定框架",
-		["Style"] = "风格",
-		["Change the style of the bar."] = "改变动作条风格",
+		["Style"] = "样式",
+		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "改变物品列样式，需要非暴雪样式的 ButtonFacade 插件。",
 		["Targeted"] = "需目标.";
-		["Waterfall-1.0 is required to access the GUI."] = "图形用户介面设定需要 Waterfall-1.0。",
 		["<Any String>"] = "<任何字串>",
-		["Move the Bars"] = "移动动作条",
-		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "可拖曳动作条移动它，左键点击隐藏(红)或显示(绿)动作条，右键点击显示设定选项。",
+		["Move the Bars"] = "移动物品列",
+		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "可拖曳物品列移动它，左键点击隐藏(红)或显示(绿)物品列，右键点击显示设定选项。",
 		["Move the Buttons"] = "移动按钮",
 		["Drag a Button to move it, right click to configure the Button."] = "拖曳按钮来移动它，右键点击来设定按钮。",
 
-		["TOPLEFT"] = "上左",
+		["{circle}"] = "{圆形}",
+		["{diamond}"] = "{菱形}",
+		["{skull}"] = "{骷髅}",
+		["{square}"] = "{square}",
+		["{star}"] = "{星形}",
+		["{triangle}"] = "{三角}",
+
+		["TOPLEFT"] = "左上",
 		["LEFT"] = "左",
-		["BOTTOMLEFT"] = "下左",
+		["BOTTOMLEFT"] = "左下",
 		["TOP"] = "上",
 		["CENTER"] = "中",
 		["BOTTOM"] = "下",
-		["TOPRIGHT"] = "上右",
+		["TOPRIGHT"] = "右上",
 		["RIGHT"] = "右",
-		["BOTTOMRIGHT"] = "下右",
+		["BOTTOMRIGHT"] = "右下",
 
 		-- AutoBarFuBar
-		["FuBarPlugin Config"] = "FuBarPlugin 配置",
-		["Configure the FuBar Plugin"] = "配置 FuBar 插件",
-		["Button lock"] = "锁定按钮",
-		["Bar lock"] = "锁定动作条",
-		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f双击|r 打开图形配置窗口.\n|cffeda55fCtrl-单击|r 显示/隐藏按钮锁定状态. |cffeda55fShift-单击|r 显示/隐藏动作条锁定状态.",
-		["Waterfall-1.0 is required to access the GUI."] = "要进入这个GUI界面你需要安装WaterFall 1.0.",
+--		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f双击|r 打开图形配置窗口.\n|cffeda55fCtrl-单击|r 显示/隐藏按钮锁定状态. |cffeda55fShift-单击|r 显示/隐藏物品列锁定状态.",
 
-		["Self Casting"] = "自我施法",
-		["Configure Self Casting options"] = "自我施法设定选项",
-		["Modifier SelfCast"] = "修改自我施法",
-		["SelfCast using the Interface SelfCast Modifier"] = "修改自我施法介面里使用的法术",
-		["RightClick SelfCast"] = "右键自我施法",
-		["SelfCast using Right click"] = "使用右键自我施法",
+		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
+		["Left-Click"] = "Left-Click",
+		["Right-Click"] = "Right-Click",
+		["Alt-Click"] = "Alt-Click",
+		["Ctrl-Click"] = "Ctrl-Click",
+		["Shift-Click"] = "Shift-Click",
+		["Ctrl-Shift-Click"] = "Ctrl-Shift-Click",
+		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade 需要按钮皮肤",
+		["Waterfall-1.0 is required to access the GUI"] = "要进入这个GUI界面你需要安装WaterFall 1.0",
 
 		-- Bar Names
 		["AutoBarClassBarBasic"] = "基本",
+		["AutoBarClassBarExtras"] = "额外",
 		["AutoBarClassBarDruid"] = "德鲁伊",
 		["AutoBarClassBarHunter"] = "猎人",
 		["AutoBarClassBarMage"] = "法师",
@@ -145,9 +192,11 @@ L:RegisterTranslations("zhCN", function() return {
 		["AutoBarButtonBuff"] = "增益",
 		["AutoBarButtonBuffWeapon1"] = "增益: 主手武器",
 		["AutoBarButtonBuffWeapon2"] = "增益: 副手武器",
+		["AutoBarButtonCharge"] = "冲锋",
 		["AutoBarButtonClassBuff"] = "增益法术",
 		["AutoBarButtonClassPet"] = "战斗宠物",
 		["AutoBarButtonConjure"] = "法术: 制造",
+		["AutoBarButtonCooldownDrums"] = "冷却：战鼓",
 		["AutoBarButtonCooldownPotionHealth"] = "药水冷却：生命",
 		["AutoBarButtonCooldownPotionMana"] = "药水冷却：法力",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "药水冷却：活力",
@@ -177,6 +226,7 @@ L:RegisterTranslations("zhCN", function() return {
 		["AutoBarButtonPets"] = "宠物",
 		["AutoBarButtonQuest"] = "任务物品",
 		["AutoBarButtonRecovery"] = "法力恢复",
+		["AutoBarButtonRotationDrums"] = "旋转：战鼓",
 		["AutoBarButtonSpeed"] = "速度",
 		["AutoBarButtonStance"] = "姿态",
 		["AutoBarButtonStealth"] = "潜行",
@@ -189,6 +239,7 @@ L:RegisterTranslations("zhCN", function() return {
 		["AutoBarButtonTrap"] = "陷阱",
 		["AutoBarButtonTrinket1"] = "饰品1",
 		["AutoBarButtonTrinket2"] = "饰品2",
+		["AutoBarButtonWarlockStones"] = "术士石头",
 		["AutoBarButtonWater"] = "水",
 		["AutoBarButtonWaterBuff"] = "增益: 水",
 
@@ -199,23 +250,22 @@ L:RegisterTranslations("zhCN", function() return {
 		["AutoBarButtonFlight"] = "飞行",
 		["AutoBarButtonNormal"] = "一般",
 
-
 		-- AutoBarClassButton.lua
 		["Num Pad "] = "数字键盘 ",
 		["Mouse Button "] = "滑鼠按键 ",
-		["Middle Mouse"] = "滑鼠中间键",
-		["Backspace"] = "Backspace",
-		["Spacebar"] = "Spacebar",
-		["Delete"] = "Delete",
-		["Home"] = "Home",
-		["End"] = "End",
-		["Insert"] = "Insert",
-		["Page Up"] = "Page Up",
-		["Page Down"] = "Page Down",
-		["Down Arrow"] = "下",
-		["Up Arrow"] = "上",
-		["Left Arrow"] = "左",
-		["Right Arrow"] = "右",
+		["Middle Mouse"] = KEY_BUTTON3,
+		["Backspace"] = KEY_BACKSPACE,
+		["Spacebar"] = KEY_SPACE,
+		["Delete"] = KEY_DELETE,
+		["Home"] = KEY_HOME,
+		["End"] = KEY_END,
+		["Insert"] = KEY_INSERT,
+		["Page Up"] = KEY_PAGEUP,
+		["Page Down"] = KEY_PAGEDOWN,
+		["Down Arrow"] = KEY_DOWN,
+		["Up Arrow"] = KEY_UP,
+		["Left Arrow"] = KEY_LEFT,
+		["Right Arrow"] = KEY_RIGHT,
 		["|c00FF9966C|r"] = "|c00FF9966C|r",
 		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["|c009966CCA|r"] = "|c009966CCA|r",
@@ -243,53 +293,54 @@ L:RegisterTranslations("zhCN", function() return {
 		["Dreamlayout"] = "梦幻样式",
 		["AUTOBAR_CONFIG_DISABLERIGHTCLICKSELFCAST"] = "关闭右键自动施法";
 		["AUTOBAR_CONFIG_REMOVECAT"] = "移除当前种类";
-		["Rows"] = "行";
 		["Columns"] = "列";
 		["AUTOBAR_CONFIG_GAPPING"] = "图标间隔";
 		["AUTOBAR_CONFIG_ALPHA"] = "图标透明度";
 		["AUTOBAR_CONFIG_WIDTHHEIGHTUNLOCKED"] = "不锁定按钮长宽比";
 		["AUTOBAR_CONFIG_SHOWCATEGORYICON"] = "显示物品种类图示";
-		["Show Tooltips"] = "显示提示讯息";
-		["Show Tooltips for %s"] = "显示 %s 的提示讯息";
 		["AUTOBAR_CONFIG_POPUPONSHIFT"] = "按 Shift 弹出按钮";
 		["Rearrange Order on Use"] = "使用后重新排列顺序";
 		["Rearrange Order on Use for %s"] = "使用 %s 后重新排列顺序";
 		["Right Click Targets Pet"] = "右键以宠物为目标";
-		["AUTOBAR_CONFIG_DOCKTONONE"] = "无";
-		["AUTOBAR_CONFIG_BT3BAR"] = "Bartender3动作条";
+		["None"] = "无";
+		["AUTOBAR_CONFIG_BT3BAR"] = "Bartender3物品列";
 		["AUTOBAR_CONFIG_DOCKTOMAIN"] = "主菜单条";
 		["AUTOBAR_CONFIG_DOCKTOCHATFRAME"] = "对话框架";
 		["AUTOBAR_CONFIG_DOCKTOCHATFRAMEMENU"] = "对话框架菜单";
-		["AUTOBAR_CONFIG_DOCKTOACTIONBAR"] = "动作条";
+		["AUTOBAR_CONFIG_DOCKTOACTIONBAR"] = "物品列";
 		["AUTOBAR_CONFIG_DOCKTOMENUBUTTONS"] = "菜单按钮";
 		["AUTOBAR_CONFIG_NOTFOUND"] = "(未发现：物品 ";
 		["AUTOBAR_CONFIG_SLOTEDITTEXT"] = " 栏位 (左键编辑)";
 		["AUTOBAR_CONFIG_CHARACTER"] = "角色";
-		["AUTOBAR_CONFIG_SHARED"] = "共用";
-		["AUTOBAR_CONFIG_CLASS"] = "职业";
+		["Shared"] = "共用";
+		["Account"] = "帐号";
+		["Class"] = "职业";
 		["AUTOBAR_CONFIG_BASIC"] = "基本";
 		["AUTOBAR_CONFIG_USECHARACTER"] = "使用角色";
 		["AUTOBAR_CONFIG_USESHARED"] = "使用共用";
 		["AUTOBAR_CONFIG_USECLASS"] = "使用职业";
 		["AUTOBAR_CONFIG_USEBASIC"] = "使用基本";
-		["AUTOBAR_CONFIG_HIDECONFIGTOOLTIPS"] = "隐藏设定提示讯息";
+		["AUTOBAR_CONFIG_HIDECONFIGTOOLTIPS"] = "隐藏设定提示信息";
 		["AUTOBAR_CONFIG_OSKIN"] = "使用 oSkin";
+		["Log Events"] = "纪录事件";
 		["Log Performance"] = "记录性能";
 		["AUTOBAR_CONFIG_CHARACTERLAYOUT"] = "设定为角色专用";
-		["AUTOBAR_CONFIG_SHAREDLAYOUT"] = "设定为共享";
-		["AUTOBAR_CONFIG_SHARED1"] = "共享 1";
-		["AUTOBAR_CONFIG_SHARED2"] = "共享 2";
-		["AUTOBAR_CONFIG_SHARED3"] = "共享 3";
-		["AUTOBAR_CONFIG_SHARED4"] = "共享 4";
+		["AUTOBAR_CONFIG_SHAREDLAYOUT"] = "设定为共用";
+		["AUTOBAR_CONFIG_SHARED1"] = "共用 1";
+		["AUTOBAR_CONFIG_SHARED2"] = "共用 2";
+		["AUTOBAR_CONFIG_SHARED3"] = "共用 3";
+		["AUTOBAR_CONFIG_SHARED4"] = "共用 4";
 		["AUTOBAR_CONFIG_EDITCHARACTER"] = "编辑角色的栏位";
-		["AUTOBAR_CONFIG_EDITSHARED"] = "编辑共享的栏位";
+		["AUTOBAR_CONFIG_EDITSHARED"] = "编辑共用的栏位";
 		["AUTOBAR_CONFIG_EDITCLASS"] = "编辑职业的栏位";
 		["AUTOBAR_CONFIG_EDITBASIC"] = "编辑基本的栏位";
+		["Share the config"] = "共用配置";
 
 		-- AutoBarCategory
 		["Misc.Engineering.Fireworks"] = "工程焰火",
 		["Tradeskill.Tool.Fishing.Lure"] = "鱼饵",
 		["Tradeskill.Tool.Fishing.Gear"] = "钓鱼装备",
+		["Tradeskill.Tool.Fishing.Other"] = "钓鱼增益 (鱼饵)",
 		["Tradeskill.Tool.Fishing.Tool"] = "鱼竿",
 
 		["Consumable.Food.Bonus"] = "食物：各类属性提升";
@@ -331,6 +382,7 @@ L:RegisterTranslations("zhCN", function() return {
 		["Consumable.Buff.Shield"] = "盾牌增益";
 		["Consumable.Weapon Buff"] = "武器增益";
 
+		["Misc.Usable.BossItem"] = "Boss Items";
 		["Misc.Usable.Permanent"] = "可用物品";
 		["Misc.Usable.Quest"] = "任务物品";	-- "Usable Quest Items"
 		["Misc.Usable.Replenished"] = "补充物品";
@@ -364,6 +416,8 @@ L:RegisterTranslations("zhCN", function() return {
 		["Consumable.Food.Edible.Basic.Non-Conjured"] = "食物：无附加效果";
 		["Consumable.Food.Percent.Basic"] = "食物：% 恢复生命力";
 		["Consumable.Food.Percent.Bonus"] = "食物：% 恢复生命力 (喂食效果)";
+		["Consumable.Food.Edible.Combo.Non-Conjured"] = "食物: 恢复生命力及法力 (非魔法制作)";
+		["Consumable.Food.Edible.Combo.Conjured"] = "食物: 恢复生命力及法力 (魔法制作)";
 		["Consumable.Food.Combo Percent"] = "食物：% 恢复生命力及法力";
 		["Consumable.Food.Combo Health"] = "食物：有喝水效果";
 		["Consumable.Food.Edible.Bread.Conjured"] = "食物：法师制造物";
@@ -387,16 +441,22 @@ L:RegisterTranslations("zhCN", function() return {
 
 		["Consumable.Anti-Venom"] = "抗毒药剂";
 
+		["Consumable.Warlock.Firestone"] = "火焰石";
+		["Consumable.Warlock.Soulstone"] = "灵魂石";
+		["Consumable.Warlock.Spellstone"] = "法术石";
 		["Consumable.Cooldown.Stone.Health.Warlock"] = "治疗石";
 		["Spell.Warlock.Create Firestone"] = "制造火焰石";
 		["Spell.Warlock.Create Healthstone"] = "制造治疗石";
 		["Spell.Warlock.Create Soulstone"] = "制造灵魂石";
 		["Spell.Warlock.Create Spellstone"] = "制造法术石";
 		["Consumable.Cooldown.Stone.Mana.Mana Stone"] = "法力石";
-		["Consumable.Mage.Conjure Mana Stone"] = "制造法力石";
+		["Spell.Mage.Conjure Mana Stone"] = "制造法力石";
 		["Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep"] = "昏睡药水";
 		["Consumable.Cooldown.Potion.Rejuvenation"] = "恢复药水";
 		["Consumable.Cooldown.Stone.Health.Statue"] = "石像";
+		["Consumable.Cooldown.Drums"] = "冷却: 战鼓";
+		["Consumable.Cooldown.Potion"] = "冷却: 药水";
+		["Consumable.Cooldown.Stone"] = "冷却: 石";
 		["Consumable.Leatherworking.Drums"] = "战鼓";
 		["Consumable.Tailor.Net"] = "网";
 
@@ -445,41 +505,22 @@ L:RegisterTranslations("zhCN", function() return {
 		["Consumable.Buff.Speed"] = "迅捷药剂";
 		["Consumable.Buff Type.Battle"] = "增益: 作战药剂";
 		["Consumable.Buff Type.Guardian"] = "增益: 防护药剂";
-		["Consumable.Buff Type.Both"] = "增益: 同时属于作战药剂与防护药剂";
+		["Consumable.Buff Type.Flask"] = "增益: 合剂";
 		["AUTOBAR_CLASS_SOULSHARDS"] = "灵魂碎片";
-		["Reagent.Ammo.Arrow"] = "箭";
-		["Reagent.Ammo.Bullet"] = "子弹";
-		["Reagent.Ammo.Thrown"] = "投掷武器";
+		["Misc.Reagent.Ammo.Arrow"] = "箭";
+		["Misc.Reagent.Ammo.Bullet"] = "子弹";
+		["Misc.Reagent.Ammo.Thrown"] = "投掷武器";
 		["Misc.Explosives"] = "工程学爆炸物";-- Check
 		["Misc.Mount.Normal"] = "坐骑";
 		["Misc.Mount.Summoned"] = "坐骑：召唤类";
 		["Misc.Mount.Ahn'Qiraj"] = "坐骑：其拉甲虫";
 		["Misc.Mount.Flying"] = "坐骑：飞行类";
-
-		["Revert"] = "复原";
-		["Done"] = "完成";
 	}
-end);
-
-
-if (GetLocale()=="zhCN") then
 
 --AUTOBAR_CHAT_MESSAGE1 = "保存的配置是老版本的, 已被清除.  不支持配置的升级.";
---AUTOBAR_CHAT_MESSAGE2 = "更新合类物品按钮 #%d 物品 #%d, 使用物品ID替换物品名称.";
---AUTOBAR_CHAT_MESSAGE3 = "更新单类物品按钮 #%d, 使用物品ID替换物品名称.";
 --
 ----  AutoBar_Config.xml
---AUTOBAR_CONFIG_VIEWTEXT = "要编辑按钮请选择栏位分页下方的栏位进行编辑。";
---AUTOBAR_CONFIG_SLOTVIEWTEXT = "检视综合栏位 (无法编辑)";
---AUTOBAR_CONFIG_DETAIL_CATEGORIES = "(Shift+点击进入详细分类)";
---AUTOBAR_CONFIG_DRAGHANDLE = "鼠标左键拖曳移动 AutoBar\n左键锁定 / 解锁\n右键显示功能选项";
---AUTOBAR_CONFIG_EMPTYSLOT = "空栏位";
---AUTOBAR_CONFIG_CLEARSLOT = "清除栏位";
---AUTOBAR_CONFIG_SETSHARED = "共享设定：";
---AUTOBAR_CONFIG_SETSHAREDTIP = "选择使用共享文件，将会把共享的设定值套用到所有的角色。";
---
---AUTOBAR_CONFIG_TAB_SLOTS = "栏位";
---AUTOBAR_CONFIG_TAB_BAR = "动作条";
+--AUTOBAR_CONFIG_TAB_BAR = "物品列";
 --AUTOBAR_CONFIG_TAB_POPUP = "弹出";
 --AUTOBAR_CONFIG_TAB_PROFILE = "设定";
 --AUTOBAR_CONFIG_TAB_KEYS = "Keys";
@@ -489,15 +530,6 @@ if (GetLocale()=="zhCN") then
 --AUTOBAR_TOOLTIP6 = " [使用条件限制]";
 --AUTOBAR_TOOLTIP7 = " [使用后需冷却]";
 AUTOBAR_TOOLTIP8 = "\n(左键用于主手武器\n右键用于副手武器)";
---
---AUTOBAR_CONFIG_USECHARACTERTIP = "角色栏位的物品只适用于这个角色。";
---AUTOBAR_CONFIG_USESHAREDTIP = "共用栏位的物品适用于其他角色使用相同的物品。\n共用项目可由专案分页中选择。";
---AUTOBAR_CONFIG_USECLASSTIP = "职业栏位的物品适用于所有相同职业的角色。";
---AUTOBAR_CONFIG_USEBASICTIP = "基本栏位的物品适用于所有角色可用的基本物品。";
---AUTOBAR_CONFIG_CHARACTERLAYOUTTIP = "改变可见的栏位只作用于这个角色。";
---AUTOBAR_CONFIG_SHAREDLAYOUTTIP = "改变可见的栏位可作用于所有角色使用相同的共用设定。";
---AUTOBAR_CONFIG_TIPOVERRIDE = "这一层的物品优先顺序优于下一层的栏位。\n";
---AUTOBAR_CONFIG_TIPOVERRIDDEN = "上一层的物品优先顺序优于这一层的栏位。\n";
 --AUTOBAR_CONFIG_TIPAFFECTSCHARACTER = "变动只作用于这个角色。";
 --AUTOBAR_CONFIG_TIPAFFECTSALL = "变动作用于所有角色。";
 --AUTOBAR_CONFIG_SETUPSINGLE = "单一设定";
@@ -524,6 +556,5 @@ AUTOBAR_TOOLTIP18 = "\n仅用于战斗状态.";
 --AUTOBAR_TOOLTIP20 = "\n使用条件限制：";
 --AUTOBAR_TOOLTIP21 = "所需恢复生命";
 --AUTOBAR_TOOLTIP22 = "所需恢复法力";
---AUTOBAR_TOOLTIP23 = "单类物品按钮\n\n";
 
 end

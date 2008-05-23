@@ -3,13 +3,13 @@
 L:RegisterTranslations("zhTW", function() return {
 	["Add"] = "新增",
 	["Add an item to the refill list. (Usage: /freerefills add [Item Link] #)"] = "新增物品到補購清單 (指令: /freerefills add [Item Link] #)",
-	["[Item Link] <number of items>"] = "[物品鏈結] <數量>",
+	["[Item Link] <number of items>"] = "[物品連結] <數量>",
 	["Add Stack"] = "新增堆疊",
 	["Add an item to the refill list by stack. (Usage: /freerefills addstack [Item Link] #)"] ="新增物品堆疊到補購清單 (指令: /freerefills addstack [Item Link] #)",
-	["[Item Link] <number of stacks>"] = "[物品鏈結] <堆疊數量>",
+	["[Item Link] <number of stacks>"] = "[物品連結] <堆疊數量>",
 	["Remove"] = "移除",
 	["Remove an item from the refill list. (Usage: /freerefills del [Item Link])"] = "將物品移出補購清單 (指令: /freerefills del [Item Link])",
-	["[Item Link]"] = "[物品鏈結]",
+	["[Item Link]"] = "[物品連結]",
 	["Overstock"] = "容許超量補貨",
 	["Toggle Overstocking.  If an item is sold in stacks and cannot meet your exact requested amount, you can opt to buy slightly more (Overstock)."] = "超量補貨選項 (若物品以堆疊方式出售而無法符合您需要的精確數目時，允許過量購買)",
 	["Process Merchant"] = "經由商人補購",
@@ -25,6 +25,6 @@ L:RegisterTranslations("zhTW", function() return {
 	["Item List Cleared"] = "物品清單已經清除",
 	["Refill List: "] = "補購清單: ",
 	["     None"] = "無",
-	["Invalid input; input must be '<item> #'."] = "輸入錯誤; 正確指令為: '<物品鏈結> #' #=數量",
+	["Invalid input; input must be '<item> #'."] = "輸入錯誤; 正確指令為: '<物品連結> #' #=數量",
 }
 end)

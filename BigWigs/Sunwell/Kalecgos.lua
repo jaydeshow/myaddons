@@ -9,9 +9,11 @@ local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 local db = nil
 local enrageWarn = nil
 local wipe = nil
+local counter = 1
 
 local fmt = string.format
 local GetNumRaidMembers = GetNumRaidMembers
+local CheckInteractDistance = CheckInteractDistance
 local pName = UnitName("player")
 local UnitBuff = UnitBuff
 local UnitPowerType = UnitPowerType
@@ -29,7 +31,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	portal = "Portal",
 	portal_desc = "Warn when the Spectral Blast cooldown is up.",
-	portal_bar = "Next portal",
+	portal_bar = "Next portal (%d)",
 	portal_message = "Possible portal in 5 seconds!",
 
 	realm = "Spectral Realm",
@@ -58,28 +60,77 @@ L:RegisterTranslations("enUS", function() return {
 	magicthreat_desc = "Tells you when you get increased threat from Wild Magic.",
 	magicthreat_you = "Wild Magic - Threat generation increased!",
 
-	spectral_realm = "Spectral Realm",
-
 	buffet = "Arcane Buffet",
 	buffet_desc = "Show the Arcane Buffet timer bar.",
 
 	enrage_warning = "Enrage soon!",
 	enrage_message = "10% - Enraged!",
 	enrage_trigger = "Sathrovarr drives Kalecgos into a crazed rage!",
+
+	strike = "Corrupting Strike",
+	strike_desc = "Warn who gets Corrupting Strike.",
+	strike_message = "%s: Corrupting Strike",
+} end )
+
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "¡Aggh! ¡Ya no seré un esclavo de Malygos! ¡Retadme y seréis destruidos!",
+	wipe_bar = "Reaparición",
+
+	portal = "Portal",
+	portal_desc = "Avisar cuando puede utilizar Explosión espectral.",
+	portal_bar = "Portal (%d)",
+	portal_message = "Posible portal en 5 seg",
+
+	realm = "Reino espectral (Spectral Realm)",
+	realm_desc = "Avisa quién está en el Reino espectral.",
+	realm_message = "Reino espectral: %s (Grupo %d)",
+
+	curse = "Agonía ilimitada (Boundless Agony)",
+	curse_desc = "Avisa quién tiene Maldición de agonía ilimitada.",
+	curse_bar = "Maldición: %s",
+
+	magichealing = "Magia salvaje - Curación",
+	magichealing_desc = "Te avisa cuando haces curaciones aumentadas por Magia salvaje.",
+	magichealing_you = "¡Magia salvaje - Curación aumentada!",
+
+	magiccast = "Magia salvaje - Tiempo lanzamiento",
+	magiccast_desc = "Te avisa cuando un sanador tiene el tiempo de lanzamiento aumentado por Magia salvaje.",
+	magiccast_you = "¡Magia salvaje - Tiempo lanzamiento aumentado en TI!",
+	magiccast_other = "¡Magia salvaje - Tiempo lanzamiento aumentado en %s!",
+
+	magichit = "Magia salvaje - Prob. golpe",
+	magichit_desc = "Avisa cuando la probabilidad de golpe de un tanque se ve reducida por Magia salvaje.",
+	magichit_you = "¡Magia salvaje - Prob. golpe reducida en TI!",
+	magichit_other = "¡Magia salvaje - Prob. golpe reducida en %s!",
+
+	magicthreat = "Magia salvaje - Amenaza",
+	magicthreat_desc = "Avisa cuando generas más amenaza por Magia salvaje.",
+	magicthreat_you = "¡Magia salvaje - Amenaza generada aumentada!",
+
+	buffet = "Sacudida Arcana (Arcane Buffet)",
+	buffet_desc = "Muestra una barra de tiempo para Sacudida Arcana.",
+
+	enrage_warning = "¡Enfurecer en breve!",
+	enrage_message = "¡10% - Enfurecido!",
+	enrage_trigger = "¡Sathrovarr induce a Kalecgos a un estado de ira enloquecida!",
+
+	strike = "Golpe corruptor (Corrupting Strike)",
+	strike_desc = "Avisa quién tiene Golpe corruptor.",
+	strike_message = "%s: Golpe corruptor",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
-	engage_trigger = "Aggh!! No longer will I be a slave to Malygos! Challenge me and you will be destroyed!",
+	engage_trigger = "으아!! 난 이제 말리고스의 노예가 아니다! 덤벼라, 끝장을 내주마!",
 	wipe_bar = "재생성 시간",
 
 	portal = "차원문",
 	portal_desc = "공허 폭발의 재사용 대기시간에 대해 알립니다.",
-	portal_bar = "다음 차원문",
+	portal_bar = "다음 차원문 (%d)",
 	portal_message = "약 5초이내 차원문!",
 
 	realm = "정신 세계",
 	realm_desc = "정신 세계에 들어간 플레이어를 알립니다.",
-	realm_message = "정신 세계: %s (%d)",
+	realm_message = "정신 세계: %s (%d 파티)",
 
 	curse = "무한한 고통의 저주",
 	curse_desc = "무한한 고통의 저주에 걸린 플레이어를 알립니다.",
@@ -89,10 +140,10 @@ L:RegisterTranslations("koKR", function() return {
 	magichealing_desc = "당신이 마법 폭주에 의해 힐량이 증가할때 알려줍니다.",
 	magichealing_you = "마법 폭주 - 힐량 증가!",
 
-	magiccast = "마법 폭주 (시전시간 증가)",
-	magiccast_desc = "힐러가 마법 폭주에 의해 시전시간이 증가할때 알려줍니다.",
-	magiccast_you = "마법 폭주 - 당신은 시전시간 증가!",
-	magiccast_other = "마법 폭주 - %s 시전시간 증가!",
+	magiccast = "마법 폭주 (시전시간 지연)",
+	magiccast_desc = "힐러가 마법 폭주에 의해 시전시간이 지연될때 알려줍니다.",
+	magiccast_you = "마법 폭주 - 당신은 시전시간 지연!",
+	magiccast_other = "마법 폭주 - %s 시전시간 지연!",
 
 	magichit = "마법 폭주 (적중률 감소)",
 	magichit_desc = "탱커가 마법 폭주에 의해 적중률이 감소할때 알려줍니다.",
@@ -103,14 +154,16 @@ L:RegisterTranslations("koKR", function() return {
 	magicthreat_desc = "당신이 마법 폭주에 의해 위협수준이 증가할때 알려줍니다.",
 	magicthreat_you = "마법 폭주 - 위협 생성 증가!",
 
-	spectral_realm = "정신 세계",
-
 	buffet = "비전 강타",
 	buffet_desc = "비전 강타의 타이머 바를 표시합니다.",
 
 	enrage_warning = "곧 격노!",
 	enrage_message = "10% - 격노!",
 	enrage_trigger = "사스로바르가 칼렉고스를 억제할 수 없는 분노의 소용돌이에 빠뜨립니다!",
+
+	strike = "타락의 일격",
+	strike_desc = "타락의 일격에 걸린 플레이어를 알립니다.",
+	strike_message = "%s: 타락의 일격",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -118,69 +171,71 @@ L:RegisterTranslations("frFR", function() return {
 	wipe_bar = "Réapparition",
 
 	portal = "Portail",
-	portal_desc = "Préviens quand le temps de recharge de la Déflagration spectrale est terminé.",
-	portal_bar = "Prochain portail",
-	portal_message = "Portail probable dans 5 sec. !",
+	portal_desc = "Prévient quand le temps de recharge de la Déflagration spectrale est terminé.",
+	portal_bar = "Prochain portail (%d)",
+	portal_message = "Portail probable dans 5 sec. !",
 
 	realm = "Royaume spectral",
-	realm_desc = "Préviens quand un joueur est dans le Royaume spectral.",
-	realm_message = "Royaume spectral : %s (Groupe %d)",
+	realm_desc = "Prévient quand un joueur est dans le Royaume spectral.",
+	realm_message = "Royaume spectral : %s (Groupe %d)",
 
 	curse = "Malédiction d'agonie infinie",
-	curse_desc = "Préviens quand un joueur subit les effets de la Malédiction d'agonie infinie.",
-	curse_bar = "Malédiction : %s",
+	curse_desc = "Prévient quand un joueur subit les effets de la Malédiction d'agonie infinie.",
+	curse_bar = "Malédiction : %s",
 
 	magichealing = "Magie sauvage (Soins prodigués augmentés)",
 	magichealing_desc = "Préviens quand les effets de vos soins sont augmentés par la Magie sauvage.",
-	magichealing_you = "Magie sauvage - Effets des soins augmentés !",
+	magichealing_you = "Magie sauvage - Effets des soins augmentés !",
 
 	magiccast = "Magie sauvage (Temps d'incantation augmenté)",
 	magiccast_desc = "Préviens quand un soigneur a son temps d'incantation augmenté par la Magie sauvage.",
-	magiccast_you = "Magie sauvage - Temps d'incantation augmenté pour VOUS !",
-	magiccast_other = "Magie sauvage - Temps d'incantation augmenté pour %s !",
+	magiccast_you = "Magie sauvage - Temps d'incantation augmenté pour VOUS !",
+	magiccast_other = "Magie sauvage - Temps d'incantation augmenté pour %s !",
 
 	magichit = "Magie sauvage (Chances de toucher réduites)",
 	magichit_desc = "Préviens quand les chances de toucher d'un tank sont réduites par la Magie sauvage.",
-	magichit_you = "Magie sauvage - Chances de toucher réduites pour VOUS !",
-	magichit_other = "Magie sauvage - Chances de toucher réduites pour %s !",
+	magichit_you = "Magie sauvage - Chances de toucher réduites pour VOUS !",
+	magichit_other = "Magie sauvage - Chances de toucher réduites pour %s !",
 
 	magicthreat = "Magie sauvage (Menace générée augmentée)",
 	magicthreat_desc = "Préviens quand la menace que vous générez est augmentée par la Magie sauvage.",
-	magicthreat_you = "Magie sauvage - Menace générée augmentée !",
-
-	spectral_realm = "Royaume spectral",
+	magicthreat_you = "Magie sauvage - Menace générée augmentée !",
 
 	buffet = "Rafale des arcanes",
 	buffet_desc = "Affiche une barre temporelle pour la Rafale des arcanes.",
 
-	enrage_warning = "Enrager imminent !",
-	enrage_message = "10% - Enragé !",
-	enrage_trigger = "Sathrovarr drives Kalecgos into a crazed rage!", -- à traduire
+	enrage_warning = "Enrager imminent !",
+	enrage_message = "10% - Enragé !",
+	enrage_trigger = "Sathrovarr déchaîne la rage de Kalecgos !",
+
+	strike = "Frappe corruptrice",
+	strike_desc = "Prévient quand quelqu'un subit les effets de la Frappe corruptrice.",
+	strike_message = "%s : Frappe corruptrice",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	engage_trigger = "啊！我不再是马里苟斯的奴隶了！来吧，你将会被彻底毁灭！",-- not confirmed on Simp-Chinese client.
+	engage_trigger = "啊！我不再是玛利苟斯的奴隶了！所有挑战我的人都要被消灭！",
 	wipe_bar = "重置计时器",
 
 	portal = "传送",
-	portal_desc = "当鬼魂冲击冷却发出警报。",--Spectral Blast
-	portal_bar = "<下一传送>",
+	portal_desc = "当灵魂冲击冷却时发出警报。",
+	portal_bar = "<下一传送：%d>",
 	portal_message = "5秒后，可能发动传送！",
 
-	realm = "鬼魂领域",--Spectral Realm
-	realm_desc = "当队友在鬼魂领域中发出警报.",
-	realm_message = "鬼魂领域：>%s<！（%d 小队）",
+	realm = "灵魂世界",
+	realm_desc = "当玩家在灵魂世界中发出警报.",
+	realm_message = "灵魂世界：>%s<！（%d 小队）",
 
-	curse = "无边苦痛诅咒",--Curse of Boundless Agony
-	curse_desc = "当队友受到无边苦痛诅咒时发出警报。",
+	curse = "无边苦痛诅咒",
+	curse_desc = "当玩家受到无边苦痛诅咒时发出警报。",
 	curse_bar = "<诅咒：%s>",
 
-	magichealing = "狂野魔法（治疗加成）",--Wild Magic
-	magichealing_desc = "当你从狂野魔法中获得治疗加成发出警报。",
+	magichealing = "狂野魔法（治疗加成）",
+	magichealing_desc = "当你从狂野魔法中获得治疗加成时发出警报。",
 	magichealing_you = "狂野魔法 - 治疗效果加成！",
 
 	magiccast = "狂野魔法（施法时间延长）",
-	magiccast_desc = "当治疗从狂野魔法延长施法时间发出警报。",
+	magiccast_desc = "当治疗从狂野魔法延长施法时间时发出警报。",
 	magiccast_you = "狂野魔法 - 施法时间延长：>你<！",
 	magiccast_other = "狂野魔法 - 施法时间延长：>%s<！",
 
@@ -193,14 +248,16 @@ L:RegisterTranslations("zhCN", function() return {
 	magicthreat_desc = "当你受到狂野魔法增加仇恨时发出警报。",
 	magicthreat_you = "狂野魔法 - 增加仇恨！",
 
-	spectral_realm = "鬼魂领域",
-
 	buffet = "奥术打击",
 	buffet_desc = "显示奥术打击记时条。",
 
 	enrage_warning = "即将狂暴！",
 	enrage_message = "10% - 狂暴！",
-	enrage_trigger = "Sathrovarr drives Kalecgos into a crazed rage!",-- not confirmed on Simp-Chinese client.
+	enrage_trigger = "萨索瓦尔将卡雷苟斯逼得狂暴不已！",-- not confirmed (flashbang my eyes)
+
+	strike = "堕落打击",--Corrupting Strike
+	strike_desc = "当玩家受到堕落打击时发出警报。",
+	strike_message = "堕落打击：>%s<！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -208,44 +265,46 @@ L:RegisterTranslations("zhTW", function() return {
 	wipe_bar = "重生計時",
 
 	portal = "傳送門",
-	portal_desc = "當鬼靈衝擊冷卻結束時警示。",
-	portal_bar = "下一次傳送門",
-	portal_message = "傳送門於 5 秒內可能出現！",
+	portal_desc = "當鬼靈衝擊冷卻結束時發出警報",
+	portal_bar = "<下一次傳送門 (%d)>",
+	portal_message = "約 5 秒內出現傳送門!",
 
 	realm = "鬼靈國度",
-	realm_desc = "提示你誰進入了鬼靈國度。",
-	realm_message = "鬼靈國度：[%s] - 小隊 %d！",
+	realm_desc = "提示你誰進入了鬼靈國度",
+	realm_message = "鬼靈國度: [%s] - 小隊 %d!",
 
 	curse = "無盡痛苦詛咒",
-	curse_desc = "提示你誰受到了無盡痛苦詛咒。",
-	curse_bar = "無盡痛苦詛咒：[%s]",
+	curse_desc = "提示你誰受到了無盡痛苦詛咒",
+	curse_bar = "<無盡痛苦詛咒: [%s]>",
 
-	magichealing = "野性魔法(治療加成)",
-	magichealing_desc = "當你獲得野性魔法(治療加成)時提示。",
-	magichealing_you = "野性魔法 - 治療效果加成！",
+	magichealing = "野性魔法 (治療加成)",
+	magichealing_desc = "當你獲得野性魔法 (治療加成) 時提示",
+	magichealing_you = "野性魔法 - 治療效果加成!",
 
-	magiccast = "野性魔法(施法時間延長)",
-	magiccast_desc = "當治療職受到野性魔法(施法時間延長)時警示。",
-	magiccast_you = "野性魔法 - 你的施法時間延長！",
-	magiccast_other = "野性魔法 - 施法時間延長：[%s]",
+	magiccast = "野性魔法 (施法時間延長)",
+	magiccast_desc = "當治療職受到野性魔法 (施法時間延長) 時提示",
+	magiccast_you = "野性魔法 - 你的施法時間延長!",
+	magiccast_other = "野性魔法 - 施法時間延長: [%s]",
 
-	magichit = "野性魔法(命中下降)",
-	magichit_desc = "當坦克受到野性魔法(命中下降)時警示。",
-	magichit_you = "野性魔法 - 你的命中率下降！",
-	magichit_other = "野性魔法 - 命中率下降：[%s]",
+	magichit = "野性魔法 (命中下降)",
+	magichit_desc = "當坦克受到野性魔法 (命中下降) 時提示",
+	magichit_you = "野性魔法 - 你的命中率下降!",
+	magichit_other = "野性魔法 - 命中率下降: [%s]",
 
-	magicthreat = "野性魔法(仇恨增加)",
-	magicthreat_desc = "當你獲得野性魔法(仇恨增加)時警示。",
-	magicthreat_you = "野性魔法 - 你的仇恨值增加！",
-
-	spectral_realm = "鬼靈國度",
+	magicthreat = "野性魔法 (仇恨增加)",
+	magicthreat_desc = "當你獲得野性魔法 (仇恨增加) 時提示",
+	magicthreat_you = "野性魔法 - 你的仇恨值增加!",
 
 	buffet = "秘法之擊",
 	buffet_desc = "顯示秘法之擊計時條",
 
-	enrage_warning = "即將狂怒！",
-	enrage_message = "10% - 狂怒狀態！",
+	enrage_warning = "即將狂怒!",
+	enrage_message = "10% - 狂怒狀態!",
 	enrage_trigger = "塞斯諾瓦將卡雷苟斯逼入了瘋狂的暴怒中!",
+
+	strike = "腐蝕之擊",
+	strike_desc = "警報誰受到腐蝕之擊",
+	strike_message = "腐蝕之擊: [%s]",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -254,7 +313,7 @@ L:RegisterTranslations("deDE", function() return {
 
 	portal = "Portal",
 	portal_desc = "Warnt wann der Spektralschlag cooldown endet.",
-	portal_bar = "Nächstes Portal",
+	portal_bar = "Nächstes Portal (%d)",
 	portal_message = "Mögliches Portal in 5 Sekunden!",
 
 	realm = "Spektralreich",
@@ -283,14 +342,16 @@ L:RegisterTranslations("deDE", function() return {
 	magicthreat_desc = "Sagt dir wenn du erhöhte Agro durch Wilde Magie bekommst.",
 	magicthreat_you = "Wilde Magie - Agro Generierung erhöht!",
 
-	spectral_realm = "Spektralreich",
-
 	buffet = "Arkanpuffer",
 	buffet_desc = "Zeigt den Arkanpuffer Zeitbalken.",
 
 	enrage_warning = "Wütend bald!",
 	enrage_message = "10% - Wütend!",
 	enrage_trigger = "Sathrovarr treibt Kalecgos in eine wahnsinnige Wut!",
+
+	strike = "Stoß der Verderbnis",
+	strike_desc = "Warnt wer Stoß der Verderbnis bekommt.",
+	strike_message = "%s: Stoß der Verderbnis",
 } end )
 
 ----------------------------------
@@ -300,8 +361,8 @@ L:RegisterTranslations("deDE", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = { boss, sath }
-mod.toggleoptions = {"portal", "buffet", "realm", "curse", -1, "magichealing", "magiccast", "magichit", "magicthreat", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 66538 $"):sub(12, -3))
+mod.toggleoptions = {"portal", "buffet", "realm", "curse", "strike", -1, "magichealing", "magiccast", "magichit", "magicthreat", "enrage", "proximity", "bosskill"}
+mod.revision = tonumber(("$Revision: 72337 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -309,7 +370,6 @@ mod.proximitySilent = true
 --      Initialization      --
 ------------------------------
 
-local temp = true --remove sometime
 function mod:OnEnable()
 	self:RegisterEvent("UNIT_HEALTH")
 	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
@@ -317,16 +377,17 @@ function mod:OnEnable()
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 
 	self:AddSyncListener("SPELL_AURA_APPLIED", 46021, "KalecgosRealm", 1)
+	self:AddSyncListener("SPELL_CAST_SUCCESS", 45029, "KalecgosStrike", 1)
 	self:AddSyncListener("SPELL_AURA_APPLIED", 45032, 45034, "KalecgosCurse", 1)
 	self:AddSyncListener("SPELL_AURA_APPLIED", 45018, "KaleBuffet", 1)
 	self:AddSyncListener("SPELL_AURA_APPLIED_DOSE", 45018, "KaleBuffet", 1)
 	self:AddSyncListener("SPELL_AURA_REMOVED", 45032, 45034, "KaleCurseRemv", 1)
 
 	self:AddCombatListener("SPELL_AURA_APPLIED", "WildMagic", 44978, 45001, 45002, 45006)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "Deaths")
 
 	self:RegisterEvent("BigWigs_RecvSync")
-	self:Throttle(3, "KalecgosMagicCast", "KalecgosMagicHit", "KaleBuffet")
+	self:Throttle(3, "KalecgosMagicCast", "KalecgosMagicHit", "KaleBuffet", "KalecgosStrike")
 	self:Throttle(0, "KalecgosCurse", "KaleCurseRemv")
 	self:Throttle(19, "KalecgosRealm")
 
@@ -335,21 +396,20 @@ function mod:OnEnable()
 		self:Bar(L["wipe_bar"], 30, 44670)
 		wipe = nil
 	end
-	if temp then
-		BigWigs:Print("Portal warnings were recently moved to a new addon, BigWigs_KalecgosPortals (files.wowace.com), it will show a box with people in the portal, please test it. :)")
-		temp = nil
-	end
+	counter = 1
 end
 
 ------------------------------
 --      Event Handlers      --
 ------------------------------
 
+
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L["engage_trigger"] then
 		wipe = true
+		counter = 1
 		if db.portal then
-			self:Bar(L["portal_bar"], 20, 46021)
+			self:Bar(L["portal_bar"]:format(counter), 20, 46021)
 			self:DelayedMessage(15, L["portal_message"], "Urgent", nil, "Alert")
 		end
 		self:TriggerEvent("BigWigs_ShowProximity", self)
@@ -358,7 +418,7 @@ end
 
 function mod:WildMagic(player, spellId)
 	if spellId == 44978 and player == pName and db.magichealing then -- Wild Magic - Healing done by spells and effects increased by 100%.
-		self:Message(L["magichealing_you"], "Attention", true, "Long", nil, spellId)
+		self:LocalMessage(L["magichealing_you"], "Attention", spellId, "Long")
 	elseif spellId == 45001 then -- Wild Magic - Casting time increased by 100%.
 		if self:IsPlayerHealer(player) then
 			self:Sync("KalecgosMagicCast", player)
@@ -368,19 +428,26 @@ function mod:WildMagic(player, spellId)
 			self:Sync("KalecgosMagicHit", player)
 		end
 	elseif spellId == 45006 and player == pName and db.magicthreat then -- Wild Magic - Increases threat generated by 100%.
-		self:Message(L["magicthreat_you"], "Personal", true, "Long", nil, spellId)
+		self:LocalMessage(L["magicthreat_you"], "Personal", spellId, "Long")
+	end
+end
+
+function mod:Deaths(unit)
+	if unit == sath then
+		self:GenericBossDeath(boss)
 	end
 end
 
 function mod:BigWigs_RecvSync(sync, rest, nick)
 	if sync == "KalecgosRealm" and rest then
 		if db.portal then
-			self:Bar(L["portal_bar"], 20, 46021)
+			counter = counter + 1
+			self:Bar(L["portal_bar"]:format(counter), 20, 46021)
 			self:DelayedMessage(15, L["portal_message"], "Urgent", nil, "Alert")
 		end
 		if db.realm then
 			local groupNo = self:GetGroupNumber(rest)
-			self:Message(fmt(L["realm_message"], rest, groupNo), "Urgent", nil, "Alert", nil, 44866)
+			self:IfMessage(fmt(L["realm_message"], rest, groupNo), "Urgent", 44866, "Alert")
 		end
 	elseif sync == "KalecgosCurse" and rest and db.curse then
 		self:Bar(fmt(L["curse_bar"], rest), 30, 45032)
@@ -391,18 +458,26 @@ function mod:BigWigs_RecvSync(sync, rest, nick)
 	elseif sync == "KalecgosMagicCast" and rest and db.magiccast then
 		local other = fmt(L["magiccast_other"], rest)
 		if rest == pName then
-			self:Message(L["magiccast_you"], "Positive", true, "Long", nil, 45001)
-			self:Message(other, "Attention", nil, nil, true)
+			self:LocalMessage(L["magiccast_you"], "Positive", 45001, "Long")
+			self:WideMessage(other)
 		else
-			self:Message(other, "Attention", nil, nil, nil, 45001)
+			self:IfMessage(other, "Attention", 45001)
 		end
 	elseif sync == "KalecgosMagicHit" and rest and db.magichit then
 		local other = fmt(L["magichit_other"], rest)
 		if rest == pName then
-			self:Message(L["magichit_you"], "Personal", true, "Long", nil, 45002)
-			self:Message(other, "Attention", nil, nil, true)
+			self:LocalMessage(L["magichit_you"], "Personal", 45002, "Long")
+			self:WideMessage(other)
 		else
-			self:Message(other, "Attention", nil, nil, nil, 45002)
+			self:IfMessage(other, "Attention", 45002)
+		end
+	elseif sync == "KalecgosStrike" and rest and db.strike then
+		local msg = fmt(L["strike_message"], rest)
+		if rest == boss then
+			self:IfMessage(msg, "Urgent", 45029)
+		else
+			self:IfMessage(msg, "Urgent", 45029)
+			self:Bar(msg, 3, 45029)
 		end
 	end
 end
@@ -423,7 +498,7 @@ end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if db.enrage and msg == L["enrage_trigger"] then
-		self:Message(L["enrage_message"], "Important", nil, nil, nil, 44806)
+		self:IfMessage(L["enrage_message"], "Important", 44806)
 	end
 end
 
@@ -432,9 +507,9 @@ end
 --	Paladins without Righteous Fury are healers
 --	Druids are counted as healers if they have a mana bar and are not Moonkin
 --	Priests are counted as healers if they aren't in Shadowform
-local sfID = GetSpellInfo and GetSpellInfo(15473) --Shadowform
-local mkID = GetSpellInfo and GetSpellInfo(24905) --Moonkin
-local rfID = GetSpellInfo and GetSpellInfo(25780) --Righteous Fury
+local sfID = GetSpellInfo(15473) --Shadowform
+local mkID = GetSpellInfo(24905) --Moonkin
+local rfID = GetSpellInfo(25780) --Righteous Fury
 
 local function hasBuff(player, buff)
 	local i = 1

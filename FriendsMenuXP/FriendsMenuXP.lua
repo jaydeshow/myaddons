@@ -33,7 +33,8 @@ end
 
 --function hooked to "RaidGroupButton_ShowMenu"
 function FriendsMenuXP_ShowRaidDropdown()
-	local name = UnitName(this.unit);
+	local name, server = UnitName(this.unit);
+	if(server and server~="") then name = name.."-"..server; end
 	local connected = UnitIsConnected(this.unit);
 	if(InCombatLockdown()) then
 		FriendsMenuXP_Show(FriendsMenuXP, name, connected, nil, nil, "RAID");
@@ -155,6 +156,9 @@ function FriendsMenuXP_OnEvent(event, arg1)
 			FriendsMenuXP:Hide();
 		end
 		--FriendsMenuXPUpdateFrame:SetScript("OnUpdate", FriendsMenuXP_OnUpdate);
+		if(RaidGroupButton1 and RaidGroupButton1:GetAttribute("type")~="target") then
+			FriendsMenuXP_FixRaidGroupButton();
+		end;
 	elseif(event=="ADDON_LOADED") then -- hook the raid button click.
 		if(arg1=="Blizzard_RaidUI") then
 			hooksecurefunc("RaidGroupButton_ShowMenu", FriendsMenuXP_ShowRaidDropdown);	
@@ -168,20 +172,24 @@ function FriendsMenuXP_OnEvent(event, arg1)
 
 			end)
 
---			SetOrHookScript(getglobal("RaidFrame"), "OnShow", function () 
---				for i=1,40 do 
---					local raidbutton = getglobal("RaidGroupButton"..i);
---					if(raidbutton and raidbutton.unit) then
---						raidbutton:SetAttribute("type", "target");
---						raidbutton:SetAttribute("unit", raidbutton.unit);
---					end
---				end
---			end)
+			FriendsMenuXP_FixRaidGroupButton();
 		end
 	end
 end
 
 local TimeSinceLastUpdate = 0;
+
+function FriendsMenuXP_FixRaidGroupButton()
+	if(not InCombatLockdown()) then
+		for i=1,40 do 
+			local raidbutton = getglobal("RaidGroupButton"..i);
+			if(raidbutton and raidbutton.unit) then
+				raidbutton:SetAttribute("type", "target");
+				raidbutton:SetAttribute("unit", raidbutton.unit);
+			end
+		end
+	end
+end
 
 function FriendsMenuXP_OnUpdate(elapsed)
 	TimeSinceLastUpdate = TimeSinceLastUpdate + elapsed; 

@@ -45,6 +45,9 @@ elseif locale == "zhTW" then
 		["Delay"] = "延遲",
 		["With this option enabled, automatic resurrection accept is delayed."] = "當提示出現後延遲後自動接受復活",
 		["Accepting resurrect in %s..."] = "%s後自動接受復活",
+		["Delay Time"] = "延遲時間",
+		["Set the time, in seconds, to wait before automatically accepting resurrections."] = "設置在自動復活前所等待的秒數。",
+		["Ignore Battle Resurrections"] = "忽略戰鬥復活",
 	}
 elseif locale == "zhCN" then
 	L = {

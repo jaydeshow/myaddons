@@ -1,11 +1,13 @@
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("oRAOCoolDown")
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 ----------------------------
 --      Localization      --
@@ -43,8 +45,8 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("deDE", function() return {
 	["Cooldowns"] = "Cooldowns",
-	["Optional/CoolDown"] = "Wahlweise/CoolDown",
-	["Options for the cooldown monitor."] = "Optionen f\195\188r den CoolDown-Monitor.",
+	["Optional/CoolDown"] = "Wahlweise/Cooldown",
+	["Options for the cooldown monitor."] = "Optionen für den Cooldown-Monitor.",
 } end)
 
 ----------------------------------
@@ -73,28 +75,25 @@ mod.consoleOptions = {
 --      Initialization      --
 ------------------------------
 
-function mod:OnEnable()
-	self.enabled = nil
-
-	self:RegisterEvent("oRA_LeftRaid")
-	self:RegisterEvent("oRA_JoinedRaid")
-	self:RegisterEvent("oRA_BarTexture")
-
-	self:OnProfileEnable()
-end
-
-function mod:OnDisable()
-	self:DisableMonitor()
-end
-
-function mod:OnProfileEnable()
-	if self.db.profile.cooldowns then	-- was moved to .realm 2007-07-14
-		self.db.profile.cooldowns = nil
-	end
-
+function mod:OnRegister()
 	if not self.db.realm.cooldowns then
 		self.db.realm.cooldowns = {}
 	end
+end
+
+function mod:OnEnable()
+	oRA:MakeDraggableWindow(L["Cooldowns"], "oRACoolDownFrame", mod.consoleOptions, self.db.profile)
+
+	self:RegisterEvent("oRA_BarTexture")
+	self:RegisterEvent("oRA_JoinedRaid")
+	self:RegisterCheck("CD", "oRA_CoolDown")
+end
+
+function mod:OnDisable()
+	if self.frame then
+		self.frame:Hide()
+	end
+	self:StopAllCoolDowns()
 end
 
 ------------------------
@@ -102,12 +101,6 @@ end
 ------------------------
 
 function mod:oRA_JoinedRaid()
-	if not self.enabled then
-		self.enabled = true
-		oRA:MakeDraggableWindow(L["Cooldowns"], "oRACoolDownFrame", mod.consoleOptions, self.db.profile)
-		self:RegisterCheck("CD", "oRA_CoolDown")
-	end
-
 	local t = time()
 	for i = 1, GetNumRaidMembers() do
 		local n = GetRaidRosterInfo(i)
@@ -118,36 +111,24 @@ function mod:oRA_JoinedRaid()
 	end
 end
 
-function mod:oRA_LeftRaid()
-	self:DisableMonitor()
-end
-
 function mod:oRA_CoolDown(msg, author)
 	local what, length = select(3, msg:find("^CD (%d+) (%d+)"))
 	if author and what and tonumber(length) then
-		self.db.realm.cooldowns[author] = time() + tonumber(length)*60
-		self:StartCoolDown(author, tonumber(length)*60)
+		local l = tonumber(length) * 60
+		self.db.realm.cooldowns[author] = time() + l
+		self:StartCoolDown(author, l)
 	end
 end
 
 function mod:oRA_BarTexture(texture)
 	for key, val in pairs(self.db.realm.cooldowns) do
-		self:SetCandyBarTexture("oRAOCoolDown "..key, media:Fetch('statusbar', texture))
+		self:SetCandyBarTexture("oRAOCoolDown "..key, media:Fetch("statusbar", texture))
 	end
 end
 
 -------------------------
 --  Utility Functions  --
 -------------------------
-
-function mod:DisableMonitor()
-	self.enabled = nil
-	if self.frame then
-		self.frame:Hide()
-	end
-	self:StopAllCoolDowns()
-	self:UnregisterCheck("CD")
-end
 
 function mod:StartAllCoolDowns()
 	local t = time()
@@ -169,8 +150,12 @@ function mod:StopAllCoolDowns()
 	end
 end
 
+local function sizeFrame(height)
+	mod.frame:SetHeight(28 + height)
+end
+
 function mod:StartCoolDown(player, time)
-	if not self.enabled or self.db.profile.hidden then return end
+	if self.db.profile.hidden then return end
 	if not UnitInRaid(player) then return end
 	local id = "oRAOCoolDown " .. player
 	local class = select(2, UnitClass(player))
@@ -178,7 +163,7 @@ function mod:StartCoolDown(player, time)
 
 	self:RegisterCandyBarGroup("oRAOCoolDownGroup")
 	self:SetCandyBarGroupPoint("oRAOCoolDownGroup", "TOP", self.frame.title, "BOTTOM", 0, -5)
-	self:SetCandyBarOnSizeGroup("oRAOCoolDownGroup", self.OnSizeGroup, self)
+	self:SetCandyBarOnSizeGroup("oRAOCoolDownGroup", sizeFrame)
 	self:RegisterCandyBar(id, time, player, nil, r, g, b)
 	self:RegisterCandyBarWithGroup(id, "oRAOCoolDownGroup")
 	self:SetCandyBarWidth(id, 150)
@@ -197,7 +182,8 @@ end
 
 function mod:OnCreateFrame()	-- called by core window handler
 	self.frame:SetWidth(175)
-	self:OnSizeGroup(0)
+	sizeFrame(0)
+	self.frame:Hide()
 end
 
 function mod:OnToggleFrame(v)  -- called by core window handler
@@ -209,17 +195,10 @@ function mod:OnToggleFrame(v)  -- called by core window handler
 end
 
 function mod:OnSetScale(scale)  -- called by core window handler
-	if self.frame then
-		for key, val in pairs(self.db.realm.cooldowns) do
-			if self:IsCandyBarRegistered("oRAOCoolDown "..key) then
-				self:SetCandyBarScale("oRAOCoolDown "..key, scale)
-			end
+	for key, val in pairs(self.db.realm.cooldowns) do
+		if self:IsCandyBarRegistered("oRAOCoolDown "..key) then
+			self:SetCandyBarScale("oRAOCoolDown "..key, scale)
 		end
 	end
-	self.db.profile.scale = scale
-end
-
-function mod:OnSizeGroup(height)
-	self.frame:SetHeight(28 + height)
 end
 

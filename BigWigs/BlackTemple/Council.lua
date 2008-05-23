@@ -69,34 +69,84 @@ L:RegisterTranslations("enUS", function() return {
 	blizzard_message = "Blizzard on YOU!",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger1 = "¿Deseáis ponerme a prueba?",
+	engage_trigger2 = "¡Lengua común... qué lenguaje tan ordinario! ¡Bandal!",
+	engage_trigger3 = "Tengo cosas mejores que hacer...",
+	engage_trigger4 = "¡Huid o morid!",
+
+	vanish = "Esfumarse (Vanish)",
+	vanish_desc = "Contadores estimados para Esfumarse.",
+	vanish_message = "Veras: ¡Esfumarse! Vuelve en ~30seg",
+	vanish_warning = "Esfumarse finalizado - ¡%s ha vuelto!",
+	vanish_bar = "Veras entra en sigilo",
+
+	immune = "Aviso Inmunidad",
+	immune_desc = "Avisar cuando Malande se vuelve inmune a hechizos y ataques cuerpo a cuerpo.",
+	immune_message = "Malande: ¡%s Inmune durante 15 seg!",
+	immune_bar = "¡%s Inmune!",
+
+	spell = "Hechizo",
+	melee = "Cuerpo a cuerpo",
+
+	shield = "Escudo reflectante (Reflective Shield)",
+	shield_desc = "Avisar cuando Malande gana Escudo reflectante.",
+	shield_message = "¡Escudo reflectante en Malande!",
+
+	poison = "Veneno mortal (Deadly Poison)",
+	poison_desc = "Avisar Veneno mortal sobre jugadores.",
+	poison_other = "¡%s tiene Veneno mortal!",
+	poison_you = "¡Veneno mortal en TI!",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner icono de banda en jugadores con Veneno mortal.",
+
+	circle = "Círculo de sanación (Circle of Healing)",
+	circle_desc = "Avisar cuando Malande empiece a lanzar Círculo de sanación.",
+	circle_trigger = "Lady Malande empieza a lanzar Círculo de sanación.",
+	circle_message = "¡Lanzando Círculo de sanación!",
+	circle_heal_message = "¡Se ha curado! - Prox. en ~20seg",
+	circle_fail_message = "¡%s Interrumpido! - Prox. en ~12seg",
+	circle_bar = "~Círculo de sanación",
+
+	res = "Aura de Resistencia cromática (Chromatic Resistance Aura)",
+	res_desc = "Avisar cuando Gathios el Despedazador gana Aura de Resistencia cromática.",
+	res_message = "Gathios: ¡Resistencia durante 30 seg!",
+	res_bar = "Aura de Resistencia cromática",
+
+	blizzard = "Ventisca (Blizzard)",
+	blizzard_desc = "Avisar cuando estás en una Ventisca.",
+	blizzard_message = "¡Ventisca en TI!",
+} end )
+
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger1 = "Vous voulez me tester ?",
-	engage_trigger2 = "Allons donc... quelle grossièreté. Bandal !", -- à vérifier
-	engage_trigger3 = "J'ai mieux à faire...", -- à vérifier
-	engage_trigger4 = "Fuyez ou mourez !", -- à vérifier
+	engage_trigger2 = "Allons donc... quelle grossièreté. Bandal !",
+	engage_trigger3 = "J'ai mieux à faire...",
+	engage_trigger4 = "Fuyez ou mourez !",
 
 	vanish = "Disparition",
 	vanish_desc = "Délais estimés concernant la Disparition de Veras.",
-	vanish_message = "Veras : Disparu ! De retour dans ~30 sec.",
-	vanish_warning = "Fin de la Disparition - %s est de retour !",
+	vanish_message = "Veras : disparu ! De retour dans ~30 sec.",
+	vanish_warning = "Fin de la Disparition - %s est de retour !",
 	vanish_bar = "Veras camouflé",
 
 	immune = "Immunité",
 	immune_desc = "Préviens quand Malande devient insensible aux sorts ou aux attaques de mêlée.",
-	immune_message = "Malande : insensible %s pendant 15 sec. !",
-	immune_bar = "Insensible %s !",
+	immune_message = "Malande : insensible %s pendant 15 sec. !",
+	immune_bar = "Insensible %s !",
 
 	spell = "aux sorts",
 	melee = "en mêlée",
 
 	shield = "Bouclier réflecteur",
 	shield_desc = "Préviens quand Malande gagne son Bouclier réflecteur.",
-	shield_message = "Bouclier réflecteur sur Malande !",
+	shield_message = "Bouclier réflecteur sur Malande !",
 
 	poison = "Poison mortel",
 	poison_desc = "Préviens quand un joueur subit les effets du Poison mortel.",
-	poison_other = "%s a le Poison mortel !",
-	poison_you = "Poison mortel sur VOUS !",
+	poison_other = "%s a le Poison mortel !",
+	poison_you = "Poison mortel sur VOUS !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par le Poison mortel (nécessite d'être promu ou mieux).",
@@ -104,19 +154,19 @@ L:RegisterTranslations("frFR", function() return {
 	circle = "Cercle de soins",
 	circle_desc = "Préviens quand Malande commence à lancer son Cercle de soins.",
 	circle_trigger = "Dame Malande commence à lancer Cercle de soins.",
-	circle_message = "Cercle de soins en incantation !",
-	circle_heal_message = "Soigné ! - Prochain dans ~20 sec.",
-	circle_fail_message = "Interrompu par %s ! - Prochain dans ~12 sec.",
-	circle_bar = "~Cooldown Cercle de soins",
+	circle_message = "Cercle de soins en incantation !",
+	circle_heal_message = "Soigné ! - Prochain dans ~20 sec.",
+	circle_fail_message = "Interrompu par %s ! - Prochain dans ~12 sec.",
+	circle_bar = "~Recharge Cercle de soins",
 
 	res = "Aura de résistance",
 	res_desc = "Préviens quand Gathios le Briseur gagne son Aura de résistance chromatique.",
-	res_message = "Gathios : Résistance pendant 30 sec. !",
+	res_message = "Gathios : résistance pendant 30 sec. !",
 	res_bar = "Aura de résistance",
 
 	blizzard = "Blizzard sur vous",
 	blizzard_desc = "Préviens quand vous êtes dans un Blizzard.",
-	blizzard_message = "Blizzard sur VOUS !",
+	blizzard_message = "Blizzard sur VOUS !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -126,8 +176,8 @@ L:RegisterTranslations("koKR", function() return {
 	engage_trigger4 = "꺼져! 안그러면 죽는다!",
 
 	vanish = "소멸",
-	vanish_desc = "베라스의 소멸에 대한 예상 타이머입니다.",
-	vanish_message = "베라스: 소멸! 30초이내 출현",
+	vanish_desc = "소멸에 대한 예측 타이머입니다.",
+	vanish_message = "베라스: 소멸! 약 30초 이내 출현",
 	vanish_warning = "소멸 종료 - %s 출현!",
 	vanish_bar = "베라스 은신",
 
@@ -145,11 +195,11 @@ L:RegisterTranslations("koKR", function() return {
 
 	poison = "맹독",
 	poison_desc = "맹독에 걸린 플레이어를 알립니다.",
-	poison_other = "%s에 맹독!",
-	poison_you = "당신에 맹독!",
+	poison_other = "%s 맹독!",
+	poison_you = "당신은 맹독!",
 
 	icon = "전술 표시",
-	icon_desc = "맹독에 걸린 플레이어에 전술 표시를 지정합니다 (승급자 이상 권한 필요).",
+	icon_desc = "맹독에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 
 	circle = "치유의 마법진",
 	circle_desc = "말란데가 치유의 마법진 시전 시 알립니다.",
@@ -164,9 +214,9 @@ L:RegisterTranslations("koKR", function() return {
 	res_message = "가디오스: 30초간 저항!",
 	res_bar = "저항의 오라",
 
-	blizzard = "당신에 눈보라",
-	blizzard_desc = "당신이 눈보라에 걸렸을 때 알립니다.",
-	blizzard_message = "당신에 눈보라!",
+	blizzard = "자신의 눈보라",
+	blizzard_desc = "자신이 눈보라에 걸렸을 때 알립니다.",
+	blizzard_message = "당신은 눈보라!",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -177,13 +227,13 @@ L:RegisterTranslations("zhCN", function() return {
 
 	vanish = "消失",
 	vanish_desc = "消失记时条。",
-	vanish_message = "维尔莱斯：消失！ 30秒后重新出现",
-	vanish_warning = "消失结束 - %s 出现！",
+	vanish_message = "维尔莱斯 - 消失！30秒后重新出现。",
+	vanish_warning = "消失结束 - %s出现！",
 	vanish_bar = "<消失>",
 
 	immune = "免疫警报",
 	immune_desc = "当玛兰德免疫法术或近战攻击时发出警报。",
-	immune_message = "女公爵玛兰德： 15秒 %s免疫！",
+	immune_message = "女公爵玛兰德 - %s免疫！15秒。",
 	immune_bar = "<%s免疫>",
 
 	spell = "法术",
@@ -199,23 +249,23 @@ L:RegisterTranslations("zhCN", function() return {
 	poison_you = ">你< 致命药膏！",
 
 	icon = "团队标记",
-	icon_desc = "为中致命药膏的玩家打上团队标记。(需要权限)",
+	icon_desc = "为中致命药膏的玩家打上团队标记。（需要权限）",
 
 	circle = "治疗之环",
 	circle_desc = "当玛兰德开始施放治疗之环时发出警报。",
 	circle_trigger = "女公爵玛兰德开始施放治疗之环。$",
 	circle_message = "正在施放 治疗之环！",
-	circle_heal_message = "治疗 成功！ ~20秒后再次发动",
-	circle_fail_message = "%s 打断！~12秒后再次发动 治疗之环",
+	circle_heal_message = "治疗成功！约20秒后，再次发动。",
+	circle_fail_message = "%s 打断！约12秒后，再次发动治疗之环。",
 	circle_bar = "<治疗之环 冷却>",
 
 	res = "多彩抗性光环",
 	res_desc = "当击碎者加西奥斯获得多彩抗性光环时发出警报。",
-	res_message = "击碎者加西奥斯： 多彩抗性光环 30秒！",
+	res_message = "击碎者加西奥斯 - 多彩抗性光环，30秒！",
 	res_bar = "<多彩抗性光环>",
 
 	blizzard = "暴风雪",
-	blizzard_desc = "你中了暴风雪发出警报。",
+	blizzard_desc = "当你中了暴风雪发出警报。",
 	blizzard_message = "暴风雪：>你<！",
 } end )
 
@@ -223,7 +273,7 @@ L:RegisterTranslations("zhTW", function() return {
 	engage_trigger1 = "你們要考驗我嗎?",
 	engage_trigger2 = "通用語...多麼粗俗的語言。",
 	engage_trigger3 = "我還有更重要的事情要做……",
-	engage_trigger4 = "Flee, or die!",
+	engage_trigger4 = "不逃走就受死吧!",
 
 	vanish = "消失",
 	vanish_desc = "消失計時條.",
@@ -245,11 +295,11 @@ L:RegisterTranslations("zhTW", function() return {
 
 	poison = "致命毒藥",
 	poison_desc = "當玩家受到致命毒藥時警告",
-	poison_other = "致命毒藥：[%s]",
+	poison_other = "致命毒藥: [%s]",
 	poison_you = "致命毒藥在你身上!",
 
 	icon = "團隊標記",
-	icon_desc = "為中了致命毒藥的隊員打上團隊標記.",
+	icon_desc = "為中了致命毒藥的隊員打上團隊標記 (需要權限)",
 
 	circle = "治療之環",
 	circle_desc = "當瑪蘭黛女士開始施放治療之環時警告",
@@ -257,16 +307,16 @@ L:RegisterTranslations("zhTW", function() return {
 	circle_message = "正在施放治療之環!",
 	circle_heal_message = "被治療了! - 下一次 ~20秒",
 	circle_fail_message = "%s 中斷了! - 下一次 ~12秒",
-	circle_bar = "~治療之環冷卻",
+	circle_bar = "<治療之環冷卻>",
 
 	res = "多重抗性光環",
 	res_desc = "警告當粉碎者高希歐獲得了多重抗性光環的效果。",
 	res_message = "粉碎者高希歐: 多重抗性光環 30 秒!",
 	res_bar = "多重抗性光環",
 
-	--blizzard = "Blizzard on You",
-	--blizzard_desc = "Warn when you are in a Blizzard.",
-	--blizzard_message = "Blizzard on YOU!",
+	blizzard = "暴風雪",
+	blizzard_desc = "當你中了暴風雪時發出警報",
+	blizzard_message = "暴風雪: [你]!",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -327,7 +377,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = {malande, gathios, zerevor, veras}
 mod.toggleoptions = {"immune", "res", "shield", -1, "vanish", "circle", -1, "poison", "icon", -1, "blizzard", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 66278 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 74408 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -422,22 +472,22 @@ function mod:HealingStart(_, spellID, source)
 end
 
 function mod:Healed(_, spellID, source)
-	if source == malande then
+	if source == malande  and db.circle then
 		self:IfMessage(L["circle_heal_message"], "Urgent", spellID)
 		self:Bar(L["circle_bar"], 20, spellID)
 	end
 end
 
 function mod:HealingFailed(_, _, source, spellID)
-	if spellID and spellID == 41455 then
+	if spellID == 41455 and db.circle then
 		self:Message(fmt(L["circle_fail_message"], source), "Urgent")
 		self:Bar(L["circle_bar"], 12, spellID)
 	end
 end
 
 function mod:Blizzard(player)
-	if player == pName then
-		self:IfMessage(L["blizzard_message"], "Personal", 41482, "Alarm")
+	if player == pName and db.blizzard then
+		self:LocalMessage(L["blizzard_message"], "Personal", 41482, "Alarm")
 	end
 end
 

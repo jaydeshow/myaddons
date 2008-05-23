@@ -1,8 +1,7 @@
 ******************************************
-MapNotes (Fan's Update) README v4.14.20300
+MapNotes (Fan's Update) README v4.15.20400
 ******************************************
 
-Released: January 31, 2008
 Maintainer: Telic <telic@hotmail.co.uk>
 Original code: Sir.Bender <Meog on WoW Forums>
 Contributors:
@@ -484,6 +483,26 @@ Change Log
 **********
 
 =======================================
+Changes in v4.15.20400 from v4.15.20300
+=======================================
+
+- toc update
+
+
+
+
+
+=======================================
+Changes in v4.15.20300 from v4.14.20200
+=======================================
+
+- fixed a bug when creating QuickNotes
+
+- added some self repair capabilities for databases with errors from previous bugs
+
+
+
+=======================================
 Changes in v4.14.20300 from v4.12.20200
 =======================================
 
@@ -497,9 +516,6 @@ i.e. making MapNotes from MobMap icons on AlphaMap
 2.) <CTRL>-Click on the AlphaMap MobMap icon to create a permanent MapNote (Also active as Mininote)
 
 3.) <CTRL>-<SHIFT>-Click on the AlphaMap MobMap icon to create a permanent MapNote NOT active as a Mininote
-
-
-
 
 
 

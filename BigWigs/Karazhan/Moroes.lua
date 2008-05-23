@@ -35,23 +35,23 @@ L:RegisterTranslations("enUS", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Hum. Des visiteurs imprévus. Il va falloir se préparer.",
-	engage_message = "Moroes engagé - Disparition dans ~35 sec. !",
+	engage_message = "Moroes engagé - Disparition dans ~35 sec. !",
 
 	vanish = "Disparition",
-	vanish_desc = "Préviens quand Moroes est susceptible de disparaître.",
-	vanish_message = "Disparu ! Prochain dans ~35 sec. !",
-	vanish_warning = "Disparition imminente !",
-	vanish_bar = "~Cooldown Disparition",
+	vanish_desc = "Prévient quand Moroes est susceptible de disparaître.",
+	vanish_message = "Disparu ! Prochain dans ~35 sec. !",
+	vanish_warning = "Disparition imminente !",
+	vanish_bar = "~Recharge Disparition",
 
 	garrote = "Garrot",
-	garrote_desc = "Préviens quand un joueur subit les effets du Garrot.",
-	garrote_message = "Garrot : %s",
+	garrote_desc = "Prévient quand un joueur subit les effets du Garrot.",
+	garrote_message = "Garrot : %s",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par le Garrot (nécessite d'être promu ou mieux).",
 
-	enrage_message = "Enragé !",
-	enrage_warning = "Bientôt enragé !",
+	enrage_message = "Enrager !",
+	enrage_warning = "Enrager imminent !",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
@@ -88,11 +88,11 @@ L:RegisterTranslations("koKR", function() return {
 	vanish_bar = "~소멸 대기시간",
 
 	garrote = "목조르기",
-	garrote_desc = "목조르기에 걸린 사람을 알립니다.",
+	garrote_desc = "목조르기에 걸린 플레이어를 알립니다.",
 	garrote_message = "목조르기: %s",
 
 	icon = "전술 표시",
-	icon_desc = "목조르기에 걸린 사람에게 전술 표시를 지정합니다 (승급자 이상의 권한 필요).",
+	icon_desc = "목조르기에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상의 권한 필요)",
 
 	enrage_message = "격노!",
 	enrage_warning = "잠시 후 격노!",
@@ -100,20 +100,20 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "啊，不速之客。我得准备一下……",
-	engage_message = "%s 激活 - ~35 秒后将 消失！",
+	engage_message = "%s 激活！约35秒后，消失！",
 
 	vanish = "消失",
-	vanish_desc = "消失 预计冷却计时条。",
-	vanish_message = "消失！ 35 秒后再次消失！",
+	vanish_desc = "消失预计冷却计时条。",
+	vanish_message = "消失！约35秒后，再次消失！",
 	vanish_warning = "即将 消失！",
 	vanish_bar = "<消失 冷却>",
 
 	garrote = "锁喉",
-	garrote_desc = "当队员受到锁喉时发送警告。",
+	garrote_desc = "当玩家受到锁喉时发送警告。",
 	garrote_message = "锁喉：>%s<！",
 
 	icon = "标记",
-	icon_desc = "当队员受到锁喉时标上团队标记。(需要权限)",
+	icon_desc = "当队员受到锁喉时标上团队标记。（需要权限）",
 
 	enrage_message = "激怒！",
 	enrage_warning = "即将 激怒！",
@@ -141,24 +141,24 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "Mm, visitantes inesperados. Hay que hacer preparativos...",
-	engage_message = "%s Activado - Vanish en ~35sec!",
+	engage_trigger = "Mm, visita inesperada. Hay que hacer los preparativos...",
+	engage_message = "%s Activado - Desvanecer en ~35sec!",
 
-	vanish = "Vanish",
-	vanish_desc = "Timers estimados para el Vanish.",
-	vanish_message = "Vanished! Siguiente en ~35sec!",
-	vanish_warning = "Vanish Pronto!",
-	vanish_bar = "~Enfriamiento de Vanish",
+	vanish = "Desvanecer (Vanish)",
+	vanish_desc = "Temporizadores estimados para cuando Moroes se desvanece.",
+	vanish_message = "¡Desvanecer! ¡Siguiente en ~35sec!",
+	vanish_warning = "¡Desvanecer en breve!",
+	vanish_bar = "~Desvanecer",
 
 	garrote = "Garrote",
-	garrote_desc = "Notifica que jugador ha sido afectado por Garrote.",
+	garrote_desc = "Notifica qué jugador ha sido afectado por Garrote.",
 	garrote_message = "Garrote: %s",
 
 	icon = "Icono",
-	icon_desc = "Pone un icono de Raid en el jugador afectado por Garrote(requiere promoted o mas alto).",
+	icon_desc = "Pone un icono de banda en el jugador afectado por Garrote. (Requiere derechos de banda).",
 
-	enrage_message = "Enfurecido!",
-	enrage_warning = "Enfurecimiento Pronto!",
+	enrage_message = "¡Enfurecido!",
+	enrage_warning = "¡Enfurecimiento en breve!",
 } end)
 
 ----------------------------------
@@ -169,7 +169,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"vanish", "enrage", -1, "garrote", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 65937 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

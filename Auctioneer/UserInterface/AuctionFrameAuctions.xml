@@ -2,7 +2,7 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
 <!--
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: AuctionFrameAuctions.xml 1531 2007-02-23 14:19:16Z luke1410 $
 
 	License:

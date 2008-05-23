@@ -15,6 +15,7 @@ L["Pick Lock"] = "Schloss knacken"
 L["GatherMate Pin Options"] = "GatherMate Pin Optionen"
 L["Delete: "] = "Löschen: "
 L["Add this location to Cartographer_Waypoints"] = "Diese Stelle zu Cartographer_Waypoints hinzufügen"
+L["Add this location to TomTom waypoints"] = "Diese Stelle zu TomTom hinzufügen"
 
 L["Always show"] = "Immer anzeigen"
 L["Only with profession"] = "Nur mit Beruf"
@@ -41,30 +42,47 @@ L["Show Gas Clouds"] = "Gas Wolken anzeigen"
 L["Toggle showing gas clouds."] = "Anzeige der Gas Wolken ein-/ausschalten."
 L["Show Treasure Nodes"] = "Schatz Knoten anzeigen"
 L["Toggle showing treasure nodes."] = "Anzeige der Schatz Knoten ein-/ausschalten."
-L["Icons"] = "Icons"
-L["Control various aspects of node icons on both the World Map and Minimap."] = "Kontrolliert verschiedene Einstellungen der Icons auf der Weltkarte und der Minikarte."
-L["Show Minimap Icons"] = "Minikarten Icons anzeigen"
-L["Toggle showing Minimap icons."] = "Anzeige der Minikarten Icons ein-/ausschalten."
-L["Show World Map Icons"] = "Weltkarten Icons anzeigen"
-L["Toggle showing World Map icons."] = "Anzeige der Weltkarten Icons ein-/aussschalten."
-L["Icon Scale"] = "Icongröße"
-L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."] = "Größe der Icons auf der Weltkarte und der Minikarte verändern."
-L["Icon Alpha"] = "Icontransparenz"
-L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."] = "Tranzparenz der Icons verändern. Nur Weltkarte."
+L["Icons"] = "Symbole"
+L["Control various aspects of node icons on both the World Map and Minimap."] = "Kontrolliert verschiedene Einstellungen der Symbole auf der Weltkarte und der Minikarte."
+L["Show Minimap Icons"] = "Minikarten-Symbole"
+L["Toggle showing Minimap icons."] = "Anzeige der Symbole auf der Minikarten ein-/ausschalten."
+L["Show World Map Icons"] = "Weltkarten-Symbole"
+L["Toggle showing World Map icons."] = "Anzeige der Symbole auf der Weltkarten ein-/aussschalten."
+L["Keybind to toggle Minimap Icons"] = "Tastaturbelegung für das ein-/ausschalten der Minikarten-Symbole"
+L["Icon Scale"] = "Symbolgröße"
+L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."] = "Größe der Symbole auf der Weltkarte und der Minikarte verändern."
+L["Icon Alpha"] = "Symboltransparenz"
+L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."] = "Tranzparenz der Symbole verändern. Nur Weltkarte."
 L["Miscellaneous"] = "Verschiedenes"
 -- Cleanup subtree
-L["Cleanup_Desc"] = "Nach einer gewissen Zeit kann Deine Datenbank 'zugemüllt' sein. 'Datenbank aufräumen' sucht nach Knoten eines Berufs die nah zusammen liegen und ermittelt ob diese zu einem einzigen Knoten zusammengefasst werden können."
+L["Database Maintenance"] = "Datenbankwartung"
+L["Cleanup_Desc"] = "Nach einer gewissen Zeit kann Deine Datenbank 'zugemüllt' sein. 'Datenbank aufräumen' sucht nach Knoten eines Berufs die nah zusammenliegen und ermittelt ob diese zu einem einzelnen Knoten zusammengefasst werden können."
 L["Cleanup radius"] = "Aufräumradius"
-L["CLEANUP_RADIUS_DESC"] = "Radius (in Meter) in dem doppelte Knoten gelöscht werden sollen. Standard ist |cFFFFFFFF50m|r für Gas extrahieren und |cFFFFFFFF15m|r für alles andere. Diese Einstellungen werden auch benutzt wenn Knoten hinzugefügt werden."
+L["CLEANUP_RADIUS_DESC"] = "Radius (in Meter) in dem doppelte Knoten gelöscht werden sollen. Standard ist |cffffd20050m|r für Gas extrahieren und |cffffd20015m|r für alles andere. Diese Einstellungen werden auch benutzt wenn Knoten hinzugefügt werden."
 L["Cleanup Database"] = "Datenbank aufräumen"
 L["Cleanup your database by removing duplicates. This takes a few moments, be patient."] = "Räumt die Datenbank auf indem doppelte Einträge gelöscht werden. Der Vorgang dauert ein paar Momente." 
 L["Processing "] = "In Bearbeitung: "
 L["Cleanup Complete."] = "Aufräumen abgeschlossen."
+L["Delete Specific Nodes"] = "Spezielle Knoten löschen"
+L["DELETE_SPECIFIC_DESC"] = "Alle ausgewählten Knoten von der ausgewählten Zone entfernen. Du mußt 'Datenbank sperren' deaktivieren damit dies funktioniert."
+L["Select Database"] = "Datenbank auswählen"
+L["Select Node"] = "Knoten auswählen"
+L["Select Zone"] = "Zone auswählen"
+L["Delete"] = "Löschen"
+L["Delete selected node from selected zone"] = "Löscht ausgewählte Knoten von der ausgewählten Zone"
+L["Are you sure you want to delete all of the selected node from the selected zone?"] = "Bist Du sicher, daß Du alle ausgewählten Knoten aus der ausgewählten Zone löschen willst?"
+L["Delete Entire Database"] = "Komplette Datenbank löschen"
+L["DELETE_ENTIRE_DESC"] = "Dies ignoriert 'Datenbank sperren' und löscht alle Knoten von allen Zonen der ausgewählten Datenbank."
+L["Are you sure you want to delete all nodes from this database?"] = "Bist Du sicher, daß Du alle Knoten von dieser Datenbank löschen willst?"
+L["Database Locking"] = "Datenbank sperren"
+L["DATABASE_LOCKING_DESC"] = "'Datenbank sperren' erlaubt Dir einen Datenbankstand einzufrieren. Wenn eine Datenbank gesperrt ist, ist es nicht mehr möglich Daten hinzuzufügen, zu löschen oder diese zu ändern. Dies gilt auch für aufräumen und importieren."
+L["Database locking"] = "Datenbank sperren"
+
 -- Tracking options
 L["Tracking Circle Color"] = "Anzeigekreis Farbe"
 L["Color of the tracking circle."] = "Farbe der Anzeigekreise."
 L["Tracking Distance"] = "Anzeigeentfernung"
-L["The distance in yards to a node before it turns into a tracking circle"] = "Die Entfernung in Meter zu einem Knoten, bevor dieser zu einem Kreis wird"
+L["The distance in yards to a node before it turns into a tracking circle"] = "Die Entfernung (in Meter) zu einem Knoten, bevor dieser zu einem Kreis wird"
 L["Show Tracking Circle"] = "Anzeigekreis anzeigen"
 L["Toggle showing the tracking circle."] = "Anzeige der Anzeigekreise ein-/ausschalten."
 L["Show Nodes on Minimap Border"] = "Zeige Knotenpunkte am Rand der Minikarte"
@@ -90,11 +108,11 @@ L["Fishes"] = "Fische"
 L["Mineral Veins"] = "Erzvorkommen"
 L["Herb Bushes"] = "Pflanzen"
 L["Treasure"] = "Schatz"
-L["Filter_Desc"] = "Ausgewählte Typen werden auf der Weltkarte und auf der Minikarte angezeigt. Nicht ausgewählte werden trotzdem in der Datenbank gespeichert."               
+L["Filter_Desc"] = "Ausgewählte Knotentypen werden auf der Weltkarte und auf der Minikarte angezeigt. Nicht ausgewählte werden trotzdem in der Datenbank gespeichert."               
 ---- Import tree
 L["Import Data"] = "Daten importieren"
 L["Import GatherMateData"] = "Importieren"
-L["Importing_Desc"] = "Die Importfunktion ermöglicht, daß GatherMate auch Daten von anderen Quellen anzeigt, als nur die selbst entdeckten Stellen. Nach dem Import sollte unter Umständen die Datenbank aufgeräumt werden."
+L["Importing_Desc"] = "Die Importfunktion ermöglicht, daß GatherMate auch Daten von anderen Quellen anzeigt und nicht nur die selbst entdeckten Stellen. Nach einem Import sollte unter Umständen die Datenbank aufgeräumt werden."
 L["Load GatherMateData and import the data to your database."] = "GatherMateData laden und in Deine Datenbank importieren."
 L["GatherMateData has been imported."] = "GatherMateData wurde importiert."
 L["Failed to load GatherMateData due to "] = "Fehler beim Laden von GatherMateData aufgrund von "
@@ -117,34 +135,36 @@ L["Class:"] = "Klasse:"
 L["Profiles"] = "Profile"
 L["Manage Profiles"] = "Profile verwalten"
 L["You can change the active database profile of GatherMate, so you can have different settings and filters for every character, which will allow a very flexible configuration for everyones needs."] = "Hier kannst Du die aktiven Datenbankprofile von GatherMate ändern, damit Du verschiedene Einstellungen und Filter für jeden Charakter erstellen kannst. Dies erlaubt eine flexible Konfiguration für jeden Bedarf." 
-L["Reset the current profile back to its default values, in case your configuration is broken, or you simply want to start over."] = "Setzt das momentane Profil auf Standardwerte zurück, für den Fall das mit der Konfiguration etwas schief lief oder weil du einfach neu starten willst."
+L["Reset the current profile back to its default values, in case your configuration is broken, or you simply want to start over."] = "Setzt das momentane Profil auf Standardwerte zurück, für den Fall das mit der Konfiguration etwas schief lief oder weil Du einfach neu starten willst."
 L["You can create a new profile by entering a new name in the editbox, or choosing one of the already exisiting profiles."] = "Du kannst ein neues Profil erstellen, indem Du einen neuen Namen in der Eingabebox 'Neu' eingibst. Oder wähle ein vorhandenes Profil aus."
 L["Reset Profile"] = "Profil zurücksetzen"
 L["Reset the current profile to the default"] = "Das aktuelle Profil auf Standard zurücksetzen."
 L["New"] = "Neu"
 L["Create a new empty profile."] = "Ein neues leeren Profil erstellen."
 L["Current"] = "Momentan"
-L["Select one of your currently available profiles."] = "Wählt ein momentanes Profil aus."
-L["Copy the settings from one existing profile into the currently active profile."] = "Kopiere die Einstellungen von einem vorhandenen Profil in das momentan aktive Profil."
+L["Select one of your currently available profiles."] = "Wählt ein momentan verfügbares Profil aus."
+L["Copy the settings from one existing profile into the currently active profile."] = "Kopiert die Einstellungen von einem vorhandenen Profil in das momentan aktive Profil."
 L["Copy From"] = "Kopiere von"
 L["Copy the settings from another profile into the active profile."] = "Kopiert Einstellungen von einem anderen Profil in das momentan aktive Profil."
-L["Delete existing and unused profiles from the database to save space, and cleanup the GatherMate SavedVariables file."] = "Lösche vorhandene und unbenutzte Profile aus der Datenbank um Platz zu sparen und um die GatherMate SavedVariables Datei 'sauber' zu halten."
+L["Delete existing and unused profiles from the database to save space, and cleanup the GatherMate SavedVariables file."] = "Löscht vorhandene und unbenutzte Profile aus der Datenbank um Platz zu sparen und um die GatherMate SavedVariables Datei 'sauber' zu halten."
 L["Delete a Profile"] = "Profil löschen"
 L["Deletes a profile from the database."] = "Löscht ein Profil aus der Datenbank."
-L["Are you sure you want to delete the selected profile?"] = "Willst du wirklich das ausgewählte Profil löschen?"
+L["Are you sure you want to delete the selected profile?"] = "Willst Du wirklich das ausgewählte Profil löschen?"
 -- FAQ
 L["FAQ"] = "FAQ"
 L["Frequently Asked Questions"] = "Häufig gestellte Fragen (FAQ)"
 L["FAQ_TEXT"] = [[
-|cFFFFFFFF
+|cffffd200
 Ich habe gerade GatherMate installiert, sehe aber keine Knoten auf meiner Karte. Was mache ich falsch?
 |r
 GatherMate kommt standardmäßig ohne Daten. Wenn Du Kräuter, Erze, Gase oder Fische sammelst fügt GatherMate diese umgehend der Karte zu und aktualisiert die Karte. Überprüft auch Deine 'Anzeige Einstellungen'.
-|cFFFFFFFF
+
+|cffffd200
 Ich sehe Knoten auf der Weltkarte, aber nicht auf der Minikarte! Was mache ich falsch?
 |r
 |cffffff78Minimap Button Bag|r (und möglicherweise ähnliche Addons) löscht gerne alle Buttons. Deaktiviere solche Addons.
-|cFFFFFFFF
+
+|cffffd200
 Wie oder woher kann ich bereits vorhandene Daten bekommen?
 |r
 Du kannst vorhandene Daten auf folgende Arten importieren:
@@ -153,14 +173,16 @@ Du kannst vorhandene Daten auf folgende Arten importieren:
 
 2. |cffffff78GatherMate_CartImport|r - Dieses Addon erlaubt Dir den Import vorhandener Datenbanken aus |cffffff78Cartographer_<Profession>|r Modulen in GatherMate. Damit dies funktioniert müssen die |cffffff78Cartographer_<Profession>|r Module und GatherMate_CartImport geladen und aktiviert sein.
 
-Beachte, dass das Importieren von Daten in GatherMate kein automatisierter Prozess ist. Du mußt in 'Daten importieren' den Button 'Importieren' klicken. 
+Beachte, daß das Importieren von Daten in GatherMate kein automatisierter Prozess ist. Du mußt in 'Daten importieren' den Button 'Importieren' klicken. 
 
 Dies unterscheidet sich von |cffffff78Cartographer_Data|r dahingehend, daß dem Benutzer die Wahl gegeben wird zu entscheiden wie und wann er seine Daten ändern will. |cffffff78Cartographer_Data|r überschreibt einfach Deine vorhandene Datenbank ohne Warnung und zerstört alle von Dir neu gefundenen Knoten.
-|cFFFFFFFF
+
+|cffffd200
 Könnt ihr Standorte für Postfächer, Flugmeister und dergleichen unterstützen?
 |r
 Die Antwort ist nein. Wie auch immer, andere Addon Autoren können Addons oder Module für diese Zwecke machen. Das Basis GatherMate Addon wird dies nicht tun.
-|cFFFFFFFF
+
+|cffffd200
 Ich hab einen Fehler gefunden! Wo kann ich das melden?
 |r
 Du kannst Fehler oder Vorschläge hier melden: |cffffff78http://www.wowace.com/forums/index.php?topic=10990.0|r
@@ -168,10 +190,11 @@ Du kannst Fehler oder Vorschläge hier melden: |cffffff78http://www.wowace.com/f
 Alternativ kannst Du uns hier finden: |cffffff78irc://irc.freenode.org/wowace|r
 
 Wenn Du einen Fehler meldest, gib bitte folgendes an: |cffffff78Hinweise (am besten Schritt für Schritt)|r mit der man den Fehler reproduzieren kann, eine |cffffff78Fehlermeldung|r (z.B. von BugGrabber/BugSack), die |cffffff78Revisionsnummer|r von GatherMate die das Problem verursacht hat und ob du den |cffffff78englischen Client oder einem anderen (z.B.: deDE)|r benutzt.
-|cFFFFFFFF
+
+|cffffd200
 Wer hat dieses coole Addon geschrieben?
 |r
-Kagaro, Xinhuan, Nevcairiel and Ammo
+Kagaro, Xinhuan, Nevcairiel und Ammo
 ]]
 
 
@@ -194,6 +217,7 @@ NL["Highland Mixed School"] = "Mischschwarm des Hochlands"
 NL["Pure Water"] = "Reines Wasser"
 NL["Bluefish School"] = "Blauflossenschwarm"
 NL["Feltail School"] = "Teufelsfinnenschwarm"
+NL["Brackish Mixed School"] = "Fischschwarm in Brackwasser"
 NL["Mudfish School"] = "Matschflosserschwarm"
 NL["School of Darter"] = "Stachelflosserschwarm"
 NL["Sporefish School"] = "Sporenfischschwarm"

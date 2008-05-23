@@ -38,6 +38,7 @@ AtlasLoot_ExtraText = {
     };
     BlackrockSpireLower = {
         "";
+        "";
         GREY..INDENT..AL["Trash Mobs"];
         GREY..INDENT..AL["Dungeon 1/2 Sets"];
     };
@@ -228,6 +229,7 @@ AtlasLoot_ExtraText = {
     };
     SunwellPlateau = {
         "";
+        GREY..INDENT..AL["SP Patterns/Plans"];
         GREY..INDENT..AL["Trash Mobs"];
     };
     TheSunkenTemple = {

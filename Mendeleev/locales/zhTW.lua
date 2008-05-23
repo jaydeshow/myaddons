@@ -2,21 +2,24 @@ local L = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 
 L:RegisterTranslations("zhTW", function() return {
 	["Toggle sets."] = "切換顯示",
-	["Toggle sets from showing information in the tooltip."] = "切換在提示訊息中所要顯示的資訊。",
-	["Toggle sets in the %s category."] = "切換在提示訊息中顯示%s種類的資訊。",
-	["Toggle %s."] = "切換顯示%s。",
+	["Toggle sets from showing information in the tooltip."] = "切換在提示訊息中所要顯示的資訊",
+	["Toggle sets in the %s category."] = "切換在提示訊息中顯示 %s 種類的資訊",
+	["Toggle %s."] = "切換顯示 %s",
 	["Show item level"] = "顯示物品等級",
-	["Toggle showing the item level in the tooltip."] = "切換在提示訊息中顯示物品等級。",
+	["Toggle showing the item level in the tooltip."] = "切換在提示訊息中顯示物品等級",
 	["Show item identifier"] = "顯示物品編號",
-	["Toggle showing the item identifier in the tooltip."] = "切換在提示訊息中顯示物品編號。",
+	["Toggle showing the item identifier in the tooltip."] = "切換在提示訊息中顯示物品編號",
+	["Show item count"] = "顯示物品數量",
+	["Toggle showing the item count in the tooltip."] = "切換在提示訊息中顯示物品數量",
 	["Show stack size"] = "顯示堆疊數量",
-	["Toggle showing the stack size in the tooltip."] = "切換在提示訊息中顯示物品堆疊數量。",
+	["Toggle showing the stack size in the tooltip."] = "切換在提示訊息中顯示物品堆疊數量",
 	["Show 'used in' tree"] = "顯示「使用在」樹狀結構",
-	["Toggle showing the 'used in' tree in the tooltip."] = "切換在提示訊息中顯示「使用在」樹狀結構。",
+	["Toggle showing the 'used in' tree in the tooltip."] = "切換在提示訊息中顯示「使用在」樹狀結構",
 	["Limit 'used in' tree to craftable"] = "限制「使用在」為自己能製作的部分",
-	["Toggle limiting the 'used in' tree to items the char can craft."] = "切換在提示訊息中顯示「使用在」樹狀結構時，只顯示自己會製作的部分。",
+	["Toggle limiting the 'used in' tree to items the char can craft."] = "切換在提示訊息中顯示「使用在」樹狀結構時只顯示自己會製作的部分",
 	["Item ID"] = "物品編號",
 	["iLevel"] = "物品等級",
+	["You have"] = "你有",
 	["Stacksize"] = "堆疊數量",
 
 	["Crafted by"] = "製造",
@@ -71,26 +74,25 @@ L:RegisterTranslations("zhTW", function() return {
 	["Quest"] = "任務",
 	["Crafted"] = "製造",
 
-	["UBRS"] = "高層黑石塔",
-	["LBRS"] = "低層黑石塔",
+	["UBRS"] = "黑石塔上層",
+	["LBRS"] = "黑石塔下層",
 	
 	["Heroic"] = "英雄模式",
 	
 	-- Tier Sets
-	["Tier 1 Set"] = "T1套裝",
-	["Tier 2 Set"] = "T2套裝",
-	["Tier 2.5 Set"] = "T2.5套裝",
-	["Tier 3 Set"] = "T3套裝",
-	["Tier 4 Set"] = "T4套裝",
-	["Tier 5 Set"] = "T5套裝",
-	["Tier 6 Set"] = "T6套裝",
+	["Tier 1 Set"] = "T1 套裝",
+	["Tier 2 Set"] = "T2 套裝",
+	["Tier 2.5 Set"] = "T2.5 套裝",
+	["Tier 3 Set"] = "T3 套裝",
+	["Tier 4 Set"] = "T4 套裝",
+	["Tier 5 Set"] = "T5 套裝",
+	["Tier 6 Set"] = "T6 套裝",
 	
 	-- Arena Sets
-	["Arena - Season 1 Set"] = "競技場套裝1",
-	["Arena - Season 2 Set"] = "競技場套裝2",
-	["Arena - Season 3 Set"] = "競技場套裝3",
+	["Arena - Season 1 Set"] = "競技場 - 第一季套裝",
+	["Arena - Season 2 Set"] = "競技場 - 第二季套裝",
+	["Arena - Season 3 Set"] = "競技場 - 第三季套裝",
 	
-	["Poisons"] = "毒药",
 	["%d%% alc/vol (%d proof)"] = " 濃度%d%% (%d度)",
 	[" (%d tickets)"] = " (%d張票)",
 
@@ -107,5 +109,5 @@ L:RegisterTranslations("zhTW", function() return {
 	
 	["Badge of Justice"] = "正義徽章",
 	["G'eras"] = "吉爾拉斯",
-	["Smith Hauthaa"] = "Smith Hauthaa", -- translate me
+	["Smith Hauthaa"] = "鐵匠荷莎",
 }end)

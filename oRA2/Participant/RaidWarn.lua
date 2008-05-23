@@ -1,4 +1,6 @@
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -45,8 +47,8 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	["Raidwarning"] = "Avertissement du raid",
-	["Options for raid warning."] = "Options concernant l'avertissement du raid.",
+	["Raidwarning"] = "Avertissement raid",
+	["Options for raid warning."] = "Options concernant l'Avertissement raid.",
 	["Participant/RaidWarn"] = "Participant/Alerte raid",
 	["Bossblock"] = "Bloquer BossMods",
 	["Block messages from Bossmods."] = "Bloque les messages provenant des bossmods.",
@@ -54,7 +56,7 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("deDE", function() return {
 	["Raidwarning"] = "Schlachtzugswarnung",
-	["Options for raid warning."] = "Optionen f\195\188r Schlachtzugswarnungen.",
+	["Options for raid warning."] = "Optionen für Schlachtzugswarnungen.",
 	["Participant/RaidWarn"] = "Teilnehmer/Schlachtzugswarnung",
 	["Bossblock"] = "BossMods blockieren",
 	["Block messages from Bossmods."] = "Blockiert Meldungen die von BossMods versendet werden.",

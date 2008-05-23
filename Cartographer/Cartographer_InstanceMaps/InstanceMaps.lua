@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 56068 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 68896 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2007-11-26 15:54:07 -0500 (Mon, 26 Nov 2007) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-04-10 05:40:01 -0400 (Thu, 10 Apr 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-InstanceMaps")
@@ -53,9 +53,10 @@ L:AddTranslations("zhTW", function() return {
 
 L:AddTranslations("zhCN", function() return {
 	["Instance Maps"] = "副本地图",
-	["Module which provides maps of instances."] = "显示副本地图",
+	["Module which provides maps of instances."] = "显示副本地图模块。",
 
 	["Instances"] = "副本",
+	
 	["%d-man"] = "%d人",
 } end)
 

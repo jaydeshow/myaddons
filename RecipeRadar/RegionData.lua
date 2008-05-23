@@ -1,6 +1,6 @@
 
 -- RegionData.lua: all recipes organized by region
--- Auto generated on 10/10/2007 10:09:52 AM
+-- Auto generated on 4/7/2008 11:41:53 PM
 
 RecipeRadar_RegionData = {
 
@@ -9,8 +9,6 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 2,
    MapFile = "Stormwind-City",
-   MapScale = 0.0357058152826809,
-   MapOffset = { x = 0.416209470784797, y = 0.696112606114318 },
    Vendors = {
       {
          Name = RRS("Alexandra Bolero"),
@@ -150,8 +148,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Redridge-Mountains",
-   MapScale = 0.0576702729310808,
-   MapOffset = { x = 0.4946068703075, y = 0.707910346664341 },
    Vendors = {
       {
          Name = RRS("Amy Davenport"),
@@ -192,8 +188,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Arathi-Highlands",
-   MapScale = 0.0956136894957939,
-   MapOffset = { x = 0.475904641171297, y = 0.371602962311 },
    Vendors = {
       {
          Name = RRS("Androd Fadran"),
@@ -284,16 +278,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Nimar the Slayer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.668, y = 0.598 },
-         },
-         Recipes = {
-            { ID = 11166, Type = RRS("Enchanting"), Skill = 200, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Tunkk"),
          Team = "Horde",
          Coordinates = {
@@ -303,46 +287,6 @@ RecipeRadar_RegionData = {
             { ID = 13287, Type = RRS("Leatherworking"), Skill = 165, Cost = 2500 },
          },
       },
-      {
-         Name = RRS("Witherbark Berserker"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.552, y = 0.729 },
-         },
-         Recipes = {
-            { ID = 11166, Type = RRS("Enchanting"), Skill = 200, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Witherbark Headhunter"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.634, y = 0.705 },
-         },
-         Recipes = {
-            { ID = 11166, Type = RRS("Enchanting"), Skill = 200, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Witherbark Shadow Hunter"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.676, y = 0.774 },
-         },
-         Recipes = {
-            { ID = 11166, Type = RRS("Enchanting"), Skill = 200, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Zalas Witherbark"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.691, y = 0.821 },
-         },
-         Recipes = {
-            { ID = 11166, Type = RRS("Enchanting"), Skill = 200, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -350,19 +294,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Azshara",
-   MapScale = 0.13780966875475,
-   MapOffset = { x = 0.552820263570252, y = 0.304005134688413 },
    Vendors = {
-      {
-         Name = RRS("Arkkoran Oracle"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.759, y = 0.406 },
-         },
-         Recipes = {
-            { ID = 15753, Type = RRS("Leatherworking"), Skill = 285, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Blimo Gadgetspring"),
          Team = "Neutral",
@@ -375,16 +307,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Cliff Breaker"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.498, y = 0.816 },
-         },
-         Recipes = {
-            { ID = 15763, Type = RRS("Leatherworking"), Skill = 295, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Jubie Gadgetspring"),
          Team = "Neutral",
          Coordinates = {
@@ -394,37 +316,6 @@ RecipeRadar_RegionData = {
             { ID = 10607, Type = RRS("Engineering"), Skill = 230, Cost = 3600 },
          },
       },
-      {
-         Name = RRS("Legashi Rogue"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.606, y = 0.234 },
-         },
-         Recipes = {
-            { ID = 15728, Type = RRS("Leatherworking"), Skill = 265, Cost = 0 },
-            { ID = 13491, Type = RRS("Alchemy"), Skill = 280, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Son of Arkkoroc"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.727, y = 0.586 },
-         },
-         Recipes = {
-            { ID = 15764, Type = RRS("Leatherworking"), Skill = 295, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Spitelash Siren"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.462, y = 0.507 },
-         },
-         Recipes = {
-            { ID = 16045, Type = RRS("Engineering"), Skill = 270, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -432,8 +323,6 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 2,
    MapFile = "Ironforge",
-   MapScale = 0.0210089355405704,
-   MapOffset = { x = 0.471839106840687, y = 0.548325018116821 },
    Vendors = {
       {
          Name = RRS("Bombus Finespindle"),
@@ -454,9 +343,9 @@ RecipeRadar_RegionData = {
          Recipes = {
             { ID = 18649, Type = RRS("Engineering"), Skill = 150, Cost = 1800 },
             { ID = 7560, Type = RRS("Engineering"), Skill = 125, Cost = 1200 },
-            { ID = 22729, Type = RRS("Engineering"), Skill = 275, Cost = 8000 },
             { ID = 16041, Type = RRS("Engineering"), Skill = 260, Cost = 10000 },
             { ID = 16042, Type = RRS("Engineering"), Skill = 260, Cost = 10000 },
+            { ID = 22729, Type = RRS("Engineering"), Skill = 275, Cost = 8000 },
          },
       },
       {
@@ -522,6 +411,7 @@ RecipeRadar_RegionData = {
          Recipes = {
             { ID = 17201, Type = RRS("Cooking"), Skill = 35, Cost = 200 },
             { ID = 17200, Type = RRS("Cooking"), Skill = 1, Cost = 25 },
+            { ID = 34413, Type = RRS("Cooking"), Skill = 325, Cost = 10000 },
          },
       },
       {
@@ -553,8 +443,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Feralas",
-   MapScale = 0.188859658930913,
-   MapOffset = { x = 0.315896626183074, y = 0.618205784197492 },
    Vendors = {
       {
          Name = RRS("Brienna Starglow"),
@@ -606,7 +494,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Bronk"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.758, y = 0.431 },
+            { x = 0.761, y = 0.433 },
          },
          Recipes = {
             { ID = 9302, Type = RRS("Alchemy"), Skill = 245, Cost = 9000 },
@@ -617,7 +505,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Jangdor Swiftstrider"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.744, y = 0.428 },
+            { x = 0.744, y = 0.429 },
          },
          Recipes = {
             { ID = 7451, Type = RRS("Leatherworking"), Skill = 190, Cost = 2800 },
@@ -630,7 +518,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Sheendra Tallgrass"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.744, y = 0.425 },
+            { x = 0.745, y = 0.427 },
          },
          Recipes = {
             { ID = 13949, Type = RRS("Cooking"), Skill = 275, Cost = 20000 },
@@ -659,6 +547,17 @@ RecipeRadar_RegionData = {
             { ID = 19027, Type = RRS("Engineering"), Skill = 250, Cost = 5000 },
          },
       },
+      {
+         Name = RRS("Galley Chief Alunwea"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.212, y = 0.489 },
+         },
+         Recipes = {
+            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
+         },
+      },
    },
 },
 
@@ -666,20 +565,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Stranglethorn-Vale",
-   MapScale = 0.169482065265764,
-   MapOffset = { x = 0.393902401461122, y = 0.811243585464968 },
    Vendors = {
-      {
-         Name = RRS("Blixrez Goodstitch"),
-         Team = "Neutral",
-         Coordinates = {
-            { x = 0.281, y = 0.771 },
-         },
-         Recipes = {
-            { ID = 5789, Type = RRS("Leatherworking"), Skill = 190, Cost = 2800 },
-            { ID = 5788, Type = RRS("Leatherworking"), Skill = 170, Cost = 600 },
-         },
-      },
       {
          Name = RRS("Corporal Bluth"),
          Team = "Alliance",
@@ -689,6 +575,50 @@ RecipeRadar_RegionData = {
          Recipes = {
             { ID = 12231, Type = RRS("Cooking"), Skill = 175, Cost = 3000 },
             { ID = 12228, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+         },
+      },
+      {
+         Name = RRS("Nerrist"),
+         Team = "Horde",
+         Coordinates = {
+            { x = 0.324, y = 0.287 },
+         },
+         Recipes = {
+            { ID = 3682, Type = RRS("Cooking"), Skill = 130, Cost = 1600 },
+            { ID = 12231, Type = RRS("Cooking"), Skill = 175, Cost = 3000 },
+            { ID = 12228, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+            { ID = 21943, Type = RRS("Jewelcrafting"), Skill = 225, Cost = 6000 },
+         },
+      },
+      {
+         Name = RRS("Uthok"),
+         Team = "Horde",
+         Coordinates = {
+            { x = 0.314, y = 0.282 },
+         },
+         Recipes = {
+            { ID = 16111, Type = RRS("Cooking"), Skill = 225, Cost = 10000 },
+         },
+      },
+      {
+         Name = RRS("Vharr"),
+         Team = "Horde",
+         Coordinates = {
+            { x = 0.322, y = 0.287 },
+         },
+         Recipes = {
+            { ID = 12164, Type = RRS("Blacksmithing"), Skill = 185, Cost = 4400 },
+         },
+      },
+      {
+         Name = RRS("Blixrez Goodstitch"),
+         Team = "Neutral",
+         Coordinates = {
+            { x = 0.281, y = 0.771 },
+         },
+         Recipes = {
+            { ID = 5789, Type = RRS("Leatherworking"), Skill = 190, Cost = 2800 },
+            { ID = 5788, Type = RRS("Leatherworking"), Skill = 170, Cost = 600 },
          },
       },
       {
@@ -715,7 +645,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Glyx Brewright"),
          Team = "Neutral",
          Coordinates = {
-            { x = 0.283, y = 0.771 },
+            { x = 0.281, y = 0.781 },
          },
          Recipes = {
             { ID = 6056, Type = RRS("Alchemy"), Skill = 190, Cost = 2000 },
@@ -800,19 +730,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Nerrist"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.324, y = 0.287 },
-         },
-         Recipes = {
-            { ID = 3682, Type = RRS("Cooking"), Skill = 130, Cost = 1600 },
-            { ID = 12231, Type = RRS("Cooking"), Skill = 175, Cost = 3000 },
-            { ID = 12228, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
-            { ID = 21943, Type = RRS("Jewelcrafting"), Skill = 225, Cost = 6000 },
-         },
-      },
-      {
          Name = RRS("Old Man Heming"),
          Team = "Neutral",
          Coordinates = {
@@ -865,36 +782,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Uthok"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.314, y = 0.282 },
-         },
-         Recipes = {
-            { ID = 16111, Type = RRS("Cooking"), Skill = 225, Cost = 10000 },
-         },
-      },
-      {
-         Name = RRS("Venture Co. Strip Miner"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.399, y = 0.435 },
-         },
-         Recipes = {
-            { ID = 11203, Type = RRS("Enchanting"), Skill = 215, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Vharr"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.322, y = 0.287 },
-         },
-         Recipes = {
-            { ID = 12164, Type = RRS("Blacksmithing"), Skill = 185, Cost = 4400 },
-         },
-      },
-      {
          Name = RRS("Xizk Goodstitch"),
          Team = "Neutral",
          Coordinates = {
@@ -915,6 +802,17 @@ RecipeRadar_RegionData = {
             { ID = 12163, Type = RRS("Blacksmithing"), Skill = 180, Cost = 4400 },
          },
       },
+      {
+         Name = RRS("Galley Chief Steelbelly"),
+         Team = "Neutral",
+         Coordinates = {
+            { x = 0.215, y = 0.692 },
+         },
+         Recipes = {
+            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
+         },
+      },
    },
 },
 
@@ -922,19 +820,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Ashenvale",
-   MapScale = 0.156689639326035,
-   MapOffset = { x = 0.417572824958479, y = 0.331264664004303 },
    Vendors = {
-      {
-         Name = RRS("Crazed Ancient"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.601, y = 0.426 },
-         },
-         Recipes = {
-            { ID = 11151, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Dalria"),
          Team = "Alliance",
@@ -1009,16 +895,6 @@ RecipeRadar_RegionData = {
             { ID = 6369, Type = RRS("Cooking"), Skill = 175, Cost = 2200 },
          },
       },
-      {
-         Name = RRS("Withered Ancient"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.559, y = 0.329 },
-         },
-         Recipes = {
-            { ID = 11151, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -1026,19 +902,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Duskwood",
-   MapScale = 0.0717104329308851,
-   MapOffset = { x = 0.430753666049839, y = 0.753393854649277 },
    Vendors = {
-      {
-         Name = RRS("Defias Enchanter"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.495, y = 0.768 },
-         },
-         Recipes = {
-            { ID = 5773, Type = RRS("Tailoring"), Skill = 150, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Danielle Zipstitch"),
          Team = "Alliance",
@@ -1088,8 +952,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Westfall",
-   MapScale = 0.0929578315775919,
-   MapOffset = { x = 0.37276567530538, y = 0.740778249906901 },
    Vendors = {
       {
          Name = RRS("Defias Profiteer"),
@@ -1134,8 +996,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Loch-Modan",
-   MapScale = 0.0732736002634611,
-   MapOffset = { x = 0.505839410800768, y = 0.545068430895088 },
    Vendors = {
       {
          Name = RRS("Drac Roughcut"),
@@ -1188,8 +1048,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Elwynn-Forest",
-   MapScale = 0.0921971214530567,
-   MapOffset = { x = 0.412106704148796, y = 0.682596505503105 },
    Vendors = {
       {
          Name = RRS("Drake Lindgren"),
@@ -1220,8 +1078,6 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 1,
    MapFile = "Darnassus",
-   MapScale = 0.028762880799918,
-   MapOffset = { x = 0.383921430878916, y = 0.104412862747005 },
    Vendors = {
       {
          Name = RRS("Elynna"),
@@ -1302,59 +1158,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Wetlands",
-   MapScale = 0.10982014528227,
-   MapOffset = { x = 0.463233619619147, y = 0.45186172843485 },
    Vendors = {
-      {
-         Name = RRS("Balgaras the Foul"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.629, y = 0.343 },
-         },
-         Recipes = {
-            { ID = 11150, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Dark Iron Demolitionist"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.607, y = 0.271 },
-         },
-         Recipes = {
-            { ID = 11150, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Dark Iron Dwarf"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.601, y = 0.257 },
-         },
-         Recipes = {
-            { ID = 11150, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Dark Iron Saboteur"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.616, y = 0.311 },
-         },
-         Recipes = {
-            { ID = 11150, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Dark Iron Tunneler"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.591, y = 0.235 },
-         },
-         Recipes = {
-            { ID = 11150, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Fradd Swiftgear"),
          Team = "Alliance",
@@ -1375,16 +1179,6 @@ RecipeRadar_RegionData = {
          Recipes = {
             { ID = 6275, Type = RRS("Tailoring"), Skill = 115, Cost = 800 },
             { ID = 5772, Type = RRS("Tailoring"), Skill = 115, Cost = 500 },
-         },
-      },
-      {
-         Name = RRS("Neal Allen"),
-         Team = "Alliance",
-         Coordinates = {
-            { x = 0.107, y = 0.568 },
-         },
-         Recipes = {
-            { ID = 20970, Type = RRS("Jewelcrafting"), Skill = 120, Cost = 1500 },
          },
       },
       {
@@ -1411,6 +1205,27 @@ RecipeRadar_RegionData = {
             { ID = 7114, Type = RRS("Tailoring"), Skill = 145, Cost = 1000 },
          },
       },
+      {
+         Name = RRS("Neal Allen"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.107, y = 0.568 },
+         },
+         Recipes = {
+            { ID = 20970, Type = RRS("Jewelcrafting"), Skill = 120, Cost = 1500 },
+         },
+      },
+      {
+         Name = RRS("Galley Chief Grace"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.005, y = 0.601 },
+         },
+         Recipes = {
+            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
+         },
+      },
    },
 },
 
@@ -1418,8 +1233,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "The-Hinterlands",
-   MapScale = 0.102253764022772,
-   MapOffset = { x = 0.494717532173482, y = 0.307859985729289 },
    Vendors = {
       {
          Name = RRS("Gigget Zipcoil"),
@@ -1429,16 +1242,6 @@ RecipeRadar_RegionData = {
          },
          Recipes = {
             { ID = 15735, Type = RRS("Leatherworking"), Skill = 270, Cost = 10000 },
-         },
-      },
-      {
-         Name = RRS("Vilebranch Hideskinner"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.604, y = 0.703 },
-         },
-         Recipes = {
-            { ID = 15760, Type = RRS("Leatherworking"), Skill = 290, Cost = 0 },
          },
       },
       {
@@ -1499,8 +1302,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Dun-Morogh",
-   MapScale = 0.130804772531089,
-   MapOffset = { x = 0.405024895907856, y = 0.520750029355957 },
    Vendors = {
       {
          Name = RRS("Gretta Ganter"),
@@ -1519,19 +1320,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Darkshore",
-   MapScale = 0.177990143164461,
-   MapOffset = { x = 0.383831648552676, y = 0.182062077303608 },
    Vendors = {
-      {
-         Name = RRS("Dark Strand Voidcaller"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.562, y = 0.261 },
-         },
-         Recipes = {
-            { ID = 5773, Type = RRS("Tailoring"), Skill = 150, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Heldan Galesong"),
          Team = "Alliance",
@@ -1570,7 +1359,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Valdaron"),
          Team = "Alliance",
          Coordinates = {
-            { x = 0.377, y = 0.411 },
+            { x = 0.381, y = 0.406 },
          },
          Recipes = {
             { ID = 6270, Type = RRS("Tailoring"), Skill = 55, Cost = 200 },
@@ -1587,6 +1376,39 @@ RecipeRadar_RegionData = {
          Recipes = {
          },
       },
+      {
+         Name = RRS("Galley Chief Gathers"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.282, y = 0.501 },
+         },
+         Recipes = {
+            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
+         },
+      },
+      {
+         Name = RRS("Galley Chief Halumvorea"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.303, y = 0.423 },
+         },
+         Recipes = {
+            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
+         },
+      },
+      {
+         Name = RRS("Galley Chief Mariss"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.292, y = 0.196 },
+         },
+         Recipes = {
+            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
+            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
+         },
+      },
    },
 },
 
@@ -1594,59 +1416,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Dustwallow-Marsh",
-   MapScale = 0.14266458410528,
-   MapOffset = { x = 0.490263379771496, y = 0.60461872839386 },
    Vendors = {
-      {
-         Name = RRS("Tidelord Rrurgaz"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.766, y = 0.194 },
-         },
-         Recipes = {
-            { ID = 12718, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Strashaz Serpent Guard"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.769, y = 0.179 },
-         },
-         Recipes = {
-            { ID = 12706, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Strashaz Myrmidon"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.765, y = 0.173 },
-         },
-         Recipes = {
-            { ID = 12718, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Strashaz Warrior"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.767, y = 0.172 },
-         },
-         Recipes = {
-            { ID = 12714, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Theramore Infiltrator"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.396, y = 0.337 },
-         },
-         Recipes = {
-            { ID = 5775, Type = RRS("Tailoring"), Skill = 185, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Helenia Olden"),
          Team = "Alliance",
@@ -1704,8 +1474,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Desolace",
-   MapScale = 0.122184601788891,
-   MapOffset = { x = 0.348731197055062, y = 0.503310798518054 },
    Vendors = {
       {
          Name = RRS("Janet Hommers"),
@@ -1722,7 +1490,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Kireena"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.514, y = 0.537 },
+            { x = 0.51, y = 0.535 },
          },
          Recipes = {
             { ID = 7114, Type = RRS("Tailoring"), Skill = 145, Cost = 1000 },
@@ -1794,9 +1562,18 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Western-Plaguelands",
-   MapScale = 0.114205153455548,
-   MapOffset = { x = 0.441820024717095, y = 0.232165792092432 },
    Vendors = {
+      {
+         Name = RRS("Leonard Porter"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.431, y = 0.843 },
+         },
+         Recipes = {
+            { ID = 15741, Type = RRS("Leatherworking"), Skill = 275, Cost = 10000 },
+            { ID = 15725, Type = RRS("Leatherworking"), Skill = 260, Cost = 10000 },
+         },
+      },
       {
          Name = RRS("Argent Quartermaster Lightspark"),
          Team = "Neutral",
@@ -1817,38 +1594,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Decaying Horror"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.634, y = 0.376 },
-         },
-         Recipes = {
-            { ID = 15771, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-            { ID = 13496, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Foreman Marcrid"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.478, y = 0.337 },
-         },
-         Recipes = {
-            { ID = 12836, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Leonard Porter"),
-         Team = "Alliance",
-         Coordinates = {
-            { x = 0.431, y = 0.843 },
-         },
-         Recipes = {
-            { ID = 15741, Type = RRS("Leatherworking"), Skill = 275, Cost = 10000 },
-            { ID = 15725, Type = RRS("Leatherworking"), Skill = 260, Cost = 10000 },
-         },
-      },
-      {
          Name = RRS("Magnus Frostwake"),
          Team = "Neutral",
          Notes = RRS("Quest"),
@@ -1864,66 +1609,6 @@ RecipeRadar_RegionData = {
             { ID = 12703, Type = RRS("Blacksmithing"), Skill = 295, Cost = 40000 },
          },
       },
-      {
-         Name = RRS("Rotting Behemoth"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.645, y = 0.345 },
-         },
-         Recipes = {
-            { ID = 13496, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Scarlet Cavalier"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.421, y = 0.149 },
-         },
-         Recipes = {
-            { ID = 12707, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Scarlet Smith"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.452, y = 0.132 },
-         },
-         Recipes = {
-            { ID = 12719, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Scarlet Spellbinder"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.543, y = 0.242 },
-         },
-         Recipes = {
-            { ID = 16252, Type = RRS("Enchanting"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Skeletal Flayer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.369, y = 0.546 },
-         },
-         Recipes = {
-            { ID = 9296, Type = RRS("Alchemy"), Skill = 240, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Slavering Ghoul"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.391, y = 0.553 },
-         },
-         Recipes = {
-            { ID = 9296, Type = RRS("Alchemy"), Skill = 240, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -1931,76 +1616,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Hillsbrad-Foothills",
-   MapScale = 0.0849900613585329,
-   MapOffset = { x = 0.424556491308869, y = 0.350355015038592 },
    Vendors = {
-      {
-         Name = RRS("Chef Jessen"),
-         Team = "Alliance",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.518, y = 0.587 },
-         },
-         Recipes = {
-            { ID = 3737, Type = RRS("Cooking"), Skill = 175, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Christoph Jeffcoat"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.625, y = 0.191 },
-         },
-         Recipes = {
-            { ID = 6054, Type = RRS("Alchemy"), Skill = 135, Cost = 900 },
-            { ID = 5788, Type = RRS("Leatherworking"), Skill = 170, Cost = 600 },
-            { ID = 20971, Type = RRS("Jewelcrafting"), Skill = 125, Cost = 1500 },
-         },
-      },
-      {
-         Name = RRS("Christoph Jeffcoat"),
-         Team = "Horde",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.625, y = 0.191 },
-         },
-         Recipes = {
-            { ID = 3737, Type = RRS("Cooking"), Skill = 175, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Darren Malvew"),
-         Team = "Alliance",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.525, y = 0.57 },
-         },
-         Recipes = {
-            { ID = 3736, Type = RRS("Cooking"), Skill = 150, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Derak Nightfall"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.623, y = 0.196 },
-         },
-         Recipes = {
-            { ID = 6330, Type = RRS("Cooking"), Skill = 100, Cost = 1200 },
-            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
-            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
-         },
-      },
-      {
-         Name = RRS("George Candarte"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.914, y = 0.39 },
-         },
-         Recipes = {
-            { ID = 7613, Type = RRS("Leatherworking"), Skill = 155, Cost = 2000 },
-         },
-      },
       {
          Name = RRS("Lindea Rabonne"),
          Team = "Alliance",
@@ -2011,17 +1627,6 @@ RecipeRadar_RegionData = {
             { ID = 6330, Type = RRS("Cooking"), Skill = 100, Cost = 1200 },
             { ID = 17062, Type = RRS("Cooking"), Skill = 175, Cost = 2200 },
             { ID = 6369, Type = RRS("Cooking"), Skill = 175, Cost = 2200 },
-         },
-      },
-      {
-         Name = RRS("Mallen Swain"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.617, y = 0.214 },
-         },
-         Recipes = {
-            { ID = 6274, Type = RRS("Tailoring"), Skill = 100, Cost = 400 },
-            { ID = 6401, Type = RRS("Tailoring"), Skill = 155, Cost = 1100 },
          },
       },
       {
@@ -2051,63 +1656,48 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Scargil"),
-         Team = "Hostile",
+         Name = RRS("Christoph Jeffcoat"),
+         Team = "Horde",
          Coordinates = {
-            { x = 0.266, y = 0.712 },
+            { x = 0.625, y = 0.191 },
          },
          Recipes = {
-            { ID = 11152, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
+            { ID = 6054, Type = RRS("Alchemy"), Skill = 135, Cost = 900 },
+            { ID = 5788, Type = RRS("Leatherworking"), Skill = 170, Cost = 600 },
+            { ID = 20971, Type = RRS("Jewelcrafting"), Skill = 125, Cost = 1500 },
          },
       },
       {
-         Name = RRS("Shadowy Assasin"),
-         Team = "Hostile",
+         Name = RRS("Derak Nightfall"),
+         Team = "Horde",
          Coordinates = {
-            { x = 0.496, y = 0.571 },
+            { x = 0.623, y = 0.196 },
          },
          Recipes = {
-            { ID = 5775, Type = RRS("Tailoring"), Skill = 185, Cost = 0 },
+            { ID = 6330, Type = RRS("Cooking"), Skill = 100, Cost = 1200 },
+            { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
+            { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
          },
       },
       {
-         Name = RRS("Torn Fin Coastrunner"),
-         Team = "Hostile",
+         Name = RRS("George Candarte"),
+         Team = "Horde",
          Coordinates = {
-            { x = 0.225, y = 0.697 },
+            { x = 0.914, y = 0.39 },
          },
          Recipes = {
-            { ID = 11152, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
+            { ID = 7613, Type = RRS("Leatherworking"), Skill = 155, Cost = 2000 },
          },
       },
       {
-         Name = RRS("Torn Fin Muckdweller"),
-         Team = "Hostile",
+         Name = RRS("Mallen Swain"),
+         Team = "Horde",
          Coordinates = {
-            { x = 0.288, y = 0.724 },
+            { x = 0.617, y = 0.214 },
          },
          Recipes = {
-            { ID = 11152, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Torn Fin Oracle"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.391, y = 0.691 },
-         },
-         Recipes = {
-            { ID = 11152, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Torn Fin Tidehunter"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.366, y = 0.695 },
-         },
-         Recipes = {
-            { ID = 11152, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
+            { ID = 6274, Type = RRS("Tailoring"), Skill = 100, Cost = 400 },
+            { ID = 6401, Type = RRS("Tailoring"), Skill = 155, Cost = 1100 },
          },
       },
       {
@@ -2135,59 +1725,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Felwood",
-   MapScale = 0.156250789803395,
-   MapOffset = { x = 0.419157979230545, y = 0.230975447641891 },
    Vendors = {
-      {
-         Name = RRS("Bale"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.348, y = 0.528 },
-         },
-         Recipes = {
-            { ID = 16110, Type = RRS("Cooking"), Skill = 225, Cost = 10000 },
-         },
-      },
-      {
-         Name = RRS("Deadwood Shaman"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.625, y = 0.103 },
-         },
-         Recipes = {
-            { ID = 15752, Type = RRS("Leatherworking"), Skill = 285, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Jaedenar Cultist"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.364, y = 0.612 },
-         },
-         Recipes = {
-            { ID = 15739, Type = RRS("Leatherworking"), Skill = 275, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Jadefire Rogue"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.373, y = 0.675 },
-         },
-         Recipes = {
-            { ID = 13491, Type = RRS("Alchemy"), Skill = 280, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Jadefire Trickster"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.435, y = 0.182 },
-         },
-         Recipes = {
-            { ID = 15744, Type = RRS("Leatherworking"), Skill = 280, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Malygen"),
          Team = "Alliance",
@@ -2195,7 +1733,21 @@ RecipeRadar_RegionData = {
             { x = 0.623, y = 0.256 },
          },
          Recipes = {
-            { ID = 16110, Type = RRS("Cooking"), Skill = 225, Cost = 10000 },
+            { ID = 16110, Type = RRS("Cooking"), Skill = 225, Cost = 12000 },
+            { ID = 35564, Type = RRS("Cooking"), Skill = 250, Cost = 18000 },
+            { ID = 35566, Type = RRS("Cooking"), Skill = 250, Cost = 18000 },
+         },
+      },
+      {
+         Name = RRS("Bale"),
+         Team = "Horde",
+         Coordinates = {
+            { x = 0.348, y = 0.528 },
+         },
+         Recipes = {
+            { ID = 16110, Type = RRS("Cooking"), Skill = 225, Cost = 12000 },
+            { ID = 35564, Type = RRS("Cooking"), Skill = 250, Cost = 18000 },
+            { ID = 35566, Type = RRS("Cooking"), Skill = 250, Cost = 18000 },
          },
       },
       {
@@ -2227,14 +1779,6 @@ RecipeRadar_RegionData = {
    MapFile = "Gnomeregan",
    Vendors = {
       {
-         Name = RRS("Mekgineer Thermaplugg"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 4411, Type = RRS("Engineering"), Skill = 125, Cost = 0 },
-            { ID = 4413, Type = RRS("Engineering"), Skill = 160, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Namdo Bizzfizzle"),
          Team = "Alliance",
          Recipes = {
@@ -2248,8 +1792,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Teldrassil",
-   MapScale = 0.138346591968251,
-   MapOffset = { x = 0.360111458206378, y = 0.0394833971909878 },
    Vendors = {
       {
          Name = RRS("Nessa Shadowsong"),
@@ -2275,17 +1817,6 @@ RecipeRadar_RegionData = {
             { ID = 21219, Type = RRS("Cooking"), Skill = 175, Cost = 5000 },
          },
       },
-      {
-         Name = RRS("Zarrin"),
-         Team = "Alliance",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.571, y = 0.613 },
-         },
-         Recipes = {
-            { ID = 5482, Type = RRS("Cooking"), Skill = 10, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -2293,8 +1824,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Blasted-Lands",
-   MapScale = 0.0889742178818884,
-   MapOffset = { x = 0.485864302021709, y = 0.787257086572922 },
    Vendors = {
       {
          Name = RRS("Nina Lightbrew"),
@@ -2306,16 +1835,6 @@ RecipeRadar_RegionData = {
             { ID = 9300, Type = RRS("Alchemy"), Skill = 250, Cost = 10000 },
          },
       },
-      {
-         Name = RRS("Portal Seeker"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.529, y = 0.376 },
-         },
-         Recipes = {
-            { ID = 15727, Type = RRS("Leatherworking"), Skill = 265, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -2323,14 +1842,12 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Tirisfal-Glades",
-   MapScale = 0.12001523060916,
-   MapOffset = { x = 0.372323091757787, y = 0.213408098800312 },
    Vendors = {
       {
          Name = RRS("Abigail Shiel"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.607, y = 0.516 },
+            { x = 0.61, y = 0.524 },
          },
          Recipes = {
             { ID = 12226, Type = RRS("Cooking"), Skill = 1, Cost = 25 },
@@ -2394,8 +1911,6 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 2,
    MapFile = "Undercity",
-   MapScale = 0.0254907538742982,
-   MapOffset = { x = 0.429695109105268, y = 0.291475000287344 },
    Vendors = {
       {
          Name = RRS("Algernon"),
@@ -2460,7 +1975,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Ronald Burch"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.631, y = 0.44 },
+            { x = 0.623, y = 0.43 },
          },
          Recipes = {
             { ID = 6330, Type = RRS("Cooking"), Skill = 100, Cost = 1200 },
@@ -2512,14 +2027,12 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Silverpine-Forest",
-   MapScale = 0.111549442052871,
-   MapOffset = { x = 0.361256692592718, y = 0.299892130422635 },
    Vendors = {
       {
          Name = RRS("Andrew Hilbert"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.428, y = 0.402 },
+            { x = 0.432, y = 0.407 },
          },
          Recipes = {
             { ID = 5786, Type = RRS("Leatherworking"), Skill = 90, Cost = 500 },
@@ -2577,8 +2090,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Swamp-of-Sorrows",
-   MapScale = 0.0609206354506967,
-   MapOffset = { x = 0.511925898861997, y = 0.749575891630887 },
    Vendors = {
       {
          Name = RRS("Banalash"),
@@ -2604,36 +2115,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Masat T'andr"),
-         Team = "Neutral",
-         Coordinates = {
-            { x = 0.254, y = 0.314 },
-         },
-         Recipes = {
-            { ID = 15726, Type = RRS("Leatherworking"), Skill = 260, Cost = 10000 },
-         },
-      },
-      {
-         Name = RRS("Mire Lord"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.078, y = 0.314 },
-         },
-         Recipes = {
-            { ID = 11205, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Molt Thorn"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.244, y = 0.466 },
-         },
-         Recipes = {
-            { ID = 11205, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Rartar"),
          Team = "Horde",
          Coordinates = {
@@ -2644,33 +2125,13 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Swampwalker"),
-         Team = "Hostile",
+         Name = RRS("Masat T'andr"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.155, y = 0.346 },
+            { x = 0.254, y = 0.314 },
          },
          Recipes = {
-            { ID = 11205, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Swampwalker Elder"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.105, y = 0.332 },
-         },
-         Recipes = {
-            { ID = 11205, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Tangled Horror"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.106, y = 0.363 },
-         },
-         Recipes = {
-            { ID = 11205, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
+            { ID = 15726, Type = RRS("Leatherworking"), Skill = 260, Cost = 10000 },
          },
       },
    },
@@ -2680,14 +2141,12 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 1,
    MapFile = "Orgrimmar",
-   MapScale = 0.0381213844849987,
-   MapOffset = { x = 0.563785461799618, y = 0.429052466884782 },
    Vendors = {
       {
          Name = RRS("Borya"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.617, y = 0.507 },
+            { x = 0.631, y = 0.515 },
          },
          Recipes = {
             { ID = 6270, Type = RRS("Tailoring"), Skill = 55, Cost = 200 },
@@ -2712,7 +2171,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Kithas"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.533, y = 0.372 },
+            { x = 0.539, y = 0.38 },
          },
          Recipes = {
             { ID = 6349, Type = RRS("Enchanting"), Skill = 100, Cost = 500 },
@@ -2728,7 +2187,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Kor'geld"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.563, y = 0.337 },
+            { x = 0.561, y = 0.341 },
          },
          Recipes = {
             { ID = 13478, Type = RRS("Alchemy"), Skill = 265, Cost = 10000 },
@@ -2745,13 +2204,14 @@ RecipeRadar_RegionData = {
          Recipes = {
             { ID = 17201, Type = RRS("Cooking"), Skill = 35, Cost = 200 },
             { ID = 17200, Type = RRS("Cooking"), Skill = 1, Cost = 25 },
+            { ID = 34413, Type = RRS("Cooking"), Skill = 325, Cost = 10000 },
          },
       },
       {
          Name = RRS("Shankys"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.676, y = 0.392 },
+            { x = 0.67, y = 0.23 },
          },
          Recipes = {
             { ID = 17062, Type = RRS("Cooking"), Skill = 175, Cost = 2200 },
@@ -2774,7 +2234,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Sumi"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.816, y = 0.238 },
+            { x = 0.826, y = 0.24 },
          },
          Recipes = {
             { ID = 12162, Type = RRS("Blacksmithing"), Skill = 160, Cost = 3000 },
@@ -2794,7 +2254,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Xen'to"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.574, y = 0.531 },
+            { x = 0.576, y = 0.529 },
          },
          Recipes = {
             { ID = 21099, Type = RRS("Cooking"), Skill = 80, Cost = 500 },
@@ -2819,8 +2279,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Durotar",
-   MapScale = 0.143682355344874,
-   MapOffset = { x = 0.517098295372771, y = 0.448028236249508 },
    Vendors = {
       {
          Name = RRS("Grimtak"),
@@ -2850,8 +2308,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Mulgore",
-   MapScale = 0.139606664962101,
-   MapOffset = { x = 0.40811854459122, y = 0.53286229338626 },
    Vendors = {
       {
          Name = RRS("Harn Longcast"),
@@ -2881,25 +2337,12 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "The-Barrens",
-   MapScale = 0.27537786370673,
-   MapOffset = { x = 0.392493478204157, y = 0.456010645562151 },
    Vendors = {
-      {
-         Name = RRS("Grub"),
-         Team = "Horde",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.553, y = 0.318 },
-         },
-         Recipes = {
-            { ID = 5487, Type = RRS("Cooking"), Skill = 90, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Hula'mahi"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.516, y = 0.296 },
+            { x = 0.514, y = 0.302 },
          },
          Recipes = {
             { ID = 6053, Type = RRS("Alchemy"), Skill = 100, Cost = 800 },
@@ -2909,7 +2352,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Tari'qa"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.518, y = 0.305 },
+            { x = 0.517, y = 0.3 },
          },
          Recipes = {
             { ID = 5488, Type = RRS("Cooking"), Skill = 100, Cost = 400 },
@@ -2920,7 +2363,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Wrahk"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.525, y = 0.314 },
+            { x = 0.522, y = 0.317 },
          },
          Recipes = {
             { ID = 6272, Type = RRS("Tailoring"), Skill = 70, Cost = 300 },
@@ -2943,7 +2386,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Zargh"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.525, y = 0.296 },
+            { x = 0.526, y = 0.298 },
          },
          Recipes = {
             { ID = 3735, Type = RRS("Cooking"), Skill = 125, Cost = 1800 },
@@ -3011,8 +2454,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Thousand-Needles",
-   MapScale = 0.119566109881145,
-   MapOffset = { x = 0.475543810627289, y = 0.683423446663407 },
    Vendors = {
       {
          Name = RRS("Jandia"),
@@ -3053,34 +2494,12 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Stonetalon-Mountains",
-   MapScale = 0.132714174066221,
-   MapOffset = { x = 0.375566219072998, y = 0.402851347169428 },
    Vendors = {
-      {
-         Name = RRS("Blackened Ancient"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.319, y = 0.686 },
-         },
-         Recipes = {
-            { ID = 11151, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Charred Ancient"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.315, y = 0.675 },
-         },
-         Recipes = {
-            { ID = 11151, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Jeeda"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.473, y = 0.616 },
+            { x = 0.476, y = 0.616 },
          },
          Recipes = {
             { ID = 6055, Type = RRS("Alchemy"), Skill = 165, Cost = 1500 },
@@ -3107,16 +2526,6 @@ RecipeRadar_RegionData = {
             { ID = 7561, Type = RRS("Engineering"), Skill = 165, Cost = 2000 },
          },
       },
-      {
-         Name = RRS("Vengeful Ancient"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.302, y = 0.709 },
-         },
-         Recipes = {
-            { ID = 11151, Type = RRS("Enchanting"), Skill = 145, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -3124,14 +2533,12 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 1,
    MapFile = "Thunder-Bluff",
-   MapScale = 0.0283635985658374,
-   MapOffset = { x = 0.449727335894176, y = 0.556384745507492 },
    Vendors = {
       {
          Name = RRS("Mahu"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.441, y = 0.446 },
+            { x = 0.438, y = 0.451 },
          },
          Recipes = {
             { ID = 10311, Type = RRS("Tailoring"), Skill = 220, Cost = 3000 },
@@ -3144,7 +2551,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Naal Mistrunner"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.485, y = 0.505 },
+            { x = 0.51, y = 0.524 },
          },
          Recipes = {
             { ID = 6330, Type = RRS("Cooking"), Skill = 100, Cost = 1200 },
@@ -3157,7 +2564,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Nata Dawnstrider"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.431, y = 0.391 },
+            { x = 0.45, y = 0.388 },
          },
          Recipes = {
             { ID = 6349, Type = RRS("Enchanting"), Skill = 100, Cost = 500 },
@@ -3173,7 +2580,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Sewa Mistrunner"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.53, y = 0.478 },
+            { x = 0.558, y = 0.47 },
          },
          Recipes = {
             { ID = 6325, Type = RRS("Cooking"), Skill = 1, Cost = 40 },
@@ -3209,8 +2616,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Silithus",
-   MapScale = 0.0946705529365043,
-   MapOffset = { x = 0.394814481476221, y = 0.764606092256576 },
    Vendors = {
       {
          Name = RRS("Aendel Windspear"),
@@ -3240,16 +2645,6 @@ RecipeRadar_RegionData = {
          Recipes = {
             { ID = 15724, Type = RRS("Leatherworking"), Skill = 255, Cost = 10000 },
             { ID = 15762, Type = RRS("Leatherworking"), Skill = 295, Cost = 20000 },
-         },
-      },
-      {
-         Name = RRS("The Windreaver"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.211, y = 0.275 },
-         },
-         Recipes = {
-            { ID = 21548, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
          },
       },
       {
@@ -3304,6 +2699,9 @@ RecipeRadar_RegionData = {
       {
          Name = RRS("Blackwing"),
          Team = "Neutral",
+         Coordinates = {
+            { x = 0.519, y = 0.391 },
+         },
          Recipes = {
             { ID = 6342, Type = RRS("Enchanting"), Skill = 20, Cost = 300 },
             { ID = 20732, Type = RRS("Enchanting"), Skill = 300, Cost = 100000, Faction = RRS("Cenarion Circle"), Level = 5 },
@@ -3324,8 +2722,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Tanaris",
-   MapScale = 0.187500938901562,
-   MapOffset = { x = 0.469713047569603, y = 0.761209321522787 },
    Vendors = {
       {
          Name = RRS("Alchemist Pestlezugg"),
@@ -3339,56 +2735,6 @@ RecipeRadar_RegionData = {
             { ID = 12958, Type = RRS("Alchemy"), Skill = 275, Cost = 50000 },
             { ID = 9304, Type = RRS("Alchemy"), Skill = 225, Cost = 8000 },
             { ID = 9305, Type = RRS("Alchemy"), Skill = 225, Cost = 8000 },
-         },
-      },
-      {
-         Name = RRS("Alurmi"),
-         Team = "Neutral",
-         Coordinates = {
-            { x = 0.636, y = 0.576 },
-         },
-         Recipes = {
-            { ID = 28272, Type = RRS("Enchanting"), Skill = 360, Cost = 80000, Faction = RRS("Keepers of Time"), Level = 6 },
-            { ID = 22536, Type = RRS("Enchanting"), Skill = 360, Cost = 100000, Faction = RRS("Keepers of Time"), Level = 6 },
-            { ID = 29713, Type = RRS("Leatherworking"), Skill = 370, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 8 },
-            { ID = 24181, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 7 },
-            { ID = 24174, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 7 },
-            { ID = 25910, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 6 },
-            { ID = 31355, Type = RRS("Alchemy"), Skill = 300, Cost = 40000, Faction = RRS("Keepers of Time"), Level = 8 },
-            { ID = 33152, Type = RRS("Enchanting"), Skill = 300, Cost = 100000, Faction = RRS("Keepers of Time"), Level = 8 },
-            { ID = 33160, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 6 },
-            { ID = 33158, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 7 },
-         },
-      },
-      {
-         Name = RRS("Andormu"),
-         Team = "Neutral",
-         Coordinates = {
-            { x = 0.576, y = 0.59 },
-         },
-         Recipes = {
-            { ID = 22538, Type = RRS("Enchanting"), Skill = 375, Cost = 200000, Faction = RRS("The Scale of the Sands"), Level = 7 },
-         },
-      },
-      {
-         Name = RRS("Andre Firebeard"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.735, y = 0.482 },
-         },
-         Recipes = {
-            { ID = 8400, Type = RRS("Leatherworking"), Skill = 240, Cost = 0 },
-            { ID = 8402, Type = RRS("Leatherworking"), Skill = 250, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Blizrik Buckshot"),
-         Team = "Neutral",
-         Coordinates = {
-            { x = 0.508, y = 0.279 },
-         },
-         Recipes = {
-            { ID = 18650, Type = RRS("Engineering"), Skill = 200, Cost = 5000 },
          },
       },
       {
@@ -3446,68 +2792,52 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Wastewander Assasin"),
-         Team = "Hostile",
+         Name = RRS("Blizrik Buckshot"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.615, y = 0.386 },
+            { x = 0.508, y = 0.279 },
          },
          Recipes = {
-            { ID = 11206, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
-            { ID = 8400, Type = RRS("Leatherworking"), Skill = 240, Cost = 0 },
-            { ID = 8402, Type = RRS("Leatherworking"), Skill = 250, Cost = 0 },
+            { ID = 18650, Type = RRS("Engineering"), Skill = 200, Cost = 5000 },
          },
       },
       {
-         Name = RRS("Wastewander Bandit"),
-         Team = "Hostile",
+         Name = RRS("Alurmi"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.646, y = 0.314 },
+            { x = 0.636, y = 0.576 },
          },
          Recipes = {
-            { ID = 8395, Type = RRS("Leatherworking"), Skill = 220, Cost = 0 },
+            { ID = 28272, Type = RRS("Enchanting"), Skill = 360, Cost = 80000, Faction = RRS("Keepers of Time"), Level = 6 },
+            { ID = 22536, Type = RRS("Enchanting"), Skill = 360, Cost = 100000, Faction = RRS("Keepers of Time"), Level = 6 },
+            { ID = 29713, Type = RRS("Leatherworking"), Skill = 370, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 6 },
+            { ID = 24181, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 7 },
+            { ID = 24174, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 7 },
+            { ID = 25910, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 6 },
+            { ID = 31355, Type = RRS("Alchemy"), Skill = 300, Cost = 40000, Faction = RRS("Keepers of Time"), Level = 8 },
+            { ID = 33152, Type = RRS("Enchanting"), Skill = 300, Cost = 100000, Faction = RRS("Keepers of Time"), Level = 8 },
+            { ID = 33160, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 6 },
+            { ID = 33158, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("Keepers of Time"), Level = 7 },
          },
       },
       {
-         Name = RRS("Wastewander Rogue"),
-         Team = "Hostile",
+         Name = RRS("Andormu"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.617, y = 0.377 },
+            { x = 0.576, y = 0.59 },
          },
          Recipes = {
-            { ID = 8399, Type = RRS("Leatherworking"), Skill = 235, Cost = 0 },
-            { ID = 8401, Type = RRS("Leatherworking"), Skill = 245, Cost = 0 },
+            { ID = 22538, Type = RRS("Enchanting"), Skill = 375, Cost = 200000, Faction = RRS("Lower City"), Level = 6 },
          },
       },
       {
-         Name = RRS("Wastewander Scofflaw"),
-         Team = "Hostile",
+         Name = RRS("Innkeeper Fizzgrimble"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.661, y = 0.361 },
+            { x = 0.519, y = 0.284 },
          },
          Recipes = {
-            { ID = 11206, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
-            { ID = 8402, Type = RRS("Leatherworking"), Skill = 250, Cost = 0 },
-            { ID = 8400, Type = RRS("Leatherworking"), Skill = 240, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Wastewander Shadow Mage"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.602, y = 0.312 },
-         },
-         Recipes = {
-            { ID = 8397, Type = RRS("Leatherworking"), Skill = 220, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Wastewander Thief"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.635, y = 0.284 },
-         },
-         Recipes = {
-            { ID = 8398, Type = RRS("Leatherworking"), Skill = 225, Cost = 0 },
+            { ID = 18046, Type = RRS("Cooking"), Skill = 225, Cost = 10000 },
          },
       },
    },
@@ -3517,8 +2847,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Alterac-Mountains",
-   MapScale = 0.0743662159427414,
-   MapOffset = { x = 0.432081763756985, y = 0.306531997452279 },
    Vendors = {
       {
          Name = RRS("Bro'kin"),
@@ -3551,26 +2879,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Syndicate Assasin"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.406, y = 0.168 },
-         },
-         Recipes = {
-            { ID = 11206, Type = RRS("Enchanting"), Skill = 225, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Syndicate Spy"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.598, y = 0.437 },
-         },
-         Recipes = {
-            { ID = 5775, Type = RRS("Tailoring"), Skill = 185, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Zan Shivsproket"),
          Team = "Neutral",
          Coordinates = {
@@ -3587,8 +2895,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Moonglade",
-   MapScale = 0.0627412299935348,
-   MapOffset = { x = 0.501302897060443, y = 0.175607962154071 },
    Vendors = {
       {
          Name = RRS("Darnall"),
@@ -3621,31 +2927,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Winterspring",
-   MapScale = 0.192936013971896,
-   MapOffset = { x = 0.472373833547284, y = 0.173909682434802 },
    Vendors = {
-      {
-         Name = RRS("Anguished Highborne"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.524, y = 0.416 },
-         },
-         Recipes = {
-            { ID = 16223, Type = RRS("Enchanting"), Skill = 285, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Cobalt Mageweaver"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.573, y = 0.525 },
-         },
-         Recipes = {
-            { ID = 13497, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-            { ID = 14493, Type = RRS("Tailoring"), Skill = 285, Cost = 0 },
-            { ID = 16054, Type = RRS("Engineering"), Skill = 300, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Evie Whirlbrew"),
          Team = "Neutral",
@@ -3656,33 +2938,13 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Frostmaul Giant"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.615, y = 0.663 },
-         },
-         Recipes = {
-            { ID = 13495, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Himmik"),
          Team = "Neutral",
          Coordinates = {
             { x = 0.613, y = 0.392 },
          },
          Recipes = {
-            { ID = 16110, Type = RRS("Cooking"), Skill = 225, Cost = 10000 },
-         },
-      },
-      {
-         Name = RRS("Princess Tempestria"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.527, y = 0.419 },
-         },
-         Recipes = {
-            { ID = 21548, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
+            { ID = 16110, Type = RRS("Cooking"), Skill = 225, Cost = 12000 },
          },
       },
       {
@@ -3697,36 +2959,6 @@ RecipeRadar_RegionData = {
             { ID = 14526, Type = RRS("Tailoring"), Skill = 250, Cost = 20000 },
             { ID = 14468, Type = RRS("Tailoring"), Skill = 260, Cost = 10000 },
             { ID = 21957, Type = RRS("Jewelcrafting"), Skill = 305, Cost = 10000 },
-         },
-      },
-      {
-         Name = RRS("Winterfall Den Watcher"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.422, y = 0.441 },
-         },
-         Recipes = {
-            { ID = 15747, Type = RRS("Leatherworking"), Skill = 285, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Winterfall Totemic"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.401, y = 0.439 },
-         },
-         Recipes = {
-            { ID = 15761, Type = RRS("Leatherworking"), Skill = 295, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Winterfall Ursa"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.668, y = 0.371 },
-         },
-         Recipes = {
-            { ID = 15779, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
          },
       },
       {
@@ -3750,19 +2982,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Eastern-Plaguelands",
-   MapScale = 0.102820695852353,
-   MapOffset = { x = 0.510929893018906, y = 0.214902304172204 },
    Vendors = {
-      {
-         Name = RRS("Dark Adept"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.828, y = 0.389 },
-         },
-         Recipes = {
-            { ID = 13499, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Jase Farlane"),
          Team = "Neutral",
@@ -3771,16 +2991,6 @@ RecipeRadar_RegionData = {
          },
          Recipes = {
             { ID = 21954, Type = RRS("Jewelcrafting"), Skill = 285, Cost = 10000 },
-         },
-      },
-      {
-         Name = RRS("Mossflayer Shadowhunter"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.711, y = 0.156 },
-         },
-         Recipes = {
-            { ID = 16056, Type = RRS("Engineering"), Skill = 300, Cost = 0 },
          },
       },
       {
@@ -3802,26 +3012,6 @@ RecipeRadar_RegionData = {
             { ID = 19442, Type = RRS("First Aid"), Skill = 300, Cost = 100000, Faction = RRS("Argent Dawn"), Level = 6 },
          },
       },
-      {
-         Name = RRS("Scarlet Archmage"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.853, y = 0.834 },
-         },
-         Recipes = {
-            { ID = 16252, Type = RRS("Enchanting"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Shadowmage"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.841, y = 0.407 },
-         },
-         Recipes = {
-            { ID = 13499, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -3829,8 +3019,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Badlands",
-   MapScale = 0.066066490724931,
-   MapOffset = { x = 0.508108008192716, y = 0.600926294725872 },
    Vendors = {
       {
          Name = RRS("Jazzrik"),
@@ -3861,274 +3049,11 @@ RecipeRadar_RegionData = {
    },
 },
 
-[RRS("Blackrock Mountain")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Blackrock-Mountain",
-   Vendors = {
-      {
-         Name = RRS("Overmaster Pyron"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 14486, Type = RRS("Tailoring"), Skill = 275, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("Blackrock Spire")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Blackrock-Spire",
-   Vendors = {
-      {
-         Name = RRS("Bannok Grimaxe"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 12838, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Blackhand Elite"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 16247, Type = RRS("Enchanting"), Skill = 295, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Firebrand Grunt"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15749, Type = RRS("Leatherworking"), Skill = 285, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Firebrand Invoker"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 13494, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Firebrand Legionnaire"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15775, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Firebrand Pyromancer"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 14513, Type = RRS("Tailoring"), Skill = 300, Cost = 0 },
-            { ID = 13494, Type = RRS("Alchemy"), Skill = 290, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("General Drakkisath"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15730, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-            { ID = 13519, Type = RRS("Alchemy"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Goraluk Anvilcrack"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 12834, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-            { ID = 12837, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Gyth"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 13522, Type = RRS("Alchemy"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Quartermaster Zigris"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 12835, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-            { ID = 21955, Type = RRS("Jewelcrafting"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Solakar Flamewreath"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 18657, Type = RRS("Engineering"), Skill = 290, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Spirestone Warlord"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 16250, Type = RRS("Enchanting"), Skill = 300, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("Scholomance")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Scholomance",
-   Vendors = {
-      {
-         Name = RRS("Darkmaster Gandling"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 14514, Type = RRS("Tailoring"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Ras Frostwhisper"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 13521, Type = RRS("Alchemy"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Scholomance Adept"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 16255, Type = RRS("Enchanting"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Scholomance Dark Summoner"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15776, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Spectral Researcher"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15773, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-            { ID = 16254, Type = RRS("Enchanting"), Skill = 300, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("Stratholme")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Stratholme",
-   Vendors = {
-      {
-         Name = RRS("Balnazzar"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 13520, Type = RRS("Alchemy"), Skill = 300, Cost = 0 },
-            { ID = 14512, Type = RRS("Tailoring"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Cannon Master Willey"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 12839, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Crimson Battle Mage"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15777, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Crimson Inquisitor"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 16052, Type = RRS("Engineering"), Skill = 290, Cost = 0 },
-            { ID = 18658, Type = RRS("Engineering"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Crimson Sorcerer"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 16249, Type = RRS("Enchanting"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Ghoul Ravener"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15768, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Maleki the Pallid"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 12833, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Thuzadin Shadowcaster"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 16248, Type = RRS("Enchanting"), Skill = 295, Cost = 0 },
-         },
-      },
-   },
-},
-
 [RRS("Blackrock Depths")] = {
    IsCity = false,
    Continent = 0,
    MapFile = "Blackrock-Depths",
    Vendors = {
-      {
-         Name = RRS("Anvilrage Captain"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15781, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Anvilrage Marshal"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15770, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Doomforge Craftsman"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 16048, Type = RRS("Engineering"), Skill = 275, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Golem Lord Argelmach"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 21956, Type = RRS("Jewelcrafting"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Grizzle"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 11610, Type = RRS("Blacksmithing"), Skill = 265, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Hammered Patron"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 11611, Type = RRS("Blacksmithing"), Skill = 275, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Lokhtos Darkbargainer"),
          Team = "Neutral",
@@ -4165,70 +3090,11 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Lord Roccor"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 11813, Type = RRS("Enchanting"), Skill = 265, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Plugger Spazzring"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 18653, Type = RRS("Engineering"), Skill = 265, Cost = 0, Specialty = RRS("Goblin Engineer") },
-         },
-      },
-      {
          Name = RRS("Plugger Spazzring"),
          Team = "Neutral",
          Recipes = {
             { ID = 13483, Type = RRS("Alchemy"), Skill = 275, Cost = 10000 },
             { ID = 15759, Type = RRS("Leatherworking"), Skill = 290, Cost = 20000 },
-         },
-      },
-      {
-         Name = RRS("Pyromancer Loregrain"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 11207, Type = RRS("Enchanting"), Skill = 265, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Ribbly Screwspigot"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 11612, Type = RRS("Blacksmithing"), Skill = 285, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Ribbly's Crony"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 11611, Type = RRS("Blacksmithing"), Skill = 275, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Weapon Technician"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 18654, Type = RRS("Engineering"), Skill = 265, Cost = 0, Specialty = RRS("Gnomish Engineer") },
-            { ID = 18661, Type = RRS("Engineering"), Skill = 260, Cost = 0, Specialty = RRS("Gnomish Engineer") },
-            { ID = 16049, Type = RRS("Engineering"), Skill = 285, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Temple of Atal'Hakkar")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Temple-of-Atal-Hakkar",
-   Vendors = {
-      {
-         Name = RRS("Murk Worm"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 15733, Type = RRS("Leatherworking"), Skill = 270, Cost = 0 },
          },
       },
    },
@@ -4238,8 +3104,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Un-Goro-Crater",
-   MapScale = 0.100544038627238,
-   MapOffset = { x = 0.449275903575273, y = 0.764945708360993 },
    Vendors = {
       {
          Name = RRS("Nergal"),
@@ -4266,71 +3130,6 @@ RecipeRadar_RegionData = {
             { ID = 18487, Type = RRS("Tailoring"), Skill = 300, Cost = 40000 },
          },
       },
-      {
-         Name = RRS("Pusillin"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 18267, Type = RRS("Cooking"), Skill = 275, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Magister Kalendris"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22309, Type = RRS("Tailoring"), Skill = 300, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("Searing Gorge")] = {
-   IsCity = false,
-   Continent = 2,
-   MapFile = "Searing-Gorge",
-   MapScale = 0.0777829488881128,
-   MapOffset = { x = 0.459969008059647, y = 0.646409311310706 },
-   Vendors = {
-      {
-         Name = RRS("Dark Iron Slaver"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.363, y = 0.419 },
-         },
-         Recipes = {
-            { ID = 21547, Type = RRS("Alchemy"), Skill = 250, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Dark Iron Taskmaster"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.384, y = 0.455 },
-         },
-         Recipes = {
-            { ID = 21547, Type = RRS("Alchemy"), Skill = 250, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Dark Iron Watchman"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.625, y = 0.623 },
-         },
-         Recipes = {
-            { ID = 21547, Type = RRS("Alchemy"), Skill = 250, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Twilight Fire Guard"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.255, y = 0.315 },
-         },
-         Recipes = {
-            { ID = 14471, Type = RRS("Tailoring"), Skill = 260, Cost = 0 },
-            { ID = 14476, Type = RRS("Tailoring"), Skill = 270, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -4338,8 +3137,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Burning-Steppes",
-   MapScale = 0.0777829488881128,
-   MapOffset = { x = 0.459969008059647, y = 0.646409311310706 },
    Vendors = {
       {
          Name = RRS("Yuka Screwspigot"),
@@ -4349,67 +3146,6 @@ RecipeRadar_RegionData = {
          },
          Recipes = {
             { ID = 10602, Type = RRS("Engineering"), Skill = 210, Cost = 3000 },
-         },
-      },
-      {
-         Name = RRS("Blackrock Slayer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.413, y = 0.545 },
-         },
-         Recipes = {
-            { ID = 15748, Type = RRS("Leatherworking"), Skill = 285, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Blackrock Battlemaster"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.422, y = 0.341 },
-         },
-         Recipes = {
-            { ID = 15774, Type = RRS("Leatherworking"), Skill = 300, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Blackrock Soldier"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.525, y = 0.543 },
-         },
-         Recipes = {
-            { ID = 15738, Type = RRS("Leatherworking"), Skill = 275, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Firegut Brute"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.814, y = 0.441 },
-         },
-         Recipes = {
-            { ID = 15732, Type = RRS("Leatherworking"), Skill = 270, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Volchan"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.736, y = 0.577 },
-         },
-         Recipes = {
-            { ID = 12828, Type = RRS("Blacksmithing"), Skill = 290, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Thaurissan Firewalker"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.646, y = 0.379 },
-         },
-         Recipes = {
-            { ID = 14482, Type = RRS("Tailoring"), Skill = 275, Cost = 0 },
-            { ID = 14490, Type = RRS("Tailoring"), Skill = 280, Cost = 0 },
          },
       },
    },
@@ -4433,8 +3169,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Eversong-Woods",
-   MapScale = 0.130805168895204,
-   MapOffset = { x = 0.508329203847319, y = 0.0220143656493957 },
    Vendors = {
       {
          Name = RRS("Landraelanis"),
@@ -4467,8 +3201,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Deadwind-Pass",
-   MapScale = 0.066398566914879,
-   MapOffset = { x = 0.475019341229019, y = 0.759369684523602 },
    Vendors = {
       {
          Name = RRS("Apprentice Darius"),
@@ -4484,16 +3216,6 @@ RecipeRadar_RegionData = {
             { ID = 33124, Type = RRS("Leatherworking"), Skill = 360, Cost = 50000, Faction = RRS("The Violet Eye"), Level = 8 },
          },
       },
-      {
-         Name = RRS("Deadwind Warlock"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.598, y = 0.744 },
-         },
-         Recipes = {
-            { ID = 16246, Type = RRS("Enchanting"), Skill = 295, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -4501,8 +3223,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 2,
    MapFile = "Ghostlands",
-   MapScale = 0.0876449457578591,
-   MapOffset = { x = 0.529466643980845, y = 0.132568541924512 },
    Vendors = {
       {
          Name = RRS("Master Chef Mouldier"),
@@ -4534,8 +3254,6 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 2,
    MapFile = "Silvermoon-City",
-   MapScale = 0.032157630903088,
-   MapOffset = { x = 0.559144050228066, y = 0.0573906771181171 },
    Vendors = {
       {
          Name = RRS("Deynna"),
@@ -4639,6 +3357,17 @@ RecipeRadar_RegionData = {
             { ID = 23811, Type = RRS("Engineering"), Skill = 335, Cost = 60000 },
          },
       },
+      {
+         Name = RRS("Hotoppik Copperpinch"),
+         Team = "Horde",
+         Coordinates = {
+            { x = 0.631, y = 0.762 },
+         },
+         Recipes = {
+            { ID = 17201, Type = RRS("Cooking"), Skill = 35, Cost = 200 },
+            { ID = 17200, Type = RRS("Cooking"), Skill = 1, Cost = 25 },
+         },
+      },
    },
 },
 
@@ -4646,8 +3375,6 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 1,
    MapFile = "The-Exodar",
-   MapScale = 0.0287202468620392,
-   MapOffset = { x = 0.286223472995507, y = 0.255826819671022 },
    Vendors = {
       {
          Name = RRS("Neii"),
@@ -4751,6 +3478,17 @@ RecipeRadar_RegionData = {
             { ID = 23811, Type = RRS("Engineering"), Skill = 335, Cost = 60000 },
          },
       },
+      {
+         Name = RRS("Wolgren Jinglepocket"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.526, y = 0.468 },
+         },
+         Recipes = {
+            { ID = 17201, Type = RRS("Cooking"), Skill = 35, Cost = 200 },
+            { ID = 17200, Type = RRS("Cooking"), Skill = 1, Cost = 25 },
+         },
+      },
    },
 },
 
@@ -4758,20 +3496,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Azuremyst-Isle",
-   MapScale = 0.11063508552448,
-   MapOffset = { x = 0.270832981897779, y = 0.222568526141161 },
    Vendors = {
-      {
-         Name = RRS("Acteon"),
-         Team = "Alliance",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.488, y = 0.517 },
-         },
-         Recipes = {
-            { ID = 27686, Type = RRS("Cooking"), Skill = 1, Cost = 0 },
-         },
-      },
       {
          Name = RRS("\"Cookie\" McWeaksauce"),
          Team = "Alliance",
@@ -4790,8 +3515,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 1,
    MapFile = "Bloodmyst-Isle",
-   MapScale = 0.0886552014474056,
-   MapOffset = { x = 0.259284050399891, y = 0.139602774162909 },
    Vendors = {
       {
          Name = RRS("Fazu"),
@@ -4810,8 +3533,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 3,
    MapFile = "Zangarmarsh",
-   MapScale = 0.287882574318451,
-   MapOffset = { x = 0.201616174556508, y = 0.333765918750624 },
    Vendors = {
       {
          Name = RRS("Naka"),
@@ -4974,8 +3695,6 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 3,
    MapFile = "Hellfire-Peninsula",
-   MapScale = 0.29575590590188,
-   MapOffset = { x = 0.426959613744529, y = 0.372774532656053 },
    Vendors = {
       {
          Name = RRS("Baxter"),
@@ -4991,7 +3710,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Gaston"),
          Team = "Alliance",
          Coordinates = {
-            { x = 0.539, y = 0.635 },
+            { x = 0.54, y = 0.636 },
          },
          Recipes = {
             { ID = 27736, Type = RRS("Cooking"), Skill = 300, Cost = 20000 },
@@ -5057,19 +3776,19 @@ RecipeRadar_RegionData = {
             { ID = 25740, Type = RRS("Leatherworking"), Skill = 360, Cost = 160000, Faction = RRS("Thrallmar"), Level = 6 },
             { ID = 31361, Type = RRS("Leatherworking"), Skill = 335, Cost = 60000, Faction = RRS("Thrallmar"), Level = 6 },
             { ID = 31362, Type = RRS("Leatherworking"), Skill = 365, Cost = 120000, Faction = RRS("Thrallmar"), Level = 8 },
-            { ID = 34201, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Thrallmar"), Level = 7 },
             { ID = 31358, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 120000, Faction = RRS("Thrallmar"), Level = 7 },
             { ID = 31359, Type = RRS("Jewelcrafting"), Skill = 315, Cost = 60000, Faction = RRS("Thrallmar"), Level = 5 },
             { ID = 24001, Type = RRS("Alchemy"), Skill = 330, Cost = 50000, Faction = RRS("Thrallmar"), Level = 6 },
             { ID = 29232, Type = RRS("Alchemy"), Skill = 350, Cost = 80000, Faction = RRS("Thrallmar"), Level = 6 },
             { ID = 33151, Type = RRS("Enchanting"), Skill = 300, Cost = 100000, Faction = RRS("Thrallmar"), Level = 8 },
+            { ID = 34201, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Thrallmar"), Level = 7 },
          },
       },
       {
          Name = RRS("Logistics Officer Ulrike"),
          Team = "Alliance",
          Coordinates = {
-            { x = 0.552, y = 0.626 },
+            { x = 0.567, y = 0.626 },
          },
          Recipes = {
             { ID = 23619, Type = RRS("Blacksmithing"), Skill = 360, Cost = 60000, Faction = RRS("Honor Hold"), Level = 8 },
@@ -5080,12 +3799,12 @@ RecipeRadar_RegionData = {
             { ID = 29215, Type = RRS("Leatherworking"), Skill = 360, Cost = 160000, Faction = RRS("Honor Hold"), Level = 6 },
             { ID = 29719, Type = RRS("Leatherworking"), Skill = 335, Cost = 60000, Faction = RRS("Honor Hold"), Level = 6 },
             { ID = 29722, Type = RRS("Leatherworking"), Skill = 365, Cost = 120000, Faction = RRS("Honor Hold"), Level = 8 },
-            { ID = 34218, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Honor Hold"), Level = 7 },
             { ID = 24180, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 120000, Faction = RRS("Honor Hold"), Level = 7 },
             { ID = 23142, Type = RRS("Jewelcrafting"), Skill = 315, Cost = 60000, Faction = RRS("Honor Hold"), Level = 5 },
             { ID = 22905, Type = RRS("Alchemy"), Skill = 330, Cost = 50000, Faction = RRS("Honor Hold"), Level = 6 },
             { ID = 25870, Type = RRS("Alchemy"), Skill = 350, Cost = 80000, Faction = RRS("Honor Hold"), Level = 6 },
             { ID = 33150, Type = RRS("Enchanting"), Skill = 300, Cost = 100000, Faction = RRS("Honor Hold"), Level = 8 },
+            { ID = 34218, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Honor Hold"), Level = 7 },
          },
       },
       {
@@ -5106,7 +3825,7 @@ RecipeRadar_RegionData = {
          Name = RRS("Johan Barnes"),
          Team = "Alliance",
          Coordinates = {
-            { x = 0.537, y = 0.661 },
+            { x = 0.536, y = 0.661 },
          },
          Recipes = {
             { ID = 6342, Type = RRS("Enchanting"), Skill = 20, Cost = 300 },
@@ -5216,24 +3935,12 @@ RecipeRadar_RegionData = {
       {
          Name = RRS("Lebowski"),
          Team = "Alliance",
-         Notes = RRS("Quest"),
          Coordinates = {
-            { x = 0.556, y = 0.655 },
+            { x = 0.557, y = 0.656 },
          },
          Recipes = {
             { ID = 23803, Type = RRS("Engineering"), Skill = 340, Cost = 60000 },
             { ID = 23805, Type = RRS("Engineering"), Skill = 350, Cost = 80000 },
-         },
-      },
-      {
-         Name = RRS("Legassi"),
-         Team = "Neutral",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.492, y = 0.748 },
-         },
-         Recipes = {
-            { ID = 27684, Type = RRS("Cooking"), Skill = 300, Cost = 0 },
          },
       },
    },
@@ -5243,89 +3950,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 3,
    MapFile = "Blade-s-Edge-Mountains",
-   MapScale = 0.310638121315218,
-   MapOffset = { x = 0.237641959104793, y = 0.121365672038069 },
    Vendors = {
-      {
-         Name = RRS("Abyssal Flamebringer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.285, y = 0.795 },
-         },
-         Recipes = {
-            { ID = 22925, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Anger Guard"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.726, y = 0.421 },
-         },
-         Recipes = {
-            { ID = 23612, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Apexis Guardian"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.332, y = 0.526 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Bash'ir Spell-Thief"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.525, y = 0.138 },
-         },
-         Recipes = {
-            { ID = 22555, Type = RRS("Enchanting"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Bash'ir's Harbinger"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.526, y = 0.126 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Bloodmaul Geomancer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.426, y = 0.722 },
-         },
-         Recipes = {
-            { ID = 22534, Type = RRS("Enchanting"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Braxxus"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.272, y = 0.746 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Daga Ramba"),
          Team = "Horde",
@@ -5340,110 +3965,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Doomforge Engineer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.735, y = 0.423 },
-         },
-         Recipes = {
-            { ID = 23800, Type = RRS("Engineering"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Furywing"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.521, y = 0.166 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Galvanoth"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.361, y = 0.377 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Gan'arg Analyzer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.303, y = 0.451 },
-         },
-         Recipes = {
-            { ID = 34114, Type = RRS("Engineering"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Insidion"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.625, y = 0.093 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Mo'arg Incinerator"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.345, y = 0.446 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Obsidia"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.345, y = 0.544 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Rivendark"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.316, y = 0.642 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Sassa Weldwell"),
          Team = "Alliance",
          Coordinates = {
@@ -5452,16 +3973,6 @@ RecipeRadar_RegionData = {
          Recipes = {
             { ID = 31674, Type = RRS("Cooking"), Skill = 335, Cost = 30000 },
             { ID = 31675, Type = RRS("Cooking"), Skill = 335, Cost = 30000 },
-         },
-      },
-      {
-         Name = RRS("Vekh'nir Dreadhawk"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.765, y = 0.744 },
-         },
-         Recipes = {
-            { ID = 24161, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 0 },
          },
       },
       {
@@ -5475,20 +3986,6 @@ RecipeRadar_RegionData = {
             { ID = 31675, Type = RRS("Cooking"), Skill = 335, Cost = 30000 },
          },
       },
-      {
-         Name = RRS("Zarcsin"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.315, y = 0.771 },
-         },
-         Recipes = {
-            { ID = 31870, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31871, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31872, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31873, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-            { ID = 31874, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 0 },
-         },
-      },
    },
 },
 
@@ -5496,66 +3993,15 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 3,
    MapFile = "Terokkar-Forest",
-   MapScale = 0.309206246295396,
-   MapOffset = { x = 0.338563871275038, y = 0.585890567637429 },
    Vendors = {
       {
-         Name = RRS("Bonechewer Backbreaker"),
-         Team = "Hostile",
+         Name = RRS("Rungor"),
+         Team = "Horde",
          Coordinates = {
-            { x = 0.647, y = 0.542 },
+            { x = 0.488, y = 0.461 },
          },
          Recipes = {
-            { ID = 16248, Type = RRS("Enchanting"), Skill = 295, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Gordunni Back-Breaker"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.241, y = 0.127 },
-         },
-         Recipes = {
-            { ID = 34491, Type = RRS("Leatherworking"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Gordunni Elementalist"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.225, y = 0.152 },
-         },
-         Recipes = {
-            { ID = 34491, Type = RRS("Leatherworking"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Gordunni Head-Splitter"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.225, y = 0.135 },
-         },
-         Recipes = {
-            { ID = 34491, Type = RRS("Leatherworking"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Gordunni Soulreaper"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.256, y = 0.106 },
-         },
-         Recipes = {
-            { ID = 34491, Type = RRS("Leatherworking"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Innkeeper Biribi"),
-         Team = "Alliance",
-         Coordinates = {
-            { x = 0.567, y = 0.533 },
-         },
-         Recipes = {
+            { ID = 25848, Type = RRS("Enchanting"), Skill = 350, Cost = 100000 },
             { ID = 27699, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
             { ID = 27700, Type = RRS("Cooking"), Skill = 350, Cost = 30000 },
          },
@@ -5572,29 +4018,6 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Leeli Longhaggle"),
-         Team = "Alliance",
-         Coordinates = {
-            { x = 0.577, y = 0.534 },
-         },
-         Recipes = {
-            { ID = 22901, Type = RRS("Alchemy"), Skill = 315, Cost = 30000 },
-            { ID = 22911, Type = RRS("Alchemy"), Skill = 350, Cost = 50000 },
-         },
-      },
-      {
-         Name = RRS("Rungor"),
-         Team = "Horde",
-         Coordinates = {
-            { x = 0.488, y = 0.461 },
-         },
-         Recipes = {
-            { ID = 25848, Type = RRS("Enchanting"), Skill = 350, Cost = 100000 },
-            { ID = 27699, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
-            { ID = 27700, Type = RRS("Cooking"), Skill = 350, Cost = 30000 },
-         },
-      },
-      {
          Name = RRS("Supply Officer Mills"),
          Team = "Alliance",
          Coordinates = {
@@ -5605,6 +4028,28 @@ RecipeRadar_RegionData = {
             { ID = 27692, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
          },
       },
+      {
+         Name = RRS("Innkeeper Biribi"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.567, y = 0.533 },
+         },
+         Recipes = {
+            { ID = 27699, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
+            { ID = 27700, Type = RRS("Cooking"), Skill = 350, Cost = 30000 },
+         },
+      },
+      {
+         Name = RRS("Leeli Longhaggle"),
+         Team = "Alliance",
+         Coordinates = {
+            { x = 0.577, y = 0.534 },
+         },
+         Recipes = {
+            { ID = 22901, Type = RRS("Alchemy"), Skill = 315, Cost = 30000 },
+            { ID = 22911, Type = RRS("Alchemy"), Skill = 350, Cost = 50000 },
+         },
+      },
    },
 },
 
@@ -5612,70 +4057,37 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 3,
    MapFile = "Nagrand",
-   MapScale = 0.316363675532199,
-   MapOffset = { x = 0.154614843676827, y = 0.496421222281997 },
    Vendors = {
       {
-         Name = RRS("Aldraan"),
-         Team = "Alliance",
-         Coordinates = {
-            { x = 0.424, y = 0.438 },
-         },
-         Recipes = {
-            { ID = 24208, Type = RRS("Jewelcrafting"), Skill = 350, Cost = 120000 },
-         },
-      },
-      {
-         Name = RRS("Borto"),
-         Team = "Alliance",
-         Coordinates = {
-            { x = 0.533, y = 0.719 },
-         },
-         Recipes = {
-            { ID = 21894, Type = RRS("Tailoring"), Skill = 345, Cost = 40000 },
-            { ID = 21902, Type = RRS("Tailoring"), Skill = 355, Cost = 80000 },
-         },
-      },
-      {
-         Name = RRS("Boulderfist Warrior"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.478, y = 0.517 },
-         },
-         Recipes = {
-            { ID = 23611, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Coreiel"),
+         Name = RRS("Provisioner Nasela"),
          Team = "Horde",
          Coordinates = {
-            { x = 0.428, y = 0.426 },
+            { x = 0.535, y = 0.369 },
          },
          Recipes = {
-            { ID = 24208, Type = RRS("Jewelcrafting"), Skill = 350, Cost = 120000 },
+            { ID = 25741, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("The Mag'har"), Level = 5 },
+            { ID = 25743, Type = RRS("Leatherworking"), Skill = 350, Cost = 120000, Faction = RRS("The Mag'har"), Level = 7 },
+            { ID = 25742, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("The Mag'har"), Level = 6 },
+            { ID = 29664, Type = RRS("Leatherworking"), Skill = 325, Cost = 50000, Faction = RRS("The Mag'har"), Level = 6 },
+            { ID = 22917, Type = RRS("Alchemy"), Skill = 350, Cost = 80000, Faction = RRS("The Mag'har"), Level = 7 },
+            { ID = 34174, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("The Mag'har"), Level = 6 },
+            { ID = 34172, Type = RRS("Leatherworking"), Skill = 345, Cost = 160000, Faction = RRS("The Mag'har"), Level = 6 },
          },
       },
       {
-         Name = RRS("Mathar G'ochar"),
-         Team = "Horde",
+         Name = RRS("Trader Narasu"),
+         Team = "Alliance",
          Coordinates = {
-            { x = 0.552, y = 0.37 },
+            { x = 0.546, y = 0.752 },
          },
          Recipes = {
-            { ID = 21894, Type = RRS("Tailoring"), Skill = 345, Cost = 40000 },
-            { ID = 21893, Type = RRS("Tailoring"), Skill = 340, Cost = 40000 },
-            { ID = 21902, Type = RRS("Tailoring"), Skill = 355, Cost = 80000 },
-         },
-      },
-      {
-         Name = RRS("Murkblood Raider"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.315, y = 0.435 },
-         },
-         Recipes = {
-            { ID = 23608, Type = RRS("Blacksmithing"), Skill = 360, Cost = 0 },
+            { ID = 29217, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("Kurenai"), Level = 5 },
+            { ID = 29218, Type = RRS("Leatherworking"), Skill = 350, Cost = 120000, Faction = RRS("Kurenai"), Level = 7 },
+            { ID = 29219, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("Kurenai"), Level = 6 },
+            { ID = 30444, Type = RRS("Leatherworking"), Skill = 325, Cost = 50000, Faction = RRS("Kurenai"), Level = 6 },
+            { ID = 30443, Type = RRS("Alchemy"), Skill = 350, Cost = 80000, Faction = RRS("Kurenai"), Level = 7 },
+            { ID = 34175, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Kurenai"), Level = 6 },
+            { ID = 34173, Type = RRS("Leatherworking"), Skill = 345, Cost = 160000, Faction = RRS("Kurenai"), Level = 6 },
          },
       },
       {
@@ -5692,46 +4104,39 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Paulsta'ats"),
-         Team = "Neutral",
+         Name = RRS("Uriku"),
+         Team = "Alliance",
          Coordinates = {
-            { x = 0.302, y = 0.571 },
+            { x = 0.562, y = 0.733 },
          },
          Recipes = {
-            { ID = 25733, Type = RRS("Leatherworking"), Skill = 350, Cost = 140000, Faction = RRS("The Consortium"), Level = 6 },
-            { ID = 25732, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("The Consortium"), Level = 5 },
-            { ID = 25734, Type = RRS("Leatherworking"), Skill = 350, Cost = 140000, Faction = RRS("The Consortium"), Level = 7 },
-            { ID = 28274, Type = RRS("Enchanting"), Skill = 325, Cost = 40000, Faction = RRS("The Consortium"), Level = 5 },
-            { ID = 22552, Type = RRS("Enchanting"), Skill = 340, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
-            { ID = 23874, Type = RRS("Engineering"), Skill = 350, Cost = 80000, Faction = RRS("The Consortium"), Level = 7 },
-            { ID = 24314, Type = RRS("Tailoring"), Skill = 340, Cost = 40000, Faction = RRS("The Consortium"), Level = 6 },
-            { ID = 24178, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("The Consortium"), Level = 7 },
-            { ID = 32412, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 8 },
-            { ID = 23134, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
-            { ID = 23136, Type = RRS("Jewelcrafting"), Skill = 305, Cost = 50000, Faction = RRS("The Consortium"), Level = 5 },
-            { ID = 23155, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
-            { ID = 23146, Type = RRS("Jewelcrafting"), Skill = 315, Cost = 60000, Faction = RRS("The Consortium"), Level = 5 },
-            { ID = 23150, Type = RRS("Jewelcrafting"), Skill = 315, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
-            { ID = 25908, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 6 },
-            { ID = 33622, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 8 },
-            { ID = 33156, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("The Consortium"), Level = 7 },
-            { ID = 33305, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("The Consortium"), Level = 7 },
+            { ID = 27697, Type = RRS("Cooking"), Skill = 320, Cost = 30000 },
+            { ID = 27698, Type = RRS("Cooking"), Skill = 320, Cost = 30000 },
+            { ID = 27691, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
+            { ID = 27693, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
          },
       },
       {
-         Name = RRS("Provisioner Nasela"),
-         Team = "Horde",
+         Name = RRS("Borto"),
+         Team = "Alliance",
          Coordinates = {
-            { x = 0.535, y = 0.369 },
+            { x = 0.533, y = 0.719 },
          },
          Recipes = {
-            { ID = 25741, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("The Mag'har"), Level = 5 },
-            { ID = 25743, Type = RRS("Leatherworking"), Skill = 350, Cost = 120000, Faction = RRS("The Mag'har"), Level = 7 },
-            { ID = 25742, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("The Mag'har"), Level = 6 },
-            { ID = 29664, Type = RRS("Leatherworking"), Skill = 325, Cost = 50000, Faction = RRS("The Mag'har"), Level = 6 },
-            { ID = 34174, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("The Mag'har"), Level = 6 },
-            { ID = 34172, Type = RRS("Leatherworking"), Skill = 345, Cost = 160000, Faction = RRS("The Mag'har"), Level = 6 },
-            { ID = 22917, Type = RRS("Alchemy"), Skill = 350, Cost = 80000, Faction = RRS("The Mag'har"), Level = 7 },
+            { ID = 21894, Type = RRS("Tailoring"), Skill = 345, Cost = 40000 },
+            { ID = 21902, Type = RRS("Tailoring"), Skill = 355, Cost = 80000 },
+         },
+      },
+      {
+         Name = RRS("Mathar G'ochar"),
+         Team = "Horde",
+         Coordinates = {
+            { x = 0.552, y = 0.37 },
+         },
+         Recipes = {
+            { ID = 21894, Type = RRS("Tailoring"), Skill = 345, Cost = 40000 },
+            { ID = 21893, Type = RRS("Tailoring"), Skill = 340, Cost = 40000 },
+            { ID = 21902, Type = RRS("Tailoring"), Skill = 355, Cost = 80000 },
          },
       },
       {
@@ -5757,42 +4162,50 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Trader Narasu"),
-         Team = "Alliance",
+         Name = RRS("Paulsta'ats"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.546, y = 0.752 },
+            { x = 0.305, y = 0.569 },
          },
          Recipes = {
-            { ID = 29217, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("Kurenai"), Level = 5 },
-            { ID = 29218, Type = RRS("Leatherworking"), Skill = 350, Cost = 120000, Faction = RRS("Kurenai"), Level = 7 },
-            { ID = 29219, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("Kurenai"), Level = 6 },
-            { ID = 30444, Type = RRS("Leatherworking"), Skill = 325, Cost = 50000, Faction = RRS("Kurenai"), Level = 6 },
-            { ID = 34175, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Kurenai"), Level = 6 },
-            { ID = 34173, Type = RRS("Leatherworking"), Skill = 345, Cost = 160000, Faction = RRS("Kurenai"), Level = 6 },
-            { ID = 30443, Type = RRS("Alchemy"), Skill = 350, Cost = 80000, Faction = RRS("Kurenai"), Level = 7 },
+            { ID = 25733, Type = RRS("Leatherworking"), Skill = 350, Cost = 140000, Faction = RRS("The Consortium"), Level = 6 },
+            { ID = 25732, Type = RRS("Leatherworking"), Skill = 340, Cost = 120000, Faction = RRS("The Consortium"), Level = 5 },
+            { ID = 25734, Type = RRS("Leatherworking"), Skill = 350, Cost = 140000, Faction = RRS("The Consortium"), Level = 7 },
+            { ID = 28274, Type = RRS("Enchanting"), Skill = 325, Cost = 40000, Faction = RRS("The Consortium"), Level = 5 },
+            { ID = 22552, Type = RRS("Enchanting"), Skill = 340, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
+            { ID = 23874, Type = RRS("Engineering"), Skill = 350, Cost = 80000, Faction = RRS("The Consortium"), Level = 7 },
+            { ID = 24314, Type = RRS("Tailoring"), Skill = 340, Cost = 40000, Faction = RRS("The Consortium"), Level = 6 },
+            { ID = 24178, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("The Consortium"), Level = 7 },
+            { ID = 32412, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 8 },
+            { ID = 23134, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
+            { ID = 23136, Type = RRS("Jewelcrafting"), Skill = 305, Cost = 50000, Faction = RRS("The Consortium"), Level = 5 },
+            { ID = 23155, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
+            { ID = 23146, Type = RRS("Jewelcrafting"), Skill = 315, Cost = 60000, Faction = RRS("The Consortium"), Level = 5 },
+            { ID = 23150, Type = RRS("Jewelcrafting"), Skill = 315, Cost = 60000, Faction = RRS("The Consortium"), Level = 6 },
+            { ID = 25908, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 6 },
+            { ID = 33622, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 8 },
+            { ID = 33156, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("The Consortium"), Level = 7 },
+            { ID = 33305, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("The Consortium"), Level = 7 },
          },
       },
       {
-         Name = RRS("Uriku"),
+         Name = RRS("Aldraan"),
          Team = "Alliance",
          Coordinates = {
-            { x = 0.562, y = 0.733 },
+            { x = 0.424, y = 0.438 },
          },
          Recipes = {
-            { ID = 27697, Type = RRS("Cooking"), Skill = 320, Cost = 30000 },
-            { ID = 27698, Type = RRS("Cooking"), Skill = 320, Cost = 30000 },
-            { ID = 27691, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
-            { ID = 27693, Type = RRS("Cooking"), Skill = 325, Cost = 30000 },
+            { ID = 24208, Type = RRS("Jewelcrafting"), Skill = 350, Cost = 120000 },
          },
       },
       {
-         Name = RRS("Vir'aani Arcanist"),
-         Team = "Hostile",
+         Name = RRS("Coreiel"),
+         Team = "Horde",
          Coordinates = {
-            { x = 0.377, y = 0.634 },
+            { x = 0.428, y = 0.426 },
          },
          Recipes = {
-            { ID = 22923, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
+            { ID = 24208, Type = RRS("Jewelcrafting"), Skill = 350, Cost = 120000 },
          },
       },
    },
@@ -5802,244 +4215,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 3,
    MapFile = "Shadowmoon-Valley",
-   MapScale = 0.314931961607827,
-   MapOffset = { x = 0.502233167949141, y = 0.667307783312341 },
    Vendors = {
-      {
-         Name = RRS("Arrond"),
-         Team = "Neutral",
-         Coordinates = {
-            { x = 0.559, y = 0.582 },
-         },
-         Recipes = {
-            { ID = 21900, Type = RRS("Tailoring"), Skill = 360, Cost = 60000 },
-            { ID = 21901, Type = RRS("Tailoring"), Skill = 360, Cost = 60000 },
-         },
-      },
-      {
-         Name = RRS("Ashtongue Warrior"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.585, y = 0.363 },
-         },
-         Recipes = {
-            { ID = 23613, Type = RRS("Blacksmithing"), Skill = 370, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Coilskar Siren"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.465, y = 0.285 },
-         },
-         Recipes = {
-            { ID = 34689, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Crazed Murkblood Foreman"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.723, y = 0.893 },
-         },
-         Recipes = {
-            { ID = 23613, Type = RRS("Blacksmithing"), Skill = 370, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Crazed Murkblood Miner"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.723, y = 0.863 },
-         },
-         Recipes = {
-            { ID = 23613, Type = RRS("Blacksmithing"), Skill = 370, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Daggle Ironshaper"),
-         Team = "Alliance",
-         Coordinates = {
-            { x = 0.368, y = 0.544 },
-         },
-         Recipes = {
-            { ID = 23807, Type = RRS("Engineering"), Skill = 335, Cost = 60000 },
-         },
-      },
-      {
-         Name = RRS("Dark Conclave Shadowmancer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.375, y = 0.323 },
-         },
-         Recipes = {
-            { ID = 24158, Type = RRS("Jewelcrafting"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Deathforge Guardian"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.405, y = 0.375 },
-         },
-         Recipes = {
-            { ID = 23609, Type = RRS("Blacksmithing"), Skill = 360, Cost = 0 },
-            { ID = 31681, Type = RRS("Alchemy"), Skill = 345, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Deathforge Imp"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.405, y = 0.391 },
-         },
-         Recipes = {
-            { ID = 31681, Type = RRS("Alchemy"), Skill = 345, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Deathforge Smith"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.375, y = 0.421 },
-         },
-         Recipes = {
-            { ID = 31681, Type = RRS("Alchemy"), Skill = 345, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Deathforge Tinkerer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.393, y = 0.361 },
-         },
-         Recipes = {
-            { ID = 31681, Type = RRS("Alchemy"), Skill = 345, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eclipsion Archmage"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.465, y = 0.690 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-            { ID = 28276, Type = RRS("Enchanting"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eclipsion Blood Knight"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.497, y = 0.595 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eclipsion Bloodwarder"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.485, y = 0.623 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eclipsion Cavalier"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.512, y = 0.603 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eclipsion Centurion"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.465, y = 0.645 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eclipsion Soldier"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.511, y = 0.601 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eclipsion Spellbinder"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.526, y = 0.661 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Enraged Air Spirit"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.645, y = 0.587 },
-         },
-         Recipes = {
-            { ID = 23612, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-            { ID = 33174, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Enraged Earth Spirit"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.465, y = 0.408 },
-         },
-         Recipes = {
-            { ID = 33174, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Enraged Fire Spirit"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.495, y = 0.495 },
-         },
-         Recipes = {
-            { ID = 23612, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-            { ID = 33174, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Enraged Water Spirit"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.482, y = 0.217 },
-         },
-         Recipes = {
-            { ID = 33174, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Illidari Watcher"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.528, y = 0.684 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Krek Cragcrush"),
          Team = "Horde",
@@ -6064,55 +4240,24 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Mo'arg Weaponsmith"),
-         Team = "Hostile",
+         Name = RRS("Arrond"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.255, y = 0.315 },
+            { x = 0.559, y = 0.582 },
          },
          Recipes = {
-            { ID = 23806, Type = RRS("Engineering"), Skill = 360, Cost = 0 },
-            { ID = 31680, Type = RRS("Alchemy"), Skill = 335, Cost = 0 },
+            { ID = 21900, Type = RRS("Tailoring"), Skill = 360, Cost = 60000 },
+            { ID = 21901, Type = RRS("Tailoring"), Skill = 360, Cost = 60000 },
          },
       },
       {
-         Name = RRS("Shadow Council Warlock"),
-         Team = "Hostile",
+         Name = RRS("Daggle Ironshaper"),
+         Team = "Alliance",
          Coordinates = {
-            { x = 0.229, y = 0.382 },
+            { x = 0.368, y = 0.544 },
          },
          Recipes = {
-            { ID = 31680, Type = RRS("Alchemy"), Skill = 335, Cost = 0 },
-            { ID = 22924, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Terrormaster"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.255, y = 0.375 },
-         },
-         Recipes = {
-            { ID = 31680, Type = RRS("Alchemy"), Skill = 335, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Torloth the Magnificent"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.512, y = 0.725 },
-         },
-         Recipes = {
-            { ID = 31682, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Wrathwalker"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.225, y = 0.345 },
-         },
-         Recipes = {
-            { ID = 31680, Type = RRS("Alchemy"), Skill = 335, Cost = 0 },
+            { ID = 23807, Type = RRS("Engineering"), Skill = 335, Cost = 60000 },
          },
       },
    },
@@ -6122,23 +4267,7 @@ RecipeRadar_RegionData = {
    IsCity = false,
    Continent = 3,
    MapFile = "Netherstorm",
-   MapScale = 0.319226629393204,
-   MapOffset = { x = 0.430180448319852, y = 0.0313595727604036 },
    Vendors = {
-      {
-         Name = RRS("Asarnan"),
-         Team = "Neutral",
-         Coordinates = {
-            { x = 0.442, y = 0.337 },
-         },
-         Recipes = {
-            { ID = 6342, Type = RRS("Enchanting"), Skill = 20, Cost = 300 },
-            { ID = 20753, Type = RRS("Enchanting"), Skill = 200, Cost = 4000 },
-            { ID = 20752, Type = RRS("Enchanting"), Skill = 150, Cost = 3000 },
-            { ID = 20758, Type = RRS("Enchanting"), Skill = 45, Cost = 500 },
-            { ID = 22307, Type = RRS("Tailoring"), Skill = 225, Cost = 6000 },
-         },
-      },
       {
          Name = RRS("Dealer Malij"),
          Team = "Neutral",
@@ -6151,26 +4280,6 @@ RecipeRadar_RegionData = {
             { ID = 20752, Type = RRS("Enchanting"), Skill = 150, Cost = 3000 },
             { ID = 20758, Type = RRS("Enchanting"), Skill = 45, Cost = 500 },
             { ID = 22307, Type = RRS("Tailoring"), Skill = 225, Cost = 6000 },
-         },
-      },
-      {
-         Name = RRS("Disembodied Protector"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.345, y = 0.558 },
-         },
-         Recipes = {
-            { ID = 23610, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Ethereum Nullifier"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.585, y = 0.346 },
-         },
-         Recipes = {
-            { ID = 22530, Type = RRS("Enchanting"), Skill = 320, Cost = 0 },
          },
       },
       {
@@ -6201,63 +4310,17 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Mageslayer"),
-         Team = "Hostile",
+         Name = RRS("Asarnan"),
+         Team = "Neutral",
          Coordinates = {
-            { x = 0.566, y = 0.878 },
+            { x = 0.442, y = 0.337 },
          },
          Recipes = {
-            { ID = 24162, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Sunfury Archer"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.555, y = 0.795 },
-         },
-         Recipes = {
-            { ID = 33804, Type = RRS("Engineering"), Skill = 335, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Sunfury Bloodwarder"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.225, y = 0.722 },
-         },
-         Recipes = {
-            { ID = 23639, Type = RRS("Blacksmithing"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Sunfury Bowman"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.589, y = 0.668 },
-         },
-         Recipes = {
-            { ID = 23808, Type = RRS("Engineering"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Sunfury Researcher"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.525, y = 0.855 },
-         },
-         Recipes = {
-            { ID = 22551, Type = RRS("Enchanting"), Skill = 340, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Voidshrieker"),
-         Team = "Hostile",
-         Coordinates = {
-            { x = 0.678, y = 0.406 },
-         },
-         Recipes = {
-            { ID = 28277, Type = RRS("Enchanting"), Skill = 350, Cost = 0 },
+            { ID = 6342, Type = RRS("Enchanting"), Skill = 20, Cost = 300 },
+            { ID = 20753, Type = RRS("Enchanting"), Skill = 200, Cost = 4000 },
+            { ID = 20752, Type = RRS("Enchanting"), Skill = 150, Cost = 3000 },
+            { ID = 20758, Type = RRS("Enchanting"), Skill = 45, Cost = 500 },
+            { ID = 22307, Type = RRS("Tailoring"), Skill = 225, Cost = 6000 },
          },
       },
    },
@@ -6267,25 +4330,7 @@ RecipeRadar_RegionData = {
    IsCity = true,
    Continent = 3,
    MapFile = "Shattrath-City",
-   MapScale = 0.0747964304809026,
-   MapOffset = { x = 0.392850945850875, y = 0.626598828428856 },
    Vendors = {
-      {
-         Name = RRS("The Rokk"),
-         Team = "Neutral",
-         Notes = RRS("Quest"),
-         Coordinates = {
-            { x = 0.615, y = 0.168 },
-         },
-         Recipes = {
-            { ID = 33925, Type = RRS("Cooking"), Skill = 1, Cost = 0 },
-            { ID = 33869, Type = RRS("Cooking"), Skill = 300, Cost = 0 },
-            { ID = 33871, Type = RRS("Cooking"), Skill = 300, Cost = 0 },
-            { ID = 33875, Type = RRS("Cooking"), Skill = 300, Cost = 0 },
-            { ID = 33870, Type = RRS("Cooking"), Skill = 325, Cost = 0 },
-            { ID = 33873, Type = RRS("Cooking"), Skill = 325, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Eiin"),
          Team = "Neutral",
@@ -6404,13 +4449,13 @@ RecipeRadar_RegionData = {
          Name = RRS("Almaador"),
          Team = "Neutral",
          Coordinates = {
-            { x = 0.471, y = 0.33 },
+            { x = 0.51, y = 0.417 },
          },
          Recipes = {
             { ID = 28273, Type = RRS("Enchanting"), Skill = 350, Cost = 60000, Faction = RRS("The Sha'tar"), Level = 6 },
             { ID = 28281, Type = RRS("Enchanting"), Skill = 350, Cost = 60000, Faction = RRS("The Sha'tar"), Level = 7 },
             { ID = 22537, Type = RRS("Enchanting"), Skill = 370, Cost = 100000, Faction = RRS("The Sha'tar"), Level = 7 },
-            { ID = 29717, Type = RRS("Leatherworking"), Skill = 365, Cost = 120000, Faction = RRS("The Sha'tar"), Level = 8 },
+            { ID = 29717, Type = RRS("Leatherworking"), Skill = 365, Cost = 120000, Faction = RRS("The Sha'tar"), Level = 6 },
             { ID = 30826, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("The Sha'tar"), Level = 6 },
             { ID = 24182, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 120000, Faction = RRS("The Sha'tar"), Level = 7 },
             { ID = 25904, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Sha'tar"), Level = 5 },
@@ -6435,9 +4480,10 @@ RecipeRadar_RegionData = {
             { ID = 23138, Type = RRS("Jewelcrafting"), Skill = 325, Cost = 60000, Faction = RRS("Lower City"), Level = 5 },
             { ID = 22910, Type = RRS("Alchemy"), Skill = 350, Cost = 80000, Faction = RRS("Lower City"), Level = 7 },
             { ID = 31357, Type = RRS("Alchemy"), Skill = 300, Cost = 40000, Faction = RRS("Lower City"), Level = 8 },
-            { ID = 34200, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Lower City"), Level = 7 },
             { ID = 33148, Type = RRS("Enchanting"), Skill = 300, Cost = 100000, Faction = RRS("Lower City"), Level = 8 },
             { ID = 33157, Type = RRS("Jewelcrafting"), Skill = 360, Cost = 120000, Faction = RRS("Lower City"), Level = 7 },
+            { ID = 22538, Type = RRS("Enchanting"), Skill = 375, Cost = 200000, Faction = RRS("Lower City"), Level = 6 },
+            { ID = 34200, Type = RRS("Leatherworking"), Skill = 350, Cost = 160000, Faction = RRS("Lower City"), Level = 7 },
          },
       },
       {
@@ -6536,6 +4582,18 @@ RecipeRadar_RegionData = {
             { ID = 23811, Type = RRS("Engineering"), Skill = 335, Cost = 60000 },
          },
       },
+      {
+         Name = RRS("Eebee Jinglepocket"),
+         Team = "Neutral",
+         Notes = RRS("Seasonal: 12"),
+         Coordinates = {
+            { x = 0.501, y = 0.317 },
+         },
+         Recipes = {
+            { ID = 17201, Type = RRS("Cooking"), Skill = 35, Cost = 200 },
+            { ID = 17200, Type = RRS("Cooking"), Skill = 1, Cost = 25 },
+         },
+      },
    },
 },
 
@@ -6544,13 +4602,6 @@ RecipeRadar_RegionData = {
    Continent = 0,
    MapFile = "Ruins-of-Ahn-Qiraj",
    Vendors = {
-      {
-         Name = RRS("Moam"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22220, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Lieutenant General Andorov"),
          Team = "Neutral",
@@ -6562,33 +4613,11 @@ RecipeRadar_RegionData = {
    },
 },
 
-[RRS("Temple of Ahn'Qiraj")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Temple-of-Ahn-Qiraj",
-   Vendors = {
-      {
-         Name = RRS("The Prophet Skeram"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22222, Type = RRS("Blacksmithing"), Skill = 300, Cost = 0 },
-         },
-      },
-   },
-},
-
 [RRS("Karazhan")] = {
    IsCity = false,
    Continent = 0,
    MapFile = "Karazhan",
    Vendors = {
-      {
-         Name = RRS("Attumen the Huntsman"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 23809, Type = RRS("Engineering"), Skill = 375, Cost = 0 },
-         },
-      },
       {
          Name = RRS("Koren"),
          Team = "Neutral",
@@ -6599,381 +4628,12 @@ RecipeRadar_RegionData = {
          },
       },
       {
-         Name = RRS("Moroes"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22559, Type = RRS("Enchanting"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Phantom Attendant"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 21903, Type = RRS("Tailoring"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Phantom Stagehand"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22545, Type = RRS("Enchanting"), Skill = 370, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Phantom Valet"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 21904, Type = RRS("Tailoring"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Shade of Aran"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22560, Type = RRS("Enchanting"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Terestian Illhoof"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22561, Type = RRS("Enchanting"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Ythyar"),
          Team = "Neutral",
          Recipes = {
             { ID = 22535, Type = RRS("Enchanting"), Skill = 360, Cost = 100000, Faction = RRS("The Consortium"), Level = 7 },
             { ID = 25903, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 7 },
             { ID = 25902, Type = RRS("Jewelcrafting"), Skill = 365, Cost = 120000, Faction = RRS("The Consortium"), Level = 6 },
-         },
-      },
-   },
-},
-
-[RRS("Sethekk Halls")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Sethekk-Halls",
-   Vendors = {
-      {
-         Name = RRS("Darkweaver Syth"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24160, Type = RRS("Jewelcrafting"), Skill = 355, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Sethekk Ravenguard"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 25731, Type = RRS("Leatherworking"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Time-Lost Shadowmage"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 29669, Type = RRS("Leatherworking"), Skill = 340, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Arcatraz")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Arcatraz",
-   Vendors = {
-      {
-         Name = RRS("Arcatraz Sentinel"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 21905, Type = RRS("Tailoring"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Dalliah the Doomsayer"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24308, Type = RRS("Tailoring"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Eredar Deathbringer"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22556, Type = RRS("Enchanting"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Gargantuan Abyssal"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 29672, Type = RRS("Leatherworking"), Skill = 340, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Unchained Doombringer"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 23606, Type = RRS("Blacksmithing"), Skill = 360, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("Auchenai Crypts")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Auchenai-Crypts",
-   Vendors = {
-      {
-         Name = RRS("Auchenai Monk"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 23605, Type = RRS("Blacksmithing"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Raging Skeleton"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22544, Type = RRS("Enchanting"), Skill = 340, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("Mana-Tombs")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Mana-Tombs",
-   Vendors = {
-      {
-         Name = RRS("Ethereal Priest"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22543, Type = RRS("Enchanting"), Skill = 320, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Nexus-Prince Shaffar"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22921, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Nexus Stalker"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 23615, Type = RRS("Blacksmithing"), Skill = 370, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Botanica")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Botanica",
-   Vendors = {
-      {
-         Name = RRS("High Botanist Freywinn"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 23617, Type = RRS("Blacksmithing"), Skill = 370, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Sunseeker Botanist"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24172, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Thorngrin the Tender"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24310, Type = RRS("Tailoring"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Warp Splinter"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24311, Type = RRS("Tailoring"), Skill = 375, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Mechanar")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Mechanar",
-   Vendors = {
-      {
-         Name = RRS("Nethermancer Sepethrea"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22920, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Pathaleon the Calculator"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 21907, Type = RRS("Tailoring"), Skill = 370, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Sunseeker Astromage"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 21906, Type = RRS("Tailoring"), Skill = 360, Cost = 0 },
-            { ID = 22920, Type = RRS("Alchemy"), Skill = 360, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Shattered Halls")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Shattered-Halls",
-   Vendors = {
-      {
-         Name = RRS("Grand Warlock Nethekurse"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24312, Type = RRS("Tailoring"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Shattered Hand Centurion"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22554, Type = RRS("Enchanting"), Skill = 350, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Steamvault")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Steamvault",
-   Vendors = {
-      {
-         Name = RRS("Coilfang Oracle"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22533, Type = RRS("Enchanting"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Coilfang Sorceress"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24159, Type = RRS("Jewelcrafting"), Skill = 355, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Hydromancer Thespia"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 29673, Type = RRS("Leatherworking"), Skill = 340, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Mekgineer Steamrigger"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 23887, Type = RRS("Engineering"), Skill = 355, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Warlord Kalithresh"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24313, Type = RRS("Tailoring"), Skill = 375, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("Shadow Labyrinth")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "Shadow-Labyrinth",
-   Vendors = {
-      {
-         Name = RRS("Cabal Fanatic"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 23607, Type = RRS("Blacksmithing"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Blackheart the Inciter"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 25728, Type = RRS("Leatherworking"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Murmur"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24309, Type = RRS("Tailoring"), Skill = 375, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Slave Pens")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Slave-Pens",
-   Vendors = {
-      {
-         Name = RRS("Mennu the Betrayer"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 29674, Type = RRS("Leatherworking"), Skill = 340, Cost = 0 },
-         },
-      },
-   },
-},
-
-[RRS("The Black Morass")] = {
-   IsCity = false,
-   Continent = 0,
-   MapFile = "The-Black-Morass",
-   Vendors = {
-      {
-         Name = RRS("Rift Keeper"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 25730, Type = RRS("Leatherworking"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Rift Lord"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 25730, Type = RRS("Leatherworking"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Chrono Lord Deja"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 29675, Type = RRS("Leatherworking"), Skill = 340, Cost = 0 },
          },
       },
    },
@@ -6989,27 +4649,6 @@ RecipeRadar_RegionData = {
          Team = "Neutral",
          Recipes = {
             { ID = 22539, Type = RRS("Enchanting"), Skill = 325, Cost = 60000 },
-         },
-      },
-      {
-         Name = RRS("Captain Skarloc"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 22927, Type = RRS("Alchemy"), Skill = 365, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Durnholde Rifleman"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 25729, Type = RRS("Leatherworking"), Skill = 350, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Epoch Hunter"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 24173, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 0 },
          },
       },
       {
@@ -7059,48 +4698,6 @@ RecipeRadar_RegionData = {
    MapFile = "Hyjal-Summit",
    Vendors = {
       {
-         Name = RRS("Anetheron"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 32285, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32289, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32295, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32296, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32297, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32298, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32303, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32307, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Archimonde"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 32285, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32289, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32295, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32296, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32297, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32298, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32303, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32307, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
-         Name = RRS("Azgalor"),
-         Team = "Hostile",
-         Recipes = {
-            { ID = 32285, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32289, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32295, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32296, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32297, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32298, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32303, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32307, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-         },
-      },
-      {
          Name = RRS("Indormi"),
          Team = "Neutral",
          Recipes = {
@@ -7132,32 +4729,82 @@ RecipeRadar_RegionData = {
             { ID = 32292, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("The Scale of the Sands"), Level = 7 },
          },
       },
+   },
+},
+
+[RRS("Isle of Quel'Danas")] = {
+   IsCity = false,
+   Continent = 2,
+   MapFile = "Isle-of-Quel-Danas",
+   Vendors = {
       {
-         Name = RRS("Kaz'rogal"),
-         Team = "Hostile",
+         Name = RRS("Eldara Dawnrunner"),
+         Team = "Neutral",
+         Coordinates = {
+            { x = 0.473, y = 0.308 },
+         },
          Recipes = {
-            { ID = 32285, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32289, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32295, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32296, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32297, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32298, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32303, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32307, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
+            { ID = 34872, Type = RRS("Enchanting"), Skill = 360, Cost = 150000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35500, Type = RRS("Enchanting"), Skill = 360, Cost = 150000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35505, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 150000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35502, Type = RRS("Jewelcrafting"), Skill = 370, Cost = 150000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35697, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35699, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35695, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35696, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35698, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35708, Type = RRS("Jewelcrafting"), Skill = 350, Cost = 120000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35769, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 500000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35766, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 500000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35767, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 500000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35768, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 500000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35755, Type = RRS("Alchemy"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35752, Type = RRS("Alchemy"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35754, Type = RRS("Alchemy"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35753, Type = RRS("Alchemy"), Skill = 375, Cost = 250000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
          },
       },
       {
-         Name = RRS("Rage Winterchill"),
-         Team = "Hostile",
+         Name = RRS("Shaani"),
+         Team = "Neutral",
+         Coordinates = {
+            { x = 0.52, y = 0.33 },
+         },
          Recipes = {
-            { ID = 32285, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32289, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32295, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32296, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32297, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32298, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32303, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
-            { ID = 32307, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 0 },
+            { ID = 35264, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35244, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35261, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35250, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35263, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35249, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35260, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35248, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35262, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35256, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35245, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35255, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35246, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 5 },
+            { ID = 35269, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35254, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35253, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35268, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35239, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35266, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35240, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35238, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35251, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 6 },
+            { ID = 35252, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35259, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35241, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35271, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 7 },
+            { ID = 35267, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35270, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35258, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35242, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35247, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35265, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35257, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
+            { ID = 35243, Type = RRS("Jewelcrafting"), Skill = 375, Cost = 60000, Faction = RRS("Shattered Sun Offensive"), Level = 8 },
          },
       },
    },
@@ -7165,6 +4812,6 @@ RecipeRadar_RegionData = {
 
 }
 
-RecipeRadar_MaxVendorsByLocation = 30
+RecipeRadar_MaxVendorsByLocation = 21
 RecipeRadar_MaxVendorCoordinates = 5
 

@@ -1,4 +1,6 @@
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -83,29 +85,29 @@ L:RegisterTranslations("frFR", function() return {
 	["%s has joined your group."] = "%s a rejoint votre groupe.",
 	["%s has left your group."] = "%s a quitté votre groupe.",
 	["You have joined group %d."] = "Vous avez rejoint le groupe %d.",
-	["Player"] = "Changement de groupe",
-	["Print a notification when you are changed to another group."] = "Préviens quand vous êtes changé de groupe.",
-	["Others"] = "Changement de membres",
-	["Print a notification when your group members are changed."] = "Préviens quand la composition de votre groupe a changé.",
+	["Player"] = "Joueur",
+	["Print a notification when you are changed to another group."] = "Prévient quand vous êtes changé de groupe.",
+	["Others"] = "Autres",
+	["Print a notification when your group members are changed."] = "Prévient quand la composition de votre groupe a changé.",
 	["You are now in group %d."] = "Vous êtes maintenant dans le groupe %d.",
 	["%s has left your group."] = "%s a quitté votre groupe.",
 	["%s has joined your group."] = "%s a rejoint votre groupe.",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
-	["Group"] = "Gruppe",
+	["Group"] = "Gruppenänderung",
 	["Optional/Group"] = "Wahlweise/Gruppe",
-	["Options for group change notifications."] = "Optionen f\195\188r die Gruppen-Benachrichtigung",
-	["%s has joined your group."] = "%s ist deiner Gruppe beigetretten.",
-	["%s has left your group."] = "%s hat deine Gruppe verlassen",
-	["You have joined group %d."] = "Du bist der Gruppe %d beigetretten.",
-	["Player"] = "\195\132nderung der Gruppe",
-	["Print a notification when you are changed to another group."] = "Benachrichtigen wenn die Gruppe ge\195\164ndert wird.",
-	["Others"] = "\195\132nderung der Mitglieder",
-	["Print a notification when your group members are changed."] = "Benachrichtigen wenn die Mitglieder deiner Gruppe ge\195\164ndert werden.",
+	["Options for group change notifications."] = "Optionen für Benachrichtigungen bei Gruppenänderungen.",
+	["%s has joined your group."] = "%s ist Deiner Gruppe beigetreten.",
+	["%s has left your group."] = "%s hat Deine Gruppe verlassen.",
+	["You have joined group %d."] = "Du bist der Gruppe %d beigetreten.",
+	["Player"] = "Spieler",
+	["Print a notification when you are changed to another group."] = "Benachrichtigung, wenn Du in eine andere Gruppe verschoben wurdest.",
+	["Others"] = "Andere",
+	["Print a notification when your group members are changed."] = "Benachrichtigung, wenn ein Mitglied Deiner Gruppe verschoben wurde.",
 	["You are now in group %d."] = "Du bist nun in Gruppe %d.",
-	["%s has left your group."] = "%s hat deine Gruppe verlassen.",
-	["%s has joined your group."] = "%s ist deiner Gruppe beigetretten.",
+	["%s has left your group."] = "%s hat Deine Gruppe verlassen.",
+	["%s has joined your group."] = "%s ist Deiner Gruppe beigetreten.",
 } end )
 
 ----------------------------------
@@ -146,16 +148,24 @@ mod.consoleOptions = {
 ------------------------------
 
 function mod:OnEnable()
+	self:RegisterEvent("oRA_JoinedRaid")
+end
+
+function mod:OnDisable()
+	for k in pairs(groups) do groups[k] = nil end
+end
+
+------------------------
+--   Event Handlers   --
+------------------------
+
+function mod:oRA_JoinedRaid()
 	for i = 1, GetNumRaidMembers() do
 		local n, _, group = GetRaidRosterInfo(i)
 		groups[n] = group
 	end
 	self:RegisterBucketEvent("RAID_ROSTER_UPDATE", 2)
 end
-
-------------------------
---   Event Handlers   --
-------------------------
 
 function mod:RAID_ROSTER_UPDATE()
 	local oldPlayerGroup = groups[player]

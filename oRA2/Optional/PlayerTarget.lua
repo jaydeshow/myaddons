@@ -1,4 +1,6 @@
-﻿assert(oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -6,7 +8,7 @@
 
 local L = AceLibrary("AceLocale-2.2"):new("oRAOPlayerTarget")
 local tablet = AceLibrary("Tablet-2.0")
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 local combatUpdate = nil
 
@@ -338,9 +340,9 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	["Player"] = "Joueur",
-	["PlayerTarget"] = "Cibles des joueurs (PT)",
+	["PlayerTarget"] = "Cibles des joueurs",
 	["Optional/PlayerTarget"] = "Optionnel/Cibles des joueurs",
-	["Options for the playertargets."] = "Optons concernant les PTs.",
+	["Options for the playertargets."] = "Optons concernant les cibles des joueurs.",
 	["Targettarget"] = "Cible de la cible",
 	["Toggle TargetTarget frames."] = "Affiche ou non les cadres de la cible de la cible.",
 	["Scale"] = "Échelle",
@@ -350,23 +352,23 @@ L:RegisterTranslations("frFR", function() return {
 	["Raidicon"] = "Icônes de raid",
 	["Toggle raid icons."] = "Affiche ou non les icônes de raid.",
 	["Frames"] = "Cadres",
-	["Options for the playertarget frames."] = "Options concernant les cadres des PTs.",
+	["Options for the playertarget frames."] = "Options concernant les cadres des cibles des joueurs.",
 	["Growup"] = "Vers le haut",
-	["Toggle growup."] = "Ajoute ou non les PTs vers le haut.",
-	["Inverse"] = "Inverser",
+	["Toggle growup."] = "Ajoute ou non les nouvelles entrées vers le haut.",
+	["Inverse"] = "Inverser les vies",
 	["Toggle inverse healthbar."] = "Inverse ou non le sens de remplissage des barres de vie.",
 	["Deficit"] = "Déficit",
 	["Toggle deficit health."] = "Affiche ou non le déficit en vie.",
 	["Target"] = "Cible",
 	["TargetTarget"] = "Cible de la cible",
-	["Set the maximum number of player tanks you want to show."] = "Nombre de joueurs à afficher.",
-	["Amount"] = "Nbre de joueurs",
-	["Classcolor"] = "Couleur classe",
+	["Set the maximum number of player tanks you want to show."] = "Définit le nombre maximal de joueurs que vous voulez afficher.",
+	["Amount"] = "Nombre",
+	["Classcolor"] = "Couleur de la classe",
 	["Color healthbars by class."] = "Colore les barres de vie selon la classe.",
-	["Enemycolor"] = "Couleur ennemi",
-	["Set the color for enemies. (used when classcolor is enabled)"] = "Détermine la couleur pour les ennemis. (utilisé si \"Couleur classe\" est activé)",
+	["Enemycolor"] = "Couleur des ennemis",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Détermine la couleur pour les ennemis. (utilisé si \"Couleur de la classe\" est activé)",
 	["Color Aggro"] = "Couleur d'aggro",
-	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Indique le statut de l'aggro des PTs selon la couleur de leurs noms. Orange s'ils ont la cible, Vert s'ils tankent, Rouge s'ils n'ont pas l'aggro.",
+	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Indique le statut de l'aggro des cibles des joueurs selon la couleur de leurs noms. Orange s'ils ont la cible, Vert s'ils tankent leur cible, Rouge s'ils n'ont pas l'aggro.",
 	["Backdrop"] = "Fond",
 	["Toggle the backdrop."] = "Affiche ou non le fond.",
 	["Highlight"] = "Surbrillance",
@@ -374,7 +376,7 @@ L:RegisterTranslations("frFR", function() return {
 	["Reverse"] = "Inverser l'ordre",
 	["Toggle reverse order."] = "Inverse ou non l'ordre d'affichage.",
 	["Numbers"] = "Numéros",
-	["Toggle showing of PT numbers."] = "Affiche ou non les numéros des PTs.",
+	["Toggle showing of PT numbers."] = "Affiche ou non les numéros des cibles des joueurs.",
 	["Tooltips"] = "Infobulles",
 	["Toggle showing of tooltips."] = "Affiche ou non les infobulles.",
 	["Show"] = "Afficher",
@@ -383,106 +385,115 @@ L:RegisterTranslations("frFR", function() return {
 	["Show targettarget."] = "Affiche la cible de la cible.",
 	["Define which frames you want to see."] = "Détermine les cadres que vous souhaitez voir.",
 	["Layout"] = "Style",
-	["Set the layout for the PT frames."] = "Détermine l'orientation des cadres des PTs.",
-	--["Vertical"] = true,
-	--["Horizontal"] = true,
+	["Set the layout for the PT frames."] = "Détermine l'orientation des cadres des cibles des joueurs.",
+	["Vertical"] = "Vertical",
+	["Horizontal"] = "Horizontal",
 
-	["Set"] = "Ajouter un joueur",
-	["Set a player."]= "Ajoute un joueur.",
+	["Set"] = "Définir",
+	["Set a player."]= "Définit un joueur.",
 	["<nr> <name>"] = "<n°> <nom>",
 	["<nr>"] = "<n°>",
 	["<name>"] = "<nom>",
-	["Remove"] = "Enlever un joueur",
-	["Remove a player."] = "Enlève un joueur",
-	["Removed player: "] = "Joueur enlevé : ",
-	["Set player: "] = "Joueur ajouté : ",
+	["Remove"] = "Enlever",
+	["Remove a player."] = "Enlève un joueur.",
+	["Removed player: "] = "Joueur enlevé : ",
+	["Set player: "] = "Joueur définit : ",
 
-	--["(%S+)%s*(.*)"] = true,
+	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
 
 	["<Not Assigned>"] = "<Non assigné>",
 
-	--["Style"] = true,
+	["Style"] = "Style",
 	["Set the frame style."] = "Détermine le style des cadres.",
-	--["<style>"] = true,
+	["<style>"] = "<style>",
 
 	["Default"] = "Défaut",
-	--["Compact"] = true,
+	["Compact"] = "Compact",
 
 	["Backwards"] = "Ordre inverse",
-	["Order PT|PTT|PTTT Backwards."] = "Ordonne MT|MTT|MTTT en sens inverse.",
+	["Order PT|PTT|PTTT Backwards."] = "Ordonne PT|PTT|PTTT en sens inverse.",
 
 	["Lock"] = "Verrouiller",
-	["Lock the PT frames."] = "Verrouille les cadres des PTs.",
+	["Lock the PT frames."] = "Verrouille les cadres des cibles des joueurs.",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
 	["Player"] = "Spieler",
 	["PlayerTarget"] = "PlayerTarget",
 	["Optional/PlayerTarget"] = "Wahlweise/PlayerTarget",
-	["Options for the playertargets."] = "Optionen f\195\188r PlayerTargets.",
+	["Options for the playertargets."] = "Optionen für PlayerTargets PT (Spielerziel(e)).",
 	["Targettarget"] = "Ziel des Zieles",
-	["Toggle TargetTarget frames."] = "Aktivert den Rahmen f\195\188r das Ziel des Zieles.",
-	["Scale"] = "Gr\195\182\195\159e",
-	["Set frame scale."] = "Setze die Rahmengr\195\182\195\159e",
+	["Toggle TargetTarget frames."] = "Aktiviert den Rahmen für das Ziel des Zieles.",
+	["Scale"] = "Größe",
+	["Set frame scale."] = "Setzt die Rahmengröße.",
 	["Alpha"] = "Transparenz",
-	["Set frame alpha."] = "Setze die Rahmentransparenz.",
+	["Set frame alpha."] = "Setzt die Rahmentransparenz.",
 	["Raidicon"] = "Schlachtzugssymbole",
-	["Toggle raid icons."] = "Schlachtzugssymbole ein-/ausschalten.",
+	["Toggle raid icons."] = "Schlachtzugssymbole ein-/ausblenden.",
 	["Frames"] = "Rahmen",
-	["Options for the playertarget frames."] = "Optionen f\195\188r den PlayerTarget Rahmen",
-	["Growup"] = "Aufbauen",
+	["Options for the playertarget frames."] = "Optionen für den PlayerTarget Rahmen",
+	["Growup"] = "Aufbauend",
 	["Toggle growup."] = "Baut den Rahmen nach oben auf.",
 	["Inverse"] = "Umkehren",
-	["Toggle inverse healthbar."] = "Aktiviert das Umkehren des Lebensbalkens.",
+	["Toggle inverse healthbar."] = "Umkehren des Lebensbalkens ein-/ausschalten.",
 	["Deficit"] = "Defizit",
-	["Toggle deficit health."] = "Anzeige des Lebensverlustes ein-/ausschalten.",
+	["Toggle deficit health."] = "Anzeige des Lebensdefizits ein-/ausschalten.",
 	["Target"] = "Ziel",
 	["TargetTarget"] = "Ziel des Zieles",
-	["Set the maximum number of player tanks you want to show."] = "Anzahl der angezeigten Spieler-Ziele.",
+	["Set the maximum number of player tanks you want to show."] = "Anzahl der angezeigten Spielerziele.",
 	["Amount"] = "Anzahl PlayerTargets",
 	["Classcolor"] = "Klassenfarbe",
-	["Color healthbars by class."] = "F\195\164rbt den Lebensbalken je nach Klasse ein.",
+	["Color healthbars by class."] = "Färbt den Lebensbalken je nach Klasse ein.",
 	["Enemycolor"] = "Feindfarbe",
-	["Set the color for enemies. (used when classcolor is enabled)"] = "Gegnerfarbe setzen. (Klassenfarben m\195\188ssen aktiviert sein.)",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Setzt die Farbe für Gegner. ('Klassenfarbe' muß aktiviert sein)",
 	["Color Aggro"] = "Aggro Farbe",
-	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Farbe für den Aggrostatus der PlayerTargets setzten. Orange hat Aggro, Gr\195\188n tankt, Rot hat keine Aggro.",
+	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Farbe für den Aggrostatus der PlayerTargets setzen. Orange hat Aggro, Grün tankt, Rot hat keine Aggro.",
 	["Backdrop"] = "Hintergrund",
 	["Toggle the backdrop."] = "Hintergrund ein-/ausschalten.",
 	["Highlight"] = "Hervorheben",
-	["Toggle highlighting your target."] = "Hervorheben deines Zieles ein-/ausschalten.",
-	["Reverse"] = "R\195\188ckw\195\164rts",
-	["Toggle reverse order."] = "Aktiviert die Sortierung R\195\188ckw\195\164rts.",
+	["Toggle highlighting your target."] = "Hervorheben Deines Ziels ein-/ausschalten.",
+	["Reverse"] = "Rückwärts",
+	["Toggle reverse order."] = "Rückwärtssortierung ein-/ausschalten.",
 	["Numbers"] = "Nummern",
-	["Toggle showing of PT numbers."] = "Aktiviert die Anzeige der PT Nummern.",
+	["Toggle showing of PT numbers."] = "Anzeige der PT Nummern ein-/ausschalten.",
 	["Tooltips"] = "Tooltips",
-	["Toggle showing of tooltips."] = "Anzeigen der Tooltips ein-/ausschalten.",
+	["Toggle showing of tooltips."] = "Tooltipanzeige ein-/ausschalten.",
 	["Show"] = "Zeigen",
-	["Show player."] = "Zeige Spieler",
-	["Show target."] = "Zeige Ziele",
-	["Show targettarget."] = "Zeige Ziel des Zieles",
-	["Define which frames you want to see."] = "Definiert welche Rahmen du anzeigen willst.",
+	["Show player."] = "Zeige Spieler.",
+	["Show target."] = "Zeige Ziel.",
+	["Show targettarget."] = "Zeige Ziel des Zieles.",
+	["Define which frames you want to see."] = "Definiert welchen Rahmen Du anzeigen willst.",
 	["Layout"] = "Layout",
-	["Set the layout for the PT frames."] = "Setzt das Layout f\195\188r die PT Rahmen.",
-	["Vertical"] = "Vertical",
+	["Set the layout for the PT frames."] = "Setzt das Layout für die PT Rahmen.",
+	["Vertical"] = "Vertikal",
 	["Horizontal"] = "Horizontal",
+
 	["Set"] = "Setzt Spieler",
-	["Set a player."]= "Setzt einen Spieler",
-	["<nr> <name>"] = "<Nr> <Name>",
-	["<nr>"] = "<Nr>",
-	["<name>"] = "<Name>",
+	["Set a player."]= "Setzt einen Spieler.",
+	["<nr> <name>"] = "<nr> <name>",
+	["<nr>"] = "<nr>",
+	["<name>"] = "<name>",
 	["Remove"] = "Entferne Spieler",
-	["Remove a player."] = "Entfernt einen Spieler",
+	["Remove a player."] = "Entfernt einen Spieler.",
 	["Removed player: "] = "Spieler entfernt: ",
 	["Set player: "] = "Spieler gesetzt: ",
+
 	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
-	["<Not Assigned>"] = "<Nicht zugewiesen>",
+
+	["<Not Assigned>"] = "<nicht zugewiesen>",
+
 	["Style"] = "Aussehen",
-	["Set the frame style."] = "Setzt das Aussehen der Rahmen.",
+	["Set the frame style."] = "Setzt das Aussehen des Rahmens.",
 	["<style>"] = "<style>",
+
 	["Default"] = "Standart",
 	["Compact"] = "Kompakt",
-	["Backwards"] = "R\195\188ckw\195\164rts",
-	["Order PT|PTT|PTTT Backwards."] = "Sortiert PT|PTT|PTTT R\195\188ckw\195\164rts.",
+
+	["Backwards"] = "Rückwärts",
+	["Order PT|PTT|PTTT Backwards."] = "Sortiert PT|PTT|PTTT rückwärts.",
+
+	["Lock"] = "Sperren",
+	["Lock the PT frames."] = "Sperrt den PT Rahmen.",
 } end)
 
 ----------------------------------
@@ -588,7 +599,7 @@ mod.defaults = {
 	ctplayer = L["Player"],
 	cttarget = L["Target"],
 	cttargettarget = L["TargetTarget"],
-	nrpts = 10,
+	nrpts = 4,
 	classcolor = true,
 	enemycolor = {0.8, 0.13, 0},
 	coloraggro = true,
@@ -908,30 +919,31 @@ mod.consoleOptions = {
 --      Initialization      --
 ------------------------------
 
-function mod:OnEnable()
-	self.enabled = nil
-
+function mod:OnRegister()
 	self.secureframes = {}
 	self.styles = {}
 
 	-- Anyone registering styles in this file without Ammo's permission
 	-- will be gangraped by a bunch of gay gorillas.
-
 	self:RegisterStyle(L["Default"], defaultstyle)
 	self:RegisterStyle(L["Compact"], compactstyle)
 
-	self:SetupFrames()
-
 	if not self.styles[self.db.profile.style] then self.db.profile.style = L["Default"] end
 	if not self.db.profile.playertable then self.db.profile.playertable = {} end
+end
 
-	self:RegisterEvent("oRA_LeftRaid")
-	self:RegisterEvent("oRA_JoinedRaid")
-
-	self:RegisterEvent("UPDATE_BINDINGS","UpdateAssistBindings")
+function mod:OnEnable()
+	self:RegisterEvent("oRA_JoinedRaid", "UpdatePlayerTargets")
 	self:RegisterEvent("oRA_BarTexture")
 
+	self:RegisterEvent("UPDATE_BINDINGS","UpdateAssistBindings")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
+end
+
+function mod:OnDisable()
+	if self.mainframe then
+		self.mainframe:Hide()
+	end
 end
 
 ------------------------------
@@ -945,32 +957,20 @@ function mod:PLAYER_REGEN_ENABLED()
 	end
 end
 
-function mod:oRA_LeftRaid()
-	self.enabled = nil
-	self.mainframe:Hide()
-end
-
-function mod:oRA_JoinedRaid()
-	if not self.enabled then
-		self.enabled = true
-		self:UpdatePlayerTargets()
-	end
-end
-
 function mod:UpdatePlayerTargets()
 	if not self.db.profile.playertable then return end
-	if not self.enabled then return end
-
 	if InCombatLockdown() then
 		combatUpdate = true
 		return
+	end
+	if not self.mainframe then
+		self:SetupFrames()
 	end
 
 	self:UpdateConsole()
 
 	local pts = {}
 	local showpt
-
 	for i = 1, self.db.profile.nrpts do
 		if self.db.profile.playertable[i] then
 			showpt = true
@@ -993,7 +993,7 @@ function mod:UpdatePlayerTargets()
 end
 
 function mod:oRA_BarTexture(texture)
-	local tex = media:Fetch('statusbar', texture)
+	local tex = media:Fetch("statusbar", texture)
 	for _, f in pairs(self.secureframes) do
 		f.bar:SetStatusBarTexture(tex)
 		f.bar.texture:SetTexture(tex)
@@ -1518,7 +1518,6 @@ function mod:Set(num, name)
 	end
 
 	self.db.profile.playertable[num] = name
-	self:UpdateConsole()
 	self:UpdatePlayerTargets()
 
 	self:Print(L["Set player: "] .. "[".. num .. "] [" .. name .."]")
@@ -1528,7 +1527,6 @@ function mod:Remove(num)
 	local name = self.db.profile.playertable[num]
 	if not name then return end
 	self.db.profile.playertable[num] = nil
-	self:UpdateConsole()
 	self:UpdatePlayerTargets()
 	self:Print(L["Removed player: "] .. num .." "..name)
 end
@@ -1550,10 +1548,11 @@ local nameString = "%d. %s"
 function mod:UpdateConsole()
 	local opt = oRA.consoleOptions.args.pt.args
 	for k = 1, 10 do
-		local n = self.db.profile.playertable[k]
-		if UnitInRaid(n) then
-			opt.remove.args[k].name = nameString:format(k, self.coloredNames[n])
-			opt.set.args[k].name = nameString:format(k, self.coloredNames[n])
+		local pt = self.db.profile.playertable[k]
+		if pt then
+			local n = nameString:format(k, self.coloredNames[pt])
+			opt.remove.args[k].name = n
+			opt.set.args[k].name = n
 		else
 			opt.remove.args[k].name = tostring(k).."."
 			opt.set.args[k].name = tostring(k).."."
@@ -1566,11 +1565,6 @@ end
 ------------------------------
 
 local na = "|cffcccccc"..L["<Not Assigned>"].."|r"
-local notValid = setmetatable({}, {__index = function(self, key)
-	self[key] = "|cffcccccc<"..key..">|r"
-	return self[key]
-end})
-
 function mod:OnTooltipUpdate()
 	local cat = tablet:AddCategory(
 		"columns", 2,
@@ -1582,11 +1576,7 @@ function mod:OnTooltipUpdate()
 	for i = 1, self.db.profile.nrpts do
 		local p = self.db.profile.playertable[i]
 		if p then
-			if UnitInRaid(p) then
-				cat:AddLine("text", i, "text2", self.coloredNames[p], "arg2", i)
-			else
-				cat:AddLine("text", i, "text2", notValid[p], "arg2", i)
-			end
+			cat:AddLine("text", i, "text2", self.coloredNames[p], "arg2", i)
 		else
 			cat:AddLine("text", i, "text2", na, "arg2", i)
 		end

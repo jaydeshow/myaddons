@@ -1,7 +1,7 @@
 ﻿Outfitter = {}
 MCDebugLib:InstallDebugger("Outfitter", Outfitter, {r=0.6,g=1,b=0.8})
 
-Outfitter.cVersion = "4.1.1"
+Outfitter.cVersion = "4.2.1"
 
 Outfitter.cTitle = "Outfitter"
 Outfitter.cTitleVersion = Outfitter.cTitle.." "..Outfitter.cVersion
@@ -59,7 +59,7 @@ Outfitter.cSwimmingOutfit = "Swimming"
 Outfitter.cLowHealthOutfit = "Low Health or Mana"
 Outfitter.cHasBuffOutfit = "Player has buff"
 Outfitter.cInZonesOutfit = "In Zones"
-Outfitter.cSoloOutfit = "Solo"
+Outfitter.cSoloOutfit = "Solo/Party/Raid"
 Outfitter.cFallingOutfit = "Falling"
 
 Outfitter.cArgentDawnOutfitDescription = "Equips the outfit when you're in the Plaguelands"
@@ -98,7 +98,7 @@ Outfitter.cWarriorBerserkerStanceDescription = "Equips the outfit when you are i
 Outfitter.cWarriorDefensiveStanceDescription = "Equips the outfit when you are in Defensive stance"
 Outfitter.cWarriorBattleStanceDescription = "Equips the outfit when you are in Battle stance"
 Outfitter.cInZonesOutfitDescription = "Equips the outfit when you are in one of the zones or minimap sub-zones listed below"
-Outfitter.cSoloOutfitDescription = "Equips the outfit when you're not grouped with anyone"
+Outfitter.cSoloOutfitDescription = "Equips the outfit when solo, partied or raiding, based on the settings"
 Outfitter.cFallingOutfitDescription = "Equips the outfit when you're falling"
 
 Outfitter.cMountSpeedFormat = "Increases speed by (%d+)%%%."; -- For detecting when mounted
@@ -526,3 +526,7 @@ Outfitter.cOutfitBarLockPositionLabel = "Lock Position"
 Outfitter.cOutfitBarHideBackgroundLabel = "Hide Background"
 
 Outfitter.cPositionLockedError = "The outfit bar can't be moved because you've locked its position"
+
+Outfitter.cMustBeAtBankError = "You must have your bank open to generate a missing items report"
+Outfitter.cMissingItemReportIntro = "Missing items (note that a missing item will be listed multiple times if it was used by multiple outfits):"
+Outfitter.cNoMissingItems = "No items are missing"

@@ -1,23 +1,23 @@
 ---------------------------------------------------------
 -- Localizable strings (defaults) for enUS and enGB
 
-GEMHELPER_VERSION_TEXT		= "Gem Helper v1.5";
-GEMHELPER_DONE_TEXT		= "Done";
+GEMHELPER_VERSION_TEXT		= "Gem Helper v1.7"
+GEMHELPER_DONE_TEXT		= "Done"
 
-GEMHELPER_ERRORTOOLTIP_L1	= "Unsafe Item";
-GEMHELPER_ERRORTOOLTIP_L2	= "ItemID: ";
-GEMHELPER_ERRORTOOLTIP_L3	= "This item is unsafe. To view this item without the risk of disconnection, you need to have first seen it in the game world. This is a restriction enforced by Blizzard since Patch 1.10.";
-GEMHELPER_ERRORTOOLTIP_L4	= "You can right-click to attempt to query the server.  You may be disconnected.";
-GEMHELPER_QUERY_MESSAGE		= "Server queried for ";
+GEMHELPER_ERRORTOOLTIP_L1	= "Unsafe Item"
+GEMHELPER_ERRORTOOLTIP_L2	= "ItemID: "
+GEMHELPER_ERRORTOOLTIP_L3	= "This item is unsafe. To view this item without the risk of disconnection, you need to have first seen it in the game world. This is a restriction enforced by Blizzard since Patch 1.10."
+GEMHELPER_ERRORTOOLTIP_L4	= "You can right-click to attempt to query the server.  You may be disconnected."
+GEMHELPER_QUERY_MESSAGE		= "Server queried for "
 
-GEMHELPER_OPENJC_TEXT		= "Open/close the original JC tradeskill window.";
-GEMHELPER_CHANGEBGCOLOR_TEXT	= "Change the background color.";
+GEMHELPER_OPENJC_TEXT		= "Open/close the original JC tradeskill window."
+GEMHELPER_CHANGEBGCOLOR_TEXT	= "Change the background color."
 
 -- GEMHELPER_JEWELCRAFTING_TEXT must match the text written on the top of default Jewelcrafting UI
 -- window, which should also be the same as the text written in your Character --> Skills -->
 -- Professions panel because this string is used to check whether a player has Jewelcrafting as
 -- a profession as well as whether the Jewelcrafting default UI window is about to be open.
-GEMHELPER_JEWELCRAFTING_TEXT	= "Jewelcrafting";
+GEMHELPER_JEWELCRAFTING_TEXT	= "Jewelcrafting"
 
 GEMHELPER_CHECKBUTTON_TEXT	= {
 	[1]	= "Filter by Gem Color",
@@ -62,6 +62,7 @@ GEMHELPER_CHECKBUTTON_TEXT	= {
 	[65]	= "Spirit",
 	[66]	= "Resilience",
 
+	[70]	= "Spell Haste Rating",
 	[71]	= "Hit Rating",
 	[72]	= "Critical Strike Rating",
 	[73]	= "Attack Power",
@@ -85,7 +86,7 @@ GEMHELPER_CHECKBUTTON_TEXT	= {
 	[104]	= "Show Instance Drop Gems",
 
 	[111]	= "Replace default JC UI",
-};
+}
 
 -- Data for English localization
 GemHelper_GemLocaleData = {
@@ -337,4 +338,20 @@ GemHelper_GemLocaleData = {
 	-- Added in Gem Helper v1.5 (patch 2.3.0)
 	[34220] = {["n"] = "Chaotic Skyfire Diamond",	["d"] = "Crafted, 1 Skyfire Diamond"},
 	[34256] = {["n"] = "Charmed Amani Jewel",	["d"] = "Quest Reward - Zul'Aman"},
-};
+
+	-- Added in Gem Helper v1.6 (patch 2.4.0)
+	[35503] = {["n"] = "Ember Skyfire Diamond",	["d"] = "Crafted, 1 Skyfire Diamond"},
+	[35501] = {["n"] = "Eternal Earthstorm Diamond",	["d"] = "Crafted, 1 Earthstorm Diamond"},
+	[35707] = {["n"] = "Regal Nightseye",			["d"] = "Crafted, 1 Nightseye"},
+	[34831] = {["n"] = "Eye of the Sea",	["d"] = "Quest Reward - Fishing Daily"},
+	[35758] = {["n"] = "Steady Seaspray Emerald",		["d"] = "Crafted, 1 Seaspray Emerald"},
+	[35759] = {["n"] = "Forceful Seaspray Emerald",		["d"] = "Crafted, 1 Seaspray Emerald"},
+	[35760] = {["n"] = "Reckless Pyrestone",			["d"] = "Crafted, 1 Pyrestone"},
+	[35761] = {["n"] = "Quick Lionseye",		["d"] = "Crafted, 1 Lionseye"},
+
+	-- Added in Gem Helper v1.7 (patch 2.4.2)
+	[37503] = {["n"] = "Royal Shadowsong Amethyst",		["d"] = "Crafted, 1 Shadowsong Amethyst"},
+	[35315] = {["n"] = "Quick Dawnstone",		["d"] = "Crafted, 1 Dawnstone"},
+	[35316] = {["n"] = "Reckless Noble Topaz",			["d"] = "Crafted, 1 Noble Topaz"},
+	[35318] = {["n"] = "Forceful Talasite",		["d"] = "Crafted, 1 Talasite"},
+}

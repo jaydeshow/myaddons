@@ -1,5 +1,5 @@
 --[[
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: BalancedList.lua 1331 2007-01-12 10:09:49Z norganna $
 
 	License:

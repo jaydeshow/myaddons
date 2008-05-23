@@ -13,8 +13,9 @@ L["Opening"] = "Ouverture"
 L["Pick Lock"] = "Crochetage"
 -- Display module
 L["GatherMate Pin Options"] = "Options des points GatherMate"
-L["Delete: "] = "Supprimer : "
+L["Delete: "] = "Supprimer : "
 L["Add this location to Cartographer_Waypoints"] = "Ajouter cette position à Cartographer_Waypoints"
+L["Add this location to TomTom waypoints"] = "Ajouter cette position aux points de navigation de TomTom"
 
 L["Always show"] = "Toujours afficher"
 L["Only with profession"] = "Si j'ai le métier"
@@ -47,19 +48,36 @@ L["Show Minimap Icons"]= "Icônes sur la minicarte"
 L["Toggle showing Minimap icons."] = "Affiche ou non les icônes sur la minicarte."
 L["Show World Map Icons"] = "Icônes carte du monde"
 L["Toggle showing World Map icons."] = "Affiche ou non les icônes sur la carte du monde."
+L["Keybind to toggle Minimap Icons"] = "Raccourci pour afficher/masquer les icônes"
 L["Icon Scale"]= "Échelle des icônes"
 L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."]= "Permet d'agrandir ou de rétrécir les icônes affichées sur la carte du monde et la minicarte."
 L["Icon Alpha"]= "Transparence des icônes"
 L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."]= "Permet de changer la valeur de transparence des icônes. S'applique uniquement à la carte du monde."
 L["Miscellaneous"] = "Divers"
--- Cleanup subtree
+-- Cleanup subtree (now Database Maintenance)
+L["Database Maintenance"] = "Maintenant de la BdD"
 L["Cleanup_Desc"] = "Au fil du temps, votre base de données risque de devenir surchargée. Nettoyer votre base de données permet de vérifier les nœuds du même type de métier qui sont très proches les uns des autres et de déterminer s'il faut les rassembler en un seul nœud ou non."
 L["Cleanup radius"] = "Rayon de nettoyage"
-L["CLEANUP_RADIUS_DESC"] = "Le rayon en mètres où les nœuds dupliqués doivent être enlevés. La valeur par défaut est de |cFFFFFFFF50|r mètres pour l'extraction de gaz et de |cFFFFFFFF15|r mètres pour tout le reste. Ces paramètres sont également utilisés lors de l'ajout de nœuds."
+L["CLEANUP_RADIUS_DESC"] = "Le rayon en mètres où les nœuds dupliqués doivent être enlevés. La valeur par défaut est de |cffffd20050|r mètres pour l'extraction de gaz et de |cffffd20015|r mètres pour tout le reste. Ces paramètres sont également utilisés lors de l'ajout de nœuds."
 L["Cleanup Database"] = "Nettoyer la base"
 L["Cleanup your database by removing duplicates. This takes a few moments, be patient."] = "Nettoye votre base de données en enlevant les doublons. Ceci peut prendre un petit moment, soyez patient."
 L["Processing "] = "Traitement de "
 L["Cleanup Complete."] = "Nettoyage terminé."
+L["Delete Specific Nodes"] = "Supprimer des nœuds spécifiques"
+L["DELETE_SPECIFIC_DESC"] = "Supprime tous les nœuds sélectionnés de la zone sélectionnée. Vous devez désactiver le Verrouillage des bases de données pour que ceci fonctionne."
+L["Select Database"] = "Sélection de la base"
+L["Select Node"] = "Sélection des nœuds"
+L["Select Zone"] = "Sélection de la zone"
+L["Delete"] = "Supprimer"
+L["Delete selected node from selected zone"] = "Supprime les nœuds sélectionnés de la zone sélectionnée"
+L["Are you sure you want to delete all of the selected node from the selected zone?"] = "Êtes-vous sûr de vouloir supprimer tous les nœuds sélectionnés de la zone sélectionnée ?"
+L["Delete Entire Database"] = "Supprimer toute la base de données"
+L["DELETE_ENTIRE_DESC"] = "Ceci ignorera le Verrouillage des bases de données et enlèvera tous les nœuds de toutes les zones de la base de données sélectionnée."
+L["Are you sure you want to delete all nodes from this database?"] = "Êtes-vous sûr de vouloir supprimer tous les nœuds de cette base de données ?"
+L["Database Locking"] = "Verrouillage des bases de données"
+L["DATABASE_LOCKING_DESC"] = "Le verrouillage de base de données vous permet de figer l'état d'une base de données. Une fois verrouillée, il vous est impossible d'ajouter, de supprimer ou de modifier la base de données en question. Cela comprend le nettoyage et les importations."
+L["Database locking"] = "Verrouille cette base de données si cochée."
+
 -- Tracking options
 L["Tracking Circle Color"] = "Couleur du cercle de suivi"
 L["Color of the tracking circle."] = "Détermine la couleur du cercle de suivi."
@@ -111,9 +129,9 @@ L["BC Data Only"] = "Données de BC uniquement"
 L["Only import Burning Crusade data from WoWHead"] = "Importe uniquement les données de WowHead de Burning Crusade."
 --- profile settings
 L["Default"] = "Défaut"
-L["Char:"] = "Perso :"
-L["Realm:"] = "Royaume :"
-L["Class:"] = "Classe :"
+L["Char:"] = "Perso :"
+L["Realm:"] = "Royaume :"
+L["Class:"] = "Classe :"
 L["Profiles"] = "Profils"
 L["Manage Profiles"] = "Gestion des profils"
 L["You can change the active database profile of GatherMate, so you can have different settings and filters for every character, which will allow a very flexible configuration for everyones needs."] = "Vous pouvez changer le profil actif de GatherMate afin d'avoir des paramètres et des filtres différents pour chaque personnage, permettant ainsi d'avoir une configuration flexible adaptée aux besoins de chacun."
@@ -131,23 +149,25 @@ L["Copy the settings from another profile into the active profile."] = "Copie le
 L["Delete existing and unused profiles from the database to save space, and cleanup the GatherMate SavedVariables file."] = "Supprime les profils inutilisés de la base de données afin de gagner de la place et de nettoyer le fichier SavedVariables de GatherMate."
 L["Delete a Profile"] = "Supprimer un profil"
 L["Deletes a profile from the database."] = "Supprime un profil de la base de données."
-L["Are you sure you want to delete the selected profile?"] = "Êtes-vous sûr de vouloir supprimer le profil sélectionné ?"
+L["Are you sure you want to delete the selected profile?"] = "Êtes-vous sûr de vouloir supprimer le profil sélectionné ?"
 -- FAQ
 L["FAQ"] = "FAQ"
 L["Frequently Asked Questions"] = "Foire aux questions"
 L["FAQ_TEXT"] = [[
-|cFFFFFFFF
-Je viens juste d'installer GatherMate, mais je ne vois aucun nœud sur mes cartes !
+|cffffd200
+Je viens juste d'installer GatherMate, mais je ne vois aucun nœud sur mes cartes !
 |r
 GatherMate ne contient aucune donnée en l'état. Quand vous récoltez des herbes, des minerais, des gaz ou des poissons, GatherMate ajoutera et mettra à jour votre carte en conséquence. De plus, vérifiez vos paramètres d'affichage.
-|cFFFFFFFF
-Je vois des nœuds sur ma carte du monde mais pas sur ma minicarte !
+
+|cffffd200
+Je vois des nœuds sur ma carte du monde mais pas sur ma minicarte !
 |r
 |cffffff78Minimap Button Bag|r (et sans doute d'autres addons similaires) aime phagocyter tous les boutons que nous plaçons sur la minicarte. Désactivez-le.
-|cFFFFFFFF
-Comment ou où puis-je obtenir des données déjà existantes ?
+
+|cffffd200
+Comment ou où puis-je obtenir des données déjà existantes ?
 |r
-Vous pouvez importer des données déjà existantes dans GatherMate des façons suivantes :
+Vous pouvez importer des données déjà existantes dans GatherMate des façons suivantes :
 
 1. |cffffff78GatherMate_Data|r - Cet addon LoD (chargeable à la demande) contient des données extraites de WowHead de tous les nœuds et est mis à jour toutes les semaines. Il y a des options de mise à jour automatique.
 
@@ -156,20 +176,23 @@ Vous pouvez importer des données déjà existantes dans GatherMate des façons 
 Notez que l'importation de données dans GatherMate n'est pas un processus automatique. Vous devez aller dans la section "Importation données" et cliquer sur le bouton "Importer".
 
 La différence avec |cffffff78Cartographer_Data|r est que l'utilisateur a le choix de la façon dont (et du moment où) les données sont modifiées. |cffffff78Cartographer_Data|r, une fois chargé, écrase simplement vos bases de données existantes sans avertissement et détruit tous les nouveaux nœuds que vous avez trouvé.
-|cFFFFFFFF
-Pouvez-vous ajouter le support de l'affichage des positions de choses telles que les boîtes aux lettres et les maîtres de vol ?
+
+|cffffd200
+Pouvez-vous ajouter le support de l'affichage des positions de choses telles que les boîtes aux lettres et les maîtres de vol ?
 |r
 À nouveau, la réponse est non. Cependant, un autre auteur a le droit de créer un addon ou un module à cet effet. Le cœur de l'addon GatherMate ne le fera jamais.
-|cFFFFFFFF
-J'ai trouvé un bogue ! Où puis-je le signaler ?
+
+|cffffd200
+J'ai trouvé un bogue ! Où puis-je le signaler ?
 |r
 Vous pouvez signaler des bogues ou faire des suggestions sur |cffffff78http://www.wowace.com/forums/index.php?topic=10990.0|r
 
 Vous pouvez également nous trouver sur |cffffff78irc://irc.freenode.org/wowace|r
 
 Quand vous voulez signaler un bogue, essayez de fournir les |cffffff78étapes à suivre pour reproduire ce bogue|r, indiquez les |cffffff78messages d'erreur|r que vous avez vus, donnez le |cffffff78numéro de révision|r de GatherMate où le problème a été découvert et précisez également la |cffffff78langue de votre jeu|r.
-|cFFFFFFFF
-Qui a écrit cet addon qui déchire ?
+
+|cffffd200
+Qui a écrit cet addon qui déchire ?
 |r
 Kagaro, Xinhuan, Nevcairiel et Ammo.
 ]]
@@ -195,7 +218,7 @@ NL["Pure Water"] = "Eau pure"
 NL["Bluefish School"] = "Banc de tassergals"
 NL["Feltail School"] = "Banc de gangre-queues"
 NL["Brackish Mixed School"] = "Banc mixte des eaux saumâtres"
-NL["Mudfish School"] = "Banc de poissons-boues"
+NL["Mudfish School"] = "Banc d'éperlans"
 NL["School of Darter"] = "Banc de dards"
 NL["Sporefish School"] = "Banc de poissons-spores"
 NL["Steam Pump Flotsam"] = "Détritus de la pompe à vapeur"

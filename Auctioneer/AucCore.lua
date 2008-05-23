@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: AucCore.lua 2477 2007-11-14 16:40:54Z Norganna $
 
 	Auctioneer core functions and variables.

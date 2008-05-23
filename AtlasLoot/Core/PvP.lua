@@ -1,6 +1,6 @@
-local BabbleFaction = AceLibrary("Babble-Faction-2.2");
-local BabbleZone = AceLibrary("Babble-Zone-2.2");
-local BabbleInventory=AceLibrary("Babble-Inventory-2.2");
+local BabbleFaction = LibStub("LibBabble-Faction-3.0"):GetLookupTable();
+local BabbleZone = LibStub("LibBabble-Zone-3.0"):GetLookupTable();
+local BabbleInventory = LibStub("LibBabble-Inventory-3.0"):GetLookupTable();
 local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 local ORANGE = "|cffFF8400";

@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 66697 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 67263 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-03-28 11:19:12 -0400 (Fri, 28 Mar 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-03-31 06:35:38 -0400 (Mon, 31 Mar 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-LookNFeel")
@@ -266,45 +266,46 @@ L:AddTranslations("zhTW", function() return {
 	["FULLSCREEN"] = "全螢幕",
 	["Auto"] = "自動",
 } end)
+
 L:AddTranslations("zhCN", function() return {
 	["Look 'n' Feel"] = "外观设置",
-	["Module which allows you to change the transparency, position, and scale of the world map."] = "让你设置世界地图的透明度,位置和大小.",
+	["Module which allows you to change the transparency, position, and scale of the world map."] = "让你设置世界地图的透明度，位置和大小。",
 
 	["Transparency"] = "透明度",
-	["Transparency of the World Map"] = "世界地图的透明度",
+	["Transparency of the World Map"] = "世界地图的透明度。",
 
 	["Overlay transparency"] = "层透明度",
-	["Transparency of World Map overlays"] = "世界地图覆盖层透明度(例如注释等)",
+	["Transparency of World Map overlays"] = "世界地图覆盖层透明度。（如注释等）",
 
 	["Scale"] = "缩放",
-	["Scale of the World Map"] = "世界地图的缩放大小",
+	["Scale of the World Map"] = "世界地图的缩放大小。",
 
 	["Tooltip scale"] = "提示信息",
-	["Scale of the World Map tooltip"] = "世界地图提示信息的缩放大小",
+	["Scale of the World Map tooltip"] = "世界地图提示信息的缩放大小。",
 
-	["Shift-MouseWheel to change transparency"] = "Shift-鼠标滚轮: 改变透明度",
-	["Ctrl-MouseWheel to change scale"] = "Ctrl-鼠标滚轮: 改变缩放大小",
+	["Shift-MouseWheel to change transparency"] = "Shift-鼠标滚轮：改变透明度",
+	["Ctrl-MouseWheel to change scale"] = "Ctrl-鼠标滚轮：改变缩放大小",
 
 	["Lock the World Map"] = "锁定世界地图",
 
-	["Close with escape"] = "Esc键关闭",
-	["Close the World Map when pressing the escape button"] = "使用Esc键关闭世界地图窗口",
+	["Close with escape"] = "Esc 键关闭",
+	["Close the World Map when pressing the escape button"] = "使用 Esc 键关闭世界地图窗口。",
 
 	["Large player arrow"] = "加大玩家箭头",
-	["Make the player's arrow on the World Map 1.5 times larger than normal"] = "在世界地图上以原来的1.5倍加大显示代表玩家的箭头",
+	["Make the player's arrow on the World Map 1.5 times larger than normal"] = "在世界地图上以原来的1.5倍加大显示代表玩家的箭头。",
 
 	["Unlock World Map"] = "解锁世界地图",
 	["Lock World Map"] = "锁定世界地图",
-	["Note: holding Alt while locked will temporarily unlock the World Map."] = "注: 世界地图锁定时按住Alt键将可以暂时解除锁定",
+	["Note: holding Alt while locked will temporarily unlock the World Map."] = "注：世界地图锁定时按住 Alt 键将可以暂时解除锁定。",
 
 	["Show minimap button"] = "显示小地图按钮",
-	["Show the World Map minimap button"] = "显示小地图按钮",
+	["Show the World Map minimap button"] = "显示小地图按钮。",
 
 	["Show informational text"] = "显示信息文字",
-	["Show informational text in the top-left of the map"] = "在地图左上方显示信息文字",
+	["Show informational text in the top-left of the map"] = "在地图左上方显示信息文字。",
 
 	["Strata"] = "窗口层面",
-	["Change the world map window's strata (controls which windows display on top of eachother)"] = "改变世界地图窗口的层面",
+	["Change the world map window's strata (controls which windows display on top of eachother)"] = "改变世界地图窗口的层面。",
 
 	["BACKGROUND"] = "背景",
 	["LOW"] = "低",

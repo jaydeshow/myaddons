@@ -1,7 +1,7 @@
 ﻿--[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: EnxAutoDisenchant.lua 2833 2008-02-02 22:34:54Z ccox $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: EnxAutoDisenchant.lua 3027 2008-04-13 03:40:30Z ccox $
 	URL: http://enchantrix.org/
 
 	Automatic disenchant scanner.
@@ -28,7 +28,7 @@
 		since that is its designated purpose as per:
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
-Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxAutoDisenchant.lua $", "$Rev: 2833 $")
+Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxAutoDisenchant.lua $", "$Rev: 3027 $")
 
 local ignoreList = {}
 local frame
@@ -117,7 +117,11 @@ local function getDisenchantOrProspectValue(link, count)
 			if (not hsp) or (hsp == 0) then
 				-- what to do when Auc4 isn't loaded, but Auc5 is
 				-- or when you have no data for mat prices
-				hsp = valFive or baseline;
+				if valFive and valFive > 0 then
+					hsp = valFive
+				else
+					hsp = baseline
+				end
 			end
 			if hsp and hsp > 0 then
 				return hsp, _ENCH('ArgSpellname')
@@ -134,7 +138,11 @@ local function getDisenchantOrProspectValue(link, count)
 					if (not hsp) or (hsp == 0) then
 						-- what to do when Auc4 isn't loaded, but Auc5 is
 						-- or when you have no data for mat prices
-						hsp = valFive or baseline;
+						if valFive and valFive > 0 then
+							hsp = valFive
+						else
+							hsp = baseline
+						end
 					end
 					local value = (hsp or 0) * yield
 					prospectValue = prospectValue + value

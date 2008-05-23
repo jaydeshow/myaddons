@@ -16,9 +16,6 @@
          <OnLoad>
             this:RegisterForClicks("RightButtonUp")
          </OnLoad>
-         <OnUpdate>
-            RecipeRadar_Minimap_OnUpdate(arg1)
-         </OnUpdate>
          <OnEnter>
             RecipeRadar_Maps_SetTooltip(GameTooltip, this)
          </OnEnter>

@@ -1,4 +1,4 @@
-﻿local gMCDebugLib_Version = 13
+﻿local gMCDebugLib_Version = 14
 
 if tern == nil then tern = function(b, t, f) if b then return t else return f end end end
 
@@ -33,6 +33,7 @@ if not MCDebugLib or MCDebugLib.Version < gMCDebugLib_Version then
 		pObject.ErrorMessage = self.ErrorMessage
 		pObject.DebugTable = self.DebugTable
 		pObject.DebugStack = self.DebugStack
+		pObject.ErrorStack = self.ErrorStack
 		pObject.DebugMark = self.DebugMark
 	end
 	
@@ -264,6 +265,14 @@ if not MCDebugLib or MCDebugLib.Version < gMCDebugLib_Version then
 		
 		for vIndex, vMessage in ipairs(vCallStack) do
 			self:DebugMessage(vMessage)
+		end
+	end
+	
+	function MCDebugLib:ErrorStack(pPrefix, pDepth)
+		local vCallStack = MCDebugLib:GetCallStack(pPrefix, pDepth, 1)
+		
+		for vIndex, vMessage in ipairs(vCallStack) do
+			self:ErrorMessage(vMessage)
 		end
 	end
 	

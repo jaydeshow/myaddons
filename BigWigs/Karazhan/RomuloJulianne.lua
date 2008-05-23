@@ -69,7 +69,7 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	phase = "Phases",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	phase1_trigger = "Quel démon es-tu pour me tourmenter ainsi ?",
  	phase1_message = "Acte I - %s",
 	phase2_trigger = "Tu veux donc me provoquer ? Eh bien, à toi, enfant.",
@@ -78,17 +78,17 @@ L:RegisterTranslations("frFR", function() return {
 	phase3_message = "Acte III - Les deux",
 
 	poison = "Poison",
-	poison_desc = "Préviens quand un joueur est empoisonné.",
-	poison_message = "Empoisonné : %s",
+	poison_desc = "Prévient quand un joueur est empoisonné.",
+	poison_message = "Empoisonné : %s",
 
 	heal = "Soin",
-	heal_desc = "Préviens quand Julianne lance Amour éternel.",
-	heal_message = "%s incante un soin !",
+	heal_desc = "Prévient quand Julianne lance Amour éternel.",
+	heal_message = "%s incante un soin !",
 
 	buff = "Buff",
-	buff_desc = "Préviens quand Romulo et Julianne gagnent leurs buffs.",
-	buff1_message = "Romulo gagne Hardiesse !",
-	buff2_message = "Julianne gagne Dévotion !",
+	buff_desc = "Prévient quand Romulo et Julianne gagnent leurs buffs.",
+	buff1_message = "Romulo gagne Hardiesse !",
+	buff2_message = "Julianne gagne Dévotion !",
 } end)
 
 L:RegisterTranslations("koKR", function() return {
@@ -126,15 +126,15 @@ L:RegisterTranslations("zhCN", function() return {
 	phase3_message = "第 III 幕 - 同时出场",
 
 	poison = "中毒",
-	poison_desc = "当有玩家中毒时发出警报。",
+	poison_desc = "当玩家中毒时发出警报。",
 	poison_message = "浸毒之刺：>%s<！",
 
 	heal = "治疗",
 	heal_desc = "当朱丽叶施放治疗时警报。",
 	heal_message = "%s 施放治疗！",
 
-	buff = "自身 Buff 警报",
-	buff_desc = "当罗密欧与朱丽叶获得 Buff 发出警报",
+	buff = "自身增益效果警报",
+	buff_desc = "当罗密欧与朱丽叶获得增益效果时发出警报。",
 	buff1_message = "%s 获得 卤莽！",
 	buff2_message = "%s 获得 虔诚光环！",
 } end)
@@ -166,25 +166,25 @@ L:RegisterTranslations("zhTW", function() return {
 L:RegisterTranslations("esES", function() return {
 	phase = "Fases",
 	phase_desc = "Avisa cuando entra en una nueva fase.",
-	phase1_trigger = "Qué demonio sois que os atrevéis a atormentarme de esta guisa?",
+	phase1_trigger = "¿Qué demonio sois que me atormentáis de questa manera?",
 	phase1_message = "Acto I - %s",
-	phase2_trigger = "Qué bien resurge mi consuelo esto!",
+	phase2_trigger = "¿Me provocáis? ¡Mi carga recibiréis pues!",
 	phase2_message = "Acto II - %s",
-	phase3_trigger = "Ven, dulce noche; y devuélveme a mi Romulo!",
+	phase3_trigger = "Adelante, gentil noche, ¡devuélveme a mi Romulo!",
 	phase3_message = "Acto III - Ambos",
 
 	poison = "Veneno",
-	poison_desc = "Avisa del jugador envenenado.",
+	poison_desc = "Avisa sobre jugadores envenenados.",
 	poison_message = "Envenenado: %s",
 
-	heal = "Curacion",
+	heal = "Curación",
 	heal_desc = "Avisa cuando Julianne lanza Afección eterna.",
-	heal_message = "%s Lanzando Curacion!",
+	heal_message = "¡%s lanzando curación!",
 
-	buff = "Alerta de Auto-Buff",
-	buff_desc = "Avisa cuando Romulo y Julianne reciben un self-buff.",
-	buff1_message = "%s gana Arrojo!",
-	buff2_message = "%s gana Devoción.",
+	buff = "Auto-Beneficio",
+	buff_desc = "Avisa cuando Romulo y Julianne reciben activan su propio beneficio.",
+	buff1_message = "¡%s gana Arrojo!",
+	buff2_message = "¡%s gana Devoción!",
 } end)
 
 ----------------------------------
@@ -195,14 +195,14 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {boy, girl}
 mod.toggleoptions = {"phase", "heal", "buff", "poison"}
-mod.revision = tonumber(("$Revision: 65914 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Poison", 30822, 30830)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Poison", 30822)
 	self:AddCombatListener("SPELL_CAST_START", "Heal", 30878)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Devotion", 30887)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Daring", 30841)

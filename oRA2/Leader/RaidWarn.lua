@@ -1,5 +1,6 @@
-
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -78,15 +79,15 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("deDE", function() return {
 	["Raidwarning"] = "Schlachtzugswarnung",
-	["Options for raid warning."] = "Optionen f\195\188r Schlachtzugswarnungen.",
-	["Leader/RaidWarn"] = "Anf\195\188hrer/Schlachtzugswarnung",
+	["Options for raid warning."] = "Optionen für Schlachtzugswarnungen.",
+	["Leader/RaidWarn"] = "Anführer/Schlachtzugswarnung",
 	["Send"] = "Senden",
-	["Send an RS Message."] = "Sende eine Schlachtzugswarnung.",
-	["<message>"] = "<Nachricht>",
+	["Send an RS Message."] = "Sendet eine Schlachtzugswarnung.",
+	["<message>"] = "<nachricht>",
 	["To Raid"] = "Zum Schlachtzug",
 	["Old Style"] = "CTRA Meldung",
-	["Send RS Messages to Raid as well."] = "Sende RS Nachricht auch an den Schlachtzug.",
-	["Use CTRA RS Messages instead of RaidWarning."] = "Benutze CTRA RS Nachricht anstatt Schlachtzugswarnungen",
+	["Send RS Messages to Raid as well."] = "Sendet RS Nachrichten auch an den Schlachtzug.",
+	["Use CTRA RS Messages instead of RaidWarning."] = "Benutzt CTRA RS Nachrichten anstatt Schlachtzugswarnungen.",
 } end )
 
 ----------------------------------

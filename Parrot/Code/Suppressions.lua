@@ -1,14 +1,16 @@
-local VERSION = tonumber(("$Revision: 49336 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 73474 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_Suppressions = Parrot:NewModule("Suppressions")
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-09-20 00:36:02 -0400 (Thu, 20 Sep 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-11 11:44:45 -0400 (Sun, 11 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
-local L = Parrot:L("Parrot_Suppressions")
+-- local L = Parrot:L("Parrot_Suppressions")
+-- TODO make modular
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Suppressions")
 
 local _G = _G
 

@@ -45,47 +45,47 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	youriding = "Chaperon Rouge (vous)",
-	youriding_desc = "Préviens quand vous êtes le Chaperon Rouge.",
-	riding_youwarn = "Vous êtes le Chaperon Rouge !",
+	youriding_desc = "Prévient quand vous êtes le Chaperon Rouge.",
+	riding_youwarn = "Vous êtes le Chaperon Rouge !",
 
 	elseriding = "Chaperon Rouge (les autres)",
-	elseriding_desc = "Préviens quand les autres sont le Chaperon Rouge.",
-	riding_otherwarn = "%s est le Chaperon Rouge !",
+	elseriding_desc = "Prévient quand les autres sont le Chaperon Rouge.",
+	riding_otherwarn = "%s est le Chaperon Rouge !",
 
-	riding_bar = "Chaperon : %s",
+	riding_bar = "Chaperon : %s",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur la personne qui est le Chaperon Rouge (nécessite d'être promu ou mieux).",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
-	youriding = "자신의 빨간 두건을 알립니다.",
-	youriding_desc = "자신이 빨간 두건에 걸리면 알림",
+	youriding = "자신의 빨간 두건",
+	youriding_desc = "자신이 빨간 두건에 걸리면 알립니다.",
 	riding_youwarn = "당신은 빨간 두건입니다!",
 
-	elseriding = "타인의 빨간 두건을 알립니다.",
-	elseriding_desc = "타인이 빨간 두건에 걸리면 알림",
-	riding_otherwarn = "%s님이 빨간 두건입니다!",
+	elseriding = "타인의 빨간 두건",
+	elseriding_desc = "타인이 빨간 두건에 걸리면 알립니다.",
+	riding_otherwarn = "%s 빨간 두건!",
 
 	riding_bar = "빨간 두건 - %s",
 
 	icon = "전술 표시",
-	icon_desc = "빨간 두건인 사람에게 전술 표시를 지정합니다 (승급자 이상의 권한 필요).",
+	icon_desc = "빨간 두건인 플레이어에게 전술 표시를 지정합니다. (승급자 이상의 권한 필요)",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	youriding = "小红帽(你)",
-	youriding_desc = "当你变成小红帽发出警报。",
+	youriding = "小红帽（你）",
+	youriding_desc = "当你变成小红帽时发出警报。",
 	riding_youwarn = "你变成小红帽！",
 
-	elseriding = "小红帽(队友)",
-	elseriding_desc = "当其他人变成小红帽发出警报。",
+	elseriding = "小红帽（队友）",
+	elseriding_desc = "当其他玩家变成小红帽时发出警报。",
 	riding_otherwarn = "小红帽：>%s<！快跑！",
 
 	riding_bar = "<快跑：%s>",
 
 	icon = "团队标记",
-	icon_desc = "给中了小红帽的打上团队标记。(需要权限)",
+	icon_desc = "给中了小红帽的打上团队标记。（需要权限）",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -104,18 +104,18 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	youriding = "Caperucita Roja (Tu)",
+	youriding = "Caperucita Roja (Tú)",
 	youriding_desc = "Avisa cuando eres Caperucita Roja.",
-	riding_youwarn = "Eres Caperucita Roja!",
+	riding_youwarn = "¡Eres Caperucita Roja!",
 
 	elseriding = "Caperucita Roja (Otros)",
 	elseriding_desc = "Avisa cuando otros son Caperucita Roja.",
-	riding_otherwarn = "%s es Caperucita Roja!",
+	riding_otherwarn = "¡%s es Caperucita Roja!",
 
 	riding_bar = "%s Corriendo",
 
-	icon = "Icono de Raid",
-	icon_desc = "Pone un icono de raid en la persoan que es Caperucita Roja (Requiere promoted or mayor).",
+	icon = "Icono de banda",
+	icon_desc = "Pone un icono de banda en la persoan que es Caperucita Roja. (Requiere derechos de banda)",
 } end )
 
 ----------------------------------
@@ -126,7 +126,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {lady, boss}
 mod.toggleoptions = {"youriding", "elseriding", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 65955 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

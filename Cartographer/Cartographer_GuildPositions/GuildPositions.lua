@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 56068 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 70419 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2007-11-26 15:54:07 -0500 (Mon, 26 Nov 2007) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-04-19 03:49:25 -0400 (Sat, 19 Apr 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GuildPositions")
@@ -37,10 +37,10 @@ L:AddTranslations("koKR", function() return {
 
 L:AddTranslations("zhCN", function() return {
 	["Guild Positions"] = "公会成员位置",
-	["Module which shows you your fellow guild members' positions, as well as allowing them to see you."] = "允许你看到公会其他成员的位置, 同时也可以让他们看见你.",
+	["Module which shows you your fellow guild members' positions, as well as allowing them to see you."] = "允许你看到公会其他成员的位置，同时也可以让他们看见你。",
 
-	["%.0f yd"] = "%.0f码",
-	["%.0f m"] = "%.0f米",
+	["%.0f yd"] = "%.0f 码",
+	["%.0f m"] = "%.0f 米",
 } end)
 
 L:AddTranslations("zhTW", function() return {
@@ -81,6 +81,8 @@ local Tablet = AceLibrary("Tablet-2.0")
 local RollCall = Rock("LibRollCall-2.0")
 local Crayon = Rock("LibCrayon-3.0")
 local Tourist = Rock("LibTourist-3.0")
+
+local LibGuildPositions = Rock("LibGuildPositions-1.0")
 
 local localization = GetLocale()
 local yardString = (localization == "enUS" or localization == "zhTW" or localization == "zhCN") and L["%.0f yd"] or L["%.0f m"]
@@ -401,6 +403,17 @@ function Cartographer_GuildPositions:UpdateMap()
 	for k,v in pairs(self.times) do
 		if t >= v then
 			clear(k)
+		end
+	end
+	
+	for name, x, y, zone in LibGuildPositions:IterateGuildMembers() do
+		zone = Tourist:GetEnglishZoneFromTexture(zone)
+		self.x[name] = x
+		self.y[name] = y
+		self.zones[name] = zone
+		self.times[name] = GetTime() + 10
+		if WorldMapFrame:IsShown() then
+			showGuy(name)
 		end
 	end
 end

@@ -1,11 +1,15 @@
 ﻿--
--- $Id: BugGrabber.lua 64142 2008-03-10 15:42:54Z kunda $
+-- $Id: BugGrabber.lua 70964 2008-04-22 21:31:57Z rabbit $
 --
-
+-- The BugSack and BugGrabber team is:
+-- Current Developer: Rabbit
+-- Past Developers: Rowne, Ramble, industrial, Fritti, kergoth, ckknight
+-- Testers: Ramble, Sariash
+--
 --[[
 
 BugGrabber, World of Warcraft addon that catches errors and formats them with a debug stack.
-Copyright (C) 2007 The BugGrabber Team
+Copyright (C) 2008 The BugGrabber Team
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -66,6 +70,7 @@ elseif GetLocale() == "deDE" then
 	BUGGRABBER_STOPPED = "|cffffff7fBugGrabber|r hat die Aufzeichnung von Fehlern gestoppt, weil mehr als %d Fehler pro Sekunde erzeugt wurden. Die Aufzeichnung wird in %d Sekunden fortgesetzt."
 	BUGGRABBER_RESUMING = "|cffffff7fBugGrabber|r zeichnet nun wieder Fehler auf."
 elseif GetLocale() == "esES" then
+	CMD_CREATED = "Un error ha sido detectado, utiliza /buggrabber para imprimirlo."
 	USAGE = "Uso: /buggrabber <1-%d>."
 	ERROR_INDEX = "El \195\173ndice introducido debe ser un n\195\186mero."
 	ERROR_UNKNOWN_INDEX = "El \195\173ndice %d no existe en la tabla de errores de carga."
@@ -74,6 +79,9 @@ elseif GetLocale() == "esES" then
 	UNIQUE_CAPTURE = "BugGrabber ha capturado un \195\186nico error:\n%s\n---"
 	ADDON_CALL_PROTECTED = "[%s] El accesorio '%s' ha intentado llamar a la funci\195\179n protegida '%s'."
 	ADDON_CALL_PROTECTED_MATCH = "^%[(.*)%] (El accesorio '.*' ha intentado llamar a la funci\195\179n protegida '.*'.)$"
+	ADDON_DISABLED = "|cffffff7fBugGrabber|r y |cffffff7f%s|r no pueden coexistir juntos. |cffffff7f%s|r ha sido desactivado por este motivo. Si lo deseas, puedes salir, desactivar |cffffff7fBugGrabber|r y reactivar |cffffff7f%s|r."
+	BUGGRABBER_STOPPED = "|cffffff7fBugGrabber|r ha detenido la captuta de errores, ya que ha capturado m\195\161s de %d errores por segundo. La captura se reanudar\195\161 en %d segundos."
+	BUGGRABBER_RESUMING = "|cffffff7fBugGrabber|r est\195\161 capturando errores de nuevo."
 elseif GetLocale() == "zhTW" then
 	CMD_CREATED = "發現錯誤，用 /buggrabber 列出這錯誤。"
 	USAGE = "用法：/buggrabber <1-%d>。"
@@ -89,51 +97,181 @@ elseif GetLocale() == "zhTW" then
 	BUGGRABBER_RESUMING = "|cffffff7fBugGrabber|r 已重新開始。"
 end
 
--- Create our event registering frame
-local BugGrabber = CreateFrame("Frame", "BugGrabber")
+BugGrabber = {}
+local frame = CreateFrame("Frame")
 
-local slashCmdCreated = nil
-local temporaryList = nil
 local real_seterrorhandler = seterrorhandler
-local real_geterrorhandler = geterrorhandler
-local eventLibrary = nil
-local totalElapsed = 0
 
+local totalElapsed = 0
 local errorsSinceLastReset = 0
 local paused = nil
 local looping = false
 
--- State variables
-BugGrabber.loaded = false
-BugGrabber.loadErrors = {}
-BugGrabber.bugsackErrors = {}
-BugGrabber.errors = {}
+local stateErrorDatabase = {}
+local slashCmdCreated = nil
+local slashCmdErrorList = {}
 
--- Our persistent error database
-BugGrabberDB = {}
-BugGrabberDB.session = 0
-BugGrabberDB.save = true
-BugGrabberDB.limit = math.ceil(MAX_BUGGRABBER_ERRORS / 2)
-BugGrabberDB.errors = {}
-BugGrabberDB.throttle = true
+local ae2 = nil
+-- TODO Should add rock and ace3
+local function triggerEvent(...)
+	if not ae2 and AceLibrary and AceLibrary:HasInstance("AceEvent-2.0") then
+		ae2 = AceLibrary("AceEvent-2.0")
+	end
+	if ae2 then ae2:TriggerEvent(...) end
+end
 
--- Determine the proper DB and return it
-function BugGrabber.GetDB()
-	if not BugGrabber.loaded then
-		return BugGrabber.loadErrors
+local function print(text)
+	DEFAULT_CHAT_FRAME:AddMessage(text)
+end
+
+local function slashHandler(index)
+	if not index or tostring(index) == "" then
+		print(USAGE:format(#slashCmdErrorList))
+		return
 	end
-	if not BugGrabberDB.save then
-		return BugGrabber.errors
+	if not tonumber(index) then
+		print(ERROR_INDEX)
+		return
 	end
-	return BugGrabberDB.errors
+	index = tonumber(index)
+	if not slashCmdErrorList[index] then
+		print(ERROR_UNKNOWN_INDEX:format(index))
+		return
+	end
+	local err = slashCmdErrorList[index]
+	if type(err) ~= "table" or (type(err.message) ~= "string" and type(err.message) ~= "table") then return end
+	if BugSack and type(BugSack.FormatError) == "function" then
+		print(tostring(index) .. ". " .. BugSack:FormatError(err))
+	else
+		local m = err.message
+		if type(m) == "table" then
+			m = table.concat(m, "")
+		end
+		print(tostring(index) .. ". " .. m)
+	end
+end
+
+local function createSlashCmd()
+	if slashCmdCreated then return end
+	local name = "BUGGRABBERCMD"
+	local counter = 0
+	repeat
+		name = "BUGGRABBERCMD"..tostring(counter)
+		counter = counter + 1
+	until not _G.SlashCmdList[name] and not _G["SLASH_"..name.."1"]
+	_G.SlashCmdList[name] = slashHandler
+	_G["SLASH_"..name.."1"] = "/buggrabber"
+
+	slashCmdCreated = true
+	if not ae2 or (ae2 and not ae2:IsEventRegistered("BugGrabber_BugGrabbed")) then
+		print(CMD_CREATED)
+	end
+end
+
+local function saveError(message, errorType)
+	-- Start with the date, time and session
+	local oe = {}
+	oe.message = message .. "\n  ---"
+	oe.session = BugGrabberDB.session
+	oe.time = date("%Y/%m/%d %H:%M:%S")
+	oe.type = errorType
+	oe.counter = 1
+
+	-- WoW crashes when strings > 983 characters are stored in the
+	-- SavedVariables file, so make sure we don't exceed that limit.
+	-- For lack of a better thing to do, just truncate the error :-/
+	if oe.message:len() > 980 then
+		local m = oe.message
+		oe.message = {}
+		local maxChunks, chunks = 5, 0
+		while m:len() > 980 and chunks <= maxChunks do
+			local q
+			q, m = m:sub(1, 980), m:sub(981)
+			table.insert(oe.message, q)
+			chunks = chunks + 1
+		end
+		if m:len() > 980 then m = m:sub(1, 980) end
+		table.insert(oe.message, m)
+	end
+
+	-- Insert the error into the correct database if it's not there already.
+	-- If it is, just increment the counter.
+	local found = false
+	local db = BugGrabber:GetDB()
+	local oe_message = oe.message
+	if type(oe_message) == "table" then
+		oe_message = oe_message[1]
+	end
+	for i, err in ipairs(db) do
+		local err_message = err.message
+		if type(err_message) == "table" then
+			err_message = err_message[1]
+		end
+		if err_message == oe_message and err.session == oe.session then
+			-- This error already exists in the current session, just increment
+			-- the counter on it.
+			if type(err.counter) ~= "number" then
+				err.counter = 1
+			end
+			err.counter = err.counter + 1
+
+			oe = nil
+			oe = err
+
+			found = true
+			break
+		end
+	end
+
+	-- If the error was not found in the current session, append it to the
+	-- database.
+	if not found then
+		table.insert(db, oe)
+
+		-- Save only the last <limit> errors (otherwise the SV gets too big)
+		if #db > BugGrabberDB.limit then
+			table.remove(db, 1)
+		end
+	end
+
+	-- Trigger event.
+	if not looping then
+		local e = "BugGrabber_" .. (errorType == "event" and "Event" or "Bug") .. "Grabbed" .. (found and "Again" or "")
+		triggerEvent(e, oe)
+
+		if not found then
+			table.insert(slashCmdErrorList, oe)
+			createSlashCmd()
+		end
+	end
+end
+
+local function scan(o)
+	local version, revision = nil, nil
+	for k, v in pairs(o) do
+		if type(k) == "string" then
+			local low = k:lower()
+			if not version and (low == "version" or low:find("version")) and (type(v) == "string" or type(v) == "number") then
+				version = v
+			elseif not revision and (low == "rev" or low:find("revision")) and (type(v) == "string" or type(v) == "number")  then
+				revision = v
+			end
+		end
+		if version and revision then break end
+	end
+	return version, revision
 end
 
 -- Error handler
-function BugGrabber.GrabError(err)
+local function grabError(err)
 	if paused then return end
 
 	-- Get the full backtrace
-	local real = err:find("^.-([^\\]+\\)([^\\]-)(:%d+):(.*)$") or err:find("^%[string \".-([^\\]+\\)([^\\]-)\"%](:%d+):(.*)$") or err:find("^%[string (\".-\")%](:%d+):(.*)$") or err:find("^%[C%]:(.*)$")
+	local real =
+		err:find("^.-([^\\]+\\)([^\\]-)(:%d+):(.*)$") or
+		err:find("^%[string \".-([^\\]+\\)([^\\]-)\"%](:%d+):(.*)$") or
+		err:find("^%[string (\".-\")%](:%d+):(.*)$") or err:find("^%[C%]:(.*)$")
+
 	err = err .. "\n" .. debugstack(real and 4 or 3)
 	local errorType = "error"
 
@@ -200,58 +338,30 @@ function BugGrabber.GrabError(err)
 			if match then
 				found = true
 				local addon = path:gsub("\\.*$", "")
-				local _G_addon = _G[addon]
-				if not _G_addon then
-					_G_addon = _G[addon:match("^[^_]+_(.*)$")]
+				local addonObject = _G[addon]
+				if not addonObject then
+					addonObject = _G[addon:match("^[^_]+_(.*)$")]
 				end
-				local version = ""
-				if type(_G_addon) == "table" then
-					if rawget(_G_addon, "version") then version = _G_addon.version
-					elseif rawget(_G_addon, "Version") then version = _G_addon.Version
-					elseif rawget(_G_addon, "VERSION") then version = _G_addon.VERSION
-					end
-					if type(version) == "function" then version = tostring(select(2, pcall(version()))) end
-					local revision = nil
-					if rawget(_G_addon, "revision") then revision = _G_addon.revision
-					elseif rawget(_G_addon, "Revision") then revision = _G_addon.Revision
-					elseif rawget(_G_addon, "REVISION") then revision = _G_addon.REVISION
-					elseif rawget(_G_addon, "rev") then revision = _G_addon.rev
-					elseif rawget(_G_addon, "Rev") then revision = _G_addon.Rev
-					elseif rawget(_G_addon, "REV") then revision = _G_addon.REV
-					end
-					if type(revision) == "function" then revision = tostring(select(2, pcall(revision()))) end
-
-					if version then version = tostring(version) end
-					if revision then revision = tostring(revision) end
-					if type(revision) == "string" and type(version) == "string" and version:len() > 0 and not version:find(revision) then
-						version = version .. "." .. revision
-					end
-
-					if not version and revision then version = revision end
+				local version, revision = nil, nil
+				if AceLibrary and AceLibrary:HasInstance(addon, false) then
+					local _, r = AceLibrary(addon)
+					version = r
 				end
-				
-				if _G[addon:upper().."_VERSION"] then
-					version = _G[addon:upper() .. "_VERSION"]
+				if type(addonObject) == "table" then
+					local v, r = scan(addonObject)
+					if v then version = v end
+					if r then revision = r end
 				end
-				if _G[addon:upper().."_REVISION"] or _G[addon:upper().."_REV"] then
-					local revision = _G[addon:upper() .. "_REVISION"] or _G[addon:upper().."_REV"]
-					if type(revision) == "string" and type(version) == "string" and version:len() > 0 and not version:find(revision) then
-						version = version .. "." .. revision
-					end
-					if not version and revision then version = revision end
+				local objectName = addon:upper()
+				if not version then version = _G[objectName .. "_VERSION"] end
+				if not revision then revision = _G[objectName .. "_REVISION"] or _G[objectName .. "_REV"] end
+				if not version then version = GetAddOnMetadata(addon, "Version") end
+				if not version and revision then version = revision
+				elseif type(version) == "string" and revision and not version:find(revision) then
+					version = version .. "." .. revision
 				end
-				
-				if not version and AceLibrary and AceLibrary:HasInstance(addon) then
-					local _, rev = AceLibrary(addon)
-					version = rev
-				end
-				
-				if not version then
-					version = GetAddOnMetadata(addon, "Version")
-				end
-				
-				if type(version) == "string" and version:len() > 0 or type(version) == "number" then
-					path = addon .. "-" .. tostring(version) .. path:gsub("^[^\\]*", "")
+				if version then
+					path = addon .. "-" .. version .. path:gsub("^[^\\]*", "")
 				end
 			end
 		end
@@ -277,7 +387,7 @@ function BugGrabber.GrabError(err)
 			match, _, file, line, msg = trace:find("^%[string (\".-\")%](:%d+):(.*)$")
 			if match then
 				found = true
-				path = '<string>:'
+				path = "<string>:"
 			end
 		end
 
@@ -286,9 +396,9 @@ function BugGrabber.GrabError(err)
 			match, _, msg = trace:find("^%[C%]:(.*)$")
 			if match then
 				found = true
-				path = '<in C code>'
-				file = ''
-				line = ''
+				path = "<in C code>"
+				file = ""
+				line = ""
 			end
 		end
 
@@ -297,18 +407,18 @@ function BugGrabber.GrabError(err)
 			match, _, file, msg = trace:find(ADDON_CALL_PROTECTED_MATCH)
 			if match then
 				found = true
-				path = '<event>'
-				file = 'ADDON_ACTION_BLOCKED'
-				line = ''
+				path = "<event>"
+				file = "ADDON_ACTION_BLOCKED"
+				line = ""
 				errorType = "event"
 			end
 		end
 
 		-- Anything else
 		if not found then
-			path = trace--'<unknown>'
-			file = ''
-			line = ''
+			path = trace--"<unknown>"
+			file = ""
+			line = ""
 			msg = line
 		end
 
@@ -318,411 +428,188 @@ function BugGrabber.GrabError(err)
 
 	errorsSinceLastReset = errorsSinceLastReset + 1
 
-	-- Now store the error
-	BugGrabber.SaveError(errmsg, errorType)
+	-- Store the error
+	saveError(errmsg, errorType)
 end
 
-function BugGrabber.SaveError(message, errorType)
-	-- Start with the date, time and session
-	local oe = {}
-	oe.message = message .. "\n  ---"
-	oe.session = BugGrabberDB.session
-	oe.time = date("%Y/%m/%d %H:%M:%S")
-	oe.type = errorType
-	oe.counter = 1
-
-	-- WoW crashes when strings > 983 characters are stored in the
-	-- SavedVariables file, so make sure we don't exceed that limit.
-	-- For lack of a better thing to do, just truncate the error :-/
-	if oe.message:len() > 980 then
-		local m = oe.message
-		oe.message = {}
-		local maxChunks, chunks = 5, 0
-		while m:len() > 980 and chunks <= maxChunks do
-			local q
-			q, m = m:sub(1, 980), m:sub(981)
-			table.insert(oe.message, q)
-			chunks = chunks + 1
-		end
-		if m:len() > 980 then m = m:sub(1, 980) end
-		table.insert(oe.message, m)
-	end
-
-	local added = false
-
-	-- Insert the error into the correct database if it's not there already.
-	-- If it is, just increment the counter.
-	local found = false
-	local db = BugGrabber.GetDB()
-	local oe_message = oe.message
-	if type(oe_message) == "table" then
-		oe_message = oe_message[1]
-	end
-	local i, err
-	for i, err in ipairs(db) do
-		local err_message = err.message
-		if type(err_message) == "table" then
-			err_message = err_message[1]
-		end
-		if err_message == oe_message and err.session == oe.session then
-			-- This error already exists in the current session, just increment
-			-- the counter on it.
-			if not err.counter or type(err.counter) ~= "number" then
-				err.counter = 1
-			end
-			err.counter = err.counter + 1
-
-			-- Update the current error for the event firing later.
-			oe.counter = err.counter
-			oe.time = err.time
-			found = true
-			break
-		end
-	end
-
-	-- If the error was not found in the current session, append it to the
-	-- database.
-	if not found then
-		table.insert(db, oe)
-		added = true
-	end
-
-	-- Also insert it into the temporary capture database that we maintain
-	-- to silence loading errors while we wait for BugSack to load
-	if type(BugGrabber.bugsackErrors) == "table" then
-		found = false
-		for i, err in ipairs(BugGrabber.bugsackErrors) do
-			local err_message = err.message
-			if type(err_message) == "table" then
-				err_message = err_message[1]
-			end
-			if err_message == oe_message and err.session == oe.session then
-				if not err.counter or type(err.counter) ~= "number" then
-					err.counter = 1
-				end
-				err.counter = err.counter + 1
-				found = true
-				break
-			end
-		end
-		if not found then
-			table.insert(BugGrabber.bugsackErrors, oe)
-			added = true
-		end
-	end
-
-	-- Save only the last <limit> errors (otherwise the SV gets too big)
-	if #db > BugGrabberDB.limit then
-		table.remove(db, 1)
-	end
-
-	-- Now trigger an event if someone's listening. If not, just print
-	-- it to the chat frame so it doesn't get lost.
-	if not looping and not BugGrabber.bugsackErrors then
-		if not eventLibrary then eventLibrary = AceLibrary and AceLibrary:HasInstance("AceEvent-2.0") and AceLibrary("AceEvent-2.0") or nil end
-		if eventLibrary and eventLibrary:IsEventRegistered("BugGrabber_BugGrabbed") then
-			local prefix = "Bug"
-			if errorType == "event" then prefix = "Event" end
-			if added then
-				eventLibrary:TriggerEvent("BugGrabber_"..prefix.."Grabbed", oe)
-			else
-				eventLibrary:TriggerEvent("BugGrabber_"..prefix.."GrabbedAgain", oe)
-			end
-		elseif added then
-			BugGrabber.CreateSlashCmd()
-			if not temporaryList then temporaryList = {} end
-			table.insert(temporaryList, oe)
-		end
-	end
-end
-
-local onUpdateFunction = function(_, elapsed)
+local function onUpdateFunc(self, elapsed)
 	totalElapsed = totalElapsed + elapsed
 	if totalElapsed > 1 then
 		if not paused then
 			-- Seems like we're getting more errors/sec than we want.
 			if errorsSinceLastReset > BUGGRABBER_ERRORS_PER_SEC_BEFORE_THROTTLE then
-				BugGrabber.Pause()
+				BugGrabber:Pause()
 			end
 			errorsSinceLastReset = 0
 			totalElapsed = 0
 		elseif totalElapsed > BUGGRABBER_TIME_TO_RESUME and paused then
-			BugGrabber.Resume()
+			BugGrabber:Resume()
 		end
 	end
 end
 
--- Event handlers
-function BugGrabber.AddonLoaded()
-	BugGrabber.loaded = true
-
-	-- Persist defaults and make sure we have sane SavedVariables
-	if not BugGrabberDB or type(BugGrabberDB) ~= "table" then
-		BugGrabberDB = {}
-	end
-	if not BugGrabberDB.session or type(BugGrabberDB.session) ~= "number" then
-		BugGrabberDB.session = 0
-	end
-	if not BugGrabberDB.errors or type(BugGrabberDB.errors) ~= "table" then
-		BugGrabberDB.errors = {}
-	end
-	if not BugGrabberDB.limit or type(BugGrabberDB.limit) ~= "number" then
-		BugGrabberDB.limit = 100
-	end
-	if BugGrabberDB.save == nil or type(BugGrabberDB.save) ~= "boolean" then
-		BugGrabberDB.save = true
-	end
-	if BugGrabberDB.throttle == nil or type(BugGrabberDB.throttle) ~= "boolean" then
-		BugGrabberDB.throttle = true
-	end
-
-	-- From now on we can persist errors. Create a new session.
-	BugGrabberDB.session = BugGrabberDB.session + 1
-
-	-- Determine the correct database
-	local db = BugGrabber.GetDB()
-
-	-- Cut down on the nr of errors if it is over 100
-	while #db + #BugGrabber.loadErrors > BugGrabberDB.limit do
-		table.remove(db, 1)
-	end
-
-	-- Save the errors that occurred while our variables were loading
-	-- in the correct database.
-	local _, err
-	for _,err in pairs(BugGrabber.loadErrors) do
-		err.session = BugGrabberDB.session
-		table.insert(db, err)
-	end
-
-	if BugGrabberDB.throttle then
-		BugGrabber:SetScript("OnUpdate", onUpdateFunction)
-	end
-
-	-- Now do away with the temporary database
-	BugGrabber.loadErrors = nil
+function BugGrabber:Reset()
+	stateErrorDatabase = {}
+	BugGrabberDB.errors = {}
 end
 
-function BugGrabber.PrintLoadError(index)
-	if not index or tostring(index) == "" then
-		BugGrabber.Print(USAGE:format(temporaryList and #temporaryList or 1))
-		return
-	end
-	if not tonumber(index) then
-		BugGrabber.Print(ERROR_INDEX)
-		return
-	end
-	index = tonumber(index)
-	if not temporaryList or not temporaryList[index] then
-		BugGrabber.Print(ERROR_UNKNOWN_INDEX:format(index))
-		return
-	end
-	local err = temporaryList[index]
-	if type(err) ~= "table" or (type(err.message) ~= "string" and type(err.message) ~= "table") then return end
-	if BugSack and type(BugSack.FormatError) == "function" then
-		BugGrabber.Print(tostring(index) .. ". " .. BugSack:FormatError(err))
-	else
-		local m = err.message
-		if type(m) == "table" then
-			m = table.concat(m, '')
-		end
-		BugGrabber.Print(tostring(index) .. ". " .. m)
-	end
-end
-
-function BugGrabber.CreateSlashCmd()
-	if slashCmdCreated then return end
-	BugGrabber.Print(CMD_CREATED)
-	local name = "BUGGRABBERCMD"
-	local counter = 0
-	repeat
-		name = "BUGGRABBERCMD"..tostring(counter)
-		counter = counter + 1
-	until not _G.SlashCmdList[name] and not _G["SLASH_"..name.."1"]
-	_G.SlashCmdList[name] = BugGrabber.PrintLoadError
-	_G["SLASH_"..name.."1"] = "/buggrabber"
-
-	slashCmdCreated = true
-end
-
-function BugGrabber.PlayerLogin()
-	-- On player login, check to see whether we had load time errors and
-	-- display them in the chat frame if we can't find BugSack. We cheat
-	-- by letting BugSack reset BugGrabber.bugsackErrors so we can just
-	-- check that.
-	local err = BugGrabber.bugsackErrors
-	if type(err) == "table" and #err > 0 then
-		local num = #err
-		local _G = getfenv(0)
-		if num > 4 and type(_G.SlashCmdList) == "table" then
-			BugGrabber.Print(STARTUP_ERRORS_MANY:format(num))
-			if not temporaryList then temporaryList = {} end
-			local _, v
-			for _, v in ipairs(err) do
-				table.insert(temporaryList, v)
-			end
-			BugGrabber.CreateSlashCmd()
-		else
-			BugGrabber.Print(STARTUP_ERRORS:format(num))
-			local k, e
-			for k, e in ipairs(err) do
-				if BugSack and type(BugSack.FormatError) == "function" then
-					BugGrabber.Print(tostring(k) .. ". " .. BugSack:FormatError(e))
-				else
-					local m = e.message
-					if type(m) == "table" then
-						m = table.concat(m, '')
-					end
-					BugGrabber.Print(tostring(k) .. ". " .. m)
-				end
-			end
-		end
-	end
-
-	-- No need to wait for BugSack to load anymore
-	BugGrabber.bugsackErrors = nil
-end
-
-function BugGrabber.OnEvent()
-	if event == "ADDON_LOADED" then
-		if arg1 == "!BugGrabber" then
-			real_seterrorhandler(BugGrabber.GrabError)
-			BugGrabber.AddonLoaded()
-		elseif (arg1 == "!Swatter" or (type(SwatterData) == "table" and SwatterData.enabled)) and Swatter then
-			BugGrabber.Print(string.gsub(ADDON_DISABLED, "%%s", "Swatter"))
-			DisableAddOn("!Swatter")
-			SwatterData.enabled = nil
-			real_seterrorhandler(BugGrabber.GrabError)
-			SlashCmdList.SWATTER = nil
-			SLASH_SWATTER1, SLASH_SWATTER2 = nil, nil
-			for k, v in pairs(Swatter) do
-				if type(v) == "table" and rawget(v, 0) and v.GetFrameType then
-					v:UnregisterEvent("ADDON_ACTION_FORBIDDEN")
-					v:UnregisterEvent("ADDON_ACTION_BLOCKED")
-				end
-			end
-		elseif arg1 == "Stubby" then
-			-- Need this so Stubby will feed us errors instead of just
-			-- dumping them to the chat frame.
-			_G.Swatter = {
-				IsEnabled = function() return true end,
-				OnError = function(msg, frame, stack, etype, ...)
-					BugGrabber.GrabError(tostring(msg) .. tostring(stack))
-				end,
-			}
-		end
-	elseif event == "PLAYER_LOGIN" then	
-		real_seterrorhandler(BugGrabber.GrabError)
-		BugGrabber.PlayerLogin()
-	elseif event == "ADDON_ACTION_BLOCKED" or event == "ADDON_ACTION_FORBIDDEN" then
-		BugGrabber.GrabError(ADDON_CALL_PROTECTED:format(event, arg1, arg2))
-	end
+-- Determine the proper DB and return it
+function BugGrabber:GetDB()
+	return BugGrabberDB.save and BugGrabberDB.errors or stateErrorDatabase
 end
 
 -- Simple setters/getters for settings, meant to be accessed by BugSack
-function BugGrabber.GetSave()
+function BugGrabber:GetSave()
 	return BugGrabberDB.save
 end
 
-function BugGrabber.ToggleSave()
+function BugGrabber:ToggleSave()
 	BugGrabberDB.save = not BugGrabberDB.save
 	if BugGrabberDB.save then
-		BugGrabberDB.errors = BugGrabber.errors
-		BugGrabber.errors = {}
+		BugGrabberDB.errors = stateErrorDatabase
+		stateErrorDatabase = {}
 	else
-		BugGrabber.errors = BugGrabberDB.errors
+		stateErrorDatabase = BugGrabberDB.errors
 		BugGrabberDB.errors = {}
 	end
 end
 
-function BugGrabber.GetLimit()
+function BugGrabber:GetLimit()
 	return BugGrabberDB.limit
 end
 
-function BugGrabber.SetLimit(l)
+function BugGrabber:SetLimit(l)
 	if type(l) ~= "number" or l < 10 or l > MAX_BUGGRABBER_ERRORS then
 		return
 	end
 
 	BugGrabberDB.limit = math.floor(l)
-
-	local db = BugGrabber.GetDB()
+	local db = self:GetDB()
 	while #db > l do
 		table.remove(db, 1)
 	end
 end
 
-function BugGrabber.IsThrottling()
+function BugGrabber:IsThrottling()
 	return BugGrabberDB.throttle
 end
 
-function BugGrabber.UseThrottling(flag)
+function BugGrabber:UseThrottling(flag)
 	BugGrabberDB.throttle = flag and true or false
-	if flag and BugGrabber:GetScript("OnUpdate") == nil then
-		BugGrabber:SetScript("OnUpdate", onUpdateFunction)
+	if flag and not frame:GetScript("OnUpdate") then
+		frame:SetScript("OnUpdate", onUpdateFunc)
 	elseif not flag then
-		BugGrabber:SetScript("OnUpdate", nil)
+		frame:SetScript("OnUpdate", nil)
 	end
 end
 
-function BugGrabber.Print(text)
-	if type(DEFAULT_CHAT_FRAME) == "table" and type(DEFAULT_CHAT_FRAME.AddMessage) == "function" then
-		DEFAULT_CHAT_FRAME:AddMessage(text)
-	end
+function BugGrabber:RegisterAddonActionEvents()
+	frame:RegisterEvent("ADDON_ACTION_BLOCKED")
+	frame:RegisterEvent("ADDON_ACTION_FORBIDDEN")
+	triggerEvent("BugGrabber_AddonActionEventsRegistered")
 end
 
-function BugGrabber.RegisterAddonActionEvents()
-	BugGrabber:RegisterEvent("ADDON_ACTION_BLOCKED")
-	BugGrabber:RegisterEvent("ADDON_ACTION_FORBIDDEN")
-	if not eventLibrary then eventLibrary = AceLibrary and AceLibrary:HasInstance("AceEvent-2.0") and AceLibrary("AceEvent-2.0") or nil end
-	if eventLibrary then eventLibrary:TriggerEvent("BugGrabber_AddonActionEventsRegistered") end
+function BugGrabber:UnregisterAddonActionEvents()
+	frame:UnregisterEvent("ADDON_ACTION_BLOCKED")
+	frame:UnregisterEvent("ADDON_ACTION_FORBIDDEN")
+	triggerEvent("BugGrabber_AddonActionEventsUnregistered")
 end
 
-function BugGrabber.UnregisterAddonActionEvents()
-	BugGrabber:UnregisterEvent("ADDON_ACTION_BLOCKED")
-	BugGrabber:UnregisterEvent("ADDON_ACTION_FORBIDDEN")
-	if not eventLibrary then eventLibrary = AceLibrary and AceLibrary:HasInstance("AceEvent-2.0") and AceLibrary("AceEvent-2.0") or nil end
-	if eventLibrary then eventLibrary:TriggerEvent("BugGrabber_AddonActionEventsUnregistered") end
-end
-
-function BugGrabber.IsPaused()
+function BugGrabber:IsPaused()
 	return paused
 end
 
-function BugGrabber.Pause()
+function BugGrabber:Pause()
 	if paused then return end
 
 	if not BUGGRABBER_SUPPRESS_THROTTLE_CHAT then
-		BugGrabber.Print(string.format(BUGGRABBER_STOPPED, BUGGRABBER_ERRORS_PER_SEC_BEFORE_THROTTLE, BUGGRABBER_TIME_TO_RESUME))
+		print(string.format(BUGGRABBER_STOPPED, BUGGRABBER_ERRORS_PER_SEC_BEFORE_THROTTLE, BUGGRABBER_TIME_TO_RESUME))
 	end
-	BugGrabber.UnregisterAddonActionEvents()
+	self:UnregisterAddonActionEvents()
 	paused = true
-	if eventLibrary then
-		eventLibrary:TriggerEvent("BugGrabber_CapturePaused")
-	end
+	triggerEvent("BugGrabber_CapturePaused")
 end
 
-function BugGrabber.Resume()
+function BugGrabber:Resume()
 	if not paused then return end
 
 	if not BUGGRABBER_SUPPRESS_THROTTLE_CHAT then
-		BugGrabber.Print(BUGGRABBER_RESUMING)
+		print(BUGGRABBER_RESUMING)
 	end
-	BugGrabber.RegisterAddonActionEvents()
+	self:RegisterAddonActionEvents()
 	paused = nil
-	if eventLibrary then
-		eventLibrary:TriggerEvent("BugGrabber_CaptureResumed")
-	end
+	triggerEvent("BugGrabber_CaptureResumed")
 	totalElapsed = 0
 end
 
--- Now register for our needed events
-BugGrabber:RegisterEvent("ADDON_LOADED")
-BugGrabber:RegisterEvent("PLAYER_LOGIN")
-BugGrabber.RegisterAddonActionEvents()
-BugGrabber:SetScript("OnEvent", BugGrabber.OnEvent)
+local function addonLoaded(addon)
+	if addon == "!BugGrabber" then
+		real_seterrorhandler(grabError)
 
-real_seterrorhandler(BugGrabber.GrabError)
+		-- Persist defaults and make sure we have sane SavedVariables
+		if type(BugGrabberDB) ~= "table" then BugGrabberDB = {} end
+		local sv = BugGrabberDB
+		if type(sv.session) ~= "number" then sv.session = 0 end
+		if type(sv.errors) ~= "table" then sv.errors = {} end
+		if type(sv.limit) ~= "number" then sv.limit = math.ceil(MAX_BUGGRABBER_ERRORS / 2) end
+		if type(sv.save) ~= "boolean" then sv.save = true end
+		if type(sv.throttle) ~= "boolean" then sv.throttle = true end
+
+		-- From now on we can persist errors. Create a new session.
+		sv.session = sv.session + 1
+
+		-- Determine the correct database
+		local db = BugGrabber:GetDB()
+		-- Cut down on the nr of errors if it is over the limit
+		while #db > sv.limit do
+			table.remove(db, 1)
+		end
+		if sv.throttle then
+			frame:SetScript("OnUpdate", onUpdateFunc)
+		end
+	elseif (addon == "!Swatter" or (type(SwatterData) == "table" and SwatterData.enabled)) and Swatter then
+		print(string.gsub(ADDON_DISABLED, "%%s", "Swatter"))
+		DisableAddOn("!Swatter")
+		SwatterData.enabled = nil
+		real_seterrorhandler(grabError)
+		SlashCmdList.SWATTER = nil
+		SLASH_SWATTER1, SLASH_SWATTER2 = nil, nil
+		for k, v in pairs(Swatter) do
+			if type(v) == "table" and v.UnregisterEvent then
+				v:UnregisterEvent("ADDON_ACTION_FORBIDDEN")
+				v:UnregisterEvent("ADDON_ACTION_BLOCKED")
+				if v.UnregisterAllEvents then
+					v:UnregisterAllEvents()
+				end
+			end
+		end
+	elseif addon == "Stubby" then
+		-- Need this so Stubby will feed us errors instead of just
+		-- dumping them to the chat frame.
+		_G.Swatter = {
+			IsEnabled = function() return true end,
+			OnError = function(msg, frame, stack, etype, ...)
+				grabError(tostring(msg) .. tostring(stack))
+			end,
+		}
+	end
+end
+
+-- Now register for our needed events
+frame:SetScript("OnEvent", function(self, event, arg1, arg2)
+	if event == "ADDON_ACTION_BLOCKED" or event == "ADDON_ACTION_FORBIDDEN" then
+		grabError(ADDON_CALL_PROTECTED:format(event, arg1, arg2))
+	elseif event == "ADDON_LOADED" then
+		addonLoaded(arg1)
+	elseif event == "PLAYER_LOGIN" then
+		real_seterrorhandler(grabError)
+	end
+end)
+frame:RegisterEvent("ADDON_LOADED")
+frame:RegisterEvent("PLAYER_LOGIN")
+BugGrabber:RegisterAddonActionEvents()
+
+real_seterrorhandler(grabError)
 function seterrorhandler() --[[ noop ]] end
 
 -- vim:set ts=4:

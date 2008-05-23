@@ -22,8 +22,8 @@ L:RegisterTranslations("enUS", function() return {
 
 L:RegisterTranslations("koKR", function() return {
 	nova = "불타는 회오리",
-	nova_desc = "불타는 회오리에 대한 경고",
-	nova_trigger = "더 가까이", -- check
+	nova_desc = "불타는 회오리에 대해 알립니다.",
+	nova_trigger = "더 가까이",
 	nova_message = "불타는 회오리 시전!",
 } end )
 
@@ -65,7 +65,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"nova", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 67359 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

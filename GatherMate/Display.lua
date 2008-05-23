@@ -136,6 +136,16 @@ local function addCartWaypoint(pin)
 	end
 end
 --[[
+	Add pin location to TomTom waypoints
+]]
+local function addTomTomWaypoint(pin)
+	if TomTom then
+		local c, z = GetCurrentMapContinent(), GetCurrentMapZone()
+		local x, y = GatherMate:getXY(pin.coords)
+		TomTom:AddZWaypoint(c, z, x*100, y*100, pin.title, nil, true, true)
+	end
+end
+--[[
 	Generate a drop down menu for a pin
 ]]
 local function generatePinMenu(level)
@@ -167,6 +177,14 @@ local function generatePinMenu(level)
 			info.text = L["Add this location to Cartographer_Waypoints"]
 			info.icon = nil
 			info.func = addCartWaypoint
+			info.arg1 = pinClickedOn
+			UIDropDownMenu_AddButton(info, level)
+		end
+
+		if TomTom then
+			info.text = L["Add this location to TomTom waypoints"]
+			info.icon = nil
+			info.func = addTomTomWaypoint
 			info.arg1 = pinClickedOn
 			UIDropDownMenu_AddButton(info, level)
 		end
@@ -681,7 +699,7 @@ function Display:UpdateMiniMap(force)
 				for coord, nodeID in GatherMate:FindNearbyNode(zone, x, y, db_type, mapRadius*nodeRange) do
 					local pin = self:getMiniPin(coord, nodeID, db_type, zone, (i * 1e9) + coord)
 					pin.keep = true
-					self:addMiniPin(pin, refresh)
+					self:addMiniPin(pin, force)
 				end
 			end
 		end
@@ -751,4 +769,17 @@ function Display:UpdateWorldMap(force)
 	end
 	lastDrawnWorldMap = zname -- record last drawn zone name
 	rememberForce = false
+end
+
+--[[
+	This function is for external addons to call to reparent all existing
+	minimap icons to a new minimap frame.
+]]
+function Display:ReparentMinimapPins(parent)
+	Minimap = parent
+	GameTooltip:SetFrameLevel(parent:GetFrameLevel()+2) -- Because Chinchilla_Expander_Minimap is on TOOLTIP strata too
+	for k, v in pairs(minimapPins) do
+		v:SetParent(parent)
+	end
+	self:UpdateIconPositions()
 end

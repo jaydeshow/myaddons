@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["localization.lua"] then
     return;
 end
 
-Dcr:SetDateAndRevision("$Date: 2008-02-27 22:28:16 -0500 (Wed, 27 Feb 2008) $", "$Revision: 63107 $");
+Dcr:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
 
 
 -- Acelocal register for zhCN // {{{
@@ -70,19 +70,6 @@ L:RegisterTranslations("zhCN", function() return {
 
     [LOC.PET_FEL_CAST]	=	"吞噬魔法",
     [LOC.PET_DOOM_CAST]	=	"驱散魔法",
-
-    [LOC.SPELL_POLYMORPH]		=	"变形术", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_CURE_DISEASE]	=	"祛病术", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_ABOLISH_DISEASE]	=	"驱除疾病", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_PURIFY]		=	"纯净术", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_CLEANSE]		=	"清洁术", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_DISPELL_MAGIC]	=	"驱散魔法", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_CURE_POISON]		=	"消毒术", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_ABOLISH_POISON]	=	"驱毒术", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_REMOVE_LESSER_CURSE]	=	"解除次级诅咒", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_REMOVE_CURSE]	=	"解除诅咒", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_PURGE]		=	"净化术", -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SPELL_CYCLONE]             = '飓风术',  -- This translation is for reference only the one used is from the library BabbleSpell
 
     [BINDING_NAME_DCRSHOW]    = "显示或隐藏一键驱散状态条",
 
@@ -132,24 +119,6 @@ L:RegisterTranslations("zhCN", function() return {
 
     [LOC.SPELL_FOUND]      = "找到 %s 法术。",
 
-    -- spells and potions
-    [LOC.DREAMLESSSLEEP]	= "无梦睡眠",
-    [LOC.GDREAMLESSSLEEP]	= "强效昏睡",
-    [LOC.MDREAMLESSSLEEP]	= "特效无梦睡眠",
-    [LOC.ANCIENTHYSTERIA]	= "上古狂乱",
-    [LOC.IGNITE]		= "点燃法力",
-    [LOC.TAINTEDMIND]	= "污浊之魂",
-    [LOC.MAGMASHAKLES]	= "熔岩镣铐",
-    [LOC.CRIPLES]		= "残废术",
-    [LOC.DUSTCLOUD]		= "尘雾之云",
-    [LOC.WIDOWSEMBRACE]	= "黑女巫的拥抱",
-    [LOC.CURSEOFTONGUES]	= "语言诅咒",  -- This translation is for reference only the one used is from the library BabbleSpell
-    [LOC.SONICBURST]	= "音爆",
-    [LOC.THUNDERCLAP]	= "雷霆一击",
-    [LOC.DELUSIONOFJINDO]	= "金度的欺骗",
-    [LOC.MUTATINGINJECTION] = "变异注射",
-
-
 
     -- NEW LOCALS FOR 2.0
     [LOC.DEFAULT_MACROKEY] = "`", -- the key just beneath the escape key on a QWERTY keyboard
@@ -178,29 +147,33 @@ L:RegisterTranslations("zhCN", function() return {
     [LOC.OPT_SHOWMFS_DESC] = "如果你要打地鼠就必須选择这项。",
     [LOC.OPT_GROWDIRECTION] = "反向显示 MUF",
  
-    [LOC.OPT_STICKTORIGHT]	= LOC.OPT_STICKTORIGHT,
-    [LOC.OPT_STICKTORIGHT_DESC]	= LOC.OPT_STICKTORIGHT_DESC,
-    [LOC.OPT_MUFSCOLORS]	= LOC.OPT_MUFSCOLORS,
-    [LOC.OPT_MUFSCOLORS_DESC]	= LOC.OPT_MUFSCOLORS_DESC,
-    [LOC.MISSINGUNIT]		= LOC.MISSINGUNIT,
-    [LOC.COLORALERT]		= LOC.COLORALERT,
-    [LOC.COLORSTATUS]		= LOC.COLORSTATUS,
+    [LOC.OPT_STICKTORIGHT]	= "将微单元面板(MUF)向右对齐",
+    [LOC.OPT_STICKTORIGHT_DESC]	= "这个选项将会使微单元面板(MUF)向右对齐",
+    [LOC.OPT_MUFSCOLORS]	= "颜色",
+    [LOC.OPT_MUFSCOLORS_DESC]	= "更改关于微单元面板(MUF)的颜色",
+    [LOC.MISSINGUNIT]		= "丢失单位",
+    [LOC.COLORALERT]		= "预警颜色",
+    [LOC.COLORSTATUS]		= "设定当玩家状态是'%s'时微单元面板(MUF)的颜色",
+    [LOC.COLORCHRONOS]		= LOC.COLORCHRONOS,
+    [LOC.COLORCHRONOS_DESC]	= LOC.COLORCHRONOS_DESC,
 
-    [LOC.OPT_AUTOHIDEMFS]	    = LOC.OPT_AUTOHIDEMFS,
-    [LOC.OPT_AUTOHIDEMFS_DESC]	    = LOC.OPT_AUTOHIDEMFS_DESC,
-    [LOC.OPT_HIDEMFS_SOLO]	    = LOC.OPT_HIDEMFS_SOLO,
-    [LOC.OPT_HIDEMFS_SOLO_DESC]	    = LOC.OPT_HIDEMFS_SOLO_DESC,
-    [LOC.OPT_HIDEMFS_GROUP]	    = LOC.OPT_HIDEMFS_GROUP,
-    [LOC.OPT_HIDEMFS_GROUP_DESC]    = LOC.OPT_HIDEMFS_GROUP_DESC,
-    [LOC.OPT_HIDEMFS_NEVER]	    = LOC.OPT_HIDEMFS_NEVER,
-    [LOC.OPT_HIDEMFS_NEVER_DESC]    = LOC.OPT_HIDEMFS_NEVER_DESC,
+    [LOC.OPT_AUTOHIDEMFS]	    = "自动隐藏",
+    [LOC.OPT_AUTOHIDEMFS_DESC]	    = "选择何时自动隐藏微单元面板(MUF)",
+    [LOC.OPT_HIDEMFS_SOLO]	    = "单人",
+    [LOC.OPT_HIDEMFS_SOLO_DESC]	    = "在没有组队或者团队时隐藏微单元面板(MUF)",
+    [LOC.OPT_HIDEMFS_GROUP]	    = "单人/小队",
+    [LOC.OPT_HIDEMFS_GROUP_DESC]    = "不在团队中时隐藏微单元面板(MUF)",
+    [LOC.OPT_HIDEMFS_NEVER]	    = "从不",
+    [LOC.OPT_HIDEMFS_NEVER_DESC]    = "从不隐藏",
 
-    [LOC.OPT_ADDDEBUFFFHIST]		= LOC.OPT_ADDDEBUFFFHIST,
-    [LOC.OPT_ADDDEBUFFFHIST_DESC]	= LOC.OPT_ADDDEBUFFFHIST_DESC,
+    [LOC.OPT_ADDDEBUFFFHIST]		= "新增一个最近受到的负面效果",
+    [LOC.OPT_ADDDEBUFFFHIST_DESC]	= "从历史记录中新增一个负面效果",
 
     [LOC.OPT_GROWDIRECTION_DESC] = "MUF将从下向上显示。",
     [LOC.OPT_SHOWBORDER] = "显示职业彩色边框",
     [LOC.OPT_SHOWBORDER_DESC] = "MUF边框将会显示出代表该玩家职业的颜色。",
+    [LOC.OPT_SHOWCHRONO] = "显示计时",
+    [LOC.OPT_SHOWCHRONO_DESC] = "显示单位受到不良效果的时间",
     [LOC.OPT_MAXMFS]  = "最大MUF数",
     [LOC.OPT_MAXMFS_DESC] = "设置在屏幕上显示的MUF的个数。",
     [LOC.OPT_UNITPERLINES] = '每行MUF数',
@@ -321,8 +294,8 @@ L:RegisterTranslations("zhCN", function() return {
     [LOC.OPT_NOKEYWARN_DESC] = "没有映射按键",
     [LOC.NOSPELL] = "没有相关技能",
     
-    [LOC.FUBARMENU]  = LOC.FUBARMENU,
-    [LOC.FUBARMENU_DESC]  = LOC.FUBARMENU_DESC,
+    [LOC.FUBARMENU]  = "Fubar选项",
+    [LOC.FUBARMENU_DESC]  = "Fubar的相关设定",
 	
     [LOC.GLOR1] = "纪念 Glorfindal",
     [LOC.GLOR2] = "献给匆匆离我们而去的Bertrand；他将永远被我们所铭记。",

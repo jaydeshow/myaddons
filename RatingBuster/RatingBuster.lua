@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster
-Revision: $Revision: 66013 $
+Revision: $Revision: 73696 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
 Description: Converts combat ratings in tooltips into normal percentages.
@@ -14,8 +14,7 @@ local StatLogic = AceLibrary("StatLogic-1.0")
 local Waterfall = AceLibrary:HasInstance("Waterfall-1.0") and AceLibrary("Waterfall-1.0")
 local L = AceLibrary("AceLocale-2.2"):new("RatingBuster")
 local BC = AceLibrary("LibBabble-Class-3.0"):GetLookupTable()
-local BS = AceLibrary("LibBabble-Spell-3.0"):GetLookupTable()
-local BI = AceLibrary("Babble-Inventory-2.2")
+local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
 
 
 --------------------
@@ -24,8 +23,8 @@ local BI = AceLibrary("Babble-Inventory-2.2")
 -- AceAddon Initialization
 RatingBuster = AceLibrary("AceAddon-2.0"):new("AceDB-2.0", "AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0")
 RatingBuster.title = "Rating Buster"
-RatingBuster.version = "1.3.7 (r"..gsub("$Revision: 66013 $", "(%d+)", "%1")..")"
-RatingBuster.date = gsub("$Date: 2008-03-26 05:23:22 -0400 (Wed, 26 Mar 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
+RatingBuster.version = "1.3.7 (r"..gsub("$Revision: 73696 $", "(%d+)", "%1")..")"
+RatingBuster.date = gsub("$Date: 2008-05-13 11:22:36 -0400 (Tue, 13 May 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 
 -------------------
@@ -1048,7 +1047,7 @@ local consoleOptions = {
 						heal = {
 							type = 'toggle',
 							name = L["Sum Healing"],
-							desc = L["Healing <- Healing, Intellect, Spirit, Strength"],
+							desc = L["Healing <- Healing, Intellect, Spirit, Agility, Strength"],
 							passValue = "sumHealing",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
@@ -1373,32 +1372,32 @@ if class == "DRUID" then
 	profileDefault.showMP5FromSpi = true
 	consoleOptions.args.stat.args.agi.args.heal = { -- Nurturing Instinct (Rank 2) - 2,14
 		type = 'toggle',
-		name = L["Show Healing"].." ("..BS["Nurturing Instinct"]..")",
-		desc = L["Show Healing from Agility"].." ("..BS["Nurturing Instinct"]..")",
+		name = L["Show Healing"].." ("..GetSpellInfo(47180)..")",						-- ["Nurturing Instinct"]
+		desc = L["Show Healing from Agility"].." ("..GetSpellInfo(47180)..")",			-- ["Nurturing Instinct"]
 		passValue = "showHealingFromAgi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.dmg = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Lunar Guidance"]..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..BS["Lunar Guidance"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(33591)..")",					-- ["Lunar Guidance"]
+		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(33591)..")",	-- ["Lunar Guidance"]
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.heal = { -- Lunar Guidance (Rank 3) - 1,12
 		type = 'toggle',
-		name = L["Show Healing"].." ("..BS["Lunar Guidance"]..")",
-		desc = L["Show Healing from Intellect"].." ("..BS["Lunar Guidance"]..")",
+		name = L["Show Healing"].." ("..GetSpellInfo(33591)..")",
+		desc = L["Show Healing from Intellect"].." ("..GetSpellInfo(33591)..")",
 		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.mp5 = { -- Intensity (Rank 3) - 3,6
 		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..BS["Intensity"]..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..BS["Intensity"]..")",
+		name = L["Show Mana Regen"].." ("..GetSpellInfo(35359)..")",
+		desc = L["Show Mana Regen while casting from Spirit"].." ("..GetSpellInfo(35359)..")",
 		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
@@ -1419,8 +1418,8 @@ if class == "HUNTER" then
 	profileDefault.showRAPFromInt = true
 	consoleOptions.args.stat.args.int.args.rap = { -- Careful Aim
 		type = 'toggle',
-		name = L["Show Ranged Attack Power"].." ("..BS["Careful Aim"]..")",
-		desc = L["Show Ranged Attack Power from Intellect"].." ("..BS["Careful Aim"]..")",
+		name = L["Show Ranged Attack Power"].." ("..GetSpellInfo(34484)..")",
+		desc = L["Show Ranged Attack Power from Intellect"].." ("..GetSpellInfo(34484)..")",
 		passValue = "showRAPFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
@@ -1443,24 +1442,24 @@ if class == "MAGE" then
 	profileDefault.showMP5FromSpi = true
 	consoleOptions.args.stat.args.int.args.dmg = { -- Mind Mastery (Rank 5) - 1,22
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Mind Mastery"]..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..BS["Mind Mastery"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(31588)..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(31588)..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.armor = { -- Arcane Fortitude - 1,9
 		type = 'toggle',
-		name = L["Show Armor"].." ("..BS["Arcane Fortitude"]..")",
-		desc = L["Show Armor from Intellect"].." ("..BS["Arcane Fortitude"]..")",
+		name = L["Show Armor"].." ("..GetSpellInfo(28574)..")",
+		desc = L["Show Armor from Intellect"].." ("..GetSpellInfo(28574)..")",
 		passValue = "showArmorFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.mp5 = { -- Arcane Meditation (Rank 3) - 1,12
 		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..BS["Arcane Meditation"]..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..BS["Arcane Meditation"]..")",
+		name = L["Show Mana Regen"].." ("..GetSpellInfo(18464)..")",
+		desc = L["Show Mana Regen while casting from Spirit"].." ("..GetSpellInfo(18464)..")",
 		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
@@ -1484,16 +1483,16 @@ if class == "PALADIN" then
 	profileDefault.showHealingFromInt = true
 	consoleOptions.args.stat.args.int.args.dmg = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Holy Guidance"]..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..BS["Holy Guidance"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(31841)..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(31841)..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.heal = { -- Holy Guidance (Rank 5) - 1,19
 		type = 'toggle',
-		name = L["Show Healing"].." ("..BS["Holy Guidance"]..")",
-		desc = L["Show Healing from Intellect"].." ("..BS["Holy Guidance"]..")",
+		name = L["Show Healing"].." ("..GetSpellInfo(31841)..")",
+		desc = L["Show Healing from Intellect"].." ("..GetSpellInfo(31841)..")",
 		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
@@ -1517,24 +1516,24 @@ if class == "PRIEST" then
 	profileDefault.showHealingFromSpi = true
 	consoleOptions.args.stat.args.spi.args.mp5 = { -- Meditation (Rank 3) - 1,9
 		type = 'toggle',
-		name = L["Show Mana Regen"].." ("..BS["Meditation"]..")",
-		desc = L["Show Mana Regen while casting from Spirit"].." ("..BS["Meditation"]..")",
+		name = L["Show Mana Regen"].." ("..GetSpellInfo(38346)..")",
+		desc = L["Show Mana Regen while casting from Spirit"].." ("..GetSpellInfo(38346)..")",
 		passValue = "showMP5FromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.dmg = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Spiritual Guidance"]..", "..BS["Improved Divine Spirit"]..")",
-		desc = L["Show Spell Damage from Spirit"].." ("..BS["Spiritual Guidance"]..", "..BS["Improved Divine Spirit"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
+		desc = L["Show Spell Damage from Spirit"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
 		passValue = "showSpellDmgFromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.spi.args.heal = { -- Spiritual Guidance (Rank 5) - 2,14, Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		type = 'toggle',
-		name = L["Show Healing"].." ("..BS["Spiritual Guidance"]..", "..BS["Improved Divine Spirit"]..")",
-		desc = L["Show Healing from Spirit"].." ("..BS["Spiritual Guidance"]..", "..BS["Improved Divine Spirit"]..")",
+		name = L["Show Healing"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
+		desc = L["Show Healing from Spirit"].." ("..GetSpellInfo(15031)..", "..GetSpellInfo(33182)..")",
 		passValue = "showHealingFromSpi",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
@@ -1567,32 +1566,32 @@ if class == "SHAMAN" then
 	profileDefault.showMP5FromInt = true
 	consoleOptions.args.stat.args.str.args.dmg = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Mental Quickness"]..")",
-		desc = L["Show Spell Damage from Strength"].." ("..BS["Mental Quickness"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(30814)..")",
+		desc = L["Show Spell Damage from Strength"].." ("..GetSpellInfo(30814)..")",
 		passValue = "showSpellDmgFromStr",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.str.args.heal = { -- Mental Quickness (Rank 3) - 2,15
 		type = 'toggle',
-		name = L["Show Healing"].." ("..BS["Mental Quickness"]..")",
-		desc = L["Show Healing from Strength"].." ("..BS["Mental Quickness"]..")",
+		name = L["Show Healing"].." ("..GetSpellInfo(30814)..")",
+		desc = L["Show Healing from Strength"].." ("..GetSpellInfo(30814)..")",
 		passValue = "showHealingFromStr",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.dmg = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Nature's Blessing"]..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..BS["Nature's Blessing"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(30869)..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(30869)..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.heal = { -- Nature's Blessing (Rank 3) - 3,18
 		type = 'toggle',
-		name = L["Show Healing"].." ("..BS["Nature's Blessing"]..")",
-		desc = L["Show Healing from Intellect"].." ("..BS["Nature's Blessing"]..")",
+		name = L["Show Healing"].." ("..GetSpellInfo(30869)..")",
+		desc = L["Show Healing from Intellect"].." ("..GetSpellInfo(30869)..")",
 		passValue = "showHealingFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
@@ -1612,16 +1611,16 @@ if class == "WARLOCK" then
 	profileDefault.showSpellDmgFromInt = true
 	consoleOptions.args.stat.args.sta.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Demonic Knowledge"]..")",
-		desc = L["Show Spell Damage from Stamina"].." ("..BS["Demonic Knowledge"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(35693)..")",
+		desc = L["Show Spell Damage from Stamina"].." ("..GetSpellInfo(35693)..")",
 		passValue = "showSpellDmgFromSta",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
 	}
 	consoleOptions.args.stat.args.int.args.dmg = { -- Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
 		type = 'toggle',
-		name = L["Show Spell Damage"].." ("..BS["Demonic Knowledge"]..")",
-		desc = L["Show Spell Damage from Intellect"].." ("..BS["Demonic Knowledge"]..")",
+		name = L["Show Spell Damage"].." ("..GetSpellInfo(35693)..")",
+		desc = L["Show Spell Damage from Intellect"].." ("..GetSpellInfo(35693)..")",
 		passValue = "showSpellDmgFromInt",
 		get = getProfileOption,
 		set = setProfileOptionAndClearCache,
@@ -1998,33 +1997,33 @@ function RatingBuster:ProcessText(text)
 						if profileDB.showAPFromStr then
 							local mod = StatLogic:GetStatMod("MOD_AP")
 							local effect = value * StatLogic:GetAPPerStr(class) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(effect * 10 + 0.5) > 0 then
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
-							elseif floor(effect + 0.5) > 0 then
+							elseif floor(abs(effect) + 0.5) > 0 then -- so we don't get +0 AP when effect < 0.5
 								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
 							end
 						end
 						if profileDB.showBlockValueFromStr then
 							local effect = value * StatLogic:GetBlockValuePerStr(class)
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Block"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showSpellDmgFromStr then -- Shaman: Mental Quickness (Rank 3) - 2,15
 							local mod = StatLogic:GetStatMod("MOD_AP") * StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetAPPerStr(class) * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_AP") * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(effect * 10 + 0.5) > 0 then
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
-							elseif floor(effect + 0.5) > 0 then
+							elseif floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.0f", effect))))
 							end
 						end
 						if profileDB.showHealingFromStr then -- Shaman: Mental Quickness (Rank 3) - 2,15
 							local mod = StatLogic:GetStatMod("MOD_AP") * StatLogic:GetStatMod("MOD_HEALING")
 							local effect = value * StatLogic:GetAPPerStr(class) * StatLogic:GetStatMod("ADD_HEALING_MOD_AP") * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(effect * 10 + 0.5) > 0 then
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
-							elseif floor(effect + 0.5) > 0 then
+							elseif floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.0f", effect))))
 							end
 						end
@@ -2042,18 +2041,18 @@ function RatingBuster:ProcessText(text)
 						if profileDB.showAPFromAgi then
 							local mod = StatLogic:GetStatMod("MOD_AP")
 							local effect = value * StatLogic:GetAPPerAgi(class) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(effect * 10 + 0.5) > 0 then
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.1f", effect))))
-							elseif floor(effect + 0.5) > 0 then
+							elseif floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value AP"], "$value", format("%+.0f", effect))))
 							end
 						end
 						if profileDB.showRAPFromAgi then
 							local mod = StatLogic:GetStatMod("MOD_RANGED_AP")
 							local effect = value * StatLogic:GetRAPPerAgi(class) * mod
-							if (mod ~= 1 or statmod ~= 1) and floor(effect * 10 + 0.5) > 0 then
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
-							elseif floor(effect + 0.5) > 0 then
+							elseif floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.0f", effect))))
 							end
 						end
@@ -2075,10 +2074,10 @@ function RatingBuster:ProcessText(text)
 								tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
 							end
 						end
-						if profileDB.showHealingFromStr then
+						if profileDB.showHealingFromAgi then
 							local mod = StatLogic:GetStatMod("MOD_HEALING")
 							local effect = value * StatLogic:GetStatMod("ADD_HEALING_MOD_AGI") * mod
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							end
 						end
@@ -2096,16 +2095,16 @@ function RatingBuster:ProcessText(text)
 						if profileDB.showHealthFromSta then
 							local mod = StatLogic:GetStatMod("MOD_HEALTH")
 							local effect = value * 10 * mod -- 10 Health per Sta
-							if (mod ~= 1 or statmod ~= 1) and floor(effect * 10 + 0.5) > 0 then
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.1f", effect))))
-							elseif floor(effect + 0.5) > 0 then
+							elseif floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value HP"], "$value", format("%+.0f", effect))))
 							end
 						end
 						if profileDB.showSpellDmgFromSta then
 							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_STA") * mod
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
@@ -2123,9 +2122,9 @@ function RatingBuster:ProcessText(text)
 						if profileDB.showManaFromInt then
 							local mod = StatLogic:GetStatMod("MOD_MANA")
 							local effect = value * 15 * mod -- 15 Mana per Int
-							if (mod ~= 1 or statmod ~= 1) and floor(effect * 10 + 0.5) > 0 then
+							if (mod ~= 1 or statmod ~= 1) and floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.1f", effect))))
-							elseif floor(effect + 0.5) > 0 then
+							elseif floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP"], "$value", format("%+.0f", effect))))
 							end
 						end
@@ -2138,14 +2137,14 @@ function RatingBuster:ProcessText(text)
 						if profileDB.showSpellDmgFromInt then
 							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT") * mod
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showHealingFromInt then
 							local mod = StatLogic:GetStatMod("MOD_HEALING")
 							local effect = value * StatLogic:GetStatMod("ADD_HEALING_MOD_INT") * mod
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							end
 						end
@@ -2158,7 +2157,7 @@ function RatingBuster:ProcessText(text)
 							else
 								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT")
 							end
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
 							end
 						end
@@ -2171,20 +2170,20 @@ function RatingBuster:ProcessText(text)
 							else
 								effect = value * StatLogic:GetStatMod("ADD_MANA_REG_MOD_INT")
 							end
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showRAPFromInt then
 							local mod = StatLogic:GetStatMod("MOD_RANGED_AP")
 							local effect = value * StatLogic:GetStatMod("ADD_RANGED_AP_MOD_INT") * mod
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value RAP"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showArmorFromInt then
 							local effect = value * StatLogic:GetStatMod("ADD_ARMOR_MOD_INT")
-							if floor(effect + 0.5) > 0 then
+							if floor(abs(effect) + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Armor"], "$value", format("%+.0f", effect))))
 							end
 						end
@@ -2207,7 +2206,7 @@ function RatingBuster:ProcessText(text)
 							else
 								effect = StatLogic:GetNormalManaRegenFromSpi(value, class) * mod
 							end
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP5"], "$value", format("%+.1f", effect))))
 							end
 						end
@@ -2218,27 +2217,27 @@ function RatingBuster:ProcessText(text)
 							else
 								effect = StatLogic:GetNormalManaRegenFromSpi(value, class)
 							end
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value MP5(NC)"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showHP5FromSpi then
 							local effect = StatLogic:GetHealthRegenFromSpi(value, class)
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value HP5"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showSpellDmgFromSpi then
 							local mod = StatLogic:GetStatMod("MOD_SPELL_DMG")
 							local effect = value * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI") * mod
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Dmg"], "$value", format("%+.1f", effect))))
 							end
 						end
 						if profileDB.showHealingFromSpi then
 							local mod = StatLogic:GetStatMod("MOD_HEALING")
 							local effect = value * StatLogic:GetStatMod("ADD_HEALING_MOD_SPI") * mod
-							if floor(effect * 10 + 0.5) > 0 then
+							if floor(abs(effect) * 10 + 0.5) > 0 then
 								tinsert(infoTable, (gsub(L["$value Heal"], "$value", format("%+.1f", effect))))
 							end
 						end
@@ -2645,7 +2644,7 @@ local summaryCalcData = {
 			 + (sum["INT"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_INT"))
 			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_SPELL_DMG_MOD_SPI"))) * StatLogic:GetStatMod("MOD_SPELL_DMG") end,
 	},
-	-- Healing - HEAL, STR, INT, SPI
+	-- Healing - HEAL, AGI, STR, INT, SPI
 	{
 		option = "sumHealing",
 		name = "HEAL",
@@ -2656,6 +2655,7 @@ local summaryCalcData = {
 			 + (sum["STR"] * StatLogic:GetStatMod("ADD_HEALING_MOD_STR"))
 			 + (sum["INT"] * StatLogic:GetStatMod("ADD_HEALING_MOD_INT"))
 			 + (sum["SPI"] * StatLogic:GetStatMod("ADD_HEALING_MOD_SPI"))
+			 + (sum["AGI"] * StatLogic:GetStatMod("ADD_HEALING_MOD_AGI"))
 			 + (ap * StatLogic:GetStatMod("ADD_HEALING_MOD_AP"))) * StatLogic:GetStatMod("MOD_SPELL_DMG")
 		end,
 	},

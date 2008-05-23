@@ -1,5 +1,5 @@
 ﻿--[[
-loottables.es.lua --- Traduction ES por maqjav
+loottables.es.lua --- Traduction ES por maqjav y StiviS
 This file assigns a title to every loot table.  The primary use of this table
 is in the search function, as when iterating through the loot tables there is no
 inherant title to the loot table, given the origins of the mod as an Atlas plugin.
@@ -27,9 +27,9 @@ if (GetLocale() == "esES") then
     AtlasLoot_TableNames["BRDBSPlans"][1] = "Diseño de herrería (PRN)";
   --The Black Temple
     AtlasLoot_TableNames["BTEssencofSouls"][1] = "Reliquaire des \195\162mes";
-    AtlasLoot_TableNames["BTPatterns"][1] = "Recetas/Planos del Templo Oscuro"; 
+    AtlasLoot_TableNames["BTPatterns"][1] = "Recetas/Planos del Templo Oscuro";
   --Blackwing Lair
-    AtlasLoot_TableNames["BWLDraconicForDummies"][1] = "Dracónico para torpes Volumen VII";    
+    AtlasLoot_TableNames["BWLDraconicForDummies"][1] = "Dracónico para torpes Volumen VII";
   --CFR: The Steamvault
     AtlasLoot_TableNames["CFRSteamSecondFragmentGuardian"][1] = "Guardián del Segundo Fragmento";
   --CoT: Old Hillsbrad Foothills
@@ -94,8 +94,6 @@ if (GetLocale() == "esES") then
 ------------------------
 
     AtlasLoot_TableNames["BlizzardCollectables1"][1] = "Colecciones Blizzard";
-    AtlasLoot_TableNames["RareMounts1"][1] = "Monturas Raras - WoW";
-    AtlasLoot_TableNames["RareMounts2"][1] = "Monturas Raras - The Burning Crusade";
 
 --------------
 --- Events ---
@@ -106,21 +104,11 @@ if (GetLocale() == "esES") then
     AtlasLoot_TableNames["Dukes"][1] = "Consejo abisal - Duques";
     AtlasLoot_TableNames["HighCouncil"][1] = "Consejo abisal - Consejero mayor";
   --Seasonal
-    AtlasLoot_TableNames["LordAhune"][1] = "Lord Ahune";
     AtlasLoot_TableNames["Winterviel2"][1] = "Regalos del Festival de Invierno";
   --Skettis
     AtlasLoot_TableNames["SkettisTalonpriestIshaal"][1] = "Sacerdote de la garra Ishaal";
     AtlasLoot_TableNames["SkettisHazziksPackage"][1] = "Paquete de Hazzik";
   --Other
     AtlasLoot_TableNames["ScourgeInvasionEvent2"][1] = "Jefes de la invasión de La plaga";
-
---------------------
---- Rep Factions ---
---------------------
-
-  --Argent Dawn
-    AtlasLoot_TableNames["Argent1"][1] = "El Alba Argenta: Insignia Mano-ins";
-  --Exalted with Cenarion Expedition, The Sha'tar and The Aldor/Scryers
-    AtlasLoot_TableNames["ShattrathFlasks1"][1] = "Shattrath Flasks";
 
 end

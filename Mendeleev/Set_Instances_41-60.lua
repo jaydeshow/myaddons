@@ -2,11 +2,17 @@
 	local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 	local L  = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 	
+	local showDropRate = function (v)
+		v = tonumber(v)
+		return v and (" (%.1f%%)"):format(v / 10) or ""
+	end
+
 	table.insert(MENDELEEV_SETS, {
 		name = L["Elemental bosses"],
 		setindex = "InstanceLoot.World Bosses",
 		colour = "|cffB0C4DE",
 		header = L["Elemental bosses"],
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.World Bosses.Avalanchion"] = BB["Avalanchion"],
@@ -21,7 +27,7 @@
 		setindex = "InstanceLoot.Dire Maul",
 		colour = "|cffB0C4DE",
 		header = BZ["Dire Maul"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Dire Maul North.King Gordok"] = BB["King Gordok"],
@@ -52,7 +58,7 @@
 		setindex = "InstanceLoot.Maraudon",
 		colour = "|cffB0C4DE",
 		header = BZ["Maraudon"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Maraudon.Celebras the Cursed"] = BB["Celebras the Cursed"],
@@ -77,7 +83,7 @@
 		setindex = "InstanceLoot.Upper Blackrock Spire",
 		colour = "|cffB0C4DE",
 		header = L["UBRS"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			  ["InstanceLoot.Upper Blackrock Spire.General Drakkisath"] = BB["General Drakkisath"],
@@ -95,7 +101,7 @@
 		setindex = "InstanceLoot.Lower Blackrock Spire",
 		colour = "|cffB0C4DE",
 		header = L["LBRS"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			  ["InstanceLoot.Lower Blackrock Spire.Halycon"] = BB["Halycon"],
@@ -113,7 +119,7 @@
 		setindex = "InstanceLoot.Blackrock Depths",
 		colour = "|cffB0C4DE",
 		header = BZ["Blackrock Depths"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			  ["InstanceLoot.Blackrock Depths.Ambassador Flamelash"] = BB["Ambassador Flamelash"],
@@ -150,7 +156,7 @@
 		setindex = "InstanceLoot.Scholomance",
 		colour = "|cffB0C4DE",
 		header = BZ["Scholomance"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			  ["InstanceLoot.Scholomance.Lord Alexei Barov"] = BB["Lord Alexei Barov"],
@@ -174,7 +180,7 @@
 		setindex = "InstanceLoot.Stratholme",
 		colour = "|cffB0C4DE",
 		header = BZ["Stratholme"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			  ["InstanceLoot.Stratholme.Baron Rivendare"] = BB["Baron Rivendare"],
@@ -197,7 +203,7 @@
 		setindex = "InstanceLoot.Sunken Temple",
 		colour = "|cffB0C4DE",
 		header = BZ["The Temple of Atal'Hakkar"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			  ["InstanceLoot.Sunken Temple.Weaver"] = BB["Weaver"],
@@ -223,7 +229,7 @@
 		setindex = "InstanceLoot.Blackwing Lair",
 		colour = "|cffB0C4DE",
 		header = BZ["Blackwing Lair"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Blackwing Lair.Nefarian"] = BB["Nefarian"],
@@ -234,6 +240,7 @@
 			["InstanceLoot.Blackwing Lair.Ebonroc"] = BB["Ebonroc"],
 			["InstanceLoot.Blackwing Lair.Firemaw"] = BB["Firemaw"],
 			["InstanceLoot.Blackwing Lair.Flamegor"] = BB["Flamegor"],
+			["InstanceLoot.Blackwing Lair.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -242,7 +249,7 @@
 		setindex = "InstanceLoot.Molten Core",
 		colour = "|cffB0C4DE",
 		header = BZ["Molten Core"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Molten Core.Majordomo Executus"]  = BB["Majordomo Executus"],
@@ -255,6 +262,7 @@
 			["InstanceLoot.Molten Core.Shazzrah"] = BB["Shazzrah"],
 			["InstanceLoot.Molten Core.Lucifron"] = BB["Lucifron"],
 			["InstanceLoot.Molten Core.Gehennas"] = BB["Gehennas"],
+			["InstanceLoot.Molten Core.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -263,7 +271,7 @@
 		setindex = "InstanceLoot.World Bosses",
 		colour = "|cffB0C4DE",
 		header = L["Outdoor bosses"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.World Bosses.Azuregos"] = BB["Azuregos"],
@@ -275,7 +283,7 @@
 		setindex = "InstanceLoot.World Bosses",
 		colour = "|cffB0C4DE",
 		header = L["Four Dragons"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.World Bosses.Ysondre"] = BB["Ysondre"],
@@ -290,7 +298,7 @@
 		setindex = "InstanceLoot.Onyxia's Lair",
 		colour = "|cffB0C4DE",
 		header = BZ["Onyxia's Lair"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Onyxia's Lair.Onyxia"] = BB["Onyxia"],
@@ -302,7 +310,7 @@
 		setindex = "InstanceLoot.Zul'Gurub",
 		colour = "|cffB0C4DE",
 		header = BZ["Zul'Gurub"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Zul'Gurub.High Priestess Jeklik"] = BB["High Priestess Jeklik"],
@@ -326,7 +334,7 @@
 		setindex = "InstanceLoot.Zul'Farrak",
 		colour = "|cffB0C4DE",
 		header = BZ["Zul'Farrak"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Zul'Farrak.Antu'sul"] = BB["Antu'sul"],
@@ -348,7 +356,7 @@
 		setindex = "InstanceLoot.Ruins of Ahn'Qiraj",
 		colour = "|cffB0C4DE",
 		header = BZ["Ruins of Ahn'Qiraj"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Ruins of Ahn'Qiraj.Buru the Gorger"] = BB["Buru the Gorger"],
@@ -365,7 +373,7 @@
 		setindex = "InstanceLoot.Ahn'Qiraj",
 		colour = "|cffB0C4DE",
 		header = BZ["Temple of Ahn'Qiraj"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Ahn'Qiraj.Battleguard Sartura"] = BB["Battleguard Sartura"],
@@ -380,6 +388,7 @@
 			["InstanceLoot.Ahn'Qiraj.Viscidus"] = BB["Viscidus"],
 			["InstanceLoot.Ahn'Qiraj.Emperor Vek'lor"] = BB["Emperor Vek'lor"],
 			["InstanceLoot.Ahn'Qiraj.Emperor Vek'nilash"] = BB["Emperor Vek'nilash"],
+			["InstanceLoot.Ahn'Qiraj.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -388,7 +397,7 @@
 		setindex = "InstanceLoot.Naxxramas",
 		colour = "|cffB0C4DE",
 		header = BZ["Naxxramas"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Naxxramas.Thaddius"] = BB["Thaddius"],
@@ -406,6 +415,7 @@
 			["InstanceLoot.Naxxramas.Gothik the Harvester"] = BB["Gothik the Harvester"],
 			["InstanceLoot.Naxxramas.Loatheb"] = BB["Loatheb"],
 			["InstanceLoot.Naxxramas.The Four Horsemen"] = BB["The Four Horsemen"],
+			["InstanceLoot.Naxxramas.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -414,7 +424,7 @@
 		setindex = "InstanceLoot.Uldaman",
 		colour = "|cffB0C4DE",
 		header = BZ["Uldaman"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Uldaman.Ancient Stone Keeper"] = BB["Ancient Stone Keeper"],

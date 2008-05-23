@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster deDE locale
-Revision: $Revision: 65999 $
+Revision: $Revision: 73696 $
 Translated by: 
 - Kuja
 ]]
@@ -273,7 +273,7 @@ L:RegisterTranslations("deDE", function() return {
 	["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "Schattenzauberschaden <- Schattenzauberschaden, Zauberschaden, Intelligenz, Willenskraft, Ausdauer",
 	-- /rb sum stat heal
 	["Sum Healing"] = "Heilung zusammenrechnen",
-	["Healing <- Healing, Intellect, Spirit, Strength"] = "Heilung <- Heilung, Intelligenz, Willenskraft, Sträke",
+	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "Heilung <- Heilung, Intelligenz, Willenskraft, Beweglichkeit, Sträke",
 	-- /rb sum stat hit
 	["Sum Hit Chance"] = "Trefferchance zusammenrechnen",
 	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "Trefferchance <- Trefferwertung, Waffenfertigkeitswertung",
@@ -496,11 +496,11 @@ L:RegisterTranslations("deDE", function() return {
 	-- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 	["numberPatterns"] = {
 		{pattern = " um (%d+)", addInfo = "AfterNumber",},
-		{pattern = "%+(%d+)", addInfo = "AfterStat",},
+		{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 		{pattern = "verleiht.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 		{pattern = "(%d+) erhöhen.", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 		-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
-		{pattern = "(%d+)([^%d%%]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+		{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 	},
 	["separators"] = {
 		"/", " und ", ",", "%. ", " für ", "&", ":"

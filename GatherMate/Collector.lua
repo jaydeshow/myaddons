@@ -6,13 +6,25 @@ local L = LibStub("AceLocale-3.0"):GetLocale("GatherMate",true)
 -- buffsearchstring is for gas extartion detection of the aura event
 -- gatherevents if a flag for wether we are listening to events
 local prevSpell, curSpell, foundTarget, buffSearchString, gatherEvents
+
+--[[
+Convert for 2.4 spell IDs
+]]
+local miningSpell = (GetSpellInfo(2575))
+local herbSpell = (GetSpellInfo(2366))
+local herbSkill = (GetSpellInfo(9134))
+local fishSpell = (GetSpellInfo(33095))
+local gasSpell = (GetSpellInfo(30427))
+local openSpell = (GetSpellInfo(3365))
+local pickSpell = (GetSpellInfo(1804))
+
 local spells = { -- spellname to "database name"
-	[L["Mining"]] = "Mining",
-	[L["Herb Gathering"]] = "Herb Gathering",
-	[L["Fishing"]] = "Fishing",
-	[L["Extract Gas"]] = "Extract Gas",
-	[L["Opening"]] = "Treasure",
-	[L["Pick Lock"]] = "Treasure",
+	[miningSpell] = "Mining",
+	[herbSpell] = "Herb Gathering",
+	[fishSpell] = "Fishing",
+	[gasSpell] = "Extract Gas",
+	[openSpell] = "Treasure",
+	[pickSpell] = "Treasure",
 }
 local tooltipLeftText1 = _G["GameTooltipTextLeft1"]
 local strfind, stringmatch = string.find, string.match
@@ -90,8 +102,8 @@ end
 	or get a better event instead of cha msg parsing
 ]]
 function Collector:GasBuffDetector(b,timestamp, eventType, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId,spellName,spellSchool,auraType)
-	if foundTarget or (prevSpell and prevSpell ~= L["Extract Gas"]) then return end	
-	if eventType == "SPELL_AURA_APPLIED" and (auraType and auraType == "BUFF") and (spellName and spellName == L["Extract Gas"]) then
+	if foundTarget or (prevSpell and prevSpell ~= gasSpell) then return end	
+	if eventType == "SPELL_AURA_APPLIED" and (auraType and auraType == "BUFF") and (spellName and spellName == gasSpell) then
 		foundTarget = true
 		self:addItem(spellName,dstName)
 	end
@@ -104,6 +116,7 @@ function Collector:GatherCompleted()
 	prevSpell, curSpell = nil, nil
 	foundTarget = false
 end
+
 
 --[[
 	When the hand icon goes to a gear see if we can find a nde under the gear ala for the fishing bobber OR herb of mine
@@ -141,12 +154,12 @@ end
 function Collector:UIError(event,msg)
 	local what = tooltipLeftText1:GetText();
 	if not what then return end
-	if strfind(msg, L["Mining"]) then
-		self:addItem(L["Mining"],what)
-	elseif strfind(msg, L["Herbalism"]) then
-		self:addItem(L["Herb Gathering"],what)
-	elseif strfind(msg, L["Pick Lock"]) or strfind(msg, L["Opening"]) then -- locked box or failed pick
-		self:addItem(L["Opening"], what)
+	if strfind(msg, miningSpell) then
+		self:addItem(miningSpell,what)
+	elseif strfind(msg, herbSkill) then
+		self:addItem(herbSpell,what)
+	elseif strfind(msg, pickSpell) or strfind(msg, openSpell) then -- locked box or failed pick
+		self:addItem(openSpell, what)
 	end
 end
 
@@ -159,7 +172,13 @@ function Collector:SpellStarted(event,unit,spellcast,rank,target)
 	if spells[spellcast] then
 		curSpell = spellcast
 		prevSpell = spellcast
-		self:GetWorldTarget()
+		local nodeID = GatherMate:GetIDForNode(spells[prevSpell], target)
+		if nodeID then -- seem 2.4 has the node name now as the target
+			self:addItem(prevSpell,target)
+			foundTarget = true
+		else
+			self:GetWorldTarget()
+		end
 	else
 		prevSpell, curSpell = nil, nil
 	end
@@ -173,13 +192,17 @@ local lastNodeCoords = 0
 
 function Collector:addItem(skill,what)
 	local x, y = GetPlayerMapPosition("player")
-	if x == 0 and y == 0 then return nil end
+	if x == 0 and y == 0 then return end
 	local zone = GetRealZoneText()
 	local node_type = spells[skill]
 	if not node_type or not what then return end
+	-- db lock check
+	if GatherMate.db.profile.dbLocks[node_type] then
+		return
+	end
 	local range = GatherMate.db.profile.cleanupRange[node_type]
 	-- special case for fishing and gas extraction guage the pointing direction
-	if node_type == "Fishing" or node_type == "Extract Gas" then
+	if node_type == fishSpell or node_type == gasSpell then
 		local yw, yh = GatherMate:GetZoneSize(zone)
 		x,y = self:GetFloatingNodeLocation(x, y, yw, yh)
 	end
@@ -224,7 +247,7 @@ end
 ]]
 function Collector:GetWorldTarget()
 	if foundTarget or not spells[curSpell] then return end
-	local what = tooltipLeftText1:GetText();
+	local what = tooltipLeftText1:GetText()
 	local nodeID = GatherMate:GetIDForNode(spells[prevSpell], what)
 	if what and prevSpell and what ~= prevSpell and nodeID then
 		self:addItem(prevSpell,what)

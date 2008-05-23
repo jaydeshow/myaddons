@@ -1,3 +1,6 @@
+﻿local revision = tonumber(string.sub("$Revision: 73182 $", 12, -3)) or 1
+if revision > FuBar_GuildFu.revision then FuBar_GuildFu.revision = revision end
+
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_GuildFu")
 
 L:RegisterTranslations("zhCN", function() return {
@@ -91,19 +94,19 @@ L:RegisterTranslations("zhCN", function() return {
 	["Toggles display of Warriors"] = "开关是否显示战士",
 	["Level Filter Settings"] = "等级过滤设置",
 	[" 1- 9"] = " 1- 9",
-	["Toggles display of level 1 to 9 chars"] = "开关是否显示1－9级的角色",
+	["Toggles display of level 1 to 9 chars"] = "是否显示1-9级的角色",
 	["10-19"] = "10-19",
-	["Toggles display of level 10 to 19 chars"] = "开关是否显示10－19级的角色",
+	["Toggles display of level 10 to 19 chars"] = "是否显示10-19级的角色",
 	["20-29"] = "20-29",
-	["Toggles display of level 20 to 29 chars"] = "开关是否显示20－29级的角色",
+	["Toggles display of level 20 to 29 chars"] = "是否显示20-29级的角色",
 	["30-39"] = "30-39",
-	["Toggles display of level 30 to 39 chars"] = "开关是否显示30－39级的角色",
+	["Toggles display of level 30 to 39 chars"] = "是否显示30-39级的角色",
 	["40-49"] = "40-49",
-	["Toggles display of level 40 to 49 chars"] = "开关是否显示40－49级的角色",
+	["Toggles display of level 40 to 49 chars"] = "是否显示40-49级的角色",
 	["50-59"] = "50-59",
-	["Toggles display of level 50 to 59 chars"] = "开关是否显示50－59级的角色",
+	["Toggles display of level 50 to 59 chars"] = "是否显示50-59级的角色",
 	["60-69"] = "60-69",
-	["Toggles display of level 60 to 69 chars"] = "开关是否显示60－69级的角色",
+	["Toggles display of level 60 to 69 chars"] = "是否显示60-69级的角色",
 	["70"] = "70",
 	["Toggles display of level 70 chars"] = "开关是否显示70级的角色",
 	["Zone Filter Settings"] = "地区过滤设置",

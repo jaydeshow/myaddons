@@ -1,8 +1,8 @@
 ﻿Cartographer = Rock:NewAddon("Cartographer", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockDB-1.0", "LibRockModuleCore-1.0", "LibRockHook-1.0", "LibRockConfig-1.0")
 local Cartographer = Cartographer
-Cartographer.revision = tonumber(string.sub("$Revision: 60198 $", 12, -3))
+Cartographer.revision = tonumber(string.sub("$Revision: 74404 $", 12, -3))
 Cartographer.version = "r" .. Cartographer.revision
-Cartographer.date = string.sub("$Date: 2008-02-03 17:54:14 -0500 (Sun, 03 Feb 2008) $", 8, 17)
+Cartographer.date = string.sub("$Date: 2008-05-19 07:10:45 -0400 (Mon, 19 May 2008) $", 8, 17)
 
 local Dewdrop = AceLibrary("Dewdrop-2.0")
 
@@ -44,7 +44,7 @@ L:AddTranslations("enUS", function() return {
 	["%.0f m"] = true,
 	["Cartographer"] = true,
 	["Open alternate map"] = true,
-	
+
 	["Addon to manipulate the map."] = true,
 } end)
 
@@ -122,31 +122,34 @@ L:AddTranslations("koKR", function() return {
 	["Addon to manipulate the map."] = "월드맵 확장 애드온",
 } end)
 
+--Ananhaid checkpoint.($Date: 2008-05-19 07:10:45 -0400 (Mon, 19 May 2008) $)
 L:AddTranslations("zhCN", function() return {
 	["Active"] = "启用", -- remove in a while (2006-12-08)
 	["Enabled"] = "启用",
-	["Suspend/resume this module."] = "暂停/继续使用该模块.",
+	["Suspend/resume this module."] = "暂停/继续使用该模块。",
 
-	["Right-Click on map to zoom out"] = "右击: 放大地图",
-	["Left-Click on map to zoom in"] = "左击: 缩小地图",
+	["Right-Click on map to zoom out"] = "右击：放大地图",
+	["Left-Click on map to zoom in"] = "左击：缩小地图",
 
 	["Go to %s"] = "回到%s",
 
 	["Open Cartographer menu"] = "打开 Cartographer 菜单",
 	["Open location menu"] = "打开位置菜单",
 
-	["Distance:"] = "距离:",
+	["Distance:"] = "距离：",
 
 	["Close information pane"] = "关闭信息面板",
-	["Close this side informational pane"] = "关闭这个侧信息面板",
+	["Close this side informational pane"] = "关闭这个侧信息面板。",
 
 	["Zones"] = "区域",
 	["Cities"] = "城市",
 
-	["%.0f yd"] = "%.0f码",
-	["%.0f m"] = "%.0f米",
+	["%.0f yd"] = "%.0f 码",
+	["%.0f m"] = "%.0f 米",
 	["Cartographer"] = "Cartographer",
 	["Open alternate map"] = "打开替代地图",
+
+	["Addon to manipulate the map."] = "增强地图处理功能。",
 } end)
 
 L:AddTranslations("zhTW", function() return {
@@ -174,30 +177,34 @@ L:AddTranslations("zhTW", function() return {
 	["%.0f m"] = "%.0f米",
 	["Cartographer"] = "Cartographer",
 	["Open alternate map"] = "開啟替代地圖",
-	
+
 	["Addon to manipulate the map."] = "增強地圖的處理功能。",
 } end)
 
 L:AddTranslations("esES", function() return {
 	["Active"] = "Activo", -- remove in a while (2006-12-08)
 	["Enabled"] = "Activado",
-	["Suspend/resume this module."] = "Parar/Continuar este m\195\179dulo",
+	["Suspend/resume this module."] = "Parar/Continuar este módulo",
 
-	["Right-Click on map to zoom out"] = "Clic-Derecho en el mapa para alejarte",
-	["Left-Click on map to zoom in"] = "Clic-Izquierdo en el mapa para acercarte",
+	["Right-Click on map to zoom out"] = "Click-Derecho en el mapa para Alejarte",
+	["Left-Click on map to zoom in"] = "Click-Izquierdo en el mapa para Acercarte",
 
 	["Go to %s"] = "Ir a %s",
 
-	["Open Cartographer menu"] = "Abrir el men\195\186 de Cartographer",
-	["Open location menu"] = "Abrir el men\195\186 de lugares",
+	["Open Cartographer menu"] = "Abrir el menú de Cartographer",
+	["Open location menu"] = "Abrir el menú de lugares",
 
 	["Distance:"] = "Distancia:",
 
-	["Close information pane"] = "Cerrar panel de informaci\195\179n",
-	["Close this side informational pane"] = "Cierra el panel de informaci\195\179n de este lado",
+	["Close information pane"] = "Cerrar panel de información",
+	["Close this side informational pane"] = "Cierra el panel de información de este lado",
 
 	["Zones"] = "Zonas",
 	["Cities"] = "Ciudades",
+
+	["Open alternate map"] = "Abrir mapa alternativo",
+
+	["Addon to manipulate the map."] = "Addon para manipular el mapa.",
 } end)
 
 BINDING_HEADER_CARTOGRAPHER = L["Cartographer"]
@@ -306,7 +313,7 @@ function Cartographer:OnInitialize()
 	WorldMapFrameCloseButton:SetScript("OnClick", function()
 		ToggleWorldMap()
 	end)
-	
+
 	self:SetConfigTable(self.options)
 	self:SetConfigSlashCommand("/Cartographer", "/Cart")
 	self.options.extraArgs.active = nil
@@ -407,7 +414,7 @@ function Cartographer:OnEnable()
 			end
 		end)
 	end
-	
+
 	self:Cartographer_ChangeZone("Cartographer", "ChangeZone", self:GetCurrentEnglishZoneName(), self:GetCurrentLocalizedZoneName())
 
 	WorldMapMagnifyingGlassButton:SetText(table.concat(magnifyingGlassTexts, "\n"))
@@ -867,9 +874,11 @@ function Cartographer:ConfigureGuildSpammer()
 	end
 	guildSpammer:AddMemoizations(memoizations)
 
+	local shouldSendPosition = (date("%Y%m%d%H%M%S")+0) < 20080519000000
+
 	local lastSentZone = {}
 	local t = {
-		REQUEST = function(prefix, distribution, sender, zone)
+		REQUEST = shouldSendPosition and function(prefix, distribution, sender, zone)
 			if IsInInstance() then
 				if lastSentZone[sender] then
 					guildSpammer:SendCommMessage("WHISPER", sender, "CLEAR")
@@ -897,10 +906,12 @@ function Cartographer:ConfigureGuildSpammer()
 					lastSentZone[sender] = pzone
 				end
 			end
-		end,
+		end or nil,
 	}
 	guildSpammer:AddCommListener("CGP", "GUILD", t)
 	guildSpammer:AddCommListener("CGP", "WHISPER", t)
+
+	local shouldSendRequest = (date("%Y%m%d%H%M%S")+0) < 20080619000000
 
 	function guildSpammer:sendRequestToGuild()
 		self:AddTimer("Cartographer-guildPositions-Request", math.max(5, RollCall:GetNumOnline() / 10), "sendRequestToGuild")
@@ -914,7 +925,7 @@ function Cartographer:ConfigureGuildSpammer()
 			return
 		end
 
-		if not Tourist:IsInstance(Cartographer:GetCurrentLocalizedZoneName()) then
+		if shouldSendRequest and not Tourist:IsInstance(Cartographer:GetCurrentLocalizedZoneName()) then
 			guildSpammer:SendCommMessage("GUILD", "REQUEST", Cartographer:GetCurrentEnglishZoneName())
 		end
 	end
@@ -1376,7 +1387,7 @@ do
 	local x, y, zone
 	function Cartographer:GetCurrentPlayerPosition()
 		local px, py = GetPlayerMapPosition("player")
-		if px == last_px and py == last_py then
+		if px == last_px and py == last_py and x~=nil then      -- Sinus: The x~=nil check is to prevent a "the last call here returned buggy nils coming from Tourist:TransposeZoneCoordinate, so let's do the same silly thing" scenario.
 			return x, y, zone
 		end
 		last_px, last_py = px, py

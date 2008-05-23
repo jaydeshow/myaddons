@@ -1,6 +1,6 @@
 
 -- MinimapButton.lua: code to handle the little Recipe Radar minimap button
--- $Id: MinimapButton.lua 279 2006-04-12 07:55:40Z jnmiller $
+-- $Id: MinimapButton.lua 1022 2008-03-07 20:57:50Z jnmiller $
 
 function RecipeRadar_MinimapButton_OnClick()
 

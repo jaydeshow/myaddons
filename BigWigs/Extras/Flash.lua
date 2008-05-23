@@ -116,12 +116,28 @@ L:RegisterTranslations("deDE", function() return {
 	flash_warning = "Bildschirmbeben fehlgeschlagen. Dies passiert wenn die Gesundheitsanzeige unter den Namen eingeschaltet ist.\nSchalten sie diese aus und laden sie ihr UI neu oder schalten sie BigWigs 'Beben' aus. (Aufblitzen ist nicht betroffen)",
 } end)
 
+L:RegisterTranslations("esES", function() return {
+	["FlashNShake"] = "Destello/Temblor",
+	["Flash'N'Shake"] = "Destello / Temblor",
+	["Shake and/or Flash the screen blue when something important happens that directly affects you."] = "Hacer temblar la pantalla y/o emitir un destello cuando ocurre algo importante que te afecta.",
+
+	["Flash"] = "Destello",
+	["Toggle Flash on or off."] = "Activar / Desactivar el destello.",
+
+	["Shake"] = "Temblor",
+	["Toggle Shake on or off."] = "Activar / Desactivar el temblor.",
+
+	["Test"] = "Probar",
+	["Perform a Flash/Shake test."] = "Efectua una prueba de Destello/Temblor.",
+
+	flash_warning = "Temblor de pantalla fallido. Suele ocurrir cuando las placas de nombre están activadas.\nDesactiva las placas de nombre y reinicia la interfaz o desactiva la función 'Temblor' de BigWigs. (la función de Destello NO se ve afectada)",
+} end)
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
 
 local mod = BigWigs:NewModule("Flash")
-mod.revision = tonumber(("$Revision: 63870 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 71216 $"):sub(12, -3))
 mod.defaultDB = {
 	flash = false,
 	shake = false,
@@ -225,9 +241,27 @@ function mod:BigWigs_Message(msg, color)
 				flasher:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",})
 				flasher:SetBackdropColor(0,0,1,0.55)
 				flasher:SetAllPoints( UIParent)
+				flasher:SetScript("OnShow", function (self)
+					self.elapsed = 0
+					self:SetAlpha(0)
+				end)
+				flasher:SetScript("OnUpdate", function (self, elapsed)
+					elapsed = self.elapsed + elapsed
+					if elapsed >= 0.8 then
+						self:Hide()
+						self:SetAlpha(0)
+						return
+					end
+					local alpha = elapsed % 0.4
+					if elapsed > 0.2 then
+						alpha = 0.4 - alpha
+					end
+					self:SetAlpha(alpha * 5)
+					self.elapsed = elapsed
+				end)
 				flasher:Hide()
 			end
-			UIFrameFlash(BWFlash, 0.2, 0.2, 0.8, false)
+			flasher:Show()
 		end
 
 		if self.db.profile.shake then

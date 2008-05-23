@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 local FW = FW;
 local CA = FW:Module("Casting");
 
@@ -136,25 +136,29 @@ local function CA_SelfRemove(n)
 	FW:REMOVE(FW.SelfQueue,n); 
 end
 
-local function CA_SelfResist()
+local CA_CombatEventToMiss = {
+	["RESIST"] = 4;
+	["IMMUNE"] = 5;
+	["EVADE"] = 6;
+	["REFLECT"] = 7;
+};
+
+local function CA_SelfResist( arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ...)
 	local i=1;
 	local t;
 	while i <= FW:ROWS(FW.SelfQueue) do
 		t1,t2,_,_,t5,t6,_,t8,_,_,t11,t12 = FW:GET(FW.SelfQueue,i);
 		if t2 == 1 then
-			if string.find(arg1,string.format(FW.L.WAS_RESISTED,t1)) then
-				t=4;
-			elseif string.find(arg1,string.format(FW.L.FAILED_IMMUNE,t1)) then
-				t=5;
-			elseif string.find(arg1,string.format(FW.L.WAS_EVADED,t1)) then
-				t=6;
-			elseif string.find(arg1,string.format(FW.L.IS_REFLECTED,t1)) then
-				t=7;
+			if t1 == arg10 then
+				t = CA_CombatEventToMiss[arg12];
 			end
 			if t then
-				if FW.Settings.TimerResists then FW:Show(arg1,unpack(FW.Settings.ColorFailedMsg)); end
+				if FW.Settings.TimerResists then 
+
+					FW:Show(CombatLog_OnEvent(Blizzard_CombatLog_CurrentSettings, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ...),unpack(FW.Settings.ColorFailedMsg));
+				end
 				
-				if FW.Settings.TimerBarResists then	
+				if FW.Modules.Timer and FW.Settings.TimerBarResists then	
 					FW:INSERT(FW.ST,0,GetTime(),1,t5,FW.Track[t1][3],FW.Track[t1][4],FW.Track[t1][6],t1,t8,0,0,1,t11,t,1,0,GetTime()+FW.Settings.TimerFailTime,FW:GetFilterType(t1),t12);	
 				end
 				FW:REMOVE(FW.SelfQueue,i);
@@ -208,7 +212,7 @@ local function CA_SelfSucces(delay,n)
 		end
 		-- remove old unique crowd control spells
 		
-		if FW.ST then -- will fix properly at some point!
+		if FW.Modules.Timer then -- will fix properly at some point!
 			if FW.Track[t1][4] == 3 then
 				for i=1,FW:ROWS(FW.ST),1 do
 					if FW:GET(FW.ST,i,8) == t1 then
@@ -625,9 +629,26 @@ function FW:RegisterOtherCasts()
 	end);
 end
 
-FW:RegisterToEvent("CHAT_MSG_SPELL_SELF_DAMAGE", CA_SelfResist);
-FW:RegisterToEvent("PLAYER_LEAVING_WORLD",	function() FW:ERASE(FW.SelfQueue);end);
-FW:RegisterToEvent("PLAYER_DEAD",		function() FW:ERASE(FW.SelfQueue);end);
+local function CA_CombatLogEvent( event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ...)
+	if arg4 == FW.PLAYER then
+		if arg2 == "SPELL_MISSED" then
+			--FW:Show("MISSED: "..arg10);
+			CA_SelfResist( arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ...);
+
+		--[[elseif arg2 == "SPELL_CAST_FAILED" then
+			FW:Show("FAILED: ");
+		elseif arg2 == "SPELL_CAST_START" then
+			FW:Show("START: ");
+		elseif arg2 == "SPELL_CAST_SUCCESS" then
+			FW:Show("SUCCESS: ");]]
+		end
+	end
+end
+	
+FW:RegisterToEvent("PLAYER_LEAVING_WORLD",		function() FW:ERASE(FW.SelfQueue);end);
+FW:RegisterToEvent("PLAYER_DEAD",			function() FW:ERASE(FW.SelfQueue);end);
+
+FW:RegisterToEvent("COMBAT_LOG_EVENT_UNFILTERED",	CA_CombatLogEvent);
 
 FW:RegisterUpdatedEvent(CA_TimedSpellSuccess);
 

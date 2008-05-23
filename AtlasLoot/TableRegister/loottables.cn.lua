@@ -66,6 +66,8 @@ if (GetLocale() == "zhCN") then
   --Sunken Temple
     AtlasLoot_TableNames["STSpawnOfHakkar"][1] = "哈卡的后代";
 	AtlasLoot_TableNames["STTrollMinibosses"][1] = "巨魔小首领";
+  --Sunwell Plateau
+	AtlasLoot_TableNames["SPPatterns"][1] = "掉落图纸 (太阳之井高地)";
   --Temple of Ahn'Qiraj
 	AtlasLoot_TableNames["AQ40Trash1"][1] = "普通怪物 (安其拉神殿)";
 	AtlasLoot_TableNames["AQ40Trash2"][1] = "普通怪物 (安其拉神殿)";

@@ -2,7 +2,6 @@
 -- Are you local?
 -------------------------------------------------------------------------------
 
-local tablet = AceLibrary("Tablet-2.0")
 local dewdrop = AceLibrary("Dewdrop-2.0")
 local deformatter = AceLibrary("Deformat-2.0")
 local crayon = AceLibrary("Crayon-2.0")
@@ -170,7 +169,7 @@ local options = {
 -------------------------------------------------------------------------------
 
 function GroupFu:OnInitialize()
-	local revision = tonumber((string.match("$Revision: 62927 $", "^.-(%d+).-$"))) or 1
+	local revision = tonumber((string.match("$Revision: 67689 $", "^.-(%d+).-$"))) or 1
 	if not self.version then self.version = "1" end
 	self.version = self.version .. "." .. revision
 	self.revision = revision
@@ -179,6 +178,7 @@ function GroupFu:OnInitialize()
 	_G.FUBAR_GROUPFU_REVISION = self.revision
 
 	self.OnMenuRequest = options
+	self.blizzardTooltip = true
 
 	self:RegisterDB("GroupFuDB")
 	self:RegisterDefaults("profile", {
@@ -231,9 +231,9 @@ local function RollSorter(a, b)
 end
 
 function GroupFu:OnTooltipUpdate()
-	local cat = tablet:AddCategory("columns", 2)
+	GameTooltip:AddLine("GroupFu")
 	local inRaid = UnitInRaid("player")
-	cat:AddLine("text", L["Loot method"], "text2", self:GetLootTypeText())
+	GameTooltip:AddDoubleLine(L["Loot method"], self:GetLootTypeText())
 	if inRaid then
 		local officers = nil
 		local ML = nil
@@ -250,45 +250,42 @@ function GroupFu:OnTooltipUpdate()
 			end
 		end
 		if ML then
-			cat:AddLine("text", L["Master looter"], "text2", coloredName[ML])
+			GameTooltip:AddDoubleLine(L["Master looter"], coloredName[ML])
 		end
 		if leader then
-			cat:AddLine("text", L["Leader"], "text2", coloredName[leader])
+			GameTooltip:AddDoubleLine(L["Leader"], coloredName[leader])
 		end
 		if officers then
-			cat:AddLine("text", L["Officers"], "text2", officers)
+			GameTooltip:AddDoubleLine(L["Officers"], officers)
 		end
 	end
 
-	if rollers then
-		cat = tablet:AddCategory(
-			"text", L["Player"],
-			"text2", L["Roll"],
-			"columns", 2,
-			"showWithoutChildren", false
-		)
+	if rollers and #rollers > 0 then
+		GameTooltip:AddLine(" ")
+		GameTooltip:AddDoubleLine(L["Player"], L["Roll"])
 		table.sort(rollers, RollSorter)
 		for i, v in ipairs(rollers) do
 			if v.pass then
-				cat:AddLine(
-					"text", string.format("%s (%d %s)", coloredName[v.player], v.level, v.class),
-					"text2", "|cff696969" .. L["Pass"] .. "|r"
+				GameTooltip:AddDoubleLine(
+					string.format("%s (%d %s)", coloredName[v.player], v.level, v.class),
+					"|cff696969" .. L["Pass"] .. "|r"
 				)
 			else
-				cat:AddLine(
-					"text", string.format("%s (%d %s)", coloredName[v.player], v.level, v.class),
-					"text2", "|cff"..crayon:GetThresholdHexColor(v.roll, 0, 100)..v.roll.."|r"
+				GameTooltip:AddDoubleLine(
+					string.format("%s (%d %s)", coloredName[v.player], v.level, v.class),
+					"|cff"..crayon:GetThresholdHexColor(v.roll, 0, 100)..v.roll.."|r"
 				)
 			end
 		end
 		local num = inRaid and GetNumRaidMembers() or GetNumPartyMembers() + 1
-		cat:AddLine()
-		cat:AddLine("text", string.format(L["%d of expected %d rolls recorded."], #rollers, num))
+		GameTooltip:AddLine(" ")
+		GameTooltip:AddLine(string.format(L["%d of expected %d rolls recorded."], #rollers, num))
 	end
+	GameTooltip:AddLine(" ")
 	if self.db.profile.RollOnClick then
-		tablet:SetHint(L["|cffeda55fClick|r to roll, |cffeda55fCtrl-Click|r to output winner, |cffeda55fShift-Click|r to clear the list."])
+		GameTooltip:AddLine(L["|cffeda55fClick|r to roll, |cffeda55fCtrl-Click|r to output winner, |cffeda55fShift-Click|r to clear the list."], 0.2, 1, 0.2, 1)
 	else
-		tablet:SetHint(L["|cffeda55fCtrl-Click|r to output winner, |cffeda55fShift-Click|r to clear the list."])
+		GameTooltip:AddLine(L["|cffeda55fCtrl-Click|r to output winner, |cffeda55fShift-Click|r to clear the list."], 0.2, 1, 0.2, 1)
 	end
 end
 

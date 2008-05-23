@@ -9,8 +9,8 @@
 ## X-Category: Miscellaneous
 ## X-eMail: rabbit.magtheridon@gmail.com
 ## X-Credits: Original FuBar_GroupFu, this is just a heavy branch.
-## OptionalDeps: Ace2, FuBarPlugin-2.0, FuBar, DewdropLib, TabletLib, Deformat, CrayonLib
-## X-Embeds: Ace2, FuBarPlugin-2.0, DewdropLib, TabletLib, Deformat, CrayonLib
+## OptionalDeps: Ace2, FuBarPlugin-2.0, FuBar, DewdropLib, Deformat, CrayonLib
+## X-Embeds: Ace2, FuBarPlugin-2.0, DewdropLib, Deformat, CrayonLib
 ## SavedVariables: GroupFuDB
 
 embeds.xml

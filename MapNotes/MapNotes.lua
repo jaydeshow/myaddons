@@ -291,6 +291,8 @@ function MapNotes_VariablesLoaded()
 	WorldMapZoneMinimapDropDown:ClearAllPoints();
 	WorldMapZoneMinimapDropDown:SetPoint("TOPLEFT", WorldMapPositioningGuide, "TOP", -394, -35); 
 
+	MN_DataCheck(nil);
+
 --	if ( IsAddOnLoaded("Cartographer") ) then
 --		MapNotesDropDownMenu:ClearAllPoints();
 --		MapNotesDropDownMenu:SetPoint("RIGHT", WorldMapContinentDropDown, "LEFT", -198, 0);
@@ -951,6 +953,7 @@ function MapNotes_CreateQuickNote(msg, msg2, msg3, shouldMerge)
 		end
 
 		if ( ( not msg2 ) or ( msg2 == "" ) ) then
+			msg2 = "";
 			if ( name ~= l_zone ) then
 				msg2 = l_zone;
 			elseif ( m_zone ) then
@@ -958,10 +961,10 @@ function MapNotes_CreateQuickNote(msg, msg2, msg3, shouldMerge)
 			else
 				msg2 = MAPNOTES_QUICKNOTE_DEFAULTNAME;
 			end
---			msg2 = "";
 		end
 
 		if ( ( not msg3 ) or ( msg3 == "" ) ) then
+			msg3 = "";
 			if ( ( name ~= l_zone ) and ( msg2 ~= l_zone ) ) then
 				msg3 = l_zone;
 			elseif ( ( m_zone ) and ( msg2 ~= m_zone ) ) then
@@ -969,7 +972,6 @@ function MapNotes_CreateQuickNote(msg, msg2, msg3, shouldMerge)
 			elseif ( msg2 ~= MAPNOTES_QUICKNOTE_DEFAULTNAME ) then
 				msg3 = MAPNOTES_QUICKNOTE_DEFAULTNAME;
 			end
---			msg3 = "";
 		end
 
 		if MapNotes_SetNextAsMiniNote ~= 2 then
@@ -1339,12 +1341,6 @@ function MapNotes_MiniNote_OnUpdate(elapsed)
 				MN_rotatingMinimap = nil;
 			end
 
---			MN_xScale = MAPNOTES_DEFAULT_MINIZOOMDATA_EXTERNAL[MN_currentZoom].xScale;
---			MN_yScale = MAPNOTES_DEFAULT_MINIZOOMDATA_EXTERNAL[MN_currentZoom].yScale;
---			if ( MapNotes_MiniNote_IsInCity ) then
---				MN_xScale = MAPNOTES_DEFAULT_MINIZOOMDATA_CITY[MN_currentZoom].xScale;
---				MN_yScale = MAPNOTES_DEFAULT_MINIZOOMDATA_CITY[MN_currentZoom].yScale;
---			end
 			if ( lZone > 0 ) then
 				MN_xScale = MapNotes_MiniConst[lCont][MN_currentZoom].xScale;
 				MN_yScale = MapNotes_MiniConst[lCont][MN_currentZoom].yScale;
@@ -1400,21 +1396,21 @@ function MapNotes_MiniNote_OnUpdate(elapsed)
 							POI.xPos = MN_xPos;
 							POI.yPos = MN_yPos;
 							POI.dist = sqrt( MN_xPos*MN_xPos + MN_yPos*MN_yPos );
---							if ( key ~= POI.key ) then
-								POI.key = key;
-								POI.timeSinceLastUpdate = 0;
-								-- Custom
-								POITexture = getglobal(POI:GetName().."Texture");
-								POITexture:SetTexture(nil);
-								if ( ( MNIL ) and ( subData.customIcon ) ) then
-									POITexture:SetTexture( subData.customIcon );
-								end
-								local txtr = POITexture:GetTexture();
-								if ( not txtr ) then
-									POITexture:SetTexture(MN_POI_ICONS_PATH.."\\Icon"..subData.icon);
-								end
-								POI_OnUpdate(1, POI);
---							end
+
+							POI.key = key;
+							POI.timeSinceLastUpdate = 0;
+							-- Custom
+							POITexture = getglobal(POI:GetName().."Texture");
+							POITexture:SetTexture(nil);
+							if ( ( MNIL ) and ( subData.customIcon ) ) then
+								POITexture:SetTexture( subData.customIcon );
+							end
+							local txtr = POITexture:GetTexture();
+							if ( not txtr ) then
+								POITexture:SetTexture(MN_POI_ICONS_PATH.."\\Icon"..subData.icon);
+							end
+							POI_OnUpdate(1, POI);
+
 							counter = counter + 1;
 						end
 					end
@@ -3015,7 +3011,6 @@ function MapNotes_WorldMapButton_OnUpdate()
 			if ( not currentZone[i].icon ) then
 				currentZone[i].icon = 0;
 			end
-
 			POI = MapNotes_AssignPOI(i);
 			POIName = POI:GetName();
 			local xOffset = currentZone[i].xPos * width;
@@ -3245,7 +3240,6 @@ end
 function MapNotes_Search(fTxt)
 	if ( ( fTxt ) and ( fTxt ~= "" ) ) then
 		local foundArray = {};
-		local iKey = 0;
 
 		fTxt = string.lower(fTxt);
 		for key, map in pairs(MapNotes_Data_Notes) do

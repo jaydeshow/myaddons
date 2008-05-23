@@ -1,7 +1,7 @@
-﻿local L = AceLibrary("AceLocale-2.2"):new("Recount")
+﻿local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
+local L = AceLocale:NewLocale("Recount", "esES", true)
+if not L then return end
 
 -- Elsia: Need Spanish localization here...
 
-L:RegisterTranslations("esES", function() return {
-	}
-end)
+	L["Sync"] = "Sync"

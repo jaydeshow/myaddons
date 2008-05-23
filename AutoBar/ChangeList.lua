@@ -6,115 +6,400 @@
 
 
 --
--- Coming Attractions:
+-- Ideas:
 --
 
 -- Set operations / calculated categories.
 -- Exchange profiles
--- Hide Microbuttons option
 -- Inventory & Instance checks
 -- Buff detection: Don't show buff items if buffed already
--- Charge counts & spell reagent counts in 2.3
-
---
--- Next Up:
---
-
 -- Hide slot option
--- OnClick during combat: if slot is empty and more items available move them over.
--- Arrange on use even in combat.
+-- Shuffle - OnClick during combat, if slot is empty and more items available move them over.
+-- Arrange on use even in combat for inventory items only
 -- Food Blend for pets.
 -- Popup on Shift
 -- Data versioning & verification
--- Split out ItemList as a translation / grouping / priority layer on top of PT3
 -- Deal with charges: display them use smaller charged items first. Coming in 2.3
--- JC statues added to stone cooldown heal items, mana crystals to heal one
 -- Cryolysis: (Left = use, right = conjure, middle = trade stack with current target.) If the stack is not full it conjures till it is.  Ctrl-force trade.
--- AutoBarButtonBuffSpell would need multiple keybinds (3+ ?)
 -- Mmm drag & drop between the bar and bags / trade etc. ?
--- Fadeout outside combat unless modifier
--- Add fade outside combat + 20secs
--- Everlasting Underspore Frond
 -- Add a fake cooldown to the Totem buttons for duration & not the spell cooldown
--- LibStickyFrames-1.0
---		Mods label them so you can figure out currently not shown bars / frames etc.
---		Fine movement controls for a selected frame (say temporary arrow keys + modifiers for 1 or 5 pixel or grid movement)
--- Plugin architecture for buttons so this can become more of a framework
--- For custom categories allow direct selection of a PT3 set + an optional priority set (that takes precedence over the regular set for a particular item's value.  For example conjured food over regular)
+-- Option to disable tooltips during combat
+-- Option to adjust the padding of the popup buttons
+-- A button specific checkbox to always show the popups
+
 
 --
 -- Outstanding issues
 --
 
-
 --[[
- * The new preference scheme requires the following:
-  * Select a *unique* profile.  This means NOT having any characters using the default profile.
-  * Click on Reset Profile.
-  * Click on Reset Bars.
-  * Log out & log back in or reload your ui using /rl etc.
-  * If you are new to the beta these steps are not required & you are assigned the class profile by default.
-  * If you are not new to the beta and have not performed these steps, then you need to do so for *EACH* character you have.
  * Preferences need improvement
-  * Bar location & other settings need a drop down to pick from Custom (this character only), global (account wide), or same as another character.
-  * Class bar settings will only have Custom or Class (shared with same class characters) to choose from.
-  * Based on forum feedback there will be 2 or 3 Quick Config buttons per class
-  * Custom Categories, Custom Buttons & Custom Bars will also be global to all characters on an account (unless marked class specific)
- * Trinket2 equip buttons not working.  This needs special code which has not been written yet.
- * Make fadeout work
-  * Select Named Buttons for a Bar mia
+  * ACE3 / Rock
  * Macro Buttons
-  * Icons mia
-  * Support for the built in sets of macros for character (18) & general (18) as well.
   * Travel macro beyond just druids: Ghost Wolf, Pally Aura & Hunter thingy.
- * Button specific options mia
-  * Turn the summoning aspect off for the food/water buttons
-  * Disable invert buttons on offhand buff
  * Drag & Drop
   * Items need to be draggable onto the category in the tree part of the config.
   * Items dragged onto a custom button automatically create a custom category if it does not have one & drop into it
   * Buttons need a drop setting that if enabled allow items to be dragged right onto the button itself
   * Categories in a button & items inside a category need to be draggable to rearrange them
- * Custom Categories need to be able to pick LibPeriodicTable-3.1 sets for their contents.
- * Full Mount support, including form switching, automatic flying vs ground selection, etc.
  * Rock: implement the link type so Rock can be used for config.
+  * Rock: stringControl -> linkControl
+ * !LibStickyFrames-2.0
+  * Mods label them so you can figure out currently not shown bars / frames etc.
+  * Fine movement controls for a selected frame (say temporary arrow keys + modifiers for 1 or 5 pixel or grid movement)
+ * For custom categories allow direct selection of a PT3 set
+  * Optional priority set that takes precedence over the regular set for a particular item's value.  For example conjured food over regular.
+  * Split out !ItemList as a translation / grouping / priority layer on top of PT3.
+ * Plugin architecture for buttons so this can become more of a framework
+ * Buttons
+  * !AutoBarButtonClassPet: for hunters(break19: left click summon, right click revive)
+  * !AutoBarButtonBuffSpell would need multiple keybinds (3+ ?)
+  * !AutoBarButtonER: castsequence reset = 600, Last Stand, category x, category y, button n, etc.  ER - Emergency Response.  NS heals for healers, Iceblock for mages, --> Shieldwall, Bubble for pallies
+  * !AutoBarButtonFishing: Keeps track of swapped gear, equips them on combat or some kind of ctrl-click or something.  First clicks equips fishing gear then pole then applies best lure when its missing.  Then casts a line.
+  * !AutoBarButtonSeal: for paladins
+  * !AutoBarButtonStealth: Priest, Rogue & Night Elf mia
+  * !AutoBarButtonTrap/Sting/Totem: need cooldowns
+  * Note Petfood needs an ug to be a rightclick hunter eats & left click pet eats.
 --]]
 
 --
 -- Releases
 --
 
--- Buttons:
--- AutoBarButtonER: castsequence reset = 600, Last Stand, category x, category y, button n, etc.  ER - Emergency Response.  NS heals for healers, Iceblock for mages, --> Shieldwall, Bubble for pallies
--- AutoBarButtonFishing: Special case for germans Angelin: Alchemy bug. Keeps track of swapped gear, equips them on combat or some kind of ctrl-click or something.  First clicks equips fishing gear then pole then applies best lure when its missing.  Then casts a line.
--- AutoBarButtonCharge / Sprint Button for druids, rogues, warriors
--- AutoBarButtonStealth: Priest, Rogue & Night Elf mia
--- AutoBarButtonClassPet: for hunters(break19: left click summon, right click revive)
--- Note Petfood needs an ug to be a rightclick
--- AutoBarButtonCooldownPotionBuff (Heroic Potion, Destruction Potion ...)
--- AutoBarButtonCooldownStoneBuff (Nightmare Seed, Flamecap, Fel Blossom, ...)
--- AutoBarButtonWarlockStones (All non health stones)
-
--- Rock: stringControl -> linkControl
-
--- Right Click config for buttons as well.
--- Buttons need a drop setting that if checked allow items to be dragged right onto the button itself
--- * Create New Bar mia
-
--- Bugs:
--- SSC & Eye potions not claiming top spot on zone.
--- AutoBarButtonMount: full support, including form switching, automatic flying vs ground selection, etc.
--- Make Custom Buttons global & allow rename.
--- Make RightClick configure the button in Move the Buttons mode.
--- RightClick spellcast not working always.
--- Split out prefs & fix upgrade.
--- Right click buff targetting party not other raid party.
 --[[
-AutoBar:Print
+AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
+
+= What is still planned for the new version? =
+ * Popup on shift.  There is just one more bug to iron out in the test state machine then this can be incorporated.
+ * Finish macro buttons.
+  * For Blizzard macros, use name, not number to index them.
+ * Buttons
+  * Finally do a proper mount button (a Macro Button) including form switching, automatic flying vs ground selection, etc.
+  * Buttons need a drop setting that if checked allow items to be dragged right onto the button itself
+ * Combat Buttons.  (short duration buffs)
+   * AutoBarButtonCooldownPotionCombat (Heroic Potion, Destruction Potion ...)
+   * AutoBarButtonCooldownStoneCombat (Nightmare Seed, Flamecap, Fel Blossom, ...)
+ * Reset Button for built in Bars
+ * Reset Button for built in Buttons
+ * Reset Button for AutoBar
+ * Categories:
+   * Allow GetItemInfo type / subType specification for a category
+   * Allow direct selection of a PT3 set + an optional priority set (that takes precedence over the regular set for a particular item's value.  For example conjured food over regular)
+ * Add Position for X & Y to Bar ui.  Location -> Position
+ * Verify arena water precedence & tears + conjured only
+ * Resolve issues with class buttons being placed on account bars.
+ * Implement upgrade to version 1: delete old data.
+ * Switch to GetItemIcon(itemId or itemName or itemLink or itemString) for category icons
+ * Customization via Waterfall is barely functional & needs drag & drop rearranging + icons in the tree view at a minimum.
 --]]
 
--- [glow=red,2,300][b]As usual you can report issues and find Beta documentation & faq here:[/b][/glow] http://code.google.com/p/autobar
--- 2.03.00.31 beta ()
+--[[
+[b]Report missing items:[/b] [url=http://code.google.com/p/autobar/issues/list?q=label%3AMissingItem&can=1]List of reported missing items[/url]
+[glow=red,2,300][b]Official web site for documentation: [/b][/glow] http://code.google.com/p/autobar
+[url=http://code.google.com/p/autobar/wiki/FAQ]FAQ[/url]
+[url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
+(Please click in a "Labels:" field to label your issue appropriately.)
+--]]
+
+-- 2.04.02.54 beta ()
+--- -> LibStickyFrames-2.0
+---- Finish LibStickyFrames: needs grouped dragging.
+--- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
+--- Shuffle: handle locations and cooldowns and equipped items.
+
+-- 2.04.02.53 beta (74775)
+-- Minimap / FuBar Button overhaul:
+-- Left-Click: Open Options GUI. This toggles GUI now. Needs waterfall-1.0.
+-- Right-Click: Open Dropdown UI
+-- Alt-Click: Key Bindings. -> LibKeyBound-1.0  (yellow background)
+-- Ctrl-Shift-Click: Skin the Buttons. Needs ButtonFacade.
+-- Ctrl-Click: Move the Buttons
+-- Shift-Click: Move the Bars
+-- AutoBarButtonCharge Shadowstep added for Rogues
+-- Fix locale issues with Charge Button.  Tx SunTsu!
+-- AutoBarButtonTravel Ghost Wolf added for Shamans
+-- AutoBarButtonER added for all classes except locks
+-- Handle Colors for ButtonFacade, as well as settings at AutoBar level.
+-- Category Boss Items added, Misc.Usable.Permanent.  On priority, Tears of the Goddess so far.  Eventually needs boss detection.
+-- Remove remaining skinning of Blizzard buttons code from AutoBar.
+-- Protovoltaic Magneto Collector 30656
+-- Amani Hex Stick 33865
+-- Repolarized Magneto Sphere 30818
+-- Multi-Spectrum Light Trap 30852
+-- Temporal Phase Modulator 30742
+-- Voodoo Skull 33081
+-- Add LibKeyBound-1.0 to toc dependencies and embeds
+
+-- 2.04.01.52 beta (74135)
+-- Actually set popupHeader frame to DIALOG, dont just talk about doing it.
+-- Adjust bar FrameStrata immediately
+-- frFR: Upgraded some escaped characters to the actual ones.
+-- itIT: Mostly a clone of frFR since it doesnt have bogus escape sequences in it.  Needs actual translation
+-- Allow Drum Rotation button to be disabled again.
+-- Implement gloss & background hiding / showing for popups.
+-- 33079 Murloc Costume
+-- Expose the hide attribute of a Bar.  This is what gets toggled on when you are in Move Buttons mode and click a bar from green to red.
+-- Only Generate The Top Level Options By Default.  Generate Full Options Only When Opening Gui Or Drop Down List.  Saves About 500K Of Memory When Not Changing Options.
+-- Fix drag frames when Moving Bars
+-- Give Move Bars coloring precedence over Move Buttons
+-- New PT3.1 File for AutoBar.  It loads subsets of Misc, Gear and Tradeskill.
+-- The other 3 set groups are now added to their respective file, but with an unchangeable rev number from the dawn of PT3.1.
+-- Any loading of Misc, Gear or Tradeskill will thus replace them
+-- Fix right click on Bar during Move the Bars.
+-- Add option to disable conjure button on food and water.  Empty food & empty water will still conjure.
+-- Use button Name not key for Add Button
+-- Start switching to LibStickyFrames-2.0
+-- Internationalize {star} & {skull} used in Rotation Drums Button
+-- Arrange on use for spells and macros.  Issue with not showing regular items when mixed with spells in a category remains.
+-- Fix outlining issue when clicking on popups.  Introduce equipped green border scaling issue instead.
+-- Fix tooltip error during Move the Buttons
+-- Save ButtonFacade Colors
+-- Consolidate UpdateUsable code for both button types.
+-- Obey Category location settings for usable display
+-- ZONE_CHANGED_NEW_AREA: Add 3 second update delay for sorted because Zone info is not available when ZONE_CHANGED_NEW_AREA fires.  Wtf is the point of firing it?
+-- Location specific items should now work.  For example Nethergon Energy.
+-- Fix stonard portal + reagent counts for new teleports and portals
+-- Brewfest Brew 33929
+-- Don Carlos Tequila 28284
+-- First cut of Shuffle (<Button>/Shuffle):
+--- It shuffles consumable items for a particular button during combat.
+--- If you move items around on it, you may need to click twice to actually get something to click on in the click spot of your bag.
+--- This version does not yet care about cooldown or location or anything other than Blizzard API saying it is usable.
+-- Drop out of Move Buttons mode at start of combat.
+-- Right click on buttons to change their settings during Move Buttons mode
+-- Added the less verbose Log Events debug setting.
+-- Babble-Zone-2.2 --> LibBabble-Zone-3.0
+-- Add Show Extended Tooltips setting.  Enabled allows comparison tooltips and extended tips by other mods.
+-- Remove AceLocale 2.2
+-- AutoBarButtonCharge A Charge / Intercept / Intervene / Sprint Button for druids, warriors
+
+-- 2.04.01.51 beta (72832)
+-- Switch to ButtonFacade.  This completely drops cyCircled support for AutoBar.
+-- Include the ButtonFacade and associated skin you like.  Use the ButtonFacade interface to set the skin, including DreamLayout.
+-- If you still use cyCircled for other mods you will need to update to r72825+.
+-- Dump Style.lua, add ButtonFacade as optional dependency.
+-- Allow skinning changes from the Bar settings.
+-- Added settings to announce Drum Rotation to Say, Party, Raid
+
+-- 2.04.01.50 beta (72681)
+-- Consumable.Buff Type.Both -> Consumable.Buff Type.Flask
+-- Change clumsy and ambiguous "Buff: Both Battle and Guardian Elixir" to "Buff: Flask"
+-- All hail bobbyblade who found the crash wow error: Using "|" in a string followed by numbers is bad M'Kay.
+-- Update Button Category name when changed.
+-- Tarkumi: fix for right click spell tooltip.
+-- Remove empty Consumable.Buff.Mana.Self, it breaks the multiset iterator
+-- Fix custom category keys & upgrade incorrect ones
+-- Fix Category renaming
+-- Implement dragging Blizzard macros to a Custom Category, first cut
+-- New Macro button for Category Items to create a Custom Macro item, first cut
+-- Editable Name and macro text field.
+
+-- 2.04.01.49 beta (72480)
+-- Reagent counts for select spells.  Specifically did not do all the soulshard spells of warlocks, nor rogue poisons.
+-- GameTooltip:SetOwner(self, "ANCHOR_PRESERVE").  Perhaps this will clear up tooltip position issues?
+-- AutoBarButtonRotationDrums: this is the first cut at it.
+-- The left click spell + the right click spell counts are split into <left click spell count>/<right click spell count>
+-- For quantity over 99 show * in the count
+-- Only show one count if left & right click spell is the same.
+-- AutoBarButton.lua:1481: attempt to concatenate local 'itemName' fixed
+-- AutoBarDB.lua:1203: attempt to index local 'barDB' (a nil value) fix
+-- New underlying architecture for Macros.  Convert Macro buttons to use it.
+-- WaterfallDragLink support for built in macros, rip out LibBabbleSpell, fix icons for items, spells and macros.
+-- Drag & drop of built in macros to a custom category
+-- Clean up icon texture code.  This should solve the empty button issue in at least some cases.
+-- Do not allow empty string for custom names, nor double quote or period
+-- Cancel Fade while hovering over popups as well.
+-- Add warning for unknown PT3.1 sets
+-- Add tooltip if right clicking will cast a spell
+-- Trinket2 now equips correctly.  Still has cosmetic issues.
+-- Fix some code necrosis
+-- Dump the obsolete category rearrange code.
+-- Delete drag handle icons
+-- X-51 Nether-Rocket & X-TREME X-51 35225:60, 35226:280
+-- 7307:75 Flesh Eating Worm
+-- Redcap Toadstool 25550:70, drops in Zangar, assuming its lvl 70 viable.
+
+-- 2.04.01.48 beta (71858)
+-- Remove Armor & WeaponSmith Popups
+-- Fix bad global reference barPositionDBList -> AutoBar.barPositionDBList
+-- Fix hitRectPadding for negative padding values
+-- Increase minimum hitRectPadding to 4
+-- Bar frame padding >= 0 only
+-- Added holy water code to combat the undead zombie buttons that kept returning after removal.
+-- Fix Tracking button
+-- Fix removal of Buttons from disabled Bar
+-- Fix spellCrusaderAura, _, spellCrusaderAuraIcon = GetSpellInfo(32223)
+-- Fix Button Delete and Remove using layout instead of buttons share.
+-- Fix crash when enabling a bar during Move mode.
+-- Fix Travel Form case for outland and in combat to use Cheeta and not Flight Form
+-- Consumable.Cooldown.Drums
+-- Fix some PT3.1 out of sync sets
+-- AutoBarButtonCooldownDrums drums, nets, other drum cooldown stuff
+-- Upgrade Remove and Delete Button description text
+-- Add Babble-Zone-2.2 dependency to toc
+-- Make ClampedToScreen an AutoBar option.  Requires reload to take effect / disable for now. Default is false.
+-- Add specific cancel fadeout in combat setting
+
+-- 2.04.01.47 beta (71664)
+-- Add FadeOut Time and FadeOut Alpha
+-- Increase fadeOut update frequency
+-- Bar.frame:SetClampedToScreen(true).  This should prevent Bars from getting scaled or moved offscreen.
+-- Popups now have the same padding as the bar.  HitRectInsets adjusted to compensate.
+-- Adjust for padding on bars.  Bars with padding will now have buttons centered inside them with padding space around the buttons (Move Bar mode illustrates this).
+-- Add option to show tooltips in combat.  Requires showTooltips to be set.
+-- ButtonPaste can no longer duplicate buttons in cross bar drags.
+-- Added code to remove duplicate buttons due to sharing changes or dragging from class to account bars.
+-- Syncronize Button's placement info with actual placement
+-- Fix default Tracking Button icon
+
+-- 2.04.01.46 beta (71475)
+-- Create Paper Airplane, Flying Machine 45131,45135  --> 34497, 34499
+-- Remove spells from PT3.1 Throw Paper Airplane Impact 45130,45134
+-- Switch to GetSpellInfo based spell handling: name, rank, icon, cost, isFunnel, powerType, castTime, minRange, maxRange = GetSpellInfo(spellId or spellName or spellLink)
+-- Rip out LibBabble-Spell-3.0
+-- GameTooltip_ShowCompareItem() added for item links in tooltip
+-- Initial work on custom attributes for Buttons
+-- Dragging to bar drop spot now appends button instead of putting it into position 1
+-- spellSummonFelsteed = GetSpellInfo(5784) fixed
+-- Pure Energy 31451
+-- spellRitualOfSouls, _, spellRitualOfSoulsIcon = GetSpellInfo(29893) fixed
+
+-- 2.04.01.45 beta (71069)
+-- Fix the tooltip for charged items to show charges on first found item (item that will be used on click).
+-- Fix cooldown for spells not showing up
+-- Remove reset options till they are implemented.
+-- Fix rename of Custom Buttons from the Bar Button List.
+-- Add SetInventoryItem("player", slot) to item tooltip code to handle equipped stuff
+-- Detectar Invisibilidad --> Detectar invisibilidad for esES
+-- Switch texture code from BabbleSpell to GetSpellInfo
+-- Allow dropping of spells onto a Button with a custom category in Move Button mode.
+-- Add individual Ctrl, Alt, Shift settings to cancel fadeout with.
+-- Fix texture path issue for spell categories.
+-- Tears of the Goddess 24494
+-- lanatha: Switch all of AutoBarButton to SpellInfo
+-- Bring back green border for equipped items
+-- Fix locale issue with custom categories and spells.  Thanks to StiviS.
+-- Fix broken AutoBar:GetSharedBarDB(barKey, sharedVar) function.  Inspired by Thorlin.
+
+-- 2.04.01.44 beta
+-- Update Button & Bar's shared sections, as well as the unplaced Button list before creating options.  This avoids possible corrupting double placement of buttons.
+-- Only set Offhand Weapon Buff Button to enabled on creation.
+
+-- 2.04.01.43 alpha
+-- Fix sharing for Buttons
+
+-- 2.04.01.42 alpha
+-- Documentation for the Alpha is now on  http://code.google.com/p/autobar
+-- Set AutoBar to active if it is not.
+-- Add additional porting items to Hearth.  BT attunement, Legendary Staff kara.
+-- Fix custom Categories to be keyed not indexed
+-- lanatha: Fix AutoBar.Class.Button.prototype:GetIconTexture() for "showEmptyButtons" or "alwaysShow"
+
+-- 2.04.01.41 alpha
+-- Adjust to "LibBabble-Spell-3.0" changes
+-- Hide bar buttons on delete
+-- Avoid reusing keys in same session to avoid issues with Blizzard frame names associated with Bars & Buttons
+-- Bear Flank, Charred Bear Kabobs, Juicy Bear Burger
+
+-- 2.04.01.40 alpha
+-- Orb of Murloc Control 34483
+-- Razorthorn Flayer Gland 34255
+-- Fixed a bunch of issues with renaming and deleting buttons.
+-- Fixed the AutoBarClassButton.lua:984 global ref error
+-- Fixed the AutoBarSearch.lua:964 failure to remove data for deleted buttons
+
+-- 2.04.01.39 alpha
+-- Update waterfall options after a button move.
+
+-- 2.04.01.38 alpha
+-- Syncronize keys to names for Custom Bars & Buttons on rename across all characters and classes in the db
+-- Fix bar alignment --> bar disapearance
+-- AutoBarButtonFoodCombo: Prioritize conjured biscuits
+-- Split out new localized strings
+-- Fix trinket button to use equipped item
+
+-- 2.04.01.37 alpha
+-- Conjured Manna Biscuit missing from Pet Food
+-- Unchecking enable now makes the Bar disapear
+-- During combat start using next stack of a particular item once the first stack is used up.
+-- During combat grey out unusable bag and inventory items
+-- Display macro buttons
+-- Tooltip for macro buttons displays Button Name and the macro text
+-- Fix French (& other locale) druid buttons
+
+-- 2.04.01.36 alpha
+-- Fix rearrangeOnUse for hunter aspects, traps, etc.  Remember the last used item across logins.  Button only property now, no longer on categories.
+-- Bar renaming
+-- Remove obsolete Profile stuff
+-- Ata'mal Armaments 34500
+-- Afrazi Forest Strider Drumstick 33254
+-- Tradeskill.Tool.Fishing.Other: Rumseys Lager 34832
+
+-- 2.04.01.35 alpha
+-- Fix perma greyout of buttons
+-- Holding modifier cancels fadeOut
+-- Implement both cases of Add, Delete and Remove of buttons: Directly on a Bar and in the Buttons section
+-- Ritual of refreshment
+-- Sharing Bar Buttons
+-- Sharing Bar Layout
+-- Sharing Bar Location
+
+-- 2.04.01.34 alpha
+-- fadeOut
+-- Populate Extras
+-- selfCastRightClick check disabled for AutoBarButtonClassBuff, this should allow group buffs to be cast on non party groups (GotW etc)
+-- Fixed PT3.1 set names for bullets & arrows categories.
+-- Toothy's Bucket 33816
+-- Chuck's Bucket 35350
+-- Muckbreath's Bucket 33818
+-- Snarly's Bucket 35349
+-- Luminous Bluetail 35287
+-- Giant Sunfish 35285:7500
+-- Blessed Weapon Coating 34538
+-- Righteous Weapon Coating 34539
+
+-- 2.04.00.33 alpha
+-- Added "Remove" button so you can remove buttons from a bar.
+-- Fixed Categories addition and deletion
+-- Fixed Hunter AutoBarButtonAura not being placed
+-- AutoBarButtonWarlockStones (All non health stones)
+-- Naaru Ration 34780
+-- Reins of the Black War Elekk 35906
+-- Phoenix Hatchling 35504
+-- Dragon Kite 34493
+-- Brogg's Totem 33088
+-- Energized Totem 33091
+-- StoneMaul Banner 33095
+-- Gift of Naias 23680
+-- Zapthrottle Mote Extractor 23821
+-- Toxic Fogger - 5638
+-- Salt Shaker 15846
+-- Sharpened Fish Hook 34861
+-- Warstrider & White Hawkstrider 34129:100,35513:100
+
+-- 2.04.00.32 alpha
+-- Ditch AceLocale & roll own again.  This allows adding more translations on the fly.
+-- Synchronized all locales, using English for missing translations.
+-- AutoBarButtonWarlockStones Button for warlock non-health stones
+-- Keybind added for crafting so u can de & prospect more better
+-- SPELL_PICK_LOCK = BS["Pick Lock"], this should actually pick locks then, thanks Hoern
+-- Demon Skin & Fel Armor added to Warlock Class Buff Button
+-- Consumable.Cooldown.Potion.Rejuvenation.Regular
+-- Consumable.Cooldown.Potion.Rejuvenation.Dreamless Sleep
+-- Consumable.Food.Buff.Hit Rating
+-- Zeppit's Crystal - 31815
+-- 11412 Nagmara's Vial
+-- Rod of Purification - 31610
+-- Protectorate Disruptor - 29618
+-- 34493 Dragon Kite
+-- 34492 Rocket Chicken
+-- Orb Collecting Totem - 31668
+-- Bloodthistle 22710
+-- Nimboya's Pikes 9319, 15002
+-- Blessed Medallion of Karabor - 32757
+-- New dailies
+
+-- 2.03.00.31 beta (55463)
 -- AutoBarButtonStance: Stances for warriors.  First cut at it.
 --	Right clicking it swaps to Defensive if not in it, or Berserker if in Defensive.
 --	There is a keybinding but it does nothing since you are already in that stance.  open for suggestions.  Maybe left click switches to 1 other stance, right click to the other?
@@ -124,7 +409,6 @@ AutoBar:Print
 -- 33072 Tabetha's Torch
 -- 33101 Captured Totem
 
--- [glow=red,2,300][b]As usual you can report issues and find Beta documentation & faq here:[/b][/glow] http://code.google.com/p/autobar
 -- 2.03.00.30 beta (55335)
 -- Prayer of Shadow Protection added to priest buff button
 -- Fix Pick Lock button & add seaforium & skeleton keys to it.

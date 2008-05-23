@@ -21,10 +21,10 @@ Quartz = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceDB-2.0", "AceEvent
 Quartz:SetModuleMixins("AceEvent-2.0")
 Quartz:RegisterDB("QuartzDB")
 local self = Quartz
-Quartz.revision = tonumber(("$Rev: 62943 $"):match("%d+"))
+Quartz.revision = tonumber(("$Rev: 70806 $"):match("%d+"))
 Quartz.version = "0.1." .. (revision or 0)
 
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 media:Register("statusbar", "Frost", "Interface\\AddOns\\Quartz\\textures\\Frost")
 media:Register("statusbar", "Healbot", "Interface\\AddOns\\Quartz\\textures\\Healbot")
 media:Register("statusbar", "LiteStep", "Interface\\AddOns\\Quartz\\textures\\LiteStep")

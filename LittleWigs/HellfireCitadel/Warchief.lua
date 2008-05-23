@@ -33,11 +33,11 @@ L:RegisterTranslations("koKR", function() return {
 	engage_trigger3 = "^우리가 진정한",
 
 	bdwarn = "칼춤",
-	bdwarn_desc = "칼춤 지속 시간 타이머",
+	bdwarn_desc = "칼춤에 대한 예측 타이머입니다.",
 	bdwarn_alert = "칼춤까지 5초 전!",
 
 	bdbar = "칼춤 바",
-	bdbar_desc = "칼춤의 지속 시간 표시",
+	bdbar_desc = "칼춤에 대한 예측 초읽기 표시입니다.",
 	bdbar_display = "~칼춤",
 } end)
 
@@ -108,7 +108,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Shattered Halls"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"bdwarn", "bdbar", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 67359 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

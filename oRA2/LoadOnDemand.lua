@@ -36,13 +36,6 @@ function oRALoD:OnEnable()
 	self:RegisterEvent("oRA_CoreEnabled")
 	self:RegisterEvent("oRA_PlayerPromoted")
 	self:RegisterEvent("RAID_ROSTER_UPDATE")
-
-	self:ScheduleRepeatingEvent("oRALoDCheckPromote", self.CheckPromoted, 5, self)
-	if AceLibrary("AceEvent-2.0"):IsFullyInitialized() then
-		self:CheckPromoted()
-	else
-		self:RegisterEvent("AceEvent_FullyInitialized", "CheckPromoted")
-	end
 end
 
 ------------------------------
@@ -72,14 +65,29 @@ end
 
 do
 	local inRaid = false
+	local firedPromotedEvent = nil
 	function oRALoD:RAID_ROSTER_UPDATE()
 		local isInRaidNow = UnitInRaid("player")
+		local _, instanceType = IsInInstance()
+		if instanceType == "arena" or instanceType == "pvp" then return end
 		if not inRaid and isInRaidNow then
 			oRA:ToggleActive(true)
+			self:TriggerEvent("oRA_JoinedRaid")
 			inRaid = true
+			if (IsRaidLeader() or IsRaidOfficer()) then
+				self:TriggerEvent("oRA_PlayerPromoted")
+				firedPromotedEvent = true
+			else
+				firedPromotedEvent = nil
+			end
 		elseif inRaid and not isInRaidNow then
+			self:TriggerEvent("oRA_LeftRaid")
 			oRA:ToggleActive(false)
 			inRaid = false
+			firedPromotedEvent = nil
+		elseif inRaid and not firedPromotedEvent and (IsRaidLeader() or IsRaidOfficer()) then
+			self:TriggerEvent("oRA_PlayerPromoted")
+			firedPromotedEvent = true
 		end
 	end
 end
@@ -98,17 +106,9 @@ function oRALoD:oRA_PlayerPromoted()
 
 	if loaded then
 		self:TriggerEvent("oRA_ModulePackLoaded")
-		self:TriggerEvent("oRA_JoinedRaid")
 		-- Just collect garbage right away, since we will discard lots of unused
 		-- translations.
 		collectgarbage("collect")
-	end
-end
-
-function oRALoD:CheckPromoted()
-	if (IsRaidLeader() or IsRaidOfficer()) and GetNumRaidMembers() > 0 then
-		if self:IsEventScheduled("oRALoDCheckPromote") then self:CancelScheduledEvent("oRALoDCheckPromote") end
-		self:TriggerEvent("oRA_PlayerPromoted")
 	end
 end
 

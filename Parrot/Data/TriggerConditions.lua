@@ -1,15 +1,13 @@
-local VERSION = tonumber(("$Revision: 48665 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 74169 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-09-11 21:34:00 -0400 (Tue, 11 Sep 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-17 12:47:43 -0400 (Sat, 17 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
-local mod = Parrot:NewModule("TriggerConditionsData", "LibParser-4.0")
-
-local SEAura = Rock("LibSpecialEvents-Aura-3.0")
+local mod = Parrot:NewModule("TriggerConditionsData")
 
 local onEnableFuncs = {}
 function mod:OnEnable()
@@ -18,7 +16,9 @@ function mod:OnEnable()
 	end
 end
 
-local L = Parrot:L("Parrot_TriggerConditions_Data")
+-- local L = Parrot:L("Parrot_TriggerConditions_Data")
+-- TODO make modular
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_TriggerConditions_Data")
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Enemy target health percent",
@@ -146,141 +146,170 @@ Parrot:RegisterPrimaryTriggerCondition {
 	},
 }
 
+-- Parrot:RegisterPrimaryTriggerCondition {
+-- 	name = "Pet mana percent",
+-- 	localName = L["Pet mana percent"],
+-- 	param = {
+-- 		type = "number",
+-- 		min = 0,
+-- 		max = 1,
+-- 		step = 0.01,
+-- 		bigStep = 0.05,
+-- 		isPercent = true,
+-- 	},
+-- 	getCurrent = function()
+-- 		if not UnitExists("pet") or UnitIsDeadOrGhost("pet") then
+-- 			return nil
+-- 		end
+-- 		return UnitHealth("pet")/UnitHealthMax("pet")
+-- 	end,
+-- 	events = {
+-- 		UNIT_HEALTH = "pet",
+-- 		UNIT_MAXHEALTH = "pet",
+-- 		PLAYER_PET_CHANGED = "pet",
+-- 	},
+-- }
+
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming block",
 	localName = L["Incoming block"],
-	parserEvent = {
-		eventType = "Miss",
-		missType = "Block",
-		recipientID = "player",
-	},
+-- 	parserEvent = {
+-- 		eventType = "Miss",
+-- 		missType = "Block",
+-- 		recipientID = "player",
+-- 	},
+-- is ignored anyways
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming crit",
 	localName = L["Incoming crit"],
-	parserEvent = {
-		eventType = "Damage",
-		recipientID = "player",
-		isCrit = true,
-	},
+-- 	parserEvent = {
+-- 		eventType = "Damage",
+-- 		recipientID = "player",
+-- 		isCrit = true,
+-- 	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming dodge",
 	localName = L["Incoming dodge"],
-	parserEvent = {
-		eventType = "Miss",
-		missType = "Dodge",
-		recipientID = "player",
-	},
+-- 	parserEvent = {
+-- 		eventType = "Miss",
+-- 		missType = "Dodge",
+-- 		recipientID = "player",
+-- 	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming parry",
 	localName = L["Incoming parry"],
-	parserEvent = {
-		eventType = "Miss",
-		missType = "Parry",
-		recipientID = "player",
-	},
+-- 	parserEvent = {
+-- 		eventType = "Miss",
+-- 		missType = "Parry",
+-- 		recipientID = "player",
+-- 	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing block",
 	localName = L["Outgoing block"],
-	parserEvent = {
-		eventType = "Miss",
-		missType = "Block",
-		sourceID = "player",
-		recipientID_not = "player",
-	},
+-- 	parserEvent = {
+-- 		eventType = "Miss",
+-- 		missType = "Block",
+-- 		sourceID = "player",
+-- 		recipientID_not = "player",
+-- 	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing crit",
 	localName = L["Outgoing crit"],
-	parserEvent = {
-		eventType = "Damage",
-		sourceID = "player",
-		recipientID_not = "player",
-		isCrit = true,
-	},
+-- 	parserEvent = {
+-- 		eventType = "Damage",
+-- 		sourceID = "player",
+-- 		recipientID_not = "player",
+-- 		isCrit = true,
+-- 	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing dodge",
 	localName = L["Outgoing dodge"],
-	parserEvent = {
-		eventType = "Miss",
-		missType = "Dodge",
-		sourceID = "player",
-		recipientID_not = "player",
-	},
+-- 	parserEvent = {
+-- 		eventType = "Miss",
+-- 		missType = "Dodge",
+-- 		sourceID = "player",
+-- 		recipientID_not = "player",
+-- 	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing parry",
 	localName = L["Outgoing parry"],
-	parserEvent = {
-		eventType = "Miss",
-		missType = "Parry",
-		sourceID = "player",
-		recipientID_not = "player",
-	},
+-- 	parserEvent = {
+-- 		eventType = "Miss",
+-- 		missType = "Parry",
+-- 		sourceID = "player",
+-- 		recipientID_not = "player",
+-- 	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing cast",
 	localName = L["Outgoing cast"],
-	parserEvent = {
-		eventType = "Cast",
-		sourceID = "player",
-		recipientID_not = "player",
-		isBegin = false,
-	},
-	parserArg = "abilityName",
+-- 	parserEvent = {
+-- 		eventType = "Cast",
+-- 		sourceID = "player",
+-- 		recipientID_not = "player",
+-- 		isBegin = false,
+-- 	},
+-- 	parserArg = "abilityName",
 	param = {
 		type = 'string',
 		usage = L["<Skill name>"],
 	},
 }
 
-onEnableFuncs[#onEnableFuncs+1] = function()
-	mod:AddParserListener({
-		eventType_in = { "Damage", "Heal" },
-		sourceID = "player",
-		recipientID_not = "player",
-		abilityName_not = false,
-	}, function(info)
-		Parrot:FirePrimaryTriggerCondition("Outgoing cast", info.abilityName)
-	end)
-end
+-- onEnableFuncs[#onEnableFuncs+1] = function()
+-- 	--[[ Parser is deprecated. FIXME.
+-- 	mod:AddParserListener({
+-- 		eventType_in = { "Damage", "Heal" },
+-- 		sourceID = "player",
+-- 		recipientID_not = "player",
+-- 		abilityName_not = false,
+-- 	}, function(info)
+-- 		Parrot:FirePrimaryTriggerCondition("Outgoing cast", info.abilityName)
+-- 	end)
+-- 	--]]
+-- end
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming cast",
 	localName = L["Incoming cast"],
-	parserEvent = {
-		eventType = "Cast",
-		recipientID = "player",
-		isBegin = false,
-	},
-	parserArg = "abilityName",
+-- 	parserEvent = {
+-- 		eventType = "Cast",
+-- 		recipientID = "player",
+-- 		isBegin = false,
+-- 	},
+-- 	parserArg = "abilityName",
 	param = {
 		type = 'string',
 		usage = L["<Skill name>"],
 	},
 }
 
-onEnableFuncs[#onEnableFuncs+1] = function()
-	mod:AddParserListener({
-		eventType_in = { "Damage", "Heal" },
-		recipientID = "player",
-		abilityName_not = false,
-	}, function(info)
-		Parrot:FirePrimaryTriggerCondition("Incoming cast", info.abilityName)
-	end)
-end
+-- onEnableFuncs[#onEnableFuncs+1] = function()
+-- 	--[[ Parser is deprecated. FIXME.
+-- 	mod:AddParserListener({
+-- 		eventType_in = { "Damage", "Heal" },
+-- 		recipientID = "player",
+-- 		abilityName_not = false,
+-- 	}, function(info)
+-- 		Parrot:FirePrimaryTriggerCondition("Incoming cast", info.abilityName)
+-- 	end)
+-- 	--]]
+-- end
 
 Parrot:RegisterSecondaryTriggerCondition {
 	name = "Minimum power amount",
@@ -312,13 +341,13 @@ Parrot:RegisterSecondaryTriggerCondition {
 	param = {
 		type = 'choice',
 		choices = {
-			["Battle Stance"] = L["Battle Stance"],
-			["Defensive Stance"] = L["Defensive Stance"],
-			["Berserker Stance"] = L["Berserker Stance"],
+			["Battle Stance"] = GetSpellInfo(2457),
+			["Defensive Stance"] = GetSpellInfo(71),
+			["Berserker Stance"] = GetSpellInfo(2458),
 		}
 	},
 	check = function(param)
-		if playerClass ~= "WARRIOR" then
+		if select(2,UnitClass("player")) ~= "WARRIOR" then
 			return true
 		end
 		local form = GetShapeshiftForm(true)
@@ -328,6 +357,41 @@ Parrot:RegisterSecondaryTriggerCondition {
 			return param == "Defensive Stance"
 		elseif form == 3 then
 			return param == "Berserker Stance"
+		end
+		return false
+	end,
+}
+
+Parrot:RegisterSecondaryTriggerCondition {
+	name = "Druid Form",
+	localName = L["Druid Form"],
+	notLocalName = L["Not in Druid Form"],
+	param = {
+		type = 'choice',
+		choices = {
+			["Bear Form"] = GetSpellInfo(5487),
+			["Aquatic Form"] = GetSpellInfo(1066),
+			["Cat Form"] = GetSpellInfo(768),
+			["Travel Form"] = GetSpellInfo(783),
+		}
+	},
+	check = function(param)
+		
+		if select(2,UnitClass("player")) ~= "DRUID" then
+			return true
+		end
+		
+		local form = GetShapeshiftForm(true)
+		ChatFrame1:AddMessage("shapeshiftform = " .. form)
+		if form == 1 then
+			return param == "Bear Form"
+		elseif form == 2 then
+			return param == "Defensive Stance"
+		elseif form == 3 then
+			return param == "Cat Form"
+		elseif form == 4 then
+			return param == "Travel Form"
+			--TODO flightform
 		end
 		return false
 	end,

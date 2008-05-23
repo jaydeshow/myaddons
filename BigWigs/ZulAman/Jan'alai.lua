@@ -40,8 +40,8 @@ L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Les esprits du vent, ils vont être votre fin !",
 
 	flame = "Souffle de flammes",
-	flame_desc = "Préviens sur qui Jan'alai incante son Souffle de flammes.",
-	flame_message = "Souffle de flammes sur %s !",
+	flame_desc = "Prévient sur qui Jan'alai incante son Souffle de flammes.",
+	flame_message = "Souffle de flammes sur %s !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par le Souffle de flammes (nécessite d'être promu ou mieux).",
@@ -49,12 +49,12 @@ L:RegisterTranslations("frFR", function() return {
 	bomb = "Bombes incendiaires",
 	bomb_desc = "Affiche les délais concernant les bombes incendiaires.",
 	bomb_trigger = "J'vais vous cramer !",
-	bomb_message = "Arrivée des bombes incendiaires !",
+	bomb_message = "Arrivée des bombes incendiaires !",
 
 	adds = "Perce-coques",
-	adds_desc = "Préviens de l'arrivée des perce-coques.",
+	adds_desc = "Prévient de l'arrivée des perce-coques.",
 	adds_trigger = "Sont où mes perce-coque ? Au boulot ! Faut qu'ça éclose !",
-	adds_message = "Arrivée des perce-coques !",
+	adds_message = "Arrivée des perce-coques !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -62,10 +62,10 @@ L:RegisterTranslations("koKR", function() return {
 
 	flame = "화염 숨결",
 	flame_desc = "잔알라이가 대상자방향으로 화염 숨결을 시전하는지 알립니다.",
-	flame_message = "%s에 화염 숨결!",
+	flame_message = "%s에게 화염 숨결!",
 
 	icon = "전술 표시",
-	icon_desc = "화염 숨결 대상이된 플레이어에 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
+	icon_desc = "화염 숨결 대상이된 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 
 	bomb = "불폭탄",
 	bomb_desc = "불폭탄에 대한 타이머를 표시합니다.",
@@ -104,21 +104,21 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "风之圣魂将是你的梦魇！",
 
 	flame = "烈焰吐息",
-	flame_desc = "当加亚莱施放烈焰吐息发出警报。",
+	flame_desc = "当施放烈焰吐息时发出警报。",
 	flame_message = "烈焰吐息：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "给中了烈焰吐息的玩家打上团队标记。(需要权限)",
+	icon_desc = "给中了烈焰吐息的玩家打上团队标记。（需要权限）",
 
 	bomb = "火焰炸弹",
 	bomb_desc = "显示火焰炸弹记时条。",
 	bomb_trigger = "烧死你们！",
-	bomb_message = "即将 - 火焰炸弹！",
+	bomb_message = "即将 火焰炸弹！",
 
 	adds = "援兵",
-	adds_desc = "援兵即将到来时发出警报。",
+	adds_desc = "当援兵即将到来时发出警报。",
 	adds_trigger = "雌鹰哪里去了？快去孵蛋！",
-	adds_message = "即将出现 救援！",
+	adds_message = "即将 出现救援！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -126,7 +126,7 @@ L:RegisterTranslations("zhTW", function() return {
 
 	flame = "火息術",
 	flame_desc = "警告賈納雷施放火息術",
-	flame_message = "火息術：[%s] - 散開",
+	flame_message = "火息術: [%s] - 散開",
 
 	icon = "標記圖示",
 	icon_desc = "為被火息術的玩家設置團隊標記（需要權限）",
@@ -143,24 +143,24 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "\194\161Los esp\195\173ritus del viento ser\195\161n vuestra maldici\195\179n!",
+	engage_trigger = "¡Los espíritus del viento serán vuestra maldición!",
 
-	flame = "Aliento de llamas",
-	flame_desc = "Avisa sobre quien lanza Jan'alai Aliento de llamas.",
-	flame_message = "\194\161Aliento de llamas en %s!",
+	flame = "Aliento de llamas (Flame Breath)",
+	flame_desc = "Avisar quién recibe Aliento de llamas.",
+	flame_message = "¡Aliento de llamas en %s!",
 
-	icon = "Icono de Banda",
-	icon_desc = "Coloca un Icono de Banda sobre el jugador objetivo de Aliento de llamas. (requiere asistente o superior)",
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores afectados por Aliento de llamas. (Requiere derechos de banda)",
 
-	bomb = "Bomba de Fuego",
-	bomb_desc = "Muestra temporizadores para Bomba de Fuego.",
-	bomb_trigger = "\194\161Ahora os quemar\195\169!",
-	bomb_message = "\194\161Bomba de Fuego!",
+	bomb = "Bomba de Fuego (Fire Bomb)",
+	bomb_desc = "Mostrar barra de tiempo para Bomba de Fuego.",
+	bomb_trigger = "¡Ahora os quemaré!",
+	bomb_message = "¡Bombas de Fuego!",
 
-	adds = "A\195\177adidos",
-	adds_desc = "Avisa la llegada de a\195\177adidos.",
-	adds_trigger = "\194\191D\195\179nde est\195\161 mi criador? \194\161A por los huevos!",
-	adds_message = "\194\161A\195\177adidos!",
+	adds = "Añadidos",
+	adds_desc = "Avisar cuando entran añadidos.",
+	adds_trigger = "¿Dónde está mi criador? ¡A por los huevos!",
+	adds_message = "¡Vienen añadidos!",
 } end )
 
 ----------------------------------
@@ -171,14 +171,14 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"bomb", "adds", -1, "flame", "icon", "enrage", "berserk", "bosskill"}
-mod.revision = tonumber(("$Revision: 65844 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_CAST_START", "FlameBreath", 23461)
+	self:AddCombatListener("SPELL_CAST_START", "FlameBreath", 43140)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")

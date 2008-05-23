@@ -43,14 +43,28 @@ elseif locale == "koKR" then
 	}
 elseif locale == "zhTW" then
 	L = {
-		["Summon"] = "招喚",
-		["Options for accepting summons."] = "自動接受招喚",
+		["Options for accepting summons."] = "自動接受召喚",
+		["Delay Time"] = "延遲長度",
+		["Set the time in seconds to delay automatic summon acceptance."] = "設置在自動接受召喚前所等待的秒數。",
+		["Combat Delay"] = "戰鬥等待",
+		["If summoned while in combat, accept the summon after combat ends."] = "如果正處於戰鬥中，那麼當戰鬥結束後再接受召喚。",
+		["Combat Delay Time"] = "戰鬥後延遲長度",
+		["Set the time in seconds to delay automatic summon acceptance after combat ends."] = "設置在戰鬥後自動接受召喚前所等待的秒數。",
+		["Be Quiet!"] = "安靜！",
+		["Suppress chat frame output from the Summon module."] = "暫停召喚模塊輸出信息到聊天框。",
+		["Cancelling summon..."] = "召喚已取消……",
+		["In combat! Accepting summon after combat ends..."] = "正在戰鬥中！當戰鬥結束後會接受召喚……",
+		["Left combat. Accepting summon in %s..."] = "已離開戰鬥，%s秒後接受召喚……",
+		["Summon expired!"] = "召喚已經過期！",
+		
+		["Summon"] = "召喚",
+		["Options for accepting summons."] = "自動接受召喚",
 		["Enabled"] = "啟用",
-		["Accept warlock or meeting stone summons automatically."] = "自動接受招喚",
+		["Accept warlock or meeting stone summons automatically."] = "自動接受召喚",
 		["Delay"] = "延遲",
-		["With this option enabled, automatic summons are delayed."] = "啟用後延遲%s自動接受招喚",
-		["Accepting summon in %s..."] = "%s後自動接受招喚",
-		["Accepting summon..."] = "接受招喚...",
+		["With this option enabled, automatic summons are delayed."] = "啟用後延遲%s自動接受召喚",
+		["Accepting summon in %s..."] = "%s後自動接受召喚",
+		["Accepting summon..."] = "接受召喚...",
 	}
 elseif locale == "zhCN" then
 	L = {

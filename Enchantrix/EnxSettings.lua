@@ -1,7 +1,7 @@
 --[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: EnxSettings.lua 2876 2008-02-22 08:09:24Z ccox $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: EnxSettings.lua 2944 2008-03-23 05:39:48Z kinesia $
 	URL: http://enchantrix.org/
 
 	Settings GUI
@@ -63,7 +63,7 @@ Usage:
 
 ]]
 
-Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxSettings.lua $", "$Rev: 2876 $")
+Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxSettings.lua $", "$Rev: 2944 $")
 
 local lib = {}
 Enchantrix.Settings = lib
@@ -415,7 +415,6 @@ local function getter(setting)
 			table.insert(private.scanValueNames,{"baseline", _ENCH("GuiItemValueBaseline") })
 			if AucAdvanced then
 				table.insert(private.scanValueNames,{"adv:market", _ENCH("GuiItemValueAuc5Market") })
-				table.insert(private.scanValueNames,{"adv:stat:appraiser", _ENCH("GuiItemValueAuc5Appraiser") })
 				local algoList = AucAdvanced.API.GetAlgorithms()
 				for pos, name in ipairs(algoList) do
 					table.insert(private.scanValueNames,{"adv:stat:"..name, "AucAdv Stat:"..name})

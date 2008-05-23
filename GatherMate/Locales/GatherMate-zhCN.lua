@@ -16,12 +16,12 @@ L["Pick Lock"] = "开锁"
 L["GatherMate Pin Options"] = "GatherMate Pin选项"
 L["Delete: "] = "删除："
 L["Add this location to Cartographer_Waypoints"] = "将该地点加入Cartographer_Waypoints"
+L["Add this location to TomTom waypoints"] = "将该地点加入TomTom节点"
 
 L["Always show"] = "总是显示"
 L["Only with profession"] = "仅显示专业相关"
 L["Only while tracking"] = "仅显示追踪相关"
 L["Never show"] = "从不显示"
-
 
 -- Config modules
 L["GatherMate"]="GatherMate"
@@ -48,19 +48,36 @@ L["Show Minimap Icons"]="显示迷你地图图标"
 L["Toggle showing Minimap icons."] = "切换显示图标与否(在小地图上)。"
 L["Show World Map Icons"] = "显示世界地图图标"
 L["Toggle showing World Map icons."] = "切换显示图标与否(在世界地图上)。"
+L["Keybind to toggle Minimap Icons"] = "给迷你地图图标的显示设置按键绑定。"
 L["Icon Scale"] = "图标缩放"
 L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."] = "图标缩放，这个选项让你把世界地图和迷你地图上的图标放大或缩小。"
 L["Icon Alpha"] = "图标透明度"
 L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."] = "图标透明度，这个选项让你更改图标的透明度，仅作用于世界地图！"
 L["Miscellaneous"] = "杂项"
--- Cleanup subtree
+-- Cleanup subtree (now Database Maintenance)
+L["Database Maintenance"] = "数据库选项"
 L["Cleanup_Desc"] = "经过一段时间后，你的数据库可能会非常大，清理数据可以让你的相同专业的在一定范围内的数据合并为一个，以避免重复。"
 L["Cleanup radius"] = "清理半径"
-L["CLEANUP_RADIUS_DESC"] = "设置以码为单位的半径，在半径内的数据将被清除。默认设置为 |cFFFFFFFF50|r 码（气云）/ |cFFFFFFFF15|r 码（其他采集数据）。这些设置也被用于增加的节点。"
+L["CLEANUP_RADIUS_DESC"] = "设置以码为单位的半径，在半径内的数据将被清除。默认设置为 |cffffd20050|r 码(气体云雾)/ |cffffd20015|r 码（其他采集数据）。这些设置也被用于增加的节点。"
 L["Cleanup Database"] = "清理数据"
 L["Cleanup your database by removing duplicates. This takes a few moments, be patient."] = "清理你的数据库，移除重复数据。这个过程可能持续几分钟，请耐心等待。"
-L["Processing "] = "正在处理……"
+L["Processing "] = "处理 "
 L["Cleanup Complete."] = "清理结束！"
+L["Delete Specific Nodes"] = ""
+L["DELETE_SPECIFIC_DESC"] = "Remove all of the selected node from the selected zone. You must disable Database Locking for this to work."
+L["Select Database"] = "选择数据库"
+L["Select Node"] = "选择节点"
+L["Select Zone"] = "选择地区"
+L["Delete"] = "删除"
+L["Delete selected node from selected zone"] = "从选择的地区删除选择的节点"
+L["Are you sure you want to delete all of the selected node from the selected zone?"] = "你确认要删除已选中地区的所有已选中的节点？"
+L["Delete Entire Database"] = "删除整个数据库"
+L["DELETE_ENTIRE_DESC"] = "这个选项将会忽略数据库的锁定设置，删除所有选中的数据库的数据！"
+L["Are you sure you want to delete all nodes from this database?"] = "你确认你想要删除这个数据库的所有数据？"
+L["Database Locking"] = "数据库锁定"
+L["DATABASE_LOCKING_DESC"] = "锁定数据库选项将冻结你的数据库状态。一旦你锁定了数据库，对其任何操作(增加节点、删除节点、修改节点包括清理数据库和导入数据库)均不可用。"
+L["Database locking"] = "数据库已被锁定"
+
 -- Tracking options
 L["Tracking Circle Color"] = "追踪环颜色"
 L["Color of the tracking circle."] = "追踪环的颜色。"
@@ -76,18 +93,18 @@ L["Herb filter"] = "草药过滤"
 L["Select the herb nodes you wish to display."]= "选择你想要显示的草药节点。"
 L["Mine filter"] = "矿脉过滤"
 L["Select the mining nodes you wish to display."] = "选择你想要显示的矿脉节点。"
-L["Fish filter"] = "鱼群过滤"
-L["Select the fish nodes you wish to display."] = "选择你想要显示的鱼群节点。"
-L["Gas filter"] = "气云过滤"
-L["Select the gas clouds you wish to display."] = "选择你想要显示的气云节点。"
-L["Treasure filter"] = "宝藏过滤"
-L["Select the treasure you wish to display."] = "选择你想要显示的宝藏节点。"
+L["Fish filter"] = "渔点过滤"
+L["Select the fish nodes you wish to display."] = "选择你想要显示的渔点节点。"
+L["Gas filter"] = "气体云雾过滤"
+L["Select the gas clouds you wish to display."] = "选择你想要显示的气体云雾节点。"
+L["Treasure filter"] = "财宝过滤"
+L["Select the treasure you wish to display."] = "选择你想要显示的财宝节点。"
 L["Select All"] = "全部选择"
 L["Select all nodes"] = "选择全部节点"
 L["Clear node selections"] = "清除选择的节点"
 L["Select None"] = "清空选择"
-L["Gas Clouds"]= "气云"
-L["Fishes"] = "鱼群"
+L["Gas Clouds"]= "气体云雾"
+L["Fishes"] = "渔点"
 L["Mineral Veins"] = "矿脉"
 L["Herb Bushes"] = "草药"
 L["Treasure"] = "财宝"
@@ -137,42 +154,47 @@ L["Are you sure you want to delete the selected profile?"] = "你确认要删除
 L["FAQ"] = "FAQ"
 L["Frequently Asked Questions"] = "常见问题解答"
 L["FAQ_TEXT"] = [[
-|cFFFFFFFF
-I just installed GatherMate, but I see no nodes on my maps. What am I doing wrong?
+|cffffd200
+我安装了GatherMate，但是却不能在地图上看见任何节点，这是怎么回事？
 |r
-GatherMate does not come with any data by itself. When you gather herbs, mine ore, collect gas or fish, GatherMate will then add and update your map accordingly. Also, check your Display Settings.
-|cFFFFFFFF
-I am seeing nodes on my World Map but not on my Minimap! What am I doing wrong now?
+GatherMate本身是不包含任何数据的，你如果想要数据，可以安装GatherMate_Data并导入数据库。GatherMate的工作原理是，当你采集任何资源，包括草药，矿脉，采集气体或者钓鱼的时候将该点记录下来，然后在地图上标出。另外，你也要查看你的显示选项是否设置正确。
+
+|cffffd200
+我在世界地图上看到了节点，但是在迷你地图上却没有，这是为什么？
 |r
-|cffffff78Minimap Button Bag|r (and possibly other similar addons) likes to eat all the buttons we put on the Minimap. Disable them.
-|cFFFFFFFF
-How or where can I get existing data?
+|cffffff78Minimap Button Bag|r (或者类似的插件) 很可能会把你所有的迷你地图按钮收起，禁用它们！
+
+|cffffd200
+我在哪里可以找到数据库下载啊？
 |r
-You can import existing data into GatherMate in these ways:
+你可以通过以下途径获取GatherMate的数据库:
 
-1. |cffffff78GatherMate_Data|r - This LoD addon contains a WowHead datamined copy of all the nodes and is updated weekly. There are auto-updating options
+1. |cffffff78GatherMate_Data|r - 这个插件是WoWHead网站的数据库的GatherMate版本，它每周都更新一次，你可以打开自动更新选项，在其更新后，自动更新你的数据库。
 
-2. |cffffff78GatherMate_CartImport|r - This addon allows you to import your existing databases in |cffffff78Cartographer_<Profession>|r modules into GatherMate. For this to work, both your |cffffff78Cartographer_<Profession>|r modules and GatherMate_CartImport must be loaded and active.
+2. |cffffff78GatherMate_CartImport|r - 这个插件将导入 |cffffff78Cartographer_<Profession>|r 已存在的数据库到GatherMate。你必须保证GatherMate_CartImport和 |cffffff78Cartographer_<Profession>|r 同时启用才可进行导入工作。
 
-Note that importing data into GatherMate is not an automatic process. You must actively go to the Import Data section and click on the "Import" button.
+注意：该导入动作不是自动进行的，你必须进入“导入数据”选项，然后点击“导入”按钮。
 
-This differs from |cffffff78Cartographer_Data|r in that the user is given the choice in how and when you want your data to be modified, |cffffff78Cartographer_Data|r when loaded will simply overwrite your existing databases without warning and destroy all new nodes that you have found.
-|cFFFFFFFF
-Can you add support for showing the locations of things like mailboxes and flightmasters?
+如果 |cffffff78Cartographer_Data|r 中的数据和GatherMate数据不符，用户将被提示选择数据库修改的方式, |cffffff78Cartographer_Data|r载入时，可能会导致你新建立的节点在不被警告的自动覆盖！
+
+|cffffd200
+你可以增加邮箱或者飞行管理员的数据支持么？
 |r
-The answer is no. However, another addon author could create an addon or module for this purpose, the core GatherMate addon will not do this.
-|cFFFFFFFF
-I've found a bug! Where do I report it?
-|r
-You can report bugs or give suggestions at |cffffff78http://www.wowace.com/forums/index.php?topic=10990.0|r
+不，我不会。尽管可能会有其他的作者以插件的形式支持，但是GatherMate的核心组件将不会支持该功能。
 
-Alternatively, you can also find us on |cffffff78irc://irc.freenode.org/wowace|r
-
-When reporting a bug, make sure you include the |cffffff78steps on how to reproduce the bug|r, supply any |cffffff78error messages|r with stack traces if possible, give the |cffffff78revision number|r of GatherMate the problem occured in and state whether you are using an |cffffff78English client or otherwise|r.
-|cFFFFFFFF
-Who wrote this cool addon?
+|cffffd200
+我发现一处Bug！我到哪里去报告啊？
 |r
-Kagaro, Xinhuan, Nevcairiel and Ammo
+你可以到如下网址反应Bug和提供建议: |cffffff78http://www.wowace.com/forums/index.php?topic=10990.0|r
+
+你也可以在这里找到我们： |cffffff78irc://irc.freenode.org/wowace|r
+
+当反应Bug的时候，请确认你在|cffffff78何种步骤|r下产生的该Bug，并尽可能提供所有的|cffffff78错误信息|r，并请提供出错的GatherMate|cffffff78版本号|r，以及你当是使用的|cffffff78魔兽世界的客户端语言|r。
+
+|cffffd200
+谁写出了这么Cool的插件？
+|r
+Kagaro, Xinhuan, Nevcairiel 以及 Ammo
 ]]
 
 --[[
@@ -197,7 +219,8 @@ NL["Stonescale Eel Swarm"] = "石鳞鳗群"
 NL["Highland Mixed School"] = "高地杂鱼群"
 NL["Pure Water"] = "纯水"
 NL["Bluefish School"] = "蓝鱼群"
-NL["Feltail School"] = "魔尾鱼群"
+--NL["Feltail School"] = "魔尾鱼群" no longer exist in 2.4
+NL["Brackish Mixed School"] = "混水鱼类"
 NL["Mudfish School"] = "泥鱼群"
 NL["School of Darter"] = "金镖鱼群"
 NL["Sporefish School"] = "孢子鱼群"
@@ -318,6 +341,13 @@ NL["Bound Adamantite Chest"] = "加固精金宝箱"
 --NL["Reinforced Fel Iron Chest"] = "强化魔铁箱"
 --NL["Primitive Chest"] = "粗糙的箱子"
 --NL["Dust Covered Chest"] = "灰尘覆盖的箱子"
+--NL["Old Treasure Chest"] = "旧宝藏箱"
+--NL["Coilskar Chest"] = "库斯卡宝箱"
+--NL["Solid Adamantite Chest"] = "坚固的精金宝箱"
+--NL["Storage Chest"] = "储物箱"
+--NL["Reinforced Fel Iron Chest"] = "强化魔铁箱"
+--NL["Worn Chest"] = "旧箱子"
+--NL["Waterlogged Chest"] = "浸水的箱子"
 --other
 NL["Un'Goro Dirt Pile"] = "安戈落泥土堆"
 NL["Bloodpetal Sprout"] = "血瓣花苗"

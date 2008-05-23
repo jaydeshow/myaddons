@@ -9,9 +9,9 @@ function print(msg)
 end
 
 function debug(msg)
-	if(DEBUG)then
-		--print(msg)
-	end
+--	if(DEBUG)then
+--		print(msg)
+--	end
 end
 
 --继承

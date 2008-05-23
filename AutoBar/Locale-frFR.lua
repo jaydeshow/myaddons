@@ -4,11 +4,10 @@
 -- Courtesy of Cinedelle
 --
 
-local L = AceLibrary("AceLocale-2.2"):new("AutoBar")
-
-L:RegisterTranslations("frFR", function() return {
+if (GetLocale() == "frFR") then
+	AutoBar.locale = {
 	    ["AutoBar"] = "AutoBar",
-	    ["CONFIG_WINDOW"] = "Fen\195\170tre de configuration",
+	    ["CONFIG_WINDOW"] = "Fenêtre de configuration",
 	    ["SLASHCMD_LONG"] = "/autobar",
 	    ["SLASHCMD_SHORT"] = "/atb",
 	    ["Button"] = "Bouton",
@@ -19,17 +18,15 @@ L:RegisterTranslations("frFR", function() return {
 		["Empty"] = "Empty",
 
 		-- Waterfall
-		["Macro Text"] = "Nom des macros",
-		["Show the button Macro Text"] = "Affiche les noms des macros sur les boutons.",
-		["Show Hotkey Text"] = "Affiche le raccourci.",
-		["Show Hotkey Text for %s"] = "Affiche le raccourci du %s",
-		["Show Grid"] = "Afficher la grille",
-		["Show the grid of the bar even while locked."] = "Affiche la grille même quand la barre est verrouillée.",
 		["Alpha"] = "Transparence",
 		["Change the alpha of the bar."] = "Modifie la transparence de la barre.",
+		["Add Button"] = "Add Button",
 		["Align Buttons"] = "Alignement des boutons",
 		["Always Show"] = "Toujours visible";
 		["Always Show %s, even if empty."] = "Toujours voir %s, même si vide.";
+		["Announce to Party"] = "Announce to Party",
+		["Announce to Raid"] = "Announce to Raid",
+		["Announce to Say"] = "Announce to Say",
 		["Bars"] = "Barres",
 		["Battlegrounds only"] = "En champs de bataille seulement",
 		["Button Width"] = "Largeur du bouton",
@@ -39,23 +36,32 @@ L:RegisterTranslations("frFR", function() return {
 		["Category"] = "Catégorie",
 		["Categories"] = "Catégories",
 		["Categories for %s"] = "Catégories pour %s",
+		["Clamp Bars to screen"] = "Clamp Bars to screen",
+		["Clamped Bars can not be positioned off screen"] = "Clamped Bars can not be positioned off screen",
 		["Collapse Buttons"] = "Réduction des boutons",
 		["Collapse Buttons that have nothing in them."] = "Efface les boutons qui n'ont plus aucun objet",
 		["Configuration for %s"] = "Configuration pour %s",
-		["Delete"] = "Effacer",
+		["Delete this Custom Button completely"] = "Delete this Custom Button completely",
 		["Dialog"] = "Dialogue",
+		["Disable Conjure Button"] = "Disable Conjure Button",
 		["Docked to"] = "Ancrer à",
+		["Done"] = "OK";
 		["Enabled"] = "Activé",
 		["Enable %s."] = "Activ %s.",
-		["No Popup"] = "Pas de déploiement";
-		["No Popup for %s"] = "Pas de déploiement pour %s";
-		["Show Count Text"] = "Afficher la quantité";
-		["Show Count Text for %s"] = "Afficher la quantité pour %s";
-		["Show Empty Buttons"] = "Afficher les boutons vide";
-		["Show Empty Buttons for %s"] = "Afficher les boutons vide pour %s";
-		["Number of columns for %s"] = "Nombre de colonnes pour %s",
 		["FadeOut"] = "Fondu",
 		["Fade out the Bar when not hovering over it."] = "Effectue un fondu de la barre si elle n'est pas survolée",
+		["FadeOut Time"] = "FadeOut Time",
+		["FadeOut takes this amount of time."] = "FadeOut takes this amount of time",
+		["FadeOut Alpha"] = "FadeOut Alpha",
+		["FadeOut stops at this Alpha level."] = "FadeOut stops at this Alpha level.",
+		["FadeOut Cancels in combat"] = "FadeOut Cancels in combat",
+		["FadeOut is cancelled when entering combat."] = "FadeOut is cancelled when entering combat.",
+		["FadeOut Cancels on Shift"] = "FadeOut Cancels on Shift",
+		["FadeOut is cancelled when holding down the Shift key."] = "FadeOut is cancelled when holding down the Shift key.",
+		["FadeOut Cancels on Ctrl"] = "FadeOut Cancels on Ctrl",
+		["FadeOut is cancelled when holding down the Ctrl key."] = "FadeOut is cancelled when holding down the Ctrl key.",
+		["FadeOut Cancels on Alt"] = "FadeOut Cancels on Alt",
+		["FadeOut is cancelled when holding down the Alt key."] = "FadeOut is cancelled when holding down the Alt key.",
 		["Frame Level"] = "Plan d'affichage",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "Ajuste le plan d'affichage de la barre et des boutons déployés afin qu'ils apparaissent sur ou sous les éléments de l'interface",
 		["General"] = "Général",
@@ -64,11 +70,20 @@ L:RegisterTranslations("frFR", function() return {
 		["Item"] = "Objet",
 		["Items"] = "Objets",
 		["Location"] = "Localisation",
+		["Macro Text"] = "Nom des macros",
+		["Show the button Macro Text"] = "Affiche les noms des macros sur les boutons.",
 		["Medium"] = "Moyen",
 		["Name"] = "Nom",
 		["New"] = "Nouveau",
+		["New Macro"] = "New Macro",
+		["No Popup"] = "Pas de déploiement";
+		["No Popup for %s"] = "Pas de déploiement pour %s";
+		["Number of columns for %s"] = "Nombre de colonnes pour %s",
 		["Non Combat Only"] = "Hors combat seulement",
 		["Not directly usable"] = "Indirectement utilisable",
+		["Dropdown UI"] = "Dropdown UI",
+		["Options GUI"] = "Options GUI",
+		["Skin the Buttons"] = "Skin the Buttons",
 		["Order"] = "Ordonner",
 		["Change the order of %s in the Bar"] = "Modifie l'ordre de %s dans la barre",
 		["Padding"] = "Espacement",
@@ -76,26 +91,59 @@ L:RegisterTranslations("frFR", function() return {
 		["Popup Direction"] = "Orientation du déploiement des boutons",
 		["Refresh"] = "Rafraîchir",
 		["Refresh all the bars & buttons"] = "Rafraîchie toutes les barres et boutons",
+		["Remove"] = "Remove",
+		["Remove this Button from the Bar"] = "Remove this Button from the Bar",
 		["Reset"] = "Réinitialisation",
 		["Reset Bars"] = "Réinitialiser les barres",
+		["Reset everything to default values for all characters.  Custom Bars, Buttons and Categories remain unchanged."] = "Reset everything to default values for all characters.  Custom Bars, Buttons and Categories remain unchanged.",
 		["Reset the Bars to default Bar settings"] = "Réinitialise les barres à la configuartion par défaut",
+		["Revert"] = "Inverser";
+		["Right Click casts "] = "Right Click casts ",
 		["Rows"] = "Lignes",
 		["Number of rows for %s"] = "Nombre de ligne pour %s",
+		["RightClick SelfCast"] = "Clique-droit pour lancer sur soi",
+		["SelfCast using Right click"] = "Lancement sur soi en cliqaunt droit",
+		["Key Bindings"] = KEY_BINDINGS,
+		["Assign Bindings for Buttons on your Bars."] = "Assign Bindings for Buttons on your Bars.",
 		["Scale"] = "Echelle",
 		["Change the scale of the bar."] = "Modifie l'échelle de la barre.",
+		["Shared Layout"] = "Shared Layout",
+		["Share the Bar Visual Layout"] = "Share the Bar Visual Layout",
+		["Shared Buttons"] = "Shared Buttons",
+		["Share the Bar Button List"] = "Share the Bar Button List",
+		["Shared Position"] = "Shared Position",
+		["Share the Bar Position"] = "Share the Bar Position",
 		["Shift Dock Left/Right"] = "Inversion de l'ancrage gauche/droite";
 		["Shift Dock Up/Down"] = "Inversion de l'ancrage haut/bas";
+		["Show Count Text"] = "Afficher la quantité";
+		["Show Count Text for %s"] = "Afficher la quantité pour %s";
+		["Show Empty Buttons"] = "Afficher les boutons vide";
+		["Show Empty Buttons for %s"] = "Afficher les boutons vide pour %s";
+		["Show Extended Tooltips"] = "Show Extended Tooltips";
+		["Show Hotkey Text"] = "Affiche le raccourci.",
+		["Show Hotkey Text for %s"] = "Affiche le raccourci du %s",
+		["Show Tooltips"] = "Afficher les bulles d'aides";
+		["Show Tooltips for %s"] = "Afficher les bulles d'aides pour %s";
+		["Show Tooltips in Combat"] = "Show Tooltips in Combat";
+		["Shuffle"] = "Shuffle",
+		["Shuffle replaces depleted items during combat with the next best item"] = "Shuffle replaces depleted items during combat with the next best item",
 		["Snap Bars while moving"] = "Unifie les barres en un bloc lors d'un déplacement",
 		["Sticky Frames"] = "Fenêtres magnétiques",
 		["Style"] = "Style",
-		["Change the style of the bar."] = "Modifie le style de la barres",
+		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "Modifie le style de la barres.  Requires ButtonFacade for non-Blizzard styles.",
 		["Targeted"] = "Ciblé",
-		["Waterfall-1.0 is required to access the GUI."] = "Waterfall-1.0 est nécessaire pour utiliser le GUI",
 		["<Any String>"] = "<Toutes chaînes>",
 		["Move the Bars"] = "Déplacer les barres",
 		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "Déplacer la barre pour la bouger, clique-gauche pour la cacher (rouge) ou la montrer (vert), clique-droit pour la configurer",
 		["Move the Buttons"] = "Déplacer les boutons",
 		["Drag a Button to move it, right click to configure the Button."] = "Déplacer le bouton pour le bouger, clique-droit pour le configurer",
+
+		["{circle}"] = "{circle}",
+		["{diamond}"] = "{diamond}",
+		["{skull}"] = "{skull}",
+		["{square}"] = "{square}",
+		["{star}"] = "{star}",
+		["{triangle}"] = "{triangle}",
 
 		["TOPLEFT"] = "Haut gauche",
 		["LEFT"] = "Gauche",
@@ -108,22 +156,21 @@ L:RegisterTranslations("frFR", function() return {
 		["BOTTOMRIGHT"] = "Bas droit",
 
 		-- AutoBarFuBar
-		["FuBarPlugin Config"] = "Configuration du plugin FuBar",
-		["Configure the FuBar Plugin"] = "Configurer le plugin FuBar",
-		["Button lock"] = "Verrouiller les boutons",
-		["Bar lock"] = "Verrouiller les barres",
-		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55fDouble-Clic|r pour ouvrir le GUI de configuration.\n|cffeda55fCtrl-Clic|r pour (dé)verrouiller les boutons. |cffeda55fShift-Clic|r pour (dé)verrouiller les barres.",
-		["Waterfall-1.0 is required to access the GUI."] = "Waterfall-1.0 est nécessaire pour utiliser le GUI",
+--		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55fDouble-Clic|r pour ouvrir le GUI de configuration.\n|cffeda55fCtrl-Clic|r pour (dé)verrouiller les boutons. |cffeda55fShift-Clic|r pour (dé)verrouiller les barres.",
 
-		["Self Casting"] = "Lancement sur soi",
-		["Configure Self Casting options"] = "Configure le lancement sur soi",
-		["Modifier SelfCast"] = "Modificateur pour le lancement sur soi",
-		["SelfCast using the Interface SelfCast Modifier"] = "Lancement sur soi en utilisant le modificateur choisi",
-		["RightClick SelfCast"] = "Clique-droit pour lancer sur soi",
-		["SelfCast using Right click"] = "Lancement sur soi en cliqaunt droit",
+		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
+		["Left-Click"] = "Left-Click",
+		["Right-Click"] = "Right-Click",
+		["Alt-Click"] = "Alt-Click",
+		["Ctrl-Click"] = "Ctrl-Click",
+		["Shift-Click"] = "Shift-Click",
+		["Ctrl-Shift-Click"] = "Ctrl-Shift-Click",
+		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade is required to Skin the Buttons",
+		["Waterfall-1.0 is required to access the GUI"] = "Waterfall-1.0 est nécessaire pour utiliser le GUI",
 
 		-- Bar Names
 		["AutoBarClassBarBasic"] = "Basic",
+		["AutoBarClassBarExtras"] = "Extras",
 		["AutoBarClassBarDruid"] = "Druide",
 		["AutoBarClassBarHunter"] = "Chasseur",
 		["AutoBarClassBarMage"] = "Mage",
@@ -145,9 +192,11 @@ L:RegisterTranslations("frFR", function() return {
 		["AutoBarButtonBuff"] = "Buff",
 		["AutoBarButtonBuffWeapon1"] = "Buff d'arme main droite",
 		["AutoBarButtonBuffWeapon2"] = "Buff d'arme main gauche",
+		["AutoBarButtonCharge"] = "Charge",
 		["AutoBarButtonClassBuff"] = "Buff de classe",
 		["AutoBarButtonClassPet"] = "Familier de classe",
 		["AutoBarButtonConjure"] = "Conjuration",
+		["AutoBarButtonCooldownDrums"] = "Cooldown: Drums",
 		["AutoBarButtonCooldownPotionHealth"] = "Cooldown de potion : Vie",
 		["AutoBarButtonCooldownPotionMana"] = "Cooldown de potion : Mana",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "Cooldown de potion : Restauration",
@@ -177,6 +226,7 @@ L:RegisterTranslations("frFR", function() return {
 		["AutoBarButtonPets"] = "Animaux de compagnie",
 		["AutoBarButtonQuest"] = "Quête",
 		["AutoBarButtonRecovery"] = "Mana / Rage / Energie",
+		["AutoBarButtonRotationDrums"] = "Rotation: Drums",
 		["AutoBarButtonSpeed"] = "Vitesse",
 		["AutoBarButtonStance"] = "Stance",
 		["AutoBarButtonStealth"] = "Camouflage",
@@ -189,6 +239,7 @@ L:RegisterTranslations("frFR", function() return {
 		["AutoBarButtonTrap"] = "Piège",
 		["AutoBarButtonTrinket1"] = "Bijou 1",
 		["AutoBarButtonTrinket2"] = "Bijou 2",
+		["AutoBarButtonWarlockStones"] = "Warlock Stones",
 		["AutoBarButtonWater"] = "Eau",
 		["AutoBarButtonWaterBuff"] = "Eau apportant un Buff",
 
@@ -203,19 +254,19 @@ L:RegisterTranslations("frFR", function() return {
 		-- AutoBarClassButton.lua
 		["Num Pad "] = "Pavé num ",
 		["Mouse Button "] = "Bouton de la souri ",
-		["Middle Mouse"] = "Bouton du milieu",
-		["Backspace"] = "Effacement",
-		["Spacebar"] = "Barre d'espace",
-
-		["Home"] = "Home",
-		["End"] = "Fin",
-		["Insert"] = "Inser",
-		["Page Up"] = "Page Up",
-		["Page Down"] = "Page Down",
-		["Down Arrow"] = "Flèche basse",
-		["Up Arrow"] = "Flèche haute",
-		["Left Arrow"] = "Flèche gauche",
-		["Right Arrow"] = "Flèche droite",
+		["Middle Mouse"] = KEY_BUTTON3,
+		["Backspace"] = KEY_BACKSPACE,
+		["Spacebar"] = KEY_SPACE,
+		["Delete"] = KEY_DELETE,
+		["Home"] = KEY_HOME,
+		["End"] = KEY_END,
+		["Insert"] = KEY_INSERT,
+		["Page Up"] = KEY_PAGEUP,
+		["Page Down"] = KEY_PAGEDOWN,
+		["Down Arrow"] = KEY_DOWN,
+		["Up Arrow"] = KEY_UP,
+		["Left Arrow"] = KEY_LEFT,
+		["Right Arrow"] = KEY_RIGHT,
 		["|c00FF9966C|r"] = "|c00FF9966C|r",
 		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["|c009966CCA|r"] = "|c009966CCA|r",
@@ -243,19 +294,16 @@ L:RegisterTranslations("frFR", function() return {
 		["Dreamlayout"] = "Dreamlayout",
 		["AUTOBAR_CONFIG_DISABLERIGHTCLICKSELFCAST"] = "Désactive le lancement sur soi par clique-droit";
 		["AUTOBAR_CONFIG_REMOVECAT"] = "Effacer la catégorie actuelle";
-		["Rows"] = "Lignes";
 		["Columns"] = "Colonnes";
 		["AUTOBAR_CONFIG_GAPPING"] = "Espacement des icones";
 		["AUTOBAR_CONFIG_ALPHA"] = "Transparence dee icones";
 		["AUTOBAR_CONFIG_WIDTHHEIGHTUNLOCKED"] = "Hauteur et Largeur \ndes boutons non proportionnelle";
 		["AUTOBAR_CONFIG_SHOWCATEGORYICON"] = "Afficher les icones de catégorie";
-		["Show Tooltips"] = "Afficher les bulles d'aides";
-		["Show Tooltips for %s"] = "Afficher les bulles d'aides pour %s";
 		["AUTOBAR_CONFIG_POPUPONSHIFT"] = "Déploiement uniquement \navec la touche Shift(MAJ)";
 		["Rearrange Order on Use"] = "Réorganise l'ordre \nlors d'une utilisation";
 		["Rearrange Order on Use for %s"] = "Réorganise l'ordre de %s lors d'une utilisation";
 		["Right Click Targets Pet"] = "Clique-droit cible le familier";
-		["AUTOBAR_CONFIG_DOCKTONONE"] = "Aucun";
+		["None"] = "Aucun";
 		["AUTOBAR_CONFIG_BT3BAR"] = "BarTender3 Bar";
 		["AUTOBAR_CONFIG_DOCKTOMAIN"] = "Menu principal";
 		["AUTOBAR_CONFIG_DOCKTOCHATFRAME"] = "Fenêtre de chat";
@@ -265,8 +313,9 @@ L:RegisterTranslations("frFR", function() return {
 		["AUTOBAR_CONFIG_NOTFOUND"] = "(Objet : non trouvé ";
 		["AUTOBAR_CONFIG_SLOTEDITTEXT"] = " Set (cliquer pour éditer)";
 		["AUTOBAR_CONFIG_CHARACTER"] = "Personnage :";
-		["AUTOBAR_CONFIG_SHARED"] = "Partagé";
-		["AUTOBAR_CONFIG_CLASS"] = "Classe";
+		["Shared"] = "Partagé";
+		["Account"] = "Account";
+		["Class"] = "Classe";
 		["AUTOBAR_CONFIG_BASIC"] = "Base";
 		["AUTOBAR_CONFIG_USECHARACTER"] = "Utiliser le set personnage";
 		["AUTOBAR_CONFIG_USESHARED"] = "Utiliser le set partagé";
@@ -274,6 +323,7 @@ L:RegisterTranslations("frFR", function() return {
 		["AUTOBAR_CONFIG_USEBASIC"] = "Utiliser le set de base";
 		["AUTOBAR_CONFIG_HIDECONFIGTOOLTIPS"] = "Cacher les bulles d'aide de configuration";
 		["AUTOBAR_CONFIG_OSKIN"] = "Utiliser oSkin";
+		["Log Events"] = "Log Events";
 		["Log Performance"] = "Enregistrer les perfomances";
 		["AUTOBAR_CONFIG_CHARACTERLAYOUT"] = "Organisation pour le personnage";
 		["AUTOBAR_CONFIG_SHAREDLAYOUT"] = "Organisation partagée";
@@ -285,11 +335,13 @@ L:RegisterTranslations("frFR", function() return {
 		["AUTOBAR_CONFIG_EDITSHARED"] = "Editer le set partagé";
 		["AUTOBAR_CONFIG_EDITCLASS"] = "Editer le set de classe";
 		["AUTOBAR_CONFIG_EDITBASIC"] = "Editer le set de base";
+		["Share the config"] = "Share the config";
 
 		-- AutoBarCategory
 		["Misc.Engineering.Fireworks"] = "Feu d'artifice",
 		["Tradeskill.Tool.Fishing.Lure"] = "Leurres de pêche",
 		["Tradeskill.Tool.Fishing.Gear"] = "Equipement de pêche",
+		["Tradeskill.Tool.Fishing.Other"] = "Fishing Stuff",
 		["Tradeskill.Tool.Fishing.Tool"] = "Cannes à pêche",
 
 		["Consumable.Food.Bonus"] = "Nourriture: Tout bonus";
@@ -331,6 +383,7 @@ L:RegisterTranslations("frFR", function() return {
 		["Consumable.Buff.Shield"] = "Buff : Bouclier";
 		["Consumable.Weapon Buff"] = "Buff : Arme";
 
+		["Misc.Usable.BossItem"] = "Boss Items";
 		["Misc.Usable.Permanent"] = "Objets utilisables en permanance";
 		["Misc.Usable.Quest"] = "Objets de quête utilisables";
 		["Misc.Usable.Replenished"] = "Objets empilables";
@@ -348,7 +401,7 @@ L:RegisterTranslations("frFR", function() return {
 
 		["Consumable.Weapon Buff.Poison.Crippling"] = "Poison affaiblissant";
 		["Consumable.Weapon Buff.Poison.Deadly"] = "Poison mortel";
-		["Consumable.Weapon Buff.Poison.Instant"] = "Poison instantan\195\169";
+		["Consumable.Weapon Buff.Poison.Instant"] = "Poison instantané";
 		["Consumable.Weapon Buff.Poison.Mind Numbing"] = "Poison de distraction mentale";
 		["Consumable.Weapon Buff.Poison.Wound"] = "Poison douloureux";
 		["Consumable.Weapon Buff.Oil.Mana"] = "Huile de mana";
@@ -364,6 +417,8 @@ L:RegisterTranslations("frFR", function() return {
 		["Consumable.Food.Edible.Basic.Non-Conjured"] = "Nourriture : Aucun Bonus";
 		["Consumable.Food.Percent.Basic"] = "Nourriture : gain de vie en %";
 		["Consumable.Food.Percent.Bonus"] = "Nourriture : Gain de vie en % (Buff : bien nourri)";
+		["Consumable.Food.Edible.Combo.Non-Conjured"] = "Food: combo health & mana gain, non-conjured";
+		["Consumable.Food.Edible.Combo.Conjured"] = "Food: combo health & mana gain, conjured";
 		["Consumable.Food.Combo Percent"] = "Nourriture : Gain de vie et mana en %";
 		["Consumable.Food.Combo Health"] = "Nourriture et eau / vie et mana";
 		["Consumable.Food.Edible.Bread.Conjured"] = "Nourriture : Conjuré par les Mages";
@@ -387,16 +442,22 @@ L:RegisterTranslations("frFR", function() return {
 
 		["Consumable.Anti-Venom"] = "Anti-Venin";
 
+		["Consumable.Warlock.Firestone"] = "Firestone";
+		["Consumable.Warlock.Soulstone"] = "Soulstone";
+		["Consumable.Warlock.Spellstone"] = "Spellstone";
 		["Consumable.Cooldown.Stone.Health.Warlock"] = "Pierre de soin";
 		["Spell.Warlock.Create Firestone"] = "Créer une Pierre de feu";
 		["Spell.Warlock.Create Healthstone"] = "Créer une Pierre de soin";
 		["Spell.Warlock.Create Soulstone"] = "Créer une Pierre d'âme";
 		["Spell.Warlock.Create Spellstone"] = "Créer une Pierre de sort";
 		["Consumable.Cooldown.Stone.Mana.Mana Stone"] = "Pierres de mana";
-		["Consumable.Mage.Conjure Mana Stone"] = "Conjurer une Pierre de mana";
+		["Spell.Mage.Conjure Mana Stone"] = "Conjurer une Pierre de mana";
 		["Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep"] = "Sommeil sans rêve";
 		["Consumable.Cooldown.Potion.Rejuvenation"] = "Potions de régénération";
 		["Consumable.Cooldown.Stone.Health.Statue"] = "Statues de pierre";
+		["Consumable.Cooldown.Drums"] = "Cooldown: Drums";
+		["Consumable.Cooldown.Potion"] = "Cooldown: Potion";
+		["Consumable.Cooldown.Stone"] = "Cooldown: Stone";
 		["Consumable.Leatherworking.Drums"] = "Tambours";
 		["Consumable.Tailor.Net"] = "Filets";
 
@@ -445,85 +506,56 @@ L:RegisterTranslations("frFR", function() return {
 		["Consumable.Buff.Speed"] = "Potions de rapidité";
 		["Consumable.Buff Type.Battle"] = "Buff: Elixirs de bataille";
 		["Consumable.Buff Type.Guardian"] = "Buff: Elixirs du Guardien";
-		["Consumable.Buff Type.Both"] = "Buff: Elixirs de bataille et du Guardien réunis";
+		["Consumable.Buff Type.Flask"] = "Buff: Flask";
 		["AUTOBAR_CLASS_SOULSHARDS"] = "Fragment d'âmes";
-		["Reagent.Ammo.Arrow"] = "Flèches";
-		["Reagent.Ammo.Bullet"] = "Balles";
-		["Reagent.Ammo.Thrown"] = "Armes de jet";
+		["Misc.Reagent.Ammo.Arrow"] = "Flèches";
+		["Misc.Reagent.Ammo.Bullet"] = "Balles";
+		["Misc.Reagent.Ammo.Thrown"] = "Armes de jet";
 		["Misc.Explosives"] = "Explosifs";
 		["Misc.Mount.Normal"] = "Monture";
 		["Misc.Mount.Summoned"] = "Monture： Invoquée";
 		["Misc.Mount.Ahn'Qiraj"] = "Monture: Qiraji";
 		["Misc.Mount.Flying"] = "Monture: Volante";
-
-		["Revert"] = "Inverser";
-		["Done"] = "OK";
 	}
-end);
 
-
-if (GetLocale() == "frFR") then
-
---AUTOBAR_CHAT_MESSAGE1 = "La configuration pour ce personnage vient d'une ancienne version. Effacer. Aucune tentative de mise \195\160 jour n'a \195\169t\195\169 tent\195\169.";
---AUTOBAR_CHAT_MESSAGE2 = "Mise \195\160 jour du bouton multi-objet #%d objet #%d afin d'utiliser l'ID \195\160 la place du nom de l'objet.";
---AUTOBAR_CHAT_MESSAGE3 = "Mise à jour du bouton mono-objet #%d objet #%d afin d'utiliser l'ID \195\160 la place du nom de l'objet.";
+--AUTOBAR_CHAT_MESSAGE1 = "La configuration pour ce personnage vient d'une ancienne version. Effacer. Aucune tentative de mise à jour n'a été tenté.";
 --
 ----  AutoBar_Config.xml
---AUTOBAR_CONFIG_VIEWTEXT = "Pour éditer un bouton, sélectionner le dans la section \nd'édition, en bas de la feuille Emplacements.";
---AUTOBAR_CONFIG_SLOTVIEWTEXT = "Vue des sets combin\195\169s (non \195\169ditable)";
---AUTOBAR_CONFIG_DETAIL_CATEGORIES = "(Shift+Clique explore la cat\195\169gorie)";
---AUTOBAR_CONFIG_DRAGHANDLE = "Bouton gauche maintenu pour d\195\169placer AutoBar\nClique gauche pour v\195\169rouiller/d\195\169v\195\169rouiller\nClique droit pour les options";
---AUTOBAR_CONFIG_EMPTYSLOT = "RAZ";
---AUTOBAR_CONFIG_CLEARSLOT = "Bouton vide";
---AUTOBAR_CONFIG_SETSHARED = "Partager le profile:";
---AUTOBAR_CONFIG_SETSHAREDTIP = "S\195\169lectionner le profile partag\195\169 \195\160 utiliser pour ce personnage.\nLes modifications apport\195\169es \195\160 un profile partag\195\169 touchent tous les personnage l'utilisant";
---
---AUTOBAR_CONFIG_TAB_SLOTS = "Emplacements";
 --AUTOBAR_CONFIG_TAB_BAR = "Barre";
---AUTOBAR_CONFIG_TAB_POPUP = "D\195\169ploiement";
+--AUTOBAR_CONFIG_TAB_POPUP = "Déploiement";
 --AUTOBAR_CONFIG_TAB_PROFILE = "Profile";
 --AUTOBAR_CONFIG_TAB_KEYS = "Keys";
 --
---AUTOBAR_TOOLTIP1 = " (Qauntit\195\169 : ";
---AUTOBAR_TOOLTIP2 = " [Objet personnalis\195\169]";
---AUTOBAR_TOOLTIP6 = " [Utilisation limit\195\169]";
+--AUTOBAR_TOOLTIP1 = " (Qauntité : ";
+--AUTOBAR_TOOLTIP2 = " [Objet personnalisé]";
+--AUTOBAR_TOOLTIP6 = " [Utilisation limité]";
 --AUTOBAR_TOOLTIP7 = " [Cooldown]";
 AUTOBAR_TOOLTIP8 = "\n(Clique gauche pour application sur l'arme main droite\nClique droit pour application sur l'arme main gauche)";
---
---AUTOBAR_CONFIG_USECHARACTERTIP = "Les objets de ce set de personnage sont spécifique à ce personnage.";
---AUTOBAR_CONFIG_USESHAREDTIP = "Les objets d'un set partag\195\169 sont partag\195\169s par les personnages utilisant le m\195\170me set partag\195\169.\nLe set sp\195\169cifique peut \195\170tre d\195\169sign\195\169 dans l'onglet Profile.";
---AUTOBAR_CONFIG_USECLASSTIP = "Les objets d'un set de classe sont partag\195\169s par les personnages de même classe utilisant le set de classe.";
---AUTOBAR_CONFIG_USEBASICTIP = "Les objets du set de base sont partag\195\169s par les personnages utilisant le set de base.";
---AUTOBAR_CONFIG_CHARACTERLAYOUTTIP = "Les modifications de l'organisation visuelle ne touchent que ce personnage.";
---AUTOBAR_CONFIG_SHAREDLAYOUTTIP = "Les modifications de l'organisation visuelle touchent tous les personnage utilisant le même profile partag\195\169.";
---AUTOBAR_CONFIG_TIPOVERRIDE = "Les boutons de ce set sont prioritaires sur les boutons des sets inf\195\169rieurs.\n";
---AUTOBAR_CONFIG_TIPOVERRIDDEN = "Les boutons de ce set seront cacher par les sets supérieurs.\n";
 --AUTOBAR_CONFIG_TIPAFFECTSCHARACTER = "Les modifications ne touchent que ce personnage.";
 --AUTOBAR_CONFIG_TIPAFFECTSALL = "Les modifications touchent tous les personnages.";
 --AUTOBAR_CONFIG_SETUPSINGLE = "Configuration unique";
---AUTOBAR_CONFIG_SETUPSHARED = "Configuration partag\195\169e";
+--AUTOBAR_CONFIG_SETUPSHARED = "Configuration partagée";
 --AUTOBAR_CONFIG_SETUPSTANDARD = "Configuration standard";
---AUTOBAR_CONFIG_SETUPBLANKSLATE = "Remise \195\160 blanc";
---AUTOBAR_CONFIG_SETUPSINGLETIP = "Cliquer pour obtenir une configuration de personnage unique, similaire \195\160 AutoBar classique.";
---AUTOBAR_CONFIG_SETUPSHAREDTIP = "Cliquer pour obtenir une configuration partag\195\169.\nActive les sets partag\195\169s et sp\195\169cifiques \195\160 un personnage.";
---AUTOBAR_CONFIG_SETUPSTANDARDTIP = "Active l'\195\169diton et l'utilisation de tous les sets.";
---AUTOBAR_CONFIG_SETUPBLANKSLATETIP = "Efface l'ensemble des boutons des sets partag\195\169s et de personnages.";
---AUTOBAR_CONFIG_RESETSINGLETIP = "Cliquer pour r\195\169initialiser la configuration de personnage unique.";
---AUTOBAR_CONFIG_RESETSHAREDTIP = "Cliquer pour r\195\169initialiser la configuration partag\195\169.\nLe set de classe est copi\195\169 vers le set de personnage.\nLe set par d\195\169faut est copi\195\169 vers le set partag\195\169.";
---AUTOBAR_CONFIG_RESETSTANDARDTIP = "Cliquer pour r\195\169initialiser la configuration standard.\nLes boutons de classe sont dans le set de classe.\nLes boutons par d\195\169faut sont dans le set de base.\nLes sets partag\195\169s et de personnages sont r\195\169initialis\195\169s.";
+--AUTOBAR_CONFIG_SETUPBLANKSLATE = "Remise à blanc";
+--AUTOBAR_CONFIG_SETUPSINGLETIP = "Cliquer pour obtenir une configuration de personnage unique, similaire à AutoBar classique.";
+--AUTOBAR_CONFIG_SETUPSHAREDTIP = "Cliquer pour obtenir une configuration partagé.\nActive les sets partagés et spécifiques à un personnage.";
+--AUTOBAR_CONFIG_SETUPSTANDARDTIP = "Active l'éditon et l'utilisation de tous les sets.";
+--AUTOBAR_CONFIG_SETUPBLANKSLATETIP = "Efface l'ensemble des boutons des sets partagés et de personnages.";
+--AUTOBAR_CONFIG_RESETSINGLETIP = "Cliquer pour réinitialiser la configuration de personnage unique.";
+--AUTOBAR_CONFIG_RESETSHAREDTIP = "Cliquer pour réinitialiser la configuration partagé.\nLe set de classe est copié vers le set de personnage.\nLe set par défaut est copié vers le set partagé.";
+--AUTOBAR_CONFIG_RESETSTANDARDTIP = "Cliquer pour réinitialiser la configuration standard.\nLes boutons de classe sont dans le set de classe.\nLes boutons par défaut sont dans le set de base.\nLes sets partagés et de personnages sont réinitialisés.";
 --
 ----  AutoBarConfig.lua
---AUTOBAR_TOOLTIP9 = "Bouton multi cat\195\169gorie\n";
---AUTOBAR_TOOLTIP10 = " (Objet personnalis\195\169 par ID)";
+--AUTOBAR_TOOLTIP9 = "Bouton multi catégorie\n";
+--AUTOBAR_TOOLTIP10 = " (Objet personnalisé par ID)";
 --AUTOBAR_TOOLTIP11 = "\n(ID de l'objet inconnu)";
---AUTOBAR_TOOLTIP12 = " (Objet personnalis\195\169 par nom)";
---AUTOBAR_TOOLTIP13 = "Bouton de cat\195\169gorie unique\n\n";
+--AUTOBAR_TOOLTIP12 = " (Objet personnalisé par nom)";
+--AUTOBAR_TOOLTIP13 = "Bouton de catégorie unique\n\n";
 --AUTOBAR_TOOLTIP15 = "\nCible une arme\n(Clique gauche pour l'arme main droite\nClique droit pour l'arme main gauche)";
 AUTOBAR_TOOLTIP17 = "\nHors-combat seulement.";
 AUTOBAR_TOOLTIP18 = "\nCombat seulement.";
---AUTOBAR_TOOLTIP20 = "\nUtilisation limit\195\169 : "
---AUTOBAR_TOOLTIP21 = "Requi\195\168re une restauration de PV";
---AUTOBAR_TOOLTIP22 = "Requi\195\168re une restauration de mana";
---AUTOBAR_TOOLTIP23 = "Bouton pour objet unique\n\n";
+--AUTOBAR_TOOLTIP20 = "\nUtilisation limité : "
+--AUTOBAR_TOOLTIP21 = "Requière une restauration de PV";
+--AUTOBAR_TOOLTIP22 = "Requière une restauration de mana";
 
 end

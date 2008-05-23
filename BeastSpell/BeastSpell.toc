@@ -1,16 +1,26 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: BeastSpell(野兽学识)
-## Notes: 免费的野兽知识，强化的训练的面板|n作者：互补古蓝
+## Notes: 免费的野兽知识，强化的训练的面板|n作者：|cFF00ff00互补古蓝|r<基尔加丹-4区>|n英化：|cFF00ff00digmouse|r<CWDG>
+
+## Title-enUS: BeastSpell
+## Notes-enUS: A Beast Training panel enhancement and FREE Beast Lore for everybody |nBy: |cFF00ff00FaberiLan|r<Kil'jaedan-CN4>|nEnglish localization by |cFF00ff00digmouse|r<CWDG>
+
+## Title-enGB: BeastSpell
+## Notes-enUS: A Beast Training panel enhancement and FREE Beast Lore for everybody |nBy: |cFF00ff00FaberiLan|r<Kil'jaedan-CN4>|nEnglish localization by |cFF00ff00digmouse|r<CWDG>
+
 ## Author: 互补古蓝 - tjox@163.net
-## Version: 1.0 beta1
+## Version: 1.1
 ## SavedVariables:  BeastSpell_Wild
 ## SavedVariablesPerCharacter: BeastSpell_Self
 
+Localization.lua
+
 Spell_db.lua
-BeastSpell.lua
-
-rightMenu.lua
-
+Spell_db_en.lua
 Train_db.lua
+Train_db_en.lua
+
+BeastSpell.lua
+rightMenu.lua
 Train.lua
 Train.xml

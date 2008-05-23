@@ -1,12 +1,14 @@
-## Interface: 20300
-## Title: |cff00FF55AutoMacro Beta|r
-## Title-zhCN: |cff00FF55Auto宏指令助手 Beta|r
-## Title-zhTW: |cff00FF55Auto巨集指令助手 Beta|r
+﻿## Interface: 20400
+## Title: |cff00FF55AutoMacro/AutoDispel Beta V7|r
+## Title-zhCN: |cff00FF55Auto宏指令助手/驱散助手 Beta V7|r
+## Title-zhTW: |cff00FF55Auto巨集指令助手/驅散助手 Beta V7|r
 ## Notes: Skip unavailable macro lines automatically.
-## Notes-zhCN: 自动跳过不能使用的技能.
-## Notes-zhTW: 自動跳過不能使用的技能.
+## Notes-zhCN: 自动跳过不能使用的技能. 增加一键驱散的支持.
+## Notes-zhTW: 自動跳過不能使用的技能. 增加一鍵驅散的支持.
 ## Author: _DLJ
 ## DefaultState: Enabled
 ## SavedVariables:
 AutoMacro.lua
+AutoDispel.lua
+
 

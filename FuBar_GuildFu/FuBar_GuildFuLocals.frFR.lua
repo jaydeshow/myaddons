@@ -1,4 +1,5 @@
-﻿-- provided by cinedelle @ wowace.com
+﻿local revision = tonumber(string.sub("$Revision: 73182 $", 12, -3)) or 1
+if revision > FuBar_GuildFu.revision then FuBar_GuildFu.revision = revision end
 
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_GuildFu")
 
@@ -92,19 +93,19 @@ L:RegisterTranslations("frFR", function() return {
 	["Warrior"] = "Guerrier",
 	["Toggles display of Warriors"] = "Active/D\195\169sactive l'affichage des guerriers",
 	["Level Filter Settings"] = "Param\195\169trage du filtrage des niveaux",
-	[" 1- 9"] = " 1 - 9",
+	[" 1- 9"] = " 1- 9",
 	["Toggles display of level 1 to 9 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 1 \195\160 9",
-	["10-19"] = " 10 - 19",
+	["10-19"] = "10-19",
 	["Toggles display of level 10 to 19 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 10 \195\160 19",
-	["20-29"] = " 20 - 29",
+	["20-29"] = "20-29",
 	["Toggles display of level 20 to 29 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 20 \195\160 29",
-	["30-39"] = " 30 - 39",
+	["30-39"] = "30-39",
 	["Toggles display of level 30 to 39 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 30 \195\160 39",
-	["40-49"] = " 40 - 49",
+	["40-49"] = "40-49",
 	["Toggles display of level 40 to 49 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 40 \195\160 49",
-	["50-59"] = " 50 - 59",
+	["50-59"] = "50-59",
 	["Toggles display of level 50 to 59 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 50 \195\160 59",
-	["60-69"] = " 60 - 69",
+	["60-69"] = "60-69",
 	["Toggles display of level 60 to 69 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 60 \195\160 69",
 	["70"] = "70",
 	["Toggles display of level 70 chars"] = "Active/D\195\169sactive l'affichage des personnages de niveau 70",

@@ -1,6 +1,6 @@
 --[[
 Name: ZFrame-1.0
-Revision: $Revision: 65463 $
+Revision: $Revision: 68049 $
 Author(s): Zek (zeksie@ntlworld.com)
 Description: A simple window library. Gives you the usable area inside the border to anchor with to save messing around with variable border sizes and calcs in main code.
 Dependencies: Ace2
@@ -21,7 +21,7 @@ ALTCLICKTOSIZE		= "Alt-Click to size window"
 --end
 
 local MAJOR_VERSION = "ZFrame-1.0"
-local MINOR_VERSION = "$Revision: 65463 $"
+local MINOR_VERSION = "$Revision: 68049 $"
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 local ZFrame, oldLib = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
@@ -35,7 +35,7 @@ local function scaleMouseDown(self)
 
 	GameTooltip:Hide()
 
-	if (self.resizable and IsShiftKeyDown()) then
+	if (self.resizable and IsAltKeyDown()) then
 		self.sizing = true
 	elseif (self.scalable) then
 		self.scaling = true

@@ -1,4 +1,4 @@
-﻿--[[-------------------------------------------------------------------------
+--[[-------------------------------------------------------------------------
   James Whitehead II grants anyone the right to use this work for any purpose,
   without any conditions, unless such conditions are required by law.
 ---------------------------------------------------------------------------]]

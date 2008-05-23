@@ -1,6 +1,6 @@
 ﻿
 -- RecipeRadar.lua: main event code and general utility functions
--- $Id: RecipeRadar.lua 997 2007-07-24 06:36:54Z jnmiller $
+-- $Id: RecipeRadar.lua 1039 2008-04-08 05:13:09Z jnmiller $
 
 function RecipeRadar_OnLoad()
 
@@ -13,7 +13,6 @@ function RecipeRadar_OnLoad()
 
    this:RegisterEvent("VARIABLES_LOADED")
    this:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-   this:RegisterEvent("MINIMAP_UPDATE_ZOOM")
    this:RegisterEvent("WORLD_MAP_UPDATE")
    this:RegisterEvent("CRAFT_SHOW")
    this:RegisterEvent("TRADE_SKILL_SHOW")
@@ -60,10 +59,6 @@ function RecipeRadar_OnEvent()
          RecipeRadar_Filters.Teams
                [RecipeRadar_GetOpposingFaction("player")] = true
       end
-
-   elseif (event == "MINIMAP_UPDATE_ZOOM") then
-
-      RecipeRadar_Minimap_SetIndoorness()
 
    elseif (event == "WORLD_MAP_UPDATE") then
 
@@ -318,7 +313,7 @@ function RecipeRadar_GetSafeItemInfo(id)
             RecipeRadar_Colors.UncachedRecipe.r,
             RecipeRadar_Colors.UncachedRecipe.g,
             RecipeRadar_Colors.UncachedRecipe.b,
-            RECIPERADAR_IMAGE_ROOT .. "Misc\\QuestionMark",
+            GetItemIcon(id),
             false  -- boolean to indicate whether we got a real recipe
 
    else
@@ -343,7 +338,7 @@ function RecipeRadar_RegionNameToID(region_name, continent)
    end
 
    RecipeRadar_Print("ASSERT FAILED: region '" .. region_name ..
-         "' not found by GetMapZones()!")
+         "' not found by GetMapZones()!  Bad translation?")
    return nil
 
 end
@@ -546,13 +541,13 @@ end
 -- Thanks to an SF.Net poster for verifying this with Unicode locales.
 function RecipeRadar_TrimRecipeLabel(recipe_name)
 
-   local label_end = string.find(recipe_name, ":")
+   local label_end = string.find(recipe_name, ": ")
    if (label_end) then
       return string.sub(recipe_name, label_end + 2)
    else
-      label_end = string.find(recipe_name, "：")
+      label_end = string.find(recipe_name, ":")
       if (label_end) then
-         return string.sub(recipe_name, label_end + 3)
+         return string.sub(recipe_name, label_end + 1)
       end
    end
    return recipe_name

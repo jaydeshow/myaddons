@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster zhTW locale
-Revision: $Revision: 65999 $
+Revision: $Revision: 73696 $
 Translated by: 
 - Whitetooth@Cenarius (hotdogee@bahamut.twbbs.org)
 - CuteMiyu
@@ -45,7 +45,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["Set the level used in calculations (0 = your level)"] = "設定換算等級 (0 = 你的目前的等級)",
 	-- /rb color
 	["Change text color"] = "設定文字顏色",
-	["Changes the color of added text"] = "設定RB所增加的文字的顏色",
+	["Changes the color of added text"] = "設定 RB 所增加的文字的顏色",
 	-- /rb color pick
 	["Pick color"] = "挑選顏色",
 	["Pick a color"] = "挑選顏色",
@@ -63,7 +63,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["Show detailed text for Resiliance and Expertise conversions"] = "顯示韌性和熟練技能的詳細轉換文字",
 	-- /rb rating def
 	["Defense breakdown"] = "分析防禦",
-	["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = "將防禦分為避免致命、避免擊中、閃躲、招架和格擋",
+	["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = "將防禦分為避免致命、避免命中、閃躲、招架和格擋",
 	-- /rb rating wpn
 	["Weapon Skill breakdown"] = "分析武器技能",
 	["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "將武器技能分為致命、擊中、防止被閃躲、防止被招架和防止被格擋",
@@ -144,8 +144,8 @@ L:RegisterTranslations("zhTW", function() return {
 	["Show Mana Regen"] = "顯示施法回魔",
 	["Show Mana Regen while casting from Intellect"] = "顯示智力給的施法中法力恢復量",
 	-- /rb stat int mp5nc
-	--["Show Mana Regen while NOT casting"] = true,
-	--["Show Mana Regen while NOT casting from Intellect"] = true,
+	["Show Mana Regen while NOT casting"] = "顯示一般回魔",
+	["Show Mana Regen while NOT casting from Intellect"] = "顯示在未施法狀態時，智力給的法力恢復量",
 	-- /rb stat int rap
 	["Show Ranged Attack Power"] = "顯示遠程攻擊強度",
 	["Show Ranged Attack Power from Intellect"] = "顯示智力給的遠程攻擊強度",
@@ -180,7 +180,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["Show stat summary in tooltips"] = "在物品提示中顯示屬性統計",
 	-- /rb sum ignore
 	["Ignore settings"] = "忽略設定",
-	["Ignore stuff when calculating the stat summary"] = "設定在統計總合時所要忽略的事項",
+	["Ignore stuff when calculating the stat summary"] = "設定在統計總合時所要忽略的項目",
 	-- /rb sum ignore unused
 	["Ignore unused items types"] = "忽略不可能使用的物品",
 	["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "只顯示在你會使用的物品上",
@@ -212,8 +212,8 @@ L:RegisterTranslations("zhTW", function() return {
 	["Show title text"] = "顯示標題",
 	["Show the title text before summary listing"] = "在屬性統計前顯示標題文字",
 	-- /rb sum showzerostat
-	["Show zero value stats"] = "顯示數值為0的屬性",
-	["Show zero value stats in summary for consistancy"] = "為了一致性，在統計中顯示數值為0的屬性",
+	["Show zero value stats"] = "顯示數值為 0 的屬性",
+	["Show zero value stats in summary for consistancy"] = "為了一致性，在統計中顯示數值為 0 的屬性",
 	-- /rb sum calcsum
 	["Calculate stat sum"] = "計算統計總合",
 	["Calculate the total stats for the item"] = "計算物品的統計總合",
@@ -276,19 +276,25 @@ L:RegisterTranslations("zhTW", function() return {
 	["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "暗影法術傷害 ← 暗影法術傷害、法術傷害、智力、精神、耐力",
 	-- /rb sum stat heal
 	["Sum Healing"] = "統計治療",
-	["Healing <- Healing, Intellect, Spirit, Strength"] = "治療 ← 治療、智力、精神、力量",
+	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "治療 ← 治療、智力、精神、敏捷、力量",
 	-- /rb sum stat hit
 	["Sum Hit Chance"] = "統計命中機率",
 	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "命中機率 ← 命中等級、武器技能等級",
-	-- /rb sum stat hitspell
-	["Sum Spell Hit Chance"] = "統計法術命中機率",
-	["Spell Hit Chance <- Spell Hit Rating"] = "法術命中機率 ← 法術命中機率",
 	-- /rb sum stat crit
 	["Sum Crit Chance"] = "統計致命一擊機率",
 	["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"] = "致命一擊機率 ← 致命一擊等級、敏捷、武器技能等級",
+	-- /rb sum stat haste
+	["Sum Haste"] = "統計加速",
+	["Haste <- Haste Rating"] = "加速 ← 加速等級",
 	-- /rb sum stat critspell
 	["Sum Spell Crit Chance"] = "統計法術致命一擊機率",
 	["Spell Crit Chance <- Spell Crit Rating, Intellect"] = "法術致命一擊機率 ← 法術致命一擊等級、智力",
+	-- /rb sum stat hitspell
+	["Sum Spell Hit Chance"] = "統計法術命中機率",
+	["Spell Hit Chance <- Spell Hit Rating"] = "法術命中機率 ← 法術命中機率",
+	-- /rb sum stat hastespell
+	["Sum Spell Haste"] = "統計法術加速",
+	["Spell Haste <- Spell Haste Rating"] = "法術加速 ← 法術加速等級",
 	-- /rb sum stat mp5
 	["Sum Mana Regen"] = "統計法力恢復",
 	["Mana Regen <- Mana Regen, Spirit"] = "法力恢復 ← 法力恢復、精神",
@@ -349,6 +355,12 @@ L:RegisterTranslations("zhTW", function() return {
 	-- /rb sum stat maxdamage
 	["Sum Weapon Max Damage"] = "統計武器最大傷害",
 	["Weapon Max Damage Summary"] = "統計武器最大傷害",
+	-- /rb sum stat pen
+	["Sum Penetration"] = "統計法術穿透力",
+	["Spell Penetration Summary"] = "統計法術穿透力",
+	-- /rb sum stat ignorearmor
+	["Sum Ignore Armor"] = "統計無視護甲",
+	["Ignore Armor Summary"] = "統計無視護甲",
 	-- /rb sum stat weapondps
 	--["Sum Weapon DPS"] = true,
 	--["Weapon DPS Summary"] = true,
@@ -367,6 +379,36 @@ L:RegisterTranslations("zhTW", function() return {
 	-- /rb sum statcomp spi
 	["Sum Spirit"] = "統計精神",
 	["Spirit Summary"] = "統計精神",
+	-- /rb sum statcomp hitrating
+	["Sum Hit Rating"] = "統計命中等級",
+	["Hit Rating Summary"] = "統計命中等級",
+	-- /rb sum statcomp critrating
+	["Sum Crit Rating"] = "統計致命等級",
+	["Crit Rating Summary"] = "統計致命等級",
+	-- /rb sum statcomp hasterating
+	["Sum Haste Rating"] = "統計加速等級",
+	["Haste Rating Summary"] = "統計加速等級",
+	-- /rb sum statcomp hitspellrating
+	["Sum Spell Hit Rating"] = "統計法術命中等級",
+	["Spell Hit Rating Summary"] = "統計法術命中等級",
+	-- /rb sum statcomp critspellrating
+	["Sum Spell Crit Rating"] = "統計法術致命等級",
+	["Spell Crit Rating Summary"] = "統計法術致命等級",
+	-- /rb sum statcomp hastespellrating
+	["Sum Spell Haste Rating"] = "統計法術加速等級",
+	["Spell Haste Rating Summary"] = "統計法術加速等級",
+	-- /rb sum statcomp dodgerating
+	["Sum Dodge Rating"] = "統計閃躲等級",
+	["Dodge Rating Summary"] = "統計閃躲等級",
+	-- /rb sum statcomp parryrating
+	["Sum Parry Rating"] = "統計招架等級",
+	["Parry Rating Summary"] = "統計招架等級",
+	-- /rb sum statcomp blockrating
+	["Sum Block Rating"] = "統計格檔等級",
+	["Block Rating Summary"] = "統計格檔等級",
+	-- /rb sum statcomp res
+	["Sum Resilience"] = "統計韌性",
+	["Resilience Summary"] = "統計韌性",
 	-- /rb sum statcomp def
 	["Sum Defense"] = "統計防禦",
 	["Defense <- Defense Rating"] = "防禦 ← 防禦等級",
@@ -385,7 +427,6 @@ L:RegisterTranslations("zhTW", function() return {
 	-- /rb sum statcomp avoid
 	["Sum Avoidance"] = "統計傷害迴避",
 	["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "傷害迴避 ← 閃躲、招架、怪物未擊中、格擋(選項)",
-	
 	-- /rb sum gem
 	["Gems"] = "預設寶石",
 	["Auto fill empty gem slots"] = "空寶石插槽的預設寶石",
@@ -459,11 +500,10 @@ L:RegisterTranslations("zhTW", function() return {
 		{pattern = "提高.-(%d+)", addInfo = "AfterNumber",},
 		{pattern = "提升.-(%d+)", addInfo = "AfterNumber",}, -- [奎克米瑞之眼] ID:27683
 		{pattern = "(%d+)。", addInfo = "AfterNumber",},
-		{pattern = "%+(%d+)", addInfo = "AfterStat",},
+		{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 		{pattern = "佩戴者.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-		{pattern = "(%d+)([^%d]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
+		{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 	},
-
 	["separators"] = {
 		"/", "和", ",", "。", " 持續 ", "&", "及", "並", "，",
 	},

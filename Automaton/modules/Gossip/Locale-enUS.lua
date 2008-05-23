@@ -339,5 +339,13 @@ L:RegisterTranslations("enUS", function() return {
 	-- Netherwing Ledge
 	["Accepting All Eggs"] = true,
 	["Netherwing Egg"] = true,
-
+	
+	-- 2.4 Battleground mark turn-in
+  ["Concerted Efforts"] = true,
+  ["For Great Honor"] = true,
+  ["Alterac Valley Mark of Honor"] = true,
+	["Arathi Basin Mark of Honor"] = true,
+	["Warsong Gulch Mark of Honor"] = true,
+	["Eye of the Storm Mark of Honor"] = true,
+			
 } end )

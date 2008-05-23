@@ -1,4 +1,4 @@
-﻿-- improved lua base64 codec (c) 2006-2007 by Alex Kloss
+-- improved lua base64 codec (c) 2006-2007 by Alex Kloss
 -- compatible with lua 5.1
 -- http://www.it-rfc.de
 -- licensed under the terms of the LGPL2

@@ -103,6 +103,7 @@ L:RegisterTranslations("frFR", function()
 		["Hide Samwise Icon"] = "Masque l'icône de Samwise",
 		["Show for Friends"] = "Afficher pour les amis",
 		["Show for Enemies"] = "Afficher pour les ennemis",
+		--["Show if Target"] = true,
 		["Target Name"] = "Nom de la cible",
 		["Display target name of spellcasts after spell name"] = "Affiche le nom de la cible après le nom du sort incanté",
 		
@@ -208,6 +209,7 @@ L:RegisterTranslations("frFR", function()
 		["Hide the icon for spells with no icon"] = "Cache l'icône pour les sorts sans icône",
 		["Show this castbar for friendly units"] = "Affiche cette barre d'incantation pour les unités amies",
 		["Show this castbar for hostile units"] = "Affiche cette barre d'incantation pour les unités ennemies",
+		--["Show this castbar if focus is also target"] = true,
 		["Set an exact X value for this bar's position."] = "Définit une valeur X exacte pour cette position de barre",
 		["Set an exact Y value for this bar's position."] = "Définit une valeur Y exacte pour cette position de barre",
 		

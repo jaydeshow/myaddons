@@ -1,6 +1,9 @@
-local L = AceLibrary("AceLocale-2.2"):new("Recount")
-
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale( "Recount" )
 local me={}
+
+local revision = tonumber(string.sub("$Revision: 67838 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
 
 local ReportLocations={
 	{L["Say"],"SAY"},

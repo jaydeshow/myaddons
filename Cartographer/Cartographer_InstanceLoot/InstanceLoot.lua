@@ -1,11 +1,11 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 60024 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 67893 $"):sub(12, -3))
 local pt = Rock("LibPeriodicTable-3.1")
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-02-02 13:27:57 -0500 (Sat, 02 Feb 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-04-03 11:11:16 -0400 (Thu, 03 Apr 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-InstanceLoot")
@@ -130,24 +130,26 @@ L:AddTranslations("zhTW", function() return {
 -- no use anymore	["Query_Warning"] = true,
 	["[Cartographer_InstanceLoot] PT3 has no table InstanceLoot.%s.%s"] = "[Cartographer_InstanceLoot] PT3 沒有相關資料 (鍵值=InstanceLoot.%s.%s)",
 } end)
+
 L:AddTranslations("zhCN", function() return {
 	["Instance Loot"] = "副本掉落",
 
 	["Normal Mode Drops"] = "普通模式掉落",
 	["Heroic Mode Drops"] = "英雄模式掉落",
 
-	["Display of loot on instance bosses."] = "显示副本首领的掉落物品.",
+	["Display of loot on instance bosses."] = "显示副本首领的掉落物品。",
 	["Left side"] = "显示在左侧",
 	["Right side"] = "显示在右侧",
 	["Close"] = "关闭",
 	["Toggle side to display loot info"] = "切换显示掉落物品信息的位置",
 	["Quality"] = "品质",
-	["Set the quality threshold for items to be displayed"] = "只显示品质高于设定值的掉落物品",
-	["Always show bind on pickup items"] = "永远显示拾取后绑定的物品",
-	["Show bind on pickup items regardless of the quality threshold"] = "永远显示任何品质的拾取后绑定物品",
-	["Hide Low Droprate Items"] = "隐藏掉落率低的物品",
-	["Hide all items under this droprate"] = "隐藏低于这个掉落率的物品",
-	["Query_Warning"] = "在本地缓存找不到此物品, 将向服务器查询|cFFFF2222注意: 该操作可能导致你断开与服务器的连接.|r",
+	["Set the quality threshold for items to be displayed"] = "只显示品质高于设定值的掉落物品。",
+	["Always show bind on pickup items"] = "永远显示拾取后绑定的物品。",
+	["Show bind on pickup items regardless of the quality threshold"] = "永远显示任何品质的拾取后绑定物品。",
+	["Hide Low Droprate Items"] = "隐藏掉落率低的物品。",
+	["Hide all items under this droprate"] = "隐藏低于这个掉落率的物品。",
+	["Query_Warning"] = "在本地缓存找不到此物品，将向服务器查询，|cFFFF2222注意：该操作可能导致你与服务器断开连接！",
+	["[Cartographer_InstanceLoot] PT3 has no table InstanceLoot.%s.%s"] = "[Cartographer-副本掉落] PT3 没有相关资料。（InstanceLoot.%s.%s）",
 } end)
 
 Cartographer_InstanceLoot = Cartographer:NewModule("InstanceLoot", "LibRockEvent-1.0", "LibRockTimer-1.0")
@@ -163,7 +165,8 @@ local qualitycolors = {
 }
 local qualitynames = {ITEM_QUALITY0_DESC,ITEM_QUALITY1_DESC,ITEM_QUALITY2_DESC,ITEM_QUALITY3_DESC,ITEM_QUALITY4_DESC,ITEM_QUALITY5_DESC,ITEM_QUALITY6_DESC,}
 local qualitynumbers = {[ITEM_QUALITY0_DESC]=0,[ITEM_QUALITY1_DESC]=1,[ITEM_QUALITY2_DESC]=2,[ITEM_QUALITY3_DESC]=3,[ITEM_QUALITY4_DESC]=4,[ITEM_QUALITY5_DESC]=5,[ITEM_QUALITY6_DESC]=6,}
-local BB = AceLibrary("Babble-Boss-2.2")
+local BB = Rock("LibBabble-Boss-3.0")
+local BBR = BB:GetReverseLookupTable()
 local Tablet = AceLibrary("Tablet-2.0")
 
 function Cartographer_InstanceLoot:OnInitialize()
@@ -270,9 +273,9 @@ function Cartographer_InstanceLoot:Cartographer_MapClosed()
 end
 
 function Cartographer_InstanceLoot:OnClick(zone,id,data)
-	if data.title and BB:HasReverseTranslation(data.title) then
+	if data.title and BBR[data.title] then
 		local old_boss = boss
-		boss = BB:GetReverseTranslation(data.title)
+		boss = BBR[data.title]
 		
 		if boss == old_boss then
 			self:CloseSideTablet()

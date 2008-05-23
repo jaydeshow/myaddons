@@ -1,23 +1,22 @@
-local VERSION = tonumber(("$Revision: 49336 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 74535 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_Triggers = Parrot:NewModule("Triggers", "LibRockTimer-1.0")
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-09-20 00:36:02 -0400 (Thu, 20 Sep 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-20 09:57:38 -0400 (Tue, 20 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
-local L = Parrot:L("Parrot_Triggers")
-
-local BS = Rock("LibBabble-Spell-3.0")
-local BSL = BS:GetLookupTable()
+-- local L = Parrot:L("Parrot_Triggers")
+-- TODO make modular
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Triggers")
 
 local newList, newSet, newDict, del, unpackDictAndDel = Rock:GetRecyclingFunctions("Parrot", "newList", "newSet", "newDict", "del", "unpackDictAndDel")
 
 local _,playerClass = UnitClass("player")
 
-local SharedMedia = Rock("LibSharedMedia-2.0")
+local SharedMedia = Rock("LibSharedMedia-3.0")
 
 Parrot_Triggers.db = Parrot:GetDatabaseNamespace("Triggers")
 Parrot:SetDatabaseNamespaceDefaults("Triggers", 'profile', {})
@@ -38,6 +37,12 @@ local function rebuildEffectiveRegistry()
 	end
 end
 
+-- so triggers can be enabled/disabled from outside
+function Parrot_Triggers:setTriggerEnabled(triggerindex, enabled)
+	self.db.profile.triggers[triggerindex].disabled = not enabled
+	rebuildEffectiveRegistry()
+end
+
 local cooldowns = {}
 local currentTrigger
 local Parrot_TriggerConditions
@@ -50,107 +55,117 @@ function Parrot_Triggers:OnInitialize()
 	Parrot_TriggerConditions = Parrot:GetModule("TriggerConditions")
 	Parrot_CombatEvents = Parrot:GetModule("CombatEvents")
 end
+
 function Parrot_Triggers:OnEnable(first)
 	if not self.db.profile.triggers then
 		self.db.profile.triggers = {
 			{
-				name = L["%s!"]:format(BSL["Backlash"]),
-				icon = BSL["Backlash"],
+				-- 34939 = Backlash
+				name = L["%s!"]:format(GetSpellInfo(34939)),
+				icon = 34939,
 				class = "WARLOCK",
 				conditions = {
-					["Self buff gain"] = BSL["Backlash"],
+					["Self buff gain"] = GetSpellInfo(34939),
 				},
 				sticky = true,
 				color = "ff00ff",
 			},
 			{
-				name = L["%s!"]:format(BSL["Blackout"]),
-				icon = BSL["Blackout"],
+				-- 15326 = Blackout
+				name = L["%s!"]:format(GetSpellInfo(15326)),
+				icon = 15326,
 				class = "PRIEST",
 				conditions = {
-					["Target debuff gain"] = BSL["Blackout"],
+					["Target debuff gain"] = GetSpellInfo(15326),
 				},
 				sticky = true,
 				color = "ff00ff",
 			},
 			{
-				name = L["%s!"]:format(BSL["Clearcasting"]),
-				icon = BSL["Clearcasting"],
+				-- 34754 = Clearcasting (Priest) TODO
+				name = L["%s!"]:format(GetSpellInfo(34754)),
+				icon = 34754,
 				class = "MAGE;PRIEST;SHAMAN",
 				conditions = {
-					["Self buff gain"] = BSL["Clearcasting"],
+					["Self buff gain"] = GetSpellInfo(34754),
 				},
 				sticky = true,
 				color = "ffff00",
 			},
 			{
-				name = L["%s!"]:format(BSL["Counterattack"]),
-				icon = BSL["Counterattack"],
+				-- 27067 = Counterattack
+				name = L["%s!"]:format(GetSpellInfo(27067)),
+				icon = 27067,
 				class = "HUNTER",
 				conditions = {
 					["Incoming parry"] = true,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Counterattack"],
+					["Spell ready"] = GetSpellInfo(27067),
 				},
 				sticky = true,
 				color = "ffff00",
 			},
 			{
-				name = L["%s!"]:format(BSL["Execute"]),
-				icon = BSL["Execute"],
+				-- 25236 = Execute
+				name = L["%s!"]:format(GetSpellInfo(25236)),
+				icon = 25236,
 				class = "WARRIOR",
 				conditions = {
 					["Enemy target health percent"] = 0.2,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Execute"],
+					["Spell ready"] = GetSpellInfo(25236),
 				},
 				sticky = true,
 				color = "ffff00",
 			},
 			{
-				name = L["%s!"]:format(BSL["Frostbite"]),
-				icon = BSL["Frostbite"],
+				-- Frostbite = 12497
+				name = L["%s!"]:format(GetSpellInfo(12497)),
+				icon = 12497,
 				class = "MAGE",
 				conditions = {
-					["Target debuff gain"] = BSL["Frostbite"],
+					["Target debuff gain"] = GetSpellInfo(12497),
 				},
 				sticky = true,
 				color = "0000ff",
 			},
 			{
-				name = L["%s!"]:format(BSL["Hammer of Wrath"]),
-				icon = BSL["Hammer of Wrath"],
+				-- 27180 - Hammer of Wrath
+				name = L["%s!"]:format(GetSpellInfo(27180)),
+				icon = 27180,
 				class = "PALADIN",
 				conditions = {
 					["Enemy target health percent"] = 0.2,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Hammer of Wrath"],
+					["Spell ready"] = GetSpellInfo(27180),
 				},
 				sticky = true,
 				color = "ffff00",
 			},
 			{
-				name = L["%s!"]:format(BSL["Impact"]),
-				icon = BSL["Impact"],
+				-- Impact = 12360
+				name = L["%s!"]:format(GetSpellInfo(12360)),
+				icon = 12360,
 				class = "MAGE",
 				conditions = {
-					["Target debuff gain"] = BSL["Impact"],
+					["Target debuff gain"] = GetSpellInfo(12360),
 				},
 				sticky = true,
 				color = "ff0000",
 			},
 			{
-				name = L["%s!"]:format(BSL["Kill Command"]),
-				icon = BSL["Kill Command"],
+				-- Kill Command = 34026
+				name = L["%s!"]:format(GetSpellInfo(34026)),
+				icon = 34026,
 				class = "HUNTER",
 				conditions = {
 					["Outgoing crit"] = true,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Kill Command"],
+					["Spell ready"] = GetSpellInfo(34026),
 				},
 				sticky = true,
 				color = "ff0000",
@@ -192,70 +207,78 @@ function Parrot_Triggers:OnEnable(first)
 				color = "ff7f7f",
 			},
 			{
-				name = L["%s!"]:format(BSL["Mongoose Bite"]),
-				icon = BSL["Mongoose Bite"],
+				-- Mongoose Bite = 36916
+				name = L["%s!"]:format(GetSpellInfo(36916)),
+				icon = 36916,
 				class = "HUNTER",
 				conditions = {
 					["Incoming dodge"] = true,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Mongoose Bite"],
+					["Spell ready"] = GetSpellInfo(36916),
 				},
 				sticky = true,
 				color = "ffff00",
 			},
 			{
-				name = L["%s!"]:format(BSL["Nightfall"]),
-				icon = BSL["Nightfall"],
+				-- 18095 = Nightfall
+				name = L["%s!"]:format(GetSpellInfo(18095)),
+				icon = 18095,
 				class = "WARLOCK",
 				conditions = {
-					["Self buff gain"] = BSL["Shadow Trance"],
+					-- 17941 = Shadow Trance
+					["Self buff gain"] = GetSpellInfo(17941),
 				},
 				sticky = true,
 				color = "7f007f",
 			},
 			{
-				name = L["Free %s!"]:format(BSL["Smite"]),
-				icon = BSL["Smite"],
+				-- Smite = 25364 
+				name = L["Free %s!"]:format(GetSpellInfo(25364)),
+				icon = 25364,
 				class = "PRIEST",
 				conditions = {
-					["Self buff gain"] = BSL["Surge of Light"],
+					-- Surge of Light =33154
+					["Self buff gain"] = GetSpellInfo(33154),
 				},
 				sticky = true,
 				disabled = true,
 				color = "ff0000",
 			},			
 			{
-				name = L["%s!"]:format(BSL["Overpower"]),
-				icon = BSL["Overpower"],
+				-- Overpower = 11585
+				name = L["%s!"]:format(GetSpellInfo(11585)),
+				icon = 11585,
 				class = "WARRIOR",
 				conditions = {
 					["Outgoing dodge"] = true,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Overpower"],
+					["Spell ready"] = GetSpellInfo(11585),
 				},
 				sticky = true,
 				color = "7f007f",
 			},
 			{
-				name = L["%s!"]:format(BSL["Rampage"]),
-				icon = BSL["Rampage"],
+				-- Rampage = 30033
+				name = L["%s!"]:format(GetSpellInfo(30033)),
+				icon = 30033,
 				class = "WARRIOR",
 				conditions = {
 					["Outgoing crit"] = true,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Rampage"],
-					["Buff inactive"] = BSL["Rampage"],
+					["Spell ready"] = GetSpellInfo(30033),
+					["Buff inactive"] = GetSpellInfo(30033),
 					["Minimum power amount"] = 20,
 				},
 				sticky = true,
 				color = "ff0000",
 			},
 			{
-				name = L["%s!"]:format(BSL["Revenge"]),
-				icon = BSL["Revenge"],
+				-- Revenge = 30357
+				name = L["%s!"]:format(GetSpellInfo(30357)),
+				icon = 30357,
 				class = "WARRIOR",
 				conditions = {
 					["Incoming block"] = true,
@@ -263,7 +286,7 @@ function Parrot_Triggers:OnEnable(first)
 					["Incoming parry"] = true,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Revenge"],
+					["Spell ready"] = GetSpellInfo(30357),
 					["Warrior stance"] = "Defensive Stance",
 				},
 				sticky = true,
@@ -271,14 +294,15 @@ function Parrot_Triggers:OnEnable(first)
 				disabled = true,
 			},
 			{
-				name = L["%s!"]:format(BSL["Riposte"]),
-				icon = BSL["Riposte"],
+				-- Riposte = 14251
+				name = L["%s!"]:format(GetSpellInfo(14251)),
+				icon = 14251,
 				class = "ROGUE",
 				conditions = {
 					["Incoming parry"] = true,
 				},
 				secondaryConditions = {
-					["Spell ready"] = BSL["Riposte"],
+					["Spell ready"] = GetSpellInfo(14251),
 				},
 				sticky = true,
 				color = "ffff00",
@@ -386,18 +410,69 @@ local function hexColorToTuple(color)
 	return math.floor(num / 256^2)/255, math.floor((num / 256)%256)/255, (num%256)/255
 end
 
+local oldIconName = {
+	["Backlash"] = 34939,
+	["Nightfall"] = 18095,
+	["Stormstrike"] = 17364,
+}
+
+-- to find the icon for old saved variables
+
+local oldIconName = {
+	["Backlash"] = 34939,
+	["Blackout"] = 15326,
+	["Clearcasting"] = 34754,
+	["Counterattack"] = 27067,
+	-- ["Execute"] = 25236, -- not needed
+	["Frostbite"] = 12497,
+	["Impact"] = 12360,
+	["Kill Command"] = 34026,
+	["Mongoose Bite"] = 36916,
+	["Nightfall"] = 18095,
+	-- ["Smite"] = 25364, -- not needed
+	["Overpower"] = 11585,
+	["Rampage"] = 30033,
+	["Revenge"] = 30357,
+	["Riposte"] = 14251,
+	
+}
+
 local function figureIconPath(icon)
 	if not icon then
 		return nil
 	end
-	local path = BS:GetSpellIcon(icon)
+
+	local path
+	
+	-- if the icon is a number, it's most likly a spellid
+	local spellId = tonumber(icon)
+	if spellId then
+		path = select(3,GetSpellInfo(spellId))
+		return path
+	end
+	
+	-- if the spell is in the spellbook, the icon can be retrieved that way
+	path = select(3, GetSpellInfo(icon))
 	if path then
 		return path
-	end	
+	end
+	
+	-- the last chance is, that it's an option saved by an old parrot version
+	-- the strings from the default-options can be resolved by the table provided above
+	local oldIcon = oldIconName[icon]
+	if oldIcon then
+		path = select(3, GetSpellInfo(oldIcon))
+		if path then
+			return path
+		end
+	end
+	
+	-- perhaps it's an item
 	local _, _, _, _, _, _, _, _, _, texture = GetItemInfo(icon)
 	if texture then
 		return texture
 	end
+	-- nothing worked, either it's a path or a spell where the icon cannot be retrieved
 	return icon
 end
 
@@ -453,7 +528,11 @@ function Parrot_Triggers:OnTriggerCondition(name, arg, uid)
 					if good and Parrot_TriggerConditions:DoesSecondaryTriggerConditionPass("Trigger cooldown", 0.1) then
 						cooldowns[v.name] = GetTime()
 						local r, g, b = hexColorToTuple(v.color or 'ffffff')
-						Parrot_Display:ShowMessage(v.name, v.scrollArea or "Notification", v.sticky, r, g, b, v.font, v.fontSize, v.outline, figureIconPath(v.icon))
+						local icon = figureIconPath(v.icon)
+						-- getIconById(v.iconSpellId) or figureIconPath(v.icon)
+						
+						Parrot_Display:ShowMessage(v.name, v.scrollArea or "Notification", v.sticky, r, g, b, v.font, v.fontSize, v.outline, icon)
+						
 						if v.sound then
 							local sound = SharedMedia:Fetch('sound', v.sound)
 							if sound then
@@ -604,6 +683,7 @@ function Parrot_Triggers:OnOptionsCreate()
 		opt.desc = value
 		opt.order = value == L["New trigger"] and -110 or -100
 	end
+	
 	local function getIcon(t)
 		return t.icon or ''
 	end
@@ -665,6 +745,7 @@ function Parrot_Triggers:OnOptionsCreate()
 	
 	local function test(t)
 		local r, g, b = hexColorToTuple(t.color or 'ffffff')
+		--TODO
 		Parrot_Display:ShowMessage(t.name, t.scrollArea or "Notification", t.sticky, r, g, b, t.font, t.fontSize, t.outline, figureIconPath(t.icon))
 		if t.sound then
 			local sound = SharedMedia:Fetch('sound', t.sound)
@@ -871,8 +952,8 @@ function Parrot_Triggers:OnOptionsCreate()
 				icon = {
 					type = 'string',
 					name = L["Icon"],
-					desc = L["The icon that is shown"],
-					usage = L['<Spell name> or <Item name> or <Path>'],
+					desc = L["The icon that is shown"],--Note: Spells that are not in the Spellbook (i.e. some Talents) can only be identified by SpellId (retrievable at www.wowhead.com, looking at the URL)
+					usage = L['<Spell name> or <Item name> or <Path> or <SpellId>'],
 					get = getIcon,
 					set = setIcon,
 					passValue = t,

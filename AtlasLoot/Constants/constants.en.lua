@@ -80,6 +80,15 @@ AL:RegisterTranslations("enUS", function() return {
     ["AutoQuery items on loot tables |cffff0000(disconnection risk)|r"] = true,
     ["Done"] = true,
     ["WishList"] = true,
+    ["Search Result: %s"] = true,
+    ["Last Result"] = true,
+    ["Search on"] = true,
+    ["All modules"] = true,
+    ["If checked, AtlasLoot will load and search across all the modules."] = true,
+    ["Search options"] = true,
+    ["Partial matching"] = true,
+    ["If checked, AtlasLoot search item names for a partial match."] = true,
+    ["You don't have any module selected to search on!"] = true,
 
     --Slash commands
     ["reset"] = true,
@@ -127,18 +136,13 @@ AL:RegisterTranslations("enUS", function() return {
     ["World Events"] = true,
     ["Load Modules"] = true,
     ["Crafting"] = true,
-    
-    --Trades
-    ["Apprentice"] = true,
-    ["Journeyman"] = true,
-    ["Expert"] = true,
-    ["Artisan"] = true,
-    ["Master"] = true,
 
     --First time user
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = true,
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = true,
     ["New feature in 4.03.00: Introducing the Wishlist!  Simply alt-click on any item to add it to the wishlist.  To delete an item from the wishlist, open up your wishlist and alt-click the item to remove it.  It's that simple.  Buttons to view the wishlist have been added to the Atlas interface and the loot browser."] = true,
+    ["New feature in 4.05.00: Advanced searching functionality is now available. You can type in a partial item name, for example typing 'elixir' gives all items in the database with 'elixir' in the name.  Big thanks to Kurax for his help."] = true,
+    ["New feature in 4.05.00: All professions are now included in the AtlasLoot_Crafting module."] = true,
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences for tooltips and links in the chat window.\n\n  This options screen can be reached again at any later time by typing '/atlasloot'."] = true,
     ["Setup"] = true,
 
@@ -173,6 +177,10 @@ AL:RegisterTranslations("enUS", function() return {
     ["Fish"] = true,
     ["Combat Pet"] = true,
     ["Fireworks"] = true,
+    
+    --Extra inventory stuff
+    ["Cloak"] = true,
+    ["Weapons"] = true,
 
     --Labels for loot descriptions
     ["Classes:"] = true,
@@ -214,10 +222,10 @@ AL:RegisterTranslations("enUS", function() return {
     ["Rare Fish Rewards"] = true,
     ["Rare Fish"] = true,
     ["Tradable against sunmote + item above"] = true,
-	["Rare"] = true,
-	["Heroic"] = true,
-	["Summon"] = true,
-	["Random"] = true,
+    ["Rare"] = true,
+    ["Heroic"] = true,
+    ["Summon"] = true,
+    ["Random"] = true,
 
     --Card Game Decks and descriptions
     ["Upper Deck Card Game Items"] = true,
@@ -225,6 +233,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["Through The Dark Portal"] = true,
     ["Fires of Outland"] = true,
     ["Servants of the Betrayer"] = true,
+    ["Hunt for Illidan"] = true,
     ["Loot Card Items"] = true,
     ["UDE Items"] = true,
     ["Landro Longshot"] = true,
@@ -625,8 +634,8 @@ AL:RegisterTranslations("enUS", function() return {
     ["Kodohide Battlegear"] = true,
     ["Stalker's Chain Battlegear"] = true,
     ["Evoker's Silk Battlegear"] = true,
-    ["Crusader's Scaled Battlegear"] = true,
-    ["Crusader's Ornamented Battlegear"] = true,
+    ["Crusader's Scaled Battledgear"] = true,
+    ["Crusader's Ornamented Battledgear"] = true,
     ["Satin Battlegear"] = true,
     ["Mooncloth Battlegear"] = true,
     ["Opportunist's Battlegear"] = true,
@@ -755,6 +764,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["Level 50-60"] = true,
     ["BT Patterns/Plans"] = true,
     ["Hyjal Summit Designs"] =true,
+    ["SP Patterns/Plans"] = true,
 
     --NPCs missing from BabbleBoss
     ["Trash Mobs"] = true,
@@ -883,14 +893,14 @@ AL:RegisterTranslations("enUS", function() return {
     ["Razorfen Spearhide"] = true,
     ["Rethilgore"] = true,
     ["Kalldan Felmoon"] = true,
-	["Magregan Deepshadow"] = true,
-	["Lord Ahune"] = true,
+    ["Magregan Deepshadow"] = true,
+    ["Lord Ahune"] = true,
 
     --Zones
     ["World Drop"] = true,
     ["Sunwell Isle"] = true,
 	
-	--Shortcuts for Bossname files
+    --Shortcuts for Bossname files
     ["LBRS"] = true,
     ["UBRS"] = true,
     ["CoT1"] = true,
@@ -941,8 +951,9 @@ AL:RegisterTranslations("enUS", function() return {
     ["The Talon King's Coffer"] = true,
     ["Krom Stoutarm's Chest"] = true,
     ["Garrett Family Chest"] = true,
-	["Reinforced Fel Iron Chest"] = true,
-	["DM North Tribute Chest"] = true,
+    ["Reinforced Fel Iron Chest"] = true,
+    ["DM North Tribute Chest"] = true,
+
     --World Events
     ["Abyssal Council"] = true,
     ["Bash'ir Landing Skyguard Raid"] = true,

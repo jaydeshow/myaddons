@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 local FW = FW;
 local HS = FW:Module("Healthstone");
 
@@ -336,5 +336,5 @@ FW.Default.HealthstoneScale = 1;
 FW.Default.HealthstoneSpace = 1;
 FW.Default.HealthstoneExpand = false;
 FW.Default.HealthstoneMissing = true;
---FW.Default.HealthstoneNumber = 3;
---FW.Default.HealthstoneTopRank = true;
+--FW.Default.HealthstoneNumber = 3;--@ core
+--FW.Default.HealthstoneTopRank = true;--@ core

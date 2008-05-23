@@ -1,7 +1,10 @@
 local Graph = LibStub:GetLibrary("LibGraph-2.0")
-local L = AceLibrary("AceLocale-2.2"):new("Recount")
--- local Graph = AceLibrary("Graph-1.0")
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale( "Recount" )
 local me={}
+
+local revision = tonumber(string.sub("$Revision: 72353 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
 
 local GraphColors={
 	Damage={1.0,0.0,0.0,1.0},
@@ -98,7 +101,7 @@ function me:DataSparsen(data,amount)
 		Keep[#data[1]]=true
 	end
 
-	i=#data[1]
+	local i=#data[1]
 	
 	while i>0 do
 		if not Keep[i] then
@@ -407,13 +410,15 @@ function me:RefreshGraph()
 	--If time range is not set need to find what will be used then
 	if not Recount.TimeRangeSet then
 		local TimeRangeLower,TimeRangeUpper
-		for k,v in pairs(Recount.GraphWindow.Data) do
-			if v[1][1] then
-				if TimeRangeLower==nil or v[1][1]<TimeRangeLower then
-					TimeRangeLower=v[1][1]
-				end
-				if TimeRangeUpper==nil or v[1][table.maxn(v[1])]>TimeRangeUpper then
-					TimeRangeUpper=v[1][table.maxn(v[1])]
+		if Recount.GraphWindow.Data then
+			for k,v in pairs(Recount.GraphWindow.Data) do
+				if v[1][1] then
+					if TimeRangeLower==nil or v[1][1]<TimeRangeLower then
+						TimeRangeLower=v[1][1]
+					end
+					if TimeRangeUpper==nil or v[1][table.maxn(v[1])]>TimeRangeUpper then
+						TimeRangeUpper=v[1][table.maxn(v[1])]
+					end
 				end
 			end
 		end
@@ -428,71 +433,72 @@ function me:RefreshGraph()
 
 	
 
+	if Recount.GraphWindow.Data then
+		for k,v in pairs(Recount.GraphWindow.Data) do		
+			if type(v)=="table" and table.maxn(v[1])>0 and (v[1][1]~=nil) and me.Enabled[k] then
+				--Figure out the color used
+				local color=me.GraphColors[k]
+				
 
-	for k,v in pairs(Recount.GraphWindow.Data) do		
-		if type(v)=="table" and table.maxn(v[1])>0 and (v[1][1]~=nil) and me.Enabled[k] then
-			--Figure out the color used
-			local color=me.GraphColors[k]
-			
 
+				--Start procecssing this data			
+				Filtered=me:FilterDataByTime(v)	
 
-			--Start procecssing this data			
-			Filtered=me:FilterDataByTime(v)	
-
-			--Need to ensure its actually a copy if not then copy it
-			if Filtered==v then
-				Filtered=me:DataCopy(v)
-			end
-
-			if table.maxn(Filtered[1])>0 then
-				if Recount.GraphWindow.IntegrateOn then
-					me:IntegrateData(Filtered)
+				--Need to ensure its actually a copy if not then copy it
+				if Filtered==v then
+					Filtered=me:DataCopy(v)
 				end
 
-				if not Recount.GraphWindow.StackedOn then
-					Length=Filtered[1][table.maxn(Filtered[1])]-Filtered[1][1]
-					
-					if Length>300 then
-						me:DataSparsen(Filtered,Length/100)
-					end				
-
-					if Recount.GraphWindow.NormalizeOn then
-						me:NormalizeData(Filtered)
+				if table.maxn(Filtered[1])>0 then
+					if Recount.GraphWindow.IntegrateOn then
+						me:IntegrateData(Filtered)
 					end
 
-					
-					_, DataMax=me:FindMax(Filtered)
+					if not Recount.GraphWindow.StackedOn then
+						Length=Filtered[1][table.maxn(Filtered[1])]-Filtered[1][1]
+						
+						if Length>300 then
+							me:DataSparsen(Filtered,Length/100)
+						end				
 
-					me:SetMin(Filtered,0)
+						if Recount.GraphWindow.NormalizeOn then
+							me:NormalizeData(Filtered)
+						end
 
-					if MaxAmount<DataMax then
-						MaxAmount=DataMax
+						
+						_, DataMax=me:FindMax(Filtered)
+
+						me:SetMin(Filtered,0)
+
+						if MaxAmount<DataMax then
+							MaxAmount=DataMax
+						end
+
+						
+						Graph:AddDataSeries(Filtered,color,true)
+
+						if MaxLength<Length then
+							MaxLength=Length
+						end
+
+						--Done with it so lets remove it
+						Recount:FreeTableRecurse(Filtered)
+					else
+						--Stacked Graph Data needs to be stored for the moment
+						_, DataMax=me:FindMax(Filtered)
+						Temp=Recount:GetTable()
+						Temp[1]=DataMax
+						Temp[2]=Filtered
+						Temp[3]=color
+						Temp[4]=k
+						table.insert(Stacked,Temp)
 					end
-
-					
-					Graph:AddDataSeries(Filtered,color,true)
-
-					if MaxLength<Length then
-						MaxLength=Length
-					end
-
-					--Done with it so lets remove it
-					Recount:FreeTableRecurse(Filtered)
-				else
-					--Stacked Graph Data needs to be stored for the moment
-					_, DataMax=me:FindMax(Filtered)
-					Temp=Recount:GetTable()
-					Temp[1]=DataMax
-					Temp[2]=Filtered
-					Temp[3]=color
-					Temp[4]=k
-					table.insert(Stacked,Temp)
 				end
 			end
+			i=i+1
 		end
-		i=i+1
 	end
-
+		
 	if Recount.GraphWindow.StackedOn then
 		local Current=Recount:GetTable()
 		table.sort(Stacked,SortForStack)
@@ -608,7 +614,7 @@ function me:RefreshGraph()
 	local Width=Background:GetWidth()/(XMax-XMin)
 	local T
 	--Code for drawing the various fights with a red background
-	for k,v in ipairs(Recount.db.char.CombatTimes) do
+	for k,v in ipairs(Recount.db2.CombatTimes) do
 		if CurPos<v[1] then
 			if v[1]>XMax then
 				return
@@ -665,7 +671,7 @@ function me:SelectCombatTimes(id)
 	end
 
 	Recount.TimeRangeSet=id+offset
-	local Times=Recount.db.char.CombatTimes[id+offset]
+	local Times=Recount.db2.CombatTimes[id+offset]
 
 	Recount.TimeRangeLower=Times[1]-30
 	Recount.TimeRangeUpper=Times[2]+30
@@ -684,7 +690,7 @@ function me:SelectCombatTimes(id)
 end
 
 function me:SelectCombatTime(time)
-	for k,v in pairs(Recount.db.char.CombatTimes) do
+	for k,v in pairs(Recount.db2.CombatTimes) do
 		if v[1]<=time and time<=v[2] then
 			local Graph=Recount.GraphWindow.LineGraph
 			Recount.TimeRangeSet=k
@@ -703,7 +709,7 @@ end
 function me:HighlightCombatTime(time)
 	local TimeOver=nil
 	if time then
-		for k,v in pairs(Recount.db.char.CombatTimes) do
+		for k,v in pairs(Recount.db2.CombatTimes) do
 			if v[1]<=time and time<=v[2] then
 				TimeOver=k
 				break
@@ -753,36 +759,38 @@ function Recount:SetGraphData(name,data,combat)
 	end
 	
 	local i=1
-	for k, _ in pairs(Recount.GraphWindow.Data) do
-		local color=GraphColors[k]
+	if Recount.GraphWindow.Data then
+		for k, _ in pairs(Recount.GraphWindow.Data) do
+			local color=GraphColors[k]
 
-		if type(color)~="table" then
-			if Recount.GraphCompare then
-				Class=Recount.GraphClass[k]
-				ClassCount[Class]=(ClassCount[Class] or 0) + 1
-				if ClassCount[Class]<=8 then
-					Shade=ShadeVariant[ClassCount[Class]]
-					color={Shade*Recount.db.profile.Colors.Class[Class].r,Shade*Recount.db.profile.Colors.Class[Class].g,Shade*Recount.db.profile.Colors.Class[Class].b,1}
+			if type(color)~="table" then
+				if Recount.GraphCompare then
+					Class=Recount.GraphClass[k]
+					ClassCount[Class]=(ClassCount[Class] or 0) + 1
+					if ClassCount[Class]<=8 then
+						Shade=ShadeVariant[ClassCount[Class]]
+						color={Shade*Recount.db.profile.Colors.Class[Class].r,Shade*Recount.db.profile.Colors.Class[Class].g,Shade*Recount.db.profile.Colors.Class[Class].b,1}
+					else
+						color={math.random(),math.random(),math.random(),1}
+					end
 				else
 					color={math.random(),math.random(),math.random(),1}
 				end
-			else
-				color={math.random(),math.random(),math.random(),1}
 			end
+
+			me.GraphColors[k]=color
+			me.Enabled[k]=true
+
+			if i<=10 then
+				Recount.GraphWindow.Rows[i]:Show()
+				Recount.GraphWindow.Rows[i].Key:SetVertexColor(color[1],color[2],color[3],1)
+				Recount.GraphWindow.Rows[i].Name:SetText(GraphName[k] or k)
+			end
+
+			i=i+1
 		end
-
-		me.GraphColors[k]=color
-		me.Enabled[k]=true
-
-		if i<=10 then
-			Recount.GraphWindow.Rows[i]:Show()
-			Recount.GraphWindow.Rows[i].Key:SetVertexColor(color[1],color[2],color[3],1)
-			Recount.GraphWindow.Rows[i].Name:SetText(GraphName[k] or k)
-		end
-
-		i=i+1
 	end
-	
+		
 	Recount.GraphWindow.Entries=i-1
 	
 	for j=i,10 do
@@ -802,19 +810,21 @@ function Recount:GraphRefreshData()
 	local offset = FauxScrollFrame_GetOffset(Recount.GraphWindow.ScrollBar1)
 	local Rows=Recount.GraphWindow.Rows
 	local i=1-offset
-	
-	for k, v in pairs(Recount.GraphWindow.Data) do
-		if i>=1 and i<=10 then
-			Rows[i]:Show()
-			Rows[i].Key:SetVertexColor(me.GraphColors[k][1],me.GraphColors[k][2],me.GraphColors[k][3],1)
-			Rows[i].Name:SetText(GraphName[k] or k)
-			Recount:CheckFontStringLength(Rows[i].Name,180)
-			Rows[i].Enabled:SetChecked(me.Enabled[k])
-			Rows[i].Enabled.Key=k
-		end
-		i=i+1
-	end
 
+	if Recount.GraphWindow.Data then
+		for k, v in pairs(Recount.GraphWindow.Data) do
+			if i>=1 and i<=10 then
+				Rows[i]:Show()
+				Rows[i].Key:SetVertexColor(me.GraphColors[k][1],me.GraphColors[k][2],me.GraphColors[k][3],1)
+				Rows[i].Name:SetText(GraphName[k] or k)
+				Recount:CheckFontStringLength(Rows[i].Name,180)
+				Rows[i].Enabled:SetChecked(me.Enabled[k])
+				Rows[i].Enabled.Key=k
+			end
+			i=i+1
+		end
+	end
+		
 	while i<=10 do
 		Rows[i]:Hide()
 		i=i+1
@@ -823,7 +833,7 @@ end
 
 
 function Recount:GraphRefreshCombat()
-	local combat=Recount.db.char.CombatTimes
+	local combat=Recount.db2.CombatTimes
 	local size=table.getn(combat)
 	FauxScrollFrame_Update(Recount.GraphWindow.ScrollBar2, size, 10, 20)
 	local offset = FauxScrollFrame_GetOffset(Recount.GraphWindow.ScrollBar2)
@@ -885,8 +895,8 @@ function Recount:CreateGraphWindow()
 	theFrame:SetScript("OnMouseUp", function() 
 						if ( this.isMoving ) then
 						  local point,relativeTo,relativePoint,xOfs,yOfs = this:GetPoint(1)
-						  Recount.db.char.GraphWindowX=xOfs
-						  Recount.db.char.GraphWindowY=yOfs
+						  Recount.db.profile.GraphWindowX=xOfs
+						  Recount.db.profile.GraphWindowY=yOfs
 						  this:StopMovingOrSizing();
 						  this.isMoving = false;
 						 end
@@ -898,8 +908,8 @@ function Recount:CreateGraphWindow()
 	theFrame:SetScript("OnHide", function()
 						if ( this.isMoving ) then
 						  local point,relativeTo,relativePoint,xOfs,yOfs = this:GetPoint(1)
-						  Recount.db.char.GraphWindowX=xOfs
-						  Recount.db.char.GraphWindowY=yOfs
+						  Recount.db.profile.GraphWindowX=xOfs
+						  Recount.db.profile.GraphWindowY=yOfs
 						  this:StopMovingOrSizing();
 						  this.isMoving = false;
 						 end
@@ -1017,9 +1027,11 @@ function Recount:CreateGraphWindow()
 								local mX=GetCursorPosition()
 								local TimePos
 
-								TimePos=(mX/Scale-sX+this:GetWidth()/2)/this:GetWidth()
-								TimePos=TimePos*(Recount.TimeRangeUpper-Recount.TimeRangeLower)+Recount.TimeRangeLower
-								me:SelectCombatTime(TimePos)								
+								if Recount.TimeRangeUpper then -- Elsia: Prevent nil error
+									TimePos=(mX/Scale-sX+this:GetWidth()/2)/this:GetWidth()
+									TimePos=TimePos*(Recount.TimeRangeUpper-Recount.TimeRangeLower)+Recount.TimeRangeLower
+									me:SelectCombatTime(TimePos)								
+								end 
 							end
 						end)
 	theFrame.GraphBackground:SetScript("OnDragStart", function() 							
@@ -1034,10 +1046,12 @@ function Recount:CreateGraphWindow()
 							local mX=GetCursorPosition()
 							local TimePos
 
-							TimePos=(mX/Scale-sX+this:GetWidth()/2)/this:GetWidth()
-							TimePos=TimePos*(Recount.TimeRangeUpper-Recount.TimeRangeLower)+Recount.TimeRangeLower
-							me:HighlightCombatTime(TimePos)
-
+							if Recount.TimeRangeUpper then -- Elsia: Prevent nil error
+								TimePos=(mX/Scale-sX+this:GetWidth()/2)/this:GetWidth()
+								TimePos=TimePos*(Recount.TimeRangeUpper-Recount.TimeRangeLower)+Recount.TimeRangeLower
+								me:HighlightCombatTime(TimePos)
+							end 
+								
 							--Need XMin and XMax of the graph
 							local Graph=Recount.GraphWindow.LineGraph
 							local XMin=Graph.XMin
@@ -1053,13 +1067,15 @@ function Recount:CreateGraphWindow()
 							--Now figure out left and right
 							local Left,Right
 
-							Left=math.max(math.min(Recount.GraphWindow.DragTimeStart,XMax),XMin)
-							Right=math.max(math.min(TimePos,XMax),XMin)
+							if Recount.GraphWindow.DragTimeStart then
+								Left=math.max(math.min(Recount.GraphWindow.DragTimeStart,XMax),XMin)
+								Right=math.max(math.min(TimePos,XMax),XMin)
 
-							if Right<Left then
-								local t=Left
-								Left=Right
-								Right=t
+								if Right<Left then
+									local t=Left
+									Left=Right
+									Right=t
+								end
 							end
 
 							--Now to set the graph

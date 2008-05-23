@@ -40,8 +40,8 @@ L:RegisterTranslations("zhCN", function() return {
 	["Global"] = "全局",
 	["<time> <bar text>"] = "<时间> <计时条名字>",
 	["Starts a custom bar with the given parameters."] = "启动自定义时间条。",
-	["%s: Timer [%s] finished."] = "%s: 计时条 [%s] 到时间。",
-	["Invalid time (|cffff0000%q|r) or missing bar text in a custom bar started by |cffd9d919%s|r. <time> can be either a number in seconds, a M:S pair, or Mm. For example 5, 1:20 or 2m."] = "无效记时条 (|cffff0000%q|r) 或 |cffd9d919%s|r 上的记时条文字错误，<time> 输入一个数字单位默认为秒，可以为 M:S 或者 Mm. 例如 5, 1:20 or 2m.",
+	["%s: Timer [%s] finished."] = "%s：计时条[%s]到时间。",
+	["Invalid time (|cffff0000%q|r) or missing bar text in a custom bar started by |cffd9d919%s|r. <time> can be either a number in seconds, a M:S pair, or Mm. For example 5, 1:20 or 2m."] = "无效记时条（|cffff0000%q|r）或 |cffd9d919%s|r 上的记时条文字错误，<time> 输入一个数字单位默认为秒，可以为 M:S 或者 Mm. 例如 5, 1:20 or 2m.",
 } end)
 
 L:RegisterTranslations("zhTW", function() return {
@@ -73,20 +73,20 @@ L:RegisterTranslations("frFR", function() return {
 	["Global"] = "Globale",
 	["<time> <bar text>"] = "<durée> <texte de la barre>",
 	["Starts a custom bar with the given parameters."] = "Démarre une barre personnalisée avec les paramètres indiqués.",
-	["%s: Timer [%s] finished."] = "%s: Délai [%s] terminé.",
-	["Invalid time (|cffff0000%q|r) or missing bar text in a custom bar started by |cffd9d919%s|r. <time> can be either a number in seconds, a M:S pair, or Mm. For example 5, 1:20 or 2m."] = "Durée invalide (|cffff0000%q|r) ou texte de barre manquant dans une barre personnalisée lancée par |cffd9d919%s|r. <durée> peut être soit un nombre en secondes, soit au format M:S, ou encore au format Mm. Par exemple : 5, 1:20 ou 2m.",
+	["%s: Timer [%s] finished."] = "%s : Délai [%s] terminé.",
+	["Invalid time (|cffff0000%q|r) or missing bar text in a custom bar started by |cffd9d919%s|r. <time> can be either a number in seconds, a M:S pair, or Mm. For example 5, 1:20 or 2m."] = "Durée invalide (|cffff0000%q|r) ou texte de barre manquant dans une barre personnalisée lancée par |cffd9d919%s|r. <durée> peut être soit un nombre en secondes, soit au format M:S, ou encore au format Mm. Par exemple : 5, 1:20 ou 2m.",
 } end)
 
 L:RegisterTranslations("esES", function() return {
 	["CustomBars"] = "BarrasPersonales",
 	["Custom Bars"] = "Barras Personales",
-	["Start a custom bar, either local or global."] = "Comienza una barra personal, ya sea local o global",
+	["Start a custom bar, either local or global."] = "Iniciar una barra personal, ya sea local o global",
 	["Local"] = "Local",
 	["Global"] = "Global",
 	["<time> <bar text>"] = "<tiempo> <Texto de barra>",
-	["Starts a custom bar with the given parameters."] = "Comienza una barra personal con los parametros dados",
+	["Starts a custom bar with the given parameters."] = "Iniciar una barra personal con los parametros dados",
 	["%s: Timer [%s] finished."] = "%s: Temporizador [%s] finalizado",
-	["Invalid time (|cffff0000%q|r) or missing bar text in a custom bar started by |cffd9d919%s|r. <time> can be either a number in seconds, a M:S pair, or Mm. For example 5, 1:20 or 2m."] = "Tiempo inv\195\161lido (|cffff0000%q|r) o texto de barra ausente en una barra personal comenzada por |cffd9d919%s|r. <tiempo> puede ser un n\195\186mero en segundos, una pareja M:S, o Mm. Por ejemplo 5, 1:20 or 2m.",
+	["Invalid time (|cffff0000%q|r) or missing bar text in a custom bar started by |cffd9d919%s|r. <time> can be either a number in seconds, a M:S pair, or Mm. For example 5, 1:20 or 2m."] = "Tiempo inv\195\161lido (|cffff0000%q|r) o texto de barra ausente en una barra personal iniciada por |cffd9d919%s|r. <tiempo> puede ser un n\195\186mero en segundos, una pareja M:S, o Mm. Por ejemplo 5, 1:20 or 2m.",
 } end)
 
 ----------------------------------
@@ -94,7 +94,7 @@ L:RegisterTranslations("esES", function() return {
 ----------------------------------
 
 local mod = BigWigs:NewModule("Custom Bars")
-mod.revision = tonumber(("$Revision: 57759 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 mod.external = true
 mod.consoleCmd = L["CustomBars"]
 mod.defaultDB = {

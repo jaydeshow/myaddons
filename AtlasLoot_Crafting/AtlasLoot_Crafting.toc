@@ -8,7 +8,7 @@
 ## Notes-zhCN: AtlasLoot 交易技能制造出的物品表
 ## Notes-zhTW: AtlasLoot 商業技能物品資料庫
 ## Author: Daviesh
-## Version: 4.04.00
+## Version: 4.05.00
 ## X-eMail: oma_daviesh@hotmail.com
 ## X-Category: Map
 ## X-License: GPL v2
@@ -18,4 +18,8 @@
 
 crafting.en.lua
 crafting.cn.lua
+crafting.de.lua
+crafting.es.lua
+crafting.fr.lua
 crafting.tw.lua
+crafting.kr.lua

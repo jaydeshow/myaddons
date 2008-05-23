@@ -290,6 +290,22 @@ GemHelper_GemData = {
 	[34220] = {["r"] = 3, [101] = true, [41] = true, [14] = true, [81] = true},	-- Chaotic Skyfire Diamond, meta, +12 spellcrit, +3% spell crit damage
 	[34256] = {["r"] = 4, [104] = true, [11] = true, [63] = true},			-- Charmed Amani Jewel, blue, 15 stam
 
+	-- Added in Gem Helper v1.6 (patch 2.4.0)
+	[35503] = {["r"] = 3, [101] = true, [41] = true, [14] = true, [83] = true, [64] = true},	-- Ember Skyfire Diamond, meta, +14 spelldmg, +2% int
+	[35501] = {["r"] = 3, [101] = true, [42] = true, [14] = true, [75] = true},	-- Eternal Earthstorm Diamond, meta, +12 def, +10% shieldblock
+	[35707] = {["r"] = 3, [101] = true, [36] = true, [12] = true, [11] = true, [74] = true, [63] = true},	-- Regal Nightseye, red, blue, 4 dodge, 6 stam
+	[34831] = {["r"] = 3, [104] = true, [11] = true, [63] = true},				-- Eye of the Sea, blue, 15 stam
+	[35758] = {["r"] = 4, [101] = true, [54] = true, [11] = true, [13] = true, [66] = true, [63] = true},	-- Steady Seaspray Emerald, blue, yellow, 5 res, 7 stam
+	[35759] = {["r"] = 4, [101] = true, [54] = true, [11] = true, [13] = true, [70] = true, [63] = true},	-- Forceful Seaspray Emerald, blue, yellow, 5 spellhaste, 7 stam
+	[35760] = {["r"] = 4, [101] = true, [55] = true, [12] = true, [13] = true, [70] = true, [83] = true},	-- Reckless Pyrestone, red, yellow, 5 spellhaste, 6 spelldmg
+	[35761] = {["r"] = 4, [101] = true, [53] = true, [13] = true, [70] = true},				-- Quick Lionseye, yellow, 10 spellhaste
+
+	-- Added in Gem Helper v1.7 (patch 2.4.2)
+	[37503] = {["r"] = 4, [101] = true, [56] = true, [12] = true, [11] = true, [84] = true, [65] = true},	-- Purified Shadowsong Amethyst, red, blue, 11 heal, 5 spi
+	[35315] = {["r"] = 3, [101] = true, [33] = true, [13] = true, [70] = true},				-- Quick Dawnstone, yellow, 8 spellhaste
+	[35316] = {["r"] = 3, [101] = true, [35] = true, [13] = true, [12] = true, [70] = true, [83] = true},	-- Reckless Noble Topaz, red, yellow, 4 spellhaste, 5 spelldmg
+	[35318] = {["r"] = 3, [101] = true, [34] = true, [13] = true, [11] = true, [70] = true, [63] = true},	-- Forceful Talasite, yellow, blue, 4 spellhaste, 6 stam
+
 	--[[
 	The following epic quality gems exist in game (you can sniff their itemIDs), but nobody knows how to obtain the recipes to craft them.
 	[33132]-- Delicate Fire Ruby, red, 12 agi

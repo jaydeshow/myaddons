@@ -37,6 +37,28 @@ L:RegisterTranslations("enUS", function() return {
 	icon_desc = "Put an icon on players with Impaling Spine.",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	start_trigger = "¡Moriréis en el nombre de Lady Vashj!",
+
+	spine = "Espinazo empalador (Impaling Spine)",
+	spine_desc = "Avisar quién tiene Espinazo empalador.",
+	spine_message = "¡Espinazo empalador en %s!",
+
+	spinesay = "Decir Espinazo",
+	spinesay_desc = "Escribe en el canal 'decir' cuando tienes un Espinazo, puede ayudar a compañeros cercanos con bocadillos de chat activados.",
+	spinesay_message = "¡Tengo Espinazo!",
+
+	shield = "Escudo de marea (Tidal Shield)",
+	shield_desc = "Contadores para saber cuándo Naj'entus ganará Escudo de marea.",
+	shield_nextbar = "~Escudo de marea",
+	shield_warn = "¡Escudo de marea!",
+	shield_soon_warn = "Escudo de marea en ~10 seg",
+	shield_fade = "¡Fin Escudo de marea!",
+
+	icon = "Icono",
+	icon_desc = "Poner un icono sobre los jugadores con Espinazo empalador.",
+} end )
+
 L:RegisterTranslations("deDE", function() return {
 	start_trigger = "Im Namen Lady Vashjs werdet Ihr sterben!",
 
@@ -64,21 +86,21 @@ L:RegisterTranslations("koKR", function() return {
 
 	spine = "꿰뚫는 돌기",
 	spine_desc = "꿰뚫는 돌기에 걸린 사람을 알립니다.",
-	spine_message = "%s에게 꿰뚫는 돌기!",
+	spine_message = "%s 꿰뚫는 돌기!",
 
 	spinesay = "돌기 알림",
-	spinesay_desc = "꿰뚫는 돌기에 걸렸을 때, 주변 아군에게 돌기에 걸렸음을 일반 대화로 알립니다.",
+	spinesay_desc = "꿰뚫는 돌기에 걸렸을 때, 주변 아군에게 일반 대화로 알립니다.",
 	spinesay_message = "저 돌기! 살려주세요!!",
 
 	shield = "해일의 보호막",
-	shield_desc = "대장군 나젠투스가 해일의 보호막을 얻을 떄에 대한 타이머 입니다.",
+	shield_desc = "대장군 나젠투스가 해일의 보호막 획득에 대한 타이머 입니다.",
 	shield_nextbar = "다음 해일의 보호막",
 	shield_warn = "해일의 보호막!",
 	shield_soon_warn = "약 10초 이내 해일의 보호막!",
 	shield_fade = "보호막 사라짐!",
 
 	icon = "전술 표시",
-	icon_desc = "꿰뚫는 돌기에 걸린 플레이어에게 전술 표시를 지정합니다.",
+	icon_desc = "꿰뚫는 돌기에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -86,18 +108,18 @@ L:RegisterTranslations("frFR", function() return {
 
 	spine = "Epine de perforation",
 	spine_desc = "Préviens quand un joueur subit les effets de l'Epine de perforation.",
-	spine_message = "Epine de perforation sur %s !",
+	spine_message = "Epine de perforation sur %s !",
 
 	spinesay = "Dire - Epine de perforation",
 	spinesay_desc = "Fais dire à votre personnage qu'il a une épine quand c'est le cas afin d'aider les membres proches.",
-	spinesay_message = "Épine sur moi !",
+	spinesay_message = "Épine sur moi !",
 
 	shield = "Bouclier de flots",
 	shield_desc = "Délais concernant le Bouclier de flots de Naj'entus.",
 	shield_nextbar = "Prochain Bouclier de flots",
-	shield_warn = "Bouclier de flots !",
-	shield_soon_warn = "Bouclier de flots dans ~10 sec. !",
-	shield_fade = "Bouclier dissipé !",
+	shield_warn = "Bouclier de flots !",
+	shield_soon_warn = "Bouclier de flots dans ~10 sec. !",
+	shield_fade = "Bouclier dissipé !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par l'Epine de perforation (nécessite d'être promu ou mieux).",
@@ -107,22 +129,22 @@ L:RegisterTranslations("zhCN", function() return {
 	start_trigger = "以瓦丝琪女王的名义，去死吧！",
 
 	spine = "穿刺之脊",
-	spine_desc = "当谁中了穿刺时告诉你。",
+	spine_desc = "当玩家受到穿刺时通知你。",
 	spine_message = "穿刺之脊：>%s<！",
 
 	spinesay = "穿刺警报",
-	spinesay_desc = "当你中了穿刺会自动喊话，能帮助周围队员避让。",
+	spinesay_desc = "当你受到穿刺时发出喊话，能帮助周围队员避让。",
 	spinesay_message = "我中了穿刺！",
 
 	shield = "海潮之盾",
-	shield_desc = "当纳因图斯获得海潮之盾后计时。",
+	shield_desc = "当获得海潮之盾后计时。",
 	shield_nextbar = "<下一海潮之盾>",
 	shield_warn = "海潮之盾！",
-	shield_soon_warn = "海潮之盾 ~10秒 后发动！",
+	shield_soon_warn = "海潮之盾！约10秒后发动。",
 	shield_fade = "海潮之盾 消失！",
 
 	icon = "团队标记",
-	icon_desc = "给中了穿刺之脊的玩家打上团队标记。(需要权限)",
+	icon_desc = "给中了穿刺之脊的玩家打上团队标记。（需要权限）",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -130,21 +152,21 @@ L:RegisterTranslations("zhTW", function() return {
 
 	spine = "尖刺脊椎",
 	spine_desc = "通知你誰受到尖刺脊椎",
-	spine_message = "尖刺脊椎：[%s]",
+	spine_message = "尖刺脊椎: [%s]",
 
 	spinesay = "尖刺脊椎通報",
-	spinesay_desc = "當你中了尖刺脊椎會時自動喊話，讓周圍隊友幫忙。",
-	spinesay_message = "我中刺了！麻煩拔一下！",
+	spinesay_desc = "當你中了尖刺脊椎會時自動喊話，讓周圍隊友幫忙拔除。",
+	spinesay_message = "我中刺了! 麻煩拔一下!",
 
 	shield = "潮汐之盾",
 	shield_desc = "潮汐之盾計時",
-	shield_nextbar = "下一次潮汐之盾",
+	shield_nextbar = "<下一次潮汐之盾>",
 	shield_warn = "潮汐之盾!",
-	shield_soon_warn = "潮汐之盾在 ~10秒內施放!",
+	shield_soon_warn = "約 10 秒內施放潮汐之盾!",
 	shield_fade = "潮汐之盾消失!",
 
 	icon = "團隊標記",
-	icon_desc = "在受到尖刺脊椎的隊友頭上標記。",
+	icon_desc = "在受到尖刺脊椎的隊友頭上標記。 (需要權限)",
 } end )
 
 ----------------------------------
@@ -155,7 +177,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"enrage", "shield", -1, "spine", "spinesay", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 65907 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 2 ) end
 mod.proximitySilent = true
 
@@ -196,7 +218,7 @@ end
 
 function mod:ImpalingSpine(player, spellID)
 	if db.spine then
-		if db.spinesay and player == UnitName("player") then
+		if UnitIsUnit(player, "player") and db.spinesay then
 			SendChatMessage(L["spinesay_message"], "SAY")
 		end
 		self:IfMessage(fmt(L["spine_message"], player), "Important", spellID, "Alert")

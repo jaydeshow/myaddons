@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 Name: AstrolabeMapMonitor
 Revision: $Rev$
 $Date$

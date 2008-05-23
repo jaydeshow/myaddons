@@ -4,7 +4,7 @@
 
 Outfitter.cContributors = {"Dridzt", "Kal_Zakath13", "Smurfy", "XMinionX", "Zanoroy"}
 Outfitter.cFriendsAndFamily = {"Brian", "Dave", "Glenn", "Leah", "Mark", "Gian", "Jerry", "The Mighty Pol", "Forge"}
-Outfitter.cTranslators = {"Jullye (FR)", "Quetzaco (FR)", "Ekhurr (FR)", "Negwe (FR)", "Ani (DE)", "Zokrym (DE)", "Dessa (DE)", "Unknown (KR)","someone(zhCn)"}
+Outfitter.cTranslators = {"Jullye (FR)", "Quetzaco (FR)", "Ekhurr (FR)", "Negwe (FR)", "Ani (DE)", "Zokrym (DE)", "Dessa (DE)", "Unknown (KR)", "someone(zhCN/zhTW)"}
 Outfitter.cTesters = {"Whishann", "HunterZ", "docthis", "Irdx", "TigaFIN", "iceeagle", "Denrax", "rasmoe", "Katlefiya", "gtmsece", "Militis", "Casard", "saltorio", "elusif"}
 
 ----------------------------------------
@@ -49,11 +49,11 @@ Outfitter.BankFrameIsOpen = false
 	
 Outfitter.SettingTypeInfo =
 {
-	String      = {Default = "",    FrameType = "EditBox"          },
-	Number      = {Default = 0,     FrameType = "EditBox"          },
-	StringTable = {Default = {},    FrameType = "ScrollableEditBox"},
-	ZoneList    = {Default = {},    FrameType = "ZoneListEditBox"  },
-	Boolean     = {Default = false, FrameType = "Checkbox"         },
+	string      = {Default = "",    FrameType = "EditBox"          },
+	number      = {Default = 0,     FrameType = "EditBox"          },
+	stringtable = {Default = {},    FrameType = "ScrollableEditBox"},
+	zonelist    = {Default = {},    FrameType = "ZoneListEditBox"  },
+	boolean     = {Default = false, FrameType = "Checkbox"         },
 }
 
 Outfitter.Style = {}
@@ -227,83 +227,34 @@ Outfitter.cItemLinkFormat = "|(%x+)|Hitem:(-?%d+):(-?%d+):(-?%d+):(-?%d+):(-?%d+
 
 Outfitter.cUniqueEquippedGemIDs =
 {
-	[3062] = true, -- Assassin's Fire Opal, Item 30565, +6 Critical Rating and +5 Dodge Rating
-	[3084] = true, -- Beaming Fire Opal, ItemCode 30601, +5 Dodge Rating and +4 Resilience Rating
-	[3100] = true, -- Blessed Tanzanite, ItemCode 30552, +11 Healing and +6 Stamina
 	[2850] = true, -- Blood of Amber, ItemCode 33140, +13 Spell Critical Strike Rating
 	[2945] = true, -- Bold Ornate Ruby, ItemCode 28362, +20 Attack Power
 	[2749] = true, -- Brilliant Bladestone, ItemCode 33139, +12 Intellect
-	[3067] = true, -- Brutal Tanzanite, ItemCode 30574, +10 Attack Power and +6 Stamina
-	[3075] = true, -- Champion's Fire Opal, ItemCode 30587, +5 Strength and +4 Defense
 	[1068] = true, -- Charmed Amani Jewel, ItemCode 34256, +15 Stamina
 	[1593] = true, -- Crimson Sun, ItemCode 33131, +24 Attack Power
-	
-	[3077] = true, -- Dazzling Chrysoprase, ItemCode 30589, +5 Intellect and 2 mana per 5 sec.
-	[3070] = true, -- Deadly Fire Opal, ItemCode 30582, +8 Attack Power and +5 Critical Rating
-	[3063] = true, -- Defender's Tanzanite, ItemCode 30566, +5 Parry Rating and +6 Stamina
 	[368] = true, -- Delicate Fire Ruby, ItemCode 33132, +12 Agility
 	[3210] = true, -- Don Julio's Heart, ItemCode 33133
-	[3069] = true, -- Durable Fire Opal, ItemCode 30581, +11 Healing and +4 Resilience Rating
-	[3082] = true, -- Effulgent Chrysoprase, ItemCode 30594, +5 Defense Rating and 2 mana per 5 sec.
-	[3079] = true, -- Empowered Fire Opal, ItemCode 30591, +8 Attack Power and +5 Resilience Rating
-	[3078] = true, -- Enduring Chrysoprase, ItemCode 30590, +6 Stamina and +5 Defense Rating
-	[3072] = true, -- Enscribed Fire Opal, ItemCode 30584, +5 Strength and +4 Critical Rating
-	
-	[3057] = true, -- Etched Fire Opal, ItemCode 30559, +5 Strength and +4 Hit Rating
 	[1957] = true, -- Facet of Eternity, ItemCode 33144, +12 Defense Rating
 	[1071] = true, -- Falling Star, ItemCode 33135, +18 Stamina
-	[3083] = true, -- Fluorescent Tanzanite, ItemCode 30600, +6 Spell Damage and +4 Spirit
 	[2914] = true, -- Gleaming Ornate Dawnstone, ItemCode 28120, +10 Spell Critical Strike Rating FIXME: Is this supposed to be 2934 maybe?
-	[3056] = true, -- Glimmering Fire Opal, ItemCode 30558, +5 Parry Rating and +4 Defense Rating
-	[3055] = true, -- Glinting Fire Opal, ItemCode 30556, +5 Agility and +4 Hit Rating
-	[3073] = true, -- Glistening Fire Opal, ItemCode 30585, +4 Agility and +5 Defense Rating
-	[3099] = true, -- Glowing Tanzanite, ItemCode 30555, +6 Spell Damage and +6 Stamina
+
 	[3218] = true, -- Great Bladestone, ItemCode 33141, +12 Spell Hit Rating
-	
-	[3064] = true, -- Imperial Tanzanite, ItemCode 30572, +5 Spirit and +9 Healing
-	[3050] = true, -- Infused Fire Opal, ItemCode 30551, +6 Spell Damage and +4 Intellect
 	[2946] = true, -- Inscribed Ornate Topaz, ItemCode 28363, +10 Attack Power, +5 Critical Strike Rating
-	[3081] = true, -- Iridescent Fire Opal, ItemCode 30593, +11 Healing and +4 Spell Critical Rating
-	[3085] = true, -- Jagged Chrysoprase, ItemCode 30602, +6 Stamina and +5 Crit Rating
 	[3211] = true, -- Kailee's Rose, ItemCode 33134, +26 Healing and +9 Spell Damage
-	[3089] = true, -- Lambent Chrysoprase, ItemCode 30606, +5 Spell Hit Rating and 2 mana per 5 sec.
-	[3046] = true, -- Luminous Fire Opal, ItemCode 30547, +11 Healing and +4 Intellect
-	[3066] = true, -- Mysterious Fire Opal, ItemCode 30573, +6 Spell Damage and +5 Spell Penetration
 	[3215] = true, -- Mystic Bladestone, ItemCode 33138, +12 Resilience Rating
-	
-	[3068] = true, -- Nimble Fire Opal, ItemCode 30575, +5 Dodge Rating and +4 Hit Rating
-	[3047] = true, -- Polished Chrysoprase, ItemCode 30548, +6 Stamina and +5 Spell Crit Rating
-	[3076] = true, -- Potent Fire Opal, ItemCode 30588, +6 Spell Damage and +4 Spell Critical Rating
 	[2916] = true, -- Potent Ornate Topaz, ItemCode 28123, +6 Spell Damage, +5 Spell Crit Rating
-	[3052] = true, -- Pristine Fire Opal, ItemCode 30553, +10 Attack Power and +4 Hit Rating
-	[3091] = true, -- Radiant Chrysoprase, ItemCode 30608, +5 Spell Critical Rating and +5 Spell Penetration
 	[1591] = true, -- Radiant Spencerite, ItemCode 32735, +20 Attack Power
-	[3060] = true, -- Regal Tanzanite, ItemCode 30563, +5 Dodge Rating and +6 Stamina
-	[3087] = true, -- Resplendent Fire Opal, Item ID 30604, ItemCode 3087, 
 	[2784] = true, -- Rigid Bladestone, ItemCode 33142, +12 Hit Rating
-	
-	[3086] = true, -- Royal Tanzanite, ItemCode 30603, +11 Healing and 2 mana per 5 sec.
-	[3058] = true, -- Rune Covered Chrysoprase, ItemCode 30560, +5 Spell Critical Rating and 2 mana per 5 sec.
 	[2912] = true, -- Runed Ornate Ruby, ItemCode 28118, +12 Spell Damage
-	[3074] = true, -- Seer's Chrysoprase, ItemCode 30586, +4 Intellect and +5 Spirit
-	[3048] = true, -- Shifting Tanzanite, ItemCode 30549, +5 Strength and +4 Agility
-	[3061] = true, -- Shining Fire Opal, ItemCode 30564, +6 Spell Damage and +5 Spell Hit Rating
 	[2913] = true, -- Smooth Ornate Dawnstone, ItemCode 28119, +10 Critical Strike Rating
-	[3045] = true, -- Sovereign Tanzanite, ItemCode 30546, +5 Strength and +6 Stamina
 	[370] = true, -- Sparkling Falling Star, ItemCode 33137, +12 Spirit
-	[3090] = true, -- Splendid Fire Opal, ItemCode 30607, +5 Parry Rating and +4 Resilience Rating
 	
-	[3053] = true, -- Stalwart Fire Opal, ItemCode 30554, +5 Defense Rating and +4 Dodge Rating
-	[3080] = true, -- Steady Chrysoprase, ItemCode 30592, +6 Stamina and +5 Resilience Rating
 	[3220] = true, -- Stone of Blades, ItemCode 33143, +12 Critical Strike Rating
 	[2891] = true, -- Sublime Mystic Dawnstone, ItemCode 27679, +10 Resilience Rating
-	[3049] = true, -- Sundered Chrysoprase, ItemCode 30550, +5 Critical Strike Rating and +2 mana per 5 sec.
-	[3071] = true, -- Timeless Chrysoprase, ItemCode 30583, +5 Intellect and +6 Stamina
-	[3088] = true, -- Vivid Chrysoprase, ItemCode 30605, +5 Spell Hit Rating and +6 Stamina
 	[2899] = true, -- Barbed Deep Peridot, ItemCode 27786 & 27809, +3 Stamina, +4 Critical Strike Rating
 	[3103] = true, -- Don Amancio's Heart, ItemCode 30598, +8 Strength (numerous enchants of +8 str)
-	
 	[3065] = true, -- Don Rodrigo's Heart, ItemCode 30571, +8 Strength
+	[1068] = true, -- Eye of the Sea, ItemCode 34831, +15 Stamina
 	[2943] = true, -- Mighty Blood Garnet, ItemCode 28360, +14 Attack Power
 	[2944] = true, -- Mighty Blood Garnet, ItemCode 28361, +14 Attack Power
 	[2898] = true, -- Notched Deep Peridot, ItemCode 27785, +3 Stamina, +4 Spell Critical Strike Rating
@@ -312,13 +263,61 @@ Outfitter.cUniqueEquippedGemIDs =
 	[2924] = true, -- Stark Blood Garnet, ItemCode 27812, +8 Spell Damage
 	[2970] = true, -- Swift Starfire Diamond, ItemCode 28557, +12 Spell Damage and Minor Run Speed Increase
 	[2969] = true, -- Swift Windfire Diamond, ItemCode 28556, +20 Attack Power and Minor Run Speed Increase
+
 	[3156] = true, -- Unstable Amethyst, ItemCode 32634, +8 Attack Power and +6 Stamina
-	
 	[3159] = true, -- Unstable Citrine, ItemCode 32637, +8 Attack Power
 	[3157] = true, -- Unstable Peridot, ItemCode 32635,
 	[3158] = true, -- Unstable Sapphire, ItemCode 32636,
 	[3161] = true, -- Unstable Talasite, ItemCode 32639,
 	[3160] = true, -- Unstable Topaz, ItemCode 32638,
+
+	-- [3091] = true, -- Radiant Chrysoprase, ItemCode 30608, +5 Spell Critical Rating and +5 Spell Penetration
+	-- [3077] = true, -- Dazzling Chrysoprase, ItemCode 30589, +5 Intellect and 2 mana per 5 sec.
+	-- [3082] = true, -- Effulgent Chrysoprase, ItemCode 30594, +5 Defense Rating and 2 mana per 5 sec.
+	-- [3078] = true, -- Enduring Chrysoprase, ItemCode 30590, +6 Stamina and +5 Defense Rating
+	-- [3085] = true, -- Jagged Chrysoprase, ItemCode 30602, +6 Stamina and +5 Crit Rating
+	-- [3089] = true, -- Lambent Chrysoprase, ItemCode 30606, +5 Spell Hit Rating and 2 mana per 5 sec.
+	-- [3047] = true, -- Polished Chrysoprase, ItemCode 30548, +6 Stamina and +5 Spell Crit Rating
+	-- [3058] = true, -- Rune Covered Chrysoprase, ItemCode 30560, +5 Spell Critical Rating and 2 mana per 5 sec.
+	-- [3074] = true, -- Seer's Chrysoprase, ItemCode 30586, +4 Intellect and +5 Spirit
+	-- [3080] = true, -- Steady Chrysoprase, ItemCode 30592, +6 Stamina and +5 Resilience Rating
+	-- [3049] = true, -- Sundered Chrysoprase, ItemCode 30550, +5 Critical Strike Rating and +2 mana per 5 sec.
+	-- [3071] = true, -- Timeless Chrysoprase, ItemCode 30583, +5 Intellect and +6 Stamina
+	-- [3088] = true, -- Vivid Chrysoprase, ItemCode 30605, +5 Spell Hit Rating and +6 Stamina
+
+	-- [3062] = true, -- Assassin's Fire Opal, Item 30565, +6 Critical Rating and +5 Dodge Rating
+	-- [3084] = true, -- Beaming Fire Opal, ItemCode 30601, +5 Dodge Rating and +4 Resilience Rating
+	-- [3075] = true, -- Champion's Fire Opal, ItemCode 30587, +5 Strength and +4 Defense
+	-- [3070] = true, -- Deadly Fire Opal, ItemCode 30582, +8 Attack Power and +5 Critical Rating
+	-- [3069] = true, -- Durable Fire Opal, ItemCode 30581, +11 Healing and +4 Resilience Rating
+	-- [3079] = true, -- Empowered Fire Opal, ItemCode 30591, +8 Attack Power and +5 Resilience Rating
+	-- [3072] = true, -- Enscribed Fire Opal, ItemCode 30584, +5 Strength and +4 Critical Rating
+	-- [3057] = true, -- Etched Fire Opal, ItemCode 30559, +5 Strength and +4 Hit Rating
+	-- [3056] = true, -- Glimmering Fire Opal, ItemCode 30558, +5 Parry Rating and +4 Defense Rating
+	-- [3055] = true, -- Glinting Fire Opal, ItemCode 30556, +5 Agility and +4 Hit Rating
+	-- [3073] = true, -- Glistening Fire Opal, ItemCode 30585, +4 Agility and +5 Defense Rating
+	-- [3050] = true, -- Infused Fire Opal, ItemCode 30551, +6 Spell Damage and +4 Intellect
+	-- [3081] = true, -- Iridescent Fire Opal, ItemCode 30593, +11 Healing and +4 Spell Critical Rating
+	-- [3046] = true, -- Luminous Fire Opal, ItemCode 30547, +11 Healing and +4 Intellect
+	-- [3066] = true, -- Mysterious Fire Opal, ItemCode 30573, +6 Spell Damage and +5 Spell Penetration
+	-- [3068] = true, -- Nimble Fire Opal, ItemCode 30575, +5 Dodge Rating and +4 Hit Rating
+	-- [3076] = true, -- Potent Fire Opal, ItemCode 30588, +6 Spell Damage and +4 Spell Critical Rating
+	-- [3052] = true, -- Pristine Fire Opal, ItemCode 30553, +10 Attack Power and +4 Hit Rating
+	-- [3087] = true, -- Resplendent Fire Opal, Item ID 30604, ItemCode 3087, 
+	-- [3061] = true, -- Shining Fire Opal, ItemCode 30564, +6 Spell Damage and +5 Spell Hit Rating
+	-- [3090] = true, -- Splendid Fire Opal, ItemCode 30607, +5 Parry Rating and +4 Resilience Rating
+	-- [3053] = true, -- Stalwart Fire Opal, ItemCode 30554, +5 Defense Rating and +4 Dodge Rating
+
+	-- [3100] = true, -- Blessed Tanzanite, ItemCode 30552, +11 Healing and +6 Stamina
+	-- [3067] = true, -- Brutal Tanzanite, ItemCode 30574, +10 Attack Power and +6 Stamina
+	-- [3063] = true, -- Defender's Tanzanite, ItemCode 30566, +5 Parry Rating and +6 Stamina
+	-- [3083] = true, -- Fluorescent Tanzanite, ItemCode 30600, +6 Spell Damage and +4 Spirit
+	-- [3099] = true, -- Glowing Tanzanite, ItemCode 30555, +6 Spell Damage and +6 Stamina
+	-- [3064] = true, -- Imperial Tanzanite, ItemCode 30572, +5 Spirit and +9 Healing
+	-- [3060] = true, -- Regal Tanzanite, ItemCode 30563, +5 Dodge Rating and +6 Stamina
+	-- [3086] = true, -- Royal Tanzanite, ItemCode 30603, +11 Healing and 2 mana per 5 sec.
+	-- [3048] = true, -- Shifting Tanzanite, ItemCode 30549, +5 Strength and +4 Agility
+	-- [3045] = true, -- Sovereign Tanzanite, ItemCode 30546, +5 Strength and +6 Stamina
 }
 
 StaticPopupDialogs.OUTFITTER_CANT_RELOADUI =
@@ -611,11 +610,13 @@ Outfitter.PresetScripts =
 		       '    for index = #Outfitter.OutfitStack.Outfits, 1, -1 do\n'..
 		       '        local stackOutfit = Outfitter.OutfitStack.Outfits[index]\n'..
 		       '        if outfit == stackOutfit then break end\n'..
-		       '        if stackOutfit.Items.Trinket0Slot then\n'..
-		       '            upperSlotVisible = false\n'..
-		       '        end\n'..
-		       '        if stackOutfit.Items.Trinket1Slot then\n'..
-		       '            lowerSlotVisible = false\n'..
+		       '        if stackOutfit.Name then\n'..
+		       '            if stackOutfit.Items.Trinket0Slot then\n'..
+		       '                upperSlotVisible = false\n'..
+		       '            end\n'..
+		       '            if stackOutfit.Items.Trinket1Slot then\n'..
+		       '                lowerSlotVisible = false\n'..
+		       '            end\n'..
 		       '        end\n'..
 		       '    end\n'..
 		       'end\n'..
@@ -697,6 +698,7 @@ Outfitter.PresetScripts =
 		         '-- $SETTING DisableInstance={Type="Boolean", Label="Don\'t equip in dungeons", Default=true}\n'..
 		         '-- $SETTING DisablePVP={Type="Boolean", Label="Don\'t equip while PvP flagged", Default=false}\n'..
 		         '-- $SETTING UnequipOnCast={Type="Boolean", Label="Unequip when beginning a spellcast", Default=false}\n'..
+		         '-- $SETTING StayEquippedWhileFalling={Type="Boolean", Label="Leave equipped while falling", Default=false}\n'..
 		         '-- $SETTING UnequipDelay={Type="Number", Label="Wait", Suffix="seconds before unequipping", Default=0}\n'..
 		         '\n'..
 		         '-- Equip on mount unless it\'s disabled\n'..
@@ -720,7 +722,13 @@ Outfitter.PresetScripts =
 		         '-- Unequip on dismount\n'..
 		         '\n'..
 		         'elseif event == "NOT_MOUNTED" then\n'..
-		         '    equip = false\n'..
+		         '    if not setting.StayEquippedWhileFalling then\n'..
+		         '        equip = false\n'..
+		         '    else\n'..
+				 '        self.UnequipWhenNotFalling = true\n'..
+				 '        self.DismountTime = GetTime()\n'..
+		         '        self:RegisterEvent("TIMER")\n'..
+		         '    end\n'..
 		         '    outfit.spellSentTime = nil\n'..
 		         '\n'..
 		         '    if setting.UnequipDelay and not outfit.didSpellcastUnequip then\n'..
@@ -750,6 +758,15 @@ Outfitter.PresetScripts =
 		         '-- it was nothing important and put the riding gear back on\n'..
 		         '\n'..
 				 'elseif event == "TIMER" then\n'..
+		         '    -- Unequip if the player was falling when dismounted and has now landed\n'..
+		         '\n'..
+		         '    if self.UnequipWhenNotFalling\n'..
+		         '    and GetTime() >= self.DismountTime + 1\n'..
+		         '    and not IsFalling() then\n'..
+		         '        equip = false\n'..
+		         '        self.UnequipWhenNotFalling = nil\n'..
+		         '    end\n'..
+		         '\n'..
 				 '    if Outfitter.SpecialState.Riding\n'..
 				 '    and outfit.didSpellcastUnequip\n'..
 				 '    and outfit.spellFinishTime then\n'..
@@ -757,9 +774,11 @@ Outfitter.PresetScripts =
 				 '            equip = true\n'..
 				 '            outfit.didSpellcastUnequip = nil\n'..
 				 '            outfit.spellFinishTime = nil\n'..
-				 '            self:UnregisterEvent("TIMER")\n'..
+				 '            if not self.UnequipWhenNotFalling then\n'..
+				 '                self:UnregisterEvent("TIMER")\n'..
+				 '            end\n'..
 				 '        end\n'..
-				 '    else\n'..
+				 '    elseif not self.UnequipWhenNotFalling then\n'..
 				 '        self:UnregisterEvent("TIMER")\n'..
 				 '    end\n'..
 		         'end\n',
@@ -1086,11 +1105,23 @@ Outfitter.PresetScripts =
 		ID = "SOLO",
 		Category = "GENERAL",
 		Script = Outfitter:GenerateScriptHeader("PLAYER_ENTERING_WORLD RAID_ROSTER_UPDATE PARTY_MEMBERS_CHANGED", Outfitter.cSoloOutfitDescription)..
-			'if GetNumRaidMembers() == 0\n'..
+			'-- $SETTING EquipSolo = {Label="Equip when solo", Type = "Boolean"}\n'..
+			'-- $SETTING EquipGroup = {Label="Equip when in a party", Type = "Boolean"}\n'..
+			'-- $SETTING EquipRaid = {Label="Equip when in a raid", Type = "Boolean"}\n'..
+			'\n'..
+			'if setting.EquipSolo\n'..
+			'and GetNumRaidMembers() == 0\n'..
 			'and GetNumPartyMembers() == 0 then\n'..
-			'	equip = true\n'..
+			'    equip = true\n'..
+			'elseif setting.EquipGroup\n'..
+			'and GetNumRaidMembers() == 0\n'..
+			'and GetNumPartyMembers() ~= 0 then\n'..
+			'    equip = true\n'..
+			'elseif setting.EquipRaid\n'..
+			'and GetNumRaidMembers() ~= 0 then\n'..
+			'    equip = true\n'..
 			'elseif didEquip then\n'..
-			'	equip = false\n'..
+			'    equip = false\n'..
 			'end\n',
 	},
 	{
@@ -1100,7 +1131,7 @@ Outfitter.PresetScripts =
 		Script = Outfitter:GenerateScriptHeader("TIMER", Outfitter.cFallingOutfitDescription)..
 			'if IsFalling() then\n'..
 			'    equip = true\n'..
-			'    delay = 5.0\n'..
+			'    delay = 3.5\n'..
 			'elseif didEquip then\n'..
 			'    equip = false\n'..
 			'end\n',
@@ -1921,17 +1952,15 @@ function Outfitter:DispatchOutfitEvent(pEvent, pParameter1, pParameter2)
 		end
 	end
 
-	-- Post a message
+	-- Translate to the event ids for dispatch through the event system
 	
-	if pParameter1 then
-		if pEvent == "WEAR_OUTFIT" then
-			MCEventLib:DispatchEvent("WEAROUTFIT")
-		elseif pEvent == "UNWEAR_OUTFIT" then
-			MCEventLib:DispatchEvent("UNWEAROUTFIT")
-		end
+	if pEvent == "WEAR_OUTFIT" then
+		MCEventLib:DispatchEvent("WEAROUTFIT")
+	elseif pEvent == "UNWEAR_OUTFIT" then
+		MCEventLib:DispatchEvent("UNWEAROUTFIT")
 	end
 
-	-- Now set the correct Helm and Cloak settings.
+	-- Set the correct Helm and Cloak settings.
 	
 	MCSchedulerLib:ScheduleUniqueTask(0.5, Outfitter.OutfitStack.UpdateHelmAndCloakVisibility, Outfitter.OutfitStack)
 end
@@ -2113,11 +2142,29 @@ function Outfitter.ExecuteCommand(pCommand)
 		sortbags = {useOutfit = false, func = Outfitter.SortBags},
 		iteminfo = {useOutfit = false, func = Outfitter.ShowLinkInfo},
 		
+		missing = {useOutfit = false, func = Outfitter.ShowMissingItems},
+		
 		sound = {useOutfit = false, func = Outfitter.SetSoundOption},
 		help = {useOutfit = false, func = Outfitter.ShowCommandHelp},
 	}
-
-	local vStartIndex, vEndIndex, vCommand, vParameter = string.find(pCommand, "(%w+) ?(.*)")
+	
+	-- Evaluate options if the command uses them
+	
+	local vCommand = SecureCmdOptionParse(pCommand)
+	
+	if string.find(pCommand, "|h") then -- Commands which use item links don't appear to parse correctly
+		vCommand = pCommand
+	else
+		vCommand = SecureCmdOptionParse(pCommand)
+	end
+	
+	if not vCommand then
+		return
+	end
+	
+	--
+	
+	local vStartIndex, vEndIndex, vCommand, vParameter = string.find(vCommand, "(%w+) ?(.*)")
 	
 	if not vCommand then
 		Outfitter:ShowCommandHelp()
@@ -2139,14 +2186,14 @@ function Outfitter.ExecuteCommand(pCommand)
 	
 	if vCommandInfo.useOutfit then
 		if not vParameter then
-			Outfitter:ErrorMessage("Outfitter: Expected outfit name for "..vCommand.." command")
+			Outfitter:ErrorMessage("Expected outfit name for "..vCommand.." command")
 			return
 		end
 		
 		vOutfit, vCategoryID = Outfitter:FindOutfitByName(vParameter)
 		
 		if not vOutfit then
-			Outfitter:ErrorMessage("Outfitter: Couldn't find outfit named "..vParameter)
+			Outfitter:ErrorMessage("Couldn't find outfit named "..vParameter)
 			return
 		end
 		
@@ -2162,6 +2209,7 @@ function Outfitter:ShowCommandHelp()
 	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter toggle <outfit name>"..NORMAL_FONT_COLOR_CODE..": Wears or removes an outfit")
 	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter reset"..NORMAL_FONT_COLOR_CODE..": Resets Outfitter, restoring default settings and outfits")
 	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter sound [on|off]"..NORMAL_FONT_COLOR_CODE..": Turns equipment sound effects off during Outfitter's gear changes")
+	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter missing"..NORMAL_FONT_COLOR_CODE..": Generates a list of items which are in your outfits but can't be found")
 end
 
 function Outfitter.UnequipItemByName(pItemName)
@@ -2181,14 +2229,14 @@ function Outfitter.UnequipItemByName(pItemName)
 		end
 		
 		if not vInventoryID then
-			Outfitter:ErrorMessage("Outfitter: Couldn't find an item named "..pItemName)
+			Outfitter:ErrorMessage("Couldn't find an item named "..pItemName)
 		end
 	end
 	
 	local vEmptyBagSlot = Outfitter:GetEmptyBagSlot(NUM_BAG_SLOTS, 1)
 	
 	if not vEmptyBagSlot then
-		Outfitter:ErrorMessage("Outfitter: Couldn't unequip "..pItemName.." because all bags are full")
+		Outfitter:ErrorMessage("Couldn't unequip "..pItemName.." because all bags are full")
 		return
 	end
 	
@@ -2373,35 +2421,41 @@ function Outfitter:ActivateScript(pOutfit)
 	end
 	
 	if not vScriptFields.Events then
-		Outfitter:ErrorMessage("Outfitter: The script for "..pOutfit.Name.." does not specify any events")
+		Outfitter:ErrorMessage("The script for %s does not specify any events", pOutfit.Name)
 		return
 	end
 	
 	-- Initialize the settings to their defaults
 	
+	if not pOutfit.ScriptSettings then
+		pOutfit.ScriptSettings = {}
+	end
+	
 	if vScriptFields.Inputs then
 		for _, vDescriptor in ipairs(vScriptFields.Inputs) do
-			if vDescriptor.Default ~= nil then
-				vScriptSettings[vDescriptor.Field] = vDescriptor.Default
-			else
-				vScriptSettings[vDescriptor.Field] = Outfitter.SettingTypeInfo[vDescriptor.Type].Default
+			local vDefault = vDescriptor.Default
+			
+			if vDefault == nil then
+				local vType = string.lower(vDescriptor.Type)
+				local vTypeInfo = Outfitter.SettingTypeInfo[vType]
+				
+				if not vTypeInfo then
+					Outfitter:ErrorMessage("Script for outfit %s has an unknown $SETTING type (%s)", pOutfit.Name, vDescriptor.Type or "nil")
+					return
+				end
+				
+				vDefault = vTypeInfo.Default -- Override the built-in default if the $SETTING specifies its own default
+			end
+			
+			-- Set to the default if the value is missing or if
+			-- it's the wrong type
+			
+			if pOutfit.ScriptSettings[vDescriptor.Field] == nil
+			or type(pOutfit.ScriptSettings[vDescriptor.Field]) ~= type(vDefault) then	
+				pOutfit.ScriptSettings[vDescriptor.Field] = vDefault
 			end
 		end
 	end
-	
-	-- Copy over any values from the outfit which exist
-	-- as a setting and whose type matches
-	
-	if pOutfit.ScriptSettings then
-		for vField, vValue in pairs(pOutfit.ScriptSettings) do
-			if vScriptSettings[vField] ~= nil
-			and type(vScriptSettings[vField]) == type(vValue) then
-				vScriptSettings[vField] = vValue
-			end
-		end
-	end
-	
-	pOutfit.ScriptSettings = vScriptSettings
 	
 	local vScriptContext, vErrorMessage = Outfitter._ScriptContext:New(pOutfit, vScript)
 	
@@ -2507,7 +2561,7 @@ function Outfitter:ShowPanel(pPanelIndex)
 		-- About panel
 		
 	else
-		Outfitter:ErrorMessage("Outfitter: Unknown index (%d) in ShowPanel()", pPanelIndex)
+		Outfitter:ErrorMessage("Unknown index (%d) in ShowPanel()", pPanelIndex)
 	end
 	
 	Outfitter:Update(false)
@@ -2674,7 +2728,7 @@ function Outfitter:InitializeOutfitMenu(pFrame, pOutfit)
 			Outfitter:AddMenuItem(pFrame, Outfitter.cNoScript, "PRESET_NONE", pOutfit.ScriptID == nil and Outfitter:GetScript(pOutfit) == nil, UIDROPDOWNMENU_MENU_LEVEL)
 			Outfitter:AddMenuItem(pFrame, Outfitter.cEditScriptEllide, "EDIT_SCRIPT", pOutfit.ScriptID == nil and Outfitter:GetScript(pOutfit) ~= nil, UIDROPDOWNMENU_MENU_LEVEL)
 			
-			local vCategory = nil
+			local vCategory
 			
 			for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
 				if not vPresetScript.Class
@@ -2685,11 +2739,18 @@ function Outfitter:InitializeOutfitMenu(pFrame, pOutfit)
 					
 					if vCategory ~= vNewCategory then
 						vCategory = vNewCategory
-						Outfitter:AddCategoryMenuItem(Outfitter.cScriptCategoryName[vCategory] or Outfitter.cClassName[vCategory])
+						Outfitter:AddSubmenuItem(pFrame, Outfitter.cScriptCategoryName[vCategory] or Outfitter.cClassName[vCategory], vCategory)
 					end
-					
-					--
-					
+				end
+			end
+		end
+	elseif UIDROPDOWNMENU_MENU_LEVEL == 3 then
+		for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
+			if not vPresetScript.Class
+			or vPresetScript.Class == Outfitter.PlayerClass then
+				local vCategory = vPresetScript.Category or vPresetScript.Class or "GENERAL"
+				
+				if vCategory == UIDROPDOWNMENU_MENU_VALUE then
 					local vName = vPresetScript.Name
 					local vScriptFields = Outfitter:ParseScriptFields(vPresetScript.Script)
 					
@@ -4177,6 +4238,9 @@ function Outfitter.BagSortUpdate(pItems)
 	
 	-- Move the items to their destinations
 	
+	local vSaved_EnableSFX = GetCVar("Sound_EnableSFX")
+	SetCVar("Sound_EnableSFX", "0")
+	
 	for _, vItemInfo in ipairs(pItems) do
 		if (vItemInfo.BagIndex ~= vItemInfo.DestBagIndex
 		or vItemInfo.BagSlotIndex ~= vItemInfo.DestBagSlotIndex)
@@ -4225,6 +4289,8 @@ function Outfitter.BagSortUpdate(pItems)
 			vDidMove = true
 		end
 	end
+	
+	SetCVar("Sound_EnableSFX", vSaved_EnableSFX)
 	
 	if vDidMove then
 		-- Do nothing: the BAG_UPDATE event should fire once our items start moving
@@ -5041,44 +5107,13 @@ function Outfitter:GetBagItemInfo(pBagIndex, pSlotIndex)
 	return vItemInfo
 end
 
-local gOutfitter_AmmoSlotInfoCache = nil
-
-function Outfitter:FindAmmoSlotItemLink(pName, pTexture)
-	if gOutfitter_AmmoSlotInfoCache
-	and gOutfitter_AmmoSlotInfoCache.Name == pName
-	and gOutfitter_AmmoSlotInfoCache.Texture == pTexture then
-		return gOutfitter_AmmoSlotInfoCache.ItemLink
-	end
-		
-	for vBagIndex = 0, NUM_BAG_SLOTS do
-		local vNumBagSlots = GetContainerNumSlots(vBagIndex)
-		
-		for vBagSlotIndex = 1, vNumBagSlots do
-			local vTexture = GetContainerItemInfo(vBagIndex, vBagSlotIndex)
-			
-			if vTexture == pTexture then
-				local vItemLink = GetContainerItemLink(vBagIndex, vBagSlotIndex)
-				
-				if vItemLink and string.find(vItemLink, pName) then
-					if not gOutfitter_AmmoSlotInfoCache then
-						gOutfitter_AmmoSlotInfoCache = {}
-					end
-					
-					gOutfitter_AmmoSlotInfoCache.Name = pName
-					gOutfitter_AmmoSlotInfoCache.Texture = pTexture
-					gOutfitter_AmmoSlotInfoCache.ItemLink = vItemLink
-					
-					return gOutfitter_AmmoSlotInfoCache.ItemLink
-				end
-			end
-		end -- for vBagSlotIndex
-	end -- for vBagIndex
-	
-	return nil
-end
-
 function Outfitter:GetAmmotSlotItemName()
 	local vSlotID = Outfitter.cSlotIDs.AmmoSlot
+	local vAmmoItemTexture = GetInventoryItemTexture("player", vSlotID)
+	
+	if not vAmmoItemTexture then
+		return nil
+	end
 	
 	OutfitterTooltip:SetOwner(OutfitterFrame, "ANCHOR_BOTTOMRIGHT", 0, 0)
 	OutfitterTooltip:SetInventoryItem("player", vSlotID)
@@ -5092,13 +5127,70 @@ function Outfitter:GetAmmotSlotItemName()
 	
 	OutfitterTooltip:Hide()
 	
-	local vAmmoItemTexture = GetInventoryItemTexture("player", vSlotID)
-	
 	return vAmmoItemName, vAmmoItemTexture
 end
 
+function Outfitter:GetBagSlotItemName(pBagIndex, pBagSlotIndex)
+	OutfitterTooltip:SetOwner(OutfitterFrame, "ANCHOR_BOTTOMRIGHT", 0, 0)
+	OutfitterTooltip:SetBagItem(pBagIndex, pBagSlotIndex)
+	
+	if not OutfitterTooltipTextLeft1:IsShown() then
+		OutfitterTooltip:Hide()
+		return nil
+	end
+	
+	local vItemName = OutfitterTooltipTextLeft1:GetText()
+	
+	OutfitterTooltip:Hide()
+	
+	return vItemName
+end
+
+Outfitter.AmmoLinkByName = {}
+
 function Outfitter:GetAmmotSlotItemLink()
-	return Outfitter:FindAmmoSlotItemLink(Outfitter:GetAmmotSlotItemName())
+	local vName, vTexture = Outfitter:GetAmmotSlotItemName()
+	
+	if not vName then
+		return nil
+	end
+	
+	local vLink = Outfitter.AmmoLinkByName[vName]
+	
+	if vLink then
+		return vLink
+	end
+	
+	vLink = Outfitter:FindAmmoSlotItemLink(vName)
+	
+	if not vLink then
+		return nil
+	end
+	
+	Outfitter.AmmoLinkByName[vName] = vLink
+	return vLink
+end
+
+function Outfitter:FindAmmoSlotItemLink(pName)
+	for vBagIndex = 0, NUM_BAG_SLOTS do
+		local vNumBagSlots = GetContainerNumSlots(vBagIndex)
+		
+		for vBagSlotIndex = 1, vNumBagSlots do
+			local vLink = GetContainerItemLink(vBagIndex, vBagSlotIndex)
+			
+			if vLink then
+				local vName = Outfitter:GetBagSlotItemName(vBagIndex, vBagSlotIndex)
+				
+				if vName == pName then
+					return vLink
+				end
+			end
+		end -- for vBagSlotIndex
+	end -- for vBagIndex
+	
+	-- Failed to find the ammo
+	
+	return nil
 end
 
 function Outfitter:GetInventoryItemInfo(pInventorySlot)
@@ -6560,8 +6652,8 @@ function Outfitter:GetTooltipLineStats(pText)
 								end
 							end
 						else
-							-- Outfitter:TestMessage("Outfitter: "..vStatPhrase.." ("..string.len(vStatPhrase)..") not found in cItemStatPhrases")
-							-- Outfitter:TestMessage("Outfitter: Matched pattern was "..vStatInfo.." with "..(#vResult - 2).." values captured")
+							-- Outfitter:TestMessage(vStatPhrase.." ("..string.len(vStatPhrase)..") not found in cItemStatPhrases")
+							-- Outfitter:TestMessage("Matched pattern was "..vStatInfo.." with "..(#vResult - 2).." values captured")
 						end
 					end
 				end
@@ -7143,46 +7235,47 @@ end
 function Outfitter.PresetScriptDropdown_Initialize()
 	local vFrame = getglobal(UIDROPDOWNMENU_INIT_MENU)
 	
-	UIDropDownMenu_AddButton({
-		text = Outfitter.cCustomScript,
-		value = "CUSTOM",
-		owner = vFrame,
-		func = Outfitter.DropDown_OnClick,
-		textR = NORMAL_FONT_COLOR.r,
-		textG = NORMAL_FONT_COLOR.g,
-		textB = NORMAL_FONT_COLOR.b,
-	}, UIDROPDOWNMENU_MENU_LEVEL)
-	
-	local vCategory
-	
-	for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
-		if not vPresetScript.Class
-		or vPresetScript.Class == Outfitter.PlayerClass then
-			-- Start a new category if it's changing
-			
-			local vNewCategory = vPresetScript.Category or vPresetScript.Class or "GENERAL"
-			
-			if vCategory ~= vNewCategory then
-				vCategory = vNewCategory
+	if UIDROPDOWNMENU_MENU_LEVEL == 2 then
+		for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
+			if not vPresetScript.Class
+			or vPresetScript.Class == Outfitter.PlayerClass then
+				local vCategory = vPresetScript.Category or vPresetScript.Class or "GENERAL"
 				
-				UIDropDownMenu_AddButton({
-					text = Outfitter.cScriptCategoryName[vCategory] or Outfitter.cClassName[vCategory],
-					notCheckable = true,
-					notClickable = true,
-				}, UIDROPDOWNMENU_MENU_LEVEL)
+				if vCategory == UIDROPDOWNMENU_MENU_VALUE then
+					UIDropDownMenu_AddButton({
+						text = vPresetScript.Name,
+						value = vPresetScript.ID,
+						owner = vFrame,
+						func = Outfitter.DropDown_OnClick,
+						tooltipTitle = vPresetScript.Name,
+						tooltipText = Outfitter:GetScriptDescription(vPresetScript.Script),
+						textR = NORMAL_FONT_COLOR.r,
+						textG = NORMAL_FONT_COLOR.g,
+						textB = NORMAL_FONT_COLOR.b,
+					}, UIDROPDOWNMENU_MENU_LEVEL)
+				end
 			end
-			
-			UIDropDownMenu_AddButton({
-				text = vPresetScript.Name,
-				value = vPresetScript.ID,
-				owner = vFrame,
-				func = Outfitter.DropDown_OnClick,
-				tooltipTitle = vPresetScript.Name,
-				tooltipText = Outfitter:GetScriptDescription(vPresetScript.Script),
-				textR = NORMAL_FONT_COLOR.r,
-				textG = NORMAL_FONT_COLOR.g,
-				textB = NORMAL_FONT_COLOR.b,
-			}, UIDROPDOWNMENU_MENU_LEVEL)
+		end
+	else
+		local vCategory
+		
+		for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
+			if not vPresetScript.Class
+			or vPresetScript.Class == Outfitter.PlayerClass then
+				-- Start a new category if it's changing
+				
+				local vNewCategory = vPresetScript.Category or vPresetScript.Class or "GENERAL"
+				
+				if vCategory ~= vNewCategory then
+					vCategory = vNewCategory
+					
+					UIDropDownMenu_AddButton({
+						text = Outfitter.cScriptCategoryName[vCategory] or Outfitter.cClassName[vCategory],
+						owner = vFrame,
+						hasArrow = 1,
+						value = vCategory}, UIDROPDOWNMENU_MENU_LEVEL)
+				end
+			end
 		end
 	end
 end
@@ -7375,12 +7468,15 @@ function Outfitter._EditScriptDialog:ConstructSettingsFields( pSettings)
 		self.Widgets.SettingsDescription:SetText(pSettings.Description or " ")
 		
 		for _, vDescriptor in ipairs(pSettings.Inputs) do
-			local vFrameType = Outfitter.SettingTypeInfo[vDescriptor.Type].FrameType
+			local vType = string.lower(vDescriptor.Type)
+			local vSettingTypeInfo = Outfitter.SettingTypeInfo[vType]
 			
-			if not vFrameType then
-				Outfitter:ErrorMessage("Couldn't create a control for setting type "..vDescriptor.Type.." because I don't know what that is")
+			if not vSettingTypeInfo then
+				Outiftter:ErrorMessage("Unknown $SETTING type %s in the script, I can't create a control for it", vDescriptor.Type or "nil")
 				break
 			end
+			
+			local vFrameType = vSettingTypeInfo.FrameType
 			
 			if not vNumFramesUsed[vFrameType] then
 				vNumFramesUsed[vFrameType] = 0
@@ -7412,6 +7508,7 @@ function Outfitter._EditScriptDialog:ConstructSettingsFields( pSettings)
 				
 				elseif vFrameType == "EditBox" then
 					vFrame = CreateFrame("EditBox", vFrameName, self.Widgets.Settings, "OutfitterInputBoxTemplate")
+					vFrame:SetAutoFocus(false)
 					vFrame:SetWidth(300)
 					vFrame:SetHeight(18)
 				
@@ -7508,19 +7605,20 @@ function Outfitter._EditScriptDialog:GetScriptSettings()
 	
 	if self.SettingsFrames then
 		for _, vFrame in ipairs(self.SettingsFrames) do
+			local vType = string.lower(vFrame.Descriptor.Type)
 			local vValue
 			
-			if vFrame.Descriptor.Type == "String" then
+			if vType == "string" then
 				vValue = vFrame:GetText()
 			
-			elseif vFrame.Descriptor.Type == "Number" then
+			elseif vType == "number" then
 				vValue = tonumber(vFrame:GetText())
 			
-			elseif vFrame.Descriptor.Type == "Boolean" then
+			elseif vType == "boolean" then
 				vValue = vFrame:GetChecked() == 1
 			
-			elseif vFrame.Descriptor.Type == "StringTable"
-			or vFrame.Descriptor.Type == "ZoneList" then
+			elseif vType == "stringtable"
+			or vType == "zonelist" then
 				local vEditBox = getglobal(vFrame:GetName().."EditBox")
 				
 				vValue = {}
@@ -7531,7 +7629,7 @@ function Outfitter._EditScriptDialog:GetScriptSettings()
 					end
 				end
 			else
-				Outfitter:DebugMessage("EditScriptDialog:GetScriptSettings: Unknown type "..vFrame.Descriptor.Type)
+				Outfitter:DebugMessage("EditScriptDialog:GetScriptSettings: Unknown type %s", vType or "nil")
 			end
 			
 			vSettings[vFrame.Descriptor.Field] = vValue
@@ -7549,21 +7647,28 @@ function Outfitter._EditScriptDialog:SetScriptSettings()
 	end
 	
 	for _, vFrame in ipairs(self.SettingsFrames) do
+		local vType = string.lower(vFrame.Descriptor.Type)
 		local vValue = self.ScriptSettings[vFrame.Descriptor.Field]
 		
 		if not vValue then
-			vValue = Outfitter.SettingTypeInfo[vFrame.Descriptor.Type].Default
+			local vSettingTypeInfo = Outfitter.SettingTypeInfo[vType]
+			
+			if not vSettingTypeInfo then
+				return
+			end
+			
+			vValue = vSettingTypeInfo.Default
 		end
 		
-		if vFrame.Descriptor.Type == "String"
-		or vFrame.Descriptor.Type == "Number" then
+		if vType == "string"
+		or vType == "number" then
 			vFrame:SetText(vValue)
 		
-		elseif vFrame.Descriptor.Type == "Boolean" then
+		elseif vType == "boolean" then
 			vFrame:SetChecked(vValue)
 		
-		elseif vFrame.Descriptor.Type == "StringTable"
-		or vFrame.Descriptor.Type == "ZoneList" then
+		elseif vType == "stringtable"
+		or vType == "zonelist" then
 			local vEditBox = getglobal(vFrame:GetName().."EditBox")
 			
 			if type(vValue) == "table" then
@@ -7633,36 +7738,53 @@ end
 
 function Outfitter.AutomationDropdown_Initialize()
 	local vFrame = getglobal(UIDROPDOWNMENU_INIT_MENU)
-	local vCategory
-	
-	Outfitter:AddMenuItem(vFrame, Outfitter.cNoScript, "NONE")
-	
-	for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
-		if not vPresetScript.Class
-		or vPresetScript.Class == Outfitter.PlayerClass then
-			-- Start a new category if it's changing
-			
-			local vNewCategory = vPresetScript.Category or vPresetScript.Class or "GENERAL"
-			
-			if vCategory ~= vNewCategory then
-				vCategory = vNewCategory
-				Outfitter:AddCategoryMenuItem(Outfitter.cScriptCategoryName[vCategory] or Outfitter.cClassName[vCategory])
+
+	if UIDROPDOWNMENU_MENU_LEVEL == 2 then
+		for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
+			if not vPresetScript.Class
+			or vPresetScript.Class == Outfitter.PlayerClass then
+				local vCategory = vPresetScript.Category or vPresetScript.Class or "GENERAL"
+				
+				if vCategory == UIDROPDOWNMENU_MENU_VALUE then
+					local vName = vPresetScript.Name
+					local vDescription = Outfitter:GetScriptDescription(vPresetScript.Script)
+					
+					Outfitter:AddMenuItem(
+							vFrame,
+							vName,
+							vPresetScript.ID,
+							nil, -- Checked
+							UIDROPDOWNMENU_MENU_LEVEL,
+							nil, -- Color
+							nil, -- Disabled
+							{tooltipTitle = vName, tooltipText = vDescription})
+				end
 			end
-			
-			--
-			
-			local vName = vPresetScript.Name
-			local vDescription = Outfitter:GetScriptDescription(vPresetScript.Script)
-			
-			Outfitter:AddMenuItem(
-					vFrame,
-					vName,
-					vPresetScript.ID,
-					nil, -- Checked
-					nil, -- Level
-					nil, -- Color
-					nil, -- Disabled
-					{tooltipTitle = vName, tooltipText = vDescription})
+		end
+	else
+		local vCategory
+		
+		Outfitter:AddMenuItem(vFrame, Outfitter.cNoScript, "NONE")
+		
+		local vCategory
+		
+		for _, vPresetScript in ipairs(Outfitter.PresetScripts) do
+			if not vPresetScript.Class
+			or vPresetScript.Class == Outfitter.PlayerClass then
+				-- Start a new category if it's changing
+				
+				local vNewCategory = vPresetScript.Category or vPresetScript.Class or "GENERAL"
+				
+				if vCategory ~= vNewCategory then
+					vCategory = vNewCategory
+					
+					UIDropDownMenu_AddButton({
+						text = Outfitter.cScriptCategoryName[vCategory] or Outfitter.cClassName[vCategory],
+						owner = vFrame,
+						hasArrow = 1,
+						value = vCategory}, UIDROPDOWNMENU_MENU_LEVEL)
+				end
+			end
 		end
 	end
 end
@@ -8384,7 +8506,7 @@ function Outfitter:GetInventorySlotIDLink(pSlotID)
 	end
 end
 
-local gOutfitter_LinkCache =
+Outfitter.LinkCache =
 {
 	Inventory = {},
 	FirstBagIndex = 0,
@@ -8401,22 +8523,22 @@ function Outfitter:Synchronize()
 	
 	-- Outfitter:TestMessage(vFirstBagIndex.." - "..vNumBags)
 	
-	if gOutfitter_LinkCache.FirstBagIndex ~= vFirstBagIndex
-	or gOutfitter_LinkCache.NumBags ~= vNumBags then
+	if Outfitter.LinkCache.FirstBagIndex ~= vFirstBagIndex
+	or Outfitter.LinkCache.NumBags ~= vNumBags then
 		
-		gOutfitter_LinkCache.FirstBagIndex = vFirstBagIndex
-		gOutfitter_LinkCache.NumBags = vNumBags
+		Outfitter.LinkCache.FirstBagIndex = vFirstBagIndex
+		Outfitter.LinkCache.NumBags = vNumBags
 		
 		vBagsChanged = true
 	end
 	
 	for vBagIndex = vFirstBagIndex, vNumBags do
-		local vBag = gOutfitter_LinkCache.Bags[vBagIndex]
+		local vBag = Outfitter.LinkCache.Bags[vBagIndex]
 		local vBagChanged = false
 		
 		if not vBag then
 			vBag = {}
-			gOutfitter_LinkCache.Bags[vBagIndex] = vBag
+			Outfitter.LinkCache.Bags[vBagIndex] = vBag
 		end
 		
 		local vNumBagSlots = GetContainerNumSlots(vBagIndex)
@@ -8450,16 +8572,14 @@ function Outfitter:Synchronize()
 			local vName, vTexture = Outfitter:GetAmmotSlotItemName()
 			
 			if vName then
-				vItemLink = vName.."|"..vTexture -- Not an item link, just a unique reference to the contents
+				vItemLink = vName.."|"..(vTexture or "") -- Not an item link, just a unique reference to the contents
 			end
-			
-			GetInventoryItemLink("player", pSlotID)
 		else
 			vItemLink = GetInventoryItemLink("player", Outfitter.cSlotIDs[vInventorySlot])
 		end
 		
-		if gOutfitter_LinkCache.Inventory[vInventorySlot] ~= vItemLink then
-			gOutfitter_LinkCache.Inventory[vInventorySlot] = vItemLink
+		if Outfitter.LinkCache.Inventory[vInventorySlot] ~= vItemLink then
+			Outfitter.LinkCache.Inventory[vInventorySlot] = vItemLink
 			vInventoryChanged = true
 		end
 	end
@@ -10233,21 +10353,12 @@ function Outfitter.HookScript(pFrame, pScriptID, pFunction)
 end
 
 function Outfitter.SetFrameLevel(pFrame, pLevel)
-	local vLevelOffset = pLevel - pFrame:GetFrameLevel()
-	
 	pFrame:SetFrameLevel(pLevel)
 	
-	local vChildren = {pFrame:GetChildren()}
+	local	vChildren = {pFrame:GetChildren()}
 	
 	for _, vChildFrame in pairs(vChildren) do
-		local vChildLevel = vChildFrame:GetFrameLevel()
-		local vNewChildLevel = vChildLevel + vLevelOffset
-		
-		if vNewChildLevel < pLevel then
-			vNewChildLevel = pLevel + 1
-		end
-		
-		Outfitter.SetFrameLevel(vChildFrame, vNewChildLevel)
+		Outfitter.SetFrameLevel(vChildFrame, pLevel + 1)
 	end
 end
 
@@ -11107,7 +11218,7 @@ function Outfitter:NewCloseButton(pParent)
 	vButton:SetWidth(17)
 	vButton:SetHeight(17)
 	
-	local vTexture = vButton:CreateTexture(nil, "ARTWORK")
+	local vTexture
 	
 	vButton:SetNormalTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Up")
 	vTexture = vButton:GetNormalTexture()
@@ -11190,7 +11301,7 @@ function Outfitter._ScriptContext:PostProcess(pEquip, pLayer, pDelay, pStartTime
 			self.ScriptLockupCount = self.ScriptLockupCount + 1
 			
 			if self.ScriptLockupCount > 20 then
-				Outfitter:ErrorMessage("Outfitter: Excessive CPU time in script for %s, script deactivated.", self.Outfit.Name or "<unnamed>")
+				Outfitter:ErrorMessage("Excessive CPU time in script for %s, script deactivated.", self.Outfit.Name or "<unnamed>")
 				Outfitter:DeactivateScript(self.Outfit)
 			end
 		end
@@ -11302,4 +11413,78 @@ function Outfitter:InventoryItemIsActive(pInventorySlot)
 	-- and shouldn't be unequipped
 	
 	return GetTime() < vStartTime + vUseDuration
+end
+
+function Outfitter_Hook()
+	Outfitter_HookTable(_G, "_G")
+end
+
+function Outfitter_HookTable(pTable, pPrefix)
+	for vKey, vValue in pairs(pTable) do
+		if type(vKey) == "string"
+		and type(vValue) == "function"
+		and not string.find(vKey, "Outfitter") then
+			pTable[vKey] = function (...)
+				local vStartTime = GetTime()
+				local vResult = {vValue(...)}
+				local vEndTime = GetTime()
+				if vEndTime - vStartTime > 0.1 then
+					Outfitter:DebugMessage("Function %s.%s took %f seconds", pPrefix, vKey, vEndTime - vStartTime)
+				end
+				
+				return unpack(vResult)
+			end
+		end
+	end
+end
+
+function Outfitter:ShowAllLinks()
+	for vCategory, vOutfits in pairs(gOutfitter_Settings.Outfits) do
+		for _, vOutfit in ipairs(vOutfits) do
+			for _, vItem in pairs(vOutfit.Items) do
+				if vItem.Code ~= 0 then
+					Outfitter:NoteMessage(Outfitter:GenerateItemLink(vItem))
+				end
+			end
+		end
+	end
+end
+
+function Outfitter:GenerateItemLink(pItem)
+	if not pItem or pItem.Code == 0 then
+		return nil
+	end
+	
+	return string.format("|Hitem:%d:%d:%d:%d:%d:%d:%d:%d|h[%s]|h|r", pItem.Code, pItem.EnchantCode, pItem.JewelCode1, pItem.JewelCode2, pItem.JewelCode3, pItem.JewelCode4, pItem.SubCode, 0, pItem.Name)
+end
+
+function Outfitter:ShowMissingItems()
+	if not Outfitter.BankFrameIsOpen then
+		Outfitter:ErrorMessage(Outfitter.cMustBeAtBankError)
+		return
+	end
+	
+	local vEquippableItems = Outfitter.ItemList_GetEquippableItems()
+	local vFoundItems
+	
+	for vCategory, vOutfits in pairs(gOutfitter_Settings.Outfits) do
+		for _, vOutfit in ipairs(vOutfits) do
+			local vMissingItems = Outfitter.ItemList_GetMissingItems(vEquippableItems, vOutfit)
+			
+			if vMissingItems then
+				for _, vItem in pairs(vMissingItems) do
+					if not vFoundItems then
+						Outfitter:NoteMessage(Outfitter.cMissingItemReportIntro)
+						vFoundItems = true
+					end
+					
+					Outfitter:NoteMessage(Outfitter:GenerateItemLink(vItem))
+				end
+			end
+		end
+	end
+	
+	if not vFoundItems then
+		Outfitter:NoteMessage(Outfitter.cNoMissingItems)
+	end
 end

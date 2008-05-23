@@ -1,7 +1,13 @@
-## Interface: 20200
+﻿## Interface: 20200
+
 ## Title: Dhask's FlightMap v2.2-1
+
+## Title-zhCN: |cff7fff7f世界航班地图|r  v2.2-1
 ## Notes: Adds a tooltip to the world map showing flightpaths into and out of regions, and region level ranges.
+
+## Notes-zhCN: 在世界地图上显示所有的航班信息&航行历时.
 ## SavedVariables: FlightMap
+
 ## OptionalDeps: myAddOns, Sea
 FlightMapUtil.lua
 FlightMap.xml

@@ -4,7 +4,7 @@
 	See the README file for more information.
 ]]
 
-MAPNOTES_VERSION = "4.14.20300";
+MAPNOTES_VERSION = "4.15.20400";
 MAPNOTES_EDITION = "Fan's Update";
 
 MN_DEFAULT_SCALE = 0.75;

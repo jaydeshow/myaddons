@@ -2,7 +2,9 @@
 -- brotherhobbes@gmail.com
 -- Adapted further by Ammo
 
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -45,6 +47,8 @@ L:RegisterTranslations("enUS", function() return {
 	["Need before greed"] = true,
 	["<method>"] = true,
 	["<threshold>"] = true,
+	["Toggle whether or not setting the loot method/threshold is enabled."] = true,
+	["Enable"] = true,
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -62,6 +66,8 @@ L:RegisterTranslations("zhCN", function() return {
 	["Need before greed"] = "需求优先",
 	["<method>"] = "<方式>",
 	["<threshold>"] = "<品质>",
+	["Toggle whether or not setting the loot method/threshold is enabled."] = "切换是否启用设置拾取方式/品质。",
+	["Enable"] = "启用",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -79,6 +85,8 @@ L:RegisterTranslations("zhTW", function() return {
 	["Need before greed"] = "需求優先",
 	["<method>"] = "<拾取方式>",
 	["<threshold>"] = "<品質>",
+	["Toggle whether or not setting the loot method/threshold is enabled."] = "切换是否啟用設定拾取方式/品質。",
+	["Enable"] = "啟用",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -96,23 +104,27 @@ L:RegisterTranslations("frFR", function() return {
 	["Need before greed"] = "Le besoin avant la cupidité",
 	["<method>"] = "<méthode>",
 	["<threshold>"] = "<seuil>",
+	["Toggle whether or not setting the loot method/threshold is enabled."] = "Active ou non le paramétrage du seuil/de la méthode de butin.",
+	["Enable"] = "Activer",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
 	["Loot"] = "Loot",
-	["Leader/Loot"] = "Anf\195\188hrer/Loot",
-	["Automatically set the loot method and threshold when forming a raid."] = "Optionen f\195\188r das Erbeuten von Gegenst\195\164nden.",
+	["Leader/Loot"] = "Anführer/Loot",
+	["Automatically set the loot method and threshold when forming a raid."] = "Legt automatisch die Lootmethode und -schwelle beim Erstellen einer Schlachtgruppe fest.",
 	["Method"] = "Methode",
 	["Threshold"] = "Schwelle",
-	["Set the loot method."] = "Setze die Loot-Methode.",
-	["Set the loot threshold."] = "Setze die Pl\195\188nder-Schwelle.",
+	["Set the loot method."] = "Setzt die Lootmethode.",
+	["Set the loot threshold."] = "Setzt die Plünderschwelle.",
 	["Free for all"] = "Jeder gegen Jeden",
 	["Round robin"] = "Reihum",
-	["Master looter"] = "Pl\195\188ndermeister",
-	["Group loot"] = "Pl\195\188ndern als Gruppe",
+	["Master looter"] = "Plündermeister",
+	["Group loot"] = "Plündern als Gruppe",
 	["Need before greed"] = "Bedarf vor Gier",
-	["<method>"] = "<Methode>",
-	["<threshold>"] = "<Schwelle>",
+	["<method>"] = "<methode>",
+	["<threshold>"] = "<schwelle>",
+	["Toggle whether or not setting the loot method/threshold is enabled."] = "Einstellungen für die Lootmethode und -schwelle aktivieren/deaktivieren.",
+	["Enable"] = "Aktivieren",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -130,6 +142,8 @@ L:RegisterTranslations("koKR", function() return {
 	["Need before greed"] = "주사위 굴림(착용자 우선)",
 	["<method>"] = "<방식>",
 	["<threshold>"] = "<품질>",
+	["Toggle whether or not setting the loot method/threshold is enabled."] = "설정되지 않은 전리품 획득 방식/품질의 활성화 여부를 전환합니다.",
+	["Enable"] = "활성화",
 } end )
 
 ----------------------------------
@@ -141,6 +155,7 @@ mod.defaults = {
 	method = L["Master looter"],
 	threshold = ITEM_QUALITY2_DESC,
 	master = UnitName("player"),
+	enabled = false,
 }
 mod.leader = true
 mod.name = L["Leader/Loot"]
@@ -149,16 +164,21 @@ mod.consoleOptions = {
 	type = "group",
 	name = L["Loot"],
 	desc = L["Automatically set the loot method and threshold when forming a raid."],
-	disabled = function() return not oRA:IsActive() end,
 	args = {
+		disable = {
+			type = "toggle",
+			name = L["Enable"],
+			desc = L["Toggle whether or not setting the loot method/threshold is enabled."],
+			get = function() return mod.db.profile.enabled end,
+			set = function(v)
+				mod.db.profile.enabled = v
+			end,
+		},
 		method = {
 			type = "text",
 			name = L["Method"], desc = L["Set the loot method."],
 			get = function() return mod.db.profile.method end,
-			set = function(v)
-				mod.db.profile.method = v
-				mod:SetLootMethod()
-			end,
+			set = function(v) mod.db.profile.method = v end,
 			validate = {
 				L["Free for all"],
 				L["Round robin"],
@@ -167,16 +187,13 @@ mod.consoleOptions = {
 				L["Need before greed"],
 			},
 			usage = L["<method>"],
-			disabled = function() return not IsRaidLeader() end,
+			disabled = function() return not IsRaidLeader() or not mod.db.profile.enabled end,
 		},
 		threshold = {
 			type = "text",
 			name = L["Threshold"], desc = L["Set the loot threshold."],
 			get = function() return mod.db.profile.threshold end,
-			set = function(v)
-				mod.db.profile.threshold = v
-				mod:SetLootMethod()
-			end,
+			set = function(v) mod.db.profile.threshold = v end,
 			validate = {
 				ITEM_QUALITY2_DESC,
 				ITEM_QUALITY3_DESC,
@@ -185,7 +202,7 @@ mod.consoleOptions = {
 				ITEM_QUALITY6_DESC,
 			},
 			usage = L["<threshold>"],
-			disabled = function() return not IsRaidLeader() end,
+			disabled = function() return not IsRaidLeader() or not mod.db.profile.enabled end,
 		},
 	},
 }
@@ -195,33 +212,27 @@ mod.consoleOptions = {
 ------------------------------
 
 function mod:OnEnable()
-	self:SetLootMethod()
+	self:RegisterEvent("oRA_PlayerPromoted")
+	if IsRaidLeader() then
+		self:oRA_PlayerPromoted()
+	end
 end
 
 ----------------------
--- Command handlers --
+-- Event handlers
 ----------------------
 
-function mod:SetLootMethod()
+function mod:oRA_PlayerPromoted()
+	if not self.db.profile.enabled then return end
+
 	if not IsRaidLeader() then return end
-
-	local method = self.db.profile.method
-	local threshold = self.db.profile.threshold
-
-	if not (method and L:HasReverseTranslation(method) and lootmethods[L:GetReverseTranslation(method)]) then
-		method = self.defaults.method
-	end
-	method = lootmethods[L:GetReverseTranslation(method)]
-
-	if not threshold or not lootthresholds[threshold] then
-		threshold = self.defaults.threshold
-	end
-	threshold = lootthresholds[threshold]
+	
+	local method = lootmethods[L:GetReverseTranslation(self.db.profile.method)]
+	local threshold = lootthresholds[self.db.profile.threshold]
 
 	-- SetLootMethod("method"[,"masterPlayer" or ,threshold])
 	-- method  "group", "freeforall", "master", "neeedbeforegreed", "roundrobin".
 	-- threshold  0 poor  1 common  2 uncommon  3 rare  4 epic  5 legendary  6 artifact    
-
 	SetLootMethod(method, self.db.profile.master, threshold)
 	if method == "master" or method == "group" then
 		self:ScheduleEvent("oralootthreshold", SetLootThreshold, 3, threshold)

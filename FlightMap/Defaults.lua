@@ -11,7 +11,6 @@ FLIGHTMAP_DEFAULT_OPTS = {
      ["showAllInfo"] = false,
      ["useTimer"]    = true,
      ["showCosts"]   = false,
-	["autoDismount"] = true,
      ["showTimes"]   = false,
      ["fullTaxiMap"] = true,
 };

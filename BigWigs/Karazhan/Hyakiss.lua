@@ -27,25 +27,31 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	web = "Rets",
-	web_desc = "Préviens quand un joueur se fait piégé par les Rets.",
-	web_message = "%s a été piégé par les Rets !",
-	web_bar = "Rets : %s",
+	web_desc = "Prévient quand un joueur se fait piégé par les Rets.",
+	web_message = "%s a été piégé par les Rets !",
+	web_bar = "Rets : %s",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
 	web = "거미줄",
 	web_desc = "거미줄에 걸린 플레이어를 알립니다.",
-	web_message = "%s님이 거미줄에 걸렸습니다!",
+	web_message = "%s 거미줄 걸림!",
 	web_bar = "거미줄: %s",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
 	web = "希亚其斯之网",
-	web_desc = "当队员受到希亚其斯之网时发出警告。",
+	web_desc = "当玩家受到希亚其斯之网时发出警告。",
 	web_message = "希亚其斯之网：>%s<！",
-	web_bar = "<希亚其斯之网: %s>",
+	web_bar = "<希亚其斯之网：%s>",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	web = "Red de Hyakiss (Hyakiss' Web)",
+	web_desc = "Avisar quién tiene Red de Hyakiss.",
+	web_message = "¡%s tiene Red de Hyakiss!",
+	web_bar = "Red de Hyakiss: %s",
+} end )
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -54,7 +60,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"web", "bosskill"}
-mod.revision = tonumber(("$Revision: 65914 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

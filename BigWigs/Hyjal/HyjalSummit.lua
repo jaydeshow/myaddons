@@ -78,6 +78,48 @@ L:RegisterTranslations("enUS", function() return {
 	["Ghoul"] = true,
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	waves = "Oleadas",
+	waves_desc = "Avisos aproximados para cada oleada.",
+
+	detail = "Avisos detallados",
+	detail_desc = "Mostrar avisos detallados sobre los enemigos que vienen.",
+
+	["~%s spawn"] = "~%s aparece",
+	["~Wave %d spawn"] = "~Oleada %d aparece",
+	["Wave %d incoming!"] = "¡Oleada %d viene!",
+	["Wave %d! %d %s"] = "¡Oleada %d! %d %s", --1 set of mobs
+	["Wave %d! %d %s, %d %s"] = "¡Oleada %d! %d %s, %d %s", --2 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s"] = "¡Oleada %d! %d %s, %d %s, %d %s", --3 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s"] = "¡Oleada %d! %d %s, %d %s, %d %s, %d %s", --4 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s, %d %s"] = "¡Oleada %d! %d %s, %d %s, %d %s, %d %s, %d %s", --5 sets of mobs
+	["%s in ~%d sec!"] = "¡%s en ~%d seg!",
+	["Wave %d in ~%d sec!"] = "¡Oleada %d en ~%d seg!",
+
+	["Boss"] = "Jefe",
+	["Thrall"] = "Thrall",
+	["Lady Jaina Proudmoore"] = "Lady Jaina Valiente",
+
+	["My companions and I are with you, Lady Proudmoore."] = "Mis compañeros y yo estamos contigo, Lady Valiente.", -- Rage Winterchill
+	["We are ready for whatever Archimonde might send our way, Lady Proudmoore."] = "Estamos listos para cualquier cosa que Archimonde nos mande, lady Valiente.", -- Anatheron
+	["I am with you, Thrall."] = "Estoy contigo, Thrall.", -- Kaz'Rogal
+	["We have nothing to fear."] = "No tenemos nada que temer.", -- Az'Galor
+
+	["Please remove BigWigs_WaveTimers, it is deprecated."] = "Por favor, elimina BigWigs_WaveTimers, es obsoleto.",
+
+	["Ghouls"] = "Necrófagos",
+	["Crypt Fiends"] = "Malignos de cripta",
+	["Abominations"] = "Abominación",
+	["Necromancers"] = "Nigromantes",
+	["Banshees"] = "Almas en pena",
+	["Gargoyles"] = "Gárgolas",
+	["Frost Wyrm"] = "Vermis de escarcha",
+	["Fel Stalkers"] = "Acechador vil",
+	["Infernals"] = "Infernales",
+
+	["Ghoul"] = "Necrófago",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	waves = "공격 경고",
 	waves_desc = "다음 공격에 대한 접근 경고 메세지를 알립니다.",
@@ -100,10 +142,10 @@ L:RegisterTranslations("koKR", function() return {
 	["Thrall"] = "스랄",
 	["Lady Jaina Proudmoore"] = "여군주 제이나 프라우드무어",
 
-	["My companions and I are with you, Lady Proudmoore."] = "제 동료와 저는 프라우드무어님, 당신과 함께 하겠습니다.", -- Rage Winterchill
+	["My companions and I are with you, Lady Proudmoore."] = "제 동료와 저는 프라우드무어님, 당신과 함께"..(UnitSex("player") == 3 and "" or " ").."하겠습니다.", -- Rage Winterchill
 	["We are ready for whatever Archimonde might send our way, Lady Proudmoore."] = "아키몬드가 어떤 군대를 보내던 우리는 준비가 되어 있습니다, 프라우드무어 님.", -- Anatheron
-	["I am with you, Thrall."] = "당신과 함께 하겠습니다, 대족장님.", -- Kaz'Rogal
-	["We have nothing to fear."] = "두려워할 것은 아무것도 없습니다.", -- Az'Galor
+	["I am with you, Thrall."] = "당신과 함께 하겠"..(UnitSex("player") == 3 and "어요" or "습니다")..", 대족장님.", -- Kaz'Rogal
+	["We have nothing to fear."] = "두려워할 것은 아무것도 없"..(UnitSex("player") == 3 and "어요" or "습니다")..".", -- Az'Galor
 	
 	["Please remove BigWigs_WaveTimers, it is deprecated."] = "BigWigs_WaveTimers를 반대하므로, 이것을 제거하십시요.",
 
@@ -122,21 +164,21 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	waves = "Avertissements des vagues",
-	waves_desc = "Préviens quand la prochaine vague est susceptible d'arriver.",
+	waves_desc = "Prévient quand la prochaine vague est susceptible d'arriver.",
 
 	detail = "Avertissements détaillés",
 	detail_desc = "Affiche des avertissements détaillés indiquant les monstres en approche.",
 
 	["~%s spawn"] = "~Apparition %s",
 	["~Wave %d spawn"] = "~Apparition vague %d",
-	["Wave %d incoming!"] = "Arrivée de la vague %d !",
-	["Wave %d! %d %s"] = "Vague %d ! %d %s", --1 set of mobs
-	["Wave %d! %d %s, %d %s"] = "Vague %d ! %d %s, %d %s", --2 sets of mobs
-	["Wave %d! %d %s, %d %s, %d %s"] = "Vague %d ! %d %s, %d %s, %d %s", --3 sets of mobs
-	["Wave %d! %d %s, %d %s, %d %s, %d %s"] = "Vague %d ! %d %s, %d %s, %d %s, %d %s", --4 sets of mobs
-	["Wave %d! %d %s, %d %s, %d %s, %d %s, %d %s"] = "Vague %d ! %d %s, %d %s, %d %s, %d %s, %d %s", --5 sets of mobs
-	["%s in ~%d sec!"] = "%s dans ~%d sec. !",
-	["Wave %d in ~%d sec!"] = "Vague %d dans ~%d sec. !",
+	["Wave %d incoming!"] = "Arrivée de la vague %d !",
+	["Wave %d! %d %s"] = "Vague %d ! %d %s", --1 set of mobs
+	["Wave %d! %d %s, %d %s"] = "Vague %d ! %d %s, %d %s", --2 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s"] = "Vague %d ! %d %s, %d %s, %d %s", --3 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s"] = "Vague %d ! %d %s, %d %s, %d %s, %d %s", --4 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s, %d %s"] = "Vague %d ! %d %s, %d %s, %d %s, %d %s, %d %s", --5 sets of mobs
+	["%s in ~%d sec!"] = "%s dans ~%d sec. !",
+	["Wave %d in ~%d sec!"] = "Vague %d dans ~%d sec. !",
 
 	["Boss"] = "Boss",
 	["Thrall"] = "Thrall",
@@ -209,16 +251,16 @@ L:RegisterTranslations("zhCN", function() return {
 	detail = "详细警报",
 	detail_desc = "怪物到来时显示详细警报。",
 
-	["~%s spawn"] = "~%s 出现。",
-	["~Wave %d spawn"] = "~第%d波 出现。",
-	["Wave %d incoming!"] = "第%d波 来临!",
-	["Wave %d! %d %s"] = "第%d波! %d个%s", --1 set of mobs
-	["Wave %d! %d %s, %d %s"] = "第%d波! %d个%s, %d %s", --2 sets of mobs
-	["Wave %d! %d %s, %d %s, %d %s"] = "第%d波! %d个%s, %d个%s, %d个%s", --3 sets of mobs
-	["Wave %d! %d %s, %d %s, %d %s, %d %s"] = "第%d波! %d个%s, %d个%s, %d个%s, %d个%s", --4 sets of mobs
-	["Wave %d! %d %s, %d %s, %d %s, %d %s, %d %s"] = "第%d波! %d个%s, %d个%s, %d个%s, %d个%s, %d个%s", --5 sets of mobs
-	["%s in ~%d sec!"] = "%s 在~%d秒后来临！",
-	["Wave %d in ~%d sec!"] = "第%d波！ 将在~%d秒后来临！",
+	["~%s spawn"] = "%s 出现！",
+	["~Wave %d spawn"] = "第%d波 出现！",
+	["Wave %d incoming!"] = "第%d波 来临！",
+	["Wave %d! %d %s"] = "第%d波：%d个%s！", --1 set of mobs
+	["Wave %d! %d %s, %d %s"] = "第%d波：%d个%s，%d个%s！", --2 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s"] = "第%d波：%d个%s，%d个%s，%d个%s！", --3 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s"] = "第%d波：%d个%s，%d个%s，%d个%s，%d个%s！", --4 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s, %d %s"] = "第%d波：%d个%s，%d个%s，%d个%s，%d个%s，%d个%s！", --5 sets of mobs
+	["%s in ~%d sec!"] = "%s 在约%d秒后来临！",
+	["Wave %d in ~%d sec!"] = "第%d波！将在约%d秒后来临！",
 
 	["Boss"] = "首领",
 	["Thrall"] = "萨尔",
@@ -240,6 +282,8 @@ L:RegisterTranslations("zhCN", function() return {
 	["Frost Wyrm"] = "冰霜巨龙",
 	["Fel Stalkers"] = "恶魔猎犬",
 	["Infernals"] = "地狱火",
+
+	["Ghoul"] = "食尸鬼",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -257,8 +301,8 @@ L:RegisterTranslations("zhTW", function() return {
 	["Wave %d! %d %s, %d %s, %d %s"] = "第 %d 波：%d %s、%d %s、%d %s！", --3 sets of mobs
 	["Wave %d! %d %s, %d %s, %d %s, %d %s"] = "第 %d 波：%d %s、%d %s、%d %s、%d %s！", --4 sets of mobs
 	["Wave %d! %d %s, %d %s, %d %s, %d %s, %d %s"] = "第 %d 波：%d %s、%d %s、%d %s、%d %s、%d %s！", --5 sets of mobs
-	["%s in ~%d sec!"] = "%s 約 %d 秒後來臨！",
-	["Wave %d in ~%d sec!"] = "第 %d 波約 %d 秒後來臨！",
+	["%s in ~%d sec!"] = "%s 約 %d 秒後來臨!",
+	["Wave %d in ~%d sec!"] = "第 %d 波約 %d 秒後來臨!",
 
 	["Boss"] = "首領",
 	["Thrall"] = "索爾",
@@ -293,7 +337,7 @@ local mod = BigWigs:NewModule(name)
 mod.zonename = name
 mod.enabletrigger = { thrall, proudmoore, L["Ghoul"] }
 mod.toggleoptions = {"waves", "detail"}
-mod.revision = tonumber(match("$Revision: 66139 $", "%d+"))
+mod.revision = tonumber(match("$Revision: 72140 $", "%d+"))
 mod.synctoken = "Hyjal Summit"
 
 ------------------------------

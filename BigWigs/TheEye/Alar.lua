@@ -40,21 +40,41 @@ L:RegisterTranslations("enUS", function() return {
 	icon_desc = "Place a Raid Icon on the player with Melt Armor(requires promoted or higher).",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	meteor = "Soltar bomba (Dive Bomb)",
+	meteor_desc = "Temporizadores estimados de Soltar bomba.",
+	meteor_warning = "Posible Soltar bomba en ~5seg",
+	meteor_message = "¡Soltar bomba! Sig. en ~52seg",
+	meteor_nextbar = "~Soltar bomba",
+
+	flamepatch = "Anillo de llamas (Flame Patch) en TI",
+	flamepatch_desc = "Avisar sobre Flame Patch en ti.",
+	flamepatch_message = "¡Anillo de llamas en TI!",
+
+	armor = "Fundir armadura (Melt Armor)",
+	armor_desc = "Avisar quién tiene Fundir armadura.",
+	armor_other = "Fundir armadura: %s",
+	armor_you = "¡Fundir armadura en TI!",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores afectados por Fundir armadura. (Requiere derechos de banda)",
+} end )
+
 L:RegisterTranslations("frFR", function() return {
 	meteor = "Bombardement en piqué",
 	meteor_desc = "Délais estimés entre les Bombardements en piqué.",
 	meteor_warning = "Bombardement en piqué probable dans ~5 sec.",
-	meteor_message = "Bombardement en piqué ! Prochain dans ~52 sec.",
+	meteor_message = "Bombardement en piqué ! Prochain dans ~52 sec.",
 	meteor_nextbar = "Prochain Bombardement",
 
 	flamepatch = "Gerbe de flammes sur vous",
-	flamepatch_desc = "Préviens quand une Gerbe de flammes est sur vous.",
-	flamepatch_message = "Gerbe de flammes sur VOUS !",
+	flamepatch_desc = "Prévient quand une Gerbe de flammes est sur vous.",
+	flamepatch_message = "Gerbe de flammes sur VOUS !",
 
 	armor = "Fondre armure",
-	armor_desc = "Préviens quand un joueur est affecté par Fondre armure.",
-	armor_other = "Fondre armure : %s",
-	armor_you = "Fondre armure sur VOUS !",
+	armor_desc = "Prévient quand un joueur est affecté par Fondre armure.",
+	armor_other = "Fondre armure : %s",
+	armor_you = "Fondre armure sur VOUS !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur la personne affectée par Fondre armure (nécessite d'être promu ou mieux).",
@@ -67,34 +87,34 @@ L:RegisterTranslations("koKR", function() return {
 	meteor_message = "급강하 폭격! 다음은 약 52초 이내",
 	meteor_nextbar = "다음 급강하 폭격",
 
-	flamepatch = "당신에 화염 파편",
-	flamepatch_desc = "당신에 화염 파편에 대한 경고입니다.",
-	flamepatch_message = "당신에 화염 파편!",
+	flamepatch = "자신의 화염 파편",
+	flamepatch_desc = "자신이 화염 파편에 걸렸을 때 알립니다.",
+	flamepatch_message = "당신은 화염 파편!",
 
 	armor = "방어구 녹이기",
-	armor_desc = "방어구 녹이기에 걸린 사람에 대한 경고입니다.",
+	armor_desc = "방어구 녹이기에 걸린 플레이어를 알립니다.",
 	armor_other = "방어구 녹이기: %s",
-	armor_you = "당신에 방어구 녹이기!",
+	armor_you = "당신은 방어구 녹이기!",
 
 	icon = "전술 표시",
-	icon_desc = "방어구 녹이기에 걸린 플레이어에에게 전술 표시를 지정합니다 (승급자 이상 권한 요구).",
+	icon_desc = "방어구 녹이기에 걸린 플레이어에에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
 	meteor = "隕石術",
 	meteor_desc = "隕石計時",
 	meteor_warning = "隕石術可能在 5 秒內施放。",
-	meteor_message = "隕石術！- 下一次約 52 秒。",
+	meteor_message = "隕石術!- 下一次約 52 秒。",
 	meteor_nextbar = "下一次隕石術",
 
 	flamepatch = "烈焰助長",
 	flamepatch_desc = "當你受到烈焰助長時警告",
-	flamepatch_message = "烈焰助長：[你]",
+	flamepatch_message = "烈焰助長: [你]",
 
 	armor = "熔化護甲",
 	armor_desc = "當某人受到熔化護甲時提示",
-	armor_other = "熔化護甲：[%s]",
-	armor_you = "熔化護甲：[你]",
+	armor_other = "熔化護甲: [%s]",
+	armor_you = "熔化護甲: [你]",
 
 	icon = "團隊標記",
 	icon_desc = "對受到熔化護甲的目標設置團隊標記（需要權限）",
@@ -103,21 +123,21 @@ L:RegisterTranslations("zhTW", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	meteor = "俯冲轰炸",
 	meteor_desc = "俯冲轰炸记时条。",
-	meteor_warning = "5秒后 可能 俯冲轰炸",
-	meteor_message = "俯冲轰炸！ ~52秒后再次发动",
+	meteor_warning = "约5秒后，俯冲轰炸！",
+	meteor_message = "俯冲轰炸！约52秒后，再次发动！",
 	meteor_nextbar = "<下一俯冲轰炸>",
 
-	flamepatch = "烈焰之地(你)",
-	flamepatch_desc = "烈焰之地于你警报。",
+	flamepatch = "烈焰之地（你）",
+	flamepatch_desc = "当你受到烈焰之地时发出警报。",
 	flamepatch_message = ">你< 烈焰之地！",
 
 	armor = "熔化护甲",
-	armor_desc = "当队友获得熔化护甲发出警报。",
+	armor_desc = "当玩家受到熔化护甲时发出警报。",
 	armor_other = "熔化护甲：>%s<！",
 	armor_you = ">你< 熔化护甲！",
 
 	icon = "团队标记",
-	icon_desc = "给中了熔化护甲的队员打上团队标记。(需要权限)",
+	icon_desc = "给中了熔化护甲的队员打上团队标记。（需要权限）",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -149,7 +169,7 @@ mod.zonename = BZ["Tempest Keep"]
 mod.otherMenu = "The Eye"
 mod.enabletrigger = boss
 mod.toggleoptions = {"meteor", "flamepatch", -1, "armor", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 65818 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -173,7 +193,7 @@ end
 
 function mod:FlamePatch(player)
 	if player == pName and db.flamepatch then
-		self:IfMessage(L["flamepatch_message"], "Personal", 35383, "Alarm")
+		self:LocalMessage(L["flamepatch_message"], "Personal", 35383, "Alarm")
 	end
 end
 

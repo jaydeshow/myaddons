@@ -103,10 +103,4 @@ L:RegisterTranslations("frFR", function() return {
 		"This will assign paladins present with blessings based on the configured global template, taking into account talents so that paladins with Improved Blessing of Might, for example, will be favored to buff this blessing.\r\r"..
 		"|cFFFFFFFFBroadcast Button|r\r"..
 		"This will simply re-broadcast the current blessing layout, should anyone need this after a WoW crash for example.\r\r",
-	["Generated automatic template"] = "Génération automatique du modèle",
-	["%s %s's template - %s from %s to %s"] = "%s Modèle de %s - %s de %s à %s",
-	["%s %s's exception - %s from %s to %s"] = "%s Exception de %s - %s de %s à %s",
-	["Remotely changed"] = "Changé à distance",
-	["Changed"] = "Changé",
-	["Cleared %s's exceptions for %s"] = "Exception de %s vidé pour %s",
 } end)

@@ -70,10 +70,10 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	["BossBlock"] = "信息阻止",
-	desc = "自动阻止其他玩家或其他来源的 Boss 预警信息和表情。",
+	desc = "自动阻止其他玩家或其他来源的首领预警信息和表情。",
 
-	["Boss emotes"] = "Boss 表情",
-	["Suppress messages sent to the raid boss emote frame.\n\nOnly suppresses messages from bosses that BigWigs knows about, and only suppresses them from showing in that frame, not the chat window."] = "阻止信息发送到团队 Boss 表情框体。\n\n只阻止 BigWigs 有的部分，而只阻止的是显示在信息框体，而非聊天窗口。",
+	["Boss emotes"] = "首领表情",
+	["Suppress messages sent to the raid boss emote frame.\n\nOnly suppresses messages from bosses that BigWigs knows about, and only suppresses them from showing in that frame, not the chat window."] = "阻止信息发送到团队首领表情框体。\n\n只阻止 BigWigs 有的部分，而只阻止的是显示在信息框体，而非聊天窗口。",
 
 	["Raid chat"] = "团队频道",
 	["Suppress messages sent to raid chat."] = "禁止信息发送到团队频道。",
@@ -84,7 +84,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Raid warning messages"] = "团队警报信息",
 	["Suppress raid warning messages from the raid message window."] = "阻止团队信息窗口下的团队警报信息。",
 
-	["Raid say"] = "RS信息",
+	["Raid say"] = "RS 信息",
 	["Suppress RaidSay popup messages."] = "阻止 RS 弹出的信息。",
 
 	["Whispers"] = "密语",
@@ -93,7 +93,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Suppressing Chatframe"] = "正在阻止来自于聊天框中的信息",
 	["Suppressing RaidWarningFrame"] = "正在阻止来自于团队通告的信息",
 	["Suppressing CT_RAMessageFrame"] = "正在阻止来自于 CT_RA 的 RS 信息",
-	["Suppressing RaidBossEmoteFrame"] = "正在阻止来自于团队 Boss 表情的信息",
+	["Suppressing RaidBossEmoteFrame"] = "正在阻止来自于团队首领表情的信息",
 
 	["Suppressed"] = "阻止",
 	["Shown"] = "显示",
@@ -101,7 +101,7 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	["BossBlock"] = "訊息阻擋",
-	desc = "阻擋其他玩家的首領插件發送的訊息。",
+	desc = "阻擋其他玩家的首領插件發送的訊息",
 
 	["Boss emotes"] = "首領表情",
 	["Suppress messages sent to the raid boss emote frame.\n\nOnly suppresses messages from bosses that BigWigs knows about, and only suppresses them from showing in that frame, not the chat window."] = "阻擋首領的表情訊息，只阻擋目前已知的部分，並且不會阻擋在聊天紀錄上的訊息。",
@@ -110,20 +110,20 @@ L:RegisterTranslations("zhTW", function() return {
 	["Suppress messages sent to raid chat."] = "阻擋團隊頻道中的訊息",
 
 	["Raid warning chat messages"] = "阻擋團隊警告聊天",
-	["Suppress raid warning messages from the chat window."] = "阻擋聊天窗體中的團隊警告訊息",
+	["Suppress raid warning messages from the chat window."] = "阻擋聊天視窗中的團隊警告訊息",
 
 	["Raid warning messages"] = "阻擋團隊警告",
 	["Suppress raid warning messages from the raid message window."] = "阻擋團隊警告中的訊息",
 
 	["Raid say"] = "阻擋團隊助手訊息",
-	["Suppress RaidSay popup messages."] = "阻擋團隊助手(CTRA)的RS訊息",
+	["Suppress RaidSay popup messages."] = "阻擋團隊助手 (CTRA) 的 RS 訊息",
 
 	["Whispers"] = "阻擋密語",
 	["Suppress whispered messages."] = "阻擋密語中的訊息",
 
 	["Suppressing Chatframe"] = "正在阻擋聊天訊息",
-	["Suppressing RaidWarningFrame"] = "正在阻擋團隊警告訊息(RW)",
-	["Suppressing CT_RAMessageFrame"] = "正在阻擋團隊助手訊息(RS)",
+	["Suppressing RaidWarningFrame"] = "正在阻擋團隊警告訊息 (RW)",
+	["Suppressing CT_RAMessageFrame"] = "正在阻擋團隊助手訊息 (RS)",
 	["Suppressing RaidBossEmoteFrame"] = "正在阻擋首領表情訊息",
 
 	["Suppressed"] = "阻擋",
@@ -193,31 +193,31 @@ L:RegisterTranslations("frFR", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	["BossBlock"] = "Bloques de Jefes",
-	desc = "Suprime autom\195\161ticamnete los avisos de los jefes y emociones de jugadores y otras fuentes.",
-
+	["BossBlock"] = "Ocultar mensajes",
+	desc = "Oculta automáticamnete los avisos de los jefes y emociones de jugadores y otras fuentes.",
+	
 	["Boss emotes"] = "Emociones de Jefes",
-	["Suppress messages sent to the raid boss emote frame.\n\nOnly suppresses messages from bosses that BigWigs knows about, and only suppresses them from showing in that frame, not the chat window."] = "Suprime los mensajes enviados a la ventana de emociones del Jefe de banda.\n\nSolo suprime los mensajes de Jefes de los cuales BigWigs conoce, y solo suprime que se muestren en dicha ventana, no en el chat",
+	["Suppress messages sent to the raid boss emote frame.\n\nOnly suppresses messages from bosses that BigWigs knows about, and only suppresses them from showing in that frame, not the chat window."] = "Oculta los mensajes enviados a la ventana de emociones del Jefe de banda.\n\nSolo oculta los mensajes de Jefes que BigWigs conoce, y solo si se muestran en dicha ventana, no en el chat.",
 
 	["Raid chat"] = "Chat de Banda",
-	["Suppress messages sent to raid chat."] = "Suprime los mensajes enviados al chat de banda",
+	["Suppress messages sent to raid chat."] = "Oculta los mensajes enviados al chat de banda.",
 
-	["Raid warning chat messages"] = "Mensajes de aviso de banda",
-	["Suppress raid warning messages from the chat window."] = "Suprime los mensajes de aviso de la banda de la ventana de chat",
+	["Raid warning chat messages"] = "Mensajes de aviso de banda en chat",
+	["Suppress raid warning messages from the chat window."] = "Oculta los mensajes de aviso de banda de la ventana de chat.",
 
 	["Raid warning messages"] = "Mensajes de aviso de banda",
-	["Suppress raid warning messages from the raid message window."] = "Suprime los mensajes de aviso de banda en la ventana de mensajes de banda",
+	["Suppress raid warning messages from the raid message window."] = "Oculta los mensajes de aviso de banda en la ventana de mensajes de banda.",
 
 	["Raid say"] = "Decir en banda",
-	["Suppress RaidSay popup messages."] = "Suprime los mensajes de Decir en banda",
+	["Suppress RaidSay popup messages."] = "Oculta los mensajes de Decir en banda.",
 
 	["Whispers"] = "Susurros",
-	["Suppress whispered messages."] = "Suprime los mensajes susurrados",
+	["Suppress whispered messages."] = "Oculta los mensajes susurrados.",
 
-	["Suppressing Chatframe"] = "Suprimiendo Ventana de chat",
-	["Suppressing RaidWarningFrame"] = "Suprimiendo Ventana de Aviso de Banda",
-	["Suppressing CT_RAMessageFrame"] = "Suprimiendo Ventana de CTRA",
-	["Suppressing RaidBossEmoteFrame"] = "Suprimiendo Ventana de emociones de Jefe",
+	["Suppressing Chatframe"] = "Ocultando Ventana de chat",
+	["Suppressing RaidWarningFrame"] = "Ocultando Ventana de Aviso de Banda",
+	["Suppressing CT_RAMessageFrame"] = "Ocultando Ventana de CTRA",
+	["Suppressing RaidBossEmoteFrame"] = "Ocultando Ventana de emociones de Jefe",
 
 	["Suppressed"] = "Suprimido",
 	["Shown"] = "Mostrado",
@@ -241,7 +241,7 @@ local map = {[true] = "|cffff0000"..L["Suppressed"].."|r", [false] = "|cff00ff00
 
 local plugin = BigWigs:NewModule("BossBlock", "AceHook-2.1")
 
-plugin.revision = tonumber(("$Revision: 63870 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
 plugin.defaultDB = {
 	chat = true,
 	rs = true,

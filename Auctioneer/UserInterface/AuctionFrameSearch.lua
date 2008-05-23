@@ -1,7 +1,7 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: AuctionFrameSearch.lua 2784 2008-01-21 22:47:27Z kandoko $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: AuctionFrameSearch.lua 2885 2008-02-23 15:15:33Z kandoko $
 
 	Auctioneer Search Auctions tab
 
@@ -28,7 +28,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
 
-Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/UserInterface/AuctionFrameSearch.lua $", "$Rev: 2784 $")
+Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/UserInterface/AuctionFrameSearch.lua $", "$Rev: 2885 $")
 
 local TIME_LEFT_NAMES = {
 	AUCTION_TIME_LEFT1, -- Short
@@ -1317,7 +1317,7 @@ function AuctionFrameSearch_SelectResultByIndex(frame, index)
 		ListTemplate_SelectRow(frame.resultsList, index);
 		
 		-- Update the Transactions tab if BeanCounter is loaded. Allows searchs made here to show in BC
-		if IsAddOnLoaded("BeanCounter") and BeanCounter.externalSearch then
+		if IsAddOnLoaded("BeanCounter") and BeanCounter.externalSearch and BeanCounter.API.isLoaded then
 			BeanCounter.externalSearch(frame.selectedResult.name:lower()) --will accept itemid, string, itemkey, or itemlink
 		end
 	else

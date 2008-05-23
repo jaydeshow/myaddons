@@ -1,21 +1,27 @@
-local VERSION = tonumber(("$Revision: 51679 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 74808 $"):match("%d+"))
 
-local Parrot = Parrot
-local Parrot_CombatEvents = Parrot:NewModule("CombatEvents", "LibParser-4.0", "LibRockEvent-1.0", "LibRockTimer-1.0")
+local Parrot = Parrot, Parrot
+local Parrot_CombatEvents = Parrot:NewModule("CombatEvents", "LibRockEvent-1.0", "LibRockTimer-1.0")
+local self = Parrot_CombatEvents
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-10-10 23:54:07 -0400 (Wed, 10 Oct 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-22 11:55:26 -0400 (Thu, 22 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
-	
+
+-- to track XP and Honor-gains
+local currentXP
+local currentHonor
+
 -- #AUTODOC_NAMESPACE Parrot_CombatEvents
 
-local L = Parrot:L("Parrot_CombatEvents")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatEvents")
 
 local RockEvent = Rock("LibRockEvent-1.0")
 local RockTimer = Rock("LibRockTimer-1.0")
 
-local SharedMedia = Rock("LibSharedMedia-2.0")
+local SharedMedia = Rock("LibSharedMedia-3.0")
+local deformat = Rock("Deformat-2.0")
 
 local _G = _G
 local UNKNOWN = _G.UNKNOWN
@@ -24,8 +30,15 @@ if type(UNKNOWN) ~= "string" then
 end
 
 local _,playerClass = _G.UnitClass("player")
-
 local newList, del, newDict = Rock:GetRecyclingFunctions("Parrot", "newList", "del", "newDict")
+
+local bit_bor	= bit.bor
+local bit_band  = bit.band
+
+Parrot_CombatEvents.PlayerGUID = nil
+Parrot_CombatEvents.PlayerName = nil
+Parrot_CombatEvents.PetGUID = nil
+Parrot_CombatEvents.PetName = nil
 
 Parrot_CombatEvents.db = Parrot:GetDatabaseNamespace("CombatEvents")
 Parrot:SetDatabaseNamespaceDefaults("CombatEvents", "profile", {
@@ -96,17 +109,69 @@ local combatEvents = {}
 
 local Parrot_Display
 local Parrot_ScrollAreas
+local Parrot_TriggerConditions
 
 function Parrot_CombatEvents:OnInitialize()
 	Parrot_Display = Parrot:GetModule("Display")
 	Parrot_ScrollAreas = Parrot:GetModule("ScrollAreas")
+	Parrot_TriggerConditions = Parrot:GetModule("TriggerConditions")
+	if (disabled) then
+		
+		-- Combatlog
+		self:RemoveEventListener("Blizzard", "COMBAT_LOG_EVENT_UNFILTERED");
+		
+		-- loot
+		self:RemoveEventListener("Blizzard", "CHAT_MSG_LOOT")
+		self:RemoveEventListener("Blizzard", "CHAT_MSG_MONEY")
+		
+		-- XP-gains
+		self:RemoveEventListener("Blizzard", "PLAYER_XP_UPDATE")
+		
+		-- honorgains
+		self:RemoveEventListener("Blizzard", "HONOR_CURRENCY_UPDATE")
+		
+		-- Skillgains
+		self:RemoveEventListener("Blizzard", "CHAT_MSG_SKILL")
+		
+		-- Reputationgains
+		self:RemoveEventListener("Blizzard", "CHAT_MSG_COMBAT_FACTION_CHANGE")
+		
+	else
+		
+		-- Combatlog
+		self:AddEventListener("Blizzard", "COMBAT_LOG_EVENT_UNFILTERED", "OnEvent");
+		
+		--LootEvents
+		self:AddEventListener("Blizzard", "CHAT_MSG_LOOT", "OnLootEvent")
+		self:AddEventListener("Blizzard", "CHAT_MSG_MONEY", "OnLootEvent")
+		
+		-- Experiencegains
+		self:AddEventListener("Blizzard", "PLAYER_XP_UPDATE", "OnXPgainEvent" )
+		
+		-- honorgains
+		self:AddEventListener("Blizzard", "HONOR_CURRENCY_UPDATE", "OnHonorgainEvent")
+		
+		-- Skillgains
+		self:AddEventListener("Blizzard", "CHAT_MSG_SKILL", "OnSkillgainEvent" )
+		
+		-- Reputationgains
+		self:AddEventListener("Blizzard", "CHAT_MSG_COMBAT_FACTION_CHANGE", "OnRepgainEvent")
+		
+
+		
+	end
+	
+	
+	
+	
+
 end
 
 local onEnableFuncs = {}
 local enabled = false
 function Parrot_CombatEvents:OnEnable(first)
 	enabled = true
-	
+
 	if first then
 		local tmp = newList("Notification", "Incoming", "Outgoing")
 		for _,category in ipairs(tmp) do
@@ -141,6 +206,14 @@ function Parrot_CombatEvents:OnEnable(first)
 	for _,v in ipairs(onEnableFuncs) do
 		v()
 	end
+	
+		
+	Parrot_CombatEvents.PlayerGUID = UnitGUID("player")
+	Parrot_CombatEvents.PlayerName = UnitName("player")
+	
+	currentHonor = GetHonorCurrency()
+	currentXP = UnitXP("player")
+
 end
 
 local onDisableFuncs = {}
@@ -271,12 +344,9 @@ local function refreshEventRegistration(category, name)
 			blizzardEvent_ns, blizzardEvent_ev = "Blizzard", blizzardEvent_ns
 		end
 	end
-	local parserEvent = data.parserEvent
 	if disabled then
 		if blizzardEvent then
 			Parrot_CombatEvents:RemoveEventListener(blizzardEvent_ns, blizzardEvent_ev)
-		elseif parserEvent then
-			Parrot_CombatEvents:RemoveParserListener(parserEvent)
 		end
 	else
 		if blizzardEvent then
@@ -288,8 +358,6 @@ local function refreshEventRegistration(category, name)
 				Parrot_CombatEvents:TriggerCombatEvent(category, name, info)
 				info = del(info)
 			end)
-		elseif parserEvent then
-			Parrot_CombatEvents:AddParserListener(parserEvent, Parrot_CombatEvents.TriggerCombatEvent, Parrot_CombatEvents, category, name)
 		end
 	end
 end
@@ -493,7 +561,7 @@ function Parrot_CombatEvents:OnOptionsCreate()
 	local function getTag(passValue)
 		return self.db.profile.modifier[passValue].tag
 	end
-	
+
 	local handler__tagTranslations
 	local function handler(literal)
 		local inner = literal:sub(2, -2)
@@ -916,7 +984,7 @@ function Parrot_CombatEvents:OnOptionsCreate()
 		}
 		resortOptions(category)
 	end
-	
+
 	local function getTimespan(throttleType)
 		return self.db.profile.throttles[throttleType] or throttleDefaultTimes[throttleType]
 	end
@@ -941,7 +1009,7 @@ function Parrot_CombatEvents:OnOptionsCreate()
 			passValue = throttleType
 		}
 	end
-	
+
 	local function getAmount(filterType)
 		return self.db.profile.filters[filterType] or filterDefaults[filterType]
 	end
@@ -1098,7 +1166,7 @@ function Parrot_CombatEvents:RegisterCombatEvent(data)
 	end
 	combatEvents[category][name] = data
 	refreshEventRegistration(category, name)
-	
+
 	createOption(category, name)
 end
 Parrot.RegisterCombatEvent = Parrot_CombatEvents.RegisterCombatEvent
@@ -1161,7 +1229,7 @@ function Parrot_CombatEvents:RegisterFilterType(name, localName, default)
 	
 	filterTypes[name] = localName
 	filterDefaults[name] = default
-	
+
 	createThrottleOption(name)
 end
 Parrot.RegisterFilterType = Parrot_CombatEvents.RegisterFilterType
@@ -1367,7 +1435,7 @@ function Parrot_CombatEvents:TriggerCombatEvent(category, name, info, throttleDo
 		error(("Bad argument #3 to `TriggerCombatEvent'. %q is an unknown name for category %q."):format(name, category), 2)
 		return
 	end
-	
+
 	local db = self.db.profile[category][name]
 	local disabled = db.disabled
 	if disabled == nil then
@@ -1376,7 +1444,7 @@ function Parrot_CombatEvents:TriggerCombatEvent(category, name, info, throttleDo
 	if disabled then
 		return
 	end
-	
+
 	if type(info) ~= "table" then
 		error(("Bad argument #4 to `TriggerCombatEvent'. %q expected, got %q."):format("table", type(info)), 2)
 		return
@@ -1397,14 +1465,14 @@ function Parrot_CombatEvents:TriggerCombatEvent(category, name, info, throttleDo
 			return
 		end
 	end
-	
+
 	if throttleDone then
 		if throttleWaitStyles[data.throttle[1]] then
 			info[NEXT_TIME] = nil
 		else
 			info[LAST_TIME] = GetTime()
 		end
-	elseif data.throttle then	
+	elseif data.throttle then
 		local throttle = data.throttle
 		local throttleType = throttle[1]
 		if (self.db.profile.throttles[throttleType] or throttleDefaultTimes[throttleType]) > 0 then
@@ -1442,7 +1510,9 @@ function Parrot_CombatEvents:TriggerCombatEvent(category, name, info, throttleDo
 						elseif throttle[k] and t[k] ~= v then
 							t[k] = throttle[k]
 					 	elseif type(v) == "number" then
-							t[k] = t[k] + v
+							if(k ~= "spellID") then
+								t[k] = t[k] + v
+							end
 						end
 					end
 				end
@@ -1464,7 +1534,7 @@ function Parrot_CombatEvents:TriggerCombatEvent(category, name, info, throttleDo
 			end
 		end
 	end
-	
+
 	local infoCopy = newList()
 	if next(info) == nil and getmetatable(info) then
 		info = getmetatable(info).__raw
@@ -1489,11 +1559,11 @@ function Parrot_CombatEvents:TriggerCombatEvent(category, name, info, throttleDo
 			end
 		end
 	end
-	
+
 	if #nextFrameCombatEvents == 0 then
 		Parrot_CombatEvents:AddRepeatingTimer("Parrot_CombatEvents-runCachedEvents", 0, runCachedEvents)
 	end
-	
+
 	nextFrameCombatEvents[#nextFrameCombatEvents+1] = newList(category, name, infoCopy)
 end
 Parrot.TriggerCombatEvent = Parrot_CombatEvents.TriggerCombatEvent
@@ -1501,7 +1571,7 @@ Parrot.TriggerCombatEvent = Parrot_CombatEvents.TriggerCombatEvent
 local function runEvent(category, name, info)
 	local db = Parrot_CombatEvents.db.profile[category][name]
 	local data = combatEvents[category][name]
-	
+
 	local throttle = data.throttle
 	local throttleSuffix
 	if throttle then
@@ -1514,7 +1584,7 @@ local function runEvent(category, name, info)
 			end
 		end
 	end
-	
+
 	local sticky = false
 	if data.canCrit then
 		sticky = info.isCrit and Parrot_CombatEvents.db.profile.stickyCrit
@@ -1531,7 +1601,6 @@ local function runEvent(category, name, info)
 	local icon
 	if handler__translation then
 		text = text:gsub("(%b[])", handler)
-		
 		icon = handler__translation.Icon
 		if icon then
 			if type(icon) == "function" then
@@ -1541,7 +1610,7 @@ local function runEvent(category, name, info)
 			end
 		end
 	end
-	
+
 	local t = newList(text)
 	local overhealAmount = info.overhealAmount
 	local modifierDB = Parrot_CombatEvents.db.profile.modifier
@@ -1621,7 +1690,7 @@ local function runEvent(category, name, info)
 	handler__translation = nil
 	handler__info = nil
 	local r, g, b = hexColorToTuple(db.color or data.color)
-	
+
 	if throttleSuffix then
 		text = text .. throttleSuffix
 	end
@@ -1638,9 +1707,9 @@ function runCachedEvents()
 		del(v[3])
 		del(v)
 	end
-	
+
 	Parrot_CombatEvents:RemoveTimer("Parrot_CombatEvents-runCachedEvents")
-	
+
 	for k in pairs(cancelUIDSoon) do
 		cancelUIDSoon[k] = nil
 	end
@@ -1656,4 +1725,916 @@ function Parrot_CombatEvents:CancelEventsWithUID(uid)
 		i = i - 1
 	end
 	cancelUIDSoon[uid] = true
+end
+
+
+
+-- the basic stuff taken from recount
+-- thx to Cryect and Elsia
+local SchoolParser =
+{
+    [1] = "Physical",
+    [2] = "Holy",
+    [4] = "Fire",
+    [8] = "Nature",
+    [16] = "Frost",
+    [32] = "Shadow",
+    [64] = "Arcane"
+}
+
+local EnvironmentalParser =
+{
+    ["DROWNING"] = "Drowning",
+    ["FALLING"] = "Falling",
+    ["FATIGUE"] = "Fatigue",
+    ["FIRE"] = "Fire",
+    ["LAVA"] = "Lava",
+    ["SLIME"] = "Slime"
+}
+
+local MeleeMissParser =
+{
+    ["MISS"] = "Melee misses",
+    ["DODGE"] = "Melee dodges",
+    ["BLOCK"] = "Melee blocks",
+    ["PARRY"] = "Melee parries",
+    ["ABSORB"] = "Melee absorbs",
+    ["EVADE"] = "Melee evades",
+    ["IMMUNE"] = "Melee immunes"
+}
+
+local SpellMissParser =
+{
+    ["MISS"] = "Ability misses",
+    ["DODGE"] = "Ability dodges",
+    ["BLOCK"] = "Ability blocks",
+    ["PARRY"] = "Ability parries",
+    ["RESIST"] = "Spell resists",
+    ["ABSORB"] = "Skill absorbs",
+    ["REFLECT"] = "Skill reflects",
+    ["DEFLECT"] = "Skill deflectes",
+    ["EVADE"] = "Skill evades",
+    ["IMMUNE"] = "Skill immunes"
+}
+
+local PetMeleeMissParser =
+{
+    ["MISS"] = "Pet melee misses",
+    ["DODGE"] = "Pet melee dodges",
+    ["PARRY"] = "Pet melee parries",
+    ["BLOCK"] = "Pet melee blocks",
+    ["ABSORB"] = "Pet melee absorbs",
+    ["IMMUNE"] = "Pet melee immunes",
+    ["EVADE"] = "Pet melee evades"
+}
+
+local PetSpellMissParser =
+{
+    ["MISS"] = "Pet ability misses",
+    ["DODGE"] = "Pet ability dodges",
+    ["PARRY"] = "Pet ability parries",
+    ["BLOCK"] = "Pet ability blocks",
+    ["RESIST"] = "Pet spell resists",
+    ["REFLECT"] = "Pet skill reflects",
+    ["ABSORB"] = "Pet skill absorbs",
+    ["IMMUNE"] = "Pet skill immunes",
+    ["EVADE"] = "Pet skill evades"
+}
+
+local PowerTypeParser = {
+	[0] = "Mana",
+	[1] = "Rage",
+	[2] = "Focus",
+	[3] = "Energy",
+	[4] = "Happiness",
+}
+
+local LIB_FILTER_ME = bit_bor(
+                        COMBATLOG_OBJECT_AFFILIATION_MINE,
+                        COMBATLOG_OBJECT_CONTROL_PLAYER,
+                        COMBATLOG_OBJECT_TYPE_PLAYER
+)
+
+local LIB_FILTER_MY_PET = bit_bor(
+						COMBATLOG_OBJECT_AFFILIATION_MINE,
+						COMBATLOG_OBJECT_CONTROL_PLAYER,
+						COMBATLOG_OBJECT_TYPE_PET
+						)
+
+local function refreshPetData()
+	self.PetGUID = UnitGUID("pet")
+	self.PetName = UnitName("pet")
+end
+
+function Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+	
+    if (dstGUID == self.PlayerGUID) or (dstGUID == self.PetGUID)then
+        return "Incoming", srcGUID, srcName, dstGUID, dstName
+    elseif (srcGUID == self.PlayerGUID) or (srcGUID == self.PetGUID) then
+        return "Outgoing", dstGUID, dstName, srcGUID, srcName
+    else
+        return nil
+    end
+
+end
+
+function Parrot_CombatEvents:MeleeDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+	
+	-- scroll-area-stuff
+	local area, sId, sName, dId, dName = self:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+	if (area ~= nil) then
+		local info = newList()
+		info.damageType = SchoolParser[school]
+		info.recipientID = dId
+		info.recipientName = dName
+		info.sourceID = sId
+		info.sourceName = sName
+		info.amount = amount
+		info.absorbAmount = absorbed or 0
+		info.blockAmount = blocked or 0
+		info.resistAmount = resisted or 0
+--      info.vulnerableAmount = ???
+		info.isCrit = (critical ~= nil)
+		info.isCrushing = (crushing ~= nil)
+		info.isGlancing = (glancing ~= nil)
+		info.uid = srcGUID
+
+		if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+			self:TriggerCombatEvent(area, "Pet melee damage", info)
+		else
+			self:TriggerCombatEvent(area, "Melee damage", info)
+		end
+
+		info = del( info )
+
+	end
+	
+	--trigger-stuff
+	local name
+		
+	if srcGUID == self.PlayerGUID then
+		name = "Outgoing"
+	elseif dstGUID == self.PlayerGUID then
+		name = "Incoming"
+	else
+		return
+	end
+		
+	-- make sure no number-arg is passed
+	if type(spellName) == "string" then
+		Parrot_TriggerConditions:FirePrimaryTriggerCondition(name .. " cast", spellName)
+	end
+		
+	if critical then
+		Parrot_TriggerConditions:FirePrimaryTriggerCondition(name .. " crit")
+	end
+end
+
+function Parrot_CombatEvents:EnvironmentalDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, enviromentalType, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+    local area, sId, sName, dId, dName = self:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+    if (area ~= nil) then
+        local info = newList()
+        info.damageType = SchoolParser[school]
+        info.recipientID = dId
+        info.recipientName = dName
+        info.sourceID = sId
+        info.sourceName = sName
+        info.absorbAmount = absorbed or 0
+        info.blockAmount = blocked or 0
+        info.resistAmount = resisted or 0
+        info.hazardTypeLocal = EnvironmentalParser[enviromentalType]
+        info.amount = amount
+        info.isCrit = (critical ~= nil)
+        info.isCrushing = (crushing ~= nil)
+        info.isGlancing = (glancing ~= nil)
+        info.uid = srcGUID		
+		
+        self:TriggerCombatEvent(area, "Environmental damage", info)
+
+        info = del( info )
+    end
+end
+
+function Parrot_CombatEvents:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+	
+	--scroll-area-stuff
+    local area, sId, sName, dId, dName = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+    if (area ~= nil) then
+
+        local info = newList()
+        info.spellID = spellId
+        info.damageType = SchoolParser[spellSchool]
+        info.recipientID = dId
+        info.recipientName = dName
+        info.sourceName = sName
+        info.sourceID = sId
+        info.abilityName = spellName
+        info.absorbAmount = absorbed or 0
+        info.blockAmount = blocked or 0
+        info.resistAmount = resisted or 0
+        info.amount = amount
+        info.isCrit = (critical ~= nil)
+        info.isCrushing = (crushing ~= nil)
+        info.isGlancing = (glancing ~= nil)
+        info.uid = srcGUID
+        info.isDoT = false	
+	
+	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+		self:TriggerCombatEvent(area, "Pet skill damage", info);
+	else
+		self:TriggerCombatEvent(area, "Skill damage", info);
+        end
+		
+		info = del( info )
+    end
+    
+    --trigger-stuff
+    
+    local name
+		
+	if srcGUID == self.PlayerGUID then
+		name = "Outgoing"
+	elseif dstGUID == self.PlayerGUID then
+		name = "Incoming"
+	else
+		return
+	end
+		
+	-- make sure no number-arg is passed
+	if type(spellName) == "string" then
+		Parrot_TriggerConditions:FirePrimaryTriggerCondition(name .. " cast", spellName)
+	end
+		
+	if critical then
+		Parrot_TriggerConditions:FirePrimaryTriggerCondition(name .. " crit")
+	end
+	
+end
+
+function Parrot_CombatEvents:SpellPeriodicDrainLeech( timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, powerType, extraAmount )
+    local area, sId, sName, dId, dName = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+	--ChatFrame1:AddMessage(spellName)
+    if (area ~= nil) then
+        local info = newList()
+        info.spellID = spellId
+        info.damageType = SchoolParser[spellSchool]
+        info.recipientID = dId
+        info.recipientName = dName
+
+	-- Shadowword: Death feedback damage workaround
+	if( spellId == 32409 and (srcName == nil) and dstGUID == self.PlayerGUID ) then
+		info.sourceName = dstName
+	else
+	        info.sourceName = sName
+	end
+
+        info.sourceID = sId
+        info.abilityName = spellName
+        info.amount = amount + (extraAmount or 0)
+        info.uid = srcGUID
+        info.isDoT = false
+	
+	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+		self:TriggerCombatEvent(area, "Pet skill DoTs", info)
+	else
+		self:TriggerCombatEvent(area, "Skill DoTs", info)
+	end
+
+        info = del( info )
+    end
+end
+
+
+function Parrot_CombatEvents:SpellLeech( timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, powerType, extraAmount )
+    local area, sId, sName, dId, dName = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+	
+    if (area ~= nil) then
+        local info = newList()
+        info.spellID = spellId
+        info.damageType = SchoolParser[spellSchool]
+        info.recipientID = dId
+        info.recipientName = dName
+        info.sourceName = sName
+        info.sourceID = sId
+        info.abilityName = spellName
+        info.amount = amount
+        info.uid = dstGUID
+		info.attributeLocal = PowerTypeParser[powerType]
+        info.isDoT = false
+	
+		
+	if(dstGUID == self.PlayerGUID) then
+		self:TriggerCombatEvent("Notification", "Power loss", info)
+	else
+		self:TriggerCombatEvent("Notification", "Power gain", info)
+	end
+	
+	info = del( info )
+    end
+end
+
+function Parrot_CombatEvents:SpellInterrupt( timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, extraSpellId, extraSpellName, extraSpellSchool )
+    local area, sId, sName, dId, dName = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+	
+    if (area ~= nil) then
+        local info = newList()
+        info.spellID = spellId
+        info.extraSpellID = extraSpellId
+        info.damageType = SchoolParser[spellSchool]
+        info.recipientID = dId
+        info.recipientName = dName
+        info.sourceName = sName
+        info.sourceID = sId
+        info.abilityName = spellName
+	info.extraAbilityName = extraSpellName
+        info.uid = dstGUI
+        info.isDoT = false
+		
+	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+		-- TODO? Pets interrupts?
+		return
+	else
+		self:TriggerCombatEvent(area, "Spell interrupts", info)
+	end
+	
+	info = del( info )
+    end
+end
+
+function Parrot_CombatEvents:SpellExtraAttack( timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount )
+    if (srcGUID == self.PlayerGUID) then
+        local info = newList()
+        info.spellID = spellId
+        info.recipientID = dstGUID
+        info.recipientName = dstName
+        info.sourceName = srcName
+        info.sourceID = srcGUID
+        info.abilityName = spellName
+        info.damageType = SchoolParser[spellSchool]
+        info.amount = amount
+        info.uid = srcGUID
+
+	self:TriggerCombatEvent("Notification", "Extra attacks", info)
+        info = del( info )
+    end
+end
+
+function Parrot_CombatEvents:MeleeMissed(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType)
+
+	-- scroll-area-stuff
+    local area, id, name = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+    local miss = nil
+	-- old code: if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+      miss = PetMeleeMissParser[missType]
+    else
+      miss = MeleeMissParser[missType];
+    end
+	
+
+    if (area ~= nil) and (miss ~= nil) then
+
+        local info = newList()
+        info.recipientID = id
+        info.recipientName = name
+        info.abilityName = srcName
+        info.Name = name
+		
+        self:TriggerCombatEvent(area, miss, info)
+
+        info = del( info )
+
+    end
+
+	-- Trigger-stuff
+	local name
+	if srcGUID == self.PlayerGUID then
+		name = "Outgoing"
+	else
+		name = "Incoming"
+	end
+	
+	name = string.format("%s %s", name, MeleeMissParser[missType] or "")
+	Parrot_TriggerConditions:FirePrimaryTriggerCondition(name)
+
+end
+
+function Parrot_CombatEvents:SpellMissed(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, missType)
+
+    local area, id, name = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+    local miss = nil
+	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+      miss = PetSpellMissParser[missType]
+    else
+      miss = SpellMissParser[missType];
+    end
+
+    if (area ~= nil) and (miss ~= nil) then
+
+        local info = newList()
+        info.spellID = spellId
+        info.recipientID = id
+        info.recipientName = name
+        info.abilityName = spellName
+        info.Name = name
+
+        self:TriggerCombatEvent(area, miss, info)
+
+        info = del( info )
+
+    end
+
+end
+
+function Parrot_CombatEvents:SpellEnergize(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, powerType)
+
+    if (dstGUID == self.PlayerGUID) or (dstGUID == self.PetGUID) then
+        local info = newList()
+        info.spellID = spellId
+        info.damageType = SchoolParser[spellSchool]
+        info.recipientID = srcGUID
+        info.sourceName = srcName
+        info.attributeLocal = spellName
+        info.sourceID = srcGUID
+        info.abilityName = spellName
+        info.attributeLocal = PowerTypeParser[powerType]
+        info.amount = amount
+        info.isCrit = (critical ~= nil)
+        info.isCrushing = (crushing ~= nil)
+        info.isGlancing = (glancing ~= nil)
+        info.uid = srcGUID
+        info.isDoT = false
+	
+        self:TriggerCombatEvent("Notification", "Power gain", info)
+
+        info = del( info )
+    end
+end
+
+function Parrot_CombatEvents:SpellHeal(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, critical)
+
+    local area, sId, sName, dId, dName = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+    if (area ~= nil) then
+        local overHeal = 0;
+        if (UnitIsPlayer( srcName )) or (UnitPlayerControlled( srcName )) then
+            local hp_delta = UnitHealthMax(dstName) - UnitHealth(dstName)
+            if (amount > hp_delta) then
+                overHeal = amount-hp_delta
+            end
+        end
+
+	
+        if (srcGUID == self.PlayerGUID) then
+            sId = dstGUID
+            sName = dstName
+        else
+            sId = srcGUID
+            sName = srcName
+        end
+        dId = dstGUID
+        dName = dstName
+
+        local info = newList()
+        info.damageType = SchoolParser[school]
+        info.spellID = spellId
+        info.recipientID = dId
+        info.recipientName = dName
+        info.sourceID = sId
+        info.sourceName = sName
+        info.amount = amount
+        info.realAmount = amount-overHeal
+        info.abilityName = spellName
+        info.isCrit = (critical ~= nil)
+        info.uid = srcGUID
+        info.isHoT = false
+        info.overhealAmount = overHeal
+		
+	-- check if the heal involves the pet
+	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+		self:TriggerCombatEvent(area, "Pet heals", info)
+	else
+		-- check if we heal ourself
+		if(srcGUID == dstGUID and srcGUID == self.PlayerGUID) then
+			self:TriggerCombatEvent("Incoming", "Self heals", info)
+			self:TriggerCombatEvent("Outgoing", "Self heals", info)
+		else
+			self:TriggerCombatEvent(area, "Heals", info)
+		end
+	end
+
+        info = del( info )
+
+    end
+
+end
+
+function Parrot_CombatEvents:SpellHoT(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, critical)
+
+    local area, sId, sName, dId, dName = Parrot_CombatEvents:GetScrollArea( srcGUID, srcName, dstGUID, dstName )
+    if (area ~= nil) then
+        local overHeal = 0;
+        if (UnitIsPlayer( srcName )) or (UnitPlayerControlled( srcName )) then
+            local hp_delta = UnitHealthMax(dstName) - UnitHealth(dstName)
+            if (amount > hp_delta) then
+                overHeal = amount-hp_delta
+            end
+        end
+
+        if (srcGUID == self.PlayerGUID) then
+            sId = dstGUID
+            sName = dstName
+        else
+            sId = srcGUID
+            sName = srcName
+        end
+        dId = dstGUID
+        dName = dstName
+
+        local info = newList()
+        info.spellID = spellId
+        info.damageType = SchoolParser[school]
+        info.recipientID = dId
+        info.recipientName = dName
+        info.sourceID = sId
+        info.sourceName = sName
+        info.amount = amount
+        info.realAmount = amount-overHeal
+        info.abilityName = spellName
+        info.isCrit = (critical ~= nil)
+        info.uid = srcGUID
+        info.isHoT = true
+        info.overhealAmount = overHeal
+
+	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
+		self:TriggerCombatEvent(area, "Pet heals", info)
+	else
+		-- check if we heal ourself
+		if(srcGUID == dstGUID and srcGUID == self.PlayerGUID) then
+			self:TriggerCombatEvent("Incoming", "Self heals over time", info)
+			self:TriggerCombatEvent("Outgoing", "Self heals over time", info)
+		else
+			self:TriggerCombatEvent(area, "Heals over time", info)
+		end
+	end
+	
+        info = del( info )
+
+    end
+
+end
+
+function Parrot_CombatEvents:EventIgnore() end
+
+function Parrot_CombatEvents:PartyKill(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags)
+
+    if (srcGUID == self.PlayerGUID) or (srcGUID == self.PetGUID)then
+        local info = newList()
+        info.recipientID = dstGUID
+        info.recipientName = dstName
+        info.sourceName = srcName
+        info.sourceID = srcGUID
+        info.uid = srcGUID
+
+        self:TriggerCombatEvent("Notification", "Player killing blows", info)
+        info = del( info )
+    end
+
+end
+
+function Parrot_CombatEvents:AuraApplied(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, auraType, amount)
+	
+	-- check if the buff is already present to avoid some spam
+	if GetPlayerBuffName(spellName) and not amount then
+		return
+	end
+	
+	local area = "Notification"
+	local info = newList()
+	info.spellID = spellId
+	if amount then
+		info.amount = amount
+	end
+	info.abilityName = spellName
+	info.recipientID = dstGUID
+	info.recepientName = dstName
+	info.icon = select(3, GetSpellInfo(spellId))
+	-- info.auraType = auraType
+
+	if auraType == "BUFF" then
+		
+		if dstGUID == self.PlayerGUID then
+			if amount then
+				self:TriggerCombatEvent(area, "Buff stack gains", info)
+			else
+				self:TriggerCombatEvent(area, "Buff gains", info)
+			end
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Self buff gain", spellName)
+			
+		end
+		
+		if dstGUID == UnitGUID("target") then
+			if UnitIsEnemy("target", "player") then
+				info.dstName = dstName
+				if amount then
+					self:TriggerCombatEvent(area, "Target buff stack gains", info)
+				else
+					self:TriggerCombatEvent(area, "Target buff gains", info)
+				end
+			end
+			
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Target buff gain", spellName)
+		end
+		
+		if dstGUID == UnitGUID("focus") then
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Focus buff gain", spellName)
+		end
+		
+	elseif auraType == "DEBUFF" then
+		
+		if dstGUID == self.PlayerGUID then
+			if amount then
+				self:TriggerCombatEvent(area, "Debuff stack gains", info)
+			else
+				self:TriggerCombatEvent(area, "Debuff gains", info)
+			end
+			
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Self debuff gain", spellName)
+		end
+		
+		if dstGUID == UnitGUID("target") then
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Target debuff gain", spellName)
+		end
+		
+		if dstGUID == UnitGUID("focus") then
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Focus debuff gain", spellName)
+		end
+		
+	end
+
+end
+
+function Parrot_CombatEvents:AuraRemoved(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, auraType)
+	
+	local area = "Notification"
+	
+	local info = newList()
+	info.spellID = spellId
+	if amount then
+		info.amount = amount
+	end
+	info.abilityName = spellName
+	info.recipientID = dstGUID
+	info.recepientName = dstName
+	info.icon = select(3, GetSpellInfo(spellId))
+	-- info.auraType = auraType
+
+	if auraType == "BUFF" then
+	
+		if dstGUID == self.PlayerGUID then
+			self:TriggerCombatEvent(area, "Buff fades", info)
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Self buff fade", spellName)
+		end
+		
+		if dstGUID == UnitGUID("target") then
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Target buff fade", spellName)
+		end
+		
+		if dstGUID == UnitGUID("focus") then
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Focus buff fade", spellName)
+		end
+		
+	elseif auraType == "DEBUFF" then
+		
+		if dstGUID == self.PlayerGUID then
+			self:TriggerCombatEvent(area, "Debuff fades", info)
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Self debuff fade", spellName)
+		end
+		
+		if dstGUID == UnitGUID("target") then
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Target debuff fade", spellName)
+		end
+		
+		if dstGUID == UnitGUID("focus") then
+			Parrot_TriggerConditions:FirePrimaryTriggerCondition("Focus debuff fade", spellName)
+		end
+		
+	end
+end
+
+function Parrot_CombatEvents:EnchantApplied(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellName, itemId, itemName)
+	-- TODO
+end
+ 
+function Parrot_CombatEvents:EnchantRemoved(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellName, itemId, itemName)
+	-- TODO
+end
+
+local EventParse =
+{
+	["SWING_DAMAGE"] = Parrot_CombatEvents.MeleeDamage, -- Elsia: Melee swing damage
+	["RANGE_DAMAGE"] = Parrot_CombatEvents.SpellDamage, -- Elsia: Ranged and spell damage types
+	["SPELL_DAMAGE"] = Parrot_CombatEvents.SpellDamage,
+	["SPELL_PERIODIC_DAMAGE"] = Parrot_CombatEvents.SpellPeriodicDrainLeech,
+	["DAMAGE_SHIELD"] = Parrot_CombatEvents.SpellDamage,
+	["DAMAGE_SPLIT"] = Parrot_CombatEvents.SpellDamage,
+	["ENVIRONMENTAL_DAMAGE"] = Parrot_CombatEvents.EnvironmentalDamage, -- Elsia: Environmental damage
+	["SWING_MISSED"] = Parrot_CombatEvents.MeleeMissed, -- Elsia: Misses
+	["RANGE_MISSED"] = Parrot_CombatEvents.SpellMissed,
+	["SPELL_MISSED"] = Parrot_CombatEvents.SpellMissed,
+	["SPELL_PERIODIC_MISSED"] = Parrot_CombatEvents.SpellMissed,
+	["DAMAGE_SHIELD_MISSED"] = Parrot_CombatEvents.SpellMissed,
+	["SPELL_HEAL"] = Parrot_CombatEvents.SpellHeal, -- Elsia: heals
+	["SPELL_ENERGIZE"] = Parrot_CombatEvents.SpellEnergize, -- Elsia: Energize
+	["SPELL_EXTRA_ATTACKS"] = Parrot_CombatEvents.SpellExtraAttack, -- Elsia: Extr  a attacks
+	["SPELL_INTERRUPT"] = Parrot_CombatEvents.SpellInterrupt, -- Elsia: Interrupts
+	["SPELL_DRAIN"] = Parrot_CombatEvents.SpellDamage, -- Elsia: Drains and leeches.
+	["SPELL_LEECH"] = Parrot_CombatEvents.SpellLeech,
+	["SPELL_PERIODIC_HEAL"] = Parrot_CombatEvents.SpellHoT,
+	["SPELL_PERIODIC_ENERGIZE"] = Parrot_CombatEvents.SpellEnergize,
+	["SPELL_PERIODIC_DRAIN"] = Parrot_CombatEvents.SpellPeriodicDrainLeech,
+	["SPELL_PERIODIC_LEECH"] = Parrot_CombatEvents.SpellLeech,
+	["SPELL_DISPEL_FAILED"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Failed dispell
+	["SPELL_AURA_DISPELLED"] = Parrot_CombatEvents.AuraRemoved,
+	["SPELL_AURA_STOLEN"] = Parrot_CombatEvents.AuraRemoved,
+	["SPELL_AURA_APPLIED"] = Parrot_CombatEvents.AuraApplied, -- Elsia: Auras
+	["SPELL_AURA_REMOVED"] = Parrot_CombatEvents.AuraRemoved,
+	["SPELL_AURA_APPLIED_DOSE"] = Parrot_CombatEvents.AuraApplied, -- Elsia: Aura doses
+	["SPELL_AURA_REMOVED_DOSE"] = Parrot_CombatEvents.AuraRemoved,
+	["SPELL_CAST_START"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Spell casts
+	["SPELL_CAST_SUCCESS"] = Parrot_CombatEvents.EventIgnore,
+	["SPELL_INSTAKILL"] = Parrot_CombatEvents.EventIgnore,
+	["SPELL_DURABILITY_DAMAGE"] = Parrot_CombatEvents.EventIgnore,
+	["SPELL_DURABILITY_DAMAGE_ALL"] = Parrot_CombatEvents.EventIgnore,
+	["SPELL_CAST_FAILED"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Spell aborts/fails
+	["ENCHANT_APPLIED"] = Parrot_CombatEvents.EnchantApplied, -- Elsia: Enchants
+	["ENCHANT_REMOVED"] = Parrot_CombatEvents.EnchantApplied,
+	["PARTY_KILL"] = Parrot_CombatEvents.PartyKill, -- Elsia: Party killing blow
+	["UNIT_DIED"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Unit died
+	["UNIT_DESTROYED"] = Parrot_CombatEvents.EventIgnore,
+	["SPELL_SUMMON"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Summons
+	["SPELL_CREATE"] = Parrot_CombatEvents.EventIgnore -- Elsia: Creations
+}
+
+function Parrot_CombatEvents:OnEvent( _, _, ...)
+    Parrot_CombatEvents:HandleEvent( ... )
+end
+
+local GOLD_AMOUNT = _G.GOLD_AMOUNT
+local SILVER_AMOUNT = _G.SILVER_AMOUNT
+local COPPER_AMOUNT = _G.COPPER_AMOUNT
+
+local GOLD_AMOUNT_inv = GOLD_AMOUNT:gsub("%%d", "%%d+")
+local SILVER_AMOUNT_inv = SILVER_AMOUNT:gsub("%%d", "%%d+")
+local COPPER_AMOUNT_inv = COPPER_AMOUNT:gsub("%%d", "%%d+")
+
+local function parseGoldLoot(chatmsg)
+	local gold, silver, copper
+	
+	gold = (deformat(chatmsg:match(GOLD_AMOUNT_inv) or "", GOLD_AMOUNT)) or 0
+	silver = (deformat(chatmsg:match(SILVER_AMOUNT_inv) or "", SILVER_AMOUNT)) or 0
+	copper = (deformat(chatmsg:match(COPPER_AMOUNT_inv) or "", COPPER_AMOUNT)) or 0
+	
+	return tonumber(gold), tonumber(silver), tonumber(copper)
+	
+end
+
+local YOU_LOOT_MONEY = _G.YOU_LOOT_MONEY
+local LOOT_MONEY_SPLIT = _G.LOOT_MONEY_SPLIT
+local LOOT_ITEM_SELF_MULTIPLE = _G.LOOT_ITEM_SELF_MULTIPLE
+local LOOT_ITEM_SELF = _G.LOOT_ITEM_SELF
+local LOOT_ITEM_CREATED_SELF = _G.LOOT_ITEM_CREATED_SELF
+
+function Parrot_CombatEvents:OnLootEvent(_, eventName, chatmsg)
+	
+	-- parse the money loot
+	if eventName == "CHAT_MSG_MONEY" then
+		
+		local moneystring = deformat(chatmsg, LOOT_MONEY_SPLIT) or deformat(chatmsg, YOU_LOOT_MONEY)
+		
+		if moneystring then
+			local gold, silver, copper = parseGoldLoot(chatmsg)	
+			local info = newList()
+			info.amount = 10000*gold + 100 * silver + copper
+			self:TriggerCombatEvent("Notification", "Loot money", info)
+		end
+		
+	end
+	
+	if eventName == "CHAT_MSG_LOOT" then
+		
+		-- check for multiple-item-loot
+		local itemLink, amount = deformat(chatmsg, LOOT_ITEM_SELF_MULTIPLE)
+		if not itemLink then
+			-- check for single-itemloot
+			itemLink = deformat(chatmsg, LOOT_ITEM_SELF)
+		end
+		
+		-- if something has been looted
+		if itemLink then
+			
+			if not amount then
+				amount = 1
+			end
+			
+			local info = newList()
+			info.itemLink = itemLink
+			info.amount = amount
+			self:TriggerCombatEvent("Notification", "Loot items", info)
+		else
+			-- check for soul shard-create
+			itemLink = deformat(chatmsg, LOOT_ITEM_CREATED_SELF)
+			itemName = GetItemInfo(6265)
+			if itemLink and itemName and itemLink:match(".*" .. itemName .. ".*") then
+				local info = newList()
+				info.itemName = itemName
+				info.itemLink = itemLink
+				self:TriggerCombatEvent("Notification", "Soul shard gains", info)
+			end
+		end
+		
+	end
+	
+end
+
+local FACTION_STANDING_INCREASED = _G.FACTION_STANDING_INCREASED
+local FACTION_STANDING_DECREASED = _G.FACTION_STANDING_DECREASED
+
+function Parrot_CombatEvents:OnRepgainEvent(_, eventName, chatmsg )
+
+	local faction, amount
+	
+	-- try increase:
+	faction, amount = deformat(chatmsg, FACTION_STANDING_INCREASED)
+	
+	if faction and amount then
+		local info = newList()
+		info.amount = amount
+		info.faction = faction
+		self:TriggerCombatEvent("Notification", "Reputation gains", info)
+	end
+	
+	-- try decrease
+	faction, amount = deformat(chatmsg, FACTION_STANDING_DECREASED)
+	
+	if faction and amount then
+		local info = newList()
+		info.amount = amount
+		info.faction = faction
+		self:TriggerCombatEvent("Notification", "Reputation losses", info)
+	end
+	
+end
+
+
+
+function Parrot_CombatEvents:OnHonorgainEvent(_, eventName)
+	
+	local newHonor = GetHonorCurrency()
+	if newHonor > currentHonor then
+		info = newList()
+		info.amount = newHonor - currentHonor
+		self:TriggerCombatEvent("Notification", "Honor gains", info)
+	end
+	
+	currentHonor = newHonor
+end
+
+function Parrot_CombatEvents:OnXPgainEvent(_, eventName, unitId)
+	local info = newList()
+	local newXP = UnitXP("player")
+	info.amount = newXP - currentXP
+	currentXP = newXP
+	self:TriggerCombatEvent("Notification", "Experience gains", info)
+end
+
+local SKILL_RANK_UP = _G.SKILL_RANK_UP
+
+function Parrot_CombatEvents:OnSkillgainEvent(_, eventName, chatmsg)
+	local skill, amount = deformat(chatmsg, SKILL_RANK_UP)
+	if skill and amount then
+		local info = newList()
+		info.abilityName = skill
+		info.amount = amount
+		self:TriggerCombatEvent("Notification", "Skill gains", info)
+	end
+end
+
+function Parrot_CombatEvents:HandleEvent(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
+	if not Parrot:IsModuleActive(Parrot_CombatEvents) then
+		return
+	end
+
+	if UnitIsDeadOrGhost("player") then
+		return
+	end
+
+
+	refreshPetData()
+
+	local parsefunc = EventParse[eventtype]
+	if parsefunc then
+  		parsefunc( self, timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ... )
+	else
+        DEFAULT_CHAT_FRAME:AddMessage( "Parrot_CombatEvents: Unknown combat log event type: "..eventtype );
+	end
 end

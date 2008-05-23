@@ -48,7 +48,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	["Reset position"] = true,
 	["Reset the anchor position, moving it to the center of your screen."] = true,
-	
+
 	Font = "Fonts\\FRIZQT__.TTF",
 } end)
 
@@ -56,8 +56,11 @@ L:RegisterTranslations("koKR", function() return {
 	["Messages"] = "메세지",
 	["Options for message display."] = "메세지 표시에 대한 설정입니다.",
 
+	["BigWigs Anchor"] = "BigWigs 메세지 위치",
+	["Output Settings"] = "출력 설정",
+
 	["Show anchor"] = "고정 위치 표시",
-	["Show the message anchor frame.\n\nNote that the anchor is only usable if you select 'BigWigs' as Output."] = "메세지의 고정 위치를 표시합니다.",
+	["Show the message anchor frame.\n\nNote that the anchor is only usable if you select 'BigWigs' as Output."] = "메세지의 고정 위치를 표시합니다.\n\n'BigWigs'로 출력이 선택되어 있을 때에만 표시합니다.",
 
 	["Use colors"] = "색상 사용",
 	["Toggles white only messages ignoring coloring."] = "메세지에 색상 사용을 설정합니다.",
@@ -87,7 +90,7 @@ L:RegisterTranslations("koKR", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	["Messages"] = "信息提示",
 	["Options for message display."] = "信息显示模式及相关设置。",
-	
+
 	["BigWigs Anchor"] = "BigWigs 锚点",
 	["Output Settings"] = "输出设置",
 
@@ -121,29 +124,29 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	["Messages"] = "訊息",
-	["Options for message display."] = "訊息框架設置。",
+	["Options for message display."] = "訊息框架選項",
 
 	["BigWigs Anchor"] = "BigWigs 錨點",
 	["Output Settings"] = "輸出設定",
 
 	["Show anchor"] = "顯示錨點",
-	["Show the message anchor frame.\n\nNote that the anchor is only usable if you select 'BigWigs' as Output."] = "顯示訊息訊息框架錨點。",
+	["Show the message anchor frame.\n\nNote that the anchor is only usable if you select 'BigWigs' as Output."] = "顯示訊息框架錨點",
 
 	["Use colors"] = "發送彩色訊息",
-	["Toggles white only messages ignoring coloring."] = "切換是否只發送單色訊息。",
+	["Toggles white only messages ignoring coloring."] = "切換是否只發送單色訊息",
 
 	["Scale"] = "縮放",
-	["Set the message frame scale."] = "設置訊息框架縮放比例",
+	["Set the message frame scale."] = "設定訊息框架縮放比例",
 
-	--["Use icons"] = "",
-	--["Show icons next to messages, only works for Raid Warning."] = "",
+	["Use icons"] = "使用圖示",
+	["Show icons next to messages, only works for Raid Warning."] = "顯示圖示，目前只能使用在團隊警告頻道。",
 
 	["|cffff0000Co|cffff00fflo|cff00ff00r|r"] = "|cffff0000顏|cffff00ff色|r",
 	["White"] = "白色",
 
 	["Outputs all BigWigs messages to the default chat frame in addition to the display setting."] = "除了選擇的顯示位置外，也顯示在聊天頻道上。",
 
-	["Chat frame"] = "聊天頻道",
+	["Chat frame"] = "聊天框架",
 
 	["Test"] = "測試",
 	["Close"] = "關閉",
@@ -223,32 +226,35 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("esES", function() return {
 	["Messages"] = "Mensajes",
-	["Options for message display."] = "Opciones para mostrar mensajes",
+	["Options for message display."] = "Opciones para mostrar mensajes.",
 
+	["BigWigs Anchor"] = "Ancla de BigWigs",
+	["Output Settings"] = "Parámetros de salida",
+	
 	["Show anchor"] = "Mostrar ancla",
-	["Show the message anchor frame.\n\nNote that the anchor is only usable if you select 'BigWigs' as Output."] = "Mostrar la ventana del ancla de los mensajes",
+	["Show the message anchor frame.\n\nNote that the anchor is only usable if you select 'BigWigs' as Output."] = "Mostrar la ventana del ancla de los mensajes.\n\nLa ventana de ancla es utilizable solo si seleccionas BigWigs como salida.",
 
 	["Use colors"] = "Usar colores",
-	["Toggles white only messages ignoring coloring."] = "Mostrar solo mensajes en blanco, ignorando colores",
+	["Toggles white only messages ignoring coloring."] = "Mostrar solo mensajes en blanco, ignorando colores.",
 
 	["Scale"] = "Escala",
-	["Set the message frame scale."] = "Establece la escala del mensaje",
+	["Set the message frame scale."] = "Establece la escala del mensaje.",
 
-	--["Use icons"] = "",
-	--["Show icons next to messages, only works for Raid Warning."] = "",
+	["Use icons"] = "Usar iconos",
+	["Show icons next to messages, only works for Raid Warning."] = "mostrar iconos al lado de los mensajes. Solo funciona para avisos de banda.",
 
 	["|cffff0000Co|cffff00fflo|cff00ff00r|r"] = "|cffff0000Co|cffff00fflo|cff00ff00r|r",
 	["White"] = "Blanco",
 
-	["Outputs all BigWigs messages to the default chat frame in addition to the display setting."] = "Salida de todos los mensaje de BigWigs al canal de chat por defecto adem\195\161s de las preferencias de ventana",
+	["Outputs all BigWigs messages to the default chat frame in addition to the display setting."] = "Envía también a la ventana de chat por defecto todos los mensaje de BigWigs.",
 
 	["Chat frame"] = "Ventana de chat",
 
 	["Test"] = "Probar",
 	["Close"] = "Cerrar",
 
-	["Reset position"] = "Resetear posici\195\179n",
-	["Reset the anchor position, moving it to the center of your screen."] = "Resetea la posici\195\179n del ancla, moviendola al centro de la pantalla",
+	["Reset position"] = "Reiniciar posición",
+	["Reset the anchor position, moving it to the center of your screen."] = "Reinicia la posición del ancla, moviéndola al centro de la pantalla.",
 	
 	Font = "Fonts\\FRIZQT__.TTF",
 } end)
@@ -257,23 +263,24 @@ L:RegisterTranslations("esES", function() return {
 --      Module Declaration      --
 ----------------------------------
 
-local plugin = BigWigs:NewModule("Messages", "Sink-1.0")
+local plugin = BigWigs:NewModule("Messages")
+local sink = LibStub("LibSink-2.0")
+sink:Embed(plugin)
 
-plugin.revision = tonumber(("$Revision: 65918 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 73849 $"):sub(12, -3))
 plugin.defaultDB = {
-	sink10OutputSink = "RaidWarning",
+	sink20OutputSink = "RaidWarning",
 	usecolors = true,
 	scale = 1.0,
 	posx = nil,
 	posy = -150,
 	chat = nil,
-	twothree = nil,
 	useicons = true,
 }
 plugin.consoleCmd = L["Messages"]
 
 local function bwAnchorDisabled()
-	return plugin.db.profile.sink10OutputSink ~= "BigWigs"
+	return plugin.db.profile.sink20OutputSink ~= "BigWigs"
 end
 
 plugin.consoleOptions = {
@@ -369,8 +376,11 @@ plugin.consoleOptions = {
 ------------------------------
 
 function plugin:OnRegister()
+	self:SetSinkStorage(self.db.profile)
+
 	self:RegisterSink("BigWigs", "BigWigs", nil, "Print")
-	self.consoleOptions.args.output = AceLibrary("Sink-1.0"):GetAceOptionsDataTable(self).output
+
+	self.consoleOptions.args.output = self:GetSinkAce2OptionsDataTable().output
 	self.consoleOptions.args.output.order = 100
 end
 
@@ -389,11 +399,6 @@ function plugin:OnEnable()
 		testModule = BigWigs:GetModule("Test")
 	else
 		testModule = nil
-	end
-
-	if type(RaidNotice_AddMessage) == "function" and not plugin.db.profile.twothree then
-		plugin.db.profile.sink10OutputSink = "RaidWarning"
-		plugin.db.profile.twothree = true
 	end
 end
 
@@ -431,9 +436,10 @@ function plugin:BigWigs_HideAnchors()
 	anchor:Hide()
 end
 
-function plugin:Print(addon, text, r, g, b)
+function plugin:Print(addon, text, r, g, b, _, _, _, _, _, icon)
 	if not messageFrame then createMsgFrame() end
 	messageFrame:SetScale(self.db.profile.scale)
+	if icon then text = "|T"..icon..":20:20:-5|t"..text end
 	messageFrame:AddMessage(text, r, g, b, 1, UIERRORS_HOLD_TIME)
 end
 
@@ -453,10 +459,13 @@ function plugin:BigWigs_Message(text, color, noraidsay, sound, broadcastonly, ic
 	end
 
 	if icon and db.useicons then
-		local _, _, tex = GetSpellInfo(icon)
+		local _
+		_, _, icon = GetSpellInfo(icon)
+	else
+		icon = nil
 	end
 
-	self:Pour(text, r, g, b, nil, nil, nil, nil, nil, tex)
+	self:Pour(text, r, g, b, nil, nil, nil, nil, nil, icon)
 	if db.chat then
 		BigWigs:CustomPrint(r, g, b, nil, nil, nil, text)
 	end

@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: AucDatabase.lua 1820 2007-05-10 14:47:35Z luke1410 $
 
 	AucDatabase - Auctioneer database methods

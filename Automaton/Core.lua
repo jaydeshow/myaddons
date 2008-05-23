@@ -1,6 +1,5 @@
 ﻿local L = AceLibrary("AceLocale-2.2"):new("Automaton")
 Automaton = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0", "AceDB-2.0", "AceModuleCore-2.0", "FuBarPlugin-2.0")
-local waterfall = AceLibrary("Waterfall-1.0")
 
 L:RegisterTranslations("enUS", function() return {
 	["Config"] = true,
@@ -36,15 +35,8 @@ L:RegisterTranslations("zhCN", function() return {
 
 Automaton.options = {
 	type = 'group',
-	args = {
-		config = {
-			type = 'execute',
-			name = L["Config"],
-			desc = L["Open config dialog"],
-			func = function() waterfall:Open("Automaton") end,
-		},
-	},
-}
+	args = {}
+	}
 
 Automaton:RegisterChatCommand({"/auto", "/automaton"}, Automaton.options)
 
@@ -56,7 +48,6 @@ function Automaton:OnInitialize()
 	Automaton.hideWithoutStandby = true
 	Automaton.hasIcon = true
 	Automaton.OnMenuRequest = self.options
-	waterfall:Register("Automaton", 'aceOptions', self.options)
 end
 
 function Automaton:OnEnable()

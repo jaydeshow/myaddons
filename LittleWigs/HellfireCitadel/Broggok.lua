@@ -21,7 +21,7 @@ L:RegisterTranslations("enUS", function() return {
 
 L:RegisterTranslations("koKR", function() return {
 	poison = "독구름",
-	poison_desc = "독구름 경고",
+	poison_desc = "독구름에 대해 알립니다.",
 	poison_message = "독구름!",
 } end )
 
@@ -33,7 +33,7 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	poison = "毒云术",
-	poison_desc = "施放毒云术时发出警报。",
+	poison_desc = "当施放毒云术时发出警报。",
 	poison_message = "毒云！注意躲避！",
 } end )
 
@@ -59,7 +59,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"poison", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 67518 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

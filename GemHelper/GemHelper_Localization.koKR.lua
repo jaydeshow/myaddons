@@ -3,23 +3,23 @@
 -- Translation by turtl
 if (GetLocale() == "koKR") then
 
-GEMHELPER_VERSION_TEXT		= "보석 도우미 v1.5";
-GEMHELPER_DONE_TEXT		= "완료";
+GEMHELPER_VERSION_TEXT		= "보석 도우미 v1.7"
+GEMHELPER_DONE_TEXT		= "완료"
 
-GEMHELPER_ERRORTOOLTIP_L1	= "알수없는 아이템";
-GEMHELPER_ERRORTOOLTIP_L2	= "ItemID: ";
-GEMHELPER_ERRORTOOLTIP_L3	= "이 아이템은 존재하지 않습니다. 종료없이 이 아이템을 확인하기 위해서는 한번쯤 게임안에서 그것을 보아야합니다. 이것은 1.10 패치 이후 블리자드에 의하여 제한되었습니다.";
-GEMHELPER_ERRORTOOLTIP_L4	= "당신은 서버로 부터 정보를 가져오기 위해 우-클릭을 할 수 있습니다. 강제 종료될 수 있습니다.";
-GEMHELPER_QUERY_MESSAGE		= "서버에 묻기: ";
+GEMHELPER_ERRORTOOLTIP_L1	= "알수없는 아이템"
+GEMHELPER_ERRORTOOLTIP_L2	= "ItemID: "
+GEMHELPER_ERRORTOOLTIP_L3	= "이 아이템은 존재하지 않습니다. 종료없이 이 아이템을 확인하기 위해서는 한번쯤 게임안에서 그것을 보아야합니다. 이것은 1.10 패치 이후 블리자드에 의하여 제한되었습니다."
+GEMHELPER_ERRORTOOLTIP_L4	= "당신은 서버로 부터 정보를 가져오기 위해 우-클릭을 할 수 있습니다. 강제 종료될 수 있습니다."
+GEMHELPER_QUERY_MESSAGE		= "서버에 묻기: "
 
-GEMHELPER_OPENJC_TEXT		= "원래의 JC 전문기술 창을 열거나 닫습니다.";
-GEMHELPER_CHANGEBGCOLOR_TEXT	= "배경 색상을 변경합니다.";
+GEMHELPER_OPENJC_TEXT		= "원래의 JC 전문기술 창을 열거나 닫습니다."
+GEMHELPER_CHANGEBGCOLOR_TEXT	= "배경 색상을 변경합니다."
 
 -- GEMHELPER_JEWELCRAFTING_TEXT must match the text written on the top of default Jewelcrafting UI
 -- window, which should also be the same as the text written in your Character --> Skills -->
 -- Professions panel because this string is used to check whether a player has Jewelcrafting as
 -- a profession as well as whether the Jewelcrafting default UI window is about to be open.
-GEMHELPER_JEWELCRAFTING_TEXT	= "보석세공";
+GEMHELPER_JEWELCRAFTING_TEXT	= "보석세공"
 
 GEMHELPER_CHECKBUTTON_TEXT	= {
 	[1]	= "보석 색상별 필터",
@@ -64,6 +64,7 @@ GEMHELPER_CHECKBUTTON_TEXT	= {
 	[65]	= "정신",
 	[66]	= "탄력",
 
+	[70]	= "주문 가속",
 	[71]	= "적중",
 	[72]	= "치명",
 	[73]	= "전투력",
@@ -87,7 +88,7 @@ GEMHELPER_CHECKBUTTON_TEXT	= {
 	[104]	= "인던 드랍 보석들 보이기",
 
 	[111]	= "기본 JC UI 교체",
-};
+}
 
 -- Data for English localization
 GemHelper_GemLocaleData = {
@@ -173,12 +174,12 @@ GemHelper_GemLocaleData = {
 	[30598] = {["n"] = "돈 아만시오의 심장", 	["d"] = "상점, 14g 9s 72c (한정 판매 1개) (할라아, 나그란드)"},
 
 	-- PvP Purchased Epic Gems (Honor Points)
-	[28362] = {["n"] = "굵은 화려한 루비",			["d"] = "상점, 명예 6500 (용사의 전당/전설의 전당)"},
+	[28362] = {["n"] = "굵은 화려한 루비",			["d"] = "상점, 명예 6883 (용사의 전당/전설의 전당)"},
 	[28120] = {["n"] = "번뜩이는 화려한 여명석",		["d"] = "상점, 명예 8500 (용사의 전당/전설의 전당)"},
 	[28363] = {["n"] = "문자가 새겨진 화려한 토파즈",	["d"] = "상점, 명예 8500 (용사의 전당/전설의 전당)"},
 	[28123] = {["n"] = "마력이 담긴 화려한 황옥",		["d"] = "상점, 명예 8500 (용사의 전당/전설의 전당)"},
-	[28118] = {["n"] = "룬이 새겨진 화려한 루비",		["d"] = "상점, 명예 6500 (용사의 전당/전설의 전당)"},
-	[28119] = {["n"] = "매끄러운 화려한 여명석",		["d"] = "상점, 명예 6500 (용사의 전당/전설의 전당)"},
+	[28118] = {["n"] = "룬이 새겨진 화려한 루비",		["d"] = "상점, 명예 6883 (용사의 전당/전설의 전당)"},
+	[28119] = {["n"] = "매끄러운 화려한 여명석",		["d"] = "상점, 명예 6883 (용사의 전당/전설의 전당)"},
 
 	-- PvP Puchased Rare Gems (Honor Hold/Thrallmar)
 	-- Honor Hold itemIDs
@@ -338,7 +339,23 @@ GemHelper_GemLocaleData = {
 
 	-- Added in Gem Helper v1.5 (patch 2.3.0)
 	[34220] = {["n"] = "혼돈의 하늘불꽃 다이아몬드",	["d"] = "제작품, 하늘불꽃 다이아몬드 1개"},
-	[34256] = {["n"] = "아마니 마법 보석",	["d"] = "퀘스트 보상 - 줄아만"},
-};
+	[34256] = {["n"] = "아마니 마법 보석",			["d"] = "퀘스트 보상 - 줄아만"},
+
+	-- Added in Gem Helper v1.6 (patch 2.4.0)
+	[35503] = {["n"] = "이글거리는 하늘불꽃 다이아몬드",	["d"] = "제작품, 하늘불꽃 다이아몬드 1개"},
+	[35501] = {["n"] = "영원의 대지폭풍 다이아몬드",	["d"] = "제작품, 대지폭풍 다이아몬드 1개"},
+	[35707] = {["n"] = "제왕의 야안석",			["d"] = "제작품, 야안석 1개"},
+	[34831] = {["n"] = "바다의 눈",				["d"] = "퀘스트 보상 - 낚시 일일퀘"},
+	[35758] = {["n"] = "한결같은 바다안개 에메랄드",	["d"] = "제작품, 바다안개 에메랄드 1개"},
+	[35759] = {["n"] = "강인한 바다안개 에메랄드",		["d"] = "제작품, 바다안개 에메랄드 1개"},
+	[35760] = {["n"] = "무모함의 열화석",			["d"] = "제작품, 열화석 1개"},
+	[35761] = {["n"] = "쾌속의 사안석",			["d"] = "제작품, 사안석 1개"},
+
+	-- Added in Gem Helper v1.7 (patch 2.4.2)
+	[37503] = {["n"] = "Purified Shadowsong Amethyst",		["d"] = "제작품, 어둠노래 자수정 1개"},
+	[35315] = {["n"] = "Quick Dawnstone",		["d"] = "제작품, 여명석 1개"},
+	[35316] = {["n"] = "무모의 귀황옥",			["d"] = "제작품, 귀황옥 1개"},
+	[35318] = {["n"] = "Forceful Talasite",		["d"] = "제작품, 탈라사이트 1개"},
+}
 
 end

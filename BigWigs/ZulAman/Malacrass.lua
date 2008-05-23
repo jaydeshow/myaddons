@@ -19,7 +19,6 @@ L:RegisterTranslations("enUS", function() return {
 
 	bolts = "Spirit Bolts",
 	bolts_desc = "Warn when Malacrass starts channelling Spirit Bolts.",
-	bolts_trigger = "Your soul gonna bleed!",
 	bolts_message = "Incoming Spirit Bolts!",
 	bolts_warning = "Spirit Bolts in 5 sec!",
 	bolts_nextbar = "Next Spirit Bolts",
@@ -35,6 +34,11 @@ L:RegisterTranslations("enUS", function() return {
 	heal = "Heal",
 	heal_desc = "Warn when Malacrass casts a heal.",
 	heal_message = "Casting Heal!",
+
+	consecration = "Consecration",
+	consecration_desc = "Warn when Consecration is cast.",
+	consecration_bar = "Consecration (%d)",
+	consecration_warn = "Casted Consecration!",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -42,7 +46,6 @@ L:RegisterTranslations("deDE", function() return {
 
 	bolts = "Geistblitze",
 	bolts_desc = "Warnt wenn Geistblitze gecastet werden.",
-	bolts_trigger = "Eure Seele wird bluten!",
 	bolts_message = "Geistblitze!",
 	bolts_warning = "Geistblitze in 5 Sek!",
 	bolts_nextbar = "N\195\164chsten Geistblitze",
@@ -58,6 +61,11 @@ L:RegisterTranslations("deDE", function() return {
 	heal = "Heilung",
 	heal_desc = "Warnt wenn eine Heilung gecastet wird.",
 	heal_message = "Heilung!",
+
+	--consecration = "Consecration",
+	--consecration_desc = "Warn when Consecration is cast.",
+	--consecration_bar = "Consecration (%d)",
+	--consecration_warn = "Casted Consecration!",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -65,13 +73,12 @@ L:RegisterTranslations("koKR", function() return {
 
 	bolts = "영혼의 화살",
 	bolts_desc = "말라크라스의 영혼의 화살 시전을 알립니다.",
-	bolts_trigger = "네 영혼이 피를 흘리리라!",
 	bolts_message = "영혼의 화살 시전!",
 	bolts_warning = "5초후 영혼의 화살!",
 	bolts_nextbar = "다음 영혼의 화살",
 
 	soul = "영혼 착취",
-	soul_desc = "누가 영혼 착취에 걸렸는지 알립니다.",
+	soul_desc = "영혼 착취에 걸린 플레이어를 알립니다.",
 	soul_message = "착취: %s",
 
 	totem = "토템",
@@ -81,52 +88,65 @@ L:RegisterTranslations("koKR", function() return {
 	heal = "치유",
 	heal_desc = "말라크라스의 치유 마법 시전을 알립니다.",
 	heal_message = "치유 마법 시전!",
+
+	consecration = "신성화",
+	consecration_desc = "신성화 시전에 대해 알립니다.",
+	consecration_bar = "신성화 (%d)",
+	consecration_warn = "신성화!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "L'ombre, elle va vous tomber dessus.",
 
 	bolts = "Eclairs spirituels",
-	bolts_desc = "Préviens quand Malacrass commence à canaliser ses Eclairs spirituels.",
-	bolts_trigger = "Ton âme, elle va saigner !",
-	bolts_message = "Arrivée des Eclairs spirituels !",
-	bolts_warning = "Eclairs spirituels dans 5 sec. !",
+	bolts_desc = "Prévient quand Malacrass commence à canaliser ses Eclairs spirituels.",
+	bolts_message = "Arrivée des Eclairs spirituels !",
+	bolts_warning = "Eclairs spirituels dans 5 sec. !",
 	bolts_nextbar = "Prochains Eclairs spirituels",
 
 	soul = "Siphonner l'âme",
-	soul_desc = "Préviens quand un joueur subit les effets de Siphonner l'âme.",
-	soul_message = "Siphon : %s",
+	soul_desc = "Prévient quand un joueur subit les effets de Siphonner l'âme.",
+	soul_message = "Siphon : %s",
 
 	totem = "Totem",
-	totem_desc = "Préviens quand un Totem Nova de feu est incanté.",
-	totem_message = "Totem Nova de feu !",
+	totem_desc = "Prévient quand un Totem Nova de feu est incanté.",
+	totem_message = "Totem Nova de feu !",
 
 	heal = "Soin",
-	heal_desc = "Préviens quand Malacrass incante un soin.",
-	heal_message = "Incante un soin !",
+	heal_desc = "Prévient quand Malacrass incante un soin.",
+	heal_message = "Incante un soin !",
+
+	consecration = "Consécration",
+	consecration_desc = "Prévient quand la Consécration est incantée.",
+	consecration_bar = "Consécration (%d)",
+	consecration_warn = "Consécration incantée !",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "阴影将会降临在你们头上……",
 
 	bolts = "灵魂之箭",
-	bolts_desc = "当玛拉卡斯开始引导灵魂之箭时发出警报。",
-	bolts_trigger = "你的灵魂在流血！",
-	bolts_message = "即将 - 灵魂之箭！",
-	bolts_warning = "5秒后 灵魂之箭！",
+	bolts_desc = "当开始引导灵魂之箭时发出警报。",
+	bolts_message = "即将 灵魂之箭！",
+	bolts_warning = "5秒后，灵魂之箭！",
 	bolts_nextbar = "<下一灵魂之箭>",
 
 	soul = "灵魂虹吸",
-	soul_desc = "受到灵魂虹吸时发出警报。",
+	soul_desc = "当玩家受到灵魂虹吸时发出警报。",
 	soul_message = "灵魂虹吸：>%s<！",
 
 	totem = "图腾",
-	totem_desc = "当火焰新星图腾被施放发出警报。",
+	totem_desc = "当施放火焰新星图腾时发出警报。",
 	totem_message = "火焰新星图腾！",
 
 	heal = "治疗",
-	heal_desc = "当妖术领主玛拉卡斯施放治疗发出警报。",
+	heal_desc = "当施放治疗时发出警报。",
 	heal_message = "正在施放治疗！打断！",
+
+	consecration = "奉献",
+	consecration_desc = "当施放奉献时发出警报。",
+	consecration_bar = "<奉献：%d>",
+	consecration_warn = "已施放 奉献！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -134,14 +154,13 @@ L:RegisterTranslations("zhTW", function() return {
 
 	bolts = "靈魂箭",
 	bolts_desc = "警告瑪拉克雷斯施放靈魂箭",
-	bolts_trigger = "你的靈魂將會受到傷害!",
 	bolts_message = "靈魂箭即將來臨",
-	bolts_warning = "5 秒後靈魂箭!",
+	bolts_warning = "約 5 秒後靈魂箭!",
 	bolts_nextbar = "下次靈魂箭",
 
 	soul = "虹吸靈魂",
 	soul_desc = "警告誰受到虹吸靈魂",
-	soul_message = "虹吸靈魂：[%s]",
+	soul_message = "虹吸靈魂: [%s]",
 
 	totem = "圖騰",
 	totem_desc = "警告火焰新星圖騰被施放了",
@@ -150,29 +169,38 @@ L:RegisterTranslations("zhTW", function() return {
 	heal = "治療",
 	heal_desc = "警告瑪拉克雷斯施放治療",
 	heal_message = "施放治療! - 快中斷",
+
+	consecration = "奉獻",
+	consecration_desc = "當施放奉獻時發出警報",
+	consecration_bar = "<奉獻: %d>",
+	consecration_warn = "已施放奉獻!",
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "Las sombras caer\195\161n sobre vosotros...",
+	engage_trigger = "Las sombras caerán sobre vosotros...",
 
-	bolts = "Descargas de esp\195\173ritu",
-	bolts_desc = "Avisa cuando Malacrass comienza a canalizar Descargas de esp\195\173ritu.",
-	bolts_trigger = "¡Vuestra alma sangrar\195\161!",
-	bolts_message = "\194\161Descargas de esp\195\173ritu!",
-	bolts_warning = "Descargas de esp\195\173ritu en 5 seg!",
-	bolts_nextbar = "Descargas de esp\195\173ritu siguientes",
+	bolts = "Descargas de espíritu (Spirit Bolts)",
+	bolts_desc = "Avisar cuando Malacrass canaliza Descargas de espíritu.",
+	bolts_message = "¡Descargas de espíritu!",
+	bolts_warning = "Descargas de espíritu en 5 seg",
+	bolts_nextbar = "~Descargas de espíritu",
 
-	soul = "Succionar alma",
-	soul_desc = "Avisa quien est\195\161 afectado por Succionar alma.",
-	soul_message = "Succionar: %s",
+	soul = "Succionar alma (Siphon Soul)",
+	soul_desc = "Avisar quién tiene Succionar alma.",
+	soul_message = "Succionar alma: %s",
 
-	totem = "T\195\179tem",
-	totem_desc = "Avisa cuando un T\195\179tem de Nova de Fuego es lanzado.",
-	totem_message = "\194\161T\195\179tem de Nova de Fuego!",
+	totem = "Tótem Nova de Fuego (Fire Nova Totem)",
+	totem_desc = "Avisar cuando lanza Tótem Nova de Fuego.",
+	totem_message = "¡Tótem Nova de Fuego!",
 
-	heal = "Curaci\195\179n",
-	heal_desc = "Avisa cuando Malacrass lanza una curaci\195\179n.",
-	heal_message = "\194\161Lanzando cura!",
+	heal = "Sanación",
+	heal_desc = "Avisar cuando Malacrass lanza una sanación.",
+	heal_message = "¡Lanzando sanación!",
+
+	consecration = "Consagración (Consecration)",
+	consecration_desc = "Avisar cuando se lanza Consagración.",
+	consecration_bar = "Consagración (%d)",
+	consecration_warn = "¡Consagración lanzada!",
 } end )
 
 ----------------------------------
@@ -182,8 +210,8 @@ L:RegisterTranslations("esES", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
-mod.toggleoptions = {"bolts", "soul", "totem", "heal", "bosskill"}
-mod.revision = tonumber(("$Revision: 65844 $"):sub(12, -3))
+mod.toggleoptions = {"bolts", "soul", "totem", "heal", "consecration", "bosskill"}
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -191,8 +219,10 @@ mod.revision = tonumber(("$Revision: 65844 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "SoulSiphon", 43501)
-	self:AddCombatListener("SPELL_CAST_START", "Heal", 41372, 43548, 43451, 43575, 43431, 43420) -- he probably doesn't cast all of these heals please check
-	self:AddCombatListener("SPELL_CAST_START", "Totem", 43436)
+	self:AddCombatListener("SPELL_CAST_START", "Heal", 43548, 43451, 43431) --Healing Wave, Holy Light, Flash Heal
+	self:AddCombatListener("SPELL_SUMMON", "Totem", 43436)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Bolts", 43383)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Consecration", 43429)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
@@ -224,16 +254,27 @@ function mod:Totem()
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if not db.bolts then return end
-
-	if msg == L["bolts_trigger"] then
-		self:Message(L["bolts_message"], "Important")
-		self:Bar(L["bolts"], 10, "Spell_Shadow_ShadowBolt")
-		self:Bar(L["bolts_nextbar"], 40, "Spell_Shadow_ShadowBolt")
+function mod:Bolts(_, spellID)
+	if db.bolts then
+		self:IfMessage(L["bolts_message"], "Important", spellID)
+		self:Bar(L["bolts"], 10, spellID)
+		self:Bar(L["bolts_nextbar"], 40, spellID)
 		self:DelayedMessage(35, L["bolts_warning"], "Attention")
-	elseif msg == L["engage_trigger"] then
-		self:Bar(L["bolts_nextbar"], 30, "Spell_Shadow_ShadowBolt")
+	end
+end
+
+local count = 0
+function mod:Consecration(_, spellID)
+	if self.db.profile.consecration then
+		self:IfMessage(L["consecration_warn"], "Positive", spellID)
+		count = count + 1
+		self:Bar(L["consecration_bar"]:format(count), 20, spellID)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L["engage_trigger"] and db.bolts then
+		self:Bar(L["bolts_nextbar"], 30, 43383)
 		self:DelayedMessage(25, L["bolts_warning"], "Attention")
 	end
 end

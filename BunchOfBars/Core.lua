@@ -21,25 +21,6 @@ L:RegisterTranslations("enUS", function() return {
 
 	["|cffffff00Click|r to lock/unlock unit frames."] = true
 }end)
---------------------
---   汉化：iCat   --
---------------------
-L:RegisterTranslations("zhCN", function() return {
-	["Visual Options"] = "界面选项",
-	["Options to control the looks of BunchOfBars."] = "BunchOfBars显示界面的相关设置",
-
-	["Module Options"] = "模块选项",
-	["Options for all enabled modules."] = "全部模块的相关设置",
-
-	["Module Padding"] = "模块间距",
-	["Padding between module parts."] = "模块相互之间的距离",
-
-	["Position"] = "位置",
-	["The position of this module's frame on the unit frame."] = "模块窗体的位置",
-
-	["|cffffff00Click|r to lock/unlock unit frames."] = "|cffffff00点击|r 锁定/解锁 显示窗体"
-}end)
---#end
 
 L:RegisterTranslations("koKR", function() return {
 	["Visual Options"] = "설정",
@@ -80,7 +61,7 @@ BunchOfBars = AceLibrary("AceAddon-2.0"):new(
 
 BunchOfBars:SetModuleMixins("AceEvent-2.0")
 
-BunchOfBars.revision = tonumber(("$Revision: 53645 $"):match("%d+"))
+BunchOfBars.revision = tonumber(("$Revision: 64384 $"):match("%d+"))
 
 BunchOfBars.options = {
 	type = "group",
@@ -146,19 +127,21 @@ function BunchOfBars:OnInitialize()
 end
 
 
-function BunchOfBars:OnEnable(first)
+function BunchOfBars:OnEnable()
 	self:HideShowParty()
 
 	ClickCastFrames = ClickCastFrames or {}
-	self.frames = {}
-
+	
 	self:RegisterModules()
 	self:UpdateLayoutOrder()
 
-	self:ScheduleEvent(self.CreateMaster, 4, self)
+	self:CreateMaster()
 
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "ForceUpdate")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "ForceUpdate")
+	self:RegisterEvent("ZONE_CHANGED_NEW_AREA", "ForceUpdate")
+
+	self:RegisterEvent("BunchOfBarsShowMaster", "ShowMaster")
 
 
 	for _,module in BunchOfBars:IterateModules() do

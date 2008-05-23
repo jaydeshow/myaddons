@@ -107,13 +107,6 @@ AL:RegisterTranslations("deDE", function() return {
     ["Load Modules"] = "Module laden",
 	--    ["Crafting"] = true,
 
-    --Trades
---    ["Apprentice"] = true,
---    ["Journeyman"] = true,
---    ["Expert"] = true,
---    ["Artisan"] = true,
---    ["Master"] = true,
-
     --First time user
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "Willkommen zu Atlasloot Enhanced!  Bitte nimm dir einen Moment Zeit, um die Einstellungen festzulegen",
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = "Neues Feature in 4.02.01: Gib 'atlasloot options' ein, um das Optionen Menü anzeigen zu lassen und 'atlasloot reset' um Atlasloot nach einem Disconnect zurückzusetzen.",
@@ -603,8 +596,8 @@ AL:RegisterTranslations("deDE", function() return {
 	["Kodohide Battlegear"] = "Schlachtrüstung aus Kodobalg",
 	["Stalker's Chain Battlegear"] = "Kettenschlachtrüstung des Pirschers",
 	["Evoker's Silk Battlegear"] = "Seidene Schlachtrüstung des Beschwörers",
-	["Crusader's Scaled Battlegear"] = "Schuppenschlachtrüstung des Kreuzfahrers",
-	["Crusader's Ornamented Battlegear"] = "Zieratschlachtrüstung des Kreuzfahrers",
+	["Crusader's Scaled Battledgear"] = "Schuppenschlachtrüstung des Kreuzfahrers",
+	["Crusader's Ornamented Battledgear"] = "Zieratschlachtrüstung des Kreuzfahrers",
 	["Satin Battlegear"] = "Schlachtrüstung aus Satin",
 	["Mooncloth Battlegear"] = "Schlachtrüstung aus Mondstoff",
 	["Opportunist's Battlegear"] = "Schlachtrüstung des Heuchlers",

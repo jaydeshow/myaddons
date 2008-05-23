@@ -1,5 +1,6 @@
-
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -107,7 +108,7 @@ L:RegisterTranslations("frFR", function() return {
 	["Nature"] = "Nature",
 	["Frost"] = "Givre",
 	["Shadow"] = "Ombre",
-	["Arcane"] = "Arcane",
+	["Arcane"] = "Arcanes",
 	["Resistance checks disabled."] = "Vérifications des résistances désactivées.",
 	["Resistances"] = "Résistances",
 	["Fr"] = "F",
@@ -122,15 +123,15 @@ L:RegisterTranslations("frFR", function() return {
 } end )
 
 L:RegisterTranslations("deDE", function() return {
-	["Options for resistance checks."] = "Optionen f\195\188r Resistenz-Checks.",
-	["Leader/Resist"] = "Anf\195\188hrer/Restistenzen",
+	["Options for resistance checks."] = "Optionen für Resistenz-Checks.",
+	["Leader/Resist"] = "Anführer/Resistenzen",
 	["Name"] = "Name",
 	["Fire"] = "Feuer",
 	["Nature"] = "Natur",
 	["Frost"] = "Frost",
 	["Shadow"] = "Schatten",
 	["Arcane"] = "Arkan",
-	["Resistance checks disabled."] = "Resistenzen-Check deaktiviert",
+	["Resistance checks disabled."] = "Resistenz-Checks deaktiviert.",
 	["Resistances"] = "Resistenzen",
 	["Fr"] = "Fr",
 	["Ft"] = "Ft",
@@ -138,9 +139,9 @@ L:RegisterTranslations("deDE", function() return {
 	["A"] = "Ar",
 	["S"] = "Sch",
 	["Refresh"] = "Erneuern",
-	["Close"] = "Schlie\195\159en",
-	["Perform resistance check"] = "Starte einen Resistenzen-Check",
-	["Check the raid's resistances."] = "\195\156berpr\195\188fe die Resistenz-Werte des Schlachtzuges.",
+	["Close"] = "Schließen",
+	["Perform resistance check"] = "Starte einen Resistenz-Check",
+	["Check the raid's resistances."] = "Überprüft die Resistenzen des Schlachtzugs.",
 } end )
 
 ----------------------------------

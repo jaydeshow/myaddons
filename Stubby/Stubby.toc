@@ -1,14 +1,14 @@
 ## Title: Stubby
-## Notes: Allows on-demand addons to load automatically based upon simple event notification hooks [5.0.PRE.2876] This AddOn is licenced under the GNU GPL, see GPL.txt for details.
+## Notes: Allows on-demand addons to load automatically based upon simple event notification hooks [5.0.PRE.3087] This AddOn is licenced under the GNU GPL, see GPL.txt for details.
 ## Title-zhCN: <|cFF0099FFAuctioneer|r> 动态加载 - Stubby
 ## Notes-zhCN: 动态加载拍卖助手的各个模块
 ##
-## Interface: 20300
+## Interface: 20400
 ## OptionalDeps: !nLog, DebugLib
 ## SavedVariables: StubbyConfig
 ##
-## Version: 5.0.PRE.2876 (BillyGoat)
-## Revision: $Id: Stubby.toc 35 2007-11-13 22:01:58Z mentalpower $
+## Version: 5.0.PRE.3087 (BillyGoat)
+## Revision: $Id: Stubby.toc 77 2008-03-25 03:29:42Z MentalPower $
 ## URL: http://auctioneeraddon.com/dl/Stubby
 
 Libs\Load.xml

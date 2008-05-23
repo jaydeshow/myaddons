@@ -9,11 +9,10 @@ AtlasLoot_DewdropRegister()
 ]]
 
 --Include all needed libraries
-local BabbleBoss = AceLibrary("Babble-Boss-2.2");
-local BabbleZone = AceLibrary("Babble-Zone-2.2");
-local BabbleFaction = AceLibrary("Babble-Faction-2.2");
-local BabbleClass = AceLibrary("Babble-Class-2.2");
-local BabbleTrade=AceLibrary("Babble-Tradeskill-2.2");
+local BabbleBoss = LibStub("LibBabble-Boss-3.0"):GetLookupTable();
+local BabbleZone = LibStub("LibBabble-Zone-3.0"):GetLookupTable();
+local BabbleFaction = LibStub("LibBabble-Faction-3.0"):GetLookupTable();
+local BabbleClass = LibStub("LibBabble-Class-3.0"):GetLookupTable();
 local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 --Load the 2 dewdrop menus

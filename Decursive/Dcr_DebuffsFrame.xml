@@ -28,7 +28,7 @@
 	    return;
 	end
 
-	Dcr:SetDateAndRevision("$Date: 2008-01-18 23:24:43 -0500 (Fri, 18 Jan 2008) $", "$Revision: 58820 $");
+	Dcr:SetDateAndRevision("$Date: 2008-04-09 18:53:55 -0400 (Wed, 09 Apr 2008) $", "$Revision: 68827 $");
     </Script>
 
     <Frame name="DcrMUFsContainer" frameStrata="MEDIUM" toplevel="true" enableMouse="true" movable="true" hidden="true" parent="UIParent">
@@ -119,7 +119,26 @@
 	    </OnLeave>
 	</Scripts>
     </Button>
-    
+
+
+    <FontString name="DcrMicroUnitChronoFont" inherits="NumberFontNormalSmall" maxLines="1" text=" " virtual="true"> <!-- {{{ -->
+	<Anchors>
+	    <Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent">
+		<Offset>
+		    <AbsDimension x="1" y="-1"/>
+		</Offset>
+	    </Anchor>
+	</Anchors>
+	<Color r="0.5" g="0.1" b="0.2" a="0.6"/>
+	<Shadow>
+	    <offset>
+		<AbsDimension x="0.3" y="0.3" />
+	    </offset>
+	    <color r="0" g="0" b="0" />
+	</Shadow>
+    </FontString> <!-- }}} -->
+
+
     <Script>
 	DcrLoadedFiles["Dcr_DebuffsFrame.xml"] = true;
     </Script>

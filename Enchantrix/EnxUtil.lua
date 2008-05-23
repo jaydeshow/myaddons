@@ -1,7 +1,7 @@
 ﻿--[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: EnxUtil.lua 2835 2008-02-02 22:53:02Z ccox $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: EnxUtil.lua 2944 2008-03-23 05:39:48Z kinesia $
 	URL: http://enchantrix.org/
 
 	General utility functions
@@ -28,7 +28,7 @@
 		since that is its designated purpose as per:
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
-Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxUtil.lua $", "$Rev: 2835 $")
+Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxUtil.lua $", "$Rev: 2944 $")
 
 -- Global functions
 local getItems
@@ -366,11 +366,7 @@ function getReagentPrice(reagentID, extra)
 		if AucAdvanced then
 			if extra then
                 local _, reagentLink, _, _, _, _, _, _, _ = getReagentInfo(reagentID)
-				if extra == 'appraiser' then
-					_, price5, _, _= AucAdvanced.API.GetAppraiserValue(reagentLink,1)
-				else
-					price5 = AucAdvanced.API.GetAlgorithmValue(extra, reagentLink)
-				end
+				price5 = AucAdvanced.API.GetAlgorithmValue(extra, reagentLink)
 			else
 				price5 = AucAdvanced.API.GetMarketValue(reagentID)
 			end
@@ -710,7 +706,7 @@ function createProfiler(name)
 end
 
 Enchantrix.Util = {
-	Revision			= "$Revision: 2835 $",
+	Revision			= "$Revision: 2944 $",
 
 	GetItems			= getItems,
 	GetItemType			= getItemType,

@@ -33,9 +33,6 @@ function z.modulePrototype:GetModuleOptions()
 	return self.options
 end
 
-function z.modulePrototype:OnRaidRosterUpdate()
-end
-
 function z.modulePrototype:OnModuleEnable()
 end
 
@@ -58,6 +55,11 @@ end
 
 function z.modulePrototype:Print(...)
 	z.Print(self, ...)
+end
+
+-- argCheck
+function z.modulePrototype.argCheck(self, arg, num, kind, kind2, kind3, kind4, kind5)
+	z.argCheck(self, arg, num, kind, kind2, kind3, kind4, kind5)
 end
 
 function z.modulePrototype:MakeTemplateDescription()
@@ -220,6 +222,9 @@ end
 
 -- ModifyTemplate
 function z.modulePrototype:ModifyTemplate(key, value)
+	self:argCheck(key, 1, "string")
+	self:argCheck(value, 2, "string", "boolean", "nil")
+
 	if (self.db) then
 		local templates = self.db.char.templates or self.db.profile.templates
 
@@ -322,7 +327,6 @@ end
 
 -- RAID_ROSTER_UPDATE
 function z.modulePrototype:RAID_ROSTER_UPDATE()
-	self:OnRaidRosterUpdate()
 	self:CheckStateChange()
 end
 

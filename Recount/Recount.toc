@@ -1,15 +1,14 @@
-﻿## Interface: 20300
+﻿## Interface: 20400
 ## Title: Recount
-## Title-zhCN: |cff7fff7f-Ace2-|r Recount
 ## Notes: Records Damage and Healing for Graph Based Display
 ## Notes-zhCN: 基于 Graph 裤开发的伤害/治疗统计插件
-## Notes-zhTW: 基於 Graph 所開發的傷害/治療統計插件
-## Author: Cryect
-## OptionalDeps: Ace2, LibSharedMedia-3.0, LibBabble-Spell-3.0, LibBabble-Boss-3.0, Threat-1.0, SW_Stats, SW_FixLogStrings, LibGraph-2.0, FixLogStrings, SharedMedia-2.0
+## Notes-zhTW: 圖形化顯示的傷害/治療統計插件
+## Author: Cryect, ported to 2.4 by Elsia
+## OptionalDeps:  Ace3, LibSharedMedia-3.0, LibBabble-Class-3.0, LibGraph-2.0
 ## SavedVariables: RecountDB
 ## SavedVariablesPerCharacter: RecountPerCharDB
 ## X-Category: Combat
-## X-Embeds: Ace2, CallbackHandler-1.0, LibSharedMedia-3.0, LibBabble-Spell-3.0, LibBabble-Boss-3.0, Threat-1.0, SpecialEventsEmbed, Babble-2.2, Parser-3.0, LibGraph-2.0, RosterLib, DewdropLib
+## X-Embeds: AceAddon-3.0, AceLocale-3.0, AceDB-3.0, AceComm-3.0, AceEvent-3.0, AceTimer-3.0, AceGUI-3.0, AceConsole-3.0, AceConfig-3.0, LibSharedMedia-3.0, LibBabble-Class-3.0, LibGraph-2.0
 
 embeds.xml
 
@@ -22,7 +21,6 @@ locales\Recount-zhTW.lua
 locales\Recount-zhCN.lua
 
 Recount.lua
-FixLogStrings.lua
 
 Fonts.lua
 colors.lua
@@ -34,8 +32,11 @@ pets.lua
 Recount_Modes.lua
 Tracker.lua
 healbuffs.lua
-Sync.lua
+roster.lua
+LazySync.lua
 deletion.lua
+zonefilters.lua
+debug.lua
 
 GUI_Main.lua
 GUI_Detail.lua

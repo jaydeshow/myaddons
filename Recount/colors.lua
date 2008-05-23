@@ -1,10 +1,10 @@
 local Colors={}
 Recount.Colors=Colors
 
-ItemsToUpdate={}
-TypeToUpdate={}
-ColorMultiplier={}
-TextureBackgroundsToUpdate={}
+local ItemsToUpdate={}
+local TypeToUpdate={}
+local ColorMultiplier={}
+local TextureBackgroundsToUpdate={}
 
 
 local TYPE_TEXTURE=1
@@ -99,7 +99,7 @@ function Colors:UpdateColor(Branch,Name)
 
 	for k, v in pairs(TypeToUpdate[Branch][Name]) do
 		if v==TYPE_TEXTURE then			
-			Multi=ColorMultiplier[Branch][Name][k]
+			local Multi=ColorMultiplier[Branch][Name][k]
 			if c.a then		
 				if Multi then
 					Items[k]:SetVertexColor(c.r*Multi.r,c.g*Multi.g,c.b*Multi.b,c.a*Multi.a)
@@ -178,6 +178,11 @@ end
 
 function Colors:RegisterTexture(Branch,Name,Texture, Multi)
 	local c=Colors:GetColor(Branch,Name)
+
+	if not Texture.SetVertexColor then
+		Texture.SetVertexColor = Texture.SetStatusBarColor
+	end
+	
 	if c.a then
 		if Multi then
 			Texture:SetVertexColor(c.r*Multi.r,c.g*Multi.g,c.b*Multi.b,c.a*Multi.a)
@@ -285,7 +290,6 @@ function Colors:RegisterFont(Branch,Name,frame)
 	table.insert(TypeToUpdate[Branch][Name],TYPE_FONT)
 end
 
---/script Recount.Colors:EditColor("Window","Title",Recount.MainWindow)
 function Colors:EditColor(Branch,Name,Attach)
 	Cur_Branch=Branch
 	Cur_Name=Name

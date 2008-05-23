@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 
 ## Title: FuBar - |cffffffffGuild|cff00ff00Fu|r
 ## Notes: Displays online guild mates.
@@ -22,6 +22,7 @@
 
 embeds.xml
 
+FuBar_GuildFu.lua
 FuBar_GuildFuLocals.enUS.lua
 FuBar_GuildFuLocals.koKR.lua
 FuBar_GuildFuLocals.deDE.lua
@@ -29,5 +30,4 @@ FuBar_GuildFuLocals.frFR.lua
 FuBar_GuildFuLocals.zhCN.lua
 FuBar_GuildFuLocals.zhTW.lua
 FuBar_GuildFuLocals.esES.lua
-FuBar_GuildFu.lua
 FuBar_GuildFuOptions.lua

@@ -14,6 +14,8 @@ local count = 1
 L:RegisterTranslations("enUS", function() return {
 	cmd = "Malchezaar",
 
+	wipe_bar = "Respawn",
+
 	phase = "Engage",
 	phase_desc = "Alert when changing phases.",
 	phase1_trigger = "Madness has brought you here to me. I shall be your undoing!",
@@ -35,10 +37,8 @@ L:RegisterTranslations("enUS", function() return {
 
 	infernals = "Infernals",
 	infernals_desc = "Show cooldown timer for Infernal summons.",
-	infernal_trigger1 = "You face not Malchezaar alone, but the legions I command!",
-	infernal_trigger2 = "All realities, all dimensions are open to me!",
 	infernal_bar = "Incoming Infernal",
-	infernal_warning = "Infernal incoming in 20sec!",
+	infernal_warning = "Infernal incoming in 17sec!",
 	infernal_message = "Infernal Landed! Hellfire in 5sec!",
 
 	nova = "Shadow Nova",
@@ -53,6 +53,8 @@ L:RegisterTranslations("enUS", function() return {
 } end )
 
 L:RegisterTranslations("deDE", function() return {
+	wipe_bar = "Wiederbeleben",
+
 	phase = "Engage",
 	phase_desc = "Warnt wenn eine neue Phase beginnt",
 
@@ -80,10 +82,8 @@ L:RegisterTranslations("deDE", function() return {
 	enfeeble_you = "Ihr seid von Entkr\195\164ften betroffen.",
 	enfeeble_warnyou = "Entkr\195\164ften auf DIR!",
 
-	infernal_trigger1 = "Ihr steht nicht nur vor Malchezzar allein, sondern vor den Legionen, die ich befehlige!",
-	infernal_trigger2 = "Alle Realit\195\164ten, alle Dimensionen stehen mir offen!",
 	infernal_bar = "Infernos",
-	infernal_warning = "Infernos in 20 Sek!",
+	infernal_warning = "Infernos in 17 Sek!",
 	infernal_message = "Infernos in 5 Sek!",
 
 	nova_message = "Schattennova!",
@@ -91,37 +91,37 @@ L:RegisterTranslations("deDE", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
+	wipe_bar = "Réapparition",
+
 	phase = "Engagement",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	phase1_trigger = "La folie vous a fait venir ici, devant moi. Et je serai votre perte !",
 	phase2_trigger = "Imbéciles heureux ! Le temps est le brasier dans lequel vous brûlerez !",
 	phase3_trigger = "Comment pouvez-vous espérer résister devant un tel pouvoir ?",
-	phase1_message = "Phase 1 - Infernal dans ~40 sec. !",
+	phase1_message = "Phase 1 - Infernal dans ~40 sec. !",
 	phase2_message = "60% - Phase 2",
 	phase3_message = "30% - Phase 3 ",
 
 	enfeeble = "Affaiblir",
 	enfeeble_desc = "Affiche le temps de recharge de Affaiblir.",
-	enfeeble_message = "Affaiblir ! Prochain dans 30 sec.",
-	enfeeble_warning1 = "Affaiblir dans 5 sec. !",
-	enfeeble_warning2 = "Affaiblir dans 10 sec. !",
+	enfeeble_message = "Affaiblir ! Prochain dans 30 sec.",
+	enfeeble_warning1 = "Affaiblir dans 5 sec. !",
+	enfeeble_warning2 = "Affaiblir dans 10 sec. !",
 	enfeeble_bar = "Affaiblir",
 	enfeeble_nextbar = "Prochain Affaiblir",
 	enfeeble_you = "Vous subissez les effets de Affaiblir.",
-	enfeeble_warnyou = "Affaiblir sur VOUS !",
+	enfeeble_warnyou = "Affaiblir sur VOUS !",
 
 	infernals = "Infernaux",
 	infernals_desc = "Affiche le temps de recharge des invocations d'infernaux.",
-	infernal_trigger1 = "Vous n'affrontez pas seulement Malchezaar, mais aussi les légions que je commande !",
-	infernal_trigger2 = "Toutes les réalités, toutes les dimensions me sont ouvertes !",
 	infernal_bar = "Arrivée d'un infernal",
-	infernal_warning = "Arrivée d'un infernal dans 20 sec. !",
-	infernal_message = "Infernal ! Flammes infernales dans 5 sec. !",
+	infernal_warning = "Arrivée d'un infernal dans 17 sec. !",
+	infernal_message = "Infernal ! Flammes infernales dans 5 sec. !",
 
 	nova = "Nova de l'ombre",
-	nova_desc = "Préviens quand Malchezaar est suceptible d'utiliser sa Nova de l'ombre.",
-	nova_message = "Nova de l'ombre !",
-	nova_bar = "~Cooldown Nova",
+	nova_desc = "Prévient quand Malchezaar est suceptible d'utiliser sa Nova de l'ombre.",
+	nova_message = "Nova de l'ombre !",
+	nova_bar = "~Recharge Nova",
 	nova_soon = "Nova de l'ombre imminente",
 
 	despawn = "Désactiver les délais de disparition des infernaux",
@@ -130,6 +130,8 @@ L:RegisterTranslations("frFR", function() return {
 } end )
 
 L:RegisterTranslations("koKR", function() return {
+	wipe_bar = "재생성 시간",
+
 	phase = "단계",
 	phase_desc = "단계 변화 시 알립니다.",
 	phase1_trigger = "여기까지 오다니 정신이 나간 놈들이 분명하구나. 소원이라면 파멸을 시켜주마!",
@@ -147,14 +149,12 @@ L:RegisterTranslations("koKR", function() return {
 	enfeeble_bar = "쇠약",
 	enfeeble_nextbar = "다음 쇠약",
 	enfeeble_you = "당신은 쇠약에 걸렸습니다.",
-	enfeeble_warnyou = "당신에 쇠약!",
+	enfeeble_warnyou = "당신은 쇠약!",
 
 	infernals = "불지옥",
 	infernals_desc = "불지옥 소환에 대한 재사용 대기시간을 표시합니다.",
-	infernal_trigger1 = "이 말체자르님은 혼자가 아니시다. 너희는 나의 군대와 맞서야 한다!",
-	infernal_trigger2 = "모든 차원과 실체가 나를 향해 열려 있노라!",
 	infernal_bar = "불지옥 등장",
-	infernal_warning = "20초 이내 불지옥 등장!",
+	infernal_warning = "17초 이내 불지옥 등장!",
 	infernal_message = "불지옥 등장! 5초 이내 지옥불!",
 
 	nova = "암흑 회오리",
@@ -169,20 +169,22 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
+	wipe_bar = "重置计时器",
+
 	phase = "阶段提示",
 	phase_desc = "进入战斗及每阶段的提示。",
 	phase1_trigger = "疯狂将你们带到我的面前，而我将以死亡终结你们！",
 	phase2_trigger = "愚蠢的家伙！时间就是吞噬你躯体的烈焰！",
 	phase3_trigger = "你如何抵挡这无坚不摧的力量？",
-	phase1_message = "第一阶段 - 地狱火将在 ~40秒后发动！",
-	phase2_message = "60% - 第二阶段",
-	phase3_message = "30% - 第三阶段",
+	phase1_message = "第一阶段 - 约40秒后，地狱火！",
+	phase2_message = "60% - 第二阶段！",
+	phase3_message = "30% - 第三阶段！",
 
 	enfeeble = "能量衰弱警报",
 	enfeeble_desc = "显示能量衰弱冷却计时条。",
-	enfeeble_message = "能量衰弱！ 30后再次发动！",
-	enfeeble_warning1 = "能量衰弱！ 5秒后发动",
-	enfeeble_warning2 = "能量衰弱！ 10秒后发动",
+	enfeeble_message = "能量衰弱！30后再次发动。",
+	enfeeble_warning1 = "能量衰弱！5秒后发动。",
+	enfeeble_warning2 = "能量衰弱！10秒后发动。",
 	enfeeble_bar = "<能量衰弱>",
 	enfeeble_nextbar = "<下一能量衰弱>",
 	enfeeble_you = "^你受到了能量衰弱效果的影响。$",
@@ -190,25 +192,25 @@ L:RegisterTranslations("zhCN", function() return {
 
 	infernals = "地狱火警报",
 	infernals_desc = "显示召唤地狱火冷却时间计时条。",
-	infernal_trigger1 = "你面对的不仅仅是玛克扎尔，还有我所号令的军团！",
-	infernal_trigger2 = "所有的世界都向我敞开大门！",
 	infernal_bar = "<即将 地狱火>",
-	infernal_warning = "地狱火在 20秒后出现！",
-	infernal_message = "地狱火 出现！ 5秒后发动 地狱烈焰！",
+	infernal_warning = "17秒后，地狱火！",
+	infernal_message = "地狱火出现！5秒后发动，地狱烈焰！",
 
 	nova = "暗影新星",
 	nova_desc = "暗影新星预计冷却计时条。",
 	nova_message = "暗影新星！",
 	nova_bar = "<暗影新星 冷却>",
-	nova_soon = "即将发动 暗影新星",
+	nova_soon = "即将发动 暗影新星！",
 
 	despawn = "禁用地狱火重生",
 	despawn_desc = "地狱火重生计时条。",
-	despawn_bar = "<地狱火(%d) 重生！>",
+	despawn_bar = "<地狱火重生：%d>",
 } end )
 
 
 L:RegisterTranslations("zhTW", function() return {
+	wipe_bar = "重生計時",
+
 	phase = "階段提示",
 	phase_desc = "進入戰鬥及每一階段時發送警告",
 	phase1_trigger = "瘋狂把你帶到我的面前。我會成為你失敗的原因!",
@@ -230,10 +232,8 @@ L:RegisterTranslations("zhTW", function() return {
 
 	infernals = "地獄火警告",
 	infernals_desc = "顯示召喚地獄火計時條",
-	infernal_trigger1 = "你挑戰的不只是莫克札，而是我所率領的整個軍隊!",
-	infernal_trigger2 = "所有的實體，所有的空間對我來說都是開放的!",
 	infernal_bar = "地獄火",
-	infernal_warning = "20 秒後召喚地獄火",
+	infernal_warning = "17 秒後召喚地獄火",
 	infernal_message = "5 秒後召喚地獄火",
 
 	nova = "暗影新星警告",
@@ -248,42 +248,42 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	phase = "Activado",
-	phase_desc = "Alerta cuando cambia de fase.",
-	phase1_trigger = "La locura os ha tra\195\173do ante mi. \194\161Ser\195\169 vuestro fin!",
-	phase2_trigger = "\194\161Est\195\186pidos! El tiempo es el fuego en el que arder\195\169is!",
-	phase3_trigger = "\194\191C\195\179mo pod\195\169is esperar rebelaros ante un poder tan aplastante?",
-	phase1_message = "\194\161Fase 1 - Infernal en ~40seg!",
+	wipe_bar = "Reaparición",
+
+	phase = "Fases",
+	phase_desc = "Avisar cambios de fase.",
+	phase1_trigger = "La locura os ha traído ante mi. ¡Seré vuestro fin!",
+	phase2_trigger = "¡Estúpidos! El tiempo es el fuego en el que arderéis!",
+	phase3_trigger = "¿Cómo podéis esperar rebelaros ante un poder tan aplastante?",
+	phase1_message = "¡Fase 1 - Infernal en ~40seg!",
 	phase2_message = "60% - Fase 2",
 	phase3_message = "30% - Fase 3 ",
 
-	enfeeble = "Socavar",
+	enfeeble = "Socavar (Enfeeble)",
 	enfeeble_desc = "Muestra un temporizador para Socavar.",
-	enfeeble_message = "\194\161Socavar! Siguiente en 30seg",
-	enfeeble_warning1 = "\194\161Socavar en 5seg!",
-	enfeeble_warning2 = "\194\161Socavar en 10seg!",
-	enfeeble_bar = "Socavar",
-	enfeeble_nextbar = "Siguiente Socavar",
+	enfeeble_message = "¡Socavar! Sig. en 30seg",
+	enfeeble_warning1 = "¡Socavar en 5seg!",
+	enfeeble_warning2 = "¡Socavar en 10seg!",
+	enfeeble_bar = "<Socavar>",
+	enfeeble_nextbar = "~Socavar",
 	enfeeble_you = "Sufres de Socavar.",
-	enfeeble_warnyou = "\194\161Socavar en t\195\173!",
+	enfeeble_warnyou = "¡Socavar en TI!",
 
 	infernals = "Infernales",
-	infernals_desc = "Muestra temporizadores para la invocaci\195\179n de Infernales.",
-	infernal_trigger1 = "\194\161No solo os enfrent\195\161is a Malchezaar, sino a todas las legiones bajo mi mando!",
-	infernal_trigger2 = "\194\161Todas las realidades, todas las dimensiones est\195\161n abiertas a m\195\173!",
-	infernal_bar = "Llega Infernal",
-	infernal_warning = "\194\161Infernal llega en 20seg!",
-	infernal_message = "\194\161Aterriz\195\179 Infernal! \194\161Hellfire in 5seg!",
+	infernals_desc = "Muestra temporizadores para la invocación de Infernales.",
+	infernal_bar = "~Llega infernal",
+	infernal_warning = "¡Infernal llega en 17seg!",
+	infernal_message = "¡Aterrizó Infernal - Llamas infernales en 5seg!",
 
-	nova = "Nova de las sombras",
+	nova = "Nova de las Sombras",
 	nova_desc = "Temporizador estimado de Nova de las sombras.",
-	nova_message = "Nova de las sombras!",
-	nova_bar = "~Nova Cooldown",
-	nova_soon = "Nova de las sombras pronto",
+	nova_message = "¡Nova de las sombras!",
+	nova_bar = "~Nova",
+	nova_soon = "Nova de las Sombras en breve",
 
-	despawn = "Desactiva temporizadores de desaparici\195\179n de Infernales",
-	despawn_desc = "Temporizadores de desaparici\195\179n de Infernales.",
-	despawn_bar = "Infernal (%d) desaparece",
+	despawn = "Desactivar barras de desaparición Infernales",
+	despawn_desc = "Temporizadores de desaparición de Infernales.",
+	despawn_bar = "Infernal(%d)desaparece",
 } end )
 
 ----------------------------------
@@ -294,60 +294,80 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"phase", "enfeeble", "nova", -1, "infernals", "despawn", "bosskill"}
-mod.revision = tonumber(("$Revision: 65914 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
+local wipe = nil
 function mod:OnEnable()
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Enfeeble", 30843)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Enfeeble", 30843)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "SelfEnfeeble", 30843)
+	self:AddCombatListener("SPELL_CAST_START", "Nova", 30852)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Infernal", 30834)
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
-	self:RegisterEvent("UNIT_SPELLCAST_START")
+	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 
-	self:RegisterEvent("BigWigs_RecvSync")
-	self:TriggerEvent("BigWigs_ThrottleSync", "MalchezaarNova", 10)
+	if wipe and BigWigs:IsModuleActive(boss) then
+		self:Bar(L["wipe_bar"], 60, 44670)
+		wipe = nil
+	end
 end
 
 ------------------------------
 --      Event Handlers      --
 ------------------------------
 
-local last = 0
 function mod:Enfeeble(player, spellID)
-	local time = GetTime()
-	if (time - last) > 20 then
-		last = time
-		if self.db.profile.enfeeble then
-			if player == UnitName("player") then
-				self:IfMessage(L["enfeeble_warnyou"], "Personal", spellID, "Alarm")
-			end
-			self:IfMessage(L["enfeeble_message"], "Important", spellID)
-			self:ScheduleEvent("enf1", "BigWigs_Message", 25, L["enfeeble_warning1"], "Attention")
-			self:ScheduleEvent("enf2", "BigWigs_Message", 20, L["enfeeble_warning2"], "Attention")
-			self:Bar(L["enfeeble_bar"], 7, spellID)
-			self:Bar(L["enfeeble_nextbar"], 30, spellID)
-		end
-		if self.db.profile.nova then
-			self:Bar(L["nova_bar"], 5, "Spell_Shadow_Shadowfury")
+	if self.db.profile.enfeeble then
+		self:IfMessage(L["enfeeble_message"], "Important", spellID)
+		self:ScheduleEvent("enf1", "BigWigs_Message", 25, L["enfeeble_warning1"], "Attention")
+		self:ScheduleEvent("enf2", "BigWigs_Message", 20, L["enfeeble_warning2"], "Attention")
+		self:Bar(L["enfeeble_bar"], 7, spellID)
+		self:Bar(L["enfeeble_nextbar"], 30, spellID)
+	end
+	if self.db.profile.nova then
+		self:Bar(L["nova_bar"], 5, "Spell_Shadow_Shadowfury")
+	end
+end
+
+function mod:SelfEnfeeble(player, spellID)
+	if UnitIsUnit(player, "player") and self.db.profile.enfeeble then
+		self:LocalMessage(L["enfeeble_warnyou"], "Personal", spellID, "Alarm")
+	end
+end
+
+function mod:Nova(_, spellID)
+	if self.db.profile.nova then
+		self:IfMessage(L["nova_message"], "Attention", spellID, "Info")
+		self:Bar(L["nova_message"], 2, spellID)
+		if not nova then
+			self:CancelScheduledEvent("nova1")
+			self:Bar(L["nova_bar"], 20, spellID)
+			self:ScheduleEvent("nova1", "BigWigs_Message", 15, L["nova_soon"], "Positive")
 		end
 	end
 end
 
+function mod:Infernal()
+	if self.db.profile.infernals then
+		self:Message(L["infernal_warning"], "Positive")
+		self:DelayedMessage(12, L["infernal_message"], "Urgent", nil, "Alert")
+		self:Bar(L["infernal_bar"], 17, "INV_Stone_05")
+	end
+	if not self.db.profile.despawn then
+		self:ScheduleEvent("BWInfernalDespawn", self.DespawnTimer, 17, self)
+	end
+end
+
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L["infernal_trigger1"] or msg == L["infernal_trigger2"] then
-		if self.db.profile.infernals then
-			self:Message(L["infernal_warning"], "Positive")
-			self:NextInfernal()
-		end
-		if not self.db.profile.despawn then
-			self:ScheduleEvent("BWInfernalDespawn", self.DespawnTimer, 20, self)
-		end
-	elseif msg == L["phase1_trigger"] then
+	if msg == L["phase1_trigger"] then
 		nova = true
 		count = 1
+		wipe = true
 
 		if self.db.profile.phase then
 			self:Message(L["phase1_message"], "Positive")
@@ -369,31 +389,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:NextInfernal()
-	self:DelayedMessage(15, L["infernal_message"], "Urgent", nil, "Alert")
-	self:Bar(L["infernal_bar"], 20, "INV_Stone_05")
-end
-
 function mod:DespawnTimer()
 	self:Bar(L["despawn_bar"]:format(count), 180, "INV_SummerFest_Symbol_Medium")
 	count = count + 1
-end
-
-function mod:UNIT_SPELLCAST_START(msg)
-	if UnitName(msg) == boss and (UnitCastingInfo(msg)) == L["nova"] then
-		self:Sync("MalchezaarNova")
-	end
-end
-
-function mod:BigWigs_RecvSync(sync)
-	if sync == "MalchezaarNova" and self.db.profile.nova then
-		self:Message(L["nova_message"], "Attention", nil, "Info")
-		self:Bar(L["nova_message"], 2, "Spell_Shadow_Shadowfury")
-		if not nova then
-			self:CancelScheduledEvent("nova1")
-			self:Bar(L["nova_bar"], 20, "Spell_Shadow_Shadowfury")
-			self:ScheduleEvent("nova1", "BigWigs_Message", 15, L["nova_soon"], "Positive")
-		end
-	end
 end
 

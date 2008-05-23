@@ -5,7 +5,7 @@
 local boss = BB["Grandmaster Vorpil"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 
-local db = nil
+local started = nil
 
 ----------------------------
 --      Localization      --
@@ -31,8 +31,8 @@ L:RegisterTranslations("koKR", function() return {
 	teleport_warning = "약 5초 이내 순간 이동!",
 	teleport_bar = "순간 이동",
 	
-	engage_trigger1 = "네 피를 제물로 바칠 것이다.", -- check
-	engage_trigger2 = "너는 다른 자들에게 좋은 표본이 될 것이다.", -- check
+	engage_trigger1 = "네 피를 제물로 바칠 것이다.",
+	engage_trigger2 = "너는 다른 자들에게 좋은 표본이 될 것이다.",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -72,7 +72,7 @@ L:RegisterTranslations("zhCN", function() return {
 	teleport = "传送警告",
 	teleport_desc = "当传送时发出警报。",
 	teleport_message = "传送！快离开平台！",
-	teleport_warning = "～5秒后 传送！",
+	teleport_warning = "5秒后，传送！",
 	teleport_bar = "<传送>",
 	
 	engage_trigger1 = "我要用你的血当祭品！",
@@ -96,28 +96,37 @@ mod.revision = tonumber(("$Revision: 33724 $"):sub(12, -3))
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Teleport", 33563)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
+	started = nil
 
-	db = self.db.profile
+	self:AddCombatListener("SPELL_AURA_SUCCESS", "Teleport", 33563)
+	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:RegisterEvent("PLAYER_REGEN_DISABLED", "CheckForEngage")
+	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
+
+	self:RegisterEvent("BigWigs_RecvSync")
 end
 
 ------------------------------
 --      Event Handlers      --
 ------------------------------
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if db.teleport and (msg:find(L["engage_trigger1"]) or msg == L["engage_trigger2"]) then
-		self:Bar(L["teleport_bar"], 40, "Spell_Magic_LesserInvisibilty")
-		self:DelayedMessage(35, L["teleport_warning"], "Attention")
+function mod:Teleport()
+	if self.db.profile.teleport then
+		self:IfMessage(L["teleport_message"], "Urgent", 33563)
+		self:Bar(L["teleport_bar"], 37, 33563)
+		self:DelayedMessage(32, L["teleport_warning"], "Attention")
 	end
 end
 
-function mod:Teleport()
-	if db.teleport then
-		self:Message(L["teleport_message"], "Urgent", nil, "Alert")
-		self:Bar(L["teleport_bar"], 37, "Spell_Magic_LesserInvisibilty")
-		self:DelayedMessage(32, L["teleport_warning"], "Attention")
+function mod:BigWigs_RecvSync(sync, rest, nick)
+	if self:ValidateEngageSync(sync, rest) and not started then
+		started = true
+		if self:IsEventRegistered("PLAYER_REGEN_DISABLED") then
+			self:UnregisterEvent("PLAYER_REGEN_DISABLED")
+		end
+		if self.db.profile.teleport then
+			self:Bar(L["teleport_bar"], 40, 33563)
+			self:DelayedMessage(35, L["teleport_warning"], "Attention", nil, nil, nil, 33563)
+		end
 	end
 end

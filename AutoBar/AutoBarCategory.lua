@@ -18,13 +18,14 @@
 --		flying
 
 --	AutoBar
---		arrangeOnUse
-
 --		spell
 --		limit
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 55356 $"):match("%d+"))
+local spellNameList = AutoBar.spellNameList
+local spellIconList = AutoBar.spellIconList
+
+local REVISION = tonumber(("$Revision: 74262 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -33,12 +34,12 @@ end
 
 AutoBarCategoryList = {}
 
-local L = AceLibrary("AceLocale-2.2"):new("AutoBar")
+local L = AutoBar.locale
 local PT = LibStub("LibPeriodicTable-3.1")
-local LBS = LibStub("LibBabble-Spell-3.0")
-local BS = LBS:GetLookupTable()
-local BZ = AceLibrary:GetInstance("Babble-Zone-2.2")
+local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
+--local BZ = AceLibrary:GetInstance("Babble-Zone-2.2")
 local AceOO = AceLibrary("AceOO-2.0")
+local _
 
 -- List of categoryKey, category.description pairs for button categories
 AutoBar.categoryValidateList = {}
@@ -80,7 +81,7 @@ end
 --		description - localized description
 --		texture - display icon texture
 -- Optional attributes:
---		arrangeOnUse, targeted, nonCombat, location, battleground, notUsable
+--		targeted, nonCombat, location, battleground, notUsable
 AutoBarCategory = AceOO.Class()
 AutoBarCategory.virtual = true -- this means that it cannot be instantiated. (cannot call :new())
 
@@ -88,63 +89,9 @@ function AutoBarCategory.prototype:init(description, texture)
 	AutoBarCategory.super.prototype.init(self) -- very important. Will fail without this.
 	self.categoryKey = description
 
-	if (L:HasTranslation(description)) then
-		self.description = L[description]
-	else
-		self.description = description
-		self.customKey = "Custom." .. description
---AutoBar:Print("AutoBarCategory customKey " .. tostring(self.customKey))
-	end
+	self.description = L[description]
 	self.texture = texture
 end
-
--- True if an item gets arranged to the top on use
-function AutoBarCategory.prototype:SetArrangeOnUse(arrangeOnUse)
-	self.arrangeOnUse = arrangeOnUse
-end
-
--- True if an item gets arranged to the top on use
-function AutoBarCategory.prototype:GetArrangeOnUse()
-	return self.arrangeOnUse
-end
-
--- Move item to the top (end) of list
-function AutoBarCategory.prototype:ArrangeOnUse(itemId)
-	local swapItemId, categoryIndexA, categoryIndexB
-
---AutoBar:Print("AutoBarCategory.prototype:ArrangeOnUse " .. tostring(self.description) .. " itemId " .. tostring(itemId))
-	local itemList = self.items
-	categoryIndexB = # itemList
-	for i, categoryItemId in ipairs(itemList) do
---AutoBar:Print("arrangeOnUse ".. i .. " / " .. categoryItemId .. " categoryIndexB " .. categoryIndexB)
-		if (categoryItemId == itemId and i ~= categoryIndexB) then
-			categoryIndexA = i
-			swapItemId = itemList[categoryIndexB]
-			itemList[i] = swapItemId
-			itemList[categoryIndexB] = itemId
---AutoBar:Print("arrangeOnUse i " .. tostring(i) .. " itemList[i] " .. tostring(itemList[i]))
---AutoBar:Print("arrangeOnUse categoryIndexB " .. tostring(categoryIndexB) .. " itemList[categoryIndexB] " .. tostring(itemList[categoryIndexB]))
-			break
-		end
-	end
-	if (self.castList) then
-		local castList = self.castList
-		categoryIndexB = # castList - 1
-		for i, spellClass, spellName in castListPairs(castList) do
---	AutoBar:Print("arrangeOnUse ".. i .. " spellClass " .. spellClass .. " spellName " .. spellName)
-			if (spellName and spellName == itemId and i ~= categoryIndexB) then
-				castList[i], castList[categoryIndexB] = castList[categoryIndexB], castList[i]
-				castList[i + 1], castList[categoryIndexB + 1] = castList[categoryIndexB + 1], castList[i + 1]
-	--AutoBar:Print("arrangeOnUse i " .. tostring(i) .. " castList[i] " .. tostring(castList[i]))
-	--AutoBar:Print("arrangeOnUse categoryIndexB " .. tostring(categoryIndexB) .. " castList[categoryIndexB] " .. tostring(castList[categoryIndexB]))
-				break
-			end
-		end
-	end
-
-	return categoryIndexA, categoryIndexB, swapItemId
-end
---/dump AutoBarCategoryList["Custom.XXX"]
 
 -- True if items can be targeted
 function AutoBarCategory.prototype:SetTargeted(targeted)
@@ -218,6 +165,9 @@ function AutoBarCategory.prototype:SetCastList(castList)
 				self.castSpell = spellName
 			end
 		end
+	else
+		self.spells = nil
+		self.castSpell = nil
 	end
 end
 
@@ -271,26 +221,28 @@ end
 function AutoBarItems.prototype:RawItemsAdd(rawList, set, priority)
 --AutoBar:Print("RawItemsAdd set " .. tostring(set).." priority ".. tostring(priority));
 	if (not rawList) then
-		rawList = {};
+		rawList = {}
 	end
 	if (set) then
-		local cacheSet = PT:GetSetTable(set);
+		local cacheSet = PT:GetSetTable(set)
 		if (cacheSet) then
-			local index = table.getn(rawList) + 1;
+			local index = # rawList + 1
 			for itemId, value in PT:IterateSet(set) do
 				if (not value or type(value) == "boolean") then
 					value = 0;
 				end
-				value = tonumber(value);
-				rawList[index] = {itemId, value, priority};
-				index = index + 1;
+				value = tonumber(value)
+				rawList[index] = {itemId, value, priority}
+				index = index + 1
 			end
+		else
+			AutoBar:Print("AutoBar could not find the PT3.1 set " .. tostring(set) .. ".  Make sure you have all the libraries AutoBar needs to function." )
 		end
 	end
-	return rawList;
+	return rawList
 end
 
-
+local spellFeedPet = GetSpellInfo(6991)
 
 -- Category consisting of regular items
 AutoBarPetFood = AceOO.Class(AutoBarItems)
@@ -300,7 +252,7 @@ AutoBarPetFood = AceOO.Class(AutoBarItems)
 function AutoBarPetFood.prototype:init(description, shortTexture, ptItems, ptPriorityItems)
 	AutoBarPetFood.super.prototype.init(self, description, "Interface\\Icons\\" .. shortTexture, ptItems, ptPriorityItems)
 
-	self.castSpell = BS["Feed Pet"];
+	self.castSpell = spellFeedPet
 end
 
 -- Reset the item list based on changed settings.
@@ -312,13 +264,13 @@ end
 AutoBarSpells = AceOO.Class(AutoBarCategory)
 
 -- castList, is of the form:
--- { "DRUID", BS["Flight Form"], "DRUID", BS["Swift Flight Form"], ["<class>", "<localized spell name>",] ... }
+-- { "DRUID", "Flight Form", "DRUID", "Swift Flight Form", ["<class>", "<localized spell name>",] ... }
 -- rightClickList, is of the form:
--- { "DRUID", BS["Mark of the Wild"], BS["Gift of the Wild"], ["<class>", "<localized spell name left click>", "<localized spell name right click>",] ... }
+-- { "DRUID", "Mark of the Wild", "Gift of the Wild", ["<class>", "<localized spell name left click>", "<localized spell name right click>",] ... }
 -- Pass in only one of castList, rightClickList
 -- Icon from castList is used unless not available but rightClickList is
-function AutoBarSpells.prototype:init(description, shortTexture, castList, rightClickList, customCategoriesDB)
-	AutoBarSpells.super.prototype.init(self, description, "Interface\\Icons\\" .. shortTexture) -- very important. Will fail without this.
+function AutoBarSpells.prototype:init(description, texture, castList, rightClickList, customCategoriesDB)
+	AutoBarSpells.super.prototype.init(self, description, texture) -- very important. Will fail without this.
 	local spellName, index
 --AutoBar:Print("AutoBarSpells.prototype:init " .. description .. " castList " .. tostring(castList))
 
@@ -397,8 +349,14 @@ end
 -- Custom Category
 AutoBarCustom = AceOO.Class(AutoBarSpells)
 
--- ptItems, ptPriorityItems are PeriodicTable sets
--- priorityItems sort higher than items at the same value
+-- Return a unique key to use
+function AutoBarCustom:GetCustomKey(customCategoryName)
+	local newKey = "Custom" .. customCategoryName
+	return newKey
+end
+
+-- Select an Icon to use
+-- Add description verbatim to localization
 function AutoBarCustom.prototype:init(customCategoriesDB)
 	local description = customCategoriesDB.name
 	local itemList = customCategoriesDB.items
@@ -415,38 +373,55 @@ function AutoBarCustom.prototype:init(customCategoriesDB)
 		end
 	end
 	if (itemType == "item") then
-		texture = AutoBar:GetTexture(itemId)
+		_,_,_,_,_,_,_,_,_, texture = GetItemInfo(tonumber(itemId))
 	elseif (itemType == "spell") then
-		texture = AutoBar:GetTexture(spellName, itemType, itemInfo)
+		if (spellName) then
+			_, _, texture = GetSpellInfo(spellName)
+		end
+	elseif (itemType == "macro") then
+		if (itemId) then
+			_, texture = GetMacroInfo(itemId)
+		end
+	elseif (itemType == "macroCustom") then
+		texture = "Interface\\Icons\\INV_Misc_Gift_05"
 	else
 		texture = "Interface\\Icons\\INV_Misc_Gift_01"
 	end
 
+	if (not L[description]) then
+		L[description] = description
+	end
+
 	AutoBarCustom.super.prototype.init(self, description, texture, nil, nil, customCategoriesDB)
 --AutoBar:Print("AutoBarCustom.prototype:init customCategoriesDB " .. tostring(customCategoriesDB) .. " self.customCategoriesDB " .. tostring(self.customCategoriesDB))
+	self.customKey = AutoBarCustom:GetCustomKey(description)
+--AutoBar:Print("AutoBarCustom.prototype:init description " .. tostring(description) .. " customKey " .. tostring(self.customKey))
 	self:Refresh()
-end
-
--- True if an item gets arranged to the top on use
-function AutoBarCustom.prototype:GetArrangeOnUse()
-	return self.customCategoriesDB.arrangeOnUse
 end
 
 -- If not used yet, change name to newName
 -- Return the name in use either way
 function AutoBarCustom.prototype:ChangeName(newName)
-	if (not AutoBarCategoryList["Custom." .. newName]) then
+	local newCategoryKey = AutoBarCustom:GetCustomKey(newName)
+	if (not AutoBarCategoryList[newCategoryKey]) then
 		local oldCustomKey = self.customKey
-		self.customKey = "Custom." .. newName
-		AutoBarCategoryList[self.customKey] = AutoBarCategoryList[oldCustomKey]
+		self.customKey = newCategoryKey
+--AutoBar:Print("AutoBarCustom.prototype:ChangeName oldCustomKey " .. tostring(oldCustomKey) .. " newCategoryKey " .. tostring(newCategoryKey))
+		AutoBarCategoryList[newCategoryKey] = AutoBarCategoryList[oldCustomKey]
 		AutoBarCategoryList[oldCustomKey] = nil
 		-- Update categoryValidateList
-		AutoBar.categoryValidateList[self.customKey] = self.description
+		AutoBar.categoryValidateList[newCategoryKey] = self.description
 		AutoBar.categoryValidateList[oldCustomKey] = nil
 
 		self.customCategoriesDB.name = newName
+		self.customCategoriesDB.desc = newName
+		self.customCategoriesDB.categoryKey = newCategoryKey
 		self.description = newName
-		self.categoryKey = newName	-- What the hell is this?
+		self.categoryKey = newCategoryKey
+
+		local customCategories = AutoBar.db.account.customCategories
+		customCategories[newCategoryKey] = customCategories[oldCustomKey]
+		customCategories[oldCustomKey] = nil
 	end
 	return self.customCategoriesDB.name
 end
@@ -456,12 +431,15 @@ end
 
 -- Return the unique name to use
 function AutoBarCustom:GetNewName(baseName, index)
-	local newKey = "Custom." .. baseName .. index
-	while (AutoBarCategoryList[newKey]) do
+	local newName = baseName .. index
+	local newKey = AutoBarCustom:GetCustomKey(newName)
+	local customCategories = AutoBar.db.account.customCategories
+	while (customCategories[newKey] or AutoBarCategoryList[newKey]) do
 		index = index + 1
-		newKey = "Custom." .. baseName .. index
+		newName = baseName .. index
+		newKey = AutoBarCustom:GetCustomKey(newName)
 	end
-	return baseName .. index
+	return newName, newKey
 end
 
 
@@ -471,6 +449,7 @@ function AutoBarCustom.prototype:Refresh()
 	local itemType, itemId
 	local itemsIndex = 1
 	local castListIndex = 1
+	local macroIndex = 1
 
 	for index, itemDB in ipairs(itemList) do
 		itemType = itemDB.itemType
@@ -488,6 +467,22 @@ function AutoBarCustom.prototype:Refresh()
 			self.castList[castListIndex] = itemDB.spellClass
 			self.castList[castListIndex + 1] = itemDB.spellName
 			castListIndex = castListIndex + 2
+		elseif (itemType == "macro") then
+			if (not self.macroList) then
+				self.macroList = {}
+			end
+			local macroId = "macro" .. itemId
+			self.macroList[macroIndex] = macroId
+			macroIndex = macroIndex + 1
+			AutoBarSearch:RegisterMacro(macroId, itemId)
+		elseif (itemType == "macroCustom" and itemDB.itemInfo) then
+			if (not self.macroList) then
+				self.macroList = {}
+			end
+			local macroId = "macroCustom" .. self.customCategoriesDB.categoryKey .. itemId
+			self.macroList[macroIndex] = macroId
+			macroIndex = macroIndex + 1
+			AutoBarSearch:RegisterMacro(macroId, nil, itemId, itemDB.itemInfo)
 		end
 	end
 
@@ -503,6 +498,11 @@ function AutoBarCustom.prototype:Refresh()
 			self.castList[index + 1] = nil
 		end
 	end
+	if (self.macroList) then
+		for index = macroIndex, # self.macroList, 1 do
+			self.macroList[index] = nil
+		end
+	end
 
 	if (self.castList) then
 		AutoBarCategory:FilterClass(self.castList)
@@ -512,7 +512,8 @@ function AutoBarCustom.prototype:Refresh()
 --DevTools_Dump(self.castList)
 	AutoBarCustom.super.prototype.Refresh(self)
 end
-
+-- /dump AutoBarCategoryList["CustomArrangeTest"]
+-- /dump AutoBar.db.account.customCategories["CustomArrangeTest"]
 
 
 -- Create category list using PeriodicTable data.
@@ -535,17 +536,17 @@ function AutoBarCategory:Initialize()
 			"Misc.Battle Standard.Alterac Valley", "INV_BannerPVP_02", "Misc.Battle Standard.Alterac Valley")
 	AutoBarCategoryList["Misc.Battle Standard.Alterac Valley"]:SetLocation(BZ["Alterac Valley"])
 
-	AutoBarCategoryList["Reagent.Ammo.Arrow"] = AutoBarItems:new(
-			"Reagent.Ammo.Arrow", "INV_Ammo_Arrow_02", "Reagent.Ammo.Arrow")
-	AutoBarCategoryList["Reagent.Ammo.Arrow"]:SetNotUsable(true)
+	AutoBarCategoryList["Misc.Reagent.Ammo.Arrow"] = AutoBarItems:new(
+			"Misc.Reagent.Ammo.Arrow", "INV_Ammo_Arrow_02", "Misc.Reagent.Ammo.Arrow")
+	AutoBarCategoryList["Misc.Reagent.Ammo.Arrow"]:SetNotUsable(true)
 
-	AutoBarCategoryList["Reagent.Ammo.Bullet"] = AutoBarItems:new(
-			"Reagent.Ammo.Bullet", "INV_Ammo_Bullet_02", "Reagent.Ammo.Bullet")
-	AutoBarCategoryList["Reagent.Ammo.Bullet"]:SetNotUsable(true)
+	AutoBarCategoryList["Misc.Reagent.Ammo.Bullet"] = AutoBarItems:new(
+			"Misc.Reagent.Ammo.Bullet", "INV_Ammo_Bullet_02", "Misc.Reagent.Ammo.Bullet")
+	AutoBarCategoryList["Misc.Reagent.Ammo.Bullet"]:SetNotUsable(true)
 
-	AutoBarCategoryList["Reagent.Ammo.Thrown"] = AutoBarItems:new(
-			"Reagent.Ammo.Thrown", "INV_Axe_19", "Reagent.Ammo.Thrown")
-	AutoBarCategoryList["Reagent.Ammo.Thrown"]:SetNotUsable(true)
+	AutoBarCategoryList["Misc.Reagent.Ammo.Thrown"] = AutoBarItems:new(
+			"Misc.Reagent.Ammo.Thrown", "INV_Axe_19", "Misc.Reagent.Ammo.Thrown")
+	AutoBarCategoryList["Misc.Reagent.Ammo.Thrown"]:SetNotUsable(true)
 
 	AutoBarCategoryList["Misc.Explosives"] = AutoBarItems:new(
 			"Misc.Explosives", "INV_Misc_Bomb_08", "Misc.Explosives")
@@ -553,7 +554,6 @@ function AutoBarCategory:Initialize()
 
 	AutoBarCategoryList["Misc.Engineering.Fireworks"] = AutoBarItems:new(
 			"Misc.Engineering.Fireworks", "INV_Misc_MissileSmall_Red", "Misc.Engineering.Fireworks")
-	AutoBarCategoryList["Misc.Engineering.Fireworks"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Tradeskill.Tool.Fishing.Gear"] = AutoBarItems:new(
 			"Tradeskill.Tool.Fishing.Gear", "INV_Helmet_31", "Tradeskill.Tool.Fishing.Gear")
@@ -561,6 +561,9 @@ function AutoBarCategory:Initialize()
 	AutoBarCategoryList["Tradeskill.Tool.Fishing.Lure"] = AutoBarItems:new(
 			"Tradeskill.Tool.Fishing.Lure", "INV_Misc_Food_26", "Tradeskill.Tool.Fishing.Lure")
 	AutoBarCategoryList["Tradeskill.Tool.Fishing.Lure"]:SetTargeted("WEAPON")
+
+	AutoBarCategoryList["Tradeskill.Tool.Fishing.Other"] = AutoBarItems:new(
+			"Tradeskill.Tool.Fishing.Other", "INV_Drink_03", "Tradeskill.Tool.Fishing.Other")
 
 	AutoBarCategoryList["Tradeskill.Tool.Fishing.Tool"] = AutoBarItems:new(
 			"Tradeskill.Tool.Fishing.Tool", "INV_Fishingpole_01", "Tradeskill.Tool.Fishing.Tool")
@@ -608,10 +611,22 @@ function AutoBarCategory:Initialize()
 			"Consumable.Food.Combo Health", "INV_Misc_Food_33", "Consumable.Food.Combo Health")
 	AutoBarCategoryList["Consumable.Food.Combo Health"]:SetNonCombat(true)
 
+	AutoBarCategoryList["Consumable.Food.Edible.Combo.Non-Conjured"] = AutoBarItems:new(
+			"Consumable.Food.Edible.Combo.Non-Conjured", "INV_Misc_Food_95_Grainbread", "Consumable.Food.Edible.Combo.Non-Conjured")
+	AutoBarCategoryList["Consumable.Food.Edible.Combo.Non-Conjured"]:SetNonCombat(true)
+
+	AutoBarCategoryList["Consumable.Food.Edible.Combo.Conjured"] = AutoBarItems:new(
+			"Consumable.Food.Edible.Combo.Conjured", "INV_Misc_Food_100", "Consumable.Food.Edible.Combo.Conjured")
+	AutoBarCategoryList["Consumable.Food.Edible.Combo.Conjured"]:SetNonCombat(true)
+
+	local spellConjureFood, spellConjureFoodIcon
+	spellConjureFood, _, spellConjureFoodIcon = GetSpellInfo(33717)
+	local spellRitualOfRefreshment, spellRitualOfRefreshmentIcon
+	spellRitualOfRefreshment, _, spellRitualOfRefreshmentIcon = GetSpellInfo(43987)
 	AutoBarCategoryList["Consumable.Food.Edible.Bread.Conjured"] = AutoBarItems:new(
-			"Consumable.Food.Edible.Bread.Conjured", "INV_Misc_Food_73CinnamonRoll", "Consumable.Food.Edible.Bread.Conjured")
+			"Consumable.Food.Edible.Bread.Conjured", spellConjureFoodIcon, "Consumable.Food.Edible.Basic.Conjured")
 	AutoBarCategoryList["Consumable.Food.Edible.Bread.Conjured"]:SetNonCombat(true)
-	AutoBarCategoryList["Consumable.Food.Edible.Bread.Conjured"]:SetCastList(AutoBarCategory:FilterClass({"MAGE", BS["Conjure Food"],}))
+	AutoBarCategoryList["Consumable.Food.Edible.Bread.Conjured"]:SetCastList(AutoBarCategory:FilterClass({"MAGE", spellRitualOfRefreshment, "MAGE", spellConjureFood,}))
 
 	AutoBarCategoryList["Consumable.Food.Percent.Basic"] = AutoBarItems:new(
 			"Consumable.Food.Percent.Basic", "INV_Misc_Food_60", "Consumable.Food.Percent.Basic")
@@ -633,7 +648,7 @@ function AutoBarCategory:Initialize()
 --		["texture"] = "INV_Misc_Food_35";
 --		["nonCombat"] = true,
 --		["targeted"] = "PET";
---		["castSpell"] = BS["Feed Pet"];
+--		["castSpell"] = spellFeedPet;
 --	},
 	AutoBarCategoryList["Consumable.Food.Pet.Bread"] = AutoBarPetFood:new(
 			"Consumable.Food.Pet.Bread", "INV_Misc_Food_35", "Consumable.Food.Edible.Bread.Basic", "Consumable.Food.Edible.Bread.Conjured")
@@ -646,7 +661,7 @@ function AutoBarCategory:Initialize()
 --		["texture"] = "INV_Misc_Food_37";
 --		["nonCombat"] = true,
 --		["targeted"] = "PET";
---		["castSpell"] = BS["Feed Pet"];
+--		["castSpell"] = spellFeedPet;
 --	},
 	AutoBarCategoryList["Consumable.Food.Pet.Cheese"] = AutoBarPetFood:new(
 			"Consumable.Food.Pet.Cheese", "INV_Misc_Food_37", "Consumable.Food.Edible.Cheese.Basic")
@@ -661,7 +676,7 @@ function AutoBarCategory:Initialize()
 --		["texture"] = "INV_Misc_Fish_22";
 --		["nonCombat"] = true,
 --		["targeted"] = "PET";
---		["castSpell"] = BS["Feed Pet"];
+--		["castSpell"] = spellFeedPet;
 --	},
 	AutoBarCategoryList["Consumable.Food.Pet.Fish"] = AutoBarPetFood:new(
 			"Consumable.Food.Pet.Fish", "INV_Misc_Fish_22", "Consumable.Food.Inedible.Fish", "Consumable.Food.Edible.Fish.Basic")
@@ -674,7 +689,7 @@ function AutoBarCategory:Initialize()
 --		["texture"] = "INV_Misc_Food_19";
 --		["nonCombat"] = true,
 --		["targeted"] = "PET";
---		["castSpell"] = BS["Feed Pet"];
+--		["castSpell"] = spellFeedPet;
 --	},
 	AutoBarCategoryList["Consumable.Food.Pet.Fruit"] = AutoBarPetFood:new(
 			"Consumable.Food.Pet.Fruit", "INV_Misc_Food_19", "Consumable.Food.Edible.Fruit.Basic")
@@ -687,7 +702,7 @@ function AutoBarCategory:Initialize()
 --		["texture"] = "INV_Mushroom_05";
 --		["nonCombat"] = true,
 --		["targeted"] = "PET";
---		["castSpell"] = BS["Feed Pet"];
+--		["castSpell"] = spellFeedPet;
 --	},
 	AutoBarCategoryList["Consumable.Food.Pet.Fungus"] = AutoBarPetFood:new(
 			"Consumable.Food.Pet.Fungus", "INV_Mushroom_05", "Consumable.Food.Edible.Fungus.Basic")
@@ -702,7 +717,7 @@ function AutoBarCategory:Initialize()
 --		["texture"] = "INV_Misc_Food_14";
 --		["nonCombat"] = true,
 --		["targeted"] = "PET";
---		["castSpell"] = BS["Feed Pet"];
+--		["castSpell"] = spellFeedPet;
 --	},
 	AutoBarCategoryList["Consumable.Food.Pet.Meat"] = AutoBarPetFood:new(
 			"Consumable.Food.Pet.Meat", "INV_Misc_Food_14", "Consumable.Food.Inedible.Meat", "Consumable.Food.Edible.Meat.Basic")
@@ -804,27 +819,22 @@ function AutoBarCategory:Initialize()
 
 	AutoBarCategoryList["Misc.Minipet.Normal"] = AutoBarItems:new(
 			"Misc.Minipet.Normal", "Ability_Creature_Poison_05", "Misc.Minipet.Normal")
-	AutoBarCategoryList["Misc.Minipet.Normal"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Misc.Minipet.Snowball"] = AutoBarItems:new(
 			"Misc.Minipet.Snowball", "INV_Misc_Bag_17", "Misc.Minipet.Snowball")
-	AutoBarCategoryList["Misc.Minipet.Snowball"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Misc.Mount.Normal"] = AutoBarItems:new(
 			"Misc.Mount.Normal", "Ability_Mount_JungleTiger", "Misc.Mount.Normal")
 	AutoBarCategoryList["Misc.Mount.Normal"]:SetNonCombat(true)
-	AutoBarCategoryList["Misc.Mount.Normal"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Misc.Mount.Ahn'Qiraj"] = AutoBarItems:new(
 			"Misc.Mount.Ahn'Qiraj", "INV_Misc_QirajiCrystal_05", "Misc.Mount.Ahn'Qiraj")
 	AutoBarCategoryList["Misc.Mount.Ahn'Qiraj"]:SetNonCombat(true)
-	AutoBarCategoryList["Misc.Mount.Ahn'Qiraj"]:SetArrangeOnUse(true)
 	AutoBarCategoryList["Misc.Mount.Ahn'Qiraj"]:SetLocation(BZ["Ahn'Qiraj"])
 
 	AutoBarCategoryList["Misc.Mount.Flying"] = AutoBarItems:new(
 			"Misc.Mount.Flying", "Ability_Mount_Wyvern_01", "Misc.Mount.Flying")
 	AutoBarCategoryList["Misc.Mount.Flying"]:SetNonCombat(true)
-	AutoBarCategoryList["Misc.Mount.Flying"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Consumable.Cooldown.Potion.Rejuvenation"] = AutoBarItems:new(
 			"Consumable.Cooldown.Potion.Rejuvenation", "INV_Potion_47", "Consumable.Cooldown.Potion.Rejuvenation")
@@ -832,17 +842,28 @@ function AutoBarCategory:Initialize()
 	AutoBarCategoryList["Consumable.Cooldown.Stone.Health.Statue"] = AutoBarItems:new(
 			"Consumable.Cooldown.Stone.Health.Statue", "INV_Misc_Statue_10", "Consumable.Cooldown.Stone.Health.Statue")
 
+	AutoBarCategoryList["Consumable.Cooldown.Drums"] = AutoBarItems:new(
+			"Consumable.Cooldown.Drums", "INV_Misc_Drum_05", "Consumable.Cooldown.Drums")
+
+	AutoBarCategoryList["Consumable.Cooldown.Potion"] = AutoBarItems:new(
+			"Consumable.Cooldown.Potion", "INV_Potion_47", "Consumable.Cooldown.Potion")
+
+	AutoBarCategoryList["Consumable.Cooldown.Stone"] = AutoBarItems:new(
+			"Consumable.Cooldown.Stone", "INV_Misc_Statue_10", "Consumable.Cooldown.Stone")
+
 	AutoBarCategoryList["Consumable.Leatherworking.Drums"] = AutoBarItems:new(
 			"Consumable.Leatherworking.Drums", "INV_Misc_Drum_06", "Consumable.Leatherworking.Drums")
 
 	AutoBarCategoryList["Consumable.Tailor.Net"] = AutoBarItems:new(
 			"Consumable.Tailor.Net", "INV_Misc_Net_01", "Consumable.Tailor.Net")
 
-	AutoBarCategoryList["Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep"] = AutoBarItems:new(
-			"Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep", "INV_Potion_83", "Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep")
+	AutoBarCategoryList["Consumable.Cooldown.Potion.Rejuvenation.Dreamless Sleep"] = AutoBarItems:new(
+			"Consumable.Cooldown.Potion.Rejuvenation.Dreamless Sleep", "INV_Potion_83", "Consumable.Cooldown.Potion.Rejuvenation.Dreamless Sleep")
 
+	local spellConjureManaEmerald, spellConjureManaEmeraldIcon
+	spellConjureManaEmerald, _, spellConjureManaEmeraldIcon = GetSpellInfo(27101)
 	AutoBarCategoryList["Consumable.Cooldown.Stone.Mana.Mana Stone"] = AutoBarItems:new(
-			"Consumable.Cooldown.Stone.Mana.Mana Stone", "INV_Misc_Gem_Emerald_01", "Consumable.Cooldown.Stone.Mana.Mana Stone")
+			"Consumable.Cooldown.Stone.Mana.Mana Stone", spellConjureManaEmeraldIcon, "Consumable.Cooldown.Stone.Mana.Mana Stone")
 
 	AutoBarCategoryList["Consumable.Buff.Rage"] = AutoBarItems:new(
 			"Consumable.Buff.Rage", "INV_Potion_24", "Consumable.Buff.Rage")
@@ -854,10 +875,22 @@ function AutoBarCategory:Initialize()
 			"Misc.Booze", "INV_Drink_03", "Misc.Booze")
 	AutoBarCategoryList["Misc.Booze"]:SetNonCombat(true)
 
+	local spellConjureWater, spellConjureWaterIcon
+	spellConjureWater, _, spellConjureWaterIcon = GetSpellInfo(27090)
 	AutoBarCategoryList["Consumable.Water.Basic"] = AutoBarItems:new(
 			"Consumable.Water.Basic", "INV_Drink_10", "Consumable.Water.Basic", "Consumable.Water.Conjured")
 	AutoBarCategoryList["Consumable.Water.Basic"]:SetNonCombat(true)
-	AutoBarCategoryList["Consumable.Water.Basic"]:SetCastList(AutoBarCategory:FilterClass({"MAGE", BS["Conjure Water"],}))
+	AutoBarCategoryList["Consumable.Water.Basic"]:SetCastList(AutoBarCategory:FilterClass({"MAGE", spellConjureWater,}))
+
+	AutoBarCategoryList["Consumable.Water.Conjure"] = AutoBarSpells:new(
+			"Consumable.Water.Conjure", spellConjureWaterIcon, {
+			"MAGE", spellConjureWater,
+			})
+
+	AutoBarCategoryList["Consumable.Food.Conjure"] = AutoBarSpells:new(
+			"Consumable.Food.Conjure", spellConjureFoodIcon, {
+			"MAGE", spellConjureFood,
+			})
 
 	AutoBarCategoryList["Consumable.Water.Percentage"] = AutoBarItems:new(
 			"Consumable.Water.Percentage", "INV_Drink_04", "Consumable.Water.Percentage")
@@ -933,10 +966,11 @@ function AutoBarCategory:Initialize()
 	AutoBarCategoryList["Consumable.Buff.Other.Self"] = AutoBarItems:new("Consumable.Buff.Other.Self", "INV_Potion_80",
 			"Consumable.Buff.Other.Self")
 
+--[[
 	AutoBarCategoryList["Consumable.Buff.Other.Target"] = AutoBarItems:new("Consumable.Buff.Other.Target", "INV_Potion_80",
 			"Consumable.Buff.Other.Target")
 	AutoBarCategoryList["Consumable.Buff.Other.Target"]:SetTargeted(true)
-
+--]]
 
 	AutoBarCategoryList["Consumable.Buff.Chest"] = AutoBarItems:new("Consumable.Buff.Chest", "INV_Misc_Rune_10",
 			"Consumable.Buff.Chest")
@@ -949,7 +983,6 @@ function AutoBarCategory:Initialize()
 	AutoBarCategoryList["Consumable.Weapon Buff"] = AutoBarItems:new("Consumable.Weapon Buff", "INV_Misc_Rune_13",
 			"Consumable.Weapon Buff")
 	AutoBarCategoryList["Consumable.Weapon Buff"]:SetTargeted("WEAPON")
-	AutoBarCategoryList["Consumable.Weapon Buff"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Consumable.Buff.Health"] = AutoBarItems:new("Consumable.Buff.Health", "INV_Potion_43",
 			"Consumable.Buff.Health")
@@ -1012,312 +1045,663 @@ function AutoBarCategory:Initialize()
 	AutoBarCategoryList["Consumable.Buff Type.Guardian"] = AutoBarItems:new("Consumable.Buff Type.Guardian", "INV_Potion_155",
 			"Consumable.Buff Type.Guardian")
 
-	AutoBarCategoryList["Consumable.Buff Type.Both"] = AutoBarItems:new("Consumable.Buff Type.Both", "INV_Potion_118",
-			"Consumable.Buff Type.Both")
+	AutoBarCategoryList["Consumable.Buff Type.Flask"] = AutoBarItems:new("Consumable.Buff Type.Flask", "INV_Potion_118",
+			"Consumable.Buff Type.Flask")
 
 	AutoBarCategoryList["Gear.Trinket"] = AutoBarItems:new("Gear.Trinket", "INV_Misc_OrnateBox",
 			"Gear.Trinket")
-	AutoBarCategoryList["Gear.Trinket"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Misc.Lockboxes"] = AutoBarItems:new("Misc.Lockboxes", "INV_Trinket_Naxxramas06",
 			"Misc.Lockboxes")
-	AutoBarCategoryList["Misc.Lockboxes"]:SetArrangeOnUse(true)
+
+	AutoBarCategoryList["Misc.Usable.BossItem"] = AutoBarItems:new("Misc.Usable.BossItem", "INV_BannerPVP_02",
+			"Misc.Usable.BossItem")
 
 	AutoBarCategoryList["Misc.Usable.Permanent"] = AutoBarItems:new("Misc.Usable.Permanent", "INV_BannerPVP_02",
 			"Misc.Usable.Permanent")
-	AutoBarCategoryList["Misc.Usable.Permanent"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Misc.Usable.Quest"] = AutoBarItems:new("Misc.Usable.Quest", "INV_BannerPVP_02",
 			"Misc.Usable.Quest")
-	AutoBarCategoryList["Misc.Usable.Quest"]:SetArrangeOnUse(true)
 
 	AutoBarCategoryList["Misc.Usable.Replenished"] = AutoBarItems:new("Misc.Usable.Replenished", "INV_BannerPVP_02",
 			"Misc.Usable.Replenished")
-	AutoBarCategoryList["Misc.Usable.Replenished"]:SetArrangeOnUse(true)
+
+	local spellCreateFirestone, spellCreateFirestoneIcon
+	spellCreateFirestone, _, spellCreateFirestoneIcon = GetSpellInfo(27250)
+	AutoBarCategoryList["Consumable.Warlock.Firestone"] = AutoBarItems:new("Consumable.Warlock.Firestone", "INV_Misc_MonsterScales_15",
+			"Consumable.Warlock.Firestone")
+
+	AutoBarCategoryList["Consumable.Warlock.Soulstone"] = AutoBarItems:new("Consumable.Warlock.Soulstone", "INV_Misc_MonsterScales_15",
+			"Consumable.Warlock.Soulstone")
+	AutoBarCategoryList["Consumable.Warlock.Soulstone"]:SetTargeted(true)
+
+	AutoBarCategoryList["Consumable.Warlock.Spellstone"] = AutoBarItems:new("Consumable.Warlock.Spellstone", "INV_Misc_MonsterScales_15",
+			"Consumable.Warlock.Spellstone")
 
 	AutoBarCategoryList["Spell.Warlock.Create Firestone"] = AutoBarSpells:new(
-			"Spell.Warlock.Create Firestone", LBS:GetShortSpellIcon("Create Firestone"), {
-			"WARLOCK", BS["Create Firestone"],
+			"Spell.Warlock.Create Firestone", spellCreateFirestoneIcon, {
+			"WARLOCK", spellCreateFirestone,
 			})
 
+	local spellCreateHealthstone, spellCreateHealthstoneIcon
+	spellCreateHealthstone, _, spellCreateHealthstoneIcon = GetSpellInfo(27230)
+	local spellRitualOfSouls, spellRitualOfSoulsIcon
+	spellRitualOfSouls, _, spellRitualOfSoulsIcon = GetSpellInfo(29893)
 	AutoBarCategoryList["Spell.Warlock.Create Healthstone"] = AutoBarSpells:new(
-			"Spell.Warlock.Create Healthstone", LBS:GetShortSpellIcon("Create Healthstone"), {
-			"WARLOCK", BS["Create Healthstone"],
-			"WARLOCK", BS["Ritual of Souls"],
+			"Spell.Warlock.Create Healthstone", spellCreateHealthstoneIcon, {
+			"WARLOCK", spellCreateHealthstone,
+			"WARLOCK", spellRitualOfSouls,
 			})
 
+	local spellCreateSoulstone, spellCreateSoulstoneIcon
+	spellCreateSoulstone, _, spellCreateSoulstoneIcon = GetSpellInfo(27238)
 	AutoBarCategoryList["Spell.Warlock.Create Soulstone"] = AutoBarSpells:new(
-			"Spell.Warlock.Create Soulstone", LBS:GetShortSpellIcon("Create Soulstone"), {
-			"WARLOCK", BS["Create Soulstone"],
+			"Spell.Warlock.Create Soulstone", spellCreateSoulstoneIcon, {
+			"WARLOCK", spellCreateSoulstone,
 			})
 
+	local spellCreateSpellstone, spellCreateSpellstoneIcon
+	spellCreateSpellstone, _, spellCreateSpellstoneIcon = GetSpellInfo(28172)
 	AutoBarCategoryList["Spell.Warlock.Create Spellstone"] = AutoBarSpells:new(
-			"Spell.Warlock.Create Spellstone", LBS:GetShortSpellIcon("Create Spellstone"), {
-			"WARLOCK", BS["Create Spellstone"],
+			"Spell.Warlock.Create Spellstone", spellCreateSpellstoneIcon, {
+			"WARLOCK", spellCreateSpellstone,
 			})
 
-	AutoBarCategoryList["Consumable.Mage.Conjure Mana Stone"] = AutoBarSpells:new(
-			"Consumable.Mage.Conjure Mana Stone", "INV_Misc_Gem_Emerald_01", {
-			"MAGE", BS["Conjure Mana Agate"],
-			"MAGE", BS["Conjure Mana Jade"],
-			"MAGE", BS["Conjure Mana Citrine"],
-			"MAGE", BS["Conjure Mana Ruby"],
-			"MAGE", BS["Conjure Mana Emerald"],
+	AutoBarCategoryList["Spell.Mage.Conjure Food"] = AutoBarSpells:new(
+			"Spell.Mage.Conjure Food", spellRitualOfRefreshmentIcon, {
+			"MAGE", spellConjureFood,
+			"MAGE", spellConjureWater,
+			"MAGE", spellRitualOfRefreshment,
+			})
+--/script local name, rank, icon, cost = GetSpellInfo(43987); AutoBar:Print("AutoBarCustom.prototype:init GetSpellInfo(43987) name " .. tostring(name) .. " rank " .. tostring(rank) .. " icon " .. tostring(icon) .. " cost " .. tostring(cost))
+
+	local spellConjureManaAgate = GetSpellInfo(759)
+	local spellConjureManaJade = GetSpellInfo(3552)
+	local spellConjureManaCitrine = GetSpellInfo(10053)
+	local spellConjureManaRuby = GetSpellInfo(10054)
+	AutoBarCategoryList["Spell.Mage.Conjure Mana Stone"] = AutoBarSpells:new(
+			"Spell.Mage.Conjure Mana Stone", spellConjureManaEmeraldIcon, {
+			"MAGE", spellConjureManaAgate,
+			"MAGE", spellConjureManaJade,
+			"MAGE", spellConjureManaCitrine,
+			"MAGE", spellConjureManaRuby,
+			"MAGE", spellConjureManaEmerald,
 			})
 
+	local spellCrusaderAura, spellCrusaderAuraIcon
+	spellCrusaderAura, _, spellCrusaderAuraIcon = GetSpellInfo(32223)
+	local spellAspectOfTheBeast = GetSpellInfo(13161)
+	local spellAspectOfTheCheetah = GetSpellInfo(5118)
+	local spellAspectOfTheHawk = GetSpellInfo(27044)
+	local spellAspectOfTheMonkey = GetSpellInfo(13163)
+	local spellAspectOfThePack = GetSpellInfo(13159)
+	local spellAspectOfTheViper = GetSpellInfo(34074)
+	local spellAspectOfTheWild = GetSpellInfo(27045)
+	local spellTrueShotAura = GetSpellInfo(27066)
+	local spellConcentrationAura = GetSpellInfo(19746)
+	local spellDevotionAura = GetSpellInfo(27149)
+	local spellFireResistanceAura = GetSpellInfo(27153)
+	local spellFrostResistanceAura = GetSpellInfo(27152)
+	local spellRetributionAura = GetSpellInfo(27150)
+	local spellSanctityAura = GetSpellInfo(20218)
+	local spellShadowResistanceAura = GetSpellInfo(27151)
 	AutoBarCategoryList["Spell.Aura"] = AutoBarSpells:new(
-			"Spell.Aura", LBS:GetShortSpellIcon("Crusader Aura"), {
-			"HUNTER", BS["Aspect of the Beast"],
-			"HUNTER", BS["Aspect of the Cheetah"],
-			"HUNTER", BS["Aspect of the Hawk"],
-			"HUNTER", BS["Aspect of the Monkey"],
-			"HUNTER", BS["Aspect of the Pack"],
-			"HUNTER", BS["Aspect of the Viper"],
-			"HUNTER", BS["Aspect of the Wild"],
-			"PALADIN", BS["Concentration Aura"],
-			"PALADIN", BS["Crusader Aura"],
-			"PALADIN", BS["Devotion Aura"],
-			"PALADIN", BS["Fire Resistance Aura"],
-			"PALADIN", BS["Frost Resistance Aura"],
-			"PALADIN", BS["Retribution Aura"],
-			"PALADIN", BS["Sanctity Aura"],
-			"PALADIN", BS["Shadow Resistance Aura"],
+			"Spell.Aura", spellCrusaderAuraIcon, {
+			"HUNTER", spellAspectOfTheBeast,
+			"HUNTER", spellAspectOfTheCheetah,
+			"HUNTER", spellAspectOfTheHawk,
+			"HUNTER", spellAspectOfTheMonkey,
+			"HUNTER", spellAspectOfThePack,
+			"HUNTER", spellAspectOfTheViper,
+			"HUNTER", spellAspectOfTheWild,
+			"HUNTER", spellTrueShotAura,
+			"PALADIN", spellConcentrationAura,
+			"PALADIN", spellCrusaderAura,
+			"PALADIN", spellDevotionAura,
+			"PALADIN", spellFireResistanceAura,
+			"PALADIN", spellFrostResistanceAura,
+			"PALADIN", spellRetributionAura,
+			"PALADIN", spellSanctityAura,
+			"PALADIN", spellShadowResistanceAura,
 			})
-	AutoBarCategoryList["Spell.Aura"]:SetArrangeOnUse(true)
 
+	local spellGiftOfTheWild, spellGiftOfTheWildIcon
+	spellGiftOfTheWild, _, spellGiftOfTheWildIcon = GetSpellInfo(26991)
+	local spellOmenOfClarity = GetSpellInfo(16864)
+	local spellThorns = GetSpellInfo(26992)
+	local spellMarkOfTheWild = GetSpellInfo(26990)
+	local spellNaturesGrasp = GetSpellInfo(27009)
+	local spellArcaneIntellect = GetSpellInfo(27126)
+	local spellArcaneBrilliance = GetSpellInfo(27127)
+	local spellFrostArmor = GetSpellInfo(7301)
+	local spellIceArmor = GetSpellInfo(27124)
+	local spellMageArmor = GetSpellInfo(27125)
+	local spellMoltenArmor = GetSpellInfo(30482)
+	local spellShadowProtection = GetSpellInfo(25433)
+	local spellPrayerOfShadowProtection = GetSpellInfo(39374)
+	local spellDivineSpirit = GetSpellInfo(27841)
+	local spellPrayerOfSpirit = GetSpellInfo(32999)
+	local spellPowerWordFortitude = GetSpellInfo(25389)
+	local spellPrayerOfFortitude = GetSpellInfo(25392)
+	local spellBlessingOfFreedom = GetSpellInfo(1044)
+	local spellBlessingOfKings = GetSpellInfo(20217)
+	local spellGreaterBlessingOfKings = GetSpellInfo(25898)
+	local spellBlessingOfLight = GetSpellInfo(27144)
+	local spellGreaterBlessingOfLight = GetSpellInfo(27145)
+	local spellBlessingOfMight = GetSpellInfo(27140)
+	local spellGreaterBlessingOfMight = GetSpellInfo(27141)
+	local spellBlessingOfProtection = GetSpellInfo(10278)
+	local spellBlessingOfSacrifice = GetSpellInfo(27148)
+	local spellBlessingOfSalvation = GetSpellInfo(1038)
+	local spellGreaterBlessingOfSalvation = GetSpellInfo(25895)
+	local spellBlessingOfSanctuary = GetSpellInfo(27168)
+	local spellGreaterBlessingOfSanctuary = GetSpellInfo(27169)
+	local spellBlessingOfWisdom = GetSpellInfo(27142)
+	local spellGreaterBlessingOfWisdom = GetSpellInfo(27143)
+	local spellDemonArmor = GetSpellInfo(27260)
+	local spellDemonSkin = GetSpellInfo(696)
+	local spellFelArmor = GetSpellInfo(28189)
+	local spellDemoralizingShout = GetSpellInfo(25203)
+	local spellChallengingShout = GetSpellInfo(1161)
+	local spellBattleShout = GetSpellInfo(2048)
+	local spellCommandingShout = GetSpellInfo(469)
 	AutoBarCategoryList["Spell.Class.Buff"] = AutoBarSpells:new(
-			"Spell.Class.Buff", LBS:GetShortSpellIcon("Force of Nature"), nil, {
-			"DRUID", BS["Omen of Clarity"], BS["Omen of Clarity"],
-			"DRUID", BS["Thorns"], BS["Thorns"],
-			"DRUID", BS["Mark of the Wild"], BS["Gift of the Wild"],
-			"DRUID", BS["Nature's Grasp"], BS["Nature's Grasp"],
-			"MAGE", BS["Arcane Intellect"], BS["Arcane Brilliance"],
-			"PRIEST", BS["Shadow Protection"], BS["Prayer of Shadow Protection"],
-			"PRIEST", BS["Divine Spirit"], BS["Prayer of Spirit"],
-			"PRIEST", BS["Power Word: Fortitude"], BS["Prayer of Fortitude"],
-			"WARRIOR", BS["Demoralizing Shout"], BS["Challenging Shout"],
-			"WARRIOR", BS["Battle Shout"], BS["Commanding Shout"],
-			"WARRIOR", BS["Commanding Shout"], BS["Battle Shout"],
-			"PALADIN", BS["Blessing of Freedom"], BS["Blessing of Freedom"],
-			"PALADIN", BS["Blessing of Kings"], BS["Greater Blessing of Kings"],
-			"PALADIN", BS["Blessing of Light"], BS["Greater Blessing of Light"],
-			"PALADIN", BS["Blessing of Might"], BS["Greater Blessing of Might"],
-			"PALADIN", BS["Blessing of Protection"], BS["Blessing of Protection"],
-			"PALADIN", BS["Blessing of Sacrifice"], BS["Blessing of Sacrifice"],
-			"PALADIN", BS["Blessing of Salvation"], BS["Greater Blessing of Salvation"],
-			"PALADIN", BS["Blessing of Sanctuary"], BS["Greater Blessing of Sanctuary"],
-			"PALADIN", BS["Blessing of Wisdom"], BS["Greater Blessing of Wisdom"],
+			"Spell.Class.Buff", spellGiftOfTheWildIcon, nil, {
+			"DRUID", spellOmenOfClarity, spellOmenOfClarity,
+			"DRUID", spellThorns, spellThorns,
+			"DRUID", spellMarkOfTheWild, spellGiftOfTheWild,
+			"DRUID", spellNaturesGrasp, spellNaturesGrasp,
+			"MAGE", spellArcaneIntellect, spellArcaneBrilliance,
+			"MAGE", spellFrostArmor, spellFrostArmor,
+			"MAGE", spellIceArmor, spellIceArmor,
+			"MAGE", spellMageArmor, spellMageArmor,
+			"MAGE", spellMoltenArmor, spellMoltenArmor,
+			"PRIEST", spellShadowProtection, spellPrayerOfShadowProtection,
+			"PRIEST", spellDivineSpirit, spellPrayerOfSpirit,
+			"PRIEST", spellPowerWordFortitude, spellPrayerOfFortitude,
+			"PALADIN", spellBlessingOfFreedom, spellBlessingOfFreedom,
+			"PALADIN", spellBlessingOfKings, spellGreaterBlessingOfKings,
+			"PALADIN", spellBlessingOfLight, spellGreaterBlessingOfLight,
+			"PALADIN", spellBlessingOfMight, spellGreaterBlessingOfMight,
+			"PALADIN", spellBlessingOfProtection, spellBlessingOfProtection,
+			"PALADIN", spellBlessingOfSacrifice, spellBlessingOfSacrifice,
+			"PALADIN", spellBlessingOfSalvation, spellGreaterBlessingOfSalvation,
+			"PALADIN", spellBlessingOfSanctuary, spellGreaterBlessingOfSanctuary,
+			"PALADIN", spellBlessingOfWisdom, spellGreaterBlessingOfWisdom,
+			"WARLOCK", spellDemonArmor, spellDemonArmor,
+			"WARLOCK", spellDemonSkin, spellDemonSkin,
+			"WARLOCK", spellFelArmor, spellFelArmor,
+			"WARRIOR", spellDemoralizingShout, spellChallengingShout,
+			"WARRIOR", spellBattleShout, spellCommandingShout,
+			"WARRIOR", spellCommandingShout, spellBattleShout,
 			})
-	AutoBarCategoryList["Spell.Class.Buff"]:SetArrangeOnUse(true)
+	if (AutoBar.CLASS == "DRUID") then
+		AutoBar.reagents[spellGiftOfTheWild] = {17021, 17026, 22148}
+	end
+	if (AutoBar.CLASS == "MAGE") then
+		AutoBar.reagents[spellArcaneBrilliance] = {17020}
+		AutoBar.reagents[spellRitualOfRefreshment] = {17020}
+		AutoBar.reagentsMultiple[spellRitualOfRefreshment] = 2
+	end
+	if (AutoBar.CLASS == "PALADIN") then
+		AutoBar.reagents[spellGreaterBlessingOfKings] = {21177}
+		AutoBar.reagents[spellGreaterBlessingOfLight] = {21177}
+		AutoBar.reagents[spellGreaterBlessingOfMight] = {21177}
+		AutoBar.reagents[spellGreaterBlessingOfSalvation] = {21177}
+		AutoBar.reagents[spellGreaterBlessingOfSanctuary] = {21177}
+		AutoBar.reagents[spellGreaterBlessingOfWisdom] = {21177}
 
+		local spellDivineIntervention = GetSpellInfo(19752)
+		AutoBar.reagents[spellDivineIntervention] = {17033}
+	end
+	if (AutoBar.CLASS == "PRIEST") then
+		AutoBar.reagents[spellPrayerOfShadowProtection] = {17029}
+		AutoBar.reagents[spellPrayerOfSpirit] = {17029}
+		AutoBar.reagents[spellPrayerOfFortitude] = {17028,17029}
+
+		local spellLevitate = GetSpellInfo(1706)
+		AutoBar.reagents[spellLevitate] = {17056}
+	end
+
+	local spellForceOfNature, spellForceOfNatureIcon
+	spellForceOfNature, _, spellForceOfNatureIcon = GetSpellInfo(33831)
+	local spellScareBeast = GetSpellInfo(14327)
+	local spellTameBeast = GetSpellInfo(1515)
+	local spellBeastTraining = GetSpellInfo(5149)
+	local spellBeastLore = GetSpellInfo(1462)
+	local spellEyesOfTheBeast = GetSpellInfo(1002)
+	local spellMendPet = GetSpellInfo(27046)
+	local spellDismissPet = GetSpellInfo(2641)
+	local spellRevivePet = GetSpellInfo(982)
+	local spellCallPet = GetSpellInfo(883)
+	local spellSummonWaterElemental = GetSpellInfo(31687)
+	local spellShadowfiend = GetSpellInfo(34433)
+	local spellEarthElementalTotem = GetSpellInfo(2062)
+	local spellFireElementalTotem = GetSpellInfo(2894)
+	local spellEyeOfKilrogg = GetSpellInfo(126)
+	local spellSummonFelguard = GetSpellInfo(30146)
+	local spellSummonFelhunter = GetSpellInfo(691)
+	local spellSummonImp = GetSpellInfo(688)
+	local spellSummonSuccubus = GetSpellInfo(712)
+	local spellSummonVoidwalker = GetSpellInfo(697)
 	AutoBarCategoryList["Spell.Class.Pet"] = AutoBarSpells:new(
-			"Spell.Class.Pet", LBS:GetShortSpellIcon("Force of Nature"), {
-			"DRUID", BS["Force of Nature"],
-			"HUNTER", BS["Scare Beast"],
-			"HUNTER", BS["Tame Beast"],
-			"HUNTER", BS["Beast Training"],
-			"HUNTER", BS["Beast Lore"],
-			"HUNTER", BS["Eyes of the Beast"],
-			"HUNTER", BS["Mend Pet"],
-			"HUNTER", BS["Feed Pet"],
-			"HUNTER", BS["Dismiss Pet"],
-			"HUNTER", BS["Revive Pet"],
-			"HUNTER", BS["Call Pet"],
-			"MAGE", BS["Summon Water Elemental"],
-			"PRIEST", BS["Shadowfiend"],
-			"SHAMAN", BS["Fire Elemental Totem"],
-			"SHAMAN", BS["Earth Elemental Totem"],
-			"WARLOCK", BS["Eye of Kilrogg"],
-			"WARLOCK", BS["Summon Felguard"],
-			"WARLOCK", BS["Summon Felhunter"],
-			"WARLOCK", BS["Summon Imp"],
-			"WARLOCK", BS["Summon Succubus"],
-			"WARLOCK", BS["Summon Voidwalker"],
+			"Spell.Class.Pet", spellForceOfNatureIcon, {
+			"DRUID", spellForceOfNature,
+			"HUNTER", spellScareBeast,
+			"HUNTER", spellTameBeast,
+			"HUNTER", spellBeastTraining,
+			"HUNTER", spellBeastLore,
+			"HUNTER", spellEyesOfTheBeast,
+			"HUNTER", spellMendPet,
+			"HUNTER", spellFeedPet,
+			"HUNTER", spellDismissPet,
+			"HUNTER", spellRevivePet,
+			"HUNTER", spellCallPet,
+			"MAGE", spellSummonWaterElemental,
+			"PRIEST", spellShadowfiend,
+			"SHAMAN", spellEarthElementalTotem,
+			"SHAMAN", spellFireElementalTotem,
+			"WARLOCK", spellEyeOfKilrogg,
+			"WARLOCK", spellSummonFelguard,
+			"WARLOCK", spellSummonFelhunter,
+			"WARLOCK", spellSummonImp,
+			"WARLOCK", spellSummonSuccubus,
+			"WARLOCK", spellSummonVoidwalker,
 			})
-	AutoBarCategoryList["Spell.Class.Pet"]:SetArrangeOnUse(true)
 
+	local spellPortalShattrath, spellPortalShattrathIcon
+	spellPortalShattrath, _, spellPortalShattrathIcon = GetSpellInfo(33691)
+	local spellTeleportStonard = GetSpellInfo(49358)
+	local spellPortalStonard = GetSpellInfo(49361)
+	local spellTeleportTheramore = GetSpellInfo(49359)
+	local spellPortalTheramore = GetSpellInfo(49360)
+	local spellTeleportUndercity = GetSpellInfo(3563)
+	local spellPortalUndercity = GetSpellInfo(11418)
+	local spellTeleportThunderBluff = GetSpellInfo(3566)
+	local spellPortalThunderBluff = GetSpellInfo(11420)
+	local spellTeleportStormwind = GetSpellInfo(3561)
+	local spellPortalStormwind = GetSpellInfo(10059)
+	local spellTeleportSilvermoon = GetSpellInfo(32272)
+	local spellPortalSilvermoon = GetSpellInfo(32267)
+	local spellTeleportExodar = GetSpellInfo(32271)
+	local spellPortalExodar = GetSpellInfo(32266)
+	local spellTeleportDarnassus = GetSpellInfo(3565)
+	local spellPortalDarnassus = GetSpellInfo(11419)
+	local spellTeleportIronforge = GetSpellInfo(3562)
+	local spellPortalIronforge = GetSpellInfo(11416)
+	local spellTeleportOrgrimmar = GetSpellInfo(3567)
+	local spellPortalOrgrimmar = GetSpellInfo(11417)
+	local spellTeleportShattrath = GetSpellInfo(35715)
+	local spellTeleportMoonglade = GetSpellInfo(18960)
+	local spellAstralRecall = GetSpellInfo(556)
+	local spellRitualOfSummoning = GetSpellInfo(698)
 	AutoBarCategoryList["Spell.Portals"] = AutoBarSpells:new(
-			"Spell.Portals", "Spell_Arcane_PortalShattrath", nil, {
-			"MAGE", BS["Teleport: Undercity"], BS["Portal: Undercity"],
-			"MAGE", BS["Teleport: Thunder Bluff"], BS["Portal: Thunder Bluff"],
-			"MAGE", BS["Teleport: Stormwind"], BS["Portal: Stormwind"],
-			"MAGE", BS["Teleport: Silvermoon"], BS["Portal: Silvermoon"],
-			"MAGE", BS["Teleport: Exodar"], BS["Portal: Exodar"],
-			"MAGE", BS["Teleport: Darnassus"], BS["Portal: Darnassus"],
-			"MAGE", BS["Teleport: Ironforge"], BS["Portal: Ironforge"],
-			"MAGE", BS["Teleport: Orgrimmar"], BS["Portal: Orgrimmar"],
-			"MAGE", BS["Teleport: Shattrath"], BS["Portal: Shattrath"],
-			"DRUID", BS["Teleport: Moonglade"], BS["Teleport: Moonglade"],
-			"SHAMAN", BS["Astral Recall"], BS["Astral Recall"],
-			"WARLOCK", BS["Ritual of Summoning"], BS["Ritual of Summoning"],
+			"Spell.Portals", spellPortalShattrathIcon, nil, {
+			"MAGE", spellTeleportStonard, spellPortalStonard,
+			"MAGE", spellTeleportTheramore, spellPortalTheramore,
+			"MAGE", spellTeleportUndercity, spellPortalUndercity,
+			"MAGE", spellTeleportThunderBluff, spellPortalThunderBluff,
+			"MAGE", spellTeleportStormwind, spellPortalStormwind,
+			"MAGE", spellTeleportSilvermoon, spellPortalSilvermoon,
+			"MAGE", spellTeleportExodar, spellPortalExodar,
+			"MAGE", spellTeleportDarnassus, spellPortalDarnassus,
+			"MAGE", spellTeleportIronforge, spellPortalIronforge,
+			"MAGE", spellTeleportOrgrimmar, spellPortalOrgrimmar,
+			"MAGE", spellTeleportShattrath, spellPortalShattrath,
+			"DRUID", spellTeleportMoonglade, spellTeleportMoonglade,
+			"SHAMAN", spellAstralRecall, spellAstralRecall,
+			"WARLOCK", spellRitualOfSummoning, spellRitualOfSummoning,
 			})
 
-	AutoBarCategoryList["Spell.Stance"] = AutoBarSpells:new(
-			"Spell.Stance", LBS:GetShortSpellIcon("Berserker Stance"), nil, {
-			"WARRIOR", BS["Defensive Stance"], BS["Berserker Stance"],
-			"WARRIOR", BS["Battle Stance"], BS["Defensive Stance"],
-			"WARRIOR", BS["Berserker Stance"], BS["Defensive Stance"],
-			})
+	if (AutoBar.CLASS == "DRUID") then
+		local spellRebirth = GetSpellInfo(26994)
+		AutoBar.reagents[spellRebirth] = {22147,17038,17037,17036,17035,17034}
+	end
 
-	AutoBarCategoryList["Spell.Totem.Earth"] = AutoBarSpells:new(
-			"Spell.Totem.Earth", "Spell_Nature_EarthElemental_Totem", {
-			"SHAMAN", BS["Earth Elemental Totem"],
-			"SHAMAN", BS["Earthbind Totem"],
-			"SHAMAN", BS["Stoneclaw Totem"],
-			"SHAMAN", BS["Stoneskin Totem"],
-			"SHAMAN", BS["Strength of Earth Totem"],
-			"SHAMAN", BS["Tremor Totem"],
-			})
-	AutoBarCategoryList["Spell.Totem.Earth"]:SetArrangeOnUse(true)
+	if (AutoBar.CLASS == "MAGE") then
+		AutoBar.reagents[spellTeleportStonard] = {17031}
+		AutoBar.reagents[spellPortalStonard] = {17032}
+		AutoBar.reagents[spellTeleportTheramore] = {17031}
+		AutoBar.reagents[spellPortalTheramore] = {17032}
+		AutoBar.reagents[spellTeleportUndercity] = {17031}
+		AutoBar.reagents[spellPortalUndercity] = {17032}
+		AutoBar.reagents[spellTeleportThunderBluff] = {17031}
+		AutoBar.reagents[spellPortalThunderBluff] = {17032}
+		AutoBar.reagents[spellTeleportStormwind] = {17031}
+		AutoBar.reagents[spellPortalStormwind] = {17032}
+		AutoBar.reagents[spellTeleportSilvermoon] = {17031}
+		AutoBar.reagents[spellPortalSilvermoon] = {17032}
+		AutoBar.reagents[spellTeleportExodar] = {17031}
+		AutoBar.reagents[spellPortalExodar] = {17032}
+		AutoBar.reagents[spellTeleportDarnassus] = {17031}
+		AutoBar.reagents[spellPortalDarnassus] = {17032}
+		AutoBar.reagents[spellTeleportIronforge] = {17031}
+		AutoBar.reagents[spellPortalIronforge] = {17032}
+		AutoBar.reagents[spellTeleportOrgrimmar] = {17031}
+		AutoBar.reagents[spellPortalOrgrimmar] = {17032}
+		AutoBar.reagents[spellTeleportShattrath] = {17031}
+		AutoBar.reagents[spellPortalShattrath] = {17032}
 
-	AutoBarCategoryList["Spell.Totem.Air"] = AutoBarSpells:new(
-			"Spell.Totem.Air", "Spell_Nature_InvisibilityTotem", {
-			"SHAMAN", BS["Grace of Air Totem"],
-			"SHAMAN", BS["Grounding Totem"],
-			"SHAMAN", BS["Nature Resistance Totem"],
-			"SHAMAN", BS["Sentry Totem"],
-			"SHAMAN", BS["Tranquil Air Totem"],
-			"SHAMAN", BS["Windfury Totem"],
-			"SHAMAN", BS["Windwall Totem"],
-			"SHAMAN", BS["Wrath of Air Totem"],
-			})
-	AutoBarCategoryList["Spell.Totem.Air"]:SetArrangeOnUse(true)
+		local spellSlowFall = GetSpellInfo(130)
+		AutoBar.reagents[spellSlowFall] = {17056}
+	end
+	if (AutoBar.CLASS == "SHAMAN") then
+		local spellWaterWalking = GetSpellInfo(546)
+		AutoBar.reagents[spellWaterWalking] = {17058}
+		local spellWaterBreathing = GetSpellInfo(131)
+		AutoBar.reagents[spellWaterBreathing] = {17057}
+		local spellReincarnation = GetSpellInfo(20608)
+		AutoBar.reagents[spellReincarnation] = {17030}
+	end
+	if (AutoBar.CLASS == "WARLOCK") then
+		AutoBar.reagents[spellRitualOfSummoning] = {6265}
+		AutoBar.reagents[spellCreateFirestone] = {6265}
+		AutoBar.reagents[spellCreateHealthstone] = {6265}
+		AutoBar.reagents[spellRitualOfSouls] = {6265}
+		AutoBar.reagents[spellCreateSoulstone] = {6265}
+		AutoBar.reagents[spellCreateSpellstone] = {6265}
+--		AutoBar.reagents[spellEyeOfKilrogg] = {6265}
+		AutoBar.reagents[spellSummonFelguard] = {6265}
+		AutoBar.reagents[spellSummonFelhunter] = {6265}
+--		AutoBar.reagents[spellSummonImp] = {6265}
+		AutoBar.reagents[spellSummonSuccubus] = {6265}
+		AutoBar.reagents[spellSummonVoidwalker] = {6265}
 
-	AutoBarCategoryList["Spell.Totem.Fire"] = AutoBarSpells:new(
-			"Spell.Totem.Fire", "Spell_Fire_SelfDestruct", {
-			"SHAMAN", BS["Fire Elemental Totem"],
-			"SHAMAN", BS["Fire Nova Totem"],
-			"SHAMAN", BS["Flametongue Totem"],
-			"SHAMAN", BS["Frost Resistance Totem"],
-			"SHAMAN", BS["Magma Totem"],
-			"SHAMAN", BS["Searing Totem"],
-			"SHAMAN", BS["Totem of Wrath"],
-			})
-	AutoBarCategoryList["Spell.Totem.Fire"]:SetArrangeOnUse(true)
+		local spellInferno = GetSpellInfo(1122)
+		AutoBar.reagents[spellInferno] = {5565}
 
-	AutoBarCategoryList["Spell.Totem.Water"] = AutoBarSpells:new(
-			"Spell.Totem.Water", "Spell_Frost_SummonWaterElemental", {
-			"SHAMAN", BS["Disease Cleansing Totem"],
-			"SHAMAN", BS["Fire Resistance Totem"],
-			"SHAMAN", BS["Healing Stream Totem"],
-			"SHAMAN", BS["Mana Spring Totem"],
-			"SHAMAN", BS["Mana Tide Totem"],
-			"SHAMAN", BS["Poison Cleansing Totem"],
-			})
-	AutoBarCategoryList["Spell.Totem.Water"]:SetArrangeOnUse(true)
-
-	AutoBarCategoryList["Spell.Buff.Weapon"] = AutoBarSpells:new(
-			"Spell.Buff.Weapon", LBS:GetShortSpellIcon("Windfury"), {
-			"SHAMAN", BS["Windfury Weapon"],
-			"SHAMAN", BS["Rockbiter Weapon"],
-			"SHAMAN", BS["Flametongue Weapon"],
-			"SHAMAN", BS["Frostbrand Weapon"],
-			})
-	AutoBarCategoryList["Spell.Buff.Weapon"]:SetArrangeOnUse(true)
-	AutoBarCategoryList["Spell.Buff.Weapon"]:SetTargeted("WEAPON")
-
-	AutoBarCategoryList["Spell.Crafting"] = AutoBarSpells:new(
-			"Spell.Crafting", LBS:GetShortSpellIcon("First Aid"), {
-			"*", BS["Alchemy"],
-			"*", BS["Armorsmith"],
-			"*", BS["Basic Campfire"],
-			"*", BS["Blacksmithing"],
-			"*", BS["Cooking"],
---			"*", BS["Disenchant"],
-			"*", BS["Enchanting"],
-			"*", BS["Engineering"],
-			"*", BS["First Aid"],
-			"*", BS["Jewelcrafting"],
-			"*", BS["Leatherworking"],
-			"*", BS["Poisons"],
-			"*", BS["Prospecting"],
-			"*", BS["Smelting"],
-			"*", BS["Tailoring"],
-			"*", BS["Weaponsmith"],
-			})
-	AutoBarCategoryList["Spell.Crafting"]:SetArrangeOnUse(true)
-
-	AutoBarCategoryList["Spell.Fishing"] = AutoBarSpells:new(
-			"Spell.Fishing", LBS:GetShortSpellIcon("Fishing"), {
-			"*", BS["Fishing"],
-			})
-	AutoBarCategoryList["Spell.Crafting"]:SetArrangeOnUse(true)
-
-	AutoBarCategoryList["Spell.Track"] = AutoBarSpells:new(
-			"Spell.Track", LBS:GetShortSpellIcon("Track Humanoids"), {
-			"*", BS["Ammunition"],
-			"*", BS["Banker"],
-			"*", BS["BattleMaster"],
-			"*", BS["Class Trainer"],
-			"*", BS["Find Fish"],
-			"*", BS["Find Herbs"],
-			"*", BS["Find Minerals"],
-			"*", BS["Find Treasure"],
-			"*", BS["FlightMaster"],
-			"*", BS["Food & Drink"],
-			"*", BS["Innkeeper"],
-			"*", BS["Profession Trainers"],
-			"*", BS["Reagents"],
-			"*", BS["Repair"],
-			"*", BS["StableMaster"],
-			"DRUID", BS["Track Humanoids"],
-			"HUNTER", BS["Track Beasts"],
-			"HUNTER", BS["Track Demons"],
-			"HUNTER", BS["Track Dragonkin"],
-			"HUNTER", BS["Track Elementals"],
-			"HUNTER", BS["Track Giants"],
-			"HUNTER", BS["Track Hidden"],
-			"HUNTER", BS["Track Humanoids"],
-			"HUNTER", BS["Track Undead"],
-			"PALADIN", BS["Sense Undead"],
-			"WARLOCK", BS["Sense Demons"],
-			})
-	AutoBarCategoryList["Spell.Track"]:SetArrangeOnUse(true)
-
-	AutoBarCategoryList["Spell.Trap"] = AutoBarSpells:new(
-			"Spell.Trap", LBS:GetShortSpellIcon("Snake Trap"), {
-			"HUNTER", BS["Explosive Trap"],
-			"HUNTER", BS["Frost Trap"],
-			"HUNTER", BS["Immolation Trap"],
-			"HUNTER", BS["Snake Trap"],
-			"HUNTER", BS["Freezing Trap"],
-			})
-	AutoBarCategoryList["Spell.Trap"]:SetArrangeOnUse(true)
-
-	AutoBarCategoryList["Spell.Sting"] = AutoBarSpells:new(
-			"Spell.Sting", LBS:GetShortSpellIcon("Wyvern Sting"), {
-			"HUNTER", BS["Scorpid Sting"],
-			"HUNTER", BS["Viper Sting"],
-			"HUNTER", BS["Serpent Sting"],
-			"HUNTER", BS["Wyvern Sting"],
-			})
-	AutoBarCategoryList["Spell.Sting"]:SetArrangeOnUse(true)
-
-	AutoBarCategoryList["Consumable.Water.Conjure"] = AutoBarSpells:new(
-			"Consumable.Water.Conjure", LBS:GetShortSpellIcon("Conjure Water"), {
-			"MAGE", BS["Conjure Water"],
-			})
-
-	AutoBarCategoryList["Consumable.Food.Conjure"] = AutoBarSpells:new(
-			"Consumable.Food.Conjure", LBS:GetShortSpellIcon("Conjure Food"), {
-			"MAGE", BS["Conjure Food"],
-			})
-
-	AutoBarCategoryList["Misc.Mount.Summoned"] = AutoBarSpells:new(
-			"Misc.Mount.Summoned", "Ability_Mount_JungleTiger", {
-			"PALADIN", BS["Summon Warhorse"],
-			"PALADIN", BS["Summon Charger"],
-			"WARLOCK", BS["Summon Felsteed"],
-			"WARLOCK", BS["Summon Dreadsteed"],
-			"DRUID", BS["Travel Form"],
-			"DRUID", BS["Flight Form"],
-			"DRUID", BS["Swift Flight Form"],
-			"SHAMAN", BS["Ghost Wolf"],
-			})
-	AutoBarCategoryList["Misc.Mount.Summoned"]:SetNonCombat(true)
-	AutoBarCategoryList["Misc.Mount.Summoned"]:SetArrangeOnUse(true)
+		local spellRitualOfDoom = GetSpellInfo(18540)
+		AutoBar.reagents[spellRitualOfDoom] = {16583}
+	end
 end
 
+-- Create category list using PeriodicTable data.
+-- Split up to avoid Lua upValue limitations
+function AutoBarCategory:Initialize2()
+	spellNameList["Berserker Stance"], _, spellIconList["Berserker Stance"] = GetSpellInfo(2458)
+	spellNameList["Defensive Stance"] = GetSpellInfo(71)
+	spellNameList["Battle Stance"] = GetSpellInfo(2457)
+	AutoBarCategoryList["Spell.Stance"] = AutoBarSpells:new(
+			"Spell.Stance", spellIconList["Berserker Stance"], nil, {
+			"WARRIOR", spellNameList["Defensive Stance"], spellNameList["Berserker Stance"],
+			"WARRIOR", spellNameList["Battle Stance"], spellNameList["Defensive Stance"],
+			"WARRIOR", spellNameList["Berserker Stance"], spellNameList["Defensive Stance"],
+			})
+
+	local spellEarthElementalTotem, spellEarthElementalTotemIcon
+	spellEarthElementalTotem, _, spellEarthElementalTotemIcon = GetSpellInfo(2062)
+	local spellEarthbindTotem = GetSpellInfo(2484)
+	local spellStoneclawTotem = GetSpellInfo(25525)
+	local spellStoneskinTotem = GetSpellInfo(25509)
+	local spellStrengthOfEarthTotem = GetSpellInfo(25528)
+	local spellTremorTotem = GetSpellInfo(8143)
+	AutoBarCategoryList["Spell.Totem.Earth"] = AutoBarSpells:new(
+			"Spell.Totem.Earth", spellEarthElementalTotemIcon, {
+			"SHAMAN", spellEarthElementalTotem,
+			"SHAMAN", spellEarthbindTotem,
+			"SHAMAN", spellStoneclawTotem,
+			"SHAMAN", spellStoneskinTotem,
+			"SHAMAN", spellStrengthOfEarthTotem,
+			"SHAMAN", spellTremorTotem,
+			})
+
+	local spellGraceOfAirTotem, spellGraceOfAirTotemIcon
+	spellGraceOfAirTotem, _, spellGraceOfAirTotemIcon = GetSpellInfo(25359)
+	local spellGroundingTotem = GetSpellInfo(8177)
+	local spellNatureResistanceTotem = GetSpellInfo(25574)
+	local spellSentryTotem = GetSpellInfo(6495)
+	local spellTranquilAirTotem = GetSpellInfo(25908)
+	local spellWindfuryTotem = GetSpellInfo(25587)
+	local spellWindwallTotem = GetSpellInfo(25577)
+	local spellWrathOfAirTotem = GetSpellInfo(3738)
+	AutoBarCategoryList["Spell.Totem.Air"] = AutoBarSpells:new(
+			"Spell.Totem.Air", spellGraceOfAirTotemIcon, {
+			"SHAMAN", spellGraceOfAirTotem,
+			"SHAMAN", spellGroundingTotem,
+			"SHAMAN", spellNatureResistanceTotem,
+			"SHAMAN", spellSentryTotem,
+			"SHAMAN", spellTranquilAirTotem,
+			"SHAMAN", spellWindfuryTotem,
+			"SHAMAN", spellWindwallTotem,
+			"SHAMAN", spellWrathOfAirTotem,
+			})
+
+	local spellFireNovaTotem, spellFireNovaTotemIcon
+	spellFireNovaTotem, _, spellFireNovaTotemIcon = GetSpellInfo(25547)
+	local spellFireElementalTotem = GetSpellInfo(2894)
+	local spellFlametongueTotem = GetSpellInfo(25557)
+	local spellFrostResistanceTotem = GetSpellInfo(25560)
+	local spellMagmaTotem = GetSpellInfo(25552)
+	local spellSearingTotem = GetSpellInfo(25533)
+	local spellTotemOfWrath = GetSpellInfo(30706)
+	AutoBarCategoryList["Spell.Totem.Fire"] = AutoBarSpells:new(
+			"Spell.Totem.Fire", spellFireNovaTotemIcon, {
+			"SHAMAN", spellFireElementalTotem,
+			"SHAMAN", spellFireNovaTotem,
+			"SHAMAN", spellFlametongueTotem,
+			"SHAMAN", spellFrostResistanceTotem,
+			"SHAMAN", spellMagmaTotem,
+			"SHAMAN", spellSearingTotem,
+			"SHAMAN", spellTotemOfWrath,
+			})
+
+	local spellManaTideTotem, spellManaTideTotemIcon
+	spellManaTideTotem, _, spellManaTideTotemIcon = GetSpellInfo(16190)
+	local spellDiseaseCleansingTotem = GetSpellInfo(8170)
+	local spellFireResistanceTotem = GetSpellInfo(25563)
+	local spellHealingStreamTotem = GetSpellInfo(25567)
+	local spellManaSpringTotem = GetSpellInfo(10496)
+	local spellPoisonCleansingTotem = GetSpellInfo(8166)
+	AutoBarCategoryList["Spell.Totem.Water"] = AutoBarSpells:new(
+			"Spell.Totem.Water", spellManaTideTotemIcon, {
+			"SHAMAN", spellDiseaseCleansingTotem,
+			"SHAMAN", spellFireResistanceTotem,
+			"SHAMAN", spellHealingStreamTotem,
+			"SHAMAN", spellManaSpringTotem,
+			"SHAMAN", spellManaTideTotem,
+			"SHAMAN", spellPoisonCleansingTotem,
+			})
+
+	local spellWindfuryWeapon, spellWindfuryWeaponIcon
+	spellWindfuryWeapon, _, spellWindfuryWeaponIcon = GetSpellInfo(25505)
+	local spellRockbiterWeapon = GetSpellInfo(25485)
+	local spellFlametongueWeapon = GetSpellInfo(25489)
+	local spellFrostbrandWeapon = GetSpellInfo(25500)
+	AutoBarCategoryList["Spell.Buff.Weapon"] = AutoBarSpells:new(
+			"Spell.Buff.Weapon", spellWindfuryWeaponIcon, {
+			"SHAMAN", spellWindfuryWeapon,
+			"SHAMAN", spellRockbiterWeapon,
+			"SHAMAN", spellFlametongueWeapon,
+			"SHAMAN", spellFrostbrandWeapon,
+			})
+	AutoBarCategoryList["Spell.Buff.Weapon"]:SetTargeted("WEAPON")
+
+	local spellFirstAid, spellFirstAidIcon
+	spellFirstAid, _, spellFirstAidIcon = GetSpellInfo(27028)
+	local spellAlchemy = GetSpellInfo(28596)
+	local spellArmorsmith = GetSpellInfo(9788)
+	local spellBasicCampfire = GetSpellInfo(818)
+	local spellBlacksmithing = GetSpellInfo(29844)
+	local spellCooking = GetSpellInfo(33359)
+	local spellDisenchant = GetSpellInfo(13262)
+	local spellEnchanting = GetSpellInfo(28029)
+	local spellEngineering = GetSpellInfo(30350)
+	local spellJewelcrafting = GetSpellInfo(28897)
+	local spellLeatherworking = GetSpellInfo(32549)
+	local spellPoisons = GetSpellInfo(2842)
+	local spellProspecting = GetSpellInfo(31252)
+	local spellSmelting = GetSpellInfo(2656)
+	local spellTailoring = GetSpellInfo(26790)
+	local spellWeaponsmith = GetSpellInfo(9787)
+	AutoBarCategoryList["Spell.Crafting"] = AutoBarSpells:new(
+			"Spell.Crafting", spellFirstAidIcon, {
+			"*", spellAlchemy,
+			"*", spellBasicCampfire,
+			"*", spellBlacksmithing,
+			"*", spellCooking,
+			"*", spellDisenchant,
+			"*", spellEnchanting,
+			"*", spellEngineering,
+			"*", spellFirstAid,
+			"*", spellJewelcrafting,
+			"*", spellLeatherworking,
+			"*", spellPoisons,
+			"*", spellProspecting,
+			"*", spellSmelting,
+			"*", spellTailoring,
+			})
+
+	local spellFishing, spellFishingIcon
+	spellFishing, _, spellFishingIcon = GetSpellInfo(33095)
+	AutoBarCategoryList["Spell.Fishing"] = AutoBarSpells:new(
+			"Spell.Fishing", spellFishingIcon, {
+			"*", spellFishing,
+			})
+
+	local spellTrackHumanoids, spellTrackHumanoidsIcon
+	spellTrackHumanoids, _, spellTrackHumanoidsIcon = GetSpellInfo(19883)
+	local spellFindFish = GetSpellInfo(43308)
+	local spellFindHerbs = GetSpellInfo(2383)
+	local spellFindMinerals = GetSpellInfo(2580)
+	local spellFindTreasure = GetSpellInfo(2481)
+	local spellTrackBeasts = GetSpellInfo(1494)
+	local spellTrackDemons = GetSpellInfo(19878)
+	local spellTrackDragonkin = GetSpellInfo(19879)
+	local spellTrackElementals = GetSpellInfo(19880)
+	local spellTrackGiants = GetSpellInfo(19882)
+	local spellTrackHidden = GetSpellInfo(19885)
+	local spellTrackUndead = GetSpellInfo(19884)
+	local spellSenseUndead = GetSpellInfo(5502)
+	local spellSenseDemons = GetSpellInfo(5500)
+	AutoBarCategoryList["Spell.Track"] = AutoBarSpells:new(
+			"Spell.Track", spellTrackHumanoidsIcon, {
+			"*", spellFindFish,
+			"*", spellFindHerbs,
+			"*", spellFindMinerals,
+			"*", spellFindTreasure,
+			"DRUID", spellTrackHumanoids,
+			"HUNTER", spellTrackBeasts,
+			"HUNTER", spellTrackDemons,
+			"HUNTER", spellTrackDragonkin,
+			"HUNTER", spellTrackElementals,
+			"HUNTER", spellTrackGiants,
+			"HUNTER", spellTrackHidden,
+			"HUNTER", spellTrackHumanoids,
+			"HUNTER", spellTrackUndead,
+			"PALADIN", spellSenseUndead,
+			"WARLOCK", spellSenseDemons,
+			})
+
+	local spellSnakeTrap, spellSnakeTrapIcon
+	spellSnakeTrap, _, spellSnakeTrapIcon = GetSpellInfo(34600)
+	local spellExplosiveTrap = GetSpellInfo(27025)
+	local spellFrostTrap = GetSpellInfo(13809)
+	local spellImmolationTrap = GetSpellInfo(27023)
+	local spellFreezingTrap = GetSpellInfo(14311)
+	AutoBarCategoryList["Spell.Trap"] = AutoBarSpells:new(
+			"Spell.Trap", spellSnakeTrapIcon, {
+			"HUNTER", spellExplosiveTrap,
+			"HUNTER", spellFrostTrap,
+			"HUNTER", spellImmolationTrap,
+			"HUNTER", spellSnakeTrap,
+			"HUNTER", spellFreezingTrap,
+			})
+
+	local spellWyvernSting, spellWyvernStingIcon
+	spellWyvernSting, _, spellWyvernStingIcon = GetSpellInfo(27068)
+	local spellScorpidSting = GetSpellInfo(3043)
+	local spellViperSting = GetSpellInfo(27018)
+	local spellSerpentSting = GetSpellInfo(27016)
+	AutoBarCategoryList["Spell.Sting"] = AutoBarSpells:new(
+			"Spell.Sting", spellWyvernStingIcon, {
+			"HUNTER", spellScorpidSting,
+			"HUNTER", spellViperSting,
+			"HUNTER", spellSerpentSting,
+			"HUNTER", spellWyvernSting,
+			})
+
+	local spellSummonDreadsteed, spellSummonDreadsteedIcon
+	spellSummonDreadsteed, _, spellSummonDreadsteedIcon = GetSpellInfo(23161)
+	local spellSummonWarhorse = GetSpellInfo(34769)
+	local spellSummonCharger = GetSpellInfo(34767)
+	local spellSummonFelsteed = GetSpellInfo(5784)
+	local spellTravelForm = GetSpellInfo(783)
+	local spellFlightForm = GetSpellInfo(33943)
+	local spellSwiftFlightForm = GetSpellInfo(40120)
+	local spellGhostWolf = GetSpellInfo(2645)
+	AutoBarCategoryList["Misc.Mount.Summoned"] = AutoBarSpells:new(
+			"Misc.Mount.Summoned", spellSummonDreadsteedIcon, {
+			"PALADIN", spellSummonWarhorse,
+			"PALADIN", spellSummonCharger,
+			"WARLOCK", spellSummonFelsteed,
+			"WARLOCK", spellSummonDreadsteed,
+			"DRUID", spellTravelForm,
+			"DRUID", spellFlightForm,
+			"DRUID", spellSwiftFlightForm,
+			"SHAMAN", spellGhostWolf,
+			})
+	AutoBarCategoryList["Misc.Mount.Summoned"]:SetNonCombat(true)
+end
+
+
+local customCategoriesVersion = 2
+-- Learned new spells etc.  Refresh all categories
+function AutoBarCategory:Upgrade()
+	if (not AutoBar.db.account.customCategories) then
+		AutoBar.db.account.customCategories = {}
+	end
+	if (not AutoBar.db.account.customCategoriesVersion) then
+		local newCustomCategories = {}
+		local categoryKey
+		local customCategories = AutoBar.db.account.customCategories
+		for index, customCategoryDB in pairs(customCategories) do
+			customCategoryDB.name = customCategoryDB.name:gsub("%.", "")
+			categoryKey = AutoBarCustom:GetCustomKey(customCategoryDB.name)
+			customCategoryDB.categoryKey = categoryKey
+			newCustomCategories[categoryKey] = customCategoryDB
+		end
+		AutoBar.db.account.customCategories = newCustomCategories
+		AutoBar.db.account.customCategoriesVersion = 1
+	end
+	if (AutoBar.db.account.customCategoriesVersion < customCategoriesVersion) then
+		local customCategories = AutoBar.db.account.customCategories
+		local newCustomCategories = {}
+		local categoryKey
+		if (AutoBar.db.account.customCategoriesVersion == 1) then
+			for index, customCategoryDB in pairs(customCategories) do
+				customCategoryDB.name = customCategoryDB.name:gsub("%.", "")
+				customCategoryDB.name = customCategoryDB.name:gsub("\"", "")
+				categoryKey = AutoBarCustom:GetCustomKey(customCategoryDB.name)
+				if (categoryKey ~= index) then
+					customCategoryDB.categoryKey = categoryKey
+					AutoBar.Class.Button:RenameCategory(index, categoryKey)
+				end
+				if (customCategoryDB.categoryKey ~= categoryKey) then
+					AutoBar.Class.Button:RenameCategory(customCategoryDB.categoryKey, categoryKey)
+					customCategoryDB.categoryKey = categoryKey
+				end
+				newCustomCategories[categoryKey] = customCategoryDB
+			end
+			AutoBar.db.account.customCategories = newCustomCategories
+			AutoBar.db.account.customCategoriesVersion = 2
+		end
+	end
+end
+--[[
+		["customCategories"] = {
+			["CustomCustom1"] = {
+				["items"] = {
+					{
+						["itemType"] = "macro",
+						["itemId"] = 10,
+					}, -- [1]
+				},
+				["name"] = "Minnaplan",
+				["categoryKey"] = "CustomCustom1",
+				["desc"] = "Custom1",
+			},
+		},
+--]]
 
 -- Learned new spells etc.  Refresh all categories
 function AutoBarCategory:UpdateCategories()
@@ -1327,53 +1711,24 @@ function AutoBarCategory:UpdateCategories()
 end
 
 
-function AutoBarCategory:UpdateCustomCategoriesOptions()
--- ToDo maybe PT:AddData("AutoBar", {["AutoBar.SetA"] = "u,11436:Moose,7521:Sock", ["AutoBar.SetB"] = "5132,25443",}) ?
-
-	if (not AutoBar.db.account.customCategories) then
-		AutoBar.db.account.customCategories = {}
-	end
-	for index, customCategoriesDB in ipairs(AutoBar.db.account.customCategories) do
-		assert(customCategoriesDB, "customCategoriesDB nil")
-		AutoBarCategoryList["Custom." .. customCategoriesDB.name] = AutoBarCustom:new(customCategoriesDB)
-	end
-end
-
-
--- Add or remove a custom category
-function AutoBarCategoryUpdate(customCategoriesDBAdd, customCategoriesDBDelete)
-	if (customCategoriesDBAdd) then
-		-- ToDo avoid duplicate names
-		AutoBarCategoryList["Custom." .. customCategoriesDBAdd.name] = AutoBarCustom:new(customCategoriesDBAdd)
-	end
-	if (customCategoriesDBDelete) then
-		-- ToDo avoid duplicate names, remove category from buttons
-		AutoBarCategoryList["Custom." .. customCategoriesDBDelete.name] = nil
-	end
-end
-
-
 function AutoBarCategory:UpdateCustomCategories()
-	for categoryKey, categoryInfo in pairs(AutoBarCategoryList) do
-		--
-		categoryInfo:Refresh()
+	local customCategories = AutoBar.db.account.customCategories
 
-		if (categoryInfo.customKey) then
-			local found = false
-			for index, customCategoriesDB in ipairs(AutoBar.db.account.customCategories) do
-				if ("Custom." .. customCategoriesDB.name == categoryKey) then
-					found = true
-				end
-			end
-
-			-- Remove missing custom Categories
-			if (not found) then
-				AutoBarCategoryList[categoryKey] = nil
-			end
+	for categoryKey, customCategoriesDB in pairs(customCategories) do
+		assert(customCategoriesDB and (categoryKey == customCategoriesDB.categoryKey), "customCategoriesDB nil or bad categoryKey")
+		if (not AutoBarCategoryList[categoryKey]) then
+			AutoBarCategoryList[categoryKey] = AutoBarCustom:new(customCategoriesDB)
 		end
 	end
 
-	--
+	for categoryKey, categoryInfo in pairs(AutoBarCategoryList) do
+		categoryInfo:Refresh()
+
+		if (categoryInfo.customKey and not customCategories[categoryKey]) then
+			AutoBarCategoryList[categoryKey] = nil
+		end
+	end
+
 	for categoryKey in pairs(AutoBar.categoryValidateList) do
 		AutoBar.categoryValidateList[categoryKey] = nil
 	end
@@ -1385,4 +1740,6 @@ end
 
 -- /dump AutoBarCategoryList["Misc.Mount.Summoned"]
 -- /dump AutoBarCategoryList["Spell.Crafting"].castList
--- /script LibStub("LibBabble-Spell-3.0")["Tailoring"]
+--/dump AutoBarCategoryList["Consumable.Buff Group.Caster.Self"]
+--/dump LibStub("LibPeriodicTable-3.1"):GetSetTable("Consumable.Buff Group.Caster.Self")
+--/script for itemId, value in LibStub("LibPeriodicTable-3.1"):IterateSet("Consumable.Buff Group.Caster.Self") do AutoBar:Print(itemId .. " " .. value); end

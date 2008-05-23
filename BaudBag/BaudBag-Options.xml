@@ -1,7 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
-  <Script file="Localization.lua"/>
-  <Script file="BaudBag-Options.lua"/>
-
   <CheckButton name="BaudBagCheckButtonTemplate" inherits="OptionsCheckButtonTemplate" virtual="true">
     <Size><AbsDimension x="26" y="26"/></Size>
     <HitRectInsets>
@@ -9,7 +6,7 @@
     </HitRectInsets>
     <Scripts>
       <OnClick>
-        BaudBagCheckButton_OnClick();
+        BaudBagCheckButton_OnClick(self);
       </OnClick>
     </Scripts>
   </CheckButton>
@@ -21,7 +18,7 @@
 		</HitRectInsets>
     <Scripts>
       <OnClick>
-        BaudBagOptionsJoinCheck_OnClick();
+        BaudBagOptionsJoinCheck_OnClick(self);
       </OnClick>
     </Scripts>
   </CheckButton>
@@ -29,7 +26,7 @@
   <Slider name="BaudBagSliderTemplate" inherits="OptionsSliderTemplate" virtual="true">
     <Scripts>
       <OnValueChanged>
-        BaudBagSlider_OnValueChanged();
+        BaudBagSlider_OnValueChanged(self);
       </OnValueChanged>
     </Scripts>
   </Slider>
@@ -49,7 +46,7 @@
 		<CheckedTexture alphaMode="ADD" file="Interface\Buttons\CheckButtonHilight"/>
 		<Scripts>
 		  <OnClick>
-		    BaudBagOptionsBag_OnClick();
+		    BaudBagOptionsBag_OnClick(self);
 		  </OnClick>
 		</Scripts>
   </CheckButton>
@@ -75,7 +72,7 @@
             </Anchor>
           </Anchors>
         </Texture>
-        <FontString inherits="GameFontNormal" text="Baud Bag Options">
+        <FontString name="$parentTitle" inherits="GameFontNormal">
           <Anchors>
             <Anchor point="TOP" relativeTo="$parentHeader">
               <Offset><AbsDimension x="0" y="-14"/></Offset>
@@ -100,7 +97,7 @@
         </Anchors>
         <Layers>
           <Layer level="BACKGROUND">
-            <FontString name="$parentLabel" inherits="GameFontNormalSmall" text="BaudBagBagSet">
+            <FontString name="$parentLabel" inherits="GameFontNormalSmall">
               <Anchors>
                 <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
                   <Offset><AbsDimension x="16" y="3"/></Offset>
@@ -119,7 +116,7 @@
         </Anchors>
         <Scripts>
           <OnClick>
-            BaudBagEnabledCheck_OnClick();
+            BaudBagEnabledCheck_OnClick(self);
           </OnClick>
         </Scripts>
       </CheckButton>
@@ -133,7 +130,7 @@
         </Anchors>
         <Layers>
           <Layer level="ARTWORK">
-            <FontString inherits="GameFontNormal" text="BaudBagContainerName">
+            <FontString name="$parentText" inherits="GameFontNormal">
               <Anchors>
                 <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
                   <Offset><AbsDimension x="5" y="5"/></Offset>
@@ -144,10 +141,10 @@
         </Layers>
         <Scripts>
           <OnEscapePressed>
-            this:ClearFocus();
+            self:ClearFocus();
           </OnEscapePressed>
           <OnTextChanged>
-            BaudBagNameEditBox_OnTextChanged();
+            BaudBagNameEditBox_OnTextChanged(self);
           </OnTextChanged>
         </Scripts>
       </EditBox>
@@ -160,7 +157,7 @@
         </Anchors>
         <Layers>
           <Layer level="BACKGROUND">
-            <FontString name="$parentLabel" inherits="GameFontNormalSmall" text="BaudBagBackground">
+            <FontString name="$parentLabel" inherits="GameFontNormalSmall">
               <Anchors>
                 <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
                   <Offset><AbsDimension x="16" y="3"/></Offset>
@@ -209,7 +206,7 @@
           </Anchor>
         </Anchors>
       </Slider>
-      
+
       <Button name="$parentDefaults" inherits="GameMenuButtonTemplate" text="DEFAULTS">
         <Size><AbsDimension x="100" y="21"/></Size>
         <Anchors>
@@ -234,7 +231,7 @@
         <Scripts>
           <OnClick>
             PlaySound("gsTitleOptionExit");
-            HideUIPanel(this:GetParent());
+            self:GetParent():Hide();
           </OnClick>
         </Scripts>
       </Button>
@@ -248,25 +245,32 @@
         <Scripts>
           <OnClick>
             PlaySound("gsTitleOptionOK");
-            this:GetParent().SaveChanges = true;
-            HideUIPanel(this:GetParent());
+            self:GetParent().SaveChanges = true;
+            self:GetParent():Hide();
           </OnClick>
         </Scripts>
       </Button>
     </Frames>
     <Scripts>
       <OnLoad>
-        BaudBagOptionsFrame_OnLoad();
+        BaudBagOptionsFrame_OnLoad(self);
       </OnLoad>
       <OnEvent>
-        BaudBagOptionsFrame_OnEvent();
+        BaudBagOptionsFrame_OnEvent(self);
       </OnEvent>
       <OnShow>
-        BaudBagOptionsFrame_OnShow();
+        BaudBagOptionsFrame_OnShow(self);
       </OnShow>
       <OnHide>
-        BaudBagOptionsFrame_OnHide();
+        BaudBagOptionsFrame_OnHide(self);
       </OnHide>
+      <OnDragStart>
+        self:StartMoving();
+      </OnDragStart>
+      <OnDragStop>
+        self:StopMovingOrSizing();
+        self:SetUserPlaced(false);
+      </OnDragStop>
     </Scripts>
   </Frame>
 </Ui>

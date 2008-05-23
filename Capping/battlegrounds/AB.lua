@@ -2,7 +2,7 @@ local Capping = Capping
 local self = Capping
 local L = CappingLocale
 
-local nodes = {
+local nodes = {  -- node name = icon key
 	[ L["Lumber Mill"] ] 	= "lumbermill",
 	[ L["Blacksmith"] ]		= "blacksmith",
 	[ L["Gold Mine"] ] 		= "mine",
@@ -12,10 +12,23 @@ local nodes = {
 	[ L["Farm"] ] 			= "farm", 
 }
 
-local BGPatternReplacements = (GetLocale() == "zhTW") and {
-	[ L["Mine"] ] = L["Gold Mine"],
-	[ L["Southern Farm"] ] = L["Farm"],
-} or {}
+local ABReplaceText = ( GetLocale() == "zhTW" and { [ L["Mine"] ] = L["Gold Mine"], [ L["Southern Farm"] ] = L["Farm"], } )
+	or {}
+
+local function ABAssault(a1, faction)
+	local text = strlower(a1)
+	for value,icon in pairs(nodes) do
+		if strfind(text, strlower(value)) then
+			if strfind(text, L["has assaulted"]) or strfind(text, L["claims the"]) then
+				self:StartBar(ABReplaceText[value] or value, 63.5, 63.5, self:GetIconData(faction, icon), faction)
+				return
+			elseif strfind(text, L["has defended the"]) or strfind(text, L["has taken the"]) then
+				self:StopBar(ABReplaceText[value] or value)
+				return
+			end
+		end
+	end
+end
 
 --------------------------
 function Capping:StartAB()
@@ -31,29 +44,12 @@ end
 -----------------------------
 function Capping:HAssault(a1)
 -----------------------------
-	self:ABAssault(a1, "horde")
+	ABAssault(a1, "horde")
 end
-
 -----------------------------
 function Capping:AAssault(a1)
 -----------------------------
-	self:ABAssault(a1, "alliance")
+	ABAssault(a1, "alliance")
 end
 
----------------------------------------
-function Capping:ABAssault(a1, faction)
----------------------------------------
-	local text = strlower(a1)
-	for value,icon in pairs(nodes) do
-		if strfind(text, strlower(value)) then
-			if strfind(text, L["has assaulted"]) or strfind(text, L["claims the"]) then
-				self:StopBar(BGPatternReplacements[value] or value)
-				self:StartBar(BGPatternReplacements[value] or value, 63.5, self:GetIconData(faction, icon), faction)
-				return
-			elseif strfind(text, L["has defended the"]) or strfind(text, L["has taken the"]) then
-				self:StopBar(BGPatternReplacements[value] or value)
-				return
-			end
-		end
-	end
-end			
+	

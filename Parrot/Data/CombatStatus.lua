@@ -1,13 +1,15 @@
-﻿local VERSION = tonumber(("$Revision: 51435 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 73474 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-10-08 18:42:12 -0400 (Mon, 08 Oct 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-11 11:44:45 -0400 (Sun, 11 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
-local L = Parrot:L("Parrot_CombatStatus")
+-- local L = Parrot:L("Parrot_CombatStatus")
+-- TODO make modular
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatStatus")
 
 Parrot:RegisterCombatEvent{
 	category = "Notification",

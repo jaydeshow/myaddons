@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 
 local MAJOR_VERSION = "LibPossessions"
-local MINOR_VERSION = tonumber(("$Revision: 61796 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 72011 $"):match("(%d+)"))
 local COMMON_API    = "Common API" -- do not localize
 
 -- Ace addons will store realm data under "realm - faction"
@@ -132,7 +132,7 @@ local function bankitems_GetItemCount(itemid)
                     local id = select(3, string.find(bankPlayer[num].link, "|Hitem:(%d+):"))
                     if id then id = tonumber(id) end
                     if id == itemid then
-                        count = count + bankPlayer[num].count
+                        count = count + (bankPlayer[num].count or 1)
                     end
                 end
             end
@@ -148,7 +148,7 @@ local function bankitems_GetItemCount(itemid)
                             local id = select(3, string.find(theBag[bagItem].link, "|Hitem:(%d+):"))
                             if id then id = tonumber(id) end
                             if id == itemid then
-                                count = count + theBag[bagItem].count
+                                count = count + (theBag[bagItem].count or 1)
                             end
                         end
                     end

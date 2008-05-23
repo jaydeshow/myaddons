@@ -1,6 +1,6 @@
 ﻿
 -- AvailabilityTooltip.lua: handles the recipe availability tooltip
--- $Id: AvailabilityTooltip.lua 282 2006-04-12 08:41:25Z jnmiller $
+-- $Id: AvailabilityTooltip.lua 1022 2008-03-07 20:57:50Z jnmiller $
 
 function RecipeRadar_AvailabilityTooltip_AddLine(msg, color)
 

@@ -104,15 +104,8 @@ L:RegisterTranslations("enUS", function() return {
 		"This will assign paladins present with blessings based on the configured global template, taking into account talents so that paladins with Improved Blessing of Might, for example, will be favored to buff this blessing.\r\r"..
 		"|cFFFFFFFFBroadcast Button|r\r"..
 		"This will simply re-broadcast the current blessing layout, should anyone need this after a WoW crash for example.\r\r",
-	["Generated automatic template"]			= true,
-	["%s %s's template - %s from %s to %s"]		= true,
-	["%s %s's exception - %s from %s to %s"]	= true,
-	["Remotely changed"]						= true,
-	["Changed"]									= true,
-	["Cleared %s's exceptions for %s"]			= true,
 	["Warning!"]								= true,
 	["PallyPower users are in the raid and you are NOT promoted\rPallyPower only accepts assignment changes from promoted players"] = true,
-	["%d Groups"]								= true,
 	["Generating Blessing Assignments for groups 1 to %d"] = true,
 	["Change how many groups are included in template generation and Paladin inclusion"] = true,
 	["%d Group"]								= true,
@@ -122,6 +115,11 @@ L:RegisterTranslations("enUS", function() return {
 	["Holy"]									= true,
 	["Greyouts"]								= true,
 	["Grey out invalid Drag'n'Drop target cells"] = true,
+	["Show Exceptions"]							= true,
+	["Show first 3 exception icons if any exist for a cell. Note that this option is automatically enabled for cells which do not have a greater blessing defined"] = true,
+	["Use Guild Roster"]						= true,
+	["Ranks"]									= true,
+	["Select the guild ranks to include"]		= true,
 
 	-- Chat responder blessings recognition:
 	-- If not appropriate to translate into more than one thing, just make them all the same

@@ -1,5 +1,6 @@
-
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -129,31 +130,32 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	["Options for item checks."] = "Optionen f\195\188r Gegenstands-Check",
-	["SacredCandle"] = "Hochheilige Kerze",
-	["ArcanePowder"] = "Arkanes Pulver",
-	["WildThornroot"] = "Wilder Dornwurz",
-	["Ankh"] = "Ankh",
-	["SymbolofDivinity"] = "Symbol der K\195\182nige",
-	["FlashPowder"] = "Blitzstrahlpulver",
-	["SoulShard"] = "Seelensplitter",
-	["Checks Disabled"] = "Deaktiviere \195\156berpr\195\188fungen",
-	["Items"] = "Gegenst\195\164nde",
+	["Options for item checks."] = "Optionen für Gegenstands-Checks.",
+	["Checks Disabled"] = "Deaktiviere Überprüfungen",
+	["Items"] = "Gegenstände",
 	["Reagents"] = "Reagenzien",
-	["Close"] = "Schlie\195\159en",
+	["Close"] = "Schließen",
 	["Refresh"] = "Erneuern",
 	["Name"] = "Name",
 	["Item"] = "Gegenstand",
 	["Amount"] = "Anzahl",
 	["Nr"] = "Nr",
-	["Perform item check"] = "Starte eine Gegenstands-Check",
-	["Check the raid for an item."] = "\195\156berpr\195\188ft die Schlachtgruppea auf einen Gegenstand.",
+	["Perform item check"] = "Starte einen Gegenstands-Check",
+	["Check the raid for an item."] = "Überprüft den Schlachtzug auf einen Gegenstand.",
 	["<item>"] = "<item>",
 	["Perform reagent check"] = "Starte einen Reagenzien-Check",
-	["Check the raid for reagents."] = "\195\156berpr\195\188ft die Schlachtgruppea auf Reagenzien.",
-	["Leader/Item"] = "Anf\195\188hrer/Gegenstand",
-	["Use item-ID if available"] = "Nutze Gegenstands-ID",
-	["Prefer using item-ID when checking for items."] = "Gegenstands-ID zur Abfrage benutzen falls verfügbar.",
+	["Check the raid for reagents."] = "Überprüft den Schlachtzug auf Reagenzien.",
+	["Leader/Item"] = "Anführer/Gegenstand",
+	["Use item-ID if available"] = "Nutze Item-ID",
+	["Prefer using item-ID when checking for items."] = "Item-ID zur Abfrage benutzen falls verfügbar.",
+
+	SacredCandle = "Hochheilige Kerze",
+	ArcanePowder = "Arkanes Pulver",
+	WildThornroot = "Wilder Dornwurz",
+	Ankh = "Ankh",
+	SymbolofDivinity = "Symbol der Könige",
+	FlashPowder = "Blitzstrahlpulver",
+	SoulShard = "Seelensplitter",
 } end)
 
 L:RegisterTranslations("frFR", function() return {

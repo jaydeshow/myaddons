@@ -1,4 +1,4 @@
-﻿## Interface: 20400
+## Interface: 20400
 
 ## Title: Big Wigs [|cffeda55fExtras|r]
 ## Notes: Big Wigs Extra Plugins
@@ -8,6 +8,7 @@
 ## Notes-zhTW: Big Wigs 額外的模組
 ## Notes-koKR: Big Wigs 추가 플러그인
 ## Notes-frFR: Plugins supplémentaires de Big Wigs.
+## Notes-esES: Plugins extras para Big Wigs.
 ## Author: Ammo, Rabbit
 ## X-Credits: Tekkub Stoutwrithe(founding author), Shyva, Funkydude & Others
 ## Version: 2.0
@@ -22,6 +23,7 @@
 ## X-BigWigs-LoadWithCore: 1
 
 ## Dependencies: BigWigs
+## OptionalDeps: BigWigs_Plugins
 
 CustomBar.lua
 Tranq.lua

@@ -6,7 +6,7 @@ local beqldewdrop = AceLibrary("Dewdrop-2.0")
 beqlwaterfall = AceLibrary("Waterfall-1.0")
 local beql, self = beql, beql
 local beqlfu = beqlfu
-local VERSION = "0.98"
+local VERSION = "0.99"
 beql.revision = VERSION
 beql.versionstring = VERSION
 

@@ -10,8 +10,8 @@ function Recount:AddFontString(string)
 
 	FontStrings[#FontStrings+1]=string
 
-	if not FontFile and Recount.db.char.Font then
-		FontFile=SM:Fetch("font",Recount.db.char.Font)
+	if not FontFile and Recount.db.profile.Font then
+		FontFile=SM:Fetch("font",Recount.db.profile.Font)
 	end
 
 	if FontFile then
@@ -25,7 +25,7 @@ end
 function Recount:SetFont(fontname)
 	local Height, Flags
 
-	Recount.db.char.Font=fontname
+	Recount.db.profile.Font=fontname
 	FontFile=SM:Fetch("font",fontname)
 
 	for _, v in pairs(FontStrings) do

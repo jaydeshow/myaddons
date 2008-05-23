@@ -7,7 +7,7 @@ local win = AceLibrary("Window-1.0")
 
 local CTRAversion = "2.005"
 
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 -----------------------------------------------------------------------
 -- Local heap and utility functions
@@ -42,17 +42,20 @@ do
 	end
 end
 
-local hexColors = {
-	WTF = "|cffa0a0a0"
-}
+local hexColors = {}
 for k, v in pairs(RAID_CLASS_COLORS) do
 	hexColors[k] = "|cff" .. string.format("%02x%02x%02x", v.r * 255, v.g * 255, v.b * 255)
 end
+
 local coloredNames = setmetatable({}, {__index =
 	function(self, key)
 		if type(key) == "nil" then return nil end
-		local class = select(2, UnitClass(key)) or "WTF"
-		self[key] = hexColors[class]  .. key .. "|r"
+		local class = select(2, UnitClass(key))
+		if class then
+			self[key] = hexColors[class]  .. key .. "|r"
+		else
+			self[key] = "|cffcccccc<"..key..">|r"
+		end
 		return self[key]
 	end
 })
@@ -81,22 +84,22 @@ L:RegisterTranslations("enUS", function() return {
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	["You have to be Raid Leader or Assistant to do that."] = "Ihr m\195\188sst Raid Leiter oder Assistent sein, um das zu machen.",
+	["You have to be Raid Leader or Assistant to do that."] = "Du mußt Schlachtzugsleiter oder -assistent sein, um das zu machen.",
 	["Requested a status update."] = "Status-Aktualisierung wurde angefordert.",
 	["Request status"] = "Status anfordern",
-	["Request a status update"] = "Eine Status-Aktualisierung anfordern",
+	["Request a status update"] = "Eine Status-Aktualisierung anfordern.",
 	["Textures"] = "Texturen",
 	["Set all statusbar textures."] = "Texturen der StatusBars festlegen.",
 
 	-- standard draggable window texts
 	["Toggle"] = "Aktivieren",
-	["Show or hide the window"] = "Fenster zeigen oder verstecken",
+	["Show or hide the window"] = "Fenster ein-/ausblenden.",
 	["Lock"] = "Sperren",
-	["Make the window unclickable"] = "Macht das Fenster unklickbar",
+	["Make the window unclickable"] = "Macht das Fenster unklickbar.",
 	["Size"] = "Größe",
-	["Change the size of the window."] = "Ändert die Größe des Fensters",
+	["Change the size of the window."] = "Ändert die Größe des Fensters.",
 	["Transparency"] = "Transparenz",
-	["Change the transparency of the window."] = "Ändert die Transparenz des Fensters",
+	["Change the transparency of the window."] = "Ändert die Transparenz des Fensters.",
 } end)
 
 L:RegisterTranslations("koKR", function() return {
@@ -344,7 +347,7 @@ oRA:SetModuleMixins("AceEvent-2.0", CTRACL10)
 oRA.defaults = {
 	bartexture = "BantoBar",
 }
-oRA.version = tonumber(string.sub("$Revision: 65380 $", 12, -3))
+oRA.version = tonumber(string.sub("$Revision: 74053 $", 12, -3))
 
 oRA.consoleOptions = {
 	type = "group",
@@ -390,13 +393,12 @@ function oRA:OnInitialize()
 	media:Register("statusbar", "Perl", "Interface\\AddOns\\oRA2\\textures\\perl")
 	media:Register("statusbar", "Striped", "Interface\\AddOns\\oRA2\\textures\\striped")
 
-	setglobal("BINDING_HEADER_oRA2", "oRA2")
+	setglobal("BINDING_HEADER_oRA2MT", "oRA2 Main Tanks")
+	setglobal("BINDING_HEADER_oRA2PT", "oRA2 Player Tanks")
 
-	self:RegisterDB("oRADB", "oRADBPerChar")
+	self:RegisterDB("oRADB")
 	self:RegisterDefaults("profile", self.defaults)
 	self:RegisterChatCommand("/ora", "/oRA", self.consoleOptions, "ORA")
-
-	self.moduletooltips = {}
 
 	-- try and enable ourselves
 	self:ToggleActive(true)
@@ -404,33 +406,35 @@ end
 
 function oRA:OnEnable(first)
 	if not first or GetNumRaidMembers() > 0 then
-		self:RegisterEvent("oRA_JoinedRaid")
-		self:RegisterEvent("oRA_LeftRaid")
-
 		self:RegisterCheck("SR", "oRA_SendVersion")
 
-		self:TriggerEvent("oRA_CoreEnabled")
+		for name, module in self:IterateModules() do
+			self:ToggleModuleActive(module, true)
+		end
+
 		if not first and GetNumRaidMembers() == 0 then
 			-- we're enabling by a forced click on the plugin
 			-- fake the promotion event
 			self:TriggerEvent("oRA_PlayerPromoted")
 		end
-		self:TriggerEvent("oRA_JoinedRaid")
+
+		self:RegisterEvent("CHAT_MSG_SYSTEM")
+		self:RegisterEvent("oRA_JoinedRaid")
+		self:RegisterEvent("oRA_ModulePackLoaded")
+		self:TriggerEvent("oRA_CoreEnabled")
 	else
 		self:ToggleActive(false)
 	end
 end
 
 function oRA:OnDisable()
-	self:TriggerEvent("oRA_LeftRaid")
-
-	-- Unconditionally disable all modules, disregarding module.shouldEnable
 	for name, module in self:IterateModules() do
-		self:ToggleModuleActive(module, false)
+		if not module.shouldEnable or (module.shouldEnable ~= nil and type(module.shouldEnable) == "function" and not module:shouldEnable()) then
+			self:ToggleModuleActive(module, false)
+		end
 	end
 
 	self:CloseWindow()
-
 	self:TriggerEvent("oRA_CoreDisabled")
 end
 
@@ -466,14 +470,8 @@ function oRA:RegisterModule(name, module)
 	registeredModules[name] = true
 
 	if module.defaults then
-		if module.db and module.RegisterDefaults and type(module.RegisterDefaults) == "function" then
-			module:RegisterDefaults("profile", module.defaults)
-		else
-			self:RegisterDefaults(name, "profile", module.defaults)
-		end
-		if not module.db then
-			module.db = self:AcquireDBNamespace(name)
-		end
+		self:RegisterDefaults(name, "profile", module.defaults)
+		module.db = self:AcquireDBNamespace(name)
 	end
 
 	if module.consoleOptions then
@@ -495,9 +493,7 @@ function oRA:RegisterModule(name, module)
 			self.consoleOptions.args[m] = module.consoleOptions
 		end
 	end
-	if module.OnTooltipUpdate then
-		self.moduletooltips[name] = module
-	end
+
 	if type(module.OnRegister) == "function" then
 		module:OnRegister()
 	end
@@ -507,20 +503,41 @@ end
 --      Core                 --
 -------------------------------
 
-function oRA:oRA_SendVersion()
-	self:ScheduleEvent("oRASendVersion", self.DistributeVersion, 5, self)
+do
+	local unitJoinedRaid = '^' .. ERR_RAID_MEMBER_ADDED_S:gsub("%%s", "(%S+)") .. '$'
+	function oRA:CHAT_MSG_SYSTEM(msg)
+		if not UnitInRaid("player") then return end
+		local name = select(3, msg:find(unitJoinedRaid))
+		if not name then return end
+		if rawget(coloredNames, name) then
+			coloredNames[name] = nil
+		end
+	end
 end
 
--- Distrubutes your version to the raid
-
-do
-	local ctraVersionDistString = "V " .. CTRAversion
-	local oraVersionDistString = "oRAV "..oRA.version
-
-	function oRA:DistributeVersion()
-		self:SendMessage(ctraVersionDistString)
-		self:SendMessage(oraVersionDistString, true)
+function oRA:oRA_ModulePackLoaded()
+	if not UnitInRaid("player") then return end
+	for name, module in self:IterateModules() do
+		self:ToggleModuleActive(module, true)
 	end
+end
+
+-- Distributes your version to the raid
+local ctraVersionDistString = "V " .. CTRAversion
+local function distributeVersion()
+	oRA:SendMessage(ctraVersionDistString)
+	oRA:SendMessage("oRAV " .. oRA.version, true)
+end
+
+function oRA:oRA_JoinedRaid()
+	distributeVersion()
+	for k in pairs(coloredNames) do
+		coloredNames[k] = nil
+	end
+end
+
+function oRA:oRA_SendVersion()
+	self:ScheduleEvent("oRASendVersion", distributeVersion, 5)
 end
 
 -- Command handler
@@ -534,32 +551,6 @@ end
 function oRA:SetBarTexture(texture)
 	self.db.profile.bartexture = texture
 	self:TriggerEvent("oRA_BarTexture", texture)
-end
-
--------------------------------
--- Event Handlers            --
--------------------------------
-
-function oRA:oRA_JoinedRaid()
-	local enabledModule = nil
-	for name, module in self:IterateModules() do
-		if not self:IsModuleActive(module) then
-			enabledModule = true
-			self:ToggleModuleActive(module, true)
-		end
-	end
-	if enabledModule then
-		self:TriggerEvent("oRA_JoinedRaid")
-	end
-	self:DistributeVersion()
-end
-
-function oRA:oRA_LeftRaid()
-	for name, module in self:IterateModules() do
-		if not module.shouldEnable or (module.shouldEnable ~= nil and type(module.shouldEnable) == "function" and not module:shouldEnable()) then
-			self:ToggleModuleActive(module, false)
-		end
-	end
 end
 
 -------------------------------
@@ -917,7 +908,7 @@ function handlers:windowCreateFrame()
 	assert(not self.frame)
 
 	self.frame = CreateFrame("Frame", self.windowName , UIParent)
-	self.frame.handler = self;
+	self.frame.handler = self
 	self.frame:SetScript("OnMouseUp", windowOnMouseUp)
 
 	self.frame.title = self.frame:CreateFontString(nil, "ARTWORK")
@@ -979,7 +970,9 @@ end
 
 function handlers:windowSetTransparency(v)
 	self.windowConfig.alpha = 1 - v
-	self.frame:SetAlpha(1 - v)
+	if self.frame then
+		self.frame:SetAlpha(1 - v)
+	end
 end
 
 function oRA:MakeDraggableWindow(titleText, frameName, options, config)

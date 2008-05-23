@@ -25,30 +25,43 @@ L:RegisterTranslations("enUS", function() return {
 	icon_desc = "Place a Raid Target Icon on the player afflicted by Icebolt (requires promoted or higher).",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	decay = "Muerte y descomposición (Death & Decay)",
+	decay_desc = "Avisar sobre Muerte y descomposición en ti.",
+	decay_message = "¡Muerte y descomposición en TI!",
+
+	icebolt = "Descarga de hielo (Icebolt)",
+	icebolt_desc = "Avisos de Descarga de hielo.",
+	icebolt_message = "¡Descarga de hielo en %s!",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre los jugadores afectados por Descarga de hielo. (Requiere derechos de banda)",
+} end )
+
 L:RegisterTranslations("frFR", function() return {
 	decay = "Mort & décomposition sur vous",
-	decay_desc = "Préviens quand la Mort & décomposition est sur vous.",
-	decay_message = "Mort & décomposition sur VOUS !",
+	decay_desc = "Prévient quand la Mort & décomposition est sur vous.",
+	decay_message = "Mort & décomposition sur VOUS !",
 
 	icebolt = "Eclair de glace",
 	icebolt_desc = "Avertissements concernant l'Eclair de glace.",
-	icebolt_message = "Eclair de glace sur %s !",
+	icebolt_message = "Eclair de glace sur %s !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par l'Eclair de glace (nécessite d'être promu ou mieux).",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
-	decay = "당신에 죽음과 부패",
-	decay_desc = "당신에 걸린 죽음과 부패를 알립니다.",
-	decay_message = "당신에 죽음과 부패!",
+	decay = "자신의 죽음과 부패",
+	decay_desc = "자신이 죽음과 부패에 걸렸을 때 알립니다.",
+	decay_message = "당신은 죽음과 부패!",
 
 	icebolt = "얼음 화살",
 	icebolt_desc = "얼음 화살 경고.",
-	icebolt_message = "%s에 얼음 화살!",
+	icebolt_message = "%s 얼음 화살!",
 
 	icon = "전술 표시",
-	icon_desc = "얼음 화살에 걸린 플레이어에 전술 표시를 지정합니다 (승급자 이상 권한 요구).",
+	icon_desc = "얼음 화살에 걸린 플레이어에 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -71,7 +84,7 @@ L:RegisterTranslations("zhTW", function() return {
 
 	icebolt = "寒冰箭",
 	icebolt_desc = "寒冰箭警告",
-	icebolt_message = "寒冰箭：[%s]",
+	icebolt_message = "寒冰箭: [%s]",
 
 	icon = "團隊標記",
 	icon_desc = "在受到寒冰箭的隊友頭上標記 (需要權限)",
@@ -79,15 +92,15 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	decay = "死亡凋零",
-	decay_desc = "你中了死亡凋零发出警报。",
-	decay_message = "你中了 死亡凋零！ 逃离！",
+	decay_desc = "当你受到死亡凋零发出警报。",
+	decay_message = ">你< 死亡凋零！逃离！",
 
 	icebolt = "寒冰箭",
-	icebolt_desc = "寒冰箭警报。",
+	icebolt_desc = "当玩家受到寒冰箭时发出警报。",
 	icebolt_message = "寒冰箭：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "给中了寒冰箭的玩家打上标记。(需要权限)",
+	icon_desc = "给中了寒冰箭的玩家打上标记。（需要权限）",
 } end )
 
 ----------------------------------
@@ -98,7 +111,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"decay", -1, "icebolt", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 66555 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

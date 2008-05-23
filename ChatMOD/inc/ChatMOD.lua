@@ -82,7 +82,7 @@ function solColorChatNicks_OnEvent(event)
 			Chronos.schedule(5,solColorChatNicks_PurgeDB);
 			-- map pins
 		end
-		SCCN_write("Check out htt".."p://w".."ww.nux".."nux"..".com !");
+		SCCN_write("Check out "..CHATMOD_COLOR["YELLOW"].."htt".."p://w".."ww.so".."la".."riz.".."de");
 		-- refill
 		if IsInGuild() then GuildRoster(); end
 		if GetNumFriends() > 0 then ShowFriends(); end
@@ -381,8 +381,8 @@ function S_AddMessage(this,text,r,g,b,id)
 			if( arg8 ~= 3 and arg8 ~= 4 ) then
 				if( arg2 ~= nil and arg2 ~= UnitName("player") and UnitName("player") ~= nil and string.len(text) >= string.len(UnitName("player")) ) then
 					if string.find(string.lower(text), string.lower(UnitName("player"))) then
-						text = string.gsub(text, "("..UnitName("player")..")" ,CHATMOD_COLOR["RED"].."%1|r");
-                                                text = string.gsub(text, "("..string.lower(UnitName("player"))..")" ,CHATMOD_COLOR["RED"].."%1|r");
+						text = string.gsub(text, "("..UnitName("player")..")" , CHATMOD_COLOR["YELLOW"]..">"..CHATMOD_COLOR["RED"].."%1"..CHATMOD_COLOR["YELLOW"].."<|r");
+                                                text = string.gsub(text, "("..string.lower(UnitName("player"))..")" , CHATMOD_COLOR["YELLOW"]..">"..CHATMOD_COLOR["RED"].."%1"..CHATMOD_COLOR["YELLOW"].."<|r");
 						-- On Screen Msg
 						if( SCCN_selfhighlightmsg == 1 ) then
 							if SCCNOnScreenMessage ~= text then

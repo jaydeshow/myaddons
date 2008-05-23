@@ -82,11 +82,11 @@ L:RegisterTranslations("frFR", function() return {
 	["Options"] = "Options",
 
 	bosskill = "Défaite du boss",
-	bosskill_desc = "Préviens quand le boss est vaincu.",
+	bosskill_desc = "Prévient quand le boss est vaincu.",
 	enrage = "Enrager",
-	enrage_desc = "Préviens quand le boss devient enragé.",
+	enrage_desc = "Prévient quand le boss devient enragé.",
 	berserk = "Berserk",
-	berserk_desc = "Préviens quand le boss passe en berserk.",
+	berserk_desc = "Prévient quand le boss passe en berserk.",
 
 	["Load"] = "Charger",
 	["Load All"] = "Tout charger",
@@ -131,8 +131,8 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("koKR", function() return {
 	["%s mod enabled"] = "%s 모듈 시작",
-	["%s has been defeated"] = "<%s> 물리쳤습니다.",     -- "<boss> has been defeated"
-	["%s have been defeated"] = "<%s> 물리쳤습니다.",    -- "<bosses> have been defeated"
+	["%s has been defeated"] = "%s 물리침",     -- "<boss> has been defeated"
+	["%s have been defeated"] = "%s 물리침",    -- "<bosses> have been defeated"
 	
 	["Debug enabled, output routed to %s."] = "디버그 사용, %s에 루트를 출력합니다.",
 	["Debug disabled."] = "디버그 사용안함.",
@@ -166,21 +166,21 @@ L:RegisterTranslations("koKR", function() return {
 } end)
 
 L:RegisterTranslations("zhCN", function() return {
-	["%s mod enabled"] = "%s 模块已启用",
-	["%s has been defeated"] = "%s 被击败了!",     -- "<boss> has been defeated"
-	["%s have been defeated"] = "%s 被击败了!",    -- "<bosses> have been defeated"
+	["%s mod enabled"] = "%s 模块已启用。",
+	["%s has been defeated"] = "%s 被击败了！",     -- "<boss> has been defeated"
+	["%s have been defeated"] = "%s 被击败了！",    -- "<bosses> have been defeated"
 
-	["Debug enabled, output routed to %s."] = "调试功能启用,输出到%s。",
+	["Debug enabled, output routed to %s."] = "调试功能启用，输出到%s。",
 	["Debug disabled."] = "调试禁用。",
 
 	-- AceConsole strings
 	["Bosses"] = "首领模块",
 	["Options for bosses in %s."] = "%s首领模块设置。", -- "Options for bosses in <zone>"
-	["Options for %s (r%d)."] = "%s首领模块版本 (r%d)。",     -- "Options for <boss> (<revision>)"
+	["Options for %s (r%d)."] = "%s首领模块版本（r%d）。",     -- "Options for <boss> (<revision>)"
 	["Plugins"] = "综合设置",
 	["Plugins handle the core features of Big Wigs - like displaying messages, timer bars, and other essential features."] = "他们是 BigWigs 最关键的核心 - 比如信息显示，记时条以及其他必要的功能。",
 	["Extras"] = "附加功能",
-	["Extras are 3rd party and bundled plugins that Big Wigs will function properly without."] = "附加功能是第三方插件,是 BigWigs 功能的一个增强。",
+	["Extras are 3rd party and bundled plugins that Big Wigs will function properly without."] = "附加功能是第三方插件，是 BigWigs 功能的一个增强。",
 	["Active"] = "激活",
 	["Activate or deactivate this module."] = "激活或关闭此模块。",
 	["Reboot"] = "重置",
@@ -238,37 +238,39 @@ L:RegisterTranslations("zhTW", function() return {
 } end)
 
 L:RegisterTranslations("esES", function() return {
-	["%s mod enabled"] = "Modulo %s activado",
-	["%s has been defeated"] = "%s Ha sido derrotado",     -- "<boss> has been defeated"
-	["%s have been defeated"] = "%s Han sido derrotados",    -- "<bosses> have been defeated"
+	["%s mod enabled"] = "Módulo %s activado",
+	["%s has been defeated"] = "%s ha sido derrotado",     -- "<boss> has been defeated"
+	["%s have been defeated"] = "%s han sido derrotados",    -- "<bosses> have been defeated"
 
-	["Debug enabled, output routed to %s."] = "Depuracion activa, salida redirigida a %s.",
-	["Debug disabled."] = "Depuracion desactivado.",
+	["Debug enabled, output routed to %s."] = "Depuración activa, salida redirigida a %s.",
+	["Debug disabled."] = "Depuración desactivada.",
 
 	-- AceConsole strings
-	["Bosses"] = "Boss",
-	["Options for bosses in %s."] = "Opciones relacionadas con el boss %s.", -- "Options for bosses in <zone>"
+	["Bosses"] = "Jefes",
+	["Options for bosses in %s."] = "Opciones para jefes de %s.", -- "Options for bosses in <zone>"
 	["Options for %s (r%d)."] = "Opciones para %s (r%d).",     -- "Options for <boss> (<revision>)"
 	["Plugins"] = "Plugins",
+	["Plugins handle the core features of Big Wigs - like displaying messages, timer bars, and other essential features."] = "Los plugins administran las características de BigWigs sobre cómo mostrar mensajes, barras de tiempo y otras características esenciales.",
 	["Extras"] = "Extras",
+	["Extras are 3rd party and bundled plugins that Big Wigs will function properly without."] = "Extras son utilidades y plugins de terceros. BigWigs puede funcionar con o sin ellos.",
 	["Active"] = "Activo",
-	["Activate or deactivate this module."] = "Activa o desactiva este modulo.",
+	["Activate or deactivate this module."] = "Activa o desactiva este módulo.",
 	["Reboot"] = "Reiniciar",
-	["Reboot this module."] = "Reiniciar el modulo.",
-	["Debugging"] = "Depuracion",
-	["Show debug messages."] = "Mostrar mensajes de depuracion.",
+	["Reboot this module."] = "Reiniciar el módulo.",
+	["Debugging"] = "Depuración",
+	["Show debug messages."] = "Mostrar mensajes de depuración.",
 	["Options"] = "Opciones",
 
-	bosskill = "Derrota del boss",
-	bosskill_desc = "Avisa de la derrota del boss.",
-	enrage = "Enfurecimiento",
-	enrage_desc = "Avisa cuando el boss gana enfurecimiento.",
-	--berserk = "Berserk",
-	--berserk_desc = "Warn when the boss goes Berserk.",
+	bosskill = "Derrota del jefe",
+	bosskill_desc = "Avisa cuando el jefe ha sido derrotado.",
+	enrage = "Enfurecer (Enrage)",
+	enrage_desc = "Avisa cuando el jefe entra en un estado enfurecido.",
+	berserk = "Rabia (Berserk)",
+	berserk_desc = "Avisa cuando el jefe entra en un estado rabioso.",
 
 	["Load"] = "Cargar",
 	["Load All"] = "Cargar todo",
-	["Load all %s modules."] = "Cargar todos los modulos \"%s\".",
+	["Load all %s modules."] = "Cargar todos los módulos de %s.",
 } end)
 
 ---------------------------------
@@ -282,7 +284,7 @@ BigWigs = AceLibrary("AceAddon-2.0"):new(
 	"AceConsole-2.0",
 	"AceDB-2.0"
 )
-BigWigs.revision = tonumber(("$Revision: 65918 $"):sub(12, -3))
+BigWigs.revision = tonumber(("$Revision: 74654 $"):sub(12, -3))
 local BigWigs = BigWigs
 
 BigWigs:SetModuleMixins("AceEvent-2.0")
@@ -344,7 +346,6 @@ function BigWigs:OnInitialize()
 	self:RegisterBossOption("berserk", L["berserk"], L["berserk_desc"])
 end
 
-local temp = nil --XXX
 function BigWigs:OnEnable(first)
 	-- We only really enable ourselves if we are told to do so by BigWigsLoD.
 	if not first then
@@ -361,10 +362,6 @@ function BigWigs:OnEnable(first)
 		self:RegisterEvent("BigWigs_TargetSeen")
 		self:RegisterEvent("BigWigs_RebootModule")
 		self:RegisterEvent("BigWigs_RecvSync")
-		if not temp then
-			BigWigs:Print("We need your help, type /bwhelp for more info.")
-			temp = true
-		end
 	else
 		self:ToggleActive(false)
 	end
@@ -575,7 +572,9 @@ function BigWigs:EnableModule(moduleName, noSync)
 		self:ToggleModuleActive(m, true)
 		m:Message(L["%s mod enabled"]:format(moduleName or "??"), "Core", true)
 		if not noSync then
-			m:Sync((m.external and "EnableExternal " or "EnableModule ") .. (m.synctoken or BBR[moduleName]))
+			local token = m.synctoken or BBR[moduleName] or nil
+			if not token then return end
+			m:Sync(m.external and "EnableExternal" or "EnableModule", token)
 		end
 	end
 end
@@ -592,10 +591,14 @@ function BigWigs:BigWigs_RecvSync(sync, module)
 		if self:HasModule(name) then
 			self:EnableModule(name, true)
 		end
-	elseif sync == "BossDeath" and self:HasModule(module) then
+	elseif (sync == "BossDeath" or sync == "MultiBossDeath") and self:HasModule(module) then
 		local mod = self:GetModule(module)
 		if mod.db.profile.bosskill then
-			mod:Message(L["%s has been defeated"]:format(module), "Bosskill", nil, "Victory")
+			if sync == "BossDeath" then
+				mod:Message(L["%s has been defeated"]:format(module), "Bosskill", nil, "Victory")
+			else
+				mod:Message(L["%s have been defeated"]:format(module), "Bosskill", nil, "Victory")
+			end
 		end
 		mod:TriggerEvent("BigWigs_RemoveRaidIcon")
 		if self:IsDebugging() then

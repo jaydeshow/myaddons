@@ -42,8 +42,8 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Server queried for "] = "從伺服器查詢物品",
     [".  Right click on any other item to refresh the loot page."] = "的資訊. 右鍵點選其他物品以更新這一個物品頁面",
     ["Back"] = "返回",
-    ["Level 60"] = "60級",
-    ["Level 70"] = "70級",
+    ["Level 60"] = "60 級",
+    ["Level 70"] = "70 級",
     ["|cffff0000(unsafe)"] = "|cffff0000(不安全)",
     ["Misc"] = "雜項",
     ["Rewards"] = "獎勵",
@@ -73,7 +73,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["|cff9d9d9dUse EquipCompare|r"] = "|cff9d9d9d使用 EquipCompare|r",
     ["Show Comparison Tooltips"] = "顯示物品比較提示訊息",
     ["Make Loot Table Opaque"] = "使物品掉落表不透明",
-    ["Show itemIDs at all times"] = "顯示物品ID",
+    ["Show itemIDs at all times"] = "顯示物品 ID",
     ["Hide AtlasLoot Panel"] = "隱藏 AtlasLoot 面板",
     ["Show Minimap Button"] = "顯示小地圖按鍵",
     ["Set Minimap Button Position"] = "設定小地圖按鍵位置",
@@ -97,7 +97,7 @@ AL:RegisterTranslations("zhTW", function() return {
     [" deleted from the WishList."] = "已從願望清單移除",
 
     --Incomplete Table Registry error message
-    [" not listed in loot table registry, please report this message to the AtlasLoot forums at http://www.atlasloot.net"] = "並未列於物品掉落註冊表，請至Atlasloot論壇回報問題：http://www.atlasloot.net",
+    [" not listed in loot table registry, please report this message to the AtlasLoot forums at http://www.atlasloot.net"] = "並未列於物品掉落註冊表，請至 AtlasLoot 論壇回報問題：http://www.atlasloot.net",
 
     --LoD Module disabled or missing
     [" is unavailable, the following load on demand module is required: "] = "無法取得，需要以下的隨選載入模組：",
@@ -131,13 +131,6 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Load Modules"] = "載入模組",
     ["Crafting"] = "精製裝備武器",
 
-    --Trades
-    ["Apprentice"] = "初級",
-    ["Journeyman"] = "中級",
-    ["Expert"] = "高級",
-    ["Artisan"] = "專家",
-    ["Master"] = "大師級",
-
     --First time user
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "歡迎使用 Atlasloot Enhanced。請花一些時間設定您的偏好選項。",
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = "v4.02.01 新功能：輸入 '/atlasloot options' 呼叫出選項選單；輸入 '/atlasloot reset' 在離線後重設 Atlasloot。",
@@ -154,7 +147,7 @@ AL:RegisterTranslations("zhTW", function() return {
     --Unsafe item tooltip
     ["Unsafe Item"] = "不安全的物品",
     ["Item Unavailable"] = "物品資訊目前無法取得",
-    ["ItemID:"] = "物品ID:",
+    ["ItemID:"] = "物品 ID:",
     ["This item is not available on your server or your battlegroup yet."] = "這件物品目前在您的伺服器或是戰場群組中無法取得",
     ["This item is unsafe.  To view this item without the risk of disconnection, you need to have first seen it in the game world. This is a restriction enforced by Blizzard since Patch 1.10."] = "這個物品並不安全. 如要安全的檢視這個物品並且避免斷線, 你必須在當前的伺服器中曾見過該物品. 這是暴雪自 1.10 更新之後增加的限制.",
     ["You can right-click to attempt to query the server.  You may be disconnected."] = "你可以按下滑鼠右鍵來嘗試向伺服器查詢該物品的資訊, 然而你將可能因此斷線.",
@@ -176,6 +169,10 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Fish"] = "釣魚",
     ["Combat Pet"] = "戰鬥寵物",
     ["Fireworks"] = "煙火",
+
+    --Extra inventory stuff
+    ["Cloak"] = "披風",
+    ["Weapons"] = "武器",
 
     --Labels for loot descriptions
     ["Classes:"] = "職業: ",
@@ -241,7 +238,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Spectral Tiger"] = "幽靈虎",
 --    ["March of the Legion"] = "March of the Legion",
     ["Kiting"] = "風箏",
-    ["Robotic Homing Chicken"] = "種物機械小雞",
+    ["Robotic Homing Chicken"] = "寵物機械小雞",
     ["Paper Airplane"] = "紙飛機",
 
     --Battleground Brackets
@@ -628,8 +625,8 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Kodohide Battlegear"] = "科多獸皮軍裝",
     ["Stalker's Chain Battlegear"] = "捕獵者鍊甲套裝",
     ["Evoker's Silk Battlegear"] = "塑能師絲質軍裝",
-    ["Crusader's Scaled Battlegear"] = "十字軍綴鱗軍裝",
-    ["Crusader's Ornamented Battlegear"] = "十字軍裝飾軍裝",
+    ["Crusader's Scaled Battledgear"] = "十字軍綴鱗軍裝",
+    ["Crusader's Ornamented Battledgear"] = "十字軍裝飾軍裝",
     ["Satin Battlegear"] = "緞織軍裝",
     ["Mooncloth Battlegear"] = "月布軍裝",
     ["Opportunist's Battlegear"] = "投機者皮甲軍裝",
@@ -694,6 +691,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Tier 6 Sets"] = "T6 套裝",
     ["PvP Sets (Level 60)"] = "PvP 套裝 (60 級)",
     ["PvP Sets (Level 70)"] = "PvP 套裝 (70 級)",
+    ["PvP Reputation Sets (Level 70)"] = "PvP 聲望套裝 (70 級)",
     ["PvP Rewards (Level 60)"] = "PvP 獎勵 (60 級)",
     ["PvP Rewards (Level 70)"] = "PvP 獎勵 (70 級)",
     ["PvP Accessories (Level 60)"] = "PvP 配件 (60 級)",
@@ -899,7 +897,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["CoT2"] = "時光之穴2",
     ["Scholo"] = "通靈",
     ["Strat"] = "斯坦",
-	["Serpentshrine"] = "毒蛇神殿",
+    ["Serpentshrine"] = "毒蛇神殿",
 
     --Chests, etc
     ["Dark Coffer"] = "黑色寶庫",

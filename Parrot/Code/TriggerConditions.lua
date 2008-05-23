@@ -1,20 +1,19 @@
-local VERSION = tonumber(("$Revision: 48210 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 74138 $"):match("%d+"))
 
 local Parrot = Parrot
-local Parrot_TriggerConditions = Parrot:NewModule("TriggerConditions", "LibRockEvent-1.0", "LibParser-4.0")
+local Parrot_TriggerConditions = Parrot:NewModule("TriggerConditions", "LibRockEvent-1.0")
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-09-05 05:05:20 -0400 (Wed, 05 Sep 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-17 06:38:27 -0400 (Sat, 17 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- #AUTODOC_NAMESPACE Parrot_TriggerConditions
 
 local RockEvent = Rock("LibRockEvent-1.0")
 local RockTimer = Rock("LibRockTimer-1.0")
-local Parser = Rock("LibParser-4.0")
 
-local L = Parrot:L("Parrot_TriggerConditions")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_TriggerConditions")
 
 local _,playerClass = UnitClass("player")
 
@@ -50,7 +49,7 @@ end
 local function RefreshEvents()
 	local self = Parrot_TriggerConditions
 	self:RemoveAllEventListeners()
-	self:RemoveAllParserListeners()
+	
 	if not Parrot:IsModuleActive(self) then
 		return
 	end
@@ -63,8 +62,6 @@ local function RefreshEvents()
 				end
 				self:AddEventListener(event_ns, event_ev, "EventHandler")
 			end
-		elseif v.parserEvent then	
-			self:AddParserListener(v.parserEvent, "ParserEventHandler", v)
 		end
 	end
 end
@@ -92,10 +89,26 @@ function Parrot_TriggerConditions:EventHandler(namespace, event, arg1)
 	end
 end
 
--- #NODOC
-function Parrot_TriggerConditions:ParserEventHandler(data, info)
-	self:FirePrimaryTriggerCondition(data.name, info[data.parserArg], info.uid)
-end
+-- function Parrot_TriggerConditions:HandleDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+-- 	
+-- 		local name
+-- 		
+-- 		if srcGUID == UnitGUID("player") then
+-- 			name = "Outgoing"
+-- 		else
+-- 			name = "Incoming"
+-- 		end
+-- 		
+-- 		-- make sure no number-arg is passed
+-- 		if type(spellName) == "string" then
+-- 			self:FirePrimaryTriggerCondition(name .. " cast", spellName)
+-- 		end
+-- 		
+-- 		if critical then
+-- 			self:FirePrimaryTriggerCondition(name .. " crit")
+-- 		end
+-- end
+
 
 --[[----------------------------------------------------------------------------------
 Arguments:
@@ -116,11 +129,6 @@ function Parrot_TriggerConditions:FirePrimaryTriggerCondition(name, arg, uid)
 				uid = -RockEvent.currentUID
 			elseif RockTimer.currentUID then
 				uid = -RockTimer.currentUID - 1e10
-			else
-				local info = Parser:GetCurrentParserEvent()
-				if info then
-					uid = info.uid
-				end
 			end
 		end
 		Parrot_Triggers:OnTriggerCondition(name, arg, uid)
@@ -147,16 +155,12 @@ Notes:
 				return value -- numeric value.
 			end
 		end,
-		parserEvent = { -- this is optional and cannot be used in tandem with events.
-			eventType = "Some eventType",
-			-- see Parser-3.0 for more details.
-		},
-		parserArg = 'argName', -- this is optional and can be used with parserEvent. It will fill the arg when firing the trigger condition.
 		param = {
 			-- AceOptions argument here.
 			-- do not specify get, set, name, or desc.
 		}
 	}</pre>
+	-- TODO documentation
 Example:
 	Parrot:RegisterPrimaryTriggerCondition {
 		name = "Incoming block",
@@ -180,7 +184,6 @@ function Parrot_TriggerConditions:RegisterPrimaryTriggerCondition(data)
 		error(("Bad argument #2 to `RegisterCombatEvent'. localName must be a %q, got %q."):format("string", type(localName)), 2)
 	end
 	local events = data.events
-	local parserEvent = data.parserEvent
 	if events then
 		if type(events) ~= "table" then
 			error(("Bad argument #2 to `RegisterCombatEvent'. localName must be a %q, got %q."):format("table", type(events)), 2)
@@ -188,10 +191,6 @@ function Parrot_TriggerConditions:RegisterPrimaryTriggerCondition(data)
 		local getCurrent = data.getCurrent
 		if type(getCurrent) ~= "function" and type(getCurrent) ~= "nil" then
 			error(("Bad argument #2 to `RegisterCombatEvent'. localName must be a %q or nil, got %q."):format("function", type(check)), 2)
-		end
-	elseif parserEvent then
-		if type(parserEvent) ~= "table" then
-			error(("Bad argument #2 to `RegisterCombatEvent'. localName must be a %q, got %q."):format("table", type(parserEvent)), 2)
 		end
 	end
 	if conditions[name] then

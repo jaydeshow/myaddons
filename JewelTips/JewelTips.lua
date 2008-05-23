@@ -1,8 +1,7 @@
 --[[
-	JewelTips 0.5.6
+	JewelTips 0.5.7
 ]]--
 
-local BTS = AceLibrary("Babble-Tradeskill-2.2")
 local L = AceLibrary("AceLocale-2.2"):new("JewelTips")
 
 L:RegisterTranslations("enUS", function() return {
@@ -39,10 +38,10 @@ L:RegisterTranslations("zhCN", function() return {
 } end)
 L:RegisterTranslations("zhTW", function() return {
 	["[Unknown Enchant: %d]"] = "[未知附魔: %d]",
-	["[Unsafe Link: %d]"] = "[不安全鏈接: %d]",
+	["[Unsafe Link: %d]"] = "[不安全連結: %d]",
 	["Enchant"] = "附魔",
 	["Purple"] = "紫色",
-	["Orange"] = "橙色",
+	["Orange"] = "橘色",
 	["Green"] = "綠色",
 } end)
 
@@ -81,73 +80,80 @@ JewelTips.Jewels = {
 	[34] = 6043, --Iron Counterweight
 	[36] = 5421, --Fiery Blaze Enchantment
 	[37] = 6041, --Steel Weapon Chain
-	[41] = {BTS["Enchant Chest - Minor Health"], ":7418"}, --+5 Health
+	[41] = {GetSpellInfo(7418), 7418}, --+5 Health
 	[43] = 6042, --Iron Shield Spike
-	[65] = {BTS["Enchant Cloak - Minor Resistance"], 7454},
+	[65] = {GetSpellInfo(7454), 7454},
 	[66] = { --+1 Stamina
 		multi = true,
-		INVTYPE_WRIST = {BTS["Enchant Bracer - Minor Stamina"], 7457},
-		INVTYPE_FEET = {BTS["Enchant Boots - Minor Stamina"], 7863},
+		INVTYPE_WRIST = {GetSpellInfo(7457), 7457},
+		INVTYPE_FEET = {GetSpellInfo(7863), 7863},
 	},
-	[241] = {BTS["Enchant 2H Weapon - Minor Impact"], 7745},
-	[247] = {BTS["Enchant Cloak - Minor Agility"], 13419},
-	[255] = {BTS["Enchant 2H Weapon - Lesser Spirit"], 13380},
-	[256] = {BTS["Enchant Cloak - Lesser Fire Resistance"], 7861},
-	[368] = {BTS["Enchant Cloak - Greater Agility"], 34004},
-	[369] = {BTS["Enchant Bracer - Major Intellect"], 34001},
+	[241] = {GetSpellInfo(7745), 7745},
+	[247] = {GetSpellInfo(13419), 13419},
+	[249] = {GetSpellInfo(7786), 7786},
+	[255] = {GetSpellInfo(13380), 13380},
+	[256] = {GetSpellInfo(7861), 7861},
+	[366] = {GetSpellInfo(13700), 13700},
+	[368] = {GetSpellInfo(34004), 34004},
+	[369] = {GetSpellInfo(34001), 34001},
 	[464] = 7969, --Mithril Spurs
 	[663] = 10546, --Deadly Scope
 	[664] = 10548, --Sniper Scope
-	[684] = {BTS["Enchant Gloves - Major Strength"], 33995},
-	[723] = {BTS["Enchant 2H Weapon - Lesser Intellect"], 7793}, --+3 Intellect
-	[724] = {BTS["Enchant Boots - Lesser Stamina"], 13644}, --+3 Stamina
-	[744] = {BTS["Enchant Cloak - Lesser Protection"], 13421},
-	[783] = {BTS["Enchant Cloak - Minor Protection"], 7771}, --+10 Armor
-	[803] = {BTS["Enchant Weapon - Fiery Weapon"], 13898},
-	[804] = {BTS["Enchant Cloak - Lesser Shadow Resistance"], 13522},
-	[805] = {BTS["Enchant Weapon - Greater Striking"], 13943}, --+4 Weapon Damage
-	[844] = {BTS["Enchant Gloves - Mining"], 13612},
-	[845] = {BTS["Enchant Gloves - Herbalism"], 13617},
-	[846] = {BTS["Enchant Gloves - Fishing"], 13620},
-	[848] = {BTS["Enchant Cloak - Defense"], 13635},
-	[849] = {BTS["Enchant Cloak - Lesser Agility"], 13882},
-	[851] = {BTS["Enchant Boots - Spirit"], 20024},
+	[684] = {GetSpellInfo(33995), 33995},
+	[723] = {GetSpellInfo(7793), 7793}, --+3 Intellect
+	[724] = {GetSpellInfo(13644), 13644}, --+3 Stamina
+	[744] = {GetSpellInfo(13421), 13421},
+	[783] = {GetSpellInfo(7771), 7771}, --+10 Armor
+	[803] = {GetSpellInfo(13898), 13898},
+	[804] = {GetSpellInfo(13522), 13522},
+	[805] = {GetSpellInfo(13943), 13943}, --+4 Weapon Damage
+	[844] = {GetSpellInfo(13612), 13612},
+	[845] = {GetSpellInfo(13617), 13617},
+	[846] = {GetSpellInfo(13620), 13620},
+	[848] = {GetSpellInfo(13635), 13635},
+	[849] = {GetSpellInfo(13882), 13882},
+	[850] = {GetSpellInfo(13640), 13640},
+	[851] = {GetSpellInfo(20024), 20024},
 	[852] = {
 		multi = true,
-		INVTYPE_FEET = {BTS["Enchant Boots - Stamina"], 13836},
-		INVTYPE_SHIELD = {BTS["Enchant Shield - Stamina"], 13817},
+		INVTYPE_FEET = {GetSpellInfo(13836), 13836},
+		INVTYPE_SHIELD = {GetSpellInfo(13817), 13817},
+		INVTYPE_WRIST = {GetSpellInfo(13648), 13648},
 	},
-	[856] = {BTS["Enchant Gloves - Strength"], 13887},
-	[857] = {BTS["Enchant Chest - Greater Mana"], 13663},	--+50 Mana
-	[865] = {BTS["Enchant Gloves - Skinning"], 13698},
-	[884] = {BTS["Enchant Cloak - Greater Defense"], 13746},
-	[903] = {BTS["Enchant Cloak - Resistance"], 13794},
-	[904] = {BTS["Enchant Gloves - Agility"], 13815},
-	[905] = {BTS["Enchant Bracer - Intellect"], 13822},
-	[906] = {BTS["Enchant Gloves - Advanced Mining"], 13841},
-	[908] = {BTS["Enchant Chest - Superior Health"], 13858},
-	[909] = {BTS["Enchant Gloves - Advanced Herbalism"], 13868},
-	[910] = {BTS["Enchant Cloak - Stealth"], 25083},
-	[911] = {BTS["Enchant Boots - Minor Speed"], 13890},
-	[912] = {BTS["Enchant Weapon - Demonslaying"], 13915},
-	[913] = {BTS["Enchant Chest - Superior Mana"], 13917},
-	[923] = {BTS["Enchant Bracer - Deflection"], 13931}, --+5 Defense Rating
-	[926] = {BTS["Enchant Shield - Frost Resistance"], 13933},
-	[928] = {BTS["Enchant Chest - Stats"], 13941},
+	[854] = {GetSpellInfo(13655), 13655},
+	[856] = {GetSpellInfo(13887), 13887},
+	[857] = {GetSpellInfo(13663), 13663},	--+50 Mana
+	[863] = {GetSpellInfo(13689), 13689},
+--	[864] = {GetSpellInfo(0), 0},
+	[865] = {GetSpellInfo(13698), 13698},
+	[884] = {GetSpellInfo(13746), 13746},
+	[903] = {GetSpellInfo(13794), 13794},
+	[904] = {GetSpellInfo(13815), 13815},
+	[905] = {GetSpellInfo(13822), 13822},
+	[906] = {GetSpellInfo(13841), 13841},
+	[908] = {GetSpellInfo(13858), 13858},
+	[909] = {GetSpellInfo(13868), 13868},
+	[910] = {GetSpellInfo(25083), 25083},
+	[911] = {GetSpellInfo(13890), 13890},
+	[912] = {GetSpellInfo(13915), 13915},
+	[913] = {GetSpellInfo(13917), 13917},
+	[923] = {GetSpellInfo(13931), 13931}, --+5 Defense Rating
+	[926] = {GetSpellInfo(13933), 13933},
+	[928] = {GetSpellInfo(13941), 13941},
 	[929] = {
 		multi = true,
-		INVTYPE_SHIELD = {BTS["Enchant Shield - Greater Stamina"], 20017},
-		INVTYPE_FEET = {BTS["Enchant Boots - Greater Stamina"], 20020},
-		INVTYPE_WRIST = {BTS["Enchant Bracer - Greater Stamina"], 13945},
+		INVTYPE_SHIELD = {GetSpellInfo(20017), 20017},
+		INVTYPE_FEET = {GetSpellInfo(20020), 20020},
+		INVTYPE_WRIST = {GetSpellInfo(13945), 13945},
 	},
-	[930] = {BTS["Enchant Gloves - Riding Skill"], 13947},
-	[931] = {BTS["Enchant Gloves - Minor Haste"], 13948},
-	[943] = {BTS["Enchant 2H Weapon - Lesser Impact"], 13529},
-	[963] = {BTS["Enchant 2H Weapon - Greater Impact"], 13937},
-	[1071] = {BTS["Enchant Shield - Major Stamina"], 34009},
-	[1144] = {BTS["Enchant Chest - Major Spirit"], 33990}, -- +15 Spirit
-	[1257] = {BTS["Enchant Cloak - Greater Arcane Resistance"], 34005}, --+15 Arcane Resistance
-	[1441] = {BTS["Enchant Cloak - Greater Shadow Resistance"], 34006},
+	[930] = {GetSpellInfo(13947), 13947},
+	[931] = {GetSpellInfo(13948), 13948},
+	[943] = {GetSpellInfo(13529), 13529},
+	[963] = {GetSpellInfo(13937), 13937},
+	[1071] = {GetSpellInfo(34009), 34009},
+	[1144] = {GetSpellInfo(33990), 33990}, -- +15 Spirit
+	[1257] = {GetSpellInfo(34005), 34005}, --+15 Arcane Resistance
+	[1441] = {GetSpellInfo(34006), 34006},
 	[1483] = 11622, --Lesser Arcanum of Rumination
 	[1503] = 11642, --Lesser Arcanum of Constitution
 	[1504] = 11643, --Lesser Arcanum of Tenacity
@@ -157,35 +163,37 @@ JewelTips.Jewels = {
 	[1508] = 11647, --Lesser Arcanum of Voracity
 	[1509] = 11648, --Lesser Arcanum of Voracity
 	[1510] = 11649, --Lesser Arcanum of Voracity
-	[1593] = {BTS["Enchant Bracer - Assault"], 34002},-- +24 Attack Power
-	[1594] = {BTS["Enchant Gloves - Assault"], 33996},-- +26 Attack Power
+	[1593] = {GetSpellInfo(34002), 34002},-- +24 Attack Power
+	[1594] = {GetSpellInfo(33996), 33996},-- +26 Attack Power
 	[1704] = 12645, --Thorium Spike (20-30)
 	[1843] = 15564, --Rugged Armor Kit
-	[1883] = {BTS["Enchant Bracer - Greater Intellect"], 20008},
-	[1884] = {BTS["Enchant Bracer - Superior Spirit"], 20009},
-	[1886] = {BTS["Enchant Bracer - Superior Stamina"], 20011}, -- +9 Stamina
-	[1887] = {BTS["Enchant Gloves - Greater Agility"], 20012}, -- +7 Agility
+	[1883] = {GetSpellInfo(20008), 20008},
+	[1884] = {GetSpellInfo(20009), 20009},
+	[1886] = {GetSpellInfo(20011), 20011}, -- +9 Stamina
+	[1887] = {GetSpellInfo(20012), 20012}, -- +7 Agility
 	[1888] = {
 		multi = true,
-		INVTYPE_CLOAK = {BTS["Enchant Cloak - Greater Resistance"], 20014}, --+5 All Resistances
-		INVTYPE_SHIELD = {BTS["Enchant Shield - Resistance"], 27947},
+		INVTYPE_CLOAK = {GetSpellInfo(20014), 20014}, --+5 All Resistances
+		INVTYPE_SHIELD = {GetSpellInfo(27947), 27947},
 	},
-	[1889] = {BTS["Enchant Cloak - Superior Defense"], 20015},
-	[1891] = {BTS["Enchant Bracer - Stats"], 27905},--+4 All Stats
-	[1892] = {BTS["Enchant Chest - Major Health"], 20026},-- +100 Health
-	[1893] = {BTS["Enchant Chest - Major Mana"], 20028},--+100 Mana
-	[1894] = {BTS["Enchant Weapon - Icy Chill"], 20029}, --Icy Weapon
-	[1896] = {BTS["Enchant 2H Weapon - Superior Impact"], 20030},
-	[1897] = {BTS["Enchant 2H Weapon - Impact"], 13695}, --+5 Weapon Damage
-	[1899] = {BTS["Enchant Weapon - Unholy Weapon"], 20033},--Unholy Weapon
-	[1900] = {BTS["Enchant Weapon - Crusader"], 20034}, -- Crusader
-	[1903] = {BTS["Enchant 2H Weapon - Major Spirit"], 20035},
-	[1904] = {BTS["Enchant 2H Weapon - Major Intellect"], 20036},
-	[2322] = {BTS["Enchant Gloves - Major Healing"], 33999},
-	[2343] = {BTS["Enchant Weapon - Major Healing"], 34010},
-	[2376] = {BTS["Enchant Chest - Restore Mana Prime"], 33991}, -- changed?
-	[2443] = {BTS["Enchant Weapon - Winter's Might"], 21931},
-	[2463] = {BTS["Enchant Cloak - Fire Resistance"], 13657},
+	[1889] = {GetSpellInfo(20015), 20015},
+	[1891] = {GetSpellInfo(27905), 27905},--+4 All Stats
+	[1892] = {GetSpellInfo(20026), 20026},-- +100 Health
+	[1893] = {GetSpellInfo(20028), 20028},--+100 Mana
+	[1894] = {GetSpellInfo(20029), 20029}, --Icy Weapon
+	[1896] = {GetSpellInfo(20030), 20030},
+	[1897] = {GetSpellInfo(13695), 13695}, --+5 Weapon Damage
+	[1898] = {GetSpellInfo(20032), 20032}, --life stolen        
+	[1899] = {GetSpellInfo(20033), 20033},--Unholy Weapon
+	[1900] = {GetSpellInfo(20034), 20034}, -- Crusader
+	[1903] = {GetSpellInfo(20035), 20035},
+	[1904] = {GetSpellInfo(20036), 20036},
+	[1950] = {GetSpellInfo(46594), 46594}, --+15 Defense Rating
+	[2322] = {GetSpellInfo(33999), 33999},
+	[2343] = {GetSpellInfo(34010), 34010},
+	[2376] = {GetSpellInfo(33991), 33991}, -- changed?
+	[2443] = {GetSpellInfo(21931), 21931},
+	[2463] = {GetSpellInfo(13657), 13657},
 	[2483] = 18169, --Flame Mantle of the Dawn
 	[2484] = 18170, --Frost Mantle of the Dawn
 	[2485] = 18171, --Arcane Mantle of the Dawn
@@ -193,18 +201,25 @@ JewelTips.Jewels = {
 	[2487] = 18173, --Shadow Mantle of the Dawn
 	[2488] = 18182, --Chromatic Mantle of the Dawn
 	[2503] = 18251, --Core Armor Kit
-	[2504] = {BTS["Enchant Weapon - Spell Power"], 22749},
-	[2505] = {BTS["Enchant Weapon - Healing Power"], 22750}, -- +55 Healing
+	[2504] = {GetSpellInfo(22749), 22749},
+	[2505] = {GetSpellInfo(22750), 22750}, -- +55 Healing
 	[2523] = 18283, --Biznicks 247x128 Accurascope
 	[2543] = 18329, --Arcanum of Rapidity
 	[2544] = 18330, --Arcanum of Focus
 	[2545] = 18331, --Arcanum of Protection
-	[2563] = {BTS["Enchant Weapon - Strength"], 23799}, -- +15 Strength
-	[2564] = {BTS["Enchant Weapon - Agility"], 23800}, -- +15 Agility
-	[2565] = {BTS["Enchant Bracer - Mana Regeneration"], 23801}, -- Mana Regen 4 per 5 sec.
-	[2566] = {BTS["Enchant Bracer - Healing Power"], 23802}, -- +24 Healing
-	[2567] = {BTS["Enchant Weapon - Mighty Spirit"], 23803}, -- +20 Spirit
-	[2568] = {BTS["Enchant Weapon - Mighty Intellect"], 23804}, -- +22 Intellect
+	[2563] = {GetSpellInfo(23799), 23799}, -- +15 Strength
+	[2564] = {
+		multi = true,
+		INVTYPE_HAND = {GetSpellInfo(25080), 25080}, -- +15 Agility
+		INVTYPE_WEAPON = {GetSpellInfo(23800), 23800},
+		INVTYPE_WEAPONMAINHAND = {GetSpellInfo(23800), 23800},
+		INVTYPE_WEAPONOFFHAND = {GetSpellInfo(23800), 23800},
+		INVTYPE_2HWEAPON = {GetSpellInfo(23800), 23800},
+	},
+	[2565] = {GetSpellInfo(23801), 23801}, -- Mana Regen 4 per 5 sec.
+	[2566] = {GetSpellInfo(23802), 23802}, -- +24 Healing
+	[2567] = {GetSpellInfo(23803), 23803}, -- +20 Spirit
+	[2568] = {GetSpellInfo(23804), 23804}, -- +22 Intellect
 	[2583] = 19782, --Presence of Might
 	[2584] = 19783, --Syncretist's Sigil
 	[2585] = 19784, --Death's Embrace
@@ -218,47 +233,47 @@ JewelTips.Jewels = {
 	[2604] = 20078,--Zandalar Signet of Serenity
 	[2605] = 20076,--Zandalar Signet of Mojo
 	[2606] = 20077,--Zandalar Signet of Might
-	[2613] = {BTS["Enchant Gloves - Threat"], 25072}, --+2% Threat
-	[2614] = {BTS["Enchant Gloves - Shadow Power"], 25073},
-	[2615] = {BTS["Enchant Gloves - Frost Power"], 25074},
-	[2616] = {BTS["Enchant Gloves - Fire Power"], 25078},
-	[2617] = {BTS["Enchant Bracer - Superior Healing"], 27911},
-	[2619] = {BTS["Enchant Cloak - Greater Fire Resistance"], 25081},-- +15 Fire Resistance
-	[2620] = {BTS["Enchant Cloak - Greater Nature Resistance"], 25082}, -- +15 Nature Resistance
-	[2621] = {BTS["Enchant Cloak - Subtlety"], 25084},
-	[2622] = {BTS["Enchant Cloak - Dodge"], 25086},
-	[2646] = {BTS["Enchant 2H Weapon - Agility"], 27837},
-	[2647] = {BTS["Enchant Bracer - Brawn"], 27899},
-	[2648] = {BTS["Enchant Bracer - Major Defense"], 27906}, -- +12 Defense Rating
+	[2613] = {GetSpellInfo(25072), 25072}, --+2% Threat
+	[2614] = {GetSpellInfo(25073), 25073},
+	[2615] = {GetSpellInfo(25074), 25074},
+	[2616] = {GetSpellInfo(25078), 25078},
+	[2617] = {GetSpellInfo(27911), 27911},
+	[2619] = {GetSpellInfo(25081), 25081},-- +15 Fire Resistance
+	[2620] = {GetSpellInfo(25082), 25082}, -- +15 Nature Resistance
+	[2621] = {GetSpellInfo(25084), 25084},
+	[2622] = {GetSpellInfo(25086), 25086},
+	[2646] = {GetSpellInfo(27837), 27837},
+	[2647] = {GetSpellInfo(27899), 27899},
+	[2648] = {GetSpellInfo(27906), 27906}, -- +12 Defense Rating
 	[2649] = {
 		multi = true,
-		INVTYPE_FEET = {BTS["Enchant Boots - Fortitude"], 27950}, -- +12 Stamina
-		INVTYPE_WRIST = {BTS["Enchant Bracer - Fortitude"], 27914}, -- +12 Stamina
+		INVTYPE_FEET = {GetSpellInfo(27950), 27950}, -- +12 Stamina
+		INVTYPE_WRIST = {GetSpellInfo(27914), 27914}, -- +12 Stamina
 	},
-	[2650] = {BTS["Enchant Bracer - Spellpower"], 27917},--+15 Spell Damage
-	[2653] = {BTS["Enchant Shield - Tough Shield"], 27944}, --+18 Block Value
-	[2654] = {BTS["Enchant Shield - Intellect"], 27945}, -- +12 Intellect
-	[2655] = {BTS["Enchant Shield - Shield Block"], 27946}, --+15 Shield Block Rating
-	[2656] = {BTS["Enchant Boots - Vitality"], 27948},
-	[2657] = {BTS["Enchant Boots - Dexterity"], 27951},
-	[2658] = {BTS["Enchant Boots - Surefooted"], 27954},
-	[2659] = {BTS["Enchant Chest - Exceptional Health"], 27957}, -- +150 Health
-	[2660] = {BTS["Enchant Chest - Superior Mana"], 27958}, -- +150 Mana
-	[2661] = {BTS["Enchant Chest - Exceptional Stats"], 27960}, -- +6 All Stats
-	[2662] = {BTS["Enchant Cloak - Major Armor"], 27961},
-	[2664] = {BTS["Enchant Cloak - Major Resistance"], 27962},
-	[2665] = {BTS["Enchant 2H Weapon - Major Spirit"], 27964}, -- +35 Spirit (NYI)
-	[2666] = {BTS["Enchant Weapon - Major Intellect"], 27968},
-	[2667] = {BTS["Enchant 2H Weapon - Savagery"], 27971},
-	[2668] = {BTS["Enchant Weapon - Potency"], 27972},
-	[2669] = {BTS["Enchant Weapon - Major Spellpower"], 27975},
-	[2670] = {BTS["Enchant 2H Weapon - Major Agility"], 27977},
-	[2671] = {BTS["Enchant Weapon - Sunfire"], 27981},
-	[2672] = {BTS["Enchant Weapon - Soulfrost"], 27982},
-	[2673] = {BTS["Enchant Weapon - Mongoose"], 27984}, -- Mongoose
-	[2674] = {BTS["Enchant Weapon - Spellsurge"], 28003},
-	[2675] = {BTS["Enchant Weapon - Battlemaster"], 28004},
-	[2679] = {BTS["Enchant Bracer - Restore Mana Prime"], 27913},
+	[2650] = {GetSpellInfo(27917), 27917},--+15 Spell Damage
+	[2653] = {GetSpellInfo(27944), 27944}, --+18 Block Value
+	[2654] = {GetSpellInfo(27945), 27945}, -- +12 Intellect
+	[2655] = {GetSpellInfo(27946), 27946}, --+15 Shield Block Rating
+	[2656] = {GetSpellInfo(27948), 27948},
+	[2657] = {GetSpellInfo(27951), 27951},
+	[2658] = {GetSpellInfo(27954), 27954},
+	[2659] = {GetSpellInfo(27957), 27957}, -- +150 Health
+	[2660] = {GetSpellInfo(27958), 27958}, -- +150 Mana
+	[2661] = {GetSpellInfo(27960), 27960}, -- +6 All Stats
+	[2662] = {GetSpellInfo(27961), 27961},
+	[2664] = {GetSpellInfo(27962), 27962},
+	[2665] = {GetSpellInfo(27964), 27964}, -- +35 Spirit (NYI)
+	[2666] = {GetSpellInfo(27968), 27968},
+	[2667] = {GetSpellInfo(27971), 27971},
+	[2668] = {GetSpellInfo(27972), 27972},
+	[2669] = {GetSpellInfo(27975), 27975},
+	[2670] = {GetSpellInfo(27977), 27977},
+	[2671] = {GetSpellInfo(27981), 27981},
+	[2672] = {GetSpellInfo(27982), 27982},
+	[2673] = {GetSpellInfo(27984), 27984}, -- Mongoose
+	[2674] = {GetSpellInfo(28003), 28003},
+	[2675] = {GetSpellInfo(28004), 28004},
+	[2679] = {GetSpellInfo(27913), 27913},
 	[2681] = 22635, --Savage Guard
 	[2682] = 22636, --Ice Guard
 	[2683] = 22638, --Shadow Guard
@@ -288,17 +303,17 @@ JewelTips.Jewels = {
 	[2795] = 25679, --Comfortable Insoles
 	[2836] = 25652, --Magister's Armor Kit??
 	[2841] = 34330, --+10 Stamina (Heavy Knothide Armor Kit)
-	[2928] = {BTS["Enchant Ring - Spellpower"], 27924},--+12 Spell Damage
-	[2929] = {BTS["Enchant Ring - Striking"], 27920},--+2 Weapon Damage
-	[2930] = {BTS["Enchant Ring - Healing Power"], 27926},--+20 Healing
-	[2931] = {BTS["Enchant Ring - Stats"], 27927},--+20 Healing
-	[2933] = {BTS["Enchant Chest - Major Resilience"], 33992},
-	[2934] = {BTS["Enchant Gloves - Blasting"], 33993},
-	[2935] = {BTS["Enchant Gloves - Spell Strike"], 33994},
-	[2937] = {BTS["Enchant Gloves - Major Spellpower"], 33997},
-	[2938] = {BTS["Enchant Cloak - Spell Penetration"], 34003},
-	[2939] = {BTS["Enchant Boots - Cat's Swiftness"], 34007},
-	[2940] = {BTS["Enchant Boots - Boar's Speed"], 34008},
+	[2928] = {GetSpellInfo(27924), 27924},--+12 Spell Damage
+	[2929] = {GetSpellInfo(27920), 27920},--+2 Weapon Damage
+	[2930] = {GetSpellInfo(27926), 27926},--+20 Healing
+	[2931] = {GetSpellInfo(27927), 27927},--+20 Healing
+	[2933] = {GetSpellInfo(33992), 33992},
+	[2934] = {GetSpellInfo(33993), 33993},
+	[2935] = {GetSpellInfo(33994), 33994},
+	[2937] = {GetSpellInfo(33997), 33997},
+	[2938] = {GetSpellInfo(34003), 34003},
+	[2939] = {GetSpellInfo(34007), 34007},
+	[2940] = {GetSpellInfo(34008), 34008},
 	[2954] = 28420, --Fel Weightstone
 	[2955] = 28421, --Adamantite Weightstone
 	[2977] = 28882, --Inscription of Warding (Aldor)
@@ -327,6 +342,7 @@ JewelTips.Jewels = {
 	[3001] = 29189, --Glyph of Renewal
 	[3002] = 29191, --Glyph of Power
 	[3003] = 29192, --Glyph of Ferocity
+	[3004] = 29193, --Glyph of the Gladiator
 	[3005] = 29194, --Glyph of Nature Warding
 	[3006] = 29195, --Glyph of Arcane Warding
 	[3007] = 29196, --Glyph of Fire Warding
@@ -337,12 +353,13 @@ JewelTips.Jewels = {
 	[3012] = 29535, --Nethercobra Leg Armor
 	[3013] = 29536, --Nethercleft Leg Armor
 	[3096] = 30846, --Glyph of the Outcast
-	[3150] = {BTS["Enchant Chest - Restore Mana Prime"], 33991}, --New enchant id?
-	[3222] = {BTS["Enchant Weapon - Greater Agility"], 42620}, --+20 Agility
-	[3223] = 33185,--Adamantite Weapon Chain
-	[3225] = {BTS["Enchant Weapon - Executioner"], 42974},	--Executioner
-	[3229] = {BTS["Enchant Shield - Resilience"], 44383}, --+12 Resilience Rating
-	[3260] = 34207,--Glove Reinforcements
+	[3150] = {GetSpellInfo(33991), 33991}, --New enchant id?
+	[3222] = {GetSpellInfo(42620), 42620}, --+20 Agility
+	[3223] = 33185, --Adamantite Weapon Chain
+	[3225] = {GetSpellInfo(42974), 42974},	--Executioner
+	[3229] = {GetSpellInfo(44383), 44383}, --+12 Resilience Rating
+	[3260] = 34207, --Glove Reinforcements
+	[3269] = 34836, --Spun Truesilver Fishing Line
 
 	[5000] = 0
 }
@@ -360,7 +377,6 @@ function JewelTips.enchantIDtoLink(JewelID, equipLoc)
 		if type(item) == "number" then
 			return select(2, GetItemInfo(item)) or item
 		else
---			return strgsub(item, "(.+):(%d+)", "|cffffd000|Henchant:%2|h[%1]|h|r")
 			return "|cffffd000|Henchant:"..item[2].."|h["..item[1].."]|h|r"
 		end
 	else
@@ -500,7 +516,7 @@ local function addEnchantLines(tooltip, link)
 					local newGemLink = select(2,GetItemGem(link, gemButtonTable[index].gemIndex))
 					if newGemLink then
 						currentGemLinkTable[index] = newGemLink
-						currentGemTextureTable[index] = select(10, GetItemInfo( currentGemLinkTable[index] ))
+						currentGemTextureTable[index] = GetItemIcon( currentGemLinkTable[index] )
 					else
 						currentGemLinkTable[index] = gemLink
 						currentGemTextureTable[index] = JewelTips.QUESTIONMARK_ICON
@@ -527,7 +543,7 @@ local function addEnchantLines(tooltip, link)
 				if strmatch( gemLink, "Henchant:" ) then
 					tooltip:AddTexture(JewelTips.ENCHANT_ICON)
 				else
-					tooltip:AddTexture(select(10,GetItemInfo(gemLink)) or JewelTips.QUESTIONMARK_ICON)
+					tooltip:AddTexture(GetItemIcon(gemLink) or JewelTips.QUESTIONMARK_ICON)
 				end
 			end
 		else
@@ -597,7 +613,7 @@ local Orig_ItemRefTooltip_OnTooltipSetItem = ItemRefTooltip:GetScript("OnTooltip
 ItemRefTooltip:SetScript("OnTooltipSetItem", function(tooltip, ...)
 	assert(tooltip, "arg 1 is nil, someone isn't hooking correctly")
 
- 	local _, link = tooltip:GetItem()
+	local _, link = tooltip:GetItem()
 	if link then
 		addEnchantLines(tooltip, link)
 		updateItemRefButtons(link)

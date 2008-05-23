@@ -16,7 +16,7 @@
 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ]]
 local L = AceLibrary("AceLocale-2.2"):new("Quartz")
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 local autoshotname = GetSpellInfo(75)
 local resetspells = {
 	[GetSpellInfo(845)] = true, -- Cleave
@@ -140,9 +140,18 @@ local COMBATLOG_FILTER_ME = bit.bor(
 				COMBATLOG_OBJECT_TYPE_PLAYER or 0x00000400
 				)
 
-function QuartzSwing:COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, srcGUID, srcName, srcFlags)
-	if (event == "SWING_DAMAGE" or event == "SWING_MISSED") and (bit.band(srcFlags, COMBATLOG_FILTER_ME) == COMBATLOG_FILTER_ME) and swingmode == 0 then
-		self:MeleeSwing()
+do
+	local swordspecproc = false
+	function QuartzSwing:COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, srcGUID, srcName, srcFlags, dstName, dstGUID, dstFlags, ...)
+		if (event == "SPELL_EXTRA_ATTACKS") and (select(2, ...) == "Sword Specialization") and (bit.band(srcFlags, COMBATLOG_FILTER_ME) == COMBATLOG_FILTER_ME) then
+			swordspecproc = true
+		elseif (event == "SWING_DAMAGE" or event == "SWING_MISSED") and (bit.band(srcFlags, COMBATLOG_FILTER_ME) == COMBATLOG_FILTER_ME) and swingmode == 0 then
+			if (swordspecproc) then
+				swordspecproc = false
+			else
+				self:MeleeSwing()
+			end
+		end
 	end
 end
 

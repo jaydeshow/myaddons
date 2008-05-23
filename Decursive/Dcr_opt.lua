@@ -28,12 +28,12 @@ if not DcrLoadedFiles or not DcrLoadedFiles["localization.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-03-15 20:56:53 -0400 (Sat, 15 Mar 2008) $", "$Revision: 64659 $");
+D:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
 
 local L  = D.L;
-local BS = D.BS;
 local BC = D.BC;
 local DC = DcrC;
+local DS = DC.DS;
 
 local pairs		= _G.pairs;
 local ipairs		= _G.ipairs;
@@ -41,6 +41,9 @@ local table		= _G.table;
 local GetNumRaidMembers		= _G.GetNumRaidMembers;
 local GetNumPartyMembers	= _G.GetNumPartyMembers;
 -- Default values for the option
+
+D:GetSpellsTranslations(false); -- Register spell translations
+
 
 D.defaults = { -- {{{
     debugging = false,
@@ -95,6 +98,9 @@ D.defaults = { -- {{{
 
     -- reverse MUFs disaplay
     DebuffsFrameGrowToTop = false,
+    
+    -- display chronometer on MUFs
+    DebuffsFrameChrono = true,
 
     -- this is wether or not to show the live-list	
     Hide_LiveList = false,
@@ -182,7 +188,7 @@ D.defaults = { -- {{{
     -- Display a warning if no key is mapped.
     NoKeyWarn = true,
 
-    -- Those are the different colors used for the MUFs main texture
+    -- Those are the different colors used for the MUFs main textures
     MF_colors = {
 		[1]		=   {  .8 , 0   , 0    ,  1	}, -- red
 		[2]		=   { 0   , 0   , 0.8  ,  1	}, -- blue
@@ -195,7 +201,8 @@ D.defaults = { -- {{{
 	[DC.ABSENT]		=   {  .4 ,  .4 ,  .4  ,   .9	}, -- transparent grey
 	[DC.FAR]		=   {  .4 ,  .1 ,  .4  ,   .85	}, -- transparent purple
 	[DC.STEALTHED]		=   {  .4 ,  .6 ,  .4  ,  1	}, -- pale green
-	[DC.CHARMED_STATUS]	=   {  0  , 1   , 0    ,  1	}, -- full green
+	[DC.CHARMED_STATUS]	=   { 0   , 1   , 0    ,  1	}, -- full green
+	[D.LOC.COLORCHRONOS]	=   { 0.6 , 0.1 , 0.2  ,  0.7	}, -- medium red
     },
     -- Curring order (1 is the most important, 6 the lesser...)
     --[[
@@ -213,94 +220,89 @@ D.defaults = { -- {{{
     -- Debuffs {{{
 
     DebuffsToIgnore = { -- those debuffs prevent us from curing the unit
-	[BS["Phase Shift"]]		= true,
-	[BS["Banish"]]			= true,
-	[BS["Frost Trap Aura"]]		= true,
+	[DS["Phase Shift"]]		= true,
+	[DS["Banish"]]			= true,
+	[DS["Frost Trap Aura"]]		= true,
     },
 
     BuffDebuff = { -- thoses debuffs are in fact buffs...
-	[L[D.LOC.DREAMLESSSLEEP]]	= true,
-	[L[D.LOC.GDREAMLESSSLEEP]]	= true,
-	[L[D.LOC.MDREAMLESSSLEEP]]	= true,
-	[BS[DCR_LOC_MINDVISION]]	= true,
-	[L[D.LOC.MUTATINGINJECTION]]	= true,
-	[BS["Arcane Blast"]]		= true,
+	[DS[D.LOC.DREAMLESSSLEEP]]	= true,
+	[DS[D.LOC.GDREAMLESSSLEEP]]	= true,
+	[DS[D.LOC.MDREAMLESSSLEEP]]	= true,
+	[DS[D.LOC.DCR_LOC_MINDVISION]]	= true,
+	[DS[D.LOC.MUTATINGINJECTION]]	= true,
+	[DS["Arcane Blast"]]		= true,
     },
 
     DebuffAlwaysSkipList = {
     },
 
     DebuffsSkipList = {
-	BS[DCR_LOC_SILENCE],
-	L[D.LOC.ANCIENTHYSTERIA],
-	L[D.LOC.IGNITE],
-	L[D.LOC.TAINTEDMIND],
-	L[D.LOC.MAGMASHAKLES],
-	L[D.LOC.CRIPLES],
-	L[D.LOC.DUSTCLOUD],
-	L[D.LOC.WIDOWSEMBRACE],
-	BS[D.LOC.CURSEOFTONGUES],
-	L[D.LOC.SONICBURST],
-	L[D.LOC.THUNDERCLAP],
-	L[D.LOC.DELUSIONOFJINDO]
+	DS[D.LOC.DCR_LOC_SILENCE],
+	DS[D.LOC.ANCIENTHYSTERIA],
+	DS[D.LOC.IGNITE],
+	DS[D.LOC.TAINTEDMIND],
+	DS[D.LOC.MAGMASHAKLES],
+	DS[D.LOC.CRIPLES],
+	DS[D.LOC.DUSTCLOUD],
+	DS[D.LOC.WIDOWSEMBRACE],
+	DS[D.LOC.CURSEOFTONGUES],
+	DS[D.LOC.SONICBURST],
+	DS[D.LOC.DELUSIONOFJINDO]
     },
     skipByClass = {
 	["WARRIOR"] = {
-	    [L[D.LOC.ANCIENTHYSTERIA]]   = true,
-	    [L[D.LOC.IGNITE]]        = true,
-	    [L[D.LOC.TAINTEDMIND]]       = true,
-	    [L[D.LOC.WIDOWSEMBRACE]]    = true,
-	    [BS[D.LOC.CURSEOFTONGUES]]   = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.ANCIENTHYSTERIA]]   = true,
+	    [DS[D.LOC.IGNITE]]        = true,
+	    [DS[D.LOC.TAINTEDMIND]]       = true,
+	    [DS[D.LOC.WIDOWSEMBRACE]]    = true,
+	    [DS[D.LOC.CURSEOFTONGUES]]   = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["ROGUE"] = {
-	    [BS[DCR_LOC_SILENCE]]           = true,
-	    [L[D.LOC.ANCIENTHYSTERIA]]   = true,
-	    [L[D.LOC.IGNITE]]        = true,
-	    [L[D.LOC.TAINTEDMIND]]       = true,
-	    [L[D.LOC.WIDOWSEMBRACE]]    = true,
-	    [BS[D.LOC.CURSEOFTONGUES]]   = true,
-	    [L[D.LOC.SONICBURST]]        = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.DCR_LOC_SILENCE]]           = true,
+	    [DS[D.LOC.ANCIENTHYSTERIA]]   = true,
+	    [DS[D.LOC.IGNITE]]        = true,
+	    [DS[D.LOC.TAINTEDMIND]]       = true,
+	    [DS[D.LOC.WIDOWSEMBRACE]]    = true,
+	    [DS[D.LOC.CURSEOFTONGUES]]   = true,
+	    [DS[D.LOC.SONICBURST]]        = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["HUNTER"] = {
-	    [L[D.LOC.MAGMASHAKLES]]     = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.MAGMASHAKLES]]     = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["MAGE"] = {
-	    [L[D.LOC.MAGMASHAKLES]]     = true,
-	    [L[D.LOC.CRIPLES]]            = true,
-	    [L[D.LOC.DUSTCLOUD]]         = true,
-	    [L[D.LOC.THUNDERCLAP]]        = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.MAGMASHAKLES]]     = true,
+	    [DS[D.LOC.CRIPLES]]            = true,
+	    [DS[D.LOC.DUSTCLOUD]]         = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["WARLOCK"] = {
-	    [L[D.LOC.CRIPLES]]            = true,
-	    [L[D.LOC.DUSTCLOUD]]         = true,
-	    [L[D.LOC.THUNDERCLAP]]        = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.CRIPLES]]            = true,
+	    [DS[D.LOC.DUSTCLOUD]]         = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["DRUID"] = {
-	    [L[D.LOC.CRIPLES]]            = true,
-	    [L[D.LOC.DUSTCLOUD]]         = true,
-	    [L[D.LOC.THUNDERCLAP]]        = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.CRIPLES]]            = true,
+	    [DS[D.LOC.DUSTCLOUD]]         = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["PALADIN"] = {
-	    [L[D.LOC.CRIPLES]]            = true,
-	    [L[D.LOC.DUSTCLOUD]]         = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.CRIPLES]]            = true,
+	    [DS[D.LOC.DUSTCLOUD]]         = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["PRIEST"] = {
-	    [L[D.LOC.CRIPLES]]            = true,
-	    [L[D.LOC.DUSTCLOUD]]         = true,
-	    [L[D.LOC.THUNDERCLAP]]        = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.CRIPLES]]            = true,
+	    [DS[D.LOC.DUSTCLOUD]]         = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	},
 	["SHAMAN"] = {
-	    [L[D.LOC.CRIPLES]]            = true,
-	    [L[D.LOC.DUSTCLOUD]]         = true,
-	    [L[D.LOC.DELUSIONOFJINDO]]= true,
+	    [DS[D.LOC.CRIPLES]]            = true,
+	    [DS[D.LOC.DUSTCLOUD]]         = true,
+	    [DS[D.LOC.DELUSIONOFJINDO]]= true,
 	}
     }
     -- }}}
@@ -664,6 +666,19 @@ D.options = { -- {{{
 		    end,
 		    disabled = function() return D.Status.Combat or not D.profile.ShowDebuffsFrame end,
 		    order = 1350,
+		},
+		ShowChrono = {
+		    type = "toggle",
+		    name = L[D.LOC.OPT_SHOWCHRONO],
+		    desc = L[D.LOC.OPT_SHOWCHRONO_DESC],
+		    get = function() return D.profile.DebuffsFrameChrono end,
+		    set = function(v)
+			if (v ~= D.profile.DebuffsFrameChrono) then
+			    D.profile.DebuffsFrameChrono = v;
+			end
+		    end,
+		    disabled = function() return not D.profile.ShowDebuffsFrame end,
+		    order = 1360,
 		},
 		{
 		    type = "header",
@@ -1560,7 +1575,7 @@ end
 
 function D:ShowHideDebuffsFrame ()
 
-    if D.Status.Combat then
+    if D.Status.Combat or not D.DcrFullyInitialized then
 	return
     end
 
@@ -1994,6 +2009,13 @@ do
 	    name = ("%s %s"):format(L[D.LOC.UNITSTATUS], D:ColorText(Text, D:NumToHexColor(L_MF_colors[ColorReason])) );
 	    desc = (L[D.LOC.COLORSTATUS]):format(Text);
 
+	elseif (type(ColorReason) == "string") then
+
+	    name = L[ColorReason];
+
+	    if ColorReason == D.LOC.COLORCHRONOS then
+		desc = D.LOC.COLORCHRONOS_DESC;
+	    end
 	end
 
 	return {name, desc};
@@ -2038,10 +2060,10 @@ do
 	    end
 
 
-	    if type(ColorReason) == "number" and (ColorReason - 2) == 6 then
-		MUFsColorsSubMenu["Spece"] = {
+	    if (type(ColorReason) == "number" and (ColorReason - 2) == 6) or (type(ColorReason) == "string" and ColorReason == D.LOC.COLORCHRONOS) then
+		MUFsColorsSubMenu["Spece" .. num] = {
 		    type = "header",
-		    order = 100 + num;
+		    order = 100 + num + (type(ColorReason) == "number" and ColorReason or 2048),
 		}
 		num = num + 1;
 	    end
@@ -2053,7 +2075,7 @@ do
 		name = NameAndDesc[1],
 		desc = NameAndDesc[2],
 		hasAlpha = true,
-		order = 100 + num,
+		order = 100 + num + (type(ColorReason) == "number" and ColorReason or 2048),
 
 		handler = {
 		    ["ColorReason"]  = ColorReason,

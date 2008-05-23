@@ -4,10 +4,6 @@
 
 local boss = BB["Omor the Unscarred"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
-local L2 = AceLibrary("AceLocale-2.2"):new("BigWigsCommonWords")
-
-local db = nil
-local fmt = string.format
 
 ----------------------------
 --      Localization      --
@@ -18,7 +14,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	aura = "Treacherous Aura", -- needs to be exactly what it's called in game.
 	aura_heroic = "Bane of Treachery",
-	aura_desc = "Announce who has the Trecherous Aura",
+	aura_desc = "Announce who has the Trecherous Aura.",
 	aura_message = "%s has %s!",
 	aura_message_you = "You have %s!",
 	aura_bar = "%s: %s",
@@ -32,6 +28,7 @@ L:RegisterTranslations("frFR", function() return {
 	aura_heroic = "Plaie de traîtrise",
 	aura_desc = "Préviens quand un joueur subit les effets de l'Aura/Plaie traîtresse.",
 	aura_message = "%s a %s !",
+	aura_message_you = "Vous avez %s !",
 	aura_bar = "%s : %s",
 
 	icon = "Icône",
@@ -41,8 +38,9 @@ L:RegisterTranslations("frFR", function() return {
 L:RegisterTranslations("koKR", function() return {
 	aura = "배반의 오라",
 	aura_heroic = "배반의 파멸",
-	aura_desc = "배반의 오라에 걸린 사람을 알립니다.",
-	aura_message = "%s : %s!",
+	aura_desc = "배반의 오라에 걸린 플레이어를 알립니다.",
+	aura_message = "%s: %s!",
+	aura_message_you = "당신은 %s!",
 	aura_bar = "%s: %s",
 
 	icon = "전술 표시",
@@ -52,7 +50,7 @@ L:RegisterTranslations("koKR", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	aura = "背叛光环",
 	aura_heroic = "背叛者之祸",
-	aura_desc = "当中了背叛光环发出警报。",
+	aura_desc = "当中了背叛光环时发出警报。",
 	aura_message = ">%s< 中了 %s！",
 	aura_bar = "<%s：%s>",
 
@@ -62,10 +60,10 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	aura = "奸詐光環",
-	aura_heroic = "背叛之禍",
+	aura_heroic = "背叛之禍 (英雄)",
 	aura_desc = "當有人中了奸詐光環時發出警報",
 	aura_message = "%s 中了 %s!",
-	aura_bar = "%s: %s",
+	aura_bar = "<%s: %s>",
 
 	icon = "團隊標記",
 	icon_desc = "在中了奸詐光環的隊友頭上標記（需要助理或領隊權限）",
@@ -92,36 +90,32 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["Hellfire Ramparts"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"aura", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 71633 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Curse", 30695, 37566, 30697, 37567, 39298) -- from wowhead, 30695(Treacherous Aura) & 37566(Bane of Treachery) are probably the correct ones
-	self:AddCombatListener("SPELL_AURA_REMOVED", "CurseRemove", 30695, 37566, 30697, 37567, 39298) -- from wowhead, 30695(Treacherous Aura) & 37566(Bane of Treachery) are probably the correct ones
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Curse", 30695, 37566, 37567, 39298) -- verify 37566(Bane of Treachery) on heroic 
+	self:AddCombatListener("SPELL_AURA_REMOVED", "CurseRemove", 30695, 37566, 37567, 39298) -- verify 37566(Bane of Treachery) on heroic
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-
-	db = self.db.profile
 end
 
 ------------------------------
 --      Event Handlers      --
 ------------------------------
 
-function mod:Curse(player, spellID)
-	if player and db.aura then
-		local spellName = GetSpellInfo(spellID)
-		self:Message(fmt(L["aura_message"], player, spellName), "Urgent")
-		self:Bar(fmt(L["aura_bar"], player, spellName), 15, spellID, "Red")
-		self:Whisper(player, fmt(L["aura_message_you"], spellName))
-		if db.icon then
-			self:Icon(player)
-		end	
+function mod:Curse(player, spellId, _, _, spellName)
+	if self.db.profile.aura then
+		self:IfMessage(L["aura_message"]:format(player, spellName), "Urgent", spellId)
+		self:Bar(L["aura_bar"]:format(player, spellName), 15, spellId)
+		self:Whisper(player, L["aura_message_you"]:format(spellName))
+		self:Icon(player, "icon")
 	end
 end
 
-function mod:CurseRemove()
+function mod:CurseRemove(player, spellId, _, _, spellName)
 	self:TriggerEvent("BigWigs_RemoveRaidIcon")
+	self:TriggerEvent("BigWigs_StopBar", self, L["aura_bar"]:format(player, spellName))
 end

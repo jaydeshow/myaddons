@@ -5,28 +5,35 @@ end
 
 local L = LibStub("AceLocale-2.2"):new("ZOMGBlessings")
 local R = LibStub("AceLocale-2.2"):new("ZOMGReagents")
-local BabbleSpell = LibStub("LibBabble-Spell-3.0")
-local BS = BabbleSpell:GetLookupTable()
-local roster = LibStub("Roster-2.1")
 local SM = LibStub("LibSharedMedia-3.0")
 local dewdrop
-local playerClass
+local playerClass, playerName
 local template
 local clickList
-local singleRangeTest = BS["Blessing of Might"]		-- Earliest spell we get
+local singleRangeTest = GetSpellInfo(27140)			-- Blessing of Might, earliest spell we get
 
 -- Make it future proof for additional classes (eg: Death Knight)
-
---local symbolOfKings = R["Symbol of Kings"]
 
 local z = ZOMGBuffs
 local zb = z:NewModule("ZOMGBlessings")
 ZOMGBlessings = zb
 
-z:CheckVersion("$Revision: 66552 $")
+z:CheckVersion("$Revision: 74413 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 local classOrder, classIndex = z.classOrder, z.classIndex
+local InCombatLockdown	= InCombatLockdown
+local IsUsableSpell		= IsUsableSpell
+local GetSpellCooldown	= GetSpellCooldown
+local UnitBuff			= UnitBuff
+local UnitCanAssist		= UnitCanAssist
+local UnitClass			= UnitClass
+local UnitIsConnected	= UnitIsConnected
+local UnitInParty		= UnitInParty
+local UnitIsPVP			= UnitIsPVP
+local UnitInRaid		= UnitInRaid
+local UnitIsUnit		= UnitIsUnit
+local UnitPowerType		= UnitPowerType
 
 local classOrder = {"WARRIOR", "ROGUE", "HUNTER", "DRUID", "SHAMAN", "PALADIN", "PRIEST", "MAGE", "WARLOCK"}
 
@@ -276,6 +283,11 @@ zb.options = {
 }
 zb.moduleOptions = zb.options
 
+-- GetSpellIcon
+function zb:GetSpellIcon(spell)
+	return z.blessings[spell].icon
+end
+
 -- CanChangeState
 function zb:CanChangeState()
 	return not self.db or self.db.char.selectedTemplate ~= "-"
@@ -384,7 +396,7 @@ function zb:CheckBuffs()
 	local classesCheckPresent = new()
 	local totalPresent = 0
 	local classNeedCount = 0
-	local skipGreater = z.db.profile.singlesInBG and select(2, IsInInstance()) == "pvp"
+	local skipGreater = z.db.profile.singlesAlways or (z.db.profile.singlesInBG and select(2, IsInInstance()) == "pvp") or (z.db.profile.singlesInArena and select(2, IsInInstance()) == "arena")
 
 	if (hadSymbols and not gotSymbols) then
 		if (not z.zoneFlag) then
@@ -398,32 +410,18 @@ function zb:CheckBuffs()
 	local playerZone = GetRealZoneText()
 
 	-- Quick first pass to get a list of players in range and such
-	for unit in roster:IterateRoster() do
-		local unitclass = unit.class
-		if (not bm or unit.subgroup <= bm.db.profile.groups) then
-			local unitid = unit.unitid
-			if (select(2, UnitClass(unitid)) ~= unitclass) then
-				-- Class mismatch happens between RAID_ROSTER_UPDATE and RosterLib_RosterChanged
-				self:ScheduleEvent("ZOMGBlessings_CheckBuffs", self.CheckBuffs, 1, self)
-				del(unitList)
-				del(classesCheckPresent)
-				return
-			end
-
+	for unitid, unitname, unitclass, subgroup, index in z:IterateRoster() do
+		if (not bm or subgroup <= bm.db.profile.groups) then
 			local pvpBlock = (z.db.profile.skippvp and UnitIsPVP(unitid)) and not UnitIsPVP("player")
 			local present = UnitIsConnected(unitid) and UnitCanAssist("player", unitid) and not pvpBlock
 			local absent						-- They're not in zone, afk, or offline
 			if (not present and z.db.profile.ignoreabsent and z.db.profile.waitforclass) then
-				if (pvpBlock) then
-					absent = true
-				elseif (not UnitIsConnected(unitid)) then
-					absent = true
-				elseif (UnitIsAFK(unitid)) then
+				if (pvpBlock or not UnitIsConnected(unitid) or UnitIsAFK(unitid)) then
 					absent = true
 				else
 					local inZone = true
 					if (id) then
-						local _, _, _, _, _, _, zone = GetRaidRosterInfo((strmatch(unitid, "(%d+)") or 0) + 0)
+						local zone = select(7, GetRaidRosterInfo(index))
 						if (zone and zone ~= playerZone) then
 							absent = true
 						end
@@ -441,7 +439,7 @@ function zb:CheckBuffs()
 						if (not self.outOfRange) then
 							self.outOfRange = new()
 						end
-						self.outOfRange[unit.name] = true
+						self.outOfRange[unitname] = true
 					end
 				end
 			elseif (absent) then
@@ -449,7 +447,7 @@ function zb:CheckBuffs()
 					if (not self.outOfRange) then
 						self.outOfRange = new()
 					end
-					self.outOfRange[unit.name] = true
+					self.outOfRange[unitname] = true
 				end
 
 				classesCheckPresent[unitclass] = (classesCheckPresent[unitclass] or 0) + 1
@@ -469,6 +467,7 @@ function zb:CheckBuffs()
 				z.waitingForRaid = floor(totalPresent / count * 100)
 				del(unitList)
 				del(classesCheckPresent)
+				self:ScheduleEvent("ZOMGBlessings_CheckBuffs", self.CheckBuffs, 5, self)
 				return
 			end
 		end
@@ -503,13 +502,11 @@ function zb:CheckBuffs()
 		if (needType) then
 			local myBuff, otherBuffs, myBuffTimeLeft = GetUnitPalaBuffs(unitid, true)
 			local ignore
-			if (myBuff == "BOP" or myBuff == "BOF" or myBuff == "SAC") then
+			if (myBuff and (myBuff.type == "BOP" or myBuff.type == "BOF" or myBuff.type == "SAC")) then
 				ignore = true
-			elseif (btr) then
-				if (btr:IsTrackingPlayer(unitname)) then
-					-- BOP, BOF or SAC expected on this person
-					ignore = true
-				end
+			elseif (btr and btr:IsTrackingPlayer(unitname)) then
+				-- BOF or SAC expected on this person
+				ignore = true
 			end
 
 			if (not ignore and ((needType and needType ~= (myBuff and myBuff.type)) or (myBuff and (myBuff.class and myBuffTimeLeft < zb.db.char.greater * 60) or (not myBuff.class and myBuffTimeLeft < zb.db.char.single * 60)))) then
@@ -520,18 +517,14 @@ function zb:CheckBuffs()
 
 					if (unitclass == limitToClass) then
 						if (template[unitname] and myBuff and myBuff.type == needType and myBuffTimeLeft >= max(zb.db.char.single,2) * 60) then
+							-- They need a single, and still have it
 							ltcUnits[unitid] = false
-							-- classNotNeedCount = classNotNeedCount + 1
 						else
 							-- Found another of same class needing this buff
 							ltcUnits[unitid] = true
 							classNeedCount = classNeedCount + 1
 						end
 					else
-						-- Check this LTC bit:
-						-- Was bugged because if all of 1 class was out of range,
-						-- then a single was cast on the first of the next class in range
-
 						if (gotSymbols and getClassBuff and classSpell and not template[unitname] and not skipGreater) then
 							-- First found that needs buffing
 							limitToClass = unitclass
@@ -542,7 +535,7 @@ function zb:CheckBuffs()
 							classNeedCount = 1
 						end
 
-						if (singleSpell) then
+						if (singleSpell and not singleNeedUnit) then
 							singleNeedUnit = unitid
 							singleNeedSpell = singleSpell
 							singleNeedType = needType
@@ -578,10 +571,10 @@ function zb:CheckBuffs()
 		-- Warlock pets should get their master's buffs
 		-- Huntard pets should get warrior buffs
 
-		for unit in roster:IterateRoster(true) do
-			if (unit.class == "PET") then		--  and UnitClassification(unit.unitid) ~= "elite" -- chess event
-				local masterUnit = unit.unitid:gsub("pet", "")
-				if (UnitExists(masterUnit) and UnitIsVisible(unit.unitid) and UnitCanAssist("player", unit.unitid)) then
+		for unitid, unitname, unitclass, subgroup, index in z:IterateRoster(true) do
+			if (unitclass == "PET") then
+				local masterUnit = unitid:gsub("pet", "")
+				if (UnitIsVisible(unitid) and UnitCanAssist("player", unitid)) then
 					local masterClass = select(2, UnitClass(masterUnit))
 					if (masterClass == "HUNTER") then
 						masterClass = "WARRIOR"
@@ -593,14 +586,14 @@ function zb:CheckBuffs()
 
 							local needType = template[masterClass]
 							if (needType) then
-								local myBuff, otherBuffs, myBuffTimeLeft = GetUnitPalaBuffs(unit.unitid, true)
+								local myBuff, otherBuffs, myBuffTimeLeft = GetUnitPalaBuffs(unitid, true)
 								if ((needType and needType ~= (myBuff and myBuff.type)) or (myBuff and (myBuff.class and myBuffTimeLeft < self.db.char.greater * 60) or (not myBuff.class and myBuffTimeLeft < self.db.char.single * 60))) then
-									if (IsSpellInRange(singleRangeTest, unit.unitid) == 1) then
+									if (IsSpellInRange(singleRangeTest, unitid) == 1) then
 										-- Doesn't have ours, or ours is soon to expire
 										if (not otherBuffs or not otherBuffs[needType]) then
-											if (not z:IsBlacklisted(unit.name)) then
+											if (not z:IsBlacklisted(unitname)) then
 												-- Has noone else's buff of same type
-												singleNeedUnit = unit.unitid
+												singleNeedUnit = unitid
 												singleNeedSpell = z:GetBlessingFromType(needType)
 												singleNeedType = needType
 												del(otherBuffs)
@@ -611,7 +604,7 @@ function zb:CheckBuffs()
 										if (not self.outOfRange) then
 											self.outOfRange = new()
 										end
-										self.outOfRange[unit.name] = true
+										self.outOfRange[unitname] = true
 									end
 								else
 									if (myBuff) then
@@ -679,10 +672,8 @@ function zb:CheckBuffs()
 		end
 	end
 
-	if (minTimeLeft) then
-		-- Schedule a check for when the first buff is due to expire
-		self:ScheduleEvent("ZOMGBlessings_CheckBuffs", self.CheckBuffs, minTimeLeft, self)
-	end
+	-- Schedule a check for when the first buff is due to expire
+	self:ScheduleEvent("ZOMGBlessings_CheckBuffs", self.CheckBuffs, minTimeLeft or 15, self)
 
 	del(ltcUnits)
 	del(classesCheckPresent)
@@ -705,11 +696,12 @@ end
 
 -- OutOfRangeCheck
 function zb:OutOfRangeCheck()
-	for name in pairs(self.outOfRange) do
-		local unit = roster:GetUnitObjectFromName(name)
-		if (unit and IsSpellInRange(singleRangeTest, unit.unitid) == 1) then
-			self:CheckBuffs()
-			break
+	if (self.outOfRange) then
+		for name in pairs(self.outOfRange) do
+			if (UnitCanAssist("player", name) and IsSpellInRange(singleRangeTest, name) == 1) then
+				self:CheckBuffs()
+				break
+			end
 		end
 	end
 end
@@ -730,21 +722,28 @@ end
 
 -- OnModifyTemplate
 function zb:OnModifyTemplate(class, type, response)
+	self:argCheck(class, 1, "string")
+	self:argCheck(type, 2, "string", "nil")
+	self:BroadcastTemplate(response)
+end
+
+-- BroadcastTemplate
+function zb:BroadcastTemplate(response)
 	if (not self.noBroadcast) then
 		z:SendCommMessage("GROUP", "MODIFIEDTEMPLATE", template, response)
 		if (ZOMGBlessingsManager) then
-			ZOMGBlessingsManager:OnReceiveTemplate(UnitName("player"), template, true)
+			ZOMGBlessingsManager:OnReceiveTemplate(playerName, template, true)
 		end
 	end
 end
 
--- SetTemplateTypeClass(class, type)
+-- SetTemplateTypeClass(unit, type)
 function zb:SetTemplateTypeClass(unit, type)
-	local class = unit.class
+	local _, class = UnitClass(unit)
 	local mod
 
 	if (template[class] ~= type) then
-		z:Log("bless", nil, "change", UnitName("player"), class, template[class], type)
+		z:Log("bless", nil, "change", playerName, class, template[class], type)
 
 		self:ModifyTemplate(class, type)
 		mod = true
@@ -752,36 +751,33 @@ function zb:SetTemplateTypeClass(unit, type)
 
 	-- Scan through and remove any single overrides for this class,
 	-- because we've manually cast a whole class blessing
-	for search in roster:IterateRoster() do
-		if (search.class == class) then
-			if (template[search.name]) then
-				self:ModifyTemplate(search.name, nil)
+	for unitid, unitname, unitclass, subgroup, index in z:IterateRoster(true) do
+		if (unitclass == class) then
+			if (template[unitname]) then
+				self:ModifyTemplate(unitname, nil)
 				mod = true
 			end
-			z:TriggerClickUpdate(search.unitid)		-- And also trigger a list click update
+			z:TriggerClickUpdate(unitid)		-- And also trigger a list click update
 		end
 	end
 
 	if (mod and z.db.profile.info) then
-		self:Print(L["Modified template: %s: %s"], z:ColourClass(unit.class), z:ColourBlessing(type, nil, true, true))
+		self:Print(L["Modified template: %s: %s"], z:ColourClass(class), z:ColourBlessing(type, nil, true, true))
 	end
 end
 
 -- SetTemplateTypeSingle
-function zb:SetTemplateTypeSingle(unit, type)
+function zb:SetTemplateTypeSingle(unitid, type)
 	-- See if all of this class have same buff from me, and then remove the single exceptions if so
 	local difference
 
-	local class = unit.class
-	local name = unit.name
-	local unitid = unit.unitid
+	local _, class = UnitClass(unitid)
+	local name = UnitName(unitid)
 
-	for search in roster:IterateRoster(true) do
-		local sclass = search.class
-		local sname = search.name
-		if (sclass == class) then
-			if (sname ~= name) then
-				if ((template[sname] or template[class]) ~= type) then
+	for unitid, unitname, unitclass, subgroup, index in z:IterateRoster(true) do
+		if (unitclass == class) then
+			if (unitname ~= name) then
+				if ((template[unitname] or template[class]) ~= type) then
 					difference = true
 					break
 				end
@@ -791,7 +787,7 @@ function zb:SetTemplateTypeSingle(unit, type)
 
 	if (difference and z.classcount[class] > 1) then
 		if (template[name] ~= type) then
-			z:Log("bless", nil, "exception", UnitName("player"), name, template[name], type)
+			z:Log("bless", nil, "exception", playerName, name, template[name], type)
 
 			self:ModifyTemplate(name, type)
 
@@ -804,15 +800,15 @@ function zb:SetTemplateTypeSingle(unit, type)
 			end
 		end
 	else
-		self:SetTemplateTypeClass(unit, type)
+		self:SetTemplateTypeClass(unitid, type)
 	end
 end
 
 -- BlessingCastOn
 -- This only gets called for manually cast blessings
 function zb:BlessingCastOn(name, blessing)
-	local unit = roster:GetUnitObjectFromName(name)
-	if (not unit or not UnitIsPlayer(unit.unitid)) then
+	local unit = z:GetUnitID(name)
+	if (not unit or not UnitIsPlayer(unit)) then
 		return
 	end
 
@@ -842,14 +838,13 @@ function zb:SayWhatWeDid(icon, spell, name)
 		if (b) then
 			local unitid
 			if (name) then
-				local unit = roster:GetUnitObjectFromName(strmatch(name, "[^-]+"))
-				unitid = unit and unit.unitid
+				unitid = z:GetUnitID(name)
 			end
 			if (not unitid) then
 				unitid = icon:GetAttribute("unit")
 			end
 
-			if (b.class) then
+			if (unitid and b.class) then
 				local count = GetItemCount(21177) - 1		-- symbolOfKings
 				local colourCount
 				if (count < 20) then
@@ -861,19 +856,20 @@ function zb:SayWhatWeDid(icon, spell, name)
 				end
 
 				if (unitid) then
-					self:Print(L["%s on %s (%s%d|r)"], z:ColourBlessing(b.type, true, nil, true), z:ColourClassUnit(unitid), colourCount, count)
+					self:Print(L["%s on %s (%s%d|r)"], z:ColourBlessing(b.type, true, z.db.profile.short, true), z:ColourClassUnit(unitid), colourCount, count)
 
 					-- Now check for any single overrides which need to be done because we did a class buff
 					local unitclass = select(2, UnitClass(unitid))
-					for unit in roster:IterateRoster() do
-						if (unit.class == unitclass) then
-							local unitNeed = template[unit.name]
+					for unit, unitname, class, subgroup, index in z:IterateRoster(true) do
+						if (class == unitclass) then
+							local unitNeed = template[unitname]
 							if (unitNeed) then
 								if (unitNeed ~= b.type) then
-									self:Print(L[" %s now needs %s"], z:ColourUnit(unit.unitid), z:ColourBlessing(unitNeed, nil, nil, true))
+									self:Print(L[" %s now needs %s"], z:ColourUnit(unit), z:ColourBlessing(unitNeed, nil, z.db.profile.short, true))
 								else
 									-- For some reason the exception buff matches the group buff, so we'll remove it and skip it
-									self:ModifyTemplate(unit.name, nil)
+									z:Log("bless", nil, "exception", "SYSTEM", unitname, template[name], nil)
+									self:ModifyTemplate(unitname, nil)
 								end
 							end
 						end
@@ -881,18 +877,8 @@ function zb:SayWhatWeDid(icon, spell, name)
 					return
 				end
 			end
-			self:Print(L["%s on %s"], z:ColourBlessing(b.type, nil, nil, true), tostring(z:ColourUnit(unitid)))
+			self:Print(L["%s on %s"], z:ColourBlessing(b.type, nil, z.db.profile.short, true), tostring(z:ColourUnit(unitid)))
 		end
-	end
-end
-
--- RosterUnitRemoved
-function zb:RosterUnitChanged(newID, newName, newClass, newGroup, newRank, oldName, oldID, oldClass, oldGroup, oldRank)
-	if (not newName and oldName) then
-		self:ModifyTemplate(oldName, nil)
-
-	elseif (oldName and not newName) then
-		z:CheckForChange(zb)
 	end
 end
 
@@ -1118,18 +1104,23 @@ do
 	-- ShowExceptionIcons
 	function zb:ShowExceptionIcons(show, demo)
 		if (show and self.db and self.db.char.icons) then
-			local list
+			local list, ids
 			local demoSpells
 			if (demo) then
 				list = new("Demo1", "Demo2", "Demo3")
 				demoSpells = {"BOM", "BOW", "BOK"}
 			else
 				list = new()
+				ids = new()
 				for name,stuff in pairs(template) do
 					if (name ~= "modified" and name ~= "state" and not classIndex[name]) then
-						local unit = roster:GetUnitObjectFromName(name)
-						if (unit and (not bm or unit.subgroup <= bm.db.profile.groups)) then
-							tinsert(list, name)
+						local unitid = z:GetUnitID(name)
+						if (unitid) then
+							local subgroup = z:GetGroupNumber(unitid)
+							if (not bm or subgroup <= bm.db.profile.groups) then
+								tinsert(list, name)
+								ids[name] = unitid
+							end
 						end
 					end
 				end
@@ -1148,7 +1139,7 @@ do
 				-- roster changes the spell's per unitid will become out of sync,
 				-- so we're making a fixed list and referencing the units by name
 				for i,name in ipairs(list) do
-					local unit = roster:GetUnitObjectFromName(name)
+					local unitid = ids[name]
 
 					local icon = icons[i]
 					if (not icon) then
@@ -1218,12 +1209,12 @@ do
 					icon:SetAttribute("spell", singleSpell)
 					icon.needType = template[name]
 
-					icon.icon:SetTexture(BabbleSpell:GetSpellIcon(singleSpell))
+					icon.icon:SetTexture(z.blessings[singleSpell].icon)
 
 					if (demo) then
 						icon.name:SetText(name)
 					else
-						icon.name:SetText(z:ColourUnit(unit.unitid))
+						icon.name:SetText(z:ColourUnit(unitid))
 					end
 
 					icon:Show()
@@ -1287,7 +1278,39 @@ end
 
 -- UNIT_AURA
 function zb:UNIT_AURA(unit)
-	self:CheckBuffs()
+	if (not InCombatLockdown()) then
+		if (UnitInParty(unit) or UnitInRaid(unit)) then
+			local spell = z.icon and z.icon:GetAttribute("spell")
+			if (spell) then
+				local blessing = z.blessings[spell]
+				if (blessing) then
+					local queuedUnit = z.icon and z.icon:GetAttribute("unit")
+					if (queuedUnit) then
+						local match
+						if (blessing.class) then
+							match = UnitClass(queuedUnit) == UnitClass(unit)
+						else
+							match = UnitIsUnit(unit, queuedUnit)
+						end
+	
+						if (match) then
+							local _, class = UnitClass(unit)
+							local name = UnitName(unit)
+							local needType = template[name] or template[class]
+			
+							local myBuff, otherBuffs, myBuffTimeLeft = GetUnitPalaBuffs(unit)
+							if (not myBuff or (myBuff and myBuff.type == needType) or (otherBuffs and otherBuffs[needType])) then
+								-- They have nothing (clicked off/dispelled) or they just received what they want, so clear this queue item and re-check
+								z:SetupForSpell()
+								self:CheckBuffs()
+							end
+							del(otherBuffs)
+						end
+					end
+				end
+			end
+		end
+	end
 end
 
 -- UNIT_INVENTORY_CHANGED
@@ -1309,12 +1332,12 @@ end
 
 -- ValidateTemplate
 function zb:ValidateTemplate(template, tell)
-	if (template) then
+	if (template and (not self.zoneFlag or self.zoneFlag < GetTime() - 5)) then
 		local any
 		for className,buff in pairs(template) do
 			local single,class = z:GetBlessingFromType(buff)
 			if (single) then
-				if (not IsSpellInRange(single, "player")) then
+				if (not GetSpellInfo(single)) then			-- not IsSpellInRange(single, "player")) then
 					if (buff == "BOK") then
 						newBuff = "BOM"
 					else
@@ -1322,7 +1345,7 @@ function zb:ValidateTemplate(template, tell)
 					end
 					local newSingle = z:GetBlessingFromType(newBuff)
 					if (not IsSpellInRange(newSingle, "player")) then	-- Is only <no value> if it doesn't exist, else it's 1 or 0
-						newSingle = nil
+						newBuff = nil
 					end
 					if (not any) then
 						any = true
@@ -1351,10 +1374,22 @@ end
 -- SPELLS_CHANGED
 function zb:SPELLS_CHANGED()
 	clickList = nil
+	z:CheckForChange(self)
+	local bm = ZOMGBlessingsManager
+	if (bm) then
+		bm:OnSpellsChanged(playerName)
+	end
+end
+
+-- CHARACTER_POINTS_CHANGED
+function zb:CHARACTER_POINTS_CHANGED()
+	clickList = nil
 	self:ValidateTemplate(template, true)
 	z:CheckForChange(self)
-	if (not z.zoneFlag) then
-		z:SendCommMessage("GROUP", "SPELLS_CHANGED")
+	z:SendCommMessage("GROUP", "SPELLS_CHANGED")
+	local bm = ZOMGBlessingsManager
+	if (bm) then
+		bm:OnSpellsChanged(playerName)
 	end
 end
 
@@ -1362,7 +1397,7 @@ end
 function zb:TooltipOnClickException(name)
 	if (name) then
 		if (IsShiftKeyDown()) then
-			z:Log("bless", nil, "exception", UnitName("player"), name, template[name])
+			z:Log("bless", nil, "exception", playerName, name, template[name])
 			self:ModifyTemplate(name, nil)
 		else
 			local t = template[name]
@@ -1373,6 +1408,9 @@ function zb:TooltipOnClickException(name)
 						tinsert(clickList, v.type)
 					end
 				end
+			end
+			if (#clickList == 0) then
+				return
 			end
 
 			local index = 1
@@ -1397,7 +1435,7 @@ function zb:TooltipOnClickException(name)
 				end
 			end
 
-			z:Log("bless", nil, "change", UnitName("player"), name, template[name], newType)
+			z:Log("bless", nil, "change", playerName, name, template[name], newType)
 
 			self:ModifyTemplate(name, newType)
 		end
@@ -1431,8 +1469,7 @@ function zb:TooltipUpdate(cat)
 		local any
 		for k,v in pairs(template) do
 			if (k ~= "default" and k ~= "modified" and k ~= "state" and not classIndex[k]) then
-				local unit = roster:GetUnitObjectFromName(k)
-				if (unit) then		-- Only show exceptions for people in group
+				if (UnitInRaid(k) or UnitInParty(k)) then		-- Only show exceptions for people in group
 					if (not any) then
 						any = true
 						cat:AddLine('text', " ")
@@ -1457,6 +1494,7 @@ end
 -- OnModuleInitialize
 function zb:OnModuleInitialize()
 	playerClass = select(2, UnitClass("player"))
+	playerName = UnitName("player")
 	if (playerClass ~= "PALADIN") then
 		return
 	end
@@ -1481,37 +1519,48 @@ function zb:OnModuleInitialize()
 	self.OnMenuRequest = self.options
 	z.options.args.ZOMGBlessings = self.options
 
-	z:RegisterSetClickSpells(self, function(self, cell)
-		local t = zb.db.char.templates.current
-		local partyid = cell:GetAttribute("unit")
-		local unit = partyid and roster:GetUnitObjectFromUnit(partyid)
-		if (unit) then
-			local need = t[unit.name]
-			local singleMod, singleButton = z:GetActionClick("singleblessing")
-			local greaterMod, greaterButton = z:GetActionClick("greaterblessing")
+	z:RegisterSetClickSpells(self,
+		function(self, cell)
+			local t = zb.db.char.templates.current
+			local partyid = cell:GetAttribute("unit")
+			if (partyid) then
+				local name = UnitName(partyid)
+				local need = t[name]
+				local singleMod, singleButton = z:GetActionClick("singleblessing")
+				local greaterMod, greaterButton = z:GetActionClick("greaterblessing")
 
-			if (need) then
-				z:SetACellSpell(cell, singleMod, singleButton, z:GetBlessingFromType(need))
-				z:SetACellSpell(cell, greaterMod, greaterButton, z:GetBlessingFromType(need))
-				return
-			else
-				need = t[unit.class]
 				if (need) then
 					z:SetACellSpell(cell, singleMod, singleButton, z:GetBlessingFromType(need))
-					z:SetACellSpell(cell, greaterMod, greaterButton, select(2, z:GetBlessingFromType(need)))
+					z:SetACellSpell(cell, greaterMod, greaterButton, z:GetBlessingFromType(need))
 					return
+				else
+					local _, class = UnitClass(partyid)
+					need = t[class]
+					if (need) then
+						z:SetACellSpell(cell, singleMod, singleButton, z:GetBlessingFromType(need))
+						z:SetACellSpell(cell, greaterMod, greaterButton, select(2, z:GetBlessingFromType(need)))
+						return
+					end
 				end
 			end
-		end
+			z:ClearClickSpells(cell)
+		end)
 
-		z:ClearClickSpells(cell)
-	end)
+	-- GIVETEMPLATE - Comes from Blessing Manager generated and broadcasted templates
+	z.OnCommReceive.GIVETEMPLATE = function(self, prefix, sender, channel, newTemplate, quiet, playerRequested, retry)
+		if (zb:IsAllowedToChangeMe(sender)) then
+			if (not newTemplate or not next(newTemplate)) then
+				z:SendCommMessage("WHISPER", sender, "NACK", not retry)
+				return
+			end
 
-	z.OnCommReceive.GIVETEMPLATE = function(self, prefix, sender, channel, newTemplate, quiet, playerRequested)
-		local senderUnit = roster:GetUnitObjectFromName(sender)
-		if (senderUnit.class == "PALADIN" or senderUnit.rank > 0) then
 			if (not quiet) then
 				zb:Print(L["Received Blessings Manager template from %s"], z:ColourUnitByName(sender))
+				local bm = ZOMGBlessingsManager
+				if (bm) then
+					bm.whoGenerated, bm.whenGenerated = sender, time()
+					bm:DoTitle()
+				end
 			end
 
 			if (template.modified) then
@@ -1530,14 +1579,15 @@ function zb:OnModuleInitialize()
 
 			z:UpdateTooltip()
 
-			zb:OnModifyTemplate(class, type, true)	-- Need to do this so that other non-paladins will see the update in manager
+			zb:BroadcastTemplate(true)			-- Need to do this so that other non-paladins will see the update in manager
 			z:SendCommMessage("WHISPER", sender, "ACK", nil)
 		end
 	end
-	
+
+	-- REQUESTTEMPLATE - Comes from Blessing Manager on startup to query the Paladin's current assignments
 	z.OnCommReceive.REQUESTTEMPLATE = function(self, prefix, sender, channel)
 		if (sender == UnitName("player")) then
-			local bm = ZOMGBlessingsManger
+			local bm = ZOMGBlessingsManager
 			if (bm) then
 				bm:OnReceiveTemplate(sender, template)
 				bm:OnReceiveSymbolCount(sender, GetItemCount(21177))
@@ -1545,7 +1595,7 @@ function zb:OnModuleInitialize()
 			end
 		end
 		z:SendCommMessage("WHISPER", sender, "TEMPLATE", template)
-		z:SendCommMessage("WHISPER", sender, "SYMBOLCOUNT", GetItemCount(21177))	-- symbolOfKings))
+		z:SendCommMessage("WHISPER", sender, "SYMBOLCOUNT", GetItemCount(21177))
 	end
 
 	if (not self.db.char.templates.current or not self.db.char.selectedTemplate) then
@@ -1556,36 +1606,31 @@ function zb:OnModuleInitialize()
 	end
 	template = zb.db.char.templates.current
 
+	z:RegisterBuffer(self)
+
 	self.OnModuleInitialize = nil
+end
+
+-- IsAllowedToChangeMe
+function zb:IsAllowedToChangeMe(unitname)
+	local _, class = UnitClass(unitname)
+	return class == "PALADIN" or z:UnitRank(unitname) > 0
 end
 
 -- OnReceiveTemplatePart
 function zb:OnReceiveTemplatePart(sender, name, class, buff)
 	if (name == playerName) then
-		local unit = roster:GetUnitObjectFromName(sender)
-		if (unit.class == "PALADIN" or unit.rank > 0) then
+		if (self:IsAllowedToChangeMe(sender)) then
 			self.noBroadcast = true
+			if (classIndex[name]) then
+				z:Log("bless", nil, "change", sender, class, template[class], buff)
+			else
+				z:Log("bless", nil, "exception", sender, name, template[name], buff)
+			end
 			self:ModifyTemplate(class, buff)
 			self.noBroadcast = nil
 		end
 	end
-end
-
--- OnLogEnabled
-function zb:OnLogEnabled()
-	ZOMGLog:Register("bless",
-		function(code, a, b, c, d)
-			if (code == "change") then
-				return format(L["Changed %s's template - %s from %s to %s"], z:ColourUnitByName(a), z:ColourClass(b), (c and z:ColourBlessing(c,nil,true)) or "none", (d and z:ColourBlessing(d,nil,true)) or "none")
-			elseif (code == "exception") then
-				return format(L["Changed %s's exception - %s from %s to %s"], z:ColourUnitByName(a), z:ColourUnitByName(b), (c and z:ColourBlessing(c,nil,true)) or "none", (d and z:ColourBlessing(d,nil,true)) or "none")
-			elseif (code == "select") then
-				return format(L["Loaded template '%s'"], tostring(a))
-			elseif (code == "save") then
-				return format(L["Saved template '%s'"], tostring(a))
-			end
-		end
-	)
 end
 
 -- OnResetDB
@@ -1613,11 +1658,12 @@ function zb:OnModuleEnable()
 	}
 	z:MakeOptionsReagentList()
 
-	if (select(2, UnitClass("player")) == "PALADIN") then
-		self:RegisterBucketEvent("UNIT_AURA", 0.2)				-- We don't care who
-		self:RegisterEvent("RosterLib_UnitChanged", "RosterUnitChanged")
+	if (class == "PALADIN") then
+		self:RegisterEvent("UNIT_AURA")
+		--self:RegisterBucketEvent("UNIT_AURA", 0.2, "CheckBuffs")				-- We don't care who
 		self:RegisterBucketEvent("UNIT_INVENTORY_CHANGED", 0.2)
 		self:RegisterBucketEvent("SPELLS_CHANGED", 0.2)
+		self:RegisterBucketEvent("CHARACTER_POINTS_CHANGED", 5)		-- Throttle points spending spam from Talented by clumping
 	end
 	z:CheckForChange(self)
 

@@ -1,4 +1,4 @@
-﻿## Interface: 20300
+﻿## Interface: 20400
 ## Title: Automaton
 ## Notes: Reduces interface tedium by doing the little things for you.
 ## Notes-zhCN: 自动帮你完成一些界面上的操作。
@@ -12,10 +12,10 @@
 ## X-RelSite-WoWI: 5610
 ## X-AceForum: 2887
 
-## OptionalDeps: Ace2, AbacusLib, DewdropLib, FuBarPlugin-2.0, GratuityLib, Waterfall-1.0
+## OptionalDeps: Ace2, AbacusLib, DewdropLib, FuBarPlugin-2.0
 ## SavedVariables: AutomatonDB
 
-## X-Embeds: Ace2, AbacusLib, DewdropLib, FuBarPlugin-2,0, GratuityLib, Waterfall-1.0
+## X-Embeds: Ace2, AbacusLib, DewdropLib, FuBarPlugin-2.0
 embeds.xml
 
 Core.lua

@@ -1,16 +1,18 @@
-local VERSION = tonumber(("$Revision: 60067 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 73474 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_ScrollAreas = Parrot:NewModule("ScrollAreas", "LibRockTimer-1.0")
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-02-02 18:43:10 -0500 (Sat, 02 Feb 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-11 11:44:45 -0400 (Sun, 11 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 --#AUTODOC_NAMESPACE Parrot_ScrollAreas
 
-local L = Parrot:L("Parrot_ScrollAreas")
+-- local L = Parrot:L("Parrot_ScrollAreas")
+-- TODO make modular
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_ScrollAreas")
 
 local scrollAreas
 
@@ -528,7 +530,7 @@ function Parrot_ScrollAreas:OnOptionsCreate()
 		DISABLE = L["Disable"],
 	}
 	local function makeOption(k)
-		local SharedMedia = Rock("LibSharedMedia-2.0")
+		local SharedMedia = Rock("LibSharedMedia-3.0")
 		local v = scrollAreas[k]
 		local name = k
 		if name == "Notification" or name == "Incoming" or name == "Outgoing" then

@@ -1,17 +1,14 @@
-﻿## Interface: 20300
-## Title:  MapNotes |c0000FF00(v4.14.20300)|r
-## Title-zhCN: |r|cFF0099FF<MapNotes>|r 地图标记
-## Title-zhTW: 地圖標記
+## Interface: 20400
+## Title: MapNotes |c0000FF00(4.15.20400)|r
 ## Author: Telic (originally ciphersimian)
 ## eMail: telic@hotmail.co.uk
-## Version: 4.14.20300
+## Version: 4.15.20400
 ## URL: See README for download sites
 ## Notes: Adds a note system to the WorldMap - Other AddOns can also now 'Plug In' and allow notes to be made on their frames eg AlphaMap
-## Notes-zhCN: 在地图上增加标记.
-## Notes-deDE: Erm鰃licht es Notizen auf der Karte zu platzieren.
+## Notes-deDE: Erm�glicht es Notizen auf der Karte zu platzieren.
 ## Notes-enUS: Adds a note system to the Worldmap.
-## Notes-frFR: Ajoute la possibilit?de cr閑r des annotations sur votre carte du monde.
-## Notes-koKR: 靹戈硠 歆€霃勳棎 氅旊 鞁滌姢韰滌潉 於旉皜頃╇媹雼?
+## Notes-frFR: Ajoute la possibilit� de cr�er des annotations sur votre carte du monde.
+## Notes-koKR: 세계 지도에 메모 시스템을 추가합니다.
 ## RequiredDeps:
 ## OptionalDeps: Thottbot, myAddOns, SilverTrack
 ## DefaultState: enabled

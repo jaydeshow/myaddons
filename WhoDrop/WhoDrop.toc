@@ -5,9 +5,10 @@
 ## Version: 0.655
 ## Notes: Add Item Drop info in tooltip(Base on NuguDrop, Niagara, ColaLight)
 ## Notes-zhCN: 在提示框里增加物品掉落信息(Translate by ggcall)
+## Notes-zhTW: 在工具提示裡顯示物品掉落訊息
 ## Notes-koKR: 아이템의 드랍 정보를 툴팁에 표시합니다.(NuguDrop, Niagra, ColaLight 참조)
-## OptionalDeps: Ace2, FuBar, FuBarPlugin-2.0, Waterfall-1.0, TipHookerLib
-## X-Embeds: Ace2, FuBarPlugin-2.0, TabletLib, Waterfall-1.0, TipHookerLib
+## OptionalDeps: Ace2, FuBar, FuBarPlugin-2.0, Waterfall-1.0, TipHookerLib, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, LibBabble-Inventory-3.0, LibBabble-Class-3.0
+## X-Embeds: Ace2, FuBarPlugin-2.0, TabletLib, Waterfall-1.0, TipHookerLib, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, LibBabble-Inventory-3.0, LibBabble-Class-3.0
 ## X-Category: Interface Enhancements
 ## X-eMail: damjau@naver.com
 ## SavedVariables: WhoDropDB
@@ -16,6 +17,7 @@ embeds.xml
 
 WhoDrop.Locales.enUS.lua
 WhoDrop.Locales.zhCN.lua
+WhoDrop.Locales.zhTW.lua
 WhoDrop.Locales.koKR.lua
 WhoDropData_Drop.lua
 WhoDropData_ETC.lua

@@ -1,4 +1,6 @@
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -11,39 +13,39 @@ local L = AceLibrary("AceLocale-2.2"):new("oRAOResurrection")
 ----------------------------
 
 L:RegisterTranslations("enUS", function() return {
-	["Resurrection Monitor"] = true,
+	["Resurrections"] = true,
 	["Optional/Resurrection"] = true,
 	["Options for the resurrection monitor."] = true,
 } end)
 
 L:RegisterTranslations("koKR", function() return {
-	["Resurrection Monitor"] = "부활 현황",
+	["Resurrections"] = "부활",
 	["Optional/Resurrection"] = "부가/부활",
 	["Options for the resurrection monitor."] = "부활 현황 설정입니다.",
 } end)
 
 L:RegisterTranslations("zhCN", function() return {
-	["Resurrection Monitor"] = "复活监视器",
-	["Optional/Resurrection"] = "选择/复活",
-	["Options for the resurrection monitor."] = "复活监视器选项。",
+	["Resurrections"] = "复活监视",
+	["Optional/Resurrection"] = "选择/复活监视",
+	["Options for the resurrection monitor."] = "复活监视选项。",
 } end)
 
 L:RegisterTranslations("zhTW", function() return {
-	["Resurrection Monitor"] = "復活監視器",
+	["Resurrections"] = "復活監視",
 	["Optional/Resurrection"] = "可選/復活",
 	["Options for the resurrection monitor."] = "復活監視器選項",
 } end)
 
 L:RegisterTranslations("frFR", function() return {
-	["Resurrection Monitor"] = "Résurrections",
+	["Resurrections"] = "Résurrections",
 	["Optional/Resurrection"] = "Optionnel/Résurrections",
 	["Options for the resurrection monitor."] = "Options concernant le moniteur des résurrections.",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	["Resurrection Monitor"] = "Wiederbelebungsmonitor",
+	["Resurrections"] = "Wiederbelebungen",
 	["Optional/Resurrection"] = "Wahlweise/Wiederbelebung",
-	["Options for the resurrection monitor."] = "Optionen f\195\188r den Wiederbelebungsmonitor",
+	["Options for the resurrection monitor."] = "Optionen für den Wiederbelebungsmonitor.",
 } end)
 
 ----------------------------------
@@ -62,11 +64,10 @@ mod.consoleCmd = "resurrection"
 mod.consoleOptions = {
 	type = "group",
 	desc = L["Options for the resurrection monitor."],
-	name = L["Resurrection Monitor"],
+	name = L["Resurrections"],
 	disabled = function() return not oRA:IsActive() end,
 	handler = mod,
-	args = {
-	},
+	args = {},
 }
 
 ------------------------------
@@ -77,33 +78,26 @@ local ressers = nil
 local text = nil
 
 function mod:OnEnable()
-	self.enabled = nil
+	oRA:MakeDraggableWindow(L["Resurrections"], "oRAResurrectionFrame", mod.consoleOptions, self.db.profile)
 
-	oRA:MakeDraggableWindow(L["Resurrection Monitor"], "oRAResurrectionFrame", mod.consoleOptions, self.db.profile)
-
-	self:RegisterEvent("oRA_LeftRaid", "DisableMonitor")
-	self:RegisterEvent("oRA_JoinedRaid")
+	self:RegisterCheck("RES", "oRA_ResurrectionStart")
+	self:RegisterCheck("RESNO", "oRA_ResurrectionStop")
+	self:RegisterCheck("CANRES", "oRA_PlayerCanResurrect")
+	self:RegisterCheck("RESSED", "oRA_PlayerResurrected")
+	self:RegisterCheck("NORESSED", "oRA_PlayerNotResurrected")
+	self:RegisterBucketEvent("RAID_ROSTER_UPDATE", 4, "CheckMonitor")
 end
 
 function mod:OnDisable()
-	self:DisableMonitor()
+	if self.frame then
+		self.frame:Hide()
+	end
+	ressers = self:del(ressers)
 end
 
 ------------------------
 --   Event Handlers   --
 ------------------------
-
-function mod:oRA_JoinedRaid()
-	if not self.enabled then
-		self.enabled = true
-		self:RegisterCheck("RES", "oRA_ResurrectionStart")
-		self:RegisterCheck("RESNO", "oRA_ResurrectionStop")
-		self:RegisterCheck("CANRES", "oRA_PlayerCanResurrect")
-		self:RegisterCheck("RESSED", "oRA_PlayerResurrected")
-		self:RegisterCheck("NORESSED", "oRA_PlayerNotResurrected")
-		self:RegisterBucketEvent("RAID_ROSTER_UPDATE", 4, "CheckMonitor")
-	end
-end
 
 function mod:CheckMonitor()
 	if not ressers then return end
@@ -115,7 +109,7 @@ function mod:CheckMonitor()
 			update = true
 		end
 	end
-	if update and self.enabled and not self.db.profile.hidden then
+	if update then
 		self:UpdateFrame()
 	end
 end
@@ -153,23 +147,6 @@ end
 --  Utility Functions  --
 -------------------------
 
-function mod:DisableMonitor()
-	self.enabled = nil
-	if self.frame and self.frame:IsVisible() then
-		self.frame:Hide()
-	end
-	if self:IsBucketEventRegistered("RAID_ROSTER_UPDATE") then
-		self:UnregisterBucketEvent("RAID_ROSTER_UPDATE")
-	end
-	self:UnregisterCheck("RES")
-	self:UnregisterCheck("RESNO")
-	self:UnregisterCheck("CANRES")
-	self:UnregisterCheck("RESSED")
-	self:UnregisterCheck("NORESSED")
-
-	ressers = self:del(ressers)
-end
-
 function mod:OnCreateFrame()	-- called by core window handler
 	self.frame:SetWidth(175)
 	self.frame:SetHeight(50)
@@ -181,6 +158,8 @@ function mod:OnCreateFrame()	-- called by core window handler
 	text:Show()
 	text:ClearAllPoints()
 	text:SetPoint("TOP", self.frame.title, "BOTTOM", 0, -5)
+
+	self.frame:Hide()
 end
 
 function mod:OnToggleFrame(v)  -- called by core window handler
@@ -193,12 +172,11 @@ function mod:UpdateFrame()
 	if ressers and self.frame and self.frame:IsVisible() then
 		local t = self:new()
 		for key, val in pairs(ressers) do
-			tinsert(t, string.format("%s: %s", key, val))
+			tinsert(t, string.format("%s: %s", self.coloredNames[key], self.coloredNames[val]))
 		end
 		table.sort(t)
-		local txt = table.concat(t, "\n")
+		text:SetText(table.concat(t, "\n"))
 		t = self:del(t)
-		text:SetText(txt)
 		self.frame:SetWidth(math.max(text:GetWidth()+15, 175))
 		self.frame:SetHeight(math.max(text:GetHeight()+30, 50))
 	end

@@ -1,11 +1,14 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: JewelTips |cff7fff7f -Ace2-|r
 ## Notes: Show extra information about Jewels and Enchants in tooltips.
+## Notes-zhCN: 在物品链接上显示珠宝及附魔的额外信息。
+## Notes-zhTW: 在工具提示上顯示珠寶及附魔的額外資訊。
 ## Author: Siz
-## Version: 0.5.6
-## OptionalDeps: Ace2, Babble-2.2
-## X-Embeds: Ace2, Babble-2.2
+## Version: 0.5.7
+## OptionalDeps: Ace2
+## X-Embeds: Ace2
 ## X-Category: Interface Enhancements
+## X-AceForum: 10296
 
 embeds.xml
 

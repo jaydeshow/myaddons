@@ -1,12 +1,13 @@
-
 assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
 ------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("oRAPReady")
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 ----------------------------
 --      Localization      --
@@ -84,7 +85,7 @@ L:RegisterTranslations("frFR", function() return {
 	["Toggle an audio warning upon a ready check or vote."] = "Joue ou non un avertissement sonore lors d'un appel ou d'un vote.",
 	["Ready"] = "Prêt",
 	["Not Ready"] = "Pas prêt",
-	["Are you Ready?"] = "Êtes-vous prêt ?",
+	["Are you Ready?"] = "Êtes-vous prêt ?",
 	["Yes"] = "Oui",
 	["No"] = "Non",
 	["Ready Check"] = "Appel",
@@ -96,19 +97,19 @@ L:RegisterTranslations("frFR", function() return {
 } end)
 
 L:RegisterTranslations("deDE", function() return {
-	["Options for ready checks and votes."] = "Optionen f\195\188r Bereichtschaftschecks und Abstimmungen.",
+	["Options for ready checks and votes."] = "Optionen für Bereichtschaftschecks und Abstimmungen.",
 	["Sound"] = "Sound",
 	["Toggle an audio warning upon a ready check or vote."] = "Bei einem Bereitschaftscheck oder einer Abstimmung einen Warnton ausgeben.",
 	["Ready"] = "Bereitschaft",
 	["Not Ready"] = "Nicht Bereit",
-	["Are you Ready?"] = "Bist du Bereit?",
+	["Are you Ready?"] = "Bist Du Bereit?",
 	["Yes"] = "Ja",
 	["No"] = "Nein",
 	["Ready Check"] = "Bereitschaftscheck",
 	["Vote"] = "Abstimmung",
 	["Participant/Ready"] = "Teilnehmer/Bereitschaft",
-	["Closing Vote"] = "Schlie\195\159e Abstimmung",
-	["Closing Check"] = "Schlie\195\159e Bereitschaftcheck",
+	["Closing Vote"] = "Schließe Abstimmung",
+	["Closing Check"] = "Schließe Bereitschaftcheck",
 } end)
 
 ----------------------------------

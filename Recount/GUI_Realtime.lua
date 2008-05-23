@@ -1,10 +1,12 @@
 local Graph = LibStub:GetLibrary("LibGraph-2.0")
-local L = AceLibrary("AceLocale-2.2"):new("Recount")
--- local Graph = AceLibrary("Graph-1.0")
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale( "Recount" )
 local me={}
 local FreeWindows={}
 local WindowNum=1
-local dewdrop = AceLibrary("Dewdrop-2.0")
+
+local revision = tonumber(string.sub("$Revision: 71617 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
 
 function me:ResizeRealtimeWindow()
 	self.Graph:SetWidth(self:GetWidth()-3)
@@ -37,6 +39,15 @@ function me:DetermineGridSpacing()
 	self.Graph:SetGridColorSecondary({0.5,0.5,0.5,0.5*Inbetween})
 end
 
+function Recount:UpdateTitle(theFrame)
+	if theFrame:IsShown() then
+		if theFrame.UpdateTitle then theFrame:UpdateTitle() else
+			Recount:Print("Function UpdateTitle missing, please report stack!")
+			Recount:Print(debugstack(2, 3, 2))
+		end
+	end
+end
+
 function me:UpdateTitle()
 	self:DetermineGridSpacing()
 	
@@ -61,20 +72,34 @@ function me:SavePosition()
 	xOfs = xOfs*s - GetScreenWidth()*uis/2
 	yOfs = yOfs*s - GetScreenHeight()*uis/2
 	
-	if self.id and Recount.db.char.RealtimeWindows[self.id] ~= nil then -- Elsia: Fixed bug for free'd realtime windows
-		Recount.db.char.RealtimeWindows[self.id][4]=xOfs/uis
-		Recount.db.char.RealtimeWindows[self.id][5]=yOfs/uis
-		Recount.db.char.RealtimeWindows[self.id][6]=self:GetWidth()
-		Recount.db.char.RealtimeWindows[self.id][7]=self:GetHeight()
-		Recount.db.char.RealtimeWindows[self.id][8]=true
+	if self.id and Recount.db.profile.RealtimeWindows[self.id] ~= nil then -- Elsia: Fixed bug for free'd realtime windows
+		Recount.db.profile.RealtimeWindows[self.id][4]=xOfs/uis
+		Recount.db.profile.RealtimeWindows[self.id][5]=yOfs/uis
+		Recount.db.profile.RealtimeWindows[self.id][6]=self:GetWidth()
+		Recount.db.profile.RealtimeWindows[self.id][7]=self:GetHeight()
+		Recount.db.profile.RealtimeWindows[self.id][8]=true
 	end
 end
 
 function me:FreeWindow()
 	Recount:UnregisterTracking(this.id,this.who,this.tracking)
 	table.insert(FreeWindows,this)
-	Recount:CancelScheduledEvent(this.id)
-	Recount.db.char.RealtimeWindows[this.id][8]=false -- Elsia: set closed state
+	Recount:CancelTimer(this.idtoken)
+	if not Recount.profilechange then
+		Recount.db.profile.RealtimeWindows[this.id][8]=false -- Elsia: set closed state
+	end
+end
+
+function me:RestoreWindow()
+	Recount.db.profile.RealtimeWindows[this.id][8]=true -- Elsia: it's open again
+	Recount:RegisterTracking(this.id,this.who,this.tracking,this.Graph.AddTimeData,this.Graph)
+	for i,v in ipairs(FreeWindows) do
+		if v == this then
+			table.remove(FreeWindows,i)
+		end
+	end
+	this.UpdateTitle=me.UpdateTitle
+	this.idtoken=Recount:ScheduleRepeatingTimer("UpdateTitle",0.1,this)
 end
 
 function me:SetRealtimeColor()
@@ -82,52 +107,107 @@ function me:SetRealtimeColor()
 end
 
 local WhichWindow
-local Menu={
-	{
-		text = L["Top Color"],
-		colorFunc = function(r,g,b,a) Recount.Colors:EditColor("Realtime",WhichWindow.TitleText.." Top",WhichWindow) end, -- Elsia: Using EditColor allows to attach
-		hasColorSwatch = true,
-		r = 1,
-		g = 1,
-		b = 1,
-		a = 1,
-		hasOpacity = true,
-		notCheckable=true
-	},
-	{
-		text = L["Bottom Color"],
-		colorFunc = function(r,g,b,a) Recount.Colors:EditColor("Realtime",WhichWindow.TitleText.." Bottom",WhichWindow) end,
-		hasColorSwatch = true,
-		r = 1,
-		g = 1,
-		b = 1,
-		a = 1,
-		hasOpacity = true,
-		notCheckable=true
-	},
+local Cur_Branch
+local Cur_Name
+local TempColor={}
 
-}
+local function Color_Change()
+	local r, g, b = ColorPickerFrame:GetColorRGB()
+	
+	TempColor.r=r
+	TempColor.g=g
+	TempColor.b=b
+	if not ColorPickerFrame.hasOpacity then
+		TempColor.a=nil
+	else
+		TempColor.a=OpacitySliderFrame:GetValue()
+	end
+	
+	Recount.Colors:SetColor(Cur_Branch,Cur_Name,TempColor)
+end
 
-function me:CreateDewdrop()
-	local TopColor,BotColor
-	TopColor=Recount.Colors:GetColor("Realtime",WhichWindow.TitleText.." Top")
-	BotColor=Recount.Colors:GetColor("Realtime",WhichWindow.TitleText.." Bottom")
+local function Opacity_Change()	
+	local r, g, b = ColorPickerFrame:GetColorRGB()
+	local a=OpacitySliderFrame:GetValue()
 
-	Menu[1].r=TopColor.r
-	Menu[1].g=TopColor.g
-	Menu[1].b=TopColor.b
-	Menu[1].opacity=TopColor.a
+	TempColor.r=r
+	TempColor.g=g
+	TempColor.b=b
+	TempColor.a=a	
 
-	Menu[2].r=BotColor.r
-	Menu[2].g=BotColor.g
-	Menu[2].b=BotColor.b
-	Menu[2].opacity=BotColor.a
+	Recount.Colors:SetColor(Cur_Branch,Cur_Name,TempColor)
+end
 
-	dewdrop:FeedTable(Menu)
+local info = {}
+local function Recount_CreateColorDropdown(level)
+	if (not level) then return end
+	for k in pairs(info) do info[k] = nil end
+	if (level == 1) then
+		-- Create the title of the menu
+		local TopColor,BotColor
+
+		TopColor=Recount.Colors:GetColor("Realtime",WhichWindow.TitleText.." Top")
+		BotColor=Recount.Colors:GetColor("Realtime",WhichWindow.TitleText.." Bottom")
+
+		
+		
+		info.isTitle		= 1
+		info.hasColorSwatch = 1
+		info.r = TopColor.r
+		info.g = TopColor.g
+		info.b = TopColor.b
+		info.hasOpacity = 1
+		info.opacity = TopColor.a
+		info.text		= L["Top Color"].." "
+		info.notCheckable	= 1
+		info.swatchFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Top"; Color_Change() end
+		info.opacityFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Top"; Opacity_Change() end
+		UIDropDownMenu_AddButton(info, level)
+
+		info.isTitle		= 1
+		info.hasColorSwatch = 1
+		info.r = BotColor.r
+		info.g = BotColor.g
+		info.b = BotColor.b
+		info.hasOpacity = 1
+		info.opacity = BotColor.a
+		info.text		= L["Bottom Color"].." "
+		info.notCheckable	= 1
+		info.swatchFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Bottom"; Color_Change() end
+		info.opacityFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Bottom"; Opacity_Change() end
+		UIDropDownMenu_AddButton(info, level)
+	end
+end
+
+function Recount:ColorDropDownOpen(myframe)
+	Recount_ColorDropDownMenu = CreateFrame("Frame", "Recount_ColorDropDownMenu", myframe);
+	Recount_ColorDropDownMenu.displayMode = "MENU";
+	Recount_ColorDropDownMenu.initialize	= Recount_CreateColorDropdown;
+	local leftPos = myframe:GetLeft() -- Elsia: Side code adapted from Mirror
+	local rightPos = myframe:GetRight()
+	local side
+	local oside
+	if not rightPos then
+		rightPos = 0
+	end
+	if not leftPos then
+		leftPos = 0
+	end
+
+	local rightDist = GetScreenWidth() - rightPos
+
+	if leftPos and rightDist < leftPos then
+		side = "TOPLEFT"
+		oside = "TOPRIGHT"
+	else
+		side = "TOPRIGHT"
+		oside = "TOPLEFT"
+	end
+	UIDropDownMenu_SetAnchor(0, 0, Recount_ColorDropDownMenu , oside, myframe, side)
 end
 
 function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function creates a new window and stores it. To other ways, either override it's storage or use the other function
-	local theFrame=Recount:CreateFrame(nil,"",232,200,nil, me.FreeWindow)
+	local theFrame=Recount:CreateFrame(nil,"",232,200,me.RestoreWindow, me.FreeWindow)
 
 	theFrame:SetResizable(true)
 
@@ -149,9 +229,15 @@ function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function cr
 
 	theFrame.Title:SetText(theFrame.TitleText.." - 0.0")
 
-	theFrame.DragBottomRight = CreateFrame("Frame", nil, theFrame)
-	theFrame.DragBottomRight:Show()
+	theFrame.DragBottomRight = CreateFrame("Button", nil, theFrame)
+	if not Recount.db.profile.Locked then
+		theFrame.DragBottomRight:Show()
+	else
+		theFrame.DragBottomRight:Hide()
+	end
 	theFrame.DragBottomRight:SetFrameLevel( theFrame:GetFrameLevel() + 10)
+	theFrame.DragBottomRight:SetNormalTexture("Interface\\AddOns\\Recount\\ResizeGripRight")
+	theFrame.DragBottomRight:SetHighlightTexture("Interface\\AddOns\\Recount\\ResizeGripRight")
 	theFrame.DragBottomRight:SetWidth(16)
 	theFrame.DragBottomRight:SetHeight(16)
 	theFrame.DragBottomRight:SetPoint("BOTTOMRIGHT", theFrame, "BOTTOMRIGHT", 0, 0)
@@ -160,9 +246,15 @@ function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function cr
 	theFrame.DragBottomRight:SetScript("OnMouseUp", function() if this:GetParent().isResizing == true then this:GetParent():StopMovingOrSizing(); this:GetParent().isResizing = false;this:GetParent():SavePosition() end end )
 
 
-	theFrame.DragBottomLeft = CreateFrame("Frame", nil, theFrame)
-	theFrame.DragBottomLeft:Show()
+	theFrame.DragBottomLeft = CreateFrame("Button", nil, theFrame)
+	if not Recount.db.profile.Locked then
+		theFrame.DragBottomLeft:Show()
+	else
+		theFrame.DragBottomLeft:Hide()
+	end
 	theFrame.DragBottomLeft:SetFrameLevel( theFrame:GetFrameLevel() + 10)
+	theFrame.DragBottomLeft:SetNormalTexture("Interface\\AddOns\\Recount\\ResizeGripLeft")
+	theFrame.DragBottomLeft:SetHighlightTexture("Interface\\AddOns\\Recount\\ResizeGripLeft")
 	theFrame.DragBottomLeft:SetWidth(16)
 	theFrame.DragBottomLeft:SetHeight(16)
 	theFrame.DragBottomLeft:SetPoint("BOTTOMLEFT", theFrame, "BOTTOMLEFT", 0, 0)
@@ -175,7 +267,7 @@ function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function cr
 	g:SetGridSpacing(1.0,100)
 	g:SetYMax(120)
 	g:SetXAxis(-10,-0)
-	g:SetMode("EXP")
+	g:SetMode("EXPFAST")
 	g:SetDecay(0.5)
 	g:SetFilterRadius(2)
 	g:SetMinMaxY(100)
@@ -188,9 +280,8 @@ function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function cr
 	g.Window=theFrame
 
 	g:EnableMouse(true)
-	g:SetScript("OnMouseDown",function() WhichWindow=this.Window;dewdrop:Open(this) end)
-	dewdrop:Register(g,'children',me.CreateDewdrop)
 
+	g:SetScript("OnMouseDown",function() WhichWindow=this.Window;Recount:ColorDropDownOpen(WhichWindow);ToggleDropDownMenu(1, nil, Recount_ColorDropDownMenu) end) --, WhichWindow, 0, WhichWindow:GetHeight()); end)
 	
 	theFrame.DetermineGridSpacing=me.DetermineGridSpacing
 	theFrame.Graph=g
@@ -203,7 +294,7 @@ function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function cr
 	theFrame.ResizeRealtimeWindow=me.ResizeRealtimeWindow
 	theFrame.UpdateTitle=me.UpdateTitle
 
-	Recount.db.char.RealtimeWindows[theFrame.id]={who,tracking,ending}
+	Recount.db.profile.RealtimeWindows[theFrame.id]={who,tracking,ending}
 	theFrame:StartMoving()
 	theFrame:StopMovingOrSizing()
 	theFrame:UpdateTitle()
@@ -214,7 +305,7 @@ function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function cr
 	--Need to add it to our window ordering system
 	Recount:AddWindow(theFrame)
 
-	Recount:ScheduleRepeatingEvent(theFrame.id,me.UpdateTitle,0.1,theFrame)
+	theFrame.idtoken=Recount:ScheduleRepeatingTimer("UpdateTitle",0.1,theFrame) -- (me.UpdateTitle
 
 	Recount.Colors:RegisterFunction("Realtime",theFrame.TitleText.." Top",me.SetRealtimeColor,theFrame)
 	Recount.Colors:RegisterFunction("Realtime",theFrame.TitleText.." Bottom",me.SetRealtimeColor,theFrame)
@@ -226,7 +317,7 @@ function Recount:CreateRealtimeWindow(who,tracking,ending)
 
 	local curID = "Realtime_"..who.."_"..tracking
 
-	if Recount.db.char.RealtimeWindows and Recount.db.char.RealtimeWindows[curID] and Recount.db.char.RealtimeWindows[curID][8] == true then -- Don't allow opening twice
+	if Recount.db.profile.RealtimeWindows and Recount.db.profile.RealtimeWindows[curID] and Recount.db.profile.RealtimeWindows[curID][8] == true then -- Don't allow opening twice
 		return
 	end
 
@@ -241,9 +332,11 @@ function Recount:CreateRealtimeWindow(who,tracking,ending)
 		FreeWindows[Window].id=curID
 		FreeWindows[Window].who=who
 		FreeWindows[Window].tracking=tracking
-
+		FreeWindows[Window].tracking=tracking
+		FreeWindows[Window].index = Window
+		
 		local f = FreeWindows[Window]
-		if Recount.db.char.RealtimeWindows and Recount.db.char.RealtimeWindows[FreeWindows[Window].id] then
+		if Recount.db.profile.RealtimeWindows and Recount.db.profile.RealtimeWindows[FreeWindows[Window].id] then
 			Recount:RestoreRealtimeWindowPosition(f,Recount:RealtimeWindowPositionFromID(FreeWindows[Window].id))
 		else
 			f:SetWidth(200)
@@ -255,38 +348,42 @@ function Recount:CreateRealtimeWindow(who,tracking,ending)
 
 		FreeWindows[Window]:UpdateTitle()
 		Recount:RegisterTracking(FreeWindows[Window].id,who,tracking,FreeWindows[Window].Graph.AddTimeData,FreeWindows[Window].Graph)
-		Recount:ScheduleRepeatingEvent(FreeWindows[Window].id,me.UpdateTitle,0.1,FreeWindows[Window])
+		FreeWindows[Window].UpdateTitle=me.UpdateTitle
+		FreeWindows[Window].idtoken=Recount:ScheduleRepeatingTimer("UpdateTitle",0.1,FreeWindows[Window])
+		local tempshowfunc = FreeWindows[Window].ShowFunc
+		FreeWindows[Window].ShowFunc = nil
 		FreeWindows[Window]:Show()
+		FreeWindows[Window].ShowFunc = tempshowfunc
 
 		Recount.Colors:UnregisterItem(FreeWindows[Window])
 		Recount.Colors:RegisterFunction("Realtime",FreeWindows[Window].TitleText.." Top",me.SetRealtimeColor,FreeWindows[Window])
 		Recount.Colors:RegisterFunction("Realtime",FreeWindows[Window].TitleText.." Bottom",me.SetRealtimeColor,FreeWindows[Window])
 
-		Recount.db.char.RealtimeWindows[FreeWindows[Window].id]={who,tracking,ending}
+		Recount.db.profile.RealtimeWindows[FreeWindows[Window].id]={who,tracking,ending}
 		FreeWindows[Window]:SavePosition()
 			
 		table.remove(FreeWindows,Window)
 	else
 
-		if Recount.db.char.RealtimeWindows and Recount.db.char.RealtimeWindows[curID] then
+		if Recount.db.profile.RealtimeWindows and Recount.db.profile.RealtimeWindows[curID] then
 			local x,y,width,height = Recount:RealtimeWindowPositionFromID(curID)
-			f=me:CreateRealtimeWindow(who,tracking,ending)
+			local f=me:CreateRealtimeWindow(who,tracking,ending)
 			Recount:RestoreRealtimeWindowPosition(f,x,y,width,height)
 			f:ResizeRealtimeWindow()
 			f:SavePosition()
 		else
-			f=me:CreateRealtimeWindow(who,tracking,ending)
+			local f=me:CreateRealtimeWindow(who,tracking,ending)
 		end
 	end
 end
 
 function Recount:RealtimeWindowPositionFromID(id)
 	local x,y,width,height
-	if Recount.db.char.RealtimeWindows and Recount.db.char.RealtimeWindows[id] then
-		x = Recount.db.char.RealtimeWindows[id][4]
-		y = Recount.db.char.RealtimeWindows[id][5]
-		width = Recount.db.char.RealtimeWindows[id][6]
-		height = Recount.db.char.RealtimeWindows[id][7]
+	if Recount.db.profile.RealtimeWindows and Recount.db.profile.RealtimeWindows[id] then
+		x = Recount.db.profile.RealtimeWindows[id][4]
+		y = Recount.db.profile.RealtimeWindows[id][5]
+		width = Recount.db.profile.RealtimeWindows[id][6]
+		height = Recount.db.profile.RealtimeWindows[id][7]
 	end
 	return x,y,width,height
 end
@@ -304,4 +401,8 @@ end
 function Recount:CreateRealtimeWindowSized(who,tracking,ending, x, y, width, height)
 	local f=me:CreateRealtimeWindow(who,tracking,ending)
 	Recount:RestoreRealtimeWindowPosition(f,x,y,width,height)
+end
+
+function Recount:CloseAllRealtimeWindows()
+	Recount:HideRealtimeWindows()
 end

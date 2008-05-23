@@ -1,3 +1,7 @@
+
+local revision = tonumber(string.sub("$Revision: 67838 $", 12, -3))
+if Recount.Version < revision then Recount.Version = revision end
+
 local Pets={}
 Pets.Pets={}
 
@@ -14,11 +18,18 @@ function Pets:RemovePet(owner)
 end
 
 function Pets:PetCheck(unit)
+
+	if not unit then
+		Recount:Print("Nil unit")
+		return
+	end
+
 	local PetUnit=unit.."pet"
 	if UnitExists(unit) and UnitExists(PetUnit) then
 		local PetName=UnitName(PetUnit)
 		if PetName=="Unknown" then
-			Recount:ScheduleEvent("PETCHECK_"..unit,Pets.PetCheck,0.1,Pets,unit)
+		
+			Pets:ScheduleTimer("PetCheck",0.1,unit)
 		else
 			Pets:AddPet(UnitName(unit),PetName)
 		end
@@ -37,7 +48,7 @@ function Recount:PLAYER_PET_CHANGED()
 	Pets:PetCheck("player")
 end
 
-function Pets:IsUniquePet(petName)
+function Pets:IsUniquePet(petName, petGUID,petFlags)
 	local owner=nil
 
 	for k,v in pairs(Pets.Pets) do
@@ -79,3 +90,5 @@ function Pets:DumpList()
 		Recount:Print(UnitName(k),v)
 	end
 end
+
+LibStub("AceTimer-3.0"):Embed(Pets)

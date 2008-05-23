@@ -6,8 +6,7 @@ if (GetLocale() == "koKR") then
 -- so I left those in english.
 
 --Invoke libraries
-local BabbleTrade=AceLibrary("Babble-Tradeskill-2.2");
-local BabbleFaction = AceLibrary("Babble-Faction-2.2");
+local BabbleFaction = LibStub("LibBabble-Faction-3.0"):GetLookupTable();
 
 --Table of loot titles
 

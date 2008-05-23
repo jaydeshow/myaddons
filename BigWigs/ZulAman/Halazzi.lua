@@ -75,33 +75,33 @@ L:RegisterTranslations("koKR", function() return {
 	flame_message = "화염 충격: %s",
 
 	icon = "전술 표시",
-	icon_desc = "화염 충격의 대상이된 플레이어에 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
+	icon_desc = "화염 충격의 대상이된 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "À genoux, les idiots… devant la griffe et le croc !",
 
 	totem = "Totem",
-	totem_desc = "Préviens quand Halazzi incante un Totem de foudre.",
-	totem_message = "Arrivée d'un Totem de foudre !",
+	totem_desc = "Prévient quand Halazzi incante un Totem de foudre.",
+	totem_message = "Arrivée d'un Totem de foudre !",
 
 	phase = "Phase",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	phase_spirit = "L'esprit en moi, il est indompté…",
 	phase_normal = "Esprit, reviens à moi !",
-	normal_message = "Phase normale !",
-	spirit_message = "%d%% PV ! - Phase esprit !",
-	spirit_soon = "Phase esprit imminente !",
+	normal_message = "Phase normale !",
+	spirit_message = "%d%% PV ! - Phase esprit !",
+	spirit_soon = "Phase esprit imminente !",
 	spirit_bar = "~Phase normale probable",
 
 	frenzy = "Frénésie",
-	frenzy_desc = "Préviens quand Halazzi entre en frénésie.",
+	frenzy_desc = "Prévient quand Halazzi entre en frénésie.",
 	frenzy_trigger = "%s part dans une frénésie meurtrière !",
-	frenzy_message = "Frénésie !",
+	frenzy_message = "Frénésie !",
 
 	flame = "Horion de flammes",
-	flame_desc = "Préviens quand un joueur subit les effets de l'Horion de flammes.",
-	flame_message = "Horion de flammes : %s",
+	flame_desc = "Prévient quand un joueur subit les effets de l'Horion de flammes.",
+	flame_message = "Horion de flammes : %s",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par l'Horion de flammes (nécessite d'être promu ou mieux).",
@@ -111,29 +111,29 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "在利爪与尖牙面前，下跪吧，祈祷吧，颤栗吧！",
 
 	totem = "图腾",
-	totem_desc = "当哈尔拉兹施放一闪电图腾时发出警报。",
+	totem_desc = "当施放闪电图腾时发出警报。",
 	totem_message = "即将 闪电图腾！",
 
 	phase = "阶段",
-	phase_desc = "阶段变化警报。",
+	phase_desc = "当阶段变化时发出警报。",
 	phase_spirit = "狂野的灵魂与我同在……",
 	phase_normal = "灵魂，到我这里来！",
 	normal_message = "正常阶段！",
-	spirit_message = "%d%% 生命值！ - 灵魂阶段！",
+	spirit_message = "%d%% 生命值！- 灵魂阶段！",
 	spirit_soon = "即将灵魂阶段！",
 	spirit_bar = "<可能 正常阶段>",
 
 	frenzy = "狂乱",
-	frenzy_desc = "狂乱警报。",
-	frenzy_trigger = "%s获得了狂乱的效果。",
-	frenzy_message = "哈尔拉玆 狂乱！",
+	frenzy_desc = "当狂乱时发出警报。",
+	frenzy_trigger = "%s变得极为狂暴！",
+	frenzy_message = "哈尔拉玆 狂乱！- 凝神射击！",
 
 	flame = "烈焰震击",
-	flame_desc = "当玩家受到烈焰震击发出警报。",
+	flame_desc = "当玩家受到烈焰震击时发出警报。",
 	flame_message = "烈焰震击：>%s<！",
 
 	icon = "团队标记",
-	icon_desc = "使用团队标记标出受烈焰震击的玩家。(需要权限)",
+	icon_desc = "使用团队标记标出受烈焰震击的玩家。（需要权限）",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -150,7 +150,7 @@ L:RegisterTranslations("zhTW", function() return {
 	normal_message = "普通階段!",
 	spirit_message = "%d%% HP! - 靈魂階段!",
 	spirit_soon = "靈魂階段即將來臨!",
-	spirit_bar = "~可能普通階段",
+	spirit_bar = "<可能普通階段>",
 
 	frenzy = "狂亂",
 	frenzy_desc = "狂亂警報",
@@ -166,32 +166,32 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "\194\161Arrodillaos... ante la garra y el colmillo!",
+	engage_trigger = "¡Arrodillaos... ante la garra y el colmillo!",
 
-	totem = "T\195\179tem",
-	totem_desc = "Avisa cuando Halazzi lanza un T\195\179tem de rel\195\161mpagos.",
-	totem_message = "\194\161T\195\179tem de rel\195\161mpagos!",
+	totem = "Tótem de relámpagos (Lightning Totem)",
+	totem_desc = "Avisar cuando Halazzi lanza Tótem de relámpagos.",
+	totem_message = "¡Tótem de relámpagos!",
 
 	phase = "Fases",
-	phase_desc = "Avis los cambios de fase.",
-	phase_spirit = "Lucho con libertad de esp\195\173ritu...",
-	phase_normal = "\194\161Esp\195\173ritu, vuelve a m\195\173!",
-	normal_message = "\194\161Fase Normal!",
-	spirit_message = "\194\161%d%% PV! - Fase Espirit\195\186!",
-	spirit_soon = "\194\161Fase Espirit\195\186 pronto!",
-	spirit_bar = "~Posible Fase Normal",
+	phase_desc = "Avisar sobre cambios de fase.",
+	phase_spirit = "Lucho con libertad de espíritu...",
+	phase_normal = "¡Espíritu, vuelve a mí!",
+	normal_message = "¡Fase normal!",
+	spirit_message = "¡%d%% vida - Fase Espíritu!",
+	spirit_soon = "Fase Espíritu en breve",
+	spirit_bar = "~Fase normal",
 
-	--frenzy = "Frenzy",
-	--frenzy_desc = "Frenzy alert.",
-	--frenzy_trigger = "Halazzi gains Frenzy.",
-	--frenzy_message = "Frenzy!",
+	frenzy = "Frenesí (Frenzy)",
+	frenzy_desc = "Alerta de Frenesí.",
+	frenzy_trigger = "¡%s entra en frenesí asesino!",
+	frenzy_message = "¡Frenesí!",
 
-	--flame = "Flame Shock",
-	--flame_desc = "Warn for players with Flame Shock.",
-	--flame_message = "Flame Shock: %s",
+	flame = "Choque de llamas (Flame Shock)",
+	flame_desc = "Avisar quién tiene Choque de llamas.",
+	flame_message = "Choque de llamas: %s",
 
-	--icon = "Raid Icon",
-	--icon_desc = "Place a Raid Target Icon on the player with Flame Shock. (requires promoted or higher)",
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono de banda sobre jugadores afectados por Choque de llamas. (Requiere derechos de banda)",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -231,7 +231,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"totem", "phase", "frenzy", -1, "flame", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 65844 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 73554 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

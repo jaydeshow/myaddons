@@ -2,7 +2,7 @@
 -- MobInfo.lua
 --
 -- Main module of MobInfo-2 AddOn
-miVersionNo = '3.52'
+miVersionNo = '3.61'
 --
 -- MobInfo-2 is a World of Warcraft AddOn that provides you with useful
 -- additional information about Mobs (ie. opponents/monsters). It adds
@@ -1927,9 +1927,13 @@ local function MI2_BuildExtraInfo( mobData, mobName, mobLevel )
 				text = text.." "..ttRight
 			end 
 			table.insert( mobData.extraInfo, text )
+			if #mobData.extraInfo > 3 then break end
 		end
 		previous = ttLeft
 	end 
+
+--mobData.extraInfo = { "AAA", "BBB", "CCC", "DDD" }
+
 end -- MI2_BuildExtraInfo
 
 
@@ -2069,7 +2073,7 @@ end -- MI2_BuildItemDataTooltip()
 --
 local function MI2_BuildMobClassInfo( mobData, isMob )
 	local creatureType = UnitCreatureType("mouseover")
-	mobData.class = UnitClass("mouseover")
+	mobData.class = UnitClassBase("mouseover")
 	mobData.classInfo = nil
 	if UnitIsDead("mouseover") then
 		mobData.classInfo = CORPSE

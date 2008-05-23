@@ -44,6 +44,35 @@ L:RegisterTranslations("enUS", function() return {
 	globules_bar = "Globules Despawn",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "¡Que las profundidades os arrastren!",
+
+	tidal = "Maremoto (Tidal Wave)",
+	tidal_desc = "Avisar cuando Morogrim lanza Maremoto.",
+	tidal_message = "¡Maremoto!",
+
+	grave = "Sepultura de agua (Watery Grave)",
+	grave_desc = "Avisa quién tiene Sepultura de agua y su duración.",
+	grave_message = "Sepultura de agua: %s",
+	grave_bar = "<Sepultura de agua> ",
+	grave_nextbar = "~Sepultura de agua",
+
+	murloc = "Múrlocs",
+	murloc_desc = "Avisar de Múrlocs entrantes.",
+	murloc_bar = "~Múrlocs",
+	murloc_message = "¡Vienen los Múrlocs!",
+	murloc_soon_message = "Múrlocs en breve",
+	murloc_engaged = "%s Activado, Múrlocs en ~40seg",
+
+	globules = "Glóbulos",
+	globules_desc = "Avisar cuando aparecen glóbulos de agua.",
+	globules_trigger1 = "Pronto acabará.",
+	globules_trigger2 = "¡No os podéis esconder!",
+	globules_message = "¡Glóbulos!",
+	globules_warning = "Glóbulos en breve",
+	globules_bar = "<Glóbulos>",
+} end )
+
 L:RegisterTranslations("deDE", function() return {
 	engage_trigger = "Die Fluten der Tiefen werden euch verschlingen!",
 
@@ -81,7 +110,7 @@ L:RegisterTranslations("koKR", function() return {
 	tidal_message = "해일!",
 
 	grave = "수중 무덤",
-	grave_desc = "수중 무덤에 걸린 사람과 지속시간을 알림니다.",
+	grave_desc = "수중 무덤에 걸린 사람과 지속시간을 알립니다.",
 	grave_message = "수중 무덤: %s",
 	grave_bar = "수중 무덤",
 	grave_nextbar = "~무덤 대기시간",
@@ -106,28 +135,28 @@ L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Que les flots des profondeurs vous emportent !",
 
 	tidal = "Raz-de-marée",
-	tidal_desc = "Préviens quand Morogrim lance un Raz-de-marée.",
-	tidal_message = "Raz-de-marée !",
+	tidal_desc = "Prévient quand Morogrim lance un Raz-de-marée.",
+	tidal_message = "Raz-de-marée !",
 
 	grave = "Tombeau aquatique",
-	grave_desc = "Préviens quand quelqu'un subit le Tombeau aquatique et indique sa durée.",
-	grave_message = "Tombeau aquatique : %s",
+	grave_desc = "Prévient quand quelqu'un subit le Tombeau aquatique et indique sa durée.",
+	grave_message = "Tombeau aquatique : %s",
 	grave_bar = "Tombeaux aquatique",
-	grave_nextbar = "~Cooldown Tombeaux",
+	grave_nextbar = "~Recharge Tombeaux",
 
 	murloc = "Murlocs",
-	murloc_desc = "Préviens de l'arrivée des murlocs.",
-	murloc_bar = "~Cooldown Murlocs",
-	murloc_message = "Arrivée des murlocs !",
-	murloc_soon_message = "Murlocs imminent !",
+	murloc_desc = "Prévient de l'arrivée des murlocs.",
+	murloc_bar = "~Recharge Murlocs",
+	murloc_message = "Arrivée des murlocs !",
+	murloc_soon_message = "Murlocs imminent !",
 	murloc_engaged = "%s engagé, murlocs dans ~40 sec.",
 
 	globules = "Globules",
-	globules_desc = "Préviens de l'arrivée des globules.",
+	globules_desc = "Prévient de l'arrivée des globules.",
 	globules_trigger1 = "Bientôt, ce sera terminé.",
 	globules_trigger2 = "Il est impossible de m'échapper !",
-	globules_message = "Arrivée des globules !",
-	globules_warning = "Globules imminent !",
+	globules_message = "Arrivée des globules !",
+	globules_warning = "Globules imminent !",
 	globules_bar = "Disparation des globules",
 } end )
 
@@ -135,28 +164,28 @@ L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "深渊中的洪水会淹没你们！",
 
 	tidal = "海潮之波",
-	tidal_desc = "当首领施放海潮之波发出警报。",
+	tidal_desc = "当施放海潮之波时发出警报。",
 	tidal_message = "海潮之波！",
 
 	grave = "水之墓穴",
-	grave_desc = "当受到水之墓穴发出警报。",
+	grave_desc = "当玩家受到水之墓穴发出警报。",
 	grave_message = "水之墓穴：>%s<！",
 	grave_bar = "<水之墓穴>",
 	grave_nextbar = "<水之墓穴 冷却>",
 
 	murloc = "鱼群",
-	murloc_desc = "鱼群来临发出警报。",
+	murloc_desc = "当鱼群来临时发出警报。",
 	murloc_bar = "<鱼群 冷却>",
 	murloc_message = "鱼群 来临！",
-	murloc_soon_message = "即将出现 鱼群！",
-	murloc_engaged = "%s 激活, ~40秒后 鱼群 出现",
+	murloc_soon_message = "即将 鱼群！",
+	murloc_engaged = "%s激活！约40秒后，鱼群出现！",
 
 	globules = "水泡",
-	globules_desc = "水泡来临报警。",
+	globules_desc = "当水泡来临时发出警报。",
 	globules_trigger1 = "很快就都结束了。",
 	globules_trigger2 = "你们无处可逃！",
 	globules_message = "水泡 来临！",
-	globules_warning = "即将水泡！",
+	globules_warning = "即将 水泡！",
 	globules_bar = "<水泡 消失>",
 } end )
 
@@ -169,24 +198,24 @@ L:RegisterTranslations("zhTW", function() return {
 
 	grave = "水之墓",
 	grave_desc = "當玩家受到水之墓時通知團隊",
-	grave_message = "水之墓：[%s]",
-	grave_bar = "水之墓計時",
-	grave_nextbar = "水之墓冷卻",
+	grave_message = "水之墓: [%s]",
+	grave_bar = "<水之墓計時>",
+	grave_nextbar = "<水之墓冷卻>",
 
 	murloc = "魚人警示",
 	murloc_desc = "魚人來臨時警示",
-	murloc_bar = "魚人冷卻",
-	murloc_message = "魚人出現！",
-	murloc_soon_message = "魚人即將出現，準備 AE！",
-	murloc_engaged = "%s 開戰 - 魚人在 40 秒內出現！",
+	murloc_bar = "<魚人冷卻>",
+	murloc_message = "魚人出現!",
+	murloc_soon_message = "魚人即將出現，準備 AE!",
+	murloc_engaged = "%s 開戰 - 魚人在 40 秒內出現!",
 
 	globules = "水珠警示",
 	globules_desc = "當水珠來臨時警示",
 	globules_trigger1 = "很快，這一切都將結束!",
 	globules_trigger2 = "這裡是無處可躲的!",
-	globules_message = "水珠出現！避開水球！",
-	globules_warning = "水珠即將出現！",
-	globules_bar = "水珠消失",
+	globules_message = "水珠出現!避開水球!",
+	globules_warning = "水珠即將出現!",
+	globules_bar = "<水珠消失>",
 } end )
 
 ----------------------------------
@@ -197,7 +226,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"tidal", "grave", "murloc", "globules", "bosskill"}
-mod.revision = tonumber(("$Revision: 66256 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

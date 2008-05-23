@@ -16,7 +16,7 @@
 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ]]
 local L = AceLibrary("AceLocale-2.2"):new("Quartz")
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 local unpack = unpack
 
@@ -58,7 +58,7 @@ function QuartzLatency:OnEnable()
 	self:RegisterEvent("UNIT_SPELLCAST_SENT")
 	
 	self:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED", "hideIfPlayer")
-	self:RegisterEvent("SharedMedia_SetGlobal", function(mtype, override)
+	media.RegisterCallback(self, "LibSharedMedia_SetGlobal", function(mtype, override)
 		if mtype == "statusbar" then
 			lagbox:SetTexture(media:Fetch("statusbar", override))
 		end

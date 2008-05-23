@@ -5,10 +5,10 @@
 ## Notes-zhCN: CT_RaidAssist 外的另一个选择。
 ## Notes-zhTW: 除了 CT_RaidAssist 以外的另一個選擇。
 ## Notes-frFR: Alternative à CT_RaidAssist.
-## Version: 2.0.$Revision: 66672 $
+## Version: 2.0.$Revision: 70972 $
 ## Author: Ammo, Rabbit
-## OptionalDeps: Ace2, FuBar, SharedMedia-2.0, LibSharedMedia-2.0, LibBabble-Spell-3.0
-## X-Embeds: Ace2, TabletLib, FuBarPlugin-2.0, SpecialEventsEmbed, DewdropLib, CandyBar, LibBabble-Spell-3.0, LibSharedMedia-2.0, Waterfall-1.0, WindowLib
+## OptionalDeps: Ace2, FuBar, SharedMedia, LibSharedMedia-3.0
+## X-Embeds: Ace2, TabletLib, FuBarPlugin-2.0, DewdropLib, CandyBar, LibSharedMedia-3.0, Waterfall-1.0, WindowLib
 ## X-Category: Raid
 ## SavedVariables: oRADB, oRAFubarDB
 

@@ -1,4 +1,6 @@
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -7,11 +9,18 @@ assert( oRA, "oRA not found!")
 local L = AceLibrary("AceLocale-2.2"):new("oRALInvite")
 local dewdrop = AceLibrary("Dewdrop-2.0")
 
+local guildMemberList = {}
+local guildRanks = {}
+
 ----------------------------
 --      Localization      --
 ----------------------------
 
 L:RegisterTranslations("enUS", function() return {
+	["Promote all"] = true,
+	["Promote all members of your raid group automatically."] = true,
+	["Promote guild"] = true,
+	["Promote all guild members who join your raid group automatically."] = true,
 	["Invite"] = true,
 	["Leader/Invite"] = true,
 	["<oRA> Sorry, the group is full."] = true,
@@ -23,7 +32,6 @@ L:RegisterTranslations("enUS", function() return {
 	["<oRA> Raid disbanding on request by: "] = true,
 	["Disabling Auto-Promote for: "] = true,
 	["Enabling Auto-Promote for: "] = true,
-	["Autopromoting: "] = true,
 	["You have no-one in your Auto-Promote list"] = true,
 	["Options for inviting people to your raid."] = true,
 	["Autopromote"] = true,
@@ -53,39 +61,55 @@ L:RegisterTranslations("enUS", function() return {
 } end )
 
 L:RegisterTranslations("deDE", function() return {
-	["Leader/Invite"] = "Anf\195\188hrer/Einladung",
-	["<oRA> Sorry, the group is full."] = "<oRA2> Sorry, die Gruppe ist voll",
+	["Promote all"] = "Alle befördern",
+	["Promote all members of your raid group automatically."] = "Alle Mitglieder der Schlachtgruppe automatisch befördern.",
+	["Promote guild"] = "Gilde befördern",
+	["Promote all guild members who join your raid group automatically."] = "Alle Gildenmitglieder, die der Schlachtgruppe beitreten automatisch befördern.",
+	["Invite"] = "Einladung",
+	["Leader/Invite"] = "Anführer/Einladung",
+	["<oRA> Sorry, the group is full."] = "<oRA> Sorry, die Gruppe ist voll.",
 	["Inviting: "] = "Einladen von: ",
-	["Autopromoting: "] = "Autobef\195\182rderung: ",
-	["Keyword inviting disabled."] = "Einladungen per Schl\195\188sselwort deaktiviert.",
-	["Invitation keyword set to: "] = "Einladungs-Schl\195\188sselwort gesetzt auf: ",
-	["To turn off keyword inviting set it to 'off'."] = "Auf 'off' setzen um Schl\195\188sselwort-Einladungen zu deaktivieren",
-	["<oRA> Raid disbanding on request by: "] = "<oRA2> Schlachtzug wird aufgel\195\182st auf Anforderung von: ",
-	["Disabling Auto-Promote for: "] = "Autobef\195\182rdung deaktiviert f\195\188r: ",
-	["Enabling Auto-Promote for: "] = "Autobef\195\182rdung aktiviert f\195\188r: ",
-	["Autopromoting: "] = "Autobef\195\182rdung: ",
-	["You have no-one in your Auto-Promote list"] = "Ihr habt niemanden in eurer Autobef\195\182rderungsliste",
-	["Options for inviting people to your raid."] = "Optionen f\195\188r Schlachtzugs-Einladungen.",
-	["Autopromote"] = "Autobef\195\182rdung",
-	["Set/Unset an autopromotion."] = "Autobef\195\182rdung setzen/l\195\182schen",
-	["Keyword"] = "Schl\195\188sselwort",
-	["Set/Unset an invitation keyword. People can whisper you this keyword to be invited to your group automatically."] = "Einladungs-Schl\195\188sselwort setzen/l\195\182schen",
-	["Disband"] = "Aufl\195\182sen",
-	["Disband the raid."] = "Schlachtzug aufl\195\182sen",
+	["Autopromoting: "] = "Autobeförderung: ",
+	["Keyword inviting disabled."] = "Einladungen per Schlüsselwort deaktiviert.",
+	["Invitation keyword set to: "] = "Einladungsschlüsselwort gesetzt auf: ",
+	["To turn off keyword inviting set it to 'off'."] = "Auf 'Aus' setzen um Schlüsselwort-Einladungen zu deaktivieren",
+	["<oRA> Raid disbanding on request by: "] = "<oRA> Schlachtzug wird aufgelöst auf Anforderung von: ",
+	["Disabling Auto-Promote for: "] = "Autobefördung deaktiviert für: ",
+	["Enabling Auto-Promote for: "] = "Autobefördung aktiviert für: ",
+	["You have no-one in your Auto-Promote list"] = "Ihr habt niemanden in eurer Autobeförderungsliste",
+	["Options for inviting people to your raid."] = "Optionen für Schlachtzugs Einladungen.",
+	["Autopromote"] = "Autobefördung",
+	["Set/Unset an autopromotion."] = "Autobefördung setzen/löschen",
+	["<name>"] = "<name>",
+	["Keyword"] = "Schlüsselwort",
+	["Set/Unset an invitation keyword. People can whisper you this keyword to be invited to your group automatically."] = "Einladungsschlüsselwort setzen/löschen. Andere Spieler können Dich mit diesem Schlüsselwort anflüstern um automatisch in die Gruppe eingeladen zu werden.",
+	["<keyword>"] = "<schlüsselwort>",
+	["Disband"] = "Auflösen",
+	["Disband the raid."] = "Schlachtgruppe auflösen.",
 	["List"] = "Auflisten",
-	["List autopromotions."] = "Autobef\195\182rderungen auflisten",
+	["List autopromotions."] = "Autobeförderungen auflisten.",
 	["Invite Guild"] = "Gilde einladen",
-	["Invite all characters of the specified level in the guild to raid."] = "Alle Gildenmitglieder mit angegebenen Level in den Schlachtzug einladen.",
+	["Invite all characters of the specified level in the guild to raid."] = "Alle Gildenmitglieder mit angegebenem Level in die Schlachtgruppe einladen.",
 	["Invite Zone"] = "Zone Einladen",
-	["Invite all characters in guild in your current zone to raid."] = "Alle Gildenmitglieder in der angegebenen Zone in den Schlachtzug einladen.",
+	["Invite all characters in guild in your current zone to raid."] = "Alle Gildenmitglieder, die in Deiner momentanten Zone sind in die Schlachtgruppe einladen.",
+	["<level or empty>"] = "<level oder leer lassen>",
 	["You are not in a guild."] = "Ihr seid in keiner Gilde.",
-	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "Alle Charakter der Stufe %d und h\195\182her werden in 10 Sekunden in den Schlachtzug eingeladen. Bitte verlasst eure Gruppen.",
-	["All characters in %s will be invited to raid in 10 seconds. Please leave your groups."] = "Alle Charakter in s% werden in 10 Sekunden in den Raid eingeladen. Bitte die Gruppen verlassen.",
+	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "Alle Charakter der Stufe %d oder höher werden in 10 Sekunden in die Schlachtgruppe eingeladen. Bitte die Gruppe verlassen.",
+	["All characters in %s will be invited to raid in 10 seconds. Please leave your groups."] = "Alle Charakter in %s werden in 10 Sekunden in die Schlachtgruppe eingeladen. Bitte die Gruppe verlassen.",
+	["All characters of rank %s or higher will be invited to raid in 10 seconds. Please leave your groups."] = "Alle Charakter mit Rang %s oder höher werden in 10 Sekunden in die Schlachtgruppe eingeladen. Bitte die Gruppe verlassen.",
+	["Invalid guild rank specified: %s"] = "Ungültiger Gildenrang: %s",
+	["Invite Rank"] = "Rang einladen",
+	["Invite all guild members of the specified rank and higher to the raid."] = "Alle Gildenmitglieder mit angegebenem Rang oder höher in die Schlachtgruppe einladen.",
+	["<rank name>"] = "<rangname>",
 	["off"] = "Aus",
 } end )
 
 
 L:RegisterTranslations("koKR", function() return {
+	["Promote all"] = "모두 승급",
+	["Promote all members of your raid group automatically."] = "공격대 그룹의 모든 멤버를 자동적으로 승급합니다.",
+	["Promote guild"] = "길드 승급",
+	["Promote all guild members who join your raid group automatically."] = "공격대 그룹에 참여한 모든 길드 멤버를 자동적으로 승급합니다.",
 	["Invite"] = "초대",
 	["Leader/Invite"] = "공격대장/초대",
 	["<oRA> Sorry, the group is full."] = "<oRA> 죄송합니다. 공격대의 정원이 찼습니다.",
@@ -97,7 +121,6 @@ L:RegisterTranslations("koKR", function() return {
 	["<oRA> Raid disbanding on request by: "] = "<oRA> 공격대 해산 요청: ",
 	["Disabling Auto-Promote for: "] = "자동승급 사용안함: ",
 	["Enabling Auto-Promote for: "] = "자동승급 사용: ",
-	["Autopromoting: "] = "자동승급: ",
 	["You have no-one in your Auto-Promote list"] = "자동승급 목록이 비어 있습니다.",
 	["Options for inviting people to your raid."] = "초대에 대한 설정입니다.",
 	["Autopromote"] = "자동승급",
@@ -118,7 +141,7 @@ L:RegisterTranslations("koKR", function() return {
 	["You are not in a guild."] = "길드에 속해 있지 않습니다.",
 	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "10초 동안 %d 레벨 이상인 길드원들을 공격대에 초대합니다. 파티에서 나와 주세요.",
 	["All characters in %s will be invited to raid in 10 seconds. Please leave your groups."] = "10초 동안 %s 내의 모든 길드원을 공격대에 초대합니다. 파티에서 나와 주세요.",
-	["All characters of rank %s or higher will be invited to raid in 10 seconds. Please leave your groups."] = "10초 동안 %d 등급 이상인 길드원들을 공격대에 초대합니다. 파티에서 나와 주세요.",
+	["All characters of rank %s or higher will be invited to raid in 10 seconds. Please leave your groups."] = "10초 동안 %s 등급 이상인 길드원들을 공격대에 초대합니다. 파티에서 나와 주세요.",
 	["Invalid guild rank specified: %s"] = "지정된 길드 등급이 잘못됨: %s",
 	["Invite Rank"] = "등급 초대",
 	["Invite all guild members of the specified rank and higher to the raid."] = "지정된 등급 이상의 모든 길드원을 공격대에 초대합니다. ",
@@ -127,6 +150,10 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
+	["Promote all"] = "提升全部",
+	["Promote all members of your raid group automatically."] = "自动提升全部队友。",
+	["Promote guild"] = "提升公会",
+	["Promote all guild members who join your raid group automatically."] = "自动提升团队里的公会成员。",
 	["Invite"] = "邀请",
 	["Leader/Invite"] = "团长/邀请",
 	["<oRA> Sorry, the group is full."] = "<oRA>抱歉，团队已满。",
@@ -138,7 +165,6 @@ L:RegisterTranslations("zhCN", function() return {
 	["<oRA> Raid disbanding on request by: "] = "<oRA>解散团队请求：",
 	["Disabling Auto-Promote for: "] = "禁止自动提升对：",
 	["Enabling Auto-Promote for: "] = "允许自动提升对：",
-	["Autopromoting: "] = "自动提升：",
 	["You have no-one in your Auto-Promote list"] = "你的自动提升列表为空",
 	["Options for inviting people to your raid."] = "邀请助手选项。",
 	["Autopromote"] = "自动提升",
@@ -168,18 +194,21 @@ L:RegisterTranslations("zhCN", function() return {
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
+	["Promote all"] = "提升全部",
+	["Promote all members of your raid group automatically."] = "自動提升全部隊友",
+	["Promote guild"] = "提升公會",
+	["Promote all guild members who join your raid group automatically."] = "自動提升團隊裡的公會成員",
 	["Invite"] = "邀請",
 	["Leader/Invite"] = "領隊/邀請",
-	["<oRA> Sorry, the group is full."] = "<oRA>抱歉，團隊已滿。",
-	["Inviting: "] = "正在邀請：",
+	["<oRA> Sorry, the group is full."] = "<oRA> 抱歉，團隊已滿。",
+	["Inviting: "] = "正在邀請: ",
 	["Autopromoting: "] = "自動提升: ",
 	["Keyword inviting disabled."] = "禁止關鍵字邀請",
-	["Invitation keyword set to: "] = "邀請關鍵字設定為：",
+	["Invitation keyword set to: "] = "邀請關鍵字設定為: ",
 	["To turn off keyword inviting set it to 'off'."] = "要關掉關鍵詞邀請的話，選擇'關閉'",
-	["<oRA> Raid disbanding on request by: "] = "<oRA>解散團隊請求：",
-	["Disabling Auto-Promote for: "] = "禁止自動提升助理：",
-	["Enabling Auto-Promote for: "] = "允許自動提升助理：",
-	["Autopromoting: "] = "自動提升：",
+	["<oRA> Raid disbanding on request by: "] = "<oRA> 解散團隊請求: ",
+	["Disabling Auto-Promote for: "] = "禁止自動提升助理: ",
+	["Enabling Auto-Promote for: "] = "允許自動提升助理: ",
 	["You have no-one in your Auto-Promote list"] = "你的自動提升列表為空",
 	["Options for inviting people to your raid."] = "邀請助手選項",
 	["Autopromote"] = "自動提升",
@@ -187,7 +216,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["<name>"] = "<名字>",
 	["Keyword"] = "關鍵字",
 	["Set/Unset an invitation keyword. People can whisper you this keyword to be invited to your group automatically."] = "設定/取消邀請關鍵字，大家可以對你密語關鍵字來被邀請到團隊裡。",
-	["<keyword>"] = "關鍵詞",	
+	["<keyword>"] = "<關鍵詞>",
 	["Disband"] = "解散",
 	["Disband the raid."] = "解散團隊",
 	["List"] = "列表",
@@ -198,9 +227,9 @@ L:RegisterTranslations("zhTW", function() return {
 	["Invite all characters in guild in your current zone to raid."] = "邀請公會中所有在你目前區域中的玩家",
 	["<level or empty>"] = "<等級或留空>",
 	["You are not in a guild."] = "你不在一個公會中",
-	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "所有%d級人物都將在10秒後邀請到團隊中。請離開你當前隊伍",
-	["All characters in %s will be invited to raid in 10 seconds. Please leave your groups."] = "所有在%s的玩家都將在10秒後邀請到團隊中。請離開你當前隊伍",
-	["All characters of rank %s or higher will be invited to raid in 10 seconds. Please leave your groups."] = "所有公會階級為%s或更高的玩家都將在10秒後邀請到團隊中。請離開你當前隊伍。",
+	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "所有 %d 級人物都將在 10 秒後邀請到團隊中。請離開你當前隊伍。",
+	["All characters in %s will be invited to raid in 10 seconds. Please leave your groups."] = "所有在 %s 的玩家都將在10秒後邀請到團隊中。請離開你當前隊伍。",
+	["All characters of rank %s or higher will be invited to raid in 10 seconds. Please leave your groups."] = "所有公會階級為 %s 或更高的玩家都將在 10 秒後邀請到團隊中。請離開你當前隊伍。",
 	["Invalid guild rank specified: %s"] = "無效的公會階級",
 	["Invite Rank"] = "公會階級",
 	["Invite all guild members of the specified rank and higher to the raid."] = "邀請特定階級以上的工會成員",
@@ -209,43 +238,46 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
+	["Promote all"] = "Nommer tous assistant",
+	["Promote all members of your raid group automatically."] = "Nomme automatiquement assistants tous les membres de votre groupe de raid.",
+	["Promote guild"] = "Nommer la guilde assistant",
+	["Promote all guild members who join your raid group automatically."] = "Nomme automatiquement assistants tous les membres de votre guilde de votre groupe de raid.",
 	["Invite"] = "Invitation",
 	["Leader/Invite"] = "Chef/Invitation",
 	["<oRA> Sorry, the group is full."] = "<oRA> Désolé, le groupe est complet.",
-	["Inviting: "] = "Invitation : ",
-	["Autopromoting: "] = "Promotion automatique : ",
+	["Inviting: "] = "Invitation : ",
+	["Autopromoting: "] = "Promotion automatique : ",
 	["Keyword inviting disabled."] = "Invitation par mot-clé désactivée.",
-	["Invitation keyword set to: "] = "Mot-clé d'invitation défini à : ",
+	["Invitation keyword set to: "] = "Mot-clé d'invitation défini à : ",
 	["To turn off keyword inviting set it to 'off'."] = "Pour désactiver l'invitation par mot-clé, définissez ce dernier à 'off'.",
-	["<oRA> Raid disbanding on request by: "] = "<oRA> Dissolution du raid à la demande de : ",
-	["Disabling Auto-Promote for: "] = "Retrait de la promotion automatique pour : ",
-	["Enabling Auto-Promote for: "] = "Ajout de la promotion automatique de : ",
-	["Autopromoting: "] = "Promotion automatique : ",
-	["You have no-one in your Auto-Promote list"] = "Vous n'avez personne dans votre liste des personnes promues automatiquement.",
+	["<oRA> Raid disbanding on request by: "] = "<oRA> Dissolution du raid à la demande de : ",
+	["Disabling Auto-Promote for: "] = "Retrait du nommage auto. en assistant de : ",
+	["Enabling Auto-Promote for: "] = "Ajout du nommage auto. en assistant de : ",
+	["You have no-one in your Auto-Promote list"] = "Vous n'avez personne dans votre liste des personnes nommées automatiquement assistants.",
 	["Options for inviting people to your raid."] = "Options concernant les invitations.",
-	["Autopromote"] = "Promotion automatique",
-	["Set/Unset an autopromotion."] = "Ajoute/enlève une personne de la liste des personnes promues automatiquement.",
+	["Autopromote"] = "Assistant auto.",
+	["Set/Unset an autopromotion."] = "Ajoute/enlève une personne de la liste des personnes nommées automatiquement assistants.",
 	["<name>"] = "<nom>",
 	["Keyword"] = "Mot-clé",
-	["Set/Unset an invitation keyword. People can whisper you this keyword to be invited to your group automatically."] = "Définit/enlève le mot-clé d'invitation.",
+	["Set/Unset an invitation keyword. People can whisper you this keyword to be invited to your group automatically."] = "Définit/enlève le mot-clé d'invitation. Les joueurs peuvent vous chuchoter ce mot-clé pour être invité automatiquement dans votre groupe.",
 	["<keyword>"] = "<mot-clé>",
 	["Disband"] = "Dissoudre",
 	["Disband the raid."] = "Dissout le raid.",
 	["List"] = "Liste",
-	["List autopromotions."] = "Affiche la liste des personnes promues automatiquement.",
+	["List autopromotions."] = "Affiche la liste des personnes nommées automatiquement assistants.",
 	["Invite Zone"] = "Inviter la zone",
 	["Invite all characters in guild in your current zone to raid."] = "Invite tous les personnages de la guilde se trouvant dans votre zone actuelle dans le raid.",
 	["Invite Guild"] = "Inviter la guilde",
 	["Invite all characters of the specified level in the guild to raid."] = "Invite tous les personnages du niveau spécifié de la guilde dans le raid.",
-	["<level or empty>"] = "<niveau ou laissez vide>",
+	["<level or empty>"] = "<niveau ou laisser vide>",
 	["You are not in a guild."] = "Vous n'êtes pas dans une guilde.",
 	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "Tous les personnages de niveau %d ou supérieur seront invités dans le raid dans 10 secondes. Veuillez quitter vos groupes.",
 	["All characters in %s will be invited to raid in 10 seconds. Please leave your groups."] = "Tous les personnages se trouvant dans la zone %s seront invités dans le raid dans 10 secondes. Veuillez quitter vos groupes.",
 	["All characters of rank %s or higher will be invited to raid in 10 seconds. Please leave your groups."] = "Tous les personnages du rang %s ou supérieur seront invités dans le raid dans 10 secondes. Veuillez quitter vos groupes.",
-	["Invalid guild rank specified: %s"] = "Rang de guilde spécifié invalide",
+	["Invalid guild rank specified: %s"] = "Rang de guilde spécifié invalide : %s",
 	["Invite Rank"] = "Inviter le rang",
-	["Invite all guild members of the specified rank and higher to the raid."] = "Invite dans le raid tous les personnages de la guilde du rang spécifié et supérieur",
-	["<rank name>"] = "<nom rang>",
+	["Invite all guild members of the specified rank and higher to the raid."] = "Invite tous les membres de la guilde du rang spécifié et supérieur dans le raid.",
+	["<rank name>"] = "<nom du rang>",
 	--["off"] = true,
 } end )
 
@@ -256,6 +288,8 @@ L:RegisterTranslations("frFR", function() return {
 local mod = oRA:NewModule("LeaderInvite")
 mod.defaults = {
 	promotes = {},
+	promoteAll = nil,
+	promoteGuild = nil,
 	keyword = nil,
 }
 mod.leader = true
@@ -276,7 +310,7 @@ mod.consoleOptions = {
 	name = L["Invite"],
 	handler = mod,
 	args = {
-		autopromote = {
+		promoteAuto = {
 			name = L["Autopromote"], type = "text",
 			desc = L["Set/Unset an autopromotion."],
 			order = 100,
@@ -288,17 +322,31 @@ mod.consoleOptions = {
 				return not v:find("%s")
 			end,
 		},
-		list = {
+		promoteAll = {
+			name = L["Promote all"], type = "toggle",
+			desc = L["Promote all members of your raid group automatically."],
+			order = 101,
+			get = function() return mod.db.profile.promoteAll end,
+			set = function(v) mod.db.profile.promoteAll = v end,
+		},
+		promoteGuild = {
+			name = L["Promote guild"], type = "toggle",
+			desc = L["Promote all guild members who join your raid group automatically."],
+			order = 102,
+			get = function() return mod.db.profile.promoteGuild end,
+			set = function(v) mod.db.profile.promoteGuild = v end,
+		},
+		promoteList = {
 			name = L["List"], type = "execute",
 			desc = L["List autopromotions."],
-			order = 101,
+			order = 103,
 			func = "ShowPromoteList",
 		},
 		spacer1 = {
 			name = " ", type = "header",
 			order = 150,
 		},
-		guild = {
+		inviteGuild = {
 			name = L["Invite Guild"], type = "text",
 			desc = L["Invite all characters of the specified level in the guild to raid."],
 			order = 200,
@@ -310,19 +358,17 @@ mod.consoleOptions = {
 			end,
 			disabled = inviteDisabled,
 		},
-		rank = {
+		inviteRank = {
 			name = L["Invite Rank"], type = "text",
 			desc = L["Invite all guild members of the specified rank and higher to the raid."],
 			order = 201,
-			usage = L["<rank name>"],
-			get = false,
+			get = function() return false end,
 			set = "GInviteRank",
-			validate = function(input)
-				return (input ~= nil and input ~= "")
-			end,
+			multiToggle = true,
+			validate = guildRanks,
 			disabled = inviteDisabled,
 		},
-		zone = {
+		inviteZone = {
 			name = L["Invite Zone"], type = "execute",
 			desc = L["Invite all characters in guild in your current zone to raid."],
 			order = 202,
@@ -362,8 +408,8 @@ local peopleToInvite = {}
 
 function mod:OnEnable()
 	self:RegisterEvent("CHAT_MSG_WHISPER")
-	self:RegisterEvent("CHAT_MSG_SYSTEM")
-	self:RegisterEvent("oRA_JoinedRaid", "DoAutoPromotes")
+	self:RegisterEvent("GUILD_ROSTER_UPDATE")
+	self:RegisterEvent("RAID_ROSTER_UPDATE", "CheckPromotes")
 
 	self:RegisterShorthand("rakw", "SetKeyword")
 	self:RegisterShorthand("rakeyword", "SetKeyword")
@@ -371,11 +417,30 @@ function mod:OnEnable()
 	self:RegisterShorthand("rainvite", "InviteGuild")
 	self:RegisterShorthand("razinvite", "GInviteZone")
 	self:RegisterShorthand("rarinvite", "GInviteRank")
+
+	if IsInGuild() then GuildRoster() end
+
+	self:CheckPromotes()
 end
 
 ----------------------
 --  Event Handlers  --
 ----------------------
+
+function mod:GUILD_ROSTER_UPDATE()
+	for k in pairs(guildRanks) do guildRanks[k] = nil end
+	for i = 1, GuildControlGetNumRanks() do
+		table.insert(guildRanks, GuildControlGetRankName(i))
+	end
+	for k, v in pairs(guildMemberList) do guildMemberList[k] = nil end
+	local numGuildMembers = GetNumGuildMembers()
+	for i = 1, numGuildMembers do
+		local name = GetGuildRosterInfo(i)
+		if name then
+			guildMemberList[name] = true
+		end
+	end
+end
 
 function mod:CHAT_MSG_WHISPER(msg, author)
 	if self.db.profile.keyword and msg:lower() == self.db.profile.keyword:lower() then
@@ -387,20 +452,6 @@ function mod:CHAT_MSG_WHISPER(msg, author)
 				SendChatMessage(L["<oRA> Sorry, the group is full."], "WHISPER", nil, author)
 			else
 				InviteUnit(author)
-			end
-		end
-	end
-end
-
-function mod:DoAutoPromotes()
-	if IsRaidLeader() then
-		local counter = 1
-		for i = 1, GetNumRaidMembers() do
-			local n, r = GetRaidRosterInfo(i)
-			if n and self.db.profile.promotes[n:lower()] and r == 0 then
-				self:Print(L["Autopromoting: "] .. n)
-				self:ScheduleEvent(PromoteToAssistant, counter, n)
-				counter = counter + 1
 			end
 		end
 	end
@@ -448,18 +499,31 @@ function doActualInvites()
 end
 
 do
-	local unitJoinedRaid = '^' .. ERR_RAID_MEMBER_ADDED_S:gsub("%%s", "(.-)") .. '$'
-	function mod:CHAT_MSG_SYSTEM(msg)
-		if UnitInRaid("player") then
-			if msg == ERR_NEW_LEADER_YOU then
-				self:DoAutoPromotes()
-			elseif IsRaidLeader() then
-				local name = select(3, msg:find(unitJoinedRaid))
-				if name and self.db.profile.promotes[name:lower()] then
-					self:Print(L["Autopromoting: "] .. name)
-					self:ScheduleEvent(PromoteToAssistant, 2, name)
-				end
+	local promotes = {}
+	local function promote()
+		mod:UnregisterEvent("RAID_ROSTER_UPDATE")
+		for k in pairs(promotes) do
+			PromoteToAssistant(k)
+			promotes[k] = nil
+		end
+		mod:RegisterEvent("RAID_ROSTER_UPDATE", "CheckPromotes")
+	end
+	local function shouldPromote(name)
+		if mod.db.profile.promoteAll then return true
+		elseif mod.db.profile.promoteGuild and guildMemberList[name] then return true
+		elseif mod.db.profile.promotes[name:lower()] then return true
+		end
+	end
+	function mod:CheckPromotes()
+		if not IsRaidLeader() then return end
+		for i = 1, GetNumRaidMembers() do
+			local n, r = GetRaidRosterInfo(i)
+			if n and r == 0 and shouldPromote(n) then
+				promotes[n] = true
 			end
+		end
+		if next(promotes) then
+			self:ScheduleEvent("oRALAutoPromote", promote, 4)
 		end
 	end
 end
@@ -469,15 +533,9 @@ end
 ----------------------
 
 local function doGuildInvites(level, zone, rank)
-	local offline = GetGuildRosterShowOffline()
-	local selection = GetGuildRosterSelection()
-	SetGuildRosterShowOffline(nil)
-	SetGuildRosterSelection(0)
-	GetGuildRosterInfo(0)
-
 	for i = 1, GetNumGuildMembers() do
-		local name, _, rankIndex, unitLevel, _, unitZone = GetGuildRosterInfo(i)
-		if not UnitInParty(name) and not UnitInRaid(name) then
+		local name, _, rankIndex, unitLevel, _, unitZone, _, _, online = GetGuildRosterInfo(i)
+		if name and online and not UnitInParty(name) and not UnitInRaid(name) then
 			if level and level <= unitLevel then
 				table.insert(peopleToInvite, name)
 			elseif zone and zone == unitZone then
@@ -490,10 +548,6 @@ local function doGuildInvites(level, zone, rank)
 			end
 		end
 	end
-
-	SetGuildRosterShowOffline(offline)
-	SetGuildRosterSelection(selection)
-
 	doActualInvites()
 end
 
@@ -527,9 +581,10 @@ function mod:GInviteRank(rank)
 	else
 		rank = rank:lower()
 		for i = 1, num do
-			if rank == GuildControlGetRankName(i):lower() then
+			local rName = GuildControlGetRankName(i)
+			if rank == rName:lower() then
 				rankId = i
-				rankName = GuildControlGetRankName(i)
+				rankName = rName
 				break
 			end
 		end

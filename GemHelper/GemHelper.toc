@@ -1,6 +1,6 @@
-﻿## Interface: 20300
-## Title: GemHelper v1.5
-## Version: 1.5
+﻿## Interface: 20400
+## Title: GemHelper v1.7
+## Version: 1.7
 ## Notes: Search, filter and craft gems in the game!
 ## Notes-deDE: Edelsteine suchen, filtern und herstellen!
 ## Notes-zhTW: 提供一介面讓玩家搜尋、過濾、加工珠寶!

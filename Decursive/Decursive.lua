@@ -28,12 +28,12 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_Raid.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-03-15 20:56:53 -0400 (Sat, 15 Mar 2008) $", "$Revision: 64659 $");
+D:SetDateAndRevision("$Date: 2008-04-21 19:52:27 -0400 (Mon, 21 Apr 2008) $", "$Revision: 70810 $");
 
 local L = D.L;
 local BC = D.BC;
-local BS = D.BS;
 local DC = DcrC;
+local DS = DC.DS;
 -------------------------------------------------------------------------------
 
 local pairs		= _G.pairs;
@@ -45,7 +45,7 @@ local UnitDebuff	= _G.UnitDebuff;
 local UnitIsCharmed	= _G.UnitIsCharmed;
 local UnitCanAttack	= _G.UnitCanAttack;
 local UnitClass		= _G.UnitClass;
-
+local _= false;
 
 -------------------------------------------------------------------------------
 -- The UI functions {{{
@@ -68,6 +68,11 @@ end --}}}
 -- Show Hide FUNCTIONS -- {{{
 
 function D:ShowHideLiveList(hide) --{{{
+
+    if not D.DcrFullyInitialized then
+	return;
+    end
+
     -- if hide is requested or if hide is not set and the live-list is shown
     if (hide==1 or (not hide and DcrLiveList:IsVisible())) then
 	D.profile.Hide_LiveList = true;
@@ -87,6 +92,10 @@ end --}}}
 -- This functions hides or shows the "Decursive" bar depending on its current
 -- state, it's also able hide/show the live-list if the "tie live-list" option is active
 function D:HideBar(hide) --{{{
+
+    if not D.DcrFullyInitialized then
+	return;
+    end
 
     if (hide==1 or (not hide and DecursiveMainBar:IsVisible())) then
 	if (D.profile.LiveListTied) then
@@ -111,6 +120,11 @@ function D:HideBar(hide) --{{{
 end --}}}
 
 function D:ShowHidePriorityListUI() --{{{
+
+    if not D.DcrFullyInitialized then
+	return;
+    end
+
     if (DecursivePriorityListFrame:IsVisible()) then
 	DecursivePriorityListFrame:Hide();
     else
@@ -119,6 +133,11 @@ function D:ShowHidePriorityListUI() --{{{
 end --}}}
 
 function D:ShowHideSkipListUI() --{{{
+    
+    if not D.DcrFullyInitialized then
+	return;
+    end
+
     if (DecursiveSkipListFrame:IsVisible()) then
 	DecursiveSkipListFrame:Hide();
     else
@@ -128,6 +147,10 @@ end --}}}
 
 -- This shows/hides the buttons near the "Decursive" bar
 function D:ShowHideButtons(UseCurrentValue) --{{{
+
+    if not D.DcrFullyInitialized then
+	return;
+    end
 
     if not D.profile then
 	return;
@@ -339,34 +362,39 @@ end
 -- Scanning functionalities {{{
 -------------------------------------------------------------------------------
 
--- This function only returns interesting values of UnitDebuff()
-function D:GetUnitDebuff  (Unit, i) --{{{
-
-    if self.LiveList.TestItemDisplayed and i == 1 and Unit ~= "target" and Unit ~= "mouseover" then
-	self:Debug("|cFFFF0000Setting test debuff for |r", Unit);
-	return "Name of the afflication (Test)", DC.TypeNames[self.Status.ReversedCureOrder[1]], 1, "Interface\\AddOns\\Decursive\\iconON.tga";
-    end
-
-
-    local Name, rank, Texture, Applications, TypeName = UnitDebuff(Unit, i);
-    if (Name) then
-	return Name, TypeName, Applications, Texture;
-    else
-	return false, false, false, false;
-    end
-end --}}}
-
 do
+
+    local Name, rank, Texture, Applications, TypeName, Duration;
+    local D = _G.Dcr;
+    -- This function only returns interesting values of UnitDebuff()
+    local function GetUnitDebuff  (Unit, i) --{{{
+
+	if D.LiveList.TestItemDisplayed and i == 1 and Unit ~= "target" and Unit ~= "mouseover" then
+	    D:Debug("|cFFFF0000Setting test debuff for |r", Unit);
+	    return "Name of the afflication (Test)", DC.TypeNames[D.Status.ReversedCureOrder[1]], 1, "Interface\\AddOns\\Decursive\\iconON.tga", 70;
+	end
+
+
+	-- local Name, rank, Texture, Applications, TypeName, Duration, TimeLeft = UnitDebuff(Unit, i);
+	local Name, rank, Texture, Applications, TypeName, Duration = UnitDebuff(Unit, i);
+	if (Name) then
+	    return Name, TypeName, Applications, Texture;
+	else
+	    return false, false, false, false;
+	end
+    end --}}}
+
     -- there is a known maximum number of unit and a known maximum debuffs per unit so lets allocate the memory needed only once. Memory will be allocated when needed and re-used...
     local DebuffUnitCache = {};
 
     -- Variables are declared outside so that Lua doesn't initialize them at each call
-    local Texture, Applications, TypeName, Name, Type, i, StoredDebuffIndex, CharmFound, IsCharmed;
+    local Name, Type, i, StoredDebuffIndex, CharmFound, IsCharmed;
 
     local DcrC = DcrC; -- for faster access
 
     local UnitIsCharmed	= _G.UnitIsCharmed;
     local UnitCanAttack	= _G.UnitCanAttack;
+    local GetTime	= _G.GetTime;
 
     -- This is the core debuff scanning function of Decursive
     -- This function does more than just reporting Debuffs. it also detects charmed units
@@ -395,7 +423,8 @@ do
 
 	-- iterate all available debuffs
 	while (true) do
-	    Name, TypeName, Applications, Texture = self:GetUnitDebuff(Unit, i);
+	    -- Name, TypeName, Applications, Texture, TimeLeft = GetUnitDebuff(Unit, i);
+	    Name, TypeName, Applications, Texture = GetUnitDebuff(Unit, i);
 
 	    if (not Name) then
 		break;
@@ -429,12 +458,13 @@ do
 
 	    -- If we found a type, register the Debuff
 	    if (Type) then
-
-
 		-- Create a Debuff index entry if necessary
 		if (not ThisUnitDebuffs[StoredDebuffIndex]) then
 		    ThisUnitDebuffs[StoredDebuffIndex] = {};
 		end
+
+--		ThisUnitDebuffs[StoredDebuffIndex].TimeLeft	= TimeLeft;
+--		ThisUnitDebuffs[StoredDebuffIndex].TimeStamp	= false;
 		ThisUnitDebuffs[StoredDebuffIndex].Texture	= Texture;
 		ThisUnitDebuffs[StoredDebuffIndex].Applications	= Applications;
 		ThisUnitDebuffs[StoredDebuffIndex].TypeName	= TypeName;
@@ -467,9 +497,14 @@ do
 
 
     local D = D;
+    local _ = false;
+    local CureOrder;
     local sorting = function (a, b)
-	cura = (a.Type and D.classprofile.CureOrder[a.Type] and D.classprofile.CureOrder[a.Type] > 0) and D.classprofile.CureOrder[a.Type] or 1024;
-	curb = (b.Type and D.classprofile.CureOrder[b.Type] and D.classprofile.CureOrder[b.Type] > 0) and D.classprofile.CureOrder[b.Type] or 1024;
+
+	CureOrder = D.classprofile.CureOrder; -- LUA is too simple, lets do the access optimization...
+
+	cura = (a.Type and CureOrder[a.Type] and CureOrder[a.Type] > 0) and CureOrder[a.Type] or 1024;
+	curb = (b.Type and CureOrder[b.Type] and CureOrder[b.Type] > 0) and CureOrder[b.Type] or 1024;
 
 	return cura < curb;
     end
@@ -573,7 +608,7 @@ do
 			-- The user doesn't want to cure a unit afllicted by poison or disease if the unit
 			-- is beeing cured by an abolish spell
 
-			if (self.profile.Check_For_Abolish and (Debuff.Type == DC.POISON and self.A:UnitHasBuff(Unit, BS[self.LOC.SPELL_ABOLISH_POISON]) or Debuff.Type == DC.DISEASE and self.A:UnitHasBuff(Unit, BS[self.LOC.SPELL_ABOLISH_DISEASE]))) then
+			if (self.profile.Check_For_Abolish and (Debuff.Type == DC.POISON and self.A:UnitHasBuff(Unit, DS[self.LOC.SPELL_ABOLISH_POISON]) or Debuff.Type == DC.DISEASE and self.A:UnitHasBuff(Unit, DS[self.LOC.SPELL_ABOLISH_DISEASE]))) then
 			    self:Debug("Abolish buff found, skipping");
 			else
 			    -- self:Debug("It's managed");
@@ -585,6 +620,18 @@ do
 
 			    -- copy the debuff information to this table.
 			    self:tcopy(ManagedDebuffs[DebuffNum], Debuff);
+
+			    --[[
+			    if Debuff.TimeLeft then
+				ManagedDebuffs[DebuffNum].TimeStamp = GetTime();
+			    else
+				ManagedDebuffs[DebuffNum].TimeLeft = false;
+				if not ManagedDebuffs[DebuffNum].TimeStamp then
+				    ManagedDebuffs[DebuffNum].TimeStamp = GetTime();
+				end
+			    end
+			    --]]
+
 
 			    DebuffNum = DebuffNum + 1;
 
@@ -602,6 +649,7 @@ do
 	if (not JustOne or DebuffNum == 1)  then -- if JustOne is set don't clear anything except if we found nothing
 	    while (ManagedDebuffs[DebuffNum]) do
 		ManagedDebuffs[DebuffNum].Type = false;
+		-- ManagedDebuffs[DebuffNum].TimeStamp = false;
 		DebuffNum = DebuffNum + 1;
 	    end
 	end
@@ -676,7 +724,7 @@ function D:CheckUnitForBuffs(Unit, BuffNamesToCheck) --{{{
 
 end --}}}
 
-local Stealthed = {BS["Prowl"], BS["Stealth"], BS["Shadowmeld"],  BS["Invisibility"], BS["Lesser Invisibility"]}; --, BS["Ice Armor"],};
+local Stealthed = {DS["Prowl"], DS["Stealth"], DS["Shadowmeld"],  DS["Invisibility"], DS["Lesser Invisibility"]}; --, DS["Ice Armor"],};
 
 
 

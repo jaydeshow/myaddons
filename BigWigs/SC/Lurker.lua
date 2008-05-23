@@ -27,7 +27,6 @@ L:RegisterTranslations("enUS", function() return {
 
 	spout = "Spout",
 	spout_desc = "Timers for Spout, may not always be accurate.",
-	spout_trigger = "%s takes a deep breath!",
 	spout_message = "Casting Spout!",
 	spout_warning = "Possible Spout in ~3sec!",
 	spout_bar = "Possible Spout",
@@ -44,6 +43,33 @@ L:RegisterTranslations("enUS", function() return {
 	["Coilfang Ambusher"] = true,
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_warning = "%s Activado - Se sumerge en ~90seg",
+
+	dive = "Sumergida (Dive)",
+	dive_desc = "Temporizadores para cuando El Rondador de abajo se sumerge.",
+	dive_warning = "Se sumerge en ~%dseg",
+	dive_bar = "~Se sumerge",
+	dive_message = "Se sumerge - Vuelve en 60sec",
+
+	spout = "Chorro (Spout)",
+	spout_desc = "Temporizadores para Chorro, puede no ser del todo preciso.",
+	spout_message = "¡Lanzando Chorro!",
+	spout_warning = "Posible Chorro en ~3seg",
+	spout_bar = "~Chorro",
+
+	whirl = "Giro (Whirl)",
+	whirl_desc = "Temporizadores para Giro.",
+	whirl_bar = "Posible Giro",
+
+	emerge_warning = "Vuelve en %dseg",
+	emerge_message = "Vuelve - Se sumerge en ~90sec",
+	emerge_bar = "~Vuelve a superficie",
+
+	["Coilfang Guardian"] = "Guardián Colmillo Torcido",
+	["Coilfang Ambusher"] = "Emboscadora Colmillo Torcido",
+} end )
+
 L:RegisterTranslations("koKR", function() return {
 	engage_warning = "%s 전투 시작 - 90초 이내 잠수",
 
@@ -56,7 +82,6 @@ L:RegisterTranslations("koKR", function() return {
 
 	spout = "분출",
 	spout_desc = "분출에 대한 타이머입니다. 항상 정확하지 않을 수 있습니다.",
-	spout_trigger = "%s|1이;가; 깊은 숨을 쉽니다!",
 	spout_message = "분출 시전 중!",
 	spout_warning = "약 3초 이내 분출!",
 	spout_bar = "분출 가능",
@@ -78,15 +103,14 @@ L:RegisterTranslations("frFR", function() return {
 
 	dive = "Plongées",
 	dive_desc = "Délais avant que Le Rôdeur d'En-bas ne plonge.",
-	dive_warning = "Plongée probable dans %d sec. !",
+	dive_warning = "Plongée probable dans %d sec. !",
 	dive_bar = "~Plongée",
 	dive_message = "Plongée - De retour dans 60 sec.",
 
 	spout = "Jet",
 	spout_desc = "Délais concernant les Jets. Pas toujours précis.",
-	spout_trigger = "%s inspire profondément !",
-	spout_message = "Incante un Jet !",
-	spout_warning = "Jet probable dans ~3 sec. !",
+	spout_message = "Incante un Jet !",
+	spout_warning = "Jet probable dans ~3 sec. !",
 	spout_bar = "Jet probable",
 
 	whirl = "Tourbillonnement",
@@ -112,7 +136,6 @@ L:RegisterTranslations("deDE", function() return {
 
 	spout = "Schwall",
 	spout_desc = "Zeitanzeige f\195\188r Schwall, m\195\182glicherweise nicht sehr akkurat.",
-	spout_trigger = "%s atmet tief ein!",
 	spout_message = "Wirkt Schwall!",
 	spout_warning = "M\195\182glicher Schwall in ~3sek!",
 	spout_bar = "M\195\182glicher Schwall",
@@ -130,27 +153,26 @@ L:RegisterTranslations("deDE", function() return {
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	engage_warning = "%s 激活 - 90秒后可能下潜",
+	engage_warning = "%s 激活！90秒后，可能下潜！",
 
 	dive = "下潜",
-	dive_desc = "鱼斯拉下潜计时。",
-	dive_warning = "可能 %d秒后下潜！",
+	dive_desc = "下潜计时条。",
+	dive_warning = "约%d秒后，下潜！",
 	dive_bar = "<下潜>",
-	dive_message = "下潜 - 60秒后重新出现",
+	dive_message = "下潜！60秒后，重新出现。",
 
 	spout = "喷涌",
 	spout_desc = "喷涌计时条。",
-	spout_trigger = "%s深深吸了一口气！",
-	spout_message = "快喷了! 啊~~......",
-	spout_warning = "~3秒后 可能喷涌！",
+	spout_message = "喷涌！注意躲避！",
+	spout_warning = "约3秒后，可能喷涌！",
 	spout_bar = "<可能喷涌>",
 
 	whirl = "旋风",
 	whirl_desc = "旋风计时条。",
 	whirl_bar = "<可能旋风>",
 
-	emerge_warning = "%d后出现",
-	emerge_message = "出现 - 90秒后再次下潜",
+	emerge_warning = "%秒后，出现！",
+	emerge_message = "出现！90秒后，再次下潜！",
 	emerge_bar = "<出现>",
 
 	["Coilfang Guardian"] = "盘牙守护者",
@@ -162,24 +184,23 @@ L:RegisterTranslations("zhTW", function() return {
 
 	dive = "潛水",
 	dive_desc = "海底潛伏者下潛計時器",
-	dive_warning = "大約%d秒後下潛!",
-	dive_bar = "~下潛",
+	dive_warning = "大約 %d 秒後下潛!",
+	dive_bar = "<下潛>",
 	dive_message = "潛水! 請就位打小兵 (60秒後王再次出現)",
 
 	spout = "噴射",
-	spout_desc = "噴射計時器, 僅供參考, 不一定準確。",
-	spout_trigger = "%s深深的吸了一口氣!",
-	spout_message = "噴射開始！注意閃避！",
-	spout_warning = "約3秒後噴射！",
-	spout_bar = "噴射",
+	spout_desc = "噴射計時器，僅供參考，不一定準確。",
+	spout_message = "噴射開始!注意閃避!",
+	spout_warning = "約 3 秒後噴射!",
+	spout_bar = "<噴射>",
 
 	whirl = "旋風",
 	whirl_desc = "旋風計時器",
-	whirl_bar = "旋風",
+	whirl_bar = "<旋風>",
 
-	emerge_warning = "%d秒後浮現",
-	emerge_message = "浮現 - 近戰請等旋風結束上前 (再約90秒後下潛)",
-	emerge_bar = "浮現",
+	emerge_warning = "%d 秒後浮現",
+	emerge_message = "浮現 - 近戰請等旋風結束上前 (約 90 秒後下潛)",
+	emerge_bar = "<浮現>",
 
 	["Coilfang Guardian"] = "盤牙護衛",
 	["Coilfang Ambusher"] = "盤牙伏擊者",
@@ -194,7 +215,7 @@ mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
 mod.wipemobs = {L["Coilfang Guardian"], L["Coilfang Ambusher"]}
 mod.toggleoptions = {"dive", "spout", "whirl", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 66338 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 73534 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -260,8 +281,8 @@ function mod:BigWigs_RecvSync( sync, rest, nick )
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	if msg == L["spout_trigger"] then
+function mod:CHAT_MSG_RAID_BOSS_EMOTE(_, unit)
+	if unit == boss then
 		if db.spout then
 			self:Bar(L["spout_message"], 20, "Spell_Frost_ChillingBlast")
 			self:Bar(L["spout_bar"], 50, "Spell_Frost_ChillingBlast")

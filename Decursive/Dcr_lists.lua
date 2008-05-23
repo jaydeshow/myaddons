@@ -28,14 +28,14 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Decursive.xml"] or not DcrLoadedFil
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-03-15 20:56:53 -0400 (Sat, 15 Mar 2008) $", "$Revision: 64659 $");
+D:SetDateAndRevision("$Date: 2008-04-21 19:52:27 -0400 (Mon, 21 Apr 2008) $", "$Revision: 70810 $");
 
 
 local L = D.L;
 local BC = D.BC;
 local BCR = D.BCR;
-local BS = D.BS;
 local DC = DcrC;
+local DS = DC.DS;
 
 
 local pairs		= _G.pairs;
@@ -72,6 +72,12 @@ end
 -- Dcr_ListFrameTemplate specific handlers {{{
 
 function D:PrioSkipListFrame_OnUpdate() --{{{
+
+
+    if not D.DcrFullyInitialized then
+	return;
+    end
+
     if (this.UpdateYourself) then
 	this.UpdateYourself = false;
 	local baseName = this:GetName();
@@ -212,6 +218,11 @@ function D:PrioSkipListEntry_Update(Entry) --{{{
 end --}}}
 
 function D:PrioSkipList_ScrollFrame_Update (ScrollFrame) -- {{{
+
+    if not D.DcrFullyInitialized then
+	return;
+    end
+
     local maxentry;
     local UpdateListOnceDone = true;
     local DirectCall = false;
@@ -257,6 +268,10 @@ function D:AddTargetToPriorityList() --{{{
 end --}}}
 
 function D:AddUnitToPriorityList( unit, check ) --{{{
+
+    if not D.DcrFullyInitialized then
+	return false;
+    end
 
     if (#D.profile.PriorityList > 99) then
 	return false;

@@ -2,7 +2,7 @@ local function BST_RightMenu_OnClick()
 	local index = this.index;
 	if(index > 0)then
 		DoCraft(index);
-		BeastSpell_TrainFrame_OnUpdate();
+		--BeastSpell_TrainFrame_OnUpdate();
 	end;
 	BST_RightMenu:Hide();
 end;
@@ -55,26 +55,25 @@ local function UIMenu_AutoSize(menu)
 	menu:SetWidth(maxWidth + (UIMENU_BORDER_WIDTH * 2));
 end;
 
-function BST_TrainButton_RightMenu_OnShow(t, ipp, lv0)
+function BST_TrainButton_RightMenu_OnShow(t, ipp, lv0, myTP)
 	local petLv = UnitLevel("pet");
-	local total, spent = GetPetTrainingPoints();
-	local useable = total - spent;
-	if(useable < 0)then
-		useable = 0;
-	end;
 	local j = lv0;
 	local n = 0;
 	UIMenu_Initialize(BST_RightMenu);
+	local usedTP = 0;
+	if(t["TP"][lv0-1])then
+		usedTP = t["TP"][lv0-1];
+	end;
 	while(j <= t["max"])do
-		if(t["Lv"][j] and t["Lv"][j] > 0 and t["Lv"][j] <= petLv and t["TP"][j] <= useable)then
+		if(t["Lv"][j] and t["Lv"][j] > 0 and t["Lv"][j] <= petLv and t["TP"][j] - usedTP <= myTP and ipp[tostring(j)])then
 			local index = ipp[tostring(j)];
-			UIMenu_AddButton(BST_RightMenu, "学习：等级 "..j, index);
+			UIMenu_AddButton(BST_RightMenu, BS_TRAIN_LEVEL .. j, index);
 			n = n + 1;
 		end;
 		j = j + 1;
 	end;
 	if(n < 1)then
-		UIMenu_AddButton(BST_RightMenu, "|cffFF0000无可学等级|r", 0);
+		UIMenu_AddButton(BST_RightMenu, BS_TRAIN_NOLEVEL, 0);
 	end;
 	BST_RightMenu.timeleft = UIMENU_TIMEOUT;
 	UIMenu_AutoSize(BST_RightMenu);

@@ -8,16 +8,16 @@
 --[[ $Id: AutoBarFuBar.lua 40066 2007-06-15 5:16:47Z Toadkiller $ ]]
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 54547 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 74775 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 AutoBarFuBar = AceLibrary("AceAddon-2.0"):new("AceEvent-2.0", "AutoBarConsole-1.0", "FuBarPlugin-2.0")
-local AutoBar, AutoBarFuBar = AutoBar, AutoBarFuBar
+local AutoBarFuBar = AutoBarFuBar
 
-local L = AceLibrary("AceLocale-2.2"):new("AutoBar")
+local L = AutoBar.locale
 
 AutoBarFuBar.name = AutoBar.name
 AutoBarFuBar.version = AutoBar.version
@@ -25,12 +25,13 @@ AutoBarFuBar.revision = AutoBar.revision
 AutoBarFuBar.date = AutoBar.date
 AutoBarFuBar.hasIcon = "Interface\\Icons\\INV_Ingot_Eternium"
 AutoBarFuBar.hasNoColor = true
-AutoBarFuBar.defaultMinimapPosition = 275
+AutoBarFuBar.defaultMinimapPosition = 265
 AutoBarFuBar.clickableTooltip = false
 AutoBarFuBar.hideWithoutStandby = true
 AutoBarFuBar.independentProfile = true
 AutoBarFuBar.cannotDetachTooltip = true
 
+local LibKeyBound = AceLibrary:GetInstance("LibKeyBound-1.0")
 local waterfall = AceLibrary:HasInstance("Waterfall-1.0") and AceLibrary("Waterfall-1.0")
 
 function AutoBarFuBar:OnInitialize()
@@ -48,18 +49,39 @@ function AutoBarFuBar:OnInitialize()
 		args = {},
 	}
 	AceLibrary("AutoBarConsole-1.0"):InjectAceOptionsTable(self, AutoBar.options.args.fubar)
+
+	-- Delete irrelevant and dangerous options
+	AutoBar.options.args.profile = nil
+	if (AutoBar:IsActive()) then
+		AutoBar.options.args.standby = nil
+	end
+
 	self.OnMenuRequest = AutoBar.options
 end
+-- /script AutoBar:Print(AutoBar:IsActive())
 
 local Tablet = AceLibrary("Tablet-2.0")
+local hintText
 -- FuBar Stuff
 function AutoBarFuBar:OnTooltipUpdate()
 	local cat = Tablet:AddCategory("columns", 2)
-	Tablet:SetHint(L["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."])
+	if (not hintText) then
+		hintText = table.concat({
+			L["\n|cffffffff%s:|r %s"]:format(L["Left-Click"], L["Options GUI"]),
+			L["\n|cffffffff%s:|r %s"]:format(L["Right-Click"], L["Dropdown UI"]),
+			L["\n|cffffffff%s:|r %s"]:format(L["Alt-Click"], L["Key Bindings"]),
+			L["\n|cffffffff%s:|r %s"]:format(L["Ctrl-Click"], L["Move the Buttons"]),
+			L["\n|cffffffff%s:|r %s"]:format(L["Shift-Click"], L["Move the Bars"]),
+			L["\n|cffffffff%s:|r %s"]:format(L["Ctrl-Shift-Click"], L["Skin the Buttons"]),
+	})
+	end
+	Tablet:SetHint(hintText)
 end
 
 function AutoBarFuBar:OnClick(button)
-	if IsShiftKeyDown() then
+	if (IsControlKeyDown() and IsShiftKeyDown()) then
+		AutoBar:ToggleSkinMode()
+	elseif (IsShiftKeyDown()) then
 		AutoBar.ToggleStickyMode()
 	elseif (IsControlKeyDown()) then
 		if AutoBar.unlockButtons then
@@ -67,14 +89,14 @@ function AutoBarFuBar:OnClick(button)
 		else
 			AutoBar:UnlockButtons()
 		end
+	elseif (IsAltKeyDown()) then
+		LibKeyBound:Toggle()
+	else
+		if (waterfall) then
+			AutoBar:ConfigToggle()
+		else
+			self:Print(L["Waterfall-1.0 is required to access the GUI"])
+		end
 	end
 	self:UpdateDisplay()
-end
-
-function AutoBarFuBar:OnDoubleClick()
-	if (waterfall) then
-		AutoBar:OpenOptions()
-	else
-		self:Print(L["Waterfall-1.0 is required to access the GUI."])
-	end
 end

@@ -1,4 +1,4 @@
-FishingAce/Changelog-FishingAce-r55088.txt
+FishingAce/Changelog-FishingAce-r73036.txt
 FishingAce/Locale-koKR.lua
 FishingAce/Locale-enUS.lua
 FishingAce/Locale-frFR.lua
@@ -8,19 +8,3 @@ FishingAce/FishingAce.lua
 FishingAce/Locale-zhCN.lua
 FishingAce/FishingAce.toc
 FishingAce/Locale-zhTW.lua
-FishingAce/Libs/AceAddon-2.0/AceAddon-2.0.toc
-FishingAce/Libs/AceAddon-2.0/AceAddon-2.0.lua
-FishingAce/Libs/AceHook-2.1/AceHook-2.1.lua
-FishingAce/Libs/AceHook-2.1/AceHook-2.1.toc
-FishingAce/Libs/AceDB-2.0/AceDB-2.0.lua
-FishingAce/Libs/AceDB-2.0/AceDB-2.0.toc
-FishingAce/Libs/AceLocale-2.2/AceLocale-2.2.lua
-FishingAce/Libs/AceLocale-2.2/AceLocale-2.2.toc
-FishingAce/Libs/AceEvent-2.0/AceEvent-2.0.lua
-FishingAce/Libs/AceEvent-2.0/AceEvent-2.0.toc
-FishingAce/Libs/AceLibrary/AceLibrary.lua
-FishingAce/Libs/AceLibrary/AceLibrary.toc
-FishingAce/Libs/AceConsole-2.0/AceConsole-2.0.toc
-FishingAce/Libs/AceConsole-2.0/AceConsole-2.0.lua
-FishingAce/Libs/AceOO-2.0/AceOO-2.0.toc
-FishingAce/Libs/AceOO-2.0/AceOO-2.0.lua

@@ -53,9 +53,5 @@ L:RegisterTranslations("frFR", function() return {
 	["Blessings Manager"] = "Gestionnaire des bénédictions",
 	["Reset"] = "Réinitialiser",
 	["Reset default position of exception icon anchor"] = "Réinitialise la position de l'icone d'exception",
-	["Changed %s's template - %s from %s to %s"] = "Modèle de %s modifié - %s de %s à %s",
-	["Changed %s's exception - %s from %s to %s"] = "Exception de %s modifié - %s de %s à %s",
-	["Loaded template '%s'"] = "Modèle '%s' chargé",
-	["Saved template '%s'"] = "Modèle '%s' sauvegardé",
 	["%s blacklisted for 10 seconds"] = "%s mis sur liste noire pour 10s",
 } end)

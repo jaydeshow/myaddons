@@ -178,7 +178,7 @@ end
 -- (i.e. future proofed. It doesn't fix errors already present in the notes when upgrading.)
 -------------------------------------------------------------------------------------------------
 
-MapNotes_Keys = {};		-- MapNotes Keys with Localised name details
+MapNotes_Keys = {};			-- MapNotes Keys with Localised name details
 MapNotes_OldKeys = {};		-- Mapping of old [Continent][Zone] to New Key values (for this localisation)
 MapNotes_MetaKeys = {};		-- Mapping of MetaMaps new (but still not global?) Map Keys
 
@@ -196,7 +196,7 @@ function MapNotes_LoadMapData()
 	if ( not MapNotes_Undelete_Info ) then
 		MapNotes_Undelete_Info = {};
 	end
-	
+
 	for mapName, mapObject in pairs(MapNotes_Keys) do
 		if ( not MapNotes_Data_Notes[ mapName ] ) then
 			MapNotes_Data_Notes[ mapName ] = {};
@@ -209,7 +209,6 @@ function MapNotes_LoadMapData()
 	if ( not MapNotes_Options.Edition ) then
 		MapNotes_Options.Edition = MAPNOTES_EDITION;
 	end
---	MN_DataCheck(nil);
 	MapNotes_Options.Version = MAPNOTES_VERSION;
 end
 
@@ -597,15 +596,37 @@ function MN_DataCheck(report)
 end
 
 function MN_DataCheck_Sort(data, report)
-	local holdingArray = {};
+	local holdingArray, errors = {}, 0;
 	if ( report ) then
 		report = 0;
 	end
-
+	
 	for key, notes in pairs(data) do
 		holdingArray[key] = {};
 		local counter = 0;
 		for note, details in pairs(notes) do
+			if ( details.name ) then
+				if ( not details.icon ) then
+					errors = errors + 1;
+					details.icon = 0;
+				end
+				if ( not details.inf1 ) then
+					errors = errors + 1;
+					details.inf1 = "";
+				end
+				if ( not details.inf2 ) then
+					errors = errors + 1;
+					details.inf2 = "";
+				end
+				if ( not details.xPos ) then
+					errors = errors + 1;
+					details.xPos = 0;
+				end
+				if ( not details.yPos ) then
+					errors = errors + 1;
+					details.yPos = 0;
+				end
+			end
 			counter = counter + 1;
 			holdingArray[key][counter] = details;
 		end
@@ -616,6 +637,9 @@ function MN_DataCheck_Sort(data, report)
 
 	if ( report ) then
 		DEFAULT_CHAT_FRAME:AddMessage("MapNotes -> "..report, 0.9, 0.1, 0.1);
+	end
+	if ( errors > 0 ) then
+		DEFAULT_CHAT_FRAME:AddMessage("MapNotes -> |cffff0000"..errors.."|r Errors Self Corrected", 0.9, 0.1, 0.1);
 	end
 
 	return holdingArray;

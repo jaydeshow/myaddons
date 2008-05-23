@@ -33,19 +33,17 @@ local D = Dcr;
 
 D.AOO	    = AceLibrary("AceOO-2.0");
 D.L	    = AceLibrary("AceLocale-2.2"):new("Dcr");
---D.BC	    = AceLibrary("Babble-Class-2.2");
 D.BC	    = LibStub("LibBabble-Class-3.0"):GetLookupTable();
 D.BCR	    = LibStub("LibBabble-Class-3.0"):GetReverseLookupTable();
-D.BS	    = LibStub("LibBabble-Spell-3.0"):GetLookupTable();
---D.BS	    = AceLibrary("Babble-Spell-2.2");
 D.DewDrop   = AceLibrary("Dewdrop-2.0");
 D.A	    = AceLibrary("SpecialEvents-Aura-2.0");
 D.Waterfall = AceLibrary("Waterfall-1.0");
 D.T	    = AceLibrary("Tablet-2.0");
 
+D.DcrFullyInitialized = false;
+
 local L = D.L;
 local BC = D.BC;
-local BS = D.BS;
 
 local BOOKTYPE_PET	= BOOKTYPE_PET;
 local BOOKTYPE_SPELL	= BOOKTYPE_SPELL;
@@ -92,6 +90,10 @@ DcrC = {};
 
 local DC = DcrC;
 
+DC.DS = {};
+
+local DS = DC.DS;
+
 DC.IconON = "Interface\\AddOns\\" .. D.folderName .. "\\iconON.tga";
 DC.IconOFF = "Interface\\AddOns\\" .. D.folderName .. "\\iconOFF.tga";
 
@@ -126,6 +128,7 @@ DC.PET = SPELL_TARGET_TYPE8_DESC;
 DC.RANKNUMTRANS = false;
 
 DC.DebuffHistoryLength = 40; -- we use a rather high value to avoid garbage creation
+
 
 D.DebuffHistory = {};
 
@@ -178,10 +181,14 @@ function D:OnInitialize() -- Called on ADDON_LOADED -- {{{
 	return false;
     end
 
+
     self:RegisterDB("DcrDB");
     self:RegisterDefaults('profile', D.defaults );
     self:RegisterDefaults('class', D.defaults.class );
     self:RegisterChatCommand({'/dcr', '/decursive'}, D.options )
+
+    -- Create some useful cache tables
+    D:CreateClassColorTables();
 
     -- add support for FuBar
     -- This will add Fubar relative options into a sub-menu
@@ -301,7 +308,7 @@ function D:OnInitialize() -- Called on ADDON_LOADED -- {{{
 	end
 
 
-    end	
+    end
 
     D.MFContainer = DcrMUFsContainer;
     D.MicroUnitF.Frame = D.MFContainer;
@@ -340,85 +347,103 @@ function D:OnInitialize() -- Called on ADDON_LOADED -- {{{
 	[DC.NOTYPE]	= "AAAAAA";
     }
 
-    -- /script DC.SpellsToUse[D.BS["Dampen Magic"]] = {Types = {DC.MAGIC, DC.DISEASE, DC.POISON},IsBest = false}; D:Configure();
+    -- /script DcrC.SpellsToUse[Dcr.DS["Dampen Magic"]] = {Types = {DcrC.MAGIC, DcrC.DISEASE, DcrC.POISON},IsBest = false}; Dcr:Configure();
 
     -- SPELL TABLE -- must be parsed after localisation is loaded {{{
 	DC.SpellsToUse = {
 
-	    [BS[D.LOC.SPELL_POLYMORPH]]	    = { --Mages
+	    [DS[D.LOC.SPELL_POLYMORPH]]	    = { --Mages
 	    Types = {DC.CHARMED},
 	    IsBest = false,
+	    Pet = false,
 	    Rank = 1,
 	},
 	-- Druids
-	[BS[D.LOC.SPELL_CYCLONE]]	    = {
+	[DS[D.LOC.SPELL_CYCLONE]]	    = {
 	    Types = {DC.CHARMED},
 	    IsBest = false,
+	    Pet = false,
 	},
 	--[[
 	-- used for testing only
-	[BS["Dampen Magic"] ]	    = {
+	[DS["Dampen Magic"] ]	    = {
 	    Types = {DC.MAGIC},--, DC.DISEASE, DC.POISON},
 	    IsBest = false,
+	    Pet = false,
 	}, --]]
 	--[[
 	-- used for testing only
-	[BS["Amplify Magic"] ]	    = {
+	[DS["Amplify Magic"] ]	    = {
 	    Types = {DC.DISEASE, DC.POISON},
 	    IsBest = false,
+	    Pet = false,
 	}, --]]
-	[BS[D.LOC.SPELL_CURE_DISEASE]]	    = {
-	    Types = {DC.DISEASE},
-	    IsBest = false,
-	},
-	[BS[D.LOC.SPELL_ABOLISH_DISEASE]]	    = {
+	[DS[D.LOC.SPELL_ABOLISH_DISEASE]]	    = {
 	    Types = {DC.DISEASE},
 	    IsBest = true,
+	    Pet = false,
 	},
-	[BS[D.LOC.SPELL_PURIFY]]		    = {
-	    Types = {DC.DISEASE, DC.POISON},
+	[DS[D.LOC.SPELL_CURE_DISEASE]]	    = {
+	    Types = {DC.DISEASE},
 	    IsBest = false,
+	    Pet = false,
 	},
 	-- paladins
-	[BS[D.LOC.SPELL_CLEANSE]]		    = {
+	[DS[D.LOC.SPELL_CLEANSE]]		    = {
 	    Types = {DC.MAGIC, DC.DISEASE, DC.POISON},
 	    IsBest = true,
+	    Pet = false,
 	},
-	[BS[D.LOC.SPELL_DISPELL_MAGIC]]	    = {
+	[DS[D.LOC.SPELL_PURIFY]]		    = {
+	    Types = {DC.DISEASE, DC.POISON},
+	    IsBest = false,
+	    Pet = false,
+	},
+	-- Priests
+	[DS[D.LOC.SPELL_DISPELL_MAGIC]]	    = {
 	    Types = {DC.MAGIC, DC.ENEMYMAGIC},
 	    IsBest = true,
+	    Pet = false,
 	},
-	[BS[D.LOC.SPELL_CURE_POISON]]	    = {
+	-- Druids
+	[DS[D.LOC.SPELL_ABOLISH_POISON]]	    = {
+	    Types = {DC.POISON},
+	    IsBest = true,
+	    Pet = false,
+	},
+	[DS[D.LOC.SPELL_CURE_POISON]]	    = {
 	    Types = {DC.POISON},
 	    IsBest = false,
-	},
-	[BS[D.LOC.SPELL_ABOLISH_POISON]]	    = {
-	    Types = {DC.POISON},
-	    IsBest = true,
+	    Pet = false,
 	},
 	-- mages
-	[BS[D.LOC.SPELL_REMOVE_LESSER_CURSE]]   = {
+	[DS[D.LOC.SPELL_REMOVE_LESSER_CURSE]]   = {
 	    Types = {DC.CURSE},
 	    IsBest = true,
+	    Pet = false,
 	},
 	-- druids
-	[BS[D.LOC.SPELL_REMOVE_CURSE]]	    = {
+	[DS[D.LOC.SPELL_REMOVE_CURSE]]	    = {
 	    Types = {DC.CURSE},
 	    IsBest = true,
+	    Pet = false,
 	},
 	--[=[ -- disabled because of Korean locals... see below
-	[BS[D.LOC.SPELL_PURGE]]		    = {
+	[DS[D.LOC.SPELL_PURGE]]		    = {
 	    Types = {DC.ENEMYMAGIC},
 	    IsBest = true,
+	    Pet = false,
 	},
 	--]=]
-	[BS[D.LOC.PET_FEL_CAST]]		    = {
+	[DS[D.LOC.PET_FEL_CAST]]		    = {
 	    Types = {DC.MAGIC, DC.ENEMYMAGIC},
 	    IsBest = true,
+	    Pet = true,
 	},
-	[BS[D.LOC.PET_DOOM_CAST]]		    = {
+	[DS[D.LOC.PET_DOOM_CAST]]		    = {
 	    Types = {DC.MAGIC, DC.ENEMYMAGIC},
 	    IsBest = true,
+	    Pet = true,
 	},
 
     };
@@ -426,9 +451,10 @@ function D:OnInitialize() -- Called on ADDON_LOADED -- {{{
     -- Thanks to Korean localization team of WoW we have to make an exception....
     -- They found the way to call two different spells the same (Shaman PURGE and Paladin CLEANSE... (both are called "정화") )
     if (select(2, UnitClass("player")) == "SHAMAN") then
-	DC.SpellsToUse[BS[D.LOC.SPELL_PURGE]]		    = {
+	DC.SpellsToUse[DS[D.LOC.SPELL_PURGE]]		    = {
 	    Types = {DC.ENEMYMAGIC},
 	    IsBest = true,
+	    Pet = false,
 	};
     end
 
@@ -437,15 +463,16 @@ function D:OnInitialize() -- Called on ADDON_LOADED -- {{{
 end -- // }}}
 
 --Old_MacroFrame_SaveMacro = false;
-
+local FirstEnable = true;
 function D:OnEnable(first) -- called after PLAYER_LOGIN -- {{{
-    
+
     if DecursiveSelfDiagnostic() == 2 then
 	return false;
     end
 
+
     -- Register slashes command {{{
-    if (first) then
+    if (FirstEnable) then
 	SLASH_DECURSIVEDIAG1 = D.CONF.MACRO_DIAG;
 	SlashCmdList["DECURSIVEDIAG"] = function(msg)
 	    DecursiveSelfDiagnostic(true, true);
@@ -506,7 +533,7 @@ function D:OnEnable(first) -- called after PLAYER_LOGIN -- {{{
     end -- }}}
 
 
-    if (first) then
+    if (FirstEnable) then
 	-- configure the message frame for Decursive
 	DecursiveTextFrame:SetFading(true);
 	DecursiveTextFrame:SetFadeDuration(D.CONF.TEXT_LIFETIME / 3);
@@ -538,13 +565,11 @@ function D:OnEnable(first) -- called after PLAYER_LOGIN -- {{{
 	end); -- }}}
 
 
-	-- Create some useful cache tables
-	D:CreateClassColorTables();
 
     end
 
 
-    -- these events are automatically stopped when the addon is disabled by ACE
+    -- these events are automatically stopped when the addon is disabled by Ace
 
     -- Spell changes events
     self:RegisterEvent("LEARNED_SPELL_IN_TAB");
@@ -577,8 +602,8 @@ function D:OnEnable(first) -- called after PLAYER_LOGIN -- {{{
     self:RegisterEvent("SpecialEvents_UnitDebuffLost")
     self:RegisterEvent("SpecialEvents_UnitBuffGained")
     self:RegisterEvent("SpecialEvents_UnitBuffLost")
-    
-    
+
+
     self:RegisterEvent("UPDATE_MOUSEOVER_UNIT");
 
     -- used for Debugging purpose
@@ -588,14 +613,16 @@ function D:OnEnable(first) -- called after PLAYER_LOGIN -- {{{
 
 
     self:ScheduleRepeatingEvent("SheduledTasks", self.SheduledTasks, 0.2, self);
-    
+
     -- Configure specific profile dependent data
     D:OnProfileEnable();
 
-    if (first) then
+    if (FirstEnable) then
 	D:ColorPrint(0.3, 0.5, 1, L[D.LOC.IS_HERE_MSG]);
 	D:ColorPrint(0.3, 0.5, 1, L[D.LOC.SHOW_MSG]);
     end
+
+    FirstEnable = false;
 
 
 
@@ -603,7 +630,7 @@ end -- // }}}
 
 function D:OnProfileEnable()
 
-
+    D.DcrFullyInitialized = false;
     D:CancelScheduledEvent("LLupdate");
     D:CancelScheduledEvent("MUFupdate");
 
@@ -621,7 +648,7 @@ function D:OnProfileEnable()
     D.Status.MaxConcurentUpdateDebuff = 0;
 
     -- if we log in and we are already fighting...
-    if (InCombatLockdown()) then 
+    if (InCombatLockdown()) then
 	D.Status.Combat = true;
     end
 
@@ -647,15 +674,9 @@ function D:OnProfileEnable()
 
     D:Init();
 
-    if not D.profile.Hide_LiveList then
-	self:ScheduleRepeatingEvent("LLupdate", D.LiveList.Update_Display, D.profile.ScanTime, D.LiveList);
-    end
 
     D.MicroUnitF.MaxUnit = D.profile.DebuffsFrameMaxCount;
 
-    if D.profile.ShowDebuffsFrame then
-	self:ScheduleRepeatingEvent("MUFupdate", self.DebuffsFrame_Update, self.profile.DebuffsFrameRefreshRate, self);
-    end
 
     D.Groups_datas_are_invalid = true;
     D:CreateDropDownFiltersMenu();
@@ -664,7 +685,7 @@ function D:OnProfileEnable()
     D.MicroUnitF:RegisterMUFcolors(D.profile.MF_colors);
 
     D.MicroUnitF:ResetAllPositions ();
-  
+
 
     D.Status.Enabled = true;
 
@@ -683,10 +704,21 @@ function D:OnProfileEnable()
     -- even if the Live-list and the MUFs are disabled... (some people are strange)
     D:GetUnitArray();
 
+    -- put the updater events at the end of the init so there is no chance they could be called before everything is ready
+    if not D.profile.Hide_LiveList then
+	self:ScheduleRepeatingEvent("LLupdate", D.LiveList.Update_Display, D.profile.ScanTime, D.LiveList);
+    end
+
+    if D.profile.ShowDebuffsFrame then
+	self:ScheduleRepeatingEvent("MUFupdate", self.DebuffsFrame_Update, self.profile.DebuffsFrameRefreshRate, self);
+    end
+    D.DcrFullyInitialized = true;
 end
 
 function D:OnDisable() -- When the addon is disabled by ACE
     D.Status.Enabled = false;
+    D.DcrFullyInitialized = false;
+    
     D:SetIcon("Interface\\AddOns\\" .. D.folderName .. "\\iconOFF.tga");
     if ( D.profile.ShowDebuffsFrame) then
 	D.MFContainer:Hide();
@@ -725,7 +757,7 @@ function D:Init() --{{{
     -- }}}
 
     -- SET THE LIVE_LIST FRAME AS WRITTEN IN THE CURRENT PROFILE {{{
-	
+
 	-- Set poristion and scale
     DecursiveMainBar:Show();
     DecursiveMainBar:SetScale(D.profile.LiveListScale);
@@ -775,18 +807,25 @@ function D:ReConfigure() --{{{
 
     D:Debug("|cFFFF0000D:ReConfigure was called!|r");
 
-    local DoNotReconfigure = true;
+    local Spell, spellName;
+    local GetSpellInfo = _G.GetSpellInfo;
 
-    for Spell, id_booktype in pairs(D.Status.FoundSpells) do
-
-	if ( GetSpellName(id_booktype[1], id_booktype[2]) ~= Spell) then
-	    DoNotReconfigure = false;
+    local Reconfigure = false;
+    for spellName, Spell in pairs(DC.SpellsToUse) do
+	-- Do we have that spell?
+	if GetSpellInfo(spellName) then -- yes
+	    -- is it new?
+	    if not D.Status.FoundSpells[spellName] then -- yes
+		Reconfigure = true;
+		break;
+	    end
+	elseif D.Status.FoundSpells[spellName] then -- we don't have it anymore...
+	    Reconfigure = true;
 	    break;
 	end
-
     end
 
-    if DoNotReconfigure == false then
+    if Reconfigure == true then
 	D:Debug("D:ReConfigure RECONFIGURATION!");
 	D:Configure();
 	return;
@@ -803,16 +842,40 @@ function D:Configure() --{{{
 
     local CuringSpells = D.Status.CuringSpells;
 
-    CuringSpells[DC.MAGIC]	  = false;
-    CuringSpells[DC.ENEMYMAGIC] = false;
-    CuringSpells[DC.CURSE]	  = false;
+    CuringSpells[DC.MAGIC]	= false;
+    CuringSpells[DC.ENEMYMAGIC]	= false;
+    CuringSpells[DC.CURSE]	= false;
     CuringSpells[DC.POISON]     = false;
     CuringSpells[DC.DISEASE]    = false;
     CuringSpells[DC.CHARMED]    = false;
 
-
+    local Spell, spellName, Type, _;
+    local GetSpellInfo = _G.GetSpellInfo;
 
     D:Debug("Configuring Decursive...");
+
+    for spellName, Spell in pairs(DC.SpellsToUse) do
+	-- Do we have that spell?
+	if GetSpellInfo(spellName) then -- yes
+	    -- register it
+	    for _, Type in pairs (DC.SpellsToUse[spellName].Types) do
+
+		if not CuringSpells[Type] or not DC.SpellsToUse[ CuringSpells[Type] ].IsBest then  -- we did not already registered this spell or it's not the best spell for this type
+
+		    D.Status.FoundSpells[spellName] = {DC.SpellsToUse[spellName].Pet, (select(2, GetSpellInfo(spellName)))};
+		    CuringSpells[Type] = spellName;
+
+		    D:Debug("Spell \"%s\" (%s) registered for type %d ( %s ), PetSpell: ", spellName, D.Status.FoundSpells[spellName][2], Type, DC.TypeNames[Type], D.Status.FoundSpells[spellName][1]);
+		    D.Status.HasSpell = true;
+		end
+	    end
+
+	end
+    end
+
+
+
+    --[[
     -- parse through the entire library...
     -- look for known cleaning spells...
 
@@ -820,7 +883,6 @@ function D:Configure() --{{{
 
     local BookType = BOOKTYPE_SPELL;
     local break_flag = false
-    local spellName, spellRank;
 
     -- This array will be used to test if a reconfiguration is required
     D.Status.FoundSpells = {};
@@ -839,38 +901,16 @@ function D:Configure() --{{{
 
 	    end
 
-	    -- get a 'Rank #' string exemple (workaround due to the way the
-	    -- polymorph spell variants are handled in WoW 2.3)
-	    -- it will be used to select the rank of the spell found.
-	    -- We only test when we have found at least one spell else we would
-	    -- detect things that are not ranks such as 'Master' for Cooking...
-
-	    if not DC.RANKNUMTRANS and D.Status.HasSpell and spellName ~= BS[D.LOC.SPELL_POLYMORPH] and spellRank ~= "" then
-		DC.RANKNUMTRANS = spellRank;
-	    end
-
 
 	    if (DC.SpellsToUse[spellName]) then
 
-		for _, Type in pairs (DC.SpellsToUse[spellName].Types) do
-
-		    if	    (CuringSpells[Type] and DC.SpellsToUse[ CuringSpells[Type] ].IsBest)  -- we already registered the best
-			or  (CuringSpells[Type] and CuringSpells[Type] == spellName) then	    -- this spell is already registered
-			break;
-		    end
-
-		    D.Status.FoundSpells[spellName] = {i, BookType, spellRank}; -- save the id of the spell to be able to check for changes later
-		    CuringSpells[Type] = spellName;
-
-		    D:Debug("Spell \"%s\" registered for type %d ( %s )", spellName, Type, DC.TypeNames[Type]);
-		end
-
-		 D.Status.HasSpell = true;
+		
 	    end
 
 	    i = i + 1
 	end
     end
+    --]]
 
 
     -- Verify the cure order list (if it was damaged)
@@ -882,23 +922,100 @@ function D:Configure() --{{{
 	return;
     end
 
-    
 
-    
+
+
 
 
 
 end --}}}
 
+function D:GetSpellsTranslations(FromDIAG)
+    local GetSpellInfo = _G.GetSpellInfo;
+    local Spells = {
+	[D.LOC.SPELL_POLYMORPH]		= {	118,					 },
+	[D.LOC.SPELL_CYCLONE]		= {	33786,					 },
+	[D.LOC.SPELL_CURE_DISEASE]	= {	528, 2870,				 },
+	[D.LOC.SPELL_ABOLISH_DISEASE]	= {	552,					 },
+	[D.LOC.SPELL_PURIFY]		= {	1152,					 },
+	[D.LOC.SPELL_CLEANSE]		= {	4987,					 },
+	[D.LOC.SPELL_DISPELL_MAGIC]	= {	527, 988,				 },
+	[D.LOC.SPELL_CURE_POISON]	= {	526, 8946,				 },
+	[D.LOC.SPELL_ABOLISH_POISON]	= {	2893,					 },
+	[D.LOC.SPELL_REMOVE_LESSER_CURSE]={	475,					 },
+	[D.LOC.SPELL_REMOVE_CURSE]	= {	2782,					 },
+	[D.LOC.SPELL_PURGE]		= {	370, 8012,				 },
+	[D.LOC.PET_FEL_CAST]		= {	19505, 19731, 19734, 19736, 27276, 27277,},
+	[D.LOC.PET_DOOM_CAST]		= {	527, 988,				 },
+	[D.LOC.CURSEOFTONGUES]		= {	1714, 11719,                             },
+	[D.LOC.DCR_LOC_SILENCE]		= {	15487,					 },
+	[D.LOC.DCR_LOC_MINDVISION]	= {	2096, 10909,				 },
+	[D.LOC.DREAMLESSSLEEP]		= {	15822,					 },
+	[D.LOC.GDREAMLESSSLEEP]		= {	24360,					 },
+	[D.LOC.MDREAMLESSSLEEP]		= {	28504,					 },
+	[D.LOC.ANCIENTHYSTERIA]		= {	19372,					 },
+	[D.LOC.IGNITE]			= {	19659,					 },
+	[D.LOC.TAINTEDMIND]		= {	16567,					 },
+	[D.LOC.MAGMASHAKLES]		= {	19496,					 },
+	[D.LOC.CRIPLES]			= {	33787,					 },
+	[D.LOC.DUSTCLOUD]		= {	26072,					 },
+	[D.LOC.WIDOWSEMBRACE]		= {	28732,					 },
+	[D.LOC.SONICBURST]		= {	39052,					 },
+	[D.LOC.DELUSIONOFJINDO]		= {	24306,					 },
+	[D.LOC.MUTATINGINJECTION]	= {	28169,					 },
+	['Phase Shift']			= {	4511,					 },
+	['Banish']			= {	710, 18647,				 },
+	['Frost Trap Aura']		= {	13810,					 },
+	['Arcane Blast']		= {	30451,					 },
+	['Prowl']			= {	5215, 6783, 9913, 24450,		 },
+	['Stealth']			= {	1784, 1785, 1786, 1787,			 },
+	['Shadowmeld']			= {	20580,					 },
+	['Invisibility']		= {	66,					 },
+	['Lesser Invisibility']		= {	7870,                                    },
+	['Ice Armor']			= {	7302, 7320, 10219, 10220, 27124,	 },
+	['Unstable Affliction']		= {	30108, 30404, 30405,			 },
+	['Dampen Magic']		= {	604,					 },
+	['Amplify Magic']		= {	1008,					 },
+    };
+
+
+    local Sname, Sids, Sid, _, ok;
+    ok = true;
+    for Sname, Sids in pairs(Spells) do
+	for _, Sid in ipairs(Sids) do
+
+	    if _ == 1 then
+		DS[Sname] = (GetSpellInfo(Sid));
+	    elseif FromDIAG then
+		if DS[Sname] ~= (GetSpellInfo(Sid)) then
+		    D:errln("Spell IDs %s and %s have different translations: %s and %s", Sids[1], Sid, DS[Sname], (GetSpellInfo(Sid)) );
+		    D:errln("Please report this to ARCHARODIM@teaser.fr");
+		    ok = false;
+		end
+	    end
+
+	end
+    end
+
+    -- get a 'Rank #' string exemple (workaround due to the way the
+    -- polymorph spell variants are handled in WoW 2.3)
+
+    DC.RANKNUMTRANS = select(2, GetSpellInfo(118));
+
+    return ok;
+
+end
+
+
 -- Create the macro for Decursive
 -- This macro will cast the first spell (priority)
 
--- NEW SetBindingMacro("KEY", "macroname"|macroid) 
--- UPDATED name,texture,body,isLocal = GetMacroInfo(id|"name") - Now takes ID or name 
--- UPDATED DeleteMacro() -- as above 
--- UPDATED EditMacro() -- as above 
+-- NEW SetBindingMacro("KEY", "macroname"|macroid)
+-- UPDATED name,texture,body,isLocal = GetMacroInfo(id|"name") - Now takes ID or name
+-- UPDATED DeleteMacro() -- as above
+-- UPDATED EditMacro() -- as above
 -- UPDATED PickupMacro() -- as above
--- CreateMacro("name", icon, "body", local)   
+-- CreateMacro("name", icon, "body", local)
 
 
 function D:UpdateMacro ()
@@ -978,7 +1095,7 @@ function D:SetDateAndRevision (Date, Revision)
     end
 end
 
-D:SetDateAndRevision("$Date: 2008-03-21 18:11:58 -0400 (Fri, 21 Mar 2008) $", "$Revision: 65278 $");
+D:SetDateAndRevision("$Date: 2008-05-08 09:58:40 -0400 (Thu, 08 May 2008) $", "$Revision: 73101 $");
 
 DcrLoadedFiles["DCR_init.lua"] = true;
 

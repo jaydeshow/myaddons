@@ -2,12 +2,17 @@
 	local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 	local L  = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 	
+	local showDropRate = function (v)
+		v = tonumber(v)
+		return v and (" (%.1f%%)"):format(v / 10) or ""
+	end
+
 	table.insert(MENDELEEV_SETS, {
 		name = BZ["Auchindoun"],
 		setindex = "InstanceLoot.Auchindoun",
 		colour = "|cffB0C4DE",
 		header = BZ["Auchindoun"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Auchenai Crypts.Exarch Maladaar"]=BB["Exarch Maladaar"],
@@ -29,7 +34,7 @@
 		setindex = "InstanceLootHeroic.Auchindoun",
 		colour = "|cffB0C4DE",
 		header = BZ["Auchindoun"] .. " " .. L["Heroic"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLootHeroic.Auchenai Crypts.Exarch Maladaar"]=BB["Exarch Maladaar"],
@@ -51,7 +56,7 @@
 		setindex = "InstanceLoot.Caverns of Time",
 		colour = "|cffB0C4DE",
 		header = BZ["Caverns of Time"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Old Hillsbrad Foothills.Captain Skarloc"]=BB["Captain Skarloc"],
@@ -68,7 +73,7 @@
 		setindex = "InstanceLootHeroic.Caverns of Time",
 		colour = "|cffB0C4DE",
 		header = BZ["Caverns of Time"] .. " " .. L["Heroic"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLootHeroic.Old Hillsbrad Foothills.Captain Skarloc"]=BB["Captain Skarloc"],
@@ -85,7 +90,7 @@
 		setindex = "InstanceLoot.Coilfang Reservoir",
 		colour = "|cffB0C4DE",
 		header = BZ["Coilfang Reservoir"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.The Slave Pens.Mennu the Betrayer"]=BB["Mennu the Betrayer"],
@@ -104,6 +109,7 @@
 			["InstanceLoot.Serpentshrine Cavern.Leotheras the Blind"]=BB["Leotheras the Blind"],
 			["InstanceLoot.Serpentshrine Cavern.Morogrim Tidewalker"]=BB["Morogrim Tidewalker"],
 			["InstanceLoot.Serpentshrine Cavern.The Lurker Below"]=BB["The Lurker Below"],
+			["InstanceLoot.Serpentshrine Cavern.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -112,7 +118,7 @@
 		setindex = "InstanceLootHeroic.Coilfang Reservoir",
 		colour = "|cffB0C4DE",
 		header = BZ["Coilfang Reservoir"] .. " " .. L["Heroic"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLootHeroic.The Slave Pens.Mennu the Betrayer"]=BB["Mennu the Betrayer"],
@@ -133,7 +139,7 @@
 		setindex = "InstanceLoot.Hellfire Citadel",
 		colour = "|cffB0C4DE",
 		header = BZ["Hellfire Citadel"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Hellfire Ramparts.Nazan"]=BB["Nazan"],
@@ -155,7 +161,7 @@
 		setindex = "InstanceLootHeroic.Hellfire Citadel",
 		colour = "|cffB0C4DE",
 		header = BZ["Hellfire Citadel"] .. " " .. L["Heroic"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLootHeroic.Hellfire Ramparts.Nazan"]=BB["Nazan"],
@@ -177,7 +183,7 @@
 		setindex = "InstanceLoot.Tempest Keep",
 		colour = "|cffB0C4DE",
 		header = BZ["Tempest Keep"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.The Arcatraz.Dalliah the Doomsayer"]=BB["Dalliah the Doomsayer"],
@@ -196,6 +202,7 @@
 			["InstanceLoot.The Eye.High Astromancer Solarian"]=BB["High Astromancer Solarian"],
 			["InstanceLoot.The Eye.Kael'thas Sunstrider"]=BB["Kael'thas Sunstrider"],
 			["InstanceLoot.The Eye.Void Reaver"]=BB["Void Reaver"],
+			["InstanceLoot.The Eye.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -204,7 +211,7 @@
 		setindex = "InstanceLootHeroic.Tempest Keep",
 		colour = "|cffB0C4DE",
 		header = BZ["Tempest Keep"] .. " " .. L["Heroic"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLootHeroic.The Arcatraz.Dalliah the Doomsayer"]=BB["Dalliah the Doomsayer"],
@@ -227,7 +234,7 @@
 		setindex = "InstanceLoot.Karazhan",
 		colour = "|cffB0C4DE",
 		header = BZ["Karazhan"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Karazhan.Attumen the Huntsman"]=BB["Attumen the Huntsman"],
@@ -245,6 +252,7 @@
 			["InstanceLoot.Karazhan.The Big Bad Wolf"]=BB["The Big Bad Wolf"],
 			["InstanceLoot.Karazhan.The Crone"]=BB["The Crone"],
 			["InstanceLoot.Karazhan.The Curator"]=BB["The Curator"],
+			["InstanceLoot.Karazhan.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -253,7 +261,7 @@
 		setindex = "InstanceLoot.Gruul's Lair",
 		colour = "|cffB0C4DE",
 		header = BZ["Gruul's Lair"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Gruul's Lair.High King Maulgar"]=BB["High King Maulgar"],
@@ -266,7 +274,7 @@
 		setindex = "InstanceLoot.World Bosses",
 		colour = "|cffB0C4DE",
 		header = L["Outdoor bosses - Outland"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.World Bosses.Doom Lord Kazzak"]=BB["Doom Lord Kazzak"],
@@ -279,7 +287,7 @@
 		setindex = "InstanceLoot.Black Temple",
 		colour = "|cffB0C4DE",
 		header = BZ["Black Temple"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Black Temple.Gurtogg Bloodboil"]=BB["Gurtogg Bloodboil"],
@@ -291,6 +299,7 @@
 			["InstanceLoot.Black Temple.Shade of Akama"]=BB["Shade of Akama"],
 			["InstanceLoot.Black Temple.Supremus"]=BB["Supremus"],
 			["InstanceLoot.Black Temple.Teron Gorefiend"]=BB["Teron Gorefiend"],
+			["InstanceLoot.Black Temple.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -299,7 +308,7 @@
 		setindex = "InstanceLoot.Hyjal Summit",
 		colour = "|cffB0C4DE",
 		header = BZ["Hyjal Summit"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Hyjal Summit.Anetheron"]=BB["Anetheron"],
@@ -307,6 +316,7 @@
 			["InstanceLoot.Hyjal Summit.Azgalor"]=BB["Azgalor"],
 			["InstanceLoot.Hyjal Summit.Kaz'rogal"]=BB["Kaz'rogal"],
 			["InstanceLoot.Hyjal Summit.Rage Winterchill"]=BB["Rage Winterchill"],
+			["InstanceLoot.Hyjal Summit.Trash Mobs"]=L["Trash Mobs"],
 		},
 	})
 	
@@ -315,7 +325,7 @@
 		setindex = "InstanceLoot.Zul'Aman",
 		colour = "|cffB0C4DE",
 		header = BZ["Zul'Aman"],
-		useval = function (v) return (string.format(" (%.1f%%)", v/10)) or "" end,
+		useval = showDropRate,
 		quality = 3,
 		sets = {
 			["InstanceLoot.Zul'Aman.Nalorakk"]=BB["Nalorakk"],
@@ -326,4 +336,51 @@
 			["InstanceLoot.Zul'Aman.Zul'jin"]=BB["Zul'jin"],
 		},
 	})
-	
+
+		table.insert(MENDELEEV_SETS, {
+		name = BZ["Magisters' Terrace"],
+		setindex = "InstanceLoot.Magisters' Terrace",
+		colour = "|cffB0C4DE",
+		header = BZ["Magisters' Terrace"],
+		useval = showDropRate,
+		quality = 3,
+		sets = {
+			["InstanceLoot.Magisters' Terrace.Selin Fireheart"]=BB["Selin Fireheart"],
+			["InstanceLoot.Magisters' Terrace.Vexallus"]=BB["Vexallus"],
+			["InstanceLoot.Magisters' Terrace.Priestess Delrissa"]=BB["Priestess Delrissa"],
+			["InstanceLoot.Magisters' Terrace.Kael'thas Sunstrider"]=BB["Kael'thas Sunstrider"],
+		},
+	})
+
+		table.insert(MENDELEEV_SETS, {
+		name = BZ["Magisters' Terrace"] .. " " .. L["Heroic"],
+		setindex = "InstanceLootHeroic.Magisters' Terrace",
+		colour = "|cffB0C4DE",
+		header = BZ["Magisters' Terrace"] .. " " .. L["Heroic"],
+		useval = showDropRate,
+		quality = 3,
+		sets = {
+			["InstanceLootHeroic.Magisters' Terrace.Selin Fireheart"]=BB["Selin Fireheart"],
+			["InstanceLootHeroic.Magisters' Terrace.Vexallus"]=BB["Vexallus"],
+			["InstanceLootHeroic.Magisters' Terrace.Priestess Delrissa"]=BB["Priestess Delrissa"],
+			["InstanceLootHeroic.Magisters' Terrace.Kael'thas Sunstrider"]=BB["Kael'thas Sunstrider"],
+		},
+	})
+
+		table.insert(MENDELEEV_SETS, {
+		name = BZ["Sunwell Plateau"],
+		setindex = "InstanceLoot.Sunwell Plateau",
+		colour = "|cffB0C4DE",
+		header = BZ["Sunwell Plateau"],
+		useval = showDropRate,
+		quality = 3,
+		sets = {
+			["InstanceLoot.Sunwell Plateau.Kalecgos"]=BB["Kalecgos"],
+			["InstanceLoot.Sunwell Plateau.Brutallus"]=BB["Brutallus"],
+			["InstanceLoot.Sunwell Plateau.Felmyst"]=BB["Felmyst"],
+			["InstanceLoot.Sunwell Plateau.The Eredar Twins"]=BB["The Eredar Twins"],
+			["InstanceLoot.Sunwell Plateau.M'uru"]=BB["M'uru"],
+			["InstanceLoot.Sunwell Plateau.Kil'jaeden"]=BB["Kil'jaeden"],
+			["InstanceLoot.Sunwell Plateau.Trash Mobs"]=L["Trash Mobs"],
+		},
+	})

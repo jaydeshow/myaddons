@@ -8,14 +8,7 @@ local db
 local frame, sizehandle, msgframe, sizetexture, dragtext
 local learned = {} -- contains learned spellIDs for filtering purposes
 local formats = {}
-local texts = {
-	format_cast = L["text_cast"],
-	format_spell = L["text_spell"],
-	format_gain = L["text_gain"],
-	format_fade = L["text_fade"],
-	format_dispel = L["text_dispel"],
-	format_totem = L["text_totem"],
-}
+local InSanctuary
 
 -- local upvales
 local fmt = string.format
@@ -26,20 +19,32 @@ local function rgb2hex( r, g, b )
 	return fmt("|cff%02x%02x%02x", r*255, g*255, b*255)
 end
 
+local WH_F_SPELL = "format_spell"
+local WH_F_CAST = "format_cast"
+local WH_F_TOTEM = "format_totem"
+local WH_F_DISPEL = "format_dispel"
+local WH_F_GAIN = "format_gain"
+local WH_F_FADE = "format_fade"
+
+local doomID = 42521
+
 ---------------------------------
 --      Addon Declaration      --
 ---------------------------------
 
-WitchHunt = LibStub("AceAddon-3.0"):NewAddon("WitchHunt", "AceEvent-3.0", "LibSink-2.0")
+WitchHunt = LibStub("AceAddon-3.0"):NewAddon("WitchHunt", "AceEvent-3.0", "AceConsole-3.0", "LibSink-2.0")
 local WitchHunt = WitchHunt
 
 local defaults = {
 	profile = {
+		icons = true,
 		combatonly = false,
 		targetonly = false,
 		font = "normal",
 		lock = true,
 		insertmode = "TOP",
+		timevisible = 1,
+		fadeduration = .5,		
 		sinkOptions = {
 			sink20OutputSink = "Witch"
 		},
@@ -48,7 +53,7 @@ local defaults = {
 		learn = true,
 		filtered = {},
 		mfiltered = {
-			format_cast = true
+			format_spell = true,
 		},
 		colors = {
 			format_cast = {
@@ -76,17 +81,26 @@ local defaults = {
 				["*"] = { r =1, g = 1, b = 1 },
 			},
 		},
+		formats = {
+			format_cast = L["format_cast"],
+			format_spell = L["format_spell"],
+			format_gain = L["format_gain"],
+			format_fade = L["format_fade"],
+			format_dispel = L["format_dispel"],
+			format_totem = L["format_totem"],
+		},
+		
 	}
 }
 
-local function giveColorGroup( messageformat, caster, effect, spellType, order )
+local function giveColorGroup( messageformat, caster, effect, icon, spellType, order )
 	local t = {
 		type = "group", inline = true, order = order,
 		name = "",
 		args = {
 			title = {
 				type = "header",
-				name = function() return WitchHunt:GetFormatted( messageformat, caster, effect) end,
+				name = function() return WitchHunt:GetFormatted( messageformat, caster, effect, icon) end,
 				order = 0,
 			},
 			character = {
@@ -128,7 +142,7 @@ local function giveColors()
 			db.colors[pkey][key].g = g
 			db.colors[pkey][key].b = b
 			db.colors[pkey][key].a = a
-			WitchHunt:BuildFormat(pkey)
+			WitchHunt:BuildFormat(pkey, db.formats[pkey])
 		end,		
 		args = {
 			title = {
@@ -137,13 +151,62 @@ local function giveColors()
 			},
 		},
 	}
-	colors.args.format_cast = giveColorGroup("format_cast", "Ammo", "Powers of Death", L["Spell"], 1)
-	colors.args.format_spell = giveColorGroup("format_spell", "Ammo", "Powers of Death", L["Spell"], 2)
-	colors.args.format_totem = giveColorGroup("format_totem", "Ammo", "Totem of Death", L["Totem"], 3)
-	colors.args.format_gain = giveColorGroup("format_gain", "Ammo", "Aura of Death", L["Aura"], 4)
-	colors.args.format_fade = giveColorGroup("format_fade", "Ammo", "Aura of Death", L["Aura"], 5)
-	colors.args.format_dispel = giveColorGroup("format_dispel", "Ammo", "Aura of Death", L["Aura"], 6)
+	colors.args.format_cast = giveColorGroup("format_cast", "Ammo", L["Witch Hunt"], doomID, L["Spell"], 1)
+	colors.args.format_spell = giveColorGroup("format_spell", "Ammo", L["Witch Hunt"], doomID, L["Spell"], 2)
+	colors.args.format_totem = giveColorGroup("format_totem", "Ammo", L["Witch Hunt Totem"], doomID, L["Totem"], 3)
+	colors.args.format_gain = giveColorGroup("format_gain", "Ammo", L["Witch Hunt Aura"], doomID, L["Aura"], 4)
+	colors.args.format_fade = giveColorGroup("format_fade", "Ammo", L["Witch Hunt Aura"], doomID, L["Aura"], 5)
+	colors.args.format_dispel = giveColorGroup("format_dispel", "Ammo", L["Witch Hunt Aura"], doomID, L["Aura"], 6)
 	return colors
+end
+
+local function giveFormatGroup( messageformat, caster, effect, icon, order )
+	local t = {
+		type = "group", inline = true, order = order,
+		name = "",
+		args = {
+			title = {
+				type = "header",
+				name = function() return WitchHunt:GetFormatted( messageformat, caster, effect, icon) end,
+				order = 0,
+			},
+			text = {
+				type = "input",
+				name = "",
+				width = "full",
+				order = 1,
+			},
+		},
+	}
+	return t
+end
+
+local function giveFormats()
+	local formats = {
+		type = "group",
+		name = L["Message Format"],
+		get = function( info ) 
+			return db.formats[info[#info-1]]
+		end,
+		set = function( info, v)
+			local key  = info[#info-1]
+			db.formats[key] = v
+			WitchHunt:BuildFormat(key, v)
+		end,
+		args = {
+			title = {
+				type = "description", order = 0,
+				name = L["You can change the format for the various messages below. |cffeda55f$c|r will be replaced by the caster. |cffeda55f$e|r will be replaced by the effect or spell. |cffeda55f$i|r will be replaced by the icon."],
+			},
+		},
+	}
+	formats.args.format_cast = giveFormatGroup("format_cast", "Ammo", L["Witch Hunt"], doomID, 1)
+	formats.args.format_spell = giveFormatGroup("format_spell", "Ammo", L["Witch Hunt"], doomID,  2)
+	formats.args.format_totem = giveFormatGroup("format_totem", "Ammo", L["Witch Hunt Totem"], doomID, 3)
+	formats.args.format_gain = giveFormatGroup("format_gain", "Ammo", L["Witch Hunt Aura"], doomID, 4)
+	formats.args.format_fade = giveFormatGroup("format_fade", "Ammo", L["Witch Hunt Aura"], doomID, 5)
+	formats.args.format_dispel = giveFormatGroup("format_dispel", "Ammo", L["Witch Hunt Aura"], doomID, 6)	
+	return formats
 end
 
 local function giveOptions()
@@ -181,6 +244,12 @@ local function giveOptions()
 				arg = "learn",
 				order = 30,
 			},
+			icons = {
+				name = L["Icons"], type = "toggle",
+				desc = L["Add skill icons to the messages. Might not work in some message output targets."],
+				arg = "icons",
+				order = 31,
+			},
 			descframe = {
 				name = L["The options below affect the built in Witch Hunt message frame. To select messages sent to this frame select the Message Display option from the tree on the left."],
 				type = "description",
@@ -200,6 +269,24 @@ local function giveOptions()
 				arg = "font",
 				order = 70,
 			},
+			timevisible = {
+				name = L["Time Visible"], type = "range",
+				desc = L["Set the number of seconds messages should be visible for in the Default frame."],
+				min = .1,
+				max = 10,
+				step = .1,
+				arg = "timevisible",
+				order = 71,
+			},
+			fadeduration = {
+				name = L["Fade Duration"], type = "range",
+				desc = L["Set the fade duration for the Default frame."],
+				min = 0,
+				max = 2,
+				step = .1,
+				arg = "fadeduration",
+				order = 72,
+			},	
 			lock = {
 				name = L["Lock"], type = "toggle",
 				desc = L["Toggle locking of the WitchHunt frame."],
@@ -215,8 +302,8 @@ local function giveOptions()
 				name = L["Test"], type = "execute",
 				desc = L["Test with a dummy WitchHunt message."],
 				func = function()
-					WitchHunt:SendMessage("WitchHunt_Message", WitchHunt:GetFormatted("format_cast", "Ammo", "Doom"))
-					WitchHunt:SendMessage("WitchHunt_Message", WitchHunt:GetFormatted("format_gain", "Ammo", "Doom"))
+					WitchHunt:SendMessage("WitchHunt_Message", WitchHunt:GetFormatted("format_cast", "Ammo", L["Witch Hunt"], doomID))
+					WitchHunt:SendMessage("WitchHunt_Message", WitchHunt:GetFormatted("format_gain", "Ammo", L["Witch Hunt Aura"], doomID))
 				end,
 				order= 100,
 			}
@@ -253,7 +340,8 @@ local function giveOneFilter(spellID)
 	if rank ~= "" then rank = "("..rank..")" end
 	filterArgs["s"..spellID] = {
 		order = spellID,
-		name = fmt("[%d] %s %s", spellID, name, rank),
+		name = fmt("%s %s", name, rank),
+		desc = fmt("spellID %d", spellID),
 		icon = icon,
 		type = "toggle",
 		arg = spellID,
@@ -303,19 +391,19 @@ local function giveMFilter()
 			filters = {
 				order = 1, type = "group", name = "", inline = true,
 				get = function( k ) return db.mfiltered[k.arg] end,
-				set = function( k, v ) db.mfiltered[k.arg] = v and v or nil end,
+				set = function( k, v ) db.mfiltered[k.arg] = v end,
 				args = {},
 			},
 		},
 	}
-	for k, v in pairs(texts) do
+	for k, v in pairs(db.formats) do
 		filter.args.filters.args[k] = {
 			type = "toggle",
 			name = function()
 				if k == "format_totem" then
-					return WitchHunt:GetFormatted(k, "Ammo", "Totem of Doom")
+					return WitchHunt:GetFormatted(k, "Ammo", L["Witch Hunt Totem"], doomID)
 				else
-					return WitchHunt:GetFormatted(k, "Ammo", "Doom")
+					return WitchHunt:GetFormatted(k, "Ammo", L["Witch Hunt"], doomID)
 				end
 			end,
 			arg = k,
@@ -355,6 +443,7 @@ function WitchHunt:OnInitialize()
 	acreg:RegisterOptionsTable("Witch Hunt Profiles", giveProfiles)
 	acreg:RegisterOptionsTable("Witch Hunt Colors", giveColors)
 	acreg:RegisterOptionsTable("Witch Hunt MFilter", giveMFilter)
+	acreg:RegisterOptionsTable("Witch Hunt Format", giveFormats)
 	
 	local acdia = LibStub("AceConfigDialog-3.0")
 	
@@ -364,8 +453,11 @@ function WitchHunt:OnInitialize()
 	acdia:AddToBlizOptions("Witch Hunt Filter", L["Spell Filter"], L["Witch Hunt"])
 	acdia:AddToBlizOptions("Witch Hunt MFilter", L["Message Filter"], L["Witch Hunt"])
 	acdia:AddToBlizOptions("Witch Hunt Output", L["Message Output"], L["Witch Hunt"])
+	acdia:AddToBlizOptions("Witch Hunt Format", L["Message Format"], L["Witch Hunt"])
 	acdia:AddToBlizOptions("Witch Hunt Colors", L["Message Colors"], L["Witch Hunt"])
 
+    self:RegisterChatCommand("witchhunt", function() InterfaceOptionsFrame_OpenToFrame(acdia.BlizOptions["Witch Hunt"].frame) end)
+    self:RegisterChatCommand("wh", function() InterfaceOptionsFrame_OpenToFrame(acdia.BlizOptions["Witch Hunt"].frame) end)	
 
 end
 
@@ -374,27 +466,40 @@ function WitchHunt:OnEnable()
 	self:RegisterMessage("WitchHunt_Message")
 	-- Register the WoW events
 	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+	self:RegisterEvent("ZONE_CHANGED")
+	self:RegisterEvent("ZONE_CHANGED_INDOORS", "ZONE_CHANGED")
+	self:RegisterEvent("ZONE_CHANGED_NEW_AREA", "ZONE_CHANGED")
+
+	-- update pvp status
+	self:ZONE_CHANGED()
 	
 	-- unlocked frame should be visible
 	if not db.lock then self:UpdateDisplay() end
 end
 
-function WitchHunt:GetFormatted( format, caster, effect )
+local iconformat = "|T%s::|t"
+local noicon = ""
+function WitchHunt:GetFormatted( format, caster, effect, spellID )
 	if not formats[format] then self:BuildFormat(format) end
-	return gsb( gsb( formats[format], "$c", caster), "$e", effect)
+	
+	local icon,name,rank
+	if db.icons then
+		name,rank,icon = GetSpellInfo(spellID)
+		if icon then icon = fmt(iconformat, icon) end
+	end
+	return gsb( gsb( gsb( formats[format], "$c", caster), "$e", effect), "$i", icon or noicon)
 end
 
 function WitchHunt:BuildFormats()
-	for k, v in pairs(texts) do
-		self:BuildFormat(k)
+	for k, v in pairs(db.formats) do
+		self:BuildFormat(k, v)
 	end
 end
 
-function WitchHunt:BuildFormat( format )
-	local t = L[format]
-	t = gsb(t, "$t", rgb2hex(db.colors[format].text.r, db.colors[format].text.g, db.colors[format].text.b) .. texts[format] .. "|r")
-	t = gsb(t, "$c", rgb2hex(db.colors[format].character.r, db.colors[format].character.g, db.colors[format].character.b) .."$c|r")
-	t = gsb(t, "$e", rgb2hex(db.colors[format].spell.r, db.colors[format].spell.g, db.colors[format].spell.b) .."$e|r")
+function WitchHunt:BuildFormat( format, t )
+	t = rgb2hex(db.colors[format].text.r, db.colors[format].text.g, db.colors[format].text.b) .. t .. "|r"
+	t = gsb(t, "$c", "|r" .. rgb2hex(db.colors[format].character.r, db.colors[format].character.g, db.colors[format].character.b) .."$c|r" .. rgb2hex(db.colors[format].text.r, db.colors[format].text.g, db.colors[format].text.b) )
+	t = gsb(t, "$e", "|r" .. rgb2hex(db.colors[format].spell.r, db.colors[format].spell.g, db.colors[format].spell.b) .."$e|r" .. rgb2hex(db.colors[format].text.r, db.colors[format].text.g, db.colors[format].text.b) )
 	formats[format] = t
 end
 
@@ -416,6 +521,8 @@ function WitchHunt:UpdateDisplay()
 	self:UpdateLock()
 	self:SetFont()
 	msgframe:SetInsertMode(db.insertmode)
+	msgframe:SetTimeVisible(db.timevisible)
+	msgframe:SetFadeDuration(db.fadeduration)		
 end
 
 function WitchHunt:SetFont()
@@ -503,7 +610,9 @@ function WitchHunt:SetupFrames()
 	msgframe:SetInsertMode(db.insertmode)
 	msgframe:SetFrameStrata("HIGH")
 	msgframe:SetToplevel(true)
-
+	msgframe:SetTimeVisible(db.timevisible)
+	msgframe:SetFadeDuration(db.fadeduration)	
+	
 	self:UpdateLock()
 	self:SetFont()
 
@@ -564,7 +673,7 @@ function WitchHunt:RestorePosition()
 end
 
 -- Burn the witch!
-function WitchHunt:Burn(caster, effect, format, spellID)
+function WitchHunt:Burn(format, caster, effect, spellID)
 	if not caster or not effect then return end
 	if spellID and db.filtered[spellID] then return end
 	if format and db.mfiltered[format] then return end
@@ -574,7 +683,7 @@ function WitchHunt:Burn(caster, effect, format, spellID)
 		giveOneFilter(spellID)
 	end
 
-	local text = self:GetFormatted(format, caster, effect)
+	local text = self:GetFormatted(format, caster, effect, spellID)
 
 	local t = GetTime()
 	if ( not times[text] ) or ( times[text] and (times[text] + 3) <= t ) then
@@ -586,16 +695,23 @@ end
 -- Our Sink interface
 function WitchHunt:WHFramePrint(addon, message, r, g, b, _, _, _, _, _, icon)
 	if not msgframe then self:SetupFrames() end
+	if icon then message = fmt(iconformat, icon) .. message end
 	msgframe:AddMessage(message, r, g, b, 1, UIERRORS_HOLD_TIME)
 end
 
 -- event handlers
-function WitchHunt:WitchHunt_Message(event, msg, icon)
+function WitchHunt:WitchHunt_Message(event, msg)
 	if not msg then return end
-	self:Pour(msg, 1, 1, 1, nil, nil, nil, nil, nil, icon)
+	self:Pour(msg, 1, 1, 1, nil, nil, nil, nil, nil, nil)
 end
 
-function WitchHunt:COMBAT_LOG_EVENT_UNFILTERED(event, timestamp, eventType, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellID, spellName, spellSchool, auraType)
+function WitchHunt:ZONE_CHANGED()
+	local zonePVPType = GetZonePVPInfo()
+	InSanctuary = zonePVPType == "sanctuary" and true or false
+end
+
+function WitchHunt:COMBAT_LOG_EVENT_UNFILTERED(event, timestamp, eventType, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellID, spellName, spellSchool, eID, eName)
+	if InSanctuary then return end
 	if db.combatonly and not UnitAffectingCombat("player") then return end
 	
 	local isSourceEnemy = (bitband(srcFlags, COMBATLOG_OBJECT_REACTION_HOSTILE) == COMBATLOG_OBJECT_REACTION_HOSTILE)
@@ -611,19 +727,19 @@ function WitchHunt:COMBAT_LOG_EVENT_UNFILTERED(event, timestamp, eventType, srcG
 	
 	if not isDestEnemy and not isSourceEnemy then return end
 
-	if eventType == "SPELL_AURA_APPLIED" and isDestEnemy and auraType == "BUFF" then
-		self:Burn( dstName, spellName, "format_gain", spellID )
-	elseif eventType == "SPELL_AURA_REMOVED" and isDestEnemy and auraType == "BUFF" then
-		self:Burn( dstName, spellName, "format_fade", spellID )
+	if eventType == "SPELL_AURA_APPLIED" and isDestEnemy and eID == "BUFF" then
+		self:Burn( WH_F_GAIN, dstName, spellName, spellID )
+	elseif eventType == "SPELL_AURA_REMOVED" and isDestEnemy and eID == "BUFF" then
+		self:Burn( WH_F_FADE, dstName, spellName, spellID )
 	elseif isDestEnemy and (eventType == "SPELL_AURA_DISPELLED" or eventType == "SPELL_AURA_STOLEN") then
-		self:Burn( dstName, spellName, "format_dispel", spellID )
+		self:Burn( WH_F_DISPEL, dstName, eName, eID )
 	elseif eventType == "SPELL_CAST_START" and isSourceEnemy then
-		self:Burn( srcName, spellName, "format_cast", spellID )
+		self:Burn( WH_F_CAST, srcName, spellName, spellID )
     elseif eventType == "SPELL_CAST_SUCCESS" and isSourceEnemy then
 		if spellName:find(L["Totem"]) then
-			self:Burn( srcName, spellName, "format_totem", spellID )
+			self:Burn( WH_F_TOTEM, srcName, spellName, spellID )
 		else
-			self:Burn( srcName, spellName, "format_spell", spellID )
+			self:Burn( WH_F_SPELL, srcName, spellName, spellID )
 		end
 	end
 end

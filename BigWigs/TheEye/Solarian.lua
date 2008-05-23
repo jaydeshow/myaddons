@@ -52,6 +52,41 @@ L:RegisterTranslations("enUS", function() return {
 	priest_bar = "Priests/Solarian",
 } end )
 
+L:RegisterTranslations("esES", function() return {
+	engage_trigger = "¡Tal anu'men no sin'dorei!",
+
+	phase = "Fases",
+	phase_desc = "Avisar sobre cambios de fase.",
+	phase1_message = "Fase 1 - División en ~50seg",
+	phase2_warning = "¡Fase 2 en breve!",
+	phase2_trigger = "^Me FUNDO",
+	phase2_message = "20% - Fase 2",
+
+	wrath = "Cólera de la astromántica (Wrath Debuff)",
+	wrath_desc = "Avisar quién tiene Cólera de la astromántica.",
+	wrath_fade = "Cólera de la astromántica acaba de desvanecerse.",
+	wrath_other = "Cólera en %s",
+	wrath_you = "¡Cólera en TI!",
+
+	whisper = "Susurrar",
+	whisper_desc = "Susurrar a jugadores afectados por Cólera de la astromántica. (Requiere derechos de banda)",
+
+	icon = "Icono de banda",
+	icon_desc = "Poner un icono sobre jugadores afectados por Cólera de la astromántica. (Requiere derechos de banda)",
+
+	split = "División",
+	split_desc = "Avisar sobre la división y aparición de añadidos.",
+	split_trigger1 = "¡Aplastaré vuestros delirios de grandeza!",
+	split_trigger2 = "¡Os superamos con creces!",
+	split_bar = "~División",
+	split_warning = "División en ~7 seg",
+
+	agent_warning = "¡División! - Agentes en 6 seg",
+	agent_bar = "Agentes",
+	priest_warning = "Sacerdotes/Solarian en 3 seg",
+	priest_bar = "Sacerdotes/Solarian",
+} end )
+
 L:RegisterTranslations("deDE", function() return {
 	engage_trigger = "Tal anu'men no sin'dorei!",
 
@@ -98,16 +133,16 @@ L:RegisterTranslations("koKR", function() return {
 	phase2_message = "20% - 2 단계",
 
 	wrath = "분노 디버프",
-	wrath_desc = "분노 디버프에 걸린 대상을 알립니다.",
+	wrath_desc = "점성술사의 분노에 걸린 플레이어를 알립니다.",
 	wrath_fade = "당신의 몸에서 점성술사의 분노 효과가 사라졌습니다.",
-	wrath_other = "%s에 분노",
-	wrath_you = "당신에 분노!",
+	wrath_other = "%s 분노!",
+	wrath_you = "당신은 분노!",
 
 	whisper = "귓속말",
-	whisper_desc = "분노 디버프에 걸린 플레이어에게 귓속말을 보냅니다 (승급자 이상 권한 요구).",
+	whisper_desc = "분노 디버프에 걸린 플레이어에게 귓속말을 보냅니다. (승급자 이상 권한 요구)",
 
 	icon = "전술 표시",
-	icon_desc = "점성술사의 분노에 걸린 플레이어에게 전술 표시를 지정합니다 (승급자 이상 권한 요구).",
+	icon_desc = "점성술사의 분노에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 
 	split = "분리",
 	split_desc = "분리와 소환에 대한 경고입니다.",
@@ -126,32 +161,32 @@ L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Tal anu'men no sin'dorei!",
 
 	phase = "Phases",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	phase1_message = "Phase 1 - Rupture dans ~50 sec.",
-	phase2_warning = "Phase 2 imminente !",
+	phase2_warning = "Phase 2 imminente !",
 	phase2_trigger = "^Je ne fais plus",
 	phase2_message = "20% - Phase 2",
 
 	wrath = "Courroux de l'Astromancien",
-	wrath_desc = "Préviens quand un joueur subit les effets du Courroux de l'Astromancien.",
+	wrath_desc = "Prévient quand un joueur subit les effets du Courroux de l'Astromancien.",
 	wrath_fade = "Courroux de l'Astromancien vient de se dissiper.",
 	wrath_other = "Courroux sur %s",
-	wrath_you = "Courroux sur VOUS !",
+	wrath_you = "Courroux sur VOUS !",
 
 	whisper = "Chuchoter",
-	whisper_desc = "Préviens par chuchotement le dernier joueur affecté par le Courroux de l'Astromancien (nécessite d'être promu ou mieux).",
+	whisper_desc = "Prévient par chuchotement le dernier joueur affecté par le Courroux de l'Astromancien (nécessite d'être promu ou mieux).",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par le Courroux de l'Astromancien (nécessite d'être promu ou mieux).",
 
 	split = "Rupture",
-	split_desc = "Préviens de l'arrivée des ruptures & des apparitions des adds.",
+	split_desc = "Prévient de l'arrivée des ruptures & des apparitions des adds.",
 	split_trigger1 = "Je vais balayer vos illusions de grandeur !",
 	split_trigger2 = "Vous êtes désespérément surclassés !",
 	split_bar = "~Prochaine Rupture",
 	split_warning = "Rupture dans ~7 sec.",
 
-	agent_warning = "Rupture ! - Agents dans 6 sec.",
+	agent_warning = "Rupture ! - Agents dans 6 sec.",
 	agent_bar = "Agents",
 	priest_warning = "Prêtres/Solarian dans 3 sec.",
 	priest_bar = "Prêtres/Solarian",
@@ -162,33 +197,33 @@ L:RegisterTranslations("zhCN", function() return {
 
 	phase = "阶段",
 	phase_desc = "阶段改变警报。",
-	phase1_message = "第一阶段 - ~50秒后分裂",
+	phase1_message = "第一阶段 - 约50秒后，分裂！",
 	phase2_warning = "即将 第二阶段！",
 	phase2_trigger = "^我受够了！现在我要让你们看看宇宙的愤怒！",
-	phase2_message = "20% - 第二阶段",
+	phase2_message = "20% - 第二阶段！",
 
-	wrath = "愤怒 Debuff",
-	wrath_desc = "当受到星术师之怒发出警报。",
+	wrath = "愤怒",
+	wrath_desc = "当玩家受到星术师之怒时发出警报。",
 	wrath_fade = "星术师之怒效果从你身上消失了。",
 	wrath_other = "愤怒：>%s<！",
 	wrath_you = ">你< 愤怒！",
 
 	whisper = "密语",
-	whisper_desc = "发送密语给中了愤怒的玩家。(需要权限)",
+	whisper_desc = "发送密语给中了愤怒的玩家。（需要权限）",
 
 	icon = "团队标记",
-	icon_desc = "给受到星术师之怒的队友打上团队标记。(需要权限)",
+	icon_desc = "给受到星术师之怒的队友打上团队标记。（需要权限）",
 
 	split = "分裂",
-	split_desc = "当分裂和增加救援发出警报。",
+	split_desc = "当分裂和增加救援时发出警报。",
 	split_trigger1 = "我要让你们自以为是的错觉荡然无存！",
 	split_trigger2 = "你们势单力薄！",
 	split_bar = "<下一分裂>",
-	split_warning = "~7秒后 分裂",
+	split_warning = "约7秒后，分裂！",
 
-	agent_warning = "分裂！ - 6秒后 日晷密探",
+	agent_warning = "分裂！ - 6秒后，日晷密探！",
 	agent_bar = "<日晷密探>",
-	priest_warning = "3秒后 日晷祭司/索兰莉安",
+	priest_warning = "3秒后，日晷祭司/索兰莉安！",
 	priest_bar = "<日晷祭司/索兰莉安>",
 } end )
 
@@ -197,16 +232,16 @@ L:RegisterTranslations("zhTW", function() return {
 
 	phase = "階段警告",
 	phase_desc = "當階段轉換時警告",
-	phase1_message = "第一階段 - 50 秒內分身！",
-	phase2_warning = "即將進入第二階段！",
+	phase1_message = "第一階段 - 50 秒內分身!",
+	phase2_warning = "即將進入第二階段!",
 	phase2_trigger = "夠了!現在我要呼喚宇宙中失衡的能量。",
-	phase2_message = "20% - 第二階段！",
+	phase2_message = "20% - 第二階段!",
 
 	wrath = "星術師之怒施放",
 	wrath_desc = "警報隊友受到星術師之怒。",
 	wrath_fade = "星術師之怒效果從你身上消失了。",
-	wrath_other = "星術師之怒：[%s]",
-	wrath_you = "你中了星術師之怒！快跑！",
+	wrath_other = "星術師之怒: [%s]",
+	wrath_you = "你中了星術師之怒!快跑!",
 
 	whisper = "發送密語",
 	whisper_desc = "發送密語給受到星術師之怒的玩家（需要權限）",
@@ -215,16 +250,16 @@ L:RegisterTranslations("zhTW", function() return {
 	icon_desc = "當隊友受到星術師之怒時設置標記（需要權限）",
 
 	split = "分身警告",
-	split_desc = "當分身與小兵出現時警示。",
+	split_desc = "當分身與小兵出現時警示",
 	split_trigger1 = "我會粉碎你那偉大的夢想!",
 	split_trigger2 = "我的實力遠勝於你!",
-	split_bar = "下一次分身",
-	split_warning = "7 秒內分身來臨！",
+	split_bar = "<下一次分身>",
+	split_warning = "7 秒內分身來臨!",
 
-	agent_warning = "分身！ - 6 秒內密探出現！",
+	agent_warning = "分身! - 6 秒內密探出現!",
 	agent_bar = "密探計時",
-	priest_warning = "5 秒內牧師、星術師出現！",
-	priest_bar = "牧師、星術師計時",
+	priest_warning = "5 秒內牧師、星術師出現!",
+	priest_bar = "<牧師, 星術師計時>",
 } end )
 
 ----------------------------------
@@ -236,7 +271,7 @@ mod.zonename = BZ["Tempest Keep"]
 mod.otherMenu = "The Eye"
 mod.enabletrigger = boss
 mod.toggleoptions = {"phase", "split", -1, "wrath", "whisper", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 65818 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

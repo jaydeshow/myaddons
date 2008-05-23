@@ -1,16 +1,19 @@
-local VERSION = tonumber(("$Revision: 49333 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 73474 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_Display = Parrot:NewModule("Display", "LibRockTimer-1.0", "LibRockHook-1.0")
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2007-09-19 23:44:18 -0400 (Wed, 19 Sep 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-11 11:44:45 -0400 (Sun, 11 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
-local L = Parrot:L("Parrot_Display")
 
-local SharedMedia = Rock("LibSharedMedia-2.0")
+--local L = Parrot:L("Parrot_Display")
+-- TODO make modular
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Display")
+
+local SharedMedia = Rock("LibSharedMedia-3.0")
 
 local newList, del = Rock:GetRecyclingFunctions("Parrot", "newList", "del")
 
@@ -302,6 +305,8 @@ function Parrot_Display:ShowMessage(text, scrollArea, sticky, r, g, b, font, fon
 	
 	frame.fs = fs
 	
+	
+	
 	local tex
 	if type(icon) == "string" and icon ~= "Interface\\Icons\\Temp" and scrollArea.iconSide ~= "DISABLE" and self.db.profile.iconsEnabled then
 		tex = next(freeTextures)
@@ -354,6 +359,13 @@ function Parrot_Display:ShowMessage(text, scrollArea, sticky, r, g, b, font, fon
 	frame.start = GetTime()
 	frame.scrollArea = scrollArea
 	frame.sticky = sticky
+	
+	if(sticky) then
+		frame:SetFrameLevel(1)
+	else
+		frame:SetFrameLevel(0)
+	end
+	
 	local animationStyle
 	if sticky then
 		animationStyle = scrollArea.stickyAnimationStyle

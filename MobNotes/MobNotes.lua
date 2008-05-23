@@ -24,7 +24,7 @@
 
 -- Obviously bump this number if you add any new notes. Note that changing old
 -- notes will not upgrade the users DB.
-local DB_VERSION = 7.4
+local DB_VERSION = 11
 
 -- The default database should only include strategy-neutral comments, like what
 -- mobs are capable of doing and how they can be crowd controlled, or if they
@@ -32,37 +32,34 @@ local DB_VERSION = 7.4
 -- like "kill this mob first" or "have your offtank on this one".
 local defaultDatabase = nil
 
+local l = GetLocale()
+
 local POPUP_TEXT = "Set a note for |cffff4488%s|r."
 local TARGET_ERROR = "You must target something to add a note."
 local NOTE_SET = "Note for |cffff4488%s|r set to \"|cff888888%s|r\"."
 local SET = "Set"
 local CANCEL = "Cancel"
 local NOTE_PREFIX = "|cffff4488Note:|r "
+-- Keybinding to output the note to chat
+BINDING_HEADER_MOBNOTES = "MobNotes"
+BINDING_NAME_MOBNOTES_PRINT = "Print Note"
 
-if GetLocale()=="zhCN" then
-
-POPUP_TEXT = "为|cffff4488%s|r设置注释."
-TARGET_ERROR = "你必须先选择一个目标来添加注释"
-NOTE_SET = "|cffff4488%s|r的注释更改为\"|cff888888%s|r\"."
-SET = "设置"
-CANCEL = "取消"
-NOTE_PREFIX = "|cffff4488注释：|r "
-
+if l == "zhCN" then
+	POPUP_TEXT = "为|cffff4488%s|r设置注释."
+	TARGET_ERROR = "你必须先选择一个目标来添加注释"
+	NOTE_SET = "|cffff4488%s|r的注释更改为\"|cff888888%s|r\"."
+	SET = "设置"
+	CANCEL = "取消"
+	NOTE_PREFIX = "|cffff4488注释：|r "
+elseif l == "zhTW" then
+	POPUP_TEXT = "為|cffff4488%s|r設定註解"
+	TARGET_ERROR = "你必須先選擇一個目標來增加註解"
+	NOTE_SET = "|cffff4488%s|r的註解更改為\"|cff888888%s|r\"."
+	SET = "設定"
+	CANCEL = "取消"
+	NOTE_PREFIX = "|cffff4488註解: |r "
 end
 
-if GetLocale()=="zhTW" then
-
-POPUP_TEXT = "為|cffff4488%s|r設置注釋"
-TARGET_ERROR = "你必須先選擇一個目標來添加注釋"
-NOTE_SET = "|cffff4488%s|r的注釋更改為\"|cff888888%s|r\"."
-SET = "設置"
-CANCEL = "取消"
-NOTE_PREFIX = "|cffff4488注釋：|r "
-
-end
-
-
-local l = GetLocale()
 if l == "enUS" then
 defaultDatabase = {
 	-- Zul'Aman trash
@@ -90,6 +87,21 @@ defaultDatabase = {
 	["Arcane Anomaly"] = "Random teleport that clears threat, attacks on it drains mana before health.",
 	["Mana Feeder"] = "Immune to all spells, burns mana.",
 	["Mana Warp"] = "Self-destructs for significant damage on low health, interruptable.",
+	["Spectral Charger"] = "Charges farthest player. AoE fear to all nearby. Dispel-able magic debuff. Can be Shackled, Stunned and Trapped.",
+	["Spectral Stable Hand"] = "Heals other mobs. Can be Trapped or Shackled.",
+	["Skeletal Waiter"] = "Brittle bones can be spell reflected or grounded with totem. Vulnerable to stuns.",
+	["Ghostly Steward"] = "Immune to stun, trap, shackle and taunt. Vulnerable to disarm.",
+	["Phantom Valet"] = "Immune to taunt",
+	["Phantom Attendant"] = "Vulnerable to shackle and snare. Immune to taunt.",
+	["Spectral Retainer"] = "Immune to shackle. MCs random player.",
+	["Spectral Sentry"] = "Ranged attacker. Can be shackled.",
+	["Night Mistress"] = "Can be shackled.",
+	["Concubine"] = "Vulnerable to stun, snare and banish. Tremor totem works on aoe seduce.",
+	["Wanton Hostess"] = "AoE silence. Can be stunned.",
+	["Phantom Stagehand"] = "Immune to snare and stun. Can be disarmed.",
+	["Skeletal Usher"] = "Immune to trap, turn undead and taunt. Can be shackled.",
+	["Trapped Soul"] = "Immune to shackle and stun.",
+	["Spell Shade"] = "Can be shackled and feared.",
 
 	-- Hex Lord Malacrass adds
 	["Thurg"] = "Melee. Can sheep or trap, but he will resist trap a few times.",
@@ -127,7 +139,7 @@ defaultDatabase = {
 	["Serpentshrine Lurker"] = "Can be banished, drops mushrooms.",
 
 	-- Black Temple trash
-	["Aqueous Lord"] = "Summons 2 Aqueous Spawns.",
+	["Aqueous Lord"] = "Summons Aqueous Spawns.",
 	["Aqueous Spawn"] = "Can be banished and stunned, heals Lords.",
 	["Coilskar Sea-Caller"] = "Can be sheeped, casts Hurricane and Forked Lightning, based on LoS.",
 	["Coilskar Wrangler"] = "Immune to CC. Frenzies Leviathans.",
@@ -135,15 +147,27 @@ defaultDatabase = {
 	["Coilskar Soothsayer"] = "Can be CC'ed, uses Holy Nova.",
 	["Coilskar Harpooner"] = "Can be CC'ed, nets people.",
 	["Dragon Turtle"] = "Can be CC'ed.",
-	["Coilskar General"] = "Can dispel CC on other mobs, possibly based on LoS/range. Immune to CC.",
+	["Coilskar General"] = "Can dispel CC on other mobs, based on LoS/range. Immune to CC.",
 	
-	-- Black Temple trash by hepha
+	["Bonechewer Taskmaster"] = "Immune to CC, buffs workers.",
+	["Dragonmaw Sky Stalker"] = "Immune to CC, does AoE damage.",
+	["Dragonmaw Wind Reaver"] = "Immune to CC, does AoE damage.",
+	["Illidari Fearbringer"] = "Frontal cone AoE, Rain of Fire and a long-range War Stomp.",
+	["Ashtongue Battlelord"] = "Immune to CC. Cleave.",
+	["Ashtongue Feral Spirit"] = "Frenzies and charges, can be trapped.",
+	["Ashtongue Stormcaller"] = "Can be CC'ed.",
+	["Ashtongue Primalist"] = "Immune to CC, AoE Wing Clip and Cyclone.",
+	["Ashtongue Stalker"] = "Can be CC'ed, blinds random target.",
+	["Illidari Centurion"] = "Immune to CC, AoE cone silence ability.",
+	["Illidari Boneslicer"] = "Can be banished, AoE Gouge, Shadowstep, Cloak of Shadows and Wound Poison.",
+	["Illidari Nightlord"] = "Not banishable, uses Hellfire, AoE fear and summons ~10 adds.",
+
 	["Dragonmaw Wyrmcaller"] = "Will call for nearby Dragonmaw Sky Stalker, immune to CC.",
-	["Illidari Boneslicer"] = "Can be banished, Kidney Shot on main target, have Shadow Cloak.",
-	["Illidari Defiler"] = "Can be banished.",
+	["Illidari Boneslicer"] = "Can be banished, Kidney Shot on main target, uses Shadowstep and Cloak of Shadows.",
+	["Illidari Defiler"] = "Can be banished. Banishes a random target and uses Rain of Fire.",
 	["Illidari Heartseeker"] = "Can be banished.",
-	["Bonechewer Behemoth"] = "Charge on a far away target.",
-	["Bonechewer Blade Fury"] = "Can be sheeped, clear aggro after WW, immune to CC.",
+	["Bonechewer Behemoth"] = "Charge on a far away target, Meteors.",
+	["Bonechewer Blade Fury"] = "Can be sheeped. Clears aggro after WW.",
 	["Bonechewer Combatant"] = "Vulnerable to CC.",
 	["Bonechewer Shield Disciple"] = "Vulnerable to CC, Shield Wall on low health.",
 	["Bonechewer Blood Prophet"] = "Vulnerable to CC.",
@@ -151,11 +175,13 @@ defaultDatabase = {
 	["Ashtongue Spiritbinder"] = "Vulnerable to CC.",
 	["Ashtongue Rogue"] = "Vulnerable to CC.",
 	["Ashtongue Elementalist"] = "Vulnerable to CC.",
-	["Ashtongue Mystic"] = "Vulnerable to CC.",
+	["Ashtongue Mystic"] = "Vulnerable to CC. Bloodlust and Cyclone, also drops totems.",
 	["Ashtongue Sorcerer"] = "Vulnerable to CC.",
-	["Shadowmoon Blood Mage"] = "Vulnerable to CC, can be intercepted by sheeping.",
+	["Shadowmoon Blood Mage"] = "Vulnerable to CC, can be intercepted by sheeping. AoE cone Siphon Life ability.",
 	["Shadowmoon Champion"] = "Immune to CC, throw WW weapon into crowds.",
 	["Shadowmoon Houndmaster"] = "Can be CCed after dismounted and release the hound.",
+	["Shadowmoon Riding Hound"] = "CC'able, charges.",
+	["Shadowmoon Deathshaper"] = "CC'able, uses Raise Dead.",
 
 	-- Tempest Keep trash
 	["Apprentice Star Scryer"] = "Can be crowd controlled, does AoE Starshards.",
@@ -183,7 +209,7 @@ defaultDatabase = {
 	["Gronn-Priest"] = "Immune to CC and silence, interruptable.",
 
 	-- The Blood Furnace
-	["Felguard Annihilator"] = "Random Charge，can be slowed, Banished or Stunned.",
+	["Felguard Annihilator"] = "Random Charge. Can be slowed, Banished or Stunned.",
 	["Laughing Skull Rogue"] = "Stealth, stackable poison (320 per stack in Heroic).",
 	["Laughing Skull Enforcer"] ="Strike(about 2000 dmg in Heroic) and Shield Slam.",
 	["Shadowmoon Summoner"] = "Summon Succubus and Felstalker.",
@@ -193,7 +219,7 @@ defaultDatabase = {
 	["Shadowmoon Technician"] = "Throw Bomb.",
 	["Nascent Fel Orc"] = "Stomp causes minor damage and knockback, stuns target using Concussion Blow.",
 	["Fel Orc Neophyte"] = "Immune to charm.",
-	["Felguard Brute"] = "Uppercut with knockback, dumps threat",
+	["Felguard Brute"] = "Uppercut with knockback, dumps threat.",
 
 	-- Hyjal trash by hepha
 	["Ghoul"] = "Can be shackled or feared by Turn Undead, vulnerable to movement control abilities.",
@@ -206,6 +232,30 @@ defaultDatabase = {
 	["Giant Infernal"] = "Can be banished and feared, vulnerable to movement control abilities.",
 	["Felstalker"] = "Can be banished and feared, vulnerable to movement control abilities, Mana Burn on players.",
 	--[""] = "",
+
+	-- Magister's Terrace
+	["Sunblade Blood Knight"] = "Casts Holy Light. Stealable seal +holy dmg to melee and spells. Can be CC'ed.",
+	["Sunblade Mage Guard"] = "Magic Dampening Fields reduces spell dmg and healing by 75%. AOE stun. Can be sheeped.",
+	["Sunblade Magister"] = "Immune to MC and seduce. Casts Arcane Nova and Frostbolt. Spell Haste, stealable and dispellable.",
+	["Sunblade Warlock"] = "Casts Incinerate and Immolate. Stealable Fel Armor buff +250 spell damage. Can be CC'ed.",
+	["Sunblade Physician"] = "Casts Prayer of Mending. Can be CC'ed.",
+	["Wretched Bruiser"] = "Uses Mortal Strike. Can be CC'ed.",
+	["Wretched Skulker"] = "Fel infusion increases attack speed and damage.",
+	["Wretched Husk"] = "Frostbolts and fireballs.",
+	["Sunblade Sentinel"] = "Lightning on all nearby party members.",
+	["Sunblade Keeper"] = "Detonates mana cell, Wyrms go into feeding frenzy and act as a single large group. Casts Ban on the player with highest aggro.",
+	["Sister of Torment"] = "Can be banished. Casts seduce on random targets.",
+	["Ethereum Smuggler"] = "Teleports to random target and spams Arcane Explosion. Can be sheeped.",
+	["Coilskar Witch"] = "Forked Lightning cone effect. Can be CC'ed.",
+	["Apoko"] = "Shaman, Drops Totems(Windfury, Fire Nova, Earth Bind) uses Warstomp, Heals, Purges.",
+	["Eramas Brightblaze"] = "Runemaster, very fast attacks, can pummel and snap kick.",
+	["Ellrys Duskhallow"] = "Warlock, casts Shadow Bolt, Fear, and Seed of Corruption.",
+	["Garaxxas"] = "Hunter, uses Freezing Trap, Concussive Shot.",
+	["Kagani Nightstrike"] = "Rogue, uses Cheap Shot, Kidney Shot, Gouge and Kick.",
+	["Warlord Salaris"] = "Arms warrior, uses Mortal Strike and Intimidating Shout.",
+	["Yazzai"] = "Frost mage, casts Frostbolt, Frost Nova, Blizzard, Polymorphs, Ice Block.",
+	["Zelfan"] = "Engineer, uses Explosive Sheep, Goblin Flame Gun, Goblin Rocket Launcher, Grenades.",
+	["Priestess Delrissa"] = "Holy priest, heals and dispels.",
 }
 elseif l == "deDE" then
 defaultDatabase = {
@@ -460,11 +510,11 @@ defaultDatabase = {
 	["阿曼尼希咒醫"] = "可以變羊、冰凍和心靈控制，技能為治療和保護性圖騰",
 	["阿曼尼希族人"] = "可以被任何控制技能控制",
 	["阿曼尼熊"] = "狂暴可以用寧神射擊解除，可以被冰凍陷阱、變形和恐懼控制",
-	["阿曼尼希戰爭使者"] = "免疫控制技能，20%血量時下馬",
+	["阿曼尼希戰爭使者"] = "免疫控制技能，20% 血量時下馬",
 	["阿曼尼希斥候"] = "可以纏繞和眩暈，在他們靠近戰鼓後會召喚增援",
 	["阿曼尼希管理員"] = "免疫變形和恐懼，可以眩暈，會使用寧神毒藥",
 	["阿曼尼希暴怒者"] = "雷霆一擊，拉開距離躲避",
-	["阿曼尼希火焰施放者"] = "可以被變羊、控制、冰凍、眩暈和打斷，可以偷取他的buff",
+	["阿曼尼希火焰施放者"] = "可以被變羊、控制、冰凍、眩暈和打斷，可以偷取他的 buff",
 	["阿曼尼希馴獸師"] = "可以被變羊、陷阱和眩暈，隨機精神控制玩家",
 
 	-- Moroes adds
@@ -476,13 +526,13 @@ defaultDatabase = {
 	["貴族克利斯平·費蘭斯"] = "防護戰士，繳械、盾牌猛擊和盾牆",
 
 	-- Karazhan trash
-	["鬼靈表演者"] = "免疫控制技能，會施放聚光燈，所有位於其下的人和mob傷害提高",
+	["鬼靈表演者"] = "免疫控制技能，會施放聚光燈，所有位於其下的人和 mob 傷害提高",
 	["秘法異反元素"] = "隨機傳送，清空當前仇恨，有法力護盾",
 	["法力供應蟲"] = "免疫所有法術，會施放燃燒法力", -- need check
-	["法力扭曲"] = "低生命時施放巨大傷害的AOE自爆，可以被打斷",
+	["法力扭曲"] = "低生命時施放巨大傷害的 AOE 自爆，可以被打斷",
 
 	-- Hex Lord Malacrass adds
-	["瑟吉"] = "近戰，可以被變形和陷阱，不過若干次陷阱控制後他會抵抗（DR遞減？！）",
+	["瑟吉"] = "近戰，可以被變形和陷阱，不過若干次陷阱控制後他會抵抗（DR 遞減?!）",
 	["葛薩克羅司"] = "群發火球術，可以被放逐",
 	["領主雷阿登"] = "對前方施放火焰吐息，以及雷霆一擊，可以被變羊",
 	["黑心"] = "近戰攻擊和瞬發的群體恐懼，可以被束縛鎖定",
@@ -493,7 +543,7 @@ defaultDatabase = {
 	
 	-- Serpentshrine Cavern trash
 	["盤牙馴獸師"] = "使孢子蝠狂暴，解除它受到的控制技能，對正前方玩家施放順劈",
-	["盤牙憎恨尖嘯者"] = "30碼距離AoE沉默",
+	["盤牙憎恨尖嘯者"] = "30 碼距離 AOE 沉默",
 	["毒蛇神殿孢子蝙蝠"] = "有最小距離的隨機衝鋒", -- need check
 
 	["瓦司金榮譽守衛"] = "破膽怒吼和狂怒",
@@ -503,13 +553,13 @@ defaultDatabase = {
 	["灰色之心浪潮呼喚者"] = "可以被變羊和恐懼，會施放水元素圖騰和毒液盾",
 	["盤牙海蛇守衛"] = "不能被控制，會順劈斬和護甲降低光環",
 	["灰色之心隱藏者"] = "可以被變羊、恐懼和繳械",
-	["灰色之心虛空法師"] = "可以被變羊，對隊伍施放AOE，在閃現後清空仇恨",
+	["灰色之心虛空法師"] = "可以被變羊，對隊伍施放 AOE，在閃現後清空仇恨",
 
 	["盤牙深淵女巫"] = "免疫控制技能，會施放帶擊退效果的暗影新星AOE和隨機精神控制",
 
-	["潮行者深淵先知"] = "對其他怪物施放HOT治療，不能被控制，但是可以對其使用打斷和反制，在低生命時使用寧靜",
+	["潮行者深淵先知"] = "對其他怪物施放 HOT 治療，不能被控制，但是可以對其使用打斷和反制，在低生命時使用寧靜",
 	["潮行者獵魚者"] = "對坦克施放投網並清空仇恨，免疫控制技能",
-	["潮行者海法師"] = "可以被眩暈、沉默和打斷，CoT會很有效，會施放寒冰箭和冰環",
+	["潮行者海法師"] = "可以被眩暈、沉默和打斷，CoT 會很有效，會施放寒冰箭和冰環",
 	["潮行者薩滿"] = "免疫所有控制技能，法術可以被打斷",
 	["潮行者戰士"] = "可以被變羊、恐懼、陷阱和繳械，狂暴時可寧神，隨機變換仇恨",
 
@@ -517,7 +567,7 @@ defaultDatabase = {
 	["毒蛇神殿潛伏者"] = "可以被放逐，施放蘑菇",
 
 	-- Black Temple trash
-	["元水領主"] = "召喚2個元水爪牙",
+	["元水領主"] = "召喚 2 個元水爪牙",
 	["元水之子"] = "可以被放逐和眩暈，會治療元水領主",
 	["考斯卡召海者"] = "可以被變羊，會施放颶風和叉狀閃電",
 	["考斯卡爭吵者"] = "免疫控制技能，會使海獸狂暴",
@@ -548,33 +598,33 @@ defaultDatabase = {
 	["影月馴犬者"] = "進入戰鬥後，釋放座騎影月騎乘獵犬可控場",
 
 	-- Tempest Keep trash
-	["見習占星者"] = "可以被控制技能控制，會施放AOE星辰碎片",
+	["見習占星者"] = "可以被控制技能控制，會施放 AOE 星辰碎片",
 	["星術師"] = "可以被恐懼、變形、陷阱或纏繞，施放群體火球術",
-	["占星者"] = "可以被恐懼、變形、陷阱或纏繞，會施放AOE星辰碎片",
+	["占星者"] = "可以被恐懼、變形、陷阱或纏繞，會施放 AOE 星辰碎片",
 	["血守衛軍團士兵"] = "順劈斬和旋風斬，僅能被纏繞，免疫恐懼和陷阱",
-	["風暴要塞-鐵匠"] = "可以被悶棍、變羊和心靈控制，群體投擲炸彈並且會buff晶核怪物",
+	["風暴要塞-鐵匠"] = "可以被悶棍、變羊和心靈控制，群體投擲炸彈並且會 buff 晶核怪物",
 	["血守衛復仇者"] = "凈化其他怪物的控制技能，會使用制裁之錘和聖光術，免疫控制技能",
 	["血守衛治安官"] = "旋風斬，免疫控制技能",
-	["血守衛扈從"] = "治療型mob，免疫控制技能和眩暈，但是可以被反制",
+	["血守衛扈從"] = "治療型 mob，免疫控制技能和眩暈，但是可以被反制",
 	["星術領主"] = "心靈控制隨機玩家，免疫控制技能和眩暈",
-	["風暴要塞-熔爐鷹獵者"] = "不能被解除的火焰之盾buff，免疫控制技能",
-	["小鳳鷹"] = "衝鋒距離坦克最遠的玩家，施放AOE法力燃燒和擊退，牧師加暗抗能減少傷害",
-	["水晶之核毀壞者"] = "近戰攻擊帶擊退效果，反擊近戰攻擊造成2000左右傷害，沈默反制遠程職業，免疫眩暈",
-	["水晶之核哨兵"] = "不能被打斷的AOE爆炸，6000傷害，以及對坦克施放可以被反彈的超載技能，16000左右傷害，免疫眩暈",
+	["風暴要塞-熔爐鷹獵者"] = "不能被解除的火焰之盾 buff，免疫控制技能",
+	["小鳳鷹"] = "衝鋒距離坦克最遠的玩家，施放 AOE 法力燃燒和擊退，牧師加暗抗能減少傷害",
+	["水晶之核毀壞者"] = "近戰攻擊帶擊退效果，反擊近戰攻擊造成 2000 左右傷害，沈默反制遠程職業，免疫眩暈",
+	["水晶之核哨兵"] = "不能被打斷的 AOE 爆炸，6000 傷害，以及對坦克施放可以被反彈的超載技能，16000 左右傷害，免疫眩暈",
 	["水晶之核技師"] = "會治療摧毀者和斥候，對團隊成員隨機施放鋸齒之刃，可以被放逐",
 	["虛空占卜師"] = "群體心靈控制",
 	["紅手百夫長"] = "可以被變羊，近戰範圍內的奧術洪流造成大量傷害，可持續變形斷他施放奧術洪流",
 	["紅手血騎士"] = "擊暈坦克並驅散其他怪物的控制技能，免疫控制技能",
-	["紅衣戰鬥法師"] = "使用AOE法術，可以被恐懼或變羊",
+	["紅衣戰鬥法師"] = "使用 AOE 法術，可以被恐懼或變羊",
 	["紅手審判官"] = "可以被控制技能控制，會施放能量灌注，法師可竊取",
 
 	-- Gruul's Lair trash
-	["巢穴蠻兵"] = "隨機對遠距離玩家沖鋒，沖鋒後清空仇恨，免疫所有控制技能",
+	["巢穴蠻兵"] = "隨機對遠距離玩家衝鋒，衝鋒後清空仇恨，免疫所有控制技能",
 	["古羅牧師"] = "免疫控制技能和沈默，可以打斷",
 
 	-- The Blood Furnace
 	["惡魔守衛殲滅者"] = "隨機衝鋒，可以被減速、定身和昏迷",
-	["獰笑骷髏盜賊"] = "淬毒造成傷害並且可疊加（英雄模式每層320）",
+	["獰笑骷髏盜賊"] = "淬毒造成傷害並且可疊加（英雄模式每層 320）",
 	["獰笑骷髏執行者"] ="盾牌猛擊",
 	["影月召喚者"] = "召喚魅魔和地獄犬，火球術，魅魔會魅惑，地獄犬會施放燃燒法力",
 	["地獄火小鬼"] = "英雄模式下火焰衝擊造成大量傷害",
@@ -598,6 +648,11 @@ defaultDatabase = {
 	["惡魔捕獵者"] = "可被術士放逐，可以恐懼、可用定身技能，會吸取法力",
 }
 
+end
+
+function MobNotes_GetNote(name)
+	if not name then return end
+	return _G.MobNotesDB[name]
 end
 
 local frame = CreateFrame("Frame")

@@ -26,17 +26,17 @@ local function GetSpellColor(spell, rank)
 	if(spell == NOT_TAMEABLE)then
 		return "|cffffaaaa".. NOT_TAMEABLE .."|r";
 	elseif( ips[spell] and ips[spell][rank] )then
-		return "|cffffff33".. spell .."(等级"..rank..")|r";
+		return "|cffffff33".. spell .. BS_LEVEL_DESC .. rank ..")|r";
 	elseif( UnitLevel("mouseover") > UnitLevel("player") )then
-		return "|cffff0000".. spell .."(等级"..rank..")|r";
+		return "|cffff0000".. spell .. BS_LEVEL_DESC .. rank ..")|r";
 	else
-		return "|cff00ff00".. spell .."(等级"..rank..")|r";
+		return "|cff00ff00".. spell .. BS_LEVEL_DESC .. rank ..")|r";
 	end;
 end;
 
 --带有BeastSpell前缀的函数
 local function BeastSpell_GetCRAFT()
-local j, craftName, craftRank;
+	local j, craftName, craftRank;
 	for j = 1, GetNumCrafts(), 1 do
 		--craftIcon = string.gsub(craftIcon, "^Interface\\Icons\\", "");
 		--craftName, craftRank, craftType, numAvailable, isExpanded, trainingPointCost, requiredLevel = GetCraftInfo(j);
@@ -99,11 +99,13 @@ local function BeastSpell_ReadData()
 		return;
 	end;
 	local tempTable = wps[zone][mouseName];
-	local lintText2 = "驯兽能力：";
+	local lintText2 = BS_ABILITY;
 	if(tempTable[1] ~= NOT_TAMEABLE)then
 		local k = 1;
 		while(tempTable[k])do
 			_, _, spell, rank = string.find(tempTable[k], "(.-)|(%d+)");
+			spell = string.gsub(spell, "^%s+", "");
+			spell = string.gsub(spell, "%s+$", "");
 			lintText2 = lintText2 .. GetSpellColor(spell, rank);
 			k = k + 1;
 			if(tempTable[k])then
@@ -126,22 +128,24 @@ local function BeastSpell_BeastLore()
 	for j = GameTooltip:NumLines(), 1, -1 do
 		lineText = getglobal("GameTooltipTextLeft"..j):GetText();
 		--if( lineText and string.find(lineText, "驯兽能力：") )then
-		f, _, spells = string.find(lineText, "驯兽能力：(.+)");
-		if( f )then
+		--f, _, spells = string.find(lineText, "驯兽能力：(.+)");
+		_, _, spells = string.find(lineText, BS_ABILITY_LORE);
+		if( spells )then
 			local wildSpells = {};
 			local spella;
 			--for spell, rank in string.gmatch(spells, "(.-)%s*%(.-%s*(%d+)%),*%s*") do
 			for spella in string.gmatch(spells, "[^,]+") do
-				spella = string.gsub(spella, "%s", "");
-				local f, _, spell, rank = string.find(spella, "(.-)%(.-(%d+)%)");
-				if(not f)then
+				local _, _, spell, rank = string.find(spella, "(.-)%(.-(%d+)");
+				if(not rank or rank == "")then
 					spell = spella;
 					rank = 1;
 				end;
+				spell = string.gsub(spell, "^%s+", "");
+				spell = string.gsub(spell, "%s+$", "");
 				table.insert( wildSpells, spell .."|".. rank);
 			end;
 			BeastSpell_Save(wildSpells);--储存野兽信息
-			local lintText2 = "驯兽能力：";
+			local lintText2 = BS_ABILITY;
 			local k = 1;
 			while(wildSpells[k])do
 				_, _, spell, rank = string.find(wildSpells[k], "(.-)|(%d+)");
@@ -167,7 +171,7 @@ local function BeastSpell_BeastLore()
 end;
 
 local function BeastSpell_SetTootip()
-	if( hasDebuff("野兽知识") )then
+	if( hasDebuff(BS_BEAST_LORE) )then
 		GameTooltip:SetUnit("mouseover");
 		BeastSpell_BeastLore();
 	else
@@ -189,10 +193,10 @@ end;
 
 function BeastSpell_OnEvent()
 	if ( event == "UPDATE_MOUSEOVER_UNIT" ) then
-		if ( UnitExists("mouseover") and not UnitPlayerControlled("mouseover") and UnitCreatureType("mouseover")=="野兽" )then
+		if ( UnitExists("mouseover") and not UnitPlayerControlled("mouseover") and UnitCreatureType("mouseover") == BS_BEAST )then
 			if( UnitCreatureFamily("mouseover") )then
 				BeastSpell_SetTootip();
-			elseif( not hasDebuff("野兽知识") )then
+			elseif( not hasDebuff(BS_BEAST_LORE) )then
 				GameTooltip:AddLine(NOT_TAMEABLE, 1, 0.7, 0.7);
 				GameTooltip:SetHeight(GameTooltip:GetHeight() + 14);
 			end;
@@ -223,8 +227,8 @@ function BeastSpell_OnEvent()
 			BeastSpell_Self = {};
 		end;
 		ips = BeastSpell_Self;
-		print("[野兽学识]加载成功")
-		if(not BeastSpell_Wild)then
+		print(BS_LOAD_MESSAGE);--加载成功
+		if(not BeastSpell_Wild or not BeastSpell_Wild["dbVer"])then
 			BeastSpell_Wild = BeastSpell_Data1;
 		end;
 		BeastSpell_Data1 = nil;

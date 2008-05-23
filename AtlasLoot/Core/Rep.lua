@@ -1,5 +1,5 @@
 local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-local BabbleFaction = AceLibrary("Babble-Faction-2.2");
+local BabbleFaction = LibStub("LibBabble-Faction-3.0"):GetLookupTable();
 
 local ORANGE = "|cffFF8400";
 

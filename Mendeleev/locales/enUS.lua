@@ -9,14 +9,19 @@ L:RegisterTranslations("enUS", function() return {
 	["Toggle showing the item level in the tooltip."] = true,
 	["Show item identifier"] = true,
 	["Toggle showing the item identifier in the tooltip."] = true,
+	["Show item count"] = true,
+	["Toggle showing the item count in the tooltip."] = true,
 	["Show stack size"] = true,
 	["Toggle showing the stack size in the tooltip."] = true,
 	["Show 'used in' tree"] = true,
 	["Toggle showing the 'used in' tree in the tooltip."] = true,
 	["Limit 'used in' tree to craftable"] = true,
 	["Toggle limiting the 'used in' tree to items the char can craft."] = true,
+	["Show icons in 'used in' tree"] = true,
+	["Toggle showing of icons in the 'used in' tree."] = true,
 	["Item ID"] = true,
 	["iLevel"] = true,
+	["You have"] = true,
 	["Stacksize"] = true,
 
 	["Crafted by"] = true,
@@ -90,7 +95,6 @@ L:RegisterTranslations("enUS", function() return {
 	["Arena - Season 2 Set"] = true,
 	["Arena - Season 3 Set"] = true,
 	
-	["Poisons"] = true,
 	["%d%% alc/vol (%d proof)"] = true,
 	[" (%d tickets)"] = true,
 
@@ -108,4 +112,5 @@ L:RegisterTranslations("enUS", function() return {
 	["Badge of Justice"] = true,
 	["G'eras"] = true,
 	["Smith Hauthaa"] = true,
+	["Trash Mobs"] = true,
 }end)

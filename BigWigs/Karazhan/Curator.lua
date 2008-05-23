@@ -16,7 +16,6 @@ L:RegisterTranslations("enUS", function() return {
 
 	berserk_trigger = "The Menagerie is for guests only.",
 
-	enrage_trigger = "Failure to comply will result in offensive action.",
 	enrage_message = "Enrage!",
 	enrage_warning = "Enrage soon!",
 
@@ -38,29 +37,27 @@ L:RegisterTranslations("enUS", function() return {
 L:RegisterTranslations("frFR", function() return {
 	berserk_trigger = "L'accès à la Ménagerie est réservé aux invités.",
 
-	enrage_trigger = "Toute désobéissance entraînera une action offensive.",
-	enrage_message = "Enragé !",
-	enrage_warning = "Bientôt enragé !",
+	enrage_message = "Enrager !",
+	enrage_warning = "Enrager imminent !",
 
 	weaken = "Affaiblissement",
-	weaken_desc = "Préviens quand le Conservateur est affaibli.",
-	weaken_message = "Evocation - Affaibli pendant 20 sec. !",
+	weaken_desc = "Prévient quand le Conservateur est affaibli.",
+	weaken_message = "Evocation - Affaibli pendant 20 sec. !",
 	weaken_bar = "Evocation",
-	weaken_fade_message = "Evocation terminée - Fin de l'Affaiblissement !",
-	weaken_fade_warning = "Evocation terminée dans 5 sec. !",
+	weaken_fade_message = "Evocation terminée - Fin de l'Affaiblissement !",
+	weaken_fade_warning = "Evocation terminée dans 5 sec. !",
 
 	weaktime = "Compte à rebours Affaiblissement",
 	weaktime_desc = "Affiche des avertissements et une barre temporelle indiquant le prochain Affaiblissement.",
 	weaktime_message1 = "Evocation dans ~10 sec.",
 	weaktime_message2 = "Evocation dans ~30 sec.",
 	weaktime_message3 = "Evocation dans ~70 sec.",
-	weaktime_bar = "~Cooldown Evocation",
+	weaktime_bar = "~Recharge Evocation",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
 	berserk_trigger = "Die Menagerie ist nur f\195\188r G\195\164ste.",
 
-	enrage_trigger = "Die Nichteinhaltung wird zur Angriffshandlungen f\195\188hren.",
 	enrage_message = "Kurator in Rage!",
 	enrage_warning = "Kurator bald in Rage!",
 
@@ -82,7 +79,6 @@ L:RegisterTranslations("deDE", function() return {
 L:RegisterTranslations("koKR", function() return {
 	berserk_trigger = "박물관에는 초대받은 손님만 입장하실 수 있습니다.",
 
-	enrage_trigger = "규칙 위반으로 경보가 발동됐습니다.",
 	enrage_message = "격노!",
 	enrage_warning = "잠시 후 격노!",
 
@@ -104,29 +100,27 @@ L:RegisterTranslations("koKR", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	berserk_trigger = "展览厅只对访客开放。",
 
-	enrage_trigger = "不合作将导致攻击行动。",
 	enrage_message = "狂暴！",
 	enrage_warning = "馆长将进入狂暴！",
 
 	weaken = "唤醒",
 	weaken_desc = "当馆长进入唤醒时发送警告。",
-	weaken_message = "唤醒 - 20秒虚弱计时开始",
+	weaken_message = "唤醒 - 20秒虚弱计时开始。",
 	weaken_bar = "<唤醒>",
-	weaken_fade_message = "唤醒结束 - 准备击杀小电球！",
-	weaken_fade_warning = "5秒后 唤醒 结束！",
+	weaken_fade_message = "唤醒结束，准备击杀小电球！",
+	weaken_fade_warning = "5秒后，唤醒结束！",
 
 	weaktime = "虚弱提示",
 	weaktime_desc = "显示计时条预计下一次虚弱的时间。",
-	weaktime_message1 = "唤醒  大约10秒后",
-	weaktime_message2 = "唤醒  大约30秒后",
-	weaktime_message3 = "唤醒  大约70秒后",
+	weaktime_message1 = "唤醒！约10秒后。",
+	weaktime_message2 = "唤醒！约30秒后。",
+	weaktime_message3 = "唤醒！约70秒后。",
 	weaktime_bar = "<虚弱>",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
 	berserk_trigger = "展示廳是賓客專屬的。",
 
-	enrage_trigger = "不順從就會招致攻擊性的行動。",
 	enrage_message = "狂暴",
 	enrage_warning = "館長即將進入狂暴狀態",
 
@@ -146,25 +140,24 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	berserk_trigger = "La colecci\195\179n es solo para los invitados.",
+	berserk_trigger = "La colección es solo para los invitados.",
 
-	enrage_trigger = "Su no cumplimiento resultar\195\161 en una acci\195\179n ofensiva.",
-	enrage_message = "\194\161Enfurecido!",
-	enrage_warning = "\194\161Enfurecimiento pronto!",
+	enrage_message = "¡Enfurecimiento!",
+	enrage_warning = "¡Enfurecimiento en breve!",
 
-	weaken = "Debilidad",
-	weaken_desc = "Aviso del estado de debilidad.",
-	weaken_message = "\194\161Evocaci\195\179n - Debilidad durante 20sec!",
-	weaken_bar = "Evocaci\195\179n",
-	weaken_fade_message = "\194\161Evocaci\195\179n Finalizada - Debilidad desaparecida!",
-	weaken_fade_warning = "\194\161Evocaci\195\179n en unos 5sec!",
+	weaken = "Evocación (Evocation)",
+	weaken_desc = "Avisar del estado de debilidad.",
+	weaken_message = "¡Evocación - Debilidad durante 20sec!",
+	weaken_bar = "Evocación",
+	weaken_fade_message = "¡Evocación Finalizada - Debilidad desaparecida!",
+	weaken_fade_warning = "¡Evocación en ~5 seg!",
 
-	weaktime = "Cuenta atras de Debilidad",
-	weaktime_desc = "Barra de cuenta atras hasta la proxima debilidad.",
-	weaktime_message1 = "Evocaci\195\179n en ~10 segundos",
-	weaktime_message2 = "Evocaci\195\179n en ~30 segundos",
-	weaktime_message3 = "Evocaci\195\179n en ~70 segundos",
-	weaktime_bar = "~Enfriamiento de Evocaci\195\179n",
+	weaktime = "Cuenta atrás de Evocación",
+	weaktime_desc = "Barra de cuenta atrás hasta la proxima debilidad.",
+	weaktime_message1 = "Evocación en ~10 segundos",
+	weaktime_message2 = "Evocación en ~30 segundos",
+	weaktime_message3 = "Evocación en ~70 segundos",
+	weaktime_bar = "~Evocación",
 } end )
 
 ----------------------------------
@@ -175,7 +168,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"weaken", "weaktime", "berserk", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 66269 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------
@@ -184,6 +177,7 @@ mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) en
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Evocate", 30254)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "Infusion", 30403)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
@@ -210,19 +204,23 @@ function mod:Evocate(_, spellID)
 	end
 end
 
+function mod:Infusion()
+	--somewhat of an enrage :P
+	if self.db.profile.enrage then
+		self:IfMessage(L["enrage_message"], "Important", 30403)
+	end
+
+	self:CancelScheduledEvent("weak1")
+	self:CancelScheduledEvent("weak2")
+	self:CancelScheduledEvent("evoc1")
+	self:CancelScheduledEvent("evoc2")
+	self:CancelScheduledEvent("evoc3")
+	self:TriggerEvent("BigWigs_StopBar", self, L["weaken_bar"])
+	self:TriggerEvent("BigWigs_StopBar", self, L["weaktime_bar"])
+end
+
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L["enrage_trigger"] then -- This only happens towards the end of the fight
-		if self.db.profile.enrage then
-			self:Message(L["enrage_message"], "Important")
-		end
-		self:CancelScheduledEvent("weak1")
-		self:CancelScheduledEvent("weak2")
-		self:CancelScheduledEvent("evoc1")
-		self:CancelScheduledEvent("evoc2")
-		self:CancelScheduledEvent("evoc3")
-		self:TriggerEvent("BigWigs_StopBar", self, L["weaken_bar"])
-		self:TriggerEvent("BigWigs_StopBar", self, L["weaktime_bar"])
-	elseif msg == L["berserk_trigger"] then -- This only happens at the start of the fight
+	if msg == L["berserk_trigger"] then -- This only happens at the start of the fight
 		enrageWarn = nil
 		self:TriggerEvent("BigWigs_ShowProximity", self)
 

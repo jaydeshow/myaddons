@@ -2,6 +2,8 @@
 ## Title: WitchHunt
 ## Notes: Simple Spell Alert
 ## Notes-koKR: 간단한 주문 경고
+## Notes-zhCN: 简单的施法警报
+## Notes-zhTW: 簡單的施法警報
 ## Version: 3.0
 ## Author: Ammo
 ## OptionalDeps: Ace3, LibSink-2.0

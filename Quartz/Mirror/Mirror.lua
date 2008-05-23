@@ -15,7 +15,7 @@
 	with this program; if not, write to the Free Software Foundation, Inc.,
 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ]]
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 local L = AceLibrary("AceLocale-2.2"):new("Quartz")
 
 local Quartz = Quartz
@@ -219,7 +219,7 @@ function QuartzMirror:OnEnable()
 	self:RegisterEvent("QuartzMirror_UpdateCustom", "UpdateBars")
 	self:RegisterEvent("CHAT_MSG_BG_SYSTEM_NEUTRAL")
 	self:SecureHook("StaticPopup_Show", "UpdateBars")
-	self:RegisterEvent("SharedMedia_SetGlobal", function(mtype, override)
+	media.RegisterCallback(self, "LibSharedMedia_SetGlobal", function(mtype, override)
 		if mtype == "statusbar" then
 			for i, v in pairs(mirrorbars) do
 				v:SetStatusBarTexture(media:Fetch("statusbar", override))

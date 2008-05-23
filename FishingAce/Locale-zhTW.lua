@@ -12,8 +12,8 @@ L:RegisterTranslations("zhTW", function() return {
 	["Enhance Sounds"] = "加強音效",
 	["EnhanceSoundsMsg"] = "如果設定，在釣魚時會加強魚上鉤的音效。",
 
-	["Use Action"] = "Use Action",  -- Needs localization
-	["UseActionMsg"] = "If set, Fishing Ace! will find an action button to cast with.",
+	["Use Action"] = "使用按鈕",
+	["UseActionMsg"] = "如果設定，會在動作條上使用釣魚按鈕。",
 
 	["LureSkill"] = "使用:裝備在魚竿上之後，可以使你的釣魚技能提高(%d)點，持續%d分鐘。",
 } end)

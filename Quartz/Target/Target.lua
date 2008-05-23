@@ -23,7 +23,7 @@ if Quartz:HasModule('Target') then
 end
 local QuartzTarget = Quartz:NewModule('Target')
 
-local media = LibStub("LibSharedMedia-2.0")
+local media = LibStub("LibSharedMedia-3.0")
 
 local math_min = math.min
 local unpack = unpack
@@ -208,7 +208,7 @@ function QuartzTarget:OnEnable()
 	self:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED")
 	self:RegisterEvent("UNIT_SPELLCAST_CHANNEL_INTERRUPTED", "UNIT_SPELLCAST_INTERRUPTED")
 	self:RegisterEvent("PLAYER_TARGET_CHANGED")
-	self:RegisterEvent("SharedMedia_SetGlobal", function(mtype, override)
+	media.RegisterCallback(self, "LibSharedMedia_SetGlobal", function(mtype, override)
 		if mtype == "statusbar" then
 			castBar:SetStatusBarTexture(media:Fetch("statusbar", override))
 		end

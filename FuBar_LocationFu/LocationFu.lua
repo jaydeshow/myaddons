@@ -2,12 +2,11 @@ local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("FuBar_LocationFu")
 local Tourist = Rock("LibTourist-3.0")
 local Tablet = AceLibrary("Tablet-2.0")
 local Jostle = Rock("LibJostle-3.0")
-local bs = Rock("LibBabble-Spell-3.0"):GetLookupTable()
 
 LocationFu = Rock:NewAddon("LocationFu", "LibFuBarPlugin-3.0", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockConfig-1.0", "LibRockDB-1.0")
 
-LocationFu.version = "3.0" .. string.sub("$Revision: 59195 $", 12, -3)
-LocationFu.date = string.sub("$Date: 2008-01-23 04:20:16 -0500 (Wed, 23 Jan 2008) $", 8, 17)
+LocationFu.version = "3.0" .. string.sub("$Revision: 68954 $", 12, -3)
+LocationFu.date = string.sub("$Date: 2008-04-10 14:14:16 -0400 (Thu, 10 Apr 2008) $", 8, 17)
 LocationFu:SetFuBarOption('hasIcon', true)
 LocationFu:SetFuBarOption('iconPath', [[Interface\AddOns\FuBar_LocationFu\icon]])
 LocationFu:SetFuBarOption('defaultPosition', "RIGHT")
@@ -335,7 +334,7 @@ function LocationFu:OnUpdateFuBarTooltip()
 		for i=1, numSkills do
 			local _, skillName, skillRank
 			skillName, _, _, skillRank, _, _, _, _, _, _, _, _, _ = GetSkillLineInfo(i)
-			if skillName == bs["Fishing"] and minFish < skillRank then
+			if skillName == GetSpellInfo(7620) and minFish < skillRank then
 				r,g,b = 0,1,0
 			end
 		end

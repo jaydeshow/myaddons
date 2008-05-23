@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
+	Version: 5.0.PRE.3087 (BillyGoat)
 	Revision: $Id: AucScanManager.lua 2510 2007-11-16 21:13:09Z RockSlice $
 
 	ScanManager - manages AH scanning

@@ -8,7 +8,7 @@
 ## Notes-zhCN: AtlasLoot Enhanced 的套装与PvP奖励物品信息
 ## Notes-zhTW: AtlasLoot 各種套裝與 PvP 物品資料庫
 ## Author: Daviesh
-## Version: 4.04.00
+## Version: 4.05.00
 ## X-eMail: oma_daviesh@hotmail.com
 ## X-Category: Map
 ## X-License: GPL v2
@@ -17,15 +17,30 @@
 ## LoadOnDemand: 1
 
 sets.en.lua
-sets.tw.lua
 sets.cn.lua
+sets.de.lua
+sets.es.lua
+sets.fr.lua
+sets.kr.lua
+sets.tw.lua
 BattlegroundPvP.en.lua
-BattlegroundPvP.tw.lua
-BattlegroundPvP.kr.lua
 BattlegroundPvP.cn.lua
+BattlegroundPvP.de.lua
+BattlegroundPvP.es.lua
+BattlegroundPvP.fr.lua
+BattlegroundPvP.kr.lua
+BattlegroundPvP.tw.lua
 GeneralPvP.en.lua
-GeneralPvP.tw.lua
 GeneralPvP.cn.lua
+GeneralPvP.de.lua
+GeneralPvP.es.lua
+GeneralPvP.fr.lua
+GeneralPvP.kr.lua
+GeneralPvP.tw.lua
 WorldPvP.en.lua
-WorldPvP.tw.lua
 WorldPvP.cn.lua
+WorldPvP.de.lua
+WorldPvP.es.lua
+WorldPvP.fr.lua
+WorldPvP.kr.lua
+WorldPvP.tw.lua

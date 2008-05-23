@@ -142,15 +142,15 @@ L:RegisterTranslations("zhTW", function() return {
 	["Text"] = "文字",
 	["Reset"] = "重置",
 
-	["Colors of messages and bars."] = "訊息文字與計時條顏色。",
-	["Change the color for %q messages."] = "變更%q訊息的顏色。",
-	["Colors for short bars (< 1 minute)."] = "短時計時條（小於一分鐘）的顏色。",
-	["Colors for long bars (> 1 minute)."] = "長時計時條（大於一分鐘）的顏色。",
-	["Change the %s color."] = "變更顏色%s。",
-	["Number of colors the bar has."] = "計時條顏色數量。",
-	["Change the bar background color."] = "變更背景顏色。",
-	["Change the bar text color."] = "變更文字顏色。",
-	["Resets all colors to defaults."] = "全部重置為預設狀態。",
+	["Colors of messages and bars."] = "訊息文字與計時條顏色",
+	["Change the color for %q messages."] = "變更 %q 訊息的顏色",
+	["Colors for short bars (< 1 minute)."] = "短時計時條（小於一分鐘）的顏色",
+	["Colors for long bars (> 1 minute)."] = "長時計時條（大於一分鐘）的顏色",
+	["Change the %s color."] = "變更顏色 %s。",
+	["Number of colors the bar has."] = "計時條顏色數量",
+	["Change the bar background color."] = "變更背景顏色",
+	["Change the bar text color."] = "變更文字顏色",
+	["Resets all colors to defaults."] = "全部重置為預設狀態",
 
 	["Important"] = "重要",
 	["Personal"] = "個人",
@@ -254,28 +254,28 @@ L:RegisterTranslations("esES", function() return {
 	["Short bars"] = "Barras cortas",
 	["Long bars"] = "Barras largas",
 	["Color "] = "Color",
-	["Number of colors"] = "N\195\186mero de colores",
+	["Number of colors"] = "Número de colores",
 	["Background"] = "Fondo",
 	["Text"] = "Texto",
-	["Reset"] = "Resetear",
+	["Reset"] = "Reiniciar",
 
 	["Colors of messages and bars."] = "Color de mensajes y barras",
 	["Change the color for %q messages."] = "Cambiar el color para %q mensajes",
 	["Colors for short bars (< 1 minute)."] = "Color para las barras cortas (< 1 minuto).",
 	["Colors for long bars (> 1 minute)."] = "Color para barras largas (>1 minuto).",
 	["Change the %s color."] = "Cambiar el %s color",
-	["Number of colors the bar has."] = "N\195\186mero de colores que tiene la barra.",
+	["Number of colors the bar has."] = "Número de colores que tiene la barra.",
 	["Change the bar background color."] = "Cambiar el color del fondo de la barra.",
 	["Change the bar text color."] = "Cambiar el color del texto de la barra",
-	["Resets all colors to defaults."] = "Resetea todos los colores a los de por defecto.",
+	["Resets all colors to defaults."] = "Reinicia todos los colores a los de por defecto.",
 
 	["Important"] = "Importante",
 	["Personal"] = "Personal",
 	["Urgent"] = "Urgente",
-	["Attention"] = "Atenci\195\179n",
+	["Attention"] = "Atención",
 	["Positive"] = "Positivo",
 	["Bosskill"] = "Muerte de Jefe",
-	["Core"] = "N\195\186cleo",
+	["Core"] = "Núcleo",
 
 	["1st"] = "1º",
 	["2nd"] = "2º",
@@ -289,7 +289,7 @@ L:RegisterTranslations("esES", function() return {
 
 local plugin = BigWigs:NewModule("Colors")
 
-plugin.revision = tonumber(("$Revision: 53663 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
 plugin.defaultDB = {
 	Important = { r = 1, g = 0, b = 0 }, -- Red
 	Personal = { r = 1, g = 0, b = 0 }, -- Red

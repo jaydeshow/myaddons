@@ -137,7 +137,7 @@ end
 
 mobmap_inverse_questnames=nil;
 
-function MobMap_GetQuestIDByName(questname, faction)
+function MobMap_GetQuestIDsByName(questname, faction)
 	local firstAlliance=(faction=="Alliance");
 	local firstHorde=(faction=="Horde");
 	local questTable;
@@ -164,7 +164,8 @@ function MobMap_GetQuestIDByName(questname, faction)
 			if(type(mobmap_inverse_questnames[questname])=="table") then
 				questTable=mobmap_inverse_questnames[questname];
 			else
-				return mobmap_inverse_questnames[questname];
+				questTable={};
+				table.insert(questTable,mobmap_inverse_questnames[questname]);
 			end
 		end
 	else
@@ -176,16 +177,23 @@ function MobMap_GetQuestIDByName(questname, faction)
 			end
 		end
 	end
-	local i;
-	local quest=nil;
-	for i=1, table.getn(questTable), 1 do
-		quest=questTable[i];
-		if(firstAlliance==false and firstHorde==false) then break; end
-		local isHorde, isAlliance;
-		_, _, _, _, isHorde, isAlliance = MobMap_GetDetailsForQuest(quest);
-		if((firstAlliance==true and isAlliance==true) or (firstHorde==true and isHorde==true)) then break; end
+	if(table.getn(questTable)==0) then return nil; end
+	if(firstAlliance==false and firstHorde==false) then return questTable; end
+	local i,k;
+	local finalQuestTable={};
+	for k=1, 2, 1 do
+		for i=1, table.getn(questTable), 1 do
+			quest=questTable[i];
+			local isHorde, isAlliance;
+			_, _, _, _, isHorde, isAlliance = MobMap_GetDetailsForQuest(quest);
+			if((firstAlliance==true and isAlliance==true) or (firstHorde==true and isHorde==true)) then
+				if(k==1) then table.insert(finalQuestTable, quest); end
+			else
+				if(k==2) then table.insert(finalQuestTable, quest); end			
+			end
+		end
 	end
-	return quest;
+	return finalQuestTable;
 end
 
 function MobMap_GetQuestObjective(questid)
@@ -505,7 +513,53 @@ end
 
 -- quest detail frame
 
+mobmap_quest_details_idlist=nil;
+mobmap_quest_details_idnum=0;
+
+function MobMap_ShowQuestDetailsByTitle(title)
+	questids=MobMap_GetQuestIDsByName(title, UnitFactionGroup("player"));
+	if(questids==nil) then
+		return false;
+	else
+		mobmap_quest_details_idlist=questids;
+		mobmap_quest_details_id=1;
+		MobMap_ShowQuestDetails(questids[1]);
+		return true;
+	end
+end
+
+function MobMap_NextQuestDetail()
+	if(mobmap_quest_details_idlist~=nil) then
+		mobmap_quest_details_idnum=mobmap_quest_details_idnum+1;
+		if(mobmap_quest_details_idnum>table.getn(mobmap_quest_details_idlist)) then
+			mobmap_quest_details_idnum=1;
+		end
+		MobMap_ShowQuestDetails(mobmap_quest_details_idlist[mobmap_quest_details_idnum]);
+	end
+end
+
+function MobMap_PrevQuestDetail()
+	if(mobmap_quest_details_idlist~=nil) then
+		mobmap_quest_details_idnum=mobmap_quest_details_idnum-1;
+		if(mobmap_quest_details_idnum<1) then
+			mobmap_quest_details_idnum=table.getn(mobmap_quest_details_idlist);
+		end
+		MobMap_ShowQuestDetails(mobmap_quest_details_idlist[mobmap_quest_details_idnum]);
+	end
+end
+
 function MobMap_ShowQuestDetails(questid)
+	if(mobmap_quest_details_idlist~=nil and table.getn(mobmap_quest_details_idlist)>1) then
+		MobMapQuestDetailFrameNextButton:Show();
+		MobMapQuestDetailFramePrevButton:Show();
+		MobMapQuestDetailFrameTitleText:SetWidth(220);
+		MobMapQuestDetailFrameTitle:SetWidth(220);
+	else
+		MobMapQuestDetailFrameNextButton:Hide();
+		MobMapQuestDetailFramePrevButton:Hide();	
+		MobMapQuestDetailFrameTitleText:SetWidth(260);
+		MobMapQuestDetailFrameTitle:SetWidth(260);
+	end
 	if(questid==0) then return; end
 	MobMapQuestDetailFrame:Hide();
 	local level, zone, prequest, postquest, isHorde, isAlliance, money, npc, sourcepointer, grouptype, always, choice = MobMap_GetDetailsForQuest(questid);

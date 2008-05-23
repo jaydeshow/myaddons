@@ -1,5 +1,6 @@
-
-assert( oRA, "oRA not found!")
+assert(oRA, "oRA not found!")
+local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
 --      Are you local?      --
@@ -64,11 +65,11 @@ L:RegisterTranslations("zhTW", function() return {
 L:RegisterTranslations("deDE", function() return {
 	["Item"] = "Gegenstand",
 	["Participant/Item"] = "Teilnehmer/Gegenstand",
-	["Options for item checks."] = "Optionen f\195\188r Gegenstands-Check",
-	["Disable item checks"] = "Deaktiviere Gegenstands-Checks",
-	["Disable responding to item checks."] = "Deaktiviert die Antwort auf Gegenstands-Checks",
+	["Options for item checks."] = "Optionen für Gegenstands-Check.",
+	["Disable item checks"] = "Deaktiviere Gegenstands-Checks.",
+	["Disable responding to item checks."] = "Deaktiviert die Antwort auf Gegenstands-Checks.",
 	["Disable reagent checks"] = "Deaktiviere Reagenzien-Checks",
-	["Disable responding to reagent checks."] = "Deaktiviert die Antwort auf Reagenzien-Checks",
+	["Disable responding to reagent checks."] = "Deaktiviert die Antwort auf Reagenzien-Checks.",
 } end )
 
 L:RegisterTranslations("frFR", function() return {

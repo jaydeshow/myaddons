@@ -1,5 +1,5 @@
-local L = AceLibrary("AceLocale-2.2"):new("Recount")
-
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale( "Recount" )
 local me={}
 
 function me:CreateResetWindow()

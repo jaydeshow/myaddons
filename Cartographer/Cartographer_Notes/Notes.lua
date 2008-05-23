@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 62493 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 67263 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-02-21 22:36:06 -0500 (Thu, 21 Feb 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-03-31 06:35:38 -0400 (Mon, 31 Mar 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Notes")
@@ -590,10 +590,11 @@ L:AddTranslations("zhTW", function() return {
 	["Console-quick-note-commands"] = { "/qnote", "/quicknote" },
 	["Unable to find your location."] = "無法找到你的位置。",
 } end)
+
 L:AddTranslations("zhCN", function() return {
 	["Notes"] = "注释",
-	["Module which allows you to put notes on the map."] = "让你可以在世界地图上做标注.",
-	["Hint: /note is available to create notes with the command line."] = "小窍门: 可以使用 /note 命令来添加注释.",
+	["Module which allows you to put notes on the map."] = "让你可以在地图上做注释。",
+	["Hint: /note is available to create notes with the command line."] = "小窍门：可以使用 /note 命令来添加注释。",
 
 	["White"] = "白色",
 	["Gray"] = "灰色",
@@ -621,73 +622,75 @@ L:AddTranslations("zhCN", function() return {
 	["Send to raid"] = "发送到团队",
 	["Send to guild"] = "发送到公会",
 	["Send to player"] = "发送到其他玩家",
+	["Send to group"] = "发送到其他小组",
 
-	["Note: This may be blocked by Blizzard's spam filter and cause problems. It is recommended to send to your party/raid/guild instead."] = "注: 这有可能被 Blizzard 内置的过滤器阻挡. 建议你使用发送到队伍/团队/公会来代替该操作.",
 
-	["X position"] = "X坐标",
-	["Y position"] = "Y坐标",
+	["Note: This may be blocked by Blizzard's spam filter and cause problems. It is recommended to send to your party/raid/guild instead."] = "注：这有可能被暴雪内置的过滤器阻挡。建议你使用发送到队伍/团队/公会来代替该操作。",
+
+	["X position"] = "X 坐标",
+	["Y position"] = "Y 坐标",
 	["Title"] = "标题",
-	["Info line 1 (optional)"] = "信息1 (可选)",
-	["Info line 2 (optional)"] = "信息2 (可选)",
-	["Creator (optional)"] = "创建者 (可选)",
+	["Info line 1 (optional)"] = "信息1（可选）",
+	["Info line 2 (optional)"] = "信息2（可选）",
+	["Creator (optional)"] = "创建者（可选）",
 
 	["Ctrl-Right-Click on map to add a note"] = "Ctrl-右键点击地图添加注释",
 
-	["%s from Guild"] = "来自公会: %s",
-	["%s from Raid"] = "来自团队: %s",
-	["%s from Party"] = "来自队伍: %s",
+	["%s from Guild"] = "来自公会：%s",
+	["%s from Raid"] = "来自团队：%s",
+	["%s from Party"] = "来自队伍：%s",
 
-	["Unknown zone: %q"] = "未知的区域: %q",
-	["Error: %s sent you a note with an unknown zone: %q"] = "错误: %s发送给你一个未知地区(%q)的注释",
-	["Error: %s sent you a note at %q : %.2f, %.2f with the title %q created by %q, but you already have a note at this location."] = "错误: %s发送给你一个在%q: (%.2f，%.2f)的注释, 标题: %q，创建者: %q，但你在同样的位置上已经有注释了.",
-	["%s sent you a note at %q : %.2f, %.2f with the title %q created by %q."] = "%s发送给你一个在%q: (%.2f，%.2f)的注释,标题: %q，创接者: %q.",
+	["Unknown zone: %q"] = "未知的区域：%q",
+	["Error: %s sent you a note with an unknown zone: %q"] = "错误：%s发送给你一个未知地区(%q)的注释。",
+	["Error: %s sent you a note at %q : %.2f, %.2f with the title %q created by %q, but you already have a note at this location."] = "错误：%s发送给你一个在%q：（%.2f，%.2f）的注释，标题：%q，创建者：%q，但你在同样的位置上已经有注释了。",
+	["%s sent you a note at %q : %.2f, %.2f with the title %q created by %q."] = "%s发送给你一个在%q：（%.2f，%.2f）的注释，标题：%q，创接者：%q。",
 
-	["Created by"] = "创建者:",
+	["Created by"] = "创建者：",
 
 	["Show note creator"] = "显示注释的创建者",
-	["Show the `Created By:' line in notes"] = "在注释中显示 '创建者:' 的标记",
+	["Show the `Created By:' line in notes"] = "在注释中显示“创建者：”的标记。",
 
 	["Icon size"] = "图标大小",
-	["Size of the icons on the map"] = "显示在地图上的图标大小",
+	["Size of the icons on the map"] = "显示在地图上的图标大小。",
 
 	["Show minimap icons"] = "显示小地图图标",
-	["Show icons on the minimap"] = "在小地图上显示图标",
+	["Show icons on the minimap"] = "在小地图上显示图标。",
 
 	["Minimap icon size"] = "小地图图标大小",
-	["Size of the icons on the minimap"] = "在小地图上显示的图标大小",
+	["Size of the icons on the minimap"] = "在小地图上显示的图标大小。",
 
 	["Max minimap icons per database"] = "每个数据库小地图图标显示数量",
-	["The maximum amount of minimap icons to show per database"] = "每个数据库小地图图标显示数量",
+	["The maximum amount of minimap icons to show per database"] = "每个数据库小地图图标显示数量。",
 
 	["Console-note-commands"] = { "/note", "/addnote" },
-	["Usage: /note <0-100> <0-100> [title]"] = "用法: /note <0-100> <0-100> [注释标题]",
+	["Usage: /note <0-100> <0-100> [title]"] = "用法：/note <0-100> <0-100> [注释标题]",
 
 	["Show chat notifications"] = "显示聊天通知",
-	["Show notification in the chat window"] = "在聊天窗口中显示通知",
+	["Show notification in the chat window"] = "在聊天窗口中显示通知。",
 	-- Note cleanup localizations
 	["Clear all notes on map"] = "清除地图上所有的注释",
-	["This will remove all notes on the map. This can't be undone are your sure?"] = "清除地图上所有的注释, 次操作无法还原,你确定要清除了?",
-	["This will clear all notes on map"] = "将会清除地图上所有的注释",
+	["This will remove all notes on the map. This can't be undone are your sure?"] = "清除地图上所有的注释，次操作无法还原，你确定要清除？",
+	["This will clear all notes on map"] = "将会清除地图上所有的注释！",
 
 	["Clear waypoint"] = "清除路径点",
 	["Set as waypoint"] = "设为路径点",
 
 	["all"] = "全部",
 	["Note reception active"] = "开启注释发送接收",
-	["Enabling this will allow notes to be sent and received."] = "开启后将运行发送或接收注释",
+	["Enabling this will allow notes to be sent and received."] = "开启后将运行发送或接收注释。",
 
-	["Note sent by %s ignored due to filtering settings."] = "%s传送过来的注释被过滤掉了.",
+	["Note sent by %s ignored due to filtering settings."] = "%s传送过来的注释被过滤掉了。",
 	["Incoming note filtering"] = "注释接收过滤",
-	["Setup filtering of note sent to you by other players."] = "设置过滤其他玩家传过来的注释",
+	["Setup filtering of note sent to you by other players."] = "设置过滤其他玩家传过来的注释。",
 	["Accept all notes"] = "接收所有注释",
 	["Accept only handmade notes"] = "只接收自定义注释",
 	["Reject all notes"] = "拒绝所有注释",
 
-	["%.0f yd"] = "%.0f码",
-	["%.0f m"] = "%.0f米",
+	["%.0f yd"] = "%.0f 码",
+	["%.0f m"] = "%.0f 米",
 
 	["Console-quick-note-commands"] = { "/qnote", "/quicknote" },
-	["Unable to find your location."] = "无法识别你当前的坐标.",
+	["Unable to find your location."] = "无法识别你当前的坐标。",
 } end)
 
 local localization = GetLocale()

@@ -1,7 +1,7 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: AucCommand.lua 2497 2007-11-15 14:55:33Z Norganna $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: AucCommand.lua 2991 2008-04-01 01:36:04Z RockSlice $
 
 	Auctioneer command functions.
 	Functions to allow setting of values, switching commands etc.
@@ -29,7 +29,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
 
-Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/AucCommand.lua $", "$Rev: 2497 $")
+Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/AucCommand.lua $", "$Rev: 2991 $")
 
 --Local function prototypes
 local register
@@ -1513,7 +1513,7 @@ function mainHandler(command, source)
 	elseif (cmd == 'protect-window') then
 		protectWindow(param, khaosCommand);
 
-	--/auctioneer auction-duration (2h|8h|24h)
+	--/auctioneer auction-duration (12h|24h|48h)
 	elseif (cmd == 'auction-duration') then
 		auctionDuration(param, khaosCommand);
 
@@ -1963,13 +1963,13 @@ function auctionDuration(param, khaosCommand)
 	if (param == 'last' or param == _AUCT('CmdAuctionDuration0') or tonumber(param) == 0) then
 		mode = 0;
 
-	elseif (param == '2h' or param == _AUCT('CmdAuctionDuration1') or tonumber(param) == 1) then
+	elseif (param == '12h' or param == _AUCT('CmdAuctionDuration1') or tonumber(param) == 1) then
 		mode = 1;
 
-	elseif (param == '8h' or param == _AUCT('CmdAuctionDuration2') or tonumber(param) == 2) then
+	elseif (param == '24h' or param == _AUCT('CmdAuctionDuration2') or tonumber(param) == 2) then
 		mode = 2;
 
-	elseif (param == '24h' or param == _AUCT('CmdAuctionDuration3') or tonumber(param) == 3) then
+	elseif (param == '48h' or param == _AUCT('CmdAuctionDuration3') or tonumber(param) == 3) then
 		mode = 3;
 
 	else

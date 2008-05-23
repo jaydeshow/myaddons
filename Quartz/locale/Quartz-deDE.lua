@@ -103,6 +103,7 @@ L:RegisterTranslations("deDE", function()
 		["Hide Samwise Icon"] = "Verstecke Samwise Symbol",
 		["Show for Friends"] = "Von Freunden zeigen",
 		["Show for Enemies"] = "Von Feinden zeigen",
+		--["Show if Target"] = true,
 		["Target Name"] = "Name des Ziels",
 		["Display target name of spellcasts after spell name"] = "Zielname eines Zaubers nach Zaubernamen anzeigen",
 		
@@ -208,6 +209,7 @@ L:RegisterTranslations("deDE", function()
 		["Hide the icon for spells with no icon"] = "Verstecke das Symbol von Zaubern die kein Symbol haben.",
 		["Show this castbar for friendly units"] = "Zeige diese Zauberleiste f\195\188r befreundete Ziele.",
 		["Show this castbar for hostile units"] = "Zeige diese Zauberleiste f\195\188r feindliche Ziele.",
+		--["Show this castbar if focus is also target"] = true,
 		["Set an exact X value for this bar's position."] = "Bestimme einen exakten X Achsen Wert f\195\188r diese Leistenposition.",
 		["Set an exact Y value for this bar's position."] = "Bestimme einen exakten Y Achsen Wert f\195\188r diese Leistenposition.",
 		

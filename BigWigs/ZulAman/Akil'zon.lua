@@ -7,7 +7,6 @@ local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 
 local CheckInteractDistance = CheckInteractDistance
 local db = nil
-local pName = UnitName("player")
 
 ----------------------------
 --      Localization      --
@@ -40,30 +39,30 @@ L:RegisterTranslations("koKR", function() return {
 	elec = "전하 폭풍",
 	elec_desc = "전하 폭풍에 걸린 플레이어를 알립니다.",
 	elec_bar = "~폭풍 대기 시간",
-	elec_message = "%s에 전하 폭풍!",
+	elec_message = "%s 전하 폭풍!",
 	elec_warning = "잠시후 전하 폭풍!",
 
 	ping = "미니맵 표시",
-	ping_desc = "당신이 전하 폭풍에 걸렸을때 현재 위치를 미니맵에 표시합니다.",
-	ping_message = "폭풍 - 현재 위치 미니맵에 찍는 중!",
+	ping_desc = "자신이 전하 폭풍에 걸렸을 때 현재 위치를 미니맵에 표시합니다.",
+	ping_message = "폭풍 - 현재 위치 미니맵에 표시 중!",
 
 	icon = "전술 표시",
-	icon_desc = "전하 폭풍 대상이된 플레이어에 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
+	icon_desc = "전하 폭풍 대상이된 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Moi, chuis le prédateur ! Vous, z'êtes la proie…",
-	engage_message = "%s engagé - Orage dans ~55 sec. !",
+	engage_message = "%s engagé - Orage dans ~55 sec. !",
 
 	elec = "Orage électrique",
-	elec_desc = "Préviens quand un joueur subit les effets de l'Orage électrique.",
-	elec_bar = "~Cooldown Orage",
-	elec_message = "Orage sur %s !",
-	elec_warning = "Orage imminent !",
+	elec_desc = "Prévient quand un joueur subit les effets de l'Orage électrique.",
+	elec_bar = "~Recharge Orage",
+	elec_message = "Orage sur %s !",
+	elec_warning = "Orage imminent !",
 
 	ping = "Ping",
 	ping_desc = "Indique votre position actuelle sur la minicarte si vous subissez les effets de l'Orage électrique.",
-	ping_message = "Orage - Position signalée sur la minicarte !",
+	ping_message = "Orage - Position signalée sur la minicarte !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par l'Orage électrique (nécessite d'être promu ou mieux).",
@@ -89,20 +88,20 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	engage_trigger = "我是猎鹰，而你们，就是猎物！",
-	engage_message = "%s 激活 - ～大约55秒后 电能风暴！",
+	engage_message = "%s 激活！ - 约55秒后，电能风暴！",
 
 	elec = "电能风暴",
-	elec_desc = "当谁中了电能风暴发出警报。",
+	elec_desc = "当玩家受到电能风暴时发出警报。",
 	elec_bar = "<电能风暴 冷却>",
 	elec_message = "电能风暴：>%s<！",
-	elec_warning = "即将电能风暴！",
+	elec_warning = "即将 电能风暴！",
 
 	ping = "点击",
 	ping_desc = "若你受到电能风暴再你当前区域点击小地图发出警报。",
-	ping_message = "风暴 - 本区域发动了~快在小地图上点你位置！",
+	ping_message = "风暴！本区域发动了，快在小地图上点你位置！",
 
 	icon = "团队标记",
-	icon_desc = "给中了电能风暴的玩家打上标记。(需要权限)",
+	icon_desc = "给中了电能风暴的玩家打上标记。（需要权限）",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -111,8 +110,8 @@ L:RegisterTranslations("zhTW", function() return {
 
 	elec = "電荷風暴",
 	elec_desc = "警告誰受到電荷風暴",
-	elec_bar = "~電荷風暴冷卻",
-	elec_message = "電荷風暴：[%s]",
+	elec_bar = "<電荷風暴冷卻>",
+	elec_message = "電荷風暴: [%s]",
 	elec_warning = "電荷風暴即將來臨!",
 
 	ping = "點擊",
@@ -124,21 +123,21 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("esES", function() return {
-	engage_trigger = "\194\161Yo soy el depredador! Vosotros la presa...",
-	engage_message = "\194\161%s Activado - Tormenta en ~55seg!",
+	engage_trigger = "¡Yo soy el depredador! Vosotros la presa...",
+	engage_message = "¡%s Activado - Tormenta en ~55seg!",
 
-	elec = "Tormenta el\195\169ctrica",
-	elec_desc = "Avisa quien Tormenta el\195\169ctrica.",
-	elec_bar = "~Regeneraci\195\179n de Tormenta",
-	elec_message = "Tormenta en %s!",
-	elec_warning = "\194\161Tormenta pronto!",
+	elec = "Tormenta eléctrica (Electrical Storm)",
+	elec_desc = "Avisa quién tiene Tormenta eléctrica.",
+	elec_bar = "~Tormenta eléctrica",
+	elec_message = "¡Tormenta en %s!",
+	elec_warning = "Tormenta en breve",
 
-	ping = "Ping",
-	ping_desc = "Se\195\177ala tu posici\195\179n actual si sufres Tormenta el\195\169ctrica.",
-	ping_message = "\194\161Tormenta - Se\195\177alando tu posici\195\179n!",
+	ping = "Señalar posición",
+	ping_desc = "Señala tu posición actual si sufres Tormenta eléctrica.",
+	ping_message = "¡Tormenta - Señalando tu posición!",
 
 	icon = "Icono de banda",
-	icon_desc = "Coloca un icono de banda en el jugador conTormenta el\195\169ctrica. (requiere asistente o superior)",
+	icon_desc = "Pone un icono de banda en el jugador con Tormenta eléctrica. (Requiere derechos de banda)",
 } end )
 
 ----------------------------------
@@ -149,7 +148,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"elec", "ping", "icon", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 66242 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -158,11 +157,11 @@ mod.proximitySilent = true
 ------------------------------
 
 function mod:OnEnable()
-	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
-	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
-
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Storm", 43648)
+	self:AddCombatListener("SPELL_AURA_REMOVED", "RemoveIcon", 43648)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
+	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 
 	db = self.db.profile
@@ -172,37 +171,36 @@ end
 --      Event Handlers      --
 ------------------------------
 
+function mod:Storm(player, spellID)
+	if not db.elec then return end
+
+	local show = L["elec_message"]:format(player)
+	self:IfMessage(show, "Attention", spellID)
+	self:Bar(show, 8, spellID)
+	self:Bar(L["elec_bar"], 55, spellID)
+	self:DelayedMessage(48, L["elec_warning"], "Urgent")
+	if UnitIsUnit(player, "player") and db.ping then
+		Minimap:PingLocation()
+		BigWigs:Print(L["ping_message"])
+	end
+	self:Icon(player, "icon")
+end
+
+function mod:RemoveIcon()
+	self:TriggerEvent("BigWigs_RemoveRaidIcon")
+end
+
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L["engage_trigger"] then
 		if db.enrage then
-			self:Enrage(600, true)
+			self:Enrage(600, true, true)
 		end
 		if db.elec then
 			self:Message(L["engage_message"]:format(boss), "Positive")
-			self:Bar(L["elec_bar"], 50, "Spell_Lightning_LightningBolt01")
+			self:Bar(L["elec_bar"], 50, 43648)
 			self:DelayedMessage(47, L["elec_warning"], "Urgent")
 		end
 		self:TriggerEvent("BigWigs_ShowProximity", self)
-	end
-end
-
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(_, unit, _, _, player)
-	if not db.elec then return end
-
-	if unit == boss then
-		local show = L["elec_message"]:format(player)
-		self:Message(show, "Attention")
-		self:Bar(show, 8, "Spell_Nature_EyeOfTheStorm")
-		self:Bar(L["elec_bar"], 55, "Spell_Lightning_LightningBolt01")
-		self:DelayedMessage(48, L["elec_warning"], "Urgent")
-		if player == pName and db.ping then
-			Minimap:PingLocation()
-			BigWigs:Print(L["ping_message"])
-		end
-		if db.icon then
-			self:Icon(player)
-			self:ScheduleEvent("BWRemoveAkilIcon", "BigWigs_RemoveRaidIcon", 10, self)
-		end
 	end
 end
 

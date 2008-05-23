@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 if FW.CLASS == "WARLOCK" then
 	local FW = FW;
@@ -123,8 +123,8 @@ if FW.CLASS == "WARLOCK" then
 	end
 	
 	local function WL_IsShardBag(link)
-		_,_,link = string.find(link,"^|c.-|Hitem:(.-):");
-		return link == "22243" or link == "22244" or link == "21340" or link == "21341" or link == "21342" or link == "21872";
+		-- soulbag type == 4
+		return bit.band(4,GetItemFamily(link)) == 4;
 	end
 	
 	local BagStats = {[0]={},[1]={},[2]={},[3]={},[4]={}};
@@ -201,7 +201,25 @@ if FW.CLASS == "WARLOCK" then
 				end
 			end
 		end
-		
+		if FW.Settings.ShardManagerPrior then
+			if BagStats.emptybag and BagStats.shardbag and BagStats[BagStats.emptybag].prior < BagStats[BagStats.shardbag].prior then
+				ClearCursor();
+				PickupContainerItem(BagStats.shardbag,BagStats.shardslot);
+				local i1,i2,i3 = GetCursorInfo();
+				if i1=="item" and i2 == FW.ID_SOULSHARD then -- make sure i only move shards in case of bugs
+					if BagStats.emptybag == 0 then
+						PutItemInBackpack();
+					else
+						PutItemInBag(ContainerIDToInventoryID(BagStats.emptybag));
+					end
+					--FW:ShowDebug("Moved a Soulshard");
+				else
+					--FW:ShowDebug("Failed to move a Soulshard");
+					ClearCursor();
+				end
+				return;
+			end
+		end
 		if FW.Settings.ShardManagerDelete then
 			if BagStats.shardbag and not BagStats[BagStats.shardbag].shardbag and ( (FW.Settings.ShardManagerMax>0 and BagStats.shard > FW.Settings.ShardManagerMax) or (BagStats.empty < FW.Settings.ShardManagerFree and BagStats.shard > FW.Settings.ShardManagerMin)) then
 				
@@ -218,25 +236,7 @@ if FW.CLASS == "WARLOCK" then
 				return;
 			end
 		end
-		if FW.Settings.ShardManagerPrior then
-			
-			if BagStats.emptybag and BagStats.shardbag and BagStats[BagStats.emptybag].prior < BagStats[BagStats.shardbag].prior then
-				ClearCursor();
-				PickupContainerItem(BagStats.shardbag,BagStats.shardslot);
-				local i1,i2,i3 = GetCursorInfo();
-				if i1=="item" and i2 == FW.ID_SOULSHARD then -- make sure i only move shards in case of bugs
-					if BagStats.emptybag == 0 then
-						PutItemInBackpack();
-					else
-						PutItemInBag(ContainerIDToInventoryID(BagStats.emptybag));
-					end
-					--FW:ShowDebug("Moved a Soulshard");
-				else
-					--FW:ShowDebug("Failed to move a Soulshard");
-					ClearCursor();
-				end	
-			end
-		end
+
 	end
 	local function WL_CastSelfEndMessage(target)
 		FW:SendData(FW.SS_CAST_SELF..target);
@@ -352,32 +352,32 @@ if FW.CLASS == "WARLOCK" then
 		end);
 		FW:RegisterOnTimerBreak(function(unit,mark,spell)
 			if spell == FW.L.FEAR then
-				if mark~=0 then unit=FW.RaidIcons[mark] or unit;end
+				if mark~=0 then unit=FW.RaidIcons[mark]..unit;end
 				FW:CastShow("FearBreak",unit);
 			elseif spell == FW.L.BANISH then
-				if mark~=0 then unit=FW.RaidIcons[mark] or unit;end
+				if mark~=0 then unit=FW.RaidIcons[mark]..unit;end
 				FW:CastShow("BanishBreak",unit);
 			elseif spell == FW.L.ENSLAVE_DEMON then
-				if mark~=0 then unit=FW.RaidIcons[mark] or unit;end
+				if mark~=0 then unit=FW.RaidIcons[mark]..unit;end
 				FW:CastShow("EnslaveBreak",unit);
 			end
 		end);
 		FW:RegisterOnTimerFade(function(unit,mark,spell,time,index)
 			if spell == FW.L.FEAR then
 				if time <= FW:GetFadeTime("FearFade") then
-					if mark~=0 then unit=FW.RaidIcons[mark] or unit;end
+					if mark~=0 then unit=FW.RaidIcons[mark]..unit;end
 					FW:CastShow("FearFade",unit);
 					FW:SET(FW.ST,index,12, 1)
 				end
 			elseif spell == FW.L.BANISH then
 				if time <= FW:GetFadeTime("BanishFade") then
-					if mark~=0 then unit=FW.RaidIcons[mark] or unit;end
+					if mark~=0 then unit=FW.RaidIcons[mark]..unit;end
 					FW:CastShow("BanishFade",unit);
 					FW:SET(FW.ST,index,12, 1)
 				end
 			elseif spell == FW.L.ENSLAVE_DEMON or spell == FW.L.INFERNO then
 				if time <= FW:GetFadeTime("EnslaveFade") then
-					if mark~=0 then unit=FW.RaidIcons[mark] or unit;end
+					if mark~=0 then unit=FW.RaidIcons[mark]..unit;end
 					FW:CastShow("EnslaveFade",unit);
 					FW:SET(FW.ST,index,12, 1)
 				end

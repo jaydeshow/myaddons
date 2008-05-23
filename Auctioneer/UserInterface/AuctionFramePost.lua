@@ -1,7 +1,7 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.2876 (BillyGoat)
-	Revision: $Id: AuctionFramePost.lua 2779 2008-01-21 00:29:07Z kandoko $
+	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: AuctionFramePost.lua 2885 2008-02-23 15:15:33Z kandoko $
 
 	Auctioneer Post Auctions tab
 
@@ -28,7 +28,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
 
-Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/UserInterface/AuctionFramePost.lua $", "$Rev: 2779 $")
+Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/UserInterface/AuctionFramePost.lua $", "$Rev: 2885 $")
 
 -------------------------------------------------------------------------------
 -- Function Prototypes
@@ -322,7 +322,7 @@ function AuctionFramePost_UpdatePriceModels(frame)
 				end
 
 				-- Add the last sale price if BeanCounter is loaded.and one exists
-				if (IsAddOnLoaded("BeanCounter") and BeanCounter and BeanCounter.externalSearch) then
+				if (IsAddOnLoaded("BeanCounter") and BeanCounter and BeanCounter.externalSearch and BeanCounter.API.isLoaded) then
 					local settings = {["selectbox"] = {"1","server"}  , ["exact"] = false, ["classic"] = false, 
 						["bid"] = false, ["outbid"] = false, ["auction"] = true, ["failedauction"] = false
 						}
@@ -751,7 +751,7 @@ function AuctionFramePost_SetAuctionItem(frame, bag, item, count)
 		AuctionFramePost_PriceModelDropDownItem_SetSelectedID(dropdown, nil);
 
 		-- Update the Transactions tab if BeanCounter is loaded. Allows searchs made here to show in BC
-		if IsAddOnLoaded("BeanCounter") and BeanCounter.externalSearch then
+		if IsAddOnLoaded("BeanCounter") and BeanCounter.externalSearch and BeanCounter.API.isLoaded then
 			BeanCounter.externalSearch(itemId) --will accept itemid, string, itemkey, or itemlink
 		end
 		

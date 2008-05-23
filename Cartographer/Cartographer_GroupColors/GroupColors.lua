@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 60023 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 67263 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-02-02 13:26:11 -0500 (Sat, 02 Feb 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-03-31 06:35:38 -0400 (Mon, 31 Mar 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GroupColors")
@@ -31,7 +31,7 @@ L:AddTranslations("koKR", function() return {
 
 L:AddTranslations("zhCN", function() return {
 	["Group Colors"] = "团队颜色",
-	["Module which turns all your party's and your raid's POIs into circles colored based on class, and shows a number on them based on their raid group."] = "在地图上将队伍或团队成员根据职业着色, 并显示所在小队队号数字.",
+	["Module which turns all your party's and your raid's POIs into circles colored based on class, and shows a number on them based on their raid group."] = "在地图上将队伍或团队成员根据职业着色，并显示所在小队队号数字。",
 } end)
 
 L:AddTranslations("zhTW", function() return {

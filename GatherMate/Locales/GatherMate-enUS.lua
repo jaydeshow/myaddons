@@ -15,6 +15,7 @@ L["Pick Lock"] = true
 L["GatherMate Pin Options"] = true
 L["Delete: "] = true
 L["Add this location to Cartographer_Waypoints"] = true
+L["Add this location to TomTom waypoints"] = true
 
 L["Always show"] = true
 L["Only with profession"] = true
@@ -47,19 +48,36 @@ L["Show Minimap Icons"]=true
 L["Toggle showing Minimap icons."] = true
 L["Show World Map Icons"] = true
 L["Toggle showing World Map icons."] = true
+L["Keybind to toggle Minimap Icons"] = true
 L["Icon Scale"] = true
 L["Icon scaling, this lets you enlarge or shrink your icons on both the World Map and Minimap."] = true
 L["Icon Alpha"] = true
 L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."] = true
 L["Miscellaneous"] = true
--- Cleanup subtree
+-- Cleanup subtree (now Database Maintenance)
+L["Database Maintenance"] = true
 L["Cleanup_Desc"] = "Over time, your database might become crowded. Cleaning up your database involves looking for nodes of the same profession type that are near each other and determining if they can be collapsed into a single node."
 L["Cleanup radius"] = true
-L["CLEANUP_RADIUS_DESC"] = "The radius in yards where duplicate nodes should be removed. The default is |cFFFFFFFF50|r yards for Extract Gas and |cFFFFFFFF15|r yards for everything else. These settings are also followed when adding nodes."
+L["CLEANUP_RADIUS_DESC"] = "The radius in yards where duplicate nodes should be removed. The default is |cffffd20050|r yards for Extract Gas and |cffffd20015|r yards for everything else. These settings are also followed when adding nodes."
 L["Cleanup Database"] = true
 L["Cleanup your database by removing duplicates. This takes a few moments, be patient."] = true
 L["Processing "] = true
 L["Cleanup Complete."] = true
+L["Delete Specific Nodes"] = true
+L["DELETE_SPECIFIC_DESC"] = "Remove all of the selected node from the selected zone. You must disable Database Locking for this to work."
+L["Select Database"] = true
+L["Select Node"] = true
+L["Select Zone"] = true
+L["Delete"] = true
+L["Delete selected node from selected zone"] = true
+L["Are you sure you want to delete all of the selected node from the selected zone?"] = true
+L["Delete Entire Database"] = true
+L["DELETE_ENTIRE_DESC"] = "This will ignore Database Locking and remove all nodes from all zones from the selected database."
+L["Are you sure you want to delete all nodes from this database?"] = true
+L["Database Locking"] = true
+L["DATABASE_LOCKING_DESC"] = "The database locking feature allows you to freeze a database state. Once locked you will no longer be able to add, delete or modify the database. This includes cleanup and imports."
+L["Database locking"] = true
+
 -- Tracking options
 L["Tracking Circle Color"] = true
 L["Color of the tracking circle."] = true
@@ -136,15 +154,17 @@ L["Are you sure you want to delete the selected profile?"] = true
 L["FAQ"] = true
 L["Frequently Asked Questions"] = true
 L["FAQ_TEXT"] = [[
-|cFFFFFFFF
+|cffffd200
 I just installed GatherMate, but I see no nodes on my maps. What am I doing wrong?
 |r
 GatherMate does not come with any data by itself. When you gather herbs, mine ore, collect gas or fish, GatherMate will then add and update your map accordingly. Also, check your Display Settings.
-|cFFFFFFFF
+
+|cffffd200
 I am seeing nodes on my World Map but not on my Minimap! What am I doing wrong now?
 |r
 |cffffff78Minimap Button Bag|r (and possibly other similar addons) likes to eat all the buttons we put on the Minimap. Disable them.
-|cFFFFFFFF
+
+|cffffd200
 How or where can I get existing data?
 |r
 You can import existing data into GatherMate in these ways:
@@ -156,11 +176,13 @@ You can import existing data into GatherMate in these ways:
 Note that importing data into GatherMate is not an automatic process. You must actively go to the Import Data section and click on the "Import" button.
 
 This differs from |cffffff78Cartographer_Data|r in that the user is given the choice in how and when you want your data to be modified, |cffffff78Cartographer_Data|r when loaded will simply overwrite your existing databases without warning and destroy all new nodes that you have found.
-|cFFFFFFFF
+
+|cffffd200
 Can you add support for showing the locations of things like mailboxes and flightmasters?
 |r
 The answer is no. However, another addon author could create an addon or module for this purpose, the core GatherMate addon will not do this.
-|cFFFFFFFF
+
+|cffffd200
 I've found a bug! Where do I report it?
 |r
 You can report bugs or give suggestions at |cffffff78http://www.wowace.com/forums/index.php?topic=10990.0|r
@@ -168,7 +190,8 @@ You can report bugs or give suggestions at |cffffff78http://www.wowace.com/forum
 Alternatively, you can also find us on |cffffff78irc://irc.freenode.org/wowace|r
 
 When reporting a bug, make sure you include the |cffffff78steps on how to reproduce the bug|r, supply any |cffffff78error messages|r with stack traces if possible, give the |cffffff78revision number|r of GatherMate the problem occured in and state whether you are using an |cffffff78English client or otherwise|r.
-|cFFFFFFFF
+
+|cffffd200
 Who wrote this cool addon?
 |r
 Kagaro, Xinhuan, Nevcairiel and Ammo

@@ -1,7 +1,7 @@
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_FactionsFu")
 
 L:RegisterTranslations("esES", function() return {
-	TOOLTIP_HINT = "\nHaz |cffeda55fClic|r para cambiar la facci\195\179n vigilada.\n|cffeda55fMay\195\186sculas-Clic|r para introducir los datos en la caja de edici\195\179n del chat.\n|cffeda55fAlt-Clic|r para establecer como facci\195\179n de zona autom\195\161tica a la zona actual.",
+	TOOLTIP_HINT = "\nHaz |cffeda55fClick|r para cambiar la facci\195\179n vigilada.\n|cffeda55fMay\195\186s+Click|r para introducir los datos en la caja de edici\195\179n del chat.\n|cffeda55fAlt+Click|r para establecer como facci\195\179n de zona autom\195\161tica a la zona actual.",
 
 	["Text"] = "Texto",
 	["Text Settings"] = "Ajustes de texto",

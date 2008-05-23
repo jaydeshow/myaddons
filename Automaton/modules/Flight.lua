@@ -22,6 +22,7 @@ elseif locale == "koKR" then
 	}
 elseif locale == "zhTW" then
 	L = {
+		["Automatically dismount or unshapeshift when speaking to flight masters"] = "跟飛行管理員說話時自動下馬或者取消變形形態。",
 		["Ghost Wolf"] = "幽魂之狼",
 	}
 elseif locale == "zhCN" then

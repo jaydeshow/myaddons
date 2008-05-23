@@ -29,7 +29,6 @@ L:RegisterTranslations("frFR", function() return {
 	["Minimum Group"]								= "Minimum pour un groupe",
 	["How many players of a group must need a buff before the group version is cast"] = "Nombre de joueur minimum d'un groupe nécessitant un buff avant de lancer un buff de groupe",
 	["%s on %s%s"]									= "%s sur %s%s",
-	["%s on Group %d%s"]							= "%s sur le groupe %d%s",
 	["%s on %s"]									= "%s on %s",
 	["Auto-Assign"]									= "Assignation automatique",
 	["Auto assign sensible group assignment based the order of your name alphabilically compared to others of your class. All going well, and all using ZOMGBuffs and everyone should end up with different assignments without need for discussion"] = "Assignation automatique de manière sensée, basé sur le classement alphabétique des membres de votre classe.Si tout va bien et que tout le monde utilise ZOMGBuffs, chacun devrait recevoir un assignement différent et unique sans besoin de discussion",

@@ -6,10 +6,8 @@ local boss = BB["Harbinger Skyriss"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 local L2 = AceLibrary("AceLocale-2.2"):new("BigWigsCommonWords")
 
-local firstSplitAnnounced
-local secondSplitAnnounced
-local db = nil
-local fmt = string.format
+local firstSplitAnnounced = nil
+local secondSplitAnnounced = nil
 
 ----------------------------
 --      Localization      --
@@ -21,7 +19,7 @@ L:RegisterTranslations("enUS", function() return {
 	mc = "Mind Control",
 	mc_desc = "Warn for Mind Control",
 	mc_message = "%s is Mind Controlled!",
-	mb_bar = "%s - Mind Control",
+	mc_bar = "%s - Mind Control",
 
 	split = "Split",
 	split_desc = "Warn when Harbinger Skyriss splits",
@@ -36,17 +34,18 @@ L:RegisterTranslations("enUS", function() return {
 
 L:RegisterTranslations("koKR", function() return {
 	mc = "정신 지배",
-	mc_desc = "정신 지배에 대한 경고",
-	mc_message = "%s 정신 지배!",
+	mc_desc = "정신 지배에 대해 알립니다.",
+	mc_message = "%s - 정신 지배!",
+	mc_bar = "%s - 정신 지배",
 
 	split = "분리",
-	split_desc = "스키리스 분리 시 경고",
+	split_desc = "스키리스 분리에 대해 알립니다.",
 	split_trigger = "밤하늘의 무한한 별처럼 온 우주를 덮으리라!",
 	split_message = "%s 분리",
 	split_soon_message = "잠시 후 분리!",
 	
 	mr = "정신 분열",
-	mr_desc = "정신 분열에 대한 경고",
+	mr_desc = "정신 분열에 대해 알립니다.",
 	mr_message = "정신 분열: %s",
 } end )
 
@@ -69,32 +68,33 @@ L:RegisterTranslations("frFR", function() return {
 L:RegisterTranslations("zhTW", function() return {
 	mc = "支配",
 	mc_desc = "隊友受到支配時發出警報",
-	mc_message = "支配: %s",
+	mc_message = "支配: [%s]",
 
 	split = "分身",
 	split_desc = "先驅者史蓋力司施放分身時發出警報",
 	split_trigger = "我們跨越宇宙之間，被我們摧毀的世界像星星一樣數不盡!",
-	split_message = "%s 分身了，擊殺分身！",
-	split_soon_message = "即將分身！",
+	split_message = "%s 分身了，擊殺分身!",
+	split_soon_message = "即將分身!",
 	
 	mr = "心靈撕裂",
 	mr_desc = "隊友受到心靈撕裂時發出警報",
-	mr_message = "心靈撕裂: %s",
+	mr_message = "心靈撕裂: [%s]",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
 	mc = "精神控制",
 	mc_desc = "当精神控制时发出警报。",
 	mc_message = "精神控制：>%s<！",
+	mc_bar = "<精神控制：%s>",
 
 	split = "分身",
-	split_desc = "预言者斯克瑞斯分身时发出警报。",
+	split_desc = "当施放分身时发出警报。",
 	split_trigger = "^我们遍布宇宙的每一个角落，像群星一样无穷无尽！$",
 	split_message = "%s分身！ 击杀！",
 	split_soon_message = "即将分身！",
 	
 	mr = "心灵撕裂",
-	mr_desc = "当心灵撕裂时发出警报。",
+	mr_desc = "当施放心灵撕裂时发出警报。",
 	mr_message = "心灵撕裂：>%s<！",
 } end )
 
@@ -122,9 +122,9 @@ local mod = BigWigs:NewModule(boss)
 mod.partyContent = true
 mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Arcatraz"]
-mod.enabletrigger = boss 
+mod.enabletrigger = {boss, BB["Warden Mellichar"]}
 mod.toggleoptions = {"mc", "mr", "split", "bosskill"}
-mod.revision = tonumber(("$Revision: 66707 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 71633 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -135,13 +135,11 @@ function mod:OnEnable()
 	secondSplitAnnounced = nil
 
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 30923, 35280, 37122, 38626) --These seem the most likely Ids, find the real one
-	self:AddCombatListener("SPELL_AURA_APPLIED", "MindRend", 36924, 36929, 39017, 39021) --Probably 36924, find the real one
+	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 39019)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "MindRend", 39017)
 	
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")	
 	self:RegisterEvent("UNIT_HEALTH")	
-	
-	db = self.db.profile
 end
 
 ------------------------------
@@ -149,13 +147,13 @@ end
 ------------------------------
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if db.split and msg == L["split_trigger"] then
+	if self.db.profile.split and msg == L["split_trigger"] then
 		self:Message(L["split_message"]:format(boss), "Urgent")
 	end
 end
 
 function mod:UNIT_HEALTH(msg)
-	if not db.split then return end
+	if not self.db.profile.split then return end
 	if UnitName(msg) == boss then
 		local hp = UnitHealth(msg)
 		if hp > 66 and hp < 70 and not firstSplitAnnounced then
@@ -169,12 +167,14 @@ function mod:UNIT_HEALTH(msg)
 end
 
 function mod:MC(player, spellId)
-	if not player or not db.mc then return end
-	self:Message(fmt(L["mc_message"], player), "Important")
-	self:Bar(fmt(L["mc_bar"], player), 10, spellId) --Double check time once we know exact spellId 
+	if self.db.profile.mc then
+		self:IfMessage(L["mc_message"]:format(player), "Important", spellId)
+		self:Bar(L["mc_bar"]:format(player), 6, spellId)
+	end
 end
 
 function mod:MindRend(player)
-	if not db.mr then return end
-	self:Message(fmt(L["mr_message"], player), "Important")
+	if self.db.profile.mr then
+		self:IfMessage(L["mr_message"]:format(player), "Important", 39017)
+	end
 end

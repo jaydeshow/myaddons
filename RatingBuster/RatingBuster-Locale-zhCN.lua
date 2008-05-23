@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster zhCN locale
-Revision: $Revision: 65999 $
+Revision: $Revision: 73696 $
 Translated by: 
 - iceburn
 ]]
@@ -273,7 +273,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "暗影法术伤害 ← 暗影法术伤害、法术伤害、智力、精神、耐力",
 	-- /rb sum stat heal
 	["Sum Healing"] = "统计治疗",
-	["Healing <- Healing, Intellect, Spirit, Strength"] = "治疗 ← 治疗、智力、精神、力量",
+	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "治疗 ← 治疗、智力、精神、敏捷、力量",
 	-- /rb sum stat hit
 	["Sum Hit Chance"] = "统计物理命中几率",
 	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "物理命中几率 ← 命中等级、武器技能等级",
@@ -495,10 +495,10 @@ L:RegisterTranslations("zhCN", function() return {
 	-- Tip2: The strings are passed into string.find, so you should escape the magic characters ^$()%.[]*+-? with a %
 	["numberPatterns"] = {
 		{pattern = "(%d+)。", addInfo = "AfterNumber",},
-		{pattern = "%+(%d+)", addInfo = "AfterStat",},
+		{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
 		{pattern = "佩戴者.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 		{pattern = "提高.-(%d+)", addInfo = "AfterNumber",},
-		{pattern = "(%d+)([^%d]+)", addInfo = "AfterStat",}, -- [发光的暗影卓奈石] +6法术伤害及5耐力
+		{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [发光的暗影卓奈石] +6法术伤害及5耐力
 	},
 	["separators"] = {
 		"/", "和", ",", "。", " 持续 ", "&", "及", "并", "，","、",

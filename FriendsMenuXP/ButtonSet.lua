@@ -189,7 +189,7 @@ FriendsMenuXP_Buttons["SPELL_WL_SUMMON"] = {
 	justifyH = "CENTER",
 	isSecure = 1,
 	icon = "Interface\\Icons\\Spell_Shadow_Twilight",
-	attributes = "type:macro;macrotext:/targetexact $name$\n/cast "..FMXP_SPELL_WL_SUMMON.."\n/targetlasttarget",
+	attributes = "type:macro;macrotext:/targetexact $name$\n/cast "..FMXP_SPELL_WL_SUMMON.."",
 	show = function() local _, class = UnitClass("player"); if(class == "WARLOCK") then return 1 end end ,
 };
 
@@ -266,9 +266,16 @@ FriendsMenuXP_Buttons["DKPTABLE"] = {
 	show = function() if(DKPT_Main_Frame) then return 1 end end,
 };
 
+FriendsMenuXP_Buttons["OPENNOTE"] = {
+	text = "注释",
+	func = function(name) PlayerNotes:OpenNote(name); end,
+	show = function() if(PlayerNotes) then return 1 end end,
+};
+
 FriendsMenuXP_ButtonSet = {};
 FriendsMenuXP_ButtonSet["NORMAL"] = { 
 	"WHISPER", 
+	"OPENNOTE",
 	"INVITE", 
 	"TARGET", 
 	"IGNORE", 
@@ -296,6 +303,7 @@ FriendsMenuXP_ButtonSet["NORMAL"] = {
 
 FriendsMenuXP_ButtonSet["RAID"] = { 
 	"WHISPER", 
+	"OPENNOTE",
 	"TARGET", 
 	"SEND_WHO", 
 	"GET_NAME", 

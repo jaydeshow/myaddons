@@ -2,10 +2,10 @@
 ## Title: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80Blessings|r] by |cFFFF8080Zek|r
 ## Notes: ZOMGBuffs, Paladin Buffing Module
 ## Author: Zek
-## Version: $Revision: 65891 $
+## Version: $Revision: 73261 $
 ## LoadOnDemand: 1
 ## RequiredDeps: ZOMGBuffs
-## OptionalDeps: Ace2, Babble-2.2, DewdropLib, FuBarPlugin-2.0, RosterLib, TabletLib, LibSharedMedia-3.0
+## OptionalDeps: Ace2, DewdropLib, FuBarPlugin-2.0, TabletLib, LibSharedMedia-3.0
 ## X-ZOMGBuffs: yes
 ## X-Classes: PALADIN
 

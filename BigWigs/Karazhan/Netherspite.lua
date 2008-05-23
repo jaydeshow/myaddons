@@ -4,9 +4,8 @@
 
 local boss = BB["Netherspite"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
-local fmt = string.format
-local started
-local voidcount
+local started = nil
+local voidcount = 1
 
 ----------------------------
 --      Localization      --
@@ -76,40 +75,40 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	phase = "Phases",
-	phase_desc = "Préviens quand Dédain-du-Néant passe d'une phase à l'autre.",
+	phase_desc = "Prévient quand Dédain-du-Néant passe d'une phase à l'autre.",
 	phase1_message = "Retrait - Fin des Souffles du Néant",
 	phase1_bar = "~Retrait probable",
 	phase1_trigger = "%s se retire avec un cri en ouvrant un portail vers le Néant.",
-	phase2_message = "Rage - Souffles de Néant imminent !",
+	phase2_message = "Rage - Souffles de Néant imminent !",
 	phase2_bar = "~Rage probable",
 	phase2_trigger = "%s entre dans une rage nourrie par le Néant !",
 
 	voidzone = "Zones du vide",
-	voidzone_desc = "Préviens quand les Zones du vide apparaissent.",
-	voidzone_warn = "Zone du vide (%d) !",
+	voidzone_desc = "Prévient quand les Zones du vide apparaissent.",
+	voidzone_warn = "Zone du vide (%d) !",
 
 	netherbreath = "Souffle de Néant",
-	netherbreath_desc = "Préviens de l'arrivée des Souffles du Néant.",
-	netherbreath_warn = "Souffle du Néant imminent !",
+	netherbreath_desc = "Prévient de l'arrivée des Souffles du Néant.",
+	netherbreath_warn = "Souffle du Néant imminent !",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
 	phase = "阶段警报",
-	phase_desc = "当虚空幽龙进入下一阶段时发出警报。",
-	phase1_message = "快撤！ - 虚空吐息来临",
+	phase_desc = "当进入下一阶段时发出警报。",
+	phase1_message = "快撤！- 虚空吐息来临！",
 	phase1_bar = "<虚空吐息 - 撤退>",
 	phase1_trigger = "%s在撤退中大声呼喊着，打开了回到虚空的传送门。",
-	phase2_message = "狂怒 - 地狱吐息来临",
+	phase2_message = "狂怒！- 地狱吐息来临！",
 	phase2_bar = "<地狱吐息 - 狂怒>",
 	phase2_trigger = "%s的怒火甚至可以充满整个虚空！",
 
 	voidzone = "虚空领域",
-	voidzone_desc = "虚空领域警报。",
-	voidzone_warn = "虚空领域 (%d)！",
+	voidzone_desc = "当玩家受到虚空领域时发出警报。",
+	voidzone_warn = "虚空领域：>%d<！",
 
 	netherbreath = "虚空吐息",
-	netherbreath_desc = "虚空吐息警报。",
-	netherbreath_warn = "虚空吐息来临",
+	netherbreath_desc = "当施放虚空吐息时发出警报。",
+	netherbreath_warn = "虚空吐息来临！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -133,21 +132,21 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("esES", function() return {
 	phase = "Fases",
-	phase_desc = "Avisa cuando Rencor abisal cambia de fase.",
+	phase_desc = "Avisar cuando Rencor abisal cambia de fase.",
 	phase1_message = "Retirada - Aliento abisal terminado",
-	phase1_bar = "~Posible Retirada",
-	phase1_trigger = "%s grita en retirada, abriendo las puertas al vac\195\173o..",
-	phase2_message = "C\195\179lera - Aliento abisal en breve!",
-	phase2_bar = "~Posible c\195\179lera",
-	phase2_trigger = "%s \194\161Rencor abisal monta en c\195\179lera alimentada por el vac\195\173o!",
+	phase1_bar = "~Retirada",
+	phase1_trigger = "%s grita en retirada, abriendo las puertas al vacío.",
+	phase2_message = "Cólera - ¡Aliento abisal en breve!",
+	phase2_bar = "~Cólera",
+	phase2_trigger = "¡%s monta en cólera alimentada por el vacío!",
 
-	voidzone = "Zonas de vac\195\173o",
-	voidzone_desc = "Avisa de Zonas de vac\195\173o.",
-	voidzone_warn = "\194\161Zona de vac\195\173o (%d)!",
+	voidzone = "Zonas de vacío",
+	voidzone_desc = "Avisa de Zonas de vacío.",
+	voidzone_warn = "¡Zona de vacío (%d)!",
 
-	netherbreath = "Aliento abisal",
+	netherbreath = "Aliento abisal (Netherbreath)",
 	netherbreath_desc = "Avisa de Aliento abisal.",
-	netherbreath_warn = "\194\161Llegada de Aliento abisal!",
+	netherbreath_warn = "¡Aliento abisal!",
 } end )
 
 ----------------------------------
@@ -158,16 +157,15 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"voidzone", "netherbreath", "phase", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 65914 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	-- these need testing, are they instant or does he indeed cast voidzone for 2 seconds
-	self:AddCombatListener("SPELL_CAST_START", "VoidZone", 30533)
-	self:AddCombatListener("SPELL_CAST_SUCCESS", "Netherbreath", 38546) -- face random target, instantcast
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "VoidZone", 37063)
+	self:AddCombatListener("SPELL_CAST_START", "Netherbreath", 38523)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	self:RegisterEvent("BigWigs_RecvSync")
@@ -186,7 +184,7 @@ end
 
 function mod:VoidZone()
 	if self.db.profile.voidzone then
-		self:IfMessage(fmt(L["voidzone_warn"], voidcount), "Attention", 30533)
+		self:IfMessage(L["voidzone_warn"]:format(voidcount), "Attention", 30533)
 		voidcount = voidcount + 1
 	end
 end

@@ -10,6 +10,9 @@ L:RegisterTranslations("enUS", function() return {
 	["Update"] = true,
 	["Update everything."] = true,
 
+	["Recreate"] = true,
+	["Recreate all frames."] = true,
+
 	["Reset Position"] = true,
 	["Move BunchOfBars to the middle of the screen."] = true,
 	
@@ -44,51 +47,6 @@ L:RegisterTranslations("enUS", function() return {
 
 	["You need to reload your user interface (/rl) for this reset to take effect."] = true
 } end)
-
---------------------
---   汉化：iCat   --
---------------------
-L:RegisterTranslations("zhCN", function() return {
-
-	["Update"] = "更新",
-	["Update everything."] = "更新所有信息",
-
-	["Reset Position"] = "重置位置",
-	["Move BunchOfBars to the middle of the screen."] = "将BunchOfBars移动到屏幕正中间",
-	
-	["Scale"] = "缩放",
-	["The scale of the frames."] = "缩放窗体",
-
-	["Show when solo"] = "Solo显示",
-	["Show BunchOrBars when your on your own."] = "Solo时也显示BunchOrBars",
-
-	["Show in party"] = "小队显示",
-	["Show BunchOrBars when your in a party."] = "加入小队后显示BunchOrBars，禁用则加入团队后才会显示",
-
-	["Hide Blizzard Party"] = "隐藏Blizzard的队伍",
-	["Hide the Bilzzard party frames."] = "隐藏Blizzard的默认队伍界面",
-
-	["Group by"] = "分组",
-	["Group players in your raid by Group or Class."] = "按职业分组或者队伍分组",
-
-	["Sort by"] = "排序",
-	["Sort the player in a group by Name or Index."] = "按角色名称排序或默认排序",
-
-	["Order by"] = "排列",
-	["How to order the groups."] = "小组排列方式",
-	["[1-8, STRING] a comma seperated list of raid group numbers and/or class names"] = "格式[1-8 或者 文字]，可以通过‘团队队伍编号’或者‘职业名称’进行排列\n使用\",\"分隔",
-
-	["Filter by"] = "过滤",
-	["Only show the players or groups and/or classes on this filter list."] = "输入只想要显示的‘组’或者‘职业’的列表",
-	["[1-8, STRING] a comma seperated list of player names or raid group numbers and/or class names.\nEmpty for no filter"] = "格式[1-8, 文字]，可以通过‘团队队伍的编号’或者‘职业名称’或者‘角色名’进行过滤, \n使用\",\"分隔, 空则显示全部",
-
-	["Players per Column"] = "每列数量",
-	["Number of players per column."] = "每一列显示的角色数量",
-
-	["You need to reload your user interface (/rl) for this reset to take effect."] = "需要重载界面才能生效(可以使用命令/rl重载界面)"
-
-}end)
---#end
 
 L:RegisterTranslations("koKR", function() return {
 	["Update"] = "업데이트",
@@ -141,6 +99,14 @@ BunchOfBars.options.args.visual.args = {
 		name  = L["Update"],
 		desc  = L["Update everything."],
 		func  = "ForceUpdate",
+		order = 1
+	},
+
+	recreate = {
+		type  = "execute",
+		name  = L["Recreate"],
+		desc  = L["Recreate all frames."],
+		func  = "CreateMaster",
 		order = 1
 	},
 
@@ -283,6 +249,12 @@ end
 
 
 function BunchOfBars:CreateMaster()
+	if self.master then
+		self:DestroyMaster()
+	end
+
+	self.frames = {}
+
 	local frame = CreateFrame("Frame", "BunchOfBarsFrame", UIParent, "SecureGroupHeaderTemplate")
 	self.master = frame -- self.frame is used by FuBarPlugin
 
@@ -314,7 +286,18 @@ function BunchOfBars:CreateMaster()
 	frame.initialConfigFunction = self.ConfigureFrame
 	frame:SetAttribute("template", "SecureUnitButtonTemplate")
 	
-	frame:Show() -- direct after this show it will start creating unit frames
+	self:ScheduleEvent("BunchOfBarsShowMaster", 5)
+end
+
+
+function BunchOfBars:ShowMaster()
+	self.master:Show()
+end
+
+
+function BunchOfBars:DestroyMaster()
+	self.master:Hide()
+	self.master = nil
 end
 
 
@@ -329,7 +312,7 @@ function BunchOfBars:PositionAndScale()
 end
 
 
-local function OnAttributeChanged(frame, name, value)
+function BunchOfBars.OnAttributeChanged(frame, name, value)
 	if name ~= "unit" then return end -- we are only interrested in the unit attribute
 
 	if frame.unit and not value then
@@ -341,13 +324,13 @@ local function OnAttributeChanged(frame, name, value)
 end
 
 
-local function OnDragStart()
+function BunchOfBars.OnDragStart()
 	if not BunchOfBars.db.profile.visual.locked and not InCombatLockdown() then
 		BunchOfBars.master:StartMoving()
 	end
 end
 
-local function OnDragStop()
+function BunchOfBars.OnDragStop()
 	BunchOfBars.master:StopMovingOrSizing()
 
 	local x,y = BunchOfBars.master:GetLeft(), BunchOfBars.master:GetTop()
@@ -358,16 +341,16 @@ local function OnDragStop()
 end
 
 
-local function OnEnter()
+function BunchOfBars.OnEnter()
 	DogTag:OnMouseoverUpdate()
 end
 
-local function OnLeave()
+function BunchOfBars.OnLeave()
 	DogTag:OnMouseoverUpdate()
 end
 
 
-local function OnShow()
+function BunchOfBars.OnShow()
 	if not this.visible then
 		this.visible = true
 
@@ -378,7 +361,7 @@ local function OnShow()
 	end
 end
 
-local function OnHide()
+function BunchOfBars.OnHide()
 	if this.visible then
 		this.visible = nil
 
@@ -388,19 +371,20 @@ end
 
 
 function BunchOfBars.ConfigureFrame(frame)
+	frame:SetAttribute("type1", "target")
 	frame:SetAttribute("*type1", "target")
 
 	frame:SetMovable(true)
 	frame:SetClampedToScreen(true)
 	frame:RegisterForDrag("LeftButton")
 
-	frame:SetScript("OnDragStart", OnDragStart)
-	frame:SetScript("OnDragStop", OnDragStop)
-	frame:SetScript("OnEnter", OnEnter)
-	frame:SetScript("OnLeave", OnLeave)
-	frame:SetScript("OnShow", OnShow)
-	frame:SetScript("OnHide", OnHide)
-	frame:SetScript("OnAttributeChanged", OnAttributeChanged)
+	frame:SetScript("OnDragStart"		, BunchOfBars.OnDragStart)
+	frame:SetScript("OnDragStop"		, BunchOfBars.OnDragStop)
+	frame:SetScript("OnEnter"			, BunchOfBars.OnEnter)
+	frame:SetScript("OnLeave"			, BunchOfBars.OnLeave)
+	frame:SetScript("OnShow"			, BunchOfBars.OnShow)
+	frame:SetScript("OnHide"			, BunchOfBars.OnHide)
+	frame:SetScript("OnAttributeChanged", BunchOfBars.OnAttributeChanged)
 
 	frame:SetAlpha(1.0)
 
@@ -412,7 +396,7 @@ end
 
 
 function BunchOfBars:ForceUpdate()
-	if not InCombatLockdown() then
+	if not InCombatLockdown() and self.master then
 		-- this will trigger the blizzard code to update all units and reshow the frames
 		self.master:SetAttribute("unitsPerColumn", self.db.profile.visual.players)
 	end
@@ -428,6 +412,8 @@ function BunchOfBars:ModuleOnCreate(frame)
 end
 
 function BunchOfBars:ModuleOnUpdate(frame)
+	if not UnitExists(frame.unit) then return end
+
 	for name,module in self:IterateModules() do
 		if self:IsModuleActive(module) then
 			module:OnUpdate(frame, frame.parts[name])

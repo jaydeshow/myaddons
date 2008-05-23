@@ -1,6 +1,6 @@
 
 -- DropDowns.lua: code concerned the dropdowns and corresponding filters
--- $Id: DropDowns.lua 742 2007-02-06 06:22:01Z jnmiller $
+-- $Id: DropDowns.lua 1031 2008-03-27 05:41:46Z jnmiller $
 
 function RecipeRadar_DropDowns_Init()
 
@@ -63,11 +63,10 @@ end
 
 function RecipeRadar_RealmAvailDropDown_OnClick()
 
-   -- the logic here seems backwards, doesn't it?
    if (UIDropDownMenuButton_GetChecked()) then
-      RecipeRadar_SetRealmAvailFilter(this.value, true)
-   else
       RecipeRadar_SetRealmAvailFilter(this.value, false)
+   else
+      RecipeRadar_SetRealmAvailFilter(this.value, true)
    end
 
    RecipeRadarListScrollFrameScrollBar:SetValue(0)
@@ -133,11 +132,10 @@ end
 
 function RecipeRadar_PersonAvailDropDown_OnClick()
 
-   -- the logic here seems backwards, doesn't it?
    if (UIDropDownMenuButton_GetChecked()) then
-      RecipeRadar_SetPersonAvailFilter(this.value, true)
-   else
       RecipeRadar_SetPersonAvailFilter(this.value, false)
+   else
+      RecipeRadar_SetPersonAvailFilter(this.value, true)
    end
 
    RecipeRadarListScrollFrameScrollBar:SetValue(0)
@@ -213,11 +211,10 @@ end
 
 function RecipeRadar_TeamDropDown_OnClick()
 
-   -- the logic here seems backwards, doesn't it?
    if (UIDropDownMenuButton_GetChecked()) then
-      RecipeRadar_SetTeamFilter(this.value, true)
-   else
       RecipeRadar_SetTeamFilter(this.value, false)
+   else
+      RecipeRadar_SetTeamFilter(this.value, true)
    end
 
    RecipeRadarListScrollFrameScrollBar:SetValue(0)
@@ -281,11 +278,10 @@ end
 
 function RecipeRadar_Prof1DropDown_OnClick()
 
-   -- the logic here seems backwards, doesn't it?
    if (UIDropDownMenuButton_GetChecked()) then
-      RecipeRadar_SetProfFilter(this.value, true)
-   else
       RecipeRadar_SetProfFilter(this.value, false)
+   else
+      RecipeRadar_SetProfFilter(this.value, true)
    end
 
    RecipeRadarListScrollFrameScrollBar:SetValue(0)

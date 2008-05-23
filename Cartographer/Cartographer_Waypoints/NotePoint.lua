@@ -10,6 +10,16 @@ L:AddTranslations("zhTW", function() return {
 	["Waypoint"] = "路徑點",
 } end)
 
+L:AddTranslations("zhCN", function() return {
+	["Trying to set a waypoint with an unknown zone: %q"] = "尝试为一个未知区域「%s」设置路径。",
+	["Waypoint"] = "路径",
+} end)
+
+L:AddTranslations("esES", function() return {
+	["Trying to set a waypoint with an unknown zone: %q"] = "Tratar de establecer un Punto de Ruta con una zona desconocida: %q",
+	["Waypoint"] = "Punto de Ruta",
+} end)
+
 local BZ = Rock("LibBabble-Zone-3.0")
 local BZH = BZ:GetUnstrictLookupTable()
 local BZR = BZ:GetReverseLookupTable()
@@ -54,7 +64,7 @@ function NotePoint:init(zone, x, y, title)
 	local id
 	if y then
 		id = getID(x, y)
-	else 
+	else
 		id = x
 		x,y = getXY(id)
 	end
@@ -64,17 +74,17 @@ function NotePoint:init(zone, x, y, title)
 		self.Zone, self.x, self.y, _, self.Db, self.Data = Cartographer_Notes:GetNote(zone, x, y)
 	else
 		self.Zone, self.x, self.y, self.Data = zone, x, y, {title = title}
-	end	
+	end
 end
 
 -- Is this the same note as the waypoint?
 function NotePoint:MatchNote(id)
 	return self.WaypointID == id
 end
-	
+
 -- Use the data.title as the name of the note, otherwise the zone
 function NotePoint:ToString()
-	if self.Data then 
+	if self.Data then
 		if not self.Data.title then
 			if self.Data.icon then
 				return self.Data.icon

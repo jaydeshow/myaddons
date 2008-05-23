@@ -33,7 +33,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Priority:"] = "Priorité:",
     ["Click boss name to view loot."] = "Cliquez sur le nom du boss pour voir les objets.",
     ["Various Locations"] = "Lieux divers",
-    ["This is a loot browser only.  To view maps as well, install either Atlas or Alphamap."] = "Affiche uniquement les objets. Pour les cartes, installez Atlas ou Alphamap.",
+    ["This is a loot browser only.  To view maps as well, install either Atlas or Alphamap."] = "Ceci est uniquement un navigateur pour les objets. Pour voir les cartes, installez Atlas ou Alphamap.",
     ["Toggle AL Panel"] = "Panneau AtlasLoot",
     [" is safe."] = " est valide.",
     ["Server queried for "] = "Interrogation du serveur pour ",
@@ -80,18 +80,27 @@ AL:RegisterTranslations("frFR", function() return {
     ["AutoQuery items on loot tables |cffff0000(disconnection risk)|r"] = "Interrogation automatique d'une table |cffff0000(risquée)|r",
     ["Done"] = "Ok",
     --["WishList"] = true,
+    ["Search Result: %s"] = "Résultat(s) de la recherche : %s",
+    ["Last Result"] = "Dernier(s) résultat(s)",
+    ["Search on"] = "Recherche activé",
+    ["All modules"] = "Tous les modules",
+    ["If checked, AtlasLoot will load and search across all the modules."] = "Si coché, AtlasLoot recherche dans tous les modules.",
+    ["Search options"] = "Options de la recherche",
+    ["Partial matching"] = "Correspondance partielle",
+    ["If checked, AtlasLoot search item names for a partial match."] = "Si coché, AtlasLoot recherche le nom d'un objet avec une correspondance partielle.",
+    ["You don't have any module selected to search on!"] = "Vous n'avez pas sélectionné de module pour la recherche!",
 
     --Slash commands
     ["reset"] = "Réinitialiser",
     --["options"] = true,
-    ["Reset complete!"] = "Réinitialisation complète",
+    ["Reset complete!"] = "Réinitialisation complète!",
 
 	--Error Messages and warnings
     ["AtlasLoot Error!"] = "Erreur AtlasLoot!",
-    ["WishList Full!"] = "WishList complète",
-    [" added to the WishList."] = " ajouté à la WishList",
+    ["WishList Full!"] = "WishList complète!",
+    [" added to the WishList."] = " a été ajouté à la WishList",
     [" already in the WishList!"] = " est déjà dans la WishList",
-    [" deleted from the WishList."] = " effacer de la WishList",
+    [" deleted from the WishList."] = " a été effacé de la WishList",
     
     --Incomplete Table Registry error message
     [" not listed in loot table registry, please report this message to the AtlasLoot forums at http://www.atlasloot.net"] = " non répertorié dans la table des objets enregistrés, merci de transmettre ce message sur les forums d'AtlasLoot sur http://www.atlasloot.net",
@@ -125,20 +134,15 @@ AL:RegisterTranslations("frFR", function() return {
     --["Collections"] = true,
     --["Factions"] = true,
     --["World Events"] = true,
-    ["Load Modules"] = "Charger les modules",
+    ["Load Modules"] = "Load modules",
     ["Crafting"] = "Artisanat",
-
-    --Trades
-    ["Apprentice"] = "Apprenti",
-    ["Journeyman"] = "Compagnon",
-    --["Expert"] = true,
-    --["Artisan"] = true,
-    ["Master"] = "Maître",
 
     --First time user
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "Bienvenue sur AtlasLoot Enhanced. Veuillez prendre un moment pour définir vos préférences.",
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = "Nouvelle fonctionnalité dans la version 4.02.01 : Tapez '/atlasloot options' pour faire apparaître le menu des options et '/atlasloot reset' pour réinitialiser AtlasLoot après une déconnexion.",
     ["New feature in 4.03.00: Introducing the Wishlist!  Simply alt-click on any item to add it to the wishlist.  To delete an item from the wishlist, open up your wishlist and alt-click the item to remove it.  It's that simple.  Buttons to view the wishlist have been added to the Atlas interface and the loot browser."] = "Nouvelle fonctionnalité dans la version 4.03.00 : Introduction de la WishList. Alt-Clic pour ajouter un objet à la WishList. Pour supprimer un objet de la WishList, ouvrez votre WishList et faites Alt-Clic sur l'objet à effacer. Des boutons pour voir votre WishList ont été ajoutés sur l'interface d'Atlas et sur le navigateur d'AtlasLoot.",
+    ["New feature in 4.05.00: Advanced searching functionality is now available. You can type in a partial item name, for example typing 'elixir' gives all items in the database with 'elixir' in the name.  Big thanks to Kurax for his help."] = "Nouvelle fonctionnalité dans la version 4.05.00 : La fonction de recherche avancée est maintenant disponible. Vous pouvez entrer le nom partiel d'un objet, par exemple entrer 'elixir', ça vous donnera tous les objets de la base de donnée avec le mot 'elixir' dans le nom. Enorme merci à Kurax pour cette aide :)",
+    ["New feature in 4.05.00: All professions are now included in the AtlasLoot_Crafting module."] = "Nouvelle fonctionnalité dans la version 4.05.00 : Toutes les professions sont maintenant incluses dans le module AtlasLoot_Crafting.",
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences for tooltips and links in the chat window.\n\n  This options screen can be reached again at any later time by typing '/atlasloot'."] = "Bienvenue dans AtlasLoot Enhaced. S'il vous plaît, prenez un moment pour définir vos préférences pour les info-bulles et les liens dans la fenêtre de chat.\n\nLes options peuvent être activées à tout moment en tapant '/atlasloot'.",
     ["Setup"] = "Installation",
 
@@ -173,6 +177,10 @@ AL:RegisterTranslations("frFR", function() return {
     ["Fish"] = "Poisson",
     ["Combat Pet"] = "Animal de compagnie de combat",
     ["Fireworks"] = "Feux d'artifice",
+    
+    --Extra inventory stuff
+    ["Cloak"] = "Cape",
+    ["Weapons"] = "Armes",
 
     --Labels for loot descriptions
     --["Classes:"] = true,
@@ -213,10 +221,10 @@ AL:RegisterTranslations("frFR", function() return {
     ["First Prize"] = "1er prix",
     ["Rare Fish Rewards"] = "Récompenses des poissons rares",
     ["Rare Fish"] = "Poissons rares",
-    --["Tradable against sunmote + item above"] = true, -- à traduire
+    ["Tradable against sunmote + item above"] = "Echangeable contre une Granule de soleil + l'objet du dessus",
     ["Rare"] = "Rare",
     ["Heroic"] = "Héroïque",
-    --["Summon"] = "Summon", -- à traduire
+    ["Summon"] = "Invocation",
     ["Random"] = "Aléatoire",
 
     --Card Game Decks and descriptions
@@ -224,7 +232,8 @@ AL:RegisterTranslations("frFR", function() return {
     ["Heroes of Azeroth"] = "Héros d'Azeroth",
     ["Through The Dark Portal"] = "A travers la porte des ténèbres",
     ["Fires of Outland"] = "Feux de l'Outreterre",
-    --["Servants of the Betrayer"] = true, -- à traduire
+    ["Servants of the Betrayer"] = "Les Serviteurs du Traître",
+    ["Hunt for Illidan"] = "La Traque d'Illidan",
     ["Loot Card Items"] = "Objets (cartes à jouer)",
     ["UDE Items"] = "Objets (points UDE)",
     ["Landro Longshot"] = "Landro Tirauloin",
@@ -394,7 +403,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Spider's Kiss"] = "Baiser de l'araignée",
 
     --The Burning Crusade Sets
-    --["Latro's Flurry"] = true,
+    ["Latro's Flurry"] = "Rafale de Latro",
     ["The Twin Stars"] = "Les Etoiles jumelles",
     ["The Twin Blades of Azzinoth"] = "Les Lames Doubles d'Azzinoth",
 
@@ -620,21 +629,21 @@ AL:RegisterTranslations("frFR", function() return {
     ["Warlord's Battlegear"] = "Tenue de combat de seigneur de guerre",
 
     --Outland Faction Reputation PvP Sets
-    --["Dragonhide Battlegear"] = true,
-    --["Wyrmhide Battlegear"] = true,
-    --["Kodohide Battlegear"] = true,
-    --["Stalker's Chain Battlegear"] = true,
-    --["Evoker's Silk Battlegear"] = true,
-    --["Crusader's Scaled Battlegear"] = true,
-    --["Crusader's Ornamented Battlegear"] = true,
-    --["Satin Battlegear"] = true,
-    --["Mooncloth Battlegear"] = true,
-    --["Opportunist's Battlegear"] = true,
-    --["Seer's Linked Battlegear"] = true,
-    --["Seer's Mail Battlegear"] = true,
-    --["Seer's Ringmail Battlegear"] = true,
-    --["Dreadweave Battlegear"] = true,
-    --["Savage's Plate Battlegear"] = true,
+    ["Dragonhide Battlegear"] = "Tenue de combat en peau de dragon",
+    ["Wyrmhide Battlegear"] = "Tenue de combat en peau de wyrm",
+    ["Kodohide Battlegear"] = "Tenue de combat en cuir de kodo",
+    ["Stalker's Chain Battlegear"] = "Tenue de combat de traqueur en anneaux",
+    ["Evoker's Silk Battlegear"] = "Tenue de combat d'évocateur en soie",
+    ["Crusader's Scaled Battledgear"] = "Tenue de combat de croisé en écailles",
+    ["Crusader's Ornamented Battledgear"] = "Tenue de combat ornementée de croisé",
+    ["Satin Battlegear"] = "Tenue de combat en satin",
+    ["Mooncloth Battlegear"] = "Tenue de combat en étoffe lunaire",
+    ["Opportunist's Battlegear"] = "Tenue de combat d'opportuniste",
+    ["Seer's Linked Battlegear"] = "Tenue de combat de voyant rivetée",
+    ["Seer's Mail Battlegear"] = "Tenue de combat de voyant en mailles",
+    ["Seer's Ringmail Battlegear"] = "Tenue de combat de voyant en mailles annelées",
+    ["Dreadweave Battlegear"] = "Tenue de combat en tisse-effroi",
+    ["Savage's Plate Battlegear"] = "Tenue de combat sauvage en plaques",
 
     --Arena Epic Sets
     ["Gladiator's Sanctuary"] = "Sanctuaire du gladiateur",
@@ -667,7 +676,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Set: Deathbone Guardian"] = "Set: Gardien des ossements",
     ["Set: Dal'Rend's Arms"] = "Set: Armes de Dal'Rend",
     ["Set: Spider's Kiss"] = "Baiser de l'araignée",
-    ["Temple of Ahn'Qiraj Sets"] = "Sets du Temple d'Ahn'Qiraj",
+    ["Temple of Ahn'Qiraj Sets"] = "Sets d'Ahn'Qiraj",
     ["AQ40 Class Sets"] = "Sets de Classe AQ40",
     ["Ruins of Ahn'Qiraj Sets"] = "Sets des Ruines d'Ahn'Qiraj",
     ["AQ20 Class Sets"] = "Sets de Classe AQ20",
@@ -703,9 +712,9 @@ AL:RegisterTranslations("frFR", function() return {
     ["PvP Weapons (Level 60)"] = "Armes (JcJ Niveau 60)",
     ["PvP Weapons (Level 70)"] = "Armes (JcJ Niveau 70)",
     ["PvP Accessories"] = "Accessoires JcJ",
-    ["PvP Non-Set Epics"] = "Epiques JcJ hors Sets",
+    ["PvP Non-Set Epics"] = "Epiques Hors Sets JcJ",
     ["PvP Honor System"] = "Système d'honneur JcJ",
---    ["PvP Reputation Sets"] = true,
+    ["PvP Reputation Sets"] = "Sets Réputation JcJ",
     ["Arena PvP Sets"] = "Sets Arène JcJ",
     ["Arena 2 PvP Sets"] = "Sets 2 Arène JcJ",
     ["Arena 3 PvP Sets"] = "Sets 3 Arène JcJ",
@@ -754,6 +763,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Level 50-60"] = "Niveau 50-60",
     ["BT Patterns/Plans"] = "Patrons/Plans du Temple Noir",
     ["Hyjal Summit Designs"] = "Dessins du Sommet d'Hyjal",
+    ["SP Patterns/Plans"] = "Patrons/Plans du Plateau du Puits de soleil",
 
     --NPCs missing from BabbleBoss
     --["Trash Mobs"] = true,
@@ -890,12 +900,12 @@ AL:RegisterTranslations("frFR", function() return {
     ["Sunwell Isle"] = "Plateau du Puits de soleil",
 	
     --Shortcuts for Bossname files
-    -- ["LBRS"] = true,
-    -- ["UBRS"] = true,
+    --["LBRS"] = true,
+    --["UBRS"] = true,
     ["CoT1"] = "GT1",
     ["CoT2"] = "GT2",
-    -- ["Scholo"] = true,
-    -- ["Strat"] = true,
+    --["Scholo"] = true,
+    --["Strat"] = true,
     ["Serpentshrine"] = "SCC",
 
     --Chests, etc
@@ -958,7 +968,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Lunar Festival"] = "La fête lunaire",
     ["Midsummer Fire Festival"] = "Solstice d'été : la fête du Feu",
     ["Noblegarden"] = "Le jardin des nobles",
---    ["Skettis"] = true,
+    --["Skettis"] = true,
     ["Stranglethorn Fishing Extravaganza"] = "Concours de pêche de Strangleronce",
 
 } end)
