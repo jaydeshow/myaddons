@@ -1,6 +1,6 @@
---[[
+﻿--[[
 	LibKeyBound-1.0 localization file
-		Deutch by ?
+		Deutch by Gamefaq
 --]]
 
 if (GetLocale() ~= "deDE") then
@@ -9,15 +9,15 @@ end
 local LKB = LibStub("LibKeyBound-1.0")
 
 LKB.locale = {
-	Enabled = "Bindings mode enabled";
-	Disabled = "Bindings mode disabled";
-	ClearTip = format("Press %s to clear all bindings", GetBindingText("ESCAPE", "KEY_"));
-	NoKeysBoundTip = "No current bindings";
-	ClearedBindings = "Removed all bindings from %s";
-	BoundKey = "Set %s � %s";
-	UnboundKey = "Unbound %s from %s";
-	CannotBindInCombat = "Cannot bind keys in combat";
-	CombatBindingsEnabled = "Exiting combat, keybinding mode enabled";
-	CombatBindingsDisabled = "Entering combat, keybinding mode disabled";
-	BindingsHelp = "Hover over a button, then press a key to set its binding.  To clear a button's current keybinding, press %s.";
+	Enabled = "Tastenzuweisung Modus aktiviert";
+	Disabled = "Tastenzuweisung Modus deaktiviert";
+	ClearTip = format("Drücke %s um alle Tastenzuweisungen zu löschen", GetBindingText("ESCAPE", "KEY_"));
+	NoKeysBoundTip = "Keine Tasten zugewiesen";
+	ClearedBindings = "Entferne alle Zuweisungen von %s";
+	BoundKey = "Setze %s zu %s";
+	UnboundKey = "Entferne %s von %s";
+	CannotBindInCombat = "Kann Tasten nicht im Kampf zuweisen";
+	CombatBindingsEnabled = "Verlasse Kampf, Tastenzuweisung Modus aktiviert";
+	CombatBindingsDisabled = "Beginne Kampf, Tastenzuweisung Modus deaktiviert";
+	BindingsHelp = "Schwebe mit der Maus über einem Schalter. Drück dann eine Taste um sie zuzuweisen. Um die Belegung der Taste wieder zu löschen drück %s.";
 }
