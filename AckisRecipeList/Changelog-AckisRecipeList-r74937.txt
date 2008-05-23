@@ -1,4 +1,33 @@
 ------------------------------------------------------------------------
+r74937 | ackis | 2008-05-23 11:36:27 -0400 (Fri, 23 May 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Fixed a few global declarations
+- Localized some global calls
+- Dry-coded
+------------------------------------------------------------------------
+r74936 | next96 | 2008-05-23 11:22:16 -0400 (Fri, 23 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r74935 | ackis | 2008-05-23 11:10:00 -0400 (Fri, 23 May 2008) | 3 lines
+Changed paths:
+   A /trunk/AckisRecipeList/ARLColour.lua
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/ARLText.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Added colourization functions to a seperate file
+- Dry-coded
+------------------------------------------------------------------------
 r74805 | zhinjio | 2008-05-22 11:16:24 -0400 (Thu, 22 May 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/ARLFrame.lua
@@ -1675,64 +1704,4 @@ AckisRecipeList:
 - More hunter beast skills conversions (all of Claw)
 - Removed unneeded localizations in enUS
 - All dry-coded
-------------------------------------------------------------------------
-r70802 | ackis | 2008-04-21 19:10:30 -0400 (Mon, 21 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-
-AckisRecipeList:
-- Local fix
-------------------------------------------------------------------------
-r70796 | ackis | 2008-04-21 18:18:14 -0400 (Mon, 21 Apr 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-
-AckisRecipeList:
-- More hunter beast skills conversions
-- Removed unneeded localizations
-- All dry-coded
-------------------------------------------------------------------------
-r70792 | ackis | 2008-04-21 17:33:16 -0400 (Mon, 21 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList:
-- Removed unneeded localizations
-- All dry-coded
-------------------------------------------------------------------------
-r70791 | ackis | 2008-04-21 17:31:20 -0400 (Mon, 21 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-
-AckisRecipeList:
-- Converted all hunter "Bites" to new format
-- All dry-coded
-------------------------------------------------------------------------
-r70771 | ackis | 2008-04-21 15:03:24 -0400 (Mon, 21 Apr 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-
-AckisRecipeList:
-- Added commented code on some improvements
-- Another possible fix for the problem with "Have Materials" being checked
-- Right now the mod will expand all headers and uncheck the button, doesn't remember settings
-- All dry-coded
-------------------------------------------------------------------------
-r70763 | kurax | 2008-04-21 14:00:22 -0400 (Mon, 21 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList: Update zhCN locale
 ------------------------------------------------------------------------

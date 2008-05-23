@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r74938 | elsia | 2008-05-23 11:52:58 -0400 (Fri, 23 May 2008) | 3 lines
+Changed paths:
+   M /trunk/Recount/GUI_Config.lua
+   M /trunk/Recount/Recount.lua
+   M /trunk/Recount/colors.lua
+
+Recount:
+- Class and bar colors now also have editable alpha channel via the color picker.
+- Color pickers will now show on the open side of the config window, rather than always on the left side.
+------------------------------------------------------------------------
 r74705 | elsia | 2008-05-21 17:54:18 -0400 (Wed, 21 May 2008) | 2 lines
 Changed paths:
    M /trunk/Recount/GUI_Main.lua
@@ -433,49 +443,4 @@ Changed paths:
 
 Recount:
 - Cleanup and bug fix for fight data storing switch.
-------------------------------------------------------------------------
-r70745 | kunda | 2008-04-21 12:15:04 -0400 (Mon, 21 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Recount/Recount_Modes.lua
-   M /trunk/Recount/locales/Recount-deDE.lua
-
-Recount: deDE update & localized some strings
-------------------------------------------------------------------------
-r70712 | 7destiny | 2008-04-21 05:16:06 -0400 (Mon, 21 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/locales/Recount-koKR.lua
-
-Recount:
-- koKR Update
-------------------------------------------------------------------------
-r70701 | elsia | 2008-04-21 03:19:31 -0400 (Mon, 21 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/debug.lua
-
-Recount:
-- Getting odd bug reports for the debug print not existing. This is a possible fix though either approach should have worked.
-------------------------------------------------------------------------
-r70627 | elsia | 2008-04-20 15:52:30 -0400 (Sun, 20 Apr 2008) | 4 lines
-Changed paths:
-   M /trunk/Recount/Fights.lua
-   M /trunk/Recount/Tracker.lua
-
-Recount:
-- Fixed current fight switching in combat segmentation code when boss only is active.
-- Better table reuse in combat segmentation code.
-- Debug message for a possible pathology.
-------------------------------------------------------------------------
-r70594 | elsia | 2008-04-20 10:22:44 -0400 (Sun, 20 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/GUI_Realtime.lua
-
-Recount:
-- Bandaid for realtime window UpdateTitle nil bug.
-------------------------------------------------------------------------
-r70572 | elsia | 2008-04-20 02:52:46 -0400 (Sun, 20 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/LazySync.lua
-
-Recount:
-- Detect old sync format.
 ------------------------------------------------------------------------
