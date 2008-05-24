@@ -44,9 +44,6 @@
 	<Binding name="AutoBarButtonFoodPet_X" runOnUp="true" header="AutoBarClassBarHunter">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonSting_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonTrap_X" runOnUp="true">--[[ dummy ]]</Binding>
-	<Binding name="AutoBarButtonBear_X" runOnUp="true" header="AutoBarClassBarMage">--[[ dummy ]]</Binding>
-	<Binding name="AutoBarButtonBear_X" runOnUp="true" header="AutoBarClassBarPaladin">--[[ dummy ]]</Binding>
-	<Binding name="AutoBarButtonBear_X" runOnUp="true" header="AutoBarClassBarPriest">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonPickLock_X" runOnUp="true" header="AutoBarClassBarRogue">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonTotemAir_X" runOnUp="true" header="AutoBarClassBarShaman">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonTotemEarth_X" runOnUp="true">--[[ dummy ]]</Binding>

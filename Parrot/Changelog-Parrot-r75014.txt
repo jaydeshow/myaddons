@@ -1,4 +1,62 @@
 ------------------------------------------------------------------------
+r75014 | scorpion | 2008-05-24 05:38:15 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+
+Parrot:
+- zhTW readjust
+------------------------------------------------------------------------
+r74989 | ananhaid | 2008-05-23 20:55:05 -0400 (Fri, 23 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+
+Parrot:
+- zhTW typo.
+------------------------------------------------------------------------
+r74988 | sayclub | 2008-05-23 20:26:28 -0400 (Fri, 23 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Parrot/Locales/ParrotLocale-koKR.lua
+
+Parrot : 
+- koKR Update
+------------------------------------------------------------------------
+r74984 | ananhaid | 2008-05-23 19:07:12 -0400 (Fri, 23 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+
+Parrot:
+- zhCN/zhTW update.and removed personal notes.
+------------------------------------------------------------------------
+r74976 | profalbert | 2008-05-23 16:44:28 -0400 (Fri, 23 May 2008) | 4 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+   M /trunk/Parrot/Locales/ParrotLocale-enUS.lua
+
+Parrot:
+- fixed possible nil-value in damagecoloring
+- fixed localebug
+
+------------------------------------------------------------------------
+r74967 | profalbert | 2008-05-23 15:28:33 -0400 (Fri, 23 May 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- Wand-damage is now colored properly (by damage-school)
+
+------------------------------------------------------------------------
+r74959 | profalbert | 2008-05-23 14:44:33 -0400 (Fri, 23 May 2008) | 5 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+   M /trunk/Parrot/Code/Parrot.lua
+
+Parrot:
+- Now displays events involving totems and other guardians (treated as pet-event).
+Can be turned off in General Settings.
+
+
+------------------------------------------------------------------------
 r74808 | profalbert | 2008-05-22 11:55:26 -0400 (Thu, 22 May 2008) | 2 lines
 Changed paths:
    M /trunk/Parrot/Code/CombatEvents.lua

@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 74777 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -453,33 +453,6 @@ local function setSharedPosition(table, value)
 	local barKey = table.barKey
 	AutoBar:SetSharedBarDB(barKey, "sharedLocation", value)
 	AutoBar:BarButtonChanged()
-end
-
-
-local function getStyle(table)
-	if (table and table.barKey) then
-		local barKey = table.barKey
-		return AutoBar.barLayoutDBList[barKey].SkinID or "Blizzard"
-	else
-		return AutoBar.db.account.SkinID or "Blizzard"
-	end
-end
-
-local function setStyle(table, value)
-	if (table and table.barKey) then
-		local barKey = table.barKey
-		AutoBar.barLayoutDBList[barKey].SkinID = value
-		local bar = AutoBar.barList[barKey]
-		if (bar) then
-			bar:UpdateSkin(value)
-		end
-	else
-		AutoBar.db.account.SkinID = value
---		for barKey, bar in pairs(AutoBar.barList) do
---			bar:UpdateSkin()
---		end
-	end
-	AutoBarChanged()
 end
 
 
@@ -1675,7 +1648,7 @@ function AutoBar:CreateSmallOptions()
 					name = L["Move the Bars"],
 					desc = L["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."],
 					get = function() return AutoBar.stickyMode end,
-					set = AutoBar.ToggleStickyMode,
+					set = AutoBar.MoveBarModeToggle,
 					disabled = getCombatLockdown,
 				},
 				lockButtons = {
@@ -1684,13 +1657,7 @@ function AutoBar:CreateSmallOptions()
 					name = L["Move the Buttons"],
 					desc = L["Drag a Button to move it, right click to configure the Button."],
 					get = function() return AutoBar.unlockButtons end,
-					set = function(v)
-						if AutoBar.unlockButtons then
-							AutoBar:LockButtons()
-						else
-							AutoBar:UnlockButtons()
-						end
-					end,
+					set = AutoBar.MoveButtonsModeToggle,
 					disabled = getCombatLockdown,
 				},
 				assignBindings = {
@@ -1707,7 +1674,7 @@ function AutoBar:CreateSmallOptions()
 					order = 4,
 					name = L["Skin the Buttons"],
 					desc = L["ButtonFacade is required to Skin the Buttons"],
-					func = AutoBar.ToggleSkinMode,
+					func = AutoBar.SkinModeToggle,
 					disabled = getCombatLockdown,
 				},
 				bars = {
@@ -1764,17 +1731,6 @@ function AutoBar:CreateSmallOptions()
 						},
 					}
 				},
---[[
-				style = {
-				    type = 'text',
-					order = 8,
-					name = L["Style"],
-				    desc = L["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."],
-				    get = getStyle,
-				    set = setStyle,
-				    validate = AutoBar.styleValidateList,
-				},
---]]
 				sticky = {
 					order = 15,
 					name = L["Sticky Frames"],
@@ -1922,14 +1878,6 @@ function AutoBar:CreateSmallOptions()
 end
 
 function AutoBar:CreateOptions()
-	if (not AutoBar.styleValidateList) then
-		if (LBF) then
-			AutoBar.styleValidateList = LBF:ListSkins()
-		else
-			AutoBar.styleValidateList = {Blizzard = "Blizzard"}
-		end
-	end
-
 	AutoBar:CreateSmallOptions()
 
 	-- Create Options for Bars and their associated Buttons
@@ -2038,16 +1986,6 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 				    validate = shareValidateList,
 					passValue = passValue,
 					disabled = getCombatLockdown,
-				},
-				style = {
-				    type = 'text',
-					order = 8,
-					name = L["Style"],
-				    desc = L["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."],
-				    get = getStyle,
-				    set = setStyle,
-				    validate = AutoBar.styleValidateList,
-					passValue = passValue,
 				},
 				collapseButtons = {
 					type = "toggle",

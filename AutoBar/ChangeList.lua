@@ -102,8 +102,7 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
 
 -- 2.04.02.54 beta ()
---- -> LibStickyFrames-2.0
----- Finish LibStickyFrames: needs grouped dragging.
+--- Finish LibStickyFrames: needs grouped dragging.
 --- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
 --- Shuffle: handle locations and cooldowns and equipped items.
 
@@ -129,6 +128,13 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 -- Temporal Phase Modulator 30742
 -- Voodoo Skull 33081
 -- Add LibKeyBound-1.0 to toc dependencies and embeds
+-- Tarkumi's tooltip changes
+-- Remove category from cooldown stone rejuv, not potion rejuv.
+-- Move to LibStickyFrames-2.0 for dragging.
+-- Switch to teal for keybind mode.
+-- Most of the modes are now exclusive, and will turn off others that are on when activated.
+-- Make AutoBar level BF Colors default to {}
+-- Remove Style settings from AutoBar.  Skinning is now exclusively from ButtonFacade
 
 -- 2.04.01.52 beta (74135)
 -- Actually set popupHeader frame to DIALOG, dont just talk about doing it.

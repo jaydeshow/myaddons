@@ -1,4 +1,18 @@
 ------------------------------------------------------------------------
+r75022 | toadkiller | 2008-05-24 08:57:48 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Some documentation
+------------------------------------------------------------------------
+r75018 | toadkiller | 2008-05-24 07:11:47 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0 :
+-- Switch to a 50% teal for KeyBound mode.
+------------------------------------------------------------------------
 r74923 | toadkiller | 2008-05-23 08:47:24 -0400 (Fri, 23 May 2008) | 3 lines
 Changed paths:
    M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esMX.lua

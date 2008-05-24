@@ -156,6 +156,8 @@ if (GetLocale() == "deDE") then
 		["BOTTOMRIGHT"] = "Bottom Right",
 
 		-- AutoBarFuBar
+		["FuBarPlugin Config"] = "FubarPlugin-Konfiguration",
+		["Configure the FuBar Plugin"] = "Konfiguriert das Fubar-Plugin.",
 --		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55fDoppel-Klick|r um die Konfigurations-GUI zu öffnen.\n|cffeda55fStrg-Klick|r und die Tastensperre zu aktivieren. |cffeda55fShift-Klick|r um die Leistensperre zu aktivieren.",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",

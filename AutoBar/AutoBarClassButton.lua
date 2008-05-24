@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 74775 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -486,7 +486,6 @@ function AutoBar.Class.Button.prototype:UpdateButton()
 	self:UpdateIcon()
 	self:UpdateCount()
 	self:UpdateHotkeys()
---	AutoBar:RefreshStyle(self.frame, self.parentBar)
 	local itemType = frame:GetAttribute("*type1")
 	if (AutoBar.unlockButtons) then
 --		self:UnregisterButtonEvents()
@@ -960,7 +959,7 @@ function AutoBar.Class.Button.prototype:HideGrid(override)
 	end
 end
 
-function AutoBar.Class.Button.prototype:UnlockButtons()
+function AutoBar.Class.Button.prototype:MoveButtonsModeOn()
 	local frame = self.frame
 	frame:SetScript("OnDragStart", onDragStartFunc)
 	frame:SetScript("OnReceiveDrag", onReceiveDragFunc)
@@ -970,7 +969,7 @@ function AutoBar.Class.Button.prototype:UnlockButtons()
 	frame:Show()
 end
 
-function AutoBar.Class.Button.prototype:LockButtons()
+function AutoBar.Class.Button.prototype:MoveButtonsModeOff()
 	local frame = self.frame
 	frame:SetScript("OnDragStart", nil)
 	frame:SetScript("OnReceiveDrag", nil)

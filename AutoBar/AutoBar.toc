@@ -21,8 +21,8 @@
 ## X-RelSite-WoWI: 5502
 ## X-RelSite-Curse: 9853
 ## X-Credits: Diablo for teaching us how to guzzle potions. Saien for first enabling guzzling in WoW.  Sayclub (Korean) | PDI175, lostcup (Chinese traditional and simplified) | Teodred, curexx (German), Cinedelle (French), shiftos (Spanish)
-## OptionalDeps: Ace2, DewdropLib, LibBabble-Zone-3.0, LibKeyBound-1.0, LibPeriodicTable-3.1, LibStickyFrames-1.0, LibStickyFrames-2.0, TabletLib, FuBarPlugin-2.0, Waterfall-1.0, FuBar, OmniCC, ButtonFacade
-## X-Embeds: Ace2, DewdropLib, LibBabble-Zone-3.0, LibKeyBound-1.0, LibPeriodicTable-3.1, LibStickyFrames-1.0, LibStickyFrames-2.0, TabletLib, FuBarPlugin-2.0, Waterfall-1.0
+## OptionalDeps: Ace2, DewdropLib, LibBabble-Zone-3.0, LibKeyBound-1.0, LibPeriodicTable-3.1, LibStickyFrames-2.0, TabletLib, FuBarPlugin-2.0, Waterfall-1.0, FuBar, OmniCC, ButtonFacade
+## X-Embeds: Ace2, DewdropLib, LibBabble-Zone-3.0, LibKeyBound-1.0, LibPeriodicTable-3.1, LibStickyFrames-2.0, TabletLib, FuBarPlugin-2.0, Waterfall-1.0
 ## X-Wiki-BugTracker: [http://code.google.com/p/autobar/issues/list Google Code]
 ## SavedVariables: AutoBarDB
 

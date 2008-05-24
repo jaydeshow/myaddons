@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 73808 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 74959 $"):match("%d+"))
 
 Parrot = Rock:NewAddon("Parrot", "LibRockDB-1.0", "LibRockConsole-1.0", "LibRockModuleCore-1.0", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockHook-1.0", "LibRockConfig-1.0")
 local Parrot, self = Parrot, Parrot
 Parrot.version = "1.0r" .. VERSION
 Parrot.revision = VERSION
-Parrot.date = ("$Date: 2008-05-14 05:27:35 -0400 (Wed, 14 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+Parrot.date = ("$Date: 2008-05-23 14:44:33 -0400 (Fri, 23 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 
 -- #AUTODOC_NAMESPACE Parrot
 
@@ -23,6 +23,7 @@ Parrot:SetDatabase("ParrotDB")
 Parrot:SetDatabaseDefaults('profile', {
 	gameDamage = false,
 	gameHealing = false,
+	totemDamage = true,
 })
 
 function Parrot:OnInitialize()
@@ -127,6 +128,18 @@ function Parrot:OnOptionsCreate()
 					SetCVar("CombatHealing", value and "1" or "0")
 				end,
 			},
+			totemDamage = {
+				type = 'boolean',
+				name = L["Show guardian events"],
+				desc = L["Whether events involving your guardian(s) (totems, ...) should be displayed"],
+				get = function()
+					return Parrot.db.profile.totemDamage
+				end,
+				set = function(value)
+					Parrot.db.profile.totemDamage = value
+				end,
+				default = true,
+			}
 		}
 	})
 end

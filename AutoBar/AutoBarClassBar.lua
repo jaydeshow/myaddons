@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 74775 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -20,7 +20,7 @@ local AceOO = AceLibrary("AceOO-2.0")
 local L = AutoBar.locale
 local LBF = LibStub("LibButtonFacade", true)
 local LibKeyBound = AceLibrary:GetInstance("LibKeyBound-1.0")
-local LibStickyFrames = LibStub("LibStickyFrames-1.0")
+local LibStickyFrames = LibStub("LibStickyFrames-2.0")
 local dewdrop = AceLibrary("Dewdrop-2.0")
 local _G = getfenv(0)
 
@@ -74,11 +74,15 @@ function AutoBar.Class.Bar.prototype:init(barKey)
 	AutoBar.Class.Bar.super.prototype.init(self) -- very important. Will fail without this.
 
 	self.barKey = barKey
-	self.barName = L[barKey]
 	self:UpdateShared()
+	if (not L[barKey]) then
+		L[barKey] = self.sharedLayoutDB.name
+	end
+	self.barName = L[barKey]
 --	if self.statebar and self.id == 1 then self.mainbar = true end
 
 	self:CreateBarFrame()
+	self:CreateDragFrame()
 
 	self.buttonList = {}		-- Button by index
 	self.activeButtonList = {}	-- Button by index, non-empty & enabled ones only
@@ -141,13 +145,14 @@ function AutoBar.Class.Bar.prototype:CreateBarFrame()
 
 	-- For debugging
 --	driver.StateChanged = AutoBar.StateChanged
+--AutoBar:Print(tostring(driver) .. " Driver: UIParent")
+	LibStickyFrames:RegisterFrame(self.frame)
 
 	self.elapsed = 0
 	if (self.sharedLayoutDB.fadeOut) then
 		self:CreateFadeFrame()
 		self.fadeFrame:SetScript("OnUpdate", onUpdateFunc)
 	end
---AutoBar:Print(tostring(driver) .. " Driver: UIParent")
 
 	if (LBF) then
 		local group = LBF:Group("AutoBar", self.barKey)
@@ -368,130 +373,51 @@ function AutoBar.Class.Bar.prototype:SetFadeOut(fadeOut)
 	end
 end
 
-local function onEnterFunc(bar)
-	if (bar.class.isStickTarget and AutoBar.stickyMode) then
-		bar:SetBackdropColor(LibStickyFrames.ColorStickTargetHover.r, LibStickyFrames.ColorStickTargetHover.g, LibStickyFrames.ColorStickTargetHover.b, LibStickyFrames.ColorStickTargetHover.a)
-	elseif (bar.class.sharedLayoutDB.hide and AutoBar.stickyMode) then
-		bar:SetBackdropColor(LibStickyFrames.ColorHiddenHover.r, LibStickyFrames.ColorHiddenHover.g, LibStickyFrames.ColorHiddenHover.b, LibStickyFrames.ColorHiddenHover.a)
-	elseif (AutoBar.stickyMode) then
-		bar:SetBackdropColor(LibStickyFrames.ColorEnabledHover.r, LibStickyFrames.ColorEnabledHover.g, LibStickyFrames.ColorEnabledHover.b, LibStickyFrames.ColorEnabledHover.a)
-	end
-end
-
-local function onLeaveFunc(bar)
-	if (bar.class.isStickTarget and AutoBar.stickyMode) then
-		bar:SetBackdropColor(LibStickyFrames.ColorStickTarget.r, LibStickyFrames.ColorStickTarget.g, LibStickyFrames.ColorStickTarget.b, LibStickyFrames.ColorStickTarget.a)
-	elseif (bar.class.sharedLayoutDB.hide and AutoBar.stickyMode) then
-		bar:SetBackdropColor(LibStickyFrames.ColorHidden.r, LibStickyFrames.ColorHidden.g, LibStickyFrames.ColorHidden.b, LibStickyFrames.ColorHidden.a)
-	elseif (AutoBar.stickyMode) then
-		bar:SetBackdropColor(LibStickyFrames.ColorEnabled.r, LibStickyFrames.ColorEnabled.g, LibStickyFrames.ColorEnabled.b, LibStickyFrames.ColorEnabled.a)
-	end
-end
-
 function AutoBar.Class.Bar.prototype:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-	LibStickyFrames:StickToFrame(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+	LibStickyFrames:SetFramePoints(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
 	self.sharedLayoutDB.stickPoint = point
-	self.sharedLayoutDB.stickToFrameName = stickToFrame:GetName()
---AutoBar:Print("AutoBar.Class.Bar.prototype:StickTo " .. tostring(self.sharedLayoutDB.stickToFrameName))
+	self.sharedLayoutDB.stickToFrameName = stickToFrame and stickToFrame:GetName() or nil
 	self.sharedLayoutDB.stickToPoint = stickToPoint
 	self.sharedLayoutDB.stickToX = stickToX
 	self.sharedLayoutDB.stickToY = stickToY
-end
-
-local function onStickFunc(self, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
---AutoBar:Print("onStickFunc " .. tostring(self.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
-	self:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-end
-
-local function onStickTargetFunc(stickToFrame, isStickTarget)
---AutoBar:Print("onStickFunc " .. tostring(self.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
-	stickToFrame.class.isStickTarget = isStickTarget
-	if (isStickTarget) then
-		onEnterFunc(stickToFrame)
-	else
-		onLeaveFunc(stickToFrame)
-	end
-end
-
-local stickyInfo = {
-	frameList = {},
-	left = 0,
-	top = 0,
-	right = 0,
-	bottom = 0,
-	stickTargetFunc = onStickTargetFunc,
-	stickyModeFunc = AutoBar.SetStickyMode,
-}
-
-function AutoBar.Class.Bar:RegisterStickyFrames()
---AutoBar:Print("AutoBar.Class.Bar:RegisterStickyFrames")
-	LibStickyFrames:Register("AutoBar", stickyInfo)
-end
-
-
-local function onDragStartFunc(bar)
-	if (AutoBar.db.account.sticky and LibStickyFrames) then
-		local frameList = stickyInfo.frameList
-		for k in pairs(frameList) do
-			frameList[k] = nil
-		end
-		for k, bar in pairs(AutoBar.barList) do
-			table.insert(frameList, bar.frame)
-		end
-		LibStickyFrames:StartMoving(bar, onStickFunc, bar.class, nil)
-	else
-		bar:StartMoving()
-	end
-	bar:SetBackdropBorderColor(0, 0, 0, 0)
-end
-
-local function onDragStopFunc(bar)
-	local self = bar.class
-	if AutoBar.db.account.sticky and LibStickyFrames then
-		LibStickyFrames:StopMoving(bar)
-	else
-		bar:StopMovingOrSizing()
-	end
-	self:SaveLocation()
 end
 
 local function onAttributeChangedFunc(button)
 	button:SetButtonState("NORMAL")
 end
 
-local function onClickFunc(bar, button, down)
-	local self = bar.class
-	if (button == "RightButton") then
-		self:ShowBarOptions()
-	elseif (button == "LeftButton") then
-		self:ToggleVisibilty()
-	end
-	if (self.dragFrame) then
-		self.dragFrame:SetChecked(0)
-	end
-end
-
+local colorMoveButtons = {r = 1, b = 1, g = 0, a = 0.5}
 function AutoBar.Class.Bar.prototype:ColorBars()
 	local frame = self.frame
-	if (AutoBar.assignBindings or AutoBar.stickyMode or AutoBar.unlockButtons) then
+	if (AutoBar.assignBindings or AutoBar.unlockButtons) then
+		-- Adjust Frame Strata
+		frame:SetFrameStrata("DIALOG")
+		self:SetButtonFrameStrata("LOW")
+
+		-- Cancel Fade
+		if self.sharedLayoutDB.fadeOut then
+			frame:SetAlpha(self.sharedLayoutDB.alpha)
+			self.faded = nil
+		end
+
+		-- Set Color
 		if (AutoBar.assignBindings) then
 			frame:SetBackdropColor(LibKeyBound:GetColorKeyBoundMode())
-		elseif (AutoBar.stickyMode) then
-			if (self.sharedLayoutDB.hide) then
-				frame:SetBackdropColor(LibStickyFrames.ColorHidden.r, LibStickyFrames.ColorHidden.g, LibStickyFrames.ColorHidden.b, LibStickyFrames.ColorHidden.a)
-			else
-				frame:SetBackdropColor(LibStickyFrames.ColorEnabled.r, LibStickyFrames.ColorEnabled.g, LibStickyFrames.ColorEnabled.b, LibStickyFrames.ColorEnabled.a)
---				frame:SetBackdropColor(LibStickyFrames.ColorStickTarget.r, LibStickyFrames.ColorStickTarget.g, LibStickyFrames.ColorStickTarget.b, LibStickyFrames.ColorStickTarget.a)
-			end
 		elseif (AutoBar.unlockButtons) then
 			if (self.sharedLayoutDB.hide) then
-				frame:SetBackdropColor(LibStickyFrames.ColorHidden.r, LibStickyFrames.ColorHidden.g, LibStickyFrames.ColorHidden.b, LibStickyFrames.ColorHidden.a)
+				frame:SetBackdropColor(LibStickyFrames:GetColorHidden())
 			else
-				frame:SetBackdropColor(LibStickyFrames.ColorStickTarget.r, LibStickyFrames.ColorStickTarget.g, LibStickyFrames.ColorStickTarget.b, LibStickyFrames.ColorStickTarget.a)
+				frame:SetBackdropColor(colorMoveButtons.r, colorMoveButtons.g, colorMoveButtons.b, colorMoveButtons.a)
 			end
 		end
 		frame.text:SetText(self.barName)
+	elseif (AutoBar.stickyMode) then
+		frame:SetFrameStrata(self.sharedLayoutDB.frameStrata)
+		self:SetButtonFrameStrata(self.sharedLayoutDB.frameStrata)
+		frame.text:SetText(self.barName)
 	else
+		frame:SetFrameStrata(self.sharedLayoutDB.frameStrata)
+		self:SetButtonFrameStrata(self.sharedLayoutDB.frameStrata)
 		frame.text:SetText("")
 		frame:SetBackdropColor(0, 0, 0, 0)
 		frame:SetBackdropBorderColor(0, 0, 0, 0)
@@ -503,15 +429,13 @@ function AutoBar.Class.Bar.prototype:SetButtonFrameStrata(frameStrata)
 		button.frame:SetFrameStrata(frameStrata)
 	end
 end
-
+--[[
 function AutoBar.Class.Bar.prototype:UnlockBars()
 	local frame = self.frame
 	frame:EnableMouse(true)
-	frame:SetScript("OnEnter", onEnterFunc)
 	frame:SetScript("OnLeave", onLeaveFunc)
-	frame:SetScript("OnDragStart", onDragStartFunc)
-	frame:SetScript("OnDragStop", onDragStopFunc)
-	frame:SetScript("OnClick", onClickFunc)
+--	frame:SetScript("OnDragStart", onDragStartFunc)
+--	frame:SetScript("OnDragStop", onDragStopFunc)
 	if (self.sharedLayoutDB.hide) then
 		frame:SetBackdropColor(LibStickyFrames.ColorHidden.r, LibStickyFrames.ColorHidden.g, LibStickyFrames.ColorHidden.b, LibStickyFrames.ColorHidden.a)
 	else
@@ -521,10 +445,6 @@ function AutoBar.Class.Bar.prototype:UnlockBars()
 	self:SetButtonFrameStrata("LOW")
 	self:ColorBars()
 	frame:Show()
-	if self.sharedLayoutDB.fadeOut then
-		frame:SetAlpha(self.sharedLayoutDB.alpha)
-		self.faded = nil
-	end
 end
 
 function AutoBar.Class.Bar.prototype:LockBars()
@@ -545,30 +465,31 @@ function AutoBar.Class.Bar.prototype:LockBars()
 		self.frame:Show()
 	end
 end
-
+--]]
 
 local oldOnReceiveDragFunc
 
-function AutoBar.Class.Bar.prototype:UnlockButtons()
+function AutoBar.Class.Bar.prototype:MoveButtonsModeOn()
 	local frame = self.frame
 	frame:EnableMouse(# self.buttonList == 0)
 	oldOnReceiveDragFunc = frame:GetScript("OnReceiveDrag")
 	frame:SetScript("OnReceiveDrag", onReceiveDragFunc)
 	self:ColorBars()
 	for index, button in pairs(self.buttonList) do
-		button:UnlockButtons()
+		button:MoveButtonsModeOn()
 	end
-	self:CreateDragFrame()
 	self.dragFrame:Show()
 end
 
-function AutoBar.Class.Bar.prototype:LockButtons()
+function AutoBar.Class.Bar.prototype:MoveButtonsModeOff()
 	local frame = self.frame
 	frame:EnableMouse(AutoBar.stickyMode)
 	frame:SetScript("OnReceiveDrag", oldOnReceiveDragFunc)
+	frame:SetFrameStrata(self.sharedLayoutDB.frameStrata)
+	self:SetButtonFrameStrata(self.sharedLayoutDB.frameStrata)
 	self:ColorBars()
 	for index, button in pairs(self.buttonList) do
-		button:LockButtons()
+		button:MoveButtonsModeOff()
 	end
 	self.dragFrame:Hide()
 end
@@ -587,7 +508,6 @@ function AutoBar.Class.Bar.prototype:CreateDragFrame()
 		frame:EnableMouse(true)
 		frame:RegisterForClicks("AnyUp")
 		frame:RegisterForDrag("LeftButton", "RightButton")
-		frame:SetScript("OnClick", onClickFunc)
 		frame:SetScript("OnReceiveDrag", onReceiveDragFunc)
 		frame:SetScript("OnAttributeChanged", onAttributeChangedFunc)
 	end
@@ -613,15 +533,18 @@ function AutoBar.Class.Bar.prototype:ToggleVisibilty()
 		return
 	end
 
-	self.sharedLayoutDB.hide = not self.sharedLayoutDB.hide
-	if (self.sharedLayoutDB.hide and AutoBar.stickyMode) then
-		self.frame:SetBackdropColor(LibStickyFrames.ColorHidden.r, LibStickyFrames.ColorHidden.g, LibStickyFrames.ColorHidden.b, LibStickyFrames.ColorHidden.a)
-	elseif (self.sharedLayoutDB.hide) then
-		self.frame:Hide()
-	elseif (AutoBar.stickyMode) then
-		self.frame:SetBackdropColor(LibStickyFrames.ColorEnabled.r, LibStickyFrames.ColorEnabled.g, LibStickyFrames.ColorEnabled.b, LibStickyFrames.ColorEnabled.a)
+	if (self.sharedLayoutDB.hide) then
+		self.sharedLayoutDB.hide = nil
 	else
-		self.frame:Show()
+		self.sharedLayoutDB.hide = true
+	end
+	AutoBar:BarsChanged()
+	if (not AutoBar.stickyMode) then
+		if (self.sharedLayoutDB.hide) then
+--			self.frame:Hide()
+		else
+--			self.frame:Show()
+		end
 	end
 end
 
@@ -650,7 +573,7 @@ function AutoBar.Class.Bar.prototype:LoadLocation()
 	if (sharedPositionDB.stickToFrameName and _G[sharedPositionDB.stickToFrameName]) then
 		local stickToFrame = _G[sharedPositionDB.stickToFrameName]
 		local barDB = AutoBar.barPositionDBList[self.barKey]
-		LibStickyFrames:StickToFrame(self.frame, barDB.stickPoint, stickToFrame, barDB.stickToPoint, barDB.stickToX, barDB.stickToY)
+		LibStickyFrames:SetFramePoints(self.frame, barDB.stickPoint, stickToFrame, barDB.stickToPoint, barDB.stickToX, barDB.stickToY)
 --AutoBar:Print("AutoBar.Class.Bar.prototype:LoadLocation " .. tostring(barDB.stickToFrameName))
 	else
 		if (not sharedLayoutDB.alignButtons) then
@@ -802,9 +725,6 @@ function AutoBar.Class.Bar.prototype:RefreshButtonLayout()
 	-- Dummy drag button for empty bar and end of bar drags
 	if (AutoBar.unlockButtons) then
 		local i = nButtons + 1
-		if (not self.dragFrame) then
-			self:CreateDragFrame()
-		end
 		frame = self.dragFrame
 		frame:ClearAllPoints()
 		local emptyColumns = columns - ((i - 1) % columns)
@@ -814,21 +734,6 @@ function AutoBar.Class.Bar.prototype:RefreshButtonLayout()
 	end
 end
 
-
-function AutoBar.Class.Bar.prototype:RefreshStyle()
-	local style = self.sharedLayoutDB.style
---AutoBar:Print("AutoBar.Class.Bar.prototype:RefreshStyle #  " .. tostring(# self.activeButtonList))
-	for index, button in pairs(self.buttonList) do
-		AutoBar:RefreshStyle(button.frame, self)
-		local popupHeader = button.frame.popupHeader
-		if (popupHeader) then
-			local popupButtonList = popupHeader.popupButtonList
-			for popupButtonIndex, popupButton in pairs(popupButtonList) do
-				AutoBar:RefreshStyle(popupButton.frame, self)
-			end
-		end
-	end
-end
 
 function AutoBar.Class.Bar.prototype:RefreshScale()
 	self.frame:SetScale(self.sharedLayoutDB.scale or 1)

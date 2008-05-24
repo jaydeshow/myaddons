@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r75008 | pettigrow | 2008-05-24 05:06:28 -0400 (Sat, 24 May 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-frFR.lua
+
+GatherMate: frFR Update
+------------------------------------------------------------------------
 r74869 | xinhuan | 2008-05-23 00:16:12 -0400 (Fri, 23 May 2008) | 1 line
 Changed paths:
    M /trunk/GatherMate/Locales/GatherMate-zhTW.lua
