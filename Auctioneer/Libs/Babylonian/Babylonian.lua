@@ -1,6 +1,6 @@
 --[[
 	Babylonian - A sub-addon that manages the locales for other addons.
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: Babylonian.lua 68 2008-02-12 08:05:07Z mentalpower $
 	URL: http://auctioneeraddon.com/dl/
 

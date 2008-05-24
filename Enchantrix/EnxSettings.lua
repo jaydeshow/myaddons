@@ -1,7 +1,7 @@
 --[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
-	Revision: $Id: EnxSettings.lua 2944 2008-03-23 05:39:48Z kinesia $
+	Version: 5.0.PRE.3104 (BillyGoat)
+	Revision: $Id: EnxSettings.lua 3101 2008-05-08 05:40:29Z ccox $
 	URL: http://enchantrix.org/
 
 	Settings GUI
@@ -63,7 +63,7 @@ Usage:
 
 ]]
 
-Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxSettings.lua $", "$Rev: 2944 $")
+Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxSettings.lua $", "$Rev: 3101 $")
 
 local lib = {}
 Enchantrix.Settings = lib
@@ -109,6 +109,8 @@ local settingDefaults = {
 	['all'] = true,
 	['locale'] = 'default',
 	['printframe'] = 1,
+	
+	['chatShowFindings'] = true,
 
 	['ToolTipEmbedInGameTip'] = false,
 	['ToolTipTerseFormat'] = false,
@@ -489,7 +491,7 @@ function lib.MakeGuiConfig()
 	gui:AddControl(id, "Checkbox",   0, 1, "ToolTipEmbedInGameTip", _ENCH("HelpEmbed") )
 	gui:AddControl(id, "Checkbox",   0, 1, "TooltipShowDisenchantMats", _ENCH("GuiDEMaterials") )
 	gui:AddControl(id, "Checkbox",   0, 1, "export.aucadv", _ENCH("ExportPriceAucAdv"))
-
+	gui:AddControl(id, "Checkbox",   0, 1, "chatShowFindings", _ENCH("GuiPrintYieldsInChat") )
 
 -- TODO: locale -- what are the allowed values?
 -- TODO: printframe  -- what are the allowed values?  Configurator really needs a restricted value number box (without a slider)

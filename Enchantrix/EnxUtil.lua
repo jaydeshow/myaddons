@@ -1,7 +1,7 @@
 ﻿--[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
-	Revision: $Id: EnxUtil.lua 2944 2008-03-23 05:39:48Z kinesia $
+	Version: 5.0.PRE.3104 (BillyGoat)
+	Revision: $Id: EnxUtil.lua 3101 2008-05-08 05:40:29Z ccox $
 	URL: http://enchantrix.org/
 
 	General utility functions
@@ -28,7 +28,7 @@
 		since that is its designated purpose as per:
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
-Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxUtil.lua $", "$Rev: 2944 $")
+Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxUtil.lua $", "$Rev: 3101 $")
 
 -- Global functions
 local getItems
@@ -176,7 +176,7 @@ local function checkReagentCacheVersion()
 	if EnchantConfig.cache.CraftReagentCache.Version then
 		-- version stamp exists, check it
 		if (EnchantConfig.cache.CraftReagentCache.Version ~= versionString) then
-			Enchantrix.Util.DebugPrintQuick("Found a new WoW version, wiping out reagent cache");
+			--Enchantrix.Util.DebugPrintQuick("Found a new WoW version, wiping out reagent cache");
 			EnchantConfig.cache.CraftReagentCache = {}
 		end
 	end
@@ -706,7 +706,7 @@ function createProfiler(name)
 end
 
 Enchantrix.Util = {
-	Revision			= "$Revision: 2944 $",
+	Revision			= "$Revision: 3101 $",
 
 	GetItems			= getItems,
 	GetItemType			= getItemType,

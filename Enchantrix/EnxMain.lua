@@ -1,7 +1,7 @@
 ﻿--[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
-	Revision: $Id: EnxMain.lua 2836 2008-02-03 02:50:33Z ccox $
+	Version: 5.0.PRE.3104 (BillyGoat)
+	Revision: $Id: EnxMain.lua 3101 2008-05-08 05:40:29Z ccox $
 	URL: http://enchantrix.org/
 
 	This is an addon for World of Warcraft that add a list of what an item
@@ -30,7 +30,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 
 ]]
-Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxMain.lua $", "$Rev: 2836 $")
+Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxMain.lua $", "$Rev: 3101 $")
 
 -- Local functions
 local addonLoaded
@@ -41,7 +41,7 @@ local spellTargetItemHook
 local useItemByNameHook
 local onEvent
 
-Enchantrix.Version = "5.0.PRE.3087"
+Enchantrix.Version = "5.0.PRE.3104"
 if (Enchantrix.Version == "<".."%version%>") then
 	Enchantrix.Version = "4.0.DEV"
 end
@@ -88,7 +88,7 @@ function addonLoaded(hookArgs, event, addOnName)
 	Enchantrix.MiniIcon.Reposition()
 	Enchantrix.SideIcon.Update()
 
-	Enchantrix.Revision = Enchantrix.Util.GetRevision("$Revision: 2836 $")
+	Enchantrix.Revision = Enchantrix.Util.GetRevision("$Revision: 3101 $")
 	for name, obj in pairs(Enchantrix) do
 		if type(obj) == "table" then
 			Enchantrix.Revision = math.max(Enchantrix.Revision, Enchantrix.Util.GetRevision(obj.Revision))
@@ -357,11 +357,16 @@ function onEvent(funcVars, event, player, spell, rank, target)
 	elseif event == "LOOT_OPENED" then
 		if DisenchantEvent.finished then
 			local isDisenchant = nil
+			local chatPrintYield = Enchantrix.Settings.GetSetting('chatShowFindings')
 			if (DisenchantEvent.spellname == _ENCH('ArgSpellname')) then
-				Enchantrix.Util.ChatPrint(_ENCH("FrmtFound"):format(DisenchantEvent.finished))
+				if (chatPrintYield) then
+					Enchantrix.Util.ChatPrint(_ENCH("FrmtFound"):format(DisenchantEvent.finished))
+				end
 				isDisenchant = true;
 			elseif (DisenchantEvent.spellname == _ENCH('ArgSpellProspectingName')) then
-				Enchantrix.Util.ChatPrint( _ENCH("FrmtProspectFound"):format(DisenchantEvent.finished))
+				if (chatPrintYield) then
+					Enchantrix.Util.ChatPrint( _ENCH("FrmtProspectFound"):format(DisenchantEvent.finished))
+				end
 				isDisenchant = nil;
 			end
 			local sig = Enchantrix.Util.GetSigFromLink(DisenchantEvent.finished)
@@ -370,7 +375,9 @@ function onEvent(funcVars, event, player, spell, rank, target)
 				if LootSlotIsItem(i) then
 					local icon, name, quantity, rarity = GetLootSlotInfo(i)
 					local link = GetLootSlotLink(i)
-					Enchantrix.Util.ChatPrint(("  %s x%d"):format(link, quantity))
+					if (chatPrintYield) then
+						Enchantrix.Util.ChatPrint(("  %s x%d"):format(link, quantity))
+					end
 					-- Save result
 					local reagentID = Enchantrix.Util.GetItemIdFromLink(link)
 					if reagentID then

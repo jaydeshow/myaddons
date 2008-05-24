@@ -1,6 +1,6 @@
 ﻿--[[
 	EnhTooltip - Additional function hooks to allow hooks into more tooltips
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: Tooltip.lua 3026 2008-04-13 02:51:07Z mentalpower $
 	URL: http://auctioneeraddon.com/dl/EnhTooltip
 
@@ -174,7 +174,7 @@
 ]]
 
 -- setting version number
-ENHTOOLTIP_VERSION = "5.0.PRE.3087"
+ENHTOOLTIP_VERSION = "5.0.PRE.3104"
 -- split up the version string, so it won't get replaced by the final version
 -- number
 if (ENHTOOLTIP_VERSION == "<".."%version%>") then
@@ -281,7 +281,7 @@ function private.CreateNewFontString(tooltip)
 	newFontString:SetPoint("TOPLEFT", tooltipName.."Text"..currentFontStringIndex, "BOTTOMLEFT", 0, -1)
 	newFontString:Hide()
 	newFontString:SetTextColor(1.0,1.0,1.0)
-	newFontString:SetFontObject("GameTooltipText")
+	newFontString:SetFontObject("GameTooltipTextSmall")
 
 	-- we do not update the lastFontStringIndex earlier to make sure that the new font string line has successfully been created
 	private.lastFontStringIndex = nextFontStringIndex
@@ -309,7 +309,7 @@ function private.CreateNewHeaderFontString(tooltip)
 	newFontString:SetPoint("TOPLEFT", tooltipName.."Header"..currentHeaderFontStringIndex, "BOTTOMLEFT", 0, -1)
 	newFontString:Hide()
 	newFontString:SetTextColor(1.0,1.0,1.0)
-	newFontString:SetFontObject("GameTooltipText")
+	newFontString:SetFontObject("GameTooltipTextSmall")
 	return newFontString
 end
 
@@ -404,14 +404,14 @@ function public.ClearTooltip()
 		ttText:Hide()
 		ttText.myMoney = nil
 		ttText:SetTextColor(1.0,1.0,1.0)
-		ttText:SetFontObject("GameTooltipText")
+		ttText:SetFontObject("GameTooltipTextSmall")
 	end
 
 	for ttHeader in public.GetglobalIterator("EnhancedTooltipHeader%d") do
 		ttHeader:Hide()
 		ttHeader.myMoney = nil
 		ttHeader:SetTextColor(1.0,1.0,1.0)
-		ttHeader:SetFontObject("GameTooltipText")
+		ttHeader:SetFontObject("GameTooltipTextSmall")
 	end
 
 	for ttMoney in public.GetglobalIterator("EnhancedTooltipMoney%d") do

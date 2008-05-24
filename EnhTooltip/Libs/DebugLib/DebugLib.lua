@@ -1,7 +1,7 @@
 ﻿--[[
 	DebugLib - An embedded library which works as a higher layer for nLog,
 	by providing easier usage of debugging features.
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: DebugLib.lua 68 2008-02-12 08:05:07Z mentalpower $
 	URL: http://auctioneeraddon.com/dl/
 

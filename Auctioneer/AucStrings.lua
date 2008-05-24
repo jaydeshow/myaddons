@@ -5,7 +5,7 @@
 
 	AddOn: Auctioneer
 	Revision: $Id: AucStrings.lua 2991 2008-04-01 01:36:04Z RockSlice $
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 
 	License:
 		This program is free software; you can redistribute it and/or
@@ -5136,9 +5136,9 @@ AuctioneerLocalizations = {
 		["UiProcessingBidRequests"]	= "出价请求处理中...";
 
 		-- Section: Command Messages
-		["ConstantsCritical"]	= "严重:你的拍卖助手扫描数据文件(SavedVariables )已达到存储上限的%.3f%% !!";
-		["ConstantsMessage"]	= "你的拍卖助手扫描数据文件(SavedVariables )已达到存储上限的%.3f%%";
-		["ConstantsWarning"]	= "警告:你的拍卖助手扫描数据文件(SavedVariables )已达到存储上限的%.3f%% !!";
+		["ConstantsCritical"]	= "严重:你的拍卖助手扫描数据文件(SavedVariables )%.3f%%已满";
+		["ConstantsMessage"]	= "你的拍卖助手扫描数据文件(SavedVariables )%.3f%%已满";
+		["ConstantsWarning"]	= "警告:你的拍卖助手扫描数据文件(SavedVariables )%.3f%%已满";
 		["FrmtActClearall"]	= "清除%s的全部拍卖数据。";
 		["FrmtActClearFail"]	= "无法找到物品:%s。";
 		["FrmtActClearOk"]	= "%s的数据已清除。";
@@ -5338,7 +5338,7 @@ AuctioneerLocalizations = {
 		["MesgNotconverting"]	= "拍卖助手未转换你的数据库，但完成之前将停止工作。";
 
 		-- Section: Game Constants
-		["SubTypeBag"]	= "容器";
+		["SubTypeBag"]	= "背包";
 		["TimeLong"]	= "长";
 		["TimeMed"]	= "中";
 		["TimeShort"]	= "短";

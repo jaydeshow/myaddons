@@ -1,6 +1,6 @@
 --[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: EnxAucUtil.lua 2946 2008-03-23 06:48:20Z kinesia $
 	URL: http://enchantrix.org/
 

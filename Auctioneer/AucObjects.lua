@@ -1,6 +1,6 @@
 --[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: AucObjects.lua 1326 2007-01-12 03:25:09Z norganna $
 
 	Auctioneer Objects

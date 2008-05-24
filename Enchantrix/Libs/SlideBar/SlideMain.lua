@@ -1,6 +1,6 @@
 --[[
 	Slidebar AddOn for World of Warcraft (tm)
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: SlideMain.lua 70 2008-02-27 03:12:33Z MentalPower $
 	URL: http://auctioneeraddon.com/dl/
 

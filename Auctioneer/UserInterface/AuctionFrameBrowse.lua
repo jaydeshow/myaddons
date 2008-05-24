@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: AuctionFrameBrowse.lua 2973 2008-03-28 05:50:36Z kandoko $
 
 	Auctioneer Browse tab

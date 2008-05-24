@@ -1,6 +1,6 @@
 --[[
 	SelectBox
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: SelectBox.lua 68 2008-02-12 08:05:07Z mentalpower $
 	URL: http://auctioneeraddon.com/dl/
 
