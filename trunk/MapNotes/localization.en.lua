@@ -150,8 +150,32 @@ BINDING_HEADER_MAPNOTES = "MapNotes";
 BINDING_NAME_MN_TARGET_NEW = "QuickNote/TargetNote";
 BINDING_NAME_MN_TARGET_MERGE = "Merge Target Note";
 BINDING_NAME_MN_TOGGLE_MINIS = "Global Mininotes Toggle";
+BINDING_NAME_MN_MINIMAP_STYLE = "Cycle through Minimap Styles";
 
 MN_LEVEL = "Level";
+
+MN_AUTO_DESCRIPTIONS = {
+	["SQUARE"]					= "Full Square",
+
+	["CORNER-TOPRIGHT"]			= "Rounded Top Right Corner",
+	["CORNER-BOTTOMRIGHT"]		= "Rounded Bottom Right Corner",
+	["CORNER-BOTTOMLEFT"]		= "Rounded Bottom Left Corner",
+	["CORNER-TOPLEFT"]			= "Rounded Top Left Corner",
+
+	["SIDE-RIGHT"]				= "Rounded Right Side Corners",
+	["SIDE-BOTTOM"]				= "Rounded Bottom Corners",
+	["SIDE-LEFT"]				= "Rounded Left Side Corners",
+	["SIDE-TOP"]				= "Rounded Top Corners",
+
+	["TRICORNER-TOPRIGHT"]		= "Squared Top Right Corner",
+	["TRICORNER-BOTTOMRIGHT"]	= "Squared Bottom Right Corner",
+	["TRICORNER-BOTTOMLEFT"]	= "Squared Bottom Left Corner",
+	["TRICORNER-TOPLEFT"]		= "Squared Top Left Corner",
+	
+	["CIRCULAR"]				= "Circular";
+};
+
+MN_STYLE_AUTOMATIC = "Automatic";
 
 -- Magellan Style LandMarks
 MAPNOTES_LANDMARKS = "Landmarks";				-- Landmarks, as in POI, or Magellan
@@ -168,5 +192,6 @@ MN_INVALID_KEY = "Invalid Map Key : ";
 MN_FINISHED_IMPORTING = "Finished Importing";
 MN_AREANOTES = "%d Notes in %d Areas";
 MN_DUPS_IGNORED = "Dupliacates Ignored";
+
 
 --end

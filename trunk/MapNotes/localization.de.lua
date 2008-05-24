@@ -153,5 +153,27 @@ if GetLocale() == "deDE" then
 	MAPNOTES_LM_SKIPPED = " MapNotes not Noted in ";
 	MAPNOTES_LANDMARKS_NOTIFY = MAPNOTES_LANDMARKS.." Noted in ";
 
+	MN_AUTO_DESCRIPTIONS = {
+		["SQUARE"]					= "Quadrat",
+
+		["CORNER-TOPRIGHT"]			= "Rund:Ecke oben rechts",
+		["CORNER-BOTTOMRIGHT"]		= "Rund:Ecke unten rechts",
+		["CORNER-BOTTOMLEFT"]		= "Rund:Ecke unten links",
+		["CORNER-TOPLEFT"]			= "Rund:Ecke oben links",
+
+		["SIDE-RIGHT"]				= "Rund:Eckes rechts",
+		["SIDE-BOTTOM"]				= "Rund:Eckes unten",
+		["SIDE-LEFT"]				= "Rund:Eckes links",
+		["SIDE-TOP"]				= "Rund:Eckes oben",
+
+		["TRICORNER-TOPRIGHT"]		= "Quadrat:Ecke oben rechts",
+		["TRICORNER-BOTTOMRIGHT"]	= "Quadrat:Ecke unten rechts",
+		["TRICORNER-BOTTOMLEFT"]	= "Quadrat:Ecke unten links",
+		["TRICORNER-TOPLEFT"]		= "Quadrat:Ecke oben links",
+		
+		["CIRCULAR"]				= "Rund";						
+	};
+
+	MN_STYLE_AUTOMATIC = "Automatic";
 
 end
