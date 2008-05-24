@@ -146,7 +146,7 @@
 		</Scripts>
 	</Button>
 <!-- Could try this as a normal frame with OnMouseDown events and a normal texture layer definition -->
-	<Button name="MN_MiniNotePOITemplate" enableMouse="true" parent="Minimap" virtual="true">
+	<Button name="MN_MiniNotePOITemplate" enableMouse="true" clampedToScreen="true" parent="Minimap" virtual="true">
 		<Size>
 			<AbsDimension x="20" y="20"/>
 		</Size>

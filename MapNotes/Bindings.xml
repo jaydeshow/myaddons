@@ -9,4 +9,7 @@
 	<Binding name="MN_TOGGLE_MINIS" description="Toggle Mininotes" runOnUp="false">
 		MapNotes_TotallyMini();
 	</Binding>
+	<Binding name="MN_MINIMAP_STYLE" description="Cycle through Minimap Styles" runOnUp="false">
+		MN_CustomMinimapCycler();
+	</Binding>
 </Bindings>

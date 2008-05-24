@@ -4,7 +4,7 @@
 	See the README file for more information.
 ]]
 
-MAPNOTES_VERSION = "4.15.20400";
+MAPNOTES_VERSION = "4.16.20400";
 MAPNOTES_EDITION = "Fan's Update";
 
 MN_DEFAULT_SCALE = 0.75;
@@ -603,4 +603,42 @@ MAPNOTES_DEFAULT_MINIDATA = {
 			["xOffset"] = 0.4,
 			["yOffset"] = 0.4,
 			["cont"] = 2,
+};
+
+MN_MINIMAP_STYLES = {
+	 [1] =  "SQUARE",
+	 [2] =  "CORNER-TOPRIGHT",
+	 [3] =  "CORNER-BOTTOMRIGHT",
+	 [4] =  "CORNER-BOTTOMLEFT",
+	 [5] =  "CORNER-TOPLEFT",
+	 [6] =  "SIDE-RIGHT",
+	 [7] =  "SIDE-BOTTOM",
+	 [8] =  "SIDE-LEFT",
+	 [9] =  "SIDE-TOP",   
+	[10] =  "TRICORNER-TOPRIGHT",
+	[11] =  "TRICORNER-BOTTOMRIGHT",
+	[12] =  "TRICORNER-BOTTOMLEFT",
+	[13] =  "TRICORNER-TOPLEFT",
+	[14] =  "CIRCULAR",
+};
+
+MN_AUTO_MINIMAPS = {
+	["SQUARE"]					= { true, true, true, true },
+
+	["CORNER-TOPRIGHT"]			= { false, true, true, true },
+	["CORNER-BOTTOMRIGHT"]		= { true, false, true, true },
+	["CORNER-BOTTOMLEFT"]		= { true, true, true, false },
+	["CORNER-TOPLEFT"]			= { true, true, false, true },
+
+	["SIDE-RIGHT"]				= { false, false, true, true },
+	["SIDE-BOTTOM"]				= { true, false, true, false },
+	["SIDE-LEFT"]				= { true, true, false, false },
+	["SIDE-TOP"]				= { false, true, false, true },
+
+	["TRICORNER-TOPRIGHT"]		= { true, false, false, false },
+	["TRICORNER-BOTTOMRIGHT"]	= { false, true, false, false },
+	["TRICORNER-BOTTOMLEFT"]	= { false, false, false, true },
+	["TRICORNER-TOPLEFT"]		= { false, false, true, false },
+	
+	["CIRUCULAR"]				= { false, false, false, false },
 };

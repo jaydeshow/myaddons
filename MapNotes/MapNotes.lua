@@ -63,6 +63,13 @@ local MapNotes_DoubleClick_Key = "";
 local MapNotes_DoubleClick_Id = 0;
 MapNotes_TargetInfo_Proceed = nil;
 
+local atan2 = math.atan2;
+local sin = math.sin;
+local cos = math.cos;
+local tan = math.tan;
+local sqrt = math.sqrt;
+local abs = math.abs;
+
 --[[
 		Hooked Functions
 --]]
@@ -76,7 +83,7 @@ local MN_MOFFSET_X = 0.0022;
 local MN_MOFFSET_Y = 0.0;
 local MN_cUpdate = 0.0;
 local MN_cUpdateLimit = 0.05;
-local MN_miniRadius = 57;
+local MN_miniRadius = 66;
 local MN_currentZoom = 0;
 local MN_rotatingMinimap = nil;
 
@@ -681,6 +688,9 @@ function MapNotes_MainCommandHandler(cmd, prms)
 	elseif ( cmd == "-clearicons" ) then
 		MapNotes_ClearIcons();
 
+	elseif ( cmd == "-mstyle" ) then
+		MN_CustomMinimapCycler( tonumber(prms) );
+
 	else
 		MapNotes_Help();
 	end
@@ -1284,26 +1294,48 @@ function MapNotes_WorldMap_OnUpdate(elapsed)
 end
 
 
+function MN_CustomMinimapCycler(style)
+	if ( ( style ) and ( type(style) == "number" ) ) then
+		if ( style == 0 ) then
+			MapNotes_Options.customMinimap = nil;
+		else
+			MapNotes_Options.customMinimap = style;
+		end
 
--- x.) Obviously introduce rotating map check								-- * THE MAIN REASON FOR THE CHANGE
--- x.) atan2													-- * SHOULD CHANGE
--- Below has been partially-implemented given the current OnUpdate per icon
--- 0.) Moving of code outside of loop									--*_*BIGGEST PERFORMANCE IMPACT THAT SHOULD NOT CHANGE FUNCTION
--- Below not implemented ;P
--- 1.) Replacement of specific data with default							-- _ THE BIGGEST PERFORMANCE IMPACT THAT DOES CHANGE FUNCTION (Zoom data implemented...)
--- 2.) Replacing of hard coded radius with calculated radius					-- _ POSSIBLE FUNCTION IMPROVEMENT FOR PEOPLE WHO HAVE CHANGED THE MINIMAP SIZE
--- 3.) SetPoint from "CENTER" without Translating, instead of from TOPLEFT			-- _ TINY PERFORMANCE IMPROVEMENT IF IT WORKS
+	elseif ( not MapNotes_Options.customMinimap ) then
+		MapNotes_Options.customMinimap = 1;
 
-local atan2 = math.atan2;
-local sin = math.sin;
-local cos = math.cos;
-local sqrt = math.sqrt;
+	else
+		MapNotes_Options.customMinimap = MapNotes_Options.customMinimap + 1;
+		if ( not MN_MINIMAP_STYLES[ MapNotes_Options.customMinimap ] ) then
+			MapNotes_Options.customMinimap = nil;
+		end
+	end
+
+	if ( MapNotes_Options.customMinimap ) then
+		MapNotes_StatusPrint( MapNotes_Options.customMinimap .. " : " .. MN_AUTO_DESCRIPTIONS[ MN_MINIMAP_STYLES[MapNotes_Options.customMinimap] ] );
+
+	else
+		MapNotes_StatusPrint( "0 : " .. MN_STYLE_AUTOMATIC );
+	end
+end
+
+local function MN_GetMinimapShape()
+	if ( MapNotes_Options.customMinimap ) then
+		return MN_AUTO_MINIMAPS[ MN_MINIMAP_STYLES[MapNotes_Options.customMinimap] ];
+
+	elseif ( GetMinimapShape ) then
+		return MN_AUTO_MINIMAPS[ GetMinimapShape() ];
+	end
+
+	return nil;
+end
+local minimapShaped;
 local visibilityUpdate = 0;
 local MN_currentConst, MN_key;
 local MN_pX, MN_pY, MN_dist = 0, 0, 0;
 local MN_xPos, MN_yPos = 0, 0;
 local MN_xScale, MN_yScale = 1, 1;
-
 function MapNotes_MiniNote_OnUpdate(elapsed)
 	visibilityUpdate = visibilityUpdate + elapsed;
 
@@ -1313,6 +1345,9 @@ function MapNotes_MiniNote_OnUpdate(elapsed)
 	end
 
 	if ( visibilityUpdate > MapNotes_WorldMap_UpdateRate ) then		-- Changed Update Rate slightly higher
+
+		-- check for Minimap shape change via SimpleMinimap in this OnUpdate function
+		minimapShaped = MN_GetMinimapShape();
 
 		MN_pX, MN_pY = GetPlayerMapPosition("player");
 		local lZone, lCont = GetCurrentMapZone(), GetCurrentMapContinent();
@@ -1427,6 +1462,7 @@ function MapNotes_MiniNote_OnUpdate(elapsed)
 	end
 end
 
+
 local MN_facing;
 -- Basically the design here is to keep as many of the "traditional" required variables in the main OnUpdate because they don't need to be calculated SO frequently...
 -- If possible, the only variable that needs Frequent updating is the Rotation Angle... But I move the test of the "if Rotation turned on" test in to the Main OnUpdate also, and only do a boolean test here
@@ -1442,34 +1478,45 @@ function POI_OnUpdate(elapsed, POI)
 		end
 
 		if ( MN_currentConst ) then
-			MN_facing = 0;
-			MN_xPos, MN_yPos 	= POI.xPos, POI.yPos;
+			MN_xPos, MN_yPos = POI.xPos, POI.yPos;
 			MN_dist = POI.dist;
-			local setRadius = nil;
-			if ( MN_rotatingMinimap ) then
-				setRadius = MN_dist;
-				MN_facing = MiniMapCompassRing:GetFacing();
-			end
-			if ( MN_dist > MN_miniRadius-0.5 ) then
-				setRadius = MN_miniRadius;
-			end
 
 			-- Recalculate the angle and convert from Polar coordinates back to cartesian coordinates if necessary
-			-- i.e. if on the edge of the minimap, or if Minimap Rotation needs to be accounted for
-			if ( setRadius ) then
-				local theta = atan2(MN_xPos, MN_yPos);
-				theta = theta + MN_facing;
-				MN_xPos = sin(theta) * setRadius;
-				MN_yPos = cos(theta) * setRadius;
+			-- i.e. if Minimap Rotation needs to be accounted for
+			if ( MN_rotatingMinimap ) then
+				local theta = atan2(MN_xPos, MN_yPos) + MiniMapCompassRing:GetFacing();
+				MN_xPos = sin(theta) * MN_dist;
+				MN_yPos = cos(theta) * MN_dist;
+			end			
+
+			-- Squared map ?
+			if ( minimapShaped ) then
+				local squared = 1;
+				if ( MN_xPos < 0 ) then squared = squared + 2; end
+				if ( MN_yPos > 0 ) then squared = squared + 1; end
+				squared = minimapShaped[squared];
+				if ( squared ) then
+					local p, q = abs(MN_xPos), abs(MN_yPos);
+					if ( q > p ) then p = q; end
+					if ( p > MN_miniRadius ) then
+						MN_dist = p;
+					else
+						MN_dist = 0;
+					end
+				end
 			end
 
-			POI:SetPoint("CENTER", "MinimapCluster", "TOPLEFT", 105 + MN_xPos, -93 - MN_yPos);
-			POI:Show();
+			if ( MN_dist > MN_miniRadius ) then
+				local scaling = MN_miniRadius / MN_dist;
+				MN_xPos = MN_xPos * scaling;
+				MN_yPos = MN_yPos * scaling;
+			end
 
+			POI:SetPoint("CENTER", "Minimap", "CENTER", MN_xPos, -MN_yPos);
+			POI:Show();
 		end
 	end
 end
-
 
 
 function MapNotes_HideMiniNotes(fr)
@@ -2483,8 +2530,8 @@ function MapNotes_DrawLine(n_id, x1, y1, x2, y2, Plugin)					--Telic_2 (Added Pl
 	local width = lineFrame:GetWidth();
 	local height = lineFrame:GetHeight();
 
-	local deltax = ( math.abs((x1 - x2) * width)  );
-	local deltay = ( math.abs((y1 - y2) * height) );
+	local deltax = ( abs((x1 - x2) * width)  );
+	local deltay = ( abs((y1 - y2) * height) );
 
 	local xOffset = ( (math.min(x1,x2) * width ) );
 	local yOffset = (-(math.min(y1,y2) * height) );
@@ -2754,7 +2801,7 @@ function MapNotes_Minimap_OnClick()
 		local cx, cy = this:GetCenter();
 		x = x - cx;
 		y = 1 - ( y - cy );
-		local dist = math.sqrt(x * x + y * y);
+		local dist = sqrt(x * x + y * y);
 		if ( dist < (this:GetWidth() / 2) ) then
 			
 			SetMapToCurrentZone();

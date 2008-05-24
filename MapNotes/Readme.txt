@@ -1,5 +1,5 @@
 ******************************************
-MapNotes (Fan's Update) README v4.15.20400
+MapNotes (Fan's Update) README v4.16.20400
 ******************************************
 
 Maintainer: Telic <telic@hotmail.co.uk>
@@ -209,6 +209,43 @@ If created on a World map, then it will also be displayed in the Minimap for you
 If in a Raid group, then the note will be shared with other Raid members who have MapNotes installed
 Otherwise, if in a Party, then the note will be shared with the Party members who have MapNotes installed
 Otherwise, its just your own quick temporary marker ;)
+
+
+
+
+Differently Shaped Minimaps
+===========================
+
+As it works with SimpleMinimap automatically, and wouldn't change much in other circumstances, there is no GUI control of this option. However, it is possible to manually specify the Minimap style you want via the provided key binding to specify the style you want.
+OR via the following slash command :
+
+/mn -mstyle [#]
+
+Where # is a number specifying the style of map you want to force MapNotes to use.
+Use the keybinding to cycle through the available styles to choose from, or just use "/mn -mstyle" on its own.
+
+ 0 "Automatic" -- adjusts its shape automatically based on SimpleMinimap skins
+
+ 1 "Full Square",
+
+ 2 "Rounded Top Right Corner",
+ 3 "Rounded Bottom Right Corner",
+ 4 "Rounded Bottom Left Corner",
+ 5 "Rounded Top Left Corner",
+
+ 6 "Rounded Right Side Corners",
+ 7 "Rounded Bottom Corners",
+ 8 "Rounded Left Side Corners",
+ 9 "Rounded Top Corners",
+
+10 "Squared Top Right Corner",
+11 "Squared Bottom Right Corner",
+12 "Squared Bottom Left Corner",
+13 "Squared Top Left Corner",
+
+14 "Circular";
+
+
 
 
 
@@ -483,12 +520,31 @@ Change Log
 **********
 
 =======================================
+Changes in v4.16.20400 from v4.15.20300
+=======================================
+
+- support for differently shaped minimaps
+Automatically works with SimpleMinimap
+
+As it works with SimpleMinimap automatically, and wouldn't change much in other circumstances, there is no GUI control of this option. However, it is possible to manually specify the Minimap style you want via the following methods :
+
+1.) use the following slash command to cycle through the available styles
+"/mn -mstyle [#]"
+Pass an optional number to specify a particular style.
+Pass a zero to revert to a circular Minimap style.
+See the Readme.txt file for a list of styles.
+
+2.) use the provided key-binding to cycle through the available styles
+
+
+
+
+
+=======================================
 Changes in v4.15.20400 from v4.15.20300
 =======================================
 
 - toc update
-
-
 
 
 
