@@ -156,6 +156,8 @@ if (GetLocale() == "koKR") then
 		["BOTTOMRIGHT"] = "우측 하단",
 
 		-- AutoBarFuBar
+		["FuBarPlugin Config"] = "FuBar 플러그인 설정",
+		["Configure the FuBar Plugin"] = "FuBar 플러그인을 설정합니다.",
 --		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f더블-클릭|r GUI 설정창 열기.\n|cffeda55fCtrl-클릭|r 버튼 잠금 토글. |cffeda55fShift-클릭|r 바 자금 토글.",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",

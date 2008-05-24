@@ -1,4 +1,40 @@
 ------------------------------------------------------------------------
+r75021 | toadkiller | 2008-05-24 07:47:11 -0400 (Sat, 24 May 2008) | 7 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/AutoBarFuBar.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/ChangeList.lua
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+   M /trunk/AutoBar/embeds.xml
+
+AutoBar : 
+-- Move to LibStickyFrames-2.0 for dragging.
+-- Switch to teal for keybind mode.
+-- Most of the modes are now exclusive, and will turn off others that are on when activated.
+-- Make AutoBar level BF Colors default to {}
+-- Remove Style settings from AutoBar.  Skinning is now exclusively from ButtonFacade
+
+------------------------------------------------------------------------
+r75004 | toadkiller | 2008-05-24 02:11:01 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Bindings.xml
+
+AutoBar : 
+-- Remove dummy entries for mage pally and priest
+------------------------------------------------------------------------
 r74912 | toadkiller | 2008-05-23 06:37:47 -0400 (Fri, 23 May 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/libs
@@ -1325,24 +1361,4 @@ Changed paths:
 AutoBar : 
 -- lanatha: Switch all of AutoBarButton to SpellInfo
 
-------------------------------------------------------------------------
-r70936 | scorpio0920 | 2008-04-22 13:54:39 -0400 (Tue, 22 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhCN and zhTW localization.
-------------------------------------------------------------------------
-r70919 | StiviS | 2008-04-22 09:41:40 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : esES updated
-------------------------------------------------------------------------
-r70911 | StiviS | 2008-04-22 08:56:27 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : esES updated
 ------------------------------------------------------------------------

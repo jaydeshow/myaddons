@@ -1,5 +1,3 @@
---zhCN Translate from Lostcup
---Add and Mod by Ananhaid 5/21th
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("zhCN", function() return {
 		["Parrot"] = "Parrot",
@@ -15,6 +13,8 @@ L:AddTranslations("zhCN", function() return {
 		["Whether to show healing over the enemy's heads."] = "是否在敌人头上显示治疗量。",
 		["|cffffff00Left-Click|r to change settings with a nice GUI configuration."] = "|cffffff00左键点击|r以 GUI 配置方式改变设置。",
 		["|cffffff00Right-Click|r to change settings with a drop-down menu."] = "|cffffff00右键点击|r以下拉菜单方式改变设置。",
+		["Show guardian events"] = "显示守卫事件",
+		["Whether events involving your guardian(s) (totems, ...) should be displayed"] =  "显示所有与守卫（如：图腾，…）相关的事件",
 }end)
 
 local L_CombatEvents = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatEvents")

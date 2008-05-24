@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 75012 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -74,7 +74,7 @@ L:RegisterTranslations("frFR", function() return {
 	["The local maintank list has been refreshed."] = "La liste locale des tanks principaux a été rafraîchie.",
 	["Refresh"] = "Rafraîchir",
 	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "Rafraîchit la liste locale des tanks principaux, au cas où des changements n'ont pas été répercutés dans l'affichage pour certaines raisons.\n\nNotez que ceci ne va pas chercher la liste des tanks principaux chez les autres joueurs, mais met à jour uniquement votre affichage local.",
-	["Participant/MainTank"] = "Participant/MainTank",
+	["Participant/MainTank"] = "Participant/Tanks principaux",
 	["Notify deaths"] = "Annoncer les morts",
 	["Notifies you when a main tank dies."] = "Prévient quand un tank principal meurt.",
 	["Tank %s has died!"] = "Le tank %s est mort !",

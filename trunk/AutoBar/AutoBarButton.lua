@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 74872 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -587,7 +587,11 @@ end
 
 function AutoBarButton:SetTooltip(button)
 --AutoBar:Print("SetTooltip " .. tostring(self.needsTooltip) .. " button " .. tostring(button) .. " button " .. tostring(button) .. " showTooltip " .. tostring(AutoBar.db.account.showTooltip) .. " self.needsTooltip " .. tostring(self.needsTooltip))
-	LibKeyBound:Set(self)
+	local isAutoBarButton = self.class and self.class.buttonDB
+
+	if (isAutoBarButton and self.GetHotkey) then
+		LibKeyBound:Set(self)
+	end
 	local noTooltip = not (AutoBar.db.account.showTooltip and self.needsTooltip or AutoBar.unlockButtons)
 	noTooltip = noTooltip or (InCombatLockdown() and not AutoBar.db.account.showTooltipCombat) or (button == "OnLeave")
 	if (noTooltip) then
@@ -612,7 +616,7 @@ function AutoBarButton:SetTooltip(button)
 	if (AutoBar.unlockButtons) then
 		if (self.class and self.class.sharedLayoutDB) then
 			GameTooltip:AddLine(self.class.barName)
-		elseif(self.class and self.class.buttonDB) then
+		elseif(isAutoBarButton) then
 			GameTooltip:AddLine(AutoBarButton:GetDisplayName(self.class.buttonDB))
 		end
 	else
@@ -620,7 +624,7 @@ function AutoBarButton:SetTooltip(button)
 
 --AutoBar:Print("AutoBarButton:SetTooltip self.needsTooltip " .. tostring(self.needsTooltip).." buttonType " .. tostring(buttonType))
 		if (not buttonType) then
-			if (self.class and self.class.buttonDB) then
+			if (isAutoBarButton) then
 --AutoBar:Print("AutoBarButton:SetTooltip 2 self.class.buttonDB " .. tostring(self.class.buttonDB))
 				GameTooltip:AddLine(AutoBarButton:GetDisplayName(self.class.buttonDB))
 			else

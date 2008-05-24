@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 74775 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -39,7 +39,7 @@ local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d
 
 local _G = getfenv(0)
 local LibKeyBound = LibStub("LibKeyBound-1.0")
-local LibStickyFrames = LibStub("LibStickyFrames-1.0")
+local LibStickyFrames = LibStub("LibStickyFrames-2.0")
 local AceOO = AceLibrary("AceOO-2.0")
 local AceEvent = AceLibrary("AceEvent-2.0")
 local LBF = LibStub("LibButtonFacade", true)
@@ -302,6 +302,12 @@ function AutoBar:OnEnable(first)
 	LibKeyBound.RegisterCallback(self, "LIBKEYBOUND_ENABLED")
 	LibKeyBound.RegisterCallback(self, "LIBKEYBOUND_DISABLED")
 	LibKeyBound.RegisterCallback(self, "LIBKEYBOUND_MODE_COLOR_CHANGED")
+
+	LibStickyFrames.RegisterCallback(self, "OnSetGroup")
+	LibStickyFrames.RegisterCallback(self, "OnClick")
+--	LibStickyFrames.RegisterCallback(self, "OnStartFrameMoving")
+	LibStickyFrames.RegisterCallback(self, "OnStopFrameMoving")
+	LibStickyFrames.RegisterCallback(self, "OnStickToFrame")
 end
 
 
@@ -661,7 +667,8 @@ function AutoBar:PLAYER_REGEN_DISABLED(arg1)
 	AutoBar.inCombat = true
 
 	if (AutoBar.unlockButtons) then
-		AutoBar:LockButtons()
+		AutoBar:MoveButtonsModeOff()
+		LibKeyBound:Deactivate()
 	end
 --AutoBar:Print("   PLAYER_REGEN_DISABLED")
 	if (self:IsEventScheduled("UpdateRescan")) then
@@ -828,7 +835,7 @@ function AutoBar:Initialize()
 		group.SkinID = AutoBar.db.account.SkinID or "Blizzard"
 		group.Gloss = AutoBar.db.account.Gloss
 		group.Backdrop = AutoBar.db.account.Backdrop
-		group.Colors = AutoBar.db.account.Colors
+		group.Colors = AutoBar.db.account.Colors or {}
 	end
 
 	AutoBarCategory:Initialize()
@@ -836,7 +843,6 @@ function AutoBar:Initialize()
 	AutoBarCategory:UpdateCustomCategories()
 	AutoBarSearch:Initialize()
 	AutoBarButton:TooltipHackInitialize()
-	AutoBar.Class.Bar:RegisterStickyFrames()
 	self:LogEventEnd("AutoBar:Initialize")
 AutoBarSearch:Test()
 end
@@ -979,6 +985,7 @@ end
 function AutoBar:UpdateObjects()
 	self:LogEventStart("AutoBar:UpdateObjects")
 	local barLayoutDBList = AutoBar.barLayoutDBList
+	local bar
 	for barKey, barDB in pairs(barLayoutDBList) do
 		if (barDB.enabled and barDB[AutoBar.CLASS]) then
 --AutoBar:Print("UpdateObjects barKey " .. tostring(barKey) .. " AutoBar.CLASS " .. tostring(AutoBar.CLASS) .. " barDB[AutoBar.CLASS] " .. tostring(barDB[AutoBar.CLASS]))
@@ -988,9 +995,16 @@ function AutoBar:UpdateObjects()
 				AutoBar.barList[barKey] = AutoBar.Class.Bar:new(barKey)
 --AutoBar:Print("UpdateObjects barKey " .. tostring(barKey) .. " Name " .. tostring(AutoBar.barList[barKey].barName))
 			end
+			bar = AutoBar.barList[barKey]
+			LibStickyFrames:SetFrameEnabled(bar.frame, true)
+			LibStickyFrames:SetFrameHidden(bar.frame, bar.sharedLayoutDB.hide)
+			LibStickyFrames:SetFrameText(bar.frame, bar.barName)
 		elseif (AutoBar.barList[barKey]) then
 --AutoBar:Print("UpdateObjects barKey " .. tostring(barKey) .. " Hide " .. tostring(AutoBar.barList[barKey].barName))
-			AutoBar.barList[barKey].frame:Hide()
+			bar = AutoBar.barList[barKey]
+			bar.frame:Hide()
+			LibStickyFrames:SetFrameEnabled(bar.frame)
+			LibStickyFrames:SetFrameText(bar.frame, bar.barName)
 		end
 	end
 	self:LogEventEnd("AutoBar:UpdateObjects")
@@ -1181,6 +1195,8 @@ function AutoBar:ColorAutoBar()
 end
 
 function AutoBar:LIBKEYBOUND_ENABLED()
+	AutoBar:MoveBarModeOff()
+	AutoBar:MoveButtonsModeOff()
 	AutoBar.assignBindings = true
 	AutoBar:ColorAutoBar()
 end
@@ -1194,9 +1210,118 @@ function AutoBar:LIBKEYBOUND_MODE_COLOR_CHANGED()
 	AutoBar:ColorAutoBar()
 end
 
-function AutoBar:ToggleSkinMode()
+function AutoBar:MoveBarModeToggle()
+--AutoBar:Print("AutoBar:MoveBarModeToggle")
+	if (LibStickyFrames:GetGroup()) then
+		AutoBar:MoveBarModeOff()
+	else
+		AutoBar:MoveBarModeOn()
+	end
+end
+
+function AutoBar:MoveBarModeOff()
+	LibStickyFrames:SetGroup(nil)
+	AutoBar.stickyMode = false
+end
+
+function AutoBar:MoveBarModeOn()
+	LibKeyBound:Deactivate()
+	AutoBar:MoveButtonsModeOff()
+	LibStickyFrames:SetGroup(true)
+	AutoBar.stickyMode = true
+end
+
+function AutoBar.OnSetGroup(group)
+--AutoBar:Print("AutoBar.SetStickyMode stickyMode " .. tostring(stickyMode))
+	AutoBar.stickyMode = false
+	if (group == true) then
+		AutoBar.stickyMode = true
+	elseif (type(group) == "table") then
+		for i, bar in pairs(AutoBar.barList) do
+			if (bar.sharedLayoutDB.enabled and LibStickyFrames:InFrameGroup(bar.frame, group)) then
+				AutoBar.stickyMode = true
+				break
+			end
+		end
+	end
+	if (AutoBarFuBar) then
+		AutoBarFuBar:UpdateDisplay()
+	end
+end
+
+function AutoBar:OnClick(event, frame, button)
+--AutoBar:Print("AutoBar.Class.Bar.OnClick frame " .. tostring(frame) .. " button " .. tostring(button) .. " lolwut " .. tostring(lolwut))
+	local self = frame.class
+	if (button == "RightButton") then
+--AutoBar:Print("AutoBar.Class.Bar.OnClick ShowBarOptions frame " .. tostring(frame) .. " button " .. tostring(button))
+		self:ShowBarOptions()
+	elseif (button == "LeftButton") then
+--AutoBar:Print("AutoBar.Class.Bar.OnClick ToggleVisibilty frame " .. tostring(frame) .. " button " .. tostring(button))
+		self:ToggleVisibilty()
+	end
+end
+
+--[[
+function AutoBar:OnStartFrameMoving()
+--AutoBar:Print("AutoBar.OnStartFrameMoving")
+end
+
+--]]
+function AutoBar:OnStopFrameMoving(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+	local self = frame.class
+--AutoBar:Print("AutoBar:OnStopFrameMoving " .. tostring(self.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
+	self:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+end
+
+function AutoBar:OnStickToFrame(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+	local self = frame.class
+--AutoBar:Print("AutoBar:OnStickToFrame " .. tostring(self.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
+	self:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+end
+
+
+function AutoBar:MoveButtonsModeToggle()
+	if AutoBar.unlockButtons then
+		AutoBar:MoveButtonsModeOff()
+	else
+		AutoBar:MoveButtonsModeOn()
+	end
+end
+
+function AutoBar:MoveButtonsModeOn()
+	AutoBar:MoveBarModeOff()
+	LibKeyBound:Deactivate()
+	AutoBar.unlockButtons = true
+	for i, bar in pairs(self.barList) do
+		if (bar.sharedLayoutDB.enabled) then
+			bar:MoveButtonsModeOn()
+		end
+	end
+	self:UpdateActive()
+	if (AutoBarFuBar) then
+		AutoBarFuBar:UpdateDisplay()
+	end
+end
+
+function AutoBar:MoveButtonsModeOff()
+	AutoBar.unlockButtons = nil
+	for i, bar in pairs(self.barList) do
+		if bar.sharedLayoutDB.enabled then
+			bar:MoveButtonsModeOff()
+		end
+	end
+	self:UpdateActive()
+	if (AutoBarFuBar) then
+		AutoBarFuBar:UpdateDisplay()
+	end
+end
+
+function AutoBar:SkinModeToggle()
 	local BF = LibStub("AceAddon-3.0"):GetAddon("ButtonFacade", true)
 	if (BF) then
+		AutoBar:MoveBarModeOff()
+		AutoBar:MoveButtonsModeOff()
+		LibKeyBound:Deactivate()
 		if (BF:OpenMenu()) then
 			BF:OpenMenu()
 		else
@@ -1207,57 +1332,6 @@ function AutoBar:ToggleSkinMode()
 	end
 end
 
-function AutoBar.ToggleStickyMode()
---AutoBar:Print("AutoBar.ToggleStickyMode")
-	LibStickyFrames:StickyMode(not LibStickyFrames.stickyMode)
-end
-
-function AutoBar.SetStickyMode(stickyMode)
---AutoBar:Print("AutoBar.SetStickyMode stickyMode " .. tostring(stickyMode))
-	if (AutoBar.stickyMode ~= stickyMode) then
-		AutoBar.stickyMode = stickyMode
-
-		for i, bar in pairs(AutoBar.barList) do
-			if (bar.sharedLayoutDB.enabled) then
-				if (stickyMode) then
---AutoBar:Print("AutoBar.SetStickyMode " .. tostring(bar.name) .. " stickyMode " .. tostring(stickyMode))
-					bar:UnlockBars()
-				else
-					bar:LockBars()
-				end
-			end
-		end
-		if (AutoBarFuBar) then
-			AutoBarFuBar:UpdateDisplay()
-		end
-	end
-end
-
-function AutoBar:UnlockButtons()
-	AutoBar.unlockButtons = true
-	for i, bar in pairs(self.barList) do
-		if (bar.sharedLayoutDB.enabled) then
-			bar:UnlockButtons()
-		end
-	end
-	self:UpdateActive()
-	if (AutoBarFuBar) then
-		AutoBarFuBar:UpdateDisplay()
-	end
-end
-
-function AutoBar:LockButtons()
-	AutoBar.unlockButtons = nil
-	for i, bar in pairs(self.barList) do
-		if bar.sharedLayoutDB.enabled then
-			bar:LockButtons()
-		end
-	end
-	self:UpdateActive()
-	if (AutoBarFuBar) then
-		AutoBarFuBar:UpdateDisplay()
-	end
-end
 
 
 --
@@ -1279,4 +1353,4 @@ end
 --/dump AutoBar.unlockButtons
 --/script AutoBar.db.account.logEvents = true
 --/script AutoBar.db.account.logEvents = nil
---/script LibStub("LibKeyBound-1.0"):SetColorKeyBoundMode(1, 1, 0, 1)
+--/script LibStub("LibKeyBound-1.0"):SetColorKeyBoundMode(0.75, 1, 0, 0.5)

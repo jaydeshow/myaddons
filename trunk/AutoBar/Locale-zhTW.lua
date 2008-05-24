@@ -156,6 +156,8 @@ if (GetLocale() == "zhTW") then
 		["BOTTOMRIGHT"] = "右下",
 
 		-- AutoBarFuBar
+		["FuBarPlugin Config"] = "FuBar 插件設定",
+		["Configure the FuBar Plugin"] = "設定 FuBar 插件",
 --		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f雙擊: |r開啟設定介面。\n|cffeda55fCtrl-左擊: |r切換按鈕鎖定。\n|cffeda55fShift-左擊: |r切換物品列鎖定。",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",

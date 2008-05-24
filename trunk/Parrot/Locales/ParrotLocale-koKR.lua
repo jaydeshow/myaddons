@@ -15,6 +15,8 @@ L:AddTranslations("koKR", function() return {
 		["Whether to show healing over the enemy's heads."] = "적의 머리위에 치유량을 표시합니다.",
 		["|cffffff00Left-Click|r to change settings with a nice GUI configuration."] = "GUI 환경 설정으로 설정을 변경하려면 |cffffff00좌-클릭|r하세요.",
 		["|cffffff00Right-Click|r to change settings with a drop-down menu."] = "드롭-다운 메뉴로 설정을 변경하려면 |cffffff00우-클릭|r하세요.",
+		["Show guardian events"] = "수호물 이벤트 표시",
+		["Whether events involving your guardian(s) (totems, ...) should be displayed"] =  "당신의 수호물 (토템, ...)을 포함시킨 이벤트를 표시합니다.",
 }end)
 
 local L_CombatEvents = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatEvents")
@@ -565,6 +567,7 @@ L_Loot:AddTranslations("koKR", function() return {
 
 local L_TriggerConditions_Data = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_TriggerConditions_Data")
 L_TriggerConditions_Data:AddTranslations("koKR", function() return {
+	-- Parrot_TriggerConditions_Data
 		["Enemy target health percent"] = "적대적 대상 생명력 백분율",
 		["Friendly target health percent"] = "우호적 대상 생명력 백분율",
 		["Self health percent"] = "자신의 생명력 백분율",

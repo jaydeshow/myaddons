@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r75012 | pettigrow | 2008-05-24 05:13:40 -0400 (Sat, 24 May 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Participant/MainTank.lua
+
+oRA2: frFR Update
+------------------------------------------------------------------------
 r74053 | rabbit | 2008-05-16 06:35:31 -0400 (Fri, 16 May 2008) | 1 line
 Changed paths:
    M /trunk/oRA2/Core.lua
@@ -235,118 +243,4 @@ Changed paths:
    M /trunk/oRA2/Leader/Invite.lua
 
 oRA2: Leader/Invite: Tune down on the guild roster juggling.
-------------------------------------------------------------------------
-r70972 | funkydude | 2008-04-22 18:08:53 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Core.lua
-   M /trunk/oRA2/Libs
-   M /trunk/oRA2/Optional/CoolDown.lua
-   M /trunk/oRA2/Optional/MainTank.lua
-   M /trunk/oRA2/Optional/PlayerTarget.lua
-   M /trunk/oRA2/Participant/Ready.lua
-   M /trunk/oRA2/embeds.xml
-   M /trunk/oRA2/oRA2.toc
-
-oRA2: update to LSM3
-------------------------------------------------------------------------
-r70953 | rabbit | 2008-04-22 16:07:08 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: Leader/Invite: Don't try to promote people if we're just assistant.
-------------------------------------------------------------------------
-r70940 | kunda | 2008-04-22 14:20:06 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Core.lua
-   M /trunk/oRA2/Leader/Durability.lua
-   M /trunk/oRA2/Leader/Invite.lua
-   M /trunk/oRA2/Leader/Item.lua
-   M /trunk/oRA2/Leader/Latency.lua
-   M /trunk/oRA2/Leader/Loot.lua
-   M /trunk/oRA2/Leader/MainTank.lua
-   M /trunk/oRA2/Leader/RaidWarn.lua
-   M /trunk/oRA2/Leader/Ready.lua
-   M /trunk/oRA2/Leader/Resist.lua
-   M /trunk/oRA2/Optional/CoolDown.lua
-   M /trunk/oRA2/Optional/Group.lua
-   M /trunk/oRA2/Optional/MainTank.lua
-   M /trunk/oRA2/Optional/PlayerTarget.lua
-   M /trunk/oRA2/Optional/Resurrection.lua
-   M /trunk/oRA2/Optional/Version.lua
-   M /trunk/oRA2/Optional/Zone.lua
-   M /trunk/oRA2/Options.lua
-   M /trunk/oRA2/Participant/Item.lua
-   M /trunk/oRA2/Participant/MainTank.lua
-   M /trunk/oRA2/Participant/RaidWarn.lua
-   M /trunk/oRA2/Participant/Ready.lua
-
-oRA2: deDE update
-------------------------------------------------------------------------
-r70934 | rabbit | 2008-04-22 13:39:24 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: Leader/Invite: Promote people on enable, in case people load the module after being promoted to leader in a full raid.
-------------------------------------------------------------------------
-r70933 | rabbit | 2008-04-22 13:36:25 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: Leader/Invite: Use RRU to check for new people to promote.
-------------------------------------------------------------------------
-r70923 | ananhaid | 2008-04-22 11:26:10 -0400 (Tue, 22 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-   M /trunk/oRA2/Leader/MainTank.lua
-   M /trunk/oRA2/Options.lua
-   M /trunk/oRA2/Participant/MainTank.lua
-
-oRA2: 
-- zhCN update.
-------------------------------------------------------------------------
-r70819 | scorpio0920 | 2008-04-21 20:52:10 -0400 (Mon, 21 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-   M /trunk/oRA2/Leader/MainTank.lua
-   M /trunk/oRA2/Options.lua
-   M /trunk/oRA2/Participant/MainTank.lua
-
-oRA2:
-- Update zhTW localization.
-------------------------------------------------------------------------
-r70817 | 7destiny | 2008-04-21 20:40:38 -0400 (Mon, 21 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: koKR Update
-------------------------------------------------------------------------
-r70798 | durcyn | 2008-04-21 18:26:36 -0400 (Mon, 21 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/MainTank.lua
-
-oRA2 Leader/Invite: make ClearLastMainTank work, per rabbit
-------------------------------------------------------------------------
-r70795 | durcyn | 2008-04-21 18:13:29 -0400 (Mon, 21 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: bugfix
-------------------------------------------------------------------------
-r70793 | rabbit | 2008-04-21 17:57:45 -0400 (Mon, 21 Apr 2008) | 6 lines
-Changed paths:
-   M /trunk/oRA2/Bindings.xml
-   M /trunk/oRA2/Core.lua
-   M /trunk/oRA2/Leader/Durability.lua
-   M /trunk/oRA2/Leader/Invite.lua
-   M /trunk/oRA2/Leader/MainTank.lua
-   M /trunk/oRA2/Options.lua
-   M /trunk/oRA2/Participant/MainTank.lua
-   M /trunk/oRA2/Participant/Participant.lua
-
-oRA2: Drycode commit. Someone please test it.
- * Added options to autopromote all raid members and all guild members in the raid.
- * Rank invite menu is now populated with all guild ranks.
- * Main tank tables are cleared when oRA2 is disabled. Joining a new raid should have the main tank list cleared now.
- * Added keybindings to set your target/mouseover as the next free main tank and to clear the last main tank.
-
 ------------------------------------------------------------------------

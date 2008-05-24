@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 75012 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -125,7 +125,7 @@ L:RegisterTranslations("frFR", function() return {
 	["Remove a maintank."] = "Enlève un tank principal.",
 	["Removed maintank: "] = "Tank principal enlevé : ",
 	["Set maintank: "] = "Tank principal définit : ",
-	["Leader/MainTank"] = "Chef/MainTank",
+	["Leader/MainTank"] = "Chef/Tanks principaux",
 	["Broadcast"] = "Diffuser",
 	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "Diffuse votre liste des tanks principaux au raid, au cas où quelqu'un ne les a pas reçus automatiquement.",
 

@@ -1,6 +1,6 @@
 --[[
 Name: LibKeyBound-1.0
-Revision: $Rev: 74773 $
+Revision: $Rev: 75022 $
 Author(s): Gello, Maul, Toadkiller, Tuller
 Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 Documentation: http://www.wowace.com/wiki/LibKeyBound-1.0
@@ -10,7 +10,7 @@ Dependencies: CallbackHandler-1.0
 --]]
 
 local MAJOR = "LibKeyBound-1.0"
-local MINOR = "$Revision: 74773 $"
+local MINOR = "$Revision: 75022 $"
 
 --[[
 	LibKeyBound-1.0
@@ -39,6 +39,7 @@ LibKeyBound.events = LibKeyBound.events or _G.LibStub("CallbackHandler-1.0"):New
 local L
 LibKeyBound.Binder = {}
 
+-- #NODOC
 function LibKeyBound:Initialize()
 	L = self.locale
 
@@ -113,7 +114,7 @@ end
 
 
 -- Default color to indicate bindable frames in your mod.
-LibKeyBound.colorKeyBoundMode = LibKeyBound.colorKeyBoundMode or { 1, 1, 0, 1 }
+LibKeyBound.colorKeyBoundMode = LibKeyBound.colorKeyBoundMode or { 0, 1, 0.5, 0.5 }
 
 --[[
 LibKeyBound:SetColorKeyBoundMode([r][, g][, b][, a])
@@ -150,6 +151,15 @@ function LibKeyBound:PLAYER_REGEN_DISABLED()
 	end
 end
 
+
+--[[
+Notes:
+ Switches KeyBound Mode between on and off
+
+Example:
+	local LibKeyBound = LibStub("LibKeyBound-1.0")
+ 	LibKeyBound:Toggle()
+--]]
 function LibKeyBound:Toggle()
 	if (LibKeyBound:IsShown()) then
 		LibKeyBound:Deactivate()
@@ -158,6 +168,15 @@ function LibKeyBound:Toggle()
 	end
 end
 
+
+--[[
+Notes:
+ Switches KeyBound Mode to on
+
+Example:
+	local LibKeyBound = LibStub("LibKeyBound-1.0")
+ 	LibKeyBound:Activate()
+--]]
 function LibKeyBound:Activate()
 	if not self:IsShown() then
 		if InCombatLockdown() then
@@ -174,6 +193,15 @@ function LibKeyBound:Activate()
 	end
 end
 
+
+--[[
+Notes:
+ Switches KeyBound Mode to off
+
+Example:
+	local LibKeyBound = LibStub("LibKeyBound-1.0")
+ 	LibKeyBound:Deactivate()
+--]]
 function LibKeyBound:Deactivate()
 	if self:IsShown() then
 		self.enabled = nil
@@ -184,6 +212,20 @@ function LibKeyBound:Deactivate()
 	end
 end
 
+
+--[[
+Notes:
+ Switches KeyBound Mode to off
+
+Example:
+	local LibKeyBound = LibStub("LibKeyBound-1.0")
+ 	local isKeyBoundMode = LibKeyBound:IsShown()
+ 	if (isKeyBoundMode) then
+ 		-- Do something
+ 	else
+ 		-- Do another thing
+ 	end
+--]]
 function LibKeyBound:IsShown()
 	return self.enabled
 end

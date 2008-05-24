@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 75012 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -397,7 +397,7 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	["MainTank"] = "Tanks principaux",
-	["Optional/MainTank"] = "Optionnel/MainTank",
+	["Optional/MainTank"] = "Optionnel/Tanks principaux",
 	["Options for the maintanks."] = "Options concernant les tanks principaux.",
 	["Targettarget"] = "Cible de la cible",
 	["Toggle TargetTarget frames."] = "Affiche ou non les cadres de la cible de la cible.",

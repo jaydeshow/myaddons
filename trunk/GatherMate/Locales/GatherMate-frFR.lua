@@ -55,7 +55,7 @@ L["Icon Alpha"]= "Transparence des icônes"
 L["Icon alpha value, this lets you change the transparency of the icons. Only applies on World Map."]= "Permet de changer la valeur de transparence des icônes. S'applique uniquement à la carte du monde."
 L["Miscellaneous"] = "Divers"
 -- Cleanup subtree (now Database Maintenance)
-L["Database Maintenance"] = "Maintenant de la BdD"
+L["Database Maintenance"] = "Maintenance BdD"
 L["Cleanup_Desc"] = "Au fil du temps, votre base de données risque de devenir surchargée. Nettoyer votre base de données permet de vérifier les nœuds du même type de métier qui sont très proches les uns des autres et de déterminer s'il faut les rassembler en un seul nœud ou non."
 L["Cleanup radius"] = "Rayon de nettoyage"
 L["CLEANUP_RADIUS_DESC"] = "Le rayon en mètres où les nœuds dupliqués doivent être enlevés. La valeur par défaut est de |cffffd20050|r mètres pour l'extraction de gaz et de |cffffd20015|r mètres pour tout le reste. Ces paramètres sont également utilisés lors de l'ajout de nœuds."

@@ -13,6 +13,8 @@ L:AddTranslations("enUS", function() return {
 		["Whether to show healing over the enemy's heads."] = true,
 		["|cffffff00Left-Click|r to change settings with a nice GUI configuration."] = true,
 		["|cffffff00Right-Click|r to change settings with a drop-down menu."] = true,
+		["Show guardian events"] = true,
+		["Whether events involving your guardian(s) (totems, ...) should be displayed"] =  true,
 }end)
 
 local L_CombatEvents = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatEvents")

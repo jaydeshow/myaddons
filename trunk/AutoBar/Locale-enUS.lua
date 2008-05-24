@@ -156,6 +156,8 @@ if (GetLocale() == "enUS") then
 		["BOTTOMRIGHT"] = "Bottom Right",
 
 		-- AutoBarFuBar
+		["FuBarPlugin Config"] = "FuBarPlugin Config",
+		["Configure the FuBar Plugin"] = "Configure the FuBar Plugin",
 --		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock.",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
