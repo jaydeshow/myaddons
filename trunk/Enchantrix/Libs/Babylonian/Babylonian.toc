@@ -4,7 +4,7 @@
 ## Interface: 20400
 ## LoadOnDemand: 0
 ##
-## Version: 5.0.PRE.3087 (BillyGoat)
+## Version: 5.0.PRE.3104 (BillyGoat)
 ## Revision: $Id$
 ## URL: http://auctioneeraddon.com/dl/
 ##

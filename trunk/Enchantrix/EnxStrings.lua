@@ -4,8 +4,8 @@
 	http://localizer.norganna.org/
 
 	AddOn: Enchantrix
-	Revision: $Id: EnxStrings.lua 2888 2008-02-28 04:20:05Z ccox $
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Revision: $Id: EnxStrings.lua 3101 2008-05-08 05:40:29Z ccox $
+	Version: 5.0.PRE.3104 (BillyGoat)
 
 	License:
 		This program is free software; you can redistribute it and/or
@@ -430,6 +430,8 @@ EnchantrixLocalizations = {
 		["FrmtAutoDeIgnorePermanent"]	= "Ignoriere %s permanent";
 		["FrmtAutoDeIgnoreSession"]	= "Ignoriere %s diese Sitzung";
 		["FrmtAutoDeInactive"]	= "Autom. Entzaubern nicht aktiv";
+		["FrmtAutoDeProspectCancelled"]	= "Sondieren abgebrochen: item nicht gefunden";
+		["FrmtAutoDeProspecting"]	= "sondieren von %s";
 		["FrmtBidbrokerCurbid"]	= "aktGeb";
 		["FrmtBidbrokerDone"]	= "Die Auktionssuche (Betrag unter Gebotspreis) ist abgeschlossen.";
 		["FrmtBidbrokerHeader"]	= "Auktionen mit %s Silber Einsparung auf den durchschnittlichen Entzauberungswert:";
@@ -475,6 +477,7 @@ EnchantrixLocalizations = {
 		["GuiAutoDeOptions"]	= "Automatisierung";
 		["GuiAutoDePromptLine1"]	= "Willst Du dies entzaubern:";
 		["GuiAutoDePromptLine3"]	= "Bewertet um %s";
+		["GuiAutoProspectPromptLine1"]	= "Willst Du dies sondieren:";
 		["GuiBBUnbiddedOnly"]	= "Limitiere BidBroker auf Items ohne Gebote";
 		["GuiConfigProfiles"]	= "Erstelle, konfiguriere und editiere Profile";
 		["GuiCreateReplaceProfile"]	= "Erstelle oder ersetze ein Profil";
@@ -622,6 +625,7 @@ EnchantrixLocalizations = {
 		["GuiOtherHeader"]	= "Other Options";
 		["GuiOtherHelp"]	= "Miscellaneous Enchantrix Options";
 		["GuiPrintin"]	= "Select the desired message frame";
+		["GuiPrintYieldsInChat"]	= "Show item yields in chat";
 		["GuiTerse"]	= "Enable terse mode";
 		["GuiValuateAverages"]	= "Valuate with Auctioneer Averages";
 		["GuiValuateBaseline"]	= "Valuate with Built-in Data";

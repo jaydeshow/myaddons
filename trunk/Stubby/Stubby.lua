@@ -1,6 +1,6 @@
 --[[
 	Stubby AddOn for World of Watcraft (tm)
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: Stubby.lua 52 2007-12-14 01:32:36Z RockSlice $
 	URL: http://auctioneeraddon.com/dl/Stubby/
 

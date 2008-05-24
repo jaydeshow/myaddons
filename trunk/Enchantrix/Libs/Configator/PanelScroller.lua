@@ -1,6 +1,6 @@
 --[[
 	PanelScroller
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: PanelScroller.lua 76 2008-03-23 14:23:35Z kandoko $
 	URL: http://auctioneeraddon.com/dl/
 

@@ -1,7 +1,7 @@
 ﻿--[[
 	Auctioneer
 	Revision: $Id: AucMain.lua 1894 2007-05-24 13:54:19Z luke1410 $
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Original version written by Norganna.
 	Contributors: Araband
 
@@ -35,7 +35,7 @@
 Auctioneer_RegisterRevision("$URL$", "$Rev: 1894 $")
 
 
-Auctioneer.Version="5.0.PRE.3087";
+Auctioneer.Version="5.0.PRE.3104";
 -- If you want to see debug messages, create a window called "ettdebug" within the client.
 if (Auctioneer.Version == "<".."%version%>") then
 	Auctioneer.Version = "4.1.DEV";

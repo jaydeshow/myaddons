@@ -1,7 +1,7 @@
 ﻿--[[
 	Enchantrix Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
-	Revision: $Id: EnxAutoDisenchant.lua 3027 2008-04-13 03:40:30Z ccox $
+	Version: 5.0.PRE.3104 (BillyGoat)
+	Revision: $Id: EnxAutoDisenchant.lua 3101 2008-05-08 05:40:29Z ccox $
 	URL: http://enchantrix.org/
 
 	Automatic disenchant scanner.
@@ -28,7 +28,7 @@
 		since that is its designated purpose as per:
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
-Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxAutoDisenchant.lua $", "$Rev: 3027 $")
+Enchantrix_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Enchantrix/EnxAutoDisenchant.lua $", "$Rev: 3101 $")
 
 local ignoreList = {}
 local frame
@@ -209,10 +209,12 @@ local function onEvent(...)
 		if isState("prompt") and arg1 == "player" and arg2 == prompt.Yes:GetAttribute("spell") then
 			-- disenchant started - wait for completion
 			eventSpam(event .." ".. arg1 .." ".. arg2 .." ".. arg3 .." ".. arg4)
-			if arg2 == _ENCH('ArgSpellProspectingName') then
-				Enchantrix.Util.ChatPrint(_ENCH("FrmtAutoDeProspecting"):format(prompt.link))
-			else
-				Enchantrix.Util.ChatPrint(_ENCH("FrmtAutoDeDisenchanting"):format(prompt.link))
+			if (Enchantrix.Settings.GetSetting('chatShowFindings')) then
+				if arg2 == _ENCH('ArgSpellProspectingName') then
+					Enchantrix.Util.ChatPrint(_ENCH("FrmtAutoDeProspecting"):format(prompt.link))
+				else
+					Enchantrix.Util.ChatPrint(_ENCH("FrmtAutoDeDisenchanting"):format(prompt.link))
+				end
 			end
 			hidePrompt()
 			setState("cast")

@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: AucCommand.lua 2991 2008-04-01 01:36:04Z RockSlice $
 
 	Auctioneer command functions.

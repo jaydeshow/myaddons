@@ -1,6 +1,6 @@
 --[[
 	Configator - A library to help you create a gui config
-	Version: 5.0.PRE.3087 (BillyGoat)
+	Version: 5.0.PRE.3104 (BillyGoat)
 	Revision: $Id: Configator.lua 84 2008-04-18 03:18:13Z RockSlice $
 	URL: http://auctioneeraddon.com/dl/
 
