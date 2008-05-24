@@ -1,9 +1,8 @@
-## Interface: 20200
+## Interface: 20400
 ## Notes: Minimap and world map enhancements
 ## Title: Mappy
-## Version: 1.1.3
-## OptionalDeps: 
-## RequiredDeps: 
+## Author: John Stephen
+## Version: 2.0b1
 ## SavedVariables: gMappy_Settings
 
 MCDebugLib.lua
