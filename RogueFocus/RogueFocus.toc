@@ -1,8 +1,0 @@
-## Interface: 20300
-## Title: Rogue Focus Classic
-## Version: 1.0.3
-## Author: Logan
-## Email: a.donati@gmail.com
-## SavedVariables: RogueFocusConfig
-RogueFocus.xml
-RogueFocusOptions.xml
