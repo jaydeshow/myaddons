@@ -1,0 +1,14 @@
+## Interface: 20100
+## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fDetached|r]
+## Version: 2.0
+## Author: Kemayo
+## X-Category: Quest
+## X-eMail: kemayo at gmail dot com
+## X-Website: http://kemayo.wowinterface.com/
+## X-RelSite-WoWI: 4752
+## X-WoWIPortal: kemayo
+## X-FuBar_QuestsFu-DefaultState: 0
+## Notes: A more configurable detached tooltip for QuestsFu.
+## RequiredDeps: FuBar_QuestsFu
+
+Detached.xml

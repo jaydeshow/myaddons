@@ -13,7 +13,7 @@ Control-click on quests in the tooltip to share them with your party.
 Alt-click on quests in the tooltip to copy them to the chatbox if it's open.
 
 To install:
-	Copy the FuBar_QuestsFu folder to: World of Warcraft/Interface/Addons
+    Copy the FuBar_QuestsFu folder to: World of Warcraft/Interface/Addons
 
 Comments may be made at: http://www.wowinterface.com/downloads/fileinfo.php?id=4752
 Bug reports can be made at: http://www.wowinterface.com/portal.php?uid=28542&a=listbugs

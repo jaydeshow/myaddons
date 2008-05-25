@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -918,6 +918,7 @@ AutoBar.Class["AutoBarButtonCustom"] = AutoBarButtonCustom
 
 function AutoBarButtonCustom.prototype:init(parentBar, buttonDB)
 	AutoBarButtonCustom.super.prototype.init(self, parentBar, buttonDB)
+	self.frame.SetKey = nil
 end
 
 local spellAquaticForm, spellAquaticFormIcon

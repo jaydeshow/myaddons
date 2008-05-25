@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -1197,12 +1197,12 @@ end
 function AutoBar:LIBKEYBOUND_ENABLED()
 	AutoBar:MoveBarModeOff()
 	AutoBar:MoveButtonsModeOff()
-	AutoBar.assignBindings = true
+	AutoBar.keyBoundMode = true
 	AutoBar:ColorAutoBar()
 end
 
 function AutoBar:LIBKEYBOUND_DISABLED()
-	AutoBar.assignBindings = nil
+	AutoBar.keyBoundMode = nil
 	AutoBar:ColorAutoBar()
 end
 
@@ -1251,13 +1251,15 @@ end
 
 function AutoBar:OnClick(event, frame, button)
 --AutoBar:Print("AutoBar.Class.Bar.OnClick frame " .. tostring(frame) .. " button " .. tostring(button) .. " lolwut " .. tostring(lolwut))
-	local self = frame.class
-	if (button == "RightButton") then
---AutoBar:Print("AutoBar.Class.Bar.OnClick ShowBarOptions frame " .. tostring(frame) .. " button " .. tostring(button))
-		self:ShowBarOptions()
-	elseif (button == "LeftButton") then
---AutoBar:Print("AutoBar.Class.Bar.OnClick ToggleVisibilty frame " .. tostring(frame) .. " button " .. tostring(button))
-		self:ToggleVisibilty()
+	local bar = frame.class
+	if (bar) then
+		if (button == "RightButton") then
+	--AutoBar:Print("AutoBar.Class.Bar.OnClick ShowBarOptions frame " .. tostring(frame) .. " button " .. tostring(button))
+			bar:ShowBarOptions()
+		elseif (button == "LeftButton") then
+	--AutoBar:Print("AutoBar.Class.Bar.OnClick ToggleVisibilty frame " .. tostring(frame) .. " button " .. tostring(button))
+			bar:ToggleVisibilty()
+		end
 	end
 end
 
@@ -1268,15 +1270,17 @@ end
 
 --]]
 function AutoBar:OnStopFrameMoving(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-	local self = frame.class
---AutoBar:Print("AutoBar:OnStopFrameMoving " .. tostring(self.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
-	self:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+	local bar = frame.class
+--AutoBar:Print("AutoBar:OnStopFrameMoving " .. tostring(bar.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
+	bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+	bar:SaveLocation()
 end
 
 function AutoBar:OnStickToFrame(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-	local self = frame.class
---AutoBar:Print("AutoBar:OnStickToFrame " .. tostring(self.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
-	self:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+	local bar = frame.class
+--AutoBar:Print("AutoBar:OnStickToFrame " .. tostring(bar.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
+	bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+	bar:SaveLocation()
 end
 
 
@@ -1354,3 +1358,4 @@ end
 --/script AutoBar.db.account.logEvents = true
 --/script AutoBar.db.account.logEvents = nil
 --/script LibStub("LibKeyBound-1.0"):SetColorKeyBoundMode(0.75, 1, 0, 0.5)
+--/script DEFAULT_CHAT_FRAME:AddMessage("")

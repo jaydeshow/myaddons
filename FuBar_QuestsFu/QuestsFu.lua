@@ -588,19 +588,6 @@ function QuestsFu:GetColorFromCompletion(percent)
 	end
 end
 
--- purple, add support for Cartographer_QuestInfo
-local function CQI_HasInfo(obj, qid)
-	return Cartographer_QuestInfo and Cartographer_QuestInfo:FindObjectiveData(qid, obj) ~= nil;
-end
-
--- purple, add support for Cartographer_QuestInfo
-local function CQI_ShowInfo(obj, qid)
-	if Cartographer_QuestInfo then
-		local data = Cartographer_QuestInfo:FindObjectiveData(qid, obj);
-		Cartographer_QuestInfo:OnButtonClick("obj", "LeftButton", data);
-	end
-end
-
 function QuestsFu:AddQuestToCategory(cat, questref, appendZone, showObjectives, hideChecks)
 	local title, level, tag, suggestedGroup, complete, leaderboard, zone, questid = quixote:GetQuest(questref)
 	if not title or not level then return end
@@ -648,13 +635,6 @@ function QuestsFu:AddQuestToCategory(cat, questref, appendZone, showObjectives, 
 					'text', objective, 'wrap', true,
 					'textR', r or 1, 'textG', g or 1, 'textB', b or 1,
 					'size', tablet:GetNormalFontSize()-2,
-					-- purple, add support for Cartographer_QuestInfo
-					'checked', CQI_HasInfo(objective, questid), 
-					'hasCheck', true, 
-					'checkIcon', 'Interface\\GossipFrame\\PetitionGossipIcon',
-					'func', CQI_ShowInfo,
-					'arg1', description,
-					--
 					'arg2', questid,
 					'indentation', 12
 				)
@@ -704,13 +684,6 @@ do
 				'textR', r or 1, 'textG', g or 1, 'textB', b or 1,
 				'text2R', r or 1, 'text2G', g or 1, 'text2B', b or 1,
 				'size', fontSize, 'size2', fontSize,
-				-- purple, add support for Cartographer_QuestInfo
-				'checked', CQI_HasInfo(description, questid), 
-				'hasCheck', true, 
-				'checkIcon', 'Interface\\GossipFrame\\PetitionGossipIcon',
-				'func', CQI_ShowInfo,
-				'arg1', description,
-				--
 				'arg2', questid,
 				'indentation', indent
 			)

@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -32,10 +32,10 @@ AutoBar.Class.Button = AceOO.Class("AceEvent-2.0", "AceHook-2.1")
 
 
 function AutoBar.Class.Button:ShortenKeyBinding(text)
-	text = text:gsub("CTRL--", L["|c00FF9966C|r"])
-	text = text:gsub("STRG--", L["|c00CCCC00S|r"])
-	text = text:gsub("ALT--", L["|c009966CCA|r"])
-	text = text:gsub("SHIFT--", L["|c00CCCC00S|r"])
+	text = text:gsub("CTRL%-", L["|c00FF9966C|r"])
+	text = text:gsub("STRG%-", L["|c00CCCC00S|r"])
+	text = text:gsub("ALT%-", L["|c009966CCA|r"])
+	text = text:gsub("SHIFT%-", L["|c00CCCC00S|r"])
 	text = text:gsub(L["Num Pad "], L["NP"])
 	text = text:gsub(L["Mouse Button "], L["M"])
 	text = text:gsub(L["Middle Mouse"], L["MM"])
@@ -51,6 +51,10 @@ function AutoBar.Class.Button:ShortenKeyBinding(text)
 	text = text:gsub(L["Up Arrow"], L["U"])
 	text = text:gsub(L["Left Arrow"], L["L"])
 	text = text:gsub(L["Right Arrow"], L["R"])
+--	text = text:gsub(L["Tab"], L["Tab"])
+--	text = text:gsub(L["Capslock"], L["Cps"])
+--	text = text:gsub(L["Mouse Wheel Up"], L["WU"])
+--	text = text:gsub(L["Mouse Wheel Down"], L["WD"])
 
 	return text
 end
@@ -142,21 +146,39 @@ function AutoBar.Class.Button.prototype:Disable()
 --AutoBar:Print("AutoBar.Class.Button.prototype:Disable " .. tostring(self.buttonName))
 end
 
-
--- LibKeyBound handler
-function AutoBar.Class.Button:GetHotkey()
-	local frame = self
-	local key1 = GetBindingKey(frame.class.buttonName .. "_X")
-	local key = LibKeyBound:ToShortKey(key1)
---AutoBar:Print("AutoBar.Class.Button.prototype:GetHotkey key1 " .. tostring(key1) .. " key " .. tostring(key) .. " buttonName " .. tostring(frame.class.buttonName))
-	return key
-end
-
-
 -- Return the name of the global frame for this button.  Keybinds are made to this.
 function AutoBar.Class.Button.prototype:GetButtonFrameName()
 	return self.buttonDB.buttonKey .. "Frame"
 end
+
+
+--
+-- LibKeyBound Handlers
+--
+
+function AutoBar.Class.Button:GetHotkey()
+	local frame = self
+	local key1 = GetBindingKey(frame.class.buttonName .. "_X")
+	local key = LibKeyBound:ToShortKey(key1)
+--AutoBar:Print("AutoBar.Class.Button.prototype:GetHotkey key1 " .. tostring(key1) .. " -> " .. tostring(key))-- .. " buttonName " .. tostring(frame.class.buttonName))
+	return key
+end
+
+function AutoBar.Class.Button:GetActionName()
+	local frame = self
+	local buttonKey = frame.class.buttonDB.buttonKey
+	return L[buttonKey] .. " (" .. frame.class:GetButtonFrameName() .. ")"
+end
+
+function AutoBar.Class.Button:SetKey(key)
+	local frame = self
+	local buttonKey = frame.class.buttonDB.buttonKey
+	local buttonFrameName = frame.class:GetButtonFrameName()
+	if (key) then
+		SetOverrideBindingClick(AutoBar.keyFrame, false, key, buttonFrameName)
+	end
+end
+
 
 -- Update the keybinds for this Button.
 -- Copied from Bartender3
@@ -225,6 +247,8 @@ function AutoBar.Class.Button.prototype:CreateButtonFrame()
 	frame:SetFrameStrata(frameStrata)
 
 	frame.GetHotkey = AutoBar.Class.Button.GetHotkey
+	frame.GetActionName = AutoBar.Class.Button.GetActionName
+--	frame.SetKey = AutoBar.Class.Button.SetKey
 
 	self:UpdateButton()
 

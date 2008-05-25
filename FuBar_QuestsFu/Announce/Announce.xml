@@ -2,8 +2,11 @@
 ..\FrameXML\UI.xsd">
 
 <Script file="enUS.lua"/>
-<Script file="zhCN.lua"/>
+<Script file="deDE.lua"/>
+<Script file="esES.lua"/>
+<Script file="koKR.lua"/>
 <Script file="zhTW.lua"/>
+<Script file="zhCN.lua"/>
 <Script file="Announce.lua"/>
 
 </Ui>

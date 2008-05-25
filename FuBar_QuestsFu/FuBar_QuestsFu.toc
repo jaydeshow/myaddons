@@ -1,11 +1,7 @@
 ﻿## Interface: 20400
-
 ## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r
-## Notes-zhCN: 持续监视任务的相关信息
-## Notes-zhTW: 持續追蹤任務。
 ## Version: 2.0
 ## Author: Kemayo
-
 ## X-Category: Quest
 ## X-eMail: kemayo AT gmail DOT com
 ## X-Website: http://kemayo.wowinterface.com/
@@ -14,15 +10,21 @@
 ## X-Embeds: Ace2, AbacusLib, FuBarPlugin-2.0, Babble-2.2, Deformat, DewdropLib, TabletLib, TouristLib, Quixote, SinkLib
 ## X-Donate: PayPal:kemayo AT gmail DOT com
 ## Notes: Keeps track of quests.
+## Notes-frFR: Affiche des informations sur les quetes
+## Notes-zhTW: 持續追蹤任務。
+## Notes-esES: Hace un seguimiento de tus misiones
 ## OptionalDeps: Ace2, AbacusLib, FuBar, FuBarPlugin-2.0, Babble-2.2, Deformat, DewdropLib, TabletLib, TouristLib, Quixote, SinkLib
 ## SavedVariables: QuestsFuDB
 
 embeds.xml
 
-locales\enUS.lua
-locales\zhTW.lua
-locales\zhCN.lua
-
+enUS.lua
+koKR.lua
+zhTW.lua
+zhCN.lua
+deDE.lua
+esES.lua
+frFR.lua
 QuestsFu.lua
 
 modules.xml

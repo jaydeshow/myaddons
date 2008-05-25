@@ -6,7 +6,10 @@ local Tablet = AceLibrary("Tablet-2.0")
 -------------------------------------------------------------------
 
 ----
--- <INFO>
+--	<INFO> = {
+--		current = <qid>,
+--		series = { <qid>, <qid>, ... },
+--	}
 ----
 
 local INFO
@@ -92,7 +95,7 @@ function CQI:UpdateSeriesContent()
 
 	Tablet:AddCategory("hideBlankLine", true):AddLine(
 		"text", L["Close"],
-		"size", 12,
+		"size", 14,
 		"justify", "center",
 		"func", function() self:CloseSeriesFrame() end)
 

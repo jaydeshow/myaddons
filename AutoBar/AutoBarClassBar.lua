@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -389,7 +389,7 @@ end
 local colorMoveButtons = {r = 1, b = 1, g = 0, a = 0.5}
 function AutoBar.Class.Bar.prototype:ColorBars()
 	local frame = self.frame
-	if (AutoBar.assignBindings or AutoBar.unlockButtons) then
+	if (AutoBar.keyBoundMode or AutoBar.unlockButtons) then
 		-- Adjust Frame Strata
 		frame:SetFrameStrata("DIALOG")
 		self:SetButtonFrameStrata("LOW")
@@ -401,7 +401,7 @@ function AutoBar.Class.Bar.prototype:ColorBars()
 		end
 
 		-- Set Color
-		if (AutoBar.assignBindings) then
+		if (AutoBar.keyBoundMode) then
 			frame:SetBackdropColor(LibKeyBound:GetColorKeyBoundMode())
 		elseif (AutoBar.unlockButtons) then
 			if (self.sharedLayoutDB.hide) then

@@ -1,0 +1,20 @@
+local L = AceLibrary("AceLocale-2.2"):new("QuestsFu_Tracker")
+L:RegisterTranslations("esES", function() return {
+	["Tracker"] = "Rastreador",
+	["Autowatch"] = "Autovigilar",
+	["Automatically add quests to the tracker when appropriate"] = "Añade automáticamente misiones al rastreador cuando sea apropiado",
+	["Use own tracker"] = "Usar rastreador propio",
+	["Replace the default quest tracker with a slightly more featureful one"] = "Reemplaza el rastreador de misiones por defecto con uno con más características",
+	["Login"] = "Conectar",
+	["Re-add quests you were watching before you logged out"] = "Vuelve a añadir las misiones que estabas vigilando antes de que desconectases",
+	["Zone"] = "Zona",
+	["Add quests to the tracker when you enter their zone"] = "Añade misiones al rastreador cuando entras en su zona",
+	["Subzone"] = "Subzona",
+	["Add quests to the tracker when you enter their subzone"] = "Añade misiones al rastreador cuando entras en su subzona",
+	["Gained"] = "Conseguida",
+	["Add quests to the tracker when they are first gained"] = "Añade misiones al rastreador cuando se consiguen por primera vez",
+	["Progress"] = "Progreso",
+	["Add quests to the tracker when you make progress on them"] = "Añade misiones al rastreador cuando progresas en ellas",
+	["Remove completed"] = "Quitar completadas",
+	["Remove quests from the tracker when you complete their objectives"] = "Quita del rastreador las misiones de las que ya has completado todos los objetivos",
+} end)
