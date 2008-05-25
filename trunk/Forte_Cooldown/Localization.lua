@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -40,51 +40,6 @@ if GetLocale() == "frFR" then
 --[[>>]]FW.L.WELL_FED = "Well Fed";
 --[[>>]]FW.L.RECENTLY_BANDAGED = "Recently Bandaged";
 
-
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.COOLDOWN_TIMER = "Cooldown Timer";
-
-FW.L.CD_HINT1 = "Use alpha in the color settings to hide/show texts and other parts.";
-FW.L.CD_HINT2 = "Use the 'Customize' option to ignore cooldowns or change a color. Right-click an icon to ignore.";
-
-FW.L.CD_BASIC1_TT = "Visually enable the cooldown timer.";		
-FW.L.CD_BASIC2_TT = "Lock the cooldown bar. When the bar is locked you will click through it, so you can no longer accidently move it or open the options from it.";
-
-FW.L.CD_CUSTOMIZE_TT = "Customize each of your cooldowns.";
-
-FW.L.CD_SPECIFIC1 = "Right-click icons to ignore";
-FW.L.CD_SPECIFIC1_TT = "Right-clicking an icon on the cooldown bar will put it on ignore. You can remove it from ignore using the customization option.";
-FW.L.CD_SPECIFIC2 = "Flip to vertical";
-FW.L.CD_SPECIFIC2_TT = "Change the bar orientation from horizontal to vertical.";
-FW.L.CD_SPECIFIC3 = "Auto-hide when no cooldowns";
-FW.L.CD_SPECIFIC3_TT = "Hide the cooldown timer scale and background when you have no visible cooldowns.";
-FW.L.CD_SPECIFIC4 = "Splash ready cooldowns";
-FW.L.CD_SPECIFIC4_TT = "This will show an icon 'splash' at the origin of the cooldown timer each time a cooldown is ready.";
-FW.L.CD_SPECIFIC5 = "Detail scale";
-FW.L.CD_SPECIFIC5_TT = "You will receive some extra time scale points on the cooldown bar. Useful if you have changed the time scale to something a lot smaller than 60 minutes.";
-FW.L.CD_SPECIFIC6 = "Time scale max (sec)";
-FW.L.CD_SPECIFIC6_TT = "Set the scale of the cooldown bar, by giving the biggest cooldown time in seconds(!) that the bar should display. Cooldowns outside your scale will still show at the end of the bar.";
-FW.L.CD_SPECIFIC7 = "Show Buffs";
-FW.L.CD_SPECIFIC7_TT = "The cooldown timer will also show certain self buffs.";
-FW.L.CD_SPECIFIC8 = "Flip bar direction";
-FW.L.CD_SPECIFIC8_TT = "Flip the timer bar direction.";
-FW.L.CD_SPECIFIC9 = "Splash icon Factor";
-FW.L.CD_SPECIFIC9_TT = "Set what maximum scale factor to use for the icon splash.";
-
-FW.L.RESURRECT_TIMER = "Resurrect Timer";
-FW.L.SS = "Soulstone";
-FW.L.BUFF = "Buff";
-
-FW.L.ICON_FONT = "Icon Font";
-FW.L.ICON_TEXT = "Icon text";
-FW.L.ICON_TEXT_TT = "This is the time text on the cooldown icons themselves. To show these, change the text color transparency.";
-
-FW.L.UPDATE_INTERVAL_BUFFS = "Update interval buffs";
-
-
-
-
 -- DE 1 missing
 elseif GetLocale() == "deDE" then
 
@@ -112,51 +67,6 @@ elseif GetLocale() == "deDE" then
 	FW.L.WELL_FED = "Satt";
 	FW.L.RECENTLY_BANDAGED = "Krzlich bandagiert";
 
-
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.COOLDOWN_TIMER = "Cooldown Timer";
-
-FW.L.CD_HINT1 = "Use alpha in the color settings to hide/show texts and other parts.";
-FW.L.CD_HINT2 = "Use the 'Customize' option to ignore cooldowns or change a color. Right-click an icon to ignore.";
-
-FW.L.CD_BASIC1_TT = "Visually enable the cooldown timer.";		
-FW.L.CD_BASIC2_TT = "Lock the cooldown bar. When the bar is locked you will click through it, so you can no longer accidently move it or open the options from it.";
-
-FW.L.CD_CUSTOMIZE_TT = "Customize each of your cooldowns.";
-
-FW.L.CD_SPECIFIC1 = "Right-click icons to ignore";
-FW.L.CD_SPECIFIC1_TT = "Right-clicking an icon on the cooldown bar will put it on ignore. You can remove it from ignore using the customization option.";
-FW.L.CD_SPECIFIC2 = "Flip to vertical";
-FW.L.CD_SPECIFIC2_TT = "Change the bar orientation from horizontal to vertical.";
-FW.L.CD_SPECIFIC3 = "Auto-hide when no cooldowns";
-FW.L.CD_SPECIFIC3_TT = "Hide the cooldown timer scale and background when you have no visible cooldowns.";
-FW.L.CD_SPECIFIC4 = "Splash ready cooldowns";
-FW.L.CD_SPECIFIC4_TT = "This will show an icon 'splash' at the origin of the cooldown timer each time a cooldown is ready.";
-FW.L.CD_SPECIFIC5 = "Detail scale";
-FW.L.CD_SPECIFIC5_TT = "You will receive some extra time scale points on the cooldown bar. Useful if you have changed the time scale to something a lot smaller than 60 minutes.";
-FW.L.CD_SPECIFIC6 = "Time scale max (sec)";
-FW.L.CD_SPECIFIC6_TT = "Set the scale of the cooldown bar, by giving the biggest cooldown time in seconds(!) that the bar should display. Cooldowns outside your scale will still show at the end of the bar.";
-FW.L.CD_SPECIFIC7 = "Show Buffs";
-FW.L.CD_SPECIFIC7_TT = "The cooldown timer will also show certain self buffs.";
-FW.L.CD_SPECIFIC8 = "Flip bar direction";
-FW.L.CD_SPECIFIC8_TT = "Flip the timer bar direction.";
-FW.L.CD_SPECIFIC9 = "Splash icon Factor";
-FW.L.CD_SPECIFIC9_TT = "Set what maximum scale factor to use for the icon splash.";
-
-FW.L.RESURRECT_TIMER = "Resurrect Timer";
-FW.L.SS = "Soulstone";
-FW.L.BUFF = "Buff";
-
-FW.L.ICON_FONT = "Icon Font";
-FW.L.ICON_TEXT = "Icon text";
-FW.L.ICON_TEXT_TT = "This is the time text on the cooldown icons themselves. To show these, change the text color transparency.";
-
-FW.L.UPDATE_INTERVAL_BUFFS = "Update interval buffs";
-
-
-
-
 -- SPANISH - 3 mising  By Intxixu - SPQR - Tyrande
 elseif GetLocale() == "esES" then
 
@@ -183,50 +93,6 @@ elseif GetLocale() == "esES" then
 	--buffs
 --[[>>]]FW.L.WELL_FED = "Well Fed";
 --[[>>]]FW.L.RECENTLY_BANDAGED = "Recently Bandaged";
-
-
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.COOLDOWN_TIMER = "Cooldown Timer";
-
-FW.L.CD_HINT1 = "Use alpha in the color settings to hide/show texts and other parts.";
-FW.L.CD_HINT2 = "Use the 'Customize' option to ignore cooldowns or change a color. Right-click an icon to ignore.";
-
-FW.L.CD_BASIC1_TT = "Visually enable the cooldown timer.";		
-FW.L.CD_BASIC2_TT = "Lock the cooldown bar. When the bar is locked you will click through it, so you can no longer accidently move it or open the options from it.";
-
-FW.L.CD_CUSTOMIZE_TT = "Customize each of your cooldowns.";
-
-FW.L.CD_SPECIFIC1 = "Right-click icons to ignore";
-FW.L.CD_SPECIFIC1_TT = "Right-clicking an icon on the cooldown bar will put it on ignore. You can remove it from ignore using the customization option.";
-FW.L.CD_SPECIFIC2 = "Flip to vertical";
-FW.L.CD_SPECIFIC2_TT = "Change the bar orientation from horizontal to vertical.";
-FW.L.CD_SPECIFIC3 = "Auto-hide when no cooldowns";
-FW.L.CD_SPECIFIC3_TT = "Hide the cooldown timer scale and background when you have no visible cooldowns.";
-FW.L.CD_SPECIFIC4 = "Splash ready cooldowns";
-FW.L.CD_SPECIFIC4_TT = "This will show an icon 'splash' at the origin of the cooldown timer each time a cooldown is ready.";
-FW.L.CD_SPECIFIC5 = "Detail scale";
-FW.L.CD_SPECIFIC5_TT = "You will receive some extra time scale points on the cooldown bar. Useful if you have changed the time scale to something a lot smaller than 60 minutes.";
-FW.L.CD_SPECIFIC6 = "Time scale max (sec)";
-FW.L.CD_SPECIFIC6_TT = "Set the scale of the cooldown bar, by giving the biggest cooldown time in seconds(!) that the bar should display. Cooldowns outside your scale will still show at the end of the bar.";
-FW.L.CD_SPECIFIC7 = "Show Buffs";
-FW.L.CD_SPECIFIC7_TT = "The cooldown timer will also show certain self buffs.";
-FW.L.CD_SPECIFIC8 = "Flip bar direction";
-FW.L.CD_SPECIFIC8_TT = "Flip the timer bar direction.";
-FW.L.CD_SPECIFIC9 = "Splash icon Factor";
-FW.L.CD_SPECIFIC9_TT = "Set what maximum scale factor to use for the icon splash.";
-
-FW.L.RESURRECT_TIMER = "Resurrect Timer";
-FW.L.SS = "Soulstone";
-FW.L.BUFF = "Buff";
-
-FW.L.ICON_FONT = "Icon Font";
-FW.L.ICON_TEXT = "Icon text";
-FW.L.ICON_TEXT_TT = "This is the time text on the cooldown icons themselves. To show these, change the text color transparency.";
-
-FW.L.UPDATE_INTERVAL_BUFFS = "Update interval buffs";
-
-
 
 -- Simple Chinese
 elseif GetLocale() == "zhCN" then
@@ -258,7 +124,63 @@ elseif GetLocale() == "zhCN" then
 	FW.L.WELL_FED = "进食充分";
 	FW.L.RECENTLY_BANDAGED = "新近包扎";
 
+-- trdition Chinese
+elseif GetLocale() == "zhTW" then
 
+
+	MANA_POTION = "法力藥水$"; -- is All types
+	HEALING_POTION = "治療藥水$"; -- is All types
+	PROTECTION_POTION = "防護藥水$"; -- is All types
+	SOULSTONE = "靈魂石$"; -- is All types
+	HEALTHSTONE = "治療石$"; -- is All types
+	FEL_BLOSSOM = "^野魔花$";
+	NIGHTMARE_SEED = "^夢魘草$";
+
+	VENGEANCE_OF_THE_ILLIDARI = "^伊利達瑞的復仇$";
+	THE_SKULL_OF_GULDAN = "^古爾丹之顱$";
+	ZANDALARIAN_HERO_CHARM = "^贊達拉英雄符咒$";
+	XIRIS_GIFT = "^希瑞的禮物$";
+	THE_RESTRAINED_ESSENCE_OF_SAPPHIRON = "^受限制的薩菲隆精華$";
+	ICON_OF_THE_SILVER_CRESCENT = "^銀色弦月塑像$"
+	FW.L.HEX_SHRUNKEN_HEAD = "^妖術皺縮人頭$";
+
+	HEARTHSTONE = "^爐石$";
+	BLESSED_MEDALLION_OF_KARABOR = "^受祝福的卡拉伯爾勳章$";
+	EVERLASTING_UNDERSPORE_FROND = "^永恆地孢藻葉$";
+
+	--buffs
+	FW.L.WELL_FED = "充分進食";
+	FW.L.RECENTLY_BANDAGED = "新近包紮";
+-- ENGLISH
+else	-- standard english version
+	
+	FW.L.MANA_POTION = "Mana Potion$"; -- is All types
+	FW.L.HEALING_POTION = "Healing Potion$"; -- is All types
+	FW.L.PROTECTION_POTION = "Protection Potion$"; -- is All types
+	FW.L.SOULSTONE = "Soulstone$"; -- is All types
+	FW.L.HEALTHSTONE = "Healthstone$"; -- is All types
+	FW.L.FEL_BLOSSOM = "^Fel Blossom$";
+	FW.L.NIGHTMARE_SEED = "^Nightmare Seed$";
+
+	FW.L.VENGEANCE_OF_THE_ILLIDARI = "Vengeance of the Illidari";
+	FW.L.THE_SKULL_OF_GULDAN = "The Skull of Gul'dan";
+	FW.L.ZANDALARIAN_HERO_CHARM = "Zandalarian Hero Charm";
+	FW.L.XIRIS_GIFT = "Xi'ri's Gift";
+	FW.L.THE_RESTRAINED_ESSENCE_OF_SAPPHIRON = "The Restrained Essence of Sapphiron";
+	FW.L.ICON_OF_THE_SILVER_CRESCENT = "Icon of the Silver Crescent";
+	FW.L.HEX_SHRUNKEN_HEAD = "Hex Shrunken Head";
+
+	FW.L.HEARTHSTONE = "Hearthstone";
+	FW.L.BLESSED_MEDALLION_OF_KARABOR = "Blessed Medallion of Karabor";
+	FW.L.EVERLASTING_UNDERSPORE_FROND = "Everlasting Underspore Frond";
+
+	--buffs
+	FW.L.WELL_FED = "Well Fed";
+	FW.L.RECENTLY_BANDAGED = "Recently Bandaged";
+end
+
+-- Simple Chinese
+if GetLocale() == "zhCN" then
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -301,38 +223,8 @@ FW.L.ICON_TEXT_TT = "这个显示技能冷却的时间,想显示具体时间,请
 
 FW.L.UPDATE_INTERVAL_BUFFS = "更新buff扫描间隔";
 
-
-
-
 -- trdition Chinese
-elseif GetLocale() == "zhTW" then
-
-
-	MANA_POTION = "法力藥水$"; -- is All types
-	HEALING_POTION = "治療藥水$"; -- is All types
-	PROTECTION_POTION = "防護藥水$"; -- is All types
-	SOULSTONE = "靈魂石$"; -- is All types
-	HEALTHSTONE = "治療石$"; -- is All types
-	FEL_BLOSSOM = "^野魔花$";
-	NIGHTMARE_SEED = "^夢魘草$";
-
-	VENGEANCE_OF_THE_ILLIDARI = "^伊利達瑞的復仇$";
-	THE_SKULL_OF_GULDAN = "^古爾丹之顱$";
-	ZANDALARIAN_HERO_CHARM = "^贊達拉英雄符咒$";
-	XIRIS_GIFT = "^希瑞的禮物$";
-	THE_RESTRAINED_ESSENCE_OF_SAPPHIRON = "^受限制的薩菲隆精華$";
-	ICON_OF_THE_SILVER_CRESCENT = "^銀色弦月塑像$"
-	FW.L.HEX_SHRUNKEN_HEAD = "^妖術皺縮人頭$";
-
-	HEARTHSTONE = "^爐石$";
-	BLESSED_MEDALLION_OF_KARABOR = "^受祝福的卡拉伯爾勳章$";
-	EVERLASTING_UNDERSPORE_FROND = "^永恆地孢藻葉$";
-
-	--buffs
-	FW.L.WELL_FED = "充分進食";
-	FW.L.RECENTLY_BANDAGED = "新近包紮";
-
-
+elseif GetLocale() == "zhTW" then	
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -375,39 +267,7 @@ FW.L.ICON_TEXT_TT = "這個顯示技能冷卻的時間,想顯示具體時間,請
 
 FW.L.UPDATE_INTERVAL_BUFFS = "更新buffs掃描間隔";
 
-
-
-
-
--- ENGLISH
-else	-- standard english version
-	
-	FW.L.MANA_POTION = "Mana Potion$"; -- is All types
-	FW.L.HEALING_POTION = "Healing Potion$"; -- is All types
-	FW.L.PROTECTION_POTION = "Protection Potion$"; -- is All types
-	FW.L.SOULSTONE = "Soulstone$"; -- is All types
-	FW.L.HEALTHSTONE = "Healthstone$"; -- is All types
-	FW.L.FEL_BLOSSOM = "^Fel Blossom$";
-	FW.L.NIGHTMARE_SEED = "^Nightmare Seed$";
-
-	FW.L.VENGEANCE_OF_THE_ILLIDARI = "Vengeance of the Illidari";
-	FW.L.THE_SKULL_OF_GULDAN = "The Skull of Gul'dan";
-	FW.L.ZANDALARIAN_HERO_CHARM = "Zandalarian Hero Charm";
-	FW.L.XIRIS_GIFT = "Xi'ri's Gift";
-	FW.L.THE_RESTRAINED_ESSENCE_OF_SAPPHIRON = "The Restrained Essence of Sapphiron";
-	FW.L.ICON_OF_THE_SILVER_CRESCENT = "Icon of the Silver Crescent";
-	FW.L.HEX_SHRUNKEN_HEAD = "Hex Shrunken Head";
-
-	FW.L.HEARTHSTONE = "Hearthstone";
-	FW.L.BLESSED_MEDALLION_OF_KARABOR = "Blessed Medallion of Karabor";
-	FW.L.EVERLASTING_UNDERSPORE_FROND = "Everlasting Underspore Frond";
-
-	--buffs
-	FW.L.WELL_FED = "Well Fed";
-	FW.L.RECENTLY_BANDAGED = "Recently Bandaged";
-
-
-
+else
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
 FW.L.COOLDOWN_TIMER = "Cooldown Timer";
@@ -449,9 +309,4 @@ FW.L.ICON_TEXT_TT = "This is the time text on the cooldown icons themselves. To 
 
 FW.L.UPDATE_INTERVAL_BUFFS = "Update interval buffs";
 
-
-
-
 end
-	
-

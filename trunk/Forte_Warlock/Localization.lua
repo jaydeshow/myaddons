@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -79,72 +79,6 @@ if GetLocale() == "frFR" then
 --[[>>]]FW.L.FEL_ENERGY = "Fel Energy";
 --[[>>]]FW.L.TOUCH_OF_SHADOW = "Touch of Shadow";
 --[[>>]]FW.L.FEL_STAMINA = "Fel Stamina";
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.SUMMON_START = "Summoning Start";
-FW.L.SUMMON_CANCEL = "Summoning Cancel";
-FW.L.SUMMON_PORTAL = "Summoning Portal Open";
-FW.L.SUMMON_FAILED = "Summoning Failed";
-FW.L.SUMMON_SUCCESS = "Summoning Successfull";
-
-FW.L.SUMMON_START_W = "Summoning Start whisper";	
-FW.L.SUMMON_CANCEL_W = "Summoning Cancel whisper";	
-FW.L.SUMMON_FAILED_W = "Summoning Failed whisper";
-
-FW.L.SUMMONING = "Summoning";
-FW.L.SOULTONE_START = "Soulstone cast Start";
-FW.L.SOULTONE_CANCEL = "Soulstone cast Cancel";
-FW.L.SOULTONE_SUCCESS = "Soulstone cast Success";
-
-FW.L.SOULSTONE_NORMAL = "Soulstone";
-
-FW.L.SOULTONE_START_W = "Soulstone cast Start whisper";
-FW.L.SOULTONE_CANCEL_W = "Soulstone cast Cancel whisper";
-FW.L.SOULTONE_SUCCESS_W = "Soulstone cast Success whisper";
-
-FW.L.SOULWELL_START = "Soulwell cast Start";
-
-FW.L.SEDUCE_START = "Seduce cast Start";
-FW.L.SEDUCE_SUCCESS = "Seduce cast Success";
-
-FW.L.BREAK_FADE = "Break/Fade";
-FW.L.BREAK_FADE_HINT1 = "The time you set in the fade string defines when it is displayed.";
-FW.L.FEAR_BREAK = "Fear Break";
-FW.L.FEAR_FADE = "Fear Fade";
-FW.L.BANISH_BREAK = "Banish Break";
-FW.L.BANISH_FADE = "Banish Fade";
-FW.L.ENSLAVE_BREAK = "Enslave Break";
-FW.L.ENSLAVE_FADE = "Enslave Fade";
-
-FW.L.SPELL_LOCK_SUCCESS = "Spell Lock cast Success";
-FW.L.DEVOUR_MAGIC_SUCCESS = "Devour Magic cast Success";
-
-FW.L.SHARD_MANAGER = "Shard Manager";
-FW.L.SHARD_MANAGER_ENABLE_TT = "Enable the Shard Manager";
-
-FW.L.SHARD_MANAGER_HINT1 = "Customize the settings before you enable it! A shard bag should always be highest priority.";
-FW.L.SHARD_BAG_PRIOR = "Shard bags priority";
-FW.L.SHARD_BAG_PRIOR_TT = "Let the addon move your shards into the bags you prefer most. Bag 0 is your backpack, your normal bags go up from 1 to 4 from right to left.";
-FW.L.SHARD_DELETE = "Allow shard deleting";
-FW.L.SHARD_DELETE_TT = "Allow the deleting of excess shards, depending on the following settings.";
-FW.L.SHARD_MAX = "Maximum shard count";
-FW.L.SHARD_MAX_TT = "Simply deletes shards if you get above this number. It will never delete shards from shardbags.";
-FW.L.SHARD_MIN = "Minimum shard count";
-FW.L.SHARD_MIN_TT = "Overwrites the 'Minimum free space' setting. The addon will always keep this minimum.";
-FW.L.SHARD_FREE = "Minimum free space";
-FW.L.SHARD_FREE_TT = "Specifies the minimum free space you want to have in your 'normal' bags. The addon will delete shards to keep these slots open, if allowed.";
-
-FW.L.BLOOD_PACT = "Blood Pact";
-FW.L.BLOOD_PACT_ON = "Blood Pact on";
-FW.L.BLOOD_PACT_GAIN = "Blood Pact gain";
-FW.L.BLOOD_PACT_LOSS = "Blood Pact loss";
-FW.L.BLOOD_PACT_TT = "Enable BLood Pact messages. You can set this to any classes, names and/or 'self' or 'all', so it will only show gains/losses for these players in your party.";
-
-FW.L._GAINED_BLOOD_PACT = "%s gained Blood Pact.";
-FW.L._LOST_BLOOD_PACT = "%s lost Blood Pact.";
-
-FW.L.DELAY_PET_TARGET = "Delay pet target";
-
 
 -- DE 3 missing
 elseif GetLocale() == "deDE" then
@@ -215,73 +149,7 @@ elseif GetLocale() == "deDE" then
 	FW.L.FEL_ENERGY = "Teufelsenergie";
 	FW.L.TOUCH_OF_SHADOW = "Berhrung des Schattens";
 	FW.L.FEL_STAMINA = "Teufelsausdauer";
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.SUMMON_START = "Summoning Start";
-FW.L.SUMMON_CANCEL = "Summoning Cancel";
-FW.L.SUMMON_PORTAL = "Summoning Portal Open";
-FW.L.SUMMON_FAILED = "Summoning Failed";
-FW.L.SUMMON_SUCCESS = "Summoning Successfull";
-
-FW.L.SUMMON_START_W = "Summoning Start whisper";	
-FW.L.SUMMON_CANCEL_W = "Summoning Cancel whisper";	
-FW.L.SUMMON_FAILED_W = "Summoning Failed whisper";
-
-FW.L.SUMMONING = "Summoning";
-FW.L.SOULTONE_START = "Soulstone cast Start";
-FW.L.SOULTONE_CANCEL = "Soulstone cast Cancel";
-FW.L.SOULTONE_SUCCESS = "Soulstone cast Success";
-
-FW.L.SOULSTONE_NORMAL = "Soulstone";
-
-FW.L.SOULTONE_START_W = "Soulstone cast Start whisper";
-FW.L.SOULTONE_CANCEL_W = "Soulstone cast Cancel whisper";
-FW.L.SOULTONE_SUCCESS_W = "Soulstone cast Success whisper";
-
-FW.L.SOULWELL_START = "Soulwell cast Start";
-
-FW.L.SEDUCE_START = "Seduce cast Start";
-FW.L.SEDUCE_SUCCESS = "Seduce cast Success";
-
-FW.L.BREAK_FADE = "Break/Fade";
-FW.L.BREAK_FADE_HINT1 = "The time you set in the fade string defines when it is displayed.";
-FW.L.FEAR_BREAK = "Fear Break";
-FW.L.FEAR_FADE = "Fear Fade";
-FW.L.BANISH_BREAK = "Banish Break";
-FW.L.BANISH_FADE = "Banish Fade";
-FW.L.ENSLAVE_BREAK = "Enslave Break";
-FW.L.ENSLAVE_FADE = "Enslave Fade";
-
-FW.L.SPELL_LOCK_SUCCESS = "Spell Lock cast Success";
-FW.L.DEVOUR_MAGIC_SUCCESS = "Devour Magic cast Success";
-
-FW.L.SHARD_MANAGER = "Shard Manager";
-FW.L.SHARD_MANAGER_ENABLE_TT = "Enable the Shard Manager";
-
-FW.L.SHARD_MANAGER_HINT1 = "Customize the settings before you enable it! A shard bag should always be highest priority.";
-FW.L.SHARD_BAG_PRIOR = "Shard bags priority";
-FW.L.SHARD_BAG_PRIOR_TT = "Let the addon move your shards into the bags you prefer most. Bag 0 is your backpack, your normal bags go up from 1 to 4 from right to left.";
-FW.L.SHARD_DELETE = "Allow shard deleting";
-FW.L.SHARD_DELETE_TT = "Allow the deleting of excess shards, depending on the following settings.";
-FW.L.SHARD_MAX = "Maximum shard count";
-FW.L.SHARD_MAX_TT = "Simply deletes shards if you get above this number. It will never delete shards from shardbags.";
-FW.L.SHARD_MIN = "Minimum shard count";
-FW.L.SHARD_MIN_TT = "Overwrites the 'Minimum free space' setting. The addon will always keep this minimum.";
-FW.L.SHARD_FREE = "Minimum free space";
-FW.L.SHARD_FREE_TT = "Specifies the minimum free space you want to have in your 'normal' bags. The addon will delete shards to keep these slots open, if allowed.";
-
-FW.L.BLOOD_PACT = "Blood Pact";
-FW.L.BLOOD_PACT_ON = "Blood Pact on";
-FW.L.BLOOD_PACT_GAIN = "Blood Pact gain";
-FW.L.BLOOD_PACT_LOSS = "Blood Pact loss";
-FW.L.BLOOD_PACT_TT = "Enable BLood Pact messages. You can set this to any classes, names and/or 'self' or 'all', so it will only show gains/losses for these players in your party.";
-
-FW.L._GAINED_BLOOD_PACT = "%s gained Blood Pact.";
-FW.L._LOST_BLOOD_PACT = "%s lost Blood Pact.";
-
-FW.L.DELAY_PET_TARGET = "Delay pet target";
-
-
+	
 -- SPANISH - 14 mising  By Intxixu - SPQR - Tyrande
 elseif GetLocale() == "esES" then
 
@@ -352,72 +220,6 @@ elseif GetLocale() == "esES" then
 --[[>>]]FW.L.FEL_ENERGY = "Fel Energy";
 --[[>>]]FW.L.TOUCH_OF_SHADOW = "Touch of Shadow";
 --[[>>]]FW.L.FEL_STAMINA = "Fel Stamina";	
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.SUMMON_START = "Summoning Start";
-FW.L.SUMMON_CANCEL = "Summoning Cancel";
-FW.L.SUMMON_PORTAL = "Summoning Portal Open";
-FW.L.SUMMON_FAILED = "Summoning Failed";
-FW.L.SUMMON_SUCCESS = "Summoning Successfull";
-
-FW.L.SUMMON_START_W = "Summoning Start whisper";	
-FW.L.SUMMON_CANCEL_W = "Summoning Cancel whisper";	
-FW.L.SUMMON_FAILED_W = "Summoning Failed whisper";
-
-FW.L.SUMMONING = "Summoning";
-FW.L.SOULTONE_START = "Soulstone cast Start";
-FW.L.SOULTONE_CANCEL = "Soulstone cast Cancel";
-FW.L.SOULTONE_SUCCESS = "Soulstone cast Success";
-
-FW.L.SOULSTONE_NORMAL = "Soulstone";
-
-FW.L.SOULTONE_START_W = "Soulstone cast Start whisper";
-FW.L.SOULTONE_CANCEL_W = "Soulstone cast Cancel whisper";
-FW.L.SOULTONE_SUCCESS_W = "Soulstone cast Success whisper";
-
-FW.L.SOULWELL_START = "Soulwell cast Start";
-
-FW.L.SEDUCE_START = "Seduce cast Start";
-FW.L.SEDUCE_SUCCESS = "Seduce cast Success";
-
-FW.L.BREAK_FADE = "Break/Fade";
-FW.L.BREAK_FADE_HINT1 = "The time you set in the fade string defines when it is displayed.";
-FW.L.FEAR_BREAK = "Fear Break";
-FW.L.FEAR_FADE = "Fear Fade";
-FW.L.BANISH_BREAK = "Banish Break";
-FW.L.BANISH_FADE = "Banish Fade";
-FW.L.ENSLAVE_BREAK = "Enslave Break";
-FW.L.ENSLAVE_FADE = "Enslave Fade";
-
-FW.L.SPELL_LOCK_SUCCESS = "Spell Lock cast Success";
-FW.L.DEVOUR_MAGIC_SUCCESS = "Devour Magic cast Success";
-
-FW.L.SHARD_MANAGER = "Shard Manager";
-FW.L.SHARD_MANAGER_ENABLE_TT = "Enable the Shard Manager";
-
-FW.L.SHARD_MANAGER_HINT1 = "Customize the settings before you enable it! A shard bag should always be highest priority.";
-FW.L.SHARD_BAG_PRIOR = "Shard bags priority";
-FW.L.SHARD_BAG_PRIOR_TT = "Let the addon move your shards into the bags you prefer most. Bag 0 is your backpack, your normal bags go up from 1 to 4 from right to left.";
-FW.L.SHARD_DELETE = "Allow shard deleting";
-FW.L.SHARD_DELETE_TT = "Allow the deleting of excess shards, depending on the following settings.";
-FW.L.SHARD_MAX = "Maximum shard count";
-FW.L.SHARD_MAX_TT = "Simply deletes shards if you get above this number. It will never delete shards from shardbags.";
-FW.L.SHARD_MIN = "Minimum shard count";
-FW.L.SHARD_MIN_TT = "Overwrites the 'Minimum free space' setting. The addon will always keep this minimum.";
-FW.L.SHARD_FREE = "Minimum free space";
-FW.L.SHARD_FREE_TT = "Specifies the minimum free space you want to have in your 'normal' bags. The addon will delete shards to keep these slots open, if allowed.";
-
-FW.L.BLOOD_PACT = "Blood Pact";
-FW.L.BLOOD_PACT_ON = "Blood Pact on";
-FW.L.BLOOD_PACT_GAIN = "Blood Pact gain";
-FW.L.BLOOD_PACT_LOSS = "Blood Pact loss";
-FW.L.BLOOD_PACT_TT = "Enable BLood Pact messages. You can set this to any classes, names and/or 'self' or 'all', so it will only show gains/losses for these players in your party.";
-
-FW.L._GAINED_BLOOD_PACT = "%s gained Blood Pact.";
-FW.L._LOST_BLOOD_PACT = "%s lost Blood Pact.";
-
-FW.L.DELAY_PET_TARGET = "Delay pet target";
-
 
 -- simple chinese
 elseif GetLocale() == "zhCN" then
@@ -491,71 +293,6 @@ elseif GetLocale() == "zhCN" then
 	FW.L.FEL_ENERGY = "恶魔能量";
 	FW.L.TOUCH_OF_SHADOW = "暗影之触";
 	FW.L.FEL_STAMINA = "恶魔耐力";
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.SUMMON_START = "召唤开始";
-FW.L.SUMMON_CANCEL = "召唤取消";
-FW.L.SUMMON_PORTAL = "时空门打开";
-FW.L.SUMMON_FAILED = "召唤失败";
-FW.L.SUMMON_SUCCESS = "召唤成功";
-
-FW.L.SUMMON_START_W = "召唤开始M语";	
-FW.L.SUMMON_CANCEL_W = "召唤取消M语";	
-FW.L.SUMMON_FAILED_W = "召唤失败M语";
-
-FW.L.SUMMONING = "召唤";
-FW.L.SOULTONE_START = "灵魂石开始绑定";
-FW.L.SOULTONE_CANCEL = "灵魂石取消绑定";
-FW.L.SOULTONE_SUCCESS = "灵魂石成功绑定";
-
-FW.L.SOULSTONE_NORMAL = "灵魂石";
-
-FW.L.SOULTONE_START_W = "灵魂石开始绑定M语";
-FW.L.SOULTONE_CANCEL_W = "灵魂石取消绑定M语";
-FW.L.SOULTONE_SUCCESS_W = "灵魂石成功绑定M语";
-
-FW.L.SOULWELL_START = "灵魂井开始施放";
-
-FW.L.SEDUCE_START = "诱惑开始施放";
-FW.L.SEDUCE_SUCCESS = "成功诱惑";
-
-FW.L.BREAK_FADE = "打断/失效";
-FW.L.BREAK_FADE_HINT1 = "失效信息持续时间.";
-FW.L.FEAR_BREAK = "恐惧打断";
-FW.L.FEAR_FADE = "恐惧失效";
-FW.L.BANISH_BREAK = "放逐打断";
-FW.L.BANISH_FADE = "放逐失效";
-FW.L.ENSLAVE_BREAK = "奴役打断";
-FW.L.ENSLAVE_FADE = "奴役失效";
-
-FW.L.SPELL_LOCK_SUCCESS = "法术封锁施放成功";
-FW.L.DEVOUR_MAGIC_SUCCESS = "吞噬魔法施放成功";
-
-FW.L.SHARD_MANAGER = "碎片管理";
-FW.L.SHARD_MANAGER_ENABLE_TT = "开启碎片管理";
-
-FW.L.SHARD_MANAGER_HINT1 = "开启选项前保持自定义设置.碎片包一直为优先选择.";
-FW.L.SHARD_BAG_PRIOR = "优先使用碎片包";
-FW.L.SHARD_BAG_PRIOR_TT = "将碎片整理到你置顶的包中. 0为行囊, 从右到左分别为1到4号.";
-FW.L.SHARD_DELETE = "允许摧毁碎片";
-FW.L.SHARD_DELETE_TT = "将多出碎片摧毁,具体取决于下面的设置.";
-FW.L.SHARD_MAX = "最大保留碎片数";
-FW.L.SHARD_MAX_TT = "超过这个数的碎片都会被摧毁. 碎片包内的碎片不会被摧毁.";
-FW.L.SHARD_MIN = "最少保留碎片数";
-FW.L.SHARD_MIN_TT = "和最小保留空格一起使用. 你最少都会保有这个数目的碎片.";
-FW.L.SHARD_FREE = "最小保留空格";
-FW.L.SHARD_FREE_TT = "定义你希望在包包中最少要保留的空格数. 如果允许,插件会尽量摧毁碎片,保留这个数目的空间.";
-
-FW.L.BLOOD_PACT = "血之契印";
-FW.L.BLOOD_PACT_ON = "血之契印打开";
-FW.L.BLOOD_PACT_GAIN = "获得血之契印";
-FW.L.BLOOD_PACT_LOSS = "失去血之契印";
-FW.L.BLOOD_PACT_TT = "开启血之契印信息. 你可以将这些信息显示给其他人, 输入 'self' 或者 'all', 这样你的队友也能看见这些信息.";
-
-FW.L._GAINED_BLOOD_PACT = " 得到血之契印.";
-FW.L._LOST_BLOOD_PACT = " 失去血之契印.";
-
-FW.L.DELAY_PET_TARGET = "Pet目标延迟";
 
 -- tradition chinese
 elseif GetLocale() == "zhTW" then
@@ -630,6 +367,149 @@ elseif GetLocale() == "zhTW" then
 	FW.L.TOUCH_OF_SHADOW = "暗影之觸";
 	FW.L.FEL_STAMINA = "惡魔耐力";
 
+-- ENGLISH
+else	-- standard english version
+
+	--gear
+	FW.L.VOIDHEART = "Voidheart";
+
+	--buffs
+	FW.L.ESSENCE_OF_SAPPHIRON = "Essence of Sapphiron";
+	FW.L.EPHEMERAL_POWER = "Ephemeral Power"
+	FW.L.SHADOWFLAME = "Shadowflame";
+	FW.L.FLAMESHADOW = "Flameshadow";
+	FW.L.SPELL_HASTE = "Spell Haste";
+	FW.L.UNSTABLE_POWER = "Unstable Power";
+	FW.L.SHADOW_TRANCE = "Shadow Trance";
+	FW.L.BLESSING_OF_THE_SILVER_CRESCENT = "Blessing of the Silver Crescent";
+	FW.L.RECURRING_POWER = "Recurring Power";
+	FW.L.CALL_OF_THE_NEXUS = "Call of the Nexus";
+	FW.L.HEROISM = "Heroism";
+	FW.L.BLOODLUST = "Bloodlust";
+	FW.L.LESSER_SPELL_BLASTING = "Lesser Spell Blasting";
+	FW.L.SPELL_BLASTING = "Spell Blasting";
+	FW.L.BACKLASH = "Backlash";
+	FW.L.UNSTABLE_CURRENTS = "Unstable Currents";
+	FW.L.INFERNAL_POWER = "Infernal Power";
+	FW.L.SHADOW_VULNERABILITY = "Shadow Vulnerability"
+	FW.L.BUFF_BLOOD_PACT = "Blood Pact";
+	FW.L.SPELL_POWER = "Spell Power"; -- Xi'ri's Gift
+	FW.L.FEL_INFUSION = "Fel Infusion"; -- The Skull of Gul'dan
+	FW.L.ARCANE_ENERGY = "Arcane Energy"; -- Vengeance of the Illidari
+	FW.L.AURA_OF_THE_CRUSADE = "Aura of the Crusader";
+	FW.L.BAND_OF_THE_ETERNAL_SAGE = "Band of the Eternal Sage";
+	FW.L.MOJO_MADNESS = "Mojo Madness";
+	FW.L.FOCUS = "Focus";
+
+	--spells
+	FW.L.CURSE_OF_RECKLESSNESS = "Curse of Recklessness";
+	FW.L.CURSE_OF_THE_ELEMENTS = "Curse of the Elements";
+	FW.L.CURSE_OF_SHADOW = "Curse of Shadow";
+	FW.L.SIPHON_LIFE = "Siphon Life";
+	FW.L.CURSE_OF_AGONY = "Curse of Agony";
+	FW.L.UNSTABLE_AFFLICTION = "Unstable Affliction";
+	FW.L.CURSE_OF_WEAKNESS = "Curse of Weakness";
+	FW.L.CURSE_OF_DOOM = "Curse of Doom";
+	FW.L.CURSE_OF_TONGUES = "Curse of Tongues";
+	FW.L.CURSE_OF_EXHAUSTION = "Curse of Exhaustion";
+	FW.L.IMMOLATE = "Immolate";
+	FW.L.CORRUPTION = "Corruption";
+	FW.L.HOWL_OF_TERROR = "Howl of Terror";
+	FW.L.FEAR = "Fear";
+	FW.L.BANISH = "Banish";
+	FW.L.ENSLAVE_DEMON = "Enslave Demon";
+	FW.L.INFERNO = "Inferno";
+	FW.L.INFERNAL = "Infernal";
+	FW.L.SEDUCTION = "Seduction";
+	FW.L.CONSUME_SHADOWS = "Consume Shadows";
+	FW.L.SPELL_LOCK = "Spell Lock";
+	FW.L.DEVOUR_MAGIC = "Devour Magic";
+	FW.L.PHASE_SHIFT = "Phase Shift";
+	FW.L.SHADOW_WARD = "Shadow Ward";
+	FW.L.DEATH_COIL = "Death Coil";
+	FW.L.SOULSHATTER = "Soulshatter";
+
+	--cooldowns/buffs
+	FW.L.DEMON_ARMOR = "Demon Armor";
+	FW.L.FEL_ARMOR = "Fel Armor";
+	FW.L.BURNING_WISH = "Burning Wish";
+	FW.L.FEL_ENERGY = "Fel Energy";
+	FW.L.TOUCH_OF_SHADOW = "Touch of Shadow";
+	FW.L.FEL_STAMINA = "Fel Stamina";
+end
+
+-- simple chinese
+if GetLocale() == "zhCN" then
+
+-- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
+
+FW.L.SUMMON_START = "召唤开始";
+FW.L.SUMMON_CANCEL = "召唤取消";
+FW.L.SUMMON_PORTAL = "时空门打开";
+FW.L.SUMMON_FAILED = "召唤失败";
+FW.L.SUMMON_SUCCESS = "召唤成功";
+
+FW.L.SUMMON_START_W = "召唤开始M语";	
+FW.L.SUMMON_CANCEL_W = "召唤取消M语";	
+FW.L.SUMMON_FAILED_W = "召唤失败M语";
+
+FW.L.SUMMONING = "召唤";
+FW.L.SOULTONE_START = "灵魂石开始绑定";
+FW.L.SOULTONE_CANCEL = "灵魂石取消绑定";
+FW.L.SOULTONE_SUCCESS = "灵魂石成功绑定";
+
+FW.L.SOULSTONE_NORMAL = "灵魂石";
+
+FW.L.SOULTONE_START_W = "灵魂石开始绑定M语";
+FW.L.SOULTONE_CANCEL_W = "灵魂石取消绑定M语";
+FW.L.SOULTONE_SUCCESS_W = "灵魂石成功绑定M语";
+
+FW.L.SOULWELL_START = "灵魂井开始施放";
+
+FW.L.SEDUCE_START = "诱惑开始施放";
+FW.L.SEDUCE_SUCCESS = "成功诱惑";
+
+FW.L.BREAK_FADE = "打断/失效";
+FW.L.BREAK_FADE_HINT1 = "失效信息持续时间.";
+FW.L.FEAR_BREAK = "恐惧打断";
+FW.L.FEAR_FADE = "恐惧失效";
+FW.L.BANISH_BREAK = "放逐打断";
+FW.L.BANISH_FADE = "放逐失效";
+FW.L.ENSLAVE_BREAK = "奴役打断";
+FW.L.ENSLAVE_FADE = "奴役失效";
+
+FW.L.SPELL_LOCK_SUCCESS = "法术封锁施放成功";
+FW.L.DEVOUR_MAGIC_SUCCESS = "吞噬魔法施放成功";
+
+FW.L.SHARD_MANAGER = "碎片管理";
+FW.L.SHARD_MANAGER_ENABLE_TT = "开启碎片管理";
+
+FW.L.SHARD_MANAGER_HINT1 = "开启选项前保持自定义设置.碎片包一直为优先选择.";
+FW.L.SHARD_BAG_PRIOR = "优先使用碎片包";
+FW.L.SHARD_BAG_PRIOR_TT = "将碎片整理到你置顶的包中. 0为行囊, 从右到左分别为1到4号.";
+FW.L.SHARD_DELETE = "允许摧毁碎片";
+FW.L.SHARD_DELETE_TT = "将多出碎片摧毁,具体取决于下面的设置.";
+FW.L.SHARD_MAX = "最大保留碎片数";
+FW.L.SHARD_MAX_TT = "超过这个数的碎片都会被摧毁. 碎片包内的碎片不会被摧毁.";
+FW.L.SHARD_MIN = "最少保留碎片数";
+FW.L.SHARD_MIN_TT = "和最小保留空格一起使用. 你最少都会保有这个数目的碎片.";
+FW.L.SHARD_FREE = "最小保留空格";
+FW.L.SHARD_FREE_TT = "定义你希望在包包中最少要保留的空格数. 如果允许,插件会尽量摧毁碎片,保留这个数目的空间.";
+
+FW.L.BLOOD_PACT = "血之契印";
+FW.L.BLOOD_PACT_ON = "血之契印打开";
+FW.L.BLOOD_PACT_GAIN = "获得血之契印";
+FW.L.BLOOD_PACT_LOSS = "失去血之契印";
+FW.L.BLOOD_PACT_TT = "开启血之契印信息. 你可以将这些信息显示给其他人, 输入 'self' 或者 'all', 这样你的队友也能看见这些信息.";
+
+FW.L._GAINED_BLOOD_PACT = " 得到血之契印.";
+FW.L._LOST_BLOOD_PACT = " 失去血之契印.";
+
+FW.L.DELAY_PET_TARGET = "Pet目标延迟";
+
+-- tradition chinese
+elseif GetLocale() == "zhTW" then
+
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
 FW.L.SUMMON_START = "召喚開始";
@@ -700,75 +580,7 @@ FW.L.DELAY_PET_TARGET = "Pet目標延遲";
 -- ENGLISH
 else	-- standard english version
 
-	--gear
-	FW.L.VOIDHEART = "Voidheart";
-
-	--buffs
-	FW.L.ESSENCE_OF_SAPPHIRON = "Essence of Sapphiron";
-	FW.L.EPHEMERAL_POWER = "Ephemeral Power"
-	FW.L.SHADOWFLAME = "Shadowflame";
-	FW.L.FLAMESHADOW = "Flameshadow";
-	FW.L.SPELL_HASTE = "Spell Haste";
-	FW.L.UNSTABLE_POWER = "Unstable Power";
-	FW.L.SHADOW_TRANCE = "Shadow Trance";
-	FW.L.BLESSING_OF_THE_SILVER_CRESCENT = "Blessing of the Silver Crescent";
-	FW.L.RECURRING_POWER = "Recurring Power";
-	FW.L.CALL_OF_THE_NEXUS = "Call of the Nexus";
-	FW.L.HEROISM = "Heroism";
-	FW.L.BLOODLUST = "Bloodlust";
-	FW.L.LESSER_SPELL_BLASTING = "Lesser Spell Blasting";
-	FW.L.SPELL_BLASTING = "Spell Blasting";
-	FW.L.BACKLASH = "Backlash";
-	FW.L.UNSTABLE_CURRENTS = "Unstable Currents";
-	FW.L.INFERNAL_POWER = "Infernal Power";
-	FW.L.SHADOW_VULNERABILITY = "Shadow Vulnerability"
-	FW.L.BUFF_BLOOD_PACT = "Blood Pact";
-	FW.L.SPELL_POWER = "Spell Power"; -- Xi'ri's Gift
-	FW.L.FEL_INFUSION = "Fel Infusion"; -- The Skull of Gul'dan
-	FW.L.ARCANE_ENERGY = "Arcane Energy"; -- Vengeance of the Illidari
-	FW.L.AURA_OF_THE_CRUSADE = "Aura of the Crusader";
-	FW.L.BAND_OF_THE_ETERNAL_SAGE = "Band of the Eternal Sage";
-	FW.L.POWER_OF_ARCANAGOS = "Power of Arcanagos";
-	FW.L.MOJO_MADNESS = "Mojo Madness";
-	FW.L.FOCUS = "Focus";
-
-	--spells
-	FW.L.CURSE_OF_RECKLESSNESS = "Curse of Recklessness";
-	FW.L.CURSE_OF_THE_ELEMENTS = "Curse of the Elements";
-	FW.L.CURSE_OF_SHADOW = "Curse of Shadow";
-	FW.L.SIPHON_LIFE = "Siphon Life";
-	FW.L.CURSE_OF_AGONY = "Curse of Agony";
-	FW.L.UNSTABLE_AFFLICTION = "Unstable Affliction";
-	FW.L.CURSE_OF_WEAKNESS = "Curse of Weakness";
-	FW.L.CURSE_OF_DOOM = "Curse of Doom";
-	FW.L.CURSE_OF_TONGUES = "Curse of Tongues";
-	FW.L.CURSE_OF_EXHAUSTION = "Curse of Exhaustion";
-	FW.L.IMMOLATE = "Immolate";
-	FW.L.CORRUPTION = "Corruption";
-	FW.L.HOWL_OF_TERROR = "Howl of Terror";
-	FW.L.FEAR = "Fear";
-	FW.L.BANISH = "Banish";
-	FW.L.ENSLAVE_DEMON = "Enslave Demon";
-	FW.L.INFERNO = "Inferno";
-	FW.L.INFERNAL = "Infernal";
-	FW.L.SEDUCTION = "Seduction";
-	FW.L.CONSUME_SHADOWS = "Consume Shadows";
-	FW.L.SPELL_LOCK = "Spell Lock";
-	FW.L.DEVOUR_MAGIC = "Devour Magic";
-	FW.L.PHASE_SHIFT = "Phase Shift";
-	FW.L.SHADOW_WARD = "Shadow Ward";
-	FW.L.DEATH_COIL = "Death Coil";
-	FW.L.SOULSHATTER = "Soulshatter";
-
-	--cooldowns/buffs
-	FW.L.DEMON_ARMOR = "Demon Armor";
-	FW.L.FEL_ARMOR = "Fel Armor";
-	FW.L.BURNING_WISH = "Burning Wish";
-	FW.L.FEL_ENERGY = "Fel Energy";
-	FW.L.TOUCH_OF_SHADOW = "Touch of Shadow";
-	FW.L.FEL_STAMINA = "Fel Stamina";
-
-	-- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
+-- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
 FW.L.SUMMON_START = "Summoning Start";
 FW.L.SUMMON_CANCEL = "Summoning Cancel";
@@ -834,5 +646,3 @@ FW.L._LOST_BLOOD_PACT = "%s lost Blood Pact.";
 
 FW.L.DELAY_PET_TARGET = "Delay pet target";
 end
-
-

@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r75035 | toadkiller | 2008-05-24 11:26:10 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/libs
+
+AutoBar : 
+-- Dump LibStickyFrames-1.0
+------------------------------------------------------------------------
 r75021 | toadkiller | 2008-05-24 07:47:11 -0400 (Sat, 24 May 2008) | 7 lines
 Changed paths:
    M /trunk/AutoBar/AutoBar.toc

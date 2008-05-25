@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-05-23 11:36:27 -0400 (Fri, 23 May 2008) $
-$Rev: 74937 $
+$Date: 2008-05-24 20:33:25 -0400 (Sat, 24 May 2008) $
+$Rev: 75055 $
 
 ****************************************************************************************
 ]]--
@@ -940,7 +940,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 
 			local ARL_BoPCB = CreateFrame( "CheckButton", "ARL_BoPCB", addon.Frame, "UICheckButtonTemplate" )
 				addon:GenericMakeCB( ARL_BoPCB, ARL_InstanceCB, L["BOP_TT"], 9, 1 )
-				ARL_BoPCBText:SetText( L["BoP"] )
+				ARL_BoPCBText:SetText( L["BoPMenu"] )
 
 			local ARL_HordeCB = CreateFrame( "CheckButton", "ARL_HordeCB", addon.Frame, "UICheckButtonTemplate" )
 				addon:GenericMakeCB( ARL_HordeCB, ARL_BoPCB, L["HORDE_TT"], 10, 1 )

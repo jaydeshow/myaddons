@@ -1,5 +1,6 @@
 local FW = FW;
 local ST = FW:Module("Timer");
+local GetTime = GetTime;
 
 local r, g, b, a;
 
@@ -636,7 +637,7 @@ end
 local function ST_MobDies()
 	for i=1,FW:ROWS(FW.ST),1 do
 		if FW:GET(FW.ST,i,10) == 1 then
-			if arg1 == (FW:GET(FW.ST,i,4)..FW.L.DIES) then
+			if arg7 == FW:GET(FW.ST,i,4) then
 				ST_ScanTargetDebuffs();-- scan the current target for debuffs now, should remove them if it's idd your target that died
 			end
 			break;
@@ -644,7 +645,7 @@ local function ST_MobDies()
 	end
 	if FW.Settings.TimerImproveRaidTarget then
 		for i=1,FW:ROWS(FW.ST),1 do
-			if FW:GET(FW.ST,i,10)==0 and FW:GET(FW.ST,i,11)==0 and arg1 == (FW:GET(FW.ST,i,4)..FW.L.DIES) then
+			if FW:GET(FW.ST,i,10)==0 and FW:GET(FW.ST,i,11)==0 and arg7 == FW:GET(FW.ST,i,4) then
 				if FW:GET(FW.ST,i,9)>0 then
 					ST_RaidTargetScan();-- do a raid scan the moment a unique non target/focus unit dies
 				end
@@ -654,25 +655,7 @@ local function ST_MobDies()
 	end
 end
 
-local function ST_DotHit()
-	local _,_,unit,spell = string.find(arg1,FW.L.DOT_HIT);
-	if not unit or not spell then
-		_,_,spell,unit = string.find(arg1,FW.L.DOT_ABSORB);
-	end
-	if unit and spell then
-		--FW:ShowDebug("dot hit "..unit.." "..spell);
-		FW:AddDot(unit,spell)
-	end
-end
-
 local function ST_RegisterImproved()
-	if FW.Settings.TimerImprove then
-		FW:RegisterToEvent("CHAT_MSG_SPELL_PERIODIC_CREATURE_DAMAGE",		ST_DotHit);
-		FW:RegisterToEvent("CHAT_MSG_SPELL_PERIODIC_HOSTILEPLAYER_DAMAGE",	ST_DotHit);
-	else
-		FW:UnregisterToEvent("CHAT_MSG_SPELL_PERIODIC_CREATURE_DAMAGE",		ST_DotHit);
-		FW:UnregisterToEvent("CHAT_MSG_SPELL_PERIODIC_HOSTILEPLAYER_DAMAGE",	ST_DotHit);
-	end
 	FW:ERASE(ActiveDots);
 end
 
@@ -680,6 +663,7 @@ local function ST_RemoveDots()
 	if not FW.Settings.TimerImprove then return; end
 	local i=1;
 	local time = GetTime();
+	
 	while i<= FW:ROWS(ActiveDots) do
 		t1,t2,t3 = FW:GET(ActiveDots,i);
 		if t3 < time then
@@ -690,7 +674,7 @@ local function ST_RemoveDots()
 					ST_Fade(j,REMOVE);
 				end
 			end
-			--FW:ShowDebug("removing "..t2.." on "..t1);
+			FW:ShowDebug("removing "..t2.." on "..t1);
 		else
 			i=i+1;
 		end
@@ -972,6 +956,7 @@ end
 
 function FW:AddDot(unit,spell)
 	if not FW.Settings.TimerImprove then return; end
+	FW:ShowDebug("adding dot "..spell.." to "..unit);
 	local index = FW:FIND2(ActiveDots,unit,1,spell,2);
 	if index then
 		ActiveDots[index+1] = GetTime()+FW.Settings.DotTicksDelay;
@@ -996,12 +981,27 @@ function FW:RegisterOnTimerBreak(func)
 	tinsert(FW_OnTimerBreak,func);
 end
 
+local function ST_CombatLogEvent()
+	if arg4 == FW.PLAYER then
+		if arg2 == "SPELL_PERIODIC_DAMAGE" or arg2 == "SPELL_PERIODIC_MISSED" then
+			if FW.Settings.TimerImprove then 
+				FW:AddDot(arg7,arg10);
+			end
+		end		
+	else
+		if arg2 == "UNIT_DIED" then
+			ST_MobDies();
+		end
+	end
+end
+	
+
 function FW:TimerOnload()
 	FW:RegisterFrame("FWSTFrame",ST_TimerShow,"Timer");
 	
 	FW:RegisterToEvent("PLAYER_TARGET_CHANGED",		ST_TargetChanged);
 	FW:RegisterToEvent("PLAYER_FOCUS_CHANGED",		ST_FocusChanged);
-	FW:RegisterToEvent("CHAT_MSG_COMBAT_HOSTILE_DEATH",	ST_MobDies);
+	FW:RegisterToEvent("COMBAT_LOG_EVENT_UNFILTERED",	ST_CombatLogEvent);
 	
 	FW:RegisterVariablesEvent(function()
 		ST_RegisterImproved();

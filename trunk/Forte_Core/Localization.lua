@@ -1,4 +1,4 @@
-﻿-- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+﻿-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -15,21 +15,13 @@
 
 -- FR 2 missing
 if GetLocale() == "frFR" then
-	-- combat log, log string searches with %s spell name
-	FW.L.WAS_RESISTED = "^Vous utilisez %s, mais"; -- "Vous utilisez Z, mais X résiste."
-	FW.L.WAS_EVADED = " évité %s%%.$"; -- "X évite Z."
-	FW.L.FAILED_IMMUNE = "^Votre %s rate" -- "Votre Z rate. X y est insensible."
-	FW.L.IS_REFLECTED = "^Votre %s est renvoyé"; --"Votre Z est renvoyé par X."
-
---[[>>]]FW.L.DOT_HIT = "^(.+) suffers .+ damage from your (.+)%.";
---[[>>]]FW.L.DOT_ABSORB = "^Your (.+) is absorbed by (.+)%.";
-	FW.L.DIES = " a succombé%."; -- "X a succombé."
 
 	--spell book
-	FW.L.RANK = "Rang";
 	FW.L.SPELL_RANK = "^Rang (%d+)$";
 	
 	FW.L.RITUAL_OF_SOULS = "Rituel des âmes";
+	FW.L.CREATE_SOULSTONE = "Création de Pierre d'âme";
+	FW.L.CREATE_HEALTHSTONE = "Création de Pierre de soins";
 
 	--items
 	FW.L.MINOR_SS = "Pierre d'âme mineure";
@@ -46,9 +38,6 @@ if GetLocale() == "frFR" then
 	FW.L.LESSER_HS = "Pierre de soins inférieure";
 	FW.L.MINOR_HS = "Pierre de soins mineure";
 
-	--zones
-	FW.L.COILFANG_RESERVOIR = "Caverne du sanctuaire du Serpent";
-
 	--units
 	FW.L.HELLFIRE_CHANNELER = "Canaliste des Flammes infernales"
 	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "Grand astromancien Capernian";
@@ -59,174 +48,15 @@ if GetLocale() == "frFR" then
 	FW.L.FATHOM_GUARD_CARIBDIS = "Garde-fonds Caribdis";
 	FW.L.FATHOM_GUARD_TIDALVESS = "Garde-fonds Marevess";
 
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.UPDATE_NOW = "Update Now";
-FW.L.LAST_CHECK = "\n\nLast check: %d seconds ago.";
-FW.L.SCROLL_TO_ = "Scroll to ";
-
-FW.L.POTION = "Potion";
-FW.L.POWERUP = "Powerup";
-FW.L.ITEM = "Item";
-FW.L.PET = "Pet";
-FW.L.SPELL = "Spell";
-FW.L.HEALTHSTONE_NORMAL = "Healthstone";
-FW.L.SOULWELL = "Soulwell";
-
--- commonly used
-FW.L.USE_ = "Use %s";
-FW.L.CREATE_ = "Create %s";
-FW.L.LEFT_CLICK_TO_CREATE_ = "Left Click to create %s.";
-FW.L.RIGHT_CLICK_TO_USE_ = "Right Click to use %s.";
-
-FW.L.MASTER = "Master";
-FW.L.MAJOR = "Major";
-FW.L.GREATER = "Greater";
-FW.L.NORMAL = "Normal";
-FW.L.LESSER = "Lesser";
-FW.L.MINOR = "Minor";
-
-FW.L.YELLOW_STAR = "{rt1}";
-FW.L.ORANGE_CIRCLE = "{rt2}";
-FW.L.PRUPLE_DIAMOND = "{rt3}";
-FW.L.GREEN_TRIANGLE = "{rt4}";
-FW.L.MOON = "{rt5}";
-FW.L.BLUE_SQUARE = "{rt6}";
-FW.L.CROSS = "{rt7}";
-FW.L.SKULL = "{rt8}";
-
-FW.L.FILTER_NONE = "normal";
-FW.L.FILTER_IGNORE = "|cffff0000ignore|r";
-FW.L.FILTER_COLOR = "|cff00ff00color|r";
-
-FW.L.MODULE_NONE = "|cffff0000None|r";
-
-FW.L.NOTARGET = "<No Target>";
-FW.L.UNKNOWN = "<Unknown>";
-FW.L.NOBODY = "<Nobody>"
-
-FW.L.ENABLE  = "Enable";
-FW.L.LOCK = "Lock (disable option functions)";
-FW.L.EXPAND_UP = "Expand up";
-FW.L.EXPAND_UP_TT = "Determines if the bar lists should be expanded upwards or downwards.";
-FW.L.BAR_SPACING = "Bar spacing"
-FW.L.COMBAT_HINT = "Some sizing changes you make here will only apply outside of combat.";
-FW.L.ORA_HINT = "For people without ForteWarlock but with oRA, someone with FW has to be promoted.";
-
-FW.L.DEAD = "Dead";
-FW.L.OFFLINE = "Offline";
-FW.L.CASTING = "Casting";
-FW.L.CUSTOMIZE = "Customize";
-FW.L.GENERAL = "General Options";
-FW.L.ADVANCED = "Advanced Options";
-FW.L.BASIC = "Basics";
-FW.L.SPECIFIC = "Specifics";
-FW.L.CORE = "Core";
-FW.L.COLORING_FILTERING = "Coloring/Filtering";
-FW.L.APPEARANCE = "Appearance";
-FW.L.SIZING = "Sizing";
-FW.L.SCALE = "Scale";
-FW.L.BAR_HEIGHT = "Bar height";
-FW.L.BAR_WIDTH = "Bar width";
-FW.L.BAR = "Bar";
-FW.L.FRAME_BACKGROUND = "Frame Background";
-FW.L.BAR_TEXT = "Bar text";
-FW.L.BAR_FONT = "Bar Font";
-FW.L.BAR_TEXTURE = "Bar Texture";
-FW.L.BAR_COLORING = "Bar Coloring";
-FW.L.AUTO_HIDE = "Auto-hide outside party/raid";
-FW.L.AUTO_HIDE_TT = "This will automatically hide the frame when not in a party or raid.";
-FW.L.AUTO_MINIMIZE = "Auto-minimize outside party/raid";
-FW.L.AUTO_MINIMIZE_TT = "This will automatically hide the bars when not in a party or raid.";
-FW.L.SHOW_BARS = "Show bars";
-FW.L.SHOW_BARS_TT = "Show the bars. You can hide them in case you only want to see the information on the header.";
-FW.L.MAX_SHOWN = "Maximum shown";
-
-FW.L.SELF_MESSAGES = "Self Messages";
-FW.L.SELF_MESSAGES_HINT1 = "This allows you to display usefull messages to yourself. They are shown in your 'default' chat frame."
-FW.L.RAID_MESSAGES = "Party/Raid Messages";
-FW.L.RAID_MESSAGES_HINT1 = "This allows you to display messages to others based on spells you cast.";
-FW.L.RAID_MESSAGES_HINT2 = "You can disable all messages to party/raid and/or channel, or every message separately.";
-FW.L.SHOW_IN_RAID = "Show in party/raid (1st checkboxes)";
-FW.L.SHOW_IN_RAID_TT = "Uncheck to stop any messages from being shown in your raid or party.";
-FW.L.SHOW_IN_CHANNEL = "Show in channel (2nd checkboxes)";
-FW.L.SHOW_IN_CHANNEL_TT = "Set the channel name or number in which you want some of your messages to be displayed. 'say' is also valid. Uncheck to stop any messages being shown in the channel.";
-
--- standard usage tips to append
-FW.L.USE_FILTER = "First type in the item or spell that you want to change (auto-fills). Then you can select if you want to show it normally (normal), hide it (ignore) or change its color (color). If you selected you want to change the color, you get a color picker from clicking square on the right.";
-FW.L.USE_COLOR_PICKER = "Click the colored square to open up the color picker. If there's a slider on the right, you can also change the transparency.";
-FW.L.USE_TEXTURE = "Mouse over the left textured bar and select a texture from the dropdown menu. You can also use any other texture by giving its path."
-FW.L.USE_FONT = "Mouse over the left font area and select a font from the dropdown menu. The center editbox can be used to change the font size. You can also use any other font by giving its path.";
-FW.L.USE_EDITBOX = "Don't forget you have to press enter to confirm changes to the editboxes!";
-FW.L.USE_MSG2 = "The first checkbox will enable this message in your party or raid. The second checkbox will enable it in the channel you set above.";
-
-FW.L.DEFAULT = "[default]";
-FW.L.DEFAULTS = "[defaults]";
-FW.L.POSITION = "[position]";
-
--- all the other text and tips belonging to core itself
-FW.L.ADVANCED_HINT1 = "You will usually not have to change anything here. It's only for problem solving.";
-FW.L.ADVANCED_HINT2 = "Changes to 'update intervals' only apply after reloading.";
-
-FW.L.GENERAL_TIPS = "Some Tips";
-FW.L.GENERAL_TIPS1 = "Press enter to confirm changes to editboxes. Escape will restore its current setting.";
-FW.L.GENERAL_TIPS2 = "You can use the [defaults] button in the headers to restore every default in this category.";
-FW.L.GENERAL_TIPS3 = "Left-click frame headers to toggle between display modes. ALT+drag frame headers to move.";
-FW.L.GENERAL_TIPS4 = "Some color options also allow for transparency changing. Usually the background colors.";
-
-FW.L.GENERAL_MO = "General Module Options";
-FW.L.GENERAL_MO1 = "Right-click headers for options";
-FW.L.GENERAL_MO1_TT = "You can right-click the module frame headers to open the options menu at the right position. Will only work for frames that aren't fully locked.";
-FW.L.GENERAL_MO2 = "Alternate time format";
-FW.L.GENERAL_MO2_TT = "Change the time format from 30m to 29:59.";
-FW.L.GENERAL_MO3 = "Enable frame snapping";
-FW.L.GENERAL_MO3_TT = "The module frames will allign to each other's borders when dragged.";
-FW.L.GENERAL_MO4 = "Frame snapping distance";
-FW.L.GENERAL_MO4_TT = "The distance frame borders must be from each other to allign.";
-FW.L.GENERAL_MO5 = "Frame spacing";
-FW.L.GENERAL_MO5_TT = "The distance to keep between frames when they are alligned.";
-
-FW.L.GENERAL_MA = "General Module Appearance";
-FW.L.GENERAL_MA1_TT = "Change the Bar Font for ALL module frames.";
-FW.L.GENERAL_MA2_TT = "Change the Bar Texture for ALL module frames.";
-
-FW.L.GENERAL_OA = "Options Appearance";
-FW.L.GENERAL_OA1 = "Header Color";
-FW.L.GENERAL_OA1_TT = "Change the Header Color of the option frames.";
-FW.L.GENERAL_OA2 = "Background Color";
-FW.L.GENERAL_OA2_TT = "Change the Background Color of the option frames.";
-FW.L.GENERAL_OA3 = "Headers";
-FW.L.GENERAL_OA3_TT = "Change the font the options headers are displayed in.";
-FW.L.GENERAL_OA4 = "Options";
-FW.L.GENERAL_OA4_TT = "Change the font the options are displayed in.";
-
-FW.L.PROFILES = "Profiles";
-FW.L.PROFILES_HINT1 = "If you name profiles after your characters, the addon will automatically load the right profile.";
-FW.L.PROFILES_CURRENT = "Current Profile";
-FW.L.PROFILES_CURRENT_TT = "Select the profile you want to use. [delete current] deletes the profile you are currently using (have selected). [create new] copies your current settings to a new profile with the name you entered or replaces one.";
-
-FW.L.LOADING_DELAY = "Loading delay";
-FW.L.UPDATE_INTERVAL_CORE = "Update interval core";
-FW.L.UPDATE_INTERVAL_ANIMATIONS = "Update interval animations";
-
-
 -- DE 0 missing
 elseif GetLocale() == "deDE" then
-	-- combat log, log string searches with %s spell name
-	FW.L.WAS_RESISTED = "^Dein %s wurde widerstanden";
-	FW.L.WAS_EVADED = "^Dein %s wurde von .+ ausgewichen";
-	FW.L.FAILED_IMMUNE = "^%s ist fehlgeschlagen";
-	FW.L.IS_REFLECTED = "^Dein %s wurde von .+ reflektiert";
-
-	FW.L.DOT_HIT = "^(.+) erleidet .+ Schaden von deinem (.+)%.";
-	FW.L.DOT_ABSORB = "^Dein (.+) wurde von (.+) absorbiert%.";
-	FW.L.DIES = " stirbt.";
 
 	--spell book
-	FW.L.RANK = "Rang";
 	FW.L.SPELL_RANK = "^Rang (%d+)$";
 	
 	FW.L.RITUAL_OF_SOULS = "Ritual der Seelen";
+	FW.L.CREATE_SOULSTONE = "Seelenstein herstellen";
+	FW.L.CREATE_HEALTHSTONE = "Gesundheitsstein herstellen";
 
 	--items
 	FW.L.MINOR_SS = "Schwacher Seelenstein";
@@ -243,8 +73,6 @@ elseif GetLocale() == "deDE" then
 	FW.L.LESSER_HS = "Geringer Gesundheitsstein";
 	FW.L.MINOR_HS = "Schwacher Gesundheitsstein";
 
-	--zones
-	FW.L.COILFANG_RESERVOIR = "Höhle des Schlangenschreins";
 	--units
 	FW.L.HELLFIRE_CHANNELER = "Kanalisierer des Höllenfeuers "
 	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "Großastronom Capernian";
@@ -255,174 +83,16 @@ elseif GetLocale() == "deDE" then
 	FW.L.FATHOM_GUARD_CARIBDIS = "Tiefenwächter Caribdis";
 	FW.L.FATHOM_GUARD_TIDALVESS = "Tiefenwächter Flutvess";
 
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.UPDATE_NOW = "Update Now";
-FW.L.LAST_CHECK = "\n\nLast check: %d seconds ago.";
-FW.L.SCROLL_TO_ = "Scroll to ";
-
-FW.L.POTION = "Potion";
-FW.L.POWERUP = "Powerup";
-FW.L.ITEM = "Item";
-FW.L.PET = "Pet";
-FW.L.SPELL = "Spell";
-FW.L.HEALTHSTONE_NORMAL = "Healthstone";
-FW.L.SOULWELL = "Soulwell";
-
--- commonly used
-FW.L.USE_ = "Use %s";
-FW.L.CREATE_ = "Create %s";
-FW.L.LEFT_CLICK_TO_CREATE_ = "Left Click to create %s.";
-FW.L.RIGHT_CLICK_TO_USE_ = "Right Click to use %s.";
-
-FW.L.MASTER = "Master";
-FW.L.MAJOR = "Major";
-FW.L.GREATER = "Greater";
-FW.L.NORMAL = "Normal";
-FW.L.LESSER = "Lesser";
-FW.L.MINOR = "Minor";
-
-FW.L.YELLOW_STAR = "{rt1}";
-FW.L.ORANGE_CIRCLE = "{rt2}";
-FW.L.PRUPLE_DIAMOND = "{rt3}";
-FW.L.GREEN_TRIANGLE = "{rt4}";
-FW.L.MOON = "{rt5}";
-FW.L.BLUE_SQUARE = "{rt6}";
-FW.L.CROSS = "{rt7}";
-FW.L.SKULL = "{rt8}";
-
-FW.L.FILTER_NONE = "normal";
-FW.L.FILTER_IGNORE = "|cffff0000ignore|r";
-FW.L.FILTER_COLOR = "|cff00ff00color|r";
-
-FW.L.MODULE_NONE = "|cffff0000None|r";
-
-FW.L.NOTARGET = "<No Target>";
-FW.L.UNKNOWN = "<Unknown>";
-FW.L.NOBODY = "<Nobody>"
-
-FW.L.ENABLE  = "Enable";
-FW.L.LOCK = "Lock (disable option functions)";
-FW.L.EXPAND_UP = "Expand up";
-FW.L.EXPAND_UP_TT = "Determines if the bar lists should be expanded upwards or downwards.";
-FW.L.BAR_SPACING = "Bar spacing"
-FW.L.COMBAT_HINT = "Some sizing changes you make here will only apply outside of combat.";
-FW.L.ORA_HINT = "For people without ForteWarlock but with oRA, someone with FW has to be promoted.";
-
-FW.L.DEAD = "Dead";
-FW.L.OFFLINE = "Offline";
-FW.L.CASTING = "Casting";
-FW.L.CUSTOMIZE = "Customize";
-FW.L.GENERAL = "General Options";
-FW.L.ADVANCED = "Advanced Options";
-FW.L.BASIC = "Basics";
-FW.L.SPECIFIC = "Specifics";
-FW.L.CORE = "Core";
-FW.L.COLORING_FILTERING = "Coloring/Filtering";
-FW.L.APPEARANCE = "Appearance";
-FW.L.SIZING = "Sizing";
-FW.L.SCALE = "Scale";
-FW.L.BAR_HEIGHT = "Bar height";
-FW.L.BAR_WIDTH = "Bar width";
-FW.L.BAR = "Bar";
-FW.L.FRAME_BACKGROUND = "Frame Background";
-FW.L.BAR_TEXT = "Bar text";
-FW.L.BAR_FONT = "Bar Font";
-FW.L.BAR_TEXTURE = "Bar Texture";
-FW.L.BAR_COLORING = "Bar Coloring";
-FW.L.AUTO_HIDE = "Auto-hide outside party/raid";
-FW.L.AUTO_HIDE_TT = "This will automatically hide the frame when not in a party or raid.";
-FW.L.AUTO_MINIMIZE = "Auto-minimize outside party/raid";
-FW.L.AUTO_MINIMIZE_TT = "This will automatically hide the bars when not in a party or raid.";
-FW.L.SHOW_BARS = "Show bars";
-FW.L.SHOW_BARS_TT = "Show the bars. You can hide them in case you only want to see the information on the header.";
-FW.L.MAX_SHOWN = "Maximum shown";
-
-FW.L.SELF_MESSAGES = "Self Messages";
-FW.L.SELF_MESSAGES_HINT1 = "This allows you to display usefull messages to yourself. They are shown in your 'default' chat frame."
-FW.L.RAID_MESSAGES = "Party/Raid Messages";
-FW.L.RAID_MESSAGES_HINT1 = "This allows you to display messages to others based on spells you cast.";
-FW.L.RAID_MESSAGES_HINT2 = "You can disable all messages to party/raid and/or channel, or every message separately.";
-FW.L.SHOW_IN_RAID = "Show in party/raid (1st checkboxes)";
-FW.L.SHOW_IN_RAID_TT = "Uncheck to stop any messages from being shown in your raid or party.";
-FW.L.SHOW_IN_CHANNEL = "Show in channel (2nd checkboxes)";
-FW.L.SHOW_IN_CHANNEL_TT = "Set the channel name or number in which you want some of your messages to be displayed. 'say' is also valid. Uncheck to stop any messages being shown in the channel.";
-
--- standard usage tips to append
-FW.L.USE_FILTER = "First type in the item or spell that you want to change (auto-fills). Then you can select if you want to show it normally (normal), hide it (ignore) or change its color (color). If you selected you want to change the color, you get a color picker from clicking square on the right.";
-FW.L.USE_COLOR_PICKER = "Click the colored square to open up the color picker. If there's a slider on the right, you can also change the transparency.";
-FW.L.USE_TEXTURE = "Mouse over the left textured bar and select a texture from the dropdown menu. You can also use any other texture by giving its path."
-FW.L.USE_FONT = "Mouse over the left font area and select a font from the dropdown menu. The center editbox can be used to change the font size. You can also use any other font by giving its path.";
-FW.L.USE_EDITBOX = "Don't forget you have to press enter to confirm changes to the editboxes!";
-FW.L.USE_MSG2 = "The first checkbox will enable this message in your party or raid. The second checkbox will enable it in the channel you set above.";
-
-FW.L.DEFAULT = "[default]";
-FW.L.DEFAULTS = "[defaults]";
-FW.L.POSITION = "[position]";
-
--- all the other text and tips belonging to core itself
-FW.L.ADVANCED_HINT1 = "You will usually not have to change anything here. It's only for problem solving.";
-FW.L.ADVANCED_HINT2 = "Changes to 'update intervals' only apply after reloading.";
-
-FW.L.GENERAL_TIPS = "Some Tips";
-FW.L.GENERAL_TIPS1 = "Press enter to confirm changes to editboxes. Escape will restore its current setting.";
-FW.L.GENERAL_TIPS2 = "You can use the [defaults] button in the headers to restore every default in this category.";
-FW.L.GENERAL_TIPS3 = "Left-click frame headers to toggle between display modes. ALT+drag frame headers to move.";
-FW.L.GENERAL_TIPS4 = "Some color options also allow for transparency changing. Usually the background colors.";
-
-FW.L.GENERAL_MO = "General Module Options";
-FW.L.GENERAL_MO1 = "Right-click headers for options";
-FW.L.GENERAL_MO1_TT = "You can right-click the module frame headers to open the options menu at the right position. Will only work for frames that aren't fully locked.";
-FW.L.GENERAL_MO2 = "Alternate time format";
-FW.L.GENERAL_MO2_TT = "Change the time format from 30m to 29:59.";
-FW.L.GENERAL_MO3 = "Enable frame snapping";
-FW.L.GENERAL_MO3_TT = "The module frames will allign to each other's borders when dragged.";
-FW.L.GENERAL_MO4 = "Frame snapping distance";
-FW.L.GENERAL_MO4_TT = "The distance frame borders must be from each other to allign.";
-FW.L.GENERAL_MO5 = "Frame spacing";
-FW.L.GENERAL_MO5_TT = "The distance to keep between frames when they are alligned.";
-
-FW.L.GENERAL_MA = "General Module Appearance";
-FW.L.GENERAL_MA1_TT = "Change the Bar Font for ALL module frames.";
-FW.L.GENERAL_MA2_TT = "Change the Bar Texture for ALL module frames.";
-
-FW.L.GENERAL_OA = "Options Appearance";
-FW.L.GENERAL_OA1 = "Header Color";
-FW.L.GENERAL_OA1_TT = "Change the Header Color of the option frames.";
-FW.L.GENERAL_OA2 = "Background Color";
-FW.L.GENERAL_OA2_TT = "Change the Background Color of the option frames.";
-FW.L.GENERAL_OA3 = "Headers";
-FW.L.GENERAL_OA3_TT = "Change the font the options headers are displayed in.";
-FW.L.GENERAL_OA4 = "Options";
-FW.L.GENERAL_OA4_TT = "Change the font the options are displayed in.";
-
-FW.L.PROFILES = "Profiles";
-FW.L.PROFILES_HINT1 = "If you name profiles after your characters, the addon will automatically load the right profile.";
-FW.L.PROFILES_CURRENT = "Current Profile";
-FW.L.PROFILES_CURRENT_TT = "Select the profile you want to use. [delete current] deletes the profile you are currently using (have selected). [create new] copies your current settings to a new profile with the name you entered or replaces one.";
-
-FW.L.LOADING_DELAY = "Loading delay";
-FW.L.UPDATE_INTERVAL_CORE = "Update interval core";
-FW.L.UPDATE_INTERVAL_ANIMATIONS = "Update interval animations";
-
 -- SPANISH - 1 mising  By Intxixu - SPQR - Tyrande
 elseif GetLocale() == "esES" then
-	-- combat log, log string searches with %s spell name
-	FW.L.WAS_RESISTED = "^Tu %s fue resistida";
-	FW.L.WAS_EVADED = "^Tu %s fue evadida";
-	FW.L.FAILED_IMMUNE = "^Tu %s fallo";
-	FW.L.IS_REFLECTED = "^Tu %s es reflejado";
-
-	FW.L.DOT_HIT = "^(.+) sufre .+ dñoa de tu  (.+)%.";
-	FW.L.DOT_ABSORB = "^Tu (.+) es absorbido por (.+)%.";
-	FW.L.DIES = " muere.";
 
 	--spell book
-	FW.L.RANK = "Rango";
 	FW.L.SPELL_RANK = "^Rango (%d+)$";
 	
 	FW.L.RITUAL_OF_SOULS = "Ritual de almas";
-
+	FW.L.CREATE_SOULSTONE = "Crear piedra de alma";
+	FW.L.CREATE_HEALTHSTONE = "Crear piedra de salud";
+	
 	--items
 	FW.L.MINOR_SS = "Piedra de alma menor";
 	FW.L.LESSER_SS = "Piedra de alma inferior";
@@ -438,9 +108,6 @@ elseif GetLocale() == "esES" then
 	FW.L.LESSER_HS = "Piedra de salur inferior";
 	FW.L.MINOR_HS = "Piedra de salud menor";
 
-	--zones
-	FW.L.COILFANG_RESERVOIR = "Caverna Santuario Serpiente";
-
 	--units
 	FW.L.HELLFIRE_CHANNELER = "Canalizador Fuego Infernal"
 	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "Grand Astromancer Capernian";
@@ -451,160 +118,9 @@ elseif GetLocale() == "esES" then
 	FW.L.FATHOM_GUARD_CARIBDIS = " Guardia de las profundidades de Caribdis";
 	FW.L.FATHOM_GUARD_TIDALVESS = " Guardia de las profundidades de Tidalvess";
 
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
-FW.L.UPDATE_NOW = "Update Now";
-FW.L.LAST_CHECK = "\n\nLast check: %d seconds ago.";
-FW.L.SCROLL_TO_ = "Scroll to ";
-
-FW.L.POTION = "Potion";
-FW.L.POWERUP = "Powerup";
-FW.L.ITEM = "Item";
-FW.L.PET = "Pet";
-FW.L.SPELL = "Spell";
-FW.L.HEALTHSTONE_NORMAL = "Healthstone";
-FW.L.SOULWELL = "Soulwell";
-
--- commonly used
-FW.L.USE_ = "Use %s";
-FW.L.CREATE_ = "Create %s";
-FW.L.LEFT_CLICK_TO_CREATE_ = "Left Click to create %s.";
-FW.L.RIGHT_CLICK_TO_USE_ = "Right Click to use %s.";
-
-FW.L.MASTER = "Master";
-FW.L.MAJOR = "Major";
-FW.L.GREATER = "Greater";
-FW.L.NORMAL = "Normal";
-FW.L.LESSER = "Lesser";
-FW.L.MINOR = "Minor";
-
-FW.L.YELLOW_STAR = "{rt1}";
-FW.L.ORANGE_CIRCLE = "{rt2}";
-FW.L.PRUPLE_DIAMOND = "{rt3}";
-FW.L.GREEN_TRIANGLE = "{rt4}";
-FW.L.MOON = "{rt5}";
-FW.L.BLUE_SQUARE = "{rt6}";
-FW.L.CROSS = "{rt7}";
-FW.L.SKULL = "{rt8}";
-
-FW.L.FILTER_NONE = "normal";
-FW.L.FILTER_IGNORE = "|cffff0000ignore|r";
-FW.L.FILTER_COLOR = "|cff00ff00color|r";
-
-FW.L.MODULE_NONE = "|cffff0000None|r";
-
-FW.L.NOTARGET = "<No Target>";
-FW.L.UNKNOWN = "<Unknown>";
-FW.L.NOBODY = "<Nobody>"
-
-FW.L.ENABLE  = "Enable";
-FW.L.LOCK = "Lock (disable option functions)";
-FW.L.EXPAND_UP = "Expand up";
-FW.L.EXPAND_UP_TT = "Determines if the bar lists should be expanded upwards or downwards.";
-FW.L.BAR_SPACING = "Bar spacing"
-FW.L.COMBAT_HINT = "Some sizing changes you make here will only apply outside of combat.";
-FW.L.ORA_HINT = "For people without ForteWarlock but with oRA, someone with FW has to be promoted.";
-
-FW.L.DEAD = "Dead";
-FW.L.OFFLINE = "Offline";
-FW.L.CASTING = "Casting";
-FW.L.CUSTOMIZE = "Customize";
-FW.L.GENERAL = "General Options";
-FW.L.ADVANCED = "Advanced Options";
-FW.L.BASIC = "Basics";
-FW.L.SPECIFIC = "Specifics";
-FW.L.CORE = "Core";
-FW.L.COLORING_FILTERING = "Coloring/Filtering";
-FW.L.APPEARANCE = "Appearance";
-FW.L.SIZING = "Sizing";
-FW.L.SCALE = "Scale";
-FW.L.BAR_HEIGHT = "Bar height";
-FW.L.BAR_WIDTH = "Bar width";
-FW.L.BAR = "Bar";
-FW.L.FRAME_BACKGROUND = "Frame Background";
-FW.L.BAR_TEXT = "Bar text";
-FW.L.BAR_FONT = "Bar Font";
-FW.L.BAR_TEXTURE = "Bar Texture";
-FW.L.BAR_COLORING = "Bar Coloring";
-FW.L.AUTO_HIDE = "Auto-hide outside party/raid";
-FW.L.AUTO_HIDE_TT = "This will automatically hide the frame when not in a party or raid.";
-FW.L.AUTO_MINIMIZE = "Auto-minimize outside party/raid";
-FW.L.AUTO_MINIMIZE_TT = "This will automatically hide the bars when not in a party or raid.";
-FW.L.SHOW_BARS = "Show bars";
-FW.L.SHOW_BARS_TT = "Show the bars. You can hide them in case you only want to see the information on the header.";
-FW.L.MAX_SHOWN = "Maximum shown";
-
-FW.L.SELF_MESSAGES = "Self Messages";
-FW.L.SELF_MESSAGES_HINT1 = "This allows you to display usefull messages to yourself. They are shown in your 'default' chat frame."
-FW.L.RAID_MESSAGES = "Party/Raid Messages";
-FW.L.RAID_MESSAGES_HINT1 = "This allows you to display messages to others based on spells you cast.";
-FW.L.RAID_MESSAGES_HINT2 = "You can disable all messages to party/raid and/or channel, or every message separately.";
-FW.L.SHOW_IN_RAID = "Show in party/raid (1st checkboxes)";
-FW.L.SHOW_IN_RAID_TT = "Uncheck to stop any messages from being shown in your raid or party.";
-FW.L.SHOW_IN_CHANNEL = "Show in channel (2nd checkboxes)";
-FW.L.SHOW_IN_CHANNEL_TT = "Set the channel name or number in which you want some of your messages to be displayed. 'say' is also valid. Uncheck to stop any messages being shown in the channel.";
-
--- standard usage tips to append
-FW.L.USE_FILTER = "First type in the item or spell that you want to change (auto-fills). Then you can select if you want to show it normally (normal), hide it (ignore) or change its color (color). If you selected you want to change the color, you get a color picker from clicking square on the right.";
-FW.L.USE_COLOR_PICKER = "Click the colored square to open up the color picker. If there's a slider on the right, you can also change the transparency.";
-FW.L.USE_TEXTURE = "Mouse over the left textured bar and select a texture from the dropdown menu. You can also use any other texture by giving its path."
-FW.L.USE_FONT = "Mouse over the left font area and select a font from the dropdown menu. The center editbox can be used to change the font size. You can also use any other font by giving its path.";
-FW.L.USE_EDITBOX = "Don't forget you have to press enter to confirm changes to the editboxes!";
-FW.L.USE_MSG2 = "The first checkbox will enable this message in your party or raid. The second checkbox will enable it in the channel you set above.";
-
-FW.L.DEFAULT = "[default]";
-FW.L.DEFAULTS = "[defaults]";
-FW.L.POSITION = "[position]";
-
--- all the other text and tips belonging to core itself
-FW.L.ADVANCED_HINT1 = "You will usually not have to change anything here. It's only for problem solving.";
-FW.L.ADVANCED_HINT2 = "Changes to 'update intervals' only apply after reloading.";
-
-FW.L.GENERAL_TIPS = "Some Tips";
-FW.L.GENERAL_TIPS1 = "Press enter to confirm changes to editboxes. Escape will restore its current setting.";
-FW.L.GENERAL_TIPS2 = "You can use the [defaults] button in the headers to restore every default in this category.";
-FW.L.GENERAL_TIPS3 = "Left-click frame headers to toggle between display modes. ALT+drag frame headers to move.";
-FW.L.GENERAL_TIPS4 = "Some color options also allow for transparency changing. Usually the background colors.";
-
-FW.L.GENERAL_MO = "General Module Options";
-FW.L.GENERAL_MO1 = "Right-click headers for options";
-FW.L.GENERAL_MO1_TT = "You can right-click the module frame headers to open the options menu at the right position. Will only work for frames that aren't fully locked.";
-FW.L.GENERAL_MO2 = "Alternate time format";
-FW.L.GENERAL_MO2_TT = "Change the time format from 30m to 29:59.";
-FW.L.GENERAL_MO3 = "Enable frame snapping";
-FW.L.GENERAL_MO3_TT = "The module frames will allign to each other's borders when dragged.";
-FW.L.GENERAL_MO4 = "Frame snapping distance";
-FW.L.GENERAL_MO4_TT = "The distance frame borders must be from each other to allign.";
-FW.L.GENERAL_MO5 = "Frame spacing";
-FW.L.GENERAL_MO5_TT = "The distance to keep between frames when they are alligned.";
-
-FW.L.GENERAL_MA = "General Module Appearance";
-FW.L.GENERAL_MA1_TT = "Change the Bar Font for ALL module frames.";
-FW.L.GENERAL_MA2_TT = "Change the Bar Texture for ALL module frames.";
-
-FW.L.GENERAL_OA = "Options Appearance";
-FW.L.GENERAL_OA1 = "Header Color";
-FW.L.GENERAL_OA1_TT = "Change the Header Color of the option frames.";
-FW.L.GENERAL_OA2 = "Background Color";
-FW.L.GENERAL_OA2_TT = "Change the Background Color of the option frames.";
-FW.L.GENERAL_OA3 = "Headers";
-FW.L.GENERAL_OA3_TT = "Change the font the options headers are displayed in.";
-FW.L.GENERAL_OA4 = "Options";
-FW.L.GENERAL_OA4_TT = "Change the font the options are displayed in.";
-
-FW.L.PROFILES = "Profiles";
-FW.L.PROFILES_HINT1 = "If you name profiles after your characters, the addon will automatically load the right profile.";
-FW.L.PROFILES_CURRENT = "Current Profile";
-FW.L.PROFILES_CURRENT_TT = "Select the profile you want to use. [delete current] deletes the profile you are currently using (have selected). [create new] copies your current settings to a new profile with the name you entered or replaces one.";
-
-FW.L.LOADING_DELAY = "Loading delay";
-FW.L.UPDATE_INTERVAL_CORE = "Update interval core";
-FW.L.UPDATE_INTERVAL_ANIMATIONS = "Update interval animations";
-
-
--- Simple Chinese
 elseif GetLocale() == "zhCN" then
-
+--[[
 	-- combat log, log string searches with %s spell name
 	FW.L.WAS_RESISTED = "^你的%s被.+抵抗了。";
 	FW.L.WAS_EVADED = "^你的%s被.+闪避过去了。";
@@ -614,12 +130,14 @@ elseif GetLocale() == "zhCN" then
 	FW.L.DOT_HIT = "^你的(.+)使(.+)受到了.+伤害";
 	FW.L.DOT_ABSORB = "^你的(.+)被(.+)吸收了";
 	FW.L.DIES = "%s死亡了。";
-
+]]
 	--spell book
-	FW.L.RANK = "等级";
+--	FW.L.RANK = "等级";
 	FW.L.SPELL_RANK = "^等级 (%d+)$";
 	
 	FW.L.RITUAL_OF_SOULS = "灵魂仪式";
+	FW.L.CREATE_SOULSTONE = "制造灵魂石";
+	FW.L.CREATE_HEALTHSTONE = "制造治疗石";
 
 	--items
 	FW.L.MINOR_SS = "初级灵魂石";
@@ -637,7 +155,7 @@ elseif GetLocale() == "zhCN" then
 	FW.L.MINOR_HS = "初级治疗石";
 
 	--zones
-	FW.L.COILFANG_RESERVOIR = "毒蛇神殿";
+--	FW.L.COILFANG_RESERVOIR = "毒蛇神殿";
 	--units
 	FW.L.HELLFIRE_CHANNELER = "地狱火导魔者"
 	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "星术师卡波妮娅";
@@ -652,6 +170,101 @@ elseif GetLocale() == "zhCN" then
 	FW:RegisterFont("Fonts\\ZYKai_T.TTF","中易楷");
 	FW:SetDefaultFont("Fonts\\ZYHei.TTF",10);
 
+-- trdition Chinese
+elseif GetLocale() == "zhTW" then
+--[[
+	-- combat log, log string searches with %s spell name
+	FW.L.WAS_RESISTED = "^你的%s被.+抵抗了。";
+	FW.L.WAS_EVADED = "^你的%s被.+閃避過去了。";
+	FW.L.FAILED_IMMUNE = "^你的%s施放失敗。.+對此免疫。";
+	FW.L.IS_REFLECTED = "^你的%s被.+反彈回來。";
+
+	FW.L.DOT_HIT = "^你的(.+)使(.+)受到了.+傷害";
+	FW.L.DOT_ABSORB = "^你的(.+)被(.+)吸收了";
+	FW.L.DIES = "%s死亡了。";
+]]
+	--spell book
+--	FW.L.RANK = "等級";
+	FW.L.SPELL_RANK = "^等級 (%d+)$";
+	
+	FW.L.RITUAL_OF_SOULS = "靈魂儀式";
+	FW.L.CREATE_SOULSTONE = "製造靈魂石";
+	FW.L.CREATE_HEALTHSTONE = "製造治療石";
+
+	--items
+	FW.L.MINOR_SS = "初級靈魂石";
+	FW.L.LESSER_SS = "次級靈魂石";
+	FW.L.NORMAL_SS = "靈魂石";
+	FW.L.GREATER_SS = "強效靈魂石";
+	FW.L.MAJOR_SS = "極效靈魂石";
+	FW.L.MASTER_SS = " 極強效靈魂石";
+
+	FW.L.MASTER_HS = "極強效治療石";
+	FW.L.MAJOR_HS = "特效治療石";
+	FW.L.GREATER_HS = "強效治療石";
+	FW.L.NORMAL_HS = "治療石";
+	FW.L.LESSER_HS = "次級治療石";
+	FW.L.MINOR_HS = "初級治療石";
+ 	
+
+	--zones
+--	FW.L.COILFANG_RESERVOIR = "毒蛇神殿洞穴";
+	--units
+	FW.L.HELLFIRE_CHANNELER = "地獄火導魔師"
+	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "大星術師卡普尼恩";
+	FW.L.LORD_SANGUINAR = "桑古納爾領主"
+	FW.L.MASTER_ENGINEER_TELONICUS = "工程大師泰隆尼卡斯";
+	FW.L.THALADRED_THE_DARKENER = "扭曲預言家薩拉瑞德";
+	FW.L.FATHOM_GUARD_SHARKKIS = "深淵守衛沙卡奇斯";
+	FW.L.FATHOM_GUARD_CARIBDIS = "深淵守衛卡利迪斯";
+	FW.L.FATHOM_GUARD_TIDALVESS = "深淵守衛提達費斯";
+
+
+	FW:RegisterFont("Fonts\\bLEI00D.TTF","聊天字體");
+	FW:RegisterFont("Fonts\\bHEI01B.TTF","戰鬥字體");
+	FW:SetDefaultFont("Fonts\\bLEI00D.TTF",10);
+	
+
+
+
+-- ENGLISH
+else	-- standard english version
+
+	--spell book
+	FW.L.SPELL_RANK = "^Rank (%d+)$";
+	
+	FW.L.RITUAL_OF_SOULS = "Ritual of Souls";
+	FW.L.CREATE_SOULSTONE = "Create Soulstone";
+	FW.L.CREATE_HEALTHSTONE = "Create Healthstone";
+
+	--items
+	FW.L.MINOR_SS = "Minor Soulstone";
+	FW.L.LESSER_SS = "Lesser Soulstone";
+	FW.L.NORMAL_SS = "Soulstone";
+	FW.L.GREATER_SS = "Greater Soulstone";
+	FW.L.MAJOR_SS = "Major Soulstone";
+	FW.L.MASTER_SS = "Master Soulstone";
+
+	FW.L.MASTER_HS = "Master Healthstone";
+	FW.L.MAJOR_HS = "Major Healthstone";
+	FW.L.GREATER_HS = "Greater Healthstone";
+	FW.L.NORMAL_HS = "Healthstone";
+	FW.L.LESSER_HS = "Lesser Healthstone";
+	FW.L.MINOR_HS = "Minor Healthstone";
+
+	--units
+	FW.L.HELLFIRE_CHANNELER = "Hellfire Channeler"
+	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "Grand Astromancer Capernian";
+	FW.L.LORD_SANGUINAR = "Lord Sanguinar"
+	FW.L.MASTER_ENGINEER_TELONICUS = "Master Engineer Telonicus";
+	FW.L.THALADRED_THE_DARKENER = "Thaladred the Darkener";
+	FW.L.FATHOM_GUARD_SHARKKIS = "Fathom-Guard Sharkkis";
+	FW.L.FATHOM_GUARD_CARIBDIS = "Fathom-Guard Caribdis";
+	FW.L.FATHOM_GUARD_TIDALVESS = "Fathom-Guard Tidalvess";
+end
+
+
+if GetLocale() == "zhCN" then
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
 FW.L.UPDATE_NOW = "刷新";
@@ -679,7 +292,6 @@ FW.L.NORMAL = "普通糖";
 FW.L.LESSER = "次级糖";
 FW.L.MINOR = "初级糖";
 
---{圆形}{月亮}{骷髅}{方块}{星形}{菱形}{十字}{三角}
 FW.L.YELLOW_STAR = "{rt1}";
 FW.L.ORANGE_CIRCLE = "{rt2}";
 FW.L.PRUPLE_DIAMOND = "{rt3}";
@@ -699,6 +311,8 @@ FW.L.NOTARGET = "<没有目标>";
 FW.L.UNKNOWN = "<未知>";
 FW.L.NOBODY = "<无人>"
 
+--FW.L.NONE = "None";
+
 FW.L.ENABLE  = "启动";
 FW.L.LOCK = "锁定 (禁用右键设置)";
 FW.L.EXPAND_UP = "向上扩展";
@@ -706,6 +320,7 @@ FW.L.EXPAND_UP_TT = "设置计时条向上/下扩展.";
 FW.L.BAR_SPACING = "间距"
 FW.L.COMBAT_HINT = "大小设置只在非战斗状态下有效.";
 FW.L.ORA_HINT = "很多同志没有装FW,但是装了oRA,装了FW的同志需要取得团队权限(L或A)";
+
 
 FW.L.DEAD = "挂了";
 FW.L.OFFLINE = "掉线";
@@ -804,57 +419,7 @@ FW.L.UPDATE_INTERVAL_CORE = "更新间隔核心";
 FW.L.UPDATE_INTERVAL_ANIMATIONS = "更新动画间隔";
 
 
--- trdition Chinese
 elseif GetLocale() == "zhTW" then
-
-	-- combat log, log string searches with %s spell name
-	FW.L.WAS_RESISTED = "^你的%s被.+抵抗了。";
-	FW.L.WAS_EVADED = "^你的%s被.+閃避過去了。";
-	FW.L.FAILED_IMMUNE = "^你的%s施放失敗。.+對此免疫。";
-	FW.L.IS_REFLECTED = "^你的%s被.+反彈回來。";
-
-	FW.L.DOT_HIT = "^你的(.+)使(.+)受到了.+傷害";
-	FW.L.DOT_ABSORB = "^你的(.+)被(.+)吸收了";
-	FW.L.DIES = "%s死亡了。";
-
-	--spell book
-	FW.L.RANK = "等級";
-	FW.L.SPELL_RANK = "^等級 (%d+)$";
-	
-	FW.L.RITUAL_OF_SOULS = "靈魂儀式";
-
-	--items
-	FW.L.MINOR_SS = "初級靈魂石";
-	FW.L.LESSER_SS = "次級靈魂石";
-	FW.L.NORMAL_SS = "靈魂石";
-	FW.L.GREATER_SS = "強效靈魂石";
-	FW.L.MAJOR_SS = "極效靈魂石";
-	FW.L.MASTER_SS = " 極強效靈魂石";
-
-	FW.L.MASTER_HS = "極強效治療石";
-	FW.L.MAJOR_HS = "特效治療石";
-	FW.L.GREATER_HS = "強效治療石";
-	FW.L.NORMAL_HS = "治療石";
-	FW.L.LESSER_HS = "次級治療石";
-	FW.L.MINOR_HS = "初級治療石";
- 	
-
-	--zones
-	FW.L.COILFANG_RESERVOIR = "毒蛇神殿洞穴";
-	--units
-	FW.L.HELLFIRE_CHANNELER = "地獄火導魔師"
-	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "大星術師卡普尼恩";
-	FW.L.LORD_SANGUINAR = "桑古納爾領主"
-	FW.L.MASTER_ENGINEER_TELONICUS = "工程大師泰隆尼卡斯";
-	FW.L.THALADRED_THE_DARKENER = "扭曲預言家薩拉瑞德";
-	FW.L.FATHOM_GUARD_SHARKKIS = "深淵守衛沙卡奇斯";
-	FW.L.FATHOM_GUARD_CARIBDIS = "深淵守衛卡利迪斯";
-	FW.L.FATHOM_GUARD_TIDALVESS = "深淵守衛提達費斯";
-
-
-	FW:RegisterFont("Fonts\\bLEI00D.TTF","聊天字體");
-	FW:RegisterFont("Fonts\\bHEI01B.TTF","戰鬥字體");
-	FW:SetDefaultFont("Fonts\\bLEI00D.TTF",10);
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -901,6 +466,8 @@ FW.L.MODULE_NONE = "|cffff0000無|r";
 FW.L.NOTARGET = "<沒有目標>";
 FW.L.UNKNOWN = "<未知>";
 FW.L.NOBODY = "<無人>"
+
+--FW.L.NONE = "None";
 
 FW.L.ENABLE  = "啟動";
 FW.L.LOCK = "鎖定 (禁用右鍵設置)";
@@ -1006,53 +573,7 @@ FW.L.LOADING_DELAY = "正在讀入";
 FW.L.UPDATE_INTERVAL_CORE = "更新間隔核心";
 FW.L.UPDATE_INTERVAL_ANIMATIONS = "更新動畫間隔";
 
-
-
--- ENGLISH
-else	-- standard english version
-	-- combat log, log string searches with %s spell name
-	FW.L.WAS_RESISTED = "^Your %s was resisted";
-	FW.L.WAS_EVADED = "^Your %s was evaded";
-	FW.L.FAILED_IMMUNE = "^Your %s failed";
-	FW.L.IS_REFLECTED = "^Your %s is reflected";
-
-	FW.L.DOT_HIT = "^(.+) suffers .+ damage from your (.+)%.";
-	FW.L.DOT_ABSORB = "^Your (.+) is absorbed by (.+)%.";
-	FW.L.DIES = " dies.";
-
-	--spell book
-	FW.L.RANK = "Rank";
-	FW.L.SPELL_RANK = "^Rank (%d+)$";
-	
-	FW.L.RITUAL_OF_SOULS = "Ritual of Souls";
-
-	--items
-	FW.L.MINOR_SS = "Minor Soulstone";
-	FW.L.LESSER_SS = "Lesser Soulstone";
-	FW.L.NORMAL_SS = "Soulstone";
-	FW.L.GREATER_SS = "Greater Soulstone";
-	FW.L.MAJOR_SS = "Major Soulstone";
-	FW.L.MASTER_SS = "Master Soulstone";
-
-	FW.L.MASTER_HS = "Master Healthstone";
-	FW.L.MAJOR_HS = "Major Healthstone";
-	FW.L.GREATER_HS = "Greater Healthstone";
-	FW.L.NORMAL_HS = "Healthstone";
-	FW.L.LESSER_HS = "Lesser Healthstone";
-	FW.L.MINOR_HS = "Minor Healthstone";
-
-	--zones
-	FW.L.COILFANG_RESERVOIR = "Serpentshrine Cavern";
-	--units
-	FW.L.HELLFIRE_CHANNELER = "Hellfire Channeler";
-	FW.L.GRAND_ASTROMANCER_CAPERNIAN = "Grand Astromancer Capernian";
-	FW.L.LORD_SANGUINAR = "Lord Sanguinar";
-	FW.L.MASTER_ENGINEER_TELONICUS = "Master Engineer Telonicus";
-	FW.L.THALADRED_THE_DARKENER = "Thaladred the Darkener";
-	FW.L.FATHOM_GUARD_SHARKKIS = "Fathom-Guard Sharkkis";
-	FW.L.FATHOM_GUARD_CARIBDIS = "Fathom-Guard Caribdis";
-	FW.L.FATHOM_GUARD_TIDALVESS = "Fathom-Guard Tidalvess";
-
+else
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -1106,7 +627,7 @@ FW.L.ENABLE  = "Enable";
 FW.L.LOCK = "Lock (disable option functions)";
 FW.L.EXPAND_UP = "Expand up";
 FW.L.EXPAND_UP_TT = "Determines if the bar lists should be expanded upwards or downwards.";
-FW.L.BAR_SPACING = "Bar spacing";
+FW.L.BAR_SPACING = "Bar spacing"
 FW.L.COMBAT_HINT = "Some sizing changes you make here will only apply outside of combat.";
 FW.L.ORA_HINT = "For people without ForteWarlock but with oRA, someone with FW has to be promoted.";
 
@@ -1140,7 +661,7 @@ FW.L.SHOW_BARS_TT = "Show the bars. You can hide them in case you only want to s
 FW.L.MAX_SHOWN = "Maximum shown";
 
 FW.L.SELF_MESSAGES = "Self Messages";
-FW.L.SELF_MESSAGES_HINT1 = "This allows you to display usefull messages to yourself. They are shown in your 'default' chat frame.";
+FW.L.SELF_MESSAGES_HINT1 = "This allows you to display usefull messages to yourself. They are shown in your 'default' chat frame."
 FW.L.RAID_MESSAGES = "Party/Raid Messages";
 FW.L.RAID_MESSAGES_HINT1 = "This allows you to display messages to others based on spells you cast.";
 FW.L.RAID_MESSAGES_HINT2 = "You can disable all messages to party/raid and/or channel, or every message separately.";
@@ -1152,7 +673,7 @@ FW.L.SHOW_IN_CHANNEL_TT = "Set the channel name or number in which you want some
 -- standard usage tips to append
 FW.L.USE_FILTER = "First type in the item or spell that you want to change (auto-fills). Then you can select if you want to show it normally (normal), hide it (ignore) or change its color (color). If you selected you want to change the color, you get a color picker from clicking square on the right.";
 FW.L.USE_COLOR_PICKER = "Click the colored square to open up the color picker. If there's a slider on the right, you can also change the transparency.";
-FW.L.USE_TEXTURE = "Mouse over the left textured bar and select a texture from the dropdown menu. You can also use any other texture by giving its path.";
+FW.L.USE_TEXTURE = "Mouse over the left textured bar and select a texture from the dropdown menu. You can also use any other texture by giving its path."
 FW.L.USE_FONT = "Mouse over the left font area and select a font from the dropdown menu. The center editbox can be used to change the font size. You can also use any other font by giving its path.";
 FW.L.USE_EDITBOX = "Don't forget you have to press enter to confirm changes to the editboxes!";
 FW.L.USE_MSG2 = "The first checkbox will enable this message in your party or raid. The second checkbox will enable it in the channel you set above.";
@@ -1206,7 +727,8 @@ FW.L.LOADING_DELAY = "Loading delay";
 FW.L.UPDATE_INTERVAL_CORE = "Update interval core";
 FW.L.UPDATE_INTERVAL_ANIMATIONS = "Update interval animations";
 
-end
 
+
+end
 FW:LocalizedData();
 

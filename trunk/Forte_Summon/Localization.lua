@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+﻿-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -15,112 +15,32 @@
 
 -- FR
 if GetLocale() == "frFR" then
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.CAST_RITUAL_OF_SUMMONING = "Cast Ritual of Summoning";
-FW.L.CAST_RITUAL_OF_SUMMONING_TT = "Cast Ritual of Summoning like you would normally do.";
-
-FW.L.SUMMON_ASSISTANT = "Summon Assistant";
-FW.L.SU_HINT1 = "The Summon Assistant is only visible outside of combat and in a party or raid.";
-FW.L.SU_HINT2 = "Left-click a name to select/summon. Right-click to remove for 10 seconds.";
-
-FW.L.SHOW_CLOSE = "Show all outside 30 yards";
-FW.L.SHOW_CLOSE_TT = "When this is checked, the summon assistant will queue everybody outside ~30 yards range. Otherwise it will queue people that are either out of visual range in an instance, or are about half a zone away outside.";
-FW.L.QUEUE_SUMMON = "Queue summon keyword";
-FW.L.QUEUE_SUMMON_TT = "The keyword players can whisper to you to request a summon. Uncheck to disable using whispers.";
-FW.L.SHOW_MEETING_STONE = "Show Meeting Stone summons";
-FW.L.SHOW_MEETING_STONE_TT = "This will also track meeting stone summons from raid members. Probably best kept off if you're not around a meeting stone.";
-FW.L.PLAYER_FAR = "Player far";
-FW.L.PLAYER_CLOSE = "Player close";
-FW.L.BEING_SUMMONED = "Being summoned";
-FW.L.WHISPERED = "Whispered";
-
-FW.L.SU_ENABLE_TT = "Enable the Summon Assistant.";
-
-FW.L.SUMMON_REQUEST_BLOCK = "^<< Summon Requested ";
-FW.L.SUMMON_REQUEST = "<< Summon Requested >>";
-FW.L.SUMMON_REQUEST_FOR = "<< Summon Requested for %s >>";
-FW.L.SUMMON_REQUEST_BY = "<< Summon Requested by %s >>";
-
-FW.L.FAR_ = "far ";
-FW.L._ALL = " all";
-
-FW.L.UPDATE_INTERVAL_SUMMON = "Update interval summon assistant";
-
-
-
+	--zones
+	FW.L.COILFANG_RESERVOIR = "Caverne du sanctuaire du Serpent";
 -- DE 
 elseif GetLocale() == "deDE" then
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.CAST_RITUAL_OF_SUMMONING = "Cast Ritual of Summoning";
-FW.L.CAST_RITUAL_OF_SUMMONING_TT = "Cast Ritual of Summoning like you would normally do.";
-
-FW.L.SUMMON_ASSISTANT = "Summon Assistant";
-FW.L.SU_HINT1 = "The Summon Assistant is only visible outside of combat and in a party or raid.";
-FW.L.SU_HINT2 = "Left-click a name to select/summon. Right-click to remove for 10 seconds.";
-
-FW.L.SHOW_CLOSE = "Show all outside 30 yards";
-FW.L.SHOW_CLOSE_TT = "When this is checked, the summon assistant will queue everybody outside ~30 yards range. Otherwise it will queue people that are either out of visual range in an instance, or are about half a zone away outside.";
-FW.L.QUEUE_SUMMON = "Queue summon keyword";
-FW.L.QUEUE_SUMMON_TT = "The keyword players can whisper to you to request a summon. Uncheck to disable using whispers.";
-FW.L.SHOW_MEETING_STONE = "Show Meeting Stone summons";
-FW.L.SHOW_MEETING_STONE_TT = "This will also track meeting stone summons from raid members. Probably best kept off if you're not around a meeting stone.";
-FW.L.PLAYER_FAR = "Player far";
-FW.L.PLAYER_CLOSE = "Player close";
-FW.L.BEING_SUMMONED = "Being summoned";
-FW.L.WHISPERED = "Whispered";
-
-FW.L.SU_ENABLE_TT = "Enable the Summon Assistant.";
-
-FW.L.SUMMON_REQUEST_BLOCK = "^<< Summon Requested ";
-FW.L.SUMMON_REQUEST = "<< Summon Requested >>";
-FW.L.SUMMON_REQUEST_FOR = "<< Summon Requested for %s >>";
-FW.L.SUMMON_REQUEST_BY = "<< Summon Requested by %s >>";
-
-FW.L.FAR_ = "far ";
-FW.L._ALL = " all";
-
-FW.L.UPDATE_INTERVAL_SUMMON = "Update interval summon assistant";
-
-
+	--zones
+	FW.L.COILFANG_RESERVOIR = "H鰄le des Schlangenschreins";
 -- SPANISH
 elseif GetLocale() == "esES" then
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.CAST_RITUAL_OF_SUMMONING = "Cast Ritual of Summoning";
-FW.L.CAST_RITUAL_OF_SUMMONING_TT = "Cast Ritual of Summoning like you would normally do.";
-
-FW.L.SUMMON_ASSISTANT = "Summon Assistant";
-FW.L.SU_HINT1 = "The Summon Assistant is only visible outside of combat and in a party or raid.";
-FW.L.SU_HINT2 = "Left-click a name to select/summon. Right-click to remove for 10 seconds.";
-
-FW.L.SHOW_CLOSE = "Show all outside 30 yards";
-FW.L.SHOW_CLOSE_TT = "When this is checked, the summon assistant will queue everybody outside ~30 yards range. Otherwise it will queue people that are either out of visual range in an instance, or are about half a zone away outside.";
-FW.L.QUEUE_SUMMON = "Queue summon keyword";
-FW.L.QUEUE_SUMMON_TT = "The keyword players can whisper to you to request a summon. Uncheck to disable using whispers.";
-FW.L.SHOW_MEETING_STONE = "Show Meeting Stone summons";
-FW.L.SHOW_MEETING_STONE_TT = "This will also track meeting stone summons from raid members. Probably best kept off if you're not around a meeting stone.";
-FW.L.PLAYER_FAR = "Player far";
-FW.L.PLAYER_CLOSE = "Player close";
-FW.L.BEING_SUMMONED = "Being summoned";
-FW.L.WHISPERED = "Whispered";
-
-FW.L.SU_ENABLE_TT = "Enable the Summon Assistant.";
-
-FW.L.SUMMON_REQUEST_BLOCK = "^<< Summon Requested ";
-FW.L.SUMMON_REQUEST = "<< Summon Requested >>";
-FW.L.SUMMON_REQUEST_FOR = "<< Summon Requested for %s >>";
-FW.L.SUMMON_REQUEST_BY = "<< Summon Requested by %s >>";
-
-FW.L.FAR_ = "far ";
-FW.L._ALL = " all";
-
-FW.L.UPDATE_INTERVAL_SUMMON = "Update interval summon assistant";
-
-
+	--zones
+	FW.L.COILFANG_RESERVOIR = "Caverna Santuario Serpiente";
 -- simple chinese
 elseif GetLocale() == "zhCN" then
+	--zones
+	FW.L.COILFANG_RESERVOIR = "毒蛇神殿";
+-- tradition chinese
+elseif GetLocale() == "zhTW" then
+		--zones
+	FW.L.COILFANG_RESERVOIR = "毒蛇神殿洞穴";
+-- ENGLISH
+else
+	--zones
+	FW.L.COILFANG_RESERVOIR = "Serpentshrine Cavern";
+end
+
+-- simple chinese
+if GetLocale() == "zhCN" then
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -137,6 +57,9 @@ FW.L.QUEUE_SUMMON = "请求召唤关键词";
 FW.L.QUEUE_SUMMON_TT = "队友请求召唤时M你的关键词. 关闭选项将禁用密语.";
 FW.L.SHOW_MEETING_STONE = "显示集合石召唤";
 FW.L.SHOW_MEETING_STONE_TT = "此选项将监视团队队友的集合石召唤. 你不在集合石附近可以将其关闭.";
+FW.L.OLD_SUMMONING_MODE = "旧排队模式";
+FW.L.OLD_SUMMONING_MODE_TT = "With this setting enabled, it will queue people as before, when you couldn't summon people from outside into your instance. So only people that are in your instance, and far away. And people not inside an instance when you yourself are not, and far away.";
+
 FW.L.PLAYER_FAR = "队友远";
 FW.L.PLAYER_CLOSE = "队友近";
 FW.L.BEING_SUMMONED = "正在被召唤";
@@ -172,6 +95,9 @@ FW.L.QUEUE_SUMMON = "請求召喚關鍵字";
 FW.L.QUEUE_SUMMON_TT = "隊友請求召喚時M你的關鍵字. 關閉選項將禁用密語.";
 FW.L.SHOW_MEETING_STONE = "顯示集合石召喚";
 FW.L.SHOW_MEETING_STONE_TT = "此選項將監視團隊隊友的集合石召喚. 你不在集合石附近可以將其關閉.";
+FW.L.OLD_SUMMONING_MODE = "舊列隊模式";
+FW.L.OLD_SUMMONING_MODE_TT = "With this setting enabled, it will queue people as before, when you couldn't summon people from outside into your instance. So only people that are in your instance, and far away. And people not inside an instance when you yourself are not, and far away.";
+
 FW.L.PLAYER_FAR = "隊友遠";
 FW.L.PLAYER_CLOSE = "隊友近";
 FW.L.BEING_SUMMONED = "正在被召喚";
@@ -190,8 +116,6 @@ FW.L._ALL = " 全部";
 FW.L.UPDATE_INTERVAL_SUMMON = "召喚助手更新間隔";
 
 
-
--- ENGLISH
 else
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -208,6 +132,9 @@ FW.L.QUEUE_SUMMON = "Queue summon keyword";
 FW.L.QUEUE_SUMMON_TT = "The keyword players can whisper to you to request a summon. Uncheck to disable using whispers.";
 FW.L.SHOW_MEETING_STONE = "Show Meeting Stone summons";
 FW.L.SHOW_MEETING_STONE_TT = "This will also track meeting stone summons from raid members. Probably best kept off if you're not around a meeting stone.";
+FW.L.OLD_SUMMONING_MODE = "Old Queue Mode";
+FW.L.OLD_SUMMONING_MODE_TT = "With this setting enabled, it will queue people as before, when you couldn't summon people from outside into your instance. So only people that are in your instance, and far away. And people not inside an instance when you yourself are not, and far away.";
+
 FW.L.PLAYER_FAR = "Player far";
 FW.L.PLAYER_CLOSE = "Player close";
 FW.L.BEING_SUMMONED = "Being summoned";
@@ -225,4 +152,3 @@ FW.L._ALL = " all";
 
 FW.L.UPDATE_INTERVAL_SUMMON = "Update interval summon assistant";
 end
-
