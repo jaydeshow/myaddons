@@ -1,0 +1,14 @@
+## Interface: 20400
+## Title: InFlight_Load
+## Notes: Loader for InFlight
+## Notes-zhTW: InFlight 的載入器，自動載入預設的 Cartographer 飛行管理員圖示。
+## Notes-zhCN: 显示各地飞行点
+## Author: TotalPackage
+## Version: 2.4.013
+## X-Website: http://www.wowace.com/wiki/InFlight
+
+## SavedVariables: InFlightCartoDB
+## OptionalDeps: Cartographer, Cartographer_Notes
+## X-Category: Interface Enhancements
+
+InFlight_Load.lua

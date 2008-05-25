@@ -1,0 +1,19 @@
+## Interface: 20400
+## Title: InFlight
+## Notes: Statusbar timers for your flightpaths.
+## Author: TotalPackage
+## Version: 2.4.013
+## X-Website: http://www.wowace.com/wiki/InFlight
+
+## SavedVariables: InFlightVars, InFlightDB
+## Dependencies: InFlight_Load
+## OptionalDeps: Ace2, LibStub, LibSharedMedia-3.0, DewdropLib
+## X-Embeds: DewdropLib, LibSharedMedia-3.0
+## X-Category: Interface Enhancements
+
+## LoadOnDemand: 1
+
+embeds.xml
+
+InFlight.lua
+Defaults.lua

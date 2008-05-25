@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r73766 | ananhaid | 2008-05-13 21:18:59 -0400 (Tue, 13 May 2008) | 2 lines
+Changed paths:
+   M /trunk/ACP/ACP.toc
+   M /trunk/ACP/localization-zhCN.lua
+
+ACP: 
+- zhCN update.(Punctuation adjustment...)
+------------------------------------------------------------------------
+r70539 | sylvanaar | 2008-04-19 20:23:55 -0400 (Sat, 19 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/ACP/ACP.toc
+
+ACP: test
+------------------------------------------------------------------------

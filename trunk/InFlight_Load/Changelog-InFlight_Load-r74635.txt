@@ -1,0 +1,33 @@
+------------------------------------------------------------------------
+r74635 | totalpackage | 2008-05-21 05:20:06 -0400 (Wed, 21 May 2008) | 5 lines
+Changed paths:
+   M /trunk/InFlight_Load/InFlight_Load.lua
+   M /trunk/InFlight_Load/InFlight_Load.toc
+
+InFlight_Load
+- InFlight_Load will now add new flight point locations for Cartographer_Notes instead of InFlight
+- updated the defaults with Mudsprocket and Rebel Camp
+- defaults will replace your current variables
+- really only check "Gossips" for special flights
+------------------------------------------------------------------------
+r73812 | totalpackage | 2008-05-14 06:07:59 -0400 (Wed, 14 May 2008) | 2 lines
+Changed paths:
+   M /trunk/InFlight_Load
+   M /trunk/InFlight_Load/InFlight_Load.lua
+   M /trunk/InFlight_Load/InFlight_Load.toc
+   D /trunk/InFlight_Load/embeds.xml
+
+InFlight_Load
+- removed LibBabble-Zone-3.0; Cartographer_Notes already handles the translations
+------------------------------------------------------------------------
+r73201 | StiviS | 2008-05-09 09:27:39 -0400 (Fri, 09 May 2008) | 4 lines
+Changed paths:
+   M /trunk/InFlight_Load/InFlight_Load.lua
+   M /trunk/InFlight_Load/InFlight_Load.toc
+   A /trunk/InFlight_Load/embeds.xml
+
+InFlight_Load
+- esES added
+- LibBabble-Zone-3.0 added
+- Used Babble-Zone in POIdata db zone text to work in all languages.
+------------------------------------------------------------------------

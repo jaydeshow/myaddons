@@ -1,0 +1,24 @@
+## Interface: 20400
+## Author: hshh
+## Name: PlayerMenu
+## Title: PlayerMenu
+## Notes: Hook extra menu to friend list, guild list and chat player
+## Notes-zhCN: 聊天视窗玩家姓名扩展菜單
+## Notes-zhTW: 聊天視窗玩家姓名擴展功能表
+## Version: 4.0
+## X-eMail: hshh@hshh.org
+## X-Website: http://www.hshh.org/
+## X-Category: Interface Enhancements
+## SavedVariables: PlayerMenu_Settings
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+
+embeds.xml
+
+Locale.enUS.lua
+Locale.zhCN.lua
+Locale.zhTW.lua
+Locale.koKR.lua
+PlayerMenu.lua
+Spell.lua
+ExtMenu.xml

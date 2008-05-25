@@ -1,0 +1,22 @@
+------------------------------------------------------------------------
+r69515 | ottokang | 2008-04-13 06:56:57 -0400 (Sun, 13 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/MobHealth/MobHealth.toc
+   M /trunk/MobHealth/MobHealth3.lua
+
+MobHealth3:
+- new Notes-zhTW
+- zhTW update
+------------------------------------------------------------------------
+r68454 | ammo | 2008-04-07 09:55:42 -0400 (Mon, 07 Apr 2008) | 3 lines
+Changed paths:
+   D /trunk/MobHealth/Libs
+   M /trunk/MobHealth/MobHealth.toc
+   M /trunk/MobHealth/MobHealth3.lua
+   M /trunk/MobHealth/changelog.txt
+   D /trunk/MobHealth/embeds.xml
+
+MobHealth3:
+- Made framework independant
+
+------------------------------------------------------------------------

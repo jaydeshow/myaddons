@@ -1,0 +1,14 @@
+ItemPriceTooltip/Changelog-ItemPriceTooltip-r73970.txt
+ItemPriceTooltip/ItemPriceTooltip.lua
+ItemPriceTooltip/VendorScan.lua
+ItemPriceTooltip/Integration.lua
+ItemPriceTooltip/ItemPriceTooltip.toc
+ItemPriceTooltip/embeds.xml
+ItemPriceTooltip/Localization.lua
+ItemPriceTooltip/MoneyFormat.lua
+ItemPriceTooltip/Options.lua
+ItemPriceTooltip/Hooks.lua
+ItemPriceTooltip/GetSellValue.lua
+ItemPriceTooltip/Textures/Copper.tga
+ItemPriceTooltip/Textures/Silver.tga
+ItemPriceTooltip/Textures/Gold.tga

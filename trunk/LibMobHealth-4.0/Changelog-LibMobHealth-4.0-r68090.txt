@@ -1,0 +1,80 @@
+------------------------------------------------------------------------
+r68090 | ckknight | 2008-04-04 21:06:31 -0400 (Fri, 04 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.lua
+
+LibMobHealth-4.0 - fix a bug that occurs right after taming a pet.
+------------------------------------------------------------------------
+r67439 | arrowmaster | 2008-04-01 03:16:23 -0400 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/LibAbacus-3.0/LibAbacus-3.0.toc
+   M /trunk/LibAvion-2.0/LibAvion-2.0.toc
+   M /trunk/LibBabble-CreatureType-3.0/LibBabble-CreatureType-3.0.toc
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.toc
+   M /trunk/LibBoneUtils-1.0/LibBoneUtils-1.0.toc
+   M /trunk/LibCooldown-1.0/LibCooldown-1.0.toc
+   M /trunk/LibCrayon-3.0/LibCrayon-3.0.toc
+   M /trunk/LibDogTag-2.0/LibDogTag-2.0.toc
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.toc
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.toc
+   M /trunk/LibDruidMana-1.0/LibDruidMana-1.0.toc
+   M /trunk/LibFuBarPlugin-3.0/LibFuBarPlugin-3.0.toc
+   M /trunk/LibGratuity-3.0/LibGratuity-3.0.toc
+   M /trunk/LibJostle-3.0/LibJostle-3.0.toc
+   M /trunk/LibMMButton-1.0/LibMMButton-1.0.toc
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.toc
+   M /trunk/LibParser-4.0/LibParser-4.0.toc
+   M /trunk/LibRangeCheck-2.0/LibRangeCheck-2.0.toc
+   M /trunk/LibRock-1.0/LibRock-1.0.toc
+   M /trunk/LibRockComm-1.0/LibRockComm-1.0.toc
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.toc
+   M /trunk/LibRockDB-1.0/LibRockDB-1.0.toc
+   M /trunk/LibRockEvent-1.0/LibRockEvent-1.0.toc
+   M /trunk/LibRockHook-1.0/LibRockHook-1.0.toc
+   M /trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+   M /trunk/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc
+   M /trunk/LibRockTimer-1.0/LibRockTimer-1.0.toc
+   M /trunk/LibRollCall-2.0/LibRollCall-2.0.toc
+   M /trunk/LibRoman-1.0/LibRoman-1.0.toc
+   M /trunk/LibSpecialEvents-Aura-3.0/LibSpecialEvents-Aura-3.0.toc
+   M /trunk/LibStickyFrames-1.0/LibStickyFrames-1.0.toc
+
+.You are not a special or unique snowflake. Get back in line and use the 'Lib: ...' title format like everybody else to save the sanity of those of us looking through an alpha sorted addon list
+------------------------------------------------------------------------
+r67337 | ckknight | 2008-03-31 14:17:31 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.lua
+
+LibMobHealth-4.0 - add another argument to :GetMaxHP that makes it not guess at the health based on similar levels.
+------------------------------------------------------------------------
+r67336 | ckknight | 2008-03-31 14:14:20 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.lua
+
+LibMobHealth-4.0 - prune less data at the lower levels. Has no effect at levels >= 20
+------------------------------------------------------------------------
+r67335 | ckknight | 2008-03-31 14:04:19 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.lua
+
+LibMobHealth-4.0 - add support for different instance difficulties. Change :GetMaxHP(name, level) into :GetMaxHP(name, level, kind, difficulty).
+------------------------------------------------------------------------
+r67306 | ckknight | 2008-03-31 10:51:12 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.lua
+
+LibMobHealth-4.0 - separate pc, npc, and pet internally. No data should be lost from this, as it's a clean upgrade path.
+------------------------------------------------------------------------
+r67252 | helium | 2008-03-31 06:08:05 -0400 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.toc
+
+LibMobHealth-4.0: TOC 20400
+------------------------------------------------------------------------
+r64458 | ckknight | 2008-03-13 14:22:21 -0400 (Thu, 13 Mar 2008) | 1 line
+Changed paths:
+   M /trunk/LibMobHealth-4.0/LibMobHealth-4.0.lua
+
+LibMobHealth-4.0 - make the documentation more sane
+------------------------------------------------------------------------
