@@ -1,7 +1,0 @@
-## Interface: 20400
-## Title: |cff0099FF<CWDG>|r|cffffffffMobMap数据库12|r
-## Notes: This is a load-on-demand addon stub for the MobMap herbs database.
-## Notes-zhCN: MobMap采药动态数据加载库.(必要!)
-## RequiredDeps: MobMap
-## LoadOnDemand: 1
-..\MobMap\MobMapDatabase_herbspickupdata.lua
