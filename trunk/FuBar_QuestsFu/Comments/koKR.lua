@@ -1,0 +1,23 @@
+﻿local L = AceLibrary("AceLocale-2.2"):new("QuestsFu_Comments")
+L:RegisterTranslations("koKR", function() return {
+	["Comments"] = "설명",
+	["Display quest comments"] = "퀘스트 설명을 표시합니다.",
+--	["LightHeaded"] = "LightHeaded",
+	["Location unknown"] = "지역 알 수 없음",
+	["LightHeaded Info"] = "LightHeaded 정보",
+	["Quest ID: "] = "퀘스트 ID:",
+	["Shareable: "] = "공유가능: ",
+	["Level: "] = "레벨: ",
+	["Required Level: "] = "요구 레벨: ",
+	["Starts: "] = "시작: ",
+	["Ends: "] = "종료: ",
+	["Experience: "] = "경험치: ",
+	["Reputation:"] = "평판: ",
+	["Quest Series:"] = "퀘스트 연재:",
+	["Quest "] = "퀘스트 ",
+	["LightHeaded Comments"] = "LightHeaded 설명",
+	["No comments found..."] = "설명이 없습니다...",
+	["Comments are all from WowHead"] = "WowHead 모든 설명",
+	["Yes"] = "예",
+	["No"] = "아니오",
+} end)

@@ -29,7 +29,7 @@ local CQI_TYPES = {
 	},
 	["giver"] = {
 		title = L["Quest Giver"],
-		icon = "Interface\\AddOns\\Cartographer_QuestInfo\\Artwork\\Mark_Start",
+		icon = "Interface\\AddOns\\Cartographer_QuestInfo\\Artwork\\Mark_Giver",
 	},
 	["obj"] = {
 		title = L["Quest Objective"],
@@ -60,12 +60,12 @@ function CQI:EnableCartoMap()
 	self:Hook_IsNoteHidden("Quests")
 	self:Hook_IsNoteHidden("Quest Objectives")
 
-	CN:RegisterNotesDatabase(DB_NAME, CQI_NOTES, self)
+    CN:RegisterNotesDatabase(DB_NAME, CQI_NOTES, self)
 	CN:RefreshMap(true)
 end
 
 function CQI:DisableCartoMap()
-	CN:UnregisterNotesDatabase(DB_NAME)
+    CN:UnregisterNotesDatabase(DB_NAME)
 
 	for id in pairs(CQI_TYPES) do
 		CN:UnregisterIcon(DB_NAME.."-"..id)
@@ -175,10 +175,10 @@ end
 -------------------------------------------------------------------
 
 function CQI:ClearQuestNotes()
-	CN:UnregisterNotesDatabase(DB_NAME)
-	CQI_NOTES = {}
-	CN:RegisterNotesDatabase(DB_NAME, CQI_NOTES, self)
-	CN:RefreshMap()
+    CN:UnregisterNotesDatabase(DB_NAME)
+    CQI_NOTES = {}
+    CN:RegisterNotesDatabase(DB_NAME, CQI_NOTES, self)
+    CN:RefreshMap()
 end
 
 function CQI:AddQuestNotes(quest, title, type, npc, by_zone)
@@ -196,11 +196,11 @@ function CQI:AddQuestNotes(quest, title, type, npc, by_zone)
 					end
 				end
 				if npc.classify == 1 then
-					level = level.." "..L["Elite"]
+					level = level.." |cffff66ff"..L["Elite"].."|r"
 				elseif npc.classify == 2 then
-					level = level.." "..L["Rare Elite"]
+					level = level.." |cffffaaff"..L["Rare Elite"].."|r"
 				elseif npc.classify == 3 then
-					level = L["Boss"]
+					level = "|cffff0000"..L["Boss"].."|r"
 				end
 				CN:SetNote(zone, l.x / 100, l.y / 100, DB_NAME.."-"..type, DB_NAME,
 					"quest", quest,
@@ -230,12 +230,12 @@ function CQI:GotoQuestZone(zone)
 		end
 	end
 
-	if CQI_WORLD[zone] then
-		local idx = CQI_WORLD[zone]
-		SetMapZoom(idx[1], idx[2])
-	elseif Tourist:IsInstance(zone) and Cartographer_InstanceMaps then
-		Cartographer_InstanceMaps:ShowInstance(BZR[zone])
-	end
+    if CQI_WORLD[zone] then
+    	local idx = CQI_WORLD[zone]
+    	SetMapZoom(idx[1], idx[2])
+    elseif Tourist:IsInstance(zone) and Cartographer_InstanceMaps then
+    	Cartographer_InstanceMaps:ShowInstance(BZR[zone])
+    end
 end
 
 function CQI:OpenQuestMap(quest, title, type, zone, npc_list)

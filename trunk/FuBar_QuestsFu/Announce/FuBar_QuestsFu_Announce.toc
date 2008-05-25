@@ -1,8 +1,6 @@
 ## Interface: 20100
 ## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fAnnounce|r]
 ## Notes: Announce quest status in chat
-## Notes-zhCN: QuestsFu的模块之一，在聊天框中通告任务状态
-## Notes-zhTW: QuestsFu的模組之一，在聊天框中通告任務狀態
 ## Version: 2.0
 ## Author: Kemayo
 ## X-Website: http://kemayo.wowinterface.com

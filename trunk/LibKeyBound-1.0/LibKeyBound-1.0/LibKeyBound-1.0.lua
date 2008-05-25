@@ -1,6 +1,6 @@
 --[[
 Name: LibKeyBound-1.0
-Revision: $Rev: 75051 $
+Revision: $Rev: 75093 $
 Author(s): Gello, Maul, Toadkiller, Tuller
 Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 Documentation: http://www.wowace.com/wiki/LibKeyBound-1.0
@@ -10,7 +10,7 @@ Dependencies: CallbackHandler-1.0
 --]]
 
 local MAJOR = "LibKeyBound-1.0"
-local MINOR = "$Revision: 75051 $"
+local MINOR = "$Revision: 75093 $"
 
 --[[
 	LibKeyBound-1.0
@@ -108,13 +108,14 @@ function LibKeyBound:Initialize()
 	SlashCmdList["LibKeyBoundSlashCOMMAND"] = function() self:Toggle() end
 	SLASH_LibKeyBoundSlashCOMMAND1 = "/keybound"
 	SLASH_LibKeyBoundSlashCOMMAND2 = "/kb"
+	SLASH_LibKeyBoundSlashCOMMAND3 = "/lkb"
 
 	LibKeyBound.initialized = true
 end
 
 
 -- Default color to indicate bindable frames in your mod.
-LibKeyBound.colorKeyBoundMode = LibKeyBound.colorKeyBoundMode or { 0, 1, 0.5, 0.5 }
+LibKeyBound.colorKeyBoundMode = LibKeyBound.colorKeyBoundMode or { 0, 1, 1, 0.5 }
 
 --[[
 LibKeyBound:SetColorKeyBoundMode([r][, g][, b][, a])

@@ -1,0 +1,15 @@
+## Interface: 20100
+## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fPlayerNotify|r]
+## Notes: Report on player quest status
+## Version: 2.0
+## Author: Kemayo
+## X-Website: http://kemayo.wowinterface.com
+## X-eMail: kemayo@gmail.com
+## X-RelSite-WoWI: 5320
+## X-WoWIPortal: kemayo
+## X-Category: Quest
+## X-FuBar_QuestsFu-DefaultState: 1
+## Dependencies: FuBar_QuestsFu
+## OptDeps: SinkLib
+
+PlayerNotify.xml

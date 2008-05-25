@@ -1,0 +1,14 @@
+## Interface: 20300
+## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fBlizz|r]
+## Notes: Improvements to the default UI
+## Version: 2.0
+## Author: Kemayo
+## X-Website: http://kemayo.wowinterface.com
+## X-eMail: kemayo@gmail.com
+## X-RelSite-WoWI: 5320
+## X-WoWIPortal: kemayo
+## X-Category: Quest
+## X-FuBar_QuestsFu-DefaultState: 1
+## Dependencies: FuBar_QuestsFu
+
+Blizz.xml

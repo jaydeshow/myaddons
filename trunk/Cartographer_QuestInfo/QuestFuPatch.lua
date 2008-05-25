@@ -10,6 +10,38 @@ local OBJ_CACHE_HIT = 0
 
 -------------------------------------------------------------------
 
+--[[
+-- QuestFu Patch (Original by ZeroFire)
+-- to use this, modify code in QuestFu.lua QuestsFu:AddQuestToCategory()
+	local function CQI_HasInfo(obj, qid)
+		return Cartographer_QuestInfo and Cartographer_QuestInfo:FindObjectiveData(qid, obj) ~= nil
+	end
+	
+	local function CQI_ShowInfo(obj, qid)
+		if Cartographer_QuestInfo then
+			local data = Cartographer_QuestInfo:FindObjectiveData(qid, obj)
+			Cartographer_QuestInfo:OnButtonClick("obj", "LeftButton", data)
+		end
+	end
+	
+	cat:AddLine(
+		'text', '  '..description,
+		'text2', party .. (done and L["(done)"] or string.format("%s/%s", numGot, numNeeded)),
+		'textR', r or 1, 'textG', g or 1, 'textB', b or 1,
+		'text2R', r or 1, 'text2G', g or 1, 'text2B', b or 1,
+		'size', fontSize, 'size2', fontSize,
+		-- purple, add support for Cartographer_QuestInfo
+		'checked', CQI_HasInfo(description, questid), 
+		'hasCheck', true, 
+		'checkIcon', 'Interface\\GossipFrame\\PetitionGossipIcon',
+		'func', CQI_ShowInfo,
+		'arg1', description,
+		--
+		'arg2', questid,
+		'indentation', indent
+	)
+--]]
+
 function CQI:FindObjectiveData(questid, objective)
 	if not Cartographer:IsModuleActive(self) or type(objective) ~= "string" then return end
 

@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1660,12 +1660,12 @@ function AutoBar:CreateSmallOptions()
 					set = AutoBar.MoveButtonsModeToggle,
 					disabled = getCombatLockdown,
 				},
-				assignBindings = {
+				keyBoundMode = {
 					type = "toggle",
 					order = 3,
 					name = L["Key Bindings"],
 					desc = L["Assign Bindings for Buttons on your Bars."],
-					get = function() return AutoBar.assignBindings end,
+					get = function() return AutoBar.keyBoundMode end,
 					set = LibKeyBound.Toggle,
 					disabled = getCombatLockdown,
 				},

@@ -6,7 +6,14 @@ local Tablet = AceLibrary("Tablet-2.0")
 -------------------------------------------------------------------
 
 ----
--- <OBJMAP>
+--	<OBJMAP> = {
+--		quest = "<quest_title>",
+--		title = "<note_title>",
+--		zones = {
+--			["zone"] = <NPC_LIST>,
+--			... more ["zone"] = <NPC_LIST>
+--		}
+--	}
 ----
 
 local OBJMAP

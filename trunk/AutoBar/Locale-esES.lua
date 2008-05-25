@@ -35,19 +35,19 @@ if (GetLocale() == "esES") then
 		["Change the button height."] = "Cambia el alto del botón.",
 		["Category"] = "Categoría",
 		["Categories"] = "Categorías",
-		["Categories for %s"] = "Categorías para %s",
+		["Categories for %s"] = "Categorías de %s",
 		["Clamp Bars to screen"] = "Limitar Barras a la pantalla",
 		["Clamped Bars can not be positioned off screen"] = "Barras Limitadas no pueden ser posicionadas fuera de la pantalla",
 		["Collapse Buttons"] = "Colapsar Botones",
 		["Collapse Buttons that have nothing in them."] = "Colapsar Botones que no tienen nada.",
-		["Configuration for %s"] = "Configuración para %s",
+		["Configuration for %s"] = "Configuración de %s",
 		["Delete this Custom Button completely"] = "Eliminar completamente este Botón Personalizado",
 		["Dialog"] = "Diálogo",
 		["Disable Conjure Button"] = "Desactivar Botón de Conjuro",
 		["Docked to"] = "Anclado a",
 		["Done"] = "Hecho";
 		["Enabled"] = "Activado",
-		["Enable %s."] = "Activa %s.",
+		["Enable %s."] = "Activar %s.",
 		["FadeOut"] = "Desvanecer",
 		["Fade out the Bar when not hovering over it."] = "Desvanece la Barra cuando no estás sobre ella.",
 		["FadeOut Time"] = "Duración de Desvanecer",
@@ -56,8 +56,8 @@ if (GetLocale() == "esES") then
 		["FadeOut stops at this Alpha level."] = "Desvanecer se detiene en este nivel de Transparencia.",
 		["FadeOut Cancels in combat"] = "Cancelar Desvanecer en combate",
 		["FadeOut is cancelled when entering combat."] = "Desvanecer es cancelado cuando entra en combate.",
-		["FadeOut Cancels on Shift"] = "Cancelar Desvanecer al pulsar Shift",
-		["FadeOut is cancelled when holding down the Shift key."] = "Desvanecer se cancela al pulsar la tecla Shift.",
+		["FadeOut Cancels on Shift"] = "Cancelar Desvanecer al pulsar Mayús",
+		["FadeOut is cancelled when holding down the Shift key."] = "Desvanecer se cancela al pulsar la tecla Mayús.",
 		["FadeOut Cancels on Ctrl"] = "Cancelar Desvanecer al pulsar Ctrl",
 		["FadeOut is cancelled when holding down the Ctrl key."] = "Desvanecer se cancela al pulsar la tecla Ctrl.",
 		["FadeOut Cancels on Alt"] = "Cancelar Desvanecer al pulsar Alt",
@@ -81,9 +81,9 @@ if (GetLocale() == "esES") then
 		["Non Combat Only"] = "Solo Fuera de Combate",
 		["Not directly usable"] = "No utilizable de forma directa",
 		["Number of columns for %s"] = "Número de columnas para %s",
-		["Dropdown UI"] = "UI Desplegable",
+		["Dropdown UI"] = "Desplegable del UI",
 		["Options GUI"] = "Opciones del GUI",
-		["Skin the Buttons"] = "Piel en Botones",
+		["Skin the Buttons"] = "Piel de los Botones",
 		["Order"] = "Orden",
 		["Change the order of %s in the Bar"] = "Cambia el orden de %s en la Barra",
 		["Padding"] = "Separación",
@@ -118,7 +118,7 @@ if (GetLocale() == "esES") then
 		["Show Count Text"] = "Mostrar el Texto del Contador";
 		["Show Count Text for %s"] = "Mostrar el Texto del Contador para %s";
 		["Show Empty Buttons"] = "Mostrar los Botones Vacíos";
-		["Show Empty Buttons for %s"] = "Mostrar los Botones Vacíos %s";
+		["Show Empty Buttons for %s"] = "Mostrar los Botones Vacíos de %s";
 		["Show Extended Tooltips"] = "Mostar Bocadillos Extendidos";
 		["Show Hotkey Text"] = "Muestra la Tecla rápida del botón",
 		["Show Hotkey Text for %s"] = "Muestra la Tecla rápida del botón para %s",
@@ -134,9 +134,9 @@ if (GetLocale() == "esES") then
 		["Targeted"] = "Seleccionado.";
 		["<Any String>"] = "<Alguna Cadena>",
 		["Move the Bars"] = "Mover las Barras",
-		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "Arrastra una barra para moverla, click izquierdo para ocultar (rojo) o mostrar (verde) la barra, click derecho para configurar la barra.",
+		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "Arrastre una barra para moverla, click izquierdo para ocultar (rojo) o mostrar (verde) la barra, click derecho para configurar la barra.",
 		["Move the Buttons"] = "Mover los Botones",
-		["Drag a Button to move it, right click to configure the Button."] = "Arrastra un Botón para moverlo, click derecho para configurar el Botón.",
+		["Drag a Button to move it, right click to configure the Button."] = "Arrastre un Botón para moverlo, click derecho para configurar el Botón.",
 
 		["{circle}"] = "{círculo}",
 		["{diamond}"] = "{diamante}",
@@ -158,16 +158,16 @@ if (GetLocale() == "esES") then
 		-- AutoBarFuBar
 		["FuBarPlugin Config"] = "Configuración del Plugin de FuBar",
 		["Configure the FuBar Plugin"] = "Configura el plugin de FuBar",
---		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55fDoble-Click|r para abrir la interfaz de configuración.\n|cffeda55fCtrl-Click|r para bloquear los botones. |cffeda55fMayúsculas-Click|r para bloquear las barras.",
+--		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55fDoble-Click|r para abrir la interfaz de configuración.\n|cffeda55fCtrl-Click|r para bloquear los botones. |cffeda55fMayús-Click|r para bloquear las barras.",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
-		["Left-Click"] = "Left-Click",
-		["Right-Click"] = "Right-Click",
+		["Left-Click"] = "Click-Izquierdo",
+		["Right-Click"] = "Click-Derecho",
 		["Alt-Click"] = "Alt-Click",
 		["Ctrl-Click"] = "Ctrl-Click",
-		["Shift-Click"] = "Shift-Click",
-		["Ctrl-Shift-Click"] = "Ctrl-Shift-Click",
-		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade is required to Skin the Buttons",
+		["Shift-Click"] = "Mayús-Click",
+		["Ctrl-Shift-Click"] = "Ctrl-Mayús-Click",
+		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade es necesario para la Piel de los Botones",
 		["Waterfall-1.0 is required to access the GUI"] = "Waterfall-1.0 es necesario para acceder al GUI",
 
 		-- Bar Names
@@ -300,7 +300,7 @@ if (GetLocale() == "esES") then
 		["AUTOBAR_CONFIG_ALPHA"] = "Transparencia de Iconos";
 		["AUTOBAR_CONFIG_WIDTHHEIGHTUNLOCKED"] = "Altura del Botón\ny Anchura Desbloqueados";
 		["AUTOBAR_CONFIG_SHOWCATEGORYICON"] = "Mostrar Iconos de Categorias";
-		["AUTOBAR_CONFIG_POPUPONSHIFT"] = "Ventana emergente con tecla de Mayúsculas";
+		["AUTOBAR_CONFIG_POPUPONSHIFT"] = "Ventana emergente con la tecla Mayús";
 		["Rearrange Order on Use"] = "Reajustar el orden al usar";
 		["Rearrange Order on Use for %s"] = "Reajustar el orden al usar para %s";
 		["Right Click Targets Pet"] = "Click-Derecho cambia objetivo a Mascota";

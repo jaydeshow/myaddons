@@ -5,8 +5,8 @@ ARLLocals-esES.lua
 
 esES localization strings for Ackis Recipe List
 
-$Date: 2008-05-20 04:52:44 -0400 (Tue, 20 May 2008) $
-$Rev: 74506 $
+$Date: 2008-05-25 07:30:57 -0400 (Sun, 25 May 2008) $
+$Rev: 75089 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -76,7 +76,7 @@ L["Aquisition"] = "Adquisición"
 L["SPECIFIC_REP_TOGGLE"] = "Incluir facción %s."
 
 -- Non-gui text
-L["MissingFromDB"] = ": no se encuentra en la base de datos.\nPor favor, informa al autor del add-on sobre esta receta."
+L["MissingFromDB"] = ": no se encuentra en la base de datos.\nPor favor, informe al autor del add-on sobre esta receta."
 L["MissingRecipePrefix"] = "Receta Inexistente: "
 L["InitiateScan"] = "Explorando %s para recetas inexistentes del nivel %s.\n"
 L["InitiateScanSpecial"] = "Explorando %s - %s para recetas inexistentes para el nivel %s.\n"
@@ -88,12 +88,44 @@ L["OpenTradeSkillWindow"] = "Por favor abra la ventana de Habilidades de Comerci
 L["Close"] = "Cerrar"
 L["ScanButton"] = "Explorar"
 L["Scan Skills"] = "Explorar"
+L["FILTER_OPEN"] = "Filtro >>>"
+L["FILTER_CLOSE"] = "<<< Filtro"
+L["Reset"] = "Reiniciar"
+L["Sort"] = "Ordenar"
+L["World Drop"] = "Soltado en el Mundo"
+L["Mob Drop"] = Soltado por Monstruo"
+L["Quest"] = "Misión"
+L["Reputation"] = "Reputación"
+L["Instance"] = "Instancia"
+L["BoPMenu"] = "Ligado Al Recogerlo (LaR)"
+L["Horde"] = "Horda" 
+L["Alliance"] = "Alianza"
+L["Known"] = "Conocido"
+L["Unknown"] = "Desconocido"
 
 -- Tooltip Text
 L["Scan Skills Long"] = "Explorar recetas inexistentes utilizando Ackis Recipe List."
 L["Close Window"] = "Cerrar la Ventana de Ackis Recipe List."
 L["Expand All"] = "Expandir todas las recetas."
 L["Collapse All"] = "Colapsar todas las recetas."
+L["FILTER_OPEN_TT"] = "Abrir el panel de la opción del filtro."
+L["FILTER_CLOSE_TT"] = "Cerrar el panel de la opción del filtro."
+L["RESET_TT"] = "Restablecer la cadena de búsqueda."
+L["SORT_TT"] = "Cambiar el orden de clasificación de la lista."
+L["VENDOR_TT"] = "Marcar para incluir en la lista recetas de Vendedores."
+L["TRAINER_TT"]= "Marcar para incluir en la lista recetas Aprendidas."
+L["WORLD_TT"] = "Marcar para incluir en la lista recetas Soltadas en el Mundo."
+L["MOB_TT"] = "Marcar para incluir en la lista recetas específicas Soltadas por Monstruos en el mundo."
+L["QUEST_TT"] = "Marcar para incluir en la lista recetas de Recompensa de Misión."
+L["SEASON_TT"] = "Marcar para incluir en la lista recetas de Temporada."
+L["REP_TT"] = "Marcar para incluir en la lista recetas de Recompensa de Reputación."
+L["INSTANCE_TT"] = "Marcar para incluir en la lista recetas solamente encontradas en instancias."
+L["BOP_TT"] = "Marcar para ver en la lista solamente recetas que Se Ligan al Recogerlas."
+L["HORDE_TT"] = "Marcar para incluir en la lista solamente recetas de la Horda."
+L["ALLIANCE_TT"] = "Marcar para incluir en la lista solamente recetas de la Alianza."
+L["KNOWN_TT"] = "Marcar para incluir en la lista recetas aprendidas."
+L["UNKNOWN_TT"] = "Marcar para incluir en la lista recetas no aprendidas."
+
 -- Recipe Database
 Discovery = "Descubierto"
 Raid = "Jefe"
@@ -111,7 +143,6 @@ L["Artisan"] = "Artesano"
 L["Master"] = "Maestro"
 
 -- Common ways to obtain recipes
-QuestReward = "Recompensa de Misión: "
 L["UZD"] = "Soltado - Zona - Poco frecuente: "
 L["CWD"] = "Soltado - Mundo - Común"
 L["UWD"] = "Soltado - Mundo - No Común"
@@ -119,12 +150,15 @@ L["RWD"] = "Soltado - Mundo - Raro"
 L["EWD"] = "Soltado - Mundo - Epico"
 L["BoE"] = "Soltado - Se Liga Al Equiparlo: "
 L["BoP"] = "Soltado - Se Liga Al Recogerlo: "
+L["QuestReward"] = "Recompensa de Misión: "
+
+-- Common quests/drops
+QuestReward = "Recompensa de Misión: "
 L["DMCACHE"] = "Caché de Knot Thimblejack"
 L["Gordok Ogre Suit"] = "Conjunto del Ogro Gordok"
 L["Gordok Ogre Suit Obt"] = "El conjunto del Ogro Gordok"
 L["Spectral Essence Obt"] = QuestReward.."Kirtonos el Heraldo (le permite ver al vendedor Magnus Frostwake cerca de "..BZ["Scholomance"]..")"
 L["TrueBelieverQuest"] = "Creyentes Verdaderos - Raro"
-L["QuestReward"] = QuestReward
 
 -- Raid Drop Obtain Info
 BopMobDrop = "Soltado por monstruo (Se Liga al Recogerlo): "

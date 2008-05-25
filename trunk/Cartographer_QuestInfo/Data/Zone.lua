@@ -24,6 +24,7 @@ QuestInfo_Zone = {
 	[47] = "The Hinterlands",
 	[51] = "Searing Gorge",
 	[85] = "Tirisfal Glades",
+	[130] = "Silverpine Forest",
 	[133] = "Gnomeregan",
 	[139] = "Eastern Plaguelands",
 	[141] = "Teldrassil",
