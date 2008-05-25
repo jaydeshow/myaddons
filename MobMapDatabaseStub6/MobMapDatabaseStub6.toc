@@ -1,8 +1,0 @@
-## Interface: 20400
-## Title: |cff0099FF<CWDG>|r|cffffffffMobMap数据库6|r
-## Notes: This is a load-on-demand addon stub for the MobMap mob name database.
-## Notes-zhCN: MobMap怪物/NPC名动态数据加载库.(必要!)
-## RequiredDeps: MobMap
-## LoadOnDemand: 1
-..\MobMap\MobMapDatabase_mobnames.lua
-..\MobMap\MobMap_mobnames.lua

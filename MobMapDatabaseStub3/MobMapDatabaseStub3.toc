@@ -1,9 +1,0 @@
-## Interface: 20400
-
-## Title: |cff0099FF<CWDG>|r|cffffffffMobMap数据库3|r
-## Notes: This is a load-on-demand addon stub for the MobMap merchant database.
-## Notes-zhCN: MobMap商人动态数据加载库.(必要!)
-## RequiredDeps: MobMap
-## LoadOnDemand: 1
-..\MobMap\MobMapDatabase_merchants.lua
-..\MobMap\MobMap_merchants.xml
