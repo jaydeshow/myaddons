@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r75048 | toadkiller | 2008-05-24 16:53:06 -0400 (Sat, 24 May 2008) | 4 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Consumable/LibPeriodicTable-3.1-Consumable.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+-- Medicinal Drake Essence 31437
+-- Voodoo Skull 33081
+
+------------------------------------------------------------------------
 r74491 | toadkiller | 2008-05-19 23:28:31 -0400 (Mon, 19 May 2008) | 6 lines
 Changed paths:
    M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
@@ -276,23 +288,4 @@ Changed paths:
 LibPeriodicTable-3.1:
 - Create Paper Airplane, Flying Machine 45131,45135  --> 34497, 34499
 
-------------------------------------------------------------------------
-r71008 | toadkiller | 2008-04-22 23:34:23 -0400 (Tue, 22 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
-   M /trunk/LibPeriodicTable-3.1/data.lua
-
-LibPeriodicTable-3.1:
--- Tears of the Goddess 24494
-------------------------------------------------------------------------
-r70683 | toadkiller | 2008-04-21 00:12:14 -0400 (Mon, 21 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Consumable/LibPeriodicTable-3.1-Consumable.lua
-   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Gear/LibPeriodicTable-3.1-Gear.lua
-   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
-   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Tradeskill/LibPeriodicTable-3.1-Tradeskill.lua
-   M /trunk/LibPeriodicTable-3.1/data.lua
-
-LibPeriodicTable-3.1:
-- 2.4 quest items etc.  Some set name wrangling.
 ------------------------------------------------------------------------

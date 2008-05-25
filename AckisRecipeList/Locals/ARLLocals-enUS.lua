@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-05-22 11:16:24 -0400 (Thu, 22 May 2008) $
-$Rev: 74805 $
+$Date: 2008-05-24 20:33:25 -0400 (Sat, 24 May 2008) $
+$Rev: 75055 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -92,7 +92,7 @@ L["Mob Drop"] = true
 L["Quest"] = true
 L["Reputation"] = true
 L["Instance"] = true
-L["BoP"] = true
+L["BoPMenu"] = "BoP"
 L["Horde"] = true 
 L["Alliance"] = true
 L["Known"] = true
@@ -143,12 +143,14 @@ L["RWD"] = "Rare World Drop"
 L["EWD"] = "Epic World Drop"
 L["BoE"] = "Bind on Equip Drop: "
 L["BoP"] = "Bind on Pickup Drop: "
+L["QuestReward"] = "Quest Reward: "
+
+-- Common quests/drops
 L["DMCACHE"] = "Knot Thimblejack's Cache"
 L["Gordok Ogre Suit"] = true
 L["Gordok Ogre Suit Obt"] = "The Gordok Ogre Suit"
 L["Spectral Essence Obt"] = "Quest Reward: Kirtonos the Herald (allows you to see the vendor Magnus Frostwake near Scholomance)"
 L["TrueBelieverQuest"] = "True Believers - Rare"
-L["QuestReward"] = "Quest Reward: "
 
 -- Raid Drop Obtain Info
 L["ADNaxx"] = "Trainer: Master Craftsman Omarion in the Deathknight Wing of Naxxramas."

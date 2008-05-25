@@ -1,4 +1,89 @@
 ------------------------------------------------------------------------
+r75051 | toadkiller | 2008-05-24 18:06:32 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- AutoDoc madness
+------------------------------------------------------------------------
+r75049 | toadkiller | 2008-05-24 17:22:05 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- AutoDoc errors are boring
+------------------------------------------------------------------------
+r75036 | toadkiller | 2008-05-24 12:13:40 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-dsfg
+------------------------------------------------------------------------
+r75034 | toadkiller | 2008-05-24 11:24:37 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- More detailed Notes for shortenKey
+------------------------------------------------------------------------
+r75031 | toadkiller | 2008-05-24 11:12:32 -0400 (Sat, 24 May 2008) | 3 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-sdfsf
+
+------------------------------------------------------------------------
+r75030 | toadkiller | 2008-05-24 11:11:07 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-asda
+------------------------------------------------------------------------
+r75029 | toadkiller | 2008-05-24 11:08:18 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+--wth
+------------------------------------------------------------------------
+r75028 | toadkiller | 2008-05-24 10:59:44 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- More debugging AutoDoc issue
+------------------------------------------------------------------------
+r75026 | toadkiller | 2008-05-24 10:50:14 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- More AutoDoc futzing
+------------------------------------------------------------------------
+r75025 | toadkiller | 2008-05-24 10:25:30 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Some doc formatting
+------------------------------------------------------------------------
+r75024 | toadkiller | 2008-05-24 10:11:59 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Initial docs for all API functions
+------------------------------------------------------------------------
+r75023 | toadkiller | 2008-05-24 09:40:07 -0400 (Sat, 24 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Some more API documentation
+------------------------------------------------------------------------
 r75022 | toadkiller | 2008-05-24 08:57:48 -0400 (Sat, 24 May 2008) | 2 lines
 Changed paths:
    M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua

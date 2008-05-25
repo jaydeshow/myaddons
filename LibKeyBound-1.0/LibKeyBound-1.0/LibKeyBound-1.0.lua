@@ -1,6 +1,6 @@
 --[[
 Name: LibKeyBound-1.0
-Revision: $Rev: 75022 $
+Revision: $Rev: 75051 $
 Author(s): Gello, Maul, Toadkiller, Tuller
 Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 Documentation: http://www.wowace.com/wiki/LibKeyBound-1.0
@@ -10,7 +10,7 @@ Dependencies: CallbackHandler-1.0
 --]]
 
 local MAJOR = "LibKeyBound-1.0"
-local MINOR = "$Revision: 75022 $"
+local MINOR = "$Revision: 75051 $"
 
 --[[
 	LibKeyBound-1.0
@@ -19,7 +19,7 @@ local MINOR = "$Revision: 75022 $"
 		Functions needed to implement
 			button:GetHotkey() - returns the current hotkey assigned to the given button
 
-		Functions to implemnt if using a custom keybindings system:
+		Functions to implement if using a custom keybindings system:
 			button:SetKey(key) - binds the given key to the given button
 			button:FreeKey(key) - unbinds the given key from all other buttons
 			button:ClearBindings() - removes all keys bound to the given button
@@ -119,6 +119,22 @@ LibKeyBound.colorKeyBoundMode = LibKeyBound.colorKeyBoundMode or { 0, 1, 0.5, 0.
 --[[
 LibKeyBound:SetColorKeyBoundMode([r][, g][, b][, a])
 --]]
+--[[
+Notes:
+*Returns the color to use on your participating buttons during KeyBound Mode
+*Values are unpacked and ready to use as color arguments
+Arguments:
+	number - red, default 0
+	number - green, default 0
+	number - blue, default 0
+	number - alpha, default 1
+Example:
+	if (MyMod.keyBoundMode) then
+		overlayFrame:SetBackdropColor(LibKeyBound:GetColorKeyBoundMode())
+	end
+	...
+	local r, g, b, a = LibKeyBound:GetColorKeyBoundMode()
+--]]
 function LibKeyBound:SetColorKeyBoundMode(r, g, b, a)
 	r, g, b, a = r or 0, g or 0, b or 0, a or 1
 	LibKeyBound.colorKeyBoundMode[1] = r
@@ -129,7 +145,20 @@ function LibKeyBound:SetColorKeyBoundMode(r, g, b, a)
 end
 
 --[[
-r, g, b, a = LibKeyBound:GetColorKeyBoundMode()
+Notes:
+*Returns the color to use on your participating buttons during KeyBound Mode
+*Values are unpacked and ready to use as color arguments
+Returns:
+	* number - red
+	* number - green
+	* number - blue
+	* number - alpha
+Example:
+	if (MyMod.keyBoundMode) then
+		overlayFrame:SetBackdropColor(LibKeyBound:GetColorKeyBoundMode())
+	end
+	...
+	local r, g, b, a = LibKeyBound:GetColorKeyBoundMode()
 --]]
 function LibKeyBound:GetColorKeyBoundMode()
 	return unpack(LibKeyBound.colorKeyBoundMode)
@@ -215,8 +244,9 @@ end
 
 --[[
 Notes:
- Switches KeyBound Mode to off
-
+ Is KeyBound Mode currently on
+Returns:
+	boolean - true if KeyBound Mode is currently on
 Example:
 	local LibKeyBound = LibStub("LibKeyBound-1.0")
  	local isKeyBoundMode = LibKeyBound:IsShown()
@@ -230,12 +260,27 @@ function LibKeyBound:IsShown()
 	return self.enabled
 end
 
+
+--[[
+Notes:
+ * Sets up button for keybinding
+ * Current bindings are shown in the tooltip
+ * Primary binding is shown in green in the button text
+
+Arguments:
+	table - the button frame
+
+Example:
+function MyButtonClass:OnEnter()
+	local button = self.buttonFrame
+	if (button.GetHotkey) then
+		LibKeyBound:Set(button)
+	end
+end
+--]]
 function LibKeyBound:Set(button)
 	local bindFrame = self.frame
 
-if (button) then
---	AutoBar:Print("LibKeyBound:Set button " .. tostring(button) .. " buttonName " .. tostring(button.class and button.class.buttonName))
-end
 	if button and self:IsShown() and not InCombatLockdown() then
 		bindFrame.button = button
 		bindFrame:SetAllPoints(button)
@@ -254,6 +299,27 @@ end
 	end
 end
 
+
+--[[
+Notes:
+ * Shortens the key text (returned from GetBindingKey etc.)
+ * Result is suitable for display on a button
+ * Can be used for your button:GetHotkey() return value
+
+Arguments:
+	string - the keyString to shorten
+
+Returns:
+	string - the shortened displayString
+
+Example:
+function MyButton:GetHotkey()
+	local button = self
+	local key1 = GetBindingKey(button:GetName())
+	local displayKey = LibKeyBound:ToShortKey(key1)
+	return displayKey
+end
+--]]
 function LibKeyBound:ToShortKey(key)
 	if key then
 		key = key:upper()

@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList v0.84
-$Date: 2008-05-23 11:36:27 -0400 (Fri, 23 May 2008) $
-$Rev: 74937 $
+$Date: 2008-05-24 22:48:18 -0400 (Sat, 24 May 2008) $
+$Rev: 75060 $
 
 Author: Ackis on Illidan US Horde
 ****************************************************************************************
@@ -954,6 +954,9 @@ end
 
 function addon:CheckDisplayRecipe(RecipeName, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
+	-- These will be converted to a bit string soon
+	-- BoP, Instance, World, Raid, Horde, Alliance, DeathKnight, Druid, Hunter, Mage, Paladin, Priest, Rogue, Shaman, Warlock, Warrior, 
+
 	-- Display all skill levels
 	if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
 
@@ -1186,7 +1189,11 @@ do
 	-- Combines all quest information into a single string for output
 
 	function addon:CombineQuests(...)
-
+-- Ackis: If you'd just like to show the tooltip, `GameTooltip:SetHyperlink("quest:"..uid)`
+--<+Kemayo> Ackis: If you actually want to give them a link to put into chat, 
+--<+Kemayo> "|Hquest:"..uid..":"..level.."|h"..title.."|h"
+--<+Kemayo> (The :level bit is optional, though.)
+--/script foo="\124Hquest:652:70\124hCapturing the Keystone\124h";DEFAULT_CHAT_FRAME:AddMessage(foo)
 		-- Reset the table
 		for k in pairs(t) do t[k] = nil end
 

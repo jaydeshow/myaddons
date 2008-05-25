@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -16,48 +16,19 @@
 -- FR
 if GetLocale() == "frFR" then
 
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.TS = "Talent Spy";
-FW.L.TS_USE = "You can use the new spy dropdown menu from your Talent frame.";
-FW.L.TS_HINT = "For now you have to inspect people that aren't using the addon to store their talents.";
-FW.L.TALENT_OFFSETX = "X-offset dropdown";
-FW.L.TALENT_OFFSETY = "Y-offset dropdown";
-FW.L.TALENT_OFFSET_TT = "Use this in case you're using a customized Talent Frame and need to change the position of the dropdown and buttons.";
-
-
-
 -- DE 
 elseif GetLocale() == "deDE" then
-
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.TS = "Talent Spy";
-FW.L.TS_USE = "You can use the new spy dropdown menu from your Talent frame.";
-FW.L.TS_HINT = "For now you have to inspect people that aren't using the addon to store their talents.";
-FW.L.TALENT_OFFSETX = "X-offset dropdown";
-FW.L.TALENT_OFFSETY = "Y-offset dropdown";
-FW.L.TALENT_OFFSET_TT = "Use this in case you're using a customized Talent Frame and need to change the position of the dropdown and buttons.";
-
-
 
 -- SPANISH
 elseif GetLocale() == "esES" then
 
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
+-- ENGLISH
+else
 
-FW.L.TS = "Talent Spy";
-FW.L.TS_USE = "You can use the new spy dropdown menu from your Talent frame.";
-FW.L.TS_HINT = "For now you have to inspect people that aren't using the addon to store their talents.";
-FW.L.TALENT_OFFSETX = "X-offset dropdown";
-FW.L.TALENT_OFFSETY = "Y-offset dropdown";
-FW.L.TALENT_OFFSET_TT = "Use this in case you're using a customized Talent Frame and need to change the position of the dropdown and buttons.";
-
-
+end
 
 -- simple chinese
-elseif GetLocale() == "zhCN" then
-
+if GetLocale() == "zhCN" then
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -79,8 +50,6 @@ FW.L.TALENT_OFFSETX = "菜單水準偏移";
 FW.L.TALENT_OFFSETY = "菜單垂直偏移";
 FW.L.TALENT_OFFSET_TT = "此選項是為了你使用自定義天賦視窗,需要移動下拉功能表和按鈕準備的";
 
-
-
 -- ENGLISH
 else
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
@@ -92,4 +61,3 @@ FW.L.TALENT_OFFSETX = "X-offset dropdown";
 FW.L.TALENT_OFFSETY = "Y-offset dropdown";
 FW.L.TALENT_OFFSET_TT = "Use this in case you're using a customized Talent Frame and need to change the position of the dropdown and buttons.";
 end
-

@@ -1,4 +1,4 @@
-﻿-- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+﻿-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -15,154 +15,39 @@
 
 -- FR
 if GetLocale() == "frFR" then
-	FW.L.CREATE_SOULSTONE = "Cr閍tion de Pierre d'鈓e";
 	FW.L.BUFF_SOULSTONE = "Pierre d'鈓e";
 	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "Esprit de r閐emption";
 	FW.L.BUFF_DIVINE_INTERVENTION = "Intervention Divine";
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.SOULSTONE_TRACKER = "Soulstone Tracker";
-FW.L.SHOW_ALL_ABILITIES = "Show all class abilities (oRA/CTRA)";
-FW.L.SHOW_ALL_ABILITIES_TT = "When enabled, you will be able to see all class ability cooldowns supported by oRA/CTRA.";
-FW.L.SHOW_READY = "Show ready abilities";
-FW.L.SHOW_READY_TT = "This will set the tracker to not only show abilities on cooldown, but also any abilities that are ready."; 
-FW.L.SHOW_SOULSTONE_MESSAGES = "Show soulstone messages";
-FW.L.SHOW_SOULSTONE_MESSAGES_TT = "Shows messages for expired soulstones and similar.";
-FW.L.SOULSTONE_MESSAGES_COLOR = "Soulstone messages";
-FW.L.SS_FULL = "Soulstone full";
-FW.L.SS_EMPTY = "Soulstone empty";
-FW.L.RESURRECT = "Resurrect";
-FW.L.DEAD_OFFLINE_MIXING = "Dead/offline mixing";
-FW.L.WARLOCK = "Warlock";
-FW.L.DRUID = "Druid";
-FW.L.PALADIN = "Paladin";
-FW.L.SHAMAN = "Shaman";	
-FW.L.DEAD_OFFLINE_MIXING_TT = "The class color is mixed with the dead or offline color with this ratio. 1.0 means the color will be completely class color. 0.0 means the color will be the dead or offline color only.";
-
-FW.L.SS_ENABLE_TT = "Enable the Soulstone Tracker.";
-
-FW.L.DI_GAIN = "%s got Divine Intervention.";
-FW.L.DI_FADE = "Divine Intervention faded from %s.";
-FW.L.SS_EXPIRE = "Soulstone expired on %s.";
-FW.L.SS_EXPIRE_YOUR = "Your Soulstone expired on %s.";
-FW.L.SS_EXPIRE_OTHER = "%s's Soulstone expired on %s.";
-FW.L.SS_DIED = "%s died with a Soulstone on.";
-FW.L.SS_DIED_YOUR = "%s died with your Soulstone on.";
-FW.L.SS_DIED_OTHER = "%s died with %s's Soulstone on.";
-
-FW.L.SHORT_READY = "rdy";
-FW.L.READY_TO_RES = "ready to res";
-FW.L.NO_SS_UP = "no ss up";
-
-FW.L.FLAG_SOULSTONE = "<Soulstone>";
-FW.L.FLAG_REBIRTH = "<Rebirth>";
-FW.L.FLAG_DIVINE_INTERVENTION = "<Divine Int>";
-FW.L.FLAG_ANKH = "<Ankh>";
-
-FW.L.DELAY_MAX_SS_BUFF = "Delay max soulstone buff";
-
 -- DE 
 elseif GetLocale() == "deDE" then
-	FW.L.CREATE_SOULSTONE = "Seelenstein herstellen";
 	FW.L.BUFF_SOULSTONE = "Seelensteinauferstehung";
 	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "Geist der Erl鰏ung";
 	FW.L.BUFF_DIVINE_INTERVENTION = "G鰐tliches Eingreifen";
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.SOULSTONE_TRACKER = "Soulstone Tracker";
-FW.L.SHOW_ALL_ABILITIES = "Show all class abilities (oRA/CTRA)";
-FW.L.SHOW_ALL_ABILITIES_TT = "When enabled, you will be able to see all class ability cooldowns supported by oRA/CTRA.";
-FW.L.SHOW_READY = "Show ready abilities";
-FW.L.SHOW_READY_TT = "This will set the tracker to not only show abilities on cooldown, but also any abilities that are ready."; 
-FW.L.SHOW_SOULSTONE_MESSAGES = "Show soulstone messages";
-FW.L.SHOW_SOULSTONE_MESSAGES_TT = "Shows messages for expired soulstones and similar.";
-FW.L.SOULSTONE_MESSAGES_COLOR = "Soulstone messages";
-FW.L.SS_FULL = "Soulstone full";
-FW.L.SS_EMPTY = "Soulstone empty";
-FW.L.RESURRECT = "Resurrect";
-FW.L.DEAD_OFFLINE_MIXING = "Dead/offline mixing";
-FW.L.WARLOCK = "Warlock";
-FW.L.DRUID = "Druid";
-FW.L.PALADIN = "Paladin";
-FW.L.SHAMAN = "Shaman";	
-FW.L.DEAD_OFFLINE_MIXING_TT = "The class color is mixed with the dead or offline color with this ratio. 1.0 means the color will be completely class color. 0.0 means the color will be the dead or offline color only.";
-
-FW.L.SS_ENABLE_TT = "Enable the Soulstone Tracker.";
-
-FW.L.DI_GAIN = "%s got Divine Intervention.";
-FW.L.DI_FADE = "Divine Intervention faded from %s.";
-FW.L.SS_EXPIRE = "Soulstone expired on %s.";
-FW.L.SS_EXPIRE_YOUR = "Your Soulstone expired on %s.";
-FW.L.SS_EXPIRE_OTHER = "%s's Soulstone expired on %s.";
-FW.L.SS_DIED = "%s died with a Soulstone on.";
-FW.L.SS_DIED_YOUR = "%s died with your Soulstone on.";
-FW.L.SS_DIED_OTHER = "%s died with %s's Soulstone on.";
-
-FW.L.SHORT_READY = "rdy";
-FW.L.READY_TO_RES = "ready to res";
-FW.L.NO_SS_UP = "no ss up";
-
-FW.L.FLAG_SOULSTONE = "<Soulstone>";
-FW.L.FLAG_REBIRTH = "<Rebirth>";
-FW.L.FLAG_DIVINE_INTERVENTION = "<Divine Int>";
-FW.L.FLAG_ANKH = "<Ankh>";
-
-FW.L.DELAY_MAX_SS_BUFF = "Delay max soulstone buff";
-
 -- SPANISH
 elseif GetLocale() == "esES" then
-	FW.L.CREATE_SOULSTONE = "Crear piedra de alma";
 	FW.L.BUFF_SOULSTONE = "Resurreci髇 con piedra de alma";
 	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "Spirit of Redemption";
 	FW.L.BUFF_DIVINE_INTERVENTION = "Intervenci髇";
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.SOULSTONE_TRACKER = "Soulstone Tracker";
-FW.L.SHOW_ALL_ABILITIES = "Show all class abilities (oRA/CTRA)";
-FW.L.SHOW_ALL_ABILITIES_TT = "When enabled, you will be able to see all class ability cooldowns supported by oRA/CTRA.";
-FW.L.SHOW_READY = "Show ready abilities";
-FW.L.SHOW_READY_TT = "This will set the tracker to not only show abilities on cooldown, but also any abilities that are ready."; 
-FW.L.SHOW_SOULSTONE_MESSAGES = "Show soulstone messages";
-FW.L.SHOW_SOULSTONE_MESSAGES_TT = "Shows messages for expired soulstones and similar.";
-FW.L.SOULSTONE_MESSAGES_COLOR = "Soulstone messages";
-FW.L.SS_FULL = "Soulstone full";
-FW.L.SS_EMPTY = "Soulstone empty";
-FW.L.RESURRECT = "Resurrect";
-FW.L.DEAD_OFFLINE_MIXING = "Dead/offline mixing";
-FW.L.WARLOCK = "Warlock";
-FW.L.DRUID = "Druid";
-FW.L.PALADIN = "Paladin";
-FW.L.SHAMAN = "Shaman";	
-FW.L.DEAD_OFFLINE_MIXING_TT = "The class color is mixed with the dead or offline color with this ratio. 1.0 means the color will be completely class color. 0.0 means the color will be the dead or offline color only.";
-
-FW.L.SS_ENABLE_TT = "Enable the Soulstone Tracker.";
-
-FW.L.DI_GAIN = "%s got Divine Intervention.";
-FW.L.DI_FADE = "Divine Intervention faded from %s.";
-FW.L.SS_EXPIRE = "Soulstone expired on %s.";
-FW.L.SS_EXPIRE_YOUR = "Your Soulstone expired on %s.";
-FW.L.SS_EXPIRE_OTHER = "%s's Soulstone expired on %s.";
-FW.L.SS_DIED = "%s died with a Soulstone on.";
-FW.L.SS_DIED_YOUR = "%s died with your Soulstone on.";
-FW.L.SS_DIED_OTHER = "%s died with %s's Soulstone on.";
-
-FW.L.SHORT_READY = "rdy";
-FW.L.READY_TO_RES = "ready to res";
-FW.L.NO_SS_UP = "no ss up";
-
-FW.L.FLAG_SOULSTONE = "<Soulstone>";
-FW.L.FLAG_REBIRTH = "<Rebirth>";
-FW.L.FLAG_DIVINE_INTERVENTION = "<Divine Int>";
-FW.L.FLAG_ANKH = "<Ankh>";
-
-FW.L.DELAY_MAX_SS_BUFF = "Delay max soulstone buff";
-
 -- simple chinese
 elseif GetLocale() == "zhCN" then
-	FW.L.CREATE_SOULSTONE = "制造灵魂石";
 	FW.L.BUFF_SOULSTONE = "灵魂石复活";
 	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "救赎之魂";
 	FW.L.BUFF_DIVINE_INTERVENTION = "神圣干涉";
+-- tradition chinese
+elseif GetLocale() == "zhTW" then
+	FW.L.BUFF_SOULSTONE = "靈魂石復活";
+	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "救贖之魂";
+	FW.L.BUFF_DIVINE_INTERVENTION = "神聖干涉";
+-- ENGLISH
+else
+	FW.L.BUFF_SOULSTONE = "Soulstone Resurrection";
+	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "Spirit of Redemption";
+	FW.L.BUFF_DIVINE_INTERVENTION = "Divine Intervention";
+end
+
+
+-- simple chinese
+if GetLocale() == "zhCN" then
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -208,10 +93,6 @@ FW.L.DELAY_MAX_SS_BUFF = "灵魂石buff最大延迟";
 
 -- tradition chinese
 elseif GetLocale() == "zhTW" then
-	FW.L.CREATE_SOULSTONE = "製造靈魂石";
-	FW.L.BUFF_SOULSTONE = "靈魂石復活";
-	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "救贖之魂";
-	FW.L.BUFF_DIVINE_INTERVENTION = "神聖干涉";
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -258,11 +139,6 @@ FW.L.DELAY_MAX_SS_BUFF = "靈魂石buff最大延遲";
 
 -- ENGLISH
 else
-	FW.L.CREATE_SOULSTONE = "Create Soulstone";
-	FW.L.BUFF_SOULSTONE = "Soulstone Resurrection";
-	FW.L.BUFF_SPIRIT_OF_REDEMPTION = "Spirit of Redemption";
-	FW.L.BUFF_DIVINE_INTERVENTION = "Divine Intervention";
-
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
 FW.L.SOULSTONE_TRACKER = "Soulstone Tracker";
@@ -304,7 +180,4 @@ FW.L.FLAG_DIVINE_INTERVENTION = "<Divine Int>";
 FW.L.FLAG_ANKH = "<Ankh>";
 
 FW.L.DELAY_MAX_SS_BUFF = "Delay max soulstone buff";
-
 end
-
-

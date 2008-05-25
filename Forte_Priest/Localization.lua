@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -16,123 +16,21 @@
 -- FR missing
 if GetLocale() == "frFR" then
 
-FW.L.ABSOLUTION = "Absolution";
-FW.L.SHADOW_WORD_PAIN = "Shadow Word: Pain";
-FW.L.IMPROVED_SWP = "Improved Shadow Word: Pain";
-FW.L.VAMPIRIC_TOUCH = "Vampiric Touch";
-FW.L.VAMPIRIC_EMBRACE = "Vampiric Embrace";
-FW.L.SHADOW_WORD_DEATH = "Shadow Word: Death";
-FW.L.SHADOWFIEND = "Shadowfiend";
-FW.L.POWER_WORD_SHIELD = "Power Word: Shield";
-FW.L.WEAKENED_SOUL = "Weakened Soul";
-FW.L.PSYCHIC_SCREAM = "Psychic Scream";
-FW.L.SHACKLE_UNDEAD = "Shackle Undead";
-FW.L.MIND_SOOTHE = "Mind Soothe";
-FW.L.FADE = "Fade";
-
-FW.L.ESSENCE_OF_SAPPHIRON = "Essence of Sapphiron";
-FW.L.EPHEMERAL_POWER = "Ephemeral Power"
-FW.L.SPELL_HASTE = "Spell Haste";
-FW.L.UNSTABLE_POWER = "Unstable Power";
-FW.L.BLESSING_OF_THE_SILVER_CRESCENT = "Blessing of the Silver Crescent";
-FW.L.RECURRING_POWER = "Recurring Power";
-FW.L.CALL_OF_THE_NEXUS = "Call of the Nexus";
-FW.L.HEROISM = "Heroism";
-FW.L.BLOODLUST = "Bloodlust";
-FW.L.LESSER_SPELL_BLASTING = "Lesser Spell Blasting";
-FW.L.SPELL_BLASTING = "Spell Blasting";
-FW.L.UNSTABLE_CURRENTS = "Unstable Currents";
-FW.L.INFERNAL_POWER = "Infernal Power";
-FW.L.SHADOW_VULNERABILITY = "Shadow Vulnerability"
-FW.L.SPELL_POWER = "Spell Power"; -- Xi'ri's Gift
-FW.L.FEL_INFUSION = "Fel Infusion"; -- The Skull of Gul'dan
-FW.L.ARCANE_ENERGY = "Arcane Energy"; -- Vengeance of the Illidari
-FW.L.AURA_OF_THE_CRUSADE = "Aura of the Crusader";
-FW.L.BAND_OF_THE_ETERNAL_SAGE = "Band of the Eternal Sage";
-FW.L.MOJO_MADNESS = "Mojo Madness";
-FW.L.FOCUS = "Focus";
-
 -- DE missing
 elseif GetLocale() == "deDE" then
-
-FW.L.ABSOLUTION = "Absolution";
-FW.L.SHADOW_WORD_PAIN = "Shadow Word: Pain";
-FW.L.IMPROVED_SWP = "Improved Shadow Word: Pain";
-FW.L.VAMPIRIC_TOUCH = "Vampiric Touch";
-FW.L.VAMPIRIC_EMBRACE = "Vampiric Embrace";
-FW.L.SHADOW_WORD_DEATH = "Shadow Word: Death";
-FW.L.SHADOWFIEND = "Shadowfiend";
-FW.L.POWER_WORD_SHIELD = "Power Word: Shield";
-FW.L.WEAKENED_SOUL = "Weakened Soul";
-FW.L.PSYCHIC_SCREAM = "Psychic Scream";
-FW.L.SHACKLE_UNDEAD = "Shackle Undead";
-FW.L.MIND_SOOTHE = "Mind Soothe";
-FW.L.FADE = "Fade";
-
-FW.L.ESSENCE_OF_SAPPHIRON = "Essence of Sapphiron";
-FW.L.EPHEMERAL_POWER = "Ephemeral Power"
-FW.L.SPELL_HASTE = "Spell Haste";
-FW.L.UNSTABLE_POWER = "Unstable Power";
-FW.L.BLESSING_OF_THE_SILVER_CRESCENT = "Blessing of the Silver Crescent";
-FW.L.RECURRING_POWER = "Recurring Power";
-FW.L.CALL_OF_THE_NEXUS = "Call of the Nexus";
-FW.L.HEROISM = "Heroism";
-FW.L.BLOODLUST = "Bloodlust";
-FW.L.LESSER_SPELL_BLASTING = "Lesser Spell Blasting";
-FW.L.SPELL_BLASTING = "Spell Blasting";
-FW.L.UNSTABLE_CURRENTS = "Unstable Currents";
-FW.L.INFERNAL_POWER = "Infernal Power";
-FW.L.SHADOW_VULNERABILITY = "Shadow Vulnerability"
-FW.L.SPELL_POWER = "Spell Power"; -- Xi'ri's Gift
-FW.L.FEL_INFUSION = "Fel Infusion"; -- The Skull of Gul'dan
-FW.L.ARCANE_ENERGY = "Arcane Energy"; -- Vengeance of the Illidari
-FW.L.AURA_OF_THE_CRUSADE = "Aura of the Crusader";
-FW.L.BAND_OF_THE_ETERNAL_SAGE = "Band of the Eternal Sage";
-FW.L.MOJO_MADNESS = "Mojo Madness";
-FW.L.FOCUS = "Focus";	
-
+	
 -- SPANISH - mising
 elseif GetLocale() == "esES" then
 
-FW.L.ABSOLUTION = "Absolution";
-FW.L.SHADOW_WORD_PAIN = "Shadow Word: Pain";
-FW.L.IMPROVED_SWP = "Improved Shadow Word: Pain";
-FW.L.VAMPIRIC_TOUCH = "Vampiric Touch";
-FW.L.VAMPIRIC_EMBRACE = "Vampiric Embrace";
-FW.L.SHADOW_WORD_DEATH = "Shadow Word: Death";
-FW.L.SHADOWFIEND = "Shadowfiend";
-FW.L.POWER_WORD_SHIELD = "Power Word: Shield";
-FW.L.WEAKENED_SOUL = "Weakened Soul";
-FW.L.PSYCHIC_SCREAM = "Psychic Scream";
-FW.L.SHACKLE_UNDEAD = "Shackle Undead";
-FW.L.MIND_SOOTHE = "Mind Soothe";
-FW.L.FADE = "Fade";
+-- ENGLISH
+else	-- standard english version
 
-FW.L.ESSENCE_OF_SAPPHIRON = "Essence of Sapphiron";
-FW.L.EPHEMERAL_POWER = "Ephemeral Power"
-FW.L.SPELL_HASTE = "Spell Haste";
-FW.L.UNSTABLE_POWER = "Unstable Power";
-FW.L.BLESSING_OF_THE_SILVER_CRESCENT = "Blessing of the Silver Crescent";
-FW.L.RECURRING_POWER = "Recurring Power";
-FW.L.CALL_OF_THE_NEXUS = "Call of the Nexus";
-FW.L.HEROISM = "Heroism";
-FW.L.BLOODLUST = "Bloodlust";
-FW.L.LESSER_SPELL_BLASTING = "Lesser Spell Blasting";
-FW.L.SPELL_BLASTING = "Spell Blasting";
-FW.L.UNSTABLE_CURRENTS = "Unstable Currents";
-FW.L.INFERNAL_POWER = "Infernal Power";
-FW.L.SHADOW_VULNERABILITY = "Shadow Vulnerability"
-FW.L.SPELL_POWER = "Spell Power"; -- Xi'ri's Gift
-FW.L.FEL_INFUSION = "Fel Infusion"; -- The Skull of Gul'dan
-FW.L.ARCANE_ENERGY = "Arcane Energy"; -- Vengeance of the Illidari
-FW.L.AURA_OF_THE_CRUSADE = "Aura of the Crusader";
-FW.L.BAND_OF_THE_ETERNAL_SAGE = "Band of the Eternal Sage";
-FW.L.MOJO_MADNESS = "Mojo Madness";
-FW.L.FOCUS = "Focus";
+end
+
 
 
 -- simple chinese
-elseif GetLocale() == "zhCN" then
+if GetLocale() == "zhCN" then
 
 FW.L.ABSOLUTION = "赦免";
 FW.L.SHADOW_WORD_PAIN = "暗言术：痛";
@@ -219,7 +117,6 @@ FW.L.FADE = "漸隱術";
 
 -- ENGLISH
 else	-- standard english version
-
 FW.L.ABSOLUTION = "Absolution";
 FW.L.SHADOW_WORD_PAIN = "Shadow Word: Pain";
 FW.L.IMPROVED_SWP = "Improved Shadow Word: Pain";
@@ -253,9 +150,7 @@ FW.L.FEL_INFUSION = "Fel Infusion"; -- The Skull of Gul'dan
 FW.L.ARCANE_ENERGY = "Arcane Energy"; -- Vengeance of the Illidari
 FW.L.AURA_OF_THE_CRUSADE = "Aura of the Crusader";
 FW.L.BAND_OF_THE_ETERNAL_SAGE = "Band of the Eternal Sage";
-FW.L.POWER_OF_ARCANAGOS = "Power of Arcanagos";
 FW.L.MOJO_MADNESS = "Mojo Madness";
 FW.L.FOCUS = "Focus";
 
 end
-

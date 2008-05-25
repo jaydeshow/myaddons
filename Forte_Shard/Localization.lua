@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 
 --[[
 "frFR": French
@@ -16,62 +16,19 @@
 -- FR
 if GetLocale() == "frFR" then
 
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.GET_SH_UPDATE = "Get an update of warlock shard status now. Will only fully work when someone with the addon is promoted!";
-
-FW.L.SHARD_SPY = "Shard Spy";
-FW.L.LITTLE_SHARDS = "Little shards";
-FW.L.MANY_SHARDS = "Many shards";
-FW.L.UNKNOWN_N = "Unknown";
-
-FW.L.SH_ENABLE_TT = "Enable the Shard Spy.";
-
-FW.L.SHARD_CHECK_TIME = "Shard check";
-FW.L.SHARD_DRAW_INTERVAL = "Shard draw interval";
-
-FW.L._TOTAL = "%d total";
-
 -- DE 
 elseif GetLocale() == "deDE" then
-
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
-
-FW.L.GET_SH_UPDATE = "Get an update of warlock shard status now. Will only fully work when someone with the addon is promoted!";
-
-FW.L.SHARD_SPY = "Shard Spy";
-FW.L.LITTLE_SHARDS = "Little shards";
-FW.L.MANY_SHARDS = "Many shards";
-FW.L.UNKNOWN_N = "Unknown";
-
-FW.L.SH_ENABLE_TT = "Enable the Shard Spy.";
-
-FW.L.SHARD_CHECK_TIME = "Shard check";
-FW.L.SHARD_DRAW_INTERVAL = "Shard draw interval";
-
-FW.L._TOTAL = "%d total";
 
 -- SPANISH
 elseif GetLocale() == "esES" then
 
--- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
+-- ENGLISH
+else
 
-FW.L.GET_SH_UPDATE = "Get an update of warlock shard status now. Will only fully work when someone with the addon is promoted!";
-
-FW.L.SHARD_SPY = "Shard Spy";
-FW.L.LITTLE_SHARDS = "Little shards";
-FW.L.MANY_SHARDS = "Many shards";
-FW.L.UNKNOWN_N = "Unknown";
-
-FW.L.SH_ENABLE_TT = "Enable the Shard Spy.";
-
-FW.L.SHARD_CHECK_TIME = "Shard check";
-FW.L.SHARD_DRAW_INTERVAL = "Shard draw interval";
-
-FW.L._TOTAL = "%d total";
+end
 
 -- simple chinese
-elseif GetLocale() == "zhCN" then
+if GetLocale() == "zhCN" then
 
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
@@ -111,6 +68,7 @@ FW.L._TOTAL = "共有 %d";
 
 -- ENGLISH
 else
+
 -- THESE ARE INTERFACE STRINGS ONLY AND TRANSLATING THEM IS OPTIONAL
 
 FW.L.GET_SH_UPDATE = "Get an update of warlock shard status now. Will only fully work when someone with the addon is promoted!";
@@ -126,5 +84,5 @@ FW.L.SHARD_CHECK_TIME = "Shard check";
 FW.L.SHARD_DRAW_INTERVAL = "Shard draw interval";
 
 FW.L._TOTAL = "%d total";
-end
 
+end

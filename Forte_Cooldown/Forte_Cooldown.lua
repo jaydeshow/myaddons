@@ -1,4 +1,4 @@
--- Forte Class Addon v0.984 by Xus 23-03-2008 for Patch 2.3.x
+-- Forte Class Addon v0.985 by Xus 31-03-2008 for Patch 2.4.x
 local CD = FW:Module("Cooldown");
 local FW = FW;
 
@@ -629,7 +629,7 @@ local function CD_ScanBookCooldowns()
 	end
 end
 
-function FW:Test()
+--[[function FW:Test()
 	
 	for spell,data in pairs(FW.CooldownsPet) do
 		FW:Show("pet:"..spell..","..data[1]..","..data[2]..","..data[4]);
@@ -640,7 +640,7 @@ function FW:Test()
 	for spell,data in pairs(FW.CooldownsBuffs) do
 		FW:Show("cooldowns:"..spell..","..data[1]..","..data[2]..","..data[4]);
 	end
-end
+end]]
 
 local function CD_ScanBuffCooldowns()
 	local i;
@@ -712,7 +712,6 @@ function FW:CooldownOnload()
 	
 	FW:RegisterVariablesEvent(function()
 		FW:RegisterTimedEvent("AnimationInterval",	CD_CreateCooldowns);
-		FW:RegisterTimedEvent("CooldownBuffsInterval",	CD_ScanBuffCooldowns);
 	end);
 	
 	FW:RegisterToEvent("SPELL_UPDATE_COOLDOWN",	CD_ScanBookCooldowns);
@@ -721,7 +720,7 @@ function FW:CooldownOnload()
 	FW:RegisterToEvent("BAG_UPDATE_COOLDOWN",	CD_ScanBagCooldowns);
 	FW:RegisterToEvent("BAG_UPDATE",		CD_ScanBookCooldowns);
 	FW:RegisterToEvent("PLAYER_DEAD",		CD_ResTimerCooldown);
-	FW:RegisterToEvent("PLAYER_AURAS_CHANGED",	CD_ScanBuffCooldowns);
+	FW:RegisterToEvent("UNIT_AURA",			function () if arg1=="player" then CD_ScanBuffCooldowns();end end);
 
 	FW:RegisterFilterRefresh(function()
 		for i=1,FW:ROWS(cd),1 do
@@ -734,7 +733,7 @@ function FW:CooldownOnload()
 	end);
 	
 	-- will move these to class modules later
-	FW:RegisterCooldownPowerup(FW.L.THE_RESTRAINED_ESSENCE_OF_SAPPHIRON,FLAG_POWERUP);
+	FW:RegisterCooldownPowerup(FW.L.THE_RESTRAINED_ESSENCE_OF_SAPPHIRON);
 	FW:RegisterCooldownPowerup(FW.L.XIRIS_GIFT);
 	FW:RegisterCooldownPowerup(FW.L.ICON_OF_THE_SILVER_CRESCENT);
 	FW:RegisterCooldownPowerup(FW.L.THE_SKULL_OF_GULDAN);
@@ -793,10 +792,9 @@ FW:SetMainCategory(FW.L.COOLDOWN_TIMER,FW.ICON_CD,4,"COOLDOWN","FWCDFrame");
 		FW:RegisterOption(FW.FNT,2,FW.NON,FW.L.ICON_FONT,	FW.L.ICON_TEXT_TT,	"CooldownIconFont",		CD_CooldownShow);
 		FW:RegisterOption(FW.TXT,2,FW.NON,FW.L.BAR_TEXTURE,			"",	"CooldownTexture",		CD_CooldownShow);
 
-FW:SetMainCategory(FW.L.ADVANCED,FW.ICON_DEFAULT,99,"DEFAULT");
+--FW:SetMainCategory(FW.L.ADVANCED,FW.ICON_DEFAULT,99,"DEFAULT");
 
-	FW:SetSubCategory(FW.L.COOLDOWN_TIMER,FW.ICON_DEFAULT,2);
-		FW:RegisterOption(FW.NUM,1,FW.NON,FW.L.UPDATE_INTERVAL_BUFFS,		"",	"CooldownBuffsInterval");
+--	FW:SetSubCategory(FW.L.COOLDOWN_TIMER,FW.ICON_DEFAULT,2);
 
 FW.Default.Cooldown = true;
 FW.Default.CooldownWidth = 250;
@@ -817,7 +815,6 @@ FW.Default.CooldownMax = 300;
 FW.Default.CooldownDetail = false;
 FW.Default.CooldownIgnore = true;
 FW.Default.CooldownShowBuffs = false;
-FW.Default.CooldownBuffsInterval = 1;
 
 FW.Default.ColorCooldownText = 		{1.00,1.00,1.00,0.20};
 FW.Default.ColorCooldownIconText =	{1.00,1.00,1.00,0.00};
