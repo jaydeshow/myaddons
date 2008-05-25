@@ -1,0 +1,17 @@
+## Interface: 20400
+## Author: bigzero
+## Title: Mirror |cff7fff7f -Ace2-|r
+## Notes: Compare equipped inventory items with items in your bags/bank and item links.
+## Notes-zhTW: 簡易的將所看到的物品與目前自己身上所裝備的物品做比較
+## Version: 1.0
+## X-eMail: vinaur@gmail.com
+## X-Website: http://www.wowace.com
+## X-Category: Interface Enhancements
+## OptionalDeps: Ace2
+## X-Embeds: Ace2
+## SavedVariables: Mirror_hover
+
+embeds.xml
+
+Mirror.xml
+Mirror.lua
