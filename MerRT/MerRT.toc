@@ -1,8 +1,8 @@
 ﻿## Interface: 20400
-## Title: |cff3fff3f[DKP记录]|r 活动记录
-## Version: 3.0.1
-## Author: Mermaid
-## Notes: 纪录团队活动情况的插件
+## Title: |cff3fff3f[DKP记录]|r 建环之色父 修改版
+## Version: V3.0.3
+## Author: Mermaid(建环之色父修改)
+## Notes: 纪录团队Raid出席和物品拾取,导出团队列表到论坛.
 ## SavedVariables: Mer_RaidTracker
 MerRT.lua
 MerRT_GUI.xml
