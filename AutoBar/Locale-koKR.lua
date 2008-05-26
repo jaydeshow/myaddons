@@ -14,14 +14,14 @@ if (GetLocale() == "koKR") then
 		["EDITSLOT"] = "슬롯 편집",
 		["VIEWSLOT"] = "슬롯 보기",
 		["LOAD_ERROR"] = "|cff00ff00AutoBarConfig 모드를 불려오지 못해 오류가 발생했습니다. 당신이 그것을 다운로드하고 사용 가능하게 하십시오.|r 오류: ",
-		["Toggle the config panel"] = "설정 패널 열기",
+		["Toggle the config panel"] = "설정 창 열기",
 		["Empty"] = "빈창",
 
 		-- Waterfall
 		["Alpha"] = "투명도",
 		["Change the alpha of the bar."] = "바의 투명도를 변경합니다.",
 		["Add Button"] = "버튼 추가",
-		["Align Buttons"] = "버튼 순서 정렬",
+		["Align Buttons"] = "버튼 정렬",
 		["Always Show"] = "항상 표시";
 		["Always Show %s, even if empty."] = "빈창을 포함하여, 항상 %s|1을;를; 표시합니다.";
 		["Announce to Party"] = "파티에 알림",
@@ -81,9 +81,9 @@ if (GetLocale() == "koKR") then
 		["Non Combat Only"] = "비전투시만",
 		["Not directly usable"] = "직접 사용 불가",
 		["Number of columns for %s"] = "%s|1을;를; 위한 컬럼 숫자",
-		["Dropdown UI"] = "Dropdown UI",
-		["Options GUI"] = "Options GUI",
-		["Skin the Buttons"] = "Skin the Buttons",
+		["Dropdown UI"] = "드랍다운 UI",
+		["Options GUI"] = "GUI 옵션",
+		["Skin the Buttons"] = "버튼 스킨",
 		["Order"] = "순서",
 		["Change the order of %s in the Bar"] = "%s 바의 순서를 변경합니다.",
 		["Padding"] = "간격",
@@ -104,7 +104,7 @@ if (GetLocale() == "koKR") then
 		["RightClick SelfCast"] = "자신에게 시전 우클릭",
 		["SelfCast using Right click"] = "자신에게 시전을 우클릭으로 사용합니다.",
 		["Key Bindings"] = KEY_BINDINGS,
-		["Assign Bindings for Buttons on your Bars."] = "Assign Bindings for Buttons on your Bars.",
+		["Assign Bindings for Buttons on your Bars."] = "당신의 바 위의 버튼 단축키를 지정합니다.",
 		["Scale"] = "비율",
 		["Change the scale of the bar."] = "바의 비율을 변경합니다.",
 		["Shared Layout"] = "배치 공유",
@@ -119,15 +119,15 @@ if (GetLocale() == "koKR") then
 		["Show Count Text for %s"] = "%s|1을;를; 위해 갯수를 표시합니다.";
 		["Show Empty Buttons"] = "빈 버튼들 표시";
 		["Show Empty Buttons for %s"] = "%s|1을;를; 위한 빈 버튼 표시";
-		["Show Extended Tooltips"] = "Show Extended Tooltips";
+		["Show Extended Tooltips"] = "확장 툴팁 표시";
 		["Show Hotkey Text"] = "단축키 표시",
 		["Show Hotkey Text for %s"] = "%s|1을;를; 위해 단축키를 표시합니다.",
 		["Show Tooltips"] = "툴팁 표시";
 		["Show Tooltips for %s"] = "%s|1을;를; 위해 툴팁을 표시합니다.";
 		["Show Tooltips in Combat"] = "전투중 툴팁 표시";
-		["Shuffle"] = "Shuffle",
-		["Shuffle replaces depleted items during combat with the next best item"] = "Shuffle replaces depleted items during combat with the next best item",
-		["Snap Bars while moving"] = "바를 움직이는 동안 스냅 고정",
+		["Shuffle"] = "재편성",
+		["Shuffle replaces depleted items during combat with the next best item"] = "전투 상태시 해당 아이템을 모두 사용시 다음 가장 좋은 아이템으로 변경시킵니다.",
+		["Snap Bars while moving"] = "움직이는 동안 스냅 바",
 		["Sticky Frames"] = "접착 창",
 		["Style"] = "스타일",
 		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "바의 스타일을 변경합니다. non-Blizzard 스타일을 위해 ButtonFacade가 필요합니다.",
@@ -141,7 +141,7 @@ if (GetLocale() == "koKR") then
 		["{circle}"] = "{동그라미}",
 		["{diamond}"] = "{다이아몬드}",
 		["{skull}"] = "{해골}",
-		["{square}"] = "{square}",
+		["{square}"] = "{네모}",
 		["{star}"] = "{별}",
 		["{triangle}"] = "{세모}",
 
@@ -161,14 +161,14 @@ if (GetLocale() == "koKR") then
 --		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f더블-클릭|r GUI 설정창 열기.\n|cffeda55fCtrl-클릭|r 버튼 잠금 토글. |cffeda55fShift-클릭|r 바 자금 토글.",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
-		["Left-Click"] = "Left-Click",
-		["Right-Click"] = "Right-Click",
-		["Alt-Click"] = "Alt-Click",
-		["Ctrl-Click"] = "Ctrl-Click",
-		["Shift-Click"] = "Shift-Click",
-		["Ctrl-Shift-Click"] = "Ctrl-Shift-Click",
-		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade is required to Skin the Buttons",
-		["Waterfall-1.0 is required to access the GUI"] = "GUI 설정을 하기위해 Waterfall-1.0이 필요합니다",
+		["Left-Click"] = "좌-클릭",
+		["Right-Click"] = "우-클릭",
+		["Alt-Click"] = "Alt-클릭",
+		["Ctrl-Click"] = "Ctrl-클릭",
+		["Shift-Click"] = "Shift-클릭",
+		["Ctrl-Shift-Click"] = "Ctrl-Shift-클릭",
+		["ButtonFacade is required to Skin the Buttons"] = "버튼에 스킨을 적용하기 위해 ButtonFacade가 필요합니다.",
+		["Waterfall-1.0 is required to access the GUI"] = "GUI 설정을 위해 Waterfall-1.0이 필요합니다.",
 
 		-- Bar Names
 		["AutoBarClassBarBasic"] = "기본",
@@ -324,7 +324,7 @@ if (GetLocale() == "koKR") then
 		["AUTOBAR_CONFIG_USEBASIC"] = "기본 배치 사용";
 		["AUTOBAR_CONFIG_HIDECONFIGTOOLTIPS"] = "설정 툴팁 숨김";
 		["AUTOBAR_CONFIG_OSKIN"] = "oSkin 사용";
-		["Log Events"] = "Log Events";
+		["Log Events"] = "이벤트 기록";
 		["Log Performance"] = "기록 실행";
 		["AUTOBAR_CONFIG_CHARACTERLAYOUT"] = "캐릭터 배치";
 		["AUTOBAR_CONFIG_SHAREDLAYOUT"] = "공유 배치";
@@ -336,7 +336,7 @@ if (GetLocale() == "koKR") then
 		["AUTOBAR_CONFIG_EDITSHARED"] = "공유 배치 편집";
 		["AUTOBAR_CONFIG_EDITCLASS"] = "직업 배치 편집";
 		["AUTOBAR_CONFIG_EDITBASIC"] = "기본 배치 편집";
-		["Share the config"] = "Share the config";
+		["Share the config"] = "설정 공유";
 
 		-- AutoBarCategory
 		["Misc.Engineering.Fireworks"] = "폭죽",
@@ -384,7 +384,7 @@ if (GetLocale() == "koKR") then
 		["Consumable.Buff.Shield"] = "버프: 방패";
 		["Consumable.Weapon Buff"] = "버프: 무기";
 
-		["Misc.Usable.BossItem"] = "Boss Items";
+		["Misc.Usable.BossItem"] = "우두머리 아이템";
 		["Misc.Usable.Permanent"] = "계속 사용 가능한 아이템";
 		["Misc.Usable.Quest"] = "사용 가능한 퀘스트 아이템";
 		["Misc.Usable.Replenished"] = "보충된 아이템";

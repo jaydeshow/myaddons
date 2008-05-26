@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -89,7 +89,7 @@ function AutoBarButton.prototype:DropObject()
 	local toObject = self
 	local fromObject = AutoBar:GetDraggingObject()
 	local refreshNeeded
---AutoBar:Print("AutoBarButton.prototype:DropObject " .. tostring(fromObject and fromObject.buttonName or "none") .. " --> " .. tostring(toObject.buttonName))
+--AutoBar:Print("AutoBarButton.prototype:DropObject " .. tostring(fromObject and fromObject.buttonDB.buttonKey or "none") .. " --> " .. tostring(toObject.buttonDB.buttonKey))
 	if (fromObject and fromObject ~= toObject and AutoBar.unlockButtons) then
 		AutoBar:ButtonMove(fromObject.parentBar.barKey, fromObject.order, toObject.parentBar.barKey, toObject.order)
 		AutoBar:BarButtonChanged()
@@ -118,7 +118,7 @@ end
 
 -- Set the state attributes of the button
 function AutoBarButton.prototype:SetupButton()
-	local buttonName = self.buttonName
+	local buttonName = self.buttonDB.buttonKey
 	local frame = self.frame
 
 	local bag, slot, spell, itemId, macroId = AutoBarSearch.sorted:GetInfo(buttonName, 1)
@@ -289,7 +289,7 @@ function AutoBarButton.prototype:SetupButton()
 			frame:SetAttribute("showstates", "*")
 			frame:SetAttribute("hidestates", nil)
 			if (self[1]) then
---AutoBar:Print("AutoBarButton.prototype:SetupButton buttonName " .. tostring(self.buttonName) .. " self[1] ".. tostring(self[1]))
+--AutoBar:Print("AutoBarButton.prototype:SetupButton buttonName " .. tostring(self.buttonDB.buttonKey) .. " self[1] ".. tostring(self[1]))
 				frame:SetAttribute("category", self[# self])
 			else
 				frame:SetAttribute("category", nil)
@@ -297,7 +297,7 @@ function AutoBarButton.prototype:SetupButton()
 		else
 			frame:SetAttribute("category", nil)
 		end
---AutoBar:Print("AutoBarButton.prototype:SetupButton buttonName " .. tostring(self.buttonName) .. " category ".. tostring(frame:GetAttribute("category")))
+--AutoBar:Print("AutoBarButton.prototype:SetupButton buttonKey " .. tostring(self.buttonDB.buttonKey) .. " category ".. tostring(frame:GetAttribute("category")))
 	end
 end
 --/dump (# AutoBarSearch.sorted:GetList("AutoBarButtonRecovery"))
@@ -361,7 +361,7 @@ function AutoBarButton.prototype:SetupAttributes(button, bag, slot, spell, macro
 
 	local enabled = true
 	frame.needsTooltip = true
-	local buttonName = self.buttonName
+	local buttonName = self.buttonDB.buttonKey
 	local category = itemData and itemData.category
 
 	frame:SetAttribute("category", category)
@@ -635,7 +635,7 @@ function AutoBarButton:SetTooltip(button)
 			if (itemLink) then
 				local itemId = self:GetAttribute("itemId")
 				local bag, slot = AutoBarSearch.found:GetItemData(itemId)
---AutoBar:Print("AutoBarButton:SetTooltip self.class.buttonName " .. tostring(self.class.buttonName) .. " itemId " .. tostring(itemId) .. " bag " .. tostring(bag) .. " slot " .. tostring(slot))
+--AutoBar:Print("AutoBarButton:SetTooltip self.class.buttonDB.buttonKey " .. tostring(self.class.buttonDB.buttonKey) .. " itemId " .. tostring(itemId) .. " bag " .. tostring(bag) .. " slot " .. tostring(slot))
 				if (bag and slot) then
 					GameTooltip:SetBagItem(bag, slot)
 				elseif (slot) then
@@ -763,7 +763,7 @@ end
 
 -- Set the state attributes of the button
 function AutoBarButtonMacro.prototype:SetupButton()
-	local buttonName = self.buttonName
+	local buttonName = self.buttonDB.buttonKey
 	local frame = self.frame
 
 	if (self.macroText and self.buttonDB.enabled) then
@@ -1769,6 +1769,9 @@ function AutoBarButtonRotationDrums.prototype:IsActive()
 	if (not self.buttonDB.enabled) then
 		return false
 	end
+	if (AutoBar.db.account.showEmptyButtons or AutoBar.unlockButtons or self.buttonDB.alwaysShow or not self.parentBar.sharedLayoutDB.collapseButtons) then --or AutoBar.keyBoundMode
+		return true
+	end
 	local count = GetItemCount(29529)
 	return count > 0
 end
@@ -2053,6 +2056,11 @@ function AutoBarButtonSting.prototype:init(parentBar, buttonDB)
 end
 
 
+local totemAir = 4
+local totemEarth = 2
+local totemFire = 1
+local totemWater = 3
+
 local AutoBarButtonTotemAir = AceOO.Class(AutoBarButton)
 AutoBar.Class["AutoBarButtonTotemAir"] = AutoBarButtonTotemAir
 
@@ -2062,6 +2070,30 @@ function AutoBarButtonTotemAir.prototype:init(parentBar, buttonDB)
 	self:AddCategory("Spell.Totem.Air")
 end
 
+-- Set cooldown based on the deployed totem
+function AutoBarButtonTotemAir.prototype:UpdateCooldown()
+	local itemType = self.frame:GetAttribute("*type1")
+	if (itemType and not self.parentBar.faded) then
+		local start, duration, enabled = 0, 0, 1
+		local totemName
+		_, totemName, start, duration = GetTotemInfo(totemAir)
+
+		if (start and duration and enabled and start > 0 and duration > 0) then
+			self.frame.cooldown:Show() -- IS this necessary?
+			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
+		else
+			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)
+		end
+
+		local popupHeader = self.frame.popupHeader
+		if (popupHeader) then
+			for popupButtonIndex, popupButton in pairs(popupHeader.popupButtonList) do
+				popupButton:UpdateCooldown()
+			end
+		end
+	end
+end
+-- /script CooldownFrame_SetTimer(AutoBarButtonTotemAirFrame.cooldown, 0, 0, 0)
 
 local AutoBarButtonTotemEarth = AceOO.Class(AutoBarButton)
 AutoBar.Class["AutoBarButtonTotemEarth"] = AutoBarButtonTotemEarth
@@ -2070,6 +2102,30 @@ function AutoBarButtonTotemEarth.prototype:init(parentBar, buttonDB)
 	AutoBarButtonTotemEarth.super.prototype.init(self, parentBar, buttonDB)
 
 	self:AddCategory("Spell.Totem.Earth")
+end
+
+-- Set cooldown based on the deployed totem
+function AutoBarButtonTotemEarth.prototype:UpdateCooldown()
+	local itemType = self.frame:GetAttribute("*type1")
+	if (itemType and not self.parentBar.faded) then
+		local start, duration, enabled = 0, 0, 1
+		local totemName
+		_, totemName, start, duration = GetTotemInfo(totemEarth)
+
+		if (start and duration and enabled and start > 0 and duration > 0) then
+			self.frame.cooldown:Show() -- IS this necessary?
+			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
+		else
+			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)
+		end
+
+		local popupHeader = self.frame.popupHeader
+		if (popupHeader) then
+			for popupButtonIndex, popupButton in pairs(popupHeader.popupButtonList) do
+				popupButton:UpdateCooldown()
+			end
+		end
+	end
 end
 
 
@@ -2082,6 +2138,30 @@ function AutoBarButtonTotemFire.prototype:init(parentBar, buttonDB)
 	self:AddCategory("Spell.Totem.Fire")
 end
 
+-- Set cooldown based on the deployed totem
+function AutoBarButtonTotemFire.prototype:UpdateCooldown()
+	local itemType = self.frame:GetAttribute("*type1")
+	if (itemType and not self.parentBar.faded) then
+		local start, duration, enabled = 0, 0, 1
+		local totemName
+		_, totemName, start, duration = GetTotemInfo(totemFire)
+
+		if (start and duration and enabled and start > 0 and duration > 0) then
+			self.frame.cooldown:Show() -- IS this necessary?
+			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
+		else
+			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)
+		end
+
+		local popupHeader = self.frame.popupHeader
+		if (popupHeader) then
+			for popupButtonIndex, popupButton in pairs(popupHeader.popupButtonList) do
+				popupButton:UpdateCooldown()
+			end
+		end
+	end
+end
+
 
 local AutoBarButtonTotemWater = AceOO.Class(AutoBarButton)
 AutoBar.Class["AutoBarButtonTotemWater"] = AutoBarButtonTotemWater
@@ -2090,6 +2170,30 @@ function AutoBarButtonTotemWater.prototype:init(parentBar, buttonDB)
 	AutoBarButtonTotemWater.super.prototype.init(self, parentBar, buttonDB)
 
 	self:AddCategory("Spell.Totem.Water")
+end
+
+-- Set cooldown based on the deployed totem
+function AutoBarButtonTotemWater.prototype:UpdateCooldown()
+	local itemType = self.frame:GetAttribute("*type1")
+	if (itemType and not self.parentBar.faded) then
+		local start, duration, enabled = 0, 0, 1
+		local totemName
+		_, totemName, start, duration = GetTotemInfo(totemWater)
+
+		if (start and duration and enabled and start > 0 and duration > 0) then
+			self.frame.cooldown:Show() -- IS this necessary?
+			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
+		else
+			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)
+		end
+
+		local popupHeader = self.frame.popupHeader
+		if (popupHeader) then
+			for popupButtonIndex, popupButton in pairs(popupHeader.popupButtonList) do
+				popupButton:UpdateCooldown()
+			end
+		end
+	end
 end
 
 

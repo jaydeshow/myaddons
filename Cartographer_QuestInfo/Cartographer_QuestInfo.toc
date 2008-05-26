@@ -1,13 +1,13 @@
-﻿## Interface: 20400
+## Interface: 20400
 ## Title: Cartographer [|cffeda55fQuestInfo|r]
 ## Notes: Quest Library for mob location and other information
 ## Title-zhCN: |cFF00FF00[地图]|r任务资料 Cartographer [|cffeda55fQuestInfo|r]
 ## Notes-zhCN: 制图大师的配件，提供任务资料库
 ## Title-zhTW: |cFF00FF00[地圖]|r任務資訊 Cartographer [|cffeda55fQuestInfo|r]
 ## Notes-zhTW: 製圖大師模組，提供任務資料庫功能
-## Author: lahow
+## Author: lahow (aka purple@bahamut)
 ## SavedVariables: Cartographer_QuestInfoDB
-## Version: 2.4.2.0524
+## Version: 2.4.2.0526
 ## X-Category: Map
 ## X-eMail: lahow DOT studio AT gmail DOT com
 ## X-Embeds: LibQuixote-2.0, LibGratuity-3.0

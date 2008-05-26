@@ -1,4 +1,41 @@
 ------------------------------------------------------------------------
+r75174 | ananhaid | 2008-05-26 05:51:10 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Kalecgos.lua
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+   M /trunk/BigWigs/Sunwell/Muru.lua
+   M /trunk/BigWigs/Sunwell/Twins.lua
+
+BigWigs: 
+- zhCN update.(and removed zhCN useless notes)
+------------------------------------------------------------------------
+r75144 | cwdg | 2008-05-25 21:54:56 -0400 (Sun, 25 May 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: 
+- add zhCN locale for KilJaeden
+------------------------------------------------------------------------
+r75138 | funkydude | 2008-05-25 19:21:06 -0400 (Sun, 25 May 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Felmyst.lua
+
+BigWigs: Sunwell/Felmyst: fix icon on encapsulated player
+------------------------------------------------------------------------
+r75137 | funkydude | 2008-05-25 19:19:31 -0400 (Sun, 25 May 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Outland/Magtheridon.lua
+
+BigWigs: Outland/Magtheridon: Start early if we kill the dudes early
+------------------------------------------------------------------------
+r75108 | pettigrow | 2008-05-25 12:08:43 -0400 (Sun, 25 May 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Hyjal/Archimonde.lua
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+   M /trunk/BigWigs/TheEye/Reaver.lua
+
+BigWigs: frFR Update
+------------------------------------------------------------------------
 r75016 | 7destiny | 2008-05-24 06:25:01 -0400 (Sat, 24 May 2008) | 3 lines
 Changed paths:
    M /trunk/BigWigs/Sunwell/KilJaeden.lua
@@ -500,211 +537,4 @@ Changed paths:
 
 BigWigs:
 - Update zhTW localization.
-------------------------------------------------------------------------
-r71258 | Carlos | 2008-04-24 12:32:08 -0400 (Thu, 24 Apr 2008) | 4 lines
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/BigWigs_BlackTemple.toc
-   M /trunk/BigWigs/Extras/BigWigs_Extras.toc
-   M /trunk/BigWigs/Hyjal/BigWigs_Hyjal.toc
-   M /trunk/BigWigs/Karazhan/BigWigs_Karazhan.toc
-   M /trunk/BigWigs/Outland/BigWigs_Outland.toc
-   M /trunk/BigWigs/Plugins/BigWigs_Plugins.toc
-   M /trunk/BigWigs/SC/BigWigs_SC.toc
-   M /trunk/BigWigs/Sunwell/BigWigs_Sunwell.toc
-   M /trunk/BigWigs/TheEye/BigWigs_TheEye.toc
-   M /trunk/BigWigs/ZulAman/BigWigs_ZulAman.toc
-
-BigWigs: full Spanish (esES) localization of module TOC files.
-
-This should be the last Commit of the whole esES localization changes. I'm done!
-(Except for future updates)
-------------------------------------------------------------------------
-r71255 | scorpio0920 | 2008-04-24 12:10:15 -0400 (Thu, 24 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/Council.lua
-   M /trunk/BigWigs/BlackTemple/Gurtogg.lua
-   M /trunk/BigWigs/BlackTemple/Illidan.lua
-   M /trunk/BigWigs/BlackTemple/Najentus.lua
-   M /trunk/BigWigs/BlackTemple/Shahraz.lua
-   M /trunk/BigWigs/BlackTemple/Souls.lua
-   M /trunk/BigWigs/BlackTemple/Supremus.lua
-   M /trunk/BigWigs/BlackTemple/Teron.lua
-   M /trunk/BigWigs/Hyjal/Anetheron.lua
-   M /trunk/BigWigs/Hyjal/Archimonde.lua
-   M /trunk/BigWigs/Hyjal/Azgalor.lua
-   M /trunk/BigWigs/Hyjal/HyjalSummit.lua
-   M /trunk/BigWigs/Hyjal/Kazrogal.lua
-   M /trunk/BigWigs/Hyjal/Winterchill.lua
-   M /trunk/BigWigs/Outland/Doomwalker.lua
-   M /trunk/BigWigs/Outland/Gruul.lua
-   M /trunk/BigWigs/Outland/Kazzak.lua
-   M /trunk/BigWigs/Outland/Magtheridon.lua
-   M /trunk/BigWigs/Outland/Maulgar.lua
-   M /trunk/BigWigs/SC/Hydross.lua
-   M /trunk/BigWigs/SC/Karathress.lua
-   M /trunk/BigWigs/SC/Leotheras.lua
-   M /trunk/BigWigs/SC/Lurker.lua
-   M /trunk/BigWigs/SC/Morogrim.lua
-   M /trunk/BigWigs/SC/Vashj.lua
-   M /trunk/BigWigs/Sunwell/Brutallus.lua
-   M /trunk/BigWigs/Sunwell/Felmyst.lua
-   M /trunk/BigWigs/Sunwell/Kalecgos.lua
-   M /trunk/BigWigs/Sunwell/Muru.lua
-   M /trunk/BigWigs/Sunwell/Twins.lua
-   M /trunk/BigWigs/TheEye/Alar.lua
-   M /trunk/BigWigs/TheEye/Kaelthas.lua
-   M /trunk/BigWigs/TheEye/Reaver.lua
-   M /trunk/BigWigs/TheEye/Solarian.lua
-   M /trunk/BigWigs/ZulAman/Akil'zon.lua
-   M /trunk/BigWigs/ZulAman/Halazzi.lua
-   M /trunk/BigWigs/ZulAman/Jan'alai.lua
-   M /trunk/BigWigs/ZulAman/Malacrass.lua
-   M /trunk/BigWigs/ZulAman/Nalorakk.lua
-   M /trunk/BigWigs/ZulAman/Zul'jin.lua
-
-BigWigs:
-- Update zhTW localization.
-------------------------------------------------------------------------
-r71220 | Carlos | 2008-04-24 05:50:09 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/BigWigs.toc
-   M /trunk/BigWigs/Core.lua
-   M /trunk/BigWigs/Options.lua
-   M /trunk/BigWigs/Prototype.lua
-
-BigWigs: full Spanish (esES) localization review for core files and TOC.
-------------------------------------------------------------------------
-r71219 | Carlos | 2008-04-24 05:46:31 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Extras/Version.lua
-
-BigWigs: full Spanish (esES) localization review for Version.lua.
-------------------------------------------------------------------------
-r71217 | Carlos | 2008-04-24 05:34:17 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Plugins/Bars.lua
-   M /trunk/BigWigs/Plugins/BossBlock.lua
-   M /trunk/BigWigs/Plugins/Colors.lua
-   M /trunk/BigWigs/Plugins/Messages.lua
-   M /trunk/BigWigs/Plugins/RaidIcon.lua
-   M /trunk/BigWigs/Plugins/RaidWarn.lua
-   M /trunk/BigWigs/Plugins/Sound.lua
-
-BigWigs: full Spanish (esES) localization review/creation for Plugins.
-------------------------------------------------------------------------
-r71216 | Carlos | 2008-04-24 05:31:49 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Extras/CustomBar.lua
-   M /trunk/BigWigs/Extras/Flash.lua
-   M /trunk/BigWigs/Extras/Test.lua
-   M /trunk/BigWigs/Extras/Tranq.lua
-
-BigWigs: full Spanish (esES) localization review/creation for Extras.
-------------------------------------------------------------------------
-r71215 | Carlos | 2008-04-24 05:28:20 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/ZulAman/Akil'zon.lua
-   M /trunk/BigWigs/ZulAman/Halazzi.lua
-   M /trunk/BigWigs/ZulAman/Jan'alai.lua
-   M /trunk/BigWigs/ZulAman/Malacrass.lua
-   M /trunk/BigWigs/ZulAman/Nalorakk.lua
-   M /trunk/BigWigs/ZulAman/Zul'jin.lua
-
-BigWigs: full Spanish (esES) localization review/creation for Zul'Aman.
-------------------------------------------------------------------------
-r71214 | Carlos | 2008-04-24 05:26:46 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/TheEye/Alar.lua
-   M /trunk/BigWigs/TheEye/Kaelthas.lua
-   M /trunk/BigWigs/TheEye/Reaver.lua
-   M /trunk/BigWigs/TheEye/Solarian.lua
-
-BigWigs: full Spanish (esES) localization for TheEye.
-------------------------------------------------------------------------
-r71213 | Carlos | 2008-04-24 05:25:26 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Brutallus.lua
-   M /trunk/BigWigs/Sunwell/Felmyst.lua
-   M /trunk/BigWigs/Sunwell/Kalecgos.lua
-   M /trunk/BigWigs/Sunwell/Muru.lua
-   M /trunk/BigWigs/Sunwell/Twins.lua
-
-BigWigs: full Spanish (esES) localization for Sunwell.
-------------------------------------------------------------------------
-r71211 | Carlos | 2008-04-24 05:15:45 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/SC/Hydross.lua
-   M /trunk/BigWigs/SC/Karathress.lua
-   M /trunk/BigWigs/SC/Leotheras.lua
-   M /trunk/BigWigs/SC/Lurker.lua
-   M /trunk/BigWigs/SC/Morogrim.lua
-   M /trunk/BigWigs/SC/Vashj.lua
-
-BigWigs: full Spanish (esES) localization for SC.
-------------------------------------------------------------------------
-r71210 | Carlos | 2008-04-24 05:11:10 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Outland/Doomwalker.lua
-   M /trunk/BigWigs/Outland/Gruul.lua
-   M /trunk/BigWigs/Outland/Kazzak.lua
-   M /trunk/BigWigs/Outland/Magtheridon.lua
-   M /trunk/BigWigs/Outland/Maulgar.lua
-
-BigWigs: full Spanish (esES) localization review/creation for Outland bosses.
-------------------------------------------------------------------------
-r71208 | Carlos | 2008-04-24 05:03:33 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Karazhan/Attumen.lua
-   M /trunk/BigWigs/Karazhan/Curator.lua
-   M /trunk/BigWigs/Karazhan/Hyakiss.lua
-   M /trunk/BigWigs/Karazhan/Maiden.lua
-   M /trunk/BigWigs/Karazhan/Malchezaar.lua
-   M /trunk/BigWigs/Karazhan/Moroes.lua
-   M /trunk/BigWigs/Karazhan/Netherspite.lua
-   M /trunk/BigWigs/Karazhan/Nightbane.lua
-   M /trunk/BigWigs/Karazhan/RomuloJulianne.lua
-   M /trunk/BigWigs/Karazhan/ShadeOfAran.lua
-   M /trunk/BigWigs/Karazhan/Terestian.lua
-   M /trunk/BigWigs/Karazhan/TheBigBadWolf.lua
-   M /trunk/BigWigs/Karazhan/WizardofOz.lua
-
-BigWigs: full Spanish (esES) localization review for Karazhan.
-------------------------------------------------------------------------
-r71207 | Carlos | 2008-04-24 04:51:20 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Hyjal/Anetheron.lua
-   M /trunk/BigWigs/Hyjal/Archimonde.lua
-   M /trunk/BigWigs/Hyjal/Azgalor.lua
-   M /trunk/BigWigs/Hyjal/HyjalSummit.lua
-   M /trunk/BigWigs/Hyjal/Kazrogal.lua
-   M /trunk/BigWigs/Hyjal/Winterchill.lua
-
-BigWigs: full Spanish (esES) localization for Hyjal.
-------------------------------------------------------------------------
-r71206 | Carlos | 2008-04-24 04:48:18 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/Council.lua
-   M /trunk/BigWigs/BlackTemple/Gurtogg.lua
-   M /trunk/BigWigs/BlackTemple/Illidan.lua
-   M /trunk/BigWigs/BlackTemple/Najentus.lua
-   M /trunk/BigWigs/BlackTemple/Shahraz.lua
-   M /trunk/BigWigs/BlackTemple/Souls.lua
-   M /trunk/BigWigs/BlackTemple/Supremus.lua
-   M /trunk/BigWigs/BlackTemple/Teron.lua
-
-BigWigs: full Spanish (esES) localization for BlackTemple.
-------------------------------------------------------------------------
-r71146 | gamefaq | 2008-04-23 17:38:48 -0400 (Wed, 23 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Brutallus.lua
-   M /trunk/BigWigs/Sunwell/Kalecgos.lua
-
-BigWigs: deDE Update
-------------------------------------------------------------------------
-r71029 | jerry | 2008-04-23 02:44:06 -0400 (Wed, 23 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/Extras/Flash.lua
-
-BigWigs: Replace the call to UIFrameFlash() with a custom implementation, removing the cause of taint. Thanks to Rabbit and Xinhuan.
-
 ------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 70265 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 75117 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then
 	_G.ThreatLib_MINOR_VERSION = MINOR_VERSION
@@ -133,7 +133,12 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 		8092, 8102, 8103, 8104, 8105, 8106, 10945, 10946, 10947, 25372, 25375,
 		
 		-- Mind Control
-		605, 10911, 10912,
+		--605, 10911, 10912,
+		-- No known testing is done to conclude Mind Control threat values
+		-- Closest is http://elitistjerks.com/f31/t23307-priest_mind_control_threat_testing/
+		-- which is highly inconclusive. Wowwiki says "To this date it is not clear
+		-- precisely how much threat Mind Control causes, but it is very substantial"
+		-- MC threat is not a flat 5500 threat as Satrina's guide says.
 		
 		-- Mind Flay
 		15407, 17311, 17312, 17313, 17314, 18807, 25387,
@@ -166,7 +171,7 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 		2652, 19261, 19262, 19264, 19265, 19266, 25461
 	}
 
-	local MindControlThreat = {nil, nil, 5500}
+	--local MindControlThreat = {nil, nil, 5500}
 	
 	local threatAmounts = {
 		["reflectiveshield"] = 0,

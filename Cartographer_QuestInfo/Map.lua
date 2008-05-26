@@ -1,5 +1,5 @@
 local CQI = Cartographer_QuestInfo
-local L = AceLibrary("AceLocale-2.2"):new("Cartographer_QuestInfo")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 
 local BZR = LibStub("LibBabble-Zone-3.0"):GetReverseLookupTable()
 local Dewdrop = AceLibrary("Dewdrop-2.0");
@@ -161,10 +161,12 @@ function CQI:ToggleCartoButton(mode)
 		if not CQI_BUTTON then
 			CQI_BUTTON = self:CreateCartoButton()
 		end
+	    CQI_BUTTON:Show()
 		C:AddMapButton(CQI_BUTTON, -2)
 	else
 		if CQI_BUTTON then
 		    C:RemoveMapButton(CQI_BUTTON)
+		    CQI_BUTTON:Hide()
 		end
 	end
 	if not mode then
@@ -298,7 +300,7 @@ function CQI:BatchShowAvialableQuests()
 				table.insert(quests, string.format("|cff%02x%02x%02x%s|r", r * 0xff, g * 0xff, b * 0xff, title))
 			elseif _aq.retry < 15 then
 				_aq.retry = _aq.retry + 1
-				self:ScheduleEvent("CQI-BatchShowAvialableQuests", self.BatchShowAvialableQuests, _aq.retry / 2, self)
+				self:AddTimer("CQI-BatchShowAvialableQuests", _aq.retry / 2, self.BatchShowAvialableQuests, self)
 				return
 			end
 		end
@@ -357,7 +359,7 @@ function CQI:ShowAvialableQuests()
 	end
 
 	if next(npcs) then
-		self:CancelScheduledEvent("CQI-BatchShowAvialableQuests")
+		self:RemoveTimer("CQI-BatchShowAvialableQuests")
 		self:BatchShowAvialableQuests()
 	end
 end

@@ -1,5 +1,5 @@
 local CQI = Cartographer_QuestInfo
-local L = AceLibrary("AceLocale-2.2"):new("Cartographer_QuestInfo")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 
 local Tablet = AceLibrary("Tablet-2.0")
 
@@ -17,9 +17,9 @@ local _sc_retry = 0
 
 function CQI:OpenSeriesFrame(map)
 	INFO = INFO ~= map and map or nil
-	self:CancelScheduledEvent("CQI-UpdateSeriesFrame")
+	self:RemoveTimer("CQI-UpdateSeriesFrame")
 	_sc_retry = 0
-	self:ScheduleEvent("CQI-UpdateSeriesFrame", self.UpdateSeriesFrame, 0, self)
+	self:AddTimer("CQI-UpdateSeriesFrame", 0, self.UpdateSeriesFrame, self)
 end
 
 function CQI:CloseSeriesFrame()
@@ -101,7 +101,7 @@ function CQI:UpdateSeriesContent()
 
 	if has_unknown and _sc_retry < 15 then
 		_sc_retry = _sc_retry + 1
-		self:ScheduleEvent("CQI-UpdateSeriesFrame", self.UpdateSeriesFrame, _sc_retry, self)
+		self:AddTimer("CQI-UpdateSeriesFrame", _sc_retry, self.UpdateSeriesFrame, self)
 	end
 end
 
@@ -167,7 +167,7 @@ function CQI:BatchShowInfoTooltip()
 
 	if has_unknown and _it.retry < 15 then
 		_it.retry  = _it.retry + 1
-		self:ScheduleEvent("CQI-BatchShowInfoTooltip", self.BatchShowInfoTooltip, _it.retry / 2, self)
+		self:AddTimer("CQI-BatchShowInfoTooltip", _it.retry / 2, self.BatchShowInfoTooltip, self)
 	end
 end
 
@@ -177,7 +177,7 @@ function CQI:OnInfoTooltip(q)
 		if not q then return end
 	end
 
-	self:CancelScheduledEvent("CQI-BatchShowInfoTooltip")
+	self:RemoveTimer("CQI-BatchShowInfoTooltip")
 	_it = {}
 	_it.this = this
 	_it.retry = 0

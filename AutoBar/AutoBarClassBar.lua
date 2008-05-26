@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -59,7 +59,7 @@ AutoBar.Class.Bar = AceOO.Class("AceEvent-2.0")
 function AutoBar.Class.Bar.prototype:DropObject()
 	local toObject = self
 	local fromObject = AutoBar:GetDraggingObject()
---AutoBar:Print("AutoBar.Class.Bar.prototype:DropObject " .. tostring(fromObject and fromObject.buttonName or "none") .. " --> " .. tostring(toObject.buttonName))
+--AutoBar:Print("AutoBar.Class.Bar.prototype:DropObject " .. tostring(fromObject and fromObject.buttonDB.buttonKey or "none") .. " --> " .. tostring(toObject.buttonDB.buttonKey))
 	if (fromObject and AutoBar.unlockButtons) then
 		local targetButton = # self.buttonList + 1
 		AutoBar:ButtonMove(fromObject.parentBar.barKey, fromObject.order, self.barKey, targetButton)
@@ -160,7 +160,7 @@ function AutoBar.Class.Bar.prototype:CreateBarFrame()
 		group.SkinID = self.sharedLayoutDB.SkinID or "Blizzard"
 		group.Backdrop = self.sharedLayoutDB.Backdrop
 		group.Gloss = self.sharedLayoutDB.Gloss
-		group.Colors = self.sharedLayoutDB.Colors
+		group.Colors = self.sharedLayoutDB.Colors or {}
 	end
 end
 -- /dump LibStub("LibButtonFacade",true):ListSkins()
@@ -252,7 +252,9 @@ end
 --/dump AutoBar.buttonList["CustomButton28"]:IsActive()
 --/dump AutoBar.buttonListDisabled["CustomButton30"]:IsActive()
 --/script AutoBar.buttonListDisabled["CustomButton30"].frame:Show()
---/dump AutoBar.barList["AutoBarClassBarExtras"].buttonList[2].buttonName
+--/dump AutoBar.barList["AutoBarClassBarExtras"].buttonList[2].buttonDB.buttonKey
+--/dump AutoBar.barList["AutoBarClassBarExtras"].buttonList[2]:IsActive()
+--/dump # AutoBar.barList["AutoBarClassBarExtras"].activeButtonList
 --/dump AutoBar.barList["AutoBarClassBarDruid"].buttonList
 --/script AutoBar.barList["AutoBarClassBarBasic"]:UpdateActive()
 --/dump (# AutoBar.barList["AutoBarClassBarBasic"].activeButtonList)
@@ -411,11 +413,17 @@ function AutoBar.Class.Bar.prototype:ColorBars()
 			end
 		end
 		frame.text:SetText(self.barName)
+		frame:Show()
 	elseif (AutoBar.stickyMode) then
 		frame:SetFrameStrata(self.sharedLayoutDB.frameStrata)
 		self:SetButtonFrameStrata(self.sharedLayoutDB.frameStrata)
 		frame.text:SetText(self.barName)
 	else
+		if (self.sharedLayoutDB.hide) then
+			self.frame:Hide()
+		else
+			self.frame:Show()
+		end
 		frame:SetFrameStrata(self.sharedLayoutDB.frameStrata)
 		self:SetButtonFrameStrata(self.sharedLayoutDB.frameStrata)
 		frame.text:SetText("")

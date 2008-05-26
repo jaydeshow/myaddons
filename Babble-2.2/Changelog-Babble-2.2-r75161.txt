@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r75161 | camulos | 2008-05-26 03:39:36 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Trainer-2.2/Babble-Trainer-2.2.lua
+
+Babble-2.2:
+- added missing translations for deDE
+------------------------------------------------------------------------
 r74512 | chinkuwaila | 2008-05-20 06:22:21 -0400 (Tue, 20 May 2008) | 2 lines
 Changed paths:
    M /trunk/Babble-2.2/Babble-Vendor-2.2/Babble-Vendor-2.2.lua
@@ -87,46 +94,4 @@ Changed paths:
    M /trunk/Babble-2.2/Babble-Tradeskill-2.2/Babble-Tradeskill-2.2.lua
 
 Babble-2.2: Tradeskill: frFR updated
-------------------------------------------------------------------------
-r70863 | StiviS | 2008-04-22 04:32:11 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Zone-2.2/Babble-Zone-2.2.lua
-
-Babble-2.2: Zone: esES updated
-------------------------------------------------------------------------
-r70862 | StiviS | 2008-04-22 04:30:30 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Vendor-2.2/Babble-Vendor-2.2.lua
-
-Babble-2.2: Vendor: esES updated
-------------------------------------------------------------------------
-r70861 | StiviS | 2008-04-22 04:28:18 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Trainer-2.2/Babble-Trainer-2.2.lua
-
-Babble-2.2: Trainer: esES updated
-------------------------------------------------------------------------
-r70859 | StiviS | 2008-04-22 04:22:18 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Tradeskill-2.2/Babble-Tradeskill-2.2.lua
-
-Babble-2.2: Tradeskill: esES updated
-------------------------------------------------------------------------
-r70856 | StiviS | 2008-04-22 04:13:21 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Babble-2.2/Babble-SpellTree-2.2/Babble-SpellTree-2.2.lua
-
-Babble-2.2: SpellTree: esES updated
-------------------------------------------------------------------------
-r70855 | StiviS | 2008-04-22 04:07:47 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Spell-2.2/Babble-Spell-2.2.lua
-
-Babble-2.2: Spell: Fixed 'Summon Imp' esES translation
-------------------------------------------------------------------------
-r70852 | StiviS | 2008-04-22 03:44:36 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Inventory-2.2/Babble-Inventory-2.2.lua
-
-Babble-2.2: Inventory: esES updated
 ------------------------------------------------------------------------

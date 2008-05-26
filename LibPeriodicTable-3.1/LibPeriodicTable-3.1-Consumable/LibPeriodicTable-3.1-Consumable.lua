@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("Consumable", "$Rev: 75048 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("Consumable", "$Rev: 75128 $", {
 	["Consumable.Anti-Venom"]="6452:25,6453:35,13462:60,2633:60,19440:60,12586:60,9030:60,3386:60,31437:70,25550:70",
 	["Consumable.Bandage.Basic"]="2581:114,8545:1104,21991:3400,14530:2000,6451:640,3531:301,1251:66,8544:800,21990:2800,14529:1360,6450:400,3530:161",
 	["Consumable.Bandage.Battleground.Alterac Valley"]="19307:2000",
@@ -107,7 +107,7 @@ LibStub("LibPeriodicTable-3.1"):AddData("Consumable", "$Rev: 75048 $", {
 	["Consumable.Cooldown.Stone.Health.Other"]="11951:800,32578:2000,",
 	["Consumable.Cooldown.Stone.Health.Statue"]="25498:8,25880:16,25881:24,25882:36,25883:50",
 	["Consumable.Cooldown.Stone.Health.Warlock"]="m,Consumable.Warlock.Healthstone,",
-	["Consumable.Cooldown.Stone.Mana.Other"]="23354:60,31451:300,20520:1200,12662:1200",
+	["Consumable.Cooldown.Stone.Mana.Other"]="23354:60,23386:100,31451:300,20520:1200,12662:1200",
 	["Consumable.Cooldown.Stone.Mana.Mana Stone"]="5513:600,5514:400,8007:850,8008:1100,22044:1250",
 	["Consumable.Cooldown.Drums.Bombs"]="m,Misc.Explosives",
 	["Consumable.Cooldown.Drums.Drums"]="29528:1,29530:2,29531:3,29529:4,29532:5",

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Trainer-2.2
-Revision: $Rev: 73267 $
+Revision: $Rev: 75161 $
 Authors(s): Kodewulf (kodewulf@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Trainer-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Trainer-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 73267 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 75161 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -119,6 +119,7 @@ BabbleTrainer:RegisterTranslations("enUS", function() return {
 
 BabbleTrainer:RegisterTranslations("deDE", function() return {
    -- Trainer types
+   ["Armor Crafter"] = "R\195\188stungsschmied",
    ["Artisan Alchemist"] = "Alchimiefachmann",
    ["Artisan Blacksmith"] = "Schmiedekunstfachmann",
    ["Artisan Enchanter"] = "Verzauberkunstfachmann",
@@ -133,21 +134,25 @@ BabbleTrainer:RegisterTranslations("deDE", function() return {
    ["Demon Trainer"] = "D\195\164monenausbilder",
    ["Druid Trainer"] = "Druidenlehrer",
    ["Engineer"] = "Ingenieur",
+   ["Engineering Trainer"] = "Ingenieurslehrer",
    ["Expert Alchemist"] = "Alchimieexperte",
    ["Expert Blacksmith"] = "Schmiedekunstexperte",
    ["Expert Enchanter"] = "Verzauberkunstexperte",
    ["Expert Engineer"] = "Ingenieursexperte",
+   ["Expert Jewelcrafter"] = "Juwelenschleiferexperte",
    ["Expert Leatherworker"] = "Lederverarbeitungsexperte",
    ["Expert Tailor"] = "Schneiderexperte",
    ["Explorers' League"] = "Forscherliga",
    ["First Aid Trainer"] = "Lehrer f\195\188r Erste Hilfe",
    ["Fishing Trainer"] = "Angellehrer",
+   ["Goblin Engineering Trainer"] = "Lehrer f\195\188r goblinsche Ingenieurskunst",
    ["Grand Master Alchemist"] = "Alchimiegro\195\159meister",
    ["Grand Master Blacksmith"] = "Gro\195\159meisterschmied",
    ["Grand Master Enchanter"] = "Verzauberkunstgro\195\159meister",
    ["Grand Master Engineer"] = "Gro\195\159meisteringenieur",
    ["Grand Master Jewelcrafter"] = "Juwelenschleifergro\195\159meister",
    ["Grand Master Leatherworker"] = "Lederverarbeitungsgro\195\159meister",
+   ["Grand Master Skinner"] = "K\195\188rschnergro\195\159meister",
    ["Grand Master Tailor"] = "Schneidergro\195\159meister",
    ["Head Eco-Dome Engineer"] = "Leitender Ingenieur der Biokuppel",
    ["Herbalism Trainer"] = "Kr\195\164uterkundelehrer",
@@ -193,6 +198,7 @@ BabbleTrainer:RegisterTranslations("deDE", function() return {
    ["Royal Apothecary Society"] = "K\195\182nigliche Apothekervereinigung",
    ["Saber Handler"] = "S\195\164belf\195\188hrer",
    ["Shaman Trainer"] = "Schamanenlehrer",
+   ["Skinner"] = "K\195\188rschner",
    ["Skinning Trainer"] = "K\195\188rschnerlehrer",
    ["Speciality Engineer"] = "Spezialingenieur",
    ["Superior Leatherworker"] = "\195\156berragender Lederer",

@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r75170 | rabbit | 2008-05-26 05:19:27 -0400 (Mon, 26 May 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+
+oRA2: Tiny bugfix.
+------------------------------------------------------------------------
 r75012 | pettigrow | 2008-05-24 05:13:40 -0400 (Sat, 24 May 2008) | 1 line
 Changed paths:
    M /trunk/oRA2/Leader/MainTank.lua
@@ -209,38 +215,4 @@ Changed paths:
    M /trunk/oRA2/Optional/Resurrection.lua
 
 oRA2: Optional/Resurrection: Color the player names.
-------------------------------------------------------------------------
-r71312 | rabbit | 2008-04-24 15:24:02 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BananaDKP/BananaDKP.lua
-   M /trunk/NRT/NRT.lua
-   M /trunk/SimpleChatMods/playernames.lua
-   M /trunk/TypingIndicator/TypingIndicator.lua
-   M /trunk/oRA2/Leader/Invite.lua
-
-. BananaDKP/SimpleChatMods/NRT/TypingIndicator/oRA2: Wrap GuildRoster() calls in IsInGuild() checks.
-------------------------------------------------------------------------
-r71303 | rabbit | 2008-04-24 15:11:02 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: Leader/Invite: GuildRoster() OnEnable.
-------------------------------------------------------------------------
-r71241 | rabbit | 2008-04-24 09:18:13 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: Leader/Invite: More safeguarding + bugfix.
-------------------------------------------------------------------------
-r71240 | rabbit | 2008-04-24 09:15:46 -0400 (Thu, 24 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: Leader/Invite: Try to fix the lag issues, PromoteToAssistant triggers RRU, so we were doing a lot of loops.
-------------------------------------------------------------------------
-r71187 | rabbit | 2008-04-23 23:46:37 -0400 (Wed, 23 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/oRA2/Leader/Invite.lua
-
-oRA2: Leader/Invite: Tune down on the guild roster juggling.
 ------------------------------------------------------------------------

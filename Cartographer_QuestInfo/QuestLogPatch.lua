@@ -1,4 +1,4 @@
-local L = AceLibrary("AceLocale-2.2"):new("Cartographer_QuestInfo")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 local BZR = LibStub("LibBabble-Zone-3.0"):GetReverseLookupTable()
 
 local C = Cartographer

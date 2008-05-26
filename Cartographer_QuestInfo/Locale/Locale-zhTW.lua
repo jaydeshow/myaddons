@@ -1,6 +1,6 @@
-local L = AceLibrary("AceLocale-2.2"):new("Cartographer_QuestInfo");
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 
-L:RegisterTranslations("zhTW", function() return {
+L:AddTranslations("zhTW", function() return {
 
 -- Core.lua
 	["Export"] = "匯出資料",

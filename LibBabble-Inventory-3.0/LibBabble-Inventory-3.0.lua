@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Inventory-3.0
-Revision: $Rev: 74205 $
+Revision: $Rev: 75179 $
 Author(s): ckknight (ckknight@gmail.com), Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/LibBabble-Inventory-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Inventory-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Inventory-3.0"
-local MINOR_VERSION = "$Revision: 74205 $"
+local MINOR_VERSION = "$Revision: 75179 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -754,13 +754,13 @@ elseif GAME_LOCALE == "frFR" then
 		--Container
 		-- ["Container"] = true,			-- translation required
 		["Bag"] = "Sac",
-		-- ["Enchanting Bag"] = true,		-- translation required
-		-- ["Engineering Bag"] = true,		-- translation required
-		-- ["Gem Bag"] = true,				-- translation required
-		-- ["Herb Bag"] = true,				-- translation required
-		-- ["Mining Bag"] = true,			-- translation required
-		-- ["Soul Bag"] = true,				-- translation required
-		-- ["Leatherworking Bag"] = true, -- New 2.3 -- translation required
+		["Enchanting Bag"] = "Sac d'enchantement",
+		["Engineering Bag"] = "Sac d'ingéniérie",
+		["Gem Bag"] = "Sac de gemmes",
+		["Herb Bag"] = "Sac d'herbes",
+		["Mining Bag"] = "Sac de mineur",
+		["Soul Bag"] = "Sac d'âme",
+		["Leatherworking Bag"] = "Sac de travailleur du cuir",
 
 		--Gem
 		["Gem"] = "Gemme",
