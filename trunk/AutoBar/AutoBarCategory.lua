@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 74262 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1284,6 +1284,8 @@ function AutoBarCategory:Initialize()
 	local spellSummonImp = GetSpellInfo(688)
 	local spellSummonSuccubus = GetSpellInfo(712)
 	local spellSummonVoidwalker = GetSpellInfo(697)
+	local spellInferno = GetSpellInfo(1122)
+	local spellRitualOfDoom = GetSpellInfo(18540)
 	AutoBarCategoryList["Spell.Class.Pet"] = AutoBarSpells:new(
 			"Spell.Class.Pet", spellForceOfNatureIcon, {
 			"DRUID", spellForceOfNature,
@@ -1301,6 +1303,8 @@ function AutoBarCategory:Initialize()
 			"PRIEST", spellShadowfiend,
 			"SHAMAN", spellEarthElementalTotem,
 			"SHAMAN", spellFireElementalTotem,
+			"WARLOCK", spellInferno,
+			"WARLOCK", spellRitualOfDoom,
 			"WARLOCK", spellEyeOfKilrogg,
 			"WARLOCK", spellSummonFelguard,
 			"WARLOCK", spellSummonFelhunter,
@@ -1406,11 +1410,7 @@ function AutoBarCategory:Initialize()
 --		AutoBar.reagents[spellSummonImp] = {6265}
 		AutoBar.reagents[spellSummonSuccubus] = {6265}
 		AutoBar.reagents[spellSummonVoidwalker] = {6265}
-
-		local spellInferno = GetSpellInfo(1122)
 		AutoBar.reagents[spellInferno] = {5565}
-
-		local spellRitualOfDoom = GetSpellInfo(18540)
 		AutoBar.reagents[spellRitualOfDoom] = {16583}
 	end
 end

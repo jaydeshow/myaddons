@@ -5,8 +5,8 @@ ARLLocals-esES.lua
 
 esES localization strings for Ackis Recipe List
 
-$Date: 2008-05-25 07:30:57 -0400 (Sun, 25 May 2008) $
-$Rev: 75089 $
+$Date: 2008-05-25 13:13:52 -0400 (Sun, 25 May 2008) $
+$Rev: 75116 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -93,7 +93,7 @@ L["FILTER_CLOSE"] = "<<< Filtro"
 L["Reset"] = "Reiniciar"
 L["Sort"] = "Ordenar"
 L["World Drop"] = "Soltado en el Mundo"
-L["Mob Drop"] = Soltado por Monstruo"
+L["Mob Drop"] = "Soltado por Monstruo"
 L["Quest"] = "Misión"
 L["Reputation"] = "Reputación"
 L["Instance"] = "Instancia"

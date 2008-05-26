@@ -347,7 +347,7 @@ oRA:SetModuleMixins("AceEvent-2.0", CTRACL10)
 oRA.defaults = {
 	bartexture = "BantoBar",
 }
-oRA.version = tonumber(string.sub("$Revision: 74053 $", 12, -3))
+oRA.version = tonumber(string.sub("$Revision: 75170 $", 12, -3))
 
 oRA.consoleOptions = {
 	type = "group",
@@ -504,7 +504,7 @@ end
 -------------------------------
 
 do
-	local unitJoinedRaid = '^' .. ERR_RAID_MEMBER_ADDED_S:gsub("%%s", "(%S+)") .. '$'
+	local unitJoinedRaid = '^' .. ERR_RAID_MEMBER_ADDED_S:gsub("%%s", "(%%S+)") .. '$'
 	function oRA:CHAT_MSG_SYSTEM(msg)
 		if not UnitInRaid("player") then return end
 		local name = select(3, msg:find(unitJoinedRaid))

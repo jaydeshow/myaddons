@@ -1,4 +1,48 @@
 ------------------------------------------------------------------------
+r75160 | sayclub | 2008-05-26 03:23:45 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-koKR.lua
+
+AutoBar : 
+- koKR Update
+------------------------------------------------------------------------
+r75141 | toadkiller | 2008-05-25 20:26:04 -0400 (Sun, 25 May 2008) | 4 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Inferno and RitualOfDoom added to warlock class pet button
+-- fix gaping buttons
+
+------------------------------------------------------------------------
+r75124 | toadkiller | 2008-05-25 15:33:17 -0400 (Sun, 25 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassBar.lua
+
+AutoBar : 
+-- Make Bar level BF Colors default to {}
+
+------------------------------------------------------------------------
+r75121 | toadkiller | 2008-05-25 14:54:16 -0400 (Sun, 25 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarDB.lua
+
+AutoBar : 
+-- Implement dbVersion = 1.  Deletes old bars and customBarList tables. Fixes crash on Button or Bar create for non-resetted SVs.
+
+------------------------------------------------------------------------
+r75120 | toadkiller | 2008-05-25 13:44:53 -0400 (Sun, 25 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+
+AutoBar : 
+-- Add cooldowns for totem buttons based on totems not gcd
+
+------------------------------------------------------------------------
 r75091 | toadkiller | 2008-05-25 08:10:41 -0400 (Sun, 25 May 2008) | 3 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarButton.lua
@@ -1298,52 +1342,4 @@ Changed paths:
 AutoBar : 
 -- Dragging to bar drop spot now appends button instead of putting it into position 1
 
-------------------------------------------------------------------------
-r71377 | toadkiller | 2008-04-24 20:45:14 -0400 (Thu, 24 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-
-AutoBar : 
--Remove LibBabbleSpell dependency
-------------------------------------------------------------------------
-r71297 | scorpio0920 | 2008-04-24 14:57:51 -0400 (Thu, 24 Apr 2008) | 5 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhTW localization.
-- Removed duplicate string in Locale-enUS.lua
- - ["FadeOut Cancels on XXX"]
- - ["FadeOut is cancelled when holding down the XXX key."]
-------------------------------------------------------------------------
-r71285 | toadkiller | 2008-04-24 14:01:06 -0400 (Thu, 24 Apr 2008) | 6 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
--- Switch to GetSpellInfo based spell handling: name, rank, icon, cost, isFunnel, powerType, castTime, minRange, maxRange = GetSpellInfo(spellId or spellName or spellLink)
--- Rip out LibBabble-Spell-3.0
--- GameTooltip_ShowCompareItem() added for item links in tooltip
--- Initial work on custom attributes for Buttons
-
-------------------------------------------------------------------------
-r71284 | toadkiller | 2008-04-24 14:00:24 -0400 (Thu, 24 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
-- Rip out LibBabble-Spell-3.0
 ------------------------------------------------------------------------

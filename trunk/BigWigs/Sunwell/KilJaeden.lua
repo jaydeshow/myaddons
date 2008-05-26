@@ -136,13 +136,94 @@ L:RegisterTranslations("frFR", function() return {
 	orb_shooting = "Orbe en vie !",
 
 	bloom = "Fleur du feu",
-	bloom_desc = "Prévient de l'arrivée des Fleurs du feu.",
-	bloom_message = "Arrivée d'une Fleur du feu !",
+	bloom_desc = "Prévient quand des joueurs subissent les effets de la Fleur du feu.",
+	bloom_other = "Fleur du feu sur %s !",
+	bloom_bar = "Fleurs du feu",
+	bloom_message = "Prochaine Fleur du feu dans 5 sec. !",
+
+	bloomsay = "Dire - Fleur du feu",
+	bloomsay_desc = "Fait dire à votre personnage qu'il est ciblé par la Fleur du feu quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue activées.",
+	bloom_say = "Fleur du feu sur MOI !",
+
+	bloomwhisper = "Chuchoter",
+	bloomwhisper_desc = "Prévient par chuchotement les derniers joueurs affectés par la Fleur du feu (nécessite d'être promu ou mieux).",
+	bloom_you = "Fleur du feu sur VOUS !",
+
+	icons = "Icônes",
+	icons_desc = "Place une icône de raid sur les derniers joueurs affectés par la Fleur du feu (nécessite d'être promu ou mieux).",
+
+	shadow = "Pointe de l'ombre",
+	shadow_desc = "Prévient quand les Pointes de l'ombre sont incantées.",
+	shadow_message = "Pointes de l'ombre pendant 28 sec. !",
+	shadow_bar = "Fin des Pointes",
+	shadow_warning = "Pointes de l'ombre terminées dans 5 sec. !",
+	shadow_debuff_bar = "Soins réduits sur %s",
+
+	flame = "Fléchette des flammes",
+	flame_desc = "Affiche une barre temporelle pour la Flèchette des flammes.",
+	flame_bar = "Prochaine Fléchette",
+	flame_message = "Prochaine Fléchette des flammes dans 5 sec. !",
+
+	sinister = "Reflet sinistre",
+	sinister_desc = "Prévient quand les Reflets sinistres apparaissent.",
+	sinister_message = "Reflets sinistres actifs !",
 
 	shield_up = "Bouclier ACTIF !",
 
 	deceiver_dies = "Trompeur #%d tué",
 	["Hand of the Deceiver"] = "Main du Trompeur", -- à vérifier
+} end )
+
+L:RegisterTranslations("zhCN", function() return {
+	bomb = "黑暗",
+	bomb_desc = "当千魂之暗开始施法时发出警报。",
+	bomb_cast = "即将 大炸弹！",
+	bomb_bar = "爆炸！",
+	bomb_nextbar = "<可能 炸弹>",
+	bomb_warning = "约10秒后，可能炸弹！",
+	kalec_yell = "",--need check
+
+	orb = "护盾宝珠",--Shield Orb 
+	orb_desc = "当护盾宝珠施放暗影箭时发出警报。",
+	orb_shooting = "护盾宝珠 - 暗影箭！",
+
+	bloom = "火焰之花",
+	bloom_desc = "当玩家中了火焰之花时发出警报。",
+	bloom_other = "火焰之花：>%s<！",
+	bloom_bar = "<火焰之花>",
+	bloom_message = "5秒后，火焰之花！",
+
+	bloomsay = "火焰之花提醒",
+	bloomsay_desc = "当你中了火焰之花时通知周围的玩家。",
+	bloom_say = ">我< 中了火焰之花！",
+
+	bloomwhisper = "火焰之花密语",
+	bloomwhisper_desc = "当玩家中了火焰之花时密语提示他离开。",
+	bloom_you = ">你< 中了火焰之花！",
+
+	icons = "团队标记",
+	icons_desc = "为中了火焰之花的玩家随机打上一个团队标记。（需要权限）",
+
+	shadow = "暗影尖刺",
+	shadow_desc = "当施放暗影尖刺时发出警报。",
+	shadow_message = "28秒后，.暗影之刺<！当心！",
+	shadow_bar = "<暗影之刺>",
+	shadow_warning = "5秒后，暗影之刺！",
+	shadow_debuff_bar = "<降低治疗：%s>",
+
+	flame = "烈焰之刺",
+	flame_desc = "显示烈焰之刺记时条。",
+	flame_bar = "<下一烈焰之刺>",
+	flame_message = "5秒后，烈焰之刺！",
+
+	sinister = "邪恶镜像",
+	sinister_desc = "当邪恶镜像时发出警报。",
+	sinister_message = "邪恶镜像 出现！",
+
+	shield_up = ">蓝龙之盾< 启用！",
+
+	deceiver_dies = "已杀死欺诈者之手#%d",
+	["Hand of the Deceiver"] = "欺诈者之手",--need confirm
 } end )
 
 ----------------------------------
@@ -154,7 +235,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
 mod.toggleoptions = {"bomb", "orb", "flame", -1, "bloom", "bloomwhisper","bloomsay", "icons", -1, "sinister", "shadow", "bosskill"}
-mod.revision = tonumber(("$Revision: 75016 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75174 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

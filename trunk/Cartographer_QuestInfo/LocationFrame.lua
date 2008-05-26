@@ -1,5 +1,5 @@
 local CQI = Cartographer_QuestInfo
-local L = AceLibrary("AceLocale-2.2"):new("Cartographer_QuestInfo")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 
 local Tablet = AceLibrary("Tablet-2.0")
 
@@ -20,7 +20,7 @@ local OBJMAP
 
 function CQI:OpenLocationFrame(map)
 	OBJMAP = OBJMAP ~= map and map or nil
-	self:ScheduleEvent(CQI.UpdateLocationFrame, 0, self)
+	self:AddTimer(0, CQI.UpdateLocationFrame, self)
 end
 
 function CQI:CloseLocationFrame()

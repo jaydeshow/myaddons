@@ -309,7 +309,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"phase", "breath", "vapor", "icon", -1, "encaps", "gas", "dispel", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 74654 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75138 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then
@@ -408,7 +408,7 @@ do
 				local msg = L["encaps_message"]:format(target)
 				self:IfMessage(msg, "Important", 45665, "Alert")
 				self:Bar(msg, 6, 45665)
-				self:Icon(player, "icon")
+				self:Icon(target, "icon")
 			end
 			lastTarget = target
 		end

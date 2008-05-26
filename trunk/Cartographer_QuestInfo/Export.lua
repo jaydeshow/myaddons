@@ -1,5 +1,5 @@
 local CQI = Cartographer_QuestInfo
-local L = AceLibrary("AceLocale-2.2"):new("Cartographer_QuestInfo")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 
 local BZR = LibStub("LibBabble-Zone-3.0"):GetReverseLookupTable()
 
@@ -24,7 +24,7 @@ function CQI:BatchExportToQuestsModule()
 		if q.start_npc and q.start_npc.loc then
 			if q.title == "????" and _cq.retry < 15 then
 				_cq.retry = _cq.retry + 1
-				self:ScheduleEvent("CQI-BatchExportToQuestsModule", self.BatchExportToQuestsModule, _cq.retry / 2, self)
+				self:AddTimer("CQI-BatchExportToQuestsModule", _cq.retry / 2, self.BatchExportToQuestsModule, self)
 				return
 			end
 			if q.title ~= "????" and (not CQDB or not CQDB.quests[q.title]) then
@@ -51,7 +51,7 @@ function CQI:BatchExportToQuestsModule()
 		_cq.retry = 0
 		_cq.current_uid = uid
 		if throttle then
-			self:ScheduleEvent("CQI-BatchExportToQuestsModule", self.BatchExportToQuestsModule, 3, self)
+			self:AddTimer("CQI-BatchExportToQuestsModule", 3, self.BatchExportToQuestsModule, self)
 			return
 		end
 	end
@@ -66,12 +66,12 @@ function CQI:ExportToQuestsModule()
 	self:RemoveFromQuestsModule()
 
 	self:Print(L["Begin exporting new quest givers."])
-	self:CancelScheduledEvent("CQI-BatchExportToQuestsModule")
+	self:RemoveTimer("CQI-BatchExportToQuestsModule")
 	_cq = {}
 	_cq.count = 0
 	_cq.retry = 0
 	_cq.current_uid = nil
-	self:ScheduleEvent("CQI-BatchExportToQuestsModule", self.BatchExportToQuestsModule, 0, self)
+	self:AddTimer("CQI-BatchExportToQuestsModule", 0, self.BatchExportToQuestsModule, self)
 end
 
 function CQI:RemoveFromQuestsModule()
@@ -140,7 +140,7 @@ function CQI:BatchExportToObjectivesModule()
 		if q.objs then
 			if q.title == "????" and _cqo.retry < 15 then
 				_cqo.retry = _cqo.retry + 1
-				self:ScheduleEvent("CQI-BatchExportToObjectivesModule", self.BatchExportToObjectivesModule, _cqo.retry / 2, self)
+				self:AddTimer("CQI-BatchExportToObjectivesModule", _cqo.retry / 2, self.BatchExportToObjectivesModule, self)
 				return
 			end
 
@@ -183,7 +183,7 @@ function CQI:BatchExportToObjectivesModule()
 		_cqo.retry = 0
 		_cqo.current_uid = uid
 		if throttle then
-			self:ScheduleEvent("CQI-BatchExportToObjectivesModule", self.BatchExportToObjectivesModule, 3, self)
+			self:AddTimer("CQI-BatchExportToObjectivesModule", 3, self.BatchExportToObjectivesModule, self)
 			return
 		end
 	end
@@ -198,12 +198,12 @@ function CQI:ExportToObjectivesModule()
 	self:RemoveFromObjectivesModule()
 
 	self:Print(L["Begin exporting new quest objectives."])
-	self:CancelScheduledEvent("CQI-BatchExportToObjectivesModule")
+	self:RemoveTimer("CQI-BatchExportToObjectivesModule")
 	_cqo = {}
 	_cqo.count = 0
 	_cqo.retry = 0
 	_cqo.current_uid = nil
-	self:ScheduleEvent("CQI-BatchExportToObjectivesModule", self.BatchExportToObjectivesModule, 0, self)
+	self:AddTimer("CQI-BatchExportToObjectivesModule", 0, self.BatchExportToObjectivesModule, self)
 end
 
 function CQI:RemoveFromObjectivesModule()

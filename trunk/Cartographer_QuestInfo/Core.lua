@@ -1,9 +1,9 @@
-Cartographer_QuestInfo = Cartographer:NewModule("QuestInfo", "AceConsole-2.0", "AceEvent-2.0", "AceDB-2.0", "AceHook-2.1")
+Cartographer_QuestInfo = Cartographer:NewModule("QuestInfo", "LibRockHook-1.0", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockDB-1.0", "LibRockConsole-1.0")
 
 -------------------------------------------------------------------
 
 local CQI = Cartographer_QuestInfo
-local L = AceLibrary("AceLocale-2.2"):new("Cartographer_QuestInfo")
+local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 
 local Gratuity = LibStub("LibGratuity-3.0")
 
@@ -14,8 +14,8 @@ local CQO = C:HasModule("Quest Objectives") and C:GetModule("Quest Objectives")
 
 -------------------------------------------------------------------
 
-CQI:RegisterDB("Cartographer_QuestInfoDB")
-CQI:RegisterDefaults("profile", {
+CQI:SetDatabase("Cartographer_QuestInfoDB")
+CQI:SetDatabaseDefaults("profile", {
 	iconAlpha = 1,
 	iconScale = 1,
 	minimapIcons = true,
@@ -151,7 +151,7 @@ function CQI:OnInitialize()
 	}
 
 	self:PurgeHostileQuests()
-	self:SecureHook("QuestLog_UpdateQuestDetails")
+	self:AddSecureHook("QuestLog_UpdateQuestDetails")
 end
 
 function CQI:OnEnable()

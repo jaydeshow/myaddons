@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -32,6 +32,8 @@ AutoBar.Class.Button = AceOO.Class("AceEvent-2.0", "AceHook-2.1")
 
 
 function AutoBar.Class.Button:ShortenKeyBinding(text)
+	return LibKeyBound:ToShortKey(text)
+--[[
 	text = text:gsub("CTRL%-", L["|c00FF9966C|r"])
 	text = text:gsub("STRG%-", L["|c00CCCC00S|r"])
 	text = text:gsub("ALT%-", L["|c009966CCA|r"])
@@ -51,12 +53,9 @@ function AutoBar.Class.Button:ShortenKeyBinding(text)
 	text = text:gsub(L["Up Arrow"], L["U"])
 	text = text:gsub(L["Left Arrow"], L["L"])
 	text = text:gsub(L["Right Arrow"], L["R"])
---	text = text:gsub(L["Tab"], L["Tab"])
---	text = text:gsub(L["Capslock"], L["Cps"])
---	text = text:gsub(L["Mouse Wheel Up"], L["WU"])
---	text = text:gsub(L["Mouse Wheel Down"], L["WD"])
 
 	return text
+--]]
 end
 
 local function onAttributeChangedFunc(button)
@@ -167,7 +166,7 @@ end
 function AutoBar.Class.Button:GetActionName()
 	local frame = self
 	local buttonKey = frame.class.buttonDB.buttonKey
-	return L[buttonKey] .. " (" .. frame.class:GetButtonFrameName() .. ")"
+	return (L[buttonKey] or "???") .. " (" .. frame.class:GetButtonFrameName() .. ")"
 end
 
 function AutoBar.Class.Button:SetKey(key)
@@ -487,7 +486,7 @@ function AutoBar.Class.Button.prototype:UpdateIcon()
 
 --AutoBar:Print("AutoBar.Class.Button.prototype:UpdateIcon texture " .. tostring(texture) .. " borderColor " .. tostring(borderColor) .. " buttonName " .. tostring(self.buttonName))
 	if (texture) then
-		frame:Show()
+--		frame:Show()
 		frame.icon:SetTexture(texture)
 		frame.icon:Show()
 		frame.tex = texture
@@ -741,7 +740,7 @@ function AutoBar.Class.Button.prototype:IsActive()
 	if (not self.buttonDB.enabled) then
 		return false
 	end
-	if (AutoBar.db.account.showEmptyButtons or AutoBar.unlockButtons or self.buttonDB.alwaysShow or not self.parentBar.sharedLayoutDB.collapseButtons) then
+	if (AutoBar.db.account.showEmptyButtons or AutoBar.unlockButtons or self.buttonDB.alwaysShow or not self.parentBar.sharedLayoutDB.collapseButtons) then --AutoBar.keyBoundMode or
 		return true
 	end
 	local itemType = self.frame:GetAttribute("*type1")
@@ -1001,8 +1000,11 @@ function AutoBar.Class.Button.prototype:MoveButtonsModeOff()
 	frame.menu = nil
 	if (self.buttonDB.hide or self.parentBar.sharedLayoutDB.hide) then
 		frame:Hide()
-	else
+	elseif (self:IsActive()) then
+--AutoBar:Print("AutoBar.Class.Button.prototype:MoveButtonsModeOff self:IsActive() " .. tostring(self:IsActive()) .. " self.buttonName " .. tostring(self.buttonName))
 		frame:Show()
+	else
+		frame:Hide()
 	end
 end
 

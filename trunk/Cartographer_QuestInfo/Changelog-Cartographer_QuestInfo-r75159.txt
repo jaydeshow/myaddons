@@ -1,4 +1,29 @@
 ------------------------------------------------------------------------
+r75159 | lahow | 2008-05-26 03:09:29 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+
+Cartographer_QuestInfo:
+- update version
+------------------------------------------------------------------------
+r75158 | lahow | 2008-05-26 03:08:05 -0400 (Mon, 26 May 2008) | 3 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+   M /trunk/Cartographer_QuestInfo/Core.lua
+   M /trunk/Cartographer_QuestInfo/Export.lua
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-enUS.lua
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-zhCN.lua
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-zhTW.lua
+   M /trunk/Cartographer_QuestInfo/LocationFrame.lua
+   M /trunk/Cartographer_QuestInfo/Map.lua
+   M /trunk/Cartographer_QuestInfo/QuestFuPatch.lua
+   M /trunk/Cartographer_QuestInfo/QuestLogPatch.lua
+   M /trunk/Cartographer_QuestInfo/SeriesFrame.lua
+
+Cartographer_QuestInfo:
+- change ace2 stuff to rock
+- well, I am also known as purple@bahamut, for those who care
+------------------------------------------------------------------------
 r75020 | lahow | 2008-05-24 07:21:37 -0400 (Sat, 24 May 2008) | 4 lines
 Changed paths:
    M /trunk/Cartographer_QuestInfo

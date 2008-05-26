@@ -108,7 +108,7 @@ L:RegisterTranslations("frFR", function() return {
 	burst_you = "Jaillissement d'air sur VOUS !",
 
 	burstsay = "Dire - Jaillissement d'air",
-	burstsay_desc = "Fait dire à votre personnage que vous êtes ciblé par le Jaillissement d'air quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue d'activés.",
+	burstsay_desc = "Fait dire à votre personnage que vous êtes ciblé par le Jaillissement d'air quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue activées.",
 	burstsay_message = "Jaillissement d'air sur moi !",
 } end )
 
@@ -228,7 +228,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"grip", "icon", "fear", "burst", "burstsay", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75108 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

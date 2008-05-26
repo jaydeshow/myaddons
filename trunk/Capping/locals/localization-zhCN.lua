@@ -58,9 +58,9 @@ CappingLocale:CreateLocaleTable({
 	["2 minutes"] = "2分钟",
 	["1 minute"] = "1分钟",
 	["30 seconds"] = "30秒",
-	["One minute until"] = "1分钟",
-	["Thirty seconds until"] = "30秒",
-	["Fifteen seconds until"] = "15秒",
+	["One minute until"] = "一分钟",
+	["Thirty seconds until"] = "三十秒",
+	["Fifteen seconds until"] = "十五秒",
 	["%s: %s - %d:%02d remaining"] = "%s：%s - 剩余 %d：%02d", -- chat message after shift left-clicking a bar
 	
 	-- AB	
