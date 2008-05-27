@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r75230 | scorpio0920 | 2008-05-27 00:42:44 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
+
+LibBabble-Inventory-3.0:
+- Update zhTW localization. (Thanks s8095324)
+------------------------------------------------------------------------
 r75179 | Thaoky | 2008-05-26 06:28:12 -0400 (Mon, 26 May 2008) | 2 lines
 Changed paths:
    M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
@@ -54,16 +61,4 @@ Changed paths:
 LibBabble-Inventory-3.0:
 - Added Materials under Trade Goods
 - Added Mount under Miscellaneous
-------------------------------------------------------------------------
-r71408 | StiviS | 2008-04-25 04:27:44 -0400 (Fri, 25 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
-
-LibBabble-Inventory-3.0: esES updated
-------------------------------------------------------------------------
-r71396 | sayclub | 2008-04-25 00:24:27 -0400 (Fri, 25 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/LibBabble-Inventory-3.0/LibBabble-Inventory-3.0.lua
-
-LibBabble-Inventory-3.0: koKR update.
 ------------------------------------------------------------------------

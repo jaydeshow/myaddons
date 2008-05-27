@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r75244 | trasher | 2008-05-27 05:58:31 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Recount/locales/Recount-frFR.lua
+
+Recount:
+- frFR update 20% (need help :p)
+------------------------------------------------------------------------
 r75140 | andyca | 2008-05-25 20:24:07 -0400 (Sun, 25 May 2008) | 2 lines
 Changed paths:
    M /trunk/Recount/locales/Recount-zhTW.lua
@@ -369,19 +376,4 @@ Changed paths:
 
 Recount:
 - Fixed missing locals. This caused global var taints. Thanks to Zeksie for finding these.
-------------------------------------------------------------------------
-r71513 | elsia | 2008-04-25 15:23:36 -0400 (Fri, 25 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/Recount/GUI_Main.lua
-
-Recount:
-- If total damage display is active, report will also report the total line.
-
-------------------------------------------------------------------------
-r71509 | elsia | 2008-04-25 15:08:28 -0400 (Fri, 25 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/GUI_Realtime.lua
-
-Recount:
-- Commit possible fix for realtime UpdateTitle bug that I cannot reproduce.
 ------------------------------------------------------------------------

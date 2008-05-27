@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r75232 | scorpio0920 | 2008-05-27 00:56:17 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Update zhTW localization. (Thanks s095324)
+------------------------------------------------------------------------
 r74241 | 7destiny | 2008-05-18 00:35:02 -0400 (Sun, 18 May 2008) | 2 lines
 Changed paths:
    M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua

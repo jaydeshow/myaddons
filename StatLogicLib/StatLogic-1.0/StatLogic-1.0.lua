@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 74768 $
+Revision: $Revision: 75180 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-05-22 03:50:43 -0400 (Thu, 22 May 2008) $
+LastUpdate: $Date: 2008-05-26 07:34:24 -0400 (Mon, 26 May 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -28,7 +28,7 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 74768 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 75180 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -5565,12 +5565,13 @@ local StatModTable = {
 	["MAGE"] = {
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
+		-- 2.4.0 Increases your armor by an amount equal to 100% of your Intellect.
 		["ADD_ARMOR_MOD_INT"] = {
 			[1] = {
 				["tab"] = 1,
 				["num"] = 9,
 				["rank"] = {
-					0.5,
+					1,
 				},
 			},
 		},
