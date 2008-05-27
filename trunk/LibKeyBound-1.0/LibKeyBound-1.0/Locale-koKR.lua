@@ -6,9 +6,14 @@
 if (GetLocale() ~= "koKR") then
 	return
 end
-local LKB = LibStub("LibKeyBound-1.0")
 
-LKB.locale = {
+local REVISION = tonumber(("$Revision: 75188 $"):match("%d+"))
+if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
+	return
+end
+
+LibKeyBoundLocale10 = {
+	REVISION = REVISION;
 	Enabled = '단축키 설정 기능 사용 가능';
 	Disabled = '단축키 설정 기능 사용 불가';
 	ClearTip = format('%s키를 누르면 모든 단축키가 초기화됩니다', GetBindingText('ESCAPE', 'KEY_'));
@@ -20,4 +25,36 @@ LKB.locale = {
 	CombatBindingsEnabled = '전투 종료. 단축키 설정이 가능해집니다';
 	CombatBindingsDisabled = '전투 시작. 단축키 설정이 불가능합니다';
 	BindingsHelp = "버튼 위에 마우스를 올려 놓고 지정할 키를 누르세요.  버튼의 현재 단축키를 삭제하시려면 %s|1을;를; 누르세요.";
+
+	-- This is the short display version you see on the Button
+	["Alt"] = "A",
+	["Ctrl"] = "C",
+	["Shift"] = "S",
+	["NumPad"] = "N",
+
+	["Backspace"] = "BS",
+	["Button1"] = "B1",
+	["Button2"] = "B2",
+	["Button3"] = "B3",
+	["Button4"] = "B4",
+	["Button5"] = "B5",
+	["Capslock"] = "Cp",
+	["Clear"] = "Cl",
+	["Delete"] = "Del",
+	["End"] = "En",
+	["Home"] = "HM",
+	["Insert"] = "Ins",
+	["Mouse Wheel Down"] = "WD",
+	["Mouse Wheel Up"] = "WU",
+	["Num Lock"] = "NL",
+	["Page Down"] = "PD",
+	["Page Up"] = "PU",
+	["Scroll Lock"] = "SL",
+	["Spacebar"] = "Sp",
+	["Tab"] = "Tb",
+
+	["Down Arrow"] = "DA",
+	["Left Arrow"] = "LA",
+	["Right Arrow"] = "RA",
+	["Up Arrow"] = "UA",
 }

@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------
+r75206 | toadkiller | 2008-05-26 17:53:43 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Update without Jumper Cables in trinket list
+------------------------------------------------------------------------
+r75205 | toadkiller | 2008-05-26 17:52:07 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Gear/LibPeriodicTable-3.1-Gear.lua
+
+LibPeriodicTable-3.1:
+- Update without Jumper Cables in trinket list
+------------------------------------------------------------------------
 r75128 | toadkiller | 2008-05-25 16:22:16 -0400 (Sun, 25 May 2008) | 3 lines
 Changed paths:
    M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Consumable/LibPeriodicTable-3.1-Consumable.lua

@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75121 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75196 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-05-25 14:54:16 -0400 (Sun, 25 May 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-05-26 13:35:37 -0400 (Mon, 26 May 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -1449,19 +1449,23 @@ function AutoBar:UpgradeVersion()
 	if (not AutoBar.db.account.dbVersion) then
 		AutoBar.db.account.customBarList = nil
 		AutoBar.db.account.bars = nil
-		for classKey, classDB in pairs (AutoBarDB.classes) do
-			if (classDB.bars) then
-				classDB.bars = nil
-				if (not classDB.barList and not classDB.buttonList) then
-					AutoBarDB.classes[classKey] = nil
+		if (AutoBarDB.classes) then
+			for classKey, classDB in pairs (AutoBarDB.classes) do
+				if (classDB.bars) then
+					classDB.bars = nil
+					if (not classDB.barList and not classDB.buttonList) then
+						AutoBarDB.classes[classKey] = nil
+					end
 				end
 			end
 		end
-		for charKey, charDB in pairs (AutoBarDB.chars) do
-			if (charDB.bars) then
-				charDB.bars = nil
-				if (not charDB.barList and not charDB.buttonList) then
-					AutoBarDB.chars[charKey] = nil
+		if (AutoBarDB.chars) then
+			for charKey, charDB in pairs (AutoBarDB.chars) do
+				if (charDB.bars) then
+					charDB.bars = nil
+					if (not charDB.barList and not charDB.buttonList) then
+						AutoBarDB.chars[charKey] = nil
+					end
 				end
 			end
 		end

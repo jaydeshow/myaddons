@@ -9,7 +9,7 @@
 ## Author: Gello, Maul, Tuller, Toadkiller
 ## X-Category: Library
 ## X-Credits: ClickBinder by Gello and TrinityBinder by Maul -> keyBound by Tuller -> LibKeyBound library by Toadkiller
-## X-Website: http://www.wowace.com/wiki/LibStickyFrames-1.0
+## X-Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 ## X-AceForum: 9752
 ## X-Category: Library
 ## X-License: Intention is to release into public domain once permission from above authors is received.  Meanwhile their licensing provisions prevail.

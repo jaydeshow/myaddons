@@ -1,6 +1,6 @@
 --[[
 Name: LibKeyBound-1.0
-Revision: $Rev: 75093 $
+Revision: $Rev: 75253 $
 Author(s): Gello, Maul, Toadkiller, Tuller
 Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 Documentation: http://www.wowace.com/wiki/LibKeyBound-1.0
@@ -10,7 +10,7 @@ Dependencies: CallbackHandler-1.0
 --]]
 
 local MAJOR = "LibKeyBound-1.0"
-local MINOR = "$Revision: 75093 $"
+local MINOR = "$Revision: 75253 $"
 
 --[[
 	LibKeyBound-1.0
@@ -36,13 +36,11 @@ local _G = _G
 -- CallbackHandler
 LibKeyBound.events = LibKeyBound.events or _G.LibStub("CallbackHandler-1.0"):New(LibKeyBound)
 
-local L
+local L = LibKeyBoundLocale10
 LibKeyBound.Binder = {}
 
 -- #NODOC
 function LibKeyBound:Initialize()
-	L = self.locale
-
 	do
 		local f = CreateFrame("Frame", "KeyboundDialog", UIParent)
 		f:SetFrameStrata("DIALOG")
@@ -102,11 +100,23 @@ function LibKeyBound:Initialize()
 			LoadBindings(self.current)
 		end)
 
+--		local added
+		f:SetScript("OnShow", function(self)
+--			if (not added) then
+--				UISpecialFrames[#UISpecialFrames + 1] = self:GetName()
+--				added = true
+--			end
+--			PlaySound("igCharacterInfoOpen")
+		end)
+		f:SetScript("OnHide", function(self)
+--			PlaySound("igCharacterInfoClose")
+		end)
+
 		self.dialog = f
 	end
 
 	SlashCmdList["LibKeyBoundSlashCOMMAND"] = function() self:Toggle() end
-	SLASH_LibKeyBoundSlashCOMMAND1 = "/keybound"
+	SLASH_LibKeyBoundSlashCOMMAND1 = "/libkeybound"
 	SLASH_LibKeyBoundSlashCOMMAND2 = "/kb"
 	SLASH_LibKeyBoundSlashCOMMAND3 = "/lkb"
 
@@ -121,20 +131,22 @@ LibKeyBound.colorKeyBoundMode = LibKeyBound.colorKeyBoundMode or { 0, 1, 1, 0.5 
 LibKeyBound:SetColorKeyBoundMode([r][, g][, b][, a])
 --]]
 --[[
-Notes:
-*Returns the color to use on your participating buttons during KeyBound Mode
-*Values are unpacked and ready to use as color arguments
 Arguments:
 	number - red, default 0
 	number - green, default 0
 	number - blue, default 0
 	number - alpha, default 1
+
 Example:
 	if (MyMod.keyBoundMode) then
 		overlayFrame:SetBackdropColor(LibKeyBound:GetColorKeyBoundMode())
 	end
 	...
 	local r, g, b, a = LibKeyBound:GetColorKeyBoundMode()
+
+Notes:
+	* Returns the color to use on your participating buttons during KeyBound Mode
+	* Values are unpacked and ready to use as color arguments
 --]]
 function LibKeyBound:SetColorKeyBoundMode(r, g, b, a)
 	r, g, b, a = r or 0, g or 0, b or 0, a or 1
@@ -146,20 +158,22 @@ function LibKeyBound:SetColorKeyBoundMode(r, g, b, a)
 end
 
 --[[
-Notes:
-*Returns the color to use on your participating buttons during KeyBound Mode
-*Values are unpacked and ready to use as color arguments
 Returns:
 	* number - red
 	* number - green
 	* number - blue
 	* number - alpha
+
 Example:
 	if (MyMod.keyBoundMode) then
 		overlayFrame:SetBackdropColor(LibKeyBound:GetColorKeyBoundMode())
 	end
 	...
 	local r, g, b, a = LibKeyBound:GetColorKeyBoundMode()
+
+Notes:
+	* Returns the color to use on your participating buttons during KeyBound Mode
+	* Values are unpacked and ready to use as color arguments
 --]]
 function LibKeyBound:GetColorKeyBoundMode()
 	return unpack(LibKeyBound.colorKeyBoundMode)
@@ -184,7 +198,7 @@ end
 
 --[[
 Notes:
- Switches KeyBound Mode between on and off
+	* Switches KeyBound Mode between on and off
 
 Example:
 	local LibKeyBound = LibStub("LibKeyBound-1.0")
@@ -201,7 +215,7 @@ end
 
 --[[
 Notes:
- Switches KeyBound Mode to on
+	* Switches KeyBound Mode to on
 
 Example:
 	local LibKeyBound = LibStub("LibKeyBound-1.0")
@@ -226,7 +240,7 @@ end
 
 --[[
 Notes:
- Switches KeyBound Mode to off
+	* Switches KeyBound Mode to off
 
 Example:
 	local LibKeyBound = LibStub("LibKeyBound-1.0")
@@ -244,10 +258,9 @@ end
 
 
 --[[
-Notes:
- Is KeyBound Mode currently on
 Returns:
 	boolean - true if KeyBound Mode is currently on
+
 Example:
 	local LibKeyBound = LibStub("LibKeyBound-1.0")
  	local isKeyBoundMode = LibKeyBound:IsShown()
@@ -256,6 +269,9 @@ Example:
  	else
  		-- Do another thing
  	end
+
+Notes:
+	* Is KeyBound Mode currently on
 --]]
 function LibKeyBound:IsShown()
 	return self.enabled
@@ -263,21 +279,21 @@ end
 
 
 --[[
-Notes:
- * Sets up button for keybinding
- * Current bindings are shown in the tooltip
- * Primary binding is shown in green in the button text
-
 Arguments:
 	table - the button frame
 
 Example:
-function MyButtonClass:OnEnter()
-	local button = self.buttonFrame
-	if (button.GetHotkey) then
-		LibKeyBound:Set(button)
+	function MyButtonClass:OnEnter()
+		local button = self.buttonFrame
+		if (button.GetHotkey) then
+			LibKeyBound:Set(button)
+		end
 	end
-end
+
+Notes:
+	 * Sets up button for keybinding
+	 * Current bindings are shown in the tooltip
+	 * Primary binding is shown in green in the button text
 --]]
 function LibKeyBound:Set(button)
 	local bindFrame = self.frame
@@ -302,11 +318,6 @@ end
 
 
 --[[
-Notes:
- * Shortens the key text (returned from GetBindingKey etc.)
- * Result is suitable for display on a button
- * Can be used for your button:GetHotkey() return value
-
 Arguments:
 	string - the keyString to shorten
 
@@ -314,38 +325,55 @@ Returns:
 	string - the shortened displayString
 
 Example:
-function MyButton:GetHotkey()
-	local button = self
-	local key1 = GetBindingKey(button:GetName())
-	local displayKey = LibKeyBound:ToShortKey(key1)
-	return displayKey
-end
+	function MyButton:GetHotkey()
+		local button = self
+		local key1 = GetBindingKey(button:GetName())
+		local displayKey = LibKeyBound:ToShortKey(key1)
+		return displayKey
+	end
+
+Notes:
+	* Shortens the key text (returned from GetBindingKey etc.)
+	* Result is suitable for display on a button
+	* Can be used for your button:GetHotkey() return value
 --]]
 function LibKeyBound:ToShortKey(key)
 	if key then
 		key = key:upper()
 		key = key:gsub(" ", "")
-		key = key:gsub("ALT%-", "A")
-		key = key:gsub("CTRL%-", "C")
-		key = key:gsub("SHIFT%-", "S")
+		key = key:gsub("ALT%-", L["Alt"])
+		key = key:gsub("CTRL%-", L["Ctrl"])
+		key = key:gsub("SHIFT%-", L["Shift"])
+		key = key:gsub("NUMPAD", L["NumPad"])
 
-		key = key:gsub("NUMPAD", "N")
-
-		key = key:gsub("BACKSPACE", "BS")
 		key = key:gsub("PLUS", "%+")
 		key = key:gsub("MINUS", "%-")
 		key = key:gsub("MULTIPLY", "%*")
 		key = key:gsub("DIVIDE", "%/")
-		key = key:gsub("HOME", "HN")
-		key = key:gsub("INSERT", "Ins")
-		key = key:gsub("DELETE", "Del")
-		key = key:gsub("BUTTON3", "M3")
-		key = key:gsub("BUTTON4", "M4")
-		key = key:gsub("BUTTON5", "M5")
-		key = key:gsub("MOUSEWHEELDOWN", "WD")
-		key = key:gsub("MOUSEWHEELUP", "WU")
-		key = key:gsub("PAGEDOWN", "PD")
-		key = key:gsub("PAGEUP", "PU")
+
+		key = key:gsub("BACKSPACE", L["Backspace"])
+		key = key:gsub("BUTTON3", L["Button3"])
+		key = key:gsub("BUTTON4", L["Button4"])
+		key = key:gsub("BUTTON5", L["Button5"])
+		key = key:gsub("CAPSLOCK", L["Capslock"])
+		key = key:gsub("CLEAR", L["Clear"])
+		key = key:gsub("DELETE", L["Delete"])
+		key = key:gsub("END", L["End"])
+		key = key:gsub("HOME", L["Home"])
+		key = key:gsub("INSERT", L["Insert"])
+		key = key:gsub("MOUSEWHEELDOWN", L["Mouse Wheel Down"])
+		key = key:gsub("MOUSEWHEELUP", L["Mouse Wheel Up"])
+		key = key:gsub("NUMLOCK", L["Num Lock"])
+		key = key:gsub("PAGEDOWN", L["Page Down"])
+		key = key:gsub("PAGEUP", L["Page Up"])
+		key = key:gsub("SCROLLLOCK", L["Scroll Lock"])
+		key = key:gsub("SPACEBAR", L["Spacebar"])
+		key = key:gsub("TAB", L["Tab"])
+
+		key = key:gsub("DOWNARROW", L["Down Arrow"])
+		key = key:gsub("LEFTARROW", L["Left Arrow"])
+		key = key:gsub("RIGHTARROW", L["Right Arrow"])
+		key = key:gsub("UPARROW", L["Up Arrow"])
 
 		return key
 	end
@@ -576,176 +604,25 @@ function LibKeyBound.Binder:GetBindings(button)
 end
 
 
-if (LibKeyBound.MacroButton) then
+if (LibKeyBound.EventButton) then
 	return
 end
 
-local MacroButton = CreateFrame("Frame")
-LibKeyBound.MacroButton = MacroButton
-
-function MacroButton:Load()
-	local i = 1
-	local button
-	repeat
-		button = getglobal(format("MacroButton%d", i))
-		if button then
-			local OnEnter = button:GetScript("OnEnter")
-			button:SetScript("OnEnter", function(self)
-				LibKeyBound:Set(self)
-				return OnEnter and OnEnter(self)
-			end)
-
-			button.GetBindAction = self.GetBindAction
-			button.GetActionName = self.GetActionName
-			button.SetKey = self.SetKey
-			button.GetHotkey = self.GetHotkey
-			button.ClearBindings = self.ClearBindings
-			button.GetBindings = self.GetBindings
-			i = i + 1
-		end
-	until not button
-end
-
-function MacroButton:OnEnter()
-	LibKeyBound:Set(self)
-end
-
-function MacroButton:GetActionName()
-	return GetMacroInfo(MacroFrame.macroBase + self:GetID())
-end
-
--- returns the keybind action of the given button
-function MacroButton:GetBindAction()
-	return format("MACRO %d", MacroFrame.macroBase + self:GetID())
-end
-
--- binds the given key to the given button
-function MacroButton:SetKey(key)
-	SetBindingMacro(key, MacroFrame.macroBase + self:GetID())
-end
-
--- removes all keys bound to the given button
-function MacroButton:ClearBindings()
-	local binding = self:GetBindAction()
-	while GetBindingKey(binding) do
-		SetBinding(GetBindingKey(binding), nil)
-	end
-end
-
--- returns a string listing all bindings of the given button
-function MacroButton:GetBindings()
-	local keys
-	local binding = self:GetBindAction()
-	for i = 1, select("#", GetBindingKey(binding)) do
-		local hotKey = select(i, GetBindingKey(binding))
-		if keys then
-			keys = keys .. ", " .. GetBindingText(hotKey, "KEY_")
-		else
-			keys = GetBindingText(hotKey, "KEY_")
-		end
-	end
-	return keys
-end
-
-function MacroButton:GetHotkey()
-	return LibKeyBound:ToShortKey(GetBindingKey(self:GetBindAction()))
-end
+local EventButton = CreateFrame("Frame")
+LibKeyBound.EventButton = EventButton
 
 do
-	MacroButton:SetScript("OnEvent", function(self, event, addon)
+	EventButton:SetScript("OnEvent", function(self, event, addon)
 		if (event == "PLAYER_REGEN_DISABLED") then
 			LibKeyBound:PLAYER_REGEN_DISABLED()
 		elseif (event == "PLAYER_REGEN_ENABLED") then
 			LibKeyBound:PLAYER_REGEN_ENABLED()
 		elseif (event == "PLAYER_LOGIN" and not LibKeyBound.initialized) then
 			LibKeyBound:Initialize()
-			MacroButton:UnregisterEvent("PLAYER_LOGIN")
-		end
-		if addon == "Blizzard_MacroUI" then
-			self:UnregisterEvent("ADDON_LOADED")
-			self:Load()
+			EventButton:UnregisterEvent("PLAYER_LOGIN")
 		end
 	end)
-	MacroButton:RegisterEvent("ADDON_LOADED")
-	MacroButton:RegisterEvent("PLAYER_LOGIN")
-	MacroButton:RegisterEvent("PLAYER_REGEN_ENABLED")
-	MacroButton:RegisterEvent("PLAYER_REGEN_DISABLED")
+	EventButton:RegisterEvent("PLAYER_LOGIN")
+	EventButton:RegisterEvent("PLAYER_REGEN_ENABLED")
+	EventButton:RegisterEvent("PLAYER_REGEN_DISABLED")
 end
-
-
-local CastButton = {}
-
-function CastButton:Load()
-	local i = 1
-	local button
-	repeat
-		button = getglobal('SpellButton' .. i)
-		if button then
-			button:HookScript('OnEnter', self.OnEnter)
-
-			button.GetBindAction = self.GetBindAction
-			button.GetActionName = self.GetActionName
-			button.SetKey = self.SetKey
-			button.GetHotkey = self.GetHotkey
-			button.ClearBindings = self.ClearBindings
-			button.GetBindings = self.GetBindings
-			i = i + 1
-		end
-	until not button
-end
-
-function CastButton:OnEnter()
-	local id = SpellBook_GetSpellID(self:GetID())
-	local bookType = SpellBookFrame.bookType
-
-	if not(bookType == BOOKTYPE_PET or IsPassiveSpell(id, bookType)) then
-		LibKeyBound:Set(self)
-	end
-end
-
-function CastButton:GetActionName()
-	local name, subName = GetSpellName(SpellBook_GetSpellID(self:GetID()), SpellBookFrame.bookType)
-	if(subName and subName ~= '') then
-		return format('%s(%s)', name, subName)
-	end
-	return name
-end
-
--- returns the keybind action of the given button
-function CastButton:GetBindAction()
-	return format('SPELL %s', self:GetActionName())
-end
-
--- binds the given key to the given button
-function CastButton:SetKey(key)
-	SetBindingSpell(key, self:GetActionName())
-end
-
--- removes all keys bound to the given button
-function CastButton:ClearBindings()
-	local binding = self:GetBindAction()
-	while GetBindingKey(binding) do
-		SetBinding(GetBindingKey(binding), nil)
-	end
-end
-
--- returns a string listing all bindings of the given button
-function CastButton:GetBindings()
-	local keys
-	local binding = self:GetBindAction()
-	for i = 1, select('#', GetBindingKey(binding)) do
-		local hotKey = select(i, GetBindingKey(binding))
-		if keys then
-			keys = keys .. ', ' .. GetBindingText(hotKey, 'KEY_')
-		else
-			keys = GetBindingText(hotKey, 'KEY_')
-		end
-	end
-	return keys
-end
-
-function CastButton:GetHotkey()
-	return LibKeyBound:ToShortKey(GetBindingKey(self:GetBindAction()))
-end
-
-CastButton:Load()

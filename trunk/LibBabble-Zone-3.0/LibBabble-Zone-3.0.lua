@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 74241 $
+Revision: $Rev: 75232 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 74241 $"
+local MINOR_VERSION = "$Revision: 75232 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -1279,18 +1279,18 @@ elseif GAME_LOCALE == "zhTW" then
 		["Magisters' Terrace"] = "博學者殿堂",
 
 		-- Blade's Edge Plateau
-		["Forge Camp: Terror"] = "",
-		["Vortex Pinnacle"] = "",
-		["Rivendark's Perch"] = "",
-		["Ogri'la"] = "",
-		["Obsidia's Perch"] = "",
-		["Skyguard Outpost"] = "",
-		["Shartuul's Transporter"] = "",
-		["Forge Camp: Wrath"] = "",
-		["Bash'ir Landing"] = "",
-		["Crystal Spine"] = "",
-		["Insidion's Perch"] = "",
-		["Furywing's Perch"] = "",
+		["Forge Camp: Terror"] = "煉冶場:驚駭",
+		["Vortex Pinnacle"] = "漩渦尖塔",
+		["Rivendark's Perch"] = "瑞文達科棲所",
+		["Ogri'la"] = "歐格利拉",
+		["Obsidia's Perch"] = "歐比希迪亞棲所",
+		["Skyguard Outpost"] = "禦天者崗哨",
+		["Shartuul's Transporter"] = "夏圖歐的傳送門",
+		["Forge Camp: Wrath"] = "煉冶場:憤怒",
+		["Bash'ir Landing"] = "貝許爾平臺",
+		["Crystal Spine"] = "水晶背脊",
+		["Insidion's Perch"] = "印希迪恩棲所",
+		["Furywing's Perch"] = "狂怒之翼棲所",
 
 		["Tirisfal"] = "提里斯法林地",
 		["Sunken Temple"] = "沉沒的神廟",

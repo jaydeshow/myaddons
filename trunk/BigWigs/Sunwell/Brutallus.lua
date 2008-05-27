@@ -197,7 +197,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"burn", "burnresist", "meteor", "stomp", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75201 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -231,6 +231,7 @@ function mod:Burn(player, spellID)
 			self:Message(other, "Attention", nil, nil, nil, spellID)
 			self:Whisper(player, L["burn_you"])
 		end
+		self:Icon(player, "icon")
 		self:Bar(other, 60, spellID)
 	end
 end

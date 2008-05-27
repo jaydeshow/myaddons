@@ -1,4 +1,38 @@
 ------------------------------------------------------------------------
+r75248 | ananhaid | 2008-05-27 09:03:47 -0400 (Tue, 27 May 2008) | 3 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: 
+- add Muru missing entire pre-localization.
+- Muru zhCN update.
+------------------------------------------------------------------------
+r75229 | scorpio0920 | 2008-05-27 00:38:38 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Prototype.lua
+
+BigWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r75223 | ackis | 2008-05-26 23:38:15 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: 
+- Add M'uru gravity ball timer
+------------------------------------------------------------------------
+r75212 | funkydude | 2008-05-26 18:38:00 -0400 (Mon, 26 May 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/BlackTemple/Illidan.lua
+
+BigWigs: BlackTemple/Illidan: Place an icon on barraged players
+------------------------------------------------------------------------
+r75201 | saroz | 2008-05-26 15:00:55 -0400 (Mon, 26 May 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Brutallus.lua
+
+BigWigs: Brutallus, place raid icon on burned player
+------------------------------------------------------------------------
 r75174 | ananhaid | 2008-05-26 05:51:10 -0400 (Mon, 26 May 2008) | 2 lines
 Changed paths:
    M /trunk/BigWigs/Sunwell/Kalecgos.lua
@@ -488,53 +522,4 @@ Changed paths:
    M /trunk/BigWigs/Sunwell/Twins.lua
 
 BigWigs: Sunwell: frFR Update
-------------------------------------------------------------------------
-r71441 | Carlos | 2008-04-25 08:57:16 -0400 (Fri, 25 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/Supremus.lua
-   M /trunk/BigWigs/Extras/Version.lua
-   M /trunk/BigWigs/Hyjal/Anetheron.lua
-   M /trunk/BigWigs/Hyjal/Archimonde.lua
-   M /trunk/BigWigs/Hyjal/Azgalor.lua
-   M /trunk/BigWigs/Hyjal/Winterchill.lua
-   M /trunk/BigWigs/Karazhan/Malchezaar.lua
-   M /trunk/BigWigs/Karazhan/Nightbane.lua
-   M /trunk/BigWigs/Outland/Kazzak.lua
-   M /trunk/BigWigs/Outland/Magtheridon.lua
-   M /trunk/BigWigs/SC/Vashj.lua
-   M /trunk/BigWigs/Sunwell/Brutallus.lua
-   M /trunk/BigWigs/Sunwell/Kalecgos.lua
-   M /trunk/BigWigs/Sunwell/Twins.lua
-   M /trunk/BigWigs/TheEye/Alar.lua
-   M /trunk/BigWigs/TheEye/Kaelthas.lua
-   M /trunk/BigWigs/TheEye/Reaver.lua
-   M /trunk/BigWigs/TheEye/Solarian.lua
-
-BigWigs: Fixed some Spanish (esES) typos... *blushes*
-------------------------------------------------------------------------
-r71438 | scorpio0920 | 2008-04-25 07:57:52 -0400 (Fri, 25 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/BigWigs_BlackTemple.toc
-   M /trunk/BigWigs/Extras/Proximity.lua
-   M /trunk/BigWigs/Extras/Test.lua
-   M /trunk/BigWigs/Extras/Tranq.lua
-   M /trunk/BigWigs/Extras/Version.lua
-   M /trunk/BigWigs/Hyjal/BigWigs_Hyjal.toc
-   M /trunk/BigWigs/Karazhan/BigWigs_Karazhan.toc
-   M /trunk/BigWigs/Outland/BigWigs_Outland.toc
-   M /trunk/BigWigs/Plugins/Bars.lua
-   M /trunk/BigWigs/Plugins/BigWigs_Plugins.toc
-   M /trunk/BigWigs/Plugins/BossBlock.lua
-   M /trunk/BigWigs/Plugins/Colors.lua
-   M /trunk/BigWigs/Plugins/Messages.lua
-   M /trunk/BigWigs/Plugins/RaidIcon.lua
-   M /trunk/BigWigs/Plugins/RaidWarn.lua
-   M /trunk/BigWigs/Plugins/Sound.lua
-   M /trunk/BigWigs/SC/BigWigs_SC.toc
-   M /trunk/BigWigs/Sunwell/BigWigs_Sunwell.toc
-   M /trunk/BigWigs/TheEye/BigWigs_TheEye.toc
-   M /trunk/BigWigs/ZulAman/BigWigs_ZulAman.toc
-
-BigWigs:
-- Update zhTW localization.
 ------------------------------------------------------------------------

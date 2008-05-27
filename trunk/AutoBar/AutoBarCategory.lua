@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75197 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1265,6 +1265,7 @@ function AutoBarCategory:Initialize()
 
 	local spellForceOfNature, spellForceOfNatureIcon
 	spellForceOfNature, _, spellForceOfNatureIcon = GetSpellInfo(33831)
+	local spellEagleEye = GetSpellInfo(6197)
 	local spellScareBeast = GetSpellInfo(14327)
 	local spellTameBeast = GetSpellInfo(1515)
 	local spellBeastTraining = GetSpellInfo(5149)
@@ -1289,6 +1290,7 @@ function AutoBarCategory:Initialize()
 	AutoBarCategoryList["Spell.Class.Pet"] = AutoBarSpells:new(
 			"Spell.Class.Pet", spellForceOfNatureIcon, {
 			"DRUID", spellForceOfNature,
+			"HUNTER", spellEagleEye,
 			"HUNTER", spellScareBeast,
 			"HUNTER", spellTameBeast,
 			"HUNTER", spellBeastTraining,

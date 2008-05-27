@@ -6,9 +6,14 @@
 if (GetLocale() ~= "deDE") then
 	return
 end
-local LKB = LibStub("LibKeyBound-1.0")
 
-LKB.locale = {
+local REVISION = tonumber(("$Revision: 75188 $"):match("%d+"))
+if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
+	return
+end
+
+LibKeyBoundLocale10 = {
+	REVISION = REVISION;
 	Enabled = "Tastenzuweisung Modus aktiviert";
 	Disabled = "Tastenzuweisung Modus deaktiviert";
 	ClearTip = format("Drücke %s um alle Tastenzuweisungen zu löschen", GetBindingText("ESCAPE", "KEY_"));
@@ -20,4 +25,36 @@ LKB.locale = {
 	CombatBindingsEnabled = "Verlasse Kampf, Tastenzuweisung Modus aktiviert";
 	CombatBindingsDisabled = "Beginne Kampf, Tastenzuweisung Modus deaktiviert";
 	BindingsHelp = "Schwebe mit der Maus über einem Schalter. Drück dann eine Taste um sie zuzuweisen. Um die Belegung der Taste wieder zu löschen drück %s.";
+
+	-- This is the short display version you see on the Button
+	["Alt"] = "A",
+	["Ctrl"] = "S",
+	["Shift"] = "U",
+	["NumPad"] = "N",
+
+	["Backspace"] = "BS",
+	["Button1"] = "B1",
+	["Button2"] = "B2",
+	["Button3"] = "B3",
+	["Button4"] = "B4",
+	["Button5"] = "B5",
+	["Capslock"] = "Cp",
+	["Clear"] = "Cl",
+	["Delete"] = "Del",
+	["End"] = "En",
+	["Home"] = "HM",
+	["Insert"] = "Ins",
+	["Mouse Wheel Down"] = "WD",
+	["Mouse Wheel Up"] = "WU",
+	["Num Lock"] = "NL",
+	["Page Down"] = "PD",
+	["Page Up"] = "PU",
+	["Scroll Lock"] = "SL",
+	["Spacebar"] = "Sp",
+	["Tab"] = "Tb",
+
+	["Down Arrow"] = "DA",
+	["Left Arrow"] = "LA",
+	["Right Arrow"] = "RA",
+	["Up Arrow"] = "UA",
 }

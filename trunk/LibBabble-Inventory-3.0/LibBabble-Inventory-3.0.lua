@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Inventory-3.0
-Revision: $Rev: 75179 $
+Revision: $Rev: 75230 $
 Author(s): ckknight (ckknight@gmail.com), Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/LibBabble-Inventory-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Inventory-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Inventory-3.0"
-local MINOR_VERSION = "$Revision: 75179 $"
+local MINOR_VERSION = "$Revision: 75230 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -858,11 +858,11 @@ elseif GAME_LOCALE == "zhTW" then
 		["Relic"] = "聖物",
 		["Libram"] = "聖契",
 		["Totem"] = "圖騰",
-		["Idol"] = "雕像",
+		["Idol"] = "塑像",
 
 		-- Armor Sub Types
 		["Librams"] = "聖契",  -- GetItemInfo() returns this as an ItemSubType.
-		["Idols"] = "雕像",  -- GetItemInfo() returns this as an ItemSubType.
+		["Idols"] = "塑像",  -- GetItemInfo() returns this as an ItemSubType.
 		["Totems"] = "圖騰",  -- GetItemInfo() returns this as an ItemSubType.
 		["Shields"] = "盾牌", -- GetItemInfo() returns this as an ItemSubType.
 
@@ -996,6 +996,7 @@ elseif GAME_LOCALE == "zhTW" then
 		["Pet"] = "寵物", -- New 2.3
 		["Holiday"] = "節慶用品", -- New 2.3
 		-- Reagent already defined
+		["Mount"] = "坐騎", -- New 2.4.2
 		-- Other already defined
 	}
 elseif GAME_LOCALE == "zhCN" then

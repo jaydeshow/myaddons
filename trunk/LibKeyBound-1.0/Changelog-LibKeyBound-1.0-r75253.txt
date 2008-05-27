@@ -1,4 +1,67 @@
 ------------------------------------------------------------------------
+r75253 | toadkiller | 2008-05-27 10:42:14 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Is indenting all examples at least 1 tab the answer?  AutoDoc, why do you vex me so?
+------------------------------------------------------------------------
+r75252 | toadkiller | 2008-05-27 10:30:47 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Maybe AutoDoc wants notes to be tabbed?
+------------------------------------------------------------------------
+r75247 | toadkiller | 2008-05-27 09:03:37 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Perhaps moving notes to end will make AutoDoc happy
+------------------------------------------------------------------------
+r75189 | toadkiller | 2008-05-26 11:45:26 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0.toc
+
+LibKeyBound-1.0:
+-- Update website
+------------------------------------------------------------------------
+r75188 | toadkiller | 2008-05-26 11:36:38 -0400 (Mon, 26 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-deDE.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-enUS.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esES.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esMX.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-frFR.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-koKR.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhCN.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhTW.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
+
+LibKeyBound-1.0:
+-- Switch to versioned global for the locale table
+------------------------------------------------------------------------
+r75185 | toadkiller | 2008-05-26 09:10:55 -0400 (Mon, 26 May 2008) | 6 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-deDE.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-enUS.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esES.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-esMX.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-frFR.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-koKR.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhCN.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhTW.lua
+
+LibKeyBound-1.0:
+-- Added some missing keys for LibKeyBound:ToShortKey
+-- Localize the shortened versions of the keys
+-- Remove the macro ui and spell book code
+-- Switch the /keybound to /libkeybound so the lib and the old code can be used together.
+
+------------------------------------------------------------------------
 r75093 | toadkiller | 2008-05-25 08:19:38 -0400 (Sun, 25 May 2008) | 2 lines
 Changed paths:
    M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
