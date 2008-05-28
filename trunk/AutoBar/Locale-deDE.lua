@@ -27,6 +27,8 @@ if (GetLocale() == "deDE") then
 		["Announce to Party"] = "Announce to Party",
 		["Announce to Raid"] = "Announce to Raid",
 		["Announce to Say"] = "Announce to Say",
+		["Bar Location"] = "Bar Location",
+		["Bar the Button is located on"] = "Bar the Button is located on",
 		["Bars"] = "Bars",
 		["Battlegrounds only"] = "Nur in Schlachtfeldern";
 		["Button Width"] = "Feldbreite";
@@ -492,6 +494,7 @@ if (GetLocale() == "deDE") then
 		["Spell.Totem.Air"] = "Air Totem";
 		["Spell.Totem.Fire"] = "Fire Totem";
 		["Spell.Totem.Water"] = "Water Totem";
+		["Spell.Seal"] = "Seal";
 		["Spell.Track"] = "Track";
 		["Spell.Trap"] = "Trap";
 		["Misc.Hearth"] = "Ruhestein";

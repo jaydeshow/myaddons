@@ -6,5 +6,6 @@
 	<Script file="Localization\zhCN.lua" />
 	<Script file="Localization\zhTW.lua" />
 	<Script file="Localization\deDE.lua" />
+	<Script file="Localization\esES.lua" />	
 	<Script file="Overview.lua" />
 </Ui>

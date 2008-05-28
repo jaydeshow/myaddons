@@ -1,6 +1,6 @@
 ## Interface: 20400
 ## Version: 2.0
-## X-Build: $Revision: 73114 $
+## X-Build: $Revision: 75263 $
 ## X-ReleaseDate: $Date: 2008-03-27 01:18:39 -0700 (Thu, 27 Mar 2008) $
 ## Title: Omen2
 ## Notes: A lightweight, flexible, multi-target threat meter.
@@ -25,6 +25,7 @@ Localization\deDE.lua
 Localization\koKR.lua
 Localization\zhCN.lua
 Localization\zhTW.lua
+Localization\esES.lua
 
 Omen.lua
 Options.lua

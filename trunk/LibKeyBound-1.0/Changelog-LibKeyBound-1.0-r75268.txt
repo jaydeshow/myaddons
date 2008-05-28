@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r75268 | scorpion | 2008-05-27 12:53:15 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhCN.lua
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhTW.lua
+
+LibKeyBound-1.0:
+ - Update zhTW & zhCN localization.
+------------------------------------------------------------------------
 r75253 | toadkiller | 2008-05-27 10:42:14 -0400 (Tue, 27 May 2008) | 2 lines
 Changed paths:
    M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua

@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75197 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1558,6 +1558,26 @@ function AutoBarCategory:Initialize2()
 	AutoBarCategoryList["Spell.Fishing"] = AutoBarSpells:new(
 			"Spell.Fishing", spellFishingIcon, {
 			"*", spellFishing,
+			})
+
+	spellNameList["Seal of Blood"] = GetSpellInfo(31892)
+	spellNameList["Seal of Command"] = GetSpellInfo(27170)
+	spellNameList["Seal of Justice"] = GetSpellInfo(31895)
+	spellNameList["Seal of Light"], _, spellIconList["Seal of Light"] = GetSpellInfo(20165)
+	spellNameList["Seal of Righteousness"] = GetSpellInfo(27155)
+	spellNameList["Seal of the Crusader"] = GetSpellInfo(21082)
+	spellNameList["Seal of Vengeance"] = GetSpellInfo(31801)
+	spellNameList["Seal of Wisdom"] = GetSpellInfo(27166)
+	AutoBarCategoryList["Spell.Seal"] = AutoBarSpells:new(
+			"Spell.Seal", spellIconList["Seal of Light"], {
+			"PALADIN", spellNameList["Seal of Blood"],
+			"PALADIN", spellNameList["Seal of Command"],
+			"PALADIN", spellNameList["Seal of Justice"],
+			"PALADIN", spellNameList["Seal of Light"],
+			"PALADIN", spellNameList["Seal of Righteousness"],
+			"PALADIN", spellNameList["Seal of the Crusader"],
+			"PALADIN", spellNameList["Seal of Vengeance"],
+			"PALADIN", spellNameList["Seal of Wisdom"],
 			})
 
 	local spellTrackHumanoids, spellTrackHumanoidsIcon

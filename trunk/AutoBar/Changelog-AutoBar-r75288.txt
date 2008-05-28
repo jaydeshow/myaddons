@@ -1,4 +1,46 @@
 ------------------------------------------------------------------------
+r75288 | toadkiller | 2008-05-27 17:57:47 -0400 (Tue, 27 May 2008) | 8 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/ChangeList.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- 2.04.02.54 beta ()
+-- Added bar location dropdown to buttons for easy movement or assignment to a bar
+-- Use LibKeyBound:ToShortKey for AutoBar key display
+-- AutoBarButtonStealth: added Rogue Priest Mage. Shadowmeld added if present for other classes.  Need to figure out how the two combine for NE Druid, Rogue Priest Mage.
+-- Seal category added for Paladins
+-- Integrate AutoBar custom bindings with LibKeyBound callbacks so Blizzard bindings get set as well.  First Cut.
+
+------------------------------------------------------------------------
+r75280 | StiviS | 2008-05-27 15:37:07 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-esES.lua
+
+AutoBar : 
+- esES updated
+------------------------------------------------------------------------
+r75267 | toadkiller | 2008-05-27 12:50:21 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+-- Drycoded translations!
+------------------------------------------------------------------------
 r75197 | toadkiller | 2008-05-26 14:07:15 -0400 (Mon, 26 May 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarCategory.lua
@@ -1297,63 +1339,4 @@ Changed paths:
 
 AutoBar:
 - Update zhTW localization.
-------------------------------------------------------------------------
-r71529 | StiviS | 2008-04-25 16:07:38 -0400 (Fri, 25 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : esES updated
-------------------------------------------------------------------------
-r71514 | toadkiller | 2008-04-25 15:29:08 -0400 (Fri, 25 Apr 2008) | 5 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Bar.frame:SetClampedToScreen(true).  This should prevent Bars from getting scaled or moved offscreen.
--- Popups now have the same padding as the bar.  HitRectInsets adjusted to compensate.
--- Adjust for padding on bars.  Bars with padding will now have buttons centered inside them with padding space around the buttons (Move Bar mode illustrates this).
-
-------------------------------------------------------------------------
-r71499 | toadkiller | 2008-04-25 14:32:52 -0400 (Fri, 25 Apr 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- Add FadeOut Time and FadeOut Alpha
--- Increase fadeOut update frequency
-
-------------------------------------------------------------------------
-r71475 | toadkiller | 2008-04-25 12:17:41 -0400 (Fri, 25 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- spellRitualOfSouls, _, spellRitualOfSoulsIcon = GetSpellInfo(29893) fixed
-
-------------------------------------------------------------------------
-r71471 | toadkiller | 2008-04-25 11:26:06 -0400 (Fri, 25 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- spellSummonFelsteed = GetSpellInfo(5784)
-
-------------------------------------------------------------------------
-r71454 | toadkiller | 2008-04-25 10:20:27 -0400 (Fri, 25 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
--- Dragging to bar drop spot now appends button instead of putting it into position 1
-
 ------------------------------------------------------------------------

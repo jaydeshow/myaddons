@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75196 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-05-26 13:35:37 -0400 (Mon, 26 May 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-05-27 17:57:47 -0400 (Tue, 27 May 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -481,7 +481,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarDruid",
 				defaultButtonIndex = 1,
 				enabled = true,
-				isChecked = true,
 				noPopup = true,
 			}
 		end
@@ -493,7 +492,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarDruid",
 				defaultButtonIndex = 2,
 				enabled = true,
-				isChecked = true,
 				noPopup = true,
 			}
 		end
@@ -505,7 +503,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = 3,
 				enabled = true,
-				isChecked = true,
 				noPopup = true,
 			}
 		end
@@ -517,19 +514,7 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarDruid",
 				defaultButtonIndex = 4,
 				enabled = true,
-				isChecked = true,
 				noPopup = true,
-			}
-		end
-
-		if (not AutoBar.db.class.buttonList["AutoBarButtonStealth"]) then
-			AutoBar.db.class.buttonList["AutoBarButtonStealth"] = {
-				buttonKey = "AutoBarButtonStealth",
-				buttonClass = "AutoBarButtonStealth",
-				barKey = "AutoBarClassBarDruid",
-				defaultButtonIndex = 6,
-				enabled = true,
-				isChecked = true,
 			}
 		end
 	end
@@ -541,7 +526,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 1,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonMount"]) then
@@ -551,7 +535,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 2,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -562,7 +545,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 3,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonHeal"]) then
@@ -572,7 +554,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 4,
 			enabled = false,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonRecovery"]) then
@@ -582,7 +563,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 5,
 			enabled = false,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonCooldownPotionHealth"]) then
@@ -592,7 +572,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 6,
 			enabled = true,
-			isChecked = true,
 			shuffle = true,
 		}
 	end
@@ -603,7 +582,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 7,
 			enabled = true,
-			isChecked = true,
 			shuffle = true,
 		}
 	end
@@ -614,7 +592,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 8,
 			enabled = true,
-			isChecked = true,
 			shuffle = true,
 		}
 	end
@@ -625,7 +602,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 9,
 			enabled = true,
-			isChecked = true,
 			shuffle = true,
 		}
 	end
@@ -636,7 +612,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 10,
 			enabled = true,
-			isChecked = true,
 			shuffle = true,
 		}
 	end
@@ -648,7 +623,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 11,
 			enabled = true,
-			isChecked = true,
 			shuffle = true,
 		}
 	end
@@ -660,7 +634,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarExtras",
 			defaultButtonIndex = 11,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonCooldownDrums"]) then
@@ -670,7 +643,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 12,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonFood"]) then
@@ -680,7 +652,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 13,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonFoodBuff"]) then
@@ -690,7 +661,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 14,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonFoodCombo"]) then
@@ -700,7 +670,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 15,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonBuff"]) then
@@ -710,7 +679,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 16,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -721,7 +689,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 17,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -732,7 +699,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 18,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -743,7 +709,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 19,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -754,7 +719,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 20,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -765,7 +729,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 21,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -776,7 +739,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 22,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -787,7 +749,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 23,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -798,7 +759,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 24,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonTrinket2"]) then
@@ -808,7 +768,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 25,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 
@@ -819,7 +778,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = "*",
 			enabled = false,
-			isChecked = true,
 			arrangeOnUse = true,
 			invertButtons = true,
 		}
@@ -835,7 +793,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarExtras",
 			defaultButtonIndex = 1,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonFreeAction"]) then
@@ -845,7 +802,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarExtras",
 			defaultButtonIndex = 2,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonExplosive"]) then
@@ -855,7 +811,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarExtras",
 			defaultButtonIndex = 3,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonFishing"]) then
@@ -865,7 +820,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarExtras",
 			defaultButtonIndex = 4,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonPets"]) then
@@ -875,7 +829,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarExtras",
 			defaultButtonIndex = 5,
 			enabled = true,
-			isChecked = true,
 			arrangeOnUse = true,
 		}
 	end
@@ -886,7 +839,6 @@ function AutoBar:InitializeDefaults()
 			barKey = "AutoBarClassBarExtras",
 			defaultButtonIndex = 6,
 			enabled = true,
-			isChecked = true,
 		}
 	end
 
@@ -898,8 +850,7 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarBasic",
 				defaultButtonIndex = "AutoBarButtonFood",
 				enabled = true,
-				isChecked = true,
-			}
+				}
 		end
 
 		if (not AutoBar.db.account.buttonList["AutoBarButtonWaterBuff"]) then
@@ -909,7 +860,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarBasic",
 				defaultButtonIndex = "AutoBarButtonWater",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -923,7 +873,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarHunter",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 				rightClickTargetsPet = true,
 			}
@@ -935,7 +884,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarHunter",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -946,8 +894,19 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarHunter",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
+			}
+		end
+	end
+
+	if (AutoBar.CLASS == "DRUID" or AutoBar.CLASS == "ROGUE" or AutoBar.CLASS == "PRIEST" or AutoBar.CLASS == "MAGE") then
+		if (not AutoBar.db.class.buttonList["AutoBarButtonStealth"]) then
+			AutoBar.db.class.buttonList["AutoBarButtonStealth"] = {
+				buttonKey = "AutoBarButtonStealth",
+				buttonClass = "AutoBarButtonStealth",
+				barKey = AutoBar.classBar,
+				defaultButtonIndex = "*",
+				enabled = true,
 			}
 		end
 	end
@@ -960,7 +919,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 			}
 		end
 	end
@@ -973,7 +931,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 			}
 		end
 	end
@@ -986,7 +943,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -1000,7 +956,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				noPopup = true,
 			}
 		end
@@ -1014,7 +969,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -1028,7 +982,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -1042,7 +995,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarRogue",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 				targeted = "Lockpicking",
 			}
@@ -1057,7 +1009,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarShaman",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -1069,7 +1020,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarShaman",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -1081,7 +1031,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarShaman",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -1093,7 +1042,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarShaman",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 				arrangeOnUse = true,
 			}
 		end
@@ -1105,7 +1053,6 @@ function AutoBar:InitializeDefaults()
 				barKey = AutoBar.classBar,
 				defaultButtonIndex = 3,
 				enabled = true,
-				isChecked = true,
 				noPopup = true,
 			}
 		end
@@ -1119,7 +1066,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarWarlock",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 			}
 		end
 	end
@@ -1132,7 +1078,6 @@ function AutoBar:InitializeDefaults()
 				barKey = "AutoBarClassBarWarrior",
 				defaultButtonIndex = "*",
 				enabled = true,
-				isChecked = true,
 			}
 		end
 	end
@@ -1246,6 +1191,15 @@ function AutoBar:RefreshBarDBLists()
 		barButtonsDBList[barKey] = AutoBar:GetSharedBarDB(barKey, "sharedButtons")
 		barLayoutDBList[barKey] = AutoBar:GetSharedBarDB(barKey, "sharedLayout")
 		barPositionDBList[barKey] = AutoBar:GetSharedBarDB(barKey, "sharedLocation")
+	end
+
+	local barValidateList = AutoBar.barValidateList
+	for key in pairs(barValidateList) do
+		barValidateList[key] = nil
+	end
+	barValidateList[""] = L["None"]
+	for barKey, barDB in pairs(AutoBar.barLayoutDBList) do
+		barValidateList[barKey] = L[barKey]
 	end
 end
 

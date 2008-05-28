@@ -27,6 +27,8 @@ if (GetLocale() == "koKR") then
 		["Announce to Party"] = "파티에 알림",
 		["Announce to Raid"] = "공격대에 알림",
 		["Announce to Say"] = "일반 알림",
+		["Bar Location"] = "Bar Location",
+		["Bar the Button is located on"] = "Bar the Button is located on",
 		["Bars"] = "바들",
 		["Battlegrounds only"] = "전장에서만",
 		["Button Width"] = "버튼 너비",
@@ -492,6 +494,7 @@ if (GetLocale() == "koKR") then
 		["Spell.Totem.Air"] = "바람의 토템";
 		["Spell.Totem.Fire"] = "불의 토템";
 		["Spell.Totem.Water"] = "물의 토템";
+		["Spell.Seal"] = "Seal";
 		["Spell.Track"] = "추적";
 		["Spell.Trap"] = "덫";
 		["Misc.Hearth"] = "귀환석";

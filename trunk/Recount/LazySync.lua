@@ -1,7 +1,7 @@
 LibStub:GetLibrary("AceComm-3.0"):Embed(Recount)
 LibStub:GetLibrary("AceSerializer-3.0"):Embed(Recount)
 
-local revision = tonumber(string.sub("$Revision: 73442 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 75264 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 Recount.MinimumV=70425 -- Because !BugGrabber sucks!
@@ -465,6 +465,15 @@ function Recount:ConfigComm()
 		else
 			Recount.VerTable[owner]=version
 		end
+	end
+end
+
+function Recount:DeleteVersion(name)
+	if Recount.VerTable and Recount.VerTable[name] then
+		Recount.VerTable[name] = nil
+	end
+	if Recount.VerNum and Recount.VerNum[name] then
+		Recount.VerNum[name] = nil
 	end
 end
 

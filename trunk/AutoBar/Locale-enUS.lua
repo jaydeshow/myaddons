@@ -27,6 +27,8 @@ if (GetLocale() == "enUS") then
 		["Announce to Party"] = "Announce to Party",
 		["Announce to Raid"] = "Announce to Raid",
 		["Announce to Say"] = "Announce to Say",
+		["Bar Location"] = "Bar Location",
+		["Bar the Button is located on"] = "Bar the Button is located on",
 		["Bars"] = "Bars",
 		["Battlegrounds only"] = "Battlegrounds only",
 		["Button Width"] = "Button Width",
@@ -271,7 +273,6 @@ if (GetLocale() == "enUS") then
 		["|c00FF9966C|r"] = "|c00FF9966C|r",
 		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["|c009966CCA|r"] = "|c009966CCA|r",
-		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["NP"] = "NP",
 		["M"] = "M",
 		["MM"] = "MM",
@@ -492,6 +493,7 @@ if (GetLocale() == "enUS") then
 		["Spell.Totem.Air"] = "Air Totem";
 		["Spell.Totem.Fire"] = "Fire Totem";
 		["Spell.Totem.Water"] = "Water Totem";
+		["Spell.Seal"] = "Seal";
 		["Spell.Track"] = "Track";
 		["Spell.Trap"] = "Trap";
 		["Misc.Hearth"] = "Hearthstone";

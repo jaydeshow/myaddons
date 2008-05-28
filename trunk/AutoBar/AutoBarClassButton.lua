@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -30,33 +30,6 @@ end
 -- Basic Button with textures, highlighting, keybindText, tooltips etc.
 AutoBar.Class.Button = AceOO.Class("AceEvent-2.0", "AceHook-2.1")
 
-
-function AutoBar.Class.Button:ShortenKeyBinding(text)
-	return LibKeyBound:ToShortKey(text)
---[[
-	text = text:gsub("CTRL%-", L["|c00FF9966C|r"])
-	text = text:gsub("STRG%-", L["|c00CCCC00S|r"])
-	text = text:gsub("ALT%-", L["|c009966CCA|r"])
-	text = text:gsub("SHIFT%-", L["|c00CCCC00S|r"])
-	text = text:gsub(L["Num Pad "], L["NP"])
-	text = text:gsub(L["Mouse Button "], L["M"])
-	text = text:gsub(L["Middle Mouse"], L["MM"])
-	text = text:gsub(L["Backspace"], L["Bs"])
-	text = text:gsub(L["Spacebar"], L["Sp"])
-	text = text:gsub(L["Delete"], L["De"])
-	text = text:gsub(L["Home"], L["Ho"])
-	text = text:gsub(L["End"], L["En"])
-	text = text:gsub(L["Insert"], L["Ins"])
-	text = text:gsub(L["Page Up"], L["Pu"])
-	text = text:gsub(L["Page Down"], L["Pd"])
-	text = text:gsub(L["Down Arrow"], L["D"])
-	text = text:gsub(L["Up Arrow"], L["U"])
-	text = text:gsub(L["Left Arrow"], L["L"])
-	text = text:gsub(L["Right Arrow"], L["R"])
-
-	return text
---]]
-end
 
 local function onAttributeChangedFunc(button)
 	local self = button.class
@@ -150,6 +123,10 @@ function AutoBar.Class.Button.prototype:GetButtonFrameName()
 	return self.buttonDB.buttonKey .. "Frame"
 end
 
+function AutoBar.Class.Button.prototype:GetButtonBinding()
+	return self.buttonDB.buttonKey .. "_X"
+end
+
 
 --
 -- LibKeyBound Handlers
@@ -170,12 +147,57 @@ function AutoBar.Class.Button:GetActionName()
 end
 
 function AutoBar.Class.Button:SetKey(key)
-	local frame = self
-	local buttonKey = frame.class.buttonDB.buttonKey
-	local buttonFrameName = frame.class:GetButtonFrameName()
+	local button = self.class
+	local buttonKey = button.buttonDB.buttonKey
+	local buttonFrameName = button:GetButtonFrameName()
 	if (key) then
-		SetOverrideBindingClick(AutoBar.keyFrame, false, key, buttonFrameName)
+--		SetOverrideBindingClick(AutoBar.keyFrame, false, key, buttonFrameName)
+		local buttonBinding = button:GetButtonBinding()
+		if (buttonBinding) then
+AutoBar:Print("AutoBar.Class.Button.prototype:SetKey buttonBinding " .. tostring(buttonBinding) .. " -> " .. tostring(key))-- .. " buttonName " .. tostring(frame.class.buttonName))
+			SetBinding(key, buttonBinding)
+AutoBar:Print("AutoBar.Class.Button.prototype:SetKey buttonBinding " .. tostring(buttonBinding) .. " <- " .. tostring(GetBindingKey(buttonBinding)))-- .. " buttonName " .. tostring(frame.class.buttonName))
+		end
+		button:BindingsUpdate()
 	end
+end
+
+function AutoBar.Class.Button:ClearBindings()
+	local button = self.class
+	local buttonFrameName = button:GetButtonFrameName()
+	local buttonBinding = button:GetButtonBinding()
+	while GetBindingKey(buttonBinding) do
+		SetBinding(GetBindingKey(buttonBinding), nil)
+	end
+	button:BindingsUpdate()
+end
+
+function AutoBar.Class.Button:GetBindings()
+	local button = self.class
+	local buttonBinding = button:GetButtonBinding()
+	local keys
+	for i = 1, select('#', GetBindingKey(buttonBinding)) do
+		local hotKey = select(i, GetBindingKey(buttonBinding))
+		if keys then
+			keys = keys .. ', ' .. GetBindingText(hotKey, 'KEY_')
+		else
+			keys = GetBindingText(hotKey, 'KEY_')
+		end
+	end
+	return keys
+end
+--/dump _G["AutoBarButtonTrinket2_X"]
+
+function AutoBar.Class.Button.prototype:BindingsUpdate()
+	local buttonFrameName = self:GetButtonFrameName()
+	local buttonBinding = self:GetButtonBinding()
+	for i = 1, select('#', GetBindingKey(buttonBinding)) do
+		local hotKey = select(i, GetBindingKey(buttonBinding))
+--AutoBar:Print("AutoBar.Class.Button.prototype:BindingsUpdate hotKey " .. tostring(hotKey) .. " buttonFrameName " .. tostring(buttonFrameName))
+		SetOverrideBindingClick(AutoBar.keyFrame, false, hotKey, buttonFrameName)
+	end
+--AutoBar:Print("AutoBar.Class.Button.prototype:BindingsUpdate -> buttonFrameName " .. tostring(buttonFrameName))
+	self:UpdateHotkeys()
 end
 
 
@@ -184,7 +206,6 @@ end
 -- Create Override Bindings from the Blizzard bindings to our dummy binds in Bindings.xml.
 -- These do not clash with the real frames to bind to, so all is happy.
 function AutoBar.Class.Button:UpdateBindings(buttonName, buttonFrameName)
-	local frame = self.frame
 	local key1, key2 = GetBindingKey(buttonName .. "_X")
 	if (key1) then
 --AutoBar:Print("AutoBar.Class.Button.prototype:UpdateBindings key1 " .. tostring(key1) .. " key2 " .. tostring(key2) .. " buttonName " .. tostring(buttonName))
@@ -196,6 +217,7 @@ function AutoBar.Class.Button:UpdateBindings(buttonName, buttonFrameName)
 end
 -- /script SetOverrideBindingClick(AutoBarButtonTrinket1Frame, false, "U", "AutoBarButtonTrinket1Frame")
 -- /script ClearOverrideBindings(AutoBarButtonTrinket1Frame)
+-- /script AutoBarButtonTrinket2Frame.class:UpdateHotkeys()
 
 -- CreateButtonFrame will NOT anchor the button, you HAVE to do that.
 function AutoBar.Class.Button.prototype:CreateButtonFrame()
@@ -247,7 +269,9 @@ function AutoBar.Class.Button.prototype:CreateButtonFrame()
 
 	frame.GetHotkey = AutoBar.Class.Button.GetHotkey
 	frame.GetActionName = AutoBar.Class.Button.GetActionName
---	frame.SetKey = AutoBar.Class.Button.SetKey
+	frame.SetKey = AutoBar.Class.Button.SetKey
+	frame.ClearBindings = AutoBar.Class.Button.ClearBindings
+	frame.GetBindings = AutoBar.Class.Button.GetBindings
 
 	self:UpdateButton()
 
@@ -545,10 +569,14 @@ function AutoBar.Class.Button.prototype:UpdateHotkeys()
 	end
 
 	local frame = self.frame
-	local key1, key2 = GetBindingKey(self.buttonName .. "_X")
-	local key = key1 or key2
-	if (key) then
-		frame.hotKey:SetText(AutoBar.Class.Button:ShortenKeyBinding(GetBindingText(key, "KEY_", 1)))
+	local buttonBinding = self:GetButtonBinding() or frame:GetName()
+	if (buttonBinding) then
+		local key = GetBindingKey(buttonBinding)
+		if (key) then
+			frame.hotKey:SetText(LibKeyBound:ToShortKey(GetBindingText(key, "KEY_", 1)))
+		else
+			frame.hotKey:SetText("")
+		end
 	end
 ----	local itemId = self.frame:GetAttribute("itemId")
 ----	local spell	= self.frame:GetAttribute("*spell1")
@@ -563,7 +591,7 @@ function AutoBar.Class.Button.prototype:UpdateHotkeys()
 ----			hotKey:SetText("")
 ----		end
 ----	else
---		hotKey:SetText(ShortenKeyBinding(GetBindingText(key, "KEY_", 1)))
+--		hotKey:SetText(LibKeyBound:ToShortKey(GetBindingText(key, "KEY_", 1)))
 ----	end
 end
 

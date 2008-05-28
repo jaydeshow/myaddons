@@ -7,7 +7,7 @@ if (GetLocale() ~= "zhTW") then
 	return
 end
 
-local REVISION = tonumber(("$Revision: 75188 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75268 $"):match("%d+"))
 if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
 	return
 end
@@ -20,11 +20,11 @@ LibKeyBoundLocale10 = {
 	NoKeysBoundTip = "目前没有綁定按鍵";
 	ClearedBindings = "從 %s 移除按鍵綁定";
 	BoundKey = "設置 %s 到 %s";
-	UnboundKey = "取消綁定 %s 从 %s";
-	CannotBindInCombat = "不能在戰鬥狀態綁定按鍵";
+	UnboundKey = "取消綁定 %s 從 %s";
+	CannotBindInCombat = "無法在戰鬥狀態綁定按鍵";
 	CombatBindingsEnabled = "離開戰鬥狀態, 按鍵綁定模式已啟用";
 	CombatBindingsDisabled = "進入戰鬥狀態, 按鍵綁定模式已停用";
-	BindingsHelp = "將滑鼠停留在按鈕上, 然後按下指定快捷鍵之後就能榜定。  要清除目前榜定的按鈕請按 %s.";
+	BindingsHelp = "將滑鼠停留在按鈕上, 然後按下欲指定快捷鍵之後就能綁定。  要清除目前綁定的按鈕請按 %s.";
 
 	-- This is the short display version you see on the Button
 	["Alt"] = "A",

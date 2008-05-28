@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -237,6 +237,9 @@ function AutoBar:OnInitialize()
 	AutoBar.barLayoutDBList = {}
 	AutoBar.barPositionDBList = {}
 
+	-- List of Bar Names
+	AutoBar.barValidateList = {}
+
 	-- List of buttonKey = buttonDB (the correct DB to use between char, class or account)
 	AutoBar.buttonDBList = {}
 
@@ -259,7 +262,6 @@ function AutoBar:OnInitialize()
 	AutoBar:InitializeDB()
 	AutoBarCategory:Upgrade()
 	AutoBar:InitializeOptions()
-	AutoBar:InitializeDelays()
 	AutoBar:Initialize()
 --	AutoBar.db.account.performance = false
 --AutoBar:Print("--> FullyInitialized")
@@ -571,7 +573,6 @@ end
 
 function AutoBar:UPDATE_BINDINGS()
 	if (not InCombatLockdown()) then
---AutoBar:Print("UPDATE_BINDINGS:RegisterOverrideBindings")
 		self:RegisterOverrideBindings()
 		AutoBar.delay["UpdateButtons"]:Start()
 	end
@@ -668,6 +669,9 @@ function AutoBar:PLAYER_REGEN_DISABLED(arg1)
 
 	if (AutoBar.unlockButtons) then
 		AutoBar:MoveButtonsModeOff()
+		LibKeyBound:Deactivate()
+	end
+	if (AutoBar.keyBoundMode) then
 		LibKeyBound:Deactivate()
 	end
 --AutoBar:Print("   PLAYER_REGEN_DISABLED")
@@ -1165,18 +1169,16 @@ function DelayedUpdateButtons.prototype:Callback()
 end
 
 
-function AutoBar:InitializeDelays()
-	AutoBar.delayInitialize = DelayedInitialize:new(timerIndexList["AutoBarInit"])
-	AutoBar.delay["UpdateCategories"] = DelayedUpdateCategories:new()
-	AutoBar.delay["UpdateCustomBars"] = DelayedUpdateCustomBars:new()
-	AutoBar.delay["UpdateCustomButtons"] = DelayedUpdateCustomButtons:new()
-	AutoBar.delay["UpdateSpells"] = DelayedUpdateSpells:new()
-	AutoBar.delay["UpdateObjects"] = DelayedUpdateObjects:new()
-	AutoBar.delay["UpdateRescan"] = DelayedUpdateRescan:new()
-	AutoBar.delay["UpdateScan"] = DelayedUpdateScan:new()
-	AutoBar.delay["UpdateActive"] = DelayedUpdateActive:new()
-	AutoBar.delay["UpdateButtons"] = DelayedUpdateButtons:new()
-end
+AutoBar.delayInitialize = DelayedInitialize:new(timerIndexList["AutoBarInit"])
+AutoBar.delay["UpdateCategories"] = DelayedUpdateCategories:new()
+AutoBar.delay["UpdateCustomBars"] = DelayedUpdateCustomBars:new()
+AutoBar.delay["UpdateCustomButtons"] = DelayedUpdateCustomButtons:new()
+AutoBar.delay["UpdateSpells"] = DelayedUpdateSpells:new()
+AutoBar.delay["UpdateObjects"] = DelayedUpdateObjects:new()
+AutoBar.delay["UpdateRescan"] = DelayedUpdateRescan:new()
+AutoBar.delay["UpdateScan"] = DelayedUpdateScan:new()
+AutoBar.delay["UpdateActive"] = DelayedUpdateActive:new()
+AutoBar.delay["UpdateButtons"] = DelayedUpdateButtons:new()
 
 
 --
@@ -1358,4 +1360,4 @@ end
 --/script AutoBar.db.account.logEvents = true
 --/script AutoBar.db.account.logEvents = nil
 --/script LibStub("LibKeyBound-1.0"):SetColorKeyBoundMode(0.75, 1, 0, 0.5)
---/script DEFAULT_CHAT_FRAME:AddMessage("")
+--/script DEFAULT_CHAT_FRAME:AddMessage("" .. tostring())

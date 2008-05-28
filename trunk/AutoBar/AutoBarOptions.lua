@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75091 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -967,7 +967,6 @@ local function setBarEnabled(table)
 	local barKey, buttonIndex = table.barKey
 	local config = AutoBar.barLayoutDBList[barKey]
 	config.enabled = not config.enabled
-	config.isChecked = config.enabled
 	optionsChanged()
 end
 
@@ -980,7 +979,6 @@ local function setButtonEnabled(table)
 	local buttonKey = table.buttonKey
 	local config = AutoBar:GetButtonDB(buttonKey)
 	config.enabled = not config.enabled
-	config.isChecked = config.enabled
 	optionsChanged()
 end
 
@@ -1487,7 +1485,7 @@ end
 -- /script AutoBar.db.account.buttonList["AutoBarCustomButton4"] = nil
 
 local function ButtonRemove(table)
-	local barKey, buttonIndex, buttonKey = table.barKey, table.buttonIndex, table.buttonKey
+	local barKey, buttonKey = table.barKey, table.buttonKey
 
 	-- Search for its bar & cut it out
 	local barButtonsDBList = AutoBar.barButtonsDBList
@@ -1505,6 +1503,29 @@ local function ButtonRemove(table)
 
 	AutoBar:BarButtonChanged()
 end
+
+local function getBarLocation(table)
+	local buttonKey = table.buttonKey
+	barKey = AutoBar.buttonDBList[buttonKey].barKey
+
+	return barKey or ""
+end
+
+local function setBarLocation(table, value)
+	if (value == "") then
+		ButtonRemove(table)
+	else
+		local buttonKey = table.buttonKey
+		ButtonRemove(table)
+
+		local barKey = value
+		local buttonKeys = AutoBar.barButtonsDBList[barKey].buttonKeys
+		buttonKeys[# buttonKeys + 1] = buttonKey
+	end
+
+	AutoBar:BarButtonChanged()
+end
+
 
 local function ButtonNew()
 	local newButtonName, customButtonKey = AutoBar.Class.Button:GetNewName(L["Custom"])
@@ -2247,7 +2268,7 @@ function AutoBar:CreateBarSubOptions(barOptions, passValue)
 				},
 				newButton = {
 				    type = "header",
-					order = 3,
+					order = 1,
 				},
 				newButton = {
 				    type = "execute",
@@ -2447,9 +2468,20 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 					passValue = passValue,
 					disabled = getCombatLockdown,
 				},
+				barLocation = {
+				    type = 'text',
+					order = 3,
+				    name = L["Bar Location"],
+				    desc = L["Bar the Button is located on"],
+					get = getBarLocation,
+					set = setBarLocation,
+				    validate = AutoBar.barValidateList,
+					passValue = passValue,
+					disabled = getCombatLockdown,
+				},
 				arrangeOnUse = {
 					type = "toggle",
-					order = 3,
+					order = 10,
 					name = L["Rearrange Order on Use"],
 					desc = L["Rearrange Order on Use for %s"]:format(name),
 					get = getButtonArrangeOnUse,
@@ -2459,7 +2491,7 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 				},
 				shuffle = {
 					type = "toggle",
-					order = 3,
+					order = 12,
 					name = L["Shuffle"],
 					desc = L["Shuffle replaces depleted items during combat with the next best item"],
 					get = getButtonShuffle,
@@ -2469,7 +2501,7 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 				},
 				hide = {
 					type = "toggle",
-					order = 4,
+					order = 14,
 					name = L["Hide"],
 					desc = L["Hide %s"]:format(name),
 					get = getButtonHide,
@@ -2479,7 +2511,7 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 				},
 				noPopup = {
 					type = "toggle",
-					order = 5,
+					order = 16,
 					name = L["No Popup"],
 					desc = L["No Popup for %s"]:format(name),
 					get = getButtonNoPopup,
@@ -2489,7 +2521,7 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 				},
 				alwaysShow = {
 					type = "toggle",
-					order = 6,
+					order = 18,
 					name = L["Always Show"],
 					desc = L["Always Show %s, even if empty."]:format(name),
 					get = getButtonAlwaysShow,
@@ -2499,7 +2531,7 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 				},
 				rightClickTargetsPet = {
 					type = "toggle",
-					order = 7,
+					order = 20,
 					name = L["Right Click Targets Pet"],
 					desc = L["Right Click Targets Pet"],
 					get = getRightClickTargetsPet,

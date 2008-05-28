@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 73474 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 75266 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-11 11:44:45 -0400 (Sun, 11 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-27 12:26:49 -0400 (Tue, 27 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("Cooldowns", "LibRockEvent-1.0", "LibRockTimer-1.0")
@@ -182,6 +182,11 @@ Parrot:RegisterSecondaryTriggerCondition {
 		usage = L["<Spell name>"],
 	},
 	check = function(param)
-		return spellNameToID[param] and not cooldowns[param] and IsUsableSpell(param)
+		if(tonumber(param)) then
+			param = GetSpellInfo(param)
+		end
+		return (GetSpellCooldown(param) == 0) and IsUsableSpell(param)
+		-- [old code]
+		-- return spellNameToID[param] and not cooldowns[param] and IsUsableSpell(param)
 	end,
 }

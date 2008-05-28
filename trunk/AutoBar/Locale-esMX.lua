@@ -27,6 +27,8 @@ if (GetLocale() == "esMX") then
 		["Announce to Party"] = "Announce to Party",
 		["Announce to Raid"] = "Announce to Raid",
 		["Announce to Say"] = "Announce to Say",
+		["Bar Location"] = "Bar Location",
+		["Bar the Button is located on"] = "Bar the Button is located on",
 		["Bars"] = "Barras",
 		["Battlegrounds only"] = "Solo en Campos de Batalla",
 		["Button Width"] = "Anchura del Botón";
@@ -492,6 +494,7 @@ if (GetLocale() == "esMX") then
 		["Spell.Totem.Air"] = "Totem de Aire";
 		["Spell.Totem.Fire"] = "Totem de Fuego";
 		["Spell.Totem.Water"] = "Totem de Agua";
+		["Spell.Seal"] = "Seal";
 		["Spell.Track"] = "Pista";
 		["Spell.Trap"] = "Trampa";
 		["Misc.Hearth"] = "Piedra de hogar";
