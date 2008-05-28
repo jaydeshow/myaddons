@@ -1,3 +1,5 @@
+-- $Rev: 75331 $
+
 -- Parrot localization information
 -- Translation by Next96, Fenlis, Omosiro, SayClub
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")

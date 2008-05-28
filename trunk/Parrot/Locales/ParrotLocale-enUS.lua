@@ -1,3 +1,5 @@
+-- $Rev: 75330 $
+
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("enUS", function() return {
 		["Parrot"] = true,
@@ -474,6 +476,7 @@ L_CombatEvents_Data:AddTranslations("enUS", function() return {
 		["Pet skill reflects"] = true,
 		["Pet Reflect!"] = true,
 		["Pet skill evades"] = true,
+		["Pet heals over time"] = true,
 		["Combat status"] = true,
 		["Enter combat"] = true,
 		["Leave combat"] = true,
@@ -538,6 +541,14 @@ L_CombatEvents_Data:AddTranslations("enUS", function() return {
 		["Frost"] = true,
 		["Shadow"] = true,
 		["Arcane"] = true,
+		
+		["The name of the enemy that attacked your pet."] = true,
+		["The spell or ability that the enemy attacked your pet with."] = true,
+		["The name of the ally that healed your pet."] = true,
+		["The spell or ability that the ally healed your pet with."] = true,
+		["The spell or ability that your pet used."] = true,
+		["The name of the unit that your pet healed."] = true,
+		["The spell or ability that the pet used to heal."] = true,
 }end)
 
 local L_Cooldowns = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Cooldowns")

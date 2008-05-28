@@ -1,3 +1,5 @@
+-- $Rev: 75331 $
+
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("zhCN", function() return {
 		["Parrot"] = "Parrot",

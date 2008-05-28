@@ -1,4 +1,4 @@
-﻿local VERSION = tonumber(("$Revision: 74152 $"):match("%d+"))
+-- $Rev: 75331 $
 
 -- german Locale by profalbert
 -- missing translations are commented out
@@ -249,7 +249,7 @@ L_Triggers:AddTranslations("deDE", function() return {
 		["Warrior"] = "Krieger",
 		["Hunter"] = "Jäger",
 		["Output"] = "Ausgabe",
-		["The text that is shown"] = true,
+		["The text that is shown"] = "Der angezeigte Text",
 		['<Text to show>'] = "<Angezeigter Text>",
 		["Icon"] = "Symbol",
 		["The icon that is shown"] = "Das angezeigte Symbol",
@@ -504,9 +504,9 @@ L_CombatEvents_Data:AddTranslations("deDE", function() return {
 		["The amount of reputation lost."] = "Der Betrag des verlorenen Rufs",
 		["Skill gains"] = "Zauber erhalten",
 		["The skill which experienced a gain."] = "Der Zauber, der eine Verbesserung erhalten hat",
-		["The amount of skill points currently."] = true,
+		-- ["The amount of skill points currently."] = ,
 		["Experience gains"] = "Erfahrung erhalten",
-		["The amount of experience points gained."] = true,
+		["The amount of experience points gained."] = "Betrag der erhaltenen Erfahrungspunkte",
 		["Killing blows"] = "Todesstöße",
 		["Player killing blows"] = "Spieler-Todesstöße",
 		["Killing Blow!"] = "Todesstoß!",
@@ -529,6 +529,14 @@ L_CombatEvents_Data:AddTranslations("deDE", function() return {
 		["Frost"] = "Frost",
 		["Shadow"] = "Schatten",
 		["Arcane"] = "Arkan",
+		["The name of the enemy that attacked your pet."] = "Der Name des Feindes der euren Begleiter angegriffen hat",
+		["The spell or ability that the enemy attacked your pet with."] = "Der Zauber mit dem der Feind euren Begleiter angegriffen hat",
+		["The name of the ally that healed your pet."] = "Der Name des Verbündeten der euren Begleiter geheilt hat",
+		["The spell or ability that the ally healed your pet with."] = "Der Zauber mit dem der Verbündete euren Begleiter geheilt hat",
+		["The spell or ability that your pet used."] = "Der Zauber den euer Begleiter benutzt hat",
+		["The name of the unit that your pet healed."] = "Der Name der Einheit, die euer Begleiter geheilt hat",
+		["The spell or ability that the pet used to heal."] = "Der Zauber den euer Begleiter benutzt hat, um zu heilen",
+		
 }end)
 
 local L_Cooldowns = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Cooldowns")

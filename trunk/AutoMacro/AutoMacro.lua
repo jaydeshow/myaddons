@@ -15,8 +15,7 @@ end
 local function __test()
 end
 
---TODO:cache the result!
-local function __GetSpellIndex(spell)
+local function __GetSpellIndex_Core(spell)
 
 	local index=0
 	local count=0
@@ -53,6 +52,83 @@ local function __GetSpellIndex(spell)
 	
 	return index,count
 end
+local _spellindextable={}
+local function __GetSpellIndex(spell)
+	local obj=_spellindextable[spell]
+	if obj then
+		if not obj.index then
+			return nil,nil;
+		end
+		local name,rank=GetSpellName(obj.index,BOOKTYPE_SPELL)
+		if name==obj.name and rank==obj.rank then
+			return obj.index,obj.count
+		end
+	end
+	obj={}
+	local index,count=__GetSpellIndex_Core(spell)
+	if index then
+		obj.index=index
+		obj.count=count
+		local name,rank=GetSpellName(obj.index,BOOKTYPE_SPELL)
+		obj.name=name
+		obj.rank=rank
+		_spellindextable[spell]=obj
+	end
+	return obj.index,obj.count
+end
+
+local _spelliscasting=nil;
+local _lastspellname=nil;
+local _lastspelltime=0;
+local EventFrame=CreateFrame("Frame")
+EventFrame:SetScript("OnEvent", function(self,event,unit,name)
+	if unit~="player" then
+		return
+	end
+	if event=="UNIT_SPELLCAST_START" then
+		_lastspellname=UnitCastingInfo("player");
+		_lastspelltime=GetTime();
+		_spelliscasting=1;
+	end
+	if event=="UNIT_SPELLCAST_SUCCEEDED" then
+		_lastspellname=name;
+		_lastspelltime=GetTime();
+	end
+	if event=="UNIT_SPELLCAST_FAILED" or event=="UNIT_SPELLCAST_INTERRUPTED" then
+		_lastspellname=name;
+		_lastspelltime=0;
+	end
+	if event=="UNIT_SPELLCAST_STOP" then
+		_spelliscasting=nil;
+	end
+	--another spell is casting...
+	if event=="UNIT_SPELLCAST_FAILED_QUIET" then
+		--__Print(event);
+	end
+end);
+EventFrame:RegisterEvent("UNIT_SPELLCAST_START");
+EventFrame:RegisterEvent("UNIT_SPELLCAST_STOP");
+EventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED");
+EventFrame:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED");
+EventFrame:RegisterEvent("UNIT_SPELLCAST_FAILED");
+EventFrame:RegisterEvent("UNIT_SPELLCAST_FAILED_QUIET");
+
+
+local function GetCurrentOrLastSpell()
+	local spell=UnitCastingInfo("player") or UnitChannelInfo("player")
+	if spell then
+		return spell
+	end
+	if _spelliscasting then
+		return _lastspellname
+	end
+	if GetTime()-_lastspelltime<1 then
+		return _lastspellname
+	end
+	return nil;
+end
+
+
 function AM_InRange(spell)
 	local index,count=__GetSpellIndex(spell)
 	if index then
@@ -65,7 +141,7 @@ function AM_InCD(spell)
 	local index,count=__GetSpellIndex(spell)
 	if index then
 		local start,duration,enable=GetSpellCooldown(index,BOOKTYPE_SPELL)
-		if (start>0 and duration>2) then
+		if (start>0 and duration>0) then
 			return true
 		end
 	else
@@ -78,7 +154,7 @@ function IsSpellCastable(spell,target)
 	if index then
 		if IsUsableSpell(index,BOOKTYPE_SPELL,target) and IsSpellInRange(index,BOOKTYPE_SPELL,target)~=0 then
 			local start,duration,enable=GetSpellCooldown(index,BOOKTYPE_SPELL)
-			if not (start>0 and duration>2) then
+			if not (start>0 and duration>0) then
 				return spell;
 			end
 		end
@@ -108,15 +184,15 @@ function FindCastableSpell(...)
 	end
 end
 
-function UnitBuffIndex(unit,nameoricon)
+function UnitBuffIndex(unit,nameoricon,notimecheck)
 	local i=0
 	for i=1,16 do
 		local name, rank, iconTexture, count, duration, timeLeft = UnitBuff(unit, i);
 		if name and iconTexture then
-			if _strcontains(name,nameoricon) then
+			if _strcontains(name,nameoricon) and (notimecheck or timeLeft~=nil) then
 				return i,name, rank, iconTexture, count, duration, timeLeft
 			end
-			if _strcontains(iconTexture,nameoricon) then
+			if _strcontains(iconTexture,nameoricon) and (notimecheck or timeLeft~=nil) then
 				return i,name, rank, iconTexture, count, duration, timeLeft
 			end
 		end
@@ -128,10 +204,10 @@ function UnitDebuffIndex(unit,nameoricon,notimecheck)
 	for i=1,16 do
 		local name, rank, iconTexture, count,debuffType, duration, timeLeft = UnitDebuff(unit, i);
 		if name and iconTexture then
-			if _strcontains(name,nameoricon) then
+			if _strcontains(name,nameoricon) and (notimecheck or timeLeft~=nil) then
 				return i,name, rank, iconTexture, count,debuffType, duration, timeLeft
 			end
-			if _strcontains(iconTexture,nameoricon) then
+			if _strcontains(iconTexture,nameoricon) and (notimecheck or timeLeft~=nil) then
 				return i,name, rank, iconTexture, count,debuffType, duration, timeLeft
 			end
 		end
@@ -188,14 +264,6 @@ function UnitHasSpellEffect(unit,spell,notimecheck)
 	return nil
 end
 
-ReplaceCmdList={};
-
---NOTE:/next function is not done!
-NextMacroButton=CreateFrame("CheckButton","NextMacroButton",UIParent,"SecureActionButtonTemplate");
-NextMacroButton:Hide();
-NextMacroButton:SetAttribute("type","macro");
-NextMacroButton:SetAttribute("macrotext","/next\n/next\n/next\n/next\n/next\n/next\n/next\n/next\n/nextbutton");
-
 local _call_action=nil;
 
 local macrobox=getglobal("MacroEditBox");
@@ -207,6 +275,12 @@ local function CreateScope()
 	s.skipline=0;
 	return s;
 end
+
+
+function SkipLine(line)
+	scope.skipline=tonumber(line) or 0;
+end
+
 
 --TODO: maybe we need fix this for the command /click buttonName .
 function after_UseAction()
@@ -246,6 +320,17 @@ function AM_HandleCondition(type,msg,target)
 	if type=="CD" then
 		return AM_InCD(msg)
 	end
+	
+	if type=="FB" or type=="ADDFB" or type=="FBX" or type=="ADDFBX" 
+		or type=="TB" or type=="ADDTB" or type=="TBX" or type=="ADDTBX"
+		or type=="PB" or type=="ADDPB" or type=="PBX" or type=="ADDPBX" 
+		then
+		local currentspell=GetCurrentOrLastSpell()
+		if currentspell and _strcontains(msg,currentspell) then
+			return nil;
+		end
+	end
+	
 	if type=="FB" or type=="ADDFB" or type=="FBX" or type=="ADDFBX" then
 		if target then
 			if not UnitExists(target) then
@@ -299,6 +384,7 @@ function AM_HandleCondition(type,msg,target)
 		end
 		return nil
 	end
+	
 	local numtype,num=strmatch(type,"([a-zA-Z])([0-9]+)")
 	if numtype and num then
 		if numtype=="R" then
@@ -313,13 +399,23 @@ function AM_HandleCondition(type,msg,target)
 		end
 		return nil
 	end
+	
 	return 1; --unknown condition maybe parse error..
 end
+
 local function HandleConditions(msg,target,...)
 	local i
 	for i=1,select("#", ...) do
-		if not AM_HandleCondition(select(i,...),msg,target) then
-			return nil
+		local type=select(i,...)
+		if strsub(type,1,2)=="NO" then
+			type=strsub(type,3)
+			if AM_HandleCondition(type,msg,target) then
+				return nil
+			end
+		else
+			if not AM_HandleCondition(type,msg,target) then
+				return nil
+			end
 		end
 	end
 	return true
@@ -342,8 +438,23 @@ local function HandleLineElseIf(result)
 	return true;
 end
 function AM_HandleLine(command,msg)
+
+	--TODO: support /skipif , /doif directly here . 
+
 	if command=="/SKIPNONE" then
 		scope.skipline=0;
+		return true;
+	end
+	if strmatch(command,"/DOIF([^%s]*)") then
+		if not AM_HandleCondition(strmatch(command,"/DOIF([^%s]*)"),msg) then
+			SkipLine(1);	
+		end
+		return true;
+	end
+	if strmatch(command,"/SKIPIF([^%s]*)") then
+		if AM_HandleCondition(strmatch(command,"/SKIPIF([^%s]*)"),msg) then
+			SkipLine(1);	
+		end
 		return true;
 	end
 	if strmatch(command,"/IF([^%s]*)") then
@@ -394,7 +505,8 @@ function AM_HandleLine(command,msg)
 		return true;
 	end
 
-	if command=="/CAST" then
+	local types = strmatch(msg, ":%d?([a-zA-Z][a-zA-Z0-9%+]+)");
+	if command=="/CAST" or types then
 		local action, target = SecureCmdOptionParse(msg);
 		if not action then
 			return true
@@ -412,7 +524,6 @@ function AM_HandleLine(command,msg)
 			--target="target"
 		end
 
-		local types = strmatch(msg, ":%d?([a-zA-Z][a-zA-Z0-9%+]+)");
 		if types then
 			if HandleConditions(action,target,strsplit("+",strupper(types))) then
 				return false
@@ -442,20 +553,6 @@ function ChatEdit_HandleChatType(editBox, msg, command, send)
 	return _ChatEdit_HandleChatType_(editBox, msg, command, send)
 end
 
-function SkipLine(line)
-	scope.skipline=tonumber(line) or 0;
-end
-
-function SKIPLINEIF(msg)
-	local count,exp = strmatch(msg, "^(%d+)%s+(.*)");
-	if exp then
-		if CalcCondition(exp) then
-			SkipLine(count);
-		end
-	else
-		__Print("usage: /skiplineif N Condition()");
-	end
-end
 function SKIPIF(msg)
 	if msg then
 		if CalcCondition(msg) then
@@ -471,8 +568,6 @@ function DOIF(msg)
 	end
 end
 
-SlashCmdList["SKIPLINEIF"]=SKIPLINEIF;
-SLASH_SKIPLINEIF1="/SKIPLINEIF";
 SlashCmdList["SKIPIF"]=SKIPIF;
 SLASH_SKIPIF1="/SKIPIF";
 
@@ -570,3 +665,4 @@ function SetUIPanel()
 end
 
 __Print("AutoMacro Loaded.");
+

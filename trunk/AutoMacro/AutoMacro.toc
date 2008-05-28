@@ -10,5 +10,6 @@
 ## SavedVariables:
 AutoMacro.lua
 AutoDispel.lua
+AutoHeal.lua
 
 

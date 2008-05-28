@@ -16,7 +16,9 @@ local macrobutton=CreateFrame("Button","AutoDispelMacroButton",UIParent,"SecureA
 
 local function InitializeMacroButton()
 	local str="/script AutoDispel_Start()"
+	str=str.."\n".."/target target"
 	str=str.."\n".."/target player"
+	str=str.."\n".."/target targettarget"
 	local i
 	for i=1,5 do
 		str=str.."\n".."/target party"..i
@@ -71,6 +73,12 @@ local function ShouldDoNextTargetCommand(target)
 		return false
 	end
 	if not UnitExists(target) then
+		return false
+	end
+	if not UnitIsVisible(target) then
+		return false
+	end
+	if not UnitIsFriend(target,"player") then
 		return false
 	end
 	if not IsSpellCastable(_dispelname,target) then
