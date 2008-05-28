@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -919,6 +919,18 @@ AutoBar.Class["AutoBarButtonCustom"] = AutoBarButtonCustom
 function AutoBarButtonCustom.prototype:init(parentBar, buttonDB)
 	AutoBarButtonCustom.super.prototype.init(self, parentBar, buttonDB)
 	self.frame.SetKey = nil
+end
+
+function AutoBarButtonCustom.prototype:GetButtonBinding()
+	return nil
+end
+
+function AutoBarButtonCustom.prototype:CreateButtonFrame()
+	AutoBarButtonCustom.super.prototype.CreateButtonFrame(self)
+	self.frame.GetActionName = nil
+	self.frame.SetKey = nil
+	self.frame.ClearBindings = nil
+	self.frame.GetBindings = nil
 end
 
 local spellAquaticForm, spellAquaticFormIcon
@@ -2012,17 +2024,28 @@ function AutoBarButtonStealth.prototype:init(parentBar, buttonDB)
 	self:Refresh(parentBar, buttonDB)
 end
 
+spellNameList["Invisibility"], _, spellIconList["Invisibility"] = GetSpellInfo(66)
+spellNameList["Shadowform"], _, spellIconList["Shadowform"] = GetSpellInfo(15473)
+spellNameList["Shadowmeld"], _, spellIconList["Shadowmeld"] = GetSpellInfo(20580)
+spellNameList["Stealth"], _, spellIconList["Stealth"] = GetSpellInfo(1787)
+
 function AutoBarButtonStealth.prototype:Refresh(parentBar, buttonDB)
 	AutoBarButtonStealth.super.prototype.Refresh(self, parentBar, buttonDB)
 	self.macroActive = nil
 
+	for index in pairs(concatList) do
+		concatList[index] = nil
+	end
+
+	concatList[1] = "/cast "
+	local index = 2
 	local macroTexture
 	if (AutoBar.CLASS == "DRUID") then
 		for excludeForm in pairs(excludeList) do
 			excludeList[excludeForm] = nil
 		end
 		excludeList[spellNameList["Cat Form"]] = true
-		local concatList = GetCancelList(excludeList)
+		concatList = GetCancelList(excludeList)
 
 		local index = # concatList + 1
 		if (shapeshiftSet[spellNameList["Cat Form"]]) then
@@ -2036,8 +2059,33 @@ function AutoBarButtonStealth.prototype:Refresh(parentBar, buttonDB)
 			self.macroActive = true
 		end
 	elseif (AutoBar.CLASS == "ROGUE") then
+		if (GetSpellInfo(spellNameList["Stealth"])) then
+			concatList[index] = spellNameList["Stealth"]
+
+			macroTexture = spellIconList["Stealth"]
+			self.macroActive = true
+		end
 	elseif (AutoBar.CLASS == "PRIEST") then
+		if (GetSpellInfo(spellNameList["Shadowform"])) then
+			concatList[index] = spellNameList["Shadowform"]
+
+			macroTexture = spellIconList["Shadowform"]
+			self.macroActive = true
+		end
 	elseif (AutoBar.CLASS == "MAGE") then
+		if (GetSpellInfo(spellNameList["Invisibility"])) then
+			concatList[index] = spellNameList["Invisibility"]
+
+			macroTexture = spellIconList["Invisibility"]
+			self.macroActive = true
+		end
+	else
+		if (GetSpellInfo(spellNameList["Shadowmeld"])) then
+			concatList[index] = spellNameList["Shadowmeld"]
+
+			macroTexture = spellIconList["Shadowmeld"]
+			self.macroActive = true
+		end
 	end
 	if (self.macroActive) then
 		local macroText = table.concat(concatList)

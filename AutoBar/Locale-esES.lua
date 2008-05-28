@@ -27,6 +27,8 @@ if (GetLocale() == "esES") then
 		["Announce to Party"] = "Anunciar al Grupo",
 		["Announce to Raid"] = "Anunciar a la Banda",
 		["Announce to Say"] = "Anunciar en Decir",
+		["Bar Location"] = "Ubicación de la Barra",
+		["Bar the Button is located on"] = "El Botón de la barra se encuentra en",
 		["Bars"] = "Barras",
 		["Battlegrounds only"] = "Solo en Campos de Batalla",
 		["Button Width"] = "Anchura del Botón",
@@ -198,7 +200,7 @@ if (GetLocale() == "esES") then
 		["AutoBarButtonClassBuff"] = "Buff: Clase",
 		["AutoBarButtonClassPet"] = "Mascota de Clase",
 		["AutoBarButtonConjure"] = "Conjuro",
-		["AutoBarButtonCooldownDrums"] = "Reutilización: Bidones",
+		["AutoBarButtonCooldownDrums"] = "Reutilización: Tambores",
 		["AutoBarButtonCooldownPotionHealth"] = "Reutilización: Salud",
 		["AutoBarButtonCooldownPotionMana"] = "Reutilización: Maná",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "Reutilización: Rejuvenecer",
@@ -228,7 +230,7 @@ if (GetLocale() == "esES") then
 		["AutoBarButtonPets"] = "Mascotas",
 		["AutoBarButtonQuest"] = "Misión",
 		["AutoBarButtonRecovery"] = "Maná / Ira / Energía",
-		["AutoBarButtonRotationDrums"] = "Rotación: Bidones",
+		["AutoBarButtonRotationDrums"] = "Rotación: Tambores",
 		["AutoBarButtonSpeed"] = "Velocidad",
 		["AutoBarButtonStance"] = "Postura",
 		["AutoBarButtonStealth"] = "Sigilo",
@@ -456,10 +458,10 @@ if (GetLocale() == "esES") then
 		["Consumable.Cooldown.Stone.Rejuvenation.Dreamless Sleep"] = "Poción de letargo sin sueños";
 		["Consumable.Cooldown.Potion.Rejuvenation"] = "Pociones de Rejuvenecimiento";
 		["Consumable.Cooldown.Stone.Health.Statue"] = "Estátuas de Piedra";
-		["Consumable.Cooldown.Drums"] = "Reutilización: Bidones";
+		["Consumable.Cooldown.Drums"] = "Reutilización: Tambores";
 		["Consumable.Cooldown.Potion"] = "Reutilización: Poción";
 		["Consumable.Cooldown.Stone"] = "Reutilización: Piedra";
-		["Consumable.Leatherworking.Drums"] = "Bidones";
+		["Consumable.Leatherworking.Drums"] = "Tambores";
 		["Consumable.Tailor.Net"] = "Redes";
 
 		["Misc.Battle Standard.Battleground"] = "Estandarte de Batalla";
@@ -492,6 +494,7 @@ if (GetLocale() == "esES") then
 		["Spell.Totem.Air"] = "Totem de Aire";
 		["Spell.Totem.Fire"] = "Totem de Fuego";
 		["Spell.Totem.Water"] = "Totem de Agua";
+		["Spell.Seal"] = "Sello";
 		["Spell.Track"] = "Pista";
 		["Spell.Trap"] = "Trampa";
 		["Misc.Hearth"] = "Piedra de hogar";

@@ -27,6 +27,8 @@ if (GetLocale() == "zhCN") then
 		["Announce to Party"] = "通报到小队",
 		["Announce to Raid"] = "通报到团队",
 		["Announce to Say"] = "通报到 '说'",
+		["Bar Location"] = "Bar Location",
+		["Bar the Button is located on"] = "Bar the Button is located on",
 		["Bars"] = "物品列",
 		["Battlegrounds only"] = "只能在战场使用";
 		["Button Width"] = "按钮宽度";
@@ -492,6 +494,7 @@ if (GetLocale() == "zhCN") then
 		["Spell.Totem.Air"] = "空气图腾";
 		["Spell.Totem.Fire"] = "火焰图腾";
 		["Spell.Totem.Water"] = "水之图腾";
+		["Spell.Seal"] = "Seal";
 		["Spell.Track"] = "追踪技能";
 		["Spell.Trap"] = "陷阱";
 		["Misc.Hearth"] = "炉石";

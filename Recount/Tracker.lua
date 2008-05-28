@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 74578 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 75264 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -1234,7 +1234,17 @@ function Recount:AddDamageData(source, victim, ability, element, hittype, damage
 	
 	local sourceData=Recount.db2.combatants[source]
 	local victimData=Recount.db2.combatants[victim]
+
+	if not sourceData then
+		Recount:DPrint("Missing source: "..source)
+		return
+	end
 	
+	if not victimData then
+		Recount:DPrint("Missing target: "..victim)
+		return
+	end
+
 	Recount:SetActive(sourceData)
 	Recount:SetActive(victimData)
 
@@ -1543,6 +1553,16 @@ function Recount:AddHealData(source, victim, ability, healtype, amount, overheal
 		return
 	end
 
+	if not sourceData then
+		Recount:DPrint("Missing source: "..source)
+		return
+	end
+	
+	if not victimData then
+		Recount:DPrint("Missing target: "..victim)
+		return
+	end
+
 	Recount:SetActive(sourceData)
 	Recount:SetActive(victimData)
 
@@ -1707,6 +1727,16 @@ function Recount:AddInterruptData(source, victim, ability, srcGUID,srcFlags, dst
 	local sourceData=Recount.db2.combatants[source]
 	local victimData=Recount.db2.combatants[victim]
 
+	if not sourceData then
+		Recount:DPrint("Missing source: "..source)
+		return
+	end
+	
+	if not victimData then
+		Recount:DPrint("Missing target: "..victim)
+		return
+	end
+	
 	Recount:SetActive(sourceData)
 	Recount:SetActive(victimData)
 
@@ -1767,6 +1797,16 @@ function Recount:AddDispelData(source, victim, ability,srcGUID,srcFlags,dstGUID,
 	local victimData=Recount.db2.combatants[victim]
 	local sourceData=Recount.db2.combatants[source]
 
+	if not sourceData then
+		Recount:DPrint("Missing source: "..source)
+		return
+	end
+	
+	if not victimData then
+		Recount:DPrint("Missing target: "..victim)
+		return
+	end
+	
 	Recount:SetActive(sourceData)
 	Recount:SetActive(victimData)
 	

@@ -7,7 +7,7 @@ if (GetLocale() ~= "zhCN") then
 	return
 end
 
-local REVISION = tonumber(("$Revision: 75188 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75268 $"):match("%d+"))
 if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
 	return
 end
@@ -24,7 +24,7 @@ LibKeyBoundLocale10 = {
 	CannotBindInCombat = "不能在战斗状态绑定按键";
 	CombatBindingsEnabled = "离开战斗状态, 按键绑定模式已启用";
 	CombatBindingsDisabled = "进入战斗状态, 按键绑定模式已禁用";
-	BindingsHelp = "将鼠标停留在按钮上, 然后按下指定快捷键之后就能榜定。  要清除目前榜定的按钮请按";
+	BindingsHelp = "将鼠标停留在按钮上, 然后按下欲指定快捷键之后就能绑定。  要清除目前绑定的按钮请按";
 
 	-- This is the short display version you see on the Button
 	["Alt"] = "A",

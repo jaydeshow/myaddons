@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Tradeskill-2.2
-Revision: $Rev: 74301 $
+Revision: $Rev: 75273 $
 Author(s): ckknight (ckknight@gmail.com), Kemayo
 Website: http://ckknight.wowinterface.com/
 Documentation: http://wiki.wowace.com/index.php/Babble-Tradeskill-2.2
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Tradeskill-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 74301 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 75273 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -7001,6 +7001,7 @@ BabbleTradeskill:RegisterTranslations("zhCN", function()
 		["Prospecting"] = "选矿",
 		["Skinning"] = "剥皮",
 		["Smelting"] = "熔炼",
+		["Riding"] = "骑乘",
 
 --Crafting skills 详细专业技能分类
 		["Alchemy"] = "炼金术",

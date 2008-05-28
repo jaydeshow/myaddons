@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r75266 | profalbert | 2008-05-27 12:26:49 -0400 (Tue, 27 May 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/Cooldowns.lua
+
+Parrot:
+- properbly fixed "Spell ready"-conditions in Triggers (Riposite, etc)
+
+------------------------------------------------------------------------
 r75085 | profalbert | 2008-05-25 05:56:31 -0400 (Sun, 25 May 2008) | 3 lines
 Changed paths:
    M /trunk/Parrot/Parrot.toc
@@ -482,20 +490,4 @@ Changed paths:
 
 Parrot:
 - Target buff/debuff-Triggers should work again (Blackout, etc)
-------------------------------------------------------------------------
-r71524 | profalbert | 2008-04-25 15:52:54 -0400 (Fri, 25 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/Parrot/Code/TriggerConditions.lua
-   M /trunk/Parrot/Parrot.toc
-
-Parrot:
-- Triggersystem works with CombatEvents again (except incoming spell-casts)
-- bumped toc to 2.4
-------------------------------------------------------------------------
-r71318 | profalbert | 2008-04-24 16:00:55 -0400 (Thu, 24 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Parrot/Code/CombatEvents.lua
-
-Parrot:
-- Throttled Events should now display the correct icon
 ------------------------------------------------------------------------

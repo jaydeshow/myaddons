@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r75265 | lahow | 2008-05-27 12:25:36 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+   M /trunk/Cartographer_QuestInfo/Data/Name-deDE.lua
+   M /trunk/Cartographer_QuestInfo/Data/Name-esES.lua
+   M /trunk/Cartographer_QuestInfo/Data/Name-frFR.lua
+   M /trunk/Cartographer_QuestInfo/Data/Name-zhCN.lua
+   M /trunk/Cartographer_QuestInfo/Data/Name-zhTW.lua
+
+Cartographer_QuestInfo:
+- update npc names (from wowhead, wowbox)
+------------------------------------------------------------------------
 r75159 | lahow | 2008-05-26 03:09:29 -0400 (Mon, 26 May 2008) | 2 lines
 Changed paths:
    M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc

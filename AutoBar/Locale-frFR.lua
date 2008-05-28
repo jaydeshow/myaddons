@@ -27,6 +27,8 @@ if (GetLocale() == "frFR") then
 		["Announce to Party"] = "Announce to Party",
 		["Announce to Raid"] = "Announce to Raid",
 		["Announce to Say"] = "Announce to Say",
+		["Bar Location"] = "Bar Location",
+		["Bar the Button is located on"] = "Bar the Button is located on",
 		["Bars"] = "Barres",
 		["Battlegrounds only"] = "En champs de bataille seulement",
 		["Button Width"] = "Largeur du bouton",
@@ -493,6 +495,7 @@ if (GetLocale() == "frFR") then
 		["Spell.Totem.Air"] = "Totem d'air";
 		["Spell.Totem.Fire"] = "Totem de feu";
 		["Spell.Totem.Water"] = "Totem d'eau";
+		["Spell.Seal"] = "Seal";
 		["Spell.Track"] = "Pistage";
 		["Spell.Trap"] = "Piège";
 		["Misc.Hearth"] = "Pierre de foyer";

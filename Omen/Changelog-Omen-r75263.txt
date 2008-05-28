@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r75263 | maqjav | 2008-05-27 12:06:12 -0400 (Tue, 27 May 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Modules/AOE/module.xml
+   M /trunk/Omen/Modules/Healer/module.xml
+   M /trunk/Omen/Modules/Overview/module.xml
+   M /trunk/Omen/Modules/SingleTarget/module.xml
+   M /trunk/Omen/Omen.toc
+
+Omen: added the spanish translation for the complete addon
+------------------------------------------------------------------------
 r74823 | xinhuan | 2008-05-22 15:03:46 -0400 (Thu, 22 May 2008) | 1 line
 Changed paths:
    M /trunk/Omen/ModuleBase.lua
@@ -208,37 +218,4 @@ Changed paths:
    M /trunk/Omen/Omen.lua
 
 Omen: Fix taint from using UIFrameFlash() by using a custom solution. Previously, it will cause players using built in wow voice chat to see errors.
-------------------------------------------------------------------------
-r71088 | funkydude | 2008-04-23 12:36:27 -0400 (Wed, 23 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Omen/Omen.toc
-
-Omen: remove 'only compatible with 2.4' from notes
-------------------------------------------------------------------------
-r71071 | xinhuan | 2008-04-23 08:32:37 -0400 (Wed, 23 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Omen/Frame.lua
-   M /trunk/Omen/ModuleBase.lua
-
-Omen: - Resizing Omen will now save anchors properly (fixes grow up/down).
-- Resizing Omen with "AutoCollapse" and "Collapse hides bar list" options both on will no longer cause Omen to be stuck to your mouse cursor (permanently in resizing mode) until you ReloadUI().
-------------------------------------------------------------------------
-r70687 | cwdg | 2008-04-21 00:56:06 -0400 (Mon, 21 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Omen/Localization/zhCN.lua
-
-Omen: Update zhCN locale
-------------------------------------------------------------------------
-r70686 | kunda | 2008-04-21 00:39:07 -0400 (Mon, 21 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/Omen/Localization/deDE.lua
-
-Omen: deDE update
-------------------------------------------------------------------------
-r70682 | ananhaid | 2008-04-21 00:04:08 -0400 (Mon, 21 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/Omen/Localization/zhCN.lua
-
-Omen: 
-- zhCN update.
 ------------------------------------------------------------------------

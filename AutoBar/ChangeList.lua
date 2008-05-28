@@ -14,29 +14,18 @@
 -- Inventory & Instance checks
 -- Buff detection: Don't show buff items if buffed already
 -- Hide slot option
--- Shuffle - OnClick during combat, if slot is empty and more items available move them over.
--- Arrange on use even in combat for inventory items only
 -- Food Blend for pets.
--- Popup on Shift
--- Data versioning & verification
+-- Data verification
 -- Deal with charges: display them use smaller charged items first. Coming in 2.3
 -- Cryolysis: (Left = use, right = conjure, middle = trade stack with current target.) If the stack is not full it conjures till it is.  Ctrl-force trade.
 -- Mmm drag & drop between the bar and bags / trade etc. ?
--- Add a fake cooldown to the Totem buttons for duration & not the spell cooldown
--- Option to disable tooltips during combat
--- Option to adjust the padding of the popup buttons
 -- A button specific checkbox to always show the popups
 
 
---
--- Outstanding issues
---
-
 --[[
+= What is not working right now? =
  * Preferences need improvement
   * ACE3 / Rock
- * Macro Buttons
-  * Travel macro beyond just druids: Ghost Wolf, Pally Aura & Hunter thingy.
  * Drag & Drop
   * Items need to be draggable onto the category in the tree part of the config.
   * Items dragged onto a custom button automatically create a custom category if it does not have one & drop into it
@@ -45,7 +34,6 @@
  * Rock: implement the link type so Rock can be used for config.
   * Rock: stringControl -> linkControl
  * !LibStickyFrames-2.0
-  * Mods label them so you can figure out currently not shown bars / frames etc.
   * Fine movement controls for a selected frame (say temporary arrow keys + modifiers for 1 or 5 pixel or grid movement)
  * For custom categories allow direct selection of a PT3 set
   * Optional priority set that takes precedence over the regular set for a particular item's value.  For example conjured food over regular.
@@ -57,8 +45,6 @@
   * !AutoBarButtonER: castsequence reset = 600, Last Stand, category x, category y, button n, etc.  ER - Emergency Response.  NS heals for healers, Iceblock for mages, --> Shieldwall, Bubble for pallies
   * !AutoBarButtonFishing: Keeps track of swapped gear, equips them on combat or some kind of ctrl-click or something.  First clicks equips fishing gear then pole then applies best lure when its missing.  Then casts a line.
   * !AutoBarButtonSeal: for paladins
-  * !AutoBarButtonStealth: Priest, Rogue & Night Elf mia
-  * !AutoBarButtonTrap/Sting/Totem: need cooldowns
   * Note Petfood needs an ug to be a rightclick hunter eats & left click pet eats.
 --]]
 
@@ -67,8 +53,6 @@
 --
 
 --[[
-AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
-
 = What is still planned for the new version? =
  * Popup on shift.  There is just one more bug to iron out in the test state machine then this can be incorporated.
  * Finish macro buttons.
@@ -88,7 +72,6 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
  * Add Position for X & Y to Bar ui.  Location -> Position
  * Verify arena water precedence & tears + conjured only
  * Resolve issues with class buttons being placed on account bars.
- * Implement upgrade to version 1: delete old data.
  * Switch to GetItemIcon(itemId or itemName or itemLink or itemString) for category icons
  * Customization via Waterfall is barely functional & needs drag & drop rearranging + icons in the tree view at a minimum.
 --]]
@@ -99,14 +82,27 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 [url=http://code.google.com/p/autobar/wiki/FAQ]FAQ[/url]
 [url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
 (Please click in a "Labels:" field to label your issue appropriately.)
+
+"$Revision: 75288 $"
+AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
 
+-- 2.04.02.55 beta ()
+
 -- 2.04.02.54 beta ()
+-- Added bar location dropdown to buttons for easy movement or assignment to a bar
+-- Use LibKeyBound:ToShortKey for AutoBar key display
+-- AutoBarButtonStealth: added Rogue Priest Mage. Shadowmeld added if present for other classes.  Need to figure out how the two combine for NE Druid, Rogue Priest Mage.
+-- Seal category added for Paladins
+-- Integrate AutoBar custom bindings with LibKeyBound callbacks so Blizzard bindings get set as well.  First Cut.
+
+--- Verify all button.barKey nilled when deleting a bar
 --- Finish LibStickyFrames: needs grouped dragging.
 --- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
 --- Shuffle: handle locations and cooldowns and equipped items.
+--- Custom Items need proper relative ordering regardless of type.
 
--- 2.04.02.53 beta (74775)
+-- 2.04.02.53 beta (75141)
 -- Minimap / FuBar Button overhaul:
 -- Left-Click: Open Options GUI. This toggles GUI now. Needs waterfall-1.0.
 -- Right-Click: Open Dropdown UI
@@ -127,14 +123,26 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 -- Multi-Spectrum Light Trap 30852
 -- Temporal Phase Modulator 30742
 -- Voodoo Skull 33081
+-- Medicinal Drake Essence 31437
+-- Condensed Mana Powder 23386
 -- Add LibKeyBound-1.0 to toc dependencies and embeds
 -- Tarkumi's tooltip changes
 -- Remove category from cooldown stone rejuv, not potion rejuv.
 -- Move to LibStickyFrames-2.0 for dragging.
 -- Switch to teal for keybind mode.
 -- Most of the modes are now exclusive, and will turn off others that are on when activated.
--- Make AutoBar level BF Colors default to {}
+-- Make AutoBar and Bar level BF Colors default to {}
 -- Remove Style settings from AutoBar.  Skinning is now exclusively from ButtonFacade
+-- Fix bar position saving and callback errors.
+-- Add cooldowns for totem buttons based on totems not gcd
+-- Implement dbVersion = 1.  Deletes old bars and customBarList tables. Fixes crash on Button or Bar create for non-resetted SVs.
+-- Inferno and RitualOfDoom added to warlock class pet button
+-- fix gaping buttons
+-- Add Eagle Eye to pet skills.  It isn't but it sounds like it is.
+-- Added some missing keys for LibKeyBound:ToShortKey
+-- Localize the shortened versions of the keys
+-- Remove the macro ui and spell book code
+-- Switch the /keybound to /libkeybound so the lib and the old code can be used together.
 
 -- 2.04.01.52 beta (74135)
 -- Actually set popupHeader frame to DIALOG, dont just talk about doing it.

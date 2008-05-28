@@ -27,6 +27,8 @@ if (GetLocale() == "zhTW") then
 		["Announce to Party"] = "通報到小隊",
 		["Announce to Raid"] = "通報到團隊",
 		["Announce to Say"] = "通報到 '說'",
+		["Bar Location"] = "Bar Location",
+		["Bar the Button is located on"] = "Bar the Button is located on",
 		["Bars"] = "物品列",
 		["Battlegrounds only"] = "僅限戰場",
 		["Button Width"] = "按鈕寬度",
@@ -492,6 +494,7 @@ if (GetLocale() == "zhTW") then
 		["Spell.Totem.Air"] = "風之圖騰";
 		["Spell.Totem.Fire"] = "火焰圖騰";
 		["Spell.Totem.Water"] = "水之圖騰";
+		["Spell.Seal"] = "Seal";
 		["Spell.Track"] = "追蹤技能";
 		["Spell.Trap"] = "陷阱";
 		["Misc.Hearth"] = "爐石";

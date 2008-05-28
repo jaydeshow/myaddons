@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList v0.84
-$Date: 2008-05-24 22:48:18 -0400 (Sat, 24 May 2008) $
-$Rev: 75060 $
+$Date: 2008-05-27 15:22:45 -0400 (Tue, 27 May 2008) $
+$Rev: 75279 $
 
 Author: Ackis on Illidan US Horde
 ****************************************************************************************
@@ -955,7 +955,12 @@ end
 function addon:CheckDisplayRecipe(RecipeName, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
 	-- These will be converted to a bit string soon
-	-- BoP, Instance, World, Raid, Horde, Alliance, DeathKnight, Druid, Hunter, Mage, Paladin, Priest, Rogue, Shaman, Warlock, Warrior, 
+	-- 7 bits: BoP, Instance, World Drop, Raid, Specific Mob, Vendor, Trainer,
+	-- 5 bits: Primal Mooncloth/Weaponsmith/Dragonscale/Goblin, Shadowcloth/Armorsmith/Elemental/Gnomish, Spellcloth/Hammersmith/Tribal, Axesmith, Swordsmith
+	-- 12 bits: Horde, Alliance, DeathKnight, Druid, Hunter, Mage, Paladin, Priest, Rogue, Shaman, Warlock, Warrior,
+	-- 6 bits: Azeroth, Argent Dawn, Cenarion Circle, Thorium Brotherhood, Timbermaw Hold, Zandalar
+	-- 15 bits: Burning Crusade, The Scryers, The Aldor, Ashtongue Deathsworn, Cenarion Expedition, The Consortium, Hellfire Factions, Keepers of Time, Nagrand Factions, Lower City, Scale of the Sands, The Sha'tar, Shattered Sun Offensive, Sporeggar, The Violet Eye
+	-- 1 bit: Wrath of the Litch King, 
 
 	-- Display all skill levels
 	if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then

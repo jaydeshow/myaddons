@@ -10,7 +10,7 @@ local FilterSize	= 20
 local RampUp		= 5
 local RampDown		= 10
       
-Recount.Version = tonumber(string.sub("$Revision: 74938 $", 12, -3))
+Recount.Version = tonumber(string.sub("$Revision: 75264 $", 12, -3))
 
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
@@ -1522,6 +1522,7 @@ function Recount:GroupCheck()
 			v.inGroup=true
 		else
 			v.inGroup=false
+			Recount:DeleteVersion(k)
 		end
 
 		Recount:DetermineType(k)

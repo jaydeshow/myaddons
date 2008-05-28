@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Trainer-2.2
-Revision: $Rev: 75161 $
+Revision: $Rev: 75273 $
 Authors(s): Kodewulf (kodewulf@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Trainer-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Trainer-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 75161 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 75273 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -395,6 +395,7 @@ BabbleTrainer:RegisterTranslations("koKR", function() return {
 
 BabbleTrainer:RegisterTranslations("zhCN", function() return {
 -- Trainer types
+	["Armor Crafter"] = "护甲锻造师",
 	["Artisan Alchemist"] = "高级炼金师",
 	["Artisan Blacksmith"] = "高级铁匠",
 	["Artisan Enchanter"] = "高级附魔师",
@@ -409,21 +410,25 @@ BabbleTrainer:RegisterTranslations("zhCN", function() return {
 	["Demon Trainer"] = "恶魔训练师",
 	["Druid Trainer"] = "德鲁伊训练师",
 	["Engineer"] = "技师",
-	["Expert Alchemist"] = "初级炼金师",
-	["Expert Blacksmith"] = "初级铁匠",
-	["Expert Enchanter"] = "初级附魔师",
-	["Expert Engineer"] = "初级技师",
-	["Expert Leatherworker"] = "初级制皮师",
-	["Expert Tailor"] = "初级裁缝",
+	["Engineering Trainer"] = "工程学训练师",
+	["Expert Alchemist"] = "专家级炼金师",
+	["Expert Blacksmith"] = "专家级铁匠",
+	["Expert Enchanter"] = "专家级附魔师",
+	["Expert Engineer"] = "专家级技师",
+	["Expert Jewelcrafter"] = "专家级珠宝匠",
+	["Expert Leatherworker"] = "专家级制皮师",
+	["Expert Tailor"] = "专家级裁缝",
 	["Explorers' League"] = "探险者协会",
 	["First Aid Trainer"] = "急救训练师",
 	["Fishing Trainer"] = "钓鱼训练师",
+	["Goblin Engineering Trainer"] = "地精工程学训练师",
 	["Grand Master Alchemist"] = "宗师级炼金师",
 	["Grand Master Blacksmith"] = "宗师级铁匠",
 	["Grand Master Enchanter"] = "宗师级附魔师",
 	["Grand Master Engineer"] = "宗师级技师",
 	["Grand Master Jewelcrafter"] = "宗师级珠宝匠",
 	["Grand Master Leatherworker"] = "宗师级制皮师",
+	["Grand Master Skinner"] = "宗师级剥皮师",
 	["Grand Master Tailor"] = "宗师级裁缝",
 	["Head Eco-Dome Engineer"] = "生态圆顶首席技师",
 	["Herbalism Trainer"] = "草药学训练师",
@@ -469,6 +474,7 @@ BabbleTrainer:RegisterTranslations("zhCN", function() return {
 	["Royal Apothecary Society"] = "皇家药剂师学会",
 	["Saber Handler"] = "驯豹人",
 	["Shaman Trainer"] = "萨满祭司训练师",
+	["Skinner"] = "剥皮师",
 	["Skinning Trainer"] = "剥皮训练师",
 	["Speciality Engineer"] = "特殊工程学货物",
 	["Superior Leatherworker"] = "高级皮匠",
