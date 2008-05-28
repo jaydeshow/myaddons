@@ -1,4 +1,4 @@
-local L = AceLibrary("AceLocale-2.2"):new("Mendeleev")
+﻿local L = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 
 L:RegisterTranslations("zhTW", function() return {
 	["Toggle sets."] = "切換顯示",
@@ -17,6 +17,8 @@ L:RegisterTranslations("zhTW", function() return {
 	["Toggle showing the 'used in' tree in the tooltip."] = "切換在提示訊息中顯示「使用在」樹狀結構",
 	["Limit 'used in' tree to craftable"] = "限制「使用在」為自己能製作的部分",
 	["Toggle limiting the 'used in' tree to items the char can craft."] = "切換在提示訊息中顯示「使用在」樹狀結構時只顯示自己會製作的部分",
+	["Show icons in 'used in' tree"] = "在可以用的商業技能顯示圖標",
+	["Toggle showing of icons in the 'used in' tree."] = "指定是否在商業技能顯示圖標",
 	["Item ID"] = "物品編號",
 	["iLevel"] = "物品等級",
 	["You have"] = "你有",
@@ -102,7 +104,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["GearSet"] = "套裝",
 	["InstanceLoot"] = "副本戰利品",
 	["InstanceLootHeroic"] = "英雄模式副本戰利品",
--- duplicate entry	["Misc"] = true,
+	["Misc"] = "其他",
 	["QuestMats"] = "任務物品",
 	["Reagent"] = "職業施法材料",
 	["Tradeskill"] = "交易技能",
@@ -110,4 +112,5 @@ L:RegisterTranslations("zhTW", function() return {
 	["Badge of Justice"] = "正義徽章",
 	["G'eras"] = "吉爾拉斯",
 	["Smith Hauthaa"] = "鐵匠荷莎",
+	["Trash Mobs"] = "小怪掉落",
 }end)

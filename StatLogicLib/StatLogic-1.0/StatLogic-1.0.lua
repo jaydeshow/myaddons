@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 75180 $
+Revision: $Revision: 75320 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-05-26 07:34:24 -0400 (Mon, 26 May 2008) $
+LastUpdate: $Date: 2008-05-28 02:45:19 -0400 (Wed, 28 May 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -28,7 +28,7 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 75180 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 75320 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -852,10 +852,10 @@ PatternLocale.koKR = {
 		["상급 마나 오일"] = {["MANA_REG"] = 14}, -- ID: 22521
 
 		["에터니움 낚시줄"] = {["FISHING"] = 5}, --
-		["^전투력$"] = {["AP"] = 70}, -- 전투력
-		["^활력$"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality "Vitality" http://wow.allakhazam.com/db/spell.html?wspell=27948
-		["^냉기의 영혼$"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
-		["^태양의 불꽃$"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
+		["전투력"] = {["AP"] = 70}, -- 전투력
+		["활력"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, -- Enchant Boots - Vitality "Vitality" http://wow.allakhazam.com/db/spell.html?wspell=27948
+		["냉기의 영혼"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
+		["태양의 불꽃"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
 
 		["미스릴 박차"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
 		["최하급 탈것 속도 증가"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
