@@ -189,6 +189,7 @@ if (GetLocale() == "koKR") then
 		["Buttons"] = "버튼",
 		["AutoBarButtonHeader"] = "AutoBar 지정 버튼들",
 		["AutoBarCooldownHeader"] = "물약 & 석 대기시간",
+		["AutoBarClassBarHeader"] = "Class bar",
 
 		["AutoBarButtonAura"] = "오라 / 상",
 		["AutoBarButtonBandages"] = "붕대",
@@ -208,6 +209,7 @@ if (GetLocale() == "koKR") then
 		["AutoBarButtonCooldownStoneMana"] = "조각상 대기시간: 마나",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "조각상 대기시간: 회복",
 		["AutoBarButtonCrafting"] = "보석세공",
+		["AutoBarButtonDebuff"] = "Debuff",
 		["AutoBarButtonElixirBattle"] = "전투 비약",
 		["AutoBarButtonElixirGuardian"] = "강화 비약",
 		["AutoBarButtonElixirBoth"] = "전투와 강화 비약",
@@ -486,6 +488,8 @@ if (GetLocale() == "koKR") then
 		["Spell.Class.Buff"] = "직업 버프";
 		["Spell.Class.Pet"] = "직업 소환수";
 		["Spell.Crafting"] = "보석세공";
+		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
+		["Spell.Debuff.Single"] = "Debuff: Single";
 		["Spell.Fishing"] = "낚시";
 		["Spell.Portals"] = "차원문과 순간이동";
 		["Spell.Sting"] = "쐐기";

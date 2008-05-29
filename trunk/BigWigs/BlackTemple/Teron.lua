@@ -130,9 +130,9 @@ L:RegisterTranslations("zhCN", function() return {
 	icon = "团队标记",
 	icon_desc = "给中了死亡之影的玩家打上团队标记。（需要权限）",
 
-	--crush = "Crushing Shadows",
-	--crush_desc = "Warn who gets crushing shadows.",
-	--crush_warn = "Crushed: %s",
+	crush = "毁灭之影",
+	crush_desc = "当玩家受到毁灭之影时发出警报。",
+	crush_warn = "毁灭之影：>%s<！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -163,7 +163,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"shadow", "ghost", "icon", "crush", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75438 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

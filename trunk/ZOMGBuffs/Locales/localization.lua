@@ -245,6 +245,8 @@ L:RegisterTranslations("enUS", function() return {
 	["Use short spell names where appropriate"] = true,
 	["Show Roles"]			= true,
 	["Show player role icons"] = true,
+	["Auto-casting is disabled"] = true,
+	["You can re-enable it by single clicking the ZOMGBuffs minimap/fubar icon"] = true,
 
 	["CHATMATCH1"]			= "!buff",
 	["CHATMATCH2"]			= "!zomg",

@@ -189,6 +189,7 @@ if (GetLocale() == "zhTW") then
 		["Buttons"] = "按鈕",
 		["AutoBarButtonHeader"] = "AutoBar 按鈕名稱",
 		["AutoBarCooldownHeader"] = "藥水及石頭冷卻時間",
+		["AutoBarClassBarHeader"] = "Class bar",
 
 		["AutoBarButtonAura"] = "光環/守護",
 		["AutoBarButtonBandages"] = "繃帶",
@@ -208,6 +209,7 @@ if (GetLocale() == "zhTW") then
 		["AutoBarButtonCooldownStoneMana"] = "石頭冷卻: 法力",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "石頭冷卻: 活力",
 		["AutoBarButtonCrafting"] = "專業技能",
+		["AutoBarButtonDebuff"] = "Debuff",
 		["AutoBarButtonElixirBattle"] = "作戰藥劑",
 		["AutoBarButtonElixirGuardian"] = "防護藥劑",
 		["AutoBarButtonElixirBoth"] = "作戰及防護藥劑",
@@ -486,6 +488,8 @@ if (GetLocale() == "zhTW") then
 		["Spell.Class.Buff"] = "職業增益法術";
 		["Spell.Class.Pet"] = "戰鬥寵物";
 		["Spell.Crafting"] = "專業技能";
+		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
+		["Spell.Debuff.Single"] = "Debuff: Single";
 		["Spell.Fishing"] = "釣魚";
 		["Spell.Portals"] = "傳送門和傳送";
 		["Spell.Sting"] = "釘刺";

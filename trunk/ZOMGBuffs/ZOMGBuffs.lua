@@ -217,7 +217,7 @@ do
 	end
 end
 
-z.version = tonumber(string.sub("$Revision: 74102 $", 12, -3)) or 1
+z.version = tonumber(string.sub("$Revision: 75360 $", 12, -3)) or 1
 z.versionCompat = 65478
 z.title = L["TITLE"]
 z.titleColour = L["TITLECOLOUR"]
@@ -3128,16 +3128,17 @@ local function MakePalaIcons(self)
 		end
 	end
 
-	--local icons = #z.buffs + ((z.db.profile.track.blessings and z.classcount.PALADIN) or 0) + ((btr and btr.tickColumns and #btr.tickColumns) or 0)
-
 	self.bar:ClearAllPoints()
 	if (prev) then
-		--self.bar:SetPoint("TOPLEFT", icons * z.db.char.height, 0)
 		self.bar:SetPoint("TOPLEFT", prev, "TOPRIGHT")
 	else
 		self.bar:SetPoint("TOPLEFT")
 	end
 	self.bar:SetPoint("BOTTOMRIGHT")
+
+	if (btr) then
+		btr:CheckTickColumns(self)
+	end
 end
 
 -- z:SetAllBarSizes()
@@ -3153,9 +3154,6 @@ function z:SetAllBarSizes()
 			v:SetWidth(w)
 
 			MakePalaIcons(v)
-			if (btr) then
-				btr:CheckTickColumns(v)
-			end
 
 			for i,icon in pairs(v.palaIcon) do
 				icon:SetWidth(h)
@@ -3297,10 +3295,6 @@ local function DrawCell(self)
 	local myMax, myDur
 
 	MakePalaIcons(self)
-
-	if (btr) then
-		btr:CheckTickColumns(self)
-	end
 
 	local gotPalaBuffs = 0
 	local doBlessings = z.db.profile.track.blessings
@@ -3858,7 +3852,12 @@ function CellOnEnter(self)
 			GameTooltip:AddLine(format(L["Out-of-date spell (should be %s). Will be updated when combat ends"], self.invalidAttributes), 1, 0, 0, 1)
 		end
 	else
-		if (lastCheckFail) then
+		if (self == z.icon and not z.db.profile.enabled) then
+			GameTooltip:SetText(z.titleColour)
+			GameTooltip:AddLine(L["Auto-casting is disabled"])
+			GameTooltip:AddLine(L["You can re-enable it by single clicking the ZOMGBuffs minimap/fubar icon"])
+
+		elseif (lastCheckFail) then
 			if (GameTooltip:IsShown()) then
 				GameTooltip:AddLine(" ")
 			else
@@ -3867,17 +3866,17 @@ function CellOnEnter(self)
 			end
 			GameTooltip:AddLine(format(L["Not Refreshing because %s"], lastCheckFail), nil, nil, nil, 1)
 		elseif (z.waitingForRaid or z.waitingForClass) then
-		    	if (GameTooltip:IsShown()) then
-		    		GameTooltip:AddLine(" ")
+	    	if (GameTooltip:IsShown()) then
+	    		GameTooltip:AddLine(" ")
 			else
 				GameTooltip:SetText(z.titleColour)
 			end
 
 			if (z.waitingForRaid) then
-		    		GameTooltip:AddLine(format(L["Waiting for %d%% of raid to arrive before buffing commences (%d%% currently present)"], z.db.profile.waitforraid * 100, z.waitingForRaid), nil, nil, nil, 1)
+	    		GameTooltip:AddLine(format(L["Waiting for %d%% of raid to arrive before buffing commences (%d%% currently present)"], z.db.profile.waitforraid * 100, z.waitingForRaid), nil, nil, nil, 1)
 			end
 			if (z.waitingForClass) then
-		    		GameTooltip:AddLine(format(L["Waiting for these groups or classes to arrive: %s"], z.waitingForClass), nil, nil, nil, 1)
+	    		GameTooltip:AddLine(format(L["Waiting for these groups or classes to arrive: %s"], z.waitingForClass), nil, nil, nil, 1)
 			end
 		end
 	end
@@ -3982,7 +3981,11 @@ function z:InitCell(cell)
 	cell.bar:SetStatusBarColor(1, 1, 0.5, 0.5)
 	cell.bar:SetMinMaxValues(0, 1)
 	cell.bar:SetValue(0)
-	cell.bar:SetPoint("TOPLEFT", prev, "TOPRIGHT", 1, 0)
+	if (not prev) then
+		cell.bar:SetPoint("TOPLEFT")
+	else
+		cell.bar:SetPoint("TOPLEFT", prev, "TOPRIGHT")
+	end
 	cell.bar:SetPoint("BOTTOMRIGHT")
 	
 	local timer = CreateFrame("Frame", nil, cell.bar)
@@ -4036,16 +4039,6 @@ dummy:SetScript("OnUpdate",
 
 -- RAID_ROSTER_UPDATED
 function z:RAID_ROSTER_UPDATED()
-	if (GetNumRaidMembers() > 0) then
-		if (self:IsEventRegistered("PARTY_MEMBERS_CHANGED")) then
-			self:UnregisterEvent("PARTY_MEMBERS_CHANGED")
-		end
-	else
-		if (not self:IsEventRegistered("PARTY_MEMBERS_CHANGED")) then
-			self:RegisterEvent("PARTY_MEMBERS_CHANGED", "RAID_ROSTER_UPDATED")
-		end
-	end
-
 	self.unknownUnits = del(self.unknownUnits)
 	if (self:IsEventRegistered("UNIT_NAME_UPDATE")) then
 		self:UnregisterEvent("UNIT_NAME_UPDATE")

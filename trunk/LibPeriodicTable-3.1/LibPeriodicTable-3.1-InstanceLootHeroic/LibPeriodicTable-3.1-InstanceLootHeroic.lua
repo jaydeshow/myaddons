@@ -1,15 +1,15 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 73820 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 75432 $", {
 	["InstanceLootHeroic.Auchindoun"]="m,InstanceLootHeroic.Auchenai Crypts,InstanceLootHeroic.Mana-Tombs,InstanceLootHeroic.Shadow Labyrinth,InstanceLootHeroic.Sethekk Halls",
 	["InstanceLootHeroic.Auchenai Crypts.Exarch Maladaar"]="29257:196,29244:178,33836:164,27523:129,27871:128,27869:119,27872:104,27867:96,30586:92,30587:89,27870:83,29354:77,30588:77",
 	["InstanceLootHeroic.Auchenai Crypts.Shirrak the Dead Watcher"]="27866:142,27845:134,27846:134,27493:124,27865:99,27847:96,30586:37,30587:30,30588:28",
 
-	["InstanceLootHeroic.Magisters' Terrace.Selin Fireheart"]="34601:211,34603:205,34604:196,34602:187,35275:15",
-	["InstanceLootHeroic.Magisters' Terrace.Vexallus"]="34607:200,34606:192,34608:175,34605:170,35275:17",
+	["InstanceLootHeroic.Magisters' Terrace.Selin Fireheart"]="34601:208,34603:205,34604:199,34602:191,35275:14",
+	["InstanceLootHeroic.Magisters' Terrace.Vexallus"]="34607:197,34606:195,34608:179,34605:172,35275:16",
 	["InstanceLootHeroic.Magisters' Terrace.Priestess Delrissa"]="35756:216,34471:188,34472:184,34470:175,34473:167,35275:11",
-	["InstanceLootHeroic.Magisters' Terrace.Kael'thas Sunstrider"]="34609:143,34610:71,34611:154,34612:14,34613:30,34614:32,34615:71,34616:239,35513:3",
+	["InstanceLootHeroic.Magisters' Terrace.Kael'thas Sunstrider"]="34609:208,34614:196,34613:192,34611:191,34612:187,34615:185,34616:184,34610:180,34160:138,35504:60,35275:25,35513:24,35297:9,35298:8,35294:7,35299:7,35308:7,35302:6,35301:6,35309:6,35296:5,35303:4,35295:4,35300:4,35310:4,35306:3,35311:2,35307:2,35304:2,35305:2",
 
 	["InstanceLootHeroic.Mana-Tombs.Nexus-Prince Shaffar"]="29240:184,30535:168,33835:167,29352:146,27831:122,27843:118,27844:117,27828:117,27827:115,27842:110,27840:110,27798:107,27837:105,28400:102,27829:102,27835:101,32082:91,28490:73,30583:71,30585:60,30584:55,22921:24,29252:8",
 	["InstanceLootHeroic.Mana-Tombs.Pandemonius"]="27816:163,27818:150,27817:146,27813:119,27814:105,30585:95,27815:85,30584:75,30583:58,28166:3",
@@ -38,10 +38,10 @@ LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 73820 $", {
 	["InstanceLootHeroic.The Steamvault.Hydromancer Thespia"]="27508:178,27783:172,27787:169,27784:158,27789:153,30550:47,30551:45,30549:40,29673:13,30828:7",
 	["InstanceLootHeroic.The Steamvault.Mekgineer Steamrigger"]="27791:174,27790:166,27794:164,27792:151,27793:150,30550:53,30549:47,30551:41,23887:17",
 	["InstanceLootHeroic.The Steamvault.Warlord Kalithresh"]="31721:188,29243:154,27805:140,27806:138,29463:134,30543:132,27799:132,27737:132,27475:131,27738:131,27795:125,28203:117,27804:113,33827:112,27510:111,27874:110,27801:109,29351:84,30551:74,30550:73,30549:69,24313:14",
-	["InstanceLootHeroic.The Underbog.Ghaz'an"]="24246:240,27758:152,27761:140,27759:135,27757:130,27755:127,27760:126,30607:57,30606:54,30608:51",
-	["InstanceLootHeroic.The Underbog.Hungarfen"]="27745:150,27743:148,27747:142,27746:128,27744:125,27748:124,24246:66,30608:60,30607:58,30606:52",
-	["InstanceLootHeroic.The Underbog.Swamplord Musel'ek"]="27765:146,27763:139,27766:135,27764:127,27767:124,27762:121,30607:58,30608:57,30606:54",
-	["InstanceLootHeroic.The Underbog.The Black Stalker"]="24246:219,29265:169,30541:163,27896:123,27781:123,27773:117,27779:112,27780:111,29350:111,27772:110,27769:108,27771:103,27768:103,27770:102,27938:102,27907:100,30607:94,30606:92,33826:91,30608:78,32081:62",
+	["InstanceLootHeroic.The Underbog.Ghaz'an"]="24246:240,27758:152,27761:141,27759:136,27757:130,27755:127,27760:125,30607:57,30606:55,30608:52",
+	["InstanceLootHeroic.The Underbog.Hungarfen"]="27745:150,27743:147,27747:142,27746:128,27744:126,27748:125,24246:66,30608:60,30607:58,30606:53",
+	["InstanceLootHeroic.The Underbog.Swamplord Musel'ek"]="27765:147,27763:139,27766:134,27764:128,27767:124,27762:121,30607:58,30608:57,30606:55",
+	["InstanceLootHeroic.The Underbog.The Black Stalker"]="24246:219,29265:171,30541:164,27781:123,27896:123,27773:117,29350:114,27780:112,27779:112,27772:112,27769:108,27771:104,27768:104,27938:103,27770:102,33826:101,27907:100,30607:94,30606:91,30608:78,32081:63",
 
 	["InstanceLootHeroic.Hellfire Citadel"]="m,InstanceLootHeroic.Hellfire Ramparts,InstanceLootHeroic.Magtheridon's Lair,InstanceLootHeroic.The Blood Furnace,InstanceLootHeroic.The Shattered Halls",
 	["InstanceLootHeroic.Hellfire Ramparts.Nazan"]="33833:625",
@@ -49,12 +49,12 @@ LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 73820 $", {
 	["InstanceLootHeroic.Hellfire Ramparts.Vazruden"]="27453:7,27454:7,29238:4,30592:4,27457:4",
 	["InstanceLootHeroic.Hellfire Ramparts.Watchkeeper Gargolmar"]="27447:173,27451:169,27448:162,27449:149,27450:146,30594:52,30593:42",
 	["InstanceLootHeroic.The Blood Furnace.Broggok"]="27492:161,27491:158,27490:145,27848:141,27489:132,30602:49,30600:45,30601:41",
-	["InstanceLootHeroic.The Blood Furnace.Keli'dan the Breaker"]="29239:151,29245:145,27495:140,33814:133,28121:126,27514:121,27506:120,27788:120,27507:115,27494:109,27512:108,30601:106,27505:104,27522:104,30600:93,28264:90,27497:87,32080:87,30602:76,29347:67",
-	["InstanceLootHeroic.The Blood Furnace.The Maker"]="27488:190,27485:170,27487:156,27483:150,27484:146,30600:56,30602:51,30601:43",
-	["InstanceLootHeroic.The Shattered Halls.Grand Warlock Nethekurse"]="25462:236,27518:174,27520:172,27519:168,27517:164,27521:162,30548:45,30546:44,30547:38,24312:15",
-	["InstanceLootHeroic.The Shattered Halls.Warbringer O'mrogg"]="27525:179,27526:166,27868:155,27524:154,27802:152,30546:48,30548:48,30547:40,30829:12",
-	["InstanceLootHeroic.The Shattered Halls.Warchief Kargath Bladefist"]="29255:159,27528:139,27536:135,29263:135,27534:130,27527:130,27540:130,27537:129,33815:122,27533:113,27529:113,27538:109,27535:108,29254:104,27474:104,27531:103,30548:67,29348:64,30547:60,30546:57",
-	["InstanceLootHeroic.The Shattered Halls.Blood Guard Porung"]="30709:194,30707:184,30705:167,30708:155,30710:86,30546:62,30548:60,30547:43",
+	["InstanceLootHeroic.The Blood Furnace.Keli'dan the Breaker"]="29239:152,29245:148,33814:145,27495:140,28121:125,27506:121,27514:121,27788:120,27507:116,27512:110,27494:108,30601:105,27522:105,27505:104,30600:93,28264:90,32080:88,27497:88,30602:75,29347:69",
+	["InstanceLootHeroic.The Blood Furnace.The Maker"]="27488:191,27485:169,27487:156,27483:150,27484:145,30600:56,30602:51,30601:45",
+	["InstanceLootHeroic.The Shattered Halls.Grand Warlock Nethekurse"]="25462:236,27518:174,27520:172,27519:169,27517:163,27521:160,30548:46,30546:46,30547:40,24312:16",
+	["InstanceLootHeroic.The Shattered Halls.Warbringer O'mrogg"]="27525:178,27526:166,27868:157,27524:153,27802:152,30546:50,30548:48,30547:41,30829:12",
+	["InstanceLootHeroic.The Shattered Halls.Warchief Kargath Bladefist"]="29255:162,27528:138,27536:137,29263:137,33815:131,27534:130,27537:129,27527:129,27540:129,27529:115,27533:114,27538:109,27535:108,29254:108,27531:103,27474:103,30548:68,29348:67,30547:59,30546:57,23723:51",
+	["InstanceLootHeroic.The Shattered Halls.Blood Guard Porung"]="30709:195,30707:184,30705:166,30708:159,30710:84,30546:64,30548:60,30547:45",
 
 	["InstanceLootHeroic.Tempest Keep"]="m,InstanceLootHeroic.The Arcatraz,InstanceLootHeroic.The Mechanar,InstanceLootHeroic.The Botanica",
 	["InstanceLootHeroic.The Arcatraz.Dalliah the Doomsayer"]="28392:209,28386:160,28391:150,28387:140,28390:137,30575:81,30581:75,30582:68,24308:42",

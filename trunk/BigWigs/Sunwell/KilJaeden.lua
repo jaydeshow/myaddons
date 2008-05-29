@@ -181,7 +181,7 @@ L:RegisterTranslations("zhCN", function() return {
 	bomb_bar = "爆炸！",
 	bomb_nextbar = "<可能 炸弹>",
 	bomb_warning = "约10秒后，可能炸弹！",
-	kalec_yell = "",--need check
+	kalec_yell = "我会将我的力量导入宝珠中！准备好！",
 
 	orb = "护盾宝珠",--Shield Orb 
 	orb_desc = "当护盾宝珠施放暗影箭时发出警报。",
@@ -235,7 +235,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
 mod.toggleoptions = {"bomb", "orb", "flame", -1, "bloom", "bloomwhisper","bloomsay", "icons", -1, "sinister", "shadow", "bosskill"}
-mod.revision = tonumber(("$Revision: 75174 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75448 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

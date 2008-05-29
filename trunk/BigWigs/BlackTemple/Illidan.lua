@@ -99,7 +99,7 @@ L:RegisterTranslations("esES", function() return {
 	parasite_other = "¡%s tiene un parasitario!",
 
 	icon = "Icono de banda",
-	icon_desc = "Poner un icono de banda sobre jugadores con Malignos de las Sombras parasitarios.",
+	icon_desc = "Poner un icono de banda sobre jugadores con Malignos de las Sombras parasitarios o Tromba oscura.",
 
 	barrage = "Tromba oscura (Dark Barrage)",
 	barrage_desc = "Avisar quién tiene Tromba oscura.",
@@ -507,7 +507,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"berserk", "phase", "parasite", "shear", "eyeblast", "barrage", "flame", "demons", "burst", "enrage", "proximity", "bosskill"}
 mod.wipemobs = {L["Flame of Azzinoth"]}
-mod.revision = tonumber(("$Revision: 75212 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75368 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

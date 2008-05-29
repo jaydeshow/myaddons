@@ -189,6 +189,7 @@ if (GetLocale() == "deDE") then
 		["Buttons"] = "Felder";
 		["AutoBarButtonHeader"] = "AutoBar Named Felder",
 		["AutoBarCooldownHeader"] = "Potion & Stone Cooldown",
+		["AutoBarClassBarHeader"] = "Class bar",
 
 		["AutoBarButtonAura"] = "Aura / Aspect",
 		["AutoBarButtonBandages"] = "Bandages",
@@ -208,9 +209,10 @@ if (GetLocale() == "deDE") then
 		["AutoBarButtonCooldownStoneMana"] = "Stone Cooldown: Mana",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "Stone Cooldown: Rejuvenation",
 		["AutoBarButtonCrafting"] = "Crafting",
+		["AutoBarButtonDebuff"] = "Debuff",
 		["AutoBarButtonElixirBattle"] = "Battle Elixir",
 		["AutoBarButtonElixirGuardian"] = "Guardian Elixir",
-		["AutoBarButtonElixirBoth"] = "Battle and Guardian Elixir",
+		["AutoBarButtonElixirBoth"] = "Flask",
 		["AutoBarButtonER"] = "ER",
 		["AutoBarButtonExplosive"] = "Explosive",
 		["AutoBarButtonFishing"] = "Fishing",
@@ -486,6 +488,8 @@ if (GetLocale() == "deDE") then
 		["Spell.Class.Buff"] = "Class Buff";
 		["Spell.Class.Pet"] = "Class Pet";
 		["Spell.Crafting"] = "Crafting";
+		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
+		["Spell.Debuff.Single"] = "Debuff: Single";
 		["Spell.Fishing"] = "Fishing";
 		["Spell.Portals"] = "Portale und Teleportartionen";
 		["Spell.Sting"] = "Sting";

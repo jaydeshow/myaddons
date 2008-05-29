@@ -37,6 +37,7 @@
 	<Binding name="AutoBarButtonQuest_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonSpeed_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonStealth_X" runOnUp="true">--[[ dummy ]]</Binding>
+	<Binding name="AutoBarButtonDebuff_X" runOnUp="true" header="AutoBarClassBarHeader">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonBear_X" runOnUp="true" header="AutoBarClassBarDruid">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonCat_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonTravel_X" runOnUp="true">--[[ dummy ]]</Binding>

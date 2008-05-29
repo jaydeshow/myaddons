@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-05-27 17:57:47 -0400 (Tue, 27 May 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-05-29 00:16:14 -0400 (Thu, 29 May 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -83,10 +83,11 @@ function AutoBar:InitializeDB(overide)
 	AutoBar:InitializeDefaults()
 
 -- ToDo: Temporary, implement buttonKey field.  Remove sometime after beta.
-AutoBar:UpgradeButtonDB()
+	AutoBar:VerifyDB()
 
 	AutoBar:RefreshButtonDBList()
 	AutoBar:RefreshBarDBLists()
+	AutoBar:BarsCompact()
 	AutoBar:RemoveDuplicateButtons()
 	AutoBar:RefreshUnplacedButtonList()
 	AutoBar:PopulateBars(true)
@@ -911,6 +912,18 @@ function AutoBar:InitializeDefaults()
 		end
 	end
 
+	if (AutoBar.CLASS == "DRUID" or AutoBar.CLASS == "HUNTER" or AutoBar.CLASS == "PRIEST" or AutoBar.CLASS == "MAGE" or AutoBar.CLASS == "WARLOCK") then
+		if (not AutoBar.db.class.buttonList["AutoBarButtonDebuff"]) then
+			AutoBar.db.class.buttonList["AutoBarButtonDebuff"] = {
+				buttonKey = "AutoBarButtonDebuff",
+				buttonClass = "AutoBarButtonDebuff",
+				barKey = AutoBar.classBar,
+				defaultButtonIndex = "*",
+				enabled = true,
+			}
+		end
+	end
+
 	if (AutoBar.CLASS == "MAGE" or AutoBar.CLASS == "WARLOCK") then
 		if (not AutoBar.db.class.buttonList["AutoBarButtonConjure"]) then
 			AutoBar.db.class.buttonList["AutoBarButtonConjure"] = {
@@ -1086,8 +1099,8 @@ end
 local changedCategoryKey = {
 	["Consumable.Buff Type.Both"] = "Consumable.Buff Type.Flask"
 }
--- Temporary, implement buttonKey field
-function AutoBar:UpgradeButtonDB()
+function AutoBar:VerifyDB()
+	-- Temporary, implement buttonKey field
 	for buttonKey, buttonDB in pairs(AutoBar.db.char.buttonList) do
 		buttonDB.buttonKey = buttonKey
 		if (buttonDB.buttonClass ~= "AutoBarButtonCustom") then
@@ -1212,15 +1225,51 @@ function AutoBar:ButtonExists(barDB, targetButtonDB)
 	return false
 end
 
+local foundButtons = {}
 -- Changing sharing may expose duplicate buttons. Also dragging from lower shared levels to higher shared levels may result in duplicates cross character.
 -- Use the Button's barKey to resolve issues.
 function AutoBar:RemoveDuplicateButtons()
 	local barButtonsDBList = AutoBar.barButtonsDBList
 	local buttonDBList = AutoBar.buttonDBList
 
+	for buttonKey in pairs(foundButtons) do
+		foundButtons[buttonKey] = nil
+	end
+
 	for barKey, barDB in pairs(barButtonsDBList) do
 		local delete
-		for buttonKeyIndex, buttonKey in ipairs(barDB.buttonKeys) do
+		local buttonKeys = barDB.buttonKeys
+		local nKeys = 0
+
+		-- Remove Bar Duplicates
+		for buttonKeyIndex, buttonKey in pairs(buttonKeys) do
+			foundBarKey = foundButtons[buttonKey]
+			if (foundBarKey and foundBarKey == barKey) then
+				buttonKeys[buttonKeyIndex] = false
+				delete = true
+			else
+				foundButtons[buttonKey] = barKey
+			end
+			if (buttonKeyIndex > nKeys) then
+				nKeys = buttonKeyIndex
+			end
+		end
+		if (delete) then
+			local buttonKeyList = buttonKeys
+			for index = nKeys, 1, -1 do
+				if (buttonKeyList[index] == false) then
+					local numKeys = # buttonKeyList
+					buttonKeyList[index] = nil
+					for buttonIndex = index, numKeys - 1, 1 do
+						buttonKeyList[buttonIndex] = buttonKeyList[buttonIndex + 1]
+					end
+				end
+			end
+		end
+
+		-- Adjust Bar Location
+		delete = false
+		for buttonKeyIndex, buttonKey in ipairs(buttonKeys) do
 			local buttonDB = buttonDBList[buttonKey]
 			if (buttonDB) then
 				if (not buttonDB.barKey) then
@@ -1235,7 +1284,7 @@ function AutoBar:RemoveDuplicateButtons()
 						buttonDB.barKey = barKey
 					elseif (AutoBar:ButtonExists(currentBarDB, buttonDB)) then
 						-- Exists in official location.  Remove this duplicate.
-						barDB.buttonKeys[buttonKeyIndex] = false
+						buttonKeys[buttonKeyIndex] = false
 						delete = true
 					else
 						-- Not in official location.  Adjust official location.
@@ -1245,10 +1294,12 @@ function AutoBar:RemoveDuplicateButtons()
 			end
 		end
 		if (delete) then
-			local buttonKeyList = barDB.buttonKeys
-			for index = # buttonKeyList, 1, -1 do
+			local buttonKeyList = buttonKeys
+			for index = nKeys, 1, -1 do
 				if (buttonKeyList[index] == false) then
-					for buttonIndex = index, # buttonKeyList - 1, 1 do
+					local numKeys = # buttonKeyList
+					buttonKeyList[index] = nil
+					for buttonIndex = index, numKeys - 1, 1 do
 						buttonKeyList[buttonIndex] = buttonKeyList[buttonIndex + 1]
 					end
 				end
@@ -1269,15 +1320,19 @@ function AutoBar:ButtonInsertNew(barDB, buttonDB)
 	return buttonDB
 end
 
+-- /script AutoBar:BarsCompact()
 function AutoBar:BarsCompact()
-	local barLayoutDBList = AutoBar.barLayoutDBList
-	for barKey in pairs(barLayoutDBList) do
+	for barKey, barDB in pairs(AutoBar.barButtonsDBList) do
 --AutoBar:Print("AutoBar:BarsCompact barKey " .. tostring(barKey) .. " AutoBar.barLayoutDBList[barKey].buttonKeys " .. tostring(AutoBar.barLayoutDBList[barKey].buttonKeys))
-		local buttonKeys = AutoBar.barButtonsDBList[barKey].buttonKeys
+		local buttonKeys = barDB.buttonKeys
 		local badIndexMax = nil
+		local nKeys = 0
 		for buttonKeyIndex, buttonKey in pairs(buttonKeys) do
 			if (buttonKeyIndex > 1 and buttonKeys[buttonKeyIndex - 1] == nil) then
 				badIndexMax = buttonKeyIndex
+			end
+			if (buttonKeyIndex > nKeys) then
+				nKeys = buttonKeyIndex
 			end
 		end
 		if (badIndexMax) then
@@ -1293,7 +1348,7 @@ function AutoBar:BarsCompact()
 					if (source < sink) then
 						source = sink + 1
 					end
-					while source <= badIndexMax do
+					while source <= nKeys do
 						sourceButtonKey = buttonKeys[source]
 						if (sourceButtonKey) then
 							-- Move it
@@ -1307,7 +1362,7 @@ function AutoBar:BarsCompact()
 						end
 					end
 				end
-				if (source > badIndexMax or sink > badIndexMax) then
+				if (source > nKeys or sink > nKeys) then
 					break
 				end
 			end

@@ -1,4 +1,4 @@
--- $Rev: 75331 $
+-- $Rev: 75429 $
 
 -- Parrot localization information
 -- Translation by Next96, Fenlis, Omosiro, SayClub
@@ -474,6 +474,7 @@ L_CombatEvents_Data:AddTranslations("koKR", function() return {
 		["Pet skill reflects"] = "소환수 기술 반사",
 		["Pet Reflect!"] = "소환수 반사!",
 		["Pet skill evades"] = "소환수 기술 빗나감",
+		["Pet heals over time"] = "소환수 지속 치유",
 		["Combat status"] = "전투 상황",
 		["Enter combat"] = "전투 시작",
 		["Leave combat"] = "전투 종료",
@@ -538,6 +539,14 @@ L_CombatEvents_Data:AddTranslations("koKR", function() return {
 		["Frost"] = "냉기",
 		["Shadow"] = "암흑",
 		["Arcane"] = "비전",
+
+		["The name of the enemy that attacked your pet."] = "당신의 소환수를 공격한 적의 이름",
+		["The spell or ability that the enemy attacked your pet with."] = "적이 당신의 소환수를 공격한 능력이나 주문",
+		["The name of the ally that healed your pet."] = "당신의 소환수를 치유한 대상의 이름",
+		["The spell or ability that the ally healed your pet with."] = "당신의 소환수를 치유한 대상의 능력이나 주문",
+		["The spell or ability that your pet used."] = "당신의 소환수가 사용한 능력이나 주문",
+		["The name of the unit that your pet healed."] = "당신의 소환수를 치유한 유닛의 이름",
+		["The spell or ability that the pet used to heal."] = "소환수를 치유하기 위해 사용한 능력이나 주문",
 }end)
 
 local L_Cooldowns = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Cooldowns")
