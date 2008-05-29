@@ -189,6 +189,7 @@ if (GetLocale() == "zhCN") then
 		["Buttons"] = "按钮",
 		["AutoBarButtonHeader"] = "AutoBar 按钮名称",
 		["AutoBarCooldownHeader"] = "药水和石头冷却",
+		["AutoBarClassBarHeader"] = "Class bar",
 
 		["AutoBarButtonAura"] = "光环 / 守护",
 		["AutoBarButtonBandages"] = "绷带",
@@ -208,6 +209,7 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonCooldownStoneMana"] = "石头冷却：法力",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "石头冷却：活力",
 		["AutoBarButtonCrafting"] = "专业技能",
+		["AutoBarButtonDebuff"] = "Debuff",
 		["AutoBarButtonElixirBattle"] = "作战药剂",
 		["AutoBarButtonElixirGuardian"] = "防护药剂",
 		["AutoBarButtonElixirBoth"] = "作战暨防护药剂",
@@ -486,6 +488,8 @@ if (GetLocale() == "zhCN") then
 		["Spell.Class.Buff"] = "增益法术";
 		["Spell.Class.Pet"] = "战斗宠物";
 		["Spell.Crafting"] = "专业技能";
+		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
+		["Spell.Debuff.Single"] = "Debuff: Single";
 		["Spell.Fishing"] = "钓鱼";
 		["Spell.Portals"] = "传送门";
 		["Spell.Sting"] = "钉刺";

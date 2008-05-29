@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1165,8 +1165,10 @@ function AutoBarCategory:Initialize()
 			"PALADIN", spellShadowResistanceAura,
 			})
 
-	local spellGiftOfTheWild, spellGiftOfTheWildIcon
-	spellGiftOfTheWild, _, spellGiftOfTheWildIcon = GetSpellInfo(26991)
+	spellNameList["Gift of the Wild"], _, spellIconList["Gift of the Wild"] = GetSpellInfo(26991)
+	spellNameList["Amplify Magic"] = GetSpellInfo(33946)
+	spellNameList["Dampen Magic"] = GetSpellInfo(33944)
+
 	local spellOmenOfClarity = GetSpellInfo(16864)
 	local spellThorns = GetSpellInfo(26992)
 	local spellMarkOfTheWild = GetSpellInfo(26990)
@@ -1206,16 +1208,18 @@ function AutoBarCategory:Initialize()
 	local spellBattleShout = GetSpellInfo(2048)
 	local spellCommandingShout = GetSpellInfo(469)
 	AutoBarCategoryList["Spell.Class.Buff"] = AutoBarSpells:new(
-			"Spell.Class.Buff", spellGiftOfTheWildIcon, nil, {
+			"Spell.Class.Buff", spellIconList["Gift of the Wild"], nil, {
 			"DRUID", spellOmenOfClarity, spellOmenOfClarity,
 			"DRUID", spellThorns, spellThorns,
-			"DRUID", spellMarkOfTheWild, spellGiftOfTheWild,
+			"DRUID", spellMarkOfTheWild, spellNameList["Gift of the Wild"],
 			"DRUID", spellNaturesGrasp, spellNaturesGrasp,
 			"MAGE", spellArcaneIntellect, spellArcaneBrilliance,
 			"MAGE", spellFrostArmor, spellFrostArmor,
 			"MAGE", spellIceArmor, spellIceArmor,
 			"MAGE", spellMageArmor, spellMageArmor,
 			"MAGE", spellMoltenArmor, spellMoltenArmor,
+			"MAGE", spellNameList["Amplify Magic"], spellNameList["Amplify Magic"],
+			"MAGE", spellNameList["Dampen Magic"], spellNameList["Dampen Magic"],
 			"PRIEST", spellShadowProtection, spellPrayerOfShadowProtection,
 			"PRIEST", spellDivineSpirit, spellPrayerOfSpirit,
 			"PRIEST", spellPowerWordFortitude, spellPrayerOfFortitude,
@@ -1236,7 +1240,7 @@ function AutoBarCategory:Initialize()
 			"WARRIOR", spellCommandingShout, spellBattleShout,
 			})
 	if (AutoBar.CLASS == "DRUID") then
-		AutoBar.reagents[spellGiftOfTheWild] = {17021, 17026, 22148}
+		AutoBar.reagents[spellNameList["Gift of the Wild"]] = {17021, 17026, 22148}
 	end
 	if (AutoBar.CLASS == "MAGE") then
 		AutoBar.reagents[spellArcaneBrilliance] = {17020}
@@ -1553,11 +1557,68 @@ function AutoBarCategory:Initialize2()
 			"*", spellTailoring,
 			})
 
-	local spellFishing, spellFishingIcon
-	spellFishing, _, spellFishingIcon = GetSpellInfo(33095)
+	spellNameList["Curse of Tongues"], _, spellIconList["Curse of Tongues"] = GetSpellInfo(11719)
+	spellNameList["Faerie Fire"] = GetSpellInfo(770)
+	spellNameList["Faerie Fire (Feral)"] = GetSpellInfo(17390)
+	spellNameList["Insect Swarm"] = GetSpellInfo(5570)
+	spellNameList["Hex of Weakness"] = GetSpellInfo(25470)
+	spellNameList["Curse of Agony"] = GetSpellInfo(27218)
+	spellNameList["Curse of Doom"] = GetSpellInfo(30910)
+	spellNameList["Curse of Exhaustion"] = GetSpellInfo(18223)
+	spellNameList["Curse of Recklessness"] = GetSpellInfo(27226)
+	spellNameList["Curse of Shadow"] = GetSpellInfo(27229)
+	spellNameList["Curse of the Elements"] = GetSpellInfo(27228)
+	spellNameList["Curse of Weakness"] = GetSpellInfo(30909)
+	spellNameList["Hamstring"] = GetSpellInfo(25212)
+	AutoBarCategoryList["Spell.Debuff.Multiple"] = AutoBarSpells:new(
+			"Spell.Debuff.Multiple", spellIconList["Curse of Tongues"], {
+			"DRUID", spellNameList["Faerie Fire"],
+			"DRUID", spellNameList["Faerie Fire (Feral)"],
+			"DRUID", spellNameList["Insect Swarm"],
+			"PRIEST", spellNameList["Hex of Weakness"],
+			"WARLOCK", spellNameList["Curse of Agony"],
+			"WARLOCK", spellNameList["Curse of Doom"],
+			"WARLOCK", spellNameList["Curse of Exhaustion"],
+			"WARLOCK", spellNameList["Curse of Recklessness"],
+			"WARLOCK", spellNameList["Curse of Shadow"],
+			"WARLOCK", spellNameList["Curse of Tongues"],
+			"WARLOCK", spellNameList["Curse of the Elements"],
+			"WARLOCK", spellNameList["Curse of Weakness"],
+			})
+
+	spellNameList["Slow"], _, spellIconList["Slow"] = GetSpellInfo(20165)
+	spellNameList["Scorpid Sting"] = GetSpellInfo(3043)
+	spellNameList["Serpent Sting"] = GetSpellInfo(27016)
+	spellNameList["Viper Sting"] = GetSpellInfo(27018)
+	spellNameList["Wyvern Sting"] = GetSpellInfo(27068)
+	spellNameList["Silence"] = GetSpellInfo(15487)
+	spellNameList["Blind"] = GetSpellInfo(2094)
+	spellNameList["Sap"] = GetSpellInfo(11297)
+	AutoBarCategoryList["Spell.Debuff.Single"] = AutoBarSpells:new(
+			"Spell.Debuff.Single", spellIconList["Slow"], {
+			"HUNTER", spellNameList["Scorpid Sting"],
+			"HUNTER", spellNameList["Serpent Sting"],
+			"HUNTER", spellNameList["Viper Sting"],
+			"HUNTER", spellNameList["Wyvern Sting"],
+			"MAGE", spellNameList["Slow"],
+--			"PRIEST", spellNameList["Silence"],
+			})
+
+	-- ToDo: Deprecate this
+	local spellWyvernStingIcon
+	_, _, spellWyvernStingIcon = GetSpellInfo(27068)
+	AutoBarCategoryList["Spell.Sting"] = AutoBarSpells:new(
+			"Spell.Sting", spellWyvernStingIcon, {
+			"HUNTER", spellNameList["Scorpid Sting"],
+			"HUNTER", spellNameList["Serpent Sting"],
+			"HUNTER", spellNameList["Viper Sting"],
+			"HUNTER", spellNameList["Wyvern Sting"],
+			})
+
+	spellNameList["Fishing"], _, spellIconList["Fishing"] = GetSpellInfo(33095)
 	AutoBarCategoryList["Spell.Fishing"] = AutoBarSpells:new(
-			"Spell.Fishing", spellFishingIcon, {
-			"*", spellFishing,
+			"Spell.Fishing", spellIconList["Fishing"], {
+			"*", spellNameList["Fishing"],
 			})
 
 	spellNameList["Seal of Blood"] = GetSpellInfo(31892)
@@ -1627,19 +1688,6 @@ function AutoBarCategory:Initialize2()
 			"HUNTER", spellImmolationTrap,
 			"HUNTER", spellSnakeTrap,
 			"HUNTER", spellFreezingTrap,
-			})
-
-	local spellWyvernSting, spellWyvernStingIcon
-	spellWyvernSting, _, spellWyvernStingIcon = GetSpellInfo(27068)
-	local spellScorpidSting = GetSpellInfo(3043)
-	local spellViperSting = GetSpellInfo(27018)
-	local spellSerpentSting = GetSpellInfo(27016)
-	AutoBarCategoryList["Spell.Sting"] = AutoBarSpells:new(
-			"Spell.Sting", spellWyvernStingIcon, {
-			"HUNTER", spellScorpidSting,
-			"HUNTER", spellViperSting,
-			"HUNTER", spellSerpentSting,
-			"HUNTER", spellWyvernSting,
 			})
 
 	local spellSummonDreadsteed, spellSummonDreadsteedIcon

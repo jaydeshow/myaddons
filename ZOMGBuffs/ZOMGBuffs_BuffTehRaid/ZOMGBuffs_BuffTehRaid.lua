@@ -15,7 +15,7 @@ local z = ZOMGBuffs
 local zg = z:NewModule("ZOMGBuffTehRaid")
 ZOMGBuffTehRaid = zg
 
-z:CheckVersion("$Revision: 73261 $")
+z:CheckVersion("$Revision: 75360 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 local InCombatLockdown	= InCombatLockdown
@@ -1516,16 +1516,22 @@ function zg:CheckTickColumns(cell)
 		self:KillTick(cell)
 	end
 
-	local b = cell.buff[1]
-	if (not b or not b:IsShown()) then
+	local b = z.buffs[1] and cell.buff and cell.buff[1]
+	if (not b and z.classcount.PALADIN > 0) then
 		b = cell.palaIcon[1]
 	end
-	if (b and b:IsShown()) then
+	if (b) then
 		b:ClearAllPoints()
 		if (count == 0) then
 			b:SetPoint("TOPLEFT", 0, 0)
 		else
 			b:SetPoint("TOPLEFT", cell.ticks[count], "TOPRIGHT")
+		end
+	else
+		if (count > 0) then
+			cell.bar:ClearAllPoints()
+			cell.bar:SetPoint("TOPLEFT", cell.ticks[count], "TOPRIGHT")
+			cell.bar:SetPoint("BOTTOMRIGHT")
 		end
 	end
 

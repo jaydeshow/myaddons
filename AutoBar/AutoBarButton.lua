@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1307,6 +1307,17 @@ function AutoBarButtonTravel.prototype:Refresh(parentBar, buttonDB)
 		local macroText = table.concat(concatList)
 		self:AddMacro(macroText, macroTexture)
 	end
+end
+
+
+local AutoBarButtonDebuff = AceOO.Class(AutoBarButton)
+AutoBar.Class["AutoBarButtonDebuff"] = AutoBarButtonDebuff
+
+function AutoBarButtonDebuff.prototype:init(parentBar, buttonDB)
+	AutoBarButtonDebuff.super.prototype.init(self, parentBar, buttonDB)
+
+	self:AddCategory("Spell.Debuff.Single")
+	self:AddCategory("Spell.Debuff.Multiple")
 end
 
 

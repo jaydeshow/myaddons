@@ -189,6 +189,7 @@ if (GetLocale() == "itIT") then
 		["Buttons"] = "Boutons",
 		["AutoBarButtonHeader"] = "Nom des boutons de l'AutoBar",
 		["AutoBarCooldownHeader"] = "Cooldown des potions et pierres",
+		["AutoBarClassBarHeader"] = "Class bar",
 
 		["AutoBarButtonAura"] = "Aura / Aspect",
 		["AutoBarButtonBandages"] = "Bandages",
@@ -208,6 +209,7 @@ if (GetLocale() == "itIT") then
 		["AutoBarButtonCooldownStoneMana"] = "Cooldown de pierre : Mana",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "Cooldown de pierre : Restauration",
 		["AutoBarButtonCrafting"] = "Artisanat",
+		["AutoBarButtonDebuff"] = "Debuff",
 		["AutoBarButtonElixirBattle"] = "Elixir de bataille",
 		["AutoBarButtonElixirGuardian"] = "Elixir du Guardien",
 		["AutoBarButtonElixirBoth"] = "Elixir de bataille et du Gardien",
@@ -487,6 +489,8 @@ if (GetLocale() == "itIT") then
 		["Spell.Class.Buff"] = "Class Buff";
 		["Spell.Class.Pet"] = "Class Pet";
 		["Spell.Crafting"] = "Artisanat";
+		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
+		["Spell.Debuff.Single"] = "Debuff: Single";
 		["Spell.Fishing"] = "Pêche";
 		["Spell.Portals"] = "Portaille et téléportation";
 		["Spell.Sting"] = "Piqure";

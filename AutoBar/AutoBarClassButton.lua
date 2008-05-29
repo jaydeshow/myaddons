@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -154,9 +154,9 @@ function AutoBar.Class.Button:SetKey(key)
 --		SetOverrideBindingClick(AutoBar.keyFrame, false, key, buttonFrameName)
 		local buttonBinding = button:GetButtonBinding()
 		if (buttonBinding) then
-AutoBar:Print("AutoBar.Class.Button.prototype:SetKey buttonBinding " .. tostring(buttonBinding) .. " -> " .. tostring(key))-- .. " buttonName " .. tostring(frame.class.buttonName))
+--AutoBar:Print("AutoBar.Class.Button.prototype:SetKey buttonBinding " .. tostring(buttonBinding) .. " -> " .. tostring(key))-- .. " buttonName " .. tostring(frame.class.buttonName))
 			SetBinding(key, buttonBinding)
-AutoBar:Print("AutoBar.Class.Button.prototype:SetKey buttonBinding " .. tostring(buttonBinding) .. " <- " .. tostring(GetBindingKey(buttonBinding)))-- .. " buttonName " .. tostring(frame.class.buttonName))
+--AutoBar:Print("AutoBar.Class.Button.prototype:SetKey buttonBinding " .. tostring(buttonBinding) .. " <- " .. tostring(GetBindingKey(buttonBinding)))-- .. " buttonName " .. tostring(frame.class.buttonName))
 		end
 		button:BindingsUpdate()
 	end

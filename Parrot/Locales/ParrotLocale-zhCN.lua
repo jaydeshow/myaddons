@@ -1,4 +1,4 @@
--- $Rev: 75331 $
+-- $Rev: 75427 $
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("zhCN", function() return {
@@ -424,7 +424,7 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		["Interrupt!"] = "打断！",
 		["Incoming heals"] = "受到治疗",
 		["Heals"] = "治疗",
-		["The name of the ally that healed you."] = "治疗你的盟友名字。",
+		["The name of the ally that healed you."] = "治疗你的盟友名称。",
 		["The spell or ability that the ally healed you with."] = "盟友用来治疗你的法术名称。",
 		["The amount of healing done."] = "受到的治疗量。",
 		[" (%d heal, %d crit)"] = "（%d次治疗，%d次爆击）",
@@ -439,7 +439,7 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		["The spell or ability that you used."] = "你所使用的法术或技能。",
 		["Skill evades"] = "技能闪避",
 		["Outgoing heals"] = "输出治疗",
-		["The name of the ally you healed."] = "你所治疗的盟友名字。",
+		["The name of the ally you healed."] = "你所治疗的盟友名称。",
 		["Pet melee"] = "近战（宠物）",
 		["Pet melee damage"] = "近战伤害（宠物）",
 		["Pet [Amount]"] = "[Amount]（宠物）",
@@ -476,6 +476,7 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		["Pet skill reflects"] = "技能反射（宠物）",
 		["Pet Reflect!"] = "反射！（宠物）",
 		["Pet skill evades"] = "技能闪避（宠物）",
+		["Pet heals over time"] = "宠物持续治疗",
 		["Combat status"] = "战斗状态",
 		["Enter combat"] = "进入战斗",
 		["Leave combat"] = "脱离战斗",
@@ -503,7 +504,7 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		["[Num] CP Finish It!"] = "[Num]点CP 终结技！",
 		["Honor gains"] = "获得荣誉",
 		["The amount of honor gained."] = "获得的荣誉点数。",
-		["The name of the enemy slain."] = "被杀死的敌人名字。",
+		["The name of the enemy slain."] = "被杀死的敌人名称。",
 		["The rank of the enemy slain."] = "被杀死的敌人级别。",
 		["Reputation"] = "声望",
 		["Reputation gains"] = "获得声望",
@@ -540,6 +541,14 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		["Frost"] = "冰霜",
 		["Shadow"] = "暗影",
 		["Arcane"] = "奥术",
+		
+		["The name of the enemy that attacked your pet."] = "攻击你宠物的敌人名称。",
+		["The spell or ability that the enemy attacked your pet with."] = "敌人攻击你宠物的法术或技能。",
+		["The name of the ally that healed your pet."] = "治疗你宠物的盟友名称。",
+		["The spell or ability that the ally healed your pet with."] = "治疗你宠物的法术或技能。",
+		["The spell or ability that your pet used."] = "你宠物使用的法术或技能。",
+		["The name of the unit that your pet healed."] = "你宠物治疗的单位名称。",
+		["The spell or ability that the pet used to heal."] = "你宠物使用的治疗法术或技能。",
 }end)
 
 local L_Cooldowns = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Cooldowns")

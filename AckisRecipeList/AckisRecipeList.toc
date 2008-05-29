@@ -12,8 +12,8 @@
 
 ## Interface: 20400
 ## Version: 0.88
-## X-Revision: $Rev: 74935 $
-## X-Date: $Date: 2008-05-23 11:10:00 -0400 (Fri, 23 May 2008) $
+## X-Revision: $Rev: 75371 $
+## X-Date: $Date: 2008-05-28 13:25:38 -0400 (Wed, 28 May 2008) $
 
 ## X-credits: FGWarmonger, Speeddymon, Xinhuan, Zhinjio
 
@@ -26,7 +26,7 @@
 
 ## Dependencies:
 ## X-Embeds: Ace3, LibStub, CallbackHandler-1.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0
-## OptionalDeps: Ace3, LibStub, CallbackHandler-1.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, Skillet, ATSW, Manufac
+## OptionalDeps: Ace3, LibStub, CallbackHandler-1.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, Skillet, ATSW, Manufac, Skinner
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 

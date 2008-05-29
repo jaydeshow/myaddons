@@ -1,6 +1,6 @@
 --[[
 Name: LibKeyBound-1.0
-Revision: $Rev: 75253 $
+Revision: $Rev: 75370 $
 Author(s): Gello, Maul, Toadkiller, Tuller
 Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 Documentation: http://www.wowace.com/wiki/LibKeyBound-1.0
@@ -10,7 +10,7 @@ Dependencies: CallbackHandler-1.0
 --]]
 
 local MAJOR = "LibKeyBound-1.0"
-local MINOR = "$Revision: 75253 $"
+local MINOR = "$Revision: 75370 $"
 
 --[[
 	LibKeyBound-1.0
@@ -283,15 +283,12 @@ Arguments:
 	table - the button frame
 
 Example:
-	function MyButtonClass:OnEnter()
-		local button = self.buttonFrame
-		if (button.GetHotkey) then
-			LibKeyBound:Set(button)
-		end
-	end
+		local button = this
+		LibKeyBound:Set(button)
 
 Notes:
 	 * Sets up button for keybinding
+	 * Call this in your OnEnter script for the button
 	 * Current bindings are shown in the tooltip
 	 * Primary binding is shown in green in the button text
 --]]
@@ -325,12 +322,9 @@ Returns:
 	string - the shortened displayString
 
 Example:
-	function MyButton:GetHotkey()
-		local button = self
 		local key1 = GetBindingKey(button:GetName())
 		local displayKey = LibKeyBound:ToShortKey(key1)
 		return displayKey
-	end
 
 Notes:
 	* Shortens the key text (returned from GetBindingKey etc.)

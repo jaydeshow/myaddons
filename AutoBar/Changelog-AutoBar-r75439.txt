@@ -1,4 +1,30 @@
 ------------------------------------------------------------------------
+r75439 | toadkiller | 2008-05-29 00:16:14 -0400 (Thu, 29 May 2008) | 7 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+   M /trunk/AutoBar/Bindings.xml
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+-- Amplify Magic, Dampen Magic added to Class Buff Button.
+-- Debuff: Multiple category - faerie fires, insect swarm, curses, Hex of Weakness
+-- Debuff: Single category - hunter stings, mage slow spell
+-- AutoBarButtonDebuff: Debuff: Multiple and Debuff: Single categories.
+-- Fix CompactBars.  Upgrade RemoveDuplicateButtons to handle duplicates within a bar.
+
+------------------------------------------------------------------------
 r75288 | toadkiller | 2008-05-27 17:57:47 -0400 (Tue, 27 May 2008) | 8 lines
 Changed paths:
    M /trunk/AutoBar/AutoBar.toc
@@ -1188,155 +1214,4 @@ AutoBar :
 -- Reagent counts for select spells.  Specifically did not do the 5 million soulshard spells of warlocks, nor rogue poisons.
 -- The left click spell + the right click spell counts are split into <left click spell count>/<right click spell count>
 
-------------------------------------------------------------------------
-r71858 | toadkiller | 2008-04-27 20:07:12 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
-rev release #
-------------------------------------------------------------------------
-r71857 | toadkiller | 2008-04-27 20:04:52 -0400 (Sun, 27 Apr 2008) | 22 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/Bindings.xml
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- 2.04.01.48 beta ()
--- Remove Armor & WeaponSmith Popups
--- Fix bad global reference barPositionDBList -> AutoBar.barPositionDBList
--- Fix hitRectPadding for negative padding values
--- Increase minimum hitRectPadding to 4
--- Bar frame padding >= 0 only
--- Added holy water code to combat the undead zombie buttons that kept returning after removal.
--- Fix Tracking button
--- Fix removal of Buttons from disabled Bar
--- Fix spellCrusaderAura, _, spellCrusaderAuraIcon = GetSpellInfo(32223)
--- Fix Button Delete and Remove using layout instead of buttons share.
--- Fix crash when enabling a bar during Move mode.
--- Fix Travel Form case for outland and in combat to use Cheeta and not Flight Form
--- Consumable.Cooldown.Drums
--- Fix some PT3.1 out of sync sets
--- AutoBarButtonCooldownDrums drums, nets, other drum cooldown stuff
--- Upgrade Remove and Delete Button description text
--- Add Babble-Zone-2.2 dependency to toc
--- Make ClampedToScreen an AutoBar option.  Requires reload to take effect / disable for now. Default is false.
--- Add specific cancel fadeout in combat setting
-
-------------------------------------------------------------------------
-r71741 | toadkiller | 2008-04-27 05:04:56 -0400 (Sun, 27 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Fix Travel Form case for outland and in combat to use Cheeta and not Flight Form
-
-------------------------------------------------------------------------
-r71738 | toadkiller | 2008-04-27 04:52:19 -0400 (Sun, 27 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Fix crash when enabling a bar during Move mode.
-
-------------------------------------------------------------------------
-r71736 | toadkiller | 2008-04-27 04:37:03 -0400 (Sun, 27 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarOptions.lua
-
-AutoBar : 
--- Fix Button Delete and Remove using layout instead of buttons share.
-
-------------------------------------------------------------------------
-r71726 | toadkiller | 2008-04-27 03:36:26 -0400 (Sun, 27 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- Fix spellCrusaderAura, _, spellCrusaderAuraIcon = GetSpellInfo(32223)
-
-------------------------------------------------------------------------
-r71690 | toadkiller | 2008-04-26 19:50:46 -0400 (Sat, 26 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarOptions.lua
-
-AutoBar : 
--- Fix removal of Buttons from disabled Bar
-
-------------------------------------------------------------------------
-r71688 | toadkiller | 2008-04-26 19:35:37 -0400 (Sat, 26 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- Fix Tracking button
-
-------------------------------------------------------------------------
-r71675 | toadkiller | 2008-04-26 17:26:47 -0400 (Sat, 26 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarOptions.lua
-
-AutoBar : 
--- Remove Button now correctly clears its placement barKey so it doesnt get replaced on relog.
-
-------------------------------------------------------------------------
-r71674 | toadkiller | 2008-04-26 17:07:39 -0400 (Sat, 26 Apr 2008) | 6 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Remove Armor & WeaponSmith Popups
--- Fix bad global reference barPositionDBList -> AutoBar.barPositionDBList
--- Fix hitRectPadding for negative padding values
--- Increase minimum hitRectPadding to 4
-
-------------------------------------------------------------------------
-r71664 | toadkiller | 2008-04-26 15:17:19 -0400 (Sat, 26 Apr 2008) | 7 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- Add option to show tooltips in combat.  Requires showTooltips to be set.
--- ButtonPaste can no longer duplicate buttons in cross bar drags.
--- Added code to remove duplicate buttons due to sharing changes or dragging from class to account bars.
--- Syncronize Button's placement info with actual placement
--- Fix default Tracking Button icon
-
-------------------------------------------------------------------------
-r71631 | scorpio0920 | 2008-04-26 09:27:50 -0400 (Sat, 26 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhTW localization.
 ------------------------------------------------------------------------

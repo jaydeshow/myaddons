@@ -16,7 +16,7 @@ if arg[1] == "-chksrc" and arg[2] then
 	table.remove(arg, 1)
 	print("Enabling deep scan for Loot table of the following tables", arg[1])
 	INSTANCELOOT_CHKSRC = true
-	INSTANCELOOT_MIN = 1000
+	INSTANCELOOT_MIN = 100
 end
 
 local function dprint(dlevel, ...)
@@ -200,6 +200,31 @@ id = basic_listview_get_first_id(url)
 this function return the first "id" of the first entry in the first listview of the given url.
 Used when searching for mobs or containers by name.
 ]=]
+
+local locale_data
+local function fetch_locale_data()
+	if not locale_data then
+		locale_data = {}
+		local page = getpage("http://static.wowhead.com/js/locale_enus.js")
+		local zones = page:match("g_zones={(.-)}")
+		for id, zone in zones:gmatch("(%d+):\"(.-)\"") do
+			locale_data[tonumber(id)] = zone
+		end
+	end
+end
+local function get_zone_name_from_id(id)
+	fetch_locale_data()
+	return locale_data[tonumber(id)]
+end
+local function get_zone_id_from_name(name)
+	fetch_locale_data()
+	for id,zone in pairs(locale_data) do
+		if zone == name then
+			return id
+		end
+	end
+end
+
 local function basic_itemid_handler(itemstring)
 	return itemstring:match("{id:(%d+)")
 end
@@ -239,7 +264,7 @@ local function basic_listview_get_first_id(url)
 	return tonumber(page)
 end
 
-local function basic_listview_get_npc_id(npc)
+local function basic_listview_get_npc_id(npc, zone)
 	local url = "http://www.wowhead.com/?npcs&filter=na="..url.escape(npc)..";cr=9;crs=1;crv=0"
 	local page = getpage(url)
 	if not page then return end
@@ -247,11 +272,22 @@ local function basic_listview_get_npc_id(npc)
 	if not page then return end
 	page = page:match("data: (%b[])")
 	if not page then return end
+	if zone then zone = get_zone_id_from_name(zone) end
 	local first_id
 	for entry in page:gmatch("%b{}") do
+		entry = entry:gsub("'", "\""):gsub("\\\"", "'")
 		local id = entry:match("{id:(%d+)")
-		local name = entry:match("name:'([^']+)'")
-		if name == npc then return tonumber(id) end
+		local name = entry:match("name:\"([^\"]+)\"")
+		local location = entry:match("location:(%[[^%]]+%])")
+		if name == npc then
+			if zone then
+				if location:match("[%[,]"..zone.."[%],]") then
+					return tonumber(id)
+				end
+			else
+				return tonumber(id)
+			end
+		end
 		if not first_id then first_id = id end
 	end
 	return first_id and tonumber(first_id)
@@ -577,10 +613,11 @@ local function handle_trash_mobs(set)
 	return table.concat(sets, ",")
 end
 
+local junkdrops = {}
 handlers["^InstanceLoot%."] = function (set, data)
 	if not INSTANCELOOT_CHKSRC then return end
 	local newset
-	local boss = set:match("%.([^%.]+)$")
+	local zone, boss = set:match("([^%.]+)%.([^%.]+)$")
 	if boss == " Smite" then
 		boss = "Mr. Smite"
 	end
@@ -588,7 +625,7 @@ handlers["^InstanceLoot%."] = function (set, data)
 		return handle_trash_mobs(set)
 	end
 	local id, type =
-		basic_listview_get_npc_id(boss), "npc"
+		basic_listview_get_npc_id(boss, zone), "npc"
 	if not id then
 		id, type = basic_listview_get_first_id("http://www.wowhead.com/?objects&filter=na="..url.escape(boss)), "object"
 	end
@@ -617,8 +654,11 @@ handlers["^InstanceLoot%."] = function (set, data)
 
 		local handler = function (itemstring)
 			local itemid = itemstring:match("{id:(%d+)")
+			if junkdrops[itemid] then return end
 			local dropcount = tonumber(itemstring:match("count:(%d+)"))
 			local droprate = math.floor(dropcount / totaldrops * 1000)
+			local quality = 6 - tonumber(itemstring:match("name:'(%d)"))
+			if quality < 1 then return end
 			if droprate <= INSTANCELOOT_MIN then
 				local count = 0
 				local url = "http://www.wowhead.com/?item="..itemid
@@ -628,16 +668,17 @@ handlers["^InstanceLoot%."] = function (set, data)
 				dprint(4, "name", name)
 				for n, binding in page:gmatch("<b[^>]+>([^<]+)</b><br />Binds when ([a-z ]+)") do
 					dprint(5, n, binding)
-					if n == name and binding == "equipped" then return end
+					if n == name and binding == "equipped" then
+						junkdrops[itemid] = true
+						return
+					end
 				end
-				-- gray item might still appear for less than 10 mobs (Nazan is a good example)
-				local level = page:match("<b class=\"q(%d)\">")
-				if level == "0" then return end
 
 				basic_listview_handler(url, function () count = count + 1 end, "dropped-by")
 				dprint(4, boss, itemid, droprate, count, count > INSTANCELOOT_MAXSRC)
 
 				if count > INSTANCELOOT_MAXSRC then
+					junkdrops[itemid] = true
 					return
 				end
 			end
