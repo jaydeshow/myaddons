@@ -5,8 +5,6 @@
 local boss = BB["Broggok"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
 
-local db = nil
-
 ----------------------------
 --      Localization      --
 ----------------------------
@@ -59,17 +57,15 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"poison", "bosskill"}
-mod.revision = tonumber(("$Revision: 67518 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75658 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_DAMAGE", "Cloud", 31259, 23861) -- Find out which one is correct maybe one heroic, one normal
+	self:AddCombatListener("SPELL_DAMAGE", "Cloud", 30916)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-
-	db = self.db.profile
 end
 
 ------------------------------
@@ -77,7 +73,7 @@ end
 ------------------------------
 
 function mod:Cloud()
-	if db.poison then
-		self:Message(L["poison_message"], "Attention")
+	if self.db.profile.poison then
+		self:IfMessage(L["poison_message"], "Attention", 30916)
 	end
 end

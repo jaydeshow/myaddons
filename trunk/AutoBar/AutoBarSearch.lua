@@ -7,7 +7,7 @@ Website: http://www.wowace.com/
 -- http://code.google.com/p/autobar/
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 74033 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1019,14 +1019,23 @@ function Sorted.prototype:SetBest(buttonKey)
 
 	-- Move arrangeOnUse item to front of list
 	local buttonData = AutoBar.db.char.buttonDataList[buttonKey]
-	if (buttonData and buttonData.arrangeOnUse) then
-		itemId = buttonData.arrangeOnUse
-		if (self:SwapToFront(sortedItems, itemId)) then
-			return
+
+	if (buttonData) then
+		if (buttonData.SetBest) then
+			if (buttonData.SetBest(self, buttonDB, buttonData, sortedItems, searchItems)) then
+				return
+			end
 		end
 
-		-- Remove item if not found
-		buttonData.arrangeOnUse = nil
+		if (buttonData.arrangeOnUse) then
+			itemId = buttonData.arrangeOnUse
+			if (self:SwapToFront(sortedItems, itemId)) then
+				return
+			end
+
+			-- Remove item if not found
+			buttonData.arrangeOnUse = nil
+		end
 	end
 
 	-- Restore correct sorting

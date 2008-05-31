@@ -33,12 +33,12 @@ elseif locale == "koKR" then L = {
 	["You cannot afford to repair. Go farm you poor newbie."] = "당신은 아이템 수리를 할 수 없습니다. 돈이 부족합니다.",
 }
 elseif locale == "zhCN" then L = {
---	["Repair"] = "Repair",
+	["Repair"] = "自动修理",
 	["Automatically repair all inventory items when at merchant"] = "当打开商人窗口时自动修理全部装备",
---	["Use Guild Bank Funds"] = "Use Guild Bank Funds",
---	["With this option enabled, Repair will try to repair from guild bank funds before using your personal money."] = "",
+	["Use Guild Bank Funds"] = "使用公会公款",
+	["With this option enabled, Repair will try to repair from guild bank funds before using your personal money."] = "当该选项开启后，将会在使用你自己的钱修理前先尝试使用公会银行的钱。",
 	["Repairing all items for %s."] = "本次修理花费：%s",
---	["Repairing all items for %s from guild bank funds."] = "",
+	["Repairing all items for %s from guild bank funds."] = "本次修理公会花费：%s",
 	["You cannot afford to repair. Go farm you poor newbie."] = "你个穷鬼都修不起你的装备，赶紧去Farm去！",
 }
 elseif locale == "zhTW" then L = {

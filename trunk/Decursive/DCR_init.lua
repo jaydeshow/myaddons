@@ -458,6 +458,12 @@ function D:OnInitialize() -- Called on ADDON_LOADED -- {{{
 	};
     end
 
+    -- Thanks to Chinese localization team of WoW we have to make anOTHER exception.... ://///
+    -- They found the way to call two different spells the same (Devour Magic and Consume Magic... (both are called "&#21534;&#22124;&#39764;&#27861;" )
+    if (select(2, UnitClass("player")) == "PRIEST") then
+	DC.SpellsToUse[DS[D.LOC.PET_FEL_CAST]] = nil; -- so we remove PET_FEL_CAST.
+    end
+
     -- // }}}
 
 end -- // }}}
@@ -1095,7 +1101,7 @@ function D:SetDateAndRevision (Date, Revision)
     end
 end
 
-D:SetDateAndRevision("$Date: 2008-05-08 09:58:40 -0400 (Thu, 08 May 2008) $", "$Revision: 73101 $");
+D:SetDateAndRevision("$Date: 2008-05-31 13:27:58 -0400 (Sat, 31 May 2008) $", "$Revision: 75655 $");
 
 DcrLoadedFiles["DCR_init.lua"] = true;
 

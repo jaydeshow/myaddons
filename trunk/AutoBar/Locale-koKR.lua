@@ -27,8 +27,8 @@ if (GetLocale() == "koKR") then
 		["Announce to Party"] = "파티에 알림",
 		["Announce to Raid"] = "공격대에 알림",
 		["Announce to Say"] = "일반 알림",
-		["Bar Location"] = "Bar Location",
-		["Bar the Button is located on"] = "Bar the Button is located on",
+		["Bar Location"] = "바 위치",
+		["Bar the Button is located on"] = "버튼이 위치할 바",
 		["Bars"] = "바들",
 		["Battlegrounds only"] = "전장에서만",
 		["Button Width"] = "버튼 너비",
@@ -189,7 +189,7 @@ if (GetLocale() == "koKR") then
 		["Buttons"] = "버튼",
 		["AutoBarButtonHeader"] = "AutoBar 지정 버튼들",
 		["AutoBarCooldownHeader"] = "물약 & 석 대기시간",
-		["AutoBarClassBarHeader"] = "Class bar",
+		["AutoBarClassBarHeader"] = "직업 바",
 
 		["AutoBarButtonAura"] = "오라 / 상",
 		["AutoBarButtonBandages"] = "붕대",
@@ -197,7 +197,7 @@ if (GetLocale() == "koKR") then
 		["AutoBarButtonBuff"] = "버프",
 		["AutoBarButtonBuffWeapon1"] = "주무기 버프",
 		["AutoBarButtonBuffWeapon2"] = "보조무기 버프",
-		["AutoBarButtonCharge"] = "Charge",
+		["AutoBarButtonCharge"] = "돌진",
 		["AutoBarButtonClassBuff"] = "직업 버프",
 		["AutoBarButtonClassPet"] = "직업 소환수",
 		["AutoBarButtonConjure"] = "창조",
@@ -209,7 +209,7 @@ if (GetLocale() == "koKR") then
 		["AutoBarButtonCooldownStoneMana"] = "조각상 대기시간: 마나",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "조각상 대기시간: 회복",
 		["AutoBarButtonCrafting"] = "보석세공",
-		["AutoBarButtonDebuff"] = "Debuff",
+		["AutoBarButtonDebuff"] = "디버프",
 		["AutoBarButtonElixirBattle"] = "전투 비약",
 		["AutoBarButtonElixirGuardian"] = "강화 비약",
 		["AutoBarButtonElixirBoth"] = "전투와 강화 비약",
@@ -275,7 +275,6 @@ if (GetLocale() == "koKR") then
 		["|c00FF9966C|r"] = "|c00FF9966C|r",
 		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["|c009966CCA|r"] = "|c009966CCA|r",
-		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["NP"] = "NP",
 		["M"] = "M",
 		["MM"] = "MM",
@@ -488,8 +487,8 @@ if (GetLocale() == "koKR") then
 		["Spell.Class.Buff"] = "직업 버프";
 		["Spell.Class.Pet"] = "직업 소환수";
 		["Spell.Crafting"] = "보석세공";
-		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
-		["Spell.Debuff.Single"] = "Debuff: Single";
+		["Spell.Debuff.Multiple"] = "디버프: 다양";
+		["Spell.Debuff.Single"] = "디버프: 싱글";
 		["Spell.Fishing"] = "낚시";
 		["Spell.Portals"] = "차원문과 순간이동";
 		["Spell.Sting"] = "쐐기";

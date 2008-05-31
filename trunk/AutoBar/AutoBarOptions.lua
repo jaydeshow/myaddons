@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75288 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1663,7 +1663,7 @@ function AutoBar:CreateSmallOptions()
 			name = name,
 			desc = name,
 			args = {
-				lockBars = {
+				moveBarsMode = {
 					type = "toggle",
 					order = 1,
 					name = L["Move the Bars"],
@@ -1672,12 +1672,12 @@ function AutoBar:CreateSmallOptions()
 					set = AutoBar.MoveBarModeToggle,
 					disabled = getCombatLockdown,
 				},
-				lockButtons = {
+				moveButtonsMode = {
 					type = "toggle",
 					order = 2,
 					name = L["Move the Buttons"],
 					desc = L["Drag a Button to move it, right click to configure the Button."],
-					get = function() return AutoBar.unlockButtons end,
+					get = function() return AutoBar.moveButtonsMode end,
 					set = AutoBar.MoveButtonsModeToggle,
 					disabled = getCombatLockdown,
 				},

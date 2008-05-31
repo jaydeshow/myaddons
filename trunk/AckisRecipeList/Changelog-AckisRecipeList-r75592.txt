@@ -1,4 +1,66 @@
 ------------------------------------------------------------------------
+r75592 | ackis | 2008-05-30 20:59:49 -0400 (Fri, 30 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+
+AckisRecipeList:
+- Remove ;
+------------------------------------------------------------------------
+r75527 | kurax | 2008-05-30 01:00:11 -0400 (Fri, 30 May 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
+
+AckisRecipeList: Update zhCN locale
+------------------------------------------------------------------------
+r75519 | ackis | 2008-05-29 23:14:18 -0400 (Thu, 29 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/embeds.xml
+
+AckisRecipeList:
+- Update embeds.xml
+------------------------------------------------------------------------
+r75498 | ackis | 2008-05-29 17:41:35 -0400 (Thu, 29 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Changed some logic in the display recipe check to improve overall effeciency
+- Dry-coded :P
+------------------------------------------------------------------------
+r75488 | ackis | 2008-05-29 15:18:18 -0400 (Thu, 29 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
+
+AckisRecipeList:
+- Typo fix
+- Dry-coded :P
+------------------------------------------------------------------------
+r75480 | next96 | 2008-05-29 13:52:37 -0400 (Thu, 29 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r75475 | ackis | 2008-05-29 13:12:20 -0400 (Thu, 29 May 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
+
+AckisRecipeList:
+- Removed some unneeded code from the add recipe function (was creating an extra table with each recipe for some reason)
+- Changed all the reputation functions to take values of 1 - 4 for reputation levels, saves on some look-ups and more importantly makes things look neater in code and easier to type
+- Changed the quest functions to take values of 0 - 2 for neutral/alliance/horde, same reasoning as with reputations
+- Dry-coded :P
+------------------------------------------------------------------------
 r75371 | ackis | 2008-05-28 13:25:38 -0400 (Wed, 28 May 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc
@@ -899,122 +961,4 @@ Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
 
 AckisRecipeList: frFR Update
-------------------------------------------------------------------------
-r72147 | ackis | 2008-04-29 20:16:49 -0400 (Tue, 29 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Updated alchemy discovery information to be a bit more precise and clear
-------------------------------------------------------------------------
-r71911 | durcyn | 2008-04-28 04:35:31 -0400 (Mon, 28 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-
-AckisRecipeList: fix typo in ARL-Enchant.  Mountaions -> Mountains
-------------------------------------------------------------------------
-r71889 | ackis | 2008-04-28 00:49:45 -0400 (Mon, 28 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-
-AckisRecipeList:
-- Enchanting update thanks to Kurax
-------------------------------------------------------------------------
-r71884 | kurax | 2008-04-27 23:45:19 -0400 (Sun, 27 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList: Update zhCN locale
-------------------------------------------------------------------------
-r71879 | next96 | 2008-04-27 22:25:23 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r71856 | Lywellyn | 2008-04-27 19:56:42 -0400 (Sun, 27 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-
-AckisRecipeList:
-- Further optimized the Tailoring database
-- "Ackis Recpie List" in scan button tooltip is a fun thing. xD
-------------------------------------------------------------------------
-r71853 | ackis | 2008-04-27 19:32:37 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Make scan button show up is using skillet and beast training
-------------------------------------------------------------------------
-r71846 | ackis | 2008-04-27 18:53:18 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
-
-AckisRecipeList:
-- JC commit
-------------------------------------------------------------------------
-r71803 | ackis | 2008-04-27 14:11:17 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Anchor button to the correct button
-------------------------------------------------------------------------
-r71800 | ackis | 2008-04-27 13:58:33 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Actually remove the right piece of code :P
-------------------------------------------------------------------------
-r71798 | ackis | 2008-04-27 13:47:02 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Removed a piece of unneeded code
-------------------------------------------------------------------------
-r71795 | ackis | 2008-04-27 13:35:35 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Add tooltip to scan button (Thanks Zhinjio who in turn stole from Ckk)
-------------------------------------------------------------------------
-r71793 | ackis | 2008-04-27 13:16:59 -0400 (Sun, 27 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Enchanting Update (Surefooted)
-- Fiddle with how buttons are created, and changed the text of the scan button
-------------------------------------------------------------------------
-r71731 | ackis | 2008-04-27 04:07:40 -0400 (Sun, 27 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Fix for ATSW issues.  Permanent fix.. for some reason ATSW window is larger than actually visible.  Will set frame strata to make ARL window above ATSW window
-------------------------------------------------------------------------
-r71720 | kurax | 2008-04-27 02:52:11 -0400 (Sun, 27 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList: Update zhCN locale
-------------------------------------------------------------------------
-r71719 | ackis | 2008-04-27 02:50:39 -0400 (Sun, 27 Apr 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-
-AckisRecipeList:
-- Fix for ATSW (more like a hack)
-- Typo fix of a typo fix in Tailoring
 ------------------------------------------------------------------------

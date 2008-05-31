@@ -189,27 +189,29 @@ function CQI:AddQuestNotes(quest, title, type, npc, by_zone)
 	for zone, pos in pairs(npc.loc) do
 		if BZR[zone] and (not by_zone or by_zone == zone) then
 			for _, l in ipairs(pos) do
-				local level = ""
-				if npc.level_min and npc.level_max then
-					if npc.level_min == npc.level_max then
-						level = level..npc.level_min
-					else
-						level = level..string.format("%d - %d", npc.level_min, npc.level_max)
+				if l.x ~= 0 or l.y ~= 0 then
+					local level = ""
+					if npc.level_min and npc.level_max then
+						if npc.level_min == npc.level_max then
+							level = level..npc.level_min
+						else
+							level = level..string.format("%d - %d", npc.level_min, npc.level_max)
+						end
 					end
+					if npc.classify == 1 then
+						level = level.." |cffff66ff"..L["Elite"].."|r"
+					elseif npc.classify == 2 then
+						level = level.." |cffffaaff"..L["Rare Elite"].."|r"
+					elseif npc.classify == 3 then
+						level = "|cffff0000"..L["Boss"].."|r"
+					end
+					CN:SetNote(zone, l.x / 100, l.y / 100, DB_NAME.."-"..type, DB_NAME,
+						"quest", quest,
+						"title", title,
+						"type", type,
+						"level", level,
+						"name", npc.name)
 				end
-				if npc.classify == 1 then
-					level = level.." |cffff66ff"..L["Elite"].."|r"
-				elseif npc.classify == 2 then
-					level = level.." |cffffaaff"..L["Rare Elite"].."|r"
-				elseif npc.classify == 3 then
-					level = "|cffff0000"..L["Boss"].."|r"
-				end
-				CN:SetNote(zone, l.x / 100, l.y / 100, DB_NAME.."-"..type, DB_NAME,
-					"quest", quest,
-					"title", title,
-					"type", type,
-					"level", level,
-					"name", npc.name)
 			end
 		end
 	end

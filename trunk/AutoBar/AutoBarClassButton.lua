@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -37,7 +37,7 @@ local function onAttributeChangedFunc(button)
 end
 
 local function onDragStartFunc(button)
-	if (AutoBar.unlockButtons) then
+	if (AutoBar.moveButtonsMode) then
 		ClearCursor()
 		SetCursor("BUY_CURSOR")
 		local fromObject = button.class
@@ -176,12 +176,14 @@ function AutoBar.Class.Button:GetBindings()
 	local button = self.class
 	local buttonBinding = button:GetButtonBinding()
 	local keys
-	for i = 1, select('#', GetBindingKey(buttonBinding)) do
-		local hotKey = select(i, GetBindingKey(buttonBinding))
-		if keys then
-			keys = keys .. ', ' .. GetBindingText(hotKey, 'KEY_')
-		else
-			keys = GetBindingText(hotKey, 'KEY_')
+	if (buttonBinding) then
+		for i = 1, select('#', GetBindingKey(buttonBinding)) do
+			local hotKey = select(i, GetBindingKey(buttonBinding))
+			if keys then
+				keys = keys .. ', ' .. GetBindingText(hotKey, 'KEY_')
+			else
+				keys = GetBindingText(hotKey, 'KEY_')
+			end
 		end
 	end
 	return keys
@@ -477,14 +479,14 @@ function AutoBar.Class.Button.prototype:GetIconTexture()
 	local texture, borderColor = AutoBar.Class.Button:GetIconTexture(frame)
 
 	local category = frame:GetAttribute("category")
-	if (AutoBar.unlockButtons) then
+	if (AutoBar.moveButtonsMode) then
 		if (texture) then
 			borderColor = borderMoveActive
 		else
 			if (category and AutoBarCategoryList[category]) then
 				texture = AutoBarCategoryList[category].texture
 				borderColor = borderMoveEmpty
-	--AutoBar:Print("AutoBar.Class.Button.prototype:GetIconTexture unlockButtons category texture " .. tostring(texture))
+	--AutoBar:Print("AutoBar.Class.Button.prototype:GetIconTexture moveButtonsMode category texture " .. tostring(texture))
 			else
 				texture = "Interface\\Icons\\INV_Misc_Gift_01"
 				borderColor = borderMoveDisabled
@@ -534,7 +536,7 @@ function AutoBar.Class.Button.prototype:UpdateButton()
 	self:UpdateCount()
 	self:UpdateHotkeys()
 	local itemType = frame:GetAttribute("*type1")
-	if (AutoBar.unlockButtons) then
+	if (AutoBar.moveButtonsMode) then
 --		self:UnregisterButtonEvents()
 		self:ShowButton()
 	elseif (itemType) then
@@ -552,7 +554,7 @@ function AutoBar.Class.Button.prototype:UpdateButton()
 		self:HideButton()
 	end
 
-	if (AutoBar.unlockButtons) then
+	if (AutoBar.moveButtonsMode) then
 		frame.macroName:SetText(AutoBarButton:GetDisplayName(self.buttonDB))
 --	elseif self.parentBar.sharedLayoutDB.showMacrotext then
 --		frame.macroName:SetText(GetActionText(self.action))
@@ -569,14 +571,17 @@ function AutoBar.Class.Button.prototype:UpdateHotkeys()
 	end
 
 	local frame = self.frame
-	local buttonBinding = self:GetButtonBinding() or frame:GetName()
+	local buttonBinding = self:GetButtonBinding()
+	local key
 	if (buttonBinding) then
-		local key = GetBindingKey(buttonBinding)
-		if (key) then
-			frame.hotKey:SetText(LibKeyBound:ToShortKey(GetBindingText(key, "KEY_", 1)))
-		else
-			frame.hotKey:SetText("")
-		end
+		key = GetBindingKey(buttonBinding)
+	else
+		key = LibKeyBound.Binder:GetBindings(frame)
+	end
+	if (key) then
+		frame.hotKey:SetText(LibKeyBound:ToShortKey(GetBindingText(key, "KEY_", 1)))
+	else
+		frame.hotKey:SetText("")
 	end
 ----	local itemId = self.frame:GetAttribute("itemId")
 ----	local spell	= self.frame:GetAttribute("*spell1")
@@ -752,7 +757,7 @@ function AutoBar.Class.Button.prototype:UpdateUsable()
 				AutoBar.Class.Button:UpdateUsable(popupButton.frame)
 			end
 		end
-	elseif (category and (AutoBar.unlockButtons or AutoBar.db.account.showEmptyButtons or self.buttonDB.alwaysShow)) then
+	elseif (category and (AutoBar.moveButtonsMode or AutoBar.db.account.showEmptyButtons or self.buttonDB.alwaysShow)) then
 --AutoBar:Print("AutoBar.Class.Button.prototype:UpdateUsable 5 " .. tostring(self.buttonName))
 		self.frame.icon:SetVertexColor(0.4, 0.4, 0.4, 1)
 	end
@@ -768,7 +773,7 @@ function AutoBar.Class.Button.prototype:IsActive()
 	if (not self.buttonDB.enabled) then
 		return false
 	end
-	if (AutoBar.db.account.showEmptyButtons or AutoBar.unlockButtons or self.buttonDB.alwaysShow or not self.parentBar.sharedLayoutDB.collapseButtons) then --AutoBar.keyBoundMode or
+	if (AutoBar.db.account.showEmptyButtons or AutoBar.moveButtonsMode or self.buttonDB.alwaysShow or not self.parentBar.sharedLayoutDB.collapseButtons) then --AutoBar.keyBoundMode or
 		return true
 	end
 	local itemType = self.frame:GetAttribute("*type1")

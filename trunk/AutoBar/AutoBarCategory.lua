@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1690,24 +1690,24 @@ function AutoBarCategory:Initialize2()
 			"HUNTER", spellFreezingTrap,
 			})
 
-	local spellSummonDreadsteed, spellSummonDreadsteedIcon
-	spellSummonDreadsteed, _, spellSummonDreadsteedIcon = GetSpellInfo(23161)
-	local spellSummonWarhorse = GetSpellInfo(34769)
-	local spellSummonCharger = GetSpellInfo(34767)
-	local spellSummonFelsteed = GetSpellInfo(5784)
-	local spellTravelForm = GetSpellInfo(783)
-	local spellFlightForm = GetSpellInfo(33943)
-	local spellSwiftFlightForm = GetSpellInfo(40120)
+	spellNameList["Flight Form"] = GetSpellInfo(33943)
+	spellNameList["Swift Flight Form"] = GetSpellInfo(40120)
+	spellNameList["Summon Dreadsteed"], _, spellIconList["Summon Dreadsteed"] = GetSpellInfo(23161)
+	spellNameList["Summon Warhorse"] = GetSpellInfo(34769)
+	spellNameList["Summon Charger"] = GetSpellInfo(34767)
+	spellNameList["Summon Felsteed"] = GetSpellInfo(5784)
+	spellNameList["Travel Form"], _, spellIconList["Travel Form"] = GetSpellInfo(783)
+
 	local spellGhostWolf = GetSpellInfo(2645)
 	AutoBarCategoryList["Misc.Mount.Summoned"] = AutoBarSpells:new(
-			"Misc.Mount.Summoned", spellSummonDreadsteedIcon, {
-			"PALADIN", spellSummonWarhorse,
-			"PALADIN", spellSummonCharger,
-			"WARLOCK", spellSummonFelsteed,
-			"WARLOCK", spellSummonDreadsteed,
-			"DRUID", spellTravelForm,
-			"DRUID", spellFlightForm,
-			"DRUID", spellSwiftFlightForm,
+			"Misc.Mount.Summoned", spellIconList["Summon Dreadsteed"], {
+			"PALADIN", spellNameList["Summon Warhorse"],
+			"PALADIN", spellNameList["Summon Charger"],
+			"WARLOCK", spellNameList["Summon Felsteed"],
+			"WARLOCK", spellNameList["Summon Dreadsteed"],
+			"DRUID", spellNameList["Travel Form"],
+			"DRUID", spellNameList["Flight Form"],
+			"DRUID", spellNameList["Swift Flight Form"],
 			"SHAMAN", spellGhostWolf,
 			})
 	AutoBarCategoryList["Misc.Mount.Summoned"]:SetNonCombat(true)

@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75141 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -60,7 +60,7 @@ function AutoBar.Class.Bar.prototype:DropObject()
 	local toObject = self
 	local fromObject = AutoBar:GetDraggingObject()
 --AutoBar:Print("AutoBar.Class.Bar.prototype:DropObject " .. tostring(fromObject and fromObject.buttonDB.buttonKey or "none") .. " --> " .. tostring(toObject.buttonDB.buttonKey))
-	if (fromObject and AutoBar.unlockButtons) then
+	if (fromObject and AutoBar.moveButtonsMode) then
 		local targetButton = # self.buttonList + 1
 		AutoBar:ButtonMove(fromObject.parentBar.barKey, fromObject.order, self.barKey, targetButton)
 		AutoBar:BarButtonChanged()
@@ -297,7 +297,7 @@ function AutoBar.Class.Bar.prototype:UpdateActive()
 	end
 
 	-- Ditch buttons in excess of rows * columns
-	if ((activeIndex - 1) > maxActiveButtons and not AutoBar.unlockButtons) then
+	if ((activeIndex - 1) > maxActiveButtons and not AutoBar.moveButtonsMode) then
 --AutoBar:Print("AutoBar.Class.Bar.prototype:UpdateActive activeIndex " .. tostring(activeIndex - 1) .. " maxActiveButtons " .. tostring(maxActiveButtons) .. " = rows " .. tostring(self.sharedLayoutDB.rows) .. " columns " .. tostring(self.sharedLayoutDB.columns))
 		activeIndex = maxActiveButtons + 1
 	end
@@ -345,7 +345,7 @@ function AutoBar.Class.Bar.prototype:OnUpdate(elapsed)
 			if (alpha < fadeOutAlpha) then
 				alpha = fadeOutAlpha
 			end
-			if (AutoBar.stickyMode or AutoBar.unlockButtons) then
+			if (AutoBar.stickyMode or AutoBar.moveButtonsMode) then
 				self.frame:SetAlpha(startAlpha)
 				self.faded = nil
 			elseif (alpha > fadeOutAlpha) then
@@ -391,7 +391,7 @@ end
 local colorMoveButtons = {r = 1, b = 1, g = 0, a = 0.5}
 function AutoBar.Class.Bar.prototype:ColorBars()
 	local frame = self.frame
-	if (AutoBar.keyBoundMode or AutoBar.unlockButtons) then
+	if (AutoBar.keyBoundMode or AutoBar.moveButtonsMode) then
 		-- Adjust Frame Strata
 		frame:SetFrameStrata("DIALOG")
 		self:SetButtonFrameStrata("LOW")
@@ -405,7 +405,7 @@ function AutoBar.Class.Bar.prototype:ColorBars()
 		-- Set Color
 		if (AutoBar.keyBoundMode) then
 			frame:SetBackdropColor(LibKeyBound:GetColorKeyBoundMode())
-		elseif (AutoBar.unlockButtons) then
+		elseif (AutoBar.moveButtonsMode) then
 			if (self.sharedLayoutDB.hide) then
 				frame:SetBackdropColor(LibStickyFrames:GetColorHidden())
 			else
@@ -437,43 +437,6 @@ function AutoBar.Class.Bar.prototype:SetButtonFrameStrata(frameStrata)
 		button.frame:SetFrameStrata(frameStrata)
 	end
 end
---[[
-function AutoBar.Class.Bar.prototype:UnlockBars()
-	local frame = self.frame
-	frame:EnableMouse(true)
-	frame:SetScript("OnLeave", onLeaveFunc)
---	frame:SetScript("OnDragStart", onDragStartFunc)
---	frame:SetScript("OnDragStop", onDragStopFunc)
-	if (self.sharedLayoutDB.hide) then
-		frame:SetBackdropColor(LibStickyFrames.ColorHidden.r, LibStickyFrames.ColorHidden.g, LibStickyFrames.ColorHidden.b, LibStickyFrames.ColorHidden.a)
-	else
-		frame:SetBackdropColor(LibStickyFrames.ColorEnabled.r, LibStickyFrames.ColorEnabled.g, LibStickyFrames.ColorEnabled.b, LibStickyFrames.ColorEnabled.a)
-	end
-	frame:SetFrameStrata("DIALOG")
-	self:SetButtonFrameStrata("LOW")
-	self:ColorBars()
-	frame:Show()
-end
-
-function AutoBar.Class.Bar.prototype:LockBars()
-	local frame = self.frame
-	onDragStopFunc(frame)
-	frame:EnableMouse(false or AutoBar.unlockButtons)
-	frame:SetScript("OnEnter", nil)
-	frame:SetScript("OnLeave", nil)
-	frame:SetScript("OnDragStart", nil)
-	frame:SetScript("OnDragStop", nil)
-	frame:SetScript("OnClick", nil)
-	self:ColorBars()
-	frame:SetFrameStrata(self.sharedLayoutDB.frameStrata)
-	self:SetButtonFrameStrata(self.sharedLayoutDB.frameStrata)
-	if (self.sharedLayoutDB.hide) then
-		self.frame:Hide()
-	else
-		self.frame:Show()
-	end
-end
---]]
 
 local oldOnReceiveDragFunc
 
@@ -537,7 +500,7 @@ end
 
 function AutoBar.Class.Bar.prototype:ToggleVisibilty()
 	-- Disable during combat or Move Buttons
-	if (InCombatLockdown() or AutoBar.unlockButtons) then
+	if (InCombatLockdown() or AutoBar.moveButtonsMode) then
 		return
 	end
 
@@ -566,7 +529,7 @@ function AutoBar.Class.Bar.prototype:RefreshLayout()
 	self:RefreshButtonLayout()
 	self:RefreshAlpha()
 	self:LoadLocation()
-	if ((AutoBar.stickyMode or AutoBar.unlockButtons)) then
+	if ((AutoBar.stickyMode or AutoBar.moveButtonsMode)) then
 		self.frame:Show()
 	elseif (self.sharedLayoutDB.hide or not self.sharedLayoutDB.enabled) then
 		self.frame:Hide()
@@ -731,7 +694,7 @@ function AutoBar.Class.Bar.prototype:RefreshButtonLayout()
 	end
 
 	-- Dummy drag button for empty bar and end of bar drags
-	if (AutoBar.unlockButtons) then
+	if (AutoBar.moveButtonsMode) then
 		local i = nButtons + 1
 		frame = self.dragFrame
 		frame:ClearAllPoints()

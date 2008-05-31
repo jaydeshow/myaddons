@@ -231,7 +231,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"totem", "phase", "frenzy", -1, "flame", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 73554 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75652 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -258,7 +258,7 @@ end
 
 function mod:Totem()
 	if db.totem then
-		self:Message(L["totem_message"], "Attention", 43302)
+		self:IfMessage(L["totem_message"], "Attention", 43302)
 	end
 end
 

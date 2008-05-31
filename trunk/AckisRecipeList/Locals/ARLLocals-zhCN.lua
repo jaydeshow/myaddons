@@ -5,11 +5,11 @@ ARLLocals-zhCN.lua
 
 zhCN localization strings for Ackis Recipe List
 
-$Date: 2008-05-20 14:30:04 -0400 (Tue, 20 May 2008) $
-$Rev: 74567 $
+$Date: 2008-05-30 01:00:11 -0400 (Fri, 30 May 2008) $
+$Rev: 75527 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
-Currently maintaince by: Kurax, 冰焱妩魅
+Currently maintaince by: Kurax, 冰焱妩魅 @ CWDG
 
 Thank you all translators! (From Ackis)
 
@@ -84,12 +84,44 @@ L["OpenTradeSkillWindow"] = "请先打开一个想要扫描的交易技能。"
 L["Close"] = "关闭"
 L["ScanButton"] = "扫描配方"
 L["Scan Skills"] = "扫描"
+L["FILTER_OPEN"] = "过滤 >>>"
+L["FILTER_CLOSE"] = "<<< 过滤"
+L["Reset"] = "重置"
+L["Sort"] = "排序"
+L["World Drop"] = "世界掉落"
+L["Mob Drop"] = "怪物掉落"
+L["Quest"] = "任务"
+L["Reputation"] = "声望"
+L["Instance"] = "副本"
+L["BoPMenu"] = "拾取绑定"
+L["Horde"] = "部落" 
+L["Alliance"] = "联盟"
+L["Known"] = "已知"
+L["Unknown"] = "未知"
 
 -- Tooltip Text
 L["Scan Skills Long"] = "使用Ackis Recipe List扫描遗漏的配方。"
 L["Close Window"] = "关闭ARL窗口。"
 L["Expand All"] = "展开所有的配方。"
 L["Collapse All"] = "折叠所有的配方。"
+L["FILTER_OPEN_TT"] = "打开过滤选项面板。"
+L["FILTER_CLOSE_TT"] = "关闭过滤选项面板。"
+L["RESET_TT"] = "重置搜索的关键字。"
+L["SORT_TT"] = "更改列表的排列顺序。"
+L["VENDOR_TT"] = "选中则在列表中包含商人出售的配方。"
+L["TRAINER_TT"]= "选中则在列表中包含训练师可学的配方。"
+L["WORLD_TT"] = "选中则在列表中包含世界掉落的配方。"
+L["MOB_TT"] = "选中则在列表中包含怪物掉落的配方。"
+L["QUEST_TT"] = "选中则在列表中包含任务奖励的配方。"
+L["SEASON_TT"] = "选中则在列表中包含节日活动才出现的配方。"
+L["REP_TT"] = "选中则在列表中包含声望奖励的配方。"
+L["INSTANCE_TT"] = "选中则在列表中包含副本掉落的配方。"
+L["BOP_TT"] = "选中则在列表中包含拾取绑定的配方。"
+L["HORDE_TT"] = "选中则在列表中包含部落独有的配方。"
+L["ALLIANCE_TT"] = "选中则在列表中包含联盟独有的配方。"
+L["KNOWN_TT"] = "选中则在列表中包含已知配方。"
+L["UNKNOWN_TT"] = "选中则在列表中包含未知配方。"
+
 -- Recipe Database
 L["Trainer"] = "训练师"
 L["LimitedSupply"] = "限量供应"
@@ -110,14 +142,16 @@ L["CWD"] = "常见世界掉落"
 L["UWD"] = "不常见世界掉落"
 L["RWD"] = "罕见世界掉落"
 L["EWD"] = "超罕见世界掉落"
-L["BoE"] = "装绑："
-L["BoP"] = "拾绑："
+L["BoE"] = "装绑: "
+L["BoP"] = "拾绑: "
+L["QuestReward"] = "任务奖励: "
+
+-- Common quests/drops
 L["DMCACHE"] = "诺特·希姆加克的箱子"
 L["Gordok Ogre Suit"] = "戈多克食人魔装"
 L["Gordok Ogre Suit Obt"] = "任务奖励：戈多克食人魔装"
 L["Spectral Essence Obt"] = "任务奖励：传令官基尔图诺斯 (让你能看到通灵学院附近的商人玛格努斯·霜鸣)"
 L["TrueBelieverQuest"] = "任务奖励：真正的信徒 - 从 被破译的《真正的信徒》剪报中稀有掉落"
-L["QuestReward"] = "任务奖励："
 
 -- Raid Drop Obtain Info
 L["ADNaxx"] = "从纳克萨玛斯死亡骑士区的大工匠奥玛里恩处学到"

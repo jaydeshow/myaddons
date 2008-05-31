@@ -74,17 +74,24 @@ function CQI:UpdateSeriesContent()
 			r, g, b = self:GetQuestColor(q.level)
 		end
 
+		local link = string.format("[%d] |cff808080|Hquest:%s:%s|h[%s]|h|r", q.level, q.id, q.level, q.title)
+
 		cat:AddLine(
 			"text", q.title_full,
 			"textR", r, "textG", g, "textB", b,
-			"func", function()
-				if q.start_npc and q.start_npc.loc then
+			"func", function(link)
+				if IsShiftKeyDown() then
+					if ChatFrameEditBox:IsVisible() then
+						ChatFrameEditBox:Insert(link)
+					end
+				elseif q.start_npc and q.start_npc.loc then
 					for zone in pairs(q.start_npc.loc) do
 						self:OpenQuestMap(q.title_full, L["Quest Start"], "start", zone, { q.start_npc })
 						return
 					end
 				end
-			end)
+			end,
+			"arg1", link)
 
 		cat:AddLine(
 			"text", q.desc,

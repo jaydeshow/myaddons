@@ -151,7 +151,7 @@ function lib:ProcessActor(GUID, name, flags)
 		processUnit("player", GUID)
 		units[UnitName("player")] = GUID
 		lib.callbacks:Fire("PlayerGUIDSet", GUID, name)
-	elseif (update.pet or not reg[GUID]) and (bit_band(flags, LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET) then
+	elseif UnitName("pet") and (update.pet or not reg[GUID]) and (bit_band(flags, LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET) then
 		update.pet = nil
 		units.pet = GUID
 		processUnit(name, GUID)

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster deDE locale
-Revision: $Revision: 73696 $
+Revision: $Revision: 75639 $
 Translated by: 
 - Kuja
 ]]
@@ -426,14 +426,14 @@ L:RegisterTranslations("deDE", function() return {
 	["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "Vermeidung <- Ausweichen, Parieren, MobMiss, Block(Optional)",
 	
 	-- /rb sum gem
-	--["Gems"] = true,
-	--["Auto fill empty gem slots"] = true,
+	["Gems"] = "Edelsteine",
+	["Auto fill empty gem slots"] = "Leere Edelsteinplätze automatisch füllen",
 	-- /rb sum gem red
 	["Red Socket"] = EMPTY_SOCKET_RED,
-	--["ItemID or Link of the gem you would like to auto fill"] = true,
+	["ItemID or Link of the gem you would like to auto fill"] = "ItemID oder Link des einzusetzenden Edelsteins",
 	--["<ItemID|Link>"] = true,
-	--["%s is now set to %s"] = true,
-	--["Queried server for Gem: %s. Try again in 5 secs."] = true,
+	["%s is now set to %s"] = "%s ist nun auf %s gesetzt",
+	["Queried server for Gem: %s. Try again in 5 secs."] = "Frage den Server nach Edelstein: %s. Versuchs in 5 Sekunden nochmal",
 	-- /rb sum gem yellow
 	["Yellow Socket"] = EMPTY_SOCKET_YELLOW,
 	-- /rb sum gem blue

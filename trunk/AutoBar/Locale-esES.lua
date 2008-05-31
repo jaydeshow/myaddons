@@ -189,7 +189,7 @@ if (GetLocale() == "esES") then
 		["Buttons"] = "Botones",
 		["AutoBarButtonHeader"] = "Nombre de Botones de AutoBar",
 		["AutoBarCooldownHeader"] = "Reutilización Poción y Piedra",
-		["AutoBarClassBarHeader"] = "Class bar",
+		["AutoBarClassBarHeader"] = "Barra de Clase",
 
 		["AutoBarButtonAura"] = "Aura / Aspecto",
 		["AutoBarButtonBandages"] = "Vendas",
@@ -488,8 +488,8 @@ if (GetLocale() == "esES") then
 		["Spell.Class.Buff"] = "Buff: Clase";
 		["Spell.Class.Pet"] = "Mascota de Clase";
 		["Spell.Crafting"] = "Fabricar";
-		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
-		["Spell.Debuff.Single"] = "Debuff: Single";
+		["Spell.Debuff.Multiple"] = "Debuff: Múltiple";
+		["Spell.Debuff.Single"] = "Debuff: Individual";
 		["Spell.Fishing"] = "Pesca";
 		["Spell.Portals"] = "Portales y Teleportales";
 		["Spell.Sting"] = "Picadura";

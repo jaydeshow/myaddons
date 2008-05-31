@@ -1,4 +1,4 @@
-LittleWigs/Changelog-LittleWigs-r74793.txt
+LittleWigs/Changelog-LittleWigs-r75658.txt
 LittleWigs/littlewigs-lod.sh
 LittleWigs/modules.xml
 LittleWigs/filelist.wau
@@ -7,6 +7,7 @@ LittleWigs/LittleWigs.toc
 LittleWigs/littlewigs-lod.bat
 LittleWigs/HellfireCitadel/Omor.lua
 LittleWigs/HellfireCitadel/LittleWigs_HellfireCitadel.toc
+LittleWigs/HellfireCitadel/Maker.lua
 LittleWigs/HellfireCitadel/Kelidan.lua
 LittleWigs/HellfireCitadel/Warchief.lua
 LittleWigs/HellfireCitadel/Broggok.lua

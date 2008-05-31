@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-05-23 11:22:16 -0400 (Fri, 23 May 2008) $
-$Rev: 74936 $
+$Date: 2008-05-29 13:52:37 -0400 (Thu, 29 May 2008) $
+$Rev: 75480 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -144,12 +144,14 @@ L["RWD"] = "희귀등급 월드 드랍"
 L["EWD"] = "영웅등급 월드 드랍"
 L["BoE"] = "사용시 귀속: "
 L["BoP"] = "획득시 귀족: "
+L["QuestReward"] = "퀘스트 보상: "
+
+-- Common quests/drops
 L["DMCACHE"] = "노트 팀블젝의 상자"
 L["Gordok Ogre Suit"] = "고르득 오우거 위장복"
 L["Gordok Ogre Suit Obt"] = "고르독 오우거 위장복"
 L["Spectral Essence Obt"] = "퀘스트 보상: 사자 키르토노스 (스칼로맨스 2층에서 마그너스 프로스트웨이크를 볼 수 있습니다.)"
 L["TrueBelieverQuest"] = "진정한 신봉자 - 해독된 \"진정한 신봉자\" 문서 모음에서 일정 확률로 획득"
-L["QuestReward"] = "퀘스트 보상: "
 
 -- Raid Drop Obtain Info
 L["ADNaxx"] = "기술자: 낙스라마스의 죽음의기사 구역에 있는 오마리온으로부터 배우기 가능"

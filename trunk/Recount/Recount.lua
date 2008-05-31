@@ -10,7 +10,7 @@ local FilterSize	= 20
 local RampUp		= 5
 local RampDown		= 10
       
-Recount.Version = tonumber(string.sub("$Revision: 75264 $", 12, -3))
+Recount.Version = tonumber(string.sub("$Revision: 75628 $", 12, -3))
 
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
@@ -1820,7 +1820,7 @@ function Recount:LeaveCombat(Time)
 		Recount:BroadcastLazySync()
 	end
 
-	if (Time-Recount.InCombatT)>3 then
+	if abs(Time-Recount.InCombatT)>3 then
 		Recount.db2.CombatTimes[#Recount.db2.CombatTimes+1]={Recount.InCombatT,Time,Recount.InCombatF,date("%H:%M:%S"),Recount.FightingWho}
 
 		--Save current data as the last fight

@@ -4,8 +4,8 @@ ARL-Enchant.lua
 
 Enchanting data for all of AckisRecipeList
 
-$Date: 2008-05-21 02:02:08 -0400 (Wed, 21 May 2008) $
-$Rev: 74622 $
+$Date: 2008-05-29 13:12:20 -0400 (Thu, 29 May 2008) $
+$Rev: 75475 $
 
 ]]--
 
@@ -208,40 +208,40 @@ function addon:InitEnchanting()
 	self:addTradeSkillSpell(46578, 375, self:CombineMobs(false,L["Enchant Weapon - Deathfrost Obt"],BZONE["The Slave Pens"]),{L["Seasonal"]})
 
 	-- Reputations
-	self:addTradeSkillSpell(23799, 290, self:AddSingleReputation(BFAC["Friendly"], BFAC["Thorium Brotherhood"]), {BFAC["Thorium Brotherhood"]})
-	self:addTradeSkillSpell(23803, 300, self:AddSingleReputation(BFAC["Honored"], BFAC["Thorium Brotherhood"]), {BFAC["Thorium Brotherhood"]})
-	self:addTradeSkillSpell(23804, 300, self:AddSingleReputation(BFAC["Revered"], BFAC["Thorium Brotherhood"]), {BFAC["Thorium Brotherhood"]})
-	self:addTradeSkillSpell(23800, 290, self:AddSingleReputation(BFAC["Honored"], BFAC["Timbermaw Hold"]), {BFAC["Timbermaw Hold"]})
-	self:addTradeSkillSpell(23801, 290, self:AddSingleReputation(BFAC["Honored"], BFAC["Argent Dawn"]), {BFAC["Argent Dawn"]})
-	self:addTradeSkillSpell(27837, 290, self:AddSingleReputation(BFAC["Friendly"], BFAC["Timbermaw Hold"]), {BFAC["Timbermaw Hold"]})
-	self:addTradeSkillSpell(23802, 300, self:AddSingleReputation(BFAC["Revered"], BFAC["Argent Dawn"]), {BFAC["Argent Dawn"]})
-	self:addTradeSkillSpell(25081, 300, self:AddSingleReputation(BFAC["Friendly"], BFAC["Cenarion Circle"]), {BFAC["Cenarion Circle"]})
-	self:addTradeSkillSpell(25082, 300, self:AddSingleReputation(BFAC["Honored"], BFAC["Cenarion Circle"]), {BFAC["Cenarion Circle"]})
-	self:addTradeSkillSpell(25129, 300, self:AddSingleReputation(BFAC["Honored"], BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
-	self:addTradeSkillSpell(25130, 300, self:AddSingleReputation(BFAC["Friendly"], BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
-	self:addTradeSkillSpell(25080, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(BFAC["Exalted"], BFAC["Keepers of Time"]), {BFAC["Keepers of Time"]})
-	self:addTradeSkillSpell(25072, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(BFAC["Exalted"], BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
-	self:addTradeSkillSpell(25083, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(BFAC["Exalted"], BFAC["Cenarion Expedition"]), {BFAC["Cenarion Expedition"]})
-	self:addTradeSkillSpell(25084, 300, L["AQ20/AQ40"] .. addon.br .. self:AddDoubleReputation(BFAC["Exalted"], BFAC["Honor Hold"], BFAC["Thrallmar"]), {BFAC["Thrallmar"]})
-	self:addTradeSkillSpell(25086, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(BFAC["Exalted"], BFAC["Lower City"]), {BFAC["Lower City"]})
-	self:addTradeSkillSpell(27911, 325, self:AddDoubleReputation(BFAC["Friendly"], BFAC["Honor Hold"], BFAC["Thrallmar"]), {BFAC["Thrallmar"]})
-	self:addTradeSkillSpell(34003, 325, self:AddSingleReputation(BFAC["Friendly"], BFAC["The Consortium"]), {BFAC["The Consortium"]})
-	self:addTradeSkillSpell(27967, 340, self:AddSingleReputation(BFAC["Honored"], BFAC["The Consortium"]), {BFAC["The Consortium"]})
-	self:addTradeSkillSpell(27960, 345, self:AddDoubleReputation(BFAC["Revered"], BFAC["Honor Hold"], BFAC["Thrallmar"]), {BFAC["Thrallmar"]})
-	self:addTradeSkillSpell(33999, 350, self:AddSingleReputation(BFAC["Honored"], BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
-	self:addTradeSkillSpell(42620, 350, self:AddSingleReputation(BFAC["Exalted"], BFAC["The Violet Eye"]), {BFAC["The Violet Eye"], L["Raid"]})
-	self:addTradeSkillSpell(34010, 350, self:AddSingleReputation(BFAC["Revered"], BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
-	self:addTradeSkillSpell(27920, 360, self:AddSingleReputation(BFAC["Revered"], BFAC["The Consortium"]), {BFAC["The Consortium"], L["Raid"]})
-	self:addTradeSkillSpell(27924, 360, self:AddSingleReputation(BFAC["Honored"], BFAC["Keepers of Time"]), {BFAC["Keepers of Time"]})
-	self:addTradeSkillSpell(33994, 360, self:AddSingleReputation(BFAC["Revered"], BFAC["Cenarion Expedition"]), {BFAC["Cenarion Expedition"]})
-	self:addTradeSkillSpell(33997, 360, self:AddSingleReputation(BFAC["Honored"], BFAC["Keepers of Time"]), {BFAC["Keepers of Time"]})
-	self:addTradeSkillSpell(27926, 370, self:AddSingleReputation(BFAC["Revered"], BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
-	self:addTradeSkillSpell(27927, 375, self:AddSingleReputation(BFAC["Honored"], BFAC["Lower City"]), {BFAC["Lower City"]})
-	self:addTradeSkillSpell(46594, 360, self:AddSingleReputation(BFAC["Honored"], BFAC["Shattered Sun Offensive"]), {BFAC["Shattered Sun Offensive"]})
+	self:addTradeSkillSpell(23799, 290, self:AddSingleReputation(1, BFAC["Thorium Brotherhood"]), {BFAC["Thorium Brotherhood"]})
+	self:addTradeSkillSpell(23803, 300, self:AddSingleReputation(2, BFAC["Thorium Brotherhood"]), {BFAC["Thorium Brotherhood"]})
+	self:addTradeSkillSpell(23804, 300, self:AddSingleReputation(3, BFAC["Thorium Brotherhood"]), {BFAC["Thorium Brotherhood"]})
+	self:addTradeSkillSpell(23800, 290, self:AddSingleReputation(2, BFAC["Timbermaw Hold"]), {BFAC["Timbermaw Hold"]})
+	self:addTradeSkillSpell(23801, 290, self:AddSingleReputation(2, BFAC["Argent Dawn"]), {BFAC["Argent Dawn"]})
+	self:addTradeSkillSpell(27837, 290, self:AddSingleReputation(1, BFAC["Timbermaw Hold"]), {BFAC["Timbermaw Hold"]})
+	self:addTradeSkillSpell(23802, 300, self:AddSingleReputation(3, BFAC["Argent Dawn"]), {BFAC["Argent Dawn"]})
+	self:addTradeSkillSpell(25081, 300, self:AddSingleReputation(1, BFAC["Cenarion Circle"]), {BFAC["Cenarion Circle"]})
+	self:addTradeSkillSpell(25082, 300, self:AddSingleReputation(2, BFAC["Cenarion Circle"]), {BFAC["Cenarion Circle"]})
+	self:addTradeSkillSpell(25129, 300, self:AddSingleReputation(2, BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
+	self:addTradeSkillSpell(25130, 300, self:AddSingleReputation(1, BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
+	self:addTradeSkillSpell(25080, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(4, BFAC["Keepers of Time"]), {BFAC["Keepers of Time"]})
+	self:addTradeSkillSpell(25072, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(4, BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
+	self:addTradeSkillSpell(25083, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(4, BFAC["Cenarion Expedition"]), {BFAC["Cenarion Expedition"]})
+	self:addTradeSkillSpell(25084, 300, L["AQ20/AQ40"] .. addon.br .. self:AddDoubleReputation(4, BFAC["Honor Hold"], BFAC["Thrallmar"]), {BFAC["Thrallmar"]})
+	self:addTradeSkillSpell(25086, 300, L["AQ20/AQ40"] .. addon.br .. self:AddSingleReputation(4, BFAC["Lower City"]), {BFAC["Lower City"]})
+	self:addTradeSkillSpell(27911, 325, self:AddDoubleReputation(1, BFAC["Honor Hold"], BFAC["Thrallmar"]), {BFAC["Thrallmar"]})
+	self:addTradeSkillSpell(34003, 325, self:AddSingleReputation(1, BFAC["The Consortium"]), {BFAC["The Consortium"]})
+	self:addTradeSkillSpell(27967, 340, self:AddSingleReputation(2, BFAC["The Consortium"]), {BFAC["The Consortium"]})
+	self:addTradeSkillSpell(27960, 345, self:AddDoubleReputation(3, BFAC["Honor Hold"], BFAC["Thrallmar"]), {BFAC["Thrallmar"]})
+	self:addTradeSkillSpell(33999, 350, self:AddSingleReputation(2, BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
+	self:addTradeSkillSpell(42620, 350, self:AddSingleReputation(4, BFAC["The Violet Eye"]), {BFAC["The Violet Eye"], L["Raid"]})
+	self:addTradeSkillSpell(34010, 350, self:AddSingleReputation(3, BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
+	self:addTradeSkillSpell(27920, 360, self:AddSingleReputation(3, BFAC["The Consortium"]), {BFAC["The Consortium"], L["Raid"]})
+	self:addTradeSkillSpell(27924, 360, self:AddSingleReputation(2, BFAC["Keepers of Time"]), {BFAC["Keepers of Time"]})
+	self:addTradeSkillSpell(33994, 360, self:AddSingleReputation(3, BFAC["Cenarion Expedition"]), {BFAC["Cenarion Expedition"]})
+	self:addTradeSkillSpell(33997, 360, self:AddSingleReputation(2, BFAC["Keepers of Time"]), {BFAC["Keepers of Time"]})
+	self:addTradeSkillSpell(27926, 370, self:AddSingleReputation(3, BFAC["The Sha'tar"]), {BFAC["The Sha'tar"]})
+	self:addTradeSkillSpell(27927, 375, self:AddSingleReputation(2, BFAC["Lower City"]), {BFAC["Lower City"]})
+	self:addTradeSkillSpell(46594, 360, self:AddSingleReputation(2, BFAC["Shattered Sun Offensive"]), {BFAC["Shattered Sun Offensive"]})
 	if (_G.COPPER_AMOUNT) then
-		self:addTradeSkillSpell(45765, 375, self:AddSingleReputation(BFAC["Honored"], BFAC["Shattered Sun Offensive"]), {BFAC["Shattered Sun Offensive"]})
+		self:addTradeSkillSpell(45765, 375, self:AddSingleReputation(2, BFAC["Shattered Sun Offensive"]), {BFAC["Shattered Sun Offensive"]})
 	else
-		self:addTradeSkillSpell(45765, 360, self:AddSingleReputation(BFAC["Honored"], BFAC["Shattered Sun Offensive"]), {BFAC["Shattered Sun Offensive"]})
+		self:addTradeSkillSpell(45765, 360, self:AddSingleReputation(2, BFAC["Shattered Sun Offensive"]), {BFAC["Shattered Sun Offensive"]})
 	end
 
 	-- Raid Drops

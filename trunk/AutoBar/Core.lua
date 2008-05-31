@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -613,6 +613,16 @@ function AutoBar:UpdateZone(event)
 --AutoBar:Print("AutoBar:UpdateZone " .. tostring(AutoBar.currentZone) .. " --> " .. tostring(newZone))
 		AutoBar.currentZone = newZone
 	end
+
+	local flyable = SecureCmdOptionParse("[flyable]1")
+	if (AutoBar.flyable ~= flyable) then
+		AutoBar.flyable = flyable
+		if (AutoBar.buttonList["AutoBarButtonMount"]) then
+			AutoBarSearch.sorted:DirtyButtons()--"AutoBarButtonMount"
+			AutoBar.delay["UpdateActive"]:Start(nil)
+		end
+	end
+
 end
 
 function AutoBar:MINIMAP_ZONE_CHANGED(arg1)
@@ -670,7 +680,7 @@ function AutoBar:PLAYER_REGEN_DISABLED(arg1)
 	AutoBar:LogEvent("PLAYER_REGEN_DISABLED", arg1)
 	AutoBar.inCombat = true
 
-	if (AutoBar.unlockButtons) then
+	if (AutoBar.moveButtonsMode) then
 		AutoBar:MoveButtonsModeOff()
 		LibKeyBound:Deactivate()
 	end
@@ -871,9 +881,28 @@ end
 
 
 
+local otherStickyFrames = {
+	"GridLayoutFrame",
+}
+
 -- Based on the current db, add or remove Custom Categories
 -- ToDo: support scheme for mutable categories like pet food.
 function AutoBar:UpdateCategories()
+	if (otherStickyFrames) then
+		local delete = true
+		for index, stickyFrame in pairs(otherStickyFrames) do
+			if (_G[stickyFrame]) then
+	AutoBar:Print("AutoBar:OnEnable " .. tostring(index) .. "  " .. tostring(stickyFrame))
+				LibStickyFrames:RegisterFrame(_G[stickyFrame])
+			else
+				delete = false
+			end
+		end
+		if (delete) then
+			otherStickyFrames = nil
+		end
+	end
+
 	if (not InCombatLockdown()) then
 		self:LogEventStart("AutoBar:UpdateCategories")
 		AutoBarCategory:UpdateCustomCategories()
@@ -1290,7 +1319,7 @@ end
 
 
 function AutoBar:MoveButtonsModeToggle()
-	if AutoBar.unlockButtons then
+	if AutoBar.moveButtonsMode then
 		AutoBar:MoveButtonsModeOff()
 	else
 		AutoBar:MoveButtonsModeOn()
@@ -1300,7 +1329,7 @@ end
 function AutoBar:MoveButtonsModeOn()
 	AutoBar:MoveBarModeOff()
 	LibKeyBound:Deactivate()
-	AutoBar.unlockButtons = true
+	AutoBar.moveButtonsMode = true
 	for i, bar in pairs(self.barList) do
 		if (bar.sharedLayoutDB.enabled) then
 			bar:MoveButtonsModeOn()
@@ -1313,7 +1342,7 @@ function AutoBar:MoveButtonsModeOn()
 end
 
 function AutoBar:MoveButtonsModeOff()
-	AutoBar.unlockButtons = nil
+	AutoBar.moveButtonsMode = nil
 	for i, bar in pairs(self.barList) do
 		if bar.sharedLayoutDB.enabled then
 			bar:MoveButtonsModeOff()
@@ -1359,8 +1388,9 @@ end
 
 
 --/dump AutoBar.db.account.barList["AutoBarClassBarBasic"].buttonKeys[16]
---/dump AutoBar.unlockButtons
+--/dump AutoBar.moveButtonsMode
 --/script AutoBar.db.account.logEvents = true
 --/script AutoBar.db.account.logEvents = nil
 --/script LibStub("LibKeyBound-1.0"):SetColorKeyBoundMode(0.75, 1, 0, 0.5)
 --/script DEFAULT_CHAT_FRAME:AddMessage("" .. tostring())
+--/print GetMouseFocus():GetName()
