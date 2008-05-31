@@ -4,8 +4,8 @@ ARL-Cook.lua
 
 Cooking data for all of AckisRecipeList
 
-$Date: 2008-05-21 02:02:08 -0400 (Wed, 21 May 2008) $
-$Rev: 74622 $
+$Date: 2008-05-29 15:18:18 -0400 (Thu, 29 May 2008) $
+$Rev: 75488 $
 
 ]]--
 
@@ -95,34 +95,34 @@ function addon:InitCooking()
 	-- World Drops
 
 	-- Specific Drops
-	self:addTradeSkillSpell(33277, 1, self:CombineQuests(L["Roasted Moongraze Tenderloin Obt"],BFAC["Alliance"],BZONE["Azuremyst Isle"]), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(6412, 10, self:CombineQuests(L["Kaldorei Spider Kabob Obt"],BFAC["Alliance"],BZONE["Teldrassil"]), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(2795, 25, self:CombineQuests(L["Beer Basted Boar Ribs Obt"],BFAC["Alliance"],BZONE["Dun Morogh"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(6416, 50, self:CombineQuests(L["Strider Stew Obt"],BFAC["Alliance"],BZONE["Darkshore"]) .. addon.br .. self:CombineVendors(254, false))
-	self:addTradeSkillSpell(2542, 50, self:CombineQuests(L["Goretusk Liver Pie Obt"],BFAC["Alliance"],BZONE["Westfall"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(3371, 60, self:CombineQuests(L["Blood Sausage Obt"],BFAC["Alliance"],BZONE["Loch Modan"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(9513, 60, self:CombineQuests(L["Thistle Tea Ally Obt"],BFAC["Alliance"],BZONE["Westfall"],L["Thistle Tea Horde Obt"],BFAC["Horde"],BZONE["The Barrens"]) .. addon.br .. self:CombineVendors(283, false), {"ROGUE"})
-	self:addTradeSkillSpell(28267, 60, self:CombineQuests(L["Crunchy Spider Surprise Obt"],BFAC["Horde"],BZONE["Ghostlands"]) .. addon.br .. self:CombineVendors(281, 238, false))
-	self:addTradeSkillSpell(2543, 75, self:CombineQuests(L["Westfall Stew Obt"],BFAC["Alliance"],BZONE["Westfall"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(3370, 80, self:CombineQuests(L["Crocolisk Steak Obt"],BFAC["Alliance"],BZONE["Loch Modan"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(33277, 1, self:CombineQuests(L["Roasted Moongraze Tenderloin Obt"],1,BZONE["Azuremyst Isle"]), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(6412, 10, self:CombineQuests(L["Kaldorei Spider Kabob Obt"],1,BZONE["Teldrassil"]), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(2795, 25, self:CombineQuests(L["Beer Basted Boar Ribs Obt"],1,BZONE["Dun Morogh"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(6416, 50, self:CombineQuests(L["Strider Stew Obt"],1,BZONE["Darkshore"]) .. addon.br .. self:CombineVendors(254, false))
+	self:addTradeSkillSpell(2542, 50, self:CombineQuests(L["Goretusk Liver Pie Obt"],1,BZONE["Westfall"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(3371, 60, self:CombineQuests(L["Blood Sausage Obt"],1,BZONE["Loch Modan"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(9513, 60, self:CombineQuests(L["Thistle Tea Ally Obt"],1,BZONE["Westfall"],L["Thistle Tea Horde Obt"],2,BZONE["The Barrens"]) .. addon.br .. self:CombineVendors(283, false), {"ROGUE"})
+	self:addTradeSkillSpell(28267, 60, self:CombineQuests(L["Crunchy Spider Surprise Obt"],2,BZONE["Ghostlands"]) .. addon.br .. self:CombineVendors(281, 238, false))
+	self:addTradeSkillSpell(2543, 75, self:CombineQuests(L["Westfall Stew Obt"],1,BZONE["Westfall"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(3370, 80, self:CombineQuests(L["Crocolisk Steak Obt"],1,BZONE["Loch Modan"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
 	self:addTradeSkillSpell(8238, 85, L["UZD"] .. BZONE["The Barrens"])
-	self:addTradeSkillSpell(3372, 90, self:CombineQuests(L["Murloc Fin Soup Obt"],BFAC["Alliance"],BZONE["Redridge Mountains"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(6417, 90, self:CombineQuests(L["Dig Rat Stew Obt"],BFAC["Horde"],BZONE["The Barrens"]), {BFAC["Horde"]})
+	self:addTradeSkillSpell(3372, 90, self:CombineQuests(L["Murloc Fin Soup Obt"],1,BZONE["Redridge Mountains"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(6417, 90, self:CombineQuests(L["Dig Rat Stew Obt"],2,BZONE["The Barrens"]), {BFAC["Horde"]})
 	self:addTradeSkillSpell(45695, 100, L["Fishing Daily"])
-	self:addTradeSkillSpell(2547, 100, self:CombineQuests(L["Redridge Goulash Obt"],BFAC["Alliance"],BZONE["Redridge Mountains"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(2549, 100, self:CombineQuests(L["Seasoned Wolf Kabob Obt"],BFAC["Alliance"],BZONE["Duskwood"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(3377, 110, self:CombineQuests(L["Gooey Spider Cake Obt"],BFAC["Alliance"],BZONE["Duskwood"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(3397, 110, self:CombineQuests(L["Big Bear Steak Obt"],BFAC["Horde"],BZONE["Hillsbrad Foothills"]) .. addon.br .. self:CombineVendors(260, 258, false))
-	self:addTradeSkillSpell(3373, 120, self:CombineQuests(L["Crocolisk Gumbo Obt"],BFAC["Alliance"],BZONE["Wetlands"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(3398, 125, self:CombineQuests(L["Hot Lion Chops Obt"],BFAC["Horde"],BZONE["Hillsbrad Foothills"]) .. addon.br .. self:CombineVendors(259, 282, false))
-	self:addTradeSkillSpell(3376, 130, self:CombineQuests(L["Curiously Tasty Omelet Obt"],BFAC["Alliance"],BZONE["Wetlands"]) .. addon.br .. self:CombineVendors(113, 253, 205, false))
-	self:addTradeSkillSpell(3399, 150, self:CombineQuests(L["Tasty Lion Steak Obt"],BFAC["Alliance"],BZONE["Hillsbrad Foothills"]), {BFAC["Alliance"]})
-	self:addTradeSkillSpell(3400, 175, self:CombineQuests(L["Soothing Turtle Bisque Obt"],BFAC["Neutral"],BZONE["Hillsbrad Foothills"]))
-	self:addTradeSkillSpell(4094, 175, self:CombineQuests(L["Barbecued Buzzard Wing Obt"],BFAC["Neutral"],BZONE["Badlands"]) .. addon.br .. self:CombineVendors(280, 260, false))
+	self:addTradeSkillSpell(2547, 100, self:CombineQuests(L["Redridge Goulash Obt"],1,BZONE["Redridge Mountains"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(2549, 100, self:CombineQuests(L["Seasoned Wolf Kabob Obt"],1,BZONE["Duskwood"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(3377, 110, self:CombineQuests(L["Gooey Spider Cake Obt"],1,BZONE["Duskwood"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(3397, 110, self:CombineQuests(L["Big Bear Steak Obt"],2,BZONE["Hillsbrad Foothills"]) .. addon.br .. self:CombineVendors(260, 258, false))
+	self:addTradeSkillSpell(3373, 120, self:CombineQuests(L["Crocolisk Gumbo Obt"],1,BZONE["Wetlands"]) .. addon.br .. self:CombineVendors(253, false), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(3398, 125, self:CombineQuests(L["Hot Lion Chops Obt"],2,BZONE["Hillsbrad Foothills"]) .. addon.br .. self:CombineVendors(259, 282, false))
+	self:addTradeSkillSpell(3376, 130, self:CombineQuests(L["Curiously Tasty Omelet Obt"],1,BZONE["Wetlands"]) .. addon.br .. self:CombineVendors(113, 253, 205, false))
+	self:addTradeSkillSpell(3399, 150, self:CombineQuests(L["Tasty Lion Steak Obt"],1,BZONE["Hillsbrad Foothills"]), {BFAC["Alliance"]})
+	self:addTradeSkillSpell(3400, 175, self:CombineQuests(L["Soothing Turtle Bisque Obt"],0,BZONE["Hillsbrad Foothills"]))
+	self:addTradeSkillSpell(4094, 175, self:CombineQuests(L["Barbecued Buzzard Wing Obt"],0,BZONE["Badlands"]) .. addon.br .. self:CombineVendors(280, 260, false))
 	self:addTradeSkillSpell(13028, 175, L["Goldthorn Tea Obt"])
 	self:addTradeSkillSpell(22761, 275, self:CombineMobs(false,L["Runn Tum Tuber Surprise Obt"],BZONE["Dire Maul"]))
-	self:addTradeSkillSpell(24801, 285, self:CombineQuests(L["Smoked Desert Dumplings Obt"],BFAC["Neutral"],BZONE["Silithus"]))
-	self:addTradeSkillSpell(25659, 300, self:CombineQuests(L["Dirge's Kickin' Chimaerok Chops Obt"],BFAC["Neutral"],BZONE["Tanaris"]), {L["Raid"]})
+	self:addTradeSkillSpell(24801, 285, self:CombineQuests(L["Smoked Desert Dumplings Obt"],0,BZONE["Silithus"]))
+	self:addTradeSkillSpell(25659, 300, self:CombineQuests(L["Dirge's Kickin' Chimaerok Chops Obt"],0,BZONE["Tanaris"]), {L["Raid"]})
 	self:addTradeSkillSpell(43779, 325, L["Cooking Daily"])
 	self:addTradeSkillSpell(33279, 300, L["Buzzard Bites Obt"])
 	self:addTradeSkillSpell(43772, 300, L["Cooking Daily"])
@@ -131,8 +131,8 @@ function addon:InitCooking()
 	self:addTradeSkillSpell(42296, 310, L["Stewed Trout Obt"])
 	self:addTradeSkillSpell(43765, 325, L["Cooking Daily"])
 	self:addTradeSkillSpell(43707, 325, L["Cooking Daily"])
-	self:addTradeSkillSpell(38868, 335, self:CombineQuests(L["Crunchy Serpent Obt"],BFAC["Horde"],BZONE["Blade's Edge Mountains"]) .. addon.br .. self:CombineVendors(284, false))
-	self:addTradeSkillSpell(38867, 335, self:CombineQuests(L["Crunchy Serpent Obt"],BFAC["Horde"],BZONE["Blade's Edge Mountains"]) .. addon.br .. self:CombineVendors(284, false))
+	self:addTradeSkillSpell(38868, 335, self:CombineQuests(L["Crunchy Serpent Obt"],1,BZONE["Blade's Edge Mountains"]) .. addon.br .. self:CombineVendors(284, false))
+	self:addTradeSkillSpell(38867, 335, self:CombineQuests(L["Crunchy Serpent Obt"],1,BZONE["Blade's Edge Mountains"]) .. addon.br .. self:CombineVendors(284, false))
 	self:addTradeSkillSpell(42302, 350, L["Stewed Trout Obt"])
 	self:addTradeSkillSpell(42305, 350, L["Stewed Trout Obt"])
 
@@ -142,8 +142,8 @@ function addon:InitCooking()
 	self:addTradeSkillSpell(45022, 325, L["WintersVeil"], {L["Seasonal"]})
 
 	-- Reputations
-	self:addTradeSkillSpell(36210, 300, self:AddSingleReputation(BFAC["Friendly"], BFAC["Sporeggar"]), {BFAC["Sporeggar"]})
-	self:addTradeSkillSpell(33285, 310, self:AddSingleReputation(BFAC["Friendly"], BFAC["Sporeggar"]), {BFAC["Sporeggar"]})
+	self:addTradeSkillSpell(36210, 300, self:AddSingleReputation(1, BFAC["Sporeggar"]), {BFAC["Sporeggar"]})
+	self:addTradeSkillSpell(33285, 310, self:AddSingleReputation(1, BFAC["Sporeggar"]), {BFAC["Sporeggar"]})
 
 	-- Raid Drops
 

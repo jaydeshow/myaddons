@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r75526 | kurax | 2008-05-30 00:38:27 -0400 (Fri, 30 May 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Update locales
+------------------------------------------------------------------------
 r74845 | kurax | 2008-05-22 19:23:29 -0400 (Thu, 22 May 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
@@ -250,10 +260,4 @@ Changed paths:
 
 AtlasLoot_BCInstances:
 - icon cleaning
-------------------------------------------------------------------------
-r71009 | kurax | 2008-04-22 23:59:48 -0400 (Tue, 22 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-
-AtlasLoot_BCInstances: Update zhCN locale
 ------------------------------------------------------------------------

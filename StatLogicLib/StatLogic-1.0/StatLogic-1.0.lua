@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 75320 $
+Revision: $Revision: 75638 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-05-28 02:45:19 -0400 (Wed, 28 May 2008) $
+LastUpdate: $Date: 2008-05-31 10:53:16 -0400 (Sat, 31 May 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -28,7 +28,7 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 75320 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 75638 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -298,7 +298,7 @@ PatternLocale.enUS = {
 	-- Stat Lookup Table --
 	-----------------------
 	["StatIDLookup"] = {
-		["Your attacks ignoreof your opponent's armor"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:23344:2613")
+		["Your attacks ignoreof your opponent's armor"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
 		["% Threat"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
 		["Increases your effective stealth level"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 		["Weapon Damage"] = {"MELEE_DMG"}, -- Enchant
@@ -391,8 +391,7 @@ PatternLocale.enUS = {
 		["Spell Damage"] = {"SPELL_DMG", "HEAL",},
 		["Increases damage and healing done by magical spells and effects"] = {"SPELL_DMG", "HEAL"},
 		["Increases damage and healing done by magical spells and effects of all party members within 30 yards"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-		["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",},
-		--StatLogic:GetSum("item:22630")
+		["Spell Damage and Healing"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 		["Damage"] = {"SPELL_DMG",},
 		["Increases your spell damage"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 		["Spell Power"] = {"SPELL_DMG", "HEAL",},
@@ -421,8 +420,7 @@ PatternLocale.enUS = {
 		["Increases the damage done by Nature spells and effects"] = {"NATURE_SPELL_DMG",}, -- Added just in case
 		["Increases the damage done by Shadow spells and effects"] = {"SHADOW_SPELL_DMG",}, -- Added just in case
 		
-		-- [Robe of Undead Cleansing] ID:23085
-		["Increases damage done to Undead by magical spells and effects"] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
+		["Increases damage done to Undead by magical spells and effects"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
 		["Increases damage done to Undead by magical spells and effects.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
 		["Increases damage done to Undead and Demons by magical spells and effects"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
@@ -948,7 +946,7 @@ PatternLocale.koKR = {
 	-- Stat Lookup Table --
 	-----------------------
 	["StatIDLookup"] = {
-		["공격 시 적의 방어도를 무시합니다"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:23344:2613")
+		["공격 시 적의 방어도를 무시합니다"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
 		["% 위협"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
 		["은신 효과가 증가합니다"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 		["무기 공격력"] = {"MELEE_DMG"}, -- Enchant
@@ -1040,8 +1038,7 @@ PatternLocale.koKR = {
 		["주문 공격력"] = {"SPELL_DMG", "HEAL",},
 		["모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {"SPELL_DMG", "HEAL"},
 		["주위 30미터 반경에 있는 모든 파티원의 모든 주문 및 효과의 공격력과 치유량이 증가합니다"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-		["주문 공격력 및 치유량"] = {"SPELL_DMG", "HEAL",},
-		--StatLogic:GetSum("item:22630")
+		["주문 공격력 및 치유량"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 		["공격력"] = {"SPELL_DMG",},
 		["주문 공격력이 증가합니다"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 		["주문 위력"] = {"SPELL_DMG",},
@@ -2114,23 +2111,18 @@ PatternLocale.deDE = {
 		end
 	end,
 	-------------------
-	-- Exclude Table --
+	-- Fast Exclude --
 	-------------------
 	-- By looking at the first ExcludeLen letters of a line we can exclude a lot of lines
-	["ExcludeLen"] = 5,
+	["ExcludeLen"] = 5, -- using string.utf8len
 	["Exclude"] = {
 		[""] = true,
 		[" \n"] = true,
-		-- Just keep variables variables if blizz changes them
 		[ITEM_BIND_ON_EQUIP] = true, -- ITEM_BIND_ON_EQUIP = "Binds when equipped"; -- Item will be bound when equipped
 		[ITEM_BIND_ON_PICKUP] = true, -- ITEM_BIND_ON_PICKUP = "Binds when picked up"; -- Item wil be bound when picked up
 		[ITEM_BIND_ON_USE] = true, -- ITEM_BIND_ON_USE = "Binds when used"; -- Item will be bound when used
 		[ITEM_BIND_QUEST] = true, -- ITEM_BIND_QUEST = "Quest Item"; -- Item is a quest item (same logic as ON_PICKUP)
 		[ITEM_SOULBOUND] = true, -- ITEM_SOULBOUND = "Soulbound"; -- Item is Soulbound
-		--[EMPTY_SOCKET_BLUE] = true, -- EMPTY_SOCKET_BLUE = "Blue Socket";
-		--[EMPTY_SOCKET_META] = true, -- EMPTY_SOCKET_META = "Meta Socket";
-		--[EMPTY_SOCKET_RED] = true, -- EMPTY_SOCKET_RED = "Red Socket";
-		--[EMPTY_SOCKET_YELLOW] = true, -- EMPTY_SOCKET_YELLOW = "Yellow Socket";
 		[ITEM_STARTS_QUEST] = true, -- ITEM_STARTS_QUEST = "This Item Begins a Quest"; -- Item is a quest giver
 		[ITEM_CANT_BE_DESTROYED] = true, -- ITEM_CANT_BE_DESTROYED = "That item cannot be destroyed."; -- Attempted to destroy a NO_DESTROY item
 		[ITEM_CONJURED] = true, -- ITEM_CONJURED = "Conjured Item"; -- Item expires
@@ -2148,6 +2140,9 @@ PatternLocale.deDE = {
 		["Benut"] = true, -- Use: -- ITEM_SPELL_TRIGGER_ONUSE = "Use:";
 		["Treff"] = true, -- Chance On Hit: -- ITEM_SPELL_TRIGGER_ONPROC = "Chance on hit:";
 		-- Set Bonuses
+		-- ITEM_SET_BONUS = "Set: %s";
+		-- ITEM_SET_BONUS_GRAY = "(%d) Set: %s";
+		-- ITEM_SET_NAME = "%s (%d/%d)"; -- Set name (2/5)
 		["Set: "] = true,
 		["(2) S"] = true,
 		["(3) S"] = true,
@@ -2216,18 +2211,17 @@ PatternLocale.deDE = {
 		["Vitalität"] = {["MANA_REG"] = 4, ["HEALTH_REG"] = 4}, --
 		["Seelenfrost"] = {["SHADOW_SPELL_DMG"] = 54, ["FROST_SPELL_DMG"] = 54}, --
 		["Sonnenfeuer"] = {["ARCANE_SPELL_DMG"] = 50, ["FIRE_SPELL_DMG"] = 50}, --
-		["Feingefühl"] = {["THREAT_MOD"] = -2}, -- Formel: Umhang - Feingefühl
 
 		["Mithrilsporen"] = {["MOUNT_SPEED"] = 4}, -- Mithril Spurs
 		["Schwache Reittierttempo-Strigerung"] = {["MOUNT_SPEED"] = 2}, -- Enchant Gloves - Riding Skill
 		["Anlegen: Lauftempo ein wenig erhöht."] = {["RUN_SPEED"] = 8}, -- [Highlander's Plate Greaves] ID: 20048
 		["Lauftempo ein wenig erhöht"] = {["RUN_SPEED"] = 8}, --
-		-- TODO ["Minor Speed Increase"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
-		-- TODO ["Minor Speed"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
-		-- TODO ["Surefooted"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
+		["Schwache Temposteigerung"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Minor Speed
+		["Schwaches Tempo"] = {["RUN_SPEED"] = 8}, -- Enchant Boots - Cat's Swiftness "Minor Speed and +6 Agility" http://wow.allakhazam.com/db/spell.html?wspell=34007
+		["Sicherer Stand"] = {["MELEE_HIT_RATING"] = 10}, -- Enchant Boots - Surefooted "Surefooted" http://wow.allakhazam.com/db/spell.html?wspell=27954
 
-		-- TODO ["Subtlety"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
-		-- TODO ["2% Reduced Threat"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
+		["Feingefühl"] = {["THREAT_MOD"] = -2}, -- Enchant Cloak - Subtlety
+		["2% verringerte Bedrohung"] = {["THREAT_MOD"] = -2}, -- StatLogic:GetSum("item:23344:2832")
 		["Anlegen: Ermöglicht Unterwasseratmung."] = false, -- [Band of Icy Depths] ID: 21526
 		["Ermöglicht Unterwasseratmung"] = false, --
 		["Anlegen: Immun gegen Entwaffnen."] = false, -- [Stronghold Gauntlets] ID: 12639
@@ -2314,6 +2308,7 @@ PatternLocale.deDE = {
 	-- Stat Lookup Table --
 	-----------------------
 	["StatIDLookup"] = {
+		["Eure Angriffe ignorierenRüstung eures Gegners"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
 		["% Bedrohung"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
 		["Erhöht Eure effektive Verstohlenheitsstufe"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 		["Waffenschaden"] = {"MELEE_DMG"}, -- Enchant
@@ -2332,8 +2327,7 @@ PatternLocale.deDE = {
 		["Frostwiderstand"] = {"FROST_RES",},
 		["Schattenwiderstand"] = {"SHADOW_RES",}, -- Demons Blood ID: 10779
 		["Alle Widerstände"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-		["Resist All"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
-		-- TODO I don't know if Resistance Armor Kits say "Arkan Widerstand" like on english locale
+		["Alle Widerstandsarten"] = {"ARCANE_RES", "FIRE_RES", "FROST_RES", "NATURE_RES", "SHADOW_RES",},
 
 		["Angeln"] = {"FISHING",}, -- Fishing enchant ID:846
 		["Angelfertigkeit"] = {"FISHING",}, -- Fishing lure
@@ -2355,10 +2349,10 @@ PatternLocale.deDE = {
 		["Angriffskraft"] = {"AP",},
 		["Erhöht Angriffskraft"] = {"AP",},
 		["Erhöht die Angriffskraft"] = {"AP",},
-		["Erhöht die Angriffskraft im Kampf gegen Untote"] = {"AP_UNDEAD",},
-		["Erhöht die Angriffskraft gegen Untote"] = {"AP_UNDEAD",},
-		["Erhöht die Angriffskraft im Kampf gegen Untote. Ermöglicht das Einsammel von Geißelsteinen im Namen der Argentumdämmerung"] = {"AP_UNDEAD",},
-		["Erhöht die Angriffskraft im Kampf gegen Dämonen"] = {"AP_DEMON",},
+		["Erhöht die Angriffskraft im Kampf gegen Untote"] = {"AP_UNDEAD",}, -- [Wristwraps of Undead Slaying] ID:23093
+		["Erhöht die Angriffskraft gegen Untote"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
+		["Erhöht die Angriffskraft im Kampf gegen Untote. Ermöglicht das Einsammeln von Geißelsteinen im Namen der Argentumdämmerung"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
+		["Erhöht die Angriffskraft im Kampf gegen Dämonen"] = {"AP_DEMON",}, -- [Mark of the Champion] ID:23206
 		["Angriffskraft in Katzengestalt, Bärengestalt oder Terrorbärengestalt"] = {"FERAL_AP",},
 		["Erhöht die Angriffskraft in Katzengestalt, Bärengestalt, Terrorbärengestalt oder Mondkingestalt"] = {"FERAL_AP",},
 		["Distanzangriffskraft"] = {"RANGED_AP",},
@@ -2385,8 +2379,7 @@ PatternLocale.deDE = {
 		["Zauberkraft"] = {"SPELL_DMG", "HEAL",},
 		["Erhöht durch Zauber und magische Effekte verursachten Schaden und Heilung"] = {"SPELL_DMG", "HEAL"},
 		["Erhöht durch Zauber und magische Effekte zugefügten Schaden und Heilung aller Gruppenmitglieder, die sich im Umkreis von 30 befinden,"] = {"SPELL_DMG", "HEAL"}, -- Atiesh
-		["Zauberschaden und Heilung"] = {"SPELL_DMG", "HEAL",},
-		--StatLogic:GetSum("item:22630")
+		["Zauberschaden und Heilung"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 		["Schaden"] = {"SPELL_DMG",},
 		["Erhöht Euren Zauberschaden"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
 		["Zauberschaden"] = {"SPELL_DMG",},
@@ -2409,8 +2402,10 @@ PatternLocale.deDE = {
 		["Erhöht durch Heiligzauber und Heiligeffekte zugefügten Schaden"] = {"HOLY_SPELL_DMG",},
 		["Erhöht durch Naturzauber und Natureffekte zugefügten Schaden"] = {"NATURE_SPELL_DMG",},
 		["Erhöht durch Schattenzauber und Schatteneffekte zugefügten Schaden"] = {"SHADOW_SPELL_DMG",}, -- Frozen Shadoweave Vest ID:21871
-		["Erhöht Dämonen durch Zauber und magische Effekte zugefügten Schaden"] = {"DMG_UNDEAD"},
-		["Increases damage done to Undead by magical spells and effects.  It also allows the acquisition of Scourgestones on behalf of the Argent Dawn"] = {"DMG_UNDEAD"},
+
+		["Erhöht den durch Zauber und magische Effekte zugefügten Schaden gegen Untote"] = {"SPELL_DMG_UNDEAD"}, -- [Robe of Undead Cleansing] ID:23085
+		["Erhöht den durch Zauber und magische Effekte zugefügten Schaden gegen Untote um bis zu 48. Ermöglicht das Einsammeln von Geißelsteinen im Namen der Argentumdämmerung."] = {"SPELL_DMG_UNDEAD"}, -- [Rune of the Dawn] ID:19812
+		["Erhöht den durch Zauber und magische Effekte zugefügten Schaden gegen Untote und Dämonen"] = {"SPELL_DMG_UNDEAD", "SPELL_DMG_DEMON"}, -- [Mark of the Champion] ID:23207
 
 		["Erhöht Heilung"] = {"HEAL",},
 		["Heilung"] = {"HEAL",},
@@ -2430,7 +2425,7 @@ PatternLocale.deDE = {
 		["Ausweichwertung"] = {"DODGE_RATING",},
 		["Erhöht Eure Ausweichwertung"] = {"DODGE_RATING",},
 		["Parierwertung"] = {"PARRY_RATING",},
-		["Erhöht Eure Parierwertung"] = {"PARRY_RATING",}, -- Erhöht Eure Parierwertung
+		["Erhöht Eure Parierwertung"] = {"PARRY_RATING",},
 		["Blockwertung"] = {"BLOCK_RATING",},
 		["Erhöht Eure Blockwertung"] = {"BLOCK_RATING",},
 		["Erhöt den Blockwet Eures Schildes"] = {"BLOCK_RATING",},
@@ -2472,10 +2467,9 @@ PatternLocale.deDE = {
 		["Erhöht Tempowertung"] = {"MELEE_HASTE_RATING"}, -- [Pfeilabwehrender Brustschutz] ID:33328
 		["Erhöht Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
 		["Erhöht Eure Angriffstempowertung"] = {"MELEE_HASTE_RATING"},
-		["Erhöht Eure Distanzangriffstempowertung"] = {"SPELL_HASTE_RATING"},
-		["Erhöht Zaubertempowertung"] = {"RANGED_HASTE_RATING"},
+		["Erhöht Eure Distanzangriffstempowertung"] = {"RANGED_HASTE_RATING"},
+		["Erhöht Zaubertempowertung"] = {"SPELL_HASTE_RATING"},
 
-		["Erhöht die Waffenkundewertung"] = {"EXPERTISE_RATING"},
 		["Erhöht die Fertigkeitswertung für Dolche"] = {"DAGGER_WEAPON_RATING"},
 		["Erhöht die Fertigkeitswertung für Schwerter"] = {"SWORD_WEAPON_RATING"},
 		["Erhöht die Fertigkeitswertung für Zweihandschwerter"] = {"2H_SWORD_WEAPON_RATING"},
@@ -2489,6 +2483,8 @@ PatternLocale.deDE = {
 		["Erhöht die Fertigkeitswertung für 'Wilder Kampf'"] = {"FERAL_WEAPON_RATING"},
 		["Erhöht die Fertigkeitswertung für Faustwaffen"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator
 		["Erhöht die Fertigkeitswertung für unbewaffneten Kampf"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
+
+		["Erhöht die Waffenkundewertung"] = {"EXPERTISE_RATING"},
 		-- Exclude
 		["Sek"] = false,
 		["bis"] = false,
@@ -2516,7 +2512,7 @@ DisplayLocale.deDE = {
 		["EMPTY_SOCKET_BLUE"] = {EMPTY_SOCKET_BLUE, EMPTY_SOCKET_BLUE}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 		["EMPTY_SOCKET_META"] = {EMPTY_SOCKET_META, EMPTY_SOCKET_META}, -- EMPTY_SOCKET_META = "Meta Socket";
 		
-		["IGNORE_ARMOR"] = {"Ignore Armor", "Ignore Armor"},
+		["IGNORE_ARMOR"] = {"Rüstung ignorieren", "Rüstung igno."},
 		["STEALTH_LEVEL"] = {"Verstohlenheitslevel", "Verstohlenheit"},
 		["MELEE_DMG"] = {"Waffenschaden", "Waffenschaden"}, -- DAMAGE = "Damage"
 		["MOUNT_SPEED"] = {"Reitgeschwindigkeit(%)", "Reitgeschw.(%)"},

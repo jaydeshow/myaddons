@@ -43,7 +43,7 @@ L["Show tank as 100%, rather than 0%"] = "将 Tank 显示为100%，而非0%"
 L["Disable while tanking"] = "当 Tank 时禁用"
 L["Disable warnings while you are tanking"] = "当你为 Tank 时禁用警报"
 
-L["Passed %s%% of %s's threat!"] = "超过>%2$s<的%1$s%%威胁值！"
+L["Passed %s%% of %s's threat!"] = "超过>%2$s<%1$s%%的威胁值！"
 
 L["The color of your bar's background"] = "你的计量条背景色"
 L["Use custom color"] = "使用自定义颜色"

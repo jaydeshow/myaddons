@@ -4,8 +4,8 @@ ARL-Engineering.lua
 
 Engineering data for all of AckisRecipeList
 
-$Date: 2008-05-21 02:02:08 -0400 (Wed, 21 May 2008) $
-$Rev: 74622 $
+$Date: 2008-05-29 13:12:20 -0400 (Thu, 29 May 2008) $
+$Rev: 75475 $
 
 ]]--
 
@@ -172,10 +172,10 @@ function addon:InitEngineering()
 	-- Specific Drops
 	self:addTradeSkillSpell(3944, 125, self:CombineMobs(true,BBOSS["Mekgineer Thermaplugg"],BZONE["Gnomeregan"]))
 	self:addTradeSkillSpell(3959, 160, self:CombineMobs(true,BBOSS["Mekgineer Thermaplugg"],BZONE["Gnomeregan"]) .. addon.br .. L["Discombobulator Ray Obt"])
-	self:addTradeSkillSpell(8243, 185, self:CombineQuests(L["Flash Bomb Obt"],BFAC["Neutral"],BZONE["Badlands"]))
+	self:addTradeSkillSpell(8243, 185, self:CombineQuests(L["Flash Bomb Obt"],0,BZONE["Badlands"]))
 	self:addTradeSkillSpell(19796, 275, self:CombineMobs(true,L["Dark Iron Rifle Obt"],BZONE["Blackrock Depths"]))
 	self:addTradeSkillSpell(23079, 275, self:CombineMobs(false,BBOSS["King Gordok"],BZONE["Dire Maul"]) .. L["Major Recombobulator Obt"])
-	self:addTradeSkillSpell(28327, 275, self:CombineQuests(L["Steam Tonk Controller Obt"],BFAC["Neutral"],L["Darkmoon Faire"]))
+	self:addTradeSkillSpell(28327, 275, self:CombineQuests(L["Steam Tonk Controller Obt"],0,L["Darkmoon Faire"]))
 	self:addTradeSkillSpell(19799, 285, self:CombineMobs(true,L["Weapon Technician"],BZONE["Blackrock Depths"]))
 	self:addTradeSkillSpell(19819, 290, self:CombineMobs(true,L["Crimson Inquisitor"],BZONE["Stratholme"]))
 	self:addTradeSkillSpell(23081, 290, self:CombineMobs(true,BBOSS["Solakar Flamewreath"],BZONE["Upper Blackrock Spire"]))
@@ -183,7 +183,7 @@ function addon:InitEngineering()
 	self:addTradeSkillSpell(19833, 300, self:CombineMobs(true,L["Flawless Arcanite Rifle Obt"],BZONE["Eastern Plaguelands"]))
 	self:addTradeSkillSpell(22704, 300, self:CombineMobs(false,BBOSS["Golem Lord Argelmach"],BZONE["Blackrock Depths"]) .. L["Field Repair Bot 74A Obt"])
 	self:addTradeSkillSpell(23082, 300, self:CombineMobs(true,L["Crimson Inquisitor"],BZONE["Stratholme"]))
-	self:addTradeSkillSpell(30548, 305, self:CombineQuests(L["Zapthrottle Mote Extractor Obt"],BFAC["Neutral"],BZONE["Zangarmarsh"]))
+	self:addTradeSkillSpell(30548, 305, self:CombineQuests(L["Zapthrottle Mote Extractor Obt"],0,BZONE["Zangarmarsh"]))
 	self:addTradeSkillSpell(43676, 335, self:CombineMobs(false,L["Adamantite Arrow Maker Obt"],BZONE["Netherstorm"]))
 	self:addTradeSkillSpell(30556, 355, self:CombineMobs(false,BBOSS["Mekgineer Steamrigger"],BZONE["The Steamvault"]))
 	self:addTradeSkillSpell(46697, 355, self:CombineMobs(false,BBOSS["Mechano-Lord Capacitus"],BZONE["The Mechanar"]))
@@ -211,12 +211,12 @@ function addon:InitEngineering()
 
 
 	-- Reputations
-	self:addTradeSkillSpell(24356, 300, self:AddSingleReputation(BFAC["Honored"], BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
-	self:addTradeSkillSpell(24357, 300, self:AddSingleReputation(BFAC["Friendly"], BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
+	self:addTradeSkillSpell(24356, 300, self:AddSingleReputation(2, BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
+	self:addTradeSkillSpell(24357, 300, self:AddSingleReputation(1, BFAC["Zandalar Tribe"]), {BFAC["Zandalar Tribe"], L["Raid"]})
 
-	self:addTradeSkillSpell(30344, 335, self:AddSingleReputation(BFAC["Friendly"], BFAC["Cenarion Expedition"]), {BFAC["Cenarion Expedition"]})
+	self:addTradeSkillSpell(30344, 335, self:AddSingleReputation(1, BFAC["Cenarion Expedition"]), {BFAC["Cenarion Expedition"]})
 
-	self:addTradeSkillSpell(30547, 350, self:AddSingleReputation(BFAC["Revered"], BFAC["The Consortium"]), {BFAC["The Consortium"]})
+	self:addTradeSkillSpell(30547, 350, self:AddSingleReputation(3, BFAC["The Consortium"]), {BFAC["The Consortium"]})
 
 	-- Raid
 	self:addTradeSkillSpell(22793, 300, L["MOLTENCORE"], {L["Raid"]})

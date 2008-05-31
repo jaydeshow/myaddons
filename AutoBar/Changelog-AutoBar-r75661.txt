@@ -1,4 +1,46 @@
 ------------------------------------------------------------------------
+r75661 | toadkiller | 2008-05-31 14:27:21 -0400 (Sat, 31 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/AutoBarSearch.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Fix that issue with the thing and outland and stuff
+------------------------------------------------------------------------
+r75530 | StiviS | 2008-05-30 04:20:24 -0400 (Fri, 30 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-esES.lua
+
+AutoBar :
+- esES updated
+------------------------------------------------------------------------
+r75512 | sayclub | 2008-05-29 22:19:59 -0400 (Thu, 29 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-koKR.lua
+
+AutoBar : 
+- koKR Update
+------------------------------------------------------------------------
+r75501 | toadkiller | 2008-05-29 18:01:52 -0400 (Thu, 29 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+
+AutoBar : 
+-- Make macros in a custom category list show up again.
+------------------------------------------------------------------------
+r75476 | toadkiller | 2008-05-29 13:19:10 -0400 (Thu, 29 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassButton.lua
+
+AutoBar : 
+-- Show keybinds for Custom Buttons
+
+------------------------------------------------------------------------
 r75439 | toadkiller | 2008-05-29 00:16:14 -0400 (Thu, 29 May 2008) | 7 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarButton.lua
@@ -1145,73 +1187,4 @@ Changed paths:
 
 AutoBar:
 - Update zhTW localization.
-------------------------------------------------------------------------
-r72146 | toadkiller | 2008-04-29 19:30:32 -0400 (Tue, 29 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarDB.lua
-
-AutoBar : 
--- AutoBarDB.lua:1203: attempt to index local 'barDB' (a nil value) fix
-------------------------------------------------------------------------
-r72029 | toadkiller | 2008-04-29 00:51:05 -0400 (Tue, 29 Apr 2008) | 5 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Style.lua
-
-AutoBar : 
--- Fix some code necrosis
--- The left click spell + the right click spell counts are split into <left click spell count>/<right click spell count>
--- AutoBarButton.lua:1481: attempt to concatenate local 'itemName' fixed
-
-------------------------------------------------------------------------
-r71981 | toadkiller | 2008-04-28 14:25:49 -0400 (Mon, 28 Apr 2008) | 7 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/Bindings.xml
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- GameTooltip:SetOwner(self, "ANCHOR_PRESERVE").  Perhaps this will clear up tooltip position issues?
--- WaterfallDragLink support for built in macros, rip out LibBabbleSpell, fix icons for items, spells and macros.
--- Dump the obsolete category rearrange code.
--- Drag & drop of built in macros to a custom category
--- AutoBarButtonRotationDrums: this is the first cut at it.
-
-------------------------------------------------------------------------
-r71922 | toadkiller | 2008-04-28 05:27:40 -0400 (Mon, 28 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- Add some of the Warlock reagent counts
-------------------------------------------------------------------------
-r71913 | toadkiller | 2008-04-28 04:47:03 -0400 (Mon, 28 Apr 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/Core.lua
-
-AutoBar : 
--- Reagent counts for select spells.  Specifically did not do the 5 million soulshard spells of warlocks, nor rogue poisons.
--- The left click spell + the right click spell counts are split into <left click spell count>/<right click spell count>
-
 ------------------------------------------------------------------------

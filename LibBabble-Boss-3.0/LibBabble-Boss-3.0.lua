@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 74804 $
+Revision: $Rev: 75559 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 74804 $"
+local MINOR_VERSION = "$Revision: 75559 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -3350,7 +3350,7 @@ elseif GAME_LOCALE == "zhTW" then
 		["Kalecgos"] = "卡雷苟斯",
 		["Sathrovarr the Corruptor"] = "『墮落者』塞斯諾瓦",
 		["Brutallus"] = "布魯托魯斯",
-		["Felmyst"] = "魔霧",
+		["Felmyst"] = "魔龍謎霧",
 		["The Eredar Twins"] = "埃雷達爾雙子",
 		["Kil'jaeden"] = "基爾加丹",
 		["M'uru"] = "莫魯",

@@ -245,6 +245,8 @@ L:RegisterTranslations("zhCN", function() return {
 	["Use short spell names where appropriate"] = "在合适的地方使用简短的法术名称",
 	["Show Roles"]			= "显示角色",
 	["Show player role icons"] = "显示玩家角色图标",
+	["Auto-casting is disabled"] = "自动施法已禁用",
+	["You can re-enable it by single clicking the ZOMGBuffs minimap/fubar icon"] = "你可以通过点击FuBar或者小地图图标重新启用",
 
 	["CHATMATCH1"]			= "!buff",
 	["CHATMATCH2"]			= "!zomg",

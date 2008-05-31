@@ -25,6 +25,9 @@ local resetspells = {
 	[GetSpellInfo(2973)] = true, -- Raptor Strike
 	[GetSpellInfo(1464)] = true, -- Slam
 }
+local resetautoshotspells = {
+	[GetSpellInfo(19434)] = true, -- Aimed Shot
+}
 local _, playerclass = UnitClass('player')
 local unpack = unpack
 local math_abs = math.abs
@@ -164,6 +167,10 @@ function QuartzSwing:UNIT_SPELLCAST_SUCCEEDED(unit, spell)
 		if spell == autoshotname then
 			self:Shoot()
 		end
+	end
+	if resetautoshotspells[spell] then
+		swingmode = 1
+		self:Shoot()
 	end
 end
 function QuartzSwing:UNIT_ATTACK(unit)

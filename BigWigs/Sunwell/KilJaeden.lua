@@ -133,7 +133,7 @@ L:RegisterTranslations("frFR", function() return {
 
 	orb = "Orbe bouclier",
 	orb_desc = "Prévient quand une Orbe bouclier lance des Traits de l'ombre.",
-	orb_shooting = "Orbe en vie !",
+	orb_shooting = "Orbe en vie - Bombardement de traits !",
 
 	bloom = "Fleur du feu",
 	bloom_desc = "Prévient quand des joueurs subissent les effets de la Fleur du feu.",
@@ -235,7 +235,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
 mod.toggleoptions = {"bomb", "orb", "flame", -1, "bloom", "bloomwhisper","bloomsay", "icons", -1, "sinister", "shadow", "bosskill"}
-mod.revision = tonumber(("$Revision: 75448 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75605 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -337,6 +337,7 @@ function mod:Bloom(player)
 		self:Whisper(player, L["bloom_you"], "bloomwhisper")
 		self:ScheduleEvent("BWBloomWarn", self.BloomWarn, 0.4, self)
 		if player == pName and db.bloomsay then
+			self:LocalMessage(L["bloom_you"], "Personal", 45641, "Long")
 			SendChatMessage(L["bloom_say"], "SAY")
 		end
 	end

@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -90,7 +90,7 @@ function AutoBarButton.prototype:DropObject()
 	local fromObject = AutoBar:GetDraggingObject()
 	local refreshNeeded
 --AutoBar:Print("AutoBarButton.prototype:DropObject " .. tostring(fromObject and fromObject.buttonDB.buttonKey or "none") .. " --> " .. tostring(toObject.buttonDB.buttonKey))
-	if (fromObject and fromObject ~= toObject and AutoBar.unlockButtons) then
+	if (fromObject and fromObject ~= toObject and AutoBar.moveButtonsMode) then
 		AutoBar:ButtonMove(fromObject.parentBar.barKey, fromObject.order, toObject.parentBar.barKey, toObject.order)
 		AutoBar:BarButtonChanged()
 		ClearCursor()
@@ -285,7 +285,7 @@ function AutoBarButton.prototype:SetupButton()
 			popupHeader:SetAttribute("hidestates", "*")
 		end
 
-		if ((AutoBar.unlockButtons or AutoBar.db.account.showEmptyButtons or self.buttonDB.alwaysShow) and self.buttonDB.enabled) then
+		if ((AutoBar.moveButtonsMode or AutoBar.db.account.showEmptyButtons or self.buttonDB.alwaysShow) and self.buttonDB.enabled) then
 			frame:SetAttribute("showstates", "*")
 			frame:SetAttribute("hidestates", nil)
 			if (self[1]) then
@@ -519,11 +519,13 @@ function AutoBarButton.prototype:SetupAttributes(button, bag, slot, spell, macro
 			if (macroInfo.macroIndex) then
 				frame:SetAttribute("*macro1", macroInfo.macroIndex)
 				frame:SetAttribute("*macro2", macroInfo.macroIndex)
+				button.macroActive = true
 --AutoBar:Print("AutoBarButton:SetupAttributes macroIndex " .. tostring(macroInfo.macroIndex) .. "\n")
 			else
 				frame:SetAttribute("*macrotext1", macroInfo.macroText)
 				frame:SetAttribute("*macrotext2", macroInfo.macroText)
 				frame:SetAttribute("macroName", macroInfo.macroName)
+				button.macroActive = true
 --AutoBar:Print("AutoBarButton:SetupAttributes macroText: " .. tostring(macroInfo.macroText) .. "\n")
 			end
 		elseif (spell) then
@@ -592,7 +594,7 @@ function AutoBarButton:SetTooltip(button)
 	if (isAutoBarButton and self.GetHotkey) then
 		LibKeyBound:Set(self)
 	end
-	local noTooltip = not (AutoBar.db.account.showTooltip and self.needsTooltip or AutoBar.unlockButtons)
+	local noTooltip = not (AutoBar.db.account.showTooltip and self.needsTooltip or AutoBar.moveButtonsMode)
 	noTooltip = noTooltip or (InCombatLockdown() and not AutoBar.db.account.showTooltipCombat) or (button == "OnLeave")
 	if (noTooltip) then
 		self.updateTooltip = nil
@@ -613,7 +615,7 @@ function AutoBarButton:SetTooltip(button)
 	end
 
 	-- Add Button or Bar name
-	if (AutoBar.unlockButtons) then
+	if (AutoBar.moveButtonsMode) then
 		if (self.class and self.class.sharedLayoutDB) then
 			GameTooltip:AddLine(self.class.barName)
 		elseif(isAutoBarButton) then
@@ -723,8 +725,7 @@ end
 function AutoBarButton.prototype:AddCategory(categoryName)
 	for i, category in ipairs(self) do
 		if (category == categoryName) then
-			-- Ignore
---			self[i], self[# self] = self[# self], self[i]
+			-- Ignore.  ToDo shuffle to end.
 			return
 		end
 	end
@@ -939,14 +940,9 @@ spellAquaticForm, _, spellAquaticFormIcon = GetSpellInfo(1066)
 spellNameList["Bear Form"], _, spellIconList["Bear Form"] = GetSpellInfo(5487)
 spellNameList["Cat Form"], _, spellIconList["Cat Form"] = GetSpellInfo(768)
 spellNameList["Dire Bear Form"], _, spellIconList["Dire Bear Form"] = GetSpellInfo(9634)
-spellNameList["Flight Form"] = GetSpellInfo(33943)
-spellNameList["Swift Flight Form"] = GetSpellInfo(40120)
 
 local spellMoonkinForm, spellMoonkinFormIcon
 spellMoonkinForm, _, spellMoonkinFormIcon = GetSpellInfo(24858)
-
-local spellTravelForm, spellTravelFormIcon
-spellTravelForm, _, spellTravelFormIcon = GetSpellInfo(783)
 
 local spellTreeOfLifeForm, spellTreeOfLifeFormIcon
 spellTreeOfLifeForm, _, spellTreeOfLifeFormIcon = GetSpellInfo(33891)
@@ -961,7 +957,7 @@ local shapeshift = {
 --	spellNameList["Flight Form"],
 --	spellMoonkinForm,
 --	spellNameList["Swift Flight Form"],
---	spellTravelForm,
+--	spellNameList["Travel Form"],
 --	spellTreeOfLifeForm,
 }
 local shapeshiftIn = {}
@@ -1247,7 +1243,7 @@ function AutoBarButtonTravel.prototype:Refresh(parentBar, buttonDB)
 		end
 		excludeList[spellAquaticForm] = true
 		excludeList[spellNameList["Cat Form"]] = true
-		excludeList[spellTravelForm] = true
+		excludeList[spellNameList["Travel Form"]] = true
 		excludeList[spellNameList["Swift Flight Form"]] = true
 		excludeList[spellNameList["Flight Form"]] = true
 		local concatList = GetCancelList(excludeList)
@@ -1283,14 +1279,14 @@ function AutoBarButtonTravel.prototype:Refresh(parentBar, buttonDB)
 			self.macroActive = true
 		end
 
-		if (shapeshiftSet[spellTravelForm]) then
+		if (shapeshiftSet[spellNameList["Travel Form"]]) then
 			concatList[index] = " [outdoors] "
-			concatList[index+1] = spellTravelForm
+			concatList[index+1] = spellNameList["Travel Form"]
 			index = index + 2
 			self.macroActive = true
 		end
 
-		macroTexture = spellTravelFormIcon
+		macroTexture = spellIconList["Travel Form"]
 	elseif (AutoBar.CLASS == "SHAMAN") then
 		if (GetSpellInfo(spellNameList["Ghost Wolf"])) then
 			local index = 1
@@ -1665,6 +1661,75 @@ function AutoBarButtonMount.prototype:init(parentBar, buttonDB)
 	end
 	self:AddCategory("Misc.Mount.Flying")
 	self:AddCategory("Misc.Mount.Ahn'Qiraj")
+
+	local buttonData = AutoBar.db.char.buttonDataList[buttonDB.buttonKey]
+	if (not buttonData) then
+		buttonData = {}
+		AutoBar.db.char.buttonDataList[buttonDB.buttonKey] = buttonData
+	end
+	buttonData.SetBest = self.SetBest
+	self.flyable = -1
+end
+
+--[[
+function AutoBarButtonMount.prototype:GetMountId(flyable, sortedItems, searchItems)
+	local itemId, category
+	for sortedIndex, sortedItemData in ipairs(sortedItems) do
+		itemId = sortedItemData.itemId
+		category = searchItems[itemId].category
+		if (flyable) then
+			if (category == "Misc.Mount.Flying") then
+				return itemId
+			end
+			if (AutoBar.CLASS == "DRUID" and category == "Misc.Mount.Summoned") then
+				if (itemId == spellNameList["Flight Form"] or itemId == spellNameList["Swift Flight Form"]) then
+					return itemId
+				end
+			end
+		else
+			if (category == "Misc.Mount.Normal") then
+				return itemId
+			end
+			if (category == "Misc.Mount.Summoned") then
+				if (AutoBar.CLASS == "DRUID" and itemId ~= spellNameList["Flight Form"] and itemId ~= spellNameList["Swift Flight Form"]) then
+					return itemId
+				end
+				return itemId
+			end
+		end
+		categoryInfo = AutoBarCategoryList[category]
+	end
+end
+--]]
+
+function AutoBarButtonMount.prototype.SetBest(sorted, buttonDB, buttonData, sortedItems, searchItems)
+	local stopProcessing
+	local flyable = AutoBar.flyable
+	local self = AutoBar.buttonList[buttonDB.buttonKey]
+	if (self.flyable ~= flyable) then
+		local mountId = buttonData.arrangeOnUse
+--AutoBar:Print("AutoBarButtonMount.prototype.SetBest self.flyable " .. tostring(self.flyable) .. " mountId " .. tostring(mountId))
+		if (mountId) then
+			if (self.flyable) then
+				buttonData.flyingMount = mountId
+			else
+				buttonData.groundMount = mountId
+			end
+		end
+		self.flyable = flyable
+		mountId = nil
+		if (self.flyable) then
+			mountId = buttonData.flyingMount
+		else
+			mountId = buttonData.groundMount
+		end
+
+--AutoBar:Print("AutoBarButtonMount.prototype.SetBest self.flyable " .. tostring(self.flyable) .. " -> mountId " .. tostring(mountId))
+		if (mountId) then
+			buttonData.arrangeOnUse = mountId
+		end
+	end
+	return stopProcessing
 end
 
 
@@ -1792,7 +1857,7 @@ function AutoBarButtonRotationDrums.prototype:IsActive()
 	if (not self.buttonDB.enabled) then
 		return false
 	end
-	if (AutoBar.db.account.showEmptyButtons or AutoBar.unlockButtons or self.buttonDB.alwaysShow or not self.parentBar.sharedLayoutDB.collapseButtons) then --or AutoBar.keyBoundMode
+	if (AutoBar.db.account.showEmptyButtons or AutoBar.moveButtonsMode or self.buttonDB.alwaysShow or not self.parentBar.sharedLayoutDB.collapseButtons) then --or AutoBar.keyBoundMode
 		return true
 	end
 	local count = GetItemCount(29529)

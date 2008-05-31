@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Boss-2.2
-Revision: $Rev: 67205 $
+Revision: $Rev: 75554 $
 Author(s): ckknight (ckknight@gmail.com)
 Credits: Funkydude
 Website: http://ckknight.wowinterface.com/
@@ -12,7 +12,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Boss-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 67205 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 75554 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -3066,7 +3066,7 @@ BabbleBoss:RegisterTranslations("zhTW", function() return {
 		["Kalecgos"] = "卡雷苟斯",
 		["Sathrovarr the Corruptor"] = "『墮落者』塞斯諾瓦",
 		["Brutallus"] = "布魯托魯斯",
-		["Felmyst"] = "魔霧",
+		["Felmyst"] = "魔龍謎霧",
 		["The Eredar Twins"] = "埃雷達爾雙子",
 		["Kil'jaeden"] = "基爾加丹",
 		["M'uru"] = "莫魯",

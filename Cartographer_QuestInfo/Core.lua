@@ -6,6 +6,7 @@ local CQI = Cartographer_QuestInfo
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 
 local Gratuity = LibStub("LibGratuity-3.0")
+local Quixote = LibStub("LibQuixote-2.0")
 
 local C = Cartographer
 local CN = Cartographer_Notes
@@ -20,7 +21,7 @@ CQI:SetDatabaseDefaults("profile", {
 	iconScale = 1,
 	minimapIcons = true,
 	cartoButton = true,
-	wideQuestLog = true,
+	wideQuestLog = not beql,
 })
 
 -------------------------------------------------------------------
@@ -151,6 +152,7 @@ function CQI:OnInitialize()
 	}
 
 	self:PurgeHostileQuests()
+	self:PatchQuixote2()
 	self:AddSecureHook("QuestLog_UpdateQuestDetails")
 end
 
@@ -379,5 +381,28 @@ function CQI:PurgeHostileQuests()
 		if data.i:sub(1, 1) == hostile then
 			QuestInfo_Quest[uid] = nil
 		end
+	end
+end
+
+-------------------------------------------------------------------
+
+function CQI:PatchQuixote2()
+	-- change DAILI shorttags to "y", "\226\128\162" looks bad on zhTW & zhCN
+	local l = GetLocale()
+	if l == "zhTW" or l == "zhCN" then
+		Quixote.shorttags[DAILY] = "y"
+	end
+	
+	-- dsiable SendAddonMessage spam
+	local f = Quixote.SendAddonMessage
+	Quixote.SendAddonMessage = function(self, contents, distribution, target, priority)
+		-- purple, don't send message if the target is unknown
+		if target == UNKNOWNOBJECT then return end
+
+		-- purple, don't send message in arena or battleground
+		local _, instanceType = IsInInstance()
+		if instanceType == "arena" or instanceType == "pvp" then return end
+				
+		f(self, contents, distribution, target, priority)
 	end
 end
