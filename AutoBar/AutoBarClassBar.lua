@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75688 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -42,8 +42,16 @@ local function onUpdateFunc(button, elapsed)
 	local self = button.class
 --AutoBar:Print("onUpdateFunc " .. tostring(self.barName) .. " elapsed " .. tostring(elapsed) .. " self.elapsed " .. tostring(self.elapsed))
 	self.elapsed = self.elapsed + elapsed
-	if self.elapsed > FADEOUT_UPDATE_TIME then
-		self:OnUpdate(self.elapsed)
+	if (self.fadeOutDelay) then
+		if (self.elapsed < self.fadeOutDelay) then
+			return
+		else
+			self.elapsed = self.elapsed - self.fadeOutDelay
+			self.fadeOutDelay = nil
+		end
+	end
+	if (self.elapsed > FADEOUT_UPDATE_TIME) then
+		self:UpdateFadeOut(self.elapsed)
 		self.elapsed = 0
 	end
 end
@@ -317,7 +325,7 @@ end
 -- /script AutoBar.barList["AutoBarClassBarBasic"].activeButtonList[4].frame:SetChecked(1)
 
 
-function AutoBar.Class.Bar.prototype:OnUpdate(elapsed)
+function AutoBar.Class.Bar.prototype:UpdateFadeOut()
 --AutoBar:Print("AutoBar.Class.Bar.prototype:OnUpdate self.sharedLayoutDB.fadeOut " .. tostring(self.sharedLayoutDB.fadeOut))
 	if (self.sharedLayoutDB.fadeOut) then
 		local cancelFade = InCombatLockdown() and self.sharedLayoutDB.fadeOutCancelInCombat or MouseIsOver(self.frame) or IsShiftKeyDown() and self.sharedLayoutDB.fadeOutCancelOnShift or IsControlKeyDown() and self.sharedLayoutDB.fadeOutCancelOnCtrl or IsAltKeyDown() and self.sharedLayoutDB.fadeOutCancelOnAlt
@@ -329,6 +337,7 @@ function AutoBar.Class.Bar.prototype:OnUpdate(elapsed)
 		if (cancelFade and self.faded) then
 			self.frame:SetAlpha(self.sharedLayoutDB.alpha)
 			self.faded = nil
+			self.fadeOutDelay = self.sharedLayoutDB.fadeOutDelay
 			if (# self.buttonList > 0) then
 				for index, button in pairs(self.buttonList) do
 					button:UpdateCooldown()
@@ -336,6 +345,7 @@ function AutoBar.Class.Bar.prototype:OnUpdate(elapsed)
 			end
 		elseif (cancelFade and self.frame:GetAlpha() < self.sharedLayoutDB.alpha) then
 			self.frame:SetAlpha(self.sharedLayoutDB.alpha)
+			self.fadeOutDelay = self.sharedLayoutDB.fadeOutDelay
 		elseif (not cancelFade and not self.faded) then
 			local startAlpha = self.sharedLayoutDB.alpha
 			local fadeOutAlpha = self.sharedLayoutDB.fadeOutAlpha or 0

@@ -1,4 +1,55 @@
 ------------------------------------------------------------------------
+r75708 | scorpion | 2008-06-01 04:00:15 -0400 (Sun, 01 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+ - Update zhTW & zhCN localization.
+
+------------------------------------------------------------------------
+r75693 | scorpion | 2008-06-01 01:59:07 -0400 (Sun, 01 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+ - Update zhTW & zhCN localization.
+------------------------------------------------------------------------
+r75688 | toadkiller | 2008-05-31 20:59:29 -0400 (Sat, 31 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+-- FadeOut Delay added.
+
+------------------------------------------------------------------------
+r75686 | toadkiller | 2008-05-31 19:22:17 -0400 (Sat, 31 May 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+
+AutoBar : 
+-- StartsQuest added back in to Quest Button
+
+------------------------------------------------------------------------
+r75664 | toadkiller | 2008-05-31 15:13:47 -0400 (Sat, 31 May 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassButton.lua
+
+AutoBar : 
+-- Fix sortedItems nil case
+------------------------------------------------------------------------
 r75661 | toadkiller | 2008-05-31 14:27:21 -0400 (Sat, 31 May 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarButton.lua
@@ -1148,43 +1199,4 @@ Changed paths:
 AutoBar : 
 -- Clean up icon texture code.  This should solve the empty button issue in at least some cases.
 
-------------------------------------------------------------------------
-r72255 | toadkiller | 2008-04-30 18:58:22 -0400 (Wed, 30 Apr 2008) | 6 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-
-AutoBar : 
--- For quantity over 99 show * in the count
--- Only show one count if left & right click spell is the same.
--- Delete drag handle icons
--- New underlying architecture for Macros.  Convert Macro buttons to use it.
-
-------------------------------------------------------------------------
-r72213 | toadkiller | 2008-04-30 15:21:22 -0400 (Wed, 30 Apr 2008) | 2 lines
-Changed paths:
-   D /trunk/AutoBar/Art
-
-AutoBar : 
--- Delete drag handle icons
-------------------------------------------------------------------------
-r72173 | StiviS | 2008-04-30 06:12:52 -0400 (Wed, 30 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r72155 | scorpio0920 | 2008-04-30 01:48:37 -0400 (Wed, 30 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhTW localization.
 ------------------------------------------------------------------------

@@ -64,6 +64,8 @@ if (GetLocale() == "koKR") then
 		["FadeOut is cancelled when holding down the Ctrl key."] = "Ctrl키 입력시 투명화가 취소됩니다.",
 		["FadeOut Cancels on Alt"] = "Alt키 입력시 투명화 취소",
 		["FadeOut is cancelled when holding down the Alt key."] = "Alt키 입력시 투명화가 취소됩니다.",
+		["FadeOut Delay"] = "FadeOut Delay",
+		["FadeOut starts after this amount of time."] = "FadeOut starts after this amount of time.",
 		["Frame Level"] = "창 레벨",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "다른 UI 위나 아래에 나타나는 팝업 버튼 및 창의 레벨을 조정합니다.",
 		["General"] = "일반",

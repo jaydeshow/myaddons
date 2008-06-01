@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75688 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1151,6 +1151,21 @@ local function setFadeOutTime(table, value)
 end
 
 
+local function getFadeOutDelay(table)
+	local barKey = table.barKey
+	return AutoBar.barLayoutDBList[barKey].fadeOutDelay or 0
+end
+
+local function setFadeOutDelay(table, value)
+	local barKey = table.barKey
+	if (value == 0) then
+		value = nil
+	end
+	AutoBar.barLayoutDBList[barKey].fadeOutDelay = value
+	AutoBarChanged()
+end
+
+
 -- Cut the button at fromIndex out of fromBarKey
 -- 1 <= fromIndex <= # fromButtonKeyList
 -- Adjust the remaining buttons to fill the gap if any
@@ -2029,7 +2044,7 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 					passValue = passValue,
 					disabled = getBarDisabled,
 				},
-				fadeout = {
+				fadeOut = {
 					type = "toggle",
 					order = 12,
 					name = L["FadeOut"],
@@ -2039,7 +2054,7 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 					passValue = passValue,
 					disabled = getBarDisabled,
 				},
-				fadeoutCancelInCombat = {
+				fadeOutCancelInCombat = {
 					type = "toggle",
 					order = 13,
 					name = L["FadeOut Cancels in combat"],
@@ -2049,7 +2064,7 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 					passValue = passValue,
 					disabled = getBarDisabled,
 				},
-				fadeoutCancelOnShift = {
+				fadeOutCancelOnShift = {
 					type = "toggle",
 					order = 13,
 					name = L["FadeOut Cancels on Shift"],
@@ -2059,7 +2074,7 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 					passValue = passValue,
 					disabled = getBarDisabled,
 				},
-				fadeoutCancelOnCtrl = {
+				fadeOutCancelOnCtrl = {
 					type = "toggle",
 					order = 13,
 					name = L["FadeOut Cancels on Ctrl"],
@@ -2069,7 +2084,7 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 					passValue = passValue,
 					disabled = getBarDisabled,
 				},
-				fadeoutCancelOnAlt = {
+				fadeOutCancelOnAlt = {
 					type = "toggle",
 					order = 13,
 					name = L["FadeOut Cancels on Alt"],
@@ -2079,7 +2094,7 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 					passValue = passValue,
 					disabled = getBarDisabled,
 				},
-				fadeoutTime = {
+				fadeOutTime = {
 					type = "range",
 					order = 15,
 					name = L["FadeOut Time"],
@@ -2090,9 +2105,20 @@ function AutoBar:CreateBarOptions(barKey, existingOptions)
 					passValue = passValue,
 					disabled = getBarDisabled,
 				},
-				fadeoutAlpha = {
+				fadeOutDelay = {
 					type = "range",
 					order = 16,
+					name = L["FadeOut Delay"],
+					desc = L["FadeOut starts after this amount of time."],
+					min = 0, max = 10, step = 0.1, bigStep = 1,
+					get = getFadeOutDelay,
+					set = setFadeOutDelay,
+					passValue = passValue,
+					disabled = getBarDisabled,
+				},
+				fadeOutAlpha = {
+					type = "range",
+					order = 17,
 					name = L["FadeOut Alpha"],
 					desc = L["FadeOut stops at this Alpha level."],
 					min = 0, max = 1, step = 0.01, bigStep = 0.05,
