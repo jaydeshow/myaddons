@@ -64,6 +64,8 @@ if (GetLocale() == "esMX") then
 		["FadeOut is cancelled when holding down the Ctrl key."] = "Desvanecer se cancela al pulsar la tecla Ctrl.",
 		["FadeOut Cancels on Alt"] = "Cancelar Desvanecer al pulsar Alt",
 		["FadeOut is cancelled when holding down the Alt key."] = "Desvanecer se cancela al pulsar la tecla Alt.",
+		["FadeOut Delay"] = "FadeOut Delay",
+		["FadeOut starts after this amount of time."] = "FadeOut starts after this amount of time.",
 		["Frame Level"] = "Nivel del Marco",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "Ajusta el Nivel del Marco de la Barra y sus Botones Emergentes aparecerán encima o debajo de otros objectos del UI",
 		["General"] = "General",

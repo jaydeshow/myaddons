@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75664 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -792,11 +792,13 @@ function AutoBar.Class.Button.prototype:IsActive()
 			count = GetItemCount(tonumber(itemId))
 			if (count == 0) then
 				local sortedItems = AutoBarSearch.sorted:GetList(self.buttonName)
-				local noPopup = self.buttonDB.noPopup
-				local nItems = # sortedItems
-				if (nItems > 1 and not noPopup) then
-					count = 1
+				if (sortedItems) then
+					local noPopup = self.buttonDB.noPopup
+					local nItems = # sortedItems
+					if (nItems > 1 and not noPopup) then
+						count = 1
 --AutoBar:Print("AutoBar.Class.Button.prototype:IsActive nItems " .. tostring(nItems))
+					end
 				end
 				if (self.frame:GetAttribute("type2") == "spell") then
 					count = 1

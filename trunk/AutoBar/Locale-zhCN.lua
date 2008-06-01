@@ -27,8 +27,8 @@ if (GetLocale() == "zhCN") then
 		["Announce to Party"] = "通报到小队",
 		["Announce to Raid"] = "通报到团队",
 		["Announce to Say"] = "通报到 '说'",
-		["Bar Location"] = "Bar Location",
-		["Bar the Button is located on"] = "Bar the Button is located on",
+		["Bar Location"] = "放置的物品列",
+		["Bar the Button is located on"] = "按钮放置在物品列上",
 		["Bars"] = "物品列",
 		["Battlegrounds only"] = "只能在战场使用";
 		["Button Width"] = "按钮宽度";
@@ -41,7 +41,7 @@ if (GetLocale() == "zhCN") then
 		["Clamp Bars to screen"] = "限制物品列在萤幕内",
 		["Clamped Bars can not be positioned off screen"] = "限制物品列无法移出萤幕范围",
 		["Collapse Buttons"] = "缩减按钮",
-		["Collapse Buttons that have nothing in them."] = "当按钮位置无任何设置时，将不显示。",
+		["Collapse Buttons that have nothing in them."] = "不显示无任何物品设置的按钮。",
 		["Configuration for %s"] = "%s 的组态",
 		["Delete this Custom Button completely"] = "完全删除此自订按钮",
 		["Dialog"] = "对话框",
@@ -51,7 +51,7 @@ if (GetLocale() == "zhCN") then
 		["Enabled"] = "开启",
 		["Enable %s."] = "开启 %s",
 		["FadeOut"] = "渐隐",
-		["Fade out the Bar when not hovering over it."] = "当鼠标没通过上方时渐隐",
+		["Fade out the Bar when not hovering over it."] = "当鼠标移开物品列时渐隐",
 		["FadeOut Time"] = "渐隐时间",
 		["FadeOut takes this amount of time."] = "渐隐使用时间",
 		["FadeOut Alpha"] = "渐隐透明度",
@@ -64,6 +64,8 @@ if (GetLocale() == "zhCN") then
 		["FadeOut is cancelled when holding down the Ctrl key."] = "压住 Ctrl 键时取消渐隐效果",
 		["FadeOut Cancels on Alt"] = "Alt 取消渐隐",
 		["FadeOut is cancelled when holding down the Alt key."] = "压住 Alt 键时取消渐隐效果",
+		["FadeOut Delay"] = "渐隐延迟时间",
+		["FadeOut starts after this amount of time."] = "鼠标移开后开始渐隐的时间。",
 		["Frame Level"] = "框架等级",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "调整物品列和弹出按钮的框架等级，以免遮挡其他界面框架或被遮挡",
 		["General"] = "一般",
@@ -143,7 +145,7 @@ if (GetLocale() == "zhCN") then
 		["{circle}"] = "{圆形}",
 		["{diamond}"] = "{菱形}",
 		["{skull}"] = "{骷髅}",
-		["{square}"] = "{square}",
+		["{square}"] = "{方形}",  --need check
 		["{star}"] = "{星形}",
 		["{triangle}"] = "{三角}",
 
@@ -163,12 +165,12 @@ if (GetLocale() == "zhCN") then
 --		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f双击|r 打开图形配置窗口.\n|cffeda55fCtrl-单击|r 显示/隐藏按钮锁定状态. |cffeda55fShift-单击|r 显示/隐藏物品列锁定状态.",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
-		["Left-Click"] = "Left-Click",
-		["Right-Click"] = "Right-Click",
-		["Alt-Click"] = "Alt-Click",
-		["Ctrl-Click"] = "Ctrl-Click",
-		["Shift-Click"] = "Shift-Click",
-		["Ctrl-Shift-Click"] = "Ctrl-Shift-Click",
+		["Left-Click"] = "左键",
+		["Right-Click"] = "右键",
+		["Alt-Click"] = "Alt+点击",
+		["Ctrl-Click"] = "Ctrl+点击",
+		["Shift-Click"] = "Shift+点击",
+		["Ctrl-Shift-Click"] = "Ctrl+Shift+点击",
 		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade 需要按钮皮肤",
 		["Waterfall-1.0 is required to access the GUI"] = "要进入这个GUI界面你需要安装WaterFall 1.0",
 
@@ -189,7 +191,7 @@ if (GetLocale() == "zhCN") then
 		["Buttons"] = "按钮",
 		["AutoBarButtonHeader"] = "AutoBar 按钮名称",
 		["AutoBarCooldownHeader"] = "药水和石头冷却",
-		["AutoBarClassBarHeader"] = "Class bar",
+		["AutoBarClassBarHeader"] = "职业物品列",
 
 		["AutoBarButtonAura"] = "光环 / 守护",
 		["AutoBarButtonBandages"] = "绷带",
@@ -209,7 +211,7 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonCooldownStoneMana"] = "石头冷却：法力",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "石头冷却：活力",
 		["AutoBarButtonCrafting"] = "专业技能",
-		["AutoBarButtonDebuff"] = "Debuff",
+		["AutoBarButtonDebuff"] = "减益",
 		["AutoBarButtonElixirBattle"] = "作战药剂",
 		["AutoBarButtonElixirGuardian"] = "防护药剂",
 		["AutoBarButtonElixirBoth"] = "作战暨防护药剂",
@@ -388,7 +390,7 @@ if (GetLocale() == "zhCN") then
 		["Consumable.Buff.Shield"] = "盾牌增益";
 		["Consumable.Weapon Buff"] = "武器增益";
 
-		["Misc.Usable.BossItem"] = "Boss Items";
+		["Misc.Usable.BossItem"] = "首领物品";
 		["Misc.Usable.Permanent"] = "可用物品";
 		["Misc.Usable.Quest"] = "任务物品";	-- "Usable Quest Items"
 		["Misc.Usable.Replenished"] = "补充物品";
@@ -488,8 +490,8 @@ if (GetLocale() == "zhCN") then
 		["Spell.Class.Buff"] = "增益法术";
 		["Spell.Class.Pet"] = "战斗宠物";
 		["Spell.Crafting"] = "专业技能";
-		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
-		["Spell.Debuff.Single"] = "Debuff: Single";
+		["Spell.Debuff.Multiple"] = "减益：多重";
+		["Spell.Debuff.Single"] = "减益：单一";
 		["Spell.Fishing"] = "钓鱼";
 		["Spell.Portals"] = "传送门";
 		["Spell.Sting"] = "钉刺";

@@ -27,8 +27,8 @@ if (GetLocale() == "zhTW") then
 		["Announce to Party"] = "通報到小隊",
 		["Announce to Raid"] = "通報到團隊",
 		["Announce to Say"] = "通報到 '說'",
-		["Bar Location"] = "Bar Location",
-		["Bar the Button is located on"] = "Bar the Button is located on",
+		["Bar Location"] = "放置的物品列",
+		["Bar the Button is located on"] = "按鈕放置在物品列上",
 		["Bars"] = "物品列",
 		["Battlegrounds only"] = "僅限戰場",
 		["Button Width"] = "按鈕寬度",
@@ -51,19 +51,21 @@ if (GetLocale() == "zhTW") then
 		["Enabled"] = "啟用",
 		["Enable %s."] = "啟用 %s",
 		["FadeOut"] = "淡出",
-		["Fade out the Bar when not hovering over it."] = "當滑鼠移開時淡出物品列",
+		["Fade out the Bar when not hovering over it."] = "當滑鼠移開時淡出物品列。",
 		["FadeOut Time"] = "淡出時間",
-		["FadeOut takes this amount of time."] = "淡出使用時間",
+		["FadeOut takes this amount of time."] = "淡出使用時間。",
 		["FadeOut Alpha"] = "淡出透明度",
-		["FadeOut stops at this Alpha level."] = "淡出停止透明度",
+		["FadeOut stops at this Alpha level."] = "淡出後物品列的透明度。",
 		["FadeOut Cancels in combat"] = "戰鬥中取消淡出",
-		["FadeOut is cancelled when entering combat."] = "當進入戰鬥狀態後取消淡出",
+		["FadeOut is cancelled when entering combat."] = "進入戰鬥狀態後取消淡出。",
 		["FadeOut Cancels on Shift"] = "Shift 取消淡出",
-		["FadeOut is cancelled when holding down the Shift key."] = "壓住 Shift 鍵時取消淡出效果",
+		["FadeOut is cancelled when holding down the Shift key."] = "按住 Shift 鍵時取消淡出效果。",
 		["FadeOut Cancels on Ctrl"] = "Ctrl 取消淡出",
-		["FadeOut is cancelled when holding down the Ctrl key."] = "壓住 Ctrl 鍵時取消淡出效果",
+		["FadeOut is cancelled when holding down the Ctrl key."] = "按住 Ctrl 鍵時取消淡出效果。",
 		["FadeOut Cancels on Alt"] = "Alt 取消淡出",
-		["FadeOut is cancelled when holding down the Alt key."] = "壓住 Alt 鍵時取消淡出效果",
+		["FadeOut is cancelled when holding down the Alt key."] = "按住 Alt 鍵時取消淡出效果。",
+		["FadeOut Delay"] = "淡出延遲時間",
+		["FadeOut starts after this amount of time."] = "滑鼠移開後開始淡出的時間。",
 		["Frame Level"] = "框架層級",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "調整框架的層級，使框架可在其他插件的上方或下方。",
 		["General"] = "一般",
@@ -83,8 +85,8 @@ if (GetLocale() == "zhTW") then
 		["Non Combat Only"] = "限戰鬥之外",
 		["Not directly usable"] = "無法直接使用",
 		["Number of columns for %s"] = "%s 的欄位數目",
-		["Dropdown UI"] = "下拉 UI",
-		["Options GUI"] = "選項 GUI",
+		["Dropdown UI"] = "下拉設定選項",
+		["Options GUI"] = "圖形介面設定選項",
 		["Skin the Buttons"] = "按鈕外觀",
 		["Order"] = "順序",
 		["Change the order of %s in the Bar"] = "改變 %s 在物品列的順序",
@@ -163,12 +165,12 @@ if (GetLocale() == "zhTW") then
 --		["\n|cffeda55fDouble-Click|r to open config GUI.\n|cffeda55fCtrl-Click|r to toggle button lock. |cffeda55fShift-Click|r to toggle bar lock."] = "\n|cffeda55f雙擊: |r開啟設定介面。\n|cffeda55fCtrl-左擊: |r切換按鈕鎖定。\n|cffeda55fShift-左擊: |r切換物品列鎖定。",
 
 		["\n|cffffffff%s:|r %s"] = "\n|cffffffff%s:|r %s",
-		["Left-Click"] = "Left-Click",
-		["Right-Click"] = "Right-Click",
-		["Alt-Click"] = "Alt-Click",
-		["Ctrl-Click"] = "Ctrl-Click",
-		["Shift-Click"] = "Shift-Click",
-		["Ctrl-Shift-Click"] = "Ctrl-Shift-Click",
+		["Left-Click"] = "左鍵",
+		["Right-Click"] = "右鍵",
+		["Alt-Click"] = "Alt+點擊",
+		["Ctrl-Click"] = "Ctrl+點擊",
+		["Shift-Click"] = "Shift+點擊",
+		["Ctrl-Shift-Click"] = "Ctrl+Shift+點擊",
 		["ButtonFacade is required to Skin the Buttons"] = "ButtonFacade 需要按鈕外觀",
 		["Waterfall-1.0 is required to access the GUI"] = "圖形用戶介面設定需要 Waterfall-1.0",
 
@@ -189,7 +191,7 @@ if (GetLocale() == "zhTW") then
 		["Buttons"] = "按鈕",
 		["AutoBarButtonHeader"] = "AutoBar 按鈕名稱",
 		["AutoBarCooldownHeader"] = "藥水及石頭冷卻時間",
-		["AutoBarClassBarHeader"] = "Class bar",
+		["AutoBarClassBarHeader"] = "職業物品列",
 
 		["AutoBarButtonAura"] = "光環/守護",
 		["AutoBarButtonBandages"] = "繃帶",
@@ -209,7 +211,7 @@ if (GetLocale() == "zhTW") then
 		["AutoBarButtonCooldownStoneMana"] = "石頭冷卻: 法力",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "石頭冷卻: 活力",
 		["AutoBarButtonCrafting"] = "專業技能",
-		["AutoBarButtonDebuff"] = "Debuff",
+		["AutoBarButtonDebuff"] = "減益",
 		["AutoBarButtonElixirBattle"] = "作戰藥劑",
 		["AutoBarButtonElixirGuardian"] = "防護藥劑",
 		["AutoBarButtonElixirBoth"] = "作戰及防護藥劑",
@@ -388,7 +390,7 @@ if (GetLocale() == "zhTW") then
 		["Consumable.Buff.Shield"] = "增益: 盾牌";
 		["Consumable.Weapon Buff"] = "增益: 武器";
 
-		["Misc.Usable.BossItem"] = "Boss Items";
+		["Misc.Usable.BossItem"] = "首領物品";
 		["Misc.Usable.Permanent"] = "永久可用物品";
 		["Misc.Usable.Quest"] = "可用任務物品";
 		["Misc.Usable.Replenished"] = "可再補充物品";
@@ -488,8 +490,8 @@ if (GetLocale() == "zhTW") then
 		["Spell.Class.Buff"] = "職業增益法術";
 		["Spell.Class.Pet"] = "戰鬥寵物";
 		["Spell.Crafting"] = "專業技能";
-		["Spell.Debuff.Multiple"] = "Debuff: Multiple";
-		["Spell.Debuff.Single"] = "Debuff: Single";
+		["Spell.Debuff.Multiple"] = "減益: 多重";
+		["Spell.Debuff.Single"] = "減益: 單一";
 		["Spell.Fishing"] = "釣魚";
 		["Spell.Portals"] = "傳送門和傳送";
 		["Spell.Sting"] = "釘刺";
@@ -498,7 +500,7 @@ if (GetLocale() == "zhTW") then
 		["Spell.Totem.Air"] = "風之圖騰";
 		["Spell.Totem.Fire"] = "火焰圖騰";
 		["Spell.Totem.Water"] = "水之圖騰";
-		["Spell.Seal"] = "Seal";
+		["Spell.Seal"] = "聖印";
 		["Spell.Track"] = "追蹤技能";
 		["Spell.Trap"] = "陷阱";
 		["Misc.Hearth"] = "爐石";

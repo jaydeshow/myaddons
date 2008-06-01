@@ -64,6 +64,8 @@ if (GetLocale() == "frFR") then
 		["FadeOut is cancelled when holding down the Ctrl key."] = "FadeOut is cancelled when holding down the Ctrl key.",
 		["FadeOut Cancels on Alt"] = "FadeOut Cancels on Alt",
 		["FadeOut is cancelled when holding down the Alt key."] = "FadeOut is cancelled when holding down the Alt key.",
+		["FadeOut Delay"] = "FadeOut Delay",
+		["FadeOut starts after this amount of time."] = "FadeOut starts after this amount of time.",
 		["Frame Level"] = "Plan d'affichage",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "Ajuste le plan d'affichage de la barre et des boutons déployés afin qu'ils apparaissent sur ou sous les éléments de l'interface",
 		["General"] = "Général",
