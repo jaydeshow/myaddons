@@ -66,6 +66,7 @@ L:AddTranslations("enUS", function() return {
 	["(done)"] = true,
 
 -- QuestLogPatch.lua
+	[" ..."] = true,
 	["... more"] = true,
 
 -- SeriesFrame.lua

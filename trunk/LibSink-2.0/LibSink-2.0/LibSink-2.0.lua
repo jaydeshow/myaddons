@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Sink-2.0
-Revision: $Rev: 74716 $
+Revision: $Rev: 75975 $
 Author(s): Rabbit (rabbit.magtheridon@gmail.com), Antiarc (cheal@gmail.com)
 Website: http://rabbit.nihilum.eu
 Documentation: http://wiki.wowace.com/index.php/Sink-2.0
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -- Sink-2.0
 
 local SINK20 = "LibSink-2.0"
-local SINK20_MINOR = string.match("$Revision: 74716 $", "[0-9]+")
+local SINK20_MINOR = string.match("$Revision: 75975 $", "[0-9]+")
 
 local sink = LibStub:NewLibrary(SINK20, SINK20_MINOR)
 if not sink then return end
@@ -306,7 +306,7 @@ local customHandlersEnabled = {
 }
 
 -- Default to version 5 or higher now
-local msbtVersion = tonumber(GetAddOnMetadata("MikScrollingBattleText", "Version")) or 5
+local msbtVersion = tonumber(string.match(GetAddOnMetadata("MikScrollingBattleText", "Version") or "","^%d+\.%d+")) or 5
 local isMSBTFive = math.floor(msbtVersion) > 4 and true or nil
 if isMSBTFive then
 	customHandlersEnabled.MikSBT = function()

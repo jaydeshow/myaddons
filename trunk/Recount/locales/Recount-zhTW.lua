@@ -370,3 +370,6 @@ if not L then return end
 	L["Commas"] = "逗號"
 	L["Short"] = "簡短"
 	L["Hide When Not Collecting"]= "不統計時隱藏"
+	L["DoT"] = "傷害/跳"
+	L["HoT"] = "治療/跳"
+	

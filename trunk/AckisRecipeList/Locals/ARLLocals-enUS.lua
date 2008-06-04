@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-05-30 20:59:49 -0400 (Fri, 30 May 2008) $
-$Rev: 75592 $
+$Date: 2008-06-03 13:10:03 -0400 (Tue, 03 Jun 2008) $
+$Rev: 75915 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -36,6 +36,9 @@ L["FILTER_OPTIONS_LONG"] = "Allows you to customize which recipes are filtered."
 L["Reputation"] = true
 L["REP_OPTIONS"] = "Reputation Options"
 L["REP_OPTIONS_LONG"] = "Allows you to customize which reputations are included in the scan."
+L["Obtain"] = true
+L["OBTAIN_OPTIONS"] = "Obtain Options"
+L["OBTAIN_OPTIONS_LONG"] = "Allows you to customize which methods of obtaining a recipe are included in the scan."
 L["Sort"] = "Sorting"
 L["SORT_OPTIONS"] = "Sorting Options"
 L["SORT_OPTIONS_LONG"] = "Allows you to customize the way missing recipes are sorted and displayed."
@@ -52,15 +55,26 @@ L["CLOSEGUI_TOGGLE"] = "Close the ARL window when the crafting window is closed.
 -- Filtering Options
 L["Faction"] = true
 L["FACTION_TOGGLE"] = "Both horde and alliance faction recipes should be included in the scan."
-L["PVP_TOGGLE"] = "PVP obtained recipes should be included in the scan."
 L["Classes"] = true
 L["CLASS_TOGGLE"] = "Class specific recipes should be included in the scan."
 L["Specialities"] = true
 L["SPECIALITY_TOGGLE"] = "All trade-skill specialities should be included in the scan."
-L["RAID_TOGGLE"] = "Hard to get raid (ie: Molten Core, Serpent Shrine Cavern, etc.) recipes should be included in the scan."
 L["Skill"] = true
 L["SKILL_TOGGLE"] = "Include all recipes regardless of your current skill level."
+
+-- Obtain Filter Options
+L["BOEFilter"] = "Bind on Equip"
+L["BOE_TOGGLE"] = "BoE recipes should be included in the scan."
+L["BOPFilter"] = "Bind on Pickup"
+L["BOP_TOGGLE"] = "BoP recipes should be included in the scan."
+L["PVP_TOGGLE"] = "PVP obtained recipes should be included in the scan."
+L["RAID_TOGGLE"] = "Hard to get raid (ie: Molten Core, Serpent Shrine Cavern, etc.) recipes should be included in the scan."
 L["SEASONAL_TOGGLE"] = "Seasonal obtained recipes should be included in the scan."
+L["TRAINER_TOGGLE"] = true
+L["VENDOR_TOGGLE"] = true
+L["INSTANCE_TOGGLE"] = true
+L["QUEST_TOGGLE"] = true
+L["TRAINER_TOGGLE"] = true
 
 -- Sorting options
 L["Name"] = true

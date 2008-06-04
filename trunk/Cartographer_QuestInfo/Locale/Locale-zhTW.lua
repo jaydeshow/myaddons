@@ -66,7 +66,8 @@ L:AddTranslations("zhTW", function() return {
 	["(done)"] = "(完成)",
 
 -- QuestLogPatch.lua
-	["... more"] = "... 還有更多",
+	[" ..."] = " …",
+	["... more"] = "… 還有更多",
 
 -- SeriesFrame.lua
 	["Quest Series"] = "系列任務",

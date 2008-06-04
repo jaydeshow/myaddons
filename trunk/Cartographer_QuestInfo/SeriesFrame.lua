@@ -74,14 +74,13 @@ function CQI:UpdateSeriesContent()
 			r, g, b = self:GetQuestColor(q.level)
 		end
 
-		local link = string.format("[%d] |cff808080|Hquest:%s:%s|h[%s]|h|r", q.level, q.id, q.level, q.title)
-
 		cat:AddLine(
 			"text", q.title_full,
 			"textR", r, "textG", g, "textB", b,
-			"func", function(link)
+			"func", function()
 				if IsShiftKeyDown() then
 					if ChatFrameEditBox:IsVisible() then
+						local link = string.format("[%d] |cff808080|Hquest:%s:%s|h[%s]|h|r", q.level, q.id, q.level, q.title)
 						ChatFrameEditBox:Insert(link)
 					end
 				elseif q.start_npc and q.start_npc.loc then
@@ -90,8 +89,7 @@ function CQI:UpdateSeriesContent()
 						return
 					end
 				end
-			end,
-			"arg1", link)
+			end)
 
 		cat:AddLine(
 			"text", q.desc,

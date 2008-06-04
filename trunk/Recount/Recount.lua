@@ -10,7 +10,7 @@ local FilterSize	= 20
 local RampUp		= 5
 local RampDown		= 10
       
-Recount.Version = tonumber(string.sub("$Revision: 75628 $", 12, -3))
+Recount.Version = tonumber(string.sub("$Revision: 75926 $", 12, -3))
 
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
@@ -2049,7 +2049,7 @@ function Recount:OnEnable(first)
 	Recount.TimeTick() -- Elsia: Prevent that time data is not initialized when an event comes in before the first tick.
 	
 	if RecountThreat then RecountThreat:IsThreatActive() end
-	Recount:ScheduleTimer("GroupCheck",1)
+	Recount:ScheduleTimer("GroupCheck",5)
 
 	Recount:ScheduleRepeatingTimer("TimeTick",1)
 

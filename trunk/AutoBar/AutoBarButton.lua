@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75686 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75941 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1718,7 +1718,7 @@ function AutoBarButtonMount.prototype.SetBest(sorted, buttonDB, buttonData, sort
 		end
 		self.flyable = flyable
 		mountId = nil
-		if (self.flyable) then
+		if (flyable) then
 			mountId = buttonData.flyingMount
 		else
 			mountId = buttonData.groundMount
@@ -2142,6 +2142,7 @@ function AutoBarButtonStealth.prototype:Refresh(parentBar, buttonDB)
 			macroTexture = spellIconList["Stealth"]
 			self.macroActive = true
 		end
+--[[
 	elseif (AutoBar.CLASS == "PRIEST") then
 		if (GetSpellInfo(spellNameList["Shadowform"])) then
 			concatList[index] = spellNameList["Shadowform"]
@@ -2149,6 +2150,7 @@ function AutoBarButtonStealth.prototype:Refresh(parentBar, buttonDB)
 			macroTexture = spellIconList["Shadowform"]
 			self.macroActive = true
 		end
+--]]
 	elseif (AutoBar.CLASS == "MAGE") then
 		if (GetSpellInfo(spellNameList["Invisibility"])) then
 			concatList[index] = spellNameList["Invisibility"]
@@ -2186,6 +2188,19 @@ local totemEarth = 2
 local totemFire = 1
 local totemWater = 3
 
+local destroyMacro = {
+	[totemFire] = "/run DestroyTotem(1)",
+	[totemEarth] = "/run DestroyTotem(2)",
+	[totemWater] = "/run DestroyTotem(3)",
+	[totemAir] = "/run DestroyTotem(4)",
+}
+local function DestroyTotem(frame, totemType)
+	frame:SetAttribute("*type2", "macro")
+	frame:SetAttribute("*macrotext2", destroyMacro[totemType])
+	frame:SetAttribute("type2", "macro")
+	frame:SetAttribute("macrotext2", destroyMacro[totemType])
+end
+
 local AutoBarButtonTotemAir = AceOO.Class(AutoBarButton)
 AutoBar.Class["AutoBarButtonTotemAir"] = AutoBarButtonTotemAir
 
@@ -2193,6 +2208,12 @@ function AutoBarButtonTotemAir.prototype:init(parentBar, buttonDB)
 	AutoBarButtonTotemAir.super.prototype.init(self, parentBar, buttonDB)
 
 	self:AddCategory("Spell.Totem.Air")
+end
+
+function AutoBarButtonTotemAir.prototype:SetupAttributes(button, bag, slot, spell, macroId, itemId, itemData)
+	AutoBarButtonTotemAir.super.prototype.SetupAttributes(self, button, bag, slot, spell, macroId, itemId, itemData)
+
+	DestroyTotem(self.frame, totemAir)
 end
 
 -- Set cooldown based on the deployed totem
@@ -2229,6 +2250,12 @@ function AutoBarButtonTotemEarth.prototype:init(parentBar, buttonDB)
 	self:AddCategory("Spell.Totem.Earth")
 end
 
+function AutoBarButtonTotemEarth.prototype:SetupAttributes(button, bag, slot, spell, macroId, itemId, itemData)
+	AutoBarButtonTotemEarth.super.prototype.SetupAttributes(self, button, bag, slot, spell, macroId, itemId, itemData)
+
+	DestroyTotem(self.frame, totemEarth)
+end
+
 -- Set cooldown based on the deployed totem
 function AutoBarButtonTotemEarth.prototype:UpdateCooldown()
 	local itemType = self.frame:GetAttribute("*type1")
@@ -2263,6 +2290,12 @@ function AutoBarButtonTotemFire.prototype:init(parentBar, buttonDB)
 	self:AddCategory("Spell.Totem.Fire")
 end
 
+function AutoBarButtonTotemFire.prototype:SetupAttributes(button, bag, slot, spell, macroId, itemId, itemData)
+	AutoBarButtonTotemFire.super.prototype.SetupAttributes(self, button, bag, slot, spell, macroId, itemId, itemData)
+
+	DestroyTotem(self.frame, totemFire)
+end
+
 -- Set cooldown based on the deployed totem
 function AutoBarButtonTotemFire.prototype:UpdateCooldown()
 	local itemType = self.frame:GetAttribute("*type1")
@@ -2295,6 +2328,12 @@ function AutoBarButtonTotemWater.prototype:init(parentBar, buttonDB)
 	AutoBarButtonTotemWater.super.prototype.init(self, parentBar, buttonDB)
 
 	self:AddCategory("Spell.Totem.Water")
+end
+
+function AutoBarButtonTotemWater.prototype:SetupAttributes(button, bag, slot, spell, macroId, itemId, itemData)
+	AutoBarButtonTotemWater.super.prototype.SetupAttributes(self, button, bag, slot, spell, macroId, itemId, itemData)
+
+	DestroyTotem(self.frame, totemWater)
 end
 
 -- Set cooldown based on the deployed totem

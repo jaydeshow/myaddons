@@ -2,12 +2,12 @@
 
 	<Button name="CQI_StartButton" parent="QuestLogDetailScrollChildFrame" hidden="true">
 		<Size>
-			<AbsDimension x="18" y="18"/>
+			<AbsDimension x="16" y="16"/>
 		</Size>
 		<Anchors>
 			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollChildFrame" relativePoint="TOPRIGHT">
 				<Offset>
-					<AbsDimension x="-50" y="-5"/>
+					<AbsDimension x="-35" y="-5"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
@@ -22,7 +22,7 @@
 		</Layers>
 		<NormalTexture>
 			<Size>
-				<AbsDimension x="20" y="20"/>
+				<AbsDimension x="16" y="16"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>
@@ -30,7 +30,7 @@
 		</NormalTexture>
 		<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestTitleHighlight">
 			<Size>
-				<AbsDimension x="20" y="20"/>
+				<AbsDimension x="16" y="16"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>
@@ -51,12 +51,12 @@
 
 	<Button name="CQI_EndButton" parent="QuestLogDetailScrollChildFrame" hidden="true">
 		<Size>
-			<AbsDimension x="18" y="18"/>
+			<AbsDimension x="16" y="16"/>
 		</Size>
 		<Anchors>
 			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollChildFrame" relativePoint="TOPRIGHT">
 				<Offset>
-					<AbsDimension x="-30" y="-5"/>
+					<AbsDimension x="-19" y="-5"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
@@ -71,7 +71,7 @@
 		</Layers>
 		<NormalTexture>
 			<Size>
-				<AbsDimension x="20" y="20"/>
+				<AbsDimension x="16" y="16"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>
@@ -79,7 +79,7 @@
 		</NormalTexture>
 		<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestTitleHighlight">
 			<Size>
-				<AbsDimension x="20" y="20"/>
+				<AbsDimension x="16" y="16"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>
@@ -100,12 +100,12 @@
 
 	<Button name="CQI_InfoButton" parent="QuestLogDetailScrollChildFrame" hidden="true">
 		<Size>
-			<AbsDimension x="18" y="18"/>
+			<AbsDimension x="16" y="16"/>
 		</Size>
 		<Anchors>
 			<Anchor point="TOPRIGHT" relativeTo="QuestLogDetailScrollChildFrame" relativePoint="TOPRIGHT">
 				<Offset>
-					<AbsDimension x="-10" y="-5"/>
+					<AbsDimension x="-3" y="-5"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
@@ -120,7 +120,7 @@
 		</Layers>
 		<NormalTexture>
 			<Size>
-				<AbsDimension x="20" y="20"/>
+				<AbsDimension x="16" y="16"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>
@@ -128,7 +128,7 @@
 		</NormalTexture>
 		<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestTitleHighlight">
 			<Size>
-				<AbsDimension x="20" y="20"/>
+				<AbsDimension x="16" y="16"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>
@@ -152,12 +152,12 @@
 			<Layer level="BACKGROUND">
 				<Texture file="Interface\GossipFrame\PetitionGossipIcon">
 					<Size>
-						<AbsDimension x="18" y="18"/>
+						<AbsDimension x="16" y="16"/>
 					</Size>
 					<Anchors>
 						<Anchor point="RIGHT">
 							<Offset>
-								<AbsDimension x="-20" y="0"/>
+								<AbsDimension x="-20" y="-1"/>
 							</Offset>
 						</Anchor>
 					</Anchors>

@@ -1,6 +1,6 @@
 --[[
 Name: LibKeyBound-1.0
-Revision: $Rev: 75370 $
+Revision: $Rev: 75816 $
 Author(s): Gello, Maul, Toadkiller, Tuller
 Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 Documentation: http://www.wowace.com/wiki/LibKeyBound-1.0
@@ -10,7 +10,7 @@ Dependencies: CallbackHandler-1.0
 --]]
 
 local MAJOR = "LibKeyBound-1.0"
-local MINOR = "$Revision: 75370 $"
+local MINOR = "$Revision: 75816 $"
 
 --[[
 	LibKeyBound-1.0
@@ -37,7 +37,7 @@ local _G = _G
 LibKeyBound.events = LibKeyBound.events or _G.LibStub("CallbackHandler-1.0"):New(LibKeyBound)
 
 local L = LibKeyBoundLocale10
-LibKeyBound.Binder = {}
+LibKeyBound.Binder = LibKeyBound.Binder or {}
 
 -- #NODOC
 function LibKeyBound:Initialize()
@@ -597,15 +597,10 @@ function LibKeyBound.Binder:GetBindings(button)
 	return keys
 end
 
-
-if (LibKeyBound.EventButton) then
-	return
-end
-
-local EventButton = CreateFrame("Frame")
-LibKeyBound.EventButton = EventButton
-
+LibKeyBound.EventButton = LibKeyBound.EventButton or CreateFrame("Frame")
 do
+	local EventButton = LibKeyBound.EventButton
+	EventButton:UnregisterAllEvents()
 	EventButton:SetScript("OnEvent", function(self, event, addon)
 		if (event == "PLAYER_REGEN_DISABLED") then
 			LibKeyBound:PLAYER_REGEN_DISABLED()
@@ -616,7 +611,12 @@ do
 			EventButton:UnregisterEvent("PLAYER_LOGIN")
 		end
 	end)
-	EventButton:RegisterEvent("PLAYER_LOGIN")
+	
+	if IsLoggedIn() and not LibKeyBound.initialized then
+		LibKeyBound:Initialize()
+	elseif not LibKeyBound.initialized then
+		EventButton:RegisterEvent("PLAYER_LOGIN")
+	end
 	EventButton:RegisterEvent("PLAYER_REGEN_ENABLED")
 	EventButton:RegisterEvent("PLAYER_REGEN_DISABLED")
 end

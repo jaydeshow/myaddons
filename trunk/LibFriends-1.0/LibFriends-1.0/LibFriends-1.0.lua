@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibFriends-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 71373 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 75755 $"):match("%d+")) or 0
 
 local lib, oldMinor = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 if not lib then return end
@@ -195,7 +195,7 @@ function lib:GetClassHexColor(name)
 	local class = self:GetEnglishClass(name)
 	if class then
 		local c = RAID_CLASS_COLORS[class:upper()]
-		return ("%02X%02X%02X"):format(c.r, c.g, c.b)
+		return ("%02X%02X%02X"):format(c.r*255, c.g*255, c.b*255)
 	else
 		return "cccccc"
 	end

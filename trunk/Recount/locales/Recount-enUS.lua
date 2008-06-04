@@ -370,4 +370,6 @@ if not L then return end
 	L["Commas"]=true
 	L["Short"]=true
 	L["Hide When Not Collecting"]=true
+	L["DoT"]=true
+	L["HoT"]=true
 	

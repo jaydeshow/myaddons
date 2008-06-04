@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75439 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75931 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-05-29 00:16:14 -0400 (Thu, 29 May 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-06-03 16:31:31 -0400 (Tue, 03 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -900,7 +900,7 @@ function AutoBar:InitializeDefaults()
 		end
 	end
 
-	if (AutoBar.CLASS == "DRUID" or AutoBar.CLASS == "ROGUE" or AutoBar.CLASS == "PRIEST" or AutoBar.CLASS == "MAGE") then
+	if (AutoBar.CLASS == "DRUID" or AutoBar.CLASS == "ROGUE" or AutoBar.CLASS == "MAGE") then
 		if (not AutoBar.db.class.buttonList["AutoBarButtonStealth"]) then
 			AutoBar.db.class.buttonList["AutoBarButtonStealth"] = {
 				buttonKey = "AutoBarButtonStealth",
@@ -948,7 +948,7 @@ function AutoBar:InitializeDefaults()
 		end
 	end
 
-	if (AutoBar.CLASS ~= "ROGUE" and AutoBar.CLASS ~= "HUNTER" and AutoBar.CLASS ~= "SHAMAN") then
+	if (AutoBar.CLASS ~= "ROGUE" and AutoBar.CLASS ~= "HUNTER") then
 		if (not AutoBar.db.class.buttonList["AutoBarButtonClassBuff"]) then
 			AutoBar.db.class.buttonList["AutoBarButtonClassBuff"] = {
 				buttonKey = "AutoBarButtonClassBuff",
@@ -1204,6 +1204,10 @@ function AutoBar:RefreshBarDBLists()
 		barButtonsDBList[barKey] = AutoBar:GetSharedBarDB(barKey, "sharedButtons")
 		barLayoutDBList[barKey] = AutoBar:GetSharedBarDB(barKey, "sharedLayout")
 		barPositionDBList[barKey] = AutoBar:GetSharedBarDB(barKey, "sharedLocation")
+	end
+
+	for barKey, bar in pairs(AutoBar.barList) do
+		bar:UpdateShared()
 	end
 
 	local barValidateList = AutoBar.barValidateList

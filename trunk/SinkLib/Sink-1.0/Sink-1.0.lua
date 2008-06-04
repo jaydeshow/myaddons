@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Sink-1.0
-Revision: $Rev: 66870 $
+Revision: $Rev: 75977 $
 Author(s): Rabbit (rabbit.magtheridon@gmail.com
 Website: http://rabbit.nihilum.eu
 Documentation: http://wiki.wowace.com/index.php/Sink-1.0
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -- Sink-1.0
 
 local SINK10 = "Sink-1.0"
-local SINK10_MINOR = string.match("$Revision: 66870 $", "[0-9]+")
+local SINK10_MINOR = string.match("$Revision: 75977 $", "[0-9]+")
 
 assert(AceLibrary, SINK10 .. " requires AceLibrary.")
 if not AceLibrary:IsNewVersion(SINK10, SINK10_MINOR) then return end
@@ -260,8 +260,8 @@ local customHandlersEnabled = {
 	end,
 }
 
-local msbtVersion = tonumber(GetAddOnMetadata("MikScrollingBattleText", "Version")) or 0
-local isMSBTFive = math.floor(msbtVersion) == 5 and true or nil
+local msbtVersion = tonumber(string.match(GetAddOnMetadata("MikScrollingBattleText", "Version") or "","^%d+\.%d+")) or 5
+local isMSBTFive = math.floor(msbtVersion) > 4 and true or nil
 if isMSBTFive then
 	customHandlersEnabled.MikSBT = function()
 		return _G.MikSBT and not _G.MikSBT.IsModDisabled()

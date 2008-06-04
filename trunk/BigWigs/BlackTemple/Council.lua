@@ -170,9 +170,9 @@ L:RegisterTranslations("frFR", function() return {
 } end )
 
 L:RegisterTranslations("koKR", function() return {
-	engage_trigger1 = "날 시험하겠다고?",  --check
-	engage_trigger2 = "수준 낮은 언어를 쓰는 족속이로군. 반달!",  --check
-	engage_trigger3 = "이깐놈들이나 상대해야 하다니..",  --check
+	engage_trigger1 = "날 시험하겠다고?",
+	engage_trigger2 = "수준 낮은 언어를 쓰는 족속이로군. 반달!",
+	engage_trigger3 = "이깟 놈들이나 상대해야 하다니...",
 	engage_trigger4 = "꺼져! 안그러면 죽는다!",
 
 	vanish = "소멸",
@@ -377,7 +377,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = {malande, gathios, zerevor, veras}
 mod.toggleoptions = {"immune", "res", "shield", -1, "vanish", "circle", -1, "poison", "icon", -1, "blizzard", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 74408 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75786 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

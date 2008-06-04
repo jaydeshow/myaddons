@@ -1,15 +1,15 @@
---[[
+﻿--[[
 ****************************************************************************************
 
 ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-05-17 05:38:07 -0400 (Sat, 17 May 2008) $
-$Rev: 74136 $
+$Date: 2008-06-02 12:44:45 -0400 (Mon, 02 Jun 2008) $
+$Rev: 75818 $
 
 Original translated by: Pettigrow
-Currently maintaince by: Pettigrow
+Currently maintaince by: Pettigrow & Trasher
 Thank you all translators! (From Ackis)
 
 ****************************************************************************************
@@ -18,15 +18,28 @@ Thank you all translators! (From Ackis)
 local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "frFR", false);
 if not L then return end
 
+-- Addon Info
+--L["Version"] = "Version: "
+L["Author"] = "Ackis sur Illidan (US) Horde"
+--L["Wiki"] = "Wiki: "
+L["Website"] = "Site web: "
+--L["Credits"] = "Credits: "
+L["Locals"] = "Compatible avec les langues: "
+
 -- Options Categories
 L["Display"] = "Affichage"
 L["DISPLAY_OPTIONS"] = "Options d'affichage"
+--L["DISPLAY_OPTIONS_LONG"] = "Allows you to customize how the GUI behaves."
 L["Filter"] = "Filtrage"
 L["FILTER_OPTIONS"] = "Options de filtrage"
+--L["FILTER_OPTIONS_LONG"] = "Allows you to customize which recipes are filtered."
 L["Reputation"] = "Réputation"
 L["REP_OPTIONS"] = "Options des réputations"
+--L["REP_OPTIONS_LONG"] = "Allows you to customize which reputations are included in the scan."
 L["Sort"] = "Trier par"
 L["SORT_OPTIONS"] = "Options de tri"
+--L["SORT_OPTIONS_LONG"] = "Allows you to customize the way missing recipes are sorted and displayed."
+--L["Profile"] = true
 
 -- Display Options
 L["Use GUI"] = "Utiliser le GUI"
@@ -39,16 +52,15 @@ L["CLOSEGUI_TOGGLE"] = "Ferme la fenêtre de ARL quand la fenêtre de métier es
 -- Toggle Options
 L["Faction"] = "Faction"
 L["FACTION_TOGGLE"] = "Intègre ou non les recettes des deux factions dans l'analyse."
---L["PVP"] = true
 L["PVP_TOGGLE"] = "Intègre ou non les recettes obtenues en JcJ dans l'analyse."
-L["Classes"] = "Classes"
+--L["Classes"] = true
 L["CLASS_TOGGLE"] = "Intègre ou non les recettes spécifiques à certaines classes dans l'analyse."
 L["Specialities"] = "Spécialités"
 L["SPECIALITY_TOGGLE"] = "Intègre ou non toutes les spécialisations des métiers dans l'analyse."
---L["Raid"] = true
 L["RAID_TOGGLE"] = "Intègre ou non les recettes de raid difficiles à obtenir (Coeur du Magma, Caverne du sanctuaire du Serpent, etc.) dans l'analyse."
 L["Skill"] = "Compétence"
 L["SKILL_TOGGLE"] = "Intègre ou non toutes les recettes quelque soit votre niveau de compétence actuel."
+--L["SEASONAL_TOGGLE"] = "Seasonal obtained recipes should be included in the scan."
 
 -- Sorting options
 L["Name"] = "Nom"
@@ -71,7 +83,43 @@ L["OpenTradeSkillWindow"] = "Veuillez ouvrir la fenêtre de métier à analyser.
 L["Close"] = "Fermer"
 L["ScanButton"] = "Analyser"
 L["Scan Skills"] = "Analyser"
-L["Scan Skills Long"] = "Analyse les recettes manquantes via ARL"
+L["FILTER_OPEN"] = "Filtre >>>"
+L["FILTER_CLOSE"] = "<<< Filtre"
+L["Reset"] = "Réinitialiser"
+L["Sort"] = "Trier"
+--L["World Drop"] = true
+--L["Mob Drop"] = true
+L["Quest"] = "Quête"
+--L["Reputation"] = true
+--L["Instance"] = true
+--L["BoPMenu"] = "BoP"
+--L["Horde"] = true 
+--L["Alliance"] = true
+L["Known"] = "Connu"
+L["Unknown"] = "Inconnu"
+
+-- Tooltip Text
+--L["Scan Skills Long"] = "Scan for missing recipes using Ackis Recipe List."
+--L["Close Window"] = "Close the Ackis Recipe List Window."
+--L["Expand All"] = "Expands all recipes."
+--L["Collapse All"] = "Collapses all recipes."
+--L["FILTER_OPEN_TT"] = "Open filter option panel."
+--L["FILTER_CLOSE_TT"] = "Close filter option panel."
+--L["RESET_TT"] = "Reset the search string."
+--L["SORT_TT"] = "Change the sort order for the list."
+--L["VENDOR_TT"] = "Check to include Vendor recipes in the list."
+--L["TRAINER_TT"]= "Check to include Trained recipes in the list."
+--L["WORLD_TT"] = "Check to include World Drop recipes in the list."
+--L["MOB_TT"] = "Check to include specific Mob Drop recipes in the list."
+--L["QUEST_TT"] = "Check to include Quest reward recipes in the list."
+--L["SEASON_TT"] = "Check to includes Seasonal recipes in the list."
+--L["REP_TT"] = "Check to include Reputation reward recipes in the list."
+--L["INSTANCE_TT"] = "Check in include recipes only found in instances in the list."
+--L["BOP_TT"] = "Check to only view Bind on Pickup recipes in the list."
+--L["HORDE_TT"] = "Check to include Horde only recipes in the list."
+--L["ALLIANCE_TT"] = "Check to include Alliance only recipes in the list."
+--L["KNOWN_TT"] = "Check to include known recipes in the list."
+--L["UNKNOWN_TT"] = "Check to include unknwon recipes in the list."
 
 -- Recipe Database
 L["Trainer"] = "Entraîneur"
@@ -88,19 +136,21 @@ L["Artisan"] = "Artisan"
 L["Master"] = "Maître"
 
 -- Common ways to obtain recipes
-L["UZD"] = "Butin de zone inhabituel : "
+L["UZD"] = "Butin de zone inhabituel: "
 L["CWD"] = "Butin mondial commun"
 L["UWD"] = "Butin mondial inhabituel"
 L["RWD"] = "Butin mondial rare"
 L["EWD"] = "Butin mondial épique"
-L["BoE"] = "Butin LqE : "
-L["BoP"] = "Butin LqR : "
+L["BoE"] = "Butin LqE: "
+L["BoP"] = "Butin LqR: "
+L["QuestReward"] = "Récompense de quête : "
+
+-- Common quests/drops
 L["DMCACHE"] = "Cache de Noué Dédodevie"
 L["Gordok Ogre Suit"] = "Tenue d'ogre gordok"
 L["Gordok Ogre Suit Obt"] = "La tenue d'ogre gordok"
 L["Spectral Essence Obt"] = "Récompense de quête : Kirtonos le Hérault (vous permet de voir le vendeur Magnus Givréveil près de Scholomance)"
 L["TrueBelieverQuest"] = "Les vrais croyants - Rare"
-L["QuestReward"] = "Récompense de quête : "
 
 -- Raid Drop Obtain Info
 L["ADNaxx"] = "S'apprend grâce au Maître-artisan Omarion dans l'aile des chevaliers de la mort de Naxxramas."
@@ -114,11 +164,12 @@ L["SunwellBoP"] = "Butin de raid LqR : N'importe quel monstre et boss au Puits 
 L["SunwellBoE"] = "Butin de raid LqE : N'importe quel monstre et boss au Puits de soleil."
 L["BT/HYJALBoE"] = "Butin de raid LqR : N'importe quel monstre et boss à Hyjal/TN."
 L["ZA"] = "Butin de raid LqR : N'importe quel boss à ZA."
-L["Unknown"] = "Butin inconnu : le moyen d'obtenir cette recette est inconnu."
+L["Unknown"] = "Butin inconnu : le moyen d'obtenir cette recette est inconnu. Pour contribuer au développement de Ackis Recipe, rendez-vous sur www.wowace.com/forums, merci."
 
 -- Faction info
 L["WintersVeil"] = "Saisonnier :Fête du Voile d'hiver"
 L["Lunar Festival"] = "Saisonnier : Fête lunaire"
+--L["Darkmoon Faire"] = true
 L["Seasonal"] = "Saisonnier"
 
 -- Alchemy Obtain Information
@@ -148,6 +199,7 @@ L["Major Holy Protection Potion Obt"] = "Butin de monstre LqR : Porte-flamme ab
 L["Major Shadow Protection Potion Obt"] = "Butin de monstre LqR : Démoniste du Conseil des ombres (Vallée d'Ombrelune)"
 L["Mighty Rage Potion Obt"] = "Butin de monstre : Pourfendeur Rochenoire (Steppes ardentes)"
 L["Wildvine Potion Obt"] = "Butin de monstre : Trolls de la Vallée de Strangleronce et des Hinterlands"
+
 -- Quest
 L["Discolored Healing Potion Obt"] = "Coeurs sauvages"
 L["Elixir of Brute Force Obt"] = "Dadanga a faim (récompense aléatoire)"
@@ -224,8 +276,10 @@ L["Fishing Daily"] = "Récompense de quête : récompense aléatoire de la quê
 L["Cooking Daily"] = "Récompense de quête : récompense aléatoire de la quête journalière en cuisine"
 L["Goldthorn Tea Obt"] = "Parlez à Henry Stern aux Souilles de Tranchebauge"
 L["Stewed Trout Obt"] = "Entraîneur : Kylene"
+
 -- Mob Drop
 L["Runn Tum Tuber Surprise Obt"] = "Pusillin"
+
 -- Quest
 L["Barbecued Buzzard Wing Obt"] = "Ailes de busard grillées"
 L["Beer Basted Boar Ribs Obt"] = "Côtes de sanglier à la bière"
@@ -431,6 +485,7 @@ L["Wizardweave Turban Obt"] = "Magicien noir"
 -- Beast Training Obtain Information
 L["Rare"] = "Rare"
 L["Elite"] = "Élite"
+
 -- Beasts which have training skills
 L["Agam'ar"] = "Agam'ar"
 L["Aku'mai Fisher"] = "Pêcheur Aku'mai"

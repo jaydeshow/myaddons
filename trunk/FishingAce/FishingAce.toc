@@ -1,6 +1,6 @@
 ## Interface: 20400
 ## Title: Fishing Ace! |cff7fff7f -Ace2-|r
-## Version: 0.4.2h
+## Version: 0.4.2i
 ## Notes: Simple right click casting.
 ## Title-zhCN: |cff7fff7f-Ace2-|r Fishing Ace!
 ## Notes-zhCN: 右键钓鱼
@@ -13,13 +13,6 @@
 ## OptionalDeps: Ace2
 ## SavedVariablesPerCharacter: FishingBuddyDBPC
 
-embeds.xml
-
-Locale-enUS.lua
-Locale-zhCN.lua
-Locale-koKR.lua
-Locale-deDE.lua
-Locale-frFR.lua
-Locale-zhTW.lua
-
+Embeds.xml
+Locales\Locales.xml
 FishingAce.lua
