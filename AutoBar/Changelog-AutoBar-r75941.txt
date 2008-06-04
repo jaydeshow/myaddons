@@ -1,4 +1,68 @@
 ------------------------------------------------------------------------
+r75941 | toadkiller | 2008-06-03 18:32:24 -0400 (Tue, 03 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Fix initial condition and update issues with flyable
+------------------------------------------------------------------------
+r75931 | toadkiller | 2008-06-03 16:31:31 -0400 (Tue, 03 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+
+AutoBar : 
+-- Fixed flaw in the shared layout settings when switching from class back to account
+-- Fixed update bug when switching shared for Bar Position
+
+------------------------------------------------------------------------
+r75833 | toadkiller | 2008-06-02 17:11:34 -0400 (Mon, 02 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+
+AutoBar : 
+-- Class Buff: Shaman Water Shield, Earth Shield, Lightning Shield
+
+------------------------------------------------------------------------
+r75826 | toadkiller | 2008-06-02 13:57:40 -0400 (Mon, 02 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-esMX.lua
+
+AutoBar : 
+-- Just copy the esES stuff over
+------------------------------------------------------------------------
+r75817 | toadkiller | 2008-06-02 12:37:21 -0400 (Mon, 02 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+
+AutoBar : 
+-- Add all conjured foods to Pet Food including biscuits.
+
+------------------------------------------------------------------------
+r75766 | toadkiller | 2008-06-01 20:24:22 -0400 (Sun, 01 Jun 2008) | 6 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Bulletproof LibStickyFrame callbacks
+-- Simplify FadeOut code
+-- Right click totem button destroys that totem type.
+-- Remove AutoBarButtonStealth from Priests.  They do not have stealth.
+
+------------------------------------------------------------------------
+r75714 | StiviS | 2008-06-01 05:06:34 -0400 (Sun, 01 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-esES.lua
+
+AutoBar :
+- esES updated
+------------------------------------------------------------------------
 r75708 | scorpion | 2008-06-01 04:00:15 -0400 (Sun, 01 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/AutoBar/Locale-zhCN.lua
@@ -1132,71 +1196,4 @@ Changed paths:
 AutoBar:
 - Update zhCN localization.
 - Update zhTW localization.
-------------------------------------------------------------------------
-r72480 | toadkiller | 2008-05-02 19:56:08 -0400 (Fri, 02 May 2008) | 6 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- 2.04.01.49 beta ()
--- Add warning for unknown PT3.1 sets
--- Add tooltip if right clicking will cast a spell
--- Trinket2 now equips correctly.  Still has cosmetic issues.
-
-------------------------------------------------------------------------
-r72427 | toadkiller | 2008-05-02 11:20:09 -0400 (Fri, 02 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- Remove spellEyeOfKilrogg, spellSummonImp from spells with reagents list
-
-------------------------------------------------------------------------
-r72331 | toadkiller | 2008-05-01 12:15:03 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Cancel Fade while hovering over popups as well.
-
-------------------------------------------------------------------------
-r72330 | StiviS | 2008-05-01 12:14:51 -0400 (Thu, 01 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r72326 | toadkiller | 2008-05-01 11:20:37 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarOptions.lua
-
-AutoBar : 
--- Do not allow empty string for custom names, nor double quote or period
-
-------------------------------------------------------------------------
-r72282 | toadkiller | 2008-05-01 01:13:38 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
--- Clean up icon texture code.  This should solve the empty button issue in at least some cases.
-
 ------------------------------------------------------------------------

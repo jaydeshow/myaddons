@@ -211,7 +211,7 @@ function CQI:GetQuestText(uid, level)
 end
 
 ----
--- Get Quest short summary, this is faster than GetQuest
+-- Get short summary of quest, this is faster than GetQuest
 -- @param uid - the quest id
 -- @return level, level_req, start_npc_id, end_npc_id, sharable, side, data
 ----
@@ -236,6 +236,7 @@ end
 --			name = "<npc_name>",
 --			level_min = <level_min>,
 --			level_max = <level_max>,
+--			side = <npc_side>, -- A, H, B
 --			classify = <0|1|2|3>, -- 0 = normal, 1 = elite, 2 = rare elite, 3 = boss
 --			loc = {
 --				["<zone_name>"] = { { x=<x>, y=<y>}, ... },
@@ -247,9 +248,10 @@ function CQI:GetNPC(id, zone_filter)
 	local data = QuestInfo_NPC[id]
 	if not data then return end
 
-	local _, _, level_min, level_max, classify, loc = data:find("^(%d+)`(%d+)`(%d+)(|.*)$")
+	local _, _, side, level_min, level_max, classify, loc = data:find("^(.)`(%d+)`(%d+)`(%d+)(|.*)$")
 	local out = {}
 	out.id = id
+	out.side = side
 	out.name = QuestInfo_Name[id] or "????"
 	out.level_min = level_min ~= "0" and tonumber(level_min)
 	out.level_max = level_max ~= "0" and tonumber(level_max)
@@ -319,7 +321,8 @@ function CQI:GetQuest(uid, ignore_obj)
 
 	if data.o then
 		out.objs = {}
-		for i, o in pairs(data.o) do
+		for i, o in data.o:gmatch("(%d)=([^|]+)") do
+			i = tonumber(i)
 			local obj = {}
 			obj.title = q_objs and q_objs[i] or "????"
 			for npc_id, npc_zone, npc_x, npc_y in string.gmatch(o, "(%-?%d+)@?(%d*):?(%d*),?(%d*)") do
@@ -377,11 +380,19 @@ end
 
 function CQI:PurgeHostileQuests()
 	local hostile = (UnitFactionGroup("player") == "Alliance") and "H" or "A"
+	
 	for uid, data in pairs(QuestInfo_Quest) do
 		if data.i:sub(1, 1) == hostile then
 			QuestInfo_Quest[uid] = nil
 		end
 	end
+	
+	for id, data in pairs(QuestInfo_NPC) do
+		if data:sub(1, 1) == hostile then
+			QuestInfo_NPC[id] = nil
+			QuestInfo_Name[id] = nil
+		end
+	end	
 end
 
 -------------------------------------------------------------------

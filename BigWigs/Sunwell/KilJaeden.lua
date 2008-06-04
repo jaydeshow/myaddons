@@ -11,6 +11,7 @@ local started = nil
 local deaths = 0
 local pName = UnitName("player")
 local bloomed = {}
+local enrageWarn = nil
 
 ----------------------------
 --      Localization      --
@@ -26,6 +27,8 @@ L:RegisterTranslations("enUS", function() return {
 	bomb_nextbar = "~Possible Bomb",
 	bomb_warning = "Possible bomb in ~10sec",
 	kalec_yell = "I will channel my powers into the orbs! Be ready!",
+	kalec_yell2 = "Another orb is ready! Make haste!",
+	kalec_yell3 = "I have channeled all I can! The power is in your hands!",
 
 	orb = "Shield Orb",
 	orb_desc = "Warn when a Shield Orb is shadowbolting.",
@@ -39,7 +42,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	bloomsay = "Fire Bloom Say",
 	bloomsay_desc = "Place a msg in say notifying that you have Fire Bloom",
-	bloom_say = "Fire Bloom on ME!",
+	bloom_say = "Fire Bloom on "..strupper(pName).."!",
 
 	bloomwhisper = "Fire Bloom Whisper",
 	bloomwhisper_desc = "Whisper players with Fire Bloom.",
@@ -52,7 +55,7 @@ L:RegisterTranslations("enUS", function() return {
 	shadow_desc = "Raid warn of casting of Shadow Spike.",
 	shadow_message = "Shadow Spikes Inc For 28sec! WATCH OUT!",
 	shadow_bar = "Shadow Spikes Expire",
-	shadow_warning = "Shadow Spikes Done in 5 seconds!",
+	shadow_warning = "Shadow Spikes Done in 5 sec!",
 	shadow_debuff_bar = "Reduced Healing on %s",
 
 	flame = "Flame Dart",
@@ -68,6 +71,10 @@ L:RegisterTranslations("enUS", function() return {
 
 	deceiver_dies = "Deciever #%d Killed",
 	["Hand of the Deceiver"] = true,
+
+	enrage_yell = "Ragh! The powers of the Sunwell turn against me! What have you done? What have you done?!",
+	enrage_warning = "Enrage soon!",
+	enrage_message = "10% - Enraged",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -78,17 +85,19 @@ L:RegisterTranslations("koKR", function() return {
 	bomb_nextbar = "~폭탄 가능",
 	bomb_warning = "약 10초 이내 폭탄 가능!",
 	kalec_yell = "수정구에 힘을 쏟겠습니다! 준비하세요!",	--check
+	kalec_yell2 = "다른 수정구가 준비됐습니다! 서두르세요!",	--check
+	kalec_yell3 = "모든 힘을 수정구에 실었습니다! 이제 그대들의 몫입니다!",	--check
 
-	orb = "보호막 보주",
-	orb_desc = "보호막 보주의 어둠의 화살을 알립니다.",
-	orb_shooting = "보주 활동 - 어활 공격!",
+	orb = "보호의 구슬",
+	orb_desc = "보호의 구슬의 어둠 화살을 알립니다.",
+	orb_shooting = "구슬 활동 - 어활 공격!",
 
 	bloom = "화염 불꽃",
 	bloom_desc = "화염 불꽃에 걸린 플레이어를 알립니다.",
 	bloom_other = "%s 화염 불꽃!",
 	bloom_bar = "화염 불꽃",
 	bloom_message = "5초 후 다음 화염 불꽃!",
-	
+
 	bloomsay = "화염 불꽃 대화",
 	bloomsay_desc = "자신이 화염 불꽃이 걸렸을시 일반 대화로 출력합니다.",
 	bloom_say = "나에게 화염 불꽃!",
@@ -96,7 +105,7 @@ L:RegisterTranslations("koKR", function() return {
 	bloomwhisper = "화염 불꽃 귓속말",
 	bloomwhisper_desc = "화염 불꽃에 걸린 플레이어에게 귓속말로 알립니다.",
 	bloom_you = "당신은 화염 불꽃!",
-	
+
 	icons = "불꽃 전술 표시",
 	icons_desc = "화염 불꽃에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
 
@@ -106,20 +115,24 @@ L:RegisterTranslations("koKR", function() return {
 	shadow_bar = "어둠의 쐐기 종료",
 	shadow_warning = "5초 후 어둠의 쐐기 종료!",
 	shadow_debuff_bar = "%s 치유효과 감소",
-	
+
 	flame = "불꽃 화살",
 	flame_desc = "불꽃 화살 타이머 바를 표시합니다.",
 	flame_bar = "다음 불꽃 화살",
 	flame_message = "5초 후 다음 불꽃 화살!",
 
-	sinister = "사악한 환영 복제",
-	sinister_desc = "사악한 환영 복제를 알립니다.",
-	sinister_message = "사악한 환영 복제!",
+	sinister = "사악한 환영",
+	sinister_desc = "사악한 환영 생성을 알립니다.",
+	sinister_message = "사악한 환영!",
 
 	shield_up = "푸른용의 보호막!",
 
 	deceiver_dies = "심복 #%d 처치",
 	["Hand of the Deceiver"] = "기만자의 심복",
+
+	enrage_yell = "으악! 태양샘의 마력이 나를 거부한다! 무슨 짓을 한거지? 무슨 짓을 한거야?!",	--check
+	enrage_warning = "잠시후 격노!",
+	enrage_message = "10% - 격노",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -130,6 +143,8 @@ L:RegisterTranslations("frFR", function() return {
 	bomb_nextbar = "~Bombe probable",
 	bomb_warning = "Bombe probable dans ~10 sec.",
 	kalec_yell = "Je vais canaliser mon énergie vers les orbes ! Préparez-vous !", -- à vérifier
+	kalec_yell2 = "Un autre orbe est prêt ! Hâtez-vous !", -- à vérifier
+	kalec_yell3 = "J'ai envoyé tout ce que je pouvais ! La puissance est entre vos mains !", -- à vérifier
 
 	orb = "Orbe bouclier",
 	orb_desc = "Prévient quand une Orbe bouclier lance des Traits de l'ombre.",
@@ -143,7 +158,7 @@ L:RegisterTranslations("frFR", function() return {
 
 	bloomsay = "Dire - Fleur du feu",
 	bloomsay_desc = "Fait dire à votre personnage qu'il est ciblé par la Fleur du feu quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue activées.",
-	bloom_say = "Fleur du feu sur MOI !",
+	bloom_say = "Fleur du feu sur "..strupper(pName).." !",
 
 	bloomwhisper = "Chuchoter",
 	bloomwhisper_desc = "Prévient par chuchotement les derniers joueurs affectés par la Fleur du feu (nécessite d'être promu ou mieux).",
@@ -164,7 +179,7 @@ L:RegisterTranslations("frFR", function() return {
 	flame_bar = "Prochaine Fléchette",
 	flame_message = "Prochaine Fléchette des flammes dans 5 sec. !",
 
-	sinister = "Reflet sinistre",
+	sinister = "Reflets sinistres",
 	sinister_desc = "Prévient quand les Reflets sinistres apparaissent.",
 	sinister_message = "Reflets sinistres actifs !",
 
@@ -172,6 +187,10 @@ L:RegisterTranslations("frFR", function() return {
 
 	deceiver_dies = "Trompeur #%d tué",
 	["Hand of the Deceiver"] = "Main du Trompeur", -- à vérifier
+
+	enrage_yell = "Nooon ! Les pouvoirs du Puits de soleil se retournent contre moi ! Qu'avez-vous fait ? Qu'avez-vous fait ?!", -- à vérifier
+	enrage_warning = "Enrager imminent !",
+	enrage_message = "10% - Enragé",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -182,6 +201,8 @@ L:RegisterTranslations("zhCN", function() return {
 	bomb_nextbar = "<可能 炸弹>",
 	bomb_warning = "约10秒后，可能炸弹！",
 	kalec_yell = "我会将我的力量导入宝珠中！准备好！",
+	kalec_yell2 = "又有一颗宝珠准备好了！快点行动！",
+	kalec_yell3 = "这是我所能做的一切了！力量现在掌握在你们的手中！",--possible not the orb warning.(another choice:我又将能量灌入了另一颗宝珠！快去使用它！)
 
 	orb = "护盾宝珠",--Shield Orb 
 	orb_desc = "当护盾宝珠施放暗影箭时发出警报。",
@@ -195,7 +216,7 @@ L:RegisterTranslations("zhCN", function() return {
 
 	bloomsay = "火焰之花提醒",
 	bloomsay_desc = "当你中了火焰之花时通知周围的玩家。",
-	bloom_say = ">我< 中了火焰之花！",
+	bloom_say = ">"..strupper(pName).."< 中了火焰之花！",
 
 	bloomwhisper = "火焰之花密语",
 	bloomwhisper_desc = "当玩家中了火焰之花时密语提示他离开。",
@@ -223,7 +244,11 @@ L:RegisterTranslations("zhCN", function() return {
 	shield_up = ">蓝龙之盾< 启用！",
 
 	deceiver_dies = "已杀死欺诈者之手#%d",
-	["Hand of the Deceiver"] = "欺诈者之手",--need confirm
+	["Hand of the Deceiver"] = "欺诈者之手",
+
+	enrage_yell = "呃！太阳之井的能量开始对抗我！你们都做了些什么？你们都做了些什么？！",--not confirm
+	enrage_warning = "即将 激怒！",
+	enrage_message = "10% - 激怒",
 } end )
 
 ----------------------------------
@@ -234,8 +259,8 @@ local deceiver = L["Hand of the Deceiver"]
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
-mod.toggleoptions = {"bomb", "orb", "flame", -1, "bloom", "bloomwhisper","bloomsay", "icons", -1, "sinister", "shadow", "bosskill"}
-mod.revision = tonumber(("$Revision: 75605 $"):sub(12, -3))
+mod.toggleoptions = {"bomb", "orb", "flame", -1, "bloom", "bloomwhisper","bloomsay", "icons", -1, "sinister", "shadow", -1, "proximity", "enrage", "bosskill"}
+mod.revision = tonumber(("$Revision: 75880 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -254,6 +279,7 @@ function mod:OnEnable()
 
 	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
+	self:RegisterEvent("UNIT_HEALTH")
 
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "CheckForEngage")
@@ -317,16 +343,18 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(_, unit)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L["kalec_yell"] and db.bomb then
+	if (msg == L["kalec_yell"] or msg == L["kalec_yell2"] or msg == L["kalec_yell3"]) and db.bomb then
 		self:Bar(L["bomb_nextbar"], 40, "Spell_Shadow_BlackPlague")
 		self:DelayedMessage(30, L["bomb_warning"], "Attention")
+	elseif msg == L["enrage_yell"] then
+		self:IfMessage(L["enrage_message"], "Attention")
 	end
 end
 
-function mod:Shadow()
+function mod:Shadow(_, spellID)
 	if db.shadow then
-		self:Bar(L["shadow_bar"], 28, 45885)
-		self:DelayedMessage(0.1, L["shadow_message"], "Attention")
+		self:Bar(L["shadow_bar"], 28, spellID)
+		self:IfMessage(L["shadow_message"], "Attention", spellID)
 		self:DelayedMessage(23, L["shadow_warning"], "Attention")
 	end
 end
@@ -360,7 +388,21 @@ function mod:BloomWarn()
 
 	self:IfMessage(L["bloom_other"]:format(msg), "Important", 45641, "Alert")
 	self:Bar(L["bloom_bar"], 20, 45641)
+	self:DelayedMessage(15, L["bloom_message"], "Attention")
 	for i = 1, #bloomed do bloomed[i] = nil end
+end
+
+function mod:UNIT_HEALTH(msg)
+	if not db.enrage then return end
+	if UnitName(msg) == boss then
+		local health = UnitHealth(msg)
+		if health > 12 and health <= 14 and not enrageWarn then
+			self:Message(L["enrage_warning"], "Positive")
+			enrageWarn = true
+		elseif health > 50 and enrageWarn then
+			enrageWarn = false
+		end
+	end
 end
 
 function mod:BigWigs_RecvSync(sync, rest, nick)

@@ -283,7 +283,7 @@ if not L then return end
 	L["Heals"] = "치유량"
 	L["Healed By"] = "에 따른 치유"
 	L["Over Heals"] = "오버힐"
-	L["DOTs"] = "지속적인 데미지"
+	L["DOTs"] = "지속적인 피해"
 	L["HOTs"] = "지속적인 치유"
 	L["Dispelled By"] = "에 따른 해제"
 	L["Attacked/Healed"] = "공격/치유"
@@ -370,3 +370,6 @@ if not L then return end
 	L["Commas"] = "콤마"
 	L["Short"] = "간단히"
 	L["Hide When Not Collecting"] = "수집되지 않을 때 숨김"
+	L["DoT"] = "지속 피해"
+	L["HoT"] = "지속 치유"
+	

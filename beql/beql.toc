@@ -15,8 +15,8 @@
 ## X-Email: itsme@bayi.hu (or bayi@freemail.hu)
 ## X-Credits: Daniel Rehn for EQL which is this mod based on
 ## X-Category: Quest
-## OptionalDeps: Ace2, Titan, FuBar, FuBarPlugin-2.0, Deformat, TabletLib, Quixote
-## X-Embeds: Ace2, FuBar, FuBarPlugin-2.0, Deformat, TabletLib, Quixote
+## OptionalDeps: Ace2, Titan, FuBar, FuBarPlugin-2.0, Deformat, TabletLib, Quixote, Waterfall-1.0, DewdropLib
+## X-Embeds: Ace2, FuBarPlugin-2.0, Deformat, TabletLib, Quixote, Waterfall-1.0, DewdropLib
 ## X-RelSite-UI.WoW: 4536
 ## X-AceForum: 7262
 

@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75688 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75931 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -334,19 +334,11 @@ function AutoBar.Class.Bar.prototype:UpdateFadeOut()
 				cancelFade = true
 			end
 		end
-		if (cancelFade and self.faded) then
+		if (cancelFade) then
 			self.frame:SetAlpha(self.sharedLayoutDB.alpha)
 			self.faded = nil
 			self.fadeOutDelay = self.sharedLayoutDB.fadeOutDelay
-			if (# self.buttonList > 0) then
-				for index, button in pairs(self.buttonList) do
-					button:UpdateCooldown()
-				end
-			end
-		elseif (cancelFade and self.frame:GetAlpha() < self.sharedLayoutDB.alpha) then
-			self.frame:SetAlpha(self.sharedLayoutDB.alpha)
-			self.fadeOutDelay = self.sharedLayoutDB.fadeOutDelay
-		elseif (not cancelFade and not self.faded) then
+		elseif (not self.faded) then
 			local startAlpha = self.sharedLayoutDB.alpha
 			local fadeOutAlpha = self.sharedLayoutDB.fadeOutAlpha or 0
 			local fadeOutChunks = (self.sharedLayoutDB.fadeOutTime or 10) / FADEOUT_UPDATE_TIME
@@ -363,11 +355,6 @@ function AutoBar.Class.Bar.prototype:UpdateFadeOut()
 			else
 				self.frame:SetAlpha(fadeOutAlpha)
 				self.faded = true
-				for index, button in pairs(self.buttonList) do
-					if (button.frame.cooldown) then
-						button.frame.cooldown:Hide()
-					end
-				end
 			end
 		end
 	end
@@ -538,7 +525,6 @@ function AutoBar.Class.Bar.prototype:RefreshLayout()
 	self:RefreshScale()
 	self:RefreshButtonLayout()
 	self:RefreshAlpha()
-	self:LoadLocation()
 	if ((AutoBar.stickyMode or AutoBar.moveButtonsMode)) then
 		self.frame:Show()
 	elseif (self.sharedLayoutDB.hide or not self.sharedLayoutDB.enabled) then
@@ -548,14 +534,13 @@ function AutoBar.Class.Bar.prototype:RefreshLayout()
 	end
 end
 
-function AutoBar.Class.Bar.prototype:LoadLocation()
+function AutoBar.Class.Bar.prototype:LoadPosition()
 	local sharedPositionDB = self.sharedPositionDB
 	local sharedLayoutDB = self.sharedLayoutDB
 	if (sharedPositionDB.stickToFrameName and _G[sharedPositionDB.stickToFrameName]) then
 		local stickToFrame = _G[sharedPositionDB.stickToFrameName]
-		local barDB = AutoBar.barPositionDBList[self.barKey]
-		LibStickyFrames:SetFramePoints(self.frame, barDB.stickPoint, stickToFrame, barDB.stickToPoint, barDB.stickToX, barDB.stickToY)
---AutoBar:Print("AutoBar.Class.Bar.prototype:LoadLocation " .. tostring(barDB.stickToFrameName))
+		LibStickyFrames:SetFramePoints(self.frame, sharedPositionDB.stickPoint, stickToFrame, sharedPositionDB.stickToPoint, sharedPositionDB.stickToX, sharedPositionDB.stickToY)
+--AutoBar:Print("AutoBar.Class.Bar.prototype:LoadPosition " .. tostring(barDB.stickToFrameName))
 	else
 		if (not sharedLayoutDB.alignButtons) then
 			sharedLayoutDB.alignButtons = "3"
@@ -718,7 +703,7 @@ end
 
 function AutoBar.Class.Bar.prototype:RefreshScale()
 	self.frame:SetScale(self.sharedLayoutDB.scale or 1)
-	self:LoadLocation()
+	self:LoadPosition()
 end
 
 function AutoBar.Class.Bar.prototype:RefreshAlpha()

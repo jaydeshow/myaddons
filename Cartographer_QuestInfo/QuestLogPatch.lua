@@ -163,7 +163,7 @@ function CQI:OnButtonTooltip(type, data)
 							zone = zone..string.format(" <%d,%d>", l.x, l.y)
 							j = j + 1
 						else
-							zone = zone.." ..."
+							zone = zone..L[" ..."]
 							break
 						end
 					end

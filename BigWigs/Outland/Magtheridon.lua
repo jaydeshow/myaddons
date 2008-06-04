@@ -204,8 +204,8 @@ L:RegisterTranslations("frFR", function() return {
 	banish_over_message = "Fin du ban !",
 	banish_bar = "Banni",
 
-	exhaust = "Désactiver les barres d'Epuisement",
-	exhaust_desc = "Barre temporelles pour l'Epuisement d'esprit des joueurs",
+	exhaust = "Désactiver Epuisement",
+	exhaust_desc = "Barre temporelles pour l'Epuisement d'esprit des joueurs.",
 	exhaust_bar = "[%s] épuisé",
 
 	debris = "Débris sur vous",
@@ -272,7 +272,7 @@ L:RegisterTranslations("koKR", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	escape = "释放",
 	escape_desc = "玛瑟里顿获得自由倒计时。",
-	escape_trigger1 = "%s快要从他的禁锢中挣脱了！",
+	escape_trigger1 = "%s的禁锢开始变弱！",
 	escape_trigger2 = "我……自由了！",
 	escape_warning1 = "%s 激活！2分钟后，获得自由！",
 	escape_warning2 = "60秒后，自由！",
@@ -378,7 +378,7 @@ mod.zonename = BZ["Magtheridon's Lair"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = {channeler, boss}
 mod.toggleoptions = {"escape", "abyssal", "heal", -1, "nova", "banish", -1, "debris", "debrisinc", -1, "exhaust", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 75137 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 75787 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75833 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -651,7 +651,7 @@ function AutoBarCategory:Initialize()
 --		["castSpell"] = spellFeedPet;
 --	},
 	AutoBarCategoryList["Consumable.Food.Pet.Bread"] = AutoBarPetFood:new(
-			"Consumable.Food.Pet.Bread", "INV_Misc_Food_35", "Consumable.Food.Edible.Bread.Basic", "Consumable.Food.Edible.Bread.Conjured")
+			"Consumable.Food.Pet.Bread", "INV_Misc_Food_35", "Consumable.Food.Edible.Bread.Basic", "Consumable.Food.Edible.Basic.Conjured")
 	AutoBarCategoryList["Consumable.Food.Pet.Bread"]:SetNonCombat(true)
 	AutoBarCategoryList["Consumable.Food.Pet.Bread"]:SetTargeted("PET")
 
@@ -1168,6 +1168,9 @@ function AutoBarCategory:Initialize()
 	spellNameList["Gift of the Wild"], _, spellIconList["Gift of the Wild"] = GetSpellInfo(26991)
 	spellNameList["Amplify Magic"] = GetSpellInfo(33946)
 	spellNameList["Dampen Magic"] = GetSpellInfo(33944)
+	spellNameList["Earth Shield"] = GetSpellInfo(32594)
+	spellNameList["Lightning Shield"] = GetSpellInfo(25472)
+	spellNameList["Water Shield"] = GetSpellInfo(33736)
 
 	local spellOmenOfClarity = GetSpellInfo(16864)
 	local spellThorns = GetSpellInfo(26992)
@@ -1232,6 +1235,9 @@ function AutoBarCategory:Initialize()
 			"PALADIN", spellBlessingOfSalvation, spellGreaterBlessingOfSalvation,
 			"PALADIN", spellBlessingOfSanctuary, spellGreaterBlessingOfSanctuary,
 			"PALADIN", spellBlessingOfWisdom, spellGreaterBlessingOfWisdom,
+			"SHAMAN", spellNameList["Earth Shield"], spellNameList["Earth Shield"],
+			"SHAMAN", spellNameList["Lightning Shield"], spellNameList["Lightning Shield"],
+			"SHAMAN", spellNameList["Water Shield"], spellNameList["Water Shield"],
 			"WARLOCK", spellDemonArmor, spellDemonArmor,
 			"WARLOCK", spellDemonSkin, spellDemonSkin,
 			"WARLOCK", spellFelArmor, spellFelArmor,

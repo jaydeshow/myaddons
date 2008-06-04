@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibGuild-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 71372 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 75756 $"):match("%d+")) or 0
 
 local lib, oldMinor = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 if not lib then return end
@@ -261,7 +261,7 @@ function lib:GetClassHexColor(name)
 	local class = playerClassesEnglish[name or playerName]
 	if not class then return 'cccccc' end
 	local c = RAID_CLASS_COLORS[class]
-	return ("%02X%02X%02X"):format(c.r, c.g, c.b)
+	return ("%02X%02X%02X"):format(c.r*255, c.g*255, c.b*255)
 end
 
 function lib:GetZone(name)

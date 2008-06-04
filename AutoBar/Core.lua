@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 75688 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 75941 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -231,6 +231,7 @@ function AutoBar:OnInitialize()
 	AutoBar.inWorld = false
 	AutoBar.inCombat = nil		-- For item use restrictions
 	AutoBar.inBG = false		-- For battleground only items
+	AutoBar.flyable = SecureCmdOptionParse("[flyable]1")
 
 	-- Single parent for key binding overides
 	AutoBar.keyFrame = CreateFrame("Frame", nil, UIParent)
@@ -618,8 +619,8 @@ function AutoBar:UpdateZone(event)
 	if (AutoBar.flyable ~= flyable) then
 		AutoBar.flyable = flyable
 		if (AutoBar.buttonList["AutoBarButtonMount"]) then
-			AutoBarSearch.sorted:DirtyButtons()--"AutoBarButtonMount"
-			AutoBar.delay["UpdateActive"]:Start(nil)
+--AutoBar:Print("AutoBar:UpdateZone AutoBar.flyable " .. tostring(AutoBar.flyable) .. " --> " .. tostring(flyable))
+			AutoBar.delay["UpdateScan"]:Start(nil)
 		end
 	end
 
@@ -1286,7 +1287,7 @@ end
 function AutoBar:OnClick(event, frame, button)
 --AutoBar:Print("AutoBar.Class.Bar.OnClick frame " .. tostring(frame) .. " button " .. tostring(button) .. " lolwut " .. tostring(lolwut))
 	local bar = frame.class
-	if (bar) then
+	if (bar and bar.sharedLayoutDB) then
 		if (button == "RightButton") then
 	--AutoBar:Print("AutoBar.Class.Bar.OnClick ShowBarOptions frame " .. tostring(frame) .. " button " .. tostring(button))
 			bar:ShowBarOptions()
@@ -1305,16 +1306,20 @@ end
 --]]
 function AutoBar:OnStopFrameMoving(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
 	local bar = frame.class
+	if (bar and bar.sharedLayoutDB) then
 --AutoBar:Print("AutoBar:OnStopFrameMoving " .. tostring(bar.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
-	bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-	bar:SaveLocation()
+		bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+		bar:SaveLocation()
+	end
 end
 
 function AutoBar:OnStickToFrame(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
 	local bar = frame.class
 --AutoBar:Print("AutoBar:OnStickToFrame " .. tostring(bar.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
-	bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-	bar:SaveLocation()
+	if (bar and bar.sharedLayoutDB) then
+		bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
+		bar:SaveLocation()
+	end
 end
 
 

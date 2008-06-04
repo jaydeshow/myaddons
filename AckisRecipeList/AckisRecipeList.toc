@@ -12,13 +12,13 @@
 
 ## Interface: 20400
 ## Version: 0.88
-## X-Revision: $Rev: 75371 $
-## X-Date: $Date: 2008-05-28 13:25:38 -0400 (Wed, 28 May 2008) $
+## X-Revision: $Rev: 75868 $
+## X-Date: $Date: 2008-06-03 00:22:52 -0400 (Tue, 03 Jun 2008) $
 
 ## X-credits: FGWarmonger, Speeddymon, Xinhuan, Zhinjio
 
 ## X-Category: Tradeskill
-## X-Localizations: enUS, enGB, frFR, zhCN, zhTW, deDE, koKR, esES
+## X-Localizations: enUS, enGB, frFR, zhCN, zhTW, deDE, koKR, esES, esMX
 ## X-Website: http://www.wowace.com/wiki/AckisRecipeList
 ## X-Feedback: http://www.wowace.com/forums/index.php?topic=11798.0
 ## X-AceForum: 11798
@@ -42,6 +42,7 @@ Locals\ARLLocals-zhCN.lua
 Locals\ARLLocals-zhTW.lua
 Locals\ARLLocals-deDE.lua
 Locals\ARLLocals-esES.lua
+Locals\ARLLocals-esMX.lua
 
 AckisRecipeList.lua
 ARLFrame.lua

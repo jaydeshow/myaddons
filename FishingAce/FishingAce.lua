@@ -1,4 +1,4 @@
-﻿FishingAce = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceEvent-2.0", "AceHook-2.1", "AceDB-2.0")
+FishingAce = AceLibrary("AceAddon-2.0"):new("AceConsole-2.0", "AceEvent-2.0", "AceHook-2.1", "AceDB-2.0")
 
 local L = AceLibrary("AceLocale-2.2"):new("FishingAce")
 
@@ -13,7 +13,7 @@ local options = {
 			set = "ToggleAutoLoot",
 		},
 		lure = {
-		type = 'toggle',
+			type = 'toggle',
 			name = L["Auto Lures"],
 			desc = L["AutoLureMsg"],
 			get = "IsAutoLure",
@@ -48,6 +48,13 @@ local FISHINGLURES = {
       ["b"] = 100,
       ["s"] = 100,
       ["d"] = 10,
+   },
+   [33820] = {
+      ["n"] = "Weather-Beaten Fishing Hat",       -- 75 for 10 minutes
+      ["b"] = 75,
+      ["s"] = 1,
+      ["d"] = 10,
+      ["w"] = 1,
    },
    [7307] = {
       ["n"] = "Flesh Eating Worm",                -- 75 for 10 mins
@@ -94,27 +101,30 @@ FishingAce:RegisterChatCommand(L["Slash-Commands"], options)
 
 local overrideOn = false
 FishingAceButton = nil
+
+local function ResetFAButton()
+	if (overrideOn) then
+		FishingAceButton:Hide()
+		ClearOverrideBindings(FishingAceButton)
+		overrideOn = false
+	end
+end
+
 local function PostCastUpdate(self)
 	local stop = true
 	if ( not InCombatLockdown() ) then
-		FishingAceButton:Hide()
-		if ( overrideOn ) then
-			ClearOverrideBindings(FishingAceButton)
-			overrideOn = false
+		ResetFAButton();
+		if ( AddingLure ) then
+			local sp, rk, dn, ic, st, et = UnitCastingInfo("player")
+			if ( not sp or (dn and dn ~= LastLure) ) then
+				AddingLure = false
+			else
+				stop = false
+			end
 		end
-	else
-		stop = false
-	end
-	if ( AddingLure ) then
-		local sp, rk, dn, ic, st, et = UnitCastingInfo("player")
-		if ( not sp or (dn and dn ~= LastLure) ) then
-			AddingLure = false
-		else
-			stop = false
+		if ( stop ) then
+			FishingAce:CancelScheduledEvent("FishingAce")
 		end
-	end
-	if ( stop ) then
-		FishingAce:CancelScheduledEvent("FishingAce")
 	end
 end
 
@@ -133,8 +143,6 @@ function FishingAce:OnInitialize()
 	btn:SetPoint("LEFT", UIParent, "RIGHT", 10000, 0)
 	btn:SetFrameStrata("LOW")
 	btn:EnableMouse(true)
-	btn:SetWidth(100)
-	btn:SetHeight(100)
 	btn:RegisterForClicks("RightButtonUp")
 	btn:Hide()
 	btn:SetScript("PostClick", HideAwayAll)
@@ -251,33 +259,14 @@ local function FindSpellID(thisone)
 end
 
 local function GetBestLure()
-	-- check each of the bags on the player
-	local tb, ts
-	local bonus = 0
-	local skill = GetCurrentSkill()
-	local name
-	for bag=0, NUM_BAG_FRAMES do
-		-- get the number of slots in the bag (0 if no bag)
-		local numSlots = GetContainerNumSlots(bag)
-		if (numSlots > 0) then
-			-- check each slot in the bag
-			for slot=1, numSlots do
-				local link = GetContainerItemLink (bag, slot)
-				if ( link ) then
-					local _,_, id, n = string.find(link, "|Hitem:(%d+):")
-					id = tonumber(id)
-					local lure = FISHINGLURES[id]
-					if ( lure and lure.b > bonus and lure.s <= skill ) then
-						tb = bag
-						ts = slot
-						bonus = lure.b
-						name = n
-					end
-				end
-			end
+	for id,lure in pairs(FISHINGLURES) do
+		local count = GetItemCount(id)
+		if ( count > 0 ) then
+			lure.n = GetItemInfo(id)
+			return id, lure.n
 		end
 	end
-	return tb, ts, name
+	-- return nil, nil
 end
 FishingAce.GetBestLure = GetBestLure
 
@@ -389,6 +378,8 @@ local function SetupFishing()
 			FishingAceButton:SetAttribute("spell", name)
 		end
 	end
+	FishingAceButton:SetAttribute("item", nil)
+	FishingAceButton:SetAttribute("target-slot", nil)
 end
 
 local LastLure
@@ -397,11 +388,10 @@ local function SetupLure()
 		-- if the pole has an enchantment, we can assume it's got a lure on it (so far, anyway)
 		local hmhe,_,_,_,_,_ = GetWeaponEnchantInfo()
 		if ( FishingAce.db.profile.autoLure and not hmhe ) then
-			local tb, ts, name = GetBestLure()
-			if ( tb ) then
+			local itemid, name = GetBestLure()
+			if ( itemid ) then
 				FishingAceButton:SetAttribute("type", "item")
-				FishingAceButton:SetAttribute("bag", tb)
-				FishingAceButton:SetAttribute("slot", ts)
+				FishingAceButton:SetAttribute("item", "item:"..itemid)
 				local slot = GetInventorySlotInfo("MainHandSlot")
 				FishingAceButton:SetAttribute("target-slot", slot)
 				FishingAceButton:SetAttribute("spell", nil)
@@ -444,6 +434,8 @@ function FishingAce:OnEnable()
 	self:RegisterEvent("PLAYER_LEAVING_WORLD")
 	self:RegisterEvent("ITEM_LOCK_CHANGED")
 	self:RegisterEvent("SPELLS_CHANGED")
+	self:RegisterEvent("PLAYER_REGEN_ENABLED")
+	self:RegisterEvent("PLAYER_REGEN_DISABLED")
 end
 
 function FishingAce:OnDisable()
@@ -453,6 +445,7 @@ function FishingAce:OnDisable()
 --   self:UnregisterEvent("PLAYER_LEAVING_WORLD")
 --   self:UnregisterEvent("ITEM_LOCK_CHANGED")
 --   self:UnregisterEvent("SPELLS_CHANGED")
+   ResetButton()
 end
 
 function FishingAce:IsEnhanceSounds()
@@ -495,6 +488,14 @@ end
 
 function FishingAce:ITEM_LOCK_CHANGED()
 	FishingMode(self)
+end
+
+function FishingAce:PLAYER_REGEN_DISABLED()
+   ResetFAButton();
+end
+
+function FishingAce:PLAYER_REGEN_ENABLED()
+   ResetFAButton();
 end
 
 function FishingAce:PLAYER_ENTERING_WORLD()

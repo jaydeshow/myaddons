@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-05-29 13:52:37 -0400 (Thu, 29 May 2008) $
-$Rev: 75480 $
+$Date: 2008-06-03 21:36:27 -0400 (Tue, 03 Jun 2008) $
+$Rev: 75954 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -37,6 +37,9 @@ L["FILTER_OPTIONS_LONG"] = "표시할 제조법 필터링에 관한 설정입니
 L["Reputation"] = "평판"
 L["REP_OPTIONS"] = "평판 설정"
 L["REP_OPTIONS_LONG"] = "검색해서 표시할 평판을 설정합니다."
+L["Obtain"] = "획득"
+L["OBTAIN_OPTIONS"] = "획득 설정"
+L["OBTAIN_OPTIONS_LONG"] = "검색시에 제조법의 획득경로를 표시합니다."
 L["Sort"] = "정렬"
 L["SORT_OPTIONS"] = "제조법 정렬 방식을 설정합니다."
 L["SORT_OPTIONS_LONG"] = "표시되는 제조법의 정렬 방식에 관한 설정입니다."
@@ -53,15 +56,26 @@ L["CLOSEGUI_TOGGLE"] = "전문기술 창을 닫을 때 ARL창과 같이 갇습�
 -- Filtering Options
 L["Faction"] = "평판"
 L["FACTION_TOGGLE"] = "검색시에 모든 진영의 평판 제조법을 포함합니다."
-L["PVP_TOGGLE"] = "검색시에 PVP로 획득하는 제조법을 포함합니다."
 L["Classes"] = "직업"
 L["CLASS_TOGGLE"] = "검색시에 모든 직업 제조법을 포함합니다."
 L["Specialities"] = "하위분류"
 L["SPECIALITY_TOGGLE"] = "검색시에 모든 전문기술 세분화 분류를 포함합니다."
-L["RAID_TOGGLE"] = "검색시에 공격대 공략이 필요한 경우를 포함합니다."
 L["Skill"] = "숙련도"
 L["SKILL_TOGGLE"] = "검색시에 전문기술 숙련도를 포함합니다."
+
+-- Obtain Filter Options
+L["BOEFilter"] = "사용시 귀속"
+L["BOE_TOGGLE"] = "검색시 사용시 귀속인 제조법을 포함합니다."
+L["BOPFilter"] = "획득 시 귀속"
+L["BOP_TOGGLE"] = "검색시에 획득시 귀속인 제조법을 포함합니다."
+L["PVP_TOGGLE"] = "검색시에 PVP로 획득하는 제조법을 포함합니다."
+L["RAID_TOGGLE"] = "검색시에 공격대 공략이 필요한 경우를 포함합니다."
 L["SEASONAL_TOGGLE"] = "검색시에 계절축제관련 제조법을 포함합니다."
+L["TRAINER_TOGGLE"] = "검색시에 상급자에게서 배울 수 있는 제조법을 포함합니다."
+L["VENDOR_TOGGLE"] = "검색시에 상인에게 구매가능한 제조법을 포함합니다."
+L["INSTANCE_TOGGLE"] = "검색시에 던전 드랍 제조법을 포함합니다."
+L["QUEST_TOGGLE"] = "검색시에 퀘스트 보상 제조법을 포함합니다."
+--L["TRAINER_TOGGLE"] = true
 
 -- Sorting options
 L["Name"] = "이름" 
@@ -93,7 +107,7 @@ L["Mob Drop"] = "몹 드랍"
 L["Quest"] = "퀘스트"
 L["Reputation"] = "평판"
 L["Instance"] = "인스턴스 던전"
-L["BoP"] = "획득시 귀속"
+L["BoPMenu"] = "획득시 귀속"
 L["Horde"] = "호드" 
 L["Alliance"] = "얼라이언스"
 L["Known"] = "배움"

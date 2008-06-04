@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 75264 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 75926 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -288,6 +288,7 @@ function Recount:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, d
 	end
 	if eventtype == "SPELL_PERIODIC_DAMAGE" then
 		HitType=L["Tick"]
+		spellName = spellName .." ("..L["DoT"]..")"
 	end
 	if eventtype == "DAMAGE_SPLIT" then
 		HitType=L["Split"]
@@ -357,6 +358,7 @@ function Recount:SpellHeal(timestamp, eventtype, srcGUID, srcName, srcFlags, dst
 
 	if eventtype == "SPELL_PERIODIC_HEAL" then
 		healtype=L["Tick"]
+		-- Not activated yet: spellName=spellName.." ("..L["HoT"]..")"
 	end
 
 	Recount:AddHealData(srcName, dstName, spellName, healtype, amount,nil, srcGUID,srcFlags,dstGUID,dstFlags,spellId)-- Elsia: Overheal missing!!!

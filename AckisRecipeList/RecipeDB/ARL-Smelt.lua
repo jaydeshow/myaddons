@@ -4,8 +4,8 @@ ARL-Smelt.lua
 
 Smelting data for all of AckisRecipeList
 
-$Date: 2008-05-18 15:56:45 -0400 (Sun, 18 May 2008) $
-$Rev: 74325 $
+$Date: 2008-06-03 13:54:39 -0400 (Tue, 03 Jun 2008) $
+$Rev: 75918 $
 
 ]]--
 
@@ -26,7 +26,7 @@ function addon:InitSmelting()
 	self:addTradeSkillSpell(14891, 230, L["Dark Iron Obt"])
 	self:addTradeSkillSpell(10098, 230, L["Trainer"])
 	self:addTradeSkillSpell(16153, 250, L["Trainer"])
-	self:addTradeSkillSpell(22967, 270, L["Elementium Obt"], {L["Raid"]})
+	self:addTradeSkillSpell(22967, 270, L["Elementium Obt"], 6)
 	self:addTradeSkillSpell(35750, 300, L["Trainer"])
 	self:addTradeSkillSpell(35751, 300, L["Trainer"])
 	self:addTradeSkillSpell(29356, 300, L["Trainer"])
@@ -35,6 +35,6 @@ function addon:InitSmelting()
 	self:addTradeSkillSpell(29360, 350, L["Trainer"])
 	self:addTradeSkillSpell(29361, 375, L["Trainer"])
 	self:addTradeSkillSpell(29686, 375, L["Trainer"])
-	self:addTradeSkillSpell(46353, 375, L["SunwellBoP"])
+	self:addTradeSkillSpell(46353, 375, L["SunwellBoP"], 6)
 
 end

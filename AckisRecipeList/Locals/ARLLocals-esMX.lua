@@ -1,12 +1,14 @@
 ﻿--[[
 ****************************************************************************************
 
-ARLLocals-esES.lua
+ARLLocals-esMX.lua
 
-esES localization strings for Ackis Recipe List
+esMX localization strings for Ackis Recipe List
 
-$Date: 2008-06-04 05:55:25 -0400 (Wed, 04 Jun 2008) $
-$Rev: 75981 $
+$Date: 2008-06-03 12:53:59 -0400 (Tue, 03 Jun 2008) $
+$Rev: 75914 $
+
+Ported from esES
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -16,7 +18,7 @@ Thank you all translators! (From Ackis)
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "esES", false)
+local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "esMX", false);
 if not L then return end
 
 local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
@@ -39,9 +41,6 @@ L["FILTER_OPTIONS_LONG"] = "Le permite personalizar las recetas que se filtran."
 L["Reputation"] = "Reputación"
 L["REP_OPTIONS"] = "Opciones de Reputación"
 L["REP_OPTIONS_LONG"] = "Le permite personalizar que reputaciones se incluyen en el análisis."
-L["Obtain"] = "Obtener"
-L["OBTAIN_OPTIONS"] = "Opciones de Obtener"
-L["OBTAIN_OPTIONS_LONG"] = "Le permite personalizar los métodos de obtención de una receta se incluyen en la exploración."
 L["Sort"] = "Clasificación"
 L["SORT_OPTIONS"] = "Opciones de Clasificación"
 L["SORT_OPTIONS_LONG"] = "Le permite personalizar la forma en que se ordenan y se muestran la recetas que faltan."
@@ -58,25 +57,17 @@ L["CLOSEGUI_TOGGLE"] = "Cierra la ventana de ARL cuando la ventana de fabricaci�
 -- Filtering Options
 L["Faction"] = "Facción"
 L["FACTION_TOGGLE"] = "Las Recetas de ambas facciones (horda y alianza) serán incluidas en la exploración."
+--L["PVP"] = "JcJ"
+L["PVP_TOGGLE"] = "Las Recetas obtenidas de JcJ serán incluidas en la exploración."
 L["Classes"] = "Clases"
 L["CLASS_TOGGLE"] = "Las Recetas específicas de la clase serán incluidas en la exploración."
 L["Specialities"] = "Especialidades"
 L["SPECIALITY_TOGGLE"] = "Todas las especialidades de las Habilidades de Comercio serán incluidas en la exploración."
-L["Skill"] = "Habilidad"
-L["SKILL_TOGGLE"] = "Incluye todas las recetas, independientemente de su nivel actual de habilidad."
-
--- Obtain Filter Options
-L["BOEFilter"] = "Se Liga al Equiparlo (LaE)"
-L["BOE_TOGGLE"] = "Las recetas 'LaE' serán incluidas en la exploración."
-L["BOPFilter"] = "Se Liga al Recogerlo (LaR)"
-L["BOP_TOGGLE"] = "Las recetas 'LaR' serán incluidas en la exploración."
-L["PVP_TOGGLE"] = "Las Recetas obtenidas de JcJ serán incluidas en la exploración."
+--L["Raid"] = "Jefe"
 L["RAID_TOGGLE"] = "Recetas Difíciles de obtener de Jefes (ej: "..BZ["Molten Core"]..", "..BZ["Serpentshrine Cavern"]..", etc.) serán incluidas en la exploración."
+L["Skill"] = "Habilidad"
+L["SKILL_TOGGLE"] = "Incluye todas las recetas, independientemente de su nivel actual de habilidad"
 L["SEASONAL_TOGGLE"] = "Las recetas de Temporada obtenidas serán incluidas en la exploración."
-L["TRAINER_TOGGLE"] = "Instructor"
-L["VENDOR_TOGGLE"] = "Vendedor"
-L["INSTANCE_TOGGLE"] = "Instacia"
-L["QUEST_TOGGLE"] = "Misión"
 
 -- Sorting options
 L["Name"] = "Nombre"
@@ -109,7 +100,7 @@ L["Quest"] = "Misión"
 L["Reputation"] = "Reputación"
 L["Instance"] = "Instancia"
 L["BoPMenu"] = "Ligado Al Recogerlo (LaR)"
-L["Horde"] = "Horda"
+L["Horde"] = "Horda" 
 L["Alliance"] = "Alianza"
 L["Known"] = "Conocido"
 L["Unknown"] = "Desconocido"

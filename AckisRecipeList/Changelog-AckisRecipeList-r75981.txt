@@ -1,4 +1,132 @@
 ------------------------------------------------------------------------
+r75981 | StiviS | 2008-06-04 05:55:25 -0400 (Wed, 04 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
+
+AckisRecipeList:
+- esES updated
+------------------------------------------------------------------------
+r75954 | next96 | 2008-06-03 21:36:27 -0400 (Tue, 03 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r75946 | ackis | 2008-06-03 19:25:59 -0400 (Tue, 03 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Bug fix
+- NOT dry-coded
+------------------------------------------------------------------------
+r75939 | ackis | 2008-06-03 18:03:39 -0400 (Tue, 03 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
+
+AckisRecipeList:
+- Added filtering flags to Enchanting/Tailoring so I can test when I get home
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75937 | ackis | 2008-06-03 17:44:01 -0400 (Tue, 03 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
+
+AckisRecipeList:
+- Added filtering flags to Alchemy
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75918 | ackis | 2008-06-03 13:54:39 -0400 (Tue, 03 Jun 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Smelt.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
+
+AckisRecipeList:
+- Changed flag system to use select opposed to passing a table
+- Converted some flags to ID codes (ie: raid = 6), see comments in CheckDisplayRecipe for flags
+- Added filtering code for new options
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75915 | ackis | 2008-06-03 13:10:03 -0400 (Tue, 03 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+
+AckisRecipeList:
+- Added new filtering options for boe, bop, instance, vendor, trainer
+- Database isn't updated with information nor is the filter code updated for it either
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75914 | ackis | 2008-06-03 12:53:59 -0400 (Tue, 03 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
+
+AckisRecipeList:
+- Reorganized options for filtering -> added a new category called Obtain (needs localization please)
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75913 | ackis | 2008-06-03 12:46:08 -0400 (Tue, 03 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Only create the rep-table when it's needed, and then update it on the fly
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75910 | ackis | 2008-06-03 12:24:46 -0400 (Tue, 03 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Another logic fix for CheckDisplayRecipe, wasn't capturing filtered recipe count correctly (code duplications > getting out of for loop sooner?)
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75909 | ackis | 2008-06-03 12:18:45 -0400 (Tue, 03 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Changed logic of CheckDisplayRecipe and GetTradeSpeciality to make them faster and more effecient
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
+r75868 | ackis | 2008-06-03 00:22:52 -0400 (Tue, 03 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   A /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
+
+AckisRecipeList:
+- Add esMX (just copied esES for now)
+------------------------------------------------------------------------
+r75818 | trasher | 2008-06-02 12:44:45 -0400 (Mon, 02 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR update 40%
+------------------------------------------------------------------------
+r75726 | kuja | 2008-06-01 09:24:18 -0400 (Sun, 01 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
+
+AckisRecipeList:
+- small enchanting fix
+- wet-coded :P
+
+------------------------------------------------------------------------
 r75592 | ackis | 2008-05-30 20:59:49 -0400 (Fri, 30 May 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
@@ -723,242 +851,4 @@ Changed paths:
 
 AckisRecipeList:
 - esES updated
-------------------------------------------------------------------------
-r72566 | ackis | 2008-05-03 18:11:48 -0400 (Sat, 03 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- fix for reputations
-------------------------------------------------------------------------
-r72473 | ackis | 2008-05-02 19:07:15 -0400 (Fri, 02 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-
-AckisRecipeList:
-- Remove unneeded var in quest function
-- Fix Ras Frostwhisper translation
-------------------------------------------------------------------------
-r72454 | StiviS | 2008-05-02 15:54:14 -0400 (Fri, 02 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
-------------------------------------------------------------------------
-r72452 | StiviS | 2008-05-02 15:48:07 -0400 (Fri, 02 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
-------------------------------------------------------------------------
-r72440 | ackis | 2008-05-02 13:50:00 -0400 (Fri, 02 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Add tooltips for recipe name on hover over of the button
-- Dry-coded
-------------------------------------------------------------------------
-r72439 | ackis | 2008-05-02 13:41:59 -0400 (Fri, 02 May 2008) | 7 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-
-AckisRecipeList:
-- Convert vendor function to be more effecient
-- Converted alchemy quest recipes to new system
-- Converted some alchemy recipes which are boss related to new system (removed un-needed locals in enUS)
-- Converted options table to not require localization
-- Up to version 0.85
-- Dry-coded
-------------------------------------------------------------------------
-r72436 | ackis | 2008-05-02 13:08:47 -0400 (Fri, 02 May 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Convert pet function to be more effecient when combining strings
-- Fix a problem where not all pets would show up
-- Fix a problem where there would be an empty entry with pet lists
-- Dry-coded
-------------------------------------------------------------------------
-r72434 | ackis | 2008-05-02 12:55:24 -0400 (Fri, 02 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Convert quest function to be more effecient when combining strings
-- Dry-coded
-------------------------------------------------------------------------
-r72429 | ackis | 2008-05-02 11:46:36 -0400 (Fri, 02 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-
-AckisRecipeList:
-- Redid quest function to properly filter out non-faction specific quests without just displaying a blank line
-- Dry-coded
-~lart nevcairiel
-------------------------------------------------------------------------
-r72397 | ackis | 2008-05-02 00:57:43 -0400 (Fri, 02 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fix for a concat nil string error
-------------------------------------------------------------------------
-r72391 | ackis | 2008-05-02 00:03:07 -0400 (Fri, 02 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Refer to BFAC instead of L for Alliance translations
-------------------------------------------------------------------------
-r72378 | ackis | 2008-05-01 19:44:00 -0400 (Thu, 01 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Bug and typo fixes from all the dry-coding
-------------------------------------------------------------------------
-r72366 | ackis | 2008-05-01 18:06:17 -0400 (Thu, 01 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Set the strata on the scan button to see if it'll fix the issues with frame moving mods
-- Removal of a bunch of globals in the frame functions
-- Dry-coded
-------------------------------------------------------------------------
-r72361 | ackis | 2008-05-01 17:51:12 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Move reputation checks into a table opposed to all the if's
-- Dry-coded
-------------------------------------------------------------------------
-r72356 | ackis | 2008-05-01 17:15:13 -0400 (Thu, 01 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Get player faction once during load opposed to calling it everytime I want to do a check
-- If I don't want to see both factions, why display both faction specific reputations?
-- Dry-coded
-------------------------------------------------------------------------
-r72354 | ackis | 2008-05-01 17:05:51 -0400 (Thu, 01 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Only create the profession table once please
-- And lets pull out all the if's for the factions to another function so I can make it faster in the future
-- Dry-coded
-------------------------------------------------------------------------
-r72352 | ackis | 2008-05-01 16:53:42 -0400 (Thu, 01 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Some more code optimization
-- New method for combining a lot of strings together (Thank you Xinhuan) (commented out until I can test :P)
-- Dry-coded
-------------------------------------------------------------------------
-r72351 | ackis | 2008-05-01 16:23:28 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Code clean-up and a bit of optimization
-- Dry-coded
-------------------------------------------------------------------------
-r72350 | ackis | 2008-05-01 16:07:19 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Anchor window to beast training if we're using skillet
-- Dry-coded
-------------------------------------------------------------------------
-r72334 | next96 | 2008-05-01 12:54:49 -0400 (Thu, 01 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r72325 | ackis | 2008-05-01 11:05:18 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Convert some frame stuffz
-- Not wet-coded
-------------------------------------------------------------------------
-r72324 | ackis | 2008-05-01 11:01:32 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-
-AckisRecipeList:
-- Use newline constant in engineering
-- All dry-coded
-------------------------------------------------------------------------
-r72321 | StiviS | 2008-05-01 10:37:12 -0400 (Thu, 01 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   A /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES added
-------------------------------------------------------------------------
-r72311 | ascalia | 2008-05-01 07:32:29 -0400 (Thu, 01 May 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-
-AckisRecipeList:
-- removed duplicate entry
-- sorted some entries correctly
-- removed double spaces
-
-------------------------------------------------------------------------
-r72281 | ackis | 2008-05-01 00:25:31 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-
-AckisRecipeList:
-- Cooking vendor update
-- Durrr ackis is a tard! 283 -> 284
-------------------------------------------------------------------------
-r72280 | Lywellyn | 2008-05-01 00:14:37 -0400 (Thu, 01 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
-
-AckisRecipeList:
-- Fix for Undermine Clam Chowder (cooking)
-- Beginning code for adding maximum skill raise methods (trainers/books for Journeyman and beyond)
-------------------------------------------------------------------------
-r72237 | Lywellyn | 2008-04-30 18:12:50 -0400 (Wed, 30 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Fixed sorting dropdown in configuration menu.  You can now sort by recipe name or the recipe's skill level (the skill level being default)
-------------------------------------------------------------------------
-r72203 | pettigrow | 2008-04-30 14:16:41 -0400 (Wed, 30 Apr 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList: frFR Update
 ------------------------------------------------------------------------
