@@ -189,9 +189,9 @@ end
 
 -------------------------------------------------------------------
 
-function CQI:ExtendQuestLog()
-	if self.IsQuestLogExtended then return end
-	self.IsQuestLogExtended = true
+local function MakeQuestLogDoubleWide()	
+	-- give up if QuestLogFrame is already in wide mode
+	if QuestLogFrame:GetWidth() > 500 then return end
 
 	-- code copied from DoubleWide
 	QuestLogFrame:SetAttribute("UIPanelLayout-width", 724)
@@ -258,4 +258,12 @@ function CQI:ExtendQuestLog()
 		    region:SetTexture(path)
 	    end
 	end
+end
+
+function CQI:ExtendQuestLog()
+	if self.IsQuestLogExtended then return end
+	self.IsQuestLogExtended = true
+
+	-- delay patch quest log, so other addons can take chance first
+	self:AddTimer(1, MakeQuestLogDoubleWide)
 end

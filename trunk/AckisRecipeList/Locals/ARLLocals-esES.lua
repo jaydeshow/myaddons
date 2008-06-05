@@ -5,8 +5,8 @@ ARLLocals-esES.lua
 
 esES localization strings for Ackis Recipe List
 
-$Date: 2008-06-04 05:55:25 -0400 (Wed, 04 Jun 2008) $
-$Rev: 75981 $
+$Date: 2008-06-04 12:41:47 -0400 (Wed, 04 Jun 2008) $
+$Rev: 76002 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -77,6 +77,7 @@ L["TRAINER_TOGGLE"] = "Instructor"
 L["VENDOR_TOGGLE"] = "Vendedor"
 L["INSTANCE_TOGGLE"] = "Instacia"
 L["QUEST_TOGGLE"] = "Misión"
+L["TRAINER_TOGGLE"] = "Instructor"
 
 -- Sorting options
 L["Name"] = "Nombre"
@@ -215,24 +216,23 @@ L["Gurubashi Mojo Madness Obt"] = Raid..": Puedes aprender esto clickeando en un
 L["Mighty Trolls Blood Potion Obt"] = Trainer.."Henry Stern"
 -- Mob Drop
 L["Elixir of Greater Firepower Obt"] = "Esclavo del Hierro Oscuro, Vigilante del Hierro Oscuro, Taskmaster del Hierro Oscuro"
-L["Elixir of the Mongoose Obt"] = BoeMobDrop.."Jadefire Rogue, Felwood, Legashi Rogue, "..BZ["Azshara"]
-L["Elixir of the Sages Obt"] = BoeMobDrop.."Scarlet Enchanter, Scarlet Cleric, Scarlet Curate, Scarlet Archmage, Scarlet Inquisitor, "..BZ["Eastern Plaguelands"]
-L["Fel Mana Potion Obt"] = BopMobDrop.."Eclipsion Soldier, Eclipsion Bloodward, Eclipsion Blood Knight, Eclipsion Spellbinder, Eclipsion Archmage, Eclipsion Centurion, Eclipsion Cavalier, Torloth the Magnificent, Illidari Watcher, "..BZ["Shadowmoon Valley"]
-L["Fel Regeneration Potion Obt"] = BopMobDrop.."Deathforge Imp, Deathforge Guardian, Deathforge Smith, Deathforge Tinkerer, "..BZ["Shadowmoon Valley"]
-L["Fel Strength Elixir Obt"] = BopMobDrop.."Mo'arg Weaponsmiths, Terrormasters, Wrathwalkers, y Brujos del Consejo de las Sombras , "..BZ["Shadowmoon Valley"]
-L["Gift of Arthas Obt"] = BoeMobDrop.."Skeletal Flayer, Slavering Ghoul, "..BZ["Western Plaguelands"]
-L["Greater Arcane Protection Potion Obt"] = BoeMobDrop.."Cobalt Mageweavers, "..BZ["Winterspring"]
-L["Greater Fire Protection Potion Obt"] = BoeMobDrop.."Firebrand Invoker, Firebrand Pyromance, "..BZ["Lower Blackrock Spire"]
-L["Greater Frost Protection Potion Obt"] = BoeMobDrop.."Frostmaul Giants, "..BZ["Winterspring"]
-L["Greater Nature Protection Potion Obt"] = BoeMobDrop.."Decaying Horror, Rotting Behemoths, "..BZ["Western Plaguelands"]
-L["Greater Shadow Protection Potion Obt"] = BoeMobDrop.."Adeptos Oscuros, Shadowmages, "..BZ["Eastern Plaguelands"]
-L["Major Arcane Protection Potion Obt"] = BopMobDrop.."Vir'aani Arcanists, "..BZ["Nagrand"]
-L["Major Fire Protection Potion Obt"] = BopMobDrop.."Sunseeker Astromages, "..BZ["The Mechanar"]
-L["Major Frost Protection Potion Obt"] = BopMobDrop.."Nexus-Prince Shaffar, "..BZ["Mana-Tombs"]
-L["Major Holy Protection Potion Obt"] = BopMobDrop.."Abyssal Flamebringers, "..BZ["Blade's Edge Mountains"]
-L["Major Shadow Protection Potion Obt"] = BopMobDrop.."Brujo del Consejo de las Sombras, "..BZ["Shadowmoon Valley"]
-L["Mighty Rage Potion Obt"] = BoeMobDrop.."Blackrock Slayer, "..BZ["Burning Steppes"]
-L["Wildvine Potion Obt"] = BoeMobDrop.."Trolls en "..BZ["Stranglethorn Vale"].." y "..BZ["The Hinterlands"]
+L["Elixir of the Mongoose Obt"] = "Jadefire Rogue, Felwood, Legashi Rogue"
+L["Elixir of the Sages Obt"] = "Scarlet Enchanter, Scarlet Cleric, Scarlet Curate, Scarlet Archmage, Scarlet Inquisitor"
+L["Fel Mana Potion Obt"] = "Eclipsion Soldier, Eclipsion Bloodward, Eclipsion Blood Knight, Eclipsion Spellbinder, Eclipsion Archmage, Eclipsion Centurion, Eclipsion Cavalier, Torloth the Magnificent, Illidari Watcher"
+L["Fel Regeneration Potion Obt"] = "Deathforge Imp, Deathforge Guardian, Deathforge Smith, Deathforge Tinkerer"
+L["Fel Strength Elixir Obt"] = "Mo'arg Weaponsmiths, Terrormasters, Wrathwalkers, Shadow Council Warlocks"
+L["Gift of Arthas Obt"] = "Skeletal Flayer, Slavering Ghoul"
+L["Greater Arcane Protection Potion Obt"] = "Cobalt Mageweavers"
+L["Greater Fire Protection Potion Obt"] = "Firebrand Invoker, Firebrand Pyromance"
+L["Greater Frost Protection Potion Obt"] = "Frostmaul Giants"
+L["Greater Nature Protection Potion Obt"] = "Decaying Horror, Rotting Behemoths"
+L["Greater Shadow Protection Potion Obt"] = "Dark Adepts, Shadowmages"
+L["Major Arcane Protection Potion Obt"] = "Vir'aani Arcanists"
+L["Major Fire Protection Potion Obt"] = "Sunseeker Astromages"
+L["Major Holy Protection Potion Obt"] = "Abyssal Flamebringers"
+L["Major Shadow Protection Potion Obt"] = "Brujo del Consejo de las Sombras"
+L["Mighty Rage Potion Obt"] = "Blackrock Slayer"
+L["Wildvine Potion Obt"] = "Trolls Aleatorios"
 -- Quest
 L["Discolored Healing Potion Obt"] = "Corazones Salvajes"
 L["Elixir of Brute Force Obt"] = "Dadanga esta Hambriento (Recompensa Aleatoria)"
@@ -316,7 +316,7 @@ L["Barbecued Buzzard Wing Obt"] = "Alas Asadas a la Parilla del Halcón"
 L["Beer Basted Boar Ribs Obt"] = "Costillas a la Cerveza del Verraco"
 L["Big Bear Steak Obt"] = "El Rescate"
 L["Blood Sausage Obt"] = "Morcillas de Thelsamar"
-L["Buzzard Bites Obt"] = QuestReward.."Suave como la Mantequilla"
+L["Buzzard Bites Obt"] = "Suave como la Mantequilla"
 L["Crocolisk Gumbo Obt"] = "Deberes del Aprendiz"
 L["Crocolisk Steak Obt"] = "Caza de Crocolisk"
 L["Crunchy Serpent Obt"] = "Tratados Mok'Nathal"
@@ -401,17 +401,15 @@ L["Zapthrottle Mote Extractor Obt"] = "¡Extractor de la Mota de Zapthrottle!"
 -- Nothing here needed yet
 
 -- Jewelcrafting Obtain Information
-L["Arcane Khorium Band Obt"] = BopMobDrop.."Mageslayers, "..BZ["Netherstorm"]
-L["Blades Edge Summon Bosses"] = BopMobDrop.."Invoca Jefes en Filospada"
-L["Chaotic Skyfire Diamond Obt"] = BopMobDrop.."Coilskar Sirens, "..BZ["Shadowmoon Valley"]
-L["Circlet of Arcane Might Obt"] = BopMobDrop.."Epoch Hunter, "..BZ["Old Hillsbrad Foothills"]
-L["Coronet of the Verdant Flame Obt"] = BopMobDrop.."Sunseeker Botanists, "..BZ["The Botanica"]
-L["Dark Iron Scorpid Obt"] = BopMobDrop.."Golem Lord Argelmach, "..BZ["Blackrock Depths"]
-L["Figurine - Black Diamond Crab Obt"] = BopMobDrop.."Quartermaster Zigris, "..BZ["Lower Blackrock Spire"]
-L["Khorium Band of Frost Obt"] = BopMobDrop.."Coilfang Sorceresses, "..BZ["The Steamvault"]
-L["Khorium Band of Leaves Obt"] = BopMobDrop.."Vekh'nir Dreadhawks, "..BZ["Blade's Edge Mountains"]
-L["Khorium Band of Shadows Obt"] = BopMobDrop.."Dark Conclave Shadowmancers, "..BZ["Shadowmoon Valley"]
-L["Khorium Inferno Band Obt"] = BopMobDrop.."Darkweaver Syth, "..BZ["Sethekk Halls"]
+L["Blades Edge Summon Bosses"] = "Invoca Jefes en Filospada"
+-- Mob Drop
+L["Arcane Khorium Band Obt"] = "Mageslayers"
+L["Chaotic Skyfire Diamond Obt"] = "Coilskar Sirens"
+L["Coronet of the Verdant Flame Obt"] = "Sunseeker Botanists"
+L["Khorium Band of Frost Obt"] = "Coilfang Sorceresses"
+L["Khorium Band of Leaves Obt"] = "Vekh'nir Dreadhawks"
+L["Khorium Band of Shadows Obt"] = "Dark Conclave Shadowmancers"
+-- Quest
 
 -- Leatheworking Obtain Information
 L["Arcane Armor Kit Obt"] = BopMobDrop.."Chrono Lord Deja, "..BZ["The Black Morass"]
@@ -471,7 +469,7 @@ L["Wild Leather Shoulders Obt"] = QuestReward.."Wild Leather Shoulders"
 L["Wild Leather Vest Obt"] = QuestReward.."Wild Leather Vest"
 
 -- Smelting Obtain Information
-L["Dark Iron Obt"] = QuestReward.."BRD, requiere 20 Barras de Oro, 2 Star Rubies, y 10 Barras de Truesilver para BRD.  Habla con Gloom'Rel, que es uno de los no-muertos en Summoner's Tomb."
+L["Dark Iron Obt"] = "Requiere 20 Barras de Oro, 2 Star Rubies, y 10 Barras de Truesilver - Habla con Gloom'Rel, que es uno de los no-muertos en Summoner's Tomb."
 L["Elementium Obt"] = "Control mental Krixix en BWL.  En la barra de mascota habrá una opción para entrenar esta habilidad para ti y los demás."
 
 -- Rogue Poison Obtain Information

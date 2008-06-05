@@ -85,7 +85,7 @@ local options = {
 
 function Mendeleev:OnInitialize()
 	self.title = "Mendeleev"
-	self.revision = tonumber(("$Revision: 73823 $"):match("%d+"))
+	self.revision = tonumber(("$Revision: 76019 $"):match("%d+"))
 	self.version = self.version .. "." .. self.revision
 	
 	_G.MENDELEEV_TITLE = self.title
@@ -133,6 +133,8 @@ end
 function Mendeleev:OnEnable(first)
 	self:HookScript(GameTooltip, "OnTooltipSetItem")
 	self:HookScript(GameTooltip, "OnTooltipCleared")
+	self:HookScript(ItemRefTooltip, "OnTooltipSetItem")
+	self:HookScript(ItemRefTooltip, "OnTooltipCleared")
 	self:HookScript(ShoppingTooltip1, "OnTooltipSetItem")
 	self:HookScript(ShoppingTooltip1, "OnTooltipCleared")
 	self:HookScript(ShoppingTooltip2, "OnTooltipSetItem")

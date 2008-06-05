@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-06-03 21:36:27 -0400 (Tue, 03 Jun 2008) $
-$Rev: 75954 $
+$Date: 2008-06-04 13:54:57 -0400 (Wed, 04 Jun 2008) $
+$Rev: 76013 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -209,7 +209,6 @@ L["Greater Nature Protection Potion Obt"] = "사용시 귀속: 부패한 늪괴�
 L["Greater Shadow Protection Potion Obt"] = "사용시 귀속: 암흑의 수행사제, 어둠마법사, 동부 역병지대"
 L["Major Arcane Protection Potion Obt"] = "획득시 귀속: 비르아니 비전술사, 나그란드"
 L["Major Fire Protection Potion Obt"] = "획득시 귀속: 태양추적대 점성술사, 메카나르"
-L["Major Frost Protection Potion Obt"] = "획득시 귀속: 연합왕자 샤파르, 마나 무덤"
 L["Major Holy Protection Potion Obt"] = "획득시 귀속: 심연의 불꽃인도자, 칼날 산맥"
 L["Major Shadow Protection Potion Obt"] = "획득시 귀속: 어둠의 의회 흑마법사, 어둠달 골짜기"
 L["Mighty Rage Potion Obt"] = "사용시 귀속: 검은바위부족 학살자, 불타는 평원"
@@ -382,17 +381,15 @@ L["Zapthrottle Mote Extractor Obt"] = "퀘스트 보상: 기압조절 가스 추
 -- Nothing here needed yet
 
 -- Jewelcrafting Obtain Information
-L["Arcane Khorium Band Obt"] = "획득시 귀속: 마법사 학살자, 황천의 폭풍"
 L["Blades Edge Summon Bosses"] = "획득시 귀속: 칼날 산맥에서 소환된 보스들"
+-- Mob Drop
+L["Arcane Khorium Band Obt"] = "획득시 귀속: 마법사 학살자, 황천의 폭풍"
 L["Chaotic Skyfire Diamond Obt"] = "사용시 귀속: 갈퀴흉터 세이렌, 어둠달 골짜기"
-L["Circlet of Arcane Might Obt"] = "획득시 귀속: 시대의 사냥꾼, 옛 힐스브래드 구릉지"
 L["Coronet of the Verdant Flame Obt"] = "획득시 귀속: 태양추적대 식물학자, 신록의 정원"
-L["Dark Iron Scorpid Obt"] = "획득시 귀속: 골렘 군주 아젤마크, 검은바위 나락"
-L["Figurine - Black Diamond Crab Obt"] = "획득시 귀속: 병참장교 지그리스, 검은바위 첨탑 하층"
 L["Khorium Band of Frost Obt"] = "획득시 귀속: 갈퀴송곳니 여마술사, 증기 저장고"
 L["Khorium Band of Leaves Obt"] = "획득시 귀속: 베크니르 매부라퀴, 칼날 산맥"
 L["Khorium Band of Shadows Obt"] = "획득시 귀속: 암흑 비밀결사 흑마술사, 어둠달 골짜기"
-L["Khorium Inferno Band Obt"] = "획득시 귀속: 흑마술사 시스, 세데크 전당"
+-- Quest
 
 -- Leatheworking Obtain Information
 L["Arcane Armor Kit Obt"] = "획득시 귀속: 시간의 군주 데자, 검은 늪"

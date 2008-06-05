@@ -21,7 +21,7 @@ CQI:SetDatabaseDefaults("profile", {
 	iconScale = 1,
 	minimapIcons = true,
 	cartoButton = true,
-	wideQuestLog = not beql,
+	wideQuestLog = true,
 })
 
 -------------------------------------------------------------------

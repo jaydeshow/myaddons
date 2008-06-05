@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList v0.84
-$Date: 2008-06-03 19:25:59 -0400 (Tue, 03 Jun 2008) $
-$Rev: 75946 $
+$Date: 2008-06-04 10:22:15 -0400 (Wed, 04 Jun 2008) $
+$Rev: 75995 $
 
 Author: Ackis on Illidan US Horde
 ****************************************************************************************
@@ -1124,7 +1124,8 @@ do
 		-- 5 = Instance
 		-- 6 = Raid
 		-- 7 = Seasonal
-		-- 8 = quest
+		-- 8 = Quest
+		-- 9 = PVP
 
 
 		-- Update the rep table with appropiate flags
@@ -1203,7 +1204,7 @@ do
 				if (not addon.db.profile.specialities) then
 					-- Are we looking at a speciality and is the current profession a profession that has a speciality?
 					if (SpecialtyTable[CurrentProfession]) and (AllSpecialitiesTable[CurrentCheck]) then
-						if (SpecialtyTable[CurrentProfession][CurrentCheck] == false) then
+						if (not SpecialtyTable[CurrentProfession][CurrentCheck]) then
 							addon.FilteredRecipes = addon.FilteredRecipes + 1
 							return false
 						end
