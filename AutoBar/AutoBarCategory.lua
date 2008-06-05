@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75833 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76025 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -171,14 +171,41 @@ function AutoBarCategory.prototype:SetCastList(castList)
 	end
 end
 
--- Called once to allocate space and initialize items
-function AutoBarCategory.prototype:ItemsInit()
-	self.items = nil
-end
-
 -- Reset the item list based on changed settings.
 -- So pet change, Spellbook changed for spells, etc.
 function AutoBarCategory.prototype:Refresh()
+end
+
+-- Add a spell to the list.
+-- spellNameRight specifies a separate spell to cast on right click
+function AutoBarCategory.prototype:AddSpell(spellNameLeft, spellNameRight, itemsIndex)
+	if (spellNameLeft) then
+		spellNameLeft = GetSpellInfo(spellNameLeft)
+	end
+	if (spellNameRight) then
+		spellNameRight = GetSpellInfo(spellNameRight)
+	end
+
+	if (spellNameLeft) then
+		AutoBarSearch:RegisterSpell(spellNameLeft)
+		self.items[itemsIndex] = spellNameLeft
+		if (spellNameRight) then
+			AutoBarSearch:RegisterSpell(spellNameRight)
+			self.itemsRightClick[spellNameLeft] = spellNameRight
+--AutoBar:Print("AutoBarCategory.prototype:AddSpell castable spellNameLeft " .. tostring(spellNameLeft) .. " spellNameRight " .. tostring(spellNameRight))
+--		else
+--			self.itemsRightClick[spellNameLeft] = spellNameLeft
+--AutoBar:Print("AutoBarCategory.prototype:AddSpell castable spellNameLeft " .. tostring(spellNameLeft))
+		end
+		itemsIndex = itemsIndex + 1
+	elseif (spellNameRight) then
+--AutoBar:Print("AutoBarCategory.prototype:AddSpell castable spellNameRight " .. tostring(spellNameRight))
+		AutoBarSearch:RegisterSpell(spellNameRight)
+		self.items[itemsIndex] = spellNameRight
+		self.itemsRightClick[spellNameRight] = spellNameRight
+		itemsIndex = itemsIndex + 1
+	end
+	return itemsIndex
 end
 
 
@@ -285,9 +312,7 @@ function AutoBarSpells.prototype:init(description, texture, castList, rightClick
 	end
 
 	-- Populate items based on currently castable spells
-	if (not self.items) then
-		self.items = {}
-	end
+	self.items = {}
 	if (self.rightClickList and not self.itemsRightClick) then
 		self.itemsRightClick = {}
 	end
@@ -296,49 +321,28 @@ end
 
 -- Reset the item list based on changed settings.
 function AutoBarSpells.prototype:Refresh()
-	local index = 1
+	local itemsIndex = 1
+assert(self.items, "AutoBarSpells.prototype:Refresh wtff")
 	if (self.castList and self.rightClickList) then
-		for spellNameLeft in pairs(self.itemsRightClick) do
-			self.itemsRightClick[spellNameLeft] = nil
+		for spellName in pairs(self.itemsRightClick) do
+			self.itemsRightClick[spellName] = nil
 		end
+
 		for i = 1, # self.castList, 1 do
 			local spellNameLeft, spellNameRight = self.castList[i], self.rightClickList[i]
 --AutoBar:Print("AutoBarSpells.prototype:Refresh spellNameLeft " .. tostring(spellNameLeft) .. " spellNameRight " .. tostring(spellNameRight))
-			AutoBarSearch:RegisterSpell(spellNameLeft)
-			AutoBarSearch:RegisterSpell(spellNameRight)
-			if (AutoBarSearch:CanCastSpell(spellNameLeft)) then
-				self.items[index] = spellNameLeft
-				if (AutoBarSearch:CanCastSpell(spellNameRight)) then
-					self.itemsRightClick[spellNameLeft] = spellNameRight
---AutoBar:Print("AutoBarSpells.prototype:Refresh castable spellNameLeft " .. tostring(spellNameLeft) .. " spellNameRight " .. tostring(spellNameRight))
-				else
-					self.itemsRightClick[spellNameLeft] = spellNameLeft
---AutoBar:Print("AutoBarSpells.prototype:Refresh castable spellNameLeft " .. tostring(spellNameLeft))
-				end
-				index = index + 1
-			elseif (AutoBarSearch:CanCastSpell(spellNameRight)) then
---AutoBar:Print("AutoBarSpells.prototype:Refresh castable spellNameRight " .. tostring(spellNameRight))
-				self.items[index] = spellNameRight
-				self.itemsRightClick[spellNameRight] = spellNameRight
-				index = index + 1
-			end
+			itemsIndex = AutoBarSpells.super.prototype.AddSpell(self, spellNameLeft, spellNameRight, itemsIndex)
 		end
-		for i = index, # self.items, 1 do
+		for i = itemsIndex, # self.items, 1 do
 			self.items[i] = nil
 		end
 	elseif (self.castList) then
 		for i, spellName in ipairs(self.castList) do
 			if (spellName) then
---AutoBar:Print("AutoBarSpells.prototype:Refresh spellName " .. tostring(spellName))
-				AutoBarSearch:RegisterSpell(spellName)
-				if (AutoBarSearch:CanCastSpell(spellName)) then
---AutoBar:Print("AutoBarSpells.prototype:Refresh castable " .. tostring(spellName))
-					self.items[index] = spellName
-					index = index + 1
-				end
+				itemsIndex = AutoBarSpells.super.prototype.AddSpell(self, spellName, nil, itemsIndex)
 			end
 		end
-		for i = index, # self.items, 1 do
+		for i = itemsIndex, # self.items, 1 do
 			self.items[i] = nil
 		end
 	end
@@ -396,6 +400,7 @@ function AutoBarCustom.prototype:init(customCategoriesDB)
 --AutoBar:Print("AutoBarCustom.prototype:init customCategoriesDB " .. tostring(customCategoriesDB) .. " self.customCategoriesDB " .. tostring(self.customCategoriesDB))
 	self.customKey = AutoBarCustom:GetCustomKey(description)
 --AutoBar:Print("AutoBarCustom.prototype:init description " .. tostring(description) .. " customKey " .. tostring(self.customKey))
+	self.items = {}
 	self:Refresh()
 end
 
@@ -451,66 +456,45 @@ function AutoBarCustom.prototype:Refresh()
 	local castListIndex = 1
 	local macroIndex = 1
 
+	local items = self.items
+
 	for index, itemDB in ipairs(itemList) do
 		itemType = itemDB.itemType
 		itemId = itemDB.itemId
 		if (itemType == "item") then
-			if (not self.items) then
-				self.items = {}
-			end
 			self.items[itemsIndex] = itemId
 			itemsIndex = itemsIndex + 1
 		elseif (itemType == "spell" and itemDB.spellName) then
-			if (not self.castList) then
-				self.castList = {}
+			if (itemDB.spellClass == AutoBar.CLASS) then
+				itemsIndex = AutoBarCustom.super.prototype.AddSpell(self, itemDB.spellName, nil, itemsIndex)
 			end
-			self.castList[castListIndex] = itemDB.spellClass
-			self.castList[castListIndex + 1] = itemDB.spellName
-			castListIndex = castListIndex + 2
 		elseif (itemType == "macro") then
 			if (not self.macroList) then
 				self.macroList = {}
 			end
+			if (not self.itemInfo) then
+				self.itemInfo = GetMacroInfo(itemId)
+			end
+--			local macroId = "macro" .. self.itemInfo
 			local macroId = "macro" .. itemId
-			self.macroList[macroIndex] = macroId
-			macroIndex = macroIndex + 1
+			self.items[itemsIndex] = macroId
+			itemsIndex = itemsIndex + 1
 			AutoBarSearch:RegisterMacro(macroId, itemId)
 		elseif (itemType == "macroCustom" and itemDB.itemInfo) then
 			if (not self.macroList) then
 				self.macroList = {}
 			end
 			local macroId = "macroCustom" .. self.customCategoriesDB.categoryKey .. itemId
-			self.macroList[macroIndex] = macroId
-			macroIndex = macroIndex + 1
+			self.items[itemsIndex] = macroId
+			itemsIndex = itemsIndex + 1
 			AutoBarSearch:RegisterMacro(macroId, nil, itemId, itemDB.itemInfo)
 		end
 	end
 
 	-- Trim excess
-	if (self.items) then
-		for index = itemsIndex, # self.items, 1 do
-			self.items[index] = nil
-		end
+	for index = itemsIndex, # self.items, 1 do
+		self.items[index] = nil
 	end
-	if (self.castList) then
-		for index = castListIndex, # self.castList, 2 do
-			self.castList[index] = nil
-			self.castList[index + 1] = nil
-		end
-	end
-	if (self.macroList) then
-		for index = macroIndex, # self.macroList, 1 do
-			self.macroList[index] = nil
-		end
-	end
-
-	if (self.castList) then
-		AutoBarCategory:FilterClass(self.castList)
-	end
---DevTools_Dump(self.itemList)
---DevTools_Dump(self.items)
---DevTools_Dump(self.castList)
-	AutoBarCustom.super.prototype.Refresh(self)
 end
 -- /dump AutoBarCategoryList["CustomArrangeTest"]
 -- /dump AutoBar.db.account.customCategories["CustomArrangeTest"]

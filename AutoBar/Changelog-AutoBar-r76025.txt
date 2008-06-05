@@ -1,4 +1,13 @@
 ------------------------------------------------------------------------
+r76025 | toadkiller | 2008-06-04 16:21:07 -0400 (Wed, 04 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Rework custom categories.  Spells had issues and need to be redragged from your spellbook.
+
+------------------------------------------------------------------------
 r75941 | toadkiller | 2008-06-03 18:32:24 -0400 (Tue, 03 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarButton.lua
@@ -1149,51 +1158,4 @@ Changed paths:
 
 AutoBar : 
 - esES updated
-------------------------------------------------------------------------
-r72562 | toadkiller | 2008-05-03 16:39:23 -0400 (Sat, 03 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Tarkumi: fix for right click spell tooltip.
-
-------------------------------------------------------------------------
-r72549 | toadkiller | 2008-05-03 14:05:31 -0400 (Sat, 03 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-
-AutoBar : 
--- Update Button Category name when changed.
-
-------------------------------------------------------------------------
-r72541 | toadkiller | 2008-05-03 13:24:03 -0400 (Sat, 03 May 2008) | 5 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- Consumable.Buff Type.Both -> Consumable.Buff Type.Flask
--- Change clumsy and ambiguous "Buff: Both Battle and Guardian Elixir" to "Buff: Flask"
--- All hail bobbyblade who found the crash wow error: Using "|" in a string followed by numbers is bad M'Kay.
-
-------------------------------------------------------------------------
-r72498 | scorpio0920 | 2008-05-03 01:49:39 -0400 (Sat, 03 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhCN localization.
-- Update zhTW localization.
 ------------------------------------------------------------------------

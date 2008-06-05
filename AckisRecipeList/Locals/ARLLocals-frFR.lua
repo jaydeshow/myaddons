@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-06-02 12:44:45 -0400 (Mon, 02 Jun 2008) $
-$Rev: 75818 $
+$Date: 2008-06-04 14:22:43 -0400 (Wed, 04 Jun 2008) $
+$Rev: 76016 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -19,48 +19,62 @@ local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "frFR", false);
 if not L then return end
 
 -- Addon Info
---L["Version"] = "Version: "
+L["Version"] = "Version : "
 L["Author"] = "Ackis sur Illidan (US) Horde"
---L["Wiki"] = "Wiki: "
-L["Website"] = "Site web: "
---L["Credits"] = "Credits: "
-L["Locals"] = "Compatible avec les langues: "
+L["Wiki"] = "Wiki : "
+L["Website"] = "Site web : "
+L["Credits"] = "Remerciements : "
+L["Locals"] = "Compatible avec : "
 
 -- Options Categories
 L["Display"] = "Affichage"
 L["DISPLAY_OPTIONS"] = "Options d'affichage"
---L["DISPLAY_OPTIONS_LONG"] = "Allows you to customize how the GUI behaves."
+L["DISPLAY_OPTIONS_LONG"] = "Vous permet de personnaliser le comportement de l'IUG."
 L["Filter"] = "Filtrage"
 L["FILTER_OPTIONS"] = "Options de filtrage"
---L["FILTER_OPTIONS_LONG"] = "Allows you to customize which recipes are filtered."
+L["FILTER_OPTIONS_LONG"] = "Vous permet de personnaliser les recettes qui sont filtrées."
 L["Reputation"] = "Réputation"
 L["REP_OPTIONS"] = "Options des réputations"
---L["REP_OPTIONS_LONG"] = "Allows you to customize which reputations are included in the scan."
+L["REP_OPTIONS_LONG"] = "Vous permet de personnaliser les réputations prises en compte dans l'analyse."
+L["Obtain"] = "Obtention"
+L["OBTAIN_OPTIONS"] = "Options d'obtention"
+L["OBTAIN_OPTIONS_LONG"] = "Vous permet de personnaliser les méthodes d'obtention prises en compte dans l'analyse."
 L["Sort"] = "Trier par"
 L["SORT_OPTIONS"] = "Options de tri"
---L["SORT_OPTIONS_LONG"] = "Allows you to customize the way missing recipes are sorted and displayed."
---L["Profile"] = true
+L["SORT_OPTIONS_LONG"] = "Vous permet de personnaliser la façon dont les recettes manquantes sont triées et affichées."
+L["Profile"] = "Profil"
 
 -- Display Options
-L["Use GUI"] = "Utiliser le GUI"
-L["GUI_TOGGLE"] = "Utilise ou non le GUI."
+L["Use GUI"] = "Utiliser l'IUG"
+L["GUI_TOGGLE"] = "Utilise ou non l'IUG."
 L["Include Filtered"] = "Compter les filtrés"
 L["FILTERCOUNT_TOGGLE"] = "Intègre les recettes filtrées dans le nombre total des recettes."
-L["Close GUI"] = "Fermer le GUI"
+L["Close GUI"] = "Fermer l'IUG"
 L["CLOSEGUI_TOGGLE"] = "Ferme la fenêtre de ARL quand la fenêtre de métier est fermée."
 
 -- Toggle Options
 L["Faction"] = "Faction"
 L["FACTION_TOGGLE"] = "Intègre ou non les recettes des deux factions dans l'analyse."
-L["PVP_TOGGLE"] = "Intègre ou non les recettes obtenues en JcJ dans l'analyse."
---L["Classes"] = true
+L["Classes"] = "Classes"
 L["CLASS_TOGGLE"] = "Intègre ou non les recettes spécifiques à certaines classes dans l'analyse."
 L["Specialities"] = "Spécialités"
 L["SPECIALITY_TOGGLE"] = "Intègre ou non toutes les spécialisations des métiers dans l'analyse."
-L["RAID_TOGGLE"] = "Intègre ou non les recettes de raid difficiles à obtenir (Coeur du Magma, Caverne du sanctuaire du Serpent, etc.) dans l'analyse."
 L["Skill"] = "Compétence"
 L["SKILL_TOGGLE"] = "Intègre ou non toutes les recettes quelque soit votre niveau de compétence actuel."
---L["SEASONAL_TOGGLE"] = "Seasonal obtained recipes should be included in the scan."
+
+-- Obtain Filter Options
+L["BOEFilter"] = "Lié quand équipé"
+L["BOE_TOGGLE"] = "Intègre ou non les recettes liées quand équipées dans l'analyse."
+L["BOPFilter"] = "Lié quand ramassé"
+L["BOP_TOGGLE"] = "Intègre ou non les recettes liées quand ramassées dans l'analyse."
+L["PVP_TOGGLE"] = "Intègre ou non les recettes obtenues en JcJ dans l'analyse."
+L["RAID_TOGGLE"] = "Intègre ou non les recettes de raid difficiles à obtenir (Coeur du Magma, Caverne du sanctuaire du Serpent, etc.) dans l'analyse."
+L["SEASONAL_TOGGLE"] = "Intègre ou non les recettes saisonnières dans l'analyse."
+--L["TRAINER_TOGGLE"] = true
+--L["VENDOR_TOGGLE"] = true
+--L["INSTANCE_TOGGLE"] = true
+--L["QUEST_TOGGLE"] = true
+--L["TRAINER_TOGGLE"] = true
 
 -- Sorting options
 L["Name"] = "Nom"
@@ -87,44 +101,44 @@ L["FILTER_OPEN"] = "Filtre >>>"
 L["FILTER_CLOSE"] = "<<< Filtre"
 L["Reset"] = "Réinitialiser"
 L["Sort"] = "Trier"
---L["World Drop"] = true
---L["Mob Drop"] = true
+L["World Drop"] = "Butin mondial"
+L["Mob Drop"] = "Butin de monstre"
 L["Quest"] = "Quête"
---L["Reputation"] = true
---L["Instance"] = true
---L["BoPMenu"] = "BoP"
---L["Horde"] = true 
---L["Alliance"] = true
+L["Reputation"] = "Réputation"
+L["Instance"] = "Instance"
+L["BoPMenu"] = "LqR"
+L["Horde"] = "Horde"
+L["Alliance"] = "Alliance"
 L["Known"] = "Connu"
 L["Unknown"] = "Inconnu"
 
 -- Tooltip Text
---L["Scan Skills Long"] = "Scan for missing recipes using Ackis Recipe List."
---L["Close Window"] = "Close the Ackis Recipe List Window."
---L["Expand All"] = "Expands all recipes."
---L["Collapse All"] = "Collapses all recipes."
---L["FILTER_OPEN_TT"] = "Open filter option panel."
---L["FILTER_CLOSE_TT"] = "Close filter option panel."
---L["RESET_TT"] = "Reset the search string."
---L["SORT_TT"] = "Change the sort order for the list."
---L["VENDOR_TT"] = "Check to include Vendor recipes in the list."
---L["TRAINER_TT"]= "Check to include Trained recipes in the list."
---L["WORLD_TT"] = "Check to include World Drop recipes in the list."
---L["MOB_TT"] = "Check to include specific Mob Drop recipes in the list."
---L["QUEST_TT"] = "Check to include Quest reward recipes in the list."
---L["SEASON_TT"] = "Check to includes Seasonal recipes in the list."
---L["REP_TT"] = "Check to include Reputation reward recipes in the list."
---L["INSTANCE_TT"] = "Check in include recipes only found in instances in the list."
---L["BOP_TT"] = "Check to only view Bind on Pickup recipes in the list."
---L["HORDE_TT"] = "Check to include Horde only recipes in the list."
---L["ALLIANCE_TT"] = "Check to include Alliance only recipes in the list."
---L["KNOWN_TT"] = "Check to include known recipes in the list."
---L["UNKNOWN_TT"] = "Check to include unknwon recipes in the list."
+L["Scan Skills Long"] = "Analyse les recettes manquantes à l'aide de Ackis Recipe List."
+L["Close Window"] = "Ferme la fenêtre de Ackis Recipe List."
+L["Expand All"] = "Étend toutes les recettes."
+L["Collapse All"] = "Réduit toutes les recettes."
+L["FILTER_OPEN_TT"] = "Ouvre le panneau des options de tri."
+L["FILTER_CLOSE_TT"] = "Ferme le panneau des options de tri."
+L["RESET_TT"] = "Réinitialise le string de recherche."
+L["SORT_TT"] = "Change l'ordre de tri de la liste."
+L["VENDOR_TT"] = "Cochez pour intégrer les recettes des marchands dans la liste."
+L["TRAINER_TT"]= "Cochez pour intégrer les recettes apprises auprès de l'entraîneur dans la liste."
+L["WORLD_TT"] = "Cochez pour intégrer les recettes des butins mondiaux dans la liste."
+L["MOB_TT"] = "Cochez pour intégrer les recettes trouvées sur des monstres spécifiques dans la liste."
+L["QUEST_TT"] = "Cochez pour intégrer les recettes des récompétences de quête dans la liste."
+L["SEASON_TT"] = "Cochez pour intégrer les recettes saisonnières dans la liste."
+L["REP_TT"] = "Cochez pour intégrer les recettes des réputations dans la liste."
+L["INSTANCE_TT"] = "Cochez pour intégrer uniquement les recettes trouvées en instance dans la liste."
+L["BOP_TT"] = "Cochez pour afficher uniquement les recettes liées quand ramassées dans la liste."
+L["HORDE_TT"] = "Cochez pour intégrer les recettes spécifiques à la Horde dans la liste."
+L["ALLIANCE_TT"] = "Cochez pour intégrer les recettes spécifiques à l'Alliance dans la liste."
+L["KNOWN_TT"] = "Cochez pour intéger les recettes connues dans la liste."
+L["UNKNOWN_TT"] = "Cochez pour intégrer les recettes inconnues dans la liste."
 
 -- Recipe Database
 L["Trainer"] = "Entraîneur"
-L["LimitedSupply"] = "Stock limité d'un vendeur"
-L["Vendor"] = "Vendeur"
+L["LimitedSupply"] = "Stock limité d'un marchand"
+L["Vendor"] = "Marchand"
 L["Discovery"] = "Découverte"
 L["PVP"] = "JcJ"
 L["Raid"] = "Raid"
@@ -136,24 +150,24 @@ L["Artisan"] = "Artisan"
 L["Master"] = "Maître"
 
 -- Common ways to obtain recipes
-L["UZD"] = "Butin de zone inhabituel: "
+L["UZD"] = "Butin de zone inhabituel : "
 L["CWD"] = "Butin mondial commun"
 L["UWD"] = "Butin mondial inhabituel"
 L["RWD"] = "Butin mondial rare"
 L["EWD"] = "Butin mondial épique"
-L["BoE"] = "Butin LqE: "
-L["BoP"] = "Butin LqR: "
+L["BoE"] = "Butin LqE : "
+L["BoP"] = "Butin LqR : "
 L["QuestReward"] = "Récompense de quête : "
 
 -- Common quests/drops
 L["DMCACHE"] = "Cache de Noué Dédodevie"
 L["Gordok Ogre Suit"] = "Tenue d'ogre gordok"
 L["Gordok Ogre Suit Obt"] = "La tenue d'ogre gordok"
-L["Spectral Essence Obt"] = "Récompense de quête : Kirtonos le Hérault (vous permet de voir le vendeur Magnus Givréveil près de Scholomance)"
+L["Spectral Essence Obt"] = "Kirtonos le Hérault (vous permet de voir le vendeur Magnus Givréveil près de Scholomance)"
 L["TrueBelieverQuest"] = "Les vrais croyants - Rare"
 
 -- Raid Drop Obtain Info
-L["ADNaxx"] = "S'apprend grâce au Maître-artisan Omarion dans l'aile des chevaliers de la mort de Naxxramas."
+L["ADNaxx"] = "Entraîneur : Maître-artisan Omarion de l'aile des chevaliers de la mort de Naxxramas."
 L["MOLTENCORE"] = "Butin de raid LqR : N'importe quel boss à CM."
 L["AQ20/AQ40"] = "Butin de raid LqR : N'importe quel boss à AQ20/AQ40."
 L["SSC/TKBoP"] = "Butin de raid LqR : N'importe quel monstre et boss à CSS/DT."
@@ -164,42 +178,40 @@ L["SunwellBoP"] = "Butin de raid LqR : N'importe quel monstre et boss au Puits 
 L["SunwellBoE"] = "Butin de raid LqE : N'importe quel monstre et boss au Puits de soleil."
 L["BT/HYJALBoE"] = "Butin de raid LqR : N'importe quel monstre et boss à Hyjal/TN."
 L["ZA"] = "Butin de raid LqR : N'importe quel boss à ZA."
-L["Unknown"] = "Butin inconnu : le moyen d'obtenir cette recette est inconnu. Pour contribuer au développement de Ackis Recipe, rendez-vous sur www.wowace.com/forums, merci."
+L["Unknown"] = "Butin inconnu : le moyen d'obtenir cette recette est inconnu. Veuillez en informer l'auteur de cet addon."
 
 -- Faction info
-L["WintersVeil"] = "Saisonnier :Fête du Voile d'hiver"
+L["WintersVeil"] = "Saisonnier : Fête du Voile d'hiver"
 L["Lunar Festival"] = "Saisonnier : Fête lunaire"
---L["Darkmoon Faire"] = true
+L["Darkmoon Faire"] = "Foire de Sombrelune"
 L["Seasonal"] = "Saisonnier"
 
 -- Alchemy Obtain Information
-L["Discovery - Flasks/Potions"] = "S'apprend en fabriquant des flacons, des élixirs ou des potions contenant des herbes de l'Outreterre."
-L["Discovery - Protection Potions"] = "S'apprend en fabriquant des potions de protection majeures."
-L["Discovery - Transmutes"] = "S'apprend en transmutant des objets contenant des matériaux de l'Outreterre."
+L["Discovery - Flasks/Potions"] = "Découverte : S'apprend en fabriquant des flacons, des élixirs ou des potions contenant des herbes de l'Outreterre."
+L["Discovery - Protection Potions"] = "Découverte : S'apprend en fabriquant des potions de protection majeures."
+L["Discovery - Transmutes"] = "Découverte : S'apprend en transmutant des objets contenant des matériaux de l'Outreterre."
 L["Goblin Rocket Fuel Obt"] = "Création : cette recette est créée par les ingénieurs gobelins"
-L["Gurubashi Mojo Madness Obt"] = "Vous pouvez apprendre ceci en cliquant sur une tablette de pierre à la Frontière de la folie de Zul'Gurub"
-L["Mighty Trolls Blood Potion Obt"] = "Parlez à Henry Stern"
+L["Gurubashi Mojo Madness Obt"] = "Raid : Vous pouvez apprendre ceci en cliquant sur une tablette de pierre à la Frontière de la folie de Zul'Gurub"
+L["Mighty Trolls Blood Potion Obt"] = "Entraîneur : Henry Stern"
 -- Mob Drop
 L["Elixir of Greater Firepower Obt"] = "Esclavagiste Sombrefer, Garde Sombrefer, Sous-chef Sombrefer"
-L["Elixir of the Mongoose Obt"] = "Butin de monstre : Voleur Jadefeu (Gangrebois), Voleur Legashi (Azshara)"
-L["Elixir of the Sages Obt"] = "Butin de monstre : Enchanteur écarlate, Clerc écarlate, Vicaire écarlate, Archimage écarlate, Inquisiteur écarlate (Maleterres de l'est)"
-L["Fel Mana Potion Obt"] = "Butin de monstre LqR : Soldat éclipsion, Garde-sang éclipsion, Chevalier de sang éclipsion, Lieur de sort éclipsion, Archimage éclipsion, Centurion éclipsion, Cavalier éclipsion, Torloth le Magnifique, Guetteur Illidari (Vallée d'Ombrelune)"
-L["Fel Regeneration Potion Obt"] = "Butin de monstre LqR : Diablotin de la Forgemort, Gardien de la Forgemort, Forgeron de la Forgemort, Bricoleur de la Forgemort (Vallée d'Ombrelune)"
-L["Fel Strength Elixir Obt"] = "Butin de monstre LqR : Fabricant d'armes mo'arg, Maître de Terreur, Marche-courroux, Démoniste du Conseil des ombres (Vallée d'Ombrelune)"
-L["Gift of Arthas Obt"] = "Butin de monstre : Ecorcheur Squelette, Goule écumante (Maleterres de l'ouest)"
-L["Greater Arcane Protection Potion Obt"] = "Butin de monstre : Tisse-magie cobalt (Berceau-de-l'Hiver)"
-L["Greater Fire Protection Potion Obt"] = "Butin de monstre : Invocateur de Brandefeu, Pyromancien de Brandefeu (Pic Rochenoire inférieur)"
-L["Greater Frost Protection Potion Obt"] = "Butin de monstre : Géant Cognegivre (Berceau-de-l'Hiver)"
-L["Greater Nature Protection Potion Obt"] = "Butin de monstre : Horreur décomposée, Béhémoth pourrissant (Maleterres de l'ouest)"
-L["Greater Shadow Protection Potion Obt"] = "Butin de monstre : Adepte noir, Ombremage (Maleterres de l'est)"
-L["Major Arcane Protection Potion Obt"] = "Butin de monstre LqR : Arcaniste vir'aani (Nagrand)"
-L["Major Fire Protection Potion Obt"] = "Butin de monstre LqR : Astromage Cherche-soleil (Le Méchanar)"
-L["Major Frost Protection Potion Obt"] = "Butin de monstre LqR : Prince-nexus Shaffar (Tombes-mana)"
-L["Major Holy Protection Potion Obt"] = "Butin de monstre LqR : Porte-flamme abyssal (Les Tranchantes)"
-L["Major Shadow Protection Potion Obt"] = "Butin de monstre LqR : Démoniste du Conseil des ombres (Vallée d'Ombrelune)"
-L["Mighty Rage Potion Obt"] = "Butin de monstre : Pourfendeur Rochenoire (Steppes ardentes)"
-L["Wildvine Potion Obt"] = "Butin de monstre : Trolls de la Vallée de Strangleronce et des Hinterlands"
-
+L["Elixir of the Mongoose Obt"] = "Voleur Jadefeu (Gangrebois), Voleur Legashi"
+L["Elixir of the Sages Obt"] = "Enchanteur écarlate, Clerc écarlate, Vicaire écarlate, Archimage écarlate, Inquisiteur écarlate"
+L["Fel Mana Potion Obt"] = "Soldat éclipsion, Garde-sang éclipsion, Chevalier de sang éclipsion, Lieur de sort éclipsion, Archimage éclipsion, Centurion éclipsion, Cavalier éclipsion, Torloth le Magnifique, Guetteur Illidari"
+L["Fel Regeneration Potion Obt"] = "Diablotin de la Forgemort, Gardien de la Forgemort, Forgeron de la Forgemort, Bricoleur de la Forgemort"
+L["Fel Strength Elixir Obt"] = "Fabricant d'armes mo'arg, Maître de Terreur, Marche-courroux, Démoniste du Conseil des ombres"
+L["Gift of Arthas Obt"] = "Ecorcheur Squelette, Goule écumante"
+L["Greater Arcane Protection Potion Obt"] = "Tisse-magie cobalt"
+L["Greater Fire Protection Potion Obt"] = "Invocateur de Brandefeu, Pyromancien de Brandefeu"
+L["Greater Frost Protection Potion Obt"] = "Géant Cognegivre"
+L["Greater Nature Protection Potion Obt"] = "Horreur décomposée, Béhémoth pourrissant"
+L["Greater Shadow Protection Potion Obt"] = "Adepte noir, Ombremage"
+L["Major Arcane Protection Potion Obt"] = "Arcaniste vir'aani"
+L["Major Fire Protection Potion Obt"] = "Astromage Cherche-soleil"
+L["Major Holy Protection Potion Obt"] = "Porte-flamme abyssal"
+L["Major Shadow Protection Potion Obt"] = "Démoniste du Conseil des ombres"
+L["Mighty Rage Potion Obt"] = "Pourfendeur Rochenoire"
+L["Wildvine Potion Obt"] = "Divers trolls"
 -- Quest
 L["Discolored Healing Potion Obt"] = "Coeurs sauvages"
 L["Elixir of Brute Force Obt"] = "Dadanga a faim (récompense aléatoire)"
@@ -276,10 +288,8 @@ L["Fishing Daily"] = "Récompense de quête : récompense aléatoire de la quê
 L["Cooking Daily"] = "Récompense de quête : récompense aléatoire de la quête journalière en cuisine"
 L["Goldthorn Tea Obt"] = "Parlez à Henry Stern aux Souilles de Tranchebauge"
 L["Stewed Trout Obt"] = "Entraîneur : Kylene"
-
 -- Mob Drop
 L["Runn Tum Tuber Surprise Obt"] = "Pusillin"
-
 -- Quest
 L["Barbecued Buzzard Wing Obt"] = "Ailes de busard grillées"
 L["Beer Basted Boar Ribs Obt"] = "Côtes de sanglier à la bière"
@@ -346,48 +356,39 @@ L["Smoking Heart of the Mountain Obt"] = "Seigneur Roccor"
 
 -- Engineering Obtain Information
 L["ENG_MEMBERSHIP_BENEFITS"] = "Récompense de quête : Renouveler sa carte de membre ingénieur"
-L["Adamantite Arrow Maker Obt"] = "Butin de monstre LqR : Archer solfurie (Raz-de-Néant)"
-L["Alarm-O-Bot Obt"] = "Butin de monstre LqE : Ingénieur de siège (Profondeurs de Rochenoire)"
-L["Arcanite Dragonling Obt"] = "Butin de monstre LqE : Tisse-magie cobalt (Berceau-de-l'Hiver)"
-L["Dark Iron Bomb Obt"] = "Butin de monstre LqE : Ingénieur de siège (Profondeurs de Rochenoire)"
-L["Dark Iron Rifle Obt"] = "Butin de monstre LqE : Artisan Forge-ruine (Profondeurs de Rochenoire)"
-L["Discombobulator Ray Obt"] = "Butin de monstre LqE : Mekgénieur Thermojoncteur (Gnomeregan)"
-L["Felsteel Boomstick Obt"] = "Butin de monstre LqR : Ingénieur Forge-ruine (Les Tranchantes)"
-L["Field Repair Bot 110G Obt"] = "Butin de monstre LqR : Analyseur gan'arg (Les Tranchantes)"
-L["Field Repair Bot 74A Obt"] = "Recette obtenue en cliquant sur un parchemin aux pieds du Seigneur golem Argelmach (Profondeurs de Rochenoire)"
-L["Flame Detector Obt"] = "Butin de monstre LqE : Mekgénieur Thermojoncteur (Gnomeregan)"
-L["Flash Bomb Obt"] = "Récompense de quête : Pêche aux perles\n - Mekgénieur Thermojoncteur (Gnomeregan)"
-L["Flawless Arcanite Rifle Obt"] = "Butin de monstre LqE : Chasseur des ténèbres Ecorchemousse (Maleterres de l'est)"
-L["Goblin Jumper Cables XL Obt"] = "Butin de monstre LqE : Lanfiche Brouillecircuit (Profondeurs de Rochenoire)"
-L["Hyper-Radiant Flame Reflector Pbt"] = "Butin de monstre LqE : Solakar Voluteflamme (Pic Rochenoire supérieur)"
-L["Hyper-Vision Goggles Obt"] = "Butin de monstre LqR : Fabricant d'armes mo'arg (Vallée d'Ombrelune)"
-L["Khorium Scope Obt"] = "Butin de monstre LqR : Franc-archer solfurie (Raz-de-Néant)"
-L["Major Recombobulator Obt"] = "Butin du tribu des Gordok à Hache-tripes nord"
+L["Field Repair Bot 74A Obt"] = " Parchemin interactif près du boss."
 L["Minor Recombobulator Obt"] = "Utiliser une Carte perforée blanche dans le Matrix Punchograph 3005-A.  Ensuite, utiliser une Carte perfoirée jaune dans le Matrix Punchograph 3005-B."
-L["Rocket Boots Xtreme Lite Obt"] = "Butin de monstre LqR : Mécano-seigneur Capacitus (Le Méchanar)"
-L["Rocket Boots Xtreme Obt"] = "Butin de monstre LqR : Mékgénieur Montevapeur (Le Caveau de la vapeur)"
-L["Stabilized Eternium Scope Obt"] = "Butin de monstre LqR : Attumen le Veneur (Karazhan)"
-L["Steam Tonk Controller Obt"] = "Récompense de quête : 40 Bons (Foire de Sombrelune)"
-L["Ultra-Flash Shadow Reflector Obt"] = "Butin de monstre LqE : Inquisiteur cramoisi (Stratholme)"
-L["Voice Amplification Modulator Obt"] = "Butin de monstre LqE : Inquisiteur cramoisi (Stratholme)"
-L["World Enlarger Obt"] = "Butin de monstre LqE : Ingénieur de siège (Profondeurs de Rochenoire)"
-L["Zapthrottle Mote Extractor Obt"] = "Récompense de quête : L'extracteur de granules Zappeur-Gazier !"
+L["Discombobulator Ray Obt"] = "Utilisez une Carte d'accès aux données niveau DELTA sur la machine D."
+-- Mob Drop
+L["Adamantite Arrow Maker Obt"] = "Archer solfurie"
+L["Arcanite Dragonling Obt"] = "Tisse-magie cobalt"
+L["Dark Iron Rifle Obt"] = "Artisan Forge-ruine"
+L["Felsteel Boomstick Obt"] = "Ingénieur Forge-ruine"
+L["Field Repair Bot 110G Obt"] = "Analyseur gan'arg"
+L["Flawless Arcanite Rifle Obt"] = "Chasseur des ténèbres Ecorchemousse"
+L["Hyper-Vision Goggles Obt"] = "Fabricant d'armes mo'arg"
+L["Khorium Scope Obt"] = "Franc-archer solfurie"
+L["Major Recombobulator Obt"] = "Tribu des Gordok"
+L["Weapon Technician"] = "Ingénieur de siège"
+L["Crimson Inquisitor"] = "Inquisiteur cramoisi"
+-- Quest
+L["Flash Bomb Obt"] = "Recette de la bombe éclairante"
+L["Steam Tonk Controller Obt"] = "40 tickets - Schéma : Commande de chariotte à vapeur"
+L["Zapthrottle Mote Extractor Obt"] = "L'extracteur de granules Zappeur-Gazier !"
 
 -- First Aid Obtain Information
 -- Nothing here needed yet
 
 -- Jewelcrafting Obtain Information
-L["Arcane Khorium Band Obt"] = "Butin de monstre LqR : Pourfend-mage (Raz-de-Néant)"
-L["Blades Edge Summon Bosses"] = "Butin de monstre LqE : boss invoqués aux Tranchantes"
-L["Chaotic Skyfire Diamond Obt"] = "Butin de monstre LqR : Sirène glissentaille (Vallée d'Ombrelune)"
-L["Circlet of Arcane Might Obt"] = "Butin de monstre LqR : Chasseur d'époques (Contreforts de Hautebrande d'antan)"
-L["Coronet of the Verdant Flame Obt"] = "Butin de monstre LqR : Botaniste Cherche-soleil (La Botanica)"
-L["Dark Iron Scorpid Obt"] = "Butin de monstre LqR : Seigneur golem Argelmach (Profondeurs de Rochenoire)"
-L["Figurine - Black Diamond Crab Obt"] = "Butin de monstre LqR : Intendant Zigris (Pic Rochenoire inférieur)"
-L["Khorium Band of Frost Obt"] = "Butin de monstre LqR : Sorcière de Glissecroc (Le Caveau de la vapeur)"
-L["Khorium Band of Leaves Obt"] = "Butin de monstre LqR : Aigleffroi vekh'nir (Les Tranchantes)"
-L["Khorium Band of Shadows Obt"] = "Butin de monstre LqR : Ténébromancien du sombre Conclave (Vallée d'Ombrelune)"
-L["Khorium Inferno Band Obt"] = "Butin de monstre LqR : Tisseur d'ombre Syth (Les salles des Sethekk)"
+L["Blades Edge Summon Bosses"] = "Boss invoqués d'Ogri'la"
+-- Mob Drop
+L["Arcane Khorium Band Obt"] = "Pourfend-mage"
+L["Chaotic Skyfire Diamond Obt"] = "Sirène glissentaille"
+L["Coronet of the Verdant Flame Obt"] = "Botaniste Cherche-soleil"
+L["Khorium Band of Frost Obt"] = "Sorcière de Glissecroc"
+L["Khorium Band of Leaves Obt"] = "Aigleffroi vekh'nir"
+L["Khorium Band of Shadows Obt"] = "Ténébromancien du sombre Conclave"
+-- Quest
 
 -- Leatherworking Obtain Information
 L["Arcane Armor Kit Obt"] = "Butin de monstre LqR : Chronoseigneur Déjà (Le Noir Marécage)"
@@ -447,7 +448,7 @@ L["Wild Leather Shoulders Obt"] = "Récompense de quête : Les épaulières en 
 L["Wild Leather Vest Obt"] = "Récompense de quête : Le gilet en cuir fauve"
 
 -- Smelting Obtain Information
-L["Dark Iron Obt"] = "Récompense de quête : BRD, nécessite 20 Barres d'or, 2 Rubis étoilé, et 10 Barres de vrai-argent.  Parlez à Gloom'Rel, l'un des mort-vivants dans la Tombe des invocateurs."
+L["Dark Iron Obt"] = "Nécessite 20 Barres d'or, 2 Rubis étoilé, et 10 Barres de vrai-argent - Parlez à Funéb'rel, l'un des mort-vivants dans la Tombe des invocateurs."
 L["Elementium Obt"] = "Prenez le contrôle mental de Krixix à BWL. Sur sa barre de familier, une option est disponible pour apprendre cette capacité à votre cible actuelle."
 
 -- Rogue Poison Obtain Information
@@ -485,7 +486,6 @@ L["Wizardweave Turban Obt"] = "Magicien noir"
 -- Beast Training Obtain Information
 L["Rare"] = "Rare"
 L["Elite"] = "Élite"
-
 -- Beasts which have training skills
 L["Agam'ar"] = "Agam'ar"
 L["Aku'mai Fisher"] = "Pêcheur Aku'mai"
@@ -515,11 +515,11 @@ L["Bloodsnout Worg"] = "Flaire-sang worg"
 L["Bonepaw Hyena"] = "Hyène Pattes-d'os"
 L["Bristleback Battleboar"] = "Sanglier de guerre Dos-hirsute"
 L["Broken Tooth"] = "Brèchedent"
-L["Carrion Vulture"] = true
-L["Cave Creeper"] = true
-L["Chatter"] = true
-L["Clack the Reaver"] = true
-L["Clattering Crawler"] = true
+L["Carrion Vulture"] = "Vautour putride"
+L["Cave Creeper"] = "Rampant des cavernes"
+L["Chatter"] = "Cliqueteuse"
+L["Clack the Reaver"] = "Clack le Saccageur"
+L["Clattering Crawler"] = "Clampant cliquetant"
 L["Cleft Scorpid"] = true
 L["Cloud Serpent"] = true
 L["Cobalt Serpent"] = true

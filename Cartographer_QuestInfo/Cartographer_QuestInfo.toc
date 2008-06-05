@@ -5,6 +5,8 @@
 ## Notes-zhCN: 制图大师的配件，提供任务资料库
 ## Title-zhTW: |cFF00FF00[地圖]|r任務資訊 Cartographer [|cffeda55fQuestInfo|r]
 ## Notes-zhTW: 製圖大師模組，提供任務資料庫功能
+## Title-koKR:Cartographer [|cffeda55f퀘스트 정보|r]
+## Notes-koKR: 지도와 미니맵에 퀘스트 관련 정보를 출력해줍니다.
 ## Author: lahow (aka purple@bahamut)
 ## SavedVariables: Cartographer_QuestInfoDB
 ## Version: 2.4.2.0604
@@ -30,6 +32,7 @@ Data\Name-enUS.lua
 Locale\Locale-enUS.lua
 Locale\Locale-zhTW.lua
 Locale\Locale-zhCN.lua
+Locale\Locale-koKR.lua
 
 Core.lua
 Export.lua

@@ -4,8 +4,8 @@ ARL-Enchant.lua
 
 Enchanting data for all of AckisRecipeList
 
-$Date: 2008-06-03 18:03:39 -0400 (Tue, 03 Jun 2008) $
-$Rev: 75939 $
+$Date: 2008-06-04 11:30:19 -0400 (Wed, 04 Jun 2008) $
+$Rev: 75999 $
 
 ]]--
 
@@ -172,36 +172,36 @@ function addon:InitEnchanting()
 	self:addTradeSkillSpell(34008, 360, L["RWD"] .. addon.br .. self:CombineMobs(false,BBOSS["Kael'thas Sunstrider"],BZONE["Magisters' Terrace"]),3,5)
 
 	-- Specific Drops
-	self:addTradeSkillSpell(13612, 145, self:CombineMobs(true,L["Enchant Gloves - Mining Obt"],BZONE["Wetlands"]))
-	self:addTradeSkillSpell(13617, 145, self:CombineMobs(true,L["Enchant Gloves - Herbalism Obt"],BZONE["Ashenvale"]) .. addon.br .. self:CombineMobs(true,L["Enchant Gloves - Herbalism Obt1"],BZONE["Stonetalon Mountains"]))
-	self:addTradeSkillSpell(13620, 145, self:CombineMobs(true,L["Enchant Gloves - Fishing Obt"],BZONE["Hillsbrad Foothills"]))
-	self:addTradeSkillSpell(13698, 200, self:CombineMobs(true,L["Enchant Gloves - Skinning Obt"],BZONE["Arathi Highlands"]))
-	self:addTradeSkillSpell(13841, 215, self:CombineMobs(true,L["Enchant Gloves - Advanced Mining Obt"],BZONE["Stranglethorn Vale"]))
-	self:addTradeSkillSpell(13868, 225, self:CombineMobs(true,L["Enchant Gloves - Advanced Herbalism Obt"],BZONE["Swamp of Sorrows"]))
-	self:addTradeSkillSpell(13882, 225, self:CombineMobs(true,L["Enchant Cloak - Lesser Agility Obt"],BZONE["Alterac Mountains"]) .. addon.br .. self:CombineMobs(true,L["Enchant Cloak - Lesser Agility Obt1"],BZONE["Tanaris"]))
-	self:addTradeSkillSpell(13898, 265, self:CombineMobs(true,L["Enchant Weapon - Fiery Weapon Obt"],BZONE["Blackrock Depths"]))
-	self:addTradeSkillSpell(15596, 265, self:CombineMobs(true,L["Smoking Heart of the Mountain Obt"],BZONE["Blackrock Depths"]))
-	self:addTradeSkillSpell(20029, 285, self:CombineMobs(true,L["Enchant Weapon - Icy Chill Obt"],BZONE["Winterspring"]))
-	self:addTradeSkillSpell(20010, 295, self:CombineMobs(true,L["Enchant Bracer - Superior Strength Obt"],BZONE["Deadwind Pass"]))
-	self:addTradeSkillSpell(20030, 295, self:CombineMobs(true,L["Enchant 2H Weapon - Superior Impact Obt"],BZONE["Lower Blackrock Spire"]))
-	self:addTradeSkillSpell(20033, 295, self:CombineMobs(true,L["Enchant Weapon - Unholy Weapon Obt"],BZONE["Stratholme"]))
-	self:addTradeSkillSpell(20036, 300, self:CombineMobs(true,L["Enchant 2H Weapon - Major Intellect Obt"],BZONE["Stratholme"]))
-	self:addTradeSkillSpell(20031, 300, self:CombineMobs(true,L["Enchant Weapon - Superior Striking Obt"],BZONE["Lower Blackrock Spire"]))
-	self:addTradeSkillSpell(20034, 300, self:CombineMobs(true,L["Enchant Weapon - Crusader Obt"],BZONE["Western Plaguelands"]))
-	self:addTradeSkillSpell(20032, 300, self:CombineMobs(true,L["Enchant Weapon - Lifestealing Obt"],BZONE["Scholomance"]))
-	self:addTradeSkillSpell(20035, 300, self:CombineMobs(true,L["Enchant 2H Weapon - Major Spirit Obt"],BZONE["Scholomance"]))
-	self:addTradeSkillSpell(27906, 320, self:CombineMobs(false,L["Enchant Bracer - Major Defense Obt"],BZONE["Netherstorm"]))
-	self:addTradeSkillSpell(27950, 320, self:CombineMobs(false,L["Enchant Boots - Fortitude Obt"],BZONE["Mana-Tombs"]))
-	self:addTradeSkillSpell(27951, 340, self:CombineMobs(false,L["Enchant Boots - Dexterity Obt"],BZONE["Auchenai Crypts"]))
-	self:addTradeSkillSpell(27968, 340, self:CombineMobs(false,L["Enchant Weapon - Major Intellect Obt"],BZONE["Netherstorm"]))
-	self:addTradeSkillSpell(27914, 350, self:CombineMobs(false,L["Enchant Bracer - Fortitude Obt"],BZONE["The Steamvault"]))
-	self:addTradeSkillSpell(27971, 350, self:CombineMobs(false,L["Enchant 2H Weapon - Savagery Obt"],BZONE["The Shattered Halls"]))
-	self:addTradeSkillSpell(27975, 350, self:CombineMobs(false,L["Enchant Weapon - Major Spellpower Obt"],BZONE["Blade's Edge Mountains"]))
-	self:addTradeSkillSpell(34005, 350, self:CombineMobs(false,L["Enchant Cloak - Greater Arcane Resistance Obt"],BZONE["Shadowmoon Valley"]))
-	self:addTradeSkillSpell(34006, 350, self:CombineMobs(false,L["Enchant Cloak - Greater Shadow Resistance Obt"],BZONE["Netherstorm"]))
-	self:addTradeSkillSpell(27917, 360, self:CombineMobs(false,L["Enchant Bracer - Spellpower Obt"],BZONE["Blade's Edge Mountains"]))
-	self:addTradeSkillSpell(27977, 360, self:CombineMobs(false,L["Enchant 2H Weapon - Major Agility Obt"],BZONE["The Arcatraz"]))
-	self:addTradeSkillSpell(47051, 375, self:CombineMobs(false,BBOSS["Priestess Delrissa"],BZONE["Magisters' Terrace"]))
+	self:addTradeSkillSpell(13612, 145, self:CombineMobs(true,L["Enchant Gloves - Mining Obt"],BZONE["Wetlands"]),3)
+	self:addTradeSkillSpell(13617, 145, self:CombineMobs(true,L["Enchant Gloves - Herbalism Obt"],BZONE["Ashenvale"]) .. addon.br .. self:CombineMobs(true,L["Enchant Gloves - Herbalism Obt1"],BZONE["Stonetalon Mountains"]),3)
+	self:addTradeSkillSpell(13620, 145, self:CombineMobs(true,L["Enchant Gloves - Fishing Obt"],BZONE["Hillsbrad Foothills"]),3)
+	self:addTradeSkillSpell(13698, 200, self:CombineMobs(true,L["Enchant Gloves - Skinning Obt"],BZONE["Arathi Highlands"]),3)
+	self:addTradeSkillSpell(13841, 215, self:CombineMobs(true,L["Enchant Gloves - Advanced Mining Obt"],BZONE["Stranglethorn Vale"]),3)
+	self:addTradeSkillSpell(13868, 225, self:CombineMobs(true,L["Enchant Gloves - Advanced Herbalism Obt"],BZONE["Swamp of Sorrows"]),3)
+	self:addTradeSkillSpell(13882, 225, self:CombineMobs(true,L["Enchant Cloak - Lesser Agility Obt"],BZONE["Alterac Mountains"]) .. addon.br .. self:CombineMobs(true,L["Enchant Cloak - Lesser Agility Obt1"],BZONE["Tanaris"]),3)
+	self:addTradeSkillSpell(13898, 265, self:CombineMobs(true,L["Enchant Weapon - Fiery Weapon Obt"],BZONE["Blackrock Depths"]),3,5)
+	self:addTradeSkillSpell(15596, 265, self:CombineMobs(true,L["Smoking Heart of the Mountain Obt"],BZONE["Blackrock Depths"]),3,5)
+	self:addTradeSkillSpell(20029, 285, self:CombineMobs(true,L["Enchant Weapon - Icy Chill Obt"],BZONE["Winterspring"]),3)
+	self:addTradeSkillSpell(20010, 295, self:CombineMobs(true,L["Enchant Bracer - Superior Strength Obt"],BZONE["Deadwind Pass"]),3)
+	self:addTradeSkillSpell(20030, 295, self:CombineMobs(true,L["Enchant 2H Weapon - Superior Impact Obt"],BZONE["Lower Blackrock Spire"]),3,5)
+	self:addTradeSkillSpell(20033, 295, self:CombineMobs(true,L["Enchant Weapon - Unholy Weapon Obt"],BZONE["Stratholme"]),3,5)
+	self:addTradeSkillSpell(20036, 300, self:CombineMobs(true,L["Enchant 2H Weapon - Major Intellect Obt"],BZONE["Stratholme"]),3,5)
+	self:addTradeSkillSpell(20031, 300, self:CombineMobs(true,L["Enchant Weapon - Superior Striking Obt"],BZONE["Lower Blackrock Spire"]),3,5)
+	self:addTradeSkillSpell(20034, 300, self:CombineMobs(true,L["Enchant Weapon - Crusader Obt"],BZONE["Western Plaguelands"]),3)
+	self:addTradeSkillSpell(20032, 300, self:CombineMobs(true,L["Enchant Weapon - Lifestealing Obt"],BZONE["Scholomance"]),3,5)
+	self:addTradeSkillSpell(20035, 300, self:CombineMobs(true,L["Enchant 2H Weapon - Major Spirit Obt"],BZONE["Scholomance"]),3,5)
+	self:addTradeSkillSpell(27906, 320, self:CombineMobs(false,L["Enchant Bracer - Major Defense Obt"],BZONE["Netherstorm"]),4)
+	self:addTradeSkillSpell(27950, 320, self:CombineMobs(false,L["Enchant Boots - Fortitude Obt"],BZONE["Mana-Tombs"]),4,5)
+	self:addTradeSkillSpell(27951, 340, self:CombineMobs(false,L["Enchant Boots - Dexterity Obt"],BZONE["Auchenai Crypts"]),4,5)
+	self:addTradeSkillSpell(27968, 340, self:CombineMobs(false,L["Enchant Weapon - Major Intellect Obt"],BZONE["Netherstorm"]),4)
+	self:addTradeSkillSpell(27914, 350, self:CombineMobs(false,L["Enchant Bracer - Fortitude Obt"],BZONE["The Steamvault"]),4,5)
+	self:addTradeSkillSpell(27971, 350, self:CombineMobs(false,L["Enchant 2H Weapon - Savagery Obt"],BZONE["The Shattered Halls"]),4,5)
+	self:addTradeSkillSpell(27975, 350, self:CombineMobs(false,L["Enchant Weapon - Major Spellpower Obt"],BZONE["Blade's Edge Mountains"]),4)
+	self:addTradeSkillSpell(34005, 350, self:CombineMobs(false,L["Enchant Cloak - Greater Arcane Resistance Obt"],BZONE["Shadowmoon Valley"]),4)
+	self:addTradeSkillSpell(34006, 350, self:CombineMobs(false,L["Enchant Cloak - Greater Shadow Resistance Obt"],BZONE["Netherstorm"]),4)
+	self:addTradeSkillSpell(27917, 360, self:CombineMobs(false,L["Enchant Bracer - Spellpower Obt"],BZONE["Blade's Edge Mountains"]),4)
+	self:addTradeSkillSpell(27977, 360, self:CombineMobs(false,L["Enchant 2H Weapon - Major Agility Obt"],BZONE["The Arcatraz"]),4,5)
+	self:addTradeSkillSpell(47051, 375, self:CombineMobs(false,BBOSS["Priestess Delrissa"],BZONE["Magisters' Terrace"]),4,5)
 
 	-- Seasonal
 	self:addTradeSkillSpell(21931, 190, L["WintersVeil"],7)

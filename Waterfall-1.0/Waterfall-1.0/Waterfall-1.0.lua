@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Waterfall-1.0
-Revision: $Revision: 71942 $
+Revision: $Revision: 76021 $
 Author(s): Nargiddley (nargiddley@gmail.com)
 Inspired By: Dewdrop by ckknight
 Website: http://www.wowace.com/wiki/Waterfall-1.0
@@ -12,9 +12,10 @@ Dependencies: AceOO-2.0
 ]]
 
 local MAJOR_VERSION = "Waterfall-1.0"
-local MINOR_VERSION = "$Revision: 71942 $"
+local MINOR_VERSION = "$Revision: 76021 $"
 
 local CONTROL_LIMIT = 250
+local _
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -2719,24 +2720,25 @@ end
 
 local function DragLinkGetTexture(self)
 	local linkInfo = self.linkInfo
+	local texture
 	if (linkInfo) then
 		if (linkInfo.itemType == "item") then
 			if (linkInfo.itemId and tonumber(linkInfo.itemId)) then
-				local _,_,_,_,_,_,_,_,_,texture = GetItemInfo(tonumber(linkInfo.itemId))
+				_,_,_,_,_,_,_,_,_,texture = GetItemInfo(tonumber(linkInfo.itemId))
 				if (texture) then
 					return texture
 				end
 			end
 		elseif (linkInfo.itemType == "spell") then
 			if (linkInfo.spellName) then
-				local name, rank, texture = GetSpellInfo(linkInfo.spellName)
+				_, _, texture = GetSpellInfo(linkInfo.spellName)
 				if (texture) then
 					return texture
 				end
 			end
 		elseif (linkInfo.itemType == "macro") then
 			if (linkInfo.itemId) then
-				local name, texture = GetMacroInfo(linkInfo.itemId)
+				_, texture = GetMacroInfo(linkInfo.itemId)
 				if (texture) then
 					return texture
 				end
@@ -2747,7 +2749,7 @@ local function DragLinkGetTexture(self)
 end
 
 WaterfallDragLink.defaultIconSize = 36
-WaterfallDragLink.CLASS = UnitClass("player")
+_, WaterfallDragLink.CLASS = UnitClass("player") -- Use the capitalized english class name
 
 function WaterfallDragLink.prototype:init()
 	WaterfallDragLink.super.prototype.init(self, "Button")
