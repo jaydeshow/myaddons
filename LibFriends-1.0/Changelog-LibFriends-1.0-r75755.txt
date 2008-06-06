@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r75755 | funkydude | 2008-06-01 18:16:19 -0400 (Sun, 01 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibFriends-1.0/LibFriends-1.0/LibFriends-1.0.lua
+
+LibFriends-1.0: bugfix hex coloring
+------------------------------------------------------------------------

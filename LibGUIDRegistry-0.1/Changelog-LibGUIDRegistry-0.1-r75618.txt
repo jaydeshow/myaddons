@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r75618 | whitetooth | 2008-05-31 03:59:04 -0400 (Sat, 31 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibGUIDRegistry-0.1/LibGUIDRegistry-0.1/LibGUIDRegistry-0.1.lua
+
+LibGUIDRegistry-0.1: Fix error when zoneing with warlock pet
+------------------------------------------------------------------------
+r73169 | hunterz | 2008-05-08 23:42:19 -0400 (Thu, 08 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibGUIDRegistry-0.1/LibGUIDRegistry-0.1.toc
+
+LibGUIDRegistry-0.1:
+- Add "X-Category: Library" to the TOC
+------------------------------------------------------------------------

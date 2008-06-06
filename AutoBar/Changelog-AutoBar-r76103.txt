@@ -1,4 +1,28 @@
 ------------------------------------------------------------------------
+r76103 | toadkiller | 2008-06-05 18:40:35 -0400 (Thu, 05 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/ChangeList.lua
+
+AutoBar : 
+-- 2.04.02.55 beta ()
+
+------------------------------------------------------------------------
+r76095 | toadkiller | 2008-06-05 15:19:26 -0400 (Thu, 05 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/embeds.xml
+
+AutoBar : 
+-- LibKeyBoundExtra-1.0.  Allows binding to spells and macros right in the spell book and macro UI
+------------------------------------------------------------------------
+r76092 | toadkiller | 2008-06-05 14:38:38 -0400 (Thu, 05 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/libs
+
+AutoBar : 
+-- LibKeyBoundExtra-1.0
+------------------------------------------------------------------------
 r76025 | toadkiller | 2008-06-04 16:21:07 -0400 (Wed, 04 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarCategory.lua
@@ -1117,45 +1141,4 @@ AutoBar :
 -- New Macro button for Category Items to create a Custom Macro item, first cut
 -- Editable Name and macro text field.
 
-------------------------------------------------------------------------
-r72681 | toadkiller | 2008-05-04 16:58:56 -0400 (Sun, 04 May 2008) | 6 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
--- 2.04.01.50 beta ()
--- Fix custom category keys & upgrade incorrect ones
--- Fix Category renaming
--- Implement dragging Blizzard macros to a Custom Category
-
-------------------------------------------------------------------------
-r72598 | StiviS | 2008-05-04 02:42:23 -0400 (Sun, 04 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r72596 | scorpio0920 | 2008-05-04 02:24:23 -0400 (Sun, 04 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhCN localization.
-- Update zhTW localization.
-------------------------------------------------------------------------
-r72590 | StiviS | 2008-05-04 01:01:10 -0400 (Sun, 04 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
 ------------------------------------------------------------------------

@@ -1,0 +1,50 @@
+------------------------------------------------------------------------
+r75896 | sutorix | 2008-06-03 09:34:24 -0400 (Tue, 03 Jun 2008) | 1 line
+Changed paths:
+   A /trunk/FishingAce/Locales/Locales.xml
+   D /trunk/FishingAce/Locales/locales.xml
+
+FishingAce: Missing Locales.xml file from rearrangement.
+------------------------------------------------------------------------
+r75894 | sutorix | 2008-06-03 09:32:18 -0400 (Tue, 03 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/FishingAce/FishingAce.toc
+
+FishingAce: Bump version number
+------------------------------------------------------------------------
+r75884 | ananhaid | 2008-06-03 05:02:33 -0400 (Tue, 03 Jun 2008) | 2 lines
+Changed paths:
+   A /trunk/FishingAce/Locales/locales.xml
+
+FishingAce:
+- add missed locales.xml
+------------------------------------------------------------------------
+r75860 | sutorix | 2008-06-02 22:04:53 -0400 (Mon, 02 Jun 2008) | 1 line
+Changed paths:
+   A /trunk/FishingAce/Embeds.xml (from /trunk/FishingAce/embeds.xml:72280)
+   M /trunk/FishingAce/FishingAce.lua
+   M /trunk/FishingAce/FishingAce.toc
+   D /trunk/FishingAce/Locale-deDE.lua
+   D /trunk/FishingAce/Locale-enUS.lua
+   D /trunk/FishingAce/Locale-frFR.lua
+   D /trunk/FishingAce/Locale-koKR.lua
+   D /trunk/FishingAce/Locale-zhCN.lua
+   D /trunk/FishingAce/Locale-zhTW.lua
+   A /trunk/FishingAce/Locales
+   A /trunk/FishingAce/Locales/Locale-deDE.lua (from /trunk/FishingAce/Locale-deDE.lua:72280)
+   A /trunk/FishingAce/Locales/Locale-enUS.lua
+   A /trunk/FishingAce/Locales/Locale-frFR.lua (from /trunk/FishingAce/Locale-frFR.lua:72280)
+   A /trunk/FishingAce/Locales/Locale-koKR.lua (from /trunk/FishingAce/Locale-koKR.lua:72280)
+   A /trunk/FishingAce/Locales/Locale-zhCN.lua (from /trunk/FishingAce/Locale-zhCN.lua:72280)
+   A /trunk/FishingAce/Locales/Locale-zhTW.lua (from /trunk/FishingAce/Locale-zhTW.lua:72280)
+   D /trunk/FishingAce/embeds.xml
+
+FishingAce: Use new fishing hat lure, if available. Reorganize embeds and localization for future-proifing security on SVN.
+------------------------------------------------------------------------
+r73036 | gagorian | 2008-05-07 19:05:17 -0400 (Wed, 07 May 2008) | 2 lines
+Changed paths:
+   M /trunk/FishingAce/FishingAce.toc
+
+FishingAce:
+- Removed TabletLib, Deformat, GratuityLib and ItemBonusLib from OptDepts and X-Embeds since they were used nowhere in the addon. Strange stuff!
+------------------------------------------------------------------------
