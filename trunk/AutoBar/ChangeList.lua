@@ -13,39 +13,52 @@
 -- Exchange profiles
 -- Inventory & Instance checks
 -- Buff detection: Don't show buff items if buffed already
--- Hide slot option
+-- Hide button option
 -- Food Blend for pets.
--- Data verification
--- Deal with charges: display them use smaller charged items first. Coming in 2.3
+-- Deal with charges: display them use smaller charged items first.
 -- Cryolysis: (Left = use, right = conjure, middle = trade stack with current target.) If the stack is not full it conjures till it is.  Ctrl-force trade.
 -- Mmm drag & drop between the bar and bags / trade etc. ?
 -- A button specific checkbox to always show the popups
 
 
 --[[
-= What is not working right now? =
+= What will slip till after release? =
+ * Popup on shift.  There is just one more bug to iron out in the test state machine then this can be incorporated.
+ * Reset Button for built in Bars
+ * Reset Button for built in Buttons
+ * Reset Button for AutoBar
  * Preferences need improvement
   * ACE3 / Rock
+  * Customization via Waterfall is barely functional & needs drag & drop rearranging + icons in the tree view at a minimum.
+  * Rock: implement the link type so Rock can be used for config.
+   * Rock: stringControl -> linkControl
+ * Documentation Plugin.  Basically http://code.google.com/p/autobar/wiki/Usage, cleaned up and localized.
+--]]
+
+
+--[[
+= What is not working right now? =
  * Drag & Drop
   * Items need to be draggable onto the category in the tree part of the config.
   * Items dragged onto a custom button automatically create a custom category if it does not have one & drop into it
   * Buttons need a drop setting that if enabled allow items to be dragged right onto the button itself
   * Categories in a button & items inside a category need to be draggable to rearrange them
- * Rock: implement the link type so Rock can be used for config.
-  * Rock: stringControl -> linkControl
  * !LibStickyFrames-2.0
   * Fine movement controls for a selected frame (say temporary arrow keys + modifiers for 1 or 5 pixel or grid movement)
- * For custom categories allow direct selection of a PT3 set
-  * Optional priority set that takes precedence over the regular set for a particular item's value.  For example conjured food over regular.
-  * Split out !ItemList as a translation / grouping / priority layer on top of PT3.
+  * Grouped moving
+  * Sticky Parent selection even with multiple overlapping frames.
  * Plugin architecture for buttons so this can become more of a framework
  * Buttons
   * !AutoBarButtonClassPet: for hunters(break19: left click summon, right click revive)
   * !AutoBarButtonBuffSpell would need multiple keybinds (3+ ?)
   * !AutoBarButtonER: castsequence reset = 600, Last Stand, category x, category y, button n, etc.  ER - Emergency Response.  NS heals for healers, Iceblock for mages, --> Shieldwall, Bubble for pallies
   * !AutoBarButtonFishing: Keeps track of swapped gear, equips them on combat or some kind of ctrl-click or something.  First clicks equips fishing gear then pole then applies best lure when its missing.  Then casts a line.
-  * !AutoBarButtonSeal: for paladins
   * Note Petfood needs an ug to be a rightclick hunter eats & left click pet eats.
+ * Categories:
+   * Allow GetItemInfo type / subType specification for a category
+   * Allow direct selection of a [http://www.wowace.com/wiki/LibPeriodicTable-3.1 LibPeriodicTable-3.1] set
+   * Optional priority set (that takes precedence over the regular set for a particular item's value.  For example conjured food over regular)
+   * Split out !ItemList as a translation / grouping / priority layer on top of PT3.
 --]]
 
 --
@@ -54,53 +67,64 @@
 
 --[[
 = What is still planned for the new version? =
- * Popup on shift.  There is just one more bug to iron out in the test state machine then this can be incorporated.
  * Finish macro buttons.
   * For Blizzard macros, use name, not number to index them.
- * Buttons
-  * Finally do a proper mount button (a Macro Button) including form switching, automatic flying vs ground selection, etc.
-  * Buttons need a drop setting that if checked allow items to be dragged right onto the button itself
  * Combat Buttons.  (short duration buffs)
    * AutoBarButtonCooldownPotionCombat (Heroic Potion, Destruction Potion ...)
    * AutoBarButtonCooldownStoneCombat (Nightmare Seed, Flamecap, Fel Blossom, ...)
- * Reset Button for built in Bars
- * Reset Button for built in Buttons
- * Reset Button for AutoBar
- * Categories:
-   * Allow GetItemInfo type / subType specification for a category
-   * Allow direct selection of a PT3 set + an optional priority set (that takes precedence over the regular set for a particular item's value.  For example conjured food over regular)
- * Add Position for X & Y to Bar ui.  Location -> Position
  * Verify arena water precedence & tears + conjured only
- * Resolve issues with class buttons being placed on account bars.
  * Switch to GetItemIcon(itemId or itemName or itemLink or itemString) for category icons
- * Customization via Waterfall is barely functional & needs drag & drop rearranging + icons in the tree view at a minimum.
 --]]
 
 --[[
 [b]Report missing items:[/b] [url=http://code.google.com/p/autobar/issues/list?q=label%3AMissingItem&can=1]List of reported missing items[/url]
 [glow=red,2,300][b]Official web site for documentation: [/b][/glow] http://code.google.com/p/autobar
+[url=http://www.wowace.com/wiki/Debugging]Debugging[/url]
 [url=http://code.google.com/p/autobar/wiki/FAQ]FAQ[/url]
 [url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
 (Please click in a "Labels:" field to label your issue appropriately.)
 
-"$Revision: 75288 $"
+"$Revision: 76103 $"
 AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
 
--- 2.04.02.55 beta ()
+-- 2.04.02.56 beta ()
+--- GetSpellCount.  0 or # reagent thingies left.
+--- Shuffle: handle locations and cooldowns and equipped items.
+--- Buttons need a drop setting that if checked allow items to be dragged right onto the button itself
+--- Verify all button.barKey nilled when deleting a bar
+--- Finish LibStickyFrames: needs grouped dragging.
+--- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
 
--- 2.04.02.54 beta ()
+-- 2.04.02.55 beta ()
+-- Added GridLayoutFrame to list of stuff u can stick bars to
+-- Finally do a proper mount button (a Macro Button) including form switching, automatic flying vs ground selection, etc.
+-- StartsQuest added back in to Quest Button
+-- FadeOut Delay added.
+-- Bulletproof LibStickyFrame callbacks
+-- Simplify FadeOut code
+-- Right click totem button destroys that totem type.
+-- Remove AutoBarButtonStealth from Priests.  They do not have stealth.
+-- Add all conjured foods to Pet Food including biscuits.
+-- Class Buff: Shaman Water Shield, Earth Shield, Lightning Shield
+-- Fixed flaw in the shared layout settings when switching from class back to account
+-- Fixed update bug when switching shared for Bar Position
+-- Fix initial condition and update issues with flyable
+-- Rework custom categories.  Spells had issues and need to be redragged from your spellbook.
+-- LibKeyBoundExtra-1.0.  Allows binding to spells and macros right in the spell book and macro UI
+
+-- 2.04.02.54 beta (75476)
 -- Added bar location dropdown to buttons for easy movement or assignment to a bar
 -- Use LibKeyBound:ToShortKey for AutoBar key display
 -- AutoBarButtonStealth: added Rogue Priest Mage. Shadowmeld added if present for other classes.  Need to figure out how the two combine for NE Druid, Rogue Priest Mage.
 -- Seal category added for Paladins
 -- Integrate AutoBar custom bindings with LibKeyBound callbacks so Blizzard bindings get set as well.  First Cut.
-
---- Verify all button.barKey nilled when deleting a bar
---- Finish LibStickyFrames: needs grouped dragging.
---- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
---- Shuffle: handle locations and cooldowns and equipped items.
---- Custom Items need proper relative ordering regardless of type.
+-- Amplify Magic, Dampen Magic added to Class Buff Button.
+-- Debuff: Multiple category - faerie fires, insect swarm, curses, Hex of Weakness
+-- Debuff: Single category - hunter stings, mage slow spell
+-- AutoBarButtonDebuff: Debuff: Multiple and Debuff: Single categories.
+-- Fix CompactBars.  Upgrade RemoveDuplicateButtons to handle duplicates within a bar.
+-- Show keybinds for Custom Buttons
 
 -- 2.04.02.53 beta (75141)
 -- Minimap / FuBar Button overhaul:
@@ -252,7 +276,7 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 -- Upgrade Remove and Delete Button description text
 -- Add Babble-Zone-2.2 dependency to toc
 -- Make ClampedToScreen an AutoBar option.  Requires reload to take effect / disable for now. Default is false.
--- Add specific cancel fadeout in combat setting
+-- Add specific cancel fadeOut in combat setting
 
 -- 2.04.01.47 beta (71664)
 -- Add FadeOut Time and FadeOut Alpha
@@ -287,7 +311,7 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 -- Detectar Invisibilidad --> Detectar invisibilidad for esES
 -- Switch texture code from BabbleSpell to GetSpellInfo
 -- Allow dropping of spells onto a Button with a custom category in Move Button mode.
--- Add individual Ctrl, Alt, Shift settings to cancel fadeout with.
+-- Add individual Ctrl, Alt, Shift settings to cancel fadeOut with.
 -- Fix texture path issue for spell categories.
 -- Tears of the Goddess 24494
 -- lanatha: Switch all of AutoBarButton to SpellInfo
@@ -685,7 +709,7 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 -- Tooltip fixed for new bars.
 
 -- 2.02.00.12 alpha
--- Each bar has a fadeout setting that lets the bar disapear when not hovered over.
+-- Each bar has a fadeOut setting that lets the bar disapear when not hovered over.
 -- Item count & hotkey & cooldown now working.
 -- cyCircled will not break anymore.  (needs latest cyCircled)
 

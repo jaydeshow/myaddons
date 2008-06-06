@@ -1,0 +1,22 @@
+------------------------------------------------------------------------
+r75655 | archarodim | 2008-05-31 13:27:58 -0400 (Sat, 31 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- Fixed the Traditional Chinese exception (I hope).
+------------------------------------------------------------------------
+r75539 | archarodim | 2008-05-30 08:24:59 -0400 (Fri, 30 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- Made an exception for Priest because of Blizzard traditional Chinese localization team they named two different spells the same: Devour Magic and Consume Magic.
+------------------------------------------------------------------------
+r73101 | scorpio0920 | 2008-05-08 09:58:40 -0400 (Thu, 08 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- Modify [D.LOC.PET_FEL_CAST] (Thanks s8095324)
+------------------------------------------------------------------------

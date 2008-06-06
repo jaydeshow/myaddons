@@ -1,0 +1,86 @@
+------------------------------------------------------------------------
+r75975 | whitetooth | 2008-06-04 04:12:33 -0400 (Wed, 04 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Fix error
+------------------------------------------------------------------------
+r75969 | karlthepagan | 2008-06-04 02:25:05 -0400 (Wed, 04 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Compatibility with MikSBT 5.2.8
+------------------------------------------------------------------------
+r74716 | grayhoof | 2008-05-21 18:55:42 -0400 (Wed, 21 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Added icon support for SCT
+------------------------------------------------------------------------
+r73848 | funkydude | 2008-05-14 13:59:17 -0400 (Wed, 14 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: tweak icons for 2.4.2
+------------------------------------------------------------------------
+r73583 | ananhaid | 2008-05-12 08:26:12 -0400 (Mon, 12 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: 
+- zhCN update.
+------------------------------------------------------------------------
+r73468 | pettigrow | 2008-05-11 09:54:00 -0400 (Sun, 11 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: frFR Update
+------------------------------------------------------------------------
+r73375 | rabbit | 2008-05-10 17:52:32 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Channels don't support the icon escape codes.
+------------------------------------------------------------------------
+r73372 | rabbit | 2008-05-10 17:44:05 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Fix Ace2 options getter.
+------------------------------------------------------------------------
+r73360 | rabbit | 2008-05-10 16:20:30 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Another drycode mistake.
+------------------------------------------------------------------------
+r73355 | rabbit | 2008-05-10 15:12:17 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Another drycode mistake.
+------------------------------------------------------------------------
+r73354 | rabbit | 2008-05-10 15:09:36 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Another drycode mistake.
+------------------------------------------------------------------------
+r73353 | rabbit | 2008-05-10 15:07:33 -0400 (Sat, 10 May 2008) | 1 line
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0: Did I mention it was drycoded?
+------------------------------------------------------------------------
+r73352 | rabbit | 2008-05-10 15:06:34 -0400 (Sat, 10 May 2008) | 7 lines
+Changed paths:
+   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+
+LibSink-2.0:
+ * Add Channel output, can output to Say, Yell, Party, Guild, Raid, RaidWarning, Battleground and Officer chat.
+ * Default MSBT to version 5, could probably remove this now and just assume version 5, since 4 doesn't work with 2.4?
+ * Rename "Scroll area" to "Sub section", should find a better name.
+ * Fix :SetSinkOverride(nil)
+ * Fix upgrade path
+
+------------------------------------------------------------------------

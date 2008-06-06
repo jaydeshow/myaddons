@@ -1,0 +1,25 @@
+------------------------------------------------------------------------
+r75639 | kuja | 2008-05-31 11:13:38 -0400 (Sat, 31 May 2008) | 3 lines
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-deDE.lua
+
+RatingBuster:
+- deDE update
+
+------------------------------------------------------------------------
+r73696 | whitetooth | 2008-05-13 11:22:36 -0400 (Tue, 13 May 2008) | 3 lines
+Changed paths:
+   M /trunk/RatingBuster/About RatingBuster.txt
+   M /trunk/RatingBuster/RatingBuster-Locale-deDE.lua
+   M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster/RatingBuster-Locale-esES.lua
+   M /trunk/RatingBuster/RatingBuster-Locale-frFR.lua
+   M /trunk/RatingBuster/RatingBuster-Locale-koKR.lua
+   M /trunk/RatingBuster/RatingBuster-Locale-zhCN.lua
+   M /trunk/RatingBuster/RatingBuster-Locale-zhTW.lua
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: 
+- NEW: Support for negative stats
+- Fixed: Better JewelTips support
+------------------------------------------------------------------------

@@ -1,0 +1,123 @@
+------------------------------------------------------------------------
+r75528 | kurax | 2008-05-30 01:35:41 -0400 (Fri, 30 May 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.zhCN.lua
+
+ZOMGBuffs: Update zhCN locale
+------------------------------------------------------------------------
+r75360 | zeksie | 2008-05-28 10:48:50 -0400 (Wed, 28 May 2008) | 3 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Fixed a couple of display issues with the raid popup list. Sorry for delay commiting this. Senility kicking in.
+
+------------------------------------------------------------------------
+r74677 | kurax | 2008-05-21 14:14:10 -0400 (Wed, 21 May 2008) | 1 line
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.zhCN.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.zhCN.lua
+
+ZOMGBuffs: Update zhCN locale
+------------------------------------------------------------------------
+r74413 | zeksie | 2008-05-19 08:03:21 -0400 (Mon, 19 May 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Fixed reagent count being 1 too few.
+- Fixed small rare error in Blessings module.
+
+------------------------------------------------------------------------
+r74102 | zeksie | 2008-05-16 19:50:32 -0400 (Fri, 16 May 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Possible fix for blessings lazyness (sometimes not buffing).
+- No more duplicate reagent use messages please.
+
+------------------------------------------------------------------------
+r74049 | zeksie | 2008-05-16 06:06:13 -0400 (Fri, 16 May 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs: Now checks if a reagent is actually used before reporting current count.
+
+------------------------------------------------------------------------
+r73967 | zeksie | 2008-05-15 10:50:21 -0400 (Thu, 15 May 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Reordered self buffs init to fix a menu problem.
+- Also checks IsFlying() and considers this as mounted and will obey the Not When Mounted rule for buffing.
+- Adjusted the popup raid list buff bar anchor, which should fix the large font problem and overlapping bit.
+
+------------------------------------------------------------------------
+r73501 | zeksie | 2008-05-11 17:02:20 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Applied same anti griefing code to ZOMGBuffs proper (just in case someone gets it into their head to be a dick).
+
+------------------------------------------------------------------------
+r73498 | zeksie | 2008-05-11 16:28:49 -0400 (Sun, 11 May 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
+
+ZOMGBuffs: Fix for the griefing macro that disconnects PP users. Won't affect ZOMG any more. Drycode.
+
+------------------------------------------------------------------------
+r73261 | zeksie | 2008-05-09 21:01:08 -0400 (Fri, 09 May 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.toc
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.toc
+
+ZOMGBuffs:
+- Improved tooltip spell formatting from raid popup units.
+- Removed erroneous references to Babble-2.2 from some toc files.
+
+------------------------------------------------------------------------
+r72456 | zeksie | 2008-05-02 16:19:04 -0400 (Fri, 02 May 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+
+ZOMGBuffs: Blessings Manager will now show the first 3 exceptions for a cell as was intended initially.
+
+------------------------------------------------------------------------
+r72426 | zeksie | 2008-05-02 11:10:52 -0400 (Fri, 02 May 2008) | 5 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Fix for spamming a reagent vendor that would sometimes perform the reagent purchase multiple times.
+- New option to only cast single buffs in arenas.
+- Will not try to validate templates when recently zoned, as this can cause invalid spell available information and blank out templates.
+
+------------------------------------------------------------------------
+r72194 | zeksie | 2008-04-30 12:19:57 -0400 (Wed, 30 Apr 2008) | 3 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_Blessings/ZOMGBuffs_Blessings.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
+
+ZOMGBuffs:
+- Blessings Manager class splits selection now has a tickbox to enable use of guild roster members, when enabled you can select which ranks should appear in the splits.
+
+------------------------------------------------------------------------

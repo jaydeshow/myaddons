@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r75977 | whitetooth | 2008-06-04 04:13:27 -0400 (Wed, 04 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/SinkLib/Sink-1.0/Sink-1.0.lua
+
+SinkLib: Fix error
+------------------------------------------------------------------------
+r75968 | karlthepagan | 2008-06-04 02:24:25 -0400 (Wed, 04 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/SinkLib/Sink-1.0/Sink-1.0.lua
+
+SinkLib: Compatibility with MikSBT 5.2.8
+------------------------------------------------------------------------
