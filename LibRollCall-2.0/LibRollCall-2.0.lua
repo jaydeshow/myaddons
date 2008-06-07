@@ -1,6 +1,6 @@
 --[[
 Name: LibRollCall-2.0
-Revision: $Rev: 71515 $
+Revision: $Rev: 76176 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://wiki.wowace.com/index.php/LibRollCall-2.0
 Documentation: http://wiki.wowace.com/index.php/LibRollCall-2.0
@@ -12,7 +12,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibRollCall-2.0"
-local MINOR_VERSION = "$Revision: 71515 $"
+local MINOR_VERSION = "$Revision: 76176 $"
 
 -- This ensures the code is only executed if the libary doesn't already exist, or is a newer version
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0.") end
@@ -43,6 +43,7 @@ local playerRanks = {}
 local playerRankIndexes = {}
 local playerLevels = {}
 local playerClasses = {}
+local playerClassesEnglish = {}
 local playerZones = {}
 local playerStatuses = {}
 local playerNotes = {}
@@ -94,10 +95,10 @@ function RollCall:GUILD_ROSTER_UPDATE()
 		numPlayersOnline = 0
 		numPlayersTotal = GetNumGuildMembers(true)
 		
-		local name, rank, rankIndex, level, class, zone, note, officernote, online, status
+		local name, rank, rankIndex, level, class, zone, note, officernote, online, status, englishClass
 		local yearsOffline, monthsOffline, daysOffline, hoursOffline, secondsOffline
 		for i = 1, numPlayersTotal do
-			name, rank, rankIndex, level, class, zone, note, officernote, online, status = GetGuildRosterInfo(i)
+			name, rank, rankIndex, level, class, zone, note, officernote, online, status, englishClass = GetGuildRosterInfo(i)
 			yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(i)
 			if yearsOffline then
 				secondsOffline = hoursOffline * 60 * 60
@@ -122,6 +123,7 @@ function RollCall:GUILD_ROSTER_UPDATE()
 				playerRankIndexes[name] = rankIndex or -1
 				playerLevels[name] = level or -1
 				playerClasses[name] = class or UNKNOWN
+				playerClassesEnglish[name] = englishClass or UNKNOWN
 				playerZones[name] = zone or UNKNOWN
 				playerStatuses[name] = status
 				playerNotes[name] = note
@@ -173,6 +175,7 @@ function RollCall:GUILD_ROSTER_UPDATE()
 			playerRankIndexes[name] = nil
 			playerLevels[name] = nil
 			playerClasses[name] = nil
+			playerClassesEnglish[name] = nil
 			playerZones[name] = nil
 			playerStatuses[name] = nil
 			playerNotes[name] = nil
@@ -271,68 +274,20 @@ precondition(RollCall, 'GetEnglishClass', function(self, name)
 end)
 
 function RollCall:GetClassColor(name)
-	if not BC then
-		BC = Rock("LibBabble-Class-3.0", false, true)
-		if not BC then
-			if not old_BC then
-				old_BC = Rock("Babble-Class-2.2", false, true)
-				if not old_BC then
-					error("Cannot call `GetClassHexColor' without LibBabble-Class-3.0 or Babble-Class-2.2 loaded.", 2)
-				end
-			end
-		end
-	end
-	local class = playerClasses[name or playerName]
-	if class then
-		if BC then
-			local english = BC:GetReverseLookupTable()[class]
-			if english then
-				english = english:upper()
-				local color = RAID_CLASS_COLORS[english]
-				if color then
-					return color.r, color.g, color.b
-				end
-			end
-		elseif old_BC then
-			return old_BC:GetColor(class)
-		end
-	else
-		return 0.8, 0.8, 0.8
-	end
+	local class = playerClassesEnglish[name or playerName]
+	if not class then return 0.8, 0.8, 0.8 end
+	local color = RAID_CLASS_COLORS[class]
+	return color.r, color.g, color.b
 end
 precondition(RollCall, 'GetClassColor', function(self, name)
 	argCheck(name, 2, "string", "nil")
 end)
 
 function RollCall:GetClassHexColor(name)
-	if not BC then
-		BC = Rock("LibBabble-Class-3.0", false, true)
-		if not BC then
-			if not old_BC then
-				old_BC = Rock("Babble-Class-2.2", false, true)
-				if not old_BC then
-					error("Cannot call `GetClassHexColor' without LibBabble-Class-3.0 or Babble-Class-2.2 loaded.", 2)
-				end
-			end
-		end
-	end
-	local class = playerClasses[name or playerName]
-	if class then
-		if BC then
-			local english = BC:GetReverseLookupTable()[class]
-			if english then
-				english = english:upper()
-				local color = RAID_CLASS_COLORS[english]
-				if color then
-					return ("%02x%02x%02x"):format(color.r*255, color.g*255, color.b*255)
-				end
-			end
-		elseif old_BC then
-			return old_BC:GetHexColor(class)
-		end
-	else
-		return "cccccc"
-	end
+	local class = playerClassesEnglish[name or playerName]
+	if not class then return "cccccc" end
+	local color = RAID_CLASS_COLORS[class]
+	return ("%02x%02x%02x"):format(color.r*255, color.g*255, color.b*255)
 end
 precondition(RollCall, 'GetClassHexColor', function(self, name)
 	argCheck(name, 2, "string", "nil")
