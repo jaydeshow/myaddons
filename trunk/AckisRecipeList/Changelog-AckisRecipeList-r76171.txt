@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r76171 | ackis | 2008-06-06 13:24:20 -0400 (Fri, 06 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Fix for specialities not working
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
 r76118 | pettigrow | 2008-06-06 03:25:58 -0400 (Fri, 06 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
