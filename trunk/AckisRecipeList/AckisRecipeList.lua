@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList v0.84
-$Date: 2008-06-06 13:24:20 -0400 (Fri, 06 Jun 2008) $
-$Rev: 76171 $
+$Date: 2008-06-07 16:09:09 -0400 (Sat, 07 Jun 2008) $
+$Rev: 76225 $
 
 Author: Ackis on Illidan US Horde
 ****************************************************************************************
@@ -1058,6 +1058,7 @@ do
 		[GetSpellInfo(3908)] = TailorSpec,
 	}
 
+	-- List containing all possible specialities
 	local AllSpecialitiesTable = {
 	}
 
@@ -1072,6 +1073,7 @@ do
 		RepTable[rep] = not RepTable[rep]
 	end
 
+	-- Creates the reputation table 
 	local function PopulateReptable()
 
 		if (RepTable == nil) then
@@ -1204,7 +1206,7 @@ do
 				if (not addon.db.profile.specialities) then
 					-- Are we looking at a speciality and is the current profession a profession that has a speciality?
 					if (SpecialtyTable[CurrentProfession]) and (AllSpecialitiesTable[CurrentCheck]) then
-						if (not SpecialtyTable[CurrentProfession][CurrentSpeciality]) then
+						if (CurrentSpeciality ~= CurrentCheck) then
 							addon.FilteredRecipes = addon.FilteredRecipes + 1
 							return false
 						end

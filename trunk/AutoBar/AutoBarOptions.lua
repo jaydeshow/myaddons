@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75931 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76232 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -44,7 +44,7 @@ end
 
 local L = AutoBar.locale
 local LBF = LibStub("LibButtonFacade", true)
-local LibKeyBound = AceLibrary:GetInstance("LibKeyBound-1.0")
+local LibKeyBound = LibStub:GetLibrary("LibKeyBound-1.0")
 local waterfall = AceLibrary:GetInstance("Waterfall-1.0")
 
 local ROW_COLUMN_MAX = 32

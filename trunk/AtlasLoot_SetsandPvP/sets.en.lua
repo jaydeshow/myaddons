@@ -1878,6 +1878,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 29382, "", "=q4=Blood Knight War Cloak", "=ds=#s4#", "25 #heroic#" },
 		{ 35321, "", "=q4=Cloak of Arcane Alacrity", "=ds=#s4#", "60 #heroic#" },
 		{ 33304, "", "=q4=Cloak of Subjugated Power", "=ds=#s4#", "60 #heroic#" },
+		{ 35324, "", "=q4=Cloak of Swift Reprieve", "=ds=#s4#", "60 #heroic#" },
 		{ 33484, "", "=q4=Dory's Embrace", "=ds=#s4#", "60 #heroic#" },
 		{ 29385, "", "=q4=Farstrider Defender's Cloak", "=ds=#s4#", "25 #heroic#" },
 		{ 33333, "", "=q4=Kharmaa's Shroud of Hope", "=ds=#s4#", "60 #heroic#" },

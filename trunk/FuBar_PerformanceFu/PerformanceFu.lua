@@ -1,6 +1,5 @@
 local L = AceLibrary("AceLocale-2.2"):new("FuBar_PerformanceFu")
 local Tablet = AceLibrary("Tablet-2.0")
-local Abacus = AceLibrary("Abacus-2.0")
 local Crayon = LibStub("LibCrayon-3.0")
 
 PerformanceFu = AceLibrary("AceAddon-2.0"):new("FuBarPlugin-2.0", "AceEvent-2.0", "AceDB-2.0")
@@ -46,8 +45,8 @@ do
 end
 
 function PerformanceFu:OnInitialize()
-	self.version = "2.0" .. string.sub("$Revision: 69989 $", 12, -3)
-	self.date = string.sub("$Date: 2008-04-15 22:47:28 -0400 (Tue, 15 Apr 2008) $", 8, 17)
+	self.version = "2.0" .. string.sub("$Revision: 76217 $", 12, -3)
+	self.date = string.sub("$Date: 2008-06-07 13:48:06 -0400 (Sat, 07 Jun 2008) $", 8, 17)
 
 	self:RegisterDB("PerformanceFuDB")
 	self:RegisterDefaults("profile", {

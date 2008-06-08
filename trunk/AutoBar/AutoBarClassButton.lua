@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75664 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76232 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -618,30 +618,9 @@ function AutoBar.Class.Button:SetCount(frame)
 				local macroText = frame:GetAttribute("*macrotext1")
 		elseif (itemType == "spell") then
 			local spellName1 = frame:GetAttribute("*spell1")
-			local reagents = AutoBar.reagents[spellName1]
-			if (reagents) then
-				for index, itemId in pairs(reagents) do
-					count1 = count1 + GetItemCount(itemId)
-				end
-				local reagentsMultiple = AutoBar.reagentsMultiple[spellName1]
-				if (reagentsMultiple and reagentsMultiple ~= 0) then
-					count1 = math.floor(count1 / reagentsMultiple)
-				end
---AutoBar:Print("AutoBar.Class.Button.prototype:UpdateCount spellName1 " .. tostring(spellName1) .. " count1 " .. tostring(count1))
-			end
+			count1 = GetSpellCount(spellName1)
 			local spellName2 = frame:GetAttribute("*spell2")
-			if (spellName1 ~= spellName2) then
-				reagents = AutoBar.reagents[spellName2]
-				if (reagents) then
-					for index, itemId in pairs(reagents) do
-						count2 = count2 + GetItemCount(itemId)
-					end
-					local reagentsMultiple = AutoBar.reagentsMultiple[spellName2]
-					if (reagentsMultiple and reagentsMultiple ~= 0) then
-						count2 = math.floor(count2 / reagentsMultiple)
-					end
-				end
-			end
+			count2 = GetSpellCount(spellName2)
 		end
 
 		local popupHeader = frame.popupHeader

@@ -90,7 +90,7 @@ CappingLocale:CreateLocaleTable({
 	 -- NPC
 	["Smith Regzar"] = "Schmied Regzar",
 	["Murgot Deepforge"] = "Murgot Tiefenschmied",
-	["Primalist Thurloga"] = "Primalistin Thurloga",
+	--["Primalist Thurloga"] = true,  -- same as default
 	["Arch Druid Renferal"] = "Erzdruide Renferal",
 	["Stormpike Ram Rider Commander"] = "Kommandant der Sturmlanzenwidderreiter",		
 	["Frostwolf Wolf Rider Commander"] = "Wolfsreiterkommandant der Frostwölfe", 

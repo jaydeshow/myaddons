@@ -8,7 +8,7 @@
 --[[ $Id: AutoBarFuBar.lua 40066 2007-06-15 5:16:47Z Toadkiller $ ]]
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75021 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76232 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -31,7 +31,7 @@ AutoBarFuBar.hideWithoutStandby = true
 AutoBarFuBar.independentProfile = true
 AutoBarFuBar.cannotDetachTooltip = true
 
-local LibKeyBound = AceLibrary:GetInstance("LibKeyBound-1.0")
+local LibKeyBound = LibStub:GetLibrary("LibKeyBound-1.0")
 local waterfall = AceLibrary:HasInstance("Waterfall-1.0") and AceLibrary("Waterfall-1.0")
 
 function AutoBarFuBar:OnInitialize()

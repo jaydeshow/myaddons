@@ -1,4 +1,4 @@
-﻿local L = AceLibrary("AceLocale-2.2"):new("FuBar_PerformanceFu")
+local L = AceLibrary("AceLocale-2.2"):new("FuBar_PerformanceFu")
 
 L:RegisterTranslations("koKR", function() return {
 	scriptProfiling = "You are running with CPU profiling enabled.\n\nNote that when you run with libraries embedded in your addons, their CPU and memory usage will be reported as belonging to that addon, which is not entirely true if you use other addons that make use of the same libraries.",

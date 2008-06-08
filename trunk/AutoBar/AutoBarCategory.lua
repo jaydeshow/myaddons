@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 76025 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76232 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1154,39 +1154,42 @@ function AutoBarCategory:Initialize()
 	spellNameList["Dampen Magic"] = GetSpellInfo(33944)
 	spellNameList["Earth Shield"] = GetSpellInfo(32594)
 	spellNameList["Lightning Shield"] = GetSpellInfo(25472)
+	spellNameList["Mark of the Wild"] = GetSpellInfo(26990)
 	spellNameList["Water Shield"] = GetSpellInfo(33736)
+
+	spellNameList["Arcane Intellect"] = GetSpellInfo(27126)
+	spellNameList["Arcane Brilliance"] = GetSpellInfo(27127)
+
+	spellNameList["Blessing of Kings"] = GetSpellInfo(20217)
+	spellNameList["Greater Blessing of Kings"] = GetSpellInfo(25898)
+	spellNameList["Blessing of Light"] = GetSpellInfo(27144)
+	spellNameList["Greater Blessing of Light"] = GetSpellInfo(27145)
+	spellNameList["Blessing of Might"] = GetSpellInfo(27140)
+	spellNameList["Greater Blessing of Might"] = GetSpellInfo(27141)
+	spellNameList["Blessing of Salvation"] = GetSpellInfo(1038)
+	spellNameList["Greater Blessing of Salvation"] = GetSpellInfo(25895)
+	spellNameList["Blessing of Sanctuary"] = GetSpellInfo(27168)
+	spellNameList["Greater Blessing of Sanctuary"] = GetSpellInfo(27169)
+	spellNameList["Blessing of Wisdom"] = GetSpellInfo(27142)
+	spellNameList["Greater Blessing of Wisdom"] = GetSpellInfo(27143)
+
+	spellNameList["Shadow Protection"] = GetSpellInfo(25433)
+	spellNameList["Prayer of ShadowProtection"] = GetSpellInfo(39374)
+	spellNameList["Divine Spirit"] = GetSpellInfo(27841)
+	spellNameList["Prayer of Spirit"] = GetSpellInfo(32999)
+	spellNameList["Power Word: Fortitude"] = GetSpellInfo(25389)
+	spellNameList["Prayer of Fortitude"] = GetSpellInfo(25392)
 
 	local spellOmenOfClarity = GetSpellInfo(16864)
 	local spellThorns = GetSpellInfo(26992)
-	local spellMarkOfTheWild = GetSpellInfo(26990)
 	local spellNaturesGrasp = GetSpellInfo(27009)
-	local spellArcaneIntellect = GetSpellInfo(27126)
-	local spellArcaneBrilliance = GetSpellInfo(27127)
 	local spellFrostArmor = GetSpellInfo(7301)
 	local spellIceArmor = GetSpellInfo(27124)
 	local spellMageArmor = GetSpellInfo(27125)
 	local spellMoltenArmor = GetSpellInfo(30482)
-	local spellShadowProtection = GetSpellInfo(25433)
-	local spellPrayerOfShadowProtection = GetSpellInfo(39374)
-	local spellDivineSpirit = GetSpellInfo(27841)
-	local spellPrayerOfSpirit = GetSpellInfo(32999)
-	local spellPowerWordFortitude = GetSpellInfo(25389)
-	local spellPrayerOfFortitude = GetSpellInfo(25392)
 	local spellBlessingOfFreedom = GetSpellInfo(1044)
-	local spellBlessingOfKings = GetSpellInfo(20217)
-	local spellGreaterBlessingOfKings = GetSpellInfo(25898)
-	local spellBlessingOfLight = GetSpellInfo(27144)
-	local spellGreaterBlessingOfLight = GetSpellInfo(27145)
-	local spellBlessingOfMight = GetSpellInfo(27140)
-	local spellGreaterBlessingOfMight = GetSpellInfo(27141)
 	local spellBlessingOfProtection = GetSpellInfo(10278)
 	local spellBlessingOfSacrifice = GetSpellInfo(27148)
-	local spellBlessingOfSalvation = GetSpellInfo(1038)
-	local spellGreaterBlessingOfSalvation = GetSpellInfo(25895)
-	local spellBlessingOfSanctuary = GetSpellInfo(27168)
-	local spellGreaterBlessingOfSanctuary = GetSpellInfo(27169)
-	local spellBlessingOfWisdom = GetSpellInfo(27142)
-	local spellGreaterBlessingOfWisdom = GetSpellInfo(27143)
 	local spellDemonArmor = GetSpellInfo(27260)
 	local spellDemonSkin = GetSpellInfo(696)
 	local spellFelArmor = GetSpellInfo(28189)
@@ -1198,27 +1201,27 @@ function AutoBarCategory:Initialize()
 			"Spell.Class.Buff", spellIconList["Gift of the Wild"], nil, {
 			"DRUID", spellOmenOfClarity, spellOmenOfClarity,
 			"DRUID", spellThorns, spellThorns,
-			"DRUID", spellMarkOfTheWild, spellNameList["Gift of the Wild"],
+			"DRUID", spellNameList["Mark of the Wild"], spellNameList["Gift of the Wild"],
 			"DRUID", spellNaturesGrasp, spellNaturesGrasp,
-			"MAGE", spellArcaneIntellect, spellArcaneBrilliance,
+			"MAGE", spellNameList["Arcane Intellect"], spellNameList["Arcane Brilliance"],
 			"MAGE", spellFrostArmor, spellFrostArmor,
 			"MAGE", spellIceArmor, spellIceArmor,
 			"MAGE", spellMageArmor, spellMageArmor,
 			"MAGE", spellMoltenArmor, spellMoltenArmor,
 			"MAGE", spellNameList["Amplify Magic"], spellNameList["Amplify Magic"],
 			"MAGE", spellNameList["Dampen Magic"], spellNameList["Dampen Magic"],
-			"PRIEST", spellShadowProtection, spellPrayerOfShadowProtection,
-			"PRIEST", spellDivineSpirit, spellPrayerOfSpirit,
-			"PRIEST", spellPowerWordFortitude, spellPrayerOfFortitude,
 			"PALADIN", spellBlessingOfFreedom, spellBlessingOfFreedom,
-			"PALADIN", spellBlessingOfKings, spellGreaterBlessingOfKings,
-			"PALADIN", spellBlessingOfLight, spellGreaterBlessingOfLight,
-			"PALADIN", spellBlessingOfMight, spellGreaterBlessingOfMight,
+			"PALADIN", spellNameList["Blessing of Kings"], spellNameList["Greater Blessing of Kings"],
+			"PALADIN", spellNameList["Blessing of Light"], spellNameList["Greater Blessing of Light"],
+			"PALADIN", spellNameList["Blessing of Might"], spellNameList["Greater Blessing of Might"],
 			"PALADIN", spellBlessingOfProtection, spellBlessingOfProtection,
 			"PALADIN", spellBlessingOfSacrifice, spellBlessingOfSacrifice,
-			"PALADIN", spellBlessingOfSalvation, spellGreaterBlessingOfSalvation,
-			"PALADIN", spellBlessingOfSanctuary, spellGreaterBlessingOfSanctuary,
-			"PALADIN", spellBlessingOfWisdom, spellGreaterBlessingOfWisdom,
+			"PALADIN", spellNameList["Blessing of Salvation"], spellNameList["Greater Blessing of Salvation"],
+			"PALADIN", spellNameList["Blessing of Sanctuary"], spellNameList["Greater Blessing of Sanctuary"],
+			"PALADIN", spellNameList["Blessing of Wisdom"], spellNameList["Greater Blessing of Wisdom"],
+			"PRIEST", spellNameList["Shadow Protection"], spellNameList["Prayer of ShadowProtection"],
+			"PRIEST", spellNameList["Divine Spirit"], spellNameList["Prayer of Spirit"],
+			"PRIEST", spellNameList["Power Word: Fortitude"], spellNameList["Prayer of Fortitude"],
 			"SHAMAN", spellNameList["Earth Shield"], spellNameList["Earth Shield"],
 			"SHAMAN", spellNameList["Lightning Shield"], spellNameList["Lightning Shield"],
 			"SHAMAN", spellNameList["Water Shield"], spellNameList["Water Shield"],
@@ -1229,32 +1232,11 @@ function AutoBarCategory:Initialize()
 			"WARRIOR", spellBattleShout, spellCommandingShout,
 			"WARRIOR", spellCommandingShout, spellBattleShout,
 			})
-	if (AutoBar.CLASS == "DRUID") then
-		AutoBar.reagents[spellNameList["Gift of the Wild"]] = {17021, 17026, 22148}
-	end
-	if (AutoBar.CLASS == "MAGE") then
-		AutoBar.reagents[spellArcaneBrilliance] = {17020}
-		AutoBar.reagents[spellRitualOfRefreshment] = {17020}
-		AutoBar.reagentsMultiple[spellRitualOfRefreshment] = 2
-	end
 	if (AutoBar.CLASS == "PALADIN") then
-		AutoBar.reagents[spellGreaterBlessingOfKings] = {21177}
-		AutoBar.reagents[spellGreaterBlessingOfLight] = {21177}
-		AutoBar.reagents[spellGreaterBlessingOfMight] = {21177}
-		AutoBar.reagents[spellGreaterBlessingOfSalvation] = {21177}
-		AutoBar.reagents[spellGreaterBlessingOfSanctuary] = {21177}
-		AutoBar.reagents[spellGreaterBlessingOfWisdom] = {21177}
-
 		local spellDivineIntervention = GetSpellInfo(19752)
-		AutoBar.reagents[spellDivineIntervention] = {17033}
 	end
 	if (AutoBar.CLASS == "PRIEST") then
-		AutoBar.reagents[spellPrayerOfShadowProtection] = {17029}
-		AutoBar.reagents[spellPrayerOfSpirit] = {17029}
-		AutoBar.reagents[spellPrayerOfFortitude] = {17028,17029}
-
 		local spellLevitate = GetSpellInfo(1706)
-		AutoBar.reagents[spellLevitate] = {17056}
 	end
 
 	local spellForceOfNature, spellForceOfNatureIcon
@@ -1355,59 +1337,15 @@ function AutoBarCategory:Initialize()
 
 	if (AutoBar.CLASS == "DRUID") then
 		local spellRebirth = GetSpellInfo(26994)
-		AutoBar.reagents[spellRebirth] = {22147,17038,17037,17036,17035,17034}
 	end
 
 	if (AutoBar.CLASS == "MAGE") then
-		AutoBar.reagents[spellTeleportStonard] = {17031}
-		AutoBar.reagents[spellPortalStonard] = {17032}
-		AutoBar.reagents[spellTeleportTheramore] = {17031}
-		AutoBar.reagents[spellPortalTheramore] = {17032}
-		AutoBar.reagents[spellTeleportUndercity] = {17031}
-		AutoBar.reagents[spellPortalUndercity] = {17032}
-		AutoBar.reagents[spellTeleportThunderBluff] = {17031}
-		AutoBar.reagents[spellPortalThunderBluff] = {17032}
-		AutoBar.reagents[spellTeleportStormwind] = {17031}
-		AutoBar.reagents[spellPortalStormwind] = {17032}
-		AutoBar.reagents[spellTeleportSilvermoon] = {17031}
-		AutoBar.reagents[spellPortalSilvermoon] = {17032}
-		AutoBar.reagents[spellTeleportExodar] = {17031}
-		AutoBar.reagents[spellPortalExodar] = {17032}
-		AutoBar.reagents[spellTeleportDarnassus] = {17031}
-		AutoBar.reagents[spellPortalDarnassus] = {17032}
-		AutoBar.reagents[spellTeleportIronforge] = {17031}
-		AutoBar.reagents[spellPortalIronforge] = {17032}
-		AutoBar.reagents[spellTeleportOrgrimmar] = {17031}
-		AutoBar.reagents[spellPortalOrgrimmar] = {17032}
-		AutoBar.reagents[spellTeleportShattrath] = {17031}
-		AutoBar.reagents[spellPortalShattrath] = {17032}
-
 		local spellSlowFall = GetSpellInfo(130)
-		AutoBar.reagents[spellSlowFall] = {17056}
 	end
 	if (AutoBar.CLASS == "SHAMAN") then
 		local spellWaterWalking = GetSpellInfo(546)
-		AutoBar.reagents[spellWaterWalking] = {17058}
 		local spellWaterBreathing = GetSpellInfo(131)
-		AutoBar.reagents[spellWaterBreathing] = {17057}
 		local spellReincarnation = GetSpellInfo(20608)
-		AutoBar.reagents[spellReincarnation] = {17030}
-	end
-	if (AutoBar.CLASS == "WARLOCK") then
-		AutoBar.reagents[spellRitualOfSummoning] = {6265}
-		AutoBar.reagents[spellCreateFirestone] = {6265}
-		AutoBar.reagents[spellCreateHealthstone] = {6265}
-		AutoBar.reagents[spellRitualOfSouls] = {6265}
-		AutoBar.reagents[spellCreateSoulstone] = {6265}
-		AutoBar.reagents[spellCreateSpellstone] = {6265}
---		AutoBar.reagents[spellEyeOfKilrogg] = {6265}
-		AutoBar.reagents[spellSummonFelguard] = {6265}
-		AutoBar.reagents[spellSummonFelhunter] = {6265}
---		AutoBar.reagents[spellSummonImp] = {6265}
-		AutoBar.reagents[spellSummonSuccubus] = {6265}
-		AutoBar.reagents[spellSummonVoidwalker] = {6265}
-		AutoBar.reagents[spellInferno] = {5565}
-		AutoBar.reagents[spellRitualOfDoom] = {16583}
 	end
 end
 

@@ -1,4 +1,4 @@
-﻿local L = AceLibrary("AceLocale-2.2"):new("FuBar_PerformanceFu")
+local L = AceLibrary("AceLocale-2.2"):new("FuBar_PerformanceFu")
 
 L:RegisterTranslations("frFR", function() return {
 	["Force garbage collection"] = "Forcer une récupération de mémoire",

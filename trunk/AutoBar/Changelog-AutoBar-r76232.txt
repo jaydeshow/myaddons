@@ -1,4 +1,18 @@
 ------------------------------------------------------------------------
+r76232 | toadkiller | 2008-06-07 17:38:39 -0400 (Sat, 07 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/AutoBarFuBar.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Switch to GetSpellCount.  0 or # reagent thingies left.
+-- Fix LibStub call
+
+------------------------------------------------------------------------
 r76103 | toadkiller | 2008-06-05 18:40:35 -0400 (Thu, 05 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/AutoBar/AutoBar.toc
@@ -1014,131 +1028,4 @@ Changed paths:
 
 AutoBar : 
 -- Less alpha for the blue spell borders
-------------------------------------------------------------------------
-r72927 | scorpio0920 | 2008-05-06 22:19:37 -0400 (Tue, 06 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhTW localization.
-------------------------------------------------------------------------
-r72922 | sayclub | 2008-05-06 21:50:55 -0400 (Tue, 06 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-koKR.lua
-
-AutoBar : 
-- koKR Update.
-------------------------------------------------------------------------
-r72902 | toadkiller | 2008-05-06 18:30:25 -0400 (Tue, 06 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- Added settings to announce Drum Rotation to Say, Party, Raid
-
-------------------------------------------------------------------------
-r72875 | toadkiller | 2008-05-06 13:59:48 -0400 (Tue, 06 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
--- Allow skinning changes from the Bar settings.
-
-------------------------------------------------------------------------
-r72841 | StiviS | 2008-05-06 05:21:19 -0400 (Tue, 06 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r72832 | toadkiller | 2008-05-06 02:39:02 -0400 (Tue, 06 May 2008) | 8 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-   D /trunk/AutoBar/Style.lua
-
-AutoBar : 
--- 2.04.01.51 beta ()
--- Switch to ButtonFacade.  This completely drops cyCircled support for AutoBar.
--- Include the ButtonFacade and associated skin you like.  Use the ButtonFacade interface to set the skin, including DreamLayout.
--- If you still use cyCircled for other mods you will need to update to r7825+.
--- Dump Style.lua, add ButtonFacade as optional dependency.
-
-
-------------------------------------------------------------------------
-r72766 | StiviS | 2008-05-05 13:02:21 -0400 (Mon, 05 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-
-AutoBar : 
-- esES & esMX: converted escape codes to utf16. (Toadkiller i have a macro to make this)
-------------------------------------------------------------------------
-r72757 | toadkiller | 2008-05-05 11:57:02 -0400 (Mon, 05 May 2008) | 2 lines
-Changed paths:
-   A /trunk/AutoBar/Locale-esMX.lua
-
-AutoBar : 
--- esMX.  Well whatever, someone else can figure out how to change from lame escape codes to utf16 or whatever.
-------------------------------------------------------------------------
-r72756 | toadkiller | 2008-05-05 11:53:03 -0400 (Mon, 05 May 2008) | 2 lines
-Changed paths:
-   D /trunk/AutoBar/Locale-esMX.lua
-
-AutoBar : 
-gah, switch from plain type
-------------------------------------------------------------------------
-r72754 | toadkiller | 2008-05-05 11:50:34 -0400 (Mon, 05 May 2008) | 2 lines
-Changed paths:
-   A /trunk/AutoBar/Locale-esMX.lua
-
-AutoBar : 
--- esMX locale file, cloned from esES
-------------------------------------------------------------------------
-r72705 | toadkiller | 2008-05-05 01:04:38 -0400 (Mon, 05 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- New Macro button for Category Items to create a Custom Macro item, first cut
--- Editable Name and macro text field.
-
 ------------------------------------------------------------------------
