@@ -1,4 +1,4 @@
-﻿local L = AceLibrary("AceLocale-2.2"):new("FuBar_PerformanceFu")
+local L = AceLibrary("AceLocale-2.2"):new("FuBar_PerformanceFu")
 
 L:RegisterTranslations("deDE", function() return {
 	scriptProfiling = "Du spielst mit aktiviertem CPU Profiling.\n\nBeachte folgendes: Wenn du mit Addon Bibliotheken spielst, die in die einzelnen Addons (z.B. Ace2 Addons) integriert sind, wird ihre CPU- und Speicherauslastung als zu den jeweiligen Addons gehörend angezeigt; was jedoch nicht ganz korrekt ist, wenn du weitere Addons benutzt, die die gleichen Addon Bibliotheken verwenden.",

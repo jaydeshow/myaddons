@@ -1,0 +1,42 @@
+------------------------------------------------------------------------
+r76252 | totalpackage | 2008-06-08 04:43:44 -0400 (Sun, 08 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-deDE.lua
+
+Capping:
+- deDE update
+------------------------------------------------------------------------
+r75147 | cwdg | 2008-05-25 23:37:49 -0400 (Sun, 25 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-zhCN.lua
+
+Capping:
+- fix zhCN locale
+------------------------------------------------------------------------
+r74508 | sayclub | 2008-05-20 05:41:50 -0400 (Tue, 20 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-koKR.lua
+
+Capping:
+- koKR Update
+------------------------------------------------------------------------
+r74024 | ananhaid | 2008-05-15 22:33:55 -0400 (Thu, 15 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-zhCN.lua
+
+Capping:
+- zhCN update.
+------------------------------------------------------------------------
+r73133 | 7destiny | 2008-05-08 15:06:11 -0400 (Thu, 08 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-koKR.lua
+
+Capping:
+- koKR Update
+------------------------------------------------------------------------
+r73127 | pettigrow | 2008-05-08 13:33:58 -0400 (Thu, 08 May 2008) | 1 line
+Changed paths:
+   M /trunk/Capping/locals/localization-frFR.lua
+
+Capping: frFR Update
+------------------------------------------------------------------------

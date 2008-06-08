@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-06-05 16:44:09 -0400 (Thu, 05 Jun 2008) $
-$Rev: 76097 $
+$Date: 2008-06-07 17:28:24 -0400 (Sat, 07 Jun 2008) $
+$Rev: 76230 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -186,15 +186,15 @@ L["Darkmoon Faire"] = true
 L["Seasonal"] = true
 
 -- Alchemy Obtain Information
-L["Discovery - Flasks/Potions"] = "Disccovery: Discovered by creating flasks, elixirs or potions containing Outland herbs."
-L["Discovery - Protection Potions"] = "Disccovery: Discovered by creating major protection potions."
-L["Discovery - Transmutes"] = "Disccovery: Discovered by transmuting items that contain Outland materials."
+L["Discovery - Flasks/Potions"] = "Discovery: Discovered by creating flasks, elixirs or potions containing Outland herbs."
+L["Discovery - Protection Potions"] = "Discovery: Discovered by creating major protection potions."
+L["Discovery - Transmutes"] = "Discovery: Discovered by transmuting items that contain Outland materials."
 L["Goblin Rocket Fuel Obt"] = "Crafted: This recipe is crafted by Goblin Engineers"
 L["Gurubashi Mojo Madness Obt"] = "Raid: You can learn this by clicking on a stone table in Zul'Gurub in the Edge of Madness"
 L["Mighty Trolls Blood Potion Obt"] = "Trainer: Henry Stern, "
 -- Mob Drop
 L["Elixir of Greater Firepower Obt"] = "Dark Iron Slaver, Dark Iron Watchman, Dark Iron Taskmaster"
-L["Elixir of the Mongoose Obt"] = "Jadefire Rogue, Felwood, Legashi Rogue"
+L["Elixir of the Mongoose Obt"] = "Jadefire Rogue, Legashi Rogue"
 L["Elixir of the Sages Obt"] = "Scarlet Enchanter, Scarlet Cleric, Scarlet Curate, Scarlet Archmage, Scarlet Inquisitor"
 L["Fel Mana Potion Obt"] = "Eclipsion Soldier, Eclipsion Bloodward, Eclipsion Blood Knight, Eclipsion Spellbinder, Eclipsion Archmage, Eclipsion Centurion, Eclipsion Cavalier, Torloth the Magnificent, Illidari Watcher"
 L["Fel Regeneration Potion Obt"] = "Deathforge Imp, Deathforge Guardian, Deathforge Smith, Deathforge Tinkerer"

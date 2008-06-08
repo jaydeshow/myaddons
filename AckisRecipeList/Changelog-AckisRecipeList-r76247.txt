@@ -1,4 +1,34 @@
 ------------------------------------------------------------------------
+r76247 | next96 | 2008-06-07 22:53:43 -0400 (Sat, 07 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r76230 | kurax | 2008-06-07 17:28:24 -0400 (Sat, 07 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
+
+AckisRecipeList:
+- Update zhCN locale
+------------------------------------------------------------------------
+r76225 | ackis | 2008-06-07 16:09:09 -0400 (Sat, 07 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Fix filtering for specialities... maybe
+------------------------------------------------------------------------
+r76211 | next96 | 2008-06-07 12:26:33 -0400 (Sat, 07 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
 r76171 | ackis | 2008-06-06 13:24:20 -0400 (Fri, 06 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.lua
@@ -968,86 +998,4 @@ Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
 
 AckisRecipeList: deDE update
-------------------------------------------------------------------------
-r73005 | smcn | 2008-05-07 14:41:34 -0400 (Wed, 07 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-
-AckisRecipeList:
-- Corrected reputation for Clefthide Leg Armor
-------------------------------------------------------------------------
-r72906 | ackis | 2008-05-06 19:52:11 -0400 (Tue, 06 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- By the power of Greyskull! I COMMIT YOU!  HEEEE MAN!!!!
-- Fix text wrapping issues
-------------------------------------------------------------------------
-r72895 | ackis | 2008-05-06 17:11:33 -0400 (Tue, 06 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList
-
-AckisRecipeList:
-- Attempt to set externals
-- Dry-coded
-------------------------------------------------------------------------
-r72891 | ackis | 2008-05-06 16:59:24 -0400 (Tue, 06 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/embeds.xml
-
-AckisRecipeList:
-- Add AceDBOptions to embeds.xml, need to add to svn:externals
-- Dry-coded
-------------------------------------------------------------------------
-r72878 | next96 | 2008-05-06 14:34:16 -0400 (Tue, 06 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r72877 | ackis | 2008-05-06 14:28:28 -0400 (Tue, 06 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Lets use AceDBOptions to get profiling to work
-- Added prototype url to frame, did some playing around
-- Dry-coded
-------------------------------------------------------------------------
-r72864 | ackis | 2008-05-06 11:10:15 -0400 (Tue, 06 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
-
-AckisRecipeList:
-- Christoph Jeffcoat now appropiatly linked to Hillsbrad Foothills instead of Arathi Highlands (thanks Rum)
-- Jungle Stew vendors are correctly listed (thanks Elkano)
-- Dry-coded
-------------------------------------------------------------------------
-r72822 | ackis | 2008-05-06 01:08:17 -0400 (Tue, 06 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
-
-AckisRecipeList:
-- JC Update (thanks oXid_FoX)
-------------------------------------------------------------------------
-r72821 | ackis | 2008-05-06 01:05:55 -0400 (Tue, 06 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Colourize the faction information
-- Bump version number
-------------------------------------------------------------------------
-r72820 | ackis | 2008-05-06 00:54:03 -0400 (Tue, 06 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Removed unneeded code
-- Tooltip shows where to aquire information now.
 ------------------------------------------------------------------------

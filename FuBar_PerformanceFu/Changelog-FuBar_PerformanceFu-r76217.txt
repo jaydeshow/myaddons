@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r76217 | nemes | 2008-06-07 13:48:06 -0400 (Sat, 07 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/FuBar_PerformanceFu/FuBar_PerformanceFu.toc
+   M /trunk/FuBar_PerformanceFu/PerformanceFu.lua
+   M /trunk/FuBar_PerformanceFu/embeds.xml
+   M /trunk/FuBar_PerformanceFu/locales/PerformanceFuLocale-deDE.lua
+   M /trunk/FuBar_PerformanceFu/locales/PerformanceFuLocale-frFR.lua
+   M /trunk/FuBar_PerformanceFu/locales/PerformanceFuLocale-koKR.lua
+
+FuBar_PerformanceFu:
+- Remove unnecessary AbacusLib
+- Remove unnecessary BOMs from start of files
+------------------------------------------------------------------------

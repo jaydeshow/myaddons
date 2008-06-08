@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 76025 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76232 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -255,11 +255,6 @@ function AutoBar:OnInitialize()
 
 	-- List of buttonName = AutoBarButton for disabled buttons
 	AutoBar.buttonListDisabled = {}
-
-	-- List of [item/spell] = {reagent, ...}
-	AutoBar.reagents = {}
-	-- List of [item/spell] = multiplier.  For instance Ritual of Refreshment is 2 arcane powders
-	AutoBar.reagentsMultiple = {}
 
 --	AutoBar.db.account.performance = true
 	AutoBar:LogEvent("OnInitialize")
