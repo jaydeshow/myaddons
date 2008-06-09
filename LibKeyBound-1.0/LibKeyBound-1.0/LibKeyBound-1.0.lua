@@ -1,6 +1,6 @@
 --[[
 Name: LibKeyBound-1.0
-Revision: $Rev: 75816 $
+Revision: $Rev: 76300 $
 Author(s): Gello, Maul, Toadkiller, Tuller
 Website: http://www.wowace.com/wiki/LibKeyBound-1.0
 Documentation: http://www.wowace.com/wiki/LibKeyBound-1.0
@@ -10,7 +10,7 @@ Dependencies: CallbackHandler-1.0
 --]]
 
 local MAJOR = "LibKeyBound-1.0"
-local MINOR = "$Revision: 75816 $"
+local MINOR = "$Revision: 76300 $"
 
 --[[
 	LibKeyBound-1.0
@@ -37,6 +37,8 @@ local _G = _G
 LibKeyBound.events = LibKeyBound.events or _G.LibStub("CallbackHandler-1.0"):New(LibKeyBound)
 
 local L = LibKeyBoundLocale10
+LibKeyBound.L = L
+-- ToDo delete global LibKeyBoundLocale10 at some point
 LibKeyBound.Binder = LibKeyBound.Binder or {}
 
 -- #NODOC
@@ -45,7 +47,7 @@ function LibKeyBound:Initialize()
 		local f = CreateFrame("Frame", "KeyboundDialog", UIParent)
 		f:SetFrameStrata("DIALOG")
 		f:SetToplevel(true); f:EnableMouse(true)
-		f:SetWidth(320); f:SetHeight(96)
+		f:SetWidth(360); f:SetHeight(140)
 		f:SetBackdrop{
 			bgFile="Interface\\DialogFrame\\UI-DialogBox-Background" ,
 			edgeFile="Interface\\DialogFrame\\UI-DialogBox-Border",
@@ -67,37 +69,18 @@ function LibKeyBound:Initialize()
 		text:SetWidth(252); text:SetHeight(0)
 		text:SetText(format(L.BindingsHelp, GetBindingText("ESCAPE", "KEY_")))
 
-		local close = CreateFrame("Button", f:GetName() .. "Close", f, "UIPanelCloseButton")
-		close:SetPoint("TOPRIGHT", -3, -3)
-
-		-- per character bindings checkbox
+		-- Per character bindings checkbox
 		local perChar = CreateFrame("CheckButton", "KeyboundDialogCheck", f, "OptionsCheckButtonTemplate")
 		getglobal(perChar:GetName() .. "Text"):SetText(CHARACTER_SPECIFIC_KEYBINDINGS)
-		perChar:SetPoint("BOTTOMLEFT", 12, 8)
 
 		perChar:SetScript("OnShow", function(self)
-			self.current = GetCurrentBindingSet()
 			self:SetChecked(GetCurrentBindingSet() == 2)
 		end)
 
-		perChar:SetScript("OnHide", function(self)
-			LibKeyBound:Deactivate()
-
-			if InCombatLockdown() then
-				self:RegisterEvent("PLAYER_REGEN_ENABLED")
-			else
-				SaveBindings(self.current)
-			end
-		end)
-
-		perChar:SetScript("OnEvent", function(self, event)
-			SaveBindings(self.current)
-			self:UnregisterEvent(event)
-		end)
-
+		local current
 		perChar:SetScript("OnClick", function(self)
-			self.current = (self:GetChecked() and 2) or 1
-			LoadBindings(self.current)
+			current = (perChar:GetChecked() and 2) or 1
+			LoadBindings(current)
 		end)
 
 --		local added
@@ -111,6 +94,62 @@ function LibKeyBound:Initialize()
 		f:SetScript("OnHide", function(self)
 --			PlaySound("igCharacterInfoClose")
 		end)
+
+		-- Okay bindings checkbox
+		local okayBindings = CreateFrame("CheckButton", "KeyboundDialogOkay", f, "OptionsButtonTemplate")
+		getglobal(okayBindings:GetName() .. "Text"):SetText(OKAY)
+		okayBindings:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -12, 14)
+
+		okayBindings:SetScript("OnClick", function(self)
+			current = (perChar:GetChecked() and 2) or 1
+			if InCombatLockdown() then
+				self:RegisterEvent("PLAYER_REGEN_ENABLED")
+			else
+--				DEFAULT_CHAT_FRAME:AddMessage("okayBindings " .. tostring(current))
+				SaveBindings(current)
+				LibKeyBound:Deactivate()
+			end
+		end)
+
+		okayBindings:SetScript("OnHide", function(self)
+			current = (perChar:GetChecked() and 2) or 1
+			if InCombatLockdown() then
+				self:RegisterEvent("PLAYER_REGEN_ENABLED")
+			else
+				SaveBindings(current)
+			end
+		end)
+
+		okayBindings:SetScript("OnEvent", function(self, event)
+--			DEFAULT_CHAT_FRAME:AddMessage("okayBindings delayed " .. tostring(current))
+			SaveBindings(current)
+			self:UnregisterEvent(event)
+			LibKeyBound:Deactivate()
+		end)
+
+		-- Cancel bindings checkbox
+		local cancelBindings = CreateFrame("CheckButton", "KeyboundDialogCancel", f, "OptionsButtonTemplate")
+		getglobal(cancelBindings:GetName() .. "Text"):SetText(CANCEL)
+		cancelBindings:SetPoint("BOTTOMLEFT", f, "BOTTOMLEFT", 12, 14)
+
+		cancelBindings:SetScript("OnClick", function(self)
+			if InCombatLockdown() then
+				self:RegisterEvent("PLAYER_REGEN_ENABLED")
+			else
+--				DEFAULT_CHAT_FRAME:AddMessage("cancelBindings ")
+				LoadBindings(GetCurrentBindingSet())
+				LibKeyBound:Deactivate()
+			end
+		end)
+
+		cancelBindings:SetScript("OnEvent", function(self, event)
+--			DEFAULT_CHAT_FRAME:AddMessage("cancelBindings delayed ")
+			LoadBindings(GetCurrentBindingSet())
+			self:UnregisterEvent(event)
+			LibKeyBound:Deactivate()
+		end)
+
+		perChar:SetPoint("BOTTOMLEFT", cancelBindings, "TOPLEFT", 0, 4)
 
 		self.dialog = f
 	end
@@ -322,9 +361,9 @@ Returns:
 	string - the shortened displayString
 
 Example:
-		local key1 = GetBindingKey(button:GetName())
-		local displayKey = LibKeyBound:ToShortKey(key1)
-		return displayKey
+	local key1 = GetBindingKey(button:GetName())
+	local displayKey = LibKeyBound:ToShortKey(key1)
+	return displayKey
 
 Notes:
 	* Shortens the key text (returned from GetBindingKey etc.)
@@ -549,7 +588,6 @@ function LibKeyBound.Binder:SetKey(button, key)
 		else
 			msg = format(L.BoundKey, GetBindingText(key, "KEY_"), button:GetName())
 		end
-		SaveBindings(GetCurrentBindingSet())
 		UIErrorsFrame:AddMessage(msg, 1, 1, 1, 1, UIERRORS_HOLD_TIME)
 	end
 end
@@ -562,7 +600,7 @@ function LibKeyBound.Binder:ClearBindings(button)
 			button:ClearBindings()
 		else
 			local binding = self:ToBinding(button)
-			while GetBindingKey(binding) do
+			while (GetBindingKey(binding)) do
 				SetBinding(GetBindingKey(binding), nil)
 			end
 		end
@@ -573,7 +611,6 @@ function LibKeyBound.Binder:ClearBindings(button)
 		else
 			msg = format(L.ClearedBindings, button:GetName())
 		end
-		SaveBindings(GetCurrentBindingSet())
 		UIErrorsFrame:AddMessage(msg, 1, 1, 1, 1, UIERRORS_HOLD_TIME)
 	end
 end
@@ -611,7 +648,7 @@ do
 			EventButton:UnregisterEvent("PLAYER_LOGIN")
 		end
 	end)
-	
+
 	if IsLoggedIn() and not LibKeyBound.initialized then
 		LibKeyBound:Initialize()
 	elseif not LibKeyBound.initialized then

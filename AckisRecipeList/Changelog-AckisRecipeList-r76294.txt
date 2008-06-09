@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r76294 | ackis | 2008-06-08 22:43:11 -0400 (Sun, 08 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Bump version
+------------------------------------------------------------------------
 r76247 | next96 | 2008-06-07 22:53:43 -0400 (Sat, 07 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
@@ -992,10 +999,4 @@ Changed paths:
 
 AckisRecipeList:
 - zhTW add
-------------------------------------------------------------------------
-r73086 | kunda | 2008-05-08 07:29:29 -0400 (Thu, 08 May 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
-
-AckisRecipeList: deDE update
 ------------------------------------------------------------------------

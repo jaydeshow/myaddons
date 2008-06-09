@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75931 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76305 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-06-03 16:31:31 -0400 (Tue, 03 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-06-08 23:57:09 -0400 (Sun, 08 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -1459,6 +1459,7 @@ end
 -- Upgrade from old DB versions
 local dbVersion = 1
 function AutoBar:UpgradeVersion()
+--	AutoBar.db.account.dbVersion = nil
 	if (not AutoBar.db.account.dbVersion) then
 		AutoBar.db.account.customBarList = nil
 		AutoBar.db.account.bars = nil
@@ -1482,7 +1483,8 @@ function AutoBar:UpgradeVersion()
 				end
 			end
 		end
-
+		AutoBarDB.currentProfile = nil
+		AutoBarDB.profiles = nil
 		AutoBar.db.account.dbVersion = 1
 	end
 end
