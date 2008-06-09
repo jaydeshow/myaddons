@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r76300 | toadkiller | 2008-06-08 23:43:24 -0400 (Sun, 08 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua
+
+LibKeyBound-1.0:
+-- Add Cancel (Revert) and Okay (Commit) to LibKeyBound.  Remove close box.  Toggling Commits as well.
+
+------------------------------------------------------------------------
 r75816 | nevcairiel | 2008-06-02 11:26:48 -0400 (Mon, 02 Jun 2008) | 1 line
 Changed paths:
    M /trunk/LibKeyBound-1.0/LibKeyBound-1.0/LibKeyBound-1.0.lua

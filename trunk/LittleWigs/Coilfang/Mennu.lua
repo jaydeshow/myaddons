@@ -13,6 +13,22 @@ local db = nil
 
 L:RegisterTranslations("enUS", function() return {
 	cmd = "Mennu",
+	
+	totem = "Nova Totem",
+	totem_desc = "Warn when a Corrupted Nova Totem is casted.",
+	totem_message = "Corrupted Nova Totem!",
+} end )
+
+L:RegisterTranslations("koKR", function() return {
+	totem = "토템",
+	totem_desc = "타락의 회오리 토템 시전시 알립니다.",
+	totem_message = "타락의 회오리 토템!",
+} end )
+
+L:RegisterTranslations("zhCN", function() return {
+	totem = "堕落新星图腾",
+	totem_desc = "当施放堕落新星图腾时发出警报。",
+	totem_message = "堕落新星图腾！",
 } end )
 
 ----------------------------------
@@ -24,14 +40,15 @@ mod.partyContent = true
 mod.otherMenu = "Coilfang Reservoir"
 mod.zonename = BZ["The Slave Pens"]
 mod.enabletrigger = boss
-mod.toggleoptions = {"bosskill"}
-mod.revision = tonumber(("$Revision: 67144 $"):sub(12, -3))
+mod.toggleoptions = {"totem", "bosskill"}
+mod.revision = tonumber(("$Revision: 76306 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
+	self:AddCombatListener("SPELL_SUMMON", "Totem", 31991)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	db = self.db.profile
@@ -40,3 +57,9 @@ end
 ------------------------------
 --      Event Handlers      --
 ------------------------------
+
+function mod:Totem()
+	if db.totem then
+		self:IfMessage(L["totem_message"], "Attention", 31991)
+	end
+end

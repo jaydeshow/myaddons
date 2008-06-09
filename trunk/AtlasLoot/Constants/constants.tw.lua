@@ -83,6 +83,15 @@ AL:RegisterTranslations("zhTW", function() return {
     ["AutoQuery items on loot tables |cffff0000(disconnection risk)|r"] = "自動查詢未知物品|cffff0000(會有斷線風險)|r",
     ["Done"] = "完成",
     ["WishList"] = "裝備願望清單",
+    ["Search Result: %s"] = "搜尋結果: %s",
+    ["Last Result"] = "上次的結果",
+    ["Search on"] = "在以下模組搜尋: ",
+    ["All modules"] = "所有模組",
+    ["If checked, AtlasLoot will load and search across all the modules."] = "勾選以載入所有模組並在各模組間搜尋。",
+    ["Search options"] = "搜尋選項",
+    ["Partial matching"] = "部份符合",
+    ["If checked, AtlasLoot search item names for a partial match."] = "勾選以啟用部份符合。",
+    ["You don't have any module selected to search on!"] = "沒有任何模組被選取以進行搜尋！",
 
     --Slash commands
     ["reset"] = "reset",
@@ -135,6 +144,8 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "歡迎使用 Atlasloot Enhanced。請花一些時間設定您的偏好選項。",
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = "v4.02.01 新功能：輸入 '/atlasloot options' 呼叫出選項選單；輸入 '/atlasloot reset' 在離線後重設 Atlasloot。",
     ["New feature in 4.03.00: Introducing the Wishlist!  Simply alt-click on any item to add it to the wishlist.  To delete an item from the wishlist, open up your wishlist and alt-click the item to remove it.  It's that simple.  Buttons to view the wishlist have been added to the Atlas interface and the loot browser."] = "v4.03.00 新功能：新增裝備願望清單！只要在任何裝備上按 Alt 及滑鼠點選，便可將裝備加入願望清單中。如要將裝備從願望清單中移除，開啟願望清單然後在裝備上按 Alt 及滑鼠點選即可將之移除。",
+    ["New feature in 4.05.00: Advanced searching functionality is now available. You can type in a partial item name, for example typing 'elixir' gives all items in the database with 'elixir' in the name.  Big thanks to Kurax for his help."] = "v4.05.00 新功能: 進階搜尋功能支援。您可以輸入物品的部份名稱，例如輸入 '阿泰絲' 以列出所有含有此名稱的物品。特別感謝 Kurax 的支援.",
+    ["New feature in 4.05.00: All professions are now included in the AtlasLoot_Crafting module."] = "v4.05.00 新功能: 所有的專業技能現已納入 AtlasLoot_Crafting 模組",
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences for tooltips and links in the chat window.\n\n  This options screen can be reached again at any later time by typing '/atlasloot'."] = "歡迎使用 AtlasLoot Enhanced. 請花一點時間來設定訊息提示和連結的喜好. 輸入 /atlasloot 可以再次設定喜好選項",
     ["Setup"] = "設定",
 
@@ -225,6 +236,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Through The Dark Portal"] = "通過黑暗之門",
     ["Fires of Outland"] = "外域之火",
     ["Servants of the Betrayer"] = "背叛者的奴僕",
+    ["Hunt for Illidan"] = "獵殺伊利丹",
     ["Loot Card Items"] = "可換取的物品",
     ["UDE Items"] = "UDE 物品",
     ["Landro Longshot"] = "藍卓",
@@ -755,6 +767,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Level 50-60"] = "等級 50-60",
     ["BT Patterns/Plans"] = "黑暗神廟卷軸",
     ["Hyjal Summit Designs"] ="海加爾山設計圖",
+    ["SP Patterns/Plans"] = "特殊圖樣/卷軸",
 
     --NPCs missing from BabbleBoss
     ["Trash Mobs"] = "小怪",
@@ -943,6 +956,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Garrett Family Chest"] = "加勒特的寶箱",
 	["Reinforced Fel Iron Chest"] = "強化惡魔鐵箱",
 	["DM North Tribute Chest"] = "北厄貢品箱",
+
     --World Events
     ["Abyssal Council"] = "深淵議會",
     ["Bash'ir Landing Skyguard Raid"] = "貝許爾平臺空防",
