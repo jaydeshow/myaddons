@@ -1,4 +1,20 @@
 ------------------------------------------------------------------------
+r76326 | nevcairiel | 2008-06-09 05:29:17 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Ace3/AceAddon-3.0/AceAddon-3.0.lua
+   M /trunk/Ace3/AceConfig-3.0/AceConfigCmd-3.0/AceConfigCmd-3.0.lua
+   M /trunk/Ace3/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua
+   M /trunk/Ace3/AceConfig-3.0/AceConfigRegistry-3.0/AceConfigRegistry-3.0.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-DropDown-Items.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-DropDown.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-DropDownGroup.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-TabGroup.lua
+   M /trunk/Ace3/AceGUI-3.0/widgets/AceGUIWidget-TreeGroup.lua
+   M /trunk/Ace3/changelog.txt
+
+Ace3 - (merge up to 76325)
+- see changelog.txt
+------------------------------------------------------------------------
 r74634 | nevcairiel | 2008-05-21 04:21:34 -0400 (Wed, 21 May 2008) | 1 line
 Changed paths:
    M /trunk/Ace3/changelog.txt

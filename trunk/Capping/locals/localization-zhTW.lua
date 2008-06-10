@@ -86,7 +86,6 @@ CappingLocale:CreateLocaleTable({
 	["avunderattack"] = "^(.+)受到攻擊!.+不採取措施",
 	["avtaken"] = "^(.+)被.+佔領了!",
 	["avdestroyed"] = "^(.+)被.+摧毀了!",
-	-- no need to translate ["The "] = true,
 	["Snowfall Graveyard"] = "落雪墓地",
 	["Tower"] = "哨塔",
 	["Bunker"] = "碉堡",

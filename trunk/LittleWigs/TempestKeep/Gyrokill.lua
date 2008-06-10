@@ -42,10 +42,13 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	shadow = "Puissance de l'ombre",
-	shadow_desc = "Préviens quand Main-en-fer gagne la Puissance de l'ombre.",
-	shadow_message = "Puissance de l'ombre dans 2 sec. !",
-	shadow_bar = "Puissance de l'ombre",
+	shadow = "Puissance de l'ombre incanté",
+	shadow_desc = "Prévient quand Gyro-Meurtre incante la Puissance de l'ombre.",
+	shadow_message = "Puissance de l'ombre dans 2 sec. !",
+
+	shadowaura = "Puissance de l'ombre gagné",
+	shadowaura_desc = "Prévient quand Main-en-fer gagne la Puissance de l'ombre.",
+	shadowaura_message ="Gyro-Meurtre gagne Puissance de l'ombre !",
 } end )
 
 L:RegisterTranslations("esES", function() return {
@@ -85,7 +88,7 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Mechanar"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"shadow", "shadowaura", "bosskill"}
-mod.revision = tonumber(("$Revision: 74548 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r76391 | 7destiny | 2008-06-10 00:43:12 -0400 (Tue, 10 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: Sunwell/Muru: fix entropius timers
+------------------------------------------------------------------------
 r76117 | pettigrow | 2008-06-06 03:07:40 -0400 (Fri, 06 Jun 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/Sunwell/KilJaeden.lua
@@ -448,92 +454,4 @@ Changed paths:
    M /trunk/BigWigs/Sunwell/Twins.lua
 
 BigWigs: Sunwell/M'uru: Add enrage
-------------------------------------------------------------------------
-r73117 | pettigrow | 2008-05-08 12:22:35 -0400 (Thu, 08 May 2008) | 3 lines
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/Souls.lua
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs:
-- Sunwell/Muru: frFR Update
-- BlackTemple/Souls: cleanup
-------------------------------------------------------------------------
-r73074 | ananhaid | 2008-05-08 05:32:56 -0400 (Thu, 08 May 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: 
-- zhCN Muru update. translated to correct.
-------------------------------------------------------------------------
-r73052 | ananhaid | 2008-05-07 22:47:01 -0400 (Wed, 07 May 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: 
-- zhCN Muru update.
-------------------------------------------------------------------------
-r73010 | funkydude | 2008-05-07 15:13:55 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: Don't ever change my timers without talking to me.
-------------------------------------------------------------------------
-r73009 | 7destiny | 2008-05-07 14:57:24 -0400 (Wed, 07 May 2008) | 5 lines
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru:
-- Fix Void timers
-- Add phase changes warnings
-- Stop needless timer when the phase change
-- koKR Update
-------------------------------------------------------------------------
-r72996 | funkydude | 2008-05-07 13:32:09 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: typo
-------------------------------------------------------------------------
-r72995 | funkydude | 2008-05-07 13:29:27 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: Dark Fiend spawn alerts by tsigo
-------------------------------------------------------------------------
-r72993 | funkydude | 2008-05-07 13:19:49 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: boss death fix
-------------------------------------------------------------------------
-r72989 | funkydude | 2008-05-07 12:42:54 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: fixup humanoid timers
-------------------------------------------------------------------------
-r72870 | 7destiny | 2008-05-06 13:36:39 -0400 (Tue, 06 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Core.lua
-   M /trunk/BigWigs/Karazhan/Hyakiss.lua
-   M /trunk/BigWigs/Karazhan/Terestian.lua
-   M /trunk/BigWigs/Karazhan/TheBigBadWolf.lua
-   M /trunk/BigWigs/Sunwell/Twins.lua
-   M /trunk/BigWigs/TheEye/Solarian.lua
-   M /trunk/BigWigs/ZulAman/Akil'zon.lua
-   M /trunk/BigWigs/ZulAman/Jan'alai.lua
-
-BigWigs: koKR Update
-------------------------------------------------------------------------
-r72845 | 7destiny | 2008-05-06 06:32:05 -0400 (Tue, 06 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: Repeat spawn warning
-------------------------------------------------------------------------
-r72830 | 7destiny | 2008-05-06 02:19:13 -0400 (Tue, 06 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: Fixed darkness bar
 ------------------------------------------------------------------------

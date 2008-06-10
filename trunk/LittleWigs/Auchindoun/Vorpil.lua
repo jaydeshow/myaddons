@@ -47,15 +47,15 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	teleport = "Téléportation",
-	teleport_desc = "Préviens quand Vorpil se téléporte avec le groupe.",
-	teleport_message = "Téléportation !",
-	teleport_warning = "Téléportation dans ~5 sec. !",
+	teleport_desc = "Prévient quand Vorpil se téléporte avec le groupe.",
+	teleport_message = "Téléportation !",
+	teleport_warning = "Téléportation dans ~5 sec. !",
 	teleport_bar = "Téléportation",
-	
-	--banish = "Banish (Heroic)",
-	--banish_desc = "Warn for Banish.",
-	--banish_message = "%s is Banish!",
-	--banish_bar = "%s - Banish",
+
+	banish = "Bannir (Héroïque)",
+	banish_desc = "Prévient quand un membre du groupe est banni.",
+	banish_message = "%s est banni !",
+	banish_bar = "%s - Bannir",
 
 	engage_trigger1 = "Je ferai une offrande de ton sang !",
 	engage_trigger2 = "Bien, un digne sacrifice !",
@@ -68,10 +68,10 @@ L:RegisterTranslations("zhTW", function() return {
 	teleport_warning = "5 秒後傳送!",
 	teleport_bar = "傳送",
 	
-	--banish = "Banish (Heroic)",
-	--banish_desc = "Warn for Banish.",
-	--banish_message = "%s is Banish!",
-	--banish_bar = "%s - Banish",
+	banish = "放逐 (英雄)",
+	banish_desc = "放逐警報",
+	banish_message = ">%s< 被放逐!",
+	banish_bar = "%s - 放逐",
 
 	engage_trigger1 = "你會是其他人很好的榜樣!",
 	engage_trigger2 = "很好，一次值得的犧牲!",

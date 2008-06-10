@@ -1,4 +1,4 @@
-local VERSION = tonumber(("$Revision: 75510 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 76401 $"):match("%d+"))
 
 local Parrot = Parrot, Parrot
 local Parrot_CombatEvents = Parrot:NewModule("CombatEvents", "LibRockEvent-1.0", "LibRockTimer-1.0")
@@ -6,7 +6,7 @@ local self = Parrot_CombatEvents
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-29 21:31:31 -0400 (Thu, 29 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-06-10 05:33:29 -0400 (Tue, 10 Jun 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- to track XP and Honor-gains
@@ -1763,6 +1763,17 @@ local MeleeMissParser =
 	["IMMUNE"] = "Melee immunes"
 }
 
+local MeleeMissParser =
+{
+	["MISS"] = "Melee misses",
+	["DODGE"] = "Melee dodges",
+	["BLOCK"] = "Melee blocks",
+	["PARRY"] = "Melee parries",
+	["ABSORB"] = "Melee absorbs",
+	["EVADE"] = "Melee evades",
+	["IMMUNE"] = "Melee immunes"
+}
+
 local SpellMissParser =
 {
 	["MISS"] = "Ability misses",
@@ -2127,7 +2138,8 @@ function Parrot_CombatEvents:MeleeMissed(timestamp, eventtype, srcGUID, srcName,
 		name = "Incoming"
 	end
 	
-	name = string.format("%s %s", name, MeleeMissParser[missType] or "")
+	--TODO performance improvement
+	name = string.format("%s %s", name, _G[missType] or "")
 	Parrot_TriggerConditions:FirePrimaryTriggerCondition(name)
 
 end
@@ -2637,9 +2649,9 @@ function Parrot_CombatEvents:HandleEvent(timestamp, eventtype, srcGUID, srcName,
 		return
 	end
 
-	if UnitIsDeadOrGhost("player") then
-		return
-	end
+-- 	if UnitIsDeadOrGhost("player") then
+-- 		return
+-- 	end
 
 
 	refreshPetData()

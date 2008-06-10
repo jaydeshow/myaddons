@@ -31,8 +31,8 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	knock = "Repousser au loin",
-	knock_desc = "Préviens quand Soccothrates gagne Repousser au loin.",
-	knock_message = "Repousser au loin !",
+	knock_desc = "Prévient quand Soccothrates utilise Repousser au loin.",
+	knock_message = "Repousser au loin !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -57,7 +57,7 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"knock", "bosskill"}
-mod.revision = tonumber(("$Revision: 68702 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -33,8 +33,8 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	shell = "Cocon de ténèbres",
-	shell_desc = "Préviens quand Pandemonius est protégé par son Cocon de ténèbres.",
-	shell_message = "Cocon de ténèbres !",
+	shell_desc = "Prévient quand Pandemonius est protégé par son Cocon de ténèbres.",
+	shell_message = "Cocon de ténèbres !",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -59,7 +59,7 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Mana-Tombs"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"shell", "bosskill"}
-mod.revision = tonumber(("$Revision: 67359 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

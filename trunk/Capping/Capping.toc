@@ -4,7 +4,7 @@
 ## Notes: Battleground timers and other goodies.
 ## Notes-zhTW: 顯示戰場上的狀態條。
 ## Notes-zhCN: 战场计时器和其他的玩意。
-## Version: 2.4.010
+## Version: 2.4.011
 
 ## SavedVariables: CappingDB
 

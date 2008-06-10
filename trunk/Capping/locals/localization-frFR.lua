@@ -97,10 +97,12 @@ CappingLocale:CreateLocaleTable({
 	["Frostwolf Wolf Rider Commander"] = "Commandant Chevaucheur de loup Loup-de-givre ",
 
 	-- patterns
-	["avunderattack"] = "^(.+) est .* ! Si personne n'intervient,",
-	["avtaken"] = "^(.+) a été pris",
-	["avdestroyed"] = "^(.+) a été détruit",
-	["The "] = "L(%w) ",
+	["avunderattack"] = "Le (.+) est attaqué ! Si personne n'intervient,",
+	["avunderattack2"] = "La (.+) est attaquée ! Si personne n'intervient,",
+	["avtaken"] = "Le (.+) a été pris par",
+	["avtaken2"] = "La (.+) a été prise par",
+	["avdestroyed"] = "Le (.+) a été détruit par",
+	["avdestroyed2"] = "La (.+) a été détruite par",
 	["Snowfall Graveyard"] = "Cimetière des neiges",
 	["Tower"] = "Tour",
 	["Bunker"] = "Fortin",

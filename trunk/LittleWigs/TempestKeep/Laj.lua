@@ -37,8 +37,8 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	allergic = "Réaction allergique",
-	allergic_desc = "Préviens quand un joueur fait une Réaction allergique.",
-	allergic_message = "%s est allergique !",
+	allergic_desc = "Prévient quand un joueur subit les effets de la Réaction allergique.",
+	allergic_message = "Réaction allergique sur %s !",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -57,7 +57,7 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"allergic", "bosskill"}
-mod.revision = tonumber(("$Revision: 71982 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

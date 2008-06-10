@@ -37,8 +37,8 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	poison = "Nuage empoisonné",
-	poison_desc = "Préviens de l'arrivée des Nuages empoisonnés.",
-	poison_message = "Nuage empoisonné !",
+	poison_desc = "Prévient de l'arrivée des Nuages empoisonnés.",
+	poison_message = "Nuage empoisonné !",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -57,7 +57,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"poison", "bosskill"}
-mod.revision = tonumber(("$Revision: 75658 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

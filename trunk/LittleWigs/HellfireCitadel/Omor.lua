@@ -26,10 +26,10 @@ L:RegisterTranslations("enUS", function() return {
 L:RegisterTranslations("frFR", function() return {
 	aura = "Aura traîtresse",
 	aura_heroic = "Plaie de traîtrise",
-	aura_desc = "Préviens quand un joueur subit les effets de l'Aura/Plaie traîtresse.",
-	aura_message = "%s a %s !",
-	aura_message_you = "Vous avez %s !",
-	aura_bar = "%s : %s",
+	aura_desc = "Prévient quand un joueur subit les effets de l'Aura/Plaie traîtresse.",
+	aura_message = "%s a %s !",
+	aura_message_you = "Vous avez %s !",
+	aura_bar = "%s : %s",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur affecté par l'Aura/Plaie traîtresse (nécessite d'être promu ou mieux).",
@@ -90,7 +90,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["Hellfire Ramparts"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"aura", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 71633 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

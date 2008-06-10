@@ -31,8 +31,8 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	ae = "Explosion des arcanes",
-	ae_desc = "Préviens quand Ikiss lance son Explosion des arcanes.",
-	ae_message = "Explosion des arcanes en incantation !",
+	ae_desc = "Prévient quand Ikiss lance son Explosion des arcanes.",
+	ae_message = "Explosion des arcanes en incantation !",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -63,7 +63,7 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Sethekk Halls"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"ae", "bosskill"}
-mod.revision = tonumber(("$Revision: 75658 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

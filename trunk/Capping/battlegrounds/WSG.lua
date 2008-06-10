@@ -11,7 +11,7 @@ local unknownhp = "|cff777777??%|r"
 
 local UnitExists, UnitIsEnemy, UnitName, GetTime = UnitExists, UnitIsEnemy, UnitName, GetTime
 
-local function SetCarrier(faction, carrier, class)  -- set alliance carrier data and text
+local function SetCarrier(faction, carrier, class)  -- setup carrier frames
 	if faction == 0 then
 		hcarrier, hclass, hf.car = carrier, class, carrier
 		hftext:SetFormattedText("|cff%s%s|r", self:GetClassColorHex(class), carrier or "")
@@ -28,11 +28,13 @@ local function SetCarrier(faction, carrier, class)  -- set alliance carrier data
 end
 local function UpdateHealth(faction, u, synchp)  -- Carrier's health text formatting
 	if faction == "Alliance" then
+		if not acarrier then return end
 		local ahealth_before = ahealth
 		ahealth = synchp or min(floor(100 * UnitHealth(u)/UnitHealthMax(u)), 100)
 		aftexthp:SetFormattedText("|cff%s%d%%|r", (ahealth < ahealth_before and "ff2222") or "dddddd", ahealth)
 		return ahealth
 	else
+		if not hcarrier then return end
 		local hhealth_before = hhealth
 		hhealth = synchp or min(floor(100 * UnitHealth(u)/UnitHealthMax(u)), 100)
 		hftexthp:SetFormattedText("|cff%s%d%%|r", (hhealth < hhealth_before and "ff2222") or "dddddd", hhealth)
@@ -170,7 +172,7 @@ end
 function Capping:WSGSync(prefix, message, chan, sender)  -- experimental WSG syncing
 -------------------------------------------------------
 	if prefix == "cap" and chan == "BATTLEGROUND" and sender ~= UnitName("player") then
-		if lastsync + 1.5 < GetTime() then  -- request or fulfill a request for carriers' names
+		if lastsync + 1.5 < GetTime() then
 			found = 0
 			UpdateHealth((playerfaction == "Alliance" and "Horde") or "Alliance", nil, tonumber(message))
 		end

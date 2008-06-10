@@ -4,7 +4,7 @@ local L = CappingLocale
 
 local lastsync = 0
 local strfind, strlower, strmatch = strfind, strlower, strmatch
-local capture_time = 243
+local captime = 243
 
 --------------------------
 function Capping:StartAV()
@@ -73,15 +73,14 @@ end
 -------------------------------
 function Capping:AVAssaults(a1)
 -------------------------------
-	if strmatch(a1, L["avunderattack"]) then
-		local node = gsub( strmatch(a1, L["avunderattack"]), L["The "], "" )
+	local node = strmatch(a1, L["avunderattack"]) or strmatch(a1, L["avunderattack2"])
+	if node then
 		local faction = (strfind(a1, L["Horde"]) and "horde") or "alliance"
-		self:StartBar(node, capture_time, capture_time, self:GetIconData(faction, NodeType(node)), faction)
-	elseif strmatch(a1, L["avtaken"]) then
-		local node = gsub( strmatch(a1, L["avtaken"]), L["The "], "" )
-		self:StopBar(node)
-	elseif strmatch(a1, L["avdestroyed"]) then
-		local node = gsub( strmatch(a1, L["avdestroyed"]), L["The "], "" )
+		self:StartBar(node, captime, captime, self:GetIconData(faction, NodeType(node)), faction)
+		return
+	end
+	node = strmatch(a1, L["avtaken"]) or strmatch(a1, L["avtaken2"]) or strmatch(a1, L["avdestroyed"]) or strmatch(a1, L["avdestroyed2"])
+	if node then
 		self:StopBar(node)
 	elseif strfind(a1, L["Wicked, wicked, mortals!"]) then 
 		self:StartBar(L["Ivus begins moving"], 603, 603, "Interface\\Icons\\Spell_Nature_NaturesBlessing", "alliance")
@@ -92,19 +91,17 @@ end
 
 local sf = L["Snowfall Graveyard"]
 ----------------------------------
-function Capping:SnowfallHorde(a1)
+function Capping:SnowfallHorde(a1)  --Initial capture of Snowfall for horde
 ----------------------------------
-	--Initial capture of Snowfall for horde
 	if strfind(strlower(a1), strlower(sf)) then
-		self:StartBar(sf, capture_time, capture_time, self:GetIconData("horde", "graveyard"), "horde")
+		self:StartBar(sf, captime, captime, self:GetIconData("horde", "graveyard"), "horde")
 	end
 end
 -------------------------------------
-function Capping:SnowfallAlliance(a1)
+function Capping:SnowfallAlliance(a1)  --Initial capture of Snowfall for alliance
 -------------------------------------
-	--Initial capture of Snowfall for alliance
 	if strfind(strlower(a1), strlower(sf)) then
-		self:StartBar(sf, capture_time, capture_time, self:GetIconData("alliance", "graveyard"), "alliance")
+		self:StartBar(sf, captime, captime, self:GetIconData("alliance", "graveyard"), "alliance")
 	end
 end
 

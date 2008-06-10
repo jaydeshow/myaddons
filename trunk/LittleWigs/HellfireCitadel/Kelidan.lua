@@ -37,8 +37,8 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	nova = "Nova ardente",
-	nova_desc = "Préviens de l'arrivée des Novas ardentes.",
-	nova_message = "Nova ardente imminente !",
+	nova_desc = "Prévient de l'arrivée des Novas ardentes.",
+	nova_message = "Nova ardente imminente !",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -57,7 +57,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"nova", "bosskill"}
-mod.revision = tonumber(("$Revision: 75907 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

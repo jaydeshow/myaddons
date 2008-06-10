@@ -26,10 +26,10 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	tranq = "Tranquillité ",
-	tranq_desc = "Préviens quand Freywinn lance sa Tranquillité.",
-	tranq_message = "Tranquilité incanté !",
-	tranqfade_message = "Fin de la Tranquillité dans ~5 sec. !",
+	tranq = "Tranquillité",
+	tranq_desc = "Prévient quand Freywinn lance sa Tranquillité.",
+	tranq_message = "Tranquilité incanté !",
+	tranqfade_message = "Fin de la Tranquillité dans ~5 sec. !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -63,7 +63,7 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"tranq", "bosskill"}
-mod.revision = tonumber(("$Revision: 71982 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 75012 $"):match("%d+"))
+local revision = tonumber(("$Revision: 76320 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -183,7 +183,10 @@ do
 	local function reallySetTanks()
 		local changed = nil
 		for num, name in pairs(tanks) do
-			if not oRA.maintanktable[num] or (oRA.maintanktable[num] and oRA.maintanktable[num] ~= name) then
+			if not oRA.maintanktable[num] or oRA.maintanktable[num] ~= name then
+				for i, n in pairs(oRA.maintanktable) do
+					if n == name then oRA.maintanktable[i] = nil end
+				end
 				oRA.maintanktable[num] = name
 				changed = true
 			end
