@@ -1,4 +1,57 @@
 ------------------------------------------------------------------------
+r76367 | pettigrow | 2008-06-09 17:45:02 -0400 (Mon, 09 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   M /trunk/LittleWigs/Auchindoun/Murmur.lua
+   M /trunk/LittleWigs/Auchindoun/Pandemonius.lua
+   M /trunk/LittleWigs/Auchindoun/Syth.lua
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+   M /trunk/LittleWigs/CoT/BlackMorass.lua
+   M /trunk/LittleWigs/Coilfang/Hungarfen.lua
+   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
+   M /trunk/LittleWigs/Coilfang/Mennu.lua
+   M /trunk/LittleWigs/Coilfang/Rokmar.lua
+   M /trunk/LittleWigs/Coilfang/Steamrigger.lua
+   M /trunk/LittleWigs/Coilfang/Thespia.lua
+   M /trunk/LittleWigs/HellfireCitadel/Broggok.lua
+   M /trunk/LittleWigs/HellfireCitadel/Kelidan.lua
+   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
+   M /trunk/LittleWigs/HellfireCitadel/Omor.lua
+   M /trunk/LittleWigs/HellfireCitadel/Warchief.lua
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+   M /trunk/LittleWigs/MagistersTerrace/PriestessDelrissa.lua
+   M /trunk/LittleWigs/MagistersTerrace/SelinFireheart.lua
+   M /trunk/LittleWigs/MagistersTerrace/Vexallus.lua
+   M /trunk/LittleWigs/TempestKeep/Capacitus.lua
+   M /trunk/LittleWigs/TempestKeep/Dalliah.lua
+   M /trunk/LittleWigs/TempestKeep/Freywinn.lua
+   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
+   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
+   M /trunk/LittleWigs/TempestKeep/Laj.lua
+   M /trunk/LittleWigs/TempestKeep/Pathaleon.lua
+   M /trunk/LittleWigs/TempestKeep/Skyriss.lua
+   M /trunk/LittleWigs/TempestKeep/Soccothrates.lua
+   M /trunk/LittleWigs/TempestKeep/Thorngrin.lua
+   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
+
+LittleWigs:
+- frFR Update
+- Blackheart & Rokmar: tweaks & fixes
+------------------------------------------------------------------------
+r76363 | scorpio0920 | 2008-06-09 16:35:54 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+   M /trunk/LittleWigs/Coilfang/Mennu.lua
+   M /trunk/LittleWigs/Coilfang/Rokmar.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
 r76306 | ananhaid | 2008-06-09 00:04:47 -0400 (Mon, 09 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/LittleWigs/Auchindoun/Blackheart.lua

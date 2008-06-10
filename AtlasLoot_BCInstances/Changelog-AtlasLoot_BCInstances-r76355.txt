@@ -1,4 +1,18 @@
 ------------------------------------------------------------------------
+r76355 | isler | 2008-06-09 12:11:30 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
+
+AtlasLoot_BCInstances:
+- Fix 34247 and 34336
+------------------------------------------------------------------------
+r76343 | hegarol | 2008-06-09 09:46:55 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
+
+AtlasLoot_BCInstances:
+- Removed normal mode items from heroic mode (Magisters' Terrace)
+------------------------------------------------------------------------
 r75526 | kurax | 2008-05-30 00:38:27 -0400 (Fri, 30 May 2008) | 1 line
 Changed paths:
    M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
@@ -172,92 +186,4 @@ Changed paths:
 
 AtlasLoot_BCInstances:
 - Update zhTW locale
-------------------------------------------------------------------------
-r73136 | kurax | 2008-05-08 15:16:28 -0400 (Thu, 08 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
-
-AtlasLoot_BCInstances:
-- Update zhCN/zhTW locale
-------------------------------------------------------------------------
-r73080 | hegarol | 2008-05-08 06:38:15 -0400 (Thu, 08 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- Sunwell update
-------------------------------------------------------------------------
-r72936 | kurax | 2008-05-07 02:03:46 -0400 (Wed, 07 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
-
-AtlasLoot_BCInstances:
-- Update zhCN/zhTW locale
-------------------------------------------------------------------------
-r72855 | hegarol | 2008-05-06 09:34:26 -0400 (Tue, 06 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- Sunwell update
-------------------------------------------------------------------------
-r72744 | kurax | 2008-05-05 10:00:34 -0400 (Mon, 05 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- Muru loots typo fix
-------------------------------------------------------------------------
-r72741 | kurax | 2008-05-05 09:28:08 -0400 (Mon, 05 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-
-AtlasLoot_BCInstances:
-- Update zhCN locale
-------------------------------------------------------------------------
-r72707 | hegarol | 2008-05-05 02:28:06 -0400 (Mon, 05 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- Sunwell update
-------------------------------------------------------------------------
-r72606 | hegarol | 2008-05-04 04:56:05 -0400 (Sun, 04 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- first M'uru loot
-------------------------------------------------------------------------
-r72584 | kurax | 2008-05-03 23:34:23 -0400 (Sat, 03 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
-
-AtlasLoot_BCInstances:
-- Update zhCN/zhTW locales
-------------------------------------------------------------------------
-r72513 | diablohu | 2008-05-03 08:38:55 -0400 (Sat, 03 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- Sunwell Plateau update
-------------------------------------------------------------------------
-r72363 | kurax | 2008-05-01 17:54:38 -0400 (Thu, 01 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- Eliminate the icon data
-------------------------------------------------------------------------
-r72175 | hegarol | 2008-04-30 06:35:02 -0400 (Wed, 30 Apr 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- icon cleaning
 ------------------------------------------------------------------------

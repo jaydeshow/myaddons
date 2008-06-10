@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 74169 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 76400 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-17 12:47:43 -0400 (Sat, 17 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-06-10 05:31:53 -0400 (Tue, 10 Jun 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("TriggerConditionsData")
@@ -171,7 +171,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 -- }
 
 Parrot:RegisterPrimaryTriggerCondition {
-	name = "Incoming block",
+	name = "Incoming Block",
 	localName = L["Incoming block"],
 -- 	parserEvent = {
 -- 		eventType = "Miss",
@@ -192,7 +192,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
-	name = "Incoming dodge",
+	name = "Incoming Dodge",
 	localName = L["Incoming dodge"],
 -- 	parserEvent = {
 -- 		eventType = "Miss",
@@ -202,7 +202,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
-	name = "Incoming parry",
+	name = "Incoming Parry",
 	localName = L["Incoming parry"],
 -- 	parserEvent = {
 -- 		eventType = "Miss",
@@ -212,7 +212,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
-	name = "Outgoing block",
+	name = "Outgoing Block",
 	localName = L["Outgoing block"],
 -- 	parserEvent = {
 -- 		eventType = "Miss",
@@ -234,7 +234,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
-	name = "Outgoing dodge",
+	name = "Outgoing Dodge",
 	localName = L["Outgoing dodge"],
 -- 	parserEvent = {
 -- 		eventType = "Miss",
@@ -245,7 +245,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
-	name = "Outgoing parry",
+	name = "Outgoing Parry",
 	localName = L["Outgoing parry"],
 -- 	parserEvent = {
 -- 		eventType = "Miss",

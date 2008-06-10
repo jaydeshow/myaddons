@@ -93,10 +93,12 @@ CappingLocale = {
 	["Frostwolf Wolf Rider Commander"] = true,
 
 	 -- patterns
-	["avunderattack"] = "^([%w ]+) is under attack!  If left unchecked",
-	["avtaken"] = "^([%w ]+) was taken by",
-	["avdestroyed"] = "^([%w ]+) was destroyed by",
-	["The "] = true,
+	["avunderattack"] = "The (.+) is under attack!  If left unchecked",
+	["avunderattack2"] = "^(.+) is under attack!  If left unchecked",
+	["avtaken"] = "The (.+) was taken by",
+	["avtaken2"] = "^(.+) was taken by",
+	["avdestroyed"] = "The (.+) was destroyed by",
+	["avdestroyed2"] = "^(.+) was destroyed by",
 	["Snowfall Graveyard"] = true,
 	["Tower"] = true,
 	["Bunker"] = true,

@@ -74,22 +74,22 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	ww = "Tourbillon",
-	ww_desc = "Préviens quand Dalliah fait son Tourbillon.",
+	ww_desc = "Prévient quand Dalliah fait son Tourbillon.",
 	ww_trigger1 = "Je vais vous découper en petits morceaux !",
 	ww_trigger2 = "Récoltez la tempête !",
 	ww_trigger3 = "Dalliah l'Auspice-funeste gagne Tourbillon.",
-	ww_message = "Dalliah gagne Tourbillon !",
+	ww_message = "Dalliah gagne Tourbillon !",
 
 	gift = "Don de l'auspice funeste",
-	gift_desc = "Préviens quand quelqu'un est affecté par le Don de l'auspice funeste.",
+	gift_desc = "Prévient quand quelqu'un est affecté par le Don de l'auspice funeste.",
 	gift_trigger = "^([^%s]+) ([^%s]+) les effets [de|2]+ Don de l'auspice funeste.",
-	gift_message = "%s a le Don de l'auspice funeste !",
+	gift_message = "Don de l'auspice funeste sur %s !",
 	gift_bar = "Don : %s",
 
 	heal = "Soin",
-	heal_desc = "Préviens quand Dalliah incante un soin.",
+	heal_desc = "Prévient quand Dalliah incante un soin.",
 	heal_trigger = "Dalliah l'Auspice-funeste commence à lancer Soin.",
-	heal_message = "Incante un soin !",
+	heal_message = "Incante un soin !",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -142,7 +142,7 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"ww", "gift", "heal", "bosskill"}
-mod.revision = tonumber(("$Revision: 71633 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

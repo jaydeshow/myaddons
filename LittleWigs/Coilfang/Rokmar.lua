@@ -26,14 +26,14 @@ L:RegisterTranslations("enUS", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	--throw = "Grievous Wound",
-	--throw_desc = "Warn who is afflicted by Grievous Wound.",
-	--throw_message = "%s has Grievous Wound",
+	throw = "Blessures graves",
+	throw_desc = "Prévient quand un joueur subit les effets des Blessures graves.",
+	throw_message = "Blessures graves sur %s !",
 
 	enrage = "Enrager (Héroïque)",
-	enrage_desc = "Préviens quand Rokmar est sûr le point de devenir enragé.",
-	enrage_warning = "Bientôt enragé !",
-	--enrage_message = "Enraged!",
+	enrage_desc = "Prévient quand Rokmar est sûr le point de devenir enragé.",
+	enrage_warning = "Bientôt enragé !",
+	enrage_message = "Enragé !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -59,14 +59,14 @@ L:RegisterTranslations("zhCN", function() return {
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
-	--throw = "Grievous Wound",
-	--throw_desc = "Warn who is afflicted by Grievous Wound.",
-	--throw_message = "%s has Grievous Wound",
+	throw = "嚴重傷害",
+	throw_desc = "隊友受到嚴重傷害時發出警報",
+	throw_message = ">%s< 受到嚴重傷害",
 	
 	enrage = "狂怒（英雄）",
 	enrage_desc = "當爆裂者洛克瑪狂怒時發出警報",
-	enrage_warning = "爆裂者洛克瑪 狂怒!",
-	--enrage_message = "Enraged!",
+	enrage_warning = "即將狂怒!",
+	enrage_message = "狂怒!",
 } end )
 
 ----------------------------------
@@ -78,8 +78,8 @@ mod.partyContent = true
 mod.otherMenu = "Coilfang Reservoir"
 mod.zonename = BZ["The Slave Pens"]
 mod.enabletrigger = boss
-mod.toggleoptions = {"wound", -1, "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76306 $"):sub(12, -3))
+mod.toggleoptions = {"throw", "bosskill"}
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -101,7 +101,7 @@ end
 
 function mod:Wound(player, spellID)
 	if db.wound then
-		self:IfMessage(L["whrow_message"]:format(player), "Attention", spellID)
+		self:IfMessage(L["throw_message"]:format(player), "Attention", spellID)
 	end
 end
 

@@ -4,8 +4,10 @@ local self = Capping
 local L = CappingLocale
 
 -- LIBRARIES
-local media = LibStub("LibSharedMedia-3.0")
 local dew = AceLibrary("Dewdrop-2.0")
+local media = LibStub("LibSharedMedia-3.0")
+media:Register("statusbar", "BantoBarReverse", "Interface\\AddOns\\Capping\\textures\\BantoBarReverse")
+media:Register("statusbar", "Steel", "Interface\\AddOns\\Capping\\textures\\Steel")
 
 -- GLOBALS MADE LOCAL
 local _G = getfenv(0)
@@ -201,10 +203,6 @@ function Capping:ADDON_LOADED(a1)
 		end
 	end)
 	InterfaceOptions_AddCategory(panel)
-	
-	-- sharedmedia setup
-	media:Register("statusbar", "BantoBarReverse", "Interface\\AddOns\\Capping\\textures\\BantoBarReverse")
-	media:Register("statusbar", "Steel", "Interface\\AddOns\\Capping\\textures\\Steel")
 	
 	-- anchor frame
 	f = self

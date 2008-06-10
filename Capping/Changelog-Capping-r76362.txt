@@ -1,4 +1,27 @@
 ------------------------------------------------------------------------
+r76362 | pettigrow | 2008-06-09 16:22:01 -0400 (Mon, 09 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Capping/locals/localization-frFR.lua
+
+Capping: frFR Update
+------------------------------------------------------------------------
+r76330 | totalpackage | 2008-06-09 06:08:13 -0400 (Mon, 09 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Capping/Capping.toc
+   M /trunk/Capping/battlegrounds/AV.lua
+   M /trunk/Capping/battlegrounds/WSG.lua
+   M /trunk/Capping/core.lua
+   M /trunk/Capping/locals/localization-deDE.lua
+   M /trunk/Capping/locals/localization-frFR.lua
+   M /trunk/Capping/locals/localization-koKR.lua
+   M /trunk/Capping/locals/localization-zhCN.lua
+   M /trunk/Capping/locals/localization-zhTW.lua
+   M /trunk/Capping/locals/localization.lua
+
+Capping:
+- updated AV localization; I believe only frFR needs to update but should still work
+
+------------------------------------------------------------------------
 r76252 | totalpackage | 2008-06-08 04:43:44 -0400 (Sun, 08 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Capping/locals/localization-deDE.lua
@@ -26,17 +49,4 @@ Changed paths:
 
 Capping:
 - zhCN update.
-------------------------------------------------------------------------
-r73133 | 7destiny | 2008-05-08 15:06:11 -0400 (Thu, 08 May 2008) | 2 lines
-Changed paths:
-   M /trunk/Capping/locals/localization-koKR.lua
-
-Capping:
-- koKR Update
-------------------------------------------------------------------------
-r73127 | pettigrow | 2008-05-08 13:33:58 -0400 (Thu, 08 May 2008) | 1 line
-Changed paths:
-   M /trunk/Capping/locals/localization-frFR.lua
-
-Capping: frFR Update
 ------------------------------------------------------------------------

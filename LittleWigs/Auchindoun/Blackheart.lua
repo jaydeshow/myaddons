@@ -33,13 +33,13 @@ L:RegisterTranslations("zhCN", function() return {
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
-	--engage_message = "Engaged - Incite Chaos in ~15sec!",
+	engage_message = "戰鬥開始 - 15 秒後可能發動煽動混亂!",
 	
 	chaos = "煽動混亂計時條",
-	chaos_desc = "顯示煽動混亂計時條。",
-	--chaos_message = "Incite Chaos! Next in ~60sec",
-	--chaos_warning = "Incite Chaos Soon!",
-	--chaos_nextbar = "~Possible Incite Chaos",
+	chaos_desc = "顯示煽動混亂計時條",
+	chaos_message = "約 60 秒後，煽動混亂!",
+	chaos_warning = "即將 煽動混亂!",
+	chaos_nextbar = "<可能 煽動混亂>",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -53,13 +53,13 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("frFR", function() return {
-	--engage_message = "Engaged - Incite Chaos in ~15sec!",
-	
-	chaos = "Barre Provoquer le chaos",
+	engage_message = "Engagé - Provoquer le chaos dans ~15 sec. !",
+
+	chaos = "Provoquer le chaos",
 	chaos_desc = "Affiche une barre indiquant la durée de Provoquer le chaos.",
-	--chaos_message = "Incite Chaos! Next in ~60sec",
-	--chaos_warning = "Incite Chaos Soon!",
-	--chaos_nextbar = "~Possible Incite Chaos",
+	chaos_message = "Provoquer le chaos ! Prochain dans ~60 sec.",
+	chaos_warning = "Provoquer le chaos imminent !",
+	chaos_nextbar = "~Provoquer le chaos probable",
 } end )
 
 ----------------------------------
@@ -72,7 +72,7 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"chaos", "bosskill"}
-mod.revision = tonumber(("$Revision: 76306 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -49,10 +49,10 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	sacrifice = "Sacrifice",
-	sacrifice_desc = "Préviens quand un joueur est sacrifié.",
-	sacrifice_message = "%s est sacrifié !",
-	sacrifice_bar = "Sacrifice : %s",
-	sacrifice_soon = "Sacrifice imminent !",
+	sacrifice_desc = "Prévient quand un joueur subit les effets du Sacrifice.",
+	sacrifice_message = "Sacrifice sur %s !",
+	sacrifice_bar = "Sacrifice : %s",
+	sacrifice_soon = "Sacrifice imminent !",
 	sacrifice_soonbar = "~Sacrifice probable",
 } end )
 
@@ -84,7 +84,7 @@ mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"sacrifice", "bosskill"}
-mod.revision = tonumber(("$Revision: 71982 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

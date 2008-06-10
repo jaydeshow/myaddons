@@ -39,6 +39,13 @@ L:RegisterTranslations("zhCN", function() return {
 	mc_bar = "<心灵控制：%s>",
 } end )
 
+L:RegisterTranslations("frFR", function() return {
+	mc = "Domination",
+	mc_desc = "Prévient quand un joueur subit les effets de la Domination.",
+	mc_message = "Domination sur %s !",
+	mc_bar = "%s - Domination",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -49,7 +56,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"mc", "bosskill"}
-mod.revision = tonumber(("$Revision: 75855 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

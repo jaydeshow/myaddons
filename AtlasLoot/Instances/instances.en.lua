@@ -1037,7 +1037,6 @@ AtlasLootBossButtons = {
         "";
         "";
         "SPMuru";
-        "";
         "SPKiljaeden";
         "";
         "SPPatterns";

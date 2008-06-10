@@ -97,7 +97,6 @@ CappingLocale:CreateLocaleTable({
 	["avunderattack"] = "(.+)... 공격받고 있습니다! 저지하지 않으면",
 	["avtaken"] = "가 (.+)... 점령했습니다!",
 	["avdestroyed"] = "가 (.+)... 파괴했습니다!",
-	--["The "] = true,
 	["Snowfall Graveyard"] = "눈사태 무덤",
 	["Tower"] = "보초탑",
 	["Bunker"] = "참호",

@@ -90,7 +90,7 @@ CappingLocale:CreateLocaleTable({
 	 -- NPC
 	["Smith Regzar"] = "Schmied Regzar",
 	["Murgot Deepforge"] = "Murgot Tiefenschmied",
-	--["Primalist Thurloga"] = true,  -- same as default
+	-- ["Primalist Thurloga"] = "Primalistin Thurloga",  -- same as default
 	["Arch Druid Renferal"] = "Erzdruide Renferal",
 	["Stormpike Ram Rider Commander"] = "Kommandant der Sturmlanzenwidderreiter",		
 	["Frostwolf Wolf Rider Commander"] = "Wolfsreiterkommandant der Frostwölfe", 
@@ -99,7 +99,6 @@ CappingLocale:CreateLocaleTable({
 	["avunderattack"] = "(.+) wird angegriffen.*wird die ",
 	["avtaken"] = "(.+) wurde von der (.+) erobert",
 	["avdestroyed"] = "(.+) wurde von der (.+) zerstört",
-	["The "] = "", --	empty string because of different articles in german language
 	["Snowfall Graveyard"] = "Schneewehenfriedhof",
 	["Tower"] = "Turm",
 	["Bunker"] = "Bunker",

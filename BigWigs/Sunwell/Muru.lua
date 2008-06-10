@@ -241,7 +241,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"phase", -1, "darkness", "void", "humanoid", "fiends", "gravity", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 75472 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76391 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -304,7 +304,7 @@ function mod:Portals()
 	self:TriggerEvent("BigWigs_StopBar", self, L["darkness_next"])
 	if db.phase then
 		self:Message(L["phase2_message"], "Attention")
-		self:Bar(entropius, 12, 46087)
+		self:Bar(entropius, 10, 46087)
 	end
 	if db.gravity then
 		self:Bar(L["gravity_next"], 27, 44218)

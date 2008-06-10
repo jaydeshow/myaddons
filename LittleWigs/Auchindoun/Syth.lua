@@ -33,8 +33,8 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	summon = "Élémentaires",
-	summon_desc = "Préviens quand Syth invoque ses élémentaires.",
-	summon_message = "Élémentaires invoqués !",
+	summon_desc = "Prévient quand Syth invoque ses élémentaires.",
+	summon_message = "Élémentaires invoqués !",
 } end )
 
 L:RegisterTranslations("esES", function() return {
@@ -65,7 +65,7 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Sethekk Halls"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"summon", "bosskill"}
-mod.revision = tonumber(("$Revision: 67359 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

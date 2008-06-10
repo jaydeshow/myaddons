@@ -41,13 +41,13 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	fear = "恐懼冷卻",
-	fear_desc = "當即將施放恐懼時發出警報",
-	--fear_message = "Fear cooldown!",
+	fear_desc = "即將施放恐懼時發出警報",
+	fear_message = "恐懼冷卻!",
 	fear_warning = "即將施放 恐懼!",
 	fear_bar = "<恐懼冷卻>",
 	
 	enrage = "狂暴（英雄）",
-	enrage_desc = "當即將狂暴時發出警報。",
+	enrage_desc = "即將狂暴時發出警報",
 	enrage_message = "%s 秒後狂暴!",
 	enrage_bar = "<狂暴>",
 } end )
@@ -68,8 +68,8 @@ L:RegisterTranslations("koKR", function() return {
 L:RegisterTranslations("frFR", function() return {
 	fear = "Temps de recharge Peur",
 	fear_desc = "Affiche une barre et des avertissements concernant la Peur de l'Ambassadeur Gueule-d'enfer.",
-	--fear_message = "Fear cooldown!",
-	fear_warning = "Temps de recharge de Peur expiré !",
+	fear_message = "Peur !",
+	fear_warning = "Temps de recharge de Peur expiré !",
 	fear_bar = "Cooldown Peur",
 
 	enrage = "Enrager (Héroïque)",
@@ -87,8 +87,8 @@ mod.partyContent = true
 mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss 
-mod.toggleoptions = {"fear", -1, "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76306 $"):sub(12, -3))
+mod.toggleoptions = {"fear", "enrage", "bosskill"}
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

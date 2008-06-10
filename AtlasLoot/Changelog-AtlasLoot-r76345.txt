@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------
+r76345 | daviesh | 2008-06-09 10:07:13 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Instances.xml
+   A /trunk/AtlasLoot/Instances/instances.fr.lua
+
+AtlasLoot:
+- Compensated for an inconsistency in Atlas localisation 
+------------------------------------------------------------------------
+r76332 | daviesh | 2008-06-09 06:50:57 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- Re-fixed the Sunwell loot table for the English locale.  Trasher, post what locale you use (I can't remember if it is fr or de) and I'll fix it up for you.
+------------------------------------------------------------------------
 r76307 | nemes | 2008-06-09 01:26:52 -0400 (Mon, 09 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot/Constants/constants.tw.lua

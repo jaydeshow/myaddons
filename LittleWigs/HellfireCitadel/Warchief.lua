@@ -76,7 +76,7 @@ L:RegisterTranslations("frFR", function() return {
 
 	bdwarn = "Danse des lames",
 	bdwarn_desc = "Délais estimés avant les Danses des lames.",
-	bdwarn_alert = "5 sec. avant Danse des lames !",
+	bdwarn_alert = "5 sec. avant Danse des lames !",
 
 	bdbar = "Barre Danse des lames",
 	bdbar_desc = "Affiche un compte à rebours d'estimation pour la Danse des lames.",
@@ -108,7 +108,7 @@ mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Shattered Halls"]
 mod.enabletrigger = boss
 mod.toggleoptions = {"bdwarn", "bdbar", "bosskill"}
-mod.revision = tonumber(("$Revision: 67359 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

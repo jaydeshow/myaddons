@@ -1,4 +1,4 @@
-AtlasLoot/Changelog-AtlasLoot-r76307.txt
+AtlasLoot/Changelog-AtlasLoot-r76345.txt
 AtlasLoot/embeds.xml
 AtlasLoot/AtlasLoot.toc
 AtlasLoot/Documentation/gpl-v2.zhTW.txt
@@ -22,6 +22,7 @@ AtlasLoot/Constants/constants.kr.lua
 AtlasLoot/Constants/constants.fr.lua
 AtlasLoot/PvP/PvP.xml
 AtlasLoot/PvP/Battlegrounds.en.lua
+AtlasLoot/Instances/instances.fr.lua
 AtlasLoot/Instances/Instances.xml
 AtlasLoot/Instances/instances.en.lua
 AtlasLoot/Add_Ons/dkp.lua

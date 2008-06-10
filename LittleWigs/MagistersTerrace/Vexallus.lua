@@ -37,14 +37,14 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	adds = "Energie pure",
-	adds_desc = "Préviens quand l'Energie pure est déchargée.",
-	adds_message = "Energie pure déchargée !",
+	adds_desc = "Prévient quand l'Energie pure est déchargée.",
+	adds_message = "Energie pure déchargée !",
 	adds_trigger = "envoie une décharge d'énergie pure !",
 
 	feedback = "Réaction énergétique",
-	feedback_desc = "Préviens quand un joueur subit les effets de la Réaction énergétique.",
-	feedback_you = "Réaction énergétique sur VOUS !",
-	feedback_other = "Réaction énergétique sur %s !",
+	feedback_desc = "Prévient quand un joueur subit les effets de la Réaction énergétique.",
+	feedback_you = "Réaction énergétique sur VOUS !",
+	feedback_other = "Réaction énergétique sur %s !",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -80,7 +80,7 @@ mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"adds", "feedback", "bosskill"}
-mod.revision = tonumber(("$Revision: 72163 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
