@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 75559 $
+Revision: $Rev: 76521 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 75559 $"
+local MINOR_VERSION = "$Revision: 76521 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -2750,7 +2750,7 @@ elseif GAME_LOCALE == "zhCN" then
 		["Gatewatcher Iron-Hand"] = "看守者埃隆汉",
 		["Mechano-Lord Capacitus"] = "机械领主卡帕西图斯",
 		["Nethermancer Sepethrea"] = "灵术师塞比瑟蕾",
-		["Pathaleon the Calculator"] = "计算者帕萨雷恩的影像",
+		["Pathaleon the Calculator"] = "计算者帕萨雷恩",
 
 --The Deadmines
 		["Brainwashed Noble"] = "被洗脑的贵族",
@@ -2880,14 +2880,14 @@ elseif GAME_LOCALE == "zhCN" then
 		["Renataki"] = "雷纳塔基",
 		["Wushoolay"] = "乌苏雷",
 
---Ring of Blood (where? an instnace? should be in other file?)
+--Ring of Blood 位于 纳格兰
 		["Brokentoe"] = "断蹄",
 		["Mogor"] = "穆戈尔",
 		["Murkblood Twin"] = "暗血双子",
 		["Murkblood Twins"] = "暗血双子",
 		["Rokdar the Sundered Lord"] = "裂石之王洛卡达尔",
 		["Skra'gath"] = "瑟克拉加斯",
-		["The Blue Brothers"] = "The Blue Brothers",
+		["The Blue Brothers"] = "蓝色兄弟",--鲜血竞技场
 		["Warmaul Champion"] = "战槌勇士",
 	}
 elseif GAME_LOCALE == "zhTW" then

@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r76521 | cwdg | 2008-06-12 02:43:14 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: 
+-Update zhCN locale
+------------------------------------------------------------------------
 r75559 | scorpio0920 | 2008-05-30 13:30:41 -0400 (Fri, 30 May 2008) | 2 lines
 Changed paths:
    M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
@@ -30,22 +37,4 @@ Changed paths:
    M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
 
 LibBabble-Boss-3.0: frFR Update
-------------------------------------------------------------------------
-r72982 | gamefaq | 2008-05-07 12:20:04 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
-
-LibBabble-Boss-3.0: deDE Update
-------------------------------------------------------------------------
-r72966 | Devfool | 2008-05-07 09:53:42 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
-
-LibBabble-Boss-3.0: frFR update String Entropius missing
-------------------------------------------------------------------------
-r72963 | zhucc | 2008-05-07 08:43:50 -0400 (Wed, 07 May 2008) | 1 line
-Changed paths:
-   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
-
-LibBabble-Boss-3.0: zhTW update
 ------------------------------------------------------------------------

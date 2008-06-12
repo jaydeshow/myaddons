@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r76442 | gamefaq | 2008-06-10 20:03:33 -0400 (Tue, 10 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: deDE Update
+------------------------------------------------------------------------
 r76391 | 7destiny | 2008-06-10 00:43:12 -0400 (Tue, 10 Jun 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/Sunwell/Muru.lua
@@ -431,27 +437,4 @@ Changed paths:
 
 BigWigs: 
 - zhCN update.(Thanks Feisky)
-------------------------------------------------------------------------
-r73384 | funkydude | 2008-05-10 18:10:07 -0400 (Sat, 10 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Plugins/Messages.lua
-
-BigWigs: Plugins/Messages: remove old 2.3 check
-------------------------------------------------------------------------
-r73380 | rabbit | 2008-05-10 18:03:44 -0400 (Sat, 10 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/BigWigs.toc
-   M /trunk/BigWigs/Libs
-   M /trunk/BigWigs/Options.lua
-   M /trunk/BigWigs/Plugins/Messages.lua
-   M /trunk/BigWigs/embeds.xml
-
-BigWigs: Sink-2.0.
-------------------------------------------------------------------------
-r73312 | funkydude | 2008-05-10 09:00:59 -0400 (Sat, 10 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-   M /trunk/BigWigs/Sunwell/Twins.lua
-
-BigWigs: Sunwell/M'uru: Add enrage
 ------------------------------------------------------------------------

@@ -1,14 +1,14 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 75432 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 76500 $", {
 	["InstanceLootHeroic.Auchindoun"]="m,InstanceLootHeroic.Auchenai Crypts,InstanceLootHeroic.Mana-Tombs,InstanceLootHeroic.Shadow Labyrinth,InstanceLootHeroic.Sethekk Halls",
 	["InstanceLootHeroic.Auchenai Crypts.Exarch Maladaar"]="29257:196,29244:178,33836:164,27523:129,27871:128,27869:119,27872:104,27867:96,30586:92,30587:89,27870:83,29354:77,30588:77",
 	["InstanceLootHeroic.Auchenai Crypts.Shirrak the Dead Watcher"]="27866:142,27845:134,27846:134,27493:124,27865:99,27847:96,30586:37,30587:30,30588:28",
 
 	["InstanceLootHeroic.Magisters' Terrace.Selin Fireheart"]="34601:208,34603:205,34604:199,34602:191,35275:14",
 	["InstanceLootHeroic.Magisters' Terrace.Vexallus"]="34607:197,34606:195,34608:179,34605:172,35275:16",
-	["InstanceLootHeroic.Magisters' Terrace.Priestess Delrissa"]="35756:216,34471:188,34472:184,34470:175,34473:167,35275:11",
+	["InstanceLootHeroic.Magisters' Terrace.Priestess Delrissa"]="35756:207,34471:189,34472:180,34470:179,34473:171,35275:12",
 	["InstanceLootHeroic.Magisters' Terrace.Kael'thas Sunstrider"]="34609:208,34614:196,34613:192,34611:191,34612:187,34615:185,34616:184,34610:180,34160:138,35504:60,35275:25,35513:24,35297:9,35298:8,35294:7,35299:7,35308:7,35302:6,35301:6,35309:6,35296:5,35303:4,35295:4,35300:4,35310:4,35306:3,35311:2,35307:2,35304:2,35305:2",
 
 	["InstanceLootHeroic.Mana-Tombs.Nexus-Prince Shaffar"]="29240:184,30535:168,33835:167,29352:146,27831:122,27843:118,27844:117,27828:117,27827:115,27842:110,27840:110,27798:107,27837:105,28400:102,27829:102,27835:101,32082:91,28490:73,30583:71,30585:60,30584:55,22921:24,29252:8",

@@ -97,8 +97,11 @@ CappingLocale:CreateLocaleTable({
 
 	 -- patterns
 	["avunderattack"] = "([^%s]+)受到攻击！如果我们不尽快采取措施",
+	["avunderattack2"] = "([^%s]+)受到攻击！如果我们不尽快采取措施",
 	["avtaken"] = "([^%s]+)被([^%s]+)占领了！",
+	["avtaken2"] = "([^%s]+)被([^%s]+)占领了！",
 	["avdestroyed"] = "([^%s]+)被([^%s]+)摧毁了！",
+	["avdestroyed2"] = "([^%s]+)被([^%s]+)摧毁了！",
 	["Snowfall Graveyard"] = "雪落墓地",
 	["Tower"] = "哨塔",
 	["Bunker"] = "碉堡",

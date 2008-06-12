@@ -1,4 +1,85 @@
 ------------------------------------------------------------------------
+r76528 | scorpio0920 | 2008-06-12 07:44:07 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Shirrak.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r76524 | ananhaid | 2008-06-12 05:29:03 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
+
+LittleWigs: 
+- zhCN update.
+------------------------------------------------------------------------
+r76523 | pettigrow | 2008-06-12 04:34:31 -0400 (Thu, 12 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Murmur.lua
+   M /trunk/LittleWigs/Auchindoun/Shirrak.lua
+
+LittleWigs: frFR Update
+------------------------------------------------------------------------
+r76520 | cwdg | 2008-06-12 01:47:28 -0400 (Thu, 12 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+
+LittleWigs: Update zhCN locale
+------------------------------------------------------------------------
+r76512 | 7destiny | 2008-06-11 22:14:27 -0400 (Wed, 11 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Shirrak.lua
+
+LittleWigs: 
+- koKR Update
+------------------------------------------------------------------------
+r76511 | cwdg | 2008-06-11 22:05:12 -0400 (Wed, 11 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Shirrak.lua
+
+LittleWigs: Update zhCN locale
+------------------------------------------------------------------------
+r76505 | ulic | 2008-06-11 21:04:20 -0400 (Wed, 11 Jun 2008) | 5 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
+   M /trunk/LittleWigs/Auchindoun/LittleWigs_Auchindoun.toc
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   A /trunk/LittleWigs/Auchindoun/Shirrak.lua
+   M /trunk/LittleWigs/Auchindoun/Syth.lua
+   M /trunk/LittleWigs/modules.xml
+
+LittleWigs: Auchindoun
+- Blackheart: Tweaked Timers
+- Maladaar: Cleanup
+- Shirrak: Added new boss (drycode)
+- Syth: Tweaked CombatListener
+------------------------------------------------------------------------
+r76479 | ulic | 2008-06-11 13:53:35 -0400 (Wed, 11 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+
+LittleWigs: 
+- Auch/Hellmaw: added missing messages
+- Auch/Ikiss: added polymorph bar & announcement
+- Thanks Ompalumpa
+------------------------------------------------------------------------
+r76417 | ulic | 2008-06-10 14:01:05 -0400 (Tue, 10 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Syth.lua
+
+LittleWigs:
+- Auch: Ikiss & Syth, changed CAST_START to CAST_SUCCESS
+------------------------------------------------------------------------
 r76367 | pettigrow | 2008-06-09 17:45:02 -0400 (Mon, 09 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/LittleWigs/Auchindoun/Blackheart.lua

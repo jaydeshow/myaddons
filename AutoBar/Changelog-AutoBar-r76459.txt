@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------
+r76459 | toadkiller | 2008-06-11 05:47:28 -0400 (Wed, 11 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassButton.lua
+
+AutoBar : 
+-- Handle spellName2 being nil
+------------------------------------------------------------------------
+r76438 | toadkiller | 2008-06-10 18:58:05 -0400 (Tue, 10 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassButton.lua
+
+AutoBar : 
+-- Fix nil value in SetCount
+-- Allow dragging spells from AutoBar to regular action bars during Move Button Mode.
+------------------------------------------------------------------------
 r76365 | toadkiller | 2008-06-09 17:14:11 -0400 (Mon, 09 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarCategory.lua
@@ -874,123 +889,4 @@ Changed paths:
 
 AutoBar : 
 -- Start switching to LibStickyFrames-2.0
-------------------------------------------------------------------------
-r73357 | toadkiller | 2008-05-10 15:39:35 -0400 (Sat, 10 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
--- Add option to disable conjure button and right click conjure on food and water.  Empty food & empty water will still conjure.
-
-------------------------------------------------------------------------
-r73347 | toadkiller | 2008-05-10 14:36:00 -0400 (Sat, 10 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
-AutoBar : 
--- Re-add AceLocale-2.2
-
-------------------------------------------------------------------------
-r73345 | toadkiller | 2008-05-10 14:29:25 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Readd AceLocale-2.2
-------------------------------------------------------------------------
-r73292 | toadkiller | 2008-05-10 05:29:29 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Actually remove AceLocale-2.2.lua
-------------------------------------------------------------------------
-r73291 | toadkiller | 2008-05-10 05:27:58 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
--- Actually remove AceLocale-2.2.lua
-------------------------------------------------------------------------
-r73289 | toadkiller | 2008-05-10 05:22:55 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-
-AutoBar : 
--- Fix right click during Move Bars mode.
-------------------------------------------------------------------------
-r73281 | toadkiller | 2008-05-10 01:19:01 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Please please please add all these to the zip u dumb script.
-------------------------------------------------------------------------
-r73280 | toadkiller | 2008-05-10 01:12:50 -0400 (Sat, 10 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
--- New PT3.1 File for AutoBar.  It loads subsets of Misc, Gear and Tradeskill.
-
-------------------------------------------------------------------------
-r73278 | toadkiller | 2008-05-10 00:52:11 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
--- Split Consumables out of AutoBar.
-------------------------------------------------------------------------
-r73275 | toadkiller | 2008-05-10 00:27:45 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Split Consumables out of AutoBar.
-------------------------------------------------------------------------
-r73255 | toadkiller | 2008-05-09 20:12:54 -0400 (Fri, 09 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/embeds.xml
-   M /trunk/AutoBar/libs
-
-AutoBar : 
-AutoBar : 
-Switch to single AutoBar specific PT3.1 file for a savings of about 400k
-
-------------------------------------------------------------------------
-r73240 | toadkiller | 2008-05-09 17:05:57 -0400 (Fri, 09 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Give Move Bars coloring precedence over Move Buttons
-------------------------------------------------------------------------
-r73235 | toadkiller | 2008-05-09 16:37:35 -0400 (Fri, 09 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Fix drag frames when Moving Bars
-
-------------------------------------------------------------------------
-r73227 | toadkiller | 2008-05-09 14:38:38 -0400 (Fri, 09 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarOptions.lua
-
-AutoBar : 
--- Only generate the top level options by default.  Generate full options only when opening gui or drop down list.  Saves about 500k of memory when not changing options.
-
-------------------------------------------------------------------------
-r73181 | toadkiller | 2008-05-09 02:38:20 -0400 (Fri, 09 May 2008) | 3 lines
-Changed paths:
-   A /trunk/AutoBar/Locale-itIT.lua
-
-AutoBar : 
--- itIT: Mostly a clone of frFR since it doesnt have bogus escape sequences in it.  Needs actual translation
-
 ------------------------------------------------------------------------

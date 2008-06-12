@@ -24,6 +24,8 @@ L:RegisterTranslations("enUS", function() return {
 	enrage_desc = "Warnings and bar for when Ambassador Hellmaw will enrage.",
 	enrage_message = "Enrage in %s seconds",
 	enrage_bar = "Enrage",
+
+	engage_message = "%t has been engaged!",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -37,6 +39,8 @@ L:RegisterTranslations("zhCN", function() return {
 	enrage_desc = "当即将激怒时发出警报。",
 	enrage_message = "%s秒后，激怒！",
 	enrage_bar = "<激怒>",
+
+	engage_message = "%t 激怒！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -76,6 +80,8 @@ L:RegisterTranslations("frFR", function() return {
 	enrage_desc = "Affiche une barre et des avertissements indiquant quand l'Ambassadeur Gueule-d'enfer deviendra enragé.",
 	enrage_message = "Enrager dans %s sec.",
 	enrage_bar = "Enrager",
+
+	engage_message = "%t engagé - Peur dans ~15 sec. !",
 } end )
 
 ----------------------------------
@@ -88,7 +94,7 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"fear", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76524 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -114,7 +120,7 @@ function mod:Fear()
 	if self.db.profile.fear then
 		self:IfMessage(L["fear_message"], "Attention", 33547)
 		self:Bar(L["fear_bar"], 25, 33547)
-		self:DelayedMessage(25, L["stomp_warning"], "Attention")
+		self:DelayedMessage(25, L["fear_warning"], "Attention")
 	end
 end
 
@@ -125,7 +131,7 @@ function mod:BigWigs_RecvSync(sync, rest, nick)
 			self:UnregisterEvent("PLAYER_REGEN_DISABLED")
 		end
 		if self.db.profile.fear then
-			self:IfMessage(L["engage_message"], "Attention")
+			self:IfMessage(L["engage_message"]:format(boss), "Attention")
 			self:Bar(L["fear_bar"], 15, 33547)
 		end
 		if self.db.profile.enrage and GetInstanceDifficulty() == 2 then

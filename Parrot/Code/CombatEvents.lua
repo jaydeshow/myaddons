@@ -1,4 +1,4 @@
-local VERSION = tonumber(("$Revision: 76401 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 76439 $"):match("%d+"))
 
 local Parrot = Parrot, Parrot
 local Parrot_CombatEvents = Parrot:NewModule("CombatEvents", "LibRockEvent-1.0", "LibRockTimer-1.0")
@@ -6,7 +6,7 @@ local self = Parrot_CombatEvents
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-06-10 05:33:29 -0400 (Tue, 10 Jun 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-06-10 19:10:11 -0400 (Tue, 10 Jun 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- to track XP and Honor-gains
@@ -2110,9 +2110,9 @@ function Parrot_CombatEvents:MeleeMissed(timestamp, eventtype, srcGUID, srcName,
 	local miss = nil
 	-- old code: if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
 	if bit_band(srcFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET or bit_band(dstFlags,LIB_FILTER_MY_PET) == LIB_FILTER_MY_PET then
-	miss = PetMeleeMissParser[missType]
+		miss = PetMeleeMissParser[missType]
 	else
-	miss = MeleeMissParser[missType];
+		miss = MeleeMissParser[missType];
 	end
 	
 
@@ -2134,11 +2134,14 @@ function Parrot_CombatEvents:MeleeMissed(timestamp, eventtype, srcGUID, srcName,
 	local name
 	if srcGUID == self.PlayerGUID then
 		name = "Outgoing"
-	else
+	elseif dstGUID == self.PlayerGUID then
 		name = "Incoming"
+	else
+		return
 	end
 	
 	--TODO performance improvement
+	
 	name = string.format("%s %s", name, _G[missType] or "")
 	Parrot_TriggerConditions:FirePrimaryTriggerCondition(name)
 
