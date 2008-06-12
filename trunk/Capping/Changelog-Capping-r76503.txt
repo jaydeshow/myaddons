@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r76503 | ananhaid | 2008-06-11 20:45:25 -0400 (Wed, 11 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-zhCN.lua
+   M /trunk/Capping/locals/localization-zhTW.lua
+
+Capping:
+- zhCN/zhTW update.
+------------------------------------------------------------------------
 r76362 | pettigrow | 2008-06-09 16:22:01 -0400 (Mon, 09 Jun 2008) | 1 line
 Changed paths:
    M /trunk/Capping/locals/localization-frFR.lua

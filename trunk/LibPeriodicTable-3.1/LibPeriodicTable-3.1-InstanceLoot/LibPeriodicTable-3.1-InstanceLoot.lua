@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("InstanceLoot", "$Rev: 75432 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("InstanceLoot", "$Rev: 76500 $", {
 	["InstanceLoot.Ahn'Qiraj.Battleguard Sartura"]="21675:93,21648:85,21676:79,21669:78,21671:76,21674:75,21672:73,21678:73,21670:61,21666:59,21668:49,21667:46,21673:41,21677:0",
 	["InstanceLoot.Ahn'Qiraj.C'Thun"]="21221:906,20933:812,20929:770,21596:239,21586:177,21581:177,22732:166,22730:156,21585:135,21126:135,21839:135,21579:135,21583:125,21582:104,22731:93,21134:72,22734:20",
 	["InstanceLoot.Ahn'Qiraj.Emperor Vek'lor"]="20930:550,21602:153,21598:99,21599:98,21600:94,21601:91,20735:69,21597:59",
@@ -236,7 +236,7 @@ LibStub("LibPeriodicTable-3.1"):AddData("InstanceLoot", "$Rev: 75432 $", {
 
 	["InstanceLoot.Magisters' Terrace.Selin Fireheart"]="34702:173,34699:172,34698:166,34701:164,34697:162,34700:158",
 	["InstanceLoot.Magisters' Terrace.Vexallus"]="34708:172,34706:171,34704:168,34703:168,34705:161,34707:154",
-	["InstanceLoot.Magisters' Terrace.Priestess Delrissa"]="34792:177,34789:173,34788:166,34783:166,34791:158,34790:153,35756:79",
+	["InstanceLoot.Magisters' Terrace.Priestess Delrissa"]="34792:177,34789:171,34783:169,34788:163,34791:158,34790:156,35756:77",
 	["InstanceLoot.Magisters' Terrace.Kael'thas Sunstrider"]="34157:585,34810:150,34794:148,34796:146,34798:145,34793:144,34797:141,34799:140,34809:140,34808:135,34625:127,34807:127,34795:125,35504:60,35299:5,35309:4,35303:3,35306:3,35297:3,35310:3,35298:3,35295:3,35300:3,35301:2,35302:2,35305:2,35308:2,35296:2,35307:1,35311:1,35294:1",
 
 	["InstanceLoot.Maraudon.Celebras the Cursed"]="17739:339,17740:306,17738:297",

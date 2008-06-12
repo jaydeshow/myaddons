@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 75232 $
+Revision: $Rev: 76513 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 75232 $"
+local MINOR_VERSION = "$Revision: 76513 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -1180,7 +1180,7 @@ elseif GAME_LOCALE == "zhTW" then
 		["Silithus"] = "希利蘇斯",
 		["Silverpine Forest"] = "銀松森林",
 		["The Stockade"] = "監獄",
-		--["Stonard"] = "",
+		["Stonard"] = "斯通納德",
 		["Stonetalon Mountains"] = "石爪山脈",
 		["Stormwind City"] = "暴風城",
 		["Stranglethorn Vale"] = "荊棘谷",

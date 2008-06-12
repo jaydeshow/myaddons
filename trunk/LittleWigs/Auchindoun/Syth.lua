@@ -65,14 +65,14 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Sethekk Halls"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"summon", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76505 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_CAST_START", "Summon", 33538)
+	self:AddCombatListener("SPELL_SUMMON", "Summon", 33538)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 
 	db = self.db.profile

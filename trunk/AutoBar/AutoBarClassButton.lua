@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76232 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76459 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -43,6 +43,7 @@ local function onDragStartFunc(button)
 		local fromObject = button.class
 --AutoBar:Print("onDragStartFunc " .. tostring(fromObject.buttonName) .. " arg1 " .. tostring(arg1) .. " arg2 " .. tostring(arg2))
 		AutoBar:SetDraggingObject(fromObject)
+		fromObject:SetDragCursor()
 	end
 end
 
@@ -610,17 +611,19 @@ function AutoBar.Class.Button:SetCount(frame)
 	if (itemType) then
 		if (itemType == "item") then
 			local itemId = frame:GetAttribute("itemId")
-			count1 = GetItemCount(tonumber(itemId))
+			count1 = GetItemCount(tonumber(itemId)) or 0
 		elseif (itemType == "action") then
 			local action = frame:GetAttribute("*action1")
-			count1 = GetActionCount(action)
+			count1 = GetActionCount(action) or 0
 		elseif (itemType == "macro") then
-				local macroText = frame:GetAttribute("*macrotext1")
+--			local macroText = frame:GetAttribute("*macrotext1")
 		elseif (itemType == "spell") then
 			local spellName1 = frame:GetAttribute("*spell1")
-			count1 = GetSpellCount(spellName1)
+			count1 = GetSpellCount(spellName1) or 0
 			local spellName2 = frame:GetAttribute("*spell2")
-			count2 = GetSpellCount(spellName2)
+			if (spellName2) then
+				count2 = GetSpellCount(spellName2) or 0
+			end
 		end
 
 		local popupHeader = frame.popupHeader
@@ -801,6 +804,53 @@ function AutoBar.Class.Button.prototype:IsActive()
 		return true
 	else
 		return false
+	end
+end
+
+local bookTypeSpell = BOOKTYPE_SPELL
+
+local function FindSpell(spellName, bookType)
+	local i, s
+	local found = false;
+	for i = 1, MAX_SKILLLINE_TABS do
+		local name, texture, offset, numSpells = GetSpellTabInfo(i)
+		if (not name) then
+			break
+		end
+		for s = offset + 1, offset + numSpells do
+			local	spell, rank = GetSpellName(s, bookType)
+			if (spell == spellName) then
+				found = true
+			end
+			if (found and spell ~=spellName) then
+				return s-1
+			end
+		end
+	end
+	if (found) then
+		return s
+	end
+	return nil
+end
+
+-- Set Cursor based on the *type1 settings
+function AutoBar.Class.Button.prototype:SetDragCursor()
+	local itemType = self.frame:GetAttribute("*type1")
+	if (itemType) then
+		if (itemType == "item") then
+			local itemId = self.frame:GetAttribute("itemId")
+			PickupItem(itemID)
+		elseif (itemType == "action") then
+			local action = self.frame:GetAttribute("*action1")
+			PickupAction(action)
+		elseif (itemType == "macro") then
+			local macroIndex = self.frame:GetAttribute("*macro1")
+			PickupMacro(macroIndex)
+		elseif (itemType == "spell") then
+			local spellName = self.frame:GetAttribute("*spell1")
+			local spellId = FindSpell(spellName, bookTypeSpell)
+			PickupSpell(spellId, bookTypeSpell)
+		end
 	end
 end
 

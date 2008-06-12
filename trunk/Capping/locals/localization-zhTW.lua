@@ -38,16 +38,29 @@ CappingLocale:CreateLocaleTable({
 	["LEFT"] = "左",
 	["RIGHT"] = "右",
 	["HIDE"] = "隱藏",
+	["Fill grow"] = "填充增長",
+	["Fill right"] = "填充右部",
+	["Font"] = "字型",
+	["Time position"] = "時間位置",
+	["Border width"] = "邊緣寬度",
+	["Send to BG"] = "發送到戰場頻道",
+	["Or <Ctrl-left-click> a timer"] = "或<Ctrl+單擊>一個計時條",
+	["Send to SAY"] = "發送到說",
+	["Or <Shift-left-click> a timer"] = "或<Shift+單擊>一個計時條",
+	["Cancel timer"] = "取消計時條",
+	["Or <Ctrl-right-click> a timer"] = "或<Ctrl+右擊>一個計時條",
+	["Reposition Capture Bar"] = "復位計時條",
 	
 	-- etc timers
 	["Port: %s"] = "傳送: %s", -- bar text for time remaining to port into a bg
 	["Queue: %s"] = "佇列: %s",
 	["Battleground Begins"] = "開始", -- bar text for bg gates opening (why can't they all be the same?)
+	["2 minutes"] = "2分鐘",
 	["1 minute"] = "1分鐘",
 	["30 seconds"] = "30秒",
-	["One minute until"] = "1分鐘",
-	["Thirty seconds until"] = "30秒",
-	["Fifteen seconds until"] = "15秒",
+	["One minute until"] = "一分鐘",
+	["Thirty seconds until"] = "三十秒",
+	["Fifteen seconds until"] = "十五秒",
 	["%s: %s - %d:%02d remaining"] = "%s: %s - 還有 %d:%02d", -- chat message after shift left-clicking a bar
 	
 	-- AB	
@@ -84,8 +97,11 @@ CappingLocale:CreateLocaleTable({
 
 	 -- patterns
 	["avunderattack"] = "^(.+)受到攻擊!.+不採取措施",
+	["avunderattack2"] = "^(.+)受到攻擊!.+不採取措施",
 	["avtaken"] = "^(.+)被.+佔領了!",
+	["avtaken2"] = "^(.+)被.+佔領了!",
 	["avdestroyed"] = "^(.+)被.+摧毀了!",
+	["avdestroyed2"] = "^(.+)被.+摧毀了!",
 	["Snowfall Graveyard"] = "落雪墓地",
 	["Tower"] = "哨塔",
 	["Bunker"] = "碉堡",
@@ -100,4 +116,5 @@ CappingLocale:CreateLocaleTable({
 	-- EotS
 	["^(.+) has taken the flag!"] = "^(.+)已經奪走了旗幟!",
 	["Bases: (%d+)  Victory Points: (%d+)/2000"] = "基地:(%d+) 勝利點數:(%d+)/2000",
+	
 })

@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r76439 | profalbert | 2008-06-10 19:10:11 -0400 (Tue, 10 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- fixed bug with Triggers in MeleeMiss-parsing
+
+------------------------------------------------------------------------
 r76401 | profalbert | 2008-06-10 05:33:29 -0400 (Tue, 10 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/Parrot/Code/CombatEvents.lua

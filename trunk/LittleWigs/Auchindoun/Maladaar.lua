@@ -85,15 +85,15 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Auchenai Crypts"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"soul", "avatar", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76505 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_AURA_APPLIED","Soul", 32346)
-	self:AddCombatListener("SPELL_CAST_START","Avatar", 32424)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "Soul", 32346)
+	self:AddCombatListener("SPELL_CAST_START", "Avatar", 32424)
 	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
 end
 

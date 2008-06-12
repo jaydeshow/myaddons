@@ -16,7 +16,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	chaos = "Incite Chaos",
 	chaos_desc = "Display a bar for the duration of the Incite Chaos",
-	chaos_message = "Incite Chaos! Next in ~60sec",
+	chaos_message = "Incite Chaos! Next in ~70sec",
 	chaos_warning = "Incite Chaos Soon!",
 	chaos_nextbar = "~Possible Incite Chaos",
 	
@@ -27,7 +27,7 @@ L:RegisterTranslations("zhCN", function() return {
 	
 	chaos = "煽动混乱计时条",
 	chaos_desc = "显示煽动混乱计时条。",
-	chaos_message = "约60秒后，煽动混乱！",
+	chaos_message = "约70秒后，煽动混乱！",
 	chaos_warning = "即将 煽动混乱！",
 	chaos_nextbar = "<可能 煽动混乱>",
 } end )
@@ -37,7 +37,7 @@ L:RegisterTranslations("zhTW", function() return {
 	
 	chaos = "煽動混亂計時條",
 	chaos_desc = "顯示煽動混亂計時條",
-	chaos_message = "約 60 秒後，煽動混亂!",
+	chaos_message = "約 70 秒後，煽動混亂!",
 	chaos_warning = "即將 煽動混亂!",
 	chaos_nextbar = "<可能 煽動混亂>",
 } end )
@@ -72,7 +72,7 @@ mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"chaos", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76524 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -97,8 +97,8 @@ function mod:Chaos(_, spellId, _, _, spellName)
 		self:TriggerEvent("BigWigs_StopBar", self, L["chaos_nextbar"])
 		self:IfMessage(L["chaos_message"], "Important", spellID)
 		self:Bar(L["chaos"], 15, spellId)
-		self:ScheduleEvent("chaos", "BigWigs_Message", 57, L["chaos_warning"], "Urgent", nil, "Alarm")
-		self:Bar(L["chaos_nextbar"], 60, spellID)
+		self:ScheduleEvent("chaos", "BigWigs_Message", 65, L["chaos_warning"], "Urgent", nil, "Alarm")
+		self:Bar(L["chaos_nextbar"], 70, spellID)
 	end
 end
 
