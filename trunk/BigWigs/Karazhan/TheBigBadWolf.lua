@@ -125,8 +125,9 @@ L:RegisterTranslations("esES", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {lady, boss}
+mod.guid = 17521
 mod.toggleoptions = {"youriding", "elseriding", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -134,7 +135,7 @@ mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Riding", 30753)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------

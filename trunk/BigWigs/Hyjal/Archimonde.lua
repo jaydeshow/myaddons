@@ -227,8 +227,9 @@ L:RegisterTranslations("zhTW", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
+mod.guid = 17968
 mod.toggleoptions = {"grip", "icon", "fear", "burst", "burstsay", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 75108 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then
@@ -248,7 +249,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_DISPELLED", "GripRemoved")
 	self:AddCombatListener("SPELL_CAST_START", "Burst", 32014)
 	self:AddCombatListener("SPELL_CAST_START", "Fear", 31970)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")

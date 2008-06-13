@@ -1,4 +1,131 @@
 ------------------------------------------------------------------------
+r76594 | funkydude | 2008-06-13 08:00:49 -0400 (Fri, 13 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/BigWigs/Core.lua
+   M /trunk/BigWigs/Karazhan/Attumen.lua
+   M /trunk/BigWigs/Karazhan/Curator.lua
+   M /trunk/BigWigs/Karazhan/Hyakiss.lua
+   M /trunk/BigWigs/Karazhan/Maiden.lua
+   M /trunk/BigWigs/Karazhan/Malchezaar.lua
+   M /trunk/BigWigs/Karazhan/Moroes.lua
+   M /trunk/BigWigs/Karazhan/Netherspite.lua
+   M /trunk/BigWigs/Karazhan/Nightbane.lua
+   M /trunk/BigWigs/Karazhan/ShadeOfAran.lua
+   M /trunk/BigWigs/Karazhan/Terestian.lua
+   M /trunk/BigWigs/Karazhan/TheBigBadWolf.lua
+   M /trunk/BigWigs/Karazhan/WizardofOz.lua
+
+BigWigs:
+- Core: Swap syncing from old to new, any content using the old API won't register boss deaths. We need this to block old users.
+- Karazhan: add guid's
+------------------------------------------------------------------------
+r76592 | funkydude | 2008-06-13 07:47:53 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/BlackTemple/Council.lua
+   M /trunk/BigWigs/BlackTemple/Gurtogg.lua
+   M /trunk/BigWigs/BlackTemple/Illidan.lua
+   M /trunk/BigWigs/BlackTemple/Najentus.lua
+   M /trunk/BigWigs/BlackTemple/Shahraz.lua
+   M /trunk/BigWigs/BlackTemple/Souls.lua
+   M /trunk/BigWigs/BlackTemple/Supremus.lua
+   M /trunk/BigWigs/BlackTemple/Teron.lua
+   M /trunk/BigWigs/Outland/Doomwalker.lua
+   M /trunk/BigWigs/Outland/Gruul.lua
+   M /trunk/BigWigs/Outland/Kazzak.lua
+   M /trunk/BigWigs/Outland/Magtheridon.lua
+   M /trunk/BigWigs/Outland/Maulgar.lua
+
+BigWigs: BT/Outland: Add guids
+------------------------------------------------------------------------
+r76591 | arrowmaster | 2008-06-13 07:33:54 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Brutallus.lua
+   M /trunk/BigWigs/Sunwell/Felmyst.lua
+   M /trunk/BigWigs/Sunwell/Kalecgos.lua
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+   M /trunk/BigWigs/Sunwell/Muru.lua
+   M /trunk/BigWigs/Sunwell/Twins.lua
+
+BigWigs: Sunwell: Add guids since naming pets after Sunwell bosses is the new 'in' thing among the huntards
+------------------------------------------------------------------------
+r76590 | funkydude | 2008-06-13 07:28:16 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Hyjal/Anetheron.lua
+   M /trunk/BigWigs/Hyjal/Archimonde.lua
+   M /trunk/BigWigs/Hyjal/Azgalor.lua
+   M /trunk/BigWigs/Hyjal/HyjalSummit.lua
+   M /trunk/BigWigs/Hyjal/Kazrogal.lua
+   M /trunk/BigWigs/Hyjal/Winterchill.lua
+   M /trunk/BigWigs/SC/Morogrim.lua
+   M /trunk/BigWigs/SC/Vashj.lua
+   M /trunk/BigWigs/ZulAman/Akil'zon.lua
+   M /trunk/BigWigs/ZulAman/Halazzi.lua
+   M /trunk/BigWigs/ZulAman/Jan'alai.lua
+   M /trunk/BigWigs/ZulAman/Malacrass.lua
+   M /trunk/BigWigs/ZulAman/Nalorakk.lua
+   M /trunk/BigWigs/ZulAman/Zul'jin.lua
+
+BigWigs: ZA/Hyjal: add guids
+------------------------------------------------------------------------
+r76588 | funkydude | 2008-06-13 07:14:25 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/SC/Hydross.lua
+   M /trunk/BigWigs/SC/Karathress.lua
+   M /trunk/BigWigs/SC/Leotheras.lua
+   M /trunk/BigWigs/SC/Lurker.lua
+   M /trunk/BigWigs/SC/Morogrim.lua
+   M /trunk/BigWigs/SC/Vashj.lua
+   M /trunk/BigWigs/TheEye/Alar.lua
+   M /trunk/BigWigs/TheEye/Kaelthas.lua
+   M /trunk/BigWigs/TheEye/Reaver.lua
+   M /trunk/BigWigs/TheEye/Solarian.lua
+
+BigWigs: TheEye/SC: Add guids
+------------------------------------------------------------------------
+r76584 | funkydude | 2008-06-13 06:56:37 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Prototype.lua
+
+BigWigs: allow the real ID to be passed as well as the guid
+------------------------------------------------------------------------
+r76582 | funkydude | 2008-06-13 06:15:53 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Prototype.lua
+
+BigWigs: Add new :BossDeath API so we can avoid conflicts with players and pets being named after bosses.
+------------------------------------------------------------------------
+r76563 | 7destiny | 2008-06-12 21:47:37 -0400 (Thu, 12 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell/KilJaeden: koKR Update
+------------------------------------------------------------------------
+r76561 | ananhaid | 2008-06-12 20:47:53 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: 
+- KilJaeden zhCN update.
+------------------------------------------------------------------------
+r76547 | pettigrow | 2008-06-12 17:30:52 -0400 (Thu, 12 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell/KilJaeden: frFR Update
+------------------------------------------------------------------------
+r76544 | funkydude | 2008-06-12 16:19:25 -0400 (Thu, 12 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell/KilJaeden: Disable shadow debuff bars by default
+------------------------------------------------------------------------
+r76533 | ananhaid | 2008-06-12 11:54:37 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: 
+- KilJaeden zhCN update.(all trigger and desc confirmed)
+------------------------------------------------------------------------
 r76442 | gamefaq | 2008-06-10 20:03:33 -0400 (Tue, 10 Jun 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/Sunwell/Muru.lua
@@ -417,24 +544,4 @@ Changed paths:
    M /trunk/BigWigs/Sunwell/Muru.lua
 
 BigWigs: Sunwell/Muru: Change phase trigger
-------------------------------------------------------------------------
-r73581 | Kyopaxa | 2008-05-12 07:49:16 -0400 (Mon, 12 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell (esES) localization of last changes.
-------------------------------------------------------------------------
-r73554 | funkydude | 2008-05-12 04:35:24 -0400 (Mon, 12 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/ZulAman/Halazzi.lua
-
-BigWigs: bugfix line 128, translators try not to break addons please
-------------------------------------------------------------------------
-r73534 | ananhaid | 2008-05-11 23:53:28 -0400 (Sun, 11 May 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/SC/Lurker.lua
-   M /trunk/BigWigs/ZulAman/Halazzi.lua
-
-BigWigs: 
-- zhCN update.(Thanks Feisky)
 ------------------------------------------------------------------------

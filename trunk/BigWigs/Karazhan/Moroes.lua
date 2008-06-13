@@ -168,8 +168,9 @@ L:RegisterTranslations("esES", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
+mod.guid = 15687
 mod.toggleoptions = {"vanish", "enrage", -1, "garrote", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -179,7 +180,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Garrote", 37066)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Enrage", 37023)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Vanish", 29448)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("UNIT_HEALTH")
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")

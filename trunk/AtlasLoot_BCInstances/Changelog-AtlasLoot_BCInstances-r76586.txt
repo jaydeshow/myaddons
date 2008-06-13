@@ -1,4 +1,15 @@
 ------------------------------------------------------------------------
+r76586 | kurax | 2008-06-13 07:10:54 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Locales update
+------------------------------------------------------------------------
 r76355 | isler | 2008-06-09 12:11:30 -0400 (Mon, 09 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
@@ -153,37 +164,4 @@ Changed paths:
 
 AtlasLoot_BCInstances:
 - Sunwell update
-------------------------------------------------------------------------
-r73457 | kurax | 2008-05-11 07:48:58 -0400 (Sun, 11 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/AtlasLoot_BCInstances.toc
-
-AtlasLoot_BCInstances:
-- Update toc
-------------------------------------------------------------------------
-r73449 | kurax | 2008-05-11 07:28:46 -0400 (Sun, 11 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-   A /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
-   A /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
-   A /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
-   A /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
-
-AtlasLoot_BCInstances:
-- Add deDE/esES/frFR/koKR locale
-------------------------------------------------------------------------
-r73441 | hegarol | 2008-05-11 04:22:08 -0400 (Sun, 11 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
-
-AtlasLoot_BCInstances:
-- Sunwell update
-------------------------------------------------------------------------
-r73377 | kurax | 2008-05-10 17:57:19 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
-   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
-
-AtlasLoot_BCInstances:
-- Update zhTW locale
 ------------------------------------------------------------------------

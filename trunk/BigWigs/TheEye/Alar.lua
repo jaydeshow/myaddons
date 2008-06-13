@@ -168,8 +168,9 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Tempest Keep"]
 mod.otherMenu = "The Eye"
 mod.enabletrigger = boss
+mod.guid = 19514
 mod.toggleoptions = {"meteor", "flamepatch", -1, "armor", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76588 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -178,7 +179,7 @@ mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "FlamePatch", 35383)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Armor", 35410)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "CheckForEngage")
 	self:RegisterEvent("BigWigs_RecvSync")

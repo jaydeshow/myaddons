@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r76535 | ackis | 2008-06-12 12:01:50 -0400 (Thu, 12 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
+
+AckisRecipeList:
+- Add some debug statements for me to test tonight
+- Dry-coded (code runs with luac -p)
+------------------------------------------------------------------------
 r76294 | ackis | 2008-06-08 22:43:11 -0400 (Sun, 08 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc
@@ -907,96 +915,4 @@ Changed paths:
 
 AckisRecipeList:
 - esES updated
-------------------------------------------------------------------------
-r73527 | ackis | 2008-05-11 22:12:21 -0400 (Sun, 11 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Lets play nice with Fizwidget Hunter's Helper although the functionality of the two are redundant for huntards.
-------------------------------------------------------------------------
-r73526 | ackis | 2008-05-11 21:52:47 -0400 (Sun, 11 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-
-AckisRecipeList:
-- Fix null error with beast training
-- Update LW recipes
-------------------------------------------------------------------------
-r73445 | StiviS | 2008-05-11 06:00:54 -0400 (Sun, 11 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
-------------------------------------------------------------------------
-r73417 | next96 | 2008-05-10 22:36:43 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r73405 | kurax | 2008-05-10 19:51:47 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList:
-- Update zhCN locale
-------------------------------------------------------------------------
-r73394 | ackis | 2008-05-10 18:28:18 -0400 (Sat, 10 May 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-
-AckisRecipeList:
-- Flag deathfrost as being seasonal
-- Changed up some local strings to allow them to be sorted a bit easier with the new sort function
-- Removed a few unused local strings
-- It's Vhaarr not Vhaar (sorry)
-------------------------------------------------------------------------
-r73342 | ackis | 2008-05-10 13:43:19 -0400 (Sat, 10 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Code optimization
-~lart dashkal
-------------------------------------------------------------------------
-r73339 | ackis | 2008-05-10 13:37:28 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Added Aquisition sorting... will allow you to somewhat group BoP mobs, BoE mods, types of world drops, reputations, etc.  No headers for them however.
-------------------------------------------------------------------------
-r73330 | ackis | 2008-05-10 12:57:27 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-
-AckisRecipeList:
-- When inserting into a table, it is best to specify which table to insert into.
-------------------------------------------------------------------------
-r73224 | ackis | 2008-05-09 13:52:53 -0400 (Fri, 09 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Add zhTW to ToC localization list
-------------------------------------------------------------------------
-r73190 | zhucc | 2008-05-09 06:25:08 -0400 (Fri, 09 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   A /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
-
-AckisRecipeList:
-- zhTW add
 ------------------------------------------------------------------------

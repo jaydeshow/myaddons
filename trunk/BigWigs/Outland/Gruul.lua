@@ -235,8 +235,9 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Gruul's Lair"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = boss
+mod.guid = 19044
 mod.toggleoptions = {"grasp", "grow", -1, "cavein", "silence", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 74481 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
 mod.proximityCheck = function(unit)
 	for k, v in pairs(bandages) do
 		if IsItemInRange(k, unit) == 1 then
@@ -257,7 +258,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Silence", 36297)
 	self:AddCombatListener("SPELL_CAST_START", "Shatter", 33654)
 	self:AddCombatListener("SPELL_CAST_START", "Slam", 33525)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")

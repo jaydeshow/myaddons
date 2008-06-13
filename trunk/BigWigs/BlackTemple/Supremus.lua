@@ -200,8 +200,9 @@ L:RegisterTranslations("zhCN", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
+mod.guid = 22898
 mod.toggleoptions = {"punch", "target", "icon", "phase", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -209,7 +210,7 @@ mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Punch", 40126)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	started = nil
 	previous = nil

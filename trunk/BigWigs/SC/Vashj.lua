@@ -397,9 +397,10 @@ L:RegisterTranslations("zhTW", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
+mod.guid = 21212
 mod.wipemobs = {elite, strider, L["Tainted Elemental"]}
 mod.toggleoptions = {"phase", -1, "static", "icon", -1, "elemental", "strider", "naga", "loot", "barrier", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------
@@ -468,7 +469,7 @@ end
 
 function mod:Deaths(unit)
 	if unit == boss then
-		self:GenericBossDeath(unit)
+		self:BossDeath(nil, self.guid)
 	elseif unit == L["Tainted Elemental"] and db.elemental then
 		self:Bar(L["elemental_bar"], 53, "Spell_Nature_ElementalShields")
 		self:ScheduleEvent("ElemWarn", "BigWigs_Message", 48, L["elemental_soon_message"], "Important")

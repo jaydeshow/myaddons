@@ -7,12 +7,10 @@
 ## LoadOnDemand: 1
 
 ## X-Category: Party
-
-## X-BigWigs-Menu: The Deadmines
 ## X-BigWigs-LoadInParty: 1
 ## X-BigWigs-LoadInZone: The Deadmines
 
-## Dependencies: BigWigs BabyWigs
+## Dependencies: BigWigs
 
 PatReminders.lua
 Sneed.lua

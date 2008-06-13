@@ -33,6 +33,11 @@ L:RegisterTranslations("enUS", function() return {
 	barrier_message = "Shock Barrier Up!",
 	barrier_next_bar = "~ Next Shock Barrier",
 	barrier_soon_message = "Shock Barrier Soon!",
+	
+	pyro = "Pyroblast (Heroic)",
+	pyro_desc = "Warn when Kael'thas casts Pyroblast.",
+	pyro_message = "Kael'thas casts Pyroblast",
+	pyro_cast_bar = "Casting Pyroblast on %s!",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -54,6 +59,11 @@ L:RegisterTranslations("koKR", function() return {
 	barrier_message = "충격 방벽!",
 	barrier_next_bar = "~ 다음 방어 방벽",
 	barrier_soon_message = "잠시 후 방어 방벽!",
+	
+	pyro = "불덩이 작렬 (영웅)",
+	pyro_desc = "캘타스의 불덩이 작렬 시전을 알립니다.",
+	pyro_message = "캘타스 불덩이 작렬 시전",
+	pyro_cast_bar = "%s에게 불작 시전중!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -96,6 +106,11 @@ L:RegisterTranslations("zhCN", function() return {
 	barrier_message = "震击屏障！",
 	barrier_next_bar = "<下一震击屏障>",
 	barrier_soon_message = "即将 震击屏障！",
+
+	pyro = "炎爆术（英雄）",
+	pyro_desc = "当施放炎爆术时发出警报。",
+	pyro_message = "正在施放 炎爆术！",
+	pyro_cast_bar = "炎爆术：>%s<！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -113,10 +128,15 @@ L:RegisterTranslations("zhTW", function() return {
 	flamestrike_message = "烈焰風暴!",
 
 	barrier = "震擊屏障（英雄）", -- need check
-	barrier_desc = "當凱爾薩斯獲得震擊屏障發出警告", -- need check
+	barrier_desc = "當凱爾薩斯獲得震擊屏障時發出警告", -- need check
 	barrier_message = "震擊屏障 開啟!", -- need check
 	barrier_next_bar = "<下一次震擊屏障>", -- need check
 	barrier_soon_message = "即將施放震擊屏障!", -- need check
+
+	pyro = "炎爆術（英雄）",
+	pyro_desc = "當凱爾薩斯施放炎爆術時發出警告",
+	pyro_message = "凱爾薩斯正在施放炎爆術!",
+	pyro_cast_bar = "<炎爆術>",
 } end )
 
 ----------------------------------
@@ -128,7 +148,7 @@ mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
 mod.toggleoptions = {"glapse", "phoenix", "flamestrike", -1, "barrier", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76587 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -140,6 +160,7 @@ function mod:OnEnable()
 
 	self:RegisterEvent("UNIT_HEALTH")
 	self:AddCombatListener("SPELL_CAST_START", "Lapse", 44224)
+	self:AddCombatListener("SPELL_CAST_START", "Pyro", 36819)
 	self:AddCombatListener("SPELL_SUMMON", "Phoenix", 44194)
 	self:AddCombatListener("SPELL_SUMMON", "FlameStrike", 44192, 46162)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Barrier", 46165)
@@ -192,6 +213,14 @@ end
 function mod:Barrier()
 	if self.db.profile.barrier then
 		self:IfMessage(L["barrier_message"], "Important", 46165)
+	end
+end
+
+function mod:Pyro(player, spellId)
+	if self.db.profile then
+		self:Bar(L["pyro_cast_bar"]:format(player), 4, spellId)
+		self:IfMessage(L["pyro_message"], "Important", spellId)
+		self:Icon(player, "icon")
 	end
 end
 

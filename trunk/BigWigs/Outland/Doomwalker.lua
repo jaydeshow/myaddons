@@ -189,8 +189,9 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Shadowmoon Valley"]
 mod.otherMenu = "Outland"
 mod.enabletrigger = boss
+mod.guid = 17711
 mod.toggleoptions = {"overrun", "earthquake", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -199,7 +200,7 @@ mod.proximitySilent = true
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("UNIT_HEALTH")
 	self:RegisterEvent("CHAT_MSG_MONSTER_EMOTE")
