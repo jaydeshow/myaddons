@@ -230,8 +230,9 @@ L:RegisterTranslations("deDE", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
+mod.guid = 23577
 mod.toggleoptions = {"totem", "phase", "frenzy", -1, "flame", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 75652 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -242,7 +243,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "FlameShock", 43303)
 	self:AddCombatListener("SPELL_AURA_REMOVED", "FlameShockRemoved", 43303)
 	self:AddCombatListener("SPELL_AURA_DISPELLED", "FlameShockRemoved", 43303)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_EMOTE")
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")

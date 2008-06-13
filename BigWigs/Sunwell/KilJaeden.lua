@@ -64,6 +64,9 @@ L:RegisterTranslations("enUS", function() return {
 	shadow_warning = "Shadow Spikes Done in 5 sec!",
 	shadow_debuff_bar = "Reduced Healing on %s",
 
+	shadowdebuff = "Disable Shadow Bars",
+	shadowdebuff_desc = "Timer bars for players affected by the Shadow Debuff",
+
 	flame = "Flame Dart",
 	flame_desc = "Show Flame Dart timer bar.",
 	flame_bar = "Next Flame Dart",
@@ -78,7 +81,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	deceiver_dies = "Deciever #%d Killed",
 	["Hand of the Deceiver"] = true,
-	
+
 	phase = "Phase",
 	phase_desc = "Warn for phase changes.",
 	phase2_message = "Phase 2 - Kil'jaeden incoming!",
@@ -130,6 +133,9 @@ L:RegisterTranslations("koKR", function() return {
 	shadow_bar = "어둠의 쐐기 종료",
 	shadow_warning = "5초 후 어둠의 쐐기 종료!",
 	shadow_debuff_bar = "%s 치유효과 감소",
+
+	shadowdebuff = "치유 감소바 비활성",
+	shadowdebuff_desc = "치유효과 감소 디버프가 걸린 플레이어의 타이머바를 사용하지 않습니다.",
 
 	flame = "불꽃 화살",
 	flame_desc = "불꽃 화살 타이머 바를 표시합니다.",
@@ -198,6 +204,9 @@ L:RegisterTranslations("frFR", function() return {
 	shadow_warning = "Pointes de l'ombre terminées dans 5 sec. !",
 	shadow_debuff_bar = "Soins réduits sur %s",
 
+	shadowdebuff = "Pas de barres des Pointes",
+	shadowdebuff_desc = "Désactive les barres temporelles des joueurs affectés par les Pointe de l'ombre si coché.",
+
 	flame = "Fléchettes des flammes",
 	flame_desc = "Affiche une barre temporelle pour les Flèchettes des flammes.",
 	flame_bar = "Prochaines Fléchettes",
@@ -224,12 +233,11 @@ L:RegisterTranslations("frFR", function() return {
 	phase5_message = "Phase 5 - Sacrifice d'Anveena",
 } end )
 
---zhCN some yell triggers not confirmed
 L:RegisterTranslations("zhCN", function() return {
 	bomb = "千魂之暗",
-	bomb_desc = "当千魂之暗开始施法时发出警报。",
+	bomb_desc = "当千魂之暗开始施放时发出警报。",
 	bomb_cast = "即将 千魂之暗！",
-	bomb_bar = "千魂之暗 - 暗影箭！",
+	bomb_bar = "<千魂之暗>",
 	bomb_nextbar = "<可能 千魂之暗>",
 	bomb_warning = "约10秒后，可能千魂之暗！",
 	blueorb_message = "蓝龙宝珠已准备好！",
@@ -238,7 +246,7 @@ L:RegisterTranslations("zhCN", function() return {
 	kalec_yell3 = "又有一颗宝珠准备好了！快点行动！",
 	kalec_yell4 = "这是我所能做的一切了！力量现在掌握在你们的手中！",
 
-	orb = "护盾宝珠",--Shield Orb 
+	orb = "护盾宝珠",
 	orb_desc = "当护盾宝珠施放暗影箭时发出警报。",
 	orb_shooting = "护盾宝珠 - 暗影箭！",
 
@@ -259,12 +267,15 @@ L:RegisterTranslations("zhCN", function() return {
 	icons = "团队标记",
 	icons_desc = "为中了火焰之花的玩家随机打上一个团队标记。（需要权限）",
 
-	shadow = "暗影尖刺",
-	shadow_desc = "当施放暗影尖刺时发出警报。",
-	shadow_message = "28秒后，.暗影之刺<！当心！",
+	shadow = "暗影之刺",
+	shadow_desc = "当施放暗影之刺时发出警报。",
+	shadow_message = "28秒后，>暗影之刺<！当心！",
 	shadow_bar = "<暗影之刺>",
 	shadow_warning = "5秒后，暗影之刺！",
 	shadow_debuff_bar = "<降低治疗：%s>",
+
+	shadowdebuff = "禁用暗影减益计时条",
+	shadowdebuff_desc = "玩家中了暗影减益效果计时条。",
 
 	flame = "烈焰之刺",
 	flame_desc = "显示烈焰之刺记时条。",
@@ -278,17 +289,17 @@ L:RegisterTranslations("zhCN", function() return {
 
 	shield_up = ">蓝龙之盾< 启用！",
 
-	deceiver_dies = "已杀死欺诈者之手#%d",
-	["Hand of the Deceiver"] = "欺诈者之手",
-	
+	deceiver_dies = "已杀死基尔加丹之手#%d",
+	["Hand of the Deceiver"] = "基尔加丹之手",
+
 	phase = "阶段",
-	phase_desc = "当进入不同阶段发出警报。",
+	phase_desc = "当进入不同阶段时发出警报。",
 	phase2_message = "第二阶段 - 基尔加丹来临！",
 	phase3_trigger = "我是不会失败的！这个世界注定要毁灭！",
 	phase3_message = "第三阶段 - 注意千魂之暗！",
-	phase4_trigger = "别再抱有幻想了。你们不可能赢！",
+	phase4_trigger = "别再抱有幻想了！你们不可能赢！",
 	phase4_message = "第四阶段 - 注意流星！",
-	phase5_trigger = "呃！太阳之井的能量开始对抗我！你们都做了些什么？你们都做了些什么？！",--not confirm
+	phase5_trigger = "啊啊啊！太阳之井的能量……开始……对抗我！你们都做了些什么？你们都做了些什么？？",
 	phase5_message = "第五阶段 - 牺牲安薇娜！",
 } end )
 
@@ -300,8 +311,9 @@ local deceiver = L["Hand of the Deceiver"]
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
-mod.toggleoptions = {"phase", -1, "bomb", "orb", "flame", -1, "bloom", "bloomwhisper","bloomsay", "icons", -1, "sinister", "shadow", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76117 $"):sub(12, -3))
+mod.guid = 25315
+mod.toggleoptions = {"phase", -1, "bomb", "orb", "flame", -1, "bloom", "bloomwhisper", "bloomsay", "icons", -1, "sinister", "shadow", "shadowdebuff", "proximity", "bosskill"}
+mod.revision = tonumber(("$Revision: 76591 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -363,7 +375,7 @@ function mod:Orb()
 	end
 end
 
-function mod:Deaths(unit)
+function mod:Deaths(unit, guid)
 	if unit == deceiver then
 		deaths = deaths + 1
 		self:IfMessage(L["deceiver_dies"]:format(deaths), "Positive")
@@ -373,8 +385,8 @@ function mod:Deaths(unit)
 			self:Bar(boss, 10, "Spell_Shadow_Charm")
 			self:TriggerEvent("BigWigs_ShowProximity", self)
 		end
-	elseif unit == boss then
-		self:GenericBossDeath(unit)
+	else
+		self:BossDeath(nil, guid)
 	end
 end
 
@@ -426,7 +438,7 @@ function mod:ShadowCast(_, spellID)
 end
 
 function mod:Shadow(player, spellId)
-	if db.shadow then
+	if not db.shadowdebuff then
 		self:Bar(L["shadow_debuff_bar"]:format(player), 10, spellId) 
 	end
 end
@@ -486,6 +498,7 @@ function mod:BigWigs_RecvSync(sync, rest, nick)
 		phase = 1
 		sinister1 = nil
 		sinister2 = nil
+		sinister3 = nil
 		if self:IsEventRegistered("PLAYER_REGEN_DISABLED") then
 			self:UnregisterEvent("PLAYER_REGEN_DISABLED")
 		end

@@ -225,8 +225,9 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Tempest Keep"]
 mod.otherMenu = "The Eye"
 mod.enabletrigger = boss
+mod.guid = 19516
 mod.toggleoptions = {"enrage", "pounding", "knock", -1, "orbyou", "orbsay", "orbother", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 75108 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76588 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -236,7 +237,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "KnockAway", 25778)
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Pounding", 34162)
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Orb", 34172, 34190)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")

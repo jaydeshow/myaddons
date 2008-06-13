@@ -337,7 +337,7 @@ local mod = BigWigs:NewModule(name)
 mod.zonename = name
 mod.enabletrigger = { thrall, proudmoore, L["Ghoul"] }
 mod.toggleoptions = {"waves", "detail"}
-mod.revision = tonumber(match("$Revision: 72140 $", "%d+"))
+mod.revision = tonumber(match("$Revision: 76590 $", "%d+"))
 mod.synctoken = "Hyjal Summit"
 
 ------------------------------
@@ -427,7 +427,7 @@ function mod:BigWigs_RecvSync( sync, rest )
 		elseif rest == "AzGalor" then
 			nextBoss = azgalor
 		end
-	elseif sync == "BossDeath" and rest then
+	elseif sync == "BWBossDeath" and rest then
 		if rest == "Rage Winterchill" then
 			nextBoss = anetheron
 		elseif rest == "Anetheron" then

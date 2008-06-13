@@ -1,4 +1,35 @@
 ------------------------------------------------------------------------
+r76568 | lahow | 2008-06-13 00:07:57 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+
+Cartographer_QuestInfo:
+- get rid of version tag
+------------------------------------------------------------------------
+r76567 | lahow | 2008-06-12 23:58:52 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+   M /trunk/Cartographer_QuestInfo/Core.lua
+
+Cartographer_QuestInfo:
+- fix tooltip problem for latin based client (remove tailing x)
+------------------------------------------------------------------------
+r76543 | lahow | 2008-06-12 15:20:17 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+
+Cartographer_QuestInfo:
+- update version
+------------------------------------------------------------------------
+r76542 | lahow | 2008-06-12 15:19:13 -0400 (Thu, 12 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Core.lua
+   M /trunk/Cartographer_QuestInfo/Data/Quest.lua
+
+Cartographer_QuestInfo:
+- minor quest data update
+- add more checking for Quixote
+------------------------------------------------------------------------
 r76044 | next96 | 2008-06-04 22:39:26 -0400 (Wed, 04 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc

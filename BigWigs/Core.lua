@@ -284,7 +284,7 @@ BigWigs = AceLibrary("AceAddon-2.0"):new(
 	"AceConsole-2.0",
 	"AceDB-2.0"
 )
-BigWigs.revision = tonumber(("$Revision: 74654 $"):sub(12, -3))
+BigWigs.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
 local BigWigs = BigWigs
 
 BigWigs:SetModuleMixins("AceEvent-2.0")
@@ -591,10 +591,10 @@ function BigWigs:BigWigs_RecvSync(sync, module)
 		if self:HasModule(name) then
 			self:EnableModule(name, true)
 		end
-	elseif (sync == "BossDeath" or sync == "MultiBossDeath") and self:HasModule(module) then
+	elseif (sync == "BWBossDeath" or sync == "BWMultiBossDeath") and self:HasModule(module) then
 		local mod = self:GetModule(module)
 		if mod.db.profile.bosskill then
-			if sync == "BossDeath" then
+			if sync == "BWBossDeath" then
 				mod:Message(L["%s has been defeated"]:format(module), "Bosskill", nil, "Victory")
 			else
 				mod:Message(L["%s have been defeated"]:format(module), "Bosskill", nil, "Victory")

@@ -140,8 +140,9 @@ L:RegisterTranslations("zhCN", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = {boss, L["Fathom-Guard Sharkkis"], L["Fathom-Guard Tidalvess"], L["Fathom-Guard Caribdis"]}
+mod.guid = 21214
 mod.toggleoptions = {"heal", "totem", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76588 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -150,7 +151,7 @@ mod.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_START", "Heal", 38330)
 	self:AddCombatListener("SPELL_SUMMON", "Totem", 38236)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")

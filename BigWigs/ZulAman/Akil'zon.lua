@@ -147,8 +147,9 @@ L:RegisterTranslations("esES", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
+mod.guid = 23574
 mod.toggleoptions = {"elec", "ping", "icon", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 72870 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -159,7 +160,7 @@ mod.proximitySilent = true
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Storm", 43648)
 	self:AddCombatListener("SPELL_AURA_REMOVED", "RemoveIcon", 43648)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")

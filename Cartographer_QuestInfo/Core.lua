@@ -197,7 +197,7 @@ function CQI:GetQuestText(uid, level)
 		elseif desc_state == 1 then
 			desc = (desc or "")..line
 		elseif desc_state > 1 then
-			local _, _, o = line:find("^%s+%- (.-)x?%d*$")
+			local _, _, o = line:find("^%s+%- (.-)%s?x?%s?%d*$")
 			if o then
 				if not objs then
 					objs = {}
@@ -398,7 +398,7 @@ end
 -------------------------------------------------------------------
 
 function CQI:PatchQuixote2()
-	-- change DAILI shorttags to "y", "\226\128\162" looks bad on zhTW & zhCN
+	-- change DAILY shorttags to "y", because "\226\128\162" looks ugly on zhTW & zhCN
 	local l = GetLocale()
 	if l == "zhTW" or l == "zhCN" then
 		Quixote.shorttags[DAILY] = "y"
@@ -415,5 +415,14 @@ function CQI:PatchQuixote2()
 		if instanceType == "arena" or instanceType == "pvp" then return end
 				
 		f(self, contents, distribution, target, priority)
+	end
+	
+	-- add checking for Quixote frame OnEvent
+	if Quixote.frame then
+		Quixote.frame:SetScript("OnEvent", function(this, event, ...)
+			if this[event] then
+				this[event](Quixote, ...)
+			end
+		end)
 	end
 end

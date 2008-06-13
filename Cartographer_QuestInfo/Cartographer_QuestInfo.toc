@@ -9,7 +9,6 @@
 ## Notes-koKR: 지도와 미니맵에 퀘스트 관련 정보를 출력해줍니다.
 ## Author: lahow (aka purple@bahamut)
 ## SavedVariables: Cartographer_QuestInfoDB
-## Version: 2.4.2.0604
 ## X-Category: Map
 ## X-eMail: lahow DOT studio AT gmail DOT com
 ## X-Embeds: LibQuixote-2.0, LibGratuity-3.0

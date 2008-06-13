@@ -1,0 +1,8 @@
+------------------------------------------------------------------------
+r76576 | funkydude | 2008-06-13 03:31:14 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BabyWigs/BabyWigs.toc
+   M /trunk/BabyWigs/Deadmines/BabyWigs_Deadmines.toc
+
+BabyWigs: fix toc
+------------------------------------------------------------------------

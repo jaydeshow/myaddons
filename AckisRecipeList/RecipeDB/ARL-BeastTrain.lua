@@ -4,8 +4,8 @@ ARL-BeastTrain.lua
 
 Beast Training data for all of AckisRecipeList
 
-$Date: 2008-06-04 11:30:19 -0400 (Wed, 04 Jun 2008) $
-$Rev: 75999 $
+$Date: 2008-06-12 12:01:50 -0400 (Thu, 12 Jun 2008) $
+$Rev: 76535 $
 
 ]]--
 
@@ -439,6 +439,7 @@ function addon:InitBeastTraining()
 	self:addTradeSkillBeast(17260, 48, addon:CombinePets(79,80,81,82,83,84,85,86,87))
 	self:addTradeSkillBeast(17261, 56, addon:CombinePets(88,89,90,91))
 	self:addTradeSkillBeast(27050, 64, addon:CombinePets(92,93))
+	--self:addTradeSkill("Test skill", 1, addon:CombinePets(94,95,96,97,98))
 	self:addTradeSkillBeast(16827, 1, addon:CombinePets(94,95,96,97,98))
 	self:addTradeSkillBeast(16828, 10, addon:CombinePets(99,100,101,102,103,104,105,106,107,108,109,110))
 	self:addTradeSkillBeast(16829, 16, addon:CombinePets(111,31,113,114,115,116,117,118,119,120,121))

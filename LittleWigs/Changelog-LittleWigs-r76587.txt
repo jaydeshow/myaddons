@@ -1,4 +1,48 @@
 ------------------------------------------------------------------------
+r76587 | 7destiny | 2008-06-13 07:14:13 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: MgT/Kael'Thas: fix issue Pyroblast
+------------------------------------------------------------------------
+r76565 | scorpio0920 | 2008-06-12 22:25:09 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r76564 | ananhaid | 2008-06-12 22:20:13 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: 
+- Kael'thasSunstrider zhCN update.
+------------------------------------------------------------------------
+r76562 | 7destiny | 2008-06-12 21:44:48 -0400 (Thu, 12 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: 
+- fix Pyroblast
+- koKR Update
+------------------------------------------------------------------------
+r76552 | durcyn | 2008-06-12 19:09:00 -0400 (Thu, 12 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+   D /trunk/LittleWigs/littlewigs
+
+LittleWigs: fix Ompalumpa's amazing commit.
+------------------------------------------------------------------------
+r76551 | Ompalumpa | 2008-06-12 18:51:30 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   A /trunk/LittleWigs/littlewigs
+   A /trunk/LittleWigs/littlewigs/MagistersTerrace
+   A /trunk/LittleWigs/littlewigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: 
+- Added Kael'Thas(Herioc) Pyroblast cast bar
+------------------------------------------------------------------------
 r76528 | scorpio0920 | 2008-06-12 07:44:07 -0400 (Thu, 12 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/LittleWigs/Auchindoun/Ikiss.lua
@@ -259,10 +303,4 @@ Changed paths:
    M /trunk/LittleWigs/MagistersTerrace/PriestessDelrissa.lua
 
 LittleWigs: MgT - Updated spellIds for Delrissa & Kael'thas
-------------------------------------------------------------------------
-r73641 | 7destiny | 2008-05-12 21:35:10 -0400 (Mon, 12 May 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/CoT/BlackMorass.lua
-
-LittleWigs: koKR Update
 ------------------------------------------------------------------------

@@ -225,8 +225,9 @@ L:RegisterTranslations("zhTW", function() return {
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
+mod.guid = 21213
 mod.toggleoptions = {"tidal", "grave", "murloc", "globules", "bosskill"}
-mod.revision = tonumber(("$Revision: 72218 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -236,7 +237,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Grave", 37850, 38023, 38024, 38025)
 	self:AddCombatListener("SPELL_CAST_START", "Tidal", 37730)
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Murlocs", 37764)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("UNIT_HEALTH")
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
