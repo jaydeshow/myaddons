@@ -15,6 +15,8 @@
 	<Binding name="AutoBarButtonBuffWeapon1_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonBuffWeapon2_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonCooldownDrums_X" runOnUp="true" header="AutoBarCooldownHeader">--[[ dummy ]]</Binding>
+	<Binding name="AutoBarButtonCooldownPotionCombat_X" runOnUp="true">--[[ dummy ]]</Binding>
+	<Binding name="AutoBarButtonCooldownStoneCombat_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonCooldownPotionHealth_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonCooldownStoneHealth_X" runOnUp="true">--[[ dummy ]]</Binding>
 	<Binding name="AutoBarButtonCooldownPotionMana_X" runOnUp="true">--[[ dummy ]]</Binding>

@@ -204,9 +204,11 @@ if (GetLocale() == "esMX") then
 		["AutoBarButtonClassPet"] = "Mascota de Clase",
 		["AutoBarButtonConjure"] = "Conjuro",
 		["AutoBarButtonCooldownDrums"] = "Reutilización: Tambores",
+		["AutoBarButtonCooldownPotionCombat"] = "Potion Cooldown: Combat",
 		["AutoBarButtonCooldownPotionHealth"] = "Reutilización: Salud",
 		["AutoBarButtonCooldownPotionMana"] = "Reutilización: Maná",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "Reutilización: Rejuvenecer",
+		["AutoBarButtonCooldownStoneCombat"] = "Stone Cooldown: Combat",
 		["AutoBarButtonCooldownStoneHealth"] = "Reutilización: Piedra Salud",
 		["AutoBarButtonCooldownStoneMana"] = "Reutilización: Piedra Maná",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "Reutilización: Piedra Rejuvenecer",
@@ -464,6 +466,8 @@ if (GetLocale() == "esMX") then
 		["Consumable.Cooldown.Stone.Health.Statue"] = "Estátuas de Piedra";
 		["Consumable.Cooldown.Drums"] = "Reutilización: Tambores";
 		["Consumable.Cooldown.Potion"] = "Reutilización: Poción";
+		["Consumable.Cooldown.Potion.Combat"] = "Cooldown: Potion - Combat";
+		["Consumable.Cooldown.Stone.Combat"] = "Cooldown: Stone - Combat";
 		["Consumable.Cooldown.Stone"] = "Reutilización: Piedra";
 		["Consumable.Leatherworking.Drums"] = "Tambores";
 		["Consumable.Tailor.Net"] = "Redes";

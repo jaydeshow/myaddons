@@ -204,9 +204,11 @@ if (GetLocale() == "deDE") then
 		["AutoBarButtonClassPet"] = "Class Pet",
 		["AutoBarButtonConjure"] = "Conjure",
 		["AutoBarButtonCooldownDrums"] = "Cooldown: Drums",
+		["AutoBarButtonCooldownPotionCombat"] = "Potion Cooldown: Combat",
 		["AutoBarButtonCooldownPotionHealth"] = "Potion Cooldown: Health",
 		["AutoBarButtonCooldownPotionMana"] = "Potion Cooldown: Mana",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "Potion Cooldown: Rejuvenation",
+		["AutoBarButtonCooldownStoneCombat"] = "Stone Cooldown: Combat",
 		["AutoBarButtonCooldownStoneHealth"] = "Stone Cooldown: Health",
 		["AutoBarButtonCooldownStoneMana"] = "Stone Cooldown: Mana",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "Stone Cooldown: Rejuvenation",
@@ -464,6 +466,8 @@ if (GetLocale() == "deDE") then
 		["Consumable.Cooldown.Stone.Health.Statue"] = "Stone Statues";
 		["Consumable.Cooldown.Drums"] = "Cooldown: Drums";
 		["Consumable.Cooldown.Potion"] = "Cooldown: Potion";
+		["Consumable.Cooldown.Potion.Combat"] = "Cooldown: Potion - Combat";
+		["Consumable.Cooldown.Stone.Combat"] = "Cooldown: Stone - Combat";
 		["Consumable.Cooldown.Stone"] = "Cooldown: Stone";
 		["Consumable.Leatherworking.Drums"] = "Drums";
 		["Consumable.Tailor.Net"] = "Nets";

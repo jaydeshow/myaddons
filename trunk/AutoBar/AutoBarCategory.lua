@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 76365 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -760,6 +760,9 @@ function AutoBarCategory:Initialize()
 			"Consumable.Food.Buff.Other", "INV_Drink_17", "Consumable.Food.Buff.Other")
 	AutoBarCategoryList["Consumable.Food.Buff.Other"]:SetNonCombat(true)
 
+	AutoBarCategoryList["Consumable.Cooldown.Potion.Combat"] = AutoBarItems:new(
+			"Consumable.Cooldown.Potion.Combat", "INV_Potion_54", "Consumable.Cooldown.Potion.Combat")
+
 	AutoBarCategoryList["Consumable.Cooldown.Potion.Health.Basic"] = AutoBarItems:new(
 			"Consumable.Cooldown.Potion.Health.Basic", "INV_Potion_54", "Consumable.Cooldown.Potion.Health.Basic")
 
@@ -797,6 +800,9 @@ function AutoBarCategory:Initialize()
 	AutoBarCategoryList["Consumable.Cooldown.Potion.Mana.Tempest Keep"] = AutoBarItems:new(
 			"Consumable.Cooldown.Potion.Mana.Tempest Keep", "INV_Potion_156", "Consumable.Cooldown.Potion.Mana.Tempest Keep")
 	AutoBarCategoryList["Consumable.Cooldown.Potion.Mana.Tempest Keep"]:SetLocation("Tempest Keep")
+
+	AutoBarCategoryList["Consumable.Cooldown.Stone.Combat"] = AutoBarItems:new(
+			"Consumable.Cooldown.Stone.Combat", "INV_Stone_04", "Consumable.Cooldown.Stone.Combat")
 
 	AutoBarCategoryList["Consumable.Cooldown.Stone.Health.Warlock"] = AutoBarItems:new(
 			"Consumable.Cooldown.Stone.Health.Warlock", "INV_Stone_04", "Consumable.Cooldown.Stone.Health.Warlock")

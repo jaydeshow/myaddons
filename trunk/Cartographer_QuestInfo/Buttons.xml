@@ -157,7 +157,7 @@
 					<Anchors>
 						<Anchor point="RIGHT">
 							<Offset>
-								<AbsDimension x="-20" y="-1"/>
+								<AbsDimension x="-1" y="-1"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -166,7 +166,7 @@
 		</Layers>
 		<NormalTexture>
 			<Size>
-				<AbsDimension x="275" y="12"/>
+				<AbsDimension x="275" y="14"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>
@@ -174,7 +174,7 @@
 		</NormalTexture>
 		<HighlightTexture alphaMode="ADD" file="Interface\QuestFrame\UI-QuestTitleHighlight">
 			<Size>
-				<AbsDimension x="275" y="12"/>
+				<AbsDimension x="275" y="14"/>
 			</Size>
 			<Anchors>
 				<Anchor point="CENTER" relativePoint="CENTER"/>

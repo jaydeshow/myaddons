@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r76604 | ulic | 2008-06-13 11:37:07 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: MgT/Kael- Bugfix for and actually enabled pyroblast
+------------------------------------------------------------------------
 r76587 | 7destiny | 2008-06-13 07:14:13 -0400 (Fri, 13 Jun 2008) | 1 line
 Changed paths:
    M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua

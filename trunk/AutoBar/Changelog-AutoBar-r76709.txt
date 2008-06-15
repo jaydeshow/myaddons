@@ -1,4 +1,36 @@
 ------------------------------------------------------------------------
+r76709 | toadkiller | 2008-06-15 00:17:59 -0400 (Sun, 15 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassBar.lua
+
+AutoBar : 
+-- Reset popup frame strata after Key bindings mode
+------------------------------------------------------------------------
+r76652 | toadkiller | 2008-06-14 01:49:25 -0400 (Sat, 14 Jun 2008) | 5 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassPopupButton.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+   M /trunk/AutoBar/Bindings.xml
+   M /trunk/AutoBar/ChangeList.lua
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+-- Fix one source of popups staying open
+-- AutoBarButtonCooldownPotionCombat (Heroic Potion, Destruction Potion ...)
+-- AutoBarButtonCooldownStoneCombat (Nightmare Seed, Flamecap, Fel Blossom, ...)
+
+------------------------------------------------------------------------
 r76459 | toadkiller | 2008-06-11 05:47:28 -0400 (Wed, 11 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarClassButton.lua
@@ -787,106 +819,4 @@ Changed paths:
 AutoBar : 
 -- Fix stonard portal + reagent counts for new teleports and portals
 
-------------------------------------------------------------------------
-r73864 | toadkiller | 2008-05-14 15:35:26 -0400 (Wed, 14 May 2008) | 8 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-
-AutoBar : 
--- Consolidate UpdateUsable code for both button types.
--- Obey Category location settings for usable display
--- ZONE_CHANGED_NEW_AREA: Add 2 second update delay for sorted because Zone info is not available when ZONE_CHANGED_NEW_AREA fires.  Wtf is the point of firing it?
--- Location specific items should now work.  For example Nethergon Energy.
--- Brewfest Brew 33929
--- Don Carlos Tequila 28284
-
-------------------------------------------------------------------------
-r73778 | toadkiller | 2008-05-13 22:20:33 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- Add new telports (left click) and Portals (right click)
-------------------------------------------------------------------------
-r73726 | toadkiller | 2008-05-13 15:18:49 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Save ButtonFacade Colors
-------------------------------------------------------------------------
-r73677 | StiviS | 2008-05-13 06:42:46 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r73665 | toadkiller | 2008-05-13 04:23:39 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- Add shuffle translations ahead of time
-------------------------------------------------------------------------
-r73664 | toadkiller | 2008-05-13 04:17:36 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Fix tooltip error during Move the Buttons
-------------------------------------------------------------------------
-r73576 | StiviS | 2008-05-12 07:05:16 -0400 (Mon, 12 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r73558 | toadkiller | 2008-05-12 05:18:15 -0400 (Mon, 12 May 2008) | 7 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- Use button Name not key for Add Button
--- Start switching to LibStickyFrames-2.0
--- Internationalize {star} & {skull} used in Rotation Drums Button
--- Arrange on use for spells and macros.  Issue with not showing regular items when mixed with spells in a category remains.
--- Fix outlining issue when clicking on popups.  Introduce equipped green border scaling issue instead.
-
-------------------------------------------------------------------------
-r73528 | toadkiller | 2008-05-11 22:13:54 -0400 (Sun, 11 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Start switching to LibStickyFrames-2.0
 ------------------------------------------------------------------------

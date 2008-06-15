@@ -97,6 +97,8 @@ This file does not have valid lua syntax, because it should never be loaded dire
 	["Consumable.Buff Pet"]					= "27656,33874",
 
 	-- Items on Health Stone vs Potion cooldown, each with Health, Mana & Rejuvenation subsets.
+	["Consumable.Cooldown.Potion.Combat.Offensive"]				= "13442,22828,22837,22838,22839",
+	["Consumable.Cooldown.Potion.Combat.Defensive"]				= "4623,13455,22849",
 	["Consumable.Cooldown.Potion.Health.Basic"]				= "118:80,858:160,4596:160,929:320,1710:520,11562:670,3928:800,18839:800,13446:1400,31838:1400,31839:1400,31852:1400,31853:1400,28100:1400,33092:2000,23822:2000,22829:2000,32947:2000,33934:2000",
 	["Consumable.Cooldown.Potion.Health.Blades Edge"]			= "32784:1400,32910:1400",
 	["Consumable.Cooldown.Potion.Health.Coilfang"]				= "32904:2000",
@@ -109,6 +111,7 @@ This file does not have valid lua syntax, because it should never be loaded dire
 	["Consumable.Cooldown.Potion.Mana.Tempest Keep"]			= "32902:2400",
 	["Consumable.Cooldown.Potion.Rejuvenation.Regular"]				= "2456:120,11952:425,9144:750,29531:750,18253:1600,22850:2200,34440:2200",
 	["Consumable.Cooldown.Potion.Rejuvenation.Dreamless Sleep"]		= "12190:1200,20002:2100,22836:3600",
+	["Consumable.Cooldown.Stone.Combat"]				= "22797,22795,22788",
 	["Consumable.Cooldown.Stone.Health.Other"]				= "11951:800,32578:2000,",
 	["Consumable.Cooldown.Stone.Health.Statue"]				= "25498:8,25880:16,25881:24,25882:36,25883:50",--NOT AUTOGENNED
 	["Consumable.Cooldown.Stone.Health.Warlock"]				= "m,Consumable.Warlock.Healthstone,",

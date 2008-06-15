@@ -21,6 +21,8 @@ L:AddTranslations("zhTW", function() return {
 	["Show quest icons on the minimap."] = "在小地圖上顯示任務圖示。",
 	["Show world map button"] = "顯示'任務資訊'按鈕",
 	["Show button on the world map."] = "在世界地圖上顯示'任務資訊'的設定按鈕。",
+	["Show quest level"] = "顯示任務等級",
+	["Show quest level in quest log and NPC dialog."] = "在任務視窗及對話框顯示任務等級。",
 	["Make quest log double wide"] = "加寬任務視窗",
 	["Make the quest log window double wide, this will require UI reload."] = "加寬顯示任務視窗，注意:這功能需要重載UI後才能改變。",
 	["Quest Info"] = "任務資訊",
@@ -33,6 +35,7 @@ L:AddTranslations("zhTW", function() return {
 	["Total %d quest objects have been exported."] = "總計匯出 %d 個任務目標。",
 	["Clear old exported objectives first."] = "首先清除舊的任務目標。",
 	["Begin exporting new quest objectives."] = "開始匯出新的任務目標。",
+	["GROUP"] = "團體",
 
 -- LocationFrame.lua
 	["Close"] = "關閉",

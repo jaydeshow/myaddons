@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 75941 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -211,19 +211,19 @@ function AutoBarButton.prototype:SetupButton()
 			local popupDirection = layoutDB.popupDirection
 			local paddingX, paddingY = 0, 0
 			local hitRectPadding = -math.max(4, padding)
-			if (popupDirection == "1") then
+			if (popupDirection == "1") then	-- Top
 				side = "BOTTOM"
 				relativeSide = "TOP"
 				paddingY = padding
-			elseif (popupDirection == "2") then
+			elseif (popupDirection == "2") then -- Left
 				side = "RIGHT"
 				relativeSide = "LEFT"
 				paddingX = -padding
-			elseif (popupDirection == "3") then
+			elseif (popupDirection == "3") then -- Bottom
 				side = "TOP"
 				relativeSide = "BOTTOM"
 				paddingY = -padding
-			elseif (popupDirection == "4") then
+			elseif (popupDirection == "4") then -- Right
 				side = "LEFT"
 				relativeSide = "RIGHT"
 				paddingX = padding
@@ -245,7 +245,19 @@ function AutoBarButton.prototype:SetupButton()
 --				popupButtonFrame:SetAllPoints(relativePoint)
 				popupButtonFrame:ClearAllPoints()
 				popupButtonFrame:SetPoint(side, relativePoint, relativeSide, paddingX, paddingY)
-				popupButtonFrame:SetHitRectInsets(hitRectPadding, hitRectPadding, hitRectPadding, hitRectPadding)
+				if (popupButtonIndex == 2) then
+					if (popupDirection == "1") then
+						popupButtonFrame:SetHitRectInsets(hitRectPadding, hitRectPadding, hitRectPadding, -padding)
+					elseif (popupDirection == "2") then
+						popupButtonFrame:SetHitRectInsets(hitRectPadding, -padding, hitRectPadding, hitRectPadding)
+					elseif (popupDirection == "3") then
+						popupButtonFrame:SetHitRectInsets(hitRectPadding, hitRectPadding, -padding, hitRectPadding)
+					elseif (popupDirection == "4") then
+						popupButtonFrame:SetHitRectInsets(-padding, hitRectPadding, hitRectPadding, hitRectPadding)
+					end
+				else
+					popupButtonFrame:SetHitRectInsets(hitRectPadding, hitRectPadding, hitRectPadding, hitRectPadding)
+				end
 --				popupHeader:SetAttribute("ofspoint", "*:" .. relativeSide)
 --				popupHeader:SetAttribute("ofsrelpoint", "*:" .. side)
 --				popupHeader:SetAttribute("ofsx", 0)
@@ -1922,6 +1934,26 @@ function AutoBarButtonCooldownDrums.prototype:init(parentBar, buttonDB)
 	AutoBarButtonCooldownDrums.super.prototype.init(self, parentBar, buttonDB)
 
 	self:AddCategory("Consumable.Cooldown.Drums")
+end
+
+
+local AutoBarButtonCooldownPotionCombat = AceOO.Class(AutoBarButton)
+AutoBar.Class["AutoBarButtonCooldownPotionCombat"] = AutoBarButtonCooldownPotionCombat
+
+function AutoBarButtonCooldownPotionCombat.prototype:init(parentBar, buttonDB)
+	AutoBarButtonCooldownPotionCombat.super.prototype.init(self, parentBar, buttonDB)
+
+	self:AddCategory("Consumable.Cooldown.Potion.Combat")
+end
+
+
+local AutoBarButtonCooldownStoneCombat = AceOO.Class(AutoBarButton)
+AutoBar.Class["AutoBarButtonCooldownStoneCombat"] = AutoBarButtonCooldownStoneCombat
+
+function AutoBarButtonCooldownStoneCombat.prototype:init(parentBar, buttonDB)
+	AutoBarButtonCooldownStoneCombat.super.prototype.init(self, parentBar, buttonDB)
+
+	self:AddCategory("Consumable.Cooldown.Stone.Combat")
 end
 
 

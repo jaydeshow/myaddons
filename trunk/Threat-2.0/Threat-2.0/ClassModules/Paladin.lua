@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 73934 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 76620 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -128,7 +128,7 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 	
 	function Paladin:RighteousDefense(spellID, target)
 		if GetTime() - self.RighteousDefenseCastTime < 1 then
-			local targetThreat = ThreatLib:GetThreat(UnitGUID(tauntOffTarget), target)
+			local targetThreat = ThreatLib:GetThreat(tauntOffTarget, target)
 			local myThreat = ThreatLib:GetThreat(UnitGUID("player"), target)
 			if targetThreat > 0 and targetThreat > myThreat then
 				self:SetTargetThreat(target, targetThreat)

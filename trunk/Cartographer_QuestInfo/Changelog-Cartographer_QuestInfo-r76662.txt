@@ -1,4 +1,31 @@
 ------------------------------------------------------------------------
+r76662 | lahow | 2008-06-14 05:32:32 -0400 (Sat, 14 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/QuestLogPatch.lua
+
+Cartographer_QuestInfo:
+- fix check box location of quest log entry
+------------------------------------------------------------------------
+r76654 | lahow | 2008-06-14 02:13:10 -0400 (Sat, 14 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Buttons.xml
+   M /trunk/Cartographer_QuestInfo/Core.lua
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-enUS.lua
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-zhCN.lua
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-zhTW.lua
+   M /trunk/Cartographer_QuestInfo/QuestLogPatch.lua
+
+Cartographer_QuestInfo:
+- add show quest level support (hopefully it is compatible with existing addons)
+- tweak button location again
+------------------------------------------------------------------------
+r76618 | lahow | 2008-06-13 14:48:11 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-enUS.lua
+
+Cartographer_QuestInfo:
+- add module description
+------------------------------------------------------------------------
 r76568 | lahow | 2008-06-13 00:07:57 -0400 (Fri, 13 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
