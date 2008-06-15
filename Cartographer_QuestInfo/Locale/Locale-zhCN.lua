@@ -21,6 +21,8 @@ L:AddTranslations("zhCN", function() return {
 	["Show quest icons on the minimap."] = "在小地图上显示任务图标。",
 	["Show world map button"] = "显示'任务信息'按钮",
 	["Show button on the world map."] = "在世界地图上显示'任务信息'的设定按钮。",
+	["Show quest level"] = "显示任务等级",
+	["Show quest level in quest log and NPC dialog."] = "在任务窗口及对话框显示任务等级。",
 	["Make quest log double wide"] = "加宽任务窗口",
 	["Make the quest log window double wide, this will require UI reload."] = "加宽显示任务窗口，注意:这功能需要重载UI后才能改变。",
 	["Quest Info"] = "任务信息",

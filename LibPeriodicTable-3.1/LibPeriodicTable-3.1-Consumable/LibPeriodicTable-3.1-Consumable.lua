@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("Consumable", "$Rev: 76501 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("Consumable", "$Rev: 76713 $", {
 	["Consumable.Anti-Venom"]="6452:25,6453:35,13462:60,2633:60,19440:60,12586:60,9030:60,3386:60,31437:70,25550:70",
 	["Consumable.Bandage.Basic"]="2581:114,8545:1104,21991:3400,14530:2000,6451:640,3531:301,1251:66,8544:800,21990:2800,14529:1360,6450:400,3530:161",
 	["Consumable.Bandage.Battleground.Alterac Valley"]="19307:2000",
@@ -92,6 +92,8 @@ LibStub("LibPeriodicTable-3.1"):AddData("Consumable", "$Rev: 76501 $", {
 	["Consumable.Buff Pet"]="27656,33874",
 
 	-- Items on Health Stone vs Potion cooldown, each with Health, Mana & Rejuvenation subsets.
+	["Consumable.Cooldown.Potion.Combat.Offensive"]="13442,22828,22837,22838,22839",
+	["Consumable.Cooldown.Potion.Combat.Defensive"]="4623,13455,22849",
 	["Consumable.Cooldown.Potion.Health.Basic"]="118:80,858:160,4596:160,929:320,1710:520,11562:670,3928:800,18839:800,13446:1400,31838:1400,31839:1400,31852:1400,31853:1400,28100:1400,33092:2000,23822:2000,22829:2000,32947:2000,33934:2000",
 	["Consumable.Cooldown.Potion.Health.Blades Edge"]="32784:1400,32910:1400",
 	["Consumable.Cooldown.Potion.Health.Coilfang"]="32904:2000",
@@ -104,6 +106,7 @@ LibStub("LibPeriodicTable-3.1"):AddData("Consumable", "$Rev: 76501 $", {
 	["Consumable.Cooldown.Potion.Mana.Tempest Keep"]="32902:2400",
 	["Consumable.Cooldown.Potion.Rejuvenation.Regular"]="2456:120,11952:425,9144:750,29531:750,18253:1600,22850:2200,34440:2200",
 	["Consumable.Cooldown.Potion.Rejuvenation.Dreamless Sleep"]="12190:1200,20002:2100,22836:3600",
+	["Consumable.Cooldown.Stone.Combat"]="22797,22795,22788",
 	["Consumable.Cooldown.Stone.Health.Other"]="11951:800,32578:2000,",
 	["Consumable.Cooldown.Stone.Health.Statue"]="25498:8,25880:16,25881:24,25882:36,25883:50",
 	["Consumable.Cooldown.Stone.Health.Warlock"]="m,Consumable.Warlock.Healthstone,",

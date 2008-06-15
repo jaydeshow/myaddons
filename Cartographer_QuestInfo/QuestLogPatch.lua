@@ -1,6 +1,8 @@
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_QuestInfo")
 local BZR = LibStub("LibBabble-Zone-3.0"):GetReverseLookupTable()
 
+local Quixote = LibStub("LibQuixote-2.0")
+
 local C = Cartographer
 local CQI = Cartographer_QuestInfo
 
@@ -260,10 +262,120 @@ local function MakeQuestLogDoubleWide()
 	end
 end
 
-function CQI:ExtendQuestLog()
-	if self.IsQuestLogExtended then return end
-	self.IsQuestLogExtended = true
+-------------------------------------------------------------------
 
-	-- delay patch quest log, so other addons can take chance first
-	self:AddTimer(1, MakeQuestLogDoubleWide)
+function CQI:QuestLog_Update()
+	if not self.db.profile.showQuestTag then return end
+	local offset = FauxScrollFrame_GetOffset(QuestLogListScrollFrame)
+	local numEntries = GetNumQuestLogEntries()
+	for i = 1, QUESTS_DISPLAYED, 1 do
+		local index = offset + i
+		if index > numEntries then break end
+		local titleLine = _G["QuestLogTitle"..i]
+		if titleLine then
+			local uid, id, _, _, _, _, complete = Quixote:GetQuestById(i + offset)
+			if uid then
+				local title = Quixote:GetTaggedQuestName(uid)
+				titleLine:SetText(title)
+				
+				local check = _G["QuestLogTitle" .. i .. "Check"]
+				if check:IsVisible() then
+					check:SetPoint("LEFT", titleLine, "LEFT", -1, -2)
+				end
+			end
+		end
+	end
+end
+
+-------------------------------------------------------------------
+
+local function QuestIconFaded(title)
+	local objectives, complete = select(6, Quixote:GetQuest(title))
+	-- if we don't have the quest, we don't fade it:
+	if objectives == nil and complete == nil then return false end
+	return not (complete == 1 or objectives == 0)
+end
+
+local function GossipLoop(buttonindex, do_texture, ...)
+	local numQuests = select('#', ...)
+	for i = 2, numQuests, 3 do
+		local button = _G["GossipTitleButton"..buttonindex]
+		if not button:GetText():find("%[.-%]") then
+			local level = select(i, ...)
+			button:SetText(string.format('[%s] %s', level == -1 and '*' or level, button:GetText()))
+			if do_texture and QuestIconFaded(Quixote:GetQuest(select(i-1, ...))) then
+				_G["GossipTitleButton"..buttonindex.."GossipIcon"]:SetVertexColor(0.5, 0.5, 0.5, 0.5)
+			else
+				_G["GossipTitleButton"..buttonindex.."GossipIcon"]:SetVertexColor(1, 1, 1, 1)
+			end
+		end
+		buttonindex = buttonindex + 1
+	end
+	return buttonindex + 1
+end
+
+local function ShowQuestTagOnGossip()
+	local buttonindex = 1
+	if GetGossipAvailableQuests() then
+		buttonindex = GossipLoop(buttonindex, false, GetGossipAvailableQuests())
+	end
+	if GetGossipActiveQuests() then
+		buttonindex = GossipLoop(buttonindex, true, GetGossipActiveQuests())
+	end
+end
+
+local function ShowQuestTagOnGreeting()
+	local numActive = GetNumActiveQuests()
+	local numAvailable = GetNumAvailableQuests()
+	local o = 0
+	local GetTitle = GetActiveTitle
+	local GetLevel = GetActiveLevel
+	for i = 1, numActive + numAvailable do
+		local button = _G["QuestTitleButton"..i]
+		if button:GetText():find("%[.-%]") then break end
+		if i == numActive + 1 then
+			o = numActive
+			GetTitle = GetAvailableTitle
+			GetLevel = GetAvailableLevel
+		end		
+		local title = GetTitle(i-o)
+		local level = GetLevel(i-o)
+		button:SetText(string.format('[%s] %s', level == -1 and '*' or level, title))
+		if QuestIconFaded(title) then
+			_G["QuestTitleButton"..i.."QuestIcon"]:SetVertexColor(0.5, 0.5, 0.5, 0.5)
+		else
+			_G["QuestTitleButton"..i.."QuestIcon"]:SetVertexColor(1, 1, 1, 1)
+		end
+	end
+end
+
+function CQI:GOSSIP_SHOW()
+	if not self.db.profile.showQuestTag then return end
+	self:AddTimer(0, ShowQuestTagOnGossip)
+end
+
+function CQI:QUEST_GREETING()
+	if not self.db.profile.showQuestTag then return end
+	self:AddTimer(0, ShowQuestTagOnGreeting)
+end
+
+-------------------------------------------------------------------
+
+function CQI:PatchQuestLog()
+	if self.IsQuestLogPatched then return end
+	self.IsQuestLogPatched = true
+
+	self:AddSecureHook("QuestLog_UpdateQuestDetails")
+
+	-- delay patch show quest tag, so other addons can take chance first
+	self:AddTimer(1, function()
+		self:AddSecureHook("QuestLog_Update")
+		self:AddEventListener("GOSSIP_SHOW")
+		self:AddEventListener("QUEST_GREETING")
+	end)
+
+	if self.db.profile.wideQuestLog then
+		-- delay extend quest log, so other addons can take chance first
+		self:AddTimer(1, MakeQuestLogDoubleWide)
+	end
 end

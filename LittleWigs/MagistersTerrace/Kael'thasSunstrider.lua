@@ -147,8 +147,8 @@ local mod = BigWigs:NewModule(boss.."(MT)")
 mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
-mod.toggleoptions = {"glapse", "phoenix", "flamestrike", -1, "barrier", "bosskill"}
-mod.revision = tonumber(("$Revision: 76587 $"):sub(12, -3))
+mod.toggleoptions = {"glapse", "phoenix", "flamestrike", -1, "barrier", "pyro", "bosskill"}
+mod.revision = tonumber(("$Revision: 76604 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -217,7 +217,7 @@ function mod:Barrier()
 end
 
 function mod:Pyro(player, spellId)
-	if self.db.profile then
+	if self.db.profile.pyro then
 		self:Bar(L["pyro_cast_bar"]:format(player), 4, spellId)
 		self:IfMessage(L["pyro_message"], "Important", spellId)
 		self:Icon(player, "icon")

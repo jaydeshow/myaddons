@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r76625 | ackis | 2008-06-13 15:51:09 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
+
+AckisRecipeList:
+- Forceful Talisite -> 350
+------------------------------------------------------------------------
 r76535 | ackis | 2008-06-12 12:01:50 -0400 (Thu, 12 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
@@ -908,11 +916,4 @@ Changed paths:
 
 AckisRecipeList:
 - Converted a few patterns to be limited supply
-------------------------------------------------------------------------
-r73541 | StiviS | 2008-05-12 02:16:41 -0400 (Mon, 12 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
 ------------------------------------------------------------------------

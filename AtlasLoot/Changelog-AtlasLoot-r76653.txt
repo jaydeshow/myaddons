@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------
+r76653 | ananhaid | 2008-06-14 02:00:56 -0400 (Sat, 14 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Instances.xml
+   A /trunk/AtlasLoot/Instances/instances.cn.lua
+
+AtlasLoot:
+- Compensated for an inconsistency in Atlas zhCN locale.
+------------------------------------------------------------------------
+r76629 | ascalia | 2008-06-13 16:58:12 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+
+AtlasLoot:
+- Prepare for next Atlas testing (1.12.0)
+------------------------------------------------------------------------
 r76345 | daviesh | 2008-06-09 10:07:13 -0400 (Mon, 09 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot/Instances/Instances.xml
@@ -127,41 +142,4 @@ Changed paths:
 
 AtlasLoot:
 - Release Notes updated
-------------------------------------------------------------------------
-r73672 | kurax | 2008-05-13 05:24:23 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Documentation/Release Notes.txt
-
-AtlasLoot:
-- Update release note
-------------------------------------------------------------------------
-r73671 | kurax | 2008-05-13 05:23:28 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Core/AtlasLoot.lua
-   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
-   M /trunk/AtlasLoot/Core/Crafting.lua
-   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
-   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
-
-AtlasLoot:
-- Complete all profession data
-------------------------------------------------------------------------
-r73578 | kurax | 2008-05-12 07:27:56 -0400 (Mon, 12 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Core/AtlasLoot.lua
-   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
-   M /trunk/AtlasLoot/Core/Crafting.lua
-   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
-   M /trunk/AtlasLoot/Documentation/Release Notes.txt
-   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
-
-AtlasLoot:
-- Add Jewelcrafting profession
-------------------------------------------------------------------------
-r73299 | ananhaid | 2008-05-10 06:13:16 -0400 (Sat, 10 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/TableRegister/loottables.cn.lua
-
-AtlasLoot:
-- zhCN update.
 ------------------------------------------------------------------------

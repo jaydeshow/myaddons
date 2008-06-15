@@ -23,7 +23,11 @@
 
 --[[
 = What will slip till after release? =
- * Popup on shift.  There is just one more bug to iron out in the test state machine then this can be incorporated.
+ * Conditonal Bars / Buttons
+  * Popup on shift.  There is just one more bug to iron out in the test state machine then this can be incorporated.
+  * Stance, form and macro conditional bars / buttons.
+  * Boss based Buttons, Bars
+  * Modifier key support for buttons
  * Reset Button for built in Bars
  * Reset Button for built in Buttons
  * Reset Button for AutoBar
@@ -69,9 +73,6 @@
 = What is still planned for the new version? =
  * Finish macro buttons.
   * For Blizzard macros, use name, not number to index them.
- * Combat Buttons.  (short duration buffs)
-   * AutoBarButtonCooldownPotionCombat (Heroic Potion, Destruction Potion ...)
-   * AutoBarButtonCooldownStoneCombat (Nightmare Seed, Flamecap, Fel Blossom, ...)
  * Verify arena water precedence & tears + conjured only
  * Switch to GetItemIcon(itemId or itemName or itemLink or itemString) for category icons
 --]]
@@ -84,15 +85,26 @@
 [url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
 (Please click in a "Labels:" field to label your issue appropriately.)
 
-"$Revision: 76103 $"
+"$Revision: 76652 $"
 AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
 
 -- 2.04.02.56 beta ()
---- GetSpellCount.  0 or # reagent thingies left.
+-- Switch to GetSpellCount.  0 or # reagent thingies left.
+-- Fix LibStub call
+-- Fix InCombat SPELLS_CHANGED calls to be delayed
+-- Add Cancel (Revert) and Okay (Commit) to LibKeyBound.  Remove close box.  Toggling Commits as well.
+-- Inner Fire added for Priests
+-- Fix nil value in SetCount
+-- Allow dragging spells from AutoBar to regular action bars during Move Button Mode.
+-- AutoBarButtonCooldownPotionCombat (Heroic Potion, Destruction Potion ...)
+-- AutoBarButtonCooldownStoneCombat (Nightmare Seed, Flamecap, Fel Blossom, ...)
+-- Bat Bites 27636 Meat.Bonus -> Meat.Basic
+-- Hyjal Nectar 18300
+-- Scourgebane Draught 22779
+-- Scourgebane Infusion 22778
 --- Shuffle: handle locations and cooldowns and equipped items.
 --- Buttons need a drop setting that if checked allow items to be dragged right onto the button itself
---- Verify all button.barKey nilled when deleting a bar
 --- Finish LibStickyFrames: needs grouped dragging.
 --- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
 

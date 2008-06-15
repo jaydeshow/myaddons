@@ -204,9 +204,11 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonClassPet"] = "战斗宠物",
 		["AutoBarButtonConjure"] = "法术: 制造",
 		["AutoBarButtonCooldownDrums"] = "冷却：战鼓",
+		["AutoBarButtonCooldownPotionCombat"] = "Potion Cooldown: Combat",
 		["AutoBarButtonCooldownPotionHealth"] = "药水冷却：生命",
 		["AutoBarButtonCooldownPotionMana"] = "药水冷却：法力",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "药水冷却：活力",
+		["AutoBarButtonCooldownStoneCombat"] = "Stone Cooldown: Combat",
 		["AutoBarButtonCooldownStoneHealth"] = "石头冷却：生命",
 		["AutoBarButtonCooldownStoneMana"] = "石头冷却：法力",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "石头冷却：活力",
@@ -464,6 +466,8 @@ if (GetLocale() == "zhCN") then
 		["Consumable.Cooldown.Stone.Health.Statue"] = "石像";
 		["Consumable.Cooldown.Drums"] = "冷却: 战鼓";
 		["Consumable.Cooldown.Potion"] = "冷却: 药水";
+		["Consumable.Cooldown.Potion.Combat"] = "Cooldown: Potion - Combat";
+		["Consumable.Cooldown.Stone.Combat"] = "Cooldown: Stone - Combat";
 		["Consumable.Cooldown.Stone"] = "冷却: 石";
 		["Consumable.Leatherworking.Drums"] = "战鼓";
 		["Consumable.Tailor.Net"] = "网";

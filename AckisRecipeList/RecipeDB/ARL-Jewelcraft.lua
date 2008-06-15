@@ -4,8 +4,8 @@ ARL-Jewelcraft.lua
 
 Jewelcrafting data for all of AckisRecipeList
 
-$Date: 2008-06-04 14:22:43 -0400 (Wed, 04 Jun 2008) $
-$Rev: 76016 $
+$Date: 2008-06-13 15:51:09 -0400 (Fri, 13 Jun 2008) $
+$Rev: 76625 $
 
 ]]--
 
@@ -284,7 +284,7 @@ function addon:InitJewelcrafting()
 	self:addTradeSkillSpell(46803, 350, self:AddSingleReputation(3, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
 	self:addTradeSkillSpell(46403, 360, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
 	self:addTradeSkillSpell(46404, 360, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
-	self:addTradeSkillSpell(46405, 360, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
+	self:addTradeSkillSpell(46405, 350, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
 	self:addTradeSkillSpell(48789, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
 
 	-- Raid Drops

@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76305 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-06-08 23:57:09 -0400 (Sun, 08 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-06-14 01:49:25 -0400 (Sat, 14 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -596,12 +596,22 @@ function AutoBar:InitializeDefaults()
 			shuffle = true,
 		}
 	end
+	if (not AutoBar.db.account.buttonList["AutoBarButtonCooldownPotionCombat"]) then
+		AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneCombat"] = {
+			buttonKey = "AutoBarButtonCooldownPotionCombat",
+			buttonClass = "AutoBarButtonCooldownPotionCombat",
+			barKey = "AutoBarClassBarBasic",
+			defaultButtonIndex = 9,
+			enabled = true,
+			shuffle = true,
+		}
+	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneHealth"]) then
 		AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneHealth"] = {
 			buttonKey = "AutoBarButtonCooldownStoneHealth",
 			buttonClass = "AutoBarButtonCooldownStoneHealth",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 9,
+			defaultButtonIndex = 10,
 			enabled = true,
 			shuffle = true,
 		}
@@ -611,29 +621,27 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonCooldownStoneMana",
 			buttonClass = "AutoBarButtonCooldownStoneMana",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 10,
-			enabled = true,
-			shuffle = true,
-		}
-	end
---[[
-	if (not AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneRejuvenation"]) then
-		AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneRejuvenation"] = {
-			buttonKey = "AutoBarButtonCooldownStoneRejuvenation",
-			buttonClass = "AutoBarButtonCooldownStoneRejuvenation",
-			barKey = "AutoBarClassBarBasic",
 			defaultButtonIndex = 11,
 			enabled = true,
 			shuffle = true,
 		}
 	end
---]]
+	if (not AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneCombat"]) then
+		AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneCombat"] = {
+			buttonKey = "AutoBarButtonCooldownStoneCombat",
+			buttonClass = "AutoBarButtonCooldownStoneCombat",
+			barKey = "AutoBarClassBarBasic",
+			defaultButtonIndex = 12,
+			enabled = true,
+			shuffle = true,
+		}
+	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonRotationDrums"]) then
 		AutoBar.db.account.buttonList["AutoBarButtonRotationDrums"] = {
 			buttonKey = "AutoBarButtonRotationDrums",
 			buttonClass = "AutoBarButtonRotationDrums",
 			barKey = "AutoBarClassBarExtras",
-			defaultButtonIndex = 11,
+			defaultButtonIndex = 13,
 			enabled = true,
 		}
 	end
@@ -642,7 +650,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonCooldownDrums",
 			buttonClass = "AutoBarButtonCooldownDrums",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 12,
+			defaultButtonIndex = 14,
 			enabled = true,
 		}
 	end
@@ -651,7 +659,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonFood",
 			buttonClass = "AutoBarButtonFood",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 13,
+			defaultButtonIndex = 15,
 			enabled = true,
 		}
 	end
@@ -660,7 +668,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonFoodBuff",
 			buttonClass = "AutoBarButtonFoodBuff",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 14,
+			defaultButtonIndex = 16,
 			enabled = true,
 		}
 	end
@@ -669,7 +677,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonFoodCombo",
 			buttonClass = "AutoBarButtonFoodCombo",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 15,
+			defaultButtonIndex = 17,
 			enabled = true,
 		}
 	end
@@ -678,7 +686,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonBuff",
 			buttonClass = "AutoBarButtonBuff",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 16,
+			defaultButtonIndex = 18,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -688,7 +696,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonBuffWeapon1",
 			buttonClass = "AutoBarButtonBuffWeapon",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 17,
+			defaultButtonIndex = 19,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -698,7 +706,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonElixirBattle",
 			buttonClass = "AutoBarButtonElixirBattle",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 18,
+			defaultButtonIndex = 20,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -708,7 +716,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonElixirGuardian",
 			buttonClass = "AutoBarButtonElixirGuardian",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 19,
+			defaultButtonIndex = 21,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -718,7 +726,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonElixirBoth",
 			buttonClass = "AutoBarButtonElixirBoth",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 20,
+			defaultButtonIndex = 22,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -728,7 +736,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonTrack",
 			buttonClass = "AutoBarButtonTrack",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 21,
+			defaultButtonIndex = 23,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -738,7 +746,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonCrafting",
 			buttonClass = "AutoBarButtonCrafting",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 22,
+			defaultButtonIndex = 24,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -748,7 +756,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonQuest",
 			buttonClass = "AutoBarButtonQuest",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 23,
+			defaultButtonIndex = 25,
 			enabled = true,
 			arrangeOnUse = true,
 		}
@@ -758,7 +766,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonTrinket1",
 			buttonClass = "AutoBarButtonTrinket1",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 24,
+			defaultButtonIndex = 26,
 			enabled = true,
 		}
 	end
@@ -767,7 +775,7 @@ function AutoBar:InitializeDefaults()
 			buttonKey = "AutoBarButtonTrinket2",
 			buttonClass = "AutoBarButtonTrinket2",
 			barKey = "AutoBarClassBarBasic",
-			defaultButtonIndex = 25,
+			defaultButtonIndex = 27,
 			enabled = true,
 		}
 	end

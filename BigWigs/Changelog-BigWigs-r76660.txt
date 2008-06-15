@@ -1,4 +1,38 @@
 ------------------------------------------------------------------------
+r76660 | pettigrow | 2008-06-14 04:58:51 -0400 (Sat, 14 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: frFR Update
+------------------------------------------------------------------------
+r76651 | ananhaid | 2008-06-14 01:33:57 -0400 (Sat, 14 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: 
+- Muru zhCN update.
+------------------------------------------------------------------------
+r76647 | 7destiny | 2008-06-14 00:26:38 -0400 (Sat, 14 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: koKR Update
+------------------------------------------------------------------------
+r76646 | 7destiny | 2008-06-13 23:38:35 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/BlackTemple/Souls.lua
+   M /trunk/BigWigs/SC/Karathress.lua
+   M /trunk/BigWigs/SC/Vashj.lua
+
+BigWigs: 
+- koKR Update
+------------------------------------------------------------------------
+r76637 | ackis | 2008-06-13 19:24:09 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: Add timer for how long gravity balls last for
+------------------------------------------------------------------------
 r76594 | funkydude | 2008-06-13 08:00:49 -0400 (Fri, 13 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/BigWigs/Core.lua
@@ -519,29 +553,4 @@ Changed paths:
    M /trunk/BigWigs/Sunwell/Muru.lua
 
 BigWigs: Sunwell/Muru: Fix 'pairs(inDark)' issue
-------------------------------------------------------------------------
-r73747 | funkydude | 2008-05-13 18:20:45 -0400 (Tue, 13 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: Tweak void timer
-------------------------------------------------------------------------
-r73737 | ananhaid | 2008-05-13 16:57:30 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: 
-- zhCN Muru update.
-------------------------------------------------------------------------
-r73718 | funkydude | 2008-05-13 13:52:53 -0400 (Tue, 13 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: cleanup
-------------------------------------------------------------------------
-r73715 | funkydude | 2008-05-13 13:29:09 -0400 (Tue, 13 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: Change phase trigger
 ------------------------------------------------------------------------

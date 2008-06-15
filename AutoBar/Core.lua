@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 76305 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -114,6 +114,8 @@ function AutoBar:OnInitialize()
 
 	BINDING_HEADER_AutoBarCooldownHeader = L["AutoBarCooldownHeader"]
 	BINDING_NAME_AutoBarButtonCooldownDrums_X = L["AutoBarButtonCooldownDrums"]
+	BINDING_NAME_AutoBarButtonCooldownPotionCombat_X = L["AutoBarButtonCooldownPotionCombat"]
+	BINDING_NAME_AutoBarButtonCooldownStoneCombat_X = L["AutoBarButtonCooldownStoneCombat"]
 	BINDING_NAME_AutoBarButtonCooldownPotionHealth_X = L["AutoBarButtonCooldownPotionHealth"]
 	BINDING_NAME_AutoBarButtonCooldownStoneHealth_X = L["AutoBarButtonCooldownStoneHealth"]
 	BINDING_NAME_AutoBarButtonCooldownPotionMana_X = L["AutoBarButtonCooldownPotionMana"]
@@ -587,7 +589,7 @@ end
 function AutoBar:SPELLS_CHANGED(arg1)
 	AutoBar:LogEvent("SPELLS_CHANGED", arg1)
 	if (InCombatLockdown()) then
-		AutoBar:SetRegenEnableScan("UpdateSpells")
+		AutoBar:SetRegenEnableUpdate("UpdateSpells")
 	else
 		AutoBar.delay["UpdateSpells"]:Start(arg1)
 	end
@@ -668,10 +670,10 @@ function AutoBar:PLAYER_CONTROL_GAINED()
 	end
 end
 
-local regenEnableScan = "UpdateRescan"
-function AutoBar:SetRegenEnableScan(scanType)
-	if (timerIndexList[scanType] < timerIndexList[regenEnableScan]) then
-		regenEnableScan = scanType
+local regenEnableUpdate = "UpdateRescan"
+function AutoBar:SetRegenEnableUpdate(scanType)
+	if (timerIndexList[scanType] < timerIndexList[regenEnableUpdate]) then
+		regenEnableUpdate = scanType
 	end
 end
 
@@ -679,7 +681,7 @@ end
 function AutoBar:PLAYER_REGEN_ENABLED(arg1)
 	AutoBar:LogEvent("PLAYER_REGEN_ENABLED", arg1)
 	AutoBar.inCombat = nil
-	AutoBar.delay[regenEnableScan]:Start()
+	AutoBar.delay[regenEnableUpdate]:Start()
 end
 
 
@@ -710,7 +712,7 @@ function AutoBar:PLAYER_REGEN_DISABLED(arg1)
 	if (waterfall:IsOpen("AutoBar")) then
 		waterfall:Close("AutoBar")
 	end
-	regenEnableScan = "UpdateRescan"
+	AutoBar:SetRegenEnableUpdate("UpdateRescan")
 end
 
 

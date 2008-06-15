@@ -21,6 +21,7 @@ CQI:SetDatabaseDefaults("profile", {
 	iconScale = 1,
 	minimapIcons = true,
 	cartoButton = true,
+	showQuestTag = true,
 	wideQuestLog = true,
 })
 
@@ -133,6 +134,14 @@ function CQI:OnInitialize()
 	        set = function() self:ToggleCartoButton() end,
 			order = 70,
 		},
+		showquesttag = {
+			name = L["Show quest level"],
+			desc = L["Show quest level in quest log and NPC dialog."],
+			type = "toggle",
+	        get = function() return self.db.profile.showQuestTag end,
+	        set = function() self.db.profile.showQuestTag = not self.db.profile.showQuestTag end,
+			order = 80,
+		},
 		widequestlog = {
 			name = L["Make quest log double wide"],
 			desc = L["Make the quest log window double wide, this will require UI reload."],
@@ -153,15 +162,11 @@ function CQI:OnInitialize()
 
 	self:PurgeHostileQuests()
 	self:PatchQuixote2()
-	self:AddSecureHook("QuestLog_UpdateQuestDetails")
 end
 
 function CQI:OnEnable()
 	self:EnableCartoMap()
-
-	if self.db.profile.wideQuestLog then
-		self:ExtendQuestLog()
-	end
+	self:PatchQuestLog()
 end
 
 function CQI:OnDisable()
@@ -326,14 +331,17 @@ function CQI:GetQuest(uid, ignore_obj)
 			local obj = {}
 			obj.title = q_objs and q_objs[i] or "????"
 			for npc_id, npc_zone, npc_x, npc_y in string.gmatch(o, "(%-?%d+)@?(%d*):?(%d*),?(%d*)") do
-				npc_id, npc_zone = tonumber(npc_id), tonumber(npc_zone)
+				npc_id = tonumber(npc_id)
+				npc_zone = tonumber(npc_zone)
 				local npc
 				if npc_id ~= 0 then
 					-- lookup npc database
 					npc = self:GetNPC(npc_id, npc_zone)
 				elseif npc_zone and QuestInfo_Zone[npc_zone] then
 					-- using embeded x, y
-					npc_zone, npc_x, npc_y = QuestInfo_Zone[npc_zone], tonumber(npc_x) or 0, tonumber(npc_y) or 0
+					npc_zone = QuestInfo_Zone[npc_zone]
+					npc_x = tonumber(npc_x) or 0
+					npc_y = tonumber(npc_y) or 0
 					npc = {}
 					npc.id = 0
 					npc.name = obj.title
@@ -400,8 +408,9 @@ end
 function CQI:PatchQuixote2()
 	-- change DAILY shorttags to "y", because "\226\128\162" looks ugly on zhTW & zhCN
 	local l = GetLocale()
-	if l == "zhTW" or l == "zhCN" then
+	if l == "zhTW" or l == "zhCN" or l == "koKR" then
 		Quixote.shorttags[DAILY] = "y"
+		Quixote.shorttags[L["GROUP"]] = "g"
 	end
 	
 	-- dsiable SendAddonMessage spam

@@ -21,10 +21,12 @@ L:AddTranslations("enUS", function() return {
 	["Show quest icons on the minimap."] = true,
 	["Show world map button"] = true,
 	["Show button on the world map."] = true,
+	["Show quest level"] = true,
+	["Show quest level in quest log and NPC dialog."] = true,
 	["Make quest log double wide"] = true,
 	["Make the quest log window double wide, this will require UI reload."] = true,
 	["Quest Info"] = true,
-	["Module description"] = true,
+	["Module description"] = "Quest library for mob location and other information",
 	["Exporting %d quest givers..."] = true,
 	["Total %d quest givers have been exported."] = true,
 	["Clear old exported quest givers first."] = true,
@@ -33,6 +35,7 @@ L:AddTranslations("enUS", function() return {
 	["Total %d quest objects have been exported."] = true,
 	["Clear old exported objectives first."] = true,
 	["Begin exporting new quest objectives."] = true,
+	["GROUP"] = GROUP,
 
 -- LocationFrame.lua
 	["Close"] = true,

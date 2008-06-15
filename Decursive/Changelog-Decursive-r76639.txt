@@ -1,0 +1,23 @@
+------------------------------------------------------------------------
+r76639 | archarodim | 2008-06-13 20:24:46 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_LiveList.lua
+
+Decursive:
+- Added some debug info to find the origin of a very rare bug (affliction-found sound played in loop)
+------------------------------------------------------------------------
+r75655 | archarodim | 2008-05-31 13:27:58 -0400 (Sat, 31 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- Fixed the Traditional Chinese exception (I hope).
+------------------------------------------------------------------------
+r75539 | archarodim | 2008-05-30 08:24:59 -0400 (Fri, 30 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- Made an exception for Priest because of Blizzard traditional Chinese localization team they named two different spells the same: Devour Magic and Consume Magic.
+------------------------------------------------------------------------

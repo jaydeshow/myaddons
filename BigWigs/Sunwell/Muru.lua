@@ -45,6 +45,7 @@ L:RegisterTranslations("enUS", function() return {
 	gravity_desc = "Warn for Gravity Balls.",
 	gravity_next = "Next Gravity Ball Timer",
 	gravity_soon = "Gravity Ball soon!",
+	gravity_spawned = "Gravity Ball spawned!",
 } end )
 
 L:RegisterTranslations("esES", function() return {
@@ -76,6 +77,7 @@ L:RegisterTranslations("esES", function() return {
 	--gravity_desc = "Warn for Gravity Balls.",
 	--gravity_next = "Next Gravity Ball Timer",
 	--gravity_soon = "Gravity Ball soon!",
+	--gravity_spawned = "Gravity Ball spawned!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -103,10 +105,11 @@ L:RegisterTranslations("frFR", function() return {
 	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	phase2_message = "Phase 2 !",
 
-	gravity = "Trou noir",
-	gravity_desc = "Prévient de l'arrivée des Trous noirs.",
-	gravity_next = "Prochain Trou noir",
-	gravity_soon = "Trou noir imminent !",
+	gravity = "Singularité",
+	gravity_desc = "Prévient de l'arrivée des Singularités.",
+	gravity_next = "Prochaine Singularité",
+	gravity_soon = "Singularité imminente !",
+	gravity_spawned = "Singularité apparue !",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -138,6 +141,7 @@ L:RegisterTranslations("koKR", function() return {
 	gravity_desc = "중력 구체를 알립니다.",
 	gravity_next = "다음 중력 구체",
 	gravity_soon = "잠시 후 중력 구체!",
+	gravity_spawned = "중력 구체 소환!",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -165,10 +169,11 @@ L:RegisterTranslations("zhCN", function() return {
 	phase_desc = "当进入不同阶段发出警报。",
 	phase2_message = "第二阶段！",
 
-	gravity = "重力球",
-	gravity_desc = "当施放重力球时发出警报。",
-	gravity_next = "<下一重力球>",
-	gravity_soon = "即将 重力球！",
+	gravity = "黑洞",
+	gravity_desc = "当施放黑洞时发出警报。",
+	gravity_next = "<下一黑洞>",
+	gravity_soon = "即将 黑洞！",
+	gravity_spawned = "黑洞 出现！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -200,6 +205,7 @@ L:RegisterTranslations("zhTW", function() return {
 	--gravity_desc = "Warn for Gravity Balls.",
 	--gravity_next = "Next Gravity Ball Timer",
 	--gravity_soon = "Gravity Ball soon!",
+	--gravity_spawned = "Gravity Ball spawned!",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -231,6 +237,7 @@ L:RegisterTranslations("deDE", function() return {
 	gravity_desc = "Warnung wann die Schwerkraftkugel erscheint.",
 	gravity_next = "Nächste Schwerkraftkugel",
 	gravity_soon = "Schwerkraftkugel bald!",
+	--gravity_spawned = "Schwerkraftkugel spawned!",
 } end )
 
 ----------------------------------
@@ -242,7 +249,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.guid = 25840
 mod.toggleoptions = {"phase", -1, "darkness", "void", "humanoid", "fiends", "gravity", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76591 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76660 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -317,6 +324,7 @@ function mod:GravityBall()
 		--44218 , looks like a Gravity Balls :p
 		self:Bar(L["gravity_next"], 15, 44218)
 		self:DelayedMessage(5, L["gravity_soon"], "Urgent")
+		self:Bar(L["gravity_spawned"], 10, 44218)
 	end
 end
 

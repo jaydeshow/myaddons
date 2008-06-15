@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_DebuffsFrame.xml"] or not DcrLo
 end
 
 local D   = Dcr;
-D:SetDateAndRevision("$Date: 2008-04-19 13:50:24 -0400 (Sat, 19 Apr 2008) $", "$Revision: 70492 $");
+D:SetDateAndRevision("$Date: 2008-06-13 20:24:46 -0400 (Fri, 13 Jun 2008) $", "$Revision: 76639 $");
 
 local L	    = D.L;
 local BC    = D.BC;
@@ -419,7 +419,8 @@ function LiveList:Update_Display() -- {{{
     end
 
     -- reset the sound if no units were displayed
-    if Index == 0 then
+    if Index == 0 and D.Status.SoundPlayed then
+	Dcr:Debug("No more unit displayed, sound re-enabled");
 	D.Status.SoundPlayed = false; -- re-enable the sound if no more debuff
     end
 

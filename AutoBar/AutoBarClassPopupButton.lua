@@ -8,7 +8,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 74496 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -140,7 +140,7 @@ function AutoBar.Class.PopupButton.prototype:PostClick(mousebutton, down)
 			AutoBar.db.char.buttonDataList[buttonKey] = buttonData
 		end
 
-		-- ToDo: fix for spells and macros
+		-- ToDo: Make it work in combat for items
 		buttonData.arrangeOnUse = itemId
 		AutoBar.delay["UpdateScan"]:Start()
 	end

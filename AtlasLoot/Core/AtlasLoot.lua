@@ -37,7 +37,7 @@ local VERSION_MINOR = "05";
 local VERSION_BOSSES = "00";
 ATLASLOOT_VERSION = "|cffFF8400AtlasLoot Enhanced v"..VERSION_MAJOR.."."..VERSION_MINOR.."."..VERSION_BOSSES.."|r";
 ATLASLOOT_CURRENT_ATLAS = "1.11.0";
-ATLASLOOT_PREVIEW_ATLAS = "1.11.1";
+ATLASLOOT_PREVIEW_ATLAS = "1.12.0";
 
 --Standard indent to line text up with Atlas text
 ATLASLOOT_INDENT = "   ";
