@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList v0.84
-$Date: 2008-06-13 15:51:09 -0400 (Fri, 13 Jun 2008) $
-$Rev: 76625 $
+$Date: 2008-06-16 01:36:18 -0400 (Mon, 16 Jun 2008) $
+$Rev: 76786 $
 
 Author: Ackis on Illidan US Horde
 
@@ -1301,30 +1301,18 @@ do
 			local QuestName, QuestFaction, QuestLoc = select(i,...)
 			if (QuestFaction == 1) then
 				if (addon.db.profile.faction or playerFaction == BFAC["Alliance"]) then
-					if (i+2 == numvars) then
-						table.insert(t,self:Cyan(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
-					else
-						table.insert(t,self:Cyan(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
-					end
+					table.insert(t,self:Cyan(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 				end
 			elseif (QuestFaction == 2) then
 				if (addon.db.profile.faction or playerFaction == BFAC["Horde"]) then
-					if (i+2 == numvars) then
-						table.insert(t,self:Red(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
-					else
-						table.insert(t,self:Red(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
-					end
+					table.insert(t,self:Red(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 				end
 			elseif (QuestFaction == 0) then
-				if (i+2 == numvars) then
-					table.insert(t,self:Gold(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
-				else
-					table.insert(t,self:Gold(format("%s%s (%s)%s",L["QuestReward"],QuestName,QuestLoc,addon.br)))
-				end
+				table.insert(t,self:Gold(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 			end
 		end
 
-		return table.concat(t)
+		return table.concat(t,addon.br)
 
 	end
 
@@ -1338,36 +1326,42 @@ do
 
 		for i=1,numvars,1 do
 	        local CurrentCheck = select(i, ...)
-			if (i == numvars) then
-				-- Rare mob
-				if (addon.PetList[CurrentCheck]["Rare"]) then
-					-- Rare elite
-					if (addon.PetList[CurrentCheck]["Elite"]) then
-						table.insert(t,format("%s %s %s (%s - %s): %s", L["Rare"],L["Elite"],addon.PetList[CurrentCheck]["Name"], addon.PetList[CurrentCheck]["MinLvl"], addon.PetList[CurrentCheck]["MaxLvl"], addon.PetList[CurrentCheck]["Location"]))
-					else
-						table.insert(t,format("%s %s (%s - %s): %s", L["Rare"],addon.PetList[CurrentCheck]["Name"], addon.PetList[CurrentCheck]["MinLvl"], addon.PetList[CurrentCheck]["MaxLvl"], addon.PetList[CurrentCheck]["Location"]))
-					end
-				-- Elite mob
-				elseif (addon.PetList[CurrentCheck]["Elite"]) then
-					table.insert(t,format("%s %s (%s - %s): %s", L["Elite"],addon.PetList[CurrentCheck]["Name"], addon.PetList[CurrentCheck]["MinLvl"], addon.PetList[CurrentCheck]["MaxLvl"], addon.PetList[CurrentCheck]["Location"]))
+			local temp = GetDifficultyColor(tonumber(addon.PetList[CurrentCheck]["MinLvl"]))
+			local ColourMin = self:Colourize(self:RGBtoHEX(temp.r,temp.g,temp.b),addon.PetList[CurrentCheck]["MinLvl"])
+			temp = GetDifficultyColor(tonumber(addon.PetList[CurrentCheck]["MaxLvl"]))
+			local ColourMax = self:Colourize(self:RGBtoHEX(temp.r,temp.g,temp.b),addon.PetList[CurrentCheck]["MaxLvl"])
+				-- Normal
+			if (not addon.PetList[CurrentCheck]["Rare"] and not addon.PetList[CurrentCheck]["Elite"]) then
+				if (addon.PetList[CurrentCheck]["MinLvl"] == addon.PetList[CurrentCheck]["MaxLvl"]) then
+					table.insert(t,format("%s: (%s): %s",addon.PetList[CurrentCheck]["Name"], ColourMin, addon.PetList[CurrentCheck]["Location"]))
+				else
+					table.insert(t,format("%s: (%s - %s): %s",addon.PetList[CurrentCheck]["Name"], ColourMin, ColourMax, addon.PetList[CurrentCheck]["Location"]))
 				end
+			-- Rare only
+			elseif (addon.PetList[CurrentCheck]["Rare"] and not addon.PetList[CurrentCheck]["Elite"]) then
+				if (addon.PetList[CurrentCheck]["MinLvl"] == addon.PetList[CurrentCheck]["MaxLvl"]) then
+					table.insert(t,format("%s: %s (%s): %s", L["Rare"],addon.PetList[CurrentCheck]["Name"], ColourMin, addon.PetList[CurrentCheck]["Location"]))
+				else
+					table.insert(t,format("%s: %s (%s - %s): %s", L["Rare"],addon.PetList[CurrentCheck]["Name"], ColourMin, ColourMax, addon.PetList[CurrentCheck]["Location"]))
+				end
+			-- Elite only
+			elseif (not addon.PetList[CurrentCheck]["Rare"] and addon.PetList[CurrentCheck]["Elite"]) then
+				if (addon.PetList[CurrentCheck]["MinLvl"] == addon.PetList[CurrentCheck]["MaxLvl"]) then
+					table.insert(t,format("%s: %s (%s): %s", L["Elite"],addon.PetList[CurrentCheck]["Name"], ColourMin, addon.PetList[CurrentCheck]["Location"]))
+				else
+					table.insert(t,format("%s: %s (%s - %s): %s", L["Elite"],addon.PetList[CurrentCheck]["Name"], ColourMin, ColourMax, addon.PetList[CurrentCheck]["Location"]))
+				end
+			-- Rare elite
 			else
-				-- Rare mob
-				if (addon.PetList[CurrentCheck]["Rare"]) then
-					-- Rare elite
-					if (addon.PetList[CurrentCheck]["Elite"]) then
-						table.insert(t,format("%s %s %s (%s - %s): %s%s", L["Rare"],L["Elite"],addon.PetList[CurrentCheck]["Name"], addon.PetList[CurrentCheck]["MinLvl"], addon.PetList[CurrentCheck]["MaxLvl"], addon.PetList[CurrentCheck]["Location"], addon.br))
-					else
-						table.insert(t,format("%s %s (%s - %s): %s%s", L["Rare"],addon.PetList[CurrentCheck]["Name"], addon.PetList[CurrentCheck]["MinLvl"], addon.PetList[CurrentCheck]["MaxLvl"], addon.PetList[CurrentCheck]["Location"], addon.br))
-					end
-				-- Elite mob
-				elseif (addon.PetList[CurrentCheck]["Elite"]) then
-					table.insert(t,format("%s %s (%s - %s): %s%s", L["Elite"],addon.PetList[CurrentCheck]["Name"], addon.PetList[CurrentCheck]["MinLvl"], addon.PetList[CurrentCheck]["MaxLvl"], addon.PetList[CurrentCheck]["Location"], addon.br))
+				if (addon.PetList[CurrentCheck]["MinLvl"] == addon.PetList[CurrentCheck]["MaxLvl"]) then
+					table.insert(t,format("%s %s: %s (%s): %s", L["Rare"],L["Elite"],addon.PetList[CurrentCheck]["Name"], ColourMin, addon.PetList[CurrentCheck]["Location"]))
+				else
+					table.insert(t,format("%s %s: %s (%s - %s): %s", L["Rare"],L["Elite"],addon.PetList[CurrentCheck]["Name"], ColourMin, ColourMax, addon.PetList[CurrentCheck]["Location"]))
 				end
 			end
 		end
 
-		return table.concat(t)
+		return table.concat(t, addon.br)
 
 	end
 
@@ -1582,6 +1576,14 @@ function addon:ScanTradeSkills()
 		TradeSkillOnlyShowMakeable(false)
 	end
 
+	-- Clear the sub-classes filters
+	SetTradeSkillSubClassFilter(0, 1, 1)
+	UIDropDownMenu_SetSelectedID(TradeSkillSubClassDropDown, 1)
+
+	-- Clear the inventory slot filter
+	SetTradeSkillInvSlotFilter(0, 1, 1);
+	UIDropDownMenu_SetSelectedID(TradeSkillInvSlotDropDown, 1)
+
 	-- Expand all headers
 	for i = GetNumTradeSkills(), 1, -1 do
 		local _, tradeType = GetTradeSkillInfo(i)
@@ -1640,6 +1642,11 @@ function addon:ScanCraftSkills()
 			CraftFrameAvailableFilterCheckButton:SetChecked(false)
 			CraftOnlyShowMakeable(false)
 		end
+
+		-- Clear the inventory slots filter
+		UIDropDownMenu_SetSelectedID(CraftFrameFilterDropDown, 1)
+		SetCraftFilter(1)
+		CraftFrame.selected = 1
 
 		-- Scans crafting recipes in opened window, expanding all headers
 		for i = GetNumCrafts(), 1, -1 do

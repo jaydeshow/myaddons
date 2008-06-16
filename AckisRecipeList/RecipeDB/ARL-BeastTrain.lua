@@ -4,8 +4,8 @@ ARL-BeastTrain.lua
 
 Beast Training data for all of AckisRecipeList
 
-$Date: 2008-06-12 12:01:50 -0400 (Thu, 12 Jun 2008) $
-$Rev: 76535 $
+$Date: 2008-06-16 01:13:51 -0400 (Mon, 16 Jun 2008) $
+$Rev: 76784 $
 
 ]]--
 
@@ -371,7 +371,11 @@ function addon:InitBeastTraining()
 	self:addPetList(430, L["Blackwind Warp Chaser"], BZONE["Terokkar Forest"], 69, 70, false, false)
 
 	-- Add all possible beast skills
-	--self:addTradeSkillBeast(4, 20, addon:CombinePets(130,131,132,133,134,135)) --This is my test skill for hunter abilities since my hunter has everything
+	--self:addTradeSkillBeast(1, 1, addon:CombinePets(1)) --This is my test skill for hunter abilities since my hunter has everything
+	--self:addTradeSkillBeast(3, 3, addon:CombinePets(37)) --This is my test skill for hunter abilities since my hunter has everything
+	--self:addTradeSkillBeast(4, 4, addon:CombinePets(39)) --This is my test skill for hunter abilities since my hunter has everything
+	--self:addTradeSkillBeast(5, 5, addon:CombinePets(94,95,96,97,98)) --This is my test skill for hunter abilities since my hunter has everything
+	--self:addTradeSkillBeast(7, 7, addon:CombinePets(423,424,425,426,427,428,429,430)) --This is my test skill for hunter abilities since my hunter has everything
 	self:addTradeSkillBeast(24495, 20, L["Trainer"],1)
 	self:addTradeSkillBeast(24508, 30, L["Trainer"],1)
 	self:addTradeSkillBeast(24509, 40, L["Trainer"],1)
@@ -439,7 +443,6 @@ function addon:InitBeastTraining()
 	self:addTradeSkillBeast(17260, 48, addon:CombinePets(79,80,81,82,83,84,85,86,87))
 	self:addTradeSkillBeast(17261, 56, addon:CombinePets(88,89,90,91))
 	self:addTradeSkillBeast(27050, 64, addon:CombinePets(92,93))
-	--self:addTradeSkill("Test skill", 1, addon:CombinePets(94,95,96,97,98))
 	self:addTradeSkillBeast(16827, 1, addon:CombinePets(94,95,96,97,98))
 	self:addTradeSkillBeast(16828, 10, addon:CombinePets(99,100,101,102,103,104,105,106,107,108,109,110))
 	self:addTradeSkillBeast(16829, 16, addon:CombinePets(111,31,113,114,115,116,117,118,119,120,121))

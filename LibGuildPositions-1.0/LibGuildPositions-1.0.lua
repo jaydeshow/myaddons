@@ -1,6 +1,6 @@
 --[[
 Name: LibGuildPositions-1.0
-Revision: $Rev: 71390 $
+Revision: $Rev: 76756 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Communicates with guild members for their positions on the world map
@@ -8,7 +8,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibGuildPositions-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 71390 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 76756 $"):match("%d+")) or 0
 
 -- #AUTODOC_NAMESPACE lib
 
@@ -138,14 +138,42 @@ function events.ADDON_LOADED()
 	end
 end
 
-local playerName = UnitName("player")
-function events.CHAT_MSG_ADDON(event, prefix, message, distribution, sender)
-	if prefix ~= COMM_PREFIX or distribution ~= "GUILD" or playerName == sender then
-		return
+local groupMembers = {}
+
+function events.RAID_ROSTER_UPDATE(event)
+	local prefix, amount = "raid", GetNumRaidMembers()
+	if amount == 0 then
+		prefix, amount = "party", GetNumPartyMembers()
+	end
+	for k in pairs(groupMembers) do
+		groupMembers[k] = nil
 	end
 
+	for i = 1, amount do
+		local name, realm = UnitName(prefix .. i)
+		if not realm or realm == "" then
+			groupMembers[name] = true
+			if guildieX[name] then
+				guildieX[name] = nil
+				guildieY[name] = nil
+				guildieZone[name] = nil
+				guildieExpireTime[name] = nil
+
+				callbacks:Fire("Clear", name)
+			end
+		end
+	end
+end
+events.PARTY_MEMBERS_CHANGED = events.RAID_ROSTER_UPDATE
+
+local playerName = UnitName("player")
+function events.CHAT_MSG_ADDON(event, prefix, message, distribution, sender)
+	if prefix ~= COMM_PREFIX or distribution ~= "GUILD" or playerName == sender or groupMembers[sender] then
+		return
+	end
+	
 	local b = message:byte()
-	if not b then	
+	if not b then
 		return
 	end
 

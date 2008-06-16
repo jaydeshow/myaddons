@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r76756 | saroz | 2008-06-15 13:16:07 -0400 (Sun, 15 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0: Don't leave debug shit in, thanks.
+------------------------------------------------------------------------
+r76750 | ckknight | 2008-06-15 12:00:11 -0400 (Sun, 15 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - ignore guildies who are in your group, send clear events when they become part of your group, it will act as if they aren't guildies at all.
+------------------------------------------------------------------------

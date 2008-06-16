@@ -1,4 +1,44 @@
 ------------------------------------------------------------------------
+r76787 | ackis | 2008-06-16 01:39:18 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Version bump to 0.90
+------------------------------------------------------------------------
+r76786 | ackis | 2008-06-16 01:36:18 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Clear the inventory and type filters when doing scans
+------------------------------------------------------------------------
+r76785 | ackis | 2008-06-16 01:23:24 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Optimize quest methods
+------------------------------------------------------------------------
+r76784 | ackis | 2008-06-16 01:13:51 -0400 (Mon, 16 Jun 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLColour.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
+
+AckisRecipeList:
+- Fix for beast training skills not showing up properly
+- Made the beast training skills routines more effecient
+- Level of mobs are now coloured by difficulty
+- If the mob only has one level range then it will only show one level instead of (x - x)
+------------------------------------------------------------------------
+r76772 | ackis | 2008-06-15 19:21:41 -0400 (Sun, 15 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
+
+AckisRecipeList:
+- Update Kania's location
+------------------------------------------------------------------------
 r76625 | ackis | 2008-06-13 15:51:09 -0400 (Fri, 13 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.lua
@@ -793,127 +833,4 @@ Changed paths:
 
 AckisRecipeList:
 - esES updated
-------------------------------------------------------------------------
-r74017 | next96 | 2008-05-15 21:16:41 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r74011 | ackis | 2008-05-15 20:17:38 -0400 (Thu, 15 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Started with the gui for collapse/expand all (Zhinjio finish it if you feel like it, I have to raid)
-- Moved the header around so it doesn't scroll
-------------------------------------------------------------------------
-r74010 | ackis | 2008-05-15 19:54:25 -0400 (Thu, 15 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Functions for expand all and close all developed and working (/script ARL:ExpandAll() to see)
-- Need to add buttons to the GUI
-- Also, translators can you please review the .toc file for the notes for your language to either add it or update what's there (if needed).  Thanks :)
-------------------------------------------------------------------------
-r74009 | ackis | 2008-05-15 19:32:16 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Fix for frame moving mods.  Set the strat of the button on every show opposed to just creation.
-------------------------------------------------------------------------
-r74004 | ackis | 2008-05-15 18:45:17 -0400 (Thu, 15 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Reputation items now appear as: Reputation: Faction - RepLevel
-- Redid the code logic for dual reputations to remove code redundancy
-- May fix nil issue with deDE? It better IMO
-------------------------------------------------------------------------
-r74000 | ackis | 2008-05-15 18:18:09 -0400 (Thu, 15 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
-
-AckisRecipeList:
-- Repuations -> Reputations (updated/added into all translations)
-- Added headers to translations which were missing
-- If you've done/do translations for me, feel free to put your name in the comments for the translation you've worked on.  Your work is very much appreciated :D
-------------------------------------------------------------------------
-r73892 | kurax | 2008-05-14 17:57:53 -0400 (Wed, 14 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList:
-- Update zhCN locale
-------------------------------------------------------------------------
-r73855 | ackis | 2008-05-14 14:48:07 -0400 (Wed, 14 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Add colouring to double reputations
-------------------------------------------------------------------------
-r73802 | ackis | 2008-05-14 04:51:28 -0400 (Wed, 14 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Cheat a little with GetAddOnMetadata to get version number so I don't have to change it in multiple areas.
-------------------------------------------------------------------------
-r73798 | ackis | 2008-05-14 04:17:14 -0400 (Wed, 14 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Fix slash command handling.  . ~= : 
-------------------------------------------------------------------------
-r73717 | next96 | 2008-05-13 13:43:56 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r73716 | ackis | 2008-05-13 13:36:38 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
-
-AckisRecipeList:
-- Update for 2.4.2
-------------------------------------------------------------------------
-r73706 | StiviS | 2008-05-13 12:35:58 -0400 (Tue, 13 May 2008) | 6 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- AckisRecipeList.lua: 
--- Fixed wrong 'sorttype' check.
--- Moved out the forgotten UI english texts, go to their locale file.
-- enUS added new strings
-- esES added new strings
-------------------------------------------------------------------------
-r73655 | ackis | 2008-05-13 00:33:29 -0400 (Tue, 13 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-
-AckisRecipeList:
-- Converted a few patterns to be limited supply
 ------------------------------------------------------------------------

@@ -1,4 +1,17 @@
 ------------------------------------------------------------------------
+r76835 | 7destiny | 2008-06-16 07:44:28 -0400 (Mon, 16 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : Fix error
+------------------------------------------------------------------------
+r76827 | toadkiller | 2008-06-16 04:59:21 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Added PLAYER_REGEN_DISABLED called while InCombatLockdown debug message for the taint issues.
+------------------------------------------------------------------------
 r76709 | toadkiller | 2008-06-15 00:17:59 -0400 (Sun, 15 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarClassBar.lua
@@ -747,76 +760,4 @@ Changed paths:
 AutoBar : 
  - Added "Share the config" to locales.
  - Update zhTW & zhCN localization.
-------------------------------------------------------------------------
-r74006 | toadkiller | 2008-05-15 19:06:21 -0400 (Thu, 15 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
--- Babble-Zone-2.2 --> LibBabble-Zone-3.0
--- Add Show Extended Tooltips setting.  Enabled allows comparison tooltips and extended tips by other mods.
-
-------------------------------------------------------------------------
-r73989 | StiviS | 2008-05-15 14:06:43 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r73939 | toadkiller | 2008-05-15 05:37:33 -0400 (Thu, 15 May 2008) | 9 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- First cut of Shuffle (<Button>/Shuffle):
---- It shuffles consumable items for a particular button during combat.
---- If you move items around on it, you may need to click twice to actually get something to click on in the click spot of your bag.
---- This version does not yet care about cooldown or location or anything other than Blizzard API saying it is usable.
--- Drop out of Move Buttons mode at start of combat.
--- Right click on buttons to change their settings during Move Buttons mode
--- Added the less verbose Log Events debug setting.
-
-------------------------------------------------------------------------
-r73931 | toadkiller | 2008-05-15 03:55:12 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Switch to LibBabble-Zone-3.0
-------------------------------------------------------------------------
-r73912 | toadkiller | 2008-05-15 00:13:51 -0400 (Thu, 15 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarCategory.lua
-
-AutoBar : 
--- Fix stonard portal + reagent counts for new teleports and portals
-
 ------------------------------------------------------------------------

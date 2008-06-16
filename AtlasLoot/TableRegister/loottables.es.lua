@@ -94,6 +94,8 @@ if (GetLocale() == "esES") then
 ------------------------
 
     AtlasLoot_TableNames["BlizzardCollectables1"][1] = "Colecciones Blizzard";
+    AtlasLoot_TableNames["RareMounts1"][1] = "Monturas raras - WoW Original";
+    AtlasLoot_TableNames["RareMounts2"][1] = "Monturas raras - The Burning Crusade";
 
 --------------
 --- Events ---
@@ -104,6 +106,7 @@ if (GetLocale() == "esES") then
     AtlasLoot_TableNames["Dukes"][1] = "Consejo abisal - Duques";
     AtlasLoot_TableNames["HighCouncil"][1] = "Consejo abisal - Consejero mayor";
   --Seasonal
+    AtlasLoot_TableNames["LordAhune"][1] = "Lord Ahune"; --FALTA
     AtlasLoot_TableNames["Winterviel2"][1] = "Regalos del Festival de Invierno";
   --Skettis
     AtlasLoot_TableNames["SkettisTalonpriestIshaal"][1] = "Sacerdote de la garra Ishaal";
