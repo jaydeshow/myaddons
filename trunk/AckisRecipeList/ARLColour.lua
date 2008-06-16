@@ -5,8 +5,8 @@ ARLColour.lua
 
 Colouring functions for ARL
 
-$Date: 2008-05-23 11:10:00 -0400 (Fri, 23 May 2008) $
-$Rev: 74935 $
+$Date: 2008-06-16 01:13:51 -0400 (Mon, 16 Jun 2008) $
+$Rev: 76784 $
 
 Code adopted from Crayon library
 
@@ -40,6 +40,10 @@ local BLACK	   = "000000"
 	Text colourization functions
 
 ]]--
+
+function addon:RGBtoHEX(r,g,b)
+	return string.format("%2x%2x%2x", r*255, g*255, b*255)
+end
 
 
 -- Changes any string of text to the specified hex colour

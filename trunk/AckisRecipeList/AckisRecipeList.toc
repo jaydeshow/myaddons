@@ -11,9 +11,9 @@
 ## X-email: ackis AT shaw DOT ca
 
 ## Interface: 20400
-## Version: 0.89
-## X-Revision: $Rev: 76294 $
-## X-Date: $Date: 2008-06-08 22:43:11 -0400 (Sun, 08 Jun 2008) $
+## Version: 0.90
+## X-Revision: $Rev: 76787 $
+## X-Date: $Date: 2008-06-16 01:39:18 -0400 (Mon, 16 Jun 2008) $
 
 ## X-credits: FGWarmonger, Speeddymon, Xinhuan, Zhinjio
 

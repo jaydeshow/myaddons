@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r76837 | lahow | 2008-06-16 07:52:36 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/QuestLogPatch.lua
+
+Cartographer_QuestInfo:
+- fix a problem when expand quest tree may place title on wrong item
+------------------------------------------------------------------------
 r76662 | lahow | 2008-06-14 05:32:32 -0400 (Sat, 14 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Cartographer_QuestInfo/QuestLogPatch.lua

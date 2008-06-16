@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r76838 | maqjav | 2008-06-16 08:18:39 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.es.lua
+
+AtlasLoot:
+-esES update
+------------------------------------------------------------------------
 r76653 | ananhaid | 2008-06-14 02:00:56 -0400 (Sat, 14 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot/Instances/Instances.xml
@@ -111,35 +119,4 @@ Changed paths:
 
 AtlasLoot:
 - Sunwell fix
-------------------------------------------------------------------------
-r73984 | trasher | 2008-05-15 13:10:20 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Constants/constants.fr.lua
-
-AtlasLoot:
-- frFR update
-------------------------------------------------------------------------
-r73928 | daviesh | 2008-05-15 03:16:05 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Documentation/Release Notes.txt
-
-AtlasLoot:
-- Typo
-------------------------------------------------------------------------
-r73918 | daviesh | 2008-05-15 03:00:54 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/AtlasLoot.toc
-   M /trunk/AtlasLoot/Constants/constants.en.lua
-   M /trunk/AtlasLoot/Core/AtlasLoot.lua
-   D /trunk/AtlasLoot/Documentation/Using AtlasLoot Search.en.txt
-
-AtlasLoot:
-- v4.05.00 finalised
-------------------------------------------------------------------------
-r73793 | hegarol | 2008-05-14 02:15:31 -0400 (Wed, 14 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Documentation/Release Notes.txt
-
-AtlasLoot:
-- Release Notes updated
 ------------------------------------------------------------------------

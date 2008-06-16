@@ -21,7 +21,7 @@ local CQI = Cartographer_QuestInfo
 --		obj = <OBJECTIVE>,
 -- }
 ----
-function CQI:QuestLog_UpdateQuestDetails()
+function CQI:Hook_QuestLog_UpdateQuestDetails()
 	self:CloseSeriesFrame()
 	self:CloseLocationFrame()
 	
@@ -264,18 +264,16 @@ end
 
 -------------------------------------------------------------------
 
-function CQI:QuestLog_Update()
+function CQI:Hook_QuestLog_Update()
 	if not self.db.profile.showQuestTag then return end
-	local offset = FauxScrollFrame_GetOffset(QuestLogListScrollFrame)
-	local numEntries = GetNumQuestLogEntries()
 	for i = 1, QUESTS_DISPLAYED, 1 do
-		local index = offset + i
-		if index > numEntries then break end
 		local titleLine = _G["QuestLogTitle"..i]
 		if titleLine then
-			local uid, id, _, _, _, _, complete = Quixote:GetQuestById(i + offset)
+			local title = titleLine:GetText()
+			if not title or title:find("%[.-%]") then break end
+			local uid, id, _, _, _, _, complete = Quixote:GetQuest(title:trim())
 			if uid then
-				local title = Quixote:GetTaggedQuestName(uid)
+				title = Quixote:GetTaggedQuestName(uid)
 				titleLine:SetText(title)
 				
 				local check = _G["QuestLogTitle" .. i .. "Check"]
@@ -285,6 +283,11 @@ function CQI:QuestLog_Update()
 			end
 		end
 	end
+end
+
+function CQI:Hook_ExpandQuestHeader()
+	if not self.db.profile.showQuestTag then return end
+	self:AddTimer(0, CQI.Hook_QuestLog_Update, CQI)
 end
 
 -------------------------------------------------------------------
@@ -365,11 +368,12 @@ function CQI:PatchQuestLog()
 	if self.IsQuestLogPatched then return end
 	self.IsQuestLogPatched = true
 
-	self:AddSecureHook("QuestLog_UpdateQuestDetails")
+	self:AddSecureHook("QuestLog_UpdateQuestDetails", "Hook_QuestLog_UpdateQuestDetails")
 
 	-- delay patch show quest tag, so other addons can take chance first
 	self:AddTimer(1, function()
-		self:AddSecureHook("QuestLog_Update")
+		self:AddSecureHook("QuestLog_Update", "Hook_QuestLog_Update")
+		self:AddSecureHook("ExpandQuestHeader", "Hook_ExpandQuestHeader")
 		self:AddEventListener("GOSSIP_SHOW")
 		self:AddEventListener("QUEST_GREETING")
 	end)
