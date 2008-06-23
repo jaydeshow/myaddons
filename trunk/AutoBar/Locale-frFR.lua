@@ -11,8 +11,6 @@ if (GetLocale() == "frFR") then
 	    ["SLASHCMD_LONG"] = "/autobar",
 	    ["SLASHCMD_SHORT"] = "/atb",
 	    ["Button"] = "Bouton",
-	    ["EDITSLOT"] = "Editer l'emplacement",
-	    ["VIEWSLOT"] = "Voir l'emplacement",
 		["LOAD_ERROR"] = "|cff00ff00Erreur de chargement d'AutoBarConfig. Assurez-vous qu'il soit présent et activé.|r Error: ",
 		["Toggle the config panel"] = "Toggle the config panel",
 		["Empty"] = "Empty",
@@ -561,15 +559,9 @@ AUTOBAR_TOOLTIP8 = "\n(Clique gauche pour application sur l'arme main droite\nCl
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "Cliquer pour réinitialiser la configuration standard.\nLes boutons de classe sont dans le set de classe.\nLes boutons par défaut sont dans le set de base.\nLes sets partagés et de personnages sont réinitialisés.";
 --
 ----  AutoBarConfig.lua
---AUTOBAR_TOOLTIP9 = "Bouton multi catégorie\n";
---AUTOBAR_TOOLTIP10 = " (Objet personnalisé par ID)";
---AUTOBAR_TOOLTIP11 = "\n(ID de l'objet inconnu)";
---AUTOBAR_TOOLTIP12 = " (Objet personnalisé par nom)";
---AUTOBAR_TOOLTIP13 = "Bouton de catégorie unique\n\n";
 --AUTOBAR_TOOLTIP15 = "\nCible une arme\n(Clique gauche pour l'arme main droite\nClique droit pour l'arme main gauche)";
 AUTOBAR_TOOLTIP17 = "\nHors-combat seulement.";
 AUTOBAR_TOOLTIP18 = "\nCombat seulement.";
---AUTOBAR_TOOLTIP20 = "\nUtilisation limité : "
 --AUTOBAR_TOOLTIP21 = "Requière une restauration de PV";
 --AUTOBAR_TOOLTIP22 = "Requière une restauration de mana";
 

@@ -3,12 +3,10 @@
 
 ARLLocals-esMX.lua
 
-esMX localization strings for Ackis Recipe List
+esES localization strings for Ackis Recipe List copied to esMX
 
-$Date: 2008-06-03 12:53:59 -0400 (Tue, 03 Jun 2008) $
-$Rev: 75914 $
-
-Ported from esES
+$Date: 2008-06-19 19:28:13 -0400 (Thu, 19 Jun 2008) $
+$Rev: 77110 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -18,7 +16,7 @@ Thank you all translators! (From Ackis)
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "esMX", false);
+local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "esMX", false)
 if not L then return end
 
 local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
@@ -41,6 +39,9 @@ L["FILTER_OPTIONS_LONG"] = "Le permite personalizar las recetas que se filtran."
 L["Reputation"] = "Reputación"
 L["REP_OPTIONS"] = "Opciones de Reputación"
 L["REP_OPTIONS_LONG"] = "Le permite personalizar que reputaciones se incluyen en el análisis."
+L["Obtain"] = "Obtener"
+L["OBTAIN_OPTIONS"] = "Opciones de Obtener"
+L["OBTAIN_OPTIONS_LONG"] = "Le permite personalizar los métodos de obtención de una receta se incluyen en la exploración."
 L["Sort"] = "Clasificación"
 L["SORT_OPTIONS"] = "Opciones de Clasificación"
 L["SORT_OPTIONS_LONG"] = "Le permite personalizar la forma en que se ordenan y se muestran la recetas que faltan."
@@ -57,17 +58,25 @@ L["CLOSEGUI_TOGGLE"] = "Cierra la ventana de ARL cuando la ventana de fabricaci�
 -- Filtering Options
 L["Faction"] = "Facción"
 L["FACTION_TOGGLE"] = "Las Recetas de ambas facciones (horda y alianza) serán incluidas en la exploración."
---L["PVP"] = "JcJ"
-L["PVP_TOGGLE"] = "Las Recetas obtenidas de JcJ serán incluidas en la exploración."
 L["Classes"] = "Clases"
 L["CLASS_TOGGLE"] = "Las Recetas específicas de la clase serán incluidas en la exploración."
 L["Specialities"] = "Especialidades"
 L["SPECIALITY_TOGGLE"] = "Todas las especialidades de las Habilidades de Comercio serán incluidas en la exploración."
---L["Raid"] = "Jefe"
-L["RAID_TOGGLE"] = "Recetas Difíciles de obtener de Jefes (ej: "..BZ["Molten Core"]..", "..BZ["Serpentshrine Cavern"]..", etc.) serán incluidas en la exploración."
 L["Skill"] = "Habilidad"
-L["SKILL_TOGGLE"] = "Incluye todas las recetas, independientemente de su nivel actual de habilidad"
+L["SKILL_TOGGLE"] = "Incluye todas las recetas, independientemente de su nivel actual de habilidad."
+
+-- Obtain Filter Options
+L["BOEFilter"] = "Se Liga al Equiparlo (LaE)"
+L["BOE_TOGGLE"] = "Las recetas 'LaE' serán incluidas en la exploración."
+L["BOPFilter"] = "Se Liga al Recogerlo (LaR)"
+L["BOP_TOGGLE"] = "Las recetas 'LaR' serán incluidas en la exploración."
+L["PVP_TOGGLE"] = "Las Recetas obtenidas de JcJ serán incluidas en la exploración."
+L["RAID_TOGGLE"] = "Recetas Difíciles de obtener de Jefes (ej: "..BZ["Molten Core"]..", "..BZ["Serpentshrine Cavern"]..", etc.) serán incluidas en la exploración."
 L["SEASONAL_TOGGLE"] = "Las recetas de Temporada obtenidas serán incluidas en la exploración."
+L["TRAINER_TOGGLE"] = "Las recetas que se aprenden en los instructores serán incluidas en la exploración."
+L["VENDOR_TOGGLE"] = "Las recetas que se compran en los vendedores serán incluidas en la exploración."
+L["INSTANCE_TOGGLE"] = "Las recetas que se obtienen de las instancias serán incluidas en la exploración."
+L["QUEST_TOGGLE"] = "Las recetas obtenidas como recompesa de misión serán incluidas en la exploración."
 
 -- Sorting options
 L["Name"] = "Nombre"
@@ -100,7 +109,7 @@ L["Quest"] = "Misión"
 L["Reputation"] = "Reputación"
 L["Instance"] = "Instancia"
 L["BoPMenu"] = "Ligado Al Recogerlo (LaR)"
-L["Horde"] = "Horda" 
+L["Horde"] = "Horda"
 L["Alliance"] = "Alianza"
 L["Known"] = "Conocido"
 L["Unknown"] = "Desconocido"
@@ -163,16 +172,12 @@ L["Spectral Essence Obt"] = QuestReward.."Kirtonos el Heraldo (le permite ver al
 L["TrueBelieverQuest"] = "Creyentes Verdaderos - Raro"
 
 -- Raid Drop Obtain Info
-BopMobDrop = "Soltado por monstruo (Se Liga al Recogerlo): "
-BoeMobDrop = "Soltado por monstruo (Se Liga al Equiparlo): "
 RaidBindOnPickupDrop = "Soltado por Jefe (Se Liga al Recogerlo): "
 RaidBindOnEquipDrop = "Soltado por Jefe (Se Liga al Equiparlo): "
 RandomBossesIn = "Jefes Aleatorios en "
 RandomBossesAndMobsIn = "Jefes y monstruos Aleatorios en "
 RandomQuestReward = "Recompensa de Misión Aleatoria: "
-RandomReward = "Recompensa Aleatoria: "
 Crafted = "Fabricado: "
-ItemDrop = "Objeto Soltado: "
 Trainer = "Entrenador: "
 UnknownDrop = "Soltado Desconocido: "
 Mission = "Misión: "
@@ -206,24 +211,23 @@ L["Gurubashi Mojo Madness Obt"] = Raid..": Puedes aprender esto clickeando en un
 L["Mighty Trolls Blood Potion Obt"] = Trainer.."Henry Stern"
 -- Mob Drop
 L["Elixir of Greater Firepower Obt"] = "Esclavo del Hierro Oscuro, Vigilante del Hierro Oscuro, Taskmaster del Hierro Oscuro"
-L["Elixir of the Mongoose Obt"] = BoeMobDrop.."Jadefire Rogue, Felwood, Legashi Rogue, "..BZ["Azshara"]
-L["Elixir of the Sages Obt"] = BoeMobDrop.."Scarlet Enchanter, Scarlet Cleric, Scarlet Curate, Scarlet Archmage, Scarlet Inquisitor, "..BZ["Eastern Plaguelands"]
-L["Fel Mana Potion Obt"] = BopMobDrop.."Eclipsion Soldier, Eclipsion Bloodward, Eclipsion Blood Knight, Eclipsion Spellbinder, Eclipsion Archmage, Eclipsion Centurion, Eclipsion Cavalier, Torloth the Magnificent, Illidari Watcher, "..BZ["Shadowmoon Valley"]
-L["Fel Regeneration Potion Obt"] = BopMobDrop.."Deathforge Imp, Deathforge Guardian, Deathforge Smith, Deathforge Tinkerer, "..BZ["Shadowmoon Valley"]
-L["Fel Strength Elixir Obt"] = BopMobDrop.."Mo'arg Weaponsmiths, Terrormasters, Wrathwalkers, y Brujos del Consejo de las Sombras , "..BZ["Shadowmoon Valley"]
-L["Gift of Arthas Obt"] = BoeMobDrop.."Skeletal Flayer, Slavering Ghoul, "..BZ["Western Plaguelands"]
-L["Greater Arcane Protection Potion Obt"] = BoeMobDrop.."Cobalt Mageweavers, "..BZ["Winterspring"]
-L["Greater Fire Protection Potion Obt"] = BoeMobDrop.."Firebrand Invoker, Firebrand Pyromance, "..BZ["Lower Blackrock Spire"]
-L["Greater Frost Protection Potion Obt"] = BoeMobDrop.."Frostmaul Giants, "..BZ["Winterspring"]
-L["Greater Nature Protection Potion Obt"] = BoeMobDrop.."Decaying Horror, Rotting Behemoths, "..BZ["Western Plaguelands"]
-L["Greater Shadow Protection Potion Obt"] = BoeMobDrop.."Adeptos Oscuros, Shadowmages, "..BZ["Eastern Plaguelands"]
-L["Major Arcane Protection Potion Obt"] = BopMobDrop.."Vir'aani Arcanists, "..BZ["Nagrand"]
-L["Major Fire Protection Potion Obt"] = BopMobDrop.."Sunseeker Astromages, "..BZ["The Mechanar"]
-L["Major Frost Protection Potion Obt"] = BopMobDrop.."Nexus-Prince Shaffar, "..BZ["Mana-Tombs"]
-L["Major Holy Protection Potion Obt"] = BopMobDrop.."Abyssal Flamebringers, "..BZ["Blade's Edge Mountains"]
-L["Major Shadow Protection Potion Obt"] = BopMobDrop.."Brujo del Consejo de las Sombras, "..BZ["Shadowmoon Valley"]
-L["Mighty Rage Potion Obt"] = BoeMobDrop.."Blackrock Slayer, "..BZ["Burning Steppes"]
-L["Wildvine Potion Obt"] = BoeMobDrop.."Trolls en "..BZ["Stranglethorn Vale"].." y "..BZ["The Hinterlands"]
+L["Elixir of the Mongoose Obt"] = "Jadefire Rogue, Felwood, Legashi Rogue"
+L["Elixir of the Sages Obt"] = "Scarlet Enchanter, Scarlet Cleric, Scarlet Curate, Scarlet Archmage, Scarlet Inquisitor"
+L["Fel Mana Potion Obt"] = "Eclipsion Soldier, Eclipsion Bloodward, Eclipsion Blood Knight, Eclipsion Spellbinder, Eclipsion Archmage, Eclipsion Centurion, Eclipsion Cavalier, Torloth the Magnificent, Illidari Watcher"
+L["Fel Regeneration Potion Obt"] = "Deathforge Imp, Deathforge Guardian, Deathforge Smith, Deathforge Tinkerer"
+L["Fel Strength Elixir Obt"] = "Mo'arg Weaponsmiths, Terrormasters, Wrathwalkers, Shadow Council Warlocks"
+L["Gift of Arthas Obt"] = "Skeletal Flayer, Slavering Ghoul"
+L["Greater Arcane Protection Potion Obt"] = "Cobalt Mageweavers"
+L["Greater Fire Protection Potion Obt"] = "Firebrand Invoker, Firebrand Pyromance"
+L["Greater Frost Protection Potion Obt"] = "Frostmaul Giants"
+L["Greater Nature Protection Potion Obt"] = "Decaying Horror, Rotting Behemoths"
+L["Greater Shadow Protection Potion Obt"] = "Dark Adepts, Shadowmages"
+L["Major Arcane Protection Potion Obt"] = "Vir'aani Arcanists"
+L["Major Fire Protection Potion Obt"] = "Sunseeker Astromages"
+L["Major Holy Protection Potion Obt"] = "Abyssal Flamebringers"
+L["Major Shadow Protection Potion Obt"] = "Brujo del Consejo de las Sombras"
+L["Mighty Rage Potion Obt"] = "Blackrock Slayer"
+L["Wildvine Potion Obt"] = "Trolls Aleatorios"
 -- Quest
 L["Discolored Healing Potion Obt"] = "Corazones Salvajes"
 L["Elixir of Brute Force Obt"] = "Dadanga esta Hambriento (Recompensa Aleatoria)"
@@ -231,69 +235,59 @@ L["Lesser Stoneshield Potion Obt"] = "Piedra Líquida"
 L["Restorative Potion Obt"] = "Funcionamiento del Reactivo "..BZ["Uldaman"]
 
 -- Blacksmithin Obtain Information
-L["Annihilator Obt"] = BoeMobDrop.."Intendente, "..BZ["Lower Blackrock Spire"]
-L["Arcanite Champion Obt"] = BoeMobDrop.."Goraluk Anvilcrack, "..BZ["Upper Blackrock Spire"]
-L["Arcanite Reaper Obt"] = BoeMobDrop.."Bannok Grimaxe, "..BZ["Lower Blackrock Spire"]
-L["Barbaric Iron Boots Obt"] = QuestReward.."Trampled Under Foot"
-L["Barbaric Iron Breastplate Obt"] = QuestReward.."Barbaric Battlements"
-L["Barbaric Iron Gloves Obt"] = QuestReward.."Alegrías de Omosh"
-L["Barbaric Iron Helm Obt"] = QuestReward.."Cuernos del Frenesí"
-L["Barbaric Iron Shoulders Obt"] = QuestReward.."On Iron Pauldroms"
-L["Black Grasp of the Destroyer Obt"] = BopMobDrop.."Moam, AQ20"
-L["Blacksmithing Plans"] = ItemDrop.."Gotas aleatorias para los planes de herrería encontrado en BRD y "..BZ["Stratholme"]
-L["Blazing Rapier Obt"] = QuestReward.."Corrupción"
-L["Dark Iron Plate Obt"] = BoeMobDrop.."Ribbly Screwspigot, "..BZ["Blackrock Depths"]
-L["Dark Iron Pulverizer Obt"] = BoeMobDrop.."Grizzle, "..BZ["Blackrock Depths"]
-L["Dark Iron Sunderer Obt"] = BoeMobDrop.."Hammered Patrons, Ribbly's Crony, "..BZ["Blackrock Depths"]
-L["Dawn's Edge Obt"] = QuestReward.."Snakestone de la Sombra Cazadora"
-L["Demon Forged Breastplate Obt"] = QuestReward.."La Fragua del Demonio"
-L["Earthpeace Breastplate Obt"] = BopMobDrop.."Alto Botánico Freywinn, "..BZ["The Botanica"]
-L["Enchanted Battlehammer Obt"] = QuestReward.."Dulce Serenidad"
-L["Enchanted Thorium Breastplate Obt"] = QuestReward.."Torio Encantado Platemail Vol I"
-L["Enchanted Thorium Helm Obt"] = QuestReward.."Torio Encantado Platemail Vol III"
-L["Enchanted Thorium Leggings Obt"] = QuestReward.."Torio Encantado Platemail Vol II"
-L["Felsteel Gloves Obt"] = BopMobDrop.."Auchenai Monks, "..BZ["Auchenai Crypts"]
-L["Felsteel Helm Obt"] = BopMobDrop.."Fanático de la Cábala, "..BZ["Shadow Labyrinth"]
-L["Felsteel Leggings Obt"] = BopMobDrop.."Unchained Doombringer, "..BZ["The Arcatraz"]
-L["Fiery Plate Gauntlets Obt"] = QuestReward.."Guantes Ardientes de Placas"
-L["Frostguard Obt"] = BoeMobDrop.."Foreman Marcrid, "..BZ["Western Plaguelands"]
-L["Golden Scale Gauntlets Obt"] = QuestReward.."Los Orígenes de Smithing"
-L["Greater Ward of Shielding Obt"] = BopMobDrop.."Sunfury Bloodwatchers, "..BZ["Netherstorm"]
-L["Hammer of the Titans Obt"] = BoeMobDrop.."Maleki el Pálido, "..BZ["Stratholme"]
-L["Heartseeker Obt"] = BoeMobDrop.."Cannon Master Willey, "..BZ["Stratholme"]
-L["Heavy Copper Longsword Obt"] = "(A): "..QuestReward.."Suministros Para el Frente"
-L["Imperial Plate Belt Obt"] = QuestReward.."Correa Imperial de Placas"
-L["Imperial Plate Boots Obt"] = QuestReward.."Botas Imperiales de Placas"
-L["Imperial Plate Bracers Obt"] = QuestReward.."Brazales Imperiales de Placas"
-L["Imperial Plate Chest Obt"] = QuestReward.."Pechera Imperial de Placas"
-L["Imperial Plate Helm Obt"] = QuestReward.."Yelmo Imperial de Placas"
-L["Imperial Plate Leggings Obt"] = QuestReward.."Piernas Imperiales de Placas"
-L["Imperial Plate Shoulders Obt"] = QuestReward.."Imperial Plate Shoulders"
 L["Inlaid Mithril Cylinder Obt"] = Crafted.."Esta receta está fabricada por Ingenieros Gnomos"
-L["Invulnerable Mail Obt"] = BoeMobDrop.."Goraluk Anvilcrack, "..BZ["Upper Blackrock Spire"]
-L["Ironforge Breastplate Obt"] = QuestReward.."Gearing Redridge"
-L["Khorium Belt Obt"] = BopMobDrop.."Murkblood Raiders, "..BZ["Nagrand"]
-L["Khorium Boots Obt"] = BopMobDrop.."Disembodied Protector, "..BZ["Netherstorm"]
-L["Khorium Pants Obt"] = BopMobDrop.."Guardianes de Deathforge, "..BZ["Shadowmoon Valley"]
-L["Masterwork Stormhammer Obt"] = BoeMobDrop.."Goraluk Anvilcrack, "..BZ["Upper Blackrock Spire"]
-L["Orcish War Leggings Obt"] = QuestReward.."Las Viejas Costumbres"
-L["Ornate Mithril Gloves Obt"] = QuestReward.."El Gran Mentiroso de Plata"
-L["Ornate Mithril Helm Obt"] = QuestReward.."Una Buena Cabeza Sobre Sus Hombros"
-L["Ornate Mithril Pants Obt"] = QuestReward.."Fundir On, Fundir Off"
-L["Ornate Mithril Shoulder Obt"] = QuestReward.."El Arte de la Impregnación"
-L["Ragesteel Breastplate Obt"] = BopMobDrop.."Guerrero de Ashtongue, "..BZ["Shadowmoon Valley"]
-L["Ragesteel Gloves Obt"] = BopMobDrop.."Guerrero de Boulderfist, "..BZ["Nagrand"]
-L["Ragesteel Helm Obt"] = BopMobDrop.."Protectores de la Cólera, "..BZ["Blade's Edge Mountains"]
-L["Ragesteel Shoulders Obt"] = BopMobDrop.."Enraged Earth Spirit, Enraged Air Spirirt, Enraged Fire Spirirt, Enraged Water Spirirt, "..BZ["Shadowmoon Valley"]
-L["Runic Breastplate Obt"] = BoeMobDrop.."Strashaz Myrmidons, "..BZ["Dustwallow Marsh"].." (Isla de Alcatraz)"
-L["Runic Plate Boots Obt"] = BoeMobDrop.."Cavaliers Escarlata, "..BZ["Western Plaguelands"]
-L["Runic Plate Helm Obt"] = BoeMobDrop.."Guerreros de Strashaz, "..BZ["Dustwallow Marsh"].." (Isla de Alcatraz)"
-L["Runic Plate Leggings Obt"] = BoeMobDrop.."Smiths Escarlata, "..BZ["Western Plaguelands"]
-L["Runic Plate Shoulders Obt"] = BoeMobDrop.."Guardias Serpiente de Strashaz, "..BZ["Dustwallow Marsh"].." (Isla de Alcatraz)"
-L["Sulfuron Hammer Obt"] = QuestReward.."Un Contrato Obligatorio"
-L["Swiftsteel Gloves Obt"] = BopMobDrop.."Nexus Stalkers, "..BZ["Mana-Tombs"]
-L["Thick Obsidian Breastplate Obt"] = BopMobDrop.."El Profeta Skeram,"
-L["Volcanic Hammer Obt"] = BoeMobDrop.."Volchan, "..BZ["Burning Steppes"]
+L["Blacksmithing Plans"] = "Soltado aleatoriamente por los planes de herrería"
+-- Mob Drop
+L["Dark Iron Sunderer Obt"] = "Hammered Patrons, Ribbly's Crony"
+L["Felsteel Gloves Obt"] = "Auchenai Monks"
+L["Felsteel Helm Obt"] = "Fanático de la Cábala"
+L["Felsteel Leggings Obt"] = "Unchained Doombringer"
+L["Frostguard Obt"] = "Foreman Marcrid"
+L["Greater Ward of Shielding Obt"] = "Sunfury Bloodwatchers"
+L["Khorium Belt Obt"] = "Murkblood Raiders"
+L["Khorium Boots Obt"] = "Disembodied Protector"
+L["Khorium Pants Obt"] = "Guardianes de Deathforge"
+L["Ragesteel Breastplate Obt"] = "Guerrero de Ashtongue"
+L["Ragesteel Gloves Obt"] = "Guerrero de Boulderfist"
+L["Ragesteel Helm Obt"] = "Protectores de la Cólera"
+L["Ragesteel Shoulders Obt"] = "Enraged Earth Spirit, Enraged Air Spirirt, Enraged Fire Spirirt, Enraged Water Spirirt"
+L["Runic Breastplate Obt"] = "Strashaz Myrmidons"
+L["Runic Plate Boots Obt"] = "Cavaliers Escarlata"
+L["Runic Plate Helm Obt"] = "Guerreros de Strashaz"
+L["Runic Plate Leggings Obt"] = "Smiths Escarlata"
+L["Runic Plate Shoulders Obt"] = "Guardias Serpiente de Strashaz"
+L["Swiftsteel Gloves Obt"] = "Nexus Stalkers"
+L["Volcanic Hammer Obt"] = "Volchan"
+-- Quest
+L["Barbaric Iron Boots Obt"] = "Trampled Under Foot"
+L["Barbaric Iron Breastplate Obt"] = "Barbaric Battlements"
+L["Barbaric Iron Gloves Obt"] = "Alegrías de Omosh"
+L["Barbaric Iron Helm Obt"] = "Cuernos del Frenesí"
+L["Barbaric Iron Shoulders Obt"] = "On Iron Pauldroms"
+L["Blazing Rapier Obt"] = "Corrupción"
+L["Dawn's Edge Obt"] = "Snakestone de la Sombra Cazadora"
+L["Demon Forged Breastplate Obt"] = "La Fragua del Demonio"
+L["Enchanted Battlehammer Obt"] = "Dulce Serenidad"
+L["Enchanted Thorium Breastplate Obt"] = "Torio Encantado Platemail Vol I (Necesita objetos soltados en otras instancias para conseguir la misión)"
+L["Enchanted Thorium Helm Obt"] = "Torio Encantado Platemail Vol III (Necesita objetos soltados en otras instancias para conseguir la misión)"
+L["Enchanted Thorium Leggings Obt"] = "Torio Encantado Platemail Vol II (Necesita objetos soltados en otras instancias para conseguir la misión)"
+L["Fiery Plate Gauntlets Obt"] = "Guantes Ardientes de Placas"
+L["Golden Scale Gauntlets Obt"] = "Los Orígenes de Smithing"
+L["Heavy Copper Longsword Obt"] = "Suministros Para el Frente"
+L["Imperial Plate Belt Obt"] = "Correa Imperial de Placas"
+L["Imperial Plate Boots Obt"] = "Botas Imperiales de Placas"
+L["Imperial Plate Bracers Obt"] = "Brazales Imperiales de Placas"
+L["Imperial Plate Chest Obt"] = "Pechera Imperial de Placas"
+L["Imperial Plate Helm Obt"] = "Yelmo Imperial de Placas"
+L["Imperial Plate Leggings Obt"] = "Piernas Imperiales de Placas"
+L["Imperial Plate Shoulders Obt"] = "Imperial Plate Shoulders"
+L["Ironforge Breastplate Obt"] = "Gearing Redridge"
+L["Orcish War Leggings Obt"] = "Las Viejas Costumbres"
+L["Ornate Mithril Gloves Obt"] = "El Gran Mentiroso de Plata"
+L["Ornate Mithril Helm Obt"] = "Una Buena Cabeza Sobre Sus Hombros"
+L["Ornate Mithril Pants Obt"] = "Fundir On, Fundir Off"
+L["Ornate Mithril Shoulder Obt"] = "El Arte de la Impregnación"
+L["Sulfuron Hammer Obt"] = "Un Contrato Obligatorio"
 
 -- Cooking Obtain Information
 L["Fishing Daily"] = QuestReward.."Recompensa al azar de la misión diaria de pesca."
@@ -307,7 +301,7 @@ L["Barbecued Buzzard Wing Obt"] = "Alas Asadas a la Parilla del Halcón"
 L["Beer Basted Boar Ribs Obt"] = "Costillas a la Cerveza del Verraco"
 L["Big Bear Steak Obt"] = "El Rescate"
 L["Blood Sausage Obt"] = "Morcillas de Thelsamar"
-L["Buzzard Bites Obt"] = QuestReward.."Suave como la Mantequilla"
+L["Buzzard Bites Obt"] = "Suave como la Mantequilla"
 L["Crocolisk Gumbo Obt"] = "Deberes del Aprendiz"
 L["Crocolisk Steak Obt"] = "Caza de Crocolisk"
 L["Crunchy Serpent Obt"] = "Tratados Mok'Nathal"
@@ -356,6 +350,7 @@ L["Enchant Gloves - Herbalism Obt1"] = "Vengeful Ancient, Blackened Ancient, Cha
 L["Enchant Gloves - Mining Obt"] = "Dark Iron Dwarf, Dark Iron Demonlitionist, Dark Iron Tunneler, Dark Iron Saboteur, Balgaras the Foul"
 L["Enchant Gloves - Skinning Obt"] = "Nimar the Slayer, Witherbark Berserker, Witherbark Headhunter, Witherbark Shadow Hunter"
 L["Enchant Weapon - Crusader Obt"] = "Scarlet Spellbinder"
+L["Enchant Weapon - Crusader Obt1"] = "Archimago Escarlata"
 L["Enchant Weapon - Deathfrost Obt"] = "Lord Ahune - Midsummer Fire Festival"
 L["Enchant Weapon - Fiery Weapon Obt"] = "Pyromancer Loregrain"
 L["Enchant Weapon - Icy Chill Obt"] = "Anguished Highborne"
@@ -392,77 +387,64 @@ L["Zapthrottle Mote Extractor Obt"] = "¡Extractor de la Mota de Zapthrottle!"
 -- Nothing here needed yet
 
 -- Jewelcrafting Obtain Information
-L["Arcane Khorium Band Obt"] = BopMobDrop.."Mageslayers, "..BZ["Netherstorm"]
-L["Blades Edge Summon Bosses"] = BopMobDrop.."Invoca Jefes en Filospada"
-L["Chaotic Skyfire Diamond Obt"] = BopMobDrop.."Coilskar Sirens, "..BZ["Shadowmoon Valley"]
-L["Circlet of Arcane Might Obt"] = BopMobDrop.."Epoch Hunter, "..BZ["Old Hillsbrad Foothills"]
-L["Coronet of the Verdant Flame Obt"] = BopMobDrop.."Sunseeker Botanists, "..BZ["The Botanica"]
-L["Dark Iron Scorpid Obt"] = BopMobDrop.."Golem Lord Argelmach, "..BZ["Blackrock Depths"]
-L["Figurine - Black Diamond Crab Obt"] = BopMobDrop.."Quartermaster Zigris, "..BZ["Lower Blackrock Spire"]
-L["Khorium Band of Frost Obt"] = BopMobDrop.."Coilfang Sorceresses, "..BZ["The Steamvault"]
-L["Khorium Band of Leaves Obt"] = BopMobDrop.."Vekh'nir Dreadhawks, "..BZ["Blade's Edge Mountains"]
-L["Khorium Band of Shadows Obt"] = BopMobDrop.."Dark Conclave Shadowmancers, "..BZ["Shadowmoon Valley"]
-L["Khorium Inferno Band Obt"] = BopMobDrop.."Darkweaver Syth, "..BZ["Sethekk Halls"]
+L["Blades Edge Summon Bosses"] = "Invoca Jefes en Filospada"
+-- Mob Drop
+L["Arcane Khorium Band Obt"] = "Mageslayers"
+L["Chaotic Skyfire Diamond Obt"] = "Coilskar Sirens"
+L["Coronet of the Verdant Flame Obt"] = "Sunseeker Botanists"
+L["Khorium Band of Frost Obt"] = "Coilfang Sorceresses"
+L["Khorium Band of Leaves Obt"] = "Vekh'nir Dreadhawks"
+L["Khorium Band of Shadows Obt"] = "Dark Conclave Shadowmancers"
+-- Quest
 
 -- Leatheworking Obtain Information
-L["Arcane Armor Kit Obt"] = BopMobDrop.."Chrono Lord Deja, "..BZ["The Black Morass"]
-L["Bag of Many Hides Obt"] = BopMobDrop.."Ogros en Barrier Hills"
-L["Black Dragonscale Leggings Obt"] = BoeMobDrop.."Capitán de Anvilrage, "..BZ["Blackrock Depths"]
-L["Black Dragonscale Shoulders Obt"] = BoeMobDrop.."Capitán de Anvilrage, "..BZ["Blackrock Depths"]
-L["Blue Dragonscale Shoulders Obt"] = BoeMobDrop.."Cliff Breaker, "..BZ["Azshara"]
-L["Deviate Scale Belt Obt"] = QuestReward.."Deviate Eradication"
-L["Devilsaur Leggings Obt"] = BoeMobDrop.."Cloned Ooze, Muculent Ooze, Ungoro Crater"
-L["Flame Armor Kit Obt"] = BopMobDrop.."Gargantuan Abyssals, "..BZ["The Arcatraz"]
-L["Frost Armor Kit Obt"] = BopMobDrop.."Hydromancer Thespia, "..BZ["The Steamvault"]
-L["Frostsaber Gloves Obt"] = BoeMobDrop.."Winterfall Totemic, "..BZ["Winterspring"]
-L["Frostsaber Leggings Obt"] = BoeMobDrop.."Winterfall Den Watcher, "..BZ["Winterspring"]
-L["Frostsaber Tunic Obt"] = BoeMobDrop.."Winterfall Ursa, "..BZ["Winterspring"]
-L["Green Dragonscale Leggings Obt"] = BoeMobDrop.."Murk Worm, "..BZ["Sunken Temple"]
-L["Heavy Scorpid Leggings Obt"] = BoeMobDrop.."Blackrock Slayer, "..BZ["Burning Steppes"]
-L["Heavy Scorpid Shoulders Obt"] = BoeMobDrop.."Blackrock Battlemaster, "..BZ["Burning Steppes"]
-L["Heavy Scorpid Vest Obt"] = BoeMobDrop.."Buscador del Portal, "..BZ["Blasted Lands"]
-L["Ironfeather Breastplate Obt"] = BoeMobDrop.."Vilebranch Hideskinner, "..BZ["The Hinterlands"]
-L["Kodo Hide Bag Obt"] = "Bolsa de la Piel de Kodo"
-L["Living Breastplate Obt"] = BoeMobDrop.."Decaying Horror, "..BZ["Western Plaguelands"]
-L["Living Leggings Obt"] = BoeMobDrop.."Chaman de Deadwood, "..BZ["Felwood"]
-L["Moonglow Vest Obt"] = QuestReward.."Chaleco de Moonglow"
-L["Nature Armor Kit Obt"] = BopMobDrop.."Mennu el Traidor, "..BZ["The Slave Pens"]
-L["Onyxia Scale Cloak Obt"] = QuestReward.."The Journey Has Just Begun after turning in Head of Onyxia"
-L["Red Dragonscale Breastplate Obt"] = BopMobDrop.."General Drakkisath, "..BZ["Upper Blackrock Spire"]
-L["Runic Leather Armor Obt"] = BoeMobDrop.."Scholomance Dark Summoner, "..BZ["Scholomance"]
-L["Runic Leather Bracers Obt"] = BoeMobDrop.."Jaedenar Cultist, "..BZ["Felwood"]
-L["Runic Leather Shoulders Obt"] = BoeMobDrop.."Crimson Battle Mage, "..BZ["Stratholme"]
-L["Shadow Armor Kit Obt"] = BopMobDrop.."Time-Lost Shadowmages, "..BZ["Sethekk Halls"]
-L["Stormshroud Armor Obt"] = BoeMobDrop.."Arkkoran Oracle, "..BZ["Azshara"]
-L["Stormshroud Gloves Obt"] = BoeMobDrop.."The Windreaver, Silithus, Princess Tempestria, "..BZ["Winterspring"]
-L["Stormshroud Shoulders Obt"] = BoeMobDrop.."Hijo de Arkkoroc, "..BZ["Azshara"]
-L["Stylin' Adventure Hat Obt"] = BopMobDrop.."Durnholde Riflemen, "..BZ["Old Hillsbrad Foothills"]
-L["Stylin' Crimson Hat Obt"] = BopMobDrop.."Sethekk Ravenguard, "..BZ["Sethekk Halls"]
-L["Stylin' Jungle Hat Obt"] = BopMobDrop.."Rift Lords, Rift Keepers, "..BZ["The Black Morass"]
-L["Stylin' Purple Hat Obt"] = BopMobDrop.."Blackheart the Inciter, "..BZ["Shadow Labyrinth"]
-L["Tough Scorpid Boots Obt"] = BoeMobDrop.."Wastewander Rogue, "..BZ["Tanaris"]
-L["Tough Scorpid Bracers Obt"] = BoeMobDrop.."Wastewander Shadow Mage, "..BZ["Tanaris"]
-L["Tough Scorpid Breastplate Obt"] = BoeMobDrop.."Wastewander Bandit, "..BZ["Tanaris"]
-L["Tough Scorpid Gloves Obt"] = BoeMobDrop.."Wastewander Thief, "..BZ["Tanaris"]
-L["Tough Scorpid Helm Obt"] = BoeMobDrop.."Andre Firebeard, Wastewander Scofflaw, "..BZ["Tanaris"]
-L["Tough Scorpid Leggings Obt"] = BoeMobDrop.."Wastewander Rogue, "..BZ["Tanaris"]
-L["Tough Scorpid Shoulders Obt"] = BoeMobDrop.."Andre Firebeard, Wastewander Scofflaw, "..BZ["Tanaris"]
-L["Volcanic Breastplate Obt"] = BoeMobDrop.."Firebrand Grunt, "..BZ["Lower Blackrock Spire"]
-L["Volcanic Leggings Obt"] = BoeMobDrop.."Firegut Brute, "..BZ["Burning Steppes"]
-L["Volcanic Shoulders Obt"] = BoeMobDrop.."Firebrand Legionnaire, "..BZ["Lower Blackrock Spire"]
-L["Wicked Leather Armor Obt"] = BoeMobDrop.."Spectral Researcher, "..BZ["Scholomance"]
-L["Wicked Leather Belt Obt"] = BoeMobDrop.."Ghoul Ravener, "..BZ["Stratholme"]
-L["Wicked Leather Bracers Obt"] = BoeMobDrop.."Legashi Rogue, "..BZ["Azshara"]
-L["Wicked Leather Headband Obt"] = BoeMobDrop.."Jadefire Trickster, "..BZ["Felwood"]
-L["Wild Leather Boots Obt"] = QuestReward.."Botas de Cuero Salvaje"
-L["Wild Leather Cloak Obt"] = QuestReward.."Maestro de Cuero Salvaje"
-L["Wild Leather Helmet Obt"] = QuestReward.."Yelmo de Cuero Salvaje"
-L["Wild Leather Leggings Obt"] = QuestReward.."Piernas de Cuero Salvaje"
-L["Wild Leather Shoulders Obt"] = QuestReward.."Wild Leather Shoulders"
-L["Wild Leather Vest Obt"] = QuestReward.."Wild Leather Vest"
+-- Mob Drop
+L["Bag of Many Hides Obt"] = "Gordunni Back-Breaker, Gordunni Head-Splitter, Gordunni Elementalist, Gordunni Soulreaper"
+L["Anvilrage Captain"] = "Anvilrage Captain"
+L["Blue Dragonscale Shoulders Obt"] = "Cliff Breaker"
+L["Devilsaur Leggings Obt"] = "Cloned Ooze, Muculent Ooze"
+L["Flame Armor Kit Obt"] = "Gargantuan Abyssals"
+L["Frostsaber Gloves Obt"] = "Winterfall Totemic"
+L["Frostsaber Leggings Obt"] = "Winterfall Den Watcher"
+L["Frostsaber Tunic Obt"] = "Winterfall Ursa"
+L["Green Dragonscale Leggings Obt"] = "Murk Worm"
+L["Heavy Scorpid Leggings Obt"] = "Blackrock Slayer"
+L["Heavy Scorpid Shoulders Obt"] = "Blackrock Battlemaster"
+L["Heavy Scorpid Vest Obt"] = "Portal Seeker"
+L["Ironfeather Breastplate Obt"] = "Vilebranch Hideskinner"
+L["Living Breastplate Obt"] = "Decaying Horror"
+L["Living Leggings Obt"] = "Deadwood Shaman"
+L["Shadow Armor Kit Obt"] = "Time-Lost Shadowmages"
+L["Stormshroud Armor Obt"] = "Arkkoran Oracle"
+L["Stormshroud Gloves Obt"] = "The Windreaver"
+L["Stormshroud Gloves Obt1"] = "Princess Tempestria, Winterspring"
+L["Stormshroud Shoulders Obt"] = "Son of Arkkoroc"
+L["Stylin' Adventure Hat Obt"] = "Durnholde Riflemen"
+L["Stylin' Crimson Hat Obt"] = "Sethekk Ravenguard"
+L["Stylin' Jungle Hat Obt"] = "Rift Lords, Rift Keepers"
+L["Tough Scorpid Boots Obt"] = "Wastewander Rogue"
+L["Tough Scorpid Bracers Obt"] = "Wastewander Shadow Mage"
+L["Tough Scorpid Breastplate Obt"] = "Wastewander Bandit"
+L["Tough Scorpid Gloves Obt"] = "Wastewander Thief"
+L["Tough Scorpid Helm Obt"] = "Andre Firebeard, Wastewander Scofflaw"
+L["Tough Scorpid Leggings Obt"] = "Wastewander Rogue"
+L["Volcanic Breastplate Obt"] = "Firebrand Grunt"
+L["Volcanic Leggings Obt"] = "Firegut Brute"
+L["Volcanic Shoulders Obt"] = "Firebrand Legionnaire"
+-- Quest
+L["Deviate Scale Belt Obt"] = "Deviate Eradication"
+L["Kodo Hide Bag Obt"] = "Kodo Hide Bag"
+L["Moonglow Vest Obt"] = "Moonglow Vest"
+L["Onyxia Scale Cloak Obt"] = "The Journey Has Just Begun after turning in Head of Onyxia"
+L["Wild Leather Boots Obt"] = "Wild Leather Boots"
+L["Wild Leather Cloak Obt"] = "Master of the Wild Leather"
+L["Wild Leather Helmet Obt"] = "Wild Leather Helmet"
+L["Wild Leather Leggings Obt"] = "Wild Leather Leggings"
+L["Wild Leather Shoulders Obt"] = "Wild Leather Shoulders"
+L["Wild Leather Vest Obt"] = "Wild Leather Vest"
 
 -- Smelting Obtain Information
-L["Dark Iron Obt"] = QuestReward.."BRD, requiere 20 Barras de Oro, 2 Star Rubies, y 10 Barras de Truesilver para BRD.  Habla con Gloom'Rel, que es uno de los no-muertos en Summoner's Tomb."
+L["Dark Iron Obt"] = "Requiere 20 Barras de Oro, 2 Star Rubies, y 10 Barras de Truesilver - Habla con Gloom'Rel, que es uno de los no-muertos en Summoner's Tomb."
 L["Elementium Obt"] = "Control mental Krixix en BWL.  En la barra de mascota habrá una opción para entrenar esta habilidad para ti y los demás."
 
 -- Rogue Poison Obtain Information
@@ -956,6 +938,7 @@ L["Harggan"] = true
 L["Harklan Moongrove"] = true
 L["Harlown Darkweave"] = true
 L["Harn Longcast"] = true
+L["Haughty Modiste"] = true
 L["Heldan Galesong"] = true
 L["Helenia Olden"] = true
 L["Himmik"] = true

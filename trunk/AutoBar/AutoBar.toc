@@ -32,12 +32,14 @@ Core.lua
 
 # Localization
 Locale-enUS.lua
+Locale-deDE.lua
+Locale-esES.lua
+Locale-esMX.lua
+Locale-frFR.lua
 Locale-koKR.lua
+Locale-ruRU.lua
 Locale-zhCN.lua
 Locale-zhTW.lua
-Locale-deDE.lua
-Locale-frFR.lua
-Locale-esES.lua
 
 AutoBarDB.lua
 AutoBarOptions.lua

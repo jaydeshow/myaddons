@@ -71,8 +71,9 @@ mod.partyContent = true
 mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss 
+mod.guid = 18667
 mod.toggleoptions = {"chaos", "bosskill"}
-mod.revision = tonumber(("$Revision: 76524 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -80,7 +81,7 @@ mod.revision = tonumber(("$Revision: 76524 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "Chaos", 33676)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "CheckForEngage")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 

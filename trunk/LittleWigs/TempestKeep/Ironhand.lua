@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -18,13 +18,12 @@ L:RegisterTranslations("enUS", function() return {
 	hammer_message = "Jackhammer in 3 seconds!",
 	hammer_bar = "Jackhammer",
 
-	shadow = "Shadow Power",
-	shadow_desc = "Warn when Iron-Hand gains Shadow Power",
+	shadow = "Shadow Power Cast",
+	shadow_desc = "Warn when Iron-Hand casts Shadow Power",
 	shadow_message = "Shadow Power in 2 seconds!",
 
-	shadowaura = "Shadow Power Gained",
-	shadowaura_desc = "Warn when Iron-Hand gains Shadow Power",
-	shadowaura_message ="Iron-Hand gains Shadow Power",
+	shadowbar = "Shadow Power Bar",
+	shadowbar_desc = "Display a bar for Shadow Power on Iron-Hand",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -34,13 +33,12 @@ L:RegisterTranslations("koKR", function() return {
 	hammer_message = "3초 이내 착암기!",
 	hammer_bar = "착암기",
 
-	shadow = "어둠의 힘",
-	shadow_desc = "무쇠주먹의 어둠의 힘을 획득시 알립니다.",
+	shadow = "어둠의 힘 시전",
+	shadow_desc = "무쇠주먹의 어둠의 힘 시전에 대해 알립니다.",
 	shadow_message = "2초 이내 어둠의 힘!",
 	
-	shadowaura = "어둠의 힘 획득",
-	shadowaura_desc = "회전톱날의 ㅇ둠의 힘 획득에 대해 알립니다.",
-	shadowaura_message ="회전톱날 어둠의 힘 획득",
+	shadowbar = "어둠의 힘 바",
+	shadowbar_desc = "어둠의 힘을 바로 표시합니다.",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -51,12 +49,8 @@ L:RegisterTranslations("zhTW", function() return {
 	hammer_bar = "<千斤錘特效>",
 
 	shadow = "施放暗影強化",
-	shadow_desc = "當看守者鐵手施放暗影強化時發出警報",
+	shadow_desc = "當看守者蓋洛奇歐施放暗影強化時發出警報",
 	shadow_message = "2 秒後施放暗影強化!",
-
-	shadowaura = "獲得暗影強化",
-	shadowaura_desc = "當看守者鐵手獲得暗影強化時發出警報",
-	shadowaura_message ="看守者鐵手獲得暗影強化!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -70,9 +64,8 @@ L:RegisterTranslations("frFR", function() return {
 	shadow_desc = "Prévient quand Main-en-fer incante la Puissance de l'ombre.",
 	shadow_message = "Puissance de l'ombre dans 2 sec. !",
 
-	shadowaura = "Puissance de l'ombre gagné",
-	shadowaura_desc = "Prévient quand Main-en-fer gagne la Puissance de l'ombre.",
-	shadowaura_message ="Gyro-Meurtre gagne Puissance de l'ombre !",
+	shadowbar = "Barre Puissance de l'ombre",
+	shadowbar_desc = "Affiche une barre pour la Puissance de l'ombre de Main-en-fer.",
 } end )
 
 L:RegisterTranslations("esES", function() return {
@@ -94,13 +87,12 @@ L:RegisterTranslations("zhCN", function() return {
 	hammer_message = "3秒后，风钻！",
 	hammer_bar = "<风钻>",
 
-	shadow = "暗影能量",
+	shadow = "施放暗影能量",
 	shadow_desc = "当埃隆汉施放暗影能量时发出警报。",
 	shadow_message = "2秒后，暗影能量！",
 
-	shadowaura = "获得暗影能量",
-	shadowaura_desc = "当盖罗基尔施放暗影能量时发出警报。",
-	shadowaura_message ="盖罗基尔 - 暗影能量！",	
+	shadowbar = "暗影能量计时条",
+	shadowbar_desc = "当盖罗基尔获得暗影能量时显示计时条。",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -111,12 +103,8 @@ L:RegisterTranslations("deDE", function() return {
 	hammer_bar = "Hammer",
 
 	shadow = "Schattenmacht",
-	shadow_desc = "Warnen, wenn Eisenhand Schattenmacht bekommt",
+	shadow_desc = "Warnen, wenn Gyrotod Schattenmacht bekommt",
 	shadow_message = "Schattenmacht in 2 Sekunden!",
-
-	shadowaura = "Schattenmacht bekommen",
-	shadowaura_desc = "Warnen wenn Eisenhand Schattenmacht bekommt",
-	shadowaura_message ="Eisenhand bekommt Schattenmacht",	
 } end )
 
 
@@ -129,8 +117,9 @@ mod.partyContent = true
 mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Mechanar"]
 mod.enabletrigger = boss 
-mod.toggleoptions = {"hammer", "shadow", "shadowaura", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.guid = 19710
+mod.toggleoptions = {"hammer", -1, "shadow", "shadowbar", "bosskill"}
+mod.revision = tonumber(("$Revision: 77265 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -138,10 +127,10 @@ mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
-	self:AddCombatListener("SPELL_CAST_START", "Shadow", 39193)
-	self:AddCombatListener("SPELL_AURA_APPLIED", "ShadowApplied", 39193)
-	self:AddCombatListener("SPELL_AURA_REMOVED", "ShadowRemoved", 39193)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("SPELL_CAST_START", "Shadow", 39193, 35322)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "ShadowApplied", 39193, 35322)
+	self:AddCombatListener("SPELL_AURA_REMOVED", "ShadowRemoved", 39193, 35322)
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------
@@ -150,26 +139,25 @@ end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if self.db.profile.hammer and msg:find(L["hammer_trigger"]) then
-		self:Message(L["hammer_message"], "Important")
-		self:Bar(L["hammer"], 3, "INV_Hammer_07")
+		self:IfMessage(L["hammer_message"], "Important", 39194)
+		self:Bar(L["hammer"], 3, 39194)
 	end
 end
 
 function mod:Shadow(_, spellId)
 	if self.db.profile.shadow then
-		self:IfMessage(L["shadow_message"], "Important", spellId)
+		self:Message(L["shadow_message"], "Important")
 	end
 end
 
 function mod:ShadowApplied(_, spellId, _, _, spellName)
-	if self.db.profile.shadowaura then
-		self:IfMessage(L["shadowaura_message"], "Important", spellId)
+	if self.db.profile.shadowbar then
 		self:Bar(spellName, 15, spellId)
 	end
 end
 
 function mod:ShadowRemoved(_, spellId, _, _, spellName)
-	if self.db.profile.shadowaura then
+	if self.db.profile.shadowbar then
 		self:TriggerEvent("BigWigs_StopBar", self, spellName)
 	end
 end

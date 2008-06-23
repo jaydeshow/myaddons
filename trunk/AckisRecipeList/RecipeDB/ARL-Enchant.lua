@@ -4,8 +4,8 @@ ARL-Enchant.lua
 
 Enchanting data for all of AckisRecipeList
 
-$Date: 2008-06-04 11:30:19 -0400 (Wed, 04 Jun 2008) $
-$Rev: 75999 $
+$Date: 2008-06-19 10:57:24 -0400 (Thu, 19 Jun 2008) $
+$Rev: 77088 $
 
 ]]--
 
@@ -187,7 +187,7 @@ function addon:InitEnchanting()
 	self:addTradeSkillSpell(20033, 295, self:CombineMobs(true,L["Enchant Weapon - Unholy Weapon Obt"],BZONE["Stratholme"]),3,5)
 	self:addTradeSkillSpell(20036, 300, self:CombineMobs(true,L["Enchant 2H Weapon - Major Intellect Obt"],BZONE["Stratholme"]),3,5)
 	self:addTradeSkillSpell(20031, 300, self:CombineMobs(true,L["Enchant Weapon - Superior Striking Obt"],BZONE["Lower Blackrock Spire"]),3,5)
-	self:addTradeSkillSpell(20034, 300, self:CombineMobs(true,L["Enchant Weapon - Crusader Obt"],BZONE["Western Plaguelands"]),3)
+	self:addTradeSkillSpell(20034, 300, self:CombineMobs(true,L["Enchant Weapon - Crusader Obt"],BZONE["Western Plaguelands"]) .. addon.br ..  self:CombineMobs(true,L["Enchant Weapon - Crusader Obt1"],BZONE["Eastern Plaguelands"]),3)
 	self:addTradeSkillSpell(20032, 300, self:CombineMobs(true,L["Enchant Weapon - Lifestealing Obt"],BZONE["Scholomance"]),3,5)
 	self:addTradeSkillSpell(20035, 300, self:CombineMobs(true,L["Enchant 2H Weapon - Major Spirit Obt"],BZONE["Scholomance"]),3,5)
 	self:addTradeSkillSpell(27906, 320, self:CombineMobs(false,L["Enchant Bracer - Major Defense Obt"],BZONE["Netherstorm"]),4)
@@ -238,11 +238,7 @@ function addon:InitEnchanting()
 	self:addTradeSkillSpell(27926, 370, self:AddSingleReputation(3, BFAC["The Sha'tar"]), BFAC["The Sha'tar"])
 	self:addTradeSkillSpell(27927, 375, self:AddSingleReputation(2, BFAC["Lower City"]), BFAC["Lower City"])
 	self:addTradeSkillSpell(46594, 360, self:AddSingleReputation(2, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
-	if (_G.COPPER_AMOUNT) then
-		self:addTradeSkillSpell(45765, 375, self:AddSingleReputation(2, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
-	else
-		self:addTradeSkillSpell(45765, 360, self:AddSingleReputation(2, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
-	end
+	self:addTradeSkillSpell(45765, 375, self:AddSingleReputation(2, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
 
 	-- Raid Drops
 	self:addTradeSkillSpell(22749, 300, L["MOLTENCORE"], 6)

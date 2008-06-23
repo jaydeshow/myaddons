@@ -1,0 +1,28 @@
+------------------------------------------------------------------------
+r77205 | ckknight | 2008-06-21 19:40:41 -0400 (Sat, 21 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Cast.lua
+
+LibDogTag-Unit-3.0 - Make the cast event fire more sanely
+------------------------------------------------------------------------
+r77171 | shefki | 2008-06-21 00:12:29 -0400 (Sat, 21 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Cast.lua
+
+LibDogTag-Unit-3.0:
+- Fix to allow castbar text to update for target/focus when changed and
+  unit is already casting.  (Fixes PB-382 and probably others)
+
+------------------------------------------------------------------------
+r77150 | ckknight | 2008-06-20 11:10:20 -0400 (Fri, 20 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Cast.lua
+
+LibDogTag-Unit-3.0 - Fix an issue where oldStart could be nil
+------------------------------------------------------------------------
+r77081 | ckknight | 2008-06-19 08:08:51 -0400 (Thu, 19 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Cast.lua
+
+LibDogTag-Unit-3.0 - optimization for Cast tags.
+------------------------------------------------------------------------

@@ -959,7 +959,7 @@ AtlasLootBossButtons = {
         "SMVishas";
         "";
         "";
-        "";
+        "HeadlessHorseman";
         "SMBloodmageThalnos";
         "SMIronspine";
         "SMAzshir";
@@ -1029,14 +1029,15 @@ AtlasLootBossButtons = {
     SunwellPlateau = {
         "";
         "SPKalecgos";
-	"";
-	"";
+	    "";
+	    "";
         "SPBrutallus";
         "SPFelmyst";
         "SPEredarTwins";
         "";
         "";
         "SPMuru";
+        "";
         "SPKiljaeden";
         "";
         "SPPatterns";

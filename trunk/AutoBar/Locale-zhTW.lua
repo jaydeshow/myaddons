@@ -11,8 +11,6 @@ if (GetLocale() == "zhTW") then
 		["SLASHCMD_LONG"] = "/autobar",
 		["SLASHCMD_SHORT"] = "/atb",
 		["Button"] = "按鈕",
-		["EDITSLOT"] = "編輯欄位",
-		["VIEWSLOT"] = "檢視欄位",
 		["LOAD_ERROR"] = "|cff00ff00載入 AutoBarConfig 發生錯誤。請確定是否有這個插件，並啟用插件。|r錯誤: ",
 		["Toggle the config panel"] = "切換 AutoBar 設定視窗",
 		["Empty"] = "空",
@@ -204,11 +202,11 @@ if (GetLocale() == "zhTW") then
 		["AutoBarButtonClassPet"] = "職業寵物",
 		["AutoBarButtonConjure"] = "法術: 製造",
 		["AutoBarButtonCooldownDrums"] = "冷卻: 戰鼓",
-		["AutoBarButtonCooldownPotionCombat"] = "Potion Cooldown: Combat",
+		["AutoBarButtonCooldownPotionCombat"] = "藥水冷卻: 戰鬥",
 		["AutoBarButtonCooldownPotionHealth"] = "藥水冷卻: 生命力",
 		["AutoBarButtonCooldownPotionMana"] = "藥水冷卻: 法力",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "藥水冷卻: 活力",
-		["AutoBarButtonCooldownStoneCombat"] = "Stone Cooldown: Combat",
+		["AutoBarButtonCooldownStoneCombat"] = "石頭冷卻: 戰鬥",
 		["AutoBarButtonCooldownStoneHealth"] = "石頭冷卻: 生命力",
 		["AutoBarButtonCooldownStoneMana"] = "石頭冷卻: 法力",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "石頭冷卻: 活力",
@@ -216,7 +214,7 @@ if (GetLocale() == "zhTW") then
 		["AutoBarButtonDebuff"] = "減益",
 		["AutoBarButtonElixirBattle"] = "作戰藥劑",
 		["AutoBarButtonElixirGuardian"] = "防護藥劑",
-		["AutoBarButtonElixirBoth"] = "作戰及防護藥劑",
+		["AutoBarButtonElixirBoth"] = "作戰/防護藥劑",
 		["AutoBarButtonER"] = "緊急反應",
 		["AutoBarButtonExplosive"] = "爆裂物",
 		["AutoBarButtonFishing"] = "釣魚裝備",
@@ -466,8 +464,8 @@ if (GetLocale() == "zhTW") then
 		["Consumable.Cooldown.Stone.Health.Statue"] = "雕像";
 		["Consumable.Cooldown.Drums"] = "冷卻: 戰鼓";
 		["Consumable.Cooldown.Potion"] = "冷卻: 藥水";
-		["Consumable.Cooldown.Potion.Combat"] = "Cooldown: Potion - Combat";
-		["Consumable.Cooldown.Stone.Combat"] = "Cooldown: Stone - Combat";
+		["Consumable.Cooldown.Potion.Combat"] = "冷卻: 藥水 - 戰鬥";
+		["Consumable.Cooldown.Stone.Combat"] = "冷卻: 石 - 戰鬥";
 		["Consumable.Cooldown.Stone"] = "冷卻: 石";
 		["Consumable.Leatherworking.Drums"] = "戰鼓";
 		["Consumable.Tailor.Net"] = "網";
@@ -560,15 +558,9 @@ AUTOBAR_TOOLTIP8 = "\n(左鍵用於主手武器\n右鍵用於副手武器)";
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "點擊將重設為標準預設值。\n職業專用按鈕會在職業欄位中。\n預設按鈕在基本欄位中。\n共用和角色欄位將會清除。";
 
 --  AutoBarConfig.lua
---AUTOBAR_TOOLTIP9 = "多類型物品按鈕\n";
---AUTOBAR_TOOLTIP10 = " (按物品編號定制)";
---AUTOBAR_TOOLTIP11 = "\n(物品編號未經過驗證)";
---AUTOBAR_TOOLTIP12 = " (按物品名稱定制)";
---AUTOBAR_TOOLTIP13 = "單一類型物品按鈕\n\n";
 --AUTOBAR_TOOLTIP15 = "\n武器目標\n(左鍵用於主手武器\n右鍵用於副手武器。)";
 AUTOBAR_TOOLTIP17 = "\n僅戰鬥外";
 AUTOBAR_TOOLTIP18 = "\n僅戰鬥中";
---AUTOBAR_TOOLTIP20 = "\n使用條件限制: ";
 --AUTOBAR_TOOLTIP21 = "需恢復生命力";
 --AUTOBAR_TOOLTIP22 = "需恢復法力";
 

@@ -1025,6 +1025,7 @@ AtlasLoot_Data["AtlasLootItems"] = {
 		{ 19704, "", "=q2=Sandfury Coin", "=ds=#e15#", "3.47%" },
 		{ 19705, "", "=q2=Skullsplitter Coin", "=ds=#e15#", "3.32%" },
 		{ 19702, "", "=q2=Vilebranch Coin", "=ds=#e15#", "3.27%" },
+		{ 19703, "", "=q2=Witherbark Coin", "=ds=#e15#", "3.27%" },
 		{ 19698, "", "=q2=Zulian Coin", "=ds=#e15#", "3.01%" },
 	};
 

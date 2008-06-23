@@ -50,8 +50,9 @@ mod.partyContent = true
 mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Auchenai Crypts"]
 mod.enabletrigger = boss 
+mod.guid = 18371
 mod.toggleoptions = {"focus", "bosskill"}
-mod.revision = tonumber(("$Revision: 76528 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -59,7 +60,7 @@ mod.revision = tonumber(("$Revision: 76528 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE")
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------

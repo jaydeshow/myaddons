@@ -61,7 +61,7 @@ CappingLocale:CreateLocaleTable({
 	["One minute until"] = "一分钟",
 	["Thirty seconds until"] = "三十秒",
 	["Fifteen seconds until"] = "十五秒",
-	["%s: %s - %d:%02d remaining"] = "%s：%s - 剩余 %d：%02d", -- chat message after shift left-clicking a bar
+	["%s: %s - %d:%02d remaining"] = "%s:%s - 剩余 %d:%02d", -- chat message after shift left-clicking a bar
 	
 	-- AB	
 	["Bases: (%d+)  Resources: (%d+)/2000"] = "基地：(%d+) 资源：(%d+)/2000", -- arathi basin scoreboard

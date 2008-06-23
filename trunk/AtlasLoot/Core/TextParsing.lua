@@ -209,7 +209,13 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#ud17#", AL["Robotic Homing Chicken"]);
     text = gsub(text, "#ud18#", AL["Paper Airplane"]);
     text = gsub(text, "#ud19#", AL["Servants of the Betrayer"]);
-    text = gsub(text, "#ud20#", AL["Hunt for Illidan"]);
+    text = gsub(text, "#ud20#", AL["Papa Hummel's Old-fashioned Pet Biscuit"]);
+    text = gsub(text, "#ud21#", AL["Personal Weather Machine"]);
+    text = gsub(text, "#ud22#", AL["X-51 Nether-Rocket"]);
+    text = gsub(text, "#ud23#", AL["Hunt for Illidan"]);
+    text = gsub(text, "#ud24#", AL["The Footsteps of Illidan"]);
+    text = gsub(text, "#ud25#", AL["Disco Inferno!"]);
+    text = gsub(text, "#ud26#", AL["Ethereal Plunderer"]);
 
     -- ZG Tokens
     text = gsub(text, "#zgt1#", AL["Primal Hakkari Kossack"]);

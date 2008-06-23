@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-06-07 22:53:43 -0400 (Sat, 07 Jun 2008) $
-$Rev: 76247 $
+$Date: 2008-06-19 11:13:18 -0400 (Thu, 19 Jun 2008) $
+$Rev: 77091 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -334,6 +334,7 @@ L["Enchant Gloves - Herbalism Obt1"] = "악에물든 고대정령, 돌발톱 산
 L["Enchant Gloves - Mining Obt"] = "검은무쇠단 드워프, 검은무쇠단 폭파병, 검은무쇠단 채굴꾼, 검은무쇠단 투사, 불한당 발가라스"
 L["Enchant Gloves - Skinning Obt"] = "학살자 니마르, 마른나무껍질부족 광전사, 마른나무껍질부족 인간사냥꾼, 마른나무껍질부족 어둠사냥꾼"
 L["Enchant Weapon - Crusader Obt"] = "붉은십자군 역술사"
+L["Enchant Weapon - Crusader Obt1"] = "붉은십자군 대마법사"
 L["Enchant Weapon - Deathfrost Obt"] = "Lord Ahune - 여름 불꽃축제"
 L["Enchant Weapon - Fiery Weapon Obt"] = "화염술사 로어그레인"
 L["Enchant Weapon - Icy Chill Obt"] = "고통받는 명가의 원혼"
@@ -921,6 +922,7 @@ L["Harggan"] = "하르간"
 L["Harklan Moongrove"] = "하클란 문그로브"
 L["Harlown Darkweave"] = "하론 다크위브"
 L["Harn Longcast"] = "한 롱캐스트"
+L["Haughty Modiste"] = "거만한 의류상"
 L["Heldan Galesong"] = "헬단 게일송"
 L["Helenia Olden"] = "헬레니아 올든"
 L["Himmik"] = "힘믹"

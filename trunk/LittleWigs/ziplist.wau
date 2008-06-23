@@ -1,4 +1,4 @@
-LittleWigs/Changelog-LittleWigs-r76604.txt
+LittleWigs/Changelog-LittleWigs-r77265.txt
 LittleWigs/littlewigs-lod.sh
 LittleWigs/modules.xml
 LittleWigs/filelist.wau
@@ -32,6 +32,7 @@ LittleWigs/TempestKeep/Soccothrates.lua
 LittleWigs/TempestKeep/Zereketh.lua
 LittleWigs/Auchindoun/Hellmaw.lua
 LittleWigs/Auchindoun/LittleWigs_Auchindoun.toc
+LittleWigs/Auchindoun/Tavarok.lua
 LittleWigs/Auchindoun/Shirrak.lua
 LittleWigs/Auchindoun/Maladaar.lua
 LittleWigs/Auchindoun/Pandemonius.lua

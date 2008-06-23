@@ -13,7 +13,7 @@
 ## X-eMail: lahow DOT studio AT gmail DOT com
 ## X-Embeds: LibQuixote-2.0, LibGratuity-3.0
 ## RequiredDeps: Cartographer
-## OptionalDeps: Cartographer_Quests, Cartographer_QuestObjectives, LibQuixote-2.0, LibGratuity-3.0
+## OptionalDeps: Cartographer_Notes, Cartographer_Quests, Cartographer_QuestObjectives, LibQuixote-2.0, LibGratuity-3.0
 
 embeds.xml
 
@@ -32,6 +32,7 @@ Locale\Locale-enUS.lua
 Locale\Locale-zhTW.lua
 Locale\Locale-zhCN.lua
 Locale\Locale-koKR.lua
+Locale\Locale-esES.lua
 
 Core.lua
 Export.lua

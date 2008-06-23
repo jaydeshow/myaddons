@@ -197,6 +197,7 @@ AL:RegisterTranslations("deDE", function() return {
     ["Through The Dark Portal"] = "Durch das Dunkle Portal",
     ["Fires of Outland"] = "Feuer der Scherbenwelt",
     ["Servants of the Betrayer"] = "Diener des Verräters",
+    ["Hunt for Illidan"] = "Die Jagd nach Illidan",
     ["Loot Card Items"] = "Beutekarten Gegenstände",
     ["UDE Items"] = "UDE Gegenstände",
     ["Landro Longshot"] = "Landro Fernblick",
@@ -212,6 +213,12 @@ AL:RegisterTranslations("deDE", function() return {
     ["Kiting"] = "Papierdrachen",
     ["Robotic Homing Chicken"] = "Raketenhühnchen",
     ["Paper Airplane"] = "Papierflugmaschine",
+    ["Papa Hummel's Old-fashioned Pet Biscuit"] = "Papa Hummels altmodischer Tierkuchen",
+    ["Personal Weather Machine"] = "Persönlicher Wettermacher",
+    ["X-51 Nether-Rocket"] = "X-51 Netherrakete",
+    ["The Footsteps of Illidan"] = "Die Fußspuren von Illidan",
+    ["Disco Inferno!"] = "Disko-Inferno",
+    ["Ethereal Plunderer"] = "Astraler Brandschatzer",
 
     --Battleground Brackets
     ["Misc. Rewards"] = "Diverses",

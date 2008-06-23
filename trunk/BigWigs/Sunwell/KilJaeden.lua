@@ -9,7 +9,6 @@ local CheckInteractDistance = CheckInteractDistance
 local db = nil
 local started = nil
 local deaths = 0
-local bcount = 0
 local pName = UnitName("player")
 local bloomed = {}
 local phase = nil
@@ -30,7 +29,6 @@ L:RegisterTranslations("enUS", function() return {
 	bomb_bar = "Explosion!",
 	bomb_nextbar = "~Possible Bomb",
 	bomb_warning = "Possible bomb in ~10sec",
-	blueorb_message = "Blue Dragonflight Orb ready!",
 	kalec_yell = "I will channel my powers into the orbs! Be ready!",
 	kalec_yell2 = "I have empowered another orb! Use it quickly!",
 	kalec_yell3 = "Another orb is ready! Make haste!",
@@ -77,6 +75,11 @@ L:RegisterTranslations("enUS", function() return {
 	sinister_warning = "Sinister Reflections Soon!",
 	sinister_message = "Sinister Reflections Up!",
 
+	blueorb = "Dragon Orb",
+	blueorb_desc = "Warns on Blue Dragonflight Orb spawns.",
+	blueorb_message = "Blue Dragonflight Orb ready!",
+	blueorb_warning = "Dragon Orb in ~5 Sec!",
+
 	shield_up = "Shield is UP!",
 
 	deceiver_dies = "Deciever #%d Killed",
@@ -100,7 +103,6 @@ L:RegisterTranslations("koKR", function() return {
 	bomb_bar = "폭발!",
 	bomb_nextbar = "~폭탄 가능",
 	bomb_warning = "약 10초 이내 폭탄 가능!",
-	blueorb_message = "푸른용군단의 수정구 준비됨!",
 	kalec_yell = "수정구에 힘을 쏟겠습니다! 준비하세요!",
 	kalec_yell2 = "다른 수정구에 힘을 불어넣었습니다! 어서요!",
 	kalec_yell3 = "다른 수정구가 준비됐습니다! 서두르세요!",	--check
@@ -117,7 +119,7 @@ L:RegisterTranslations("koKR", function() return {
 	bloom_message = "5초 후 다음 화염 불꽃!",
 
 	bloomsay = "화염 불꽃 대화",
-	bloomsay_desc = "자신이 화염 불꽃이 걸렸을시 일반 대화로 출력합니다.",
+	bloomsay_desc = "자신이 화염 불꽃에 걸렸을시 일반 대화로 출력합니다.",
 	bloom_say = ""..strupper(pName).." 화염 불꽃!",
 
 	bloomwhisper = "화염 불꽃 귓속말",
@@ -140,12 +142,17 @@ L:RegisterTranslations("koKR", function() return {
 	flame = "불꽃 화살",
 	flame_desc = "불꽃 화살 타이머 바를 표시합니다.",
 	flame_bar = "다음 불꽃 화살",
-	flame_message = "5초 후 다음 불꽃 화살!",
+	flame_message = "5초 이내 다음 불꽃 화살!",
 
 	sinister = "사악한 환영",
 	sinister_desc = "사악한 환영 생성을 알립니다.",
 	sinister_warning = "잠시 후 사악한 환영!",
 	sinister_message = "사악한 환영!",
+	
+	blueorb = "푸른용군단의 수정구",
+	blueorb_desc = "푸른용군단의 수정구의 생성을 알립니다.",
+	blueorb_message = "푸른용군단의 수정구 준비됨!",
+	blueorb_warning = "약 5초 이내 용군단 수정구!",
 
 	shield_up = "푸른용의 보호막!",
 
@@ -170,7 +177,6 @@ L:RegisterTranslations("frFR", function() return {
 	bomb_bar = "Explosion !",
 	bomb_nextbar = "~Bombe probable",
 	bomb_warning = "Bombe probable dans ~10 sec.",
-	blueorb_message = "Orbe du Vol bleu prêt !",
 	kalec_yell = "Je vais canaliser mon énergie vers les orbes ! Préparez-vous !", -- à vérifier
 	kalec_yell2 = "J'ai chargé un autre orbe ! Utilisez-le vite !", -- à vérifier
 	kalec_yell3 = "Un autre orbe est prêt ! Hâtez-vous !", -- à vérifier
@@ -217,6 +223,11 @@ L:RegisterTranslations("frFR", function() return {
 	sinister_warning = "Reflets sinistres imminents !",
 	sinister_message = "Reflets sinistres actifs !",
 
+	blueorb = "Orbe du Vol bleu",
+	blueorb_desc = "Prévient quand un Orbe du Vol bleu est prêt.",
+	blueorb_message = "Orbe du Vol bleu prêt !",
+	blueorb_warning = "Orbe du Vol bleu dans ~5 sec. !",
+
 	shield_up = "Bouclier ACTIF !",
 
 	deceiver_dies = "Trompeur #%d tué",
@@ -240,7 +251,6 @@ L:RegisterTranslations("zhCN", function() return {
 	bomb_bar = "<千魂之暗>",
 	bomb_nextbar = "<可能 千魂之暗>",
 	bomb_warning = "约10秒后，可能千魂之暗！",
-	blueorb_message = "蓝龙宝珠已准备好！",
 	kalec_yell = "我会将我的力量导入宝珠中！准备好！",
 	kalec_yell2 = "我又将能量灌入了另一颗宝珠！快去使用它！",
 	kalec_yell3 = "又有一颗宝珠准备好了！快点行动！",
@@ -287,6 +297,11 @@ L:RegisterTranslations("zhCN", function() return {
 	sinister_warning = "即将 邪恶镜像！",
 	sinister_message = "邪恶镜像 出现！",
 
+	blueorb = "蓝龙宝珠",
+	blueorb_desc = "当蓝龙宝珠可用时发出警报。",
+	blueorb_message = "蓝龙宝珠已准备好！",
+	blueorb_warning = "约5秒后，蓝龙宝珠可以使用！",
+
 	shield_up = ">蓝龙之盾< 启用！",
 
 	deceiver_dies = "已杀死基尔加丹之手#%d",
@@ -312,8 +327,8 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
 mod.guid = 25315
-mod.toggleoptions = {"phase", -1, "bomb", "orb", "flame", -1, "bloom", "bloomwhisper", "bloomsay", "icons", -1, "sinister", "shadow", "shadowdebuff", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76591 $"):sub(12, -3))
+mod.toggleoptions = {"phase", -1, "bomb", "orb", "flame", -1, "bloom", "bloomwhisper", "bloomsay", "icons", -1, "sinister", "blueorb", "shadow", "shadowdebuff", "proximity", "bosskill"}
+mod.revision = tonumber(("$Revision: 77267 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -351,12 +366,24 @@ end
 ------------------------------
 
 function mod:Sinister()
+	self:CancelScheduledEvent("BombWarn")
+	self:TriggerEvent("BigWigs_StopBar", self, L["bomb_nextbar"])
 	if db.sinister then
 		self:IfMessage(L["sinister_message"], "Attention", 45892)
 	end
 	if db.flame then
-		self:Bar(L["flame_bar"], 60, 45737)
-		self:DelayedMessage(55, L["flame_message"], "Attention")
+		self:Bar(L["flame_bar"], 57, 45737)
+		self:DelayedMessage(52, L["flame_message"], "Attention")
+	end
+	if db.blueorb then
+		-- 23018, looks like a Blue Dragonflight Orb :)
+		if phase == 2 or phase == 3 then
+			self:Bar(L["blueorb"], 37, 23018)
+			self:DelayedMessage(32, L["blueorb_warning"], "Urgent")
+		elseif phase == 4 then
+			self:Bar(L["blueorb"], 45, 23018)
+			self:DelayedMessage(40, L["blueorb_warning"], "Urgent")
+		end
 	end
 end
 
@@ -381,9 +408,11 @@ function mod:Deaths(unit, guid)
 		self:IfMessage(L["deceiver_dies"]:format(deaths), "Positive")
 		if deaths == 3 then
 			phase = 2
-			self:Message(L["phase2_message"], "Attention")
 			self:Bar(boss, 10, "Spell_Shadow_Charm")
 			self:TriggerEvent("BigWigs_ShowProximity", self)
+			if db.phase then
+				self:Message(L["phase2_message"], "Important", nil, "Alarm")
+			end
 		end
 	else
 		self:BossDeath(nil, guid)
@@ -395,11 +424,8 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(_, unit)
 		self:Bar(L["bomb_bar"], 8, "Spell_Shadow_BlackPlague")
 		self:IfMessage(L["bomb_cast"], "Positive")
 		if phase == 3 or phase == 4 then
-			bCount = bCount + 1
-			if bCount < 2 then -- only do two times before next Orbs yell
-				self:Bar(L["bomb_nextbar"], 46, "Spell_Shadow_BlackPlague")
-				self:DelayedMessage(36, L["bomb_warning"], "Attention")
-			end
+			self:Bar(L["bomb_nextbar"], 46, "Spell_Shadow_BlackPlague")
+			self:ScheduleEvent("BombWarn", "BigWigs_Message", 36, L["bomb_warning"], "Attention")
 		elseif phase == 5 then
 			self:Bar(L["bomb_nextbar"], 25, "Spell_Shadow_BlackPlague")
 			self:DelayedMessage(15, L["bomb_warning"], "Attention")
@@ -408,24 +434,37 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(_, unit)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if (msg == L["kalec_yell"] or msg == L["kalec_yell2"] or msg == L["kalec_yell3"]) and db.bomb then
-		bCount = 0
-		self:IfMessage(L["blueorb_message"], "Attention")
-		self:Bar(L["bomb_nextbar"], 40, "Spell_Shadow_BlackPlague")
-		self:DelayedMessage(30, L["bomb_warning"], "Attention")
-	elseif msg == L["kalec_yell4"] and db.bomb then
-		self:IfMessage(L["blueorb_message"], "Attention")
-		self:Bar(L["bomb_nextbar"], 13, "Spell_Shadow_BlackPlague")
-		self:DelayedMessage(3, L["bomb_warning"], "Attention")
+	if (msg == L["kalec_yell"] or msg == L["kalec_yell2"] or msg == L["kalec_yell3"]) then
+		if db.bomb then
+			self:Bar(L["bomb_nextbar"], 40, "Spell_Shadow_BlackPlague")
+			self:DelayedMessage(30, L["bomb_warning"], "Attention")
+		end
+		if db.blueorb then
+			self:IfMessage(L["blueorb_message"], "Attention")
+		end
+	elseif msg == L["kalec_yell4"] then
+		if db.bomb then
+			self:Bar(L["bomb_nextbar"], 13, "Spell_Shadow_BlackPlague")
+			self:DelayedMessage(3, L["bomb_warning"], "Attention")
+		end
+		if db.blueorb then
+			self:IfMessage(L["blueorb_message"], "Attention")
+		end
 	elseif msg == L["phase3_trigger"] then
 		phase = 3
-		self:IfMessage(L["phase3_message"], "Attention")
+		if db.phase then
+			self:Message(L["phase3_message"], "Important", nil, "Alarm")
+		end
 	elseif msg == L["phase4_trigger"] then
 		phase = 4
-		self:IfMessage(L["phase4_message"], "Attention")
+		if db.phase then
+			self:Message(L["phase4_message"], "Important", nil, "Alarm")
+		end
 	elseif msg == L["phase5_trigger"] then
 		phase = 5
-		self:IfMessage(L["phase5_message"], "Attention")
+		if db.phase then
+			self:Message(L["phase5_message"], "Important", nil, "Alarm")
+		end
 	end
 end
 

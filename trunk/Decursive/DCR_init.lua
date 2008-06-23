@@ -719,6 +719,7 @@ function D:OnProfileEnable()
 	self:ScheduleRepeatingEvent("MUFupdate", self.DebuffsFrame_Update, self.profile.DebuffsFrameRefreshRate, self);
     end
     D.DcrFullyInitialized = true;
+    D:ShowHideButtons(true);
 end
 
 function D:OnDisable() -- When the addon is disabled by ACE
@@ -795,7 +796,6 @@ function D:Init() --{{{
 	D.profile.MacroBind = false;
     end
 
-    D:ShowHideButtons(true);
 
     D:ChangeTextFrameDirection(D.profile.CustomeFrameInsertBottom);
 
@@ -1101,7 +1101,7 @@ function D:SetDateAndRevision (Date, Revision)
     end
 end
 
-D:SetDateAndRevision("$Date: 2008-05-31 13:27:58 -0400 (Sat, 31 May 2008) $", "$Revision: 75655 $");
+D:SetDateAndRevision("$Date: 2008-06-21 09:31:33 -0400 (Sat, 21 Jun 2008) $", "$Revision: 77182 $");
 
 DcrLoadedFiles["DCR_init.lua"] = true;
 

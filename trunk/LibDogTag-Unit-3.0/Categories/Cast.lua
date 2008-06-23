@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 71968 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 77205 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_Unit_MINOR_VERSION then
 	_G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
@@ -45,21 +45,26 @@ end})
 
 DogTag:AddTimerHandler("Unit", function(num, currentTime)
 	for unit, data in pairs(castData) do
-		if not IsNormalUnit[unit] then
+		if not IsNormalUnit[unit] or not next(data) then
 			castData[unit] = del(data)
-		elseif not data.stopTime and data.endTime and currentTime > data.endTime then
-			if data.casting then
-			 	if not UnitIsUnit("player", unit) then
+		else
+			if not data.stopTime and data.endTime and currentTime > data.endTime then
+				if data.casting then
+				 	if not UnitIsUnit("player", unit) then
+						data.stopTime = currentTime
+					end
+				else
 					data.stopTime = currentTime
 				end
-			else
-				data.stopTime = currentTime
+			elseif data.stopTime and data.stopTime + 1 < currentTime then
+				castData[unit] = del(data)
 			end
+			DogTag:FireEvent("Cast", unit)
 		end
 	end
 end)
 
-DogTag:AddEventHandler("Unit", "UnitChange", function(event, unit)
+DogTag:AddEventHandler("Unit", "UnitChanged", function(event, unit)
 	if rawget(castData, unit) then
 		castData[unit] = del(castData[unit])
 	end
@@ -184,6 +189,9 @@ local function UNIT_SPELLCAST_DELAYED(event, unit)
 	local oldStart = castData[unit].startTime
 	
 	startTime = startTime / 1000
+	if not oldStart then
+		oldStart = startTime
+	end
 	castData[unit].startTime = startTime
 	castData[unit].endTime = endTime / 1000
 
@@ -210,6 +218,9 @@ local function UNIT_SPELLCAST_CHANNEL_UPDATE(event, unit)
 	
 	local oldStart = castData[unit].startTime
 	startTime = startTime / 1000
+	if not oldStart then
+		oldStart = startTime
+	end
 	castData[unit].startTime = startTime
 	castData[unit].endTime = endTime / 1000
 	castData[unit].delay = castData[unit].delay + (oldStart - startTime)
@@ -235,7 +246,7 @@ DogTag:AddTag("Unit", "CastName", {
 		'unit', 'string;undef', 'player'
 	},
 	ret = "string;nil",
-	events = "Cast",
+	events = "Cast#$unit",
 	doc = L["Return the current or last spell to be cast"],
 	example = ('[CastName] => %q'):format(L["Holy Light"]),
 	category = L["Casting"]
@@ -249,7 +260,7 @@ DogTag:AddTag("Unit", "CastTarget", {
 		'unit', 'string;undef', 'player'
 	},
 	ret = "string;nil",
-	events = "Cast",
+	events = "Cast#$unit",
 	doc = L["Return the current cast target name"],
 	example = ('[CastTarget] => %q'):format((UnitName("player"))),
 	category = L["Casting"]
@@ -263,7 +274,7 @@ DogTag:AddTag("Unit", "CastRank", {
 		'unit', 'string;undef', 'player'
 	},
 	ret = "number;nil",
-	events = "Cast",
+	events = "Cast#$unit",
 	doc = L["Return the current cast rank"],
 	example = '[CastRank] => "4"; [CastRank:Romanize] => "IV"',
 	category = L["Casting"]
@@ -282,7 +293,7 @@ DogTag:AddTag("Unit", "CastStartDuration", {
 		'unit', 'string;undef', 'player'
 	},
 	ret = "number;nil",
-	events = "FastUpdate;Cast#$unit",
+	events = "Cast#$unit",
 	doc = L["Return the duration since the current cast started"],
 	example = '[CastStartDuration] => "3.012367"; [CastStartDuration:FormatDuration] => "0:03"',
 	category = L["Casting"]
@@ -301,7 +312,7 @@ DogTag:AddTag("Unit", "CastEndDuration", {
 		'unit', 'string;undef', 'player'
 	},
 	ret = "number;nil",
-	events = "FastUpdate;Cast#$unit",
+	events = "Cast#$unit",
 	globals = "DogTag.__castData",
 	doc = L["Return the duration until the current cast is meant to finish"],
 	example = '[CastEndDuration] => "2.07151"; [CastEndDuration:FormatDuration] => "0:02"',
@@ -349,7 +360,7 @@ DogTag:AddTag("Unit", "CastStopDuration", {
 		'unit', 'string;undef', 'player'
 	},
 	ret = "number;nil",
-	events = "FastUpdate;Cast#$unit",
+	events = "Cast#$unit",
 	doc = L["Return the duration which the current cast has been stopped, blank if not stopped yet"],
 	example = '[CastStopDuration] => "2.06467"; [CastStopDuration:FormatDuration] => "0:02"; [CastStopDuration] => ""',
 	category = L["Casting"]

@@ -1,0 +1,210 @@
+------------------------------------------------------------------------
+r77274 | hegarol | 2008-06-23 08:08:22 -0400 (Mon, 23 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/PvP.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- old lvl 70 weapons removed
+------------------------------------------------------------------------
+r77244 | hegarol | 2008-06-22 09:58:21 -0400 (Sun, 22 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- Arena season 4 updates
+------------------------------------------------------------------------
+r77237 | daviesh | 2008-06-22 08:13:39 -0400 (Sun, 22 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/HooksandAPI.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   A /trunk/AtlasLoot/Instances/Atlas112Compat.lua
+   M /trunk/AtlasLoot/Instances/Instances.xml
+   M /trunk/AtlasLoot/PvP/Battlegrounds.en.lua
+
+AtlasLoot:
+- Implemented compatibility with Atlas 1.12
+------------------------------------------------------------------------
+r77231 | maqjav | 2008-06-22 05:53:37 -0400 (Sun, 22 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+
+AtlasLoot:
+-esES update
+------------------------------------------------------------------------
+r77218 | hegarol | 2008-06-22 03:11:58 -0400 (Sun, 22 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Lord Ahune heroic table added
+------------------------------------------------------------------------
+r77176 | hegarol | 2008-06-21 04:02:14 -0400 (Sat, 21 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- small changes
+------------------------------------------------------------------------
+r77141 | diablohu | 2008-06-20 07:19:05 -0400 (Fri, 20 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
+r77125 | daviesh | 2008-06-19 22:38:54 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- Updated documentation
+------------------------------------------------------------------------
+r77124 | daviesh | 2008-06-19 22:36:02 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.xml
+   M /trunk/AtlasLoot/DefaultFrame/AtlaslootDefaultFrame.xml
+
+AtlasLoot:
+- Fixed remaining Quicklooks bugs, added support to the loot browser and Alphamap, added tooltips to the Quicklook buttons.
+------------------------------------------------------------------------
+r77113 | daviesh | 2008-06-19 21:56:44 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+
+AtlasLoot:
+- Bugfix for searching and the wishlist
+------------------------------------------------------------------------
+r77102 | trasher | 2008-06-19 13:40:56 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r77094 | hegarol | 2008-06-19 12:11:43 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+
+AtlasLoot:
+- complete overhaul of TCG section
+------------------------------------------------------------------------
+r77076 | daviesh | 2008-06-19 06:55:45 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.xml
+
+AtlasLoot:
+- Bugfix for unintended consequence of changing the .refresh routine
+------------------------------------------------------------------------
+r77023 | scorpio0920 | 2008-06-18 15:39:46 -0400 (Wed, 18 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- Fixed typo.
+------------------------------------------------------------------------
+r77010 | trasher | 2008-06-18 11:49:25 -0400 (Wed, 18 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR udpate
+------------------------------------------------------------------------
+r77001 | daviesh | 2008-06-18 07:28:06 -0400 (Wed, 18 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.xml
+
+AtlasLoot:
+- Beta version of Quicklooks finished, still need to implement in the Loot Browser (trivial), make tooltips work and figure out how best to deal with third party mods (ie: Alphamap).  At the moment, a quicklook save in one interface can only be retrieved via that interface.
+------------------------------------------------------------------------
+r76891 | daviesh | 2008-06-16 22:41:33 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.xml
+
+AtlasLoot:
+- Began UI layout for QuickLooks feature.  Once it is working in Atlas it will be trivial to add it to the loot browser.  As there is no code to drive them, all buttons are disabled at the moment.
+------------------------------------------------------------------------
+r76881 | daviesh | 2008-06-16 21:58:46 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Instances.xml
+   D /trunk/AtlasLoot/Instances/instances.cn.lua
+   D /trunk/AtlasLoot/Instances/instances.de.lua
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+   D /trunk/AtlasLoot/Instances/instances.fr.lua
+
+AtlasLoot:
+- Cleanup the instances directory
+------------------------------------------------------------------------
+r76844 | daviesh | 2008-06-16 10:06:41 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Instances.xml
+   A /trunk/AtlasLoot/Instances/instances.de.lua
+
+AtlasLoot:
+- Fix for Sunwell Plateau (German)
+------------------------------------------------------------------------
+r76838 | maqjav | 2008-06-16 08:18:39 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.es.lua
+
+AtlasLoot:
+-esES update
+------------------------------------------------------------------------
+r76653 | ananhaid | 2008-06-14 02:00:56 -0400 (Sat, 14 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Instances.xml
+   A /trunk/AtlasLoot/Instances/instances.cn.lua
+
+AtlasLoot:
+- Compensated for an inconsistency in Atlas zhCN locale.
+------------------------------------------------------------------------
+r76629 | ascalia | 2008-06-13 16:58:12 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+
+AtlasLoot:
+- Prepare for next Atlas testing (1.12.0)
+------------------------------------------------------------------------
+r76345 | daviesh | 2008-06-09 10:07:13 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Instances.xml
+   A /trunk/AtlasLoot/Instances/instances.fr.lua
+
+AtlasLoot:
+- Compensated for an inconsistency in Atlas localisation 
+------------------------------------------------------------------------
+r76332 | daviesh | 2008-06-09 06:50:57 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- Re-fixed the Sunwell loot table for the English locale.  Trasher, post what locale you use (I can't remember if it is fr or de) and I'll fix it up for you.
+------------------------------------------------------------------------
+r76307 | nemes | 2008-06-09 01:26:52 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+
+AtlasLoot:
+- fix the incorrectly quoted string in r76272
+------------------------------------------------------------------------
+r76272 | arith | 2008-06-08 14:01:04 -0400 (Sun, 08 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.tw.lua
+
+AtlasLoot:
+-zhtw update
+------------------------------------------------------------------------

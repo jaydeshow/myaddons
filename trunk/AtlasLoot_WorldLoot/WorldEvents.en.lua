@@ -65,7 +65,7 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 31571, "", "=q3=Mistshroud Belt", "=ds=#s10#, #a3# =q2=#m16#", "3.6%" },
 		{ 31582, "", "=q3=Slatesteel Bracers", "=ds=#s8#, #a4# =q2=#m16#", "4.3%" },
 		{ 31579, "", "=q3=Slatesteel Girdle", "=ds=#s10#, #a4# =q2=#m16#", "5.3%" },
-		{ 32514, "", "=q3=Skettis Band", "=ds=#s13#, =q2=#m16#", "24.9%" },
+		{ 32514, "", "=q3=Skettis Band", "=ds=#s13# =q2=#m16#", "24.9%" },
 	};
 
 	GezzaraktheHuntress = {
@@ -94,7 +94,7 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 31574, "", "=q3=Mistshroud Bracers", "=ds=#s8#, #a3# =q2=#m16#", "5.7%" },
 		{ 31571, "", "=q3=Mistshroud Belt", "=ds=#s10#, #a3# =q2=#m16#", "6.3%" },
 		{ 31582, "", "=q3=Slatesteel Bracers", "=ds=#s8#, #a4# =q2=#m16#", "5.8%" },
-		{ 31579, "", "=q3=Slatesteel Girdle", "=ds#s10#, #a4# =q2=#m16#", "2.7%" },
+		{ 31579, "", "=q3=Slatesteel Girdle", "=ds=#s10#, #a4# =q2=#m16#", "2.7%" },
 		{ 32514, "", "=q3=Skettis Band", "=ds=#s13# =q2=#m16#", "28.7%" },
 	};
 
@@ -887,13 +887,11 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 -------------------------------
 
 	MidsummerFestival = {
-		{ 35279, "", "=q3=Tabard of Summer Skies", "=ds=#s7#, =ec1=#m7#" },
-		{ 35280, "", "=q3=Tabard of Summer Flames", "=ds=#s7#, =ec1=#m7#" },
 		{ 34686, "", "=q3=Brazier of Dancing Flames", "=ds=" },
+		{ 23083, "", "=q3=Captured Flame", "=ds=#e13#" },
 		{ 0,"","","" },
 		{ 23379, "", "=q2=Cinder Bracers", "=ds=#e22#" },
 		{ 0,"","","" },
-		{ 23083, "", "=q1=Captured Flame", "=ds=#e13#" },
 		{ 23247, "", "=q1=Burning Blossom", "=ds=" },
 		{ 23246, "", "=q1=Fiery Festival Brew", "=ds=" },
 		{ 23435, "", "=q1=Elderberry Pie", "=ds=" },
@@ -902,6 +900,8 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 23211, "", "=q1=Toasted Smorc", "=ds=" },
 		{ 34684, "", "=q1=Handful of Summer Petals", "=ds=" },
 		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
 		{ 23323, "", "=q1=Crown of the Fire Festival", "=ds=#s1#, #a1#" },
 		{ 23324, "", "=q1=Mantle of the Fire Festival", "=ds=#s3#, #a1#" },
 		{ 34685, "", "=q1=Vestment of Summer", "=ds=#s5#" },
@@ -909,12 +909,41 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 	};
 
 	LordAhune = {
+		{ 35497, "", "=q4=Cloak of the Frigid Winds", "=ds=#s4#" },
+		{ 35496, "", "=q4=Icebound Cloak", "=ds=#s4#" },
 		{ 35494, "", "=q4=Shroud of Winter's Chill", "=ds=#s4#" },
 		{ 35495, "", "=q4=The Frost Lord's War Cloak", "=ds=#s4#" },
-		{ 35496, "", "=q4=Icebound Cloak", "=ds=#s4#" },
 		{ 35514, "", "=q4=Frostscythe of Lord Ahune", "=ds=#w9#" },
 		{ 0,"","","" },
+		{ 35498, "", "=q3=Formula: Enchant Weapon - Deathfrost", "=ds=#p4# (350)" },
 		{ 34955, "", "=q3=Scorched Stone", "=ds=#e13#" },
+		{ 0,"","","" },
+		{ 35723, "", "=q1=Shards of Ahune", "=ds=#m2#" },
+		{ 35279, "", "=q3=Tabard of Summer Skies", "=q1=#m4#: =ds=#s7#" },
+		{ 35280, "", "=q3=Tabard of Summer Flames", "=q1=#m4#: =ds=#s7#" },
+	};
+	
+	LordAhuneHEROIC = {
+		{ 35507, "", "=q4=Amulet of Bitter Hatred", "=ds=#s2#" },
+		{ 35509, "", "=q4=Amulet of Glacial Tranquility", "=ds=#s2#" },
+		{ 35508, "", "=q4=Choker of the Arctic Flow", "=ds=#s2#" },
+		{ 35511, "", "=q4=Hailstone Pendant", "=ds=#s2#" },
+		{ 0,"","","" },
+		{ 35498, "", "=q3=Formula: Enchant Weapon - Deathfrost", "=ds=#p4# (350)" },
+		{ 34955, "", "=q3=Scorched Stone", "=ds=#e13#" },
+		{ 0,"","","" },
+		{ 35723, "", "=q1=Shards of Ahune", "=ds=#m2#" },
+		{ 35279, "", "=q3=Tabard of Summer Skies", "=q1=#m4#: =ds=#s7#" },
+		{ 35280, "", "=q3=Tabard of Summer Flames", "=q1=#m4#: =ds=#s7#" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 35497, "", "=q4=Cloak of the Frigid Winds", "=ds=#s4#" },
+		{ 35496, "", "=q4=Icebound Cloak", "=ds=#s4#" },
+		{ 35494, "", "=q4=Shroud of Winter's Chill", "=ds=#s4#" },
+		{ 35495, "", "=q4=The Frost Lord's War Cloak", "=ds=#s4#" },
+		{ 35514, "", "=q4=Frostscythe of Lord Ahune", "=ds=#w9#" },
 	};
 
 ----------------

@@ -11,8 +11,6 @@ if (GetLocale() == "enUS") then
 		["SLASHCMD_LONG"] = "/autobar",
 		["SLASHCMD_SHORT"] = "/atb",
 		["Button"] = "Button",
-		["EDITSLOT"] = "Edit Slot",
-		["VIEWSLOT"] = "View Slot",
 		["LOAD_ERROR"] = "|cff00ff00Error Loading the AutoBarConfig mod. Make sure you download and enable it.|r Error: ",
 		["Toggle the config panel"] = "Toggle the config panel",
 		["Empty"] = "Empty",
@@ -559,15 +557,9 @@ AUTOBAR_TOOLTIP8 = "\n(Left Click to apply to Main Hand weapon\nRight Click to a
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "Click to reset to the standard defaults.\nClass specific slots are in the Class layer.\nDefault slots are in the Basic layer.\nShared and Character layers are cleared.";
 
 --  AutoBarConfig.lua
---AUTOBAR_TOOLTIP9 = "Multi Category Button\n";
---AUTOBAR_TOOLTIP10 = " (Custom Item by ID)";
---AUTOBAR_TOOLTIP11 = "\n(Item ID not recognized)";
---AUTOBAR_TOOLTIP12 = " (Custom Item by Name)";
---AUTOBAR_TOOLTIP13 = "Single Category Button\n\n";
 --AUTOBAR_TOOLTIP15 = "\nWeapon Target\n(Left click main weapon\nRight click offhand weapon.)";
 AUTOBAR_TOOLTIP17 = "\nNon combat only.";
 AUTOBAR_TOOLTIP18 = "\nCombat only.";
---AUTOBAR_TOOLTIP20 = "\nLimited Usage: "
 --AUTOBAR_TOOLTIP21 = "Require HP restore";
 --AUTOBAR_TOOLTIP22 = "Require Mana restore";
 

@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -85,6 +85,11 @@ L:RegisterTranslations("frFR", function() return {
 	barrier_message = "Barrière de choc !",
 	barrier_next_bar = "~Prochaine Barrière",
 	barrier_soon_message = "Barrière de choc imminente !",
+
+	pyro = "Explosion pyrotechnique (Héroïque)",
+	pyro_desc = "Prévient quand Kael'thas incante une Explosion pyrotechnique.",
+	pyro_message = "Kael'thas incante une Explosion pyrotechnique",
+	pyro_cast_bar = "Explosion pyro. sur %s !",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -147,8 +152,9 @@ local mod = BigWigs:NewModule(boss.."(MT)")
 mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
+mod.guid = 24664
 mod.toggleoptions = {"glapse", "phoenix", "flamestrike", -1, "barrier", "pyro", "bosskill"}
-mod.revision = tonumber(("$Revision: 76604 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77265 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -164,7 +170,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_SUMMON", "Phoenix", 44194)
 	self:AddCombatListener("SPELL_SUMMON", "FlameStrike", 44192, 46162)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Barrier", 46165)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "CheckForEngage")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 

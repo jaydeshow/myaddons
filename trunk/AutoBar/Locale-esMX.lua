@@ -11,8 +11,6 @@ if (GetLocale() == "esMX") then
 		["SLASHCMD_LONG"] = "/autobar",
 		["SLASHCMD_SHORT"] = "/atb",
 		["Button"] = "Botón",
-		["EDITSLOT"] = "Editar Casilla",
-		["VIEWSLOT"] = "Ver Casilla",
 		["LOAD_ERROR"] = "|cff00ff00Error al cargar AutoBarConfig. Asegúrese de tenerlo instalado y activado.|r Error: ",
 		["Toggle the config panel"] = "Alternar el panel de configuración",
 		["Empty"] = "Vacío",
@@ -560,15 +558,9 @@ AUTOBAR_TOOLTIP8 = "\n(Click-Izquierdo para aplicar como arma de la mano princip
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "Pulsa para reestablecer la configuración estándar.\nLas casillas de clase se colocan en la capa de Clase.\nLas casillas por defecto son colocadas en la capa Básica.\nLas capas de Personaje y Compartido son limpiadas.";
 
 --  AutoBarConfig.lua
---AUTOBAR_TOOLTIP9 = "Botón Multi Categoría\n";
---AUTOBAR_TOOLTIP10 = " (Objeto Personalizado por ID)";
---AUTOBAR_TOOLTIP11 = "\n(ID de objeto no reconocida)";
---AUTOBAR_TOOLTIP12 = " (Objeto Personalizado por Nombre)";
---AUTOBAR_TOOLTIP13 = "Botón de Categoría Única\n\n";
 --AUTOBAR_TOOLTIP15 = "\nArma Objetivo\n(Click-Izquierdo arma principal\nClick-Derecho arma secundaria.)";
 AUTOBAR_TOOLTIP17 = "\nSolo sin combate.";
 AUTOBAR_TOOLTIP18 = "\nSolo en combate.";
---AUTOBAR_TOOLTIP20 = "\nUso Limitado: "
 --AUTOBAR_TOOLTIP21 = "Requiere Recuperación de Salud";
 --AUTOBAR_TOOLTIP22 = "Requiere Recuperación de Maná";
 

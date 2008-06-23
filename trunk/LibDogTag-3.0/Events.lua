@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibDogTag-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 68112 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 77057 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_MINOR_VERSION then
 	_G.DogTag_MINOR_VERSION = MINOR_VERSION
@@ -14,7 +14,7 @@ local fixNamespaceList = DogTag.fixNamespaceList
 local memoizeTable = DogTag.memoizeTable
 local select2 = DogTag.select2
 local kwargsToKwargTypes = DogTag.kwargsToKwargTypes
-local codeToFunction, codeEvaluationTime, evaluate, fsToKwargs, fsToFrame, fsToNSList, fsToCode,  updateFontString
+local codeToFunction, codeEvaluationTime, evaluate, fsToKwargs, fsToFrame, fsToNSList, fsToCode,  updateFontString, updateFontStrings
 local fsNeedUpdate, fsNeedQuickUpdate
 local _clearCodes
 DogTag_funcs[#DogTag_funcs+1] = function()
@@ -26,6 +26,7 @@ DogTag_funcs[#DogTag_funcs+1] = function()
 	fsToNSList = DogTag.fsToNSList
 	fsToCode = DogTag.fsToCode
 	updateFontString = DogTag.updateFontString
+	updateFontStrings = DogTag.updateFontStrings
 	for fs in pairs(fsToFrame) do
 		fsNeedQuickUpdate[fs] = true
 	end
@@ -472,6 +473,7 @@ end
 frame:SetScript("OnEvent", OnEvent)
 
 local GetMilliseconds
+local GetTime = _G.GetTime
 if DogTag_DEBUG then
 	function GetMilliseconds()
 		return math.floor(GetTime() * 1000 + 0.5)
@@ -566,10 +568,17 @@ local function OnUpdate(this, elapsed)
 		end
 		
 		for fs in pairs(fsNeedUpdate) do
-			updateFontString(fs)
+			fsNeedQuickUpdate[fs] = true
+			fsNeedUpdate[fs] = nil
 		end
-	end	
+	end
+	local finish_time = GetTime() + 1/300
+	local num = 0
 	for fs in pairs(fsNeedQuickUpdate) do
+		num = num + 1
+		if num%10 == 0 and GetTime() >= finish_time then
+			break
+		end
 		updateFontString(fs)
 	end
 end

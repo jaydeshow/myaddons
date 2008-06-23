@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r76843 | daviesh | 2008-06-16 09:51:35 -0400 (Mon, 16 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Faction-3.0/LibBabble-Faction-3.0.lua
+
+LibBabble-Faction-3.0: Correction of Honor Hold for the french client
+------------------------------------------------------------------------

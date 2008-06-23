@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 75327 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 76936 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-28 05:36:09 -0400 (Wed, 28 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-06-17 11:59:04 -0400 (Tue, 17 Jun 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("CombatEventsData", "LibRockEvent-1.0")
@@ -2193,6 +2193,37 @@ Parrot:RegisterCombatEvent{
 	},
 	color = "ff7f00", -- orange
 	canCrit = true,
+	throttle = { "Melee damage", 'sourceID', { 'throttleCount', 'isCrit', function(info)
+		local numNorm = info.throttleCount_isCrit_false or 0
+		local numCrit = info.throttleCount_isCrit_true or 0
+		info.isCrit = numCrit > 0
+		if numNorm == 1 then
+			if numCrit == 1 then
+				return L[" (%d hit, %d crit)"]:format(1, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return nil
+			else -- >= 2
+				return L[" (%d hit, %d crits)"]:format(1, numCrit)
+			end
+		elseif numNorm == 0 then
+			if numCrit == 1 then
+				-- just one crit
+				return nil
+			else -- >= 2
+				return L[" (%d crits)"]:format(numCrit)
+			end
+		else -- >= 2
+			if numCrit == 1 then
+				return L[" (%d hits, %d crit)"]:format(numNorm, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return L[" (%d hits)"]:format(numNorm)
+			else -- >= 2
+				return L[" (%d hits, %d crits)"]:format(numNorm, numCrit)
+			end
+		end
+	end }, recipientName = L["Multiple"] },
 }
 
 Parrot:RegisterCombatEvent{
@@ -2376,6 +2407,38 @@ Parrot:RegisterCombatEvent{
 	},
 	color = "0000ff", -- blue
 	canCrit = true,
+	throttle = { "Skill damage", 'abilityName', { 'throttleCount', 'isCrit', function(info)
+		local numNorm = info.throttleCount_isCrit_false or 0
+		local numCrit = info.throttleCount_isCrit_true or 0
+		info.isCrit = numCrit > 0
+		if numNorm == 1 then
+			if numCrit == 1 then
+				return L[" (%d hit, %d crit)"]:format(1, 1)
+			elseif numCrit == 0 then
+				-- just one hit
+				return nil
+			else -- >= 2
+				return L[" (%d hit, %d crits)"]:format(1, numCrit)
+			end
+		elseif numNorm == 0 then
+			if numCrit == 1 then
+				-- just one crit
+				return nil
+			else -- >= 2
+				return L[" (%d crits)"]:format(numCrit)
+			end
+		else -- >= 2
+			if numCrit == 1 then
+				return L[" (%d hits, %d crit)"]:format(numNorm, 1)
+			elseif numCrit == 0 then
+				return L[" (%d hits)"]:format(numNorm)
+			else -- >= 2
+				return L[" (%d hits, %d crits)"]:format(numNorm, numCrit)
+			end
+		end
+	end }, recipientName = L["Multiple"] },
+	filterType = { "Outgoing damage", 'amount' },
+	
 }
 
 Parrot:RegisterCombatEvent{

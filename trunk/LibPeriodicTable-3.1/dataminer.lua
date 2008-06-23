@@ -60,24 +60,24 @@ local url = require("socket.url")
 local httptime, httpcount = 0, 0
 local getpage
 do
-	local status, curl = pcall(require, "curl")
+	local status, curl = pcall(require, "luacurl")
 	if status then
-		local temp
-		local write = function (s, len)
+		local write = function (temp, s)
 			temp[#temp + 1] = s
-			return len
+			return s:len()
 		end
-		local c = curl.easy_init()
+		local c = curl.new()
 		function getpage(url)
 			dprint(2, "curl", url)
-			temp = {}
+			local temp = {}
 			c:setopt(curl.OPT_URL, url)
 			c:setopt(curl.OPT_WRITEFUNCTION, write)
+			c:setopt(curl.OPT_WRITEDATA, temp)
 			local stime = os.time()
-			local err, info = c:perform()
+			local status, info = c:perform()
 			httptime = httptime + (os.time() - stime)
 			httpcount = httpcount + 1
-			if err ~= 0 then
+			if not status then
 				dprint(1, "curl error", url, info)
 			else
 				temp = table.concat(temp)

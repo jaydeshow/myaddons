@@ -1,6 +1,6 @@
 -- Elsia: For delete on instance entry
 -- Deletes data whenever a new, not the same instance is entered. This should safe-guard against corpse-run-reenters and the like.
-local revision = tonumber(string.sub("$Revision: 73362 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 76996 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 function Recount:DetectInstanceChange() -- Elsia: With thanks to Loggerhead
@@ -14,7 +14,7 @@ function Recount:DetectInstanceChange() -- Elsia: With thanks to Loggerhead
 	end
 
 	local inInstance, instanceType = IsInInstance()
-	if Recount.SetZoneFilter  then Recount:SetZoneFilter(instanceType) end -- Use zone-based filters.
+	if Recount.SetZoneFilter and not UnitIsGhost(Recount.PlayerName) then Recount:SetZoneFilter(instanceType) end -- Use zone-based filters.
 
 	if not Recount.db.profile.AutoDeleteNewInstance then return end
 	

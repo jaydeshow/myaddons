@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-06-07 17:28:24 -0400 (Sat, 07 Jun 2008) $
-$Rev: 76230 $
+$Date: 2008-06-19 10:57:24 -0400 (Thu, 19 Jun 2008) $
+$Rev: 77088 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -333,6 +333,7 @@ L["Enchant Gloves - Herbalism Obt1"] = "Vengeful Ancient, Blackened Ancient, Cha
 L["Enchant Gloves - Mining Obt"] = "Dark Iron Dwarf, Dark Iron Demonlitionist, Dark Iron Tunneler, Dark Iron Saboteur, Balgaras the Foul"
 L["Enchant Gloves - Skinning Obt"] = "Nimar the Slayer, Witherbark Berserker, Witherbark Headhunter, Witherbark Shadow Hunter"
 L["Enchant Weapon - Crusader Obt"] = "Scarlet Spellbinder"
+L["Enchant Weapon - Crusader Obt1"] = "Scarlet Archmage"
 L["Enchant Weapon - Deathfrost Obt"] = "Lord Ahune - Midsummer Fire Festival"
 L["Enchant Weapon - Fiery Weapon Obt"] = "Pyromancer Loregrain"
 L["Enchant Weapon - Icy Chill Obt"] = "Anguished Highborne"
@@ -920,6 +921,7 @@ L["Harggan"] = true
 L["Harklan Moongrove"] = true
 L["Harlown Darkweave"] = true
 L["Harn Longcast"] = true
+L["Haughty Modiste"] = true
 L["Heldan Galesong"] = true
 L["Helenia Olden"] = true
 L["Himmik"] = true

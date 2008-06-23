@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 76835 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76860 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -60,6 +60,8 @@ AutoBar.date = DATE
 AutoBar.spellNameList = {}
 -- List of [spellName] = <GetSpellInfo Icon>
 AutoBar.spellIconList = {}
+
+AutoBar.events = {}
 
 AutoBar.delay = {}
 
@@ -235,8 +237,12 @@ function AutoBar:OnInitialize()
 	AutoBar.inBG = false		-- For battleground only items
 	AutoBar.flyable = SecureCmdOptionParse("[flyable]1")
 
-	-- Single parent for key binding overides
-	AutoBar.keyFrame = CreateFrame("Frame", nil, UIParent)
+	-- Single parent for key binding overides, and event handling
+	AutoBar.frame = CreateFrame("Frame", nil, UIParent)
+	AutoBar.frame:SetScript("OnEvent",
+		function(this, event, ...)
+			AutoBar.events[event](AutoBar, ...)
+		end)
 
 	-- List of barKey = barDB (the correct DB to use between char, class or account)
 	AutoBar.barButtonsDBList = {}
@@ -295,8 +301,8 @@ function AutoBar:OnEnable(first)
 	self:RegisterEvent("PLAYER_ALIVE")
 	self:RegisterEvent("PLAYER_AURAS_CHANGED")
 	self:RegisterEvent("PLAYER_CONTROL_GAINED")
-	self:RegisterEvent("PLAYER_REGEN_ENABLED")
-	self:RegisterEvent("PLAYER_REGEN_DISABLED")
+	AutoBar.frame:RegisterEvent("PLAYER_REGEN_ENABLED")
+	AutoBar.frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 	self:RegisterEvent("PLAYER_UNGHOST")
 	self:RegisterEvent("BAG_UPDATE_COOLDOWN")
 	self:RegisterEvent("SPELL_UPDATE_COOLDOWN")
@@ -362,16 +368,12 @@ end
 -- Will not update if set during combat
 function AutoBar:RegisterOverrideBindings()
 	AutoBar:LogEvent("RegisterOverrideBindings")
-	ClearOverrideBindings(AutoBar.keyFrame)
+	ClearOverrideBindings(AutoBar.frame)
 	for buttonKey, buttonDB in pairs(AutoBar.buttonDBList) do
 		AutoBar.Class.Button:UpdateBindings(buttonKey, buttonKey .. "Frame")
 	end
 end
---/dump GetBindingKey("AutoBarButtonHearth_X")
---/script ClearOverrideBindings(AutoBar.keyFrame)
---/script SetOverrideBindingClick(AutoBar.keyFrame, false, "F5", AutoBar.buttonList["AutoBarButtonHearth"]:GetButtonFrameName())
---/script AutoBar.buttonList["AutoBarButtonTravel"]:UpdateBindings()
---/script AutoBar:RegisterOverrideBindings()
+
 
 -- Layered delayed callback objects
 -- Timers lower down the list are superceded and cancelled by those higher up
@@ -678,18 +680,21 @@ function AutoBar:SetRegenEnableUpdate(scanType)
 end
 
 
-function AutoBar:PLAYER_REGEN_ENABLED(arg1)
+function AutoBar.events:PLAYER_REGEN_ENABLED(arg1)
 	AutoBar:LogEvent("PLAYER_REGEN_ENABLED", arg1)
 	AutoBar.inCombat = nil
 	AutoBar.delay[regenEnableUpdate]:Start()
+--AutoBar:Print("PLAYER_REGEN_ENABLED " .. tostring(self))
 end
 
 
-function AutoBar:PLAYER_REGEN_DISABLED(arg1)
+function AutoBar.events:PLAYER_REGEN_DISABLED(arg1)
 	AutoBar:LogEvent("PLAYER_REGEN_DISABLED", arg1)
 	AutoBar.inCombat = true
 if (InCombatLockdown()) then
 	AutoBar:Print("PLAYER_REGEN_DISABLED called while InCombatLockdown")
+--else
+--AutoBar:Print("PLAYER_REGEN_DISABLED " .. tostring(self))
 end
 
 	if (AutoBar.moveButtonsMode) then

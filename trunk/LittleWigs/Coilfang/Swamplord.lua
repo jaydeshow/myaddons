@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -25,15 +25,16 @@ mod.partyContent = true
 mod.otherMenu = "Coilfang Reservoir"
 mod.zonename = BZ["The Underbog"]
 mod.enabletrigger = {boss, bear}
+mod.guid = 17826
 mod.toggleoptions = {"bosskill"}
-mod.revision = tonumber(("$Revision: 67144 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	db = self.db.profile
 end

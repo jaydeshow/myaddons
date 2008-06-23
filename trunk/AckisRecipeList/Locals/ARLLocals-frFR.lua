@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-06-06 03:25:58 -0400 (Fri, 06 Jun 2008) $
-$Rev: 76118 $
+$Date: 2008-06-19 13:29:40 -0400 (Thu, 19 Jun 2008) $
+$Rev: 77100 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -333,6 +333,7 @@ L["Enchant Gloves - Herbalism Obt1"] = "Ancien vengeur, Ancien noirci, Ancien ca
 L["Enchant Gloves - Mining Obt"] = "Nain Sombrefer, Démolisseur Sombrefer, Tunnelier Sombrefer, Saboteur Sombrefer, Balgaras le Crasseux"
 L["Enchant Gloves - Skinning Obt"] = "Nimar le Pourfendeur, Berserker Fânécorce, Chasseur de têtes Fânécorce, Chasseur des ombres Fânécorce"
 L["Enchant Weapon - Crusader Obt"] = "Lieur de sort écarlate"
+L["Enchant Weapon - Crusader Obt1"] = "Archimage écarlate"
 L["Enchant Weapon - Deathfrost Obt"] = "Seigneur Ahune - La fête du Feu"
 L["Enchant Weapon - Fiery Weapon Obt"] = "Pyromancien Blé-du-savoir"
 L["Enchant Weapon - Icy Chill Obt"] = "Bien-née angoissée"
@@ -920,6 +921,7 @@ L["Harggan"] = "Harggan"
 L["Harklan Moongrove"] = "Harklan Bosquelune"
 L["Harlown Darkweave"] = "Harlown Tisselombre"
 L["Harn Longcast"] = "Harn Jette-loin"
+L["Haughty Modiste"] = "Hautaine Lamodiste"
 L["Heldan Galesong"] = "Heldan Chantetrombe"
 L["Helenia Olden"] = "Helenia Olden"
 L["Himmik"] = "Himmik"

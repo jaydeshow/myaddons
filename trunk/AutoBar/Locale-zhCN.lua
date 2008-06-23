@@ -11,8 +11,6 @@ if (GetLocale() == "zhCN") then
 		["SLASHCMD_LONG"] = "/autobar",
 		["SLASHCMD_SHORT"] = "/atb",
 		["Button"] = "按钮",
-		["EDITSLOT"] = "编辑按钮",
-		["VIEWSLOT"] = "察看按钮",
 		["LOAD_ERROR"] = "|cff00ff00载入 AutoBarConfig 发生错误。请确定是否有这个插件，并启用插件。|r 错误：",
 		["Toggle the config panel"] = "切换消耗品助手设置窗口",
 		["Empty"] = "空白",
@@ -204,11 +202,11 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonClassPet"] = "战斗宠物",
 		["AutoBarButtonConjure"] = "法术: 制造",
 		["AutoBarButtonCooldownDrums"] = "冷却：战鼓",
-		["AutoBarButtonCooldownPotionCombat"] = "Potion Cooldown: Combat",
+		["AutoBarButtonCooldownPotionCombat"] = "药水冷却：战斗",
 		["AutoBarButtonCooldownPotionHealth"] = "药水冷却：生命",
 		["AutoBarButtonCooldownPotionMana"] = "药水冷却：法力",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "药水冷却：活力",
-		["AutoBarButtonCooldownStoneCombat"] = "Stone Cooldown: Combat",
+		["AutoBarButtonCooldownStoneCombat"] = "石头冷却：战斗",
 		["AutoBarButtonCooldownStoneHealth"] = "石头冷却：生命",
 		["AutoBarButtonCooldownStoneMana"] = "石头冷却：法力",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "石头冷却：活力",
@@ -216,7 +214,7 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonDebuff"] = "减益",
 		["AutoBarButtonElixirBattle"] = "作战药剂",
 		["AutoBarButtonElixirGuardian"] = "防护药剂",
-		["AutoBarButtonElixirBoth"] = "作战暨防护药剂",
+		["AutoBarButtonElixirBoth"] = "作战/防护药剂",
 		["AutoBarButtonER"] = "紧急反应",
 		["AutoBarButtonExplosive"] = "工程学炸弹",
 		["AutoBarButtonFishing"] = "钓鱼装备",
@@ -254,7 +252,7 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonWaterBuff"] = "增益: 水",
 
 		["AutoBarButtonBear"] = "熊",
-		["AutoBarButtonBoomkinTree"] = "生命之树 / 枭兽",
+		["AutoBarButtonBoomkinTree"] = "生命之树/枭兽",
 		["AutoBarButtonCat"] = "猎豹",
 		["AutoBarButtonTravel"] = "旅行",
 		["AutoBarButtonFlight"] = "飞行",
@@ -466,8 +464,8 @@ if (GetLocale() == "zhCN") then
 		["Consumable.Cooldown.Stone.Health.Statue"] = "石像";
 		["Consumable.Cooldown.Drums"] = "冷却: 战鼓";
 		["Consumable.Cooldown.Potion"] = "冷却: 药水";
-		["Consumable.Cooldown.Potion.Combat"] = "Cooldown: Potion - Combat";
-		["Consumable.Cooldown.Stone.Combat"] = "Cooldown: Stone - Combat";
+		["Consumable.Cooldown.Potion.Combat"] = "冷却: 药水 - 战斗";
+		["Consumable.Cooldown.Stone.Combat"] = "冷却: 石 - 战斗";
 		["Consumable.Cooldown.Stone"] = "冷却: 石";
 		["Consumable.Leatherworking.Drums"] = "战鼓";
 		["Consumable.Tailor.Net"] = "网";
@@ -560,15 +558,9 @@ AUTOBAR_TOOLTIP8 = "\n(左键用于主手武器\n右键用于副手武器)";
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "左键将重置为标准预设值。\n职业专用按钮会在职业栏位中。\n预设按钮在基本栏位中。\n共用和角色栏位将会清除。";
 --
 ----  AutoBarConfig.lua
---AUTOBAR_TOOLTIP9 = "合类物品按钮";
---AUTOBAR_TOOLTIP10 = " (按物品ID定制)";
---AUTOBAR_TOOLTIP11 = "\n(物品ID未经过验证)";
---AUTOBAR_TOOLTIP12 = " (按物品名称定制)";
---AUTOBAR_TOOLTIP13 = "单类物品按钮\n\n";
 --AUTOBAR_TOOLTIP15 = "\n武器目标\n(左键用于主手武器\n右键用于副手武器.)";
 AUTOBAR_TOOLTIP17 = "\n仅用于非战斗状态.";
 AUTOBAR_TOOLTIP18 = "\n仅用于战斗状态.";
---AUTOBAR_TOOLTIP20 = "\n使用条件限制：";
 --AUTOBAR_TOOLTIP21 = "所需恢复生命";
 --AUTOBAR_TOOLTIP22 = "所需恢复法力";
 

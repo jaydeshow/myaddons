@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -34,7 +34,7 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	mc = "心灵控制",
-	mc_desc = "当玩家受到心灵控制时发出警报。",
+	mc_desc = "当队友受到心灵控制时发出警报。",
 	mc_message = "心灵控制：>%s<！",
 	mc_bar = "<心灵控制：%s>",
 } end )
@@ -55,8 +55,9 @@ mod.partyContent = true
 mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
+mod.guid = 17381
 mod.toggleoptions = {"mc", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77157 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -64,7 +65,7 @@ mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 30923)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------
