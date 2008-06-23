@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r76978 | ananhaid | 2008-06-17 21:02:02 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-zhCN.lua
+
+Capping:
+- zhCN update.
+------------------------------------------------------------------------
 r76503 | ananhaid | 2008-06-11 20:45:25 -0400 (Wed, 11 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Capping/locals/localization-zhCN.lua
@@ -50,11 +57,4 @@ Changed paths:
 
 Capping:
 - koKR Update
-------------------------------------------------------------------------
-r74024 | ananhaid | 2008-05-15 22:33:55 -0400 (Thu, 15 May 2008) | 2 lines
-Changed paths:
-   M /trunk/Capping/locals/localization-zhCN.lua
-
-Capping:
-- zhCN update.
 ------------------------------------------------------------------------

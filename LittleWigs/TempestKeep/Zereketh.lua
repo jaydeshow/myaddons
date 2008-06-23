@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -129,8 +129,9 @@ mod.partyContent = true
 mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = boss 
+mod.guid = 20870
 mod.toggleoptions = {"nova", "void", "seed", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -140,7 +141,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_START_CAST", "Nova", 39005, 36127)
 	self:AddCombatListener("SPELL_START_CAST", "VoidZone", 36119, 30533)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "SoC", 39367, 32863)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------

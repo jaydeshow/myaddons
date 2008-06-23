@@ -951,6 +951,7 @@ AtlasLoot_Data["AtlasLootRepItems"] = {
 		{ 32317, "", "=q4=Red Riding Nether Ray", "=ds=#e12#" },
 		{ 32316, "", "=q4=Purple Riding Nether Ray", "=ds=#e12#" },
 		{ 32318, "", "=q4=Silver Riding Nether Ray", "=ds=#e12#" },
+		{ 38628, "", "=q3=Nether Ray Fry", "=ds=#e13#" },
 		{ 32445, "", "=q1=Skyguard Tabard", "=ds=#s7#" },
 	};
 
@@ -974,7 +975,7 @@ AtlasLoot_Data["AtlasLootRepItems"] = {
 		{ 29150, "", "=q3=Hardened Stone Shard", "=ds=#h1#, #w4#", "45 #glowcap#" },
 		{ 29149, "", "=q3=Sporeling's Firestick", "=ds=#w12#", "20 #glowcap#" },
 		{ 22916, "", "=q2=Recipe: Transmute Primal Earth to Water", "=ds=#p1# (350)", "25 #glowcap#" },
-		{ 0,"","","" },
+		{ 38229, "", "=q1=Pattern: Mycah's Botanical Bag", "=ds=#p8# (375)", "25 #glowcap#" },
 		{ 0,"","","" },
 		{ 0, "INV_Mushroom_10", "=q6=#r5#", "" },
 		{ 34478, "", "=q3=Tiny Spore Bat","=ds=#e13#" },

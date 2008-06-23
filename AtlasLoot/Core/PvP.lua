@@ -125,18 +125,12 @@ function AtlasLootPvPHonorSystemMenu()
     AtlasLootMenuItem_5_Icon:SetTexture("Interface\\Icons\\INV_Axe_02");
     AtlasLootMenuItem_5.lootpage="PVP70RepSET";
     AtlasLootMenuItem_5:Show();
-    -- PvP Weapons level 70
-    AtlasLootMenuItem_19_Name:SetText(AL["PvP Weapons"]);
-    AtlasLootMenuItem_19_Extra:SetText(ORANGE..AL["Level 70"]);
-    AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\INV_Weapon_Bow_08");
-    AtlasLootMenuItem_19.lootpage="PVP70Weapons1";
-    AtlasLootMenuItem_19:Show();
     -- PvP Non-set Epics
-    AtlasLootMenuItem_20_Name:SetText(AL["PvP Non-Set Epics"]);
-    AtlasLootMenuItem_20_Extra:SetText(ORANGE..AL["Level 70"]);
-    AtlasLootMenuItem_20_Icon:SetTexture("Interface\\Icons\\INV_Boots_05");
-    AtlasLootMenuItem_20.lootpage="PVP70NONSETEPICS";
-    AtlasLootMenuItem_20:Show();
+    AtlasLootMenuItem_19_Name:SetText(AL["PvP Non-Set Epics"]);
+    AtlasLootMenuItem_19_Extra:SetText(ORANGE..AL["Level 70"]);
+    AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\INV_Boots_05");
+    AtlasLootMenuItem_19.lootpage="PVP70NONSETEPICS";
+    AtlasLootMenuItem_19:Show();
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end

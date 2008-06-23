@@ -215,6 +215,19 @@ function CQI:GetQuestText(uid, level)
 	return "["..level.."] "..title, title, desc, objs
 end
 
+local function GetQuestNPC(npc)
+	local npc_id = tonumber(npc)
+	if not npc_id then
+		local _, _, npc_a, npc_h = npc:find("A(%-?%d+);H(%-?%d+)")
+		if UnitFactionGroup("player") == "Alliance" then
+			npc_id = tonumber(npc_a)
+		else
+			npc_id = tonumber(npc_h)
+		end
+	end
+	return npc_id
+end
+
 ----
 -- Get short summary of quest, this is faster than GetQuest
 -- @param uid - the quest id
@@ -225,8 +238,8 @@ function CQI:PeekQuest(uid)
 	if not data then return end
 
 	local _, _, side, level_req, level, start_npc, end_npc, sharable =
-		data.i:find("^(.)`(%d+)`(%d+)`(%-?%d+)`(%-?%d+)`(%d+)$")
-	return tonumber(level), tonumber(level_req), tonumber(start_npc), tonumber(end_npc), sharable == "1", side, data
+		data.i:find("^(.)`(%d+)`(%d+)`([^`]+)`([^`]+)`(%d+)$")
+	return tonumber(level), tonumber(level_req), GetQuestNPC(start_npc), GetQuestNPC(end_npc), sharable == "1", side, data
 end
 
 -------------------------------------------------------------------

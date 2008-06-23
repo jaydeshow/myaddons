@@ -11,8 +11,6 @@ if (GetLocale() == "esES") then
 		["SLASHCMD_LONG"] = "/autobar",
 		["SLASHCMD_SHORT"] = "/atb",
 		["Button"] = "Botón",
-		["EDITSLOT"] = "Editar Casilla",
-		["VIEWSLOT"] = "Ver Casilla",
 		["LOAD_ERROR"] = "|cff00ff00Error al cargar AutoBarConfig. Asegúrese de tenerlo instalado y activado.|r Error: ",
 		["Toggle the config panel"] = "Alternar el panel de configuración",
 		["Empty"] = "Vacío",
@@ -204,14 +202,14 @@ if (GetLocale() == "esES") then
 		["AutoBarButtonClassPet"] = "Mascota de Clase",
 		["AutoBarButtonConjure"] = "Conjuro",
 		["AutoBarButtonCooldownDrums"] = "Reutilización: Tambores",
-		["AutoBarButtonCooldownPotionCombat"] = "Potion Cooldown: Combat",
-		["AutoBarButtonCooldownPotionHealth"] = "Reutilización: Salud",
-		["AutoBarButtonCooldownPotionMana"] = "Reutilización: Maná",
-		["AutoBarButtonCooldownPotionRejuvenation"] = "Reutilización: Rejuvenecer",
-		["AutoBarButtonCooldownStoneCombat"] = "Stone Cooldown: Combat",
-		["AutoBarButtonCooldownStoneHealth"] = "Reutilización: Piedra Salud",
-		["AutoBarButtonCooldownStoneMana"] = "Reutilización: Piedra Maná",
-		["AutoBarButtonCooldownStoneRejuvenation"] = "Reutilización: Piedra Rejuvenecer",
+		["AutoBarButtonCooldownPotionCombat"] = "Reutilización Poción: Combate",
+		["AutoBarButtonCooldownPotionHealth"] = "Reutilización Poción: Salud",
+		["AutoBarButtonCooldownPotionMana"] = "Reutilización Poción: Maná",
+		["AutoBarButtonCooldownPotionRejuvenation"] = "Reutilización Poción: Rejuvenecer",
+		["AutoBarButtonCooldownStoneCombat"] = "Reutilización Piedra: Combate",
+		["AutoBarButtonCooldownStoneHealth"] = "Reutilización Piedra: Salud",
+		["AutoBarButtonCooldownStoneMana"] = "Reutilización Piedra: Maná",
+		["AutoBarButtonCooldownStoneRejuvenation"] = "Reutilización Piedra: Rejuvenecer",
 		["AutoBarButtonCrafting"] = "Fabricar",
 		["AutoBarButtonDebuff"] = "Debuff",
 		["AutoBarButtonElixirBattle"] = "Elixir: Batalla",
@@ -398,15 +396,15 @@ if (GetLocale() == "esES") then
 		["Misc.Usable.Replenished"] = "Objetos Reponibles";
 
 		["Consumable.Cooldown.Potion.Health.Basic"] = "Pociones de Curación";
-		["Consumable.Cooldown.Potion.Health.Blades Edge"] = "Pociones de Curación: Blades Edge";
-		["Consumable.Cooldown.Potion.Health.Coilfang"] = "Pociones de Curación: Coilfang Reservoir";
-		["Consumable.Cooldown.Potion.Health.PvP"] = "Pociones de Salud de Campos de Batalla";
-		["Consumable.Cooldown.Potion.Health.Tempest Keep"] = "Pociones de Curación: Tempestad";
+		["Consumable.Cooldown.Potion.Health.Blades Edge"] = "Pociones de Curación: Filospada";
+		["Consumable.Cooldown.Potion.Health.Coilfang"] = "Pociones de Curación: Reserva Colmillo Torcido";
+		["Consumable.Cooldown.Potion.Health.PvP"] = "Pociones de Curación: Campos de Batalla";
+		["Consumable.Cooldown.Potion.Health.Tempest Keep"] = "Pociones de Curación: El Castillo de la Tempestad";
 		["Consumable.Cooldown.Potion.Mana.Basic"] = "Pociones de Maná";
-		["Consumable.Cooldown.Potion.Mana.Blades Edge"] = "Pociones de Maná: Blades Edge";
-		["Consumable.Cooldown.Potion.Mana.Coilfang"] = "Pociones de Maná: Depósito de Coilfang";
-		["Consumable.Cooldown.Potion.Mana.Pvp"] = "Pociones de Campos de Batalla";
-		["Consumable.Cooldown.Potion.Mana.Tempest Keep"] = "Pociones de Maná: Tempestad";
+		["Consumable.Cooldown.Potion.Mana.Blades Edge"] = "Pociones de Maná: Filospada";
+		["Consumable.Cooldown.Potion.Mana.Coilfang"] = "Pociones de Maná: Reserva Colmillo Torcido";
+		["Consumable.Cooldown.Potion.Mana.Pvp"] = "Pociones de Maná: Campos de Batalla";
+		["Consumable.Cooldown.Potion.Mana.Tempest Keep"] = "Pociones de Maná: El Castillo de la Tempestad";
 
 		["Consumable.Weapon Buff.Poison.Crippling"] = "Veneno de Ralentización";
 		["Consumable.Weapon Buff.Poison.Deadly"] = "Veneno Mortal";
@@ -466,8 +464,8 @@ if (GetLocale() == "esES") then
 		["Consumable.Cooldown.Stone.Health.Statue"] = "Estátuas de Piedra";
 		["Consumable.Cooldown.Drums"] = "Reutilización: Tambores";
 		["Consumable.Cooldown.Potion"] = "Reutilización: Poción";
-		["Consumable.Cooldown.Potion.Combat"] = "Cooldown: Potion - Combat";
-		["Consumable.Cooldown.Stone.Combat"] = "Cooldown: Stone - Combat";
+		["Consumable.Cooldown.Potion.Combat"] = "Reutilización: Poción - Combate";
+		["Consumable.Cooldown.Stone.Combat"] = "Reutilización: Piedra - Combate";
 		["Consumable.Cooldown.Stone"] = "Reutilización: Piedra";
 		["Consumable.Leatherworking.Drums"] = "Tambores";
 		["Consumable.Tailor.Net"] = "Redes";
@@ -560,15 +558,9 @@ AUTOBAR_TOOLTIP8 = "\n(Click-Izquierdo para aplicar como arma de la mano princip
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "Pulsa para reestablecer la configuración estándar.\nLas casillas de clase se colocan en la capa de Clase.\nLas casillas por defecto son colocadas en la capa Básica.\nLas capas de Personaje y Compartido son limpiadas.";
 
 --  AutoBarConfig.lua
---AUTOBAR_TOOLTIP9 = "Botón Multi Categoría\n";
---AUTOBAR_TOOLTIP10 = " (Objeto Personalizado por ID)";
---AUTOBAR_TOOLTIP11 = "\n(ID de objeto no reconocida)";
---AUTOBAR_TOOLTIP12 = " (Objeto Personalizado por Nombre)";
---AUTOBAR_TOOLTIP13 = "Botón de Categoría Única\n\n";
 --AUTOBAR_TOOLTIP15 = "\nArma Objetivo\n(Click-Izquierdo arma principal\nClick-Derecho arma secundaria.)";
 AUTOBAR_TOOLTIP17 = "\nSolo sin combate.";
 AUTOBAR_TOOLTIP18 = "\nSolo en combate.";
---AUTOBAR_TOOLTIP20 = "\nUso Limitado: "
 --AUTOBAR_TOOLTIP21 = "Requiere Recuperación de Salud";
 --AUTOBAR_TOOLTIP22 = "Requiere Recuperación de Maná";
 

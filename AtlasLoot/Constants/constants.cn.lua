@@ -1,5 +1,5 @@
 ﻿-- [[
--- Last Updated: 4/11/2008
+-- Last Updated: 6/20/2008
 -- Initial translation by: 560889223
 -- Maintained by: Diablohu
 -- Credits to: Kurax Kuang (gmmgmm at gmail.com)
@@ -44,6 +44,9 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Close Menu"] = "关闭",
     ["Unknown"] = "未知",
     ["Skill Required:"] = "需要技能：",
+    ["QuickLook"] = "快捷浏览",
+    ["Add to QuickLooks:"] = "添加到快捷浏览",
+    ["Assign this loot table\n to QuickLook"] = "将该掉落表添加到快捷浏览中",
 
     --Text for Options Panel
     ["Atlasloot Options"] = "Atlasloot 设置",
@@ -129,6 +132,8 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "欢迎使用 Atlasloot Enhanced，请花少许时间进行参数设置",
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = "在4.02.01以上版本: 输入 '/atlasloot options'可以打开设置菜单，输入'/atlasloot reset'可以在登出游戏后重置AtlasLoot",
     ["New feature in 4.03.00: Introducing the Wishlist!  Simply alt-click on any item to add it to the wishlist.  To delete an item from the wishlist, open up your wishlist and alt-click the item to remove it.  It's that simple.  Buttons to view the wishlist have been added to the Atlas interface and the loot browser."] = "在4.03.00版本中添加了装备需求表！你可以按住Alt并点击任何物品的链接来添加它到装备需求表中。打开装备需求表，按住Alt并点击物品链接可以将它从表中删除。你可以点击Atlas界面内掉落浏览器上的相应按钮来打开装备需求表。",
+    ["New feature in 4.05.00: Advanced searching functionality is now available. You can type in a partial item name, for example typing 'elixir' gives all items in the database with 'elixir' in the name.  Big thanks to Kurax for his help."] = "4.05.00新功能：高级搜索功能。现在可以使用模糊搜索方式，如在搜索框中输入“药剂”即可搜索艘有物品名中带有“药剂”字样的物品。非常感谢 Kurax 的帮助。",
+    ["New feature in 4.05.00: All professions are now included in the AtlasLoot_Crafting module."] = "4.05.00新功能：所有专业技能信息现在都包含在 AtlasLoot_Crafting 模块中。",
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences for tooltips and links in the chat window.\n\n  This options screen can be reached again at any later time by typing '/atlasloot'."] = "欢迎使用 Atlasloot Enhanced。请花少许时间进来设置提示与物品连接的方式。\n\n  以后可以输入“/atlasloot”再次显示该设置窗口。",
     ["Setup"] = "设置",
 
@@ -219,21 +224,28 @@ AL:RegisterTranslations("zhCN", function() return {
     --["Through The Dark Portal"] = true,
     --["Fires of Outland"] = true,
 	--["Servants of the Betrayer"] = true,
+    --["Hunt for Illidan"] = true,
     ["Loot Card Items"] = "刮刮卡奖品",
     ["UDE Items"] = "UDE积分奖品",
     ["Landro Longshot"] = "远射兰铎",
     ["Thunderhead Hippogryph"] = "雷首角鹰兽",
     ["Saltwater Snapjaw"] = "海水钳嘴龟",
-    --["King Mukla"] = true,
-    --["Rest and Relaxation"] = true,
+    ["King Mukla"] = "穆克拉",
+    ["Rest and Relaxation"] = "休息与放松",
     ["Fortune Telling"] = "算命",
-    --["Goblin Gumbo"] = true,
+    ["Goblin Gumbo"] = "地精杂烩",
     --["Gone Fishin'"] = true,
     ["Spectral Tiger"] = "幽灵虎",
 	--["March of the Legion"] = true,
-	--["Kiting"] = true,
-	--["Robotic Homing Chicken"] = true,
+	["Kiting"] = "风筝",
+	["Robotic Homing Chicken"] = "自动导航机器小鸡",
 	["Paper Airplane"] = "纸飞机",
+    ["Papa Hummel's Old-fashioned Pet Biscuit"] = "修默老爹的宠物饼干",
+    ["Personal Weather Machine"] = "个人天气制造机",
+    ["X-51 Nether-Rocket"] = "X-51虚空火箭",
+    ["The Footsteps of Illidan"] = "伊利丹的脚步",
+    --["Disco Inferno!"] = true,
+    --["Ethereal Plunderer"] = true,
 
     --Battleground Brackets
     ["Misc. Rewards"] = "其他奖励",
@@ -539,7 +551,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Thunderheart Regalia"] = "雷霆之心法衣",
     ["Gronnstalker's Armor"] = "戈隆追猎者",
     ["Tempest Regalia"] = "风暴",
-    ["Lightbringer Armor"] = "光明使者战甲",
+    ["Lightbringer Armor"] = "光明使者护甲",
     ["Lightbringer Battlegear"] = "光明使者战甲",
     ["Lightbringer Raiment"] = "光明使者圣服",
     ["Vestments of Absolution"] = "赦免法衣",
@@ -879,6 +891,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Rethilgore"] = "雷希戈尔",
     ["Kalldan Felmoon"] = "卡尔丹·暗月",
 	["Magregan Deepshadow"] = "马格雷甘·深影",
+    ["Lord Ahune"] = "埃霍恩",
 
     --Zones
     ["World Drop"] = "世界掉落",
@@ -891,7 +904,7 @@ AL:RegisterTranslations("zhCN", function() return {
     --["CoT2"] = true,
     --["Scholo"] = true,
     --["Strat"] = true,
-    --["Serpentshrine"] = true,
+    ["Serpentshrine"] = "SSC",
 
     --Chests, etc
     ["Dark Coffer"] = "黑暗宝箱",
@@ -937,6 +950,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Garrett Family Chest"] = "加勒特的宝箱",
 	["Reinforced Fel Iron Chest"] = "强化魔铁箱",
 	["DM North Tribute Chest"] = "厄运之槌北区贡品",
+	
     --World Events
     ["Abyssal Council"] = "深渊议会",
     ["Bash'ir Landing Skyguard Raid"] = "巴什伊尔码头",

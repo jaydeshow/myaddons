@@ -12,7 +12,6 @@ The English file also contains the loot tables for the battleground loot tables.
 AtlasLootBattlegrounds = {
 
     AlteracValleyNorth = {
-        "Frostwolf1";
         "Stormpike1";
         "";
         "";
@@ -81,7 +80,25 @@ AtlasLootBattlegrounds = {
     
     AlteracValleySouth = {
         "Frostwolf1";
-        "Stormpike1";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
         "";
         "";
         "";

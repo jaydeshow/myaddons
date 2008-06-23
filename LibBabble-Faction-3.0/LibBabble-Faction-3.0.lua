@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Faction-3.0
-Revision: $Rev: 67899 $
+Revision: $Rev: 76843 $
 Author(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Faction-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Faction-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Faction-3.0"
-local MINOR_VERSION = "$Revision: 67899 $"
+local MINOR_VERSION = "$Revision: 76843 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -439,7 +439,7 @@ elseif GAME_LOCALE == "frFR" then
 	["The Defilers"] = "Les Profanateurs",
 	["Frostwolf Clan"] = "Clan Loup-de-givre",
 	["Gelkis Clan Centaur"] = "Centaures (Gelkis)",
-	["Honor Hold"] = "Bastion de l'honneur",
+	["Honor Hold"] = "Bastion de l'Honneur",
 	["Hydraxian Waterlords"] = "Les Hydraxiens",
 	["Keepers of Time"] = "Gardiens du Temps",
 	["Kurenai"] = "Kurenaï",

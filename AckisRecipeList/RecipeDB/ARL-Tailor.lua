@@ -4,8 +4,8 @@ ARL-Tailor.lua
 
 Tailoring data for all of AckisRecipeList
 
-$Date: 2008-06-04 11:30:19 -0400 (Wed, 04 Jun 2008) $
-$Rev: 75999 $
+$Date: 2008-06-19 10:57:24 -0400 (Thu, 19 Jun 2008) $
+$Rev: 77088 $
 
 ]]--
 
@@ -174,6 +174,11 @@ function addon:InitTailoring()
 	self:addTradeSkillSpell(26752, 355, self:CombineVendors(65, false), GetSpellInfo(26797),2)
 	self:addTradeSkillSpell(26753, 365, self:CombineVendors(65, false), GetSpellInfo(26797),2)
 	self:addTradeSkillSpell(26754, 370, self:CombineVendors(65, false), GetSpellInfo(26797),2)
+	if (_G.GameTimeFrame_OnClick) then
+		self:addTradeSkillSpell(49677, 250, self:CombineVendors(286, false),2)
+		self:addTradeSkillSpell(50644, 250, self:CombineVendors(286, false),2)
+		self:addTradeSkillSpell(50647, 245, self:CombineVendors(286, false),2)
+	end
 
 	-- World Drops
 	self:addTradeSkillSpell(2389, 40, L["UWD"],3)
@@ -327,6 +332,9 @@ function addon:InitTailoring()
 	self:addTradeSkillSpell(40024, 375, self:AddSingleReputation(1, BFAC["Ashtongue Deathsworn"]), BFAC["Ashtongue Deathsworn"], 6)
 	self:addTradeSkillSpell(40023, 375, self:AddSingleReputation(2, BFAC["Ashtongue Deathsworn"]), BFAC["Ashtongue Deathsworn"], 6)
 	self:addTradeSkillSpell(40020, 375, self:AddSingleReputation(2, BFAC["Ashtongue Deathsworn"]), BFAC["Ashtongue Deathsworn"], 6)
+	if (_G.GameTimeFrame_OnClick) then
+		self:addTradeSkillSpell(50194, 375, self:AddSingleReputation(3, BFAC["Sporeggar"]), BFAC["Sporeggar"])
+	end
 
 	-- Raid Drops
 	self:addTradeSkillSpell(22759, 300, L["MOLTENCORE"], 6)

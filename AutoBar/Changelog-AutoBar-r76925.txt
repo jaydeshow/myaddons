@@ -1,4 +1,53 @@
 ------------------------------------------------------------------------
+r76925 | toadkiller | 2008-06-17 10:15:06 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarDB.lua
+
+AutoBar: 
+-- Fix Cooldown Potion: Combat Button
+------------------------------------------------------------------------
+r76905 | scorpion | 2008-06-17 04:32:18 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+ - Update zhTW & zhCN localization.
+------------------------------------------------------------------------
+r76893 | toadkiller | 2008-06-17 00:50:26 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/ChangeList.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   D /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   A /trunk/AutoBar/Locale-ruRU.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+-- ruRU and esMX added to toc etc.
+------------------------------------------------------------------------
+r76860 | toadkiller | 2008-06-16 14:42:56 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Dump AceEvent for PLAYER_REGEN_DISABLED and PLAYER_REGEN_ENABLED
+------------------------------------------------------------------------
+r76856 | StiviS | 2008-06-16 14:03:11 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-esES.lua
+
+AutoBar :
+- esES updated
+------------------------------------------------------------------------
 r76835 | 7destiny | 2008-06-16 07:44:28 -0400 (Mon, 16 Jun 2008) | 1 line
 Changed paths:
    M /trunk/AutoBar/Core.lua
@@ -681,83 +730,4 @@ AutoBar :
 -- AutoBarButtonCharge Feral Charge added
 -- Fixed flight form issue
 
-------------------------------------------------------------------------
-r74104 | toadkiller | 2008-05-16 20:04:20 -0400 (Fri, 16 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/Bindings.xml
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- AutoBarButtonCharge A Charge Intercept / Intervene / Sprint Button for warriors (druids, rogues to be added later)
-
-------------------------------------------------------------------------
-r74056 | toadkiller | 2008-05-16 07:00:52 -0400 (Fri, 16 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
-- Uhm remove babble 2.2
-------------------------------------------------------------------------
-r74042 | StiviS | 2008-05-16 04:57:19 -0400 (Fri, 16 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r74033 | toadkiller | 2008-05-16 02:11:42 -0400 (Fri, 16 May 2008) | 8 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/AutoBarSearch.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
-AutoBar : 
--- 2.04.01.52 beta ()
--- Babble-Zone-2.2 --> LibBabble-Zone-3.0
--- Add Show Extended Tooltips setting.  Enabled allows comparison tooltips and extended tips by other mods.
--- Remove AceLocale 2.2
-
-
-------------------------------------------------------------------------
-r74032 | toadkiller | 2008-05-16 02:09:10 -0400 (Fri, 16 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Babble-Zone-2.2 --> LibBabble-Zone-3.0
--- Remove AceLocale 2.2
-
-------------------------------------------------------------------------
-r74031 | scorpion | 2008-05-16 02:05:16 -0400 (Fri, 16 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
- - Added "Share the config" to locales.
- - Update zhTW & zhCN localization.
 ------------------------------------------------------------------------

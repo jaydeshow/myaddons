@@ -56,6 +56,9 @@ AL:RegisterTranslations("enUS", function() return {
     ["Close Menu"] = true,
     ["Unknown"] = true,
     ["Skill Required:"] = true,
+    ["QuickLook"] = true,
+    ["Add to QuickLooks:"] = true,
+    ["Assign this loot table\n to QuickLook"] = true,
 
     --Text for Options Panel
     ["Atlasloot Options"] = true,
@@ -249,6 +252,12 @@ AL:RegisterTranslations("enUS", function() return {
     ["Kiting"] = true,
     ["Robotic Homing Chicken"] = true,
     ["Paper Airplane"] = true,
+    ["Papa Hummel's Old-fashioned Pet Biscuit"] = true,
+    ["Personal Weather Machine"] = true,
+    ["X-51 Nether-Rocket"] = true,
+    ["The Footsteps of Illidan"] = true,
+    ["Disco Inferno!"] = true,
+    ["Ethereal Plunderer"] = true,
 
     --Battleground Brackets
     ["Misc. Rewards"] = true,

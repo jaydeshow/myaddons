@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r77072 | charon | 2008-06-19 04:47:23 -0400 (Thu, 19 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: properly handle Taunt and Growl misses by using transactions
+------------------------------------------------------------------------
 r76620 | charon | 2008-06-13 15:04:39 -0400 (Fri, 13 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
@@ -81,63 +89,4 @@ Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
 
 Threat-2.0: Add UNIT_DESTROYED handler (aliased to UNIT_DIED).
-------------------------------------------------------------------------
-r74199 | charon | 2008-05-17 17:35:36 -0400 (Sat, 17 May 2008) | 6 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
-
-Threat-2.0: Merge improved class module CLEU handler
-
-This changes the CLEU handling to a function-table-driven approach,
-improving performance somewhat (one test showed 12% less time spent
-there).
-
-------------------------------------------------------------------------
-r74185 | charon | 2008-05-17 16:20:50 -0400 (Sat, 17 May 2008) | 4 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/Tests/class/druid.lua
-   M /trunk/Threat-2.0/Threat-2.0/Tests/test.lua
-   M /trunk/Threat-2.0/Threat-2.0/Tests/test_stubs.lua
-
-Threat-2.0: unit test improvements
-- Draft a druid-specific test, so far it tests some feral stuff
-- Add more stubs and ability to override some of them
-
-------------------------------------------------------------------------
-r74184 | charon | 2008-05-17 16:19:05 -0400 (Sat, 17 May 2008) | 2 lines
-Changed paths:
-   A /trunk/Threat-2.0/Threat-2.0/Tests/class
-   A /trunk/Threat-2.0/Threat-2.0/Tests/class/druid.lua
-
-Threat-2.0: touch some files to please precommit
-
-------------------------------------------------------------------------
-r74101 | xinhuan | 2008-05-16 19:50:05 -0400 (Fri, 16 May 2008) | 1 line
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
-
-Threat-2.0: Fix order of precedence of operators issue that is causing SPELL_PERIODIC_HEAL events to get ignored.
-------------------------------------------------------------------------
-r74073 | xinhuan | 2008-05-16 12:10:42 -0400 (Fri, 16 May 2008) | 3 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Shaman.lua
-   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
-
-Threat-2.0:
-- Remove threat handler for Lightning Capacitor. It deals full threat from the damage, not half.
-- Cleanup half the Shaman module to apply Elemental Precision on all Nature/Fire/Frost spells rather than just specific shaman damage spells. This mainly affects The Lightning Capacitor proc and nature healing spells.
-------------------------------------------------------------------------
-r73937 | xinhuan | 2008-05-15 05:30:59 -0400 (Thu, 15 May 2008) | 1 line
-Changed paths:
-   A /trunk/Threat-2.0/Threat-2.0/NPCModules/Azeroth/Onyxia.lua
-   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
-   M /trunk/Threat-2.0/Threat-2.0/lib.xml
-
-Threat-2.0: Add Onyxia NPC module from Dead_Masters, currently only works in Phase 1.
-------------------------------------------------------------------------
-r73934 | xinhuan | 2008-05-15 05:05:40 -0400 (Thu, 15 May 2008) | 1 line
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
-
-Threat-2.0: Potential fix for paladin taunt, solution from Reynard, reference http://www.wowace.com/forums/index.php?topic=13487.0
 ------------------------------------------------------------------------

@@ -23,6 +23,8 @@ AtlasLoot_HeroicModeToggle()
 AtlasLoot_IsLootTableAvailable(dataID)
 AtlasLoot_GetLODModule(dataSource)
 AtlasLoot_LoadAllModules()
+AtlasLoot_ShowQuickLooks(button)
+AtlasLoot_RefreshQuickLookButtons()
 ]]
 
 AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDB-2.0")
@@ -70,6 +72,7 @@ AtlasLoot_AnchorFrame = AtlasFrame;
 --Variables to hold hooked Atlas functions
 Hooked_Atlas_Refresh = nil;
 Hooked_Atlas_OnShow = nil;
+Hooked_AtlasScrollBar_Update = nil;
 
 AtlasLootCharDB={};
 
@@ -208,6 +211,7 @@ the addon needs are in place, we can properly set up the mod
 function AtlasLoot_OnVariablesLoaded()
 	if not AtlasLootCharDB then AtlasLootCharDB = {} end
 	if not AtlasLootCharDB["WishList"] then AtlasLootCharDB["WishList"] = {} end
+    if not AtlasLootCharDB["QuickLooks"] then AtlasLootCharDB["QuickLooks"] = {} end
 	if not AtlasLootCharDB["SearchResult"] then AtlasLootCharDB["SearchResult"] = {} end
 	--Add the loot browser to the special frames tables to enable closing wih the ESC key
 	tinsert(UISpecialFrames, "AtlasLootDefaultFrame");
@@ -218,11 +222,18 @@ function AtlasLoot_OnVariablesLoaded()
 		AtlasButton_LoadAtlas();
 	end
 	--Hook the necessary Atlas functions
-	Hooked_Atlas_Refresh = Atlas_Refresh;
-	Atlas_Refresh = AtlasLoot_Refresh;
+    if ATLAS_VERSION == ATLASLOOT_PREVIEW_ATLAS then
+        Hooked_Atlas_Refresh = Atlas_Refresh;
+        Atlas_Refresh = AtlasLoot_NewRefresh;
+        Atlas112Compat();
+    else
+        Hooked_Atlas_Refresh = Atlas_Refresh;
+	    Atlas_Refresh = AtlasLoot_Refresh;
+    end
 	Hooked_Atlas_OnShow = Atlas_OnShow;
 	Atlas_OnShow = AtlasLoot_Atlas_OnShow;
 	--Instead of hooking, replace the scrollbar driver function
+    Hooked_AtlasScrollBar_Update = AtlasScrollBar_Update;
 	AtlasScrollBar_Update = AtlasLoot_AtlasScrollBar_Update;
 	--Disable options that don't have the supporting mods
 	if( not LootLink_SetTooltip and (AtlasLoot.db.profile.LootlinkTT == true)) then
@@ -253,7 +264,7 @@ function AtlasLoot_OnVariablesLoaded()
 		if( ATLAS_VERSION ~= ATLASLOOT_CURRENT_ATLAS and ATLAS_VERSION ~= ATLASLOOT_PREVIEW_ATLAS ) then
 			StaticPopup_Show ("ATLASLOOT_OLD_ATLAS");
 		end
-		AtlasLoot_Refresh();
+		Hooked_Atlas_Refresh();
 	else
 		--If we are not using Atlas, keep the items frame out of the way
 		AtlasLootItemsFrame:Hide();
@@ -361,6 +372,8 @@ function AtlasLoot_SlashCommand(msg)
 		AtlasLootDefaultFrame:SetPoint("CENTER", "UIParent", "CENTER", 0, 0);
 		AtlasLootOptionsFrame:ClearAllPoints();
 		AtlasLootOptionsFrame:SetPoint("CENTER", "UIParent", "CENTER", 0, 0);
+        AtlasLootCharDB["QuickLooks"] = {};
+        AtlasLoot_RefreshQuickLookButtons();
 		DEFAULT_CHAT_FRAME:AddMessage(BLUE..AL["AtlasLoot"]..": "..RED..AL["Reset complete!"]);
 	elseif msg == AL["options"] then
 		AtlasLootOptions_Toggle();
@@ -444,6 +457,10 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 	local isItem;
 	local spellName, spellIcon;
 
+    if dataID == "SearchResult" and dataID == "WishList" then
+        AtlasLoot_IsLootTableAvailable(dataID);
+    end
+    
 	dataSource_backup = dataSource;
 	if dataSource ~= "dummy" then
 		if dataID == "SearchResult" or dataID == "WishList" then
@@ -486,6 +503,10 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 
 	--Hide the toggle to switch between heroic and normal loot tables, we will only show it if required
 	AtlasLootItemsFrame_Heroic:Hide();
+    
+    --Ditch the Quicklook selector
+    AtlasLoot_QuickLooks:Hide();
+    AtlasLootQuickLooksButton:Hide();
 
 	--Change the dataID to be consistant with the Heroic Mode toggle
 	if dataSource then
@@ -643,6 +664,10 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 				--Store data about the state of the items frame to allow minor tweaks or a recall of the current loot page
 				AtlasLootItemsFrame.refresh = {dataID, dataSource_backup, boss, pFrame};
 
+                --This is a valid QuickLook, so show the UI objects
+                AtlasLoot_QuickLooks:Show();
+                AtlasLootQuickLooksButton:Show();
+                
 				--Insert the item description
 				extra = dataSource[dataID][i][4];
 				extra = AtlasLoot_FixText(extra);
@@ -1016,3 +1041,83 @@ function AtlasLoot_LoadAllModules()
 		collectgarbage("collect");
 	end
 end
+
+--[[
+AtlasLoot_ShowQuickLooks(button)
+button: Identity of the button pressed to trigger the function
+Shows the GUI for setting Quicklooks
+]]
+function AtlasLoot_ShowQuickLooks(button)
+	local dewdrop = AceLibrary("Dewdrop-2.0");
+	if dewdrop:IsOpen(button) then
+		dewdrop:Close(1);
+	else
+		local setOptions = function()
+			dewdrop:AddLine(
+				"text", AL["QuickLook"].." 1",
+				"tooltipTitle", AL["QuickLook"].." 1",
+				"tooltipText", AL["Assign this loot table\n to QuickLook"].." 1",
+				"func", function()
+                    AtlasLootCharDB["QuickLooks"][1]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]};
+                    AtlasLoot_RefreshQuickLookButtons();
+                    dewdrop:Close(1);
+				end
+			);
+			dewdrop:AddLine(
+				"text", AL["QuickLook"].." 2",
+				"tooltipTitle", AL["QuickLook"].." 2",
+				"tooltipText", AL["Assign this loot table\n to QuickLook"].." 2",
+				"func", function()
+					AtlasLootCharDB["QuickLooks"][2]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]};
+                    AtlasLoot_RefreshQuickLookButtons();
+                    dewdrop:Close(1);
+				end
+			);
+            dewdrop:AddLine(
+				"text", AL["QuickLook"].." 3",
+				"tooltipTitle", AL["QuickLook"].." 3",
+				"tooltipText", AL["Assign this loot table\n to QuickLook"].." 3",
+				"func", function()
+					AtlasLootCharDB["QuickLooks"][3]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]};
+                    AtlasLoot_RefreshQuickLookButtons();
+                    dewdrop:Close(1);
+				end
+			);
+            dewdrop:AddLine(
+				"text", AL["QuickLook"].." 4",
+				"tooltipTitle", AL["QuickLook"].." 4",
+				"tooltipText", AL["Assign this loot table\n to QuickLook"].." 4",
+				"func", function()
+					AtlasLootCharDB["QuickLooks"][4]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]};
+                    AtlasLoot_RefreshQuickLookButtons();
+                    dewdrop:Close(1);
+				end
+			);
+		end;
+		dewdrop:Open(button,
+			'point', function(parent)
+				return "BOTTOMLEFT", "BOTTOMRIGHT";
+			end,
+			"children", setOptions
+		);
+	end
+end
+
+--[[
+AtlasLoot_RefreshQuickLookButtons()
+Enables/disables the quicklook buttons depending on what is assigned
+]]
+function AtlasLoot_RefreshQuickLookButtons()
+    i=1;
+    while i<5 do
+        if ((not AtlasLootCharDB["QuickLooks"][i]) or (not AtlasLootCharDB["QuickLooks"][i][1])) or (AtlasLootCharDB["QuickLooks"][i][1]==nil) then
+            getglobal("AtlasLootPanel_Preset"..i):Disable();
+            getglobal("AtlasLootDefaultFrame_Preset"..i):Disable();
+        else
+            getglobal("AtlasLootPanel_Preset"..i):Enable();
+            getglobal("AtlasLootDefaultFrame_Preset"..i):Enable();
+        end
+        i=i+1;
+    end
+end
+

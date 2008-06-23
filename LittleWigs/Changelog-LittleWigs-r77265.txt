@@ -1,4 +1,128 @@
 ------------------------------------------------------------------------
+r77265 | pettigrow | 2008-06-23 02:55:53 -0400 (Mon, 23 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   M /trunk/LittleWigs/Auchindoun/Tavarok.lua
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
+   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
+
+LittleWigs: frFR Update
+------------------------------------------------------------------------
+r77263 | 7destiny | 2008-06-23 02:33:19 -0400 (Mon, 23 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Tavarok.lua
+
+LittleWigs: 
+- koKR Update
+------------------------------------------------------------------------
+r77257 | ananhaid | 2008-06-22 22:33:41 -0400 (Sun, 22 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Tavarok.lua
+
+LittleWigs: 
+- to utf8.(koKR pls reload)
+------------------------------------------------------------------------
+r77174 | 7destiny | 2008-06-21 02:02:41 -0400 (Sat, 21 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   M /trunk/LittleWigs/Auchindoun/Tavarok.lua
+   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
+   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
+   M /trunk/LittleWigs/TempestKeep/Pathaleon.lua
+
+LittleWigs: 
+- koKR Update
+------------------------------------------------------------------------
+r77169 | ananhaid | 2008-06-20 20:36:53 -0400 (Fri, 20 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   M /trunk/LittleWigs/Auchindoun/Tavarok.lua
+   M /trunk/LittleWigs/HellfireCitadel/Omor.lua
+   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
+   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
+
+LittleWigs: 
+- zhCN update.
+------------------------------------------------------------------------
+r77167 | ulic | 2008-06-20 19:04:04 -0400 (Fri, 20 Jun 2008) | 8 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/LittleWigs_Auchindoun.toc
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   M /trunk/LittleWigs/Auchindoun/Pandemonius.lua
+   A /trunk/LittleWigs/Auchindoun/Tavarok.lua
+   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
+   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
+   M /trunk/LittleWigs/TempestKeep/Pathaleon.lua
+   M /trunk/LittleWigs/modules.xml
+
+LittleWigs:
+- Auch/Ikiss: Fix icon for the poly
+- Auch/Maladaar: Removed an old message & added a health based warning for the Avatar spawn
+- Auch/Pandemonius: Fixed CombatListener
+- Auch/Tavarok: Added this new boss, announces and icons players that get put in a Crystal Prison
+- TK/Gyrokill: Removed an extra Shadow Power message, changed some variable names and text, will need new translations
+- TK/Ironhand: Added spell icon to Jackhammer, cleaned up Shadow Power to match Gyrokills
+- TK/Pathaleon: Fixed CombatListener
+------------------------------------------------------------------------
+r77157 | ananhaid | 2008-06-20 14:06:17 -0400 (Fri, 20 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
+   M /trunk/LittleWigs/HellfireCitadel/Omor.lua
+
+LittleWigs: 
+- zhCN update.
+------------------------------------------------------------------------
+r76984 | cwdg | 2008-06-17 23:41:34 -0400 (Tue, 17 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   M /trunk/LittleWigs/Auchindoun/Murmur.lua
+   M /trunk/LittleWigs/Auchindoun/Pandemonius.lua
+   M /trunk/LittleWigs/Auchindoun/Shirrak.lua
+   M /trunk/LittleWigs/Auchindoun/Syth.lua
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+   M /trunk/LittleWigs/Coilfang/Ghaz'an.lua
+   M /trunk/LittleWigs/Coilfang/Hungarfen.lua
+   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
+   M /trunk/LittleWigs/Coilfang/Mennu.lua
+   M /trunk/LittleWigs/Coilfang/Quagmirran.lua
+   M /trunk/LittleWigs/Coilfang/Rokmar.lua
+   M /trunk/LittleWigs/Coilfang/Stalker.lua
+   M /trunk/LittleWigs/Coilfang/Steamrigger.lua
+   M /trunk/LittleWigs/Coilfang/Swamplord.lua
+   M /trunk/LittleWigs/Coilfang/Thespia.lua
+   M /trunk/LittleWigs/HellfireCitadel/Broggok.lua
+   M /trunk/LittleWigs/HellfireCitadel/Kelidan.lua
+   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
+   M /trunk/LittleWigs/HellfireCitadel/Omor.lua
+   M /trunk/LittleWigs/HellfireCitadel/Warchief.lua
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+   M /trunk/LittleWigs/MagistersTerrace/PriestessDelrissa.lua
+   M /trunk/LittleWigs/MagistersTerrace/SelinFireheart.lua
+   M /trunk/LittleWigs/MagistersTerrace/Vexallus.lua
+   M /trunk/LittleWigs/TempestKeep/Capacitus.lua
+   M /trunk/LittleWigs/TempestKeep/Dalliah.lua
+   M /trunk/LittleWigs/TempestKeep/Freywinn.lua
+   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
+   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
+   M /trunk/LittleWigs/TempestKeep/Laj.lua
+   M /trunk/LittleWigs/TempestKeep/Pathaleon.lua
+   M /trunk/LittleWigs/TempestKeep/Skyriss.lua
+   M /trunk/LittleWigs/TempestKeep/Soccothrates.lua
+   M /trunk/LittleWigs/TempestKeep/Thorngrin.lua
+   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
+
+LittleWigs: 
+Auchindoun/Coilfang/HellfireCitadel/MT/TempestKeep:
+-add guids
+------------------------------------------------------------------------
 r76604 | ulic | 2008-06-13 11:37:07 -0400 (Fri, 13 Jun 2008) | 1 line
 Changed paths:
    M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
@@ -280,33 +404,4 @@ Changed paths:
 LittleWigs:
 - HFC: Updated Broggok & Kelidan, added The Maker.lua
 - Auch: Uupdated Ikiss
-------------------------------------------------------------------------
-r74793 | ulic | 2008-05-22 10:27:51 -0400 (Thu, 22 May 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
-
-LittleWigs: TK/Zereketh- Corrected typo and added a spellId
-------------------------------------------------------------------------
-r74548 | ulic | 2008-05-20 12:11:59 -0400 (Tue, 20 May 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
-   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
-
-LittleWigs: TK/Gyrokill & Ironhand - Fixed some deDE translation issues
-------------------------------------------------------------------------
-r74084 | ulic | 2008-05-16 16:34:09 -0400 (Fri, 16 May 2008) | 3 lines
-Changed paths:
-   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
-   M /trunk/LittleWigs/Auchindoun/Murmur.lua
-
-LittleWigs:
-- Auch/Blackheart: Changed to use SPELL_CAST_SUCCESS
-- Auch/Murmur: Added spellIds for Heroic
-------------------------------------------------------------------------
-r74082 | ulic | 2008-05-16 13:50:27 -0400 (Fri, 16 May 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
-   M /trunk/LittleWigs/MagistersTerrace/PriestessDelrissa.lua
-
-LittleWigs: MgT - Updated spellIds for Delrissa & Kael'thas
 ------------------------------------------------------------------------

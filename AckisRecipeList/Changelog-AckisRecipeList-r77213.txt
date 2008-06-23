@@ -1,4 +1,92 @@
 ------------------------------------------------------------------------
+r77213 | ackis | 2008-06-22 00:09:16 -0400 (Sun, 22 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
+
+AckisRecipeList:
+- zhTW update
+------------------------------------------------------------------------
+r77110 | ackis | 2008-06-19 19:28:13 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
+
+AckisRecipeList:
+- esMX update (copy from esES)
+------------------------------------------------------------------------
+r77105 | StiviS | 2008-06-19 17:01:20 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
+
+AckisRecipeList:
+- esES updated
+------------------------------------------------------------------------
+r77101 | ackis | 2008-06-19 13:36:20 -0400 (Thu, 19 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
+
+AckisRecipeList:
+- Thistle tea is now flagged as BoP
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r77100 | trasher | 2008-06-19 13:29:40 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR update
+------------------------------------------------------------------------
+r77091 | next96 | 2008-06-19 11:13:18 -0400 (Thu, 19 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r77088 | ackis | 2008-06-19 10:57:24 -0400 (Thu, 19 Jun 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
+
+AckisRecipeList:
+- Add new 2.4.3 Tailoring patterns (thanks Anaral)
+- Add Haughty Modiste as a vendor (needs translations)
+- Updated Crusader enchant drop locations (needs transaltion for L["Enchant Weapon - Crusader Obt1"])
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r77005 | ackis | 2008-06-18 10:38:58 -0400 (Wed, 18 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
+
+AckisRecipeList:
+- Update zhTW thanks to apa
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r76867 | ackis | 2008-06-16 15:53:40 -0400 (Mon, 16 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
+
+AckisRecipeList:
+- Remove some 2.4.2 checks because I'm a doofus and forgot about it.
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r76861 | ackis | 2008-06-16 14:45:01 -0400 (Mon, 16 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Move a few global variables into a function since it's the only one to use them.
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r76858 | ackis | 2008-06-16 14:39:43 -0400 (Mon, 16 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Localized a few blizz functions that can be called many many times (someone look at all the functions I'm localizing and tell me if this is a good or bad idea please?)
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
 r76787 | ackis | 2008-06-16 01:39:18 -0400 (Mon, 16 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc
@@ -583,254 +671,4 @@ Changed paths:
 
 AckisRecipeList:
 - testgui. flyaway pane done
-------------------------------------------------------------------------
-r74721 | ackis | 2008-05-21 19:23:56 -0400 (Wed, 21 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fixed
-------------------------------------------------------------------------
-r74712 | zhinjio | 2008-05-21 18:40:59 -0400 (Wed, 21 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   A /trunk/AckisRecipeList/img
-   A /trunk/AckisRecipeList/img/main.blp
-
-AckisRecipeList:
-- began work on testgui
-------------------------------------------------------------------------
-r74622 | ackis | 2008-05-21 02:02:08 -0400 (Wed, 21 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-
-AckisRecipeList:
-- Updated a few JC recipes that are from the vendor (God damnit Illidan people do the fucking quest)
-- Converted more addon: -> self:
-------------------------------------------------------------------------
-r74607 | ackis | 2008-05-20 20:57:31 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Added debug message for test gui
-------------------------------------------------------------------------
-r74606 | ackis | 2008-05-20 20:53:10 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Fixed another frame issue
-------------------------------------------------------------------------
-r74605 | ackis | 2008-05-20 20:49:52 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Fixed a minor frame bug
-------------------------------------------------------------------------
-r74588 | ackis | 2008-05-20 18:15:11 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Some test GUI stuff
-------------------------------------------------------------------------
-r74582 | ackis | 2008-05-20 17:52:12 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-
-AckisRecipeList:
-- Alchemy flasks -> 360 as per WowDB
-------------------------------------------------------------------------
-r74567 | kurax | 2008-05-20 14:30:04 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList:
-- Update zhCN locale
-------------------------------------------------------------------------
-r74541 | next96 | 2008-05-20 10:47:51 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r74506 | StiviS | 2008-05-20 04:52:44 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
-------------------------------------------------------------------------
-r74497 | ackis | 2008-05-20 02:01:19 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Add seasonal filter
-------------------------------------------------------------------------
-r74367 | next96 | 2008-05-19 00:44:57 -0400 (Mon, 19 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r74353 | ackis | 2008-05-18 21:20:15 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fix for hunter/enchanting
-------------------------------------------------------------------------
-r74350 | ackis | 2008-05-18 20:53:43 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fix for display issue with config options
-------------------------------------------------------------------------
-r74344 | StiviS | 2008-05-18 19:24:00 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
-------------------------------------------------------------------------
-r74341 | ackis | 2008-05-18 19:03:39 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fix misaligned text in the reputation config panel
-------------------------------------------------------------------------
-r74332 | ackis | 2008-05-18 17:28:26 -0400 (Sun, 18 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Finsih off GUI configuration options
-- Slash commands still will not work, however commands like /arl profile, /arl display will take you to the appropiate configuration window
-------------------------------------------------------------------------
-r74328 | ackis | 2008-05-18 16:54:33 -0400 (Sun, 18 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Configuration options are looking a lot better.
-- Slash commands don't work, however the options when you type /arl look very professional (aka the UI wasn't done by me, instead by the Ace3 framework)
-------------------------------------------------------------------------
-r74325 | ackis | 2008-05-18 15:56:45 -0400 (Sun, 18 May 2008) | 6 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-RoguePoison.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Smelt.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
-
-AckisRecipeList:
-- All ARL -> addon
-- All ARL: -> addon: or self:
-- Removed ARL = AckisRecipeList as it's not needed anymore, yay for 1 less global which means ARL uses a total of 1 global now!
-- Removed unneeded variable in vendor section
-- Thank God for find/replace
-------------------------------------------------------------------------
-r74321 | ackis | 2008-05-18 15:39:27 -0400 (Sun, 18 May 2008) | 6 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/ARLText.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fixed a bug with Expand/Collapse All
-- ARL: -> Addon:
-- ARL:/Addon: -> self: (where appropiate)
-- ARL_func -> func
-- AKA some code optimization as local addon is faster than global ARL and self function calls are faster than ARL function calls
-------------------------------------------------------------------------
-r74283 | StiviS | 2008-05-18 10:03:05 -0400 (Sun, 18 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES:
--- updated
--- Used LibBabble-Zone-3.0 to make translations more easy
-------------------------------------------------------------------------
-r74260 | kurax | 2008-05-18 04:08:47 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList:
-- Update zhCN locale
-------------------------------------------------------------------------
-r74243 | ackis | 2008-05-18 00:40:52 -0400 (Sun, 18 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Playing around with the options tables to make things less crowded.
-- Not sure why profiles are removed from the slash commands though
-------------------------------------------------------------------------
-r74224 | next96 | 2008-05-17 22:07:20 -0400 (Sat, 17 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r74206 | ackis | 2008-05-17 19:06:58 -0400 (Sat, 17 May 2008) | 6 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Smelt.lua
-
-AckisRecipeList:
-- Add expand/collapse all button for the gui (new localizations needed)
-- Smelt Adamantite -> 325 skill
-- Covnerted engeineering recipes to new system (all engineering localizations will have to be updated except enUS)
-- Compressed some duplicate localizations that resulted from the converstion of engineering
-- Version bump
-------------------------------------------------------------------------
-r74136 | pettigrow | 2008-05-17 05:38:07 -0400 (Sat, 17 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList:
-- frFR Update
-- Little bug fix
-------------------------------------------------------------------------
-r74043 | StiviS | 2008-05-16 05:09:19 -0400 (Fri, 16 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
 ------------------------------------------------------------------------

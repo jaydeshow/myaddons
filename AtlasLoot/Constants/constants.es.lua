@@ -36,7 +36,9 @@ AL:RegisterTranslations("esES", function() return {
     ["Close Menu"] = "Cerrar menú",
     ["Unknown"] = "Desconocido",
     ["Skill Required:"] = "Habilidad necesaria",
-
+    ["QuickLook"] = "VistaRápida",
+    ["Add to QuickLooks:"] = "Añade a VistaRápida",
+    ["Assign this loot table\n to QuickLook"] = "Añade esta tabla\n a la VistaRápida",
     --Text for Options Panel
     ["Atlasloot Options"] = "Opciones Atlasloot",
     ["Safe Chat Links |cff1eff00(recommended)|r"] = "Enlaces seguros en el chat |cff1eff00(recomendado)|r",
@@ -227,6 +229,12 @@ AL:RegisterTranslations("esES", function() return {
     --["Kiting"] = true, FALTA
     --["Robotic Homing Chicken"] = true, FALTA
     --["Paper Airplane"] = true, FALTA
+    --["Papa Hummel's Old-fashioned Pet Biscuit"] = true, FALTA
+    ["Personal Weather Machine"] = "Máquina del tiempo personal",
+    ["X-51 Nether-Rocket"] = "Cohete abisal X-51",
+    ["The Footsteps of Illidan"] = "Las huellas de Illidan",
+    --["Disco Inferno!"] = true, FALTA
+    ["Ethereal Plunderer"] = "Desvalijador etéreo",
 
     --Battleground Brackets
     ["Misc. Rewards"] = "Recompensas varias",
@@ -838,7 +846,7 @@ AL:RegisterTranslations("esES", function() return {
     ["Gezzarak the Huntress"] = "Gezzarak la Cazadora",
     ["Vakkiz the Windrager"] = "Vakkiz el Furibundo del Viento",
     --["Terokk"] = true,
-    ["Armbreaker Huffaz"] = "Casse-bras Huffaz", --FALTA Tormenta Abisal 54,46
+    ["Armbreaker Huffaz"] = "Partebrazos Huffaz",
     ["Fel Tinkerer Zortan"] = "Manitas vil Zortan",
     --["Forgosh"] = true,
     --["Gul'bor"] = true,

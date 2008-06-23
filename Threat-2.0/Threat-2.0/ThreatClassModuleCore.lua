@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 74826 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 77072 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -981,7 +981,6 @@ function prototype:parseCast(recipient, spellID, spellName)
 		if self.CastLandedHandlers[spellID] then
 			self.CastLandedHandlers[spellID](self, spellID, recipient)
 		end
-		self:commitTransactionFor(recipient, spellID)
 	end
 end
 

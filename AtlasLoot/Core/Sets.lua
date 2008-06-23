@@ -906,7 +906,7 @@ function AtlasLootARENA2SetMenu()
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Arena 2 PvP Sets"]..": "..AL["Season 2"]);
+    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Arena PvP Sets"]..": "..AL["Season 2"]);
     AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
 end
 
@@ -979,7 +979,7 @@ function AtlasLootARENA3SetMenu()
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Arena 3 PvP Sets"]..": "..AL["Season 3"]);
+    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Arena PvP Sets"]..": "..AL["Season 3"]);
     AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
 end
 
@@ -1052,7 +1052,7 @@ function AtlasLootARENA4SetMenu()
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Arena 4 PvP Sets"]..": "..AL["Season 4"]);
+    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Arena PvP Sets"]..": "..AL["Season 4"]);
     AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
 end
 

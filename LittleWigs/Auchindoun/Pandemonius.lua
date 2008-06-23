@@ -1,11 +1,9 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
 local boss = BB["Pandemonius"]
 local L = AceLibrary("AceLocale-2.2"):new("BigWigs"..boss)
-
-local db = nil
 
 ----------------------------
 --      Localization      --
@@ -58,18 +56,17 @@ mod.partyContent = true
 mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Mana-Tombs"]
 mod.enabletrigger = boss 
+mod.guid = 18341
 mod.toggleoptions = {"shell", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77167 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_AURA_APPLIED", "Shell", 32358, 38759) -- Normal/Heroic
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
-
-	db = self.db.profile
+	self:AddCombatListener("SPELL_CAST_START", "Shell", 32358, 38759)
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------
@@ -77,8 +74,8 @@ end
 ------------------------------
 
 function mod:Shell(spellId)
-	if db.shell then
-		self:Message(L["shell_message"], "Attention")
+	if self.db.profile.shell then
+		self:IfMessage(L["shell_message"], "Attention", spellId)
 		self:Bar(L["shell_message"], 6, spellId)
 	end
 end

@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -123,8 +123,9 @@ mod.partyContent = true
 mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = {boss, BB["Warden Mellichar"]}
+mod.guid = 20912
 mod.toggleoptions = {"mc", "mr", "split", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -134,7 +135,7 @@ function mod:OnEnable()
 	firstSplitAnnounced = nil
 	secondSplitAnnounced = nil
 
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 39019)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "MindRend", 39017)
 	

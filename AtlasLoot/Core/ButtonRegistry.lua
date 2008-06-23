@@ -621,20 +621,6 @@ AtlasLoot_ButtonRegistry = {
 		Back_Page = "HONORMENU";
 		Back_Title = AL["PvP Honor System"];
 		};
-	["PVP70Weapons1"] = {
-		Title = AL["PvP Weapons"]..": "..AL["Level 70"];
-		Next_Page = "PVP70Weapons2";
-		Next_Title = AL["PvP Weapons"]..": "..AL["Level 70"];
-		Back_Page = "HONORMENU";
-		Back_Title = AL["PvP Honor System"];
-		};
-	["PVP70Weapons2"] = {
-		Title = AL["PvP Weapons"]..": "..AL["Level 70"];
-		Prev_Page = "PVP70Weapons1";
-		Prev_Title = AL["PvP Weapons"]..": "..AL["Level 70"];
-		Back_Page = "HONORMENU";
-		Back_Title = AL["PvP Honor System"];
-		};
 	["Arena1Weapons1"] = {
 		Title = AL["Arena PvP Weapons"]..": "..AL["Season 1"];
 		Next_Page = "Arena1Weapons2";

@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76860 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -296,12 +296,10 @@ AutoBarSpells = AceOO.Class(AutoBarCategory)
 -- { "DRUID", "Mark of the Wild", "Gift of the Wild", ["<class>", "<localized spell name left click>", "<localized spell name right click>",] ... }
 -- Pass in only one of castList, rightClickList
 -- Icon from castList is used unless not available but rightClickList is
-function AutoBarSpells.prototype:init(description, texture, castList, rightClickList, customCategoriesDB)
+function AutoBarSpells.prototype:init(description, texture, castList, rightClickList)
 	AutoBarSpells.super.prototype.init(self, description, texture) -- very important. Will fail without this.
 	local spellName, index
 --AutoBar:Print("AutoBarSpells.prototype:init " .. description .. " castList " .. tostring(castList))
-
-	self.customCategoriesDB = customCategoriesDB
 
 	-- Filter out non CLASS spells from castList and rightClickList
 	if (castList) then
@@ -351,7 +349,7 @@ end
 
 
 -- Custom Category
-AutoBarCustom = AceOO.Class(AutoBarSpells)
+AutoBarCustom = AceOO.Class(AutoBarCategory)
 
 -- Return a unique key to use
 function AutoBarCustom:GetCustomKey(customCategoryName)
@@ -363,6 +361,11 @@ end
 -- Add description verbatim to localization
 function AutoBarCustom.prototype:init(customCategoriesDB)
 	local description = customCategoriesDB.name
+	if (not L[description]) then
+		L[description] = description
+	end
+
+	-- Icon is first item found that is not an invalid spell
 	local itemList = customCategoriesDB.items
 	local itemType, itemId, itemInfo, spellName, spellClass, texture
 	for index = # itemList, 1, -1 do
@@ -392,11 +395,9 @@ function AutoBarCustom.prototype:init(customCategoriesDB)
 		texture = "Interface\\Icons\\INV_Misc_Gift_01"
 	end
 
-	if (not L[description]) then
-		L[description] = description
-	end
+	AutoBarCustom.super.prototype.init(self, description, texture)
+	self.customCategoriesDB = customCategoriesDB
 
-	AutoBarCustom.super.prototype.init(self, description, texture, nil, nil, customCategoriesDB)
 --AutoBar:Print("AutoBarCustom.prototype:init customCategoriesDB " .. tostring(customCategoriesDB) .. " self.customCategoriesDB " .. tostring(self.customCategoriesDB))
 	self.customKey = AutoBarCustom:GetCustomKey(description)
 --AutoBar:Print("AutoBarCustom.prototype:init description " .. tostring(description) .. " customKey " .. tostring(self.customKey))

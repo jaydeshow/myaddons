@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -56,8 +56,9 @@ local mod = BigWigs:NewModule(boss)
 mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
+mod.guid = 24723
 mod.toggleoptions = {"channel","bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -66,7 +67,7 @@ mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 function mod:OnEnable()
 	self:RegisterEvent("CHAT_MSG_MONSTER_EMOTE","Channel")
 
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	db = self.db.profile
 end

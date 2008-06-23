@@ -7,24 +7,24 @@ if (GetLocale() ~= "frFR") then
 	return
 end
 
-local REVISION = tonumber(("$Revision: 75188 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77077 $"):match("%d+"))
 if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
 	return
 end
 
 LibKeyBoundLocale10 = {
 	REVISION = REVISION;
-	Enabled = "Bindings mode enabled";
-	Disabled = "Bindings mode disabled";
-	ClearTip = format("Appuyer sur %s pour effacer tous les bindings", GetBindingText("ESCAPE", "KEY_"));
-	NoKeysBoundTip = "No current bindings";
-	ClearedBindings = "Suppression de tous les binding de %s";
-	BoundKey = "D�finir %s � %s";
-	UnboundKey = "Unbound %s depuis %s";
-	CannotBindInCombat = "Cannot bind keys in combat";
-	CombatBindingsEnabled = "Sortie de combat, keybinding mode activ�";
-	CombatBindingsDisabled = "Entr�e en combat, keybinding mode d�sactiv�";
-	BindingsHelp = "Hover over a button, then press a key to set its binding.  To clear a button's current keybinding, press %s.";
+	Enabled = "Mode Raccourcis activé";
+	Disabled = "Mode Raccourcis désactivé";
+	ClearTip = format("Appuyez sur %s pour effacer tous les raccourcis", GetBindingText("ESCAPE", "KEY_"));
+	NoKeysBoundTip = "Aucun raccourci";
+	ClearedBindings = "Suppression de tous les raccourcis de %s";
+	BoundKey = "%s associé à %s";
+	UnboundKey = "%s n'est plus associé à %s";
+	CannotBindInCombat = "Impossible de faire des raccourcis en combat";
+	CombatBindingsEnabled = "Sortie de combat, mode Raccourcis activé";
+	CombatBindingsDisabled = "Entrée en combat, mode Raccourcis désactivé";
+	BindingsHelp = "Survolez un bouton, puis appuyez sur une touche pour définir son raccourci.  Pour effacer le raccourci actuel d'un bouton, appuyez sur %s";
 
 	-- This is the short display version you see on the Button
 	["Alt"] = "A",

@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 70658 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 77072 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 if select(2, _G.UnitClass("player")) ~= "WARRIOR" then return end
@@ -179,6 +179,7 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 	function Warrior:ClassInit()
 		-- Taunt
 		self.CastLandedHandlers[355] = self.Taunt
+		self.CastMissHandlers[355] = self.TauntMissed
 		
 		-- Non-transactional abilities		
 		init(self, threatValues.heroicStrike, self.HeroicStrike)
@@ -289,13 +290,16 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 		local targetThreat = ThreatLib:GetThreat(UnitGUID("targettarget"), target)
 		local myThreat = ThreatLib:GetThreat(UnitGUID("player"), target)
 		if targetThreat > 0 and targetThreat > myThreat then
-			self:SetTargetThreat(target, targetThreat)
+			self:AddTargetThreatTransactional(target, spellID, targetThreat-myThreat)
 		elseif targetThreat == 0 then
 			local maxThreat = ThreatLib:GetMaxThreatOnTarget(target)
-			self:SetTargetThreat(target, maxThreat)
+			self:AddTargetThreatTransactional(target, spellID, maxThreat-myThreat)
 		end
 	end
 
+	function Warrior:TauntMissed(spellID, target)
+		self:rollbackTransaction(target, spellID)
+	end
 	function Warrior:HeroicStrike(spellID)
 		return threatValues.heroicStrike[spellID] * self:threatMods()
 	end

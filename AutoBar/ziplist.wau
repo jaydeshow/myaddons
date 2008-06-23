@@ -1,4 +1,4 @@
-AutoBar/Changelog-AutoBar-r76835.txt
+AutoBar/Changelog-AutoBar-r76925.txt
 AutoBar/Locale-esES.lua
 AutoBar/AutoBarOptions.lua
 AutoBar/Locale-koKR.lua
@@ -17,11 +17,11 @@ AutoBar/AutoBarButton.lua
 AutoBar/AutoBarConsole-1.0.lua
 AutoBar/Locale-deDE.lua
 AutoBar/AutoBarDB.lua
-AutoBar/Locale-itIT.lua
 AutoBar/Locale-esMX.lua
 AutoBar/Locale-zhCN.lua
 AutoBar/ChangeList.lua
 AutoBar/AutoBarSearch.lua
 AutoBar/AutoBarFuBar.lua
+AutoBar/Locale-ruRU.lua
 AutoBar/Locale-zhTW.lua
 AutoBar/StickyFrames.lua

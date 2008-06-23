@@ -4,8 +4,8 @@ ARL-Cook.lua
 
 Cooking data for all of AckisRecipeList
 
-$Date: 2008-06-04 11:30:19 -0400 (Wed, 04 Jun 2008) $
-$Rev: 75999 $
+$Date: 2008-06-19 13:36:20 -0400 (Thu, 19 Jun 2008) $
+$Rev: 77101 $
 
 ]]--
 
@@ -101,7 +101,7 @@ function addon:InitCooking()
 	self:addTradeSkillSpell(6416, 50, self:CombineQuests(L["Strider Stew Obt"],1,BZONE["Darkshore"]) .. addon.br .. self:CombineVendors(254, false),2,8)
 	self:addTradeSkillSpell(2542, 50, self:CombineQuests(L["Goretusk Liver Pie Obt"],1,BZONE["Westfall"]) .. addon.br .. self:CombineVendors(253, false), BFAC["Alliance"],2,8)
 	self:addTradeSkillSpell(3371, 60, self:CombineQuests(L["Blood Sausage Obt"],1,BZONE["Loch Modan"]) .. addon.br .. self:CombineVendors(253, false), BFAC["Alliance"],2,8)
-	self:addTradeSkillSpell(9513, 60, self:CombineQuests(L["Thistle Tea Ally Obt"],1,BZONE["Westfall"],L["Thistle Tea Horde Obt"],2,BZONE["The Barrens"]) .. addon.br .. self:CombineVendors(283, false), "ROGUE",2,8)
+	self:addTradeSkillSpell(9513, 60, self:CombineQuests(L["Thistle Tea Ally Obt"],1,BZONE["Westfall"],L["Thistle Tea Horde Obt"],2,BZONE["The Barrens"]) .. addon.br .. self:CombineVendors(283, false), "ROGUE",2,4,8)
 	self:addTradeSkillSpell(28267, 60, self:CombineQuests(L["Crunchy Spider Surprise Obt"],2,BZONE["Ghostlands"]) .. addon.br .. self:CombineVendors(281, 238, false),2,8)
 	self:addTradeSkillSpell(2543, 75, self:CombineQuests(L["Westfall Stew Obt"],1,BZONE["Westfall"]) .. addon.br .. self:CombineVendors(253, false), BFAC["Alliance"],2,8)
 	self:addTradeSkillSpell(3370, 80, self:CombineQuests(L["Crocolisk Steak Obt"],1,BZONE["Loch Modan"]) .. addon.br .. self:CombineVendors(253, false), BFAC["Alliance"],2,8)

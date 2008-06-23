@@ -11,8 +11,6 @@ if (GetLocale() == "deDE") then
 	    ["SLASHCMD_LONG"] = "/autobar",
 	    ["SLASHCMD_SHORT"] = "/atb",
 	    ["Button"] = "Feld",
-	    ["EDITSLOT"] = "Bearbeiten",
-	    ["VIEWSLOT"] = "Blick",
 		["LOAD_ERROR"] = "|cff00ff00Error Loading AutoBarConfig. Make sure you have it and it is enabled.|r Error: ",
 		["Toggle the config panel"] = "Toggle the config panel",
 		["Empty"] = "Empty",
@@ -560,15 +558,9 @@ AUTOBAR_TOOLTIP8 = "\n(Links-Klick f\195\188r Waffenhand.\nRechts-Klick f\195\18
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "Click to reset to the standard defaults.\nClass specific slots are in the Class layer.\nDefault slots are in the Basic layer.\nShared and Character layers are cleared.";
 --
 ----  AutoBar_Config.lua
---AUTOBAR_TOOLTIP9 = "Mehrfachfeld\n";
---AUTOBAR_TOOLTIP10 = " (Benutzerdefinifierter Gegenstand aus ItemID)";
---AUTOBAR_TOOLTIP11 = "\n(ItemID nicht erkannt)";
---AUTOBAR_TOOLTIP12 = " (Benutzerdefinierter Gegenstand aus Name)";
---AUTOBAR_TOOLTIP13 = "Einzelfeld\n\n";
 --AUTOBAR_TOOLTIP15 = "\nWaffenziel\n(Links-Klick f\195\188r Waffenhand.\nRechts-Klick f\195\188r Schildhand)";
 AUTOBAR_TOOLTIP17 = "\nNur au\195\159erhalb Kampf.";
 AUTOBAR_TOOLTIP18 = "\nNur in Kampf.";
---AUTOBAR_TOOLTIP20 = "\nBegrenzte Verwendung: "
 --AUTOBAR_TOOLTIP21 = "Verwendung bei fehlender Gesundheit";
 --AUTOBAR_TOOLTIP22 = "Verwendung bei fehlendem Mana";
 

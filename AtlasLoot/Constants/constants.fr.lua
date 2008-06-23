@@ -56,6 +56,9 @@ AL:RegisterTranslations("frFR", function() return {
     ["Close Menu"] = "Fermer la liste",
     ["Unknown"] = "Inconnu",
     ["Skill Required:"] = "Compétence requise :",
+    --["QuickLook"] = true,
+    ["Add to QuickLooks:"] = "Ajouter à QuickLook :",
+    ["Assign this loot table\n to QuickLook"] = "Assigner cette table de loot\n à QuickLook",
     
     --Text for Options Panel
     ["Atlasloot Options"] = "Options d'Atlasloot",
@@ -121,7 +124,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Loading available tables for searching"] = "Chargement des tables disponibles pour la recherche",
     
      --All Available modules loaded
-    ["All Available Modules Loaded"] = "Tous les modules disponibles sont chargés",
+    ["All Available Modules Loaded"] = "Tous les modules disponibles sont chargés.",
 
     --Minimap Button
     ["|cff1eff00Left-Click|r Browse Loot Tables"] = "|cff1eff00Clic-Gauche|r Parcours des Listes d'Objets",
@@ -247,8 +250,14 @@ AL:RegisterTranslations("frFR", function() return {
     ["Spectral Tiger"] = "Tigre Spectral",
     ["March of the Legion"] = "Marche de la Légion",
     --["Kiting"] = true,
-    --["Robotic Homing Chicken"] = true, -- à traduire
+    ["Robotic Homing Chicken"] = "Poulet Robot Guidé",
     ["Paper Airplane"] = "Machine volante en papier",
+    ["Papa Hummel's Old-fashioned Pet Biscuit"] = "Biscuit pour familier à l'ancienne de papa Humme",
+    ["Personal Weather Machine"] = "Machine météorologique gobeline",
+    ["X-51 Nether-Rocket"] = "Fusée-de-néant X-51",
+    --["The Footsteps of Illidan"] = true,
+    --["Disco Inferno!"] = true,
+    --["Ethereal Plunderer"] = true,
 
     --Battleground Brackets
     ["Misc. Rewards"] = "Récompenses Diverses",

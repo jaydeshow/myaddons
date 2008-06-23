@@ -4,12 +4,16 @@ This mod is distributed under Version 2 of the GPL.  A copy of the GPL is includ
 
 -Daviesh
 
-v4.05.01
-Crafted items are not viewable in the dressing room
-Added new TCG loot from "Hunt of Illidan" (no IDs yet)
-Many minor loot fixes/additions/translations
 
 Patch Notes
+v4.06.00
+Compatible with Atlas 1.12
+New feature: Quicklooks, which allows you to bind loot tables to one of 4 shortcut buttons in Atlas or the loot browser
+Added new TCG loot from "Hunt of Illidan"
+Updated Midsummer Fire Festival section
+Arena prices and items for Season 4 adjusted
+Many minor loot fixes/additions/translations
+
 v4.05.00
 New and improved searching system (some nice work from Kurax there)
 All professions data available in the crafting module

@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76925 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-06-14 01:49:25 -0400 (Sat, 14 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-06-17 10:15:06 -0400 (Tue, 17 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -597,7 +597,7 @@ function AutoBar:InitializeDefaults()
 		}
 	end
 	if (not AutoBar.db.account.buttonList["AutoBarButtonCooldownPotionCombat"]) then
-		AutoBar.db.account.buttonList["AutoBarButtonCooldownStoneCombat"] = {
+		AutoBar.db.account.buttonList["AutoBarButtonCooldownPotionCombat"] = {
 			buttonKey = "AutoBarButtonCooldownPotionCombat",
 			buttonClass = "AutoBarButtonCooldownPotionCombat",
 			barKey = "AutoBarClassBarBasic",

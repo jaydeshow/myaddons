@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -42,7 +42,7 @@ L:RegisterTranslations("koKR", function() return {
 	despawn_desc = "황천의 망령 사라짐에 대해 알립니다.",
 	despawn_message = "잠시 후 황천의 망령 사라짐!",
 	despawn_trigger = "진짜 싸움을 시작해 볼까...", 
-	despawn_trigger2 = "I prefer to be hands",	--need to translation.
+	--despawn_trigger2 = "I prefer to be hands",
 	despawn_done = "황천의 망령 사라짐!",
 
 	mc = "정신 지배",
@@ -129,8 +129,9 @@ mod.partyContent = true
 mod.otherMenu = "Tempest Keep"
 mod.zonename = BZ["The Mechanar"]
 mod.enabletrigger = boss
+mod.guid = 19220
 mod.toggleoptions = {"summon", "despawn", -1, "mc", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77174 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -142,9 +143,9 @@ function mod:OnEnable()
 	-- There are four spellId's for this summon, and seeing as how I put a time check in
 	-- original code I suspect that he casts each of the four spells once, so we only
 	-- need to check for one to be cast, the four Ids are 35285, 35286, 35287, 35288
-	self:AddCombatListener("SPELL_CAST_START", "Summon", 35285)
+	self:AddCombatListener("SPELL_SUMMON", "Summon", 35285)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 35280)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 	self:RegisterEvent("UNIT_HEALTH")

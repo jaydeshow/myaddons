@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList v0.84
-$Date: 2008-06-16 01:36:18 -0400 (Mon, 16 Jun 2008) $
-$Rev: 76786 $
+$Date: 2008-06-16 14:45:01 -0400 (Mon, 16 Jun 2008) $
+$Rev: 76861 $
 
 Author: Ackis on Illidan US Horde
 
@@ -46,10 +46,12 @@ local GetCraftName = GetCraftName
 local GetTradeSkillLine = GetTradeSkillLine
 local GetTradeSkillInfo = GetTradeSkillInfo
 local CraftIsPetTraining = CraftIsPetTraining
+local GetDifficultyColor= GetDifficultyColor
 local select = select
 local format = format
 local string = string
 local tostring = tostring
+local tonumber = tonumber
 local pairs = pairs
 local table = table
 local next = next
@@ -61,10 +63,6 @@ local BOOKTYPE_SPELL = BOOKTYPE_SPELL
 
 -- Constants which are used everytime the add-on is loaded
 local addonversion = GetAddOnMetadata("AckisRecipeList", "Version")
-local addonwiki = GetAddOnMetadata("AckisRecipeList", "X-Website")
-local addoncredits = GetAddOnMetadata("AckisRecipeList", "X-Credits")
-local addonwebsite = GetAddOnMetadata("AckisRecipeList", "X-Feedback")
-local addonlocals = GetAddOnMetadata("AckisRecipeList", "X-Localizations")
 local nagrandfac = BFAC["Kurenai"] .. "\\" .. BFAC["The Mag'har"]
 local hellfirefac = BFAC["Honor Hold"] .. "\\" .. BFAC["Thrallmar"]
 
@@ -82,6 +80,11 @@ local playerFaction = UnitFactionGroup("player")
 
 -- Returns configuration options for ARL
 local function giveARLOptions()
+
+	local addonwiki = GetAddOnMetadata("AckisRecipeList", "X-Website")
+	local addoncredits = GetAddOnMetadata("AckisRecipeList", "X-Credits")
+	local addonwebsite = GetAddOnMetadata("AckisRecipeList", "X-Feedback")
+	local addonlocals = GetAddOnMetadata("AckisRecipeList", "X-Localizations")
 
 	local command_options = {
 	    type = "group",

@@ -1,13 +1,13 @@
 --[[
 Name: LibDogTag-3.0
-Revision: $Rev: 67995 $
+Revision: $Rev: 77057 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: A library to provide a markup syntax
 ]]
 
 local MAJOR_VERSION = "LibDogTag-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 67995 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 77057 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_MINOR_VERSION then
 	_G.DogTag_MINOR_VERSION = MINOR_VERSION
@@ -288,23 +288,25 @@ end
 local function updateFontString(fs)
 	fsNeedUpdate[fs] = nil
 	fsNeedQuickUpdate[fs] = nil
+	
 	local code = fsToCode[fs]
-	assert(code)
-	local nsList = fsToNSList[fs]
-	local kwargs = fsToKwargs[fs]
-	local kwargTypes = kwargsToKwargTypes[kwargs]
-	local func = codeToFunction[nsList][kwargTypes][code]
-	DogTag.__isMouseOver = DogTag.__lastMouseover == fsToFrame[fs]
-	call__func, call__kwargs, call__code, call__nsList = func, kwargs, code, nsList
-	local success, ret, alpha, outline = xpcall(call, errorhandler)
-	call__func, call__kwargs, call__code, call__nsList = nil, nil, nil, nil
-	if success then
-		fs:SetText(ret)
-		if alpha then
-			fs:SetAlpha(alpha)
+	if code then
+		local nsList = fsToNSList[fs]
+		local kwargs = fsToKwargs[fs]
+		local kwargTypes = kwargsToKwargTypes[kwargs]
+		local func = codeToFunction[nsList][kwargTypes][code]
+		DogTag.__isMouseOver = DogTag.__lastMouseover == fsToFrame[fs]
+		call__func, call__kwargs, call__code, call__nsList = func, kwargs, code, nsList
+		local success, ret, alpha, outline = xpcall(call, errorhandler)
+		call__func, call__kwargs, call__code, call__nsList = nil, nil, nil, nil
+		if success then
+			fs:SetText(ret)
+			if alpha then
+				fs:SetAlpha(alpha)
+			end
+			local a, b = fs:GetFont()
+			fs:SetFont(a, b, outline or '')
 		end
-		local a, b = fs:GetFont()
-		fs:SetFont(a, b, outline or '')
 	end
 end
 DogTag.updateFontString = updateFontString

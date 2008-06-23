@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -21,6 +21,9 @@ L:RegisterTranslations("enUS", function() return {
 	poly = "Polymorph",
 	poly_desc = "Warn who gets Polymorphed.",
 	poly_message = "%s is polymorphed",
+
+	icon = "Raid Icon",
+	icon_desc = "Place a Raid Icon on the polymorphed player(requires leader).",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -31,6 +34,9 @@ L:RegisterTranslations("koKR", function() return {
 	poly = "변이",
 	poly_desc = "변이에 걸린 플레이어를 알립니다.",
 	poly_message = "%s 변이",
+	
+	icon = "공격대 아이콘",
+	icon_desc = "변이에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 요구)",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -51,6 +57,9 @@ L:RegisterTranslations("frFR", function() return {
 	poly = "Métamorphose",
 	poly_desc = "Prévient quand un joueur subit les effets de la Métamorphose.",
 	poly_message = "Métamorphose sur %s !",
+
+	icon = "Icône",
+	icon_desc = "Place une icône de raid sur le dernier joueur affecté par la Métamorphose (nécessite d'être promu ou mieux).",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -73,6 +82,9 @@ L:RegisterTranslations("zhCN", function() return {
 	poly = "变形术",
 	poly_desc = "当队友受到变形术时发出警报。",
 	poly_message = "变形术：>%s<！",
+
+	icon = "团队标记",
+	icon_desc = "为中了变形术的队友打上团队标记。（需要权限）",
 } end )
 
 ----------------------------------
@@ -84,8 +96,9 @@ mod.partyContent = true
 mod.otherMenu = "Auchindoun"
 mod.zonename = BZ["Sethekk Halls"]
 mod.enabletrigger = boss 
-mod.toggleoptions = {"ae", "poly", "bosskill"}
-mod.revision = tonumber(("$Revision: 76528 $"):sub(12, -3))
+mod.guid = 18473
+mod.toggleoptions = {"ae", "poly", "icon", "bosskill"}
+mod.revision = tonumber(("$Revision: 77265 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -94,7 +107,7 @@ mod.revision = tonumber(("$Revision: 76528 $"):sub(12, -3))
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_CAST_SUCCESS", "AE", 38194)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Poly", 38245, 43309)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------
@@ -111,7 +124,7 @@ function mod:Poly(player)
 	if self.db.profile.poly then
 		self:IfMessage(L["poly_message"]:format(player), "Attention", 38245)
 		self:Bar(L["poly_message"]:format(player), 6, 38245)
-		self:Icon(player, "icon")
 	end
+	self:Icon(player, "icon")
 end
 

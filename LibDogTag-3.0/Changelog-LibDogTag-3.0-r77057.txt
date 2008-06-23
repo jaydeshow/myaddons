@@ -1,0 +1,22 @@
+------------------------------------------------------------------------
+r77057 | ckknight | 2008-06-18 22:01:46 -0400 (Wed, 18 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+
+LibDogTag-3.0 - Change the lazy fontstring updating a bit to be a bit more efficient.
+------------------------------------------------------------------------
+r76874 | ckknight | 2008-06-16 18:18:00 -0400 (Mon, 16 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+
+LibDogTag-3.0 - fix a bug that caused an assertion error at line 298
+------------------------------------------------------------------------
+r76872 | ckknight | 2008-06-16 17:28:13 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-3.0/Events.lua
+   M /trunk/LibDogTag-3.0/LibDogTag-3.0.lua
+
+LibDogTag-3.0 - Make fontstring updates somewhat lazy. Don't allow more than 1/300 of a second to be used per-frame.
+In most situations, this will have absolutely no effect, but this will mostly affect situations where absolutely every fontstring issues an update request, at which point it may take multiple frames to update all your data, but it won't freeze things anymore (hopefully).
+------------------------------------------------------------------------

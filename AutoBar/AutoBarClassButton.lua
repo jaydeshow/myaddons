@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76459 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76860 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -152,7 +152,7 @@ function AutoBar.Class.Button:SetKey(key)
 	local buttonKey = button.buttonDB.buttonKey
 	local buttonFrameName = button:GetButtonFrameName()
 	if (key) then
---		SetOverrideBindingClick(AutoBar.keyFrame, false, key, buttonFrameName)
+--		SetOverrideBindingClick(AutoBar.frame, false, key, buttonFrameName)
 		local buttonBinding = button:GetButtonBinding()
 		if (buttonBinding) then
 --AutoBar:Print("AutoBar.Class.Button.prototype:SetKey buttonBinding " .. tostring(buttonBinding) .. " -> " .. tostring(key))-- .. " buttonName " .. tostring(frame.class.buttonName))
@@ -197,7 +197,7 @@ function AutoBar.Class.Button.prototype:BindingsUpdate()
 	for i = 1, select('#', GetBindingKey(buttonBinding)) do
 		local hotKey = select(i, GetBindingKey(buttonBinding))
 --AutoBar:Print("AutoBar.Class.Button.prototype:BindingsUpdate hotKey " .. tostring(hotKey) .. " buttonFrameName " .. tostring(buttonFrameName))
-		SetOverrideBindingClick(AutoBar.keyFrame, false, hotKey, buttonFrameName)
+		SetOverrideBindingClick(AutoBar.frame, false, hotKey, buttonFrameName)
 	end
 --AutoBar:Print("AutoBar.Class.Button.prototype:BindingsUpdate -> buttonFrameName " .. tostring(buttonFrameName))
 	self:UpdateHotkeys()
@@ -212,10 +212,10 @@ function AutoBar.Class.Button:UpdateBindings(buttonName, buttonFrameName)
 	local key1, key2 = GetBindingKey(buttonName .. "_X")
 	if (key1) then
 --AutoBar:Print("AutoBar.Class.Button.prototype:UpdateBindings key1 " .. tostring(key1) .. " key2 " .. tostring(key2) .. " buttonName " .. tostring(buttonName))
-		SetOverrideBindingClick(AutoBar.keyFrame, false, key1, buttonFrameName)
+		SetOverrideBindingClick(AutoBar.frame, false, key1, buttonFrameName)
 	end
 	if (key2) then
-		SetOverrideBindingClick(AutoBar.keyFrame, false, key2, buttonFrameName)
+		SetOverrideBindingClick(AutoBar.frame, false, key2, buttonFrameName)
 	end
 end
 -- /script SetOverrideBindingClick(AutoBarButtonTrinket1Frame, false, "U", "AutoBarButtonTrinket1Frame")

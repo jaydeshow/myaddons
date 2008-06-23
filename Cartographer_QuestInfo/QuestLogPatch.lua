@@ -270,15 +270,17 @@ function CQI:Hook_QuestLog_Update()
 		local titleLine = _G["QuestLogTitle"..i]
 		if titleLine then
 			local title = titleLine:GetText()
-			if not title or title:find("%[.-%]") then break end
-			local uid, id, _, _, _, _, complete = Quixote:GetQuest(title:trim())
-			if uid then
-				title = Quixote:GetTaggedQuestName(uid)
-				titleLine:SetText(title)
-				
-				local check = _G["QuestLogTitle" .. i .. "Check"]
-				if check:IsVisible() then
-					check:SetPoint("LEFT", titleLine, "LEFT", -1, -2)
+			if not title then break end
+			if not title:find("%[.-%]") then
+				local uid, id, _, _, _, _, complete = Quixote:GetQuest(title:trim())
+				if uid then
+					title = Quixote:GetTaggedQuestName(uid)
+					titleLine:SetText(title)
+					
+					local check = _G["QuestLogTitle" .. i .. "Check"]
+					if check:IsVisible() then
+						check:SetPoint("LEFT", titleLine, "LEFT", -1, -2)
+					end
 				end
 			end
 		end

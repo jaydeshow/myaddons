@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -49,13 +49,14 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	aura = "背叛光环",
-	aura_heroic = "背叛者之祸",
-	aura_desc = "当中了背叛光环时发出警报。",
+	aura_heroic = "背叛者之祸（英雄）",
+	aura_desc = "当队友中了背叛光环时发出警报。",
 	aura_message = ">%s< 中了 %s！",
+	aura_message_you = "你中了>%s<！",
 	aura_bar = "<%s：%s>",
 
 	icon = "团队标记",
-	icon_desc = "在中了背叛光环的队友头上标记。（需要团长或助理权限）",
+	icon_desc = "在中了背叛光环的队友打上团队标记。（需要权限）",
 } end)
 
 L:RegisterTranslations("zhTW", function() return {
@@ -89,8 +90,9 @@ mod.partyContent = true
 mod.otherMenu = "Hellfire Citadel"
 mod.zonename = BZ["Hellfire Ramparts"]
 mod.enabletrigger = boss
+mod.guid = 17308
 mod.toggleoptions = {"aura", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77169 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -99,7 +101,7 @@ mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Curse", 30695, 37566, 37567, 39298) -- verify 37566(Bane of Treachery) on heroic 
 	self:AddCombatListener("SPELL_AURA_REMOVED", "CurseRemove", 30695, 37566, 37567, 39298) -- verify 37566(Bane of Treachery) on heroic
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------

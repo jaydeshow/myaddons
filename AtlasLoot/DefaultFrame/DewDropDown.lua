@@ -1411,8 +1411,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Shaman"], "PVP70RepShaman" },
 		{ BabbleClass["Warlock"], "PVP70RepWarlock" },
 		{ BabbleClass["Warrior"], "PVP70RepWarrior" },
-		{ AtlasLoot_TableNames["PVP70Weapons1"][1], "PVP70Weapons1" },
-		{ AtlasLoot_TableNames["PVP70Weapons2"][1], "PVP70Weapons2" },
 		{ AtlasLoot_TableNames["PvP70Accessories1"][1], "PvP70Accessories1" },
 		{ AtlasLoot_TableNames["PvP70Accessories2"][1], "PvP70Accessories2" },
 	},

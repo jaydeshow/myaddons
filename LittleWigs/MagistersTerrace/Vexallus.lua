@@ -1,4 +1,4 @@
-﻿------------------------------
+------------------------------
 --      Are you local?      --
 ------------------------------
 
@@ -79,8 +79,9 @@ local mod = BigWigs:NewModule(boss)
 mod.partyContent = true
 mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
+mod.guid = 24744
 mod.toggleoptions = {"adds", "feedback", "bosskill"}
-mod.revision = tonumber(("$Revision: 76367 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -92,7 +93,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Feedback", 44335)
 	self:AddCombatListener("SPELL_AURA_APPLIED_DOSE", "FeedbackDose", 44335)
 	self:AddCombatListener("SPELL_AURA_REMOVED", "FeedbackRemove", 44335)
-	self:AddCombatListener("UNIT_DIED", "GenericBossDeath")
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
 ------------------------------

@@ -71,10 +71,6 @@
 
 --[[
 = What is still planned for the new version? =
- * Finish macro buttons.
-  * For Blizzard macros, use name, not number to index them.
- * Verify arena water precedence & tears + conjured only
- * Switch to GetItemIcon(itemId or itemName or itemLink or itemString) for category icons
 --]]
 
 --[[
@@ -85,7 +81,7 @@
 [url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
 (Please click in a "Labels:" field to label your issue appropriately.)
 
-"$Revision: 76652 $"
+"$Revision: 76893 $"
 AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
 
@@ -97,16 +93,19 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 -- Inner Fire added for Priests
 -- Fix nil value in SetCount
 -- Allow dragging spells from AutoBar to regular action bars during Move Button Mode.
+-- Fix one source of popups staying open
 -- AutoBarButtonCooldownPotionCombat (Heroic Potion, Destruction Potion ...)
 -- AutoBarButtonCooldownStoneCombat (Nightmare Seed, Flamecap, Fel Blossom, ...)
 -- Bat Bites 27636 Meat.Bonus -> Meat.Basic
 -- Hyjal Nectar 18300
 -- Scourgebane Draught 22779
 -- Scourgebane Infusion 22778
+--- For Blizzard macros, use name, not number to index them.
 --- Shuffle: handle locations and cooldowns and equipped items.
 --- Buttons need a drop setting that if checked allow items to be dragged right onto the button itself
 --- Finish LibStickyFrames: needs grouped dragging.
 --- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
+--- Switch to GetItemIcon(itemId or itemName or itemLink or itemString) for category icons
 
 -- 2.04.02.55 beta ()
 -- Added GridLayoutFrame to list of stuff u can stick bars to

@@ -11,8 +11,6 @@ if (GetLocale() == "koKR") then
 		["SLASHCMD_LONG"] = "/autobar",
 		["SLASHCMD_SHORT"] = "/atb",
 		["Button"] = "버튼",
-		["EDITSLOT"] = "슬롯 편집",
-		["VIEWSLOT"] = "슬롯 보기",
 		["LOAD_ERROR"] = "|cff00ff00AutoBarConfig 모드를 불려오지 못해 오류가 발생했습니다. 당신이 그것을 다운로드하고 사용 가능하게 하십시오.|r 오류: ",
 		["Toggle the config panel"] = "설정 창 열기",
 		["Empty"] = "빈창",
@@ -559,15 +557,9 @@ AUTOBAR_TOOLTIP8 = "\n(주 무기에 적용 좌 클릭\n보조 무기에 적용 
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "표준을 기본값으로 초기화 하려면 클릭하세요.\n직업 특정의 슬롯들은 직업 계층 안에 있습니다.\n기본 슬롯들은 기초적인 계층 안에 있습니다.\n공유 그리고 캐릭터 계층들을 비우게 됩니다.";
 --
 ----  AutoBar_Config.lua
---AUTOBAR_TOOLTIP9 = "복수 카테고리 버튼\n";
---AUTOBAR_TOOLTIP10 = " (사용자 아이템 ID)";
---AUTOBAR_TOOLTIP11 = "\n(인정되지 않는 아이템 ID)";
---AUTOBAR_TOOLTIP12 = " (사용자 아이템 이름)";
---AUTOBAR_TOOLTIP13 = "단일 카테고리 버튼\n\n";
 --AUTOBAR_TOOLTIP15 = "\n무기 대상\n(좌시 클릭 주무기\n우 클릭시 보조무기)";
 AUTOBAR_TOOLTIP17 = "\n비전투시만";
 AUTOBAR_TOOLTIP18 = "\n전투시만";
---AUTOBAR_TOOLTIP20 = "\n제한된 사용: "
 --AUTOBAR_TOOLTIP21 = "체력 회복 요구";
 --AUTOBAR_TOOLTIP22 = "마나 회복 요구";
 

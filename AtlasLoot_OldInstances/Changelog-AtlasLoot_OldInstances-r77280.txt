@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r77280 | kurax | 2008-06-23 10:32:27 -0400 (Mon, 23 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.cn.lua
+   M /trunk/AtlasLoot_OldInstances/original.de.lua
+   M /trunk/AtlasLoot_OldInstances/original.es.lua
+   M /trunk/AtlasLoot_OldInstances/original.fr.lua
+   M /trunk/AtlasLoot_OldInstances/original.kr.lua
+   M /trunk/AtlasLoot_OldInstances/original.tw.lua
+
+AtlasLoot_OldInstances: Locales update
+------------------------------------------------------------------------
+r77219 | hegarol | 2008-06-22 03:24:45 -0400 (Sun, 22 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.en.lua
+
+AtlasLoot_OldInstances:
+- missing ZG coin added
+------------------------------------------------------------------------

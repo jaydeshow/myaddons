@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 70658 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 77072 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -99,6 +99,7 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 
 		-- Growl
 		self.CastLandedHandlers[6795] = self.Growl
+		self.CastMissHandlers[6795] = self.GrowlMissed
 		
 		-- Cyclone
 		self.CastLandedHandlers[33786] = self.Cyclone
@@ -164,11 +165,15 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 		local targetThreat = ThreatLib:GetThreat(UnitGUID("targettarget"), target)
 		local myThreat = ThreatLib:GetThreat(UnitGUID("player"), target)
 		if targetThreat > 0 and targetThreat > myThreat then
-			self:SetTargetThreat(target, targetThreat)
+			self:AddTargetThreatTransactional(target, spellID, targetThreat-myThreat)
 		elseif targetThreat == 0 then
 			local maxThreat = ThreatLib:GetMaxThreatOnTarget(target)
-			self:SetTargetThreat(target, maxThreat)
+			self:AddTargetThreatTransactional(target, spellID, maxThreat-myThreat)
 		end		
+	end
+
+	function Druid:GrowlMissed(spellID, target)
+		self:rollbackTransaction(target, spellID)
 	end
 
 	function Druid:FaerieFire(spellID, target)
