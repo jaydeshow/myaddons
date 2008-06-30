@@ -1,0 +1,12 @@
+------------------------------------------------------------------------
+r77341 | ckknight | 2008-06-24 18:29:42 -0400 (Tue, 24 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/LibTourist-3.0/LICENSE.txt
+   M /trunk/LibTourist-3.0/LibTourist-3.0.lua
+   M /trunk/LibTourist-3.0/LibTourist-3.0.toc
+
+LibTourist-3.0 - change license from LGPL v2.1 to MIT
+- no longer specify width, offset, or texture of zones, figure it out programmatically.
+- fix the specified with of Eastern Kingdoms (was too small, likely not updated for Sunwell)
+- remove Tourist-2.0 compatibility, it's kinda pointless now, just use the old lib if need be.
+------------------------------------------------------------------------

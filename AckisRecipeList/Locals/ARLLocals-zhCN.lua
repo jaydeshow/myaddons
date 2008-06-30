@@ -5,8 +5,8 @@ ARLLocals-zhCN.lua
 
 zhCN localization strings for Ackis Recipe List
 
-$Date: 2008-06-07 17:28:24 -0400 (Sat, 07 Jun 2008) $
-$Rev: 76230 $
+$Date: 2008-06-27 13:45:32 -0400 (Fri, 27 Jun 2008) $
+$Rev: 77526 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: Kurax, 冰焱妩魅 @ CWDG
@@ -75,6 +75,22 @@ L["TRAINER_TOGGLE"] = "扫描中包含可从训练师那里习得的配方。"
 L["VENDOR_TOGGLE"] = "扫描中包含可从商人处购买的配方。"
 L["INSTANCE_TOGGLE"] = "扫描中包含从副本掉落的配方。"
 L["QUEST_TOGGLE"] = "扫描中包含任务奖励获得的配方。"
+L["Cloth"] = "布甲"
+L["CLOTH_TOGGLE"] = "扫描中包含成品为布甲的配方。"
+L["Leather"] = "皮甲"
+L["LEATHER_TOGGLE"] = "扫描中包含成品为皮甲的配方。"
+L["Mail"] = "锁甲"
+L["MAIL_TOGGLE"] = "扫描中包含成品为锁甲的配方。"
+L["Plate"] = "板甲"
+L["PLATE_TOGGLE"] = "扫描中包含成品为板甲的配方。"
+L["Melee"] = "肉搏"
+L["MELEE_TOGGLE"] = "扫描中包含成品适用于肉搏职业的配方。"
+L["Caster DPS"] = "远程DPS"
+L["CASTERDPS_TOGGLE"] = "扫描中包含成品适用于远程DPS职业的配方。"
+L["Tanking"] = "坦克"
+L["TANKING_TOGGLE"] = "扫描中包含成品适用于坦克职业的配方。"
+L["Healing"] = "治疗"
+L["HEALING_TOGGLE"] = "扫描中包含成品适用于治疗职业的配方。"
 
 -- Sorting options
 L["Name"] = "名称"
@@ -334,6 +350,7 @@ L["Enchant Gloves - Herbalism Obt1"] = "狂怒的树人, 黑色古树, 烧焦的
 L["Enchant Gloves - Mining Obt"] = "黑铁矮人, 黑铁爆破手, 黑铁隧道工, 黑铁破坏者, 邪恶的巴尔加拉斯"
 L["Enchant Gloves - Skinning Obt"] = "屠戮者尼玛尔, 枯木狂战士, 枯木猎头者, 枯木暗影猎手"
 L["Enchant Weapon - Crusader Obt"] = "血色缚法者"
+L["Enchant Weapon - Crusader Obt1"] = "血色大法师"
 L["Enchant Weapon - Deathfrost Obt"] = "埃霍恩领主 - 仲夏火焰节"
 L["Enchant Weapon - Fiery Weapon Obt"] = "控火师罗格雷恩"
 L["Enchant Weapon - Icy Chill Obt"] = "痛苦的上层精灵"

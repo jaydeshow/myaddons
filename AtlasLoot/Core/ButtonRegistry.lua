@@ -695,11 +695,30 @@ AtlasLoot_ButtonRegistry = {
 		};
 	["PvP70NonSet3"] = {
 		Title = AtlasLoot_TableNames["PvP70NonSet3"][1];
+		Next_Page = "PvP70NonSet4";
+		Next_Title = AtlasLoot_TableNames["PvP70NonSet4"][1];
 		Prev_Page = "PvP70NonSet2";
 		Prev_Title = AtlasLoot_TableNames["PvP70NonSet2"][1];
 		Back_Page = "PVP70NONSETEPICS";
 		Back_Title = AL["PvP Non-Set Epics"];
 		};
+	["PvP70NonSet4"] = {
+		Title = AtlasLoot_TableNames["PvP70NonSet4"][1];
+		Next_Page = "PvP70NonSet5";
+		Next_Title = AtlasLoot_TableNames["PvP70NonSet5"][1];
+		Prev_Page = "PvP70NonSet3";
+		Prev_Title = AtlasLoot_TableNames["PvP70NonSet3"][1];
+		Back_Page = "PVP70NONSETEPICS";
+		Back_Title = AL["PvP Non-Set Epics"];
+		};
+	["PvP70NonSet5"] = {
+		Title = AtlasLoot_TableNames["PvP70NonSet5"][1];
+		Prev_Page = "PvP70NonSet4";
+		Prev_Title = AtlasLoot_TableNames["PvP70NonSet4"][1];
+		Back_Page = "PVP70NONSETEPICS";
+		Back_Title = AL["PvP Non-Set Epics"];
+		};
+
   --WorldPvP
 	["Hellfire"] = {
 		Title = BabbleZone["Hellfire Peninsula"];
@@ -1936,7 +1955,7 @@ AtlasLoot_ButtonRegistry = {
 		Back_Title = AL["Lvl 70 Instance Token Rewards"];
 		};
 	["HardModeAccessories2"] = {
-		Title = AtlasLoot_TableNames["HardModeAccessories"][1];
+		Title = AtlasLoot_TableNames["HardModeAccessories2"][1];
 		Prev_Page = "HardModeAccessories";
 		Prev_Title = AL["Lvl 70 Instance Rewards"].." - "..AL["Accessories"];
 		Back_Page = "70TOKENMENU";
@@ -1949,6 +1968,20 @@ AtlasLoot_ButtonRegistry = {
 		};
 	["HardModeWeapons"] = {
 		Title = AtlasLoot_TableNames["HardModeWeapons"][1];
+		Back_Page = "70TOKENMENU";
+		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		};
+	["HardModeArena"] = {
+		Title = AtlasLoot_TableNames["HardModeAccessories"][1];
+		Next_Page = "HardModeArena2";
+		Next_Title = AL["Lvl 70 Instance Rewards"].." - "..AL["Arena Reward"];
+		Back_Page = "70TOKENMENU";
+		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		};
+	["HardModeArena2"] = {
+		Title = AtlasLoot_TableNames["HardModeAccessories"][1];
+		Prev_Page = "HardModeArena";
+		Prev_Title = AL["Lvl 70 Instance Rewards"].." - "..AL["Arena Reward"];
 		Back_Page = "70TOKENMENU";
 		Back_Title = AL["Lvl 70 Instance Token Rewards"];
 		};
@@ -2077,7 +2110,16 @@ AtlasLoot_ButtonRegistry = {
 		};
 	["Brewfest2"] = {
 		Title = AL["Brewfest"];
+		Next_Page = "CorenDirebrew";
+		Next_Title = AtlasLoot_TableNames["CorenDirebrew"][1];
 		Prev_Page = "Brewfest1";
+		Prev_Title = AL["Brewfest"];
+		Back_Page = "WORLDEVENTMENU";
+		Back_Title = AL["World Events"];
+		};
+	["CorenDirebrew"] = {
+		Title = AL["Coren Direbrew"];
+		Prev_Page = "Brewfest2";
 		Prev_Title = AL["Brewfest"];
 		Back_Page = "WORLDEVENTMENU";
 		Back_Title = AL["World Events"];
@@ -2156,6 +2198,13 @@ AtlasLoot_ButtonRegistry = {
 		Back_Title = AL["World Events"];
 		};
 	["LordAhune"] = {
+		Title = AL["Lord Ahune"];
+		Prev_Page = "MidsummerFestival";
+		Prev_Title = AL["Midsummer Fire Festival"];
+		Back_Page = "WORLDEVENTMENU";
+		Back_Title = AL["World Events"];
+		};
+    ["LordAhuneHEROIC"] = {
 		Title = AL["Lord Ahune"];
 		Prev_Page = "MidsummerFestival";
 		Prev_Title = AL["Midsummer Fire Festival"];

@@ -63,7 +63,7 @@ function AtlasLootSetMenu()
     AtlasLootMenuItem_10_Name:SetText(AL["PvP Rewards"]);
     AtlasLootMenuItem_10_Extra:SetText("");
     AtlasLootMenuItem_10_Icon:SetTexture("Interface\\Icons\\INV_Axe_02");
-    AtlasLootMenuItem_10.lootpage="HONORMENU";
+    AtlasLootMenuItem_10.lootpage="PVPMENU";
     AtlasLootMenuItem_10:Show();
     --ZG Class Sets
     AtlasLootMenuItem_17_Name:SetText(AL["Zul'Gurub Sets"]);
@@ -236,10 +236,10 @@ function AtlasLoot70TokenMenu()
     AtlasLootMenuItem_6.lootpage="HardModeRelic";
     AtlasLootMenuItem_6:Show();
     --Hard Mode Tokens: Accessories
-    AtlasLootMenuItem_21_Name:SetText(AL["Accessories"]);
+    AtlasLootMenuItem_21_Name:SetText(AL["Arena Reward"]);
     AtlasLootMenuItem_21_Extra:SetText("");
     AtlasLootMenuItem_21_Icon:SetTexture("Interface\\Icons\\Spell_Holy_ChampionsBond");
-    AtlasLootMenuItem_21.lootpage="HardModeAccessories";
+    AtlasLootMenuItem_21.lootpage="HardModeArena";
     AtlasLootMenuItem_21:Show();
     --Hard Mode Tokens: Weapons
     AtlasLootMenuItem_8_Name:SetText(AL["Weapons"]);
@@ -247,6 +247,12 @@ function AtlasLoot70TokenMenu()
     AtlasLootMenuItem_8_Icon:SetTexture("Interface\\Icons\\Spell_Holy_ChampionsBond");
     AtlasLootMenuItem_8.lootpage="HardModeWeapons";
     AtlasLootMenuItem_8:Show();
+    --Hard Mode Tokens: Accessories
+    AtlasLootMenuItem_23_Name:SetText(AL["Accessories"]);
+    AtlasLootMenuItem_23_Extra:SetText("");
+    AtlasLootMenuItem_23_Icon:SetTexture("Interface\\Icons\\Spell_Holy_ChampionsBond");
+    AtlasLootMenuItem_23.lootpage="HardModeAccessories";
+    AtlasLootMenuItem_23:Show();
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end

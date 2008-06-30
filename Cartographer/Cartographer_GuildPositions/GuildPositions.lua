@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 70419 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 77299 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-04-19 03:49:25 -0400 (Sat, 19 Apr 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-06-23 18:51:02 -0400 (Mon, 23 Jun 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GuildPositions")
@@ -67,7 +67,7 @@ if not OFFICER_NOTE_COLON:find(':') then
 	OFFICER_NOTE_COLON = OFFICER_NOTE_COLON .. ':'
 end
 
-Cartographer_GuildPositions = Cartographer:NewModule("GuildPositions", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockComm-1.0")
+Cartographer_GuildPositions = Cartographer:NewModule("GuildPositions", "LibRockEvent-1.0", "LibRockTimer-1.0")
 local Cartographer_GuildPositions = Cartographer_GuildPositions
 local _G = getfenv(0)
 
@@ -311,9 +311,6 @@ function Cartographer_GuildPositions:OnEnable()
 		self:AddEventListener("LibRollCall-2.0", "MemberDisconnected", "RollCall_MemberDisconnected")
 	end
 	
-	self:AddCommListener("CGP", "WHISPER")
-	self:AddCommListener("CGP", "GUILD")
-	
 	self:AddRepeatingTimer(5, "UpdateMap")
 end
 
@@ -417,29 +414,3 @@ function Cartographer_GuildPositions:UpdateMap()
 		end
 	end
 end
-
-Cartographer_GuildPositions.OnCommReceive = {
-	CLEAR = function(self, prefix, distibution, sender)
-		clear(sender)
-	end,
-	POSITION = function(self, prefix, distribution, sender, zone, x, y)
-		if type(zone) ~= "string" or type(x) ~= "number" or type(y) ~= "number" or x < 0 or x > 1 or y < 0 or y > 1 then
-			clear(sender)
-			return
-		end
-		if BZR[zone] then
-			-- HACK
-			self.zones[sender] = zone
-		elseif BZH[zone] then
-			self.zones[sender] = BZL[zone]
-		else
-			return
-		end
-		self.x[sender] = x
-		self.y[sender] = y
-		self.times[sender] = GetTime() + 120
-		if WorldMapFrame:IsShown() then
-			showGuy(sender)
-		end
-	end
-}

@@ -1,0 +1,50 @@
+------------------------------------------------------------------------
+r77433 | hshh | 2008-06-25 21:41:21 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Mendeleev/Mendeleev.lua
+
+Mendeleev: prune cache after change profile sub options
+------------------------------------------------------------------------
+r77403 | pettigrow | 2008-06-25 12:31:41 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Mendeleev/Mendeleev.toc
+   M /trunk/Mendeleev/locales/frFR.lua
+
+Mendeleev: frFR Update
+------------------------------------------------------------------------
+r77396 | ananhaid | 2008-06-25 10:03:48 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/SetsGear.lua
+   M /trunk/Mendeleev/locales/deDE.lua
+   M /trunk/Mendeleev/locales/enUS.lua
+   M /trunk/Mendeleev/locales/esES.lua
+   M /trunk/Mendeleev/locales/frFR.lua
+   M /trunk/Mendeleev/locales/koKR.lua
+   M /trunk/Mendeleev/locales/zhCN.lua
+   M /trunk/Mendeleev/locales/zhTW.lua
+
+Mendeleev:
+- add Arena Season 4 GearSet.
+------------------------------------------------------------------------
+r77373 | scorpio0920 | 2008-06-25 02:55:20 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/Set_Instances_1-40.lua
+   M /trunk/Mendeleev/Set_Instances_61-70.lua
+
+Mendeleev:
+- Added Headless Horseman & Ahune.
+------------------------------------------------------------------------
+r76019 | durcyn | 2008-06-04 14:58:16 -0400 (Wed, 04 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Mendeleev/Mendeleev.lua
+   M /trunk/Mendeleev/Mendeleev.toc
+
+Mendeleev: Also hook ItemRefTooltip.  Remove deprecated Babble-Tradeskill from X-Embeds
+------------------------------------------------------------------------
+r75314 | scorpio0920 | 2008-05-27 23:50:46 -0400 (Tue, 27 May 2008) | 2 lines
+Changed paths:
+   M /trunk/Mendeleev/locales/zhTW.lua
+
+Mendeleev:
+- Update zhTW localization. (Thanks s8095324)
+------------------------------------------------------------------------

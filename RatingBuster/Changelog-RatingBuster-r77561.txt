@@ -1,0 +1,25 @@
+------------------------------------------------------------------------
+r77561 | nemes | 2008-06-28 07:40:28 -0400 (Sat, 28 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster/embeds.xml
+
+RatingBuster: remove unused Babble-Class
+
+------------------------------------------------------------------------
+r77560 | nemes | 2008-06-28 07:39:18 -0400 (Sat, 28 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster
+   M /trunk/RatingBuster/RatingBuster.lua
+   M /trunk/RatingBuster/RatingBuster.toc
+
+RatingBuster: remove unused Babble-Class
+
+------------------------------------------------------------------------
+r75639 | kuja | 2008-05-31 11:13:38 -0400 (Sat, 31 May 2008) | 3 lines
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-deDE.lua
+
+RatingBuster:
+- deDE update
+
+------------------------------------------------------------------------

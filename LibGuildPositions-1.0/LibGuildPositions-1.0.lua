@@ -1,14 +1,14 @@
 --[[
 Name: LibGuildPositions-1.0
-Revision: $Rev: 76756 $
+Revision: $Rev: 77332 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Communicates with guild members for their positions on the world map
-License: LGPL v2.1
+License: MIT
 ]]
 
 local MAJOR_VERSION = "LibGuildPositions-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 76756 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 77332 $"):match("%d+")) or 0
 
 -- #AUTODOC_NAMESPACE lib
 

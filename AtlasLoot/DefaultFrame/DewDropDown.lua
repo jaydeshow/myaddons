@@ -227,36 +227,18 @@ AtlasLoot_DewDropDown = {
 			[12] = { 
 				{ AL["Tier 6 Sets"], "T6Sets", "Submenu" },
 			},
-			[13] = { 
-				{ AL["Arena PvP Sets"], "ArenaPvPArmor", "Submenu" },
-			},
-			[14] = { 
-				{ AL["Arena 2 PvP Sets"], "Arena2PvPArmor", "Submenu" },
-			},
-			[15] = { 
-				{ AL["Arena 3 PvP Sets"], "Arena3PvPArmor", "Submenu" },
-			},
-			[16] = { 
-				{ AL["PvP Sets (Level 60)"], "Lvl60PvPArmor", "Submenu" },
-			},
-			[17] = { 
-				{ AL["PvP Reputation Sets (Level 70)"], "Lvl70PvPArmor", "Submenu" },
-			},
-			[18] = { 
-				{ AL["Arathi Basin Sets"], "ABSets", "Submenu" },
-			},
-			[19] = {
+			[13] = {
 				{ AL["BoE World Epics"], "BoEWorldEpics", "Submenu" },
 			},
-			[20] = {
+			[14] = {
 				{ AL["Lvl 70 Instance Token Rewards"], "Lvl70TokenRewards", "Submenu" },
 			},
-			[21] = { { AL["Legendary Items"], "Legendaries", "Table" }, },
+			[15] = { { AL["Legendary Items"], "Legendaries", "Table" }, },
 
-			[22] = { { AL["Rare Mounts"], "RareMounts1", "Table" }, },
+			[16] = { { AL["Rare Mounts"], "RareMounts1", "Table" }, },
 
-			[23] = { { AL["Tabards"], "Tabards1", "Table" }, },
-			[24] = { { AL["Upper Deck Card Game Items"], "CardGame1", "Table" }, },
+			[17] = { { AL["Tabards"], "Tabards1", "Table" }, },
+			[18] = { { AL["Upper Deck Card Game Items"], "CardGame1", "Table" }, },
 		},
 	},
 	[6] = {
@@ -386,6 +368,7 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleBoss["General Angerforge"], "BRDGeneralAngerforge" },
 		{ BabbleBoss["Golem Lord Argelmach"], "BRDGolemLordArgelmach" },
 		{ AtlasLoot_TableNames["BRDGuzzler"][1], "BRDGuzzler" },
+		{ AL["Coren Direbrew"], "CorenDirebrew" },
 		{ BabbleBoss["Ambassador Flamelash"], "BRDFlamelash" },
 		{ BabbleBoss["Panzor the Invincible"], "BRDPanzor" },
 		{ AtlasLoot_TableNames["BRDTomb"][1], "BRDTomb" },
@@ -669,6 +652,7 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ AL["Trash Mobs"], "CoTHillsbradTrash" },
 		{ AtlasLoot_TableNames["CoTHillsbradThomasYance"][1], "CoTHillsbradThomasYance" },
 		{ AtlasLoot_TableNames["CoTHillsbradAgedDalaranWizard"][1], "CoTHillsbradAgedDalaranWizard" },
+		{ AtlasLoot_TableNames["CoTHillsbradDonCarlos"][1], "CoTHillsbradDonCarlos" },
 	},
 	["CoTBlackMorass"] = {
 		{ BabbleBoss["Chrono Lord Deja"], "CoTMorassDeja" },
@@ -1029,50 +1013,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleFaction["Wintersaber Trainers"], "Wintersaber1" },
 		{ BabbleFaction["Zandalar Tribe"], "Zandalar1" },
 	},
-	["ArenaPvPArmor"] = {
-		{ BabbleClass["Druid"], "ArenaDruid" },
-		{ BabbleClass["Hunter"], "ArenaHunter" },
-		{ BabbleClass["Mage"], "ArenaMage" },
-		{ BabbleClass["Paladin"], "ArenaPaladin" },
-		{ BabbleClass["Priest"], "ArenaPriest" },
-		{ BabbleClass["Rogue"], "ArenaRogue" },
-		{ BabbleClass["Shaman"], "ArenaShaman" },
-		{ BabbleClass["Warlock"], "ArenaWarlock" },
-		{ BabbleClass["Warrior"], "ArenaWarrior" },
-	},
-	["Arena2PvPArmor"] = {
-		{ BabbleClass["Druid"], "Arena2Druid" },
-		{ BabbleClass["Hunter"], "Arena2Hunter" },
-		{ BabbleClass["Mage"], "Arena2Mage" },
-		{ BabbleClass["Paladin"], "Arena2Paladin" },
-		{ BabbleClass["Priest"], "Arena2Priest" },
-		{ BabbleClass["Rogue"], "Arena2Rogue" },
-		{ BabbleClass["Shaman"], "Arena2Shaman" },
-		{ BabbleClass["Warlock"], "Arena2Warlock" },
-		{ BabbleClass["Warrior"], "Arena2Warrior" },
-	},
-	["Arena3PvPArmor"] = {
-		{ BabbleClass["Druid"], "Arena3Druid" },
-		{ BabbleClass["Hunter"], "Arena3Hunter" },
-		{ BabbleClass["Mage"], "Arena3Mage" },
-		{ BabbleClass["Paladin"], "Arena3Paladin" },
-		{ BabbleClass["Priest"], "Arena3Priest" },
-		{ BabbleClass["Rogue"], "Arena3Rogue" },
-		{ BabbleClass["Shaman"], "Arena3Shaman" },
-		{ BabbleClass["Warlock"], "Arena3Warlock" },
-		{ BabbleClass["Warrior"], "Arena3Warrior" },
-	},
-	["Arena4PvPArmor"] = {
-		{ BabbleClass["Druid"], "Arena4Druid" },
-		{ BabbleClass["Hunter"], "Arena4Hunter" },
-		{ BabbleClass["Mage"], "Arena4Mage" },
-		{ BabbleClass["Paladin"], "Arena4Paladin" },
-		{ BabbleClass["Priest"], "Arena4Priest" },
-		{ BabbleClass["Rogue"], "Arena4Rogue" },
-		{ BabbleClass["Shaman"], "Arena4Shaman" },
-		{ BabbleClass["Warlock"], "Arena4Warlock" },
-		{ BabbleClass["Warrior"], "Arena4Warrior" },
-	},
 	["BoEWorldEpics"] = {
 		{ AtlasLoot_TableNames["WorldEpics4"][1], "WorldEpics4" },
 		{ AtlasLoot_TableNames["WorldEpics3"][1], "WorldEpics3" },
@@ -1156,6 +1096,7 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ AtlasLoot_TableNames["DS3Right"][1], "DS3Right" },
 	},
 	["Lvl70TokenRewards"] = {
+        { AtlasLoot_TableNames["HardModeArena"][1], "HardModeArena" },
 		{ AtlasLoot_TableNames["HardModeCloth"][1], "HardModeCloth" },
 		{ AtlasLoot_TableNames["HardModeLeather"][1], "HardModeLeather" },
 		{ AtlasLoot_TableNames["HardModeMail"][1], "HardModeMail" },
@@ -1188,28 +1129,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ AL["Latro's Flurry"], "TBCLatrosFlurry" },
 		{ AL["The Twin Stars"], "TBCTwinStars" },
 		{ AL["The Twin Blades of Azzinoth"], "TBCAzzinothBlades" },
-	},
-	["Lvl60PvPArmor"] = {
-		{ BabbleClass["Druid"], "PVPDruid" },
-		{ BabbleClass["Hunter"], "PVPHunter" },
-		{ BabbleClass["Mage"], "PVPMage" },
-		{ BabbleClass["Paladin"], "PVPPaladin" },
-		{ BabbleClass["Priest"], "PVPPriest" },
-		{ BabbleClass["Rogue"], "PVPRogue" },
-		{ BabbleClass["Shaman"], "PVPShaman" },
-		{ BabbleClass["Warlock"], "PVPWarlock" },
-		{ BabbleClass["Warrior"], "PVPWarrior" },
-	},
-	["Lvl70PvPArmor"] = {
-		{ BabbleClass["Druid"], "PVP70RepDruid" },
-		{ BabbleClass["Hunter"], "PVP70RepHunter" },
-		{ BabbleClass["Mage"], "PVP70RepMage" },
-		{ BabbleClass["Paladin"], "PVP70RepPaladin" },
-		{ BabbleClass["Priest"], "PVP70RepPriest" },
-		{ BabbleClass["Rogue"], "PVP70RepRogue" },
-		{ BabbleClass["Shaman"], "PVP70RepShaman" },
-		{ BabbleClass["Warlock"], "PVP70RepWarlock" },
-		{ BabbleClass["Warrior"], "PVP70RepWarrior" },
 	},
 	["RuinsofAQSets"] = {
 		{ BabbleClass["Druid"], "AQ20Druid" },
@@ -1321,7 +1240,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Warlock"], "ArenaWarlock" },
 		{ BabbleClass["Warrior"], "ArenaWarrior" },
 		{ AL["Arena PvP Weapons"], "Arena1Weapons1" },
-		{ AL["Arena PvP Weapons"], "Arena1Weapons2" },
 	},
 	["Arena2PvPRewards"] = {
 		{ BabbleClass["Druid"], "Arena2Druid" },
@@ -1334,7 +1252,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Warlock"], "Arena2Warlock" },
 		{ BabbleClass["Warrior"], "Arena2Warrior" },
 		{ AL["Arena 2 PvP Weapons"], "Arena2Weapons1" },
-		{ AL["Arena 2 PvP Weapons"], "Arena2Weapons2" },
 	},
 	["Arena3PvPRewards"] = {
 		{ BabbleClass["Druid"], "Arena3Druid" },
@@ -1347,7 +1264,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Warlock"], "Arena3Warlock" },
 		{ BabbleClass["Warrior"], "Arena3Warrior" },
 		{ AL["Arena 3 PvP Weapons"], "Arena3Weapons1" },
-		{ AL["Arena 3 PvP Weapons"], "Arena3Weapons2" },
 	},
 	["Arena4PvPRewards"] = {
 		{ BabbleClass["Druid"], "Arena4Druid" },
@@ -1360,7 +1276,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Warlock"], "Arena4Warlock" },
 		{ BabbleClass["Warrior"], "Arena4Warrior" },
 		{ AL["Arena 4 PvP Weapons"], "Arena4Weapons1" },
-		{ AL["Arena 4 PvP Weapons"], "Arena4Weapons2" },
 	},
 	["AVRewards"] = {
 		{ AL["Misc. Rewards"], "AVMisc" },
@@ -1384,6 +1299,8 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ AtlasLoot_TableNames["PvP70NonSet1"][1], "PvP70NonSet1" },
 		{ AtlasLoot_TableNames["PvP70NonSet2"][1], "PvP70NonSet2" },
 		{ AtlasLoot_TableNames["PvP70NonSet3"][1], "PvP70NonSet3" },
+		{ AtlasLoot_TableNames["PvP70NonSet4"][1], "PvP70NonSet4" },
+		{ AtlasLoot_TableNames["PvP70NonSet4"][1], "PvP70NonSet5" },
 	},
 	["PvPLvl60Rewards"] = {
 		{ BabbleClass["Druid"], "PVPDruid" },
@@ -1396,10 +1313,7 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Warlock"], "PVPWarlock" },
 		{ BabbleClass["Warrior"], "PVPWarrior" },
 		{ AtlasLoot_TableNames["PVPWeapons1"][1], "PVPWeapons1" },
-		{ AtlasLoot_TableNames["PVPWeapons2"][1], "PVPWeapons2" },
 		{ AtlasLoot_TableNames["PvP60Accessories1"][1], "PvP60Accessories1" },
-		{ AtlasLoot_TableNames["PvP60Accessories2"][1], "PvP60Accessories2" },
-		{ AtlasLoot_TableNames["PvP60Accessories3"][1], "PvP60Accessories3" },
 	},
 	["PvPLvl70Rewards"] = {
 		{ BabbleClass["Druid"], "PVP70RepDruid" },
@@ -1412,7 +1326,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Warlock"], "PVP70RepWarlock" },
 		{ BabbleClass["Warrior"], "PVP70RepWarrior" },
 		{ AtlasLoot_TableNames["PvP70Accessories1"][1], "PvP70Accessories1" },
-		{ AtlasLoot_TableNames["PvP70Accessories2"][1], "PvP70Accessories2" },
 	},
 	["WSGRewards"] = {
 		{ AL["Misc. Rewards"], "WSGMisc" },

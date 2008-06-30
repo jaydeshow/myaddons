@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-06-19 11:13:18 -0400 (Thu, 19 Jun 2008) $
-$Rev: 77091 $
+$Date: 2008-06-28 10:17:43 -0400 (Sat, 28 Jun 2008) $
+$Rev: 77565 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -75,6 +75,22 @@ L["TRAINER_TOGGLE"] = "검색시에 상급자에게서 배울 수 있는 제조�
 L["VENDOR_TOGGLE"] = "검색시에 상인에게 구매가능한 제조법을 포함합니다."
 L["INSTANCE_TOGGLE"] = "검색시에 던전 드랍 제조법을 포함합니다."
 L["QUEST_TOGGLE"] = "검색시에 퀘스트 보상 제조법을 포함합니다."
+L["Cloth"] = "천 방어구"
+L["CLOTH_TOGGLE"] = "검색시에 천 방어구 아이템을 포함합니다."
+L["Leather"] = "가죽 방어구"
+L["LEATHER_TOGGLE"] = "검색시에 가죽 방어구 아이템을 포함합니다."
+L["Mail"] = "사슬 방어구"
+L["MAIL_TOGGLE"] = "검색시에 사슬 방어구 아이템을 포함합니다."
+L["Plate"] = "판금 방어구"
+L["PLATE_TOGGLE"] = "검색시에 판금 방어구를 포함합니다."
+L["Melee"] = "근접 공격력"
+L["MELEE_TOGGLE"] = "검색시에 근접/물리 공격력 관련 아이템을 포함합니다."
+L["Caster DPS"] = "주문 공격력"
+L["CASTERDPS_TOGGLE"] = "검색시에 주문 공격력 관련 아이템을 포함합니다."
+L["Tanking"] = "탱킹 아이템"
+L["TANKING_TOGGLE"] = "검색시에 탱킹 관련 아이템을 포함합니다."
+L["Healing"] = "치유 아이템"
+L["HEALING_TOGGLE"] = "검색시에 치유 관련 아이템을 포함합니다."
 
 -- Sorting options
 L["Name"] = "이름" 
@@ -449,7 +465,6 @@ L["Felcloth Bag Obt"] = "잔다이스 바로브 처치 후 생성되는 책에�
 L["Ghostweave Belt Obt"] = "명가의 악령"
 L["Ghostweave Gloves Obt"] = "명가의 악령"
 L["Ghostweave Gloves Obt1"] = "보이지 않는 하수인"
-L["Ghostweave Pants Obt"] = "시민의 유령"
 L["Ghostweave Vest Obt"] = "보이지 않는 하수인"
 L["Mooncloth Boots Obt"] = "신성한 옷감"
 L["Robe of the Archmage Obt"] = "횃불부대 화염술사"
@@ -460,8 +475,6 @@ L["Shadoweave Mask Obt"] = "암거래상단"
 L["Soulcloth Shoulders Obt"] = "유령 수행원"
 L["Soulcloth Vest Obt"] = "유령 시종"
 L["Wizardweave Leggings Obt"] = "암흑의 소환사"
-L["Wizardweave Robe Obt"] = "암흑의 마술사"
-L["Wizardweave Turban Obt"] = "암흑의 마술사"
 
 -- Beast Training Obtain Information
 L["Rare"] = "희귀"

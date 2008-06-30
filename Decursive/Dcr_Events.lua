@@ -27,7 +27,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_opt.lua"] then
     return;
 end
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-04-19 13:50:24 -0400 (Sat, 19 Apr 2008) $", "$Revision: 70492 $");
+D:SetDateAndRevision("$Date: 2008-06-25 19:56:58 -0400 (Wed, 25 Jun 2008) $", "$Revision: 77431 $");
 
 
 local L = D.L;
@@ -282,7 +282,7 @@ end --}}}
 
 function D:UPDATE_MOUSEOVER_UNIT ()
     if not self.profile.Hide_LiveList and not self.Status.MouseOveringMUF and UnitIsFriend("mouseover", "player") then
-	D:Debug("will check MouseOver");
+	--D:Debug("will check MouseOver");
 	self.LiveList:DelayedGetDebuff("mouseover");
     end
 end

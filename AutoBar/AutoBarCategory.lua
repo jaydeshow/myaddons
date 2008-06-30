@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 76860 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -454,8 +454,6 @@ function AutoBarCustom.prototype:Refresh()
 	local itemList = self.customCategoriesDB.items
 	local itemType, itemId
 	local itemsIndex = 1
-	local castListIndex = 1
-	local macroIndex = 1
 
 	local items = self.items
 
@@ -470,21 +468,20 @@ function AutoBarCustom.prototype:Refresh()
 				itemsIndex = AutoBarCustom.super.prototype.AddSpell(self, itemDB.spellName, nil, itemsIndex)
 			end
 		elseif (itemType == "macro") then
-			if (not self.macroList) then
-				self.macroList = {}
+--AutoBar:Print("AutoBarCustom.prototype:Refresh --> itemDB.itemInfo " .. tostring(itemDB.itemInfo) .. " itemDB.itemId " .. tostring(itemDB.itemId))
+			if (not itemDB.itemInfo) then
+				itemDB.itemInfo = GetMacroInfo(itemId)
 			end
-			if (not self.itemInfo) then
-				self.itemInfo = GetMacroInfo(itemId)
+			if (itemDB.itemInfo) then
+				itemDB.itemId = GetMacroIndexByName(itemDB.itemInfo)
+				itemId = itemDB.itemId
 			end
---			local macroId = "macro" .. self.itemInfo
+--AutoBar:Print("AutoBarCustom.prototype:Refresh <-- itemDB.itemInfo " .. tostring(itemDB.itemInfo) .. " itemDB.itemId " .. tostring(itemDB.itemId))
 			local macroId = "macro" .. itemId
 			self.items[itemsIndex] = macroId
 			itemsIndex = itemsIndex + 1
 			AutoBarSearch:RegisterMacro(macroId, itemId)
 		elseif (itemType == "macroCustom" and itemDB.itemInfo) then
-			if (not self.macroList) then
-				self.macroList = {}
-			end
 			local macroId = "macroCustom" .. self.customCategoriesDB.categoryKey .. itemId
 			self.items[itemsIndex] = macroId
 			itemsIndex = itemsIndex + 1

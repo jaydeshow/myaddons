@@ -88,5 +88,7 @@ L:RegisterTranslations("esES", function() return {
 	-- Arena Sets
 	["Arena - Season 1 Set"] = "Arena - Conjunto de Temporada 1",
 	["Arena - Season 2 Set"] = "Arena - Conjunto de Temporada 2",
+	["Arena - Season 3 Set"] = "Arena - Conjunto de Temporada 3",
+	["Arena - Season 4 Set"] = "Arena - Conjunto de Temporada 4",
 }end)
 

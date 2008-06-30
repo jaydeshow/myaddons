@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("GearSet", "$Rev: 62224 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("GearSet", "$Rev: 77395 $", {
 	["GearSet.Battlegear of Undead Slaying"]="23090,23087,23078",
 	["GearSet.Bloodmail Regalia"]="14614,14616,14615,14611,14612",
 	["GearSet.Cadaverous Garb"]="14637,14636,14640,14638,14641",
@@ -209,6 +209,24 @@ LibStub("LibPeriodicTable-3.1"):AddData("GearSet", "$Rev: 62224 $", {
 	["GearSet.PvP.Arena3.Warlock.Vengeful Gladiator's Dreadgear"]="33676,33677,33678,33679,33680",
 	["GearSet.PvP.Arena3.Warlock.Vengeful Gladiator's Felshroud"]="33682,33683,33684,33685,33686",
 	["GearSet.PvP.Arena3.Warrior.Vengeful Gladiator's Battlegear"]="33728,33729,33730,33731,33732",
+
+	["GearSet.PvP.Arena4.Druid.Brutal Gladiator's Refuge"]="34998,34999,35000,35001,35002",
+	["GearSet.PvP.Arena4.Druid.Brutal Gladiator's Sanctuary"]="35111,35112,35113,35114,35115",
+	["GearSet.PvP.Arena4.Druid.Brutal Gladiator's Wildhide"]="35022,35023,35024,35025,35026",
+	["GearSet.PvP.Arena4.Hunter.Brutal Gladiator's Pursuit"]="34990,34991,34992,34993,34994",
+	["GearSet.PvP.Arena4.Mage.Brutal Gladiator's Regalia"]="35096,35097,35098,35099,35100",
+	["GearSet.PvP.Arena4.Paladin.Brutal Gladiator's Aegis"]="35027,35028,35029,35030,35031",
+	["GearSet.PvP.Arena4.Paladin.Brutal Gladiator's Redemption"]="35059,35060,35061,35062,35063",
+	["GearSet.PvP.Arena4.Paladin.Brutal Gladiator's Vindication"]="35088,35089,35090,35091,35092",
+	["GearSet.PvP.Arena4.Priest.Brutal Gladiator's Investiture"]="35053,35054,35055,35056,35057",
+	["GearSet.PvP.Arena4.Priest.Brutal Gladiator's Raiment"]="35083,35084,35085,35086,35087",
+	["GearSet.PvP.Arena4.Rogue.Brutal Gladiator's Vestments"]="35032,35033,35034,35035,35036",
+	["GearSet.PvP.Arena4.Shaman.Brutal Gladiator's Earthshaker"]="35042,35043,35044,35045,35046",
+	["GearSet.PvP.Arena4.Shaman.Brutal Gladiator's Thunderfist"]="35048,35049,35050,35051,35052",
+	["GearSet.PvP.Arena4.Shaman.Brutal Gladiator's Wartide"]="35077,35078,35079,35080,35081",
+	["GearSet.PvP.Arena4.Warlock.Brutal Gladiator's Dreadgear"]="35003,35004,35005,35006,35007",
+	["GearSet.PvP.Arena4.Warlock.Brutal Gladiator's Felshroud"]="35009,35010,35011,35012,35013",
+	["GearSet.PvP.Arena4.Warrior.Brutal Gladiator's Battlegear"]="35066,35067,35068,35069,35070",
 
 	["GearSet.PvP.Honor.Alliance.Druid.Grand Marshal's Refuge"]="31589,31590,31591,31592,31593",
 	["GearSet.PvP.Honor.Alliance.Druid.Grand Marshal's Sanctuary"]="28618,28619,28620,28622,28623",

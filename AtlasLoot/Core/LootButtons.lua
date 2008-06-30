@@ -213,7 +213,7 @@ function AtlasLootItem_OnClick(arg1)
             ChatEdit_InsertLink(itemLink);
         elseif(IsShiftKeyDown() and AtlasLoot.db.profile.AllLinks) then
             ChatEdit_InsertLink(color.."|Hitem:"..this.itemID..":0:0:0:0:0:0:0|h["..name.."]|h|r");
-        elseif(ChatFrameEditBox:IsVisible()) then
+        elseif(ChatFrameEditBox:IsVisible() and IsShiftKeyDown()) then
             ChatFrameEditBox:Insert(name);  -- <-- this line just inserts plain text, does not need any adjustment
         --If control-clicked, use the dressing room
         elseif(IsControlKeyDown() and iteminfo) then
@@ -224,6 +224,7 @@ function AtlasLootItem_OnClick(arg1)
             elseif AtlasLootItemsFrame.refresh[1] == "SearchResult" then
             	AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.itemID));
             else
+                DEFAULT_CHAT_FRAME:AddMessage(this.itemID);
                 AtlasLoot_AddToWishlist(this.itemID, "", getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[1].."|"..AtlasLootItemsFrame.refresh[2]);
             end
         elseif((AtlasLootItemsFrame.refresh[1] == "SearchResult" or AtlasLootItemsFrame.refresh[1] == "WishList") and this.sourcePage) then
@@ -240,7 +241,9 @@ function AtlasLootItem_OnClick(arg1)
             if AtlasLootItemsFrame.refresh[1] == "WishList" then
                 AtlasLoot_DeleteFromWishList(this.itemID);
             else
-                AtlasLoot_AddToWishlist(this.itemID, "", getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), "=ds="..AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[1].."|"..AtlasLootItemsFrame.refresh[2]);
+                spellName, _, _, _, _, _, _, _, _ = GetSpellInfo(string.sub(this.itemID, 2));
+                --spellIcon = GetItemIcon(this.dressingroomID);
+                AtlasLoot_AddToWishlist(this.itemID, this.dressingroomID, "=ds="..spellName, "=ds="..AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[1].."|"..AtlasLootItemsFrame.refresh[2]);
             end
         elseif(IsControlKeyDown()) then
             DressUpItemLink("item:"..this.dressingroomID..":0:0:0:0:0:0:0");

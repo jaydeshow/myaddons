@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r77485 | elsia | 2008-06-26 14:26:26 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Recount/Tracker.lua
+
+Recount:
+- Preparation for 2.4.3: Supporting new and renamed combat log event types. Current version should be compatible both with 2.4.2 and 2.4.3.
+------------------------------------------------------------------------
 r77004 | elsia | 2008-06-18 10:37:03 -0400 (Wed, 18 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Recount/Tracker.lua
@@ -86,35 +93,4 @@ Changed paths:
 
 Recount:
 - frFR update 20% (need help :p)
-------------------------------------------------------------------------
-r75140 | andyca | 2008-05-25 20:24:07 -0400 (Sun, 25 May 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/locales/Recount-zhTW.lua
-
-Recount:
-- Update zhTW locale
-------------------------------------------------------------------------
-r74938 | elsia | 2008-05-23 11:52:58 -0400 (Fri, 23 May 2008) | 3 lines
-Changed paths:
-   M /trunk/Recount/GUI_Config.lua
-   M /trunk/Recount/Recount.lua
-   M /trunk/Recount/colors.lua
-
-Recount:
-- Class and bar colors now also have editable alpha channel via the color picker.
-- Color pickers will now show on the open side of the config window, rather than always on the left side.
-------------------------------------------------------------------------
-r74705 | elsia | 2008-05-21 17:54:18 -0400 (Wed, 21 May 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/GUI_Main.lua
-
-Recount:
-- Fix bug when not retaining after sync.
-------------------------------------------------------------------------
-r74578 | elsia | 2008-05-20 17:00:22 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/Tracker.lua
-
-Recount:
-- Fixed death log reporting and new death log event entry text formating.
 ------------------------------------------------------------------------

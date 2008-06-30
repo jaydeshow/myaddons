@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76232 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -625,6 +625,13 @@ end
 
 local function setCategoryItem(table, itemDB)
 	-- The table was already created and passed in above
+
+	-- Save the macro name as all indexing will be by name
+	if (itemDB.itemType == "macro") then
+		itemDB.itemInfo = GetMacroInfo(itemDB.itemId)
+--AutoBar:Print("setCategoryItem itemDB.itemInfo " .. tostring(itemDB.itemInfo) .. " itemDB.itemId " .. tostring(itemDB.itemId))
+	end
+
 	AutoBar:CategoriesChanged()
 end
 

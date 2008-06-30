@@ -1,0 +1,60 @@
+------------------------------------------------------------------------
+r77557 | ensabahnur | 2008-06-28 04:57:18 -0400 (Sat, 28 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: - update deDe
+------------------------------------------------------------------------
+r77399 | pettigrow | 2008-06-25 10:39:31 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: frFR Update
+------------------------------------------------------------------------
+r77382 | ananhaid | 2008-06-25 05:11:06 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: 
+- zhCN update.
+------------------------------------------------------------------------
+r77378 | pettigrow | 2008-06-25 04:15:53 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: frFR Update
+------------------------------------------------------------------------
+r77376 | 7destiny | 2008-06-25 03:25:46 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: 
+- koKR Update
+------------------------------------------------------------------------
+r77371 | scorpio0920 | 2008-06-25 02:53:39 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r77355 | ulic | 2008-06-24 21:41:59 -0400 (Tue, 24 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: Added Headless Horseman & Ahune
+------------------------------------------------------------------------
+r76521 | cwdg | 2008-06-12 02:43:14 -0400 (Thu, 12 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: 
+-Update zhCN locale
+------------------------------------------------------------------------
+r75559 | scorpio0920 | 2008-05-30 13:30:41 -0400 (Fri, 30 May 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0:
+- Update zhTW localization.
+------------------------------------------------------------------------

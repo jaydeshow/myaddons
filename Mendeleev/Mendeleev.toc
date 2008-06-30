@@ -1,4 +1,4 @@
-﻿## Interface: 20400
+## Interface: 20400
 ## Title: Mendeleev |cff7fff7f -Ace2-|r
 ## Version: 2.0
 ## Notes: Adds various information based on PeriodicTable to item tooltips.
@@ -6,6 +6,7 @@
 ## Notes-zhTW: 在提示中顯示物品的詳細資訊，包括掉落位置、聲望要求、用途等。基於 PeriodicTable。
 ## Notes-zhCN: 在提示中显示物品的详细信息，包括掉落位置、声望要求、用途等。基于 PeriodicTable。
 ## Notes-koKR: 아이템 툴팁 정보 추가 애드온
+## Notes-frFR: Ajoute diverses informations basées sur PeriodicTable aux bulles d'aide des objets.
 ## Author: Rabbit
 ## X-Credits: MoonWolf for the orginal PT1-based version, Kemayo, Elkano, Nymbia (PT3).
 ## OptionalDeps: Ace2, LibBabble-Boss-3.0, LibBabble-Zone-3.0, LibBabble-Class-3.0, Babble-2.2, LibPeriodicTable-3.1, AtlasLoot

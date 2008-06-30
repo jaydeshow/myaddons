@@ -1,4 +1,13 @@
 ------------------------------------------------------------------------
+r77383 | 7destiny | 2008-06-25 05:26:39 -0400 (Wed, 25 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Brutallus.lua
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell:
+- Brutallus: Fix missing next Burn
+- koKR Update
+------------------------------------------------------------------------
 r77267 | ananhaid | 2008-06-23 03:22:13 -0400 (Mon, 23 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/BigWigs/Sunwell/KilJaeden.lua
@@ -434,51 +443,4 @@ Changed paths:
    M /trunk/BigWigs/TheEye/Reaver.lua
 
 BigWigs: frFR Update
-------------------------------------------------------------------------
-r75016 | 7destiny | 2008-05-24 06:25:01 -0400 (Sat, 24 May 2008) | 3 lines
-Changed paths:
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: Sunwell/KilJaeden:
-- added missing bloomwhisper
-- koKR Update
-------------------------------------------------------------------------
-r74998 | funkydude | 2008-05-23 22:18:15 -0400 (Fri, 23 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/BigWigs_Sunwell.toc
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: Sunwell/KilJaeden: Merge in [UNTESTED] patches by Dartanius & Subkiller20
-------------------------------------------------------------------------
-r74960 | scorpion | 2008-05-23 14:45:50 -0400 (Fri, 23 May 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/Prototype.lua
-
-BigWigs: 
-- Update zhTW localization
-------------------------------------------------------------------------
-r74942 | funkydude | 2008-05-23 12:43:13 -0400 (Fri, 23 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: Sunwell/KilJaeden: Add sound to orb warning
-------------------------------------------------------------------------
-r74911 | 7destiny | 2008-05-23 06:24:14 -0400 (Fri, 23 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: Sunwell/KilJaeden: koKR Update
-------------------------------------------------------------------------
-r74903 | pettigrow | 2008-05-23 04:59:38 -0400 (Fri, 23 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell: frFR Update
-------------------------------------------------------------------------
-r74899 | 7destiny | 2008-05-23 04:21:07 -0400 (Fri, 23 May 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: Sunwell/KilJaeden: koKR Update
 ------------------------------------------------------------------------

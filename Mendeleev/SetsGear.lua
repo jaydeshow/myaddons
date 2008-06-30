@@ -159,6 +159,33 @@ local L  = AceLibrary("AceLocale-2.2"):new("Mendeleev")
 	})
 	
 	table.insert(MENDELEEV_SETS, {
+		name = L["Arena - Season 4 Set"],
+		setindex = "GearSet.PvP.Arena4",
+		colour = "|cffB0C4DE",
+		header = L["Arena - Season 4 Set"],
+		quality = 3,
+		sets = {
+			["GearSet.PvP.Arena4.Druid.Brutal Gladiator's Refuge"]=BC["Druid"],
+			["GearSet.PvP.Arena4.Druid.Brutal Gladiator's Sanctuary"]=BC["Druid"],
+			["GearSet.PvP.Arena4.Druid.Brutal Gladiator's Wildhide"]=BC["Druid"],
+			["GearSet.PvP.Arena4.Hunter.Brutal Gladiator's Pursuit"]=BC["Hunter"],
+			["GearSet.PvP.Arena4.Mage.Brutal Gladiator's Regalia"]=BC["Mage"],
+			["GearSet.PvP.Arena4.Paladin.Brutal Gladiator's Aegis"]=BC["Paladin"],
+			["GearSet.PvP.Arena4.Paladin.Brutal Gladiator's Redemption"]=BC["Paladin"],
+			["GearSet.PvP.Arena4.Paladin.Brutal Gladiator's Vindication"]=BC["Paladin"],
+			["GearSet.PvP.Arena4.Priest.Brutal Gladiator's Investiture"]=BC["Priest"],
+			["GearSet.PvP.Arena4.Priest.Brutal Gladiator's Raiment"]=BC["Priest"],
+			["GearSet.PvP.Arena4.Rogue.Brutal Gladiator's Vestments"]=BC["Rogue"],
+			["GearSet.PvP.Arena4.Shaman.Brutal Gladiator's Earthshaker"]=BC["Shaman"],
+			["GearSet.PvP.Arena4.Shaman.Brutal Gladiator's Thunderfist"]=BC["Shaman"],
+			["GearSet.PvP.Arena4.Shaman.Brutal Gladiator's Wartide"]=BC["Shaman"],
+			["GearSet.PvP.Arena4.Warlock.Brutal Gladiator's Dreadgear"]=BC["Warlock"],
+			["GearSet.PvP.Arena4.Warlock.Brutal Gladiator's Felshroud"]=BC["Warlock"],
+			["GearSet.PvP.Arena4.Warrior.Brutal Gladiator's Battlegear"]=BC["Warrior"],
+		},
+	})
+	
+	table.insert(MENDELEEV_SETS, {
 		name = L["Arena - Season 3 Set"],
 		setindex = "GearSet.PvP.Arena3",
 		colour = "|cffB0C4DE",

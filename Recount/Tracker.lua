@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 77004 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 77485 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -527,8 +527,8 @@ local EventParse =
 	["SPELL_PERIODIC_DRAIN"] = Recount.SpellDrainLeech,
 	["SPELL_PERIODIC_LEECH"] = Recount.SpellDrainLeech,
 	["SPELL_DISPEL_FAILED"] = Recount.SpellAuraDispelledStolen, -- Elsia: Failed dispell
-	["SPELL_AURA_DISPELLED"] = Recount.SpellAuraDispelledStolen,
-	["SPELL_AURA_STOLEN"] = Recount.SpellAuraDispelledStolen,
+	["SPELL_AURA_DISPELLED"] = Recount.SpellAuraDispelledStolen, -- Removed with 2.4.3
+	["SPELL_AURA_STOLEN"] = Recount.SpellAuraDispelledStolen, -- Removed with 2.4.3
 	["SPELL_AURA_APPLIED"] = Recount.SpellAuraAppliedRemoved, -- Elsia: Auras
 	["SPELL_AURA_REMOVED"] = Recount.SpellAuraAppliedRemoved,
 	["SPELL_AURA_APPLIED_DOSE"] = Recount.SpellAuraAppliedRemovedDose, -- Elsia: Aura doses
@@ -545,7 +545,12 @@ local EventParse =
 	["UNIT_DIED"] = Recount.UnitDied, -- Elsia: Unit died
 	["UNIT_DESTROYED"] = Recount.UnitDied,
 	["SPELL_SUMMON"] = Recount.SpellSummon, -- Elsia: Summons
-	["SPELL_CREATE"] = Recount.SpellCreate -- Elsia: Creations
+	["SPELL_CREATE"] = Recount.SpellCreate, -- Elsia: Creations
+	["SPELL_AURA_BROKEN"] = Recount.SpellAuraAppliedRemoved, -- New with 2.4.3
+	["SPELL_AURA_BROKEN_SPELL"] = Recount.SpellAuraAppliedRemoved, -- New with 2.4.3
+	["SPELL_AURA_REFRESH"] = Recount.SpellAuraAppliedRemoved, -- New with 2.4.3
+	["SPELL_DISPEL"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3
+	["SPELL_STOLEN"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3
 }
 
 function Recount:CheckRetentionFromFlags(nameFlags)

@@ -5,8 +5,8 @@
 ## Author: Whitetooth
 ## X-eMail: hotdogee [at] gmail [dot] com
 ## SavedVariables: RatingBusterDB
-## OptionalDeps: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Class-3.0, LibBabble-Inventory-3.0, Waterfall-1.0, TankPoints
-## X-Embeds: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Class-3.0, LibBabble-Inventory-3.0, Waterfall-1.0
+## OptionalDeps: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0, Waterfall-1.0, TankPoints
+## X-Embeds: Ace2, TipHookerLib, StatLogicLib, UTF8, LibBabble-Inventory-3.0, Waterfall-1.0
 ## X-Category: Interface Enhancements
 ## X-RelSite-WoWI: 5819
 ## X-RelSite-Curse: 4991

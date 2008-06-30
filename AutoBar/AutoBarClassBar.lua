@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76709 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -537,13 +537,13 @@ function AutoBar.Class.Bar.prototype:RefreshLayout()
 	end
 end
 
-function AutoBar.Class.Bar.prototype:LoadPosition()
+function AutoBar.Class.Bar.prototype:PositionLoad()
 	local sharedPositionDB = self.sharedPositionDB
 	local sharedLayoutDB = self.sharedLayoutDB
 	if (sharedPositionDB.stickToFrameName and _G[sharedPositionDB.stickToFrameName]) then
 		local stickToFrame = _G[sharedPositionDB.stickToFrameName]
 		LibStickyFrames:SetFramePoints(self.frame, sharedPositionDB.stickPoint, stickToFrame, sharedPositionDB.stickToPoint, sharedPositionDB.stickToX, sharedPositionDB.stickToY)
---AutoBar:Print("AutoBar.Class.Bar.prototype:LoadPosition " .. tostring(barDB.stickToFrameName))
+--AutoBar:Print("AutoBar.Class.Bar.prototype:PositionLoad " .. tostring(barDB.stickToFrameName))
 	else
 		if (not sharedLayoutDB.alignButtons) then
 			sharedLayoutDB.alignButtons = "3"
@@ -560,7 +560,7 @@ function AutoBar.Class.Bar.prototype:LoadPosition()
 	end
 end
 
-function AutoBar.Class.Bar.prototype:SaveLocation()
+function AutoBar.Class.Bar.prototype:PositionSave()
 	local frame = self.frame
 	local x, y = frame:GetLeft(), frame:GetBottom()
 	local s = frame:GetEffectiveScale()
@@ -706,7 +706,7 @@ end
 
 function AutoBar.Class.Bar.prototype:RefreshScale()
 	self.frame:SetScale(self.sharedLayoutDB.scale or 1)
-	self:LoadPosition()
+	self:PositionLoad()
 end
 
 function AutoBar.Class.Bar.prototype:RefreshAlpha()

@@ -1,5 +1,5 @@
 ﻿-- [[
--- Last Updated: 6/20/2008
+-- Last Updated: 6/27/2008
 -- Initial translation by: 560889223
 -- Maintained by: Diablohu
 -- Credits to: Kurax Kuang (gmmgmm at gmail.com)
@@ -892,7 +892,9 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Kalldan Felmoon"] = "卡尔丹·暗月",
 	["Magregan Deepshadow"] = "马格雷甘·深影",
     ["Lord Ahune"] = "埃霍恩",
-
+    ["Coren Direbrew"] = "科伦·恐酒",
+    ["Don Carlos"] = "唐·卡洛斯",
+	
     --Zones
     ["World Drop"] = "世界掉落",
 	["Sunwell Isle"] = "太阳之井",

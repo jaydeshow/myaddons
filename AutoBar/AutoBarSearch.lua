@@ -7,7 +7,7 @@ Website: http://www.wowace.com/
 -- http://code.google.com/p/autobar/
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 75661 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -231,11 +231,11 @@ function Items.prototype:Populate()
 				if (categoryInfo.spell) then
 --AutoBar:Print("Items.prototype:Populate   slotItem " .. tostring(slotItem))
 --DevTools_Dump(AutoBarCategoryList["Spell.Portals"])
-					return slotItem, categoryInfo.items, nil, categoryInfo.macroList
+					return slotItem, categoryInfo.items, nil
 				elseif (categoryInfo.spells) then
-					return slotItem, categoryInfo.items, categoryInfo.spells, categoryInfo.macroList
+					return slotItem, categoryInfo.items, categoryInfo.spells
 				else
-					return slotItem, categoryInfo.items, nil, categoryInfo.macroList
+					return slotItem, categoryInfo.items, nil
 				end
 			else
 				return nil, nil, nil, nil, nil
@@ -248,16 +248,12 @@ function Items.prototype:Populate()
 	for buttonKey, button in pairs(AutoBar.buttonList) do
 		if (button and button[1]) then
 			for slotIndex = 1, # button, 1 do
-				local category, itemList, spells, macroList = GetItems(button[slotIndex])
+				local category, itemList, spells = GetItems(button[slotIndex])
 				if (itemList) then
 					self:Add(itemList, buttonKey, category, slotIndex)
 				end
 				if (spells) then
 					self:Add(spells, buttonKey, category, slotIndex)
-				end
-				if (macroList) then
---AutoBar:Print("Items.prototype:Populate Add   macroList " .. tostring(macroList) .. " buttonKey " .. tostring(buttonKey) .. " category " .. tostring(category))
-					self:Add(macroList, buttonKey, category, slotIndex)
 				end
 			end
 		end

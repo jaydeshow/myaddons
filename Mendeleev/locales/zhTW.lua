@@ -94,6 +94,7 @@ L:RegisterTranslations("zhTW", function() return {
 	["Arena - Season 1 Set"] = "競技場 - 第一季套裝",
 	["Arena - Season 2 Set"] = "競技場 - 第二季套裝",
 	["Arena - Season 3 Set"] = "競技場 - 第三季套裝",
+	["Arena - Season 4 Set"] = "競技場 - 第四季套裝",
 	
 	["%d%% alc/vol (%d proof)"] = " 濃度%d%% (%d度)",
 	[" (%d tickets)"] = " (%d張票)",

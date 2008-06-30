@@ -847,6 +847,18 @@ AtlasLoot_Data["AtlasLootExpansionItems"] = {
 	CoTHillsbradAgedDalaranWizard = {
 		{ 22539, "", "=q1=Formula: Enchant Shield - Intellect", "=ds=#p4# (325)" },
 	};
+	
+	CoTHillsbradDonCarlos = {
+		{ 38329, "", "=q1=Don Carlos' Hat", "=q1=#m3#" },
+		{ 38276, "", "=q1=Haliscan Brimmed Hat", "=q1=#m4#: =ds=#s1#, #a1#" },
+	};
+	
+	CoTHillsbradDonCarlosHEROIC = {
+		{ 38506, "", "=q3=Don Carlos' Famous Hat", "=ds=#s1#, #a1#" },
+		{ 0,"","","" },
+		{ 38329, "", "=q1=Don Carlos' Hat", "=q1=#m3#" },
+		{ 38276, "", "=q1=Haliscan Brimmed Hat", "=q1=#m4#: =ds=#s1#, #a1#" },
+	};
 
 	------------------------------------
 	--- Auchindoun: Shadow Labyrinth ---
@@ -977,7 +989,6 @@ AtlasLoot_Data["AtlasLootExpansionItems"] = {
 
 	AuchShadowMurmurHEROIC = {
 		{ 29434, "", "=q4=Badge of Justice", "=ds=#e15#", "100%" },
-		{ 29241, "", "=q4=Belt of Depravity", "=ds=#s10#, #a1#", "15.47%" },
 		{ 30532, "", "=q4=Kirin Tor Master's Trousers", "=ds=#s11#, #a1#", "11.90%" },
 		{ 29357, "", "=q4=Master Thief's Gloves", "=ds=#s9#, #a2#" },
 		{ 29261, "", "=q4=Girdle of Ferocity", "=ds=#s10#, #a3#", "3.57%" },
@@ -991,6 +1002,7 @@ AtlasLoot_Data["AtlasLootExpansionItems"] = {
 		{ 27910, "", "=q3=Silvermoon Crest Shield", "=ds=#w8#", "5.95%" },
 		{ 0,"","","" },
 		{ 31722, "", "=q1=Murmur's Essence", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
 		{ 30563, "", "=q4=Regal Tanzanite", "=ds=#e7#", "16.67%" },
 		{ 30559, "", "=q4=Etched Fire Opal", "=ds=#e7#", "17.85%" },
 		{ 30560, "", "=q4=Rune Covered Chrysoprase", "=ds=#e7#", "15.47%" },

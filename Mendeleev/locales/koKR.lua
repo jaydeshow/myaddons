@@ -89,6 +89,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Arena - Season 1 Set"] = "투기장 - 시즌 1 셋트",
 	["Arena - Season 2 Set"] = "투기장 - 시즌 2 셋트",
 	["Arena - Season 3 Set"] = "투기장 - 시즌 3 셋트",
+	["Arena - Season 4 Set"] = "투기장 - 시즌 4 셋트",
 	
 	["%d%% alc/vol (%d proof)"] = "%d%% alc/vol (%d 도)",
 	[" (%d tickets)"] = " (%d 티켓)",

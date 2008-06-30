@@ -862,6 +862,7 @@ AL:RegisterTranslations("deDE", function() return {
     ["Kalldan Felmoon"] = "Kalldan Teufelsmond",
 	["Magregan Deepshadow"] = "Magregan Grubenschatten",
 	--  ["Lord Ahune"] = true,
+	["Coren Direbrew"] = "Coren Düsterbräu",
 
     --Zones
     ["World Drop"] = "Weltdrops",

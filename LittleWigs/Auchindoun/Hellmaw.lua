@@ -25,7 +25,7 @@ L:RegisterTranslations("enUS", function() return {
 	enrage_message = "Enrage in %s seconds",
 	enrage_bar = "Enrage",
 
-	engage_message = "%t has been engaged!",
+	engage_message = "%s has been engaged!",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -40,7 +40,7 @@ L:RegisterTranslations("zhCN", function() return {
 	enrage_message = "%s秒后，激怒！",
 	enrage_bar = "<激怒>",
 
-	engage_message = "%t 激怒！",
+	engage_message = "%s 激怒！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -67,6 +67,8 @@ L:RegisterTranslations("koKR", function() return {
 	enrage_desc = "사자 지옥아귀의 격노에 대한 바와 경고입니다.",
 	enrage_message = "%s초 후 격노",
 	enrage_bar = "격노",
+	
+	engage_message = "%s 전투 시작!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -81,7 +83,7 @@ L:RegisterTranslations("frFR", function() return {
 	enrage_message = "Enrager dans %s sec.",
 	enrage_bar = "Enrager",
 
-	engage_message = "%t engagé - Peur dans ~15 sec. !",
+	engage_message = "%s engagé - Peur dans ~15 sec. !",
 } end )
 
 ----------------------------------
@@ -95,7 +97,7 @@ mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss
 mod.guid = 18731
 mod.toggleoptions = {"fear", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77375 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 76500 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 77372 $", {
 	["InstanceLootHeroic.Auchindoun"]="m,InstanceLootHeroic.Auchenai Crypts,InstanceLootHeroic.Mana-Tombs,InstanceLootHeroic.Shadow Labyrinth,InstanceLootHeroic.Sethekk Halls",
 	["InstanceLootHeroic.Auchenai Crypts.Exarch Maladaar"]="29257:196,29244:178,33836:164,27523:129,27871:128,27869:119,27872:104,27867:96,30586:92,30587:89,27870:83,29354:77,30588:77",
 	["InstanceLootHeroic.Auchenai Crypts.Shirrak the Dead Watcher"]="27866:142,27845:134,27846:134,27493:124,27865:99,27847:96,30586:37,30587:30,30588:28",
@@ -35,6 +35,7 @@ LibStub("LibPeriodicTable-3.1"):AddData("InstanceLootHeroic", "$Rev: 76500 $", {
 	["InstanceLootHeroic.The Slave Pens.Mennu the Betrayer"]="27545:150,27543:148,27542:136,27544:136,27546:134,27541:126,30605:50,30604:47,30603:40,29674:13",
 	["InstanceLootHeroic.The Slave Pens.Quagmirran"]="29242:164,30538:159,27673:133,27800:128,27742:127,32078:123,27713:121,27712:116,27740:115,27796:114,27741:111,27714:109,28337:108,27672:108,27683:98,30604:95,29349:84,30605:82,30603:69,33821:66",
 	["InstanceLootHeroic.The Slave Pens.Rokmar the Crackler"]="27550:142,27547:141,28124:130,27551:129,27549:129,27548:126,30605:51,30604:51,30603:45",
+	["InstanceLootHeroic.The Slave Pens.Ahune"]="35494:140,35495:60,35496:120,35497:100,35514:40,35498:150,34955:19,35507:80,35508:80,35509:80,35510:80,35511:80,",
 	["InstanceLootHeroic.The Steamvault.Hydromancer Thespia"]="27508:178,27783:172,27787:169,27784:158,27789:153,30550:47,30551:45,30549:40,29673:13,30828:7",
 	["InstanceLootHeroic.The Steamvault.Mekgineer Steamrigger"]="27791:174,27790:166,27794:164,27792:151,27793:150,30550:53,30549:47,30551:41,23887:17",
 	["InstanceLootHeroic.The Steamvault.Warlord Kalithresh"]="31721:188,29243:154,27805:140,27806:138,29463:134,30543:132,27799:132,27737:132,27475:131,27738:131,27795:125,28203:117,27804:113,33827:112,27510:111,27874:110,27801:109,29351:84,30551:74,30550:73,30549:69,24313:14",

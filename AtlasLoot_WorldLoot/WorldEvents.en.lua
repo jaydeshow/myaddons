@@ -1001,10 +1001,10 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 33977, "", "=q4=Swift Brewfest Ram", "=q1=#m4#: =ds=#e12#" },
 		{ 33976, "", "=q3=Brewfest Ram", "=q1=#m4#: =ds=#e12#" },
 		{ 32912, "", "=q3=Yellow Brewfest Stein", "=q1=#m4#: =ds=#h3#" },
-		{ 34140, "", "=q3=Dark Iron Tankard", "=q1=#m4#: =ds=#s15#" },
 		{ 32233, "", "=q3=Wolpertinger's Tankard", "=q1=#m4#: =ds=#e13#" },
 		{ 0,"","","" },
 		{ 33455, "", "=q2=Brewfest Prize Ticket", "=ds=#m17#" },
+		{ 37829, "", "=q2=Brewfest Prize Token", "=ds=#m17#" },
 		{ 0,"","","" },
 		{ 34063, "", "=q1=Dried Sausage", "=ds=#e3#" },
 		{ 34064, "", "=q1=Succulent Sausage", "=ds=#e3#" },
@@ -1043,5 +1043,17 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 34021, "", "=q1=Brewdoo Magic", "=ds=#e4#" },
 		{ 34022, "", "=q1=Stout Shrunken Head", "=ds=#e4#" },
 	};
-
+	
+	CorenDirebrew = {
+		{ 37127, "", "=q4=Brightbrew Charm", "=ds=#s14#" },
+		{ 38289, "", "=q4=Coren's Lucky Coin", "=ds=#s14#" },
+		{ 38290, "", "=q4=Dark Iron Smoking Pipe", "=ds=#s14#" },
+		{ 38288, "", "=q4=Direbrew Hops", "=ds=#s14#" },
+		{ 38287, "", "=q4=Empty Mug Of Direbrew", "=ds=#s14#" },
+		{ 37597, "", "=q4=Direbrew's Shanker", "=ds=#h1#, #w4#" },
+		{ 0,"","","" },
+		{ 38281, "", "=q1=Direbrew's Dire Brew", "=ds=#m2#" },
+		{ 34140, "", "=q3=Dark Iron Tankard", "=q1=#m4#: =ds=#s15#" },
 	};
+	
+};
