@@ -1,8 +1,11 @@
 ﻿if GetLocale() == "zhTW" then
 
+Outfitter.cTitle = "Outfitter"
+Outfitter.cTitleVersion = Outfitter.cTitle.." "..Outfitter.cVersion
+
 Outfitter.cSingleItemFormat = "%s"
-Outfitter.cTwoItemFormat = "%s and %s"
-Outfitter.cMultiItemFormat = "%s{{, %s}} and %s"
+Outfitter.cTwoItemFormat = "%s 和 %s"
+Outfitter.cMultiItemFormat = "%s{{, %s}} 和 %s"
 
 Outfitter.cNameLabel = "名稱："
 Outfitter.cCreateUsingTitle = "優化方向："
@@ -157,7 +160,6 @@ Outfitter.cItemStatFormats =
     "^(.-)提高([%d%.]+)點(.-)$",
     "^(.-)提高([%d%.]+)(.-)$",
     "%+(%d+) (.+)，%+(%d+) (.+)", -- Multi-stat items like secondary-color gems
-    "%+(%d+) (.+)，%+(%d+) (.+)，%+(%d+) (.+)", -- Multi-stat items like secondary-color gems
     "%+(%d+) (.+)/%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
     "%+(%d+) (.+)/%+(%d+) (.+)", -- Multi-stat enchants from ZG
 	
@@ -177,7 +179,7 @@ Outfitter.cItemStatPhrases =
 		["耐力"] = "Stamina",
 		["智力"] = "Intellect",
 		["敏捷"] = "Agility",
-		["力量"] = "Stength",
+		["力量"] = "Strength",
 		["精神"] = "Spirit",
 		["所有屬性"] = {"Stamina", "Intellect", "Agility", "Strength", "Spirit"},
 	
@@ -213,9 +215,11 @@ Outfitter.cItemStatPhrases =
 		["法術穿透"] = "SpellPen",
 	    ["法術急速等級"] = "SpellHasteRating",
 	
-	["damage and healing done by magical spells and effects"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg", "Healing"},
+	["法術傷害和治療效果"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg", "Healing"},
 		["法術傷害"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
 		["魔法傷害和效果"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
+	["法術傷害和治療"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg", "Healing"},
+	["法術傷害"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
 	
 		["火焰"] = "FireDmg",
 		["暗影"] = "ShadowDmg",
@@ -311,7 +315,7 @@ Outfitter.cUnequipOutfitMessageFormat = "Outfitter: %s 未裝備"
 
 Outfitter.cAboutTitle = "關于 Outfitter"
 Outfitter.cAuthor = "John Stephen 和 Bruce Quinton 設計編寫， %s 也有貢獻。"
-Outfitter.cTestersTitle = "Outfitter 4 測試者"
+Outfitter.cTestersTitle = "Outfitter 4.1 測試者"
 Outfitter.cTestersNames = "%s"
 Outfitter.cSpecialThanksTitle = "特別感謝"
 Outfitter.cSpecialThanksNames = "%s"
@@ -361,15 +365,15 @@ Outfitter.cMinimapButtonTitle = "Outfitter 小地圖按鈕"
 Outfitter.cMinimapButtonDescription = "點擊選擇不同套裝或者拖動到新位置。"
 
 Outfitter.cClassName = {}
-Outfitter.cDruidClassName = "德魯伊"
-Outfitter.cHunterClassName = "獵人"
-Outfitter.cMageClassName = "法師"
-Outfitter.cPaladinClassName = "圣騎士"
-Outfitter.cPriestClassName = "牧師"
-Outfitter.cRogueClassName = "潛行者"
-Outfitter.cShamanClassName = "薩滿祭司"
-Outfitter.cWarlockClassName = "術士"
-Outfitter.cWarriorClassName = "戰士"
+Outfitter.cClassName.DRUID = "德魯伊"
+Outfitter.cClassName.HUNTER = "獵人"
+Outfitter.cClassName.MAGE = "法師"
+Outfitter.cClassName.PALADIN = "圣騎士"
+Outfitter.cClassName.PRIEST = "牧師"
+Outfitter.cClassName.ROGUE = "潛行者"
+Outfitter.cClassName.SHAMAN = "薩滿祭司"
+Outfitter.cClassName.WARLOCK = "術士"
+Outfitter.cClassName.WARRIOR = "戰士"
 
 Outfitter.cBattleStance = "戰斗姿態"
 Outfitter.cDefensiveStance = "防御姿態"
@@ -454,7 +458,6 @@ Outfitter.cWithdrawFromBank = "從銀行取出裝備"
 Outfitter.cMissingItemsLabel = "未找到："
 Outfitter.cBankedItemsLabel = "銀行："
 
-Outfitter.cRepairAllBags = "Outfitter: 修理攜帶的所有裝備"
 Outfitter.cStatsCategory = "屬性"
 Outfitter.cMeleeCategory = "近戰"
 Outfitter.cSpellsCategory = "治療和法術"
@@ -530,5 +533,8 @@ Outfitter.cPositionLockedError = "Outfit Bar 不能被移動因為你已經鎖�
 Outfitter.cMustBeAtBankError = "你必須保持你的銀行為打開狀態來創建一個未找到物品列表"
 Outfitter.cMissingItemReportIntro = "未找到物品（如果一件物品被多個套裝使用它將在列表中出現多次）:"
 Outfitter.cNoMissingItems = "沒有裝備未找到"
+
+Outfitter.cAutoChangesDisabled = "自動換裝已禁用"
+Outfitter.cAutoChangesEnabled = "自動換裝已啟用"
 
 end

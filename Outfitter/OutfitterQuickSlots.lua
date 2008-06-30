@@ -40,10 +40,12 @@ function Outfitter._QuickSlots:HookPaperDollFrame()
 		Outfitter.HookScript(vSlotButton, "PostClick", Outfitter.PaperDollItemSlotButton_PostClick)
 		Outfitter.HookScript(vSlotButton, "OnDragStart", Outfitter.PaperDollItemSlotButton_OnDragStart)
 		Outfitter.HookScript(vSlotButton, "OnDragStop", Outfitter.PaperDollItemSlotButton_OnDragStop)
+		Outfitter.HookScript(vSlotButton, "OnEnter", Outfitter.PaperDollItemSlotButton_OnEnter)
+		Outfitter.HookScript(vSlotButton, "OnLeave", Outfitter.PaperDollItemSlotButton_OnLeave)
 	end
 end
 
-function Outfitter._QuickSlots:Open(pSlotName)
+function Outfitter._QuickSlots:Open(pSlotName, pHoveringOpen)
 	local	vPaperDollSlotName = "Character"..pSlotName
 	
 	-- Hide the tooltip so that it isn't in the way
@@ -106,6 +108,7 @@ function Outfitter._QuickSlots:Open(pSlotName)
 		self:Hide()
 	else
 		self:Show()
+		self.HoveringOpen = pHoveringOpen
 	end
 end
 
@@ -206,6 +209,9 @@ end
 ----------------------------------------
 
 function Outfitter.PaperDollItemSlotButton_PreClick(self, pButton, pDown)
+	MCSchedulerLib:UnscheduleTask(0.5, Outfitter.PaperDollItemSlotButton_HoverOpen)
+	MCSchedulerLib:UnscheduleTask(0.5, Outfitter.PaperDollItemSlotButton_HoverClose)
+	
 	Outfitter.QuickSlots.CurrentInventorySlot = Outfitter.cSlotIDToInventorySlot[self:GetID()]
 	Outfitter.QuickSlots.CurrentSlotIsEmpty = GetInventoryItemLink("player", self:GetID()) == nil
 end
@@ -214,7 +220,7 @@ function Outfitter.PaperDollItemSlotButton_PostClick(self, pButton, pDown)
 	-- If there's an item on the cursor then open the slots otherwise
 	-- make sure they're closed
 	
-	if not Outfitter.QuickSlots:IsVisible()
+	if (not Outfitter.QuickSlots:IsVisible() or Outfitter.QuickSlots.HoveringOpen)
 	and (CursorHasItem() or Outfitter.QuickSlots.CurrentSlotIsEmpty) then
 		-- Hide the tooltip so that it isn't in the way
 		
@@ -229,15 +235,81 @@ function Outfitter.PaperDollItemSlotButton_PostClick(self, pButton, pDown)
 end
 
 function Outfitter.PaperDollItemSlotButton_OnDragStart(self)
+	MCSchedulerLib:UnscheduleTask(0.5, Outfitter.PaperDollItemSlotButton_HoverOpen)
+	MCSchedulerLib:UnscheduleTask(0.5, Outfitter.PaperDollItemSlotButton_HoverClose)
+	
 	Outfitter.QuickSlots.CurrentInventorySlot = Outfitter.cSlotIDToInventorySlot[self:GetID()]
 	Outfitter.QuickSlots.CurrentSlotIsEmpty = false
-
+	
 	-- Open the QuickSlots
 	
 	Outfitter.QuickSlots:Open(Outfitter.QuickSlots.CurrentInventorySlot)
 end
 
 function Outfitter.PaperDollItemSlotButton_OnDragStop(self)
+	Outfitter.QuickSlots:Close()
+end
+
+function Outfitter.PaperDollItemSlotButton_OnEnter(self)
+	if true then
+		return
+	end
+	
+	Outfitter:DebugMessage("OnEnter")
+	
+	local vInventorySlot = Outfitter.cSlotIDToInventorySlot[self:GetID()]
+	
+	MCSchedulerLib:UnscheduleTask(0.5, Outfitter.PaperDollItemSlotButton_HoverOpen)
+	MCSchedulerLib:UnscheduleTask(0.5, Outfitter.PaperDollItemSlotButton_HoverClose)
+	
+	if Outfitter.QuickSlots:IsVisible() then
+		if not Outfitter.QuickSlots.HoveringOpen
+		or Outfitter.QuickSlots.CurrentInventorySlot == vInventorySlot then
+			Outfitter:DebugMessage("OnEnter: Same slot, exiting")
+			return
+		end
+		
+		Outfitter:DebugMessage("OnEnter: Slot changed")
+		Outfitter.QuickSlots:Close()
+	end
+	
+	Outfitter:DebugMessage("OnEnter: Scheduling open")
+	
+	Outfitter.QuickSlots.CurrentInventorySlot = vInventorySlot
+	Outfitter.QuickSlots.CurrentSlotIsEmpty = GetInventoryItemLink("player", self:GetID()) == nil
+	Outfitter.QuickSlots.HoverItemSlotButton = self
+	
+	MCSchedulerLib:ScheduleUniqueTask(0.5, Outfitter.PaperDollItemSlotButton_HoverOpen)
+end
+
+function Outfitter.PaperDollItemSlotButton_OnLeave(self)
+	MCSchedulerLib:UnscheduleTask(0.5, Outfitter.PaperDollItemSlotButton_HoverOpen)
+	
+	if Outfitter.QuickSlots.HoveringOpen then
+		Outfitter:DebugMessage("OnLeave: Scheduling close")
+		MCSchedulerLib:ScheduleUniqueTask(0.5, Outfitter.PaperDollItemSlotButton_HoverClose)
+	end
+end
+
+function Outfitter.PaperDollItemSlotButton_HoverOpen()
+	if Outfitter.QuickSlots:IsVisible() then
+		return
+	end
+	
+	Outfitter:DebugMessage("HoverOpen")
+	
+	Outfitter.QuickSlots:Open(Outfitter.QuickSlots.CurrentInventorySlot, true)
+end
+
+function Outfitter.PaperDollItemSlotButton_HoverClose(self)
+	if Outfitter.CursorInFrame(Outfitter.QuickSlots.HoverItemSlotButton)
+	or Outfitter.CursorInFrame(Outfitter.QuickSlots) then
+		MCSchedulerLib:ScheduleUniqueTask(0.5, Outfitter.PaperDollItemSlotButton_HoverClose)
+		return
+	end
+	
+	Outfitter:DebugMessage("HoverClose")
+	
 	Outfitter.QuickSlots:Close()
 end
 

@@ -427,4 +427,7 @@
 
 	Outfitter.cNone = "없음"
 	Outfitter.cUseDurationTooltipLineFormat = "^사용 효과: (%d+) seconds"
+
+	Outfitter.cAutoChangesDisabled = "Automated changes are now disabled"
+	Outfitter.cAutoChangesEnabled = "Automated changes are now enabled"
 end

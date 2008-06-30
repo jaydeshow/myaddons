@@ -362,12 +362,10 @@
 				CloseDropDownMenus();
 			</OnHide>
 			<OnLoad>
-				this.SavedHeight = this:GetHeight();
-				this.ChangedValueFunc = Outfitter.OutfitItemSelected;
+				this.SavedHeight = this:GetHeight()
+				this.ChangedValueFunc = Outfitter.OutfitItemSelected
+				this.initialize = Outfitter.ItemDropDown_Initialize
 			</OnLoad>
-			<OnShow>
-				Outfitter.ItemDropDown_OnLoad(this);
-			</OnShow>
 		</Scripts>
 		<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up">
 			<TexCoords left="0.09375" top="0.09375" right="0.90625" bottom="0.90625"/>

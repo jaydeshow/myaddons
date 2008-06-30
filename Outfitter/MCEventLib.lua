@@ -1,4 +1,4 @@
-local gMCEventLib_Version = 7
+local gMCEventLib_Version = 8
 
 if not MCEventLib
 or (MCEventLib._EventLibVersion and MCEventLib._EventLibVersion < gMCEventLib_Version)
@@ -62,7 +62,7 @@ or (MCEventLib.Version and MCEventLib.Version < gMCEventLib_Version) then
 		if not pObject.EventFrame and pEventFrame then
 			pObject.EventFrame = pEventFrame
 			pEventFrame.EventDispatcher = pObject
-			pEventFrame:SetScript("OnEvent", function () this.EventDispatcher:DispatchEvent(event, arg1, arg2, arg3, arg4) end)
+			pEventFrame:SetScript("OnEvent", function (frame, event, ...) frame.EventDispatcher:DispatchEvent(event, ...) end)
 		end
 
 		pObject._EventLibVersion = gMCEventLib_Version
@@ -165,7 +165,7 @@ or (MCEventLib.Version and MCEventLib.Version < gMCEventLib_Version) then
 		end -- for
 	end
 	
-	function MCEventLib._EventDispatcher:DispatchEvent(pEventID, pArg1, pArg2, pArg3, pArg4)
+	function MCEventLib._EventDispatcher:DispatchEvent(pEventID, ...)
 		local vHandlers = self.EventHandlers[pEventID]
 		
 		if not vHandlers then
@@ -194,15 +194,15 @@ or (MCEventLib.Version and MCEventLib.Version < gMCEventLib_Version) then
 			
 			if vHandler.Blind then
 				if vHandler.RefParam ~= nil then
-					vSucceeded, vMessage = pcall(vHandler.Function, vHandler.RefParam, pArg1, pArg2, pArg3, pArg4)
+					vSucceeded, vMessage = pcall(vHandler.Function, vHandler.RefParam, ...)
 				else
-					vSucceeded, vMessage = pcall(vHandler.Function, pArg1, pArg2, pArg3, pArg4)
+					vSucceeded, vMessage = pcall(vHandler.Function, ...)
 				end
 			else
 				if vHandler.RefParam ~= nil then
-					vSucceeded, vMessage = pcall(vHandler.Function, vHandler.RefParam, pEventID, pArg1, pArg2, pArg3, pArg4)
+					vSucceeded, vMessage = pcall(vHandler.Function, vHandler.RefParam, pEventID, ...)
 				else
-					vSucceeded, vMessage = pcall(vHandler.Function, pEventID, pArg1, pArg2, pArg3, pArg4)
+					vSucceeded, vMessage = pcall(vHandler.Function, pEventID, ...)
 				end
 			end
 			--[[

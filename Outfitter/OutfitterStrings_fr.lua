@@ -369,5 +369,9 @@
 	Outfitter.cUsedByPrefix = "Used by outfits: "
 
 	Outfitter.cNone = "None"
-	Outfitter.cUseDurationTooltipLineFormat = "^Utiliser: .* pendant (%d+) seconds"
+	Outfitter.cUseDurationTooltipLineFormat = "^Utiliser:.*pendant (%d+) seconds"
+	Outfitter.cUseDurationTooltipLineFormat2 = "^Utiliser:.*Dure (%d+) sec"
+	
+	Outfitter.cAutoChangesDisabled = "Automated changes are now disabled"
+	Outfitter.cAutoChangesEnabled = "Automated changes are now enabled"
 end
