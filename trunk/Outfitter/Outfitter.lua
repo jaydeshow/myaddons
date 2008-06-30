@@ -254,7 +254,7 @@ Outfitter.cUniqueEquippedGemIDs =
 	[2899] = true, -- Barbed Deep Peridot, ItemCode 27786 & 27809, +3 Stamina, +4 Critical Strike Rating
 	[3103] = true, -- Don Amancio's Heart, ItemCode 30598, +8 Strength (numerous enchants of +8 str)
 	[3065] = true, -- Don Rodrigo's Heart, ItemCode 30571, +8 Strength
-	[1068] = true, -- Eye of the Sea, ItemCode 34831, +15 Stamina
+	[3268] = true, -- Eye of the Sea, ItemCode 34831, +15 Stamina
 	[2943] = true, -- Mighty Blood Garnet, ItemCode 28360, +14 Attack Power
 	[2944] = true, -- Mighty Blood Garnet, ItemCode 28361, +14 Attack Power
 	[2898] = true, -- Notched Deep Peridot, ItemCode 27785, +3 Stamina, +4 Spell Critical Strike Rating
@@ -564,7 +564,7 @@ Outfitter.PresetScripts =
 		Name = Outfitter.cLowHealthOutfit,
 		ID = "LOW_HEALTH",
 		Category = "GENERAL",
-		Script = Outfitter:GenerateScriptHeader("UNIT_HEALTH", Outfitter.cLowHealthDescription)..
+		Script = Outfitter:GenerateScriptHeader("UNIT_HEALTH UNIT_MANA", Outfitter.cLowHealthDescription)..
 		       '-- $SETTING Health="Number"\n'..
 		       '-- $SETTING Mana="Number"\n'..
 		       '\n'..
@@ -1585,99 +1585,6 @@ Outfitter.cZoneSpecialIDMap =
 	[Outfitter.cShattrath] = {"City"},
 }
 
-Outfitter.cStatDistribution =
-{
-	DRUID =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 14.7}, Attack = {Coeff = 1}, MeleeCrit = {Coeff = 1 / 25}, TotalStats = {Coeff = 1}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, SpellCrit = {Coeff = 1 / 80}, TotalStats = {Coeff = 1}},
-		Spirit = {ManaRegen = {Coeff = 0.2 * 2.5}, TotalStats = {Coeff = 1}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, Attack = {Coeff = 2}, TotalStats = {Coeff = 1}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	HUNTER =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 25}, RangedAttack = {Coeff = 1}, Attack = {Coeff = 1}, MeleeCrit = {Coeff = 1 / 40}, TotalStats = {Coeff = 1}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, TotalStats = {Coeff = 1}},
-		Spirit = {ManaRegen = {Coeff = 0.2 * 2.5}, TotalStats = {Coeff = 1}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, Attack = {Coeff = 1}, TotalStats = {Coeff = 1}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	MAGE =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 25}, MeleeCrit = {Coeff = 1 / 25}, TotalStats = {Coeff = 0}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, SpellCrit = {Coeff = 1.0 / 80}, TotalStats = {Coeff = 1}},
-		Spirit = {ManaRegen = {Coeff = 0.25 * 2.5}, TotalStats = {Coeff = 1}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, TotalStats = {Coeff = 0}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	PALADIN =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 25}, MeleeCrit = {Coeff = 1 / 25}, TotalStats = {Coeff = 1}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, SpellCrit = {Coeff = 1.0 / 80.05}, TotalStats = {Coeff = 1}},
-		Spirit = {ManaRegen = {Coeff = 0.2 * 2.5}, TotalStats = {Coeff = 1}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, Attack = {Coeff = 2}, TotalStats = {Coeff = 1}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	PRIEST =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 25}, MeleeCrit = {Coeff = 1 / 25}, TotalStats = {Coeff = 0}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, SpellCrit = {Coeff = 1.0 / 80}, TotalStats = {Coeff = 1}},
-		Spirit = {ManaRegen = {Coeff = 0.25 * 2.5}, TotalStats = {Coeff = 1}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, TotalStats = {Coeff = 0}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	ROGUE =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 20}, Attack = {Coeff = 1}, RangedAttack = {Coeff = 2}, MeleeCrit = {Coeff = 1 / 40}, TotalStats = {Coeff = 1}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, TotalStats = {Coeff = 0}},
-		Spirit = {ManaRegen = {Coeff = 0.25 * 2.5}, TotalStats = {Coeff = 0}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, Attack = {Coeff = 1}, TotalStats = {Coeff = 1}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	SHAMAN =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 25}, MeleeCrit = {Coeff = 1 / 25}, TotalStats = {Coeff = 1}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, SpellCrit = {Coeff = 1.0 / 80}, TotalStats = {Coeff = 1}},
-		Spirit = {ManaRegen = {Coeff = 0.2 * 2.5}, TotalStats = {Coeff = 1}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, Attack = {Coeff = 2}, TotalStats = {Coeff = 1}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	WARLOCK =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 25}, MeleeCrit = {Coeff = 1 / 33}, TotalStats = {Coeff = 0}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, SpellCrit = {Coeff = 1.0 / 81.92}, TotalStats = {Coeff = 1}},
-		Spirit = {ManaRegen = {Coeff = 0.2 * 2.5}, TotalStats = {Coeff = 1}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, TotalStats = {Coeff = 0}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-	
-	WARRIOR =
-	{
-		Agility = {Armor = {Coeff = 2}, Dodge = {Coeff = 1 / 30}, MeleeCrit = {Coeff = 1 / 20}, TotalStats = {Coeff = 1}},
-		Stamina = {Health = {Coeff = 10}, TotalStats = {Coeff = 1}},
-		Intellect = {Mana = {Coeff = 15}, TotalStats = {Coeff = 0}},
-		Spirit = {ManaRegen = {Coeff = 0.25 * 2.5}, TotalStats = {Coeff = 0}}, -- * 2.5 to convert from ticks to per-five-seconds
-		Strength = {BlockAmount = {Coeff = 1 / 22}, Attack = {Coeff = 2}, TotalStats = {Coeff = 1}},
-		Defense = {Dodge = {Coeff = 0.05}, Parry = {Coeff = 0.05}, Block = {Coeff = 0.05}},
-	},
-}
-
 Outfitter.cCombatEquipmentSlots =
 {
 	MainHandSlot = true,
@@ -1787,7 +1694,7 @@ end
 
 function Outfitter:OnLoad()
 	for vEventID, _ in pairs(Outfitter.cInitializationEvents) do
-		MCEventLib:RegisterEvent(vEventID, Outfitter.InitializationCheck, Outfitter)
+		MCEventLib:RegisterEvent(vEventID, self.InitializationCheck, self)
 	end
 end
 
@@ -1910,8 +1817,6 @@ function Outfitter:DispatchOutfitEvent(pEvent, pParameter1, pParameter2)
 	end
 	
 	-- Post a message
-	
-	Outfitter.MinimapDropDown_OutfitEvent(pEvent, pParameter1, pParameter2)
 	
 	local vHandlers = Outfitter.OutfitEvents[pEvent]
 	
@@ -2135,17 +2040,21 @@ function Outfitter.ExecuteCommand(pCommand)
 		wear = {useOutfit = true, func = Outfitter.WearOutfit},
 		unwear = {useOutfit = true, func = Outfitter.RemoveOutfit},
 		toggle = {useOutfit = true, func = Outfitter.ToggleOutfit},
-		reset = {useOutfit = false, func = Outfitter.AskReset},
+		reset = {func = Outfitter.AskReset},
 		
-		summary = {useOutfit = false, func = Outfitter.OutfitSummary},
-		rating = {useOutfit = false, func = Outfitter.RatingSummary},
-		sortbags = {useOutfit = false, func = Outfitter.SortBags},
-		iteminfo = {useOutfit = false, func = Outfitter.ShowLinkInfo},
+		summary = {func = Outfitter.OutfitSummary},
+		rating = {func = Outfitter.RatingSummary},
+		sortbags = {func = Outfitter.SortBags},
+		iteminfo = {func = Outfitter.ShowLinkInfo},
+		itemstats = {func = Outfitter.ShowLinkStats},
 		
-		missing = {useOutfit = false, func = Outfitter.ShowMissingItems},
+		missing = {func = Outfitter.ShowMissingItems},
 		
-		sound = {useOutfit = false, func = Outfitter.SetSoundOption},
-		help = {useOutfit = false, func = Outfitter.ShowCommandHelp},
+		sound = {func = Outfitter.SetSoundOption},
+		help = {func = Outfitter.ShowCommandHelp},
+		
+		disable = {func = Outfitter.DisableAutoChanges},
+		enable = {func = Outfitter.EnableAutoChanges},
 	}
 	
 	-- Evaluate options if the command uses them
@@ -2203,13 +2112,23 @@ function Outfitter.ExecuteCommand(pCommand)
 	end
 end
 
+function Outfitter:DisableAutoChanges()
+	Outfitter:SetAutoSwitch(false)
+	Outfitter:NoteMessage(Outfitter.cAutoChangesDisabled)
+end
+
+function Outfitter:EnableAutoChanges()
+	Outfitter:SetAutoSwitch(true)
+	Outfitter:NoteMessage(Outfitter.cAutoChangesEnabled)
+end
+
 function Outfitter:ShowCommandHelp()
-	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter wear <outfit name>"..NORMAL_FONT_COLOR_CODE..": Wear an outfit")
-	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter unwear <outfit name>"..NORMAL_FONT_COLOR_CODE..": Remove an outfit")
-	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter toggle <outfit name>"..NORMAL_FONT_COLOR_CODE..": Wears or removes an outfit")
-	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter reset"..NORMAL_FONT_COLOR_CODE..": Resets Outfitter, restoring default settings and outfits")
-	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter sound [on|off]"..NORMAL_FONT_COLOR_CODE..": Turns equipment sound effects off during Outfitter's gear changes")
-	MCDebugLib:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter missing"..NORMAL_FONT_COLOR_CODE..": Generates a list of items which are in your outfits but can't be found")
+	Outfitter:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter wear <outfit name>"..NORMAL_FONT_COLOR_CODE..": Wear an outfit")
+	Outfitter:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter unwear <outfit name>"..NORMAL_FONT_COLOR_CODE..": Remove an outfit")
+	Outfitter:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter toggle <outfit name>"..NORMAL_FONT_COLOR_CODE..": Wears or removes an outfit")
+	Outfitter:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter reset"..NORMAL_FONT_COLOR_CODE..": Resets Outfitter, restoring default settings and outfits")
+	Outfitter:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter sound [on|off]"..NORMAL_FONT_COLOR_CODE..": Turns equipment sound effects off during Outfitter's gear changes")
+	Outfitter:NoteMessage(HIGHLIGHT_FONT_COLOR_CODE.."/outfitter missing"..NORMAL_FONT_COLOR_CODE..": Generates a list of items which are in your outfits but can't be found")
 end
 
 function Outfitter.UnequipItemByName(pItemName)
@@ -2457,7 +2376,7 @@ function Outfitter:ActivateScript(pOutfit)
 		end
 	end
 	
-	local vScriptContext, vErrorMessage = Outfitter._ScriptContext:New(pOutfit, vScript)
+	local vScriptContext, vErrorMessage = Outfitter._ScriptContext:NewContext(pOutfit, vScript)
 	
 	if not vScriptContext then
 		Outfitter:ErrorMessage("Couldn't activate script for %s", pOutfit.Name)
@@ -2467,7 +2386,7 @@ function Outfitter:ActivateScript(pOutfit)
 	
 	Outfitter.ScriptContexts[pOutfit] = vScriptContext
 	
-	for vEventID in string.gmatch(vScriptFields.Events, "([%w_]+)") do
+	for vEventID in string.gmatch(vScriptFields.Events, "([%w%d_]+)") do
 		vScriptContext:RegisterEvent(vEventID)
 	end
 	
@@ -2477,12 +2396,8 @@ end
 function Outfitter:DeactivateScript(pOutfit)
 	self:DispatchOutfitEvent("TERMINATE", pOutfit.Name, pOutfit)
 	
-	for vEventID, vOutfits in pairs(Outfitter.OutfitScriptEvents) do
-		vOutfits[pOutfit] = nil
-	end
-	
 	if Outfitter.ScriptContexts[pOutfit] then
-		MCEventLib:UnregisterAllEvents(nil, Outfitter.ScriptContexts[pOutfit])
+		Outfitter.ScriptContexts[pOutfit]:UnregisterAllEvents()
 		Outfitter.ScriptContexts[pOutfit] = nil
 	end
 end
@@ -2579,14 +2494,6 @@ end
 function Outfitter:CancelDialogs()
 end
 
-function Outfitter.ItemDropDown_OnLoad(pMenu)
-	UIDropDownMenu_SetAnchor(0, 0, pMenu, "TOPLEFT", pMenu:GetName(), "CENTER")
-	UIDropDownMenu_Initialize(pMenu, Outfitter.ItemDropDown_Initialize)
-	--UIDropDownMenu_Refresh(pMenu) -- Don't refresh on menus which don't have a text portion
-	
-	pMenu:SetHeight(pMenu.SavedHeight)
-end
-
 function Outfitter:AddDividerMenuItem()
 	UIDropDownMenu_AddButton({text = " ", notCheckable = true, notClickable = true}, UIDROPDOWNMENU_MENU_LEVEL)
 end
@@ -2645,12 +2552,10 @@ function Outfitter:AddSubmenuItem(pFrame, pName, pValue, pDisabled, pAdditionalO
 end
 
 function Outfitter:InitializeOutfitMenu(pFrame, pOutfit)
-	local vFrame = getglobal(UIDROPDOWNMENU_INIT_MENU)
-
 	if not pOutfit then
 		return
 	end
-
+	
 	if UIDROPDOWNMENU_MENU_LEVEL == 1 then
 		Outfitter:AddCategoryMenuItem(pOutfit.Name)
 		
@@ -2667,6 +2572,7 @@ function Outfitter:InitializeOutfitMenu(pFrame, pOutfit)
 		Outfitter:AddMenuItem(pFrame, Outfitter.cSetCurrentItems, "SET_CURRENT")
 		Outfitter:AddSubmenuItem(pFrame, Outfitter.cKeyBinding, "BINDING")
 		Outfitter:AddSubmenuItem(pFrame, Outfitter.cRememberVisibility, "HELMCLOAK")
+		Outfitter:AddSubmenuItem(pFrame, Outfitter.cBankCategoryTitle, "BANKING")
 		if pOutfit.CategoryID ~= "Complete" then
 			Outfitter:AddMenuItem(pFrame, Outfitter.cUnequipOthers, "UNEQUIP_OTHERS", pOutfit.UnequipOthers)
 		end
@@ -2692,13 +2598,6 @@ function Outfitter:InitializeOutfitMenu(pFrame, pOutfit)
 		Outfitter:AddMenuItem(pFrame, Outfitter.cDisableScript, "DISABLE", pOutfit.Disabled, UIDROPDOWNMENU_MENU_LEVEL, nil, vScriptName == nil)
 		Outfitter:AddMenuItem(pFrame, Outfitter.cDisableOutfitInCombat, "COMBATDISABLE", pOutfit.CombatDisabled, UIDROPDOWNMENU_MENU_LEVEL, nil, vScriptName == nil)
 		
-		-- Banking
-		
-		Outfitter:AddCategoryMenuItem(Outfitter.cBankCategoryTitle)
-		Outfitter:AddMenuItem(pFrame, Outfitter.cDepositToBank, "DEPOSIT", nil, nil, nil, not Outfitter.BankFrameIsOpen)
-		Outfitter:AddMenuItem(pFrame, Outfitter.cDepositUniqueToBank, "DEPOSITUNIQUE", nil, nil, nil, not Outfitter.BankFrameIsOpen)
-		Outfitter:AddMenuItem(pFrame, Outfitter.cWithdrawFromBank, "WITHDRAW", nil, nil, nil, not Outfitter.BankFrameIsOpen)
-		
 		-- Outfit bar
 		
 		if Outfitter.OutfitBar then
@@ -2708,7 +2607,12 @@ function Outfitter:InitializeOutfitMenu(pFrame, pOutfit)
 		end
 		
 	elseif UIDROPDOWNMENU_MENU_LEVEL == 2 then
-		if UIDROPDOWNMENU_MENU_VALUE == "BINDING" then
+		if UIDROPDOWNMENU_MENU_VALUE == "BANKING" then
+			Outfitter:AddMenuItem(pFrame, Outfitter.cDepositToBank, "DEPOSIT", nil, UIDROPDOWNMENU_MENU_LEVEL, nil, not Outfitter.BankFrameIsOpen)
+			Outfitter:AddMenuItem(pFrame, Outfitter.cDepositUniqueToBank, "DEPOSITUNIQUE", nil, UIDROPDOWNMENU_MENU_LEVEL, nil, not Outfitter.BankFrameIsOpen)
+			Outfitter:AddMenuItem(pFrame, Outfitter.cWithdrawFromBank, "WITHDRAW", nil, UIDROPDOWNMENU_MENU_LEVEL, nil, not Outfitter.BankFrameIsOpen)
+			
+		elseif UIDROPDOWNMENU_MENU_VALUE == "BINDING" then
 			Outfitter:AddMenuItem(pFrame, Outfitter.cNone, "BINDING_NONE", not pOutfit.BindingIndex, UIDROPDOWNMENU_MENU_LEVEL)
 			
 			for vIndex = 1, 10 do
@@ -2830,11 +2734,19 @@ function Outfitter.MinimapDropDown_OnLoad()
 	UIDropDownMenu_Initialize(this, Outfitter.MinimapDropDown_Initialize)
 	--UIDropDownMenu_Refresh(this) -- Don't refresh on menus which don't have a text portion
 	
-	Outfitter:RegisterOutfitEvent("WEAR_OUTFIT", Outfitter.MinimapDropDown_OutfitEvent)
-	Outfitter:RegisterOutfitEvent("UNWEAR_OUTFIT", Outfitter.MinimapDropDown_OutfitEvent)
+	if not Outfitter.RegisteredMinimapEvents then
+		Outfitter:RegisterOutfitEvent("WEAR_OUTFIT", Outfitter.MinimapDropDown_OutfitEvent)
+		Outfitter:RegisterOutfitEvent("UNWEAR_OUTFIT", Outfitter.MinimapDropDown_OutfitEvent)
+		
+		Outfitter.RegisteredMinimapEvents = true
+	end
 end
 
 function Outfitter.MinimapDropDown_OutfitEvent(pEvent, pParameter1, pParameter2)
+	MCSchedulerLib:ScheduleUniqueTask(0.1, Outfitter.MinimapDropDown_OutfitEvent2)
+end
+
+function Outfitter.MinimapDropDown_OutfitEvent2()
 	if UIDROPDOWNMENU_OPEN_MENU ~= "OutfitterMinimapButton" then
 		return
 	end
@@ -3786,6 +3698,22 @@ function Outfitter:SetSoundOption(pParam)
 		Outfitter:NoteMessage("Outfitter will now disable sound effects during equipment changes")
 	else
 		Outfitter:NoteMessage("Valid sound options are 'default' and 'off'")
+	end
+end
+
+function Outfitter:ShowLinkStats(pLink)
+	local vStats = Outfitter.ItemList_GetItemLinkStats(pLink)
+	
+	if not vStats then
+		Outfitter:NoteMessage("Couldn't get item stats from the link provided")
+		return
+	end
+	
+	-- Outfitter:ConvertRatingsToStats(vStats)
+	-- Outfitter:DistributeSecondaryStats(vStats, Outfitter:GetPlayerStatDistribution())
+	
+	for vStatName, vStatValue in pairs(vStats) do
+		Outfitter:NoteMessage("%s: %s", vStatName, vStatValue or "nil")
 	end
 end
 
@@ -5370,47 +5298,6 @@ function Outfitter:AddOutfitItem(pOutfit, pSlotName, pItemInfo)
 	}
 end
 
-function Outfitter:AddOutfitStatItem(pOutfit, pSlotName, pItemInfo, pStatID, pStatValue)
-	if not pSlotName then
-		Outfitter:ErrorMessage("AddOutfitStatItem: SlotName is nil for "..pItemName)
-		return
-	end
-	
-	if not pStatID then
-		Outfitter:ErrorMessage("AddOutfitStatItem: StatID is nil for "..pItemName)
-		return
-	end
-	
-	Outfitter:AddOutfitItem(pOutfit, pSlotName, pItemInfo)
-	
-	pOutfit.Items[pSlotName][pStatID] = pStatValue
-end
-
-function Outfitter:AddOutfitStatItemIfBetter(pOutfit, pSlotName, pItemInfo, pStatID, pStatValue)
-	local vCurrentItem = pOutfit.Items[pSlotName]
-	local vAlternateSlotName = Outfitter.cHalfAlternateStatSlot[pSlotName]
-	
-	if not vCurrentItem
-	or not vCurrentItem[pStatID]
-	or vCurrentItem[pStatID] < pStatValue then
-		-- If we're bumping the current item, see if it should be moved to the alternate slot
-		
-		if vCurrentItem
-		and vCurrentItem[pStatID]
-		and vAlternateSlotName then
-			Outfitter:AddOutfitStatItemIfBetter(pOutfit, vAlternateSlotName, vCurrentItem, pStatID, vCurrentItem[pStatID])
-		end
-		
-		Outfitter:AddOutfitStatItem(pOutfit, pSlotName, pItemInfo, pStatID, pStatValue)
-	else
-		if not vAlternateSlotName then
-			return
-		end
-		
-		return Outfitter:AddOutfitStatItemIfBetter(pOutfit, vAlternateSlotName, pItemInfo, pStatID, pStatValue)
-	end
-end
-
 function Outfitter:AddStats(pItem1, pItem2, pStatID)
 	local vStat = 0
 	
@@ -6204,55 +6091,28 @@ function Outfitter:FindAndAddItemsToOutfit(pOutfit, pSlotName, pItems, pEquippab
 	end
 end
 
-function Outfitter:AddItemsWithStatToOutfit(pOutfit, pStatID, pEquippableItems)
-	local vItemStats
-	
-	if not pEquippableItems then
-		return
-	end
-	
-	for vInventorySlot, vItems in pairs(pEquippableItems.ItemsBySlot) do
-		for vIndex, vItem in ipairs(vItems) do
-			local vStatValue = vItem.Stats[pStatID]
-			
-			if vStatValue then
-				local vSlotName = vItem.MetaSlotName
-				
-				if not vSlotName then
-					vSlotName = vItem.ItemSlotName
-				end
-				
-				Outfitter:AddOutfitStatItemIfBetter(pOutfit, vSlotName, vItem, pStatID, vStatValue)
-			end
-		end
-	end
-	
-	-- Collapse the meta slots (currently just 2H vs. 1H/OH)
-	
-	Outfitter:CollapseMetaSlotsIfBetter(pOutfit, pStatID)
-end
-
 function Outfitter:IsInitialized()
 	return Outfitter.Initialized
 end
 
 function Outfitter:InitializationCheck()
 	if not gOutfitter_Settings then
-		MCSchedulerLib:RescheduleTask(1, Outfitter.Initialize, Outfitter) -- First time schedule initialization after a delay
+		MCSchedulerLib:RescheduleTask(1, self.Initialize, self) -- First time schedule initialization after a delay
 		return
 	end
 
-	Outfitter:Initialize()
+	self:Initialize()
 end
 
 function Outfitter:Initialize()
-	if Outfitter.Initialized then
+	if self.Initialized then
 		return
 	end
 	
 	-- Makes sure they're not upgrading with a reloadui when there are new files
 	
-	if not Outfitter._QuickSlots then
+	if not self._QuickSlots
+	or not self._OutfitIterator then
 		OutfitterMinimapButton:Hide() -- Remove access to Outfitter so more errors don't start coming up
 		OutfitterButtonFrame:Hide()
 		StaticPopup_Show("OUTFITTER_CANT_RELOADUI")
@@ -6261,72 +6121,77 @@ function Outfitter:Initialize()
 	
 	-- Unregister the initialization events
 	
-	for vEventID, _ in pairs(Outfitter.cInitializationEvents) do
-		MCEventLib:UnregisterEvent(vEventID, Outfitter.InitializationCheck, Outfitter)
+	for vEventID, _ in pairs(self.cInitializationEvents) do
+		MCEventLib:UnregisterEvent(vEventID, self.InitializationCheck, self)
 	end
+	
+	self.MenuManager = self:NewObject(self._MenuManager)
+	-- self.MenuManager:Test()
+	
+	--
 	
 	local _, vPlayerClass = UnitClass("player")
 	
-	Outfitter.PlayerClass = vPlayerClass
+	self.PlayerClass = vPlayerClass
 	
 	-- Initialize the main UI tabs
 	
-	Outfitter._SidebarWindowFrame.Construct(OutfitterFrame)
+	self._SidebarWindowFrame.Construct(OutfitterFrame)
 	
-	PanelTemplates_SetNumTabs(OutfitterFrame, #Outfitter.cPanelFrames)
-	OutfitterFrame.selectedTab = Outfitter.CurrentPanel
+	PanelTemplates_SetNumTabs(OutfitterFrame, #self.cPanelFrames)
+	OutfitterFrame.selectedTab = self.CurrentPanel
 	PanelTemplates_UpdateTabs(OutfitterFrame)
 	
 	-- Install the /outfit command handler
 
-	SlashCmdList.OUTFITTER = Outfitter.ExecuteCommand
+	SlashCmdList.OUTFITTER = self.ExecuteCommand
 	SLASH_OUTFITTER1 = "/outfitter"
 	
 	if not SlashCmdList.UNEQUIP then
-		SlashCmdList.UNEQUIP = Outfitter.UnequipItemByName
+		SlashCmdList.UNEQUIP = self.UnequipItemByName
 		SLASH_UNEQUIP1 = "/unequip"
 	end
 	
 	-- Patch GameTooltip so we can monitor hide/show events
 	
-	Outfitter.HookScript(GameTooltip, "OnShow", Outfitter.GameToolTip_OnShow)
-	Outfitter.HookScript(GameTooltip, "OnHide", Outfitter.GameToolTip_OnHide)
+	self.HookScript(GameTooltip, "OnShow", self.GameToolTip_OnShow)
+	self.HookScript(GameTooltip, "OnHide", self.GameToolTip_OnHide)
 	
 	-- Initialize the slot ID map
 	
-	Outfitter.cSlotIDs = {}
-	Outfitter.cSlotIDToInventorySlot = {}
+	self.cSlotIDs = {}
+	self.cSlotIDToInventorySlot = {}
 		
-	for _, vInventorySlot in ipairs(Outfitter.cSlotNames) do
+	for _, vInventorySlot in ipairs(self.cSlotNames) do
 		local vSlotID = GetInventorySlotInfo(vInventorySlot)
 		
-		Outfitter.cSlotIDs[vInventorySlot] = vSlotID
-		Outfitter.cSlotIDToInventorySlot[vSlotID] = vInventorySlot
+		self.cSlotIDs[vInventorySlot] = vSlotID
+		self.cSlotIDToInventorySlot[vSlotID] = vInventorySlot
 	end
 	
 	-- Initialize the settings
 	
 	if not gOutfitter_Settings then
-		Outfitter:InitializeSettings()
+		self:InitializeSettings()
 	end
 	
 	if not gOutfitter_GlobalSettings then
-		Outfitter:InitializeGlobalSettings()
+		self:InitializeGlobalSettings()
 	end
 	
 	-- Initialize the outfits
 	
-	Outfitter.CurrentOutfit = Outfitter:GetInventoryOutfit()
+	self.CurrentOutfit = self:GetInventoryOutfit()
 	
 	if not gOutfitter_Settings.Outfits then
-		Outfitter:InitializeOutfits()
+		self:InitializeOutfits()
 	end
 	
-	Outfitter:CheckDatabase()
+	self:CheckDatabase()
 	
 	-- Initialize the outfit stack
 	
-	Outfitter.OutfitStack:Initialize()
+	self.OutfitStack:Initialize()
 	
 	-- Clean up any recent complete outfits which don't exist as
 	-- well as duplicate entries
@@ -6336,7 +6201,7 @@ function Outfitter:Initialize()
 	for vIndex = #gOutfitter_Settings.RecentCompleteOutfits, 1, -1 do
 		local vName = gOutfitter_Settings.RecentCompleteOutfits[vIndex]
 		
-		if not Outfitter:FindOutfitByName(vName)
+		if not self:FindOutfitByName(vName)
 		or vUsedRecentNames[vName] then
 			table.remove(gOutfitter_Settings.RecentCompleteOutfits, vIndex)
 		else
@@ -6358,94 +6223,94 @@ function Outfitter:Initialize()
 	end
 	
 	if gOutfitter_Settings.Options.MinimapButtonAngle then
-		Outfitter.MinimapButton_SetPositionAngle(gOutfitter_Settings.Options.MinimapButtonAngle)
+		self.MinimapButton_SetPositionAngle(gOutfitter_Settings.Options.MinimapButtonAngle)
 	else
-		Outfitter.MinimapButton_SetPosition(gOutfitter_Settings.Options.MinimapButtonX, gOutfitter_Settings.Options.MinimapButtonY)
+		self.MinimapButton_SetPosition(gOutfitter_Settings.Options.MinimapButtonX, gOutfitter_Settings.Options.MinimapButtonY)
 	end
 	
 	-- Initialize player state
 	
-	Outfitter.SpiritRegenEnabled = true
+	self.SpiritRegenEnabled = true
 	
 	-- Done initializing
 	
-	Outfitter.Initialized = true
+	self.Initialized = true
 	
 	-- Make sure the outfit state is good
 	
-	Outfitter:SetSpecialOutfitEnabled("Riding", false)
-	Outfitter:SetSpecialOutfitEnabled("Spirit", false)
-	Outfitter:UpdateAuraStates()
+	self:SetSpecialOutfitEnabled("Riding", false)
+	self:SetSpecialOutfitEnabled("Spirit", false)
+	self:UpdateAuraStates()
 	
 	-- Start listening for events
 	
-	MCEventLib:RegisterEvent("PLAYER_ENTERING_WORLD", Outfitter.SchedulePlayerEnteringWorld, Outfitter)
-	MCEventLib:RegisterEvent("PLAYER_LEAVING_WORLD", Outfitter.PlayerLeavingWorld, Outfitter)
+	MCEventLib:RegisterEvent("PLAYER_ENTERING_WORLD", self.SchedulePlayerEnteringWorld, self)
+	MCEventLib:RegisterEvent("PLAYER_LEAVING_WORLD", self.PlayerLeavingWorld, self)
 	
 	-- For monitoring mounted, dining and shadowform states
 	
-	MCEventLib:RegisterEvent("PLAYER_AURAS_CHANGED", Outfitter.UpdateAuraStates, Outfitter)
-	MCEventLib:RegisterEvent("UPDATE_SHAPESHIFT_FORMS", Outfitter.UpdateShapeshiftState, Outfitter)
+	MCEventLib:RegisterEvent("PLAYER_AURAS_CHANGED", self.UpdateAuraStates, self)
+	MCEventLib:RegisterEvent("UPDATE_SHAPESHIFT_FORMS", self.UpdateShapeshiftState, self)
 	
 	-- For monitoring plaguelands and battlegrounds
 	
-	MCEventLib:RegisterEvent("ZONE_CHANGED_NEW_AREA", Outfitter.ScheduleUpdateZone, Outfitter)
+	MCEventLib:RegisterEvent("ZONE_CHANGED_NEW_AREA", self.ScheduleUpdateZone, self)
 	
 	-- For monitoring player combat state
 	
-	MCEventLib:RegisterEvent("PLAYER_REGEN_ENABLED", Outfitter.RegenEnabled, Outfitter)
-	MCEventLib:RegisterEvent("PLAYER_REGEN_DISABLED", Outfitter.RegenDisabled, Outfitter)
+	MCEventLib:RegisterEvent("PLAYER_REGEN_ENABLED", self.RegenEnabled, self)
+	MCEventLib:RegisterEvent("PLAYER_REGEN_DISABLED", self.RegenDisabled, self)
 	
 	-- For monitoring player dead/alive state
 	
-	MCEventLib:RegisterEvent("PLAYER_DEAD", Outfitter.PlayerDead, Outfitter)
-	MCEventLib:RegisterEvent("PLAYER_ALIVE", Outfitter.PlayerAlive, Outfitter)
-	MCEventLib:RegisterEvent("PLAYER_UNGHOST", Outfitter.PlayerAlive, Outfitter)
+	MCEventLib:RegisterEvent("PLAYER_DEAD", self.PlayerDead, self)
+	MCEventLib:RegisterEvent("PLAYER_ALIVE", self.PlayerAlive, self)
+	MCEventLib:RegisterEvent("PLAYER_UNGHOST", self.PlayerAlive, self)
 	
-	MCEventLib:RegisterEvent("UNIT_INVENTORY_CHANGED", Outfitter.UnitInventoryChanged, Outfitter, true) -- Register as a blind event handler (no event id param)
+	MCEventLib:RegisterEvent("UNIT_INVENTORY_CHANGED", self.UnitInventoryChanged, self, true) -- Register as a blind event handler (no event id param)
 
 	-- For indicating which outfits are missing items
 	
-	MCEventLib:RegisterEvent("BAG_UPDATE", Outfitter.BagUpdate, Outfitter)
-	MCEventLib:RegisterEvent("PLAYERBANKSLOTS_CHANGED", Outfitter.BankSlotsChanged, Outfitter)
+	MCEventLib:RegisterEvent("BAG_UPDATE", self.BagUpdate, self)
+	MCEventLib:RegisterEvent("PLAYERBANKSLOTS_CHANGED", self.BankSlotsChanged, self)
 	
 	-- For monitoring bank bags
 	
-	MCEventLib:RegisterEvent("BANKFRAME_OPENED", Outfitter.BankFrameOpened, Outfitter)
-	MCEventLib:RegisterEvent("BANKFRAME_CLOSED", Outfitter.BankFrameClosed, Outfitter)
+	MCEventLib:RegisterEvent("BANKFRAME_OPENED", self.BankFrameOpened, self)
+	MCEventLib:RegisterEvent("BANKFRAME_CLOSED", self.BankFrameClosed, self)
 	
 	-- For unequipping the dining outfit
 	
-	MCEventLib:RegisterEvent("UNIT_MANA", Outfitter.UnitHealthOrManaChanged, Outfitter, true) -- Register as a blind event handler (no event id param)
+	MCEventLib:RegisterEvent("UNIT_MANA", self.UnitHealthOrManaChanged, self, true) -- Register as a blind event handler (no event id param)
 	
 	-- For monitoring spirit regen
 	
-	MCEventLib:RegisterEvent("UNIT_SPELLCAST_SENT", Outfitter.UnitSpellcastSent, Outfitter, true) -- Register as a blind event handler (no event id param)
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_SENT", self.UnitSpellcastSent, self, true) -- Register as a blind event handler (no event id param)
 	
 	
 	--
 	
-	Outfitter:DispatchOutfitEvent("OUTFITTER_INIT")
+	self:DispatchOutfitEvent("OUTFITTER_INIT")
 	
-	MCSchedulerLib:ScheduleUniqueRepeatingTask(0.5, Outfitter.UpdateSwimming, Outfitter, nil, "Outfitter:UpdateSwimming")
+	MCSchedulerLib:ScheduleUniqueRepeatingTask(0.5, self.UpdateSwimming, self, nil, "Outfitter:UpdateSwimming")
 	
 	-- Activate all outfit scripts
 	
 	if not gOutfitter_Settings.Options.DisableAutoSwitch then
-		Outfitter:ActivateAllScripts()
+		self:ActivateAllScripts()
 	end
 	
 	-- Install the "Used by outfits" tooltip feature
 	
 	GameTooltip.Outfitter_OrigSetBagItem = GameTooltip.SetBagItem
-	GameTooltip.SetBagItem = Outfitter.GameTooltip_SetBagItem
+	GameTooltip.SetBagItem = self.GameTooltip_SetBagItem
 	
 	GameTooltip.Outfitter_OrigSetInventoryItem = GameTooltip.SetInventoryItem
-	GameTooltip.SetInventoryItem = Outfitter.GameTooltip_SetInventoryItem
+	GameTooltip.SetInventoryItem = self.GameTooltip_SetInventoryItem
 	
 	-- Fire things up with a simulated entrance
 	
-	Outfitter:SchedulePlayerEnteringWorld()
+	self:SchedulePlayerEnteringWorld()
 end
 
 function Outfitter:InitializeSettings()
@@ -6456,10 +6321,9 @@ function Outfitter:InitializeSettings()
 		LastOutfitStack = {},
 		LayerIndex = {},
 		RecentCompleteOutfits = {},
-		OutfitBar = {},
 	}
 	
-	gOutfitter_Settings.OutfitBar.ShowOutfitBar = true
+	self.OutfitBar:InitializeSettings()
 	
 	Outfitter.Settings = gOutfitter_Settings
 end
@@ -6547,7 +6411,7 @@ function Outfitter:InitializeSpecialOccasionOutfits()
 	local vOutfit
 	
 	-- Find an argent dawn trinket and set the argent dawn outfit
-	
+	--[[ Taking this out since post-TBC it's largely irrelevant
 	vOutfit = Outfitter:GetOutfitByScriptID("ArgentDawn")
 	
 	if not vOutfit then
@@ -6555,7 +6419,7 @@ function Outfitter:InitializeSpecialOccasionOutfits()
 		vOutfit.ScriptID = "ArgentDawn"
 		Outfitter:AddOutfit(vOutfit)
 	end
-	
+	]]--
 	-- Find riding items
 	
 	vOutfit = Outfitter:GetOutfitByScriptID("Riding")
@@ -9428,202 +9292,6 @@ function Outfitter:WithdrawOutfit(pOutfit)
 	Outfitter:DispatchOutfitEvent("EDIT_OUTFIT", pOutfit.Name, pOutfit)
 end
 
-function Outfitter:TestOutfitCombinations()
-	local vEquippableItems = Outfitter.ItemList_GetEquippableItems(true)
-	local vFilterStats = {FireResist = true}
-	local vOutfit = Outfitter:FindOutfitCombination(vEquippableItems, vFilterStats, Outfitter.OutfitTestEval, {})
-end
-
-function Outfitter.OutfitTestEval(pOpcode, pParams, pOutfit1, pOutfit2)
-	if pOpcode == "INIT" then
-		Outfitter:TestMessage("Outfitter:OutfitTestEval: INIT")
-	elseif pOpcode == "COMPARE" then
-		Outfitter:TestMessage("Outfitter:OutfitTestEval: COMPARE")
-	end
-end
-
-function Outfitter:FindOutfitCombination(pEquippableItems, pFilterStats, pOutfitEvalFunc, pOutfitEvalParams)
-	local vSlotIterators = Outfitter.SlotIterators_New(pEquippableItems, pFilterStats)
-	
-	Outfitter:DebugTable("vSlotIterators", vSlotIterators)
-	
-	local vBestOutfit = nil
-	local vNumIterations = 0
-	
-	pOutfitEvalFunc("INIT", pOutfitEvalParams)
-	
-	while vSlotIterators:Increment() do
-		local vOutfit = vSlotIterators:GetOutfit()
-		
-		if pOutfitEvalFunc("COMPARE", pOutfitEvalParams, vBestOutfit, vOutfit) then
-			vBestOutfit = vOutfit
-		end
-		
-		vNumIterations = vNumIterations + 1
-		
-		if vNumIterations > 20 then
-			return vBestOutfit
-		end
-	end
-	
-	return vBestOutfit
-end
-
-function Outfitter:ItemContainsStats(pItem, pFilterStats)
-	for vStatID, _ in pairs(pFilterStats) do
-		if pItem.Stats[vStatID] then
-			return true
-		end
-	end
-	
-	return false
-end
-
-function Outfitter.SlotIterators_New(pEquippableItems, pFilterStats)
-	local vSlotIterators = {Slots = {}}
-	local vNumCombinations = 1
-	
-	for vInventorySlot, vItems in pairs(pEquippableItems.ItemsBySlot) do
-		local vNumItems = #vItems
-		
-		if vInventorySlot ~= "AmmoSlot"
-		and vNumItems > 0 then
-			-- Filter the items by stat
-			
-			local vFilteredItems = nil
-			
-			if pFilterStats then
-				vNumItems = 0
-				
-				for vItemIndex, vItem in ipairs(vItems) do
-					if Outfitter:ItemContainsStats(vItem, pFilterStats) then
-						if not vFilteredItems then
-							vFilteredItems = {}
-						end
-						
-						table.insert(vFilteredItems, vItem)
-						vNumItems = vNumItems + 1
-					end
-				end
-			else
-				vFilteredItems = vItems
-			end
-			
-			-- Add the filtered list
-			
-			if vFilteredItems then
-				table.insert(vSlotIterators.Slots, {ItemSlotName = vInventorySlot, Items = vFilteredItems, Index = 0, MaxIndex = vNumItems})
-				
-				vNumCombinations = vNumCombinations * (vNumItems + 1)
-				
-				Outfitter:TestMessage("Outfitter.SlotIterators_New: "..vInventorySlot.." has "..vNumItems.." items. Combinations "..vNumCombinations)
-			end
-		end
-	end
-	
-	vSlotIterators.Increment = Outfitter.SlotIterators_Increment
-	vSlotIterators.GetOutfit = Outfitter.SlotIterators_GetOutfit
-	vSlotIterators.SortItemsByStat = Outfitter.SlotIterators_SortItemsByStat
-	vSlotIterators.CalcMinNumSlotsByStat = Outfitter.SlotIterators_CalcMinNumSlotsByStat
-	
-	vSlotIterators.NumCombinations = vNumCombinations
-	
-	Outfitter:TestMessage("Outfitter.SlotIterators_New: Total combinations "..vNumCombinations)
-	
-	return vSlotIterators
-end
-
-function Outfitter.SlotIterators_Increment(pSlotIterators)
-	for vSlotIndex, vSlotIterator in ipairs(pSlotIterators.Slots) do
-		vSlotIterator.Index = vSlotIterator.Index + 1
-		
-		if vSlotIterator.Index <= vSlotIterator.MaxIndex then
-			return true
-		end
-		
-		vSlotIterator.Index = 0
-	end
-	
-	return false -- Couldn't increment
-end
-
-function Outfitter.SlotIterators_GetOutfit(pSlotIterators)
-	local vOutfit = Outfitter:NewEmptyOutfit()
-
-	for _, vItems in ipairs(pSlotIterators.Slots) do
-		-- if vItems.Index > 0 then
-		-- 	local vItem = vItems.Items[vItems.Index]
-		-- 	
-		-- 	Outfitter:AddOutfitItem(vOutfit, vItems.ItemSlotName, vItem)
-		-- end
-	end
-	
-	return vOutfit
-end
-
-local gOutfitter_CompareStat
-
-function Outfitter.SlotIterators_SortItemsByStat(pIterator, pStat)
-	gOutfitter_CompareStat = pStat
-	
-	for _, vSlotInfo in ipairs(pIterator.Slots) do
-		table.sort(vSlotInfo.Items,
-			function (pItem1, pItem2)
-				local vStat1, vStat2 = pItem1[gOutfitter_CompareStat], pItem2[gOutfitter_CompareStat]
-				
-				if vStat1 == nil then
-					return vStat2 ~= nil
-				elseif not vStat2 then
-					return false
-				else
-					return vStat1 < vStat2
-				end
-			end
-		)
-	end
-end
-
-function Outfitter.SlotIterators_CalcMinNumSlotsByStat(pIterator, pStat, pMinValue)
-	local vStatValues = {}
-
-	for _, vSlotInfo in ipairs(pIterator.Slots) do
-		local vNumItems = #vSlotInfo.Items
-		
-		if vNumItems > 0 then
-			local vValue = vSlotInfo.Items[1].Stats[pStat]
-			
-			if vValue then
-				table.insert(vStatValues, vValue)
-			end
-
-			if vNumItems > 1
-			and (vSlotInfo.ItemSlotName == "Trinket0Slot"
-			or vSlotInfo.ItemSlotName == "Finger0Slot"
-			or vSlotInfo.ItemSlotName == "WeaponSlot") then
-				local vValue = vSlotInfo.Items[2].Stats[pStat]
-				
-				if vValue then
-					table.insert(vStatValues, vValue)
-				end
-			end
-		end
-	end
-	
-	table.sort(vStatValues, function (pValue1, pValue2) return pValue1 > pValue2 end)
-	
-	local vTotal = 0
-	
-	for vIndex, vValue in ipairs(vStatValues) do
-		vTotal = vTotal + vValue
-		
-		if vTotal >= pMinValue then
-			return vIndex
-		end
-	end
-	
-	return #vStatValues
-end
-
 function Outfitter.Stats_DistributeValue(pStats, pValue, pDistribution)
 	if not pDistribution then
 		return
@@ -10054,22 +9722,6 @@ function Outfitter:InitializeFrameWidgets(pFrame, pWidgets)
 	end
 end
 
-function Outfitter:MultiStatTest()
-	local vStat = "Intellect"
-	local vMinValue = 100
-	local vStat2 = "FireResist"
-	local vEquippableItems = Outfitter.ItemList_GetEquippableItems(true)
-	
-	local vIterator = Outfitter.SlotIterators_New(vEquippableItems, {[vStat] = true})
-	
-	vIterator:SortItemsByStat(vStat)
-	
-	local vMinNumSlots = vIterator:CalcMinNumSlotsByStat(vStat, vMinValue)
-	
-	Outfitter:DebugTable("Iterator", vIterator)
-	Outfitter:DebugMessage(vMinNumSlots.." needed for "..vMinValue.." "..vStat)
-end
-
 Outfitter.OpenDialogs = {}
 
 function Outfitter:DialogOpened(pDialog)
@@ -10248,7 +9900,13 @@ function Outfitter:FrameEditBox(pEditBox)
 end
 
 function Outfitter:NewObject(pMethods, ...)
-	local vObject = {}
+	local vObject
+	
+	if pMethods.New then
+		vObject = pMethods:New(...)
+	else
+		vObject = {}
+	end
 	
 	for vIndex, vValue in pairs(pMethods) do
 		vObject[vIndex] = vValue
@@ -11240,7 +10898,7 @@ end
 Outfitter._ScriptContext = {}
 ----------------------------------------
 
-function Outfitter._ScriptContext:New(pOutfit, pScript)
+function Outfitter._ScriptContext:NewContext(pOutfit, pScript)
 	local vFunction, vMessage = Outfitter:LoadOutfitScript(pScript)
 	
 	if not vFunction then
@@ -11279,6 +10937,14 @@ function Outfitter._ScriptContext:UnregisterEvent(pEventID)
 	else
 		MCEventLib:UnregisterEvent(pEventID, self.Function, self)
 	end
+end
+
+function Outfitter._ScriptContext:UnregisterAllEvents(pEventID)
+	for vEventID, vOutfits in pairs(Outfitter.OutfitScriptEvents) do
+		vOutfits[self.Outfit] = nil
+	end
+	
+	MCEventLib:UnregisterAllEvents(self.Function, self)
 end
 
 function Outfitter._ScriptContext:Debug(pFormat, ...)
@@ -11370,13 +11036,19 @@ function Outfitter:GetItemUseDuration(pInventorySlot)
 		if vLeftText then
 			local vStartIndex, vEndIndex, vSeconds = string.find(vLeftText, Outfitter.cUseDurationTooltipLineFormat)
 			
+			if not vSeconds then
+				vStartIndex, vEndIndex, vSeconds = string.find(vLeftText, Outfitter.cUseDurationTooltipLineFormat2)
+			end
+			
 			if vSeconds then
+				OutfitterTooltip:Hide()
 				return tonumber(vSeconds)
 			end
 		end
 	end -- for vLineIndex
 	
 	OutfitterTooltip:Hide()
+	return 0
 end
 
 Outfitter.cItemUseDuration = {}
@@ -11487,4 +11159,28 @@ function Outfitter:ShowMissingItems()
 	if not vFoundItems then
 		Outfitter:NoteMessage(Outfitter.cNoMissingItems)
 	end
+end
+
+function Outfitter.CursorInFrame(pFrame)
+	local vCursorX, vCursorY = GetCursorPosition()
+	
+	return Outfitter.PointInFrame(pFrame, vCursorX, vCursorY)
+end
+
+function Outfitter.PointInFrame(pFrame, pPointX, pPointY)
+	local vLeft, vRight, vTop, vBottom = Outfitter.GetFrameEffectiveBounds(pFrame)
+	
+	return pPointX >= vLeft
+	   and pPointX < vRight
+	   and pPointY <= vTop
+	   and pPointY > vBottom
+end
+
+function Outfitter.GetFrameEffectiveBounds(pFrame)
+	local vEffectiveScale = pFrame:GetEffectiveScale()
+	
+	return pFrame:GetLeft() * vEffectiveScale,
+	       pFrame:GetRight() * vEffectiveScale,
+	       pFrame:GetTop() * vEffectiveScale,
+	       pFrame:GetBottom() * vEffectiveScale
 end

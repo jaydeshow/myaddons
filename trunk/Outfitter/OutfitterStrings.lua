@@ -1,7 +1,7 @@
 ﻿Outfitter = {}
 MCDebugLib:InstallDebugger("Outfitter", Outfitter, {r=0.6,g=1,b=0.8})
 
-Outfitter.cVersion = "4.2.1"
+Outfitter.cVersion = "4.2.4"
 
 Outfitter.cTitle = "Outfitter"
 Outfitter.cTitleVersion = Outfitter.cTitle.." "..Outfitter.cVersion
@@ -216,6 +216,8 @@ Outfitter.cItemStatPhrases =
 	
 	["damage and healing done by magical spells and effects"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg", "Healing"},
 	["spell damage"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
+	["spell power"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
+	["spell damage and healing"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg", "Healing"},
 	["magical spells and effects"] = {"SpellDmg", "ShadowDmg", "FireDmg", "FrostDmg", "ArcaneDmg", "NatureDmg"},
 	
 	["fire"] = "FireDmg",
@@ -514,7 +516,8 @@ Outfitter.cItemIcons = "All icons (items only)"
 Outfitter.cAbilityIcons = "All icons (spells only)"
 
 Outfitter.cRequiresLockpicking = "Requires Lockpicking"
-Outfitter.cUseDurationTooltipLineFormat = "^Use: .* for (%d+) sec"
+Outfitter.cUseDurationTooltipLineFormat = "^Use:.*for (%d+) sec"
+Outfitter.cUseDurationTooltipLineForma2 = "^Use:.*Lasts (%d+) sec"
 
 Outfitter.cOutfitBarSizeLabel = "Size"
 Outfitter.cOutfitBarSmallSizeLabel = "Small"
@@ -530,3 +533,6 @@ Outfitter.cPositionLockedError = "The outfit bar can't be moved because you've l
 Outfitter.cMustBeAtBankError = "You must have your bank open to generate a missing items report"
 Outfitter.cMissingItemReportIntro = "Missing items (note that a missing item will be listed multiple times if it was used by multiple outfits):"
 Outfitter.cNoMissingItems = "No items are missing"
+
+Outfitter.cAutoChangesDisabled = "Automated changes are now disabled"
+Outfitter.cAutoChangesEnabled = "Automated changes are now enabled"
