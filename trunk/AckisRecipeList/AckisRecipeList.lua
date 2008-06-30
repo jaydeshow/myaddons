@@ -1,14 +1,83 @@
 ﻿--[[
 ****************************************************************************************
-AckisRecipeList v0.84
-$Date: 2008-06-16 14:45:01 -0400 (Mon, 16 Jun 2008) $
-$Rev: 76861 $
+AckisRecipeList
+$Date: 2008-06-27 18:36:50 -0400 (Fri, 27 Jun 2008) $
+$Rev: 77536 $
 
 Author: Ackis on Illidan US Horde
 
 ****************************************************************************************
 
 Please see Wowace.com for more information.
+
+****************************************************************************************
+
+Documentation:
+
+The mod is segmented into different files, based on what they do.
+
+Localization:
+
+All the localization files are located in the "Locals" sub-directory.  Feel free to edit locals in any
+language, make the enUS more effecient, correct typos, etc.  All I would ask is if you do edit something,
+check in-game first to make sure the change works.
+
+Graphical Interface:
+
+All the graphical interface functions are located in ARLFrame.lua  This file contains all the functions
+needed for the GUI.  If you have enhancements, know how to fix an issue, etc please feel free to
+contribute.  Just leave a detailed commit note.  If it's a new feature please run it by me first before
+adding anything.
+
+Text Based Interface:
+
+The text based interface is located in the ARLText.lua file.  This hasn't really been touched since initial
+releases as people are using the GUI.
+
+Recipe Database:
+
+The recipe database (for professions, and beast skills) as well as the vendor data base are all located in
+the RecipeDB folder.  The basic format for the function to add recipes is:
+Spell ID, Skill Level, Obtain Information, Flags
+
+Spell ID is the IDsof the spell that creates the item.  For example, Robe of Winter Night is item ID
+14136 (http://www.wowdb.com/item.aspx?id=14136).  It's created by spell ID 18436
+(http://www.wowdb.com/spell.aspx?id=18436).
+
+Skill level is the level of the profession in which you  can learn the specified pattern.
+
+Obtain information is how the recipe is learnt.  For world drops, it's as simple as listing the type of
+world drop, same for trainers.  However, for monster drops, quest rewards, faction rewards, there is a 
+function which will add the information in an easy to read format.
+
+Flags are different flags which allow me to filter out the recipes.  These flags are defined as:
+		-- ALLIANCE= Alliance faction only
+		-- HORDE = Horde faction only
+		-- 1 = Trainer
+		-- 2 = Vendor
+		-- 3 = BoE
+		-- 4 = BoP
+		-- 5 = Instance
+		-- 6 = Raid
+		-- 7 = Seasonal
+		-- 8 = Quest
+		-- 9 = PVP
+		-- 10 = cloth
+		-- 11 = leather
+		-- 12 = mail
+		-- 13 = plate
+		-- 14 = physical dps (melee/hunters)
+		-- 15 = tanking
+		-- 16 = healing
+		-- 17 = caster DPS
+
+There are additional flags based off of which faction reputation you can obtain the recipe from.
+
+Feel free to update any recipes with flags, new recipes, correcting the obtain information, etc.  Just
+please ensure you leave a detailed commit note.
+
+I'm hoping to one day have a dataminer which will automate this process but until that happens, I will
+have to do things manually.  If you know how to do this and want to help me out, feel free to contact me.
 
 ****************************************************************************************
 ]]
@@ -327,6 +396,15 @@ local function giveFilter()
 						set		= function() addon.db.profile.instance = not addon.db.profile.instance end,
 						order	= 10,
 					},
+					raid =
+					{
+						name      = L["Raid"],
+						desc      = L["RAID_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.raid end,
+						set       = function() addon.db.profile.raid = not addon.db.profile.raid end,
+						order     = 11,
+					},
 					PVP =
 					{
 						name	= L["PVP"],
@@ -345,24 +423,6 @@ local function giveFilter()
 						set		= function() addon.db.profile.quest = not addon.db.profile.quest end,
 						order	= 30,
 					},
-					raid =
-					{
-						name      = L["Raid"],
-						desc      = L["RAID_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.raid end,
-						set       = function() addon.db.profile.raid = not addon.db.profile.raid end,
-						order     = 40,
-					},
-					seasonal =
-					{
-						name      = L["Seasonal"],
-						desc      = L["SEASONAL_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.seasonal end,
-						set       = function() addon.db.profile.seasonal = not addon.db.profile.seasonal end,
-						order     = 50,
-					},
 					trainer =
 					{
 						name      = L["Trainer"],
@@ -380,6 +440,87 @@ local function giveFilter()
 						get       = function() return addon.db.profile.vendor end,
 						set       = function() addon.db.profile.vendor = not addon.db.profile.vendor end,
 						order     = 70,
+					},
+					seasonal =
+					{
+						name      = L["Seasonal"],
+						desc      = L["SEASONAL_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.seasonal end,
+						set       = function() addon.db.profile.seasonal = not addon.db.profile.seasonal end,
+						order     = 80,
+					},
+					cloth =
+					{
+						name      = L["Cloth"],
+						desc      = L["CLOTH_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.cloth end,
+						set       = function() addon.db.profile.cloth = not addon.db.profile.cloth end,
+						order     = 81,
+					},
+					leather =
+					{
+						name      = L["Leather"],
+						desc      = L["LEATHER_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.leather end,
+						set       = function() addon.db.profile.leather = not addon.db.profile.leather end,
+						order     = 82,
+					},
+					mail =
+					{
+						name      = L["Mail"],
+						desc      = L["MAIL_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.mail end,
+						set       = function() addon.db.profile.mail = not addon.db.profile.mail end,
+						order     = 83,
+					},
+					plate =
+					{
+						name      = L["Plate"],
+						desc      = L["PLATE_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.plate end,
+						set       = function() addon.db.profile.plate = not addon.db.profile.plate end,
+						order     = 84,
+					},
+					melee =
+					{
+						name      = L["Melee"],
+						desc      = L["MELEE_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.melee end,
+						set       = function() addon.db.profile.melee = not addon.db.profile.melee end,
+						order     = 85,
+					},
+					tanking =
+					{
+						name      = L["Tanking"],
+						desc      = L["TANKING_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.tanking end,
+						set       = function() addon.db.profile.tanking = not addon.db.profile.tanking end,
+						order     = 86,
+					},
+					casterdps =
+					{
+						name      = L["Caster DPS"],
+						desc      = L["CASTERDPS_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.casterdps end,
+						set       = function() addon.db.profile.casterdps = not addon.db.profile.casterdps end,
+						order     = 87,
+					},
+					healing =
+					{
+						name      = L["Healing"],
+						desc      = L["HEALING_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.healing end,
+						set       = function() addon.db.profile.healing = not addon.db.profile.healing end,
+						order     = 88,
 					},
 				}
 			},
@@ -722,15 +863,24 @@ function addon:OnInitialize()
 			testgui = false,
 
 			-- Obtain Options
-			pvp = true,
-			raid = true,
-			seasonal = true,
+			trainer = true,
+			vendor = true,
 			boe = true,
 			bop = true,
-			quest = true,
 			instance = true,
-			trainer = true,
-
+			raid = true,
+			seasonal = true,
+			quest = true,
+			pvp = true,
+			cloth = true,
+			leather = true,
+			mail = true,
+			plate = true,
+			melee = true,
+			tank = true,
+			healer = true,
+			casterdps = true,
+			
 			-- Reputation Options
 			aldor = true,
 			scryer = true,
@@ -1123,6 +1273,8 @@ do
 
 	function addon:CheckDisplayRecipe(RecipeName, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
+		-- ALLIANCE= Alliance faction only
+		-- HORDE = Horde faction only
 		-- 1 = Trainer
 		-- 2 = Vendor
 		-- 3 = BoE
@@ -1132,6 +1284,14 @@ do
 		-- 7 = Seasonal
 		-- 8 = Quest
 		-- 9 = PVP
+		-- 10 = cloth
+		-- 11 = leather
+		-- 12 = mail
+		-- 13 = plate
+		-- 14 = physical dps (melee/hunters)
+		-- 15 = tanking
+		-- 16 = healing
+		-- 17 = caster DPS
 
 
 		-- Update the rep table with appropiate flags
@@ -1158,7 +1318,7 @@ do
 				end
 
 				-- Display vendor recipes
-				if (not addon.db.profile.trainer) and (CurrentCheck == 2) then
+				if (not addon.db.profile.vendor) and (CurrentCheck == 2) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
@@ -1189,6 +1349,66 @@ do
 
 				-- Display seasonal recipes
 				if (not addon.db.profile.seasonal) and (CurrentCheck == 7) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display pvp recipes
+				if (not addon.db.profile.pvp) and (CurrentCheck == 8) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display quest recipes
+				if (not addon.db.profile.quest) and (CurrentCheck == 9) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display cloth recipes
+				if (not addon.db.profile.cloth) and (CurrentCheck == 10) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display leather recipes
+				if (not addon.db.profile.leather) and (CurrentCheck == 11) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display mail recipes
+				if (not addon.db.profile.mail) and (CurrentCheck == 12) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display plate recipes
+				if (not addon.db.profile.plate) and (CurrentCheck == 13) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display melee dps recipes
+				if (not addon.db.profile.melee) and (CurrentCheck == 14) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display tanking recipes
+				if (not addon.db.profile.tanking) and (CurrentCheck == 15) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display healer recipes
+				if (not addon.db.profile.healer) and (CurrentCheck == 16) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display caster dps recipes
+				if (not addon.db.profile.casterdps) and (CurrentCheck == 17) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end

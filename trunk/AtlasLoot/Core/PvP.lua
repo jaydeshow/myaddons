@@ -217,24 +217,36 @@ function AtlasLootPvPNonSetEpics()
     getglobal("AtlasLootItemsFrame_BACK").lootpage = "HONORMENU";
     getglobal("AtlasLootItemsFrame_NEXT"):Hide();
     getglobal("AtlasLootItemsFrame_PREV"):Hide();
-    -- Cloth / Leather
-    AtlasLootMenuItem_2_Name:SetText(BabbleInventory["Cloth"].."/"..BabbleInventory["Leather"]);
+    -- Cloth
+    AtlasLootMenuItem_2_Name:SetText(BabbleInventory["Cloth"]);
     AtlasLootMenuItem_2_Extra:SetText("");
-    AtlasLootMenuItem_2_Icon:SetTexture("Interface\\Icons\\INV_Boots_05");
+    AtlasLootMenuItem_2_Icon:SetTexture("Interface\\Icons\\INV_Boots_Cloth_12");
     AtlasLootMenuItem_2.lootpage="PvP70NonSet2";
     AtlasLootMenuItem_2:Show();
-    -- Mail / Plate
-    AtlasLootMenuItem_17_Name:SetText(BabbleInventory["Mail"].."/"..BabbleInventory["Plate"]);
+    -- Leather
+    AtlasLootMenuItem_17_Name:SetText(BabbleInventory["Leather"]);
     AtlasLootMenuItem_17_Extra:SetText("");
-    AtlasLootMenuItem_17_Icon:SetTexture("Interface\\Icons\\INV_Boots_Plate_06");
+    AtlasLootMenuItem_17_Icon:SetTexture("Interface\\Icons\\INV_Boots_08");
     AtlasLootMenuItem_17.lootpage="PvP70NonSet3";
     AtlasLootMenuItem_17:Show();
-    -- Accessories
-    AtlasLootMenuItem_3_Name:SetText(AL["PvP Accessories"]);
+    -- Mail
+    AtlasLootMenuItem_3_Name:SetText(BabbleInventory["Mail"]);
     AtlasLootMenuItem_3_Extra:SetText("");
-    AtlasLootMenuItem_3_Icon:SetTexture("Interface\\Icons\\INV_Jewelry_Necklace_36");
-    AtlasLootMenuItem_3.lootpage="PvP70NonSet1";
+    AtlasLootMenuItem_3_Icon:SetTexture("Interface\\Icons\\INV_Boots_Plate_06");
+    AtlasLootMenuItem_3.lootpage="PvP70NonSet4";
     AtlasLootMenuItem_3:Show();
+    -- Plate
+    AtlasLootMenuItem_18_Name:SetText(BabbleInventory["Plate"]);
+    AtlasLootMenuItem_18_Extra:SetText("");
+    AtlasLootMenuItem_18_Icon:SetTexture("Interface\\Icons\\INV_Boots_Plate_04");
+    AtlasLootMenuItem_18.lootpage="PvP70NonSet5";
+    AtlasLootMenuItem_18:Show();
+    -- Accessories
+    AtlasLootMenuItem_4_Name:SetText(AL["PvP Accessories"]);
+    AtlasLootMenuItem_4_Extra:SetText("");
+    AtlasLootMenuItem_4_Icon:SetTexture("Interface\\Icons\\INV_Jewelry_Necklace_36");
+    AtlasLootMenuItem_4.lootpage="PvP70NonSet1";
+    AtlasLootMenuItem_4:Show();
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end

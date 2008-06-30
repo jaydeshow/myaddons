@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-06-19 10:57:24 -0400 (Thu, 19 Jun 2008) $
-$Rev: 77088 $
+$Date: 2008-06-27 18:03:22 -0400 (Fri, 27 Jun 2008) $
+$Rev: 77533 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -74,6 +74,22 @@ L["TRAINER_TOGGLE"] = "Trainer learned recipes should be included in the scan."
 L["VENDOR_TOGGLE"] = "Vendor bought recipes should be included in the scan."
 L["INSTANCE_TOGGLE"] = "Recipes which are obtained from instances should be included in the scan."
 L["QUEST_TOGGLE"] = "Quest reward recipes should be included in the scan."
+L["Cloth"] = true
+L["CLOTH_TOGGLE"] = "Patterns that make cloth items should be included in the scan."
+L["Leather"] = true
+L["LEATHER_TOGGLE"] = "Patterns that make leahter items should be included in the scan."
+L["Mail"] = true
+L["MAIL_TOGGLE"] = "Patterns that make mail items should be included in the scan."
+L["Plate"] = true
+L["PLATE_TOGGLE"] = "Patterns that make plate items should be included in the scan."
+L["Melee"] = true
+L["MELEE_TOGGLE"] = "Patterns that are used for melee/physical dps should be included in the scan."
+L["Caster DPS"] = true
+L["CASTERDPS_TOGGLE"] = "Patterns that are used for caster dps should be included in the scan."
+L["Tanking"] = true
+L["TANKING_TOGGLE"] = "Patterns that are used for tanking should be included in the scan."
+L["Healing"] = true
+L["HEALING_TOGGLE"] = "Patterns that are used for healing should be included in the scan."
 
 -- Sorting options
 L["Name"] = true
@@ -448,7 +464,6 @@ L["Felcloth Bag Obt"] = "Book that spawns after killing Jandice Barov"
 L["Ghostweave Belt Obt"] = "Lingering Highborne"
 L["Ghostweave Gloves Obt"] = "Lingering Highborne"
 L["Ghostweave Gloves Obt1"] = "Unseen Servant"
-L["Ghostweave Pants Obt"] = "Spectral Citizen"
 L["Ghostweave Vest Obt"] = "Unseen Servant"
 L["Mooncloth Boots Obt"] = "Sacred Cloth"
 L["Robe of the Archmage Obt"] = "Firebrand Pyromancer"
@@ -459,8 +474,6 @@ L["Shadoweave Mask Obt"] = "The Undermarket"
 L["Soulcloth Shoulders Obt"] = "Phantom Attendants"
 L["Soulcloth Vest Obt"] = "Phantom Valet"
 L["Wizardweave Leggings Obt"] = "Dark Summoner"
-L["Wizardweave Robe Obt"] = "Dark Caster"
-L["Wizardweave Turban Obt"] = "Dark Caster"
 
 -- Beast Training Obtain Information
 L["Rare"] = true

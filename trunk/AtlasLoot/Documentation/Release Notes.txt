@@ -4,13 +4,21 @@ This mod is distributed under Version 2 of the GPL.  A copy of the GPL is includ
 
 -Daviesh
 
-
 Patch Notes
+v4.06.01
+Updated Brewfest section
+Added loot table for Coren Direbrew (Brewfest)
+Added Don Carlos loot table
+Readded previously removed vindicator items
+Fixed Arena prices (Season 3)
+Fixed a major Wishlist bug that caused crafted items to appear corrupted
+Minor updates and fixes
+
 v4.06.00
-Compatible with Atlas 1.12
+Compatible with the new Atlas 1.12 data format
 New feature: Quicklooks, which allows you to bind loot tables to one of 4 shortcut buttons in Atlas or the loot browser
 Added new TCG loot from "Hunt of Illidan"
-Updated Midsummer Fire Festival section
+Updated Midsummer Fire Festival section, including Lord Ahune
 Arena prices and items for Season 4 adjusted
 Many minor loot fixes/additions/translations
 

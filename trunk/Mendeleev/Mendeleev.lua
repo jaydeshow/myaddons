@@ -85,7 +85,7 @@ local options = {
 
 function Mendeleev:OnInitialize()
 	self.title = "Mendeleev"
-	self.revision = tonumber(("$Revision: 76019 $"):match("%d+"))
+	self.revision = tonumber(("$Revision: 77433 $"):match("%d+"))
 	self.version = self.version .. "." .. self.revision
 	
 	_G.MENDELEEV_TITLE = self.title
@@ -123,7 +123,7 @@ function Mendeleev:OnInitialize()
 			desc = string_format(L["Toggle %s."], v.name),
 			type = "toggle",
 			get  = function() return not self.db.profile.sets[key] end,
-			set  = function(val) self.db.profile.sets[key] = not val end,
+			set  = function(val) self.db.profile.sets[key] = not val cache = {} scanned = {} end,
 		}
 	end
 

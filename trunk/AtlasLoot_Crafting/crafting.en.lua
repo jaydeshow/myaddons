@@ -574,6 +574,8 @@ AtlasLoot_Data["AtlasLootCrafting"] = {
 
 	AlchemyMaster3 = {
 		{ "s29688", 23571, "=q3=Transmute: Primal Might", "=ds=#sr# 350" },
+        { "s32765", 25867, "=q3=Transmute: Earthstorm Diamond", "=ds=#sr# 350" },
+        { "s32766", 25868, "=q3=Transmute: Skyfire Diamond", "=ds=#sr# 350" },
 		{ "s28566", 21884, "=q2=Transmute: Primal Air to Fire", "=ds=#sr# 350" },
 		{ "s28567", 21885, "=q2=Transmute: Primal Earth to Water", "=ds=#sr# 350" },
 		{ "s28568", 22452, "=q2=Transmute: Primal Fire to Earth", "=ds=#sr# 350" },
@@ -601,11 +603,11 @@ AtlasLoot_Data["AtlasLootCrafting"] = {
 		{ "s47050", 35751, "=q4=Assassin's Alchemist Stone", "=ds=#sr# 375" },
 		{ "s47046", 35748, "=q4=Guardian's Alchemist Stone", "=ds=#sr# 375" },
 		{ "s47049", 35750, "=q4=Redeemer's Alchemist Stone", "=ds=#sr# 375" },
-		{ "s47048", 35749, "=q4=Sorcerer's Alchemist Stone", "=ds=#sr# 375" },
-		{ "s28585", 21886, "=q2=Transmute: Primal Earth to Life", "=ds=#sr# 375" },
 	};
 	
 	AlchemyMaster4 = {
+        { "s47048", 35749, "=q4=Sorcerer's Alchemist Stone", "=ds=#sr# 375" },
+		{ "s28585", 21886, "=q2=Transmute: Primal Earth to Life", "=ds=#sr# 375" },
 		{ "s28583", 22457, "=q2=Transmute: Primal Fire to Mana", "=ds=#sr# 375" },
 		{ "s28584", 22452, "=q2=Transmute: Primal Life to Earth", "=ds=#sr# 375" },
 		{ "s28582", 21884, "=q2=Transmute: Primal Mana to Fire", "=ds=#sr# 375" },

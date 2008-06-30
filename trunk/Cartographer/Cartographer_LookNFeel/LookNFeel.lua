@@ -1,10 +1,19 @@
 ﻿assert(Cartographer, "Cartographer not found!")
+
+do
+	local _, _, _, enabled = GetAddOnInfo("Cartographer3")
+	if enabled or IsAddOnLoaded("Cartographer3") then
+		-- disable thyself
+		return
+	end
+end
+
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 67263 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 77298 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-03-31 06:35:38 -0400 (Mon, 31 Mar 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-06-23 18:42:42 -0400 (Mon, 23 Jun 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-LookNFeel")

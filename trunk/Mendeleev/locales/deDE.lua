@@ -89,6 +89,7 @@ L:RegisterTranslations("deDE", function() return {
 	["Arena - Season 1 Set"] = "Arena - Saison 1 Set",
 	["Arena - Season 2 Set"] = "Arena - Saison 2 Set",
 	["Arena - Season 3 Set"] = "Arena - Saison 3 Set",
+	["Arena - Season 4 Set"] = "Arena - Saison 4 Set",
 
 	["%d%% alc/vol (%d proof)"] = " %d%% Vol.",
 	[" (%d tickets)"] = " (%d Tickets)",

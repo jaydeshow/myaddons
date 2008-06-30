@@ -1,6 +1,6 @@
 ﻿--[[
 Name: ItemBonusLib-1.0
-Revision: $Rev: 67662 $
+Revision: $Rev: 77519 $
 Author(s): Jerry
 Documentation: http://wiki.wowace.com/index.php/ItemBonusLib-1.0
 SVN: http://svn.wowace.com/root/trunk/ItemBonusLib/ItemBonusLib-1.0
@@ -15,7 +15,7 @@ local ipairs = ipairs
 local assert = assert
 local strtrim = strtrim
 local MAJOR_VERSION = "ItemBonusLib-1.0"
-local MINOR_VERSION = "$Revision: 67662 $"
+local MINOR_VERSION = "$Revision: 77519 $"
 
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
 
@@ -2426,6 +2426,7 @@ do -- localisation of regexp
 				["Distanzangriffskraft"] = "RANGEDATTACKPOWER",
 				["Gesundheit alle 5 Sek"] = "HEALTHREG",
 				["Heilzauber"] = "HEAL",
+				["Heilung"] = "HEAL",
 				["Erhöht Heilung"] = "HEAL",
 				["Mana alle 5 Sek"] = "MANAREG",
 				["Manaregeneration"] = "MANAREG",

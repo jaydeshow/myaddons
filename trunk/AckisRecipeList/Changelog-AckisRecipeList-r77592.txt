@@ -1,4 +1,85 @@
 ------------------------------------------------------------------------
+r77592 | StiviS | 2008-06-29 06:33:35 -0400 (Sun, 29 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
+
+AckisRecipeList:
+- esES updated
+------------------------------------------------------------------------
+r77565 | next96 | 2008-06-28 10:17:43 -0400 (Sat, 28 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r77536 | ackis | 2008-06-27 18:36:50 -0400 (Fri, 27 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Add some comments on documentation on how people can contribute to the mod (aka recipe database)
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r77533 | ackis | 2008-06-27 18:03:22 -0400 (Fri, 27 Jun 2008) | 6 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
+
+AckisRecipeList:
+- Removed Ghostweave Pants, Wizardweave Robe/Turban locals from enUS (didn't do others)
+- Converted about 10 Tailoring recipes to trainer (Thanks maniacski)
+- Updated Robe of Winter Night (BoE -> BoP)
+- Updated Enchant 2h Weapon - Superior Impact (Lower -> Upper)
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r77528 | ackis | 2008-06-27 15:46:19 -0400 (Fri, 27 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
+
+AckisRecipeList:
+- Typo fix
+- zhTW update thanks to Apa
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r77526 | kurax | 2008-06-27 13:45:32 -0400 (Fri, 27 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
+
+AckisRecipeList:
+- Update zhCN locale
+------------------------------------------------------------------------
+r77491 | trasher | 2008-06-26 17:43:42 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR
+------------------------------------------------------------------------
+r77476 | next96 | 2008-06-26 12:16:01 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r77471 | ackis | 2008-06-26 11:48:12 -0400 (Thu, 26 Jun 2008) | 8 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
+
+AckisRecipeList:
+~lart Funkeh`
+- Added a bunch of new flags (cloth, leather, mail, plate, melee, casterdps, healing, tanking)
+- Added cloth flag to everything tailoring
+- Added vendor info for missing vendor recipe in tailoring
+- Added new flag localizations in enUS (need translations)
+- If anyone wants to contribute to the database by updating flags, etc feel free to please (this will help me a lot as time is rare now)
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
 r77213 | ackis | 2008-06-22 00:09:16 -0400 (Sun, 22 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
@@ -589,86 +670,4 @@ AckisRecipeList:
 - Changed all the reputation functions to take values of 1 - 4 for reputation levels, saves on some look-ups and more importantly makes things look neater in code and easier to type
 - Changed the quest functions to take values of 0 - 2 for neutral/alliance/horde, same reasoning as with reputations
 - Dry-coded :P
-------------------------------------------------------------------------
-r75371 | ackis | 2008-05-28 13:25:38 -0400 (Wed, 28 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Add Skinner to optdeps
-------------------------------------------------------------------------
-r75279 | ackis | 2008-05-27 15:22:45 -0400 (Tue, 27 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Added more bit string definitions, all of them should be defined now
-------------------------------------------------------------------------
-r75116 | ackis | 2008-05-25 13:13:52 -0400 (Sun, 25 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- Fix error
-------------------------------------------------------------------------
-r75089 | StiviS | 2008-05-25 07:30:57 -0400 (Sun, 25 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
-------------------------------------------------------------------------
-r75060 | ackis | 2008-05-24 22:48:18 -0400 (Sat, 24 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- add some comments
-------------------------------------------------------------------------
-r75055 | ackis | 2008-05-24 20:33:25 -0400 (Sat, 24 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Updated a local with new frame to prevent conflicts with other locals
-------------------------------------------------------------------------
-r74937 | ackis | 2008-05-23 11:36:27 -0400 (Fri, 23 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fixed a few global declarations
-- Localized some global calls
-- Dry-coded
-------------------------------------------------------------------------
-r74936 | next96 | 2008-05-23 11:22:16 -0400 (Fri, 23 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r74935 | ackis | 2008-05-23 11:10:00 -0400 (Fri, 23 May 2008) | 3 lines
-Changed paths:
-   A /trunk/AckisRecipeList/ARLColour.lua
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/ARLText.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Added colourization functions to a seperate file
-- Dry-coded
-------------------------------------------------------------------------
-r74805 | zhinjio | 2008-05-22 11:16:24 -0400 (Thu, 22 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   A /trunk/AckisRecipeList/img/expanded.blp
-   M /trunk/AckisRecipeList/img/main.blp
-
-AckisRecipeList:
-- testgui. flyaway pane done
 ------------------------------------------------------------------------

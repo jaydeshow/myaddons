@@ -360,6 +360,7 @@ JewelTips.Jewels = {
 	[3229] = {GetSpellInfo(44383), 44383}, --+12 Resilience Rating
 	[3260] = 34207, --Glove Reinforcements
 	[3269] = 34836, --Spun Truesilver Fishing Line
+	[3273] = {GetSpellInfo(46578), 46578}, --Deathfrost 
 
 	[5000] = 0
 }

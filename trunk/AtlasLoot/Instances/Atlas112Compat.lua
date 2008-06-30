@@ -11,6 +11,74 @@ local ORANGE = "|cffFF8400";
 
 function Atlas112Compat()
 
+    AtlasLootBossButtons["CFRTheSlavePens"] = {
+        "CExpedition1";
+        "BCKeys";
+        "";
+        "LordAhune";
+        "CFRSlaveMennu";
+        "";
+        "";
+        "CFRSlaveRokmar";
+        "";
+        "CFRSlaveQuagmirran";
+        };
+
+    AtlasLootBossButtons["KarazhanStart"] = {
+        "VioletEye1";
+        "BCKeys";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraNamed";
+        "KaraNamed";
+        "KaraNamed";
+        "";
+        "";
+        "KaraAttumen";
+        "";
+        "";
+        "KaraMoroes";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraKeannaLog";
+        "KaraMaiden";
+        "";
+        "";
+        "";
+        "KaraOperaEvent";
+        "";
+        "KaraOperaEvent";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraOperaEvent";
+        "";
+        "";
+        "KaraNightbane";
+        "";
+        "";
+        "KaraTrash";
+        };
+    
     AtlasLootBossButtons["MagistersTerrace"] = {
         "SunOffensive1";
         "";
@@ -24,6 +92,28 @@ function Atlas112Compat()
         "SMTKaelthas";
 		"";
 		"SMTTrash";
+        };
+    
+    AtlasLootBossButtons["MoltenCore"] = {
+        "";
+        "WaterLords1";
+        "OldKeys";
+        "OldKeys";
+        "";
+        "MCLucifron";
+        "MCMagmadar";
+        "MCGehennas";
+        "MCGarr";
+        "MCShazzrah";
+        "MCGeddon";
+        "MCGolemagg";
+        "MCSulfuron";
+        "MCMajordomo";
+        "MCRagnaros";
+        "";
+        "T1SET";
+        "MCTrashMobs";
+        "MCRANDOMBOSSDROPPS";
         };
     
     AtlasLootBossButtons["Naxxramas"] = {
@@ -62,6 +152,67 @@ function Atlas112Compat()
         "T3SET";
         };
     
+    AtlasLootBossButtons["TheTempleofAhnQiraj"] = {
+        "AQBroodRings";
+        "";
+        "AQ40Skeram";
+        "";
+        "AQ40Vem";
+        "AQ40Vem";
+        "AQ40Vem";
+        "AQ40Sartura";
+        "AQ40Fankriss";
+        "AQ40Viscidus";
+        "AQ40Huhuran";
+        "";
+        "AQ40Emperors";
+        "AQ40Emperors";
+        "AQ40Ouro";
+        "AQ40CThun";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "AQ40Trash1";
+        "AQEnchants";
+        "AQ40SET";
+        "AQOpening";
+        };
+        
+    AtlasLootBossButtons["ZulGurub"] = {
+        "Zandalar1";
+        "OldKeys";
+        "OldKeys";
+        "";
+        "ZGJeklik";
+        "ZGVenoxis";
+        "ZGEnchants";
+        "ZGMarli";
+        "ZGMandokir";
+        "";
+        "";
+        "ZGGrilek";
+        "ZGHazzarah";
+        "ZGRenataki";
+        "ZGWushoolay";
+        "ZGGahzranka";
+        "ZGThekal";
+        "";
+        "";
+        "ZGArlokk";
+        "ZGJindo";
+        "ZGHakkar";
+        "ZGMuddyChurningWaters";
+        "";
+        "ZGTrash1";
+        "ZGShared";
+        "ZGSET";
+        "ZGEnchants";
+        };
     
     AtlasLoot_ExtraText["AlteracValleySouth"] = {
         "";
@@ -120,5 +271,34 @@ function Atlas112Compat()
         "AVPurple";
     };
     
+	AtlasLootBossButtons["TheSunkenTemple"] = {
+		"";
+        "OldKeys";
+        "";
+        "";
+        "STTrollMinibosses";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "STAtalalarion";
+        "STDreamscythe";
+        "STWeaver";
+        "STAvatarofHakkar";
+        "STJammalan";
+        "STOgom";
+        "STMorphaz";
+        "STHazzas";
+        "STEranikus";
+        "";
+        "STSpawnOfHakkar";
+        "LunarFestival1";
+        "";
+        "";
+        "STTrash";
+        };
 
 end

@@ -5,8 +5,8 @@ ARLLocals-zhTW.lua
 
 zhTW localization strings for Ackis Recipe List
 
-$Date: 2008-06-22 00:09:16 -0400 (Sun, 22 Jun 2008) $
-$Rev: 77213 $
+$Date: 2008-06-27 15:46:19 -0400 (Fri, 27 Jun 2008) $
+$Rev: 77528 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: apa1102, zhucc
@@ -75,6 +75,22 @@ L["TRAINER_TOGGLE"] = "掃瞄中包含訓練師的配方。"
 L["VENDOR_TOGGLE"] = "掃瞄中包含商人的配方。"
 L["INSTANCE_TOGGLE"] = "掃瞄中包含副本取得的配方。"
 L["QUEST_TOGGLE"] = "掃瞄中包含任務獎勵的配方。"
+L["Cloth"] = "布衣"
+L["CLOTH_TOGGLE"] = "掃瞄中包含製造出布衣物品的配方。"
+L["Leather"] = "皮甲"
+L["LEATHER_TOGGLE"] = "掃瞄中包含製造出皮甲物品的配方。"
+L["Mail"] = "鎖甲"
+L["MAIL_TOGGLE"] = "掃瞄中包含製造出鎖甲物品的配方。"
+L["Plate"] = "鎧甲"
+L["PLATE_TOGGLE"] = "掃瞄中包含製造出鎧甲物品的配方。"
+L["Melee"] = "物理輸出"
+L["MELEE_TOGGLE"] = "掃瞄中包含用於物理輸出的配方。"
+L["Caster DPS"] = "法術輸出"
+L["CASTERDPS_TOGGLE"] = "掃瞄中包含用於法術輸出的配方。"
+L["Tanking"] = "坦克"
+L["TANKING_TOGGLE"] = "掃瞄中包含用於坦克的配方。"
+L["Healing"] = "治療"
+L["HEALING_TOGGLE"] = "掃瞄中包含用於治療的配方。"
 
 -- Sorting options
 L["Name"] = "名稱"
@@ -218,7 +234,7 @@ L["Elixir of Brute Force Obt"] = "安戈洛環形山：達丹加餓了!(隨機�
 L["Lesser Stoneshield Potion Obt"] = "盧希恩的藥水"
 L["Restorative Potion Obt"] = "奧達曼的蘑菇(自動學習)"
 --Adds
-L["Major Frost Protection Potion Obt"] = "法力墓地：奈薩斯王子薩法爾"
+--L["Major Frost Protection Potion Obt"] = "法力墓地：奈薩斯王子薩法爾"
 
 -- Blacksmithin Obtain Information
 L["Inlaid Mithril Cylinder Obt"] = "製造：這個配方是地精工程師製作出來的"
@@ -275,18 +291,18 @@ L["Ornate Mithril Pants Obt"] = "鐵匠必修課"
 L["Ornate Mithril Shoulder Obt"] = "罩帽和護肩"
 L["Sulfuron Hammer Obt"] = "一份必需遵守的契約"
 --Adds
-L["Annihilator Obt"] = "裝綁：黑石塔(下)：裂盾軍需官"
-L["Arcanite Champion Obt"] = "裝綁：黑石塔(下)：古拉魯克"
-L["Arcanite Reaper Obt"] = "裝綁：黑石塔(下)：班諾克·巨斧"
-L["Black Grasp of the Destroyer Obt"] = "拾綁：安其拉廢墟：莫阿姆"
-L["Dark Iron Plate Obt"] = "裝綁：黑石深淵：雷布裡·斯庫比格特"
-L["Dark Iron Pulverizer Obt"] = "裝綁：黑石深淵：格裡茲爾"
-L["Earthpeace Breastplate Obt"] = "拾綁：波塔尼卡：大植物學家費瑞衛恩"
-L["Hammer of the Titans Obt"] = "裝綁：斯坦索姆：蒼白的瑪勒基"
-L["Heartseeker Obt"] = "裝綁：斯坦索姆：砲手威利"
-L["Invulnerable Mail Obt"] = "裝綁：黑石塔(上)：古拉魯克"
-L["Masterwork Stormhammer Obt"] = "裝綁：黑石塔(上)：古拉魯克"
-L["Thick Obsidian Breastplate Obt"] = "拾綁：安其拉廢墟：預言者斯克拉姆"
+--L["Annihilator Obt"] = "裝綁：黑石塔(下)：裂盾軍需官"
+--L["Arcanite Champion Obt"] = "裝綁：黑石塔(下)：古拉魯克"
+--L["Arcanite Reaper Obt"] = "裝綁：黑石塔(下)：班諾克·巨斧"
+--L["Black Grasp of the Destroyer Obt"] = "拾綁：安其拉廢墟：莫阿姆"
+--L["Dark Iron Plate Obt"] = "裝綁：黑石深淵：雷布裡·斯庫比格特"
+--L["Dark Iron Pulverizer Obt"] = "裝綁：黑石深淵：格裡茲爾"
+--L["Earthpeace Breastplate Obt"] = "拾綁：波塔尼卡：大植物學家費瑞衛恩"
+--L["Hammer of the Titans Obt"] = "裝綁：斯坦索姆：蒼白的瑪勒基"
+--L["Heartseeker Obt"] = "裝綁：斯坦索姆：砲手威利"
+--L["Invulnerable Mail Obt"] = "裝綁：黑石塔(上)：古拉魯克"
+--L["Masterwork Stormhammer Obt"] = "裝綁：黑石塔(上)：古拉魯克"
+--L["Thick Obsidian Breastplate Obt"] = "拾綁：安其拉廢墟：預言者斯克拉姆"
 
 -- Cooking Obtain Information
 L["Fishing Daily"] = "任務獎勵：釣魚每日任務隨機獎勵。"
@@ -350,7 +366,7 @@ L["Enchant Gloves - Mining Obt"] = "黑鐵矮人，黑鐵爆破手，黑鐵隧�
 L["Enchant Gloves - Skinning Obt"] = "『屠戮者』尼瑪爾，枯木狂戰士，枯木獵頭者，枯木暗影獵手"
 L["Enchant Weapon - Crusader Obt"] = "血色縛法者"
 L["Enchant Weapon - Crusader Obt1"] = "血色大法師"
-L["Enchant Weapon - Deathfrost Obt"] = "埃霍恩領主 - 仲夏火焰節" --未確定
+L["Enchant Weapon - Deathfrost Obt"] = "艾胡恩 - 仲夏火焰節"
 L["Enchant Weapon - Fiery Weapon Obt"] = "控火師羅格雷恩"
 L["Enchant Weapon - Icy Chill Obt"] = "痛苦的精靈貴族"
 L["Enchant Weapon - Lifestealing Obt"] = "鬼靈研究員"
@@ -397,15 +413,16 @@ L["Khorium Band of Frost Obt"] = "蒸汽洞窟：盤牙巫女"
 L["Khorium Band of Leaves Obt"] = "劍刃山脈：維克尼爾厄鷹"
 L["Khorium Band of Shadows Obt"] = "影月谷：黑暗議會暗影術師"
 --Adds
-L["Khorium Inferno Band Obt"] = "塞斯克大廳：暗法師希斯"
-L["Circlet of Arcane Might Obt"] = "舊希爾斯布萊德丘陵：紀元狩獵者"
-L["Dark Iron Scorpid Obt"] = "黑石深淵：傀儡統帥阿格曼奇"
-L["Figurine - Black Diamond Crab Obt"] = "黑石塔(下)：軍需官茲格雷斯"
+--L["Khorium Inferno Band Obt"] = "塞斯克大廳：暗法師希斯"
+--L["Circlet of Arcane Might Obt"] = "舊希爾斯布萊德丘陵：紀元狩獵者"
+--L["Dark Iron Scorpid Obt"] = "黑石深淵：傀儡統帥阿格曼奇"
+--L["Figurine - Black Diamond Crab Obt"] = "黑石塔(下)：軍需官茲格雷斯"
 --Quest
 
 -- Leatheworking Obtain Information
 --Mob Drop
 L["Bag of Many Hides Obt"] = "阻礙之丘的巨魔"
+L["Anvilrage Captain"] = "鐵怒上尉"
 L["Blue Dragonscale Shoulders Obt"] = "艾薩拉：峭壁擊碎者"
 L["Devilsaur Leggings Obt"] = "安戈洛環形山：克隆軟泥怪，黏稠的軟泥怪，原生軟泥怪，膠質軟泥怪"
 L["Flame Armor Kit Obt"] = "亞克崔茲：巨型冥淵火"
@@ -448,21 +465,21 @@ L["Wild Leather Leggings Obt"] = "蠻皮護腿"
 L["Wild Leather Shoulders Obt"] = "蠻皮護肩"
 L["Wild Leather Vest Obt"] = "蠻皮外衣"
 --Adds
-L["Arcane Armor Kit Obt"] = "拾綁 - 黑色沼澤：時間領主迪賈"
-L["Black Dragonscale Leggings Obt"] = "裝綁 - 黑石深淵：鐵怒上尉"
-L["Black Dragonscale Shoulders Obt"] = "裝綁 - 黑石深淵：鐵怒上尉"
-L["Frost Armor Kit Obt"] = "拾綁 - 蒸汽洞窟：海法師希斯比亞"
-L["Nature Armor Kit Obt"] = "拾綁 - 奴隸監獄：背叛者門努"
-L["Red Dragonscale Breastplate Obt"] = "裝綁 - 黑石塔(上)：達基薩斯將軍"
-L["Runic Leather Armor Obt"] = "裝綁 - 通靈學院：通靈學院黑暗召喚師"
-L["Runic Leather Bracers Obt"] = "裝綁 - 費伍德森林：加德納爾祭司"
-L["Runic Leather Shoulders Obt"] = "裝綁 - 斯坦索姆：紅衣戰鬥法師"
-L["Stylin' Purple Hat Obt"] = "拾綁 - 暗影迷宮：煽動者黑心"
-L["Tough Scorpid Shoulders Obt"] = "裝綁 - 塔納利斯：安德雷·火鬍，廢土暴徒，廢土刺客"
-L["Wicked Leather Armor Obt"] = "裝綁 - 通靈學院：鬼靈研究員"
-L["Wicked Leather Belt Obt"] = "裝綁 - 斯坦索姆：食屍搶奪者"
-L["Wicked Leather Bracers Obt"] = "裝綁 - 艾薩拉：雷加斯盜賊"
-L["Wicked Leather Headband Obt"] = "裝綁 - 費伍德森：碧火欺詐者林"
+--L["Arcane Armor Kit Obt"] = "拾綁 - 黑色沼澤：時間領主迪賈"
+--L["Black Dragonscale Leggings Obt"] = "裝綁 - 黑石深淵：鐵怒上尉"
+--L["Black Dragonscale Shoulders Obt"] = "裝綁 - 黑石深淵：鐵怒上尉"
+--L["Frost Armor Kit Obt"] = "拾綁 - 蒸汽洞窟：海法師希斯比亞"
+--L["Nature Armor Kit Obt"] = "拾綁 - 奴隸監獄：背叛者門努"
+--L["Red Dragonscale Breastplate Obt"] = "裝綁 - 黑石塔(上)：達基薩斯將軍"
+--L["Runic Leather Armor Obt"] = "裝綁 - 通靈學院：通靈學院黑暗召喚師"
+--L["Runic Leather Bracers Obt"] = "裝綁 - 費伍德森林：加德納爾祭司"
+--L["Runic Leather Shoulders Obt"] = "裝綁 - 斯坦索姆：紅衣戰鬥法師"
+--L["Stylin' Purple Hat Obt"] = "拾綁 - 暗影迷宮：煽動者黑心"
+--L["Tough Scorpid Shoulders Obt"] = "裝綁 - 塔納利斯：安德雷·火鬍，廢土暴徒，廢土刺客"
+--L["Wicked Leather Armor Obt"] = "裝綁 - 通靈學院：鬼靈研究員"
+--L["Wicked Leather Belt Obt"] = "裝綁 - 斯坦索姆：食屍搶奪者"
+--L["Wicked Leather Bracers Obt"] = "裝綁 - 艾薩拉：雷加斯盜賊"
+--L["Wicked Leather Headband Obt"] = "裝綁 - 費伍德森：碧火欺詐者林"
 
 -- Smelting Obtain Information
 L["Dark Iron Obt"] = "黑石深淵七賢處的格魯雷爾，需要20個金錠，2個紅寶石，10個真銀錠"

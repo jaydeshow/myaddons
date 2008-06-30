@@ -904,6 +904,8 @@ AL:RegisterTranslations("enUS", function() return {
     ["Kalldan Felmoon"] = true,
     ["Magregan Deepshadow"] = true,
     ["Lord Ahune"] = true,
+    ["Coren Direbrew"] = true,
+    ["Don Carlos"] = true,
 
     --Zones
     ["World Drop"] = true,

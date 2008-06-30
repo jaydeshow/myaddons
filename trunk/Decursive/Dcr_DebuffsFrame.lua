@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_lists.xml"] or not DcrLoadedFil
 end
 
 local D   = Dcr;
-D:SetDateAndRevision("$Date: 2008-06-13 20:24:46 -0400 (Fri, 13 Jun 2008) $", "$Revision: 76639 $");
+D:SetDateAndRevision("$Date: 2008-06-25 19:56:58 -0400 (Wed, 25 Jun 2008) $", "$Revision: 77431 $");
 
 
 local L	    = D.L;
@@ -276,6 +276,18 @@ function MicroUnitF:MFsDisplay_Update () -- {{{
 
 	elseif (i > NumToShow and MF.Shown) then
 	    D:Debug("Hidding %d", i);
+
+	    -- clear debuff before hiding to avoid leaving 'ghosts' behind...
+	    if D.UnitDebuffed[MF.CurrUnit] then
+		D.ForLLDebuffedUnitsNum = D.ForLLDebuffedUnitsNum - 1;
+	    end
+
+	    MF.Debuffs			  = false;
+	    MF.IsDebuffed		  = false;
+	    MF.Debuff1Prio		  = false;
+	    MF.PrevDebuff1Prio		  = false;
+	    D.UnitDebuffed[MF.CurrUnit]	  = false; -- used by the live-list only
+
 
 	    MF.Shown = false;
 	    self.UnitShown = self.UnitShown - 1;
@@ -1141,7 +1153,7 @@ do
 		    --]]
 
 		    if (not D.Status.SoundPlayed) then
-			D:PlaySound (self.CurrUnit);
+			D:PlaySound (self.CurrUnit, "SetColor()" );
 		    end
 		end
 	    elseif PreviousStatus ~= NORMAL then
@@ -1409,4 +1421,4 @@ local MF_Textures = { -- unused
 
 -- }}}
 
-DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = "$Revision: 76639 $";
+DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = "$Revision: 77431 $";

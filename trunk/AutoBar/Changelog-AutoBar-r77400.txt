@@ -1,4 +1,33 @@
 ------------------------------------------------------------------------
+r77400 | toadkiller | 2008-06-25 11:26:57 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Core.lua
+
+AutoBar: 
+-- Fix crasher trying to invoke skinning with no ButtonFacade mod around.
+------------------------------------------------------------------------
+r77359 | gamefaq | 2008-06-24 22:54:19 -0400 (Tue, 24 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/Locale-deDE.lua
+
+AutoBar : Redone deDE Local (around 80% is new) and changed Format to UTF-8
+------------------------------------------------------------------------
+r77301 | toadkiller | 2008-06-23 20:19:15 -0400 (Mon, 23 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/AutoBarSearch.lua
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+
+AutoBar: 
+-- Switch more events to the Blizzard API
+-- Fix some more macro button issues
+-- Blizzard Macro buttons now save their name and use that to locate their macro in case the index changes
+------------------------------------------------------------------------
 r76925 | toadkiller | 2008-06-17 10:15:06 -0400 (Tue, 17 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarDB.lua
@@ -473,261 +502,4 @@ Changed paths:
 
 AutoBar : 
 - esES updated
-------------------------------------------------------------------------
-r75035 | toadkiller | 2008-05-24 11:26:10 -0400 (Sat, 24 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Dump LibStickyFrames-1.0
-------------------------------------------------------------------------
-r75021 | toadkiller | 2008-05-24 07:47:11 -0400 (Sat, 24 May 2008) | 7 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarFuBar.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
--- Move to LibStickyFrames-2.0 for dragging.
--- Switch to teal for keybind mode.
--- Most of the modes are now exclusive, and will turn off others that are on when activated.
--- Make AutoBar level BF Colors default to {}
--- Remove Style settings from AutoBar.  Skinning is now exclusively from ButtonFacade
-
-------------------------------------------------------------------------
-r75004 | toadkiller | 2008-05-24 02:11:01 -0400 (Sat, 24 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Bindings.xml
-
-AutoBar : 
--- Remove dummy entries for mage pally and priest
-------------------------------------------------------------------------
-r74912 | toadkiller | 2008-05-23 06:37:47 -0400 (Fri, 23 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- One level deeper into LibStickyFrames-2.0
-------------------------------------------------------------------------
-r74872 | toadkiller | 2008-05-23 00:28:47 -0400 (Fri, 23 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Remove category from cooldown stone rejuv, not potion rejuv.
-------------------------------------------------------------------------
-r74859 | toadkiller | 2008-05-22 21:34:38 -0400 (Thu, 22 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Tarkumi's tooltip changes
-
-------------------------------------------------------------------------
-r74811 | StiviS | 2008-05-22 12:39:18 -0400 (Thu, 22 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r74791 | toadkiller | 2008-05-22 10:18:08 -0400 (Thu, 22 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/ChangeList.lua
-
-AutoBar : 
--- Add LibKeyBound-1.0 to toc dependencies and embeds
-
-------------------------------------------------------------------------
-r74777 | scorpion | 2008-05-22 06:59:17 -0400 (Thu, 22 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
- - Update zhTW & zhCN localization.
-------------------------------------------------------------------------
-r74775 | toadkiller | 2008-05-22 06:25:46 -0400 (Thu, 22 May 2008) | 23 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBar.toc
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/AutoBarFuBar.lua
-   M /trunk/AutoBar/AutoBarOptions.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Core.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-   M /trunk/AutoBar/embeds.xml
-
-AutoBar : 
--- 2.04.02.53 beta ()
--- Minimap / FuBar Button overhaul:
--- Left-Click: Open Options GUI. This toggles GUI now. Needs waterfall-1.0.
--- Right-Click: Open Dropdown UI
--- Alt-Click: Key Bindings. -> LibKeyBound-1.0  (yellow background)
--- Ctrl-Shift-Click: Skin the Buttons. Needs ButtonFacade.
--- Ctrl-Click: Move the Buttons
---- Shift-Click: Move the Bars
--- AutoBarButtonCharge Shadowstep added for Rogues
--- Fix locale issues with Charge Button.  Tx SunTsu!
--- AutoBarButtonTravel Ghost Wolf added for Shamans
--- AutoBarButtonER added for all classes except locks
--- Handle Colors for ButtonFacade, as well as settings at AutoBar level.
--- Category Boss Items added, Misc.Usable.Permanent.  On priority, Tears of the Goddess so far.  Eventually needs boss detection.
--- Remove remaining skinning of Blizzard buttons code from AutoBar.
--- Protovoltaic Magneto Collector 30656
--- Amani Hex Stick 33865
--- Repolarized Magneto Sphere 30818
--- Multi-Spectrum Light Trap 30852
--- Temporal Phase Modulator 30742
--- Voodoo Skull 33081
-
-------------------------------------------------------------------------
-r74774 | toadkiller | 2008-05-22 06:21:48 -0400 (Thu, 22 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- Add CallBackHandler to externals
-------------------------------------------------------------------------
-r74637 | toadkiller | 2008-05-21 05:54:23 -0400 (Wed, 21 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- One more level into LibKeyBound-1.0
-------------------------------------------------------------------------
-r74630 | toadkiller | 2008-05-21 03:22:27 -0400 (Wed, 21 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-
-AutoBar : 
--- Actually use the saved ButtonFacade colors.
-------------------------------------------------------------------------
-r74513 | toadkiller | 2008-05-20 06:24:25 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/libs
-
-AutoBar : 
--- LibKeyBound-1.0
-------------------------------------------------------------------------
-r74496 | toadkiller | 2008-05-20 01:55:20 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassButton.lua
-   M /trunk/AutoBar/AutoBarClassPopupButton.lua
-
-AutoBar : 
--- Remove remaining skinning of Blizzard buttons code from AutoBar
-------------------------------------------------------------------------
-r74493 | toadkiller | 2008-05-20 00:07:47 -0400 (Tue, 20 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassButton.lua
-
-AutoBar : 
--- Make always show for macro buttons work again.
-
-------------------------------------------------------------------------
-r74492 | toadkiller | 2008-05-19 23:58:15 -0400 (Mon, 19 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Make disable for macro buttons work again.
-------------------------------------------------------------------------
-r74416 | toadkiller | 2008-05-19 08:52:53 -0400 (Mon, 19 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarClassBar.lua
-   M /trunk/AutoBar/Core.lua
-
-AutoBar : 
--- Handle Colors for ButtonFacade, as well as settings at AutoBar level.
-------------------------------------------------------------------------
-r74415 | toadkiller | 2008-05-19 08:40:13 -0400 (Mon, 19 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Fix locale issues with Charge Button.  Tx SunTsu!
-------------------------------------------------------------------------
-r74340 | toadkiller | 2008-05-18 18:54:52 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-
-AutoBar : 
--- Check for Bear Form and Dire Bear Form for Druid Charge Button
-------------------------------------------------------------------------
-r74293 | StiviS | 2008-05-18 11:09:54 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-esES.lua
-
-AutoBar : 
-- esES updated
-------------------------------------------------------------------------
-r74262 | toadkiller | 2008-05-18 04:16:05 -0400 (Sun, 18 May 2008) | 7 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarCategory.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-   M /trunk/AutoBar/ChangeList.lua
-   M /trunk/AutoBar/Locale-deDE.lua
-   M /trunk/AutoBar/Locale-enUS.lua
-   M /trunk/AutoBar/Locale-esES.lua
-   M /trunk/AutoBar/Locale-esMX.lua
-   M /trunk/AutoBar/Locale-frFR.lua
-   M /trunk/AutoBar/Locale-itIT.lua
-   M /trunk/AutoBar/Locale-koKR.lua
-   M /trunk/AutoBar/Locale-zhCN.lua
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar : 
--- AutoBarButtonCharge Shadowstep added for Rogues
--- AutoBarButtonTravel Ghost Wolf added for Shamans
--- AutoBarButtonER added for all classes except locks
--- Category Boss Items added, Misc.Usable.Permanent.  On priority, Tears of the Goddess so far.  Eventually needs boss detection.
-
-
-------------------------------------------------------------------------
-r74261 | scorpio0920 | 2008-05-18 04:09:16 -0400 (Sun, 18 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AutoBar/Locale-zhTW.lua
-
-AutoBar:
-- Update zhTW localization.
-------------------------------------------------------------------------
-r74135 | toadkiller | 2008-05-17 04:37:54 -0400 (Sat, 17 May 2008) | 4 lines
-Changed paths:
-   M /trunk/AutoBar/AutoBarButton.lua
-   M /trunk/AutoBar/AutoBarDB.lua
-
-AutoBar : 
--- AutoBarButtonCharge Feral Charge added
--- Fixed flight form issue
-
 ------------------------------------------------------------------------

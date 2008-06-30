@@ -1,4 +1,174 @@
 ------------------------------------------------------------------------
+r77608 | 7destiny | 2008-06-29 13:45:51 -0400 (Sun, 29 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+-koKR Update
+------------------------------------------------------------------------
+r77601 | ananhaid | 2008-06-29 11:02:10 -0400 (Sun, 29 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+- Ahune zhCN update.
+------------------------------------------------------------------------
+r77596 | scorpio0920 | 2008-06-29 07:45:11 -0400 (Sun, 29 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r77591 | Ompalumpa | 2008-06-29 05:08:43 -0400 (Sun, 29 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+Cleaned up Ahune module a bit
+------------------------------------------------------------------------
+r77585 | ananhaid | 2008-06-28 23:12:57 -0400 (Sat, 28 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+- fixed Ahune mistake...
+- Ahune zhCN update.
+------------------------------------------------------------------------
+r77574 | Ompalumpa | 2008-06-28 16:13:45 -0400 (Sat, 28 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs:
+Added a timer bar for when Ahune is attackable
+------------------------------------------------------------------------
+r77527 | Ompalumpa | 2008-06-27 14:30:37 -0400 (Fri, 27 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+Ahune timing tweak again
+------------------------------------------------------------------------
+r77458 | pettigrow | 2008-06-26 06:38:50 -0400 (Thu, 26 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: MgT/Kael: bug fix
+------------------------------------------------------------------------
+r77456 | pettigrow | 2008-06-26 06:29:58 -0400 (Thu, 26 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: frFR Update
+------------------------------------------------------------------------
+r77435 | 7destiny | 2008-06-25 23:33:20 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: 
+- koKR Update
+------------------------------------------------------------------------
+r77432 | scorpio0920 | 2008-06-25 20:49:55 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r77430 | Ompalumpa | 2008-06-25 19:10:27 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   D /trunk/LittleWigs/Ahune.lua
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+- Fixed commit mistake
+------------------------------------------------------------------------
+r77427 | Ompalumpa | 2008-06-25 18:47:49 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   A /trunk/LittleWigs/Ahune.lua
+
+LittleWigs: 
+- Ahune timing tweaks
+------------------------------------------------------------------------
+r77424 | ananhaid | 2008-06-25 17:01:35 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: 
+- Kael'thasSunstrider zhCN update.
+------------------------------------------------------------------------
+r77410 | ulic | 2008-06-25 14:31:58 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: MgT/Kael- Adjusted pyroblast stuff based on new data and added a warning for people to make sure they didn't enable the TK/Kael module.
+------------------------------------------------------------------------
+r77402 | ulic | 2008-06-25 12:26:23 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: CFR/Ahune - typo bugfixes
+------------------------------------------------------------------------
+r77394 | 7destiny | 2008-06-25 08:49:24 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+- fix koKR utf8
+------------------------------------------------------------------------
+r77392 | ananhaid | 2008-06-25 08:32:21 -0400 (Wed, 25 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: 
+- Ahune zhCN update.
+- BTW:the koKR locale was the utf8? maybe isn't
+------------------------------------------------------------------------
+r77386 | pettigrow | 2008-06-25 07:00:07 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs: frFR Update
+------------------------------------------------------------------------
+r77377 | scorpio0920 | 2008-06-25 03:30:05 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r77375 | 7destiny | 2008-06-25 03:24:40 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+
+LittleWigs: 
+- koKR Update
+------------------------------------------------------------------------
+r77374 | 7destiny | 2008-06-25 03:16:09 -0400 (Wed, 25 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+
+LittleWigs:
+- CFR/Ahune: Fixed emerge -> stand
+- added koKR locale
+------------------------------------------------------------------------
+r77364 | ulic | 2008-06-24 23:34:27 -0400 (Tue, 24 Jun 2008) | 1 line
+Changed paths:
+   A /trunk/LittleWigs/Coilfang/Ahune.lua
+   M /trunk/LittleWigs/Coilfang/LittleWigs_Coilfang.toc
+   M /trunk/LittleWigs/modules.xml
+
+LittleWigs: CFR - Added Ahune
+------------------------------------------------------------------------
+r77320 | ulic | 2008-06-24 11:27:38 -0400 (Tue, 24 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: 
+- Auch/Hellmaw.lua: Fixed string formating error
+- MgT: Kael: Removed pyroblast until I can get a heroic log
+------------------------------------------------------------------------
 r77265 | pettigrow | 2008-06-23 02:55:53 -0400 (Mon, 23 Jun 2008) | 1 line
 Changed paths:
    M /trunk/LittleWigs/Auchindoun/Ikiss.lua

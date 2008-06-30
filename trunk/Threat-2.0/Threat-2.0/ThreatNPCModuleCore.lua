@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 74877 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 77508 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then
 	_G.ThreatLib_MINOR_VERSION = MINOR_VERSION
@@ -92,6 +92,9 @@ local COMBATLOG_FILTER_FRIENDLY_UNITS = bit_bor(
 
 local AURA_TYPE_BUFF = _G.AURA_TYPE_BUFF
 local AURA_TYPE_DEBUFF = _G.AURA_TYPE_DEBUFF
+
+local AFFILIATION_IN_GROUP = bit_bor(COMBATLOG_OBJECT_AFFILIATION_MINE, COMBATLOG_OBJECT_AFFILIATION_PARTY, COMBATLOG_OBJECT_AFFILIATION_RAID)
+local REACTION_ATTACKABLE = bit_bor(COMBATLOG_OBJECT_REACTION_HOSTILE, COMBATLOG_OBJECT_REACTION_NEUTRAL)
 ---------------------------------------------------------------------------------------------------------------
 -- End Combat Log constants
 ---------------------------------------------------------------------------------------------------------------
@@ -216,6 +219,7 @@ end
 function ThreatLibNPCModuleCore:OnEnable()
 	self:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
 	self:RegisterEvent("PLAYER_TARGET_CHANGED")
+	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 end
 
 function ThreatLibNPCModuleCore:RegisterModule(...)
@@ -307,6 +311,28 @@ function ThreatLibNPCModuleCore:PLAYER_TARGET_CHANGED()
 	local guid = UnitGUID("target")
 	if guid then
 		activateModule(self, guid, true)
+	end
+end
+
+function ThreatLibNPCModuleCore:COMBAT_LOG_EVENT_UNFILTERED(event, timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
+	if not InCombatLockdown() then return end
+	
+	if eventtype == "SPELL_DAMAGE" then 
+		if bit_band(srcFlags, REACTION_ATTACKABLE) ~= 0 and bit_band(srcFlags, COMBATLOG_OBJECT_TYPE_NPC) == COMBATLOG_OBJECT_TYPE_NPC then
+			local spellId = ...
+			local unitID = nil
+			if bit_band(dstFlags, COMBATLOG_FILTER_ME) == COMBATLOG_FILTER_ME then
+				unitID = "player"
+			elseif bit_band(dstFlags, COMBATLOG_FILTER_MY_PET) == COMBATLOG_FILTER_MY_PET then
+				unitID = "pet"
+			end
+			if unitID then
+				local func = self.ModifyThreatSpells[spellId]
+				if func then
+					func(srcGUID, unitID)
+				end
+			end
+		end
 	end
 end
 
@@ -412,30 +438,10 @@ function ThreatLibNPCModuleCore.modulePrototype:OnDisable()
 	ThreatLibNPCModuleCore.activeModuleID = nil
 end
 
-local AFFILIATION_IN_GROUP = bit_bor(COMBATLOG_OBJECT_AFFILIATION_MINE, COMBATLOG_OBJECT_AFFILIATION_PARTY, COMBATLOG_OBJECT_AFFILIATION_RAID)
-local REACTION_ATTACKABLE = bit_bor(COMBATLOG_OBJECT_REACTION_HOSTILE, COMBATLOG_OBJECT_REACTION_NEUTRAL)
-						
-function ThreatLibNPCModuleCore.modulePrototype:COMBAT_LOG_EVENT_UNFILTERED(event, ...)
+function ThreatLibNPCModuleCore.modulePrototype:COMBAT_LOG_EVENT_UNFILTERED(event, timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
 	if not InCombatLockdown() then return end
-	local timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags = ...
 	
-	if eventtype == "SPELL_DAMAGE" then
-		if bit_band(srcFlags, REACTION_ATTACKABLE) ~= 0 and bit_band(srcFlags, COMBATLOG_OBJECT_TYPE_NPC) == COMBATLOG_OBJECT_TYPE_NPC then
-			local spellId = select(9, ...);	--tmp
-			local unitID = nil
-			if bit_band(dstFlags, COMBATLOG_FILTER_ME) == COMBATLOG_FILTER_ME then
-				unitID = "player"
-			elseif bit_band(dstFlags, COMBATLOG_FILTER_MY_PET) == COMBATLOG_FILTER_MY_PET then
-				unitID = "pet"
-			end
-			if unitID then
-				local func = ThreatLibNPCModuleCore.ModifyThreatSpells[spellId]
-				if func then
-					func(srcGUID, unitID)
-				end
-			end
-		end
-	elseif eventtype == "UNIT_DIED" then
+	if eventtype == "UNIT_DIED" then
 		if bit_band(dstFlags, COMBATLOG_OBJECT_TYPE_NPC) == COMBATLOG_OBJECT_TYPE_NPC then
 			local npc_id = ThreatLib:NPCID(dstGUID)
 			local func = self.encounterEnemies[npc_id]
@@ -445,7 +451,7 @@ function ThreatLibNPCModuleCore.modulePrototype:COMBAT_LOG_EVENT_UNFILTERED(even
 		end
 	elseif eventtype == "SPELL_AURA_REMOVED" then
 		if bit_band(dstFlags, COMBATLOG_OBJECT_TYPE_NPC) == COMBATLOG_OBJECT_TYPE_NPC then
-			local spellId, _, _, auraType = select(9, ...)
+			local spellId, _, _, auraType = ...
 			if auraType == AURA_TYPE_BUFF then
 				local npc_id = ThreatLib:NPCID(dstGUID)
 				local func = self.buffFades[spellId]
@@ -456,7 +462,7 @@ function ThreatLibNPCModuleCore.modulePrototype:COMBAT_LOG_EVENT_UNFILTERED(even
 		end
 	elseif eventtype == "SPELL_AURA_APPLIED" then
 		if bit_band(dstFlags, COMBATLOG_OBJECT_TYPE_NPC) == COMBATLOG_OBJECT_TYPE_NPC then
-			local spellId, _, _, auraType = select(9, ...)
+			local spellId, _, _, auraType = ...
 			if auraType == AURA_TYPE_BUFF then
 				local npc_id = ThreatLib:NPCID(dstGUID)
 				local func = self.buffGains[spellId]
@@ -468,7 +474,7 @@ function ThreatLibNPCModuleCore.modulePrototype:COMBAT_LOG_EVENT_UNFILTERED(even
 	end
 	
 	if self.SpellHandlers[eventtype] then
-		local spellId = select(9, ...)
+		local spellId = ...
 		local func = self.SpellHandlers[eventtype][spellId]
 		if func then
 			func(self, srcGUID, dstGUID, spellId)

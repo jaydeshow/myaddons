@@ -6,8 +6,7 @@
 ## X-eMail: ckknight@gmail.com
 ## X-Category: Library
 ## Dependencies: LibBabble-Zone-3.0
-## X-AceLibrary-Tourist-2.0: true
-## X-License: LGPL v2.1
+## X-License: MIT
 
 LibStub\LibStub.lua
 lib.xml

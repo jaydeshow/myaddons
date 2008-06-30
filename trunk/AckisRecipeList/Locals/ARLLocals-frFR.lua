@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-06-19 13:29:40 -0400 (Thu, 19 Jun 2008) $
-$Rev: 77100 $
+$Date: 2008-06-26 17:43:42 -0400 (Thu, 26 Jun 2008) $
+$Rev: 77491 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -52,7 +52,7 @@ L["FILTERCOUNT_TOGGLE"] = "Intègre les recettes filtrées dans le nombre total 
 L["Close GUI"] = "Fermer l'IUG"
 L["CLOSEGUI_TOGGLE"] = "Ferme la fenêtre de ARL quand la fenêtre de métier est fermée."
 
--- Toggle Options
+-- Filtering Options
 L["Faction"] = "Faction"
 L["FACTION_TOGGLE"] = "Intègre ou non les recettes des deux factions dans l'analyse."
 L["Classes"] = "Classes"
@@ -74,6 +74,22 @@ L["TRAINER_TOGGLE"] = "Intègre ou non les recettes apprises aux entraîneurs da
 L["VENDOR_TOGGLE"] = "Intègre ou non les recettes achetées aux marchands dans l'analyse."
 L["INSTANCE_TOGGLE"] = "Intègre ou non les recettes obtenues en instances dans l'analyse."
 L["QUEST_TOGGLE"] = "Intègre ou non les recettes obtenues dans les récompenses de quête dans l'analyse."
+L["Cloth"] = "Tissu"
+L["CLOTH_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en tissu."
+L["Leather"] = "Cuir"
+L["LEATHER_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en cuir."
+L["Mail"] = "Maille"
+L["MAIL_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en maille."
+L["Plate"] = "Plaque"
+L["PLATE_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en plaque."
+L["Melee"] = "Mêlée"
+L["MELEE_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour mêlée/dps physique."
+L["Caster DPS"] = "Lanceur de sort"
+L["CASTERDPS_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour lanceur de sort."
+L["Tanking"] = "Tank"
+L["TANKING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour tank."
+L["Healing"] = "Soigneur"
+L["HEALING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour soigneur."
 
 -- Sorting options
 L["Name"] = "Nom"

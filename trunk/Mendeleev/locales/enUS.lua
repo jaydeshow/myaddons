@@ -94,6 +94,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Arena - Season 1 Set"] = true,
 	["Arena - Season 2 Set"] = true,
 	["Arena - Season 3 Set"] = true,
+	["Arena - Season 4 Set"] = true,
 	
 	["%d%% alc/vol (%d proof)"] = true,
 	[" (%d tickets)"] = true,

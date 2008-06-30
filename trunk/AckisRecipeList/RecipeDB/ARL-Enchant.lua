@@ -4,8 +4,8 @@ ARL-Enchant.lua
 
 Enchanting data for all of AckisRecipeList
 
-$Date: 2008-06-19 10:57:24 -0400 (Thu, 19 Jun 2008) $
-$Rev: 77088 $
+$Date: 2008-06-27 18:03:22 -0400 (Fri, 27 Jun 2008) $
+$Rev: 77533 $
 
 ]]--
 
@@ -183,7 +183,7 @@ function addon:InitEnchanting()
 	self:addTradeSkillSpell(15596, 265, self:CombineMobs(true,L["Smoking Heart of the Mountain Obt"],BZONE["Blackrock Depths"]),3,5)
 	self:addTradeSkillSpell(20029, 285, self:CombineMobs(true,L["Enchant Weapon - Icy Chill Obt"],BZONE["Winterspring"]),3)
 	self:addTradeSkillSpell(20010, 295, self:CombineMobs(true,L["Enchant Bracer - Superior Strength Obt"],BZONE["Deadwind Pass"]),3)
-	self:addTradeSkillSpell(20030, 295, self:CombineMobs(true,L["Enchant 2H Weapon - Superior Impact Obt"],BZONE["Lower Blackrock Spire"]),3,5)
+	self:addTradeSkillSpell(20030, 295, self:CombineMobs(true,L["Enchant 2H Weapon - Superior Impact Obt"],BZONE["Upper Blackrock Spire"]),3,5)
 	self:addTradeSkillSpell(20033, 295, self:CombineMobs(true,L["Enchant Weapon - Unholy Weapon Obt"],BZONE["Stratholme"]),3,5)
 	self:addTradeSkillSpell(20036, 300, self:CombineMobs(true,L["Enchant 2H Weapon - Major Intellect Obt"],BZONE["Stratholme"]),3,5)
 	self:addTradeSkillSpell(20031, 300, self:CombineMobs(true,L["Enchant Weapon - Superior Striking Obt"],BZONE["Lower Blackrock Spire"]),3,5)

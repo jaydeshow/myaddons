@@ -1,4 +1,146 @@
 ------------------------------------------------------------------------
+r77594 | hegarol | 2008-06-29 06:41:19 -0400 (Sun, 29 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/PvP.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- added vindicator items
+------------------------------------------------------------------------
+r77556 | hegarol | 2008-06-28 04:38:20 -0400 (Sat, 28 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+
+AtlasLoot:
+- overhaul of stand-alone browser
+------------------------------------------------------------------------
+r77518 | daviesh | 2008-06-27 09:10:16 -0400 (Fri, 27 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/AtlasLoot.toc
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Core/LootButtons.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- v4.06.01 Fixed a major wishlist bug that was corrupting crafted items
+------------------------------------------------------------------------
+r77516 | diablohu | 2008-06-27 08:43:52 -0400 (Fri, 27 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
+r77512 | wang | 2008-06-27 05:29:27 -0400 (Fri, 27 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Atlas112Compat.lua
+
+AtlasLoot:
+- fix a bug for The Sunken Temple
+------------------------------------------------------------------------
+r77465 | hegarol | 2008-06-26 08:04:24 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Added Don Carlos
+------------------------------------------------------------------------
+r77464 | diablohu | 2008-06-26 08:01:10 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
+r77454 | hegarol | 2008-06-26 06:09:16 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   M /trunk/AtlasLoot/Instances/Atlas112Compat.lua
+
+AtlasLoot:
+- added Ahune to Atlas
+------------------------------------------------------------------------
+r77444 | hegarol | 2008-06-26 03:41:41 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- Core Direbrew added
+------------------------------------------------------------------------
+r77391 | daviesh | 2008-06-25 07:28:47 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+
+AtlasLoot:
+- Fixed a typo
+------------------------------------------------------------------------
+r77366 | daviesh | 2008-06-25 00:21:03 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Assorted bugfixes
+------------------------------------------------------------------------
+r77333 | hegarol | 2008-06-24 14:37:59 -0400 (Tue, 24 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Added Coren Direbrew (Brewfest)
+------------------------------------------------------------------------
+r77319 | daviesh | 2008-06-24 11:24:14 -0400 (Tue, 24 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+
+AtlasLoot:
+- Made navigation buttons work for heroic Lord Ahune
+------------------------------------------------------------------------
+r77314 | daviesh | 2008-06-24 09:27:18 -0400 (Tue, 24 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/AtlasLoot.toc
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- v4.06.00 finalised, will be released after servers come back up and last minute bug testing can be done.
+------------------------------------------------------------------------
+r77313 | daviesh | 2008-06-24 09:22:00 -0400 (Tue, 24 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/Atlas112Compat.lua
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- Rolled back the changes to instances.en.lua in order to maintain Atlas 1.11 compatibility.  Moved Trasher's changes into the Atlas112Compat.lua file to be loaded when the beta Atlas is used.
+------------------------------------------------------------------------
+r77312 | hegarol | 2008-06-24 08:25:49 -0400 (Tue, 24 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- Old Season 2 items avaible for badges added
+------------------------------------------------------------------------
+r77310 | trasher | 2008-06-24 08:22:15 -0400 (Tue, 24 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+
+AtlasLoot:
+- fix compatibility with atlas 1.12.0
+------------------------------------------------------------------------
 r77274 | hegarol | 2008-06-23 08:08:22 -0400 (Mon, 23 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot/Core/ButtonRegistry.lua

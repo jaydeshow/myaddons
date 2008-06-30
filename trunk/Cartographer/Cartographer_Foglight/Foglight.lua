@@ -1,10 +1,19 @@
 ﻿assert(Cartographer, "Cartographer not found!")
+
+do
+	local _, _, _, enabled = GetAddOnInfo("Cartographer3")
+	if enabled or IsAddOnLoaded("Cartographer3") then
+		-- disable thyself
+		return
+	end
+end
+
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 73088 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 77300 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-05-08 07:48:10 -0400 (Thu, 08 May 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-06-23 19:00:35 -0400 (Mon, 23 Jun 2008) $", 8, 17)
 end
 
 -- if you want to add data to the defaults, send ckknight@gmail.com your

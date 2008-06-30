@@ -1,0 +1,71 @@
+------------------------------------------------------------------------
+r77505 | kurax | 2008-06-27 01:21:24 -0400 (Fri, 27 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Locales update
+------------------------------------------------------------------------
+r77467 | hegarol | 2008-06-26 10:29:26 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
+
+AtlasLoot_BCInstances:
+- removed Belt of Depravity from Murmur's loot
+------------------------------------------------------------------------
+r77466 | hegarol | 2008-06-26 08:05:09 -0400 (Thu, 26 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
+
+AtlasLoot_BCInstances:
+- Added Don Carlos
+------------------------------------------------------------------------
+r77283 | kurax | 2008-06-23 11:40:09 -0400 (Mon, 23 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Locales update
+------------------------------------------------------------------------
+r76586 | kurax | 2008-06-13 07:10:54 -0400 (Fri, 13 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Locales update
+------------------------------------------------------------------------
+r76355 | isler | 2008-06-09 12:11:30 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
+
+AtlasLoot_BCInstances:
+- Fix 34247 and 34336
+------------------------------------------------------------------------
+r76343 | hegarol | 2008-06-09 09:46:55 -0400 (Mon, 09 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
+
+AtlasLoot_BCInstances:
+- Removed normal mode items from heroic mode (Magisters' Terrace)
+------------------------------------------------------------------------
+r75526 | kurax | 2008-05-30 00:38:27 -0400 (Fri, 30 May 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Update locales
+------------------------------------------------------------------------

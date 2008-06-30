@@ -1,6 +1,6 @@
-﻿--[[
+--[[
 Name: RatingBuster
-Revision: $Revision: 73696 $
+Revision: $Revision: 77560 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
 Description: Converts combat ratings in tooltips into normal percentages.
@@ -13,7 +13,6 @@ local TipHooker = AceLibrary("TipHooker-1.0")
 local StatLogic = AceLibrary("StatLogic-1.0")
 local Waterfall = AceLibrary:HasInstance("Waterfall-1.0") and AceLibrary("Waterfall-1.0")
 local L = AceLibrary("AceLocale-2.2"):new("RatingBuster")
-local BC = AceLibrary("LibBabble-Class-3.0"):GetLookupTable()
 local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
 
 
@@ -23,8 +22,8 @@ local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
 -- AceAddon Initialization
 RatingBuster = AceLibrary("AceAddon-2.0"):new("AceDB-2.0", "AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0")
 RatingBuster.title = "Rating Buster"
-RatingBuster.version = "1.3.7 (r"..gsub("$Revision: 73696 $", "(%d+)", "%1")..")"
-RatingBuster.date = gsub("$Date: 2008-05-13 11:22:36 -0400 (Tue, 13 May 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
+RatingBuster.version = "1.3.7 (r"..gsub("$Revision: 77560 $", "(%d+)", "%1")..")"
+RatingBuster.date = gsub("$Date: 2008-06-28 07:39:18 -0400 (Sat, 28 Jun 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 
 -------------------

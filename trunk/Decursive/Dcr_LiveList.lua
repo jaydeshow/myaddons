@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_DebuffsFrame.xml"] or not DcrLo
 end
 
 local D   = Dcr;
-D:SetDateAndRevision("$Date: 2008-06-13 20:24:46 -0400 (Fri, 13 Jun 2008) $", "$Revision: 76639 $");
+D:SetDateAndRevision("$Date: 2008-06-25 19:56:58 -0400 (Wed, 25 Jun 2008) $", "$Revision: 77431 $");
 
 local L	    = D.L;
 local BC    = D.BC;
@@ -356,7 +356,7 @@ function LiveList:Update_Display() -- {{{
 	Index = Index + 1;
 	self:DisplayItem(Index, "target");
 	if not D.Status.SoundPlayed then
-	    D:PlaySound ("target");
+	    D:PlaySound ("target", "LV tg" );
 	end
     end
 
@@ -365,7 +365,7 @@ function LiveList:Update_Display() -- {{{
 	Index = Index + 1;
 	self:DisplayItem(Index, "mouseover");
 	if not D.Status.SoundPlayed then
-	    D:PlaySound ("mouseover");
+	    D:PlaySound ("mouseover", "LV mo" );
 	end
     end
     IndexOffset = Index;
@@ -387,7 +387,7 @@ function LiveList:Update_Display() -- {{{
 
 		    -- play the sound if not already done
 		    if not D.Status.SoundPlayed then
-			D:PlaySound (UnitID);
+			D:PlaySound (UnitID, "LV scan NR" );
 		    end
 
 		else -- we care about range
@@ -405,7 +405,7 @@ function LiveList:Update_Display() -- {{{
 			self:DisplayItem(Index, UnitID);
 			-- play the sound if not already done
 			if not D.Status.SoundPlayed then
-			    D:PlaySound (UnitID);
+			    D:PlaySound (UnitID, "LV R" );
 			end
 		    end
 		end
@@ -419,8 +419,8 @@ function LiveList:Update_Display() -- {{{
     end
 
     -- reset the sound if no units were displayed
-    if Index == 0 and D.Status.SoundPlayed then
-	Dcr:Debug("No more unit displayed, sound re-enabled");
+    if not D.profile.ShowDebuffsFrame and Index == 0 and D.Status.SoundPlayed then
+	Dcr:Debug("LV: No more unit displayed, sound re-enabled");
 	D.Status.SoundPlayed = false; -- re-enable the sound if no more debuff
     end
 

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 76521 $
+Revision: $Rev: 77557 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 76521 $"
+local MINOR_VERSION = "$Revision: 77557 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -486,6 +486,7 @@ lib:SetBaseTranslations {
 	["Mennu the Betrayer"] = true,
 	["Quagmirran"] = true,
 	["Rokmar the Crackler"] = true,
+	["Ahune"] = true,
 --The Steamvault
 	["Hydromancer Thespia"] = true,
 	["Mekgineer Steamrigger"] = true,
@@ -714,6 +715,7 @@ lib:SetBaseTranslations {
 	["Fallen Champion"] = true,
 	["Interrogator Vishas"] = true,
 	["Ironspine"] = true,
+	["Headless Horseman"] = true,
 --Library
 	["Arcanist Doan"] = true,
 	["Houndmaster Loksey"] = true,
@@ -1133,6 +1135,7 @@ elseif GAME_LOCALE == "deDE" then
 		["Mennu the Betrayer"] = "Mennu der Verräter",
 		["Quagmirran"] = "Quagmirran",
 		["Rokmar the Crackler"] = "Rokmar der Zerquetscher",
+		["Ahune"] = "Ahune",
 --The Steamvault
 		["Hydromancer Thespia"] = "Wasserbeschwörerin Thespia",
 		["Mekgineer Steamrigger"] = "Robogenieur Dampfhammer",
@@ -1361,6 +1364,7 @@ elseif GAME_LOCALE == "deDE" then
 		["Fallen Champion"] = "Gestürzter Held",
 		["Interrogator Vishas"] = "Befrager Vishas",
 		["Ironspine"] = "Eisenrücken",
+		["Headless Horseman"] = "Der kopflose Reiter",
 --Library
 		["Arcanist Doan"] = "Arkanist Doan",
 		["Houndmaster Loksey"] = "Hundemeister Loksey",
@@ -1774,6 +1778,7 @@ elseif GAME_LOCALE == "frFR" then
 		["The Lurker Below"] = "Le Rôdeur d'En bas",
 		["Tidewalker Lurker"] = "Rôdeur marcheur-des-flots",
 --The Slave Pens
+		["Ahune"] = "Ahune",
 		["Mennu the Betrayer"] = "Mennu le Traître",
 		["Quagmirran"] = "Bourbierreux",
 		["Rokmar the Crackler"] = "Rokmar le Crépitant",
@@ -2003,6 +2008,7 @@ elseif GAME_LOCALE == "frFR" then
 		["Azshir the Sleepless"] = "Azshir le Sans-sommeil",
 		["Bloodmage Thalnos"] = "Mage de sang Thalnos",
 		["Fallen Champion"] = "Champion mort",
+		["Headless Horseman"] = "Cavalier sans tête",
 		["Interrogator Vishas"] = "Interrogateur Vishas",
 		["Ironspine"] = "Echine-de-fer",
 --Library
@@ -2421,6 +2427,7 @@ elseif GAME_LOCALE == "zhCN" then
 		["Mennu the Betrayer"] = "背叛者门努",
 		["Quagmirran"] = "夸格米拉",
 		["Rokmar the Crackler"] = "巨钳鲁克玛尔",
+	 	["Ahune"] = "埃霍恩",
 --The Steamvault
 		["Hydromancer Thespia"] = "水术师瑟丝比娅",
 		["Mekgineer Steamrigger"] = "机械师斯蒂里格",
@@ -2649,6 +2656,7 @@ elseif GAME_LOCALE == "zhCN" then
 		["Fallen Champion"] = "死灵勇士",
 		["Interrogator Vishas"] = "审讯员韦沙斯",
 		["Ironspine"] = "铁脊死灵",
+		["Headless Horseman"] = "无头骑士",
 --Library
 		["Arcanist Doan"] = "奥法师杜安",
 		["Houndmaster Loksey"] = "驯犬者洛克希",
@@ -3065,6 +3073,8 @@ elseif GAME_LOCALE == "zhTW" then
 		["Mennu the Betrayer"] = "背叛者曼紐",
 		["Quagmirran"] = "奎克米瑞",
 		["Rokmar the Crackler"] = "爆裂者洛克瑪",
+		["Ahune"] = "艾胡恩",
+
 --The Steamvault
 		["Hydromancer Thespia"] = "海法師希斯比亞",
 		["Mekgineer Steamrigger"] = "米克吉勒·蒸氣操控者",
@@ -3293,6 +3303,7 @@ elseif GAME_LOCALE == "zhTW" then
 		["Fallen Champion"] = "亡靈勇士",
 		["Interrogator Vishas"] = "審訊員韋沙斯",
 		["Ironspine"] = "鐵脊死靈",
+		["Headless Horseman"] = "無頭騎士",
 --Library
 		["Arcanist Doan"] = "秘法師杜安",
 		["Houndmaster Loksey"] = "馴犬者洛克希",
@@ -3709,6 +3720,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Mennu the Betrayer"] = "배반자 멘누",
 		["Quagmirran"] = "쿠아그미란",
 		["Rokmar the Crackler"] = "딱딱이 로크마르",
+		["Ahune"] = "아훈",
 --The Steamvault
 		["Hydromancer Thespia"] = "풍수사 세스피아",
 		["Mekgineer Steamrigger"] = "기계공학자 스팀리거",
@@ -3937,6 +3949,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Fallen Champion"] = "타락한 용사",
 		["Interrogator Vishas"] = "심문관 비샤스",
 		["Ironspine"] = "무쇠해골",
+		["Headless Horseman"] = "저주받은 기사",
 --Library
 		["Arcanist Doan"] = "신비술사 도안",
 		["Houndmaster Loksey"] = "사냥개 조련사 록시",

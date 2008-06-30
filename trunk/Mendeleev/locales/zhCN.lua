@@ -94,6 +94,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Arena - Season 1 Set"] = "竞技场套装：第1赛季",
 	["Arena - Season 2 Set"] = "竞技场套装：第2赛季",
 	["Arena - Season 3 Set"] = "竞技场套装：第3赛季",
+	["Arena - Season 4 Set"] = "竞技场套装：第4赛季",
 		
 	["%d%% alc/vol (%d proof)"] = "酒精浓度：%d%%",
 	[" (%d tickets)"] = " （%d张票）",

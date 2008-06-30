@@ -1,4 +1,17 @@
 ------------------------------------------------------------------------
+r77434 | ckknight | 2008-06-25 23:15:41 -0400 (Wed, 25 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua
+
+LibDogTag-Unit-3.0 - optimization to [RaidGroup]
+------------------------------------------------------------------------
+r77345 | ckknight | 2008-06-24 20:00:16 -0400 (Tue, 24 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.lua
+
+LibDogTag-Unit-3.0 - fix a bug which caused all fontstrings to be seen as wacky units.
+- set the wacky unit update time to 0.5 instead of 0.25
+------------------------------------------------------------------------
 r77205 | ckknight | 2008-06-21 19:40:41 -0400 (Sat, 21 Jun 2008) | 1 line
 Changed paths:
    M /trunk/LibDogTag-Unit-3.0/Categories/Cast.lua

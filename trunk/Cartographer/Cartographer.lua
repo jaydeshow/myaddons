@@ -1,8 +1,8 @@
 ﻿Cartographer = Rock:NewAddon("Cartographer", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockDB-1.0", "LibRockModuleCore-1.0", "LibRockHook-1.0", "LibRockConfig-1.0")
 local Cartographer = Cartographer
-Cartographer.revision = tonumber(string.sub("$Revision: 74404 $", 12, -3))
+Cartographer.revision = tonumber(string.sub("$Revision: 77299 $", 12, -3))
 Cartographer.version = "r" .. Cartographer.revision
-Cartographer.date = string.sub("$Date: 2008-05-19 07:10:45 -0400 (Mon, 19 May 2008) $", 8, 17)
+Cartographer.date = string.sub("$Date: 2008-06-23 18:51:02 -0400 (Mon, 23 Jun 2008) $", 8, 17)
 
 local Dewdrop = AceLibrary("Dewdrop-2.0")
 
@@ -122,7 +122,7 @@ L:AddTranslations("koKR", function() return {
 	["Addon to manipulate the map."] = "월드맵 확장 애드온",
 } end)
 
---Ananhaid checkpoint.($Date: 2008-05-19 07:10:45 -0400 (Mon, 19 May 2008) $)
+--Ananhaid checkpoint.($Date: 2008-06-23 18:51:02 -0400 (Mon, 23 Jun 2008) $)
 L:AddTranslations("zhCN", function() return {
 	["Active"] = "启用", -- remove in a while (2006-12-08)
 	["Enabled"] = "启用",
@@ -473,8 +473,6 @@ function Cartographer:OnEnable()
 	self:ConfigureUnitPOIs()
 
 	self:configureYards()
-
-	self:ConfigureGuildSpammer()
 
 	self:LoadLoadOnDemandModules()
 
@@ -858,91 +856,6 @@ function Cartographer:ConfigureUnitPOIs()
 	self:AddHook("WorldMapUnit_OnEnter")
 	self:AddHook("WorldMapUnit_OnLeave")
 	self:AddRepeatingTimer(1, "UpdateTooltip")
-end
-
-function Cartographer:ConfigureGuildSpammer()
-	local guildSpammer = {}
-	Rock("LibRockComm-1.0"):Embed(guildSpammer)
-	Rock("LibRockEvent-1.0"):Embed(guildSpammer)
-	Rock("LibRockTimer-1.0"):Embed(guildSpammer)
-	guildSpammer:SetCommPrefix("CGP")
-	local memoizations = {
-		"CLEAR", "POSITION", "REQUEST"
-	}
-	for zone in BZ:Iterate() do
-		table.insert(memoizations, zone)
-	end
-	guildSpammer:AddMemoizations(memoizations)
-
-	local shouldSendPosition = (date("%Y%m%d%H%M%S")+0) < 20080519000000
-
-	local lastSentZone = {}
-	local t = {
-		REQUEST = shouldSendPosition and function(prefix, distribution, sender, zone)
-			if IsInInstance() then
-				if lastSentZone[sender] then
-					guildSpammer:SendCommMessage("WHISPER", sender, "CLEAR")
-					lastSentZone[sender] = nil
-				end
-			else
-				local px, py, pzone = self:GetCurrentPlayerPosition()
-				if not px then
-					return
-				end
-				local send = false
-				if zone == "Azeroth" then
-					send = Tourist:IsInKalimdor(BZL[pzone]) or Tourist:IsInEasternKingdoms(BZL[pzone])
-				elseif zone == "Eastern Kingdoms" then
-					send = Tourist:IsInEasternKingdoms(BZL[pzone])
-				elseif zone == "Kalimdor" then
-					send = Tourist:IsInKalimdor(BZL[pzone])
-				elseif zone == "Outland" then
-					send = Tourist:IsInOutland(BZL[pzone])
-				elseif zone == pzone then
-					send = true
-				end
-				if send then
-					guildSpammer:SendCommMessage("WHISPER", sender, "POSITION", pzone, px, py)
-					lastSentZone[sender] = pzone
-				end
-			end
-		end or nil,
-	}
-	guildSpammer:AddCommListener("CGP", "GUILD", t)
-	guildSpammer:AddCommListener("CGP", "WHISPER", t)
-
-	local shouldSendRequest = (date("%Y%m%d%H%M%S")+0) < 20080619000000
-
-	function guildSpammer:sendRequestToGuild()
-		self:AddTimer("Cartographer-guildPositions-Request", math.max(5, RollCall:GetNumOnline() / 10), "sendRequestToGuild")
-
-		if not IsInGuild() then
-			return
-		end
-
-		if RollCall:GetNumOnline() == 1 then
-			-- all by my lonesome
-			return
-		end
-
-		if shouldSendRequest and not Tourist:IsInstance(Cartographer:GetCurrentLocalizedZoneName()) then
-			guildSpammer:SendCommMessage("GUILD", "REQUEST", Cartographer:GetCurrentEnglishZoneName())
-		end
-	end
-
-	function guildSpammer:Cartographer_ChangeZone()
-		-- this is also called on map open
-		if WorldMapFrame:IsShown() then
-			self:sendRequestToGuild()
-		end
-	end
-
-	function guildSpammer:Cartographer_MapClosed()
-		self:RemoveTimer("Cartographer-guildPositions-Request")
-	end
-
-	guildSpammer:AddEventListener("Cartographer", "MapClosed", "Cartographer_MapClosed")
-	guildSpammer:AddEventListener("Cartographer", "ChangeZone", "Cartographer_ChangeZone")
 end
 
 do

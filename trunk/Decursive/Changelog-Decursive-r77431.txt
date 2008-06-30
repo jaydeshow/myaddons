@@ -1,4 +1,15 @@
 ------------------------------------------------------------------------
+r77431 | archarodim | 2008-06-25 19:56:58 -0400 (Wed, 25 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_Events.lua
+   M /trunk/Decursive/Dcr_LiveList.lua
+   M /trunk/Decursive/Decursive.lua
+
+Decursive:
+- Internal cleaning (clear a MUF debuffs before hiding it)
+- Prevent alert sound loop from happening.
+------------------------------------------------------------------------
 r77182 | archarodim | 2008-06-21 09:31:33 -0400 (Sat, 21 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Decursive/DCR_init.lua

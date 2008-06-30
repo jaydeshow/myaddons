@@ -1,13 +1,13 @@
 --[[
 Name: LibDogTag-3.0
-Revision: $Rev: 68104 $
+Revision: $Rev: 77345 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: A library to provide a markup syntax
 ]]
 
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 68104 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 77345 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_Unit_MINOR_VERSION then
 	_G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
@@ -340,7 +340,7 @@ DogTag:AddTimerHandler("Unit", function(num, currentTime)
 		DogTag:FireEvent("UnitChanged", "mouseover")
 	end
 	if currentTime >= nextUpdateWackyUnitsTime then
-		nextUpdateWackyUnitsTime = currentTime + 0.25
+		nextUpdateWackyUnitsTime = currentTime + 0.5
 		DogTag:FireEvent("UpdateWackyUnits")
 		for fs, nsList in pairs(fsToNSList) do
 			if nsListHasUnit[nsList] then
@@ -373,7 +373,8 @@ DogTag:AddCompilationStep("Unit", "tagevents", function(ast, t, u, tag, tagData,
 		events["UnitChanged#$unit"] = true
 		events["PARTY_MEMBERS_CHANGED"] = true
 		events["PLAYER_ENTERING_WORLD"] = true
-		if kwargs["unit"] ~= extraKwargs and (type(kwargs["unit"]) ~= "string" or not IsNormalUnit[kwargs["unit"]]) then
+		local kwargs_unit = kwargs["unit"]
+		if (type(kwargs_unit) ~= "table" or kwargs_unit[1] ~= "kwarg" or kwargs_unit[2] ~= "unit") and kwargs_unit ~= extraKwargs and (type(kwargs_unit) ~= "string" or not IsNormalUnit[kwargs_unit]) then
 			events["UpdateWackyUnits"] = true
 		end
 	end

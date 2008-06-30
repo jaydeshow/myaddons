@@ -190,6 +190,7 @@
 			["InstanceLoot.Scarlet Monastery.Houndmaster Loksey"] = BB["Houndmaster Loksey"],
 			["InstanceLoot.Scarlet Monastery.Interrogator Vishas"] = BB["Interrogator Vishas"],
 			["InstanceLoot.Scarlet Monastery.Ironspine"] = BB["Ironspine"],
+			["InstanceLoot.Scarlet Monastery.Headless Horseman"] = BB["Headless Horseman"],
 			["InstanceLoot.Scarlet Monastery.Scarlet Commander Mograine"] = BB["Scarlet Commander Mograine"],
 		},
 	})

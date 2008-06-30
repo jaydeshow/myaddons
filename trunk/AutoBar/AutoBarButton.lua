@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -2185,7 +2185,8 @@ function AutoBarButtonStealth.prototype:Refresh(parentBar, buttonDB)
 --]]
 	elseif (AutoBar.CLASS == "MAGE") then
 		if (GetSpellInfo(spellNameList["Invisibility"])) then
-			concatList[index] = spellNameList["Invisibility"]
+			concatList[1] = "#showtooltip Invisibility\n"
+			concatList[2] = spellNameList["Invisibility"]
 
 			macroTexture = spellIconList["Invisibility"]
 			self.macroActive = true

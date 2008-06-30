@@ -1,17 +1,17 @@
 ﻿--[[
 Name: LibTourist-3.0
-Revision: $Rev: 64725 $
+Revision: $Rev: 77341 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://www.wowace.com/wiki/LibTourist-3.0
 SVN: http://svn.wowace.com/root/trunk/LibTourist-3.0
 Description: A library to provide information about zones and instances.
 Dependencies: LibBabble-Zone-3.0
-License: LGPL v2.1
+License: MIT
 ]]
 
 local MAJOR_VERSION = "LibTourist-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 64725 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 77341 $"):match("(%d+)"))
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 if not LibStub("LibBabble-Zone-3.0") then error(MAJOR_VERSION .. " requires LibBabble-Zone-3.0.") end
@@ -990,11 +990,10 @@ do
 	
 	zones[BZ["Eastern Kingdoms"]] = {
 		type = "Continent",
-		yards = 37649.15159852673,
+		yards = 40741.175327834,
 		x_offset = 0,
 		y_offset = 0,
 		continent = Eastern_Kingdoms,
-		texture = "Azeroth",
 	}
 	
 	zones[BZ["Kalimdor"]] = {
@@ -1003,7 +1002,6 @@ do
 		x_offset = 0,
 		y_offset = 0,
 		continent = Kalimdor,
-		texture = "Kalimdor",
 	}
 	
 	zones[BZ["Outland"]] = {
@@ -1012,7 +1010,6 @@ do
 		x_offset = 0,
 		y_offset = 0,
 		continent = Outland,
-		texture = "Expansion01",
 	}
 
 	zones[BZ["Azeroth"]] = {
@@ -1183,11 +1180,7 @@ do
 		},
 		faction = "Alliance",
 		type = "City",
-		yards = 790.5745810546713,
-		x_offset = 17764.34206355846,
-		y_offset = 13762.32403658607,
 		fishing_min = 1,
-		texture = "Ironforge",
 	}
 	
 	zones[BZ["Silvermoon City"]] = {
@@ -1198,11 +1191,7 @@ do
 		},
 		faction = "Horde",
 		type = "City",
-		yards = 1211.384457945605,
-		x_offset = 21051.29911245071,
-		y_offset = 1440.439646345552,
 		fishing_min = 1,
-		texture = "SilvermoonCity",
 	}
 	
 	zones[BZ["Stormwind City"]] = {
@@ -1216,11 +1205,7 @@ do
 		},
 		faction = "Alliance",
 		type = "City",
-		yards = 1344.138055148283,
-		x_offset = 15669.93346231942,
-		y_offset = 17471.62163820253,
 		fishing_min = 1,
-		texture = "Stormwind",
 	}
 	
 	zones[BZ["Champions' Hall"]] = {
@@ -1243,10 +1228,6 @@ do
 		},
 		faction = "Horde",
 		type = "City",
-		yards = 959.3140238076666,
-		x_offset = 16177.65630384973,
-		y_offset = 7315.685533181013,
-		texture = "Undercity",
 	}
 	
 	zones[BZ["Dun Morogh"]] = {
@@ -1261,11 +1242,7 @@ do
 			[BZ["Loch Modan"]] = true,
 		},
 		faction = "Alliance",
-		yards = 4924.664537147015,
-		x_offset = 15248.84370721237,
-		y_offset = 13070.22369811241,
 		fishing_min = 1,
-		texture = "DunMorogh",
 	}
 	
 	zones[BZ["Elwynn Forest"]] = {
@@ -1280,11 +1257,7 @@ do
 			[BZ["Duskwood"]] = true,
 		},
 		faction = "Alliance",
-		yards = 3470.62593362794,
-		x_offset = 15515.46777926721,
-		y_offset = 17132.38313881497,
 		fishing_min = 1,
-		texture = "Elwynn",
 	}
 	
 	zones[BZ["Eversong Woods"]] = {
@@ -1296,11 +1269,7 @@ do
 			[BZ["Ghostlands"]] = true,
 		},
 		faction = "Horde",
-		yards = 4924.70470173181,
-		x_offset = 19138.16325760612,
-		y_offset = 552.5351270080572,
 		fishing_min = 20,
-		texture = "EversongWoods",
 	}
 	
 	zones[BZ["Tirisfal Glades"]] = {
@@ -1322,11 +1291,7 @@ do
 			[BZ["Silverpine Forest"]] = true,
 		},
 		faction = "Horde",
-		yards = 4518.469744413802,
-		x_offset = 14017.64852522109,
-		y_offset = 5356.296558943325,
 		fishing_min = 1,
-		texture = "Tirisfal",
 	}
 	
 	zones[BZ["Amani Pass"]] = {
@@ -1344,11 +1309,7 @@ do
 			[BZ["Eversong Woods"]] = true,
 		},
 		faction = "Horde",
-		yards = 3299.755735439147,
-		x_offset = 19933.969945598,
-		y_offset = 3327.317139912411,
 		fishing_min = 20,
-		texture = "Ghostlands",
 	}
 	
 	zones[BZ["Loch Modan"]] = {
@@ -1362,11 +1323,7 @@ do
 			[BZ["Searing Gorge"]] = not isHorde and true or nil,
 		},
 		faction = "Alliance",
-		yards = 2758.158752877019,
-		x_offset = 19044.42466174755,
-		y_offset = 13680.58746225864,
 		fishing_min = 20,
-		texture = "LochModan",
 	}
 
 	zones[BZ["Silverpine Forest"]] = {
@@ -1380,11 +1337,7 @@ do
 			[BZ["Shadowfang Keep"]] = true,
 		},
 		faction = "Horde",
-		yards = 4199.739879721531,
-		x_offset = 13601.00798540562,
-		y_offset = 7526.945768538925,
 		fishing_min = 20,
-		texture = "Silverpine",
 	}
 
 	zones[BZ["Westfall"]] = {
@@ -1398,11 +1351,7 @@ do
 			[BZ["The Deadmines"]] = true,
 		},
 		faction = "Alliance",
-		yards = 3499.786489780177,
-		x_offset = 14034.31142029944,
-		y_offset = 18592.67765947875,
 		fishing_min = 55,
-		texture = "Westfall",
 	}
 
 	zones[BZ["Redridge Mountains"]] = {
@@ -1414,11 +1363,7 @@ do
 			[BZ["Elwynn Forest"]] = true,
 			[BZ["Duskwood"]] = true,
 		},
-		yards = 2170.704876735185,
-		x_offset = 18621.52904187992,
-		y_offset = 17767.73128664901,
 		fishing_min = 55,
-		texture = "Redridge",
 	}
 
 	zones[BZ["Duskwood"]] = {
@@ -1432,11 +1377,7 @@ do
 			[BZ["Deadwind Pass"]] = true,
 			[BZ["Elwynn Forest"]] = true,
 		},
-		yards = 2699.837284973949,
-		x_offset = 16217.51007473156,
-		y_offset = 18909.31475362112,
 		fishing_min = 55,
-		texture = "Duskwood",
 	}
 
 	zones[BZ["Hillsbrad Foothills"]] = {
@@ -1449,11 +1390,7 @@ do
 			[BZ["Arathi Highlands"]] = true,
 			[BZ["Silverpine Forest"]] = true,
 		},
-		yards = 3199.802496078764,
-		x_offset = 15984.19170342619,
-		y_offset = 8793.505832296016,
 		fishing_min = 55,
-		texture = "Hilsbrad",
 	}
 
 	zones[BZ["Wetlands"]] = {
@@ -1467,11 +1404,7 @@ do
 			[BZ["Dun Morogh"]] = true,
 			[BZ["Loch Modan"]] = true,
 		},
-		yards = 4135.166184805389,
-		x_offset = 17440.35277057554,
-		y_offset = 11341.20698670613,
 		fishing_min = 55,
-		texture = "Wetlands",
 	}
 
 	zones[BZ["Alterac Mountains"]] = {
@@ -1484,11 +1417,7 @@ do
 			[BZ["Alterac Valley"]] = true,
 			[BZ["Hillsbrad Foothills"]] = true,
 		},
-		yards = 2799.820894040741,
-		x_offset = 16267.51182664554,
-		y_offset = 7693.598754637632,
 		fishing_min = 130,
-		texture = "Alterac",
 	}
 
 	zones[BZ["Arathi Highlands"]] = {
@@ -1501,11 +1430,7 @@ do
 			[BZ["Hillsbrad Foothills"]] = true,
 			[BZ["Arathi Basin"]] = true,
 		},
-		yards = 3599.78645678886,
-		x_offset = 17917.40598190062,
-		y_offset = 9326.804744097401,
 		fishing_min = 130,
-		texture = "Arathi",
 	}
 
 	zones[BZ["Stranglethorn Vale"]] = {
@@ -1520,11 +1445,7 @@ do
 			[ORGRIMMAR_GROMGOL_ZEPPELIN] = true,
 			[UNDERCITY_GROMGOL_ZEPPELIN] = true,
 		},
-		yards = 6380.866711475876,
-		x_offset = 14830.09122763351,
-		y_offset = 20361.27611706414,
 		fishing_min = 130,
-		texture = "Stranglethorn",
 	}
 
 	zones[BZ["Badlands"]] = {
@@ -1537,10 +1458,6 @@ do
 			[BZ["Searing Gorge"]] = true,
 			[BZ["Loch Modan"]] = true,
 		},
-		yards = 2487.343589680943,
-		x_offset = 19129.83542887301,
-		y_offset = 15082.55526717644,
-		texture = "Badlands",
 	}
 
 	zones[BZ["Swamp of Sorrows"]] = {
@@ -1553,11 +1470,7 @@ do
 			[BZ["Deadwind Pass"]] = true,
 			[BZ["The Temple of Atal'Hakkar"]] = true,
 		},
-		yards = 2293.606089974149,
-		x_offset = 19273.57577346738,
-		y_offset = 18813.48829580375,
 		fishing_min = 130,
-		texture = "SwampOfSorrows",
 	}
 
 	zones[BZ["The Hinterlands"]] = {
@@ -1568,11 +1481,7 @@ do
 			[BZ["Hillsbrad Foothills"]] = true,
 			[BZ["Western Plaguelands"]] = true,
 		},
-		yards = 3849.77134323942,
-		x_offset = 18625.69536724846,
-		y_offset = 7726.929725104341,
 		fishing_min = 205,
-		texture = "Hinterlands",
 	}
 
 	zones[BZ["Searing Gorge"]] = {
@@ -1590,10 +1499,6 @@ do
 			[BZ["Badlands"]] = true,
 			[BZ["Loch Modan"]] = not isHorde and true or nil,
 		},
-		yards = 2231.119799153945,
-		x_offset = 17373.68649889545,
-		y_offset = 15292.9566475719,
-		texture = "SearingGorge",
 	}
 
 	zones[BZ["Blackrock Mountain"]] = {
@@ -1626,11 +1531,7 @@ do
 			[BZ["Swamp of Sorrows"]] = true,
 			[BZ["Karazhan"]] = true,
 		},
-		yards = 2499.848163715574,
-		x_offset = 17884.07519016362,
-		y_offset = 19059.30117481421,
 		fishing_min = 330,
-		texture = "DeadwindPass",
 	}
 
 	zones[BZ["Blasted Lands"]] = {
@@ -1641,10 +1542,6 @@ do
 			[BZ["The Dark Portal"]] = true,
 			[BZ["Swamp of Sorrows"]] = true,
 		},
-		yards = 3349.808966078055,
-		x_offset = 18292.37876312771,
-		y_offset = 19759.24272564734,
-		texture = "BlastedLands",
 	}
 
 	zones[BZ["Burning Steppes"]] = {
@@ -1661,11 +1558,7 @@ do
 			[BZ["Blackrock Mountain"]] = true,
 			[BZ["Redridge Mountains"]] = true,
 		},
-		yards = 2928.988452241535,
-		x_offset = 17317.44291506163,
-		y_offset = 16224.12640057407,
 		fishing_min = 330,
-		texture = "BurningSteppes",
 	}
 
 	zones[BZ["Western Plaguelands"]] = {
@@ -1680,11 +1573,7 @@ do
 			[BZ["Scholomance"]] = true,
 			[BZ["Alterac Mountains"]] = true,
 		},
-		yards = 4299.7374000546,
-		x_offset = 16634.14908983872,
-		y_offset = 5827.092974820261,
 		fishing_min = 205,
-		texture = "WesternPlaguelands",
 	}
 
 	zones[BZ["Eastern Plaguelands"]] = {
@@ -1701,12 +1590,8 @@ do
 			[BZ["Stratholme"]] = true,
 			[BZ["Ghostlands"]] = true,
 		},
-		yards = 3870.596078314358,
-		x_offset = 19236.07699848783,
-		y_offset = 5393.799386328108,
         type = "PvP Zone",
 		fishing_min = 330,
-		texture = "EasternPlaguelands",
 	}
 
 	zones[BZ["The Deadmines"]] = {
@@ -1936,11 +1821,7 @@ do
 		},
 		faction = "Alliance",
 		type = "City",
-		yards = 1058.300884213672,
-		x_offset = 14127.75729935019,
-		y_offset = 2561.497770365213,
 		fishing_min = 1,
-		texture = "Darnassis",
 	}
 
 	zones[BZ["Hyjal"]] = {
@@ -1953,11 +1834,7 @@ do
 			[BZ["Felwood"]] = true,
 			[BZ["Winterspring"]] = true,
 		},
-		yards = 2308.253559286662,
-		x_offset = 18447.22668103606,
-		y_offset = 4308.084192710569,
 		fishing_min = 205,
-		texture = "Moonglade",
 	}
 
 	zones[BZ["Orgrimmar"]] = {
@@ -1970,11 +1847,7 @@ do
 		},
 		faction = "Horde",
 		type = "City",
-		yards = 1402.563051365538,
-		x_offset = 20746.49533101771,
-		y_offset = 10525.68532631853,
 		fishing_min = 1,
-		texture = "Ogrimmar",
 	}
 	
 	zones[BZ["Hall of Legends"]] = {
@@ -1988,11 +1861,7 @@ do
 		paths = BZ["Azuremyst Isle"],
 		faction = "Alliance",
 		type = "City",
-		yards = 1056.732317707213,
-		x_offset = 10532.61275516805,
-		y_offset = 6276.045028807911,
 		fishing_min = 1,
-		texture = "TheExodar",
 	}
 
 	zones[BZ["Thunder Bluff"]] = {
@@ -2000,10 +1869,6 @@ do
 		paths = BZ["Mulgore"],
 		faction = "Horde",
 		type = "City",
-		yards = 1043.762849319158,
-		x_offset = 16549.32009877855,
-		y_offset = 13649.45129927044,
-		texture = "ThunderBluff",
 	}
 	
 	zones[BZ["Azuremyst Isle"]] = {
@@ -2016,11 +1881,7 @@ do
 			[AUBERDINE_AZUREMYST_BOAT] = true,
 		},
 		faction = "Alliance",
-		yards = 4070.691916244019,
-		x_offset = 9966.264785353642,
-		y_offset = 5460.139378090237,
 		fishing_min = 20,
-		texture = "AzuremystIsle",
 	}
 
 	zones[BZ["Durotar"]] = {
@@ -2035,11 +1896,7 @@ do
 			[BZ["Orgrimmar"]] = true,
 		},
 		faction = "Horde",
-		yards = 5287.285801274457,
-		x_offset = 19028.47465485265,
-		y_offset = 10991.20642822035,
 		fishing_min = 1,
-		texture = "Durotar",
 	}
 
 	zones[BZ["Mulgore"]] = {
@@ -2051,11 +1908,7 @@ do
 			[BZ["The Barrens"]] = true,
 		},
 		faction = "Horde",
-		yards = 5137.32138887616,
-		x_offset = 15018.17633401988,
-		y_offset = 13072.38917227894,
 		fishing_min = 1,
-		texture = "Mulgore",
 	}
 
 	zones[BZ["Teldrassil"]] = {
@@ -2064,11 +1917,7 @@ do
 		continent = Kalimdor,
 		paths = BZ["Darnassus"],
 		faction = "Alliance",
-		yards = 5091.467863261982,
-		x_offset = 13251.58449896318,
-		y_offset = 968.6223632831094,
 		fishing_min = 1,
-		texture = "Teldrassil",
 	}
 	
 	zones[BZ["Bloodmyst Isle"]] = {
@@ -2079,11 +1928,7 @@ do
 			[BZ["Azuremyst Isle"]] = true,
 		},
 		faction = "Alliance",
-		yards = 3262.385067990556,
-		x_offset = 9541.280691875327,
-		y_offset = 3424.790637352245,
 		fishing_min = 1,
-		texture = "BloodmystIsle",
 	}
 
 	zones[BZ["Darkshore"]] = {
@@ -2097,11 +1942,7 @@ do
 			[BZ["Ashenvale"]] = true,
 		},
 		faction = "Alliance",
-		yards = 6549.780280774227,
-		x_offset = 14124.4534386827,
-		y_offset = 4466.419105960455,
 		fishing_min = 20,
-		texture = "Darkshore",
 	}
 
 	zones[BZ["The Barrens"]] = {
@@ -2128,11 +1969,7 @@ do
 			[BZ["Warsong Gulch"]] = isHorde and true or nil,
 		},
 		faction = "Horde",
-		yards = 10132.98626357964,
-		x_offset = 14443.19633043607,
-		y_offset = 11187.03406016663,
 		fishing_min = 20,
-		texture = "Barrens",
 	}
 
 	zones[BZ["Stonetalon Mountains"]] = {
@@ -2144,11 +1981,7 @@ do
 			[BZ["The Barrens"]] = true,
 			[BZ["Ashenvale"]] = true,
 		},
-		yards = 4883.173287670144,
-		x_offset = 13820.29750397374,
-		y_offset = 9882.909063258192,
 		fishing_min = 55,
-		texture = "StonetalonMountains",
 	}
 
 	zones[BZ["Ashenvale"]] = {
@@ -2168,11 +2001,7 @@ do
 			[BZ["Darkshore"]] = true,
 			[BZ["Stonetalon Mountains"]] = true,
 		},
-		yards = 5766.471113365881,
-		x_offset = 15366.08027406009,
-		y_offset = 8126.716152815561,
 		fishing_min = 55,
-		texture = "Ashenvale",
 	}
 
 	zones[BZ["Thousand Needles"]] = {
@@ -2184,11 +2013,7 @@ do
 			[BZ["The Barrens"]] = true,
 			[BZ["Tanaris"]] = true,
 		},
-		yards = 4399.86408093722,
-		x_offset = 17499.32929341832,
-		y_offset = 16766.0151133423,
 		fishing_min = 130,
-		texture = "ThousandNeedles",
 	}
 
 	zones[BZ["Desolace"]] = {
@@ -2201,11 +2026,7 @@ do
 			[BZ["Stonetalon Mountains"]] = true,
 			[BZ["Maraudon"]] = true,
 		},
-		yards = 4495.726850591814,
-		x_offset = 12832.80723200791,
-		y_offset = 12347.420176847,
 		fishing_min = 130,
-		texture = "Desolace",
 	}
 
 	zones[BZ["Dustwallow Marsh"]] = {
@@ -2218,11 +2039,7 @@ do
 			[BZ["The Barrens"]] = true,
 			[MENETHIL_THERAMORE_BOAT] = true,
 		},
-		yards = 5249.824712249077,
-		x_offset = 18040.98829886713,
-		y_offset = 14832.74650226312,
 		fishing_min = 130,
-		texture = "Dustwallow",
 	}
 
 	zones[BZ["Feralas"]] = {
@@ -2235,11 +2052,7 @@ do
 			[BZ["Desolace"]] = true,
 			[BZ["Dire Maul"]] = true,
 		},
-		yards = 6949.760203962193,
-		x_offset = 11624.54217828119,
-		y_offset = 15166.06954533647,
 		fishing_min = 205,
-		texture = "Feralas",
 	}
 	
 	zones[BZ["Tanaris"]] = {
@@ -2258,11 +2071,7 @@ do
 			[BZ["Zul'Farrak"]] = true,
 			[BZ["Caverns of Time"]] = true,
 		},
-		yards = 6899.765399158026,
-		x_offset = 17284.7655865671,
-		y_offset = 18674.28905369955,
 		fishing_min = 205,
-		texture = "Tanaris",
 	}
 
 	zones[BZ["Azshara"]] = {
@@ -2270,11 +2079,7 @@ do
 		high = 55,
 		continent = Kalimdor,
 		paths = BZ["Ashenvale"],
-		yards = 5070.669448432522,
-		x_offset = 20342.99178351035,
-		y_offset = 7457.974565554941,
 		fishing_min = 205,
-		texture = "Aszhara",
 	}
 
 	zones[BZ["Felwood"]] = {
@@ -2286,11 +2091,7 @@ do
 			[BZ["Moonglade"]] = true,
 			[BZ["Ashenvale"]] = true,
 		},
-		yards = 5749.8046476606,
-		x_offset = 15424.4116748014,
-		y_offset = 5666.381311442202,
 		fishing_min = 205,
-		texture = "Felwood",
 	}
 
 	zones[BZ["Un'Goro Crater"]] = {
@@ -2301,11 +2102,7 @@ do
 			[BZ["Silithus"]] = true,
 			[BZ["Tanaris"]] = true,
 		},
-		yards = 3699.872808671186,
-		x_offset = 16532.70803775362,
-		y_offset = 18765.95157787033,
 		fishing_min = 205,
-		texture = "UngoroCrater",
 	}
 
 	zones[BZ["Silithus"]] = {
@@ -2321,12 +2118,8 @@ do
 			[BZ["Un'Goro Crater"]] = true,
 			[BZ["Ahn'Qiraj"]] = true,
 		},
-		yards = 3483.224287356748,
-		x_offset = 14528.60591761034,
-		y_offset = 18757.61998086822,
         type = "PvP Zone",
 		fishing_min = 330,
-		texture = "Silithus",
 	}
 
 	zones[BZ["Winterspring"]] = {
@@ -2337,11 +2130,7 @@ do
 			[BZ["Felwood"]] = true,
 			[BZ["Moonglade"]] = true,
 		},
-		yards = 7099.756078049357,
-		x_offset = 17382.67868933954,
-		y_offset = 4266.421320915686,
 		fishing_min = 330,
-		texture = "Winterspring",
 	}
 
 	zones[BZ["Ragefire Chasm"]] = {
@@ -2508,10 +2297,6 @@ do
 			[BZ["Nagrand"]] = true,
 		},
 		type = "City",
-		yards = 1306.210386847456,
-		x_offset = 6860.565394341991,
-		y_offset = 7295.086145447915,
-		texture = "ShattrathCity",
 	}
 	
 	zones[BZ["Hellfire Citadel"]] = {
@@ -2547,11 +2332,7 @@ do
 			[BZ["Terokkar Forest"]] = true,
 			[BZ["Hellfire Citadel"]] = true,
 		},
-		yards = 5164.421615455519,
-		x_offset = 7456.223236253186,
-		y_offset = 4339.973528794677,
         type = "PvP Zone",
-		texture = "Hellfire",
 	}
 	
 	zones[BZ["Coilfang Reservoir"]] = {
@@ -2588,12 +2369,8 @@ do
 			[BZ["Nagrand"]] = true,
 			[BZ["Hellfire Peninsula"]] = true,
 		},
-		yards = 5026.925554043871,
-		x_offset = 3520.930685571132,
-		y_offset = 3885.821388791224,
         type = "PvP Zone",
 		fishing_min = 305,
-		texture = "Zangarmarsh",
 	}
 
 	zones[BZ["Ring of Observance"]] = {
@@ -2631,12 +2408,8 @@ do
 			[BZ["Hellfire Peninsula"]] = true,
 			[BZ["Nagrand"]] = true,
 		},
-		yards = 5399.832305361811,
-		x_offset = 5912.521284664757,
-		y_offset = 6821.146112637057,
         type = "PvP Zone",
 		fishing_min = 355,
-		texture = "TerokkarForest",
 	}
 
 	zones[BZ["Nagrand"]] = {
@@ -2648,12 +2421,8 @@ do
 			[BZ["Shattrath City"]] = true,
 			[BZ["Terokkar Forest"]] = true,
 		},
-		yards = 5524.827295176373,
-		x_offset = 2700.121400200201,
-		y_offset = 5779.512212073806,
         type = "PvP Zone",
 		fishing_min = 380,
-		texture = "Nagrand",
 	}
 
 	zones[BZ["Blade's Edge Mountains"]] = {
@@ -2665,10 +2434,6 @@ do
 			[BZ["Netherstorm"]] = true,
 			[BZ["Zangarmarsh"]] = true,
 		},
-		yards = 5424.84803598309,
-		x_offset = 4150.068157139826,
-		y_offset = 1412.982266241851,
-		texture = "BladesEdgeMountains",
 	}
 	
 	zones[BZ["Tempest Keep"]] = {
@@ -2702,11 +2467,7 @@ do
 			[BZ["Tempest Keep"]] = true,
 			[BZ["Blade's Edge Mountains"]] = true,
 		},
-		yards = 5574.82788866266,
-		x_offset = 7512.470386633603,
-		y_offset = 365.0992858464317,
 		fishing_min = 380,
-		texture = "Netherstorm",
 	}
 
 	zones[BZ["Shadowmoon Valley"]] = {
@@ -2715,10 +2476,6 @@ do
 		continent = Outland,
 		instances = BZ["Black Temple"],
 		paths = BZ["Terokkar Forest"],
-		yards = 5499.827432644566,
-		x_offset = 8770.765422136874,
-		y_offset = 7769.034259125071,
-		texture = "ShadowmoonValley",
 	}
 	
 	zones[BZ["Black Temple"]] = {
@@ -2950,10 +2707,6 @@ do
 			[BZ["Magisters' Terrace"]] = true,
 			[BZ["Sunwell Plateau"]] = true,
 		},
-		texture = "Sunwell",
-		yards = 3327.0830078125,
-		x_offset = 0, --TODO: complete me
-		y_offset = 0, --TODO: complete me
 		fishing_min = 380, --TODO: validate
 	}
 	
@@ -2974,7 +2727,35 @@ do
 		groupSize = 25,
 		type = "Instance",
 	}
-
+	
+	local continentNames = { GetMapContinents() }
+	local doneZones = {}
+	for continentID, continentName in ipairs(continentNames) do
+		SetMapZoom(continentID)
+		zones[continentName].texture = GetMapInfo()
+		local zoneNames = { GetMapZones(continentID) }
+		local continentYards = zones[continentName].yards
+		for _ = 1, #zoneNames do
+			local x, y
+			local name, fileName, texPctX, texPctY, texX, texY, scrollX, scrollY
+			repeat
+				x, y = math.random(), math.random()
+				name, fileName, texPctX, texPctY, texX, texY, scrollX, scrollY = UpdateMapHighlight(x, y)
+			until name and not doneZones[name]
+			doneZones[name] = true
+			
+			if fileName == "EversongWoods" or fileName == "Ghostlands" or fileName == "Sunwell" or fileName == "SilvermoonCity" then
+				scrollX = scrollX - 0.00168
+				scrollY = scrollY + 0.01
+			end
+			
+			zones[name].yards = texX * continentYards
+			zones[name].x_offset = scrollX * continentYards
+			zones[name].y_offset = scrollY * continentYards * 2/3
+			zones[name].texture = fileName
+		end
+	end
+	SetMapToCurrentZone()
 
 	for k,v in pairs(zones) do
 		lows[k] = v.low or 0
@@ -2999,27 +2780,4 @@ do
 	zones = nil
 	
 	PLAYER_LEVEL_UP(Tourist)
-end
-
-local function compat()
-	local Tourist20 = setmetatable({}, {__index=function(self, key)
-		if type(Tourist[key]) ~= "function" then
-			self[key] = Tourist[key]
-		else
-			self[key] = function(self, ...)
-				return Tourist[key](Tourist, ...)
-			end
-		end
-		return rawget(self, key)
-	end})
-	AceLibrary:Register(Tourist20, "Tourist-2.0", MINOR_VERSION*1000)
-end
-if AceLibrary then
-	compat()
-elseif Rock then
-	function Tourist:OnLibraryLoad(major, instance)
-		if major == "AceLibrary" then
-			compat()
-		end
-	end
 end

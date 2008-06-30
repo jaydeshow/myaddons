@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 76860 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77400 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -286,27 +286,27 @@ function AutoBar:OnEnable(first)
 	self:LogEvent("OnEnable")
 
 	-- Called when the addon is enabled
-	self:RegisterEvent("PLAYER_ENTERING_WORLD")
-	self:RegisterEvent("PLAYER_LEAVING_WORLD")
-	self:RegisterEvent("BAG_UPDATE")
-	self:RegisterEvent("LEARNED_SPELL_IN_TAB")
-	self:RegisterEvent("SPELLS_CHANGED")
-	self:RegisterEvent("ACTIONBAR_UPDATE_USABLE")
+	AutoBar.frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+	AutoBar.frame:RegisterEvent("PLAYER_LEAVING_WORLD")
+	AutoBar.frame:RegisterEvent("BAG_UPDATE")
+	AutoBar.frame:RegisterEvent("LEARNED_SPELL_IN_TAB")
+	AutoBar.frame:RegisterEvent("SPELLS_CHANGED")
+	AutoBar.frame:RegisterEvent("ACTIONBAR_UPDATE_USABLE")
 
 	-- For item use restrictions
-	self:RegisterEvent("UPDATE_SHAPESHIFT_FORMS")
-	self:RegisterEvent("MINIMAP_ZONE_CHANGED")
-	self:RegisterEvent("ZONE_CHANGED")
-	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-	self:RegisterEvent("PLAYER_ALIVE")
-	self:RegisterEvent("PLAYER_AURAS_CHANGED")
-	self:RegisterEvent("PLAYER_CONTROL_GAINED")
+	AutoBar.frame:RegisterEvent("UPDATE_SHAPESHIFT_FORMS")
+	AutoBar.frame:RegisterEvent("MINIMAP_ZONE_CHANGED")
+	AutoBar.frame:RegisterEvent("ZONE_CHANGED")
+	AutoBar.frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	AutoBar.frame:RegisterEvent("PLAYER_ALIVE")
+	AutoBar.frame:RegisterEvent("PLAYER_AURAS_CHANGED")
+	AutoBar.frame:RegisterEvent("PLAYER_CONTROL_GAINED")
 	AutoBar.frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 	AutoBar.frame:RegisterEvent("PLAYER_REGEN_DISABLED")
-	self:RegisterEvent("PLAYER_UNGHOST")
-	self:RegisterEvent("BAG_UPDATE_COOLDOWN")
-	self:RegisterEvent("SPELL_UPDATE_COOLDOWN")
-	self:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
+	AutoBar.frame:RegisterEvent("PLAYER_UNGHOST")
+	AutoBar.frame:RegisterEvent("BAG_UPDATE_COOLDOWN")
+	AutoBar.frame:RegisterEvent("SPELL_UPDATE_COOLDOWN")
+	AutoBar.frame:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
 
 	LibKeyBound.RegisterCallback(self, "LIBKEYBOUND_ENABLED")
 	LibKeyBound.RegisterCallback(self, "LIBKEYBOUND_DISABLED")
@@ -485,7 +485,7 @@ function Delayed.prototype:Start(arg1, customDelay)
 end
 
 
-function AutoBar:PLAYER_ENTERING_WORLD()
+function AutoBar.events:PLAYER_ENTERING_WORLD()
 	AutoBar.inCombat = nil
 	local scanned = false;
 	if (not AutoBar.initialized) then
@@ -503,12 +503,12 @@ function AutoBar:PLAYER_ENTERING_WORLD()
 end
 
 
-function AutoBar:PLAYER_LEAVING_WORLD()
+function AutoBar.events:PLAYER_LEAVING_WORLD()
 	AutoBar.inWorld = false;
 end
 
 
-function AutoBar:BAG_UPDATE(arg1)
+function AutoBar.events:BAG_UPDATE(arg1)
 	AutoBar:LogEvent("BAG_UPDATE", arg1)
 	if (AutoBar.inWorld and arg1 <= NUM_BAG_FRAMES) then
 		AutoBarSearch.dirtyBags[arg1] = true
@@ -523,7 +523,7 @@ function AutoBar:BAG_UPDATE(arg1)
 end
 
 
-function AutoBar:BAG_UPDATE_COOLDOWN(arg1)
+function AutoBar.events:BAG_UPDATE_COOLDOWN(arg1)
 	AutoBar:LogEvent("BAG_UPDATE_COOLDOWN", arg1)
 --AutoBar:Print("   BAG_UPDATE_COOLDOWN arg1 " .. tostring(arg1))
 	if (not InCombatLockdown()) then
@@ -535,7 +535,7 @@ function AutoBar:BAG_UPDATE_COOLDOWN(arg1)
 end
 
 
-function AutoBar:SPELL_UPDATE_COOLDOWN(arg1)
+function AutoBar.events:SPELL_UPDATE_COOLDOWN(arg1)
 	AutoBar:LogEvent("SPELL_UPDATE_COOLDOWN", arg1)
 --AutoBar:Print("   SPELL_UPDATE_COOLDOWN arg1 " .. tostring(arg1))
 	for buttonName, button in pairs(AutoBar.buttonList) do
@@ -544,7 +544,7 @@ function AutoBar:SPELL_UPDATE_COOLDOWN(arg1)
 end
 
 
-function AutoBar:ACTIONBAR_UPDATE_USABLE(arg1)
+function AutoBar.events:ACTIONBAR_UPDATE_USABLE(arg1)
 	AutoBar:LogEvent("ACTIONBAR_UPDATE_USABLE", arg1)
 	if (AutoBar.inWorld) then
 		if (InCombatLockdown()) then
@@ -559,7 +559,7 @@ function AutoBar:ACTIONBAR_UPDATE_USABLE(arg1)
 end
 
 
-function AutoBar:UPDATE_SHAPESHIFT_FORMS(arg1)
+function AutoBar.events:UPDATE_SHAPESHIFT_FORMS(arg1)
 	AutoBar:LogEvent("UPDATE_SHAPESHIFT_FORMS", arg1)
 	if (AutoBar.inWorld) then
 		if (InCombatLockdown()) then
@@ -574,7 +574,7 @@ function AutoBar:UPDATE_SHAPESHIFT_FORMS(arg1)
 end
 
 
-function AutoBar:UPDATE_BINDINGS()
+function AutoBar.events:UPDATE_BINDINGS()
 	if (not InCombatLockdown()) then
 		self:RegisterOverrideBindings()
 		AutoBar.delay["UpdateButtons"]:Start()
@@ -582,13 +582,13 @@ function AutoBar:UPDATE_BINDINGS()
 end
 
 
-function AutoBar:LEARNED_SPELL_IN_TAB(arg1)
+function AutoBar.events:LEARNED_SPELL_IN_TAB(arg1)
 	AutoBar:LogEvent("LEARNED_SPELL_IN_TAB", arg1)
 	AutoBar.delay["UpdateSpells"]:Start(arg1)
 end
 
 
-function AutoBar:SPELLS_CHANGED(arg1)
+function AutoBar.events:SPELLS_CHANGED(arg1)
 	AutoBar:LogEvent("SPELLS_CHANGED", arg1)
 	if (InCombatLockdown()) then
 		AutoBar:SetRegenEnableUpdate("UpdateSpells")
@@ -629,7 +629,7 @@ function AutoBar:UpdateZone(event)
 
 end
 
-function AutoBar:MINIMAP_ZONE_CHANGED(arg1)
+function AutoBar.events:MINIMAP_ZONE_CHANGED(arg1)
 	AutoBar:LogEvent("MINIMAP_ZONE_CHANGED", arg1)
 	AutoBar:UpdateZone("MINIMAP_ZONE_CHANGED")
 	if (not InCombatLockdown()) then
@@ -637,7 +637,7 @@ function AutoBar:MINIMAP_ZONE_CHANGED(arg1)
 	end
 end
 
-function AutoBar:ZONE_CHANGED(arg1)
+function AutoBar.events:ZONE_CHANGED(arg1)
 	AutoBar:LogEvent("ZONE_CHANGED", arg1)
 	AutoBar:UpdateZone("ZONE_CHANGED")
 	if (not InCombatLockdown()) then
@@ -646,7 +646,7 @@ function AutoBar:ZONE_CHANGED(arg1)
 end
 -- GetSubZoneText();
 
-function AutoBar:ZONE_CHANGED_INDOORS(arg1)
+function AutoBar.events:ZONE_CHANGED_INDOORS(arg1)
 	AutoBar:LogEvent("ZONE_CHANGED_INDOORS", arg1)
 	AutoBar:UpdateZone("ZONE_CHANGED_INDOORS")
 	if (not InCombatLockdown()) then
@@ -655,7 +655,7 @@ function AutoBar:ZONE_CHANGED_INDOORS(arg1)
 end
 
 
-function AutoBar:ZONE_CHANGED_NEW_AREA(arg1)
+function AutoBar.events:ZONE_CHANGED_NEW_AREA(arg1)
 	AutoBar:LogEvent("ZONE_CHANGED_NEW_AREA", arg1)
 	AutoBar:UpdateZone("ZONE_CHANGED_NEW_AREA")
 	if (not InCombatLockdown()) then
@@ -665,7 +665,7 @@ function AutoBar:ZONE_CHANGED_NEW_AREA(arg1)
 end
 
 
-function AutoBar:PLAYER_CONTROL_GAINED()
+function AutoBar.events:PLAYER_CONTROL_GAINED()
 	AutoBar:LogEvent("PLAYER_CONTROL_GAINED", arg1)
 	if (not InCombatLockdown()) then
 		AutoBar.delay["UpdateButtons"]:Start()
@@ -744,7 +744,7 @@ end
 --end
 
 
-function AutoBar:PLAYER_ALIVE(arg1)
+function AutoBar.events:PLAYER_ALIVE(arg1)
 	if (not InCombatLockdown()) then
 		AutoBar:LogEvent("PLAYER_ALIVE", arg1)
 		AutoBar.delay["UpdateButtons"]:Start()
@@ -752,7 +752,7 @@ function AutoBar:PLAYER_ALIVE(arg1)
 end
 
 
-function AutoBar:PLAYER_AURAS_CHANGED(arg1)
+function AutoBar.events:PLAYER_AURAS_CHANGED(arg1)
 	if (InCombatLockdown()) then
 		for buttonName, button in pairs(AutoBar.buttonList) do
 			button:UpdateUsable()
@@ -764,7 +764,7 @@ function AutoBar:PLAYER_AURAS_CHANGED(arg1)
 end
 
 
-function AutoBar:PLAYER_UNGHOST(arg1)
+function AutoBar.events:PLAYER_UNGHOST(arg1)
 	if (not InCombatLockdown()) then
 		AutoBar:LogEvent("PLAYER_UNGHOST", arg1)
 		AutoBar.delay["UpdateButtons"]:Start()
@@ -772,7 +772,7 @@ function AutoBar:PLAYER_UNGHOST(arg1)
 end
 
 
-function AutoBar:UPDATE_BATTLEFIELD_STATUS()
+function AutoBar.events:UPDATE_BATTLEFIELD_STATUS()
 	if (AutoBar.inWorld) then
 		local bgStatus = false
 		for i = 1, MAX_BATTLEFIELD_QUEUES do
@@ -1200,7 +1200,7 @@ function AutoBar:UpdateButtons()
 	self:LogEventEnd("AutoBar:UpdateButtons #buttons " .. tostring(# self.buttonList))
 	if (self.enableBindings) then
 		self:RegisterOverrideBindings()
-		self:RegisterEvent("UPDATE_BINDINGS")
+		AutoBar.frame:RegisterEvent("UPDATE_BINDINGS")
 		self.enableBindings = nil
 --AutoBar:Print("<-- enableBindings")
 	end
@@ -1323,19 +1323,19 @@ end
 --]]
 function AutoBar:OnStopFrameMoving(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
 	local bar = frame.class
-	if (bar and bar.sharedLayoutDB) then
+	if (bar and bar.sharedPositionDB) then
 --AutoBar:Print("AutoBar:OnStopFrameMoving " .. tostring(bar.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
 		bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-		bar:SaveLocation()
+		bar:PositionSave()
 	end
 end
 
 function AutoBar:OnStickToFrame(event, frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
 	local bar = frame.class
 --AutoBar:Print("AutoBar:OnStickToFrame " .. tostring(bar.barName) .. " frame " .. tostring(frame) .. " point " .. tostring(point) .. " stickToFrame " .. tostring(stickToFrame) .. " stickToPoint " .. tostring(stickToPoint))
-	if (bar and bar.sharedLayoutDB) then
+	if (bar and bar.sharedPositionDB) then
 		bar:StickTo(frame, point, stickToFrame, stickToPoint, stickToX, stickToY)
-		bar:SaveLocation()
+		bar:PositionSave()
 	end
 end
 
@@ -1377,7 +1377,8 @@ function AutoBar:MoveButtonsModeOff()
 end
 
 function AutoBar:SkinModeToggle()
-	local BF = LibStub("AceAddon-3.0"):GetAddon("ButtonFacade", true)
+	local ace3 = LibStub("AceAddon-3.0")
+	local BF = ace3 and ace3:GetAddon("ButtonFacade", true)
 	if (BF) then
 		AutoBar:MoveBarModeOff()
 		AutoBar:MoveButtonsModeOff()

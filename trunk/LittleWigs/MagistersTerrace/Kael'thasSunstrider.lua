@@ -33,11 +33,12 @@ L:RegisterTranslations("enUS", function() return {
 	barrier_message = "Shock Barrier Up!",
 	barrier_next_bar = "~ Next Shock Barrier",
 	barrier_soon_message = "Shock Barrier Soon!",
-	
+
 	pyro = "Pyroblast (Heroic)",
 	pyro_desc = "Warn when Kael'thas casts Pyroblast.",
-	pyro_message = "Kael'thas casts Pyroblast",
-	pyro_cast_bar = "Casting Pyroblast on %s!",
+	pyro_message = "Kael'thas casting Pyroblast!",
+
+	tk_warning = "Please verify that the The Eye Kael'thas module has not also been enabled.",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -59,11 +60,12 @@ L:RegisterTranslations("koKR", function() return {
 	barrier_message = "충격 방벽!",
 	barrier_next_bar = "~ 다음 방어 방벽",
 	barrier_soon_message = "잠시 후 방어 방벽!",
-	
+
 	pyro = "불덩이 작렬 (영웅)",
 	pyro_desc = "캘타스의 불덩이 작렬 시전을 알립니다.",
-	pyro_message = "캘타스 불덩이 작렬 시전",
-	pyro_cast_bar = "%s에게 불작 시전중!",
+	pyro_message = "캘타스 불덩이 작렬 시전!",
+
+	tk_warning = "BigWigs의 폭풍우 요새의 캘타스 모듈이 활성화 되는지 확인해 주시기 바랍니다.",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -88,8 +90,9 @@ L:RegisterTranslations("frFR", function() return {
 
 	pyro = "Explosion pyrotechnique (Héroïque)",
 	pyro_desc = "Prévient quand Kael'thas incante une Explosion pyrotechnique.",
-	pyro_message = "Kael'thas incante une Explosion pyrotechnique",
-	pyro_cast_bar = "Explosion pyro. sur %s !",
+	pyro_message = "Kael'thas incante une Explosion pyrotechnique !",
+
+	tk_warning = "Veuillez vérifier que le module Kael'thas de L'Œil n'a pas également été activé (risque de conflit).",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -115,7 +118,8 @@ L:RegisterTranslations("zhCN", function() return {
 	pyro = "炎爆术（英雄）",
 	pyro_desc = "当施放炎爆术时发出警报。",
 	pyro_message = "正在施放 炎爆术！",
-	pyro_cast_bar = "炎爆术：>%s<！",
+
+	tk_warning = "请确认 BigWigs 中的风暴要塞-凯尔萨斯模块没有被开启。",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -141,7 +145,8 @@ L:RegisterTranslations("zhTW", function() return {
 	pyro = "炎爆術（英雄）",
 	pyro_desc = "當凱爾薩斯施放炎爆術時發出警告",
 	pyro_message = "凱爾薩斯正在施放炎爆術!",
-	pyro_cast_bar = "<炎爆術>",
+
+	tk_warning = "請確認風暴要塞 - 凱爾薩斯模組沒有被開啟",
 } end )
 
 ----------------------------------
@@ -154,7 +159,7 @@ mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
 mod.guid = 24664
 mod.toggleoptions = {"glapse", "phoenix", "flamestrike", -1, "barrier", "pyro", "bosskill"}
-mod.revision = tonumber(("$Revision: 77265 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77458 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -175,6 +180,8 @@ function mod:OnEnable()
 	self:RegisterEvent("PLAYER_REGEN_ENABLED", "CheckForWipe")
 
 	self:RegisterEvent("BigWigs_RecvSync")
+
+	BigWigs:Print(L["tk_warning"])
 end
 
 ------------------------------
@@ -222,11 +229,10 @@ function mod:Barrier()
 	end
 end
 
-function mod:Pyro(player, spellId)
+function mod:Pyro(_, spellId, _, _, spellName)
 	if self.db.profile.pyro then
-		self:Bar(L["pyro_cast_bar"]:format(player), 4, spellId)
+		self:Bar(spellName, 4, spellId)
 		self:IfMessage(L["pyro_message"], "Important", spellId)
-		self:Icon(player, "icon")
 	end
 end
 

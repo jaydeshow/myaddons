@@ -132,7 +132,7 @@ AtlasLootBossButtons = {
         "";
         "";
         "";
-        "";
+        "CorenDirebrew";
         "BRDFlamelash";
         "BRDPanzor";
         "";

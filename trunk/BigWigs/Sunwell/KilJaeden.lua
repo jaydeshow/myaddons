@@ -161,7 +161,7 @@ L:RegisterTranslations("koKR", function() return {
 
 	phase = "단계",
 	phase_desc = "단계 변경을 알립니다.",
-	phase2_message = "2 단계- 킬제덴!",
+	phase2_message = "2 단계 - 킬제덴!",
 	phase3_trigger = "나를 부정할 수는 없다! 이 세계는 멸망하리라!",
 	phase3_message = "3 단계 - 어둠의 영혼 추가",
 	phase4_trigger = "헛된 꿈을 꾸고 있구나! 너흰 이길 수 없어!",
@@ -328,7 +328,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
 mod.guid = 25315
 mod.toggleoptions = {"phase", -1, "bomb", "orb", "flame", -1, "bloom", "bloomwhisper", "bloomsay", "icons", -1, "sinister", "blueorb", "shadow", "shadowdebuff", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 77267 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 77383 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
