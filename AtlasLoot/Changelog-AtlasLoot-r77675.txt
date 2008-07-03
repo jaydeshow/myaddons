@@ -1,4 +1,18 @@
 ------------------------------------------------------------------------
+r77675 | hegarol | 2008-07-01 05:31:23 -0400 (Tue, 01 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/PvP.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- removed Arena Season 1 Weapons
+- small fixes
+------------------------------------------------------------------------
 r77594 | hegarol | 2008-06-29 06:41:19 -0400 (Sun, 29 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot/Core/ButtonRegistry.lua

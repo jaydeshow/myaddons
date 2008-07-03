@@ -224,7 +224,7 @@ function AtlasLoot70TokenMenu()
     AtlasLootMenuItem_4.lootpage="HardModeResist";
     AtlasLootMenuItem_4:Show();
     --Hard Mode Tokens: Cloaks
-    AtlasLootMenuItem_19_Name:SetText(AL["Cloak"]);
+    AtlasLootMenuItem_19_Name:SetText(BabbleInventory["Back"]);
     AtlasLootMenuItem_19_Extra:SetText("");
     AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\Spell_Holy_ChampionsBond");
     AtlasLootMenuItem_19.lootpage="HardModeCloaks";

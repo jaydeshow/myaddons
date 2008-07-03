@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r77634 | ckknight | 2008-06-30 11:18:32 -0400 (Mon, 30 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua
+
+LibGuildPositions-1.0 - Make sure to check group members on login
+- fixes http://wow.curseforge.com/projects/cartographer3/tickets/67-party-and-guild-poi-shows-up-at-same-time/
+------------------------------------------------------------------------
 r77332 | ckknight | 2008-06-24 14:36:35 -0400 (Tue, 24 Jun 2008) | 1 line
 Changed paths:
    M /trunk/LibGuildPositions-1.0/LibGuildPositions-1.0.lua

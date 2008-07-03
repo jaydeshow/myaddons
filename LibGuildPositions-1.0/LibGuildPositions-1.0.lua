@@ -1,6 +1,6 @@
 --[[
 Name: LibGuildPositions-1.0
-Revision: $Rev: 77332 $
+Revision: $Rev: 77634 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Communicates with guild members for their positions on the world map
@@ -8,7 +8,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibGuildPositions-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 77332 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 77634 $"):match("%d+")) or 0
 
 -- #AUTODOC_NAMESPACE lib
 
@@ -139,6 +139,7 @@ function events.ADDON_LOADED()
 end
 
 local groupMembers = {}
+_G.groupMembers = groupMembers
 
 function events.RAID_ROSTER_UPDATE(event)
 	local prefix, amount = "raid", GetNumRaidMembers()
@@ -165,6 +166,7 @@ function events.RAID_ROSTER_UPDATE(event)
 	end
 end
 events.PARTY_MEMBERS_CHANGED = events.RAID_ROSTER_UPDATE
+events.PLAYER_LOGIN = events.RAID_ROSTER_UPDATE
 
 local playerName = UnitName("player")
 function events.CHAT_MSG_ADDON(event, prefix, message, distribution, sender)

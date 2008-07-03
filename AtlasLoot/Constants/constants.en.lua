@@ -229,6 +229,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["Heroic"] = true,
     ["Summon"] = true,
     ["Random"] = true,
+    ["Weapons"] = true,
 
     --Card Game Decks and descriptions
     ["Upper Deck Card Game Items"] = true,

@@ -1,4 +1,53 @@
 ------------------------------------------------------------------------
+r77730 | next96 | 2008-07-02 21:37:44 -0400 (Wed, 02 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r77725 | trasher | 2008-07-02 18:22:10 -0400 (Wed, 02 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR update
+------------------------------------------------------------------------
+r77724 | ackis | 2008-07-02 17:43:26 -0400 (Wed, 02 Jul 2008) | 7 lines
+Changed paths:
+   A /trunk/AckisRecipeList/AboutPanel.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   A /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
+   D /trunk/AckisRecipeList/tekKonfigAboutPanel.lua
+
+AckisRecipeList:
+- Renamed about panel
+- Modified it to meet current needs
+- Modified ARL title/versioning
+- Updated esMX local (c&p of esES)
+- Added new ToC fields
+- Check out the about panel now :)
+------------------------------------------------------------------------
+r77723 | ackis | 2008-07-02 16:46:28 -0400 (Wed, 02 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   A /trunk/AckisRecipeList/tekKonfigAboutPanel.lua
+
+AckisRecipeList:
+- Add tekconfigAboutPanel (looks sexy)
+- Removed some now unneeded localizations
+------------------------------------------------------------------------
+r77651 | trasher | 2008-06-30 20:41:18 -0400 (Mon, 30 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR update
+------------------------------------------------------------------------
 r77592 | StiviS | 2008-06-29 06:33:35 -0400 (Sun, 29 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
@@ -599,75 +648,4 @@ Changed paths:
 
 AckisRecipeList:
 - frFR update 40%
-------------------------------------------------------------------------
-r75726 | kuja | 2008-06-01 09:24:18 -0400 (Sun, 01 Jun 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-
-AckisRecipeList:
-- small enchanting fix
-- wet-coded :P
-
-------------------------------------------------------------------------
-r75592 | ackis | 2008-05-30 20:59:49 -0400 (Fri, 30 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Remove ;
-------------------------------------------------------------------------
-r75527 | kurax | 2008-05-30 01:00:11 -0400 (Fri, 30 May 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList: Update zhCN locale
-------------------------------------------------------------------------
-r75519 | ackis | 2008-05-29 23:14:18 -0400 (Thu, 29 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/embeds.xml
-
-AckisRecipeList:
-- Update embeds.xml
-------------------------------------------------------------------------
-r75498 | ackis | 2008-05-29 17:41:35 -0400 (Thu, 29 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Changed some logic in the display recipe check to improve overall effeciency
-- Dry-coded :P
-------------------------------------------------------------------------
-r75488 | ackis | 2008-05-29 15:18:18 -0400 (Thu, 29 May 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-
-AckisRecipeList:
-- Typo fix
-- Dry-coded :P
-------------------------------------------------------------------------
-r75480 | next96 | 2008-05-29 13:52:37 -0400 (Thu, 29 May 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r75475 | ackis | 2008-05-29 13:12:20 -0400 (Thu, 29 May 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-
-AckisRecipeList:
-- Removed some unneeded code from the add recipe function (was creating an extra table with each recipe for some reason)
-- Changed all the reputation functions to take values of 1 - 4 for reputation levels, saves on some look-ups and more importantly makes things look neater in code and easier to type
-- Changed the quest functions to take values of 0 - 2 for neutral/alliance/horde, same reasoning as with reputations
-- Dry-coded :P
 ------------------------------------------------------------------------

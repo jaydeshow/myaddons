@@ -174,12 +174,6 @@ function AtlasLootPvPArenaSystemMenu()
     AtlasLootMenuItem_4_Icon:SetTexture("Interface\\Icons\\INV_Mace_36");
     AtlasLootMenuItem_4.lootpage="ARENA4SET";
     AtlasLootMenuItem_4:Show();
-    -- Arena Weapons - Season 1
-    AtlasLootMenuItem_16_Name:SetText(AL["Arena PvP Weapons"]);
-    AtlasLootMenuItem_16_Extra:SetText(ORANGE..AL["Season 1"]);
-    AtlasLootMenuItem_16_Icon:SetTexture("Interface\\Icons\\INV_Weapon_Crossbow_10");
-    AtlasLootMenuItem_16.lootpage="Arena1Weapons1";
-    AtlasLootMenuItem_16:Show();
     -- Arena Weapons - Season 2
     AtlasLootMenuItem_17_Name:SetText(AL["Arena PvP Weapons"]);
     AtlasLootMenuItem_17_Extra:SetText(ORANGE..AL["Season 2"]);

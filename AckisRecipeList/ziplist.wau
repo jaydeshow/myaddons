@@ -1,7 +1,8 @@
-AckisRecipeList/Changelog-AckisRecipeList-r77592.txt
+AckisRecipeList/Changelog-AckisRecipeList-r77730.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/AckisRecipeList.lua
+AckisRecipeList/AboutPanel.lua
 AckisRecipeList/ARLFrame.lua
 AckisRecipeList/LICENSE.txt
 AckisRecipeList/ARLColour.lua
@@ -21,6 +22,7 @@ AckisRecipeList/RecipeDB/ARL-Smelt.lua
 AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
 AckisRecipeList/img/expanded.blp
 AckisRecipeList/img/main.blp
+AckisRecipeList/Locals/ARLLocals-enGB.lua
 AckisRecipeList/Locals/ARLLocals-koKR.lua
 AckisRecipeList/Locals/ARLLocals-zhCN.lua
 AckisRecipeList/Locals/ARLLocals-esMX.lua

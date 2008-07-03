@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-06-27 18:36:50 -0400 (Fri, 27 Jun 2008) $
-$Rev: 77536 $
+$Date: 2008-07-02 17:43:26 -0400 (Wed, 02 Jul 2008) $
+$Rev: 77724 $
 
 Author: Ackis on Illidan US Horde
 
@@ -126,12 +126,11 @@ local table = table
 local next = next
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
-local GetAddOnMetadata = GetAddOnMetadata
 local InterfaceOptionsFrame_OpenToFrame = InterfaceOptionsFrame_OpenToFrame
 local BOOKTYPE_SPELL = BOOKTYPE_SPELL
 
 -- Constants which are used everytime the add-on is loaded
-local addonversion = GetAddOnMetadata("AckisRecipeList", "Version")
+local addonversion = GetAddOnMetadata("AckisRecipeList", "Version") .. " v." .. string.sub(GetAddOnMetadata("AckisRecipeList", "X-Revision"):gsub("$Rev:", ""),1,-2)
 local nagrandfac = BFAC["Kurenai"] .. "\\" .. BFAC["The Mag'har"]
 local hellfirefac = BFAC["Honor Hold"] .. "\\" .. BFAC["Thrallmar"]
 
@@ -150,11 +149,6 @@ local playerFaction = UnitFactionGroup("player")
 -- Returns configuration options for ARL
 local function giveARLOptions()
 
-	local addonwiki = GetAddOnMetadata("AckisRecipeList", "X-Website")
-	local addoncredits = GetAddOnMetadata("AckisRecipeList", "X-Credits")
-	local addonwebsite = GetAddOnMetadata("AckisRecipeList", "X-Feedback")
-	local addonlocals = GetAddOnMetadata("AckisRecipeList", "X-Localizations")
-
 	local command_options = {
 	    type = "group",
 	    args =
@@ -170,36 +164,6 @@ local function giveARLOptions()
 				order = 5,
 				type = "description",
 				name = L["Version"] .. addonversion .. "\n",
-			},
-			author = 
-			{
-				order = 10,
-				type = "description",
-				name = L["Author"] .. "\n",
-			},
-			wiki = 
-			{
-				order = 15,
-				type = "description",
-				name = L["Wiki"] .. addonwiki .. "\n",
-			},
-			website = 
-			{
-				order = 20,
-				type = "description",
-				name = L["Website"] .. addonwebsite .. "\n",
-			},
-			locals = 
-			{
-				order = 25,
-				type = "description",
-				name = L["Locals"] .. addonlocals .. "\n",
-			},
-			credits = 
-			{
-				order = 30,
-				type = "description",
-				name = L["Credits"] .. addoncredits .. "\n",
 			},
 			run = 
 			{
@@ -838,7 +802,7 @@ function addon:OnInitialize()
 	self.optionsFrame[L["Sort"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Sorting", L["Sort"], "Ackis Recipe List")
 	self.optionsFrame[L["Filter"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Filter", L["Filter"], "Ackis Recipe List")
 	self.optionsFrame[L["Display"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Display", L["Display"], "Ackis Recipe List")
-
+	LibStub("LibAboutPanel").new("Ackis Recipe List", "AckisRecipeList")
 
 	-- Register slash commands
 	self:RegisterChatCommand("arl", "ChatCommand")
