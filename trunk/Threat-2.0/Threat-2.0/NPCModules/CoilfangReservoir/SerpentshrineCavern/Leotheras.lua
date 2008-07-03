@@ -1,5 +1,5 @@
 ﻿local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 68107 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 77728 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -45,18 +45,29 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 		Leotheras:UnregisterTranslations()
 		
 		local demonTimer
+		local wwTimer
 		function Leotheras:Init()
 			self:RegisterCombatant(LEOTHERAS_ID, true)
-			self.buffFades[WHIRLWIND_ID] = self.humanTransition
+			self.buffGains[WHIRLWIND_ID] = self.wwStart
 
 			self:RegisterChatEvent("yell", demonPhase, self.demonTransition)
 			self:RegisterChatEvent("yell", splitPhase, self.splitTransition)
+		end
+
+		function Leotheras:wwStart()
+			if wwTimer then
+				self:CancelTimer(wwTimer, true)
+			end
+			wwTimer = self:ScheduleTimer("humanTransition", 12)
 		end
 
 		function Leotheras:demonTransition()
 			self:WipeAllRaidThreat()
 			if demonTimer then
 				self:CancelTimer(demonTimer, true)
+			end
+			if wwTimer then
+				self:CancelTimer(wwTimer, true)
 			end
 			demonTimer = self:ScheduleTimer("humanTransition", 60)
 		end
@@ -69,6 +80,9 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 			self:WipeAllRaidThreat()
 			if demonTimer then
 				self:CancelTimer(demonTimer, true)
+			end
+			if wwTimer then
+				self:CancelTimer(wwTimer, true)
 			end
 		end
 	end)

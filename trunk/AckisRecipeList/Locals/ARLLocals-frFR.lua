@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-06-26 17:43:42 -0400 (Thu, 26 Jun 2008) $
-$Rev: 77491 $
+$Date: 2008-07-02 18:22:10 -0400 (Wed, 02 Jul 2008) $
+$Rev: 77725 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -20,11 +20,6 @@ if not L then return end
 
 -- Addon Info
 L["Version"] = "Version : "
-L["Author"] = "Ackis sur Illidan (US) Horde"
-L["Wiki"] = "Wiki : "
-L["Website"] = "Site web : "
-L["Credits"] = "Remerciements : "
-L["Locals"] = "Compatible avec : "
 
 -- Options Categories
 L["Display"] = "Affichage"
@@ -464,7 +459,6 @@ L["Felcloth Bag Obt"] = "Livre qui apparaît à côté du cadavre de Jandice Bar
 L["Ghostweave Belt Obt"] = "Bien-né survivant"
 L["Ghostweave Gloves Obt"] = "Bien-né survivant"
 L["Ghostweave Gloves Obt1"] = "Serviteur invisible"
-L["Ghostweave Pants Obt"] = "Citoyen spectral"
 L["Ghostweave Vest Obt"] = "Serviteur invisible"
 L["Mooncloth Boots Obt"] = "Le vêtement sacré"
 L["Robe of the Archmage Obt"] = "Pyromancien de Brandefeu"
@@ -475,8 +469,6 @@ L["Shadoweave Mask Obt"] = "Le Sous-marché"
 L["Soulcloth Shoulders Obt"] = "Domestique fantôme"
 L["Soulcloth Vest Obt"] = "Valet fantôme"
 L["Wizardweave Leggings Obt"] = "Invocateur des ténèbres"
-L["Wizardweave Robe Obt"] = "Magicien noir"
-L["Wizardweave Turban Obt"] = "Magicien noir"
 
 -- Beast Training Obtain Information
 L["Rare"] = "Rare"

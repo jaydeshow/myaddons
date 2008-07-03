@@ -1,0 +1,49 @@
+------------------------------------------------------------------------
+r77636 | profalbert | 2008-06-30 12:20:25 -0400 (Mon, 30 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- commented out stuff, so nothing breaks with 2.4.3
+
+------------------------------------------------------------------------
+r76936 | profalbert | 2008-06-17 11:59:04 -0400 (Tue, 17 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+- throttling now also works for outgoing Pet melee/skills damage
+
+------------------------------------------------------------------------
+r76439 | profalbert | 2008-06-10 19:10:11 -0400 (Tue, 10 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- fixed bug with Triggers in MeleeMiss-parsing
+
+------------------------------------------------------------------------
+r76401 | profalbert | 2008-06-10 05:33:29 -0400 (Tue, 10 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- removed debug-output
+
+------------------------------------------------------------------------
+r76400 | profalbert | 2008-06-10 05:31:53 -0400 (Tue, 10 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+   M /trunk/Parrot/Data/TriggerConditions.lua
+
+Parrot:
+- fixed old combat-events showing up after ressurecting
+- maybe fixed Riposte/Revenge-Triggers (please god)
+
+------------------------------------------------------------------------
+r76052 | gnarfoz | 2008-06-05 02:31:49 -0400 (Thu, 05 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Parrot/Data/Cooldowns.lua
+
+Parrot: fix cooldown groups. works fine on shaman and paladin, please check if actually sane to solve this way.
+------------------------------------------------------------------------

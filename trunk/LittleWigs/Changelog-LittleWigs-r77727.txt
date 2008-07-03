@@ -1,4 +1,18 @@
 ------------------------------------------------------------------------
+r77727 | Ompalumpa | 2008-07-02 18:29:22 -0400 (Wed, 02 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
+
+LittleWigs: 
+Added Proximity Meter to Zereketh
+------------------------------------------------------------------------
+r77637 | scorpio0920 | 2008-06-30 15:34:49 -0400 (Mon, 30 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Pathaleon.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
 r77608 | 7destiny | 2008-06-29 13:45:51 -0400 (Sun, 29 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/LittleWigs/Coilfang/Ahune.lua
@@ -544,34 +558,4 @@ Changed paths:
 LittleWigs: 
 - Coil/Thespia: added Lung Burst
 - Coil/Kalithresh: fixed Channel
-------------------------------------------------------------------------
-r75678 | scorpio0920 | 2008-05-31 17:35:12 -0400 (Sat, 31 May 2008) | 3 lines
-Changed paths:
-   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
-
-LittleWigs:
-- Update zhTW localization.
-- Fixed twice enUS.
-------------------------------------------------------------------------
-r75665 | 7destiny | 2008-05-31 15:23:44 -0400 (Sat, 31 May 2008) | 2 lines
-Changed paths:
-   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
-   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
-   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
-
-LittleWigs: 
-- koKR Update
-------------------------------------------------------------------------
-r75658 | ulic | 2008-05-31 13:37:37 -0400 (Sat, 31 May 2008) | 3 lines
-Changed paths:
-   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
-   M /trunk/LittleWigs/HellfireCitadel/Broggok.lua
-   M /trunk/LittleWigs/HellfireCitadel/Kelidan.lua
-   M /trunk/LittleWigs/HellfireCitadel/LittleWigs_HellfireCitadel.toc
-   A /trunk/LittleWigs/HellfireCitadel/Maker.lua
-   M /trunk/LittleWigs/modules.xml
-
-LittleWigs:
-- HFC: Updated Broggok & Kelidan, added The Maker.lua
-- Auch: Uupdated Ikiss
 ------------------------------------------------------------------------

@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-06-28 10:17:43 -0400 (Sat, 28 Jun 2008) $
-$Rev: 77565 $
+$Date: 2008-07-02 21:37:44 -0400 (Wed, 02 Jul 2008) $
+$Rev: 77730 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -21,11 +21,6 @@ if not L then return end
 
 -- Addon Info
 L["Version"] = "버전: "
---L["Author"] = "Ackis on Illidan (US) Horde"
-L["Wiki"] = "위키: "
-L["Website"] = "홈페이지: "
---L["Credits"] = "Credits: "
-L["Locals"] = "호환성: "
 
 -- Options Categories
 L["Display"] = "보기"

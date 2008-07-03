@@ -190,6 +190,7 @@ AL:RegisterTranslations("deDE", function() return {
 	["Heroic"] = "Heroic",
 	["Summon"] = "Summon",
 	["Random"] = "Random",
+    ["Weapons"] = "Waffen",
 
     --Card Game Decks and descriptions
     ["Upper Deck Card Game Items"] = "Upper Deck Kartenspiel Items",

@@ -1239,7 +1239,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleClass["Shaman"], "ArenaShaman" },
 		{ BabbleClass["Warlock"], "ArenaWarlock" },
 		{ BabbleClass["Warrior"], "ArenaWarrior" },
-		{ AL["Arena PvP Weapons"], "Arena1Weapons1" },
 	},
 	["Arena2PvPRewards"] = {
 		{ BabbleClass["Druid"], "Arena2Druid" },
