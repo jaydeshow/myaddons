@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-07-02 18:22:10 -0400 (Wed, 02 Jul 2008) $
-$Rev: 77725 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -15,7 +15,7 @@ Thank you all translators! (From Ackis)
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "frFR", false);
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "frFR", false);
 if not L then return end
 
 -- Addon Info

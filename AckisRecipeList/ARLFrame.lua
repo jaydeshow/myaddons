@@ -5,13 +5,13 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-05-24 20:33:25 -0400 (Sat, 24 May 2008) $
-$Rev: 75055 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 ****************************************************************************************
 ]]--
 
-local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
+local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 
 local addon = AckisRecipeList
 
@@ -194,7 +194,11 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 			RecipeFrame:SetText(temprecipetext)
 			RecipeFrame:SetScript("OnEnter", function(this)
 					GameTooltip_SetDefaultAnchor(GameTooltip, this)
-					GameTooltip:SetText(temprecipetext .. addon.br .. addon.MissingRecipeListing[RecipeName]["Acquire"])
+					if (addon.RecipeListing[RecipeName]["RecipeLink"] ~= nil) then
+						GameTooltip:SetHyperlink(addon.RecipeListing[RecipeName]["RecipeLink"])
+					else
+						GameTooltip:SetText(temprecipetext .. addon.br ..  addon.MissingRecipeListing[RecipeName]["Acquire"]) 
+					end
 					GameTooltip:Show()
 				end
 			)

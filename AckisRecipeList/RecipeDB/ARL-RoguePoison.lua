@@ -4,12 +4,12 @@ ARL-RoguePoison.lua
 
 Rogue Poison data for all of AckisRecipeList
 
-$Date: 2008-06-04 11:30:19 -0400 (Wed, 04 Jun 2008) $
-$Rev: 75999 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 ]]--
 
-local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
+local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 
 local addon = AckisRecipeList
 

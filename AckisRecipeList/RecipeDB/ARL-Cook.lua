@@ -4,12 +4,12 @@ ARL-Cook.lua
 
 Cooking data for all of AckisRecipeList
 
-$Date: 2008-06-19 13:36:20 -0400 (Thu, 19 Jun 2008) $
-$Rev: 77101 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 ]]--
 
-local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
+local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
 local BZONE		= LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 

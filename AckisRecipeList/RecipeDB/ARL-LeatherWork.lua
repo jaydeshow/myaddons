@@ -4,12 +4,12 @@ ARL-LeatherWork.lua
 
 LeatherWorking data for all of AckisRecipeList
 
-$Date: 2008-06-05 13:36:56 -0400 (Thu, 05 Jun 2008) $
-$Rev: 76087 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 ]]--
 
-local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
+local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
 local BZONE		= LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 local BBOSS		= LibStub("LibBabble-Boss-3.0"):GetLookupTable()

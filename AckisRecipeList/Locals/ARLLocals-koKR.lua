@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-07-02 21:37:44 -0400 (Wed, 02 Jul 2008) $
-$Rev: 77730 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -16,7 +16,7 @@ Thank you all translators! (From Ackis)
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "koKR", false)
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "koKR", false)
 if not L then return end
 
 -- Addon Info

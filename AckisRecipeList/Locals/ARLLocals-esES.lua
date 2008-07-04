@@ -5,8 +5,8 @@ ARLLocals-esES.lua
 
 esES localization strings for Ackis Recipe List
 
-$Date: 2008-06-29 06:33:35 -0400 (Sun, 29 Jun 2008) $
-$Rev: 77592 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -16,7 +16,7 @@ Thank you all translators! (From Ackis)
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "esES", false)
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "esES", false)
 if not L then return end
 
 local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
