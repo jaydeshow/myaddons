@@ -5,13 +5,13 @@ ARLText.lua
 
 Text based output functions for all of AckisRecipeList
 
-$Date: 2008-05-23 11:10:00 -0400 (Fri, 23 May 2008) $
-$Rev: 74935 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 ****************************************************************************************
 ]]--
 
-local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
+local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 
 local addon = AckisRecipeList
 

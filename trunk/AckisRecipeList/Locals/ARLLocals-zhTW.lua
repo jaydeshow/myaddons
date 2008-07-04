@@ -5,8 +5,8 @@ ARLLocals-zhTW.lua
 
 zhTW localization strings for Ackis Recipe List
 
-$Date: 2008-06-27 15:46:19 -0400 (Fri, 27 Jun 2008) $
-$Rev: 77528 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: apa1102, zhucc
@@ -16,7 +16,7 @@ Thank you all translators! (From Ackis)
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "zhTW", false);
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "zhTW", false);
 if not L then return end
 
 -- Addon Info

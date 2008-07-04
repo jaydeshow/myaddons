@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-07-02 17:43:26 -0400 (Wed, 02 Jul 2008) $
-$Rev: 77724 $
+$Date: 2008-07-03 19:42:28 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77755 $
 
 Author: Ackis on Illidan US Horde
 
@@ -83,9 +83,9 @@ have to do things manually.  If you know how to do this and want to help me out,
 ]]
 
 local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
-local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
+local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 
-AckisRecipeList = LibStub("AceAddon-3.0"):NewAddon("AckisRecipeList", "AceConsole-3.0", "AceEvent-3.0")
+AckisRecipeList = LibStub("AceAddon-3.0"):NewAddon("Ackis Recipe List", "AceConsole-3.0", "AceEvent-3.0")
 
 local addon = AckisRecipeList
 
@@ -130,7 +130,7 @@ local InterfaceOptionsFrame_OpenToFrame = InterfaceOptionsFrame_OpenToFrame
 local BOOKTYPE_SPELL = BOOKTYPE_SPELL
 
 -- Constants which are used everytime the add-on is loaded
-local addonversion = GetAddOnMetadata("AckisRecipeList", "Version") .. " v." .. string.sub(GetAddOnMetadata("AckisRecipeList", "X-Revision"):gsub("$Rev:", ""),1,-2)
+local addonversion = GetAddOnMetadata("AckisRecipeList", "Version") .. " v." .. string.sub(GetAddOnMetadata("AckisRecipeList", "X-Revision"):gsub("$Rev:", ""),1,-2) -- No spaces because GetAddOnMetadata doesn't like it
 local nagrandfac = BFAC["Kurenai"] .. "\\" .. BFAC["The Mag'har"]
 local hellfirefac = BFAC["Honor Hold"] .. "\\" .. BFAC["Thrallmar"]
 
@@ -787,7 +787,7 @@ function addon:OnInitialize()
 	local AceConfigReg = LibStub("AceConfigRegistry-3.0")
 	local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
-	self.db = LibStub("AceDB-3.0"):New("AckisRecipeListDB",defaults,"Default")
+	self.db = LibStub("AceDB-3.0"):New("AckisRecipeListDB", defaults, "char")
 
 	-- Create the options with Ace3
 	LibStub("AceConfig-3.0"):RegisterOptionsTable("Ackis Recipe List",giveARLOptions,"Ackis Recipe List")
@@ -802,7 +802,7 @@ function addon:OnInitialize()
 	self.optionsFrame[L["Sort"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Sorting", L["Sort"], "Ackis Recipe List")
 	self.optionsFrame[L["Filter"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Filter", L["Filter"], "Ackis Recipe List")
 	self.optionsFrame[L["Display"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Display", L["Display"], "Ackis Recipe List")
-	LibStub("LibAboutPanel").new("Ackis Recipe List", "AckisRecipeList")
+	LibStub("LibAboutPanel").new("Ackis Recipe List", "Ackis Recipe List")
 
 	-- Register slash commands
 	self:RegisterChatCommand("arl", "ChatCommand")
@@ -994,7 +994,7 @@ function addon:ChatCommand(input)
 	elseif (input == string.lower(L["Profile"])) then
 		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Profile"]])
 	else
-		LibStub("AceConfigCmd-3.0"):HandleCommand("arl", "AckisRecipeList", input)
+		LibStub("AceConfigCmd-3.0"):HandleCommand("arl", "Ackis Recipe List", input)
 	end
 end
 
@@ -1007,13 +1007,14 @@ end
 
 -- Adds a specifc recipe to the recipe list array. 
 
-function addon:addTradeSkill(RecipeName, RecipeLevel, RecipeAquire, ...)
+function addon:addTradeSkill(RecipeName, RecipeLevel, RecipeAquire, RecipeLink, ...)
 
 	-- Creates a table in the addon.RecipeListing table storing all information about a recipe
 	addon.RecipeListing[RecipeName] = {}
 	-- Set the name and aquire information
 	addon.RecipeListing[RecipeName]["Level"] = RecipeLevel
 	addon.RecipeListing[RecipeName]["Acquire"] = RecipeAquire
+	addon.RecipeListing[RecipeName]["RecipeLink"] = RecipeLink
 
 	-- All recipes are unknown until scan occurs
 	addon.RecipeListing[RecipeName]["Known"] = false
@@ -1037,9 +1038,10 @@ end
 function addon:addTradeSkillSpell(RecipeName, RecipeLevel, RecipeAquire, ...)
 
 	if (GetSpellInfo(RecipeName) ~= nil) then
-		self:addTradeSkill(GetSpellInfo(RecipeName), RecipeLevel, RecipeAquire, ...)
+		local spelllink = GetSpellLink(RecipeName)
+		self:addTradeSkill(GetSpellInfo(RecipeName), RecipeLevel, RecipeAquire, spelllink, ...)
 	else
-		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, ...)
+		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, nil, ...)
 		self:Print("Spell ID: " .. RecipeName .. " is not in your local cache.")
 	end
 
@@ -1054,9 +1056,10 @@ function addon:addTradeSkillBeast(RecipeName, RecipeLevel, RecipeAquire, ...)
 
 	if (Jimo ~= nil) then
 		local TempHunterSkill = Jimo .. " (" .. Megadopolous .. ")"
-		self:addTradeSkill(TempHunterSkill, RecipeLevel, RecipeAquire, ...)
+		local spelllink = GetSpellLink(RecipeName)
+		self:addTradeSkill(TempHunterSkill, RecipeLevel, RecipeAquire, spelllink, ...)
 	else
-		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, ...)
+		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, nil, ...)
 		self:Print("Spell ID: " .. RecipeName .. " is not in your local cache.")
 	end
 

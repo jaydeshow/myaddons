@@ -4,12 +4,12 @@ ARL-BeastTrain.lua
 
 Beast Training data for all of AckisRecipeList
 
-$Date: 2008-06-16 01:13:51 -0400 (Mon, 16 Jun 2008) $
-$Rev: 76784 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 ]]--
 
-local L			= LibStub("AceLocale-3.0"):GetLocale("AckisRecipeList")
+local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 local BZONE		= LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 
 local addon = AckisRecipeList

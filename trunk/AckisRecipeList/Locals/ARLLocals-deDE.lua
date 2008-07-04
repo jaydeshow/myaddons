@@ -5,8 +5,8 @@ ARLLocals-deDE.lua
 
 deDE localization strings for Ackis Recipe List
 
-$Date: 2008-05-15 18:18:09 -0400 (Thu, 15 May 2008) $
-$Rev: 74000 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 Original translated by: 
 Currently maintaince by: 
@@ -15,7 +15,7 @@ Thank you all translators! (From Ackis)
 
 ****************************************************************************************
 ]]--
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "deDE", false);
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "deDE", false);
 if not L then return end
 
 -- Options Categories

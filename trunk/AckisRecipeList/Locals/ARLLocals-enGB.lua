@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enGB localization strings for Ackis Recipe List
 
-$Date: 2008-07-02 17:43:26 -0400 (Wed, 02 Jul 2008) $
-$Rev: 77724 $
+$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
+$Rev: 77747 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -15,7 +15,7 @@ Currently maintaince by: Ackis
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("AckisRecipeList", "enGB", true)
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "enGB", true)
 if not L then return end
 
 -- Addon Info
