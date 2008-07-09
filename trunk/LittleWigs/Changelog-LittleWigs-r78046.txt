@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r78046 | 7destiny | 2008-07-07 23:11:46 -0400 (Mon, 07 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+
+LittleWigs: koKR Update
+------------------------------------------------------------------------
+r78002 | ulic | 2008-07-07 14:26:31 -0400 (Mon, 07 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+
+LittleWigs: Auch/Vorpil: Removed banish until I can see a heroic combat log.
+------------------------------------------------------------------------
 r77727 | Ompalumpa | 2008-07-02 18:29:22 -0400 (Wed, 02 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/LittleWigs/TempestKeep/Zereketh.lua
@@ -521,41 +533,4 @@ LittleWigs:
 - Auch/Hellmaw: Change warning
 - Auch/Blackheart: Add chaos next bar
 - Auch/Vorpil: Add banish
-------------------------------------------------------------------------
-r76086 | ulic | 2008-06-05 13:36:32 -0400 (Thu, 05 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
-
-LittleWigs: CFR/Kalithresh- Cosmetic change
-------------------------------------------------------------------------
-r75907 | ulic | 2008-06-03 11:53:50 -0400 (Tue, 03 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/HellfireCitadel/Kelidan.lua
-
-LittleWigs: HFC/Kelidan- fixed a typo
-------------------------------------------------------------------------
-r75878 | ananhaid | 2008-06-03 03:32:16 -0400 (Tue, 03 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/LittleWigs/HellfireCitadel/Kelidan.lua
-
-LittleWigs: 
-- Kelidan zhCN update.
-------------------------------------------------------------------------
-r75855 | ananhaid | 2008-06-02 20:47:49 -0400 (Mon, 02 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/LittleWigs/Coilfang/Thespia.lua
-   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
-
-LittleWigs: 
-- Thespia zhCN/zhTW update.
-- Maker zhCN update.
-------------------------------------------------------------------------
-r75746 | 7destiny | 2008-06-01 16:16:38 -0400 (Sun, 01 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
-   M /trunk/LittleWigs/Coilfang/Thespia.lua
-
-LittleWigs: 
-- Coil/Thespia: added Lung Burst
-- Coil/Kalithresh: fixed Channel
 ------------------------------------------------------------------------

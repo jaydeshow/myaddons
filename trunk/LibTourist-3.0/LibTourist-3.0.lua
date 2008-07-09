@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibTourist-3.0
-Revision: $Rev: 77341 $
+Revision: $Rev: 78145 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://www.wowace.com/wiki/LibTourist-3.0
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibTourist-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 77341 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 78145 $"):match("(%d+)"))
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 if not LibStub("LibBabble-Zone-3.0") then error(MAJOR_VERSION .. " requires LibBabble-Zone-3.0.") end
@@ -79,6 +79,9 @@ local cost = {}
 local textures = {}
 local textures_rev = {}
 local complexes = {}
+local entrancePortals_zone = {}
+local entrancePortals_x = {}
+local entrancePortals_y = {}
 
 local function PLAYER_LEVEL_UP(self)
 	playerLevel = UnitLevel("player")
@@ -806,6 +809,10 @@ function Tourist:GetEnglishZoneFromTexture(texture)
 		return BZR[zone]
 	end
 	return nil
+end
+
+function Tourist:GetEntrancePortalLocation(instance)
+	return entrancePortals_zone[instance], entrancePortals_x[instance], entrancePortals_y[instance]
 end
 
 local inf = 1/0
@@ -1603,6 +1610,7 @@ do
 		faction = "Alliance",
 		type = "Instance",
 		fishing_min = 20,
+		entrancePortal = { BZ["Westfall"], 42.6, 72.2 },
 	}
 
 	zones[BZ["Shadowfang Keep"]] = {
@@ -1613,6 +1621,7 @@ do
 		groupSize = 5,
 		faction = "Horde",
 		type = "Instance",
+		entrancePortal = { BZ["Silverpine Forest"], 43, 67 },
 	}
 
 	zones[BZ["The Stockade"]] = {
@@ -1623,6 +1632,7 @@ do
 		groupSize = 5,
 		faction = "Alliance",
 		type = "Instance",
+		entrancePortal = { BZ["Stormwind City"], 40.6, 55.8 },
 	}
 
 	zones[BZ["Gnomeregan"]] = {
@@ -1633,6 +1643,7 @@ do
 		groupSize = 5,
 		faction = "Alliance",
 		type = "Instance",
+		entrancePortal = { BZ["Dun Morogh"], 24, 38.9 },
 	}
 
 	zones[BZ["Scarlet Monastery"]] = {
@@ -1654,6 +1665,7 @@ do
 		},
 		faction = "Horde",
 		type = "Instance",
+		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Graveyard"]] = {
@@ -1664,6 +1676,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
+		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Library"]] = {
@@ -1674,6 +1687,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
+		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Armory"]] = {
@@ -1684,6 +1698,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
+		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Cathedral"]] = {
@@ -1694,6 +1709,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
+		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Uldaman"]] = {
@@ -1703,6 +1719,7 @@ do
 		paths = BZ["Badlands"],
 		groupSize = 5,
 		type = "Instance",
+		entrancePortal = { BZ["Badlands"], 42.4, 18.6 },
 	}
 
 	zones[BZ["The Temple of Atal'Hakkar"]] = {
@@ -1713,6 +1730,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		fishing_min = 205,
+		entrancePortal = { BZ["Swamp of Sorrows"], 70, 54 },
 	}
 
 	zones[BZ["Blackrock Depths"]] = {
@@ -1725,6 +1743,7 @@ do
 		},
 		groupSize = 5,
 		type = "Instance",
+		entrancePortal = { BZ["Searing Gorge"], 35.4, 84.4 },
 	}
 
 	zones[BZ["Blackrock Spire"]] = {
@@ -1737,6 +1756,7 @@ do
 		},
 		groupSize = 10,
 		type = "Instance",
+		entrancePortal = { BZ["Burning Steppes"], 29.7, 37.5 },
 	}
 
 	zones[BZ["Scholomance"]] = {
@@ -1747,6 +1767,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		fishing_min = 330,
+		entrancePortal = { BZ["Western Plaguelands"], 69.4, 72.8 },
 	}
 
 	zones[BZ["Stratholme"]] = {
@@ -1757,6 +1778,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		fishing_min = 330,
+		entrancePortal = { BZ["Eastern Plaguelands"], 30.8, 14.4 },
 	}
 
 	zones[BZ["Blackwing Lair"]] = {
@@ -1766,6 +1788,7 @@ do
 		paths = BZ["Blackrock Mountain"],
 		groupSize = 40,
 		type = "Instance",
+		entrancePortal = { BZ["Burning Steppes"], 29.7, 37.5 },
 	}
 
 	zones[BZ["Molten Core"]] = {
@@ -1775,6 +1798,7 @@ do
 		paths = BZ["Blackrock Mountain"],
 		groupSize = 40,
 		type = "Instance",
+		entrancePortal = { BZ["Searing Gorge"], 35.4, 84.4 },
 	}
 
 	zones[BZ["Zul'Gurub"]] = {
@@ -1785,6 +1809,7 @@ do
 		groupSize = 20,
 		type = "Instance",
 		fishing_min = 330,
+		entrancePortal = { BZ["Stranglethorn Vale"], 52.2, 17.1 },
 	}
 
 	zones[BZ["Naxxramas"]] = {
@@ -1793,6 +1818,7 @@ do
 		continent = Eastern_Kingdoms,
 		groupSize = 40,
 		type = "Instance",
+		entrancePortal = { BZ["Eastern Plaguelands"], 40, 26 },
 	}
 	
 	zones[BZ["Karazhan"]] = {
@@ -1802,6 +1828,7 @@ do
 		paths = BZ["Deadwind Pass"],
 		groupSize = 10,
 		type = "Instance",
+		entrancePortal = { BZ["Deadwind Pass"], 40.9, 73.2 },
 	}
 	
 	zones[BZ["Zul'Aman"]] = {
@@ -1811,6 +1838,7 @@ do
 		paths = BZ["Ghostlands"],
 		groupSize = 10,
 		type = "Instance",
+		entrancePortal = { BZ["Ghostlands"], 77.7, 63.2 },
 	}
 
 	zones[BZ["Darnassus"]] = {
@@ -2141,6 +2169,7 @@ do
 		groupSize = 5,
 		faction = "Horde",
 		type = "Instance",
+		entrancePortal = { BZ["Orgrimmar"], 49, 50 },
 	}
 
 	zones[BZ["Wailing Caverns"]] = {
@@ -2152,6 +2181,7 @@ do
 		faction = "Horde",
 		type = "Instance",
 		fishing_min = 20,
+		entrancePortal = { BZ["The Barrens"], 47.3, 35 },
 	}
 
 	zones[BZ["Blackfathom Deeps"]] = {
@@ -2162,6 +2192,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		fishing_min = 20,
+		entrancePortal = { BZ["Ashenvale"], 14.6, 15.3 },
 	}
 
 	zones[BZ["Razorfen Kraul"]] = {
@@ -2171,6 +2202,7 @@ do
 		paths = BZ["The Barrens"],
 		groupSize = 5,
 		type = "Instance",
+		entrancePortal = { BZ["The Barrens"], 40.6, 89.6 },
 	}
 
 	zones[BZ["Razorfen Downs"]] = {
@@ -2180,6 +2212,7 @@ do
 		paths = BZ["The Barrens"],
 		groupSize = 5,
 		type = "Instance",
+		entrancePortal = { BZ["The Barrens"], 47, 88.1 },
 	}
 
 	zones[BZ["Zul'Farrak"]] = {
@@ -2189,6 +2222,7 @@ do
 		paths = BZ["Tanaris"],
 		groupSize = 5,
 		type = "Instance",
+		entrancePortal = { BZ["Tanaris"], 36, 11.7 },
 	}
 
 	zones[BZ["Maraudon"]] = {
@@ -2199,6 +2233,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		fishing_min = 205,
+		entrancePortal = { BZ["Desolace"], 29, 62.4 },
 	}
 
 	zones[BZ["Dire Maul"]] = {
@@ -2208,6 +2243,7 @@ do
 		paths = BZ["Feralas"],
 		groupSize = 5,
 		type = "Instance",
+		entrancePortal = { BZ["Feralas"], 58.5, 44.1 },
 	}
 
 	zones[BZ["Onyxia's Lair"]] = {
@@ -2217,6 +2253,7 @@ do
 		paths = BZ["Dustwallow Marsh"],
 		groupSize = 40,
 		type = "Instance",
+		entrancePortal = { BZ["Dustwallow Marsh"], 52, 76 },
 	}
 
 	zones[BZ["Ahn'Qiraj"]] = {
@@ -2226,6 +2263,7 @@ do
 		paths = BZ["Silithus"],
 		groupSize = 40,
 		type = "Instance",
+		entrancePortal = { BZ["Silithus"], 29.3, 94 },
 	}
 
 	zones[BZ["Ruins of Ahn'Qiraj"]] = {
@@ -2235,6 +2273,7 @@ do
 		paths = BZ["Silithus"],
 		groupSize = 20,
 		type = "Instance",
+		entrancePortal = { BZ["Silithus"], 29.3, 94 },
 	}
 	
 	zones[BZ["Caverns of Time"]] = {
@@ -2250,6 +2289,7 @@ do
 			[BZ["The Black Morass"]] = true,
 			[BZ["Hyjal Summit"]] = true,
 		},
+		entrancePortal = { BZ["Tanaris"], 66.2, 49.3 },
 	}
 	
 	zones[BZ["Old Hillsbrad Foothills"]] = {
@@ -2259,7 +2299,8 @@ do
 		paths = BZ["Tanaris"],
 		groupSize = 5,
 		type = "Instance",
-		complex = BZ["Caverns of Time"]
+		complex = BZ["Caverns of Time"],
+		entrancePortal = { BZ["Tanaris"], 66.2, 49.3 },
 	}
 	
 	zones[BZ["The Black Morass"]] = {
@@ -2269,7 +2310,8 @@ do
 		paths = BZ["Tanaris"],
 		groupSize = 5,
 		type = "Instance",
-		complex = BZ["Caverns of Time"]
+		complex = BZ["Caverns of Time"],
+		entrancePortal = { BZ["Tanaris"], 66.2, 49.3 },
 	}
 	
 	zones[BZ["Hyjal Summit"]] = {
@@ -2279,7 +2321,8 @@ do
 		paths = BZ["Tanaris"],
 		groupSize = 25,
 		type = "Instance",
-		complex = BZ["Caverns of Time"]
+		complex = BZ["Caverns of Time"],
+		entrancePortal = { BZ["Tanaris"], 66.2, 49.3 },
 	}
 	
 	zones[BZ["Shattrath City"]] = {
@@ -2314,6 +2357,7 @@ do
 			[BZ["Magtheridon's Lair"]] = true,
 			[BZ["The Shattered Halls"]] = true,
 		},
+		entrancePortal = { BZ["Hellfire Peninsula"], 46.8, 54.9 },
 	}
 	
 	zones[BZ["Hellfire Peninsula"]] = {
@@ -2350,6 +2394,7 @@ do
 			[BZ["The Steamvault"]] = true,
 			[BZ["The Slave Pens"]] = true,
 		},
+		entrancePortal = { BZ["Zangarmarsh"], 50.2, 40.8 },
 	}
 	
 	zones[BZ["Zangarmarsh"]] = {
@@ -2388,6 +2433,7 @@ do
 			[BZ["Shadow Labyrinth"]] = true,
 			[BZ["Auchenai Crypts"]] = true,
 		},
+		entrancePortal = { BZ["Terokkar Forest"], 39.6, 65.5 },
 	}
 
 	zones[BZ["Terokkar Forest"]] = {
@@ -2451,6 +2497,7 @@ do
 			[BZ["The Botanica"]] = true,
 			[BZ["The Arcatraz"]] = true,
 		},
+		entrancePortal = { BZ["Netherstorm"], 76.5, 65.1 },
 	}
 	
 	zones[BZ["Netherstorm"]] = {
@@ -2485,16 +2532,7 @@ do
 		paths = BZ["Shadowmoon Valley"],
 		groupSize = 25,
 		type = "Instance",
-	}
-	
-	zones[BZ["Auchenai Crypts"]] = {
-		low = 64,
-		high = 66,
-		continent = Outland,
-		paths = BZ["Ring of Observance"],
-		groupSize = 5,
-		type = "Instance",
-		complex = BZ["Auchindoun"],
+		entrancePortal = { BZ["Shadowmoon Valley"], 77.7, 43.7 },
 	}
 	
 	zones[BZ["Auchenai Crypts"]] = {
@@ -2505,6 +2543,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Auchindoun"],
+		entrancePortal = { BZ["Terokkar Forest"], 39.6, 65.5 },
 	}
 	
 	zones[BZ["Shadow Labyrinth"]] = {
@@ -2515,6 +2554,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Auchindoun"],
+		entrancePortal = { BZ["Terokkar Forest"], 39.6, 65.5 },
 	}
 	
 	zones[BZ["Sethekk Halls"]] = {
@@ -2525,6 +2565,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Auchindoun"],
+		entrancePortal = { BZ["Terokkar Forest"], 39.6, 65.5 },
 	}
 	
 	zones[BZ["Mana-Tombs"]] = {
@@ -2535,6 +2576,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Auchindoun"],
+		entrancePortal = { BZ["Terokkar Forest"], 39.6, 65.5 },
 	}
 	
 	zones[BZ["Hellfire Ramparts"]] = {
@@ -2545,6 +2587,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Hellfire Citadel"],
+		entrancePortal = { BZ["Hellfire Peninsula"], 46.8, 54.9 },
 	}
 	
 	zones[BZ["The Blood Furnace"]] = {
@@ -2555,6 +2598,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Hellfire Citadel"],
+		entrancePortal = { BZ["Hellfire Peninsula"], 46.8, 54.9 },
 	}
 	
 	zones[BZ["The Shattered Halls"]] = {
@@ -2565,6 +2609,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Hellfire Citadel"],
+		entrancePortal = { BZ["Hellfire Peninsula"], 46.8, 54.9 },
 	}
 	
 	zones[BZ["Magtheridon's Lair"]] = {
@@ -2575,6 +2620,7 @@ do
 		groupSize = 25,
 		type = "Instance",
 		complex = BZ["Hellfire Citadel"],
+		entrancePortal = { BZ["Hellfire Peninsula"], 46.8, 54.9 },
 	}
 	
 	zones[BZ["The Slave Pens"]] = {
@@ -2585,6 +2631,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Coilfang Reservoir"],
+		entrancePortal = { BZ["Zangarmarsh"], 50.2, 40.8 },
 	}
 	
 	zones[BZ["The Underbog"]] = {
@@ -2595,6 +2642,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Coilfang Reservoir"],
+		entrancePortal = { BZ["Zangarmarsh"], 50.2, 40.8 },
 	}
 	
 	zones[BZ["The Steamvault"]] = {
@@ -2605,6 +2653,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Coilfang Reservoir"],
+		entrancePortal = { BZ["Zangarmarsh"], 50.2, 40.8 },
 	}
 	
 	zones[BZ["Serpentshrine Cavern"]] = {
@@ -2615,6 +2664,7 @@ do
 		groupSize = 25,
 		type = "Instance",
 		complex = BZ["Coilfang Reservoir"],
+		entrancePortal = { BZ["Zangarmarsh"], 50.2, 40.8 },
 	}
 	
 	zones[BZ["Gruul's Lair"]] = {
@@ -2624,6 +2674,7 @@ do
 		paths = BZ["Blade's Edge Mountains"],
 		groupSize = 25,
 		type = "Instance",
+		entrancePortal = { BZ["Blade's Edge Mountains"], 68, 24 },
 	}
 	
 	zones[BZ["The Mechanar"]] = {
@@ -2634,6 +2685,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Tempest Keep"],
+		entrancePortal = { BZ["Netherstorm"], 76.5, 65.1 },
 	}
 	
 	zones[BZ["The Botanica"]] = {
@@ -2644,6 +2696,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Tempest Keep"],
+		entrancePortal = { BZ["Netherstorm"], 76.5, 65.1 },
 	}
 	
 	zones[BZ["The Arcatraz"]] = {
@@ -2654,6 +2707,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Tempest Keep"],
+		entrancePortal = { BZ["Netherstorm"], 76.5, 65.1 },
 	}
 
 	zones[BZ["The Eye"]] = {
@@ -2664,6 +2718,7 @@ do
 		groupSize = 25,
 		type = "Instance",
 		complex = BZ["Tempest Keep"],
+		entrancePortal = { BZ["Netherstorm"], 76.5, 65.1 },
 	}
 
 	zones[BZ["Eye of the Storm"]] = {
@@ -2717,6 +2772,7 @@ do
 		paths = BZ["Isle of Quel'Danas"],
 		groupSize = 5,
 		type = "Instance",
+		entrancePortal = { BZ["Isle of Quel'Danas"], 61.3, 30.9 },
 	}
 	
 	zones[BZ["Sunwell Plateau"]] = {
@@ -2726,6 +2782,7 @@ do
 		paths = BZ["Isle of Quel'Danas"],
 		groupSize = 25,
 		type = "Instance",
+		entrancePortal = { BZ["Isle of Quel'Danas"], 44.3, 45.7 },
 	}
 	
 	local continentNames = { GetMapContinents() }
@@ -2775,6 +2832,11 @@ do
 		complexes[k] = v.complex
 		if v.texture then
 			textures_rev[v.texture] = k
+		end
+		if v.entrancePortal then
+			entrancePortals_zone[k] = v.entrancePortal[1]
+			entrancePortals_x[k] = v.entrancePortal[2]
+			entrancePortals_y[k] = v.entrancePortal[3]
 		end
 	end
 	zones = nil

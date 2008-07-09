@@ -7,7 +7,7 @@ if (GetLocale() ~= "frFR") then
 	return
 end
 
-local REVISION = tonumber(("$Revision: 77077 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77823 $"):match("%d+"))
 if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
 	return
 end
@@ -58,3 +58,4 @@ LibKeyBoundLocale10 = {
 	["Right Arrow"] = "DA",
 	["Up Arrow"] = "HA",
 }
+setmetatable(LibKeyBoundLocale10, {__index = LibKeyBoundBaseLocale10})

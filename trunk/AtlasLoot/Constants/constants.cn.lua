@@ -1,5 +1,5 @@
 ﻿-- [[
--- Last Updated: 6/27/2008
+-- Last Updated: 7/9/2008
 -- Initial translation by: 560889223
 -- Maintained by: Diablohu
 -- Credits to: Kurax Kuang (gmmgmm at gmail.com)
@@ -47,6 +47,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["QuickLook"] = "快捷浏览",
     ["Add to QuickLooks:"] = "添加到快捷浏览",
     ["Assign this loot table\n to QuickLook"] = "将该掉落表添加到快捷浏览中",
+	["Req. Rating:"] = "需要等级",  --Shorthand for 'Required Rating' for the personal/team ratings in Arena S4
 
     --Text for Options Panel
     ["Atlasloot Options"] = "Atlasloot 设置",
@@ -217,6 +218,7 @@ AL:RegisterTranslations("zhCN", function() return {
 	["Heroic"] = "英雄模式",
 	["Summon"] = "召唤",
 	["Random"] = "随机",
+	["Weapons"] = "武器",
 
     --Card Game Decks and descriptions
     ["Upper Deck Card Game Items"] = "集换式卡牌游戏奖品",
@@ -225,6 +227,7 @@ AL:RegisterTranslations("zhCN", function() return {
     --["Fires of Outland"] = true,
 	--["Servants of the Betrayer"] = true,
     --["Hunt for Illidan"] = true,
+	--["Drums of Wars"] = true,
     ["Loot Card Items"] = "刮刮卡奖品",
     ["UDE Items"] = "UDE积分奖品",
     ["Landro Longshot"] = "远射兰铎",

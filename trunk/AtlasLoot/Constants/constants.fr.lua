@@ -50,8 +50,8 @@ AL:RegisterTranslations("frFR", function() return {
     --["Factions - Azeroth"] = true,
     ["Factions - Outland"] = "Factions - Outreterre",
     ["Factions - Shattrath City"] = "Factions - Shattrath",
-    --["Pre-Burning Crusade"] = true,
-    --["Post-Burning Crusade"] = true,
+    ["Pre-Burning Crusade"] = "Avant Burning Crusade",
+    ["Post-Burning Crusade"] = "Après Burning Crusade",
     ["Choose Table ..."] = "Choisissez une liste...",
     ["Close Menu"] = "Fermer la liste",
     ["Unknown"] = "Inconnu",
@@ -59,6 +59,7 @@ AL:RegisterTranslations("frFR", function() return {
     --["QuickLook"] = true,
     ["Add to QuickLooks:"] = "Ajouter à QuickLook :",
     ["Assign this loot table\n to QuickLook"] = "Assigner cette table de loot\n à QuickLook",
+    ["Req. Rating:"] = "Côte perso. :",
     
     --Text for Options Panel
     ["Atlasloot Options"] = "Options d'Atlasloot",
@@ -96,7 +97,7 @@ AL:RegisterTranslations("frFR", function() return {
     --Slash commands
     ["reset"] = "Réinitialiser",
     --["options"] = true,
-    ["Reset complete!"] = "Réinitialisation complète!",
+    ["Reset complete!"] = "Réinitialisation complète !",
 
 	--Error Messages and warnings
     ["AtlasLoot Error!"] = "Erreur AtlasLoot!",
@@ -186,7 +187,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Weapons"] = "Armes",
 
     --Labels for loot descriptions
-    --["Classes:"] = true,
+    ["Classes:"] = "Classes: ",
     ["This Item Begins a Quest"] = "Cet objet permet de lancer une quête",
     ["Quest Item"] = "Objet de Quête",
     ["Quest Reward"] = "Récompense de quête",
@@ -229,35 +230,37 @@ AL:RegisterTranslations("frFR", function() return {
     ["Heroic"] = "Héroïque",
     ["Summon"] = "Invocation",
     ["Random"] = "Aléatoire",
+    ["Weapons"] = "Armes",
 
     --Card Game Decks and descriptions
     ["Upper Deck Card Game Items"] = "Objets des cartes à jouer WoW TCG",
-    ["Heroes of Azeroth"] = "Héros d'Azeroth",
-    ["Through The Dark Portal"] = "A travers la porte des ténèbres",
-    ["Fires of Outland"] = "Feux de l'Outreterre",
-    ["Servants of the Betrayer"] = "Les Serviteurs du Traître",
-    ["Hunt for Illidan"] = "La Traque d'Illidan",
-    ["Loot Card Items"] = "Objets (cartes à jouer)",
+    ["Heroes of Azeroth"] = "Héros d'Azeroth", -- 1ère série
+    ["Through The Dark Portal"] = "A Travers la Porte des Ténèbres", -- 2ème série
+    ["Fires of Outland"] = "Les Feux de l'Outreterre", -- 3ème série
+    ["March of the Legion"] = "Marche de la Légion", -- 4ème série
+    ["Servants of the Betrayer"] = "Les Serviteurs du Traître", -- 5ème série
+    ["Hunt for Illidan"] = "La Traque d'Illidan", -- 6ème série
+    --["Drums of Wars"] = true, -- 7ème série -- A TRADUIRE
+    ["Loot Card Items"] = "Objets des cartes à jouer",
     ["UDE Items"] = "Objets (points UDE)",
-    ["Landro Longshot"] = "Landro Tirauloin",
-    ["Thunderhead Hippogryph"] = "Hippogryffe Tête-Tonnerre",
-    ["Saltwater Snapjaw"] = "Gueule d'Acier des Mers",
-    ["King Mukla"] = "Roi Mukla",
-    ["Rest and Relaxation"] = "Repos et relaxation",
-    ["Fortune Telling"] = "La Bonne Aventure",
-    ["Goblin Gumbo"] = "Gumbo Gobelin",
-    ["Gone Fishin'"] = "Parti Pêcher",
-    ["Spectral Tiger"] = "Tigre Spectral",
-    ["March of the Legion"] = "Marche de la Légion",
-    --["Kiting"] = true,
-    ["Robotic Homing Chicken"] = "Poulet Robot Guidé",
-    ["Paper Airplane"] = "Machine volante en papier",
-    ["Papa Hummel's Old-fashioned Pet Biscuit"] = "Biscuit pour familier à l'ancienne de papa Humme",
-    ["Personal Weather Machine"] = "Machine météorologique gobeline",
-    ["X-51 Nether-Rocket"] = "Fusée-de-néant X-51",
-    --["The Footsteps of Illidan"] = true,
-    --["Disco Inferno!"] = true,
-    --["Ethereal Plunderer"] = true,
+    ["Landro Longshot"] = "Landro Tirauloin", -- 1ère série
+    ["Thunderhead Hippogryph"] = "Hippogryffe Tête-Tonnerre", -- 1ère série
+    ["Saltwater Snapjaw"] = "Gueule d'acier des mers", -- 1ère série
+    ["King Mukla"] = "Roi Mukla", -- 2ème série
+    ["Rest and Relaxation"] = "Repos et relaxation", -- 2ème série
+    ["Fortune Telling"] = "La Bonne Aventure", -- 2ème série
+    ["Spectral Tiger"] = "Tigre Spectral", -- 3ème série
+    ["Gone Fishin'"] = "Parti Pêcher", -- 3ème série
+    ["Goblin Gumbo"] = "Gumbo Gobelin", -- 3ème série
+    --["Kiting"] = true, -- 4ème série
+    ["Robotic Homing Chicken"] = "Poulet Robot Guidé", -- 4ème série
+    ["Paper Airplane"] = "Machine volante en papier", -- 4ème série
+    ["X-51 Nether-Rocket"] = "Fusée-de-néant X-51", -- 5ème série
+    ["Personal Weather Machine"] = "Machine météorologique gobeline", -- 5ème série
+    ["Papa Hummel's Old-fashioned Pet Biscuit"] = "Biscuit pour familier à l'ancienne de papa Humme", -- 5ème série
+    --["The Footsteps of Illidan"] = true, -- 6ème série
+    --["Disco Inferno!"] = true, -- 6ème série
+    --["Ethereal Plunderer"] = true, -- 6ème série
 
     --Battleground Brackets
     ["Misc. Rewards"] = "Récompenses Diverses",
@@ -889,7 +892,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Overmaster Pyron"] = "Grand seigneur Pyron",
     ["Father Flame"] = "Père des flammes",
     --["Thomas Yance"] = true,
-    --["Knot Thimblejack"] = true,
+    ["Knot Thimblejack"] = "Noué Dédodevie",
     ["Shen'dralar Provisioner"] = "Approvisionneur Shen'dralar",
     ["Namdo Bizzfizzle"] = "Namdo Ventaperte",
     ["The Nameles Prophet"] = "Le Prophète sans nom",
@@ -903,6 +906,8 @@ AL:RegisterTranslations("frFR", function() return {
     ["Kalldan Felmoon"] = "Kalldan Gangrelune",
     ["Magregan Deepshadow"] = "Magregan Fondombre",
     --["Lord Ahune"] = true,
+    ["Coren Direbrew"] = "Coren Navrebière",
+    --["Don Carlos"] = true,
 
     --Zones
     --["World Drop"] = true,

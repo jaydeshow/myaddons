@@ -898,7 +898,9 @@ function AtlasLoot_NavButton_OnClick()
 		else
 			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title, AtlasLootItemsFrame.refresh[4]);
 		end
-	else
+	elseif AtlasLootItemsFrame.refresh[2] then
+        AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title, AtlasFrame);
+    else
 		--Fallback for if the requested loot page is a menu and does not have a .refresh instance
 		AtlasLoot_ShowItemsFrame(this.lootpage, "dummy", this.title, AtlasFrame);
 	end

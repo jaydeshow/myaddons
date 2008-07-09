@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r78012 | ckknight | 2008-07-07 16:45:42 -0400 (Mon, 07 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix a bug with FuBarPlugin-2.0 support if you're not using the official FuBarPlugin-2.0
+------------------------------------------------------------------------

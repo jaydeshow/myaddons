@@ -4,8 +4,8 @@ ARL-Vendor.lua
 
 Vendor data for all of AckisRecipeList
 
-$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
-$Rev: 77747 $
+$Date: 2008-07-07 16:13:37 -0400 (Mon, 07 Jul 2008) $
+$Rev: 78009 $
 
 ]]--
 
@@ -39,10 +39,10 @@ function addon:InitVendor()
 	self:addVendorList(20, L["Sheri Zipstitch"], BFAC["Alliance"], BZONE["Duskwood"], "75, 45")
 	self:addVendorList(21, L["Danielle Zipstitch"], BFAC["Alliance"], BZONE["Duskwood"], "75, 45")
 	self:addVendorList(22, L["Brienna Starglow"], BFAC["Alliance"], BZONE["Feralas"], "88, 45")
-	self:addVendorList(23, L["Jun'ha"], BFAC["Horde"], BZONE["Arathi Highlands"], "72, 36")
+	self:addVendorList(23, L["Jun'ha"], BFAC["Horde"], BZONE["Arathi Highlands"], "72.7, 36.4")
 	self:addVendorList(24, L["Kireena"], BFAC["Horde"], BZONE["Desolace"], "51, 53")
 	self:addVendorList(25, L["Wenna Silkbeard"], BFAC["Alliance"], BZONE["Wetlands"], "25, 25")
-	self:addVendorList(26, L["Mallen Swain"], BFAC["Horde"], BZONE["Hillsbrad Foothills"], "61, 20")
+	self:addVendorList(26, L["Mallen Swain"], BFAC["Horde"], BZONE["Hillsbrad Foothills"], "61.9, 21.0")
 	self:addVendorList(27, L["Xizk Goodstitch"], BFAC["Neutral"], BZONE["Stranglethorn Vale"], "28, 76")
 	self:addVendorList(28, L["Ghok'kah"], BFAC["Horde"], BZONE["Dustwallow Marsh"], "35, 31")
 	self:addVendorList(29, L["Micha Yance"], BFAC["Alliance"], BZONE["Hillsbrad Foothills"], "50, 56")
@@ -129,7 +129,7 @@ function addon:InitVendor()
 	self:addVendorList(110, L["Christoph Jeffcoat"], BFAC["Horde"], BZONE["Hillsbrad Foothills"], "62, 19")
 	self:addVendorList(111, L["Hammon Karwn"], BFAC["Alliance"], BZONE["Arathi Highlands"], "46, 47")
 	self:addVendorList(112, L["Jandia"], BFAC["Horde"], BZONE["Thousand Needles"], "46, 55")
-	self:addVendorList(113, L["Keena"], BFAC["Horde"], BZONE["Arathi Highlands"], "74, 32")
+	self:addVendorList(113, L["Keena"], BFAC["Horde"], BZONE["Arathi Highlands"], "74.1, 32.7")
 	self:addVendorList(114, L["Lardan"], BFAC["Alliance"], BZONE["Ashenvale"], "34, 49")
 	self:addVendorList(115, L["Rikqiz"], BFAC["Neutral"], BZONE["Stranglethorn Vale"], "28, 76")
 	self:addVendorList(116, L["Helenia Olden"], BFAC["Alliance"], BZONE["Dustwallow Marsh"], "66, 51")
@@ -213,7 +213,7 @@ function addon:InitVendor()
 	self:addVendorList(194, L["Neal Allen"], BFAC["Alliance"], BZONE["Wetlands"], "10, 56")
 	self:addVendorList(195, L["Dalria"], BFAC["Alliance"], BZONE["Ashenvale"], "35, 51")
 	self:addVendorList(196, L["Kulwia"], BFAC["Horde"], BZONE["Stonetalon Mountains"], "45, 59")
-	self:addVendorList(197, L["Banalash"], BFAC["Horde"], BZONE["Swamp of Sorrows"], "44, 56")
+	self:addVendorList(197, L["Banalash"], BFAC["Horde"], BZONE["Swamp of Sorrows"], "44.8, 56.6")
 	self:addVendorList(198, L["Rungor"], BFAC["Horde"], BZONE["Terokkar Forest"], "48, 46")
 	self:addVendorList(199, L["Vodesiin"], BFAC["Alliance"], BZONE["Hellfire Peninsula"], "24, 38")
 	self:addVendorList(200, L["Innkeeper Biribi"], BFAC["Alliance"], BZONE["Terokkar Forest"], "56, 53")

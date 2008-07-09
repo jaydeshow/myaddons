@@ -1,4 +1,89 @@
 ------------------------------------------------------------------------
+r78140 | diablohu | 2008-07-09 07:38:21 -0400 (Wed, 09 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
+r78104 | trasher | 2008-07-08 16:18:38 -0400 (Tue, 08 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r78102 | hegarol | 2008-07-08 15:10:31 -0400 (Tue, 08 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.de.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot: German update
+------------------------------------------------------------------------
+r78099 | hegarol | 2008-07-08 14:18:58 -0400 (Tue, 08 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+
+AtlasLoot:
+- added next TCG set
+------------------------------------------------------------------------
+r78052 | daviesh | 2008-07-08 00:34:21 -0400 (Tue, 08 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Images/Alliance.tga
+   M /trunk/AtlasLoot/Images/Horde.tga
+   M /trunk/AtlasLoot/Images/bronze.tga
+   M /trunk/AtlasLoot/Images/gold.tga
+   M /trunk/AtlasLoot/Images/silver.tga
+
+AtlasLoot:
+- Updated art assets
+------------------------------------------------------------------------
+r77999 | diablohu | 2008-07-07 13:16:00 -0400 (Mon, 07 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+-
+------------------------------------------------------------------------
+r77912 | trasher | 2008-07-06 15:16:41 -0400 (Sun, 06 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r77902 | trasher | 2008-07-06 12:56:29 -0400 (Sun, 06 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r77888 | daviesh | 2008-07-06 09:02:33 -0400 (Sun, 06 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/AtlasLoot.xml
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+
+AtlasLoot:
+- Changes to allow personal/team arena ratings
+- Made AtlasLootPanel buttons 15 pixels wider to cater for translations
+------------------------------------------------------------------------
+r77873 | daviesh | 2008-07-06 01:17:14 -0400 (Sun, 06 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+
+AtlasLoot:
+- Bugfix for nav buttons not working from Quicklooks
+------------------------------------------------------------------------
+r77831 | diablohu | 2008-07-05 12:33:57 -0400 (Sat, 05 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
 r77675 | hegarol | 2008-07-01 05:31:23 -0400 (Tue, 01 Jul 2008) | 3 lines
 Changed paths:
    M /trunk/AtlasLoot/Constants/constants.de.lua

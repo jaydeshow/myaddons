@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 74405 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 77997 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-05-19 07:16:32 -0400 (Mon, 19 May 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-07 12:52:29 -0400 (Mon, 07 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -954,6 +954,50 @@ function Cartographer_Waypoints:AddWaypoint(waypoint)
     end
 end
 
+local hasCart3 = false
+do
+	local _, _, _, enabled = GetAddOnInfo("Cartographer3")
+	if enabled or IsAddOnLoaded("Cartographer3") then
+		hasCart3 = true
+	end
+end
+
+if not hasCart3 then
+	function _G.SetWaypoint(zone, x, y, text, metadata)
+		if not Cartographer:IsModuleActive(self) and self.db then
+			return
+		end
+	
+		local zoneName = Tourist:GetZoneFromTexture(zone)
+		local eZoneName = BZR[zoneName]
+		local wp = Waypoint:new(text or '')
+		wp.x = x
+		wp.y = y
+		wp.Zone = zoneName
+		wp.EZone = eZoneName
+		wp.metadata = metadata
+		Cartographer_Waypoints:AddWaypoint(wp)
+	end
+
+	function _G.GetWaypoint()
+		if not Cartographer:IsModuleActive(self) and self.db then
+			return
+		end
+		if #Queue >= 1 then
+			return Queue[1].metadata
+		end
+	end
+
+	function _G.ClearWaypoint()
+		if not Cartographer:IsModuleActive(self) and self.db then
+			return
+		end
+	
+		for i = #Queue, 1, -1 do
+			Queue[i]:Cancel()
+		end
+	end
+end
 
 function Cartographer_Waypoints:CancelWaypoint(id)
 	if not Cartographer:IsModuleActive(self) and self.db then

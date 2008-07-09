@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibRockConfig-1.0
-Revision: $Rev: 68198 $
+Revision: $Rev: 78012 $
 Developed by: ckknight (ckknight@gmail.com)
 Credits: Nargiddley, inspiration and some code taken from Waterfall-1.0
 Website: http://www.wowace.com/
@@ -10,7 +10,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibRockConfig-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 68198 $"):match("(%d+)")) - 60000
+local MINOR_VERSION = tonumber(("$Revision: 78012 $"):match("(%d+)")) - 60000
 
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0") end
 
@@ -2046,7 +2046,7 @@ local function recheckThirdPartyOptions()
 		end
 	end
 	local FuBarPlugin20 = Rock("FuBarPlugin-2.0", true, true)
-	if FuBarPlugin20 then
+	if FuBarPlugin20 and FuBarPlugin20.registry then
 		for k in pairs(FuBarPlugin20.registry) do
 			if type(k) == "table" and k.OnMenuRequest then
 				list[k.OnMenuRequest] = true

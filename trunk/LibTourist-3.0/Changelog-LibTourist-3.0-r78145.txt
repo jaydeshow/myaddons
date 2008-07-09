@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r78145 | ckknight | 2008-07-09 12:59:41 -0400 (Wed, 09 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibTourist-3.0/LibTourist-3.0.lua
+
+LibTourist-3.0 - Terrokar Forest => Terokkar Forest
+------------------------------------------------------------------------
+r78144 | ckknight | 2008-07-09 12:42:26 -0400 (Wed, 09 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibTourist-3.0/LibTourist-3.0.lua
+
+LibTourist-3.0: add an API function :GetEntrancePortalLocation(instance), which returns the zone, x, and y of the portal location for said instance.
+------------------------------------------------------------------------
 r77341 | ckknight | 2008-06-24 18:29:42 -0400 (Tue, 24 Jun 2008) | 4 lines
 Changed paths:
    M /trunk/LibTourist-3.0/LICENSE.txt

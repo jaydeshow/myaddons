@@ -1,4 +1,34 @@
 ------------------------------------------------------------------------
+r78003 | ckknight | 2008-07-07 14:34:07 -0400 (Mon, 07 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.lua
+
+LibDogTag-Unit-3.0 - Make the check for the mouseover unit a bit saner.
+------------------------------------------------------------------------
+r77956 | shefki | 2008-07-06 22:34:01 -0400 (Sun, 06 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.toc
+
+LibDogTag-Unit-3.0: Add myself to X-Credits per ckknight's request.
+
+------------------------------------------------------------------------
+r77943 | shefki | 2008-07-06 20:32:28 -0400 (Sun, 06 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/TooltipScanning.lua
+
+LibDogTag-Unit-3.0: Oops left a line in that shouldn't still be there.
+
+
+------------------------------------------------------------------------
+r77942 | shefki | 2008-07-06 20:20:24 -0400 (Sun, 06 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/TooltipScanning.lua
+
+LibDogTag-Unit-3.0:
+- Fix to allow [Faction] to work on factions that are in collapsed categroies 
+  (e.g. Inactive).
+
+------------------------------------------------------------------------
 r77434 | ckknight | 2008-06-25 23:15:41 -0400 (Wed, 25 Jun 2008) | 1 line
 Changed paths:
    M /trunk/LibDogTag-Unit-3.0/Categories/Status.lua

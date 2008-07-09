@@ -59,6 +59,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["QuickLook"] = true,
     ["Add to QuickLooks:"] = true,
     ["Assign this loot table\n to QuickLook"] = true,
+    ["Req. Rating:"] = true,  --Shorthand for 'Required Rating' for the personal/team ratings in Arena S4
 
     --Text for Options Panel
     ["Atlasloot Options"] = true,
@@ -238,6 +239,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["Fires of Outland"] = true,
     ["Servants of the Betrayer"] = true,
     ["Hunt for Illidan"] = true,
+    ["Drums of Wars"] = true,
     ["Loot Card Items"] = true,
     ["UDE Items"] = true,
     ["Landro Longshot"] = true,

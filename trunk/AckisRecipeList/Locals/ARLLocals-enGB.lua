@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enGB localization strings for Ackis Recipe List
 
-$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
-$Rev: 77747 $
+$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
+$Rev: 77962 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
