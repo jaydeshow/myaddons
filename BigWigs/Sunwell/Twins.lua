@@ -125,7 +125,7 @@ L:RegisterTranslations("koKR", function() return {
 	conflag = "거대한 불길",
 	conflag_desc = "거대한 불길의 시전에 대해 알립니다.",
 	conflag_message = "%s 거대한 불길!",
-	conflag_you = "당신은 거대한 불길!",
+	conflag_you = "당신에게 거대한 불길!",
 	conflag_bar = "다음 거대한 불길",
 
 	icon = "전술 표시",
@@ -244,10 +244,10 @@ L:RegisterTranslations("deDE", function() return {
 
 local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Sunwell Plateau"]
-mod.enabletrigger = {lady, lock}
+mod.enabletrigger = {lady, lock, boss}
 mod.guid = 25166
 mod.toggleoptions = {"nova", "conflag", "icon", -1, "pyro", -1, "blow", "blades", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76591 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 78093 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

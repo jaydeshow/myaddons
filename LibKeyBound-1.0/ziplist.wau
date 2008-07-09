@@ -1,4 +1,4 @@
-LibKeyBound-1.0/Changelog-LibKeyBound-1.0-r77077.txt
+LibKeyBound-1.0/Changelog-LibKeyBound-1.0-r78109.txt
 LibKeyBound-1.0/LibKeyBound-1.0.toc
 LibKeyBound-1.0/CallbackHandler-1.0/CallbackHandler-1.0.lua
 LibKeyBound-1.0/LibStub/LibStub.lua
@@ -11,4 +11,5 @@ LibKeyBound-1.0/LibKeyBound-1.0/lib.xml
 LibKeyBound-1.0/LibKeyBound-1.0/Locale-deDE.lua
 LibKeyBound-1.0/LibKeyBound-1.0/Locale-esMX.lua
 LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhCN.lua
+LibKeyBound-1.0/LibKeyBound-1.0/Locale-ruRU.lua
 LibKeyBound-1.0/LibKeyBound-1.0/Locale-zhTW.lua

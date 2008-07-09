@@ -3,17 +3,14 @@
 		English
 --]]
 
-if (GetLocale() ~= "enUS") then
+local REVISION = tonumber(("$Revision: 77847 $"):match("%d+"))
+if (LibKeyBoundBaseLocale10 and REVISION <= LibKeyBoundBaseLocale10.BASEREVISION) then
 	return
 end
 
-local REVISION = tonumber(("$Revision: 75188 $"):match("%d+"))
-if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
-	return
-end
-
-LibKeyBoundLocale10 = {
-	REVISION = REVISION;
+LibKeyBoundBaseLocale10 = {
+	REVISION = 0;
+	BASEREVISION = REVISION;
 	Enabled = 'Bindings mode enabled';
 	Disabled = 'Bindings mode disabled';
 	ClearTip = format('Press %s to clear all bindings', GetBindingText('ESCAPE', 'KEY_'));
@@ -58,6 +55,11 @@ LibKeyBoundLocale10 = {
 	["Right Arrow"] = "Rt",
 	["Up Arrow"] = "Up",
 }
+if not LibKeyBoundLocale10 then
+	LibKeyBoundLocale10 = LibKeyBoundBaseLocale10
+else
+	setmetatable(LibKeyBoundLocale10, {__index = LibKeyBoundBaseLocale10})
+end
 --[[
 World of Warcraft/Blizzard Interface Data (enUS)/FrameXML/GlobalStrings.lua:
 

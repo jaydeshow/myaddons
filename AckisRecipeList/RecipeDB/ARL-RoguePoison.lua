@@ -4,8 +4,8 @@ ARL-RoguePoison.lua
 
 Rogue Poison data for all of AckisRecipeList
 
-$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
-$Rev: 77747 $
+$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
+$Rev: 77962 $
 
 ]]--
 

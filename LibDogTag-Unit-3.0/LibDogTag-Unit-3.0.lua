@@ -1,13 +1,13 @@
 --[[
 Name: LibDogTag-3.0
-Revision: $Rev: 77345 $
+Revision: $Rev: 78003 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: A library to provide a markup syntax
 ]]
 
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 77345 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 78003 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_Unit_MINOR_VERSION then
 	_G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
@@ -308,9 +308,7 @@ DogTag:AddEventHandler("Unit", "UNIT_PET", function(event, unit)
 	DogTag:FireEvent("UnitChanged", unit_pet)
 end)
 
-local inMouseover = false
 DogTag:AddEventHandler("Unit", "UPDATE_MOUSEOVER_UNIT", function(event, ...)
-	inMouseover = true
 	refreshGUID("mouseover")
 	DogTag:FireEvent("UnitChanged", "mouseover")
 end)
@@ -334,9 +332,9 @@ end })
 
 local nextUpdateWackyUnitsTime = 0
 DogTag:AddTimerHandler("Unit", function(num, currentTime)
-	local exists = not not UnitExists("mouseover")
-	if inMouseover ~= exists then
-		inMouseover = exists
+	local mouseoverGUID = UnitGUID("mouseover")
+	if mouseoverGUID ~= unitToGUID["mouseover"] then
+		unitToGUID["mouseover"] = mouseoverGUID
 		DogTag:FireEvent("UnitChanged", "mouseover")
 	end
 	if currentTime >= nextUpdateWackyUnitsTime then

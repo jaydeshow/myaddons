@@ -4,8 +4,8 @@ ARLBlackSmith-.lua
 
 Blacksmithing data for all of AckisRecipeList
 
-$Date: 2008-07-03 14:37:48 -0400 (Thu, 03 Jul 2008) $
-$Rev: 77747 $
+$Date: 2008-07-07 18:23:13 -0400 (Mon, 07 Jul 2008) $
+$Rev: 78025 $
 
 ]]--
 
@@ -246,12 +246,12 @@ function addon:InitBlackSmith()
 	self:addTradeSkillSpell(16657, 295, self:CombineQuests(L["Imperial Plate Boots Obt"],0,BZONE["Tanaris"]),4,8)
 	self:addTradeSkillSpell(16658, 295, self:CombineQuests(L["Imperial Plate Helm Obt"],0,BZONE["Tanaris"]),4,8)
 	self:addTradeSkillSpell(16663, 300, self:CombineQuests(L["Imperial Plate Chest Obt"],0,BZONE["Tanaris"]),4,8)
-	self:addTradeSkillSpell(16664, 300, self:CombineMobs(true,L["Runic Plate Shoulders Obt"],BZONE["Dustwallow Marsh"]),3)
-	self:addTradeSkillSpell(16665, 300, self:CombineMobs(true,L["Runic Plate Boots Obt"],BZONE["Western Plaguelands"]),3)
-	self:addTradeSkillSpell(16726, 300, self:CombineMobs(true,L["Runic Plate Helm Obt"],BZONE["Dustwallow Marsh"]),3)
+	self:addTradeSkillSpell(16664, 300, self:CombineMobs(false,L["Runic Plate Shoulders Obt"],BZONE["Dustwallow Marsh"]),4)
+	self:addTradeSkillSpell(16665, 300, self:CombineMobs(false,L["Runic Plate Boots Obt"],BZONE["Western Plaguelands"]),4)
+	self:addTradeSkillSpell(16726, 300, self:CombineMobs(false,L["Runic Plate Helm Obt"],BZONE["Dustwallow Marsh"]),4)
 	self:addTradeSkillSpell(16730, 300, self:CombineQuests(L["Imperial Plate Leggings Obt"],0,BZONE["Tanaris"]),4,8)
-	self:addTradeSkillSpell(16731, 300, self:CombineMobs(true,L["Runic Breastplate Obt"],BZONE["Dustwallow Marsh"]),3)
-	self:addTradeSkillSpell(16732, 300, self:CombineMobs(true,L["Runic Plate Leggings Obt"],BZONE["Western Plaguelands"]),3)
+	self:addTradeSkillSpell(16731, 300, self:CombineMobs(false,L["Runic Breastplate Obt"],BZONE["Dustwallow Marsh"]),4)
+	self:addTradeSkillSpell(16732, 300, self:CombineMobs(false,L["Runic Plate Leggings Obt"],BZONE["Western Plaguelands"]),4)
 	self:addTradeSkillSpell(21161, 300, self:CombineQuests(L["Sulfuron Hammer Obt"],0,BZONE["Blackrock Depths"]),6,8)
 	self:addTradeSkillSpell(24914, 300, self:CombineQuests(L["TrueBelieverQuest"],0,BZONE["Silithus"]),3,8)
 	self:addTradeSkillSpell(24912, 300, self:CombineQuests(L["TrueBelieverQuest"],0,BZONE["Silithus"]),3,8)
@@ -287,6 +287,9 @@ function addon:InitBlackSmith()
  	self:addTradeSkillSpell(29649, 370, self:CombineMobs(false,BBOSS["High Botanist Freywinn"],BZONE["The Botanica"]),4,5)
 	self:addTradeSkillSpell(29729, 375, self:CombineMobs(false,L["Greater Ward of Shielding Obt"],BZONE["Netherstorm"]),4)
 	self:addTradeSkillSpell(42662, 365, self:CombineMobs(false,L["Ragesteel Shoulders Obt"],BZONE["Shadowmoon Valley"]),4)
+	self:addTradeSkillSpell(16978, 280, self:CombineQuests(L["Blazing Rapier Obt"],0,BZONE["Stratholme"]),5,8)
+	self:addTradeSkillSpell(16973, 280, self:CombineQuests(L["Enchanted Battlehammer Obt"],0,BZONE["Stratholme"]),5,8)
+	self:addTradeSkillSpell(16970, 275, self:CombineQuests(L["Dawn's Edge Obt"],0,BZONE["Lower Blackrock Spire"]),5,8)
 
 	-- Seasonal
 	self:addTradeSkillSpell(21913, 190, L["WintersVeil"], 7)
@@ -385,7 +388,6 @@ function addon:InitBlackSmith()
 	self:addTradeSkillSpell(36257, 375, L["Trainer"], GetSpellInfo(9788),1)
 	
 	-- Master Swordsmith
-	self:addTradeSkillSpell(16978, 280, self:CombineQuests(L["Blazing Rapier Obt"],0,BZONE["Stratholme"]), GetSpellInfo(17039),5,8)
 	self:addTradeSkillSpell(36131, 330, L["Trainer"], GetSpellInfo(17039),1)
 	self:addTradeSkillSpell(36133, 330, L["Trainer"], GetSpellInfo(17039),1)
 	self:addTradeSkillSpell(34535, 350, L["Trainer"], GetSpellInfo(17039),1)
@@ -396,7 +398,6 @@ function addon:InitBlackSmith()
 	self:addTradeSkillSpell(36259, 375, L["Trainer"], GetSpellInfo(17039),1)
 
 	-- Master Hammersmith
-	self:addTradeSkillSpell(16973, 280, self:CombineQuests(L["Enchanted Battlehammer Obt"],0,BZONE["Stratholme"]), GetSpellInfo(17040),5,8)
 	self:addTradeSkillSpell(36137, 330, L["Trainer"], GetSpellInfo(17040),1)
 	self:addTradeSkillSpell(36136, 330, L["Trainer"], GetSpellInfo(17040),1)
 	self:addTradeSkillSpell(34545, 350, L["Trainer"], GetSpellInfo(17040),1)
@@ -407,7 +408,6 @@ function addon:InitBlackSmith()
 	self:addTradeSkillSpell(36263, 375, L["Trainer"], GetSpellInfo(17040),1)
 
 	-- Master Axesmith
-	self:addTradeSkillSpell(16970, 275, self:CombineQuests(L["Dawn's Edge Obt"],0,BZONE["Lower Blackrock Spire"]), GetSpellInfo(17041),5,8)
 	self:addTradeSkillSpell(36135, 330, L["Trainer"], GetSpellInfo(17041),1)
 	self:addTradeSkillSpell(36134, 330, L["Trainer"], GetSpellInfo(17041),1)
 	self:addTradeSkillSpell(34541, 350, L["Trainer"], GetSpellInfo(17041),1)

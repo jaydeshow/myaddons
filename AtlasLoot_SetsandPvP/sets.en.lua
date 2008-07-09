@@ -1997,7 +1997,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 0,"","","" },
 		{ 0,"","","" },
 		{ 32810, "", "=q4=Veteran's Dragonhide Bracers", "=ds=#s8#, #a2#", "25 #heroic#" },
-		{ 32789, "", "=q4=Veteran's Dragonhide Belt", "=ds=#s10#, #a2#", "40 #heroic#" },
+		{ 32798, "", "=q4=Veteran's Dragonhide Belt", "=ds=#s10#, #a2#", "40 #heroic#" },
 		{ 32786, "", "=q4=Veteran's Dragonhide Boots", "=ds=#s12#, #a2#", "40 #heroic#" },
 		{ 0,"","","" },
 		{ 32812, "", "=q4=Veteran's Kodohide Bracers", "=ds=#s8#, #a2#", "25 #heroic#" },
@@ -2051,21 +2051,6 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 -------------------
 
 	RareMounts1 = {
-		{ 21176, "", "=q5=Black Qiraji Resonating Crystal", "=q2=#m4#" },
-		{ 0,"","","" },
-		{ 13335, "", "=q4=Deathcharger's Reins", "=q2=#n52#, =q1=#z6#", "0.10%" },
-		{ 19872, "", "=q4=Swift Razzashi Raptor",   "=q2=#n33#, =q1=#z8#", "0.43%" },
-		{ 19902, "", "=q4=Swift Zulian Tiger", "=q2=#n28#, =q1=#z8#", " 0.70%" },
-		{ 13086, "", "=q4=Reins of the Winterspring Frostsaber", "=ds=#e12#" },
-		{ 23720, "", "=q4=Riding Turtle", "=q2=#m24#" },
-		{ 0,"","","" },
-		{ 21218, "", "=q3=Blue Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "10.91%" },
-		{ 21323, "", "=q3=Green Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "11.77%" },
-		{ 21321, "", "=q3=Red Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "1.32%" },
-		{ 21324, "", "=q3=Yellow Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "12.64%" },
-	};
-
-	RareMounts2 = {
 		{ 30609, "", "=q4=Swift Nether Drake", "=q2=#m25#" },
 		{ 34092, "", "=q4=Merciless Nether Drake", "=q2=#m25#" },
 		{ 0,"","","" },
@@ -2092,6 +2077,21 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 33176, "", "=q3=Flying Broom", "=q2=#n136#" },
 		{ 33183, "", "=q3=Magic Broom", "=q2=#n136#" },
 		{ 33189, "", "=q2=Rickety Magic Broom", "=q2=#n136#" },
+	};
+	
+	RareMounts2 = {
+		{ 21176, "", "=q5=Black Qiraji Resonating Crystal", "=q2=#m4#" },
+		{ 0,"","","" },
+		{ 13335, "", "=q4=Deathcharger's Reins", "=q2=#n52#, =q1=#z6#", "0.10%" },
+		{ 19872, "", "=q4=Swift Razzashi Raptor",   "=q2=#n33#, =q1=#z8#", "0.43%" },
+		{ 19902, "", "=q4=Swift Zulian Tiger", "=q2=#n28#, =q1=#z8#", " 0.70%" },
+		{ 13086, "", "=q4=Reins of the Winterspring Frostsaber", "=ds=#e12#" },
+		{ 23720, "", "=q4=Riding Turtle", "=q2=#m24#" },
+		{ 0,"","","" },
+		{ 21218, "", "=q3=Blue Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "10.91%" },
+		{ 21323, "", "=q3=Green Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "11.77%" },
+		{ 21321, "", "=q3=Red Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "1.32%" },
+		{ 21324, "", "=q3=Yellow Qiraji Resonating Crystal", "=q2=#n11#,  =q1=#z11#", "12.64%" },
 	};
 
 ---------------
@@ -2194,6 +2194,21 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 	};
 	
 	CardGame2 = {
+		{ 0, "INV_Box_01", "=q6=#ud4#", "=q1=#ud23#" },
+		{ 0, "", "=q4=Bear Mount", "=ds=#e12#" },
+		{ 0, "", "=q3=Taunt Flag", "=ds=#m20#" },
+		{ 38577, "", "=q1=Party Grenade", "=ds=#m20#" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
 		{ 0, "INV_Box_01", "=q6=#ud5#", "" },
 		{ 38312, "", "=q4=Tabard of Brilliance", "=ds=#s7#" },
 		{ 23709, "", "=q4=Tabard of Frost", "=ds=#s7#" },
@@ -2336,6 +2351,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 13584, "", "=q3=Diablo Stone", "=ds=#e13#" },
 		{ 13582, "", "=q3=Zergling Leash", "=ds=#e13#" },
 		{ 25535, "", "=q3=Netherwhelp's Collar", "=ds=#e13#" },
+		{ 0, "", "=q3=Tyrael's Hilt", "=ds=#e13#" },
 	};
 
 	};

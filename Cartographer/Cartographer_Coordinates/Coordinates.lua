@@ -1,10 +1,15 @@
 ﻿assert(Cartographer, "Cartographer not found!")
+
+if Cartographer3 and Cartographer3.hijackingWorldMap then
+	return
+end
+
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 73088 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78027 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-05-08 07:48:10 -0400 (Thu, 08 May 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-07 18:57:07 -0400 (Mon, 07 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Coordinates")

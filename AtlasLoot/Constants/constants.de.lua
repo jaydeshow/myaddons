@@ -35,6 +35,11 @@ AL:RegisterTranslations("deDE", function() return {
     ["Choose Table ..."] = "Wähle Tabelle ...",
     ["Close Menu"] = "Schließe Menü",
     ["Unknown"] = "Unknown",
+    ["Skill Required:"] = "Benötigt Fertigkeit:",
+    --- ["QuickLook"] = true,
+    ["Add to QuickLooks:"] = "Zu QuickLook hinzufügen",
+    ---["Assign this loot table\n to QuickLook"] = true,
+    ["Req. Rating:"] = "Wertung benötigt",
 
     --Text for Options Panel
     ["Atlasloot Options"] = "AtlasLoot Optionen",
@@ -59,6 +64,15 @@ AL:RegisterTranslations("deDE", function() return {
     ["AutoQuery items on loot tables |cffff0000(disconnection risk)|r"] = "Automatisches Abfragen von Items |cffff0000(auf eigene Gefahr)|r",
     ["Done"] = "OK",
     ["WishList"] = "Wunschzettel",
+    ["Search Result: %s"] = "Suchtext",
+    ["Last Result"] = "Letzte Suche",
+    ["Search on"] = "Suchen in",
+    ["All modules"] = "Alle Module",
+    ["If checked, AtlasLoot will load and search across all the modules."] = "Falls gewählt, sucht Atlasloot in allen Modulen",
+    ["Search options"] = "Suchoptionen",
+    ---["Partial matching"] = true,
+    ---["If checked, AtlasLoot search item names for a partial match."] = true,
+    ["You don't have any module selected to search on!"] = "Du hast kein Modul zur Suche ausgewählt",
 
     --Slash commands
 	--    ["reset"] = true,
@@ -146,6 +160,10 @@ AL:RegisterTranslations("deDE", function() return {
     ["Combat Pet"] = "Haustier (Kampf)",
     ["Fireworks"] = "Feuerwerk",
 
+    --Extra inventory stuff
+    ["Cloak"] = "Umhang",
+    ["Weapons"] = "Waffen",
+
     --Labels for loot descriptions
     ["Classes:"] = "Klassen:",
     ["This Item Begins a Quest"] = "Dieser Gegenstand startet eine Quest",
@@ -199,6 +217,7 @@ AL:RegisterTranslations("deDE", function() return {
     ["Fires of Outland"] = "Feuer der Scherbenwelt",
     ["Servants of the Betrayer"] = "Diener des Verräters",
     ["Hunt for Illidan"] = "Die Jagd nach Illidan",
+    ["Drums of Wars"] = "Trommeln des Krieges",
     ["Loot Card Items"] = "Beutekarten Gegenstände",
     ["UDE Items"] = "UDE Gegenstände",
     ["Landro Longshot"] = "Landro Fernblick",
@@ -670,6 +689,7 @@ AL:RegisterTranslations("deDE", function() return {
 	--    ["Tier 6 Sets"] = true,
 	--    ["PvP Sets (Level 60)"] = true,
 	--    ["PvP Sets (Level 70)"] = true,
+    ["PvP Reputation Sets (Level 70)"] = "PvP Ruf Sets (Level 70)",
     ["PvP Rewards (Level 60)"] = "PvP-Belohnungen (Level 60)",
     ["PvP Rewards (Level 70)"] = "PvP-Belohnungen (Level 70)",
     ["PvP Accessories (Level 60)"] = "PvP-Zubehör (Level 60)",
@@ -733,6 +753,7 @@ AL:RegisterTranslations("deDE", function() return {
 	--    ["Level 50-60"] = true,
     ["BT Patterns/Plans"] = "BT Muster/Pläne",
     ["Hyjal Summit Designs"] = "Berg Hyjal Designs",
+    ["SP Patterns/Plans"] = "SP Muster/Pläne",
 
     --NPCs missing from BabbleBoss
 	--    ["Trash Mobs"] = true,
@@ -864,6 +885,7 @@ AL:RegisterTranslations("deDE", function() return {
 	["Magregan Deepshadow"] = "Magregan Grubenschatten",
 	--  ["Lord Ahune"] = true,
 	["Coren Direbrew"] = "Coren Düsterbräu",
+    --  ["Don Carlos"] = true,
 
     --Zones
     ["World Drop"] = "Weltdrops",

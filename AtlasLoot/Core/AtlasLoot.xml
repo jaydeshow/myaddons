@@ -171,7 +171,7 @@
     
     <Button name="AtlasLootPanelButtonTemplate" inherits="OptionsButtonTemplate" virtual="true">
         <Size>
-			<AbsDimension x="105" y="20"/>
+			<AbsDimension x="120" y="20"/>
 		</Size>
     </Button>
 
@@ -1074,7 +1074,7 @@
     
     <Frame name="AtlasLootPanel" parent="UIParent" hidden="true">
         <Size>
-			<AbsDimension x="655" y="110"/>
+			<AbsDimension x="745" y="110"/>
 		</Size>
         <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 			<BackgroundInsets>

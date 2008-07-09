@@ -5,8 +5,8 @@ ARLColour.lua
 
 Colouring functions for ARL
 
-$Date: 2008-06-16 01:13:51 -0400 (Mon, 16 Jun 2008) $
-$Rev: 76784 $
+$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
+$Rev: 77962 $
 
 Code adopted from Crayon library
 

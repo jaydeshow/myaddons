@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r78059 | toadkiller | 2008-07-08 02:46:10 -0400 (Tue, 08 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Dummy ruRU, cloned from deDE.  needs total translation
+------------------------------------------------------------------------
+r76513 | linsu | 2008-06-11 22:44:08 -0400 (Wed, 11 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- fix zhTW.local
+------------------------------------------------------------------------

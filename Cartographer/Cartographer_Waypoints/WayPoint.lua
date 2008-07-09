@@ -88,7 +88,7 @@ end
 -- This function clears out values specific to the class
 function Waypoint:Cancel()
 	self:RemoveFromMap()
-	self.WaypointID, self.x, self.y, self.Zone, self.EZone, self.POIID, self.Icon, self.IconTitle, self.PointType, self.db, self.OnMap = nil
+	self.WaypointID, self.x, self.y, self.Zone, self.EZone, self.POIID, self.Icon, self.IconTitle, self.PointType, self.db, self.OnMap, self.metadata = nil
 	returnFrame(self.Frame)
 end
 
