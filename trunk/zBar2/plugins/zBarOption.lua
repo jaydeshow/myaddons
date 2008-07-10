@@ -251,6 +251,35 @@ function zBarOption:Select(bar)
 	self.bar = bar
 end
 
+--[[ utilities ]]
+
+function zBarOption:Befor_ShowGrid()
+ 	if InCombatLockdown() then return end
+	for name,bar in pairs(zBar2.bars) do
+		if bar:GetID() >= 5 and bar:GetID() <= 8 then
+			for i=1,12 do
+				local button = _G[zBar2.buttons[name..i]]
+				button:SetAttribute("showgrid", button:GetAttribute("showgrid") + 1)
+			end
+		end
+	end
+end
+function zBarOption:Befor_HideGrid()
+ 	if InCombatLockdown() then return end
+	for name,bar in pairs(zBar2.bars) do
+		if bar:GetID() >= 5 and bar:GetID() <= 8 then
+			for i=1,12 do
+				local button = _G[zBar2.buttons[name..i]]
+				local showgrid = button:GetAttribute("showgrid")
+				if showgrid > 0 then
+					button:SetAttribute("showgrid", showgrid - 1)
+				end
+			end
+		end
+	end
+end
+
+
 --[[ Datas ]]
 zBarOption.labels = {
 	-- font, color-red, color-green, color-blue, pos, offset-x, offset-y
@@ -376,25 +405,25 @@ zBarOption.buttons = { --[[ Check Buttons - for attribute setting ]]
 		name="LockButtons",
 		pos={"TOP","zBarOptionHideTip","BOTTOM",0,0},
 		IsChecked=function() return LOCK_ACTIONBAR == "1" end,
-		OnChecked=function() LOCK_ACTIONBAR = "1" end,
-		UnChecked=function() LOCK_ACTIONBAR = nil end,
+		OnChecked=function() LOCK_ACTIONBAR = "1" SetCVar("lockActionBars", "1") end,
+		UnChecked=function() LOCK_ACTIONBAR = nil SetCVar("lockActionBars", nil) end,
 	},
 	{-- show / hide grid
 		name="HideGrid",
 		pos={"TOP","zBarOptionLockButtons","BOTTOM",0,0},
-		IsChecked=function() return ALWAYS_SHOW_MULTIBARS ~= "1" and ALWAYS_SHOW_MULTIBARS ~= 1 end,
+		IsChecked=function()
+			return not (ALWAYS_SHOW_MULTIBARS == "1" or ALWAYS_SHOW_MULTIBARS == 1)
+		end,
 		OnChecked=function()
 			ALWAYS_SHOW_MULTIBARS = nil
-			SetActionBarToggles(SHOW_MULTI_ACTIONBAR_1,
-			SHOW_MULTI_ACTIONBAR_2, SHOW_MULTI_ACTIONBAR_3,
-			SHOW_MULTI_ACTIONBAR_4, ALWAYS_SHOW_MULTIBARS);
+			SetCVar("alwaysShowActionBars", nil)
+			zBarOption:Befor_HideGrid()
 			MultiActionBar_UpdateGridVisibility()
 		end,
 		UnChecked=function()
 			ALWAYS_SHOW_MULTIBARS = "1"
-			SetActionBarToggles(SHOW_MULTI_ACTIONBAR_1,
-			SHOW_MULTI_ACTIONBAR_2, SHOW_MULTI_ACTIONBAR_3,
-			SHOW_MULTI_ACTIONBAR_4, ALWAYS_SHOW_MULTIBARS);
+			SetCVar("alwaysShowActionBars", "1")
+			zBarOption:Befor_ShowGrid()
 			MultiActionBar_UpdateGridVisibility()
 		end,
 	},
