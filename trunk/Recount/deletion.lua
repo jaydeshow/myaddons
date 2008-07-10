@@ -1,6 +1,6 @@
 -- Elsia: For delete on instance entry
 -- Deletes data whenever a new, not the same instance is entered. This should safe-guard against corpse-run-reenters and the like.
-local revision = tonumber(string.sub("$Revision: 76996 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78174 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 function Recount:DetectInstanceChange() -- Elsia: With thanks to Loggerhead
@@ -69,11 +69,11 @@ function Recount:PartyMembersChanged()
 	Recount.inGroup = false
 	Recount.inRaid = false
 	
-	if NumRaidMembers == 0 and NumPartyMembers > 0 then
+	if NumRaidMembers == 0 and NumPartyMembers > 0 or UnitInParty("player") then
 	   Recount.inGroup = true
 	end
 
-	if NumRaidMembers > 0 then
+	if NumRaidMembers > 0 or UnitInRaid("player") then
 	   Recount.inRaid = true
 	end
 	

@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r78158 | kurax | 2008-07-09 20:23:57 -0400 (Wed, 09 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
+
+AckisRecipeList: Update zhCN locale
+------------------------------------------------------------------------
 r78086 | ackis | 2008-07-08 10:45:32 -0400 (Tue, 08 Jul 2008) | 3 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc
@@ -446,41 +452,4 @@ Changed paths:
 AckisRecipeList:
 - Add some debug statements for me to test tonight
 - Dry-coded (code runs with luac -p)
-------------------------------------------------------------------------
-r76294 | ackis | 2008-06-08 22:43:11 -0400 (Sun, 08 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Bump version
-------------------------------------------------------------------------
-r76247 | next96 | 2008-06-07 22:53:43 -0400 (Sat, 07 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r76230 | kurax | 2008-06-07 17:28:24 -0400 (Sat, 07 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList:
-- Update zhCN locale
-------------------------------------------------------------------------
-r76225 | ackis | 2008-06-07 16:09:09 -0400 (Sat, 07 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fix filtering for specialities... maybe
-------------------------------------------------------------------------
-r76211 | next96 | 2008-06-07 12:26:33 -0400 (Sat, 07 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
 ------------------------------------------------------------------------

@@ -30,10 +30,10 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
-	sacrifice = "犧牲警告",
-	sacrifice_desc = "當有玩家被犧牲時發送警告",
-	sacrifice_message = "%s 犧牲了 - 注意停手及治療",
-	sacrifice_bar = "犧牲：[%s]",
+	sacrifice = "犧牲",
+	sacrifice_desc = "當有玩家被犧牲時發送警報",
+	sacrifice_message = "%s 被犧牲了!",
+	sacrifice_bar = "犧牲: [%s]",
 	sacrifice_soon = "即將施放犧牲!",
 	sacrifice_soonbar = "~可能施放犧牲",
 } end )
@@ -85,7 +85,7 @@ mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.guid = 17978
 mod.toggleoptions = {"sacrifice", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 78171 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

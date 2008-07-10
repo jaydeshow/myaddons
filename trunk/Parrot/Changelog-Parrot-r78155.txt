@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r78155 | profalbert | 2008-07-09 18:49:11 -0400 (Wed, 09 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- no longer show Mana-gains for pets as Player-mana-gains
+
+------------------------------------------------------------------------
 r77636 | profalbert | 2008-06-30 12:20:25 -0400 (Mon, 30 Jun 2008) | 3 lines
 Changed paths:
    M /trunk/Parrot/Code/CombatEvents.lua
@@ -40,10 +48,4 @@ Parrot:
 - fixed old combat-events showing up after ressurecting
 - maybe fixed Riposte/Revenge-Triggers (please god)
 
-------------------------------------------------------------------------
-r76052 | gnarfoz | 2008-06-05 02:31:49 -0400 (Thu, 05 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/Parrot/Data/Cooldowns.lua
-
-Parrot: fix cooldown groups. works fine on shaman and paladin, please check if actually sane to solve this way.
 ------------------------------------------------------------------------

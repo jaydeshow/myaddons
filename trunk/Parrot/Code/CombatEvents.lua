@@ -1,4 +1,4 @@
-local VERSION = tonumber(("$Revision: 77636 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 78155 $"):match("%d+"))
 
 local Parrot = Parrot, Parrot
 local Parrot_CombatEvents = Parrot:NewModule("CombatEvents", "LibRockEvent-1.0", "LibRockTimer-1.0")
@@ -6,7 +6,7 @@ local self = Parrot_CombatEvents
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-06-30 12:20:25 -0400 (Mon, 30 Jun 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-07-09 18:49:11 -0400 (Wed, 09 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- to track XP and Honor-gains
@@ -2176,7 +2176,7 @@ end
 
 function Parrot_CombatEvents:SpellEnergize(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, powerType)
 
-	if (dstGUID == self.PlayerGUID) or (dstGUID == self.PetGUID) then
+	if (dstGUID == self.PlayerGUID) then
 		local info = newList()
 		info.spellID = spellId
 		info.damageType = SchoolParser[spellSchool]
