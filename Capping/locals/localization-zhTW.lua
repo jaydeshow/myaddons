@@ -97,7 +97,7 @@ CappingLocale:CreateLocaleTable({
 
 	 -- patterns
 	["avunderattack"] = "^(.+)受到攻擊!.+不採取措施",
-	["avunderattack2"] = "^(.+)受到攻擊!.+不採取措施",
+	["avunderattack2"] = "^(.+)受到攻擊!",
 	["avtaken"] = "^(.+)被.+佔領了!",
 	["avtaken2"] = "^(.+)被.+佔領了!",
 	["avdestroyed"] = "^(.+)被.+摧毀了!",

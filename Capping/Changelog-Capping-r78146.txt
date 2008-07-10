@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r78146 | scorpio0920 | 2008-07-09 13:32:18 -0400 (Wed, 09 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Capping/locals/localization-zhTW.lua
+
+Capping:
+- Update zhTW localization. (Thanks s8095324)
+------------------------------------------------------------------------
 r76978 | ananhaid | 2008-06-17 21:02:02 -0400 (Tue, 17 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/Capping/locals/localization-zhCN.lua
@@ -43,18 +50,4 @@ Changed paths:
 
 Capping:
 - deDE update
-------------------------------------------------------------------------
-r75147 | cwdg | 2008-05-25 23:37:49 -0400 (Sun, 25 May 2008) | 2 lines
-Changed paths:
-   M /trunk/Capping/locals/localization-zhCN.lua
-
-Capping:
-- fix zhCN locale
-------------------------------------------------------------------------
-r74508 | sayclub | 2008-05-20 05:41:50 -0400 (Tue, 20 May 2008) | 2 lines
-Changed paths:
-   M /trunk/Capping/locals/localization-koKR.lua
-
-Capping:
-- koKR Update
 ------------------------------------------------------------------------

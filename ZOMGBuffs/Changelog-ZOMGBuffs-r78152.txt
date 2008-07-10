@@ -1,0 +1,9 @@
+------------------------------------------------------------------------
+r78152 | profalbert | 2008-07-09 18:38:48 -0400 (Wed, 09 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/modules.xml
+
+ZOMGBuffs:
+- fix modules.xml to be wellformed xml
+
+------------------------------------------------------------------------

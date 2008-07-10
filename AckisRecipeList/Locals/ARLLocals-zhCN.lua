@@ -5,8 +5,8 @@ ARLLocals-zhCN.lua
 
 zhCN localization strings for Ackis Recipe List
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-09 20:23:57 -0400 (Wed, 09 Jul 2008) $
+$Rev: 78158 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: Kurax, 冰焱妩魅 @ CWDG
@@ -21,11 +21,6 @@ if not L then return end
 
 -- Addon Info
 L["Version"] = "版本: "
-L["Author"] = "Ackis 伊利丹(美服) 部落"
-L["Wiki"] = "Wiki: "
-L["Website"] = "网站: "
-L["Credits"] = "致谢: "
-L["Locals"] = "兼容: "
 
 -- Options Categories
 L["Display"] = "显示"
@@ -465,7 +460,6 @@ L["Felcloth Bag Obt"] = "杀死詹迪斯·巴罗夫后出现的书中获得"
 L["Ghostweave Belt Obt"] = "徘徊的上层精灵"
 L["Ghostweave Gloves Obt"] = "徘徊的上层精灵"
 L["Ghostweave Gloves Obt1"] = "无影仆从"
-L["Ghostweave Pants Obt"] = "鬼魂市民"
 L["Ghostweave Vest Obt"] = "无影仆从"
 L["Mooncloth Boots Obt"] = "神圣的月布"
 L["Robe of the Archmage Obt"] = "火印炎术师"
@@ -476,8 +470,6 @@ L["Shadoweave Mask Obt"] = "黑市交易"
 L["Soulcloth Shoulders Obt"] = "幻影随从"
 L["Soulcloth Vest Obt"] = "幻影仆从"
 L["Wizardweave Leggings Obt"] = "黑暗召唤师"
-L["Wizardweave Robe Obt"] = "黑暗法师"
-L["Wizardweave Turban Obt"] = "黑暗法师"
 
 -- Beast Training Obtain Information
 L["Rare"] = "稀有"
@@ -938,6 +930,7 @@ L["Harggan"] = "哈尔甘"
 L["Harklan Moongrove"] = "哈克兰·月林"
 L["Harlown Darkweave"] = "哈鲁恩·暗纹"
 L["Harn Longcast"] = "哈恩·长线"
+L["Haughty Modiste"] = "傲慢的店主"
 L["Heldan Galesong"] = "海尔丹·风歌"
 L["Helenia Olden"] = "海伦妮亚·奥德恩"
 L["Himmik"] = "西米克"
