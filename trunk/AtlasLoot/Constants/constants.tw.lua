@@ -6,11 +6,7 @@ back to the English translation.
 
 The ["text"] = true; shortcut can ONLY be used for English (the root translation).
 ]]
---[[
--- Translated and maintained by Arith Hsu (arithmandarjp at yahoo.co.jp)
--- Special thanks for Alfred and his website "Alfred's WoW Treasure BOX", http://wowbox.tw/
--- Last Updated: Mar. 25, 2008
---]]
+
 if (GetLocale() == 	"zhTW") then
 
 --Create the library instance
@@ -59,6 +55,10 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Close Menu"] = "關閉選單",
     ["Unknown"] = "未知",
     ["Skill Required:"] = "需要技能等級: ",
+    ["QuickLook"] = "快速瀏覽",
+    ["Add to QuickLooks:"] = "新增至快速瀏覽",
+    ["Assign this loot table\n to QuickLook"] = "將此掉落表新增至快速瀏覽",
+    ["Req. Rating:"] = "需要等級",  --Shorthand for 'Required Rating' for the personal/team ratings in Arena S4
 
     --Text for Options Panel
     ["Atlasloot Options"] = "Atlasloot 選項",
@@ -229,6 +229,7 @@ AL:RegisterTranslations("zhTW", function() return {
 	["Heroic"] = "英雄模式",
 	["Summon"] = "召喚",
 	["Random"] = "隨機",
+    ["Weapons"] = "武器",
 
     --Card Game Decks and descriptions
     ["Upper Deck Card Game Items"] = "Upper Deck 卡片遊戲物品",
@@ -237,6 +238,7 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Fires of Outland"] = "外域之火",
     ["Servants of the Betrayer"] = "背叛者的奴僕",
     ["Hunt for Illidan"] = "獵殺伊利丹",
+--    ["Drums of Wars"] = true,
     ["Loot Card Items"] = "可換取的物品",
     ["UDE Items"] = "UDE 物品",
     ["Landro Longshot"] = "藍卓",
@@ -252,6 +254,12 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Kiting"] = "風箏",
     ["Robotic Homing Chicken"] = "寵物機械小雞",
     ["Paper Airplane"] = "紙飛機",
+--    ["Papa Hummel's Old-fashioned Pet Biscuit"] = true,
+--    ["Personal Weather Machine"] = true,
+    ["X-51 Nether-Rocket"] = "X51型虛空火箭",
+--    ["The Footsteps of Illidan"] = true,
+--    ["Disco Inferno!"] = true,
+    ["Ethereal Plunderer"] = "伊斯利掠奪者",
 
     --Battleground Brackets
     ["Misc. Rewards"] = "雜項獎勵",
@@ -898,6 +906,8 @@ AL:RegisterTranslations("zhTW", function() return {
     ["Kalldan Felmoon"] = "卡爾丹·暗月",
 	["Magregan Deepshadow"] = "馬格雷甘·深影",
 	["Lord Ahune"] = "艾胡恩",
+    ["Coren Direbrew"] = "寇仁·恐酒",
+    ["Don Carlos"] = "卡洛斯先生龍舌蘭酒",
 
     --Zones
     ["World Drop"] = "世界掉落",

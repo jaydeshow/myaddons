@@ -1,0 +1,18 @@
+﻿## Interface: 20400
+## Title: tdItemTip
+## Notes: taiduo's item tooltips
+## Title-zhCN: |cff7fff7f太多|r物品提示
+## Author: ldz5
+## Version: 20400.3
+## SavedVariables: tdItemTipDB
+
+libs.xml
+localization\localization.lua
+localization\localization.cn.lua
+localization\localization.tw.lua
+main.lua
+core\compare.lua
+core\rating.lua
+core\sellvalue.lua
+core\itemref.lua
+core\option.lua
