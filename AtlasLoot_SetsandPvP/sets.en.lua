@@ -2053,6 +2053,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 	RareMounts1 = {
 		{ 30609, "", "=q4=Swift Nether Drake", "=q2=#m25#" },
 		{ 34092, "", "=q4=Merciless Nether Drake", "=q2=#m25#" },
+		{ 37676, "", "=q4=Vengeful Nether Drake", "=q2=#m25#" },
 		{ 0,"","","" },
 		{ 32458, "", "=q4=Ashes of Al'ar", "=q2=#n59#, =q1=#z19#" },
 		{ 30480, "", "=q4=Fiery Warhorse's Reins", "=q2=#n53#, =q1=#z12#", "0.25%" },
@@ -2063,7 +2064,6 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 33224, "", "=q3=Reins of the Spectral Tiger", "=q2=#m24#" },
 		{ 35226, "", "=q4=X-51 Nether-Rocket X-TREME", "=q2=#m24#" },
 		{ 35225, "", "=q3=X-51 Nether-Rocket", "=q2=#m24#" },
-		{ 0,"","","" },
 		{ 0,"","","" },
 		{ 0,"","","" },
 		{ 34061, "", "=q4=Turbo-Charged Flying Machine Control", "=ds=#p5#" },
@@ -2351,7 +2351,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 13584, "", "=q3=Diablo Stone", "=ds=#e13#" },
 		{ 13582, "", "=q3=Zergling Leash", "=ds=#e13#" },
 		{ 25535, "", "=q3=Netherwhelp's Collar", "=ds=#e13#" },
-		{ 0, "", "=q3=Tyrael's Hilt", "=ds=#e13#" },
+		{ 39656, "", "=q3=Tyrael's Hilt", "=ds=#e13#" },
 	};
 
 	};

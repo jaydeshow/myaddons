@@ -1,4 +1,4 @@
-AckisRecipeList/Changelog-AckisRecipeList-r78158.txt
+AckisRecipeList/Changelog-AckisRecipeList-r78194.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/AckisRecipeList.lua
@@ -27,6 +27,7 @@ AckisRecipeList/Locals/ARLLocals-koKR.lua
 AckisRecipeList/Locals/ARLLocals-zhCN.lua
 AckisRecipeList/Locals/ARLLocals-esMX.lua
 AckisRecipeList/Locals/ARLLocals-enUS.lua
+AckisRecipeList/Locals/ARLLocals-ruRU.lua
 AckisRecipeList/Locals/ARLLocals-deDE.lua
 AckisRecipeList/Locals/ARLLocals-esES.lua
 AckisRecipeList/Locals/ARLLocals-zhTW.lua

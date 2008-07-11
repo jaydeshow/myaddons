@@ -1,21 +1,21 @@
 ﻿--[[
 ****************************************************************************************
 
-ARLLocals-enGB.lua
+ARLLocals-ruRU.lua
 
-enGB localization strings for Ackis Recipe List
+ruRU localization strings for Ackis Recipe List
 
 $Date: 2008-07-10 15:58:32 -0400 (Thu, 10 Jul 2008) $
 $Rev: 78194 $
 
-Original translated by: Ackis
-Currently maintaince by: Ackis
+Original translated by: 
+Currently maintaince by: 
 
 
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "enGB", true)
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "ruRU", true)
 if not L then return end
 
 -- Addon Info

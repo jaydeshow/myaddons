@@ -78,7 +78,7 @@ function module:OnEnable()
 end
 
 function module:MERCHANT_SHOW()
-	if not CanMerchantRepair() then return end
+	if IsShiftKeyDown() or not CanMerchantRepair() then return end
 
 	local cost = GetRepairAllCost()
 	if cost > 0 then

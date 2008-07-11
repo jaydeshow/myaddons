@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r78194 | ackis | 2008-07-10 15:58:32 -0400 (Thu, 10 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
+   A /trunk/AckisRecipeList/Locals/ARLLocals-ruRU.lua
+
+AckisRecipeList:
+- Copy and paste enUS -> ruRU as a template
+- Update enGB
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
 r78158 | kurax | 2008-07-09 20:23:57 -0400 (Wed, 09 Jul 2008) | 1 line
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
