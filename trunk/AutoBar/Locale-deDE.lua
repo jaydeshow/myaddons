@@ -20,6 +20,8 @@ if (GetLocale() == "deDE") then
 		["Change the alpha of the bar."] = "Die Transparenz der Leiste einstellen.",
 		["Add Button"] = "Taste hinzufügen",
 		["Align Buttons"] = "Tasten Justierung",
+		["Always Popup"] = "Always Popup";
+		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
 		["Always Show"] = "Immer anzeigen";
 		["Always Show %s, even if empty."] = "Immer %s anzeigen, auch wenns leer ist.",
 		["Announce to Party"] = "Ankündigen in Gruppe",
@@ -46,6 +48,8 @@ if (GetLocale() == "deDE") then
 		["Disable Conjure Button"] = "Deaktiviere die Beschwören Taste",
 		["Docked to"] = "Gekoppelt an",
 		["Done"] = "Fertig",
+		["Drop"] = "Drop";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
 		["Enabled"] = "Aktiviert",
 		["Enable %s."] = "Aktiviere %s.",
 		["FadeOut"] = "Ausblenden",
@@ -139,13 +143,6 @@ if (GetLocale() == "deDE") then
 		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "Ziehe eine Leiste um sie zu bewegen. \nLinks Klick zum verstecken (rot) oder anzeigen (grün) der Leiste. \nRechts Klick um die Leiste zu Konfigurieren.",
 		["Move the Buttons"] = "Bewegen der Tasten",
 		["Drag a Button to move it, right click to configure the Button."] = "Ziehe eine Taste um sie zu bewegen. \nRechts Klick zum Konfigurieren der Taste.",
-
-		["{circle}"] = "{sz2}",
-		["{diamond}"] = "{sz3}",
-		["{skull}"] = "{sz8}",
-		["{square}"] = "{square}",
-		["{star}"] = "{sz1}",
-		["{triangle}"] = "{sz4}",
 
 		["{star}"] = "{sz1}",
 		["{circle}"] = "{sz2}",

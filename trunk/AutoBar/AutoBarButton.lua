@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 77650 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 78308 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -51,33 +51,56 @@ end
 
 -- Handle dragging of items, macros, spells to the button
 -- Handle rearranging of buttons when buttonLock is off
-function AutoBarButton.prototype:DropLink(itemType, itemId, itemInfo)
-	-- Select a Custom Category to use
-	local categoryInfo, category
-	for index = #self, 1, -1 do
-		category = self[index]
-		categoryInfo = AutoBarCategoryList[category]
-		if (categoryInfo and categoryInfo.customKey and (itemType == "item" or itemType == "spell" or itemType == "macro")) then
-			local itemsListDB = categoryInfo.customCategoriesDB.items
-			local itemIndex = # itemsListDB + 1
+function AutoBarButton:AddCategoryItem(category, itemType, itemId, itemInfo)
+	local categoryInfo = AutoBarCategoryList[category]
+	local itemsListDB = categoryInfo.customCategoriesDB.items
+	local itemIndex = # itemsListDB + 1
 --AutoBar:Print("AutoBarButton.prototype:DropLink " .. tostring(categoryInfo.description) .. "itemType " .. tostring(itemType) .. " itemId " .. tostring(itemId) .. " itemInfo " .. tostring(itemInfo))
-			local itemDB = {
-				itemType = itemType,
-				itemId = itemId,
-				itemInfo = itemInfo
-			}
-			itemsListDB[itemIndex] = itemDB
-			if (itemType == "spell") then
-				local spellName, spellRank = GetSpellName(itemId, itemInfo)
-				itemDB.spellName = spellName
-				itemDB.spellRank = spellRank
-				itemDB.spellClass = WaterfallDragLink.CLASS
-			else
-				itemDB.spellName = nil
-				itemDB.spellRank = nil
-				itemDB.spellClass = nil
+	local itemDB = {
+		itemType = itemType,
+		itemId = itemId,
+		itemInfo = itemInfo
+	}
+	itemsListDB[itemIndex] = itemDB
+	if (itemType == "spell") then
+		local spellName, spellRank = GetSpellName(itemId, itemInfo)
+		itemDB.spellName = spellName
+		itemDB.spellRank = spellRank
+		itemDB.spellClass = WaterfallDragLink.CLASS
+	else
+		itemDB.spellName = nil
+		itemDB.spellRank = nil
+		itemDB.spellClass = nil
+	end
+end
+
+
+-- Handle dragging of items, macros, spells to the button
+-- Handle rearranging of buttons when buttonLock is off
+function AutoBarButton.prototype:DropLink(itemType, itemId, itemInfo)
+	if (itemType == "item" or itemType == "spell" or itemType == "macro") then
+		-- Select a Custom Category to use
+		local categoryInfo, categoryKey, dropped
+		for index = # self, 1, -1 do
+			categoryKey = self[index]
+			categoryInfo = AutoBarCategoryList[categoryKey]
+
+			if (categoryInfo and categoryInfo.customKey) then
+				AutoBarButton:AddCategoryItem(categoryKey, itemType, itemId, itemInfo)
+				AutoBar:BarButtonChanged()
+				dropped = true
+				break
 			end
-			break
+		end
+
+		-- Create a Custom Category to use
+		local buttonDB = self.buttonDB
+		if (not dropped and buttonDB.drop) then
+			local buttonCategoryIndex = # buttonDB + 1
+			local categoryKey = AutoBar:CategoryNew()
+			buttonDB[buttonCategoryIndex] = categoryKey
+			AutoBarButton:AddCategoryItem(categoryKey, itemType, itemId, itemInfo)
+			AutoBar:BarButtonChanged()
 		end
 	end
 end
@@ -95,7 +118,8 @@ function AutoBarButton.prototype:DropObject()
 		AutoBar:BarButtonChanged()
 		ClearCursor()
 	else
-		if (toObject.buttonDB.hasCustomCategories) then
+		local buttonDB = toObject.buttonDB
+		if (buttonDB.hasCustomCategories and AutoBar.moveButtonsMode or buttonDB.drop) then
 			local itemType, itemId, itemInfo = GetCursorInfo()
 			if (itemType == "item" or itemType == "spell" or itemType == "macro") then
 --AutoBar:Print("AutoBarButton.prototype:DropObject itemType " .. tostring(itemType) .. " itemId " .. tostring(itemId) .. " itemInfo " .. tostring(itemInfo))
@@ -141,12 +165,6 @@ function AutoBarButton.prototype:SetupButton()
 --AutoBar:Print("AutoBarButton.prototype:SetupButton " .. tostring(buttonName) .. " bag " .. tostring(bag) .. " slot " .. tostring(slot) .. " spell " .. tostring(spell) .. " noPopup " .. tostring(noPopup))
 		self:SetupAttributes(self, bag, slot, spell, macroId, itemId, itemData)
 		if (noPopup) then
---			frame:SetAttribute("childraise-OnEnter", nil)
---			frame:SetAttribute("childstate-OnEnter", nil)
---			frame:SetAttribute("childstate-OnLeave", nil)
---			frame:SetAttribute("*childraise-OnEnter", nil)
---			frame:SetAttribute("*childstate-OnEnter", nil)
---			frame:SetAttribute("*childstate-OnLeave", nil)
 			if (popupHeader) then
 				for popupButtonIndex, popupButton in pairs(popupHeader.popupButtonList) do
 					popupButton.frame:SetAttribute("hidestates", "*")
@@ -162,6 +180,7 @@ function AutoBarButton.prototype:SetupButton()
 
 			local showOnModifier --= self.buttonDB.showOnModifier
 			local popupOnModifier --= self.buttonDB.popupOnModifier
+			local alwaysPopup = self.buttonDB.alwaysPopup
 			local buttonIndex = self.buttonDB.order
 
 			-- Create the Button's Popup Header
@@ -193,7 +212,12 @@ function AutoBarButton.prototype:SetupButton()
 				popupHeader:SetAttribute("*delaystatemap-anchor-leave", tostring(buttonIndex)..":0")
 				popupHeader:SetAttribute("*delaytimemap-anchor-leave",  tostring(buttonIndex)..":0.01")
 				popupHeader:SetAttribute("*delayhovermap-anchor-leave", tostring(buttonIndex)..":true")
+				if (alwaysPopup) then
+					popupHeader:SetAttribute("state", tostring(buttonIndex))
+				end
 			else
+				popupHeader:SetAttribute("hidestates", nil)
+				popupHeader:SetAttribute("showstates", nil)
 				popupHeader:SetAttribute(popupOnModifier .. "statemap-anchor-enter", tostring(buttonIndex))
 				popupHeader:SetAttribute(popupOnModifier .. "statemap-anchor-leave", ";") -- a nonempty statemap.  to work with the delay
 				popupHeader:SetAttribute(popupOnModifier .. "delaystatemap-anchor-leave", tostring(buttonIndex)..":0")
@@ -269,15 +293,23 @@ function AutoBarButton.prototype:SetupButton()
 
 				bag, slot, spell, itemId, macroId = AutoBarSearch.sorted:GetInfo(buttonName, popupButtonIndex)
 				itemData = buttonItems[itemId]
-				popupButtonFrame:SetAttribute("hidestates", 0)
 				self:SetupAttributes(popupButton, bag, slot, spell, macroId, itemId, itemData)
 --AutoBar:Print("AutoBarButton.prototype:SetupButton SetUp buttonName " .. tostring(popupButton.frame:GetName()) .. " itemId ".. tostring(popupButton.frame:GetAttribute("itemId")))
 				popupButton:UpdateIcon()
 			end
+
 			for popupButtonIndex, popupButton in pairs(popupHeader.popupButtonList) do
 				if (popupButtonIndex > nItems) then
 --AutoBar:Print("AutoBarButton.prototype:SetupButton Disabling buttonName " .. tostring(popupButton.frame:GetName()) .. " itemId ".. tostring(popupButton.frame:GetAttribute("itemId")))
 					popupButton.frame:SetAttribute("hidestates", "*")
+					popupButton.frame:SetAttribute("showstates", nil)
+				elseif (alwaysPopup) then
+					popupButton.frame:SetAttribute("hidestates", nil)
+					popupButton.frame:SetAttribute("showstates", "*")
+--AutoBar:Print("AutoBarButton.prototype:SetupButton alwaysPopup buttonName " .. tostring(buttonName))
+				else
+					popupButton.frame:SetAttribute("hidestates", 0)
+					popupButton.frame:SetAttribute("showstates", nil)
 				end
 			end
 		end
@@ -313,7 +345,8 @@ function AutoBarButton.prototype:SetupButton()
 	end
 end
 --/dump (# AutoBarSearch.sorted:GetList("AutoBarButtonRecovery"))
---/dump (AutoBar.buttonList["AutoBarButtonRecovery"].frame.popupHeader.popupButtonList[5].frame:GetAttribute("itemId"))
+--/dump (AutoBar.buttonList["AutoBarButtonTrinket1"].frame.popupHeader:GetAttribute("state"))
+--/script (AutoBar.buttonList["AutoBarButtonTrinket1"].frame.popupHeader:SetAttribute("state", 0))
 --/dump (AutoBar.buttonList["AutoBarButtonRecovery"].frame.popupHeader.popupButtonList[5].frame:GetAttribute("hidestates"))
 --/script AutoBar.buttonList["AutoBarButtonHearth"].frame.macroName:Show()
 --/script AutoBar.buttonList["AutoBarButtonHearth"].frame.macroName:SetText("???")
@@ -945,6 +978,7 @@ function AutoBarButtonCustom.prototype:CreateButtonFrame()
 	self.frame.ClearBindings = nil
 	self.frame.GetBindings = nil
 end
+
 
 local spellAquaticForm, spellAquaticFormIcon
 spellAquaticForm, _, spellAquaticFormIcon = GetSpellInfo(1066)

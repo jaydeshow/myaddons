@@ -5,13 +5,17 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-11 21:39:42 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78279 $
 
 Original translated by: damjau
 Currently maintaince by: next96
 
 Thank you all translators! (From Ackis)
+
+Please make sure you update the ToC file with any translations.
+
+ToC needs translation update for Notes please. (remove this if it's done)
 
 ****************************************************************************************
 ]]--
@@ -23,6 +27,7 @@ if not L then return end
 L["Version"] = "버전: "
 
 -- Options Categories
+L["About"] = "대하여"
 L["Display"] = "보기"
 L["DISPLAY_OPTIONS"] = "보기 설정"
 L["DISPLAY_OPTIONS_LONG"] = "보기 설정"
@@ -103,6 +108,7 @@ L["InitiateScanSpecial"] = "%1$s 검색 - %2$s 숙련도에 %3$s 분류의 제�
 L["RecipeListSummary"] = "\n당신은 총 %2$s개의 제조법 중 %1$s개를 배웠습니다 (%3$s%%).\n미습득한 제조법은  %4$s개 입니다."
 L["UnknownTradeSkill"] = "이 애드온이 지원하지 않는 전문기술 창을 열었습니다.  해당 기술은 %s 입니다.  이 정보를 애드온의 제작자에게 전달해주세요."
 L["OpenTradeSkillWindow"] = "전문기술 창을 연 후에 기술 검색 해주세요."
+L["TwoCraftingWindows"] = "전문기술 차이 이미 열려 있습니다. 빠진 제조법의 검색을 위해 창을 닫고 다시 열어 주십시오."
 
 -- GUI Text
 L["Close"] = "닫기"

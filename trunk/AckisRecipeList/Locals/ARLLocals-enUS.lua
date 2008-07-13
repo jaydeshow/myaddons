@@ -5,12 +5,13 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-11 14:22:39 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78248 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
 
+Please make sure you update the ToC file with any translations.
 
 ****************************************************************************************
 ]]--
@@ -22,6 +23,7 @@ if not L then return end
 L["Version"] = "Version: "
 
 -- Options Categories
+L["About"] = true
 L["Display"] = true
 L["DISPLAY_OPTIONS"] = "Display Options"
 L["DISPLAY_OPTIONS_LONG"] = "Allows you to customize how the GUI behaves."
@@ -102,6 +104,7 @@ L["InitiateScanSpecial"] = "Scanning %s - %s for missing recipes at skill level 
 L["RecipeListSummary"] = "\nYou know %s out of %s total recipes (%s%%).\nYou are missing %s recipes."
 L["UnknownTradeSkill"] = "You have opened up a trade skill window which is not supported by this add-on.  The trade skill is %s.  Please provide the author of the add-on with this information."
 L["OpenTradeSkillWindow"] = "Please open trade skill window to scan."
+L["TwoCraftingWindows"] = "Crafting window already open.  Please close the other window and re-open this one if you wish to scan for missing recipes."
 
 -- GUI Text
 L["Close"] = true

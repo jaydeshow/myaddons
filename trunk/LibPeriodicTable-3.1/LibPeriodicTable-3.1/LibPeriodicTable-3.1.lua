@@ -1,6 +1,6 @@
 --[[
 Name: PeriodicTable-3.1
-Revision: $Rev: 63397 $
+Revision: $Rev: 78286 $
 Author: Nymbia (nymbia@gmail.com)
 Many thanks to Tekkub for writing PeriodicTable 1 and 2, and for permission to use the name PeriodicTable!
 Website: http://www.wowace.com/wiki/PeriodicTable-3.1
@@ -26,7 +26,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ]]
 
-local PT3, oldminor = LibStub:NewLibrary("LibPeriodicTable-3.1", "$Rev: 63397 $")
+local PT3, oldminor = LibStub:NewLibrary("LibPeriodicTable-3.1", "$Rev: 78286 $")
 if not PT3 then
 	return
 end
@@ -338,6 +338,32 @@ function PT3:AddData(arg1, arg2, arg3)
 				self:AddData(k,v)
 			end
 		end
+	end
+end
+
+function PT3:ItemSearch(item)
+	assert(type(item) == "number" or type(item) == "string", "Invalid arg1: item must be a number or item link")
+	item = tonumber(item) or tonumber(item:match("item:(%d+)"))
+	if item == 0 then
+		self:error("Invalid arg1: invalid item.")
+	end
+	local matches = {}
+	for k,v in pairs(self.sets) do
+		local _, set = self:ItemInSet(item, k)
+		if set then
+			local have
+			for _,v in ipairs(matches) do
+				if v == set then
+					have = true
+				end
+			end
+			if not have then
+				table.insert(matches, set)
+			end
+		end
+	end
+	if #matches > 0 then
+		return matches
 	end
 end
 

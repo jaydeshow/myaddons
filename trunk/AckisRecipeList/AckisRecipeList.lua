@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-11 15:15:39 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78250 $
 
 Author: Ackis on Illidan US Horde
 
@@ -802,7 +802,7 @@ function addon:OnInitialize()
 	self.optionsFrame[L["Sort"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Sorting", L["Sort"], "Ackis Recipe List")
 	self.optionsFrame[L["Filter"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Filter", L["Filter"], "Ackis Recipe List")
 	self.optionsFrame[L["Display"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Display", L["Display"], "Ackis Recipe List")
-	LibStub("LibAboutPanel").new("Ackis Recipe List", "Ackis Recipe List")
+	self.optionsFrame[L["About"]] = LibStub("LibAboutPanel").new("Ackis Recipe List", "Ackis Recipe List")
 
 	-- Register slash commands
 	self:RegisterChatCommand("arl", "ChatCommand")
@@ -865,6 +865,9 @@ function addon:OnInitialize()
 			timbermaw = true,
 			violeteye = true,
 			zandalar = true,
+
+			-- Filtered recipe list
+			filteredrecipes = {}
 			}
 		}
 	)
@@ -922,10 +925,20 @@ end
 
 function addon:TRADE_SKILL_SHOW()
 
-	addon.SkillType = "Trade"
-	addon.ResetOkayBlizz = false
-	if (not Skillet) then
-		self:ShowScanButton()
+	-- If we don't have a skill window open already
+	if (addon.SkillType == nil) then
+
+		addon.SkillType = "Trade"
+		addon.ResetOkayBlizz = false
+
+		if (addon.ScanButton and not Skillet) then
+			self:ShowScanButton()
+		end
+
+	else
+
+		self:Print(L["TwoCraftingWindows"])
+
 	end
 
 end
@@ -935,15 +948,17 @@ end
 function addon:TRADE_SKILL_CLOSE()
 
 	addon.ResetOkayBlizz = true
+	addon.SkillType = nil
+
 	if (addon.ResetOkayBlizz and addon.ResetOkayARL) then
 		self:ResetVariables()
 	end
-	if (addon.db.profile.closeguionskillclose) then
-		if (addon.Frame) then
-			self:CloseWindow()
-		end
+
+	if (addon.db.profile.closeguionskillclose and addon.Frame) then
+		self:CloseWindow()
 	end
-	if (not Skillet) then
+
+	if (addon.ScanButton and not Skillet) then
 		addon.ScanButton:Hide()
 	end
 
@@ -953,10 +968,20 @@ end
 
 function addon:CRAFT_SHOW()
 
-	addon.SkillType = "Craft"
-	addon.ResetOkayBlizz = false
-	if (not Skillet or CraftIsPetTraining()) then
-		self:ShowScanButton()
+	-- If we don't have a skill window open already
+	if (addon.SkillType == nil) then
+
+		addon.SkillType = "Craft"
+		addon.ResetOkayBlizz = false
+
+		if (addon.ScanButton and (not Skillet or CraftIsPetTraining())) then
+			self:ShowScanButton()
+		end
+
+	else
+
+		self:Print(L["TwoCraftingWindows"])
+
 	end
 
 end
@@ -966,15 +991,17 @@ end
 function addon:CRAFT_CLOSE()
 
 	addon.ResetOkayBlizz = true
+	addon.SkillType = nil
+
 	if (addon.ResetOkayBlizz and addon.ResetOkayARL) then
 		self:ResetVariables()
 	end
-	if (addon.db.profile.closeguionskillclose) then
-		if (addon.Frame) then
-			self:CloseWindow()
-		end
+
+	if (addon.db.profile.closeguionskillclose and addon.Frame) then
+		self:CloseWindow()
 	end
-	if (not Skillet) then
+
+	if (addon.ScanButton and not Skillet) then
 		addon.ScanButton:Hide()
 	end
 
@@ -983,8 +1010,10 @@ end
 -- Slash command handler
 
 function addon:ChatCommand(input)
-	if (not input) or (input:trim() == "") then
-		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame)
+	if (not input) or (input:trim() == "") or (input == string.lower(L["About"])) then
+		-- Open About panel if there's no parameters
+		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["About"]])
+		--InterfaceOptionsFrame_OpenToFrame(self.optionsFrame)
 	elseif (input == string.lower(L["Sort"])) then
 		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Sort"]])
 	elseif (input == string.lower(L["Filter"])) then
@@ -1030,6 +1059,9 @@ function addon:addTradeSkill(RecipeName, RecipeLevel, RecipeAquire, RecipeLink, 
 		local temp = select(i,...)
 		tinsert(addon.RecipeListing[RecipeName]["Speciality"],temp)
 	end
+
+	-- Do we display this recipe?  Used for specific hiding of a recipe, or search filter results
+	addon.RecipeListing[RecipeName]["Display"] = true
 
 end
 
@@ -1099,6 +1131,42 @@ function addon:foundTradeSkill(RecipeName)
 
 	-- Increase found count
 	addon.FoundRecipes = addon.FoundRecipes + 1
+
+end
+
+--[[
+
+	Recipe Filtering Functions
+
+]]--
+
+-- Toggles the filtering of a specific recipe, including it or preventing it from being displayed in the results
+
+function addon:ToggleFilterRecipe(RecipeName)
+
+	-- Remove the recipe name from the saved variables
+	if (addon.RecipeListing[RecipeName]["Display"] == false) then
+		tremove(addon.db.profile.filteredrecipes,RecipeName)
+	-- Add recipe name to the saved variables
+	else
+		tinsert(addon.db.profile.filteredrecipes,RecipeName)	
+	end
+
+	addon.RecipeListing[RecipeName]["Display"] = not addon.RecipeListing[RecipeName]["Display"]
+
+end
+
+-- Parses through the filtered recipe list, marking the ones which appear in the list to not display
+
+function addon:MarkFilteredRecipes()
+
+	-- Parse the filtered recipes saved variables
+	for i,k in pairs(addon.db.profile.filteredrecipes) do
+		-- If the recipe is in our current database mark it to not be displayed
+		if (addon.RecipeListing[k]) then
+			addon.RecipeListing[k]["Display"] = false
+		end
+	end
 
 end
 
@@ -1263,6 +1331,12 @@ do
 
 		-- Update the rep table with appropiate flags
 		PopulateReptable()
+
+		-- Check to see if we're filtering this recipe due to search results or as a specific filter
+		if (not addon.RecipeListing[RecipeName]["Display"]) then
+			addon.FilteredRecipes = addon.FilteredRecipes + 1
+			return false
+		end
 
 		-- Display all skill levels
 		if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) and (not addon.db.profile.skill) then
@@ -1457,6 +1531,12 @@ do
 
 end
 
+--[[
+
+	RecipeAquisition Functions
+
+]]--
+
 -- Combines all monster information into a single string for output
 
 function addon:CombineMobs(BoE, MobNames, MobLoc)
@@ -1631,6 +1711,33 @@ function addon:AddDoubleReputation(RepLevel, Faction1, Faction2)
 
 end
 
+--[[
+
+	Searching Functions
+
+]]--
+
+-- Searches through the recipe name and aquisition information, setting the display flag to false if the search string does not appear
+
+function addon:SearchRecipeDB(searchstring)
+
+	for i in pairs(addon.RecipeListing) do
+		if (not string.find(i,searchstring)) and (not string.find(addon.RecipeListing[i]["Acquire"],searchstring)) then
+			addon.RecipeListing[i]["Display"] = false
+		end
+	end
+
+end
+
+-- Resets the display flags of all recipes in the database
+
+function addon:ResetSearch()
+
+	for i in pairs(addon.RecipeListing) do
+		addon.RecipeListing[i]["Display"] = true
+	end
+
+end
 
 --[[
 

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibTourist-3.0
-Revision: $Rev: 78145 $
+Revision: $Rev: 78292 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://www.wowace.com/wiki/LibTourist-3.0
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibTourist-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 78145 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 78292 $"):match("(%d+)"))
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 if not LibStub("LibBabble-Zone-3.0") then error(MAJOR_VERSION .. " requires LibBabble-Zone-3.0.") end
@@ -2163,13 +2163,13 @@ do
 
 	zones[BZ["Ragefire Chasm"]] = {
 		low = 13,
-		high = 15,
+		high = 18,
 		continent = Kalimdor,
 		paths = BZ["Orgrimmar"],
 		groupSize = 5,
 		faction = "Horde",
 		type = "Instance",
-		entrancePortal = { BZ["Orgrimmar"], 49, 50 },
+		entrancePortal = { BZ["Orgrimmar"], 52.8, 49 },
 	}
 
 	zones[BZ["Wailing Caverns"]] = {

@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 78327 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1160,6 +1160,8 @@ function AutoBarCategory:Initialize()
 	spellNameList["Lightning Shield"] = GetSpellInfo(25472)
 	spellNameList["Mark of the Wild"] = GetSpellInfo(26990)
 	spellNameList["Water Shield"] = GetSpellInfo(33736)
+	spellNameList["Water Walking"] = GetSpellInfo(546)
+	spellNameList["Water Breathing"] = GetSpellInfo(131)
 
 	spellNameList["Arcane Intellect"] = GetSpellInfo(27126)
 	spellNameList["Arcane Brilliance"] = GetSpellInfo(27127)
@@ -1228,6 +1230,8 @@ function AutoBarCategory:Initialize()
 			"PRIEST", spellNameList["Divine Spirit"], spellNameList["Prayer of Spirit"],
 			"PRIEST", spellNameList["Power Word: Fortitude"], spellNameList["Prayer of Fortitude"],
 			"PRIEST", spellNameList["Inner Fire"], spellNameList["Inner Fire"],
+			"SHAMAN", spellNameList["Water Walking"], spellNameList["Water Walking"],
+			"SHAMAN", spellNameList["Water Breathing"], spellNameList["Water Breathing"],
 			"SHAMAN", spellNameList["Earth Shield"], spellNameList["Earth Shield"],
 			"SHAMAN", spellNameList["Lightning Shield"], spellNameList["Lightning Shield"],
 			"SHAMAN", spellNameList["Water Shield"], spellNameList["Water Shield"],

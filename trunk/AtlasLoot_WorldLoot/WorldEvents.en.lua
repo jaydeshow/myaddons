@@ -629,6 +629,7 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 34075, "", "=q4=Ring of Ghoulish Delight", "=ds=#s13#", "" },
 		{ 34073, "", "=q4=The Horseman's Signet Ring", "=ds=#s13#", "" },
 		{ 34074, "", "=q4=Witching Band", "=ds=#s13#", "" },
+		{ 38175, "", "=q4=The Horseman's Blade", "=ds=#h3#, #w10#" },
 		{ 0,"","","" },
 		{ 33292, "", "=q3=Hallowed Helm", "=ds=#s1#, #a1#", "" },
 		{ 33154, "", "=q3=Sinister Squashling", "=ds=#e13#", "" },
@@ -639,11 +640,12 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 0,"","","" },
 		{ 0,"","","" },
 		{ 0,"","","" },
-		{ 0,"","","" },
+		{ 37012, "", "=q4=The Horseman's Reins", "=ds=#e12#", "" },
 		{ 33182, "", "=q4=Swift Flying Broom", "=ds=#e12#", "" },
 		{ 33184, "", "=q4=Swift Magic Broom", "=ds=#e12#", "" },
 		{ 33176, "", "=q3=Flying Broom", "=ds=#e12#", "" },
-		{ 33183, "", "=q3=Magic Broom", "=ds=#e12#", "" },
+		{ 37011, "", "=q3=Magic Broom", "=ds=#e12#", "" },
+		{ 33183, "", "=q3=Old Magic Broom", "=ds=#e12#", "" },
 		{ 33189, "", "=q2=Rickety Magic Broom", "=ds=#e12#", "" },
 	};
 
@@ -985,8 +987,6 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 ----------------
 
 	Brewfest1 = {
-		{ 33927, "", "=q3=Brewfest Pony Keg", "=ds=#m20#" },
-		{ 0,"","","" },
 		{ 33047, "", "=q1=Belbi's Eyesight Enhancing Romance Goggles", "=ds=#s1#" },
 		{ 33968, "", "=q1=Blue Brewfest Hat", "=ds=#s1#" },
 		{ 33864, "", "=q1=Brown Brewfest Hat", "=ds=#s1#" },
@@ -1002,6 +1002,7 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 33976, "", "=q3=Brewfest Ram", "=q1=#m4#: =ds=#e12#" },
 		{ 32912, "", "=q3=Yellow Brewfest Stein", "=q1=#m4#: =ds=#h3#" },
 		{ 32233, "", "=q3=Wolpertinger's Tankard", "=q1=#m4#: =ds=#e13#" },
+		{ 33927, "", "=q3=Brewfest Pony Keg", "=ds=#m20#" },
 		{ 0,"","","" },
 		{ 33455, "", "=q2=Brewfest Prize Ticket", "=ds=#m17#" },
 		{ 37829, "", "=q2=Brewfest Prize Token", "=ds=#m17#" },
@@ -1012,7 +1013,7 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 		{ 33024, "", "=q1=Pickled Sausage", "=ds=#e3#" },
 		{ 33025, "", "=q1=Spicy Smoked Sausage", "=ds=#e3#" },
 		{ 33026, "", "=q1=The Golden Link", "=ds=#e3#" },
-		{ 0,"","","" },
+		{ 38428, "", "=q1=Rock-Salted Pretzel", "=ds=#e3#" },
 		{ 33043, "", "=q1=The Essential Brewfest Pretzel", "=ds=#e3#" },
 		{ 33929, "", "=q1=Brewfest Brew", "=ds=#e4#" },
 	};
