@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r78286 | thrillseeker | 2008-07-12 06:15:22 -0400 (Sat, 12 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1/LibPeriodicTable-3.1.lua
+
+LibPeriodicTable-3.1:
+- Added the ItemSearch-Function from Phanx. It works.
+------------------------------------------------------------------------
 r77769 | toadkiller | 2008-07-03 23:18:14 -0400 (Thu, 03 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Consumable/LibPeriodicTable-3.1-Consumable.lua

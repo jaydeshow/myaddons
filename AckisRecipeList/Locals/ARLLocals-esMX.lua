@@ -5,13 +5,15 @@ ARLLocals-esES.lua
 
 esES localization strings for Ackis Recipe List
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78247 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
 
 Thank you all translators! (From Ackis)
+
+Please make sure you update the ToC file with any translations.
 
 ****************************************************************************************
 ]]--
@@ -23,11 +25,6 @@ local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()
 
 -- Addon Info
 L["Version"] = "Version: "
-L["Author"] = "Ackis en Horda Illidan (US)"
-L["Wiki"] = "Wiki: "
-L["Website"] = "Sitio Web: "
-L["Credits"] = "Créditos: "
-L["Locals"] = "Compatible con: "
 
 -- Options Categories
 L["Display"] = "Visualización"

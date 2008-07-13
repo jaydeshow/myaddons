@@ -5,12 +5,14 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-11 15:27:37 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78251 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
 Thank you all translators! (From Ackis)
+
+Please make sure you update the ToC file with any translations.
 
 ****************************************************************************************
 ]]--
@@ -22,6 +24,7 @@ if not L then return end
 L["Version"] = "Version : "
 
 -- Options Categories
+L["About"] = "A propos"
 L["Display"] = "Affichage"
 L["DISPLAY_OPTIONS"] = "Options d'affichage"
 L["DISPLAY_OPTIONS_LONG"] = "Vous permet de personnaliser le comportement de l'IUG."
@@ -102,6 +105,7 @@ L["InitiateScanSpecial"] = "Analyse des recettes manquantes en %s - %s au niveau
 L["RecipeListSummary"] = "\nVous connaissez %s des %s recettes totales (%s%%).\nIl vous manque %s recettes."
 L["UnknownTradeSkill"] = "Vous avez ouvert une fenêtre de métier qui n'est pas supporté par cet addon. Le métier en question est %s. Veuillez en informer l'auteur de cet addon."
 L["OpenTradeSkillWindow"] = "Veuillez ouvrir la fenêtre de métier à analyser."
+L["TwoCraftingWindows"] = "La fenêtre de craft est déjà ouverte. Veuillez fermer celle ci et la ré-ouvrir si vous souhaitez scanner les recettes manquantes."
 
 -- GUI Text
 L["Close"] = "Fermer"

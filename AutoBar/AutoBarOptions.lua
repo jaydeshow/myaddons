@@ -36,14 +36,13 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 78308 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
-local LBF = LibStub("LibButtonFacade", true)
 local LibKeyBound = LibStub:GetLibrary("LibKeyBound-1.0")
 local waterfall = AceLibrary:GetInstance("Waterfall-1.0")
 
@@ -1016,6 +1015,17 @@ local function setButtonShuffle(table, value)
 	optionsChanged()
 end
 
+local function getButtonDrop(table)
+	local buttonKey = table.buttonKey
+	return AutoBar:GetButtonDB(buttonKey).drop
+end
+
+local function setButtonDrop(table, value)
+	local buttonKey = table.buttonKey
+	AutoBar:GetButtonDB(buttonKey).drop = value
+	optionsChanged()
+end
+
 local function getButtonHide(table)
 	local buttonKey = table.buttonKey
 	return AutoBar:GetButtonDB(buttonKey).hide
@@ -1049,6 +1059,25 @@ local function setButtonNoPopup(table, value)
 	local buttonKey = table.buttonKey
 	AutoBar:GetButtonDB(buttonKey).noPopup = value
 	optionsChanged()
+end
+
+local function getButtonAlwaysPopup(table)
+	local buttonKey = table.buttonKey
+	return AutoBar:GetButtonDB(buttonKey).alwaysPopup
+end
+
+local function setButtonAlwaysPopup(table, value)
+	local buttonKey = table.buttonKey
+	AutoBar:GetButtonDB(buttonKey).alwaysPopup = value
+	AutoBarChanged()
+	if (not value) then
+		local button = AutoBar.buttonList[buttonKey]
+		if (button) then
+			if (button.frame.popupHeader) then
+				button.frame.popupHeader:SetAttribute("state", 0)
+			end
+		end
+	end
 end
 
 local function getButtonAlwaysShow(table)
@@ -1572,10 +1601,10 @@ local function CategoryReset()
 end
 
 
-local function CategoryNew()
+function AutoBar:CategoryNew()
 	local newCategoryName, categoryKey = AutoBarCustom:GetNewName(L["Custom"], 1)
 	local customCategories = AutoBar.db.account.customCategories
---AutoBar:Print("CategoryNew newCategoryName " .. tostring(newCategoryName) .. " categoryKey " .. tostring(categoryKey))
+--AutoBar:Print("AutoBar:CategoryNew newCategoryName " .. tostring(newCategoryName) .. " categoryKey " .. tostring(categoryKey))
 	customCategories[categoryKey] = {
 		name = newCategoryName,
 		desc = newCategoryName,
@@ -1584,7 +1613,7 @@ local function CategoryNew()
 	}
 	AutoBarCategoryList[categoryKey] = AutoBarCustom:new(AutoBar.db.account.customCategories[categoryKey])
 	AutoBar:CategoriesChanged()
---DevTools_Dump(AutoBar.db.account.customCategories)
+	return categoryKey
 end
 -- /dump AutoBar.db.account.customCategories
 
@@ -1600,7 +1629,7 @@ end
 --DevTools_Dump(categoriesListDB)
 -- /dump AutoBar.db.account.customCategories
 
-local function CategoryItemNew(table)
+function AutoBar:CategoryItemNew(table)
 	local categoryKey = table.categoryKey
 	local itemsListDB = AutoBar.db.account.customCategories[categoryKey].items
 	local itemIndex = # itemsListDB + 1
@@ -1764,7 +1793,7 @@ function AutoBar:CreateSmallOptions()
 							order = 1,
 						    name = L["New"],
 						    desc = L["New"],
-						    func = CategoryNew,
+						    func = AutoBar.CategoryNew,
 						},
 						categoryReset = {
 						    type = "execute",
@@ -2533,6 +2562,16 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 					passValue = passValue,
 					disabled = getCombatLockdown,
 				},
+				drop = {
+					type = "toggle",
+					order = 12,
+					name = L["Drop"],
+					desc = L["Drop items, spells or macros onto Button to add them to its top Custom Category"],
+					get = getButtonDrop,
+					set = setButtonDrop,
+					passValue = passValue,
+					disabled = getCombatLockdown,
+				},
 				hide = {
 					type = "toggle",
 					order = 14,
@@ -2550,6 +2589,16 @@ function AutoBar:CreateBarButtonOptions(barKey, buttonIndex, buttonKey, existing
 					desc = L["No Popup for %s"]:format(name),
 					get = getButtonNoPopup,
 					set = setButtonNoPopup,
+					passValue = passValue,
+					disabled = getCombatLockdown,
+				},
+				alwaysPopup = {
+					type = "toggle",
+					order = 16,
+					name = L["Always Popup"],
+					desc = L["Always keep Popups open for %s"]:format(name),
+					get = getButtonAlwaysPopup,
+					set = setButtonAlwaysPopup,
 					passValue = passValue,
 					disabled = getCombatLockdown,
 				},
@@ -2864,7 +2913,7 @@ function AutoBar:CreateCustomCategoryOptions(options)
 							    type = "execute",
 							    name = L["New"],
 							    desc = L["New"],
-							    func = CategoryItemNew,
+							    func = AutoBar.CategoryItemNew,
 								passValue = passValue,
 							},
 							newCategoryMacro = {

@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 76400 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 78330 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-06-10 05:31:53 -0400 (Tue, 10 Jun 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-07-13 06:21:15 -0400 (Sun, 13 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("TriggerConditionsData")
@@ -382,7 +382,6 @@ Parrot:RegisterSecondaryTriggerCondition {
 		end
 		
 		local form = GetShapeshiftForm(true)
-		ChatFrame1:AddMessage("shapeshiftform = " .. form)
 		if form == 1 then
 			return param == "Bear Form"
 		elseif form == 2 then

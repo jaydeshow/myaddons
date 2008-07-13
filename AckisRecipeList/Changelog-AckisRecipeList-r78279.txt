@@ -1,4 +1,115 @@
 ------------------------------------------------------------------------
+r78279 | next96 | 2008-07-11 21:39:42 -0400 (Fri, 11 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r78268 | ackis | 2008-07-11 18:38:16 -0400 (Fri, 11 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AboutPanel.lua
+
+AckisRecipeList:
+- Fix AboutPanel issue
+------------------------------------------------------------------------
+r78261 | ackis | 2008-07-11 17:08:19 -0400 (Fri, 11 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AboutPanel.lua
+
+AckisRecipeList:
+- Modified AboutPanel code somewhat
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78251 | trasher | 2008-07-11 15:27:37 -0400 (Fri, 11 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR update
+------------------------------------------------------------------------
+r78250 | ackis | 2008-07-11 15:15:39 -0400 (Fri, 11 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Add initial filtering functions for individual patterns.  Cannot be accessed at all, for use with new GUI.
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78249 | ackis | 2008-07-11 14:57:10 -0400 (Fri, 11 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Add initial search functions.  Cannot be accessed at all, for use with new GUI.
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78248 | ackis | 2008-07-11 14:22:39 -0400 (Fri, 11 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+
+AckisRecipeList:
+- If a trade/craft window is open already, don't put the button on the new window.  Will also spit out a message telling you to close the old window and re-open the new one.  Should fix ticket 3.
+- New localization L["TwoCraftingWindows"]
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78247 | ackis | 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-ruRU.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
+
+AckisRecipeList:
+- Add a few comments to localization files
+- Removed a few unneeded localizations
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78246 | ackis | 2008-07-11 13:46:17 -0400 (Fri, 11 Jul 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AboutPanel.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- ToC update
+- Documented AboutPanel
+- More localization stuff in the AboutPanel
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78244 | ackis | 2008-07-11 13:25:15 -0400 (Fri, 11 Jul 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AboutPanel.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+
+AckisRecipeList:
+- Make /arl open up the about panel by defaults
+- Attempt to localize the about panel somewhat (ie: about is localized), did a frFR and enUS
+- Added About to normal localizations so you can also do /arl about
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78241 | ackis | 2008-07-11 12:59:38 -0400 (Fri, 11 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Check to see if the scan button exists before trying to hide it.  Possible fix for ticket 23.
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
 r78194 | ackis | 2008-07-10 15:58:32 -0400 (Thu, 10 Jul 2008) | 4 lines
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua

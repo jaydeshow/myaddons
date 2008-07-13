@@ -1,8 +1,55 @@
--- Code stolen from Tekkub
+--[[
+****************************************************************************************
+LibAboutPanel
+$Date: 2008-07-11 18:38:16 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78268 $
+
+Author: Tekkub
+Modifications: Ackis on Illidan US Horde
+
+****************************************************************************************
+
+This library will add an about panel to your Blizzard interface options.  You can specify whether or not
+to have the panel linked to a main panel, or just have it created seperately.  It will populate the fields of
+the about panel from the fields located in your ToC.  To create the about panel, just add the following
+line of code into your mod:
+
+LibStub("LibAboutPanel").new(parentframe, addonname)
+
+It will also return the frame so you can call it like:
+
+frame = LibStub("LibAboutPanel").new(parentframe, addonname)
+
+The parentframe option may be nil, in which case it will not anchor the about panel to any frame.
+Otherwise, it will anchor the about frame to that frame.
+
+The second option is the name of your add-on.  This is manditory as the about panel will pull all
+information from this add-ons ToC.
+
+The ToC fields which the add-on reads are:
+
+"Notes"
+"Version"
+"Author"
+"X-Author-Faction"
+"X-Author-Server"
+"X-Category"
+"X-License"
+"X-Email"
+"X-Website"
+"X-Credits"
+"X-Localizations"
+"X-Donate"
+
+It will only read fields when they exist, and skip them if they do not exist.
+
+Currently it will not read localization versions of fields all fields.
+
+****************************************************************************************
+]]--
 
 local lib, oldminor = LibStub:NewLibrary("LibAboutPanel", 1)
 if not lib then return end
-
 
 function lib.new(parent, addonname)
 	local frame = CreateFrame("Frame", nil, UIParent)
@@ -10,8 +57,28 @@ function lib.new(parent, addonname)
 	frame:Hide()
 	frame:SetScript("OnShow", lib.OnShow)
 	InterfaceOptions_AddCategory(frame)
+	return frame
 end
 
+--[[
+
+local GAME_LOCALE = GetLocale()
+
+if GAME_LOCALE ~= "frFR" then
+	GAME_LOCALE = "enUS"
+end
+
+local L = {}
+
+if GAME_LOCALE == "enUS" then
+	L["About"] = true
+	L["Click and press Ctrl-C to copy"] = true
+elseif GAME_LOCALE == "frFR" then
+	L["About"] = "à propos de"
+	L["Click and press Ctrl-C to copy"] = true
+end
+
+]]--
 
 local editbox = CreateFrame('EditBox', nil, UIParent)
 editbox:Hide()
@@ -63,9 +130,20 @@ local haseditbox = {["Version"] = true, ["X-Website"] = true, ["X-Email"] = true
 local function HideTooltip() GameTooltip:Hide() end
 local function ShowTooltip(self)
 	GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT")
+	--GameTooltip:SetText(L["Click and press Ctrl-C to copy"])
 	GameTooltip:SetText("Click and press Ctrl-C to copy")
 end
 function lib.OnShow(frame)
+--[[
+	local notefield = "Notes"
+
+	if (GAME_LOCALE ~= "enUS") then
+		notefield = notefield .. "-" .. GAME_LOCALE
+	end
+
+	local notes = GetAddOnMetadata(frame.addonname, notefield) or GetAddOnMetadata(frame.addonname, "Notes")
+]]--
+
 	local notes = GetAddOnMetadata(frame.addonname, "Notes")
 
 	local title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
@@ -100,8 +178,8 @@ function lib.OnShow(frame)
 
 			if (field == "Author") then
 
-				local authorservername = GetAddOnMetadata(frame.addonname, "X-server")
-				local authorfaction = GetAddOnMetadata(frame.addonname, "X-faction")
+				local authorservername = GetAddOnMetadata(frame.addonname, "X-Author-Server")
+				local authorfaction = GetAddOnMetadata(frame.addonname, "X-Author-Faction")
 
 				if authorservername and authorfaction then
 					detail:SetText((haseditbox[field] and "|cff9999ff" or "").. val .. " on " .. authorservername .. " (" .. authorfaction .. ")")

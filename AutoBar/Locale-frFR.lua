@@ -20,6 +20,8 @@ if (GetLocale() == "frFR") then
 		["Change the alpha of the bar."] = "Modifie la transparence de la barre.",
 		["Add Button"] = "Add Button",
 		["Align Buttons"] = "Alignement des boutons",
+		["Always Popup"] = "Always Popup";
+		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
 		["Always Show"] = "Toujours visible";
 		["Always Show %s, even if empty."] = "Toujours voir %s, même si vide.";
 		["Announce to Party"] = "Announce to Party",
@@ -46,6 +48,8 @@ if (GetLocale() == "frFR") then
 		["Disable Conjure Button"] = "Disable Conjure Button",
 		["Docked to"] = "Ancrer à",
 		["Done"] = "OK";
+		["Drop"] = "Drop";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
 		["Enabled"] = "Activé",
 		["Enable %s."] = "Activ %s.",
 		["FadeOut"] = "Fondu",

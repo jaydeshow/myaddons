@@ -20,6 +20,8 @@ if (GetLocale() == "zhTW") then
 		["Change the alpha of the bar."] = "改變物品列的透明度",
 		["Add Button"] = "增加按鈕",
 		["Align Buttons"] = "按鈕排列方向",
+		["Always Popup"] = "Always Popup";
+		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
 		["Always Show"] = "永遠顯示";
 		["Always Show %s, even if empty."] = "永遠顯示 %s，即使是空白的。";
 		["Announce to Party"] = "通報到小隊",
@@ -46,6 +48,8 @@ if (GetLocale() == "zhTW") then
 		["Disable Conjure Button"] = "取消魔法製造按鈕",
 		["Docked to"] = "依附於",
 		["Done"] = "完成";
+		["Drop"] = "Drop";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
 		["Enabled"] = "啟用",
 		["Enable %s."] = "啟用 %s",
 		["FadeOut"] = "淡出",

@@ -20,6 +20,8 @@ if (GetLocale() == "ruRU") then
 		["Change the alpha of the bar."] = "Change the alpha of the bar.",
 		["Add Button"] = "Add Button",
 		["Align Buttons"] = "Align Buttons",
+		["Always Popup"] = "Always Popup";
+		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
 		["Always Show"] = "Always Show";
 		["Always Show %s, even if empty."] = "Always Show %s, even if empty.";
 		["Announce to Party"] = "Announce to Party",
@@ -46,6 +48,8 @@ if (GetLocale() == "ruRU") then
 		["Disable Conjure Button"] = "Disable Conjure Button",
 		["Docked to"] = "Docked to",
 		["Done"] = "Done";
+		["Drop"] = "Drop";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
 		["Enabled"] = "Enabled",
 		["Enable %s."] = "Enable %s.",
 		["FadeOut"] = "FadeOut",

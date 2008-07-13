@@ -5,13 +5,15 @@ ARLLocals-zhCN.lua
 
 zhCN localization strings for Ackis Recipe List
 
-$Date: 2008-07-09 20:23:57 -0400 (Wed, 09 Jul 2008) $
-$Rev: 78158 $
+$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78247 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: Kurax, 冰焱妩魅 @ CWDG
 
 Thank you all translators! (From Ackis)
+
+Please make sure you update the ToC file with any translations.
 
 ****************************************************************************************
 ]]--

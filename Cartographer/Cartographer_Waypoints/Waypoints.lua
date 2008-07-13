@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 77997 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78302 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-07 12:52:29 -0400 (Mon, 07 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-12 18:06:13 -0400 (Sat, 12 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -963,18 +963,27 @@ do
 end
 
 if not hasCart3 then
-	function _G.SetWaypoint(zone, x, y, text, metadata)
+	function _G.SetWaypoint(...)
 		if not Cartographer:IsModuleActive(self) and self.db then
 			return
 		end
+		
+		local first = (...)
+		local zoneName, x, y, text, metadata
+		if type(first) == "number" then
+			local continentID, zoneID
+			continentID, zoneID, x, y, text, metadata = ...
+			zoneName = select(zoneID, GetMapZones(continentID))
+		else
+			local zone
+			zone, x, y, text, metadata = ...
+			zoneName = Tourist:GetZoneFromTexture(zone)
+		end
 	
-		local zoneName = Tourist:GetZoneFromTexture(zone)
-		local eZoneName = BZR[zoneName]
 		local wp = Waypoint:new(text or '')
 		wp.x = x
 		wp.y = y
 		wp.Zone = zoneName
-		wp.EZone = eZoneName
 		wp.metadata = metadata
 		Cartographer_Waypoints:AddWaypoint(wp)
 	end

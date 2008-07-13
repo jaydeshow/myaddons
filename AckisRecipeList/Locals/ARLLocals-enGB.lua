@@ -5,12 +5,13 @@ ARLLocals-enGB.lua
 
 enGB localization strings for Ackis Recipe List
 
-$Date: 2008-07-10 15:58:32 -0400 (Thu, 10 Jul 2008) $
-$Rev: 78194 $
+$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78247 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
 
+Please make sure you update the ToC file with any translations.
 
 ****************************************************************************************
 ]]--
@@ -22,6 +23,7 @@ if not L then return end
 L["Version"] = "Version: "
 
 -- Options Categories
+L["About"] = true
 L["Display"] = true
 L["DISPLAY_OPTIONS"] = "Display Options"
 L["DISPLAY_OPTIONS_LONG"] = "Allows you to customize how the GUI behaves."

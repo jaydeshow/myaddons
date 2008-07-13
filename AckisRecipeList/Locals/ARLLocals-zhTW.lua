@@ -5,13 +5,17 @@ ARLLocals-zhTW.lua
 
 zhTW localization strings for Ackis Recipe List
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
+$Rev: 78247 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: apa1102, zhucc
 
 Thank you all translators! (From Ackis)
+
+Please make sure you update the ToC file with any translations.
+
+ToC needs translation update for Notes please. (remove this if it's done)
 
 ****************************************************************************************
 ]]--
@@ -21,11 +25,6 @@ if not L then return end
 
 -- Addon Info
 L["Version"] = "版本："
-L["Author"] = "Ackis on Illidan (US) Horde"
-L["Wiki"] = "Wiki："
-L["Website"] = "網站："
-L["Credits"] = "製作人員："
-L["Locals"] = "相容："
 
 -- Options Categories
 L["Display"] = "顯示"

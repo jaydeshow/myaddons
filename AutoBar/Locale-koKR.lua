@@ -20,6 +20,8 @@ if (GetLocale() == "koKR") then
 		["Change the alpha of the bar."] = "바의 투명도를 변경합니다.",
 		["Add Button"] = "버튼 추가",
 		["Align Buttons"] = "버튼 정렬",
+		["Always Popup"] = "Always Popup";
+		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
 		["Always Show"] = "항상 표시";
 		["Always Show %s, even if empty."] = "빈창을 포함하여, 항상 %s|1을;를; 표시합니다.";
 		["Announce to Party"] = "파티에 알림",
@@ -46,6 +48,8 @@ if (GetLocale() == "koKR") then
 		["Disable Conjure Button"] = "생성 버튼 비활성화",
 		["Docked to"] = "위치 변경",
 		["Done"] = "완료";
+		["Drop"] = "Drop";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
 		["Enabled"] = "사용",
 		["Enable %s."] = "%s|1을;를; 사용",
 		["FadeOut"] = "투명화",

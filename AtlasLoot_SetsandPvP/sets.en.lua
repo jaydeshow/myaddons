@@ -2060,11 +2060,11 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 32768, "", "=q4=Reins of the Raven Lord", "=q2=#n58#, =q1=#z16#" },
 		{ 33809, "", "=q4=Amani War Bear", "=q2=#n130#, =q1=#z29#" },
 		{ 0,"","","" },
+		{ 38576, "", "=q4=Big Battle Bear", "=q2=#m24#" },
 		{ 33225, "", "=q4=Reins of the Swift Spectral Tiger", "=q2=#m24#" },
 		{ 33224, "", "=q3=Reins of the Spectral Tiger", "=q2=#m24#" },
 		{ 35226, "", "=q4=X-51 Nether-Rocket X-TREME", "=q2=#m24#" },
 		{ 35225, "", "=q3=X-51 Nether-Rocket", "=q2=#m24#" },
-		{ 0,"","","" },
 		{ 0,"","","" },
 		{ 34061, "", "=q4=Turbo-Charged Flying Machine Control", "=ds=#p5#" },
 		{ 34060, "", "=q3=Flying Machine Control", "=ds=#p5#" },
@@ -2072,10 +2072,12 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 33977, "", "=q4=Swift Brewfest Ram", "=ds=#e12#" },
 		{ 33976, "", "=q3=Brewfest Ram", "=ds=#e12#" },
 		{ 0,"","","" },
+		{ 37012, "", "=q4=The Horseman's Reins", "=ds=#e12#", "" },
 		{ 33182, "", "=q4=Swift Flying Broom", "=q2=#n136#" },
 		{ 33184, "", "=q4=Swift Magic Broom", "=q2=#n136#" },
 		{ 33176, "", "=q3=Flying Broom", "=q2=#n136#" },
-		{ 33183, "", "=q3=Magic Broom", "=q2=#n136#" },
+		{ 37011, "", "=q3=Magic Broom", "=ds=#e12#", "" },
+		{ 33183, "", "=q3=Old Magic Broom", "=ds=#e12#", "" },
 		{ 33189, "", "=q2=Rickety Magic Broom", "=q2=#n136#" },
 	};
 	
@@ -2195,7 +2197,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 	
 	CardGame2 = {
 		{ 0, "INV_Box_01", "=q6=#ud4#", "=q1=#ud23#" },
-		{ 0, "", "=q4=Bear Mount", "=ds=#e12#" },
+		{ 38576, "", "=q4=Big Battle Bear", "=ds=#e12#" },
 		{ 0, "", "=q3=Taunt Flag", "=ds=#m20#" },
 		{ 38577, "", "=q1=Party Grenade", "=ds=#m20#" },
 		{ 0,"","","" },

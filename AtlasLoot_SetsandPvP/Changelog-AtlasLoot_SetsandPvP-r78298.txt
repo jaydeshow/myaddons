@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r78298 | hegarol | 2008-07-12 17:10:07 -0400 (Sat, 12 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- ID for Bear mount added
+- Hallow's End update
+------------------------------------------------------------------------
 r78195 | hegarol | 2008-07-10 16:12:36 -0400 (Thu, 10 Jul 2008) | 3 lines
 Changed paths:
    M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
