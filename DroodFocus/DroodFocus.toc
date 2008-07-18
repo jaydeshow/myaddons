@@ -1,0 +1,9 @@
+## Interface: 20400
+## Title: Drood Focus (edit mod)
+## Notes: An edit mod by yleaf
+## Version: 2.2.20b
+## Author: Meranannon - Discordia - Vol'jin (EU)
+## Email: 
+## SavedVariables: DroodFocusConfig
+DroodFocus.xml
+DroodFocusOptions.xml
