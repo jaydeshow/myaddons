@@ -1,0 +1,11 @@
+﻿## Interface: 20100
+## Title: GrimoireKeeper 2.0.1
+## Title-zhCN: |cFFFF9900[Pboy]|r|cff9382c9[术士]|r术士宠物技能管理 2.0.1 汉化:CWDG-Pboy2925
+## Author: Ayradyss
+## Notes: Tracks which grimoires your warlock pets have learned.
+## Notes-zhCN: 记录术士宠物学习过的魔典
+## SavedVariablesPerCharacter: GrimoireKeeperData
+## License: http://creativecommons.org/licenses/by-nc/2.5/
+## LegalCode: http://creativecommons.org/licenses/by-nc/2.5/legalcode
+
+GrimoireKeeper.xml

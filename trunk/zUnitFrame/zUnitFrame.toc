@@ -1,14 +1,12 @@
-## Interface: 20100
+﻿## Interface: 20100
 ## Title: zUnitFrame
 ## Title: zUF - |cffFF3300炽火|r|cff99AA33头像|r
-## Notes: Very Simply Unit Frames Mod
+## Notes: Very Simply Unit Frames mod
 ## Notes-zhCN: 简单头像增强插件。
 ## Author: Zero Fire
-## Author-zhCN: 炽火 Zero ℃，updated by nj55top，2007-7-10。
+## Author-zhCN: 炽火 Zero ℃
 ## URL: none
 ## Description: Enhanced Unit Frame Based On WOW Default
 zUnitFrame.lua
-zToToT.xml
-zAdd.xml
-zXPRP.xml
-#zFocus.lua
+TOTOT.xml
+style.lua

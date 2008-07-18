@@ -1,30 +1,39 @@
--- Settings --
-zUF_ExtraBorder = false			-- true 玩家头像显示扩展边框			false 不显示
-local zUF_CanMove = false		-- true 开启头像移动功能				false 关闭
-								-- 头像移动命令行：/zuf lock 解锁和锁定；目标头像同时移动。
-								-- 不需要移动功能而只使用原始位置时，请设为 false，
-								-- 否则队友头像不能自动调整和玩家宠物头像之间的距离。
-local zUF_playerHPMP = true		-- true 显示玩家的HP/MP					false 不显示
-local zUF_playerHPPct = true	-- true 显示玩家的HP百分比				false 不显示
-local zUF_petHPMP = true		-- true 显示玩家宠物的HP/MP				false 不显示
-local zUF_targetHPMP = true		-- true 显示目标的HP/MP					false 不显示
-local zUF_targetHPPct = true	-- true 显示目标的HP百分比				false 不显示
-local zUF_targetType = true		-- true 显示目标玩家种族或生物类型		false 不显示
-local zUF_targetClass = true	-- true 显示目标玩家职业（文字）		false 不显示
-local zUF_targetIcon = true		-- true 显示目标玩家职业图标			false 不显示
-local zUF_ToTHPPct = true		-- true 显示目标的目标的HP百分比		false 不显示
-local zUF_partytHPMP = true		-- true 显示队友的HP/MP					false 不显示
-local zUF_partyLevel = true		-- true 显示队友等级					false 不显示
-local zUF_partyClass = true		-- true 显示队友职业（文字）			false 不显示
-local zUF_partyIcon = true		-- true 显示队友职业图标				false 不显示
+﻿-- settings
+ZUF_Style = true -- 是否使用清新风格（去除边框）
+local ZUF_Gold = nil -- 是否更改边框为金色
+local ZUF_Move = nil -- 是否移动头像(命令行 /zuf lock 来解锁；目标头像的偏移同下)
+local zUF_Target_OfsX = 250 -- 目标头像水平偏移，zUF默认：280；系统默认：250。
+local zUF_Target_HP_Percent = nil -- 是否在目标头像左边显示血量百分比
+local zUF_Target_Health = true -- 是否显示目标血量（无法取得时显示为百分比）
+local zUF_Target_Mana = true -- 是否显示目标魔法值
+local zUF_ClassIcon = true -- 是否显示目标，队友职业图标
+local ZUF_PartyText = true -- 是否显示队友等级文字
+local zUF_ClassType = nil -- 是否显示目标，队友职业文字
 
+-- localize
+local locNotSpecified = ""
+local locSpecified = ""
+local tmp = GetLocale()
+if tmp == "zhCN" then
+	locNotSpecified	= "未指定"
+	locSpecified	= "变异生物"
+elseif tmp == "zhTW" then
+	locNotSpecified	= "未指定" -- 也許不正確？
+	locSpecified	= "變異生物"
+elseif tmp == "enUS" then
+	locNotSpecified	= "Not specified" -- maybe not correct
+	locSpecified	= "Freak"
+end
 
 local function zPrint(msg) DEFAULT_CHAT_FRAME:AddMessage(msg, 0, 0.8, 0.8) end
+--[[
+	Moving Frame
+--]]
 
--- Moving Frame
 local MoveFrame
-if zUF_CanMove then
-	MoveFrame = CreateFrame("Frame", "zUF_MoveFrame", UIParent)
+
+if ZUF_Move then
+	MoveFrame = CreateFrame("Frame","ZUF_MoveFrame",UIParent)
 	MoveFrame:SetClampedToScreen(true)
 	MoveFrame:EnableMouse(true)
 	MoveFrame:SetMovable(true)
@@ -33,347 +42,260 @@ if zUF_CanMove then
 	MoveFrame:RegisterForDrag("LeftButton")
 	MoveFrame:SetScript("OnDragStart",function() this:StartMoving() end)
 	MoveFrame:SetScript("OnDragStop",function() this:StopMovingOrSizing() end)
-	MoveFrame:SetWidth(282); MoveFrame:SetHeight(152);
---	MoveFrame:SetPoint("TOPLEFT", UIParent, -19, -4)
-	MoveFrame:SetPoint("TOPLEFT", UIParent, 0, 0)
+	MoveFrame:SetWidth(280); MoveFrame:SetHeight(110);
+	MoveFrame:SetPoint("TOPLEFT",UIParent,-19,-4)
 	MoveFrame:Hide()
-	local tex = MoveFrame:CreateTexture(nil, "ARTWORK")
+	local tex = MoveFrame:CreateTexture(nil,"ARTWORK")
 	tex:SetAllPoints(MoveFrame)
 	tex:SetTexture("Interface\\Tooltips\\UI-Tooltip-Background")
-	tex:SetVertexColor(0, 0.8, 0.8, 0.8)
+	tex:SetVertexColor(0,0.8,0.8,0.8)
 	tex:Show()
---	PlayerFrame:SetPoint("TOPLEFT", zUF_MoveFrame, 0, 0)
-	PlayerFrame:SetPoint("TOPLEFT", zUF_MoveFrame, -19, -4)
+	
+	PlayerFrame:SetPoint("TOPLEFT",ZUF_MoveFrame,0,0)
+	TargetFrame:SetPoint("TOPLEFT",PlayerFrame,zUF_Target_OfsX + 20,0)
 end
 
--- Slash CMD
+--[[
+	Slash CMD
+--]]
 local lock = true
 SlashCmdList["ZUF"] = function(msg)
 	local _, _, cmd, arg1 = string.find(msg, "(%w+)[ ]?([-%w]*)")
 	if (cmd == "lock") then
-		if not zUF_CanMove then
-			zPrint("zUF: Moving Unit Frame -- Not Enabled !!!")
+		if not ZUF_Move then
+			zPrint("ZUF: Moving Unit Frame -- Not Enabled !!!")
 			return
 		end
 		if lock then
 			lock = nil
 			MoveFrame:Show()
-			zPrint("zUF: Start Moving")
+			zPrint("ZUF: Start Moving")
 		else
 			lock = true
 			MoveFrame:Hide()
-			zPrint("zUF: Stop Moving")
+			zPrint("ZUF: Stop Moving")
 		end
 	end
 end
 
 SLASH_ZUF1 = "/zuf";
 
--- Basic functions for Display HP/MP
+--[[
+
+--]]
+-- override TextStatusBar_UpdateTextString
 local function zUpdateTextString(textStatusBar, string, showMax)
-	local value, valueMax, valuePct
-	_, valueMax = textStatusBar:GetMinMaxValues()
-	if ( valueMax > 0 ) then
-		textStatusBar:Show()
-		value = textStatusBar:GetValue()
-		if string then
+	if(string) then
+		local value, valueMax
+		_, valueMax = textStatusBar:GetMinMaxValues()
+		if ( valueMax > 0 ) then
+			textStatusBar:Show()
+			value = textStatusBar:GetValue()
 			if showMax then
 				string:SetText(value.."/"..valueMax)
 			else
 				string:SetText(value)
 			end
+			-- health percent
+			if textStatusBar.PercentText then
+				textStatusBar.PercentText:SetText(math.floor(100*value/valueMax).."%")
+				textStatusBar.PercentText:SetTextColor(this:GetStatusBarColor())
+			end
+			string:Show()
+		else
+			textStatusBar:Hide()
+			string:Hide()
 		end
-		if textStatusBar.PercentText then
-			valuePct = math.floor( 100 * value / valueMax )
-			textStatusBar.PercentText:SetText(valuePct.."%")
-		end
-	else
-		textStatusBar:Hide()
 	end
 end
 
 local globalenv = getfenv()
+--[[
+	Player Frame
+--]]
 
+--[[ BackGround ]]--
 
------------------------------------- Player Frame ------------------------------------
+-- create extra border
+PlayerFrame:CreateTexture("PlayerFrameExtraBorder", "ARTWORK")
+PlayerFrameExtraBorder:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame")
+PlayerFrameExtraBorder:SetWidth(52)
+PlayerFrameExtraBorder:SetHeight(100)
+PlayerFrameExtraBorder:SetPoint("LEFT", PlayerFrame, "RIGHT", -10, 0)
+PlayerFrameExtraBorder:SetTexCoord(0.39,0.09375,0,0.78125)
 
-if zUF_playerHPMP then
-	PlayerFrame:CreateFontString("playerHealth", "ARTWORK", "GameTooltipTextSmall")
-	playerHealth:SetTextColor(1, 0.75, 0)
-	
-	PlayerFrame:CreateFontString("playerMana", "ARTWORK", "GameTooltipTextSmall")
-	playerMana:SetTextColor(0.75, 0.75, 1)
-	
-	PlayerFrameManaBar:SetScript("OnValueChanged", function()
-		TextStatusBar_UpdateTextString()
-		zUpdateTextString(this, playerMana, true)
-	end)
+-- backdrop and border texture color
+PlayerFrameBackground:SetWidth(166)
+if ZUF_Gold then
+	PlayerFrameTexture:SetVertexColor(1,0.9,0.2)
+	PlayerFrameExtraBorder:SetVertexColor(0.8,0.7,0,0.6)
 end
 
-if zUF_playerHPPct then
-	PlayerFrame:CreateFontString("playerHealthPct", "ARTWORK", "GameTooltipTextSmall")
-	playerHealthPct:SetTextColor(0, 1, 0)
-	PlayerFrameHealthBar.PercentText = playerHealthPct
-end
+--[[ player text ]]--
 
+-- HP text creation
+PlayerFrame:CreateFontString("PlayerFrameHealthBarText2","ARTWORK","TextStatusBarText")
+PlayerFrameHealthBarText2:SetPoint("CENTER", PlayerFrameExtraBorder, "CENTER", 2,4)
+-- MP text creation
+PlayerFrame:CreateFontString("PlayerFrameManaBarText2","ARTWORK","TextStatusBarText")
+PlayerFrameManaBarText2:SetTextColor(0.6, 0.9, 1.0)
+PlayerFrameManaBarText2:SetPoint("CENTER", PlayerFrameHealthBarText2, "CENTER", 0, -11)
+
+-- hp percent creation
+PlayerFrame:CreateFontString("PlayerTitle","ARTWORK","TextStatusBarText")
+PlayerTitle:SetPoint("BOTTOM",PlayerFrameHealthBarText2, "TOP", 0, 3)
+PlayerFrameHealthBar.PercentText = PlayerTitle
+
+-- TEXT on change
 PlayerFrameHealthBar:SetScript("OnValueChanged", function()
 	TextStatusBar_UpdateTextString()
 	HealthBar_OnValueChanged(arg1,true)
-	if zUF_playerHPMP then
-		zUpdateTextString(this, playerHealth, true)
-	else
-		zUpdateTextString(this)
-	end
+	PlayerFrameHealthBarText2:SetTextColor(this:GetStatusBarColor())
+	zUpdateTextString(this, PlayerFrameHealthBarText2)
 end)
 
-if zUF_ExtraBorder then
-	PlayerFrame:CreateTexture("PlayerFrameExtraBorder", "ARTWORK")
-	PlayerFrameExtraBorder:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame")
-	PlayerFrameExtraBorder:SetWidth(82)
-	PlayerFrameExtraBorder:SetHeight(100)
-	PlayerFrameExtraBorder:SetPoint("LEFT", PlayerFrame, "RIGHT", -10, 0)
-	PlayerFrameExtraBorder:SetTexCoord(0.39, 0.09375, 0, 0.78125)
-	PlayerFrameBackground:SetWidth(192)
-	if zUF_playerHPMP then
-		playerHealth:SetPoint("CENTER", PlayerFrameHealthBar, "RIGHT", 36, 0)
-		playerMana:SetPoint("CENTER", PlayerFrameManaBar, "RIGHT", 36, 0)
-	end
-	if zUF_playerHPPct then
-		playerHealthPct:SetPoint("CENTER", PlayerFrameHealthBar, "RIGHT", 36, 15)
-	end
-elseif zUF_playerHPMP then
-	playerHealth:SetPoint("LEFT", PlayerFrameHealthBar, "RIGHT", 5, 0)
-	playerMana:SetPoint("LEFT", PlayerFrameManaBar, "RIGHT", 5, 0)
-	if zUF_playerHPPct then
-		playerHealthPct:SetPoint("BOTTOMLEFT", playerHealth, "TOPLEFT", 0, 3)
-	end
-elseif zUF_playerHPPct then
-	playerHealthPct:SetPoint("LEFT", PlayerFrameHealthBar, "RIGHT", 5, 0)
-end
+PlayerFrameManaBar:SetScript("OnValueChanged", function()
+	TextStatusBar_UpdateTextString()
+	zUpdateTextString(this, PlayerFrameManaBarText2)
+end)
 
-
------------------------------------ Pet Frame -------------------------------------
-
-if zUF_petHPMP then
-	PetFrame:CreateFontString("petHealth", "ARTWORK", "GameTooltipTextSmall")
-	petHealth:SetTextColor(1, 0.75, 0)
-	
-	PetFrame:CreateFontString("petMana", "ARTWORK", "GameTooltipTextSmall")
-	petMana:SetTextColor(0.75, 0.75, 1)
-	
-	local _, playerClass = UnitClass("player")
-	if playerClass == "HUNTER" then
-		petHealth:SetPoint("LEFT", PetFrameHealthBar, "RIGHT", 30, 0)
-		petMana:SetPoint("LEFT", PetFrameManaBar, "RIGHT", 30, -3)
-	else
-		petHealth:SetPoint("LEFT", PetFrameHealthBar, "RIGHT", 2, 0)
-		petMana:SetPoint("LEFT", PetFrameManaBar, "RIGHT", 2, -3)
-	end
-	
-	PetFrameHealthBar:SetScript("OnValueChanged", function()
-		TextStatusBar_UpdateTextString()
-		HealthBar_OnValueChanged(arg1, true)
-		zUpdateTextString(this, petHealth, true)
-	end)
-	
-	PetFrameManaBar:SetScript("OnValueChanged", function()
-		TextStatusBar_UpdateTextString()
-		zUpdateTextString(this, petMana, true)
-	end)
-end
-
-local buff
--- Buffs
-for i = 1, 10 do
-	buff = CreateFrame("Button", "PetFrameBuff"..i, PetFrame, "PartyPetBuffButtonTemplate")
-	buff:SetID(i)
-	buff:SetScript("OnEnter",function()
-		GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
-		GameTooltip:SetUnitBuff("pet", this:GetID())
-	end)
-	if i == 1 then
-		buff:SetPoint("TOPLEFT", PetFrame, "TOPLEFT", 48, -42)
-	else
-		buff:SetPoint("LEFT", "PetFrameBuff"..i-1, "RIGHT", 2, 0)
-	end
-end
-
--- Debuffs
-PetFrameDebuff1:ClearAllPoints()
-PetFrameDebuff1:SetPoint("TOPLEFT", PetFrame, "TOPLEFT", 48, -59)
-for i = 5, 10 do
-	buff = CreateFrame("Button", "PetFrameDebuff"..i, PetFrame, "PartyPetBuffButtonTemplate")
-	buff:SetID(i)
-	buff:SetPoint("LEFT", "PetFrameDebuff"..i-1, "RIGHT", 2, 0)
-end
-
--- Adjust Gap between Pet and PartyMemberFrame1 if not zUF_CanMove
-function zAdjustPetPartyGap()
-	if zUF_CanMove then
-		return
-	end
-	local yOffset = -128
-	if UnitIsVisible("pet") then
-		yOffset = yOffset - 24
-		if zUF_PlayerFrameXPRP then
-			yOffset = yOffset - 12
-		end
-	end
-	PartyMemberFrame1:SetPoint("TOPLEFT", 10, yOffset)
-end
-
--------------------------------------------- Target Frame -------------------------------------------
-
+--[[
+	Target Frame
+--]]
 MAX_TARGET_DEBUFFS = 32
 
-if zUF_targetHPMP then
-	TargetFrameTextureFrame:CreateFontString("targetHealth", "ARTWORK", "GameFontNormalSmall")
-	targetHealth:SetTextColor(1, 1, 1, 0.9)
-	targetHealth:SetPoint("CENTER", TargetFrameHealthBar, "CENTER", 0, 0)
+-- position
+if not ZUF_Move then
+	TargetFrame:SetPoint("TOPLEFT",zUF_Target_OfsX,-4)
+end
 
-	TargetFrameTextureFrame:CreateFontString("targetMana","ARTWORK","GameFontNormalSmall")
-	targetMana:SetTextColor(1, 1, 1, 0.9)
-	targetMana:SetPoint("CENTER", TargetFrameManaBar, "CENTER", 0, 0)
-
-	TargetFrameManaBar:SetScript("OnValueChanged", function()
-		zUpdateTextString(this, targetMana, true)
-		if MobHealth3BlizzardPowerText or MI2_MobManaText then
-			targetMana:SetText("")
+-- HP percent
+if zUF_Target_HP_Percent then
+	TargetFrame:CreateFontString("TargetHealthPercent","ARTWORK","TextStatusBarText")
+	TargetFrameHealthBar.PercentText = TargetHealthPercent
+	TargetHealthPercent:SetPoint("TOPRIGHT",TargetFrameHealthBar, "TOPLEFT", 0, 0)
+	TargetHealthPercent:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE")
+	local scale = GetCVar("uiscale")
+	if not scale then
+		scale = 1
+	else
+		scale = tonumber(scale)
+	end
+	if scale < 0.86 then
+		TargetHealthPercent:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE")
+	end
+	TargetFrameHealthBar:SetScript("OnValueChanged", function()
+		HealthBar_OnValueChanged(arg1,true)
+		local valueMax
+		_, valueMax = this:GetMinMaxValues()
+		if valueMax > 0 then
+			TargetHealthPercent:SetText(math.floor(100*this:GetValue()/valueMax).."%")
+			TargetHealthPercent:SetTextColor(this:GetStatusBarColor())
 		end
 	end)
 end
 
-if zUF_targetHPPct then
-	TargetFrame:CreateFontString("targetHealthPct", "ARTWORK", "GameTooltipTextSmall")
-	targetHealthPct:SetTextColor(1, 0.75, 0)
-	targetHealthPct:SetPoint("RIGHT", TargetFrameHealthBar, "LEFT", -5, 0)
-	TargetFrameHealthBar.PercentText = targetHealthPct
-end
-
-TargetFrameHealthBar:SetScript("OnValueChanged", function()
-	HealthBar_OnValueChanged(arg1, true)
-	if zUF_targetHPMP then
-		zUpdateTextString(this, targetHealth, true)
-		local _, vMax = this:GetMinMaxValues()
-		if MobHealth3BlizzardHealthText or MI2_MobHealthText or UnitIsDead("target") or vMax == 100 or (MobHealth_GetTargetCurHP and UnitCanAttack("player", "target") and not UnitIsDead("target") and not UnitIsFriend("player", "target")) then
-			targetHealth:SetText("")
+-- Target Health
+if zUF_Target_Health then
+	TargetFrameTextureFrame:CreateFontString("TargetFrameHealthBarText","ARTWORK","TextStatusBarText")
+	TargetFrameHealthBarText:SetPoint("RIGHT",TargetFrameHealthBar,0,1)
+	TargetFrameHealthBar:SetScript("OnValueChanged", function()
+		HealthBar_OnValueChanged(arg1,true)
+		zUpdateTextString(this, TargetFrameHealthBarText, true)
+		TargetFrameHealthBarText:SetTextColor(this:GetStatusBarColor())
+		local vMax
+		_, vMax = this:GetMinMaxValues()
+		if vMax == 100 then
+			TargetFrameHealthBarText:SetText(this:GetValue().."%")
 		end
-	else
-		zUpdateTextString(this)
-	end
-end)
-
--- Adjust Gap between Player and Target
-local xOffset = 250
-if zUF_ExtraBorder then
-	xOffset = xOffset + 35
-elseif zUF_playerHPMP then
-	xOffset = xOffset + 30
-end
-if zUF_targetHPPct then
-	xOffset = xOffset + 25
-	if not zUF_ExtraBorder and not zUF_playerHPMP and not zUF_playerHPPct then
-		xOffset = xOffset - 25
-	end
-end
-TargetFrame:SetPoint("TOPLEFT", PlayerFrame, xOffset + 19, 0)
-
--- Type/Class --
-if zUF_targetClass then
-	TargetFrame:CreateFontString("TargetFrameClass", "ARTWORK", "GameFontNormalSmall")
-	TargetFrameClass:SetPoint("BOTTOMRIGHT", TargetFrameNameBackground, "TOPRIGHT", -5, 1)
+	end)
 end
 
-if zUF_targetType then
-	TargetFrame:CreateFontString("TargetFrameType", "ARTWORK", "GameTooltipTextSmall")
-	TargetFrameType:SetPoint("BOTTOMLEFT", TargetFrameNameBackground, "TOPLEFT", 0, 3)
-	TargetFrameType:SetTextColor(1, 0.75, 0)
+-- Target Mana
+if zUF_Target_Mana then
+	TargetFrameTextureFrame:CreateFontString("TargetFrameManaBarText","ARTWORK","TextStatusBarText")
+	TargetFrameManaBarText:SetPoint("RIGHT",TargetFrameManaBar,0,0)
+	TargetFrameManaBar:SetScript("OnValueChanged", function()
+		zUpdateTextString(this, TargetFrameManaBarText, true)
+	end)
+end
+
+--[[ Target Player Class ]]
+local zRAID_CLASS_COLORS = {
+	["HUNTER"] = { r = 0, g = 1, b = 0 },
+	["WARLOCK"] = { r = 0.6, g = 0.33, b = 1 },
+	["PRIEST"] = { r = 1.0, g = 1.0, b = 1.0 },
+	["PALADIN"] = { r = 1, g = 0.5, b = 0.8 },
+	["MAGE"] = { r = 0.0, g = 1, b = 1 },
+	["ROGUE"] = { r = 1, g = 1, b = 0.0 },
+	["DRUID"] = { r = 1.0, g = 0.5, b = 0.0 },
+	["SHAMAN"] = {  r = 0.14, g = 0.35, b = 1.0 },
+	["WARRIOR"] = { r = 0.85, g = 0.61, b = 0.43 },
+}
+if zUF_ClassType then
+	TargetFrame:CreateFontString("TargetFrameClassType", "ARTWORK", "SystemFont")
+	TargetFrameClassType:SetPoint("BOTTOMRIGHT", TargetFrameNameBackground, "TOPRIGHT", -5, 1)
+	TargetFrameClassType:Show()
 end
 
 function zUpdateTargetClassType()
-	if zUF_targetClass then
-		local class, classEN = UnitClass("target")
-		if UnitIsPlayer("target") then
-			local color = RAID_CLASS_COLORS[classEN]
-			TargetFrameClass:SetTextColor(color.r, color.g, color.b)
-		else
-			class = ""
-		end
-		TargetFrameClass:SetText(class)
+	if not zUF_ClassType then
+		return
 	end
-	if zUF_targetType then
-		local type = ""
-		if UnitIsPlayer("target") then
-			type = UnitRace("target")
-		elseif UnitPlayerControlled("target") then
-			if UnitCreatureFamily("target") then
-				type = UnitCreatureFamily("target")
-			end
-		elseif UnitCreatureType("target") then
-			type = UnitCreatureType("target")
+	if UnitIsPlayer("target") then
+		local class,classEN = UnitClass("target")
+		TargetFrameClassType:SetText(class)
+		TargetFrameClassType:SetTextColor(
+			zRAID_CLASS_COLORS[classEN].r,
+			zRAID_CLASS_COLORS[classEN].g,
+			zRAID_CLASS_COLORS[classEN].b)
+	else
+		TargetFrameClassType:SetTextColor(1.0,0.82,0)
+		
+		local CreatureType = UnitCreatureType("target")
+		if CreatureType == locNotSpecified then
+			CreatureType = locSpecified
 		end
-		TargetFrameType:SetText(type)
+		if UnitPlayerControlled("target") then
+			TargetFrameClassType:SetText(UnitCreatureFamily("target") or CreatureType)
+		elseif CreatureType then
+			TargetFrameClassType:SetText(CreatureType)
+		else
+			TargetFrameClassType:SetText("")
+			return
+		end
 	end
 end
 
--------------------------------------- TargetofTarget Frame --------------------------------------
+--[[
+	Party Frame
+--]]
 
-if zUF_ToTHPPct then
-	TargetofTargetTextureFrame:CreateFontString("targettargetHPPct", "ARTWORK", "GameTooltipTextSmall")
-	targettargetHPPct:SetPoint("BOTTOMLEFT", TargetofTargetHealthBar, "TOPRIGHT", 0, 5)
-	TargetofTargetHealthBar.PercentText = targettargetHPPct
-	
-	TargetofTargetHealthBar:SetScript("OnValueChanged", function()
-		HealthBar_OnValueChanged(arg1, true)
---		zUpdateTextString(this)
-		local _, maxValue = this:GetMinMaxValues()
-		local currValue = this:GetValue()
-		local pctValue = math.floor( 100 * currValue / maxValue )
-		if ( maxValue > 0 ) and ( pctValue < 100 ) and ( pctValue > 0 ) then
-			targettargetHPPct:SetText(pctValue.."%")
-		else
-			targettargetHPPct:SetText("")
-		end
-	end)
-end
-
-------------------------------------------- Party Frame ----------------------------------------------
-
-for i = 1, 4 do
+--[[ party member level and class ]]
+for i = 1,4 do
 	local str = "PartyMemberFrame"..i
-	local unit = "party"..i
--- Level
-	if zUF_partyLevel then
-		local text = getglobal(str):CreateFontString(str.."Level", "ARTWORK", "GameFontNormalSmall")
+	local text,buff
+	
+	-- create text string
+	if ZUF_PartyText then
+		text = getglobal(str):CreateFontString(str.."LevelClass","ARTWORK","GameFontNormalSmall")
 		text:SetPoint("TOPLEFT", str, "BOTTOMLEFT", -10, 16)
 		text:SetJustifyH("LEFT")
 	end
--- Class
-	if zUF_partyClass then
-		text = getglobal(str):CreateFontString(str.."Class", "ARTWORK", "GameFontNormalSmall")
-		text:SetPoint("TOPLEFT", str, "BOTTOMLEFT", -10, 4)
-		text:SetJustifyH("LEFT")
-	end
-	if zUF_partytHPMP then
--- Health
-		text = getglobal(str):CreateFontString(unit.."Health", "ARTWORK", "GameTooltipTextSmall")
-		text:SetPoint("LEFT", str.."HealthBar", "RIGHT", 3, 0)
-		text:SetTextColor(1, 0.75, 0)
-		getglobal(str.."HealthBar"):SetScript("OnValueChanged", function()
-			zUpdateTextString(this, getglobal(unit.."Health"), true)
-			HealthBar_OnValueChanged(arg1, true)
-			PartyMemberHealthCheck()
-		end)
--- Mana
-		text = getglobal(str):CreateFontString(unit.."Mana", "ARTWORK", "GameTooltipTextSmall")
-		text:SetPoint("LEFT", str.."ManaBar", "RIGHT", 3, 0)
-		text:SetTextColor(0.75, 0.75, 1)
-		getglobal(str.."ManaBar"):SetScript("OnValueChanged", function()
-			zUpdateTextString(this, getglobal(unit.."Mana"), true)
-		end)
-	end
--- Buff
-	for j = 1, 16 do
+	
+	-- Health
+	text = getglobal(str):CreateFontString(str.."HealthBarText2","ARTWORK","TextStatusBarText")
+	text:SetPoint("TOPLEFT", str, "TOPRIGHT", -10, -13)
+	text:SetJustifyH("LEFT")
+	getglobal(str.."HealthBar"):SetScript("OnValueChanged", function()
+		zUpdateTextString(this, getglobal(this:GetName().."Text2"))
+		HealthBar_OnValueChanged(arg1,true)
+		PartyMemberHealthCheck()
+		getglobal(this:GetName().."Text2"):SetTextColor(this:GetStatusBarColor())
+	end)
+		
+	-- buff
+	for j=1,11 do
 		buff = CreateFrame("Button", str.."Buff"..j, getglobal(str), "PartyBuffButtonTemplate")
 		buff:SetID(j)
 		buff:SetScript("OnEnter",function()
@@ -381,157 +303,129 @@ for i = 1, 4 do
 				GameTooltip:SetUnitBuff("party"..this:GetParent():GetID(), this:GetID())
 		end)
 		if j == 1 then
-			buff:SetPoint("TOPLEFT", str, "TOPLEFT", 48, -32)
+			buff:SetPoint("TOPLEFT", str, "TOPLEFT", 48, -30)
+		elseif j == 8 then
+			buff:SetPoint("TOP",str.."Buff4","BOTTOM",0,0)
 		else
-			buff:SetPoint("LEFT", str.."Buff"..j-1, "RIGHT", 2, 0)
+			buff:SetPoint("LEFT", str.."Buff"..j-1, "RIGHT", 0, 0)
 		end
 	end
--- Debuff
+	
+	-- debuff
 	local debuffbutton1 = getglobal(str.."Debuff1")
 	debuffbutton1:ClearAllPoints()
-	debuffbutton1:SetPoint("LEFT", str, "RIGHT", 22, 25)
-	for j = 5, 10 do
+	debuffbutton1:SetPoint("LEFT", str, "RIGHT", 35, 7)
+	for j = 5,8 do
 		buff = CreateFrame("Button", str.."Debuff"..j, getglobal(str), "PartyBuffButtonTemplate")
 		buff:SetID(j)
-		buff:SetPoint("LEFT", str.."Debuff"..j-1, "RIGHT", 2, 0)
-	end
--- PartyMember Tip
-	getglobal(str):SetScript("OnEnter", UnitFrame_OnEnter)
-end
-
--- Level/Class
-function zUpdatePartyMemberLevelClass(partyNum)
-	local frame = globalenv["PartyMemberFrame"..partyNum]
-	if frame:IsShown() then
-		if zUF_partyLevel then
-			local level = UnitLevel(frame.unit)
-			if not level or level < 1 then
-				level = "??"
-			end
-			globalenv[frame:GetName().."Level"]:SetText(level)
-		end
-		if zUF_partyClass then
-			local class, classEN = UnitClass(frame.unit)
-			if UnitClass(frame.unit) then
-				local color = RAID_CLASS_COLORS[classEN]
-				globalenv[frame:GetName().."Class"]:SetTextColor(color.r, color.g, color.b)
-			else
-				class = "??"
-				globalenv[frame:GetName().."Class"]:SetTextColor(1, 0.75, 0)
-			end
-			globalenv[frame:GetName().."Class"]:SetText(class)
+		if j == 5 then
+			buff:SetPoint("TOP",str.."Debuff1","BOTTOM",0,0)
+		else
+			buff:SetPoint("LEFT", str.."Debuff"..j-1, "RIGHT", 2, 0)
 		end
 	end
+	
+	-- party member tip
+	getglobal(str):SetScript("OnEnter",UnitFrame_OnEnter)
 end
 
--- Hide BuffTooltip
-function PartyMemberBuffTooltip_Update(isPet)
-	--
-end
-
--- Update Buffs of Pet and Party
+-- update buffs ( this function is not protected, so just override it )
 local zOld_RefreshBuffs = RefreshBuffs
 function RefreshBuffs(button, showBuffs, unit)
 	local tmp = MAX_PARTY_DEBUFFS
+	local icon
 	if string.find(unit, "party") and string.len(unit) == 6 then
-		MAX_PARTY_DEBUFFS = 10
---~ 	local zShowCastable = true
-		for i = 1, 16 do
-			_, _, buff = UnitBuff(unit, i, zShowCastable)
-			if buff then
-				globalenv[button:GetName().."Buff"..i.."Icon"]:SetTexture(buff)
-				globalenv[button:GetName().."Buff"..i.."Border"]:Hide()
-				globalenv[button:GetName().."Buff"..i]:Show()
-			else
-				globalenv[button:GetName().."Buff"..i]:Hide()
-			end
-		end
-	elseif unit == "pet" then
-		MAX_PARTY_DEBUFFS = 10
-		for i = 1, 10 do
-			_, _, buff = UnitBuff("pet", i)
-			if buff then
-				globalenv[button:GetName().."Buff"..i.."Icon"]:SetTexture(buff)
-				globalenv[button:GetName().."Buff"..i.."Border"]:Hide()
+		MAX_PARTY_DEBUFFS = 8
+--~ 		local zShowCastable = true
+		for i=1,11 do
+			_,_,icon = UnitBuff(unit, i, zShowCastable)
+			if ( icon ) then
+				globalenv[button:GetName().."Buff"..i.."Icon"]:SetTexture(icon)
 				globalenv[button:GetName().."Buff"..i]:Show()
 			else
 				globalenv[button:GetName().."Buff"..i]:Hide()
 			end
 		end
 	end
---	zOld_RefreshBuffs(button, showBuffs, unit)
 	zOld_RefreshBuffs(button, nil, unit)
 	MAX_PARTY_DEBUFFS = tmp
 end
 
-
--------------------------------------- Event Handler -------------------------------------
-
-local EventFrame = CreateFrame("Frame", nil, UIParent)
+function zUpdatePartyMemberLevelClass(partyNum)
+	local frame = globalenv["PartyMemberFrame"..partyNum]
+	if frame:IsShown() then
+		if ZUF_PartyText then
+			local level = UnitLevel(frame.unit)
+			if not level or level < 1 then
+				level = "??"
+			end
+			local class = ""
+			if zUF_ClassType then
+				class = UnitClass(frame.unit) or "??"
+			end
+			globalenv[frame:GetName().."LevelClass"]:SetText(level.."\n"..class)
+		end
+	end
+end
+--[[
+	All the HOOK func replace into this Event Handler, to bypass Secure Problem
+--]]
+local EventFrame = CreateFrame("Frame",nil,UIParent)
 EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 EventFrame:RegisterEvent("PARTY_MEMBERS_CHANGED")
 EventFrame:RegisterEvent("UNIT_LEVEL")
-EventFrame:RegisterEvent("UNIT_PET")
 EventFrame:SetScript("OnEvent",
 	function()
 		if event == "PLAYER_ENTERING_WORLD" then
-			if not zUF_CanMove then
-				zAdjustPetPartyGap()
-			end
 			zUpdateTargetClassType()
-			zUpdateClassIcon("TargetFrame", "target")
-			for i = 1, 4 do
+			zUpdateClassIcon("TargetFrame","target")
+			for i = 1,4 do
 				zUpdatePartyMemberLevelClass(i)
-				zUpdateClassIcon("PartyMemberFrame"..i, "party"..i)
+				zUpdateClassIcon("PartyMemberFrame"..i,"party"..i)
 			end
 		elseif event == "PLAYER_TARGET_CHANGED" then
 			zUpdateTargetClassType()
-			zUpdateClassIcon("TargetFrame", "target")
+			zUpdateClassIcon("TargetFrame","target")
 		elseif event == "PARTY_MEMBERS_CHANGED" then
-			for i = 1, 4 do
+			for i = 1,4 do
 				zUpdatePartyMemberLevelClass(i)
-				zUpdateClassIcon("PartyMemberFrame"..i, "party"..i)
+				zUpdateClassIcon("PartyMemberFrame"..i,"party"..i)
 			end
 		elseif event == "UNIT_LEVEL" then
-			for i = 1, 4 do
+			for i = 1,4 do
 				if globalenv["PartyMemberFrame"..i].unit == arg1 then
 					zUpdatePartyMemberLevelClass(i)
---					zUpdateClassIcon("PartyMemberFrame"..i, "party"..i)
+					zUpdateClassIcon("PartyMemberFrame"..i,"party"..i)
 				end
 			end
-		elseif event == "UNIT_PET" and not zUF_CanMove then
-			zAdjustPetPartyGap()
-		end
+		end	
 	end)
-
-
------------------------------------------ Class Icon ----------------------------------------
-
-local t
--- Target Class Icon
-if zUF_targetIcon then
-	t = TargetFrameTextureFrame:CreateTexture("TargetFrameClassIcon", "OVERLAY")
+	
+--[[
+	Class Icons
+--]]
+if zUF_ClassIcon then
+	local t
+	--target
+	t = TargetFrameTextureFrame:CreateTexture("TargetFrameClassIcon","OVERLAY")
 	t:SetWidth(32); t:SetHeight(32);
-	t:SetPoint("BOTTOMLEFT", TargetFrameNameBackground, "TOPRIGHT", -7, -10)
-end
-
--- Party Class Icon
-if zUF_partyIcon then
-	for i = 1, 4 do
---		local partyMember = globalenv["PartyMemberFrame"..i]
+	t:SetPoint("BOTTOMLEFT",TargetFrameNameBackground,"TOPRIGHT",-10,-10)
+	--party
+	for i = 1,4 do
+		local partyMember = globalenv["PartyMemberFrame"..i]
 		local pvpIcon = globalenv["PartyMemberFrame"..i.."PVPIcon"]
 		pvpIcon:SetAlpha(0)
-		t = pvpIcon:GetParent():CreateTexture("PartyMemberFrame"..i.."ClassIcon", "BORDER")
+		t = pvpIcon:GetParent():CreateTexture("PartyMemberFrame"..i.."ClassIcon","BORDER")
 		t:SetWidth(32); t:SetHeight(32);
-		t:SetPoint("CENTER", pvpIcon)
-		pvpIcon:SetPoint("TOPLEFT", -9, -10)
+		t:SetPoint("CENTER",pvpIcon)
+		pvpIcon:SetPoint("TOPLEFT",-9,-10)
 	end
 end
 
-function zUpdateClassIcon(parentName, unit)
+function zUpdateClassIcon(parentName,unit)
 	local icon = globalenv[parentName.."ClassIcon"]
-
+	
 	if not icon then
 		return
 	end

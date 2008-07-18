@@ -1,0 +1,281 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+	
+	<Script file="localization.lua" />
+	<Script file="DroodFocus.lua" />
+	<Script file="DroodFocusDatas.lua" />
+	
+	<FontString name="DroodFocusFontBigTemplate" font="Interface\AddOns\DroodFocus\arts\font_energy.ttf" virtual="true">
+		<FontHeight>
+			<AbsValue val="8" />
+		</FontHeight>
+		<Color r="1.0" g="1.0" b="1.0" />
+	</FontString>
+	
+	<FontString name="DroodFocusFontDebuffTemplate" font="Interface\AddOns\DroodFocus\arts\font_timer.ttf" virtual="true">
+		<FontHeight>
+			<AbsValue val="10" />
+		</FontHeight>
+		<Color r="1.0" g="1.0" b="1.0" />
+	</FontString>	
+	
+	<FontString name="DroodFocusFontSmallTemplate" font="Interface\AddOns\DroodFocus\arts\font_infos.ttf" virtual="true">
+		<FontHeight>
+			<AbsValue val="6" />
+		</FontHeight>
+		<Color r="1.0" g="1.0" b="1.0" />
+	</FontString>	
+	<Frame name="DroodFocusFrame" toplevel="true" clampedToScreen="true" enableMouse="true" movable="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="110" y="38" />
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM" relativeTo="UIParent" relativePoint="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="120" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop tile="true">
+			<EdgeSize>
+				<AbsValue val="16" />
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16" />
+			</TileSize>
+		</Backdrop>
+		<Frames>
+			<Frame setAllPoints="true">
+				<Scripts>
+					<OnMouseDown>
+						if(arg1 == "LeftButton") then
+							this:GetParent():StartMoving();
+						end
+					</OnMouseDown>
+					<OnMouseUp>
+						this:GetParent():StopMovingOrSizing();
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+
+			<Button name="DroodFocusClearcast">
+				<Size>
+					<AbsDimension x="186" y="64" />
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="DroodFocusClearcastTexture" file="Interface\AddOns\DroodFocus\arts\img_clearcast" alphaMode="ADD">
+							<Size>
+								<AbsDimension x="186" y="64" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-5" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Button>
+					
+			<Button name="DroodFocusBorderEnergy">
+				<Size>
+					<AbsDimension x="103" y="16" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-6" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="DroodFocusBorderEnergyTexture" file="Interface\AddOns\DroodFocus\arts\border">
+							<Size>
+								<AbsDimension x="103" y="16" />
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-6" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="DroodFocusEnergyText" inherits="DroodFocusFontBigTemplate">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="-6" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+			
+					<StatusBar name="DroodFocusEnergyBar" inherits="TextStatusBar" framestrata="BACKGROUND">
+						<Size>
+							<AbsDimension x="97" y="12" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="3" y="-8" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								this:SetFrameLevel(this:GetFrameLevel() - 1)
+							</OnLoad>
+						</Scripts>
+						<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+						<BarColor r="1.0" g="0.50" b="0.0"/>
+					</StatusBar>
+					<StatusBar name="DroodFocusEnergyBarBg" inherits="TextStatusBar" framestrata="BACKGROUND">
+						<Size>
+							<AbsDimension x="97" y="12" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="3" y="-8" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								this:SetFrameLevel(this:GetFrameLevel() - 2)
+							</OnLoad>
+						</Scripts>
+						<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+						<BarColor r="1.0" g="0.50" b="0.0"/>
+					</StatusBar>					
+				</Frames>
+			</Button>
+			
+			<Button name="DroodFocusEnergyTick">
+				<Size>
+					<AbsDimension x="80" y="10"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="18" y="-19"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="DroodFocusEnergyTickTexture" file="Interface\AddOns\DroodFocus\arts\border">
+							<Size>
+								<AbsDimension x="80" y="10"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="DroodFocusEnergyTickText" inherits="DroodFocusFontSmallTemplate">
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="-6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<StatusBar name="DroodFocusEnergyTickBarBg" inherits="TextStatusBar" framestrata="BACKGROUND">
+						<Size>
+							<AbsDimension x="76" y="7"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="2" y="-8"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								this:SetFrameLevel(this:GetFrameLevel() - 2)
+							</OnLoad>
+						</Scripts>
+						<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+						<BarColor r="0.30" g="0.10" b="0.0"/>
+					</StatusBar>				
+					<StatusBar name="DroodFocusEnergyTickBar" inherits="TextStatusBar" framestrata="BACKGROUND">
+						<Size>
+							<AbsDimension x="76" y="7"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="2" y="-8"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="OVERLAY">
+								<Texture name="DroodFocusEnergyTickSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+									<Size>
+										<AbsDimension x="8" y="12"/>
+									</Size>
+									<Anchors>
+										<Anchor point="CENTER">
+											<Offset>
+												<AbsDimension x="0" y="1"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnLoad>
+								this:SetFrameLevel(this:GetFrameLevel() - 1)
+							</OnLoad>
+						</Scripts>
+						<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+						<BarColor r="1.0" g="0.20" b="0.0"/>
+					</StatusBar>
+				</Frames>
+			</Button>
+		</Frames>
+		
+		<Scripts>
+			<OnLoad>
+				this:SetBackdropBorderColor(0.7, 0.7, 0.7);
+				DroodFocus:OnLoad();
+			</OnLoad>
+			<OnEvent>
+				DroodFocus:OnEvent(event);
+			</OnEvent>
+			<OnUpdate>
+				DroodFocus:OnUpdate();
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</Ui>
