@@ -1,4 +1,4 @@
-Omen/Changelog-Omen-r75456.txt
+Omen/Changelog-Omen-r78662.txt
 Omen/Frame.lua
 Omen/Bindings.xml
 Omen/ResizeGrip.tga
@@ -20,6 +20,7 @@ Omen/Modules/Overview/Localization/deDE.lua
 Omen/Modules/Overview/Localization/zhCN.lua
 Omen/Modules/Overview/Localization/enUS.lua
 Omen/Modules/Overview/Localization/koKR.lua
+Omen/Modules/Overview/Localization/ruRU.lua
 Omen/Modules/Overview/Localization/esES.lua
 Omen/Modules/Overview/Localization/zhTW.lua
 Omen/Modules/Healer/Healer.lua
@@ -29,6 +30,7 @@ Omen/Modules/Healer/Localization/deDE.lua
 Omen/Modules/Healer/Localization/zhCN.lua
 Omen/Modules/Healer/Localization/enUS.lua
 Omen/Modules/Healer/Localization/koKR.lua
+Omen/Modules/Healer/Localization/ruRU.lua
 Omen/Modules/Healer/Localization/esES.lua
 Omen/Modules/Healer/Localization/zhTW.lua
 Omen/Modules/AOE/module.xml
@@ -38,6 +40,7 @@ Omen/Modules/AOE/Localization/deDE.lua
 Omen/Modules/AOE/Localization/zhCN.lua
 Omen/Modules/AOE/Localization/enUS.lua
 Omen/Modules/AOE/Localization/koKR.lua
+Omen/Modules/AOE/Localization/ruRU.lua
 Omen/Modules/AOE/Localization/esES.lua
 Omen/Modules/AOE/Localization/zhTW.lua
 Omen/Modules/SingleTarget/SingleTarget_Compact.lua
@@ -49,6 +52,7 @@ Omen/Modules/SingleTarget/Localization/deDE.lua
 Omen/Modules/SingleTarget/Localization/zhCN.lua
 Omen/Modules/SingleTarget/Localization/enUS.lua
 Omen/Modules/SingleTarget/Localization/koKR.lua
+Omen/Modules/SingleTarget/Localization/ruRU.lua
 Omen/Modules/SingleTarget/Localization/esES.lua
 Omen/Modules/SingleTarget/Localization/zhTW.lua
 Omen/Media/Sounds/aoogah.ogg
@@ -59,6 +63,7 @@ Omen/Localization/deDE.lua
 Omen/Localization/zhCN.lua
 Omen/Localization/enUS.lua
 Omen/Localization/koKR.lua
+Omen/Localization/ruRU.lua
 Omen/Localization/esES.lua
 Omen/Localization/readme.txt
 Omen/Localization/zhTW.lua

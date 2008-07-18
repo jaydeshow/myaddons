@@ -1,6 +1,6 @@
 --[[-----------------------------------------------------------------------------
 Name: Threat-2.0
-Revision: $Revision: 74642 $
+Revision: $Revision: 78410 $
 Author(s): Antiarc (cheald at gmail)
 Website: http://www.wowace.com/wiki/Threat-2.0
 Documentation: http://www.wowace.com/wiki/Threat-2.0
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 -------------------------------------------------------------------------------]]
 
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 74642 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78410 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -277,7 +277,6 @@ function ThreatLib:ThreatUpdated(source_unit, target_guid, threat)
 		self.publishInterval = self:GetPublishInterval()
 	end
 	if t - lastPublishTime > self.publishInterval then
-		lastPublishTime = t
 		self:PublishThreat()
 	end
 end
@@ -672,6 +671,7 @@ do
 		if petMsg then
 			self:SendCommRaw(self:GroupDistribution(), "THREAT_UPDATE", petMsg)
 		end
+		lastPublishTime = GetTime()
 	end
 end
 

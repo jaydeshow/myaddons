@@ -1,9 +1,10 @@
 ## Interface: 20400
 ## Version: 2.0
-## X-Build: $Revision: 75263 $
+## X-Build: $Revision: 78662 $
 ## X-ReleaseDate: $Date: 2008-03-27 01:18:39 -0700 (Thu, 27 Mar 2008) $
 ## Title: Omen2
 ## Notes: A lightweight, flexible, multi-target threat meter.
+## Notes-ruRU: Лёгкий, гибкий, измеритель угрозы.
 ## Notes-frFR: Un "threat meter" léger, flexible et multi-cibles.
 ## Notes-zhCN: 一个灵活的，多目标的，低资源占用的威胁值计量器。
 ## Notes-zhTW: 一個輕量級、有彈性、可監視多個目標的仇恨統計插件。
@@ -20,6 +21,7 @@ embeds.xml
 Libs\LibFuBarPlugin-3.0\lib.xml
 
 Localization\enUS.lua
+Localization\ruRU.lua
 Localization\frFR.lua
 Localization\deDE.lua
 Localization\koKR.lua

@@ -1,6 +1,6 @@
 --[[
 Name: LibAbacus-3.0
-Revision: $Rev: 73731 $
+Revision: $Rev: 78626 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://www.wowace.com/wiki/LibAbacus-3.0
@@ -10,7 +10,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibAbacus-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 73731 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 78626 $"):match("(%d+)"))
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 local Abacus, oldLib = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
@@ -46,17 +46,17 @@ local DAYS_ABBR_S1, HOURS_ABBR_S1, MINUTES_ABBR_S1, SECONDS_ABBR_S1
 local DAYS_ABBR_P1, HOURS_ABBR_P1, MINUTES_ABBR_P1, SECONDS_ABBR_P1 = DAYS_ABBR_P1, HOURS_ABBR_P1, MINUTES_ABBR_P1, SECONDS_ABBR_P1
 
 if not DAYS_ABBR_P1 then
-	DAYS_ABBR_S1 = gsub(DAYS_ABBR, "|4(.-):.-;", "%1")
-	DAYS_ABBR_P1 = gsub(DAYS_ABBR, "|4.-:(.-);", "%1")
+	DAYS_ABBR_S1 = gsub(DAYS_ABBR, ".*|4(.-):.-;.*", "%1")
+	DAYS_ABBR_P1 = gsub(DAYS_ABBR, ".*|4.-:(.-);.*", "%1")
 
-	HOURS_ABBR_S1 = gsub(HOURS_ABBR, "|4(.-):.-;", "%1")
-	HOURS_ABBR_P1 = gsub(HOURS_ABBR, "|4.-:(.-);", "%1")
+	HOURS_ABBR_S1 = gsub(HOURS_ABBR, ".*|4(.-):.-;.*", "%1")
+	HOURS_ABBR_P1 = gsub(HOURS_ABBR, ".*|4.-:(.-);.*", "%1")
 
-	MINUTES_ABBR_S1 = gsub(MINUTES_ABBR, "|4(.-):.-;", "%1")
-	MINUTES_ABBR_P1 = gsub(MINUTES_ABBR, "|4.-:(.-);", "%1")
+	MINUTES_ABBR_S1 = gsub(MINUTES_ABBR, ".*|4(.-):.-;.*", "%1")
+	MINUTES_ABBR_P1 = gsub(MINUTES_ABBR, ".*|4.-:(.-);.*", "%1")
 
-	SECONDS_ABBR_S1 = gsub(SECONDS_ABBR, "|4(.-):.-;", "%1")
-	SECONDS_ABBR_P1 = gsub(SECONDS_ABBR, "|4.-:(.-);", "%1")
+	SECONDS_ABBR_S1 = gsub(SECONDS_ABBR, ".*|4(.-):.-;.*", "%1")
+	SECONDS_ABBR_P1 = gsub(SECONDS_ABBR, ".*|4.-:(.-);.*", "%1")
 else
 	DAYS_ABBR_S1 = DAYS_ABBR 
 	HOURS_ABBR_S1 = HOURS_ABBR

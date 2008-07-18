@@ -1,4 +1,4 @@
---[[
+﻿--[[
 	KeyBound localization file
 		Russian by ?
 --]]
@@ -7,30 +7,30 @@ if (GetLocale() ~= "ruRU") then
 	return
 end
 
-local REVISION = tonumber(("$Revision: 78109 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 78684 $"):match("%d+"))
 if (LibKeyBoundLocale10 and REVISION <= LibKeyBoundLocale10.REVISION) then
 	return
 end
 
 LibKeyBoundLocale10 = {
 	REVISION = REVISION;
-	Enabled = 'Bindings mode enabled';
-	Disabled = 'Bindings mode disabled';
-	ClearTip = format('Press %s to clear all bindings', GetBindingText('ESCAPE', 'KEY_'));
-	NoKeysBoundTip = 'No current bindings';
-	ClearedBindings = 'Removed all bindings from %s';
-	BoundKey = 'Set %s to %s';
-	UnboundKey = 'Unbound %s from %s';
-	CannotBindInCombat = 'Cannot bind keys in combat';
-	CombatBindingsEnabled = 'Exiting combat, keybinding mode enabled';
-	CombatBindingsDisabled = 'Entering combat, keybinding mode disabled';
-	BindingsHelp = "Hover over a button, then press a key to set its binding.  To clear a button's current keybinding, press %s.";
+	Enabled = 'Режим назначения клавиш включен';
+	Disabled = 'Режим назначения клавиш отключен';
+	ClearTip = format('Нажмите %s для сброса всех назначений', GetBindingText('ESCAPE', 'KEY_'));
+	NoKeysBoundTip = 'Нет текущих назначений';
+	ClearedBindings = 'Удалить все назначения с %s';
+	BoundKey = 'Установить %s на %s';
+	UnboundKey = 'Снять назначение %s с %s';
+	CannotBindInCombat = 'Невозможно назначить клавишу в бою';
+	CombatBindingsEnabled = 'Выход из боя, режим назначения клавиш включен';
+	CombatBindingsDisabled = 'Начало боя, режим назначения клавиш отключен';
+	BindingsHelp = "Зависните над кнопкой, и тогда нажмите клавишу для установки назначения.  Для очистки текущих назначений клавиш, нажмите %s.";
 
 	-- This is the short display version you see on the Button
 	["Alt"] = "A",
 	["Ctrl"] = "C",
 	["Shift"] = "S",
-	["NumPad"] = "N",
+	["NumPad"] = "Ц",
 
 	["Backspace"] = "BS",
 	["Button1"] = "B1",
@@ -44,13 +44,13 @@ LibKeyBoundLocale10 = {
 	["End"] = "En",
 	["Home"] = "HM",
 	["Insert"] = "Ins",
-	["Mouse Wheel Down"] = "WD",
-	["Mouse Wheel Up"] = "WU",
+	["Mouse Wheel Down"] = "КМВХ",
+	["Mouse Wheel Up"] = "КМВЗ",
 	["Num Lock"] = "NL",
 	["Page Down"] = "PD",
 	["Page Up"] = "PU",
 	["Scroll Lock"] = "SL",
-	["Spacebar"] = "Sp",
+	["Spacebar"] = "Прбл",
 	["Tab"] = "Tb",
 
 	["Down Arrow"] = "Dn",

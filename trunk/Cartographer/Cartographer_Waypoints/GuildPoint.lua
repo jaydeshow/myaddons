@@ -24,8 +24,9 @@ L:AddTranslations("esES", function() return {
 	["Guild Member not locatable"] = "Miembro de la Hermandad no localizable",
 } end)
 
-local RollCall = Rock("LibRollCall-2.0")
+local RollCall = Rock("LibRollCall-3.0")
 local Tourist = Rock("LibTourist-3.0")
+local BZR = Rock("LibBabble-Zone-3.0"):GetReverseLookupTable()
 local NameCache = {}
 
 GuildPoint = Waypoint:new()
@@ -57,11 +58,11 @@ function GuildPoint:MatchNote(memberName)
 end
 
 function GuildPoint:UpdateLocation(zone, _x, _y)
-	local ezone = RollCall:GetEnglishZone(self.WaypointID)
+	local ezone = BZR[RollCall:GetZone(self.WaypointID)]
 	local x,y = Tourist:TransposeZoneCoordinate(_x, _y, ezone, RollCall:GetZone(self.WaypointID))
 	self.Zone, self.x, self.y = zone, x, y
 --[[	if not NameCache[zone] then
-		NameCache [zone] = RollCall:GetEnglishZone(self.WaypointID)
+		NameCache [zone] = BZR[RollCall:GetZone(self.WaypointID)]
 	end
 	self.x, self.y = Tourist:TransposeZoneCoordinate(_x, _y, NameCache[zone], RollCall:GetZone(self.WaypointID))
 	self.Zone = zone  --]]

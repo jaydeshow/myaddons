@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 76620 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78412 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -132,10 +132,18 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 			local myThreat = ThreatLib:GetThreat(UnitGUID("player"), target)
 			if targetThreat > 0 and targetThreat > myThreat then
 				self:SetTargetThreat(target, targetThreat)
+				self.nextEventHook = self.AfterRighteousDefense
 			elseif targetThreat == 0 then
 				local maxThreat = ThreatLib:GetMaxThreatOnTarget(target)
 				self:SetTargetThreat(target, maxThreat)
+				self.nextEventHook = self.AfterRighteousDefense
 			end
+		end
+	end
+
+	function Paladin:AfterRighteousDefense(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellID)
+		if eventtype ~= "SPELL_AURA_APPLIED" or spellID ~= 31790 then
+			ThreatLib:PublishThreat()
 		end
 	end
 end

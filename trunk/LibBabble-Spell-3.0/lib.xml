@@ -9,6 +9,7 @@
 	<Script file="koKR.lua" />
 	<Script file="zhCN.lua" />
 	<Script file="zhTW.lua" />
+	<Script file="ruRU.lua" />
 	
 	<Script file="Cleanup.lua" />
 </Ui>

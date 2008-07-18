@@ -1,6 +1,6 @@
 --[[
 Name: FuBarPlugin-2.0
-Revision: $Rev: 63898 $
+Revision: $Rev: 78659 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://wiki.wowace.com/index.php/FuBarPlugin-2.0
 Documentation: http://wiki.wowace.com/index.php/FuBarPlugin-2.0
@@ -14,7 +14,7 @@ Notes: When embeding this library, FuBar should be set as an optional dependency
 
 local MAJOR_VERSION = "FuBarPlugin-2.0"
 local MINIMAPCONTAINER_MAJOR_VERSION = "FuBarPlugin-MinimapContainer-2.0"
-local MINOR_VERSION = "$Revision: 63898 $"
+local MINOR_VERSION = "$Revision: 78659 $"
 
 -- This ensures the code is only executed if the libary doesn't already exist, or is a newer version
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary.") end
@@ -197,6 +197,30 @@ elseif GetLocale() == "esES" then
 	OTHER = "Otros"
 	CLOSE = "Cerrar"
 	CLOSE_DESC = "Cierra el men\195\186."
+elseif GetLocale() == "ruRU" then
+	SHOW_ICON = "Показ иконки"
+	SHOW_ICON_DESC = "Показывать иконку плагина на панели."
+	SHOW_TEXT = "Показ текста"
+	SHOW_TEXT_DESC = "Показывать текст плагина на панели."
+	SHOW_COLORED_TEXT = "Показ цветового текста"
+	SHOW_COLORED_TEXT_DESC = "Позволить плагину использовать его цвета в тексте."
+	DETACH_TOOLTIP = "Отделить подсказку"
+	DETACH_TOOLTIP_DESC = "Отделить всплывающую подсказку от панели."
+	LOCK_TOOLTIP = "Закрепить подсказку"
+	LOCK_TOOLTIP_DESC = "Закрепить позицию всплывающей подсказки. Когда всплывающая подсказка закреплена, используйте Alt для отображения ее у мыши."
+	POSITION = "Позиция"
+	POSITION_DESC = "Позиция плагина на панели."
+	POSITION_LEFT = "Слева"
+	POSITION_RIGHT = "Справа"
+	POSITION_CENTER = "По центру"
+	ATTACH_TO_MINIMAP = "Закрепить у мини-карты"
+	ATTACH_TO_MINIMAP_DESC = "Закрепить плагин у мини-карты вместо панели."
+	HIDE_FUBAR_PLUGIN = "Скрыть плагин"
+	HIDE_FUBAR_PLUGIN_CMD = "Скрыть"
+	HIDE_FUBAR_PLUGIN_DESC = "Скрыть плагин с панели или мини-карты, но оставить аддон в рабочем состоянии."
+	OTHER = "Другое"
+	CLOSE = "Закрыть"
+	CLOSE_DESC = "Закрыть меню."
 end
 
 local AceOO = AceLibrary("AceOO-2.0")

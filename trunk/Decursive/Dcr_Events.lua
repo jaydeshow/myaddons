@@ -27,7 +27,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_opt.lua"] then
     return;
 end
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-06-25 19:56:58 -0400 (Wed, 25 Jun 2008) $", "$Revision: 77431 $");
+D:SetDateAndRevision("$Date: 2008-07-14 20:15:26 -0400 (Mon, 14 Jul 2008) $", "$Revision: 78433 $");
 
 
 local L = D.L;
@@ -346,6 +346,80 @@ end
 function D:SPELLS_CHANGED()
     D:Debug("|cFFFF0000Spells were changed, scheduling a reconfiguration check|r");
     self:ScheduleEvent("SpellsChanged", self.ReConfigure, 15, self);
+end
+
+do
+    local bit = _G.bit;
+    local band = bit.band;
+    local bor = bit.bor;
+
+
+    -- a friendly player character controled directly by the player that is not an outsider
+    local PLAYER	= bit.bor (COMBATLOG_OBJECT_CONTROL_PLAYER   , COMBATLOG_OBJECT_TYPE_PLAYER  , COMBATLOG_OBJECT_REACTION_FRIENDLY  );
+    local PLAYER_MASK	= bit.bnot (COMBATLOG_OBJECT_AFFILIATION_OUTSIDER);
+
+    -- a hostile player character contoled as a pet and that is not an outsider
+    local MIND_CONTROLED_PLAYER		= bit.bor (COMBATLOG_OBJECT_CONTROL_PLAYER , COMBATLOG_OBJECT_TYPE_PET	 , COMBATLOG_OBJECT_REACTION_HOSTILE  );
+    local MIND_CONTROLED_PLAYER_MASK	= bit.bnot (COMBATLOG_OBJECT_AFFILIATION_OUTSIDER);
+
+    -- a pet controled by a friendly player that is not an outsider
+    local PET	    = bit.bor (COMBATLOG_OBJECT_CONTROL_PLAYER	, COMBATLOG_OBJECT_TYPE_PET	, COMBATLOG_OBJECT_REACTION_FRIENDLY  );
+    local PET_MASK  = bit.bnot (COMBATLOG_OBJECT_AFFILIATION_OUTSIDER);
+
+    -- An outsider friendly focused NPC
+    local FOCUSED_NPC	    = bit.bor (COMBATLOG_OBJECT_CONTROL_NPC  , COMBATLOG_OBJECT_REACTION_FRIENDLY   , COMBATLOG_OBJECT_FOCUS	    , COMBATLOG_OBJECT_AFFILIATION_OUTSIDER);
+    local FOCUSED_NPC_MASK  = bit.bnot (0);
+
+    local DEST_GLOBAL =  bit.bor (PLAYER, MIND_CONTROLED_PLAYER, PET, FOCUSED_NPC);
+
+
+    local t;
+    local function match (value, mask, Verify_exclude)
+
+	if   band(value, mask) == mask then
+	    if value == band(value, Verify_exclude) then
+		return true;
+	    end
+	end
+
+	return false;
+
+    end
+
+
+    local substr = _G.string.sub;
+
+    function D:COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags)
+
+
+	if (destName and band (destFlags, DEST_GLOBAL) ~= 0 and substr(event, 1, 10) == "SPELL_AURA") then
+
+	    D:Print("? (source=%s) (dest=%s -- %X): |cffff0000%s|c, glob = %X, PLAYER=%X PlayerVM=%X", sourceName, destName, destFlags, event, DEST_GLOBAL, PLAYER, PLAYER_MASK);
+
+	    if	(match(destFlags, PLAYER, PLAYER_MASK)) then
+
+		D:Print("A player got something (source=%s -- %X) (dest=%s -- %x): %s, glob = %x", sourceName, sourceFlags, destName, destFlags, event, DEST_GLOBAL);
+		D:Print(arg10, arg11, arg12);
+
+	    elseif	(match(destFlags, PET, PET_MASK)) then
+		D:Print("A pet got something (source=%s) (dest=%s -- %x): %s", sourceName, destName, destFlags, event);
+		D:Print(arg10, arg11, arg12);
+
+	    elseif	(match(destFlags, MIND_CONTROLED_PLAYER, MIND_CONTROLED_PLAYER_MASK)) then
+		D:Print("Mind controled player got something (source=%s) (dest=%s -- %x): %s", sourceName, destName, destFlags, event);
+		D:Print(arg10, arg11, arg12);
+	    elseif	(match(destFlags, FOCUSED_NPC, FOCUSED_NPC_MASK)) then
+		D:Print("focused NPC got something (source=%s) (dest=%s -- %x): %s", sourceName, destName, destFlags, event);
+		D:Print(arg10, arg11, arg12);
+	    end
+
+	end
+
+
+    end
+
+    
+
 end
 
 DcrLoadedFiles["Dcr_Events.lua"] = true;

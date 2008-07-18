@@ -393,7 +393,7 @@ do  -- estimated wait timer and the 2 min timer to port to a certain battlegroun
 			end
 			if status == "confirm" and db.port then
 				self:StopBar(format(q, map))
-				self:StartBar(format(p, map), (teamsize > 0 and 60) or 120, GetBattlefieldPortExpiration(i)/1000, "Interface\\Icons\\Ability_TownWatch", "info2", true, true)
+				self:StartBar(format(p, map), (teamsize > 0 and 60) or 80, GetBattlefieldPortExpiration(i)/1000, "Interface\\Icons\\Ability_TownWatch", "info2", true, true)
 				currentq[map] = i
 			elseif status == "queued" and db.wait then
 				local esttime, waitedtime = GetBattlefieldEstimatedWaitTime(i)/1000, GetBattlefieldTimeWaited(i)/1000

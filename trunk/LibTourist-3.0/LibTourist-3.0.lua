@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibTourist-3.0
-Revision: $Rev: 78292 $
+Revision: $Rev: 78351 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://www.wowace.com/wiki/LibTourist-3.0
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibTourist-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 78292 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 78351 $"):match("(%d+)"))
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 if not LibStub("LibBabble-Zone-3.0") then error(MAJOR_VERSION .. " requires LibBabble-Zone-3.0.") end
@@ -1665,7 +1665,7 @@ do
 		},
 		faction = "Horde",
 		type = "Instance",
-		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
+		entrancePortal = { BZ["Tirisfal Glades"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Graveyard"]] = {
@@ -1676,7 +1676,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
-		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
+		entrancePortal = { BZ["Tirisfal Glades"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Library"]] = {
@@ -1687,7 +1687,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
-		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
+		entrancePortal = { BZ["Tirisfal Glades"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Armory"]] = {
@@ -1698,7 +1698,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
-		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
+		entrancePortal = { BZ["Tirisfal Glades"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Cathedral"]] = {
@@ -1709,7 +1709,7 @@ do
 		groupSize = 5,
 		type = "Instance",
 		complex = BZ["Scarlet Monastery"],
-		entrancePortal = { BZ["Scarlet Monastery"], 84.4, 32.9 },
+		entrancePortal = { BZ["Tirisfal Glades"], 84.4, 32.9 },
 	}
 
 	zones[BZ["Uldaman"]] = {

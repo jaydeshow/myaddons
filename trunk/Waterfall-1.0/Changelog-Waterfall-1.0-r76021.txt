@@ -1,8 +1,0 @@
-------------------------------------------------------------------------
-r76021 | toadkiller | 2008-06-04 15:40:32 -0400 (Wed, 04 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/Waterfall-1.0/Waterfall-1.0/Waterfall-1.0.lua
-
-Waterfall-1.0 : 
--- Use English name for spell CLASS.
-------------------------------------------------------------------------

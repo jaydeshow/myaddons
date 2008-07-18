@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 77485 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78600 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -790,7 +790,11 @@ function Recount:AddAmount2(who,datatype,secondary,amount)
 	if not Recount.db.profile.Filters.Data[who.type]  or not Recount.db.profile.GlobalDataCollect or not Recount.CurrentDataCollect then
 		return
 	end
-
+	if not secondary then
+		Recount:DPrint("Empty secondary: "..datatype)
+		return
+	end
+	
 	--We add the data to both overall & current fight data
 	who.Fights = who.Fights or {}
 	who.Fights.OverallData = who.Fights.OverallData or {}

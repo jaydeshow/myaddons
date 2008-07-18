@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Waterfall-1.0
-Revision: $Revision: 76021 $
+Revision: $Revision: 78661 $
 Author(s): Nargiddley (nargiddley@gmail.com)
 Inspired By: Dewdrop by ckknight
 Website: http://www.wowace.com/wiki/Waterfall-1.0
@@ -12,7 +12,7 @@ Dependencies: AceOO-2.0
 ]]
 
 local MAJOR_VERSION = "Waterfall-1.0"
-local MINOR_VERSION = "$Revision: 76021 $"
+local MINOR_VERSION = "$Revision: 78661 $"
 
 local CONTROL_LIMIT = 250
 local _
@@ -43,6 +43,9 @@ elseif GetLocale() == "zhTW" then
 elseif GetLocale() == "koKR" then
 	OPTIONS = "설정"
 	ARE_YOU_SURE = "정말 당신은 `%s'|1을;를; 하시겠습니까?"
+elseif GetLocale() == "ruRU" then
+	OPTIONS = "Опции"
+	ARE_YOU_SURE = "Вы уверены что вы хотите %s?"
 end
 
 local DEFAULT_CONTROL_WIDTH = 180

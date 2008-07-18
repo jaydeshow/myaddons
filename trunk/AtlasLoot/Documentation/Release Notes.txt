@@ -9,7 +9,7 @@ v4.06.01
 Updated Brewfest section
 Added loot table for Coren Direbrew (Brewfest)
 Added Don Carlos loot table
-Added new TCG loot from "Drums of War" (no IDs yet)
+Added new TCG loot from "Drums of War"
 Readded previously removed vindicator items
 Fixed Arena prices (Season 3)
 Fixed a major Wishlist bug that caused crafted items to appear corrupted

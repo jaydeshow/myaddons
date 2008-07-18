@@ -1,8 +1,8 @@
 ﻿Cartographer = Rock:NewAddon("Cartographer", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockDB-1.0", "LibRockModuleCore-1.0", "LibRockHook-1.0", "LibRockConfig-1.0")
 local Cartographer = Cartographer
-Cartographer.revision = tonumber(string.sub("$Revision: 77299 $", 12, -3))
+Cartographer.revision = tonumber(string.sub("$Revision: 78630 $", 12, -3))
 Cartographer.version = "r" .. Cartographer.revision
-Cartographer.date = string.sub("$Date: 2008-06-23 18:51:02 -0400 (Mon, 23 Jun 2008) $", 8, 17)
+Cartographer.date = string.sub("$Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $", 8, 17)
 
 local Dewdrop = AceLibrary("Dewdrop-2.0")
 
@@ -15,7 +15,7 @@ local BZH = BZ:GetUnstrictLookupTable()
 local BZR = BZ:GetReverseLookupTable()
 local Tablet = AceLibrary("Tablet-2.0")
 local Tourist = Rock("LibTourist-3.0")
-local RollCall = Rock("LibRollCall-2.0")
+local RollCall = Rock("LibRollCall-3.0")
 local AceEvent
 local precondition, argCheck = Rock:GetContractFunctions("Cartographer", "precondition", "argCheck")
 
@@ -122,7 +122,7 @@ L:AddTranslations("koKR", function() return {
 	["Addon to manipulate the map."] = "월드맵 확장 애드온",
 } end)
 
---Ananhaid checkpoint.($Date: 2008-06-23 18:51:02 -0400 (Mon, 23 Jun 2008) $)
+--Ananhaid checkpoint.($Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $)
 L:AddTranslations("zhCN", function() return {
 	["Active"] = "启用", -- remove in a while (2006-12-08)
 	["Enabled"] = "启用",

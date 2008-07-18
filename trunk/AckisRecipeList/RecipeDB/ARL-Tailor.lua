@@ -4,8 +4,8 @@ ARL-Tailor.lua
 
 Tailoring data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-15 11:23:30 -0400 (Tue, 15 Jul 2008) $
+$Rev: 78484 $
 
 ]]--
 
@@ -184,11 +184,9 @@ function addon:InitTailoring()
 	self:addTradeSkillSpell(26752, 355, self:CombineVendors(65, false), GetSpellInfo(26797),2,10)
 	self:addTradeSkillSpell(26753, 365, self:CombineVendors(65, false), GetSpellInfo(26797),2,10)
 	self:addTradeSkillSpell(26754, 370, self:CombineVendors(65, false), GetSpellInfo(26797),2,10)
-	if (_G.GameTimeFrame_OnClick) then
-		self:addTradeSkillSpell(49677, 250, self:CombineVendors(286, false),2,10)
-		self:addTradeSkillSpell(50644, 250, self:CombineVendors(286, false),2,10)
-		self:addTradeSkillSpell(50647, 245, self:CombineVendors(286, false),2,10)
-	end
+	self:addTradeSkillSpell(49677, 250, self:CombineVendors(286, false),2,10)
+	self:addTradeSkillSpell(50644, 250, self:CombineVendors(286, false),2,10)
+	self:addTradeSkillSpell(50647, 245, self:CombineVendors(286, false),2,10)
 
 	-- World Drops
 	self:addTradeSkillSpell(2389, 40, L["UWD"],3,10)

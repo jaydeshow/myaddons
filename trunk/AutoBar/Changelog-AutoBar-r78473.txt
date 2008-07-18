@@ -1,0 +1,165 @@
+------------------------------------------------------------------------
+r78473 | digmouse | 2008-07-15 09:34:01 -0400 (Tue, 15 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+
+AutoBar : 
+-zhCN update
+------------------------------------------------------------------------
+r78327 | toadkiller | 2008-07-13 05:33:41 -0400 (Sun, 13 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+
+AutoBar: 
+-- Water Breathing and Water Walking for Shaman Class Buff Button
+
+------------------------------------------------------------------------
+r78308 | toadkiller | 2008-07-12 20:45:55 -0400 (Sat, 12 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-ruRU.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar: 
+-- Drop setting - if checked allows items to be dragged onto the custom button at any time
+-- Always Popup setting for buttons
+
+------------------------------------------------------------------------
+r77650 | toadkiller | 2008-06-30 20:16:53 -0400 (Mon, 30 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+
+AutoBar: 
+-- fix stealth issue
+------------------------------------------------------------------------
+r77400 | toadkiller | 2008-06-25 11:26:57 -0400 (Wed, 25 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Core.lua
+
+AutoBar: 
+-- Fix crasher trying to invoke skinning with no ButtonFacade mod around.
+------------------------------------------------------------------------
+r77359 | gamefaq | 2008-06-24 22:54:19 -0400 (Tue, 24 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/Locale-deDE.lua
+
+AutoBar : Redone deDE Local (around 80% is new) and changed Format to UTF-8
+------------------------------------------------------------------------
+r77301 | toadkiller | 2008-06-23 20:19:15 -0400 (Mon, 23 Jun 2008) | 4 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassBar.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/AutoBarSearch.lua
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+
+AutoBar: 
+-- Switch more events to the Blizzard API
+-- Fix some more macro button issues
+-- Blizzard Macro buttons now save their name and use that to locate their macro in case the index changes
+------------------------------------------------------------------------
+r76925 | toadkiller | 2008-06-17 10:15:06 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarDB.lua
+
+AutoBar: 
+-- Fix Cooldown Potion: Combat Button
+------------------------------------------------------------------------
+r76905 | scorpion | 2008-06-17 04:32:18 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+ - Update zhTW & zhCN localization.
+------------------------------------------------------------------------
+r76893 | toadkiller | 2008-06-17 00:50:26 -0400 (Tue, 17 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/ChangeList.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   D /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   A /trunk/AutoBar/Locale-ruRU.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+-- ruRU and esMX added to toc etc.
+------------------------------------------------------------------------
+r76860 | toadkiller | 2008-06-16 14:42:56 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassButton.lua
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Dump AceEvent for PLAYER_REGEN_DISABLED and PLAYER_REGEN_ENABLED
+------------------------------------------------------------------------
+r76856 | StiviS | 2008-06-16 14:03:11 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-esES.lua
+
+AutoBar :
+- esES updated
+------------------------------------------------------------------------
+r76835 | 7destiny | 2008-06-16 07:44:28 -0400 (Mon, 16 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : Fix error
+------------------------------------------------------------------------
+r76827 | toadkiller | 2008-06-16 04:59:21 -0400 (Mon, 16 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Core.lua
+
+AutoBar : 
+-- Added PLAYER_REGEN_DISABLED called while InCombatLockdown debug message for the taint issues.
+------------------------------------------------------------------------
+r76709 | toadkiller | 2008-06-15 00:17:59 -0400 (Sun, 15 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarClassBar.lua
+
+AutoBar : 
+-- Reset popup frame strata after Key bindings mode
+------------------------------------------------------------------------
+r76652 | toadkiller | 2008-06-14 01:49:25 -0400 (Sat, 14 Jun 2008) | 5 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarCategory.lua
+   M /trunk/AutoBar/AutoBarClassPopupButton.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+   M /trunk/AutoBar/Bindings.xml
+   M /trunk/AutoBar/ChangeList.lua
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-itIT.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+-- Fix one source of popups staying open
+-- AutoBarButtonCooldownPotionCombat (Heroic Potion, Destruction Potion ...)
+-- AutoBarButtonCooldownStoneCombat (Nightmare Seed, Flamecap, Fel Blossom, ...)
+
+------------------------------------------------------------------------

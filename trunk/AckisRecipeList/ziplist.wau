@@ -1,10 +1,11 @@
-AckisRecipeList/Changelog-AckisRecipeList-r78279.txt
+AckisRecipeList/Changelog-AckisRecipeList-r78647.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/AckisRecipeList.lua
 AckisRecipeList/AboutPanel.lua
 AckisRecipeList/ARLFrame.lua
 AckisRecipeList/LICENSE.txt
+AckisRecipeList/DownloadCount.lua
 AckisRecipeList/ARLColour.lua
 AckisRecipeList/AckisRecipeList.toc
 AckisRecipeList/RecipeDB/ARL-Alchemy.lua

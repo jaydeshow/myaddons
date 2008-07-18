@@ -1299,7 +1299,7 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ AtlasLoot_TableNames["PvP70NonSet2"][1], "PvP70NonSet2" },
 		{ AtlasLoot_TableNames["PvP70NonSet3"][1], "PvP70NonSet3" },
 		{ AtlasLoot_TableNames["PvP70NonSet4"][1], "PvP70NonSet4" },
-		{ AtlasLoot_TableNames["PvP70NonSet4"][1], "PvP70NonSet5" },
+		{ AtlasLoot_TableNames["PvP70NonSet5"][1], "PvP70NonSet5" },
 	},
 	["PvPLvl60Rewards"] = {
 		{ BabbleClass["Druid"], "PVPDruid" },

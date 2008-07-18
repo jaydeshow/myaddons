@@ -1046,6 +1046,7 @@ AtlasLoot_Data["AtlasLootWorldEvents"] = {
 	};
 	
 	CorenDirebrew = {
+		{ 37128, "", "=q4=Balebrew Charm", "=ds=#s14#" },
 		{ 37127, "", "=q4=Brightbrew Charm", "=ds=#s14#" },
 		{ 38289, "", "=q4=Coren's Lucky Coin", "=ds=#s14#" },
 		{ 38290, "", "=q4=Dark Iron Smoking Pipe", "=ds=#s14#" },

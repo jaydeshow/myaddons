@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 77072 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78411 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -99,7 +99,6 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 
 		-- Growl
 		self.CastLandedHandlers[6795] = self.Growl
-		self.CastMissHandlers[6795] = self.GrowlMissed
 		
 		-- Cyclone
 		self.CastLandedHandlers[33786] = self.Cyclone
@@ -161,19 +160,29 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 		self.totalThreatMods = nil		-- Needed to recalc total mods
 	end
 
+	local pendingTauntTarget = nil
+	local pendingTauntOffset = nil
 	function Druid:Growl(spellID, target)
 		local targetThreat = ThreatLib:GetThreat(UnitGUID("targettarget"), target)
 		local myThreat = ThreatLib:GetThreat(UnitGUID("player"), target)
 		if targetThreat > 0 and targetThreat > myThreat then
-			self:AddTargetThreatTransactional(target, spellID, targetThreat-myThreat)
+			pendingTauntTarget = target
+			pendingTauntOffset = targetThreat-myThreat
 		elseif targetThreat == 0 then
 			local maxThreat = ThreatLib:GetMaxThreatOnTarget(target)
-			self:AddTargetThreatTransactional(target, spellID, maxThreat-myThreat)
-		end		
+			pendingTauntTarget = target
+			pendingTauntOffset = maxThreat-myThreat
+		end
+		self.nextEventHook = self.GrowlNextHook
 	end
 
-	function Druid:GrowlMissed(spellID, target)
-		self:rollbackTransaction(target, spellID)
+	function Druid:GrowlNextHook(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellID)
+		if pendingTauntTarget and (eventtype ~= 'SPELL_MISSED' or spellID ~= 6795) then
+			self:AddTargetThreat(pendingTauntTarget, pendingTauntOffset)
+			ThreatLib:PublishThreat()
+		end
+		pendingTauntTarget = nil
+		pendingTauntOffset = nil
 	end
 
 	function Druid:FaerieFire(spellID, target)

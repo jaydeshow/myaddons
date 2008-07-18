@@ -229,7 +229,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17968
 mod.toggleoptions = {"grip", "icon", "fear", "burst", "burstsay", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 78512 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then
@@ -246,7 +246,7 @@ mod.proximitySilent = true
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Grip", 31972)
-	self:AddCombatListener("SPELL_AURA_DISPELLED", "GripRemoved")
+	self:AddCombatListener("SPELL_DISPEL", "GripRemoved")
 	self:AddCombatListener("SPELL_CAST_START", "Burst", 32014)
 	self:AddCombatListener("SPELL_CAST_START", "Fear", 31970)
 	self:AddCombatListener("UNIT_DIED", "BossDeath")

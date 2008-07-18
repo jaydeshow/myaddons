@@ -5,17 +5,15 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-07-11 21:39:42 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78279 $
+$Date: 2008-07-15 11:23:30 -0400 (Tue, 15 Jul 2008) $
+$Rev: 78484 $
 
 Original translated by: damjau
 Currently maintaince by: next96
 
-Thank you all translators! (From Ackis)
+�����մϴ� Thank you all translators! (From Ackis)
 
 Please make sure you update the ToC file with any translations.
-
-ToC needs translation update for Notes please. (remove this if it's done)
 
 ****************************************************************************************
 ]]--

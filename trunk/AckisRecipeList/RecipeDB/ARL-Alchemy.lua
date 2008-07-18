@@ -4,8 +4,8 @@ ARL-Alchemy.lua
 
 Alchemy data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-15 11:23:30 -0400 (Tue, 15 Jul 2008) $
+$Rev: 78484 $
 
 ]]--
 
@@ -81,7 +81,7 @@ function addon:InitAlchemy()
 	self:addTradeSkillSpell(7258, 190, self:CombineVendors(143, 144, false),2)
 	self:addTradeSkillSpell(7259, 190, self:CombineVendors(145, 146, 147, 144, false),2)
 	self:addTradeSkillSpell(3454, 200, self:CombineVendors(148, false),2)
-	self:addTradeSkillSpell(11459, 225, self:CombineVendors(145, false),2)
+	self:addTradeSkillSpell(11459, 200, self:CombineVendors(145, false),2)
 	self:addTradeSkillSpell(11479, 225, self:CombineVendors(145, false),2)
 	self:addTradeSkillSpell(11480, 225, self:CombineVendors(145, false),2)
 	self:addTradeSkillSpell(11473, 245, self:CombineVendors(146, 147, false),2)

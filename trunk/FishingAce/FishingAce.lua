@@ -135,18 +135,13 @@ local function HideAwayAll(self, button, down)
 end
 
 function FishingAce:OnInitialize()
-	local btn = CreateFrame("CheckButton", "CastFishingButton", UIParent, "ActionBarButtonTemplate")
-	btn:SetScript("OnAttributeChanged", ActionButton_Update)
-	if ShiftClickFix_ActionButton then
-		ShiftClickFix_ActionButton(btn)
-	end
+	local btn = CreateFrame("CheckButton", "FishingAceButton", UIParent, "SecureActionButtonTemplate")
 	btn:SetPoint("LEFT", UIParent, "RIGHT", 10000, 0)
 	btn:SetFrameStrata("LOW")
 	btn:EnableMouse(true)
 	btn:RegisterForClicks("RightButtonUp")
 	btn:Hide()
 	btn:SetScript("PostClick", HideAwayAll)
-	FishingAceButton = btn
 end
 
 -- Something else that should be in a library

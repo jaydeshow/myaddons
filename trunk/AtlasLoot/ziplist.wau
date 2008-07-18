@@ -1,4 +1,4 @@
-AtlasLoot/Changelog-AtlasLoot-r78237.txt
+AtlasLoot/Changelog-AtlasLoot-r78682.txt
 AtlasLoot/embeds.xml
 AtlasLoot/AtlasLoot.toc
 AtlasLoot/Documentation/gpl-v2.zhTW.txt
@@ -19,6 +19,7 @@ AtlasLoot/Constants/constants.es.lua
 AtlasLoot/Constants/constants.de.lua
 AtlasLoot/Constants/constants.cn.lua
 AtlasLoot/Constants/constants.kr.lua
+AtlasLoot/Constants/constants.ru.lua
 AtlasLoot/Constants/constants.fr.lua
 AtlasLoot/PvP/PvP.xml
 AtlasLoot/PvP/Battlegrounds.en.lua

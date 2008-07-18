@@ -617,6 +617,8 @@ function D:OnEnable(first) -- called after PLAYER_LOGIN -- {{{
     --self:RegisterEvent("ADDON_ACTION_BLOCKED","ADDON_ACTION_BLOCKED");
 
 
+    -- XXX    self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
+    
 
     self:ScheduleRepeatingEvent("SheduledTasks", self.SheduledTasks, 0.2, self);
 
@@ -1101,7 +1103,7 @@ function D:SetDateAndRevision (Date, Revision)
     end
 end
 
-D:SetDateAndRevision("$Date: 2008-06-21 09:31:33 -0400 (Sat, 21 Jun 2008) $", "$Revision: 77182 $");
+D:SetDateAndRevision("$Date: 2008-07-14 19:09:03 -0400 (Mon, 14 Jul 2008) $", "$Revision: 78429 $");
 
 DcrLoadedFiles["DCR_init.lua"] = true;
 

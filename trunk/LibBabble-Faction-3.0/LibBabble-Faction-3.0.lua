@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Faction-3.0
-Revision: $Rev: 76843 $
+Revision: $Rev: 78541 $
 Author(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Faction-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Faction-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Faction-3.0"
-local MINOR_VERSION = "$Revision: 76843 $"
+local MINOR_VERSION = "$Revision: 78541 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -684,6 +684,59 @@ elseif GAME_LOCALE == "koKR" then
 	["Honored"] = "우호적",
 	["Revered"] = "매우 우호적",
 	["Exalted"] = "확고한 동맹",
+}
+elseif GAME_LOCALE == "ruRU" then
+	lib:SetCurrentTranslations {
+	--Player Factions
+	["Alliance"] = "Альянс",
+	["Horde"] = "Орда",
+
+  -- Rep Factions
+	["The Aldor"] = "Алдоры",
+	["Argent Dawn"] = "Серебряный Рассвет",
+	["Ashtongue Deathsworn"] = "Пеплоусты-служители",
+	["Bloodsail Buccaneers"] = "Пираты Кровавого Паруса",
+	["Brood of Nozdormu"] = "Род Ноздорму",
+	["Cenarion Circle"] = "Служители Ценариона",
+	["Cenarion Expedition"] = "Экспедиция Ценариона",
+	["The Consortium"] = "Консорциум",
+	["Darkmoon Faire"] = "Ярмарка Новолуния",
+	["The Defilers"] = "Осквернители",
+	["Frostwolf Clan"] = "Клан Северного Волка",
+	["Gelkis Clan Centaur"] = "Кентавры из племени Гелкис",
+	["Honor Hold"] = "Оплот Чести",
+	["Hydraxian Waterlords"] = "Гидраксианские Повелители Вод",
+	["Keepers of Time"] = "Хранители Времени",
+	["Kurenai"] = "Куренай",
+	["The League of Arathor"] = "Лига Аратора",
+	["Lower City"] = "Нижний Город",
+	["The Mag'har"] = "Маг'хары",
+	["Magram Clan Centaur"] = "Кентавры племени Маграм",
+	["Netherwing"] = "Крылья Пустоверти",
+	["Ogri'la"] = "Огри'ла",
+	["The Scale of the Sands"] = "Песчаная Чешуя",
+	["The Scryers"] = "Провидцы",
+	["Silverwing Sentinels"] = "Среброкрылые Часовые",
+	["The Sha'tar"] = "Ша'тар",
+	["Sha'tari Skyguard"] = "Стражи Небес Ша'тар",
+	["Shattered Sun Offensive"] = "Армия Расколотого Солнца",
+	["Sporeggar"] = "Спореггар",
+	["Stormpike Guard"] = "Стража Грозовой Вершины",
+	["Thorium Brotherhood"] = "Братство Тория",
+	["Thrallmar"] = "Траллмар",
+	["Timbermaw Hold"] = "Древобрюхи",
+	["Tranquillien"] = "Транквиллион",
+	["The Violet Eye"] = "Аметистовое Око",
+	["Warsong Outriders"] = "Всадники Песни Войны",
+	["Wintersaber Trainers"] = "Укротители ледопардов",
+	["Zandalar Tribe"] = "Племя Зандалар",
+
+	--Rep Levels
+	["Neutral"] = "Равнодушие",
+	["Friendly"] = "Дружелюбие",
+	["Honored"] = "Уважение",
+	["Revered"] = "Почтитение",
+	["Exalted"] = "Восторг",
 }
 else
 	error(("%s: Locale %q not supported"):format(MAJOR_VERSION, GAME_LOCALE))

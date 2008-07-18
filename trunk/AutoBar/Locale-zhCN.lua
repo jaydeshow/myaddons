@@ -1,4 +1,4 @@
-﻿--
+--
 -- AutoBar
 -- http://code.google.com/p/autobar/
 -- Courtesy of PDI175, lostcup
@@ -18,10 +18,10 @@ if (GetLocale() == "zhCN") then
 		-- Waterfall
 		["Alpha"] = "半透明",
 		["Change the alpha of the bar."] = "改变物品列半透明",
-		["Add Button"] = "Add Button",
+		["Add Button"] = "添加按钮",
 		["Align Buttons"] = "按钮排列方向";
-		["Always Popup"] = "Always Popup";
-		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
+		["Always Popup"] = "总是弹出";
+		["Always keep Popups open for %s"] = "始终保持%s的弹出菜单打开";
 		["Always Show"] = "总是显示";
 		["Always Show %s, even if empty."] = "即使是空的，也总是显示 %s。";
 		["Announce to Party"] = "通报到小队",
@@ -48,8 +48,8 @@ if (GetLocale() == "zhCN") then
 		["Disable Conjure Button"] = "取消魔法制造按钮",
 		["Docked to"] = "依附于";
 		["Done"] = "完成";
-		["Drop"] = "Drop";
-		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
+		["Drop"] = "掉落";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "掉落物品, 技能或宏以上按钮添加到顶部自定分类";
 		["Enabled"] = "开启",
 		["Enable %s."] = "开启 %s",
 		["FadeOut"] = "渐隐",
@@ -69,7 +69,7 @@ if (GetLocale() == "zhCN") then
 		["FadeOut Delay"] = "渐隐延迟时间",
 		["FadeOut starts after this amount of time."] = "鼠标移开后开始渐隐的时间。",
 		["Frame Level"] = "框架等级",
-		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "调整物品列和弹出按钮的框架等级，以免遮挡其他界面框架或被遮挡",
+		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "调整动作条和弹出按钮的框架等级，以免遮挡其他界面框架或被遮挡",
 		["General"] = "一般",
 		["Hide"] = "隐藏",
 		["Hide %s"] = "隐藏 %s",
@@ -81,7 +81,7 @@ if (GetLocale() == "zhCN") then
 		["Medium"] = "中等",
 		["Name"] = "名称",
 		["New"] = "新增",
-		["New Macro"] = "新宏",
+		["New Macro"] = "新建宏",
 		["No Popup"] = "不弹出";
 		["No Popup for %s"] = "不弹出 %s";
 		["Non Combat Only"] = " [仅用于非战斗状态]";
@@ -91,18 +91,18 @@ if (GetLocale() == "zhCN") then
 		["Options GUI"] = "选项 GUI",
 		["Skin the Buttons"] = "按钮皮肤",
 		["Order"] = "反向",
-		["Change the order of %s in the Bar"] = "变更 %s 物品列的排列方向",
+		["Change the order of %s in the Bar"] = "变更 %s 动作条的排列方向",
 		["Padding"] = "间距",
-		["Change the padding of the bar."] = "改变物品列按钮间距",
+		["Change the padding of the bar."] = "改变动作条按钮间距",
 		["Popup Direction"] = "按钮弹出方向";
 		["Refresh"] = "更新",
-		["Refresh all the bars & buttons"] = "更新所有的物品列及按钮",
+		["Refresh all the bars & buttons"] = "更新所有的动作条及按钮",
 		["Remove"] = "移除",
 		["Remove this Button from the Bar"] = "从物品列移除按钮",
 		["Reset"] = "重置为默认";
-		["Reset Bars"] = "重制物品列",
-		["Reset everything to default values for all characters.  Custom Bars, Buttons and Categories remain unchanged."] = "重置所有角色的设定到默认值。自定义物品列，按钮和类别维持不变。",
-		["Reset the Bars to default Bar settings"] = "重置物品列为默认设定值",
+		["Reset Bars"] = "重制动作条",
+		["Reset everything to default values for all characters.  Custom Bars, Buttons and Categories remain unchanged."] = "Reset everything to default values for all characters.  Custom Bars, Buttons and Categories remain unchanged.",
+		["Reset the Bars to default Bar settings"] = "重置动作条为默认设定值",
 		["Revert"] = "复原";
 		["Right Click casts "] = "右键点击施放 ",
 		["Rows"] = "行";
@@ -112,7 +112,7 @@ if (GetLocale() == "zhCN") then
 		["Key Bindings"] = KEY_BINDINGS,
 		["Assign Bindings for Buttons on your Bars."] = "分配物品条榜定的按钮。",
 		["Scale"] = "缩放",
-		["Change the scale of the bar."] = "改变物品列缩放",
+		["Change the scale of the bar."] = "改变动作条缩放",
 		["Shared Layout"] = "已共用的配置",
 		["Share the Bar Visual Layout"] = "共用物品列的视觉配置",
 		["Shared Buttons"] = "已共用的按钮",
@@ -133,23 +133,25 @@ if (GetLocale() == "zhCN") then
 		["Show Tooltips in Combat"] = "战斗中显示提示信息";
 		["Shuffle"] = "随机排列",
 		["Shuffle replaces depleted items during combat with the next best item"] = "战斗期间随机选取下一个优化物品取代已耗尽的物品。",
-		["Snap Bars while moving"] = "移动时缩起物品列",
+		["Snap Bars while moving"] = "移动时缩起动作条",
 		["Sticky Frames"] = "锁定框架",
 		["Style"] = "样式",
-		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "改变物品列样式，需要非暴雪样式的 ButtonFacade 插件。",
+		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "改变动作条风格  Requires ButtonFacade for non-Blizzard styles.",
 		["Targeted"] = "需目标.";
 		["<Any String>"] = "<任何字串>",
-		["Move the Bars"] = "移动物品列",
-		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "可拖曳物品列移动它，左键点击隐藏(红)或显示(绿)物品列，右键点击显示设定选项。",
+		["Move the Bars"] = "移动动作条",
+		["Drag a bar to move it, left click to hide (red) or show (green) the bar, right click to configure the bar."] = "可拖曳动作条移动它，左键点击隐藏(红)或显示(绿)动作条，右键点击显示设定选项。",
 		["Move the Buttons"] = "移动按钮",
 		["Drag a Button to move it, right click to configure the Button."] = "拖曳按钮来移动它，右键点击来设定按钮。",
 
-		["{circle}"] = "{圆形}",
-		["{diamond}"] = "{菱形}",
-		["{skull}"] = "{骷髅}",
-		["{square}"] = "{方形}",  --need check
-		["{star}"] = "{星形}",
-		["{triangle}"] = "{三角}",
+		["{star}"] = "{rt1}",
+		["{circle}"] = "{rt2}",
+		["{diamond}"] = "{rt3}",
+		["{triangle}"] = "{rt4}",
+		["{moon}"] = "{rt5}",
+		["{square}"] = "{rt6}",
+		["{x}"] = "{rt7}",
+		["{skull}"] = "{rt8}",
 
 		["TOPLEFT"] = "左上",
 		["LEFT"] = "左",
@@ -256,7 +258,7 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonWaterBuff"] = "增益: 水",
 
 		["AutoBarButtonBear"] = "熊",
-		["AutoBarButtonBoomkinTree"] = "生命之树/枭兽",
+		["AutoBarButtonBoomkinTree"] = "生命之树 / 枭兽",
 		["AutoBarButtonCat"] = "猎豹",
 		["AutoBarButtonTravel"] = "旅行",
 		["AutoBarButtonFlight"] = "飞行",
@@ -315,11 +317,11 @@ if (GetLocale() == "zhCN") then
 		["Rearrange Order on Use for %s"] = "使用 %s 后重新排列顺序";
 		["Right Click Targets Pet"] = "右键以宠物为目标";
 		["None"] = "无";
-		["AUTOBAR_CONFIG_BT3BAR"] = "Bartender3物品列";
+		["AUTOBAR_CONFIG_BT3BAR"] = "Bartender3动作条";
 		["AUTOBAR_CONFIG_DOCKTOMAIN"] = "主菜单条";
 		["AUTOBAR_CONFIG_DOCKTOCHATFRAME"] = "对话框架";
 		["AUTOBAR_CONFIG_DOCKTOCHATFRAMEMENU"] = "对话框架菜单";
-		["AUTOBAR_CONFIG_DOCKTOACTIONBAR"] = "物品列";
+		["AUTOBAR_CONFIG_DOCKTOACTIONBAR"] = "动作条";
 		["AUTOBAR_CONFIG_DOCKTOMENUBUTTONS"] = "菜单按钮";
 		["AUTOBAR_CONFIG_NOTFOUND"] = "(未发现：物品 ";
 		["AUTOBAR_CONFIG_SLOTEDITTEXT"] = " 栏位 (左键编辑)";
@@ -537,7 +539,7 @@ if (GetLocale() == "zhCN") then
 --AUTOBAR_CHAT_MESSAGE1 = "保存的配置是老版本的, 已被清除.  不支持配置的升级.";
 --
 ----  AutoBar_Config.xml
---AUTOBAR_CONFIG_TAB_BAR = "物品列";
+--AUTOBAR_CONFIG_TAB_BAR = "动作条";
 --AUTOBAR_CONFIG_TAB_POPUP = "弹出";
 --AUTOBAR_CONFIG_TAB_PROFILE = "设定";
 --AUTOBAR_CONFIG_TAB_KEYS = "Keys";
