@@ -247,7 +247,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {lady, lock, boss}
 mod.guid = 25166
 mod.toggleoptions = {"nova", "conflag", "icon", -1, "pyro", -1, "blow", "blades", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 78093 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 78512 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -257,8 +257,8 @@ mod.proximitySilent = true
 
 function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "PyroGain", 45230)
-	self:AddCombatListener("SPELL_AURA_STOLEN", "PyroRemove")
-	self:AddCombatListener("SPELL_AURA_DISPELLED", "PyroRemove")
+	self:AddCombatListener("SPELL_STOLEN", "PyroRemove")
+	self:AddCombatListener("SPELL_DISPEL", "PyroRemove")
 	self:AddCombatListener("SPELL_DAMAGE", "Blow", 45256)
 	self:AddCombatListener("SPELL_CAST_START", "Blades", 45248)
 	self:AddCombatListener("UNIT_DIED", "Deaths")

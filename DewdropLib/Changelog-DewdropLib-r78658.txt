@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r78658 | StingerSoft | 2008-07-17 20:27:15 -0400 (Thu, 17 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/DewdropLib/Dewdrop-2.0/Dewdrop-2.0.lua
+
+DewdropLib: added ruRU translation
+------------------------------------------------------------------------

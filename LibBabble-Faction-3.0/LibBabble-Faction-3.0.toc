@@ -7,6 +7,7 @@
 ## Notes-deDE: BabbleLib ist eine Bibliothek, die bei der Lokalisierung helfen soll.
 ## Notes-frFR: Une bibliothèque d'aide à la localisation.
 ## Notes-esES: Una biblioteca para ayudar con las localizaciones.
+## Notes-ruRU: Библиотека для локализации аддонов.
 ## Author: Daviesh
 ## X-eMail: oma_daviesh@hotmail.com
 ## X-Category: Library

@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-17 02:31:03 -0400 (Thu, 17 Jul 2008) $
+$Rev: 78606 $
 
 ****************************************************************************************
 ]]--
@@ -639,7 +639,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.Header.Texture = addon.Frame.Header:CreateTexture("addon.Frame.Header.Texture", "ARTWORK")
 
 		addon.Frame.Header.Texture:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Header")
-		addon.Frame.Header.Texture:SetWidth(384)
+		addon.Frame.Header.Texture:SetWidth(475)
 		addon.Frame.Header.Texture:SetHeight(64)
 		addon.Frame.Header.Texture:ClearAllPoints()
 		addon.Frame.Header.Texture:SetPoint("TOP", addon.Frame.Header, "TOP", 0, 5)

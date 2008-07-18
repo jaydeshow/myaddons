@@ -1,0 +1,13 @@
+﻿## Interface: 20400
+## LoadOnDemand: 1
+## Title: Lib: RollCall-3.0
+## Notes: A library to provide an easy way to get information about guild members.
+## Author: ckknight
+## eMail: ckknight@gmail.com
+## Version: 3.0
+## X-Category: Library
+## X-License: MIT
+
+LibStub\LibStub.lua
+CallbackHandler-1.0\CallbackHandler-1.0.lua
+lib.xml

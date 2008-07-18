@@ -1,0 +1,34 @@
+------------------------------------------------------------------------
+r78433 | archarodim | 2008-07-14 20:15:26 -0400 (Mon, 14 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_Events.lua
+
+Decursive:
+- (inactive code) fix Boolean mask logic in WIP combat log buff/debuff detection code
+------------------------------------------------------------------------
+r78429 | archarodim | 2008-07-14 19:09:03 -0400 (Mon, 14 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_Events.lua
+
+Decursive:
+- (inactive code) Starting to implement buff/debuff event detection using combat log events instead of SpecialEvents-Aura-2.0
+------------------------------------------------------------------------
+r77431 | archarodim | 2008-06-25 19:56:58 -0400 (Wed, 25 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_Events.lua
+   M /trunk/Decursive/Dcr_LiveList.lua
+   M /trunk/Decursive/Decursive.lua
+
+Decursive:
+- Internal cleaning (clear a MUF debuffs before hiding it)
+- Prevent alert sound loop from happening.
+------------------------------------------------------------------------
+r77182 | archarodim | 2008-06-21 09:31:33 -0400 (Sat, 21 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- The lock and buttons display/hide status of the "Decursive" bar (the live-list anchor) were not applied correctly on startup. (Thanks to Jason for his very accurate bug report)
+------------------------------------------------------------------------

@@ -1,0 +1,78 @@
+------------------------------------------------------------------------
+r78412 | charon | 2008-07-14 14:39:36 -0400 (Mon, 14 Jul 2008) | 6 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
+
+Threat-2.0: Publish Paladin threat immediately after Righteous Defense
+
+We publish on the first event after an RD debuff series.  Note that
+unlike with Taunt/Growl, other debuffs can actually break the chain,
+but this is a minor problem: it just triggers an additional comm
+message.
+------------------------------------------------------------------------
+r78411 | charon | 2008-07-14 14:39:20 -0400 (Mon, 14 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
+
+Threat-2.0: Do not set the 'force' flag in Taunt publishes
+
+That flag overrides the check whether the last published threat is
+still accurate, and is not needed.
+------------------------------------------------------------------------
+r78410 | charon | 2008-07-14 14:35:29 -0400 (Mon, 14 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
+
+Threat-2.0: Move lastPublishTime update to PublishTime()
+
+Mainly so that the forced publishes I am spreading around are counted
+towards the publish interval code.
+------------------------------------------------------------------------
+r78353 | charon | 2008-07-13 17:52:09 -0400 (Sun, 13 Jul 2008) | 12 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Detect Growl/Taunt misses quickly, use this to publish right after
+
+Note that this change depends on the fact (empirically shown in logs
+since late March) that a Taunt resist is always of the form
+
+  SPELL_CAST_SUCCESS,...,355,"Taunt",0x1
+  SPELL_MISSED,...,355,"Taunt",0x1,RESIST
+
+with no events in between.  We exploit this to detect a successful
+Taunt on the event directly following the cast, and publish threat
+immediately.  This should improve accuracy with Taunts in quick
+succession.
+------------------------------------------------------------------------
+r77728 | arrowmaster | 2008-07-02 19:25:37 -0400 (Wed, 02 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/CoilfangReservoir/SerpentshrineCavern/Leotheras.lua
+
+Threat-2.0:
+-fix Leotheras Whirlwind threat wipe, thanks WatchoutX
+------------------------------------------------------------------------
+r77508 | arrowmaster | 2008-06-27 02:10:04 -0400 (Fri, 27 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
+
+Threat-2.0: fix ThreatLibNPCModuleCore.ModifyThreatSpells not being applied for NPCs without an NPC module, thanks WatchoutX
+------------------------------------------------------------------------
+r77072 | charon | 2008-06-19 04:47:23 -0400 (Thu, 19 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: properly handle Taunt and Growl misses by using transactions
+------------------------------------------------------------------------
+r76620 | charon | 2008-06-13 15:04:39 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
+
+Threat-2.0: fix paladin taunt applying UnitGUID to a GUID
+
+------------------------------------------------------------------------

@@ -1,4 +1,7 @@
 ﻿## Title: Ackis Recipe List
+## Title-enUS: Ackis Recipe List
+## Title-enGB: Ackis Recipe List
+## Title-koKR: Ackis의 제조법 리스트
 
 ## Notes: Displays a list of missing recipes for your trade skills.  Works with all trade skills, including rogue poisons and hunter beast training.
 ## Notes-enUS: Displays a list of missing recipes for your trade skills.  Works with all trade skills, including rogue poisons and hunter beast training.
@@ -7,6 +10,7 @@
 ## Notes-deDE: Zeigt eine Liste der Rezepte, die Ihr noch nicht mit eurem Beruf gelernt habt.  Funktioniert mit allen Berufen sowie den klassenspezifischen Berufen. (noch nicht vollständig übersetzt)
 ## Notes-esES: Muestra una lista de recetas inexistentes para sus Habilidades de Comercio. Funciona con todas las habilidades comerciales, incluidas venenos y entrenamiento de bestias del cazador.
 ## Notes-zhCN: 全面详细的商业技能信息插件，包括毒药和宠物技能.
+## Notes-koKR: 캐릭터가 배우지 못한 제조법을 표시합니다. 모든 전문기술 및 도적의 독과 사냥꾼의 야수 훈련도 포함합니다.
 
 ## Author: Ackis
 ## X-Author-Server: Illidan US
@@ -17,9 +21,9 @@
 ## X-Donate: Send me UDE Point codes, a Murky Code, or donate a few bucks/hours at your local animal shelter.
 
 ## Interface: 20400
-## Version: 0.92
-## X-Revision: $Rev: 78250 $
-## X-Date: $Date: 2008-07-11 15:15:39 -0400 (Fri, 11 Jul 2008) $
+## Version: 0.93
+## X-Revision: $Rev: 78606 $
+## X-Date: $Date: 2008-07-17 02:31:03 -0400 (Thu, 17 Jul 2008) $
 
 ## X-credits: FGWarmonger, Speeddymon, Xinhuan, Zhinjio
 
@@ -39,7 +43,7 @@
 
 ## SavedVariables: AckisRecipeListDB
 ## SavedVariablesPerCharacter: AckisRecipeListDBPC
-
+ 
 embeds.xml
 
 Locals\ARLLocals-enUS.lua

@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 78027 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78630 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-07-07 18:57:07 -0400 (Mon, 07 Jul 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GuildPositions")
@@ -83,7 +83,7 @@ local BZR = BZ:GetReverseLookupTable()
 local Roster = AceLibrary("Roster-2.1")
 local AceEvent = AceLibrary("AceEvent-2.0")
 local Tablet = AceLibrary("Tablet-2.0")
-local RollCall = Rock("LibRollCall-2.0")
+local RollCall = Rock("LibRollCall-3.0")
 local Crayon = Rock("LibCrayon-3.0")
 local Tourist = Rock("LibTourist-3.0")
 
@@ -308,12 +308,11 @@ function Cartographer_GuildPositions:OnInitialize()
 end
 
 function Cartographer_GuildPositions:OnEnable()
-	self:AddEventListener("LibRollCall-2.0", "Joined", "RollCall_Joined")
-	self:AddEventListener("LibRollCall-2.0", "Left", "RollCall_Left")
+	Rock("LibRollCall-3.0").RegisterCallback(self, "Joined", "RollCall_Joined")
+	Rock("LibRollCall-3.0").RegisterCallback(self, "Left", "RollCall_Left")
 	if IsInGuild() then
 		self:AddEventListener("Cartographer", "MapClosed", "Cartographer_MapClosed")
 		self:AddEventListener("Cartographer", "ChangeZone", "Cartographer_ChangeZone")
-		self:AddEventListener("LibRollCall-2.0", "MemberDisconnected", "RollCall_MemberDisconnected")
 	end
 	
 	self:AddRepeatingTimer(5, "UpdateMap")
@@ -329,6 +328,8 @@ local function clear(person)
 end
 
 function Cartographer_GuildPositions:OnDisable()
+	Rock("LibRollCall-3.0").UnregisterCallback(self, "Joined")
+	Rock("LibRollCall-3.0").UnregisterCallback(self, "Left")
 	for k in pairs(self.pois) do
 		if k ~= "del" then
 			clear(k)
@@ -374,7 +375,6 @@ function Cartographer_GuildPositions:RollCall_Joined()
 	if not self:HasEventListener("Cartographer", "MapClosed") then
 		self:AddEventListener("Cartographer", "MapClosed", "Cartographer_MapClosed")
 		self:AddEventListener("Cartographer", "ChangeZone", "Cartographer_ChangeZone")
-		self:AddEventListener("LibRollCall-1.0", "MemberDisconnected", "RollCall_MemberDisconnected")
 	end
 	
 	if WorldMapFrame:IsShown() then
@@ -388,16 +388,11 @@ function Cartographer_GuildPositions:RollCall_Left()
 	if self:HasEventListener("Cartographer_MapClosed") then
 		self:RemoveEventListener("Cartographer", "MapClosed")
 		self:RemoveEventListener("Cartographer", "ChangeZone")
-		self:RemoveEventListener("LibRollCall-1.0", "MemberDisconnected")
 	end
 	
 	for k in pairs(self.zones) do
 		clear(k)
 	end
-end
-
-function Cartographer_GuildPositions:RollCall_MemberDisconnected(ns, event, name)
-	clear(name)
 end
 
 function Cartographer_GuildPositions:UpdateMap()

@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 77943 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 78569 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_Unit_MINOR_VERSION then
 	_G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
@@ -102,10 +102,15 @@ local function FigureZone(unit)
 	end
 end
 
+local should_UPDATE_FACTION = false
 local in_UNIT_FACTION = false
 local function UPDATE_FACTION()
 	if in_UNIT_FACTION then return end
 	in_UNIT_FACTION = true
+	if InCombatLockdown() then
+		should_UPDATE_FACTION = true
+		return
+	end
 	for i = 1, GetNumFactions() do
 		local name,_,_,_,_,_,_,_,isHeader,isCollapsed = GetFactionInfo(i)
 		if isHeader == 1 then
@@ -127,6 +132,12 @@ local function UPDATE_FACTION()
 end
 DogTag:AddEventHandler("Unit", "UPDATE_FACTION", UPDATE_FACTION)
 DogTag:AddEventHandler("Unit", "PLAYER_LOGIN", UPDATE_FACTION)
+DogTag:AddEventHandler("Unit", "PLAYER_REGEN_ENABLED", function()
+	if should_UPDATE_FACTION then
+		should_UPDATE_FACTION = false
+		UPDATE_FACTION()
+	end
+end)
 
 DogTag:AddTag("Unit", "Guild", {
 	code = function(unit)

@@ -1,0 +1,8 @@
+------------------------------------------------------------------------
+r78464 | Cybersea | 2008-07-15 05:18:41 -0400 (Tue, 15 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.lua
+
+LibBabble-Class-3.0
+- added ruRU translation
+------------------------------------------------------------------------

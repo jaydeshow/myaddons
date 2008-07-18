@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Inventory-3.0
-Revision: $Rev: 75230 $
+Revision: $Rev: 78482 $
 Author(s): ckknight (ckknight@gmail.com), Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/LibBabble-Inventory-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Inventory-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Inventory-3.0"
-local MINOR_VERSION = "$Revision: 75230 $"
+local MINOR_VERSION = "$Revision: 78482 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -1515,6 +1515,178 @@ elseif GAME_LOCALE == "esES" then
 		["Holiday"] = "Fiesta", -- New 2.3
 		-- Reagent already defined
 		["Mount"] = "Montura", -- New 2.4.2
+		-- Other already defined
+	}
+elseif GAME_LOCALE == "ruRU" then
+	lib:SetCurrentTranslations {
+		["Armor"] = "Доспехи",
+		["Weapon"] = "Оружие",
+
+		--Armor Types
+		["Cloth"] = "Ткань",
+		["Leather"] = "Кожа",
+		["Mail"] = "Кольчуга",
+		["Plate"] = "Латы",
+
+		--Armor Slots
+		["Head"] = "Голова",
+		["Neck"] = "Шея",
+		["Shoulder"] = "Плечо",
+		["Back"] = "Спина",
+		["Chest"] = "Грудь",
+		["Shirt"] = "Рубаха",
+		["Tabard"] = "Тапперт",
+		["Wrist"] = "Запястья",
+		["Hands"] = "Кисти рук",
+		["Waist"] = "Пояс",
+		["Legs"] = "Ноги",
+		["Feet"] = "Ступни",
+		["Ring"] = "Палец",
+		["Trinket"] = "Аксессуар",
+		["Held in Off-Hand"] = "Левая рука",
+		["Relic"] = "Реликвия",
+		["Libram"] = "Манускрипт",
+		["Totem"] = "Тотем",
+		["Idol"] = "Идол",
+
+		-- Armor Sub Types
+		["Librams"] = "Манускрипты",  -- GetItemInfo() returns this as an ItemSubType.
+		["Idols"] = "Идолы",  -- GetItemInfo() returns this as an ItemSubType.
+		["Totems"] = "Тотемы",  -- GetItemInfo() returns this as an ItemSubType.
+		["Shields"] = "Щиты", -- GetItemInfo() returns this as an ItemSubType.
+
+		--Weapons
+		["Axe"] = "Топор",
+		["Bow"] = "Лук",
+		["Crossbow"] = "Арбалет",
+		["Dagger"] = "Кинжал",
+		["Fist Weapon"] = "Кистевое",
+		["Gun"] = "Огнестрельное",
+		["Mace"] = "Ударное",
+		["Polearm"] = "Древковое",
+		["Shield"] = "Щит",
+		["Staff"] = "Посох",
+		["Sword"] = "Меч",
+		["Thrown"] = "Метательное",
+		["Wand"] = "Жезл",
+
+		--Weapon Types
+		["One-Hand"] = "Одноручное",
+		["Two-Hand"] = "Двуручное",
+		["Main Hand"] = "Правая рука",
+		["Off Hand"] = "Левая рука",
+		["Ranged"] = "Для оружия дальнего боя",
+
+		--Weapon sub-types
+		["Bows"] = "Луки",
+		["Crossbows"] = "Арбалеты",
+		["Daggers"] = "Кинжалы",
+		["Guns"] = "Огнестрельное",
+		["Fishing Pole"] = "Удочка",
+		["Fishing Poles"] = "Удочки", -- GetItemInfo() returns this as an ItemSubType. (2.3 changed from singular to plural)
+		["Fist Weapons"] = "Кистевое",
+		["Miscellaneous"] = "Разное",
+		["One-Handed Axes"] = "Одноручные топоры",
+		["One-Handed Maces"] = "Одноручное ударное",
+		["One-Handed Swords"] = "Одноручные мечи",
+		["Polearms"] = "Древковое",
+		["Staves"] = "Посохи",
+		["Thrown"] = "Метательное",
+		["Two-Handed Axes"] = "Двуручные топоры",
+		["Two-Handed Maces"] = "Двуручное ударное",
+		["Two-Handed Swords"] = "Двуручные мечи",
+		["Wands"] = "Жезлы",
+
+		--Consumable
+		["Consumable"] = "Потребляемые",
+		["Drink"] = "Питье",
+		["Food"] = "Еда",
+		["Food & Drink"] = "Еда и напитки", -- New 2.3
+		["Potion"] = "Зелье", -- New 2.3
+		["Elixir"] = "Эликсир", -- New 2.3
+		["Flask"] = "Фляга", -- New 2.3
+		["Bandage"] = "Бинты", -- New 2.3
+		["Item Enhancement"] = "Улучшение", -- New 2.3
+		["Scroll"] = "Свиток", -- New 2.3
+		["Other"] = "Другое",  -- New 2.3
+
+		--Container
+		["Container"] = "Сумки",
+		["Bag"] = "Сумка",
+		["Enchanting Bag"] = "Сумка заклинателя",
+		["Engineering Bag"] = "Сумка механика",
+		["Gem Bag"] = "Сумка ювелира",
+		["Herb Bag"] = "Сумка травника",
+		["Mining Bag"] = "Шахтерская сумка",
+		["Soul Bag"] = "Сумка душ",
+		["Leatherworking Bag"] = "Сумка кожевника", -- New 2.3
+
+		--Gem
+		["Gem"] = "Самоцветы",
+		["Blue"] = "Синий",
+		["Green"] = "Зеленый",
+		["Orange"] = "Оранжевый",
+		["Meta"] = "Особый",
+		["Prismatic"] = "Радужный",
+		["Purple"] = "Фиолетовый",
+		["Red"] = "Красный",
+		["Simple"] = "Простой",
+		["Yellow"] = "Желтый",
+
+		--Key
+		["Key"] = "Ключ",
+
+		--Reagent
+		["Reagent"] = "Реагент",
+
+		--Recipe
+		["Recipe"] = "Рецепты",
+		["Alchemy"] = "Алхимия",
+		["Blacksmithing"] = "Кузнечное дело",
+		["Book"] = "Книга",
+		["Cooking"] = "Кулинария",
+		["Enchanting"] = "Наложение чар",
+		["Engineering"] = "Механика",
+		["First Aid"] = "Первая помощь",
+		["Leatherworking"] = "Кожевенное дело",
+		["Tailoring"] = "Портняжное дело",
+		["Jewelcrafting"] = "Ювелирное дело",
+		["Fishing"] = "Рыбная ловля",
+
+		--Projectile
+		["Projectile"] = "Боеприпасы",
+		["Arrow"] = "Стрела",
+		["Bullet"] = "Пуля",
+
+		--Quest
+		["Quest"] = "Задания",
+
+		--Quiver
+		["Quiver"] = "Колчан",
+		["Ammo Pouch"] = "Подсумок",
+
+		--Trade Goods
+		["Trade Goods"] = "Ремесла",
+		["Devices"] = "Устройства",
+		["Explosives"] = "Взрывчатка",
+		["Parts"] = "Детали",
+		["Elemental"] = "Стихии", -- New 2.3
+		["Metal & Stone"] = "Металл и камень", -- New 2.3
+		["Meat"] = "Мясо", -- New 2.3
+		["Herb"] = "Трава", -- New 2.3
+		-- Cloth already defined
+		-- Leather already defined
+		-- Enchanting already defined
+		-- Jewelcrafting already defined
+		["Materials"] = "Материалы", -- New 2.4.2
+		-- Other already defined
+
+		--Miscellaneous
+		["Junk"] = "Мусор",
+		["Pet"] = "Питомец", -- New 2.3
+		["Holiday"] = "Праздник", -- New 2.3
+		-- Reagent already defined
+		["Mount"] = "Mount", -- New 2.4.2
 		-- Other already defined
 	}
 else

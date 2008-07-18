@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 78302 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78630 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-12 18:06:13 -0400 (Sat, 12 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -295,7 +295,6 @@ local Tablet = AceLibrary("Tablet-2.0")
 local Tourist = Rock("LibTourist-3.0")
 local Crayon = Rock("LibCrayon-3.0")
 local BZR = Rock("LibBabble-Zone-3.0"):GetReverseLookupTable()
-local RollCall = Rock("LibRollCall-2.0")
 local Abacus = Rock("LibAbacus-3.0")
 
 local _G = getfenv(0)
@@ -810,7 +809,7 @@ initMeOnce = function ()
 end
 
 function Cartographer_Waypoints:OnEnable()
-	self:AddEventListener("LibRollCall-2.0", "MemberDisconnected", "RollCall_MemberDisconnected")
+	Rock("LibRollCall-3.0").RegisterCallback(self, "MemberDisconnected", "RollCall_MemberDisconnected")
 	self:AddCommListener("CGP", "GUILD")
 	self:AddCommListener("CGP", "WHISPER")
 	self:AddEventListener("Cartographer", "MapOpened", "Cartographer_MapOpened")
@@ -828,6 +827,7 @@ function Cartographer_Waypoints:OnEnable()
 end
 
 function Cartographer_Waypoints:OnDisable()
+	Rock("LibRollCall-3.0").UnregisterCallback(self, "MemberDisconnected")
 	-- All hooks, timers and events are automatically disabled
 	waypointFrame:Hide()
 end
@@ -1192,7 +1192,7 @@ Cartographer_Waypoints.OnCommReceive = {
 	end
 }
 
-function Cartographer_Waypoints:RollCall_MemberDisconnected(ns, event, memberName)
+function Cartographer_Waypoints:RollCall_MemberDisconnected(event, memberName)
 	if GuildPoint.Watcher[memberName] then
 		GuildPoint.Watcher[memberName]:Cancel()
 	end

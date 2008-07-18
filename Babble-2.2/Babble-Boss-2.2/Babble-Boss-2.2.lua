@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Boss-2.2
-Revision: $Rev: 75554 $
+Revision: $Rev: 78671 $
 Author(s): ckknight (ckknight@gmail.com)
 Credits: Funkydude
 Website: http://ckknight.wowinterface.com/
@@ -12,7 +12,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Boss-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 75554 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 78671 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -3586,7 +3586,7 @@ BabbleBoss:RegisterTranslations("koKR", function() return {
 		["Feugen"] = "퓨진",
 		["Four Horsemen Chest"] = "Four Horsemen Chest",
 		["Gluth"] = "글루스",
-		["Gothik the Harvester"] = "영혼의 착취자 고딕",
+		["Gothik the Harvester"] = "영혼 착취자 고딕",
 		["Grand Widow Faerlina"] = "귀부인 팰리나",
 		["Grobbulus"] = "그라불루스",
 		["Heigan the Unclean"] = "부정의 헤이건",

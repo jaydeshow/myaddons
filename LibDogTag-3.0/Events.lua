@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibDogTag-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 77057 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 78392 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_MINOR_VERSION then
 	_G.DogTag_MINOR_VERSION = MINOR_VERSION
@@ -572,7 +572,7 @@ local function OnUpdate(this, elapsed)
 			fsNeedUpdate[fs] = nil
 		end
 	end
-	local finish_time = GetTime() + 1/300
+	local finish_time = GetTime() + 1/1000
 	local num = 0
 	for fs in pairs(fsNeedQuickUpdate) do
 		num = num + 1

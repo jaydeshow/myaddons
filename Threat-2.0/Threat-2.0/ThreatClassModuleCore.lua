@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 77072 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78353 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -693,6 +693,12 @@ function prototype:COMBAT_LOG_EVENT_UNFILTERED(event, ...)
 		bit_band(dstFlags, COMBATLOG_OBJECT_CONTROL_NPC) == COMBATLOG_OBJECT_CONTROL_NPC and
 		bit_band(dstFlags, NPC_TARGET) > 0 then
 		self.targetThreat[dstGUID] = 0
+	end
+	
+	local nextEventHook = self.nextEventHook
+	if nextEventHook then
+		nextEventHook(self, ...)
+		self.nextEventHook = nil
 	end
 
 	local handler = cleuHandlers[eventtype]

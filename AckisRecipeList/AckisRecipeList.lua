@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-07-11 15:15:39 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78250 $
+$Date: 2008-07-17 02:31:03 -0400 (Thu, 17 Jul 2008) $
+$Rev: 78606 $
 
 Author: Ackis on Illidan US Horde
 
@@ -227,7 +227,7 @@ local function giveDisplay()
 				type	= "toggle",
 				get		= function() return addon.db.profile.testgui end,
 				set		= function() addon.db.profile.testgui = not addon.db.profile.testgui end,
-				order	= 3,
+				order	= 6,
 			},
 			includefiltered =
 			{
@@ -798,11 +798,11 @@ function addon:OnInitialize()
 
 	-- Add the options to blizzard frame (add them backwards so they show up in the proper order
 	self.optionsFrame = AceConfigDialog:AddToBlizOptions("Ackis Recipe List","Ackis Recipe List")
-	self.optionsFrame[L["Profile"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Profile", L["Profile"], "Ackis Recipe List")
-	self.optionsFrame[L["Sort"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Sorting", L["Sort"], "Ackis Recipe List")
-	self.optionsFrame[L["Filter"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Filter", L["Filter"], "Ackis Recipe List")
-	self.optionsFrame[L["Display"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Display", L["Display"], "Ackis Recipe List")
 	self.optionsFrame[L["About"]] = LibStub("LibAboutPanel").new("Ackis Recipe List", "Ackis Recipe List")
+	self.optionsFrame[L["Display"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Display", L["Display"], "Ackis Recipe List")
+	self.optionsFrame[L["Filter"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Filter", L["Filter"], "Ackis Recipe List")
+	self.optionsFrame[L["Sort"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Sorting", L["Sort"], "Ackis Recipe List")
+	self.optionsFrame[L["Profile"]] = AceConfigDialog:AddToBlizOptions("Ackis Recipe List Profile", L["Profile"], "Ackis Recipe List")
 
 	-- Register slash commands
 	self:RegisterChatCommand("arl", "ChatCommand")

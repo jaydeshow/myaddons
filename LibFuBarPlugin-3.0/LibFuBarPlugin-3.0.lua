@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibFuBarPlugin-3.0
-Revision: $Rev: 72552 $
+Revision: $Rev: 78660 $
 Developed by: ckknight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Plugin for FuBar.
@@ -9,7 +9,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibFuBarPlugin-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 72552 $"):match("(%d+)")) - 60000
+local MINOR_VERSION = tonumber(("$Revision: 78660 $"):match("(%d+)")) - 60000
 
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0") end
 
@@ -138,6 +138,30 @@ elseif GetLocale() == "frFR" then
 	OTHER = "Autre"
 	CLOSE = "Fermer"
 	CLOSE_DESC = "Ferme le menu."
+elseif GetLocale() == "ruRU" then
+	SHOW_FUBAR_ICON = "Показ иконку"
+	SHOW_FUBAR_ICON_DESC = "Показывать иконку плагина на панели."
+	SHOW_FUBAR_TEXT = "Показ текста"
+	SHOW_FUBAR_TEXT_DESC = "Показывать текст плагина на панели."
+	SHOW_COLORED_FUBAR_TEXT = "Показ цветового текста"
+	SHOW_COLORED_FUBAR_TEXT_DESC = "Позволить плагину использовать его цвета в тексте."
+	DETACH_FUBAR_TOOLTIP = "Отделить подсказку"
+	DETACH_FUBAR_TOOLTIP_DESC = "Отделить всплывающую подсказку от панели."
+	LOCK_FUBAR_TOOLTIP = "Закрепить подсказку"
+	LOCK_FUBAR_TOOLTIP_DESC = "Закрепить позицию всплывающей подсказки. Когда всплывающая подсказка закреплена, используйте Alt для отображения ее у мыши."
+	POSITION_ON_FUBAR = "Позиция"
+	POSITION_ON_FUBAR_DESC = "Позиция плагина на панели."
+	POSITION_LEFT = "Слева"
+	POSITION_RIGHT = "Справа"
+	POSITION_CENTER = "По центру"
+	ATTACH_PLUGIN_TO_MINIMAP = "Закрепить у мини-карты"
+	ATTACH_PLUGIN_TO_MINIMAP_DESC = "Закрепить плагин у мини-карты вместо панели."
+	HIDE_FUBAR_PLUGIN = "Скрыть плагин"
+	HIDE_MINIMAP_BUTTON = "Скрыть кнопку у мини-карты"
+	HIDE_FUBAR_PLUGIN_DESC = "Скрыть плагин с панели или мини-карты, но оставить аддон в рабочем состоянии."
+	OTHER = "Другое"
+	CLOSE = "Закрыть"
+	CLOSE_DESC = "Закрыть меню."
 end
 
 -- #AUTODOC_NAMESPACE FuBarPlugin

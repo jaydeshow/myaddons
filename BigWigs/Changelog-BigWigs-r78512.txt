@@ -1,0 +1,96 @@
+------------------------------------------------------------------------
+r78512 | funkydude | 2008-07-15 19:01:12 -0400 (Tue, 15 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Extras/Tranq.lua
+   M /trunk/BigWigs/Hyjal/Archimonde.lua
+   M /trunk/BigWigs/Sunwell/Twins.lua
+   M /trunk/BigWigs/ZulAman/Halazzi.lua
+
+BigWigs: Changed to 2.4.3 dispel events, total guess no idea if it works. :)
+------------------------------------------------------------------------
+r78093 | 7destiny | 2008-07-08 13:54:31 -0400 (Tue, 08 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Twins.lua
+
+BigWigs: koKR Update
+------------------------------------------------------------------------
+r78092 | 7destiny | 2008-07-08 13:48:07 -0400 (Tue, 08 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/ZulAman/Malacrass.lua
+
+BigWigs: ZulAman/Malacrass: fix guid
+------------------------------------------------------------------------
+r78061 | 7destiny | 2008-07-08 03:02:30 -0400 (Tue, 08 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Twins.lua
+
+BigWigs: Sunwell/Twins: fix engage start issue
+------------------------------------------------------------------------
+r77383 | 7destiny | 2008-06-25 05:26:39 -0400 (Wed, 25 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Brutallus.lua
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell:
+- Brutallus: Fix missing next Burn
+- koKR Update
+------------------------------------------------------------------------
+r77267 | ananhaid | 2008-06-23 03:22:13 -0400 (Mon, 23 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: 
+- KilJaeden zhCN update.
+------------------------------------------------------------------------
+r77264 | pettigrow | 2008-06-23 02:40:39 -0400 (Mon, 23 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Kalecgos.lua
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell: frFR Update
+------------------------------------------------------------------------
+r77261 | 7destiny | 2008-06-23 01:43:37 -0400 (Mon, 23 Jun 2008) | 6 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: Sunwell/KilJaeden:
+- Fix bomb and flame timer
+- Fix phase toggle
+- Add sound to phase warning
+- Add Dragon Orb timer 
+- koKR Update
+------------------------------------------------------------------------
+r76755 | 7destiny | 2008-06-15 12:55:03 -0400 (Sun, 15 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: Sunwell/Muru: add void and humanoid spawn count
+------------------------------------------------------------------------
+r76660 | pettigrow | 2008-06-14 04:58:51 -0400 (Sat, 14 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: frFR Update
+------------------------------------------------------------------------
+r76651 | ananhaid | 2008-06-14 01:33:57 -0400 (Sat, 14 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: 
+- Muru zhCN update.
+------------------------------------------------------------------------
+r76647 | 7destiny | 2008-06-14 00:26:38 -0400 (Sat, 14 Jun 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: koKR Update
+------------------------------------------------------------------------
+r76646 | 7destiny | 2008-06-13 23:38:35 -0400 (Fri, 13 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/BlackTemple/Souls.lua
+   M /trunk/BigWigs/SC/Karathress.lua
+   M /trunk/BigWigs/SC/Vashj.lua
+
+BigWigs: 
+- koKR Update
+------------------------------------------------------------------------

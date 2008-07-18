@@ -1,0 +1,36 @@
+------------------------------------------------------------------------
+r78561 | nightik | 2008-07-16 12:25:08 -0400 (Wed, 16 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- ruRU locale update
+------------------------------------------------------------------------
+r78490 | Cybersea | 2008-07-15 11:54:36 -0400 (Tue, 15 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- ruRU update
+------------------------------------------------------------------------
+r78474 | Cybersea | 2008-07-15 09:35:26 -0400 (Tue, 15 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- updated ruRU localization
+------------------------------------------------------------------------
+r78342 | gchudov | 2008-07-13 12:02:38 -0400 (Sun, 13 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- ruRU localization
+------------------------------------------------------------------------
+r78059 | toadkiller | 2008-07-08 02:46:10 -0400 (Tue, 08 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Dummy ruRU, cloned from deDE.  needs total translation
+------------------------------------------------------------------------

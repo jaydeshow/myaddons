@@ -4,8 +4,8 @@ ARL-LeatherWork.lua
 
 LeatherWorking data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-15 11:36:11 -0400 (Tue, 15 Jul 2008) $
+$Rev: 78487 $
 
 ]]--
 
@@ -340,10 +340,10 @@ function addon:InitLeatherWorking()
 	self:addTradeSkillSpell(32495, 360, self:AddSingleReputation(2, BFAC["Cenarion Expedition"]), BFAC["Cenarion Expedition"])
 	self:addTradeSkillSpell(32499, 360, self:AddDoubleReputation(2, BFAC["Honor Hold"], BFAC["Thrallmar"]), BFAC["Thrallmar"])
 	self:addTradeSkillSpell(32500, 360, self:AddDoubleReputation(2, BFAC["Honor Hold"], BFAC["Thrallmar"]), BFAC["Thrallmar"])
-	self:addTradeSkillSpell(35543, 365, self:AddSingleReputation(4, BFAC["The Sha'tar"]), BFAC["The Sha'tar"])
+	self:addTradeSkillSpell(35543, 365, self:AddSingleReputation(2, BFAC["The Sha'tar"]), BFAC["The Sha'tar"])
 	self:addTradeSkillSpell(35554, 365, self:AddDoubleReputation(4, BFAC["Honor Hold"], BFAC["Thrallmar"]), BFAC["Thrallmar"])
 	self:addTradeSkillSpell(35557, 365, self:AddSingleReputation(4, BFAC["Cenarion Expedition"]), BFAC["Cenarion Expedition"])
-	self:addTradeSkillSpell(35538, 370, self:AddSingleReputation(4, BFAC["Keepers of Time"]), BFAC["Keepers of Time"])
+	self:addTradeSkillSpell(35538, 370, self:AddSingleReputation(2, BFAC["Keepers of Time"]), BFAC["Keepers of Time"])
 	self:addTradeSkillSpell(39997, 375, self:AddSingleReputation(1, BFAC["Ashtongue Deathsworn"]), 6, BFAC["Ashtongue Deathsworn"])
 	self:addTradeSkillSpell(40000, 375, self:AddSingleReputation(1, BFAC["Ashtongue Deathsworn"]), 6, BFAC["Ashtongue Deathsworn"])
 	self:addTradeSkillSpell(40002, 375, self:AddSingleReputation(2, BFAC["Ashtongue Deathsworn"]), 6, BFAC["Ashtongue Deathsworn"])
