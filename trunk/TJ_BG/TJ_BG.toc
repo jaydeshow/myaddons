@@ -1,4 +1,4 @@
-﻿## Interface: 20200
+﻿## Interface: 20400
 ## Title: TJ_BG beta4
 ## Notes: 小队技能条|n<E-mail:tjox@163.com>|n作者：互补古蓝
 ## SavedVariablesPerCharacter: TJ_BG_Data

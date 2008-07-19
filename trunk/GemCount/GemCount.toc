@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: GemCount
 ## Notes: Simple gem counter. Displays on a new dropdown tab on the Character sheet.
 ## Author: Saeljfkklhen (Saeljfkklhen@Yahoo.com)

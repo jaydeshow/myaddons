@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## LoadOnDemand: 1
 ## Title: Lib: StickyFrames-1.0
 ## Notes: A library to manage snappy dragging & sticking of frames across multiple mods.

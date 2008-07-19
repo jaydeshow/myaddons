@@ -1,4 +1,4 @@
-## Interface: 20200
+## Interface: 20400
 
 ## Title: Lib: Inventory-2.1
 ## Notes: A library that maintains a cache of items and their types.

@@ -1,4 +1,4 @@
-## Interface: 20200
+## Interface: 20400
 
 ## Title: Elkano's ItemDB
 ## Notes: Allows you to browse your clients database

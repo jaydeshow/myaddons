@@ -1,4 +1,4 @@
-## Interface: 20100
+## Interface: 20400
 ## Title: RaidInviteHelper  |cff7fff7f -Ace2-|r
 ## Notes: Raid invite helper for the busy raid leader.  Invite via whisper, by guild rank, etc.
 ## Author: xb95

@@ -1,4 +1,4 @@
-﻿## Interface: 20100
+﻿## Interface: 20400
 ## Title: zUnitFrame
 ## Title: zUF - |cffFF3300炽火|r|cff99AA33头像|r
 ## Notes: Very Simply Unit Frames mod

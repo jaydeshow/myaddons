@@ -1,4 +1,4 @@
-## Interface: 20100
+## Interface: 20400
 ## Title: DynRepBar |cff7fff7f -Ace2-|r
 ## Author: Damjau
 ## Author: oers

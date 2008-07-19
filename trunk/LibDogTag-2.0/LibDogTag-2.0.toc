@@ -1,4 +1,4 @@
-﻿## Interface: 20300
+﻿## Interface: 20400
 ## LoadOnDemand: 1
 ## Title: Lib: DogTag-2.0
 ## Notes: A library to provide a markup syntax for unit frame FontStrings

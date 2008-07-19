@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: ChatBar
 ## Version: 2.2
 ## Title-zhCN: 聊天条
