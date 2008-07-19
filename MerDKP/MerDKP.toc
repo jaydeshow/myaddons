@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: |cff3fff3f[DKP]|r MerDKP
 ## Title-zhCN: |cff3fff3f[DKP]|r MerDKP
 ## Version: 2.0.7

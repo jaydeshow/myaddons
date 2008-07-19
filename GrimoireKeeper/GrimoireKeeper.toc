@@ -1,4 +1,4 @@
-﻿## Interface: 20100
+﻿## Interface: 20400
 ## Title: GrimoireKeeper 2.0.1
 ## Title-zhCN: |cFFFF9900[Pboy]|r|cff9382c9[术士]|r术士宠物技能管理 2.0.1 汉化:CWDG-Pboy2925
 ## Author: Ayradyss

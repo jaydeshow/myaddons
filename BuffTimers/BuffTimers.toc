@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: Telo's BuffTimers
 ## Notes: Adds mini buff timers under the top right buff icons.
 BuffTimers.xml

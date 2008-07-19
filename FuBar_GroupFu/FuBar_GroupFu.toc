@@ -1,4 +1,4 @@
-﻿## Interface: 20300
+﻿## Interface: 20400
 ## Title: FuBar - |cffffffffGroup|r|cff00ff00Fu|r
 ## Author: Rabbit
 ## Version: 1

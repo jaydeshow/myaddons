@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: BunchOfBars |cff7fff7f -Ace2-|r
 ## Version: 1.0
 ## Notes: Modular and lightweight party/raid frames.
