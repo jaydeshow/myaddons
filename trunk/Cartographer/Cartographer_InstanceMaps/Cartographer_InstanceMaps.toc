@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fInstance Maps|r]
 ## X-Name: Instance Maps
+## X-Name-ruRU: Карты подземелий
 ## X-Name-deDE: Instanzkarten
 ## X-Name-frFR: Cartes d'instance
 ## X-Name-koKR: 인스턴스 던전
@@ -9,6 +10,7 @@
 ## X-Name-zhCN: 副本地图
 ## X-ModuleName: InstanceMaps
 ## Notes: Module which provides maps of instances.
+## Notes-ruRU: Модуль включает отображение карт подземелий
 ## Notes-deDE: Modul, das Instanzkarten zur Verfügung stellt.
 ## Notes-frFR: Module fournissant des cartes pour les instances.
 ## Notes-koKR: 인스턴스 던전을 보여줍니다.

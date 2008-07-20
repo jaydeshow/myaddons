@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fBattlegrounds|r]
 ## X-Name: Battlegrounds
+## X-Name-ruRU: Поля сражений
 ## X-Name-deDE: Schlachtfelder
 ## X-Name-frFR: Champs de bataille
 ## X-Name-koKR: 전장
@@ -9,6 +10,7 @@
 ## X-Name-zhCN: 战场
 ## X-ModuleName: Battlegrounds
 ## Notes: Module which provides maps of battlegrounds.
+## Notes-ruRU: Модуль отображает карты полей сражений
 ## Notes-deDE: Modul, das Schlachtfeldkarten zur Verfügung stellt.
 ## Notes-frFR: Module fournissant des cartes pour les champs de bataille.
 ## Notes-koKR: 전장 지도 모듈을 제공합니다.

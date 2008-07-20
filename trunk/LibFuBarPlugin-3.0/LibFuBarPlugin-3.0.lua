@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibFuBarPlugin-3.0
-Revision: $Rev: 78660 $
+Revision: $Rev: 78705 $
 Developed by: ckknight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Plugin for FuBar.
@@ -9,7 +9,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibFuBarPlugin-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 78660 $"):match("(%d+)")) - 60000
+local MINOR_VERSION = tonumber(("$Revision: 78705 $"):match("(%d+)")) - 60000
 
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0") end
 
@@ -65,7 +65,7 @@ if GetLocale() == "zhCN" then
 	HIDE_FUBAR_PLUGIN_DESC = "隐藏在面板或小地图上的FuBar插件,暂定插件工作."
 	OTHER = "其他"
 	CLOSE = "关闭"
-	LOSE_DESC = "关闭目录."
+	CLOSE_DESC = "关闭目录."
 elseif GetLocale() == "zhTW" then
 	SHOW_FUBAR_ICON = "顯示圖示"
 	SHOW_FUBAR_ICON_DESC = "在面板上顯示插件圖示。"

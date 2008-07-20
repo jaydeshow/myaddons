@@ -1,0 +1,104 @@
+------------------------------------------------------------------------
+r78750 | arrowmaster | 2008-07-19 17:15:05 -0400 (Sat, 19 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/BigWigs/BigWigs.toc
+   M /trunk/BigWigs/Core.lua
+   M /trunk/Incubator/Core.lua
+   M /trunk/Incubator/Incubator.toc
+   M /trunk/Omen/Omen.toc
+
+.trunk: remove SavedVariablesPerCharacter from a few addons that don't even use them, preventing a file with nothing but 'VAR = nil' from being created for each character
+------------------------------------------------------------------------
+r78726 | durcyn | 2008-07-19 05:35:14 -0400 (Sat, 19 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Libs/LibFuBarPlugin-3.0/LibFuBarPlugin-Mod-3.0.lua
+
+Omen: update included LibFuBarPlugin-3.0-Mod
+------------------------------------------------------------------------
+r78719 | whyv | 2008-07-19 01:40:48 -0400 (Sat, 19 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Omen/Localization/zhTW.lua
+
+Omen: 
+- update zhTW
+------------------------------------------------------------------------
+r78718 | ananhaid | 2008-07-19 01:13:09 -0400 (Sat, 19 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Omen/Localization/zhCN.lua
+
+Omen: 
+- zhCN update.
+------------------------------------------------------------------------
+r78713 | gnarfoz | 2008-07-18 20:38:31 -0400 (Fri, 18 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Omen/Modules/AOE/AOE_PulloutBar.lua
+   M /trunk/Omen/PulloutBase.lua
+
+Omen - fix set svn:keywords on new files so they don't blow up Omen
+~lart charon
+------------------------------------------------------------------------
+r78711 | sayclub | 2008-07-18 20:17:40 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Localization/koKR.lua
+
+Omen: - koKR Update
+------------------------------------------------------------------------
+r78701 | charon | 2008-07-18 15:15:17 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Modules/AOE/module.xml
+   M /trunk/Omen/Omen.toc
+
+Omen: Restore ruRU changes wrecked by PEBKAC move.
+------------------------------------------------------------------------
+r78700 | charon | 2008-07-18 15:08:33 -0400 (Fri, 18 Jul 2008) | 8 lines
+Changed paths:
+   M /trunk/Omen/Bar.lua
+   M /trunk/Omen/Config.lua
+   M /trunk/Omen/Frame.lua
+   M /trunk/Omen/Localization/enUS.lua
+   A /trunk/Omen/Media/Textures
+   A /trunk/Omen/Media/Textures/PulloutMarker.tga
+   M /trunk/Omen/ModuleBase.lua
+   A /trunk/Omen/Modules/AOE/AOE_PulloutBar.lua
+   M /trunk/Omen/Modules/AOE/module.xml
+   M /trunk/Omen/Modules/SingleTarget/SingleTarget_PulloutBar.lua
+   M /trunk/Omen/Omen.toc
+   A /trunk/Omen/PulloutBase.lua
+
+Omen: Merge a revised version of the pullout branch
+
+This is still quite quirky. Among other things, it does not save
+anything between reloads, and the bar size is hardcoded. However,
+pushing it to trunk is probably useful for many and should get us some
+more feedback.
+
+
+------------------------------------------------------------------------
+r78662 | StingerSoft | 2008-07-17 20:36:31 -0400 (Thu, 17 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Localization/ruRU.lua
+   M /trunk/Omen/Omen.toc
+
+Omen: fix ruRU translation
+------------------------------------------------------------------------
+r78656 | StingerSoft | 2008-07-17 20:16:34 -0400 (Thu, 17 Jul 2008) | 1 line
+Changed paths:
+   A /trunk/Omen/Localization/ruRU.lua
+   A /trunk/Omen/Modules/AOE/Localization/ruRU.lua
+   A /trunk/Omen/Modules/Healer/Localization/ruRU.lua
+   A /trunk/Omen/Modules/Overview/Localization/ruRU.lua
+   A /trunk/Omen/Modules/SingleTarget/Localization/ruRU.lua
+
+Omen: added fully ruRU translation
+------------------------------------------------------------------------
+r78652 | StingerSoft | 2008-07-17 19:15:35 -0400 (Thu, 17 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Modules/AOE/module.xml
+   M /trunk/Omen/Modules/Healer/module.xml
+   M /trunk/Omen/Modules/Overview/module.xml
+   M /trunk/Omen/Modules/SingleTarget/module.xml
+   M /trunk/Omen/Omen.toc
+
+Omen: Added ruRU locale files
+------------------------------------------------------------------------

@@ -1,11 +1,11 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 67893 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78706 $"):sub(12, -3))
 local pt = Rock("LibPeriodicTable-3.1")
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-04-03 11:11:16 -0400 (Thu, 03 Apr 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-InstanceLoot")
@@ -150,6 +150,28 @@ L:AddTranslations("zhCN", function() return {
 	["Hide all items under this droprate"] = "隐藏低于这个掉落率的物品。",
 	["Query_Warning"] = "在本地缓存找不到此物品，将向服务器查询，|cFFFF2222注意：该操作可能导致你与服务器断开连接！",
 	["[Cartographer_InstanceLoot] PT3 has no table InstanceLoot.%s.%s"] = "[Cartographer-副本掉落] PT3 没有相关资料。（InstanceLoot.%s.%s）",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Instance Loot"] = "Трофеи Подземелий",
+	
+	["Normal Mode Drops"] = "Выпад в обычном режиме",
+	["Heroic Mode Drops"] = "Выпад в героическом режиме",
+	
+	["Display of loot on instance bosses."] = "Отображаtn трофеи боссов в подземельях.",
+	["Left side"] = "Слева",
+	["Right side"] = "Справа",
+	["Close"] ="Закрыть",
+	["Toggle side to display loot info"] = "Переключение стороны инфы о трофее",
+	["Quality"] = "Качество",
+	["Set the quality threshold for items to be displayed"] = "Качество предметов которые будут отображаться",
+	["Always show bind on pickup items"] = "Всегда показывать именные предметы",
+	["Show bind on pickup items regardless of the quality threshold"] = "Показывать именные предметы независимо от установленного качества",
+	["Hide Low Droprate Items"] = "Скрыть предметы с малым шансом выпада",
+	["Hide all items under this droprate"] = "Скрыть все предметы ниже этого шанса выпада",
+	["Query_Warning"] = "Предмет не найден, кликните для запроса с сервера. |cFFFF2222ОСТОРОЖНО: Это может вызвать разъединение с сервером если на сервере этот предмет еще не выпадал.",
+	["[Cartographer_InstanceLoot] PT3 has no table InstanceLoot.%s.%s"] = "[Cartographer_InstanceLoot] PT3 нету таблицы Трофеев Подземелья.%s.%s",
 } end)
 
 Cartographer_InstanceLoot = Cartographer:NewModule("InstanceLoot", "LibRockEvent-1.0", "LibRockTimer-1.0")

@@ -13,7 +13,12 @@ L:AddTranslations("zhCN", function() return {
 } end)
 
 L:AddTranslations("esES", function() return {
-	["%s is not locatable."] = "%s no es localizable.",
+	["%s is not locat able."] = "%s no es localizable.",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["%s is not locatable."] = "%s is not locatable.",
 } end)
 
 local Roster = AceLibrary("Roster-2.1")

@@ -1,4 +1,13 @@
 ------------------------------------------------------------------------
+r78702 | toadkiller | 2008-07-18 15:34:49 -0400 (Fri, 18 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Nether Ray Fry, Tainted Core, Naj'entus Spine
+------------------------------------------------------------------------
 r78453 | toadkiller | 2008-07-14 23:13:29 -0400 (Mon, 14 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
@@ -92,13 +101,4 @@ Changed paths:
 
 LibPeriodicTable-3.1: update dataminer to use the latest luacurl binding.
 
-------------------------------------------------------------------------
-r76713 | toadkiller | 2008-06-15 03:39:29 -0400 (Sun, 15 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Consumable/LibPeriodicTable-3.1-Consumable.lua
-   M /trunk/LibPeriodicTable-3.1/data.lua
-
-LibPeriodicTable-3.1:
--- Consumable.Cooldown.Potion.Combat
--- Consumable.Cooldown.Stone.Combat
 ------------------------------------------------------------------------

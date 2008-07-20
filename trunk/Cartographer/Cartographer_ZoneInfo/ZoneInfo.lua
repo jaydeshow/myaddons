@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 73088 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78706 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-05-08 07:48:10 -0400 (Thu, 08 May 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-ZoneInfo")
@@ -63,6 +63,15 @@ L:AddTranslations("zhCN", function() return {
 
 	["Instances"] = "副本",
 	["%d-man"] = "%d人",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Zone Info"] = "Инфо о Зонах",
+	["Module which on hovering over a zone, will show the levels of the zone, the instances in the zone, their levels, and the number of men the instance is made for (e.g. 5-man, 40-man)."] = "Модуль который при наводке курсора на зону отображает уровни зоны, подземелья, их уровни допуска, и максимальное число человек доступное в подземельях (пример: 5-чел, 40-чел)",
+
+	["Instances"] = "Подземелья",
+	["%d-man"] = "%d-чел",
 } end)
 
 local Tourist = Rock("LibTourist-3.0")

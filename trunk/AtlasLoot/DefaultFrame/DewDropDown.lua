@@ -231,7 +231,7 @@ AtlasLoot_DewDropDown = {
 				{ AL["BoE World Epics"], "BoEWorldEpics", "Submenu" },
 			},
 			[14] = {
-				{ AL["Lvl 70 Instance Token Rewards"], "Lvl70TokenRewards", "Submenu" },
+				{ AL["Badge of Justice Rewards"], "Lvl70TokenRewards", "Submenu" },
 			},
 			[15] = { { AL["Legendary Items"], "Legendaries", "Table" }, },
 

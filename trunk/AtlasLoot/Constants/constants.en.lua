@@ -60,7 +60,8 @@ AL:RegisterTranslations("enUS", function() return {
     ["Add to QuickLooks:"] = true,
     ["Assign this loot table\n to QuickLook"] = true,
     ["Req. Rating:"] = true,  --Shorthand for 'Required Rating' for the personal/team ratings in Arena S4
-
+    ["Query Server"] = true,
+    
     --Text for Options Panel
     ["Atlasloot Options"] = true,
     ["Safe Chat Links |cff1eff00(recommended)|r"] = true,
@@ -93,7 +94,15 @@ AL:RegisterTranslations("enUS", function() return {
     ["Partial matching"] = true,
     ["If checked, AtlasLoot search item names for a partial match."] = true,
     ["You don't have any module selected to search on!"] = true,
-
+    --The next 4 lines are the tooltip for the Server Query Button
+    --The translation doesn't have to be literal, just re-write the
+    --sentences as you would naturally and break them up into 4 roughly
+    --equal lines.
+    ["Queries the server for all items"] = true,
+    ["on this page. The items will be"] = true,
+    ["refreshed when you next mouse"] = true,
+    ["over them."] = true,
+    
     --Slash commands
     ["reset"] = true,
     ["options"] = true,
@@ -754,6 +763,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["Epic Set"] = true,
     ["Rare Set"] = true,
     ["Legendary Items"] = true,
+    ["Badge of Justice Rewards"] = true,
     ["Lvl 70 Instance Token Rewards"] = true,
     ["Lvl 70 Instance Rewards"] = true,
     ["Accesories and Weapons"] = true,

@@ -45,13 +45,16 @@ local FIRSTAID = GetSpellInfo(3273);
 --Table of loot titles
 AtlasLoot_TableNames = {};
 
------------------
---- Instances ---
------------------
+-----------------------
+--- WotLK Instances ---
+-----------------------
+
+--------------------
+--- BC Instances ---
+--------------------
 
   --Keys
 	AtlasLoot_TableNames["OldKeys"] = { "Keys", "AtlasLootItems" };
-	AtlasLoot_TableNames["BCKeys"] = { "Keys", "AtlasLootExpansionItems" };
   --Auch: Auchenai Crypts
 	AtlasLoot_TableNames["AuchCryptsShirrak"] = { BabbleBoss["Shirrak the Dead Watcher"], "AtlasLootExpansionItems" };
 	AtlasLoot_TableNames["AuchCryptsShirrakHEROIC"] = { BabbleBoss["Shirrak the Dead Watcher"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
@@ -87,6 +90,202 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["AuchShadowMurmurHEROIC"] = { BabbleBoss["Murmur"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
 	AtlasLoot_TableNames["AuchShadowFirstFragmentGuardian"] = { "First Fragment Guardian", "AtlasLootExpansionItems" };
 	AtlasLoot_TableNames["AuchShadowTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Shadow Labyrinth"]..")", "AtlasLootExpansionItems" };
+  --The Black Temple
+	AtlasLoot_TableNames["BTNajentus"] = { BabbleBoss["High Warlord Naj'entus"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTSupremus"] = { BabbleBoss["Supremus"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTGorefiend"] = { BabbleBoss["Teron Gorefiend"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTBloodboil"] = { BabbleBoss["Gurtogg Bloodboil"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTAkama"] = { BabbleBoss["Shade of Akama"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTEssencofSouls"] = { "Essence of Souls", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTShahraz"] = { BabbleBoss["Mother Shahraz"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTCouncil"] = { BabbleBoss["Illidari Council"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTIllidanStormrage"] = { BabbleBoss["Illidan Stormrage"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Black Temple"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["BTPatterns"] = { "BT Patterns/Plans", "AtlasLootExpansionItems" };
+  --CFR: Serpentshrine Cavern
+	AtlasLoot_TableNames["CFRSerpentHydross"] = { BabbleBoss["Hydross the Unstable"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSerpentKarathress"] = { BabbleBoss["Fathom-Lord Karathress"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSerpentMorogrim"] = { BabbleBoss["Morogrim Tidewalker"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSerpentLeotheras"] = { BabbleBoss["Leotheras the Blind"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSerpentLurker"] = { BabbleBoss["The Lurker Below"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSerpentVashj"] = { BabbleBoss["Lady Vashj"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSerpentTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Serpentshrine Cavern"]..")", "AtlasLootExpansionItems" };
+  --CFR: Slave Pens
+	AtlasLoot_TableNames["CFRSlaveMennu"] = { BabbleBoss["Mennu the Betrayer"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSlaveMennuHEROIC"] = { BabbleBoss["Mennu the Betrayer"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSlaveRokmar"] = { BabbleBoss["Rokmar the Crackler"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSlaveRokmarHEROIC"] = { BabbleBoss["Rokmar the Crackler"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSlaveQuagmirran"] = { BabbleBoss["Quagmirran"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSlaveQuagmirranHEROIC"] = { BabbleBoss["Quagmirran"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+  --CFR: The Steamvault
+	AtlasLoot_TableNames["CFRSteamThespia"] = { BabbleBoss["Hydromancer Thespia"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSteamThespiaHEROIC"] = { BabbleBoss["Hydromancer Thespia"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSteamSecondFragmentGuardian"] = { "Second Fragment Guardian", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSteamSteamrigger"] = { BabbleBoss["Mekgineer Steamrigger"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSteamSteamriggerHEROIC"] = { BabbleBoss["Mekgineer Steamrigger"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSteamWarlord"] = { BabbleBoss["Warlord Kalithresh"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSteamWarlordHEROIC"] = { BabbleBoss["Warlord Kalithresh"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRSteamTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Steamvault"]..")", "AtlasLootExpansionItems" };
+  --CFR: The Underbog
+	AtlasLoot_TableNames["CFRUnderHungarfen"] = { BabbleBoss["Hungarfen"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRUnderHungarfenHEROIC"] = { BabbleBoss["Hungarfen"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRUnderGhazan"] = { BabbleBoss["Ghaz'an"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRUnderGhazanHEROIC"] = { BabbleBoss["Ghaz'an"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRUnderSwamplord"] = { BabbleBoss["Swamplord Musel'ek"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRUnderSwamplordHEROIC"] = { BabbleBoss["Swamplord Musel'ek"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRUnderStalker"] = { BabbleBoss["The Black Stalker"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CFRUnderStalkerHEROIC"] = { BabbleBoss["The Black Stalker"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+  --CoT: Old Hillsbrad Foothills
+	AtlasLoot_TableNames["CoTHillsbradDrake"] = { BabbleBoss["Lieutenant Drake"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradDrakeHEROIC"] = { BabbleBoss["Lieutenant Drake"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradSkarloc"] = { BabbleBoss["Captain Skarloc"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradSkarlocHEROIC"] = { BabbleBoss["Captain Skarloc"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradHunter"] = { BabbleBoss["Epoch Hunter"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradHunterHEROIC"] = { BabbleBoss["Epoch Hunter"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Old Hillsbrad Foothills"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradThomasYance"] = { AL["Thomas Yance"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradAgedDalaranWizard"] = { "Aged Dalaran Wizard", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradDonCarlos"] = { AL["Don Carlos"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTHillsbradDonCarlosHEROIC"] = { AL["Don Carlos"], "AtlasLootExpansionItems" };
+  --CoT: Black Morass
+	AtlasLoot_TableNames["CoTMorassDeja"] = { BabbleBoss["Chrono Lord Deja"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTMorassDejaHEROIC"] = { BabbleBoss["Chrono Lord Deja"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTMorassTemporus"] = { BabbleBoss["Temporus"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTMorassTemporusHEROIC"] = { BabbleBoss["Temporus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTMorassAeonus"] = { BabbleBoss["Aeonus"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTMorassAeonusHEROIC"] = { BabbleBoss["Aeonus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["CoTMorassTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Black Morass"]..")", "AtlasLootExpansionItems" };
+  --CoT: Hyjal Summit
+	AtlasLoot_TableNames["MountHyjalWinterchill"] = { BabbleBoss["Rage Winterchill"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["MountHyjalAnetheron"] = { BabbleBoss["Anetheron"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["MountHyjalKazrogal"] = { BabbleBoss["Kaz'rogal"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["MountHyjalAzgalor"] = { BabbleBoss["Azgalor"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["MountHyjalArchimonde"] = { BabbleBoss["Archimonde"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["MountHyjalTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Hyjal Summit"]..")", "AtlasLootExpansionItems" };
+  --Gruul's Lair
+	AtlasLoot_TableNames["GruulsLairHighKingMaulgar"] = { BabbleBoss["High King Maulgar"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["GruulGruul"] = { BabbleBoss["Gruul the Dragonkiller"], "AtlasLootExpansionItems" };
+  --HC: Blood Furnace
+	AtlasLoot_TableNames["HCFurnaceMaker"] = { BabbleBoss["The Maker"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCFurnaceMakerHEROIC"] = { BabbleBoss["The Maker"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCFurnaceBroggok"] = { BabbleBoss["Broggok"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCFurnaceBroggokHEROIC"] = { BabbleBoss["Broggok"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCFurnaceBreaker"] = { BabbleBoss["Keli'dan the Breaker"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCFurnaceBreakerHEROIC"] = { BabbleBoss["Keli'dan the Breaker"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+  --HC: Magtheridon's Lair
+	AtlasLoot_TableNames["HCMagtheridon"] = { BabbleBoss["Magtheridon"], "AtlasLootExpansionItems" };
+  --HC: Ramparts
+	AtlasLoot_TableNames["HCRampWatchkeeper"] = { BabbleBoss["Watchkeeper Gargolmar"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCRampWatchkeeperHEROIC"] = { BabbleBoss["Watchkeeper Gargolmar"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCRampOmor"] = { BabbleBoss["Omor the Unscarred"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCRampOmorHEROIC"] = { BabbleBoss["Omor the Unscarred"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCRampVazruden"] = { BabbleBoss["Vazruden"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCRampNazan"] = { BabbleBoss["Nazan"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCRampFelIronChest"] = { AL["Reinforced Fel Iron Chest"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCRampFelIronChestHEROIC"] = { AL["Reinforced Fel Iron Chest"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+  --HC: Shattered Halls
+	AtlasLoot_TableNames["HCHallsNethekurse"] = { BabbleBoss["Grand Warlock Nethekurse"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsNethekurseHEROIC"] = { BabbleBoss["Grand Warlock Nethekurse"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsPorung"] = { BabbleBoss["Blood Guard Porung"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsOmrogg"] = { BabbleBoss["Warbringer O'mrogg"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsOmroggHEROIC"] = { BabbleBoss["Warbringer O'mrogg"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsKargath"] = { BabbleBoss["Warchief Kargath Bladefist"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsKargathHEROIC"] = { BabbleBoss["Warchief Kargath Bladefist"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsExecutioner"] = { "Shattered Hand Executioner", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["HCHallsTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Shattered Halls"]..")", "AtlasLootExpansionItems" };
+  --Karazhan
+	AtlasLoot_TableNames["KaraCharredBoneFragment"] = { "Charred Bone Fragment ("..AL["Quest Item"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraNamed"] = { "Servant's Quarter Animal Bosses", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraAttumen"] = { BabbleBoss["Attumen the Huntsman"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraMoroes"] = { BabbleBoss["Moroes"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraKeannaLog"] = { "Keanna's Log ("..AL["Quest Item"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraMaiden"] = { BabbleBoss["Maiden of Virtue"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraOperaEvent"] = { "Opera Event", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraCurator"] = { BabbleBoss["The Curator"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraIllhoof"] = { BabbleBoss["Terestian Illhoof"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraAran"] = { BabbleBoss["Shade of Aran"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraNetherspite"] = { BabbleBoss["Netherspite"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraNightbane"] = { BabbleBoss["Nightbane"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraChess"] = { BabbleBoss["Chess Event"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraPrince"] = { BabbleBoss["Prince Malchezaar"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["KaraTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Karazhan"]..")", "AtlasLootExpansionItems" };
+  --Sunwell Isle: Magister's Terrace
+	AtlasLoot_TableNames["SMTFireheart"] = { BabbleBoss["Selin Fireheart"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTFireheartHEROIC"] = { BabbleBoss["Selin Fireheart"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTVexallus"] = { BabbleBoss["Vexallus"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTVexallusHEROIC"] = { BabbleBoss["Vexallus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTDelrissa"] = { BabbleBoss["Priestess Delrissa"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTDelrissaHEROIC"] = { BabbleBoss["Priestess Delrissa"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTKaelthas"] = { BabbleBoss["Kael'thas Sunstrider"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTKaelthasHEROIC"] = { BabbleBoss["Kael'thas Sunstrider"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SMTTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Magisters' Terrace"]..")", "AtlasLootExpansionItems" };
+  --Sunwell Plateau
+	AtlasLoot_TableNames["SPKalecgos"] = { BabbleBoss["Kalecgos"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SPBrutallus"] = { BabbleBoss["Brutallus"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SPFelmyst"] = { BabbleBoss["Felmyst"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SPEredarTwins"] = { BabbleBoss["The Eredar Twins"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SPMuru"] = { BabbleBoss["M'uru"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SPKiljaeden"] = { BabbleBoss["Kil'jaeden"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SPTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Sunwell Plateau"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["SPPatterns"] = { "SP Patterns/Plans", "AtlasLootExpansionItems" };
+  --TK: The Arcatraz
+	AtlasLoot_TableNames["TKArcUnbound"] = { BabbleBoss["Zereketh the Unbound"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcUnboundHEROIC"] = { BabbleBoss["Zereketh the Unbound"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcThirdFragmentGuardian"] = { "Third Fragment Guardian", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcDalliah"] = { BabbleBoss["Dalliah the Doomsayer"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcDalliahHEROIC"] = { BabbleBoss["Dalliah the Doomsayer"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcScryer"] = { BabbleBoss["Wrath-Scryer Soccothrates"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcScryerHEROIC"] = { BabbleBoss["Wrath-Scryer Soccothrates"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcHarbinger"] = { BabbleBoss["Harbinger Skyriss"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcHarbingerHEROIC"] = { BabbleBoss["Harbinger Skyriss"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKArcTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Arcatraz"]..")", "AtlasLootExpansionItems" };
+  --TK: The Botanica
+	AtlasLoot_TableNames["TKBotSarannis"] = { BabbleBoss["Commander Sarannis"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotSarannisHEROIC"] = { BabbleBoss["Commander Sarannis"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotFreywinn"] = { BabbleBoss["High Botanist Freywinn"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotFreywinnHEROIC"] = { BabbleBoss["High Botanist Freywinn"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotThorngrin"] = { BabbleBoss["Thorngrin the Tender"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotThorngrinHEROIC"] = { BabbleBoss["Thorngrin the Tender"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotLaj"] = { BabbleBoss["Laj"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotLajHEROIC"] = { BabbleBoss["Laj"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotSplinter"] = { BabbleBoss["Warp Splinter"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotSplinterHEROIC"] = { BabbleBoss["Warp Splinter"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKBotTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Botanica"]..")", "AtlasLootExpansionItems" };
+  --TK: The Eye
+	AtlasLoot_TableNames["TKEyeAlar"] = { BabbleBoss["Al'ar"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKEyeVoidReaver"] = { BabbleBoss["Void Reaver"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKEyeSolarian"] = { BabbleBoss["High Astromancer Solarian"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKEyeKaelthas"] = { BabbleBoss["Kael'thas Sunstrider"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKEyeLegendaries"] = { "Legendary Items for Kael'thas Fight", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKEyeTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Eye"]..")", "AtlasLootExpansionItems" };
+  --TK: The Mechanar
+	AtlasLoot_TableNames["TKMechGyro"] = { BabbleBoss["Gatewatcher Gyro-Kill"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechIron"] = { BabbleBoss["Gatewatcher Iron-Hand"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechCacheoftheLegion"] = { "Cache of the Legion", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechCapacitus"] = { BabbleBoss["Mechano-Lord Capacitus"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechCapacitusHEROIC"] = { BabbleBoss["Mechano-Lord Capacitus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechOverchargedManacell"] = { "Overcharged Manacell", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechSepethrea"] = { BabbleBoss["Nethermancer Sepethrea"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechSepethreaHEROIC"] = { BabbleBoss["Nethermancer Sepethrea"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechCalc"] = { BabbleBoss["Pathaleon the Calculator"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechCalcHEROIC"] = { BabbleBoss["Pathaleon the Calculator"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["TKMechTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Mechanar"]..")", "AtlasLootExpansionItems" };
+  --Zul'Aman
+	AtlasLoot_TableNames["ZANalorakk"] = { BabbleBoss["Nalorakk"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["ZAAkilZon"] = { BabbleBoss["Akil'zon"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["ZAJanAlai"] = { BabbleBoss["Jan'alai"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["ZAHalazzi"] = { BabbleBoss["Halazzi"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["ZAMalacrass"] = { BabbleBoss["Hex Lord Malacrass"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["ZAZuljin"] = { BabbleBoss["Zul'jin"], "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["ZATimedChest"] = { "Timed Reward Chest", "AtlasLootExpansionItems" };
+	AtlasLoot_TableNames["ZATrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Zul'Aman"]..")", "AtlasLootExpansionItems" };
+
+-------------------------
+--- Classic Instances ---
+-------------------------
+
+  --Keys
+	AtlasLoot_TableNames["BCKeys"] = { "Keys", "AtlasLootExpansionItems" };
   --Blackfathom Deeps
 	AtlasLoot_TableNames["BFDGhamoora"] = { BabbleBoss["Ghamoo-ra"], "AtlasLootItems" };
 	AtlasLoot_TableNames["BFDLadySarevess"] = { BabbleBoss["Lady Sarevess"], "AtlasLootItems" };
@@ -159,18 +358,6 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["UBRSValthalak"] = { BabbleBoss["Lord Valthalak"].." ("..AL["Summon"]..")", "AtlasLootItems" };
 	AtlasLoot_TableNames["UBRSDrakkisath"] = { BabbleBoss["General Drakkisath"], "AtlasLootItems" };
 	AtlasLoot_TableNames["UBRSTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Upper Blackrock Spire"]..")", "AtlasLootItems" };
-  --The Black Temple
-	AtlasLoot_TableNames["BTNajentus"] = { BabbleBoss["High Warlord Naj'entus"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTSupremus"] = { BabbleBoss["Supremus"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTGorefiend"] = { BabbleBoss["Teron Gorefiend"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTBloodboil"] = { BabbleBoss["Gurtogg Bloodboil"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTAkama"] = { BabbleBoss["Shade of Akama"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTEssencofSouls"] = { "Essence of Souls", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTShahraz"] = { BabbleBoss["Mother Shahraz"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTCouncil"] = { BabbleBoss["Illidari Council"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTIllidanStormrage"] = { BabbleBoss["Illidan Stormrage"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Black Temple"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["BTPatterns"] = { "BT Patterns/Plans", "AtlasLootExpansionItems" };
   --Blackwing Lair
 	AtlasLoot_TableNames["BWLRazorgore"] = { BabbleBoss["Razorgore the Untamed"], "AtlasLootItems" };
 	AtlasLoot_TableNames["BWLVaelastrasz"] = { BabbleBoss["Vaelastrasz the Corrupt"], "AtlasLootItems" };
@@ -182,66 +369,6 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["BWLChromaggus"] = { BabbleBoss["Chromaggus"], "AtlasLootItems" };
 	AtlasLoot_TableNames["BWLNefarian"] = { BabbleBoss["Nefarian"], "AtlasLootItems" };
 	AtlasLoot_TableNames["BWLTrashMobs"] = { AL["Trash Mobs"].." ("..BabbleZone["Blackwing Lair"]..")", "AtlasLootItems" };
-  --CFR: Serpentshrine Cavern
-	AtlasLoot_TableNames["CFRSerpentHydross"] = { BabbleBoss["Hydross the Unstable"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSerpentKarathress"] = { BabbleBoss["Fathom-Lord Karathress"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSerpentMorogrim"] = { BabbleBoss["Morogrim Tidewalker"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSerpentLeotheras"] = { BabbleBoss["Leotheras the Blind"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSerpentLurker"] = { BabbleBoss["The Lurker Below"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSerpentVashj"] = { BabbleBoss["Lady Vashj"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSerpentTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Serpentshrine Cavern"]..")", "AtlasLootExpansionItems" };
-  --CFR: Slave Pens
-	AtlasLoot_TableNames["CFRSlaveMennu"] = { BabbleBoss["Mennu the Betrayer"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSlaveMennuHEROIC"] = { BabbleBoss["Mennu the Betrayer"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSlaveRokmar"] = { BabbleBoss["Rokmar the Crackler"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSlaveRokmarHEROIC"] = { BabbleBoss["Rokmar the Crackler"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSlaveQuagmirran"] = { BabbleBoss["Quagmirran"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSlaveQuagmirranHEROIC"] = { BabbleBoss["Quagmirran"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-  --CFR: The Steamvault
-	AtlasLoot_TableNames["CFRSteamThespia"] = { BabbleBoss["Hydromancer Thespia"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSteamThespiaHEROIC"] = { BabbleBoss["Hydromancer Thespia"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSteamSecondFragmentGuardian"] = { "Second Fragment Guardian", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSteamSteamrigger"] = { BabbleBoss["Mekgineer Steamrigger"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSteamSteamriggerHEROIC"] = { BabbleBoss["Mekgineer Steamrigger"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSteamWarlord"] = { BabbleBoss["Warlord Kalithresh"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSteamWarlordHEROIC"] = { BabbleBoss["Warlord Kalithresh"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRSteamTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Steamvault"]..")", "AtlasLootExpansionItems" };
-  --CFR: The Underbog
-	AtlasLoot_TableNames["CFRUnderHungarfen"] = { BabbleBoss["Hungarfen"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRUnderHungarfenHEROIC"] = { BabbleBoss["Hungarfen"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRUnderGhazan"] = { BabbleBoss["Ghaz'an"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRUnderGhazanHEROIC"] = { BabbleBoss["Ghaz'an"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRUnderSwamplord"] = { BabbleBoss["Swamplord Musel'ek"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRUnderSwamplordHEROIC"] = { BabbleBoss["Swamplord Musel'ek"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRUnderStalker"] = { BabbleBoss["The Black Stalker"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CFRUnderStalkerHEROIC"] = { BabbleBoss["The Black Stalker"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-  --CoT: Old Hillsbrad Foothills
-	AtlasLoot_TableNames["CoTHillsbradDrake"] = { BabbleBoss["Lieutenant Drake"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradDrakeHEROIC"] = { BabbleBoss["Lieutenant Drake"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradSkarloc"] = { BabbleBoss["Captain Skarloc"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradSkarlocHEROIC"] = { BabbleBoss["Captain Skarloc"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradHunter"] = { BabbleBoss["Epoch Hunter"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradHunterHEROIC"] = { BabbleBoss["Epoch Hunter"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Old Hillsbrad Foothills"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradThomasYance"] = { AL["Thomas Yance"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradAgedDalaranWizard"] = { "Aged Dalaran Wizard", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradDonCarlos"] = { AL["Don Carlos"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTHillsbradDonCarlosHEROIC"] = { AL["Don Carlos"], "AtlasLootExpansionItems" };
-  --CoT: Black Morass
-	AtlasLoot_TableNames["CoTMorassDeja"] = { BabbleBoss["Chrono Lord Deja"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTMorassDejaHEROIC"] = { BabbleBoss["Chrono Lord Deja"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTMorassTemporus"] = { BabbleBoss["Temporus"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTMorassTemporusHEROIC"] = { BabbleBoss["Temporus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTMorassAeonus"] = { BabbleBoss["Aeonus"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTMorassAeonusHEROIC"] = { BabbleBoss["Aeonus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["CoTMorassTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Black Morass"]..")", "AtlasLootExpansionItems" };
-  --CoT: Hyjal Summit
-	AtlasLoot_TableNames["MountHyjalWinterchill"] = { BabbleBoss["Rage Winterchill"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["MountHyjalAnetheron"] = { BabbleBoss["Anetheron"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["MountHyjalKazrogal"] = { BabbleBoss["Kaz'rogal"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["MountHyjalAzgalor"] = { BabbleBoss["Azgalor"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["MountHyjalArchimonde"] = { BabbleBoss["Archimonde"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["MountHyjalTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Hyjal Summit"]..")", "AtlasLootExpansionItems" };
   --The Deadmines
 	AtlasLoot_TableNames["VCMarisaduPaige"] = { BabbleBoss["Marisa du'Paige"], "AtlasLootItems" };
 	AtlasLoot_TableNames["VCBrainwashedNoble"] = { BabbleBoss["Brainwashed Noble"], "AtlasLootItems" };
@@ -296,53 +423,6 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["GnDIAmbassador"] = { BabbleBoss["Dark Iron Ambassador"].." ("..AL["Rare"]..")", "AtlasLootItems" };
 	AtlasLoot_TableNames["GnMekgineerThermaplugg"] = { BabbleBoss["Mekgineer Thermaplugg"], "AtlasLootItems" };
 	AtlasLoot_TableNames["GnTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Gnomeregan"]..")", "AtlasLootItems" };
-  --Gruul's Lair
-	AtlasLoot_TableNames["GruulsLairHighKingMaulgar"] = { BabbleBoss["High King Maulgar"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["GruulGruul"] = { BabbleBoss["Gruul the Dragonkiller"], "AtlasLootExpansionItems" };
-  --HC: Blood Furnace
-	AtlasLoot_TableNames["HCFurnaceMaker"] = { BabbleBoss["The Maker"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCFurnaceMakerHEROIC"] = { BabbleBoss["The Maker"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCFurnaceBroggok"] = { BabbleBoss["Broggok"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCFurnaceBroggokHEROIC"] = { BabbleBoss["Broggok"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCFurnaceBreaker"] = { BabbleBoss["Keli'dan the Breaker"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCFurnaceBreakerHEROIC"] = { BabbleBoss["Keli'dan the Breaker"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-  --HC: Magtheridon's Lair
-	AtlasLoot_TableNames["HCMagtheridon"] = { BabbleBoss["Magtheridon"], "AtlasLootExpansionItems" };
-  --HC: Ramparts
-	AtlasLoot_TableNames["HCRampWatchkeeper"] = { BabbleBoss["Watchkeeper Gargolmar"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCRampWatchkeeperHEROIC"] = { BabbleBoss["Watchkeeper Gargolmar"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCRampOmor"] = { BabbleBoss["Omor the Unscarred"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCRampOmorHEROIC"] = { BabbleBoss["Omor the Unscarred"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCRampVazruden"] = { BabbleBoss["Vazruden"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCRampNazan"] = { BabbleBoss["Nazan"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCRampFelIronChest"] = { AL["Reinforced Fel Iron Chest"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCRampFelIronChestHEROIC"] = { AL["Reinforced Fel Iron Chest"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-  --HC: Shattered Halls
-	AtlasLoot_TableNames["HCHallsNethekurse"] = { BabbleBoss["Grand Warlock Nethekurse"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsNethekurseHEROIC"] = { BabbleBoss["Grand Warlock Nethekurse"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsPorung"] = { BabbleBoss["Blood Guard Porung"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsOmrogg"] = { BabbleBoss["Warbringer O'mrogg"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsOmroggHEROIC"] = { BabbleBoss["Warbringer O'mrogg"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsKargath"] = { BabbleBoss["Warchief Kargath Bladefist"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsKargathHEROIC"] = { BabbleBoss["Warchief Kargath Bladefist"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsExecutioner"] = { "Shattered Hand Executioner", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["HCHallsTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Shattered Halls"]..")", "AtlasLootExpansionItems" };
-  --Karazhan
-	AtlasLoot_TableNames["KaraCharredBoneFragment"] = { "Charred Bone Fragment ("..AL["Quest Item"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraNamed"] = { "Servant's Quarter Animal Bosses", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraAttumen"] = { BabbleBoss["Attumen the Huntsman"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraMoroes"] = { BabbleBoss["Moroes"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraKeannaLog"] = { "Keanna's Log ("..AL["Quest Item"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraMaiden"] = { BabbleBoss["Maiden of Virtue"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraOperaEvent"] = { "Opera Event", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraCurator"] = { BabbleBoss["The Curator"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraIllhoof"] = { BabbleBoss["Terestian Illhoof"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraAran"] = { BabbleBoss["Shade of Aran"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraNetherspite"] = { BabbleBoss["Netherspite"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraNightbane"] = { BabbleBoss["Nightbane"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraChess"] = { BabbleBoss["Chess Event"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraPrince"] = { BabbleBoss["Prince Malchezaar"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["KaraTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Karazhan"]..")", "AtlasLootExpansionItems" };
   --Maraudon
 	AtlasLoot_TableNames["MaraNamelesProphet"] = { AL["The Nameles Prophet"], "AtlasLootItems" };
 	AtlasLoot_TableNames["MaraKhanKolk"] = { BabbleBoss["Kolk"].." (The First Khan)", "AtlasLootItems" };
@@ -521,25 +601,6 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["STHazzas"] = { BabbleBoss["Hazzas"], "AtlasLootItems" };
 	AtlasLoot_TableNames["STEranikus"] = { BabbleBoss["Shade of Eranikus"], "AtlasLootItems" };
 	AtlasLoot_TableNames["STTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Temple of Atal'Hakkar"]..")", "AtlasLootItems" };
-  --Sunwell Isle: Magister's Terrace
-	AtlasLoot_TableNames["SMTFireheart"] = { BabbleBoss["Selin Fireheart"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTFireheartHEROIC"] = { BabbleBoss["Selin Fireheart"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTVexallus"] = { BabbleBoss["Vexallus"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTVexallusHEROIC"] = { BabbleBoss["Vexallus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTDelrissa"] = { BabbleBoss["Priestess Delrissa"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTDelrissaHEROIC"] = { BabbleBoss["Priestess Delrissa"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTKaelthas"] = { BabbleBoss["Kael'thas Sunstrider"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTKaelthasHEROIC"] = { BabbleBoss["Kael'thas Sunstrider"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SMTTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Magisters' Terrace"]..")", "AtlasLootExpansionItems" };
-  --Sunwell Plateau
-	AtlasLoot_TableNames["SPKalecgos"] = { BabbleBoss["Kalecgos"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SPBrutallus"] = { BabbleBoss["Brutallus"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SPFelmyst"] = { BabbleBoss["Felmyst"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SPEredarTwins"] = { BabbleBoss["The Eredar Twins"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SPMuru"] = { BabbleBoss["M'uru"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SPKiljaeden"] = { BabbleBoss["Kil'jaeden"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SPTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Sunwell Plateau"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["SPPatterns"] = { "SP Patterns/Plans", "AtlasLootExpansionItems" };
   --Temple of Ahn'Qiraj
 	AtlasLoot_TableNames["AQ40Skeram"] = { BabbleBoss["The Prophet Skeram"], "AtlasLootItems" };
 	AtlasLoot_TableNames["AQ40Vem"] = { BabbleBoss["The Bug Family"], "AtlasLootItems" };
@@ -553,48 +614,6 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["AQ40Trash1"] = { AL["Trash Mobs"].." (AQ40)", "AtlasLootItems" };
 	AtlasLoot_TableNames["AQ40Trash2"] = { AL["Trash Mobs"].." (AQ40)", "AtlasLootItems" };
 	AtlasLoot_TableNames["AQOpening"] = { "AQ Opening Quest Line", "AtlasLootItems" };
-  --TK: The Arcatraz
-	AtlasLoot_TableNames["TKArcUnbound"] = { BabbleBoss["Zereketh the Unbound"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcUnboundHEROIC"] = { BabbleBoss["Zereketh the Unbound"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcThirdFragmentGuardian"] = { "Third Fragment Guardian", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcDalliah"] = { BabbleBoss["Dalliah the Doomsayer"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcDalliahHEROIC"] = { BabbleBoss["Dalliah the Doomsayer"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcScryer"] = { BabbleBoss["Wrath-Scryer Soccothrates"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcScryerHEROIC"] = { BabbleBoss["Wrath-Scryer Soccothrates"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcHarbinger"] = { BabbleBoss["Harbinger Skyriss"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcHarbingerHEROIC"] = { BabbleBoss["Harbinger Skyriss"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKArcTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Arcatraz"]..")", "AtlasLootExpansionItems" };
-  --TK: The Botanica
-	AtlasLoot_TableNames["TKBotSarannis"] = { BabbleBoss["Commander Sarannis"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotSarannisHEROIC"] = { BabbleBoss["Commander Sarannis"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotFreywinn"] = { BabbleBoss["High Botanist Freywinn"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotFreywinnHEROIC"] = { BabbleBoss["High Botanist Freywinn"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotThorngrin"] = { BabbleBoss["Thorngrin the Tender"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotThorngrinHEROIC"] = { BabbleBoss["Thorngrin the Tender"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotLaj"] = { BabbleBoss["Laj"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotLajHEROIC"] = { BabbleBoss["Laj"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotSplinter"] = { BabbleBoss["Warp Splinter"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotSplinterHEROIC"] = { BabbleBoss["Warp Splinter"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKBotTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Botanica"]..")", "AtlasLootExpansionItems" };
-  --TK: The Eye
-	AtlasLoot_TableNames["TKEyeAlar"] = { BabbleBoss["Al'ar"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKEyeVoidReaver"] = { BabbleBoss["Void Reaver"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKEyeSolarian"] = { BabbleBoss["High Astromancer Solarian"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKEyeKaelthas"] = { BabbleBoss["Kael'thas Sunstrider"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKEyeLegendaries"] = { "Legendary Items for Kael'thas Fight", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKEyeTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Eye"]..")", "AtlasLootExpansionItems" };
-  --TK: The Mechanar
-	AtlasLoot_TableNames["TKMechGyro"] = { BabbleBoss["Gatewatcher Gyro-Kill"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechIron"] = { BabbleBoss["Gatewatcher Iron-Hand"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechCacheoftheLegion"] = { "Cache of the Legion", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechCapacitus"] = { BabbleBoss["Mechano-Lord Capacitus"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechCapacitusHEROIC"] = { BabbleBoss["Mechano-Lord Capacitus"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechOverchargedManacell"] = { "Overcharged Manacell", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechSepethrea"] = { BabbleBoss["Nethermancer Sepethrea"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechSepethreaHEROIC"] = { BabbleBoss["Nethermancer Sepethrea"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechCalc"] = { BabbleBoss["Pathaleon the Calculator"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechCalcHEROIC"] = { BabbleBoss["Pathaleon the Calculator"].." ("..AL["Heroic"]..")", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["TKMechTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Mechanar"]..")", "AtlasLootExpansionItems" };
   --Uldaman
 	AtlasLoot_TableNames["UldMagreganDeepshadow"] = { AL["Magregan Deepshadow"], "AtlasLootItems" };
 	AtlasLoot_TableNames["UldTabletofRyuneh"] = { "Tablet of Ryun'eh", "AtlasLootItems" };
@@ -626,15 +645,6 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["WCVerdan"] = { BabbleBoss["Verdan the Everliving"], "AtlasLootItems" };
 	AtlasLoot_TableNames["WCMutanus"] = { BabbleBoss["Mutanus the Devourer"], "AtlasLootItems" };
 	AtlasLoot_TableNames["WCDeviateFaerieDragon"] = { BabbleBoss["Deviate Faerie Dragon"], "AtlasLootItems" };
-  --Zul'Aman
-	AtlasLoot_TableNames["ZANalorakk"] = { BabbleBoss["Nalorakk"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["ZAAkilZon"] = { BabbleBoss["Akil'zon"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["ZAJanAlai"] = { BabbleBoss["Jan'alai"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["ZAHalazzi"] = { BabbleBoss["Halazzi"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["ZAMalacrass"] = { BabbleBoss["Hex Lord Malacrass"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["ZAZuljin"] = { BabbleBoss["Zul'jin"], "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["ZATimedChest"] = { "Timed Reward Chest", "AtlasLootExpansionItems" };
-	AtlasLoot_TableNames["ZATrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Zul'Aman"]..")", "AtlasLootExpansionItems" };
   --Zul'Farrak
 	AtlasLoot_TableNames["ZFAntusul"] = { BabbleBoss["Antu'sul"], "AtlasLootItems" };
 	AtlasLoot_TableNames["ZFThekatheMartyr"] = { BabbleBoss["Theka the Martyr"], "AtlasLootItems" };
@@ -928,23 +938,23 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["BlizzardCollectables1"] = { "Blizzard Collectables", "AtlasLootSetItems" };
 	AtlasLoot_TableNames["CraftedWeapons1"] = { AL["Crafted Epic Weapons"], "AtlasLootCrafting" };
 	AtlasLoot_TableNames["CraftedWeapons2"] = { AL["Crafted Epic Weapons"], "AtlasLootCrafting" };
-	AtlasLoot_TableNames["HardModeCloth"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Cloth"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeLeather"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Leather"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeLeather2"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Leather"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeMail"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Mail"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModePlate"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Plate"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModePlate2"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Plate"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeCloaks"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Back"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeResist"] = { AL["Lvl 70 Instance Rewards"].." - "..AL["Fire Resistance Gear"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeAccessories"] = { AL["Lvl 70 Instance Rewards"].." - "..AL["Accessories"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeAccessories2"] = { AL["Lvl 70 Instance Rewards"].." - "..AL["Accessories"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeRelic"] = { AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Relic"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeWeapons"] = { AL["Lvl 70 Instance Rewards"].." - "..AL["Weapons"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeArena"] = { AL["Lvl 70 Instance Rewards"].." - "..AL["Arena Reward"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["HardModeArena2"] = { AL["Lvl 70 Instance Rewards"].." - "..AL["Arena Reward"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeCloth"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Cloth"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeLeather"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Leather"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeLeather2"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Leather"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeMail"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Mail"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModePlate"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Plate"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModePlate2"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Plate"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeCloaks"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Back"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeResist"] = { AL["Badge of Justice Rewards"].." - "..AL["Fire Resistance Gear"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeAccessories"] = { AL["Badge of Justice Rewards"].." - "..AL["Accessories"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeAccessories2"] = { AL["Badge of Justice Rewards"].." - "..AL["Accessories"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeRelic"] = { AL["Badge of Justice Rewards"].." - "..BabbleInventory["Relic"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeWeapons"] = { AL["Badge of Justice Rewards"].." - "..AL["Weapons"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeArena"] = { AL["Badge of Justice Rewards"].." - "..AL["Arena Reward"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["HardModeArena2"] = { AL["Badge of Justice Rewards"].." - "..AL["Arena Reward"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["Legendaries"] = { AL["Legendary Items"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["RareMounts1"] = { AL["Rare Mounts"].." - The Burning Crusade", "AtlasLootSetItems" };
-	AtlasLoot_TableNames["RareMounts2"] = { AL["Rare Mounts"].." - Original WoW", "AtlasLootSetItems" };
+	AtlasLoot_TableNames["RareMounts2"] = { AL["Rare Mounts"].." - Classic WoW", "AtlasLootSetItems" };
 	AtlasLoot_TableNames["Tabards1"] = { AL["Tabards"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["Tabards2"] = { AL["Tabards"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["CardGame1"] = { AL["Upper Deck Card Game Items"], "AtlasLootSetItems" };
@@ -1023,46 +1033,27 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["ScourgeInvasionEvent1"] = { AL["Scourge Invasion"], "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["ScourgeInvasionEvent2"] = { "Scourge Invasion Bosses", "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["Shartuul"] = { AL["Shartuul"], "AtlasLootWorldEvents" };
-
---------------------
---- Rep Factions ---
---------------------
+	
+----------------------
+--- WotLK Factions ---
+----------------------
+	
+-------------------
+--- BC Factions ---
+-------------------
 
   --The Aldor
 	AtlasLoot_TableNames["Aldor1"] = { BabbleFaction["The Aldor"]..": "..BabbleFaction["Friendly"].."/"..BabbleFaction["Honored"], "AtlasLootRepItems" };
 	AtlasLoot_TableNames["Aldor2"] = { BabbleFaction["The Aldor"]..": "..BabbleFaction["Revered"].."/"..BabbleFaction["Exalted"], "AtlasLootRepItems" };
-  --Argent Dawn
-	AtlasLoot_TableNames["Argent1"] = { BabbleFaction["Argent Dawn"]..": Token Hand-ins", "AtlasLootRepItems" };
-	AtlasLoot_TableNames["Argent2"] = { BabbleFaction["Argent Dawn"], "AtlasLootRepItems" };
   --Ashtongue Deathsworn
 	AtlasLoot_TableNames["Ashtongue1"] = { BabbleFaction["Ashtongue Deathsworn"], "AtlasLootRepItems" };
 	AtlasLoot_TableNames["Ashtongue2"] = { BabbleFaction["Ashtongue Deathsworn"], "AtlasLootRepItems" };
-  --Bloodsail Buccaneers
-	AtlasLoot_TableNames["Bloodsail1"] = { BabbleFaction["Bloodsail Buccaneers"], "AtlasLootRepItems" };
-  --Brood of Nozdormu
-	AtlasLoot_TableNames["AQBroodRings"] = { BabbleFaction["Brood of Nozdormu"], "AtlasLootRepItems" };
-  --Cenarion Circle
-	AtlasLoot_TableNames["Cenarion1"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Friendly"], "AtlasLootRepItems" };
-	AtlasLoot_TableNames["Cenarion2"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Honored"], "AtlasLootRepItems" };
-	AtlasLoot_TableNames["Cenarion3"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Revered"], "AtlasLootRepItems" };
-	AtlasLoot_TableNames["Cenarion4"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Exalted"], "AtlasLootRepItems" };
   --Cenarion Expedition
 	AtlasLoot_TableNames["CExpedition1"] = { BabbleFaction["Cenarion Expedition"]..": "..BabbleFaction["Friendly"].."/"..BabbleFaction["Honored"], "AtlasLootRepItems" };
 	AtlasLoot_TableNames["CExpedition2"] = { BabbleFaction["Cenarion Expedition"]..": "..BabbleFaction["Revered"].."/"..BabbleFaction["Exalted"], "AtlasLootRepItems" };
   --The Consortium
 	AtlasLoot_TableNames["Consortium1"] = { BabbleFaction["The Consortium"]..": "..BabbleFaction["Friendly"].."/"..BabbleFaction["Honored"], "AtlasLootRepItems" };
 	AtlasLoot_TableNames["Consortium2"] = { BabbleFaction["The Consortium"]..": "..BabbleFaction["Revered"].."/"..BabbleFaction["Exalted"], "AtlasLootRepItems" };
-  --The Darkmoon Faire
-	AtlasLoot_TableNames["Darkmoon1"] = { BabbleFaction["Darkmoon Faire"], "AtlasLootRepItems" };
-	AtlasLoot_TableNames["Darkmoon2"] = { BabbleFaction["Darkmoon Faire"].." - "..BabbleInventory["Trinket"], "AtlasLootRepItems" };
-  --The Defilers
-	AtlasLoot_TableNames["Defilers"] = { BabbleFaction["The Defilers"], "AtlasLootRepItems" };
-  --Frostwolf Clan
-	AtlasLoot_TableNames["Frostwolf1"] = { BabbleFaction["Frostwolf Clan"], "AtlasLootRepItems" };
-  --Hydraxian Waterlords
-	AtlasLoot_TableNames["WaterLords1"] = { BabbleFaction["Hydraxian Waterlords"], "AtlasLootRepItems" };
-  --Gelkis Clan Centaur
-	AtlasLoot_TableNames["GelkisClan1"] = { BabbleFaction["Gelkis Clan Centaur"], "AtlasLootRepItems" };
   --Honor Hold
 	AtlasLoot_TableNames["HonorHold1"] = { BabbleFaction["Honor Hold"]..": "..BabbleFaction["Friendly"].."/"..BabbleFaction["Honored"], "AtlasLootRepItems" };
 	AtlasLoot_TableNames["HonorHold2"] = { BabbleFaction["Honor Hold"]..": "..BabbleFaction["Revered"].."/"..BabbleFaction["Exalted"], "AtlasLootRepItems" };
@@ -1070,14 +1061,8 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["KeepersofTime1"] = { BabbleFaction["Keepers of Time"], "AtlasLootRepItems" };
   --Kurenai
 	AtlasLoot_TableNames["Kurenai1"] = { BabbleFaction["Kurenai"], "AtlasLootRepItems" };
-  --The League of Arathor
-	AtlasLoot_TableNames["LeagueofArathor"] = { BabbleFaction["The League of Arathor"], "AtlasLootRepItems" };
   --Lower City
 	AtlasLoot_TableNames["LowerCity1"] = { BabbleFaction["Lower City"], "AtlasLootRepItems" };
-  --The Mag'har
-	AtlasLoot_TableNames["Maghar1"] = { BabbleFaction["The Mag'har"], "AtlasLootRepItems" };
-  --Magram Clan Centaur
-	AtlasLoot_TableNames["MagramClan1"] = { BabbleFaction["Magram Clan Centaur"], "AtlasLootRepItems" };
   --Netherwing
 	AtlasLoot_TableNames["Netherwing1"] = { BabbleFaction["Netherwing"], "AtlasLootRepItems" };
   --Ogri'la
@@ -1100,20 +1085,54 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["SunOffensive3"] = { BabbleFaction["Shattered Sun Offensive"]..": "..BabbleFaction["Exalted"], "AtlasLootRepItems" };
   --Sporeggar
 	AtlasLoot_TableNames["Sporeggar1"] = { BabbleFaction["Sporeggar"], "AtlasLootRepItems" };
+  --Thrallmar
+	AtlasLoot_TableNames["Thrallmar1"] = { BabbleFaction["Thrallmar"]..": "..BabbleFaction["Friendly"].."/"..BabbleFaction["Honored"], "AtlasLootRepItems" };
+	AtlasLoot_TableNames["Thrallmar2"] = { BabbleFaction["Thrallmar"]..": "..BabbleFaction["Revered"].."/"..BabbleFaction["Exalted"], "AtlasLootRepItems" };
+  --Tranquillien
+	AtlasLoot_TableNames["Tranquillien1"] = { BabbleFaction["Tranquillien"], "AtlasLootRepItems" };
+  --The Violet Eye
+	AtlasLoot_TableNames["VioletEye1"] = { BabbleFaction["The Violet Eye"], "AtlasLootRepItems" };
+
+------------------------
+--- Classic Factions ---
+------------------------
+
+  --Argent Dawn
+	AtlasLoot_TableNames["Argent1"] = { BabbleFaction["Argent Dawn"]..": Token Hand-ins", "AtlasLootRepItems" };
+	AtlasLoot_TableNames["Argent2"] = { BabbleFaction["Argent Dawn"], "AtlasLootRepItems" };
+  --Bloodsail Buccaneers
+	AtlasLoot_TableNames["Bloodsail1"] = { BabbleFaction["Bloodsail Buccaneers"], "AtlasLootRepItems" };
+  --Brood of Nozdormu
+	AtlasLoot_TableNames["AQBroodRings"] = { BabbleFaction["Brood of Nozdormu"], "AtlasLootRepItems" };
+  --Cenarion Circle
+	AtlasLoot_TableNames["Cenarion1"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Friendly"], "AtlasLootRepItems" };
+	AtlasLoot_TableNames["Cenarion2"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Honored"], "AtlasLootRepItems" };
+	AtlasLoot_TableNames["Cenarion3"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Revered"], "AtlasLootRepItems" };
+	AtlasLoot_TableNames["Cenarion4"] = { BabbleFaction["Cenarion Circle"]..": "..BabbleFaction["Exalted"], "AtlasLootRepItems" };
+  --The Darkmoon Faire
+	AtlasLoot_TableNames["Darkmoon1"] = { BabbleFaction["Darkmoon Faire"], "AtlasLootRepItems" };
+	AtlasLoot_TableNames["Darkmoon2"] = { BabbleFaction["Darkmoon Faire"].." - "..BabbleInventory["Trinket"], "AtlasLootRepItems" };
+  --The Defilers
+	AtlasLoot_TableNames["Defilers"] = { BabbleFaction["The Defilers"], "AtlasLootRepItems" };
+  --Frostwolf Clan
+	AtlasLoot_TableNames["Frostwolf1"] = { BabbleFaction["Frostwolf Clan"], "AtlasLootRepItems" };
+  --Hydraxian Waterlords
+	AtlasLoot_TableNames["WaterLords1"] = { BabbleFaction["Hydraxian Waterlords"], "AtlasLootRepItems" };
+  --Gelkis Clan Centaur
+	AtlasLoot_TableNames["GelkisClan1"] = { BabbleFaction["Gelkis Clan Centaur"], "AtlasLootRepItems" };
+  --The League of Arathor
+	AtlasLoot_TableNames["LeagueofArathor"] = { BabbleFaction["The League of Arathor"], "AtlasLootRepItems" };
+  --The Mag'har
+	AtlasLoot_TableNames["Maghar1"] = { BabbleFaction["The Mag'har"], "AtlasLootRepItems" };
+  --Magram Clan Centaur
+	AtlasLoot_TableNames["MagramClan1"] = { BabbleFaction["Magram Clan Centaur"], "AtlasLootRepItems" };
   --Stormpike Guard
 	AtlasLoot_TableNames["Stormpike1"] = { BabbleFaction["Stormpike Guard"], "AtlasLootRepItems" };
   --Thorium Brotherhood
 	AtlasLoot_TableNames["Thorium1"] = { BabbleFaction["Thorium Brotherhood"]..": "..BabbleFaction["Friendly"].."/"..BabbleFaction["Honored"], "AtlasLootRepItems" };
 	AtlasLoot_TableNames["Thorium2"] = { BabbleFaction["Thorium Brotherhood"]..": "..BabbleFaction["Revered"].."/"..BabbleFaction["Exalted"], "AtlasLootRepItems" };
-  --Thrallmar
-	AtlasLoot_TableNames["Thrallmar1"] = { BabbleFaction["Thrallmar"]..": "..BabbleFaction["Friendly"].."/"..BabbleFaction["Honored"], "AtlasLootRepItems" };
-	AtlasLoot_TableNames["Thrallmar2"] = { BabbleFaction["Thrallmar"]..": "..BabbleFaction["Revered"].."/"..BabbleFaction["Exalted"], "AtlasLootRepItems" };
   --Timbermaw Hold
 	AtlasLoot_TableNames["Timbermaw"] = { BabbleFaction["Timbermaw Hold"], "AtlasLootRepItems" };
-  --Tranquillien
-	AtlasLoot_TableNames["Tranquillien1"] = { BabbleFaction["Tranquillien"], "AtlasLootRepItems" };
-  --The Violet Eye
-	AtlasLoot_TableNames["VioletEye1"] = { BabbleFaction["The Violet Eye"], "AtlasLootRepItems" };
   --Wintersaber Trainers
 	AtlasLoot_TableNames["Wintersaber1"] = { BabbleFaction["Wintersaber Trainers"], "AtlasLootRepItems" };
   --Zandalar Tribe

@@ -40,6 +40,7 @@ AL:RegisterTranslations("deDE", function() return {
     ["Add to QuickLooks:"] = "Zu QuickLook hinzufügen",
     ---["Assign this loot table\n to QuickLook"] = true,
     ["Req. Rating:"] = "Wertung benötigt",
+    ---["Query Server"] = true,
 
     --Text for Options Panel
     ["Atlasloot Options"] = "AtlasLoot Optionen",
@@ -73,6 +74,14 @@ AL:RegisterTranslations("deDE", function() return {
     ---["Partial matching"] = true,
     ---["If checked, AtlasLoot search item names for a partial match."] = true,
     ["You don't have any module selected to search on!"] = "Du hast kein Modul zur Suche ausgewählt",
+    --The next 4 lines are the tooltip for the Server Query Button
+    --The translation doesn't have to be literal, just re-write the
+    --sentences as you would naturally and break them up into 4 roughly
+    --equal lines.
+    ["Queries the server for all items"] = "Fragt den Server nach allen Items",
+   	["on this page. The items will be"] = "auf dieser Seite. Die Items werden",
+    ["refreshed when you next mouse"] = "geladen, sobald ihr das nächste Mal",
+    ["over them."] = "mit der Maus drüber fahrt.",
 
     --Slash commands
 	--    ["reset"] = true,
@@ -125,6 +134,8 @@ AL:RegisterTranslations("deDE", function() return {
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences."] = "Willkommen zu Atlasloot Enhanced!  Bitte nimm dir einen Moment Zeit, um die Einstellungen festzulegen",
     ["New feature in 4.02.01: Type '/atlasloot options' to bring up the options menu and '/atlasloot reset' to reset AtlasLoot after a disconnect."] = "Neues Feature in 4.02.01: Gib 'atlasloot options' ein, um das Optionen Menü anzeigen zu lassen und 'atlasloot reset' um Atlasloot nach einem Disconnect zurückzusetzen.",
     ["New feature in 4.03.00: Introducing the Wishlist!  Simply alt-click on any item to add it to the wishlist.  To delete an item from the wishlist, open up your wishlist and alt-click the item to remove it.  It's that simple.  Buttons to view the wishlist have been added to the Atlas interface and the loot browser."] = "Neues Feature in 4.03.00: Wunschzettel! Mit Alt-Klick könnt ihr jedes beliebige Item zum Wunschzettel hinzufügen. Mit Alt-Klick könnt ihr ein Item wieder vom Wunschzettel löschen. Den Wunschzettel könnt ihr über das Atlasloot Interface oder den Loot Browser öffnen." ,
+    ---["New feature in 4.05.00: Advanced searching functionality is now available. You can type in a partial item name, for example typing 'elixir' gives all items in the database with 'elixir' in the name.  Big thanks to Kurax for his help."] = true,
+    ---["New feature in 4.05.00: All professions are now included in the AtlasLoot_Crafting module."] = true,
     ["Welcome to Atlasloot Enhanced.  Please take a moment to set your preferences for tooltips and links in the chat window.\n\n  This options screen can be reached again at any later time by typing '/atlasloot'."] = "Willkommen zu Atlasloot Enhanced!  Bitte nimm dir einen Moment Zeit, um die Einstellungen für Tooltips und Chatlinks festzulegen.\nWenn du später etwas ändern willst, kannst du den Optionsbildschirm mit /atlasloot aufrufen.",
     ["Setup"] = "Optionen",
 
@@ -731,8 +742,9 @@ AL:RegisterTranslations("deDE", function() return {
     ["Epic Set"] = "Episches Set",
     ["Rare Set"] = "Seltenes Set",
     ["Legendary Items"] = "Legendäre Items",
-    ["Lvl 70 Instance Token Rewards"] = "Heroisch: Belohnungen",
-	--    ["Lvl 70 Instance Rewards"] = true,
+    ["Badge of Justice Rewards"] = "Abzeichen der Gerechtigkeit Belohungen",
+    ---["Lvl 70 Instance Token Rewards"] = "Heroisch: Belohnungen",
+	---    ["Lvl 70 Instance Rewards"] = true,
     ["Accesories and Weapons"] ="Zubehör und Waffen",
     ["Accessories"] = "Zubehör",
     ["Armor and Weapons"] = "Rüstung und Waffen",

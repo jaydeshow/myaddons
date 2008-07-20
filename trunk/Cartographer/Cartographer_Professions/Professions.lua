@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 72981 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78706 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-05-07 12:01:40 -0400 (Wed, 07 May 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer_Professions")
@@ -87,6 +87,19 @@ L:AddTranslations("zhCN", function() return {
 	["Unable to load addon `%s': %s"] = "无法加载插件 '%s'：%s",
 	["Load all professions"] = "加载所有专业技能",
 	["This option will load all the profession modules including those you currently dont know."] = "加载所有专业技能模块，不管你有没有学习。",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Professions"] = "Профессии",
+	["Always"] = "Всегда",
+	["With Profession"] = "С профессией",
+	["When active"] = "Когда активен",
+	["Never"] = "Никогда",
+	["Stub for loading Cartographer module addons based on your professions."] = "Заглушка для загрузки аддонов модуля Cartographerа основанных на ваших профессиях",
+	["Unable to load addon `%s': %s"] = "Невозможно загрузить аддон `%s': %s",
+	["Load all professions"] = "Загрузить все профессии",
+	["This option will load all the profession modules including those you currently dont know."] = "Эта опция загрузит все модули профессий включая даже те что вы не изучали",
 } end)
 
 local mod = Cartographer:NewModule('Professions', 'LibRockEvent-1.0', 'LibRockConsole-1.0')

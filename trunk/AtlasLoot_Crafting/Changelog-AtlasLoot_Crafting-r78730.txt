@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r78730 | daviesh | 2008-07-19 08:25:07 -0400 (Sat, 19 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_Crafting/crafting.en.lua
+
+AtlasLoot_Crafting:
+- Philosphers Stone skill corrected
+------------------------------------------------------------------------
 r77517 | daviesh | 2008-06-27 09:00:49 -0400 (Fri, 27 Jun 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot_Crafting/AtlasLoot_Crafting.toc

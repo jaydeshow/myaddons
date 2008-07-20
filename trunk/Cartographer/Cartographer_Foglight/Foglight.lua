@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 78027 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78706 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-07-07 18:57:07 -0400 (Mon, 07 Jul 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $", 8, 17)
 end
 
 -- if you want to add data to the defaults, send ckknight@gmail.com your
@@ -72,6 +72,15 @@ L:AddTranslations("zhCN", function() return {
 
 	["Unexplored color"] = "未探索颜色",
 	["Change the color of the unexplored areas"] = "改变尚未探索地区的颜色。",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Foglight"] = "Противотуман",
+	["Module to show unexplored areas on the map."] = "Модуль отображает неисследованные территории на карте.",
+
+	["Unexplored color"] = "Цвет тумана",
+	["Change the color of the unexplored areas"] = "Изменить цвет неисследованных территорий",
 } end)
 
 local math_mod = math.fmod

@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 78027 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78706 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-07 18:57:07 -0400 (Mon, 07 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Coordinates")
@@ -186,6 +186,33 @@ L:AddTranslations("zhCN", function() return {
 
 	["%.0f yd"] = "%.0f 码",
 	["%.0f m"] = "%.0f 米",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Coordinates"] = "Координаты",
+	["Module to add coordinates to the bottom of the world map of the player and the cursor."] = "Модуль добавляет координаты персонажа и курсора в нижнюю часть карты.",
+
+	["Cursor"] = "Курсор",
+	["Player"] = "Персонаж",
+
+	["High precision"] = "Высокая точность",
+	["Show high precision coordinates"] = "Показывает координаты с высокой точностью (к примеру: не 55/55 а уже будет 55.5/55.5)",
+
+	["Background color"] = "Цвет фона",
+	["The color of the background frame behind coordinates"] = "Цвет фона фрейма за координатами",
+
+	["Text color"] = "Цвет текста",
+	["The color of the coordinates"] = "Цвет координат",
+
+	["Text size"] = "Размер текста",
+	["The size of the coordinates"] = "Размер координат",
+
+	["Show background"] = "Показать фон",
+	["Show background frame behind coordinates"] = "Показать фоновой фрейм за координатами",
+
+	["%.0f yd"] = "%.0f ярд",
+	["%.0f m"] = "%.0f м",
 } end)
 
 Cartographer_Coordinates = Cartographer:NewModule("Coordinates")

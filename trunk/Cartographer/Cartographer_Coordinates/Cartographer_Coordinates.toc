@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fCoordinates|r]
 ## X-Name: Coordinates
+## X-Name-ruRU: Координаты
 ## X-Name-deDE: Koordinaten
 ## X-Name-frFR: Coordonnées
 ## X-Name-koKR: 좌표
@@ -9,6 +10,7 @@
 ## X-Name-zhCN: 坐标
 ## X-ModuleName: Coordinates
 ## Notes: Module to add coordinates to the bottom of the world map of the player and the cursor.
+## Notes-ruRU: Модуль добавляет координаты персонажа и курсора в нижнюю часть карты.
 ## Notes-deDE: Modul zur Anzeige der Spieler- und Mauszeiger-Koordinaten im unteren Bereich der Weltkarte.
 ## Notes-frFR: Modules indiquant les coordonnées du joueur et du curseur en bas de la carte du monde.
 ## Notes-koKR: 플레이어와 커서의 좌표를 세계 지도 밑에 보여줍니다.

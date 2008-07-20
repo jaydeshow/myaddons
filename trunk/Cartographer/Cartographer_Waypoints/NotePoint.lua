@@ -20,6 +20,12 @@ L:AddTranslations("esES", function() return {
 	["Waypoint"] = "Punto de Ruta",
 } end)
 
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Trying to set a waypoint with an unknown zone: %q"] = "Попытка назначить точку маршрута на неизвестную территорию:  %q",
+	["Waypoint"] = "Точку маршрута",
+} end)
+
 local BZ = Rock("LibBabble-Zone-3.0")
 local BZH = BZ:GetUnstrictLookupTable()
 local BZR = BZ:GetReverseLookupTable()

@@ -644,9 +644,6 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 						_, _, _, itemColor = GetItemQualityColor(itemQuality);
 						text = itemColor..itemName;
 					else
-						if AtlasLoot.db.profile.AutoQuery then
-							GameTooltip:SetHyperlink("item:"..dataSource[dataID][i][1]..":0:0:0:0:0:0:0");
-						end
 						if(GetItemInfo(dataSource[dataID][i][1])) then
 							_, _, _, itemColor = GetItemQualityColor(itemQuality);
 							text = itemColor..itemName;
@@ -1118,6 +1115,22 @@ function AtlasLoot_RefreshQuickLookButtons()
         else
             getglobal("AtlasLootPanel_Preset"..i):Enable();
             getglobal("AtlasLootDefaultFrame_Preset"..i):Enable();
+        end
+        i=i+1;
+    end
+end
+
+--[[
+AtlasLoot_QueryLootPage()
+Querys all valid items on the current loot page.
+]]
+function AtlasLoot_QueryLootPage()
+    i=1;
+    while i<31 do
+        button = getglobal("AtlasLootItem_"..i);
+        queryitem = button.itemID;
+        if (queryitem) and (queryitem ~= nil) and (queryitem ~= "") and (queryitem ~= 0) and (string.sub(queryitem, 1, 1) ~= "s") then
+            GameTooltip:SetHyperlink("item:"..queryitem..":0:0:0:0:0:0:0");
         end
         i=i+1;
     end

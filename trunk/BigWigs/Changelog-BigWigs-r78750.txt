@@ -1,4 +1,15 @@
 ------------------------------------------------------------------------
+r78750 | arrowmaster | 2008-07-19 17:15:05 -0400 (Sat, 19 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/BigWigs/BigWigs.toc
+   M /trunk/BigWigs/Core.lua
+   M /trunk/Incubator/Core.lua
+   M /trunk/Incubator/Incubator.toc
+   M /trunk/Omen/Omen.toc
+
+.trunk: remove SavedVariablesPerCharacter from a few addons that don't even use them, preventing a file with nothing but 'VAR = nil' from being created for each character
+------------------------------------------------------------------------
 r78512 | funkydude | 2008-07-15 19:01:12 -0400 (Tue, 15 Jul 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/Extras/Tranq.lua
@@ -58,39 +69,5 @@ BigWigs: Sunwell/KilJaeden:
 - Fix phase toggle
 - Add sound to phase warning
 - Add Dragon Orb timer 
-- koKR Update
-------------------------------------------------------------------------
-r76755 | 7destiny | 2008-06-15 12:55:03 -0400 (Sun, 15 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: Sunwell/Muru: add void and humanoid spawn count
-------------------------------------------------------------------------
-r76660 | pettigrow | 2008-06-14 04:58:51 -0400 (Sat, 14 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: frFR Update
-------------------------------------------------------------------------
-r76651 | ananhaid | 2008-06-14 01:33:57 -0400 (Sat, 14 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: 
-- Muru zhCN update.
-------------------------------------------------------------------------
-r76647 | 7destiny | 2008-06-14 00:26:38 -0400 (Sat, 14 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Muru.lua
-
-BigWigs: koKR Update
-------------------------------------------------------------------------
-r76646 | 7destiny | 2008-06-13 23:38:35 -0400 (Fri, 13 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/Souls.lua
-   M /trunk/BigWigs/SC/Karathress.lua
-   M /trunk/BigWigs/SC/Vashj.lua
-
-BigWigs: 
 - koKR Update
 ------------------------------------------------------------------------

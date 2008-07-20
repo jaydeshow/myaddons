@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fNotes|r]
 ## X-Name: Notes
+## X-Name-ruRU: Заметки
 ## X-Name-deDE: Notizen
 ## X-Name-frFR: Notes
 ## X-Name-koKR: 노트
@@ -9,6 +10,7 @@
 ## X-Name-zhCN: 注释
 ## X-ModuleName: Notes
 ## Notes: Module which allows you to put notes on the map.
+## Notes-ruRU: Модуль позволяет вам размещать заметки на карте.
 ## Notes-deDE: Modul zur Erstellung von Notizen auf der Karte.
 ## Notes-frFR: Module permettant l'ajout de notes sur la carte.
 ## Notes-koKR: 지도에 노트를 작성합니다.

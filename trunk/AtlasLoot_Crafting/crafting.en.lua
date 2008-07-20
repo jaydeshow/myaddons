@@ -469,6 +469,7 @@ AtlasLoot_Data["AtlasLootCrafting"] = {
 	AlchemyArtisan1 = {
 		{ "s12609", 10592, "=q1=Catseye Elixir", "=ds=#sr# 200" },
 		{ "s3454", 3829, "=q1=Frost Oil", "=ds=#sr# 200" },
+		{ "s11459", 9149, "=q1=Philosopher's Stone", "=ds=#sr# 200" },
 		{ "s11448", 6149, "=q1=Greater Mana Potion", "=ds=#sr# 205" },
 		{ "s11451", 8956, "=q1=Oil of Immolation", "=ds=#sr# 205" },
 		{ "s11456", 9061, "=q1=Goblin Rocket Fuel", "=ds=#sr# 210" },
@@ -479,7 +480,6 @@ AtlasLoot_Data["AtlasLootCrafting"] = {
 		{ "s11457", 3928, "=q1=Superior Healing Potion", "=ds=#sr# 215" },
 		{ "s11479", 3577, "=q2=Transmute: Iron to Gold", "=ds=#sr# 225" },
 		{ "s11480", 6037, "=q2=Transmute: Mithril to Truesilver", "=ds=#sr# 225" },
-		{ "s11459", 9149, "=q1=Philosopher's Stone", "=ds=#sr# 225" },
 		{ "s11458", 9144, "=q1=Wildvine Potion", "=ds=#sr# 225" },
 		{ "s15833", 12190, "=q1=Dreamless Sleep Potion", "=ds=#sr# 230" },
 		{ "s11460", 9154, "=q1=Elixir of Detect Undead", "=ds=#sr# 230" },

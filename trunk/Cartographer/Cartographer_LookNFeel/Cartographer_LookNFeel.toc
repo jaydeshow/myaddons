@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fLook 'n' Feel|r]
 ## X-Name: Look 'n' Feel
+## X-Name-ruRU: Наглядность и Восприятие
 ## X-Name-deDE: Look 'n' Feel
 ## X-Name-frFR: Affichage et comportement
 ## X-Name-koKR: 모양
@@ -9,6 +10,7 @@
 ## X-Name-zhCN: 外观设置
 ## X-ModuleName: LookNFeel
 ## Notes: Module which allows you to change the transparency, position, and scale of the world map.
+## Notes-ruRU: Модуль позволяет настраивать прозрачность, позиции и масштаб Карты Мира.
 ## Notes-deDE: Modul zur Einstellung der Transparenz, Position und Skalierung der Weltkarte.
 ## Notes-frFR: Module permettant la personnalisation de la transparence, la position et la taille de la carte du monde.
 ## Notes-koKR: 세계 지도의 투명도, 위치 그리고 크기등을 변경합니다.

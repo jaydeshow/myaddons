@@ -8,6 +8,7 @@ local GREEN = "|cff1eff00";
 local PURPLE = "|cff9F3FFF";
 local BLUE = "|cff0070dd";
 local ORANGE = "|cffFF8400";
+local INDENT = "   ";
 
 function Atlas112Compat()
 
@@ -152,6 +153,30 @@ function Atlas112Compat()
         "T3SET";
         };
     
+    AtlasLootBossButtons["ShadowfangKeep"] = {
+        "";
+        "BSFRethilgore";
+        "";
+        "";
+        "";
+        "";
+        "BSFFelSteed";
+        "BSFQuestItems";
+        "BSFQuestItems";
+        "BSFRazorclawtheButcher";
+        "BSFSilverlaine";
+        "BSFSpringvale";
+        "BSFOdotheBlindwatcher";
+        "BSFDeathswornCaptain";
+        "BSFFenrustheDevourer";
+        "BSFArugalsVoidwalker";
+        "BSFQuestItems";
+        "BSFWolfMasterNandos";
+        "BSFArchmageArugal";
+        "";
+        "BSFTrash";
+        };
+    
     AtlasLootBossButtons["TheTempleofAhnQiraj"] = {
         "AQBroodRings";
         "";
@@ -219,6 +244,11 @@ function Atlas112Compat()
         GREEN..AL["Misc. Rewards"];
         GREEN..AL["Superior Rewards"];
         GREEN..AL["Epic Rewards"];
+    };
+    
+    AtlasLoot_ExtraText["TempestKeepBotanica"] = {
+        "";
+        GREY..INDENT..AL["Trash Mobs"];
     };
     
     AtlasLootBattlegrounds["AlteracValleySouth"] = {

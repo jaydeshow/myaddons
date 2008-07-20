@@ -616,6 +616,43 @@
 	                </OnShow>
                 </Scripts>
             </Button>
+            <Button name="AtlasLootServerQueryButton" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="23"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="$parent" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="100" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+                    <OnShow>
+                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+                        this:SetText(AL["Query Server"]);
+				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+			        </OnShow>
+                    <OnEnter>
+                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+                        GameTooltip:ClearLines();
+                        GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5);
+                        GameTooltip:AddLine("|cffff0000"..AL["Query Server"]);
+                        GameTooltip:AddLine(AL["Queries the server for all items"]);
+                        GameTooltip:AddLine(AL["on this page. The items will be"]);
+                        GameTooltip:AddLine(AL["refreshed when you next mouse"]);
+                        GameTooltip:AddLine(AL["over them."]);
+                        GameTooltip:Show();
+			        </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+					</OnLeave>
+					<OnClick>
+                        GameTooltip:Hide();
+						AtlasLoot_QueryLootPage();
+					</OnClick>
+				</Scripts>
+			</Button>
             <Button name="AtlasLootQuickLooksButton">
 				<Size>
 					<AbsDimension x="25" y="25" />
@@ -634,6 +671,11 @@
 				<Scripts>
 					<OnShow>
 						this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+                        if (AtlasLootItemsFrame.refresh) and ((AtlasLootItemsFrame.refresh[1] == "SearchResult") or (AtlasLootItemsFrame.refresh[1] == "WishList")) then
+                            this:Disable();
+                        else
+                            this:Enable();
+                        end
 					</OnShow>
 					<OnClick>
 						AtlasLoot_ShowQuickLooks(this);
@@ -706,7 +748,7 @@
     
     <Frame name="AtlasLootOptionsFrame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent" enableKeyboard="true">
 		<Size>
-			<AbsDimension x="650" y="400"/>
+			<AbsDimension x="650" y="370"/>
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER"/>
@@ -748,29 +790,11 @@
 			</Layer>
 		</Layers>
 		<Frames>
-            <CheckButton name="$parentAutoQuery" inherits="OptionsCheckButtonTemplate" enable="false">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="20" y="-40"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnLoad>
-                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
-						getglobal(this:GetName().."Text"):SetText(AL["AutoQuery items on loot tables |cffff0000(disconnection risk)|r"]);
-					</OnLoad>
-					<OnClick>
-						AtlasLootOptions_AutoQueryToggle();
-					</OnClick>
-				</Scripts>
-			</CheckButton>
 			<CheckButton name="$parentSafeLinks" inherits="OptionsCheckButtonTemplate" enable="false">
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="20" y="-70"/>
+							<AbsDimension x="20" y="-40"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -788,7 +812,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="20" y="-100"/>
+							<AbsDimension x="20" y="-70"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -806,7 +830,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="20" y="-160"/>
+							<AbsDimension x="20" y="-130"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -824,7 +848,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="20" y="-190"/>
+							<AbsDimension x="20" y="-160"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -842,7 +866,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="20" y="-220"/>
+							<AbsDimension x="20" y="-190"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -860,7 +884,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="20" y="-280"/>
+							<AbsDimension x="20" y="-250"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -888,7 +912,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="20" y="-310"/>
+							<AbsDimension x="20" y="-280"/>
 						</Offset>
 					</Anchor>
 				</Anchors>

@@ -20,8 +20,8 @@ if (GetLocale() == "koKR") then
 		["Change the alpha of the bar."] = "바의 투명도를 변경합니다.",
 		["Add Button"] = "버튼 추가",
 		["Align Buttons"] = "버튼 정렬",
-		["Always Popup"] = "Always Popup";
-		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
+		["Always Popup"] = "항상 팝업";
+		["Always keep Popups open for %s"] = "항상 %s|1을;를; 위해 팝업을 엽니다.";
 		["Always Show"] = "항상 표시";
 		["Always Show %s, even if empty."] = "빈창을 포함하여, 항상 %s|1을;를; 표시합니다.";
 		["Announce to Party"] = "파티에 알림",
@@ -48,8 +48,8 @@ if (GetLocale() == "koKR") then
 		["Disable Conjure Button"] = "생성 버튼 비활성화",
 		["Docked to"] = "위치 변경",
 		["Done"] = "완료";
-		["Drop"] = "Drop";
-		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
+		["Drop"] = "드롭";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "사용자 카테고리 버튼 위에 아이템이나 주문, 매크로를 추가하기 위해 드롭합니다.";
 		["Enabled"] = "사용",
 		["Enable %s."] = "%s|1을;를; 사용",
 		["FadeOut"] = "투명화",
@@ -66,8 +66,8 @@ if (GetLocale() == "koKR") then
 		["FadeOut is cancelled when holding down the Ctrl key."] = "Ctrl키 입력시 투명화가 취소됩니다.",
 		["FadeOut Cancels on Alt"] = "Alt키 입력시 투명화 취소",
 		["FadeOut is cancelled when holding down the Alt key."] = "Alt키 입력시 투명화가 취소됩니다.",
-		["FadeOut Delay"] = "FadeOut Delay",
-		["FadeOut starts after this amount of time."] = "FadeOut starts after this amount of time.",
+		["FadeOut Delay"] = "투명화 지연",
+		["FadeOut starts after this amount of time."] = "지정 시간 이후에 투명화를 시작합니다.",
 		["Frame Level"] = "창 레벨",
 		["Adjust the Frame Level of the Bar and its Popup Buttons so they apear above or below other UI objects"] = "다른 UI 위나 아래에 나타나는 팝업 버튼 및 창의 레벨을 조정합니다.",
 		["General"] = "일반",
@@ -144,12 +144,14 @@ if (GetLocale() == "koKR") then
 		["Move the Buttons"] = "버튼 이동",
 		["Drag a Button to move it, right click to configure the Button."] = "버튼을 이동시키기 위해 드래그합니다. 버튼 설정을 위해 우클릭하세요.",
 
-		["{circle}"] = "{동그라미}",
-		["{diamond}"] = "{다이아몬드}",
-		["{skull}"] = "{해골}",
-		["{square}"] = "{네모}",
-		["{star}"] = "{별}",
-		["{triangle}"] = "{세모}",
+		["{star}"] = "{rt1}",
+		["{circle}"] = "{rt2}",
+		["{diamond}"] = "{rt3}",
+		["{triangle}"] = "{rt4}",
+		["{moon}"] = "{rt5}",
+		["{square}"] = "{rt6}",
+		["{x}"] = "{rt7}",
+		["{skull}"] = "{rt8}",
 
 		["TOPLEFT"] = "좌측 상단",
 		["LEFT"] = "좌측",
@@ -206,11 +208,11 @@ if (GetLocale() == "koKR") then
 		["AutoBarButtonClassPet"] = "직업 소환수",
 		["AutoBarButtonConjure"] = "창조",
 		["AutoBarButtonCooldownDrums"] = "대기시간: 북소리",
-		["AutoBarButtonCooldownPotionCombat"] = "Potion Cooldown: Combat",
+		["AutoBarButtonCooldownPotionCombat"] = "물약 대기시간: 전투",
 		["AutoBarButtonCooldownPotionHealth"] = "물약 대기시간: 생명력",
 		["AutoBarButtonCooldownPotionMana"] = "물약 대기시간: 마나",
 		["AutoBarButtonCooldownPotionRejuvenation"] = "물약 대기시간: 회복",
-		["AutoBarButtonCooldownStoneCombat"] = "Stone Cooldown: Combat",
+		["AutoBarButtonCooldownStoneCombat"] = "조각상 대기시간: 전투",
 		["AutoBarButtonCooldownStoneHealth"] = "조각상 대기시간: 생명력",
 		["AutoBarButtonCooldownStoneMana"] = "조각상 대기시간: 마나",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "조각상 대기시간: 회복",
@@ -467,8 +469,8 @@ if (GetLocale() == "koKR") then
 		["Consumable.Cooldown.Stone.Health.Statue"] = "돌 조각상";
 		["Consumable.Cooldown.Drums"] = "대기시간: 북소리";
 		["Consumable.Cooldown.Potion"] = "대기시간: 물약";
-		["Consumable.Cooldown.Potion.Combat"] = "Cooldown: Potion - Combat";
-		["Consumable.Cooldown.Stone.Combat"] = "Cooldown: Stone - Combat";
+		["Consumable.Cooldown.Potion.Combat"] = "대기시간: 물약 - 전투";
+		["Consumable.Cooldown.Stone.Combat"] = "대기시간: 석 - 전투";
 		["Consumable.Cooldown.Stone"] = "대기시간: 석";
 		["Consumable.Leatherworking.Drums"] = "북소리";
 		["Consumable.Tailor.Net"] = "그물";
@@ -505,7 +507,7 @@ if (GetLocale() == "koKR") then
 		["Spell.Totem.Air"] = "바람의 토템";
 		["Spell.Totem.Fire"] = "불의 토템";
 		["Spell.Totem.Water"] = "물의 토템";
-		["Spell.Seal"] = "Seal";
+		["Spell.Seal"] = "문장";
 		["Spell.Track"] = "추적";
 		["Spell.Trap"] = "덫";
 		["Misc.Hearth"] = "귀환석";
@@ -540,7 +542,7 @@ if (GetLocale() == "koKR") then
 --AUTOBAR_CONFIG_TAB_POPUP = "팝업";
 --AUTOBAR_CONFIG_TAB_PROFILE = "프로파일";
 --AUTOBAR_CONFIG_TAB_KEYS = "단축키";
---
+
 --AUTOBAR_TOOLTIP1 = " (갯수: ";
 --AUTOBAR_TOOLTIP2 = " [사용자 아이템]";
 --AUTOBAR_TOOLTIP6 = " [제한된 사용]";
@@ -559,8 +561,8 @@ AUTOBAR_TOOLTIP8 = "\n(주 무기에 적용 좌 클릭\n보조 무기에 적용 
 --AUTOBAR_CONFIG_RESETSINGLETIP = "싱글 캐릭터를 기본값으로 초기화 하려면 클릭하세요.";
 --AUTOBAR_CONFIG_RESETSHAREDTIP = "공유되는 캐릭터를 기본값으로 초기화 하려면 클릭하세요.\n직업 특정의 슬롯이 캐릭터 계층으로 복사해 집니다.\n기본 슬롯이 공유되는 계층으로 복사해 집니다.";
 --AUTOBAR_CONFIG_RESETSTANDARDTIP = "표준을 기본값으로 초기화 하려면 클릭하세요.\n직업 특정의 슬롯들은 직업 계층 안에 있습니다.\n기본 슬롯들은 기초적인 계층 안에 있습니다.\n공유 그리고 캐릭터 계층들을 비우게 됩니다.";
---
-----  AutoBar_Config.lua
+
+--  AutoBar_Config.lua
 --AUTOBAR_TOOLTIP15 = "\n무기 대상\n(좌시 클릭 주무기\n우 클릭시 보조무기)";
 AUTOBAR_TOOLTIP17 = "\n비전투시만";
 AUTOBAR_TOOLTIP18 = "\n전투시만";

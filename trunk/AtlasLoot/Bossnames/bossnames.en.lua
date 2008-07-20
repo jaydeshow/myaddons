@@ -10,6 +10,14 @@ local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 AtlasLootBossNames = {
 
+  ---------------------
+  -- WotLK Instances --
+  ---------------------
+
+  ------------------
+  -- BC Instances --
+  ------------------
+
 	AuchManaTombs = {
 		BabbleBoss["Nexus-Prince Shaffar"].." ("..BabbleZone["Mana-Tombs"]..")";
 	};
@@ -28,42 +36,11 @@ AtlasLootBossNames = {
 		BabbleBoss["Grandmaster Vorpil"].." ("..BabbleZone["Shadow Labyrinth"]..")";
 		BabbleBoss["Murmur"].." ("..BabbleZone["Shadow Labyrinth"]..")";
 	};
-	
-	BlackrockSpireLower = {
-		BabbleBoss["Highlord Omokk"].." ("..AL["LBRS"]..")";
-		BabbleBoss["Shadow Hunter Vosh'gajin"].." ("..AL["LBRS"]..")";
-		BabbleBoss["War Master Voone"].." ("..AL["LBRS"]..")";
-		BabbleBoss["Mor Grayhoof"].." ("..AL["LBRS"]..")";
-		BabbleBoss["Mother Smolderweb"].." ("..AL["LBRS"]..")";
-		BabbleBoss["Gizrul the Slavener"].." ("..AL["LBRS"]..")";
-		BabbleBoss["Overlord Wyrmthalak"].." ("..AL["LBRS"]..")";
-		AL["Trash Mobs"].." ("..AL["LBRS"]..")";
-	};
-
-	BlackrockSpireUpper = {
-		BabbleBoss["Pyroguard Emberseer"].." ("..AL["UBRS"]..")";
-		BabbleBoss["Solakar Flamewreath"].." ("..AL["UBRS"]..")";
-		BabbleBoss["Warchief Rend Blackhand"].." ("..AL["UBRS"]..")";
-		BabbleBoss["Gyth"].." ("..AL["UBRS"]..")";
-		BabbleBoss["The Beast"].." ("..AL["UBRS"]..")";
-		BabbleBoss["General Drakkisath"].." ("..AL["UBRS"]..")";
-	};
 
 	BlackTemple = {
 		BabbleBoss["Mother Shahraz"].." ("..BabbleZone["Black Temple"]..")";
 		BabbleBoss["Illidari Council"].." ("..BabbleZone["Black Temple"]..")";
 		BabbleBoss["Illidan Stormrage"].." ("..BabbleZone["Black Temple"]..")";
-	};
-
-	BlackwingLair = {
-		BabbleBoss["Razorgore the Untamed"];
-		BabbleBoss["Vaelastrasz the Corrupt"];
-		BabbleBoss["Broodlord Lashlayer"];
-		BabbleBoss["Firemaw"];
-		BabbleBoss["Ebonroc"];
-		BabbleBoss["Flamegor"];
-		BabbleBoss["Chromaggus"];
-		BabbleBoss["Nefarian"];
 	};
 
 	CFRTheSlavePens = {
@@ -135,6 +112,59 @@ AtlasLootBossNames = {
 		BabbleBoss["Magtheridon"];
 	};
 
+	TKMechanar = {
+		BabbleBoss["Pathaleon the Calculator"].." (Mechanar)";
+	};
+
+	TKTheBotanica = {
+		BabbleBoss["Laj"].." ("..BabbleZone["The Botanica"]..")";
+		BabbleBoss["Warp Splinter"].." ("..BabbleZone["The Botanica"]..")";
+	};
+
+	TKTheArcatraz = {
+		BabbleBoss["Harbinger Skyriss"].." (Arcatraz)";
+	};
+
+	TKTheEye = {
+		BabbleBoss["Void Reaver"].." ("..BabbleZone["The Eye"]..")";
+		BabbleBoss["Kael'thas Sunstrider"].." ("..BabbleZone["The Eye"]..")";
+	};
+	
+  -----------------------
+  -- Classic Instances --
+  -----------------------
+	
+	BlackrockSpireLower = {
+		BabbleBoss["Highlord Omokk"].." ("..AL["LBRS"]..")";
+		BabbleBoss["Shadow Hunter Vosh'gajin"].." ("..AL["LBRS"]..")";
+		BabbleBoss["War Master Voone"].." ("..AL["LBRS"]..")";
+		BabbleBoss["Mor Grayhoof"].." ("..AL["LBRS"]..")";
+		BabbleBoss["Mother Smolderweb"].." ("..AL["LBRS"]..")";
+		BabbleBoss["Gizrul the Slavener"].." ("..AL["LBRS"]..")";
+		BabbleBoss["Overlord Wyrmthalak"].." ("..AL["LBRS"]..")";
+		AL["Trash Mobs"].." ("..AL["LBRS"]..")";
+	};
+
+	BlackrockSpireUpper = {
+		BabbleBoss["Pyroguard Emberseer"].." ("..AL["UBRS"]..")";
+		BabbleBoss["Solakar Flamewreath"].." ("..AL["UBRS"]..")";
+		BabbleBoss["Warchief Rend Blackhand"].." ("..AL["UBRS"]..")";
+		BabbleBoss["Gyth"].." ("..AL["UBRS"]..")";
+		BabbleBoss["The Beast"].." ("..AL["UBRS"]..")";
+		BabbleBoss["General Drakkisath"].." ("..AL["UBRS"]..")";
+	};
+
+	BlackwingLair = {
+		BabbleBoss["Razorgore the Untamed"];
+		BabbleBoss["Vaelastrasz the Corrupt"];
+		BabbleBoss["Broodlord Lashlayer"];
+		BabbleBoss["Firemaw"];
+		BabbleBoss["Ebonroc"];
+		BabbleBoss["Flamegor"];
+		BabbleBoss["Chromaggus"];
+		BabbleBoss["Nefarian"];
+	};
+
 	MoltenCore = {
 		BabbleBoss["Lucifron"];
 		BabbleBoss["Magmadar"];
@@ -198,22 +228,4 @@ AtlasLootBossNames = {
 		BabbleBoss["Baron Rivendare"].." ("..AL["Strat"]..")";
 		AL["Trash Mobs"].." ("..AL["Strat"]..")";
     };
-
-	TKMechanar = {
-		BabbleBoss["Pathaleon the Calculator"].." (Mechanar)";
-	};
-
-	TKTheBotanica = {
-		BabbleBoss["Laj"].." ("..BabbleZone["The Botanica"]..")";
-		BabbleBoss["Warp Splinter"].." ("..BabbleZone["The Botanica"]..")";
-	};
-
-	TKTheArcatraz = {
-		BabbleBoss["Harbinger Skyriss"].." (Arcatraz)";
-	};
-
-	TKTheEye = {
-		BabbleBoss["Void Reaver"].." ("..BabbleZone["The Eye"]..")";
-		BabbleBoss["Kael'thas Sunstrider"].." ("..BabbleZone["The Eye"]..")";
-	};
 };
