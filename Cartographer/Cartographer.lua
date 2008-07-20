@@ -1,8 +1,8 @@
 ﻿Cartographer = Rock:NewAddon("Cartographer", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockDB-1.0", "LibRockModuleCore-1.0", "LibRockHook-1.0", "LibRockConfig-1.0")
 local Cartographer = Cartographer
-Cartographer.revision = tonumber(string.sub("$Revision: 78630 $", 12, -3))
+Cartographer.revision = tonumber(string.sub("$Revision: 78746 $", 12, -3))
 Cartographer.version = "r" .. Cartographer.revision
-Cartographer.date = string.sub("$Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $", 8, 17)
+Cartographer.date = string.sub("$Date: 2008-07-19 16:54:32 -0400 (Sat, 19 Jul 2008) $", 8, 17)
 
 local Dewdrop = AceLibrary("Dewdrop-2.0")
 
@@ -15,7 +15,7 @@ local BZH = BZ:GetUnstrictLookupTable()
 local BZR = BZ:GetReverseLookupTable()
 local Tablet = AceLibrary("Tablet-2.0")
 local Tourist = Rock("LibTourist-3.0")
-local RollCall = Rock("LibRollCall-3.0")
+local LibGuild = Rock("LibGuild-1.0")
 local AceEvent
 local precondition, argCheck = Rock:GetContractFunctions("Cartographer", "precondition", "argCheck")
 
@@ -122,7 +122,7 @@ L:AddTranslations("koKR", function() return {
 	["Addon to manipulate the map."] = "월드맵 확장 애드온",
 } end)
 
---Ananhaid checkpoint.($Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $)
+--Ananhaid checkpoint.($Date: 2008-07-19 16:54:32 -0400 (Sat, 19 Jul 2008) $)
 L:AddTranslations("zhCN", function() return {
 	["Active"] = "启用", -- remove in a while (2006-12-08)
 	["Enabled"] = "启用",
@@ -205,6 +205,35 @@ L:AddTranslations("esES", function() return {
 	["Open alternate map"] = "Abrir mapa alternativo",
 
 	["Addon to manipulate the map."] = "Addon para manipular el mapa.",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Active"] = "Активен",
+	["Enabled"] = "Включен",
+	["Suspend/resume this module."] = "Отключить/Запустить данный модуль",
+
+	["Right-Click on map to zoom out"] = "ПКЛ по карте для уменьшения масштаба",
+	["Left-Click on map to zoom in"] = "ЛКМ по карте для увеличения масштаба",
+
+	["Go to %s"] = "Перейти на %s",
+
+	["Open Cartographer menu"] = "Открыть меню Картографа",
+	["Open location menu"] = "Открыть меню локации",
+
+	["Distance:"] = "Дистанция:",
+
+	["Close information pane"] = "Закрыть панель информации",
+	["Close this side informational pane"] = "Закрыть боковую панель информации",
+
+	["Zones"] = "Зоны",
+	["Cities"] = "Города",
+	["%.0f yd"] = "%.0f ярд",
+	["%.0f m"] = "%.0f м",
+	["Cartographer"] = "Картограф",
+	["Open alternate map"] = "Открыть альтернативную карту",
+
+	["Addon to manipulate the map."] = "Аддон для монипуляции картой.",
 } end)
 
 BINDING_HEADER_CARTOGRAPHER = L["Cartographer"]
@@ -600,10 +629,10 @@ function Cartographer:ConfigureUnitPOIs()
 			)
 			local gname, grank, granknum = GetGuildInfo(self.unit)
 			if not gname then
-				if RollCall:HasMember(name) then
-					gname = RollCall:GetGuildName()
-					grank = RollCall:GetRank(name)
-					granknum = RollCall:GetRankIndex(name)
+				if LibGuild:HasMember(name) then
+					gname = LibGuild:GetGuildName()
+					grank = LibGuild:GetRank(name)
+					granknum = LibGuild:GetRankIndex(name)
 				end
 			end
 			if gname then
@@ -641,7 +670,7 @@ function Cartographer:ConfigureUnitPOIs()
 					'text2B', b
 				)
 				if mygname == gname then
-					local note, onote = RollCall:GetNote(name), RollCall:GetOfficerNote(name)
+					local note, onote = LibGuild:GetNote(name), LibGuild:GetOfficerNote(name)
 
 					if note then
 						cat:AddLine(
@@ -708,12 +737,12 @@ function Cartographer:ConfigureUnitPOIs()
 			tmp[#tmp+1] = "|r"
 			local gname = GetGuildInfo(self.unit)
 			if not gname then
-				if RollCall:HasMember(name) then
-					gname = RollCall:GetGuildName()
+				if LibGuild:HasMember(name) then
+					gname = LibGuild:GetGuildName()
 				end
 			end
 			if gname then
-				local mygname = RollCall:GetGuildName()
+				local mygname = LibGuild:GetGuildName()
 				tmp[#tmp+1] = " - |cff"
 				if gname == mygname then
 					tmp[#tmp+1] = "00ff00"

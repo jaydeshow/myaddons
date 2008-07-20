@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fGuild Positions|r]
 ## X-Name: Guild Positions
+## X-Name-ruRU: Позиции Гильдии
 ## X-Name-deDE: Gildenpositionen
 ## X-Name-frFR: Positions guilde
 ## X-Name-koKR: 길드원 위치
@@ -8,6 +9,7 @@
 ## X-Name-zhCN: 公会成员位置
 ## X-ModuleName: GuildPositions
 ## Notes: Module which shows you your fellow guild members' positions, as well as allowing them to see you.
+## Notes-ruRU: Модуль отображает местоположение ваших товарищей из гильдии, также позволяет им видеть вас.
 ## Notes-deDE: Zeigt Dir die Position Deiner Gildenmitglieder an und erlaubt ihnen, Deine zu sehen.
 ## Notes-frFR: Module affichant la position des membres de votre guilde, et leur permettant de voir la votre.
 ## Notes-koKR: 당신의 위치를 길드원에게 표시하거나 길드원의 위치를 표시하는 모듈을 제공합니다.

@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 78027 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78706 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-07-07 18:57:07 -0400 (Mon, 07 Jul 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Battlegrounds")
@@ -61,6 +61,14 @@ L:AddTranslations("esES", function() return {
 	["Module which provides maps of battlegrounds."] = "M\195\179dulo que provee mapas de los campos de batalla",
 	
 	["%d-man"] = "%d-hombres",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Battlegrounds"] = "Поля сражений",
+	["Module which provides maps of battlegrounds."] = "Модуль отображает карты полей сражений",
+	
+	["%d-man"] = "%d-чел",
 } end)
 
 Cartographer_Battlegrounds = Cartographer:NewModule("Battlegrounds", "LibRockHook-1.0", "LibRockEvent-1.0")

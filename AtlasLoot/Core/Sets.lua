@@ -48,7 +48,7 @@ function AtlasLootSetMenu()
     AtlasLootMenuItem_6.lootpage="Tabards1";
     AtlasLootMenuItem_6:Show();
     --Hard Mode Tokens
-    AtlasLootMenuItem_7_Name:SetText(AL["Lvl 70 Instance Token Rewards"]);
+    AtlasLootMenuItem_7_Name:SetText(AL["Badge of Justice Rewards"]);
     AtlasLootMenuItem_7_Extra:SetText("");
     AtlasLootMenuItem_7_Icon:SetTexture("Interface\\Icons\\Spell_Holy_ChampionsBond");
     AtlasLootMenuItem_7.lootpage="70TOKENMENU";

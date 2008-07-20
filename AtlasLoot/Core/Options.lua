@@ -21,7 +21,6 @@ local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 
 function AtlasLootOptions_Init()
     --Initialise all the check boxes on the options frame
-	AtlasLootOptionsFrameAutoQuery:SetChecked(AtlasLoot.db.profile.AutoQuery);
     AtlasLootOptionsFrameSafeLinks:SetChecked(AtlasLoot.db.profile.SafeLinks);
 	AtlasLootOptionsFrameAllLinks:SetChecked(AtlasLoot.db.profile.AllLinks);
 	AtlasLootOptionsFrameDefaultTT:SetChecked(AtlasLoot.db.profile.DefaultTT);
@@ -50,16 +49,6 @@ function AtlasLootOptions_OnLoad()
     AtlasLootOptions_Init();
     temp=AtlasLoot.db.profile.SafeLinks;
     UIPanelWindows['AtlasLootOptionsFrame'] = {area = 'center', pushable = 0};
-end
-
---Functions for toggling options check boxes.
-function AtlasLootOptions_AutoQueryToggle()
-	if(AtlasLoot.db.profile.AutoQuery) then
-		AtlasLoot.db.profile.AutoQuery = false;
-	else
-		AtlasLoot.db.profile.AutoQuery = true;
-	end
-	AtlasLootOptions_Init();
 end
 
 function AtlasLootOptions_SafeLinksToggle()

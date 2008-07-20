@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r78769 | hegarol | 2008-07-20 03:13:24 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_RepFactions/rep.lua
+
+AtlasLoot_RepFactions:
+- changed code structure
+------------------------------------------------------------------------
 r78128 | kurax | 2008-07-08 23:02:59 -0400 (Tue, 08 Jul 2008) | 1 line
 Changed paths:
    M /trunk/AtlasLoot_RepFactions/rep.cn.lua

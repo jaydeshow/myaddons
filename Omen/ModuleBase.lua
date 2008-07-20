@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 74823 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78700 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local base = {bars = {}, registeredGUIDs = {}}
@@ -267,6 +267,11 @@ function base:MaybeAutoHide()
 		end
 	end
 end
-	
+
+function base:MakePullout(bar)
+	-- override this to support pullout bars
+	Omen:Print("no pullout bars implemented for", self.name)
+	bar:GetParent():GetParent():StopMovingOrSizing()
+end
 
 Omen.ModuleBase = base

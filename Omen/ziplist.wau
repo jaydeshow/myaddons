@@ -1,4 +1,5 @@
-Omen/Changelog-Omen-r78662.txt
+Omen/Changelog-Omen-r78750.txt
+Omen/PulloutBase.lua
 Omen/Frame.lua
 Omen/Bindings.xml
 Omen/ResizeGrip.tga
@@ -33,6 +34,7 @@ Omen/Modules/Healer/Localization/koKR.lua
 Omen/Modules/Healer/Localization/ruRU.lua
 Omen/Modules/Healer/Localization/esES.lua
 Omen/Modules/Healer/Localization/zhTW.lua
+Omen/Modules/AOE/AOE_PulloutBar.lua
 Omen/Modules/AOE/module.xml
 Omen/Modules/AOE/AOE.lua
 Omen/Modules/AOE/Localization/frFR.lua
@@ -55,6 +57,7 @@ Omen/Modules/SingleTarget/Localization/koKR.lua
 Omen/Modules/SingleTarget/Localization/ruRU.lua
 Omen/Modules/SingleTarget/Localization/esES.lua
 Omen/Modules/SingleTarget/Localization/zhTW.lua
+Omen/Media/Textures/PulloutMarker.tga
 Omen/Media/Sounds/aoogah.ogg
 Omen/Libs/LibFuBarPlugin-3.0/lib.xml
 Omen/Libs/LibFuBarPlugin-3.0/LibFuBarPlugin-Mod-3.0.lua

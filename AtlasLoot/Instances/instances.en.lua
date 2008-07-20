@@ -3,6 +3,14 @@
 --------------------------------------------------------------------------------
 AtlasLootBossButtons = {
 
+  ---------------------
+  -- WotLK Instances --
+  ---------------------
+
+  ------------------
+  -- BC Instances --
+  ------------------
+  
     AuchAuchenaiCrypts = {
         "LowerCity1";
         "BCKeys";
@@ -62,6 +70,487 @@ AtlasLootBossButtons = {
         "";
         "AuchShadowTrash";
         };
+
+    BlackTempleStart = {
+        "Ashtongue1";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "BTNajentus";
+        "BTSupremus";
+        "BTAkama";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "BTPatterns";
+        "BTTrash";
+        };
+
+    BlackTempleBasement = {
+        "Ashtongue1";
+        "BCKeys";
+        "";
+        "";
+        "BTBloodboil";
+        "BTEssencofSouls";
+        "BTEssencofSouls";
+        "BTEssencofSouls";
+        "BTEssencofSouls";
+        "BTGorefiend";
+        "";
+        "BTPatterns";
+        "BTTrash";
+        };
+
+    BlackTempleFull = {
+        "";
+        "Ashtongue1";
+        "BCKeys";
+        "";
+        "";
+        "BTNajentus";
+        "BTSupremus";
+        "";
+        "BTPatterns";
+        "BTTrash";
+        };
+
+    BlackTempleMiddle = {
+        "";
+        "Ashtongue1";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "";
+        "BTAkama";
+        "";
+        "BTPatterns";
+        "BTTrash";
+        };
+
+    BlackTempleTop = {
+        "Ashtongue1";
+        "BCKeys";
+        "";
+        "BTShahraz";
+        "BTCouncil";
+        "";
+        "";
+        "";
+        "";
+        "BTIllidanStormrage";
+        "";
+        "BTPatterns";
+        "BTTrash";
+        };
+
+    CFRSerpentshrineCavern = {
+        "CExpedition1";
+        "";
+        "CFRSerpentHydross";
+        "CFRSerpentLurker";
+        "CFRSerpentLeotheras";
+        "CFRSerpentKarathress";
+        "";
+        "CFRSerpentMorogrim";
+        "CFRSerpentVashj";
+        "";
+        "CFRSerpentTrash";
+        };
+
+    CFRTheSlavePens = {
+        "CExpedition1";
+        "BCKeys";
+        "";
+        "CFRSlaveMennu";
+        "";
+        "";
+        "CFRSlaveRokmar";
+        "";
+        "CFRSlaveQuagmirran";
+        };
+
+    CFRTheSteamvault = {
+        "CExpedition1";
+        "BCKeys";
+        "";
+        "CFRSteamThespia";
+        "";
+        "";
+        "CFRSteamSecondFragmentGuardian";
+        "CFRSteamSteamrigger";
+        "";
+        "CFRSteamWarlord";
+        "";
+        "CFRSteamTrash";
+        };
+
+    CFRTheUnderbog = {
+        "CExpedition1";
+        "BCKeys";
+        "";
+        "CFRUnderHungarfen";
+        "";
+        "CFRUnderGhazan";
+        "";
+        "CFRUnderSwamplord";
+        "";
+        "CFRUnderStalker";
+        };
+
+    CoTBlackMorass = {
+        "";
+        "";
+        "KeepersofTime1";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "CoTMorassDeja";
+        "CoTMorassTemporus";
+        "CoTMorassAeonus";
+        "";
+        "";
+        "";
+        "CoTMorassTrash";
+        };
+
+    CoTHyjal = {
+        "";
+        "ScaleSands1";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "MountHyjalWinterchill";
+        "MountHyjalAnetheron";
+        "MountHyjalKazrogal";
+        "MountHyjalAzgalor";
+        "MountHyjalArchimonde";
+        "";
+        "";
+        "";
+        "MountHyjalTrash";
+        };
+
+    CoTOldHillsbrad = {
+        "";
+        "";
+        "KeepersofTime1";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "CoTHillsbradDrake";
+        "";
+        "CoTHillsbradSkarloc";
+        "";
+        "";
+        "CoTHillsbradHunter";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "CoTHillsbradTrash";
+        "CoTHillsbradThomasYance";
+        "CoTHillsbradAgedDalaranWizard";
+        };
+
+    GruulsLair = {
+        "";
+        "GruulsLairHighKingMaulgar";
+        "";
+        "";
+        "";
+        "";
+        "GruulGruul";
+        };
+
+    HCBloodFurnace = {
+        "Thrallmar1";
+        "HonorHold1";
+        "BCKeys";
+        "";
+        "HCFurnaceMaker";
+        "HCFurnaceBroggok";
+        "HCFurnaceBreaker";
+        };
+
+    HCHellfireRamparts = {
+        "Thrallmar1";
+        "HonorHold1";
+        "BCKeys";
+        "";
+        "HCRampWatchkeeper";
+        "HCRampOmor";
+        "HCRampVazruden";
+        "HCRampNazan";
+        "HCRampFelIronChest";
+        };
+
+    HCMagtheridonsLair = {
+        "Thrallmar1";
+        "HonorHold1";
+        "";
+        "HCMagtheridon";
+        };
+
+    HCTheShatteredHalls = {
+        "Thrallmar1";
+        "HonorHold1";
+        "BCKeys";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "HCHallsNethekurse";
+        "HCHallsPorung";
+        "HCHallsOmrogg";
+        "HCHallsKargath";
+        "HCHallsExecutioner";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "HCHallsTrash";
+        };
+
+    KarazhanEnt = {
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraCharredBoneFragment";
+        };
+
+    KarazhanStart = {
+        "VioletEye1";
+        "BCKeys";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraNamed";
+        "KaraNamed";
+        "KaraNamed";
+        "";
+        "";
+        "KaraAttumen";
+        "";
+        "";
+        "KaraMoroes";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraKeannaLog";
+        "KaraMaiden";
+        "";
+        "";
+        "";
+        "KaraOperaEvent";
+        "KaraOperaEvent";
+        "KaraOperaEvent";
+        "";
+        "KaraNightbane";
+        "";
+        "KaraTrash";
+        };
+
+    KarazhanEnd = {
+        "VioletEye1";
+        "BCKeys";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraCurator";
+        "";
+        "";
+        "";
+        "KaraIllhoof";
+        "";
+        "KaraAran";
+        "KaraNetherspite";
+        "";
+        "";
+        "KaraChess";
+        "KaraPrince";
+        "";
+        "KaraTrash";
+        };      
+
+    MagistersTerrace = {
+        "";
+        "SMTFireheart";
+		"";
+		"";
+        "SMTVexallus";
+		"";
+		"";
+        "SMTDelrissa";
+        "SMTKaelthas";
+		"";
+		"SMTTrash";
+        };
+   
+    SunwellPlateau = {
+        "";
+        "SPKalecgos";
+	    "";
+	    "";
+        "SPBrutallus";
+        "SPFelmyst";
+        "SPEredarTwins";
+        "";
+        "";
+        "SPMuru";
+        "";
+        "SPKiljaeden";
+        "";
+        "SPPatterns";
+        "SPTrash";
+        };
+    
+    TempestKeepArcatraz = {
+        "Shatar1";
+        "BCKeys";
+        "BCKeys";
+        "";
+        "TKArcUnbound";
+        "";
+        "TKArcThirdFragmentGuardian";
+        "TKArcDalliah";
+        "TKArcScryer";
+        "";
+        "TKArcHarbinger";
+        "";
+        "";
+        "";
+        "TKArcTrash";
+        };
+
+    TempestKeepBotanica = {
+        "Shatar1";
+        "BCKeys";
+        "";
+        "TKBotSarannis";
+        "TKBotFreywinn";
+        "TKBotThorngrin";
+        "TKBotLaj";
+        "TKBotSplinter";
+        "";
+        "TKBotTrash";
+        };
+
+    TempestKeepMechanar = {
+        "Shatar1";
+        "BCKeys";
+        "";
+        "TKMechGyro";
+        "TKMechIron";
+        "TKMechCacheoftheLegion";
+        "TKMechCapacitus";
+        "TKMechOverchargedManacell";
+        "TKMechSepethrea";
+        "TKMechCalc";
+        "";
+        "TKMechTrash";
+        };
+
+    TempestKeepTheEye = {
+        "Shatar1";
+        "BCKeys";
+        "";
+        "TKEyeAlar";
+        "TKEyeVoidReaver";
+        "TKEyeSolarian";
+        "TKEyeKaelthas";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "TKEyeLegendaries";
+        "TKEyeTrash";
+        };
+
+    ZulAman = {
+        "";
+        "";
+        "ZANalorakk";
+        "";
+        "";
+        "ZAAkilZon";
+        "";
+        "ZAJanAlai";
+        "";
+        "ZAHalazzi";
+        "";
+        "";
+        "ZAMalacrass";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "ZAZuljin";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "ZATimedChest";
+        "ZATrash";
+        };
+
+  -----------------------
+  -- Classic Instances --
+  -----------------------
 
     BlackfathomDeeps = {
         "";
@@ -236,85 +725,6 @@ AtlasLootBossButtons = {
         "T0SET";
         };
 
-    BlackTempleStart = {
-        "Ashtongue1";
-        "BCKeys";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "BTNajentus";
-        "BTSupremus";
-        "BTAkama";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "BTPatterns";
-        "BTTrash";
-        };
-
-    BlackTempleBasement = {
-        "Ashtongue1";
-        "BCKeys";
-        "";
-        "";
-        "BTBloodboil";
-        "BTEssencofSouls";
-        "BTEssencofSouls";
-        "BTEssencofSouls";
-        "BTEssencofSouls";
-        "BTGorefiend";
-        "";
-        "BTPatterns";
-        "BTTrash";
-        };
-
-    BlackTempleFull = {
-        "";
-        "Ashtongue1";
-        "BCKeys";
-        "";
-        "";
-        "BTNajentus";
-        "BTSupremus";
-        "";
-        "BTPatterns";
-        "BTTrash";
-        };
-
-    BlackTempleMiddle = {
-        "";
-        "Ashtongue1";
-        "BCKeys";
-        "";
-        "";
-        "";
-        "";
-        "BTAkama";
-        "";
-        "BTPatterns";
-        "BTTrash";
-        };
-
-    BlackTempleTop = {
-        "Ashtongue1";
-        "BCKeys";
-        "";
-        "BTShahraz";
-        "BTCouncil";
-        "";
-        "";
-        "";
-        "";
-        "BTIllidanStormrage";
-        "";
-        "BTPatterns";
-        "BTTrash";
-        };
-
     BlackwingLair = {
         "";
         "";
@@ -333,124 +743,6 @@ AtlasLootBossButtons = {
         "";
         "BWLTrashMobs";
         "T2SET";
-        };
-
-    CFRSerpentshrineCavern = {
-        "CExpedition1";
-        "";
-        "CFRSerpentHydross";
-        "CFRSerpentLurker";
-        "CFRSerpentLeotheras";
-        "CFRSerpentKarathress";
-        "";
-        "CFRSerpentMorogrim";
-        "CFRSerpentVashj";
-        "";
-        "CFRSerpentTrash";
-        };
-
-    CFRTheSlavePens = {
-        "CExpedition1";
-        "BCKeys";
-        "";
-        "CFRSlaveMennu";
-        "";
-        "";
-        "CFRSlaveRokmar";
-        "";
-        "CFRSlaveQuagmirran";
-        };
-
-    CFRTheSteamvault = {
-        "CExpedition1";
-        "BCKeys";
-        "";
-        "CFRSteamThespia";
-        "";
-        "";
-        "CFRSteamSecondFragmentGuardian";
-        "CFRSteamSteamrigger";
-        "";
-        "CFRSteamWarlord";
-        "";
-        "CFRSteamTrash";
-        };
-
-    CFRTheUnderbog = {
-        "CExpedition1";
-        "BCKeys";
-        "";
-        "CFRUnderHungarfen";
-        "";
-        "CFRUnderGhazan";
-        "";
-        "CFRUnderSwamplord";
-        "";
-        "CFRUnderStalker";
-        };
-
-    CoTBlackMorass = {
-        "";
-        "";
-        "KeepersofTime1";
-        "BCKeys";
-        "";
-        "";
-        "";
-        "CoTMorassDeja";
-        "CoTMorassTemporus";
-        "CoTMorassAeonus";
-        "";
-        "";
-        "";
-        "CoTMorassTrash";
-        };
-
-    CoTHyjal = {
-        "";
-        "ScaleSands1";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "MountHyjalWinterchill";
-        "MountHyjalAnetheron";
-        "MountHyjalKazrogal";
-        "MountHyjalAzgalor";
-        "MountHyjalArchimonde";
-        "";
-        "";
-        "";
-        "MountHyjalTrash";
-        };
-
-    CoTOldHillsbrad = {
-        "";
-        "";
-        "KeepersofTime1";
-        "BCKeys";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "CoTHillsbradDrake";
-        "";
-        "CoTHillsbradSkarloc";
-        "";
-        "";
-        "CoTHillsbradHunter";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "CoTHillsbradTrash";
-        "CoTHillsbradThomasYance";
-        "CoTHillsbradAgedDalaranWizard";
         };
 
     DireMaulEast = {
@@ -567,167 +859,6 @@ AtlasLootBossButtons = {
         "";
         "GnNamdoBizzfizzle";
         "GnTechbot";
-        };
-
-    GruulsLair = {
-        "";
-        "GruulsLairHighKingMaulgar";
-        "";
-        "";
-        "";
-        "";
-        "GruulGruul";
-        };
-
-    HCBloodFurnace = {
-        "Thrallmar1";
-        "HonorHold1";
-        "BCKeys";
-        "";
-        "HCFurnaceMaker";
-        "HCFurnaceBroggok";
-        "HCFurnaceBreaker";
-        };
-
-    HCHellfireRamparts = {
-        "Thrallmar1";
-        "HonorHold1";
-        "BCKeys";
-        "";
-        "HCRampWatchkeeper";
-        "HCRampOmor";
-        "HCRampVazruden";
-        "HCRampNazan";
-        "HCRampFelIronChest";
-        };
-
-    HCMagtheridonsLair = {
-        "Thrallmar1";
-        "HonorHold1";
-        "";
-        "HCMagtheridon";
-        };
-
-    HCTheShatteredHalls = {
-        "Thrallmar1";
-        "HonorHold1";
-        "BCKeys";
-        "BCKeys";
-        "";
-        "";
-        "";
-        "HCHallsNethekurse";
-        "HCHallsPorung";
-        "HCHallsOmrogg";
-        "HCHallsKargath";
-        "HCHallsExecutioner";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "HCHallsTrash";
-        };
-
-    KarazhanEnt = {
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "KaraCharredBoneFragment";
-        };
-
-    KarazhanStart = {
-        "VioletEye1";
-        "BCKeys";
-        "BCKeys";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "KaraNamed";
-        "KaraNamed";
-        "KaraNamed";
-        "";
-        "";
-        "KaraAttumen";
-        "";
-        "";
-        "KaraMoroes";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "KaraKeannaLog";
-        "KaraMaiden";
-        "";
-        "";
-        "";
-        "KaraOperaEvent";
-        "KaraOperaEvent";
-        "KaraOperaEvent";
-        "";
-        "KaraNightbane";
-        "";
-        "KaraTrash";
-        };
-
-    KarazhanEnd = {
-        "VioletEye1";
-        "BCKeys";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "KaraCurator";
-        "";
-        "";
-        "";
-        "KaraIllhoof";
-        "";
-        "KaraAran";
-        "KaraNetherspite";
-        "";
-        "";
-        "KaraChess";
-        "KaraPrince";
-        "";
-        "KaraTrash";
-        };      
-
-    MagistersTerrace = {
-        "";
-        "SMTFireheart";
-		"";
-		"";
-        "SMTVexallus";
-		"";
-		"";
-        "SMTDelrissa";
-        "SMTKaelthas";
-		"";
-		"SMTTrash";
         };
         
     Maraudon = {
@@ -1025,87 +1156,6 @@ AtlasLootBossButtons = {
         "";
         "STRATTrash";
         };
-    
-    SunwellPlateau = {
-        "";
-        "SPKalecgos";
-	    "";
-	    "";
-        "SPBrutallus";
-        "SPFelmyst";
-        "SPEredarTwins";
-        "";
-        "";
-        "SPMuru";
-        "";
-        "SPKiljaeden";
-        "";
-        "SPPatterns";
-        "SPTrash";
-        };
-    
-    TempestKeepArcatraz = {
-        "Shatar1";
-        "BCKeys";
-        "BCKeys";
-        "";
-        "TKArcUnbound";
-        "";
-        "TKArcThirdFragmentGuardian";
-        "TKArcDalliah";
-        "TKArcScryer";
-        "";
-        "TKArcHarbinger";
-        "";
-        "";
-        "";
-        "TKArcTrash";
-        };
-
-    TempestKeepBotanica = {
-        "Shatar1";
-        "BCKeys";
-        "";
-        "TKBotSarannis";
-        "TKBotFreywinn";
-        "TKBotThorngrin";
-        "TKBotLaj";
-        "TKBotSplinter";
-        "";
-        "TKBotTrash";
-        };
-
-    TempestKeepMechanar = {
-        "Shatar1";
-        "BCKeys";
-        "";
-        "TKMechGyro";
-        "TKMechIron";
-        "TKMechCacheoftheLegion";
-        "TKMechCapacitus";
-        "TKMechOverchargedManacell";
-        "TKMechSepethrea";
-        "TKMechCalc";
-        "";
-        "TKMechTrash";
-        };
-
-    TempestKeepTheEye = {
-        "Shatar1";
-        "BCKeys";
-        "";
-        "TKEyeAlar";
-        "TKEyeVoidReaver";
-        "TKEyeSolarian";
-        "TKEyeKaelthas";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "TKEyeLegendaries";
-        "TKEyeTrash";
-        };
 
     TheDeadmines = {
         "";
@@ -1295,44 +1345,6 @@ AtlasLootBossButtons = {
         "";
         "WCKalldanFelmoon";
         "";
-        };
-
-    ZulAman = {
-        "";
-        "";
-        "ZANalorakk";
-        "";
-        "";
-        "ZAAkilZon";
-        "";
-        "ZAJanAlai";
-        "";
-        "ZAHalazzi";
-        "";
-        "";
-        "ZAMalacrass";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "ZAZuljin";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "";
-        "ZATimedChest";
-        "ZATrash";
         };
 
     ZulFarrak = {

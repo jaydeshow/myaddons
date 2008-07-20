@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r78705 | durcyn | 2008-07-18 18:02:01 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibFuBarPlugin-3.0/LibFuBarPlugin-3.0.lua
+
+LibFuBarPlugin-3.0: fix silly zhCN localization again
+------------------------------------------------------------------------
 r78660 | StingerSoft | 2008-07-17 20:28:07 -0400 (Thu, 17 Jul 2008) | 1 line
 Changed paths:
    M /trunk/LibFuBarPlugin-3.0/LibFuBarPlugin-3.0.lua

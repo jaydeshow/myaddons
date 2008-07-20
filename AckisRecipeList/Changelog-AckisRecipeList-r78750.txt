@@ -1,4 +1,15 @@
 ------------------------------------------------------------------------
+r78750 | arrowmaster | 2008-07-19 17:15:05 -0400 (Sat, 19 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/BigWigs/BigWigs.toc
+   M /trunk/BigWigs/Core.lua
+   M /trunk/Incubator/Core.lua
+   M /trunk/Incubator/Incubator.toc
+   M /trunk/Omen/Omen.toc
+
+.trunk: remove SavedVariablesPerCharacter from a few addons that don't even use them, preventing a file with nothing but 'VAR = nil' from being created for each character
+------------------------------------------------------------------------
 r78647 | ackis | 2008-07-17 17:23:52 -0400 (Thu, 17 Jul 2008) | 2 lines
 Changed paths:
    D /trunk/AckisRecipeList/ARL-DownloadCount.lua
@@ -571,61 +582,4 @@ Changed paths:
 AckisRecipeList:
 - Update zhTW thanks to apa
 - Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r76867 | ackis | 2008-06-16 15:53:40 -0400 (Mon, 16 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-
-AckisRecipeList:
-- Remove some 2.4.2 checks because I'm a doofus and forgot about it.
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r76861 | ackis | 2008-06-16 14:45:01 -0400 (Mon, 16 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Move a few global variables into a function since it's the only one to use them.
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r76858 | ackis | 2008-06-16 14:39:43 -0400 (Mon, 16 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Localized a few blizz functions that can be called many many times (someone look at all the functions I'm localizing and tell me if this is a good or bad idea please?)
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r76787 | ackis | 2008-06-16 01:39:18 -0400 (Mon, 16 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Version bump to 0.90
-------------------------------------------------------------------------
-r76786 | ackis | 2008-06-16 01:36:18 -0400 (Mon, 16 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Clear the inventory and type filters when doing scans
-------------------------------------------------------------------------
-r76785 | ackis | 2008-06-16 01:23:24 -0400 (Mon, 16 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Optimize quest methods
-------------------------------------------------------------------------
-r76784 | ackis | 2008-06-16 01:13:51 -0400 (Mon, 16 Jun 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLColour.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
-
-AckisRecipeList:
-- Fix for beast training skills not showing up properly
-- Made the beast training skills routines more effecient
-- Level of mobs are now coloured by difficulty
-- If the mob only has one level range then it will only show one level instead of (x - x)
 ------------------------------------------------------------------------

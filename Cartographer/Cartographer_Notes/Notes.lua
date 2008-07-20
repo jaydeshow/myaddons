@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 67263 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78706 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-03-31 06:35:38 -0400 (Mon, 31 Mar 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Notes")
@@ -693,8 +693,110 @@ L:AddTranslations("zhCN", function() return {
 	["Unable to find your location."] = "无法识别你当前的坐标。",
 } end)
 
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Notes"] = "Заметки",
+	["Module which allows you to put notes on the map."] = "Модуль позволяет вам размещать заметки на карте.",
+	["Hint: /note is available to create notes with the command line."] = "Hint: /note is available to create notes with the command line.",
+	
+	["White"] = "White",
+	["Gray"] = "Gray",
+	["Red"] = "Red",
+	["Pink"] = "Pink",
+	["Yellow"] = "Yellow",
+	["Orange"] = "Orange",
+	["Green"] = "Green",
+	["Lime"] = "Lime",
+	["Blue"] = v,
+	["Pale blue"] = "Pale blue",
+	["Cyan"] = "Cyan",
+	["Purple"] = "Purple",
+	
+	["Unknown"] = "Unknown",
+	["Custom icon"] = "Custom icon",
+	
+	["Create a new note"] = "Create a new note",
+	["Create a new note for %q"] = "Create a new note for %q",
+	["New note"] = "New note",
+	["Delete note"] = "Delete note",
+	["Edit note"] = "Edit note",
+	["Send note"] = "Send note",
+	["Send to party"] = "Send to party",
+	["Send to raid"] = "Send to raid",
+	["Send to guild"] = "Send to guild",
+	["Send to player"] = "Send to player",
+	["Send to group"] = "Send to group",
+	
+	["Note: This may be blocked by Blizzard's spam filter and cause problems. It is recommended to send to your party/raid/guild instead."] = "Note: This may be blocked by Blizzard's spam filter and cause problems. It is recommended to send to your party/raid/guild instead.",
+	
+	["X position"] = "X position",
+	["Y position"] = "Y position",
+	["Title"] = "Title",
+	["Info line 1 (optional)"] = "Info line 1 (optional)",
+	["Info line 2 (optional)"] = "Info line 2 (optional)",
+	["Creator (optional)"] = "Creator (optional)",
+	
+	["Ctrl-Right-Click on map to add a note"] = "Ctrl-Right-Click on map to add a note",
+	
+	["%s from Guild"] = "%s from Guild",
+	["%s from Raid"] = "%s from Raid",
+	["%s from Party"] = "%s from Party",
+	
+	["Unknown zone: %q"] = "Unknown zone: %q",
+	["Error: %s sent you a note with an unknown zone: %q"] = "Error: %s sent you a note with an unknown zone: %q",
+	["Error: %s sent you a note at %q : %.2f, %.2f with the title %q created by %q, but you already have a note at this location."] = "Error: %s sent you a note at %q : %.2f, %.2f with the title %q created by %q, but you already have a note at this location.",
+	["%s sent you a note at %q : %.2f, %.2f with the title %q created by %q."] = "%s sent you a note at %q : %.2f, %.2f with the title %q created by %q.",
+
+	["Created by"] = "Created by",
+		
+	["Show note creator"] = "Show note creator",
+	["Show the `Created By:' line in notes"] = "Show the `Created By:' line in notes",
+	
+	["Icon size"] = "Icon size",
+	["Size of the icons on the map"] = "Size of the icons on the map",
+	
+	["Show minimap icons"] = "Show minimap icons",
+	["Show icons on the minimap"] = "Show icons on the minimap",
+	
+	["Minimap icon size"] = "Minimap icon size",
+	["Size of the icons on the minimap"] = "Size of the icons on the minimap",
+	
+	["Max minimap icons per database"] = "Max minimap icons per database",
+	["The maximum amount of minimap icons to show per database"] = "The maximum amount of minimap icons to show per database",
+	
+	["Console-note-commands"] = { "/note", "/addnote" },
+	["Usage: /note <0-100> <0-100> [title]"] = "Usage: /note <0-100> <0-100> [title]",
+
+	["Show chat notifications"] = "Show chat notifications",
+	["Show notification in the chat window"] = "Show notification in the chat window",
+	-- Note cleanup localizations
+	["Clear all notes on map"] = "Clear all notes on map",
+	["This will remove all notes on the map. This can't be undone are your sure?"] = "This will remove all notes on the map. This can't be undone are your sure?",
+	["This will clear all notes on map"] = "This will clear all notes on map",
+	
+	["Clear waypoint"] = "Clear waypoint",
+	["Set as waypoint"] = "Set as waypoint",
+
+	["all"] = "all",
+	["Note reception active"] = "Note reception active",
+	["Enabling this will allow notes to be sent and received."] = "Enabling this will allow notes to be sent and received.",
+	
+	["Note sent by %s ignored due to filtering settings."] = "Note sent by %s ignored due to filtering settings.",
+	["Incoming note filtering"] = "Incoming note filtering",
+	["Setup filtering of note sent to you by other players."] = "Setup filtering of note sent to you by other players.",
+	["Accept all notes"] = "Accept all notes",
+	["Accept only handmade notes"] = "Accept only handmade notes",
+	["Reject all notes"] = "Reject all notes",
+
+	["%.0f yd"] = "%.0f ярд",
+	["%.0f m"] = "%.0f м",
+
+	["Console-quick-note-commands"] = { "/qnote", "/quicknote" },
+	["Unable to find your location."] = "Unable to find your location.",
+} end)
+
 local localization = GetLocale()
-local yardString = (localization == "enUS" or localization == "zhTW" or localization == "zhCN") and L["%.0f yd"] or L["%.0f m"]
+local yardString = (localization == "enUS" or localization == "zhTW" or localization == "zhCN" or localization == "ruRU") and L["%.0f yd"] or L["%.0f m"]
 
 Cartographer_Notes = Cartographer:NewModule("Notes", "LibRockHook-1.0", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockComm-1.0", "LibRockConsole-1.0")
 Cartographer_Notes.L = L
@@ -715,7 +817,7 @@ local BZR = BZ:GetReverseLookupTable()
 local precondition, argCheck = Rock:GetContractFunctions("Cartographer", "precondition", "argCheck")
 
 local _G = getfenv(0)
-local metric = (GetLocale() ~= "enUS" and GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN")
+local metric = (GetLocale() ~= "enUS" and GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN" and GetLocale() ~= "ruRU")
 
 local CURRENT_DB_VERSION = 3
 

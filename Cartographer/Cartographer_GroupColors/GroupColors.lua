@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 78027 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78706 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-07-07 18:57:07 -0400 (Mon, 07 Jul 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GroupColors")
@@ -47,6 +47,12 @@ L:AddTranslations("zhTW", function() return {
 L:AddTranslations("esES", function() return {
 	["Group Colors"] = "Colores de Grupo",
 	["Module which turns all your party's and your raid's POIs into circles colored based on class, and shows a number on them based on their raid group."] = "M\195\179dulo que convierte todos los PdIs de tu grupo y banda en c\195\173rculos coloreados seg\195\186n su clase, y muestra un n\195\186mero sobre ellos seg\195\186n su grupo de banda",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Group Colors"] = "Цвета групп",
+	["Module which turns all your party's and your raid's POIs into circles colored based on class, and shows a number on them based on their raid group."] = "Модуль включает отображение всех членов вашей группы и рейда кружками раскрашенных по цвету класса, и отображает номер их группы в рейде",
 } end)
 
 Cartographer_GroupColors = Cartographer:NewModule("GroupColors", "LibRockEvent-1.0", "LibRockTimer-1.0")

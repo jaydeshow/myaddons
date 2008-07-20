@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 78630 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78746 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-19 16:54:32 -0400 (Sat, 19 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -286,6 +286,51 @@ L:AddTranslations("zhCN", function() return {
 	["%.0f m"] = "%.0f 米",
 } end)
 
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Waypoints"] = "Точки маршрута",
+	["Waypoint"] = "Точка маршрута",
+	["Module which shows an arrow to direct you to a specified note or location."] = "Модуль отображает стрелкой направление к указанной заметке или местонахождении",
+	["Guildmember %s not found."] = "Член гильдии %s не найден",
+	["No party member %s found."] = "Участник группы %s не найден",
+	["No matching note in zone: %s"] = "Нету соответствующих заметок в зоне: %s",
+	["Cannot find note in closest matching zone: %s"] = "Не возможно найти заметку в ближайшей соответствующей зоне: %s",
+	["Invalid note entry."] = "Неверный ввод заметки",
+	["Waypoints cleared."] = "Точки маршрута очищены",
+	["For usage, see '/waypoint help'"] = "Для большой информации наберите '/waypoint help'",
+	["Commands are:"] = "Команда",
+	["General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>"] = "General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>",
+	["Clear  : /noway"] = "Очистить",
+	["View   : /wayq"] = "Просмотр",
+	["Move to end of queue"] = "Переместить в конец очереди",
+	["Lock waypoint arrow"] = "Закрепить стрелку точки маршрута",
+	["Lock the waypoint arrow in place"] = "Закрепить стрелку точки маршрута на данном месте",
+	["Append new waypoints."] = "Добавить точку маршрута",
+	["Place new waypoints at the end of the queue."] = "Поместить новую точку маршрута в конец очереди",
+
+	["Console-waypoint-commands"] = {"/way", "/waypoint" },
+	["Console-temp-waypoint-commands"] = {"/tway", "/tloc" },
+	["Clear waypoint"] = "Очистить точку маршрута",
+	["No matching zone"] = "Нет соответствующей зоны",
+	["Waypoint Queue:"] = "Очередь точек маршрута",
+	["Waypoint Queue Empty."] = "Очередь точек маршрута пустая",
+	["Clearing up queue"] = "Очищены, очередь смещена вверх",
+
+	["Show CorpsePoint"] = "Показать точку трупа",
+	["Show waypoint to corpse on death"] = "Показывает точку маршрута до трупа где вы умерли",
+	["Show Waypoint icons"] = "Показывать иконки",
+	["Show the next waypoint on the minimap and all waypoints on the main"] = "Показывает следующую точку маршрута на мини-карте и все точки на главной карте",
+	["Show boring death messages"] = "Показать скучные сообщения о смерти",
+	["Switch to not so entertaining messages on death."] = "Переключает не очень забавное сообщение о смерти.",
+	["Size"] = "Размер",
+	["Set the size of the waypoint arrow"] = "Установить размер стрелки точек маршрута",
+	["Opacity"] = "Полупрозрачность",
+	["Set how opaque or transparent the waypoint arrow is"] = "Установить прозрачность стрелки точек маршрута",
+
+	["%.0f yd"] = "%.0f ярд",
+	["%.0f m"] = "%.0f м",
+} end)
+
 Cartographer_Waypoints = Cartographer:NewModule("Waypoints", "LibRockHook-1.0", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockComm-1.0", "LibRockConsole-1.0")
 local Cartographer_Waypoints = Cartographer_Waypoints
 local self = Cartographer_Waypoints
@@ -298,10 +343,10 @@ local BZR = Rock("LibBabble-Zone-3.0"):GetReverseLookupTable()
 local Abacus = Rock("LibAbacus-3.0")
 
 local _G = getfenv(0)
-local metric = (GetLocale() ~= "enUS" and GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN")
+local metric = (GetLocale() ~= "enUS" and GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN" and GetLocale() ~= "ruRU")
 
 local localization = GetLocale()
-local yardString = (localization == "enUS" or localization == "zhTW" or localization == "zhCN") and L["%.0f yd"] or L["%.0f m"]
+local yardString = (localization == "enUS" or localization == "zhTW" or localization == "zhCN" or localization == "ruRU") and L["%.0f yd"] or L["%.0f m"]
 
 local math_floor = math.floor
 
@@ -809,7 +854,7 @@ initMeOnce = function ()
 end
 
 function Cartographer_Waypoints:OnEnable()
-	Rock("LibRollCall-3.0").RegisterCallback(self, "MemberDisconnected", "RollCall_MemberDisconnected")
+	Rock("LibGuild-1.0").RegisterCallback(self, "Disconnected", "LibGuild_Disconnected")
 	self:AddCommListener("CGP", "GUILD")
 	self:AddCommListener("CGP", "WHISPER")
 	self:AddEventListener("Cartographer", "MapOpened", "Cartographer_MapOpened")
@@ -827,7 +872,7 @@ function Cartographer_Waypoints:OnEnable()
 end
 
 function Cartographer_Waypoints:OnDisable()
-	Rock("LibRollCall-3.0").UnregisterCallback(self, "MemberDisconnected")
+	Rock("LibGuild-3.0").UnregisterAllCallbacks(self)
 	-- All hooks, timers and events are automatically disabled
 	waypointFrame:Hide()
 end
@@ -1192,7 +1237,7 @@ Cartographer_Waypoints.OnCommReceive = {
 	end
 }
 
-function Cartographer_Waypoints:RollCall_MemberDisconnected(event, memberName)
+function Cartographer_Waypoints:LibGuild_Disconnected(event, memberName)
 	if GuildPoint.Watcher[memberName] then
 		GuildPoint.Watcher[memberName]:Cancel()
 	end

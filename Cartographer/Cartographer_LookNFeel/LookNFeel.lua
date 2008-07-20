@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 78027 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 78706 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-07 18:57:07 -0400 (Mon, 07 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-LookNFeel")
@@ -318,6 +318,55 @@ L:AddTranslations("zhCN", function() return {
 	["HIGH"] = "高",
 	["FULLSCREEN"] = "全屏幕",
 	["Auto"] = "自动",
+} end)
+
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+["Look 'n' Feel"] = "Наглядность и Восприятие",
+	["Module which allows you to change the transparency, position, and scale of the world map."] = "Модуль позволяет настраивать прозрачность, позиции и масштаб Карты Мира.",
+
+	["Transparency"] = "Прозрачность",
+	["Transparency of the World Map"] = "Прозрачность карты мира",
+
+	["Overlay transparency"] = "Прозрачность наложения",
+	["Transparency of World Map overlays"] = "Прозрачность наложения Мировой Карты",
+
+	["Scale"] = "Масштаб",
+	["Scale of the World Map"] = "Масштаб карты мира",
+
+	["Tooltip scale"] = "Масштаб подсказки",
+	["Scale of the World Map tooltip"] = "Масштаб подсказки на карте мира",
+
+	["Shift-MouseWheel to change transparency"] = "Shift-КолесоМыши для изменения прозрачности",
+	["Ctrl-MouseWheel to change scale"] = "Shift-КолесоМыши для изменения масштаба",
+
+	["Lock the World Map"] = "Закрепить Карту Мира",
+
+	["Close with escape"] = "Закрыть с клавишей Escape",
+	["Close the World Map when pressing the escape button"] = "Gри нажатии кнопки Escape закрывает карту мира",
+
+	["Large player arrow"] = "Большая стрелка персонажа",
+	["Make the player's arrow on the World Map 1.5 times larger than normal"] = "Делает отображение стрелки персонажа на Карте Мира в 1.5 раз больше нормальной",
+
+	["Unlock World Map"] = "Освободить Мировую Карту",
+	["Lock World Map"] = "Закрепить Карту Мира",
+	["Note: holding Alt while locked will temporarily unlock the World Map."] = "Заметка: удерживайте Alt в то время когда карта закреплена вы временно освободите Мировую Карту.",
+
+	["Show minimap button"] = "Показ кнопки у мини-карты",
+	["Show the World Map minimap button"] = "Отображает кнопку Карты Мира у мини-карты",
+
+	["Show informational text"] = "Показать информационный текст",
+	["Show informational text in the top-left of the map"] = "Отображает информационный текст в верхнем левом углу карты",
+
+	["Strata"] = "Cлои",
+	["Change the world map window's strata (controls which windows display on top of eachother)"] = "Изменяет слой окна мировой карты (элементы управления который отображает окно поверх друг друга)",
+
+	["BACKGROUND"] = "Фон",
+	["LOW"] = "Низкий",
+	["MEDIUM"] = "Средний",
+	["HIGH"] = "Высокий",
+	["FULLSCREEN"] = "Полноэкранный",
+	["Auto"] = "Авто",
 } end)
 
 Cartographer_LookNFeel = Cartographer:NewModule("LookNFeel", "LibRockEvent-1.0", "LibRockTimer-1.0", "LibRockHook-1.0")

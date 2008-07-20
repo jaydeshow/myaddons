@@ -223,6 +223,28 @@ L:AddTranslations("zhCN", function() return {
 	},
 } end)
 
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Corpse"] = "Труп",
+	["CorpseNames"] = {"Труп", -- Insert cultural humour for death here. This is all fairly english based stuff, so change for translations
+		"Чертов Охотник",
+		"Местоположение смерти",
+		"Заметка для себя: не обнимайте медведя",
+		"Вдалике от света",
+		"Это - способ природы сказать Вам: притармази..",
+		"Это была ошибка",
+		"Нет нет, Охрана, поворот, парирование, уклонение, оборот и - тогда - удар..",
+		"Несмотря на все отрицательные признаки, это был очевидно сезон утки",
+		"Чертов Жрец",
+		"ХЧП: [Склянка Титанов]",
+		"Млин!",
+		"Эх эти целители",
+		"Не пил и умер.",
+		"По этому пути ка марожку.",
+		"Пиво. ПО этому. Пути.",
+	},
+} end)
+
 -- Parse the id for the note and propogate the info
 -- Possible inputs (zone, x, y) or (zone, id)
 function CorpsePoint:init()

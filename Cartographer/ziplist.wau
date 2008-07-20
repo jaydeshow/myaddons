@@ -1,4 +1,4 @@
-Cartographer/Changelog-Cartographer-r78630.txt
+Cartographer/Changelog-Cartographer-r78746.txt
 Cartographer/cartographerlod.sh
 Cartographer/Bindings.xml
 Cartographer/modules.xml
@@ -17,6 +17,7 @@ Cartographer/Cartographer_InstanceNotes/enUS.lua
 Cartographer/Cartographer_InstanceNotes/README.txt
 Cartographer/Cartographer_InstanceNotes/module.lua
 Cartographer/Cartographer_InstanceNotes/koKR.lua
+Cartographer/Cartographer_InstanceNotes/ruRU.lua
 Cartographer/Cartographer_InstanceNotes/esES.lua
 Cartographer/Cartographer_InstanceNotes/Cartographer_InstanceNotes.toc
 Cartographer/Cartographer_InstanceNotes/zhTW.lua

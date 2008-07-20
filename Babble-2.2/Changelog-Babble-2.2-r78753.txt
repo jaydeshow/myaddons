@@ -1,4 +1,13 @@
 ------------------------------------------------------------------------
+r78753 | StingerSoft | 2008-07-19 17:22:35 -0400 (Sat, 19 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Boss-2.2/Babble-Boss-2.2.lua
+   M /trunk/Babble-2.2/Babble-Zone-2.2/Babble-Zone-2.2.lua
+
+Babble-2.2:
+- Babble-Boss-2.2 added ruRU translation
+- Babble-Zone-2.2 added ruRU translation
+------------------------------------------------------------------------
 r78671 | 7destiny | 2008-07-18 04:26:00 -0400 (Fri, 18 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/Babble-2.2/Babble-Boss-2.2/Babble-Boss-2.2.lua

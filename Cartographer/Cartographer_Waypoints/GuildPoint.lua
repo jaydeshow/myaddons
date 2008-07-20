@@ -24,7 +24,14 @@ L:AddTranslations("esES", function() return {
 	["Guild Member not locatable"] = "Miembro de la Hermandad no localizable",
 } end)
 
-local RollCall = Rock("LibRollCall-3.0")
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Pending update"] = "Задержка обновления",
+	["Waiting for Location update"] = "Ожидание обновления местоположения",
+	["Guild Member not locatable"] = "Согульдиец не доступен",
+} end)
+
+local LibGuild = Rock("LibGuild-1.0")
 local Tourist = Rock("LibTourist-3.0")
 local BZR = Rock("LibBabble-Zone-3.0"):GetReverseLookupTable()
 local NameCache = {}
@@ -40,7 +47,7 @@ GuildPoint.Pending = L["Pending update"]
 function GuildPoint:init(memberName)
 	AceLibrary.argCheck(self, memberName, 2, "string")
 
-	for name in RollCall:GetIterator("NAME") do
+	for name in LibGuild:GetIterator("NAME") do
 		if string.find(string.lower(name), string.lower(memberName)) then
 			Waypoint.init(self, name)
 			if not GuildPoint.Watcher[name] then
@@ -58,13 +65,13 @@ function GuildPoint:MatchNote(memberName)
 end
 
 function GuildPoint:UpdateLocation(zone, _x, _y)
-	local ezone = BZR[RollCall:GetZone(self.WaypointID)]
-	local x,y = Tourist:TransposeZoneCoordinate(_x, _y, ezone, RollCall:GetZone(self.WaypointID))
+	local ezone = LibGuild:GetEnglishZone(self.WaypointID)
+	local x,y = Tourist:TransposeZoneCoordinate(_x, _y, ezone, LibGuild:GetZone(self.WaypointID))
 	self.Zone, self.x, self.y = zone, x, y
 --[[	if not NameCache[zone] then
-		NameCache [zone] = BZR[RollCall:GetZone(self.WaypointID)]
+		NameCache [zone] = LibGuild:GetEnglishZone(self.WaypointID)
 	end
-	self.x, self.y = Tourist:TransposeZoneCoordinate(_x, _y, NameCache[zone], RollCall:GetZone(self.WaypointID))
+	self.x, self.y = Tourist:TransposeZoneCoordinate(_x, _y, NameCache[zone], LibGuild:GetZone(self.WaypointID))
 	self.Zone = zone  --]]
 end
 
@@ -88,7 +95,7 @@ function GuildPoint:IsReady()
 		if not self.firstCheck then
 			self.firstCheck = time()
 		else
-			local delay = time() - self.firstCheck - (RollCall:GetNumOnline()/5)
+			local delay = time() - self.firstCheck - (LibGuild:GetNumOnline()/5)
 			if delay < 5 then
 				self.Pending = L["Waiting for Location update"]
 			elseif delay < 9 then
@@ -109,5 +116,5 @@ end
 
 -- Are we online?
 function GuildPoint:IsValid()
-	return (self.WaypointID ~= -1) and RollCall:IsMemberOnline(self.WaypointID)
+	return (self.WaypointID ~= -1) and LibGuild:IsMemberOnline(self.WaypointID)
 end

@@ -179,6 +179,11 @@ L["Your version of Omen/Threat is out of date and is not compatible with the new
 L["Whisper older clients informing them to update."] = "密語舊版本的玩家通知他們更新。"
 L["You must be the group leader or a group assistant to do this."] = "您必須為團隊隊長或是團隊助理才能執行。"
 
+L["Pullout Bars"] = "彈出條"
+L["Options for pullout bars"] = "彈出條設定"
+L["Default texture"] = "預設材質"
+L["Texture used by new pullout bars"] = "新建彈出條材質"
+
 BINDING_HEADER_OMEN = "Omen"
 BINDING_NAME_OMENTOGGLE = "開關 Omen"
 BINDING_NAME_OMENNEXTMODULE = "到下一個模組"

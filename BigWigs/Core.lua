@@ -284,7 +284,7 @@ BigWigs = AceLibrary("AceAddon-2.0"):new(
 	"AceConsole-2.0",
 	"AceDB-2.0"
 )
-BigWigs.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
+BigWigs.revision = tonumber(("$Revision: 78750 $"):sub(12, -3))
 local BigWigs = BigWigs
 
 BigWigs:SetModuleMixins("AceEvent-2.0")
@@ -334,7 +334,7 @@ BigWigs.cmdtable = options
 ------------------------------
 
 function BigWigs:OnInitialize()
-	self:RegisterDB("BigWigsDB", "BigWigsDBPerChar")
+	self:RegisterDB("BigWigsDB")
 
 	self:RegisterChatCommand("/bw", "/BigWigs", options, "BIGWIGS")
 

@@ -1,12 +1,14 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fWaypoints|r]
 ## X-Name: Waypoints
+## X-Name-ruRU: Точки маршрута
 ## X-Name-koKR: 위치 포인트
 ## X-Name-deDE: Wegpunkte
 ## X-Name-zhCN: 路径
 ## X-Name-esES: Puntos de Ruta
 ## X-ModuleName: Waypoints
 ## Notes: Module which shows an arrow to direct you to a specified note or location.
+## Notes-ruRU: Модуль отображает стрелкой направление к указанной заметке или местонахождении
 ## Notes-koKR: 당신이 작성한 노트나 위치를 화살표로 안내하는 모듈입니다.
 ## Notes-deDE: Modul das einen Pfeil anzeigt der dich zu einer Notiz oder Position führt.
 ## Notes-zhTW: 顯示箭頭指引你到特定註記或地點的模組。

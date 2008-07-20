@@ -1,4 +1,67 @@
 ------------------------------------------------------------------------
+r78746 | ckknight | 2008-07-19 16:54:32 -0400 (Sat, 19 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Cartographer/Cartographer.lua
+   M /trunk/Cartographer/Cartographer.toc
+   M /trunk/Cartographer/Cartographer_GuildPositions/GuildPositions.lua
+   M /trunk/Cartographer/Cartographer_Waypoints/GuildPoint.lua
+   M /trunk/Cartographer/Cartographer_Waypoints/Waypoints.lua
+   M /trunk/Cartographer/embeds.xml
+   M /trunk/Cartographer/libs
+
+Cartographer - Change from LibRollCall-3.0 to LibGuild-1.0
+------------------------------------------------------------------------
+r78715 | ulic | 2008-07-18 21:48:48 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Cartographer/Cartographer_InstanceNotes/ruRU.lua
+
+Cartographer: InstanceNotes - fix ruRu typo
+------------------------------------------------------------------------
+r78712 | StingerSoft | 2008-07-18 20:33:34 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Cartographer/Cartographer_Waypoints/CorpsePoint.lua
+
+Cartographer: fix ruRU translation in CorpsePoint
+------------------------------------------------------------------------
+r78706 | StingerSoft | 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Cartographer/Cartographer.lua
+   M /trunk/Cartographer/Cartographer.toc
+   M /trunk/Cartographer/Cartographer_Battlegrounds/Battlegrounds.lua
+   M /trunk/Cartographer/Cartographer_Battlegrounds/Cartographer_Battlegrounds.toc
+   M /trunk/Cartographer/Cartographer_Coordinates/Cartographer_Coordinates.toc
+   M /trunk/Cartographer/Cartographer_Coordinates/Coordinates.lua
+   M /trunk/Cartographer/Cartographer_Foglight/Cartographer_Foglight.toc
+   M /trunk/Cartographer/Cartographer_Foglight/Foglight.lua
+   M /trunk/Cartographer/Cartographer_GroupColors/Cartographer_GroupColors.toc
+   M /trunk/Cartographer/Cartographer_GroupColors/GroupColors.lua
+   M /trunk/Cartographer/Cartographer_GuildPositions/Cartographer_GuildPositions.toc
+   M /trunk/Cartographer/Cartographer_GuildPositions/GuildPositions.lua
+   M /trunk/Cartographer/Cartographer_InstanceLoot/Cartographer_InstanceLoot.toc
+   M /trunk/Cartographer/Cartographer_InstanceLoot/InstanceLoot.lua
+   M /trunk/Cartographer/Cartographer_InstanceMaps/Cartographer_InstanceMaps.toc
+   M /trunk/Cartographer/Cartographer_InstanceMaps/InstanceMaps.lua
+   M /trunk/Cartographer/Cartographer_InstanceNotes/Cartographer_InstanceNotes.toc
+   A /trunk/Cartographer/Cartographer_InstanceNotes/ruRU.lua
+   M /trunk/Cartographer/Cartographer_LookNFeel/Cartographer_LookNFeel.toc
+   M /trunk/Cartographer/Cartographer_LookNFeel/LookNFeel.lua
+   M /trunk/Cartographer/Cartographer_Notes/Cartographer_Notes.toc
+   M /trunk/Cartographer/Cartographer_Notes/Notes.lua
+   M /trunk/Cartographer/Cartographer_POI/Cartographer_POI.toc
+   M /trunk/Cartographer/Cartographer_POI/POI.lua
+   M /trunk/Cartographer/Cartographer_Professions/Cartographer_Professions.toc
+   M /trunk/Cartographer/Cartographer_Professions/Professions.lua
+   M /trunk/Cartographer/Cartographer_Waypoints/Cartographer_Waypoints.toc
+   M /trunk/Cartographer/Cartographer_Waypoints/CorpsePoint.lua
+   M /trunk/Cartographer/Cartographer_Waypoints/GuildPoint.lua
+   M /trunk/Cartographer/Cartographer_Waypoints/NotePoint.lua
+   M /trunk/Cartographer/Cartographer_Waypoints/PartyPoint.lua
+   M /trunk/Cartographer/Cartographer_Waypoints/Waypoints.lua
+   M /trunk/Cartographer/Cartographer_ZoneInfo/Cartographer_ZoneInfo.toc
+   M /trunk/Cartographer/Cartographer_ZoneInfo/ZoneInfo.lua
+
+Cartographer: added ruRU translation
+------------------------------------------------------------------------
 r78630 | ckknight | 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) | 1 line
 Changed paths:
    M /trunk/Cartographer/Cartographer.lua

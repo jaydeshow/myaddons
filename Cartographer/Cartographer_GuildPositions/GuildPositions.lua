@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 78630 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78746 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-07-17 10:42:27 -0400 (Thu, 17 Jul 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-19 16:54:32 -0400 (Sat, 19 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GuildPositions")
@@ -61,6 +61,14 @@ L:AddTranslations("esES", function() return {
 	["Module which shows you your fellow guild members' positions, as well as allowing them to see you."] = "M\195\179dulo que muestra las posiciones de tus compa\195\177eros de hermandad, y que tambi\195\169n les permite verte a ti",
 } end)
 
+-- Russian Translation by StingerSoft (Eritnull aka Шептун)
+L:AddTranslations("ruRU", function() return {
+	["Guild Positions"] ="Позиции Гильдии",
+	["Module which shows you your fellow guild members' positions, as well as allowing them to see you."] = "Модуль отображает местоположение ваших товарищей из гильдии, также позволяет им видеть вас",
+	["%.0f yd"] = "%.0f ярд",
+	["%.0f m"] = "%.0f м",
+} end)
+
 local RANK = RANK or "RANK"
 local GUILD = GUILD or "GUILD"
 local CLASS = CLASS or "CLASS"
@@ -83,7 +91,7 @@ local BZR = BZ:GetReverseLookupTable()
 local Roster = AceLibrary("Roster-2.1")
 local AceEvent = AceLibrary("AceEvent-2.0")
 local Tablet = AceLibrary("Tablet-2.0")
-local RollCall = Rock("LibRollCall-3.0")
+local LibGuild = Rock("LibGuild-1.0")
 local Crayon = Rock("LibCrayon-3.0")
 local Tourist = Rock("LibTourist-3.0")
 
@@ -137,16 +145,16 @@ function Cartographer_GuildPositions:OnInitialize()
 		local name = self.name
 		tmp[#tmp+1] = name
 		tmp[#tmp+1] = " - |cff"
-		local level = RollCall:GetLevel(name)
+		local level = LibGuild:GetLevel(name)
 		local playerlevel = UnitLevel('player')
 		tmp[#tmp+1] = Crayon:GetThresholdHexColorTrivial(level, playerlevel + 6, playerlevel - 6)
 		tmp[#tmp+1] = tostring(level)
 		tmp[#tmp+1] = "|r |cff"
-		tmp[#tmp+1] = RollCall:GetClassHexColor(name)
-		local class = RollCall:GetClass(name)
+		tmp[#tmp+1] = LibGuild:GetClassHexColor(name)
+		local class = LibGuild:GetClass(name)
 		tmp[#tmp+1] = class
 		tmp[#tmp+1] = "|r"
-		local gname = RollCall:GetGuildName()
+		local gname = LibGuild:GetGuildName()
 		tmp[#tmp+1] = " - |cff00ff00<"
 		tmp[#tmp+1] = gname
 		tmp[#tmp+1] = ">|r"
@@ -173,8 +181,8 @@ function Cartographer_GuildPositions:OnInitialize()
 		local name = self.name
 		Tablet:SetTitle(GUILD .. ": " .. name)
 		local cat = Tablet:AddCategory('columns', 2)
-		local class = RollCall:GetClass(name)
-		local r, g, b = RollCall:GetClassColor(name)
+		local class = LibGuild:GetClass(name)
+		local r, g, b = LibGuild:GetClassColor(name)
 		cat:AddLine(
 			'text', CLASS .. ":",
 			'text2', class,
@@ -182,7 +190,7 @@ function Cartographer_GuildPositions:OnInitialize()
 			'text2G', g,
 			'text2B', b
 		)
-		local level = RollCall:GetLevel(name)
+		local level = LibGuild:GetLevel(name)
 		local playerlevel = UnitLevel('player')
 		local r, g, b = Crayon:GetThresholdColorTrivial(level, playerlevel + 6, playerlevel - 6)
 		cat:AddLine(
@@ -192,7 +200,7 @@ function Cartographer_GuildPositions:OnInitialize()
 			'text2G', g,
 			'text2B', b
 		)
-		local grank, granknum = RollCall:GetRank(name), RollCall:GetRankIndex(name)
+		local grank, granknum = LibGuild:GetRank(name), LibGuild:GetRankIndex(name)
 		local mygname, mygrank, mygranknum = GetGuildInfo('player')
 		
 		cat:AddLine(
@@ -224,7 +232,7 @@ function Cartographer_GuildPositions:OnInitialize()
 			'text2B', b
 		)
 		
-		local note, onote = RollCall:GetNote(name), RollCall:GetOfficerNote(name)
+		local note, onote = LibGuild:GetNote(name), LibGuild:GetOfficerNote(name)
 		
 		if note then
 			cat:AddLine(
@@ -308,8 +316,8 @@ function Cartographer_GuildPositions:OnInitialize()
 end
 
 function Cartographer_GuildPositions:OnEnable()
-	Rock("LibRollCall-3.0").RegisterCallback(self, "Joined", "RollCall_Joined")
-	Rock("LibRollCall-3.0").RegisterCallback(self, "Left", "RollCall_Left")
+	Rock("LibGuild-1.0").RegisterCallback(self, "Joined", "LibGuild_Joined")
+	Rock("LibGuild-1.0").RegisterCallback(self, "Left", "LibGuild_Left")
 	if IsInGuild() then
 		self:AddEventListener("Cartographer", "MapClosed", "Cartographer_MapClosed")
 		self:AddEventListener("Cartographer", "ChangeZone", "Cartographer_ChangeZone")
@@ -328,8 +336,7 @@ local function clear(person)
 end
 
 function Cartographer_GuildPositions:OnDisable()
-	Rock("LibRollCall-3.0").UnregisterCallback(self, "Joined")
-	Rock("LibRollCall-3.0").UnregisterCallback(self, "Left")
+	Rock("LibGuild-1.0").UnregisterAllCallbacks(self)
 	for k in pairs(self.pois) do
 		if k ~= "del" then
 			clear(k)
@@ -357,7 +364,7 @@ local function showGuy(name)
 	local w, h = WorldMapButton:GetWidth(), WorldMapButton:GetHeight()
 	local poi = Cartographer_GuildPositions.pois[name]
 	poi:SetPoint("CENTER", WorldMapButton, "TOPLEFT", w*x, -h*y)
-	poi.tex:SetVertexColor(RollCall:GetClassColor(name))
+	poi.tex:SetVertexColor(LibGuild:GetClassColor(name))
 end
 
 function Cartographer_GuildPositions:Cartographer_ChangeZone(ns, event, zone)
@@ -371,7 +378,7 @@ function Cartographer_GuildPositions:Cartographer_ChangeZone(ns, event, zone)
 	end
 end
 
-function Cartographer_GuildPositions:RollCall_Joined()
+function Cartographer_GuildPositions:LibGuild_Joined()
 	if not self:HasEventListener("Cartographer", "MapClosed") then
 		self:AddEventListener("Cartographer", "MapClosed", "Cartographer_MapClosed")
 		self:AddEventListener("Cartographer", "ChangeZone", "Cartographer_ChangeZone")
@@ -384,7 +391,7 @@ function Cartographer_GuildPositions:RollCall_Joined()
 	end
 end
 
-function Cartographer_GuildPositions:RollCall_Left()
+function Cartographer_GuildPositions:LibGuild_Left()
 	if self:HasEventListener("Cartographer_MapClosed") then
 		self:RemoveEventListener("Cartographer", "MapClosed")
 		self:RemoveEventListener("Cartographer", "ChangeZone")

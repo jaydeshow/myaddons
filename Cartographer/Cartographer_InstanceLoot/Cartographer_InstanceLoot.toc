@@ -2,6 +2,7 @@
 ## Title: Cartographer |r[|cffeda55fInstance Loot|r]
 ## X-Name: Instance Loot
 ## X-Name-deDE: Instanzloot
+## X-Name-ruRU: Трофеи Подземелий
 ## X-Name-frFR: Butin d'instance
 ## X-Name-koKR: 인스턴스 획득품
 ## X-Name-zhTW: 副本掉落
@@ -9,6 +10,7 @@
 ## X-Name-zhCN: 副本掉落
 ## X-ModuleName: InstanceLoot
 ## Notes: Display of loot on instance bosses.
+## Notes-ruRU: Отображаtn трофеи боссов в подземельях.
 ## Notes-deDE: Zeigt den Loot der Instanzbosse an.
 ## Notes-frFR: Affiche le butin des boss d'instance.
 ## Notes-koKR: 인스턴스 보스의 획득품을 표시합니다.

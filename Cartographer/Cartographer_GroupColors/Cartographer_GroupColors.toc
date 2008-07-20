@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fGroup Colors|r]
 ## X-Name: Group Colors
+## X-Name-ruRU: Цвета групп
 ## X-Name-deDE: Gruppenfarben
 ## X-Name-frFR: Couleurs de groupe
 ## X-Name-koKR: 그룹 색상
@@ -9,6 +10,7 @@
 ## X-Name-zhCN: 小队颜色
 ## X-ModuleName: GroupColors
 ## Notes: Module which turns all your party's and your raid's POIs into circles colored based on class, and shows a number on them based on their raid group.
+## Notes-ruRU: Модуль включает отображение всех членов вашей группы и рейда кружками раскрашенных по цвету класса, и отображает номер их группы в рейде.
 ## Notes-deDE: Modul, das Spieler Deiner Gruppe oder Deines Raids als farbigen Punkt in ihrer jeweiligen Klassenfarbe und mit Raid-Gruppennummer auf der Weltkarte anzeigt.
 ## Notes-frFR: Module transformant les points de la carte de votre groupe/raid en des cercles colorés selon la classe et indiquant le numéro de groupe.
 ## Notes-koKR: 모든 당신의 파티 및 공격대원들의 위치를 직업에 따른 서클과 숫자를 통해 보여줍니다.
