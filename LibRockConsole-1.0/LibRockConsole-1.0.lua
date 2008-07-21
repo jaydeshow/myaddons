@@ -1,6 +1,6 @@
 --[[
 Name: LibRockConsole-1.0
-Revision: $Rev: 67913 $
+Revision: $Rev: 78797 $
 Developed by: ckknight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Library to allow for input/output capabilities from the command line.
@@ -9,7 +9,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibRockConsole-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 67913 $"):match("(%d+)")) - 60000
+local MINOR_VERSION = tonumber(("$Revision: 78797 $"):match("(%d+)")) - 60000
 
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0") end
 
@@ -17,6 +17,8 @@ local RockConsole, oldLib = Rock:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 if not RockConsole then
 	return
 end
+
+local WotLK = not not ToggleAchievementFrame
 
 -- #AUTODOC_NAMESPACE RockConsole
 
@@ -719,6 +721,13 @@ function RockConsole:AddSlashCommand(name, callback, ...)
 				return
 			end
 			self[callback](self, firstSlashCommand, text)
+		end
+	end
+	
+	if WotLK then
+		local oldHandler = handler
+		function handler(chatFrame, text)
+			return oldHandler(text)
 		end
 	end
 	

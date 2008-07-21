@@ -451,6 +451,14 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#n137#", BabbleBoss["Illidan Stormrage"]);
     text = gsub(text, "#n138#", BabbleZone["Shattrath City"]);
     text = gsub(text, "#n139#", AL["Sunwell Isle"]);
+    text = gsub(text, "#n140#", BabbleBoss["Taragaman the Hungerer"]);
+    text = gsub(text, "#n141#", BabbleBoss["Jergosh the Invoker"]);
+    text = gsub(text, "#n142#", AL["Zelemar the Wrathful"]);
+	text = gsub(text, "#n143#", BabbleBoss["Targorr the Dread"]);
+	text = gsub(text, "#n144#", BabbleBoss["Kam Deepfury"]);
+	text = gsub(text, "#n145#", BabbleBoss["Bazil Thredd"]);
+	text = gsub(text, "#n146#", BabbleBoss["Dextren Ward"]);
+	text = gsub(text, "#n147#", BabbleBoss["Bruegal Ironknuckle"]);
 
     -- Zone Names
     text = gsub(text, "#z1#", BabbleZone["The Deadmines"]);

@@ -60,7 +60,9 @@ AL:RegisterTranslations("frFR", function() return {
     ["Add to QuickLooks:"] = "Ajouter à QuickLook :",
     ["Assign this loot table\n to QuickLook"] = "Assigner cette table de loot\n à QuickLook",
     ["Req. Rating:"] = "Côte perso. :",
-    
+    ["Classic Instances"] = "Instances classiques",
+    ["BC Instances"] = "Instances BC",
+
     --Text for Options Panel
     ["Atlasloot Options"] = "Options d'Atlasloot",
     ["Safe Chat Links |cff1eff00(recommended)|r"] = "Liens sûrs sur le canal |cff1eff00(recommandé)|r",

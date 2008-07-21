@@ -77,6 +77,8 @@ Process("CFRUnderStalkerHEROIC",27,{"=q4=Abzeichen der Gerechtigkeit","=q4=Borke
 Process("CFRUnderSwamplord",5,{"=q3=Umhang der beständigen Schnelligkeit","=q3=Tunika des Nachtwächters","=q3=Schulterschutz des Wahrheitsträgers","=q3=Schienbeinschützer des eisernen Wächters","=q3=Zangarzahnklinge"})
 Process("CFRUnderSwamplordHEROIC",11,{"=q4=Abzeichen der Gerechtigkeit","=q4=Flackernder Chrysopras","=q4=Herrlicher Feueropal","=q4=Strahlender Chrysopras","","=q3=Hände der Sonne","=q3=Krone des Waldfürsten","=q3=Armwickel der Verachtung","=q3=Sumpfsteinhalskette","=q3=Verwittertes Band des Sumpffürsten","=q3=Sumpfhäscher"})
 Process("CoTHillsbradAgedDalaranWizard",1,{"=q1=Formel: Schild - Intelligenz"})
+Process("CoTHillsbradDonCarlos",2,{"=q1=Don Carlos' Hut","=q1=Breitkrempiger Haliskanhut"})
+Process("CoTHillsbradDonCarlosHEROIC",4,{"=q3=Don Carlos' berühmter Hut","","=q1=Don Carlos' Hut","=q1=Breitkrempiger Haliskanhut"})
 Process("CoTHillsbradDrake",5,{"=q3=Umhang des Temperaments","=q3=Schattenkilt des Sturmrächers","=q3=Rabenflügelschulterstücke","=q3=Uthers zeremonielle Kriegsstiefel","=q3=Eisenband des Unbezwingbaren"})
 Process("CoTHillsbradDrakeHEROIC",11,{"=q4=Abzeichen der Gerechtigkeit","=q4=Schillernder Chrysopras","=q4=Machterfüllter Feueropal","=q4=Robuster Chrysopras","","=q3=Arans magische Beinkleider","=q3=Handschutz der Mondfinsternis","=q3=Kampfmaske der Mok'Nathal","=q3=Leutnants Siegel von Lordaeron","=q3=Heilerhandbuch von Lordaeron","=q3=Blutschädelzerstörer"})
 Process("CoTHillsbradHunter",7,{"=q4=Vorlage: Reif der arkanen Macht","","=q3=Schulterstücke des Langmuts","=q3=Mantelung von Perenolde","=q3=Diamantprisma der Wiederkehr","=q3=Broxigars Ring der Ehre","=q3=Zeitverschobener Dolch"})

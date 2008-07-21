@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-07-17 02:31:03 -0400 (Thu, 17 Jul 2008) $
-$Rev: 78606 $
+$Date: 2008-07-20 14:20:03 -0400 (Sun, 20 Jul 2008) $
+$Rev: 78799 $
 
 Author: Ackis on Illidan US Horde
 
@@ -926,7 +926,7 @@ end
 function addon:TRADE_SKILL_SHOW()
 
 	-- If we don't have a skill window open already
-	if (addon.SkillType == nil) then
+	if (Skillet and Skillet:IsActive()) or (ATSWFrame) or (addon.SkillType == nil or addon.SkillType == "Trade") then
 
 		addon.SkillType = "Trade"
 		addon.ResetOkayBlizz = false
@@ -969,7 +969,7 @@ end
 function addon:CRAFT_SHOW()
 
 	-- If we don't have a skill window open already
-	if (addon.SkillType == nil) then
+	if (Skillet and Skillet:IsActive()) or (ATSWFrame) or (addon.SkillType == nil or addon.SkillType == "Craft") then
 
 		addon.SkillType = "Craft"
 		addon.ResetOkayBlizz = false

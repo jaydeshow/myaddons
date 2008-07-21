@@ -1,4 +1,4 @@
--- $Rev: 75429 $
+-- $Rev: 78832 $
 
 -- Parrot localization information
 -- Translation by Next96, Fenlis, Omosiro, SayClub
@@ -440,7 +440,7 @@ L_CombatEvents_Data:AddTranslations("koKR", function() return {
 		["The name of the ally you healed."] = "당신이 치유한 아군의 이름입니다.",
 		["Pet melee"] = "소환수 근접",
 		["Pet melee damage"] = "소환수 근접 피해",
-		["Pet [Amount]"] = "소환수 [Amount]",
+		["(Pet) -[Amount]"] = "(소환수) -[Amount]",
 		["(Pet) +[Amount]"] = "(소환수) +[Amount]",
 		["Pet heals"] = "소환수 치유",
 		["The name of the enemy your pet attacked."] = "당신의 소환수가 공격한 적의 이름입니다.",

@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r78853 | kurax | 2008-07-21 10:51:54 -0400 (Mon, 21 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_Crafting/crafting.cn.lua
+   M /trunk/AtlasLoot_Crafting/crafting.de.lua
+   M /trunk/AtlasLoot_Crafting/crafting.en.lua
+   M /trunk/AtlasLoot_Crafting/crafting.es.lua
+   M /trunk/AtlasLoot_Crafting/crafting.fr.lua
+   M /trunk/AtlasLoot_Crafting/crafting.kr.lua
+   M /trunk/AtlasLoot_Crafting/crafting.tw.lua
+
+AtlasLoot_Crafting: Locales update
+------------------------------------------------------------------------
 r78730 | daviesh | 2008-07-19 08:25:07 -0400 (Sat, 19 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot_Crafting/crafting.en.lua

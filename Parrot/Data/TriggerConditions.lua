@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 78330 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 78847 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-07-13 06:21:15 -0400 (Sun, 13 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-07-21 09:26:11 -0400 (Mon, 21 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("TriggerConditionsData")
@@ -146,170 +146,283 @@ Parrot:RegisterPrimaryTriggerCondition {
 	},
 }
 
--- Parrot:RegisterPrimaryTriggerCondition {
--- 	name = "Pet mana percent",
--- 	localName = L["Pet mana percent"],
--- 	param = {
--- 		type = "number",
--- 		min = 0,
--- 		max = 1,
--- 		step = 0.01,
--- 		bigStep = 0.05,
--- 		isPercent = true,
--- 	},
--- 	getCurrent = function()
--- 		if not UnitExists("pet") or UnitIsDeadOrGhost("pet") then
--- 			return nil
--- 		end
--- 		return UnitHealth("pet")/UnitHealthMax("pet")
--- 	end,
--- 	events = {
--- 		UNIT_HEALTH = "pet",
--- 		UNIT_MAXHEALTH = "pet",
--- 		PLAYER_PET_CHANGED = "pet",
--- 	},
--- }
+Parrot:RegisterPrimaryTriggerCondition {
+	name = "Pet mana percent",
+	localName = L["Pet mana percent"],
+	param = {
+		type = "number",
+		min = 0,
+		max = 1,
+		step = 0.01,
+		bigStep = 0.05,
+		isPercent = true,
+	},
+	getCurrent = function()
+		if not UnitExists("pet") or UnitIsDeadOrGhost("pet") then
+			return nil
+		end
+		return UnitHealth("pet")/UnitHealthMax("pet")
+	end,
+	events = {
+		UNIT_MANA = "pet",
+		UNIT_MAXMANA = "pet",
+		PLAYER_PET_CHANGED = "pet",
+	},
+}
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming Block",
 	localName = L["Incoming block"],
--- 	parserEvent = {
--- 		eventType = "Miss",
--- 		missType = "Block",
--- 		recipientID = "player",
--- 	},
--- is ignored anyways
+	combatLogEvents = {
+		{
+			eventType = "SWING_MISS",
+			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				if dstGUID ~= UnitGUID("player") or missType ~= "BLOCK" then
+					return nil
+				end
+				
+				return "Incoming Block"
+			end,
+		}
+	}
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming crit",
 	localName = L["Incoming crit"],
--- 	parserEvent = {
--- 		eventType = "Damage",
--- 		recipientID = "player",
--- 		isCrit = true,
--- 	},
+	combatLogEvents = {
+		{
+			eventType = "SPELL_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if dstGUID ~= UnitGUID("player") or not critical then
+					return nil
+				end
+				
+				return "Incoming crit"
+				
+			end,
+		},
+		{
+			eventType = "SWING_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if dstGUID ~= UnitGUID("player") or not critical then
+					return nil
+				end
+				
+				return "Incoming crit"
+				
+			end,
+		},
+		{
+			eventType = "RANGE_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if dstGUID ~= UnitGUID("player") or not critical then
+					return nil
+				end
+				
+				return "Incoming crit"
+				
+			end,
+			
+		},
+	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming Dodge",
 	localName = L["Incoming dodge"],
--- 	parserEvent = {
--- 		eventType = "Miss",
--- 		missType = "Dodge",
--- 		recipientID = "player",
--- 	},
+	combatLogEvents = {
+		{
+			eventType = "SWING_MISS",
+			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				if dstGUID ~= UnitGUID("player") or missType ~= "DODGE" then
+					return nil
+				end
+				
+				return "Incoming Dodge"
+			end,
+		}
+	}
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming Parry",
 	localName = L["Incoming parry"],
--- 	parserEvent = {
--- 		eventType = "Miss",
--- 		missType = "Parry",
--- 		recipientID = "player",
--- 	},
+	combatLogEvents = {
+		{
+			eventType = "SWING_MISS",
+			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				if dstGUID ~= UnitGUID("player") or missType ~= "PARRY" then
+					return nil
+				end
+				
+				return "Incoming Parry"
+			end,
+		}
+	}
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing Block",
 	localName = L["Outgoing block"],
--- 	parserEvent = {
--- 		eventType = "Miss",
--- 		missType = "Block",
--- 		sourceID = "player",
--- 		recipientID_not = "player",
--- 	},
+	combatLogEvents = {
+		{
+			eventType = "SWING_MISS",
+			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				if srcGUID ~= UnitGUID("player") or missType ~= "BLOCK" then
+					return nil
+				end
+				
+				return "Outgoing Block"
+			end,
+		}
+	}
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing crit",
 	localName = L["Outgoing crit"],
--- 	parserEvent = {
--- 		eventType = "Damage",
--- 		sourceID = "player",
--- 		recipientID_not = "player",
--- 		isCrit = true,
--- 	},
+	combatLogEvents = {
+		{
+			eventType = "SPELL_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if srcGUID ~= UnitGUID("player") or not critical then
+					return nil
+				end
+				
+				return "Incoming crit"
+				
+			end,
+		},
+		{
+			eventType = "SWING_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if srcGUID ~= UnitGUID("player") or not critical then
+					return nil
+				end
+				
+				return "Incoming crit"
+				
+			end,
+		},
+		{
+			eventType = "RANGE_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if srcGUID ~= UnitGUID("player") or not critical then
+					return nil
+				end
+				
+				return "Outgoing crit"
+				
+			end,
+			
+		},
+	},
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing Dodge",
 	localName = L["Outgoing dodge"],
--- 	parserEvent = {
--- 		eventType = "Miss",
--- 		missType = "Dodge",
--- 		sourceID = "player",
--- 		recipientID_not = "player",
--- 	},
+	combatLogEvents = {
+		{
+			eventType = "SWING_MISS",
+			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				if srcGUID ~= UnitGUID("player") or missType ~= "DODGE" then
+					return nil
+				end
+				
+				return "Outgoing Dodge"
+			end,
+		}
+	}
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing Parry",
 	localName = L["Outgoing parry"],
--- 	parserEvent = {
--- 		eventType = "Miss",
--- 		missType = "Parry",
--- 		sourceID = "player",
--- 		recipientID_not = "player",
--- 	},
+	combatLogEvents = {
+		{
+			eventType = "SWING_MISS",
+			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				if srcGUID ~= UnitGUID("player") or missType ~= "PARRY" then
+					return nil
+				end
+				
+				return "Outgoing Parry"
+			end,
+		}
+	}
 }
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Outgoing cast",
 	localName = L["Outgoing cast"],
--- 	parserEvent = {
--- 		eventType = "Cast",
--- 		sourceID = "player",
--- 		recipientID_not = "player",
--- 		isBegin = false,
--- 	},
--- 	parserArg = "abilityName",
+	combatLogEvents = {
+		{
+			eventType = "SPELL_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if srcGUID ~= UnitGUID("player") then
+					return nil
+				end
+				
+				return "Outgoing cast", spellName
+				
+			end,
+			
+		}, 
+		{
+			eventType = "SPELL_PERIODIC_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if srcGUID ~= UnitGUID("player") then
+					return nil
+				end
+				
+				return "Outgoing cast", spellName
+				
+			end,
+			
+		},
+	},
 	param = {
 		type = 'string',
 		usage = L["<Skill name>"],
 	},
 }
-
--- onEnableFuncs[#onEnableFuncs+1] = function()
--- 	--[[ Parser is deprecated. FIXME.
--- 	mod:AddParserListener({
--- 		eventType_in = { "Damage", "Heal" },
--- 		sourceID = "player",
--- 		recipientID_not = "player",
--- 		abilityName_not = false,
--- 	}, function(info)
--- 		Parrot:FirePrimaryTriggerCondition("Outgoing cast", info.abilityName)
--- 	end)
--- 	--]]
--- end
 
 Parrot:RegisterPrimaryTriggerCondition {
 	name = "Incoming cast",
 	localName = L["Incoming cast"],
--- 	parserEvent = {
--- 		eventType = "Cast",
--- 		recipientID = "player",
--- 		isBegin = false,
--- 	},
--- 	parserArg = "abilityName",
+	combatLogEvents = {
+		{
+			eventType = "SPELL_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if dstGUID ~= UnitGUID("player") then
+					return nil
+				end
+				
+				return "Incoming cast", spellName
+				
+			end,
+			
+		}, 
+		{
+			eventType = "SPELL_PERIODIC_DAMAGE",
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+				if dstGUID ~= UnitGUID("player") then
+					return nil
+				end
+				
+				return "Incoming cast", spellName
+				
+			end,
+			
+		},
+	},
 	param = {
 		type = 'string',
 		usage = L["<Skill name>"],
 	},
 }
-
--- onEnableFuncs[#onEnableFuncs+1] = function()
--- 	--[[ Parser is deprecated. FIXME.
--- 	mod:AddParserListener({
--- 		eventType_in = { "Damage", "Heal" },
--- 		recipientID = "player",
--- 		abilityName_not = false,
--- 	}, function(info)
--- 		Parrot:FirePrimaryTriggerCondition("Incoming cast", info.abilityName)
--- 	end)
--- 	--]]
--- end
 
 Parrot:RegisterSecondaryTriggerCondition {
 	name = "Minimum power amount",

@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r78804 | ckknight | 2008-07-20 14:35:51 -0400 (Sun, 20 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+LibRockLocale-1.0 - fix a possible bug in an error message
+------------------------------------------------------------------------

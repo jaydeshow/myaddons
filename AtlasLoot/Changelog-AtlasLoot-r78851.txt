@@ -1,4 +1,54 @@
 ------------------------------------------------------------------------
+r78851 | trasher | 2008-07-21 10:49:38 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
+r78849 | isler | 2008-07-21 10:10:21 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.cn.lua
+
+AtlasLoot:
+- zhCN update
+------------------------------------------------------------------------
+r78843 | maqjav | 2008-07-21 08:18:09 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.es.lua
+
+AtlasLoot:
+- esES update
+------------------------------------------------------------------------
+r78836 | daviesh | 2008-07-21 07:28:39 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+
+AtlasLoot:
+- Corrected a typo
+------------------------------------------------------------------------
+r78831 | hegarol | 2008-07-21 04:36:23 -0400 (Mon, 21 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- revamp of 'The Stockade'
+- changed instance structure of loot browser
+------------------------------------------------------------------------
+r78782 | hegarol | 2008-07-20 10:03:18 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/TextParsing.lua
+   M /trunk/AtlasLoot/Instances/instances.en.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- testing some new structure (RC)
+------------------------------------------------------------------------
 r78768 | hegarol | 2008-07-20 02:59:51 -0400 (Sun, 20 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot/Bossnames/bossnames.en.lua
@@ -376,51 +426,4 @@ Changed paths:
 
 AtlasLoot:
 - zhCN update
-------------------------------------------------------------------------
-r77125 | daviesh | 2008-06-19 22:38:54 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Documentation/Release Notes.txt
-
-AtlasLoot:
-- Updated documentation
-------------------------------------------------------------------------
-r77124 | daviesh | 2008-06-19 22:36:02 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Core/AtlasLoot.lua
-   M /trunk/AtlasLoot/Core/AtlasLoot.xml
-   M /trunk/AtlasLoot/DefaultFrame/AtlaslootDefaultFrame.xml
-
-AtlasLoot:
-- Fixed remaining Quicklooks bugs, added support to the loot browser and Alphamap, added tooltips to the Quicklook buttons.
-------------------------------------------------------------------------
-r77113 | daviesh | 2008-06-19 21:56:44 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Core/AtlasLoot.lua
-
-AtlasLoot:
-- Bugfix for searching and the wishlist
-------------------------------------------------------------------------
-r77102 | trasher | 2008-06-19 13:40:56 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Constants/constants.fr.lua
-
-AtlasLoot:
-- frFR update
-------------------------------------------------------------------------
-r77094 | hegarol | 2008-06-19 12:11:43 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Constants/constants.de.lua
-   M /trunk/AtlasLoot/Constants/constants.en.lua
-   M /trunk/AtlasLoot/Core/TextParsing.lua
-
-AtlasLoot:
-- complete overhaul of TCG section
-------------------------------------------------------------------------
-r77076 | daviesh | 2008-06-19 06:55:45 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot/Core/AtlasLoot.lua
-   M /trunk/AtlasLoot/Core/AtlasLoot.xml
-
-AtlasLoot:
-- Bugfix for unintended consequence of changing the .refresh routine
 ------------------------------------------------------------------------

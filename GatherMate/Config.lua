@@ -3,6 +3,9 @@ local Config = GatherMate:NewModule("Config","AceConsole-3.0","AceEvent-3.0")
 local Display = GatherMate:GetModule("Display")
 local L = LibStub("AceLocale-3.0"):GetLocale("GatherMate", false)
 
+-- Databroker support
+local DataBroker = LibStub:GetLibrary("LibDataBroker-1.1",true)
+
 --[[
 	Code here for configuring the mod, and making the minimap button
 ]]
@@ -973,6 +976,13 @@ function Config:OnInitialize()
 	self:RegisterChatCommand(L["gathermate"], function() LibStub("AceConfigDialog-3.0"):Open("GatherMate") end )
 	self:CheckAutoImport()	
 	self:RegisterMessage("GatherMateConfigChanged")
+	if DataBroker then
+		local launcher = DataBroker:NewDataObject("GatherMate", {
+		    type = "launcher",
+		    icon = "Interface\\AddOns\\GatherMate\\Artwork\\Icon.tga",
+		    OnClick = function(clickedframe, button) LibStub("AceConfigDialog-3.0"):Open("GatherMate") end,
+		})		
+	end
 end
 
 function Config:UpdateConfig()

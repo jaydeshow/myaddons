@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 75638 $
+Revision: $Revision: 78815 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-05-31 10:53:16 -0400 (Sat, 31 May 2008) $
+LastUpdate: $Date: 2008-07-20 17:18:31 -0400 (Sun, 20 Jul 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -28,7 +28,7 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 75638 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 78815 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -1641,6 +1641,7 @@ PatternLocale.zhTW = {
 	-----------------------
 	["StatIDLookup"] = {
 		--["%昏迷抗性"] = {},
+		["你的攻擊無視目標點護甲值"] = {"IGNORE_ARMOR"},
 		["使你的有效潛行等級提高"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 		["潛行"] = {"STEALTH_LEVEL"}, -- Cloak Enchant
 		["武器傷害"] = {"MELEE_DMG"}, -- Enchant
@@ -1896,7 +1897,7 @@ DisplayLocale.zhTW = {
 		["EMPTY_SOCKET_BLUE"] = {EMPTY_SOCKET_BLUE, EMPTY_SOCKET_BLUE}, -- EMPTY_SOCKET_BLUE = "Blue Socket";
 		["EMPTY_SOCKET_META"] = {EMPTY_SOCKET_META, EMPTY_SOCKET_META}, -- EMPTY_SOCKET_META = "Meta Socket";
 		
-		["IGNORE_ARMOR"] = {"你的攻擊無視目標%d+點護甲值。", "無視護甲"},
+		["IGNORE_ARMOR"] = {"無視護甲", "無視護甲"},
 		["THREAT_MOD"] = {"威脅(%)", "威脅(%)"},
 		["STEALTH_LEVEL"] = {"偷竊等級", "偷竊"},
 		["MELEE_DMG"] = {"近戰傷害", "近戰"}, -- DAMAGE = "Damage"
@@ -3621,6 +3622,7 @@ PatternLocale.zhCN = {
 	-- Stat Lookup Table --
 	-----------------------
 	["StatIDLookup"] = {
+		["你的攻击无视目标的点护甲值"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
 		["% 威胁"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
 		["使你的潜行等级提高"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
 		["潜行"] = {"STEALTH_LEVEL"}, -- Cloak Enchant

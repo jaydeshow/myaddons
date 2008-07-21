@@ -2,6 +2,7 @@
 
 ## Title: Decursive |cff7fff7f -Ace2-|r
 ## Notes: Affliction display and cleaning for solo, group and raids with advanced filtering and priority system.
+## Notes-ruRU: Отображение и лечение недугов с расширенной фильтрацией и системой приоритетов.
 ## Notes-zhTW: 提供驅魔輔助功能，包含進階的顯示及過濾功能
 ## Notes-frFR: Affichage et guérison des afflictions avec un système évolué de filtrage et de priorité.
 
@@ -16,7 +17,7 @@
 ## OptionalDeps: Ace2, LibBabble-Class-3.0, DewdropLib, Waterfall-1.0, TabletLib, FuBarPlugin-2.0, SpecialEventsEmbed
 ## X-Embeds: Ace2, LibBabble-Class-3.0, LibStub, DewdropLib, Waterfall-1.0, TabletLib, FuBarPlugin-2.0, SpecialEventsEmbed
 
-## X-ReleaseDate: "$Date: 2008-04-27 18:24:22 -0400 (Sun, 27 Apr 2008) $"
+## X-ReleaseDate: "$Date: 2008-07-20 01:12:42 -0400 (Sun, 20 Jul 2008) $"
 ## X-Category: Combat
 ## X-Website: http://www.2072productions.com/?to=decursive.php
 ## X-Credits: Sylvin (Full french translation), Peter Sun (ZhTW translation), Fenlis (koKR translation)
@@ -37,6 +38,7 @@ DCR_init.lua
 Dcr_utils.lua
 
 localization.lua
+localization.ru.lua
 localization.fr.lua
 localization.de.lua
 localization.tw.lua

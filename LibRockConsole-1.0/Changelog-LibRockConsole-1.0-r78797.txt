@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r78797 | ckknight | 2008-07-20 13:58:23 -0400 (Sun, 20 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.lua
+
+LibRockConsole-1.0 - fix to have chat input work in WotLK
+------------------------------------------------------------------------

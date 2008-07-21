@@ -77,6 +77,8 @@ Process("CFRUnderStalkerHEROIC",27,{"=q4=正義徽章","=q4=樹皮碎片長靴",
 Process("CFRUnderSwamplord",5,{"=q3=耐久敏捷披風","=q3=守夜外套","=q3=真理肩衛","=q3=鐵守衛護脛","=q3=贊格之牙短刃"})
 Process("CFRUnderSwamplordHEROIC",11,{"=q4=正義徽章","=q4=柔光綠玉髓","=q4=絢麗火焰蛋白石","=q4=輻光的綠玉髓","","=q3=太陽護手","=q3=森林之王頭冠","=q3=驕傲裹臂","=q3=沼石項鍊","=q3=風化的沼澤之王指環","=q3=泥沼搶奪者"})
 Process("CoTHillsbradAgedDalaranWizard",1,{"=q1=公式:附魔盾牌 - 智力"})
+Process("CoTHillsbradDonCarlos",2,{"=q1=唐卡洛斯之帽","=q1=哈里斯康有邊帽"})
+Process("CoTHillsbradDonCarlosHEROIC",4,{"=q3=唐卡洛斯騷包帽","","=q1=唐卡洛斯之帽","=q1=哈里斯康有邊帽"})
 Process("CoTHillsbradDrake",5,{"=q3=衝動披風","=q3=暴掠暗影褶裙","=q3=鴉翼肩鎧","=q3=烏瑟的儀式戰靴","=q3=堅固鐵指環"})
 Process("CoTHillsbradDrakeHEROIC",11,{"=q4=正義徽章","=q4=燦爛的綠玉髓","=q4=強能火焰蛋白石","=q4=耐久的綠玉髓","","=q3=埃蘭的巫術便褲","=q3=月蝕手套","=q3=摩克納薩爾戰鬥面罩","=q3=中尉的羅德隆徽記","=q3=羅德隆醫療指導","=q3=血顱摧毀者"})
 Process("CoTHillsbradHunter",7,{"=q4=設計圖:秘法之力頭環","","=q3=容忍肩鎧","=q3=匹瑞諾德披肩","=q3=復發鑽石稜柱","=q3=布洛克斯的勇氣之戒","=q3=時光之盾匕首"})

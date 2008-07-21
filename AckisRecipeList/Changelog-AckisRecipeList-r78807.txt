@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------
+r78807 | ackis | 2008-07-20 15:23:58 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/DownloadCount.lua
+
+AckisRecipeList:
+- Update download counts
+------------------------------------------------------------------------
+r78799 | ackis | 2008-07-20 14:20:03 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Fix ticket 27 with error messages popping up with skillet/ATSW and when you reslect a trade skill
+------------------------------------------------------------------------
 r78750 | arrowmaster | 2008-07-19 17:15:05 -0400 (Sat, 19 Jul 2008) | 1 line
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc
@@ -525,61 +540,4 @@ Changed paths:
 
 AckisRecipeList:
 - zhTW update
-------------------------------------------------------------------------
-r77110 | ackis | 2008-06-19 19:28:13 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
-
-AckisRecipeList:
-- esMX update (copy from esES)
-------------------------------------------------------------------------
-r77105 | StiviS | 2008-06-19 17:01:20 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-
-AckisRecipeList:
-- esES updated
-------------------------------------------------------------------------
-r77101 | ackis | 2008-06-19 13:36:20 -0400 (Thu, 19 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua
-
-AckisRecipeList:
-- Thistle tea is now flagged as BoP
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r77100 | trasher | 2008-06-19 13:29:40 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList:
-- frFR update
-------------------------------------------------------------------------
-r77091 | next96 | 2008-06-19 11:13:18 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r77088 | ackis | 2008-06-19 10:57:24 -0400 (Thu, 19 Jun 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
-
-AckisRecipeList:
-- Add new 2.4.3 Tailoring patterns (thanks Anaral)
-- Add Haughty Modiste as a vendor (needs translations)
-- Updated Crusader enchant drop locations (needs transaltion for L["Enchant Weapon - Crusader Obt1"])
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r77005 | ackis | 2008-06-18 10:38:58 -0400 (Wed, 18 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
-
-AckisRecipeList:
-- Update zhTW thanks to apa
-- Dry-coded (compiles w/ luac -p)
 ------------------------------------------------------------------------

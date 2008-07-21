@@ -1,8 +1,8 @@
 --[[
 ****************************************************************************************
 AckisRecipeList Download Count
-$Date: 2008-07-17 17:23:52 -0400 (Thu, 17 Jul 2008) $
-$Rev: 78647 $
+$Date: 2008-07-20 15:23:58 -0400 (Sun, 20 Jul 2008) $
+$Rev: 78807 $
 
 Author: Ackis on Illidan US Horde
 
@@ -16,40 +16,66 @@ Ackis Recipe List
 ****************************************************************************************
 ]]--
 
-
 http = require("socket.http")
 
 function GetCurseDownloads()
+
 	local addonurl = "http://www.curse.com/downloads/details/10057"
-	local patternmatch = "<td>(%d%d,%d%d%d)</td>"
+	local patternmatch1 = "<th>Downloads Total:</th>\n                                            <td>(%d+,%d+)</td>"
+	local patternmatch2 = "<th>Downloads Total:</th>\n                                            <td>(%d+)</td>"
 
-	local _,_,temp = string.find(http.request(addonurl), patternmatch)
+	local _,_,temp = string.find(http.request(addonurl), patternmatch1)
+	local _,_,temp1 = string.find(http.request(addonurl), patternmatch2)
 
-	local numberdownloads = string.gsub(temp,",","")
+	local numberdownloads
 
-	return numberdownloads
+	if (temp) then
+		local numberdownloads = string.gsub(temp,",","")
+		return numberdownloads
+	else
+		return temp1
+	end
+
 end
 
 function GetWoWUIDownloads()
+
 	local addonurl = "http://wowui.worldofwar.net/?p=mod&m=5061"
-	local patternmatch = "<b>(%d%d,%d%d%d)</b> total downloads</b>"
+	local patternmatch1 = "<b>(%d+,%d+)</b> total downloads</b>"
+	local patternmatch2 = "<b>(%d+)</b> total downloads</b>"
 
-	local _,_,temp = string.find(http.request(addonurl), patternmatch)
+	local _,_,temp = string.find(http.request(addonurl), patternmatch1)
+	local _,_,temp1 = string.find(http.request(addonurl), patternmatch2)
 
-	local numberdownloads = string.gsub(temp,",","")
+	local numberdownloads
 
-	return numberdownloads
+	if (temp) then
+		local numberdownloads = string.gsub(temp,",","")
+		return numberdownloads
+	else
+		return temp1
+	end
+
 end
 
 function GetWoWIDownloads()
+
 	local addonurl = "http://www.wowinterface.com/downloads/info8512-AckisRecipeList.html"
-	local patternmatch = "<td class=\"alt1\"><div class=\"smallfont\">(%d,%d%d%d)</div></td>"
+	local patternmatch1 = "<td class=\"alt1\"><div class=\"smallfont\">(%d+,%d+)</div></td>"
+	local patternmatch2 = "<td class=\"alt1\"><div class=\"smallfont\">(%d+)</div></td>"
 
-	local _,_,temp = string.find(http.request(addonurl), patternmatch)
+	local _,_,temp = string.find(http.request(addonurl), patternmatch1)
+	local _,_,temp1 = string.find(http.request(addonurl), patternmatch2)
 
-	local numberdownloads = string.gsub(temp,",","")
+	local numberdownloads
 
-	return numberdownloads
+	if (temp) then
+		local numberdownloads = string.gsub(temp,",","")
+		return numberdownloads
+	else
+		return temp1
+	end
+
 end
 
 do
@@ -58,9 +84,10 @@ do
 	local WoWI = GetWoWIDownloads()
 
 	print("Downloads by site:")
-	print("Curse: " .. curse)
-	print("WoWUI: " .. WoWUI)
-	print("WoWI: " .. WoWI)
+	print("Curse Gaming:   " .. curse)
+	print("WoW UI:         " .. WoWUI)
+	print("WoW Interface:  " .. WoWI)
+	print("--------------------")
 	print("Total: " .. curse + WoWUI + WoWI)
 
 	--os.execute("pause")

@@ -1,4 +1,4 @@
--- $Rev: 75330 $
+-- $Rev: 78847 $
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("enUS", function() return {
@@ -339,14 +339,17 @@ L_Auras:AddTranslations("enUS", function() return {
 		["The name of the buff gained."] = true,
 		["Item buff gains"] = true,
 		["The name of the item buff gained."] = true,
-		["The rank of the item buff gained."] = true,
+		["The name of the item, the buff has been applied to."] = true,
+		--["The rank of the item buff gained."] = true, -- not used anymore
 		["Debuff fades"] = true,
 		["The name of the debuff lost."] = true,
 		["Buff fades"] = true,
 		["The name of the buff lost."] = true,
 		["Item buff fades"] = true,
 		["The name of the item buff lost."] = true,
-		["The rank of the item buff lost."] = true,
+		["The name of the item, the buff has faded from."] = true,
+		-- ["The rank of the item buff lost."] = true, -- not used anymore
+		
 		["Self buff gain"] = true,
 		["<Buff name>"] = true,
 		["Self buff fade"] = true,
@@ -410,6 +413,7 @@ L_CombatEvents_Data:AddTranslations("enUS", function() return {
 		["The spell or ability that the enemy attacked you with."] = true,
 		["DoTs and HoTs"] = true,
 		["Skill DoTs"] = true,
+		["Reactive skills"] = true,
 		["Ability misses"] = true,
 		["Ability dodges"] = true,
 		["Ability parries"] = true,
@@ -442,7 +446,7 @@ L_CombatEvents_Data:AddTranslations("enUS", function() return {
 		["The name of the ally you healed."] = true,
 		["Pet melee"] = true,
 		["Pet melee damage"] = true,
-		["Pet [Amount]"] = true,
+		["(Pet) -[Amount]"] = true,
 		["(Pet) +[Amount]"] = true,
 		["Pet heals"] = true,
 		["The name of the enemy your pet attacked."] = true,
@@ -587,6 +591,7 @@ L_TriggerConditions_Data:AddTranslations("enUS", function() return {
 		["Self health percent"] = true,
 		["Self mana percent"] = true,
 		["Pet health percent"] = true,
+		["Pet mana percent"] = true,
 		["Incoming block"] = true,
 		["Incoming crit"] = true,
 		["Incoming dodge"] = true,
@@ -607,7 +612,6 @@ L_TriggerConditions_Data:AddTranslations("enUS", function() return {
 
 local L_CombatStatus = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatStatus")
 L_CombatStatus:AddTranslations("enUS", function() return {
-	-- Parrot_CombatStatus:
 		["Combat status"] = true,
 		["Enter combat"] = true,
 		["+Combat"] = true,

@@ -3352,7 +3352,7 @@ AtlasLoot_Data["AtlasLootExpansionItems"] = {
 		{ 34408, "", "=q4=Gloves of the Forest Drifter", "=ds=#m29#" },
 		{ 34229, "", "=q4=Garments of Serene Shores", "=ds=#s5#, #a3#" },
 		{ 34396, "", "=q4=Garments of Crashing Shores", "=ds=#m29#" },
-		{ 34228, "", "=q4=Vicious Hawkstrider Hauberk", "=ds=#s5#, #a4#" },
+		{ 34228, "", "=q4=Vicious Hawkstrider Hauberk", "=ds=#s5#, #a3#" },
 		{ 34215, "", "=q4=Warharness of Reckless Fury", "=ds=#s5#, #a4#" },
 		{ 34394, "", "=q4=Breastplate of Agony's Aversion", "=ds=#m29#" },
 		{ 34240, "", "=q4=Gauntlets of the Soothed Soul", "=ds=#s9#, #a4#" },

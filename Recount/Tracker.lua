@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 78600 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78820 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -419,11 +419,13 @@ function Recount:SpellAuraDispelledStolen(timestamp, eventtype, srcGUID, srcName
 	end
 	local ability = extraSpellName .. " (" .. spellName .. ")"
 
-	Recount:AddDispelData(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
+	--Recount:AddDispelData(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
 
 	--if CC[spellName] then Elsia: De-BS
 	if CCId[extraSpellId] then
 		Recount:AddCCBreaker(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
+	else
+		Recount:AddDispelData(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
 	end
 end
 
@@ -1845,12 +1847,12 @@ function Recount:AddDispelData(source, victim, ability,srcGUID,srcFlags,dstGUID,
 	Recount:AddCurrentEvent(victimData, "MISC", true,nil,Recount.cleventtext)
 	Recount:AddCurrentEvent(sourceData, "MISC", false,nil,Recount.cleventtext)
 
-	if FriendlyFire then
+	--if FriendlyFire then
 		Recount:AddAmount(sourceData,"Dispels",1)
 		Recount:AddTableDataSum(sourceData,"DispelledWho",victim,ability,1)
 		Recount:AddAmount(victimData,"Dispelled",1)
 		Recount:AddTableDataSum(victimData,"WhoDispelled",source,ability,1)
-	end
+	--end
 	Recount:CheckRetention(source)
 	Recount:CheckRetention(victim)
 end

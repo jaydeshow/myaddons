@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 78756 $
+Revision: $Rev: 78825 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 78756 $"
+local MINOR_VERSION = "$Revision: 78825 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -5194,9 +5194,10 @@ elseif GAME_LOCALE == "ruRU" then
 		["Onyxia"] = "Ониксия",
 
 --Ragefire Chasm
-		["Bazzalan"] = "Баззалан",
-		["Jergosh the Invoker"] = "Джергош Заклинатель",
 		["Maur Grimtotem"] = "Маур Мрачный Тотем",
+		["Bazzalan"] = "Баззалан",
+		["Zelemar the Wrathful"] = "Зелемар Гневный";
+		["Jergosh the Invoker"] = "Джергош Заклинатель",
 		["Taragaman the Hungerer"] = "Тарагаман Алчущий",
 
 --Razorfen Downs
@@ -5206,6 +5207,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Plaguemaw the Rotting"] = "Чумобрюх Гнилой",
 		["Ragglesnout"] = "Круглорыл",
 		["Tuten'kash"] = "Тутен'каш",
+		["Henry Stern"] = "Генри Штерн";
 
 --Razorfen Kraul
 		["Agathelos the Raging"] = "Агателос Яростный",
@@ -5438,18 +5440,18 @@ elseif GAME_LOCALE == "ruRU" then
 
 --Zul'Farrak
 		["Antu'sul"] = "Анту'сул",
-		["Chief Ukorz Sandscalp"] = "Вождь Укорз Песчаная Проплешина",
+		["Chief Ukorz Sandscalp"] = "Вождь Укорз Песчаная Плешь",
 		["Dustwraith"] = "Пыльный Призрак",
 		["Gahz'rilla"] = "Газрилла",
 		["Hydromancer Velratha"] = "Гидромант Велрата",
-		["Murta Grimgut"] = "Мурта Мрачное Брюхо",
-		["Nekrum Gutchewer"] = "Некрум Брюхогрыз",
+		["Murta Grimgut"] = "Мурта Мрачнобрюх",
+		["Nekrum Gutchewer"] = "Некрум Кишкожуй",
 		["Oro Eyegouge"] = "Оро Вырвиглаз",
 		["Ruuzlu"] = "Руузлу",
 		["Sandarr Dunereaver"] = "Сандарр Барханный Разбойник",
 		["Sandfury Executioner"] = "Палач из клана Песчаной Бури",
 		["Sergeant Bly"] = "Сержант Блай",
-		["Shadowpriest Sezz'ziz"] = "Сумеречный жрец Сезз'зиз",
+		["Shadowpriest Sezz'ziz"] = "Темный жрец Шезз'зиз",
 		["Theka the Martyr"] = "Тека Мученик",
 		["Witch Doctor Zum'rah"] = "Знахарь Зум'рах",
 		["Zerillis"] = "Зериллис",

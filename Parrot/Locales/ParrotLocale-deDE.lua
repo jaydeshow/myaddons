@@ -1,4 +1,4 @@
--- $Rev: 75331 $
+-- $Rev: 78832 $
 
 -- german Locale by profalbert
 -- missing translations are commented out
@@ -433,7 +433,7 @@ L_CombatEvents_Data:AddTranslations("deDE", function() return {
 		["The name of the ally you healed."] = "Der Name des Verbündeten, den Ihr geheilt habt",
 		["Pet melee"] = "Begleiter Nahkampf",
 		["Pet melee damage"] = "Begleiter Nahkampf Schaden",
-		["Pet [Amount]"] = "Begleiter [Amount]",
+		["(Pet) -[Amount]"] = "Begleiter -[Amount]",
 		["(Pet) +[Amount]"] = "Begleiter +[Amount]",
 		["Pet heals"] = "Heilungen auf Begleiter",
 		["The name of the enemy your pet attacked."] = "Der Name des Feindes, den Euer Begleiter angegriffen hat",

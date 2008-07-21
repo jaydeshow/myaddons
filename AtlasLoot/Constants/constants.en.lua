@@ -61,7 +61,9 @@ AL:RegisterTranslations("enUS", function() return {
     ["Assign this loot table\n to QuickLook"] = true,
     ["Req. Rating:"] = true,  --Shorthand for 'Required Rating' for the personal/team ratings in Arena S4
     ["Query Server"] = true,
-    
+    ["Classic Instances"] = true,
+    ["BC Instances"] = true,
+
     --Text for Options Panel
     ["Atlasloot Options"] = true,
     ["Safe Chat Links |cff1eff00(recommended)|r"] = true,

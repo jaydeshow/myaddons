@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibTourist-3.0
-Revision: $Rev: 78351 $
+Revision: $Rev: 78805 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://www.wowace.com/wiki/LibTourist-3.0
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibTourist-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 78351 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 78805 $"):match("(%d+)"))
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 if not LibStub("LibBabble-Zone-3.0") then error(MAJOR_VERSION .. " requires LibBabble-Zone-3.0.") end
@@ -36,9 +36,12 @@ local _,race = UnitRace("player")
 local isHorde = (race == "Orc" or race == "Troll" or race == "Tauren" or race == "Scourge" or race == "BloodElf")
 local isWestern = GetLocale() == "enUS" or GetLocale() == "deDE" or GetLocale() == "frFR" or GetLocale() == "esES"
 
-local Kalimdor, Eastern_Kingdoms, Outland = GetMapContinents()
+local Kalimdor, Eastern_Kingdoms, Outland, Northrend = GetMapContinents()
 if not Outland then
 	Outland = "Outland"
+end
+if not Northrend then
+	Northrend = "Northrend"
 end
 local Azeroth = BZ["Azeroth"]
 
@@ -1017,6 +1020,14 @@ do
 		x_offset = 0,
 		y_offset = 0,
 		continent = Outland,
+	}
+	
+	zones[Northrend] = {
+		type = "Continent",
+		yards = 10000,
+		x_offset = 0,
+		y_offset = 0,
+		continent = Northrend,
 	}
 
 	zones[BZ["Azeroth"]] = {
@@ -2789,16 +2800,26 @@ do
 	local doneZones = {}
 	for continentID, continentName in ipairs(continentNames) do
 		SetMapZoom(continentID)
-		zones[continentName].texture = GetMapInfo()
+		if zones[continentName] then
+			zones[continentName].texture = GetMapInfo()
+		end
 		local zoneNames = { GetMapZones(continentID) }
 		local continentYards = zones[continentName].yards
 		for _ = 1, #zoneNames do
 			local x, y
 			local name, fileName, texPctX, texPctY, texX, texY, scrollX, scrollY
+			local finish = GetTime() + 0.1
 			repeat
+				if finish < GetTime() then
+					name = nil
+					break
+				end
 				x, y = math.random(), math.random()
 				name, fileName, texPctX, texPctY, texX, texY, scrollX, scrollY = UpdateMapHighlight(x, y)
 			until name and not doneZones[name]
+			if name == nil then
+				break
+			end
 			doneZones[name] = true
 			
 			if fileName == "EversongWoods" or fileName == "Ghostlands" or fileName == "Sunwell" or fileName == "SilvermoonCity" then
@@ -2806,10 +2827,12 @@ do
 				scrollY = scrollY + 0.01
 			end
 			
-			zones[name].yards = texX * continentYards
-			zones[name].x_offset = scrollX * continentYards
-			zones[name].y_offset = scrollY * continentYards * 2/3
-			zones[name].texture = fileName
+			if zones[name] then
+				zones[name].yards = texX * continentYards
+				zones[name].x_offset = scrollX * continentYards
+				zones[name].y_offset = scrollY * continentYards * 2/3
+				zones[name].texture = fileName
+			end
 		end
 	end
 	SetMapToCurrentZone()

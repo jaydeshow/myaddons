@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r78825 | StingerSoft | 2008-07-21 00:18:36 -0400 (Mon, 21 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: fix ruRU translations
+------------------------------------------------------------------------
 r78756 | StingerSoft | 2008-07-19 19:51:40 -0400 (Sat, 19 Jul 2008) | 1 line
 Changed paths:
    M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua

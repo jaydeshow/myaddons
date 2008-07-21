@@ -48,6 +48,9 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Add to QuickLooks:"] = "添加到快捷浏览",
     ["Assign this loot table\n to QuickLook"] = "将该掉落表添加到快捷浏览中",
 	["Req. Rating:"] = "需要等级",  --Shorthand for 'Required Rating' for the personal/team ratings in Arena S4
+    ["Query Server"] = "查询物品",
+    ["Classic Instances"] = "旧世界副本",
+    ["BC Instances"] = "燃烧的远征副本",
 
     --Text for Options Panel
     ["Atlasloot Options"] = "Atlasloot 设置",
@@ -81,6 +84,14 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Partial matching"] = "部分匹配",
     ["If checked, AtlasLoot search item names for a partial match."] = "如果选中，AtlasLoot会将输入文字作为物品名称的一部分进行匹配。",
     ["You don't have any module selected to search on!"] = "你没有选择任何用于搜索的模块。",
+    --The next 4 lines are the tooltip for the Server Query Button
+    --The translation doesn't have to be literal, just re-write the
+    --sentences as you would naturally and break them up into 4 roughly
+    --equal lines.
+    ["Queries the server for all items"] = "向服务器查询本页",
+    ["on this page. The items will be"] = "中的所有物品链接",
+    ["refreshed when you next mouse"] = "物品将会在鼠标",
+    ["over them."] = "下次滑过时刷新",
 
     --Slash commands
     ["reset"] = "reset",
@@ -742,6 +753,7 @@ AL:RegisterTranslations("zhCN", function() return {
     ["Epic Set"] = "史诗级套装",
     ["Rare Set"] = "精良级套装",
     ["Legendary Items"] = "传奇物品",
+    ["Badge of Justice Rewards"] = "公正徽章兑换奖励",
     ["Lvl 70 Instance Token Rewards"] = "70级副本兑换奖励",
     ["Lvl 70 Instance Rewards"] = "70级副本奖励",
     ["Accesories and Weapons"] = "杂物与武器",

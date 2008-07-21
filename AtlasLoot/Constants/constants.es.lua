@@ -39,6 +39,10 @@ AL:RegisterTranslations("esES", function() return {
     ["QuickLook"] = "VistaRápida",
     ["Add to QuickLooks:"] = "Añade a VistaRápida",
     ["Assign this loot table\n to QuickLook"] = "Añade esta tabla\n a la VistaRápida",
+    ["Req. Rating:"] = "Req. Índice",  --Shorthand for 'Required Rating' for the personal/team ratings in Arena S4
+    ["Query Server"] = "Pregunta al Servidor",
+    ["Classic Instances"] = "Mazmorras clásicas",
+    ["BC Instances"] = "Mazmorras BC",
     --Text for Options Panel
     ["Atlasloot Options"] = "Opciones Atlasloot",
     ["Safe Chat Links |cff1eff00(recommended)|r"] = "Enlaces seguros en el chat |cff1eff00(recomendado)|r",
@@ -71,6 +75,14 @@ AL:RegisterTranslations("esES", function() return {
     ["Partial matching"] = "Coincidencia parcial",
     ["If checked, AtlasLoot search item names for a partial match."] = "Si lo marcas, AtlasLoot buscará el nombre de los objetos con una coincidencia parcial.",
     ["You don't have any module selected to search on!"] = "¡No tienes marcado ningún módulo donde buscar!",
+    --The next 4 lines are the tooltip for the Server Query Button
+    --The translation doesn't have to be literal, just re-write the
+    --sentences as you would naturally and break them up into 4 roughly
+    --equal lines.
+    ["Queries the server for all items"] = "Pregunta al servidor por todos los objectos",
+    ["on this page. The items will be"] = "de esta página, Los objectos serán",
+    ["refreshed when you next mouse"] = "refrescados al pasar el ratón",
+    ["over them."] = "sobre ellos",
 
     --Slash commands
     ["reset"] = "Reiniciar",
@@ -206,6 +218,7 @@ AL:RegisterTranslations("esES", function() return {
 	["Heroic"] = "Heróico",
 	["Summon"] = "Invocar",
 	["Random"] = "Aleatorio",
+    ["Weapons"] = "Armas",
 
     --Card Game Decks and descriptions
     ["Upper Deck Card Game Items"] = "Juegos de cartas de The Burning Crusade",
@@ -216,6 +229,9 @@ AL:RegisterTranslations("esES", function() return {
     ["Hunt for Illidan"] = "Caza de Illidan", 
 	["Loot Card Items"] = "Objetos (juegos de cartas)",
     ["UDE Items"] = "Objetos (puntos UDE)",
+    ["Drums of Wars"] = "Tambores de guerra",
+    ["Loot Card Items"] = "Botín de barajas",
+    ["UDE Items"] = "Objectos UDE", --Check
     ["Landro Longshot"] = "Landro Tirolargo",
     ["Thunderhead Hippogryph"] = "Hipogrifo Tronatesta",
     ["Saltwater Snapjaw"] = "Quijaforte marino",
@@ -728,6 +744,7 @@ AL:RegisterTranslations("esES", function() return {
     ["Epic Set"] = "Conjunto épico",
     ["Rare Set"] = "Conjunto raro",
     ["Legendary Items"] = "Objetos legendários",
+    ["Badge of Justice Rewards"] = "Recompensas con Distintivos de justicia",
     ["Lvl 70 Instance Token Rewards"] = "Recom. Insignias heróic. Niv 70",
     ["Lvl 70 Instance Rewards"] = "Recompensas Mazmorras Niv. 70",
     ["Accesories and Weapons"] ="Accesorios y Armas",
@@ -881,6 +898,8 @@ AL:RegisterTranslations("esES", function() return {
     ["Kalldan Felmoon"] = "Kalldan Lunavil",
     ["Magregan Deepshadow"] = "Magregan Sombraprofunda",
 --    ["Lord Ahune"] = true,
+--    ["Coren Direbrew"] = true, FALTA
+--    ["Don Carlos"] = true,
 
     --Zones
     ["World Drop"] = "Hallazgos del Mundo",
