@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibRockConfig-1.0
-Revision: $Rev: 78012 $
+Revision: $Rev: 78798 $
 Developed by: ckknight (ckknight@gmail.com)
 Credits: Nargiddley, inspiration and some code taken from Waterfall-1.0
 Website: http://www.wowace.com/
@@ -10,7 +10,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibRockConfig-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 78012 $"):match("(%d+)")) - 60000
+local MINOR_VERSION = tonumber(("$Revision: 78798 $"):match("(%d+)")) - 60000
 
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0") end
 
@@ -18,6 +18,10 @@ local RockConfig, oldLib = Rock:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 if not RockConfig then
 	return
 end
+
+local WotLK = not not ToggleAchievementFrame
+
+local SET_NORMAL_FONT_OBJECT = WotLK and "SetNormalFontObject" or "SetTextFontObject"
 
 local KEY_BUTTON1 = "Left Mouse"
 local KEY_BUTTON2 = "Right Mouse"
@@ -4334,7 +4338,7 @@ do
 			text:SetPoint("LEFT", button, "LEFT", 7, 0)
 			text:SetPoint("RIGHT", button, "RIGHT", -7, 0)
 
-			button:SetTextFontObject(GameFontNormal)
+			button[SET_NORMAL_FONT_OBJECT](button, GameFontNormal)
 			button:SetHighlightFontObject(GameFontHighlight)
 			button:SetDisabledFontObject(GameFontDisable)
 			local highlight = button:CreateTexture(button:GetName() .. "_Highlight", "OVERLAY", "UIPanelButtonHighlightTexture")
@@ -5544,7 +5548,7 @@ do
 				text:SetPoint("LEFT", button, "LEFT", 7, 0)
 				text:SetPoint("RIGHT", button, "RIGHT", -7, 0)
 
-				button:SetTextFontObject(GameFontNormal)
+				button[SET_NORMAL_FONT_OBJECT](button, GameFontNormal)
 				button:SetHighlightFontObject(GameFontHighlight)
 				button:SetDisabledFontObject(GameFontDisable)
 
@@ -6419,7 +6423,7 @@ do
 					text:SetPoint("LEFT", button, "LEFT", 7, 0)
 					text:SetPoint("RIGHT", button, "RIGHT", -7, 0)
 
-					button:SetTextFontObject(GameFontNormal)
+					button[SET_NORMAL_FONT_OBJECT](button, GameFontNormal)
 					button:SetHighlightFontObject(GameFontHighlight)
 					button:SetDisabledFontObject(GameFontDisable)
 
@@ -6690,7 +6694,7 @@ do
 			text:SetPoint("LEFT", button, "LEFT", 7, 0)
 			text:SetPoint("RIGHT", button, "RIGHT", -7, 0)
 
-			button:SetTextFontObject(GameFontNormal)
+			button[SET_NORMAL_FONT_OBJECT](button, GameFontNormal)
 			button:SetHighlightFontObject(GameFontHighlight)
 			button:SetDisabledFontObject(GameFontDisable)
 			local highlight = button:CreateTexture(button:GetName() .. "_Highlight", "OVERLAY", "UIPanelButtonHighlightTexture")

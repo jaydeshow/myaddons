@@ -1,4 +1,4 @@
--- $Rev: 75331 $
+-- $Rev: 78832 $
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("frFR", function() return {
@@ -425,7 +425,7 @@ L_CombatEvents_Data:AddTranslations("frFR", function() return {
 		["The name of the ally you healed."] = "Le nom de l'allié que vous avez soigné.",
 		["Pet melee"] = "Att. en mêlée du fam.",
 		["Pet melee damage"] = "Dégâts en mêlée du fam.",
-		["Pet [Amount]"] = "Fam. [Amount]",
+		["(Pet) -[Amount]"] = "(Fam.) -[Amount]",
 		["(Pet) +[Amount]"] = "(Fam.) +[Amount]",
 		["Pet heals"] = "Soins du familier",
 		["The name of the enemy your pet attacked."] = "Le nom de l'ennemi que votre familier a attaqué.",

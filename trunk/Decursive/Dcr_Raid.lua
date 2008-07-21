@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_Events.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-04-19 13:50:24 -0400 (Sat, 19 Apr 2008) $", "$Revision: 70492 $");
+D:SetDateAndRevision("$Date: 2008-07-20 09:45:32 -0400 (Sun, 20 Jul 2008) $", "$Revision: 78781 $");
 
 
 local L	    = D.L;
@@ -444,6 +444,8 @@ do
 		    self.Status.Unit_ArrayByName[raidMember.rName] = "raid"..raidMember.rIndex;
 		end
 
+		-- XXX treat PETS here
+
 	    end
 
 	end -- END if we are in a raid
@@ -483,7 +485,7 @@ do
 
 		    pet = "raidpet"..i;
 
-		    if ( UnitExists(pet) ) then
+		    if ( RaidRosterCache[i] and UnitExists(pet) ) then
 
 			pname = (D:PetUnitName(pet));
 

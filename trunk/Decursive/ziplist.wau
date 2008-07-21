@@ -1,4 +1,4 @@
-Decursive/Changelog-Decursive-r78433.txt
+Decursive/Changelog-Decursive-r78781.txt
 Decursive/localization.cn.lua
 Decursive/iconOFF.tga
 Decursive/localization.lua
@@ -12,6 +12,7 @@ Decursive/Dcr_DebuffsFrame.lua
 Decursive/Dcr_Raid.lua
 Decursive/Dcr_LiveList.xml
 Decursive/Dcr_Events.lua
+Decursive/localization.ru.lua
 Decursive/Dcr_lists.lua
 Decursive/embeds.xml
 Decursive/Dcr_DIAG.lua

@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r78820 | elsia | 2008-07-20 19:10:57 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Recount/Tracker.lua
+
+Recount:
+- Dispels and Dispelled displays and details now also show offensive dispells like purge.
+------------------------------------------------------------------------
 r78600 | elsia | 2008-07-16 22:35:30 -0400 (Wed, 16 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/Recount/Tracker.lua
@@ -19,19 +26,4 @@ Changed paths:
 
 Recount:
 - Preparation for 2.4.3: Supporting new and renamed combat log event types. Current version should be compatible both with 2.4.2 and 2.4.3.
-------------------------------------------------------------------------
-r77004 | elsia | 2008-06-18 10:37:03 -0400 (Wed, 18 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/Recount/Tracker.lua
-
-Recount:
-- Take second spell school field for RANGE_DAMAGE so that wand and other ranged damage that has a spell school records as something other than physical.
-------------------------------------------------------------------------
-r76996 | elsia | 2008-06-18 05:21:25 -0400 (Wed, 18 Jun 2008) | 3 lines
-Changed paths:
-   M /trunk/Recount/deletion.lua
-
-Recount:
-- Fixed that zone changes when the player is in ghost form no longer change data collection. This should ensure that players who die inside an instance but don't collect outside don't get their data deleted.
-
 ------------------------------------------------------------------------

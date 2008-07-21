@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-SpellTree-2.2
-Revision: $Rev: 70856 $
+Revision: $Rev: 78826 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://wiki.wowace.com/index.php/Babble-SpellTree-2.2
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-SpellTree-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 70856 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 78826 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -330,6 +330,50 @@ BabbleSpellTree:RegisterTranslations("esES", function()
 		["Affliction"] = "Aflicci\195\179n",
 		["Demonology"] = "Demonolog\195\173a",
 		["Destruction"] = "Destrucci\195\179n",
+	}
+end)
+
+BabbleSpellTree:RegisterTranslations("ruRU", function()
+	return {
+	    -- All classes
+	    ["Hybrid"] = "Гибрид",
+
+		-- Druid
+		["Balance"] = "Баланс",
+		["Feral Combat"] = "Сила зверя",
+		["Restoration"] = "Исцеление",
+		-- Hunter
+		["Beast Mastery"] = "Чувство зверя",
+		["Marksmanship"] = "Стрельба",
+		["Survival"] = "Выживание",
+		-- Mage
+		["Arcane"] = "Тайная магия",
+		["Fire"] = "Огонь",
+		["Frost"] = "Лед",
+		-- Paladin
+		["Holy"] = "Свет",
+		["Protection"] = "Защита",
+		["Retribution"] = "Возмездие",
+		-- Priest
+		["Discipline"] = "Послушание",
+		["Holy"] = "Свет",
+		["Shadow"] = "Темная магия",
+		-- Rogue
+		["Assassination"] = "Убийство",
+		["Combat"] = "Бой",
+		["Subtlety"] = "Скрытность",
+		-- Shaman
+		["Elemental"] = "Укрощение стихии",
+		["Enhancement"] = "Совершенствование",
+		["Restoration"] = "Исцеление", -- same as Druid
+		-- Warrior
+		["Arms"] = "Оружие",
+		["Fury"] = "Неистовство",
+		["Protection"] = "Защита", -- same as Paladin
+		-- Warlock
+		["Affliction"] = "Колдовство",
+		["Demonology"] = "Демонология",
+		["Destruction"] = "Разрушение",
 	}
 end)
 

@@ -1,11 +1,12 @@
-local VERSION = tonumber(("$Revision: 74138 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 78847 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_TriggerConditions = Parrot:NewModule("TriggerConditions", "LibRockEvent-1.0")
+local self = Parrot_TriggerConditions
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-17 06:38:27 -0400 (Sat, 17 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-07-21 09:26:11 -0400 (Mon, 21 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- #AUTODOC_NAMESPACE Parrot_TriggerConditions
@@ -33,7 +34,7 @@ function Parrot_TriggerConditions:OnEnable()
 			lastStates[k] = v.getCurrent()
 		end
 	end
-	
+	self:AddEventListener("COMBAT_LOG_EVENT_UNFILTERED")
 	for _,v in ipairs(onEnableFuncs) do
 		v()
 	end
@@ -53,6 +54,7 @@ local function RefreshEvents()
 	if not Parrot:IsModuleActive(self) then
 		return
 	end
+	self:AddEventListener("COMBAT_LOG_EVENT_UNFILTERED")
 	for k, v in pairs(conditions) do
 		if v.events then
 			for event in pairs(v.events) do
@@ -109,7 +111,7 @@ end
 -- 		end
 -- end
 
-
+self.combatLogEvents = {}
 --[[----------------------------------------------------------------------------------
 Arguments:
 	string - the name of the trigger condition to fire, in English.
@@ -198,6 +200,21 @@ function Parrot_TriggerConditions:RegisterPrimaryTriggerCondition(data)
 	end
 	conditions[name] = data
 	primaryChoices[name] = localName
+	
+	-- combatlog-stuff
+	local combatLogEvents = data.combatLogEvents
+	if combatLogEvents then
+		for _, v in ipairs(combatLogEvents) do
+		
+			local eventType = v.eventType
+			if not self.combatLogEvents[eventType] then
+				self.combatLogEvents[eventType] = {}
+			end
+			table.insert(self.combatLogEvents[eventType], { category = data.category, name = data.name, triggerData = v.triggerData })
+		end
+		
+	end
+	
 	RefreshEvents()
 end
 Parrot.RegisterPrimaryTriggerCondition = Parrot_TriggerConditions.RegisterPrimaryTriggerCondition
@@ -296,6 +313,8 @@ function Parrot_TriggerConditions:GetSecondaryConditionParamDetails(name)
 	return data.param, data.defaultParam
 end
 
+
+
 -- #NODOC
 function Parrot_TriggerConditions:DoesSecondaryTriggerConditionPass(name, arg)
 --	AceLibrary.argCheck(self, name, 2, "string") -- TODO
@@ -318,3 +337,25 @@ function Parrot_TriggerConditions:DoesSecondaryTriggerConditionPass(name, arg)
 		return value
 	end
 end
+
+-- onEnableFuncs[#onEnableFuncs+1] = function()
+-- 	self:AddEventListener("COMBAT_LOG_EVENT_UNFILTERED", "OnCombatEvent")
+-- end
+
+function Parrot_TriggerConditions:COMBAT_LOG_EVENT_UNFILTERED(_, _, timestamp, eventType, ...)
+	
+	if not Parrot:IsModuleActive(Parrot_TriggerConditions) then
+		return
+	end
+	
+	local registeredHandlers = self.combatLogEvents[eventType]
+	if registeredHandlers then
+		for _, v in ipairs(registeredHandlers) do
+			if v.triggerData and v.triggerData(...) then
+				self:FirePrimaryTriggerCondition(v.triggerData(...))
+			end
+		end
+	end
+	
+end
+

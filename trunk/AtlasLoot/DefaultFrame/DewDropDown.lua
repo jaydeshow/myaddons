@@ -14,119 +14,96 @@ local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 --Entries have the text to display, loot table or sub table to link to and if the link is to a loot table or sub table
 AtlasLoot_DewDropDown = {
 	[1] = {
-		[BabbleZone["Eastern Kingdoms"]] = {
-			[1] = { 
-				{ BabbleZone["Blackrock Depths"], "BlackrockDepths", "Submenu" },
-			},
-			[2] = { 
-				{ BabbleZone["Lower Blackrock Spire"], "LowerBlackrock", "Submenu" },
-			},
-			[3] = { 
-				{ BabbleZone["Upper Blackrock Spire"], "UpperBlackrock", "Submenu" },
-			},
-			[4] = { 
-				{ BabbleZone["Blackwing Lair"], "BlackwingLair", "Submenu" },
-			},
-			[5] = { 
-				{ BabbleZone["The Deadmines"], "Deadmines", "Submenu" },
-			},
-			[6] = { 
-				{ BabbleZone["Gnomeregan"], "Gnomeregan", "Submenu" },
-			},
-			[7] = { 
-				{ BabbleZone["Karazhan"], "Karazhan", "Submenu" },
-			},
-			[8] = { 
-				{ BabbleZone["Magisters' Terrace"], "MagistersTerrace", "Submenu" },
-			},
-			[9] = { 
-				{ BabbleZone["Molten Core"], "MoltenCore", "Submenu" },
-			},
-			[10] = { 
-				{ BabbleZone["Naxxramas"], "Naxxramas", "Submenu" },
-			},
-			[11] = { 
-				{ BabbleZone["Scarlet Monastery"], "Scarlet Monastery", "Submenu" },
-			},
-			[12] = { 
-				{ BabbleZone["Scholomance"], "Scholomance", "Submenu" },
-			},
-			[13] = { 
-				{ BabbleZone["Shadowfang Keep"], "ShadowfangKeep", "Submenu" },
-			},
-			[14] = { 
-				{ BabbleZone["The Stockade"], "TheStockade", "Submenu" },
-			},
-			[15] = { 
-				{ BabbleZone["Stratholme"], "Stratholme", "Submenu" },
-			},
-			[16] = { 
-				{ BabbleZone["Sunwell Plateau"], "SunwellPlateau", "Submenu" },
-			},
-			[17] = { 
-				{ BabbleZone["The Temple of Atal'Hakkar"], "SunkenTemple", "Submenu" },
-			},
-			[18] = { 
-				{ BabbleZone["Uldaman"], "Uldaman", "Submenu" },
-			},
-			[19] = { 
-				{ BabbleZone["Zul'Aman"], "ZulAman", "Submenu" },
-			},
-			[20] = { 
-				{ BabbleZone["Zul'Gurub"], "ZulGurub", "Submenu" },
-			},
-		},
-	},
-	[2] = {
-		[BabbleZone["Kalimdor"]] = {
+		[AL["Classic Instances"]] = {
 			[1] = { 
 				{ BabbleZone["Blackfathom Deeps"], "BlackfathomDeeps", "Submenu" },
 			},
 			[2] = { 
-				[BabbleZone["Caverns of Time"]] = {
-					{ BabbleZone["Old Hillsbrad Foothills"], "CoTOldHillsbrad", "Submenu" },
-					{ BabbleZone["The Black Morass"], "CoTBlackMorass", "Submenu" },
-					{ BabbleZone["Hyjal Summit"], "CoTHyjal", "Submenu" },
-				}, 
+				{ BabbleZone["Blackrock Depths"], "BlackrockDepths", "Submenu" },
 			},
 			[3] = { 
+				{ BabbleZone["Lower Blackrock Spire"], "LowerBlackrock", "Submenu" },
+			},
+			[4] = { 
+				{ BabbleZone["Upper Blackrock Spire"], "UpperBlackrock", "Submenu" },
+			},
+			[5] = { 
+				{ BabbleZone["Blackwing Lair"], "BlackwingLair", "Submenu" },
+			},
+			[6] = { 
+				{ BabbleZone["The Deadmines"], "Deadmines", "Submenu" },
+			},
+			[7] = { 
 				[BabbleZone["Dire Maul"]] = {
 					{ BabbleZone["Dire Maul (East)"], "DireMaulEast", "Submenu" },
 					{ BabbleZone["Dire Maul (West)"], "DireMaulWest", "Submenu" },
 					{ BabbleZone["Dire Maul (North)"], "DireMaulNorth", "Submenu" },
 				}, 
 			},
-			[4] = { 
-				{ BabbleZone["Maraudon"], "Maraudon", "Submenu" },
-			},
-			[5] = { 
-				{ BabbleZone["Onyxia's Lair"], "Onyxia", "Submenu" },
-			},
-			[6] = { 
-				{ BabbleZone["Ragefire Chasm"], "RagefireChasm", "Submenu" },
-			},
-			[7] = { 
-				{ BabbleZone["Razorfen Downs"], "RazorfenDowns", "Submenu" },
-			},
 			[8] = { 
-				{ BabbleZone["Razorfen Kraul"], "RazorfenKraul", "Submenu" },
+				{ BabbleZone["Gnomeregan"], "Gnomeregan", "Submenu" },
 			},
 			[9] = { 
-				{ BabbleZone["Ruins of Ahn'Qiraj"], "RuinsofAQ", "Submenu" },
+				{ BabbleZone["Maraudon"], "Maraudon", "Submenu" },
 			},
 			[10] = { 
-				{ BabbleZone["Temple of Ahn'Qiraj"], "TempleofAQ", "Submenu" },
+				{ BabbleZone["Molten Core"], "MoltenCore", "Submenu" },
 			},
 			[11] = { 
-				{ BabbleZone["Wailing Caverns"], "WailingCaverns", "Submenu" },
+				{ BabbleZone["Naxxramas"], "Naxxramas", "Submenu" },
 			},
 			[12] = { 
+				{ BabbleZone["Onyxia's Lair"], "Onyxia", "Submenu" },
+			},
+			[13] = { 
+				{ BabbleZone["Ragefire Chasm"], "RagefireChasm", "Table" },
+			},
+			[14] = { 
+				{ BabbleZone["Razorfen Downs"], "RazorfenDowns", "Submenu" },
+			},
+			[15] = { 
+				{ BabbleZone["Razorfen Kraul"], "RazorfenKraul", "Submenu" },
+			},
+			[16] = { 
+				{ BabbleZone["Ruins of Ahn'Qiraj"], "RuinsofAQ", "Submenu" },
+			},
+			[17] = { 
+				{ BabbleZone["Scarlet Monastery"], "Scarlet Monastery", "Submenu" },
+			},
+			[18] = { 
+				{ BabbleZone["Scholomance"], "Scholomance", "Submenu" },
+			},
+			[19] = { 
+				{ BabbleZone["Shadowfang Keep"], "ShadowfangKeep", "Submenu" },
+			},
+			[20] = { 
+				{ BabbleZone["The Stockade"], "TheStockade", "Table" },
+			},
+			[21] = { 
+				{ BabbleZone["Stratholme"], "Stratholme", "Submenu" },
+			},
+			[22] = { 
+				{ BabbleZone["Temple of Ahn'Qiraj"], "TempleofAQ", "Submenu" },
+			},
+			[23] = { 
+				{ BabbleZone["The Temple of Atal'Hakkar"], "SunkenTemple", "Submenu" },
+			},
+			[24] = { 
+				{ BabbleZone["Uldaman"], "Uldaman", "Submenu" },
+			},
+			[25] = { 
+				{ BabbleZone["Wailing Caverns"], "WailingCaverns", "Submenu" },
+			},
+			[26] = { 
 				{ BabbleZone["Zul'Farrak"], "ZulFarrak", "Submenu" },
+			},
+			[27] = { 
+				{ BabbleZone["Zul'Gurub"], "ZulGurub", "Submenu" },
 			},
 		},
 	},
-	[3] = {
-		[BabbleZone["Outland"]] = {
+	[2] = {
+		[AL["BC Instances"]] = {
 			[1] = { 
 				[BabbleZone["Auchindoun"]] = {
 					{ BabbleZone["Mana-Tombs"], "AuchManaTombs", "Submenu" },
@@ -138,7 +115,14 @@ AtlasLoot_DewDropDown = {
 			[2] = { 
 				{ BabbleZone["Black Temple"], "BlackTemple", "Submenu" },
 			},
-			[3] = { 
+			[3] = {
+				[BabbleZone["Caverns of Time"]] = {
+					{ BabbleZone["Old Hillsbrad Foothills"], "CoTOldHillsbrad", "Submenu" },
+					{ BabbleZone["The Black Morass"], "CoTBlackMorass", "Submenu" },
+					{ BabbleZone["Hyjal Summit"], "CoTHyjal", "Submenu" },
+				}, 
+			},
+			[4] = { 
 				[BabbleZone["Coilfang Reservoir"]] = {
 					{ BabbleZone["The Slave Pens"], "CFRSlavePens", "Submenu" },
 					{ BabbleZone["The Underbog"], "CFRUnderbog", "Submenu" },
@@ -146,10 +130,10 @@ AtlasLoot_DewDropDown = {
 					{ BabbleZone["Serpentshrine Cavern"], "CFRSerpentshrine", "Submenu" },
 				}, 
 			},
-			[4] = { 
+			[5] = { 
 				{ BabbleZone["Gruul's Lair"], "Gruul", "Submenu" },
 			},
-			[5] = { 
+			[6] = { 
 				[BabbleZone["Hellfire Citadel"]] = {
 					{ BabbleZone["Hellfire Ramparts"], "HCRamparts", "Submenu" },
 					{ BabbleZone["The Blood Furnace"], "HCFurnace", "Submenu" },
@@ -157,7 +141,16 @@ AtlasLoot_DewDropDown = {
 					{ BabbleZone["Magtheridon's Lair"], "HCMagLair", "Submenu" },
 				}, 
 			},
-			[6] = { 
+			[7] = { 
+				{ BabbleZone["Karazhan"], "Karazhan", "Submenu" },
+			},
+			[8] = { 
+				{ BabbleZone["Magisters' Terrace"], "MagistersTerrace", "Submenu" },
+			},
+			[9] = { 
+				{ BabbleZone["Sunwell Plateau"], "SunwellPlateau", "Submenu" },
+			},
+			[10] = { 
 				[BabbleZone["Tempest Keep"]] = {
 					{ BabbleZone["The Mechanar"], "TKMech", "Submenu" },
 					{ BabbleZone["The Botanica"], "TKBot", "Submenu" },
@@ -165,9 +158,12 @@ AtlasLoot_DewDropDown = {
 					{ BabbleZone["The Eye"], "TKEye", "Submenu" },
 				}, 
 			},
+			[11] = { 
+				{ BabbleZone["Zul'Aman"], "ZulAman", "Submenu" },
+			},
 		},
 	},
-	[4] = {
+	[3] = {
 		[AL["Crafting"]] = {
 			[1] = { { (GetSpellInfo(2259)), "Alchemy", "Submenu" }, },
 			[2] = { { (GetSpellInfo(2018)), "BlackSmithing", "Submenu" }, },
@@ -189,7 +185,7 @@ AtlasLoot_DewDropDown = {
 			[12] = { { AL["Crafted Epic Weapons"], "CraftedWeapons1", "Table" }, },
 		},
 	},
-	[5] = {
+	[4] = {
 		[AL["Sets/Collections"]] = {
 			[1] = { 
 				{ AL["Pre 60 Sets"], "Pre60Sets", "Submenu" },
@@ -241,7 +237,7 @@ AtlasLoot_DewDropDown = {
 			[18] = { { AL["Upper Deck Card Game Items"], "CardGame1", "Table" }, },
 		},
 	},
-	[6] = {
+	[5] = {
 		[AL["PvP Rewards"]] = {
 			[1] = { 
 				{ AL["Arena PvP Sets"], "ArenaPvPRewards", "Submenu" },
@@ -282,13 +278,13 @@ AtlasLoot_DewDropDown = {
 			[15] = { { AtlasLoot_TableNames["Zangarmarsh"][1], "Zangarmarsh", "Table" }, },
 		},
 	},
-	[7] = {
+	[6] = {
 		{ AL["World Bosses"], "WorldBosses", "Submenu" },
 	},
-	[8] = {
+	[7] = {
 		{ AL["Reputation Factions"], "Factions", "Submenu" },
 	},
-	[9] = {
+	[8] = {
 		[AL["World Events"]] = {
 			[1] = { 
 				{ AL["Abyssal Council"], "AbyssalCouncil", "Submenu" },
@@ -555,14 +551,6 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ BabbleBoss["Archmage Arugal"], "BSFArchmageArugal" },
 		{ AL["Trash Mobs"], "BSFTrash" },
 	},
-	["TheStockade"] = {
-		{ BabbleBoss["Targorr the Dread"], "SWStTargor" },
-		{ BabbleBoss["Kam Deepfury"], "SWStKamDeepfury" },
-		{ BabbleBoss["Bazil Thredd"], "SWStBazilThredd" },
-		{ BabbleBoss["Dextren Ward"], "SWStDextrenWard" },
-		{ BabbleBoss["Bruegal Ironknuckle"], "SWStBruegalIronknuckle" },
-		{ AL["Trash Mobs"], "SWStTrash" },
-	},
 	["Stratholme"] = {
 		{ BabbleBoss["Skul"], "STRATSkull" },
 		{ AtlasLoot_TableNames["STRATStratholmeCourier"][1], "STRATStratholmeCourier" },
@@ -715,10 +703,6 @@ AtlasLoot_DewDropDown_SubTables = {
 	},
 	["Onyxia"] = {
 		 { BabbleBoss["Onyxia"], "Onyxia" },
-	},
-	["RagefireChasm"] = {
-		{ BabbleBoss["Taragaman the Hungerer"], "RFCTaragaman" },
-		{ BabbleBoss["Jergosh the Invoker"], "RFCJergosh" },
 	},
 	["RazorfenDowns"] = {
 		{ BabbleBoss["Tuten'kash"], "RFDTutenkash" },

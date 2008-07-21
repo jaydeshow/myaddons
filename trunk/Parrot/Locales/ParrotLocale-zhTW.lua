@@ -1,4 +1,4 @@
--- $Rev: 75427 $
+-- $Rev: 78847 $
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("zhTW", function() return {
@@ -442,8 +442,8 @@ L_CombatEvents_Data:AddTranslations("zhTW", function() return {
 		["The name of the ally you healed."] = "你所治療的盟友名稱。",
 		["Pet melee"] = "近戰（寵物）",
 		["Pet melee damage"] = "近戰傷害（寵物）",
-		["Pet [Amount]"] = "[Amount]（寵物）",
-		["(Pet) +[Amount]"] = "（寵物） +[Amount]",
+		["(Pet) -[Amount]"] = "-[Amount]（寵物）",
+		["(Pet) +[Amount]"] = "+[Amount]（寵物）",
 		["Pet heals"] = "治療（寵物）",
 		["The name of the enemy your pet attacked."] = "寵物攻擊的敵人名稱。",
 		["Pet melee misses"] = "近戰未命中（寵物）",

@@ -18,7 +18,7 @@
 ## DefaultState: enabled
 ## LoadOnDemand: 1
 ## Dependencies: Cartographer
-## OptionalDeps: Ace2, DewdropLib, TabletLib, RosterLib, LibTourist-3.0, LibCrayon-3.0, LibBabble-Zone-3.0, LibAbacus-3.0, LibRollCall-3.0
+## OptionalDeps: Ace2, DewdropLib, TabletLib, RosterLib, LibTourist-3.0, LibCrayon-3.0, LibBabble-Zone-3.0, LibAbacus-3.0, LibGuild-1.0
 ## X-Category: Map
 ## X-eMail: wobster@gmail.com
 ## X-Website: http://wobin.wowinterface.com/

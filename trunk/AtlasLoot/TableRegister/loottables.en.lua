@@ -472,9 +472,7 @@ AtlasLoot_TableNames = {};
   --Onyxia's Lair
 	AtlasLoot_TableNames["Onyxia"] = { BabbleBoss["Onyxia"], "AtlasLootItems" };
   --Ragefire Chasm
-	AtlasLoot_TableNames["RFCTaragaman"] = { BabbleBoss["Taragaman the Hungerer"], "AtlasLootItems" };
-	AtlasLoot_TableNames["RFCJergosh"] = { BabbleBoss["Jergosh the Invoker"], "AtlasLootItems" };
-	AtlasLoot_TableNames["RFCZelemartheWrathful"] = { AL["Zelemar the Wrathful"], "AtlasLootItems" };
+	AtlasLoot_TableNames["RagefireChasm"] = { BabbleZone["Ragefire Chasm"], "AtlasLootItems" };
   --Razorfen Downs
 	AtlasLoot_TableNames["RFDTutenkash"] = { BabbleBoss["Tuten'kash"], "AtlasLootItems" };
 	AtlasLoot_TableNames["RFDHenryStern"] = { AL["Henry Stern"], "AtlasLootItems" };
@@ -557,12 +555,7 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["BSFQuestItems"] = { AL["Quest Item"].." ("..BabbleZone["Shadowfang Keep"]..")", "AtlasLootItems" };
 	AtlasLoot_TableNames["BSFTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["Shadowfang Keep"]..")", "AtlasLootItems" };
   --The Stockade
-	AtlasLoot_TableNames["SWStTargor"] = { BabbleBoss["Targorr the Dread"], "AtlasLootItems" };
-	AtlasLoot_TableNames["SWStKamDeepfury"] = { BabbleBoss["Kam Deepfury"], "AtlasLootItems" };
-	AtlasLoot_TableNames["SWStBazilThredd"] = { BabbleBoss["Bazil Thredd"], "AtlasLootItems" };
-	AtlasLoot_TableNames["SWStDextrenWard"] = { BabbleBoss["Dextren Ward"], "AtlasLootItems" };
-	AtlasLoot_TableNames["SWStBruegalIronknuckle"] = { BabbleBoss["Bruegal Ironknuckle"], "AtlasLootItems" };
-	AtlasLoot_TableNames["SWStTrash"] = { AL["Trash Mobs"].." ("..BabbleZone["The Stockade"]..")", "AtlasLootItems" };
+	AtlasLoot_TableNames["TheStockade"] = { BabbleZone["The Stockade"], "AtlasLootItems" };
   --Stratholme
 	AtlasLoot_TableNames["STRATSkull"] = { BabbleBoss["Skul"], "AtlasLootItems" };
 	AtlasLoot_TableNames["STRATStratholmeCourier"] = { "Mailbox Keys", "AtlasLootItems" };

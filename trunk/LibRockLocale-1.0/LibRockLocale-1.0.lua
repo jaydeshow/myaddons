@@ -1,6 +1,6 @@
 --[[
 Name: LibRockLocale-1.0
-Revision: $Rev: 66758 $
+Revision: $Rev: 78804 $
 Developed by: ckknight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Localization library for addons to use to handle proper
@@ -10,7 +10,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibRockLocale-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 66758 $"):match("(%d+)")) - 60000
+local MINOR_VERSION = tonumber(("$Revision: 78804 $"):match("(%d+)")) - 60000
 
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0") end
 
@@ -431,9 +431,9 @@ function prototype_mt:__index(key)
 	end
 	local _, ret
 	if namespaceData_self.strict then
-		_, ret = pcall(error, ("%s(%q): Translation %q does not exist for locale %s"):format(MAJOR_VERSION, namespaceData_self.name, key, namespaceData_self.currentLocale or namespaceData_self.baseLocale), 3)
+		_, ret = pcall(error, ("%s(%q): Translation %q does not exist for locale %s"):format(tostring(MAJOR_VERSION), tostring(namespaceData_self.name), tostring(key), tostring(namespaceData_self.currentLocale or namespaceData_self.baseLocale)), 3)
 	else
-		_, ret = pcall(error, ("%s(%q): Translation %q does not exist."):format(MAJOR_VERSION, namespaceData_self.name, key), 3)
+		_, ret = pcall(error, ("%s(%q): Translation %q does not exist."):format(tostring(MAJOR_VERSION), tostring(namespaceData_self.name), tostring(key)), 3)
 	end
 	geterrorhandler()(ret)
 	rawset(self, key, key)

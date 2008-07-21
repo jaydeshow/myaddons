@@ -1398,7 +1398,7 @@ AtlasLoot_ButtonRegistry = {
 		Back_Page = "T6SET";
 		Back_Title = AL["Tier 6 Sets"];
 		};
-	["T6Shama2"] = {
+	["T6Shaman2"] = {
 		Title = BabbleClass["Shaman"];
 		Prev_Page = "T6Shaman";
 		Prev_Title = BabbleClass["Shaman"];

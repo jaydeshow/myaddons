@@ -7,6 +7,66 @@ AtlasLoot_Data["AtlasLootItems"] = {
 
 	EmptyInstance = {};
 
+
+--- Reviewed Instances
+
+		----------------------
+		--- Ragefire Chasm ---
+		----------------------
+
+	RagefireChasm = {
+		{ 0, "INV_Box_01", "=q6=#n140#", "" },
+		{ 14149, "", "=q3=Subterranean Cape", "=ds=#s4#", "31.59%" },
+		{ 14148, "", "=q3=Crystalline Cuffs", "=ds=#s8#, #a1#", "33.91%" },
+		{ 14145, "", "=q3=Cursed Felblade", "=ds=#h1#, #w10#", "15.98%" },
+		{ 14540, "", "=q1=Taragaman the Hungerer's Heart", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n142#", "" },
+		{ 24225, "", "=q1=Blood of the Wrathful", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n141#", "" },
+		{ 14150, "", "=q3=Robe of Evocation", "=ds=#s5#, #a1#", "36.40%" },
+		{ 14147, "", "=q3=Cavedweller Bracers", "=ds=#s8#, #a3#", "34.35%" },
+		{ 14151, "", "=q3=Chanting Blade", "=ds=#h1#, #w4#", "17.10%" },
+	};
+	
+		--------------------
+		--- The Stockade ---
+		--------------------
+
+	TheStockade = {
+		{ 0, "INV_Box_01", "=q6=#n143#", "" },
+	    { 3630, "", "=q1=Head of Targorr", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n144#", "" },
+		{ 2280, "", "=q3=Kam's Walking Stick", "=ds=#w9#", "0.62%" },
+		{ 3640, "", "=q1=Head of Deepfury", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n145#", "" },
+		{ 2926, "", "=q1=Head of Bazil Thredd", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n146#", "" },
+		{ 3628, "", "=q1=Hand of Dextren Ward", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n147#", "" },
+		{ 3228, "", "=q3=Jimmied Handcuffs", "=ds=#s8#, #a3#", "54.73%" },
+		{ 2942, "", "=q3=Iron Knuckles", "=ds=#h1#, #w13#", "18.18%" },
+		{ 2941, "", "=q3=Prison Shank", "=ds=#h1#, #w4#", "16.05%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n11#", "" },
+		{ 2909, "", "=q1=Red Wool Bandana", "=ds=#m3#" },
+		};
+
+--- To be reviewed
+
 		------------
 		--- Keys ---
 		------------
@@ -1728,38 +1788,6 @@ AtlasLoot_Data["AtlasLootItems"] = {
 		{ 9487, "", "=q3=Hi-tech Supergun", "=ds=#w5#", "0.01%" },
 	};
 
-		--------------------
-		--- The Stockade ---
-		--------------------
-
-	SWStTargor = {
-		{ 3630, "", "=q1=Head of Targorr", "=ds=#m3#", "100%" },
-	};
-
-	SWStKamDeepfury = {
-		{ 2280, "", "=q3=Kam's Walking Stick", "=ds=#w9#", "0.62%" },
-		{ 0,"","","" },
-		{ 3640, "", "=q1=Head of Deepfury", "=ds=#m3#", "100%" },
-	};
-
-	SWStBazilThredd = {
-		{ 2926, "", "=q1=Head of Bazil Thredd", "=ds=#m3#", "100%" },
-	};
-
-	SWStDextrenWard = {
-		{ 3628, "", "=q1=Hand of Dextren Ward", "=ds=#m3#", "100%" },
-	};
-
-	SWStBruegalIronknuckle = {
-		{ 3228, "", "=q3=Jimmied Handcuffs",	   "=ds=#s8#, #a3#", "54.73%" },
-		{ 2942, "", "=q3=Iron Knuckles",		"=ds=#h1#, #w13#", "18.18%" },
-		{ 2941, "", "=q3=Prison Shank", "=ds=#h1#, #w4#", "16.05%" },
-	};
-
-	SWStTrash = {
-		{ 2909, "", "=q1=Red Wool Bandana", "=ds=#m3#" },
-	};
-
 		-------------------------
 		--- Blackfathom Deeps ---
 		-------------------------
@@ -3042,28 +3070,6 @@ AtlasLoot_Data["AtlasLootItems"] = {
 		{ 18945, "", "=q1=Dark Iron Residue", "=ds=#m3#" },
 		{ 11468, "", "=q1=Dark Iron Fanny Pack", "=ds=#m3#" },
 		{ 11446, "", "=q1=A Crumpled Up Note", "=ds=#m2#" },
-	};
-
-		----------------------
-		--- Ragefire Chasm ---
-		----------------------
-
-	RFCTaragaman = {
-		{ 14149, "", "=q3=Subterranean Cape", "=ds=#s4#", "31.59%" },
-		{ 14148, "", "=q3=Crystalline Cuffs", "=ds=#s8#, #a1#", "33.91%" },
-		{ 14145, "", "=q3=Cursed Felblade", "=ds=#h1#, #w10#", "15.98%" },
-		{ 0,"","","" },
-		{ 14540, "", "=q1=Taragaman the Hungerer's Heart", "=ds=#m3#", "100%" },
-	};
-
-	RFCJergosh = {
-		{ 14150, "", "=q3=Robe of Evocation", "=ds=#s5#, #a1#", "36.40%" },
-		{ 14147, "", "=q3=Cavedweller Bracers", "=ds=#s8#, #a3#", "34.35%" },
-		{ 14151, "", "=q3=Chanting Blade", "=ds=#h1#, #w4#", "17.10%" },
-	};
-
-	RFCZelemartheWrathful = {
-		{ 24225, "", "=q1=Blood of the Wrathful", "=ds=#m3#", "100%" },
 	};
 
 		-----------------------

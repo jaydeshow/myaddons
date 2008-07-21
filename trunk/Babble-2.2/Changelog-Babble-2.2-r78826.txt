@@ -1,4 +1,13 @@
 ------------------------------------------------------------------------
+r78826 | StingerSoft | 2008-07-21 01:59:40 -0400 (Mon, 21 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Faction-2.2/Babble-Faction-2.2.lua
+   M /trunk/Babble-2.2/Babble-SpellTree-2.2/Babble-SpellTree-2.2.lua
+
+Babble-2.2:
+- fix ruRU translation in Babble-Faction-2.2
+- added ruRU translation in Babble-SpellTree-2.2
+------------------------------------------------------------------------
 r78753 | StingerSoft | 2008-07-19 17:22:35 -0400 (Sat, 19 Jul 2008) | 3 lines
 Changed paths:
    M /trunk/Babble-2.2/Babble-Boss-2.2/Babble-Boss-2.2.lua

@@ -961,9 +961,9 @@ AtlasLootBossButtons = {
         "";
         "";
         "";
-        "RFCTaragaman";
-        "RFCJergosh";
-        "RFCZelemartheWrathful";
+        "RagefireChasm";
+        "RagefireChasm";
+        "RagefireChasm";
         };
 
     RazorfenDowns = {
@@ -1210,14 +1210,14 @@ AtlasLootBossButtons = {
 
     TheStockade = {
         "";
-        "SWStTargor";
-        "SWStKamDeepfury";
+        "TheStockade";
+        "TheStockade";
         "";
-        "SWStBazilThredd";
-        "SWStDextrenWard";
-        "SWStBruegalIronknuckle";
+        "TheStockade";
+        "TheStockade";
+        "TheStockade";
         "";
-        "SWStTrash";
+        "TheStockade";
         };
 
     TheSunkenTemple = {

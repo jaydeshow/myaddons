@@ -1,0 +1,76 @@
+------------------------------------------------------------------------
+r78847 | profalbert | 2008-07-21 09:26:11 -0400 (Mon, 21 Jul 2008) | 9 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+   M /trunk/Parrot/Code/TriggerConditions.lua
+   M /trunk/Parrot/Data/Auras.lua
+   M /trunk/Parrot/Data/CombatEvents.lua
+   M /trunk/Parrot/Data/TriggerConditions.lua
+   M /trunk/Parrot/Locales/ParrotLocale-enUS.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+   M /trunk/Parrot/Parrot.toc
+
+Parrot:
+- merge with changes in the "new combatlog"-branch
+- weapon-enchants now working
+- can now distinguish between "player killing blow" and "NPC killing 
+blow"
+- fix overheal-calculation
+- support for DAMAGE_SHIELD-events (reactive skills like thorns)
+- changed some localisations to use built-in constants (like PET)
+
+------------------------------------------------------------------------
+r78832 | ananhaid | 2008-07-21 06:19:20 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+   M /trunk/Parrot/Locales/ParrotLocale-deDE.lua
+   M /trunk/Parrot/Locales/ParrotLocale-enUS.lua
+   M /trunk/Parrot/Locales/ParrotLocale-frFR.lua
+   M /trunk/Parrot/Locales/ParrotLocale-koKR.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+
+Parrot:
+- revert last fix about the pet's combatevent change,the locale is not correct.
+------------------------------------------------------------------------
+r78796 | saroz | 2008-07-20 13:53:07 -0400 (Sun, 20 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot: Fix nil error for Shadow+Nature damagetype
+------------------------------------------------------------------------
+r78786 | ananhaid | 2008-07-20 11:09:43 -0400 (Sun, 20 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+
+Parrot: 
+- The pet's combatevent compare with the locale.
+- zhCN/zhTW update.
+------------------------------------------------------------------------
+r78330 | profalbert | 2008-07-13 06:21:15 -0400 (Sun, 13 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/TriggerConditions.lua
+
+Parrot:
+- remove debug-output
+
+------------------------------------------------------------------------
+r78155 | profalbert | 2008-07-09 18:49:11 -0400 (Wed, 09 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- no longer show Mana-gains for pets as Player-mana-gains
+
+------------------------------------------------------------------------
+r77636 | profalbert | 2008-06-30 12:20:25 -0400 (Mon, 30 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+
+Parrot:
+- commented out stuff, so nothing breaks with 2.4.3
+
+------------------------------------------------------------------------
