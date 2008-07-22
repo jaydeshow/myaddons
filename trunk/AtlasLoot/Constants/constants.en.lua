@@ -63,6 +63,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["Query Server"] = true,
     ["Classic Instances"] = true,
     ["BC Instances"] = true,
+    ["Burning Crusade"] = true,
 
     --Text for Options Panel
     ["Atlasloot Options"] = true,

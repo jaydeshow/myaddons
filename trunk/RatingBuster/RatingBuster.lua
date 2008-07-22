@@ -1,6 +1,6 @@
 --[[
 Name: RatingBuster
-Revision: $Revision: 77560 $
+Revision: $Revision: 78903 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
 Description: Converts combat ratings in tooltips into normal percentages.
@@ -22,8 +22,8 @@ local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
 -- AceAddon Initialization
 RatingBuster = AceLibrary("AceAddon-2.0"):new("AceDB-2.0", "AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0")
 RatingBuster.title = "Rating Buster"
-RatingBuster.version = "1.3.7 (r"..gsub("$Revision: 77560 $", "(%d+)", "%1")..")"
-RatingBuster.date = gsub("$Date: 2008-06-28 07:39:18 -0400 (Sat, 28 Jun 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
+RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 78903 $", "(%d+)", "%1")..")"
+RatingBuster.date = gsub("$Date: 2008-07-22 03:35:19 -0400 (Tue, 22 Jul 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 
 -------------------

@@ -556,7 +556,12 @@ if select(2, GetBuildInfo()) >= "7897" then
 *********************
 1.3.8
 - NEW: Support for negative stats
+- Update for 2.4.3: Parry Rating, Defense Rating, and Block Rating: Low-level players will now convert these ratings into their corresponding defensive stats at the same rate as level 34 players
 - Fixed: Better JewelTips support
+- Fixed: Druid - Nurturing Instinct (Str->Agi)
+- Fixed: Mage - Arcane Fortitude (50% -> 100% Armor from Int)
+- Optimized library usage
+- Updated localizations 
 1.3.7a
 - Fixed: Loading error
 1.3.7

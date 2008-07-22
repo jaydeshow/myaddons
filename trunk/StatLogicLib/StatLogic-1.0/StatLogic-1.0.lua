@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 78815 $
+Revision: $Revision: 78899 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-07-20 17:18:31 -0400 (Sun, 20 Jul 2008) $
+LastUpdate: $Date: 2008-07-22 02:29:37 -0400 (Tue, 22 Jul 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -28,7 +28,7 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 78815 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 78899 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -6979,6 +6979,9 @@ local RatingBase = {
 }
 
 -- Formula reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
+--  Parry Rating, Defense Rating, and Block Rating: Low-level players 
+--   will now convert these ratings into their corresponding defensive 
+--   stats at the same rate as level 34 players.
 function StatLogic:GetEffectFromRating(rating, id, level)
 	-- if id is stringID then convert to numberID
 	if type(id) == "string" and RatingNameToID[id] then
@@ -6988,6 +6991,12 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 	if type(rating) ~= "number" or id < 1 or id > 24 then return 0 end
 	-- defaults to player level if not given
 	level = level or UnitLevel("player")
+	--2.4.3  Parry Rating, Defense Rating, and Block Rating: Low-level players 
+	--   will now convert these ratings into their corresponding defensive 
+	--   stats at the same rate as level 34 players.
+	if (id == CR_DEFENSE_SKILL or id == CR_PARRY or id == CR_BLOCK) and level < 34 then
+		level = 34
+	end
 	if level >= 60 then
 		return rating/RatingBase[id]*((-3/82)*level+(131/41)), RatingIDToConvertedStat[id]
 	elseif level >= 10 then

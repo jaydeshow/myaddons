@@ -30,7 +30,7 @@ end
 -------------------------------------------------------------------------------
 -- German localization
 -------------------------------------------------------------------------------
-Dcr:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
+Dcr:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
 
 local L = Dcr.L;
 local LOC = Dcr.LOC;
@@ -289,6 +289,7 @@ L:RegisterTranslations("deDE", function() return {
     [LOC.AFFLICTEDBY] = LOC.AFFLICTEDBY,
     
     [LOC.SUCCESSCAST] = LOC.SUCCESSCAST,
+    [LOC.FAILEDCAST] = LOC.FAILEDCAST,
     
     [LOC.HANDLEHELP] = LOC.HANDLEHELP,
 

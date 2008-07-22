@@ -742,23 +742,16 @@ AtlasLoot_TableNames = {};
 	AtlasLoot_TableNames["VWOWScarletM"] = { AL["Chain of the Scarlet Crusade"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWBlackrockD"] = { AL["The Gladiator"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWIronweave"] = { AL["Ironweave Battlesuit"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["VWOWScholoCloth"] = { AL["Necropile Raiment"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["VWOWScholoLeather"] = { AL["Cadaverous Garb"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["VWOWScholoMail"] = { AL["Bloodmail Regalia"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["VWOWScholoPlate"] = { AL["Deathbone Guardian"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["VWOWScholo"] = { BabbleZone["Scholomance"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWStrat"] = { AL["The Postmaster"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWScourgeInvasion"] = { AL["Scourge Invasion"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWSpiderKiss"] = { AL["Spider's Kiss"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWDalRend"] = { AL["Dal'Rend's Arms"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["VWOWZGRings"] = { AL["Zul'Gurub Rings"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["VWOWPrimalBlessing"] = { AL["Primal Blessing"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["VWOWHakkariBlades"] = { AL["The Twin Blades of Hakkari"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["VWOWZulGurub"] = { BabbleZone["Zul'Gurub"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWShardOfGods"] = { AL["Shard of the Gods"], "AtlasLootSetItems" };
 	AtlasLoot_TableNames["VWOWSpiritofEskhandar"] = { AL["Spirit of Eskhandar"], "AtlasLootSetItems" };
   --The Burning Crusade Sets
-	AtlasLoot_TableNames["TBCLatrosFlurry"] = { AL["Latro's Flurry"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["TBCTwinStars"] = { AL["The Twin Stars"], "AtlasLootSetItems" };
-	AtlasLoot_TableNames["TBCAzzinothBlades"] = { AL["The Twin Blades of Azzinoth"], "AtlasLootSetItems" };
+	AtlasLoot_TableNames["TBCSets"] = { AL["Burning Crusade"], "AtlasLootSetItems" };
   --Crafted Sets - Blacksmithing
 	AtlasLoot_TableNames["ImperialPlate"] = { AL["Imperial Plate"], "AtlasLootCrafting" };
 	AtlasLoot_TableNames["TheDarksoul"] = { AL["The Darksoul"], "AtlasLootCrafting" };

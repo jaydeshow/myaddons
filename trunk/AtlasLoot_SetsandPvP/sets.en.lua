@@ -58,35 +58,30 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 22303, "", "=q3=Ironweave Pants", "=ds=#s11#, =q2=#n22# (#z5#)", "23.33%" },
 		{ 22311, "","=q3=Ironweave Boots", "=ds=#s12#, =q2=#n23# (#z9#)", "12.31%" },
 	};
-
-	VWOWScholoCloth = {
+	
+	VWOWScholo = {
 		{ 0, "INV_Box_01", "=q6=#pre60s6#", "=ec1=#a1#. =q1=#z5#" },
 		{ 14633, "", "=q3=Necropile Mantle", "=ds=#s3#", "1.12%" },
 		{ 14626, "", "=q3=Necropile Robe", "=ds=#s5#", "1.27%" },
 		{ 14629, "", "=q3=Necropile Cuffs", "=ds=#s8#", "1.03%" },
 		{ 14632, "", "=q3=Necropile Leggings", "=ds=#s11#", "0.85%" },
 		{ 14631, "", "=q3=Necropile Boots", "=ds=#s12#", "0.88%" },
-	};
-
-	VWOWScholoLeather = {
+		{ 0,"","","" },
 		{ 0, "INV_Box_01", "=q6=#pre60s7#", "=ec1=#a2#. =q1=#z5#" },
 		{ 14637, "", "=q3=Cadaverous Armor", "=ds=#s5#", "1.51%" },
 		{ 14640, "", "=q3=Cadaverous Gloves", "=ds=#s9#", "0.82%" },
 		{ 14636, "", "=q3=Cadaverous Belt", "=ds=#s10#", "0.60%" },
 		{ 14638, "", "=q3=Cadaverous Leggings", "=ds=#s11#", "1.09%" },
 		{ 14641, "", "=q3=Cadaverous Walkers", "=ds=#s12#", "0.67%" },
-	};
-
-	VWOWScholoMail = {
+		{ 0,"","","" },
+		{ 0,"","","" },
 		{ 0, "INV_Box_01", "=q6=#pre60s8#", "=ec1=#a3#. =q1=#z5#" },
 		{ 14611, "", "=q3=Bloodmail Hauberk", "=ds=#s5#", "0.54%" },
 		{ 14615, "", "=q3=Bloodmail Gauntlets", "=ds=#s9#", "0.09%" },
 		{ 14614, "", "=q3=Bloodmail Belt", "=ds=#s10#", "0.60%" },
 		{ 14612, "", "=q3=Bloodmail Legguards", "=ds=#s11#", "0.42%" },
 		{ 14616, "", "=q3=Bloodmail Boots", "=ds=#s12#", "0.36%" },
-	};
-
-	VWOWScholoPlate = {
+		{ 0,"","","" },
 		{ 0, "INV_Box_01", "=q6=#pre60s9#", "=ec1=#a4#. =q1=#z5#" },
 		{ 14624, "", "=q3=Deathbone Chestplate", "=ds=#s5#", "0.45%" },
 		{ 14622, "", "=q3=Deathbone Gauntlets", "=ds=#s9#", "0.45%" },
@@ -143,7 +138,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 12939, "", "=q3=Dal'Rend's Tribal Guardian", "=ds=#h4#, #w10#, =q2=#n40#", "7.44%" },
 	};
 
-	VWOWZGRings = {
+	VWOWZulGurub = {
 		{ 0, "INV_Box_01", "=q6=#pre60s16#", "=q1=#z8#" },
 		{ 19898, "", "=q3=Seal of Jin", "=ds=#s13#, =q2=#n28#", "8.81%" },
 		{ 19925, "", "=q3=Band of Jin", "=ds=#s13#, =q2=#n29#", "10.36%" },
@@ -152,9 +147,9 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 19873, "", "=q3=Overlord's Crimson Band", "=ds=#s13#, =q2=#n33#", "10.12%" },
 		{ 19912, "", "=q3=Overlord's Onyx Band", "=ds=#s13#, =q2=#n30#", "14.51%" },
 		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#pre60s22#", "=q1=#z8#" },
+		{ 19896, "", "=q4=Thekal's Grasp", "=ds=#h3#, #w13#, =q2=#n28#", "5.20%" },
+		{ 19910, "", "=q4=Arlokk's Grasp", "=ds=#h4#, #w13#, =q2=#n30#", "4.54%" },
 		{ 0,"","","" },
 		{ 0,"","","" },
 		{ 0,"","","" },
@@ -166,15 +161,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 0, "INV_Box_01", "=q6=#pre60s19#", "=q1=#z8#" },
 		{ 19905, "", "=q3=Zanzil's Band", "=ds=#s13#, =q2=#n32#", "9.24%" },
 		{ 19893, "", "=q3=Zanzil's Seal", "=ds=#s13#, =q2=#n33#", "10.12%" },
-	};
-
-	VWOWPrimalBlessing = {
-		{ 0, "INV_Box_01", "=q6=#pre60s22#", "=q1=#z8#" },
-		{ 19896, "", "=q4=Thekal's Grasp", "=ds=#h3#, #w13#, =q2=#n28#", "5.20%" },
-		{ 19910, "", "=q4=Arlokk's Grasp", "=ds=#h4#, #w13#, =q2=#n30#", "4.54%" },
-	};
-
-	VWOWHakkariBlades = {
+		{ 0,"","","" },		
 		{ 0, "INV_Box_01", "=q6=#pre60s21#", "=q1=#z8#" },
 		{ 19865, "", "=q4=Warblade of the Hakkari", "=ds=#h3#, #w10#, =q2=#n34#", "5.18%" },
 		{ 19866, "", "=q4=Warblade of the Hakkari", "=ds=#h4#, #w10#, =q2=#n33#", "4.55%" },
@@ -197,6 +184,27 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 --------------------------------
 --- The Burning Crusade Sets ---
 --------------------------------
+
+	TBCSets = {
+		{ 0, "INV_Box_01", "=q6=#bcs3#", "=q1=#z17#" },
+		{ 34703, "", "=q3=Latro's Dancing Blade", "=ds=#h1#, #w10#", "" },
+		{ 28189, "", "=q3=Latro's Shifting Sword", "=ds=#h1#, #w10#", "" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#bcs1#", "=q1=#z17#" },
+		{ 31338, "", "=q4=Charlotte's Ivy", "=ds=#s2#", "0.01%" },
+		{ 31339, "", "=q4=Lola's Eve", "=ds=#s13#", "0.01%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#bcs2#", "=q2=#n137#, =q1=#z18#" },
+		{ 32837, "", "=q5=Warglaive of Azzinoth", "=ds=#h3#, #w10#, =q1=#m1# =ds=#c9#, #c6#" },
+		{ 32838, "", "=q5=Warglaive of Azzinoth", "=ds=#h4#, #w10#, =q1=#m1# =ds=#c9#, #c6#" },
+	};
 
 	TBCLatrosFlurry = {
 		{ 0, "INV_Box_01", "=q6=#bcs3#", "=q1=" },

@@ -1579,23 +1579,8 @@ AtlasLoot_ButtonRegistry = {
 		Back_Page = "PRE60SET";
 		Back_Title = AL["Pre 60 Sets"];
 		};
-	["VWOWScholoCloth"] = {
-		Title = AL["Necropile Raiment"];
-		Back_Page = "PRE60SET";
-		Back_Title = AL["Pre 60 Sets"];
-		};
-	["VWOWScholoLeather"] = {
-		Title = AL["Cadaverous Garb"];
-		Back_Page = "PRE60SET";
-		Back_Title = AL["Pre 60 Sets"];
-		};
-	["VWOWScholoMail"] = {
-		Title = AL["Bloodmail Regalia"];
-		Back_Page = "PRE60SET";
-		Back_Title = AL["Pre 60 Sets"];
-		};
-	["VWOWScholoPlate"] = {
-		Title = AL["Deathbone Guardian"];
+	["VWOWScholo"] = {
+		Title = BabbleZone["Scholomance"];
 		Back_Page = "PRE60SET";
 		Back_Title = AL["Pre 60 Sets"];
 		};
@@ -1614,23 +1599,13 @@ AtlasLoot_ButtonRegistry = {
 		Back_Page = "PRE60SET";
 		Back_Title = AL["Pre 60 Sets"];
 		};
-	["VWOWZGRings"] = {
-		Title = AL["Zul'Gurub Rings"];
+	["VWOWZulGurub"] = {
+		Title = BabbleZone["Zul'Gurub"];
 		Back_Page = "PRE60SET";
 		Back_Title = AL["Pre 60 Sets"];
 		};
 	["VWOWSpiritofEskhandar"] = {
 		Title = AL["Spirit of Eskhandar"];
-		Back_Page = "PRE60SET";
-		Back_Title = AL["Pre 60 Sets"];
-		};
-	["VWOWHakkariBlades"] = {
-		Title = AL["The Twin Blades of Hakkari"];
-		Back_Page = "PRE60SET";
-		Back_Title = AL["Pre 60 Sets"];
-		};
-	["VWOWPrimalBlessing"] = {
-		Title = AL["Primal Blessing"];
 		Back_Page = "PRE60SET";
 		Back_Title = AL["Pre 60 Sets"];
 		};
@@ -1645,18 +1620,8 @@ AtlasLoot_ButtonRegistry = {
 		Back_Title = AL["Pre 60 Sets"];
 		};
   --The Burning Crusade WoW Armor Sets
-	["TBCLatrosFlurry"] = {
-		Title = AL["Latro's Flurry"];
-		Back_Page = "PRE60SET";
-		Back_Title = AL["Pre 60 Sets"];
-		};
-	["TBCTwinStars"] = {
-		Title = AL["The Twin Stars"];
-		Back_Page = "PRE60SET";
-		Back_Title = AL["Pre 60 Sets"];
-		};
-	["TBCAzzinothBlades"] = {
-		Title = AL["The Twin Blades of Azzinoth"];
+	["TBCSets"] = {
+		Title = AL["Burning Crusade"];
 		Back_Page = "PRE60SET";
 		Back_Title = AL["Pre 60 Sets"];
 		};

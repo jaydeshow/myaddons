@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Trainer-2.2
-Revision: $Rev: 75273 $
+Revision: $Rev: 78908 $
 Authors(s): Kodewulf (kodewulf@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Trainer-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Trainer-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 75273 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 78908 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -679,6 +679,102 @@ BabbleTrainer:RegisterTranslations("esES", function() return {
 	["Warrior Trainer"] = "Instructor de guerreros",
 	["Weapon Master"] = "Maestro armero",
 	["Wolf Riding Instructor"] = "Instructor de jinetes de lobos",
+} end)
+
+BabbleTrainer:RegisterTranslations("ruRU", function() return {
+	-- Trainer types
+	["Armor Crafter"] = "Доспехи",
+	["Artisan Alchemist"] = "Artisan Alchemist",
+	["Artisan Blacksmith"] = "Artisan Blacksmith",
+	["Artisan Enchanter"] = "Artisan Enchanter",
+	["Artisan Engineer"] = "Artisan Engineer",
+	["Artisan Leatherworker"] = "Artisan Leatherworker",
+	["Artisan Tailor"] = "Artisan Tailor",
+	["Bael'dun Chief Engineer"] = "Главный инженер Бейл'дана",
+	["Bat Handler"] = "Дрессировщик летучих мышей",
+	["Blacksmith"] = "Кузнечное дело",
+	["Chief Engineer"] = "Главный инженер",
+	["Cooking Trainer"] = "Учитель кулинарии",
+	["Demon Trainer"] = "Наставник демонов",
+	["Druid Trainer"] = "Наставник друидов",
+	["Engineer"] = "Инженер",
+	["Engineering Trainer"] = "Учитель инженерного дела",
+	["Expert Alchemist"] = "Expert Alchemist",
+	["Expert Blacksmith"] = "Expert Blacksmith",
+	["Expert Enchanter"] = "Expert Enchanter",
+	["Expert Engineer"] = "Expert Engineer",
+	["Expert Jewelcrafter"] = "Expert Jewelcrafter",
+	["Expert Leatherworker"] = "Expert Leatherworker",
+	["Expert Tailor"] = "Expert Tailor",
+	["Explorers' League"] = "Explorers' League",
+	["First Aid Trainer"] = "Учитель первой помощи",
+	["Fishing Trainer"] = "Учитель рыбной ловли",
+	["Goblin Engineering Trainer"] = "Наставник гоблинского инженерного дела",
+	["Grand Master Alchemist"] = "Grand Master Alchemist",
+	["Grand Master Blacksmith"] = "Grand Master Blacksmith",
+	["Grand Master Enchanter"] = "Grand Master Enchanter",
+	["Grand Master Engineer"] = "Grand Master Engineer",
+	["Grand Master Jewelcrafter"] = "Grand Master Jewelcrafter",
+	["Grand Master Leatherworker"] = "Grand Master Leatherworker",
+	["Grand Master Skinner"] = "Grand Master Skinner",
+	["Grand Master Tailor"] = "Grand Master Tailor",
+	["Head Eco-Dome Engineer"] = "Главный инженер Эко-Сферы",
+	["Herbalism Trainer"] = "Учитель травничества",
+	["Horse Riding Instructor"] = "Horse Riding Instructor",
+	["Hunter Trainer"] = "Наставник охотников",
+	["Journeyman Alchemist"] = "Journeyman Alchemist",
+	["Journeyman Alchemist Trainer"] = "Journeyman Alchemist Trainer",
+	["Journeyman Blacksmith"] = "Journeyman Blacksmith",
+	["Journeyman Enchanter"] = "Journeyman Enchanter",
+	["Journeyman Engineer"] = "Journeyman Engineer",
+	["Journeyman Jewelcrafter"] = "Journeyman Jewelcrafter",
+	["Journeyman Leatherworker"] = "Journeyman Leatherworker",
+	["Journeyman Tailor"] = "Journeyman Tailor",
+	["Kodo Riding Instructor"] = "Kodo Riding Instructor",
+	["Leatherworking Trainer"] = "Учитель кожевничества",
+	["Mage Trainer"] = "Наставник магов",
+	["Master Alchemist"] = "Мастер алхимии",
+	["Master Blacksmith"] = "Мастер кузнечного дела",
+	["Master Dragonscale Leatherworker"] = "Master Dragonscale Leatherworker",
+	["Master Elemental Leatherworker"] = "Master Elemental Leatherworker",
+	["Master Enchanter"] = "Master Enchanter",
+	["Master Engineer"] = "Мастер механики",
+	["Master Gnome Engineer"] = "Master Gnome Engineer",
+	["Master Goblin Engineer"] = "Master Goblin Engineer",
+	["Master Jewelcrafter"] = "Master Jewelcrafter",
+	["Master Leatherworker"] = "Master Leatherworker",
+	["Master Leatherworking Trainer"] = "Учитель мастеров кожевенного дела",
+	["Master Shadoweave Tailor"] = "Учитель шитья из ткани Теней",
+	["Master Tailor"] = "Мастер портняжного дела ",
+	["Master Tribal Leatherworker"] = "Master Tribal Leatherworker",
+	["Mining Trainer"] = "Учитель горного дела",
+	["Nightsaber Riding Instructor"] = "Nightsaber Riding Instructor",
+	["Owl Trainer"] = "Дрессировщик сов",
+	["Paladin Trainer"] = "Наставник паладинов",
+	["Pet Trainer"] = "Дрессировщица",
+	["Portal Trainer"] = "Изучение порталов",
+	["Priest Trainer"] = "Наставник жрецов",
+	["Ram Riding Instructor"] = "Ram Riding Instructor",
+	["Raptor Handler"] = "Укротитель ящеров",
+	["Raptor Riding Trainer"] = "Raptor Riding Trainer",
+	["Riding Instructor"] = "Учитель верховой езды",
+	["Rogue Trainer"] = "Наставник разбойников",
+	["Royal Apothecary Society"] = "Королевское фармацевтическое общество",
+	["Saber Handler"] = "Дрессировщица саблезубов",
+	["Shaman Trainer"] = "Наставник шаманов",
+	["Skinner"] = "Живодер",
+	["Skinning Trainer"] = "Учитель снятия шкур",
+	["Speciality Engineer"] = "Speciality Engineer",
+	["Superior Leatherworker"] = "Опытный кожевник",
+	["Transportation Engineer"] = "Транспортный инженер",
+	["Trauma Surgeon"] = "Травматолог",
+	["Tribal Leatherworking Trainer"] = "Учитель кожевничества: традиции предков",
+	["Unbalanced Engineer"] = "Нервный механик",
+	["Undead Horse Riding Instructor"] = "Undead Horse Riding Instructor",
+	["Warlock Trainer"] = "Наставник чернокнижников",
+	["Warrior Trainer"] = "Наставник воинов",
+	["Weapon Master"] = "Эксперт по оружию",
+	["Wolf Riding Instructor"] = "Wolf Riding Instructor",
 } end)
 
 BabbleTrainer:Debug()

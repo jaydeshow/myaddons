@@ -1,4 +1,22 @@
 ------------------------------------------------------------------------
+r78870 | hegarol | 2008-07-21 16:40:21 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.en.lua
+   M /trunk/AtlasLoot/Core/ButtonRegistry.lua
+   M /trunk/AtlasLoot/Core/Sets.lua
+   M /trunk/AtlasLoot/DefaultFrame/DewDropDown.lua
+   M /trunk/AtlasLoot/TableRegister/loottables.en.lua
+
+AtlasLoot:
+- sets section changes
+------------------------------------------------------------------------
+r78864 | trasher | 2008-07-21 12:52:56 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Constants/constants.fr.lua
+
+AtlasLoot:
+- frFR update
+------------------------------------------------------------------------
 r78851 | trasher | 2008-07-21 10:49:38 -0400 (Mon, 21 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot/Constants/constants.fr.lua

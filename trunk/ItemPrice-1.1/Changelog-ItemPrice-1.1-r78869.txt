@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r78869 | bam | 2008-07-21 16:39:31 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/ItemPrice-1.1/ItemPrice-1.1.lua
+
+ItemPrice-1.1:
+- Price updates.
+------------------------------------------------------------------------
 r78385 | bam | 2008-07-14 08:40:16 -0400 (Mon, 14 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/ItemPrice-1.1/ItemPrice-1.1.lua
