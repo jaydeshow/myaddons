@@ -1,4 +1,4 @@
--- $Rev: 78847 $
+-- $Rev: 78856 $
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("zhCN", function() return {
@@ -21,14 +21,14 @@ L:AddTranslations("zhCN", function() return {
 
 local L_CombatEvents = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatEvents")
 L_CombatEvents:AddTranslations("zhCN", function() return {
-		["[Text] (crit)"] = "[Text] （爆击）",
-		["[Text] (crushing)"] = "[Text] （碾压）",
-		["[Text] (glancing)"] = "[Text] （偏斜）",
-		[" ([Amount] absorbed)"] = " （吸收 [Amount]）",
-		[" ([Amount] blocked)"] = " （格挡 [Amount]）",
-		[" ([Amount] resisted)"] = " （抵抗 [Amount]）",
-		[" ([Amount] vulnerable)"] = " （易伤 [Amount]）",
-		[" ([Amount] overheal)"] = " （过量治疗 [Amount]）",
+		["[Text] (crit)"] = "[Text]（爆击）",
+		["[Text] (crushing)"] = "[Text]（碾压）",
+		["[Text] (glancing)"] = "[Text]（偏斜）",
+		[" ([Amount] absorbed)"] = "（吸收 [Amount]）",
+		[" ([Amount] blocked)"] = "（格挡 [Amount]）",
+		[" ([Amount] resisted)"] = "（抵抗 [Amount]）",
+		[" ([Amount] vulnerable)"] = "（易伤 [Amount]）",
+		[" ([Amount] overheal)"] = "（过量治疗 [Amount]）",
 		["Events"] = "事件",
 		["Change event settings"] = "改变事件设置",
 		["Incoming"] = "承受",
@@ -70,7 +70,7 @@ L_CombatEvents:AddTranslations("zhCN", function() return {
 		["Partial resists"] = "部分抵抗",
 		["Vulnerability bonuses"] = "易伤加成",
 		["Overheals"] = "过量治疗",
-		["<Text>"] = "<Text>",
+		["<Text>"] = "<文本>",
 		["Enabled"] = "应用",
 		["Whether to enable showing this event modifier."] = "是否应用事件修饰显示。",
 		["What color this event modifier takes on."] = "事件修饰采用何种颜色。",
@@ -87,7 +87,7 @@ L_CombatEvents:AddTranslations("zhCN", function() return {
 		["Inherit"] = "继承",
 		["Thin"] = "细",
 		["Thick"] = "粗",
-		["<Tag>"] = "<Tag>",
+		["<Tag>"] = "<标签>",
 		["Uncategorized"] = "未分类",
 		["Tag"] = "标识",
 		["Tag to show for the current event."] = "标识显示当前事件。",
@@ -339,14 +339,17 @@ L_Auras:AddTranslations("zhCN", function() return {
 		["The name of the buff gained."] = "获得增益的名称。",
 		["Item buff gains"] = "获得物品增益",
 		["The name of the item buff gained."] = "获得物品增益的名称。",
-		["The rank of the item buff gained."] = "获得物品增益的等级。",
+		["The name of the item, the buff has been applied to."] = "获得物品增益的名称。",
+		--["The rank of the item buff gained."] = "获得物品增益的等级。",-- not used anymore
 		["Debuff fades"] = "减益消退",
 		["The name of the debuff lost."] = "消退减益的名称。",
 		["Buff fades"] = "增益消退",
 		["The name of the buff lost."] = "消退增益的名称。",
 		["Item buff fades"] = "物品增益消退",
 		["The name of the item buff lost."] = "消退物品增益的名称。",
-		["The rank of the item buff lost."] = "消退物品增益的等级。",
+		["The name of the item, the buff has faded from."] = "消退物品增益的名称。",
+		--["The rank of the item buff lost."] = "消退物品增益的等级。",-- not used anymore
+		
 		["Self buff gain"] = "获得自身增益",
 		["<Buff name>"] = "<增益名称>",
 		["Self buff fade"] = "自身增益消退",
@@ -410,6 +413,7 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		["The spell or ability that the enemy attacked you with."] = "敌人攻击你所用的法术或技能。",
 		["DoTs and HoTs"] = "DoT 和 HoT",
 		["Skill DoTs"] = "技能 DoT",
+		["Reactive skills"] = "反应技能",
 		["Ability misses"] = "技能未命中",
 		["Ability dodges"] = "技能躲闪",
 		["Ability parries"] = "技能招架",
@@ -463,7 +467,7 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		["Pet skills"] = "宠物技能",
 		["Pet skill"] = "宠物技能",
 		["Pet skill damage"] = "宠物技能伤害",
-		["Pet [Amount] ([Skill])"] = "[Amount] （[Skill]）（宠物）",
+		["Pet [Amount] ([Skill])"] = "[Amount]（[Skill]）（宠物）",
 		["The ability or spell your pet used."] = "宠物所使用的技能或法术。",
 		["Pet ability misses"] = "技能未命中（宠物）",
 		["Pet ability dodges"] = "技能躲闪（宠物）",
@@ -498,10 +502,10 @@ L_CombatEvents_Data:AddTranslations("zhCN", function() return {
 		[" (%d losses)"] = "（失去%s点）",
 		["Combo points"] = "连击点",
 		["Combo point gain"] = "获得连击点",
-		["[Num] CP"] = "[Num]点CP",
-		["The current number of combo points."] = "当前的连击点数",
+		["[Num] CP"] = "[Num]连击点",
+		["The current number of combo points."] = "当前的连击点数。",
 		["Combo points full"] = "连击点已满",
-		["[Num] CP Finish It!"] = "[Num]点CP 终结技！",
+		["[Num] CP Finish It!"] = "[Num]连击点 终结技！",
 		["Honor gains"] = "获得荣誉",
 		["The amount of honor gained."] = "获得的荣誉点数。",
 		["The name of the enemy slain."] = "被杀死的敌人名称。",
@@ -587,6 +591,7 @@ L_TriggerConditions_Data:AddTranslations("zhCN", function() return {
 		["Self health percent"] = "自身血量百分比",
 		["Self mana percent"] = "自身法力百分比",
 		["Pet health percent"] = "宠物血量百分比",
+		["Pet mana percent"] = "宠物法力百分比",
 		["Incoming block"] = "承受格挡",
 		["Incoming crit"] = "承受爆击",
 		["Incoming dodge"] = "承受躲闪",
@@ -607,7 +612,6 @@ L_TriggerConditions_Data:AddTranslations("zhCN", function() return {
 
 local L_CombatStatus = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatStatus")
 L_CombatStatus:AddTranslations("zhCN", function() return {
-	-- Parrot_CombatStatus:
 		["Combat status"] = "战斗状态",
 		["Enter combat"] = "进入战斗",
 		["+Combat"] = "+战斗",

@@ -1,4 +1,24 @@
 ------------------------------------------------------------------------
+r78898 | kurax | 2008-07-22 02:14:49 -0400 (Tue, 22 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP: Locales update
+------------------------------------------------------------------------
+r78871 | hegarol | 2008-07-21 16:41:11 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- loot structure changes
+------------------------------------------------------------------------
 r78642 | hegarol | 2008-07-17 16:02:17 -0400 (Thu, 17 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
@@ -325,32 +345,4 @@ Changed paths:
 
 AtlasLoot_SetsandPvP:
 - small change
-------------------------------------------------------------------------
-r77095 | hegarol | 2008-06-19 12:12:41 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
-
-AtlasLoot_SetsandPvP:
-- complete overhaul of TCG section
-------------------------------------------------------------------------
-r77075 | hegarol | 2008-06-19 06:31:04 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
-
-AtlasLoot_SetsandPvP:
-- more ids for tcg loot
-------------------------------------------------------------------------
-r77063 | hegarol | 2008-06-19 01:18:22 -0400 (Thu, 19 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
-
-AtlasLoot_SetsandPvP:
-- id for TCG loot added
-------------------------------------------------------------------------
-r76900 | hegarol | 2008-06-17 01:34:18 -0400 (Tue, 17 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/WorldPvP.en.lua
-
-AtlasLoot_SetsandPvP:
-- bugfix
 ------------------------------------------------------------------------

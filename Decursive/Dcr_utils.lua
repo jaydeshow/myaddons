@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["DCR_init.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-04-19 13:50:24 -0400 (Sat, 19 Apr 2008) $", "$Revision: 70492 $");
+D:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
 
 local L = D.L;
 local BC = D.BC;
@@ -61,20 +61,29 @@ function D:MakePlayerName (name) --{{{
 end --}}}
 
 function D:PetUnitName (Unit, Check) -- {{{
-    local Name = (UnitName(Unit));
+    local Name = (self:UnitName(Unit));
 
     if not Name or Name == DC.UNKNOWN  then
-	Name = DC.UNKNOWN .. "_" .. Unit;
+	Name = DC.UNKNOWN .. "-" .. Unit;
 	D:Debug("Name of %s is unknown", Unit);
     end
 
     if not Check or (not UnitIsPlayer(Unit) and Unit ~= "focus") then
-	Name =  DC.PET .. " - " .. Name;
+	Name =  DC.PET .. "-" .. Name;
     end
     
     return Name;
 
 end -- }}}
+
+function D:UnitName(Unit)
+    local name, server = UnitName(Unit);
+	if ( server and server ~= "" ) then
+	    return name.."-"..server;
+	else
+	    return name;
+	end 
+end
 
 function D:MakeAfflictionName (name) --{{{
     if (name) then

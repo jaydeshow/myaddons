@@ -1,4 +1,4 @@
-Decursive/Changelog-Decursive-r78781.txt
+Decursive/Changelog-Decursive-r78906.txt
 Decursive/localization.cn.lua
 Decursive/iconOFF.tga
 Decursive/localization.lua
@@ -36,3 +36,5 @@ Decursive/GPL.txt
 Decursive/loc_lists.txt
 Decursive/Textures/GoldBorder.tga
 Decursive/Textures/BackDrop.tga
+Decursive/Sounds/AfflictionAlert.wav
+Decursive/Sounds/FailedSpell.wav

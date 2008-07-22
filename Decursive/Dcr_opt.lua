@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["localization.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
+D:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
 
 local L  = D.L;
 local BC = D.BC;
@@ -154,7 +154,7 @@ D.defaults = { -- {{{
     PlaySound = true,
 
     -- The sound file to use
-    SoundFile = "Sound\\Doodad\\BellTollTribal.wav";
+    SoundFile = DC.AfflictionSound;
 
     -- Example to change the sound : /run Dcr.profile.SoundFile = "Sound\\interface\\AuctionWindowOpen.wav"
 
@@ -1594,7 +1594,7 @@ function D:ShowHideDebuffsFrame ()
 
 	for ID, MF in pairs(D.MicroUnitF.ExistingPerID) do
 	    if MF.IsDebuffed then
-		D:ScheduleEvent("updMUF"..i, D.SpecialEvents_UnitDebuffLost, i * (D.profile.ScanTime / 2), D, MF.CurrUnit, "Test item");
+		D:ScheduleEvent("updMUF"..i, D.DummyDebuff, i * (D.profile.ScanTime / 2), D, MF.CurrUnit, "Test item");
 		i = i + 1;
 	    end
 	end

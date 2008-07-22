@@ -116,7 +116,7 @@ do
 	if LibStub then
 	    for k,v in pairs(UseLibStub) do
 		if LibStub:GetLibrary(k, true) then
-		    if select(2, LibStub:GetLibrary(k)) < v then
+		    if (select(2, LibStub:GetLibrary(k))) < v then
 			table.insert(Errors, ("The shared library |cFF00FF00%s|r is out-dated, revision |cFF0077FF%s|r at least is required.\n"):format(k, tostring(v)));
 		    end
 		else
@@ -173,7 +173,7 @@ do
 
 	-- if no fatal error let this file update the date and revision of Decursive
 	if DcrDiagStatus ~= 2 then
-	    Dcr:SetDateAndRevision("$Date: 2008-04-27 17:49:45 -0400 (Sun, 27 Apr 2008) $", "$Revision: 71833 $");
+	    Dcr:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
 	end
 
 	-- if the diagnostic was requested by the user, we also test AceEvent functionalities {{{ -

@@ -60,6 +60,7 @@ AL:RegisterTranslations("frFR", function() return {
     ["Add to QuickLooks:"] = "Ajouter à QuickLook :",
     ["Assign this loot table\n to QuickLook"] = "Assigner cette table de loot\n à QuickLook",
     ["Req. Rating:"] = "Côte perso. :",
+    --["Query Server"] = true,
     ["Classic Instances"] = "Instances classiques",
     ["BC Instances"] = "Instances BC",
 
@@ -94,14 +95,22 @@ AL:RegisterTranslations("frFR", function() return {
     ["Search options"] = "Options de la recherche",
     ["Partial matching"] = "Correspondance partielle",
     ["If checked, AtlasLoot search item names for a partial match."] = "Si coché, AtlasLoot recherche le nom d'un objet avec une correspondance partielle.",
-    ["You don't have any module selected to search on!"] = "Vous n'avez pas sélectionné de module pour la recherche!",
-
+    ["You don't have any module selected to search on!"] = "Vous n'avez pas sélectionné de module pour la recherche !",
+    --The next 4 lines are the tooltip for the Server Query Button
+    --The translation doesn't have to be literal, just re-write the
+    --sentences as you would naturally and break them up into 4 roughly
+    --equal lines.
+    ["Queries the server for all items"] = "Interroge le serveur pour les objets",
+    ["on this page. The items will be"] = "de cette page. Les objets seront",
+    ["refreshed when you next mouse"] = "mis à jour une fois que vous aurez passé",
+    ["over them."] = "votre souris dessus.",
+        
     --Slash commands
     ["reset"] = "Réinitialiser",
     --["options"] = true,
     ["Reset complete!"] = "Réinitialisation complète !",
 
-	--Error Messages and warnings
+    --Error Messages and warnings
     ["AtlasLoot Error!"] = "Erreur AtlasLoot!",
     ["WishList Full!"] = "WishList complète!",
     [" added to the WishList."] = " a été ajouté à la WishList",

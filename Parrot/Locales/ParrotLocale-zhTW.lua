@@ -1,4 +1,4 @@
--- $Rev: 78847 $
+-- $Rev: 78904 $
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("zhTW", function() return {
@@ -21,14 +21,14 @@ L:AddTranslations("zhTW", function() return {
 
 local L_CombatEvents = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatEvents")
 L_CombatEvents:AddTranslations("zhTW", function() return {
-		["[Text] (crit)"] = "[Text] （爆擊）",
-		["[Text] (crushing)"] = "[Text] （碾壓）",
-		["[Text] (glancing)"] = "[Text] （偏斜）",
-		[" ([Amount] absorbed)"] = " （吸收 [Amount]）",
-		[" ([Amount] blocked)"] = " （格擋 [Amount]）",
-		[" ([Amount] resisted)"] = " （抵抗 [Amount]）",
-		[" ([Amount] vulnerable)"] = " （易傷 [Amount]）",
-		[" ([Amount] overheal)"] = " （過量治療 [Amount]）",
+		["[Text] (crit)"] = "[Text]（爆擊）",
+		["[Text] (crushing)"] = "[Text]（碾壓）",
+		["[Text] (glancing)"] = "[Text]（擦過）",
+		[" ([Amount] absorbed)"] = "（吸收 [Amount]）",
+		[" ([Amount] blocked)"] = "（格擋 [Amount]）",
+		[" ([Amount] resisted)"] = "（抵抗 [Amount]）",
+		[" ([Amount] vulnerable)"] = "（易傷 [Amount]）",
+		[" ([Amount] overheal)"] = "（過量治療 [Amount]）",
 		["Events"] = "事件",
 		["Change event settings"] = "改變事件設置",
 		["Incoming"] = "承受",
@@ -64,13 +64,13 @@ L_CombatEvents:AddTranslations("zhTW", function() return {
 		["The length at which to shorten spell names."] = "需要進行法術名稱縮寫的長度。",
 		["Critical hits/heals"] = "爆擊傷害/治療",
 		["Crushing blows"] = "碾壓",
-		["Glancing hits"] = "偏斜",
+		["Glancing hits"] = "擦過",
 		["Partial absorbs"] = "部分吸收",
 		["Partial blocks"] = "部分格擋",
 		["Partial resists"] = "部分抵抗",
 		["Vulnerability bonuses"] = "易傷加成",
 		["Overheals"] = "過量治療",
-		["<Text>"] = "<Text>",
+		["<Text>"] = "<文字>",
 		["Enabled"] = "啟用",
 		["Whether to enable showing this event modifier."] = "是否啟用事件修飾顯示。",
 		["What color this event modifier takes on."] = "事件修飾採用何種顏色。",
@@ -87,7 +87,7 @@ L_CombatEvents:AddTranslations("zhTW", function() return {
 		["Inherit"] = "繼承",
 		["Thin"] = "細",
 		["Thick"] = "粗",
-		["<Tag>"] = "<Tag>",
+		["<Tag>"] = "<標簽>",
 		["Uncategorized"] = "未分類",
 		["Tag"] = "標識",
 		["Tag to show for the current event."] = "標識顯示目前事件。",
@@ -339,14 +339,17 @@ L_Auras:AddTranslations("zhTW", function() return {
 		["The name of the buff gained."] = "獲得增益的名稱。",
 		["Item buff gains"] = "獲得物品增益",
 		["The name of the item buff gained."] = "獲得物品增益的名稱。",
-		["The rank of the item buff gained."] = "獲得物品增益的等級。",
+		["The name of the item, the buff has been applied to."] = "獲得物品增益的名稱。",
+		--["The rank of the item buff gained."] = "獲得物品增益的等級。",-- not used anymore
 		["Debuff fades"] = "減益消退",
 		["The name of the debuff lost."] = "消退減益的名稱。",
 		["Buff fades"] = "增益消退",
 		["The name of the buff lost."] = "消退增益的名稱。",
 		["Item buff fades"] = "物品增益消退",
 		["The name of the item buff lost."] = "消退物品增益的名稱。",
-		["The rank of the item buff lost."] = "消退物品增益的等級。",
+		["The name of the item, the buff has faded from."] = "消退物品增益的名稱。",
+		--["The rank of the item buff lost."] = "消退物品增益的等級。",-- notused anymore
+		
 		["Self buff gain"] = "獲得自身增益",
 		["<Buff name>"] = "<增益名稱>",
 		["Self buff fade"] = "自身增益消退",
@@ -410,6 +413,7 @@ L_CombatEvents_Data:AddTranslations("zhTW", function() return {
 		["The spell or ability that the enemy attacked you with."] = "敵人攻擊你所用的法術或技能。",
 		["DoTs and HoTs"] = "DoT 和 HoT",
 		["Skill DoTs"] = "技能 DoT",
+		["Reactive skills"] = "反應技能",
 		["Ability misses"] = "技能未命中",
 		["Ability dodges"] = "技能躲閃",
 		["Ability parries"] = "技能招架",
@@ -463,7 +467,7 @@ L_CombatEvents_Data:AddTranslations("zhTW", function() return {
 		["Pet skills"] = "寵物技能",
 		["Pet skill"] = "寵物技能",
 		["Pet skill damage"] = "寵物技能傷害",
-		["Pet [Amount] ([Skill])"] = "[Amount] （[Skill]）（寵物）",
+		["Pet [Amount] ([Skill])"] = "[Amount]（[Skill]）（寵物）",
 		["The ability or spell your pet used."] = "寵物所使用的技能或法術。",
 		["Pet ability misses"] = "技能未命中（寵物）",
 		["Pet ability dodges"] = "技能躲閃（寵物）",
@@ -498,10 +502,10 @@ L_CombatEvents_Data:AddTranslations("zhTW", function() return {
 		[" (%d losses)"] = "（失去%s點）",
 		["Combo points"] = "連擊點",
 		["Combo point gain"] = "獲得連擊點",
-		["[Num] CP"] = "[Num]點CP",
-		["The current number of combo points."] = "目前的連擊點數",
+		["[Num] CP"] = "[Num]連擊點",
+		["The current number of combo points."] = "目前的連擊點數。",
 		["Combo points full"] = "連擊點已滿",
-		["[Num] CP Finish It!"] = "[Num]點CP 終結技！",
+		["[Num] CP Finish It!"] = "[Num]連擊點 終結技！",
 		["Honor gains"] = "獲得榮譽",
 		["The amount of honor gained."] = "獲得的榮譽點數。",
 		["The name of the enemy slain."] = "被殺死的敵人名稱。",
@@ -535,12 +539,12 @@ L_CombatEvents_Data:AddTranslations("zhTW", function() return {
 		["The spell you interrupted"] = "你打斷的技能",
 		-- Schools
 		["Physical"] = "物理",
-		["Holy"] = "神圣",
+		["Holy"] = "神聖",
 		["Fire"] = "火焰",
 		["Nature"] = "自然",
 		["Frost"] = "冰霜",
 		["Shadow"] = "暗影",
-		["Arcane"] = "奧術",
+		["Arcane"] = "秘法",
 		
 		["The name of the enemy that attacked your pet."] = "攻擊你寵物的敵人名稱。",
 		["The spell or ability that the enemy attacked your pet with."] = "敵人攻擊你寵物的法術或技能。",
@@ -587,6 +591,7 @@ L_TriggerConditions_Data:AddTranslations("zhTW", function() return {
 		["Self health percent"] = "自身血量百分比",
 		["Self mana percent"] = "自身法力百分比",
 		["Pet health percent"] = "寵物血量百分比",
+		["Pet mana percent"] = "寵物法力百分比",
 		["Incoming block"] = "承受格擋",
 		["Incoming crit"] = "承受爆擊",
 		["Incoming dodge"] = "承受躲閃",
@@ -602,12 +607,11 @@ L_TriggerConditions_Data:AddTranslations("zhTW", function() return {
 		["Warrior stance"] = "戰士姿態",
 		["Not in warrior stance"] = "沒有處於戰士姿態",
 		["Druid Form"] = "德魯伊形態",
-		["Not in Druid Form"] = "沒有處于德魯伊形態",
+		["Not in Druid Form"] = "沒有處於德魯伊形態",
 }end)
 
 local L_CombatStatus = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_CombatStatus")
 L_CombatStatus:AddTranslations("zhTW", function() return {
-	-- Parrot_CombatStatus:
 		["Combat status"] = "戰鬥狀態",
 		["Enter combat"] = "進入戰鬥",
 		["+Combat"] = "+戰鬥",

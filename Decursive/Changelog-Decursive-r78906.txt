@@ -1,0 +1,108 @@
+------------------------------------------------------------------------
+r78906 | cwdg | 2008-07-22 04:35:56 -0400 (Tue, 22 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.cn.lua
+
+Decursive:
+- zhCN Update...
+------------------------------------------------------------------------
+r78890 | archarodim | 2008-07-22 00:36:48 -0400 (Tue, 22 Jul 2008) | 2 lines
+Changed paths:
+   A /trunk/Decursive/Sounds
+   A /trunk/Decursive/Sounds/AfflictionAlert.wav
+   A /trunk/Decursive/Sounds/FailedSpell.wav
+
+Decursive:
+- The new alert sounds
+------------------------------------------------------------------------
+r78889 | archarodim | 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) | 13 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_DIAG.lua
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_Events.lua
+   M /trunk/Decursive/Dcr_LiveList.lua
+   M /trunk/Decursive/Dcr_Raid.lua
+   M /trunk/Decursive/Dcr_lists.lua
+   M /trunk/Decursive/Dcr_opt.lua
+   M /trunk/Decursive/Dcr_utils.lua
+   M /trunk/Decursive/Decursive.lua
+   M /trunk/Decursive/Decursive.toc
+   M /trunk/Decursive/localization.cn.lua
+   M /trunk/Decursive/localization.de.lua
+   M /trunk/Decursive/localization.es.lua
+   M /trunk/Decursive/localization.fr.lua
+   M /trunk/Decursive/localization.kr.lua
+   M /trunk/Decursive/localization.lua
+   M /trunk/Decursive/localization.tw.lua
+
+Decursive:
+WARNING: Important changes, may be unstable (version 2.2.0 beta 1)
+- Replaced SpecialEventAura with combatlog events
+- Better dispel result detection, should be able to detect resists (not tested but should work)
+- sound and text alert in case of missed and failed dispel
+- fix a nil error when players with pets were excluded
+- fix a lot of insidious bugs related to 'gendered' class names...
+- fix problems in battlefields with players from other realms (group ordering failures)
+- New debuff sound, more audible
+- Focused unit is no longer added to the MUFs if already a member of your group
+- Debuff history is populated only when you click on a MUF to dispel something
+- A new local was added (spell failure message)
+- Others changes not remembered and certainly new bugs^^
+------------------------------------------------------------------------
+r78860 | cwdg | 2008-07-21 12:09:40 -0400 (Mon, 21 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.cn.lua
+
+Decursive:
+- clean up...
+------------------------------------------------------------------------
+r78781 | archarodim | 2008-07-20 09:45:32 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_Raid.lua
+   M /trunk/Decursive/localization.lua
+
+Decursive:
+- Quick hack until real fix for the nil error in the roster function when pet are scanned.
+------------------------------------------------------------------------
+r78765 | StingerSoft | 2008-07-20 01:12:42 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Decursive.toc
+   A /trunk/Decursive/localization.ru.lua
+
+Decursive:
+- added ruRU translation
+------------------------------------------------------------------------
+r78433 | archarodim | 2008-07-14 20:15:26 -0400 (Mon, 14 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_Events.lua
+
+Decursive:
+- (inactive code) fix Boolean mask logic in WIP combat log buff/debuff detection code
+------------------------------------------------------------------------
+r78429 | archarodim | 2008-07-14 19:09:03 -0400 (Mon, 14 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_Events.lua
+
+Decursive:
+- (inactive code) Starting to implement buff/debuff event detection using combat log events instead of SpecialEvents-Aura-2.0
+------------------------------------------------------------------------
+r77431 | archarodim | 2008-06-25 19:56:58 -0400 (Wed, 25 Jun 2008) | 3 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_Events.lua
+   M /trunk/Decursive/Dcr_LiveList.lua
+   M /trunk/Decursive/Decursive.lua
+
+Decursive:
+- Internal cleaning (clear a MUF debuffs before hiding it)
+- Prevent alert sound loop from happening.
+------------------------------------------------------------------------
+r77182 | archarodim | 2008-06-21 09:31:33 -0400 (Sat, 21 Jun 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+
+Decursive:
+- The lock and buttons display/hide status of the "Decursive" bar (the live-list anchor) were not applied correctly on startup. (Thanks to Jason for his very accurate bug report)
+------------------------------------------------------------------------

@@ -27,7 +27,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["localization.lua"] then
     return;
 end
 
-Dcr:SetDateAndRevision("$Date: 2008-04-22 17:44:42 -0400 (Tue, 22 Apr 2008) $", "$Revision: 70967 $");
+Dcr:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
 -------------------------------------------------------------------------------
 -- Chinese localization (Default)
 -------------------------------------------------------------------------------
@@ -295,6 +295,7 @@ L:RegisterTranslations("zhTW", function() return {
     [LOC.AFFLICTEDBY] = "受 %s 影響",
 
     [LOC.SUCCESSCAST] = "|cFF22FFFF%s %s|r |cFF00AA00成功淨化|r %s",
+    [LOC.FAILEDCAST] = LOC.FAILEDCAST,
 
     [LOC.HANDLEHELP] = "拖曳移動所有的 Micro-UnitFrames (MUFs)",
 

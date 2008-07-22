@@ -312,25 +312,25 @@ function AtlasLootPRE60SetMenu()
     AtlasLootMenuItem_8_Name:SetText(AL["Necropile Raiment"]);
     AtlasLootMenuItem_8_Extra:SetText(ORANGE..BabbleZone["Scholomance"]);
     AtlasLootMenuItem_8_Icon:SetTexture("Interface\\Icons\\INV_Shoulder_02");
-    AtlasLootMenuItem_8.lootpage="VWOWScholoCloth";
+    AtlasLootMenuItem_8.lootpage="VWOWScholo";
     AtlasLootMenuItem_8:Show();
     --Scholomance - Leather - Cadaverous Garb
     AtlasLootMenuItem_9_Name:SetText(AL["Cadaverous Garb"]);
     AtlasLootMenuItem_9_Extra:SetText(ORANGE..BabbleZone["Scholomance"]);
     AtlasLootMenuItem_9_Icon:SetTexture("Interface\\Icons\\INV_Belt_16");
-    AtlasLootMenuItem_9.lootpage="VWOWScholoLeather";
+    AtlasLootMenuItem_9.lootpage="VWOWScholo";
     AtlasLootMenuItem_9:Show();
     --Scholomance - Mail - Bloodmail Regalia
     AtlasLootMenuItem_10_Name:SetText(AL["Bloodmail Regalia"]);
     AtlasLootMenuItem_10_Extra:SetText(ORANGE..BabbleZone["Scholomance"]);
     AtlasLootMenuItem_10_Icon:SetTexture("Interface\\Icons\\INV_Gauntlets_26");
-    AtlasLootMenuItem_10.lootpage="VWOWScholoMail";
+    AtlasLootMenuItem_10.lootpage="VWOWScholo";
     AtlasLootMenuItem_10:Show();
     --Scholomance - Plate - Deathbone Guardian
     AtlasLootMenuItem_11_Name:SetText(AL["Deathbone Guardian"]);
     AtlasLootMenuItem_11_Extra:SetText(ORANGE..BabbleZone["Scholomance"]);
     AtlasLootMenuItem_11_Icon:SetTexture("Interface\\Icons\\INV_Belt_12");
-    AtlasLootMenuItem_11.lootpage="VWOWScholoPlate";
+    AtlasLootMenuItem_11.lootpage="VWOWScholo";
     AtlasLootMenuItem_11:Show();
     --Scourge Invasion
     AtlasLootMenuItem_12_Name:SetText(AL["Scourge Invasion"]);
@@ -354,19 +354,19 @@ function AtlasLootPRE60SetMenu()
     AtlasLootMenuItem_19_Name:SetText(AL["Zul'Gurub Rings"]);
     AtlasLootMenuItem_19_Extra:SetText(ORANGE..BabbleZone["Zul'Gurub"]);
     AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\INV_Bijou_Orange");
-    AtlasLootMenuItem_19.lootpage="VWOWZGRings";
+    AtlasLootMenuItem_19.lootpage="VWOWZulGurub";
     AtlasLootMenuItem_19:Show();
     --Primal Blessing
     AtlasLootMenuItem_20_Name:SetText(AL["Primal Blessing"]);
     AtlasLootMenuItem_20_Extra:SetText(ORANGE..BabbleZone["Zul'Gurub"]);
     AtlasLootMenuItem_20_Icon:SetTexture("Interface\\Icons\\INV_Weapon_Hand_01");
-    AtlasLootMenuItem_20.lootpage="VWOWPrimalBlessing";
+    AtlasLootMenuItem_20.lootpage="VWOWZulGurub";
     AtlasLootMenuItem_20:Show();
     --The Twin Blades of Hakkari
     AtlasLootMenuItem_21_Name:SetText(AL["The Twin Blades of Hakkari"]);
     AtlasLootMenuItem_21_Extra:SetText(ORANGE..BabbleZone["Zul'Gurub"]);
     AtlasLootMenuItem_21_Icon:SetTexture("Interface\\Icons\\INV_Sword_55");
-    AtlasLootMenuItem_21.lootpage="VWOWHakkariBlades";
+    AtlasLootMenuItem_21.lootpage="VWOWZulGurub";
     AtlasLootMenuItem_21:Show();
     --Shard of the Gods
     AtlasLootMenuItem_22_Name:SetText(AL["Shard of the Gods"]);
@@ -384,19 +384,19 @@ function AtlasLootPRE60SetMenu()
     AtlasLootMenuItem_25_Name:SetText(AL["Latro's Flurry"]);
     AtlasLootMenuItem_25_Extra:SetText(ORANGE..AL["World Drop"]);
     AtlasLootMenuItem_25_Icon:SetTexture("Interface\\Icons\\INV_Sword_76");
-    AtlasLootMenuItem_25.lootpage="TBCLatrosFlurry";
+    AtlasLootMenuItem_25.lootpage="TBCSets";
     AtlasLootMenuItem_25:Show();
     --The Twin Stars
     AtlasLootMenuItem_26_Name:SetText(AL["The Twin Stars"]);
     AtlasLootMenuItem_26_Extra:SetText(ORANGE..AL["World Drop"]);
     AtlasLootMenuItem_26_Icon:SetTexture("Interface\\Icons\\INV_Jewelry_Necklace_36");
-    AtlasLootMenuItem_26.lootpage="TBCTwinStars";
+    AtlasLootMenuItem_26.lootpage="TBCSets";
     AtlasLootMenuItem_26:Show();
     --The Twin Blades of Azzinoth
     AtlasLootMenuItem_27_Name:SetText(AL["The Twin Blades of Azzinoth"]);
     AtlasLootMenuItem_27_Extra:SetText(ORANGE..BabbleZone["Black Temple"]);
     AtlasLootMenuItem_27_Icon:SetTexture("Interface\\Icons\\INV_Weapon_Glave_01");
-    AtlasLootMenuItem_27.lootpage="TBCAzzinothBlades";
+    AtlasLootMenuItem_27.lootpage="TBCSets";
     AtlasLootMenuItem_27:Show();
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
