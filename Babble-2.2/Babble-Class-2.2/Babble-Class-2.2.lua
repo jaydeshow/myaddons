@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Class-2.2
-Revision: $Rev: 78463 $
+Revision: $Rev: 79108 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://wiki.wowace.com/index.php/Babble-Class-2.2
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Class-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 78463 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -181,7 +181,7 @@ BabbleClass:RegisterTranslations("esES", function()
 		["ROGUE"] = "P\195\173cara",
 	}
 end)
-
+-- Translater: GriffonHeart (updater: StingerSoft)
 BabbleClass:RegisterTranslations("ruRU", function()
 	return {
 		["Warlock"] = "Чернокнижник",
@@ -195,9 +195,7 @@ BabbleClass:RegisterTranslations("ruRU", function()
 		["Rogue"] = "Разбойник",
 		
 		["WARLOCK"] = "Чернокнижница",
-		["WARRIOR"] = "Воительница",
 		["HUNTER"] = "Охотница",
-		["MAGE"] = "Волшебница",
 		["PRIEST"] = "Жрица",
 		["SHAMAN"] = "Шаманка",
 		["ROGUE"] = "Разбойница",

@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fWaypoints|r]
+## Title-ruRU: Картограф |r[|cffeda55fТочки маршрута|r]
 ## X-Name: Waypoints
 ## X-Name-ruRU: Точки маршрута
 ## X-Name-koKR: 위치 포인트

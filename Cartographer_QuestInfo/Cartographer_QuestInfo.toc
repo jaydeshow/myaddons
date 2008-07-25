@@ -1,6 +1,8 @@
 ## Interface: 20400
 ## Title: Cartographer [|cffeda55fQuestInfo|r]
 ## Notes: Quest library for mob location and other information
+## Title-ruRU: Картограф [|cffeda55fИнфо-Задания|r]
+## Notes-ruRU: Библиотека заданий о местонахождение монстров и другой информации
 ## Title-zhCN: |cFF00FF00[地图]|r任务资料 Cartographer [|cffeda55fQuestInfo|r]
 ## Notes-zhCN: 制图大师的配件，提供任务资料库
 ## Title-zhTW: |cFF00FF00[地圖]|r任務資訊 Cartographer [|cffeda55fQuestInfo|r]
@@ -29,6 +31,7 @@ Data\Name-zhCN.lua
 Data\Name-enUS.lua
 
 Locale\Locale-enUS.lua
+Locale\Locale-ruRU.lua
 Locale\Locale-zhTW.lua
 Locale\Locale-zhCN.lua
 Locale\Locale-koKR.lua

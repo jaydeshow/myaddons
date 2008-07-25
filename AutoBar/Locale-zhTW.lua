@@ -20,8 +20,8 @@ if (GetLocale() == "zhTW") then
 		["Change the alpha of the bar."] = "改變物品列的透明度",
 		["Add Button"] = "增加按鈕",
 		["Align Buttons"] = "按鈕排列方向",
-		["Always Popup"] = "Always Popup";
-		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
+		["Always Popup"] = "永遠彈出";
+		["Always keep Popups open for %s"] = "永遠保持 %s 的彈出效果";
 		["Always Show"] = "永遠顯示";
 		["Always Show %s, even if empty."] = "永遠顯示 %s，即使是空白的。";
 		["Announce to Party"] = "通報到小隊",
@@ -48,8 +48,8 @@ if (GetLocale() == "zhTW") then
 		["Disable Conjure Button"] = "取消魔法製造按鈕",
 		["Docked to"] = "依附於",
 		["Done"] = "完成";
-		["Drop"] = "Drop";
-		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
+		["Drop"] = "拖曳";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "新增拖曳的物品、法術或巨集到按鈕上方的自訂類別。";
 		["Enabled"] = "啟用",
 		["Enable %s."] = "啟用 %s",
 		["FadeOut"] = "淡出",
@@ -144,12 +144,14 @@ if (GetLocale() == "zhTW") then
 		["Move the Buttons"] = "移動按鈕",
 		["Drag a Button to move it, right click to configure the Button."] = "拖曳可以移動按鈕，右鍵可以進行設定。",
 
-		["{circle}"] = "{圈圈}",
-		["{diamond}"] = "{鑚石}",
-		["{skull}"] = "{頭顱}",
-		["{square}"] = "{方形}",
-		["{star}"] = "{星星}",
-		["{triangle}"] = "{三角}",
+		["{star}"] = "{rt1}",
+		["{circle}"] = "{rt2}",
+		["{diamond}"] = "{rt3}",
+		["{triangle}"] = "{rt4}",
+		["{moon}"] = "{rt5}",
+		["{square}"] = "{rt6}",
+		["{x}"] = "{rt7}",
+		["{skull}"] = "{rt8}",
 
 		["TOPLEFT"] = "左上",
 		["LEFT"] = "左",
@@ -281,7 +283,6 @@ if (GetLocale() == "zhTW") then
 		["|c00FF9966C|r"] = "|c00FF9966C|r",
 		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["|c009966CCA|r"] = "|c009966CCA|r",
-		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["NP"] = "數",
 		["M"] = "鼠",
 		["MM"] = "鼠中",

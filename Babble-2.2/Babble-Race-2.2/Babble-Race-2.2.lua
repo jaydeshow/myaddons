@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Race-2.2
-Revision: $Rev: 61012 $
+Revision: $Rev: 79108 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://wiki.wowace.com/index.php/Babble-Race-2.2
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Race-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 61012 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -277,6 +277,47 @@ BabbleRace:RegisterTranslations("esES", function()
 		--["Felguard"] = true,
 		--["Felhunter"] = true,
 	}
+end)
+
+-- updater: StingerSoft
+BabbleRace:RegisterTranslations("ruRU", function()
+    return {
+-- Races
+		["Human"] = "Человек",
+		["Night Elf"] = "Ночной эльф",
+		-- Fix for legacy apps
+		["Night elf"] = "Ночной эльф",
+		["Dwarf"] = "Дворф",
+		["Gnome"] = "Гном",
+		["Draenei"] = "Дреней",
+
+		["Orc"] = "Орк",
+		["Tauren"] = "Таурен",
+		["Troll"] = "Тролль",
+		["Undead"] = "Нежить",
+		["Blood Elf"] = "Эльф крови",
+		-- Fix for legacy apps
+		["Blood elf"] = "Эльф крови",
+
+		["Humans"] = "Человеков",
+		["Night elves"] = "Ночные эльфы",
+		["Dwarves"] = "Дворфы",
+		["Gnomes"] = "Гномы",
+		["Draenei_PL"] = "Дренеев",
+
+		["Orcs"] = "Орков",
+		["Tauren_PL"] = "Тауренов",
+		["Trolls"] = "Троллей",
+		["Undead_PL"] = "Нежитей",
+		["Blood elves"] = "Эльфов крови",
+
+-- Creatures
+		["Imp"] = "Бес",
+		["Succubus"] = "Суккуб",
+		["Voidwalker"] = "Демон Хаоса",
+		["Felguard"] = "Страж Скверны",
+		["Felhunter"] = "Охотник Скверны",
+    }
 end)
 
 BabbleRace:Debug()

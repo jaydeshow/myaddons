@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Boss-2.2
-Revision: $Rev: 78753 $
+Revision: $Rev: 79108 $
 Author(s): ckknight (ckknight@gmail.com)
 Credits: Funkydude
 Website: http://ckknight.wowinterface.com/
@@ -12,7 +12,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Boss-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 78753 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -4538,7 +4538,7 @@ BabbleBoss:RegisterTranslations("esES", function() return {
 		["The Blue Brothers"] = "Los Hermanos Azules",
 		["Warmaul Champion"] = "Campeón Mazo de Guerra",
 } end)
-
+-- Translater: GriffonHeart (updater: StingerSoft)
 BabbleBoss:RegisterTranslations("ruRU", function() return {
 --Ahn'Qiraj
 		["Anubisath Defender"] = "Защитник-анубисат",
@@ -4552,9 +4552,9 @@ BabbleBoss:RegisterTranslations("ruRU", function() return {
 		["Ouro"] = "Оуро",
 		["Princess Huhuran"] = "Принцесса Хухуран",
 		["Princess Yauj"] = "Принцесса Яудж",
-		["The Bug Family"] = "The Bug Family",
+		["The Bug Family"] = "Семейство насекомых",
 		["The Prophet Skeram"] = "Пророк Скерам",
-		["The Twin Emperors"] = "The Twin Emperors",
+		["The Twin Emperors"] = "Близнецы Императора",
 		["Vem"] = "Вем",
 		["Viscidus"] = "Фиброзник",
 
@@ -4590,7 +4590,7 @@ BabbleBoss:RegisterTranslations("ruRU", function() return {
 		["Anger'rel"] = "Гневрел",
 		["Anub'shiah"] = "Ануб'сиах",
 		["Bael'Gar"] = "Баэл-Гар",
-		["Chest of The Seven"] = "Сhest of The Seven",
+		["Chest of The Seven"] = "Сундук Семерки",
 		["Doom'rel"] = "Думрел",
 		["Dope'rel"] = "Наиглесиас",
 		["Emperor Dagran Thaurissan"] = "Император Дагран Таурисан",
@@ -4618,7 +4618,7 @@ BabbleBoss:RegisterTranslations("ruRU", function() return {
 		["Pyromancer Loregrain"] = "Пиромант Лоргрейн",
 		["Ribbly Screwspigot"] = "Риббли Винтокран",
 		["Seeth'rel"] = "Сит-рел",
-		["The Seven Dwarves"] = "The Seven Dwarves",
+		["The Seven Dwarves"] = "Семерка Дворфов",
 		["Verek"] = "Верек",
 		["Vile'rel"] = "Вил-рел",
 		["Warder Stilgiss"] = "Надсмотрщик Стилгисс",
@@ -4834,7 +4834,7 @@ BabbleBoss:RegisterTranslations("ruRU", function() return {
 		["Warchief Blackhand Piece"] = "Warchief Blackhand Piece",
 
 -- Magisters' Terrace
-		["Kael'thas Sunstrider"] = "Kael'thas Sunstrider",
+		["Kael'thas Sunstrider"] = "Кель Солнечный Скиталец",
 		["Priestess Delrissa"] = "Жрица Делрисса",
 		["Selin Fireheart"] = "Селин Огненное Сердце",
 		["Vexallus"] = "Вексалиус",
@@ -4891,7 +4891,7 @@ BabbleBoss:RegisterTranslations("ruRU", function() return {
 		["Stalagg"] = "Сталагг",
 		["Thaddius"] = "Таддиус",
 		["Thane Korth'azz"] = "Тан Кортазз",
-		["The Four Horsemen"] = "The Four Horsemen",
+		["The Four Horsemen"] = "Четыре Всадника",
 
 --Onyxia's Lair
 		["Onyxia"] = "Ониксия",
@@ -4999,8 +4999,8 @@ BabbleBoss:RegisterTranslations("ruRU", function() return {
 		["Sathrovarr the Corruptor"] = "Сатроварр Осквернитель",
 		["Brutallus"] = "Бруталл",
 		["Felmyst"] = "Сквернотуман",
-		["The Eredar Twins"] = "The Eredar Twins",
-		["Kil'jaeden"] = "Kil'jaeden",
+		["The Eredar Twins"] = "Близнецы Эредар",
+		["Kil'jaeden"] = "Кил-Джеден",
 		["M'uru"] = "М'ару",
 		["Lady Sacrolash"] = "Lady Sacrolash",
 		["Grand Warlock Alythess"] = "Grand Warlock Alythess",
@@ -5179,7 +5179,7 @@ BabbleBoss:RegisterTranslations("ruRU", function() return {
 		["Murkblood Twins"] = "Близнецы Темной Крови",
 		["Rokdar the Sundered Lord"] = "Рокдар Покинутый Лорд",
 		["Skra'gath"] = "Скрагат",
-		["The Blue Brothers"] = "The Blue Brothers",
+		["The Blue Brothers"] = "Голубые Близнецы",
 		["Warmaul Champion"] = "Защитник Молота Боя",
 } end)
 

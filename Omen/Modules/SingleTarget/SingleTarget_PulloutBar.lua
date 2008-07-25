@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 78700 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78999 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local Threat = LibStub("Threat-2.0")
@@ -73,7 +73,7 @@ function pullout_cls:UpdateLayout()
 	self.marker100:ClearAllPoints()
 	local x = self:GetBarWidth() * scale + 4
 	self.marker100:SetPoint("CENTER", self.frame, "LEFT", x, 0)
-	self.marker100:SetHeight(22)
+	self.marker100:SetHeight(self.frame:GetHeight())
 	self.marker100:SetWidth(8)
 	if tankThreat > 0 then
 		local threatRatio = ownThreat/tankThreat

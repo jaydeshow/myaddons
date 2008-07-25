@@ -372,4 +372,6 @@ if not L then return end
 	L["Hide When Not Collecting"] = "수집되지 않을 때 숨김"
 	L["DoT"] = "지속 피해"
 	L["HoT"] = "지속 치유"
+	L["Recorded Fights"] = "전투 기록"
+	L["Set the maximum number of recorded fight segments"] = "전투 세분화 기록의 최대 수 설정"
 	

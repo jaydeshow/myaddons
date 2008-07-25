@@ -38,7 +38,7 @@ if (GetLocale() == "frFR") then
   --CoT: Old Hillsbrad Foothills
     AtlasLoot_TableNames["CoTHillsbradAgedDalaranWizard"][1] = "Sorcier de Dalaran âgé";
   --The Deadmines
-    AtlasLoot_TableNames["VCDefiasGunpowder"][1] = "Poudre à canon de défias";
+    --AtlasLoot_TableNames["VCDefiasGunpowder"][1] = "Poudre à canon de défias";
   --Dire Maul East
     AtlasLoot_TableNames["DMBooks"][1] = "Livres (DM)";
   --HC: Shattered Halls

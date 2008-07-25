@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-SpellTree-2.2
-Revision: $Rev: 78826 $
+Revision: $Rev: 79108 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://wiki.wowace.com/index.php/Babble-SpellTree-2.2
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-SpellTree-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 78826 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -332,7 +332,7 @@ BabbleSpellTree:RegisterTranslations("esES", function()
 		["Destruction"] = "Destrucci\195\179n",
 	}
 end)
-
+-- Translater: StingerSoft
 BabbleSpellTree:RegisterTranslations("ruRU", function()
 	return {
 	    -- All classes
@@ -356,7 +356,7 @@ BabbleSpellTree:RegisterTranslations("ruRU", function()
 		["Retribution"] = "Возмездие",
 		-- Priest
 		["Discipline"] = "Послушание",
-		["Holy"] = "Свет",
+		--["Holy"] = "Свет", -- одинаково с Паладином
 		["Shadow"] = "Темная магия",
 		-- Rogue
 		["Assassination"] = "Убийство",
@@ -365,11 +365,11 @@ BabbleSpellTree:RegisterTranslations("ruRU", function()
 		-- Shaman
 		["Elemental"] = "Укрощение стихии",
 		["Enhancement"] = "Совершенствование",
-		["Restoration"] = "Исцеление", -- same as Druid
+		--["Restoration"] = "Исцеление", -- одинаково с Друидом
 		-- Warrior
 		["Arms"] = "Оружие",
 		["Fury"] = "Неистовство",
-		["Protection"] = "Защита", -- same as Paladin
+		--["Protection"] = "Защита", --  одинаково с Паладином
 		-- Warlock
 		["Affliction"] = "Колдовство",
 		["Demonology"] = "Демонология",

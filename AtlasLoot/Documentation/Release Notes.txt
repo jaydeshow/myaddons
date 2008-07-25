@@ -5,6 +5,12 @@ This mod is distributed under Version 2 of the GPL.  A copy of the GPL is includ
 -Daviesh
 
 Patch Notes
+v4.06.02
+Removed Atlas 1.11 compatibility
+Fixed bug with Badge of Justice rewards
+Fixed bug with prices not showing in the wishlist
+Fixed bug in Alphamap integration
+
 v4.06.01
 AutoQuery has been removed, as it caused too many problems.  It has been replaced with a 'Query Server' button that will query all the items on the loot page.  If you get disconnected, you know which page to blame.
 'Level 70 Instance Rewards' renamed to 'Badge of Justice Rewards'

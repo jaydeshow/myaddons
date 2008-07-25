@@ -1,4 +1,4 @@
-local VERSION = tonumber(("$Revision: 78847 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 78982 $"):match("%d+"))
 
 local Parrot = Parrot, Parrot
 local Parrot_CombatEvents = Parrot:NewModule("CombatEvents", "LibRockEvent-1.0", "LibRockTimer-1.0")
@@ -6,7 +6,7 @@ local self = Parrot_CombatEvents
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-07-21 09:26:11 -0400 (Mon, 21 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-07-23 08:17:53 -0400 (Wed, 23 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- to track XP and Honor-gains
@@ -2293,12 +2293,6 @@ end
 -- 
 -- local EventParse =
 -- {
--- 	["SWING_DAMAGE"] = Parrot_CombatEvents.MeleeDamage, -- Elsia: Melee swing damage
--- 	["RANGE_DAMAGE"] = Parrot_CombatEvents.SpellDamage, -- Elsia: Ranged and spell damage types
--- 	["SPELL_DAMAGE"] = Parrot_CombatEvents.SpellDamage,
--- 	["SPELL_PERIODIC_DAMAGE"] = Parrot_CombatEvents.SpellPeriodicDrainLeech,
--- 	["DAMAGE_SHIELD"] = Parrot_CombatEvents.SpellDamage,
--- 	["DAMAGE_SPLIT"] = Parrot_CombatEvents.SpellDamage,
 -- 	["ENVIRONMENTAL_DAMAGE"] = Parrot_CombatEvents.EnvironmentalDamage, -- Elsia: Environmental damage
 -- 	["SWING_MISSED"] = Parrot_CombatEvents.MeleeMissed, -- Elsia: Misses
 -- 	["RANGE_MISSED"] = Parrot_CombatEvents.SpellMissed,
@@ -2308,33 +2302,13 @@ end
 -- 	["SPELL_HEAL"] = Parrot_CombatEvents.SpellHeal, -- Elsia: heals
 -- 	["SPELL_ENERGIZE"] = Parrot_CombatEvents.SpellEnergize, -- Elsia: Energize
 -- 	["SPELL_EXTRA_ATTACKS"] = Parrot_CombatEvents.SpellExtraAttack, -- Elsia: Extr  a attacks
--- 	["SPELL_INTERRUPT"] = Parrot_CombatEvents.SpellInterrupt, -- Elsia: Interrupts
 -- 	["SPELL_DRAIN"] = Parrot_CombatEvents.SpellDamage, -- Elsia: Drains and leeches.
 -- 	["SPELL_LEECH"] = Parrot_CombatEvents.SpellLeech,
 -- 	["SPELL_PERIODIC_HEAL"] = Parrot_CombatEvents.SpellHoT,
 -- 	["SPELL_PERIODIC_ENERGIZE"] = Parrot_CombatEvents.SpellEnergize,
 -- 	["SPELL_PERIODIC_DRAIN"] = Parrot_CombatEvents.SpellPeriodicDrainLeech,
 -- 	["SPELL_PERIODIC_LEECH"] = Parrot_CombatEvents.SpellLeech,
--- 	["SPELL_DISPEL_FAILED"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Failed dispell
--- 	["SPELL_AURA_DISPELLED"] = Parrot_CombatEvents.AuraRemoved,
--- 	["SPELL_AURA_STOLEN"] = Parrot_CombatEvents.AuraRemoved,
--- 	["SPELL_AURA_APPLIED"] = Parrot_CombatEvents.AuraApplied, -- Elsia: Auras
--- 	["SPELL_AURA_REMOVED"] = Parrot_CombatEvents.AuraRemoved,
--- 	["SPELL_AURA_APPLIED_DOSE"] = Parrot_CombatEvents.AuraApplied, -- Elsia: Aura doses
--- 	["SPELL_AURA_REMOVED_DOSE"] = Parrot_CombatEvents.AuraRemoved,
--- 	["SPELL_CAST_START"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Spell casts
--- 	["SPELL_CAST_SUCCESS"] = Parrot_CombatEvents.EventIgnore,
--- 	["SPELL_INSTAKILL"] = Parrot_CombatEvents.EventIgnore,
--- 	["SPELL_DURABILITY_DAMAGE"] = Parrot_CombatEvents.EventIgnore,
--- 	["SPELL_DURABILITY_DAMAGE_ALL"] = Parrot_CombatEvents.EventIgnore,
--- 	["SPELL_CAST_FAILED"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Spell aborts/fails
--- 	["ENCHANT_APPLIED"] = Parrot_CombatEvents.EnchantApplied, -- Elsia: Enchants
--- 	["ENCHANT_REMOVED"] = Parrot_CombatEvents.EnchantApplied,
--- 	["PARTY_KILL"] = Parrot_CombatEvents.PartyKill, -- Elsia: Party killing blow
--- 	["UNIT_DIED"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Unit died
--- 	["UNIT_DESTROYED"] = Parrot_CombatEvents.EventIgnore,
--- 	["SPELL_SUMMON"] = Parrot_CombatEvents.EventIgnore, -- Elsia: Summons
--- 	["SPELL_CREATE"] = Parrot_CombatEvents.EventIgnore -- Elsia: Creations
+
 -- }
 
 function Parrot_CombatEvents:OnEvent( _, _, ...)

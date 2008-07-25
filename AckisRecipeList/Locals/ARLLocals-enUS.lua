@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-07-11 14:22:39 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78248 $
+$Date: 2008-07-22 15:30:32 -0400 (Tue, 22 Jul 2008) $
+$Rev: 78932 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -105,6 +105,7 @@ L["RecipeListSummary"] = "\nYou know %s out of %s total recipes (%s%%).\nYou are
 L["UnknownTradeSkill"] = "You have opened up a trade skill window which is not supported by this add-on.  The trade skill is %s.  Please provide the author of the add-on with this information."
 L["OpenTradeSkillWindow"] = "Please open trade skill window to scan."
 L["TwoCraftingWindows"] = "Crafting window already open.  Please close the other window and re-open this one if you wish to scan for missing recipes."
+L["SpellIDCache"] = "Spell ID: %s is not in your local cache.  Please submit a ticket at http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ and include the spell ID and the profession in which you were scanning."
 
 -- GUI Text
 L["Close"] = true

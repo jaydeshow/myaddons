@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fInstance Maps|r]
+## Title-ruRU: Картограф |r[|cffeda55fКарты Подземелий|r]
 ## X-Name: Instance Maps
 ## X-Name-ruRU: Карты подземелий
 ## X-Name-deDE: Instanzkarten

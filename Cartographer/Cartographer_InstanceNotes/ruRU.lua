@@ -199,12 +199,12 @@ L:AddTranslations("ruRU", function() return {
 	["Zanza the Restless"] = "Zanza the Restless",
 	["ZG head & leg enchants"] = "ZG head & leg enchants",
 
-	["Lvl %s %s"] = "Lvl %s %s",
-	["Lvl %s Elite %s"] = "Lvl %s Elite %s",
+	["Lvl %s %s"] = "Урв %s %s",
+	["Lvl %s Elite %s"] = "Урв %s Элита %s",
 
 	["Beast (Hydra)"] = "Beast (Hydra)",
 	["Beast"] = "Beast",
-	["Demon"] = "Demon",
+	["Demon"] = "Демон",
 	["Dragon"] = "Dragon",
 	["Elemental"] = "Elemental",
 	["Giant Turtle"] = "Giant Turtle",

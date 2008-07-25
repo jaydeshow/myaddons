@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Herbs-2.2
-Revision: $Rev: 58886 $
+Revision: $Rev: 79108 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Herbs-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Herbs-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 58886 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -342,6 +342,52 @@ BabbleHerbs:RegisterTranslations("zhTW", function() return {
 	["Flame Cap"] = "火帽花",
 	["Fel Lotus"] = "魔獄蓮花",
 	["Netherdust Bush"] = "虛空之塵灌木叢",
+} end)
+-- Translater: : StingerSoft
+BabbleHerbs:RegisterTranslations("ruRU", function() return {
+	["Peacebloom"] = "Мироцвет",
+	["Silverleaf"] = "Сребролист",
+	["Earthroot"] = "Землекорень",
+	["Mageroyal"] = "Магороза",
+	["Briarthorn"] = "Остротерн",
+	["Swiftthistle"] = "Быстрорепей",
+	["Stranglekelp"] = "Удавник",
+	["Bruiseweed"] = "Синячник",
+	["Wild Steelbloom"] = "Дикий сталецвет",
+	["Grave Moss"] = "Могильный мох",
+	["Kingsblood"] = "Королевская кровь",
+	["Liferoot"] = "Жизнекорень",
+	["Fadeleaf"] = "Бледнолист",
+	["Goldthorn"] = "Златошип",
+	["Khadgar's Whisker"] = "Кадгаров ус",
+	["Wintersbite"] = "Зимник",
+	["Firebloom"] = "Огненный Цветок",
+	["Purple Lotus"] = "Пурпурный лотос",
+	["Wildvine"] = "Дикий виноград",
+	["Arthas' Tears"] = "Слезы Артаса",
+	["Sungrass"] = "Солнечник",
+	["Blindweed"] = "Слепырник",
+	["Ghost Mushroom"] = "Призрачная поганка",
+	["Gromsblood"] = "Кровь Грома",
+	["Golden Sansam"] = "Золотой сансам",
+	["Dreamfoil"] = "Снолист",
+	["Mountain Silversage"] = "Mountain Silversage",
+	["Plaguebloom"] = "Plaguebloom",
+	["Icecap"] = "Icecap",
+	["Bloodvine"] = "Кровавая Лоза",
+	["Black Lotus"] = "Черный лотос",
+	["Felweed"] = "Скверноплевел",
+	["Dreaming Glory"] = "Соннославник",
+	["Terocone"] = "Терошишечник",
+	["Ancient Lichen"] = "Древний лишайник",
+	["Bloodthistle"] = "Кровопийка",
+	["Mana Thistle"] = "Манрепейник",
+	["Netherbloom"] = "Роза Хаоса",
+	["Nightmare Vine"] = "Лозный кошмарник",
+	["Ragveil"] = "Кисейница",
+	["Flame Cap"] = "Огнеголовик",
+	["Fel Lotus"] = "Оскверненный лотос",
+	["Netherdust Bush"] = "Пыльник хаотический",
 } end)
 
 BabbleHerbs:Debug()

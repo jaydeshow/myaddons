@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["localization.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
+D:SetDateAndRevision("$Date: 2008-07-22 22:59:56 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78961 $");
 
 local L  = D.L;
 local BC = D.BC;
@@ -376,6 +376,11 @@ D.options = { -- {{{
 		    get = function() return D.profile.AfflictionTooltips end,
 		    set = function()
 			D.profile.AfflictionTooltips = not D.profile.AfflictionTooltips
+			local k, v;
+			for k,v in ipairs(D.LiveList.ExistingPerID) do
+			    v.Frame:EnableMouse(D.profile.AfflictionTooltips);
+			end
+			
 		    end,
 		    disabled = function() return  D.profile.Hide_LiveList and not D.profile.ShowDebuffsFrame end,
 		    order = 102

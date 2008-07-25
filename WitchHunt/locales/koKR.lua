@@ -22,10 +22,13 @@ L["You can select message types to ignore below."] = "하단에서 무시할 메
 L["You can change the format for the various messages below. |cffeda55f$c|r will be replaced by the caster. |cffeda55f$e|r will be replaced by the effect or spell. |cffeda55f$i|r will be replaced by the icon."] = "하단에서 여러가지의 메세지의 형식을 변경할 수 있습니다. 시전자는 |cffeda55f$c|r로 대신합니다. 효과 또는 주문은  |cffeda55f$e|r로 대신합니다."
 
 L["Combat Only"] = "전투에 한정"
-L["Toggle combat only mode."] = "전투에 한정 모드를 전환 합니다"
+L["Toggle combat only mode."] = "전투에 한정 모드를 전환 합니다."
 
 L["Target Only"] = "대상에 한정"
-L["Toggle target only mode."] = "대상에 한정 모드를 전환 합니다"
+L["Toggle target only mode."] = "대상에 한정 모드를 전환 합니다."
+
+L["Players Only"] = "플레이어에 한정"
+L["Toggle players only mode. This will only alert for player controlled characters."] = "플레이어에 한정 모드를 전환 합니다. 플레이어 케릭터만 경고합니다."
 
 L["Learning Mode"] = "습득 모드"
 L["Learning mode, when enabled will fill the Spell Filter with spells Witch Hunt has detected. You can turn this off once you're satisfied with your filter."] = "습득 모드에서는 활성화시, Witch Hunt가 찾아낸 주문으로 주문 선별 목록이 채워지게 됩니다. 이 선별 목록에 만족하지 않으면 이 옵션을 끌 수 있습니다."
@@ -54,11 +57,11 @@ L["Test"] = "테스트"
 L["Test with a dummy WitchHunt message."] = "몇개의 가짜 WitchHunt 메세지로 테스트를 합니다."
 
 L["Insert Mode"] = "추가 모드"
-L["Set the insert mode for the Default frame."] = "기본 프레임에 추가 모드를 설정합니다"
+L["Set the insert mode for the Default frame."] = "기본 프레임에 추가 모드를 설정합니다."
 L["Bottom"] = "하단"
 L["Top"] = "상단"
 
-L["DRAG HERE"] = "여기를 끌면 됩니다"
+L["DRAG HERE"] = "여기를 끌면 됩니다."
 
 L["Totem"] = "토템"
 

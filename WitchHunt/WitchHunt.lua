@@ -238,6 +238,12 @@ local function giveOptions()
 				arg = "targetonly",
 				order = 20,
 			},
+			playeronly = {
+				name = L["Players Only"], type = "toggle",
+				desc = L["Toggle players only mode. This will only alert for player controlled characters."],
+				arg = "playeronly",
+				order = 25,
+			},
 			learn = {
 				name = L["Learning Mode"], type = "toggle",
 				desc = L["Learning mode, when enabled will fill the Spell Filter with spells Witch Hunt has detected. You can turn this off once you're satisfied with your filter."],
@@ -725,13 +731,20 @@ function WitchHunt:COMBAT_LOG_EVENT_UNFILTERED(event, timestamp, eventType, srcG
 		if isDestEnemy and not isDestTarget then isDestEnemy = false end
 	end
 	
+	if db.playeronly then
+		local isSourcePC = (bitband(srcFlags, COMBATLOG_OBJECT_CONTROL_PLAYER) == COMBATLOG_OBJECT_CONTROL_PLAYER)
+		local isDestPC = (bitband(dstFlags, COMBATLOG_OBJECT_CONTROL_PLAYER) == COMBATLOG_OBJECT_CONTROL_PLAYER)
+		if isSourceEnemy and not isSourcePC then isSourceEnemy = false end
+		if isDestEnemy and not isDestPC then isDestEnemy = false end
+	end
+	
 	if not isDestEnemy and not isSourceEnemy then return end
 
 	if eventType == "SPELL_AURA_APPLIED" and isDestEnemy and eID == "BUFF" then
 		self:Burn( WH_F_GAIN, dstName, spellName, spellID )
 	elseif eventType == "SPELL_AURA_REMOVED" and isDestEnemy and eID == "BUFF" then
 		self:Burn( WH_F_FADE, dstName, spellName, spellID )
-	elseif isDestEnemy and (eventType == "SPELL_AURA_DISPELLED" or eventType == "SPELL_AURA_STOLEN") then
+	elseif isDestEnemy and (eventType == "SPELL_AURA_DISPELLED" or eventType == "SPELL_DISPEL" or eventType == "SPELL_AURA_STOLEN") then
 		self:Burn( WH_F_DISPEL, dstName, eName, eID )
 	elseif eventType == "SPELL_CAST_START" and isSourceEnemy then
 		self:Burn( WH_F_CAST, srcName, spellName, spellID )

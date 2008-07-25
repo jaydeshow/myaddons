@@ -332,5 +332,5 @@ NL["Wicker Chest"] = "Coffre en osier"
 NL["Primitive Chest"] = "Coffre primitif" -- à vérifier
 NL["Solid Fel Iron Chest"] = "Coffre solide en gangrefer"
 NL["Bound Fel Iron Chest"] = "Coffre cerclé de gangrefer"
-NL["Bound Adamantite Chest"] = "Coffre cerclé d'adamantite"
+--NL["Bound Adamantite Chest"] = "Coffre cerclé d'adamantite" -- Only appears in instances, and also conflicting reverse lookup table with 7 lines up.
 NL["Netherwing Egg"] = "Oeuf de l'Aile-du-Néant"

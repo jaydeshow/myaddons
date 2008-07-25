@@ -75,7 +75,7 @@ AtlasLoot_ExtraText = {
     BlackwingLair = {
         "";
         GREY..INDENT..AL["Trash Mobs"];
-        GREY..INDENT..AL["Tier 2 Sets"];
+        GREY..INDENT..AL["Tier 1/2 Sets"];
     };
 
     CFRTheSteamvault = {
@@ -145,7 +145,7 @@ AtlasLoot_ExtraText = {
     };
     MoltenCore = {
         "";
-        GREY..INDENT..AL["Tier 1 Sets"];
+        GREY..INDENT..AL["Tier 1/2 Sets"];
         GREY..INDENT..AL["Random Boss Loot"];
         GREY..INDENT..AL["Trash Mobs"];
     };
@@ -167,7 +167,6 @@ AtlasLoot_ExtraText = {
         GREY..INDENT..AL["Trash Mobs"];
     };
     TempestKeepBotanica = {
-        "";
         "";
         GREY..INDENT..AL["Trash Mobs"];
     };
@@ -275,6 +274,7 @@ AtlasLoot_ExtraText = {
         GREEN..AL["Epic Rewards"];
     };
     AlteracValleySouth = {
+        "";
         GREEN..AL["Misc. Rewards"];
         GREEN..AL["Superior Rewards"];
         GREEN..AL["Epic Rewards"];

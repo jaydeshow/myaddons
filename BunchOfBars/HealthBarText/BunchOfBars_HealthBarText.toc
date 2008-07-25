@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: BunchOfBars [|cffeda55fHealthBarText|r]
 ## Version: 1.0
 ## Notes: Layover text for the health bar.

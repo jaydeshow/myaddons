@@ -93,7 +93,6 @@ do
 	    ["AceConsole-2.0"]		= 67789,
 	    ["AceLocale-2.2"]		= 40629,
 	    ["AceAddon-2.0"]	        = 57245,
-	    ["SpecialEvents-Aura-2.0"]  = 59749,
 	    ["Dewdrop-2.0"]		= 56529,
 	    ["Waterfall-1.0"]		= 67025,
 	    ["Tablet-2.0"]		= 64130,
@@ -173,7 +172,7 @@ do
 
 	-- if no fatal error let this file update the date and revision of Decursive
 	if DcrDiagStatus ~= 2 then
-	    Dcr:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
+	    Dcr:SetDateAndRevision("$Date: 2008-07-24 21:14:28 -0400 (Thu, 24 Jul 2008) $", "$Revision: 79088 $");
 	end
 
 	-- if the diagnostic was requested by the user, we also test AceEvent functionalities {{{ -

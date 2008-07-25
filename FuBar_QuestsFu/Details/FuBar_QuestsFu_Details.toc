@@ -1,4 +1,4 @@
-## Interface: 20100
+## Interface: 20400
 ## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fDetails|r]
 ## Notes: Quest details panel
 ## Version: 2.0

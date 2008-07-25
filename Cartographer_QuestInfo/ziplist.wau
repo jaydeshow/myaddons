@@ -1,4 +1,4 @@
-Cartographer_QuestInfo/Changelog-Cartographer_QuestInfo-r77187.txt
+Cartographer_QuestInfo/Changelog-Cartographer_QuestInfo-r79022.txt
 Cartographer_QuestInfo/Cartographer_QuestInfo.toc
 Cartographer_QuestInfo/Map.lua
 Cartographer_QuestInfo/Core.lua
@@ -13,6 +13,7 @@ Cartographer_QuestInfo/Locale/Locale-esES.lua
 Cartographer_QuestInfo/Locale/Locale-koKR.lua
 Cartographer_QuestInfo/Locale/Locale-enUS.lua
 Cartographer_QuestInfo/Locale/Locale-zhCN.lua
+Cartographer_QuestInfo/Locale/Locale-ruRU.lua
 Cartographer_QuestInfo/Locale/Locale-zhTW.lua
 Cartographer_QuestInfo/Artwork/Mark_End.tga
 Cartographer_QuestInfo/Artwork/QL_BotLeft.tga

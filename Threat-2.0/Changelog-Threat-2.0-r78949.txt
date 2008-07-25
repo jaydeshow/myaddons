@@ -1,4 +1,31 @@
 ------------------------------------------------------------------------
+r78949 | xinhuan | 2008-07-22 19:33:17 -0400 (Tue, 22 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
+
+Threat-2.0:
+- Update Petrify skill to zero the tank's threat (Chaos Gazer, Sunwell Plateau).
+- Fix an error from occurring if the player uses Sunder Armor while mind controlled.
+------------------------------------------------------------------------
+r78939 | charon | 2008-07-22 17:06:38 -0400 (Tue, 22 Jul 2008) | 12 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Fix paladin healing threat
+
+As pointed out by Zappster[1], paladin healing threat has been broken
+since 2.4.2.  Since the general belief[2] seems to be that all healing
+by a paladin---even that caused by other classes and hence spell
+schools---is affected, we introduce a new modifier for healing and
+have paladins set it to 0.25.
+
+Extensively discussed with Xinhuan, kalahassi and nevcairiel.
+
+[1] http://www.wowace.com/forums/index.php?topic=13767.0
+[2] http://www.wowwiki.com/Threat/Modifier_table
+------------------------------------------------------------------------
 r78412 | charon | 2008-07-14 14:39:36 -0400 (Mon, 14 Jul 2008) | 6 lines
 Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
@@ -60,19 +87,4 @@ Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
 
 Threat-2.0: fix ThreatLibNPCModuleCore.ModifyThreatSpells not being applied for NPCs without an NPC module, thanks WatchoutX
-------------------------------------------------------------------------
-r77072 | charon | 2008-06-19 04:47:23 -0400 (Thu, 19 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
-   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
-
-Threat-2.0: properly handle Taunt and Growl misses by using transactions
-------------------------------------------------------------------------
-r76620 | charon | 2008-06-13 15:04:39 -0400 (Fri, 13 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
-
-Threat-2.0: fix paladin taunt applying UnitGUID to a GUID
-
 ------------------------------------------------------------------------

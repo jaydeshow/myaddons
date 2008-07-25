@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fGuild Positions|r]
+## Title-ruRU: Картограф |r[|cffeda55fПозиции Гильдии|r]
 ## X-Name: Guild Positions
 ## X-Name-ruRU: Позиции Гильдии
 ## X-Name-deDE: Gildenpositionen

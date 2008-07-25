@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fGroup Colors|r]
+## Title-ruRU: Картограф |r[|cffeda55fЦвета Групп|r]
 ## X-Name: Group Colors
 ## X-Name-ruRU: Цвета групп
 ## X-Name-deDE: Gruppenfarben

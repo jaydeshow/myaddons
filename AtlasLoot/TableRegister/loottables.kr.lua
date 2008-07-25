@@ -608,16 +608,6 @@ local BabbleFaction = LibStub("LibBabble-Faction-3.0"):GetLookupTable();
     AtlasLoot_TableNames["PVP70Shaman2"][1] = "주술사 PvP 세트 (Lvl 70)";
     AtlasLoot_TableNames["PVP70Warlock"][1] = "흑마법사 PvP 세트 (Lvl 70)";
     AtlasLoot_TableNames["PVP70Warrior"][1] = "전사 PvP 세트 (Lvl 70)";
-    --AQ20 Sets
-    AtlasLoot_TableNames["AQ20Druid"][1] = "드루이드 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Hunter"][1] = "사냥꾼 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Mage"][1] = "마법사 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Paladin"][1] = "성기사 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Priest"][1] = "사제 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Rogue"][1] = "도적 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Shaman"][1] = "주술사 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Warlock"][1] = "흑마법사 안퀴라즈 폐허 세트";
-    AtlasLoot_TableNames["AQ20Warrior"][1] = "전사 안퀴라즈 폐허 세트";
     --안퀴라즈 사원 세트
     AtlasLoot_TableNames["AQ40Druid"][1] = "드루이드 안퀴라즈 사원 세트";
     AtlasLoot_TableNames["AQ40Hunter"][1] = "사냥꾼 안퀴라즈 사원 세트";
@@ -727,40 +717,6 @@ local BabbleFaction = LibStub("LibBabble-Faction-3.0"):GetLookupTable();
     AtlasLoot_TableNames["T0Shaman"][1] = "주술사 던전 세트 1/2";
     AtlasLoot_TableNames["T0Warlock"][1] = "흑마법사 던전 세트 1/2";
     AtlasLoot_TableNames["T0Warrior"][1] = "전사 던전 세트 1/2";
-    --Dungeon Set 3
-    AtlasLoot_TableNames["DS3Hallowed"][1] = "신성의 예복 (천)";
-    AtlasLoot_TableNames["DS3Incanter"][1] = "주문술사 의복 (천)";
-    AtlasLoot_TableNames["DS3Mana"][1] = "마나 깃든 예복 (천)";
-    AtlasLoot_TableNames["DS3Oblivion"][1] = "망각의 수의 (천)";
-    AtlasLoot_TableNames["DS3Assassin"][1] = "암살의 제복 (가죽)";
-    AtlasLoot_TableNames["DS3Moonglade"][1] = "달의 숲 의복 (가죽)";
-    AtlasLoot_TableNames["DS3Wastewalker"][1] = "거친 황야 의복 (가죽)";
-    AtlasLoot_TableNames["DS3Beast"][1] = "야수군주 갑옷 (사슬)";
-    AtlasLoot_TableNames["DS3Desolation"][1] = "황폐의 방어구 (사슬)";
-    AtlasLoot_TableNames["DS3Tidefury"][1] = "성난 파도의 방어구 (사슬)";
-    AtlasLoot_TableNames["DS3Bold"][1] = "용자의 갑옷 (판금)";
-    AtlasLoot_TableNames["DS3Doom"][1] = "파멸의 판금 갑옷 (판금)";
-    AtlasLoot_TableNames["DS3Right"][1] = "정의의 방어구 (판금)";
-    --T1 Sets
-    AtlasLoot_TableNames["T1Druid"][1] = "드루이드 T1 세트";
-    AtlasLoot_TableNames["T1Hunter"][1] = "사냥꾼 T1 세트";
-    AtlasLoot_TableNames["T1Mage"][1] = "마법사 T1 세트";
-    AtlasLoot_TableNames["T1Paladin"][1] = "성기사 T1 세트";
-    AtlasLoot_TableNames["T1Priest"][1] = "사제 T1 세트";
-    AtlasLoot_TableNames["T1Rogue"][1] = "도적 T1 세트";
-    AtlasLoot_TableNames["T1Shaman"][1] = "주술사 T1 세트";
-    AtlasLoot_TableNames["T1Warlock"][1] = "흑마법사 T1 세트";
-    AtlasLoot_TableNames["T1Warrior"][1] = "전사 T1 세트";
-    --T2 Sets
-    AtlasLoot_TableNames["T2Druid"][1] = "드루이드 T2 세트";
-    AtlasLoot_TableNames["T2Hunter"][1] = "사냥꾼 T2 세트";
-    AtlasLoot_TableNames["T2Mage"][1] = "마법사 T2 세트";
-    AtlasLoot_TableNames["T2Paladin"][1] = "성기사 T2 세트";
-    AtlasLoot_TableNames["T2Priest"][1] = "사제 T2 세트";
-    AtlasLoot_TableNames["T2Rogue"][1] = "도적 T2 세트";
-    AtlasLoot_TableNames["T2Shaman"][1] = "주술사 T2 세트";
-    AtlasLoot_TableNames["T2Warlock"][1] = "흑마법사 T2 세트";
-    AtlasLoot_TableNames["T2Warrior"][1] = "전사 T2 세트";
     --T3 Sets
     AtlasLoot_TableNames["T3Druid"][1] = "드루이드 T3 세트";
     AtlasLoot_TableNames["T3Hunter"][1] = "사냥꾼 T3 세트";

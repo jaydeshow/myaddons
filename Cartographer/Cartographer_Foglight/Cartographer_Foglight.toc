@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fFoglight|r]
+## Title-ruRU: Картограф |r[|cffeda55fПротивотуман|r]
 ## X-Name: Foglight
 ## X-Name-ruRU: Противотуман
 ## X-Name-deDE: Licht im Nebel

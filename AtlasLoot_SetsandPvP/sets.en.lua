@@ -206,24 +206,6 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 32838, "", "=q5=Warglaive of Azzinoth", "=ds=#h4#, #w10#, =q1=#m1# =ds=#c9#, #c6#" },
 	};
 
-	TBCLatrosFlurry = {
-		{ 0, "INV_Box_01", "=q6=#bcs3#", "=q1=" },
-		{ 34703, "", "=q3=Latro's Dancing Blade", "=ds=#h1#, #w10#", "" },
-		{ 28189, "", "=q3=Latro's Shifting Sword", "=ds=#h1#, #w10#", "" },
-	};
-
-	TBCTwinStars = {
-		{ 0, "INV_Box_01", "=q6=#bcs1#", "=q1=#z17#" },
-		{ 31338, "", "=q4=Charlotte's Ivy", "=ds=#s2#", "0.01%" },
-		{ 31339, "", "=q4=Lola's Eve", "=ds=#s13#", "0.01%" },
-	};
-
-	TBCAzzinothBlades = {
-		{ 0, "INV_Box_01", "=q6=#bcs2#", "=q2=#n137#, =q1=#z18#" },
-		{ 32837, "", "=q5=Warglaive of Azzinoth", "=ds=#h3#, #w10#, =q1=#m1# =ds=#c9#, #c6#" },
-		{ 32838, "", "=q5=Warglaive of Azzinoth", "=ds=#h4#, #w10#, =q1=#m1# =ds=#c9#, #c6#" },
-	};
-
 ------------------------
 --- Tier 6 Sets (T6) ---
 ------------------------
@@ -856,12 +838,27 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 23059, "", "=q4=Ring of the Dreadnaught", "=ds="..AtlasLootBossNames["Naxxramas"][15] },
 	};
 
-------------------------
---- Tier 2 Sets (T2) ---
-------------------------
+----------------------------
+--- Tier 1/2 Sets (T1/2) ---
+----------------------------
 
-	T2Druid = {
-		{ 0, "Spell_Nature_Regeneration", "=q6=#t2s1#", "" },		
+	T1T2Druid = {
+		{ 0, "Spell_Nature_Regeneration", "=q6=#t1s1#", "=q1=#m30#" },
+		{ 16834, "", "=q4=Cenarion Helm", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.51%" },
+		{ 16836, "", "=q4=Cenarion Spaulders", "=ds="..AtlasLootBossNames["MoltenCore"][6], "19.52%" },
+		{ 16833, "", "=q4=Cenarion Vestments", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.21%" },
+		{ 16830, "", "=q4=Cenarion Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.17%" },
+		{ 16831, "", "=q4=Cenarion Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][5], "19.53%" },
+		{ 16828, "", "=q4=Cenarion Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
+		{ 16835, "", "=q4=Cenarion Leggings", "=ds="..AtlasLootBossNames["MoltenCore"][2], "12.90%" },
+		{ 16829, "", "=q4=Cenarion Boots", "=ds="..AtlasLootBossNames["MoltenCore"][1], "10.72%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_Nature_Regeneration", "=q6=#t2s1#", "=q1=#m31#" },		
 		{ 16900, "", "=q4=Stormrage Cover", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "13.08%" },
 		{ 16902, "", "=q4=Stormrage Pauldrons", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "14.63%" },
 		{ 16897, "", "=q4=Stormrage Chestguard", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "11.89%" },		
@@ -872,8 +869,23 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16898, "", "=q4=Stormrage Boots", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "13.79%" },
 	};
 
-	T2Hunter = {
-		{ 0, "Ability_Hunter_RunningShot", "=q6=#t2s2#", "" },
+	T1T2Hunter = {
+		{ 0, "Ability_Hunter_RunningShot", "=q6=#t1s2#", "=q1=#m30#" },
+		{ 16846, "", "=q4=Giantstalker's Helmet", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.57%" },
+		{ 16848, "", "=q4=Giantstalker's Epaulets", "=ds="..AtlasLootBossNames["MoltenCore"][8], "19.64%" },
+		{ 16845, "", "=q4=Giantstalker's Breastplate", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.83%" },
+		{ 16850, "", "=q4=Giantstalker's Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.18%" },
+		{ 16852, "", "=q4=Giantstalker's Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][5], "18.58%" },
+		{ 16851, "", "=q4=Giantstalker's Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.17%" },
+		{ 16847, "", "=q4=Giantstalker's Leggings", "=ds="..AtlasLootBossNames["MoltenCore"][2], "13.28%" },
+		{ 16849, "", "=q4=Giantstalker's Boots", "=ds="..AtlasLootBossNames["MoltenCore"][3], "14.54%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Ability_Hunter_RunningShot", "=q6=#t2s2#", "=q1=#m31#" },
 		{ 16939, "", "=q4=Dragonstalker's Helm", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "13.91%" },
 		{ 16937, "", "=q4=Dragonstalker's Spaulders", "=ds="..AtlasLootBossNames["BlackwingLair"][7],   "16.20%" },
 		{ 16942, "", "=q4=Dragonstalker's Breastplate", "=ds="..AtlasLootBossNames["BlackwingLair"][8],   "13.30%" },
@@ -884,8 +896,23 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16941, "", "=q4=Dragonstalker's Greaves", "=ds="..AtlasLootBossNames["BlackwingLair"][3],	 "17.78%" },
 	};
 
-	T2Mage = {
-		{ 0, "Spell_Frost_IceStorm", "=q6=#t2s3#", "" },
+	T1T2Mage = {
+		{ 0, "Spell_Frost_IceStorm", "=q6=#t1s3#", "=q1=#m30#" },
+		{ 16795, "", "=q4=Arcanist Crown", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.31%" },
+		{ 16797, "", "=q4=Arcanist Mantle", "=ds="..AtlasLootBossNames["MoltenCore"][6], "19.92%" },
+		{ 16798, "", "=q4=Arcanist Robes", "=ds="..AtlasLootBossNames["MoltenCore"][7], "16.51%" },
+		{ 16799, "", "=q4=Arcanist Bindings", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
+		{ 16801, "", "=q4=Arcanist Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][5], "19.59%" },
+		{ 16802, "", "=q4=Arcanist Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.16%"  },
+		{ 16796, "", "=q4=Arcanist Leggings", "=ds="..AtlasLootBossNames["MoltenCore"][2], "14.57%" },
+		{ 16800, "", "=q4=Arcanist Boots",  "=ds="..AtlasLootBossNames["MoltenCore"][1], "12.06%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_Frost_IceStorm", "=q6=#t2s3#", "=q1=#m31#" },
 		{ 16914, "", "=q4=Netherwind Crown", "=ds="..AtlasLootBossNames["OnyxiasLair"][1] , "14.09%" },
 		{ 16917, "", "=q4=Netherwind Mantle", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "18.09%" },
 		{ 16916, "", "=q4=Netherwind Robes", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "14.03%" },
@@ -896,8 +923,23 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16912, "", "=q4=Netherwind Boots", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "17.17%" },
 	};
 
-	T2Paladin = {
-		{ 0, "Spell_Holy_SealOfMight", "=q6=#t2s4#", "" },
+	T1T2Paladin = {
+		{ 0, "Spell_Holy_SealOfMight", "=q6=#t1s4#", "=q1=#m30#" },
+		{ 16854, "", "=q4=Lawbringer Helm", "=ds="..AtlasLootBossNames["MoltenCore"][4], "7.23%" },
+		{ 16856, "", "=q4=Lawbringer Spaulders", "=ds="..AtlasLootBossNames["MoltenCore"][6], "12.62%" },
+		{ 16853, "", "=q4=Lawbringer Chestguard", "=ds="..AtlasLootBossNames["MoltenCore"][7], "9.53%" },
+		{ 16857, "", "=q4=Lawbringer Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.11%" },
+		{ 16860, "", "=q4=Lawbringer Gauntlets", "=ds="..AtlasLootBossNames["MoltenCore"][3], "11.77%" },
+		{ 16858, "", "=q4=Lawbringer Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.10%" },
+		{ 16855, "", "=q4=Lawbringer Legplates", "=ds="..AtlasLootBossNames["MoltenCore"][2], "8.54%" },
+		{ 16859, "", "=q4=Lawbringer Boots", "=ds="..AtlasLootBossNames["MoltenCore"][1], "7.20%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_Holy_SealOfMight", "=q6=#t2s4#", "=q1=#m31#" },
 		{ 16955, "", "=q4=Judgement Crown", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "8.64%" },
 		{ 16953, "", "=q4=Judgement Spaulders", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "10.97%" },
 		{ 16958, "", "=q4=Judgement Breastplate", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "9.24%" },
@@ -908,8 +950,23 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16957, "", "=q4=Judgement Sabatons", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "11.28%" },
 	};
 
-	T2Priest = {
-		{ 0, "Spell_Holy_PowerWordShield", "=q6=#t2s5#", "" },
+	T1T2Priest = {
+		{ 0, "Spell_Holy_PowerWordShield", "=q6=#t1s5#", "=q1=#m30#" },
+		{ 16813, "", "=q4=Circlet of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.36%" },
+		{ 16816, "", "=q4=Mantle of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][8], "21.06%" },
+		{ 16815, "", "=q4=Robes of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.65%" },
+		{ 16819, "", "=q4=Vambraces of Prophecy", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
+		{ 16812, "", "=q4=Gloves of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][3], "18.65%" },
+		{ 16817, "", "=q4=Girdle of Prophecy", "=ds="..AtlasLootBossNames["Common"][1], "0.18%" },
+		{ 16814, "", "=q4=Pants of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][2], "14.33%" },
+		{ 16811, "", "=q4=Boots of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][5], "14.90%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_Holy_PowerWordShield", "=q6=#t2s5#", "=q1=#m31#" },
 		{ 16921, "", "=q4=Halo of Transcendence",  "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "13.39%" },
 		{ 16924, "", "=q4=Pauldrons of Transcendence", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "17.83%" },
 		{ 16923, "", "=q4=Robes of Transcendence", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "14.83%" },
@@ -920,8 +977,23 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16919, "", "=q4=Boots of Transcendence", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "14.61%" },
 	};
 
-	T2Rogue = {
-		{ 0, "Ability_BackStab", "=q6=#t2s6#", "" },
+	T1T2Rogue = {
+		{ 0, "Ability_BackStab", "=q6=#t1s6#", "=q1=#m30#" },
+		{ 16821, "", "=q4=Nightslayer Cover", "=ds="..AtlasLootBossNames["MoltenCore"][4], "10.38%" },
+		{ 16823, "", "=q4=Nightslayer Shoulder Pads", "=ds="..AtlasLootBossNames["MoltenCore"][8], "20.66%" },
+		{ 16820, "", "=q4=Nightslayer Chestpiece", "=ds="..AtlasLootBossNames["MoltenCore"][7], "16.76%" },
+		{ 16825, "", "=q4=Nightslayer Bracelets", "=ds="..AtlasLootBossNames["Common"][1], "0.17%" },
+		{ 16826, "", "=q4=Nightslayer Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][3], "19.47%" },
+		{ 16827, "", "=q4=Nightslayer Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.15%" },
+		{ 16822, "", "=q4=Nightslayer Pants", "=ds="..AtlasLootBossNames["MoltenCore"][2], "13.83%" },
+		{ 16824, "", "=q4=Nightslayer Boots", "=ds="..AtlasLootBossNames["MoltenCore"][5], "15.58%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Ability_BackStab", "=q6=#t2s6#", "=q1=#m31#" },
 		{ 16908, "", "=q4=Bloodfang Hood", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "13.21%" },
 		{ 16832, "", "=q4=Bloodfang Spaulders", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "17.03%" },
 		{ 16905, "", "=q4=Bloodfang Chestpiece", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "14.21%" },
@@ -932,8 +1004,23 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16906, "", "=q4=Bloodfang Boots", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "15.66%" },
 	};
 
-	T2Shaman = {
-		{ 0, "Spell_FireResistanceTotem_01", "=q6=#t2s7#", "" },
+	T1T2Shaman = {
+		{ 0, "Spell_FireResistanceTotem_01", "=q6=#t1s7#", "=q1=#m30#" },
+		{ 16842, "", "=q4=Earthfury Helmet", "=ds="..AtlasLootBossNames["MoltenCore"][4], "3.91%" },
+		{ 16844, "", "=q4=Earthfury Epaulets", "=ds="..AtlasLootBossNames["MoltenCore"][6], "7.29%" },
+		{ 16841, "", "=q4=Earthfury Vestments", "=ds="..AtlasLootBossNames["MoltenCore"][7], "6.08%" },
+		{ 16840, "", "=q4=Earthfury Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.06%" },
+		{ 16839, "", "=q4=Earthfury Gauntlets", "=ds="..AtlasLootBossNames["MoltenCore"][3], "7.38%" },
+		{ 16838, "", "=q4=Earthfury Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.07%" },
+		{ 16843, "", "=q4=Earthfury Legguards", "=ds="..AtlasLootBossNames["MoltenCore"][2], "4.73%" },
+		{ 16837, "", "=q4=Earthfury Boots", "=ds="..AtlasLootBossNames["MoltenCore"][1], "4.16%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_FireResistanceTotem_01", "=q6=#t2s7#", "=q1=#m31#" },
 		{ 16947, "", "=q4=Helmet of Ten Storms", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "4.86%" },
 		{ 16945, "", "=q4=Epaulets of Ten Storms", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "6.73%" },
 		{ 16950, "", "=q4=Breastplate of Ten Storms", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "5.65%" },
@@ -944,8 +1031,23 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16949, "", "=q4=Greaves of Ten Storms", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "5.57%" },
 	};
 
-	T2Warlock = {
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#t2s8#", "" },
+	T1T2Warlock = {
+		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#t1s8#", "=q1=#m30#" },
+		{ 16808, "", "=q4=Felheart Horns", "=ds="..AtlasLootBossNames["MoltenCore"][4], "10.62%" },
+		{ 16807, "", "=q4=Felheart Shoulder Pads", "=ds="..AtlasLootBossNames["MoltenCore"][6], "19.78%" },
+		{ 16809, "", "=q4=Felheart Robes", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.66%" },
+		{ 16804, "", "=q4=Felheart Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
+		{ 16805, "", "=q4=Felheart Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][1],  "14.89%" },
+		{ 16806, "", "=q4=Felheart Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.19%" },
+		{ 16810, "", "=q4=Felheart Pants", "=ds="..AtlasLootBossNames["MoltenCore"][2], "13.75%" },
+		{ 16803, "", "=q4=Felheart Slippers", "=ds="..AtlasLootBossNames["MoltenCore"][5], "15.28%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#t2s8#", "=q1=#m31#" },
 		{ 16929, "", "=q4=Nemesis Skullcap", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "13.54%" },
 		{ 16932, "", "=q4=Nemesis Spaulders", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "16.26%" },
 		{ 16931, "", "=q4=Nemesis Robes", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "12.46%" },
@@ -956,120 +1058,8 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16927, "", "=q4=Nemesis Boots", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "15.32%" },
 	};
 
-	T2Warrior = {
-		{ 0, "INV_Shield_05", "=q6=#t2s9#", "" },
-		{ 16963, "", "=q4=Helm of Wrath", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "13.65%" },
-		{ 16961, "", "=q4=Pauldrons of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "16.83%" },
-		{ 16966, "", "=q4=Breastplate of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "15.06%" },
-		{ 16959, "", "=q4=Bracelets of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][1], "20.29%" },
-		{ 16964, "", "=q4=Gauntlets of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][4]..", ".."=ds="..AtlasLootBossNames["BlackwingLair"][5]..", ".."=ds="..AtlasLootBossNames["BlackwingLair"][6], "5.93%" },
-		{ 16960, "", "=q4=Waistband of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][2], "20.03%" },
-		{ 16962, "", "=q4=Legplates of Wrath", "=ds="..AtlasLootBossNames["MoltenCore"][9], "17.23%" },
-		{ 16965, "", "=q4=Sabatons of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "16.84%" },
-	};
-
-------------------------
---- Tier 1 Sets (T1) ---
-------------------------
-
-	T1Druid = {
-		{ 0, "Spell_Nature_Regeneration", "=q6=#t1s1#", "" },
-		{ 16834, "", "=q4=Cenarion Helm", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.51%" },
-		{ 16836, "", "=q4=Cenarion Spaulders", "=ds="..AtlasLootBossNames["MoltenCore"][6], "19.52%" },
-		{ 16833, "", "=q4=Cenarion Vestments", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.21%" },
-		{ 16830, "", "=q4=Cenarion Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.17%" },
-		{ 16831, "", "=q4=Cenarion Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][5], "19.53%" },
-		{ 16828, "", "=q4=Cenarion Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
-		{ 16835, "", "=q4=Cenarion Leggings", "=ds="..AtlasLootBossNames["MoltenCore"][2], "12.90%" },
-		{ 16829, "", "=q4=Cenarion Boots", "=ds="..AtlasLootBossNames["MoltenCore"][1], "10.72%" },
-	};
-
-	T1Hunter = {
-		{ 0, "Ability_Hunter_RunningShot", "=q6=#t1s2#", "" },
-		{ 16846, "", "=q4=Giantstalker's Helmet", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.57%" },
-		{ 16848, "", "=q4=Giantstalker's Epaulets", "=ds="..AtlasLootBossNames["MoltenCore"][8], "19.64%" },
-		{ 16845, "", "=q4=Giantstalker's Breastplate", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.83%" },
-		{ 16850, "", "=q4=Giantstalker's Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.18%" },
-		{ 16852, "", "=q4=Giantstalker's Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][5], "18.58%" },
-		{ 16851, "", "=q4=Giantstalker's Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.17%" },
-		{ 16847, "", "=q4=Giantstalker's Leggings", "=ds="..AtlasLootBossNames["MoltenCore"][2], "13.28%" },
-		{ 16849, "", "=q4=Giantstalker's Boots", "=ds="..AtlasLootBossNames["MoltenCore"][3], "14.54%" },
-	};
-
-	T1Mage = {
-		{ 0, "Spell_Frost_IceStorm", "=q6=#t1s3#", "" },
-		{ 16795, "", "=q4=Arcanist Crown", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.31%" },
-		{ 16797, "", "=q4=Arcanist Mantle", "=ds="..AtlasLootBossNames["MoltenCore"][6], "19.92%" },
-		{ 16798, "", "=q4=Arcanist Robes", "=ds="..AtlasLootBossNames["MoltenCore"][7], "16.51%" },
-		{ 16799, "", "=q4=Arcanist Bindings", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
-		{ 16801, "", "=q4=Arcanist Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][5], "19.59%" },
-		{ 16802, "", "=q4=Arcanist Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.16%"  },
-		{ 16796, "", "=q4=Arcanist Leggings", "=ds="..AtlasLootBossNames["MoltenCore"][2], "14.57%" },
-		{ 16800, "", "=q4=Arcanist Boots",  "=ds="..AtlasLootBossNames["MoltenCore"][1], "12.06%" },
-	};
-
-	T1Paladin = {
-		{ 0, "Spell_Holy_SealOfMight", "=q6=#t1s4#", "" },
-		{ 16854, "", "=q4=Lawbringer Helm", "=ds="..AtlasLootBossNames["MoltenCore"][4], "7.23%" },
-		{ 16856, "", "=q4=Lawbringer Spaulders", "=ds="..AtlasLootBossNames["MoltenCore"][6], "12.62%" },
-		{ 16853, "", "=q4=Lawbringer Chestguard", "=ds="..AtlasLootBossNames["MoltenCore"][7], "9.53%" },
-		{ 16857, "", "=q4=Lawbringer Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.11%" },
-		{ 16860, "", "=q4=Lawbringer Gauntlets", "=ds="..AtlasLootBossNames["MoltenCore"][3], "11.77%" },
-		{ 16858, "", "=q4=Lawbringer Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.10%" },
-		{ 16855, "", "=q4=Lawbringer Legplates", "=ds="..AtlasLootBossNames["MoltenCore"][2], "8.54%" },
-		{ 16859, "", "=q4=Lawbringer Boots", "=ds="..AtlasLootBossNames["MoltenCore"][1], "7.20%" },
-	};
-
-	T1Priest = {
-		{ 0, "Spell_Holy_PowerWordShield", "=q6=#t1s5#", "" },
-		{ 16813, "", "=q4=Circlet of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.36%" },
-		{ 16816, "", "=q4=Mantle of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][8], "21.06%" },
-		{ 16815, "", "=q4=Robes of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.65%" },
-		{ 16819, "", "=q4=Vambraces of Prophecy", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
-		{ 16812, "", "=q4=Gloves of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][3], "18.65%" },
-		{ 16817, "", "=q4=Girdle of Prophecy", "=ds="..AtlasLootBossNames["Common"][1], "0.18%" },
-		{ 16814, "", "=q4=Pants of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][2], "14.33%" },
-		{ 16811, "", "=q4=Boots of Prophecy", "=ds="..AtlasLootBossNames["MoltenCore"][5], "14.90%" },
-	};
-
-	T1Rogue = {
-		{ 0, "Ability_BackStab", "=q6=#t1s6#", "" },
-		{ 16821, "", "=q4=Nightslayer Cover", "=ds="..AtlasLootBossNames["MoltenCore"][4], "10.38%" },
-		{ 16823, "", "=q4=Nightslayer Shoulder Pads", "=ds="..AtlasLootBossNames["MoltenCore"][8], "20.66%" },
-		{ 16820, "", "=q4=Nightslayer Chestpiece", "=ds="..AtlasLootBossNames["MoltenCore"][7], "16.76%" },
-		{ 16825, "", "=q4=Nightslayer Bracelets", "=ds="..AtlasLootBossNames["Common"][1], "0.17%" },
-		{ 16826, "", "=q4=Nightslayer Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][3], "19.47%" },
-		{ 16827, "", "=q4=Nightslayer Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.15%" },
-		{ 16822, "", "=q4=Nightslayer Pants", "=ds="..AtlasLootBossNames["MoltenCore"][2], "13.83%" },
-		{ 16824, "", "=q4=Nightslayer Boots", "=ds="..AtlasLootBossNames["MoltenCore"][5], "15.58%" },
-	};
-
-	T1Shaman = {
-		{ 0, "Spell_FireResistanceTotem_01", "=q6=#t1s7#", "" },
-		{ 16842, "", "=q4=Earthfury Helmet", "=ds="..AtlasLootBossNames["MoltenCore"][4], "3.91%" },
-		{ 16844, "", "=q4=Earthfury Epaulets", "=ds="..AtlasLootBossNames["MoltenCore"][6], "7.29%" },
-		{ 16841, "", "=q4=Earthfury Vestments", "=ds="..AtlasLootBossNames["MoltenCore"][7], "6.08%" },
-		{ 16840, "", "=q4=Earthfury Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.06%" },
-		{ 16839, "", "=q4=Earthfury Gauntlets", "=ds="..AtlasLootBossNames["MoltenCore"][3], "7.38%" },
-		{ 16838, "", "=q4=Earthfury Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.07%" },
-		{ 16843, "", "=q4=Earthfury Legguards", "=ds="..AtlasLootBossNames["MoltenCore"][2], "4.73%" },
-		{ 16837, "", "=q4=Earthfury Boots", "=ds="..AtlasLootBossNames["MoltenCore"][1], "4.16%" },
-	};
-
-	T1Warlock = {
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#t1s8#", "" },
-		{ 16808, "", "=q4=Felheart Horns", "=ds="..AtlasLootBossNames["MoltenCore"][4], "10.62%" },
-		{ 16807, "", "=q4=Felheart Shoulder Pads", "=ds="..AtlasLootBossNames["MoltenCore"][6], "19.78%" },
-		{ 16809, "", "=q4=Felheart Robes", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.66%" },
-		{ 16804, "", "=q4=Felheart Bracers", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
-		{ 16805, "", "=q4=Felheart Gloves", "=ds="..AtlasLootBossNames["MoltenCore"][1],  "14.89%" },
-		{ 16806, "", "=q4=Felheart Belt", "=ds="..AtlasLootBossNames["Common"][1], "0.19%" },
-		{ 16810, "", "=q4=Felheart Pants", "=ds="..AtlasLootBossNames["MoltenCore"][2], "13.75%" },
-		{ 16803, "", "=q4=Felheart Slippers", "=ds="..AtlasLootBossNames["MoltenCore"][5], "15.28%" },
-	};
-
-	T1Warrior = {
-		{ 0, "INV_Shield_05", "=q6=#t1s9#", "" },
+	T1T2Warrior = {
+		{ 0, "INV_Shield_05", "=q6=#t1s9#", "=q1=#m30#" },
 		{ 16866, "", "=q4=Helm of Might", "=ds="..AtlasLootBossNames["MoltenCore"][4], "11.39%" },
 		{ 16868, "", "=q4=Pauldrons of Might", "=ds="..AtlasLootBossNames["MoltenCore"][8], "21.14%" },
 		{ 16865, "", "=q4=Breastplate of Might", "=ds="..AtlasLootBossNames["MoltenCore"][7], "15.28%" },
@@ -1078,6 +1068,21 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 16864, "", "=q4=Belt of Might", "=ds="..AtlasLootBossNames["Common"][1], "0.16%" },
 		{ 16867, "", "=q4=Legplates of Might", "=ds="..AtlasLootBossNames["MoltenCore"][2], "13.97%" },
 		{ 16862, "", "=q4=Sabatons of Might", "=ds="..AtlasLootBossNames["MoltenCore"][3], "14.48%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "INV_Shield_05", "=q6=#t2s9#", "=q1=#m31#" },
+		{ 16963, "", "=q4=Helm of Wrath", "=ds="..AtlasLootBossNames["OnyxiasLair"][1], "13.65%" },
+		{ 16961, "", "=q4=Pauldrons of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][7], "16.83%" },
+		{ 16966, "", "=q4=Breastplate of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][8], "15.06%" },
+		{ 16959, "", "=q4=Bracelets of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][1], "20.29%" },
+		{ 16964, "", "=q4=Gauntlets of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][4]..", ".."=ds="..AtlasLootBossNames["BlackwingLair"][5]..", ".."=ds="..AtlasLootBossNames["BlackwingLair"][6], "5.93%" },
+		{ 16960, "", "=q4=Waistband of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][2], "20.03%" },
+		{ 16962, "", "=q4=Legplates of Wrath", "=ds="..AtlasLootBossNames["MoltenCore"][9], "17.23%" },
+		{ 16965, "", "=q4=Sabatons of Wrath", "=ds="..AtlasLootBossNames["BlackwingLair"][3], "16.84%" },
 	};
 
 ------------------------------------
@@ -1331,108 +1336,107 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 --- Dungeon 3 Sets (D3) ---
 ---------------------------
 
-	DS3Hallowed = {
+	DS3Cloth = {
+		{ 0, "Spell_Holy_InnerFire", "=q6=#ds3s1#", "" },
 		{ 28413, "", "=q3=Hallowed Crown", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
 		{ 27775, "", "=q3=Hallowed Pauldrons", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][2] },
 		{ 28230, "", "=q3=Hallowed Garments", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][3] },
 		{ 27536, "", "=q3=Hallowed Handwraps", "=ds="..AtlasLootBossNames["HCShatteredHalls"][2] },
 		{ 27875, "", "=q3=Hallowed Trousers", "=ds="..AtlasLootBossNames["AuchSethekkHalls"][1] },
-	};
-
-	DS3Incanter = {
-		{ 28278, "", "=q3=Incanter's Cowl", "=ds="..AtlasLootBossNames["TKMechanar"][1] },
-		{ 27738, "", "=q3=Incanter's Pauldrons", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
-		{ 28229, "", "=q3=Incanter's Robe", "=ds="..AtlasLootBossNames["TKTheBotanica"][2] },
-		{ 27508, "", "=q3=Incanter's Gloves", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][1] },
-		{ 27838, "", "=q3=Incanter's Trousers", "=ds="..AtlasLootBossNames["AuchSethekkHalls"][1] },
-	};
-
-	DS3Mana = {
+		{ 0,"","","" },
+		{ 0, "INV_Elemental_Mote_Nether", "=q6=#ds3s3#", "" },
 		{ 28193, "", "=q3=Mana-Etched Crown", "=ds="..AtlasLootBossNames["CoTTheBlackMorass"][1] },
 		{ 27796, "", "=q3=Mana-Etched Spaulders", "=ds="..AtlasLootBossNames["CFRTheSlavePens"][1].." (#j3#)" },
 		{ 28191, "", "=q3=Mana-Etched Vestments", "=ds="..AtlasLootBossNames["CoTOldHillsbradFoothills"][1].." (#j3#)" },
 		{ 27465, "", "=q3=Mana-Etched Gloves", "=ds="..AtlasLootBossNames["HCRamparts"][1].." (#j3#)" },
 		{ 27907, "", "=q3=Mana-Etched Pantaloons", "=ds="..AtlasLootBossNames["CFRTheUnderbog"][1].." (#j3#)" },
-	};
-
-	DS3Oblivion = {
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Ability_Creature_Cursed_04", "=q6=#ds3s2#", "" },
+		{ 28278, "", "=q3=Incanter's Cowl", "=ds="..AtlasLootBossNames["TKMechanar"][1] },
+		{ 27738, "", "=q3=Incanter's Pauldrons", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
+		{ 28229, "", "=q3=Incanter's Robe", "=ds="..AtlasLootBossNames["TKTheBotanica"][2] },
+		{ 27508, "", "=q3=Incanter's Gloves", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][1] },
+		{ 27838, "", "=q3=Incanter's Trousers", "=ds="..AtlasLootBossNames["AuchSethekkHalls"][1] },
+		{ 0,"","","" },
+		{ 0, "Ability_Creature_Cursed_03", "=q6=#ds3s4#", "" },
 		{ 28415, "", "=q3=Hood of Oblivion", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
 		{ 27778, "", "=q3=Spaulders of Oblivion", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][3] },
 		{ 28232, "", "=q3=Robe of Oblivion", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][3] },
 		{ 27537, "", "=q3=Gloves of Oblivion", "=ds="..AtlasLootBossNames["HCShatteredHalls"][2] },
 		{ 27948, "", "=q3=Trousers of Oblivion", "=ds="..AtlasLootBossNames["AuchSethekkHalls"][1] },
 	};
-
-	DS3Assassin = {
+	
+	DS3Leather = {
+		{ 0, "Ability_Rogue_SinisterCalling", "=q6=#ds3s5#", "" },
 		{ 28414, "", "=q3=Helm of Assassination", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
 		{ 27776, "", "=q3=Shoulderpads of Assassination", "=ds="..AtlasLootBossNames["AuchSethekkHalls"][1] },
 		{ 28204, "", "=q3=Tunic of Assassination", "=ds="..AtlasLootBossNames["TKMechanar"][1] },
 		{ 27509, "", "=q3=Handgrips of Assassination", "=ds="..AtlasLootBossNames["CoTTheBlackMorass"][1] },
 		{ 27908, "", "=q3=Leggings of Assassination", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][3] },
-	};
-
-	DS3Moonglade = {
+		{ 0,"","","" },
+		{ 0, "Ability_Hunter_RapidKilling", "=q6=#ds3s7#", "" },
+		{ 28224, "", "=q3=Wastewalker Helm", "=ds="..AtlasLootBossNames["CoTOldHillsbradFoothills"][1].." (#j3#)" },
+		{ 27797, "", "=q3=Wastewalker Shoulderpads", "=ds="..AtlasLootBossNames["AuchAuchenaiCrypts"][2].." (#j3#)" },
+		{ 28264, "", "=q3=Wastewalker Tunic", "=ds="..AtlasLootBossNames["HCBloodFurnace"][1].." (#j3#)" },
+		{ 27531, "", "=q3=Wastewalker Gloves", "=ds="..AtlasLootBossNames["HCShatteredHalls"][2] },
+		{ 27837, "", "=q3=Wastewalker Leggings", "=ds="..AtlasLootBossNames["AuchManaTombs"][1].." (#j3#)" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_Holy_SealOfRighteousness", "=q6=#ds3s6#", "" },
 		{ 28348, "", "=q3=Moonglade Cowl", "=ds="..AtlasLootBossNames["TKTheBotanica"][2] },
 		{ 27737, "", "=q3=Moonglade Shoulders", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
 		{ 28202, "", "=q3=Moonglade Robe", "=ds="..AtlasLootBossNames["TKMechanar"][1] },
 		{ 27468, "", "=q3=Moonglade Handwraps", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][1] },
 		{ 27873, "", "=q3=Moonglade Pants", "=ds="..AtlasLootBossNames["CoTTheBlackMorass"][1] },
 	};
-
-	DS3Wastewalker = {
-		{ 28224, "", "=q3=Wastewalker Helm", "=ds="..AtlasLootBossNames["CoTOldHillsbradFoothills"][1].." (#j3#)" },
-		{ 27797, "", "=q3=Wastewalker Shoulderpads", "=ds="..AtlasLootBossNames["AuchAuchenaiCrypts"][2].." (#j3#)" },
-		{ 28264, "", "=q3=Wastewalker Tunic", "=ds="..AtlasLootBossNames["HCBloodFurnace"][1].." (#j3#)" },
-		{ 27531, "", "=q3=Wastewalker Gloves", "=ds="..AtlasLootBossNames["HCShatteredHalls"][2] },
-		{ 27837, "", "=q3=Wastewalker Leggings", "=ds="..AtlasLootBossNames["AuchManaTombs"][1].." (#j3#)" },
-	};
-
-	DS3Beast = {
+	
+	DS3Mail = {
+		{ 0, "Ability_Hunter_Pet_Wolf", "=q6=#ds3s8#", "" },
 		{ 28275, "", "=q3=Beast Lord Helm", "=ds="..AtlasLootBossNames["TKMechanar"][1] },
 		{ 27801, "", "=q3=Beast Lord Mantle", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
 		{ 28228, "", "=q3=Beast Lord Curiass", "=ds="..AtlasLootBossNames["TKTheBotanica"][2] },
 		{ 27474, "", "=q3=Beast Lord Handguards", "=ds="..AtlasLootBossNames["HCShatteredHalls"][2] },
 		{ 27874, "", "=q3=Beast Lord Leggings", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
-	};
-
-	DS3Desolation = {
+		{ 0,"","","" },
+		{ 0, "INV_Helmet_70", "=q6=#ds3s10#", "" },
+		{ 28349, "", "=q3=Tidefury Helm", "=ds="..AtlasLootBossNames["TKTheBotanica"][2] },
+		{ 27802, "", "=q3=Tidefury Shoulderguards", "=ds="..AtlasLootBossNames["HCShatteredHalls"][1] },
+		{ 28231, "", "=q3=Tidefury Chestpiece", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
+		{ 27510, "", "=q3=Tidefury Gauntlets", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
+		{ 27909, "", "=q3=Tidefury Kilt", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][3] },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Ability_FiegnDead", "=q6=#ds3s9#", "" },
 		{ 28192, "", "=q3=Helm of Desolation", "=ds="..AtlasLootBossNames["CoTTheBlackMorass"][1] },
 		{ 27713, "", "=q3=Pauldrons of Desolation", "=ds="..AtlasLootBossNames["CFRTheSlavePens"][1].." (#j3#)" },
 		{ 28401, "", "=q3=Hauberk of Desolation", "=ds="..AtlasLootBossNames["CoTOldHillsbradFoothills"][1].." (#j3#)" },
 		{ 27528, "", "=q3=Gauntlets of Desolation", "=ds="..AtlasLootBossNames["HCShatteredHalls"][2] },
 		{ 27936, "", "=q3=Greaves of Desolation", "=ds="..AtlasLootBossNames["AuchSethekkHalls"][1] },
 	};
-
-	DS3Tidefury = {
-		{ 28349, "", "=q3=Tidefury Helm", "=ds="..AtlasLootBossNames["TKTheBotanica"][2] },
-		{ 27802, "", "=q3=Tidefury Shoulderguards", "=ds="..AtlasLootBossNames["HCShatteredHalls"][1] },
-		{ 28231, "", "=q3=Tidefury Chestpiece", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
-		{ 27510, "", "=q3=Tidefury Gauntlets", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
-		{ 27909, "", "=q3=Tidefury Kilt", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][3] },
-	};
-
-	DS3Bold = {
+	
+	DS3Plate = {
+		{ 0, "Spell_Fire_EnchantWeapon", "=q6=#ds3s11#", "" },
 		{ 28350, "", "=q3=Warhelm of the Bold", "=ds="..AtlasLootBossNames["TKTheBotanica"][2] },
 		{ 27803, "", "=q3=Shoulderguards of the Bold", "=ds="..AtlasLootBossNames["AuchShadowLabyrinth"][3] },
 		{ 28205, "", "=q3=Breastplate of the Bold", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
 		{ 27475, "", "=q3=Gauntlets of the Bold", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
 		{ 27977, "", "=q3=Legplates of the Bold", "=ds="..AtlasLootBossNames["CoTTheBlackMorass"][1] },
-	};
-
-	DS3Doom = {
-		{ 28225, "", "=q3=Doomplate Warhelm", "=ds="..AtlasLootBossNames["CoTOldHillsbradFoothills"][1].." (#j3#)" },
-		{ 27771, "", "=q3=Doomplate Shouldergards", "=ds="..AtlasLootBossNames["CFRTheUnderbog"][1].." (#j3#)" },
-		{ 28403, "", "=q3=Doomplate Chestguard", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
-		{ 27497, "", "=q3=Doomplate Gauntlets", "=ds="..AtlasLootBossNames["HCBloodFurnace"][1].." (#j3#)" },
-		{ 27870, "", "=q3=Doomplate Legguards", "=ds="..AtlasLootBossNames["AuchAuchenaiCrypts"][1].." (#j3#)" },
-	};
-
-	DS3Right = {
+		{ 0,"","","" },
+		{ 0, "INV_Hammer_02", "=q6=#ds3s13#", "" },
 		{ 28285, "", "=q3=Helm of the Righteous", "=ds="..AtlasLootBossNames["TKMechanar"][1] },
 		{ 27739, "", "=q3=Spaulders of the Righteous", "=ds="..AtlasLootBossNames["TKTheBotanica"][1] },
 		{ 28203, "", "=q3=Breastplate of the Righteous", "=ds="..AtlasLootBossNames["CFRTheSteamvault"][2] },
 		{ 27535, "", "=q3=Gauntlets of the Righteous", "=ds="..AtlasLootBossNames["HCShatteredHalls"][1] },
 		{ 27839, "", "=q3=Legplates of the Righteous", "=ds="..AtlasLootBossNames["CoTTheBlackMorass"][1] },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "INV_Helmet_08", "=q6=#ds3s12#", "" },
+		{ 28225, "", "=q3=Doomplate Warhelm", "=ds="..AtlasLootBossNames["CoTOldHillsbradFoothills"][1].." (#j3#)" },
+		{ 27771, "", "=q3=Doomplate Shouldergards", "=ds="..AtlasLootBossNames["CFRTheUnderbog"][1].." (#j3#)" },
+		{ 28403, "", "=q3=Doomplate Chestguard", "=ds="..AtlasLootBossNames["TKTheArcatraz"][1] },
+		{ 27497, "", "=q3=Doomplate Gauntlets", "=ds="..AtlasLootBossNames["HCBloodFurnace"][1].." (#j3#)" },
+		{ 27870, "", "=q3=Doomplate Legguards", "=ds="..AtlasLootBossNames["AuchAuchenaiCrypts"][1].." (#j3#)" },
 	};
 
 ---------------
@@ -1524,64 +1528,50 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 --- AQ20 Sets ---
 -----------------
 
-	AQ20Druid = {
-		{ 0, "Spell_Nature_Regeneration", "=q6=#aq20s1#", "" },
+    AQ20Sets1 = {
+		{ 0, "Spell_Nature_Regeneration", "=q6=#aq20s1#", "=ec1=#c1#" },
 		{ 21407, "", "=q4=Mace of Unending Life", "=q4=#aq20t1#, =ds=#r5#" },
 		{ 21409, "", "=q4=Cloak of Unending Life", "=q3=#aq20t5#, =ds=#r4#" },
 		{ 21408, "", "=q4=Band of Unending Life", "=q3=#aq20t3#, =ds=#r3#" },
-	};
-
-	AQ20Hunter = {
-		{ 0, "Ability_Hunter_RunningShot", "=q6=#aq20s2#", "" },
+		{ 0,"","","" },
+		{ 0, "Ability_Hunter_RunningShot", "=q6=#aq20s2#", "=ec1=#c2#" },
 		{ 21401, "", "=q4=Scythe of the Unseen Path", "=q4=#aq20t6#, =ds=#r5#" },
 		{ 21403, "", "=q4=Cloak of the Unseen Path", "=q3=#aq20t5#, =ds=#r4#" },
 		{ 21402, "", "=q4=Signet of the Unseen Path", "=q3=#aq20t4#, =ds=#r3#" },
-	};
-
-	AQ20Mage = {
-		{ 0, "Spell_Frost_IceStorm", "=q6=#aq20s3#", "" },
+		{ 0,"","","" },
+		{ 0, "Spell_Frost_IceStorm", "=q6=#aq20s3#", "=ec1=#c3#" },
 		{ 21413, "", "=q4=Blade of Vaulted Secrets", "=q4=#aq20t1#, =ds=#r5#" },
 		{ 21415, "", "=q4=Drape of Vaulted Secrets", "=q3=#aq20t2#, =ds=#r4#" },
 		{ 21414, "", "=q4=Band of Vaulted Secrets", "=q3=#aq20t3#, =ds=#r3#" },
-	};
-
-	AQ20Paladin = {
-		{ 0, "Spell_Holy_SealOfMight", "=q6=#aq20s4#", "" },
+		{ 0,"","","" },
+		{ 0, "Spell_Holy_SealOfMight", "=q6=#aq20s4#", "=ec1=#c4#" },
 		{ 21395, "", "=q4=Blade of Eternal Justice", "=q4=#aq20t6#, =ds=#r5#" },
 		{ 21397, "", "=q4=Cape of Eternal Justice", "=q3=#aq20t5#, =ds=#r4#" },
 		{ 21396, "", "=q4=Ring of Eternal Justice", "=q3=#aq20t3#, =ds=#r3#" },
-	};
-
-	AQ20Priest = {
-		{ 0, "Spell_Holy_PowerWordShield", "=q6=#aq20s5#", "" },
+		{ 0,"","","" },
+		{ 0, "Spell_Holy_PowerWordShield", "=q6=#aq20s5#", "=ec1=#c5#" },
 		{ 21410, "", "=q4=Gavel of Infinite Wisdom", "=q4=#aq20t1#, =ds=#r5#" },
 		{ 21412, "", "=q4=Shroud of Infinite Wisdom", "=q3=#aq20t2#, =ds=#r4#" },
 		{ 21411, "", "=q4=Ring of Infinite Wisdom", "=q3=#aq20t4#, =ds=#r3#" },
-	};
-
-	AQ20Rogue = {
-		{ 0, "Ability_BackStab", "=q6=#aq20s6#", "" },
+		{ 0,"","","" },
+		{ 0, "Ability_BackStab", "=q6=#aq20s6#", "=ec1=#c6#" },
 		{ 21404, "", "=q4=Dagger of Veiled Shadows", "=q4=#aq20t6#, =ds=#r5#" },
 		{ 21406, "", "=q4=Cloak of Veiled Shadows", "=q3=#aq20t2#, =ds=#r4#" },
 		{ 21405, "", "=q4=Band of Veiled Shadows", "=q3=#aq20t4#, =ds=#r3#" },
 	};
-
-	AQ20Shaman = {
-		{ 0, "Spell_FireResistanceTotem_01", "=q6=#aq20s7#", "" },
+	
+    AQ20Sets2 = {
+		{ 0, "Spell_FireResistanceTotem_01", "=q6=#aq20s7#", "=ec1=#c7#" },
 		{ 21398, "", "=q4=Hammer of the Gathering Storm", "=q4=#aq20t6#, =ds=#r5#" },
 		{ 21400, "", "=q4=Cloak of the Gathering Storm", "=q3=#aq20t5#, =ds=#r4#" },
 		{ 21399, "", "=q4=Ring of the Gathering Storm", "=q3=#aq20t3#, =ds=#r3#" },
-	};
-
-	AQ20Warlock = {
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#aq20s8#", "" },
+		{ 0,"","","" },
+		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#aq20s8#", "=ec1=#c8#" },
 		{ 21416, "", "=q4=Kris of Unspoken Names", "=q4=#aq20t1#, =ds=#r5#" },
 		{ 21418, "", "=q4=Shroud of Unspoken Names", "=q3=#aq20t5#, =ds=#r4#" },
 		{ 21417, "", "=q4=Ring of Unspoken Names", "=q3=#aq20t4#, =ds=#r3#" },
-	};
-
-	AQ20Warrior = {
-		{ 0, "INV_Shield_05", "=q6=#aq20s9#", "" },
+		{ 0,"","","" },
+		{ 0, "INV_Shield_05", "=q6=#aq20s9#", "=ec1=#c9#" },
 		{ 21392, "", "=q4=Sickle of Unyielding Strength", "=q4=#aq20t6#, =ds=#r5#" },
 		{ 21394, "", "=q4=Drape of Unyielding Strength", "=q3=#aq20t2#, =ds=#r4#" },
 		{ 21393, "", "=q4=Signet of Unyielding Strength", "=q3=#aq20t3#=ds=, #r3#" },
@@ -1591,35 +1581,30 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 --- AQ40 Sets ---
 -----------------
 
-	AQ40Druid = {
-		{ 0, "Spell_Nature_Regeneration", "=q6=#aq40s1#", "" },
+	AQ40Sets1 = {
+		{ 0, "Spell_Nature_Regeneration", "=q6=#aq40s1#", "=ec1=#c1#" },
 		{ 21357, "", "=q4=Genesis Vest", "=q4=#aq40t4#, =ds=#r3#" },
 		{ 21353, "", "=q4=Genesis Helm", "=q4=#aq40t6#, =ds=#r2#" },
 		{ 21356, "", "=q4=Genesis Trousers", "=q4=#aq40t7#, =ds=#r2#" },
 		{ 21354, "", "=q4=Genesis Shoulderpads", "=q4=#aq40t1#, =ds=#r1#" },
 		{ 21355, "", "=q4=Genesis Boots", "=q4=#aq40t1#, =ds=#r1#" },
-	};
-
-	AQ40Hunter = {
-		{ 0, "Ability_Hunter_RunningShot", "=q6=#aq40s2#", "" },
+		{ 0,"","","" },
+		{ 0, "Ability_Hunter_RunningShot", "=q6=#aq40s2#", "=ec1=#c2#" },
 		{ 21370, "", "=q4=Striker's Hauberk", "=q4=#aq40t8#, =ds=#r3#" },
 		{ 21366, "", "=q4=Striker's Diadem", "=q4=#aq40t6#, =ds=#r2#" },
 		{ 21368, "", "=q4=Striker's Leggings", "=q4=#aq40t7#, =ds=#r2#" },
 		{ 21367, "", "=q4=Striker's Pauldrons", "=q4=#aq40t5#, =ds=#r1#" },
 		{ 21365, "", "=q4=Striker's Footguards", "=q4=#aq40t5#, =ds=#r1#" },
-	};
-
-	AQ40Mage = {
-		{ 0, "Spell_Frost_IceStorm", "=q6=#aq40s3#", "" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_Frost_IceStorm", "=q6=#aq40s3#", "=ec1=#c3#" },
 		{ 21343, "", "=q4=Enigma Robes", "=q4=#aq40t4#, =ds=#r3#" },
 		{ 21347, "", "=q4=Enigma Circlet", "=q4=#aq40t2#, =ds=#r2#" },
 		{ 21346, "", "=q4=Enigma Leggings", "=q4=#aq40t3#, =ds=#r2#" },
 		{ 21345, "", "=q4=Enigma Shoulderpads", "=q4=#aq40t1#, =ds=#r1#" },
 		{ 21344, "", "=q4=Enigma Boots", "=q4=#aq40t1#, =ds=#r1#" },
-	};
-
-	AQ40Paladin = {
-		{ 0, "Spell_Holy_SealOfMight", "=q6=#aq40s4#", "" },
+		{ 0,"","","" },
+		{ 0, "Spell_Holy_SealOfMight", "=q6=#aq40s4#", "=ec1=#c4#" },
 		{ 21389, "", "=q4=Avenger's Breastplate", "=q4=#aq40t8#, =ds=#r3#" },
 		{ 21387, "", "=q4=Avenger's Crown", "=q4=#aq40t6#, =ds=#r2#" },
 		{ 21390, "", "=q4=Avenger's Legguards", "=q4=#aq40t7#, =ds=#r2#" },
@@ -1627,44 +1612,39 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 21388, "", "=q4=Avenger's Greaves", "=q4=#aq40t1#, =ds=#r1#" },
 	};
 
-	AQ40Priest = {
-		{ 0, "Spell_Holy_PowerWordShield", "=q6=#aq40s5#", "" },
+	AQ40Sets2 = {
+		{ 0, "Spell_Holy_PowerWordShield", "=q6=#aq40s5#", "=ec1=#c5#" },
 		{ 21351, "", "=q4=Vestments of the Oracle", "=q4=#aq40t4#, =ds=#r3#" },
 		{ 21348, "", "=q4=Tiara of the Oracle", "=q4=#aq40t2#, =ds=#r2#" },
 		{ 21352, "", "=q4=Trousers of the Oracle","=q4=#aq40t3#, =ds=#r2#" },
 		{ 21350, "", "=q4=Mantle of the Oracle", "=q4=#aq40t5#, =ds=#r1#" },
 		{ 21349, "", "=q4=Footwraps of the Oracle", "=q4=#aq40t5#, =ds=#r1#" },
-	};
-
-	AQ40Rogue = {
-		{ 0, "Ability_BackStab", "=q6=#aq40s6#", "" },
+		{ 0,"","","" },
+		{ 0, "Ability_BackStab", "=q6=#aq40s6#", "=ec1=#c6#" },
 		{ 21364, "", "=q4=Deathdealer's Vest", "=q4=#aq40t8#, =ds=#r3#" },
 		{ 21360, "", "=q4=Deathdealer's Helm", "=q4=#aq40t6#, =ds=#r2#" },
 		{ 21362, "", "=q4=Deathdealer's Leggings", "=q4=#aq40t3#, =ds=#r2#" },
 		{ 21361, "", "=q4=Deathdealer's Spaulders", "=q4=#aq40t5#, =ds=#r1#" },
 		{ 21359, "", "=q4=Deathdealer's Boots", "=q4=#aq40t5#, =ds=#r1#" },
-	};
-
-	AQ40Shaman = {
-		{ 0, "Spell_FireResistanceTotem_01", "=q6=#aq40s7#", "" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 0, "Spell_FireResistanceTotem_01", "=q6=#aq40s7#", "=ec1=#c7#" },
 		{ 21374, "", "=q4=Stormcaller's Hauberk", "=q4=#aq40t8#, =ds=#r3#" },
 		{ 21372, "", "=q4=Stormcaller's Diadem", "=q4=#aq40t6#, =ds=#r2#" },
 		{ 21375, "", "=q4=Stormcaller's Leggings", "=q4=#aq40t7#, =ds=#r2#" },
 		{ 21376, "", "=q4=Stormcaller's Pauldrons", "=q4=#aq40t1#, =ds=#r1#" },
 		{ 21373, "", "=q4=Stormcaller's Footguards", "=q4=#aq40t1#, =ds=#r1#" },
-	};
-
-	AQ40Warlock = {
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#aq40s8#", "" },
+		{ 0,"","","" },
+		{ 0, "Spell_Shadow_CurseOfTounges", "=q6=#aq40s8#", "=ec1=#c8#" },
 		{ 21334, "", "=q4=Doomcaller's Robes", "=q4=#aq40t4#, =ds=#r3#" },
 		{ 21337, "", "=q4=Doomcaller's Circlet", "=q4=#aq40t2#, =ds=#r2#" },
 		{ 21336, "", "=q4=Doomcaller's Trousers", "=q4=#aq40t7#, =ds=#r2#" },
 		{ 21335, "", "=q4=Doomcaller's Mantle", "=q4=#aq40t1#, =ds=#r1#" },
 		{ 21338, "", "=q4=Doomcaller's Footwraps", "=q4=#aq40t1#, =ds=#r1#" },
 	};
-
-	AQ40Warrior = {
-		{ 0, "INV_Shield_05", "=q6=#aq40s9#", "" },
+	
+	AQ40Sets3 = {
+		{ 0, "INV_Shield_05", "=q6=#aq40s9#", "=ec1=#c9#" },
 		{ 21331, "", "=q4=Conqueror's Breastplate", "=q4=#aq40t8#, =ds=#r3#" },
 		{ 21329, "", "=q4=Conqueror's Crown", "=q4=#aq40t2#, =ds=#r2#" },
 		{ 21332, "", "=q4=Conqueror's Legguards", "=q4=#aq40t3#, =ds=#r2#" },
@@ -1677,20 +1657,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 -----------------------
 
 	Legendaries = {
-		{ 22736, "", "=q5=Andonisus, Reaper of Souls", "=q1=#m26#: =ds=#h3#, #w10#" },
-		{ 19019, "", "=q5=Thunderfury, Blessed Blade of the Windseeker", "=ds=#h1#, #w10#" },
-		{ 17182, "", "=q5=Sulfuras, Hand of Ragnaros", "=ds=#h2#, #w6#" },
-		{ 21176, "", "=q5=Black Qiraji Resonating Crystal", "=ds=#e12#" },
-		{ 0,"","","" },
-		{ 22632, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c1#"},
-		{ 22589, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c3#"},
-		{ 22631, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c5#"},
-		{ 22630, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c8#"},
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
+		{ 34334, "", "=q5=Thori'dal, the Stars' Fury", "=ds=#w2#" },
 		{ 0,"","","" },
 		{ 32837, "", "=q5=Warglaive of Azzinoth", "=ds=#h3#, #w10#, =q1=#m1# =ds=#c9#, #c6#" },
 		{ 32838, "", "=q5=Warglaive of Azzinoth", "=ds=#h4#, #w10#, =q1=#m1# =ds=#c9#, #c6#" },
@@ -1703,6 +1670,17 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 30314, "", "=q5=Phaseshift Bulwark", "=q1=#m26#: =ds=#w8#" },
 		{ 30318, "", "=q5=Netherstrand Longbow", "=q1=#m26#: =ds=#w2#, =q1=#m1# =ds=#c2#" },
 		{ 30319, "", "=q5=Nether Spike", "=q1=#m26#: =ds=#w17#" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 22736, "", "=q5=Andonisus, Reaper of Souls", "=q1=#m26#: =ds=#h3#, #w10#" },
+		{ 19019, "", "=q5=Thunderfury, Blessed Blade of the Windseeker", "=ds=#h1#, #w10#" },
+		{ 17182, "", "=q5=Sulfuras, Hand of Ragnaros", "=ds=#h2#, #w6#" },
+		{ 21176, "", "=q5=Black Qiraji Resonating Crystal", "=ds=#e12#" },
+		{ 0,"","","" },
+		{ 22632, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c1#"},
+		{ 22589, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c3#"},
+		{ 22631, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c5#"},
+		{ 22630, "", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9#, =q1=#m1# =ds=#c8#"},
 	};
 
 ---------------------------------

@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fProfessions|r]
+## Title-ruRU: Картограф |r[|cffeda55fПрофессии|r]
 ## X-Name: Professions
 ## X-Name-ruRU: Профессии
 ## X-Name-deDE: Berufe

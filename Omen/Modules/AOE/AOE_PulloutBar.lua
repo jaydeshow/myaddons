@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 78713 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78999 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local Threat = LibStub("Threat-2.0")
@@ -48,8 +48,9 @@ function pullout_cls:New(guid)
 		local tex = pullout:NewTexture(pullout.rtFrame)
 		tex:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
 		SetRaidTargetIconTexture(tex, i)
-		tex:SetWidth(15)
-		tex:SetHeight(15)
+		local h = pullout:GetBarHeight()
+		tex:SetWidth(h)
+		tex:SetHeight(h)
 		tex:SetVertexColor(1,1,1,1)
 		pullout.iconTextures[i] = tex
 	end
@@ -101,7 +102,8 @@ function pullout_cls:UpdateLayout()
 		ownThreat = Threat:GetThreat(playerGUID, targetGUID)
 	end
 	local base, scale, maxt
-	if AOE:GetOption("TankMode") and Threat:GetModule("Player").isTanking then
+	local tankmode = AOE:GetOption("TankMode") and Threat:GetModule("Player").isTanking
+	if tankmode then
 		base = TANK_BASE
 		maxt = TANK_MAX
 		scale = TANK_SCALE
@@ -113,27 +115,42 @@ function pullout_cls:UpdateLayout()
 	local x = self:GetBarWidth() * (-base) * scale + 4
 	self.markerTexture:ClearAllPoints()
 	self.markerTexture:SetPoint("CENTER", self.frame, "LEFT", x, 0)
-	self.markerTexture:SetHeight(22)
+	self.markerTexture:SetHeight(self.frame:GetHeight())
 	self.markerTexture:SetWidth(8)
 	if targetGUID and tankThreat > 0 then
 		local threatRatio = ownThreat/tankThreat
 		local r, g, b = 0,0,0
-		if threatRatio < 1 then
-			g = 1
-		elseif threatRatio < 1.1 then
-			r = 1
-			g = 1
-		elseif threatRatio < 1.3 then
-			r = 1
-			g = 0.6
+		if tankmode then
+			if threatRatio < 1/1.1 then
+				r = 1
+			elseif threatRatio < 1.1 then
+				r = 1
+				g = 0.6
+			elseif threatRatio < 1.3 then
+				r = 1
+				g = 1
+			else
+				g = 1
+			end
 		else
-			r = 1
+			if threatRatio < 1 then
+				g = 1
+			elseif threatRatio < 1.1 then
+				r = 1
+				g = 1
+			elseif threatRatio < 1.3 then
+				r = 1
+				g = 0.6
+			else
+				r = 1
+			end
 		end
 		self.targetBar:SetPoints((min(log(threatRatio),maxt)-base)*scale, 0,0,0,0)
 		self.targetBar.texture:SetVertexColor(r,g,b,1)
 		self.targetBar.frame:Show()
 	elseif targetGUID then
-		local threatRatio = ownThreat/tankThreat
+		local maxThreat = Threat:GetMaxThreatOnTarget(targetGUID)
+		local threatRatio = ownThreat/maxThreat
 		self.targetBar:SetPoints((min(log(threatRatio),maxt)-base)*scale, 0,0,0,0)
 		self.targetBar.texture:SetVertexColor(0,0,1,0.5)
 		self.targetBar.frame:Show()

@@ -1052,161 +1052,71 @@ AtlasLoot_ButtonRegistry = {
 		Back_Page = "T0SET";
 		Back_Title = AL["Dungeon 1/2 Sets"];
 		};
-	["DS3Hallowed"] = {
-		Title = AL["Hallowed Raiment"];
+	["DS3Cloth"] = {
+		Title = AL["Dungeon Set 3"].." - "..BabbleInventory["Cloth"];
 		Back_Page = "DS3SET";
 		Back_Title = AL["Dungeon 3 Sets"];
 		};
-	["DS3Incanter"] = {
-		Title = AL["Incanter's Regalia"];
+	["DS3Leather"] = {
+		Title = AL["Dungeon Set 3"].." - "..BabbleInventory["Leather"];
 		Back_Page = "DS3SET";
 		Back_Title = AL["Dungeon 3 Sets"];
 		};
-	["DS3Mana"] = {
-		Title = AL["Mana-Etched Regalia"];
+	["DS3Mail"] = {
+		Title = AL["Dungeon Set 3"].." - "..BabbleInventory["Mail"];
 		Back_Page = "DS3SET";
 		Back_Title = AL["Dungeon 3 Sets"];
 		};
-	["DS3Oblivion"] = {
-		Title = AL["Oblivion Raiment"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Assassin"] = {
-		Title = AL["Assassination Armor"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Moonglade"] = {
-		Title = AL["Moonglade Raiment"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Wastewalker"] = {
-		Title = AL["Wastewalker Armor"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Beast"] = {
-		Title = AL["Beast Lord Armor"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Desolation"] = {
-		Title = AL["Desolation Battlegear"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Tidefury"] = {
-		Title = AL["Tidefury Raiment"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Bold"] = {
-		Title = AL["Bold Armor"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Doom"] = {
-		Title = AL["Doomplate Battlegear"];
-		Back_Page = "DS3SET";
-		Back_Title = AL["Dungeon 3 Sets"];
-		};
-	["DS3Right"] = {
-		Title = AL["Righteous Armor"];
+	["DS3Plate"] = {
+		Title = AL["Dungeon Set 3"].." - "..BabbleInventory["Plate"];
 		Back_Page = "DS3SET";
 		Back_Title = AL["Dungeon 3 Sets"];
 		};
   --Tier Armor Sets
-	["T1Druid"] = {
+	["T1T2Druid"] = {
 		Title = BabbleClass["Druid"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Hunter"] = {
+	["T1T2Hunter"] = {
 		Title = BabbleClass["Hunter"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Mage"] = {
+	["T1T2Mage"] = {
 		Title = BabbleClass["Mage"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Paladin"] = {
+	["T1T2Paladin"] = {
 		Title = BabbleClass["Paladin"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Priest"] = {
+	["T1T2Priest"] = {
 		Title = BabbleClass["Priest"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Rogue"] = {
+	["T1T2Rogue"] = {
 		Title = BabbleClass["Rogue"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Shaman"] = {
+	["T1T2Shaman"] = {
 		Title = BabbleClass["Shaman"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Warlock"] = {
+	["T1T2Warlock"] = {
 		Title = BabbleClass["Warlock"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
-	["T1Warrior"] = {
+	["T1T2Warrior"] = {
 		Title = BabbleClass["Warrior"];
-		Back_Page = "T1SET";
-		Back_Title = AL["Tier 1 Sets"];
-		};
-	["T2Druid"] = {
-		Title = BabbleClass["Druid"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Hunter"] = {
-		Title = BabbleClass["Hunter"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Mage"] = {
-		Title = BabbleClass["Mage"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Paladin"] = {
-		Title = BabbleClass["Paladin"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Priest"] = {
-		Title = BabbleClass["Priest"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Rogue"] = {
-		Title = BabbleClass["Rogue"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Shaman"] = {
-		Title = BabbleClass["Shaman"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Warlock"] = {
-		Title = BabbleClass["Warlock"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
-		};
-	["T2Warrior"] = {
-		Title = BabbleClass["Warrior"];
-		Back_Page = "T2SET";
-		Back_Title = AL["Tier 2 Sets"];
+		Back_Page = "T1T2SET";
+		Back_Title = AL["Tier 1/2 Sets"];
 		};
 	["T3Druid"] = {
 		Title = BabbleClass["Druid"];
@@ -1416,6 +1326,26 @@ AtlasLoot_ButtonRegistry = {
 		Back_Title = AL["Tier 6 Sets"];
 		};
   --AQ40 Armor Sets
+	["AQ40Sets1"] = {
+		Title = AL["Temple of Ahn'Qiraj Sets"];
+		Next_Page = "AQ40Sets2";
+		Next_Title = AL["Temple of Ahn'Qiraj Sets"];
+		Back_Page = "SETMENU";
+		};
+	["AQ40Sets2"] = {
+		Title = AL["Temple of Ahn'Qiraj Sets"];
+		Next_Page = "AQ40Sets3";
+		Next_Title = AL["Temple of Ahn'Qiraj Sets"];
+		Prev_Page = "AQ40Sets1";
+		Prev_Title = AL["Temple of Ahn'Qiraj Sets"];
+		Back_Page = "SETMENU";
+		};
+	["AQ40Sets3"] = {
+		Title = AL["Temple of Ahn'Qiraj Sets"];
+		Prev_Page = "AQ40Sets2";
+		Prev_Title = AL["Temple of Ahn'Qiraj Sets"];
+		Back_Page = "SETMENU";
+		};
 	["AQ40Druid"] = {
 		Title = BabbleClass["Druid"];
 		Back_Page = "AQ40SET";
@@ -1462,50 +1392,17 @@ AtlasLoot_ButtonRegistry = {
 		Back_Title = AL["Temple of Ahn'Qiraj Sets"];
 		};
   --AQ20 Armor Sets
-	["AQ20Druid"] = {
-		Title = BabbleClass["Druid"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
+	["AQ20Sets1"] = {
+		Title = AL["Ruins of Ahn'Qiraj Sets"];
+		Next_Page = "AQ20Sets2";
+		Next_Title = AL["Ruins of Ahn'Qiraj Sets"];
+		Back_Page = "SETMENU";
 		};
-	["AQ20Hunter"] = {
-		Title = BabbleClass["Hunter"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
-		};
-	["AQ20Mage"] = {
-		Title = BabbleClass["Mage"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
-		};
-	["AQ20Paladin"] = {
-		Title = BabbleClass["Paladin"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
-		};
-	["AQ20Priest"] = {
-		Title = BabbleClass["Priest"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
-		};
-	["AQ20Rogue"] = {
-		Title = BabbleClass["Rogue"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
-		};
-	["AQ20Shaman"] = {
-		Title = BabbleClass["Shaman"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
-		};
-	["AQ20Warlock"] = {
-		Title = BabbleClass["Warlock"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
-		};
-	["AQ20Warrior"] = {
-		Title = BabbleClass["Warrior"];
-		Back_Page = "AQ20SET";
-		Back_Title = AL["Ruins of Ahn'Qiraj Sets"];
+	["AQ20Sets2"] = {
+		Title = AL["Ruins of Ahn'Qiraj Sets"];
+		Prev_Page = "AQ20Sets1";
+		Prev_Title = AL["Ruins of Ahn'Qiraj Sets"];
+		Back_Page = "SETMENU";
 		};
   --ZG Armor Sets
 	["ZGDruid"] = {
@@ -1853,88 +1750,88 @@ AtlasLoot_ButtonRegistry = {
 	["HardModeCloth"] = {
 		Title = AtlasLoot_TableNames["HardModeCloth"][1];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeLeather"] = {
 		Title = AtlasLoot_TableNames["HardModeLeather"][1];
 		Next_Page = "HardModeLeather2";
-		Next_Title = AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Leather"];
+		Next_Title = AL["Badge of Justice Rewards"].." - "..BabbleInventory["Leather"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeLeather2"] = {
 		Title = AtlasLoot_TableNames["HardModeLeather2"][1];
 		Prev_Page = "HardModeLeather";
-		Prev_Title = AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Leather"];
+		Prev_Title = AL["Badge of Justice Rewards"].." - "..BabbleInventory["Leather"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeMail"] = {
 		Title = AtlasLoot_TableNames["HardModeMail"][1];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModePlate"] = {
 		Title = AtlasLoot_TableNames["HardModePlate"][1];
 		Next_Page = "HardModePlate2";
-		Next_Title = AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Plate"];
+		Next_Title = AL["Badge of Justice Rewards"].." - "..BabbleInventory["Plate"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModePlate2"] = {
 		Title = AtlasLoot_TableNames["HardModePlate2"][1];
 		Prev_Page = "HardModePlate";
-		Prev_Title = AL["Lvl 70 Instance Rewards"].." - "..BabbleInventory["Plate"];
+		Prev_Title = AL["Badge of Justice Rewards"].." - "..BabbleInventory["Plate"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeCloaks"] = {
 		Title = AtlasLoot_TableNames["HardModeCloaks"][1];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeResist"] = {
 		Title = AtlasLoot_TableNames["HardModeResist"][1];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeAccessories"] = {
 		Title = AtlasLoot_TableNames["HardModeAccessories"][1];
 		Next_Page = "HardModeAccessories2";
-		Next_Title = AL["Lvl 70 Instance Rewards"].." - "..AL["Accessories"];
+		Next_Title = AL["Badge of Justice Rewards"].." - "..AL["Accessories"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeAccessories2"] = {
 		Title = AtlasLoot_TableNames["HardModeAccessories2"][1];
 		Prev_Page = "HardModeAccessories";
-		Prev_Title = AL["Lvl 70 Instance Rewards"].." - "..AL["Accessories"];
+		Prev_Title = AL["Badge of Justice Rewards"].." - "..AL["Accessories"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeRelic"] = {
 		Title = AtlasLoot_TableNames["HardModeRelic"][1];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeWeapons"] = {
 		Title = AtlasLoot_TableNames["HardModeWeapons"][1];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeArena"] = {
 		Title = AtlasLoot_TableNames["HardModeAccessories"][1];
 		Next_Page = "HardModeArena2";
-		Next_Title = AL["Lvl 70 Instance Rewards"].." - "..AL["Arena Reward"];
+		Next_Title = AL["Badge of Justice Rewards"].." - "..AL["Arena Reward"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
 	["HardModeArena2"] = {
 		Title = AtlasLoot_TableNames["HardModeAccessories"][1];
 		Prev_Page = "HardModeArena";
-		Prev_Title = AL["Lvl 70 Instance Rewards"].." - "..AL["Arena Reward"];
+		Prev_Title = AL["Badge of Justice Rewards"].." - "..AL["Arena Reward"];
 		Back_Page = "70TOKENMENU";
-		Back_Title = AL["Lvl 70 Instance Token Rewards"];
+		Back_Title = AL["Badge of Justice Rewards"];
 		};
   --Misc Collections
 	["CardGame1"] = {

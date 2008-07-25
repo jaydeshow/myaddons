@@ -1,4 +1,4 @@
-﻿## Interface: 20100
+## Interface: 20400
 ## Title: Aloft Options
 ## Notes: Load on Demand options for Aloft modules
 ## Notes-zhTW: 隨需求載入 Aloft 模組選項。

@@ -28,6 +28,7 @@
 --AIM: dan5981
 
 
+
 local Atlas_DebugMode = false;
 local function debug(info)
 	if ( Atlas_DebugMode ) then
@@ -43,7 +44,7 @@ ATLAS_VERSION = GetAddOnMetadata("Atlas", "Version");
 ATLAS_DROPDOWNS = {};
 ATLAS_INST_ENT_DROPDOWN = {};
 
-ATLAS_NUM_LINES = 25;
+ATLAS_NUM_LINES = 24;
 ATLAS_CUR_LINES = 0;
 ATLAS_SCROLL_LIST = {};
 
@@ -126,7 +127,6 @@ Atlas_InstToEntMatches = {
 };
 
 --Links maps together that are part of the same instance
---May include entrance maps, which will be ignored if module isn't loaded
 Atlas_SubZoneAssoc = {
 	["BlackTempleStart"] =			"Black Temple";
 	["BlackTempleBasement"] =		"Black Temple";
@@ -149,13 +149,12 @@ Atlas_SubZoneAssoc = {
 };
 
 --Default map to auto-select to when no SubZone data is available
---These should NOT be entrance maps, since the module may or may not be loaded
 Atlas_AssocDefaults = {
 	["Black Temple"] =				"BlackTempleStart";
 	["Karazhan"] =					"KarazhanStart";
 	["Dire Maul"] =					"DireMaulNorth";
 	["Blackrock Spire"] =			"BlackrockSpireLower";
-	["Scarlet Monastery"] =			"SMGraveyard";
+	["Scarlet Monastery"] =			"SMEnt";
 };
 
 --Links SubZone values with specific instance maps
@@ -226,30 +225,60 @@ Atlas_SubZoneData = {
 	["Hall of Champions"] =			"SMArmory";
 	["Chapel Gardens"] =			"SMCathedral";
 	["Crusader's Chapel"] =			"SMCathedral";
-};
-
---Entrance maps to auto-select based on SubZone data.
-Atlas_EntSubZoneData = {
 	["The Grand Vestibule"] =		"SMEnt";
 };
 
---Entrance maps to auto-select to from outdoor zones.
-Atlas_EntZoneSub = {
-	["Terokkar Forest"] =			"AuchindounEnt";
+--Maps to auto-select to from outdoor zones.
+--Duplicates are commented out. Fuck, I hate auto-select.
+Atlas_OutdoorZoneToAtlas = {
 	["Ashenvale"] =					"BlackfathomDeepsEnt";
-	["Searing Gorge"] =				"BlackrockSpireEnt";
-	["Burning Steppes"] =			"BlackrockSpireEnt";
-	["Zangarmarsh"] =				"CoilfangReservoirEnt";
-	["Dun Morogh"] =				"GnomereganEnt";
-	["Desolace"] =					"MaraudonEnt";
-	["Westfall"] =					"TheDeadminesEnt";
-	["Swamp of Sorrows"] =			"TheSunkenTempleEnt";
 	["Badlands"] =					"UldamanEnt";
-	["The Barrens"] =				"WailingCavernsEnt";
-	["Feralas"] =					"DireMaulEnt";
-	["Tanaris"] =					"CoTEnt";
+	["Blackrock Mountain"] =		"BlackrockSpireEnt";
+	["Burning Steppes"] =			"BlackrockSpireEnt";
 	["Deadwind Pass"] =				"KarazhanEnt";
+	["Desolace"] =					"MaraudonEnt";
+	["Dun Morogh"] =				"GnomereganEnt";
+	["Feralas"] =					"DireMaulEnt";
+	["Searing Gorge"] =				"BlackrockSpireEnt";
+	["Swamp of Sorrows"] =			"TheSunkenTempleEnt";
+	["Tanaris"] =					"CoTEnt";
+	--["Tanaris"] =					"ZulFarrak";
+	["Terokkar Forest"] =			"AuchindounEnt";
+	["The Barrens"] =				"WailingCavernsEnt";
+	--["The Barrens"] =				"RazorfenKraul";
+	--["The Barrens"] =				"RazorfenDowns";
 	["Tirisfal Glades"]	=			"SMEnt";
+	["Westfall"] =					"TheDeadminesEnt";
+	["Zangarmarsh"] =				"CoilfangReservoirEnt";
+	["Orgrimmar"] =					"RagefireChasm";
+	["Dustwallow Marsh"] =			"OnyxiasLair";
+	["Silithus"] =					"TheTempleofAhnQiraj";
+	--["Silithus"] =				"TheRuinsofAhnQiraj";
+	["Western Plaguelands"] =		"Scholomance";
+	["Silverpine Forest"] =			"ShadowfangKeep";
+	["Eastern Plaguelands"] =		"Stratholme";
+	--["Eastern Plaguelands"] =		"Naxxramas";
+	["Stormwind City"] =			"TheStockade";
+	["Stranglethorn Vale"] =		"ZulGurub";
+	["Ghostlands"] =				"ZulAman";
+	["Isle of Quel'Danas"] =		"MagistersTerrace";
+	--["Isle of Quel'Danas"] =		"SunwellPlateau";
+	["Hellfire Peninsula"] =		"HCHellfireRamparts";
+	--["Hellfire Peninsula"] =		"HCBloodFurnace";
+	--["Hellfire Peninsula"] =		"HCTheShatteredHalls";
+	--["Hellfire Peninsula"] =		"HCMagtheridonsLair";
+	["Zangarmarsh"] =				"CFRTheSlavePens";
+	--["Zangarmarsh"] =				"CFRTheUnderbog";
+	--["Zangarmarsh"] =				"CFRTheSteamvault";
+	--["Zangarmarsh"] =				"CFRSerpentshrineCavern";
+	["Netherstorm"] =				"TempestKeepMechanar";
+	--["Netherstorm"] =				"TempestKeepBotanica";
+	--["Netherstorm"] =				"TempestKeepArcatraz";
+	--["Netherstorm"] =				"TempestKeepTheEye";
+	["Blade's Edge Mountains"] =	"GruulsLair";
+	["Shadowmoon Valley"] =			"BlackTempleStart";
+	--["Shadowmoon Valley"] =		"BlackTempleBasement";
+	--["Shadowmoon Valley"] =		"BlackTempleTop";
 };
 
 function Atlas_FreshOptions()
@@ -310,7 +339,7 @@ function Atlas_Search(text)
 	--populate the scroll frame entries list, the update func will do the rest
 	local i = 1;
 	while ( data[i] ~= nil ) do
-		ATLAS_SCROLL_LIST[i] = data[i];
+		ATLAS_SCROLL_LIST[i] = data[i][1];
 		i = i + 1;
 	end
 
@@ -371,8 +400,8 @@ end
 --Comparator function for alphabetic sorting of maps
 --yey, one function for everything
 local function Atlas_SortZonesAlpha(a, b)
-	local aa = Atlas_SanitizeName(AtlasMaps[a].ZoneName);
-	local bb = Atlas_SanitizeName(AtlasMaps[b].ZoneName);
+	local aa = Atlas_SanitizeName(AtlasMaps[a].ZoneName[1]);
+	local bb = Atlas_SanitizeName(AtlasMaps[b].ZoneName[1]);
 	return aa < bb;
 end
 
@@ -432,6 +461,14 @@ ATLAS_OLD_ZONE = false;
 --This should be called ONLY when we're sure our variables are in memory
 function Atlas_Init()
 
+	--fix for certain UI elements that appear on top of the Atlas window
+	MultiBarBottomLeft:SetFrameStrata("MEDIUM");
+	MultiBarBottomRight:SetFrameStrata("MEDIUM");
+	MultiBarLeft:SetFrameStrata("MEDIUM");
+	MultiBarRight:SetFrameStrata("MEDIUM");
+	MainMenuBarOverlayFrame:SetFrameStrata("MEDIUM");
+
+	--make the Atlas window go all the way to the edge of the screen, exactly
 	AtlasFrame:SetClampRectInsets(12, 0, -12, 0);
 
 	--clear saved vars for a new version (or a new install!)
@@ -583,28 +620,33 @@ function Atlas_Refresh()
 		end
 	end
 	
-	local tName = base.ZoneName;
+	local tName = base.ZoneName[1];
 	if ( AtlasOptions.AtlasAcronyms and base.Acronym ~= nil) then
 		local _RED = "|cffcc6666";
 		tName = tName.._RED.." ["..base.Acronym.."]";
 	end
-	AtlasText_ZoneName:SetText(tName);
+	AtlasText_ZoneName_Text:SetText(tName);
 	
 	local tLoc = "";
 	local tLR = "";
+	local tML = "";
 	local tPL = "";
-	if ( base.Location ) then
-		tLoc = ATLAS_STRING_LOCATION..": "..base.Location;
+	if ( base.Location[1] ) then
+		tLoc = ATLAS_STRING_LOCATION..": "..base.Location[1];
 	end
 	if ( base.LevelRange ) then
 		tLR = ATLAS_STRING_LEVELRANGE..": "..base.LevelRange;
 	end
+	if ( base.MinLevel ) then
+		tML = ATLAS_STRING_MINLEVEL..": "..base.MinLevel;
+	end
 	if ( base.PlayerLimit ) then
 		tPL = ATLAS_STRING_PLAYERLIMIT..": "..base.PlayerLimit;
 	end
-	AtlasText_Location:SetText(tLoc);
-	AtlasText_LevelRange:SetText(tLR);
-	AtlasText_PlayerLimit:SetText(tPL);
+	AtlasText_Location_Text:SetText(tLoc);
+	AtlasText_LevelRange_Text:SetText(tLR);
+	AtlasText_MinLevel_Text:SetText(tML);
+	AtlasText_PlayerLimit_Text:SetText(tPL);
 
 	ATLAS_DATA = base;
 	ATLAS_SEARCH_METHOD = data.Search;
@@ -644,33 +686,22 @@ function Atlas_Refresh()
 	
 	
 	--deal with the switch to entrance/instance button here
-	--only display if the Entrances plugin is loaded
-	--then, only display if appropriate
-	
-	--check to make sure the Entrances plugin is actually loaded
-	local EntPluginIsLoaded = false;
-	for k,v in pairs(ATLAS_PLUGINS) do
-		if ( v == "Atlas_Entrances" ) then
-			EntPluginIsLoaded = true;
-		end
-	end
+	--only display if appropriat
 	
 	--see if we should display the button or not, and decide what it should say
 	local matchFound = {nil};
 	local sayEntrance = nil;
-	if ( EntPluginIsLoaded ) then
-		for k,v in pairs(Atlas_EntToInstMatches) do
+	for k,v in pairs(Atlas_EntToInstMatches) do
+		if ( k == zoneID ) then
+			matchFound = v;
+			sayEntrance = false;
+		end
+	end
+	if ( not matchFound[1] ) then
+		for k,v in pairs(Atlas_InstToEntMatches) do
 			if ( k == zoneID ) then
 				matchFound = v;
-				sayEntrance = false;
-			end
-		end
-		if ( not matchFound[1] ) then
-			for k,v in pairs(Atlas_InstToEntMatches) do
-				if ( k == zoneID ) then
-					matchFound = v;
-					sayEntrance = true;
-				end
+				sayEntrance = true;
 			end
 		end
 	end
@@ -719,7 +750,7 @@ function AtlasSwitchDD_OnLoad()
 	local info, i;
 	for k,v in pairs(ATLAS_INST_ENT_DROPDOWN) do
 		info = {
-			text = AtlasMaps[v].ZoneName;
+			text = AtlasMaps[v].ZoneName[1];
 			func = AtlasSwitchDD_OnClick;
 		};
 		UIDropDownMenu_AddButton(info);
@@ -745,8 +776,8 @@ function AtlasSwitchDD_Set(index)
 end
 
 function AtlasSwitchDD_Sort(a, b)
-	local aa = AtlasMaps[a].ZoneName;
-	local bb = AtlasMaps[b].ZoneName;
+	local aa = AtlasMaps[a].ZoneName[1];
+	local bb = AtlasMaps[b].ZoneName[1];
 	return aa < bb;
 end
 
@@ -801,7 +832,7 @@ function AtlasFrameDropDown_Initialize()
 	local info;
 	for k,v in pairs(ATLAS_DROPDOWNS[AtlasOptions.AtlasType]) do
 		info = {
-			text = AtlasMaps[v].ZoneName;
+			text = AtlasMaps[v].ZoneName[1];
 			func = AtlasFrameDropDown_OnClick;
 		};
 		UIDropDownMenu_AddButton(info);
@@ -844,18 +875,6 @@ function Atlas_AutoSelect()
 	local currentSubZone = GetSubZoneText();
 	debug("Using auto-select to open the best map.");
 	
-	local EntPluginIsLoaded = false;
-	for k,v in pairs(ATLAS_PLUGINS) do
-		if ( v == "Atlas_Entrances" ) then
-			EntPluginIsLoaded = true;
-			debug("The entrance map module is loaded.");
-			break;
-		end
-	end
-	if ( not EntPluginIsLoaded ) then
-		debug("The entrance map module isn't loaded.");
-	end
-	
 	if ( Atlas_AssocDefaults[currentZone] ) then
 		debug("You're in a zone where SubZone data is relevant.");
 		if ( Atlas_SubZoneData[currentSubZone] ) then
@@ -867,19 +886,6 @@ function Atlas_AutoSelect()
 						AtlasOptions.AtlasZone = kb;
 						Atlas_Refresh();
 						debug("Map changed directly based on SubZone data.");
-						return;
-					end
-				end
-			end
-		elseif ( EntPluginIsLoaded and Atlas_EntSubZoneData[currentSubZone] ) then
-			debug("There's entrance map data for your current SubZone.");
-			for ka,va in pairs(ATLAS_DROPDOWNS) do
-				for kb,vb in pairs(va) do         
-					if ( Atlas_EntSubZoneData[currentSubZone] == vb ) then
-						AtlasOptions.AtlasType = ka;
-						AtlasOptions.AtlasZone = kb;
-						Atlas_Refresh();
-						debug("Map changed directly based on entrance map SubZone data.");
 						return;
 					end
 				end
@@ -905,33 +911,31 @@ function Atlas_AutoSelect()
 		end
 	else
 		debug("SubZone data isn't relevant here.");
-		if ( EntPluginIsLoaded ) then 
-			if ( Atlas_EntZoneSub[currentZone] ) then
-				debug("This outdoor zone is associated with an entrance map.");
-				for ka,va in pairs(ATLAS_DROPDOWNS) do
-					for kb,vb in pairs(va) do         
-						if ( Atlas_EntZoneSub[currentZone] == vb ) then
-							AtlasOptions.AtlasType = ka;
-							AtlasOptions.AtlasZone = kb;
-							Atlas_Refresh();
-							debug("Map changed to the appropriate entrance map.");
-							return;
-						end
-					end
-				end
-			elseif ( Atlas_InstToEntMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]] ) then
-				for ka,va in pairs(Atlas_InstToEntMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]]) do
-					if ( currentZone == AtlasMaps[va].ZoneName ) then
-						debug("Instance/entrance pair found. Doing nothing.");
+		if ( Atlas_OutdoorZoneToAtlas[currentZone] ) then
+			debug("This world zone is associated with a map.");
+			for ka,va in pairs(ATLAS_DROPDOWNS) do
+				for kb,vb in pairs(va) do         
+					if ( Atlas_OutdoorZoneToAtlas[currentZone] == vb ) then
+						AtlasOptions.AtlasType = ka;
+						AtlasOptions.AtlasZone = kb;
+						Atlas_Refresh();
+						debug("Map changed to the associated map.");
 						return;
 					end
 				end
-			elseif ( Atlas_EntToInstMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]] ) then
-				for ka,va in pairs(Atlas_EntToInstMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]]) do
-					if ( currentZone == AtlasMaps[va].ZoneName ) then
-						debug("Instance/entrance pair found. Doing nothing.");
-						return;
-					end
+			end
+		elseif ( Atlas_InstToEntMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]] ) then
+			for ka,va in pairs(Atlas_InstToEntMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]]) do
+				if ( currentZone == AtlasMaps[va].ZoneName[1] ) then
+					debug("Instance/entrance pair found. Doing nothing.");
+					return;
+				end
+			end
+		elseif ( Atlas_EntToInstMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]] ) then
+			for ka,va in pairs(Atlas_EntToInstMatches[ATLAS_DROPDOWNS[AtlasOptions.AtlasType][AtlasOptions.AtlasZone]]) do
+				if ( currentZone == AtlasMaps[va].ZoneName[1] ) then
+					debug("Instance/entrance pair found. Doing nothing.");
+					return;
 				end
 			end
 		end
@@ -939,7 +943,7 @@ function Atlas_AutoSelect()
 		for ka,va in pairs(ATLAS_DROPDOWNS) do
 			for kb,vb in pairs(va) do         
 				-- Compare the currentZone to the new substr of ZoneName
-				if ( currentZone == strsub(AtlasMaps[vb].ZoneName, strlen(AtlasMaps[vb].ZoneName) - strlen(currentZone) + 1) ) then
+				if ( currentZone == strsub(AtlasMaps[vb].ZoneName[1], strlen(AtlasMaps[vb].ZoneName[1]) - strlen(currentZone) + 1) ) then
 					AtlasOptions.AtlasType = ka;
 					AtlasOptions.AtlasZone = kb;
 					Atlas_Refresh();
@@ -992,34 +996,33 @@ function AtlasScrollBar_Update()
 end
 
 function AtlasSimpleSearch(data, text)
-	 local new = {};			-- create a new table
-	 local i;
-	 local v;
-	 local n;
-
-     local search_text = string.lower(text);
-     search_text = search_text:gsub("([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1");
-     search_text = search_text:gsub("%*", ".*");
-     local match;
-
-	 i, v = next(data, nil);		-- i is an index of data, v = data[i]
-	 n = i;
-	 while i do
-		if ( type(i) == "number" ) then
-		   if ( string.gmatch ) then 
-			match = string.gmatch(string.lower(data[i]), search_text)();
-		   else 
-			match = string.gfind(string.lower(data[i]), search_text)(); 
-		   end
-
-		   if ( match ) then
-			new[n] = data[i];
-			n = n + 1;
-		   end
-		end
-	   i, v = next(data, i);			-- get next index
-	end
+	local new = {};-- create a new table
+	local i;
+	local v;
+	local n;
 	
+	local search_text = string.lower(text);
+	search_text = search_text:gsub("([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1");
+	search_text = search_text:gsub("%*", ".*");
+	local match;
+
+	i, v = next(data, nil);-- i is an index of data, v = data[i]
+	n = i;
+	while i do
+		if ( type(i) == "number" ) then
+			if ( string.gmatch ) then 
+				match = string.gmatch(string.lower(data[i][1]), search_text)();
+			else 
+				match = string.gfind(string.lower(data[i][1]), search_text)(); 
+			end
+			if ( match ) then
+				new[n] = {};
+				new[n][1] = data[i][1];
+				n = n + 1;
+			end
+		end
+		i, v = next(data, i);-- get next index
+	end
 	return new;
 end
 
@@ -1051,9 +1054,14 @@ function AtlasEntryTemplate_OnUpdate(self)
 						GameTooltip:SetOwner(self, "ANCHOR_CURSOR");
 						GameTooltip:SetBackdropBorderColor(0,0,0,0);
 						GameTooltip:SetBackdropColor(0,0,0,1);
-						local color = string.sub(str, 1, 10);
-						local stripped = strtrim(string.sub(str, 11));
-						GameTooltip:SetText(color..stripped,1,1,1,1);
+						local colorCheck = string.sub(str, 1, 4);
+						if ( colorCheck == "|cff" ) then
+							local color = string.sub(str, 1, 10);
+							local stripped = strtrim(string.sub(str, 11));
+							GameTooltip:SetText(color..stripped,1,1,1,1);
+						else
+							GameTooltip:SetText(str,1,1,1,1);
+						end
 					end
 				end
 			else

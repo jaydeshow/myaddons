@@ -1,4 +1,22 @@
 ------------------------------------------------------------------------
+r78965 | kurax | 2008-07-23 01:45:22 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.cn.lua
+   M /trunk/AtlasLoot_OldInstances/original.de.lua
+   M /trunk/AtlasLoot_OldInstances/original.es.lua
+   M /trunk/AtlasLoot_OldInstances/original.fr.lua
+   M /trunk/AtlasLoot_OldInstances/original.kr.lua
+   M /trunk/AtlasLoot_OldInstances/original.tw.lua
+
+AtlasLoot_OldInstances: Update locales
+------------------------------------------------------------------------
+r78916 | hegarol | 2008-07-22 08:03:13 -0400 (Tue, 22 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_OldInstances/original.en.lua
+
+AtlasLoot_OldInstances:
+- 'The Deadmines' overhaul
+------------------------------------------------------------------------
 r78854 | kurax | 2008-07-21 10:53:32 -0400 (Mon, 21 Jul 2008) | 1 line
 Changed paths:
    M /trunk/AtlasLoot_OldInstances/original.cn.lua

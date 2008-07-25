@@ -1,4 +1,57 @@
 ------------------------------------------------------------------------
+r79094 | archarodim | 2008-07-24 23:37:29 -0400 (Thu, 24 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_Events.lua
+
+Decursive:
+- Combat events are not always received in the same order (a missed spell could be receive before a cast success). So now Decursive still listen for 0.1s after receiving SPELL_CAST_SUCCESS to catch SPELL_MISSED and SPELL_DISPEL_FAILED events.
+------------------------------------------------------------------------
+r79088 | archarodim | 2008-07-24 21:14:28 -0400 (Thu, 24 Jul 2008) | 5 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_DIAG.lua
+   M /trunk/Decursive/Dcr_Events.lua
+   M /trunk/Decursive/Dcr_Raid.lua
+   M /trunk/Decursive/QuoiDeNeuf.txt
+   M /trunk/Decursive/WhatsNew.txt
+
+Decursive:
+- fix: Error:  table index is nil Dcr_Events.lua Line: 153
+- temp hack to identify the cause of the error "Usage: UnitGUID("unit") line 531 Dcr_Raid.lua"
+A message telling you to send me an email when one of the possible causes arises will be displayed but Decursive will continue to function properly.
+- Starting to update WhatsNew.txt and QuoiDeNeuf.txt
+------------------------------------------------------------------------
+r79000 | gnarfoz | 2008-07-23 16:21:00 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DIAG.lua
+   M /trunk/Decursive/Decursive.toc
+   M /trunk/Decursive/QuoiDeNeuf.txt
+   M /trunk/Decursive/WhatsNew.txt
+
+Decursive: more SpecialEvents-Aura cleanup, should fix the "The shared library SpecialEvents-Aura could not be found!!!" error users are getting.
+~blame eliteevil
+------------------------------------------------------------------------
+r78963 | archarodim | 2008-07-22 23:31:11 -0400 (Tue, 22 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_Events.lua
+
+Decursive:
+- Added a helmet to the combat log event handler
+------------------------------------------------------------------------
+r78961 | archarodim | 2008-07-22 22:59:56 -0400 (Tue, 22 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/Decursive
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_Events.lua
+   M /trunk/Decursive/Dcr_opt.lua
+   M /trunk/Decursive/embeds.xml
+
+Decursive:
+- SPELL_DISPEL_FAILED combat log events were not detected because of a spelling mistake in the event name :/
+- When the live-list tool tips are disabled, the Live-List won't catch mouse event, you can click right through it.
+- Removed LibSpecialEventAura
+------------------------------------------------------------------------
 r78906 | cwdg | 2008-07-22 04:35:56 -0400 (Tue, 22 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/Decursive/localization.cn.lua
@@ -98,11 +151,4 @@ Changed paths:
 Decursive:
 - Internal cleaning (clear a MUF debuffs before hiding it)
 - Prevent alert sound loop from happening.
-------------------------------------------------------------------------
-r77182 | archarodim | 2008-06-21 09:31:33 -0400 (Sat, 21 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/Decursive/DCR_init.lua
-
-Decursive:
-- The lock and buttons display/hide status of the "Decursive" bar (the live-list anchor) were not applied correctly on startup. (Thanks to Jason for his very accurate bug report)
 ------------------------------------------------------------------------

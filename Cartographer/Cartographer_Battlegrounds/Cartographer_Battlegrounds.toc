@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fBattlegrounds|r]
+## Title-ruRU: Картограф |r[|cffeda55fПоля сражений|r]
 ## X-Name: Battlegrounds
 ## X-Name-ruRU: Поля сражений
 ## X-Name-deDE: Schlachtfelder

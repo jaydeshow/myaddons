@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fTracker|r]
 ## Notes: Replace the default quest tracker with a slightly more featureful one
 ## Version: 2.0

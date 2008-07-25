@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: BunchOfBars [|cffeda55fThreshold|r]
 ## Version: 1.0
 ## Notes: Shows a small line on the health bars at a value you define.

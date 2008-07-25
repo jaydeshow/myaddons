@@ -1,4 +1,4 @@
-## Interface: 20300
+## Interface: 20400
 ## Title: ClearFont |r|cFF0099FFby Ice|r
 ## Title-zhCN: ClearFont |r|cFF0099FFby 逆袭的蓝|r
 ## Notes: Modify Game Fonts and Size, Color, Shadow Of Them.(For FontShow Enhanced Mode)

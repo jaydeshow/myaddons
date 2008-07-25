@@ -64,6 +64,103 @@ AtlasLoot_Data["AtlasLootItems"] = {
 		{ 0, "INV_Box_01", "=q6=#n11#", "" },
 		{ 2909, "", "=q1=Red Wool Bandana", "=ds=#m3#" },
 		};
+		
+		---------------------
+		--- The Deadmines ---
+		---------------------
+
+	TheDeadminesEntrance = {
+		{ 0, "INV_Box_01", "=q6=#n153#", "" },
+		{ 3019, "", "=q2=Noble's Robe", "=ds=#s5#, #a1#", "22.4%" },
+		{ 4660, "", "=q2=Walking Boots", "=ds=#s12#, #a1#", "71.4%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n154#", "" },
+		{ 5967, "", "=q2=Girdle of Nobility", "=ds=#s10#, #a1#", "70.4%" },
+		{ 3902, "", "=q2=Staff of Nobles", "=ds=#w9#", "23.0%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n155#", "" },
+		{ 1875, "", "=q1=Thistlenettle's Badge", "=ds=#m3#", "100%" },
+		};
+	
+	TheDeadmines1 = {
+		{ 0, "INV_Box_01", "=q6=#n148#", "" },
+		{ 872, "", "=q3=Rockslicer", "=ds=#h2#, #w1#", "3.13%" },
+		{ 5187, "", "=q3=Rhahk'Zor's Hammer", "=ds=#h2#, #w6#", "77.98%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n149#", "" },
+		{ 5444, "", "=q3=Miner's Cape",	 "=ds=#s4#", "54.88%" },
+		{ 5443, "", "=q3=Gold-plated Buckler", "=ds=#w8#", "37.21%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n150#", "" },
+		{ 2169, "", "=q3=Buzzer Blade", "=ds=#h1#, #w4#", "70.78%" },
+		{ 1937, "", "=q3=Buzz Saw",				 "=ds=#h1#, #w10#", "8.75%" },
+		{ 7365, "", "=q1=Gnoam Sprecklesprocket", "=ds=#m3#", "100%" },
+		{ 0,"","","" },
+		{ 0,"","","" },
+		{ 5397, "", "=q1=Defias Gunpowder", "=ds=#m3#", "100%" },
+		{ 0, "INV_Box_01", "=q6=#n151#", "" },
+		{ 5195, "", "=q3=Gold-flecked Gloves",  "=ds=#s9#, #a1#", "62.38%" },
+		{ 5194, "", "=q3=Taskmaster Axe",	 "=ds=#h2#, #w1#", "26.23%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n152#", "" },
+		{ 5199, "", "=q3=Smelting Pants", "=ds=#s11#, #a2#", "51.37%" },
+		{ 1156, "", "=q3=Lavishly Jeweled Ring", "=ds=#s13#", "35.02%" },
+		};
+
+	TheDeadmines2 = {
+		{ 0, "INV_Box_01", "=q6=#n7#", "" },
+		{ 10403, "", "=q3=Blackened Defias Belt", "=ds=#s10#, #a2#", "23.26%" },
+		{ 5200, "", "=q3=Impaling Harpoon",	"=ds=#w7#", "25.39%" },
+		{ 5201, "", "=q3=Emberstone Staff",	"=ds=#w9#", "34.10%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n156#", "" },
+		{ 5192, "", "=q3=Thief's Blade", "=ds=#h1#, #w10#", "34.96%" },
+		{ 5196, "", "=q3=Smite's Reaver", "=ds=#h1#, #w1#", "33.95%" },
+		{ 7230, "", "=q3=Smite's Mighty Hammer", "=ds=#h2#, #w6#", "17.27%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n157#", "" },
+		{ 5197, "", "=q3=Cookie's Tenderizer", "=ds=#h1#, #w6#", "49.62%" },
+		{ 5198, "", "=q3=Cookie's Stirring Rod", "=ds=#w12#", "30.90%" },
+		{ 8490, "", "=q1=Cat Carrier (Siamese)", "=ds=#e13#", "12.38%" },
+		{ 0,"","","" },
+		{ 0, "INV_Box_01", "=q6=#n6#", "" },
+		{ 5193, "", "=q3=Cape of the Brotherhood", "=ds=#s4#", "21.25%" },
+		{ 5202, "", "=q3=Corsair's Overshirt", "=ds=#s5#, #a1#", "22.86%" },
+		{ 10399, "", "=q3=Blackened Defias Armor", "=ds=#s5#, #a2#", "14.77%" },
+		{ 5191, "", "=q3=Cruel Barb", "=ds=#h1#, #w10#", "14.17%" },
+		{ 0,"","","" },
+		{ 2874, "", "=q1=An Unsent Letter", "=ds=#m2#" },
+		{ 3637, "", "=q1=Head of VanCleef", "=ds=#m3#" },
+		};
+
+	VCCaptainGreenskin = {
+		{ 10403, "", "=q3=Blackened Defias Belt", "=ds=#s10#, #a2#", "23.26%" },
+		{ 5200, "", "=q3=Impaling Harpoon",	"=ds=#w7#", "25.39%" },
+		{ 5201, "", "=q3=Emberstone Staff",	"=ds=#w9#", "34.10%" },
+	};
+
+	VCVanCleef = {
+		{ 5193, "", "=q3=Cape of the Brotherhood", "=ds=#s4#", "21.25%" },
+		{ 5202, "", "=q3=Corsair's Overshirt", "=ds=#s5#, #a1#", "22.86%" },
+		{ 10399, "", "=q3=Blackened Defias Armor", "=ds=#s5#, #a2#", "14.77%" },
+		{ 5191, "", "=q3=Cruel Barb", "=ds=#h1#, #w10#", "14.17%" },
+		{ 0,"","","" },
+		{ 2874, "", "=q1=An Unsent Letter", "=ds=#m2#" },
+		{ 3637, "", "=q1=Head of VanCleef", "=ds=#m3#" },
+	};
+
+	VCMrSmite = {
+		{ 5192, "", "=q3=Thief's Blade", "=ds=#h1#, #w10#", "34.96%" },
+		{ 5196, "", "=q3=Smite's Reaver", "=ds=#h1#, #w1#", "33.95%" },
+		{ 7230, "", "=q3=Smite's Mighty Hammer", "=ds=#h2#, #w6#", "17.27%" },
+	};
+
+	VCCookie = {
+		{ 5197, "", "=q3=Cookie's Tenderizer", "=ds=#h1#, #w6#", "49.62%" },
+		{ 5198, "", "=q3=Cookie's Stirring Rod", "=ds=#w12#", "30.90%" },
+		{ 0,"","","" },
+		{ 8490, "", "=q1=Cat Carrier (Siamese)", "=ds=#e13#", "12.38%" },
+	};
 
 --- To be reviewed
 
@@ -1941,84 +2038,6 @@ AtlasLoot_Data["AtlasLootItems"] = {
 	WCDeviateFaerieDragon = {
 		{ 6632, "", "=q3=Feyscale Cloak", "=ds=#s4#", "37.84%" };
 		{ 5243, "", "=q3=Firebelcher",		 "=ds=#w12#", "39.65%" };
-	};
-
-		---------------------
-		--- The Deadmines ---
-		---------------------
-
-	VCMarisaduPaige = {
-		{ 3019, "", "=q2=Noble's Robe", "=ds=#s5#, #a1#", "22.4%" },
-		{ 4660, "", "=q2=Walking Boots", "=ds=#s12#, #a1#", "71.4%" },
-	};
-
-	VCBrainwashedNoble = {
-		{ 5967, "", "=q2=Girdle of Nobility", "=ds=#s10#, #a1#", "70.4%" },
-		{ 3902, "", "=q2=Staff of Nobles", "=ds=#w9#", "23.0%" },
-	};
-
-	VCForemanThistlenettle = {
-		{ 1875, "", "=q1=Thistlenettle's Badge", "=ds=#m3#", "100%" },
-	};
-
-	VCRhahkZor = {
-		{ 872, "", "=q3=Rockslicer",	 "=ds=#h2#, #w1#", "3.13%" },
-		{ 5187, "", "=q3=Rhahk'Zor's Hammer", "=ds=#h2#, #w6#", "77.98%" },
-	};
-
-	VCMinerJohnson = {
-		{ 5444, "", "=q3=Miner's Cape",	 "=ds=#s4#", "54.88%" },
-		{ 5443, "", "=q3=Gold-plated Buckler", "=ds=#w8#", "37.21%" },
-	};
-
-	VCSneedsShredder = {
-		{ 2169, "", "=q3=Buzzer Blade", "=ds=#h1#, #w4#", "70.78%" },
-		{ 1937, "", "=q3=Buzz Saw",				 "=ds=#h1#, #w10#", "8.75%" },
-		{ 0,"","","" },
-		{ 7365, "", "=q1=Gnoam Sprecklesprocket", "=ds=#m3#", "100%" },
-	};
-
-	VCSneed = {
-		{ 5195, "", "=q3=Gold-flecked Gloves",  "=ds=#s9#, #a1#", "62.38%" },
-		{ 5194, "", "=q3=Taskmaster Axe",	 "=ds=#h2#, #w1#", "26.23%" },
-	};
-
-	VCGilnid = {
-		{ 5199, "", "=q3=Smelting Pants", "=ds=#s11#, #a2#", "51.37%" },
-		{ 1156, "", "=q3=Lavishly Jeweled Ring", "=ds=#s13#", "35.02%" },
-	};
-
-	VCDefiasGunpowder = {
-		{ 5397, "", "=q1=Defias Gunpowder", "=ds=#m3#", "100%" },
-	};
-
-	VCCaptainGreenskin = {
-		{ 10403, "", "=q3=Blackened Defias Belt", "=ds=#s10#, #a2#", "23.26%" },
-		{ 5200, "", "=q3=Impaling Harpoon",	  "=ds=#w7#", "25.39%" },
-		{ 5201, "", "=q3=Emberstone Staff",	  "=ds=#w9#", "34.10%" },
-	};
-
-	VCVanCleef = {
-		{ 5193, "", "=q3=Cape of the Brotherhood", "=ds=#s4#", "21.25%" },
-		{ 5202, "", "=q3=Corsair's Overshirt", "=ds=#s5#, #a1#", "22.86%" },
-		{ 10399, "", "=q3=Blackened Defias Armor", "=ds=#s5#, #a2#", "14.77%" },
-		{ 5191, "", "=q3=Cruel Barb", "=ds=#h1#, #w10#", "14.17%" },
-		{ 0,"","","" },
-		{ 2874, "", "=q1=An Unsent Letter", "=ds=#m2#" },
-		{ 3637, "", "=q1=Head of VanCleef", "=ds=#m3#" },
-	};
-
-	VCMrSmite = {
-		{ 5192, "", "=q3=Thief's Blade",		  "=ds=#h1#, #w10#", "34.96%" },
-		{ 5196, "", "=q3=Smite's Reaver",		   "=ds=#h1#, #w1#", "33.95%" },
-		{ 7230, "", "=q3=Smite's Mighty Hammer", "=ds=#h2#, #w6#", "17.27%" },
-	};
-
-	VCCookie = {
-		{ 5197, "", "=q3=Cookie's Tenderizer", "=ds=#h1#, #w6#", "49.62%" },
-		{ 5198, "", "=q3=Cookie's Stirring Rod", "=ds=#w12#", "30.90%" },
-		{ 0,"","","" },
-		{ 8490, "", "=q1=Cat Carrier (Siamese)", "=ds=#e13#", "12.38%" },
 	};
 
 		-------------------------

@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fNotes|r]
+## Title-ruRU: Картограф |r[|cffeda55fЗаметки|r]
 ## X-Name: Notes
 ## X-Name-ruRU: Заметки
 ## X-Name-deDE: Notizen

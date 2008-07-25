@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fInstance Loot|r]
+## Title-ruRU: Картограф |r[|cffeda55fТрофеи Подземелий|r]
 ## X-Name: Instance Loot
 ## X-Name-deDE: Instanzloot
 ## X-Name-ruRU: Трофеи Подземелий

@@ -1,4 +1,4 @@
-## Interface: 20100
+## Interface: 20400
 ## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fGivers|r]
 ## Notes: Remember questgivers
 ## Version: 2.0

@@ -354,7 +354,8 @@ function D:OnInitialize() -- Called on ADDON_LOADED -- {{{
 	[DC.NOTYPE]	= "AAAAAA";
     }
 
-    -- /script DcrC.SpellsToUse[Dcr.DS["Dampen Magic"]] = {Types = {DcrC.MAGIC, DcrC.DISEASE, DcrC.POISON},IsBest = false}; Dcr:Configure();
+    -- /script DcrC.SpellsToUse[DcrC.DS["Dampen Magic"]] = {Types = {DcrC.MAGIC, DcrC.DISEASE, DcrC.POISON},IsBest = false}; Dcr:Configure();
+    -- /script DcrC.SpellsToUse[DcrC.DS[Dcr.LOC.SPELL_POLYMORPH]] = {  Types = {DcrC.CHARMED}, IsBest = false, Pet = false, Rank = "1 : Pig"}; Dcr:Configure();
 
     -- SPELL TABLE -- must be parsed after localisation is loaded {{{
 	DC.SpellsToUse = {
@@ -724,7 +725,6 @@ function D:OnProfileEnable()
     DC.MyClass = (select(2, UnitClass("player")));
     DC.MyName = (self:UnitName("player"));
     
-    D:GetUnitArray();
 
     -- put the updater events at the end of the init so there is no chance they could be called before everything is ready
     if not D.profile.Hide_LiveList then
@@ -736,6 +736,8 @@ function D:OnProfileEnable()
     end
     D.DcrFullyInitialized = true;
     D:ShowHideButtons(true);
+
+    D:GetUnitArray();
 end
 
 function D:OnDisable() -- When the addon is disabled by ACE
@@ -1117,7 +1119,7 @@ function D:SetDateAndRevision (Date, Revision)
     end
 end
 
-D:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
+D:SetDateAndRevision("$Date: 2008-07-24 23:37:29 -0400 (Thu, 24 Jul 2008) $", "$Revision: 79094 $");
 
 DcrLoadedFiles["DCR_init.lua"] = true;
 

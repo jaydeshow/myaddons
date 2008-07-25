@@ -337,7 +337,7 @@ NL["Wicker Chest"] = "柳條箱"
 NL["Primitive Chest"] = "遠古箱子"
 NL["Solid Fel Iron Chest"] = "堅固的魔鐵箱"
 NL["Bound Fel Iron Chest"] = "受封的魔鐵箱"
-NL["Bound Adamantite Chest"] = "受封的堅鋼箱子"
+--NL["Bound Adamantite Chest"] = "受封的堅鋼箱子" -- Only appears in instances
 -- New added
 --NL["Cabal Chest"] = "秘教寶箱"
 --NL["Ornate Chest"] = "華麗的箱子"

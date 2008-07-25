@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fLook 'n' Feel|r]
+## Title-ruRU: Картограф |r[|cffeda55fНаглядность и Восприятие|r]
 ## X-Name: Look 'n' Feel
 ## X-Name-ruRU: Наглядность и Восприятие
 ## X-Name-deDE: Look 'n' Feel

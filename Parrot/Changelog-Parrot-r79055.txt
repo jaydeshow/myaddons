@@ -1,4 +1,46 @@
 ------------------------------------------------------------------------
+r79055 | profalbert | 2008-07-24 12:47:56 -0400 (Thu, 24 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+- fix some missing totem-events
+
+------------------------------------------------------------------------
+r79048 | profalbert | 2008-07-24 10:32:33 -0400 (Thu, 24 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+- make Outgoing reactive skills more sane
+
+------------------------------------------------------------------------
+r78996 | profalbert | 2008-07-23 15:09:44 -0400 (Wed, 23 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+- fix some more DoT-misses (immunes, ...)
+
+------------------------------------------------------------------------
+r78988 | profalbert | 2008-07-23 11:04:22 -0400 (Wed, 23 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+- fix some more typos (Killing Blows, Extra Attacks)
+- fix resists for DoTs
+
+------------------------------------------------------------------------
+r78982 | profalbert | 2008-07-23 08:17:53 -0400 (Wed, 23 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Code/CombatEvents.lua
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+- add some missing events (including some Mana-gain-events)
+
+------------------------------------------------------------------------
 r78904 | scorpion | 2008-07-22 03:57:31 -0400 (Tue, 22 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua

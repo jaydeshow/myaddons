@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 78746 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 79027 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-07-19 16:54:32 -0400 (Sat, 19 Jul 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-23 22:26:40 -0400 (Wed, 23 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GuildPositions")
@@ -356,7 +356,7 @@ local function showGuy(name)
 		return
 	end
 	local x, y, zone = Cartographer_GuildPositions.x[name], Cartographer_GuildPositions.y[name], Cartographer_GuildPositions.zones[name]
-	x, y = Tourist:TransposeZoneCoordinate(x, y, zone, Cartographer:GetCurrentLocalizedZoneName())
+	x, y = Tourist:TransposeZoneCoordinate(x, y, zone, Cartographer:GetCurrentEnglishZoneName())
 	if not x or x < 0 or x > 1 or y < 0 or y > 1 then
 		Cartographer_GuildPositions.pois:del(name)
 		return

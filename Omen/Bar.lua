@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 78700 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 79015 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local barPrototype = {}
@@ -70,6 +70,31 @@ function barPrototype:New(guid)
 	return obj
 end
 
+-- upvalue functions for bar OnBlahs
+local function barOnHide()
+	Omen.Anchor.IsMovingOrSizing = nil
+	Omen.Anchor:StopMovingOrSizing()
+	Omen:SetAnchors()
+	this:SetScript("OnHide", nil)
+end
+local function barOnMouseDown()
+	if Omen.Options["Lock"] then return end
+	if arg1 == "LeftButton" then
+		this:SetScript("OnHide", barOnHide)
+		Omen.Anchor.IsMovingOrSizing = true
+		Omen.Anchor:StartMoving()
+	elseif arg1 == "RightButton" then
+		this.parent:OpenBarMenu()
+	end
+end
+local function barOnMouseUp()
+	if arg1 ~= "LeftButton" then return end
+	Omen.Anchor.IsMovingOrSizing = nil
+	Omen.Anchor:StopMovingOrSizing()
+	Omen:SetAnchors()
+	this:SetScript("OnHide", nil)
+end
+
 function barPrototype:Init(guid)
 	self.guid = self.guid or guid
 	self.value = 0
@@ -101,19 +126,8 @@ function barPrototype:Init(guid)
 		self.iconTexture:Hide()
 
 		self.frame:EnableMouse(true)
-		self.frame:SetScript("OnMouseDown", function()
-			if Omen.Options["Lock"] then return end
-			if arg1 == "LeftButton" then
-				Omen.Anchor:StartMoving()
-			elseif arg1 == "RightButton" then
-				this.parent:OpenBarMenu()
-			end
-		end)
-		self.frame:SetScript("OnMouseUp", function()
-			if arg1 ~= "LeftButton" then return end
-			Omen.Anchor:StopMovingOrSizing()
-			Omen:SetAnchors()
-		end)
+		self.frame:SetScript("OnMouseDown", barOnMouseDown)
+		self.frame:SetScript("OnMouseUp", barOnMouseUp)
 	end
 	self:CreateLabels()
 	self:UpdateLayout()

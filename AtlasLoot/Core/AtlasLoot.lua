@@ -36,10 +36,10 @@ local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 --Establish version number and compatible version of Atlas
 local VERSION_MAJOR = "4";
 local VERSION_MINOR = "06";
-local VERSION_BOSSES = "01";
+local VERSION_BOSSES = "02";
 ATLASLOOT_VERSION = "|cffFF8400AtlasLoot Enhanced v"..VERSION_MAJOR.."."..VERSION_MINOR.."."..VERSION_BOSSES.."|r";
-ATLASLOOT_CURRENT_ATLAS = "1.11.0";
-ATLASLOOT_PREVIEW_ATLAS = "1.12.0";
+ATLASLOOT_CURRENT_ATLAS = "1.12.0";
+ATLASLOOT_PREVIEW_ATLAS = "1.12.1";
 
 --Standard indent to line text up with Atlas text
 ATLASLOOT_INDENT = "   ";
@@ -106,7 +106,6 @@ AtlasLoot:RegisterDefaults('profile', {
 
 AtlasLoot_MenuList = {
 	"ABMENU",
-	"AQ40SET",
 	"AQ20SET",
 	"PRE60SET",
 	"ZGSET",
@@ -114,8 +113,7 @@ AtlasLoot_MenuList = {
 	"T5SET",
 	"T4SET",
 	"T3SET",
-	"T2SET",
-	"T1SET",
+	"T1T2SET",
 	"T0SET",
 	"PVPMENU",
 	"PVPSET",
@@ -222,14 +220,8 @@ function AtlasLoot_OnVariablesLoaded()
 		AtlasButton_LoadAtlas();
 	end
 	--Hook the necessary Atlas functions
-    if ATLAS_VERSION == ATLASLOOT_PREVIEW_ATLAS then
-        Hooked_Atlas_Refresh = Atlas_Refresh;
-        Atlas_Refresh = AtlasLoot_NewRefresh;
-        Atlas112Compat();
-    else
-        Hooked_Atlas_Refresh = Atlas_Refresh;
-	    Atlas_Refresh = AtlasLoot_Refresh;
-    end
+    Hooked_Atlas_Refresh = Atlas_Refresh;
+    Atlas_Refresh = AtlasLoot_Refresh;
 	Hooked_Atlas_OnShow = Atlas_OnShow;
 	Atlas_OnShow = AtlasLoot_Atlas_OnShow;
 	--Instead of hooking, replace the scrollbar driver function
@@ -532,11 +524,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 
 	--Escape out of this function if creating a menu, this function only handles loot tables.
 	--Inserting escapes in this way allows consistant calling of data whether it is a loot table or a menu.
-	if(dataID=="AQ40SET") then
-		AtlasLootAQ40SetMenu();
-	elseif(dataID=="AQ20SET") then
-		AtlasLootAQ20SetMenu();
-	elseif(dataID=="PRE60SET") then
+	if(dataID=="PRE60SET") then
 		AtlasLootPRE60SetMenu();
 	elseif(dataID=="ZGSET") then
 		AtlasLootZGSetMenu();
@@ -548,10 +536,8 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 		AtlasLootT4SetMenu();
 	elseif(dataID=="T3SET") then
 		AtlasLootT3SetMenu();
-	elseif(dataID=="T2SET") then
-		AtlasLootT2SetMenu();
-	elseif(dataID=="T1SET") then
-		AtlasLootT1SetMenu();
+	elseif(dataID=="T1T2SET") then
+		AtlasLootT1T2SetMenu();
 	elseif(dataID=="T0SET") then
 		AtlasLootT0SetMenu();
 	elseif(dataID=="PVPMENU") then
@@ -860,14 +846,16 @@ function AtlasLootItemsFrame_OnCloseButton()
 	--Set no loot table as currently selected
 	AtlasLootItemsFrame.activeBoss = nil;
 	--Fix the boss buttons so the correct icons are displayed
-	if ATLAS_CUR_LINES then
-		for i=1,ATLAS_CUR_LINES do
-			if getglobal("AtlasBossLine"..i.."_Selected"):IsVisible() then
-				getglobal("AtlasBossLine"..i.."_Selected"):Hide();
-				getglobal("AtlasBossLine"..i.."_Loot"):Show();
-			end
-		end
-	end
+    if AtlasFrame:IsVisible() then
+        if ATLAS_CUR_LINES then
+            for i=1,ATLAS_CUR_LINES do
+                if getglobal("AtlasBossLine"..i.."_Selected"):IsVisible() then
+                    getglobal("AtlasBossLine"..i.."_Selected"):Hide();
+                    getglobal("AtlasBossLine"..i.."_Loot"):Show();
+                end
+            end
+        end
+    end
 	--Hide the item frame
 	AtlasLootItemsFrame:Hide();
 end

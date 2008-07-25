@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Ore-2.2
-Revision: $Rev: 62538 $
+Revision: $Rev: 79108 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Ore-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Ore-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 62538 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -572,6 +572,85 @@ BabbleOre:RegisterTranslations("frFR", function() return {
 	["Large Obsidian Chunk"] = "Grand morceau d'obsidienne",
 	["Small Obsidian Chunk"] = "Petit morceau d'obsidienne",
 	["Nethercite Deposit"] = "Gisement de néanticite",
+	
+} end)
+-- Translater: StingerSoft
+BabbleOre:RegisterTranslations("ruRU", function() return {
+-- Ore
+	["Copper Ore"] = "Медная руда",
+	["Tin Ore"] = "Оловянная руда",
+	["Silver Ore"] = "Серебряная руда",
+	["Iron Ore"] = "Железная руда",
+	["Gold Ore"] = "Золотая руда",
+	["Mithril Ore"] = "Мифриловая руда",
+	["Dark Iron Ore"] = "Руда темного железа",
+	["Truesilver Ore"] = "Руда истинного серебра",
+	["Thorium Ore"] = "Ториевая руда",
+	["Elementium Ore"] = "Элементиевая руда",
+	["Fel Iron Ore"] = "Руда оскверненного железа",
+	["Adamantite Ore"] = "Адамантитовая руда",
+	["Eternium Ore"] = "Этерниевая руда",
+	["Khorium Ore"] = "Кориевая руда",
+-- Types
+	["Copper"] = "Медь",
+	["Tin"] = "Олово",
+	["Silver"] = "Серебро",
+	["Iron"] = "Железо",
+	["Gold"] = "Золото",
+	["Mithril"] = "Мифрил",
+	["Dark Iron"] = "Темное железо",
+	["Truesilver"] = "Истинное серебро",
+	["Thorium"] = "Торий",
+	["Elementium"] = "Элементий",
+	["Fel Iron"] = "Оскверненное железо",
+	["Adamantite"] = "Адамантит",
+	["Eternium"] = "Этерний",
+	["Khorium"] = "Кории",
+	["Incendicite"] = "Огневитая",
+	["Lesser Bloodstone"] = "Бедная кровавая",
+	["Indurium"] = "Индарилий",
+	["Large Obsidian Shard"] = "Большой обсидиановый осколок",
+	["Small Obsidian Shard"] = "Маленький обсидиановый осколок",
+	["Rich Thorium"] = "Богатый Торий",
+	["Rich Adamantite"] = "Богатый Адамантит",
+-- Quest Ore
+	["Underlight Ore"] = "Руда из Бессветных копей", -- copper and tin
+	["Lead Ore"] = "Свинцовая руда",
+	["Rethban Ore"] = "Ретбанская руда", --quest
+	["Incendicite Ore"] = "Огневитовая руда",
+	["Umbral Ore"] = "Мрачная руда",
+	["Elunite Ore"] = "Элунитовая руда",
+	["Lesser Bloodstone Ore"] = "Бедная кровавая руда", --quest
+	["Indurium Ore"] = "Индарилиевая руда",
+	["Nethercite Ore"] = "Хаотитовая руда",
+-- Nodes
+	["Copper Vein"] = "Медная Жила",
+	["Tin Vein"] = "Оловянная Жила",
+	["Iron Deposit"] = "Залежь Железа",
+	["Silver Vein"] = "Серебрянная Жила",
+	["Gold Vein"] = "Золотая Жила",
+	["Mithril Deposit"] = "Митриловые залежи",
+	["Ooze Covered Mithril Deposit"] = "Ooze Covered Mithril Deposit",
+	["Truesilver Deposit"] = "Залежи истинного серебра",
+	["Ooze Covered Silver Vein"] = "Ooze Covered Silver Vein",
+	["Ooze Covered Gold Vein"] = "Ooze Covered Gold Vein",
+	["Ooze Covered Truesilver Deposit"] = "Ooze Covered Truesilver Deposit",
+	["Ooze Covered Rich Thorium Vein"] = "Ooze Covered Rich Thorium Vein",
+	["Ooze Covered Thorium Vein"] = "Ooze Covered Thorium Vein",
+	["Small Thorium Vein"] = "Малая ториевая жила",
+	["Rich Thorium Vein"] = "Богатая ториевая жила",
+	["Hakkari Thorium Vein"] = "Hakkari Thorium Vein",
+	["Dark Iron Deposit"] = "Залежи Темной Стали",
+	["Lesser Bloodstone Deposit"] = "Lesser Bloodstone Deposit",
+	["Incendicite Mineral Vein"] = "Incendicite Mineral Vein",
+	["Indurium Mineral Vein"] = "Indurium Mineral Vein",
+	["Fel Iron Deposit"] = "Месторождение оскверненного железа",
+	["Adamantite Deposit"] = "Залежи адамантита",
+	["Rich Adamantite Deposit"] = "Богатые залежи адамантита",
+	["Khorium Vein"] = "Кориевая жила",
+	["Large Obsidian Chunk"] = "Large Obsidian Chunk",
+	["Small Obsidian Chunk"] = "Small Obsidian Chunk",
+	["Nethercite Deposit"] = "Месторождение хаотита",
 	
 } end)
 
