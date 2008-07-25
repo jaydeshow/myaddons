@@ -158,7 +158,7 @@ L:RegisterTranslations("esES", function() return {
 ----------------------------------
 
 local plugin = BigWigs:NewModule("RaidWarning")
-plugin.revision = tonumber(("$Revision: 72140 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 79031 $"):sub(12, -3))
 plugin.defaultDB = {
 	whisper = false,
 	broadcast = false,

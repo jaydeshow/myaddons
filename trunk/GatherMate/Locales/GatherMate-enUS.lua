@@ -332,5 +332,5 @@ NL["Wicker Chest"] = true
 NL["Primitive Chest"] = true
 NL["Solid Fel Iron Chest"] = true
 NL["Bound Fel Iron Chest"] = true
-NL["Bound Adamantite Chest"] = true
+--NL["Bound Adamantite Chest"] = true -- Only appears in instances, also has conflicting reverse lookup issues
 NL["Netherwing Egg"] = true

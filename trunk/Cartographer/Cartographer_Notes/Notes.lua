@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 78706 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 79053 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-24 12:19:14 -0400 (Thu, 24 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Notes")
@@ -697,102 +697,102 @@ L:AddTranslations("zhCN", function() return {
 L:AddTranslations("ruRU", function() return {
 	["Notes"] = "Заметки",
 	["Module which allows you to put notes on the map."] = "Модуль позволяет вам размещать заметки на карте.",
-	["Hint: /note is available to create notes with the command line."] = "Hint: /note is available to create notes with the command line.",
+	["Hint: /note is available to create notes with the command line."] = "Совет: /создание заметок также доступно через командную строку.",
 	
-	["White"] = "White",
-	["Gray"] = "Gray",
-	["Red"] = "Red",
-	["Pink"] = "Pink",
-	["Yellow"] = "Yellow",
-	["Orange"] = "Orange",
-	["Green"] = "Green",
-	["Lime"] = "Lime",
-	["Blue"] = v,
-	["Pale blue"] = "Pale blue",
-	["Cyan"] = "Cyan",
-	["Purple"] = "Purple",
+	["White"] = "Белый",
+	["Gray"] = "Серый",
+	["Red"] = "Красный",
+	["Pink"] = "Розовый",
+	["Yellow"] = "Жёлтый",
+	["Orange"] = "Оранжевый",
+	["Green"] = "Зелёный",
+	["Lime"] = "Известь",
+	["Blue"] = "Синий",
+	["Pale blue"] = "Бледно голубой",
+	["Cyan"] = "Голубой",
+	["Purple"] = "Пурпурный",
 	
-	["Unknown"] = "Unknown",
-	["Custom icon"] = "Custom icon",
+	["Unknown"] = "Неизвестно",
+	["Custom icon"] = "Пользовательская иконка",
 	
-	["Create a new note"] = "Create a new note",
-	["Create a new note for %q"] = "Create a new note for %q",
-	["New note"] = "New note",
-	["Delete note"] = "Delete note",
-	["Edit note"] = "Edit note",
-	["Send note"] = "Send note",
-	["Send to party"] = "Send to party",
-	["Send to raid"] = "Send to raid",
-	["Send to guild"] = "Send to guild",
-	["Send to player"] = "Send to player",
-	["Send to group"] = "Send to group",
+	["Create a new note"] = "Создать новую заметку",
+	["Create a new note for %q"] = "Создать новую заметку для %q",
+	["New note"] = "Новая заметка",
+	["Delete note"] = "Удалить заметку",
+	["Edit note"] = "Править заметку",
+	["Send note"] = "Выслать заметку",
+	["Send to party"] = "Выслать в партию",
+	["Send to raid"] = "Выслать в рейд",
+	["Send to guild"] = "Выслать в гильдию",
+	["Send to player"] = "Выслать игроку",
+	["Send to group"] = "Выслать группе",
 	
-	["Note: This may be blocked by Blizzard's spam filter and cause problems. It is recommended to send to your party/raid/guild instead."] = "Note: This may be blocked by Blizzard's spam filter and cause problems. It is recommended to send to your party/raid/guild instead.",
+	["Note: This may be blocked by Blizzard's spam filter and cause problems. It is recommended to send to your party/raid/guild instead."] = "Заметка:Это может быть блокировано фильтром спама Blizzardов и пречинить кое какие проблемы. Вместо это Рекомендуется просто послать вашей группе/рейду/гильдии.",
 	
-	["X position"] = "X position",
-	["Y position"] = "Y position",
-	["Title"] = "Title",
-	["Info line 1 (optional)"] = "Info line 1 (optional)",
-	["Info line 2 (optional)"] = "Info line 2 (optional)",
-	["Creator (optional)"] = "Creator (optional)",
+	["X position"] = "Позиция по X",
+	["Y position"] = "Позиция по Y",
+	["Title"] = "Заголовок",
+	["Info line 1 (optional)"] = "Инфо строка 1 (дополнительный)",
+	["Info line 2 (optional)"] = "Инфо строка 2 (допол-ный)",
+	["Creator (optional)"] = "Создатель (допол-ный)",
 	
-	["Ctrl-Right-Click on map to add a note"] = "Ctrl-Right-Click on map to add a note",
+	["Ctrl-Right-Click on map to add a note"] = "Ctrl-Правый-Клик на карте для создание заметки",
 	
-	["%s from Guild"] = "%s from Guild",
-	["%s from Raid"] = "%s from Raid",
-	["%s from Party"] = "%s from Party",
+	["%s from Guild"] = "%s из Гильдии",
+	["%s from Raid"] = "%s из Рейда",
+	["%s from Party"] = "%s из Группы",
 	
-	["Unknown zone: %q"] = "Unknown zone: %q",
-	["Error: %s sent you a note with an unknown zone: %q"] = "Error: %s sent you a note with an unknown zone: %q",
-	["Error: %s sent you a note at %q : %.2f, %.2f with the title %q created by %q, but you already have a note at this location."] = "Error: %s sent you a note at %q : %.2f, %.2f with the title %q created by %q, but you already have a note at this location.",
-	["%s sent you a note at %q : %.2f, %.2f with the title %q created by %q."] = "%s sent you a note at %q : %.2f, %.2f with the title %q created by %q.",
+	["Unknown zone: %q"] = "Неизвестная зона: %q",
+	["Error: %s sent you a note with an unknown zone: %q"] = "Ошибка: %s посылает вам запись с неизвестной зоной: %q",
+	["Error: %s sent you a note at %q : %.2f, %.2f with the title %q created by %q, but you already have a note at this location."] = "Ошибка: %s посылает вам запись %q : %.2f, %.2f с названием %q создано %q, но ву уже имеете запись на данной територии.",
+	["%s sent you a note at %q : %.2f, %.2f with the title %q created by %q."] = "%s посылает вам запись %q : %.2f, %.2f с названием %q создано %q.",
 
-	["Created by"] = "Created by",
+	["Created by"] = "Создано:",
 		
-	["Show note creator"] = "Show note creator",
-	["Show the `Created By:' line in notes"] = "Show the `Created By:' line in notes",
+	["Show note creator"] = "Показ создателя заметки",
+	["Show the `Created By:' line in notes"] = "Отоброжать в заметках строку `Создано:'",
 	
-	["Icon size"] = "Icon size",
-	["Size of the icons on the map"] = "Size of the icons on the map",
+	["Icon size"] = "Размер иконки",
+	["Size of the icons on the map"] = "Размер иконки на карте",
 	
-	["Show minimap icons"] = "Show minimap icons",
-	["Show icons on the minimap"] = "Show icons on the minimap",
+	["Show minimap icons"] = "Показ иконку у мини-карты",
+	["Show icons on the minimap"] = "Показ иконку на мини-карте",
 	
-	["Minimap icon size"] = "Minimap icon size",
-	["Size of the icons on the minimap"] = "Size of the icons on the minimap",
+	["Minimap icon size"] = "Размер иконки у мини-карты",
+	["Size of the icons on the minimap"] = "Размер иконки на мини-карте",
 	
-	["Max minimap icons per database"] = "Max minimap icons per database",
-	["The maximum amount of minimap icons to show per database"] = "The maximum amount of minimap icons to show per database",
+	["Max minimap icons per database"] = "Макс иконок мини-карты иконок в базе данных",
+	["The maximum amount of minimap icons to show per database"] = "Максимально значение отоброжаемых иконок на мини-карте в базе данных",
 	
 	["Console-note-commands"] = { "/note", "/addnote" },
-	["Usage: /note <0-100> <0-100> [title]"] = "Usage: /note <0-100> <0-100> [title]",
+	["Usage: /note <0-100> <0-100> [title]"] = "Используйте: /note <0-100> <0-100> [title]",
 
-	["Show chat notifications"] = "Show chat notifications",
-	["Show notification in the chat window"] = "Show notification in the chat window",
+	["Show chat notifications"] = "Показывать извещение в чат",
+	["Show notification in the chat window"] = "Показывать извещения в окне чата",
 	-- Note cleanup localizations
-	["Clear all notes on map"] = "Clear all notes on map",
-	["This will remove all notes on the map. This can't be undone are your sure?"] = "This will remove all notes on the map. This can't be undone are your sure?",
-	["This will clear all notes on map"] = "This will clear all notes on map",
+	["Clear all notes on map"] = "Очистить все заметки на карте",
+	["This will remove all notes on the map. This can't be undone are your sure?"] = "Это очьстит все заметки с карты. Вы уверены в этом?",
+	["This will clear all notes on map"] = "Это очьстит все заметки с карты",
 	
-	["Clear waypoint"] = "Clear waypoint",
-	["Set as waypoint"] = "Set as waypoint",
+	["Clear waypoint"] = "Очистить точки маршрута",
+	["Set as waypoint"] = "Установить как точку маршрута",
 
-	["all"] = "all",
-	["Note reception active"] = "Note reception active",
-	["Enabling this will allow notes to be sent and received."] = "Enabling this will allow notes to be sent and received.",
+	["all"] = "все",
+	["Note reception active"] = "Приёма заметок",
+	["Enabling this will allow notes to be sent and received."] = "Включение данной опции позволяет высылать и принимать заметки.",
 	
-	["Note sent by %s ignored due to filtering settings."] = "Note sent by %s ignored due to filtering settings.",
-	["Incoming note filtering"] = "Incoming note filtering",
-	["Setup filtering of note sent to you by other players."] = "Setup filtering of note sent to you by other players.",
-	["Accept all notes"] = "Accept all notes",
-	["Accept only handmade notes"] = "Accept only handmade notes",
-	["Reject all notes"] = "Reject all notes",
+	["Note sent by %s ignored due to filtering settings."] = "Запись посланна %s игнорируется настройками фильтрации.",
+	["Incoming note filtering"] = "Фильтрация входищих записей",
+	["Setup filtering of note sent to you by other players."] = "Установка фильтрации записей отсылаемых вам другими игроками.",
+	["Accept all notes"] = "Принимать все записи",
+	["Accept only handmade notes"] = "Принимать только записи сделанный вручную",
+	["Reject all notes"] = "Отклонять все записи",
 
 	["%.0f yd"] = "%.0f ярд",
 	["%.0f m"] = "%.0f м",
 
 	["Console-quick-note-commands"] = { "/qnote", "/quicknote" },
-	["Unable to find your location."] = "Unable to find your location.",
+	["Unable to find your location."] = "Невозможно найти ваше местонахождение.",
 } end)
 
 local localization = GetLocale()

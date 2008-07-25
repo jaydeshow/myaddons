@@ -372,4 +372,5 @@ if not L then return end
 	L["Hide When Not Collecting"]=true
 	L["DoT"]=true
 	L["HoT"]=true
-	
+	L["Recorded Fights"]=true
+	 L["Set the maximum number of recorded fight segments"]=true

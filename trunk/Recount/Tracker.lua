@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 78820 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 79091 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -408,6 +408,17 @@ function Recount:SpellDrainLeech(timestamp, eventtype, srcGUID, srcName, srcFlag
 -- Currently unused.
 end
 
+function Recount:SpellAuraBroken(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, extraSpellId, extraSpellName, extraSpellSchool)
+	if not spellName then
+		spellName = "Melee"
+	end
+	local ability = spellName .. " (" .. extraSpellName .. ")"
+
+	if CCId[spellId] then
+		Recount:AddCCBreaker(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
+	end
+end
+
 function Recount:SpellAuraDispelledStolen(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, extraSpellId, extraSpellName, extraSpellSchool)
 
 	if eventtype == "SPELL_DISPEL_FAILED" then
@@ -419,14 +430,7 @@ function Recount:SpellAuraDispelledStolen(timestamp, eventtype, srcGUID, srcName
 	end
 	local ability = extraSpellName .. " (" .. spellName .. ")"
 
-	--Recount:AddDispelData(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
-
-	--if CC[spellName] then Elsia: De-BS
-	if CCId[extraSpellId] then
-		Recount:AddCCBreaker(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
-	else
-		Recount:AddDispelData(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
-	end
+	Recount:AddDispelData(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
 end
 
 function Recount:SpellAuraAppliedRemoved(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, auraType)
@@ -548,8 +552,8 @@ local EventParse =
 	["UNIT_DESTROYED"] = Recount.UnitDied,
 	["SPELL_SUMMON"] = Recount.SpellSummon, -- Elsia: Summons
 	["SPELL_CREATE"] = Recount.SpellCreate, -- Elsia: Creations
-	["SPELL_AURA_BROKEN"] = Recount.SpellAuraAppliedRemoved, -- New with 2.4.3
-	["SPELL_AURA_BROKEN_SPELL"] = Recount.SpellAuraAppliedRemoved, -- New with 2.4.3
+	["SPELL_AURA_BROKEN"] = Recount.SpellAuraBroken, -- New with 2.4.3
+	["SPELL_AURA_BROKEN_SPELL"] = Recount.SpellAuraBroken, -- New with 2.4.3
 	["SPELL_AURA_REFRESH"] = Recount.SpellAuraAppliedRemoved, -- New with 2.4.3
 	["SPELL_DISPEL"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3
 	["SPELL_STOLEN"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3

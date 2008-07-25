@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fPOI|r]
+## Title-ruRU: Картограф |r[|cffeda55fPOI|r]
 ## X-Name: POI
 ## X-Name-ruRU: Cетевой индикатор (POI)
 ## X-Name-deDE: PoI

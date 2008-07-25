@@ -1,4 +1,45 @@
 ------------------------------------------------------------------------
+r79116 | gnarfoz | 2008-07-25 07:47:50 -0400 (Fri, 25 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Spell-2.2/Babble-Spell-2.2.lua
+
+.Babble-Spell-2.2: fix ruRU translation. we need that luac -p pre-commit hook. :p
+------------------------------------------------------------------------
+r79108 | StingerSoft | 2008-07-25 05:06:38 -0400 (Fri, 25 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Boss-2.2/Babble-Boss-2.2.lua
+   M /trunk/Babble-2.2/Babble-Class-2.2/Babble-Class-2.2.lua
+   M /trunk/Babble-2.2/Babble-Faction-2.2/Babble-Faction-2.2.lua
+   M /trunk/Babble-2.2/Babble-Herbs-2.2/Babble-Herbs-2.2.lua
+   M /trunk/Babble-2.2/Babble-Inventory-2.2/Babble-Inventory-2.2.lua
+   M /trunk/Babble-2.2/Babble-Mount-2.2/Babble-Mount-2.2.lua
+   M /trunk/Babble-2.2/Babble-Ore-2.2/Babble-Ore-2.2.lua
+   M /trunk/Babble-2.2/Babble-Quest-2.2/Babble-Quest-2.2.lua
+   M /trunk/Babble-2.2/Babble-Race-2.2/Babble-Race-2.2.lua
+   M /trunk/Babble-2.2/Babble-Spell-2.2/Babble-Spell-2.2.lua
+   M /trunk/Babble-2.2/Babble-SpellTree-2.2/Babble-SpellTree-2.2.lua
+   M /trunk/Babble-2.2/Babble-Trainer-2.2/Babble-Trainer-2.2.lua
+   M /trunk/Babble-2.2/Babble-Vendor-2.2/Babble-Vendor-2.2.lua
+
+Babble-2.2:
+- update ruRU localizations
+------------------------------------------------------------------------
+r79026 | StingerSoft | 2008-07-23 22:25:26 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Herbs-2.2/Babble-Herbs-2.2.lua
+   M /trunk/Babble-2.2/Babble-Ore-2.2/Babble-Ore-2.2.lua
+   M /trunk/Babble-2.2/Babble-Trainer-2.2/Babble-Trainer-2.2.lua
+
+Babble-2.2:
+- added ruRU translations (not fully)
+------------------------------------------------------------------------
+r78917 | StingerSoft | 2008-07-22 08:34:47 -0400 (Tue, 22 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Trainer-2.2/Babble-Trainer-2.2.lua
+
+Babble-2.2:
+- added ruRU translations in Babble-Trainer-2.2
+------------------------------------------------------------------------
 r78908 | StingerSoft | 2008-07-22 05:37:15 -0400 (Tue, 22 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/Babble-2.2/Babble-Trainer-2.2/Babble-Trainer-2.2.lua

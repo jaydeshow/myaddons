@@ -1,4 +1,4 @@
-local revision = tonumber(string.sub("$Revision: 72188 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 78940 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 local Fights={}
@@ -66,6 +66,15 @@ function Fights:MoveFights()
 	
 	if FightNum then
 		Recount.FightName=Recount.db2.FoughtWho[FightNum]
+	end
+end
+
+function Fights:DeleteOverflowFights(newmax)
+	for k,v in pairs(Recount.db2.combatants) do		
+	        for i=newmax+1, Recount.db.profile.MaxFights, 1 do
+			v.Fights["Fight"..i]=nil
+			Recount.db2.FoughtWho[i]=nil
+		end
 	end
 end
 

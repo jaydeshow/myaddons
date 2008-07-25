@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_Events.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
+D:SetDateAndRevision("$Date: 2008-07-24 21:14:28 -0400 (Thu, 24 Jul 2008) $", "$Revision: 79088 $");
 
 
 local L	    = D.L;
@@ -299,12 +299,18 @@ do
     end -- }}}
 
 
+    Dcr.xxxtemp = 0;
 
     local pet;
     function D:GetUnitArray() --{{{
 
 	-- if the groups composition did not changed
-	if (not self.Groups_datas_are_invalid) then
+	if (not self.Groups_datas_are_invalid or not self.DcrFullyInitialized) then
+
+	    if not self.DcrFullyInitialized then -- XXX to remove
+		self.xxxtemp = self.xxxtemp + 1;
+	    end
+
 	    return;
 	end
 
@@ -475,9 +481,21 @@ do
 
 	    -- Add the player to the main list if needed
 	    if (not IsInSkipOrPriorList(MyName, currentGroup, DC.ClassUNameToNum[DC.MyClass])) then
-		local PlayerRID = self:NameToUnit(MyName);
-		AddToSort( PlayerRID, 900);
-		self.Status.Unit_ArrayByName[MyName] = PlayerRID;
+		local PlayerRID = self:NameToUnit(MyName); -- XXX might return false
+		if PlayerRID then
+		    AddToSort( PlayerRID, 900);
+		    self.Status.Unit_ArrayByName[MyName] = PlayerRID;
+		else
+		    if not MyName then MyName = "nil" end
+		    message(string.format("Decursive-UAB: PlayerRID is false for %s-%s\nReport this to archarodim@teaser.fr", MyName,  Dcr:UnitName("player")));
+
+		    AddToSort( "player", 900);
+		    self.Status.Unit_ArrayByName[MyName] =  "player";
+
+		    MyName = self:UnitName("player");
+		    DC.MyName = MyName;
+		    self.Status.Unit_Array_NameToUnit[MyName] = "player";
+		end
 	    end
 
 	    -- Now we have a cache without the units we want to skip
@@ -528,7 +546,11 @@ do
 	    self.Status.Unit_Array_UnitToName[unit] = name; -- just a usefull table, not used here :)
 
 	    -- another -very- usefull table ;-)
-	    self.Status.Unit_Array_GUIDToUnit[UnitGUID(unit)] = unit;
+	    if unit ~= true and unit then -- XXX temp to fix
+		self.Status.Unit_Array_GUIDToUnit[UnitGUID(unit)] = unit;
+	    else
+		message(string.format("Decursive-UAB: invalid unit supplied to UnitGUID for %s-%s\nReport this to archarodim@teaser.fr", name, UnitName("player")));
+	    end
 	end
 
 	table.sort(self.Status.Unit_Array, function (a,b)

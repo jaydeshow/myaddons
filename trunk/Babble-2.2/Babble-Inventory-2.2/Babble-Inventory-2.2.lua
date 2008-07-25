@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Inventory-2.2
-Revision: $Rev: 70852 $
+Revision: $Rev: 79108 $
 Authors(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Inventory-2.2
 SVN: http://svn.wowace.com/wowace/trunk/Babble-2.2/Babble-Inventory-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Inventory-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 70852 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -662,6 +662,98 @@ BabbleInventory:RegisterTranslations("esES", function() return {
     ["Totems"] = "Tótems",
     ["Shields"] = "Escudos",
     ["Fishing Poles"] = "Cañas de Pescar",
+} end)
+-- Translater: GriffonHeart (updater: StingerSoft)
+BabbleInventory:RegisterTranslations("ruRU", function() return {
+    --Armor Types
+	["Cloth"] = "Ткань",
+	["Leather"] = "Кожа",
+	["Mail"] = "Кольчуга",
+	["Plate"] = "Латы",
+
+    --Armor Slots
+    ["Head"] = "Голова",
+    ["Neck"] = "Шея",
+    ["Shoulder"] = "Плечо",
+    ["Back"] = "Спина",
+    ["Chest"] = "Грудь",
+    ["Shirt"] = "Рубаха",
+    ["Tabard"] = "Тапперт",
+    ["Wrist"] = "Запястья",
+    ["Hands"] = "Кисти рук",
+    ["Waist"] = "Пояс",
+    ["Legs"] = "Ноги",
+    ["Feet"] = "Ступни",
+    ["Ring"] = "Палец",
+    ["Trinket"] = "Аксессуар",
+    ["Held in Off-Hand"] = "Носить в другой руке",
+    ["Relic"] = "Реликвия",
+    ["Libram"] = "Манускрипт",
+    ["Totem"] = "Тотем",
+    ["Idol"] = "Идол",
+    ["Cloak"] = "Плащ", --плащ?
+
+    --Weapons
+    ["Weapon"] = "Оружие",
+    ["Weapons"] = "Орудия",
+	["Axe"] = "Топор",
+	["Bow"] = "Лук",
+	["Crossbow"] = "Арбалет",
+	["Dagger"] = "Кинжал",
+	["Fist Weapon"] = "Кистевое",
+	["Gun"] = "Огнестрельное",
+	["Mace"] = "Ударное",
+	["Polearm"] = "Древковое",
+	["Shield"] = "Щит",
+	["Staff"] = "Посох",
+	["Sword"] = "Меч",
+	["Thrown"] = "Метательное",
+	["Wand"] = "Жезл",
+
+    --Weapon Types
+	["One-Hand"] = "Одноручное",
+	["Two-Hand"] = "Двуручное",
+	["Main Hand"] = "Правая рука",
+	["Off Hand"] = "Левая рука",
+
+    --Weapon sub-types
+	["Bows"] = "Луки",
+	["Crossbows"] = "Арбалеты",
+	["Daggers"] = "Кинжалы",
+	["Guns"] = "Огнестрельное",
+	["Fishing Pole"] = "Удочка",
+	["Fist Weapons"] = "Кистевое",
+	["Miscellaneous"] = "Разное",
+	["One-Handed Axes"] = "Одноручные топоры",
+	["One-Handed Maces"] = "Одноручное ударное",
+	["One-Handed Swords"] = "Одноручные мечи",
+	["Polearms"] = "Древковое",
+	["Staves"] = "Посохи",
+	["Thrown"] = "Метательное",
+	["Two-Handed Axes"] = "Двуручные топоры",
+	["Two-Handed Maces"] = "Двуручное ударное",
+	["Two-Handed Swords"] = "Двуручные мечи",
+	["Wands"] = "Жезлы",
+
+    --Misc Items
+    ["Ammo Pouch"] = "Подсумок",
+    ["Arrow"] = "Стрела",
+    ["Bag"] = "Сумка",
+    ["Bandage"] = "Bandage",
+    ["Bullet"] = "Пуля",
+    ["Drink"] = "Напитки",
+    ["Food"] = "Еда",
+    ["Gem"] = "Самоцветы",
+    ["Key"] = "Ключ",
+    ["Potion"] = "Зелье",
+    ["Quiver"] = "Колчан",
+	
+   	--some strings that are returned by GetItemInfo()
+	["Idols"] = "Идолы",
+	["Librams"] = "Манускрипты",
+	["Totems"] = "Тотемы",
+	["Shields"] = "Щиты",
+	["Fishing Poles"] = "Удочки",
 } end)
 
 BabbleInventory:Debug()

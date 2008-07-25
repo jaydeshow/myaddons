@@ -1,4 +1,48 @@
 ------------------------------------------------------------------------
+r79015 | xinhuan | 2008-07-23 18:10:30 -0400 (Wed, 23 Jul 2008) | 5 lines
+Changed paths:
+   M /trunk/Omen/Bar.lua
+
+Omen: Fix bug that causes Omen to get stuck to the mouse while in combat.
+
+It occurs when you drag a threat bar (causing Omen to be dragged OnMouseDown), and then the threat bar clicked on gets hidden (usually because you switched targets), so the OnMouseUp event handler never gets fired to stop moving Omen.
+
+As a side effect of the fix, memory usage is slightly lowered.
+------------------------------------------------------------------------
+r79002 | xinhuan | 2008-07-23 16:29:12 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Omen.lua
+
+Omen: Added right click to the Omen LDB launcher that opens the config. Left click continues to toggle Omen to show/hide.
+------------------------------------------------------------------------
+r78999 | charon | 2008-07-23 16:13:23 -0400 (Wed, 23 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/Omen/Modules/AOE/AOE_PulloutBar.lua
+   M /trunk/Omen/Modules/SingleTarget/SingleTarget_PulloutBar.lua
+
+Omen: Merge some pullout fixes
+- Remove some size hardcoding
+- Switch around AOE pullout colors in tank mode
+- Do not assume tankThreat>0 if we just tested it is <=0!
+------------------------------------------------------------------------
+r78989 | xinhuan | 2008-07-23 11:18:06 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/ModuleBase.lua
+
+Omen: Ignore the "Title Bar" for the options "Collapse hides bar list" and "Collapse hides entire Omen window". The title bar was previously counted as a bar, preventing these 2 options from working if the "Show Title Bar" option is turned on in Single Target mode.
+------------------------------------------------------------------------
+r78962 | xinhuan | 2008-07-22 23:20:07 -0400 (Tue, 22 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Omen.lua
+
+Omen: Add a few lines of code to create a launcher for Omen in LibDataBroker-1.1 only if it is detected to be loaded.
+------------------------------------------------------------------------
+r78914 | pettigrow | 2008-07-22 07:24:57 -0400 (Tue, 22 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Localization/frFR.lua
+
+Omen: frFR Update
+------------------------------------------------------------------------
 r78750 | arrowmaster | 2008-07-19 17:15:05 -0400 (Sat, 19 Jul 2008) | 1 line
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc

@@ -1,4 +1,70 @@
 ------------------------------------------------------------------------
+r79098 | daviesh | 2008-07-25 00:51:05 -0400 (Fri, 25 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
+
+AtlasLoot_SetsandPvP:
+- Enforced universal data format
+------------------------------------------------------------------------
+r79089 | kurax | 2008-07-24 21:25:00 -0400 (Thu, 24 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP: Update locales
+------------------------------------------------------------------------
+r79073 | hegarol | 2008-07-24 15:43:43 -0400 (Thu, 24 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/BattlegroundPvP.en.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP
+- removed class breakdown for AQ40 sets
+------------------------------------------------------------------------
+r78985 | hegarol | 2008-07-23 10:45:53 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP:
+- merged Dungeon Set 3
+------------------------------------------------------------------------
+r78966 | kurax | 2008-07-23 01:47:47 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
+   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
+
+AtlasLoot_SetsandPvP: Update locales
+------------------------------------------------------------------------
+r78920 | hegarol | 2008-07-22 10:13:44 -0400 (Tue, 22 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AtlasLoot_SetsandPvP/sets.en.lua
+
+AtlasLoot_SetsandPvP_
+- AQ20 Sets moved to one loot table
+- moved Tier 1 and Tier 2 to one loot table (for each class)
+------------------------------------------------------------------------
 r78898 | kurax | 2008-07-22 02:14:49 -0400 (Tue, 22 Jul 2008) | 1 line
 Changed paths:
    M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.de.lua
@@ -292,57 +358,4 @@ Changed paths:
 
 AtlasLoot_SetsandPvP:
 - Old Season 2 items available for badges added
-------------------------------------------------------------------------
-r77284 | kurax | 2008-06-23 11:40:46 -0400 (Mon, 23 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
-
-AtlasLoot_SetsandPvP: Locales update
-------------------------------------------------------------------------
-r77281 | kurax | 2008-06-23 10:33:52 -0400 (Mon, 23 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.cn.lua
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.de.lua
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.es.lua
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.fr.lua
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.kr.lua
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.tw.lua
-
-AtlasLoot_SetsandPvP: Locales update
-------------------------------------------------------------------------
-r77275 | hegarol | 2008-06-23 08:08:42 -0400 (Mon, 23 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
-
-AtlasLoot_SetsandPvP:
-- second part of Arena season 4 prep
-------------------------------------------------------------------------
-r77245 | hegarol | 2008-06-22 09:59:00 -0400 (Sun, 22 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
-
-AtlasLoot_SetsandPvP:
-- first part of Arena season 4 update
-------------------------------------------------------------------------
-r77188 | kurax | 2008-06-21 12:22:10 -0400 (Sat, 21 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/sets.cn.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.de.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.es.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.fr.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.kr.lua
-   M /trunk/AtlasLoot_SetsandPvP/sets.tw.lua
-
-AtlasLoot_SetsandPvP: Locales update
-------------------------------------------------------------------------
-r77177 | hegarol | 2008-06-21 04:04:10 -0400 (Sat, 21 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/AtlasLoot_SetsandPvP/GeneralPvP.en.lua
-
-AtlasLoot_SetsandPvP:
-- small change
 ------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fCoordinates|r]
+## Title-ruRU: Картограф |r[|cffeda55fКоординаты|r]
 ## X-Name: Coordinates
 ## X-Name-ruRU: Координаты
 ## X-Name-deDE: Koordinaten

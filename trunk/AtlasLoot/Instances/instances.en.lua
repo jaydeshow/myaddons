@@ -168,6 +168,7 @@ AtlasLootBossButtons = {
         "CExpedition1";
         "BCKeys";
         "";
+        "LordAhune";
         "CFRSlaveMennu";
         "";
         "";
@@ -357,6 +358,7 @@ AtlasLootBossButtons = {
         "";
         "";
         "";
+        "";
         "KaraNamed";
         "KaraNamed";
         "KaraNamed";
@@ -380,10 +382,19 @@ AtlasLootBossButtons = {
         "";
         "";
         "KaraOperaEvent";
-        "KaraOperaEvent";
+        "";
         "KaraOperaEvent";
         "";
+        "";
+        "";
+        "";
+        "";
+        "";
+        "KaraOperaEvent";
+        "";
+        "";
         "KaraNightbane";
+        "";
         "";
         "KaraTrash";
         };
@@ -416,6 +427,7 @@ AtlasLootBossButtons = {
         };      
 
     MagistersTerrace = {
+        "SunOffensive1";
         "";
         "SMTFireheart";
 		"";
@@ -742,7 +754,7 @@ AtlasLootBossButtons = {
         "BWLNefarian";
         "";
         "BWLTrashMobs";
-        "T2SET";
+        "T1T2SET";
         };
 
     DireMaulEast = {
@@ -896,6 +908,7 @@ AtlasLootBossButtons = {
         "";
         "WaterLords1";
         "OldKeys";
+        "OldKeys";
         "";
         "MCLucifron";
         "MCMagmadar";
@@ -908,7 +921,7 @@ AtlasLootBossButtons = {
         "MCMajordomo";
         "MCRagnaros";
         "";
-        "T1SET";
+        "T1T2SET";
         "MCTrashMobs";
         "MCRANDOMBOSSDROPPS";
         };
@@ -932,6 +945,7 @@ AtlasLootBossButtons = {
         "NAXInstructorRazuvious";
         "NAXGothikderHarvester";
         "NAXTheFourHorsemen";
+        "";
         "";
         "";
         "";
@@ -1041,9 +1055,6 @@ AtlasLootBossButtons = {
 
     ShadowfangKeep = {
         "";
-        "";
-        "";
-        "BSFDeathswornCaptain";
         "BSFRethilgore";
         "";
         "";
@@ -1056,6 +1067,7 @@ AtlasLootBossButtons = {
         "BSFSilverlaine";
         "BSFSpringvale";
         "BSFOdotheBlindwatcher";
+        "BSFDeathswornCaptain";
         "BSFFenrustheDevourer";
         "BSFArugalsVoidwalker";
         "BSFQuestItems";
@@ -1160,16 +1172,16 @@ AtlasLootBossButtons = {
     TheDeadmines = {
         "";
         "";
-        "VCRhahkZor";
-        "VCMinerJohnson";
-        "VCSneed";
-        "VCSneedsShredder";
-        "VCGilnid";
-        "VCDefiasGunpowder";
-        "VCCaptainGreenskin";
-        "VCVanCleef";
-        "VCMrSmite";
-        "VCCookie";
+        "TheDeadmines1";
+        "TheDeadmines1";
+        "TheDeadmines1";
+        "TheDeadmines1";
+        "TheDeadmines1";
+        "TheDeadmines1";
+        "TheDeadmines2";
+        "TheDeadmines2";
+        "TheDeadmines2";
+        "TheDeadmines2";
         "";
         "VWOWDeadmines";
         };
@@ -1177,9 +1189,9 @@ AtlasLootBossButtons = {
     TheDeadminesEnt = {
         "";
         "";
-        "VCMarisaduPaige";
-        "VCBrainwashedNoble";
-        "VCForemanThistlenettle";
+        "TheDeadminesEntrance";
+        "TheDeadminesEntrance";
+        "TheDeadminesEntrance";
         };
 
     TheRuinsofAhnQiraj = {
@@ -1205,7 +1217,7 @@ AtlasLootBossButtons = {
         "AQ20Trash";
         "AQ20ClassBooks";
         "AQEnchants";
-        "AQ20SET";
+        "AQ20Sets1";
         };
 
     TheStockade = {
@@ -1221,6 +1233,7 @@ AtlasLootBossButtons = {
         };
 
     TheSunkenTemple = {
+        "";
         "OldKeys";
         "";
         "";
@@ -1273,9 +1286,10 @@ AtlasLootBossButtons = {
         "";
         "";
         "";
+        "";
         "AQ40Trash1";
         "AQEnchants";
-        "AQ40SET";
+        "AQ40Sets1";
         "AQOpening";
         };
 
@@ -1376,6 +1390,7 @@ AtlasLootBossButtons = {
 
     ZulGurub = {
         "Zandalar1";
+        "OldKeys";
         "OldKeys";
         "";
         "ZGJeklik";

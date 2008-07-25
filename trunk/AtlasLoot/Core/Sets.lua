@@ -75,13 +75,13 @@ function AtlasLootSetMenu()
     AtlasLootMenuItem_18_Name:SetText(AL["Ruins of Ahn'Qiraj Sets"]);
     AtlasLootMenuItem_18_Extra:SetText("");
     AtlasLootMenuItem_18_Icon:SetTexture("Interface\\Icons\\INV_Jewelry_Ring_AhnQiraj_03");
-    AtlasLootMenuItem_18.lootpage="AQ20SET";
+    AtlasLootMenuItem_18.lootpage="AQ20Sets1";
     AtlasLootMenuItem_18:Show();
     --AQ40 Class Sets
     AtlasLootMenuItem_19_Name:SetText(AL["Temple of Ahn'Qiraj Sets"]);
     AtlasLootMenuItem_19_Extra:SetText("");
     AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\INV_Sword_59");
-    AtlasLootMenuItem_19.lootpage="AQ40SET";
+    AtlasLootMenuItem_19.lootpage="AQ40Sets1";
     AtlasLootMenuItem_19:Show();
     --Dungeon Set 1/2
     AtlasLootMenuItem_21_Name:SetText(AL["Dungeon 1/2 Sets"]);
@@ -95,42 +95,36 @@ function AtlasLootSetMenu()
     AtlasLootMenuItem_22_Icon:SetTexture("Interface\\Icons\\INV_Helmet_15");
     AtlasLootMenuItem_22.lootpage="DS3SET";
     AtlasLootMenuItem_22:Show();
-    --Tier 1 Sets
-    AtlasLootMenuItem_23_Name:SetText(AL["Tier 1 Sets"]);
+    --Tier 1/2 Sets
+    AtlasLootMenuItem_23_Name:SetText(AL["Tier 1/2 Sets"]);
     AtlasLootMenuItem_23_Extra:SetText("");
     AtlasLootMenuItem_23_Icon:SetTexture("Interface\\Icons\\INV_Pants_Mail_03");
-    AtlasLootMenuItem_23.lootpage="T1SET";
+    AtlasLootMenuItem_23.lootpage="T1T2SET";
     AtlasLootMenuItem_23:Show();
-    --Tier 2 Sets
-    AtlasLootMenuItem_24_Name:SetText(AL["Tier 2 Sets"]);
-    AtlasLootMenuItem_24_Extra:SetText("");
-    AtlasLootMenuItem_24_Icon:SetTexture("Interface\\Icons\\INV_Shoulder_32");
-    AtlasLootMenuItem_24.lootpage="T2SET";
-    AtlasLootMenuItem_24:Show();
     --Tier 3 Sets
-    AtlasLootMenuItem_25_Name:SetText(AL["Tier 3 Sets"]);
-    AtlasLootMenuItem_25_Extra:SetText("");
-    AtlasLootMenuItem_25_Icon:SetTexture("Interface\\Icons\\INV_Pants_Cloth_05");
-    AtlasLootMenuItem_25.lootpage="T3SET";
-    AtlasLootMenuItem_25:Show();
+    AtlasLootMenuItem_24_Name:SetText(AL["Tier 3 Sets"]);
+    AtlasLootMenuItem_24_Extra:SetText("");
+    AtlasLootMenuItem_24_Icon:SetTexture("Interface\\Icons\\INV_Pants_Cloth_05");
+    AtlasLootMenuItem_24.lootpage="T3SET";
+    AtlasLootMenuItem_24:Show();
     --Tier 4 Sets
-    AtlasLootMenuItem_26_Name:SetText(AL["Tier 4 Sets"]);
-    AtlasLootMenuItem_26_Extra:SetText("");
-    AtlasLootMenuItem_26_Icon:SetTexture("Interface\\Icons\\INV_Shoulder_14");
-    AtlasLootMenuItem_26.lootpage="T4SET";
-    AtlasLootMenuItem_26:Show();
+    AtlasLootMenuItem_25_Name:SetText(AL["Tier 4 Sets"]);
+    AtlasLootMenuItem_25_Extra:SetText("");
+    AtlasLootMenuItem_25_Icon:SetTexture("Interface\\Icons\\INV_Shoulder_14");
+    AtlasLootMenuItem_25.lootpage="T4SET";
+    AtlasLootMenuItem_25:Show();
     --Tier 5 Sets
-    AtlasLootMenuItem_27_Name:SetText(AL["Tier 5 Sets"]);
-    AtlasLootMenuItem_27_Extra:SetText("");
-    AtlasLootMenuItem_27_Icon:SetTexture("Interface\\Icons\\INV_Crown_01");
-    AtlasLootMenuItem_27.lootpage="T5SET";
-    AtlasLootMenuItem_27:Show();
+    AtlasLootMenuItem_26_Name:SetText(AL["Tier 5 Sets"]);
+    AtlasLootMenuItem_26_Extra:SetText("");
+    AtlasLootMenuItem_26_Icon:SetTexture("Interface\\Icons\\INV_Crown_01");
+    AtlasLootMenuItem_26.lootpage="T5SET";
+    AtlasLootMenuItem_26:Show();
     -- Tier 6 Sets
-    AtlasLootMenuItem_28_Name:SetText(AL["Tier 6 Sets"]);
-    AtlasLootMenuItem_28_Extra:SetText("");
-    AtlasLootMenuItem_28_Icon:SetTexture("Interface\\Icons\\INV_Gauntlets_63");
-    AtlasLootMenuItem_28.lootpage="T6SET";
-    AtlasLootMenuItem_28:Show();
+    AtlasLootMenuItem_27_Name:SetText(AL["Tier 6 Sets"]);
+    AtlasLootMenuItem_27_Extra:SetText("");
+    AtlasLootMenuItem_27_Icon:SetTexture("Interface\\Icons\\INV_Gauntlets_63");
+    AtlasLootMenuItem_27.lootpage="T6SET";
+    AtlasLootMenuItem_27:Show();
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end
@@ -256,7 +250,7 @@ function AtlasLoot70TokenMenu()
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Lvl 70 Instance Token Rewards"]);
+    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Badge of Justice Rewards"]);
     AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
 end
 
@@ -402,152 +396,6 @@ function AtlasLootPRE60SetMenu()
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end
     AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Pre 60 Sets"]);
-    AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
-end
-
-function AtlasLootAQ40SetMenu()
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootItem_"..i):Hide();
-    end
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootMenuItem_"..i):Hide();
-        getglobal("AtlasLootMenuItem_"..i).isheader = false;
-    end
-    getglobal("AtlasLootItemsFrame_BACK"):Show();
-    getglobal("AtlasLootItemsFrame_BACK").lootpage = "SETMENU";
-    getglobal("AtlasLootItemsFrame_NEXT"):Hide();
-    getglobal("AtlasLootItemsFrame_PREV"):Hide();
-    --Druid
-    AtlasLootMenuItem_3_Name:SetText(BabbleClass["Druid"]);
-    AtlasLootMenuItem_3_Extra:SetText("");
-    AtlasLootMenuItem_3_Icon:SetTexture("Interface\\Icons\\Spell_Nature_Regeneration");
-    AtlasLootMenuItem_3.lootpage="AQ40Druid";
-    AtlasLootMenuItem_3:Show();
-    --Mage
-    AtlasLootMenuItem_4_Name:SetText(BabbleClass["Mage"]);
-    AtlasLootMenuItem_4_Extra:SetText("");
-    AtlasLootMenuItem_4_Icon:SetTexture("Interface\\Icons\\Spell_Frost_IceStorm");
-    AtlasLootMenuItem_4.lootpage="AQ40Mage";
-    AtlasLootMenuItem_4:Show();
-    --Priest
-    AtlasLootMenuItem_5_Name:SetText(BabbleClass["Priest"]);
-    AtlasLootMenuItem_5_Extra:SetText("");
-    AtlasLootMenuItem_5_Icon:SetTexture("Interface\\Icons\\Spell_Holy_PowerWordShield");
-    AtlasLootMenuItem_5.lootpage="AQ40Priest";
-    AtlasLootMenuItem_5:Show();
-    --Shaman
-    AtlasLootMenuItem_6_Name:SetText(BabbleClass["Shaman"]);
-    AtlasLootMenuItem_6_Extra:SetText("");
-    AtlasLootMenuItem_6_Icon:SetTexture("Interface\\Icons\\Spell_FireResistanceTotem_01");
-    AtlasLootMenuItem_6.lootpage="AQ40Shaman";
-    AtlasLootMenuItem_6:Show();
-    --Warrior
-    AtlasLootMenuItem_7_Name:SetText(BabbleClass["Warrior"]);
-    AtlasLootMenuItem_7_Extra:SetText("");
-    AtlasLootMenuItem_7_Icon:SetTexture("Interface\\Icons\\INV_Shield_05");
-    AtlasLootMenuItem_7.lootpage="AQ40Warrior";
-    AtlasLootMenuItem_7:Show();
-    --Hunter
-    AtlasLootMenuItem_18_Name:SetText(BabbleClass["Hunter"]);
-    AtlasLootMenuItem_18_Extra:SetText("");
-    AtlasLootMenuItem_18_Icon:SetTexture("Interface\\Icons\\Ability_Hunter_RunningShot");
-    AtlasLootMenuItem_18.lootpage="AQ40Hunter";
-    AtlasLootMenuItem_18:Show();
-    --Paladin
-    AtlasLootMenuItem_19_Name:SetText(BabbleClass["Paladin"]);
-    AtlasLootMenuItem_19_Extra:SetText("");
-    AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\Spell_Holy_SealOfMight");
-    AtlasLootMenuItem_19.lootpage="AQ40Paladin";
-    AtlasLootMenuItem_19:Show();
-    --Rogue
-    AtlasLootMenuItem_20_Name:SetText(BabbleClass["Rogue"]);
-    AtlasLootMenuItem_20_Extra:SetText("");
-    AtlasLootMenuItem_20_Icon:SetTexture("Interface\\Icons\\Ability_BackStab");
-    AtlasLootMenuItem_20.lootpage="AQ40Rogue";
-    AtlasLootMenuItem_20:Show();
-    --Warlock
-    AtlasLootMenuItem_21_Name:SetText(BabbleClass["Warlock"]);
-    AtlasLootMenuItem_21_Extra:SetText("");
-    AtlasLootMenuItem_21_Icon:SetTexture("Interface\\Icons\\INV_Pants_Cloth_05");
-    AtlasLootMenuItem_21.lootpage="AQ40Warlock";
-    AtlasLootMenuItem_21:Show();
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
-    end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Temple of Ahn'Qiraj Sets"]);
-    AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
-end
-
-function AtlasLootAQ20SetMenu()
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootItem_"..i):Hide();
-    end
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootMenuItem_"..i):Hide();
-        getglobal("AtlasLootMenuItem_"..i).isheader = false;
-    end
-    getglobal("AtlasLootItemsFrame_BACK"):Show();
-    getglobal("AtlasLootItemsFrame_BACK").lootpage = "SETMENU";
-    getglobal("AtlasLootItemsFrame_NEXT"):Hide();
-    getglobal("AtlasLootItemsFrame_PREV"):Hide();
-    --Druid
-    AtlasLootMenuItem_3_Name:SetText(BabbleClass["Druid"]);
-    AtlasLootMenuItem_3_Extra:SetText("");
-    AtlasLootMenuItem_3_Icon:SetTexture("Interface\\Icons\\Spell_Nature_Regeneration");
-    AtlasLootMenuItem_3.lootpage="AQ20Druid";
-    AtlasLootMenuItem_3:Show();
-    --Mage
-    AtlasLootMenuItem_4_Name:SetText(BabbleClass["Mage"]);
-    AtlasLootMenuItem_4_Extra:SetText("");
-    AtlasLootMenuItem_4_Icon:SetTexture("Interface\\Icons\\Spell_Frost_IceStorm");
-    AtlasLootMenuItem_4.lootpage="AQ20Mage";
-    AtlasLootMenuItem_4:Show();
-    --Priest
-    AtlasLootMenuItem_5_Name:SetText(BabbleClass["Priest"]);
-    AtlasLootMenuItem_5_Extra:SetText("");
-    AtlasLootMenuItem_5_Icon:SetTexture("Interface\\Icons\\Spell_Holy_PowerWordShield");
-    AtlasLootMenuItem_5.lootpage="AQ20Priest";
-    AtlasLootMenuItem_5:Show();
-    --Shaman
-    AtlasLootMenuItem_6_Name:SetText(BabbleClass["Shaman"]);
-    AtlasLootMenuItem_6_Extra:SetText("");
-    AtlasLootMenuItem_6_Icon:SetTexture("Interface\\Icons\\Spell_FireResistanceTotem_01");
-    AtlasLootMenuItem_6.lootpage="AQ20Shaman";
-    AtlasLootMenuItem_6:Show();
-    --Warrior
-    AtlasLootMenuItem_7_Name:SetText(BabbleClass["Warrior"]);
-    AtlasLootMenuItem_7_Extra:SetText("");
-    AtlasLootMenuItem_7_Icon:SetTexture("Interface\\Icons\\INV_Shield_05");
-    AtlasLootMenuItem_7.lootpage="AQ20Warrior";
-    AtlasLootMenuItem_7:Show();
-    --Hunter
-    AtlasLootMenuItem_18_Name:SetText(BabbleClass["Hunter"]);
-    AtlasLootMenuItem_18_Extra:SetText("");
-    AtlasLootMenuItem_18_Icon:SetTexture("Interface\\Icons\\Ability_Hunter_RunningShot");
-    AtlasLootMenuItem_18.lootpage="AQ20Hunter";
-    AtlasLootMenuItem_18:Show();
-    --Paladin
-    AtlasLootMenuItem_19_Name:SetText(BabbleClass["Paladin"]);
-    AtlasLootMenuItem_19_Extra:SetText("");
-    AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\Spell_Holy_SealOfMight");
-    AtlasLootMenuItem_19.lootpage="AQ20Paladin";
-    AtlasLootMenuItem_19:Show();
-    --Rogue
-    AtlasLootMenuItem_20_Name:SetText(BabbleClass["Rogue"]);
-    AtlasLootMenuItem_20_Extra:SetText("");
-    AtlasLootMenuItem_20_Icon:SetTexture("Interface\\Icons\\Ability_BackStab");
-    AtlasLootMenuItem_20.lootpage="AQ20Rogue";
-    AtlasLootMenuItem_20:Show();
-    --Warlock
-    AtlasLootMenuItem_21_Name:SetText(BabbleClass["Warlock"]);
-    AtlasLootMenuItem_21_Extra:SetText("");
-    AtlasLootMenuItem_21_Icon:SetTexture("Interface\\Icons\\INV_Pants_Cloth_05");
-    AtlasLootMenuItem_21.lootpage="AQ20Warlock";
-    AtlasLootMenuItem_21:Show();
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
-    end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Ruins of Ahn'Qiraj Sets"]);
     AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
 end
 
@@ -1151,79 +999,79 @@ function AtlasLootDS3SetMenu()
     AtlasLootMenuItem_2_Name:SetText(AL["Hallowed Raiment"]);
     AtlasLootMenuItem_2_Extra:SetText(ORANGE..BabbleInventory["Cloth"]);
     AtlasLootMenuItem_2_Icon:SetTexture("Interface\\Icons\\Spell_Holy_InnerFire");
-    AtlasLootMenuItem_2.lootpage="DS3Hallowed";
+    AtlasLootMenuItem_2.lootpage="DS3Cloth";
     AtlasLootMenuItem_2:Show();
     --Incanter Set
     AtlasLootMenuItem_17_Name:SetText(AL["Incanter's Regalia"]);
     AtlasLootMenuItem_17_Extra:SetText(ORANGE..BabbleInventory["Cloth"]);
     AtlasLootMenuItem_17_Icon:SetTexture("Interface\\Icons\\Ability_Creature_Cursed_04");
-    AtlasLootMenuItem_17.lootpage="DS3Incanter";
+    AtlasLootMenuItem_17.lootpage="DS3Cloth";
     AtlasLootMenuItem_17:Show();
     --Mana-Etched Set
     AtlasLootMenuItem_3_Name:SetText(AL["Mana-Etched Regalia"]);
     AtlasLootMenuItem_3_Extra:SetText(ORANGE..BabbleInventory["Cloth"]);
     AtlasLootMenuItem_3_Icon:SetTexture("Interface\\Icons\\INV_Elemental_Mote_Nether");
-    AtlasLootMenuItem_3.lootpage="DS3Mana";
+    AtlasLootMenuItem_3.lootpage="DS3Cloth";
     AtlasLootMenuItem_3:Show();
     --Oblivion Set
     AtlasLootMenuItem_18_Name:SetText(AL["Oblivion Raiment"]);
     AtlasLootMenuItem_18_Extra:SetText(ORANGE..BabbleInventory["Cloth"]);
     AtlasLootMenuItem_18_Icon:SetTexture("Interface\\Icons\\Ability_Creature_Cursed_03");
-    AtlasLootMenuItem_18.lootpage="DS3Oblivion";
+    AtlasLootMenuItem_18.lootpage="DS3Cloth";
     AtlasLootMenuItem_18:Show();
     --Assassination Set
     AtlasLootMenuItem_5_Name:SetText(AL["Assassination Armor"]);
     AtlasLootMenuItem_5_Extra:SetText(ORANGE..BabbleInventory["Leather"]);
     AtlasLootMenuItem_5_Icon:SetTexture("Interface\\Icons\\Ability_Rogue_SinisterCalling");
-    AtlasLootMenuItem_5.lootpage="DS3Assassin";
+    AtlasLootMenuItem_5.lootpage="DS3Leather";
     AtlasLootMenuItem_5:Show();
     --Moonglade Set
     AtlasLootMenuItem_20_Name:SetText(AL["Moonglade Raiment"]);
     AtlasLootMenuItem_20_Extra:SetText(ORANGE..BabbleInventory["Leather"]);
     AtlasLootMenuItem_20_Icon:SetTexture("Interface\\Icons\\Spell_Holy_SealOfRighteousness");
-    AtlasLootMenuItem_20.lootpage="DS3Moonglade";
+    AtlasLootMenuItem_20.lootpage="DS3Leather";
     AtlasLootMenuItem_20:Show();
     --Wastewalker Set
     AtlasLootMenuItem_6_Name:SetText(AL["Wastewalker Armor"]);
     AtlasLootMenuItem_6_Extra:SetText(ORANGE..BabbleInventory["Leather"]);
     AtlasLootMenuItem_6_Icon:SetTexture("Interface\\Icons\\Ability_Hunter_RapidKilling");
-    AtlasLootMenuItem_6.lootpage="DS3Wastewalker";
+    AtlasLootMenuItem_6.lootpage="DS3Leather";
     AtlasLootMenuItem_6:Show();
     --Beast Lord Set
     AtlasLootMenuItem_8_Name:SetText(AL["Beast Lord Armor"]);
     AtlasLootMenuItem_8_Extra:SetText(ORANGE..BabbleInventory["Mail"]);
     AtlasLootMenuItem_8_Icon:SetTexture("Interface\\Icons\\Ability_Hunter_Pet_Wolf");
-    AtlasLootMenuItem_8.lootpage="DS3Beast";
+    AtlasLootMenuItem_8.lootpage="DS3Mail";
     AtlasLootMenuItem_8:Show();
     --Desolation Set
     AtlasLootMenuItem_23_Name:SetText(AL["Desolation Battlegear"]);
     AtlasLootMenuItem_23_Extra:SetText(ORANGE..BabbleInventory["Mail"]);
     AtlasLootMenuItem_23_Icon:SetTexture("Interface\\Icons\\Ability_FiegnDead");
-    AtlasLootMenuItem_23.lootpage="DS3Desolation";
+    AtlasLootMenuItem_23.lootpage="DS3Mail";
     AtlasLootMenuItem_23:Show();
     --Tidefury Set
     AtlasLootMenuItem_9_Name:SetText(AL["Tidefury Raiment"]);
     AtlasLootMenuItem_9_Extra:SetText(ORANGE..BabbleInventory["Mail"]);
     AtlasLootMenuItem_9_Icon:SetTexture("Interface\\Icons\\INV_Helmet_70");
-    AtlasLootMenuItem_9.lootpage="DS3Tidefury";
+    AtlasLootMenuItem_9.lootpage="DS3Mail";
     AtlasLootMenuItem_9:Show();
     --Bold Set
     AtlasLootMenuItem_11_Name:SetText(AL["Bold Armor"]);
     AtlasLootMenuItem_11_Extra:SetText(ORANGE..BabbleInventory["Plate"]);
     AtlasLootMenuItem_11_Icon:SetTexture("Interface\\Icons\\Spell_Fire_EnchantWeapon");
-    AtlasLootMenuItem_11.lootpage="DS3Bold";
+    AtlasLootMenuItem_11.lootpage="DS3Plate";
     AtlasLootMenuItem_11:Show();
     --Doomplate Set
     AtlasLootMenuItem_26_Name:SetText(AL["Doomplate Battlegear"]);
     AtlasLootMenuItem_26_Extra:SetText(ORANGE..BabbleInventory["Plate"]);
     AtlasLootMenuItem_26_Icon:SetTexture("Interface\\Icons\\INV_Helmet_08");
-    AtlasLootMenuItem_26.lootpage="DS3Doom";
+    AtlasLootMenuItem_26.lootpage="DS3Plate";
     AtlasLootMenuItem_26:Show();
     --Righteous Set
     AtlasLootMenuItem_12_Name:SetText(AL["Righteous Armor"]);
     AtlasLootMenuItem_12_Extra:SetText(ORANGE..BabbleInventory["Plate"]);
     AtlasLootMenuItem_12_Icon:SetTexture("Interface\\Icons\\INV_Hammer_02");
-    AtlasLootMenuItem_12.lootpage="DS3Right";
+    AtlasLootMenuItem_12.lootpage="DS3Plate";
     AtlasLootMenuItem_12:Show();
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
@@ -1232,7 +1080,7 @@ function AtlasLootDS3SetMenu()
     AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
 end
 
-function AtlasLootT1SetMenu()
+function AtlasLootT1T2SetMenu()
     for i = 1, 30, 1 do
         getglobal("AtlasLootItem_"..i):Hide();
     end
@@ -1248,133 +1096,60 @@ function AtlasLootT1SetMenu()
     AtlasLootMenuItem_3_Name:SetText(BabbleClass["Druid"]);
     AtlasLootMenuItem_3_Extra:SetText("");
     AtlasLootMenuItem_3_Icon:SetTexture("Interface\\Icons\\Spell_Nature_Regeneration");
-    AtlasLootMenuItem_3.lootpage="T1Druid";
+    AtlasLootMenuItem_3.lootpage="T1T2Druid";
     AtlasLootMenuItem_3:Show();
     --Mage
     AtlasLootMenuItem_4_Name:SetText(BabbleClass["Mage"]);
     AtlasLootMenuItem_4_Extra:SetText("");
     AtlasLootMenuItem_4_Icon:SetTexture("Interface\\Icons\\Spell_Frost_IceStorm");
-    AtlasLootMenuItem_4.lootpage="T1Mage";
+    AtlasLootMenuItem_4.lootpage="T1T2Mage";
     AtlasLootMenuItem_4:Show();
     --Priest
     AtlasLootMenuItem_5_Name:SetText(BabbleClass["Priest"]);
     AtlasLootMenuItem_5_Extra:SetText("");
     AtlasLootMenuItem_5_Icon:SetTexture("Interface\\Icons\\Spell_Holy_PowerWordShield");
-    AtlasLootMenuItem_5.lootpage="T1Priest";
+    AtlasLootMenuItem_5.lootpage="T1T2Priest";
     AtlasLootMenuItem_5:Show();
     --Shaman
     AtlasLootMenuItem_6_Name:SetText(BabbleClass["Shaman"]);
     AtlasLootMenuItem_6_Extra:SetText("");
     AtlasLootMenuItem_6_Icon:SetTexture("Interface\\Icons\\Spell_FireResistanceTotem_01");
-    AtlasLootMenuItem_6.lootpage="T1Shaman";
+    AtlasLootMenuItem_6.lootpage="T1T2Shaman";
     AtlasLootMenuItem_6:Show();
     --Warrior
     AtlasLootMenuItem_7_Name:SetText(BabbleClass["Warrior"]);
     AtlasLootMenuItem_7_Extra:SetText("");
     AtlasLootMenuItem_7_Icon:SetTexture("Interface\\Icons\\INV_Shield_05");
-    AtlasLootMenuItem_7.lootpage="T1Warrior";
+    AtlasLootMenuItem_7.lootpage="T1T2Warrior";
     AtlasLootMenuItem_7:Show();
     --Hunter
     AtlasLootMenuItem_18_Name:SetText(BabbleClass["Hunter"]);
     AtlasLootMenuItem_18_Extra:SetText("");
     AtlasLootMenuItem_18_Icon:SetTexture("Interface\\Icons\\Ability_Hunter_RunningShot");
-    AtlasLootMenuItem_18.lootpage="T1Hunter";
+    AtlasLootMenuItem_18.lootpage="T1T2Hunter";
     AtlasLootMenuItem_18:Show();
     --Paladin
     AtlasLootMenuItem_19_Name:SetText(BabbleClass["Paladin"]);
     AtlasLootMenuItem_19_Extra:SetText("");
     AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\Spell_Holy_SealOfMight");
-    AtlasLootMenuItem_19.lootpage="T1Paladin";
+    AtlasLootMenuItem_19.lootpage="T1T2Paladin";
     AtlasLootMenuItem_19:Show();
     --Rogue
     AtlasLootMenuItem_20_Name:SetText(BabbleClass["Rogue"]);
     AtlasLootMenuItem_20_Extra:SetText("");
     AtlasLootMenuItem_20_Icon:SetTexture("Interface\\Icons\\Ability_BackStab");
-    AtlasLootMenuItem_20.lootpage="T1Rogue";
+    AtlasLootMenuItem_20.lootpage="T1T2Rogue";
     AtlasLootMenuItem_20:Show();
     --Warlock
     AtlasLootMenuItem_21_Name:SetText(BabbleClass["Warlock"]);
     AtlasLootMenuItem_21_Extra:SetText("");
     AtlasLootMenuItem_21_Icon:SetTexture("Interface\\Icons\\INV_Pants_Cloth_05");
-    AtlasLootMenuItem_21.lootpage="T1Warlock";
+    AtlasLootMenuItem_21.lootpage="T1T2Warlock";
     AtlasLootMenuItem_21:Show();
     for i = 1, 30, 1 do
         getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
     end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Tier 1 Sets"]);
-    AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
-end
-
-function AtlasLootT2SetMenu()
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootItem_"..i):Hide();
-    end
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootMenuItem_"..i):Hide();
-        getglobal("AtlasLootMenuItem_"..i).isheader = false;
-    end
-    getglobal("AtlasLootItemsFrame_BACK"):Show();
-    getglobal("AtlasLootItemsFrame_BACK").lootpage = "SETMENU";
-    getglobal("AtlasLootItemsFrame_NEXT"):Hide();
-    getglobal("AtlasLootItemsFrame_PREV"):Hide();
-    --Druid
-    AtlasLootMenuItem_3_Name:SetText(BabbleClass["Druid"]);
-    AtlasLootMenuItem_3_Extra:SetText("");
-    AtlasLootMenuItem_3_Icon:SetTexture("Interface\\Icons\\Spell_Nature_Regeneration");
-    AtlasLootMenuItem_3.lootpage="T2Druid";
-    AtlasLootMenuItem_3:Show();
-    --Mage
-    AtlasLootMenuItem_4_Name:SetText(BabbleClass["Mage"]);
-    AtlasLootMenuItem_4_Extra:SetText("");
-    AtlasLootMenuItem_4_Icon:SetTexture("Interface\\Icons\\Spell_Frost_IceStorm");
-    AtlasLootMenuItem_4.lootpage="T2Mage";
-    AtlasLootMenuItem_4:Show();
-    --Priest
-    AtlasLootMenuItem_5_Name:SetText(BabbleClass["Priest"]);
-    AtlasLootMenuItem_5_Extra:SetText("");
-    AtlasLootMenuItem_5_Icon:SetTexture("Interface\\Icons\\Spell_Holy_PowerWordShield");
-    AtlasLootMenuItem_5.lootpage="T2Priest";
-    AtlasLootMenuItem_5:Show();
-    --Shaman
-    AtlasLootMenuItem_6_Name:SetText(BabbleClass["Shaman"]);
-    AtlasLootMenuItem_6_Extra:SetText("");
-    AtlasLootMenuItem_6_Icon:SetTexture("Interface\\Icons\\Spell_FireResistanceTotem_01");
-    AtlasLootMenuItem_6.lootpage="T2Shaman";
-    AtlasLootMenuItem_6:Show();
-    --Warrior
-    AtlasLootMenuItem_7_Name:SetText(BabbleClass["Warrior"]);
-    AtlasLootMenuItem_7_Extra:SetText("");
-    AtlasLootMenuItem_7_Icon:SetTexture("Interface\\Icons\\INV_Shield_05");
-    AtlasLootMenuItem_7.lootpage="T2Warrior";
-    AtlasLootMenuItem_7:Show();
-    --Hunter
-    AtlasLootMenuItem_18_Name:SetText(BabbleClass["Hunter"]);
-    AtlasLootMenuItem_18_Extra:SetText("");
-    AtlasLootMenuItem_18_Icon:SetTexture("Interface\\Icons\\Ability_Hunter_RunningShot");
-    AtlasLootMenuItem_18.lootpage="T2Hunter";
-    AtlasLootMenuItem_18:Show();
-    --Paladin
-    AtlasLootMenuItem_19_Name:SetText(BabbleClass["Paladin"]);
-    AtlasLootMenuItem_19_Extra:SetText("");
-    AtlasLootMenuItem_19_Icon:SetTexture("Interface\\Icons\\Spell_Holy_SealOfMight");
-    AtlasLootMenuItem_19.lootpage="T2Paladin";
-    AtlasLootMenuItem_19:Show();
-    --Rogue
-    AtlasLootMenuItem_20_Name:SetText(BabbleClass["Rogue"]);
-    AtlasLootMenuItem_20_Extra:SetText("");
-    AtlasLootMenuItem_20_Icon:SetTexture("Interface\\Icons\\Ability_BackStab");
-    AtlasLootMenuItem_20.lootpage="T2Rogue";
-    AtlasLootMenuItem_20:Show();
-    --Warlock
-    AtlasLootMenuItem_21_Name:SetText(BabbleClass["Warlock"]);
-    AtlasLootMenuItem_21_Extra:SetText("");
-    AtlasLootMenuItem_21_Icon:SetTexture("Interface\\Icons\\INV_Pants_Cloth_05");
-    AtlasLootMenuItem_21.lootpage="T2Warlock";
-    AtlasLootMenuItem_21:Show();
-    for i = 1, 30, 1 do
-        getglobal("AtlasLootMenuItem_"..i.."_Extra"):Show();
-    end
-    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Tier 2 Sets"]);
+    AtlasLoot_BossName:SetText("|cffFFFFFF"..AL["Tier 1/2 Sets"]);
     AtlasLoot_SetItemInfoFrame(AtlasLoot_AnchorFrame);
 end
 

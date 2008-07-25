@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Trainer-2.2
-Revision: $Rev: 78908 $
+Revision: $Rev: 79108 $
 Authors(s): Kodewulf (kodewulf@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Trainer-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Trainer-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 78908 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -680,16 +680,16 @@ BabbleTrainer:RegisterTranslations("esES", function() return {
 	["Weapon Master"] = "Maestro armero",
 	["Wolf Riding Instructor"] = "Instructor de jinetes de lobos",
 } end)
-
+-- Translater: StingerSoft
 BabbleTrainer:RegisterTranslations("ruRU", function() return {
 	-- Trainer types
 	["Armor Crafter"] = "Доспехи",
-	["Artisan Alchemist"] = "Artisan Alchemist",
-	["Artisan Blacksmith"] = "Artisan Blacksmith",
-	["Artisan Enchanter"] = "Artisan Enchanter",
-	["Artisan Engineer"] = "Artisan Engineer",
-	["Artisan Leatherworker"] = "Artisan Leatherworker",
-	["Artisan Tailor"] = "Artisan Tailor",
+	["Artisan Alchemist"] = "Алхимик-искусник",
+	["Artisan Blacksmith"] = "Кузнечное дело (искусник)",
+	["Artisan Enchanter"] = "Профессионал наложения чар",
+	["Artisan Engineer"] = "Профессионал механики",
+	["Artisan Leatherworker"] = "Кожевничество (искусник)",
+	["Artisan Tailor"] = "Портняжное дело (искусник)",
 	["Bael'dun Chief Engineer"] = "Главный инженер Бейл'дана",
 	["Bat Handler"] = "Дрессировщик летучих мышей",
 	["Blacksmith"] = "Кузнечное дело",
@@ -697,16 +697,16 @@ BabbleTrainer:RegisterTranslations("ruRU", function() return {
 	["Cooking Trainer"] = "Учитель кулинарии",
 	["Demon Trainer"] = "Наставник демонов",
 	["Druid Trainer"] = "Наставник друидов",
-	["Engineer"] = "Инженер",
+	["Engineer"] = "Механик",
 	["Engineering Trainer"] = "Учитель инженерного дела",
-	["Expert Alchemist"] = "Expert Alchemist",
-	["Expert Blacksmith"] = "Expert Blacksmith",
-	["Expert Enchanter"] = "Expert Enchanter",
-	["Expert Engineer"] = "Expert Engineer",
-	["Expert Jewelcrafter"] = "Expert Jewelcrafter",
-	["Expert Leatherworker"] = "Expert Leatherworker",
-	["Expert Tailor"] = "Expert Tailor",
-	["Explorers' League"] = "Explorers' League",
+	["Expert Alchemist"] = "Умелец алхимии",
+	["Expert Blacksmith"] = "Кузнечное дело (умелец)",
+	["Expert Enchanter"] = "Умелец наложения чар",
+	["Expert Engineer"] = "Умелец механики",
+	["Expert Jewelcrafter"] = "Ювелирное дело (умелец)",
+	["Expert Leatherworker"] = "Кожевничество (умелец)",
+	["Expert Tailor"] = "Портняжное дело (умелец)",
+	["Explorers' League"] = "Лига Исследователей",
 	["First Aid Trainer"] = "Учитель первой помощи",
 	["Fishing Trainer"] = "Учитель рыбной ловли",
 	["Goblin Engineering Trainer"] = "Наставник гоблинского инженерного дела",
@@ -722,14 +722,14 @@ BabbleTrainer:RegisterTranslations("ruRU", function() return {
 	["Herbalism Trainer"] = "Учитель травничества",
 	["Horse Riding Instructor"] = "Horse Riding Instructor",
 	["Hunter Trainer"] = "Наставник охотников",
-	["Journeyman Alchemist"] = "Journeyman Alchemist",
-	["Journeyman Alchemist Trainer"] = "Journeyman Alchemist Trainer",
-	["Journeyman Blacksmith"] = "Journeyman Blacksmith",
-	["Journeyman Enchanter"] = "Journeyman Enchanter",
-	["Journeyman Engineer"] = "Journeyman Engineer",
-	["Journeyman Jewelcrafter"] = "Journeyman Jewelcrafter",
-	["Journeyman Leatherworker"] = "Journeyman Leatherworker",
-	["Journeyman Tailor"] = "Journeyman Tailor",
+	["Journeyman Alchemist"] = "Подмастерье алхимии",
+	["Journeyman Alchemist Trainer"] = "Учитель подмастерья алхимии",
+	["Journeyman Blacksmith"] = "Кузнечное дело (подмастерье)",
+	["Journeyman Enchanter"] = "Подмастерье наложения чар",
+	["Journeyman Engineer"] = "Подмастерье механики",
+	["Journeyman Jewelcrafter"] = "Ювелирное дело (подмастерье)",
+	["Journeyman Leatherworker"] = "Кожевничество (подмастерье)",
+	["Journeyman Tailor"] = "Портняжное дело (подмастерье)",
 	["Kodo Riding Instructor"] = "Kodo Riding Instructor",
 	["Leatherworking Trainer"] = "Учитель кожевничества",
 	["Mage Trainer"] = "Наставник магов",
@@ -737,7 +737,7 @@ BabbleTrainer:RegisterTranslations("ruRU", function() return {
 	["Master Blacksmith"] = "Мастер кузнечного дела",
 	["Master Dragonscale Leatherworker"] = "Master Dragonscale Leatherworker",
 	["Master Elemental Leatherworker"] = "Master Elemental Leatherworker",
-	["Master Enchanter"] = "Master Enchanter",
+	["Master Enchanter"] = "Мастер наложения чар",
 	["Master Engineer"] = "Мастер механики",
 	["Master Gnome Engineer"] = "Master Gnome Engineer",
 	["Master Goblin Engineer"] = "Master Goblin Engineer",
@@ -745,7 +745,7 @@ BabbleTrainer:RegisterTranslations("ruRU", function() return {
 	["Master Leatherworker"] = "Master Leatherworker",
 	["Master Leatherworking Trainer"] = "Учитель мастеров кожевенного дела",
 	["Master Shadoweave Tailor"] = "Учитель шитья из ткани Теней",
-	["Master Tailor"] = "Мастер портняжного дела ",
+	["Master Tailor"] = "Мастер портняжного дела",
 	["Master Tribal Leatherworker"] = "Master Tribal Leatherworker",
 	["Mining Trainer"] = "Учитель горного дела",
 	["Nightsaber Riding Instructor"] = "Nightsaber Riding Instructor",

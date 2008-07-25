@@ -372,4 +372,5 @@ if not L then return end
 	L["Hide When Not Collecting"] = "不收集数据时隐藏"
 	L["DoT"] = "伤害/跳"
 	L["HoT"] = "治疗/跳"
-	
+	L["Recorded Fights"] = "已记录战斗"
+	L["Set the maximum number of recorded fight segments"] = "设定最高数量战斗记录分段"

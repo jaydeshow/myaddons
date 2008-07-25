@@ -5,6 +5,7 @@
 ## Notes-esES: Accesorio para manipular el mapa
 ## Notes-koKR: 지도에 관련된 여러 기능을 조작하기 위한 애드온입니다.
 ## Title: Cartographer
+## Title-ruRU: Картограф
 ## Notes-zhTW: 增強地圖的處理功能。
 ## Notes-zhCN: 增强地图处理功能。
 ## Author: ckknight

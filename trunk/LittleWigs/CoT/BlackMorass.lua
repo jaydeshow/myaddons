@@ -206,7 +206,7 @@ mod.zonename = BZ["The Black Morass"]
 mod.synctoken = "The Black Morass"
 mod.enabletrigger = boss
 mod.toggleoptions = {"portal", "portalbar", -1, "hasten", -1, "frenzy", "bosskill"}
-mod.revision = tonumber(("$Revision: 78697 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 78992 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -216,6 +216,7 @@ function mod:OnEnable()
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Hasten", 31458)
 	self:AddCombatListener("SPELL_AURA_APPLIED", "Frenzy", 37605)
 	self:AddCombatListener("SPELL_AURA_REMOVED", "BuffRemoved", 37605, 31458)
+	self:AddCombatListener("UNIT_DIED", "BossDeath")
 	self:RegisterEvent("UPDATE_WORLD_STATES")
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 end

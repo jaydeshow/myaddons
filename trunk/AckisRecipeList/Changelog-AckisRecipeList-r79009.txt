@@ -1,4 +1,78 @@
 ------------------------------------------------------------------------
+r79009 | ackis | 2008-07-23 17:20:25 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/DataMiner.lua
+
+AckisRecipeList:
+- More datamining updates will grab trainer names kinda
+------------------------------------------------------------------------
+r79001 | ackis | 2008-07-23 16:25:04 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/DataMiner.lua
+
+AckisRecipeList:
+- Update dataminer, it now successfully pulls all alchemy recipes from WoWDB.  Only gets their name, spell ID and required skill level.  Will have to expand to get aquisition information and aquisition flags (how the hell to do that is the question?)
+------------------------------------------------------------------------
+r78991 | ackis | 2008-07-23 12:58:25 -0400 (Wed, 23 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/DataMiner.lua
+   A /trunk/AckisRecipeList/externals.txt
+
+AckisRecipeList:
+- Update dataminer a bit
+- Add .pkgmeta file with specs from CurseForge (yay Ckknight)
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78984 | next96 | 2008-07-23 10:21:11 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
+r78947 | ackis | 2008-07-22 18:40:22 -0400 (Tue, 22 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/DataMiner.lua
+
+AckisRecipeList:
+- Update dataminer a bit
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78941 | ackis | 2008-07-22 17:52:52 -0400 (Tue, 22 Jul 2008) | 4 lines
+Changed paths:
+   A /trunk/AckisRecipeList/DataMiner.lua
+   M /trunk/AckisRecipeList/DownloadCount.lua
+
+AckisRecipeList:
+- Add frame for dataminer
+- Optimize download count
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78937 | pettigrow | 2008-07-22 16:35:29 -0400 (Tue, 22 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR Update
+------------------------------------------------------------------------
+r78932 | ackis | 2008-07-22 15:30:32 -0400 (Tue, 22 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+
+AckisRecipeList:
+- Localize an error message (L["SpellIDCache"]) needs translations please :)
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
+r78924 | ackis | 2008-07-22 11:12:01 -0400 (Tue, 22 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Removed Skinner from ToC
+- Dry-coded (compiles w/ luac -p)
+------------------------------------------------------------------------
 r78807 | ackis | 2008-07-20 15:23:58 -0400 (Sun, 20 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc

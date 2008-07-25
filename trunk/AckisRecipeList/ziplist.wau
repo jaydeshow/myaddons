@@ -1,7 +1,9 @@
-AckisRecipeList/Changelog-AckisRecipeList-r78807.txt
+AckisRecipeList/Changelog-AckisRecipeList-r79009.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/AckisRecipeList.lua
+AckisRecipeList/externals.txt
+AckisRecipeList/DataMiner.lua
 AckisRecipeList/AboutPanel.lua
 AckisRecipeList/ARLFrame.lua
 AckisRecipeList/LICENSE.txt

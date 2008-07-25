@@ -160,6 +160,8 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#m27#", AL["Used to summon boss"]);
     text = gsub(text, "#m28#", AL["Feast of Winter Veil"]);
     text = gsub(text, "#m29#", AL["Tradable against sunmote + item above"]);
+    text = gsub(text, "#m30#", AL["Tier 1"]);
+    text = gsub(text, "#m31#", AL["Tier 2"]);
 
     -- Misc
     text = gsub(text, "#j1#", AL["Normal Mode"]);
@@ -167,8 +169,8 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#j3#", AL["Heroic Mode"]);
     text = gsub(text, "#j4#", AL["Heroic Mode Keys"]);
     text = gsub(text, "#j5#", AL["Dungeon Set 2 Summonable"]);
-    text = gsub(text, "#j6#", AL["Dungeon 1 Set"]);
-    text = gsub(text, "#j7#", AL["Dungeon 2 Set"]);
+    text = gsub(text, "#j6#", AL["Dungeon Set 1"]);
+    text = gsub(text, "#j7#", AL["Dungeon Set 2"]);
     text = gsub(text, "#j8#", AL["Token Hand-Ins"]);
     text = gsub(text, "#j9#", AL["Level 60"]);
     text = gsub(text, "#j10#", AL["Level 70"]);
@@ -459,6 +461,16 @@ function AtlasLoot_FixText(text)
 	text = gsub(text, "#n145#", BabbleBoss["Bazil Thredd"]);
 	text = gsub(text, "#n146#", BabbleBoss["Dextren Ward"]);
 	text = gsub(text, "#n147#", BabbleBoss["Bruegal Ironknuckle"]);
+	text = gsub(text, "#n148#", BabbleBoss["Rhahk'Zor"]);
+	text = gsub(text, "#n149#", BabbleBoss["Miner Johnson"]);
+	text = gsub(text, "#n150#", BabbleBoss["Sneed's Shredder"]);
+	text = gsub(text, "#n151#", BabbleBoss["Sneed"]);
+	text = gsub(text, "#n152#", BabbleBoss["Gilnid"]);
+	text = gsub(text, "#n153#", BabbleBoss["Marisa du'Paige"]);
+	text = gsub(text, "#n154#", BabbleBoss["Brainwashed Noble"]);
+	text = gsub(text, "#n155#", BabbleBoss["Foreman Thistlenettle"]);
+	text = gsub(text, "#n156#", BabbleBoss["Mr. Smite"]);
+	text = gsub(text, "#n157#", BabbleBoss["Cookie"]);
 
     -- Zone Names
     text = gsub(text, "#z1#", BabbleZone["The Deadmines"]);
@@ -634,6 +646,21 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#t05s7#", AL["The Five Thunders"]);
     text = gsub(text, "#t05s8#", AL["Deathmist Raiment"]);
     text = gsub(text, "#t05s9#", AL["Battlegear of Heroism"]);
+    
+    -- Dungeon 3 Sets
+    text = gsub(text, "#ds3s1#", AL["Hallowed Raiment"]);
+    text = gsub(text, "#ds3s2#", AL["Incanter's Regalia"]);
+    text = gsub(text, "#ds3s3#", AL["Mana-Etched Regalia"]);
+    text = gsub(text, "#ds3s4#", AL["Oblivion Raiment"]);
+    text = gsub(text, "#ds3s5#", AL["Assassination Armor"]);
+    text = gsub(text, "#ds3s6#", AL["Moonglade Raiment"]);
+    text = gsub(text, "#ds3s7#", AL["Wastewalker Armor"]);
+    text = gsub(text, "#ds3s8#", AL["Beast Lord Armor"]);
+    text = gsub(text, "#ds3s9#", AL["Desolation Battlegear"]);
+    text = gsub(text, "#ds3s10#", AL["Tidefury Raiment"]);
+    text = gsub(text, "#ds3s11#", AL["Bold Armor"]);
+    text = gsub(text, "#ds3s12#", AL["Doomplate Battlegear"]);
+    text = gsub(text, "#ds3s13#", AL["Righteous Armor"]);
 
     -- Tier 1 Sets
     text = gsub(text, "#t1s1#", AL["Cenarion Raiment"]);

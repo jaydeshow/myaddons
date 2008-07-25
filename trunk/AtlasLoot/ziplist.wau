@@ -1,4 +1,4 @@
-AtlasLoot/Changelog-AtlasLoot-r78870.txt
+AtlasLoot/Changelog-AtlasLoot-r79110.txt
 AtlasLoot/embeds.xml
 AtlasLoot/AtlasLoot.toc
 AtlasLoot/Documentation/gpl-v2.zhTW.txt
@@ -25,7 +25,6 @@ AtlasLoot/PvP/PvP.xml
 AtlasLoot/PvP/Battlegrounds.en.lua
 AtlasLoot/Instances/Instances.xml
 AtlasLoot/Instances/instances.en.lua
-AtlasLoot/Instances/Atlas112Compat.lua
 AtlasLoot/Add_Ons/dkp.lua
 AtlasLoot/Add_Ons/Addons.xml
 AtlasLoot/Add_Ons/classpriority.lua

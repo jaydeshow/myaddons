@@ -234,7 +234,7 @@ local node_ids = {
 		[NL["Primitive Chest"]] 				= 527,
 		[NL["Solid Fel Iron Chest"]] 			= 528,
 		[NL["Bound Fel Iron Chest"]] 			= 529,
-		[NL["Bound Adamantite Chest"]] 			= 530,
+		--[NL["Bound Adamantite Chest"]] 		= 530, -- instance only node
 		[NL["Netherwing Egg"]] 					= 531,
 	},
 }

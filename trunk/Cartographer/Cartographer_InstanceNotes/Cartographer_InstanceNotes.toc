@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fInstance Notes|r]
+## Title-ruRU: Картограф |r[|cffeda55fЗаметки Подземелий|r]
 ## X-Name: Instance Notes
 ## X-Name-ruRU: Заметки подземелий
 ## X-Name-deDE: Instanznotizen

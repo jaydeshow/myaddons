@@ -333,7 +333,7 @@ NL["Wicker Chest"] = "柳条箱"
 NL["Primitive Chest"] = "粗糙的箱子"
 NL["Solid Fel Iron Chest"] = "坚固的魔铁宝箱"
 NL["Bound Fel Iron Chest"] = "加固魔铁宝箱"
-NL["Bound Adamantite Chest"] = "加固精金宝箱"
+--NL["Bound Adamantite Chest"] = "加固精金宝箱" -- Only appears in instances, and also conflicting reverse lookup table with 7 lines up.
 -- New added
 --NL["Cabal Chest"] = "秘教宝箱"
 --NL["Ornate Chest"] = "华丽的箱子"

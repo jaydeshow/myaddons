@@ -33,8 +33,6 @@ if (GetLocale() == "zhCN") then
     AtlasLoot_TableNames["CFRSteamSecondFragmentGuardian"][1] = "第二块碎片的守护者";
   --CoT: Old Hillsbrad Foothills
 	AtlasLoot_TableNames["CoTHillsbradAgedDalaranWizard"][1] = "老迈的达拉然巫师";
-  --The Deadmines
-    AtlasLoot_TableNames["VCDefiasGunpowder"][1] = "迪菲亚火药";
   --Dire Maul East
 	AtlasLoot_TableNames["DMBooks"][1] = "厄运之槌书籍";
   --HC: Shattered Halls
@@ -107,7 +105,7 @@ if (GetLocale() == "zhCN") then
     AtlasLoot_TableNames["Dukes"][1] = "深渊议会 - 公爵";
     AtlasLoot_TableNames["HighCouncil"][1] = "深渊议会 - 上层议会";
   --Seasonal
-    AtlasLoot_TableNames["LordAhune"][1] = "Lord Ahune";
+    AtlasLoot_TableNames["LordAhune"][1] = "冰霜之王埃霍恩";
     AtlasLoot_TableNames["Winterviel2"][1] = "冬幕节";
   --Skettis
     AtlasLoot_TableNames["SkettisTalonpriestIshaal"][1] = "鸦爪祭司伊沙尔";

@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r78977 | 7destiny | 2008-07-23 06:04:02 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/locales/koKR.lua
+
+WitchHunt: koKR Update
+------------------------------------------------------------------------
+r78972 | ammo | 2008-07-23 04:08:04 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/WitchHunt/WitchHunt.lua
+   M /trunk/WitchHunt/locales/enUS.lua
+
+WitchHunt: drycode players only mode. will test once servers are back up.
+------------------------------------------------------------------------

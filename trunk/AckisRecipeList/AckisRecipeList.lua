@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-07-20 14:20:03 -0400 (Sun, 20 Jul 2008) $
-$Rev: 78799 $
+$Date: 2008-07-22 15:30:32 -0400 (Tue, 22 Jul 2008) $
+$Rev: 78932 $
 
 Author: Ackis on Illidan US Horde
 
@@ -1074,7 +1074,7 @@ function addon:addTradeSkillSpell(RecipeName, RecipeLevel, RecipeAquire, ...)
 		self:addTradeSkill(GetSpellInfo(RecipeName), RecipeLevel, RecipeAquire, spelllink, ...)
 	else
 		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, nil, ...)
-		self:Print("Spell ID: " .. RecipeName .. " is not in your local cache.")
+		self:Print(format(L["SpellIDCache"],RecipeName))
 	end
 
 end
@@ -1092,7 +1092,7 @@ function addon:addTradeSkillBeast(RecipeName, RecipeLevel, RecipeAquire, ...)
 		self:addTradeSkill(TempHunterSkill, RecipeLevel, RecipeAquire, spelllink, ...)
 	else
 		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, nil, ...)
-		self:Print("Spell ID: " .. RecipeName .. " is not in your local cache.")
+		self:Print(format(L["SpellIDCache"],RecipeName))
 	end
 
 end

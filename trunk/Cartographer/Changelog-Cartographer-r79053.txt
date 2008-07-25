@@ -1,4 +1,34 @@
 ------------------------------------------------------------------------
+r79053 | StingerSoft | 2008-07-24 12:19:14 -0400 (Thu, 24 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer/Cartographer.toc
+   M /trunk/Cartographer/Cartographer_Battlegrounds/Cartographer_Battlegrounds.toc
+   M /trunk/Cartographer/Cartographer_Coordinates/Cartographer_Coordinates.toc
+   M /trunk/Cartographer/Cartographer_Foglight/Cartographer_Foglight.toc
+   M /trunk/Cartographer/Cartographer_GroupColors/Cartographer_GroupColors.toc
+   M /trunk/Cartographer/Cartographer_GuildPositions/Cartographer_GuildPositions.toc
+   M /trunk/Cartographer/Cartographer_InstanceLoot/Cartographer_InstanceLoot.toc
+   M /trunk/Cartographer/Cartographer_InstanceMaps/Cartographer_InstanceMaps.toc
+   M /trunk/Cartographer/Cartographer_InstanceNotes/Cartographer_InstanceNotes.toc
+   M /trunk/Cartographer/Cartographer_InstanceNotes/ruRU.lua
+   M /trunk/Cartographer/Cartographer_LookNFeel/Cartographer_LookNFeel.toc
+   M /trunk/Cartographer/Cartographer_Notes/Cartographer_Notes.toc
+   M /trunk/Cartographer/Cartographer_Notes/Notes.lua
+   M /trunk/Cartographer/Cartographer_POI/Cartographer_POI.toc
+   M /trunk/Cartographer/Cartographer_Professions/Cartographer_Professions.toc
+   M /trunk/Cartographer/Cartographer_Waypoints/Cartographer_Waypoints.toc
+   M /trunk/Cartographer/Cartographer_Waypoints/Waypoints.lua
+   M /trunk/Cartographer/Cartographer_ZoneInfo/Cartographer_ZoneInfo.toc
+
+Cartographer: Update locale ruRU
+
+------------------------------------------------------------------------
+r79027 | hshh | 2008-07-23 22:26:40 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/Cartographer/Cartographer_GuildPositions/GuildPositions.lua
+
+Cartographer: fix Cartographer_GuildPositions for non-english client.
+------------------------------------------------------------------------
 r78779 | ckknight | 2008-07-20 09:03:14 -0400 (Sun, 20 Jul 2008) | 1 line
 Changed paths:
    M /trunk/Cartographer/Cartographer_Waypoints/Cartographer_Waypoints.toc

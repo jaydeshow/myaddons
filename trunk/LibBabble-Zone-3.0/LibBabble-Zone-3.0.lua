@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 78561 $
+Revision: $Rev: 78968 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 78561 $"
+local MINOR_VERSION = "$Revision: 78968 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -1378,6 +1378,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Stonard"] = "스토나드",
 		["Stonetalon Mountains"] = "돌발톱 산맥",
 		["Stormwind City"] = "스톰윈드",
+		["Stormwind"] = "스톰윈드",
 		["Stranglethorn Vale"] = "가시덤불 골짜기",
 		["Stratholme"] = "스트라솔름",
 		["Swamp of Sorrows"] = "슬픔의 늪",
@@ -1403,6 +1404,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Zul'Gurub"] = "줄구룹",
 
 		["Champions' Hall"] = "용사의 전당",
+		["Hall of Champions"] = "용사의 전당",
 		["Blade's Edge Arena"] = "칼날 투기장",
 		["Nagrand Arena"] = "나그란드 투기장",
 		["Ruins of Lordaeron"] = "로데론의 폐허",
@@ -1460,6 +1462,7 @@ elseif GAME_LOCALE == "koKR" then
 		["The Eye"] = "눈", -- check
 		["Eye of the Storm"] = "폭풍의 눈",
 		["Shattrath City"] = "샤트라스",
+		["Shattrath"] = "샤트라스",
 		["Karazhan"] = "카라잔",
 		["Caverns of Time"] = "시간의 동굴",
 		["Old Hillsbrad Foothills"] = "옛 힐스브래드 구릉지",
@@ -1486,6 +1489,9 @@ elseif GAME_LOCALE == "koKR" then
 		["Crystal Spine"] = "수정 돌기",
 		["Insidion's Perch"] = "인시디온의 둥지",
 		["Furywing's Perch"] = "퓨리윙의 둥지",
+
+		["Tirisfal"] = "티리스팔",
+		["Sunken Temple"] = "가라앉은 사원",
 	}
 elseif GAME_LOCALE == "esES" then
 	lib:SetCurrentTranslations {
@@ -1941,7 +1947,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Hyjal Summit"] = "Вершина Хиджала",
 		["Ironforge"] = "Стальгорн",
 		["Loch Modan"] = "Лок Модан",
-		["Lower Blackrock Spire"] = "Нижний Ярус Черной горы",
+		["Lower Blackrock Spire"] = "Нижний ярус Черной горы",
 		["Maraudon"] = "Мародон",
 		["Menethil Harbor"] = "Гавань Менетил",
 		["Molten Core"] = "Огненные Недра",
@@ -1972,7 +1978,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Swamp of Sorrows"] = "Болото Печали",
 		["Tanaris"] = "Танарис",
 		["Teldrassil"] = "Тельдрассил",
-		["Temple of Ahn'Qiraj"] = "Ан'Кираж",
+		["Temple of Ahn'Qiraj"] = "Храм Ан'Кираж",
 		["The Temple of Atal'Hakkar"] = "Храм Атал'Хаккара",
 		["Theramore Isle"] = "Остров Терамор",
 		["Thousand Needles"] = "Тысяча Игл",
@@ -1981,7 +1987,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Uldaman"] = "Ульдаман",
 		["Un'Goro Crater"] = "Кратер Ун'Горо",
 		["Undercity"] = "Подгород",
-		["Upper Blackrock Spire"] = "Верхний Ярус Черной горы",
+		["Upper Blackrock Spire"] = "Верхний ярус Черной горы",
 		["Wailing Caverns"] = "Пещеры Стенаний",
 		["Warsong Gulch"] = "Ущелье Песни Войны",
 		["Western Plaguelands"] = "Западное Лихоземье",

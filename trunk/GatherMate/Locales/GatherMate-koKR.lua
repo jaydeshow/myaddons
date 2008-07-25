@@ -290,5 +290,5 @@ NL["Wicker Chest"] = "고리버들 상자"
 NL["Primitive Chest"] = "구식 궤짝"
 NL["Solid Fel Iron Chest"] = "무거운 지옥무쇠 궤짝"
 NL["Bound Fel Iron Chest"] = "잠긴 지옥무쇠 궤짝"
-NL["Bound Adamantite Chest"] = "잠긴 아다만타이트 궤짝"
+--NL["Bound Adamantite Chest"] = "잠긴 아다만타이트 궤짝" -- Only appears in instances
 NL["Netherwing Egg"] = "황천용 알"

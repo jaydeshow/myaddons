@@ -27,7 +27,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_opt.lua"] then
     return;
 end
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
+D:SetDateAndRevision("$Date: 2008-07-24 23:37:29 -0400 (Thu, 24 Jul 2008) $", "$Revision: 79094 $");
 
 
 local L = D.L;
@@ -121,7 +121,7 @@ local last_focus_GUID = false;
 function D:PLAYER_FOCUS_CHANGED ()
     self.Status.Unit_Array_UnitToName["focus"] = (self:PetUnitName("focus", true));
 
-    if (self.Status.Unit_Array[#self.Status.Unit_Array] == "focus" and not UnitExists("focus")) then
+    if (self.Status.Unit_Array[#self.Status.Unit_Array] == "focus" and not UnitExists("focus")) then -- the previously recorded focus is gone
 
 	table.remove(self.Status.Unit_Array, #self.Status.Unit_Array);
 	self.Status.UnitNum = #self.Status.Unit_Array;
@@ -133,7 +133,7 @@ function D:PLAYER_FOCUS_CHANGED ()
 	self:Debug("Focus removed");
 	return;
 
-    elseif self.Status.Unit_Array[#self.Status.Unit_Array] ~= "focus" and UnitExists("focus") and UnitIsFriend("focus", "player")
+    elseif self.Status.Unit_Array[#self.Status.Unit_Array] ~= "focus" and UnitExists("focus") and UnitIsFriend("focus", "player") -- a new focus is there
 	and not self:NameToUnit((self:UnitName("focus"))) then
 
 	table.insert(self.Status.Unit_Array, "focus");
@@ -144,19 +144,20 @@ function D:PLAYER_FOCUS_CHANGED ()
 	self.Status.Unit_Array_GUIDToUnit[UnitGUID("focus")] = "focus";
 
 
+	last_focus_GUID = UnitGUID("focus");
 
 	self.MicroUnitF:Delayed_MFsDisplay_Update();
 	self:Debug("Focus Added");
-    elseif UnitExists("focus") then
+    elseif UnitExists("focus") then -- the focus changed
 	self.MicroUnitF:UpdateMUFUnit("focus", true);
 
 	self.Status.Unit_Array_GUIDToUnit[last_focus_GUID] = nil;
 	self.Status.Unit_Array_GUIDToUnit[UnitGUID("focus")] = "focus";
 
+	last_focus_GUID = UnitGUID("focus");
 	self:Debug("Focus changed");
     end
 
-    last_focus_GUID = UnitGUID("focus");
 
 end
 
@@ -290,7 +291,7 @@ do
     -- An outsider friendly focused unit
     local FOCUSED_FRIEND       = bit.bor (COMBATLOG_OBJECT_REACTION_FRIENDLY   , COMBATLOG_OBJECT_FOCUS	    , COMBATLOG_OBJECT_AFFILIATION_OUTSIDER); -- XXX should be also applied on the MUFS (No need to include an insider...)
 
-    -- An friendly targeted unit
+    -- A friendly targeted unit
     local TARGETED_FRIEND       = bit.bor (COMBATLOG_OBJECT_REACTION_FRIENDLY   , COMBATLOG_OBJECT_TARGET);
 
     -- local DEST_GLOBAL =  bit.bor (PLAYER, MIND_CONTROLED_PLAYER, PET, FOCUSED_FRIEND, TARGETED_FRIEND); -- unused
@@ -317,7 +318,6 @@ do
 
     end --}}}
 
-    local substr = _G.string.sub;
     local AuraEvents = {
 	["SPELL_AURA_APPLIED"]	    = 1,
 	["SPELL_AURA_REMOVED"]	    = 0,
@@ -332,7 +332,7 @@ do
 	["SPELL_CAST_START"]	= true,
 	["SPELL_CAST_FAILED"]	= true,
 	["SPELL_CAST_SUCCESS"]	= true,
-	["DISPEL_FAILED"]	= true,
+	["SPELL_DISPEL_FAILED"]	= true,
     };
 
     local UnitID;
@@ -355,11 +355,16 @@ do
 	    if	match(destFlags, PLAYER, PLAYER_MASK)
 		or match(destFlags, MIND_CONTROLED_PLAYER, MIND_CONTROLED_PLAYER_MASK)
 		or band (destFlags, FOCUSED_FRIEND) == FOCUSED_FRIEND
-		or (self.profile.Scan_Pets and (match(destFlags, PET, PET_MASK))) then -- Players ans pets
+		or (self.profile.Scan_Pets and (match(destFlags, PET, PET_MASK))) then -- Players and pets
 
 		-- D:Print("A managed unit got something (source=%s -- %X) (dest=|cFF00AA00%s|r -- %x): |cffff0000%s|r, |cFF00AAAA%s|r, %s", sourceName, sourceFlags, destName, destFlags, event, arg10, arg12);
 
 		UnitID = self.Status.Unit_Array_GUIDToUnit[destGUID];
+
+		if not UnitID then
+		    self:Debug("|cFFFF0000XXXXX:|r No unit matched for %s", destGUID);
+		    return;
+		end
 
 
 		if arg12 == "BUFF" and self.profile.Ingore_Stealthed then
@@ -424,14 +429,11 @@ do
 			    end
 			end
 		    end
-		    -- TODO: 
-		    -- fix target and mouseover updating in live-list (maybe schedule a repeating event that is disable when the target or mouseover stop to exists
-
 		end
 	    end
 
 	    -- SPELL EVENTS {{{
-	elseif SpellEvents[event] and self.Status.CuringSpellsPrio[arg10] and self.Status.ClickedMF and band(sourceFlags, ME) ~= 0 then -- SPELL_MISSED  SPELL_CAST_START  SPELL_CAST_FAILED  SPELL_CAST_SUCCESS  DISPEL_FAILED
+	elseif self.Status.ClickedMF and SpellEvents[event] and self.Status.CuringSpellsPrio[arg10] and band(sourceFlags, ME) ~= 0 then -- SPELL_MISSED  SPELL_CAST_START  SPELL_CAST_FAILED  SPELL_CAST_SUCCESS  DISPEL_FAILED
 
 	    if event == "SPELL_CAST_START" then -- useless
 
@@ -444,6 +446,8 @@ do
 
 		--self:Debug("|cFFFF0000XXXXX|r |cFF11FF11Updating color of clicked frame|r");
 		self:ScheduleEvent("UpdatePC"..self.Status.ClickedMF.CurrUnit, self.Status.ClickedMF.Update, 1, self.Status.ClickedMF, false, false);
+		--self.Status.ClickedMF = false;
+		self:ScheduleEvent("clickedMFreset", function() D.Status.ClickedMF = false; D:Debug("ClickedMF to false (sched)"); end, 0.1 );
 
 	    end
 
@@ -466,15 +470,16 @@ do
 
 		    PlaySoundFile(DC.FailedSound);
 		end
+		self.Status.ClickedMF = false;
 
-	    elseif event == "SPELL_MISSED" or event == "DISPEL_FAILED" then -- XXX to test
+	    elseif event == "SPELL_MISSED" or event == "SPELL_DISPEL_FAILED" then -- XXX to test
 		destName = self:PetUnitName( self.Status.ClickedMF.CurrUnit, true);
 
 		D:Println(L[self.LOC.FAILEDCAST], arg10, (select(2, GetSpellInfo(arg9))), D:MakePlayerName(destName), arg12);
 		PlaySoundFile(DC.FailedSound);
+		self.Status.ClickedMF = false;
 	    end
 
-	    self.Status.ClickedMF = false;
 
 	    --D:Print("SPELL EVENT: (source=%s -- %X) (dest=|cFF00AA00%s|r -- %x): |cFFBB0000%s|r for spell |cFF00FF00%s|r", sourceName, sourceFlags, destName, destFlags, event, arg10);
 	    ----  }}}

@@ -48,8 +48,8 @@ if (GetLocale() == "zhCN") then
 		["Disable Conjure Button"] = "取消魔法制造按钮",
 		["Docked to"] = "依附于";
 		["Done"] = "完成";
-		["Drop"] = "掉落";
-		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "掉落物品, 技能或宏以上按钮添加到顶部自定分类";
+		["Drop"] = "拖曳";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "拖曳物品, 技能或宏以上按钮添加到顶部自定分类";
 		["Enabled"] = "开启",
 		["Enable %s."] = "开启 %s",
 		["FadeOut"] = "渐隐",
@@ -283,7 +283,6 @@ if (GetLocale() == "zhCN") then
 		["|c00FF9966C|r"] = "|c00FF9966C|r",
 		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["|c009966CCA|r"] = "|c009966CCA|r",
-		["|c00CCCC00S|r"] = "|c00CCCC00S|r",
 		["NP"] = "NP",
 		["M"] = "M",
 		["MM"] = "MM",

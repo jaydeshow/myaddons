@@ -540,11 +540,10 @@ AL:RegisterTranslations("koKR", function() return {
     ["ZG Class Sets"] = "줄구룹 직업 세트",
     ["ZG Enchants"] = "줄구룹 마법부여",
     ["Dungeon 1/2 Sets"] = "던전 세트 1/2",
-    ["Dungeon 1 Set"] = "던전 세트 1",
-    ["Dungeon 2 Set"] = "던전 세트 2",
+    ["Dungeon Set 1"] = "던전 세트 1",
+    ["Dungeon Set 2"] = "던전 세트 2",
     ["Dungeon 3 Sets"] = "던전 세트 3",
-    ["Tier 1 Sets"] = "T1 세트",
-    ["Tier 2 Sets"] = "T2 세트",
+    ["Tier 1/2 Sets"] = "T1/2 세트",
     ["Tier 3 Sets"] = "T3 세트",
     ["Tier 4 Sets"] = "T4 세트",
     ["Tier 5 Sets"] = "T5 세트",
@@ -581,7 +580,6 @@ AL:RegisterTranslations("koKR", function() return {
     ["Epic Set"] = "영웅 세트",
     ["Rare Set"] = "희귀 세트",
     ["Legendary Items"] = "전설급 아이템",
-    ["Lvl 70 Instance Token Rewards"] = "Lvl 70 인던 휘장 보상",
     ["Accesories and Weapons"] = "장신구류 및 무기",
     ["Accessories"] = "장신구류",  --Hard mode tokens
     ["Armor and Weapons"] = "방어구 및 무기",  --Hard mode tokens

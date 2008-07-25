@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 77508 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78949 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then
 	_G.ThreatLib_MINOR_VERSION = MINOR_VERSION
@@ -198,6 +198,7 @@ local threatThreeQuarterSpellIDs = {
 local wipeThreat = function(mob, target) ModifyThreat(mob, target, 0, 0) end
 local threatWipeSpellIDs = {
 	26102, -- Ouro, Sand Blast
+	46288, -- Petrify, Chaos Gazer, Sunwell Plateau
 }
 
 function ThreatLibNPCModuleCore:OnInitialize()

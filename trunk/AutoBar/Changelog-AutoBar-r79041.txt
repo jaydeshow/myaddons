@@ -1,4 +1,20 @@
 ------------------------------------------------------------------------
+r79041 | StingerSoft | 2008-07-24 08:21:24 -0400 (Thu, 24 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/Locale-ruRU.lua
+
+AutoBar : added/updated ruRU translation
+------------------------------------------------------------------------
+r78998 | scorpion | 2008-07-23 16:12:56 -0400 (Wed, 23 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+ - Update zhTW & zhCN localization.
+
+------------------------------------------------------------------------
 r78817 | toadkiller | 2008-07-20 18:05:15 -0400 (Sun, 20 Jul 2008) | 2 lines
 Changed paths:
    M /trunk/AutoBar/AutoBarOptions.lua

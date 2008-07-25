@@ -122,6 +122,7 @@ AtlasLootBattlegrounds = {
         "";
         "";
         "";
+        "";
         "AVMisc";
         "AVBlue";
         "AVPurple";

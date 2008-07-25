@@ -31,7 +31,7 @@ if (GetLocale() == "zhTW") then
   --CoT: Old Hillsbrad Foothills
     AtlasLoot_TableNames["CoTHillsbradAgedDalaranWizard"][1] = "年邁的達拉然法師";
   --The Deadmines
-    AtlasLoot_TableNames["VCDefiasGunpowder"][1] = "迪菲亞火藥";
+    --AtlasLoot_TableNames["VCDefiasGunpowder"][1] = "迪菲亞火藥";
   --Dire Maul East
     AtlasLoot_TableNames["DMBooks"][1] = "厄運書籍";
   --HC: Shattered Halls

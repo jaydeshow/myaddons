@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 78746 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 79053 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-19 16:54:32 -0400 (Sat, 19 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-24 12:19:14 -0400 (Thu, 24 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -320,8 +320,8 @@ L:AddTranslations("ruRU", function() return {
 	["Show waypoint to corpse on death"] = "Показывает точку маршрута до трупа где вы умерли",
 	["Show Waypoint icons"] = "Показывать иконки",
 	["Show the next waypoint on the minimap and all waypoints on the main"] = "Показывает следующую точку маршрута на мини-карте и все точки на главной карте",
-	["Show boring death messages"] = "Показать скучные сообщения о смерти",
-	["Switch to not so entertaining messages on death."] = "Переключает не очень забавное сообщение о смерти.",
+	["Show boring death messages"] = "Показывать идиотские сообщения после смерти",
+	["Switch to not so entertaining messages on death."] = "Отоброжение идиотских сообщений после смерти.",
 	["Size"] = "Размер",
 	["Set the size of the waypoint arrow"] = "Установить размер стрелки точек маршрута",
 	["Opacity"] = "Полупрозрачность",

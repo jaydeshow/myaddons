@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 78412 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 78939 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -20,41 +20,15 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 
 	local irfRanks = {0, 0.16, 0.33, 0.5}
 
-	local HolyHealIDs = {
-		-- Holy Light
-		19982, 19981, 19968, 35217, 35218, 35219, 35220, 35221, 35222, 35223,
-		
-		-- Holy Shock
-		-- 20473, 20929, 20930, 27174, 33072,
-		25912, 25911, 25902, 27175, 33073,
-		
-		-- Lay on Hands
-		633, 2800, 10310, 27154,
-		
-		-- Seal of Light
-		20167, 20334, 20340, 27161,
-		
-		-- Flash of Light
-		19993, 35211, 35212, 35213, 35214, 35215, 35216
-	}
-
 	local rfOn = false
 	local fanaticismModifier = 0
 	local RIGHTEOUS_FURY_SPELL_ID = 25780
 	
 	function Paladin:ClassInit()
 		self.schoolThreatMods[_G.SCHOOL_MASK_HOLY] = self.RighteousFury
-		
+
 		-- Righteous Fury
 		self.BuffHandlers[RIGHTEOUS_FURY_SPELL_ID] = self.RighteousFuryBuff
-		
-		local healMod = function(self, amt)
-			return 0.5 * amt
-		end
-
-		for i = 1, #HolyHealIDs do
-			self.AbilityHandlers[HolyHealIDs[i]] = healMod
-		end
 		
 		-- Judgement
 		-- This is a maximum of like 10 TPS, do we really need it?
@@ -78,12 +52,14 @@ ThreatLib_funcs[#ThreatLib_funcs+1] = function()
 		self.MobDebuffHandlers[31790] = self.RighteousDefense
 		-- Mob debuff handler here!
 		
-		HolyHealIDs = nil
 		self.RighteousDefenseCastTime = 0
 	end
 	
 	function Paladin:ClassEnable()
 		self.passiveThreatModifiers = 1 - fanaticismModifier
+
+		-- Paladins get only half threat on all heals on top of everything
+		self.healingThreatFactor = 0.25
 	end
 
 	function Paladin:ScanTalents()

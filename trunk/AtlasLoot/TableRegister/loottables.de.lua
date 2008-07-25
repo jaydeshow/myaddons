@@ -28,8 +28,6 @@
   --HdZ: Vorgebirge des Alten Huegellands
     AtlasLoot_TableNames["CoTHillsbradThomasYance"][1] = "Thomas Yance";
     AtlasLoot_TableNames["CoTHillsbradAgedDalaranWizard"][1] = "Gealterter Hexer von Dalaran";
-  --Die Todesminen
-    AtlasLoot_TableNames["VCDefiasGunpowder"][1] = "Schießpulver der Defias";
   --Duesterbruch (Ost)
     AtlasLoot_TableNames["DMBooks"][1] = "Düsterbruch Bücher";
   --Duesterbruch (Nord)
@@ -51,8 +49,6 @@
     AtlasLoot_TableNames["MaraNamelesProphet"][1] = "The Nameles Prophet";
   --Geschmolzener Kern
     AtlasLoot_TableNames["MCRANDOMBOSSDROPPS"][1] = "Zufälliger Boss Loot";
-  --Der Flammenschlund
-    AtlasLoot_TableNames["RFCZelemartheWrathful"][1] = "Zelemar the Wrathful";
   --Kral der Klingenhauer
     AtlasLoot_TableNames["RFKThorncurse"][1] = "Aggem Dornfluch";
     AtlasLoot_TableNames["RFKRoogug"][1] = "Roogug";

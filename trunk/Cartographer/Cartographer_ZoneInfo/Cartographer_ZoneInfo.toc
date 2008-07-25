@@ -1,5 +1,6 @@
 ﻿## Interface: 20400
 ## Title: Cartographer |r[|cffeda55fZone Info|r]
+## Title-ruRU: Картограф |r[|cffeda55fИнфо о Зонах|r]
 ## X-Name: Zone Info
 ## X-Name-ruRU: Инфо о Зонах
 ## X-Name-deDE: Zoneninfo

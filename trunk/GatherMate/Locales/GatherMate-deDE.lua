@@ -332,5 +332,5 @@ NL["Wicker Chest"] = "Weidentruhe"
 NL["Primitive Chest"] = "Primitive Truhe"
 NL["Solid Fel Iron Chest"] = "Robuste Teufelseisentruhe"
 NL["Bound Fel Iron Chest"] = "Beschlagene Teufelseisentruhe"
-NL["Bound Adamantite Chest"] = "Beschlagene Adamantittruhe"
+--NL["Bound Adamantite Chest"] = "Beschlagene Adamantittruhe" -- Only appears in instances
 NL["Netherwing Egg"] = "Ei der Netherschwingen"

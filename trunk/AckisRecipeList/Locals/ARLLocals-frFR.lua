@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-07-11 15:27:37 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78251 $
+$Date: 2008-07-22 16:35:29 -0400 (Tue, 22 Jul 2008) $
+$Rev: 78937 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -24,7 +24,7 @@ if not L then return end
 L["Version"] = "Version : "
 
 -- Options Categories
-L["About"] = "A propos"
+L["About"] = "À propos"
 L["Display"] = "Affichage"
 L["DISPLAY_OPTIONS"] = "Options d'affichage"
 L["DISPLAY_OPTIONS_LONG"] = "Vous permet de personnaliser le comportement de l'IUG."
@@ -73,21 +73,21 @@ L["VENDOR_TOGGLE"] = "Intègre ou non les recettes achetées aux marchands dans 
 L["INSTANCE_TOGGLE"] = "Intègre ou non les recettes obtenues en instances dans l'analyse."
 L["QUEST_TOGGLE"] = "Intègre ou non les recettes obtenues dans les récompenses de quête dans l'analyse."
 L["Cloth"] = "Tissu"
-L["CLOTH_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en tissu."
+L["CLOTH_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets en tissu dans l'analyse."
 L["Leather"] = "Cuir"
-L["LEATHER_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en cuir."
-L["Mail"] = "Maille"
-L["MAIL_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en maille."
-L["Plate"] = "Plaque"
-L["PLATE_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets en plaque."
+L["LEATHER_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets en cuir dans l'analyse."
+L["Mail"] = "Mailles"
+L["MAIL_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets en mailles dans l'analyse."
+L["Plate"] = "Plaques"
+L["PLATE_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets en plaques dans l'analyse."
 L["Melee"] = "Mêlée"
-L["MELEE_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour mêlée/dps physique."
+L["MELEE_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets pour mêlée/dps physique dans l'analyse."
 L["Caster DPS"] = "Lanceur de sort"
-L["CASTERDPS_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour lanceur de sort."
+L["CASTERDPS_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets pour lanceur de sort dans l'analyse."
 L["Tanking"] = "Tank"
-L["TANKING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour tank."
+L["TANKING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets pour tank dans l'analyse."
 L["Healing"] = "Soigneur"
-L["HEALING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut crafter des objets pour soigneur."
+L["HEALING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets pour soigneur dans l'analyse."
 
 -- Sorting options
 L["Name"] = "Nom"
@@ -106,6 +106,7 @@ L["RecipeListSummary"] = "\nVous connaissez %s des %s recettes totales (%s%%).\n
 L["UnknownTradeSkill"] = "Vous avez ouvert une fenêtre de métier qui n'est pas supporté par cet addon. Le métier en question est %s. Veuillez en informer l'auteur de cet addon."
 L["OpenTradeSkillWindow"] = "Veuillez ouvrir la fenêtre de métier à analyser."
 L["TwoCraftingWindows"] = "La fenêtre de craft est déjà ouverte. Veuillez fermer celle ci et la ré-ouvrir si vous souhaitez scanner les recettes manquantes."
+L["SpellIDCache"] = "L'ID du sort %s n'est pas dans votre cache local.  Veuillez soumettre un ticket (en anglais) sur http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ en indiquant l'ID du sort et la profession que vous analysiez."
 
 -- GUI Text
 L["Close"] = "Fermer"

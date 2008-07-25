@@ -10,7 +10,7 @@ local FilterSize	= 20
 local RampUp		= 5
 local RampDown		= 10
       
-Recount.Version = tonumber(string.sub("$Revision: 75926 $", 12, -3))
+Recount.Version = tonumber(string.sub("$Revision: 78940 $", 12, -3))
 
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
@@ -579,6 +579,22 @@ Recount.consoleOptions = {
 				Recount:LockWindows(v)
 			end,
 		},
+		maxfights =  {
+			  order = 31,
+			  name = L["Recorded Fights"],
+			  desc = L["Set the maximum number of recorded fight segments"],
+			  type = 'range',
+			  min = 1,
+			  max = 25,
+			  step = 1,
+			  get = function(info) return Recount.db.profile.MaxFights end,
+			  set = function(info, v)
+			          if v < Recount.db.profile.MaxFights then
+				     Recount.Fights:DeleteOverflowFights(v)
+				  end
+			          Recount.db.profile.MaxFights=v
+			  end, 
+		},		
 	}
 }
 
