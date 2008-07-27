@@ -1,0 +1,148 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="SpellListFrame.lua" />
+	<CheckButton name="SBL_SpellListButtonTemplate" inherits="SecureActionButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="30" y="30" />
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBackground" file="Interface\Spellbook\UI-Spellbook-SpellBackground" >
+					<Size>
+						<AbsDimension x="45" y="45" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" >
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentIconTexture" setAllPoints="true" hidden="true" />
+				<FontString name="$parentSpellRank" inherits="NumberFontNormal" maxLines="1" hidden="true" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="20" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentAutoCastable" file="Interface\Buttons\UI-AutoCastableOverlay" hidden="true">
+					<Size>
+						<AbsDimension x="24" y="24" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Cooldown name="$parentCooldown" inherits="CooldownFrameTemplate" />
+			<Model name="$parentAutoCast" file="Interface\Buttons\UI-AutoCastButton.mdx" scale="1.22"
+				hidden="true">
+				<Size>
+					<AbsDimension x="47" y="47" />
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="1" y="1" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetSequence(0);
+						self:SetSequenceTime(0, 0);
+					</OnLoad>
+				</Scripts>
+			</Model>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				SBL_SpellListButton_OnLoad(self);
+			</OnLoad>
+			<OnEvent>
+				SBL_SpellListButton_OnEvent(self,event);
+			</OnEvent>
+			<PreClick>
+				self:SetChecked(0);
+			</PreClick>
+			<PostClick>
+				SBL_SpellListButton_PostClick(self,arg1);
+			</PostClick>
+			<OnShow>
+				SBL_SpellListButton_OnShow(self);
+			</OnShow>
+			<OnHide>
+				SBL_SpellListButton_OnHide(self);
+			</OnHide>
+			<OnDragStart>
+				SBL_SpellListButton_OnDrag(self);
+			</OnDragStart>
+			<OnReceiveDrag>
+				SBL_SpellListButton_OnDrag(self);
+			</OnReceiveDrag>
+			<OnEnter>
+				SBL_SpellListButton_OnEnter(self);
+			</OnEnter>
+			<OnLeave>
+				SBL_SpellListButton_OnLeave(self);
+			</OnLeave>
+		</Scripts>
+		<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+			<Size>
+				<AbsDimension x="48" y="48" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER">
+					<Offset>
+						<AbsDimension x="0" y="0" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</NormalTexture>
+		<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress" />
+		<HighlightTexture name="$parentHighlight" file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD" />
+		<CheckedTexture file="Interface\Buttons\CheckButtonHilight" alphaMode="ADD" />
+	</CheckButton>
+	
+	<Frame name="SBL_SpellListFrame" enableMouse="true" hidden="true" parent="SBL_SpellBookFrame">
+	<!--
+		This frame will remain hidden until the mouse hovers over a spell in the Spellbook.
+		Once that occurs, this frame will appear next to that spell with all available ranks.
+		If the spell does not have more than 1 rank, then this frame stays hidden.
+		
+		The Size is flexible and set when it makes a list.
+		The Anchor is flexible and set when it makes a list.
+		The Layers are blank, only showing the buttons.
+		The Buttons are not made until the list appears.
+	!-->
+		<Frames>
+
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				SBL_SpellListFrame_OnLoad(self);
+			</OnLoad>
+			<OnLeave>
+				self:Hide();
+			</OnLeave>
+		</Scripts>
+	</Frame>
+</Ui>

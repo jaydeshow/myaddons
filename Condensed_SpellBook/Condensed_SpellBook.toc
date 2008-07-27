@@ -1,0 +1,9 @@
+## Interface: 20400
+## Title: LBXZero's Condensed Spellbook
+## Author: LBXZero
+## Notes: Building a better Spellbook
+## Version: 1.02
+Condensed_SpellBook.lua
+Condensed_SpellBook.xml
+SpellListFrame.lua
+SpellListFrame.xml
