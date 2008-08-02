@@ -51,6 +51,7 @@ local BOOKTYPE_SPELL	= BOOKTYPE_SPELL;
 
 
 
+local select	= _G.select;
 
 -------------------------------------------------------------------------------
 -- variables {{{
@@ -136,6 +137,8 @@ DC.RANKNUMTRANS = false;
 
 DC.DebuffHistoryLength = 40; -- we use a rather high value to avoid garbage creation
 
+
+DC.StartTime = GetTime();
 
 D.DebuffHistory = {};
 
@@ -1061,11 +1064,9 @@ function D:UpdateMacro ()
     -- Get an ordered spell table
     local Spells = {};
     for Spell, Prio in pairs(D.Status.CuringSpellsPrio) do
-	--table.insert (Spells, Prio, Spell);
 	Spells[Prio] = Spell;
     end
 
-    --D:PrintLiteral(Spells);
     if (next (Spells)) then
 	for i=1,4 do
 	    if (not Spells[i]) then
@@ -1074,7 +1075,6 @@ function D:UpdateMacro ()
 	end
     end
 
-    --D:PrintLiteral(D.Status.CuringSpellsPrio);
     local MacroParameters = {
 	D.CONF.MACRONAME,
 	1,
@@ -1119,7 +1119,7 @@ function D:SetDateAndRevision (Date, Revision)
     end
 end
 
-D:SetDateAndRevision("$Date: 2008-07-24 23:37:29 -0400 (Thu, 24 Jul 2008) $", "$Revision: 79094 $");
+D:SetDateAndRevision("$Date: 2008-07-30 20:14:06 -0400 (Wed, 30 Jul 2008) $", "$Revision: 79541 $");
 
 DcrLoadedFiles["DCR_init.lua"] = true;
 

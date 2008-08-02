@@ -72,8 +72,8 @@ L:RegisterTranslations("zhCN", function() return {
 	debuff = "负面效果计时",
 	debuff_desc = "显示负面效果直到下一个的计时。",
 
-	enrage_warning = "即将狂暴！",
-	enrage_message = "10% - 狂暴！",
+	enrage_warning = "即将激怒！",
+	enrage_message = "10% - 激怒！",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -108,7 +108,7 @@ L:RegisterTranslations("frFR", function() return {
 	engage_trigger = "Alors... Vous êtes en vacances ?",
 
 	attraction = "Liaison fatale",
-	attraction_desc = "Préviens quand un joueur subit les effets de la Liaison fatale.",
+	attraction_desc = "Prévient quand un joueur subit les effets de la Liaison fatale.",
 	attraction_message = "Liaison : %s",
 
 	debuff = "Affaiblissements",
@@ -141,7 +141,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22947
 mod.toggleoptions = {"attraction", "debuff", "berserk", "enrage", "bosskill"}
-mod.revision = tonumber(sub("$Revision: 76592 $", 12, -3))
+mod.revision = tonumber(sub("$Revision: 79612 $", 12, -3))
 
 ------------------------------
 --      Initialization      --

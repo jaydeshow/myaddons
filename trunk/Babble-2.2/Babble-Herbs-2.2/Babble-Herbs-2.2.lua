@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Herbs-2.2
-Revision: $Rev: 79108 $
+Revision: $Rev: 79351 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Herbs-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Herbs-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79351 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -343,7 +343,7 @@ BabbleHerbs:RegisterTranslations("zhTW", function() return {
 	["Fel Lotus"] = "魔獄蓮花",
 	["Netherdust Bush"] = "虛空之塵灌木叢",
 } end)
--- Translater: : StingerSoft
+-- Translater: StingerSoft
 BabbleHerbs:RegisterTranslations("ruRU", function() return {
 	["Peacebloom"] = "Мироцвет",
 	["Silverleaf"] = "Сребролист",
@@ -371,9 +371,9 @@ BabbleHerbs:RegisterTranslations("ruRU", function() return {
 	["Gromsblood"] = "Кровь Грома",
 	["Golden Sansam"] = "Золотой сансам",
 	["Dreamfoil"] = "Снолист",
-	["Mountain Silversage"] = "Mountain Silversage",
-	["Plaguebloom"] = "Plaguebloom",
-	["Icecap"] = "Icecap",
+	["Mountain Silversage"] = "Горный серебряный шалфей",
+	["Plaguebloom"] = "Чумоцвет",
+	["Icecap"] = "Льдяник",
 	["Bloodvine"] = "Кровавая Лоза",
 	["Black Lotus"] = "Черный лотос",
 	["Felweed"] = "Скверноплевел",

@@ -1,7 +1,9 @@
 ## Interface: 20400
+## LoadOnDemand: 1
+## Title: Lib: GUIDRegistry-0.1
+## Notes:
 ## X-Category: Library
 ## OptionalDeps: Ace3, CallbackHandler-1.0
-## LoadOnDemand: 1
 
 LibStub\LibStub.lua
 CallbackHandler-1.0\CallbackHandler-1.0.xml

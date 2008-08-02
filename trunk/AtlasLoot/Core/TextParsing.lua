@@ -502,6 +502,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#z27#", BabbleZone["Razorfen Downs"]);
     text = gsub(text, "#z28#", BabbleZone["Graveyard"]);
     text = gsub(text, "#z29#", BabbleZone["Zul'Aman"]);
+    text = gsub(text, "#z30#", BabbleZone["Magisters' Terrace"]);
 	
     -- Factions
     text = gsub(text, "#f1#", BabbleFaction["Lower City"]);

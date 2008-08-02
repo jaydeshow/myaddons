@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 78706 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 79531 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-18 19:25:23 -0400 (Fri, 18 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-30 18:24:53 -0400 (Wed, 30 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-LookNFeel")
@@ -322,7 +322,7 @@ L:AddTranslations("zhCN", function() return {
 
 -- Russian Translation by StingerSoft (Eritnull aka Шептун)
 L:AddTranslations("ruRU", function() return {
-["Look 'n' Feel"] = "Наглядность и Восприятие",
+	["Look 'n' Feel"] = "Наглядность и Восприятие",
 	["Module which allows you to change the transparency, position, and scale of the world map."] = "Модуль позволяет настраивать прозрачность, позиции и масштаб Карты Мира.",
 
 	["Transparency"] = "Прозрачность",

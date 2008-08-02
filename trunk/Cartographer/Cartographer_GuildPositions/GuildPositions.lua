@@ -5,11 +5,11 @@ if Cartographer3 and Cartographer3.hijackingWorldMap then
 end
 
 local Cartographer = Cartographer
-local revision = tonumber(string.sub("$Revision: 79027 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 79583 $", 12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = string.sub("$Date: 2008-07-23 22:26:40 -0400 (Wed, 23 Jul 2008) $", 8, 17)
+	Cartographer.date = string.sub("$Date: 2008-07-31 18:49:28 -0400 (Thu, 31 Jul 2008) $", 8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-GuildPositions")
@@ -63,8 +63,9 @@ L:AddTranslations("esES", function() return {
 
 -- Russian Translation by StingerSoft (Eritnull aka Шептун)
 L:AddTranslations("ruRU", function() return {
-	["Guild Positions"] ="Позиции Гильдии",
+	["Guild Positions"] = "Позиции Гильдии",
 	["Module which shows you your fellow guild members' positions, as well as allowing them to see you."] = "Модуль отображает местоположение ваших товарищей из гильдии, также позволяет им видеть вас",
+
 	["%.0f yd"] = "%.0f ярд",
 	["%.0f m"] = "%.0f м",
 } end)
@@ -336,7 +337,7 @@ local function clear(person)
 end
 
 function Cartographer_GuildPositions:OnDisable()
-	Rock("LibGuild-1.0").UnregisterAllCallbacks(self)
+	Rock("LibGuild-1.0").UnregisterAll(self)
 	for k in pairs(self.pois) do
 		if k ~= "del" then
 			clear(k)

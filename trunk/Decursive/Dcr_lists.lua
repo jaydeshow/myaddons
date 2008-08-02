@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Decursive.xml"] or not DcrLoadedFil
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
+D:SetDateAndRevision("$Date: 2008-07-30 21:39:43 -0400 (Wed, 30 Jul 2008) $", "$Revision: 79544 $");
 
 
 local L = D.L;
@@ -41,6 +41,8 @@ local _;
 local pairs		= _G.pairs;
 local ipairs		= _G.ipairs;
 local table		= _G.table;
+local str_format	= _G.string.format;
+local str_sub		= _G.string.gsub;
 
 -- Dcr_ListFrameTemplate specific internal functions {{{
 function D:ListFrameTemplate_OnLoad()
@@ -117,7 +119,6 @@ function D:PrioSkipListFrame_OnUpdate() --{{{
 	    end
 	end
 	this:ScrollUpdateFunc(getglobal(baseName.."ScrollFrame"));
-	-- D.Groups_datas_are_invalid = true;
     end
 
 end --}}}
@@ -203,9 +204,9 @@ function D:PrioSkipListEntry_Update(Entry) --{{{
 	    if (name) then
 		if (type(name) == "number") then
 		    if (name < 10) then
-			name = string.format("[ %s %s ]", L[D.LOC.STR_GROUP], name);
+			name = str_format("[ %s %s ]", L[D.LOC.STR_GROUP], name);
 		    else
-			name = string.format("[ %s ]", DC.ClassNumToLName[name]);
+			name = str_format("[ %s ]", DC.ClassNumToLName[name]);
 		    end
 		end
 		Entry:SetText(id.." - "..D:ColorText(name, "FF"..DC.HexClassColor[classname]));
@@ -304,7 +305,6 @@ function D:AddUnitToPriorityList( unit, check ) --{{{
 		_, D.profile.PriorityListClass[name] = UnitClass(unit);
 	    elseif unit > 10 then
 		D.profile.PriorityListClass[unit] = DC.ClassNumToUName[unit];
-		--D.profile.PriorityListClass[unit] = string.upper(BCR[DC.ClassNumToLName[unit]]);
 	    end
 
 	    DecursivePriorityListFrame.UpdateYourself = true;
@@ -379,12 +379,12 @@ function D:AddUnitToSkipList( unit) --{{{
 		_, D.profile.SkipListClass[name] = UnitClass(unit);
 	    elseif unit > 10 then
 		D.profile.SkipListClass[unit] = DC.ClassNumToUName[unit];
-		--D.profile.SkipListClass[unit] = string.upper(BCR[DC.ClassNumToLName[unit]]);
 	    end
 
 	    D:Debug("Unit %s added to the skip list", name);
 	    DecursiveSkipListFrame.UpdateYourself = true;
 	    D.Groups_datas_are_invalid = true;
+	    D.MicroUnitF:Delayed_MFsDisplay_Update ();
 	    return true;
 	else
 	    D:Debug("Unit is not a player:", unit);
@@ -402,6 +402,7 @@ function D:RemoveIDFromSkipList(id) --{{{
     table.remove( D.profile.SkipList, id );
 
     D.Groups_datas_are_invalid = true;
+    D.MicroUnitF:Delayed_MFsDisplay_Update ();
     DecursiveSkipListFrame.UpdateYourself = true;
 end --}}}
 
@@ -413,6 +414,7 @@ function D:ClearSkipList() --{{{
     
     D.Groups_datas_are_invalid = true;
     DecursiveSkipListFrame.UpdateYourself = true;
+    D.MicroUnitF:Delayed_MFsDisplay_Update ();
 end --}}}
 
 

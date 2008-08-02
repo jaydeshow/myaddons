@@ -251,8 +251,8 @@ L:RegisterTranslations("zhCN", function() return {
 	buffet = "奥术打击",
 	buffet_desc = "显示奥术打击记时条。",
 
-	enrage_warning = "即将狂暴！",
-	enrage_message = "10% - 狂暴！",
+	enrage_warning = "即将激怒！",
+	enrage_message = "10% - 激怒！",
 	enrage_trigger = "萨索瓦尔将卡雷苟斯逼得狂暴不已！",
 
 	strike = "堕落打击",
@@ -363,7 +363,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = { boss, sath }
 mod.guid = 24892
 mod.toggleoptions = {"portal", "buffet", "realm", "curse", "strike", -1, "magichealing", "magiccast", "magichit", "magicthreat", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 77264 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

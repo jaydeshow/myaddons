@@ -1,0 +1,24 @@
+------------------------------------------------------------------------
+r79530 | whitetooth | 2008-07-30 18:23:17 -0400 (Wed, 30 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- Updated combat rating formula for levels 70 to 80
+- Level 70 to 80: H = (82/52)*(131/63)^((level-70)/10)
+- Percentage = Rating / RatingBase / H
+------------------------------------------------------------------------
+r78899 | whitetooth | 2008-07-22 02:29:37 -0400 (Tue, 22 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- 2.4.3: Parry Rating, Defense Rating, and Block Rating: Low-level players will now convert these ratings into their corresponding defensive stats at the same rate as level 34 players.
+------------------------------------------------------------------------
+r78815 | scorpio0920 | 2008-07-20 17:18:31 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib:
+- Try to fix IGNORE_ARMOR statistics for zhTW & zhCN.
+------------------------------------------------------------------------

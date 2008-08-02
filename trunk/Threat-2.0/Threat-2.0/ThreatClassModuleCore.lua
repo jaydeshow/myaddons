@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 78949 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 79667 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -423,7 +423,6 @@ function prototype:Boot()
 	self.meleeCritReduction = 0
 	self.spellCritReduction = 0
 	self.passiveThreatModifiers = 1
-	self.healingThreatFactor = 0.5
 	self.isTanking = false
 	
 	self:ScanTalents()	
@@ -938,8 +937,7 @@ function prototype:parseHeal(recipient, recipientName, amount, spellID, spellNam
 			threat = handler(self, threat)
 		end
 		
-		-- healingThreatFactor is set by the class module, most have 0.5 but Paladins only 0.25
-		threat = threat * self.healingThreatFactor * self:threatMods()
+		threat = threat * 0.5 * self:threatMods()
 		if threat ~= 0 then
 			self:AddThreat(threat)
 		end

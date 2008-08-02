@@ -64,7 +64,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Sound"] = "声音",
 	["Play sound on proximity."] = "近距离时声音提示。",
 	["Disabled"] = "禁用",
-	["Disable the proximity display for all modules that use it."] = "禁用所有首领模块使用此功能。",
+	["Disable the proximity display for all modules that use it."] = "禁止所有首领模块使用此功能。",
 	["The proximity display has been disabled for %s, please use the boss modules options to enable it again."] = "为%s禁用近距离显示功能，若要再次使用请设置首领模块选项。",
 
 	proximity = "近距离显示",
@@ -178,7 +178,7 @@ L:RegisterTranslations("esES", function() return {
 -----------------------------------------------------------------------
 
 local plugin = BigWigs:NewModule("Proximity")
-plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 79614 $"):sub(12, -3))
 plugin.defaultDB = {
 	posx = nil,
 	posy = nil,

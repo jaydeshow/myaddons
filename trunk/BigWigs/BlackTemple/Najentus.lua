@@ -107,11 +107,11 @@ L:RegisterTranslations("frFR", function() return {
 	start_trigger = "Vous allez mourir, au nom de dame Vashj !",
 
 	spine = "Epine de perforation",
-	spine_desc = "Préviens quand un joueur subit les effets de l'Epine de perforation.",
+	spine_desc = "Prévient quand un joueur subit les effets de l'Epine de perforation.",
 	spine_message = "Epine de perforation sur %s !",
 
 	spinesay = "Dire - Epine de perforation",
-	spinesay_desc = "Fais dire à votre personnage qu'il a une épine quand c'est le cas afin d'aider les membres proches.",
+	spinesay_desc = "Fait dire à votre personnage qu'il a une épine quand c'est le cas afin d'aider les membres proches.",
 	spinesay_message = "Épine sur moi !",
 
 	shield = "Bouclier de flots",
@@ -133,7 +133,7 @@ L:RegisterTranslations("zhCN", function() return {
 	spine_message = "穿刺之脊：>%s<！",
 
 	spinesay = "穿刺警报",
-	spinesay_desc = "当你受到穿刺时发出喊话，能帮助周围队员避让。",
+	spinesay_desc = "当你受到穿刺时发出喊话，能帮助周围队员拔除。",
 	spinesay_message = "我中了穿刺！",
 
 	shield = "海潮之盾",
@@ -178,7 +178,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22887
 mod.toggleoptions = {"enrage", "shield", -1, "spine", "spinesay", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 2 ) end
 mod.proximitySilent = true
 

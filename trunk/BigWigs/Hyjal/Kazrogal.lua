@@ -80,8 +80,8 @@ L:RegisterTranslations("zhTW", function() return {
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
-	range = "范围检测",
-	range_desc = "当你低法力以及中了卡兹洛加印记，显示范围检测列表。",
+	range = "距离检查",
+	range_desc = "当你低法力以及中了卡兹洛加印记，显示距离你过近的玩家。",
 
 	mark = "卡兹洛加印记",
 	mark_desc = "显示卡兹洛加印记计时条。",
@@ -108,7 +108,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17888
 mod.toggleoptions = {"mark", "range", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 mod.proximityCheck = function( unit )
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

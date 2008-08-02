@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-07-22 16:35:29 -0400 (Tue, 22 Jul 2008) $
-$Rev: 78937 $
+$Date: 2008-08-02 09:05:00 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79666 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -16,7 +16,6 @@ Please make sure you update the ToC file with any translations.
 
 ****************************************************************************************
 ]]--
-
 local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "frFR", false);
 if not L then return end
 
@@ -62,9 +61,9 @@ L["SKILL_TOGGLE"] = "Intègre ou non toutes les recettes quelque soit votre nive
 
 -- Obtain Filter Options
 L["BOEFilter"] = "Lié quand équipé"
-L["BOE_TOGGLE"] = "Intègre ou non les recettes liées quand équipées dans l'analyse."
+L["BOE_TOGGLE"] = "Intègre ou non les recettes qui permettent de fabriquer des objets liés quand équipés dans l'analyse."
 L["BOPFilter"] = "Lié quand ramassé"
-L["BOP_TOGGLE"] = "Intègre ou non les recettes liées quand ramassées dans l'analyse."
+L["BOP_TOGGLE"] = "Intègre ou non les recettes qui permettent de fabriquer des objets liés quand ramassés dans l'analyse."
 L["PVP_TOGGLE"] = "Intègre ou non les recettes obtenues en JcJ dans l'analyse."
 L["RAID_TOGGLE"] = "Intègre ou non les recettes de raid difficiles à obtenir (Coeur du Magma, Caverne du sanctuaire du Serpent, etc.) dans l'analyse."
 L["SEASONAL_TOGGLE"] = "Intègre ou non les recettes saisonnières dans l'analyse."
@@ -88,6 +87,8 @@ L["Tanking"] = "Tank"
 L["TANKING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets pour tank dans l'analyse."
 L["Healing"] = "Soigneur"
 L["HEALING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets pour soigneur dans l'analyse."
+L["World Drop"] = "Butin mondial"
+L["WORLD_DROP_TOGGLE"] = "Intègre ou non les recettes trouvés aléatoirement sur les monstres d'une même fourchette de niveaux dans l'analyse."
 
 -- Sorting options
 L["Name"] = "Nom"
@@ -107,6 +108,7 @@ L["UnknownTradeSkill"] = "Vous avez ouvert une fenêtre de métier qui n'est pas
 L["OpenTradeSkillWindow"] = "Veuillez ouvrir la fenêtre de métier à analyser."
 L["TwoCraftingWindows"] = "La fenêtre de craft est déjà ouverte. Veuillez fermer celle ci et la ré-ouvrir si vous souhaitez scanner les recettes manquantes."
 L["SpellIDCache"] = "L'ID du sort %s n'est pas dans votre cache local.  Veuillez soumettre un ticket (en anglais) sur http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ en indiquant l'ID du sort et la profession que vous analysiez."
+L["FactionError"] = "Avertissement : le niveau de réputation %s est inconnu."
 
 -- GUI Text
 L["Close"] = "Fermer"

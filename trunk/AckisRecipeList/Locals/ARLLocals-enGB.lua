@@ -5,8 +5,8 @@ ARLLocals-enGB.lua
 
 enGB localization strings for Ackis Recipe List
 
-$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78247 $
+$Date: 2008-07-26 14:18:05 -0400 (Sat, 26 Jul 2008) $
+$Rev: 79200 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -74,7 +74,7 @@ L["QUEST_TOGGLE"] = "Quest reward recipes should be included in the scan."
 L["Cloth"] = true
 L["CLOTH_TOGGLE"] = "Patterns that make cloth items should be included in the scan."
 L["Leather"] = true
-L["LEATHER_TOGGLE"] = "Patterns that make leahter items should be included in the scan."
+L["LEATHER_TOGGLE"] = "Patterns that make leather items should be included in the scan."
 L["Mail"] = true
 L["MAIL_TOGGLE"] = "Patterns that make mail items should be included in the scan."
 L["Plate"] = true
@@ -104,6 +104,8 @@ L["InitiateScanSpecial"] = "Scanning %s - %s for missing recipes at skill level 
 L["RecipeListSummary"] = "\nYou know %s out of %s total recipes (%s%%).\nYou are missing %s recipes."
 L["UnknownTradeSkill"] = "You have opened up a trade skill window which is not supported by this add-on.  The trade skill is %s.  Please provide the author of the add-on with this information."
 L["OpenTradeSkillWindow"] = "Please open trade skill window to scan."
+L["TwoCraftingWindows"] = "Crafting window already open.  Please close the other window and re-open this one if you wish to scan for missing recipes."
+L["SpellIDCache"] = "Spell ID: %s is not in your local cache.  Please submit a ticket at http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ and include the spell ID and the profession in which you were scanning."
 
 -- GUI Text
 L["Close"] = true

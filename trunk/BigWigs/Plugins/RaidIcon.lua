@@ -78,9 +78,9 @@ L:RegisterTranslations("zhCN", function() return {
 	["Set Icon"] = "设置标记",
 	["Set which icon to place on players."] = "设置玩家身上团队标记。",
 
-	["Use the %q icon when automatically placing raid icons for boss abilities."] = "当称为首领目标，使用%q标记自动为队员标上。",
+	["Use the %q icon when automatically placing raid icons for boss abilities."] = "使用%q标记首领的需要注意的技能目标。",
 	["Star"] = "星形",
-	["Circle"] = "圆圈",
+	["Circle"] = "圆形",
 	["Diamond"] = "棱形",
 	["Triangle"] = "三角",
 	["Moon"] = "月亮",
@@ -192,7 +192,7 @@ L:RegisterTranslations("esES", function() return {
 
 local plugin = BigWigs:NewModule("Raid Icons")
 
-plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 79614 $"):sub(12, -3))
 plugin.defaultDB = {
 	place = true,
 	icon = 8,

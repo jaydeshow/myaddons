@@ -22,7 +22,7 @@ L:AddTranslations("esES", function() return {
 
 -- Russian Translation by StingerSoft (Eritnull aka Шептун)
 L:AddTranslations("ruRU", function() return {
-	["Trying to set a waypoint with an unknown zone: %q"] = "Попытка назначить точку маршрута на неизвестную территорию:  %q",
+	["Trying to set a waypoint with an unknown zone: %q"] = "Попытка назначить точку маршрута на неизвестную территорию: %q",
 	["Waypoint"] = "Точку маршрута",
 } end)
 

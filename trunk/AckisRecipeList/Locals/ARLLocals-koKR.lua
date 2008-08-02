@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-07-23 10:21:11 -0400 (Wed, 23 Jul 2008) $
-$Rev: 78984 $
+$Date: 2008-08-02 08:46:12 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79663 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -89,6 +89,8 @@ L["Tanking"] = "탱킹 아이템"
 L["TANKING_TOGGLE"] = "검색시에 탱킹 관련 아이템을 포함합니다."
 L["Healing"] = "치유 아이템"
 L["HEALING_TOGGLE"] = "검색시에 치유 관련 아이템을 포함합니다."
+L["World Drop"] = "월드 드랍"
+L["WORLD_DROP_TOGGLE"] = "검색시에 월드 드랍 제조법을 포함합니다."
 
 -- Sorting options
 L["Name"] = "이름" 
@@ -108,6 +110,7 @@ L["UnknownTradeSkill"] = "이 애드온이 지원하지 않는 전문기술 창�
 L["OpenTradeSkillWindow"] = "전문기술 창을 연 후에 기술 검색 해주세요."
 L["TwoCraftingWindows"] = "전문기술 차이 이미 열려 있습니다. 빠진 제조법의 검색을 위해 창을 닫고 다시 열어 주십시오."
 L["SpellIDCache"] = "주문 ID: %s은 캐쉬에 없습니다. http://wow.curseforge.com/projects/ackis-recipe-list/tickets/에 전문기술과 주문ID를 검색해서 올려주십시오."
+L["FactionError"] = "경고: %s의 평판 레벨을 알 수 없습니다."
 
 -- GUI Text
 L["Close"] = "닫기"

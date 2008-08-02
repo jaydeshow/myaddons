@@ -5,11 +5,11 @@ ARLLocals-deDE.lua
 
 deDE localization strings for Ackis Recipe List
 
-$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78247 $
+$Date: 2008-07-26 14:18:05 -0400 (Sat, 26 Jul 2008) $
+$Rev: 79200 $
 
 Original translated by: 
-Currently maintaince by: 
+Currently maintaince by:  Winkiller
 
 Thank you all translators! (From Ackis)
 
@@ -17,32 +17,74 @@ Please make sure you update the ToC file with any translations.
 
 ****************************************************************************************
 ]]--
+
 local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "deDE", false);
 if not L then return end
 
 -- Options Categories
-L["DISPLAY_OPTIONS"] = "Rezepte Scan Anzeige Optionen"
+L["About"] = "Über"
+L["Display"] = "Anzeige"
+L["DISPLAY_OPTIONS"] = "Anzeigeoptionen"
+L["DISPLAY_OPTIONS_LONG"] = "Erlaubt es, das Verhalten der GUI einzustellen."
 L["FILTER_OPTIONS"] = "Filteroptionen"
+L["FILTER_OPTIONS_LONG"] = "Erlaubt es, die zu filternden Rezepte einzustellen."
 L["REP_OPTIONS"] = "Fraktionsoptionen"
-L["Reputation"] = true
+L["REP_OPTIONS_LONG"] = "Erlaubt es einzustellen, welche Fraktionen berücksichtigt werden sollen."
+L["Obtain"] = "Beschaffung"
+L["OBTAIN_OPTIONS"] = "Beschaffungsoptionen"
+L["OBTAIN_OPTIONS_LONG"] = "Erlaubt es einzustellen, welche Methoden zur Beschaffung berücksichtigt werden sollen."
+L["Sort"] = "Sortierung"
 L["SORT_OPTIONS"] = "Sortierung der Rezeptliste"
+L["SORT_OPTIONS_LONG"] = "Erlaubt es einzustellen, wie fehlende Rezepte sortiert und dargestellt werden sollen."
+L["Profile"] = "Profil"
 
 -- Display Options
+L["Use GUI"] = "GUI benutzen"
 L["GUI_TOGGLE"] = "Schalte die Nutzung des GUIs an oder aus."
+L["Include Filtered"] = "Gefilterte anzeigen"
 L["FILTERCOUNT_TOGGLE"] = "Gefilterte Rezepte zu den Gesamtrezepten zählen."
-L["CLOSEGUI_TOGGLE"] = "Schließt das ARL Fenster, wenn das Handwerksfenster geschlossen wird."
+L["Close GUI"] = "GUI schließen"
+L["CLOSEGUI_TOGGLE"] = "Schließt das ARL-Fenster, wenn das Handwerksfenster geschlossen wird."
 
 -- Filtering Options
+L["Faction"] = "Fraktionen"
 L["FACTION_TOGGLE"] = "Alle Fraktionen in den Scan einbeziehen."
-L["PVP_TOGGLE"] = "Bezieht die PVP-Rezepte in den Scan ein."
+L["Classes"] = "Klassen"
 L["CLASS_TOGGLE"] = "Alle Klassen in den Scan einbeziehen."
+L["Specialities"] = "Spezialisierungen"
 L["SPECIALITY_TOGGLE"] = "Alle Spezialisierungen in den Scan einbeziehen."
+L["Skill"] = "Skill"
+L["SKILL_TOGGLE"] = "Alle Skill-Level in den Scan einbeziehen."
+
+-- Obtain Filter Options
+L["BOE_TOGGLE"] = "BoE-Rezepte sollen in den Scan einbezogen werden."
+L["BOP_TOGGLE"] = "BoP-Rezepte sollen in den Scan einbezogen werden."
+L["PVP_TOGGLE"] = "Bezieht die PVP-Rezepte in den Scan ein."
 L["RAID_TOGGLE"] = "Schwer zu bekommende Rezepte aus Schlachtzügen in den Scan einbeziehen."
-L["SKILL_TOGGLE"] = "Alle Skill Level in den Scan einbeziehen."
+L["SEASONAL_TOGGLE"] = "Bezieht saisonal erhältliche Rezepte in den Scan ein."
+L["TRAINER_TOGGLE"] = "Bezieht vom Lehrer erlernte Rezepte in den Scan ein."
+L["VENDOR_TOGGLE"] = "Bezieht von Händlern erworbene Rezepte in den Scan ein."
+L["INSTANCE_TOGGLE"] = "Bezieht Rezepte aus Instanzen in den Scan ein."
+L["QUEST_TOGGLE"] = "Bezieht Rezepte von Questbelohnungen in den Scan ein."
+L["Cloth"] = "Stoff"
+L["CLOTH_TOGGLE"] = "Bezieht Rezepte für Stoffgegenständer in den Scan ein."
+L["Leather"] = "Leder"
+L["LEATHER_TOGGLE"] = "Bezieht Rezepte für Ledergegenstände in den Scan ein."
+L["Mail"] = "Schwere Rüstung"
+L["MAIL_TOGGLE"] = "Bezieht Rezepte für Schwere Rüstung in den Scan ein."
+L["Plate"] = "Platte"
+L["PLATE_TOGGLE"] = "Bezieht Rezepte für Platte in den Scan ein."
+L["Melee"] = "Nahkämpfer"
+L["MELEE_TOGGLE"] = "Bezieht Rezepte für Nahkämpfer in den Scan ein."
+L["Caster DPS"] = "Caster-DPS"
+L["CASTERDPS_TOGGLE"] = "Bezieht Rezepte für Caster-DPS in den Scan ein."
+L["Tanking"] = "Tanks"
+L["TANKING_TOGGLE"] = "Bezieht Rezepte für Tanks in den Scan ein."
+L["Healing"] = "Heiler"
+L["HEALING_TOGGLE"] = "Bezieht Rezepte für Heiler in den Scan ein."
 
 -- Sorting options
-L["Name"] = "Name" 
-L["Skill"] = "Skill"
+L["Aquisition"] = "Quelle"
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "inkl. %s."
@@ -50,13 +92,19 @@ L["SPECIFIC_REP_TOGGLE"] = "inkl. %s."
 -- Non-gui text
 L["MissingFromDB"] = ": fehlt in der Datenbank. \nBitte informiere den Autor dieses Addons über das Rezept."
 L["MissingRecipePrefix"] = "Fehlendes Rezept: "
-L["InitiateScan"] = "Scanne %s auf fehlende Rezepte mit Skill Level %s.\n"
-L["InitiateScanSpecial"] = "Scanne %s - %s auf fehlende Rezepte mit Skill Level level %s.\n"
+L["InitiateScan"] = "Scanne %s auf fehlende Rezepte mit Skill-Level %s.\n"
+L["InitiateScanSpecial"] = "Scanne %s - %s auf fehlende Rezepte mit Skill-Level %s.\n"
 L["RecipeListSummary"] = "\nDu kennst %s von %s Rezepten (%s%%).\nDir fehlen %s Rezepte."
 L["UnknownTradeSkill"] = "Du hast ein Handwerksfenster geöffnet das nicht von diesem Addon unterstützt wird.  Die Handwerksfähigkeit ist %s.  Bitte kontaktiere den Autor dieses Addons mit dieser Information."
 L["OpenTradeSkillWindow"] = "Bitte öffne ein Handwerksfenster zum Scannen."
 
 -- GUI Text
+L["Instance"] = "Instanz"
+L["Alliance"] = "Allianz"
+L["Known"] = "Bekannt"
+L["Unknown"] = "Unbekannt"
+
+-- Tooltip Text
 L["Close"] = "Schließen"
 L["NoObtain"] = "Keine Information verfügbar."
 L["ScanButton"] = "Scan"
@@ -94,7 +142,7 @@ L["QuestReward"] = "Questbelohnung: "
 -- Raid Drop Obtain Info
 L["MOLTENCORE"] = "BoP Mob Drop: Zufällige Bosse in MC."
 L["AQ20/AQ40"] = "BoP Mob Drop: Zufällige Bosse in AQ20/AQ40."
-L["ADNaxx"] = "Erlernbar von Meisterhandwerker Omarion im Todesritter Flügel von Naxxramas."
+L["ADNaxx"] = "Erlernbar von Meisterhandwerker Omarion im Todesritter-Flügel von Naxxramas."
 L["SSC/TKBoP"] = "BoP Mob Drop: Zufällige Bosse und Mobs in SSC/TK."
 L["SSC/TKBoE"] = "BoE Mob Drop: Zufällige Bosse und Mobs in SSC/TK."
 L["BT/HYJALBoP"] = "BoP Mob Drop: Zufällige Bosse und Mobs in Hyjal/BT."
@@ -106,8 +154,9 @@ L["ZA"] = "BoP Mob Drop: Zufällige Bosse in Zul'Aman"
 L["Unknown"] = "Der Droport dieses Rezepts ist unbekannt."
 
 -- Faction info
-L["WintersVeil"] = "Winterhauchfest"
-L["Lunar Festival"] = "Mondfest"
+L["WintersVeil"] = "Saisonbedingt: Winterhauchfest"
+L["Lunar Festival"] = "Saisonbedingt: Mondfest"
+L["Darkmoon Faire"] = "Dunkelmond-Jahrmarkt"
 L["Seasonal"] = "Saisonbedingt"
 
 -- Alchemy Obtain Information
@@ -139,7 +188,7 @@ L["Mighty Rage Potion Obt"] = "BoE Mob Drop: Töter des Schwarzfels, Brennende S
 L["Wildvine Potion Obt"] = "BoE Mob Drop: Trolle im Hinterland und Schlingendorntal"
 -- Quest
 L["Discolored Healing Potion Obt"] = "Wilde Herzen"
-L["Elixir of Brute Force Obt"] = "Blutblütensprösslinge bei Dadanga im Krater von Un'Goro abgeben.\n      Seit 2.0 beim Lehrer lernbar"
+L["Elixir of Brute Force Obt"] = "Blutblütensprösslinge bei Dadanga im Krater von Un'Goro abgeben.\n      Seit 2.0 beim Lehrer erlernbar"
 L["Lesser Stoneshield Potion Obt"] = "Flüssigstein"
 L["Restorative Potion Obt"] = "Reagenzien-Suche im Ödland II (Elite, Uldaman)"
 

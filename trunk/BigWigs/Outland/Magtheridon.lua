@@ -288,7 +288,7 @@ L:RegisterTranslations("zhCN", function() return {
 
 	heal = "治疗",
 	heal_desc = "当地狱火导魔者施放治疗时发出警报。",
-	heal_message = "治疗！",
+	heal_message = "黑暗愈合！",
 
 	nova = "冲击新星",
 	nova_desc = "冲击新星计时。",
@@ -379,7 +379,7 @@ mod.otherMenu = "Outland"
 mod.enabletrigger = {channeler, boss}
 mod.guid = 17257
 mod.toggleoptions = {"escape", "abyssal", "heal", -1, "nova", "banish", -1, "debris", "debrisinc", -1, "exhaust", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

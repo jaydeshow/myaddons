@@ -55,7 +55,7 @@ L:RegisterTranslations("zhCN", function() return {
 
 	["Alarm"] = "警报",
 	["Info"] = "信息",
-	["Alert"] = "警惕",
+	["Alert"] = "报警",
 	["Long"] = "长计时",
 	["Victory"] = "胜利",
 
@@ -138,7 +138,7 @@ L:RegisterTranslations("esES", function() return {
 
 local plugin = BigWigs:NewModule("Sounds")
 
-plugin.revision = tonumber(("$Revision: 71438 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 79614 $"):sub(12, -3))
 plugin.defaultDB = {
 	defaultonly = false,
 	sound = true,

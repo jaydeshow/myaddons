@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_Events.lua"] then
 end
 
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-07-24 21:14:28 -0400 (Thu, 24 Jul 2008) $", "$Revision: 79088 $");
+D:SetDateAndRevision("$Date: 2008-07-30 21:39:43 -0400 (Wed, 30 Jul 2008) $", "$Revision: 79544 $");
 
 
 local L	    = D.L;
@@ -50,16 +50,21 @@ D.Status.Unit_Array		= { };
 local pairs		= _G.pairs;
 local ipairs		= _G.ipairs;
 local type		= _G.type;
+local select		= _G.select;
+local UnitCanAttack	= _G.UnitCanAttack;
 local GetNumRaidMembers		= _G.GetNumRaidMembers;
 local GetNumPartyMembers	= _G.GetNumPartyMembers;
+local GetRaidRosterInfo	= _G.GetRaidRosterInfo;
 local random	= _G.random;
 local UnitIsUnit	= _G.UnitIsUnit;
-local GetRaidRosterInfo	= _G.GetRaidRosterInfo;
 local UnitClass	= _G.UnitClass;
 local UnitExists	= _G.UnitExists;
-local table	= _G.table;
 local UnitGUID  = _G.UnitGUID;
+local table	= _G.table;
+local t_insert =    _G.table.insert;
+local str_upper = _G.string.upper;
 
+local MAX_RAID_MEMBERS = _G.MAX_RAID_MEMBERS;
 -------------------------------------------------------------------------------
 -- GROUP STATUS UPDATE, these functions update the UNIT table to scan {{{
 -------------------------------------------------------------------------------
@@ -74,6 +79,7 @@ local function AddToSort (unit, index) -- // {{{
     --D:Debug("Adding to sort: ", unit, index);
 end --}}}
 
+
 -- Raid/Party Name Check Function (a terrible function, need optimising)
 -- this returns the UnitID that the Name points to
 -- this does not check "target" or "mouseover"
@@ -81,6 +87,7 @@ function D:NameToUnit( Name ) --{{{
 
     local numRaidMembers = GetNumRaidMembers();
     local FoundUnit = false;
+
 
     if (not Name) then
 	return false;
@@ -93,8 +100,6 @@ function D:NameToUnit( Name ) --{{{
     if (numRaidMembers == 0) then
 	if (Name == (self:UnitName("player"))) then
 	    FoundUnit =  "player";
-	--elseif (Name == (self:UnitName("focus"))) then
-	--  return  "focus"; -- we won't store this value
 	elseif (Name == (self:UnitName("pet"))) then
 	    FoundUnit =  "pet";
 	elseif GetNumPartyMembers() > 0 then
@@ -119,14 +124,28 @@ function D:NameToUnit( Name ) --{{{
     else
 	-- we are in a raid
 	local i;
+	local foundmembers = 0;
 	local RaidName;
-	for i=1, numRaidMembers do
-	    RaidName = GetRaidRosterInfo(i);
-	    if ( Name == RaidName) then
-		FoundUnit =  "raid"..i;
-	    end
-	    if ( self.profile.Scan_Pets and Name == (self:UnitName("raidpet"..i))) then
-		FoundUnit =  "raidpet"..i;
+	for i=1, MAX_RAID_MEMBERS do
+	    RaidName = (GetRaidRosterInfo(i));
+
+	    if RaidName then
+
+		foundmembers = foundmembers + 1;
+
+		if ( Name == RaidName) then
+		    FoundUnit =  "raid"..i;
+		    break;
+		end
+		if ( self.profile.Scan_Pets and Name == (self:UnitName("raidpet"..i))) then
+		    FoundUnit =  "raidpet"..i;
+		    break;
+		end
+
+		if foundmembers == numRaidMembers then
+		    break;
+		end
+
 	    end
 	end
     end
@@ -154,17 +173,16 @@ DC.ClassNumToLName = {
 
 DC.ClassLNameToNum = D:tReverse(DC.ClassNumToLName);
 
-local strupper = _G.string.upper;
 DC.ClassNumToUName = {
-    [11]	= strupper(D.LOC.CLASS_DRUID),
-    [12]	= strupper(D.LOC.CLASS_HUNTER),
-    [13]	= strupper(D.LOC.CLASS_MAGE),
-    [14]	= strupper(D.LOC.CLASS_PALADIN),
-    [15]	= strupper(D.LOC.CLASS_PRIEST),
-    [16]	= strupper(D.LOC.CLASS_ROGUE),
-    [17]	= strupper(D.LOC.CLASS_SHAMAN),
-    [18]	= strupper(D.LOC.CLASS_WARLOCK),
-    [19]	= strupper(D.LOC.CLASS_WARRIOR),
+    [11]	= str_upper(D.LOC.CLASS_DRUID),
+    [12]	= str_upper(D.LOC.CLASS_HUNTER),
+    [13]	= str_upper(D.LOC.CLASS_MAGE),
+    [14]	= str_upper(D.LOC.CLASS_PALADIN),
+    [15]	= str_upper(D.LOC.CLASS_PRIEST),
+    [16]	= str_upper(D.LOC.CLASS_ROGUE),
+    [17]	= str_upper(D.LOC.CLASS_SHAMAN),
+    [18]	= str_upper(D.LOC.CLASS_WARLOCK),
+    [19]	= str_upper(D.LOC.CLASS_WARRIOR),
 }
 
 DC.ClassUNameToNum = D:tReverse(DC.ClassNumToUName);
@@ -174,8 +192,11 @@ DC.ClassUNameToNum = D:tReverse(DC.ClassNumToUName);
 
 do
 
+    local i = 1;
     local D = D;
     local _ = false; -- a local dummy trash variable
+
+    local MAX_RAID_MEMBERS = _G.MAX_RAID_MEMBERS;
 
     function IsInSkipList ( name, group, classNum ) -- {{{
 	if (D.Status.InternalSkipList[name] or D.Status.InternalSkipList[group] or D.Status.InternalSkipList[classNum]) then
@@ -299,18 +320,12 @@ do
     end -- }}}
 
 
-    Dcr.xxxtemp = 0;
 
     local pet;
     function D:GetUnitArray() --{{{
 
 	-- if the groups composition did not changed
 	if (not self.Groups_datas_are_invalid or not self.DcrFullyInitialized) then
-
-	    if not self.DcrFullyInitialized then -- XXX to remove
-		self.xxxtemp = self.xxxtemp + 1;
-	    end
-
 	    return;
 	end
 
@@ -354,9 +369,9 @@ do
 		self.Status.InternalPrioList[ListEntry] = i;
 
 		if (ListEntry < 10) then
-		    table.insert(GroupsPrio, ListEntry);
+		    t_insert(GroupsPrio, ListEntry);
 		else
-		    table.insert(ClassPrio, ListEntry);
+		    t_insert(ClassPrio, ListEntry);
 		end
 	    end
 	end
@@ -450,9 +465,10 @@ do
 	    currentGroup = 0;
 	    local rName, rGroup;
 	    local CaheID = 1; -- make an ordered table
+	    local excluded = 0;
 
 	    -- Cache the raid roster info eliminating useless info and already listed members
-	    for i = 1, raidnum do
+	    for i = 1, MAX_RAID_MEMBERS do
 		rName, _, rGroup, _, _, rClass = GetRaidRosterInfo(i);
 
 		-- find our group (a whole iteration is required, raid info are not ordered)
@@ -461,39 +477,42 @@ do
 		end
 
 		-- add all except member to skip
-		if (not IsInSkipList(rName, rGroup, DC.ClassUNameToNum[rClass]) ) then
+		if not IsInSkipList(rName, rGroup, DC.ClassUNameToNum[rClass]) then
 
-		    if (not RaidRosterCache[CaheID]) then
-			RaidRosterCache[CaheID] = {};
-		    end
+		    if (rName) then -- (at log-in GetRaidRosterInfo() returns garbage)
 
-		    if (not rName) then -- at logon sometimes rName is nil...
-			rName = rGroup.."unknown"..i;
+			if (not RaidRosterCache[CaheID]) then
+			    RaidRosterCache[CaheID] = {};
+			end
+
+			RaidRosterCache[CaheID].rName    = rName;
+			RaidRosterCache[CaheID].rGroup   = rGroup;
+			RaidRosterCache[CaheID].rClass   = rClass;
+			RaidRosterCache[CaheID].rIndex   = i;
+			CaheID = CaheID + 1;
 		    end
-		    RaidRosterCache[CaheID].rName    = rName;
-		    RaidRosterCache[CaheID].rGroup   = rGroup;
-		    RaidRosterCache[CaheID].rClass   = rClass;
-		    RaidRosterCache[CaheID].rIndex   = i;
-		    CaheID = CaheID + 1;
+		else
+		    excluded = excluded + 1;
 		end
 
+		if CaheID + excluded > raidnum then -- we found all the units
+		    break;
+		end
 	    end
 
 	    -- Add the player to the main list if needed
 	    if (not IsInSkipOrPriorList(MyName, currentGroup, DC.ClassUNameToNum[DC.MyClass])) then
-		local PlayerRID = self:NameToUnit(MyName); -- XXX might return false
+		local PlayerRID = self:NameToUnit(MyName); -- might return false at log-in
 		if PlayerRID then
 		    AddToSort( PlayerRID, 900);
 		    self.Status.Unit_ArrayByName[MyName] = PlayerRID;
 		else
-		    if not MyName then MyName = "nil" end
-		    message(string.format("Decursive-UAB: PlayerRID is false for %s-%s\nReport this to archarodim@teaser.fr", MyName,  Dcr:UnitName("player")));
+		    --message(string.format("Decursive-UAB: PlayerRID was not found for %s (cg:%d), UT=%d, RN=%d\nReport this to archarodim@teaser.fr\ndetailing the circumstances. Thanks.",
+			--MyName, currentGroup, (GetTime() - DC.StartTime), raidnum));
 
 		    AddToSort( "player", 900);
 		    self.Status.Unit_ArrayByName[MyName] =  "player";
 
-		    MyName = self:UnitName("player");
-		    DC.MyName = MyName;
 		    self.Status.Unit_Array_NameToUnit[MyName] = "player";
 		end
 	    end
@@ -542,15 +561,10 @@ do
 	-- but we cannot use sort unless indexes are integer so:
 	self.Status.Unit_Array = {}
 	for name, unit in pairs(self.Status.Unit_ArrayByName) do -- /!\ PAIRS not iPAIRS
-	    table.insert(self.Status.Unit_Array, unit);
+	    t_insert(self.Status.Unit_Array, unit);
 	    self.Status.Unit_Array_UnitToName[unit] = name; -- just a usefull table, not used here :)
 
-	    -- another -very- usefull table ;-)
-	    if unit ~= true and unit then -- XXX temp to fix
-		self.Status.Unit_Array_GUIDToUnit[UnitGUID(unit)] = unit;
-	    else
-		message(string.format("Decursive-UAB: invalid unit supplied to UnitGUID for %s-%s\nReport this to archarodim@teaser.fr", name, UnitName("player")));
-	    end
+	    self.Status.Unit_Array_GUIDToUnit[UnitGUID(unit)] = unit;
 	end
 
 	table.sort(self.Status.Unit_Array, function (a,b)
@@ -561,8 +575,8 @@ do
 	    end
 	end);
 
-	if UnitExists("focus") and not self.Status.Unit_ArrayByName[(self:UnitName("focus"))] and UnitIsFriend("focus", "player") then
-	    table.insert(self.Status.Unit_Array, "focus");
+	if UnitExists("focus") and not self.Status.Unit_ArrayByName[(self:UnitName("focus"))] and (not UnitCanAttack("focus", "player") or UnitIsFriend("focus", "player")) then
+	    t_insert(self.Status.Unit_Array, "focus");
 	    self.Status.UnitNum = #self.Status.Unit_Array;
 	    self.Status.Unit_Array_UnitToName["focus"] = (D:PetUnitName("focus", true));
 	end

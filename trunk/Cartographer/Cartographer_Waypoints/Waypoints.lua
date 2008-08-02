@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 79053 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 79531 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-24 12:19:14 -0400 (Thu, 24 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-07-30 18:24:53 -0400 (Wed, 30 Jul 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -298,10 +298,10 @@ L:AddTranslations("ruRU", function() return {
 	["Invalid note entry."] = "Неверный ввод заметки",
 	["Waypoints cleared."] = "Точки маршрута очищены",
 	["For usage, see '/waypoint help'"] = "Для большой информации наберите '/waypoint help'",
-	["Commands are:"] = "Команда",
-	["General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>"] = "General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>",
-	["Clear  : /noway"] = "Очистить",
-	["View   : /wayq"] = "Просмотр",
+	["Commands are:"] = "Команда:",
+	["General: /waypoint [add] <notesearch> OR <0-100>,<0-100> [title] [z-zone] OR g-<guildnamesearch> OR p-<partynamesearch>"] = "Общий: /waypoint [add] <notesearch> ИЛИ <0-100>,<0-100> [title] [z-zone] ИЛИ g-<guildnamesearch> ИЛИ p-<partynamesearch>",
+	["Clear  : /noway"] = "Очистить: /noway",
+	["View   : /wayq"] = "Просмотр: /wayq",
 	["Move to end of queue"] = "Переместить в конец очереди",
 	["Lock waypoint arrow"] = "Закрепить стрелку точки маршрута",
 	["Lock the waypoint arrow in place"] = "Закрепить стрелку точки маршрута на данном месте",

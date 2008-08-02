@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 78825 $
+Revision: $Rev: 79673 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 78825 $"
+local MINOR_VERSION = "$Revision: 79673 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -5196,7 +5196,7 @@ elseif GAME_LOCALE == "ruRU" then
 --Ragefire Chasm
 		["Maur Grimtotem"] = "Маур Мрачный Тотем",
 		["Bazzalan"] = "Баззалан",
-		["Zelemar the Wrathful"] = "Зелемар Гневный";
+		["Zelemar the Wrathful"] = "Зелемар Гневный",
 		["Jergosh the Invoker"] = "Джергош Заклинатель",
 		["Taragaman the Hungerer"] = "Тарагаман Алчущий",
 
@@ -5207,7 +5207,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Plaguemaw the Rotting"] = "Чумобрюх Гнилой",
 		["Ragglesnout"] = "Круглорыл",
 		["Tuten'kash"] = "Тутен'каш",
-		["Henry Stern"] = "Генри Штерн";
+		["Henry Stern"] = "Генри Штерн",
 
 --Razorfen Kraul
 		["Agathelos the Raging"] = "Агателос Яростный",

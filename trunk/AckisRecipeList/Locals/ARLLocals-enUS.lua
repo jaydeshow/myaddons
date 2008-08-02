@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-07-22 15:30:32 -0400 (Tue, 22 Jul 2008) $
-$Rev: 78932 $
+$Date: 2008-08-02 05:18:05 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79649 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -61,9 +61,9 @@ L["SKILL_TOGGLE"] = "Include all recipes regardless of your current skill level.
 
 -- Obtain Filter Options
 L["BOEFilter"] = "Bind on Equip"
-L["BOE_TOGGLE"] = "BoE recipes should be included in the scan."
+L["BOE_TOGGLE"] = "Recipes that make Bind on Equip items should be included in the scan."
 L["BOPFilter"] = "Bind on Pickup"
-L["BOP_TOGGLE"] = "BoP recipes should be included in the scan."
+L["BOP_TOGGLE"] = "Recipes that make Bind on Pickup items should be included in the scan."
 L["PVP_TOGGLE"] = "PVP obtained recipes should be included in the scan."
 L["RAID_TOGGLE"] = "Hard to get raid (ie: Molten Core, Serpent Shrine Cavern, etc.) recipes should be included in the scan."
 L["SEASONAL_TOGGLE"] = "Seasonal obtained recipes should be included in the scan."
@@ -74,7 +74,7 @@ L["QUEST_TOGGLE"] = "Quest reward recipes should be included in the scan."
 L["Cloth"] = true
 L["CLOTH_TOGGLE"] = "Patterns that make cloth items should be included in the scan."
 L["Leather"] = true
-L["LEATHER_TOGGLE"] = "Patterns that make leahter items should be included in the scan."
+L["LEATHER_TOGGLE"] = "Patterns that make leather items should be included in the scan."
 L["Mail"] = true
 L["MAIL_TOGGLE"] = "Patterns that make mail items should be included in the scan."
 L["Plate"] = true
@@ -87,6 +87,8 @@ L["Tanking"] = true
 L["TANKING_TOGGLE"] = "Patterns that are used for tanking should be included in the scan."
 L["Healing"] = true
 L["HEALING_TOGGLE"] = "Patterns that are used for healing should be included in the scan."
+L["World Drop"] = true
+L["WORLD_DROP_TOGGLE"] = "Patterns that are World Drops should be included in the scan."
 
 -- Sorting options
 L["Name"] = true
@@ -106,6 +108,7 @@ L["UnknownTradeSkill"] = "You have opened up a trade skill window which is not s
 L["OpenTradeSkillWindow"] = "Please open trade skill window to scan."
 L["TwoCraftingWindows"] = "Crafting window already open.  Please close the other window and re-open this one if you wish to scan for missing recipes."
 L["SpellIDCache"] = "Spell ID: %s is not in your local cache.  Please submit a ticket at http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ and include the spell ID and the profession in which you were scanning."
+L["FactionError"] = "Warning: Reputation level of %s is unknown."
 
 -- GUI Text
 L["Close"] = true
@@ -230,7 +233,7 @@ L["Wildvine Potion Obt"] = "Random Trolls"
 L["Discolored Healing Potion Obt"] = "Wild Hearts"
 L["Elixir of Brute Force Obt"] = "Dadanga is Hungry (Random reward)"
 L["Lesser Stoneshield Potion Obt"] = "Liquid Stone"
-L["Restorative Potion Obt"] = "Uldaman Reagent Run"
+L["Restorative Potion Obt"] = "Badlands Reagent Run II"
 
 -- Blacksmithin Obtain Information
 L["Inlaid Mithril Cylinder Obt"] = "Crafted: This recipe is crafted by Gnomish Engineers"

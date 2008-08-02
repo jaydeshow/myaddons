@@ -1,4 +1,4 @@
-local MINOR_VERSION = tonumber(("$Revision: 78999 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 79486 $"):match("%d+"))
 if MINOR_VERSION > Omen.MINOR_VERSION then Omen.MINOR_VERSION = MINOR_VERSION end
 
 local Threat = LibStub("Threat-2.0")
@@ -13,11 +13,11 @@ local playerGUID
 
 local pullouts = {}
 
-local NORMAL_BASE = log(0.25)
-local NORMAL_MAX = log(2.0)
+local NORMAL_BASE = math.log(0.25)
+local NORMAL_MAX = math.log(2.0)
 local NORMAL_SCALE = 1/(NORMAL_MAX-NORMAL_BASE)
-local TANK_BASE = log(0.25)
-local TANK_MAX = log(4.0)
+local TANK_BASE = math.log(0.25)
+local TANK_MAX = math.log(4.0)
 local TANK_SCALE = 1/(TANK_MAX-TANK_BASE)
 
 function pullout_cls:New(guid)
@@ -145,13 +145,13 @@ function pullout_cls:UpdateLayout()
 				r = 1
 			end
 		end
-		self.targetBar:SetPoints((min(log(threatRatio),maxt)-base)*scale, 0,0,0,0)
+		self.targetBar:SetPoints((min(math.log(threatRatio),maxt)-base)*scale, 0,0,0,0)
 		self.targetBar.texture:SetVertexColor(r,g,b,1)
 		self.targetBar.frame:Show()
 	elseif targetGUID then
 		local maxThreat = Threat:GetMaxThreatOnTarget(targetGUID)
 		local threatRatio = ownThreat/maxThreat
-		self.targetBar:SetPoints((min(log(threatRatio),maxt)-base)*scale, 0,0,0,0)
+		self.targetBar:SetPoints((min(math.log(threatRatio),maxt)-base)*scale, 0,0,0,0)
 		self.targetBar.texture:SetVertexColor(0,0,1,0.5)
 		self.targetBar.frame:Show()
 	else
@@ -168,7 +168,7 @@ function pullout_cls:UpdateLayout()
 			local tankThreat = getTankThreat(guid)
 			if tankThreat > 0 then
 				local tex = self.iconTextures[i]
-				local x = (log(playerThreat/tankThreat) - base) * wscale
+				local x = (math.log(playerThreat/tankThreat) - base) * wscale
 				x = max(-7, min(width+7, x))
 				tex:ClearAllPoints()
 				tex:SetPoint("CENTER", self.frame, "LEFT", x, 0)

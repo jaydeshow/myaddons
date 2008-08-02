@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-07-17 02:31:03 -0400 (Thu, 17 Jul 2008) $
-$Rev: 78606 $
+$Date: 2008-07-30 00:57:01 -0400 (Wed, 30 Jul 2008) $
+$Rev: 79455 $
 
 ****************************************************************************************
 ]]--
@@ -327,14 +327,12 @@ function addon:ShowScanButton()
 		addon.ScanButton:SetParent(FHH_UI)
 		addon.ScanButton:ClearAllPoints()
 		addon.ScanButton:SetPoint("RIGHT",FHH_UICloseButton,"LEFT",10,0)
-		addon.ScanButton:SetTextColor(1, 1, 0)
 		addon.ScanButton:SetWidth(addon.ScanButton:GetTextWidth() + 10)
 	-- Add to ATSW
 	elseif (ATSWFrame and not CraftIsPetTraining()) then
 		addon.ScanButton:SetParent(ATSWFrame)
 		addon.ScanButton:ClearAllPoints()
 		addon.ScanButton:SetPoint("RIGHT", ATSWOptionsButton, "LEFT", 0, 0)
-		addon.ScanButton:SetTextColor(ATSWOptionsButton:GetTextColor())
 		addon.ScanButton:SetHeight(ATSWOptionsButton:GetHeight())
 		addon.ScanButton:SetWidth(80)
 	elseif (addon.SkillType == "Trade") then
@@ -342,14 +340,12 @@ function addon:ShowScanButton()
 		addon.ScanButton:SetParent(TradeSkillFrame)
 		addon.ScanButton:ClearAllPoints()
 		addon.ScanButton:SetPoint("RIGHT",TradeSkillFrameCloseButton,"LEFT",10,0)
-		addon.ScanButton:SetTextColor(1, 1, 0)
 		addon.ScanButton:SetWidth(addon.ScanButton:GetTextWidth() + 10)
 	-- Anchor to crafting window
 	elseif (addon.SkillType == "Craft") then
 		addon.ScanButton:SetParent(CraftFrame)
 		addon.ScanButton:ClearAllPoints()
 		addon.ScanButton:SetPoint("RIGHT",CraftFrameCloseButton,"LEFT",10,0)
-		addon.ScanButton:SetTextColor(1, 1, 0)
 		addon.ScanButton:SetWidth(addon.ScanButton:GetTextWidth() + 10)
 	end
 	addon.ScanButton:SetFrameStrata("DIALOG")
@@ -668,8 +664,10 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 											end
 										)
 		addon.Frame.CloseButton:SetScript("OnLeave", function() GameTooltip:Hide() end)
-		addon.Frame.CloseButton:SetFont("GameFontHighlightSmall",12)
-		addon.Frame.CloseButton:SetTextColor(1, 1, 1)
+		--if (not addon.wrath) then
+			addon.Frame.CloseButton:SetFont("GameFontHighlightSmall",12)
+			addon.Frame.CloseButton:SetTextColor(1, 1, 1)
+		--end
 		addon.Frame.CloseButton:SetText(L["Close"])
 		addon.Frame.CloseButton:Enable()
 
@@ -683,7 +681,9 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.ExpandAllButton:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
 		addon.Frame.ExpandAllButton:ClearAllPoints()
 		addon.Frame.ExpandAllButton:SetPoint("TOPRIGHT",addon.Frame,"TOPRIGHT",-10,-20)
-		addon.Frame.ExpandAllButton:SetTextColor(1, 1, 1)
+		--if (not addon.wrath) then
+			addon.Frame.ExpandAllButton:SetTextColor(1, 1, 1)
+		--end
 		addon.Frame.ExpandAllButton:SetScript("OnClick", function() self:ExpandAll() end)
 		addon.Frame.ExpandAllButton:SetScript("OnEnter", function(this)
 												GameTooltip_SetDefaultAnchor(GameTooltip, this)
@@ -704,7 +704,9 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.CollapseAllButton:SetHighlightTexture("Interface\\Buttons\\UI-MinusButton-Hilight")
 		addon.Frame.CollapseAllButton:ClearAllPoints()
 		addon.Frame.CollapseAllButton:SetPoint("TOPRIGHT",addon.Frame,"TOPRIGHT",-30,-20)
-		addon.Frame.CollapseAllButton:SetTextColor(1, 1, 1)
+		--if (not addon.wrath) then
+			addon.Frame.CollapseAllButton:SetTextColor(1, 1, 1)
+		--end
 		addon.Frame.CollapseAllButton:SetScript("OnClick", function() self:CloseAll() end)
 		addon.Frame.CollapseAllButton:SetScript("OnEnter", function(this)
 												GameTooltip_SetDefaultAnchor(GameTooltip, this)

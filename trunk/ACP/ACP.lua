@@ -173,6 +173,7 @@ end
 -- Colors used
 --
 function CLR:Label(txt) return CLR:Colorize('ffff7f', txt) end
+function CLR:ActiveEmbed(txt) return CLR:Colorize('80ff80', txt) end
 function CLR:Addon(txt) return CLR:Colorize('7f7fff', txt) end
 function CLR:On(txt) return CLR:Colorize('00ff00', txt) end
 function CLR:Off(txt) return CLR:Colorize('ff0000', txt) end
@@ -492,6 +493,7 @@ function ACP:OnLoad()
 	end
 	ACP_AddonListHeaderTitle:SetText(title)
 	this:RegisterEvent("VARIABLES_LOADED")
+	this:RegisterEvent("ADDON_LOADED")
 
 	playerClass, _ = UnitClass("player")
 
@@ -501,7 +503,7 @@ function ACP:OnLoad()
 	SLASH_ACP1 = "/acp"
 end
 
-local eventLibrary
+local eventLibrary, bugeventreged
 
 function ACP:OnEvent(event)
 	if event == "VARIABLES_LOADED" then
@@ -542,13 +544,25 @@ function ACP:OnEvent(event)
 		    eventLibrary = AceLibrary and AceLibrary:HasInstance("AceEvent-2.0") and AceLibrary("AceEvent-2.0") or nil
 		end
 
-		if eventLibrary then
+		if eventLibrary and not bugeventreged then
+			 bugeventreged = true
 		     eventLibrary:RegisterEvent("BugGrabber_BugGrabbed", function() ACP:ProcessBugSack("current") end )
         end
 
 		this:RegisterEvent("PLAYER_ENTERING_WORLD")
 		this:UnregisterEvent("VARIABLES_LOADED")
 	elseif event == "PLAYER_ALIVE" then
+		if not eventLibrary then
+		    eventLibrary = AceLibrary and AceLibrary:HasInstance("AceEvent-2.0") and AceLibrary("AceEvent-2.0") or nil
+			if not eventLibrary then eventLibrary = LibStub and LibStub:GetLibrary("AceEvent-3.0", true) end
+		end
+
+		if eventLibrary and not bugeventreged then
+			 bugeventreged = true
+		     eventLibrary:RegisterEvent("BugGrabber_BugGrabbed", function() ACP:ProcessBugSack("current") end )
+        end
+
+
     	for k,v in pairs(savedVar.ProtectedAddons) do
     	    if type(k) == "number" then savedVar.ProtectedAddons[k] = nil end
     	    if not v then savedVar.ProtectedAddons[k] = nil end
@@ -584,6 +598,8 @@ function ACP:OnEvent(event)
 
 
         ACP:ProcessBugSack("session")
+	elseif event == "ADDON_LOADED" then
+		ACP:ADDON_LOADED(arg1)
 	end
 
 end
@@ -1706,6 +1722,46 @@ function ACP:SetDropDown_Populate(level)
 
 end
 
+
+
+
+
+do
+	-- /print ACP.embedded_libs
+	ACP.embedded_libs = {}
+	-- /print ACP.embedded_libs_owners
+	ACP.embedded_libs_owners = {}
+
+
+	function ACP:ADDON_LOADED(name)	
+		if not LibStub then return end
+		self:LocateEmbeds()
+	
+		if name == "ACP" or name:sub(9) == "Blizzard_" then 
+			name = "???"
+		end
+	
+		for k,v in pairs(ACP.embedded_libs_owners) do
+			if type(v) == "boolean" then
+				ACP.embedded_libs_owners[k] = name
+			end
+		end
+	
+	end
+	
+	-- /script ACP:LocateEmbeds()
+	function ACP:LocateEmbeds()
+		local embeds = LibStub.libs
+	
+		for k,v in pairs(embeds) do
+			if self.embedded_libs[k] ~= v then
+				self.embedded_libs[k] = v
+				self.embedded_libs_owners[k] = true
+			end
+		end
+	end
+end
+
 function ACP:ShowTooltip(index)
 	if not index then return end
 	local name, title, notes, enabled, loadable, reason, security = GetAddOnInfo(index)
@@ -1767,6 +1823,31 @@ function ACP:ShowTooltip(index)
     		 GameTooltip:AddLine(depLine, 1,0.78,0, 1)
     	end
     end
+
+	local actives = nil
+	for k,v in pairs(self.embedded_libs_owners) do
+		if v == name then
+			if actives == nil then 
+				actives = CLR:Label(L["Active Embeds"])..": "..CLR:ActiveEmbed(k)
+			else
+				actives = actives..", "..CLR:ActiveEmbed(k)
+			end
+		end
+	end
+	if actives then 
+	    GameTooltip:AddLine(actives, 1,0.78,0, 1)
+	end
+
+	UpdateAddOnMemoryUsage()
+	local mem = GetAddOnMemoryUsage(index)
+	local text2
+	if mem > 1024 then
+		text2 = ("|cff8080ff%.2f|r MiB"):format(mem / 1024)
+	else
+		text2 = ("|cff8080ff%.0f|r KiB"):format(mem)
+	end
+	
+	GameTooltip:AddLine(CLR:Label(L["Memory Usage"])..": "..text2, 1,0.78,0, 1)
 
 	GameTooltip:Show()
 

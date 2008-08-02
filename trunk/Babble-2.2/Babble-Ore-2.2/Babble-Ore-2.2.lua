@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Ore-2.2
-Revision: $Rev: 79108 $
+Revision: $Rev: 79418 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Ore-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Ore-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79418 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -629,14 +629,14 @@ BabbleOre:RegisterTranslations("ruRU", function() return {
 	["Iron Deposit"] = "Залежь Железа",
 	["Silver Vein"] = "Серебрянная Жила",
 	["Gold Vein"] = "Золотая Жила",
-	["Mithril Deposit"] = "Митриловые залежи",
-	["Ooze Covered Mithril Deposit"] = "Ooze Covered Mithril Deposit",
+	["Mithril Deposit"] = "Мифриловые залежи",
+	["Ooze Covered Mithril Deposit"] = "Покрытые слизью мифриловые залежи",
 	["Truesilver Deposit"] = "Залежи истинного серебра",
-	["Ooze Covered Silver Vein"] = "Ooze Covered Silver Vein",
-	["Ooze Covered Gold Vein"] = "Ooze Covered Gold Vein",
-	["Ooze Covered Truesilver Deposit"] = "Ooze Covered Truesilver Deposit",
-	["Ooze Covered Rich Thorium Vein"] = "Ooze Covered Rich Thorium Vein",
-	["Ooze Covered Thorium Vein"] = "Ooze Covered Thorium Vein",
+	["Ooze Covered Silver Vein"] = "Покрытая слизью серебрянная жила",
+	["Ooze Covered Gold Vein"] = "Покрытая слизью золотая жила",
+	["Ooze Covered Truesilver Deposit"] = "Покрытые слизью залежи истинного серебра",
+	["Ooze Covered Rich Thorium Vein"] = "Покрытая слизью богатая ториевая жила",
+	["Ooze Covered Thorium Vein"] = "Покрытая слизью ториевая жила",
 	["Small Thorium Vein"] = "Малая ториевая жила",
 	["Rich Thorium Vein"] = "Богатая ториевая жила",
 	["Hakkari Thorium Vein"] = "Hakkari Thorium Vein",

@@ -1,4 +1,4 @@
-Recount/Changelog-Recount-r79091.txt
+Recount/Changelog-Recount-r79627.txt
 Recount/Fonts.lua
 Recount/Tracker.lua
 Recount/LazySync.lua
@@ -49,6 +49,7 @@ Recount/textures/statusbar/Armory.tga
 Recount/textures/statusbar/Minimalist.tga
 Recount/textures/statusbar/BantoBar.tga
 Recount/locales/Recount-enUS.lua
+Recount/locales/Recount-ruRU.lua
 Recount/locales/Recount-zhTW.lua
 Recount/locales/Recount-deDE.lua
 Recount/locales/Recount-koKR.lua

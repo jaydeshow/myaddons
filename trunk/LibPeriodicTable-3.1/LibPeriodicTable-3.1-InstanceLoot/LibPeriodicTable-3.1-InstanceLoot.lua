@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("InstanceLoot", "$Rev: 77406 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("InstanceLoot", "$Rev: 79134 $", {
 	["InstanceLoot.Ahn'Qiraj.Battleguard Sartura"]="21675:93,21648:85,21676:79,21669:78,21671:76,21674:75,21672:73,21678:73,21670:61,21666:59,21668:49,21667:46,21673:41,21677:0",
 	["InstanceLoot.Ahn'Qiraj.C'Thun"]="21221:906,20933:812,20929:770,21596:239,21586:177,21581:177,22732:166,22730:156,21585:135,21126:135,21839:135,21579:135,21583:125,21582:104,22731:93,21134:72,22734:20",
 	["InstanceLoot.Ahn'Qiraj.Emperor Vek'lor"]="20930:550,21602:153,21598:99,21599:98,21600:94,21601:91,20735:69,21597:59",
@@ -375,16 +375,16 @@ LibStub("LibPeriodicTable-3.1"):AddData("InstanceLoot", "$Rev: 77406 $", {
 	["InstanceLoot.Stratholme.The Unforgiven"]="13408:214,13409:195,13405:186,13404:172",
 	["InstanceLoot.Stratholme.Timmy the Cruel"]="13402:193,13403:188,13401:185,13400:173",
 
-	["InstanceLoot.Sunwell Plateau.Sathrovarr the Corruptor"]="34164,34165,34166,34167,34168,34169,34170,34848,34851,34852",
+	["InstanceLoot.Sunwell Plateau.Sathrovarr the Corruptor"]="",
 	["InstanceLoot.Sunwell Plateau.Kalecgos"]="m,InstanceLoot.Sunwell Plateau.Sathrovarr the Corruptor",
 	["InstanceLoot.Sunwell Plateau.Brutallus"]="34855:635,34853:632,34854:619,34181:179,34177:163,34176:160,34179:144,34180:135,34178:132",
 	["InstanceLoot.Sunwell Plateau.Felmyst"]="34857:678,34856:648,34858:608,34188:195,34186:180,34182:175,34185:160,34184:115,34352:95",
 	["InstanceLoot.Sunwell Plateau.Lady Sacrolash"]="35291:441,35292:323,34858:294,34208:294,34190:235,35290:235,34199:205,34209:205,34206:176,34203:176,34194:176,34210:147,34848:147,34196:147,34192:147,34197:147,34195:147,34193:147,34853:117,34857:117,34851:117,34202:117,34204:88,34189:88,34855:88,34198:88,34854:58,34856:58,34205:58",
 	["InstanceLoot.Sunwell Plateau.Grand Warlock Alythess"]="34206:571,35290:571,34194:428,34195:428,34210:285,34208:285,34196:285,35292:285,34198:285,34858:214,34851:214,34852:214,34203:214,34209:214,34202:142,35291:142,34204:71,34199:71,34853:71,34854:71,34856:71,34857:71,34192:71,34197:71,34193:71",
 	["InstanceLoot.Sunwell Plateau.The Eredar Twins"]="m,InstanceLoot.Sunwell Plateau.Lady Sacrolash,InstanceLoot.Sunwell Plateau.Grand Warlock Alythess",
-	["InstanceLoot.Sunwell Plateau.Entropius"]="34211,34212,34213,34214,34215,34216,34230,34228,34229,34230,34231,34232,34233,34234,34240,34427,34428,34429,34430,35282,35283,35284,35384",
+	["InstanceLoot.Sunwell Plateau.Entropius"]="",
 	["InstanceLoot.Sunwell Plateau.M'uru"]="m,InstanceLoot.Sunwell Plateau.Entropius",
-	["InstanceLoot.Sunwell Plateau.Kil'jaeden"]="34241,34242,34243,34244,34245,34247,34329,34331,34332,34333,34334,34335,34336,34337,34339,34340,34341,34342,34343,34344,34345,",
+	["InstanceLoot.Sunwell Plateau.Kil'jaeden"]="",
 	["InstanceLoot.Sunwell Plateau.Trash Mobs"]="34349,34350,34346,35733,34183,34351,34348,34347",
 
 	["InstanceLoot.The Temple of Atal'Hakkar.Atal'alarion"]="10800:353,10798:338,10799:188,22444:116",

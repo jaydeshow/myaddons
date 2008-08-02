@@ -77,18 +77,24 @@ if select(4, GetAddOnInfo("InFlight")) then  -- maybe this stuff gets garbage co
 		hellgossip = "(.+)|1으로;로; 보내 주십시오!"
 		skyguard = "하늘경비대 전초기지"
 		blackwind = "검은바람 비행기지"
-	elseif gl == "zhCN" then -- by Isler
+	elseif gl == "zhCN" then
 		nighthaven = "永夜港"
-		druidgossip = "我想飞到(.+)。"
+		druidgossip = "我想飞往(.+)。"
 		plaguewood = "病木林"
 		plaguegossip = "带我去(.+)。"
 		expedition = "远征军岗哨"
 		hellfire = "地狱火半岛"
 		shatter = "破碎岗哨"
 		honorpoint = "荣耀岗哨"
-		hellgossip = "送我去(.+)!"
+		hellgossip = "送我到(.+)去！"
 		skyguard = "天空卫队哨站"
 		blackwind = "黑风码头"
+		sssa = "破碎残阳基地"
+		srharbor = "阳湾港口"
+		sssagossip = "说到行动"
+		sssagossip2 = "我必须阻止"
+		thesinloren = "辛洛雷号"
+		sinlorengossip = "<骑上龙鹰"
 	elseif gl == "zhTW" then
 		nighthaven = "永夜港"				--Nighthaven, Moonglade
 		druidgossip = "我想飛往(.+)。"	--Druid gossip option

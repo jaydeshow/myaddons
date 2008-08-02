@@ -4,8 +4,8 @@ ARL-Vendor.lua
 
 Vendor data for all of AckisRecipeList
 
-$Date: 2008-07-07 16:13:37 -0400 (Mon, 07 Jul 2008) $
-$Rev: 78009 $
+$Date: 2008-07-26 15:00:04 -0400 (Sat, 26 Jul 2008) $
+$Rev: 79207 $
 
 ]]--
 
@@ -302,8 +302,6 @@ function addon:InitVendor()
 	self:addVendorList(283, L["Smudge Thunderwood"], BFAC["Neutral"], BZONE["Alterac Mountains"], "86, 79")
 	self:addVendorList(284, L["Sassa Weldwell"], BFAC["Alliance"], BZONE["Blade's Edge Mountains"], "61, 68")
 	self:addVendorList(285, L["Catherine Leland"], BFAC["Alliance"], BZONE["Stormwind City"], "45, 58")
-	if (_G.GameTimeFrame_OnClick) then
-		self:addVendorList(286, L["Haughty Modiste"], BFAC["Neutral"], BZONE["Tanaris"], "66, 23")
-	end
+	self:addVendorList(286, L["Haughty Modiste"], BFAC["Neutral"], BZONE["Tanaris"], "66, 23")
 
 end

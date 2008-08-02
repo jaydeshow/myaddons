@@ -120,7 +120,7 @@ L:RegisterTranslations("koKR", function() return {
 
 L:RegisterTranslations("frFR", function() return {
 	phase = "Phase",
-	phase_desc = "Préviens quand la rencontre entre dans une nouvelle phase.",
+	phase_desc = "Prévient quand la rencontre entre dans une nouvelle phase.",
 	normal_phase_message = "Phase de tanking !",
 	normal_phase_trigger = "De rage, Supremus frappe le sol !",
 	kite_phase_message = "Phase de kitting !",
@@ -129,7 +129,7 @@ L:RegisterTranslations("frFR", function() return {
 	next_phase_message = "Changement de phase dans 10 sec. !",
 
 	punch = "Punch de la fournaise",
-	punch_desc = "Préviens quand Supremus utilise son Punch de la fournaise, et affiche une barre de cooldown.",
+	punch_desc = "Prévient quand Supremus utilise son Punch de la fournaise, et affiche une barre de cooldown.",
 	punch_message = "Punch de la fournaise !",
 	punch_bar = "~Punch probable",
 
@@ -202,7 +202,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22898
 mod.toggleoptions = {"punch", "target", "icon", "phase", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79400 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
