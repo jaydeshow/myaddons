@@ -60,7 +60,7 @@ local defaults = {
 				["autoImport"] = false,
 				["bcOnly"] = false,
 			},
-		},
+		}	
 	},
 }
 local floor = floor

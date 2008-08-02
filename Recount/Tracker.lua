@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 79091 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 79538 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -350,7 +350,12 @@ function Recount:SpellMissed(timestamp, eventtype, srcGUID, srcName, srcFlags, d
 	Recount:AddDamageData(srcName, dstName, spellName, nil, Recount:FixCaps(missType),nil,nil, srcGUID, srcFlags, dstGUID, dstFlags, spellId)
 end
 
-function Recount:SpellHeal(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, critical)
+function Recount:SpellHeal(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, overheal,critical)
+
+	 if overheal == 1 and not critical then -- Elsia: Heuristic for detection 2.4 format. Fails if overheal is exactly 1 and the heal was not a crit (WotLK).
+	    critical = overheal
+	    overheal = nil
+	end
 
 	local healtype="Hit"
 	if critical then
@@ -362,7 +367,7 @@ function Recount:SpellHeal(timestamp, eventtype, srcGUID, srcName, srcFlags, dst
 		-- Not activated yet: spellName=spellName.." ("..L["HoT"]..")"
 	end
 
-	Recount:AddHealData(srcName, dstName, spellName, healtype, amount,nil, srcGUID,srcFlags,dstGUID,dstFlags,spellId)-- Elsia: Overheal missing!!!
+	Recount:AddHealData(srcName, dstName, spellName, healtype, amount,overheal, srcGUID,srcFlags,dstGUID,dstFlags,spellId)-- Elsia: Overheal missing!!!
 end
 
 function Recount:SpellEnergize(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, powerType)
@@ -412,7 +417,13 @@ function Recount:SpellAuraBroken(timestamp, eventtype, srcGUID, srcName, srcFlag
 	if not spellName then
 		spellName = "Melee"
 	end
-	local ability = spellName .. " (" .. extraSpellName .. ")"
+	
+	local ability
+	if extraSpellName then 
+	        ability = spellName .. " (" .. extraSpellName .. ")"
+	else
+		ability = spellName .." (Melee)"
+	end
 
 	if CCId[spellId] then
 		Recount:AddCCBreaker(srcName, dstName, ability, srcGUID, srcFlags, dstGUID, dstFlags, extraSpellId)
@@ -450,6 +461,10 @@ end
 function Recount:SpellAuraAppliedRemovedDose(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, auraType, amount)
 -- Not sure yet how to handle this
 
+end
+
+function Recount:SpellResurrect(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool)
+			Recount:AddRes(srcName, dstName, spellName, srcGUID, srcFlags, dstGUID, dstFlags, spellId)
 end
 
 function Recount:SpellCastStartSuccess(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool)
@@ -557,6 +572,7 @@ local EventParse =
 	["SPELL_AURA_REFRESH"] = Recount.SpellAuraAppliedRemoved, -- New with 2.4.3
 	["SPELL_DISPEL"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3
 	["SPELL_STOLEN"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3
+	["SPELL_RESURRECT"] = Recount.SpellResurrect, -- Post WotLK
 }
 
 function Recount:CheckRetentionFromFlags(nameFlags)
@@ -1632,7 +1648,7 @@ function Recount:AddHealData(source, victim, ability, healtype, amount, overheal
 		else
 			overheal=0
 		end
-	else
+	elseif overheal == nil then
 		overheal=0
 	end
 	Recount:AddOwnerPetLazySyncAmount(sourceData,"Healing", amount)

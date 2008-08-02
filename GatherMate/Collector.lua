@@ -3,9 +3,8 @@ local Collector = GatherMate:NewModule("Collector", "AceEvent-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("GatherMate",true)
 
 -- prevSpell, curSpell are markers for what has been cast now and the lastcast
--- buffsearchstring is for gas extartion detection of the aura event
 -- gatherevents if a flag for wether we are listening to events
-local prevSpell, curSpell, foundTarget, buffSearchString, gatherEvents
+local prevSpell, curSpell, foundTarget, gatherEvents
 
 --[[
 Convert for 2.4 spell IDs
@@ -31,8 +30,13 @@ local strfind, stringmatch = string.find, string.match
 local pii = math.pi
 local sin = math.sin
 local cos = math.cos
-local sub_string = GetLocale() == "deDE" and "%%%d$s" or "%%s"
-buffSearchString = string.gsub(AURAADDEDOTHERHELPFUL, sub_string, "(.+)")
+--[[
+	This search string code no longer needed since we use CombatEvent to detect gas clouds harvesting
+]]
+-- buffsearchstring is for gas extartion detection of the aura event
+-- local buffSearchString
+--local sub_string = GetLocale() == "deDE" and "%%%d$s" or "%%s"
+--buffSearchString = string.gsub(AURAADDEDOTHERHELPFUL, sub_string, "(.+)")
 
 --[[
 	Get the direction the map arrow is facing

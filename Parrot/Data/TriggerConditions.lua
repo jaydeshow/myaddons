@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 78847 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 79256 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-07-21 09:26:11 -0400 (Mon, 21 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-07-27 10:19:08 -0400 (Sun, 27 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("TriggerConditionsData")
@@ -175,7 +175,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 	localName = L["Incoming block"],
 	combatLogEvents = {
 		{
-			eventType = "SWING_MISS",
+			eventType = "SWING_MISSED",
 			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
 				if dstGUID ~= UnitGUID("player") or missType ~= "BLOCK" then
 					return nil
@@ -204,7 +204,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 		},
 		{
 			eventType = "SWING_DAMAGE",
-			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
 				if dstGUID ~= UnitGUID("player") or not critical then
 					return nil
 				end
@@ -233,7 +233,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 	localName = L["Incoming dodge"],
 	combatLogEvents = {
 		{
-			eventType = "SWING_MISS",
+			eventType = "SWING_MISSED",
 			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
 				if dstGUID ~= UnitGUID("player") or missType ~= "DODGE" then
 					return nil
@@ -250,7 +250,7 @@ Parrot:RegisterPrimaryTriggerCondition {
 	localName = L["Incoming parry"],
 	combatLogEvents = {
 		{
-			eventType = "SWING_MISS",
+			eventType = "SWING_MISSED",
 			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
 				if dstGUID ~= UnitGUID("player") or missType ~= "PARRY" then
 					return nil
@@ -267,12 +267,11 @@ Parrot:RegisterPrimaryTriggerCondition {
 	localName = L["Outgoing block"],
 	combatLogEvents = {
 		{
-			eventType = "SWING_MISS",
+			eventType = "SWING_MISSED",
 			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
 				if srcGUID ~= UnitGUID("player") or missType ~= "BLOCK" then
 					return nil
 				end
-				
 				return "Outgoing Block"
 			end,
 		}
@@ -289,19 +288,17 @@ Parrot:RegisterPrimaryTriggerCondition {
 				if srcGUID ~= UnitGUID("player") or not critical then
 					return nil
 				end
-				
-				return "Incoming crit"
+				return "Outgoing crit"
 				
 			end,
 		},
 		{
 			eventType = "SWING_DAMAGE",
-			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
+			triggerData = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
 				if srcGUID ~= UnitGUID("player") or not critical then
 					return nil
 				end
-				
-				return "Incoming crit"
+				return "Outgoing crit"
 				
 			end,
 		},
@@ -311,7 +308,6 @@ Parrot:RegisterPrimaryTriggerCondition {
 				if srcGUID ~= UnitGUID("player") or not critical then
 					return nil
 				end
-				
 				return "Outgoing crit"
 				
 			end,
@@ -325,8 +321,9 @@ Parrot:RegisterPrimaryTriggerCondition {
 	localName = L["Outgoing dodge"],
 	combatLogEvents = {
 		{
-			eventType = "SWING_MISS",
+			eventType = "SWING_MISSED",
 			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				
 				if srcGUID ~= UnitGUID("player") or missType ~= "DODGE" then
 					return nil
 				end
@@ -342,8 +339,9 @@ Parrot:RegisterPrimaryTriggerCondition {
 	localName = L["Outgoing parry"],
 	combatLogEvents = {
 		{
-			eventType = "SWING_MISS",
+			eventType = "SWING_MISSED",
 			triggerData = function( srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType )
+				
 				if srcGUID ~= UnitGUID("player") or missType ~= "PARRY" then
 					return nil
 				end

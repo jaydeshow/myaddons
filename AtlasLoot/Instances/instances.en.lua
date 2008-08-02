@@ -1047,10 +1047,10 @@ AtlasLootBossButtons = {
         "";
         "";
         "SCHOLOTrash";
-        "VWOWScholoCloth";
-        "VWOWScholoLeather";
-        "VWOWScholoMail";
-        "VWOWScholoPlate";
+        "VWOWScholo";
+        "VWOWScholo";
+        "VWOWScholo";
+        "VWOWScholo";
         };
 
     ShadowfangKeep = {

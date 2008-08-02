@@ -1,6 +1,6 @@
 --[[
 Name: LibRockConsole-1.0
-Revision: $Rev: 78797 $
+Revision: $Rev: 79669 $
 Developed by: ckknight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: Library to allow for input/output capabilities from the command line.
@@ -9,7 +9,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibRockConsole-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 78797 $"):match("(%d+)")) - 60000
+local MINOR_VERSION = tonumber(("$Revision: 79669 $"):match("(%d+)")) - 60000
 
 if not Rock then error(MAJOR_VERSION .. " requires LibRock-1.0") end
 
@@ -262,7 +262,7 @@ local function literal_tostring_nonframe(tmp, object, depth)
 	local type_object = type(object)
 	if type_object == "string" then
 		tmp[#tmp+1] = "|cff00ff00"
-		tmp[#tmp+1] = ("%q"):format((object:gsub("|", "||"))):gsub("[\001-\009\011-\031\128-\255]", escapeChar)
+		tmp[#tmp+1] = ("%q"):format((object:gsub("|", "||"))):gsub("[%z\001-\009\011-\031\127-\255]", escapeChar)
 		tmp[#tmp+1] = "|r"
 	elseif type_object == "number" then
 		tmp[#tmp+1] = "|cffff7fff"

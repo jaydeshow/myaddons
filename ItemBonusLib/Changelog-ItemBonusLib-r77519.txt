@@ -1,8 +1,0 @@
-------------------------------------------------------------------------
-r77519 | thrillseeker | 2008-06-27 11:09:05 -0400 (Fri, 27 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/ItemBonusLib/ItemBonusLib-1.0/ItemBonusLib-1.0.lua
-
-ItemBonusLib:
-- added a missing german stat
-------------------------------------------------------------------------

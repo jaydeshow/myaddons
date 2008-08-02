@@ -85,7 +85,7 @@ L:RegisterTranslations("zhCN", function() return {
 	riding_bar = "<快跑：%s>",
 
 	icon = "团队标记",
-	icon_desc = "给中了小红帽的打上团队标记。（需要权限）",
+	icon_desc = "标记小红帽。（需要权限）",
 } end )
 
 L:RegisterTranslations("zhTW", function() return {
@@ -127,7 +127,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {lady, boss}
 mod.guid = 17521
 mod.toggleoptions = {"youriding", "elseriding", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

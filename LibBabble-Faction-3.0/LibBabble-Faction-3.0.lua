@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Faction-3.0
-Revision: $Rev: 78541 $
+Revision: $Rev: 79388 $
 Author(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Faction-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Faction-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Faction-3.0"
-local MINOR_VERSION = "$Revision: 78541 $"
+local MINOR_VERSION = "$Revision: 79388 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -735,7 +735,7 @@ elseif GAME_LOCALE == "ruRU" then
 	["Neutral"] = "Равнодушие",
 	["Friendly"] = "Дружелюбие",
 	["Honored"] = "Уважение",
-	["Revered"] = "Почтитение",
+	["Revered"] = "Почтение",
 	["Exalted"] = "Восторг",
 }
 else

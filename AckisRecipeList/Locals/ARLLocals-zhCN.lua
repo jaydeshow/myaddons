@@ -5,8 +5,8 @@ ARLLocals-zhCN.lua
 
 zhCN localization strings for Ackis Recipe List
 
-$Date: 2008-07-15 22:58:25 -0400 (Tue, 15 Jul 2008) $
-$Rev: 78527 $
+$Date: 2008-07-28 22:02:21 -0400 (Mon, 28 Jul 2008) $
+$Rev: 79362 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: Kurax, 冰焱妩魅 @ CWDG
@@ -107,6 +107,7 @@ L["RecipeListSummary"] = "\n已经学会 %s 个，总数 %s 个 (%s%%)\n遗漏�
 L["UnknownTradeSkill"] = "您打开了一个插件不支持的交易技能窗口。这个交易技能插件是 %s 。请向作者提供该信息，谢谢。"
 L["OpenTradeSkillWindow"] = "请先打开一个想要扫描的交易技能。"
 L["TwoCraftingWindows"] = "交易技能窗口处于开启状态。如果你想扫描遗漏的配方，请关闭另外那个并重新打开这个窗口。"
+L["SpellIDCache"] = "法术ID: %s 没有处于你的本地缓存中。"
 
 -- GUI Text
 L["Close"] = "关闭"

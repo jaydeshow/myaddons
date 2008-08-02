@@ -1,6 +1,6 @@
 ﻿--[[
 Name: ItemBonusLib-1.0
-Revision: $Rev: 77519 $
+Revision: $Rev: 79603 $
 Author(s): Jerry
 Documentation: http://wiki.wowace.com/index.php/ItemBonusLib-1.0
 SVN: http://svn.wowace.com/root/trunk/ItemBonusLib/ItemBonusLib-1.0
@@ -15,7 +15,7 @@ local ipairs = ipairs
 local assert = assert
 local strtrim = strtrim
 local MAJOR_VERSION = "ItemBonusLib-1.0"
-local MINOR_VERSION = "$Revision: 77519 $"
+local MINOR_VERSION = "$Revision: 79603 $"
 
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
 
@@ -2280,6 +2280,7 @@ do -- localisation of regexp
 				CR_SPELLHASTE = "Zaubergeschwindigkeit",
 				CR_RANGEDHASTE = "Fernkampfgeschwindigkeit",
 				CR_RESILIENCE = "Abhärtungswertung",
+				CR_EXPERTISE = "Waffenkundewertung",
 			},
 
 			PATTERNS_SKILL_RATING = {},
@@ -2320,6 +2321,7 @@ do -- localisation of regexp
 				{ pattern = ".+ Distanztempowertung um (%d+)%.", effect = "CR_RANGEDHASTE"},
 				{ pattern = "Eure Angriffe ignorieren (%d+) R\195\188stung Eures Gegners%.", effect = "IGNOREARMOR"},
 				{ pattern = "Erhöht Tempowertung um (%d+)%.", effect = "CR_HASTE"},
+				{ pattern = ".+ Eure Waffenkundewertung um (%d+)%.", effect =  "CR_EXPERTISE" },
 
 				-- Atiesh related patterns
 				{ pattern = "Erhöht Euren Zauberschaden um bis zu (%d+) und Eure Heilung um bis zu (%d+)%.", effect = {"DMG","HEAL"} },

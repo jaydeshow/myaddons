@@ -5,8 +5,8 @@ ARLColour.lua
 
 Colouring functions for ARL
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-08-02 04:30:55 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79644 $
 
 Code adopted from Crayon library
 
@@ -22,18 +22,23 @@ local addon = AckisRecipeList
 
 ]]--
 
-local RED       = "ff0000"
-local ORANGE    = "ff7f00"
-local YELLOW    = "ffff00"
-local GREEN     = "00ff00"
-local WHITE     = "ffffff"
-local COPPER    = "eda55f"
-local SILVER    = "c7c7cf"
-local GOLD      = "ffd700"
-local PURPLE    = "9980CC"
-local BLUE	   = "0000ff"
-local CYAN	   = "00ffff"
-local BLACK	   = "000000"
+local RED		= "ff0000"
+local ORANGE	= "ff7f00"
+local YELLOW	= "ffff00"
+local GREEN		= "00ff00"
+local WHITE		= "ffffff"
+local COPPER	= "eda55f"
+local SILVER	= "c7c7cf"
+local GOLD		= "ffd700"
+local PURPLE	= "9980CC"
+local BLUE		= "0000ff"
+local CYAN		= "00ffff"
+local BLACK		= "000000"
+local NEUTRAL	= "bfbfbf"
+local FRIENDLY	= WHITE
+local HONORED	= "00ff00"
+local REVERED	= "3f66e5"
+local EXALTED	= "9933cc"
 
 --[[
 
@@ -51,6 +56,31 @@ function addon:Colourize(hexColour, text)
 
 	return "|cff" .. tostring(hexColour or 'ffffff') .. tostring(text) .. "|r"
 
+end
+
+-- Converts text to Neutral Colour
+function addon:Neutral(text)
+	return self:Colourize(NEUTRAL, text)
+end
+
+-- Converts text to Friendly Colour
+function addon:Friendly(text)
+	return self:Colourize(FRIENDLY, text)
+end
+
+-- Converts text to Honored Colour
+function addon:Honored(text)
+	return self:Colourize(HONORED, text)
+end
+
+-- Converts text to Revered Colour
+function addon:Revered(text)
+	return self:Colourize(REVERED, text)
+end
+
+-- Converts text to Exalted Colour
+function addon:Exalted(text)
+	return self:Colourize(EXALTED, text)
 end
 
 -- Converts text to Red

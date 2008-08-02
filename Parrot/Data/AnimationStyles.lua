@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 73474 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 79532 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-11 11:44:45 -0400 (Sun, 11 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-07-30 18:33:48 -0400 (Wed, 30 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- local L = Parrot:L("Parrot_AnimationStyles")
@@ -147,6 +147,55 @@ Parrot:RegisterAnimationStyle {
 			end	
 			x = x + frame.squiggleX
 			y = y + frame.squiggleY
+		end
+	
+		frame:SetPoint(validPoints[align] or "CENTER", UIParent, "CENTER", x, y)
+	end,
+	cleanup = function(frame, scrollArea)
+		frame.nextSquiggle = nil
+		frame.squiggleX = nil
+		frame.squiggleY = nil
+	end,
+	defaultDirection = "DOWN;CENTER",
+	directions = {
+		["UP;LEFT"] = L["Up, left-aligned"],
+		["UP;RIGHT"] = L["Up, right-aligned"],
+		["UP;CENTER"] = L["Up, center-aligned"],
+		["DOWN;LEFT"] = L["Down, left-aligned"],
+		["DOWN;RIGHT"] = L["Down, right-aligned"],
+		["DOWN;CENTER"] = L["Down, center-aligned"],
+	},
+}
+
+Parrot:RegisterAnimationStyle {
+	-- places in the center and shakes around
+	name = "Pow2",
+	localName = L["Pow"] .. 2,
+	func = function(frame, xOffset, yOffset, size, percent, direction, num, max, uid)
+		local fsHeight = frame.fontSize
+		local topDiff = (max - 1) * 0.5 * fsHeight
+		local currDiff = -(num - 1) * fsHeight
+		local yDiff = topDiff + currDiff
+		local vert, align = (';'):split(direction)
+		if vert == "DOWN" then
+			yDiff = -yDiff
+		end
+		local y = yOffset + yDiff
+		local x = xOffset
+		if percent < 0.1 then
+			local newFSHeight = fsHeight*(20*(0.1-percent)+1)
+			frame.fs:SetFont(frame.font, newFSHeight, frame.fontOutline)
+			if frame.icon then
+				frame.icon:SetWidth(newFSHeight)
+				frame.icon:SetHeight(newFSHeight)
+			end
+		else
+			frame.fs:SetFont(frame.font, fsHeight, frame.fontOutline)
+			if frame.icon then
+				frame.icon:SetWidth(fsHeight)
+				frame.icon:SetHeight(fsHeight)
+			end
+			
 		end
 	
 		frame:SetPoint(validPoints[align] or "CENTER", UIParent, "CENTER", x, y)

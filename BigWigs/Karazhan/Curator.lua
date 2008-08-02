@@ -100,8 +100,8 @@ L:RegisterTranslations("koKR", function() return {
 L:RegisterTranslations("zhCN", function() return {
 	berserk_trigger = "展览厅只对访客开放。",
 
-	enrage_message = "狂暴！",
-	enrage_warning = "馆长将进入狂暴！",
+	enrage_message = "激怒！",
+	enrage_warning = "馆长将进入激怒状态！",
 
 	weaken = "唤醒",
 	weaken_desc = "当馆长进入唤醒时发送警告。",
@@ -169,7 +169,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 15691
 mod.toggleoptions = {"weaken", "weaktime", "berserk", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

@@ -1,6 +1,6 @@
 --[[
 Name: Quixote-1.0
-Revision: $Revision: 58140 $
+Revision: $Revision: 79534 $
 Author(s): Kemayo (kemayo@gmail.com)
 Website: http://www.wowace.com/wiki/Quixote-1.0
 Documentation: http://www.wowace.com/wiki/Quixote-1.0
@@ -11,7 +11,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "Quixote-1.0"
-local MINOR_VERSION = "$Revision: 58140 $"
+local MINOR_VERSION = "$Revision: 79534 $"
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -42,6 +42,9 @@ elseif GetLocale() == "zhCN" then
 elseif GetLocale() == "zhTW" then
 	UPGRADEMSG1 = "%s嘗試和你分享任務資訊，但有較新的插件。請更新!"
 	UPGRADEMSG2 = "你的 Quixote 程式庫比%s的舊 -- 請更新你的插件。"
+elseif GetLocale() == "ruRU" then --Translation by Eritnull (StingerSoft aka Шептун)
+	UPGRADEMSG1 = "%s находится на рассмотрении для совместного использования информации о заданиях, но у него новейшая версия аддона; пожалуйста обновите"
+	UPGRADEMSG2 = "У вас устаревшая версия библиотеки Quixote нежели %s -- пожалуйста обновите аддон заданий который использует данную библиотеку."
 end
 
 local tag = {

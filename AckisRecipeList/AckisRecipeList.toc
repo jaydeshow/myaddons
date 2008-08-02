@@ -2,6 +2,7 @@
 ## Title-enUS: Ackis Recipe List
 ## Title-enGB: Ackis Recipe List
 ## Title-koKR: Ackis의 제조법 리스트
+## Title-deDE: Ackis Rezeptliste
 
 ## Notes: Displays a list of missing recipes for your trade skills.  Works with all trade skills, including rogue poisons and hunter beast training.
 ## Notes-enUS: Displays a list of missing recipes for your trade skills.  Works with all trade skills, including rogue poisons and hunter beast training.
@@ -21,11 +22,11 @@
 ## X-Donate: Send me UDE Point codes, a Murky Code, or donate a few bucks/hours at your local animal shelter.
 
 ## Interface: 20400
-## Version: 0.93
-## X-Revision: $Rev: 78932 $
-## X-Date: $Date: 2008-07-22 15:30:32 -0400 (Tue, 22 Jul 2008) $
+## Version: 0.932
+## X-Revision: $Rev: 79649 $
+## X-Date: $Date: 2008-08-02 05:18:05 -0400 (Sat, 02 Aug 2008) $
 
-## X-credits: FGWarmonger, Speeddymon, Xinhuan, Zhinjio
+## X-credits: FGWarmonger, Kagaro, Speeddymon, Xinhuan, Zhinjio
 
 ## X-Category: Tradeskill
 ## X-Localizations: enUS, enGB, frFR, zhCN, zhTW, deDE, koKR, esES, esMX
@@ -33,6 +34,8 @@
 ## X-Feedback: http://www.curse.com/downloads/details/10057/
 ## X-AceForum: 11798
 ## X-RelSite-Curse: 10057
+## X-RelSite-WoWI: 8512
+## X-RelSite-WoWUI: 5061
  
 ## X-LoadOn-Slash: /arl
 ## Dependencies:
@@ -40,11 +43,12 @@
 ## OptionalDeps: Ace3, LibStub, CallbackHandler-1.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, Skillet, ATSW, Manufac
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
- 
+
 ## SavedVariables: AckisRecipeListDB
- 
+
 embeds.xml
 
+# Localization files
 Locals\ARLLocals-enUS.lua
 Locals\ARLLocals-enGB.lua
 Locals\ARLLocals-koKR.lua
@@ -62,6 +66,7 @@ ARLFrame.lua
 ARLText.lua
 ARLColour.lua
 
+# Recipe database files
 RecipeDB\ARL-Alchemy.lua
 RecipeDB\ARL-BeastTrain.lua
 RecipeDB\ARL-BlackSmith.lua

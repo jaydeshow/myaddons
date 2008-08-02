@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-07-22 15:30:32 -0400 (Tue, 22 Jul 2008) $
-$Rev: 78932 $
+$Date: 2008-08-02 05:10:56 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79647 $
 
 Author: Ackis on Illidan US Horde
 
@@ -70,6 +70,7 @@ Flags are different flags which allow me to filter out the recipes.  These flags
 		-- 15 = tanking
 		-- 16 = healing
 		-- 17 = caster DPS
+		-- 18 = world drop
 
 There are additional flags based off of which faction reputation you can obtain the recipe from.
 
@@ -100,6 +101,23 @@ addon.FilteredRecipes = nil
 addon.NumberOfRecipes = nil
 addon.ResetOkayBlizz = nil
 addon.ResetOkayARL = nil
+-- To make tabbing between professions easier
+addon.KnowProfession = {
+	["Alchemy"] = false,
+	["Blacksmithing"] = false,
+	["Cooking"] = false,
+	["Engineering"] = false,
+	["Enchanting"] = false,
+	["First Aid"] = false,
+	["Leatherworking"] = false,
+	["Poisons"] = false,
+	["Smelting"] = false,
+	["Tailoring"] = false,
+	["Jewelcrafting"] = false,
+	["Beast Training"] = false,
+	["Inscription"] = false,
+	}
+addon.wrath = false
 
 -- Frame variables
 addon.ScanButton = nil
@@ -133,6 +151,7 @@ local BOOKTYPE_SPELL = BOOKTYPE_SPELL
 local addonversion = GetAddOnMetadata("AckisRecipeList", "Version") .. " v." .. string.sub(GetAddOnMetadata("AckisRecipeList", "X-Revision"):gsub("$Rev:", ""),1,-2) -- No spaces because GetAddOnMetadata doesn't like it
 local nagrandfac = BFAC["Kurenai"] .. "\\" .. BFAC["The Mag'har"]
 local hellfirefac = BFAC["Honor Hold"] .. "\\" .. BFAC["Thrallmar"]
+local factionlevels = {}
 
 -- Global constants which are used between multiple files
 addon.ARLTitle = "Ackis Recipe List v." .. addonversion
@@ -413,6 +432,15 @@ local function giveFilter()
 						get       = function() return addon.db.profile.seasonal end,
 						set       = function() addon.db.profile.seasonal = not addon.db.profile.seasonal end,
 						order     = 80,
+					},
+					worlddrop =
+					{
+						name      = L["World Drop"],
+						desc      = L["WORLD_DROP_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.worlddrop end,
+						set       = function() addon.db.profile.worlddrop = not addon.db.profile.worlddrop end,
+						order     = 81,
 					},
 					cloth =
 					{
@@ -836,6 +864,7 @@ function addon:OnInitialize()
 			seasonal = true,
 			quest = true,
 			pvp = true,
+			worlddrop = true,
 			cloth = true,
 			leather = true,
 			mail = true,
@@ -872,6 +901,11 @@ function addon:OnInitialize()
 		}
 	)
 
+	-- Populate the repuatation level
+	self:GetFactionLevels()
+	-- Populate the known professions
+	--self:GetKnownProfessions()
+
 end
 
 -- Register events and create the scan button on enable
@@ -895,6 +929,12 @@ function addon:OnEnable()
 			func = function() addon:AckisRecipeList_Command() end,
 			order = 550,
 		}
+	end
+
+	local _, _, _, ver = GetBuildInfo()
+	if ver >= 30000 then
+		self:Print("Enabling WotLK compatibility")
+		addon.wrath = true
 	end
 
 	--Create the button now for later use
@@ -1010,21 +1050,29 @@ end
 -- Slash command handler
 
 function addon:ChatCommand(input)
-	if (not input) or (input:trim() == "") or (input == string.lower(L["About"])) then
-		-- Open About panel if there's no parameters
+
+	if (addon.wrath) then
 		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["About"]])
-		--InterfaceOptionsFrame_OpenToFrame(self.optionsFrame)
-	elseif (input == string.lower(L["Sort"])) then
-		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Sort"]])
-	elseif (input == string.lower(L["Filter"])) then
-		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Filter"]])
-	elseif (input == string.lower(L["Display"])) then
-		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Display"]])
-	elseif (input == string.lower(L["Profile"])) then
-		InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Profile"]])
 	else
-		LibStub("AceConfigCmd-3.0"):HandleCommand("arl", "Ackis Recipe List", input)
+
+		if (not input) or (input and input:trim() == "") or (input == string.lower(L["About"])) then
+			-- Open About panel if there's no parameters
+			InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["About"]])
+			--InterfaceOptionsFrame_OpenToFrame(self.optionsFrame)
+		elseif (input == string.lower(L["Sort"])) then
+			InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Sort"]])
+		elseif (input == string.lower(L["Filter"])) then
+			InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Filter"]])
+		elseif (input == string.lower(L["Display"])) then
+			InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Display"]])
+		elseif (input == string.lower(L["Profile"])) then
+			InterfaceOptionsFrame_OpenToFrame(self.optionsFrame[L["Profile"]])
+		else
+			LibStub("AceConfigCmd-3.0"):HandleCommand("arl", "Ackis Recipe List", input)
+		end
+
 	end
+
 end
 
 
@@ -1327,6 +1375,7 @@ do
 		-- 15 = tanking
 		-- 16 = healing
 		-- 17 = caster DPS
+		-- 18 = world drop
 
 
 		-- Update the rep table with appropiate flags
@@ -1453,6 +1502,12 @@ do
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
+				
+				-- Display world drop recipes
+				if (not addon.db.profile.worlddrop) and (CurrentCheck == 18) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
 
 				-- Display all faction recipes -and make sure the check is Horde or Alliance
 				if (not addon.db.profile.faction) and ((CurrentCheck == BFAC["Horde"]) or (CurrentCheck == BFAC["Alliance"])) and (CurrentCheck ~= playerFaction) then
@@ -1527,6 +1582,7 @@ do
 				return spellName
 			end
 		end
+
 	end
 
 end
@@ -1676,16 +1732,26 @@ end
 -- Combines repuation level and faction name into a single string.
 
 function addon:AddSingleReputation(RepLevel, Faction)
-	if (RepLevel == 1) then
-		return format("%s: %s - %s",L["Reputation"],Faction,self:White(BFAC["Friendly"]))
-	elseif (RepLevel == 2) then
-		return format("%s: %s - %s",L["Reputation"],Faction,self:Green(BFAC["Honored"]))
-	elseif (RepLevel == 3) then
-		return format("%s: %s - %s",L["Reputation"],Faction,self:Blue(BFAC["Revered"]))
-	elseif (RepLevel == 4) then
-		return format("%s: %s - %s",L["Reputation"],Faction,self:Purple(BFAC["Exalted"]))
+
+	local newfaction
+
+	if (not factionlevels[Faction] or factionlevels[Faction] <= RepLevel) then
+		newfaction = format("%s: %s -",self:Red(L["Reputation"]),self:Red(Faction))
 	else
-		return format("%s: %s - %s",L["Reputation"],Faction,RepLevel)
+		newfaction = format("%s: %s -",L["Reputation"],Faction)
+	end
+
+	if (RepLevel == 1) then
+		return format("%s %s",newfaction,self:Friendly(BFAC["Friendly"]))
+	elseif (RepLevel == 2) then
+		return format("%s %s",newfaction,self:Honored(BFAC["Honored"]))
+	elseif (RepLevel == 3) then
+		return format("%s %s",newfaction,self:Revered(BFAC["Revered"]))
+	elseif (RepLevel == 4) then
+		return format("%s %s",newfaction,self:Exalted(BFAC["Exalted"]))
+	else
+		self:Print(format(L["FactionError"],RepLevel))
+		return format("%s %s",newfaction,RepLevel)
 	end
 end
 
@@ -1812,6 +1878,7 @@ local function InitializeTradeRecipes(CurrentProfession)
 		[GetSpellInfo(2575)] = addon.InitSmelting,
 		[GetSpellInfo(3908)] = addon.InitTailoring,
 		[GetSpellInfo(25229)] = addon.InitJewelcrafting,
+		--[GetSpellInfo()] = addon.InitInscription,
 	}
 
 	-- Thanks to sylvanaar/xinhuan for the code snippet
@@ -1854,6 +1921,40 @@ local function InitializeCraftRecipes(CurrentProfession)
 	end
 
 	return CurrentProfessionLevel
+
+end
+
+-- Gets all the factions the player knows and their rep levels
+
+function addon:GetFactionLevels()
+
+	for i=1,GetNumFactions(),1 do
+		local name,_,replevel = GetFactionInfo(i)
+		-- If the rep is greater than neutral
+		if (replevel > 4) then
+			-- We use levels of 0, 1, 2, 3, 4 internally for reputation levels, make it corrospond here
+			factionlevels[name] = replevel - 4
+		end
+	end
+
+end
+
+-- Scans the first 24 entries in the spellbook to find out which professions you know.
+
+function addon:GetKnownProfessions()
+
+	for index=1,25,1 do
+		local spellName = GetSpellName(index, BOOKTYPE_SPELL)
+
+		-- Nothing found
+		if (not spellName) or (index == 25) then
+			break
+		end
+
+		if (addon.KnowProfession[spellName] == false) then
+			addon.KnowProfession[spellName] = true
+		end
+	end
 
 end
 
@@ -2044,4 +2145,3 @@ function addon:AckisRecipeList_Command()
 	end
 
 end
-

@@ -23,7 +23,6 @@ L:AddTranslations("esES", function() return {
 	["Waiting for Location update"] = "Esperando una actualización de la Localización",
 	["Guild Member not locatable"] = "Miembro de la Hermandad no localizable",
 } end)
-
 -- Russian Translation by StingerSoft (Eritnull aka Шептун)
 L:AddTranslations("ruRU", function() return {
 	["Pending update"] = "Задержка обновления",

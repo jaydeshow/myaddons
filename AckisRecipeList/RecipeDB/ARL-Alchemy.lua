@@ -4,8 +4,8 @@ ARL-Alchemy.lua
 
 Alchemy data for all of AckisRecipeList
 
-$Date: 2008-07-15 11:23:30 -0400 (Tue, 15 Jul 2008) $
-$Rev: 78484 $
+$Date: 2008-08-02 03:47:05 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79641 $
 
 ]]--
 
@@ -134,7 +134,7 @@ function addon:InitAlchemy()
 	self:addTradeSkillSpell(3451, 180, L["CWD"] .. addon.br .. L["Mighty Trolls Blood Potion Obt"] .. BZONE["Razorfen Downs"],1,3)
 	self:addTradeSkillSpell(11456, 210, L["Goblin Rocket Fuel Obt"])
 	self:addTradeSkillSpell(4942, 215, self:CombineQuests(L["Lesser Stoneshield Potion Obt"],0,BZONE["Badlands"]),8)
-	self:addTradeSkillSpell(11452, 215, self:CombineQuests(L["Restorative Potion Obt"],0,BZONE["Badlands"]),8)
+	self:addTradeSkillSpell(11452, 215, self:CombineQuests(L["Restorative Potion Obt"],2,BZONE["Badlands"],L["Restorative Potion Obt"],1,BZONE["Loch Modan"]),8)
 	self:addTradeSkillSpell(11458, 225, self:CombineMobs(true,L["Wildvine Potion Obt"],BZONE["Stranglethorn Vale"]) .. addon.br .. self:CombineMobs(true,L["Wildvine Potion Obt"],BZONE["The Hinterlands"]),3)
 	self:addTradeSkillSpell(11466, 240, self:CombineMobs(true,L["Gift of Arthas Obt"],BZONE["Western Plaguelands"]),3)
 	self:addTradeSkillSpell(26277, 250, self:CombineMobs(true,L["Elixir of Greater Firepower Obt"],BZONE["Searing Gorge"]),3)

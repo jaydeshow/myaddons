@@ -1,169 +1,150 @@
-MAX_SPELLS = 1024;
-MAX_SKILLLINE_TABS = 8;
-SPELLS_PER_PAGE = 12;
-MAX_SPELL_PAGES = ceil(MAX_SPELLS / SPELLS_PER_PAGE);
-BOOKTYPE_SPELL = "spell";
-BOOKTYPE_PET = "pet";
+BAD_SPELL_ID = 1025; -- This is when functions fail
 SPELL_ID_LIST = {}; 
 SPELL_NUM = 0; -- How many items in SPELL_ID_LIST
+SPELL_ID_MAX = 0; -- Highest Spell ID in list
+FRAME_TAB_LIST = {}; -- For 3.00 Compatibility
+StandardToggle = {}; -- Holds old ToggleSpellBook function
 
 ------
 -- SpellBook Frame
 ------
 
-function SBL_ToggleSpellBook(bookType)
-	-- This is called when the SpellBook or the Pet SpellBook are opened
-	-- If calling one book with the other open will toggle over to the the called book
-
-	-- Set Tabs on first run.
-	-- Solves a loading problem
-	if (SBL_SpellBookFrame.construct) then
-		SBL_SpellBookFrame.construct = nil;
-		SBL_SpellBookFrame_UpdateStructure(SBL_SpellBookFrame);
-	end
-	
-	-- If has no pet spells and is trying to open the corresponding book, then do nothing
+function CSB_ToggleSpellBook(bookType)
 	local hasPet = HasPetSpells();
-	if ( not hasPet and bookType == BOOKTYPE_PET ) then
+	if ( (not hasPet) and bookType == BOOKTYPE_PET ) then
 		return;
 	end
 	
-	local isShown = SBL_SpellBookFrame:IsShown();
-	HideUIPanel(SBL_SpellBookFrame);
-	local isChanged = (SBL_SpellBookFrame.bookType ~= bookType);
+	local isShown = CSB_SpellBookFrame:IsShown();
+	local isChanged = (SpellBookFrame.bookType ~= bookType);
+	HideUIPanel(CSB_SpellBookFrame);
+
 	if ( (not isShown or isChanged) ) then
-		SBL_SpellBookFrame.bookType = bookType;
-		SBL_SpellBookTitleText:SetText(SPELLBOOK);
-		if ( hasPet ) then
-			if( isChanged ) then
-				SBL_SpellBook_UpdateLists();
-			end
-			local skillTab = getglobal("SBL_SpellBookSkillLineTab"..SBL_SpellBookFrame.selectedSkillLine);
-			if (bookType == BOOKTYPE_PET) then
-				SBL_SpellBookFrameTabButton1:Enable();
-				SBL_SpellBookFrameTabButton2:Disable();
-				skillTab:SetChecked(nil);
-				skillTab:Enable();
-			else
-				SBL_SpellBookFrameTabButton1:Disable();
-				SBL_SpellBookFrameTabButton2:Enable();
-				skillTab:SetChecked(1);
-				skillTab:Disable();
+		SpellBookFrame.bookType = bookType;
+		if (hasPet) then
+			CSB_SetFrameTabs(FRAME_TAB_LIST[bookType]);
+			if (isChanged) then
+				CSB_UpdateSpellList();
 			end
 		end
-		ShowUIPanel(SBL_SpellBookFrame);
+		ShowUIPanel(CSB_SpellBookFrame);
 	end
 end
 
--- Hook new ToggleSpellBook option
-ToggleSpellBook = SBL_ToggleSpellBook;
-
-function SBL_SpellBookFrame_OnLoad(self)
-	-- Register Events
-	self:RegisterEvent("LEARNED_SPELL_IN_TAB");
-	self:RegisterEvent("PLAYER_LOGIN");
-	-- Set main variables for operation
-	self.bookType = BOOKTYPE_SPELL;
-	self.selectedSkillLine = 1;
-	
-	-- Init page nums
-	SPELLBOOK_PAGENUMBERS[1] = 1;
-	SPELLBOOK_PAGENUMBERS[2] = 1;
-	SPELLBOOK_PAGENUMBERS[3] = 1;
-	SPELLBOOK_PAGENUMBERS[4] = 1;
-	SPELLBOOK_PAGENUMBERS[5] = 1;
-	SPELLBOOK_PAGENUMBERS[6] = 1;
-	SPELLBOOK_PAGENUMBERS[7] = 1;
-	SPELLBOOK_PAGENUMBERS[8] = 1;
-	SPELLBOOK_PAGENUMBERS[BOOKTYPE_PET] = 1;
-
-	-- A little less optimal, but solves a loading issue
-	SBL_SpellBookFrame.construct = 1;
-	-- Set to the first tab by default
-	SBL_SpellBookSkillLineTab_OnClick(SBL_SpellBookSkillLineTab1);
-	-- Initialize tab flashing
-	self.flashTabs = nil;
+function CSB_BookSwap(self)
+	local skillTab = getglobal("CSB_SpellBookSkillLineTab"..SpellBookFrame.selectedSkillLine);
+	if (self:GetID() == 1) then
+		skillTab:Enable();
+		skillTab:SetChecked(nil);
+		HideUIPanel(CSB_SpellBookFrame);
+		ToggleSpellBook = StandardToggle;
+	else
+		CSB_SpellBookSkillLineTab_OnClick(skillTab);
+		HideUIPanel(SpellBookFrame);
+		ToggleSpellBook = CSB_ToggleSpellBook;
+	end
+	ToggleSpellBook(BOOKTYPE_SPELL);
 end
 
-function SBL_SpellBookFrame_OnEvent(self,event)
-	if ( event == "LEARNED_SPELL_IN_TAB" ) then
-		SBL_SpellBookFrame_UpdateStructure(self);
-		local flashFrame = getglobal("SBL_SpellBookSkillLineTab"..arg1.."Flash");
-		if ( SBL_SpellBookFrame.bookType == BOOKTYPE_PET ) then
+function Update_FrameTab4()
+	CSB_SpellBookFrameTabButton4:Show();
+	if (HasPetSpells()) then
+		SpellBookFrameTabButton4:SetPoint("CENTER",SpellBookFrame,"BOTTOMLEFT",79,36);
+	else
+		SpellBookFrameTabButton4:SetPoint("CENTER",SpellBookFrame,"BOTTOMLEFT",79,61);
+	end
+end
+
+function CSB_SpellBookFrame_OnLoad(self)
+	-- Register Events
+	self:RegisterEvent("SKILL_LINES_CHANGED");
+	self:RegisterEvent("UNIT_PET");
+	self:RegisterEvent("LEARNED_SPELL_IN_TAB");
+
+	SpellBookFrame.bookType = BOOKTYPE_SPELL;
+	SpellBookFrame.selectedSkillLine = 1;
+	
+	FRAME_TAB_LIST[BOOKTYPE_SPELL] = 1;
+	FRAME_TAB_LIST[BOOKTYPE_PET] = 2;
+	
+	-- Set Swap Buttons and Tabs that will never change
+	CSB_SpellBookFrameTabButton4:SetScript("OnClick", CSB_BookSwap);
+	CSB_SpellBookFrameTabButton4.bookType = BOOKTYPE_SPELL;
+	CSB_SpellBookFrameTabButton4:SetText("Regular SpellBook");
+	CSB_SpellBookFrameTabButton4.binding = "";
+	CSB_SpellBookFrameTabButton4:Show();
+	CSB_SpellBookFrameTabButton4:SetID(1);
+
+	otherTab = CreateFrame("Button","SpellBookFrameTabButton4",SpellBookFrame,"SpellBookFrameTabButtonTemplate");
+	otherTab:SetScript("OnClick", CSB_BookSwap);
+	otherTab.bookType = BOOKTYPE_SPELL;
+	otherTab:SetText("Condensed Book");
+	otherTab.binding = "";
+	otherTab:Show();
+	otherTab:SetID(2);
+	
+	CSB_SpellBookFrameTabButton1.bookType = BOOKTYPE_SPELL;
+	CSB_SpellBookFrameTabButton1:SetText(SPELLBOOK);
+	CSB_SpellBookFrameTabButton1.binding = "TOGGLESPELLBOOK";
+
+	-- Set Hooks
+	StandardToggle = ToggleSpellBook;
+	ToggleSpellBook = CSB_ToggleSpellBook;
+	hooksecurefunc("SpellBookFrame_Update",Update_FrameTab4);
+	self.flashTabs = nil; -- No objects need flashing
+end
+
+function CSB_SpellBookFrame_OnEvent(self,event,...)
+	if ( event == "SKILL_LINES_CHANGED" ) then
+		-- Skills Changed, check tabs
+		CSB_UpdateSkillTabs(); -- Set SkillTabs
+		CSB_SpellBookSkillLineTab_OnClick(CSB_SpellBookSkillLineTab1); -- Initialize to first tab	
+	elseif ( event == "UNIT_PET" ) then
+		-- Pet Summoned, Dismissed, or changed
+		CSB_UpdateFrameTabs(); -- Adjust Frame Tabs
+	elseif ( event == "LEARNED_SPELL_IN_TAB" ) then
+		-- Update Tabs and set the tab that will flash
+		CSB_UpdateTabs();
+		local flashFrame = getglobal("SpellBookSkillLineTab"..arg1.."Flash");
+		if ( SpellBookFrame.bookType == BOOKTYPE_PET ) then
 			return;
 		else
 			if ( flashFrame ) then
 				flashFrame:Show();
-				SBL_SpellBookFrame.flashTabs = 1;
+				SpellBookFrame.flashTabs = 1;
 			end
 		end
-	elseif ( event == "PLAYER_LOGIN" ) then
-		SpellBookFrame:UnregisterAllEvents();
 	end
 end
 
-function SBL_SpellBookFrame_OnShow(self)
-	SBL_SpellBookFrame_UpdatePages();
+function CSB_SpellBookFrame_OnShow(self)
+	-- Update the Page and play open sound
+	CSB_SpellBookFrame_UpdatePage();
 	PlaySound("igSpellBookOpen");
 	
-	if ( SBL_SpellBookFrame.flashTabs ) then
-		UIFrameFlash(SBL_SpellBookTabFlashFrame, 0.5, 0.5, 30, nil);
+	if ( self.flashTabs ) then
+		UIFrameFlash(CSB_SpellBookTabFlashFrame, 0.5, 0.5, 30, nil);
 	end
 
 	-- Show multibar slots
 	MultiActionBar_ShowAllGrids();
-	SBL_UpdateMicroButtons();
+	CSB_UpdateMicroButtons();
 end
 
-function SBL_SpellBookFrame_UpdateStructure(self)
-	local numSkillLines = GetNumSpellTabs();
-	local name, texture;
-	local skillLineTab;
-	for i=1, MAX_SKILLLINE_TABS do
-		skillLineTab = getglobal("SBL_SpellBookSkillLineTab"..i);
-		if ( i <= numSkillLines ) then
-			name, texture = GetSpellTabInfo(i);
-			skillLineTab:SetNormalTexture(texture);
-			skillLineTab.tooltip = name;
-			skillLineTab:Show();
-		else
-			skillLineTab:Hide();
-		end
-	end	
-
-	local hasPets, petToken = HasPetSpells();
-	SBL_SpellBookFrame.petTitle = nil;
-	if ( hasPets ) then
-		-- SpellBook Tab
-		SBL_SpellBookFrameTabButton1.bookType = BOOKTYPE_SPELL;
-		SBL_SpellBookFrameTabButton1:SetText(SPELLBOOK);
-		SBL_SpellBookFrameTabButton1.binding = "TOGGLESPELLBOOK";
-		SBL_SpellBookFrameTabButton1:Show();
-		-- Pet Book Tab
-		SBL_SpellBookFrameTabButton2.bookType = BOOKTYPE_PET;
-		SBL_SpellBookFrameTabButton2:SetText(getglobal("PET_TYPE_"..petToken));
-		SBL_SpellBookFrameTabButton2.binding = "TOGGLEPETBOOK";
-		SBL_SpellBookFrameTabButton2:Show();
-		SBL_SpellBookFrame.petTitle = getglobal("PET_TYPE_"..petToken);
-		-- Place Holder 3rd Tab
-		SBL_SpellBookFrameTabButton3:Hide();
-	end
-	SBL_SpellBook_UpdateLists();
-end
-
-function SBL_SpellBookFrame_OnHide(self)
-	if ( self.bookType == BOOKTYPE_SPELL ) then
+function CSB_SpellBookFrame_OnHide(self)
+	-- Play Close sound and remove flashing items
+	if ( SpellBookFrame.bookType == BOOKTYPE_SPELL ) then
 		-- Spell Book Sound
 		PlaySound("igSpellBookClose");
 	else
 		-- Pet Book Sound
 		PlaySound("igAbilityClose");
 	end
-	SBL_UpdateMicroButtons();
+	CSB_UpdateMicroButtons();
 
-	UIFrameFlashRemoveFrame(SBL_SpellBookTabFlashFrame);
+	UIFrameFlashRemoveFrame(CSB_SpellBookTabFlashFrame);
 	for i=1, MAX_SKILLLINE_TABS do
-		getglobal("SBL_SpellBookSkillLineTab"..i.."Flash"):Hide();
+		getglobal("CSB_SpellBookSkillLineTab"..i.."Flash"):Hide();
 	end
 
 	-- Hide multibar slots
@@ -174,48 +155,52 @@ end
 -- Page Turning
 ------
 
-function SBL_SpellBookFrame_UpdatePages()
-	local currentPage, maxPages = SBL_SpellBook_GetCurrentPage();
+function CSB_SpellBookFrame_UpdatePage()
+	-- Set to proper page, enable the allowed paging buttons
+	-- and tell the spell buttons to update to current page
+	local currentPage, maxPages = CSB_SpellBook_GetCurrentPage();
 	if ( maxPages == 0 ) then
 		return;
 	end
 	if ( currentPage > maxPages ) then
-		SPELLBOOK_PAGENUMBERS[SBL_SpellBookFrame.selectedSkillLine] = maxPages;
+		SPELLBOOK_PAGENUMBERS[SpellBookFrame.selectedSkillLine] = maxPages;
 		currentPage = maxPages;
 	end
 	if ( currentPage == 1 ) then
-		SBL_SpellBookPrevPageButton:Disable();
+		CSB_SpellBookPrevPageButton:Disable();
 	else
-		SBL_SpellBookPrevPageButton:Enable();
+		CSB_SpellBookPrevPageButton:Enable();
 	end
 	if ( currentPage == maxPages ) then
-		SBL_SpellBookNextPageButton:Disable();
+		CSB_SpellBookNextPageButton:Disable();
 	else
-		SBL_SpellBookNextPageButton:Enable();
+		CSB_SpellBookNextPageButton:Enable();
 	end
-	SBL_SpellBookPageText:SetFormattedText(PAGE_NUMBER, currentPage);
+	CSB_SpellBookPageText:SetFormattedText(PAGE_NUMBER, currentPage);
 	UpdateSpells();
 end
 
-function SBL_TurnPageButton_OnClick(offset)
-	local currentPage, maxPages = SBL_SpellBook_GetCurrentPage();
+function CSB_TurnPageButton_OnClick(self,offset)
+	-- turn page based on the direction of the button
+	local currentPage, maxPages = CSB_SpellBook_GetCurrentPage();
 	currentPage = currentPage + offset;
 	PlaySound("igAbiliityPageTurn");
-	if ( SBL_SpellBookFrame.bookType == BOOKTYPE_SPELL ) then
-		SPELLBOOK_PAGENUMBERS[SBL_SpellBookFrame.selectedSkillLine] = currentPage;
+	if ( SpellBookFrame.bookType == BOOKTYPE_SPELL ) then
+		SPELLBOOK_PAGENUMBERS[SpellBookFrame.selectedSkillLine] = currentPage;
 	else
 		SPELLBOOK_PAGENUMBERS[BOOKTYPE_PET] = currentPage;
 	end
-	SBL_SpellBookFrame_UpdatePages();
+	CSB_SpellBookFrame_UpdatePage();
 end
 
-function SBL_SpellBook_GetCurrentPage()
+function CSB_SpellBook_GetCurrentPage()
+	-- report current page
 	local currentPage, maxPages;
-	if (SBL_SpellBookFrame.bookType == BOOKTYPE_PET ) then
+	if (SpellBookFrame.bookType == BOOKTYPE_PET ) then
 		currentPage = SPELLBOOK_PAGENUMBERS[BOOKTYPE_PET];
 		maxPages = ceil(SPELL_NUM/SPELLS_PER_PAGE);
 	else
-		currentPage = SPELLBOOK_PAGENUMBERS[SBL_SpellBookFrame.selectedSkillLine];
+		currentPage = SPELLBOOK_PAGENUMBERS[SpellBookFrame.selectedSkillLine];
 		maxPages = ceil(SPELL_NUM/SPELLS_PER_PAGE);
 	end
 	return currentPage, maxPages;
@@ -225,36 +210,103 @@ end
 -- Tab changing
 --------
 
-function SBL_SpellBookSkillLineTab_OnClick(self)
-	local oldtab = getglobal("SBL_SpellBookSkillLineTab"..SBL_SpellBookFrame.selectedSkillLine);
-	oldtab:Enable(); -- Enable old tab
-	self:Disable(); -- Disable current tab to prevent unnecessary actions
+function CSB_SpellBookSkillLineTab_OnClick(self)
+	-- when skill tab is clicked, Update Spell List
+	-- and set checks
+	local oldtab = getglobal("CSB_SpellBookSkillLineTab"..SpellBookFrame.selectedSkillLine);
+	local id = self:GetID();
+	if (oldtab:GetID() == id) then
+		-- same tab, do nothing
+		return;
+	end	
 	
 	oldtab:SetChecked(nil);
 	self:SetChecked(1);
-	local id = self:GetID();
-	SBL_SpellBookFrame.selectedSkillLine = id;
-	SBL_SpellBookFrame.bookType = BOOKTYPE_SPELL;
-	SBL_SpellBookFrameTabButton1:Disable();
-	SBL_SpellBookFrameTabButton2:Enable();
-	SBL_SpellBook_UpdateLists();
-	SBL_SpellBookFrame_UpdatePages();
+	SpellBookFrame.selectedSkillLine = id;
+	CSB_UpdateSpellList();
+	CSB_SpellBookFrame_UpdatePage();
 	
 	-- Stop tab flashing
 	local tabFlash = getglobal(self:GetName().."Flash");
 	if ( tabFlash ) then
 		tabFlash:Hide();
 	end
-	if (SBL_SpellBookFrame:IsShown()) then
+	if (CSB_SpellBookFrame:IsShown()) then
 		PlaySound("igSpellBookClose");
 	end
+end
+
+function CSB_SetFrameTabs(tabNum)
+	-- Enable proper frame tabs and hide skill tabs if not the spellbook
+	local tabButton;
+	for i = 1, 2 do
+		tabButton = getglobal("CSB_SpellBookFrameTabButton"..i);
+		if ( i ~= tabNum) then
+			tabButton:Enable();
+		else
+			tabButton:Disable();
+		end
+	end
+	if (SpellBookFrame.bookType ~= BOOKTYPE_SPELL) then
+		CSB_HideSkillTabs();
+	else
+		CSB_UpdateSkillTabs();
+	end			
+end
+
+function CSB_HideSkillTabs()
+	-- Hides the Skill Tabs
+	for i = 1, MAX_SKILLLINE_TABS do
+		getglobal("CSB_SpellBookSkillLineTab"..i):Hide();
+	end
+end
+
+function CSB_UpdateSkillTabs()
+	-- Shows and assigns Skill Tabs
+	local numSkillLines = GetNumSpellTabs();
+	local name, texture;
+	local skillLineTab;
+	for i=1, MAX_SKILLLINE_TABS do
+		skillLineTab = getglobal("CSB_SpellBookSkillLineTab"..i);
+		if ( i <= numSkillLines ) then
+			name, texture = GetSpellTabInfo(i);
+			skillLineTab:SetNormalTexture(texture);
+			skillLineTab.tooltip = name;
+			skillLineTab:Show();
+		else
+			skillLineTab:Hide();
+		end
+	end
+end
+
+function CSB_UpdateFrameTabs()
+	-- Assigns Frame Tabs
+	local hasPets, petToken = HasPetSpells();
+	if ( hasPets ) then
+		-- SpellBook Tab
+		CSB_SpellBookFrameTabButton1:Show();
+		-- Pet Book Tab
+		CSB_SpellBookFrameTabButton2.bookType = BOOKTYPE_PET;
+		CSB_SpellBookFrameTabButton2:SetText(getglobal("PET_TYPE_"..petToken));
+		CSB_SpellBookFrameTabButton2.binding = "TOGGLEPETBOOK";
+		CSB_SpellBookFrameTabButton2:Show();
+		-- Locate Tab 4
+		CSB_SpellBookFrameTabButton4:SetPoint("CENTER",CSB_SpellBookFrame,"BOTTOMLEFT",79,36);
+	else
+		CSB_SpellBookFrameTabButton1:Hide();
+		CSB_SpellBookFrameTabButton2:Hide();
+		CSB_SpellBookFrameTabButton3:Hide();		
+		CSB_SpellBookFrameTabButton4:SetPoint("CENTER",CSB_SpellBookFrame,"BOTTOMLEFT",79,61);
+	end
+	CSB_SetFrameTabs(FRAME_TAB_LIST[SpellBookFrame.bookType]);
 end
 
 --------
 -- Spell Buttons
 --------
 
-function SBL_SpellButton_OnLoad(self) 
+function CSB_SpellButton_OnLoad(self)
+	-- Set Button registers and non-changing secure frame attributes
 	self:RegisterForDrag("LeftButton");
 	self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
 	
@@ -263,21 +315,22 @@ function SBL_SpellButton_OnLoad(self)
 	self:SetAttribute("PICKUPACTION-spell",ATTRIBUTE_NOOP);
 end
 
-function SBL_SpellButton_OnEvent(self,event)
+function CSB_SpellButton_OnEvent(self,event)
 	if ( event == "SPELLS_CHANGED" or event == "SPELL_UPDATE_COOLDOWN" ) then 
-		SBL_SpellButton_UpdateButton(self);
+		CSB_SpellButton_UpdateButton(self);
 	elseif ( event == "CURRENT_SPELL_CAST_CHANGED" ) then
-		SBL_SpellButton_UpdateSelection(self);
+		CSB_SpellButton_UpdateSelection(self);
 	elseif ( event == "CRAFT_SHOW" or event == "CRAFT_CLOSE" or event == "TRADE_SKILL_SHOW" or event == "TRADE_SKILL_CLOSE" ) then
-		SBL_SpellButton_UpdateSelection(self);
+		CSB_SpellButton_UpdateSelection(self);
 	elseif ( event == "PET_BAR_UPDATE" ) then
-		if ( SBL_SpellBookFrame.bookType == BOOKTYPE_PET ) then
-			SBL_SpellButton_UpdateButton(self);
+		if ( SpellBookFrame.bookType == BOOKTYPE_PET ) then
+			CSB_SpellButton_UpdateButton(self);
 		end
 	end
 end
 
-function SBL_SpellButton_OnShow(self)
+function CSB_SpellButton_OnShow(self)
+	-- When available, adjust to events
 	self:RegisterEvent("SPELLS_CHANGED");
 	self:RegisterEvent("SPELL_UPDATE_COOLDOWN");
 	self:RegisterEvent("CURRENT_SPELL_CAST_CHANGED");
@@ -287,10 +340,11 @@ function SBL_SpellButton_OnShow(self)
 	self:RegisterEvent("TRADE_SKILL_CLOSE");
 	self:RegisterEvent("PET_BAR_UPDATE");
 
-	SBL_SpellButton_UpdateButton(self);
+	CSB_SpellButton_UpdateButton(self);
 end
 
-function SBL_SpellButton_OnHide(self)
+function CSB_SpellButton_OnHide(self)
+	-- When unavailable, unregister events
 	self:UnregisterEvent("SPELLS_CHANGED");
 	self:UnregisterEvent("SPELL_UPDATE_COOLDOWN");
 	self:UnregisterEvent("CURRENT_SPELL_CAST_CHANGED");
@@ -301,45 +355,42 @@ function SBL_SpellButton_OnHide(self)
 	self:UnregisterEvent("PET_BAR_UPDATE");
 end
  
-function SBL_SpellButton_OnEnter(self)
-	local name, texture, offset, numSpells = GetSpellTabInfo(SBL_SpellBookFrame.selectedSkillLine);
-	local id = self:GetID();
-	local spellId, lowerId = SBL_SpellBook_GetSpellID(self);
+function CSB_SpellButton_OnEnter(self)
+	-- When entered, set the tooltip and show the lower ranks if exist
+	local name, texture, offset, numSpells = GetSpellTabInfo(SpellBookFrame.selectedSkillLine);
+	local spellId, lowerId = CSB_GetSpellID(self);
 	GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-	if ( GameTooltip:SetSpell(spellId, SBL_SpellBookFrame.bookType) ) then
-		self.UpdateTooltip = SBL_SpellButton_OnEnter;
+	if ( GameTooltip:SetSpell(spellId, SpellBookFrame.bookType) ) then
+		self.UpdateTooltip = CSB_SpellButton_OnEnter;
 	else
 		self.UpdateTooltip = nil;
 	end
 	if ((spellId - lowerId) > 0 ) then
-		SBL_SpellListFrame_SpellButtonEntered(self, lowerId, spellId);
+		CSB_SpellLister_SpellButtonEntered(self, lowerId, spellId);
 	end
 end
 
 
-function SBL_SpellButton_OnLeave(self)
+function CSB_SpellButton_OnLeave(self)
+	-- Hide just the tooltip
 	GameTooltip:Hide();
 end
 
-function SBL_SpellButton_PostClick(self,button) 
+function CSB_SpellButton_PostClick(self,button) 
 	-- On Modified Click but set to work after click
-	local id = SBL_SpellBook_GetSpellID(self);
-	if ( id > MAX_SPELLS ) then
-		return;
+	local id = CSB_GetSpellID(self);
+	if (id == BAD_SPELL_ID) then 
+		return; 
 	end
 	if ( IsModifiedClick("CHATLINK") ) then
 		if ( MacroFrame and MacroFrame:IsShown() ) then
-			local spellName, subSpellName = GetSpellName(id, SBL_SpellBookFrame.bookType);
-			if ( spellName and not IsPassiveSpell(id, SBL_SpellBookFrame.bookType) ) then
-				if ( subSpellName and (strlen(subSpellName) > 0) ) then
-					ChatEdit_InsertLink(spellName.."("..subSpellName..")");
-				else
-					ChatEdit_InsertLink(spellName);
-				end
+			local spellName, subSpellName = GetSpellName(id, SpellBookFrame.bookType);
+			if ( not IsPassiveSpell(id, SpellBookFrame.bookType) ) then
+				ChatEdit_InsertLink(spellName);
 			end
 			return;
 		else
-			local spellLink = GetSpellLink(id, SBL_SpellBookFrame.bookType);
+			local spellLink = GetSpellLink(id, SpellBookFrame.bookType);
 			if(spellLink) then
 				ChatEdit_InsertLink(spellLink);
 			end
@@ -347,42 +398,35 @@ function SBL_SpellButton_PostClick(self,button)
 		end
 	end
 	if ( IsModifiedClick("PICKUPACTION") ) then
-		PickupSpell(id, SBL_SpellBookFrame.bookType);
+		PickupSpell(id, SpellBookFrame.bookType);
 		return;
 	end
 end
 
-function SBL_SpellButton_OnDrag(self) 
-	local id = SBL_SpellBook_GetSpellID(self);
-	if ( id > MAX_SPELLS or not getglobal(self:GetName().."IconTexture"):IsShown() ) then
+function CSB_SpellButton_OnDrag(self)
+	-- When dragged, pick up the spell button 
+	local id = CSB_GetSpellID(self);
+	if ( not getglobal(self:GetName().."IconTexture"):IsShown() ) then
 		return;
 	end
 	self:SetChecked(0);
-	PickupSpell(id, SBL_SpellBookFrame.bookType);
+	PickupSpell(id, SpellBookFrame.bookType);
 end
 
-function SBL_SpellButton_UpdateSelection(self)
-	local temp, texture, offset, numSpells = GetSpellTabInfo(SBL_SpellBookFrame.selectedSkillLine);
-	local id = SBL_SpellBook_GetSpellID(self);
-	if ( (SBL_SpellBookFrame.bookType ~= BOOKTYPE_PET) and (id > (offset + numSpells)) ) then
-		self:SetChecked("false");
-		return;
-	end
-
-	if ( IsSelectedSpell(id, SBL_SpellBookFrame.bookType) ) then
+function CSB_SpellButton_UpdateSelection(self)
+	-- Update checked status
+	local temp, texture, offset, numSpells = GetSpellTabInfo(SpellBookFrame.selectedSkillLine);
+	local id = CSB_GetSpellID(self);
+	
+	self:SetChecked("false");
+	if ( (id ~= BAD_SPELL_ID) and IsSelectedSpell(id, SpellBookFrame.bookType) ) then
 		self:SetChecked("true");
-	else
-		self:SetChecked("false");
 	end
 end
 
-function SBL_SpellButton_UpdateButton(self)
-	if ( not SBL_SpellBookFrame.selectedSkillLine ) then
-		SBL_SpellBookFrame.selectedSkillLine = 1;
-	end
-	local temp, texture, offset, numSpells = GetSpellTabInfo(SBL_SpellBookFrame.selectedSkillLine);
-	SBL_SpellBookFrame.selectedSkillLineOffset = offset;
-	local id = SBL_SpellBook_GetSpellID(self);
+function CSB_SpellButton_UpdateButton(self)
+	-- Update the Button to current
+	local id = CSB_GetSpellID(self);
 	local name = self:GetName();
 	local iconTexture = getglobal(name.."IconTexture");
 	local spellString = getglobal(name.."SpellName");
@@ -390,7 +434,7 @@ function SBL_SpellButton_UpdateButton(self)
 	local cooldown = getglobal(name.."Cooldown");
 	local autoCastableTexture = getglobal(name.."AutoCastable");
 	local autoCastModel = getglobal(name.."AutoCast");
-	if ( id > (offset + numSpells) ) then
+	if ( id > SPELL_ID_MAX  ) then
 		self:Disable();
 		iconTexture:Hide();
 		spellString:Hide();
@@ -404,28 +448,21 @@ function SBL_SpellButton_UpdateButton(self)
 	else
 		self:Enable();
 	end
-	local texture = GetSpellTexture(id, SBL_SpellBookFrame.bookType);
+	
+	local texture = GetSpellTexture(id, SpellBookFrame.bookType);
 	local highlightTexture = getglobal(name.."Highlight");
 	local normalTexture = getglobal(name.."NormalTexture");
-	-- If no spell, hide everything and return
-	if ( not texture or (strlen(texture) == 0) ) then
-		iconTexture:Hide();
-		spellString:Hide();
-		subSpellString:Hide();
-		cooldown:Hide();
-		autoCastableTexture:Hide();
-		autoCastModel:Hide();
-		highlightTexture:SetTexture("Interface\\Buttons\\ButtonHilight-Square");
-		self:SetChecked(0);
-		normalTexture:SetVertexColor(1.0, 1.0, 1.0);
-		return;
-	end
 	
-	local spellName, subSpellName = GetSpellName(id, SBL_SpellBookFrame.bookType);
-	local fullName = spellName.."("..subSpellName..")";
+	local spellName, subSpellName = GetSpellName(id, SpellBookFrame.bookType);
+	local fullName;
+	if ((not subSpellName) or (strlen(subSpellName) == 0)) then
+		fullName = spellName;
+	else
+		fullName = spellName.."("..subSpellName..")";
+	end
 	self:SetAttribute("spell", fullName);
 
-	local start, duration, enable = GetSpellCooldown(id, SBL_SpellBookFrame.bookType);
+	local start, duration, enable = GetSpellCooldown(id, SpellBookFrame.bookType);
 	CooldownFrame_SetTimer(cooldown, start, duration, enable);
 	if ( enable == 1 ) then
 		iconTexture:SetVertexColor(1.0, 1.0, 1.0);
@@ -433,7 +470,7 @@ function SBL_SpellButton_UpdateButton(self)
 		iconTexture:SetVertexColor(0.4, 0.4, 0.4);
 	end
 
-	local autoCastAllowed, autoCastEnabled = GetSpellAutocast(id, SBL_SpellBookFrame.bookType);
+	local autoCastAllowed, autoCastEnabled = GetSpellAutocast(id, SpellBookFrame.bookType);
 	if ( autoCastAllowed ) then
 		self:SetAttribute("type2","macro");
 		self:SetAttribute("macrotext","/petautocasttoggle "..fullName);
@@ -449,7 +486,7 @@ function SBL_SpellButton_UpdateButton(self)
 	end
 
 
-	local isPassive = IsPassiveSpell(id, SBL_SpellBookFrame.bookType);
+	local isPassive = IsPassiveSpell(id, SpellBookFrame.bookType);
 	if ( isPassive ) then
 		normalTexture:SetVertexColor(0, 0, 0);
 		highlightTexture:SetTexture("Interface\\Buttons\\UI-PassiveHighlight");
@@ -473,30 +510,30 @@ function SBL_SpellButton_UpdateButton(self)
 	iconTexture:Show();
 	spellString:Show();
 	subSpellString:Show();
-	SBL_SpellButton_UpdateSelection(self);
+	CSB_SpellButton_UpdateSelection(self);
 end
 
 ------
 -- Spell Indexing
 ------
 
-function SBL_SpellBook_GetSpellID(self)
-	--If ID is out of range, return max number
+function CSB_GetSpellID(self)
+	--Return the proper spell ID, or return a bad spell id
 	local id = self:GetID();
 	local trueID = 0;
-	if ( SBL_SpellBookFrame.bookType == BOOKTYPE_PET ) then
+	if ( SpellBookFrame.bookType == BOOKTYPE_PET ) then
 		trueID = id + (SPELLS_PER_PAGE * (SPELLBOOK_PAGENUMBERS[BOOKTYPE_PET] - 1));
 	else
-		trueID = id + (SPELLS_PER_PAGE * (SPELLBOOK_PAGENUMBERS[SBL_SpellBookFrame.selectedSkillLine] - 1));
+		trueID = id + (SPELLS_PER_PAGE * (SPELLBOOK_PAGENUMBERS[SpellBookFrame.selectedSkillLine] - 1));
 	end
 	if (trueID > SPELL_NUM) then
-		return MAX_SPELLS;
+		return BAD_SPELL_ID;
 	else 
 		return SPELL_ID_LIST[trueID], (SPELL_ID_LIST[trueID-1]+1);
 	end
 end
 
-function SBL_SpellBook_UpdateLists()
+function CSB_UpdateSpellList()
 	--Instead of listing every spell available to the character individually,
 	--list only the highest rank of each spell, and have available through
 	--special means to access the lower ranks.
@@ -505,13 +542,13 @@ function SBL_SpellBook_UpdateLists()
 	--programming.  Therefore, only the shown spell list should be condensed.
 
 	local temp1,temp2, offset, numSpells;
-	if (SBL_SpellBookFrame.bookType == BOOKTYPE_PET) then
+	if (SpellBookFrame.bookType == BOOKTYPE_PET) then
 		--The Pet book does not have tabs, just one book
 		offset = 0;
 		numSpells = HasPetSpells();
 	else
 		--The Spellbook has a selected tab.
-		temp1, temp2, offset, numSpells = GetSpellTabInfo(SBL_SpellBookFrame.selectedSkillLine);
+		temp1, temp2, offset, numSpells = GetSpellTabInfo(SpellBookFrame.selectedSkillLine);
 	end
 	
 	--empty existing list
@@ -520,12 +557,12 @@ function SBL_SpellBook_UpdateLists()
 	local cSpellName, nSpellName, unique;
 
 	unique = 1;
-	nSpellName = GetSpellName((offset+1), SBL_SpellBookFrame.bookType);
-	local max = offset + numSpells;
-	for i= (offset+1), max do
+	nSpellName = GetSpellName((offset+1), SpellBookFrame.bookType);
+	SPELL_ID_MAX = offset + numSpells;
+	for i= (offset+1), SPELL_ID_MAX do
 		--Get current Spell
 		cSpellName = nSpellName;
-		nSpellName = GetSpellName((i+1), SBL_SpellBookFrame.bookType);
+		nSpellName = GetSpellName((i+1), SpellBookFrame.bookType);
 
 		-- If current Spell is not same as previous spell, a new unique spell was found
 		if (cSpellName ~= nSpellName) then
@@ -542,8 +579,9 @@ end
 -- Extra Functions
 -------
 
-function SBL_UpdateMicroButtons()
-	if ( SBL_SpellBookFrame:IsShown() ) then
+function CSB_UpdateMicroButtons()
+	-- Toggle the SpellBook's Micro Button
+	if ( CSB_SpellBookFrame:IsShown() ) then
 		SpellbookMicroButton:SetButtonState("PUSHED", 1);
 	else
 		SpellbookMicroButton:SetButtonState("NORMAL");

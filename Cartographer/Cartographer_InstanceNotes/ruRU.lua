@@ -208,6 +208,6 @@ L:AddTranslations("ruRU", function() return {
 	["Dragon"] = "Dragon",
 	["Elemental"] = "Elemental",
 	["Giant Turtle"] = "Giant Turtle",
-	["Giant"] = "Giant",
-	["Humanoid"] = "Humanoid",
+	["Giant"] = "Гигант",
+	["Humanoid"] = "Гуманойд",
 } end)

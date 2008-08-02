@@ -33,7 +33,8 @@ ACP:UpdateLocale( {
     ["Click to enable protect mode. Protected addons will not be disabled"] = true,
     ["when performing a reloadui."]=true,
     ["ACP: Some protected addons aren't loaded. Reload now?"]=true,
-	
+	["Active Embeds"] = true,
+	["Memory Usage"] = true,
 	
 	["Blizzard_AuctionUI"] = "Blizzard: Auction",
 	["Blizzard_BattlefieldMinimap"] = "Blizzard: Battlefield Minimap",

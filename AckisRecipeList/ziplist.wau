@@ -1,6 +1,7 @@
-AckisRecipeList/Changelog-AckisRecipeList-r79009.txt
+AckisRecipeList/Changelog-AckisRecipeList-r79666.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
+AckisRecipeList/recipe-miner.lua
 AckisRecipeList/AckisRecipeList.lua
 AckisRecipeList/externals.txt
 AckisRecipeList/DataMiner.lua
@@ -22,6 +23,7 @@ AckisRecipeList/RecipeDB/ARL-Cook.lua
 AckisRecipeList/RecipeDB/ARL-BeastTrain.lua
 AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
 AckisRecipeList/RecipeDB/ARL-Smelt.lua
+AckisRecipeList/RecipeDB/ARL-Inscription.lua
 AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
 AckisRecipeList/img/expanded.blp
 AckisRecipeList/img/main.blp

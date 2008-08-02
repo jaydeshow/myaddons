@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Faction-2.2
-Revision: $Rev: 79108 $
+Revision: $Rev: 79351 $
 Authors(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Faction-2.2
 SVN: http://svn.wowace.com/wowace/trunk/Babble-2.2/Babble-Faction-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Faction-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79351 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -442,7 +442,7 @@ BabbleFaction:RegisterTranslations("ruRU", function() return {
 	["Friendly"] = "Дружелюбие",
 	["Honored"] = "Уважение",
 	["Revered"] = "Почтение",
-	["Exalted"] = "Восторг",
+	["Exalted"] = "Превознесение",
 } end)
 	
 BabbleFaction:Debug()

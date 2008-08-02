@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Fish-2.2
-Revision: $Rev: 72117 $
+Revision: $Rev: 79351 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Fish-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Fish-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 72117 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79351 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -565,6 +565,84 @@ BabbleFish:RegisterTranslations("zhTW", function() return {
 	["Goldenscale Vendorfish"] = "金鱗小販魚",
 	["Crescent-Tail Skullfish"] = "月尾鯨",
 	["Bloodfin Catfish"] = "血鰭鯰魚",
+}
+end)
+-- Translator: sadsmile (Updater: StingerSoft)
+BabbleFish:RegisterTranslations("ruRU", function() return {
+-- Fishing Node
+	["Floating Wreckage"] = "Floating Wreckage",
+	["Patch of Elemental Water"] = "Patch of Elemental Water",
+	["Floating Debris"] = "Floating Debris",
+	["Oil Spill"] = "Oil Spill",
+	["Firefin Snapper School"] = "Косяк огнеперого снеппера",
+	["Greater Sagefish School"] = "Большой косяк шалфокуня",
+	["Oily Blackmouth School"] = "Косяк масляного черноротика",
+	["Sagefish School"] = "Косяк шалфокуня",
+	["School of Deviate Fish"] = "Косяк искаженной рыба",
+	["Stonescale Eel Swarm"] = "Stonescale Eel Swarm",
+	["Muddy Churning Water"] = "Muddy Churning Water",
+	["Highland Mixed School"] = "Highland Mixed School",
+	["Pure Water"] = "Чистая вода",
+	["Bluefish School"] = "Косяк луфаря",
+	["Feltail School"] = "Косяк сквернохвоста",
+	["Mudfish School"] = "Косяк ильной рыбы",
+	["School of Darter"] = "Косяк змеешейки",
+	["Sporefish School"] = "Косяк спорорыбы",
+	["Steam Pump Flotsam"] = "Steam Pump Flotsam",
+	["School of Tastyfish"] = "Косяк вкуснорыбы",
+-- Quest Fish + Fished Loot for Quests
+	["Sar'theris Striker"] = "Ударник Сартериса",
+	["Savage Coast Blue Sailfin"] = "Синий плавник Дикого Берега",
+	["Misty Reed Mahi Mahi"] = "Махи-махи с берега Туманных Тростников",
+	["Feralas Ahi"] = "Фералас-ахи",
+	["Spotted Sunfish"] = "Пятнистая рыба-луна",
+	["Lightning Eel"] = "Молниевый угорь",
+	["Oil Covered Fish"] = "Рыба в масле",
+	["Plated Armorfish"] = "Латная бронерыба",
+	["Darkshore Grouper"] = "Окунь с Темного берега",
+	["Electropeller"] = "Электропеллер",
+	["Gaffer Jack"] = "Суперразъем",
+	["Speckled Tastyfish"] = "Крапчатая вкуснорыба",
+	["Keefer's Angelfish"] = "Рыба-ангел Кифера",
+	["Dezian Queenfish"] = "Дезийская ставрида",
+	["Brownell's Blue Striped Racer"] = "Синий полосатик Браунелла",
+-- Normal Fish
+	["Stonescale Eel"] = "Каменный угорь",
+	["Oily Blackmouth"] = "Масляный черноротик",
+	["Firefin Snapper"] = "Огнеперый снеппер",
+	["Oil Covered Fish"] = "Рыба в масле",
+	["Sickly Looking Fish"] = "Хилая рыбка",
+	["Raw Brilliant Smallfish"] = "Сырая блестящая рыбка",
+	["Raw Bristle Whisker Catfish"] = "Сырая зубатка ощетиненная",
+	["Raw Glossy Mightfish"] = "Сырая блестящая мощь-рыба",
+	["Raw Greater Sagefish"] = "Сырой большой шалфокунь",
+	["Raw Loch Frenzy"] = "Сырой деликатес из бешенки",
+	["Raw Longjaw Mud Snapper"] = "Сырой илистый луциан",
+	["Raw Mithril Head Trout"] = "Сырая мифрилоголовая форель",
+	["Raw Nightfin Snapper"] = "Сырой черноперый луциан",
+	["Raw Rainbow Fin Albacore"] = "Сырой радужный тунец",
+	["Raw Redgill"] = "Сырая краснобородка",
+	["Raw Rockscale Cod"] = "Сырая каменношкурая треска",
+	["Raw Sagefish"] = "Сырой шалфокунь",
+	["Raw Slitherskin Mackerel"] = "Сырая скользкая скумбрия",
+	["Raw Spotted Yellowtail"] = "Сырой пятнистый желохвост",
+	["Raw Summer Bass"] = "Сырой летний окунь",
+	["Raw Sunscale Salmon"] = "Сырой радужный лосось",
+	["Raw Whitescale Salmon"] = "Сырой белочешуйный лосось",
+	["Darkclaw Lobster"] = "Темноклешневый омар",
+	["Deviate Fish"] = "Искаженная рыба",
+	["Large Raw Mightfish"] = "Сырая мощь-рыба",
+	["Winter Squid"] = "Зимний кальмар",
+	["Felblood Snapper"] = "Сквернокровный луциан",
+	["Figluster's Mudfish"] = "Ильная рыба Фиглюстера",
+	["Furious Crawdad"] = "Разъяренный речной рак",
+	["Golden Darter"] = "Золотая змеешейка",
+	["Icefin Bluefish"] = "Ледоперый луфарь",
+	["Spotted Feltail"] = "Пятнистый сквернохвост",
+	["Zangarian Sporefish"] = "Зангарская спорорыба",
+	["Goldenscale Vendorfish"] = "Золотая рыбка-монетка",
+	["Crescent-Tail Skullfish"] = "Серпохвостая рыба-череп",
+	["Bloodfin Catfish"] = "Зубатка афиохаракс",
 }
 end)
 

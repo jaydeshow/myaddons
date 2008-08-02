@@ -1,0 +1,7 @@
+## Interface: 20400
+## Title: Accountant
+## Description: Logs where your WoW gold goes
+## DefaultState: enabled
+## SavedVariables: Accountant_SaveData,Accountant_Options
+AccountantOptions.xml
+Accountant.xml

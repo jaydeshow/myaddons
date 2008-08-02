@@ -138,7 +138,7 @@ L:RegisterTranslations("zhCN", function() return {
 	inferno_bar = "<地狱火 冷却>",
 
 	icon = "团队标记",
-	icon_desc = "为在玩家上施放地狱火的玩家打上团队标记。（需要权限）",
+	icon_desc = "标记被施放了地狱火的玩家。（需要权限）",
 
 	swarm = "腐臭虫群",
 	swarm_desc = "腐臭虫群冷却计时。",
@@ -155,7 +155,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17808
 mod.toggleoptions = {"inferno", "icon", "swarm", "bosskill"}
-mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

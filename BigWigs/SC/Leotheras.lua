@@ -237,8 +237,8 @@ L:RegisterTranslations("zhCN", function() return {
 	image_message = "15% - 镜像出现！",
 	image_warning = "即将 镜像！",
 
-	whisper = "因斯迪安低语",
-	whisper_desc = "当玩家受到因斯迪安低语时发出警报。",
+	whisper = "心魔",
+	whisper_desc = "当玩家受到心魔时发出警报。",
 	whisper_message = "心魔：>%s<！",
 	whisper_bar = "<心魔消失>",
 	whisper_soon = "心魔 冷却！",
@@ -291,7 +291,7 @@ mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
 mod.guid = 21215
 mod.toggleoptions = {"enrage", "whirlwind", "phase", "image", "whisper", "mindcontrol", "bosskill"}
-mod.revision = tonumber(("$Revision: 76588 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

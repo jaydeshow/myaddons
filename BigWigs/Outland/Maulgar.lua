@@ -230,7 +230,7 @@ L:RegisterTranslations("zhCN", function() return {
 
 	spellshield = "法术护盾",
 	spellshield_desc = "当克洛什·火拳获得法术护盾时发出警报。",
-	spellshield_message = "克洛什 法术护盾！",
+	spellshield_message = "克洛什 法术护盾！速度偷取",
 	spellshield_bar = "<下一法术护盾>",
 
 	summon = "召唤地狱犬",
@@ -304,7 +304,7 @@ mod.otherMenu = "Outland"
 mod.enabletrigger = {boss, mage, lock, priest, shaman}
 mod.guid = 18831
 mod.toggleoptions = {"shield", "spellshield", "heal", -1, "summon", -1, "whirlwind", "flurry", "smash", "bosskill"}
-mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

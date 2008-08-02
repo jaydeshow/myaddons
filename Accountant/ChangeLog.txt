@@ -1,0 +1,8 @@
+-- Change Log:
+
+v3.0
+- Fixed the 'repair' account section
+- Cleaner code (less global variables)
+- Added a couple routines for AccountTitan
+- Changed the NiceCash to return 0 gold
+- Moved the minimap button slighty off the map

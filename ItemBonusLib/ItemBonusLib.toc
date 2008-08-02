@@ -1,4 +1,4 @@
-## Interface: 20400
+## Interface: 20200
 ## LoadOnDemand: 1
 ## Title: Lib: ItemBonusLib
 ## Notes: Scans your Equipment for cumulative item bonuses and sums them up.
