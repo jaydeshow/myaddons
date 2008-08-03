@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-08-02 05:18:05 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79649 $
+$Date: 2008-08-02 15:34:23 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79682 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -33,6 +33,15 @@ L["FILTER_OPTIONS_LONG"] = "Allows you to customize which recipes are filtered."
 L["Reputation"] = true
 L["REP_OPTIONS"] = "Reputation Options"
 L["REP_OPTIONS_LONG"] = "Allows you to customize which reputations are included in the scan."
+L["Binding"] = true
+L["BINDING_OPTIONS"] = "Binding Options"
+L["BINDING_OPTIONS_LONG"] = "Allows you to customize which types of binding are included in the scan."
+L["Crafting"] = true
+L["CRAFTING_OPTIONS"] = "Crafting Options"
+L["CRAFTING_OPTIONS_LONG"] = "Allows you to customize which types of crafting items are included in the scan."
+L["Armour"] = true
+L["ARMOUR_OPTIONS"] = "Armour Options"
+L["ARMOUR_OPTIONS_LONG"] = "Allows you to customize which armour types are included in the scan."
 L["Obtain"] = true
 L["OBTAIN_OPTIONS"] = "Obtain Options"
 L["OBTAIN_OPTIONS_LONG"] = "Allows you to customize which methods of obtaining a recipe are included in the scan."
@@ -58,12 +67,25 @@ L["Specialities"] = true
 L["SPECIALITY_TOGGLE"] = "All trade-skill specialities should be included in the scan."
 L["Skill"] = true
 L["SKILL_TOGGLE"] = "Include all recipes regardless of your current skill level."
+L["Old World"] = true
+L["OLDWORLD_OPTIONS"] = "Original WoW Reputations"
+L["OLDWORLD_OPTIONS_LONG"] = "Allows you to customize which Original WoW reputations should be included in the scan."
+L["Burning Crusade"] = true
+L["BC_OPTIONS"] = "Burning Crusade Reputations"
+L["BC_OPTIONS_LONG"] = "Allows you to customize which Burning Crusade reputations should be included in the scan."
+L["Wrath of the Lich King"]= true
+L["WOTLK_OPTIONS"] = "Wrath of the Lich King Reputations"
+L["WOTLK_OPTIONS_LONG"] = "Allows you to customize which Wrath of the Lich King reputations should be included in the scan."
 
 -- Obtain Filter Options
-L["BOEFilter"] = "Bind on Equip"
+L["BOEFilter"] = "Item Bind on Equip"
 L["BOE_TOGGLE"] = "Recipes that make Bind on Equip items should be included in the scan."
-L["BOPFilter"] = "Bind on Pickup"
+L["BOPFilter"] = "Item Bind on Pickup"
 L["BOP_TOGGLE"] = "Recipes that make Bind on Pickup items should be included in the scan."
+L["RecipeBOEFilter"] = "Recipe Bind on Equip"
+L["RECIPE_BOE_TOGGLE"] = "Recipes that are Bind on Equip should be included in the scan."
+L["RecipeBOPFilter"] = "Recipe Bind on Pickup"
+L["RECIPE_BOP_TOGGLE"] = "Recipes that are Bind on Pickup should be included in the scan."
 L["PVP_TOGGLE"] = "PVP obtained recipes should be included in the scan."
 L["RAID_TOGGLE"] = "Hard to get raid (ie: Molten Core, Serpent Shrine Cavern, etc.) recipes should be included in the scan."
 L["SEASONAL_TOGGLE"] = "Seasonal obtained recipes should be included in the scan."

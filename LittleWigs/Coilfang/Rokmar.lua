@@ -69,6 +69,17 @@ L:RegisterTranslations("zhTW", function() return {
 	enrage_message = "狂怒!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	throw = "Горестная рана",
+	throw_desc = "Предупреждать о том каму нанесена горестная рана.",
+	throw_message = "Горестная рана нанесена %s'у",
+
+	enrage = "Исступление (Герок)",
+	enrage_desc = "Предупреждать о Рокмара Исступлении",
+	enrage_warning = "Скоро Исступление!",
+	enrage_message = "Исступление!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -80,7 +91,7 @@ mod.zonename = BZ["The Slave Pens"]
 mod.enabletrigger = boss
 mod.guid = 17991
 mod.toggleoptions = {"throw", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79696 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

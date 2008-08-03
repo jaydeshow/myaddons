@@ -208,7 +208,7 @@ if not L then return end
 	L["Add to Current Graph (Alt Click)"] = "Добавить в текущий график(Alt-Клик)"
 	L["Show Realtime Graph (Ctrl Click)"] = "Показ график в реальном времени (Ctrl-Клик)"
 	L["Delete Combatant (Ctrl-Alt Click)"] = "Удалить бойца (Ctrl-Alt-Клик)"
-	L[" for "] = " для "
+	L[" for "] = " из "
 	L["Overall Data"] = "Полный отчет"
 	L["Current Fight"] = "Текущий отчет"
 	L["Last Fight"] = "Последний бой"

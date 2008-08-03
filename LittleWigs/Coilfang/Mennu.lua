@@ -43,6 +43,12 @@ L:RegisterTranslations("frFR", function() return {
 	totem_message = "Totem Nova corrompu !",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	totem = "Оскверненный тотем Звезды",
+	totem_desc = "Предупреждать коада ставится оскверненный тотем звезды.",
+	totem_message = "Оскверненный тотем Звезды!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -54,7 +60,7 @@ mod.zonename = BZ["The Slave Pens"]
 mod.enabletrigger = boss
 mod.guid = 17941
 mod.toggleoptions = {"totem", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79696 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

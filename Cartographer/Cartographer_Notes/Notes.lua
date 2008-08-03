@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 79580 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 79688 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-31 18:14:14 -0400 (Thu, 31 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-08-02 17:52:07 -0400 (Sat, 02 Aug 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Notes")
@@ -781,7 +781,7 @@ L:AddTranslations("ruRU", function() return {
 	["Note reception active"] = "Приёма заметок",
 	["Enabling this will allow notes to be sent and received."] = "Включение данной опции позволяет высылать и принимать заметки.",
 	
-	["Note sent by %s ignored due to filtering settings."] = "Запись посланна %s игнорируется настройками фильтрации.",
+	["Note sent by %s ignored due to filtering settings."] = "Запись от %s'a игнорируется настройками фильтрации.",
 	["Incoming note filtering"] = "Фильтрация входищих записей",
 	["Setup filtering of note sent to you by other players."] = "Установка фильтрации записей отсылаемых вам другими игроками.",
 	["Accept all notes"] = "Принимать все записи",
