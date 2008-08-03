@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r79688 | StingerSoft | 2008-08-02 17:52:07 -0400 (Sat, 02 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/Cartographer/Cartographer_Notes/Notes.lua
+
+Cartographer: fix ruRU
+------------------------------------------------------------------------
 r79583 | arrowmaster | 2008-07-31 18:49:28 -0400 (Thu, 31 Jul 2008) | 1 line
 Changed paths:
    M /trunk/Cartographer/Cartographer_GuildPositions/GuildPositions.lua

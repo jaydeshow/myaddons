@@ -88,6 +88,17 @@ L:RegisterTranslations("esES", function() return {
 	--burst_bar = "%s - Lung Burst",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	storm = "Грозовая туча",
+	storm_desc = "Предупреждать о появлении грозовой тучи",
+	storm_message = "Грозовая туча!",
+	
+	burst = "Взрыв легких",
+	burst_desc = "Предупреждать о взрыве легких",
+	burst_message = "Взрыв легких у %s'а!",
+	burst_bar = "%s - Взрыв легких",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -99,7 +110,7 @@ mod.zonename = BZ["The Steamvault"]
 mod.enabletrigger = boss 
 mod.guid = 17797
 mod.toggleoptions = {"storm", "burst", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79696 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

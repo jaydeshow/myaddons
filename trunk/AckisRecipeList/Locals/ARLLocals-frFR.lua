@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-08-02 09:05:00 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79666 $
+$Date: 2008-08-02 16:44:33 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79686 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -31,8 +31,17 @@ L["Filter"] = "Filtrage"
 L["FILTER_OPTIONS"] = "Options de filtrage"
 L["FILTER_OPTIONS_LONG"] = "Vous permet de personnaliser les recettes qui sont filtrées."
 L["Reputation"] = "Réputation"
-L["REP_OPTIONS"] = "Options des réputations"
+L["REP_OPTIONS"] = "Options de réputation"
 L["REP_OPTIONS_LONG"] = "Vous permet de personnaliser les réputations prises en compte dans l'analyse."
+L["Binding"] = "Lien"
+L["BINDING_OPTIONS"] = "Options de lien"
+L["BINDING_OPTIONS_LONG"] = "Vous permet de personnaliser les types de liens pris en compte dans l'analyse."
+L["Crafting"] = "Fabrication"
+L["CRAFTING_OPTIONS"] = "Options de fabrication"
+L["CRAFTING_OPTIONS_LONG"] = "Vous permet de personnaliser les types de fabrications pris en compte dans l'analyse."
+L["Armour"] = "Armure"
+L["ARMOUR_OPTIONS"] = "Options des armures"
+L["ARMOUR_OPTIONS_LONG"] = "Vous permet de personnaliser les types d'armure (tissu, cuir, ...) pris en compte dans l'analyse."
 L["Obtain"] = "Obtention"
 L["OBTAIN_OPTIONS"] = "Options d'obtention"
 L["OBTAIN_OPTIONS_LONG"] = "Vous permet de personnaliser les méthodes d'obtention prises en compte dans l'analyse."
@@ -58,12 +67,25 @@ L["Specialities"] = "Spécialités"
 L["SPECIALITY_TOGGLE"] = "Intègre ou non toutes les spécialisations des métiers dans l'analyse."
 L["Skill"] = "Compétence"
 L["SKILL_TOGGLE"] = "Intègre ou non toutes les recettes quelque soit votre niveau de compétence actuel."
+L["Old World"] = "WoW classique"
+L["OLDWORLD_OPTIONS"] = "Réputations de WoW classique"
+L["OLDWORLD_OPTIONS_LONG"] = "Vous permet de déterminer les réputations du jeu original qui doivent être intégrées dans l'analyse."
+L["Burning Crusade"] = "Burning Crusade"
+L["BC_OPTIONS"] = "Réputations de Burning Crusade"
+L["BC_OPTIONS_LONG"] = "Vous permet de déterminer les réputations de Burning Crusade qui doivent être intégrées dans l'analyse."
+L["Wrath of the Lich King"]= "Wrath of the Lich King"
+L["WOTLK_OPTIONS"] = "Réputations de Wrath of the Lich King"
+L["WOTLK_OPTIONS_LONG"] = "Vous permet de déterminer les réputations de Wrath of the Lich King qui doivent être intégrées dans l'analyse."
 
 -- Obtain Filter Options
-L["BOEFilter"] = "Lié quand équipé"
+L["BOEFilter"] = "Objets LqE"
 L["BOE_TOGGLE"] = "Intègre ou non les recettes qui permettent de fabriquer des objets liés quand équipés dans l'analyse."
-L["BOPFilter"] = "Lié quand ramassé"
+L["BOPFilter"] = "Objets LqR"
 L["BOP_TOGGLE"] = "Intègre ou non les recettes qui permettent de fabriquer des objets liés quand ramassés dans l'analyse."
+L["RecipeBOEFilter"] = "Recettes LqE"
+L["RECIPE_BOE_TOGGLE"] = "Intègre ou non les recettes liées quand équipées dans l'analyse."
+L["RecipeBOPFilter"] = "Recettes LqR"
+L["RECIPE_BOP_TOGGLE"] = "Intègre ou non les recettes liées quand ramassées dans l'analyse."
 L["PVP_TOGGLE"] = "Intègre ou non les recettes obtenues en JcJ dans l'analyse."
 L["RAID_TOGGLE"] = "Intègre ou non les recettes de raid difficiles à obtenir (Coeur du Magma, Caverne du sanctuaire du Serpent, etc.) dans l'analyse."
 L["SEASONAL_TOGGLE"] = "Intègre ou non les recettes saisonnières dans l'analyse."
@@ -565,35 +587,35 @@ L["Eclipsion Dragonhawk"] = "Faucon-dragon éclipsion"
 L["Elder Ashenvale Bear"] = "Vieil ours d’Orneval"
 L["Elder Cloud Serpent"] = "Ancien serpent-nuage"
 L["Elder Crag Boar"] = "Ancien sanglier des rochers"
-L["Elder Crag Coyote"] = true
-L["Elder Mistvale Gorilla"] = true
-L["Elder Moss Creeper"] = true
-L["Elder Mottled Boar"] = true
-L["Elder Mountain Boar"] = true
-L["Elder Plainstrider"] = true
-L["Elder Shadowmaw Panther"] = true
-L["Elder Shardtooth"] = true
-L["Elder Springpaw"] = true
-L["Encrusted Surf Crawler"] = true
-L["Enraged Ravager"] = true
-L["Felpaw Ravager"] = true
-L["Felpaw Wolf"] = true
-L["Felsworn Scalewing"] = true
-L["Feral Crag Coyote"] = true
-L["Feral Dragonhawk Hatchling"] = true
-L["Feral Mountain Lion"] = true
-L["Ferocious Grizzled Bear"] = true
-L["Fire Roc"] = true
-L["Firetail Scorpid"] = true
-L["Flatland Cougar"] = true
-L["Fleeting Plainstrider"] = true
-L["Forest Lurker"] = true
-L["Forest Moss Creeper"] = true
-L["Forest Spider"] = true
-L["Foreststrider Fledgling"] = true
-L["Frostsaber Cub"] = true
-L["Frostsaber Huntress"] = true
-L["Frostsaber Stalker"] = true
+L["Elder Crag Coyote"] = "Ancien coyote des rochers"
+L["Elder Mistvale Gorilla"] = "Ancien gorille de Valbrume"
+L["Elder Moss Creeper"] = "Ancienne Rampemousse"
+L["Elder Mottled Boar"] = "Ancien sanglier tacheté"
+L["Elder Mountain Boar"] = "Ancien sanglier des montagnes"
+L["Elder Plainstrider"] = "Vieux trotteur des plaines"
+L["Elder Shadowmaw Panther"] = "Ancienne panthère Ombregueule"
+L["Elder Shardtooth"] = "Ancien Croc acéré"
+L["Elder Springpaw"] = "Ancien Preste-patte"
+L["Encrusted Surf Crawler"] = "Clampant de l'écume incrusté"
+L["Enraged Ravager"] = "Ravageur enragé"
+L["Felpaw Ravager"] = "Ravageur Gangrepatte"
+L["Felpaw Wolf"] = "Loup Gangrepatte"
+L["Felsworn Scalewing"] = "Gangrelige ailécaille"
+L["Feral Crag Coyote"] = "Coyote farouche des rochers"
+L["Feral Dragonhawk Hatchling"] = "Jeune faucon-dragon farouche"
+L["Feral Mountain Lion"] = "Lion des montagnes farouche"
+L["Ferocious Grizzled Bear"] = "Vieil ours féroce"
+L["Fire Roc"] = "Roc de feu"
+L["Firetail Scorpid"] = "Scorpide queue-de-feu"
+L["Flatland Cougar"] = "Puma des basses plaines"
+L["Fleeting Plainstrider"] = "Trotteur des plaines fugitif"
+L["Forest Lurker"] = "Rôdeuse des forêts"
+L["Forest Moss Creeper"] = "Rampemousse forestière"
+L["Forest Spider"] = "Araignée forestière"
+L["Foreststrider Fledgling"] = "Jeune trotteur des forêts"
+L["Frostsaber Cub"] = "Jeune sabre-de-givre"
+L["Frostsaber Huntress"] = "Chasseresse sabre-de-givre"
+L["Frostsaber Stalker"] = "Traqueur sabre-de-givre"
 L["Ghamoo-ra"] = true
 L["Ghost Saber"] = true
 L["Ghostclaw Lynx"] = true

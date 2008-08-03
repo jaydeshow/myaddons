@@ -195,6 +195,37 @@ L:RegisterTranslations("deDE", function() return {
 	hasten_message = "Temporus bekommt 'Hasten'!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	next_portal = "Cледующий портал",
+
+	portal = "Оповещение о порталах",
+	portal_desc = "Показывать предупредительные сообщения о появлении нового портала.",
+
+	portalbar = "панели порталов",
+	portalbar_desc = "Показывать панель с таймером до следующего портала.",
+
+	portal_bar = "~%s: Портал %s",
+	multiportal_bar = "~до появления портала",
+
+	portal_message15s = "%s через ~15 секунд!",
+	portal_message140s = "%s через ~140 секунд!",
+
+	disable_trigger = "Мы отпразднуем это!. Это лиш материя... между нашими мирами и временем.",
+	disable_message = "%s был сохранён!",
+
+	reset_trigger = "Нет! Проклятие! Это чёртово кольцо слишком слабо!",
+	
+	-- Bosses
+	frenzy = "Эонус - Бешенство",
+	frenzy_desc = "Сообщать когда Эонус становится бешенным.",
+	frenzy_trigger = "%s впадает в бешенство!",
+	frenzy_message = "Опасность бешенства!!",
+
+	hasten = "Темпорус - Ускорение",
+	hasten_desc = "Предупреждать когда Темпорус получает ускорение.",
+	hasten_message = "Темпорус получил ускорение!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -206,7 +237,7 @@ mod.zonename = BZ["The Black Morass"]
 mod.synctoken = "The Black Morass"
 mod.enabletrigger = boss
 mod.toggleoptions = {"portal", "portalbar", -1, "hasten", -1, "frenzy", "bosskill"}
-mod.revision = tonumber(("$Revision: 78992 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79681 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

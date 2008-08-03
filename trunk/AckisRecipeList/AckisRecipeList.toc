@@ -19,12 +19,12 @@
 ## eMail: ackis AT shaw DOT ca
 ## X-email: ackis AT shaw DOT ca
 ## X-License: MIT modified with notification clause
-## X-Donate: Send me UDE Point codes, a Murky Code, or donate a few bucks/hours at your local animal shelter.
+## X-Donate: Donate a few bucks/hours at your local animal shelter, or send me UDE Point codes, a Murky Code, or an account upgrade certificate.
 
 ## Interface: 20400
-## Version: 0.932
-## X-Revision: $Rev: 79649 $
-## X-Date: $Date: 2008-08-02 05:18:05 -0400 (Sat, 02 Aug 2008) $
+## Version: 0.933
+## X-Revision: $Rev: 79683 $
+## X-Date: $Date: 2008-08-02 15:38:20 -0400 (Sat, 02 Aug 2008) $
 
 ## X-credits: FGWarmonger, Kagaro, Speeddymon, Xinhuan, Zhinjio
 
@@ -36,7 +36,7 @@
 ## X-RelSite-Curse: 10057
 ## X-RelSite-WoWI: 8512
 ## X-RelSite-WoWUI: 5061
- 
+
 ## X-LoadOn-Slash: /arl
 ## Dependencies:
 ## X-Embeds: Ace3, LibStub, CallbackHandler-1.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0

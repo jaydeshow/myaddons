@@ -5,8 +5,8 @@ ARLLocals-enGB.lua
 
 enGB localization strings for Ackis Recipe List
 
-$Date: 2008-07-26 14:18:05 -0400 (Sat, 26 Jul 2008) $
-$Rev: 79200 $
+$Date: 2008-08-02 15:34:23 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79682 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -33,6 +33,15 @@ L["FILTER_OPTIONS_LONG"] = "Allows you to customize which recipes are filtered."
 L["Reputation"] = true
 L["REP_OPTIONS"] = "Reputation Options"
 L["REP_OPTIONS_LONG"] = "Allows you to customize which reputations are included in the scan."
+L["Binding"] = true
+L["BINDING_OPTIONS"] = "Binding Options"
+L["BINDING_OPTIONS_LONG"] = "Allows you to customize which types of binding are included in the scan."
+L["Crafting"] = true
+L["CRAFTING_OPTIONS"] = "Crafting Options"
+L["CRAFTING_OPTIONS_LONG"] = "Allows you to customize which types of crafting items are included in the scan."
+L["Armour"] = true
+L["ARMOUR_OPTIONS"] = "Armour Options"
+L["ARMOUR_OPTIONS_LONG"] = "Allows you to customize which armour types are included in the scan."
 L["Obtain"] = true
 L["OBTAIN_OPTIONS"] = "Obtain Options"
 L["OBTAIN_OPTIONS_LONG"] = "Allows you to customize which methods of obtaining a recipe are included in the scan."
@@ -58,12 +67,25 @@ L["Specialities"] = true
 L["SPECIALITY_TOGGLE"] = "All trade-skill specialities should be included in the scan."
 L["Skill"] = true
 L["SKILL_TOGGLE"] = "Include all recipes regardless of your current skill level."
+L["Old World"] = true
+L["OLDWORLD_OPTIONS"] = "Original WoW Reputations"
+L["OLDWORLD_OPTIONS_LONG"] = "Allows you to customize which Original WoW reputations should be included in the scan."
+L["Burning Crusade"] = true
+L["BC_OPTIONS"] = "Burning Crusade Reputations"
+L["BC_OPTIONS_LONG"] = "Allows you to customize which Burning Crusade reputations should be included in the scan."
+L["Wrath of the Lich King"]= true
+L["WOTLK_OPTIONS"] = "Wrath of the Lich King Reputations"
+L["WOTLK_OPTIONS_LONG"] = "Allows you to customize which Wrath of the Lich King reputations should be included in the scan."
 
 -- Obtain Filter Options
-L["BOEFilter"] = "Bind on Equip"
-L["BOE_TOGGLE"] = "BoE recipes should be included in the scan."
-L["BOPFilter"] = "Bind on Pickup"
-L["BOP_TOGGLE"] = "BoP recipes should be included in the scan."
+L["BOEFilter"] = "Item Bind on Equip"
+L["BOE_TOGGLE"] = "Recipes that make Bind on Equip items should be included in the scan."
+L["BOPFilter"] = "Item Bind on Pickup"
+L["BOP_TOGGLE"] = "Recipes that make Bind on Pickup items should be included in the scan."
+L["RecipeBOEFilter"] = "Recipe Bind on Equip"
+L["RECIPE_BOE_TOGGLE"] = "Recipes that are Bind on Equip should be included in the scan."
+L["RecipeBOPFilter"] = "Recipe Bind on Pickup"
+L["RECIPE_BOP_TOGGLE"] = "Recipes that are Bind on Pickup should be included in the scan."
 L["PVP_TOGGLE"] = "PVP obtained recipes should be included in the scan."
 L["RAID_TOGGLE"] = "Hard to get raid (ie: Molten Core, Serpent Shrine Cavern, etc.) recipes should be included in the scan."
 L["SEASONAL_TOGGLE"] = "Seasonal obtained recipes should be included in the scan."
@@ -87,6 +109,8 @@ L["Tanking"] = true
 L["TANKING_TOGGLE"] = "Patterns that are used for tanking should be included in the scan."
 L["Healing"] = true
 L["HEALING_TOGGLE"] = "Patterns that are used for healing should be included in the scan."
+L["World Drop"] = true
+L["WORLD_DROP_TOGGLE"] = "Patterns that are World Drops should be included in the scan."
 
 -- Sorting options
 L["Name"] = true
@@ -106,6 +130,7 @@ L["UnknownTradeSkill"] = "You have opened up a trade skill window which is not s
 L["OpenTradeSkillWindow"] = "Please open trade skill window to scan."
 L["TwoCraftingWindows"] = "Crafting window already open.  Please close the other window and re-open this one if you wish to scan for missing recipes."
 L["SpellIDCache"] = "Spell ID: %s is not in your local cache.  Please submit a ticket at http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ and include the spell ID and the profession in which you were scanning."
+L["FactionError"] = "Warning: Reputation level of %s is unknown."
 
 -- GUI Text
 L["Close"] = true
@@ -230,7 +255,7 @@ L["Wildvine Potion Obt"] = "Random Trolls"
 L["Discolored Healing Potion Obt"] = "Wild Hearts"
 L["Elixir of Brute Force Obt"] = "Dadanga is Hungry (Random reward)"
 L["Lesser Stoneshield Potion Obt"] = "Liquid Stone"
-L["Restorative Potion Obt"] = "Uldaman Reagent Run"
+L["Restorative Potion Obt"] = "Badlands Reagent Run II"
 
 -- Blacksmithin Obtain Information
 L["Inlaid Mithril Cylinder Obt"] = "Crafted: This recipe is crafted by Gnomish Engineers"

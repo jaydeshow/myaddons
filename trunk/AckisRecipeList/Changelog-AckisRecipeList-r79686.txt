@@ -1,4 +1,32 @@
 ------------------------------------------------------------------------
+r79686 | pettigrow | 2008-08-02 16:44:33 -0400 (Sat, 02 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList:
+- frFR Update
+- little bugfix to alchemy specialities
+------------------------------------------------------------------------
+r79683 | ackis | 2008-08-02 15:38:20 -0400 (Sat, 02 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Updated version number
+
+------------------------------------------------------------------------
+r79682 | ackis | 2008-08-02 15:34:23 -0400 (Sat, 02 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+
+AckisRecipeList:
+- Added a few new filters (BoE/BoP recipes opposed to items)
+- Reorganized how all the filters are done.  There are now new categories.  Reputations have been broken down to expansion pack.  Makes things a bit more easy to read.
+
+------------------------------------------------------------------------
 r79666 | pettigrow | 2008-08-02 09:05:00 -0400 (Sat, 02 Aug 2008) | 1 line
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua

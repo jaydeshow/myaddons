@@ -47,6 +47,12 @@ L:RegisterTranslations("deDE", function() return {
 	poison_message = "Giftwolke!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	poison = "Ядовитое облако",
+	poison_desc = "Предупреждать о ядовитом облаке",
+	poison_message = "ЯДОВИТОЕ ОБЛАКО!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -58,7 +64,7 @@ mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.guid = 17380
 mod.toggleoptions = {"poison", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79681 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

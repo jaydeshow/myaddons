@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-08-02 05:10:56 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79647 $
+$Date: 2008-08-02 16:44:33 -0400 (Sat, 02 Aug 2008) $
+$Rev: 79686 $
 
 Author: Ackis on Illidan US Horde
 
@@ -55,8 +55,8 @@ Flags are different flags which allow me to filter out the recipes.  These flags
 		-- HORDE = Horde faction only
 		-- 1 = Trainer
 		-- 2 = Vendor
-		-- 3 = BoE
-		-- 4 = BoP
+		-- 3 = Item BoE
+		-- 4 = Item BoP
 		-- 5 = Instance
 		-- 6 = Raid
 		-- 7 = Seasonal
@@ -71,6 +71,8 @@ Flags are different flags which allow me to filter out the recipes.  These flags
 		-- 16 = healing
 		-- 17 = caster DPS
 		-- 18 = world drop
+		-- 19 = Recipe BoE
+		-- 20 = Recipe BoP
 
 There are additional flags based off of which faction reputation you can obtain the recipe from.
 
@@ -332,11 +334,69 @@ local function giveFilter()
 				set       = function() addon.db.profile.skill = not addon.db.profile.skill end,
 				order     = 20,
 			},
-			obtain =
+			armour =
 			{
 				type = "group",
-				name = L["Obtain"],
-				desc = L["OBTAIN_OPTIONS"],
+				name = L["Armour"],
+				desc = L["ARMOUR_OPTIONS"],
+				order = 29,
+				args =
+				{
+					desc =
+					{
+						order = 1,
+						type = "description",
+						name = L["ARMOUR_OPTIONS"] .. "\n",
+					},
+					longdesc = 
+					{
+						order = 2,
+						type = "description",
+						name = L["ARMOUR_OPTIONS_LONG"] .. "\n",
+					},
+					cloth =
+					{
+						name      = L["Cloth"],
+						desc      = L["CLOTH_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.cloth end,
+						set       = function() addon.db.profile.cloth = not addon.db.profile.cloth end,
+						order     = 90,
+					},
+					leather =
+					{
+						name      = L["Leather"],
+						desc      = L["LEATHER_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.leather end,
+						set       = function() addon.db.profile.leather = not addon.db.profile.leather end,
+						order     = 91,
+					},
+					mail =
+					{
+						name      = L["Mail"],
+						desc      = L["MAIL_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.mail end,
+						set       = function() addon.db.profile.mail = not addon.db.profile.mail end,
+						order     = 92,
+					},
+					plate =
+					{
+						name      = L["Plate"],
+						desc      = L["PLATE_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.plate end,
+						set       = function() addon.db.profile.plate = not addon.db.profile.plate end,
+						order     = 93,
+					},
+				}
+			},
+			binding =
+			{
+				type = "group",
+				name = L["Binding"],
+				desc = L["BINDING_OPTIONS"],
 				order = 30,
 				args =
 				{
@@ -344,13 +404,13 @@ local function giveFilter()
 					{
 						order = 1,
 						type = "description",
-						name = L["OBTAIN_OPTIONS"] .. "\n",
+						name = L["BINDING_OPTIONS"] .. "\n",
 					},
 					longdesc = 
 					{
 						order = 2,
 						type = "description",
-						name = L["OBTAIN_OPTIONS_LONG"] .. "\n",
+						name = L["BINDING_OPTIONS_LONG"] .. "\n",
 					},
 					BOE =
 					{
@@ -369,6 +429,104 @@ local function giveFilter()
 						get		= function() return addon.db.profile.bop end,
 						set		= function() addon.db.profile.bop = not addon.db.profile.bop end,
 						order	= 6,
+					},
+					RecipeBOE =
+					{
+						name	= L["RecipeBOEFilter"],
+						desc	= L["RECIPE_BOE_TOGGLE"],
+						type	= "toggle",
+						get		= function() return addon.db.profile.recipeboe end,
+						set		= function() addon.db.profile.recipeboe = not addon.db.profile.recipeboe end,
+						order	= 7,
+					},
+					RecipeBOP =
+					{
+						name	= L["RecipeBOPFilter"],
+						desc	= L["RECIPE_BOP_TOGGLE"],
+						type	= "toggle",
+						get		= function() return addon.db.profile.recipebop end,
+						set		= function() addon.db.profile.recipebop = not addon.db.profile.recipebop end,
+						order	= 8,
+					},
+				}
+			},
+			crafting =
+			{
+				type = "group",
+				name = L["Crafting"],
+				desc = L["CRAFTING_OPTIONS"],
+				order = 35,
+				args =
+				{
+					desc =
+					{
+						order = 1,
+						type = "description",
+						name = L["CRAFTING_OPTIONS"] .. "\n",
+					},
+					longdesc = 
+					{
+						order = 2,
+						type = "description",
+						name = L["CRAFTING_OPTIONS_LONG"] .. "\n",
+					},
+					melee =
+					{
+						name      = L["Melee"],
+						desc      = L["MELEE_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.melee end,
+						set       = function() addon.db.profile.melee = not addon.db.profile.melee end,
+						order     = 5,
+					},
+					tanking =
+					{
+						name      = L["Tanking"],
+						desc      = L["TANKING_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.tanking end,
+						set       = function() addon.db.profile.tanking = not addon.db.profile.tanking end,
+						order     = 10,
+					},
+					casterdps =
+					{
+						name      = L["Caster DPS"],
+						desc      = L["CASTERDPS_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.casterdps end,
+						set       = function() addon.db.profile.casterdps = not addon.db.profile.casterdps end,
+						order     = 15,
+					},
+					healing =
+					{
+						name      = L["Healing"],
+						desc      = L["HEALING_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.healing end,
+						set       = function() addon.db.profile.healing = not addon.db.profile.healing end,
+						order     = 20,
+					},
+				}
+			},
+			obtain =
+			{
+				type = "group",
+				name = L["Obtain"],
+				desc = L["OBTAIN_OPTIONS"],
+				order = 40,
+				args =
+				{
+					desc =
+					{
+						order = 1,
+						type = "description",
+						name = L["OBTAIN_OPTIONS"] .. "\n",
+					},
+					longdesc = 
+					{
+						order = 2,
+						type = "description",
+						name = L["OBTAIN_OPTIONS_LONG"] .. "\n",
 					},
 					instance =
 					{
@@ -442,78 +600,6 @@ local function giveFilter()
 						set       = function() addon.db.profile.worlddrop = not addon.db.profile.worlddrop end,
 						order     = 81,
 					},
-					cloth =
-					{
-						name      = L["Cloth"],
-						desc      = L["CLOTH_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.cloth end,
-						set       = function() addon.db.profile.cloth = not addon.db.profile.cloth end,
-						order     = 81,
-					},
-					leather =
-					{
-						name      = L["Leather"],
-						desc      = L["LEATHER_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.leather end,
-						set       = function() addon.db.profile.leather = not addon.db.profile.leather end,
-						order     = 82,
-					},
-					mail =
-					{
-						name      = L["Mail"],
-						desc      = L["MAIL_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.mail end,
-						set       = function() addon.db.profile.mail = not addon.db.profile.mail end,
-						order     = 83,
-					},
-					plate =
-					{
-						name      = L["Plate"],
-						desc      = L["PLATE_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.plate end,
-						set       = function() addon.db.profile.plate = not addon.db.profile.plate end,
-						order     = 84,
-					},
-					melee =
-					{
-						name      = L["Melee"],
-						desc      = L["MELEE_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.melee end,
-						set       = function() addon.db.profile.melee = not addon.db.profile.melee end,
-						order     = 85,
-					},
-					tanking =
-					{
-						name      = L["Tanking"],
-						desc      = L["TANKING_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.tanking end,
-						set       = function() addon.db.profile.tanking = not addon.db.profile.tanking end,
-						order     = 86,
-					},
-					casterdps =
-					{
-						name      = L["Caster DPS"],
-						desc      = L["CASTERDPS_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.casterdps end,
-						set       = function() addon.db.profile.casterdps = not addon.db.profile.casterdps end,
-						order     = 87,
-					},
-					healing =
-					{
-						name      = L["Healing"],
-						desc      = L["HEALING_TOGGLE"],
-						type      = "toggle",
-						get       = function() return addon.db.profile.healing end,
-						set       = function() addon.db.profile.healing = not addon.db.profile.healing end,
-						order     = 88,
-					},
 				}
 			},
 			reputations =
@@ -521,7 +607,7 @@ local function giveFilter()
 				type = "group",
 				name = L["Reputation"],
 				desc = L["REP_OPTIONS"],
-				order = 50,
+				order = 45,
 				args =
 				{
 					desc =
@@ -536,176 +622,242 @@ local function giveFilter()
 						type = "description",
 						name = L["REP_OPTIONS_LONG"] .. "\n",
 					},
-					Aldor =
+					oldworld =
 					{
-						name	= BFAC["The Aldor"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Aldor"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.aldor end,
-						set		= function() addon.db.profile.aldor = not addon.db.profile.aldor end,
-						order	= 3,
+						type = "group",
+						name = L["Old World"],
+						desc = L["OLDWORLD_OPTIONS"],
+						order = 5,
+						args =
+						{
+							desc =
+							{
+								order = 1,
+								type = "description",
+								name = L["OLDWORLD_OPTIONS"] .. "\n",
+							},
+							longdesc = 
+							{
+								order = 2,
+								type = "description",
+								name = L["OLDWORLD_OPTIONS_LONG"] .. "\n",
+							},
+							ArgentDawn =
+							{
+								name	= BFAC["Argent Dawn"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Argent Dawn"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.argentdawn end,
+								set		= function() addon.db.profile.argentdawn = not addon.db.profile.argentdawn end,
+								order	= 3,
+							},
+							CenarionCircle =
+							{
+								name	= BFAC["Cenarion Circle"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Cenarion Circle"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.cenarioncircle end,
+								set		= function() addon.db.profile.cenarioncircle = not addon.db.profile.cenarioncircle end,
+								order	= 15,
+							},
+							TB =
+							{
+								name	= BFAC["Thorium Brotherhood"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Thorium Brotherhood"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.thoriumbrotherhood end,
+								set		= function() addon.db.profile.thoriumbrotherhood = not addon.db.profile.thoriumbrotherhood end,
+								order	= 75,
+							},
+							Timbermaw =
+							{
+								name	= BFAC["Timbermaw Hold"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Timbermaw Hold"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.timbermaw end,
+								set		= function() addon.db.profile.timbermaw = not addon.db.profile.timbermaw end,
+								order	= 80,
+							},
+							Zandalar =
+							{
+								name	= BFAC["Zandalar Tribe"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Zandalar Tribe"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.zandalar end,
+								set		= function() addon.db.profile.zandalar = not addon.db.profile.zandalar end,
+								order	= 90,
+							},
+						},
 					},
-					ArgentDawn =
+					BC =
 					{
-						name	= BFAC["Argent Dawn"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Argent Dawn"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.argentdawn end,
-						set		= function() addon.db.profile.argentdawn = not addon.db.profile.argentdawn end,
-						order	= 5,
+						type = "group",
+						name = L["Burning Crusade"],
+						desc = L["BC_OPTIONS"],
+						order = 10,
+						args =
+						{
+							desc =
+							{
+								order = 1,
+								type = "description",
+								name = L["BC_OPTIONS"] .. "\n",
+							},
+							longdesc = 
+							{
+								order = 2,
+								type = "description",
+								name = L["BC_OPTIONS_LONG"] .. "\n",
+							},
+							Aldor =
+							{
+								name	= BFAC["The Aldor"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Aldor"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.aldor end,
+								set		= function() addon.db.profile.aldor = not addon.db.profile.aldor end,
+								order	= 3,
+							},
+							Ashtongue =
+							{
+								name	= BFAC["Ashtongue Deathsworn"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Ashtongue Deathsworn"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.ashtonguedeathsworn end,
+								set		= function() addon.db.profile.ashtonguedeathsworn = not addon.db.profile.ashtonguedeathsworn end,
+								order	= 10,
+							},
+							CenarionExpidition =
+							{
+								name	= BFAC["Cenarion Expedition"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Cenarion Expedition"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.cenarionexpidition end,
+								set		= function() addon.db.profile.cenarionexpidition = not addon.db.profile.cenarionexpidition end,
+								order	= 20,
+							},
+							Consortium =
+							{
+								name	= BFAC["The Consortium"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Consortium"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.consortium end,
+								set		= function() addon.db.profile.consortium = not addon.db.profile.consortium end,
+								order	= 25,
+							},
+							HellfireFactions =
+							{
+								name	= hellfirefac,
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],hellfirefac),
+								type	= "toggle",
+								get		= function() return addon.db.profile.hellfirefac end,
+								set		= function() addon.db.profile.hellfirefac = not addon.db.profile.hellfirefac end,
+								order	= 30,
+							},
+							KoT =
+							{
+								name	= BFAC["Keepers of Time"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Keepers of Time"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.kot end,
+								set		= function() addon.db.profile.kot = not addon.db.profile.kot end,
+								order	= 35,
+							},
+							NagrandFactions =
+							{
+								name	= nagrandfac,
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],nagrandfac),
+								type	= "toggle",
+								get		= function() return addon.db.profile.nagrandfac end,
+								set		= function() addon.db.profile.nagrandfac = not addon.db.profile.nagrandfac end,
+								order	= 40,
+							},
+							LowerCity =
+							{
+								name	= BFAC["Lower City"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Lower City"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.lowercity end,
+								set		= function() addon.db.profile.lowercity = not addon.db.profile.lowercity end,
+								order	= 45,
+							},
+							Scale =
+							{
+								name	= BFAC["The Scale of the Sands"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Scale of the Sands"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.scaleofsands end,
+								set		= function() addon.db.profile.scaleofsands = not addon.db.profile.scaleofsands end,
+								order	= 50,
+							},
+							Scryer =
+							{
+								name	= BFAC["The Scryers"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Scryers"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.scryer end,
+								set		= function() addon.db.profile.scryer = not addon.db.profile.scryer end,
+								order	= 55,
+							},
+							Shatar =
+							{
+								name	= BFAC["The Sha'tar"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Sha'tar"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.shatar end,
+								set		= function() addon.db.profile.shatar = not addon.db.profile.shatar end,
+								order	= 60,
+							},
+							SSO =
+							{
+								name	= BFAC["Shattered Sun Offensive"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Shattered Sun Offensive"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.sso end,
+								set		= function() addon.db.profile.sso = not addon.db.profile.sso end,
+								order	= 65,
+							},
+							Sporeggar =
+							{
+								name	= BFAC["Sporeggar"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Sporeggar"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.sporeggar end,
+								set		= function() addon.db.profile.sporeggar = not addon.db.profile.sporeggar end,
+								order	= 70,
+							},
+							Violeteye =
+							{
+								name	= BFAC["The Violet Eye"],
+								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Violet Eye"]),
+								type	= "toggle",
+								get		= function() return addon.db.profile.violeteye end,
+								set		= function() addon.db.profile.violeteye = not addon.db.profile.violeteye end,
+								order	= 85,
+							},
+						}
 					},
-					Ashtongue =
+					WotLK =
 					{
-						name	= BFAC["Ashtongue Deathsworn"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Ashtongue Deathsworn"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.ashtonguedeathsworn end,
-						set		= function() addon.db.profile.ashtonguedeathsworn = not addon.db.profile.ashtonguedeathsworn end,
-						order	= 10,
-					},
-					CenarionCircle =
-					{
-						name	= BFAC["Cenarion Circle"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Cenarion Circle"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.cenarioncircle end,
-						set		= function() addon.db.profile.cenarioncircle = not addon.db.profile.cenarioncircle end,
-						order	= 15,
-					},
-					CenarionExpidition =
-					{
-						name	= BFAC["Cenarion Expedition"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Cenarion Expedition"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.cenarionexpidition end,
-						set		= function() addon.db.profile.cenarionexpidition = not addon.db.profile.cenarionexpidition end,
-						order	= 20,
-					},
-					Consortium =
-					{
-						name	= BFAC["The Consortium"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Consortium"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.consortium end,
-						set		= function() addon.db.profile.consortium = not addon.db.profile.consortium end,
-						order	= 25,
-					},
-					HellfireFactions =
-					{
-						name	= hellfirefac,
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],hellfirefac),
-						type	= "toggle",
-						get		= function() return addon.db.profile.hellfirefac end,
-						set		= function() addon.db.profile.hellfirefac = not addon.db.profile.hellfirefac end,
-						order	= 30,
-					},
-					KoT =
-					{
-						name	= BFAC["Keepers of Time"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Keepers of Time"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.kot end,
-						set		= function() addon.db.profile.kot = not addon.db.profile.kot end,
-						order	= 35,
-					},
-					NagrandFactions =
-					{
-						name	= nagrandfac,
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],nagrandfac),
-						type	= "toggle",
-						get		= function() return addon.db.profile.nagrandfac end,
-						set		= function() addon.db.profile.nagrandfac = not addon.db.profile.nagrandfac end,
-						order	= 40,
-					},
-					LowerCity =
-					{
-						name	= BFAC["Lower City"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Lower City"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.lowercity end,
-						set		= function() addon.db.profile.lowercity = not addon.db.profile.lowercity end,
-						order	= 45,
-					},
-					Scale =
-					{
-						name	= BFAC["The Scale of the Sands"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Scale of the Sands"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.scaleofsands end,
-						set		= function() addon.db.profile.scaleofsands = not addon.db.profile.scaleofsands end,
-						order	= 50,
-					},
-					Scryer =
-					{
-						name	= BFAC["The Scryers"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Scryers"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.scryer end,
-						set		= function() addon.db.profile.scryer = not addon.db.profile.scryer end,
-						order	= 55,
-					},
-					Shatar =
-					{
-						name	= BFAC["The Sha'tar"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Sha'tar"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.shatar end,
-						set		= function() addon.db.profile.shatar = not addon.db.profile.shatar end,
-						order	= 60,
-					},
-					SSO =
-					{
-						name	= BFAC["Shattered Sun Offensive"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Shattered Sun Offensive"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.sso end,
-						set		= function() addon.db.profile.sso = not addon.db.profile.sso end,
-						order	= 65,
-					},
-					Sporeggar =
-					{
-						name	= BFAC["Sporeggar"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Sporeggar"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.sporeggar end,
-						set		= function() addon.db.profile.sporeggar = not addon.db.profile.sporeggar end,
-						order	= 70,
-					},
-					TB =
-					{
-						name	= BFAC["Thorium Brotherhood"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Thorium Brotherhood"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.thoriumbrotherhood end,
-						set		= function() addon.db.profile.thoriumbrotherhood = not addon.db.profile.thoriumbrotherhood end,
-						order	= 75,
-					},
-					Timbermaw =
-					{
-						name	= BFAC["Timbermaw Hold"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Timbermaw Hold"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.timbermaw end,
-						set		= function() addon.db.profile.timbermaw = not addon.db.profile.timbermaw end,
-						order	= 80,
-					},
-					Violeteye =
-					{
-						name	= BFAC["The Violet Eye"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Violet Eye"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.violeteye end,
-						set		= function() addon.db.profile.violeteye = not addon.db.profile.violeteye end,
-						order	= 85,
-					},
-					Zandalar =
-					{
-						name	= BFAC["Zandalar Tribe"],
-						desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Zandalar Tribe"]),
-						type	= "toggle",
-						get		= function() return addon.db.profile.zandalar end,
-						set		= function() addon.db.profile.zandalar = not addon.db.profile.zandalar end,
-						order	= 90,
+						type = "group",
+						name = L["Wrath of the Lich King"],
+						desc = L["WOTLK_OPTIONS"],
+						order = 15,
+						args =
+						{
+							desc =
+							{
+								order = 1,
+								type = "description",
+								name = L["WOTLK_OPTIONS"] .. "\n",
+							},
+							longdesc = 
+							{
+								order = 2,
+								type = "description",
+								name = L["WOTLK_OPTIONS_LONG"] .. "\n",
+							},
+						}
 					},
 				}
 			},
@@ -873,6 +1025,8 @@ function addon:OnInitialize()
 			tank = true,
 			healer = true,
 			casterdps = true,
+			recipebop = true,
+			recipeboe = true,
 			
 			-- Reputation Options
 			aldor = true,
@@ -1289,6 +1443,7 @@ do
 
 	-- List of classes which have specialities
 	local SpecialtyTable = {
+		[GetSpellInfo(2259)] = AlchemySpec,
 		[GetSpellInfo(2018)] = BlacksmithSpec,
 		[GetSpellInfo(4036)] = EngineeringSpec,
 		[GetSpellInfo(2108)] = LeatherworkSpec,
@@ -1360,8 +1515,8 @@ do
 		-- HORDE = Horde faction only
 		-- 1 = Trainer
 		-- 2 = Vendor
-		-- 3 = BoE
-		-- 4 = BoP
+		-- 3 = Item BoE
+		-- 4 = Item BoP
 		-- 5 = Instance
 		-- 6 = Raid
 		-- 7 = Seasonal
@@ -1376,6 +1531,8 @@ do
 		-- 16 = healing
 		-- 17 = caster DPS
 		-- 18 = world drop
+		-- 19 = Recipe BoE
+		-- 20 = Recipe BoP
 
 
 		-- Update the rep table with appropiate flags
@@ -1505,6 +1662,18 @@ do
 				
 				-- Display world drop recipes
 				if (not addon.db.profile.worlddrop) and (CurrentCheck == 18) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display recipe bop recipes
+				if (not addon.db.profile.recipebop) and (CurrentCheck == 19) then
+					addon.FilteredRecipes = addon.FilteredRecipes + 1
+					return false
+				end
+
+				-- Display recipe boe recipes
+				if (not addon.db.profile.recipeboe) and (CurrentCheck == 20) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end

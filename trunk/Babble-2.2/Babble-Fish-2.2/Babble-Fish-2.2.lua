@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Fish-2.2
-Revision: $Rev: 79351 $
+Revision: $Rev: 79692 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Fish-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Fish-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79351 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79692 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -570,7 +570,7 @@ end)
 -- Translator: sadsmile (Updater: StingerSoft)
 BabbleFish:RegisterTranslations("ruRU", function() return {
 -- Fishing Node
-	["Floating Wreckage"] = "Floating Wreckage",
+	["Floating Wreckage"] = "Плавающие обломки",
 	["Patch of Elemental Water"] = "Patch of Elemental Water",
 	["Floating Debris"] = "Floating Debris",
 	["Oil Spill"] = "Oil Spill",

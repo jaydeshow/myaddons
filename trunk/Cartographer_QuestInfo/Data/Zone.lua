@@ -65,6 +65,7 @@ QuestInfo_Zone = {
 	[2017] = "Stratholme",
 	[2057] = "Scholomance",
 	[2100] = "Maraudon",
+	[2159] = "Onyxia's Lair",
 	[2257] = "Deeprun Tram",
 	[2366] = "The Black Morass",
 	[2367] = "Old Hillsbrad Foothills",

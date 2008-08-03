@@ -1,4 +1,17 @@
 ------------------------------------------------------------------------
+r79729 | charon | 2008-08-03 07:52:00 -0400 (Sun, 03 Aug 2008) | 7 lines
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
+   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
+
+Threat-2.0: Fix Lifebloom threat
+
+Testing by Xinhuan[1] proves that LB HOT only adds half threat
+compared to other heals, and the Bloom effect does not result in any
+threat for either the druid or the target.
+
+[1] http://www.wowace.com/forums/index.php?topic=13942.msg234447#msg234447
+------------------------------------------------------------------------
 r79668 | charon | 2008-08-02 09:11:31 -0400 (Sat, 02 Aug 2008) | 12 lines
 Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
@@ -135,11 +148,4 @@ with no events in between.  We exploit this to detect a successful
 Taunt on the event directly following the cast, and publish threat
 immediately.  This should improve accuracy with Taunts in quick
 succession.
-------------------------------------------------------------------------
-r77728 | arrowmaster | 2008-07-02 19:25:37 -0400 (Wed, 02 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/NPCModules/CoilfangReservoir/SerpentshrineCavern/Leotheras.lua
-
-Threat-2.0:
--fix Leotheras Whirlwind threat wipe, thanks WatchoutX
 ------------------------------------------------------------------------

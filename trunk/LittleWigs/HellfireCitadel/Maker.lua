@@ -46,6 +46,13 @@ L:RegisterTranslations("frFR", function() return {
 	mc_bar = "%s - Domination",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	mc = "Контроль над разумом",
+	mc_desc = "Warn for Контроль над разумом",
+	mc_message = "%s законтролирован разум!",
+	mc_bar = "%s - Контроль над разумом",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -57,7 +64,7 @@ mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.guid = 17381
 mod.toggleoptions = {"mc", "bosskill"}
-mod.revision = tonumber(("$Revision: 77157 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79681 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

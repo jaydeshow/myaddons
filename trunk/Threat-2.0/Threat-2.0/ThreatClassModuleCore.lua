@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Threat-2.0"
-local MINOR_VERSION = tonumber(("$Revision: 79667 $"):match("%d+"))
+local MINOR_VERSION = tonumber(("$Revision: 79729 $"):match("%d+"))
 
 if MINOR_VERSION > _G.ThreatLib_MINOR_VERSION then _G.ThreatLib_MINOR_VERSION = MINOR_VERSION end
 
@@ -335,6 +335,8 @@ function prototype:OnInitialize()
 	-- Imp LOTP heals are 0 threat, and in the prototype as any class can proc them
 	self.ExemptGains = newHash()	
 	self.ExemptGains[34299] = true
+	-- Same for Lifebloom end heals
+	self.ExemptGains[33778] = true
 	
 	-- Used to modify all data from a particular school. Only applies to some classes.
 	self.schoolThreatMods = new()

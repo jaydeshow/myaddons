@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Ore-2.2
-Revision: $Rev: 79418 $
+Revision: $Rev: 79692 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Ore-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Ore-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79418 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 79692 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -626,7 +626,7 @@ BabbleOre:RegisterTranslations("ruRU", function() return {
 -- Nodes
 	["Copper Vein"] = "Медная Жила",
 	["Tin Vein"] = "Оловянная Жила",
-	["Iron Deposit"] = "Залежь Железа",
+	["Iron Deposit"] = "Залежи железа",
 	["Silver Vein"] = "Серебрянная Жила",
 	["Gold Vein"] = "Золотая Жила",
 	["Mithril Deposit"] = "Мифриловые залежи",
@@ -643,7 +643,7 @@ BabbleOre:RegisterTranslations("ruRU", function() return {
 	["Dark Iron Deposit"] = "Залежи Темной Стали",
 	["Lesser Bloodstone Deposit"] = "Lesser Bloodstone Deposit",
 	["Incendicite Mineral Vein"] = "Incendicite Mineral Vein",
-	["Indurium Mineral Vein"] = "Indurium Mineral Vein",
+	["Indurium Mineral Vein"] = "Индарилиевые залежи",
 	["Fel Iron Deposit"] = "Месторождение оскверненного железа",
 	["Adamantite Deposit"] = "Залежи адамантита",
 	["Rich Adamantite Deposit"] = "Богатые залежи адамантита",
