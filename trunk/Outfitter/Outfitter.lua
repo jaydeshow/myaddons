@@ -626,7 +626,7 @@ Outfitter.PresetScripts =
 		       '        for _, itemName in ipairs(setting.Trinkets) do\n'..
 		       '            local startTime, duration, enable = GetItemCooldown(itemName)\n'..
 		       '            if duration <= 30 then\n'..
-		       '		    	EquipItemByName(itemName)\n'..
+		       '                EquipItemByName(itemName)\n'..
 		       '                break\n'..
 		       '            end\n'..
 		       '        end\n'..
@@ -693,11 +693,10 @@ Outfitter.PresetScripts =
 		Name = Outfitter.cRidingOutfit,
 		ID = "Riding",
 		Category = "TRADE",
-		Script = Outfitter:GenerateScriptHeader("MOUNTED NOT_MOUNTED UNIT_SPELLCAST_SENT UNIT_SPELLCAST_STOP", Outfitter.cRidingOutfitDescription)..
+		Script = Outfitter:GenerateScriptHeader("MOUNTED NOT_MOUNTED", Outfitter.cRidingOutfitDescription)..
 		         '-- $SETTING DisableBG={Type="Boolean", Label="Don\'t equip in Battlegrounds", Default=true}\n'..
 		         '-- $SETTING DisableInstance={Type="Boolean", Label="Don\'t equip in dungeons", Default=true}\n'..
 		         '-- $SETTING DisablePVP={Type="Boolean", Label="Don\'t equip while PvP flagged", Default=false}\n'..
-		         '-- $SETTING UnequipOnCast={Type="Boolean", Label="Unequip when beginning a spellcast", Default=false}\n'..
 		         '-- $SETTING StayEquippedWhileFalling={Type="Boolean", Label="Leave equipped while falling", Default=false}\n'..
 		         '-- $SETTING UnequipDelay={Type="Number", Label="Wait", Suffix="seconds before unequipping", Default=0}\n'..
 		         '\n'..
@@ -717,7 +716,6 @@ Outfitter.PresetScripts =
 		         '    end\n'..
 		         '\n'..
 		         '    equip = true\n'..
-		         '    outfit.spellSentTime = nil\n'..
 		         '\n'..
 		         '-- Unequip on dismount\n'..
 		         '\n'..
@@ -729,30 +727,10 @@ Outfitter.PresetScripts =
 				 '        self.DismountTime = GetTime()\n'..
 		         '        self:RegisterEvent("TIMER")\n'..
 		         '    end\n'..
-		         '    outfit.spellSentTime = nil\n'..
 		         '\n'..
-		         '    if setting.UnequipDelay and not outfit.didSpellcastUnequip then\n'..
+		         '    if setting.UnequipDelay then\n'..
 		         '        delay = setting.UnequipDelay\n'..
 		         '    end\n'..
-		         '\n'..
-		         '-- Unequip if the player starts casting\n'..
-		         '\n'..
-		         'elseif event == "UNIT_SPELLCAST_SENT" then\n'..
-		         '    if not setting.UnequipOnCast or arg1 ~= "player" or not isEquipped then return end\n'..
-		         '\n'..
-		         '    equip = false\n'..
-		         '    outfit.didSpellcastUnequip = true\n'..
-		         '    outfit.spellFinishTime = nil\n'..
-		         '\n'..
-		         '-- Re-equip if the player stops casting\n'..
-		         '\n'..
-		         'elseif event == "UNIT_SPELLCAST_STOP" then\n'..
-		         '    if not setting.UnequipOnCast or arg1 ~= "player" then return end\n'..
-		         '\n'..
-		         '    if outfit.didSpellcastUnequip then\n'..
-		         '        outfit.spellFinishTime = time\n'..
-		         '        self:RegisterEvent("TIMER")\n'..
-				 '    end\n'..
 		         '\n'..
 		         '-- If they\'re still mounted three seconds after casting then assume\n'..
 		         '-- it was nothing important and put the riding gear back on\n'..
@@ -767,18 +745,7 @@ Outfitter.PresetScripts =
 		         '        self.UnequipWhenNotFalling = nil\n'..
 		         '    end\n'..
 		         '\n'..
-				 '    if Outfitter.SpecialState.Riding\n'..
-				 '    and outfit.didSpellcastUnequip\n'..
-				 '    and outfit.spellFinishTime then\n'..
-				 '        if time - outfit.spellFinishTime > 3 then\n'..
-				 '            equip = true\n'..
-				 '            outfit.didSpellcastUnequip = nil\n'..
-				 '            outfit.spellFinishTime = nil\n'..
-				 '            if not self.UnequipWhenNotFalling then\n'..
-				 '                self:UnregisterEvent("TIMER")\n'..
-				 '            end\n'..
-				 '        end\n'..
-				 '    elseif not self.UnequipWhenNotFalling then\n'..
+				 '    if not self.UnequipWhenNotFalling then\n'..
 				 '        self:UnregisterEvent("TIMER")\n'..
 				 '    end\n'..
 		         'end\n',
@@ -1723,6 +1690,9 @@ function Outfitter:SchedulePlayerEnteringWorld()
 end
 
 function Outfitter:PlayerEnteringWorld()
+	self.IsCasting = false
+	self.IsChanneling = false
+	
 	self:BeginEquipmentUpdate()
 	
 	self.ItemList_FlushEquippableItems()
@@ -1883,8 +1853,8 @@ end
 function Outfitter:RegenDisabled(pEvent)
 	self.InCombat = true
 	
-	if Outfitter.OutfitBar then
-		Outfitter.OutfitBar:AdjustAlpha()
+	if self.OutfitBar then
+		self.OutfitBar:AdjustAlpha()
 	end
 end
 
@@ -1961,8 +1931,70 @@ function Outfitter:UnitHealthOrManaChanged(pUnitID)
 	Outfitter:EndEquipmentUpdate()
 end
 
-function Outfitter:UnitSpellcastSent(pUnitID)
+function Outfitter:UnitSpellcastSent(pEventID, pUnitID, pSpellName)
+	if pUnitID ~= "player" then
+		return
+	end
+	
+	self:TestMessage("UnitSpellcastSent: %s %s %s", pEventID, pUnitID, pSpellName)
+	
 	self.SpellcastSentTime = GetTime()
+	
+	if not self.IsCasting then
+		self:TestMessage(GREEN_FONT_COLOR_CODE.."IsCasting")
+		self.IsCasting = true
+	end
+end
+
+function Outfitter:UnitSpellcastChannelStart(pEventID, pUnitID, pSpellName)
+	if pUnitID ~= "player" then
+		return
+	end
+	
+	self:TestMessage("UnitSpellcastChannelStart: %s %s %s", pEventID, pUnitID, pSpellName)
+	
+	self:TestMessage(GREEN_FONT_COLOR_CODE.."IsChanneling")
+	self.IsChanneling = true
+end
+
+function Outfitter:UnitSpellcastChannelStop(pEventID, pUnitID, pSpellName)
+	if pUnitID ~= "player" then
+		return
+	end
+	
+	self:TestMessage("UnitSpellcastChannelStop: %s %s %s", pEventID, pUnitID, pSpellName)
+	
+	if not self.IsChanneling then
+		return
+	end
+
+	self:TestMessage(RED_FONT_COLOR_CODE.."NOT IsChanneling")
+	self:TestMessage(RED_FONT_COLOR_CODE.."NOT IsCasting")
+	
+	self:BeginEquipmentUpdate()
+	self.IsChanneling = false
+	self.IsCasting = false
+	self:SetUpdateDelay(GetTime(), 0.5) -- Need a short delay because the 'in combat' message doesn't come until after the spellcast is done
+	self:EndEquipmentUpdate()
+end
+
+function Outfitter:UnitSpellcastStop(pEventID, pUnitID, pSpellName)
+	if pUnitID ~= "player" then
+		return
+	end
+	
+	self:TestMessage("UnitSpellcastStop: %s %s %s", pEventID, pUnitID, pSpellName)
+	
+	if not self.IsCasting then
+		return
+	end
+	
+	self:TestMessage(RED_FONT_COLOR_CODE.."NOT IsCasting")
+	
+	self:BeginEquipmentUpdate()
+	self.IsCasting = false
+	self:SetUpdateDelay(GetTime(), 0.5) -- Need a short delay because the 'in combat' message doesn't come until after the spellcast is done
+	self:EndEquipmentUpdate()
 end
 
 function Outfitter:SpiritRegenTimer()
@@ -4911,74 +4943,76 @@ function Outfitter:OutfitOnlyHasCombatEquipmentSlots(pOutfit)
 	return true
 end
 
-local gOutfitter_EquipmentUpdateCount = 0
+Outfitter.EquipmentUpdateCount = 0
 
 function Outfitter:BeginEquipmentUpdate()
-	gOutfitter_EquipmentUpdateCount = gOutfitter_EquipmentUpdateCount + 1
+	self.EquipmentUpdateCount = self.EquipmentUpdateCount + 1
 end
 
 function Outfitter:EndEquipmentUpdate(pCallerName)
-	gOutfitter_EquipmentUpdateCount = gOutfitter_EquipmentUpdateCount - 1
+	self.EquipmentUpdateCount = self.EquipmentUpdateCount - 1
 	
-	if gOutfitter_EquipmentUpdateCount == 0 then
-		Outfitter:ScheduleEquipmentUpdate()
-		Outfitter:Update(false)
+	if self.EquipmentUpdateCount == 0 then
+		self:ScheduleEquipmentUpdate()
+		self:Update(false)
 	end
 end
 
 function Outfitter:UpdateEquippedItems()
-	if not Outfitter.EquippedNeedsUpdate
-	and not Outfitter.WeaponsNeedUpdate then
+	if not self.EquippedNeedsUpdate
+	and not self.WeaponsNeedUpdate then
 		return
 	end
 	
-	-- Delay all changes until they're alive
+	-- Delay all changes until they're alive or not casting a spell
 	
-	if Outfitter.IsDead then
+	if self.IsDead
+	or self.IsCasting
+	or self.IsChanneling then
 		return
 	end
 	
 	local vCurrentTime = GetTime()
 	
-	if vCurrentTime - Outfitter.LastEquipmentUpdateTime < Outfitter.cMinEquipmentUpdateInterval then
-		Outfitter:ScheduleEquipmentUpdate()
+	if vCurrentTime - self.LastEquipmentUpdateTime < self.cMinEquipmentUpdateInterval then
+		self:ScheduleEquipmentUpdate()
 		return
 	end
 	
-	Outfitter.LastEquipmentUpdateTime = vCurrentTime
+	self.LastEquipmentUpdateTime = vCurrentTime
 	
-	local vWeaponsNeedUpdate = Outfitter.WeaponsNeedUpdate
+	local vWeaponsNeedUpdate = self.WeaponsNeedUpdate
 	
-	Outfitter.EquippedNeedsUpdate = false
-	Outfitter.WeaponsNeedUpdate = false
+	self.EquippedNeedsUpdate = false
+	self.WeaponsNeedUpdate = false
 	
 	-- Compile the outfit
 	
-	local vEquippableItems = Outfitter.ItemList_GetEquippableItems()
-	local vCompiledOutfit = Outfitter:GetCompiledOutfit()
+	local vEquippableItems = self.ItemList_GetEquippableItems()
+	local vCompiledOutfit = self:GetCompiledOutfit()
 	
 	-- If the outfit contains non-weapon changes then
 	-- delay the change until they're out of combat but go
 	-- ahead and swap the weapon slots if there are any
 	
-	if Outfitter.InCombat or Outfitter.MaybeInCombat then
+	if self.InCombat or self.MaybeInCombat then
 		if vWeaponsNeedUpdate
-		and Outfitter:OutfitHasCombatEquipmentSlots(vCompiledOutfit) then
+		and self:OutfitHasCombatEquipmentSlots(vCompiledOutfit) then
 			
 			-- Allow the weapon change to proceed but defer the rest
 			-- until they're out of combat
 			
-			local vWeaponOutfit = Outfitter:NewEmptyOutfit()
+			local vWeaponOutfit = self:NewEmptyOutfit()
 			
-			for vEquipmentSlot, _ in pairs(Outfitter.cCombatEquipmentSlots) do
+			for vEquipmentSlot, _ in pairs(self.cCombatEquipmentSlots) do
 				vWeaponOutfit.Items[vEquipmentSlot] = vCompiledOutfit.Items[vEquipmentSlot]
 			end
 			
 			-- Still need to update the rest once they exit combat
 			-- if there are non-equipment slot items
 			
-			if not Outfitter:OutfitOnlyHasCombatEquipmentSlots(vCompiledOutfit) then
-				Outfitter.EquippedNeedsUpdate = true
+			if not self:OutfitOnlyHasCombatEquipmentSlots(vCompiledOutfit) then
+				self.EquippedNeedsUpdate = true
 			end
 			
 			-- Switch to the weapons-only part
@@ -4987,35 +5021,35 @@ function Outfitter:UpdateEquippedItems()
 		else
 			-- No weapon changes, just defer the whole outfit change
 			
-			Outfitter.EquippedNeedsUpdate = true
-			Outfitter:ScheduleEquipmentUpdate()
+			self.EquippedNeedsUpdate = true
+			self:ScheduleEquipmentUpdate()
 			return
 		end
 	end
 	
 	-- Equip it
 	
-	local vEquipmentChangeList = Outfitter:BuildEquipmentChangeList(vCompiledOutfit, vEquippableItems)
+	local vEquipmentChangeList = self:BuildEquipmentChangeList(vCompiledOutfit, vEquippableItems)
 	
 	if vEquipmentChangeList then
-		-- local vExpectedEquippableItems = Outfitter.ItemList_New()
+		-- local vExpectedEquippableItems = self.ItemList_New()
 	
-		Outfitter:ExecuteEquipmentChangeList(vEquipmentChangeList, Outfitter:GetEmptyBagSlotList(), vExpectedEquippableItems)
+		self:ExecuteEquipmentChangeList(vEquipmentChangeList, self:GetEmptyBagSlotList(), vExpectedEquippableItems)
 		
-		-- Outfitter:DebugTable("ExpectedEquippableItems", vExpectedEquippableItems)
+		-- self:DebugTable("ExpectedEquippableItems", vExpectedEquippableItems)
 	end
 	
 	-- Update the outfit we're expecting to see on the player
 	
 	for vInventorySlot, vItem in pairs(vCompiledOutfit.Items) do
-		Outfitter.ExpectedOutfit.Items[vInventorySlot] = vCompiledOutfit.Items[vInventorySlot]
+		self.ExpectedOutfit.Items[vInventorySlot] = vCompiledOutfit.Items[vInventorySlot]
 	end
 	
-	Outfitter.MaybeInCombat = false
+	self.MaybeInCombat = false
 	
-	Outfitter:ScheduleEquipmentUpdate()
+	self:ScheduleEquipmentUpdate()
 	
-	-- Outfitter:TestMessage("Outfitter:UpdateEquippedItems: "..(GetTime() - vCurrentTime).."s")
+	-- self:TestMessage("Outfitter:UpdateEquippedItems: "..(GetTime() - vCurrentTime).."s")
 end
 
 function Outfitter:InventorySlotIsEmpty(pInventorySlot)
@@ -6285,8 +6319,17 @@ function Outfitter:Initialize()
 	
 	-- For monitoring spirit regen
 	
-	MCEventLib:RegisterEvent("UNIT_SPELLCAST_SENT", self.UnitSpellcastSent, self, true) -- Register as a blind event handler (no event id param)
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_SENT", self.UnitSpellcastSent, self) -- Register as a blind event handler (no event id param)
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_START", self.UnitSpellcastSent, self) -- Register as a blind event handler (no event id param)
 	
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED", self.UnitSpellcastStop, self) -- Register as a blind event handler (no event id param)
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_STOP", self.UnitSpellcastStop, self) -- Register as a blind event handler (no event id param)
+	
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_CHANNEL_START", self.UnitSpellcastChannelStart, self) -- Register as a blind event handler (no event id param)
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_CHANNEL_STOP", self.UnitSpellcastChannelStop, self) -- Register as a blind event handler (no event id param)
+	
+	MCEventLib:RegisterEvent("UNIT_SPELLCAST_FAILED", self.UnitSpellcastStop, self) -- Register as a blind event handler (no event id param)
+	--MCEventLib:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED", self.UnitSpellcastStop, self) -- Register as a blind event handler (no event id param)
 	
 	--
 	
@@ -7773,19 +7816,19 @@ function Outfitter.InputBox_TabPressed()
 end
 
 function Outfitter:ScheduleEquipmentUpdate()
-	if not Outfitter.EquippedNeedsUpdate
-	and not Outfitter.WeaponsNeedUpdate then
+	if not self.EquippedNeedsUpdate
+	and not self.WeaponsNeedUpdate then
 		return
 	end
 	
-	local vElapsed = GetTime() - Outfitter.LastEquipmentUpdateTime
-	local vDelay = Outfitter.cMinEquipmentUpdateInterval - vElapsed
+	local vElapsed = GetTime() - self.LastEquipmentUpdateTime
+	local vDelay = self.cMinEquipmentUpdateInterval - vElapsed
 	
 	 if vDelay < 0.05 then
 		vDelay = 0.05
 	end
 	
-	MCSchedulerLib:ScheduleUniqueTask(vDelay, Outfitter.UpdateEquippedItems, Outfitter)
+	MCSchedulerLib:ScheduleUniqueTask(vDelay, self.UpdateEquippedItems, self)
 end
 
 function Outfitter.MinimapButton_MouseDown()
@@ -10999,16 +11042,20 @@ function Outfitter._ScriptContext:PostProcess(pEquip, pLayer, pDelay, pStartTime
 		-- Adjust the last equipped time to cause a delay if requested
 		
 		if vChanged and pDelay then
-			local vUpdateTime = pStartTime + (pDelay - Outfitter.cMinEquipmentUpdateInterval)
-			
-			if vUpdateTime > Outfitter.LastEquipmentUpdateTime then
-				Outfitter.LastEquipmentUpdateTime = vUpdateTime
-			end
+			Outfitter:SetUpdateDelay(pStartTime, pDelay)
 		end
 		
 		Outfitter:EndEquipmentUpdate()
 	elseif pLayer then
 		Outfitter:TagOutfitLayer(self.Outfit, pLayer)
+	end
+end
+
+function Outfitter:SetUpdateDelay(pTime, pDelay)
+	local vUpdateTime = pTime + (pDelay - self.cMinEquipmentUpdateInterval)
+
+	if vUpdateTime > self.LastEquipmentUpdateTime then
+		self.LastEquipmentUpdateTime = vUpdateTime
 	end
 end
 

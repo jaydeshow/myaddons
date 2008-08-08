@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 77400 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 79885 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -133,6 +133,7 @@ function AutoBar:OnInitialize()
 	BINDING_NAME_AutoBarButtonBear_X = L["AutoBarButtonBear"]
 	BINDING_NAME_AutoBarButtonBoomkinTree_X = L["AutoBarButtonBoomkinTree"]
 	BINDING_NAME_AutoBarButtonCat_X = L["AutoBarButtonCat"]
+	BINDING_NAME_AutoBarButtonPowerShift_X = L["AutoBarButtonPowerShift"]
 	BINDING_NAME_AutoBarButtonTravel_X = L["AutoBarButtonTravel"]
 
 	BINDING_HEADER_AutoBarClassBarHunter = L["AutoBarClassBarHunter"]

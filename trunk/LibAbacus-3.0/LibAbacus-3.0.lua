@@ -1,6 +1,6 @@
 --[[
 Name: LibAbacus-3.0
-Revision: $Rev: 78626 $
+Revision: $Rev: 79915 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://www.wowace.com/wiki/LibAbacus-3.0
@@ -10,7 +10,7 @@ License: LGPL v2.1
 ]]
 
 local MAJOR_VERSION = "LibAbacus-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 78626 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 79915 $"):match("(%d+)"))
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub") end
 local Abacus, oldLib = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
@@ -101,6 +101,18 @@ elseif ( GetLocale() == "zhCN" ) then
 	GOLD_ABBR = "金"
 
 	L_UNDETERMINED = "未定义的"
+--***************************************
+-- ruRU Russian, 2008-08-04
+-- Author: SLA80, sla80x at Gmail com
+--***************************************
+elseif ( GetLocale() == "ruRU" ) then
+	GOLD, SILVER, COPPER = "золота", "серебра", "меди"
+	GOLD_ABBR, SILVER_ABBR, COPPER_ABBR = "з", "с", "м"
+	DAYS_ABBR_P1 = "дней"
+	HOURS_ABBR_S1, HOURS_ABBR_P1 = "ч.", "ч."
+	MINUTES_ABBR_S1, MINUTES_ABBR_P1 = "мин.", "мин."
+	SECONDS_ABBR_S1, SECONDS_ABBR_P1 = "сек.", "сек."
+	L_UNDETERMINED = "Неопределено"
 end
 
 local inf = 1/0

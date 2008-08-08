@@ -5,8 +5,10 @@ local me={}
 local FreeWindows={}
 local WindowNum=1
 
-local revision = tonumber(string.sub("$Revision: 71617 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 79898 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
+
+local _, _, _, tocversion =  GetBuildInfo()
 
 function me:ResizeRealtimeWindow()
 	self.Graph:SetWidth(self:GetWidth()-3)
@@ -203,7 +205,12 @@ function Recount:ColorDropDownOpen(myframe)
 		side = "TOPRIGHT"
 		oside = "TOPLEFT"
 	end
-	UIDropDownMenu_SetAnchor(0, 0, Recount_ColorDropDownMenu , oside, myframe, side)
+
+	if tocversion == 30000 then
+		UIDropDownMenu_SetAnchor(0, 0, Recount_ColorDropDownMenu , oside, myframe, side)
+	else
+		UIDropDownMenu_SetAnchor(Recount_ColorDropDownMenu , 0, 0, oside, myframe, side)
+	end
 end
 
 function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function creates a new window and stores it. To other ways, either override it's storage or use the other function

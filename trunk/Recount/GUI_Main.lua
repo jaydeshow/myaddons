@@ -4,13 +4,14 @@ local Events = LibStub("AceEvent-3.0")
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 74705 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 79898 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 local string_format = string.format
 local tinsert = table.insert
 local tremove = table.remove
 
+local _, _, _, tocversion =  GetBuildInfo()
 
 -- Based on cck's numeric Short code in DogTag-3.0.
 function Recount.ShortNumber(value)
@@ -74,7 +75,11 @@ function Recount:BarDropDownOpen(myframe)
 		side = "TOPRIGHT"
 		oside = "TOPLEFT"
 	end
-	UIDropDownMenu_SetAnchor(0, 0, Recount_BarDropDownMenu , oside, myframe, side)
+	if tocversion == 30000 then
+		UIDropDownMenu_SetAnchor(Recount_BarDropDownMenu , 0, 0, oside, myframe, side)
+	else
+		UIDropDownMenu_SetAnchor(0, 0, Recount_BarDropDownMenu , oside, myframe, side)
+	end
 end
 
 function Recount:SetupBar(row)
@@ -969,7 +974,12 @@ function Recount:FightDropDownOpen(myframe)
 		side = "TOPRIGHT"
 		oside = "TOPLEFT"
 	end
-	UIDropDownMenu_SetAnchor(0, 0, Recount_FightDropDownMenu , oside, myframe, side)
+
+	if tocversion == 30000 then
+		UIDropDownMenu_SetAnchor(Recount_FightDropDownMenu , 0, 0, oside, myframe, side)
+	else
+		UIDropDownMenu_SetAnchor(0, 0, Recount_FightDropDownMenu , oside, myframe, side)
+	end
 end
 
 
@@ -1030,7 +1040,11 @@ function Recount:ModeDropDownOpen(myframe)
 		side = "TOPRIGHT"
 		oside = "TOPLEFT"
 	end
-	UIDropDownMenu_SetAnchor(0, 0, Recount_ModeDropDownMenu , oside, myframe, side)
+	if tocversion == 30000 then
+		UIDropDownMenu_SetAnchor(Recount_ModeDropDownMenu , 0, 0, oside, myframe, side)
+	else
+		UIDropDownMenu_SetAnchor(0, 0, Recount_ModeDropDownMenu , oside, myframe, side)
+	end
 end
 
 function me:CreateModeDropdown(level)

@@ -47,6 +47,12 @@ L:RegisterTranslations("deDE", function() return {
 	knock_message = "Knockback!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	knock = "Отталкивание",
+	knock_desc = "Предупреждать о Отталкивании",
+	knock_message = "Отталкивание!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -58,7 +64,7 @@ mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = boss 
 mod.guid = 20886
 mod.toggleoptions = {"knock", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

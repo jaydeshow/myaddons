@@ -258,6 +258,7 @@ if (GetLocale() == "esMX") then
 		["AutoBarButtonBear"] = "Oso",
 		["AutoBarButtonBoomkinTree"] = "Arbol de Vida / Boomkin",
 		["AutoBarButtonCat"] = "Gato",
+		["AutoBarButtonPowerShift"] = "PowerShift",
 		["AutoBarButtonTravel"] = "Viajar",
 		["AutoBarButtonFlight"] = "Volar",
 		["AutoBarButtonNormal"] = "Normal",

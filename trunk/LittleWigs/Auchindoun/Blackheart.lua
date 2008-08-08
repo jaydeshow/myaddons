@@ -62,6 +62,16 @@ L:RegisterTranslations("frFR", function() return {
 	chaos_nextbar = "~Provoquer le chaos probable",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	engage_message = "Надвигается - Провокация Хаоса за ~15сек!",
+
+	chaos = "Провокация Хаоса",
+	chaos_desc = "Отображение панели срока действия Провокации Хаоса",
+	chaos_message = "Провокация Хаоса! В следующие ~70сек",
+	chaos_warning = "Скоро Провокация Хаоса!",
+	chaos_nextbar = "~Возможная Провокация Хаоса",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -73,7 +83,7 @@ mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss 
 mod.guid = 18667
 mod.toggleoptions = {"chaos", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79781 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

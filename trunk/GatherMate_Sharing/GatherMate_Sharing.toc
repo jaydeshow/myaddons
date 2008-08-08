@@ -3,7 +3,7 @@
 ## Notes-ruRU: Модуль коллективного использования базы данных для GatherMate
 ## Notes-frFR: Module de partage de base de données pour GatherMate.
 ## Title: GatherMate_Sharing
-## Author: Moonfann (aka Kagaro), Xinhuan
+## Author: kagaro, Xinhuan
 ## SavedVariables: GatherMate_SharingDB
 ## X-Category: Map
 ## Version: 1.0

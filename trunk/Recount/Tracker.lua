@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 79538 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 79898 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Data for Recount is tracked within this file
@@ -247,12 +247,18 @@ local POWERTYPE_MANA = 0
 local POWERTYPE_RAGE = 1
 local POWERTYPE_FOCUS = 2
 local POWERTYPE_ENERGY = 3
+local POWERTYPE_HAPPINESS = 4;
+local POWERTYPE_RUNES = 5;
+local POWERTYPE_RUNIC_POWER = 6;
 
 Recount.PowerTypeName = {
 	[POWERTYPE_MANA] = "Mana",
 	[POWERTYPE_RAGE] = "Rage",
 	[POWERTYPE_ENERGY] = "Energy",
 	[POWERTYPE_FOCUS] = "Focus",
+	[POWERTYPE_HAPPINESS] = "Happiness",
+	[POWERTYPE_RUNES] = "Runes",
+	[POWERTYPE_RUNIC_POWER] = "Runic Power",	
 }
 
 function Recount:MatchGUID(nName,nGUID,nFlags)

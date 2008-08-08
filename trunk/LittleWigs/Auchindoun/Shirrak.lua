@@ -41,6 +41,12 @@ L:RegisterTranslations("frFR", function() return {
 	focus_message = "Focalisation du feu sur %s !",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	focus = "Фокусировка огня",
+	focus_desc = "Предупреждает на каком игроке Фокусировка огня.",
+	focus_message = "На %s Фокусировка огня",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -52,7 +58,7 @@ mod.zonename = BZ["Auchenai Crypts"]
 mod.enabletrigger = boss 
 mod.guid = 18371
 mod.toggleoptions = {"focus", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

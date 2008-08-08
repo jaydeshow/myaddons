@@ -74,6 +74,15 @@ L:RegisterTranslations("esES", function() return {
 	sacrifice_soonbar = "~Posible Sacrificio",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	sacrifice = "Жертвоприношение",
+	sacrifice_desc = "Предупреждать о Жертвоприношение игроков.",
+	sacrifice_message = "%s цель Жертвоприношения!",
+	sacrifice_bar = "Цель Жертвоприношения: %s",
+	sacrifice_soon = "Надвигается Жертвоприношение!",
+	sacrifice_soonbar = "~Возможное Жертвоприношение",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -85,7 +94,7 @@ mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.guid = 17978
 mod.toggleoptions = {"sacrifice", "bosskill"}
-mod.revision = tonumber(("$Revision: 78171 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

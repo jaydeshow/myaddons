@@ -1,10 +1,10 @@
 ﻿assert(Cartographer, "Cartographer not found!")
 local Cartographer = Cartographer
-local revision = tonumber(("$Revision: 79531 $"):sub(12, -3))
+local revision = tonumber(("$Revision: 79916 $"):sub(12, -3))
 if revision > Cartographer.revision then
 	Cartographer.version = "r" .. revision
 	Cartographer.revision = revision
-	Cartographer.date = ("$Date: 2008-07-30 18:24:53 -0400 (Wed, 30 Jul 2008) $"):sub(8, 17)
+	Cartographer.date = ("$Date: 2008-08-07 03:16:09 -0400 (Thu, 07 Aug 2008) $"):sub(8, 17)
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Cartographer-Waypoints")
@@ -343,10 +343,10 @@ local BZR = Rock("LibBabble-Zone-3.0"):GetReverseLookupTable()
 local Abacus = Rock("LibAbacus-3.0")
 
 local _G = getfenv(0)
-local metric = (GetLocale() ~= "enUS" and GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN" and GetLocale() ~= "ruRU")
+local metric = (GetLocale() ~= "enUS" and GetLocale() ~= "zhTW" and GetLocale() ~= "zhCN")
 
 local localization = GetLocale()
-local yardString = (localization == "enUS" or localization == "zhTW" or localization == "zhCN" or localization == "ruRU") and L["%.0f yd"] or L["%.0f m"]
+local yardString = (localization == "enUS" or localization == "zhTW" or localization == "zhCN") and L["%.0f yd"] or L["%.0f m"]
 
 local math_floor = math.floor
 

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 79673 $
+Revision: $Rev: 79925 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 79673 $"
+local MINOR_VERSION = "$Revision: 79925 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -5295,7 +5295,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Timmy the Cruel"] = "Тимми Жестокий",
 
 --Sunwell Plateau
-		["Kalecgos"] = "Калецгос",
+		["Kalecgos"] = "Калесгос",
 		["Sathrovarr the Corruptor"] = "Сатроварр Осквернитель",
 		["Brutallus"] = "Бруталл",
 		["Felmyst"] = "Сквернотуман",

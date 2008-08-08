@@ -1991,7 +1991,7 @@ AtlasLoot_Data["AtlasLootSetItems"] = {
 		{ 32788, "", "=q4=Veteran's Kodohide Boots", "=ds=#s12#, #a2#", "40 #heroic#" },
 		{ 0,"","","" },
 		{ 32814, "", "=q4=Veteran's Leather Bracers", "=ds=#s8#, #a2#", "25 #heroic#" },
-		{ 32801, "", "=q4=Veteran's Leather Belt", "=ds=#s10#, #a2#", "40 #heroic#" },
+		{ 32802, "", "=q4=Veteran's Leather Belt", "=ds=#s10#, #a2#", "40 #heroic#" },
 		{ 32790, "", "=q4=Veteran's Leather Boots", "=ds=#s12#, #a2#", "40 #heroic#" },
 		{ 0,"","","" },
 		{ 32821, "", "=q4=Veteran's Wyrmhide Bracers", "=ds=#s8#, #a2#", "25 #heroic#" },

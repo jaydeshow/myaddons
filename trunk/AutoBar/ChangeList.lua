@@ -45,8 +45,6 @@
 = What is not working right now? =
  * Drag & Drop
   * Items need to be draggable onto the category in the tree part of the config.
-  * Items dragged onto a custom button automatically create a custom category if it does not have one & drop into it
-  * Buttons need a drop setting that if enabled allow items to be dragged right onto the button itself
   * Categories in a button & items inside a category need to be draggable to rearrange them
  * !LibStickyFrames-2.0
   * Fine movement controls for a selected frame (say temporary arrow keys + modifiers for 1 or 5 pixel or grid movement)
@@ -82,7 +80,7 @@
 [url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
 (Please click in a "Labels:" field to label your issue appropriately.)
 
-"$Revision: 78707 $"
+"$Revision: 79885 $"
 AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
 #showtooltip
@@ -90,12 +88,15 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 /cast [form] Mangle (Cat)()
 /stopmacro [form]
 /cast !Cat Form
--- 2.04.02.57 beta ()
+-- 2.04.03.01 release ()
+-- Fix Stealth button not working for mages.
+-- Restore deleted keys in ruRU
 --- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
 --- Shuffle: handle locations and cooldowns and equipped items.
+--- Shuffle: swap popup icons properly.
 --- Finish LibStickyFrames: needs grouped dragging.
 
--- 2.04.02.56 beta ()
+-- 2.04.02.56 beta (78817)
 -- Switch to GetSpellCount.  0 or # reagent thingies left.
 -- Fix LibStub call
 -- Fix InCombat SPELLS_CHANGED calls to be delayed
@@ -117,6 +118,7 @@ AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 -- Scourgebane Infusion 22778
 -- Various Summer Festival Items
 -- Nether Ray Fry, Tainted Core, Naj'entus Spine
+-- Fix New Category Item Button
 
 -- 2.04.02.55 beta ()
 -- Added GridLayoutFrame to list of stuff u can stick bars to

@@ -8,7 +8,7 @@
 ## Notes-zhCN: AtlasLoot Enhanced 的声望阵营奖励物品信息
 ## Notes-zhTW: AtlasLoot 各聲望陣營物品資料庫
 ## Author: Daviesh
-## Version: 4.05.00
+## Version: 4.06.03
 ## X-eMail: oma_daviesh@hotmail.com
 ## X-Category: Map
 ## X-License: GPL v2

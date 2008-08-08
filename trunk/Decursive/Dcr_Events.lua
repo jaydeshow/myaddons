@@ -27,7 +27,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_opt.lua"] then
     return;
 end
 local D = Dcr;
-D:SetDateAndRevision("$Date: 2008-07-30 20:27:40 -0400 (Wed, 30 Jul 2008) $", "$Revision: 79542 $");
+D:SetDateAndRevision("$Date: 2008-08-06 17:50:28 -0400 (Wed, 06 Aug 2008) $", "$Revision: 79890 $");
 
 
 local L = D.L;
@@ -385,6 +385,7 @@ do
 
 	    if event == "SPELL_CAST_SUCCESS" then
 		--D:Println(L[self.LOC.SUCCESSCAST], arg10, (select(2, GetSpellInfo(arg9))), D:MakePlayerName(destName));
+		self:Debug(L[self.LOC.SUCCESSCAST], arg10, (select(2, GetSpellInfo(arg9))), D:MakePlayerName(destName));
 
 		--self:Debug("|cFFFF0000XXXXX|r |cFF11FF11Updating color of clicked frame|r");
 		self:ScheduleEvent("UpdatePC"..self.Status.ClickedMF.CurrUnit, self.Status.ClickedMF.Update, 1, self.Status.ClickedMF, false, false);
@@ -420,8 +421,8 @@ do
 
 
 	    ----  }}}
---	elseif 	band (destFlags, FRIENDLY_TARGET) == FRIENDLY_TARGET then
---	   D:Print("UNKNOWN EVENT: (source=%s -- %X) (dest=|cFF00AA00%s|r -- %x): |cFFBB0000%s|r for spell |cFF00FF00%s|r, %s, %s, %s, %s, %s, %s", sourceName, sourceFlags, destName, destFlags, event, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
+	--else
+	   --D:Print("UNKNOWN EVENT: (source=%s -- %X) (dest=|cFF00AA00%s|r -- %x): |cFFBB0000%s|r for spell |cFF00FF00%s|r, %s, %s, %s, %s, %s, %s", sourceName, sourceFlags, destName, destFlags, event, arg10, arg11, arg12, arg13, arg14, arg15, arg16);
 	    --  }}}
 	end
 

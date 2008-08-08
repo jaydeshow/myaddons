@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 78308 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 79885 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -1176,6 +1176,50 @@ function AutoBarButtonCat.prototype:Refresh(parentBar, buttonDB)
 end
 
 
+spellNameList["Mangle (Cat)()"], _, spellIconList["Mangle (Cat)()"] = GetSpellInfo(33983)
+spellNameList["Mangle (Cat)()"] = spellNameList["Mangle (Cat)()"] .. "()"
+
+local AutoBarButtonPowerShift = AceOO.Class(AutoBarButtonMacro)
+AutoBar.Class["AutoBarButtonPowerShift"] = AutoBarButtonPowerShift
+
+function AutoBarButtonPowerShift.prototype:init(parentBar, buttonDB)
+	AutoBarButtonPowerShift.super.prototype.init(self, parentBar, buttonDB)
+	self:Refresh(parentBar, buttonDB)
+end
+
+function AutoBarButtonPowerShift.prototype:Refresh(parentBar, buttonDB)
+	AutoBarButtonPowerShift.super.prototype.Refresh(self, parentBar, buttonDB)
+	self.macroActive = nil
+	if (AutoBar.CLASS == "DRUID") then
+--[[
+/run local f="Cat Form";f=GetSpellCooldown(f)>0 or UnitMana('player')>15 or not IsUsableSpell(f) or CancelPlayerBuff(f)
+/cast [form] Mangle (Cat)()
+/stopmacro [form]
+/cast !Cat Form
+--]]
+		ShapeshiftRefresh()
+		local macroTexture
+
+		if (GetSpellInfo(spellNameList["Cat Form"]) and GetSpellInfo(spellNameList["Mangle (Cat)()"])) then
+			concatList[1] = "/run local f=\""
+			concatList[2] = spellNameList["Cat Form"]
+			concatList[3] = "\";f=GetSpellCooldown(f)>0 or UnitMana('player')>15 or not IsUsableSpell(f) or CancelPlayerBuff(f)\n/cast [form] "
+			concatList[4] = spellNameList["Mangle (Cat)()"]
+			concatList[5] = "\n/stopmacro [form]\n"
+			concatList[6] = "/cast !"
+			concatList[7] = spellNameList["Cat Form"]
+			concatList[8] = "\n"
+			macroTexture = spellIconList["Mangle (Cat)()"]
+			self.macroActive = true
+
+			local macroText = table.concat(concatList)
+--AutoBar:Print("AutoBarButtonPowerShift:Refresh " .. tostring(macroText) .. " macroTexture " .. tostring(macroTexture))
+			self:AddMacro(macroText, macroTexture)
+		end
+	end
+end
+
+
 spellNameList["Feral Charge"], _, spellIconList["Feral Charge"] = GetSpellInfo(16979)
 spellNameList["Shadowstep"], _, spellIconList["Shadowstep"] = GetSpellInfo(36554)
 spellNameList["Charge"] = GetSpellInfo(11578)
@@ -2219,8 +2263,7 @@ function AutoBarButtonStealth.prototype:Refresh(parentBar, buttonDB)
 --]]
 	elseif (AutoBar.CLASS == "MAGE") then
 		if (GetSpellInfo(spellNameList["Invisibility"])) then
---			concatList[1] = "#showtooltip Invisibility\n"
-			concatList[1] = spellNameList["Invisibility"]
+			concatList[index] = spellNameList["Invisibility"]
 
 			macroTexture = spellIconList["Invisibility"]
 			self.macroActive = true
@@ -2587,6 +2630,6 @@ end
 -- /script AutoBar:Print(tostring(AutoBarProfile.basic[2].castSpell))
 -- /script AutoBar:Print(tostring(AutoBar.buttons[2].castSpell))
 -- /script AutoBarSAB1Border:Hide()
--- /dump AutoBar.buttonList["AutoBarButtonCooldownPotionMana"]
+-- /script AutoBar.buttonList["AutoBarButtonPowerShift"]:Refresh()
 -- /dump AutoBarCategoryList["Spell.Portals"]
 -- /script AutoBar:Print("f:"..tostring(GetCVar("flyable")))

@@ -1,8 +1,0 @@
-------------------------------------------------------------------------
-r79471 | StingerSoft | 2008-07-30 03:00:53 -0400 (Wed, 30 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate_Sharing/GatherMate_Sharing.toc
-   M /trunk/GatherMate_Sharing/Locales/GatherMate_Sharing-ruRU.lua
-
-GatherMate_Sharing: added ruRU localization
-------------------------------------------------------------------------

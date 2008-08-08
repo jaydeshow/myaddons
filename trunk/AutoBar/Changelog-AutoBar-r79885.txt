@@ -1,0 +1,97 @@
+------------------------------------------------------------------------
+r79885 | toadkiller | 2008-08-06 16:26:33 -0400 (Wed, 06 Aug 2008) | 6 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarDB.lua
+   M /trunk/AutoBar/Bindings.xml
+   M /trunk/AutoBar/ChangeList.lua
+   M /trunk/AutoBar/Core.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-ruRU.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar: 
+-- 2.04.03.01 release
+-- Fix Stealth button not working for mages.
+-- Restore deleted keys in ruRU
+-- PowerShift Button for druids.  Untested till after Thursday's raid.
+
+------------------------------------------------------------------------
+r79041 | StingerSoft | 2008-07-24 08:21:24 -0400 (Thu, 24 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/Locale-ruRU.lua
+
+AutoBar : added/updated ruRU translation
+------------------------------------------------------------------------
+r78998 | scorpion | 2008-07-23 16:12:56 -0400 (Wed, 23 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar : 
+ - Update zhTW & zhCN localization.
+
+------------------------------------------------------------------------
+r78817 | toadkiller | 2008-07-20 18:05:15 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarOptions.lua
+
+AutoBar: 
+-- Fix New Category Item Button.
+------------------------------------------------------------------------
+r78714 | sayclub | 2008-07-18 20:38:38 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AutoBar/Locale-koKR.lua
+
+AutoBar : - koKR Update
+------------------------------------------------------------------------
+r78707 | toadkiller | 2008-07-18 19:32:07 -0400 (Fri, 18 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBar.toc
+   M /trunk/AutoBar/ChangeList.lua
+
+AutoBar: 
+-- 2.04.02.56 beta
+------------------------------------------------------------------------
+r78473 | digmouse | 2008-07-15 09:34:01 -0400 (Tue, 15 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AutoBar/Locale-zhCN.lua
+
+AutoBar : 
+-zhCN update
+------------------------------------------------------------------------
+r78327 | toadkiller | 2008-07-13 05:33:41 -0400 (Sun, 13 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarCategory.lua
+
+AutoBar: 
+-- Water Breathing and Water Walking for Shaman Class Buff Button
+
+------------------------------------------------------------------------
+r78308 | toadkiller | 2008-07-12 20:45:55 -0400 (Sat, 12 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/AutoBar/AutoBarButton.lua
+   M /trunk/AutoBar/AutoBarOptions.lua
+   M /trunk/AutoBar/Locale-deDE.lua
+   M /trunk/AutoBar/Locale-enUS.lua
+   M /trunk/AutoBar/Locale-esES.lua
+   M /trunk/AutoBar/Locale-esMX.lua
+   M /trunk/AutoBar/Locale-frFR.lua
+   M /trunk/AutoBar/Locale-koKR.lua
+   M /trunk/AutoBar/Locale-ruRU.lua
+   M /trunk/AutoBar/Locale-zhCN.lua
+   M /trunk/AutoBar/Locale-zhTW.lua
+
+AutoBar: 
+-- Drop setting - if checked allows items to be dragged onto the custom button at any time
+-- Always Popup setting for buttons
+
+------------------------------------------------------------------------

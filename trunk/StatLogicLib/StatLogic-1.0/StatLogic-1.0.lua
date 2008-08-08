@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 79530 $
+Revision: $Revision: 79937 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-07-30 18:23:17 -0400 (Wed, 30 Jul 2008) $
+LastUpdate: $Date: 2008-08-07 23:51:36 -0400 (Thu, 07 Aug 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -28,7 +28,7 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 79530 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 79937 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -4199,6 +4199,11 @@ end
 local _, playerClass = UnitClass("player")
 local _, playerRace = UnitRace("player")
 
+-- BuildInfo
+wowBuildNo = select(2, GetBuildInfo()) -- need a global for loadstring
+local wowBuildNo = wowBuildNo
+local toc = select(4, GetBuildInfo())
+
 -- Localize globals
 local _G = getfenv(0)
 local strfind = strfind
@@ -4226,9 +4231,12 @@ local UnitStat = UnitStat
 local GetShapeshiftForm = GetShapeshiftForm
 local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetPlayerBuffName = GetPlayerBuffName
+if toc >= 30000 then
+	GetPlayerBuffName = function(b)
+		return UnitBuff("player", b)
+	end
+end
 local GetTalentInfo = GetTalentInfo
-wowBuildNo = select(2, GetBuildInfo()) -- need a global for loadstring
-local wowBuildNo = wowBuildNo
 
 -- Cached GetItemInfo
 local GetItemInfoCached = setmetatable({}, { __index = function(self, n)

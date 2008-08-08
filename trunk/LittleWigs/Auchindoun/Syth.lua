@@ -55,6 +55,12 @@ L:RegisterTranslations("deDE", function() return {
 	summon_message = "Elementare beschworen!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	summon = "Предупреждение о Элементалях",
+	summon_desc = "Предупреждать о призыве Элементалей",
+	summon_message = "Призваны Элементали!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -66,7 +72,7 @@ mod.zonename = BZ["Sethekk Halls"]
 mod.enabletrigger = boss 
 mod.guid = 18472
 mod.toggleoptions = {"summon", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

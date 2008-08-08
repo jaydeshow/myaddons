@@ -86,6 +86,21 @@ L:RegisterTranslations("frFR", function() return {
 	engage_message = "%s engagé - Peur dans ~15 sec. !",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	fear = "Перезарядка Страха",
+	fear_desc = "Предупреждать ипоказать панель перезарядки Страха Посланника Адскай Глотки.",
+	fear_message = "Перезарядка Страха!",
+	fear_warning = "Перезарядка Страха закончелась!",
+	fear_bar = "Перезарядка Страха",
+	
+	enrage = "Исступление(героик)",
+	enrage_desc = "Предупреждать и паказать панель, до того когда Посланник Адская Глотка войдет в Исступление.",
+	enrage_message = "Исступление через %s секунд",
+	enrage_bar = "Исступление",
+
+	engage_message = "%s has been engaged!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -97,7 +112,7 @@ mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss
 mod.guid = 18731
 mod.toggleoptions = {"fear", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 77375 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79781 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-08-02 15:34:23 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79682 $
+$Date: 2008-08-05 23:10:11 -0400 (Tue, 05 Aug 2008) $
+$Rev: 79836 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -131,6 +131,7 @@ L["OpenTradeSkillWindow"] = "Please open trade skill window to scan."
 L["TwoCraftingWindows"] = "Crafting window already open.  Please close the other window and re-open this one if you wish to scan for missing recipes."
 L["SpellIDCache"] = "Spell ID: %s is not in your local cache.  Please submit a ticket at http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ and include the spell ID and the profession in which you were scanning."
 L["FactionError"] = "Warning: Reputation level of %s is unknown."
+L["MissingFromDBWarning"] = "A recipe not in the database has been detected.  Tere may be some lag while we scan for the missing recipe spell ID."
 
 -- GUI Text
 L["Close"] = true

@@ -1,7 +1,7 @@
 ## Interface: 20400
 ## Author: John Stephen
 ## Title: Outfitter
-## Version: 4.2.4
+## Version: 4.2.6
 ## Notes: Clothing and weapon management and automated equipment changes
 ## OptionalDeps: TankPoints
 ## RequiredDeps: 

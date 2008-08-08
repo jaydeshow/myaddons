@@ -8,7 +8,7 @@
 ## Notes-zhCN: AtlasLoot Enhanced 的套装与PvP奖励物品信息
 ## Notes-zhTW: AtlasLoot 各種套裝與 PvP 物品資料庫
 ## Author: Daviesh
-## Version: 4.05.00
+## Version: 4.06.03
 ## X-eMail: oma_daviesh@hotmail.com
 ## X-Category: Map
 ## X-License: GPL v2

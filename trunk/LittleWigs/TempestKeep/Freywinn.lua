@@ -53,6 +53,13 @@ L:RegisterTranslations("zhCN", function() return {
 	tranqfade_message = "5秒后，宁静消失！",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	tranq = "Спокойствие",
+	tranq_desc = "Предупреждать о Спокойствии",
+	tranq_message = "Произноситься Спокойствие!",
+	tranqfade_message = "Спокойствие закончится за ~5с!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -64,7 +71,7 @@ mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.guid = 17975
 mod.toggleoptions = {"tranq", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79841 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

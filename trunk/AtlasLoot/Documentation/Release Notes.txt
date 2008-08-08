@@ -5,6 +5,9 @@ This mod is distributed under Version 2 of the GPL.  A copy of the GPL is includ
 -Daviesh
 
 Patch Notes
+v4.06.03
+More bug fixes.
+
 v4.06.02
 Removed Atlas 1.11 compatibility
 Fixed bug with Badge of Justice rewards

@@ -4,8 +4,8 @@ ARL-Enchant.lua
 
 Enchanting data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-08-05 23:10:11 -0400 (Tue, 05 Aug 2008) $
+$Rev: 79836 $
 
 ]]--
 
@@ -252,5 +252,19 @@ function addon:InitEnchanting()
 	self:addTradeSkillSpell(27982, 375, self:CombineMobs(false,BBOSS["Terestian Illhoof"],BZONE["Karazhan"]), 6)
 	self:addTradeSkillSpell(27984, 375, self:CombineMobs(false,BBOSS["Moroes"],BZONE["Karazhan"]), 6)
 	self:addTradeSkillSpell(42974, 375, L["ZA"], 6)
+
+	if (addon.wrath) then
+		self:addTradeSkillSpell(27958, 355, L["Trainer"], 1) -- Exceptional mana
+		self:addTradeSkillSpell(44484, 365, L["Trainer"], 1) -- Expertise
+		self:addTradeSkillSpell(44506, 375, L["Trainer"], 1) -- Gatherer
+		self:addTradeSkillSpell(44508, 355, L["Trainer"], 1) -- Spirit
+		self:addTradeSkillSpell(44509, 375, L["Trainer"], 1) -- Greater mana restoration
+		self:addTradeSkillSpell(44555, 375, L["Trainer"], 1) -- Exceptional intellect
+		self:addTradeSkillSpell(44584, 365, L["Trainer"], 1) -- Greater vitality
+		self:addTradeSkillSpell(47672, 355, L["Trainer"], 1) -- Mighty armor
+		self:addTradeSkillSpell(44528, 385, L["Trainer"], 1) -- Greater fort
+		self:addTradeSkillSpell(44488, 385, L["Trainer"], 1) -- Greater Spell strike
+		self:addTradeSkillSpell(44582, 395, L["Trainer"], 1) -- Spell piercing
+	end
 
 end

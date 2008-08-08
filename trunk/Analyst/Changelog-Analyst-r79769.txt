@@ -1,0 +1,17 @@
+------------------------------------------------------------------------
+r79769 | bethink | 2008-08-04 08:34:14 -0400 (Mon, 04 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Analyst/Analyst.toc
+   A /trunk/Analyst/Locale-frFR.lua
+   M /trunk/Analyst/release_notes.txt
+
+Analyst:
+- Added french translation by Laumac
+------------------------------------------------------------------------
+r79767 | bethink | 2008-08-04 04:01:31 -0400 (Mon, 04 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Analyst/release_notes.txt
+
+Analyst:
+- Release 1.0.2
+------------------------------------------------------------------------

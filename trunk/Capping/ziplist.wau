@@ -1,4 +1,4 @@
-Capping/Changelog-Capping-r78558.txt
+Capping/Changelog-Capping-r79828.txt
 Capping/Capping.toc
 Capping/embeds.xml
 Capping/core.lua
@@ -9,6 +9,7 @@ Capping/battlegrounds/AB.lua
 Capping/textures/BantoBarReverse.tga
 Capping/textures/Steel.tga
 Capping/locals/localization.lua
+Capping/locals/localization-ruRU.lua
 Capping/locals/localization-zhCN.lua
 Capping/locals/localization-zhTW.lua
 Capping/locals/localization-koKR.lua

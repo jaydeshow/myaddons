@@ -48,6 +48,13 @@ L:RegisterTranslations("zhTW", function() return {
 	channel_trigger = "從附近的惡魔水晶進行導引……",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	channel = "Высасывание маны",
+	channel_desc = "Предупреждать когда Селин Огненное Сердце начинает высасывать ману из Призмы Скверны",
+	channel_message = "Высасывание маны!",
+	channel_trigger = "channel from the nearby Fel Crystal",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -58,7 +65,7 @@ mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
 mod.guid = 24723
 mod.toggleoptions = {"channel","bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

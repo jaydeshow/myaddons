@@ -47,6 +47,12 @@ L:RegisterTranslations("deDE", function() return {
 	allergic_message = "%s ist allergisch!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	allergic = "Аллергическая реакция",
+	allergic_desc = "Предупреждать о Аллергической реакции.",
+	allergic_message = "%s Аллергичен!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -58,7 +64,7 @@ mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.guid = 17980
 mod.toggleoptions = {"allergic", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -120,6 +120,24 @@ L:RegisterTranslations("deDE", function() return {
 	icon_desc = "Ein Raid Symbol auf die Person setzen, die von Saat der Verderbnis betroffen ist. (Ben\195\182tigt h\195\182heren Rang)",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	nova = "Кольцо Тьмы",
+	nova_desc = "Предупреждать о Кольце Тьмы",
+	nova_message = "Кольцо Тьмы за 2 секунды!",
+
+	void = "Зона пустоты",
+	void_desc = "Предупреждать о новой Зоне пустоты",
+	void_message = "Приближается Зона пустоты!",
+
+	seed = "Семя порчи",
+	seed_desc = "Предупреждать на ком наложено Семя порчи",
+	seed_message = "Семя порчи на %s!",
+	seed_bar = "~Детонация",
+
+	icon = "Рейдовая иконка Семя порчи",
+	icon_desc = "Помечать рейдовой иконкой человека получившего Семя порчи. (Необходимо быть лидером группы)",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -131,7 +149,7 @@ mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = boss 
 mod.guid = 20870
 mod.toggleoptions = {"nova", "void", "seed", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 77727 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
