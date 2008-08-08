@@ -22,6 +22,8 @@ if (GetLocale() == "ruRU") then
 		["Align Buttons"] = "Выравнять кнопки",
 		["Always Show"] = "Всегда показывать";
 		["Always Show %s, even if empty."] = "Всегда показывать %s, даже если пустой.";
+		["Always Popup"] = "Always Popup";
+		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
 		["Announce to Party"] = "Сообщать в Группу",
 		["Announce to Raid"] = "Сообщать в Рейд",
 		["Announce to Say"] = "Сообщать в \"Сказать\"",
@@ -46,6 +48,8 @@ if (GetLocale() == "ruRU") then
 		["Disable Conjure Button"] = "Отключить кнопку Сотворения",
 		["Docked to"] = "Пристыкован к",
 		["Done"] = "Готово";
+		["Drop"] = "Drop";
+		["Drop items, spells or macros onto Button to add them to its top Custom Category"] = "Drop items, spells or macros onto Button to add them to its top Custom Category";
 		["Enabled"] = "Включен",
 		["Enable %s."] = "Включить %s.",
 		["FadeOut"] = "Затухание",
@@ -140,12 +144,14 @@ if (GetLocale() == "ruRU") then
 		["Move the Buttons"] = "Перемещение кнопки",
 		["Drag a Button to move it, right click to configure the Button."] = "Перетащите кнопку, чтобы переместить ее, щелкните правой кнопкой мыши для настройки кнопок.",
 
-		["{circle}"] = "{круг}",
-		["{diamond}"] = "{ромб}",
-		["{skull}"] = "{череп}",
-		["{square}"] = "{квадрат}",
-		["{star}"] = "{звезда}",
-		["{triangle}"] = "{треугольник}",
+		["{star}"] = "{rt1}",
+		["{circle}"] = "{rt2}",
+		["{diamond}"] = "{rt3}",
+		["{triangle}"] = "{rt4}",
+		["{moon}"] = "{rt5}",
+		["{square}"] = "{rt6}",
+		["{x}"] = "{rt7}",
+		["{skull}"] = "{rt8}",
 
 		["TOPLEFT"] = "Верхнем левом углу",
 		["LEFT"] = "Слева",
@@ -254,6 +260,7 @@ if (GetLocale() == "ruRU") then
 		["AutoBarButtonBear"] = "Медведь",
 		["AutoBarButtonBoomkinTree"] = "Древо Жизни / Лунный совух",
 		["AutoBarButtonCat"] = "Кошка",
+		["AutoBarButtonPowerShift"] = "PowerShift",
 		["AutoBarButtonTravel"] = "Походный",
 		["AutoBarButtonFlight"] = "Птица",
 		["AutoBarButtonNormal"] = "Нормальный",
@@ -294,7 +301,7 @@ if (GetLocale() == "ruRU") then
 		["R"] = "R",
 
 		--  AutoBarConfig.lua
-["EMPTY"] = "Пустой";
+		["EMPTY"] = "Пустой";
 		["Default"] = "По Умолчанию",
 		["Zoomed"] = "Увеличивать",
 		["Dreamlayout"] = "Dreamlayout",

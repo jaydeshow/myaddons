@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_lists.xml"] or not DcrLoadedFil
 end
 
 local D   = Dcr;
-D:SetDateAndRevision("$Date: 2008-07-30 21:39:43 -0400 (Wed, 30 Jul 2008) $", "$Revision: 79544 $");
+D:SetDateAndRevision("$Date: 2008-08-07 16:31:13 -0400 (Thu, 07 Aug 2008) $", "$Revision: 79928 $");
 
 
 local L	    = D.L;
@@ -89,6 +89,7 @@ local string		= _G.string;
 local UnitExists	= _G.UnitExists;
 local UnitClass		= _G.UnitClass;
 local fmod		= _G.math.fmod;
+local UnitIsUnit	= _G.UnitIsUnit;
 
 -- Those are lookups table to set the frame attributes
 local AvailableButtons = { -- {{{
@@ -512,6 +513,10 @@ function MicroUnitF:OnEnter() -- {{{
 
     local Unit = MF.CurrUnit; -- shortcut
     local TooltipText = "";
+
+    if not UnitIsUnit("mouseover", Unit) then
+	D:Println("|cFFFF0000ALERT:|r |cFFFFFF60Something strange is happening, mouseover is not MUF!, report this to archarodim@teaser.fr|r", (UnitName("mouseover")), (UnitName(Unit)));
+    end
 
     -- Compare the current unit name to the one storred when the group data were collected
     if (D:PetUnitName(  Unit, true   )) ~= D.Status.Unit_Array_UnitToName[Unit] then
@@ -1430,4 +1435,4 @@ local MF_Textures = { -- unused
 
 -- }}}
 
-DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = "$Revision: 79544 $";
+DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = "$Revision: 79928 $";

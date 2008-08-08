@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-08-02 16:44:33 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79686 $
+$Date: 2008-08-07 12:18:37 -0400 (Thu, 07 Aug 2008) $
+$Rev: 79923 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -131,6 +131,7 @@ L["OpenTradeSkillWindow"] = "Veuillez ouvrir la fenêtre de métier à analyser.
 L["TwoCraftingWindows"] = "La fenêtre de craft est déjà ouverte. Veuillez fermer celle ci et la ré-ouvrir si vous souhaitez scanner les recettes manquantes."
 L["SpellIDCache"] = "L'ID du sort %s n'est pas dans votre cache local.  Veuillez soumettre un ticket (en anglais) sur http://wow.curseforge.com/projects/ackis-recipe-list/tickets/ en indiquant l'ID du sort et la profession que vous analysiez."
 L["FactionError"] = "Avertissement : le niveau de réputation %s est inconnu."
+L["MissingFromDBWarning"] = "Une recette non présente dans la base de données a été détectée. Il se peut que le jeu saccade un peu pendant l'analyse de l'ID du sort de la recette manquante."
 
 -- GUI Text
 L["Close"] = "Fermer"

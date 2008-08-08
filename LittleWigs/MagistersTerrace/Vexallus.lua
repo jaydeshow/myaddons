@@ -71,6 +71,18 @@ L:RegisterTranslations("zhTW", function() return {
 	feedback_other = "能量反噬: [%s]",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	adds = "Чистая энергия",
+	adds_desc = "Предупреждать когда выпускается Чистая энергия.",
+	adds_message = "Выпущена Чистая энергия!",
+	adds_trigger = "discharges pure energy!",
+
+	feedback = "Отклик энергии",
+	feedback_desc = "Предупреждать когда кто-либо получает отрицательный эффект Отклика энергии.",
+	feedback_you = "На ВАС Отклик энергии!",
+	feedback_other = "Отклик энергии на %s'е!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -81,7 +93,7 @@ mod.zonename = BZ["Magisters' Terrace"]
 mod.enabletrigger = boss 
 mod.guid = 24744
 mod.toggleoptions = {"adds", "feedback", "bosskill"}
-mod.revision = tonumber(("$Revision: 76984 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

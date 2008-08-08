@@ -260,6 +260,7 @@ if (GetLocale() == "zhTW") then
 		["AutoBarButtonBear"] = "熊",
 		["AutoBarButtonBoomkinTree"] = "生命之樹/梟獸",
 		["AutoBarButtonCat"] = "獵豹",
+		["AutoBarButtonPowerShift"] = "PowerShift",
 		["AutoBarButtonTravel"] = "旅行",
 		["AutoBarButtonFlight"] = "飛行",
 		["AutoBarButtonNormal"] = "正常",

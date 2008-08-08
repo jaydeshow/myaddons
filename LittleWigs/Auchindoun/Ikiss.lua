@@ -87,6 +87,19 @@ L:RegisterTranslations("zhCN", function() return {
 	icon_desc = "为中了变形术的队友打上团队标记。（需要权限）",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	ae = "Волшебный взрыв",
+	ae_desc = "Предупреждать о Волшебном взрыве",
+	ae_message = "Читается Волшебный взрыв!",
+
+	poly = "Превращение",
+	poly_desc = "Предупреждать о том кто Превращен.",
+	poly_message = "%s превращен",
+
+	icon = "Рейдовая иконка",
+	icon_desc = "Помечать рейдовой иконкой превращенного человека (Необходимо быть лидером группы).",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -98,7 +111,7 @@ mod.zonename = BZ["Sethekk Halls"]
 mod.enabletrigger = boss 
 mod.guid = 18473
 mod.toggleoptions = {"ae", "poly", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 77265 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79781 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

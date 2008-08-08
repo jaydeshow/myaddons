@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-07-30 00:57:01 -0400 (Wed, 30 Jul 2008) $
-$Rev: 79455 $
+$Date: 2008-08-06 16:10:21 -0400 (Wed, 06 Aug 2008) $
+$Rev: 79882 $
 
 ****************************************************************************************
 ]]--
@@ -48,11 +48,12 @@ local function OnClickExpandRecipe()
 		local RecipeText = nil
 
 		local sorttype = addon.db.profile.sorting
-
 		if (sorttype == "Skill") or (sorttype == "Aquisition") then
-			RecipeText = string.match(this:GetText(), "|c.*%[.*%]|r %- (.*)")
+			--RecipeText = string.match(this:GetText(), "|c.*%[.*%]|r %- |c%x*(.*)|r")
+			RecipeText = string.match(this:GetText(), "%- |c%x%x%x%x%x%x%x%x(.*)|r$")
 		elseif (sorttype == "Name") then
-			RecipeText = string.match(this:GetText(), "(.*) %- |c.*%[.*%]|r")
+			--RecipeText = string.match(this:GetText(), "|c%x*(.*)|r %- |c.*%[.*%]|r")
+			RecipeText = string.match(this:GetText(), "|c%x%x%x%x%x%x%x%x(.-)|r")
 		end
 
 		-- Changed the graphic of the + to a -
@@ -65,9 +66,9 @@ local function OnClickExpandRecipe()
 
 		-- Show expanded text
 		if (addon.MissingRecipeListing[RecipeText] == nil) then
-			this.RecipeAquireText:SetText(L["Unknown"])
+			this.RecipeAquireText:SetText(addon:White(L["Unknown"]))
 		else
-			this.RecipeAquireText:SetText("    - " .. addon.MissingRecipeListing[RecipeText]["Acquire"])
+			this.RecipeAquireText:SetText(addon:White("    - " .. addon.MissingRecipeListing[RecipeText]["Acquire"]))
 		end
 
 		this.RecipeAquireText:SetWidth(300)
@@ -123,7 +124,6 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 				RecipeFrame:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
 				RecipeFrame:SetPushedTexture("Interface\\Buttons\\UI-PlusButton-Down")
 				RecipeFrame:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
-				RecipeFrame:SetTextColor(1, 1, 1)
 				RecipeFrame:SetWidth(18)
 				RecipeFrame:SetScript("OnClick",
 											OnClickExpandRecipe
@@ -140,7 +140,6 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 				RecipeFrame.RecipeAquireText:ClearAllPoints()
 				RecipeFrame.RecipeAquireText:SetPoint("TOPLEFT", RecipeFrame, "BOTTOMLEFT", 20, 0)
 				RecipeFrame.RecipeAquireText:SetFontObject("GameFontNormalSmall")
-				RecipeFrame.RecipeAquireText:SetTextColor(1, 1, 1)
 				RecipeFrame.RecipeAquireText:SetJustifyH("LEFT")
 
 			else
@@ -167,7 +166,6 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 
 			-- If we're on the first recipe, set the points in relation to the main frame, otherwise set them in relation to the previous recipe
 			if (RecipeCount == 1) then
-				--RecipeFrame:SetPoint("TOPLEFT", addon.Frame.ScrollChild, "TOPLEFT", 5, -30)
 				RecipeFrame:SetPoint("TOPLEFT",addon.Frame.ScrollChild,"TOPLEFT",5,0)
 			else
 				RecipeFrame:SetPoint("TOPLEFT", "AckisRecipeListRecipe" .. (RecipeCount - 1), "BOTTOMLEFT", 0, -1)
@@ -179,15 +177,15 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 
 			if (sorttype == "Skill") or (sorttype == "Aquisition") then
 				if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
-					temprecipetext = addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. RecipeName
+					temprecipetext = addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
 				else
-					temprecipetext = addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. RecipeName
+					temprecipetext = addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
 				end
 			elseif (sorttype == "Name") then
 				if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
-					temprecipetext = RecipeName .. " - " .. addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
+					temprecipetext = addon:White(RecipeName) .. " - " .. addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
 				else
-					temprecipetext = RecipeName .. " - " .. addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
+					temprecipetext = addon:White(RecipeName) .. " - " .. addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
 				end
 			end
 
@@ -195,7 +193,7 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 			RecipeFrame:SetScript("OnEnter", function(this)
 					GameTooltip_SetDefaultAnchor(GameTooltip, this)
 					if (addon.RecipeListing[RecipeName]["RecipeLink"] ~= nil) then
-						GameTooltip:SetHyperlink(addon.RecipeListing[RecipeName]["RecipeLink"])
+						GameTooltip:SetHyperlink(temprecipetext .. addon.br .. addon.RecipeListing[RecipeName]["RecipeLink"] .. addon.br ..  addon.MissingRecipeListing[RecipeName]["Acquire"])
 					else
 						GameTooltip:SetText(temprecipetext .. addon.br ..  addon.MissingRecipeListing[RecipeName]["Acquire"]) 
 					end
@@ -293,7 +291,6 @@ function addon:CreateScanButton()
 	if (Skillet and Skillet:IsActive()) then
 		addon.ScanButton:SetParent(SkilletFrame)
 		addon.ScanButton:Show()
-		addon.ScanButton:SetTextColor(1, 0.8, 0)
 		Skillet:AddButtonToTradeskillWindow(addon.ScanButton)
 		addon.ScanButton:SetWidth(80)
 	end
@@ -646,7 +643,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.Header.Text:SetFontObject(GameFontNormal)
 		addon.Frame.Header.Text:ClearAllPoints()
 		addon.Frame.Header.Text:SetPoint("CENTER", addon.Frame.Header, "CENTER", 0, 0)
-		addon.Frame.Header.Text:SetText(addon.ARLTitle)
+		addon.Frame.Header.Text:SetText(self:White(addon.ARLTitle))
 
 		-- Add close button
 		addon.Frame.CloseButton = CreateFrame("Button","addon.Frame.CloseButton",addon.Frame,"UIPanelButtonTemplate")
@@ -659,16 +656,15 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.CloseButton:SetScript("OnClick", function() self:CloseWindow() end)
 		addon.Frame.CloseButton:SetScript("OnEnter", function(this)
 												GameTooltip_SetDefaultAnchor(GameTooltip, this)
-												GameTooltip:SetText(L["Close Window"])
+												GameTooltip:SetText(self:White(L["Close Window"]))
 												GameTooltip:Show()
 											end
 										)
 		addon.Frame.CloseButton:SetScript("OnLeave", function() GameTooltip:Hide() end)
-		--if (not addon.wrath) then
+		if (not addon.wrath) then
 			addon.Frame.CloseButton:SetFont("GameFontHighlightSmall",12)
-			addon.Frame.CloseButton:SetTextColor(1, 1, 1)
-		--end
-		addon.Frame.CloseButton:SetText(L["Close"])
+		end
+		addon.Frame.CloseButton:SetText(self:White(L["Close"]))
 		addon.Frame.CloseButton:Enable()
 
 		-- Add expand all button
@@ -681,13 +677,10 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.ExpandAllButton:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
 		addon.Frame.ExpandAllButton:ClearAllPoints()
 		addon.Frame.ExpandAllButton:SetPoint("TOPRIGHT",addon.Frame,"TOPRIGHT",-10,-20)
-		--if (not addon.wrath) then
-			addon.Frame.ExpandAllButton:SetTextColor(1, 1, 1)
-		--end
 		addon.Frame.ExpandAllButton:SetScript("OnClick", function() self:ExpandAll() end)
 		addon.Frame.ExpandAllButton:SetScript("OnEnter", function(this)
 												GameTooltip_SetDefaultAnchor(GameTooltip, this)
-												GameTooltip:SetText(L["Expand All"])
+												GameTooltip:SetText(self:White(L["Expand All"]))
 												GameTooltip:Show()
 											end
 										)
@@ -704,13 +697,10 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.CollapseAllButton:SetHighlightTexture("Interface\\Buttons\\UI-MinusButton-Hilight")
 		addon.Frame.CollapseAllButton:ClearAllPoints()
 		addon.Frame.CollapseAllButton:SetPoint("TOPRIGHT",addon.Frame,"TOPRIGHT",-30,-20)
-		--if (not addon.wrath) then
-			addon.Frame.CollapseAllButton:SetTextColor(1, 1, 1)
-		--end
 		addon.Frame.CollapseAllButton:SetScript("OnClick", function() self:CloseAll() end)
 		addon.Frame.CollapseAllButton:SetScript("OnEnter", function(this)
 												GameTooltip_SetDefaultAnchor(GameTooltip, this)
-												GameTooltip:SetText(L["Collapse All"])
+												GameTooltip:SetText(self:White(L["Collapse All"]))
 												GameTooltip:Show()
 											end
 										)
@@ -726,7 +716,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.XButton:SetScript("OnClick", function() self:CloseWindow() end)
 		addon.Frame.XButton:SetScript("OnEnter", function(this)
 												GameTooltip_SetDefaultAnchor(GameTooltip, this)
-												GameTooltip:SetText(L["Close Window"])
+												GameTooltip:SetText(self:White(L["Close Window"]))
 												GameTooltip:Show()
 											end
 										)
@@ -748,7 +738,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame.ScrollChild:ClearAllPoints()
 		addon.Frame.ScrollChild:SetPoint("TOPLEFT", addon.Frame.ScrollFrame, "TOPLEFT", 10, -30)
 		addon.Frame.ScrollChild:SetWidth(340)
-		addon.Frame.ScrollChild:SetHeight(355)
+		addon.Frame.ScrollChild:SetHeight(345)
 		addon.Frame.ScrollChild:EnableMouseWheel(true)
 		addon.Frame.ScrollChild:EnableMouse(true)
 
@@ -783,7 +773,6 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 
 		-- Adds Profession header text
 		addon.Frame.ProfessionText = addon.Frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-		addon.Frame.ProfessionText:SetTextColor(1.0, 1.0, 0.1)
 		addon.Frame.ProfessionText:ClearAllPoints()
 		addon.Frame.ProfessionText:SetPoint("TOP", 0, -30)
 
@@ -802,6 +791,14 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 	-- Anchor to ATSW
 	elseif (ATSWFrame) then
 		addon.Frame:SetPoint("RIGHT", ATSWFrame, "RIGHT", 350, 25)
+	-- Move the window over a bit for trade tabs to be seen
+	elseif (TradeTabs) then
+		if (addon.SkillType == "Trade") then
+			addon.Frame:SetPoint("RIGHT", TradeSkillFrame, "RIGHT", 385, 30)
+		-- Anchor to crafting window
+		elseif (addon.SkillType == "Craft") then
+			addon.Frame:SetPoint("RIGHT", CraftFrame, "RIGHT", 385, 30)
+		end
 	-- Anchor to trade skill window
 	elseif (addon.SkillType == "Trade") then
 		addon.Frame:SetPoint("RIGHT", TradeSkillFrame, "RIGHT", 345, 30)
@@ -815,9 +812,9 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 
 	-- Set the text / status bar display  of the progress bar
 	if (CurrentSpeciality == "") then
-		addon.Frame.ProfessionText:SetText(CurrentProfession)
+		addon.Frame.ProfessionText:SetText(self:Yellow(CurrentProfession))
 	else
-		addon.Frame.ProfessionText:SetText(CurrentProfession .. " - " .. CurrentSpeciality)
+		addon.Frame.ProfessionText:SetText(self:Yellow(CurrentProfession .. " - " .. CurrentSpeciality))
 	end
 
 	addon.Frame:Show()
@@ -839,7 +836,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 
 	-- New dev GUI
 	else
-		self:Print("Test purposes only")
+		self:Print("Test purposes only, this likely to cause a lot of errors.")
 		if (not addon.Frame) then
 			-- Create the main frame
 			addon.Frame = CreateFrame("Frame", "addon.Frame", UIParent)

@@ -413,7 +413,7 @@
 	Outfitter.cNone = "Keins"
 	
 	Outfitter.cUseDurationTooltipLineFormat = "^Benutzen:.*(%d+) Sek%. lang"
-	Outfitter.cUseDurationTooltipLineForma2 = "^Benutzen:.*(%d+) Sek%. lang"
+	Outfitter.cUseDurationTooltipLineFormat2 = "^Benutzen:.*(%d+) Sek%. lang"
 	
 	Outfitter.cAutoChangesDisabled = "Automated changes are now disabled"
 	Outfitter.cAutoChangesEnabled = "Automated changes are now enabled"

@@ -65,6 +65,15 @@ L:RegisterTranslations("deDE", function() return {
 	shadow_message = "Schattenmacht in 2 Sekunden!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	shadow = "Мощь Тьмы",
+	shadow_desc = "Предупреждать когда Смертекрут выполняет Мощь Тьмы",
+	shadow_message = "Мощь Тьмы за 2 секунды!",
+
+	shadowbar = "Панель Мощи Тьмы",
+	shadowbar_desc = "Отоброжать панель для Мощи Тьмы Смертекрута",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -76,7 +85,7 @@ mod.zonename = BZ["The Mechanar"]
 mod.enabletrigger = boss 
 mod.guid = 19218
 mod.toggleoptions = {"shadow", "shadowbar", "bosskill"}
-mod.revision = tonumber(("$Revision: 77265 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

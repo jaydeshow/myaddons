@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76925 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 79885 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-06-17 10:15:06 -0400 (Tue, 17 Jun 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-08-06 16:26:33 -0400 (Wed, 06 Aug 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -514,6 +514,17 @@ function AutoBar:InitializeDefaults()
 				buttonClass = "AutoBarButtonBoomkinTree",
 				barKey = "AutoBarClassBarDruid",
 				defaultButtonIndex = 4,
+				enabled = true,
+				noPopup = true,
+			}
+		end
+
+		if (not AutoBar.db.class.buttonList["AutoBarButtonPowerShift"]) then
+			AutoBar.db.class.buttonList["AutoBarButtonPowerShift"] = {
+				buttonKey = "AutoBarButtonPowerShift",
+				buttonClass = "AutoBarButtonPowerShift",
+				barKey = "AutoBarClassBarDruid",
+				defaultButtonIndex = 5,
 				enabled = true,
 				noPopup = true,
 			}

@@ -47,6 +47,12 @@ L:RegisterTranslations("deDE", function() return {
 	shell_message = "Dunkle H\195\188lle!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	shell = "Темный панцирь",
+	shell_desc = "Предупреждать о чтении заклинания Темного панциря",
+	shell_message = "Темный панцирь!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -58,7 +64,7 @@ mod.zonename = BZ["Mana-Tombs"]
 mod.enabletrigger = boss 
 mod.guid = 18341
 mod.toggleoptions = {"shell", "bosskill"}
-mod.revision = tonumber(("$Revision: 77167 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

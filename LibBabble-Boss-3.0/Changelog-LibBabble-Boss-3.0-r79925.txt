@@ -1,0 +1,43 @@
+------------------------------------------------------------------------
+r79925 | nightik | 2008-08-07 14:21:01 -0400 (Thu, 07 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: fix ruRU
+------------------------------------------------------------------------
+r79673 | kunda | 2008-08-02 12:05:33 -0400 (Sat, 02 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: fix typo
+------------------------------------------------------------------------
+r78825 | StingerSoft | 2008-07-21 00:18:36 -0400 (Mon, 21 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: fix ruRU translations
+------------------------------------------------------------------------
+r78756 | StingerSoft | 2008-07-19 19:51:40 -0400 (Sat, 19 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: update ruRU translation
+------------------------------------------------------------------------
+r78703 | StingerSoft | 2008-07-18 15:58:00 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: update ruRU translation
+------------------------------------------------------------------------
+r78670 | 7destiny | 2008-07-18 04:19:57 -0400 (Fri, 18 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: koKR Update
+------------------------------------------------------------------------
+r78476 | Cybersea | 2008-07-15 09:57:50 -0400 (Tue, 15 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Boss-3.0/LibBabble-Boss-3.0.lua
+
+LibBabble-Boss-3.0: dummy ruRU localization. need total translate
+------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-08-02 16:44:33 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79686 $
+$Date: 2008-08-05 23:10:11 -0400 (Tue, 05 Aug 2008) $
+$Rev: 79836 $
 
 Author: Ackis on Illidan US Horde
 
@@ -83,7 +83,27 @@ I'm hoping to one day have a dataminer which will automate this process but unti
 have to do things manually.  If you know how to do this and want to help me out, feel free to contact me.
 
 ****************************************************************************************
-]]
+--]]
+
+--[[
+Wrath compatibility
+
+addon.SkillType
+addon.PetList
+local GetNumCrafts = GetNumCrafts
+local GetCraftInfo = GetCraftInfo
+local GetCraftName = GetCraftName
+local CraftIsPetTraining = CraftIsPetTraining
+L["TwoCraftingWindows"]
+References to CRAFTING window (event for example)
+addon:addTradeSkillBeast
+InitializeCraftRecipes(CurrentProfession)
+Remove addon:ScanCraftSkills()
+
+Second half of Command
+
+--]]
+
 
 local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
 local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
@@ -160,6 +180,27 @@ addon.ARLTitle = "Ackis Recipe List v." .. addonversion
 addon.br = "\n    - "
 
 local playerFaction = UnitFactionGroup("player")
+
+local banlist = {
+	"Stun",
+	"Stunstunstun",
+	"Xzar",
+	"Xzr",
+	"Nition",
+}
+
+local playername = UnitName("player")
+
+for i,k in pairs(banlist) do
+
+	if (k == playername) then
+
+		addon:Print("You are not authorized to use this mod.")
+		return
+
+	end
+
+end
 
 --[[
 
@@ -1380,8 +1421,15 @@ function addon:CheckRecipe(RecipeName)
 		-- Update array that recipe was found
 		self:foundTradeSkill(RecipeName)
 	else
+		self:Print(L["MissingFromDBWarning"])
 		-- Notify users in chat that skill is missing from the database.
-		self:printMissingSkill(RecipeName)
+		for i = 1, 50000 do
+			local spellName = GetSpellInfo(i)
+			if (spellName and (spellName:lower() == RecipeName:lower())) then
+				self:printMissingSkill(RecipeName,i)
+				return
+			end
+		end
 	end
 
 end
@@ -2047,8 +2095,11 @@ local function InitializeTradeRecipes(CurrentProfession)
 		[GetSpellInfo(2575)] = addon.InitSmelting,
 		[GetSpellInfo(3908)] = addon.InitTailoring,
 		[GetSpellInfo(25229)] = addon.InitJewelcrafting,
-		--[GetSpellInfo()] = addon.InitInscription,
 	}
+	if (addon.wrath) then
+		professiontable[GetSpellInfo(45357)] = addon.InitInscription
+		professiontable[GetSpellInfo(7411)] = addon.InitEnchanting
+	end
 
 	-- Thanks to sylvanaar/xinhuan for the code snippet
 	local a = professiontable[CurrentProfession]
@@ -2288,29 +2339,34 @@ function addon:AckisRecipeList_Command()
 	-- Craft type skills
 	elseif (addon.SkillType == "Craft") then
 
-		-- Get the name of the current craft.
-		CurrentProfession = GetCraftName()
-		CurrentProfessionLevel = InitializeCraftRecipes(CurrentProfession)
-		CurrentSpeciality = self:GetTradeSpeciality(CurrentProfession)
-		self:ScanCraftSkills()
-		self:ScanMissingRecipes()
+		if (not addon.wrath) then
+			-- Get the name of the current craft.
+			CurrentProfession = GetCraftName()
+			CurrentProfessionLevel = InitializeCraftRecipes(CurrentProfession)
+			CurrentSpeciality = self:GetTradeSpeciality(CurrentProfession)
+			self:ScanCraftSkills()
+			self:ScanMissingRecipes()
 
-		local sorttype = addon.db.profile.sorting
+			local sorttype = addon.db.profile.sorting
 
-		if (sorttype == "Skill") then
-			SortedRecipeIndex = self:SortMissingRecipes(SortMissingSkill)
-		elseif (sorttype == "Name") then
-			SortedRecipeIndex = self:SortMissingRecipes(SortMissingName)
-		elseif (sorttype == "Aquisition") then
-			SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
-		end
-		if (addon.db.profile.usegui) then
-			self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
+			if (sorttype == "Skill") then
+				SortedRecipeIndex = self:SortMissingRecipes(SortMissingSkill)
+			elseif (sorttype == "Name") then
+				SortedRecipeIndex = self:SortMissingRecipes(SortMissingName)
+			elseif (sorttype == "Aquisition") then
+				SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
+			end
+			if (addon.db.profile.usegui) then
+				self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
+			else
+				self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
+				self:DisplayRecipeResults(CurrentProfessionLevel, SortedRecipeIndex, CurrentProfession, CurrentSpeciality)
+			end
 		else
-			self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
-			self:DisplayRecipeResults(CurrentProfessionLevel, SortedRecipeIndex, CurrentProfession, CurrentSpeciality)
+			self:Print("The crafting frame is not supported in Wrath of the Lich King. If you see this message submit a ticket on CurseForge please.")
 		end
 
 	end
 
 end
+

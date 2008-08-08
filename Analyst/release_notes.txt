@@ -1,0 +1,102 @@
+Analyst Release Notes
+---------------------
+
+* Development
+
+- FEATURE: Added french translation. Thanks Laumac.
+
+
+* Release 1.0.2 for World of Warcraft 2.4.3 (2008-07-26)
+
+- FEATURE: All data can now optionally be presented for all characters
+on the account. Previously, data was available for the currently logged
+in character only.
+
+- FEATURE: The add-on title text in the FuBar now optionally shows
+the amount of gold gained or lost in the period.
+
+- FEATURE: Analyst now displays a tooltip on the FuBar. The tooltip
+contains information from the Overview report.
+
+- FEATURE: The Flights popup now shows detail information on the
+flights taken.
+
+- CHANGE: The default key bindings have been removed. New users can
+bind them manually if they so desire.
+
+- CHANGE: Economy data is now stored in an account-wide saved variable.
+It used to be stored in a per-character saved variable. Existing
+data is silently migrated when each character is logged in.
+
+- FIX: Gold gained from opening objects such as chests is now processed.
+
+- FIX: Gold gained from enchanting in the trade window is now processed.
+
+- FIX: Corrected an error in the TOC file with regard to the optional
+dependencies.
+
+
+* Release 1.0.1 for World of Warcraft 2.4.1 (2008-04-19)
+
+- CHANGE: Costs for repairing all items are now processed synchronously.
+This is to avoid possible event overlap resulting from repairing, buying
+and selling in quick succession.
+
+- CHANGE: Default key bindings are now applied only once.
+
+- CHANGE: Adapted to World of Warcraft 2.4.0
+
+- FIX: Uncategorized activities are now properly processed.
+
+- FIX: Fixed a problem preventing the proper processing of flights.
+
+
+* Release 1.0.0 for World of Warcraft 2.3.2
+
+- FIX: Receiving mail from "Unknown" senders no longer causes an error.
+
+
+* Release 0.9.2 (Beta) for World of Warcraft 2.3.0
+
+- FEATURE: Added "Miscellaneous" measures for gaining and spending gold
+as well as producing and consuming items. These measures track activities
+that are not currently categorized by Analyst but have an impact on the
+gold balance or the items of the player.
+
+- FEATURE: Added measures for tracking items received or sent by mail.
+
+- FEATURE: Added a measure for tracking smelting activity.
+
+- FEATURE: Items used as payment in vendor transactions, such as battleground
+tokens or tier set tokens, are now properly recorded in a new measure
+"Items Swaped".
+
+- FIX: Automated vendor selling is no longer processed as "Using" the
+items sold. Proceeds from automated selling are now properly reported.
+
+- FIX: Gold looted in parties with two players is now properly processed.
+
+- FIX: Activities are now properly processed in raids and parties.
+
+- FIX: Opening objects is now properly reported and no longer causes
+errors.
+
+
+* Release 0.9.1 (Beta) for World of Warcraft 2.3.0
+
+- FEATURE: Added support for FuBar. The Economy Panel can now be toggled
+by clicking the Analyst button on the FuBar or on the minimap. The settings
+of this add-on are shown in the menu which is opened by right-clicking
+on the Analyst button.
+
+- FIX: Destroyed items were not properly recorded. Destroyed items are now
+properly recorded and shown in a new measure in the Items Consumed report.
+
+- FIX: Battleground tokens were not properly recorded. Battleground tokens
+awarded when a battleground closes are now properly recorded and shown in
+a new measure in the Items Produced report.
+
+
+* Release 0.9.0 (Beta) for World of Warcraft 2.3.0
+
+- Initial release

@@ -36,7 +36,7 @@ local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 --Establish version number and compatible version of Atlas
 local VERSION_MAJOR = "4";
 local VERSION_MINOR = "06";
-local VERSION_BOSSES = "02";
+local VERSION_BOSSES = "03";
 ATLASLOOT_VERSION = "|cffFF8400AtlasLoot Enhanced v"..VERSION_MAJOR.."."..VERSION_MINOR.."."..VERSION_BOSSES.."|r";
 ATLASLOOT_CURRENT_ATLAS = "1.12.0";
 ATLASLOOT_PREVIEW_ATLAS = "1.12.1";
@@ -846,7 +846,7 @@ function AtlasLootItemsFrame_OnCloseButton()
 	--Set no loot table as currently selected
 	AtlasLootItemsFrame.activeBoss = nil;
 	--Fix the boss buttons so the correct icons are displayed
-    if AtlasFrame:IsVisible() then
+    if AtlasFrame and AtlasFrame:IsVisible() then
         if ATLAS_CUR_LINES then
             for i=1,ATLAS_CUR_LINES do
                 if getglobal("AtlasBossLine"..i.."_Selected"):IsVisible() then

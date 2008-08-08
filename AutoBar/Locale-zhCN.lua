@@ -1,4 +1,4 @@
---
+﻿--
 -- AutoBar
 -- http://code.google.com/p/autobar/
 -- Courtesy of PDI175, lostcup
@@ -260,6 +260,7 @@ if (GetLocale() == "zhCN") then
 		["AutoBarButtonBear"] = "熊",
 		["AutoBarButtonBoomkinTree"] = "生命之树 / 枭兽",
 		["AutoBarButtonCat"] = "猎豹",
+		["AutoBarButtonPowerShift"] = "PowerShift",
 		["AutoBarButtonTravel"] = "旅行",
 		["AutoBarButtonFlight"] = "飞行",
 		["AutoBarButtonNormal"] = "一般",

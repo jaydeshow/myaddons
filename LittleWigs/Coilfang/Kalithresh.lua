@@ -112,7 +112,7 @@ L:RegisterTranslations("esES", function() return {
 } end )
 
 L:RegisterTranslations("ruRU", function() return {
-	engage_message = "Поглощет - высасывание за ~15sec!",
+	engage_message = "Поглощает - высасывание за ~15sec!",
 
 	spell = "Отражение заклинания",
 	spell_desc = "Предупреждать о Отражении заклинаний",
@@ -136,7 +136,7 @@ mod.zonename = BZ["The Steamvault"]
 mod.enabletrigger = boss
 mod.guid = 17798
 mod.toggleoptions = {"spell", "rage", "bosskill"}
-mod.revision = tonumber(("$Revision: 79696 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79781 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -1,0 +1,37 @@
+------------------------------------------------------------------------
+r79755 | daviesh | 2008-08-03 20:01:44 -0400 (Sun, 03 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/AtlasLoot_BCInstances.toc
+
+AtlasLoot_BCInstances:
+- TOC update
+------------------------------------------------------------------------
+r78852 | kurax | 2008-07-21 10:50:06 -0400 (Mon, 21 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Locale updates
+------------------------------------------------------------------------
+r78809 | hegarol | 2008-07-20 15:42:42 -0400 (Sun, 20 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.en.lua
+
+AtlasLoot_BCInstances:
+- Typo fixed
+------------------------------------------------------------------------
+r78127 | kurax | 2008-07-08 22:29:48 -0400 (Tue, 08 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.cn.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.de.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.es.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.fr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.kr.lua
+   M /trunk/AtlasLoot_BCInstances/burningcrusade.tw.lua
+
+AtlasLoot_BCInstances: Locales update
+------------------------------------------------------------------------

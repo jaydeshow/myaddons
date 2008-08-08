@@ -1,0 +1,26 @@
+------------------------------------------------------------------------
+r79900 | ckknight | 2008-08-06 19:58:29 -0400 (Wed, 06 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.lua
+
+LibRockConsole-1.0 - remove WotLK dealy that messes with the slash command, as they reverted it in the recent patch.
+- change some frame printing. Note: printing a frame will crash the game since /script Button:GetDisabledFontObject() breaks (at least for macs)
+------------------------------------------------------------------------
+r79669 | arrowmaster | 2008-08-02 09:13:06 -0400 (Sat, 02 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.lua
+
+LibRockConsole-1.0: typo fix
+------------------------------------------------------------------------
+r79562 | arrowmaster | 2008-07-31 06:44:41 -0400 (Thu, 31 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.lua
+
+LibRockConsole-1.0: since I accidently commited the same fix to the AceConsole-2.0 WotLK branch that will eventually be merged to trunk I guess I might as well fix this one too. \000 and \127 are not printable characters.
+------------------------------------------------------------------------
+r78797 | ckknight | 2008-07-20 13:58:23 -0400 (Sun, 20 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConsole-1.0/LibRockConsole-1.0.lua
+
+LibRockConsole-1.0 - fix to have chat input work in WotLK
+------------------------------------------------------------------------

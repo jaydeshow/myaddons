@@ -1,0 +1,137 @@
+------------------------------------------------------------------------
+r79841 | scorpio0920 | 2008-08-06 00:50:54 -0400 (Wed, 06 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Freywinn.lua
+
+LittleWigs:
+- Fixed typo.
+------------------------------------------------------------------------
+r79829 | StingerSoft | 2008-08-05 17:45:57 -0400 (Tue, 05 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Maladaar.lua
+   M /trunk/LittleWigs/Auchindoun/Murmur.lua
+   M /trunk/LittleWigs/Auchindoun/Pandemonius.lua
+   M /trunk/LittleWigs/Auchindoun/Shirrak.lua
+   M /trunk/LittleWigs/Auchindoun/Syth.lua
+   M /trunk/LittleWigs/Auchindoun/Tavarok.lua
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+   M /trunk/LittleWigs/MagistersTerrace/LittleWigs_MagistersTerrace.toc
+   M /trunk/LittleWigs/MagistersTerrace/SelinFireheart.lua
+   M /trunk/LittleWigs/MagistersTerrace/Vexallus.lua
+   M /trunk/LittleWigs/TempestKeep/Capacitus.lua
+   M /trunk/LittleWigs/TempestKeep/Dalliah.lua
+   M /trunk/LittleWigs/TempestKeep/Freywinn.lua
+   M /trunk/LittleWigs/TempestKeep/Gyrokill.lua
+   M /trunk/LittleWigs/TempestKeep/Ironhand.lua
+   M /trunk/LittleWigs/TempestKeep/Laj.lua
+   M /trunk/LittleWigs/TempestKeep/LittleWigs_TempestKeep.toc
+   M /trunk/LittleWigs/TempestKeep/Pathaleon.lua
+   M /trunk/LittleWigs/TempestKeep/Skyriss.lua
+   M /trunk/LittleWigs/TempestKeep/Soccothrates.lua
+   M /trunk/LittleWigs/TempestKeep/Thorngrin.lua
+   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
+
+LittleWigs: added/fixed ruRU
+------------------------------------------------------------------------
+r79781 | StingerSoft | 2008-08-04 17:35:31 -0400 (Mon, 04 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
+   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
+   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
+   M /trunk/LittleWigs/Auchindoun/LittleWigs_Auchindoun.toc
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
+   M /trunk/LittleWigs/Coilfang/Mennu.lua
+
+LittleWigs: added/fixed typo ruRU
+------------------------------------------------------------------------
+r79696 | StingerSoft | 2008-08-02 20:47:38 -0400 (Sat, 02 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Ahune.lua
+   M /trunk/LittleWigs/Coilfang/Hungarfen.lua
+   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
+   M /trunk/LittleWigs/Coilfang/LittleWigs_Coilfang.toc
+   M /trunk/LittleWigs/Coilfang/Mennu.lua
+   M /trunk/LittleWigs/Coilfang/Rokmar.lua
+   M /trunk/LittleWigs/Coilfang/Steamrigger.lua
+   M /trunk/LittleWigs/Coilfang/Thespia.lua
+
+LittleWigs: added ruRU localization
+------------------------------------------------------------------------
+r79681 | StingerSoft | 2008-08-02 14:46:23 -0400 (Sat, 02 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/CoT/BlackMorass.lua
+   M /trunk/LittleWigs/CoT/LittleWigs_CoT.toc
+   M /trunk/LittleWigs/HellfireCitadel/Broggok.lua
+   M /trunk/LittleWigs/HellfireCitadel/Kelidan.lua
+   M /trunk/LittleWigs/HellfireCitadel/LittleWigs_HellfireCitadel.toc
+   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
+   M /trunk/LittleWigs/HellfireCitadel/Omor.lua
+   M /trunk/LittleWigs/HellfireCitadel/Warchief.lua
+   M /trunk/LittleWigs/LittleWigs.toc
+
+LittleWigs: added ruRU localization
+------------------------------------------------------------------------
+r78992 | ulic | 2008-07-23 13:00:35 -0400 (Wed, 23 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/CoT/BlackMorass.lua
+
+LittleWigs: CoT/BM - Added CombatListener back in for boss death.
+------------------------------------------------------------------------
+r78697 | ulic | 2008-07-18 13:08:34 -0400 (Fri, 18 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/CoT/BlackMorass.lua
+
+LittleWigs: BlackMorass- Correcting my own screw ups
+~lart ulic
+------------------------------------------------------------------------
+r78580 | profalbert | 2008-07-16 17:11:55 -0400 (Wed, 16 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/CoT/BlackMorass.lua
+
+LittleWigs:
+- typo fix, (luac -p)
+
+------------------------------------------------------------------------
+r78574 | ulic | 2008-07-16 14:44:53 -0400 (Wed, 16 Jul 2008) | 4 lines
+Changed paths:
+   M /trunk/LittleWigs/CoT/BlackMorass.lua
+
+LittleWigs: BlackMorass
+- Removed old triggers & event registrations
+- Changed back to old profile references
+- Added bars and clearing of bars for Hasten & Frenzy
+------------------------------------------------------------------------
+r78557 | ulic | 2008-07-16 10:50:48 -0400 (Wed, 16 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Dalliah.lua
+
+LittleWigs: TK/Dalliah- Fixed BossDeath
+------------------------------------------------------------------------
+r78171 | scorpio0920 | 2008-07-10 03:11:34 -0400 (Thu, 10 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Thorngrin.lua
+
+LittleWigs:
+- Update zhTW localization.
+------------------------------------------------------------------------
+r78157 | ulic | 2008-07-09 19:50:50 -0400 (Wed, 09 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+
+LittleWigs: Auch/Vorpil - Added banish back in, thanks reale
+------------------------------------------------------------------------
+r78046 | 7destiny | 2008-07-07 23:11:46 -0400 (Mon, 07 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+
+LittleWigs: koKR Update
+------------------------------------------------------------------------
+r78002 | ulic | 2008-07-07 14:26:31 -0400 (Mon, 07 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
+
+LittleWigs: Auch/Vorpil: Removed banish until I can see a heroic combat log.
+------------------------------------------------------------------------

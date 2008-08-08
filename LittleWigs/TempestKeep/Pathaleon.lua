@@ -121,6 +121,24 @@ L:RegisterTranslations("deDE", function() return {
 	mc_message = "%s ist \195\188bernommen!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	summon = "Призывы Призраков",
+	summon_desc = "Предупреждать о призывах Призраков Хаоса",
+	summon_message = "Призваны Призраки Хаоса!",
+
+	despawn = "Исчезновение Призраков",
+	despawn_desc = "Предупреждать о исчезновении Призраков Хаоса",
+	despawn_message = "Скоро Призраки Хаоса исчезнут!",
+	despawn_trigger = "I prefer the direct",
+	despawn_trigger2 = "I prefer to be hands",
+	despawn_done = "Призраки Хаоса исчезли!",
+
+	mc = "Контроль над разумом",
+	mc_desc = "Предупреждать о Контроле над разумом",
+	mc_message = "%s законтролирован разум!",
+	mc_bar = "%s - Контроль над разумом",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -132,7 +150,7 @@ mod.zonename = BZ["The Mechanar"]
 mod.enabletrigger = boss
 mod.guid = 19220
 mod.toggleoptions = {"summon", "despawn", -1, "mc", "bosskill"}
-mod.revision = tonumber(("$Revision: 77637 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

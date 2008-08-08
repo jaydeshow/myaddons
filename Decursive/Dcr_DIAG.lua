@@ -35,6 +35,7 @@ DcrLoadedFiles = {
     ["localization.es.lua"]	= false,
     ["localization.kr.lua"]	= false,
     ["localization.cn.lua"]	= false,
+    ["localization.ru.lua"]	= false,
     
     ["Dcr_opt.lua"]		= false,
     ["Dcr_Events.lua"]		= false,
@@ -172,7 +173,7 @@ do
 
 	-- if no fatal error let this file update the date and revision of Decursive
 	if DcrDiagStatus ~= 2 then
-	    Dcr:SetDateAndRevision("$Date: 2008-07-24 21:14:28 -0400 (Thu, 24 Jul 2008) $", "$Revision: 79088 $");
+	    Dcr:SetDateAndRevision("$Date: 2008-08-06 17:50:28 -0400 (Wed, 06 Aug 2008) $", "$Revision: 79890 $");
 	end
 
 	-- if the diagnostic was requested by the user, we also test AceEvent functionalities {{{ -

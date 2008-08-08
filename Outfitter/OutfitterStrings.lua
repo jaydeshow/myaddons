@@ -1,7 +1,7 @@
 ﻿Outfitter = {}
 MCDebugLib:InstallDebugger("Outfitter", Outfitter, {r=0.6,g=1,b=0.8})
 
-Outfitter.cVersion = "4.2.4"
+Outfitter.cVersion = "4.2.6"
 
 Outfitter.cTitle = "Outfitter"
 Outfitter.cTitleVersion = Outfitter.cTitle.." "..Outfitter.cVersion
@@ -517,7 +517,7 @@ Outfitter.cAbilityIcons = "All icons (spells only)"
 
 Outfitter.cRequiresLockpicking = "Requires Lockpicking"
 Outfitter.cUseDurationTooltipLineFormat = "^Use:.*for (%d+) sec"
-Outfitter.cUseDurationTooltipLineForma2 = "^Use:.*Lasts (%d+) sec"
+Outfitter.cUseDurationTooltipLineFormat2 = "^Use:.*Lasts (%d+) sec"
 
 Outfitter.cOutfitBarSizeLabel = "Size"
 Outfitter.cOutfitBarSmallSizeLabel = "Small"

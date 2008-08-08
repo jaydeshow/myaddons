@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-08-02 08:46:12 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79663 $
+$Date: 2008-08-06 10:26:20 -0400 (Wed, 06 Aug 2008) $
+$Rev: 79866 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -35,6 +35,15 @@ L["FILTER_OPTIONS_LONG"] = "표시할 제조법 필터링에 관한 설정입니
 L["Reputation"] = "평판"
 L["REP_OPTIONS"] = "평판 설정"
 L["REP_OPTIONS_LONG"] = "검색해서 표시할 평판을 설정합니다."
+L["Binding"] = "착용"
+L["BINDING_OPTIONS"] = "착용 설정"
+L["BINDING_OPTIONS_LONG"] = "검색시에 착용구분을 포함합니다."
+L["Crafting"] = "제작"
+L["CRAFTING_OPTIONS"] = "제작 설정"
+L["CRAFTING_OPTIONS_LONG"] = "검색시에 제작 아이템을 포함합니다."
+L["Armour"] = "방어구"
+L["ARMOUR_OPTIONS"] = "방어구 설정"
+L["ARMOUR_OPTIONS_LONG"] = "검색시에 방어구를 포함합니다."
 L["Obtain"] = "획득"
 L["OBTAIN_OPTIONS"] = "획득 설정"
 L["OBTAIN_OPTIONS_LONG"] = "검색시에 제조법의 획득경로를 표시합니다."
@@ -60,12 +69,25 @@ L["Specialities"] = "하위분류"
 L["SPECIALITY_TOGGLE"] = "검색시에 모든 전문기술 세분화 분류를 포함합니다."
 L["Skill"] = "숙련도"
 L["SKILL_TOGGLE"] = "검색시에 전문기술 숙련도를 포함합니다."
+L["Old World"] = "클래식 평판"
+L["OLDWORLD_OPTIONS"] = "클래식 평판"
+L["OLDWORLD_OPTIONS_LONG"] = "검색시에 클래식 평판을 포함합니다."
+L["Burning Crusade"] = "불타는 성전"
+L["BC_OPTIONS"] = "불타는 성전 확장팩 평판"
+L["BC_OPTIONS_LONG"] = "검색시에 불타는 성전 확장팩 평판을 포함합니다."
+L["Wrath of the Lich King"]= "리치왕의 분노"
+L["WOTLK_OPTIONS"] = "리치왕의 분노 확장팩 평판"
+L["WOTLK_OPTIONS_LONG"] = "리치왕의 분노 확장팩의 평판을 포함합니다."
 
 -- Obtain Filter Options
 L["BOEFilter"] = "사용시 귀속"
 L["BOE_TOGGLE"] = "검색시 사용시 귀속인 제조법을 포함합니다."
 L["BOPFilter"] = "획득 시 귀속"
 L["BOP_TOGGLE"] = "검색시에 획득시 귀속인 제조법을 포함합니다."
+L["RecipeBOEFilter"] = "착용시 귀속 제조법"
+L["RECIPE_BOE_TOGGLE"] = "검색시에 착용시 귀속 제조법을 포함합니다."
+L["RecipeBOPFilter"] = "획득시 귀속 제조법"
+L["RECIPE_BOP_TOGGLE"] = "검색시에 획득시 귀속 제조법을 포함합니다."
 L["PVP_TOGGLE"] = "검색시에 PVP로 획득하는 제조법을 포함합니다."
 L["RAID_TOGGLE"] = "검색시에 공격대 공략이 필요한 경우를 포함합니다."
 L["SEASONAL_TOGGLE"] = "검색시에 계절축제관련 제조법을 포함합니다."
@@ -111,6 +133,7 @@ L["OpenTradeSkillWindow"] = "전문기술 창을 연 후에 기술 검색 해주
 L["TwoCraftingWindows"] = "전문기술 차이 이미 열려 있습니다. 빠진 제조법의 검색을 위해 창을 닫고 다시 열어 주십시오."
 L["SpellIDCache"] = "주문 ID: %s은 캐쉬에 없습니다. http://wow.curseforge.com/projects/ackis-recipe-list/tickets/에 전문기술과 주문ID를 검색해서 올려주십시오."
 L["FactionError"] = "경고: %s의 평판 레벨을 알 수 없습니다."
+L["MissingFromDBWarning"] = "검색된 리스트에 제조법이 없습니다. 아마도 주문ID가 다르거나 검색시 인터넷 상태로 인한 것일 수 있습니다."
 
 -- GUI Text
 L["Close"] = "닫기"
