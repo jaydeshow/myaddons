@@ -1,4 +1,18 @@
 ------------------------------------------------------------------------
+r80086 | xinhuan | 2008-08-10 03:42:44 -0400 (Sun, 10 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Collector.lua
+   M /trunk/GatherMate/Constants.lua
+   M /trunk/GatherMate/Display.lua
+
+GatherMate: Add temporary code to collector, display and constants to ignore Scarlet Enclave map (Death Knight starting zone) because both EPL and SE translates to "Eastern Plaguelands" on the map and causes issues.
+------------------------------------------------------------------------
+r80084 | kagaro | 2008-08-10 02:33:57 -0400 (Sun, 10 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Constants.lua
+
+GatherMate: added northrend zones as calculated from latest path. Please note these could change any time from now till launch of WOTLK
+------------------------------------------------------------------------
 r79804 | kagaro | 2008-08-05 08:15:25 -0400 (Tue, 05 Aug 2008) | 1 line
 Changed paths:
    M /trunk/GatherMate/GatherMate.toc

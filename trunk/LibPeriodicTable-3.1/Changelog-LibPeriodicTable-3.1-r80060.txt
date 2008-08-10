@@ -1,0 +1,77 @@
+------------------------------------------------------------------------
+r80060 | toadkiller | 2008-08-09 20:04:59 -0400 (Sat, 09 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+
+LibPeriodicTable-3.1:
+- Swift Zhevra
+- Restore some items people deleted.  Please, MERGE, don't just delete other peoples work through overwrites.
+
+------------------------------------------------------------------------
+r80059 | toadkiller | 2008-08-09 20:01:20 -0400 (Sat, 09 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Swift Zhevra
+- Restore some items people deleted.  Please, MERGE, don't just delete other peoples work through overwrites.
+------------------------------------------------------------------------
+r80052 | nymbia | 2008-08-09 18:31:32 -0400 (Sat, 09 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-ClassSpell/LibPeriodicTable-3.1-ClassSpell.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Gear/LibPeriodicTable-3.1-Gear.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLoot/LibPeriodicTable-3.1-InstanceLoot.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLootHeroic/LibPeriodicTable-3.1-InstanceLootHeroic.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Tradeskill/LibPeriodicTable-3.1-Tradeskill.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-TradeskillResultMats/LibPeriodicTable-3.1-TradeskillResultMats.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Dataminer run
+
+------------------------------------------------------------------------
+r79134 | toadkiller | 2008-07-25 18:25:08 -0400 (Fri, 25 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLoot/LibPeriodicTable-3.1-InstanceLoot.lua
+
+LibPeriodicTable-3.1:
+- Sync up InstanceLoot to the actual data that is checked in.  According to the diff this is wrong, as data is lost in the process.  Whoever added this magical data needs to check in their source so it becomes real.
+------------------------------------------------------------------------
+r79133 | toadkiller | 2008-07-25 18:21:46 -0400 (Fri, 25 Jul 2008) | 3 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Add teleport scroll to misc.hearth.
+
+------------------------------------------------------------------------
+r78702 | toadkiller | 2008-07-18 15:34:49 -0400 (Fri, 18 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Nether Ray Fry, Tainted Core, Naj'entus Spine
+------------------------------------------------------------------------
+r78453 | toadkiller | 2008-07-14 23:13:29 -0400 (Mon, 14 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Amani Charms
+------------------------------------------------------------------------
+r78286 | thrillseeker | 2008-07-12 06:15:22 -0400 (Sat, 12 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1/LibPeriodicTable-3.1.lua
+
+LibPeriodicTable-3.1:
+- Added the ItemSearch-Function from Phanx. It works.
+------------------------------------------------------------------------

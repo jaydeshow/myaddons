@@ -49,7 +49,7 @@ L:RegisterTranslations("frFR", function() return {
 } end )
 
 L:RegisterTranslations("koKR", function() return {
-	engage_trigger = "저승으로 보내주마!",
+	engage_trigger = "저승으로 보내 주마!",
 	engage_message = "%s 전투 시작 - 45초후 곰 변신!",
 
 	phase = "단계",
@@ -147,7 +147,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23576
 mod.toggleoptions = {"phase", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80076 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

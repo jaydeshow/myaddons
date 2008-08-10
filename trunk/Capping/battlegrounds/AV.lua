@@ -11,21 +11,21 @@ function Capping:StartAV()
 --------------------------
 	self:RegisterTempEvent("CHAT_MSG_MONSTER_YELL", "AVAssaults")
 	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_NEUTRAL", "CheckStartTimer")
-	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_ALLIANCE", "SnowfallAlliance") 
-	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_HORDE", "SnowfallHorde") 
+	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_ALLIANCE", "SnowfallAlliance")
+	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_HORDE", "SnowfallHorde")
 
 	self:RegisterTempEvent("GOSSIP_SHOW", "AVQuests")
 	self:RegisterTempEvent("QUEST_PROGRESS", "AVQuests")
 	self:RegisterTempEvent("QUEST_COMPLETE", "AVQuests")
-	
+
 	self:RegisterTempEvent("CHAT_MSG_ADDON", "AVSync")
 end
 
 -- determines if a node's a graveyard or tower
-local lbunk, ltow = strlower(L["Bunker"]), strlower(L["Tower"])
+local lbunk, ltow, lbul = strlower(L["Bunker"]), strlower(L["Tower"]), strlower(L["Bulwark"])
 local function NodeType(node)
 	-- check for towers; if not, assume it's a graveyard
-	if node and (strfind(strlower(node), lbunk) or strfind(strlower(node), ltow)) then
+	if node and (strfind(strlower(node), lbunk) or strfind(strlower(node), ltow) or strfind(strlower(node), lbul)) then
 		return "tower"
 	end
 	return "graveyard"
@@ -51,11 +51,11 @@ function Capping:AVSync(prefix, message, chan, sender)
 		local f = self:GetBar(name)
 		if name and elapsed and (not f or not f:IsShown()) then
 			local icon
-			if name == L["Ivus begins moving"] then 
+			if name == L["Ivus begins moving"] then
 				icon = "Interface\\Icons\\Spell_Nature_NaturesBlessing"
-			elseif name == L["Lokholar begins moving"] then 
+			elseif name == L["Lokholar begins moving"] then
 				icon = "Interface\\Icons\\Spell_Frost_Glacier"
-			else 
+			else
 				icon = self:GetIconData(color, NodeType(name))
 			end
 			duration = tonumber(duration)
@@ -82,12 +82,12 @@ function Capping:AVAssaults(a1)
 	node = strmatch(a1, L["avtaken"]) or strmatch(a1, L["avtaken2"]) or strmatch(a1, L["avdestroyed"]) or strmatch(a1, L["avdestroyed2"])
 	if node then
 		self:StopBar(node)
-	elseif strfind(a1, L["Wicked, wicked, mortals!"]) then 
+	elseif strfind(a1, L["Wicked, wicked, mortals!"]) then
 		self:StartBar(L["Ivus begins moving"], 603, 603, "Interface\\Icons\\Spell_Nature_NaturesBlessing", "alliance")
 	elseif strfind(a1, L["The Ice Lord has arrived!"]) or strfind(a1, L["WHO DARES SUMMON LOKHOLAR"]) then
 		self:StartBar(L["Lokholar begins moving"], 603, 603, "Interface\\Icons\\Spell_Frost_Glacier", "horde")
 	end
-end			
+end
 
 local sf = L["Snowfall Graveyard"]
 ----------------------------------

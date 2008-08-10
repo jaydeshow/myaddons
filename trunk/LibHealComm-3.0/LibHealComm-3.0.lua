@@ -1,5 +1,5 @@
-local MAJOR_VERSION = "LibHealComm-3.0";
-local MINOR_VERSION = tonumber(("$Revision: 72222 $"):match("%d+")); 
+﻿local MAJOR_VERSION = "LibHealComm-3.0";
+local MINOR_VERSION = tonumber(("$Revision: 79995 $"):match("%d+")); 
  
 local lib = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION);
 if not lib then return end
@@ -175,7 +175,7 @@ local function getBaseHealSize(name)
             lib.Tooltip:SetSpell(i, BOOKTYPE_SPELL);
     
             -- Determine healing
-            local HealMin, HealMax = select(3, string.find(lib.TooltipTextLeft4:GetText() or lib.TooltipTextLeft3:GetText() or "", "(%d+) ?[\195\160tobisa到~]+ ?(%d+)"));
+            local HealMin, HealMax = select(3, string.find(lib.TooltipTextLeft4:GetText() or lib.TooltipTextLeft3:GetText() or "", "(%d+) ?[\195\160tobisa到~\-]+ ?(%d+)"));
             HealMin, HealMax = tonumber(HealMin) or 0, tonumber(HealMax) or 0;
             local Heal = (HealMin + HealMax) / 2;
 

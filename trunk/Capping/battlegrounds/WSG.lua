@@ -64,7 +64,7 @@ local function ScanRaid(friendcarrier, enemycarrier, enemyfaction, enemytext)  -
 			end
 		end
 	end
-	
+
 	-- enemy's carrier health is ?? after 6 seconds of being unknown
 	found = found + 1
 	if enemycarrier and found > 6 then
@@ -82,7 +82,7 @@ local function SetWSGCarrierAttribute()
 	hf:SetPoint("LEFT", UIParent, "BOTTOMLEFT", AlwaysUpFrame2:GetRight() + 38, AlwaysUpFrame2:GetTop())
 end
 local function CarrierOnClick(this)  -- sends basic carrier info to battleground chat
-	if IsControlKeyDown() then 
+	if IsControlKeyDown() then
 		local carrier, class = acarrier, aclass
 		if this.faction == "Horde" then
 			carrier, class = hcarrier, hclass
@@ -104,7 +104,7 @@ end
 local function CreateWSGFrame()  -- create all frames
 	af, aftext, aftexthp = CreateCarrierFrame("Alliance")
 	hf, hftext, hftexthp = CreateCarrierFrame("Horde")
-	
+
 	af:SetScript("OnUpdate", function(this, a1)
 		elap1 = elap1 + a1
 		elap2 = elap2 + a1
@@ -128,12 +128,12 @@ local function Bulk()  -- stuff to do at the beginning of every wsg, but after c
 	af:Show()
 	hf:Show()
 	SetWSGCarrierAttribute()
-	
+
 	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_HORDE", "WSGFlagCarrier")
 	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_ALLIANCE", "WSGFlagCarrier")
 	self:RegisterTempEvent("CHAT_MSG_BG_SYSTEM_NEUTRAL", "CheckStartTimer")
 	self:RegisterTempEvent("CHAT_MSG_ADDON", "WSGSync")
-	
+
 	-- makes sure GetBattlefieldScore will return correct values since UPDATE_BATTLEFIELD_SCORE is too slow
 	RequestBattlefieldScoreData()
 end
@@ -154,6 +154,11 @@ function Capping:WSGFlagCarrier(a1)  -- carrier detection and setup
 -----------------------------------
 	if strmatch(a1, L["was picked up by (.+)!"]) then  -- flag was picked up
 		local name = strmatch(a1, L["was picked up by (.+)!"])
+		local faction = strfind(a1, L["Horde"]) and 1 or 0
+		SetCarrier(faction, name, self:GetClassByName(name, faction))
+		self:CheckCombat(SetWSGCarrierAttribute)
+	elseif strmatch(a1, L["was picked up by (.+)!2"]) then  -- flag was picked up - another version
+		local name = strmatch(a1, L["was picked up by (.+)!2"])
 		local faction = strfind(a1, L["Horde"]) and 1 or 0
 		SetCarrier(faction, name, self:GetClassByName(name, faction))
 		self:CheckCombat(SetWSGCarrierAttribute)

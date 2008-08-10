@@ -732,6 +732,11 @@ function Display:UpdateWorldMap(force)
 	local zname = continentData[GetCurrentMapContinent()][GetCurrentMapZone()]
 	if not zname then clearpins(worldmapPins) return end -- player is not viewing a zone map of a continent
 
+	-- Temporary fix, the map "ScarletEnclave" and "EasternPlaguelands"
+	-- both have the same English display name as "Eastern Plaguelands"
+	-- so we ignore the new Death Knight starting zone for now.
+	if GetMapInfo() == "ScarletEnclave" then clearpins(worldmapPins) return end
+
 	if not rememberForce and lastDrawnWorldMap == zname then return end -- already drawn last time, and not forced
 
 	if lastDrawnWorldMap ~= zname then

@@ -10,7 +10,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 79885 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 80061 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -28,8 +28,6 @@ end
 
 AutoBarButton = AceOO.Class(AutoBar.Class.Button)
 AutoBarButton.dirtyButton = {}
-AutoBarButton.dirtyPopupCount = {}
-AutoBarButton.dirtyPopupCooldown = {}
 
 
 function AutoBarButton.prototype:init(parentBar, buttonDB)
@@ -625,11 +623,11 @@ end
 --
 
 function AutoBarButton:SetTooltipOnEnter(button)
-	AutoBarButton.SetTooltip(this, "OnEnter")
+	AutoBarButton.SetTooltip(self, "OnEnter")
 end
 
 function AutoBarButton:SetTooltipOnLeave(button)
-	AutoBarButton.SetTooltip(this, "OnLeave")
+	AutoBarButton.SetTooltip(self, "OnLeave")
 end
 
 function AutoBarButton:SetTooltip(button)
@@ -2335,7 +2333,7 @@ function AutoBarButtonTotemAir.prototype:UpdateCooldown()
 		_, totemName, start, duration = GetTotemInfo(totemAir)
 
 		if (start and duration and enabled and start > 0 and duration > 0) then
-			self.frame.cooldown:Show() -- IS this necessary?
+			self.frame.cooldown:Show() -- ToDo: necessary?
 			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
 		else
 			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)
@@ -2375,7 +2373,7 @@ function AutoBarButtonTotemEarth.prototype:UpdateCooldown()
 		_, totemName, start, duration = GetTotemInfo(totemEarth)
 
 		if (start and duration and enabled and start > 0 and duration > 0) then
-			self.frame.cooldown:Show() -- IS this necessary?
+			self.frame.cooldown:Show() -- ToDo: necessary?
 			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
 		else
 			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)
@@ -2415,7 +2413,7 @@ function AutoBarButtonTotemFire.prototype:UpdateCooldown()
 		_, totemName, start, duration = GetTotemInfo(totemFire)
 
 		if (start and duration and enabled and start > 0 and duration > 0) then
-			self.frame.cooldown:Show() -- IS this necessary?
+			self.frame.cooldown:Show() -- ToDo: necessary?
 			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
 		else
 			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)
@@ -2455,7 +2453,7 @@ function AutoBarButtonTotemWater.prototype:UpdateCooldown()
 		_, totemName, start, duration = GetTotemInfo(totemWater)
 
 		if (start and duration and enabled and start > 0 and duration > 0) then
-			self.frame.cooldown:Show() -- IS this necessary?
+			self.frame.cooldown:Show() -- ToDo: necessary?
 			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
 		else
 			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)

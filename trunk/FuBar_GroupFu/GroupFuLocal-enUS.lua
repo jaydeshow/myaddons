@@ -41,6 +41,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Roll clearing"] = true,
 	["When to clear the rolls."] = true,
 	["Never"] = true,
+	["10 seconds"] = true,
 	["15 seconds"] = true,
 	["30 seconds"] = true,
 	["45 seconds"] = true,

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 78968 $
+Revision: $Rev: 80077 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 78968 $"
+local MINOR_VERSION = "$Revision: 80077 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -316,6 +316,7 @@ lib:SetBaseTranslations {
 	["Azeroth"] = true,
 	["Eastern Kingdoms"] = true,
 	["Kalimdor"] = true,
+	["Northrend"] = true,
 	["Outland"] = true,
 	["Cosmic map"] = true,
 
@@ -336,6 +337,7 @@ lib:SetBaseTranslations {
 	["Blackwing Lair"] = true,
 	["Blasted Lands"] = true,
 	["Booty Bay"] = true,
+	["Borean Tundra"] = true,
 	["Burning Steppes"] = true,
 	["Darkshore"] = true,
 	["Darnassus"] = true,
@@ -347,6 +349,7 @@ lib:SetBaseTranslations {
 	["Dire Maul (East)"] = true,
 	["Dire Maul (West)"] = true,
 	["Dire Maul (North)"] = true,
+	["Dragonblight"] = true,
 	["Dun Morogh"] = true,
 	["Durotar"] = true,
 	["Duskwood"] = true,
@@ -361,13 +364,17 @@ lib:SetBaseTranslations {
 	["Gates of Ahn'Qiraj"] = true,
 	["Gnomeregan"] = true,
 	["The Great Sea"] = true,
+	["Grizzly Hills"] = true,
 	["Grom'gol Base Camp"] = true,
 	["Hall of Legends"] = true,
 	["Hillsbrad Foothills"] = true,
+	["Howling Fjord"] = true,
 	["The Hinterlands"] = true,
 	["Hyjal"] = true,
 	["Hyjal Summit"] = true,
+	["Icecrown"] = true,
 	["Ironforge"] = true,
+	["Lake Wintergrasp"] = true,
 	["Loch Modan"] = true,
 	["Lower Blackrock Spire"] = true,
 	["Maraudon"] = true,
@@ -388,11 +395,13 @@ lib:SetBaseTranslations {
 	["Scholomance"] = true,
 	["Searing Gorge"] = true,
 	["Shadowfang Keep"] = true,
+	["Sholazar Basin"] = true,
 	["Silithus"] = true,
 	["Silverpine Forest"] = true,
 	["The Stockade"] = true,
 	["Stonard"] = true,
 	["Stonetalon Mountains"] = true,
+	["The Storm Peaks"] = true,
 	["Stormwind City"] = true,
 	["Stormwind"] = true,
 	["Stranglethorn Vale"] = true,
@@ -416,6 +425,7 @@ lib:SetBaseTranslations {
 	["Westfall"] = true,
 	["Wetlands"] = true,
 	["Winterspring"] = true,
+	["Zul'Drak"] = true,
 	["Zul'Farrak"] = true,
 	["Zul'Gurub"] = true,
 
@@ -508,6 +518,37 @@ lib:SetBaseTranslations {
 
 	["Tirisfal"] = true,
 	["Sunken Temple"] = true,
+
+	-- Wrath of the Lich King - All will need translations
+	
+	-- Subzones used for displaying instances.
+		
+	["Borean Tundra"] = true,
+	["Crystalsong Forest"] = true,
+	["Dalaran"] = true,
+	["Dragonblight"] = true,
+	["Grizzly Hills"] = true,
+	["Howling Fjord"] = true,
+	["Icecrown"] = true,
+	["Wintergrasp"] = true,
+	["Sholazar Basin"] = true,
+	["The Storm Peaks"] = true,
+	["Zul'Drak"] = true,
+	
+	["Azjol-Nerub"] = true,
+	["Chamber of Aspects"] = true,
+	["Drak'Tharon Keep"] = true,
+	["Gundrak"] = true,
+	["Halls of Stone"] = true,
+	["Halls of Lightning"] = true,
+	["The Eye of Eternity"] = true,
+	["The Nexus"] = true,
+	["The Oculus"] = true,
+	["The Violet Hold"] = true,
+	["Ulduar"] = true, --Site seem uncertain on the name
+	["Utgarde Keep"] = true,
+	["Utgarde Pinnacle"] = true,
+	["Stratholme Past"] = true,
 }
 
 if GAME_LOCALE == "enUS" then
@@ -1300,6 +1341,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Azeroth"] = "아제로스",
 		["Eastern Kingdoms"] = "동부 왕국",
 		["Kalimdor"] = "칼림도어",
+		["Northrend"] = "노스랜드",
 		["Outland"] = "아웃랜드",
 		["Cosmic map"] = "세계 지도",
 
@@ -1320,6 +1362,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Blackwing Lair"] = "검은날개 둥지",
 		["Blasted Lands"] = "저주받은 땅",
 		["Booty Bay"] = "무법항",
+		["Borean Tundra"] = "북풍의 땅",
 		["Burning Steppes"] = "불타는 평원",
 		["Darkshore"] = "어둠의 해안",
 		["Darnassus"] = "다르나서스",
@@ -1331,6 +1374,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Dire Maul (East)"] = "혈투의 전장 동부",
 		["Dire Maul (West)"] = "혈투의 전장 서부",
 		["Dire Maul (North)"] = "혈투의 전장 북부",
+		["Dragonblight"] = "용의 안식처",
 		["Dun Morogh"] = "던 모로",
 		["Durotar"] = "듀로타",
 		["Duskwood"] = "그늘숲",
@@ -1345,13 +1389,17 @@ elseif GAME_LOCALE == "koKR" then
 		["Gates of Ahn'Qiraj"] = "안퀴라즈 성문",
 		["Gnomeregan"] = "놈리건",
 		["The Great Sea"] = "대해",
+		["Grizzly Hills"] = "회색 구릉지",
 		["Grom'gol Base Camp"] = "그롬골 주둔지",
 		["Hall of Legends"] = "전설의 전당",
 		["Hillsbrad Foothills"] = "힐스브래드 구릉지",
+		["Howling Fjord"] = "울부짖는 협만",
 		["The Hinterlands"] = "동부 내륙지",
 		["Hyjal"] = "하이잘",
 		["Hyjal Summit"] = "하이잘 정상",
+		["Icecrown"] = "얼음왕관",
 		["Ironforge"] = "아이언포지",
+		["Lake Wintergrasp"] = "겨울손아귀 호수",
 		["Loch Modan"] = "모단 호수",
 		["Lower Blackrock Spire"] = "검은바위 첨탑 하층",
 		["Maraudon"] = "마라우돈",
@@ -1372,11 +1420,13 @@ elseif GAME_LOCALE == "koKR" then
 		["Scholomance"] = "스칼로맨스",
 		["Searing Gorge"] = "이글거리는 협곡",
 		["Shadowfang Keep"] = "그림자송곳니 성채",
+		["Sholazar Basin"] = "숄라자르 분지",
 		["Silithus"] = "실리더스",
 		["Silverpine Forest"] = "은빛소나무 숲",
 		["The Stockade"] = "스톰윈드 지하감옥",
 		["Stonard"] = "스토나드",
 		["Stonetalon Mountains"] = "돌발톱 산맥",
+		["The Storm Peaks"] = "폭풍우 봉우리",
 		["Stormwind City"] = "스톰윈드",
 		["Stormwind"] = "스톰윈드",
 		["Stranglethorn Vale"] = "가시덤불 골짜기",
@@ -1400,6 +1450,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Westfall"] = "서부 몰락지대",
 		["Wetlands"] = "저습지",
 		["Winterspring"] = "여명의 설원",
+		["Zul'Drak"] = "줄드락",
 		["Zul'Farrak"] = "줄파락",
 		["Zul'Gurub"] = "줄구룹",
 
@@ -1492,6 +1543,37 @@ elseif GAME_LOCALE == "koKR" then
 
 		["Tirisfal"] = "티리스팔",
 		["Sunken Temple"] = "가라앉은 사원",
+		
+		-- Wrath of the Lich King - All will need translations
+	
+		-- Subzones used for displaying instances.
+		
+		["Borean Tundra"] = "북풍의 땅",
+		["Crystalsong Forest"] = "수정노래 숲",
+		["Dalaran"] = "달라란",
+		["Dragonblight"] = "용의 안식처",
+		["Grizzly Hills"] = "회색 구릉지",
+		["Howling Fjord"] = "울부짖는 협만",
+		["Icecrown"] = "얼음왕관",
+		["Wintergrasp"] = "겨울손아귀",
+		["Sholazar Basin"] = "숄라자르 분지",
+		["The Storm Peaks"] = "폭풍우 봉우리",
+		["Zul'Drak"] = "줄드락",
+	
+		["Azjol-Nerub"] = "아졸네룹",
+		["Chamber of Aspects"] = "위상의 방",	-- check
+		["Drak'Tharon Keep"] = "드랙타론 요새",
+		["Gundrak"] = "군드락",
+		["Halls of Stone"] = "돌의 전당",
+		["Halls of Lightning"] = "전격의 전당",	-- check
+		--["The Eye of Eternity"] = true,	-- check
+		["The Nexus"] = "마력의 탑",
+		["The Oculus"] = "마력의 눈",
+		--["The Violet Hold"] = true,	-- check
+		["Ulduar"] = "울두아", --Site seem uncertain on the name
+		["Utgarde Keep"] = "우트가르드 요새",
+		["Utgarde Pinnacle"] = "우트가르드 첨탑",
+		--["Stratholme Past"] = true,	-- check
 	}
 elseif GAME_LOCALE == "esES" then
 	lib:SetCurrentTranslations {
@@ -2090,3 +2172,4 @@ elseif GAME_LOCALE == "ruRU" then
 else
 	error(("%s: Locale %q not supported"):format(MAJOR_VERSION, GAME_LOCALE))
 end
+

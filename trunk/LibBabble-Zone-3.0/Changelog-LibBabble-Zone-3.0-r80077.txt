@@ -1,0 +1,86 @@
+------------------------------------------------------------------------
+r80077 | 7destiny | 2008-08-09 23:31:50 -0400 (Sat, 09 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Fixed typo
+------------------------------------------------------------------------
+r80075 | 7destiny | 2008-08-09 23:24:11 -0400 (Sat, 09 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- koKR Update
+------------------------------------------------------------------------
+r80068 | ReSa | 2008-08-09 21:16:46 -0400 (Sat, 09 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- More spelling mistakes
+------------------------------------------------------------------------
+r80067 | ReSa | 2008-08-09 20:56:08 -0400 (Sat, 09 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Added additional WoLK zones/instances
+- Fix spelling mistakes
+------------------------------------------------------------------------
+r80057 | ulic | 2008-08-09 19:44:38 -0400 (Sat, 09 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Added a few a missed before and place holders for all languages
+------------------------------------------------------------------------
+r80054 | ulic | 2008-08-09 19:14:51 -0400 (Sat, 09 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Added some WotLK zones & instances.
+------------------------------------------------------------------------
+r78968 | sayclub | 2008-07-23 03:14:33 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- koKR Update
+------------------------------------------------------------------------
+r78967 | nightik | 2008-07-23 02:20:33 -0400 (Wed, 23 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- update ruRU locale
+------------------------------------------------------------------------
+r78561 | nightik | 2008-07-16 12:25:08 -0400 (Wed, 16 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- ruRU locale update
+------------------------------------------------------------------------
+r78490 | Cybersea | 2008-07-15 11:54:36 -0400 (Tue, 15 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- ruRU update
+------------------------------------------------------------------------
+r78474 | Cybersea | 2008-07-15 09:35:26 -0400 (Tue, 15 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- updated ruRU localization
+------------------------------------------------------------------------
+r78342 | gchudov | 2008-07-13 12:02:38 -0400 (Sun, 13 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- ruRU localization
+------------------------------------------------------------------------

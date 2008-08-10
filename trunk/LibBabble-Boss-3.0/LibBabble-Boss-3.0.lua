@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 79925 $
+Revision: $Rev: 80078 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 79925 $"
+local MINOR_VERSION = "$Revision: 80078 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -457,11 +457,30 @@ lib:SetBaseTranslations {
 	["The Illidari Council"] = true,
 	["Veras Darkshadow"] = true,
 
+--Borean Tundra
+--The Eye of Eternity
+	["Malygos"] = true,
+--The Nexus
+	["Anomalus"] = true,
+	["Grand Magus Telestra"] = true,
+	["Keristrasza"] = true,
+	["Ormorok the Tree-Shaper"] = true,
+--The Oculus
+	["Drakos the Interrogator"] = true,
+	["Ley-Guardian Eregos"] = true,
+	["Mage-Lord Urom"] = true,
+	["Varos Cloudstrider"] = true,
+
 --Caverns of Time
 --Old Hillsbrad Foothills
 	["Captain Skarloc"] = true,
 	["Epoch Hunter"] = true,
 	["Lieutenant Drake"] = true,
+--Stratholme
+	["Meathook"] = true,
+	["Chrono-Lord Epoch"] = true,
+	["Mal'Ganis"] = true,
+	["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 	["Aeonus"] = true,
 	["Chrono Lord Deja"] = true,
@@ -530,6 +549,14 @@ lib:SetBaseTranslations {
 	["Tendris Warpwood"] = true,
 	["Tsu'zee"] = true,
 
+--Dragonblight
+--Azjol-Nerub
+	["Anub'arak"] = true,
+	["Hadronox"] = true,
+	["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
+
 --Gnomeregan
 	["Crowd Pummeler 9-60"] = true,
 	["Dark Iron Ambassador"] = true,
@@ -538,6 +565,13 @@ lib:SetBaseTranslations {
 	["Mekgineer Thermaplugg"] = true,
 	["Techbot"] = true,
 	["Viscous Fallout"] = true,
+
+--Grizzly Hills
+--Drak�tharon Keep
+	["King Dred"] = true,
+	["Novos the Summoner"] = true,
+	["The Prophet Tharon'ja"] = true,
+	["Trollgore"] = true,
 
 --Gruul's Lair
 	["Blindeye the Seer"] = true,
@@ -566,6 +600,19 @@ lib:SetBaseTranslations {
 	["Grand Warlock Nethekurse"] = true,
 	["Warbringer O'mrogg"] = true,
 	["Warchief Kargath Bladefist"] = true,
+
+--Howling Fjord
+--Utgarde Keep
+	["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+	["Dalronn the Controller"] = true,
+	["Ingvar the Plunderer"] = true,
+	["Prince Keleseth"] = true,
+	["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+	["Skadi the Ruthless"] = true,
+	["King Ymiron"] = true,
+	["Svala Sorrowgrave"] = true,
+	["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 	["Anetheron"] = true,
@@ -1106,11 +1153,30 @@ elseif GAME_LOCALE == "deDE" then
 		["The Illidari Council"] = "Rat der Illidari",
 		["Veras Darkshadow"] = "Veras Schwarzschatten",
 
+--Borean Tundra
+--The Eye of Eternity
+		--["Malygos"] = true,
+--The Nexus
+		--["Anomalus"] = true,
+		--["Grand Magus Telestra"] = true,
+		--["Keristrasza"] = true,
+		--["Ormorok the Tree-Shaper"] = true,
+--The Oculus
+		--["Drakos the Interrogator"] = true,
+		--["Ley-Guardian Eregos"] = true,
+		--["Mage-Lord Urom"] = true,
+		--["Varos Cloudstrider"] = true,		
+
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "Kapitän Skarloc",
 		["Epoch Hunter"] = "Epochenjäger",
 		["Lieutenant Drake"] = "Leutnant Drach",
+--Stratholme
+		--["Meathook"] = true,
+		--["Chrono-Lord Epoch"] = true,
+		--["Mal'Ganis"] = true,
+		--["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 		["Aeonus"] = "Aeonus",
 		["Chrono Lord Deja"] = "Chronolord Deja",
@@ -1179,6 +1245,14 @@ elseif GAME_LOCALE == "deDE" then
 		["Tendris Warpwood"] = "Tendris Wucherborke",
 		["Tsu'zee"] = "Tsu'zee",
 
+--Dragonblight
+--Azjol-Nerub
+		--["Anub'arak"] = true,
+		--["Hadronox"] = true,
+		--["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
+
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Meuteverprügler 9-60",
 		["Dark Iron Ambassador"] = "Botschafter der Dunkeleisenzwerge",
@@ -1187,6 +1261,13 @@ elseif GAME_LOCALE == "deDE" then
 		["Mekgineer Thermaplugg"] = "Robogenieur Thermadraht",
 		["Techbot"] = "Techbot",
 		["Viscous Fallout"] = "Verflüssigte Ablagerung",
+
+--Grizzly Hills
+--Drak�tharon Keep
+		--["King Dred"] = true,
+		--["Novos the Summoner"] = true,
+		--["The Prophet Tharon'ja"] = true,
+		--["Trollgore"] = true,
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "Blindauge der Seher",
@@ -1215,6 +1296,19 @@ elseif GAME_LOCALE == "deDE" then
 		["Grand Warlock Nethekurse"] = "Großhexenmeister Nethekurse",
 		["Warbringer O'mrogg"] = "Kriegshetzer O'mrogg",
 		["Warchief Kargath Bladefist"] = "Kriegshäuptling Kargath Messerfaust",
+
+--Howling Fjord
+--Utgarde Keep
+		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		--["Dalronn the Controller"] = true,
+		--["Ingvar the Plunderer"] = true,
+		--["Prince Keleseth"] = true,
+		--["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+		--["Skadi the Ruthless"] = true,
+		--["King Ymiron"] = true,
+		--["Svala Sorrowgrave"] = true,
+		--["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 		["Anetheron"] = "Anetheron",
@@ -1752,11 +1846,30 @@ elseif GAME_LOCALE == "frFR" then
 		["The Illidari Council"] = "Le conseil illidari",
 		["Veras Darkshadow"] = "Veras Ombrenoir",
 
+--Borean Tundra
+--The Eye of Eternity
+		--["Malygos"] = true,
+--The Nexus
+		--["Anomalus"] = true,
+		--["Grand Magus Telestra"] = true,
+		--["Keristrasza"] = true,
+		--["Ormorok the Tree-Shaper"] = true,
+--The Oculus
+		--["Drakos the Interrogator"] = true,
+		--["Ley-Guardian Eregos"] = true,
+		--["Mage-Lord Urom"] = true,
+		--["Varos Cloudstrider"] = true,
+
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "Capitaine Skarloc",
 		["Epoch Hunter"] = "Chasseur d'époques",
 		["Lieutenant Drake"] = "Lieutenant Drake",
+--Stratholme
+		--["Meathook"] = true,
+		--["Chrono-Lord Epoch"] = true,
+		--["Mal'Ganis"] = true,
+		--["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 		["Aeonus"] = "Aeonus",
 		["Chrono Lord Deja"] = "Chronoseigneur Déjà",
@@ -1825,6 +1938,14 @@ elseif GAME_LOCALE == "frFR" then
 		["Tendris Warpwood"] = "Tendris Crochebois",
 		["Tsu'zee"] = "Tsu'zee",
 
+--Dragonblight
+--Azjol-Nerub
+		--["Anub'arak"] = true,
+		--["Hadronox"] = true,
+		--["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
+
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Faucheur de foule 9-60",
 		["Dark Iron Ambassador"] = "Ambassadeur Sombrefer",
@@ -1833,6 +1954,13 @@ elseif GAME_LOCALE == "frFR" then
 		["Mekgineer Thermaplugg"] = "Mekgénieur Thermojoncteur",
 		["Techbot"] = "Techbot",
 		["Viscous Fallout"] = "Retombée visqueuse",
+
+--Grizzly Hills
+--Drak�tharon Keep
+		--["King Dred"] = true,
+		--["Novos the Summoner"] = true,
+		--["The Prophet Tharon'ja"] = true,
+		--["Trollgore"] = true,
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "Oeillaveugle le Voyant",
@@ -1861,6 +1989,19 @@ elseif GAME_LOCALE == "frFR" then
 		["Grand Warlock Nethekurse"] = "Grand démoniste Néanathème",
 		["Warbringer O'mrogg"] = "Porteguerre O'mrogg",
 		["Warchief Kargath Bladefist"] = "Chef de guerre Kargath Lamepoing",
+
+--Howling Fjord
+--Utgarde Keep
+		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		--["Dalronn the Controller"] = true,
+		--["Ingvar the Plunderer"] = true,
+		--["Prince Keleseth"] = true,
+		--["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+		--["Skadi the Ruthless"] = true,
+		--["King Ymiron"] = true,
+		--["Svala Sorrowgrave"] = true,
+		--["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 		["Anetheron"] = "Anetheron",
@@ -2398,11 +2539,30 @@ elseif GAME_LOCALE == "zhCN" then
 		["The Illidari Council"] = "伊利达雷议会",
 		["Veras Darkshadow"] = "维尔莱斯·深影",
 
+--Borean Tundra
+--The Eye of Eternity
+		--["Malygos"] = true,
+--The Nexus
+		--["Anomalus"] = true,
+		--["Grand Magus Telestra"] = true,
+		--["Keristrasza"] = true,
+		--["Ormorok the Tree-Shaper"] = true,
+--The Oculus
+		--["Drakos the Interrogator"] = true,
+		--["Ley-Guardian Eregos"] = true,
+		--["Mage-Lord Urom"] = true,
+		--["Varos Cloudstrider"] = true,
+
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "斯卡洛克上尉",
 		["Epoch Hunter"] = "时空猎手",
 		["Lieutenant Drake"] = "德拉克中尉",
+--Stratholme
+		--["Meathook"] = true,
+		--["Chrono-Lord Epoch"] = true,
+		--["Mal'Ganis"] = true,
+		--["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 		["Aeonus"] = "埃欧努斯",
 		["Chrono Lord Deja"] = "时空领主德亚",
@@ -2471,6 +2631,14 @@ elseif GAME_LOCALE == "zhCN" then
 		["Tendris Warpwood"] = "特迪斯·扭木",
 		["Tsu'zee"] = "苏斯",
 
+--Dragonblight
+--Azjol-Nerub
+		--["Anub'arak"] = true,
+		--["Hadronox"] = true,
+		--["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
+
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "群体打击者9-60",
 		["Dark Iron Ambassador"] = "黑铁大师",
@@ -2479,6 +2647,13 @@ elseif GAME_LOCALE == "zhCN" then
 		["Mekgineer Thermaplugg"] = "麦克尼尔·瑟玛普拉格",
 		["Techbot"] = "尖端机器人",
 		["Viscous Fallout"] = "粘性辐射尘",
+
+--Grizzly Hills
+--Drak�tharon Keep
+		--["King Dred"] = true,
+		--["Novos the Summoner"] = true,
+		--["The Prophet Tharon'ja"] = true,
+		--["Trollgore"] = true,
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "盲眼先知",
@@ -2507,6 +2682,19 @@ elseif GAME_LOCALE == "zhCN" then
 		["Grand Warlock Nethekurse"] = "高阶术士奈瑟库斯",
 		["Warbringer O'mrogg"] = "战争使者沃姆罗格",
 		["Warchief Kargath Bladefist"] = "酋长卡加斯·刃拳",
+
+--Howling Fjord
+--Utgarde Keep
+		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		--["Dalronn the Controller"] = true,
+		--["Ingvar the Plunderer"] = true,
+		--["Prince Keleseth"] = true,
+		--["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+		--["Skadi the Ruthless"] = true,
+		--["King Ymiron"] = true,
+		--["Svala Sorrowgrave"] = true,
+		--["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 		["Anetheron"] = "安纳塞隆",
@@ -3044,11 +3232,30 @@ elseif GAME_LOCALE == "zhTW" then
 		["The Illidari Council"] = "伊利達瑞議事",
 		["Veras Darkshadow"] = "維拉斯·深影",
 
+--Borean Tundra
+--The Eye of Eternity
+		--["Malygos"] = true,
+--The Nexus
+		--["Anomalus"] = true,
+		--["Grand Magus Telestra"] = true,
+		--["Keristrasza"] = true,
+		--["Ormorok the Tree-Shaper"] = true,
+--The Oculus
+		--["Drakos the Interrogator"] = true,
+		--["Ley-Guardian Eregos"] = true,
+		--["Mage-Lord Urom"] = true,
+		--["Varos Cloudstrider"] = true,
+
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "史卡拉克上尉",
 		["Epoch Hunter"] = "紀元狩獵者",
 		["Lieutenant Drake"] = "中尉崔克",
+--Stratholme
+		--["Meathook"] = true,
+		--["Chrono-Lord Epoch"] = true,
+		--["Mal'Ganis"] = true,
+		--["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 		["Aeonus"] = "艾奧那斯",
 		["Chrono Lord Deja"] = "時間領主迪賈",
@@ -3118,6 +3325,14 @@ elseif GAME_LOCALE == "zhTW" then
 		["Tendris Warpwood"] = "特迪斯·扭木",
 		["Tsu'zee"] = "蘇斯",
 
+--Dragonblight
+--Azjol-Nerub
+		--["Anub'arak"] = true,
+		--["Hadronox"] = true,
+		--["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
+
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "群體打擊者9-60",
 		["Dark Iron Ambassador"] = "黑鐵大使",
@@ -3126,6 +3341,13 @@ elseif GAME_LOCALE == "zhTW" then
 		["Mekgineer Thermaplugg"] = "麥克尼爾·瑟瑪普拉格",
 		["Techbot"] = "尖端機器人",
 		["Viscous Fallout"] = "粘性輻射塵",
+
+--Grizzly Hills
+--Drak�tharon Keep
+		--["King Dred"] = true,
+		--["Novos the Summoner"] = true,
+		--["The Prophet Tharon'ja"] = true,
+		--["Trollgore"] = true,
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "先知盲眼",
@@ -3154,6 +3376,19 @@ elseif GAME_LOCALE == "zhTW" then
 		["Grand Warlock Nethekurse"] = "大術士奈德克斯",
 		["Warbringer O'mrogg"] = "戰爭製造者·歐姆拉格",
 		["Warchief Kargath Bladefist"] = "大酋長卡加斯·刃拳",
+
+--Howling Fjord
+--Utgarde Keep
+		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		--["Dalronn the Controller"] = true,
+		--["Ingvar the Plunderer"] = true,
+		--["Prince Keleseth"] = true,
+		--["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+		--["Skadi the Ruthless"] = true,
+		--["King Ymiron"] = true,
+		--["Svala Sorrowgrave"] = true,
+		--["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 		["Anetheron"] = "安納塞隆",
@@ -3691,11 +3926,30 @@ elseif GAME_LOCALE == "koKR" then
 		["The Illidari Council"] = "일리다리 의회", -- check
 		["Veras Darkshadow"] = "베라스 다크섀도",
 
+--Borean Tundra
+--The Eye of Eternity
+		["Malygos"] = "말리고스",
+--The Nexus
+		["Anomalus"] = "아노말루스",
+		["Grand Magus Telestra"] = "대학자 텔레스트라",
+		["Keristrasza"] = "케리스트라자",
+		["Ormorok the Tree-Shaper"] = "정원사 오르모로크",
+--The Oculus
+		--["Drakos the Interrogator"] = true,
+		--["Ley-Guardian Eregos"] = true,
+		--["Mage-Lord Urom"] = true,
+		--["Varos Cloudstrider"] = true,
+
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "경비대장 스칼록",
 		["Epoch Hunter"] = "시대의 사냥꾼",
 		["Lieutenant Drake"] = "부관 드레이크",
+--Stratholme
+		--["Meathook"] = true,
+		--["Chrono-Lord Epoch"] = true,
+		--["Mal'Ganis"] = true,
+		--["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 		["Aeonus"] = "아에누스",
 		["Chrono Lord Deja"] = "시간의 군주 데자",
@@ -3764,6 +4018,14 @@ elseif GAME_LOCALE == "koKR" then
 		["Tendris Warpwood"] = "굽이나무 텐드리스",
 		["Tsu'zee"] = "츄지",
 
+--Dragonblight
+--Azjol-Nerub
+		--["Anub'arak"] = true,
+		--["Hadronox"] = true,
+		--["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
+
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "고철 압축기 9-60",
 		["Dark Iron Ambassador"] = "검은무쇠단 사절",
@@ -3772,6 +4034,13 @@ elseif GAME_LOCALE == "koKR" then
 		["Mekgineer Thermaplugg"] = "멕기니어 텔마플러그",
 		["Techbot"] = "첨단로봇",
 		["Viscous Fallout"] = "방사성 폐기물",
+
+--Grizzly Hills
+--Drak�tharon Keep
+		--["King Dred"] = true,
+		--["Novos the Summoner"] = true,
+		--["The Prophet Tharon'ja"] = true,
+		--["Trollgore"] = true,
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "현자 블라인드아이",
@@ -3800,6 +4069,19 @@ elseif GAME_LOCALE == "koKR" then
 		["Grand Warlock Nethekurse"] = "대흑마법사 네더쿠르스",
 		["Warbringer O'mrogg"] = "돌격대장 오므로그",
 		["Warchief Kargath Bladefist"] = "대족장 카르가스 블레이드피스트",
+
+--Howling Fjord
+--Utgarde Keep
+		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		["Dalronn the Controller"] = "감시자 달론",
+		["Ingvar the Plunderer"] = "약탈자 앙그바르",
+		["Prince Keleseth"] = "공작 켈레세스",
+		--["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+		--["Skadi the Ruthless"] = true,
+		--["King Ymiron"] = true,
+		--["Svala Sorrowgrave"] = true,
+		--["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 		["Anetheron"] = "아네테론",
@@ -4337,11 +4619,30 @@ elseif GAME_LOCALE == "esES" then
 		["The Illidari Council"] = "El concilio Illidari",
 		["Veras Darkshadow"] = "Veras Darkshadow",
 
+--Borean Tundra
+--The Eye of Eternity
+		--["Malygos"] = true,
+--The Nexus
+		--["Anomalus"] = true,
+		--["Grand Magus Telestra"] = true,
+		--["Keristrasza"] = true,
+		--["Ormorok the Tree-Shaper"] = true,
+--The Oculus
+		--["Drakos the Interrogator"] = true,
+		--["Ley-Guardian Eregos"] = true,
+		--["Mage-Lord Urom"] = true,
+		--["Varos Cloudstrider"] = true,
+
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "Capitán Skarloc",
 		["Epoch Hunter"] = "Cazador de eras",
 		["Lieutenant Drake"] = "Teniente Draco",
+--Stratholme
+		--["Meathook"] = true,
+		--["Chrono-Lord Epoch"] = true,
+		--["Mal'Ganis"] = true,
+		--["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 		["Aeonus"] = "Aeonus",
 		["Chrono Lord Deja"] = "Cronolord Deja",
@@ -4409,6 +4710,14 @@ elseif GAME_LOCALE == "esES" then
 		["Tendris Warpwood"] = "Tendris Madeguerra",
 		["Tsu'zee"] = "Tsu'zee",
 
+--Dragonblight
+--Azjol-Nerub
+		--["Anub'arak"] = true,
+		--["Hadronox"] = true,
+		--["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
+
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Gopleamasa 9-60",
 		["Dark Iron Ambassador"] = "Embajador Hierro Negro",
@@ -4417,6 +4726,13 @@ elseif GAME_LOCALE == "esES" then
 		["Mekgineer Thermaplugg"] = "Mekigeniero Termochufe",
 		["Techbot"] = "Tecnobot",
 		["Viscous Fallout"] = "Radiactivo viscoso",
+
+--Grizzly Hills
+--Drak�tharon Keep
+		--["King Dred"] = true,
+		--["Novos the Summoner"] = true,
+		--["The Prophet Tharon'ja"] = true,
+		--["Trollgore"] = true,
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "Ciego el Vidente",
@@ -4445,6 +4761,19 @@ elseif GAME_LOCALE == "esES" then
 		["Grand Warlock Nethekurse"] = "Brujo supremo Malbisal",
 		["Warbringer O'mrogg"] = "Belisario O'mrogg",
 		["Warchief Kargath Bladefist"] = "Jefe de Guerra Garrafilada", -- check
+
+--Howling Fjord
+--Utgarde Keep
+		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		--["Dalronn the Controller"] = true,
+		--["Ingvar the Plunderer"] = true,
+		--["Prince Keleseth"] = true,
+		--["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+		--["Skadi the Ruthless"] = true,
+		--["King Ymiron"] = true,
+		--["Svala Sorrowgrave"] = true,
+		--["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 		["Anetheron"] = "Anetheron",
@@ -4839,11 +5168,11 @@ elseif GAME_LOCALE == "ruRU" then
 --Ahn'Qiraj
 		["Anubisath Defender"] = "Защитник-анубисат",
 		["Battleguard Sartura"] = "Боевой страж Сартура",
-		["C'Thun"] = "Ка-Тун",
+		["C'Thun"] = "К'Тун",
 		["Emperor Vek'lor"] = "Император Век'лор",
 		["Emperor Vek'nilash"] = "Император Век'нилаш",
 		["Eye of C'Thun"] = "Око Ка-Туна",
-		["Fankriss the Unyielding"] = "Фанкрисс Непобедимый",
+		["Fankriss the Unyielding"] = "Фанкрисс Неприклонный",
 		["Lord Kri"] = "Лорд Кри",
 		["Ouro"] = "Оуро",
 		["Princess Huhuran"] = "Принцесса Хухуран",
@@ -4852,7 +5181,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["The Prophet Skeram"] = "Пророк Скерам",
 		["The Twin Emperors"] = "Близнецы Императора",
 		["Vem"] = "Вем",
-		["Viscidus"] = "Фиброзник",
+		["Viscidus"] = "Нечистотон",
 
 --Auchindoun
 --Auchenai Crypts
@@ -4863,128 +5192,148 @@ elseif GAME_LOCALE == "ruRU" then
 		["Pandemonius"] = "Пандемоний",
 		["Tavarok"] = "Таварок",
 --Shadow Labyrinth
-		["Ambassador Hellmaw"] = "Посланник Адская Глотка",
-		["Blackheart the Inciter"] = "Подстрекатель Черное Сердце",
-		["Grandmaster Vorpil"] = "Гроссмейстер Ворпил",
+		["Ambassador Hellmaw"] = "Посол Гиблочрев",
+		["Blackheart the Inciter"] = "Черносерд Проповедник",
+		["Grandmaster Vorpil"] = "Великий мастер Ворпил",
 		["Murmur"] = "Бормотун",
 --Sethekk Halls
 		["Anzu"] = "Анзу",
-		["Darkweaver Syth"] = "Сит Черноплет",
+		["Darkweaver Syth"] = "Темнопряд Сит",
 		["Talon King Ikiss"] = "Король воронов Айкисс",
 
 --Blackfathom Deeps
-		["Aku'mai"] = "Акумай",
+		["Aku'mai"] = "Аку'май",
 		["Baron Aquanis"] = "Барон Акванис",
 		["Gelihast"] = "Гелихаст",
 		["Ghamoo-ra"] = "Гхаму-ра",
 		["Lady Sarevess"] = "Леди Саревесс",
 		["Old Serra'kis"] = "Старина Серракис",
-		["Twilight Lord Kelris"] = "Сумеречный лорд Келрис",
+		["Twilight Lord Kelris"] = "Повелитель сумрака Келрис",
+		-- ["Lorgus Jett"] = "Лоргус Джетт", -- id 12902
 
 --Blackrock Depths
-		["Ambassador Flamelash"] = "Посланник Огнехлыст",
+		["Ambassador Flamelash"] = "Посол Огнехлыст",
 		["Anger'rel"] = "Гневрел",
-		["Anub'shiah"] = "Ануб'сиах",
-		["Bael'Gar"] = "Баэл-Гар",
-		["Chest of The Seven"] = "Сhest of The Seven",
+		["Anub'shiah"] = "Ануб'шиа",
+		["Bael'Gar"] = "Бейл'Гор",
+		["Chest of The Seven"] = "Сундук Смертных",
 		["Doom'rel"] = "Думрел",
 		["Dope'rel"] = "Наиглесиас",
 		["Emperor Dagran Thaurissan"] = "Император Дагран Таурисан",
 		["Eviscerator"] = "Потрошитель",
-		["Fineous Darkvire"] = "Финей Темная Сила",
+		["Fineous Darkvire"] = "Точень Темнострой",
 		["General Angerforge"] = "Генерал Кузня Гнева",
 		["Gloom'rel"] = "Глумрел",
 		["Golem Lord Argelmach"] = "Повелитель големов Аргелмах",
 		["Gorosh the Dervish"] = "Горош Дервиш",
 		["Grizzle"] = "Гриззл",
 		["Hate'rel"] = "Хейтрел",
-		["Hedrum the Creeper"] = "Хедрум-ползун",
-		["High Interrogator Gerstahn"] = "Главный следователь Герстан",
-		["High Priestess of Thaurissan"] = "Верховная жрица Таурисана",
-		["Houndmaster Grebmar"] = "Псарь Гребмара",
-		["Hurley Blackbreath"] = "Харли Темнодув",
+		["Hedrum the Creeper"] = "Хедрум Ползун",
+		["High Interrogator Gerstahn"] = "Верховный дознаватель Герштан",
+		["High Priestess of Thaurissan"] = "Верховная жрица Тауриссана",
+		["Houndmaster Grebmar"] = "Псарь Гребмар",
+		["Hurley Blackbreath"] = "Харли Пьяглдых",
 		["Lord Incendius"] = "Лорд Опалитель",
-		["Lord Roccor"] = "Владыка Роккор",
+		["Lord Roccor"] = "Лорд Роккор",
 		["Magmus"] = "Магмус",
-		["Ok'thor the Breaker"] = "Октор Крушитель",
+		["Ok'thor the Breaker"] = "Ок'тор Разрушитель",
 		["Panzor the Invincible"] = "Панцер Непобедимый",
-		["Phalanx"] = "Фаланга",
-		["Plugger Spazzring"] = "Стукарь Дурозвон",
-		["Princess Moira Bronzebeard"] = "Принцесса Мойра Золотая Борода",
-		["Pyromancer Loregrain"] = "Пиромант Лоргрейн",
-		["Ribbly Screwspigot"] = "Риббли Винтокран",
-		["Seeth'rel"] = "Сит-рел",
-		["The Seven Dwarves"] = "The Seven Dwarves",
+		["Phalanx"] = "Фаланкс",
+		["Plugger Spazzring"] = "Штоппор Наливалс",
+		["Princess Moira Bronzebeard"] = "Принцесса Мойра Бронзобород",
+		["Pyromancer Loregrain"] = "Пироман Зерно Мудрости",
+		["Ribbly Screwspigot"] = "Риббли Крутипроб",
+		["Seeth'rel"] = "Сит'рел",
+		["The Seven Dwarves"] = "Темные хранители",
 		["Verek"] = "Верек",
 		["Vile'rel"] = "Вил-рел",
-		["Warder Stilgiss"] = "Надсмотрщик Стилгисс",
+		["Warder Stilgiss"] = "Тюремщик Стилгисс",
 
 --Blackrock Spire
 --Lower
-		["Bannok Grimaxe"] = "Баннок Мрачный Топор",
+		["Bannok Grimaxe"] = "Баннок Люторез",
 		["Burning Felguard"] = "Пылающий страж Скверны",
 		["Crystal Fang"] = "Хрустальный Клык",
-		["Ghok Bashguud"] = "Гок Башгууд",
+		["Ghok Bashguud"] = "Гок Крепкобив",
 		["Gizrul the Slavener"] = "Гизрул Поработитель",
 		["Halycon"] = "Халикон",
 		["Highlord Omokk"] = "Вождь Омокк",
 		["Mor Grayhoof"] = "Мор Серое Копыто",
 		["Mother Smolderweb"] = "Мать Дымная Паутина",
-		["Overlord Wyrmthalak"] = "Повелитель Вурмталак",
-		["Quartermaster Zigris"] = "Квартирмейстер Зигрис",
-		["Shadow Hunter Vosh'gajin"] = "Пленяющая Духов Восгаджин",
-		["Spirestone Battle Lord"] = "Полководец Острого Камня",
-		["Spirestone Butcher"] = "Палач Острого Камня",
-		["Spirestone Lord Magus"] = "Лорд-маг Острого Камня",
-		["Urok Doomhowl"] = "Аррок Роковой Вой",
+		["Overlord Wyrmthalak"] = "Властитель Змейталак",
+		["Quartermaster Zigris"] = "Интендант Зигрис",
+		["Shadow Hunter Vosh'gajin"] = "Темная охотница Вос'гаджин",
+		["Spirestone Battle Lord"] = "Полководец из клана Черной Вершины",
+		["Spirestone Butcher"] = "Мясник из клана Черной Вершины",
+		["Spirestone Lord Magus"] = "Лорд-волхв из клана Черной Вершины",
+		["Urok Doomhowl"] = "Аррок Смертный Вопль",
 		["War Master Voone"] = "Воевода Вун",
 --Upper
 		["General Drakkisath"] = "Генерал Драккисат",
-		["Goraluk Anvilcrack"] = "Горалук Разбитая Наковальня",
+		["Goraluk Anvilcrack"] = "Горалук Треснувшая Наковальня",
 		["Gyth"] = "Гит",
-		["Jed Runewatcher"] = "Джед Руногляд",
-		["Lord Valthalak"] = "Владыка Вальтхалак",
+		["Jed Runewatcher"] = "Джед Руновед",
+		["Lord Valthalak"] = "Лорд Вальтхалак",
 		["Pyroguard Emberseer"] = "Пиростраж Углеглаз",
 		["Solakar Flamewreath"] = "Солакарский огнечервь",
 		["The Beast"] = "Зверь",
-		["Warchief Rend Blackhand"] = "Вождь Ренд Черная Рука",
+		["Warchief Rend Blackhand"] = "Вождь Ренд Чернорук",
 
 --Blackwing Lair
-		["Broodlord Lashlayer"] = "Предводитель драконидов Разящий Бич",
+		["Broodlord Lashlayer"] = "Предводитель драконов Разящий Бич",
 		["Chromaggus"] = "Хроммагус",
-		["Ebonroc"] = "Эбонрок",
-		["Firemaw"] = "Огненное Брюхо",
+		["Ebonroc"] = "Черноскал",
+		["Firemaw"] = "Ошнечрев",
 		["Flamegor"] = "Пламегор",
 		["Grethok the Controller"] = "Греток Регулятор",
 		["Lord Victor Nefarius"] = "Лорд Виктор Нефариус",
 		["Nefarian"] = "Нефариан",
 		["Razorgore the Untamed"] = "Бритвосмерт Неукротимый",
-		["Vaelastrasz the Corrupt"] = "Веластрас Порочный",
+		["Vaelastrasz the Corrupt"] = "Валестраз Порочный",
 
 --Black Temple
-		["Essence of Anger"] = "Сущность гнева",
-		["Essence of Desire"] = "Сущность желания",
-		["Essence of Suffering"] = "Сущность страдания",
-		["Gathios the Shatterer"] = "Гатиос Раскольщик",
+		["Essence of Anger"] = "Воплощение гнева",
+		["Essence of Desire"] = "Воплощение желания",
+		["Essence of Suffering"] = "Воплощение страдания",
+		["Gathios the Shatterer"] = "Гатиос Изувер",
 		["Gurtogg Bloodboil"] = "Гуртогг Кипящая Кровь",
-		["High Nethermancer Zerevor"] = "Верховный хаомант Зеревор",
-		["High Warlord Naj'entus"] = "Великий полководец Наджентус",
-		["Illidan Stormrage"] = "Иллидан Грозовая Ярость",
+		["High Nethermancer Zerevor"] = "Верховный пустомант Зеревор",
+		["High Warlord Naj'entus"] = "Верховный Полководец Надж'ентус",
+		["Illidan Stormrage"] = "Иллидан Ярость Бури",
 		["Illidari Council"] = "Совет Иллидари",
 		["Lady Malande"] = "Леди Маланда",
 		["Mother Shahraz"] = "Матушка Шахраз",
-		["Reliquary of Souls"] = "Reliquary of Souls",
+		["Reliquary of Souls"] = "Гробница душ",
 		["Shade of Akama"] = "Тень Акамы",
 		["Supremus"] = "Супремус",
-		["Teron Gorefiend"] = "Терон Жестокосердный",
+		["Teron Gorefiend"] = "Терон Кровожад",
 		["The Illidari Council"] = "Совет Иллидари",
-		["Veras Darkshadow"] = "Верас Черная Тень",
+		["Veras Darkshadow"] = "Верас Глубокий Мрак",
+
+--Borean Tundra
+--The Eye of Eternity
+		--["Malygos"] = true,
+--The Nexus
+		--["Anomalus"] = true,
+		--["Grand Magus Telestra"] = true,
+		--["Keristrasza"] = true,
+		--["Ormorok the Tree-Shaper"] = true,
+--The Oculus
+		--["Drakos the Interrogator"] = true,
+		--["Ley-Guardian Eregos"] = true,
+		--["Mage-Lord Urom"] = true,
+		--["Varos Cloudstrider"] = true,
 
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "Капитан Скарлок",
-		["Epoch Hunter"] = "Вечный Охотник",
+		["Epoch Hunter"] = "Охотник Вечности",
 		["Lieutenant Drake"] = "Лейтенант Дрейк",
+--Stratholme
+		--["Meathook"] = true,
+		--["Chrono-Lord Epoch"] = true,
+		--["Mal'Ganis"] = true,
+		--["Salramm the Fleshcrafter"] = true,
 --The Black Morass
 		["Aeonus"] = "Эонус",
 		["Chrono Lord Deja"] = "Повелитель времени Дежа",
@@ -4997,13 +5346,13 @@ elseif GAME_LOCALE == "ruRU" then
 		["Coilfang Strider"] = "Странник Спиралезуба",
 		["Fathom-Lord Karathress"] = "Повелитель глубин Каратресс",
 		["Hydross the Unstable"] = "Гидросс Нестабильный",
-		["Lady Vashj"] = "Леди Вайши",
-		["Leotheras the Blind"] = "Леотерас Слепой",
-		["Morogrim Tidewalker"] = "Морогрим Приливный Странник",
+		["Lady Vashj"] = "Леди Вайш",
+		["Leotheras the Blind"] = "Леотерас Слепец",
+		["Morogrim Tidewalker"] = "Морогрим Волноступ",
 		["Pure Spawn of Hydross"] = "Чистое порождение Гидросса",
 		["Shadow of Leotheras"] = "Тень Леотераса",
 		["Tainted Spawn of Hydross"] = "Оскверненное порождение Гидросса",
-		["The Lurker Below"] = "Житель глубин",
+		["The Lurker Below"] = "Скрытень глубин",
 		["Tidewalker Lurker"] = "Приливный крадень",
 --The Slave Pens
 		["Mennu the Betrayer"] = "Менну Предатель",
@@ -5011,15 +5360,15 @@ elseif GAME_LOCALE == "ruRU" then
 		["Rokmar the Crackler"] = "Рокмар Трескун",
 		["Ahune"] = "Ахун",
 --The Steamvault
-		["Hydromancer Thespia"] = "Гидромант Феспия",
-		["Mekgineer Steamrigger"] = "Анжинер Паровая Оснастка",
-		["Warlord Kalithresh"] = "Предводитель Калитреш",
+		["Hydromancer Thespia"] = "Гидромант Теспия",
+		["Mekgineer Steamrigger"] = "Мекжинер Паропуск",
+		["Warlord Kalithresh"] = "Полководец Калитреш",
 --The Underbog
 		["Claw"] = "Коготь",
-		["Ghaz'an"] = "Газан",
-		["Hungarfen"] = "Грибсон",
-		["Overseer Tidewrath"] = "Наблюдатель Гнев Прилива",
-		["Swamplord Musel'ek"] = "Владыка болот Мусил-ик",
+		["Ghaz'an"] = "Газ'ан",
+		["Hungarfen"] = "Голоднец",
+		["Overseer Tidewrath"] = "Наблюдатель Гнев Прилива", -- who is it?
+		["Swamplord Musel'ek"] = "Владыка болота Мусел'ек",
 		["The Black Stalker"] = "Черная Охотница",
 
 --Dire Maul
@@ -5031,40 +5380,55 @@ elseif GAME_LOCALE == "ruRU" then
 		["Alzzin the Wildshaper"] = "Алззин Перевертень",
 		["Hydrospawn"] = "Гидротварь",
 		["Isalien"] = "Изалиен",
-		["Lethtendris"] = "Летендрис",
+		["Lethtendris"] = "Лефтендрис",
 		["Pimgib"] = "Пимгиб",
 		["Pusillin"] = "Пузиллин",
 		["Zevrim Thornhoof"] = "Зеврим Терновое Копыто",
 --North
-		["Captain Kromcrush"] = "Капитан Кром-Крушитель",
-		["Cho'Rush the Observer"] = "Чо-Раш Наблюдатель",
-		["Guard Fengus"] = "Страж Фенгус",
-		["Guard Mol'dar"] = "Страж Мол'дар",
-		["Guard Slip'kik"] = "Страж Слип'кик",
+		["Captain Kromcrush"] = "Капитан Давигром",
+		["Cho'Rush the Observer"] = "Чо'Раш Наблюдатель",
+		["Guard Fengus"] = "Стражник Фенгус",
+		["Guard Mol'dar"] = "Стражник Мол'дар",
+		["Guard Slip'kik"] = "Стражник Слип'кик",
 		["King Gordok"] = "Король Гордок",
 		["Knot Thimblejack's Cache"] = "Knot Thimblejack's Cache",
 		["Stomper Kreeg"] = "Топотун Криг",
 --West
-		["Illyanna Ravenoak"] = "Ильянна Вороний Дуб",
-		["Immol'thar"] = "Иммолтар",
-		["Lord Hel'nurath"] = "Лорд Хелнурат",
+		["Illyanna Ravenoak"] = "Иллиана Воронья Ольха",
+		["Immol'thar"] = "Бессмер'тер",
+		["Lord Hel'nurath"] = "Лорд Хел'нурат",
 		["Magister Kalendris"] = "Магистр Календрис",
 		["Prince Tortheldrin"] = "Принц Тортелдрин",
-		["Tendris Warpwood"] = "Тендрис Кривое Дерево",
-		["Tsu'zee"] = "Цу-зи",
+		["Tendris Warpwood"] = "Тендрис Криводрев",
+		["Tsu'zee"] = "Цу'зи",
+
+--Dragonblight
+--Azjol-Nerub
+		--["Anub'arak"] = true,
+		--["Hadronox"] = true,
+		--["Krik'thir the Gatewatcher"] = true,
+--Chamber of Aspects
+--Naxxramas
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Толпогон 9-60",
-		["Dark Iron Ambassador"] = "Посол Темной Стали",
-		["Electrocutioner 6000"] = "Электроразитель-6000",
+		["Dark Iron Ambassador"] = "Посол из клана Черного Железа",
+		["Electrocutioner 6000"] = "Электрошокер 6000",
 		["Grubbis"] = "Грязнюк",
-		["Mekgineer Thermaplugg"] = "Анжинер Термоштепсель",
-		["Techbot"] = "Технобот",
-		["Viscous Fallout"] = "Липкое загрязнение",
+		["Mekgineer Thermaplugg"] = "Мекжинер Термоштепсель",
+		["Techbot"] = "Техбот",
+		["Viscous Fallout"] = "Липкая муть",
+
+--Grizzly Hills
+--Drak�tharon Keep
+		--["King Dred"] = true,
+		--["Novos the Summoner"] = true,
+		--["The Prophet Tharon'ja"] = true,
+		--["Trollgore"] = true,
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "Слепоглаз Провидец",
-		["Gruul the Dragonkiller"] = "Груул Драконоубийца",
+		["Gruul the Dragonkiller"] = "Груул Драконобой",
 		["High King Maulgar"] = "Король Молгар",
 		["Kiggler the Crazed"] = "Кигглер Безумный",
 		["Krosh Firehand"] = "Крош Огненная Рука",
@@ -5079,16 +5443,29 @@ elseif GAME_LOCALE == "ruRU" then
 		["Watchkeeper Gargolmar"] = "Начальник стражи Гарголмар",
 --Magtheridon's Lair
 		["Hellfire Channeler"] = "Заклинатель Ярого Пламени",
-		["Magtheridon"] = "Магеридон",
+		["Magtheridon"] = "Магтеридон",
 --The Blood Furnace
 		["Broggok"] = "Броггок",
-		["Keli'dan the Breaker"] = "Келидан разрушитель",
-		["The Maker"] = "Созидатель",
+		["Keli'dan the Breaker"] = "Кели'дан Разрушитель",
+		["The Maker"] = "Мастер",
 --The Shattered Halls
 		["Blood Guard Porung"] = "Кровавый страж Порунг",
-		["Grand Warlock Nethekurse"] = "Великий чернокнижник Черное Проклятие",
-		["Warbringer O'mrogg"] = "Вестник войны Омрогг",
-		["Warchief Kargath Bladefist"] = "Вождь Каргат Стальная Рука",
+		["Grand Warlock Nethekurse"] = "Главный чернокнижник Пустоклят",
+		["Warbringer O'mrogg"] = "О'мрогг Завоеватель",
+		["Warchief Kargath Bladefist"] = "Вождь Каргат Острорук",
+
+--Howling Fjord
+--Utgarde Keep
+		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		--["Dalronn the Controller"] = true,
+		--["Ingvar the Plunderer"] = true,
+		--["Prince Keleseth"] = true,
+		--["Skarvald the Constructor"] = true,
+--Utgarde Pinnacle
+		--["Skadi the Ruthless"] = true,
+		--["King Ymiron"] = true,
+		--["Svala Sorrowgrave"] = true,
+		--["Gortok Palehoof"] = true,
 
 --Hyjal Summit
 		["Anetheron"] = "Анетерон",
@@ -5102,16 +5479,16 @@ elseif GAME_LOCALE == "ruRU" then
 		["Attumen the Huntsman"] = "Аттумен Охотник",
 		["Chess Event"] = "Шахматы",
 		["Dorothee"] = "Дороти",
-		["Dust Covered Chest"] = "Dust Covered Chest",
+		["Dust Covered Chest"] = "Пыльный сундук",
 		["Grandmother"] = "Бабушка",
-		["Hyakiss the Lurker"] = "Хиакисс Тенетник",
-		["Julianne"] = "Джульенна",
+		["Hyakiss the Lurker"] = "Хиакисс Скрытень",
+		["Julianne"] = "Джулианна",
 		["Kil'rek"] = "Килрек",
 		["King Llane Piece"] = "King Llane Piece",
-		["Maiden of Virtue"] = "Пресветлая дева",
+		["Maiden of Virtue"] = "Благочистивая дева",
 		["Midnight"] = "Полночь",
 		["Moroes"] = "Мороуз",
-		["Netherspite"] = "Хаотиан Злобный",
+		["Netherspite"] = "Пустогнев",
 		["Nightbane"] = "Ночная Погибель",
 		["Prince Malchezaar"] = "Принц Малчезар",
 		["Restless Skeleton"] = "Недремлющий скелет",
@@ -5119,25 +5496,25 @@ elseif GAME_LOCALE == "ruRU" then
 		["Rokad the Ravager"] = "Рокад Опустошитель",
 		["Romulo & Julianne"] = "Ромуло и Джульенна",
 		["Romulo"] = "Ромуло",
-		["Shade of Aran"] = "Призрак Арана",
+		["Shade of Aran"] = "Тень Арана",
 		["Shadikith the Glider"] = "Шадикит Скользящий",
 		["Strawman"] = "Балбес",
 		["Terestian Illhoof"] = "Терестиан Больное Копыто",
-		["The Big Bad Wolf"] = "Серый Волк",
-		["The Crone"] = "Карга",
-		["The Curator"] = "Хранитель",
+		["The Big Bad Wolf"] = "Злой и страшный серый волк",
+		["The Crone"] = "Ведьма",
+		["The Curator"] = "Смотритель",
 		["Tinhead"] = "Медноголовый",
 		["Tito"] = "Тито",
 		["Warchief Blackhand Piece"] = "Warchief Blackhand Piece",
 
 -- Magisters' Terrace
-		["Kael'thas Sunstrider"] = "Кель Солнечный Скиталец",
+		["Kael'thas Sunstrider"] = "Кель'тас Солнечный Скиталец",
 		["Priestess Delrissa"] = "Жрица Делрисса",
 		["Selin Fireheart"] = "Селин Огненное Сердце",
 		["Vexallus"] = "Вексалиус",
 
 --Maraudon
-		["Celebras the Cursed"] = "Келебрас Проклятый",
+		["Celebras the Cursed"] = "Селебрас Проклятый",
 		["Gelk"] = "Джелк",
 		["Kolk"] = "Колк",
 		["Landslide"] = "Сель",
@@ -5146,7 +5523,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Maraudos"] = "Мародос",
 		["Meshlok the Harvester"] = "Мешлок Жнец",
 		["Noxxion"] = "Ноксион",
-		["Princess Theradras"] = "Принцесса Терадраса",
+		["Princess Theradras"] = "Принцесса Терадрас",
 		["Razorlash"] = "Бритвохлест",
 		["Rotgrip"] = "Гнилопасть",
 		["Tinkerer Gizlock"] = "Ремонтник Гизлок",
@@ -5157,38 +5534,38 @@ elseif GAME_LOCALE == "ruRU" then
 		["Cache of the Firelord"] = "Cache of the Firelord",
 		["Garr"] = "Гарр",
 		["Gehennas"] = "Гееннас",
-		["Golemagg the Incinerator"] = "Големагг Поджигатель",
+		["Golemagg the Incinerator"] = "Маг-лорд из клана Гордок",
 		["Lucifron"] = "Люцифрон",
 		["Magmadar"] = "Магмадар",
-		["Majordomo Executus"] = "Сенешаль Экзекутус",
+		["Majordomo Executus"] = "Мажордом Экзекутус",
 		["Ragnaros"] = "Рагнарос",
 		["Shazzrah"] = "Шаззрах",
-		["Sulfuron Harbinger"] = "Сульфуронский мститель",
+		["Sulfuron Harbinger"] = "Предвестник Сульфурон",
 
 --Naxxramas
-		["Anub'Rekhan"] = "Ануб'рекхан",
+		["Anub'Rekhan"] = "Ануб'Рекан",
 		["Deathknight Understudy"] = "Дублер рыцаря Смерти",
 		["Feugen"] = "Фойген",
-		["Four Horsemen Chest"] = "Cундук Four Horsemen",
+		["Four Horsemen Chest"] = "Сундук Четырех Всадников",
 		["Gluth"] = "Глут",
 		["Gothik the Harvester"] = "Готик Жнец",
-		["Grand Widow Faerlina"] = "Великая вдова Фэрлина",
-		["Grobbulus"] = "Гроббулюс",
-		["Heigan the Unclean"] = "Хейган Нечистый",
+		["Grand Widow Faerlina"] = "Великая вдова Фарлина",
+		["Grobbulus"] = "Гроббулус",
+		["Heigan the Unclean"] = "Хейган Нечистивый",
 		["Highlord Mograine"] = "Верховный лорд Могрейн",
-		["Instructor Razuvious"] = "Наставник Разувиос",
-		["Kel'Thuzad"] = "Кел-Тузед",
+		["Instructor Razuvious"] = "Инструктор Разувиус",
+		["Kel'Thuzad"] = "Кел'Тузад",
 		["Lady Blaumeux"] = "Леди Бломе",
-		["Loatheb"] = "Лоатеб",
-		["Maexxna"] = "Мэксна",
+		["Loatheb"] = "Мерзот",
+		["Maexxna"] = "Мексна",
 		["Noth the Plaguebringer"] = "Нот Чумной",
-		["Patchwerk"] = "Патчверк",
-		["Sapphiron"] = "Сафирон",
+		["Patchwerk"] = "Лоскутик",
+		["Sapphiron"] = "Сапфирон",
 		["Sir Zeliek"] = "Сэр Зелиек",
 		["Stalagg"] = "Сталагг",
 		["Thaddius"] = "Таддиус",
 		["Thane Korth'azz"] = "Тан Кортазз",
-		["The Four Horsemen"] = "The Four Horsemen",
+		["The Four Horsemen"] = "Четыре Всадника",
 
 --Onyxia's Lair
 		["Onyxia"] = "Ониксия",
@@ -5197,30 +5574,30 @@ elseif GAME_LOCALE == "ruRU" then
 		["Maur Grimtotem"] = "Маур Мрачный Тотем",
 		["Bazzalan"] = "Баззалан",
 		["Zelemar the Wrathful"] = "Зелемар Гневный",
-		["Jergosh the Invoker"] = "Джергош Заклинатель",
-		["Taragaman the Hungerer"] = "Тарагаман Алчущий",
+		["Jergosh the Invoker"] = "Жергош Призыватель Духов",
+		["Taragaman the Hungerer"] = "Тарагаман Ненасытный",
 
 --Razorfen Downs
-		["Amnennar the Coldbringer"] = "Амненнар Хладоносец",
+		["Amnennar the Coldbringer"] = "Амненнар Хладовей",
 		["Glutton"] = "Обжора",
-		["Mordresh Fire Eye"] = "Мордреш Огненный Взор",
+		["Mordresh Fire Eye"] = "Мордреш Огненный Глаз",
 		["Plaguemaw the Rotting"] = "Чумобрюх Гнилой",
 		["Ragglesnout"] = "Круглорыл",
 		["Tuten'kash"] = "Тутен'каш",
 		["Henry Stern"] = "Генри Штерн",
 
 --Razorfen Kraul
-		["Agathelos the Raging"] = "Агателос Яростный",
+		["Agathelos the Raging"] = "Агателос Свирепый",
 		["Blind Hunter"] = "Слепой охотник",
-		["Charlga Razorflank"] = "Чарлга Острый Бок",
+		["Charlga Razorflank"] = "Чарлга Остробок",
 		["Death Speaker Jargba"] = "Вестник смерти Джаргба",
-		["Earthcaller Halmgar"] = "Халмгар Зовущий Землю",
-		["Overlord Ramtusk"] = "Владыка Бараний Клык",
+		["Earthcaller Halmgar"] = "Заклинательница земли Халмгар",
+		["Overlord Ramtusk"] = "Властитель Таранный Клык",
 
 --Ruins of Ahn'Qiraj
 		["Anubisath Guardian"] = "Анубисат-страж",
-		["Ayamiss the Hunter"] = "Айамисс Охотник",
-		["Buru the Gorger"] = "Буру Обжора",
+		["Ayamiss the Hunter"] = "Айамисса Охотница",
+		["Buru the Gorger"] = "Буру Ненасытный",
 		["General Rajaxx"] = "Генерал Раджакс",
 		["Kurinnaxx"] = "Куриннакс",
 		["Lieutenant General Andorov"] = "Генерал-лейтенант Андоров",
@@ -5229,17 +5606,17 @@ elseif GAME_LOCALE == "ruRU" then
 
 --Scarlet Monastery
 --Armory
-		["Herod"] = "Ирод",
+		["Herod"] = "Герод",
 --Cathedral
-		["High Inquisitor Fairbanks"] = "Великий инквизитор Фэрбенкс",
-		["High Inquisitor Whitemane"] = "Великий инквизитор Белогрив",
-		["Scarlet Commander Mograine"] = "Командир Алого ордена Могрейн",
+		["High Inquisitor Fairbanks"] = "Верховный инквизитор Фэйрбанкс",
+		["High Inquisitor Whitemane"] = "Верховный инквизитор Вайтмейн",
+		["Scarlet Commander Mograine"] = "Командир Могрейн из Алого ордена",
 --Graveyard
-		["Azshir the Sleepless"] = "Азшир Бессонный",
+		["Azshir the Sleepless"] = "Азшир Неспящий",
 		["Bloodmage Thalnos"] = "Волшебник Крови Талнос",
-		["Fallen Champion"] = "Павший защитник",
-		["Interrogator Vishas"] = "Следователь Вишас",
-		["Ironspine"] = "Стальной Хребет",
+		["Fallen Champion"] = "Павший воитель",
+		["Interrogator Vishas"] = "Дознаватель Жестокос",
+		["Ironspine"] = "Железноспин",
 		["Headless Horseman"] = "Всадник без головы",
 --Library
 		["Arcanist Doan"] = "Чародей Доан",
@@ -5248,16 +5625,16 @@ elseif GAME_LOCALE == "ruRU" then
 --Scholomance
 		["Blood Steward of Kirtonos"] = "Кровавая прислужница Киртоноса",
 		["Darkmaster Gandling"] = "Темный магистр Гандлинг",
-		["Death Knight Darkreaver"] = "Темный Губитель, рыцарь Смерти",
+		["Death Knight Darkreaver"] = "Рыцарь смерти Темный Терзатель",
 		["Doctor Theolen Krastinov"] = "Доктор Теолен Крастинов",
-		["Instructor Malicia"] = "Наставник Малиция",
-		["Jandice Barov"] = "Джандис Бароу",
+		["Instructor Malicia"] = "Инструктор Коварница",
+		["Jandice Barov"] = "Джандис Баров",
 		["Kirtonos the Herald"] = "Киртонос Глашатай",
 		["Kormok"] = "Кормок",
-		["Lady Illucia Barov"] = "Леди Иллюция Бароу",
+		["Lady Illucia Barov"] = "Леди Иллюсия Баров",
 		["Lord Alexei Barov"] = "Лорд Алексей Баров",
-		["Lorekeeper Polkelt"] = "Хранитель мудрости Полкелт",
-		["Marduk Blackpool"] = "Мардук Чернопруд",
+		["Lorekeeper Polkelt"] = "Сказитель Полкелт",
+		["Marduk Blackpool"] = "Мардук Блэкпул",
 		["Ras Frostwhisper"] = "Рас Снегошепот",
 		["Rattlegore"] = "Громоклин",
 		["The Ravenian"] = "Равениан",
@@ -5266,67 +5643,67 @@ elseif GAME_LOCALE == "ruRU" then
 --Shadowfang Keep
 		["Archmage Arugal"] = "Верховный маг Аругал",
 		["Arugal's Voidwalker"] = "Демон Хаоса Аругала",
-		["Baron Silverlaine"] = "Барон Сильверлейн",
+		["Baron Silverlaine"] = "Барон Сребролен",
 		["Commander Springvale"] = "Командир Ручьедол",
-		["Deathsworn Captain"] = "Капитан Служителей Смерти",
+		["Deathsworn Captain"] = "Капитан служителей Смерти",
 		["Fenrus the Devourer"] = "Фенрус Пожиратель",
-		["Odo the Blindwatcher"] = "Одо Слепостраж",
-		["Razorclaw the Butcher"] = "Мясник Острокоготь",
-		["Wolf Master Nandos"] = "Волчарь Нандос",
+		["Odo the Blindwatcher"] = "Одо Слепой Страж",
+		["Razorclaw the Butcher"] = "Остроклык Мясник",
+		["Wolf Master Nandos"] = "Командир воргенов Нандос",
 
 --Stratholme
-		["Archivist Galford"] = "Архивариус Гэлфорд",
-		["Balnazzar"] = "Бальназар",
-		["Baron Rivendare"] = "Барон Райвендер",
+		["Archivist Galford"] = "Архивариус Галфорд",
+		["Balnazzar"] = "Балназзар",
+		["Baron Rivendare"] = "Барон Ривендер",
 		["Baroness Anastari"] = "Баронесса Анастари",
-		["Black Guard Swordsmith"] = "Оружейник Черной Гвардии",
-		["Cannon Master Willey"] = "Канонир мастер Уилли",
-		["Crimson Hammersmith"] = "Багровый Молотобоец",
+		["Black Guard Swordsmith"] = "Оружейник Черной Стражи",
+		["Cannon Master Willey"] = "Мастер-канонир Вилли",
+		["Crimson Hammersmith"] = "Молотобоец из Багрового Легиона",
 		["Fras Siabi"] = "Фрас Сиаби",
-		["Hearthsinger Forresten"] = "Хартзингер Форрестен",
-		["Magistrate Barthilas"] = "Судья Бартилас",
+		["Hearthsinger Forresten"] = "Певчий Форрестен",
+		["Magistrate Barthilas"] = "Мировой судья Бартилас",
 		["Maleki the Pallid"] = "Малекай Бледный",
-		["Nerub'enkan"] = "Неруб-энкан",
+		["Nerub'enkan"] = "Неруб'энкан",
 		["Postmaster Malown"] = "Почтальон Мэлоун",
-		["Ramstein the Gorger"] = "Рамштейна Яростного",
+		["Ramstein the Gorger"] = "Рамштайн Ненасытный",
 		["Skul"] = "Череп",
 		["Stonespine"] = "Каменный Гребень",
 		["The Unforgiven"] = "Непрощенный",
-		["Timmy the Cruel"] = "Тимми Жестокий",
+		["Timmy the Cruel"] = "Тайлер",
 
 --Sunwell Plateau
 		["Kalecgos"] = "Калесгос",
 		["Sathrovarr the Corruptor"] = "Сатроварр Осквернитель",
 		["Brutallus"] = "Бруталл",
-		["Felmyst"] = "Сквернотуман",
-		["Kil'jaeden"] = "Kil'jaeden",
+		["Felmyst"] = "Пророк Скверны",
+		["Kil'jaeden"] = "Кил'джеден",
 		["M'uru"] = "М'ару",
 		["Entropius"] = "Энтропий",
 		["The Eredar Twins"] = "The Eredar Twins",
 		["Lady Sacrolash"] = "Lady Sacrolash",
-		["Grand Warlock Alythess"] = "Grand Warlock Alythess",
+		["Grand Warlock Alythess"] = "Главная чернокнижница Алитесса",
 
 --Tempest Keep
 --The Arcatraz
 		["Dalliah the Doomsayer"] = "Далия Глашатай Судьбы",
-		["Harbinger Skyriss"] = "Вестник Скайрис",
+		["Harbinger Skyriss"] = "Предвестник Скайрисс",
 		["Warden Mellichar"] = "Страж Мелличар",
-		["Wrath-Scryer Soccothrates"] = "Демон-провидец Соккотрат",
-		["Zereketh the Unbound"] = "Зерекет Освобожденный",
+		["Wrath-Scryer Soccothrates"] = "Провидец Гнева Соккорат",
+		["Zereketh the Unbound"] = "Зерекет Бездонный",
 --The Botanica
 		["Commander Sarannis"] = "Командир Сараннис",
-		["High Botanist Freywinn"] = "Старший ботаник Фрейвин",
+		["High Botanist Freywinn"] = "Верховный ботаник Фрейвин",
 		["Laj"] = "Ладж",
-		["Thorngrin the Tender"] = "Торнгрин Нежный",
+		["Thorngrin the Tender"] = "Скалезуб Скорбный",
 		["Warp Splinter"] = "Узлодревень",
 --The Eye
-		["Al'ar"] = "Алар",
+		["Al'ar"] = "Ал'ар",
 		["Cosmic Infuser"] = "Космический даритель",
 		["Devastation"] = "Разоритель",
-		["Grand Astromancer Capernian"] = "Старший астромант Каперниан",
-		["High Astromancer Solarian"] = "Верховный астромант Солариан",
+		["Grand Astromancer Capernian"] = "Верховный звездочет Каперниан",
+		["High Astromancer Solarian"] = "Верховный звездочет Солариан",
 		["Infinity Blades"] = "Клинки Бесконечности",
-		["Kael'thas Sunstrider"] = "Кель Солнечный Скиталец",
+		["Kael'thas Sunstrider"] = "Кель'тас Солнечный Скиталец",
 		["Lord Sanguinar"] = "Лорд Сангвинар",
 		["Master Engineer Telonicus"] = "Старший инженер Телоникус",
 		["Netherstrand Longbow"] = "Длинный лук Берега Хаоса",
@@ -5335,46 +5712,46 @@ elseif GAME_LOCALE == "ruRU" then
 		["Solarium Priest"] = "Жрец Солариана",
 		["Staff of Disintegration"] = "Посох Распыления",
 		["Thaladred the Darkener"] = "Таладред Затемнитель",
-		["Void Reaver"] = "Пустотный разбойник",
+		["Void Reaver"] = "Страж Бездны",
 		["Warp Slicer"] = "Искореженная ломтерезка",
 --The Mechanar
-		["Gatewatcher Gyro-Kill"] = "Страж ворот Смертекрут",
-		["Gatewatcher Iron-Hand"] = "Страж ворот Железнорук",
-		["Mechano-Lord Capacitus"] = "Механический лорд Способие",
-		["Nethermancer Sepethrea"] = "Хаомант Сепетея",
+		["Gatewatcher Gyro-Kill"] = "Страж ворот Точеный Нож",
+		["Gatewatcher Iron-Hand"] = "Страж ворот Стальная Клешня",
+		["Mechano-Lord Capacitus"] = "Механо-лорд Конденсарон",
+		["Nethermancer Sepethrea"] = "Пустомант Сепетрея",
 		["Pathaleon the Calculator"] = "Паталеон Вычислитель",
 
 --The Deadmines
-		["Brainwashed Noble"] = "Обманутый дворянин",
-		["Captain Greenskin"] = "Капитан Зеленая Шкура",
-		["Cookie"] = "Пышка",
-		["Edwin VanCleef"] = "Эдвин Ван Клиф",
-		["Foreman Thistlenettle"] = "Старшина Чертополохх",
+		["Brainwashed Noble"] = "Зомбированный дворянин",
+		["Captain Greenskin"] = "Капитан Зеленямс",
+		["Cookie"] = "Пирожок",
+		["Edwin VanCleef"] = "Эдвин ван Клиф",
+		["Foreman Thistlenettle"] = "Штейгер Чертополох",
 		["Gilnid"] = "Гилнид",
 		["Marisa du'Paige"] = "Мариса дю Пэж",
 		["Miner Johnson"] = "Шахтер Джонсон",
-		["Mr. Smite"] = "Ударр",
+		["Mr. Smite"] = "Мистер Каюк",
 		["Rhahk'Zor"] = "Рак'Зор",
 		["Sneed"] = "Снид",
-		["Sneed's Shredder"] = "Резак Снида",
+		["Sneed's Shredder"] = "Крошшер Снида",
 
 --The Stockade
 		["Bazil Thredd"] = "Базиль Тредд",
-		["Bruegal Ironknuckle"] = "Бругал Железный Шарнир",
+		["Bruegal Ironknuckle"] = "Бругал Железный Кулак",
 		["Dextren Ward"] = "Декстрен Вард",
-		["Hamhock"] = "Хэмхок",
-		["Kam Deepfury"] = "Кэм Темная Ярость",
+		["Hamhock"] = "Хрупконог",
+		["Kam Deepfury"] = "Кам Гневливый",
 		["Targorr the Dread"] = "Таргорр Ужасный",
 
 --The Temple of Atal'Hakkar
 		["Atal'alarion"] = "Атал'аларион",
 		["Avatar of Hakkar"] = "Аватара Хаккара",
 		["Dreamscythe"] = "Жнец Снов",
-		["Gasher"] = "Гашер",
+		["Gasher"] = "Ранокол",
 		["Hazzas"] = "Хаззас",
 		["Hukku"] = "Хукку",
 		["Jade"] = "Нефрит",
-		["Jammal'an the Prophet"] = "Джаммалан Пророк",
+		["Jammal'an the Prophet"] = "Джаммал'ан Пророк",
 		["Kazkaz the Unholy"] = "Казказ Нечистый",
 		["Loro"] = "Лоро",
 		["Mijan"] = "Миджан",
@@ -5385,29 +5762,29 @@ elseif GAME_LOCALE == "ruRU" then
 		["Weaver"] = "Ткачик",
 		["Zekkis"] = "Зеккис",
 		["Zolo"] = "Золо",
-		["Zul'Lor"] = "Зул-Лор",
+		["Zul'Lor"] = "Зул'Лор",
 
 --Uldaman
-		["Ancient Stone Keeper"] = "Древний каменный хранитель",
-		["Archaedas"] = "Архедас",
-		["Baelog"] = "Бэлог",
-		["Digmaster Shovelphlange"] = "Мастер Лопаторукий",
-		["Galgann Firehammer"] = "Галганн Огненный Молот",
+		["Ancient Stone Keeper"] = "Древний Хранитель Камня",
+		["Archaedas"] = "Аркедас",
+		["Baelog"] = "Бейлог",
+		["Digmaster Shovelphlange"] = "Мастер Лопаторук",
+		["Galgann Firehammer"] = "Галганн Огнемолот",
 		["Grimlok"] = "Гримлок",
-		["Ironaya"] = "Железнайя",
-		["Obsidian Sentinel"] = "Обсидиановый страж",
+		["Ironaya"] = "Иронайа",
+		["Obsidian Sentinel"] = "Обсидиановый часовой",
 		["Revelosh"] = "Ревелош",
 
 --Wailing Caverns
 		["Boahn"] = "Боан",
-		["Deviate Faerie Dragon"] = "Искаженный лесной дракончик",
+		["Deviate Faerie Dragon"] = "Загадочный волшебный дракон",
 		["Kresh"] = "Криг",
-		["Lady Anacondra"] = "Леди Анакондра",
+		["Lady Anacondra"] = "Повелительница Анакондра",
 		["Lord Cobrahn"] = "Лорд Кобран",
-		["Lord Pythas"] = "Лорд Пифас",
+		["Lord Pythas"] = "Лорд Питонас",
 		["Lord Serpentis"] = "Лорд Серпентис",
 		["Mad Magglish"] = "Безумный Магглиш",
-		["Mutanus the Devourer"] = "Мутанус-пожиратель",
+		["Mutanus the Devourer"] = "Мутанус Пожиратель",
 		["Skum"] = "Шкам",
 		["Trigore the Lasher"] = "Тригор Хлестун",
 		["Verdan the Everliving"] = "Вердан Бессмертный",
@@ -5430,25 +5807,25 @@ elseif GAME_LOCALE == "ruRU" then
 		["Ysondre"] = "Исондра",
 
 --Zul'Aman
-		["Akil'zon"] = "Акилзон",
+		["Akil'zon"] = "Акил'зон",
 		["Halazzi"] = "Халаззи",
-		["Jan'alai"] = "Джаналайя",
-		["Malacrass"] = "Malacrass",
+		["Jan'alai"] = "Джан'алай",
+		["Malacrass"] = "Малакрасс",
 		["Nalorakk"] = "Налоракк",
-		["Zul'jin"] = "Зулджин",
+		["Zul'jin"] = "Зул'джин",
 		["Hex Lord Malacrass"] = "Повелитель проклятий Малакрасс",
 
 --Zul'Farrak
 		["Antu'sul"] = "Анту'сул",
 		["Chief Ukorz Sandscalp"] = "Вождь Укорз Песчаная Плешь",
 		["Dustwraith"] = "Пыльный Призрак",
-		["Gahz'rilla"] = "Газрилла",
+		["Gahz'rilla"] = "Газ'рилла",
 		["Hydromancer Velratha"] = "Гидромант Велрата",
 		["Murta Grimgut"] = "Мурта Мрачнобрюх",
 		["Nekrum Gutchewer"] = "Некрум Кишкожуй",
 		["Oro Eyegouge"] = "Оро Вырвиглаз",
 		["Ruuzlu"] = "Руузлу",
-		["Sandarr Dunereaver"] = "Сандарр Барханный Разбойник",
+		["Sandarr Dunereaver"] = "Сандарр Разоритель Барханов",
 		["Sandfury Executioner"] = "Палач из клана Песчаной Бури",
 		["Sergeant Bly"] = "Сержант Блай",
 		["Shadowpriest Sezz'ziz"] = "Темный жрец Шезз'зиз",
@@ -5458,8 +5835,8 @@ elseif GAME_LOCALE == "ruRU" then
 		["Zul'Farrak Dead Hero"] = "Мертвый Герой Зул'Фаррака",
 
 --Zul'Gurub
-		["Bloodlord Mandokir"] = "Мэндокир Повелитель Крови",
-		["Gahz'ranka"] = "Газранка",
+		["Bloodlord Mandokir"] = "Мандокир Повелитель Крови",
+		["Gahz'ranka"] = "Газ'ранка",
 		["Gri'lek"] = "Грилек",
 		["Hakkar"] = "Хаккар",
 		["Hazza'rah"] = "Хазза'рах",
@@ -5468,7 +5845,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["High Priestess Arlokk"] = "Верховная жрица Арлокк",
 		["High Priestess Jeklik"] = "Верховная жрица Джеклик",
 		["High Priestess Mar'li"] = "Верховная жрица Мар'ли",
-		["Jin'do the Hexxer"] = "Джин'до Наводящий Порчу",
+		["Jin'do the Hexxer"] = "Джин'до Проклинатель",
 		["Renataki"] = "Ренатаки",
 		["Wushoolay"] = "Вушулай",
 

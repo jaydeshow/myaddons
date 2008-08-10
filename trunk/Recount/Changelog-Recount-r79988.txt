@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r79988 | StingerSoft | 2008-08-08 21:30:49 -0400 (Fri, 08 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Recount/locales/Recount-ruRU.lua
+
+Recount:
+- update ruRU
+------------------------------------------------------------------------
 r79898 | elsia | 2008-08-06 19:43:51 -0400 (Wed, 06 Aug 2008) | 4 lines
 Changed paths:
    M /trunk/Recount/GUI_Main.lua

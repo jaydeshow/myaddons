@@ -145,6 +145,25 @@ L:RegisterTranslations("esES", function() return {
 	icon = "Icono de banda",
 	icon_desc = "Pone un icono de banda sobre jugadores afectados por Fuego Sagrado. (Requiere derechos de banda)",
 } end)
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	engage_trigger = "Ваше поведение нестерпимо.",
+	engage_message = "Пресветлая дева Engaged! Покаяние за ~33сек",
+
+	repentance = "Покаяние",
+	repentance_desc = "Таймер отсчета до Покаяния.",
+	repentance_message = "Покаяние! Следующее за ~33сек",
+	repentance_warning = "Покаяние перезаредилось - скоро будет!",
+	repentance_bar = "Покаяние",
+	repentance_nextbar = "Перезарядка Покаяния",
+
+	holyfire = "Священный огонь",
+	holyfire_desc = "Предупреждать о зарашении игроков Священным огонем.",
+	holyfire_message = "Священный огонь: %s",
+
+	icon = "Рейдовая иконка",
+	icon_desc = "Помечать рейдовой иконкой человека пораженного Священным огонем (Необходимо иметь доступ).",
+} end)
 
 ----------------------------------
 --      Module Declaration      --
@@ -155,7 +174,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16457
 mod.toggleoptions = {"repentance", -1, "holyfire", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80015 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

@@ -1,6 +1,6 @@
 --[[
 Name: RatingBuster
-Revision: $Revision: 78903 $
+Revision: $Revision: 79946 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
 Description: Converts combat ratings in tooltips into normal percentages.
@@ -22,8 +22,8 @@ local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
 -- AceAddon Initialization
 RatingBuster = AceLibrary("AceAddon-2.0"):new("AceDB-2.0", "AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0")
 RatingBuster.title = "Rating Buster"
-RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 78903 $", "(%d+)", "%1")..")"
-RatingBuster.date = gsub("$Date: 2008-07-22 03:35:19 -0400 (Tue, 22 Jul 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
+RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 79946 $", "(%d+)", "%1")..")"
+RatingBuster.date = gsub("$Date: 2008-08-08 02:48:43 -0400 (Fri, 08 Aug 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 
 -------------------
@@ -1468,6 +1468,7 @@ if class == "PALADIN" then
 	profileDefault.sumHP = true
 	profileDefault.sumMP = true
 	profileDefault.sumResilience = true
+	profileDefault.sumAP = true
 	profileDefault.sumHit = true
 	profileDefault.sumCrit = true
 	profileDefault.sumHaste = true
@@ -1478,6 +1479,11 @@ if class == "PALADIN" then
 	profileDefault.sumSpellHaste = true
 	profileDefault.sumHealing = true
 	profileDefault.sumMP5 = true
+	profileDefault.sumDodge = true
+	profileDefault.sumParry = true
+	profileDefault.sumBlock = true
+	profileDefault.sumBlockValue = true
+	profileDefault.sumDefense = true
 	profileDefault.showSpellDmgFromInt = true
 	profileDefault.showHealingFromInt = true
 	consoleOptions.args.stat.args.int.args.dmg = { -- Holy Guidance (Rank 5) - 1,19
@@ -1633,6 +1639,24 @@ if class == "WARRIOR" then
 	profileDefault.sumCrit = true
 	profileDefault.sumHaste = true
 	profileDefault.sumExpertise = true
+	profileDefault.sumDodge = true
+	profileDefault.sumParry = true
+	profileDefault.sumBlock = true
+	profileDefault.sumBlockValue = true
+	profileDefault.sumDefense = true
+	profileDefault.showSpellCritFromInt = false
+end
+if class == "DEATHKNIGHT" then
+	profileDefault.sumHP = true
+	profileDefault.sumResilience = true
+	profileDefault.sumAP = true
+	profileDefault.sumHit = true
+	profileDefault.sumCrit = true
+	profileDefault.sumHaste = true
+	profileDefault.sumExpertise = true
+	profileDefault.sumDodge = true
+	profileDefault.sumParry = true
+	profileDefault.sumDefense = true
 	profileDefault.showSpellCritFromInt = false
 end
 
@@ -2305,6 +2329,9 @@ local classArmorTypes = {
 	},
 	PRIEST = {
 		[BI["Cloth"]] = true,
+	},
+	DEATHKNIGHT = {
+		[BI["Plate"]] = true,
 	},
 	SHAMAN = {
 		[BI["Mail"]] = true,

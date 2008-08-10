@@ -1,39 +1,4 @@
-<!--
-
-$Revision: 50679 $
-
-(C) Copyright 2007,2008 Bethink (bethink at naef dot com)
-
-This file is part of Analyst.
-
-Analyst is free software: you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-Analyst is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Leser General Public License
-along with Analyst. If not, see <http://www.gnu.org/licenses/>.
-
--->
-<Ui
-	xmlns="http://www.blizzard.com/wow/ui/"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
-	<Script file="Libs\AceLibrary\AceLibrary.lua" />
-	<Script file="Libs\AceOO-2.0\AceOO-2.0.lua" />
-	<Script file="Libs\AceAddon-2.0\AceAddon-2.0.lua" />
-	<Script file="Libs\AceConsole-2.0\AceConsole-2.0.lua" />
-	<Script file="Libs\AceDB-2.0\AceDB-2.0.lua" />
-	<Script file="Libs\AceDebug-2.0\AceDebug-2.0.lua" />
-	<Script file="Libs\AceEvent-2.0\AceEvent-2.0.lua" />
-	<Script file="Libs\AceHook-2.1\AceHook-2.1.lua" />
-	<Script file="Libs\AceLocale-2.2\AceLocale-2.2.lua" />
-	<Script file="Libs\Dewdrop-2.0\Dewdrop-2.0.lua" />
-	<Script file="Libs\FuBarPlugin-2.0\FuBarPlugin-2.0.lua" />
-	<Script file="Libs\Tablet-2.0\Tablet-2.0.lua" />
-</Ui>
+<?xml version="1.0" encoding="utf-8"?>
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.blizzard.com/wow/ui/" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+<!-- Removed by files.wowace.com for no-ext zip. --></Ui>

@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r79946 | whitetooth | 2008-08-08 02:48:43 -0400 (Fri, 08 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: 
+- WotLK: Fixed errors for the Death Knight class
+------------------------------------------------------------------------
 r79938 | whitetooth | 2008-08-07 23:52:17 -0400 (Thu, 07 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/RatingBuster/UTF8/utf8.lua

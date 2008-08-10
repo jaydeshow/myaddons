@@ -5,7 +5,7 @@ Credits: Saien the original author.  Sayclub (Korean), PDI175 (Chinese tradition
 Website: http://www.wowace.com/
 Description: Dynamic 24 button bar automatically adds potions, water, food and other items you specify into a button for use. Does not use action slots so you can save those for spells and abilities.
 ]]
-local REVISION = tonumber(("$Revision: 79885 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 80061 $"):match("%d+"))
 local DATE = ("$Date: 2007-05-31 17:44:03 -0400 (Thu, 31 May 2007) $"):match("%d%d%d%d%-%d%d%-%d%d")
 --
 -- Copyright 2004, 2005, 2006 original author.
@@ -241,7 +241,7 @@ function AutoBar:OnInitialize()
 	-- Single parent for key binding overides, and event handling
 	AutoBar.frame = CreateFrame("Frame", nil, UIParent)
 	AutoBar.frame:SetScript("OnEvent",
-		function(this, event, ...)
+		function(self, event, ...)
 			AutoBar.events[event](AutoBar, ...)
 		end)
 
@@ -410,7 +410,7 @@ local DELAY_TIME = 0.06
 local DELAY_TIME_INCREMENTAL = 0.01
 
 local Delayed = AceOO.Class(IDelayedCallback)
-Delayed.virtual = true -- this means that it cannot be instantiated. (cannot call :new())
+Delayed.virtual = true
 Delayed.prototype.postCombat = false -- Set to true to trigger call after combat
 Delayed.prototype.timerList = timerList
 Delayed.prototype.timerListIndex = 0
@@ -1001,7 +1001,7 @@ function AutoBar:UpdateSpells()
 	AutoBarCategory:UpdateCategories()
 --	AutoBar:RefreshButtons()
 	self:LogEventEnd("AutoBar:UpdateSpells")
-	-- ToDo: make this update on learn.
+	-- ToDo: update on learn.
 	self:UpdateObjects()
 end
 

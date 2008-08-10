@@ -4,8 +4,8 @@ ARL-FirstAId.lua
 
 First Aid data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-08-08 22:19:35 -0400 (Fri, 08 Aug 2008) $
+$Rev: 79992 $
 
 ]]--
 
@@ -38,5 +38,11 @@ function addon:InitFirstAid()
 
 	-- Reputations
 	self:addTradeSkillSpell(23787, 300, self:AddSingleReputation(2, BFAC["Argent Dawn"]), BFAC["Argent Dawn"])
+
+	if (addon.wrath) then
+		self:addTradeSkillSpell(45545, 350, L["Trainer"],1)
+		self:addTradeSkillSpell(45546, 300, L["Trainer"],1)
+		self:addTradeSkillSpell(51801, 450, L["UWD"],3)
+	end
 
 end

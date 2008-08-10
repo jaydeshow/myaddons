@@ -65,7 +65,7 @@ L:RegisterTranslations("esES", function() return {
 L:RegisterTranslations("ruRU", function() return {
 	mech = "Механики паровой оснастки",
 	mech_desc = "Предупреждать о наступлении механиков",
-	mech_trigger = "Tune 'em up good, boys!",
+	mech_trigger = "Наладьте их хорошенько, парни!",
 	mech_message = "Скоро придут механики паровой оснастки!",
 } end )
 
@@ -80,7 +80,7 @@ mod.zonename = BZ["The Steamvault"]
 mod.enabletrigger = boss 
 mod.guid = 17796
 mod.toggleoptions = {"mech", "bosskill"}
-mod.revision = tonumber(("$Revision: 79696 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79989 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

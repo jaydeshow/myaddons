@@ -1,4 +1,24 @@
 ------------------------------------------------------------------------
+r79975 | mukha521 | 2008-08-08 16:30:43 -0400 (Fri, 08 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/Capping/battlegrounds/AV.lua
+   M /trunk/Capping/locals/localization-ruRU.lua
+   M /trunk/Capping/locals/localization.lua
+
+Capping:
+- ruRU AV fine tune. Made it as good as possible without major code changes.
+- AV module a bit enhanced.
+------------------------------------------------------------------------
+r79964 | mukha521 | 2008-08-08 09:20:18 -0400 (Fri, 08 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/Capping/battlegrounds/WSG.lua
+   M /trunk/Capping/locals/localization-ruRU.lua
+   M /trunk/Capping/locals/localization.lua
+
+Capping:
+- ruRU locale edit.
+- WSG module a bit enhanced.
+------------------------------------------------------------------------
 r79828 | mukha521 | 2008-08-05 16:24:22 -0400 (Tue, 05 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/Capping/Capping.toc

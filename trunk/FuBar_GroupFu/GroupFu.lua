@@ -78,6 +78,7 @@ local options = {
 			set = function(v) GroupFu.db.profile.ClearTimer = v end,
 			validate = {
 				["0"] = L["Never"],
+				["10"] = L["10 seconds"],
 				["15"] = L["15 seconds"],
 				["30"] = L["30 seconds"],
 				["45"] = L["45 seconds"],
@@ -169,7 +170,7 @@ local options = {
 -------------------------------------------------------------------------------
 
 function GroupFu:OnInitialize()
-	local revision = tonumber((string.match("$Revision: 67689 $", "^.-(%d+).-$"))) or 1
+	local revision = tonumber((string.match("$Revision: 79971 $", "^.-(%d+).-$"))) or 1
 	if not self.version then self.version = "1" end
 	self.version = self.version .. "." .. revision
 	self.revision = revision
