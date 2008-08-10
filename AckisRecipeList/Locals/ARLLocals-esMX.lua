@@ -1,12 +1,12 @@
 ﻿--[[
 ****************************************************************************************
 
-ARLLocals-esES.lua
+ARLLocals-esMX.lua
 
 esES localization strings for Ackis Recipe List
 
-$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78247 $
+$Date: 2008-08-09 18:05:16 -0400 (Sat, 09 Aug 2008) $
+$Rev: 80048 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -18,7 +18,7 @@ Please make sure you update the ToC file with any translations.
 ****************************************************************************************
 ]]--
 
-local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "esES", false)
+local L = LibStub("AceLocale-3.0"):NewLocale("Ackis Recipe List", "esMX", false)
 if not L then return end
 
 local BZ = LibStub("LibBabble-Zone-3.0"):GetLookupTable()

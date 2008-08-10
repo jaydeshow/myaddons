@@ -142,7 +142,7 @@ mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = {boss, BB["Warden Mellichar"]}
 mod.guid = 20912
 mod.toggleoptions = {"mc", "mr", "split", "bosskill"}
-mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80082 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -153,8 +153,8 @@ function mod:OnEnable()
 	secondSplitAnnounced = nil
 
 	self:AddCombatListener("UNIT_DIED", "BossDeath")
-	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 39019)
-	self:AddCombatListener("SPELL_AURA_APPLIED", "MindRend", 39017)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "MC", 37162)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "MindRend", 36929)
 	
 	self:RegisterEvent("CHAT_MSG_MONSTER_YELL")	
 	self:RegisterEvent("UNIT_HEALTH")	

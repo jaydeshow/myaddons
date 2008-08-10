@@ -68,13 +68,22 @@ L:RegisterTranslations("esES", function() return {
 	["Toggle tranq bars on or off."] = "Mostrar barras de Disparo tranquilizante.",
 	["Bars"] = "Barras",
 } end)
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	["Tranq - %s"] = "Спок-твие - %s",
+	["%s's Tranq failed!"] = "%s'а спокойствие не подействовало!",
+
+	["Options for the tranq module."] = "Опции модуля Спокойствия",
+	["Toggle tranq bars on or off."] = "Вкл/Выкл панели Спокойствия",
+	["Bars"] = "Полосы",
+} end)
 
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
 
 local mod = BigWigs:NewModule("Tranq")
-mod.revision = tonumber(("$Revision: 78512 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 79982 $"):sub(12, -3))
 mod.defaultDB = {
 	bars = true,
 }

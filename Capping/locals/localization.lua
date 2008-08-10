@@ -1,7 +1,7 @@
 CappingLocale = {
 	-- battlegrounds
-	["Alterac Valley"] = true, 
-	["Arathi Basin"] = true, 
+	["Alterac Valley"] = true,
+	["Arathi Basin"] = true,
 	["Warsong Gulch"] = true,
 	["Arena"] = true,
 	["Eye of the Storm"] = true,
@@ -9,7 +9,7 @@ CappingLocale = {
 	-- factions
 	["Alliance"] = true,
 	["Horde"] = true,
-	
+
 	-- options menu
 	["Auto quest turnins"] = true,
 	["Bar"] = "Timer Bar",
@@ -47,7 +47,7 @@ CappingLocale = {
 	["Cancel timer"] = true,
 	["Or <Ctrl-right-click> a timer"] = true,
 	["Reposition Capture Bar"] = true,
-	
+
 	-- etc timers
 	["Port: %s"] = true, -- bar text for time remaining to port into a bg
 	["Queue: %s"] = true,
@@ -59,8 +59,8 @@ CappingLocale = {
 	["Thirty seconds until"] = true,
 	["Fifteen seconds until"] = true,
 	["%s: %s - %d:%02d remaining"] = true, -- chat message after shift left-clicking a bar
-	
-	-- AB	
+
+	-- AB
 	["Bases: (%d+)  Resources: (%d+)/2000"] = true, -- arathi basin scoreboard
 	["Farm"] = true,
 	["Lumber Mill"] = true,
@@ -75,14 +75,15 @@ CappingLocale = {
 	["has defended the"] = true,
 	["Final: 2000 - %d"] = true, -- final score text
 	["wins 2000-%d"] = true, -- final score chat message
-	
+
 	-- WSG
 	["was picked up by (.+)!"] = true,
+	["was picked up by (.+)!2"] = true,
 	["dropped"] = true,
 	["captured the"] = true,
 	["Flag respawns"] = true,
 	["%s's flag carrier: %s (%s)"] = true, -- chat message
-	
+
 	-- AV
 	 -- NPC
 	["Smith Regzar"] = true,
@@ -102,14 +103,15 @@ CappingLocale = {
 	["Snowfall Graveyard"] = true,
 	["Tower"] = true,
 	["Bunker"] = true,
+	["Bulwark"] = true, -- no need in english version...
 	["Upgrade to"] = true, -- the option to upgrade units in AV
 	["Wicked, wicked, mortals!"] = true, -- what Ivus says after being summoned
 	["Ivus begins moving"] = true,
 	["WHO DARES SUMMON LOKHOLAR"] = true, -- what Lok says after being summoned
 	["The Ice Lord has arrived!"] = true,
 	["Lokholar begins moving"] = true,
-	
-	
+
+
 	-- EotS
 	["^(.+) has taken the flag!"] = true,
 	["Bases: (%d+)  Victory Points: (%d+)/2000"] = true,

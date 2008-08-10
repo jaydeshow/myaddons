@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r79986 | StingerSoft | 2008-08-08 20:35:29 -0400 (Fri, 08 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Localization/ruRU.lua
+
+Omen: -ruRU update
+------------------------------------------------------------------------
+r79949 | digmouse | 2008-08-08 04:32:43 -0400 (Fri, 08 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/Omen/Localization/zhCN.lua
+
+Omen: -zhCN update
+------------------------------------------------------------------------
 r79873 | ananhaid | 2008-08-06 13:05:18 -0400 (Wed, 06 Aug 2008) | 3 lines
 Changed paths:
    M /trunk/Omen/Localization/zhCN.lua

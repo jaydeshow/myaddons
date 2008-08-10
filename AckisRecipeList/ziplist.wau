@@ -1,4 +1,4 @@
-AckisRecipeList/Changelog-AckisRecipeList-r79923.txt
+AckisRecipeList/Changelog-AckisRecipeList-r80048.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/recipe-miner.lua
@@ -12,6 +12,7 @@ AckisRecipeList/DownloadCount.lua
 AckisRecipeList/ARLColour.lua
 AckisRecipeList/AckisRecipeList.toc
 AckisRecipeList/RecipeDB/ARL-Alchemy.lua
+AckisRecipeList/RecipeDB/ARL-RuneForge.lua
 AckisRecipeList/RecipeDB/ARL-Tailor.lua
 AckisRecipeList/RecipeDB/ARL-RoguePoison.lua
 AckisRecipeList/RecipeDB/ARL-Enchant.lua

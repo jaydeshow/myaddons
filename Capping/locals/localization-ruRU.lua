@@ -1,6 +1,6 @@
 if GetLocale() ~= "ruRU" then return end
 
--- de translations provided by Farook
+-- ru translations provided by McFLY aka mukha521
 CappingLocale:CreateLocaleTable({
 	-- battlegrounds
 	["Alterac Valley"] = "Альтеракская долина",
@@ -11,7 +11,7 @@ CappingLocale:CreateLocaleTable({
 
 	-- factions
 	["Alliance"] = "Альянс",
-	["Horde"] = "Орда",
+	["Horde"] = "Орд",
 
 	-- options menu
 	["Auto quest turnins"] = "Авто сдача квестов",
@@ -55,9 +55,9 @@ CappingLocale:CreateLocaleTable({
 	["Port: %s"] = "На БГ: %s", -- bar text for time remaining to port into a bg
 	["Queue: %s"] = "Очередь: %s",
 	["Battleground Begins"] = "Начало сражения", -- bar text for bg gates opening
-	["2 minutes"] = "2 Минуты",
-	["1 minute"] = "Минуту",
-	["30 seconds"] = "30 Секунд",
+	["2 minutes"] = "2 минуты",
+	["1 minute"] = "1 минута",
+	["30 seconds"] = "30 секунд",
 	["One minute until"] = "Одна минута до",
 	["Thirty seconds until"] = "через 30 секунд",
 	["Fifteen seconds until"] = "Пятнадцать секунд до",
@@ -73,14 +73,15 @@ CappingLocale:CreateLocaleTable({
 	["Southern Farm"] = "Южная Ферма",
 	["Mine"] = "Рудник",
 	["has assaulted"] = "штурмует",
-	["claims the"] = "через 1 минуту",
+	["claims the"] = "через ([1]?%s?)минуту",
 	["has taken the"] = "захватил",
 	["has defended the"] = "отразил",
 	["Final: 2000 - %d"] = "Финал: 2000 - %d", -- final score text
 	["wins 2000-%d"] = "выиграет 2000-%d", -- final score chat message
 
 	-- WSG
-	["was picked up by (.+)!"] = "(.+) несет флаг",
+	["was picked up by (.+)!"] = "(.+) несет флаг Орды!",
+	["was picked up by (.+)!2"] = "Флаг Альянса у (.+)!",
 	["dropped"] = "уронил",
 	["captured the"] = "захватил",
 	["Flag respawns"] = "Появление Флагов",
@@ -101,8 +102,9 @@ CappingLocale:CreateLocaleTable({
 	["avtaken"] = "(.+) захвачен",
 	["avdestroyed"] = "(.+) разрушен",
 	["Snowfall Graveyard"] = "Кладбище Снегопада",
-	["Tower"] = "башня",
+	["Tower"] = "башн",
 	["Bunker"] = "оплот",
+	["Bulwark"] = "укрыти",
 	["Upgrade to"] = true, -- the option to upgrade units in AV
 	["Wicked, wicked, mortals!"] = true, -- what Ivus says after being summoned
 	["Ivus begins moving"] = true,

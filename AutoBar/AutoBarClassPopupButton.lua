@@ -8,7 +8,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 76652 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 80061 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -59,7 +59,7 @@ function AutoBar.Class.PopupButton.prototype:Refresh(parentButton, popupButtonIn
 end
 
 
--- Return the name of the global frame for this button.  Keybinds are made to this.
+-- Return the name of the global frame for the button.  Keybinds are made to it.
 function AutoBar.Class.PopupButton.prototype:GetButtonFrameName(popupButtonIndex)
 	return self.parentButton:GetButtonFrameName() .. "Popup" .. popupButtonIndex
 end
@@ -111,9 +111,7 @@ end
 
 -- Handle a click on a popped up button
 function AutoBar.Class.PopupButton.prototype:PostClick(mousebutton, down)
-	local self = this.class
-	AutoBarButton.dirtyPopupCount[this] = true
-	AutoBarButton.dirtyPopupCooldown[this] = true
+	local self = self.class
 	self.frame:SetChecked(0)
 
 	local buttonKey = self.buttonName

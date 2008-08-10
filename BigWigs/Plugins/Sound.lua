@@ -131,6 +131,23 @@ L:RegisterTranslations("esES", function() return {
 	["Default only"] = "Solo por defecto",
 	["Use only the default sound."] = "Usar solo el sonido por defecto",
 } end)
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	["Sounds"] = "Звуки",
+	["Options for sounds."] = "Опции звуков",
+
+	["Alarm"] = "Тревога",
+	["Info"] = "Информация",
+	["Alert"] = "Предупреждения",
+	["Long"] = "Длинный",
+	["Victory"] = "Победа",
+
+	["Set the sound to use for %q.\n\nCtrl-Click a sound to preview."] = "Установите звук для использования в %q.\n\nCtrl-Клик для предварительного просмотра звука.",
+	["Use sounds"] = "Использовать звуки",
+	["Toggle all sounds on or off."] = "Вкл/Выкл все звуки",
+	["Default only"] = "Только стандартные",
+	["Use only the default sound."] = "Использовать только стандартные звуки.",
+} end)
 
 ----------------------------------
 --      Module Declaration      --
@@ -138,7 +155,7 @@ L:RegisterTranslations("esES", function() return {
 
 local plugin = BigWigs:NewModule("Sounds")
 
-plugin.revision = tonumber(("$Revision: 79614 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 79982 $"):sub(12, -3))
 plugin.defaultDB = {
 	defaultonly = false,
 	sound = true,

@@ -197,6 +197,12 @@ local lastNodeCoords = 0
 function Collector:addItem(skill,what)
 	local x, y = GetPlayerMapPosition("player")
 	if x == 0 and y == 0 then return end
+
+	-- Temporary fix, the map "ScarletEnclave" and "EasternPlaguelands"
+	-- both have the same English display name as "Eastern Plaguelands"
+	-- so we ignore the new Death Knight starting zone for now.
+	if GetMapInfo() == "ScarletEnclave" then return end
+
 	local zone = GetRealZoneText()
 	local node_type = spells[skill]
 	if not node_type or not what then return end

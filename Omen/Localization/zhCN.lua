@@ -23,8 +23,8 @@ L["Window options"] = "显示窗口设置"
 L["None"] = "无"
 L["Open the configuration dialog"] = "打开 Omen 设置面板"
 L["Options that control Omen's appearance"] = "设置 Omen 外观"
-L["Options for modifying the look and feel of the main display"] = "设置主窗口外观和样式"
-L["Options which affect the style of the threat bars"] = "设置影响仇恨计量条样式"
+L["Options for modifying the look and feel of the main display"] = "主窗口外观和样式设置"
+L["Options which affect the style of the threat bars"] = "仇恨计量条样式设置"
 L["Outline"] = "外框"
 L["Size"] = "尺寸"
 L["Control the size of this frame"] = "设定 Omen 框体尺寸"
@@ -103,7 +103,7 @@ L["Collapse to show a minimum number of bars"] = "收起以显示最少的计量
 L["Collapse hides bar list"] = "折叠隐藏计量条列表"
 L["Let autocollapse hide the bar list if no bars are shown"] = "当无计量条显示时自动折叠隐藏计量条列表"
 L["Collapse hides entire Omen window"] = "折叠隐藏整个 Omen 窗口"
-L["Let autocollapse hide the |c00ffffffentire window|r if no bars are shown. Note: This |c00ffffffwill|r prevent you from switching modules out of combat."] = "当无计量条显示时自动折叠隐藏|c00ffffff整个窗口|r。提示：这|c00ffffff将|r防止你在非战斗时转换模式。"
+L["Let autocollapse hide the |c00ffffffentire window|r if no bars are shown. Note: This |c00ffffffwill|r prevent you from switching modules out of combat."] = "当无计量条显示时自动折叠隐藏|c00ffffff整个窗口|r。提示：这|c00ffffff将防止|r你在非战斗时转换模式。"
 
 L["Grow Up"] = "向上延展"
 L["Grow bars upwards"] = "计量条向上延展"
@@ -116,7 +116,7 @@ L["Control the scale of the entire Omen GUI"] = "设置整个 Omen GUI 的缩放
 L["Scale"] = "缩放"
 
 L["Clamp to screen"] = "限制在屏幕内"
-L["Clamp the Omen frame to the screen"] = "限制 Omen 框体在屏幕内"
+L["Clamp the Omen frame to the screen"] = "将 Omen 框体限制在屏幕内"
 
 L["Skin"] = "皮肤"
 L["Save your current settings and load other skins"] = "保存当前配置并载入其他皮肤"
@@ -174,10 +174,10 @@ L["Issue threat clear"] = "手动重置仇恨"
 L["Issue threat clear (requires party leader or raid assistant)"] = "手动重置仇恨（需要队长或者助理权限）"
 
 L["Your version of Omen/Threat is out of date. Please update from WAU or http://files.wowace.com/Omen/Omen.zip when possible."] = "你当前的 Omen/Threat 版本已经过期，请使用 WAU 更新或者从 http://files.wowace.com/Omen/Omen.zip 下载最新版。"
-L["Your version of Omen/Threat is out of date and is not compatible with the newest version. You should update from WAU or http://files.wowace.com/Omen/Omen.zip as soon as possible."] = "你当前的 Omen/Threat 版本已经过期并且不跟新版兼容，你应该立即使用 WAU 更新或者从 http://files.wowace.com/Omen/Omen.zip 下载最新版。"
+L["Your version of Omen/Threat is out of date and is not compatible with the newest version. You should update from WAU or http://files.wowace.com/Omen/Omen.zip as soon as possible."] = "你当前的 Omen/Threat 版本已经过期并且不与新版兼容，你应该立即使用 WAU 更新或者从 http://files.wowace.com/Omen/Omen.zip 下载最新版。"
 
 L["Whisper older clients informing them to update."] = "密语旧版本的玩家通知他们更新。"
-L["You must be the group leader or a group assistant to do this."] = "必须为团长或助理才能这么做。"
+L["You must be the group leader or a group assistant to do this."] = "必须是团长或助理才能这么做。"
 
 L["Pullout Bars"] = "弹出条"
 L["Options for pullout bars"] = "弹出条设置"

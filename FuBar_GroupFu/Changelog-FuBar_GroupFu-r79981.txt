@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r79981 | 7destiny | 2008-08-08 18:57:41 -0400 (Fri, 08 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_GroupFu/GroupFuLocal-koKR.lua
+
+FuBar_GroupFu: koKR Update
+------------------------------------------------------------------------
+r79971 | saroz | 2008-08-08 13:36:26 -0400 (Fri, 08 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/FuBar_GroupFu/GroupFu.lua
+   M /trunk/FuBar_GroupFu/GroupFuLocal-enUS.lua
+
+FuBar_GroupFu: Add 10 second roll clearing
+------------------------------------------------------------------------

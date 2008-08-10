@@ -1,4 +1,21 @@
 ------------------------------------------------------------------------
+r80082 | 7destiny | 2008-08-10 01:02:04 -0400 (Sun, 10 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Dalliah.lua
+   M /trunk/LittleWigs/TempestKeep/Skyriss.lua
+   M /trunk/LittleWigs/TempestKeep/Soccothrates.lua
+   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
+
+LittleWigs: TempestKeep:
+- Removed old triggers & Fixed spellID
+- koKR Update
+------------------------------------------------------------------------
+r79989 | StingerSoft | 2008-08-08 21:50:21 -0400 (Fri, 08 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/Coilfang/Steamrigger.lua
+
+LittleWigs: added ruRU trigger
+------------------------------------------------------------------------
 r79841 | scorpio0920 | 2008-08-06 00:50:54 -0400 (Wed, 06 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/LittleWigs/TempestKeep/Freywinn.lua
@@ -116,22 +133,4 @@ Changed paths:
 
 LittleWigs:
 - Update zhTW localization.
-------------------------------------------------------------------------
-r78157 | ulic | 2008-07-09 19:50:50 -0400 (Wed, 09 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
-
-LittleWigs: Auch/Vorpil - Added banish back in, thanks reale
-------------------------------------------------------------------------
-r78046 | 7destiny | 2008-07-07 23:11:46 -0400 (Mon, 07 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
-
-LittleWigs: koKR Update
-------------------------------------------------------------------------
-r78002 | ulic | 2008-07-07 14:26:31 -0400 (Mon, 07 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/Auchindoun/Vorpil.lua
-
-LittleWigs: Auch/Vorpil: Removed banish until I can see a heroic combat log.
 ------------------------------------------------------------------------

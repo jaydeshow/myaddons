@@ -78,18 +78,24 @@ local zone_data = { -- {width, height, zoneID}
 	Sunwell = {3327.0830078125,2218.7490234375,65,},
 	-- Wrath Zones
 	--[[ These valus derived from the dbc client files, they may change and/or are not final
-	BoreanTundra = {5764.5830088,3843.749878,66,},
-	Dragonblight = {1645.833374,3739.583374,67,},
-	GrizzlyHills = {5249.999878,3499.999878,68,},
-	HowlingFjord = {6045.832886,2202.083191,69,},
-	IcecrownGlacier = {5104.166344,3466.666016,70,},
-	SholazarBasin = {4356.25,2904.166504,71,},
-	TheStormPeaks = {2452.083008,5360.416992,72,},
-	ZulDrak = {4993.75,3329.166504,73,},
-	LakeWintergrasp = {3166.666382,2110.416748,74,},
-	ScarletEnclave = {3162.5,2108.333374,75,},
-	CrystalsongForest = {164.583374,1814.583008,76,},
-	--]]
+	UtgardeKeep = {0.0,0.0},
+	Nexus = {0.0,0.0},
+	Dalaran = {0.0,0.0},
+	--]]	
+	Northrend = {17751.3984375,11834.2650146484,66,},
+	BoreanTundra = {5764.5830088,3843.749878,67,},
+	Dragonblight = {5608.33312988281,3739.58337402344,68,},
+	GrizzlyHills = {5249.999878,3499.999878,69,},
+	HowlingFjord = {6045.83288574219,4031.24981689453,70,},
+	IcecrownGlacier = {5199.99967193604,3466.666015625,71,},
+	SholazarBasin = {4356.25,2904.166504,72,},
+	TheStormPeaks = {7112.49963378906,4741.666015625,73,},
+	ZulDrak = {4993.75,3329.166504,74,},
+	LakeWintergrasp = {3166.666382,2110.416748,75,},
+	ScarletEnclave = {3162.5,2108.333374,76,},
+	CrystalsongForest = {2722.91662597656,1814.5830078125,77,},
+	LakeWintergrasp = {2974.99987792969,1983.33325195312,78,},
+	StrandoftheAncients = {2339.58325195312,1560.41668701172,79,},
 }
 -- meta table to return 0 for all unknown zones, instances, and what not
 local emptyZoneTbl = {0,0,0}
@@ -105,7 +111,12 @@ for continent in pairs(continentList) do
 	continentList[continent] = zones
 	for zone, name in pairs(zones) do
 		SetMapZoom(continent, zone)
-		zoneList[name] = zone_data[GetMapInfo()]
+		-- Temporary fix, the map "ScarletEnclave" and "EasternPlaguelands"
+		-- both have the same English display name as "Eastern Plaguelands"
+		-- so we ignore the new Death Knight starting zone for now.
+		if GetMapInfo() ~= "ScarletEnclave" then
+			zoneList[name] = zone_data[GetMapInfo()]
+		end
 	end
 end
 

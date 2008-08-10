@@ -1,7 +1,7 @@
 ﻿-- FuBar_GroupFu localization information
 -- Korean Locale
 -- Translation by savageox
--- Date 2007/01/15
+-- Date 2008/08/09
 local L = AceLibrary("AceLocale-2.2"):new("GroupFu")
 
 L:RegisterTranslations("koKR", function() return {
@@ -17,6 +17,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Roll ending in 5 seconds, recorded %d of %d rolls."] = "주사위 굴리기가 5초 안에 종료됩니다. %d/%d 주사위 굴림.",
 
 	["Winner: %s."] = "우승자는 %s님 입니다.",
+	[", "] = ", ",
 	["Tie: %s are tied at %d."] = "%s (%d/%d)",
 	["%s (%d/%d)"] = "%s (%d/%d)",
 	["%s [%s]"] = "%s [%s]",
@@ -44,6 +45,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Roll clearing"] = "주사위 리스트 제거",
 	["When to clear the rolls."] = "주사위 리스트를 언제 제거할지 설정합니다.",
 	["Never"] = "없음",
+	["10 seconds"] = "10 초",
 	["15 seconds"] = "15 초",
 	["30 seconds"] = "30 초",
 	["45 seconds"] = "45 초",

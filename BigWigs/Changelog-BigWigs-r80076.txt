@@ -1,4 +1,73 @@
 ------------------------------------------------------------------------
+r80076 | 7destiny | 2008-08-09 23:28:08 -0400 (Sat, 09 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/ZulAman/Nalorakk.lua
+
+BigWigs: ZulAman: koKR Update
+------------------------------------------------------------------------
+r80015 | StingerSoft | 2008-08-09 09:41:14 -0400 (Sat, 09 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Karazhan/Curator.lua
+   M /trunk/BigWigs/Karazhan/Maiden.lua
+   M /trunk/BigWigs/Karazhan/Malchezaar.lua
+   M /trunk/BigWigs/Karazhan/Moroes.lua
+   M /trunk/BigWigs/Karazhan/Netherspite.lua
+   M /trunk/BigWigs/Karazhan/Nightbane.lua
+   M /trunk/BigWigs/Karazhan/Terestian.lua
+
+BigWigs: added ruRU triggers
+------------------------------------------------------------------------
+r80014 | pettigrow | 2008-08-09 09:05:02 -0400 (Sat, 09 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Hyjal/HyjalSummit.lua
+
+BigWigs: Hyjal: frFR Update
+------------------------------------------------------------------------
+r80010 | StingerSoft | 2008-08-09 08:31:01 -0400 (Sat, 09 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/BlackTemple/Council.lua
+
+BigWigs: added ruRU
+------------------------------------------------------------------------
+r79996 | scorpio0920 | 2008-08-09 01:31:43 -0400 (Sat, 09 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Extras/Flash.lua
+
+BigWigs:
+- Fixed typo.
+------------------------------------------------------------------------
+r79982 | StingerSoft | 2008-08-08 19:00:25 -0400 (Fri, 08 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/BigWigs.toc
+   M /trunk/BigWigs/BlackTemple/BigWigs_BlackTemple.toc
+   M /trunk/BigWigs/Core.lua
+   M /trunk/BigWigs/Extras/BigWigs_Extras.toc
+   M /trunk/BigWigs/Extras/CustomBar.lua
+   M /trunk/BigWigs/Extras/Flash.lua
+   M /trunk/BigWigs/Extras/Proximity.lua
+   M /trunk/BigWigs/Extras/Test.lua
+   M /trunk/BigWigs/Extras/Tranq.lua
+   M /trunk/BigWigs/Extras/Version.lua
+   M /trunk/BigWigs/Hyjal/BigWigs_Hyjal.toc
+   M /trunk/BigWigs/Karazhan/BigWigs_Karazhan.toc
+   M /trunk/BigWigs/Options.lua
+   M /trunk/BigWigs/Outland/BigWigs_Outland.toc
+   M /trunk/BigWigs/Plugins/Bars.lua
+   M /trunk/BigWigs/Plugins/BigWigs_Plugins.toc
+   M /trunk/BigWigs/Plugins/BossBlock.lua
+   M /trunk/BigWigs/Plugins/Colors.lua
+   M /trunk/BigWigs/Plugins/Messages.lua
+   M /trunk/BigWigs/Plugins/RaidIcon.lua
+   M /trunk/BigWigs/Plugins/RaidWarn.lua
+   M /trunk/BigWigs/Plugins/Sound.lua
+   M /trunk/BigWigs/Prototype.lua
+   M /trunk/BigWigs/SC/BigWigs_SC.toc
+   M /trunk/BigWigs/Sunwell/BigWigs_Sunwell.toc
+   M /trunk/BigWigs/TheEye/BigWigs_TheEye.toc
+   M /trunk/BigWigs/ZulAman/BigWigs_ZulAman.toc
+
+BigWigs: added ruRU (menu/core)
+------------------------------------------------------------------------
 r79929 | nightik | 2008-08-07 16:48:10 -0400 (Thu, 07 Aug 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/Sunwell/Brutallus.lua
@@ -128,22 +197,4 @@ Changed paths:
    M /trunk/BigWigs/ZulAman/Halazzi.lua
 
 BigWigs: Changed to 2.4.3 dispel events, total guess no idea if it works. :)
-------------------------------------------------------------------------
-r78093 | 7destiny | 2008-07-08 13:54:31 -0400 (Tue, 08 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Twins.lua
-
-BigWigs: koKR Update
-------------------------------------------------------------------------
-r78092 | 7destiny | 2008-07-08 13:48:07 -0400 (Tue, 08 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/ZulAman/Malacrass.lua
-
-BigWigs: ZulAman/Malacrass: fix guid
-------------------------------------------------------------------------
-r78061 | 7destiny | 2008-07-08 03:02:30 -0400 (Tue, 08 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Twins.lua
-
-BigWigs: Sunwell/Twins: fix engage start issue
 ------------------------------------------------------------------------

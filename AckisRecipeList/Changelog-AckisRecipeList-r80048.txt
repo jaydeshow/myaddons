@@ -1,4 +1,31 @@
 ------------------------------------------------------------------------
+r80048 | ackis | 2008-08-09 18:05:16 -0400 (Sat, 09 Aug 2008) | 10 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-ruRU.lua
+   A /trunk/AckisRecipeList/RecipeDB/ARL-RuneForge.lua
+
+AckisRecipeList:
+- Alert: Name change from Ackis Recipe List to ARL on CurseForge site, update bookmarks as needed
+- Official downloads: 1137995 roflz
+- Increase max spells to 60k, adding a variable so it's easy to change it again in the future.
+- Fix a bug where if an unknown skill would show up, it would still try to scan for stuffz
+- Add runeforging to the list and populate recipes for it (I'm sure no one will ever use this :P)
+- Make enGB current
+- Fixed a bug with esES/esMX
+- Make esMX a current copy of esES
+- Update skeleton of ruRU
+------------------------------------------------------------------------
+r79992 | ackis | 2008-08-08 22:19:35 -0400 (Fri, 08 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua
+
+AckisRecipeList:
+- Add WotLK First Aid items! OMG FIRST PROFESSION COMPLETE!
+------------------------------------------------------------------------
 r79923 | pettigrow | 2008-08-07 12:18:37 -0400 (Thu, 07 Aug 2008) | 1 line
 Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
@@ -588,105 +615,4 @@ Changed paths:
    M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
 
 AckisRecipeList: Update zhCN locale
-------------------------------------------------------------------------
-r78086 | ackis | 2008-07-08 10:45:32 -0400 (Tue, 08 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Version bump
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78025 | ackis | 2008-07-07 18:23:13 -0400 (Mon, 07 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
-
-AckisRecipeList:
-- Change some BS patterns to BoP from BoE. Ticket 18
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78010 | ackis | 2008-07-07 16:16:47 -0400 (Mon, 07 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua
-
-AckisRecipeList:
-- Specialization updates. Ticket 21
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78009 | ackis | 2008-07-07 16:13:37 -0400 (Mon, 07 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
-
-AckisRecipeList:
-- Location updates: Ticket 19
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r77962 | funkydude | 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) | 1 line
-Changed paths:
-   A /trunk/AckisRecipeList (from /trunk/AckisRecipeList:77795)
-   R /trunk/AckisRecipeList/ARLColour.lua (from /trunk/AckisRecipeList/ARLColour.lua:77795)
-   R /trunk/AckisRecipeList/ARLFrame.lua (from /trunk/AckisRecipeList/ARLFrame.lua:77795)
-   R /trunk/AckisRecipeList/ARLText.lua (from /trunk/AckisRecipeList/ARLText.lua:77795)
-   R /trunk/AckisRecipeList/AboutPanel.lua (from /trunk/AckisRecipeList/AboutPanel.lua:77795)
-   R /trunk/AckisRecipeList/AckisRecipeList.lua (from /trunk/AckisRecipeList/AckisRecipeList.lua:77795)
-   R /trunk/AckisRecipeList/AckisRecipeList.toc (from /trunk/AckisRecipeList/AckisRecipeList.toc:77795)
-   R /trunk/AckisRecipeList/LICENSE.txt (from /trunk/AckisRecipeList/LICENSE.txt:77795)
-   R /trunk/AckisRecipeList/Locals (from /trunk/AckisRecipeList/Locals:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua:77795)
-   R /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua (from /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB (from /trunk/AckisRecipeList/RecipeDB:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-BeastTrain.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-BlackSmith.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Cook.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-FirstAid.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-RoguePoison.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-RoguePoison.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Smelt.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Smelt.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua:77795)
-   R /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua (from /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua:77795)
-   R /trunk/AckisRecipeList/embeds.xml (from /trunk/AckisRecipeList/embeds.xml:77795)
-   R /trunk/AckisRecipeList/img (from /trunk/AckisRecipeList/img:77795)
-   R /trunk/AckisRecipeList/img/expanded.blp (from /trunk/AckisRecipeList/img/expanded.blp:77795)
-   R /trunk/AckisRecipeList/img/main.blp (from /trunk/AckisRecipeList/img/main.blp:77795)
-   A /trunk/AltTabber (from /trunk/AltTabber:77797)
-   R /trunk/AltTabber/AltTabber.lua (from /trunk/AltTabber/AltTabber.lua:77797)
-   R /trunk/AltTabber/AltTabber.toc (from /trunk/AltTabber/AltTabber.toc:77797)
-   R /trunk/AltTabber/LICENSE.txt (from /trunk/AltTabber/LICENSE.txt:77797)
-   R /trunk/AltTabber/embeds.xml (from /trunk/AltTabber/embeds.xml:77797)
-   A /trunk/BigWigs_KalecgosHealth (from /trunk/BigWigs_KalecgosHealth:77800)
-   R /trunk/BigWigs_KalecgosHealth/BigWigs_KalecgosHealth.lua (from /trunk/BigWigs_KalecgosHealth/BigWigs_KalecgosHealth.lua:77800)
-   R /trunk/BigWigs_KalecgosHealth/BigWigs_KalecgosHealth.toc (from /trunk/BigWigs_KalecgosHealth/BigWigs_KalecgosHealth.toc:77800)
-   R /trunk/BigWigs_KalecgosHealth/LICENSE.txt (from /trunk/BigWigs_KalecgosHealth/LICENSE.txt:77800)
-   A /trunk/Querier (from /trunk/Querier:77798)
-   R /trunk/Querier/LICENSE.txt (from /trunk/Querier/LICENSE.txt:77798)
-   R /trunk/Querier/Querier.lua (from /trunk/Querier/Querier.lua:77798)
-   R /trunk/Querier/Querier.toc (from /trunk/Querier/Querier.toc:77798)
-   R /trunk/Querier/embeds.xml (from /trunk/Querier/embeds.xml:77798)
-   A /trunk/TIRaid (from /trunk/TIRaid:77796)
-   R /trunk/TIRaid/LICENSE.txt (from /trunk/TIRaid/LICENSE.txt:77796)
-   R /trunk/TIRaid/TIRaid.lua (from /trunk/TIRaid/TIRaid.lua:77796)
-   R /trunk/TIRaid/TIRaid.toc (from /trunk/TIRaid/TIRaid.toc:77796)
-   R /trunk/TIRaid/embeds.xml (from /trunk/TIRaid/embeds.xml:77796)
-   A /trunk/WelfareEpics (from /trunk/WelfareEpics:77799)
-   R /trunk/WelfareEpics/LICENSE.txt (from /trunk/WelfareEpics/LICENSE.txt:77799)
-   R /trunk/WelfareEpics/Locals (from /trunk/WelfareEpics/Locals:77799)
-   R /trunk/WelfareEpics/Locals/enUS.lua (from /trunk/WelfareEpics/Locals/enUS.lua:77799)
-   R /trunk/WelfareEpics/WelfareEpics.lua (from /trunk/WelfareEpics/WelfareEpics.lua:77799)
-   R /trunk/WelfareEpics/WelfareEpics.toc (from /trunk/WelfareEpics/WelfareEpics.toc:77799)
-   R /trunk/WelfareEpics/embeds.xml (from /trunk/WelfareEpics/embeds.xml:77799)
-
-.trunk: re-add addons by ackis
 ------------------------------------------------------------------------

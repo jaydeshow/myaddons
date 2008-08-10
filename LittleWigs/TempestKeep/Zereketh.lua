@@ -149,16 +149,16 @@ mod.zonename = BZ["The Arcatraz"]
 mod.enabletrigger = boss 
 mod.guid = 20870
 mod.toggleoptions = {"nova", "void", "seed", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80082 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:AddCombatListener("SPELL_START_CAST", "Nova", 39005, 36127)
-	self:AddCombatListener("SPELL_START_CAST", "VoidZone", 36119, 30533)
-	self:AddCombatListener("SPELL_AURA_APPLIED", "SoC", 39367, 32863)
+	self:AddCombatListener("SPELL_CAST_START", "Nova", 36127)
+	self:AddCombatListener("SPELL_CAST_SUCCESS", "VoidZone", 36119)
+	self:AddCombatListener("SPELL_AURA_APPLIED", "SoC", 36123)
 	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 
