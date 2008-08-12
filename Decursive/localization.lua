@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_utils.lua"] then
     return;
 end
 
-Dcr:SetDateAndRevision("$Date: 2008-07-22 00:35:49 -0400 (Tue, 22 Jul 2008) $", "$Revision: 78889 $");
+Dcr:SetDateAndRevision("$Date: 2008-08-11 22:58:49 -0400 (Mon, 11 Aug 2008) $", "$Revision: 80233 $");
 
 Dcr.LOC = {};
 
@@ -55,6 +55,7 @@ LOC.CLASS_ROGUE   = 'Rogue';
 LOC.CLASS_SHAMAN  = 'Shaman';
 LOC.CLASS_WARLOCK = 'Warlock';
 LOC.CLASS_WARRIOR = 'Warrior';
+LOC.CLASS_DEATHKNIGHT = 'Deathknight';
 
 LOC.STR_OTHER	    = 'Other';
 LOC.STR_OPTIONS	    = "Decursive's Options";
@@ -369,6 +370,7 @@ L:RegisterTranslations("enUS", function() return {
     [LOC.CLASS_SHAMAN]	=	true,
     [LOC.CLASS_WARLOCK]	=	true,
     [LOC.CLASS_WARRIOR]	=	true,
+    [LOC.CLASS_DEATHKNIGHT]=	true,
 
     [LOC.DISEASE]	    =	true,
     [LOC.MAGIC]	    =	true,
@@ -673,5 +675,6 @@ L:RegisterTranslations("enUS", function() return {
 } end);
 
 -- // }}}
+
 
 DcrLoadedFiles["localization.lua"] = true;

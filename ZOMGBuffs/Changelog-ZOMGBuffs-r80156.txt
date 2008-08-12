@@ -1,0 +1,11 @@
+------------------------------------------------------------------------
+r80156 | zeksie | 2008-08-10 20:34:31 -0400 (Sun, 10 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+   M /trunk/ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
+
+ZOMGBuffs:
+- Self buffs module will no longer try to cast Soul Link when pet does not exist.
+- Small fix to popup list refresh problem after roster change.
+
+------------------------------------------------------------------------

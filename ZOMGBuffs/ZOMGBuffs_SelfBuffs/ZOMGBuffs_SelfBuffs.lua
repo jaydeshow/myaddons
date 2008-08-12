@@ -12,7 +12,7 @@ local z = ZOMGBuffs
 local zs = z:NewModule("ZOMGSelfBuffs")
 ZOMGSelfBuffs = zs
 
-z:CheckVersion("$Revision: 74413 $")
+z:CheckVersion("$Revision: 80156 $")
 
 local mismatchList		-- Rogue poisons that don't match their spell names
 if (GetLocale() == "deDE") then
@@ -483,7 +483,7 @@ function zs:GetClassBuffs()
 			{id = 696,   o = 2, duration = 30, who = "self", dup = 1, c = "FF20FF", exclude = function() return IsUsableSpell(GetSpellInfo(27260)) end}, -- Demon Skin
 			{id = 44977, o = 3, duration = 30, who = "self", dup = 1, c = "FF8080"},					-- Fel Armor
 			{id = 28610, o = 6, duration = 0.5, default = 5, who = "self", noauto = true, c = "FF60FF"},				-- Shadow Ward
-			{id = 19028, o = 7, duration = -1, who = "self", noauto = true, c = "20FF80"},				-- Soul Link
+			{id = 19028, o = 7, duration = -1, who = "self", noauto = true, c = "20FF80", skip = function() return not UnitExists("pet") end},				-- Soul Link
 		}
 		local shoulShard = R["Soul Shard"]
 		local warlockList = {

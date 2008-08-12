@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 80078 $
+Revision: $Rev: 80109 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 80078 $"
+local MINOR_VERSION = "$Revision: 80109 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -567,7 +567,7 @@ lib:SetBaseTranslations {
 	["Viscous Fallout"] = true,
 
 --Grizzly Hills
---Drak�tharon Keep
+--Drak'Tharon Keep
 	["King Dred"] = true,
 	["Novos the Summoner"] = true,
 	["The Prophet Tharon'ja"] = true,
@@ -1848,17 +1848,17 @@ elseif GAME_LOCALE == "frFR" then
 
 --Borean Tundra
 --The Eye of Eternity
-		--["Malygos"] = true,
+		["Malygos"] = "Malygos",
 --The Nexus
-		--["Anomalus"] = true,
-		--["Grand Magus Telestra"] = true,
-		--["Keristrasza"] = true,
-		--["Ormorok the Tree-Shaper"] = true,
+		["Anomalus"] = "Anomalus",
+		["Grand Magus Telestra"] = "Grand magus Telestra",
+		["Keristrasza"] = "Keristrasza",
+		["Ormorok the Tree-Shaper"] = "Ormorok le Sculpte-arbre",
 --The Oculus
-		--["Drakos the Interrogator"] = true,
-		--["Ley-Guardian Eregos"] = true,
-		--["Mage-Lord Urom"] = true,
-		--["Varos Cloudstrider"] = true,
+		["Drakos the Interrogator"] = "Drakos l'Interrogateur",
+		["Ley-Guardian Eregos"] = "Gardien-tellurique Eregos",
+		["Mage-Lord Urom"] = "Seigneur-mage Urom",
+		["Varos Cloudstrider"] = "Varos Arpentenuée",
 
 --Caverns of Time
 --Old Hillsbrad Foothills
@@ -1866,10 +1866,10 @@ elseif GAME_LOCALE == "frFR" then
 		["Epoch Hunter"] = "Chasseur d'époques",
 		["Lieutenant Drake"] = "Lieutenant Drake",
 --Stratholme
-		--["Meathook"] = true,
-		--["Chrono-Lord Epoch"] = true,
-		--["Mal'Ganis"] = true,
-		--["Salramm the Fleshcrafter"] = true,
+		["Meathook"] = "Grancrochet",
+		["Chrono-Lord Epoch"] = "Chronoseigneur Epoch",
+		["Mal'Ganis"] = "Mal'Ganis",
+		["Salramm the Fleshcrafter"] = "Salramm le Façonneur de chair",
 --The Black Morass
 		["Aeonus"] = "Aeonus",
 		["Chrono Lord Deja"] = "Chronoseigneur Déjà",
@@ -1940,9 +1940,9 @@ elseif GAME_LOCALE == "frFR" then
 
 --Dragonblight
 --Azjol-Nerub
-		--["Anub'arak"] = true,
-		--["Hadronox"] = true,
-		--["Krik'thir the Gatewatcher"] = true,
+		["Anub'arak"] = "Anub'arak",
+		["Hadronox"] = "Hadronox",
+		["Krik'thir the Gatewatcher"] = "Krik'thir le Gardien de porte",
 --Chamber of Aspects
 --Naxxramas
 
@@ -1956,11 +1956,11 @@ elseif GAME_LOCALE == "frFR" then
 		["Viscous Fallout"] = "Retombée visqueuse",
 
 --Grizzly Hills
---Drak�tharon Keep
-		--["King Dred"] = true,
-		--["Novos the Summoner"] = true,
-		--["The Prophet Tharon'ja"] = true,
-		--["Trollgore"] = true,
+--Drak'Tharon Keep
+		["King Dred"] = "Roi Dred",
+		["Novos the Summoner"] = "Novos l'Invocateur",
+		["The Prophet Tharon'ja"] = "Le prophète Tharon'ja",
+		["Trollgore"] = "Trollétripe",
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "Oeillaveugle le Voyant",
@@ -1992,16 +1992,16 @@ elseif GAME_LOCALE == "frFR" then
 
 --Howling Fjord
 --Utgarde Keep
-		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
-		--["Dalronn the Controller"] = true,
-		--["Ingvar the Plunderer"] = true,
-		--["Prince Keleseth"] = true,
-		--["Skarvald the Constructor"] = true,
+		["Constructor & Controller"] = "Constructeur & Contrôleur", --these are one encounter, so we do this as an encounter name
+		["Dalronn the Controller"] = "Dalronn le Contrôleur",
+		["Ingvar the Plunderer"] = "Ingvar le Pilleur",
+		["Prince Keleseth"] = "Prince Keleseth",
+		["Skarvald the Constructor"] = "Skarvald le Constructeur",
 --Utgarde Pinnacle
-		--["Skadi the Ruthless"] = true,
-		--["King Ymiron"] = true,
-		--["Svala Sorrowgrave"] = true,
-		--["Gortok Palehoof"] = true,
+		["Skadi the Ruthless"] = "Skadi le Brutal",
+		["King Ymiron"] = "Roi Ymiron",
+		["Svala Sorrowgrave"] = "Svala Tristetombe",
+		["Gortok Palehoof"] = "Gortok Pâle-sabot",
 
 --Hyjal Summit
 		["Anetheron"] = "Anetheron",
@@ -4072,11 +4072,11 @@ elseif GAME_LOCALE == "koKR" then
 
 --Howling Fjord
 --Utgarde Keep
-		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
+		["Constructor & Controller"] = "건축가와 감시자", --these are one encounter, so we do this as an encounter name
 		["Dalronn the Controller"] = "감시자 달론",
 		["Ingvar the Plunderer"] = "약탈자 앙그바르",
 		["Prince Keleseth"] = "공작 켈레세스",
-		--["Skarvald the Constructor"] = true,
+		["Skarvald the Constructor"] = "건축가 스카발드",
 --Utgarde Pinnacle
 		--["Skadi the Ruthless"] = true,
 		--["King Ymiron"] = true,

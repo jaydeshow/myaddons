@@ -155,6 +155,26 @@ L:RegisterTranslations("zhTW", function() return {
 	crush_warn = "暗影魄力: [%s]",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	start_trigger = "Мне отмщение!",
+
+	shadow = "Shadow of Death",
+	shadow_desc = "Tells you who has Shadow of Death.",
+	shadow_other = "Shadow: %s!",
+	shadow_you = "Shadow of Death on YOU!",
+
+	ghost = "Ghost",
+	ghost_desc = "Ghost timers.",
+	ghost_bar = "Ghost: %s",
+
+	icon = "Raid Icon",
+	icon_desc = "Place a Raid Icon on players with Shadow of Death.",
+
+	crush = "Crushing Shadows",
+	crush_desc = "Warn who gets crushing shadows.",
+	crush_warn = "Crushed: %s",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -164,7 +184,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22871
 mod.toggleoptions = {"shadow", "ghost", "icon", "crush", "bosskill"}
-mod.revision = tonumber(("$Revision: 79400 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80262 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

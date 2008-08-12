@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-08-05 23:10:11 -0400 (Tue, 05 Aug 2008) $
-$Rev: 79836 $
+$Date: 2008-08-12 01:14:29 -0400 (Tue, 12 Aug 2008) $
+$Rev: 80247 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -152,6 +152,45 @@ L["Alliance"] = true
 L["Known"] = true
 L["Unknown"] = true
 
+-- More stuff for new gui, ZJ 7/26/08
+L["General"] = true
+L["Class Specific recipes"] = true
+L["Craft Specialty recipes"] = true
+L["All Skill Levels"] = true
+L["Item Type"] = true
+L["Armor"] = true
+L["Weapon"] = true
+L["Player Type"] = true
+L["Tank"] = true
+L["Healer"] = true
+L["Melee DPS"] = true
+L["All"] = true
+L["None"] = true
+L["Dagger"] = true
+L["1H"] = true
+L["2H"] = true
+L["Axe"] = true
+L["Mace"] = true
+L["Sword"] = true
+L["Polearm"] = true
+L["Thrown"] = true
+L["Ammo"] = true
+-- unused, but included anyway. Who knows what the future may bring
+L["Bow"] = true
+L["Crossbow"] = true
+L["Staff"] = true
+-- More stuff for new GUI, ZJ 8/11/08
+L["Search"] = true
+L["SEARCH_TT"] = "Filter to recipes that contain text at left"
+L["Apply"] = true
+L["Apply_TT"] = "Apply the above selected filters to the recipe list"
+L["ExpandAll"] = "+ All"
+L["EXPAND_TT"] = "Expand all recipes listed below"
+L["ContractAll"] = "- All"
+L["CONTRACT_TT"] = "Minimize all recipes listed below"
+L["Clear"] = "(X)"
+L["CLEAR_TT"] = "Clear the search textbox"
+
 -- Tooltip Text
 L["Scan Skills Long"] = "Scan for missing recipes using Ackis Recipe List."
 L["Close Window"] = "Close the Ackis Recipe List Window."
@@ -174,6 +213,9 @@ L["HORDE_TT"] = "Check to include Horde only recipes in the list."
 L["ALLIANCE_TT"] = "Check to include Alliance only recipes in the list."
 L["KNOWN_TT"] = "Check to include known recipes in the list."
 L["UNKNOWN_TT"] = "Check to include unknwon recipes in the list."
+L["DISCOVERY_TT"] = "Check to include discovered recipes in the list."
+L["ARMOR_TT"] = "Check to include Armor recipes in the list."
+L["WEAPON_TT"] = "Check to include Weapon recipes in the list."
 
 -- Recipe Database
 L["Trainer"] = true

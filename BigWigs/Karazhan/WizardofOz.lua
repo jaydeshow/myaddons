@@ -111,6 +111,19 @@ L:RegisterTranslations("esES", function() return {
 	light_message = "¡Cadena de relámpagos!",
 } end)
 
+L:RegisterTranslations("ruRU", function() return {
+	engage_trigger = "^О, Тито, нам просто надо найти дорогу домой!",
+
+	spawns = "Таймер появления",
+	spawns_desc = "Таймеры активации персонажей.",
+	spawns_bar = "%s атакован!",
+	spawns_warning = "%s за 5 сек",
+
+	light = "Цепная молния",
+	light_desc = "Предупреждать о выполнении Цепной молния.",
+	light_message = "Цепная молния!",
+} end)
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -120,7 +133,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {roar, tinhead, strawman, dorothee}
 mod.guid = 18168
 mod.toggleoptions = {"spawns", "light", "bosskill"}
-mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

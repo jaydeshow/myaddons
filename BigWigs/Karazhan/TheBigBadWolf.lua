@@ -117,6 +117,21 @@ L:RegisterTranslations("esES", function() return {
 	icon = "Icono de banda",
 	icon_desc = "Pone un icono de banda en la persoan que es Caperucita Roja. (Requiere derechos de banda)",
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	youriding = "Красная Шапочка(Вы)",
+	youriding_desc = "Предупреждать когда вы превращены Красная Шапочка.",
+	riding_youwarn = "Вы Красная Шапочка!",
+
+	elseriding = "Красная Шапочка(Другие)",
+	elseriding_desc = "Предупреждать когда другие превращены Красная Шапочка.",
+	riding_otherwarn = "%s - Красная Шапочка!",
+
+	riding_bar = "%s БЕГИ!!!",
+
+	icon = "Иконка Рейда",
+	icon_desc = "Помечает иконкой рейда персонажа превращенного в красную шапочку. (Для этого требуются права в руйде).",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -127,7 +142,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {lady, boss}
 mod.guid = 17521
 mod.toggleoptions = {"youriding", "elseriding", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

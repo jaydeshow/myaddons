@@ -1,4 +1,64 @@
 ------------------------------------------------------------------------
+r80262 | Cybersea | 2008-08-12 06:16:17 -0400 (Tue, 12 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/BlackTemple/Gurtogg.lua
+   M /trunk/BigWigs/BlackTemple/Supremus.lua
+   M /trunk/BigWigs/BlackTemple/Teron.lua
+   M /trunk/BigWigs/Outland/Doomwalker.lua
+   M /trunk/BigWigs/Outland/Maulgar.lua
+
+BigWigs: added ruRU triggers in Black Temple mods.
+------------------------------------------------------------------------
+r80236 | scorpio0920 | 2008-08-12 00:35:12 -0400 (Tue, 12 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Karazhan/Nightbane.lua
+
+BigWigs:
+- Fixed typo.
+------------------------------------------------------------------------
+r80206 | StingerSoft | 2008-08-11 18:56:13 -0400 (Mon, 11 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Karazhan/Attumen.lua
+   M /trunk/BigWigs/Karazhan/Curator.lua
+   M /trunk/BigWigs/Karazhan/Hyakiss.lua
+   M /trunk/BigWigs/Karazhan/Maiden.lua
+   M /trunk/BigWigs/Karazhan/Malchezaar.lua
+   M /trunk/BigWigs/Karazhan/Moroes.lua
+   M /trunk/BigWigs/Karazhan/Netherspite.lua
+   M /trunk/BigWigs/Karazhan/Nightbane.lua
+   M /trunk/BigWigs/Karazhan/RomuloJulianne.lua
+   M /trunk/BigWigs/Karazhan/ShadeOfAran.lua
+   M /trunk/BigWigs/Karazhan/Terestian.lua
+   M /trunk/BigWigs/Karazhan/TheBigBadWolf.lua
+   M /trunk/BigWigs/Karazhan/WizardofOz.lua
+   M /trunk/BigWigs/Outland/Gruul.lua
+   M /trunk/BigWigs/Outland/Maulgar.lua
+   M /trunk/BigWigs/SC/Leotheras.lua
+   M /trunk/BigWigs/TheEye/Reaver.lua
+   M /trunk/BigWigs/ZulAman/Akil'zon.lua
+
+BigWigs: update ruRU (message/desc),added Reaver trigger
+------------------------------------------------------------------------
+r80166 | Cybersea | 2008-08-11 02:37:40 -0400 (Mon, 11 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/BlackTemple/Najentus.lua
+   M /trunk/BigWigs/Karazhan/Attumen.lua
+   M /trunk/BigWigs/Karazhan/Nightbane.lua
+   M /trunk/BigWigs/Karazhan/ShadeOfAran.lua
+   M /trunk/BigWigs/Karazhan/TheBigBadWolf.lua
+   M /trunk/BigWigs/Karazhan/WizardofOz.lua
+   M /trunk/BigWigs/Outland/Gruul.lua
+   M /trunk/BigWigs/Outland/Magtheridon.lua
+   M /trunk/BigWigs/Outland/Maulgar.lua
+   M /trunk/BigWigs/ZulAman/Akil'zon.lua
+   M /trunk/BigWigs/ZulAman/Halazzi.lua
+   M /trunk/BigWigs/ZulAman/Jan'alai.lua
+   M /trunk/BigWigs/ZulAman/Malacrass.lua
+   M /trunk/BigWigs/ZulAman/Nalorakk.lua
+   M /trunk/BigWigs/ZulAman/Zul'jin.lua
+
+BigWigs: ruRU localization update for Karazhan, Zul'Aman, Black Temple and Outland modules.
+------------------------------------------------------------------------
 r80076 | 7destiny | 2008-08-09 23:28:08 -0400 (Sat, 09 Aug 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/ZulAman/Nalorakk.lua

@@ -178,6 +178,12 @@ local node_ids = {
 		--[NL["Large Obsidian Chunk"]] 			= 225, -- found only in AQ20/40
 		--[NL["Small Obsidian Chunk"]] 			= 226, -- found only in AQ20/40
 		[NL["Nethercite Deposit"]] 				= 227,
+		-- Wrath place holders
+		[NL["Cobalt Node"]]						= 228,
+		[NL["Rich Cobalt Node"]]				= 229,
+		[NL["Titanium Node"]]					= 230,
+		[NL["Saronite Node"]]					= 231,
+		[NL["Rich Saronite Node"]]				= 232,
 	},
 	["Extract Gas"] = {
 		[NL["Windy Cloud"]] 					= 301,
@@ -228,6 +234,15 @@ local node_ids = {
 		[NL["Ragveil"]] 						= 440,
 		[NL["Flame Cap"]] 						= 441,
 		[NL["Netherdust Bush"]] 				= 442,
+		-- Wrath herbs
+		[NL["Adder's Tongue"]]					= 443,
+		[NL["Constrictor Grass"]]				= 444,
+		[NL["Deadnettle"]]						= 445,
+		[NL["Goldclover"]]						= 446,
+		[NL["Icethorn"]]						= 447,
+		[NL["Lickbloom"]]						= 448,
+		[NL["Talandra's Rose"]]					= 449,
+		[NL["Tiger Lily"]]						= 450,
 	},
 	["Treasure"] = {
 		[NL["Giant Clam"]] 						= 501,
@@ -362,6 +377,12 @@ local node_textures = {
 		[225] = icon_path.."Mine\\ethernium.tga",
 		[226] = icon_path.."Mine\\ethernium.tga",
 		[227] = icon_path.."Mine\\ethernium.tga",
+		-- place holder graphic
+		[228] = icon_path.."Mine\\ethernium.tga",
+		[229] = icon_path.."Mine\\ethernium.tga",
+		[230] = icon_path.."Mine\\ethernium.tga",
+		[231] = icon_path.."Mine\\ethernium.tga",
+		[232] = icon_path.."Mine\\ethernium.tga",
 	},
 	["Extract Gas"] = {
 		[301] = icon_path.."Gas\\windy_cloud.tga",
@@ -412,6 +433,15 @@ local node_textures = {
 		[440] = icon_path.."Herb\\ragveil.tga",
 		[441] = icon_path.."Herb\\flame_cap.tga",
 		[442] = icon_path.."Herb\\netherdust.tga",
+		-- place holder graphic
+		[443] = icon_path.."Herb\\felweed.tga",
+		[444] = icon_path.."Herb\\felweed.tga",
+		[445] = icon_path.."Herb\\felweed.tga",
+		[446] = icon_path.."Herb\\felweed.tga",
+		[447] = icon_path.."Herb\\felweed.tga",
+		[448] = icon_path.."Herb\\felweed.tga",
+		[449] = icon_path.."Herb\\felweed.tga",
+		[450] = icon_path.."Herb\\felweed.tga",
 	},
 	["Treasure"] = {
 		[501] = icon_path.."Treasure\\clam.tga",

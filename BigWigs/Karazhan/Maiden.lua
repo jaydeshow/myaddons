@@ -148,7 +148,7 @@ L:RegisterTranslations("esES", function() return {
 -- Translated by wow.playhard.ru translators
 L:RegisterTranslations("ruRU", function() return {
 	engage_trigger = "Ваше поведение нестерпимо.",
-	engage_message = "Пресветлая дева Engaged! Покаяние за ~33сек",
+	engage_message = "Контакт с Пресветлой девой! Покаяние за ~33сек",
 
 	repentance = "Покаяние",
 	repentance_desc = "Таймер отсчета до Покаяния.",
@@ -174,7 +174,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16457
 mod.toggleoptions = {"repentance", -1, "holyfire", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80015 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

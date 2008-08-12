@@ -140,6 +140,8 @@ DC.DebuffHistoryLength = 40; -- we use a rather high value to avoid garbage crea
 
 DC.StartTime = GetTime();
 
+DC.WotLK = select(4,GetBuildInfo()) >= 30000;
+
 D.DebuffHistory = {};
 
 D.MFContainer = false;
@@ -1119,7 +1121,7 @@ function D:SetDateAndRevision (Date, Revision)
     end
 end
 
-D:SetDateAndRevision("$Date: 2008-07-30 20:14:06 -0400 (Wed, 30 Jul 2008) $", "$Revision: 79541 $");
+D:SetDateAndRevision("$Date: 2008-08-11 22:50:10 -0400 (Mon, 11 Aug 2008) $", "$Revision: 80230 $");
 
 DcrLoadedFiles["DCR_init.lua"] = true;
 

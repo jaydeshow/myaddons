@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-08-09 18:05:16 -0400 (Sat, 09 Aug 2008) $
-$Rev: 80048 $
+$Date: 2008-08-12 01:14:29 -0400 (Tue, 12 Aug 2008) $
+$Rev: 80247 $
 
 Author: Ackis on Illidan US Horde
 
@@ -140,6 +140,9 @@ addon.KnowProfession = {
 	["Inscription"] = false,
 	}
 addon.wrath = false
+-- Added by ZJ for gui stuff
+addon.CurrentProf = "alchemy"
+addon.maxVisibleRecipes = 19
 
 -- Frame variables
 addon.ScanButton = nil
@@ -174,7 +177,6 @@ local addonversion = GetAddOnMetadata("AckisRecipeList", "Version") .. " v." .. 
 local nagrandfac = BFAC["Kurenai"] .. "\\" .. BFAC["The Mag'har"]
 local hellfirefac = BFAC["Honor Hold"] .. "\\" .. BFAC["Thrallmar"]
 local factionlevels = {}
-local maxspells = 60000
 
 -- Global constants which are used between multiple files
 addon.ARLTitle = "Ackis Recipe List v." .. addonversion
@@ -1424,7 +1426,7 @@ function addon:CheckRecipe(RecipeName)
 	else
 		self:Print(L["MissingFromDBWarning"])
 		-- Notify users in chat that skill is missing from the database.
-		for i = 1, maxspells do
+		for i = 1, 50000 do
 			local spellName = GetSpellInfo(i)
 			if (spellName and (spellName:lower() == RecipeName:lower())) then
 				self:printMissingSkill(RecipeName,i)
@@ -2100,7 +2102,6 @@ local function InitializeTradeRecipes(CurrentProfession)
 	if (addon.wrath) then
 		professiontable[GetSpellInfo(45357)] = addon.InitInscription
 		professiontable[GetSpellInfo(7411)] = addon.InitEnchanting
-		professiontable[GetSpellInfo(53428)] = addon.InitRuneforging
 	end
 
 	-- Thanks to sylvanaar/xinhuan for the code snippet
@@ -2108,10 +2109,8 @@ local function InitializeTradeRecipes(CurrentProfession)
 
 	if a then
 		a(addon)
-		return true
 	else
 		addon:Print(L["UnknownTradeSkill"]:format(CurrentProfession))
-		return false
 	end
 
 end
@@ -2313,10 +2312,7 @@ function addon:AckisRecipeList_Command()
 		-- Get the name of the current trade skill opened, along with the current level of the skill.
 		CurrentProfession, CurrentProfessionLevel = GetTradeSkillLine()
 		CurrentSpeciality = self:GetTradeSpeciality(CurrentProfession)
-		-- If it's an unknown skill, lets stop what we're doing
-		if (InitializeTradeRecipes(CurrentProfession) == false) then
-			return
-		end
+		InitializeTradeRecipes(CurrentProfession)
 
 		if (CurrentProfession == GetSpellInfo(2842)) then
 			-- Player level = profession level for rogue poisons

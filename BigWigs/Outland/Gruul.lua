@@ -226,6 +226,34 @@ L:RegisterTranslations("esES", function() return {
 
 	shatter_message = "Trizar",
 } end)
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	engage_trigger = "Иди… и умри.",
+	engage_message = "Контакт с %s!",
+
+	grow = "Расти!",
+	grow_desc = "Count and warn for Grull's grow.",
+	grow_message = "Раста: (%d)",
+	grow_bar = "Расти! (%d)",
+
+	grasp = "Хватка",
+	grasp_desc = "Grasp warnings and timers.",
+	grasp_message = "Прах земной - Раскалывание за ~10сек!",
+	grasp_warning = "Скоро Прах земной",
+	grasp_bar = "~Прах земной",
+
+	cavein = "Вы под Завалом",
+	cavein_desc = "Warn for a Cave In on You.",
+	cavein_message = "Вы под Завалом!",
+
+	silence = "Молчание",
+	silence_desc = "Warn when Gruul casts AOE Silence (Reverberation).",
+	silence_message = "Массовое Молчание",
+	silence_warning = "Скоро Массовое Молчание!",
+	silence_bar = "~Молчание",
+
+	shatter_message = "Раскалывание!",
+} end)
 
 ----------------------------------
 --      Module Declaration      --
@@ -237,7 +265,7 @@ mod.otherMenu = "Outland"
 mod.enabletrigger = boss
 mod.guid = 19044
 mod.toggleoptions = {"grasp", "grow", -1, "cavein", "silence", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76592 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 mod.proximityCheck = function(unit)
 	for k, v in pairs(bandages) do
 		if IsItemInRange(k, unit) == 1 then
