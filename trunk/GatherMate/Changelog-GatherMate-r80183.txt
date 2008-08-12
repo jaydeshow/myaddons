@@ -1,4 +1,42 @@
 ------------------------------------------------------------------------
+r80183 | doktorjet | 2008-08-11 11:46:12 -0400 (Mon, 11 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: minor fixes in ruRU locale
+------------------------------------------------------------------------
+r80164 | kagaro | 2008-08-11 01:53:29 -0400 (Mon, 11 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Constants.lua
+   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
+
+GatherMate: fixed typo in rich cobalt node
+------------------------------------------------------------------------
+r80125 | doktorjet | 2008-08-10 15:12:55 -0400 (Sun, 10 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: ruRU locale - minor fixes
+------------------------------------------------------------------------
+r80124 | xinhuan | 2008-08-10 14:47:39 -0400 (Sun, 10 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Constants.lua
+   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
+
+GatherMate: Typo fix for herb name, Adder's Tonhue -> Adder's Tongue
+------------------------------------------------------------------------
+r80113 | xinhuan | 2008-08-10 11:51:21 -0400 (Sun, 10 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
+
+GatherMate: Add new WotLK nodes to base enUS locale so that the addon doesn't error.
+------------------------------------------------------------------------
+r80102 | kagaro | 2008-08-10 09:37:23 -0400 (Sun, 10 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Constants.lua
+
+GatherMate: added new herb and mining node placeholder data. Will get a real graphic before beta ends, and since the mineral nodes in wrath currently have a placeholder name, expect this ti change before wraht goes live
+------------------------------------------------------------------------
 r80086 | xinhuan | 2008-08-10 03:42:44 -0400 (Sun, 10 Aug 2008) | 1 line
 Changed paths:
    M /trunk/GatherMate/Collector.lua

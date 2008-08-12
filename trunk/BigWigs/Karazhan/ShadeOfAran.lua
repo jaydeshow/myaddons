@@ -216,6 +216,35 @@ L:RegisterTranslations("esES", function() return {
 	flame_message = "¡Corona de Llamas! %s",
 	flame_bar = "<Corona de Llamas>",
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	adds = "Элементали",
+	adds_desc = "Предупреждать о появлении водных элементалей.",
+	adds_message = "Надвигаются Элементали!",
+	adds_warning = "Скоро Элементали",
+	adds_bar = "Исчезновение Элементалей",
+
+	drink = "Выпивание",
+	drink_desc = "Предупреждать когда Аран начинает Выпивание.",
+	drink_warning = "Мало маны - Скоро Выпивание!",
+	drink_message = "Выпивание - Масс Превращение",
+	drink_bar = "Надвигается Огненная глыба",
+
+	blizzard = "Снежная буря",
+	blizzard_desc = "Предупреждать о начале появления снежной бури.",
+	blizzard_message = "Снежная буря!",
+
+	pull = "Тяга/Супер ВВ",
+	pull_desc = "Предупреждать о магнитном притягивании и Супер Волшебном взрыве.",
+	pull_message = "Волшебный взрыв!",
+	pull_bar = "Волшебный взрыв",
+
+	flame = "Венец Пламени",
+	flame_desc = "Предупреждать о начале применения Венца Пламени.",
+	flame_warning = "Чтение: Венец Пламени!",
+	flame_message = "Венец Пламени! %s",
+	flame_bar = "Венец Пламени",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -226,7 +255,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16524
 mod.toggleoptions = {"adds", "drink", -1, "blizzard", "pull", "flame", "bosskill"}
-mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

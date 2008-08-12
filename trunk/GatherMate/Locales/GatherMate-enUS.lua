@@ -252,6 +252,12 @@ NL["Khorium Vein"] = true
 --NL["Large Obsidian Chunk"] = true AQ 40
 --NL["Small Obsidian Chunk"] = true AQ 20/40
 NL["Nethercite Deposit"] = true
+NL["Cobalt Node"] = true
+NL["Rich Cobalt Node"] = true
+NL["Titanium Node"] = true
+NL["Saronite Node"] = true
+NL["Rich Saronite Node"] = true
+
 
 -- gas clouds
 NL["Windy Cloud"] = true
@@ -302,6 +308,15 @@ NL["Nightmare Vine"] = true
 NL["Ragveil"] = true
 NL["Flame Cap"] = true
 NL["Netherdust Bush"] = true
+NL["Adder's Tongue"] = true
+NL["Constrictor Grass"] = true
+NL["Deadnettle"] = true
+NL["Goldclover"] = true
+NL["Icethorn"] = true
+NL["Lickbloom"] = true
+NL["Talandra's Rose"] = true
+NL["Tiger Lily"] = true
+
 -- Treasure
 NL["Giant Clam"] = true
 NL["Battered Chest"] = true

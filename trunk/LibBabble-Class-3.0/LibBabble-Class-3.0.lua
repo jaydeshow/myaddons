@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Class-3.0
-Revision: $Rev: 79487 $
+Revision: $Rev: 80256 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for classes.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Class-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 79487 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 80256 $"):match("(%d+)"))
 
 if not LibStub then error("LibBabble-Class-3.0 requires LibStub.") end
 local lib = LibStub("LibBabble-3.0"):New(MAJOR_VERSION, MINOR_VERSION)
@@ -25,6 +25,7 @@ lib:SetBaseTranslations {
 	Paladin = true,
 	Shaman = true,
 	Rogue = true,
+	Deathknight = true,
 
 	WARLOCK = true,
 	WARRIOR = true,
@@ -35,6 +36,7 @@ lib:SetBaseTranslations {
 	PALADIN = true,
 	SHAMAN = true,
 	ROGUE = true,
+	DEATHKNIGHT = true,
 }
 
 local l = GetLocale()
@@ -73,6 +75,7 @@ elseif l == "frFR" then
 		["Paladin"] = "Paladin",
 		["Shaman"] = "Chaman",
 		["Rogue"] = "Voleur",
+		["Deathknight"] = "Chevalier de la mort",
 
 		["WARRIOR"] = "Guerrière",
 		["HUNTER"] = "Chasseresse",
@@ -115,6 +118,7 @@ elseif l == "zhTW" then
 		["Paladin"] = "聖騎士",
 		["Shaman"] = "薩滿",
 		["Rogue"] = "盜賊",
+		["Deathknight"] = "死亡騎士",
 
 		["WARLOCK"] = "術士",
 		["WARRIOR"] = "戰士",
@@ -137,6 +141,7 @@ elseif l == "koKR" then
 		["Paladin"] = "성기사",
 		["Shaman"] = "주술사",
 		["Rogue"] = "도적",
+		["Deathknight"] = "죽음의 기사",
 		
 		["WARLOCK"] = "흑마법사",
 		["WARRIOR"] = "전사",
@@ -147,6 +152,7 @@ elseif l == "koKR" then
 		["PALADIN"] = "성기사",
 		["SHAMAN"] = "주술사",
 		["ROGUE"] = "도적",
+		["DEATHKNIGHT"] = "죽음의 기사",
 	}
 elseif l == "esES" then
 	lib:SetCurrentTranslations {

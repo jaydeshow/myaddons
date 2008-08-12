@@ -105,6 +105,19 @@ L:RegisterTranslations("esES", function() return {
 	curse_message = "Presencia intangible - %s",
 } end)
 
+L:RegisterTranslations("ruRU", function() return {
+	phase = "Фаза",
+	phase_desc = "Предупреждать о смене фаз.",
+	phase2_trigger = "%s зовет своего господина!",
+	phase2_message = "Фаза 2 - %s и Аттумен",
+	phase3_trigger = "Давай, Полночь, разгоним этот сброд!",
+	phase3_message = "Фаза 3 - %s",
+
+	curse = "Проклятье на Танке",
+	curse_desc = "Предупреждать когда танк проклят Незримым присутствием.",
+	curse_message = "Танк Проклят - %s",
+} end)
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -114,7 +127,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {horse, boss}
 mod.guid = 16152
 mod.toggleoptions = {"phase", "curse", "bosskill"}
-mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

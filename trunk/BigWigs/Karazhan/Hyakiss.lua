@@ -52,6 +52,15 @@ L:RegisterTranslations("esES", function() return {
 	web_message = "¡%s tiene Red de Hyakiss!",
 	web_bar = "Red de Hyakiss: %s",
 } end )
+
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	web = "Цепь",
+	web_desc = "Предупреждать о поподании игроков в цепи.",
+	web_message = "%s затачен в цепи!",
+	web_bar = "Цепи на: %s",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -61,7 +70,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16179
 mod.toggleoptions = {"web", "bosskill"}
-mod.revision = tonumber(("$Revision: 76594 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

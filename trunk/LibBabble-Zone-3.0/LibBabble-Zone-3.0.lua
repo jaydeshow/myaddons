@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 80077 $
+Revision: $Rev: 80108 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 80077 $"
+local MINOR_VERSION = "$Revision: 80108 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -756,6 +756,7 @@ elseif GAME_LOCALE == "frFR" then
 		["Azeroth"] = "Azeroth",
 		["Eastern Kingdoms"] = "Royaumes de l'est",
 		["Kalimdor"] = "Kalimdor",
+		["Northrend"] = "Norfendre",
 		["Outland"] = "Outreterre",
 		["Cosmic map"] = "Carte cosmique",
 
@@ -776,6 +777,7 @@ elseif GAME_LOCALE == "frFR" then
 		["Blackwing Lair"] = "Repaire de l'Aile noire",
 		["Blasted Lands"] = "Terres foudroyées",
 		["Booty Bay"] = "Baie-du-Butin",
+		["Borean Tundra"] = "Toundra Boréenne",
 		["Burning Steppes"] = "Steppes ardentes",
 		["Darkshore"] = "Sombrivage",
 		["Darnassus"] = "Darnassus",
@@ -787,6 +789,7 @@ elseif GAME_LOCALE == "frFR" then
 		["Dire Maul (East)"] = "Hache-tripes (Est)",
 		["Dire Maul (West)"] = "Hache-tripes (Ouest)",
 		["Dire Maul (North)"] = "Hache-tripes (Nord)",
+		["Dragonblight"] = "Désolation des dragons",
 		["Dun Morogh"] = "Dun Morogh",
 		["Durotar"] = "Durotar",
 		["Duskwood"] = "Bois de la Pénombre",
@@ -801,13 +804,17 @@ elseif GAME_LOCALE == "frFR" then
 		["Gates of Ahn'Qiraj"] = "Portes d'Ahn'Qiraj",
 		["Gnomeregan"] = "Gnomeregan",
 		["Grom'gol Base Camp"] = "Campement Grom'gol",
+		["Grizzly Hills"] = "Les Grisonnes",
 		["The Great Sea"] = "La Grande mer",
 		["Hall of Legends"] = "Hall des Légendes",
 		["Hillsbrad Foothills"] = "Contreforts de Hautebrande",
+		["Howling Fjord"] = "Fjord Hurlant",
 		["The Hinterlands"] = "Les Hinterlands",
 		["Hyjal"] = "Hyjal",
 		["Hyjal Summit"] = "Sommet d'Hyjal",
+		["Icecrown"] = "La Couronne de glace",
 		["Ironforge"] = "Forgefer",
+		--["Lake Wintergrasp"] = true,
 		["Loch Modan"] = "Loch Modan",
 		["Lower Blackrock Spire"] = "Pic de Rochenoire inférieur",
 		["Maraudon"] = "Maraudon",
@@ -828,12 +835,15 @@ elseif GAME_LOCALE == "frFR" then
 		["Scholomance"] = "Scholomance",
 		["Searing Gorge"] = "Gorge des Vents brûlants",
 		["Shadowfang Keep"] = "Donjon d'Ombrecroc",
+		["Sholazar Basin"] = "Bassin de Sholazar",
 		["Silithus"] = "Silithus",
 		["Silverpine Forest"] = "Forêt des Pins argentés",
 		["The Stockade"] = "La Prison",
-		--["Stonard"] = "",
+		["Stonard"] = "Pierrêche",
 		["Stonetalon Mountains"] = "Les Serres-Rocheuses",
+		["The Storm Peaks"] = "Les pics Foudroyés",
 		["Stormwind City"] = "Hurlevent",
+		["Stormwind"] = "Hurlevent",
 		["Stranglethorn Vale"] = "Vallée de Strangleronce",
 		["Stratholme"] = "Stratholme",
 		["Swamp of Sorrows"] = "Marais des Chagrins",
@@ -855,10 +865,12 @@ elseif GAME_LOCALE == "frFR" then
 		["Westfall"] = "Marche de l'Ouest",
 		["Wetlands"] = "Les Paluns",
 		["Winterspring"] = "Berceau-de-l'Hiver",
+		["Zul'Drak"] = "Zul'Drak",
 		["Zul'Farrak"] = "Zul'Farrak",
 		["Zul'Gurub"] = "Zul'Gurub",
 
 		["Champions' Hall"] = "Hall des Champions",
+		["Hall of Champions"] = "Hall des Champions",
 		["Blade's Edge Arena"] = "Arène des Tranchantes",
 		["Nagrand Arena"] = "Arène de Nagrand",
 		["Ruins of Lordaeron"] = "Ruines de Lordaeron",
@@ -916,6 +928,7 @@ elseif GAME_LOCALE == "frFR" then
 		["The Eye"] = "L'Œil",
 		["Eye of the Storm"] = "L'Œil du cyclone",
 		["Shattrath City"] = "Shattrath",
+		["Shattrath"] = "Shattrath",
 		["Karazhan"] = "Karazhan",
 		["Caverns of Time"] = "Grottes du temps",
 		["Old Hillsbrad Foothills"] = "Contreforts de Hautebrande d'antan",
@@ -930,18 +943,52 @@ elseif GAME_LOCALE == "frFR" then
 		["Magisters' Terrace"] = "Terrasse des Magistères",
 
 		-- Blade's Edge Plateau
-		["Forge Camp: Terror"] = "",
-		["Vortex Pinnacle"] = "",
-		["Rivendark's Perch"] = "",
-		["Ogri'la"] = "",
-		["Obsidia's Perch"] = "",
-		["Skyguard Outpost"] = "",
-		["Shartuul's Transporter"] = "",
-		["Forge Camp: Wrath"] = "",
-		["Bash'ir Landing"] = "",
-		["Crystal Spine"] = "",
-		["Insidion's Perch"] = "",
-		["Furywing's Perch"] = "",
+		["Forge Camp: Terror"] = "Camp de forge : Terreur",
+		["Vortex Pinnacle"] = "Cime du vortex",
+		["Rivendark's Perch"] = "Perchoir de Clivenuit",
+		["Ogri'la"] = "Ogri'la",
+		["Obsidia's Perch"] = "Perchoir d'Obsidia",
+		["Skyguard Outpost"] = "Avant-poste de la Garde-ciel",
+		["Shartuul's Transporter"] = "Transporteur de Shartuul",
+		["Forge Camp: Wrath"] = "Camp de forge : Courroux",
+		["Bash'ir Landing"] = "Point d'ancrage de Bash'ir",
+		["Crystal Spine"] = "Éperon de cristal",
+		["Insidion's Perch"] = "Perchoir d'Insidion",
+		["Furywing's Perch"] = "Perchoir d'Aile-furie",
+
+		["Tirisfal"] = "Tirisfal",
+		["Sunken Temple"] = "Temple englouti",
+
+		-- Wrath of the Lich King - All will need translations
+
+		-- Subzones used for displaying instances.
+
+		["Borean Tundra"] = "Toundra Boréenne",
+		["Crystalsong Forest"] = "Forêt du Chant de cristal",
+		["Dalaran"] = "Dalaran",
+		["Dragonblight"] = "Désolation des dragons",
+		["Grizzly Hills"] = "Les Grisonnes",
+		["Howling Fjord"] = "Fjord Hurlant",
+		["Icecrown"] = "La Couronne de glace",
+		["Wintergrasp"] = "Joug-d'hiver",
+		["Sholazar Basin"] = "Bassin de Sholazar",
+		["The Storm Peaks"] = "Les pics Foudroyés",
+		["Zul'Drak"] = "Zul'Drak",
+
+		["Azjol-Nerub"] = "Azjol-Nerub",
+		["Chamber of Aspects"] = "La Chambre des Aspects",
+		["Drak'Tharon Keep"] = "Donjon de Drak'Tharon",
+		["Gundrak"] = "Gundrak",
+		["Halls of Stone"] = "Les salles de Pierre",
+		["Halls of Lightning"] = "Les salles de Foudre",
+		["The Eye of Eternity"] = "L'Œil d'Eternité",
+		["The Nexus"] = "Le Nexus",
+		["The Oculus"] = "L'Oculus",
+		["The Violet Hold"] = "Le Fort pourpre",
+		["Ulduar"] = "Ulduar", --Site seem uncertain on the name
+		["Utgarde Keep"] = "Donjon d'Utgarde",
+		["Utgarde Pinnacle"] = "Cime d'Utgarde",
+		["Stratholme Past"] = "Stratholme du passé",
 	}
 elseif GAME_LOCALE == "zhCN" then
 	lib:SetCurrentTranslations {

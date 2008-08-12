@@ -5,8 +5,8 @@ ARLColour.lua
 
 Colouring functions for ARL
 
-$Date: 2008-08-02 04:30:55 -0400 (Sat, 02 Aug 2008) $
-$Rev: 79644 $
+$Date: 2008-08-12 01:14:29 -0400 (Tue, 12 Aug 2008) $
+$Rev: 80247 $
 
 Code adopted from Crayon library
 
@@ -34,6 +34,7 @@ local PURPLE	= "9980CC"
 local BLUE		= "0000ff"
 local CYAN		= "00ffff"
 local BLACK		= "000000"
+local GREY		= "666666"
 local NEUTRAL	= "bfbfbf"
 local FRIENDLY	= WHITE
 local HONORED	= "00ff00"
@@ -141,4 +142,9 @@ end
 -- Converts text to Black
 function addon:Black(text)
 	return self:Colourize(BLACK, text)
+end
+
+-- Converts text to Grey
+function addon:Grey(text)
+	return self:Colourize(GREY, text)
 end

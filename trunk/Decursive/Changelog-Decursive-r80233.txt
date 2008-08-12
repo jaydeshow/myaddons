@@ -1,4 +1,33 @@
 ------------------------------------------------------------------------
+r80233 | archarodim | 2008-08-11 22:58:49 -0400 (Mon, 11 Aug 2008) | 5 lines
+Changed paths:
+   M /trunk/Decursive/localization.lua
+
+Decursive:
+(revision 80230 changes)
+- The bug tracking message about "mouseover is not MUF" will only be displayed when the user tries to click on a MUF and if, of course, mousover is not set to the MUF's unit (mouseover seems to take its time to be set properly :/).
+- WotLK fix: The priority and skip list were not displayed, and lua error occurred when the list UI was used.
+- WotLK: Added the Deathknight class to the populate buttons of the lists
+------------------------------------------------------------------------
+r80230 | archarodim | 2008-08-11 22:50:10 -0400 (Mon, 11 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+   M /trunk/Decursive/Dcr_Raid.lua
+   M /trunk/Decursive/Dcr_lists.lua
+   M /trunk/Decursive/Dcr_lists.xml
+   M /trunk/Decursive/localization.lua
+
+Decursive:
+- 
+------------------------------------------------------------------------
+r80169 | archarodim | 2008-08-11 05:08:51 -0400 (Mon, 11 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/Dcr_DebuffsFrame.lua
+
+Decursive:
+- Fixed the "mouseover is not MUF" message for WotLK (where mouseover is no longer set for not UnitVisible() units)
+------------------------------------------------------------------------
 r79928 | archarodim | 2008-08-07 16:31:13 -0400 (Thu, 07 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/Decursive/Dcr_DebuffsFrame.lua

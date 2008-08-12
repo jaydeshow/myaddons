@@ -223,6 +223,35 @@ L:RegisterTranslations("deDE", function() return {
 	icon_desc = "Platziere ein Schlachtzugsymbol auf dem Spieler, der von Flammenschock betroffen ist (benötigt Assistent oder höher).",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	engage_trigger = "Встаньте на колени и поклонитесь клыку и когтю!",
+
+	totem = "Totem",
+	totem_desc = "Warn when Halazzi casts a Lightning Totem.",
+	totem_message = "Incoming Lightning Totem!",
+
+	phase = "Phases",
+	phase_desc = "Warn for phase changes.",
+	phase_spirit = "Со мною дикий дух…",
+	phase_normal = "О дух, вернись ко мне!",
+	normal_message = "Normal Phase!",
+	spirit_message = "%d%% HP! - Spirit Phase!",
+	spirit_soon = "Spirit Phase soon!",
+	spirit_bar = "~Possible Normal Phase",
+
+	frenzy = "Frenzy",
+	frenzy_desc = "Frenzy alert.",
+	frenzy_trigger = "%s впадает в убийственную ярость!",
+	frenzy_message = "Frenzy!",
+
+	flame = "Flame Shock",
+	flame_desc = "Warn for players with Flame Shock.",
+	flame_message = "Flame Shock: %s",
+
+	icon = "Raid Icon",
+	icon_desc = "Place a Raid Target Icon on the player with Flame Shock. (requires promoted or higher)",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -232,7 +261,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23577
 mod.toggleoptions = {"totem", "phase", "frenzy", -1, "flame", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 78512 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80166 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

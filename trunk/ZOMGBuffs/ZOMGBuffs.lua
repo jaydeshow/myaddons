@@ -88,17 +88,18 @@ do
 	end
 	function del(t)
 		if (t) then
+			setmetatable(t, nil)
 			for k in pairs(t) do
 				t[k] = nil
 			end
 			t[''] = true
 			t[''] = nil
 			list[t] = true
-			setmetatable(t, nil)
 		end
 	end
 	function deepDel(t)
 		if (t) then
+			setmetatable(t, nil)
 			for k,v in pairs(t) do
 				if type(v) == "table" then
 					deepDel(v)
@@ -108,7 +109,6 @@ do
 			t[''] = true
 			t[''] = nil
 			list[t] = true
-			setmetatable(t, nil)
 		end
 	end
 	function copy(old)
@@ -217,7 +217,7 @@ do
 	end
 end
 
-z.version = tonumber(string.sub("$Revision: 75360 $", 12, -3)) or 1
+z.version = tonumber(string.sub("$Revision: 80156 $", 12, -3)) or 1
 z.versionCompat = 65478
 z.title = L["TITLE"]
 z.titleColour = L["TITLECOLOUR"]
@@ -1375,7 +1375,7 @@ do
 		local index = UnitInRaid(who)
 		if (index) then
 			local name, rank, group = GetRaidRosterInfo(index + 1)
-			return rank
+			return rank or 0
 		elseif (GetNumPartyMembers() > 0) then
 			local index = GetPartyLeaderIndex()
 			if (UnitIsUnit(who, "player")) then
@@ -4037,8 +4037,8 @@ dummy:SetScript("OnUpdate",
 		self:Hide()
 	end)
 
--- RAID_ROSTER_UPDATED
-function z:RAID_ROSTER_UPDATED()
+-- RAID_ROSTER_UPDATE
+function z:RAID_ROSTER_UPDATE()
 	self.unknownUnits = del(self.unknownUnits)
 	if (self:IsEventRegistered("UNIT_NAME_UPDATE")) then
 		self:UnregisterEvent("UNIT_NAME_UPDATE")
@@ -5376,8 +5376,8 @@ function z:OnEnable()
 	self.enabled = true
 	self:SetKeyBindings()
 
-	self:RegisterEvent("RAID_ROSTER_UPDATED")
-	self:RegisterEvent("PARTY_MEMBERS_CHANGED", "RAID_ROSTER_UPDATED")
+	self:RegisterEvent("RAID_ROSTER_UPDATE")
+	self:RegisterEvent("PARTY_MEMBERS_CHANGED", "RAID_ROSTER_UPDATE")
 	self:RegisterEvent("UNIT_AURA")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED")

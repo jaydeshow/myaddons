@@ -1,15 +1,17 @@
 --[[
 Name: SpecialEvents-Aura-2.0
-Revision: $Rev: 59749 $
+Revision: $Rev: 80144 $
 Author: Tekkub Stoutwrithe (tekkub@gmail.com)
 Website: http://www.wowace.com/
 Description: Special events for Auras, (de)buffs gained, lost etc.
 Dependencies: AceLibrary, AceEvent-2.0
 --]]
 
-local vmajor, vminor = "SpecialEvents-Aura-2.0", "$Revision: 59749 $"
+local vmajor, vminor = "SpecialEvents-Aura-2.0", "$Revision: 80144 $"
 
 local AceLibrary = AceLibrary
+local WoTLK = select(4, GetBuildInfo()) >= 30000
+
 
 if not AceLibrary then error(vmajor .. " requires AceLibrary.") end
 if not AceLibrary:HasInstance("AceEvent-2.0") then error(vmajor .. " requires AceEvent-2.0.") end
@@ -30,11 +32,13 @@ local type = type
 local UnitExists = UnitExists
 local UnitIsUnit = UnitIsUnit
 local GetNumRaidMembers = GetNumRaidMembers
-local GetPlayerBuff = GetPlayerBuff
-local GetPlayerBuffName = GetPlayerBuffName
-local GetPlayerBuffTexture = GetPlayerBuffTexture
-local GetPlayerBuffApplications = GetPlayerBuffApplications
-local GetPlayerBuffDispelType = GetPlayerBuffDispelType
+if not WoTLK then
+	local GetPlayerBuff = GetPlayerBuff
+	local GetPlayerBuffName = GetPlayerBuffName
+	local GetPlayerBuffTexture = GetPlayerBuffTexture
+	local GetPlayerBuffApplications = GetPlayerBuffApplications
+	local GetPlayerBuffDispelType = GetPlayerBuffDispelType
+end
 local UnitBuff = UnitBuff
 local UnitDebuff = UnitDebuff
 
@@ -277,7 +281,7 @@ do
 			-- result of GetPlayerBuff and the index used by UnitBuff.
 			-- GetPlayerBuff sucks, but we need it for backwards
 			-- compatability.
-			if unit == "player" then
+			if unit == "player" and not WoTLK then
 				local pindex = GetPlayerBuff(i, "HELPFUL")
 				if pindex > 0 then
 					name, rank = GetPlayerBuffName(pindex)
@@ -368,7 +372,7 @@ do
 		while true do
 			local name, rank, icon, count, dispelType, duration, timeLeft
 
-			if unit == "player" then
+			if unit == "player" and not WoTLK then
 				local pindex = GetPlayerBuff(i, "HARMFUL")
 				if pindex > 0 then
 					name, rank = GetPlayerBuffName(pindex)

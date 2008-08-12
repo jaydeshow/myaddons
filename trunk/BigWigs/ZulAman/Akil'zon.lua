@@ -139,6 +139,24 @@ L:RegisterTranslations("esES", function() return {
 	icon = "Icono de banda",
 	icon_desc = "Pone un icono de banda en el jugador con Tormenta eléctrica. (Requiere derechos de banda)",
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	engage_trigger = "Я хищник! Ты – моя добыча!",
+	engage_message = "Контакт с %s - Буря за ~55сек!",
+
+	elec = "Электрическая буря",
+	elec_desc = "Warn who has Electrical Storm.",
+	elec_bar = "~перезарядка Бури",
+	elec_message = "Буря на %s!",
+	elec_warning = "Скоро Буря!",
+
+	ping = "Ping",
+	ping_desc = "Ping your current location if you are afflicted by Electrical Storm.",
+	ping_message = "Storm - Pinging your location!",
+
+	icon = "Raid Icon",
+	icon_desc = "Place a Raid Target Icon on the player with Electrical Storm. (requires promoted or higher)",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -149,7 +167,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23574
 mod.toggleoptions = {"elec", "ping", "icon", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

@@ -293,6 +293,46 @@ L:RegisterTranslations("zhTW", function() return {
 	smash_desc = "顯示圓弧斬倒數計時條",
 	smash_bar = "<圓弧斬>",
 } end)
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	engage_trigger = "Гронны – настоящая сила в Запределье!",
+
+	heal = "Исцеление",
+	heal_desc = "Warn when Blindeye the Seer begins to cast a Heal.",
+	heal_message = "Слепоглаз выполняет Молитву исцеления!",
+	heal_bar = "Исцеление",
+
+	shield = "Щит",
+	shield_desc = "Warn when Blindeye the Seer gains Greater Power Word: Shield.",
+	shield_message = "Щит на Слепоглазе!",
+
+	spellshield = "Щит заклятий",
+	spellshield_desc = "Warn when Krosh Firehand gains Spell Shield.",
+	spellshield_message = "Щит заклятий на Кроше!",
+	spellshield_bar = "След Щит заклятий",
+
+	summon = "Призвание дикого Охотника Скверны",
+	summon_desc = "Warn when Olm the Summoner begins to cast Summon Wild Felhunter.",
+	summon_message = "Призван Охотник Скверны!",
+	summon_bar = "~Охотник Скверны",
+
+	whirlwind = "Вихрь",
+	whirlwind_desc = "Warn when Maulgar gains Whirlwind.",
+	whirlwind_message = "Молгар - Вихрь за 15сек!",
+	whirlwind_bar = "Вихрь",
+	whirlwind_nextbar = "~перезарядка Вихря",
+	whirlwind_warning1 = "Контакт с Молгаром - Вихрь за ~50сек!",
+	whirlwind_warning2 = "Скоро Вихрь!",
+
+	flurry = "Шквал",
+	flurry_desc = "Warn when Maulgar is close to Flurry and gains Flurry.",
+	flurry_message = "50% - Шквал!",
+	flurry_warning = "Скоро Шквал!",
+
+	smash = "Удар по дуге",
+	smash_desc = "Show a bar for estimated Arcing Smash.",
+	smash_bar = "~Удар по дуге",
+} end)
 
 ----------------------------------
 --      Module Declaration      --
@@ -304,7 +344,7 @@ mod.otherMenu = "Outland"
 mod.enabletrigger = {boss, mage, lock, priest, shaman}
 mod.guid = 18831
 mod.toggleoptions = {"shield", "spellshield", "heal", -1, "summon", -1, "whirlwind", "flurry", "smash", "bosskill"}
-mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80262 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

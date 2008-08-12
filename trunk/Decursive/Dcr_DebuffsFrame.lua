@@ -28,7 +28,7 @@ if not DcrLoadedFiles or not DcrLoadedFiles["Dcr_lists.xml"] or not DcrLoadedFil
 end
 
 local D   = Dcr;
-D:SetDateAndRevision("$Date: 2008-08-07 16:31:13 -0400 (Thu, 07 Aug 2008) $", "$Revision: 79928 $");
+D:SetDateAndRevision("$Date: 2008-08-11 22:50:10 -0400 (Mon, 11 Aug 2008) $", "$Revision: 80230 $");
 
 
 local L	    = D.L;
@@ -501,7 +501,6 @@ end
 
 -- Event management functions
 -- MUF EVENTS (MicroUnitF children) (OnEnter, OnLeave, OnCornerClick, OnLoad, OnPreClick) {{{
-
 -- It's outside the function to avoid creating and discarding this table at each call
 local DefaultTTAnchor = {"ANCHOR_TOPLEFT", 0, 6};
 -- This function is responsible for showing the tooltip when the mouse pointer is over a MUF
@@ -514,9 +513,14 @@ function MicroUnitF:OnEnter() -- {{{
     local Unit = MF.CurrUnit; -- shortcut
     local TooltipText = "";
 
-    if not UnitIsUnit("mouseover", Unit) then
-	D:Println("|cFFFF0000ALERT:|r |cFFFFFF60Something strange is happening, mouseover is not MUF!, report this to archarodim@teaser.fr|r", (UnitName("mouseover")), (UnitName(Unit)));
-    end
+    --[=[
+    D:ScheduleEvent("testOnEnter", function(Unit)
+	if UnitIsVisible(Unit) and not UnitIsUnit("mouseover", Unit) then
+	    D:Println("|cFFFF0000ALERT:|r |cFFFFFF60Something strange is happening, mouseover is not MUF!, report this to archarodim@teaser.fr|r", (UnitName("mouseover")), (UnitName(Unit)));
+	end
+    end, 0, Unit );
+    --]=]
+
 
     -- Compare the current unit name to the one storred when the group data were collected
     if (D:PetUnitName(  Unit, true   )) ~= D.Status.Unit_Array_UnitToName[Unit] then
@@ -688,11 +692,14 @@ end
 function MicroUnitF:OnPreClick(Button) -- {{{
 	-- D:Debug("Micro unit Preclicked: ", Button);
 
-	--[=[
-	if D.Status.HasSpell then
-	    D.Status.ClickedMF = this.Object; -- used to update the MUF on cast success and to know which unit is being cured XXX del this line
+	local Unit = this.Object.CurrUnit; -- shortcut
+
+	if UnitIsVisible(Unit) and not UnitIsUnit("mouseover", Unit) then
+	    D:Println("|cFFFF0000ALERT:|r |cFFFFFF60Something strange is happening, mouseover is not MUF(%s)! MOn='%s', Un='%s', UpT=%d\n report this to archarodim@teaser.fr|r",Unit, (UnitName("mouseover")), (UnitName(Unit)), (GetTime() - DC.StartTime));
+
+	    --	     this.Object:UpdateAttributes(Unit);
+
 	end
-	--]=]
 
 	if (this.Object.UnitStatus == NORMAL and (Button == "LeftButton" or Button == "RightButton")) then
 
@@ -1435,4 +1442,4 @@ local MF_Textures = { -- unused
 
 -- }}}
 
-DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = "$Revision: 79928 $";
+DcrLoadedFiles["Dcr_DebuffsFrame.lua"] = "$Revision: 80230 $";
