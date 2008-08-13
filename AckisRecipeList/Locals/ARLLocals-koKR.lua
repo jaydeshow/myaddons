@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-08-06 10:26:20 -0400 (Wed, 06 Aug 2008) $
-$Rev: 79866 $
+$Date: 2008-08-12 10:24:17 -0400 (Tue, 12 Aug 2008) $
+$Rev: 80274 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -154,6 +154,45 @@ L["Alliance"] = "얼라이언스"
 L["Known"] = "배움"
 L["Unknown"] = "배우지 않음"
 
+-- More stuff for new gui, ZJ 7/26/08
+L["General"] = "일반"
+L["Class Specific recipes"] = "직업 전문 제조법"
+L["Craft Specialty recipes"] = "제작 전문 제조법"
+L["All Skill Levels"] = "모든 숙련도"
+L["Item Type"] = "아이템 유형"
+L["Armor"] = "방어구"
+L["Weapon"] = "무기"
+L["Player Type"] = "플레이어 유형"
+L["Tank"] = "탱커"
+L["Healer"] = "힐러"
+L["Melee DPS"] = "근접 DPS"
+L["All"] = "모두"
+L["None"] = "없음"
+L["Dagger"] = "단검"
+L["1H"] = "한손 무기"
+L["2H"] = "양손 무기"
+L["Axe"] = "도끼"
+L["Mace"] = "둔기"
+L["Sword"] = "도검"
+L["Polearm"] = "장창"
+L["Thrown"] = "투척무기"
+L["Ammo"] = "투사체"
+-- unused, but included anyway. Who knows what the future may bring
+L["Bow"] = "활"
+L["Crossbow"] = "석궁"
+L["Staff"] = "지팡이"
+-- More stuff for new GUI, ZJ 8/11/08
+L["Search"] = "검색"
+L["SEARCH_TT"] = "분류에 따른 검색"
+L["Apply"] = "적용"
+L["Apply_TT"] = "제조법리스트에 분류를 적용합니다."
+L["ExpandAll"] = "+ 모두"
+L["EXPAND_TT"] = "모든 제조법을 확장표시합니다."
+L["ContractAll"] = "- 모두"
+L["CONTRACT_TT"] = "모든 제조법을 축소표시합니다."
+L["Clear"] = "(X)"
+L["CLEAR_TT"] = "검색어를 삭제합니다."
+
 -- Tooltip Text
 L["Scan Skills Long"] = "ARL에서 빠진 제조법 검색"
 L["Close Window"] = "ARL 창 닫기"
@@ -176,6 +215,9 @@ L["HORDE_TT"] = "호드만 배울 수 있는 제조법을 선택합니다."
 L["ALLIANCE_TT"] = "얼라이언스만 배울 수 있는 제조법을 선택합니다."
 L["KNOWN_TT"] = "배운 제조법을 선택합니다."
 L["UNKNOWN_TT"] = "배우지 않은 제조법을 선택합니다."
+L["DISCOVERY_TT"] = "발견된 제조법을 선택합니다."
+L["ARMOR_TT"] = "방어구 제조법을 선택합니다."
+L["WEAPON_TT"] = "무기 제조법을 선택합니다."
 
 -- Recipe Database
 L["Trainer"] = "상급자"

@@ -372,7 +372,7 @@ L:RegisterTranslations("deDE", function() return {
 L:RegisterTranslations("ruRU", function() return {
 	engage_trigger1 = "Желаешь проверить меня?",
 	engage_trigger2 = "Общий - такой грубый язык... Вандаль!",
-	engage_trigger3 = "Я полна неожиданностей!", -- check it
+	engage_trigger3 = "I have better things to do...", -- need translate, wrong previous trigger
 	engage_trigger4 = "Убегай или умри!",
 
 	vanish = "Исчезновение",
@@ -383,11 +383,11 @@ L:RegisterTranslations("ruRU", function() return {
 
 	immune = "Невосприимчивость",
 	immune_desc = "Предупреждать когда Маланда становится невосприимчива к заклинаниям и физическим атакам.",
-	immune_message = "Маланда: %s Невосприимчива на 15сек!",
+	immune_message = "Маланда: Невосприимчива к %s на 15сек!",
 	immune_bar = "%s Невосприимчива!",
 
-	spell = "Заклинания",
-	melee = "Рукопашка",
+	spell = "Заклинаниям",
+	melee = "Физическим атакам",
 
 	shield = "Отражающий щит",
 	shield_desc = "Предупреждать когда Маланда получает Отражающий щит.",
@@ -428,7 +428,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = {malande, gathios, zerevor, veras}
 mod.guid = 22951
 mod.toggleoptions = {"immune", "res", "shield", -1, "vanish", "circle", -1, "poison", "icon", -1, "blizzard", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 80010 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80339 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

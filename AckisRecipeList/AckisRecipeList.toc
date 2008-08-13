@@ -23,8 +23,8 @@
 
 ## Interface: 20400
 ## Version: 0.935
-## X-Revision: $Rev: 80048 $
-## X-Date: $Date: 2008-08-09 18:05:16 -0400 (Sat, 09 Aug 2008) $
+## X-Revision: $Rev: 80302 $
+## X-Date: $Date: 2008-08-12 19:31:06 -0400 (Tue, 12 Aug 2008) $
 
 ## X-credits: FGWarmonger, Kagaro, Speeddymon, Xinhuan, Zhinjio
 
@@ -39,8 +39,8 @@
 
 ## X-LoadOn-Slash: /arl
 ## Dependencies:
-## X-Embeds: Ace3, LibStub, CallbackHandler-1.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0
-## OptionalDeps: Ace3, LibStub, CallbackHandler-1.0, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, Skillet, ATSW, Manufac
+## X-Embeds: Ace3, LibStub, CallbackHandler-1.0, LibAboutPanel, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0
+## OptionalDeps: Ace3, LibStub, CallbackHandler-1.0, LibAboutPanel, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, Skillet, ATSW, Manufac
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 

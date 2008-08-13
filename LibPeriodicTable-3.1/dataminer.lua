@@ -265,6 +265,8 @@ local function basic_listview_get_first_id(url)
 end
 
 local function basic_listview_get_npc_id(npc, zone)
+	-- override because of a bug in wowhead where the mob is not reported as lootable.
+	if npc == "Sathrovarr the Corruptor" then return 24892 end
 	local url = "http://www.wowhead.com/?npcs&filter=na="..url.escape(npc)..";cr=9;crs=1;crv=0"
 	local page = getpage(url)
 	if not page then return end
@@ -613,7 +615,46 @@ local function handle_trash_mobs(set)
 	return table.concat(sets, ",")
 end
 
-local junkdrops = {}
+local is_junk_drop
+do
+	local junkdrops = {}
+	is_junk_drop = function (itemid)
+		local value = junkdrops[itemid]
+		if value ~= nil then return value end
+
+		local count = 0
+		local url = "http://www.wowhead.com/?item="..itemid
+		local page = getpage(url)
+
+		local name = page:match("<h1>([^<%-]+)</h1>")
+		dprint(4, "name", name)
+
+		basic_listview_handler(url, function () count = count + 1 end, "dropped-by")
+		dprint(4, boss, itemid, droprate, count, count > INSTANCELOOT_MAXSRC)
+
+		if count > INSTANCELOOT_MAXSRC then
+			dprint(3, name, "Added to Junk (too many source)")
+			junkdrops[itemid] = true
+			return true
+		elseif count == 1 then
+			junkdrops[itemid] = false
+			return false
+		end
+
+		for n, binding in page:gmatch("<b[^>]+>([^<]+)</b><br />Binds when ([a-z ]+)") do
+			dprint(5, "Junk check", name, n, binding)
+			if n == name and binding == "equipped" then
+				dprint(3, name, "Added to Junk (equipped)")
+				junkdrops[itemid] = true
+				return true
+			end
+		end
+
+		junkdrops[itemid] = false
+		return false
+	end
+end
+
 handlers["^InstanceLoot%."] = function (set, data)
 	if not INSTANCELOOT_CHKSRC then return end
 	local newset
@@ -654,34 +695,12 @@ handlers["^InstanceLoot%."] = function (set, data)
 
 		local handler = function (itemstring)
 			local itemid = itemstring:match("{id:(%d+)")
-			if junkdrops[itemid] then return end
+			dprint(8, "checking item", itemid)
+			if is_junk_drop(itemid) then return end
 			local dropcount = tonumber(itemstring:match("count:(%d+)"))
-			local droprate = math.floor(dropcount / totaldrops * 1000)
+			local droprate = dropcount and math.floor(dropcount / totaldrops * 1000) or 0
 			local quality = 6 - tonumber(itemstring:match("name:'(%d)"))
 			if quality < 1 then return end
-			if droprate <= INSTANCELOOT_MIN then
-				local count = 0
-				local url = "http://www.wowhead.com/?item="..itemid
-				local page = getpage(url)
-				-- a few world drop still appear, as the old world database of wowhead is small, so remove them
-				local name = page:match("<h1>([^<%-]+)</h1>")
-				dprint(4, "name", name)
-				for n, binding in page:gmatch("<b[^>]+>([^<]+)</b><br />Binds when ([a-z ]+)") do
-					dprint(5, n, binding)
-					if n == name and binding == "equipped" then
-						junkdrops[itemid] = true
-						return
-					end
-				end
-
-				basic_listview_handler(url, function () count = count + 1 end, "dropped-by")
-				dprint(4, boss, itemid, droprate, count, count > INSTANCELOOT_MAXSRC)
-
-				if count > INSTANCELOOT_MAXSRC then
-					junkdrops[itemid] = true
-					return
-				end
-			end
 			return itemid..":"..droprate
 		end
 

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Trainer-2.2
-Revision: $Rev: 79108 $
+Revision: $Rev: 80316 $
 Authors(s): Kodewulf (kodewulf@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Trainer-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Trainer-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79108 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 80316 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -764,7 +764,7 @@ BabbleTrainer:RegisterTranslations("ruRU", function() return {
 	["Shaman Trainer"] = "Наставник шаманов",
 	["Skinner"] = "Живодер",
 	["Skinning Trainer"] = "Учитель снятия шкур",
-	["Speciality Engineer"] = "Speciality Engineer",
+	["Speciality Engineer"] = "Специалист-инженер",
 	["Superior Leatherworker"] = "Опытный кожевник",
 	["Transportation Engineer"] = "Транспортный инженер",
 	["Trauma Surgeon"] = "Травматолог",

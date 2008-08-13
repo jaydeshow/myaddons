@@ -1,11 +1,11 @@
-local VERSION = tonumber(("$Revision: 74535 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 80351 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_Triggers = Parrot:NewModule("Triggers", "LibRockTimer-1.0")
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-20 09:57:38 -0400 (Tue, 20 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-13 08:18:15 -0400 (Wed, 13 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- local L = Parrot:L("Parrot_Triggers")
@@ -112,7 +112,7 @@ function Parrot_Triggers:OnEnable(first)
 				icon = 25236,
 				class = "WARRIOR",
 				conditions = {
-					["Enemy target health percent"] = 0.2,
+					["Enemy target health percent"] = 0.19,
 				},
 				secondaryConditions = {
 					["Spell ready"] = GetSpellInfo(25236),

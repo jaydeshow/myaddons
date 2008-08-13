@@ -206,7 +206,7 @@ L:RegisterTranslations("ruRU", function() return {
 	sonicboom_desc = "Предупреждать когда Бормотун начинает произносить заклинание Звуковой волны",
 	sonicboom_trigger = "draws energy from the air...",
 	sonicboom_alert = "До Звуковой волны 5 секунд!",
-	sonicboom_bar = "Чтение Звуковой волны!",
+	sonicboom_bar = "Приминение Звуковой волны!",
 } end)
 
 ----------------------------------
@@ -220,7 +220,7 @@ mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss
 mod.guid = 18708
 mod.toggleoptions = {"sonicboom", -1, "touchtimer", "youtouch", "othertouch", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 79829 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80291 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

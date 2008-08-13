@@ -1,4 +1,45 @@
 ------------------------------------------------------------------------
+r80351 | profalbert | 2008-08-13 08:18:15 -0400 (Wed, 13 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/Parrot/Code/Triggers.lua
+
+Parrot:
+- Execute-Trigger now by default triggers at 19% of health (instead of 
+20)
+
+------------------------------------------------------------------------
+r80350 | profalbert | 2008-08-13 08:02:53 -0400 (Wed, 13 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/AnimationStyles.lua
+
+Parrot:
+- add new Animationstyles (Sprinkler2, Angled2) [PAR-89]
+
+------------------------------------------------------------------------
+r80321 | nemes | 2008-08-13 01:40:17 -0400 (Wed, 13 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot: change "Pet Heals" to "Pet heals", to match localisations
+------------------------------------------------------------------------
+r80282 | profalbert | 2008-08-12 13:24:13 -0400 (Tue, 12 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+- stop petheals from showing up multiple times
+- fix category for "Pet heal over time"
+
+------------------------------------------------------------------------
+r80280 | profalbert | 2008-08-12 13:09:44 -0400 (Tue, 12 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/Parrot/Data/CombatEvents.lua
+
+Parrot:
+fix issues with nil-damagetypes (reported to Happen on sunwell protector 
+trash )
+
+------------------------------------------------------------------------
 r79622 | profalbert | 2008-08-01 16:02:02 -0400 (Fri, 01 Aug 2008) | 3 lines
 Changed paths:
    M /trunk/Parrot/Data/CombatEvents.lua
@@ -176,13 +217,5 @@ Changed paths:
 
 Parrot:
 - remove debug-output
-
-------------------------------------------------------------------------
-r78155 | profalbert | 2008-07-09 18:49:11 -0400 (Wed, 09 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/Parrot/Code/CombatEvents.lua
-
-Parrot:
-- no longer show Mana-gains for pets as Player-mana-gains
 
 ------------------------------------------------------------------------

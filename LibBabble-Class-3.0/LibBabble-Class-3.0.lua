@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Class-3.0
-Revision: $Rev: 80256 $
+Revision: $Rev: 80352 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for classes.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Class-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 80256 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 80352 $"):match("(%d+)"))
 
 if not LibStub then error("LibBabble-Class-3.0 requires LibStub.") end
 local lib = LibStub("LibBabble-3.0"):New(MAJOR_VERSION, MINOR_VERSION)
@@ -96,6 +96,7 @@ elseif l == "zhCN" then
 		["Paladin"] = "圣骑士",
 		["Shaman"] = "萨满祭司",
 		["Rogue"] = "潜行者",
+		["Deathknight"] = "死亡骑士",
 
 		["WARLOCK"] = "术士",
 		["WARRIOR"] = "战士",
@@ -106,6 +107,7 @@ elseif l == "zhCN" then
 		["PALADIN"] = "圣骑士",
 		["SHAMAN"] = "萨满祭司",
 		["ROGUE"] = "潜行者",
+		["DEATHKNIGHT"] = "死亡骑士",
 	}
 elseif l == "zhTW" then
 	lib:SetCurrentTranslations {
