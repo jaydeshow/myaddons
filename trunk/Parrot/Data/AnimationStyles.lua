@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 79532 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 80350 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-07-30 18:33:48 -0400 (Wed, 30 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-13 08:02:53 -0400 (Wed, 13 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- local L = Parrot:L("Parrot_AnimationStyles")
@@ -444,6 +444,60 @@ Parrot:RegisterAnimationStyle({
 
 Parrot:RegisterAnimationStyle({
 	-- makes a parabola in the form of y = (-x - 1)(-x + 0.5) + 1
+	name = "Angled2",
+	localName = L["Angled"] .. "2",
+	init = function(frame, xOffset, yOffset, size, direction, uid)
+		frame.finishX = size/2 * (math.random()/2 + 0.75)
+		frame.finishY = size/2 * (math.random()/2 + 0.75)
+	end,
+	func = function(frame, xOffset, yOffset, size, percent, direction, num, max, uid)
+		local xDiff, yDiff
+		if percent < 0.3 then
+			xDiff = percent/0.3 * frame.finishX
+			yDiff = -percent/0.3 * frame.finishY
+		elseif percent < 0.8 then
+			local now = GetTime()
+			xDiff = frame.finishX
+			yDiff = -frame.finishY
+		else
+			xDiff = ((percent - 0.8)/0.2 + 1) * frame.finishX
+			yDiff = -(1 - percent)/0.2 * frame.finishY
+		end
+		
+		local vert, horiz = (";"):split(direction)
+		if vert == "UP" then
+			yDiff = -yDiff
+		end
+		local point = "LEFT"
+		if horiz == "LEFT" or (horiz == "ALT" and uid%2 == 0) then
+			xDiff = -xDiff
+			point = "RIGHT"
+		end
+		local y = yOffset + yDiff
+		local x = xOffset + xDiff
+		frame:SetPoint(point, UIParent, "CENTER", x, y)
+	end,
+	cleanup = function(frame, xOffset, yOffset, size, direction, uid)
+		frame.nextSquiggle = nil
+		frame.squiggleX = nil
+		frame.squiggleY = nil
+		frame.finishX = nil
+		frame.finishY = nil
+	end,
+	overlap = false,
+	defaultDirection = "DOWN;ALT",
+	directions = {
+		["UP;LEFT"] = L["Up, left"],
+		["UP;RIGHT"] = L["Up, right"],
+		["UP;ALT"] = L["Up, alternating"],
+		["DOWN;LEFT"] = L["Down, left"],
+		["DOWN;RIGHT"] = L["Down, right"],
+		["DOWN;ALT"] = L["Down, alternating"],
+	},
+})
+
+Parrot:RegisterAnimationStyle({
+	-- makes a parabola in the form of y = (-x - 1)(-x + 0.5) + 1
 	name = "Sprinkler",
 	localName = L["Sprinkler"],
 	init = function(frame, xOffset, yOffset, size, direction, uid)
@@ -479,6 +533,75 @@ Parrot:RegisterAnimationStyle({
 			end
 			xDiff = size/2 * cos(frame.angle) + frame.squiggleX
 			yDiff = size/2 * sin(frame.angle) + frame.squiggleY
+		else
+			xDiff = ((percent - 0.8)/0.2 + 1) * size/2 * cos(frame.angle)
+			yDiff = ((percent - 0.8)/0.2 + 1) * size/2 * sin(frame.angle)
+		end
+		
+		local y = yOffset + yDiff
+		local x = xOffset + xDiff
+		local dir, clock = (";"):split(direction)
+		local point = "CENTER"
+		if dir == "LEFT" then
+			point = "RIGHT"
+		elseif dir == "RIGHT" then
+			point = "LEFT"
+		end
+		frame:SetPoint(point, UIParent, "CENTER", x, y)
+	end,
+	cleanup = function(frame, xOffset, yOffset, size, direction, uid)
+		frame.nextSquiggle = nil
+		frame.squiggleX = nil
+		frame.squiggleY = nil
+		frame.finishX = nil
+		frame.finishY = nil
+	end,
+	overlap = false,
+	defaultDirection = "UP;CCW",
+	directions = {
+		["UP;CW"] = L["Up, clockwise"],
+		["DOWN;CW"] = L["Down, clockwise"],
+		["LEFT;CW"] = L["Left, clockwise"],
+		["RIGHT;CW"] = L["Right, clockwise"],
+		["UP;CCW"] = L["Up, counter-clockwise"],
+		["DOWN;CCW"] = L["Down, counter-clockwise"],
+		["LEFT;CCW"] = L["Left, counter-clockwise"],
+		["RIGHT;CCW"] = L["Right, counter-clockwise"],
+	},
+})
+
+Parrot:RegisterAnimationStyle({
+	-- makes a parabola in the form of y = (-x - 1)(-x + 0.5) + 1
+	name = "Sprinkler2",
+	localName = L["Sprinkler"] .. "2",
+	init = function(frame, xOffset, yOffset, size, direction, uid)
+		local dir, clock = (";"):split(direction)
+		local base
+		if dir == "RIGHT" then
+			base = 0
+		elseif dir == "TOP" then
+			base = 90
+		elseif dir == "LEFT" then
+			base = 180
+		else -- bottom
+			base = 270
+		end
+		local slices = math.floor(size / frame.fs:GetHeight() / 2)
+		local diff = (uid%slices)*(120/(slices - 1)) - 60
+		if clock == "CCW" then
+			diff = -diff
+		end
+		frame.angle = base + diff
+	end,
+	func = function(frame, xOffset, yOffset, size, percent, direction, num, max, uid)
+		local xDiff, yDiff
+		if percent < 0.3 then
+			xDiff = percent/0.3 * size/2 * cos(frame.angle)
+			yDiff = percent/0.3 * size/2 * sin(frame.angle)
+		elseif percent < 0.8 then
+			local now = GetTime()
+			xDiff = size/2 * cos(frame.angle)
+			yDiff = size/2 * sin(frame.angle)
 		else
 			xDiff = ((percent - 0.8)/0.2 + 1) * size/2 * cos(frame.angle)
 			yDiff = ((percent - 0.8)/0.2 + 1) * size/2 * sin(frame.angle)

@@ -84,7 +84,7 @@ L:RegisterTranslations("deDE", function() return {
 L:RegisterTranslations("ruRU", function() return {
 	aura = "Аура вероломства", -- необходимо точно обращаться к игре.
 	aura_heroic = "Проклятье предательства",
-	aura_desc = "Предупреждать о Аура вероломства.",
+	aura_desc = "Предупреждать о Ауре вероломства.",
 	aura_message = "%s на %s!",
 	aura_message_you = "На вас %s!",
 	aura_bar = "%s: %s",
@@ -104,7 +104,7 @@ mod.zonename = BZ["Hellfire Ramparts"]
 mod.enabletrigger = boss
 mod.guid = 17308
 mod.toggleoptions = {"aura", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 79681 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80291 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

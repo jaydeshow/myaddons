@@ -1,4 +1,17 @@
 ------------------------------------------------------------------------
+r80276 | next96 | 2008-08-12 11:16:12 -0400 (Tue, 12 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-koKR.lua
+
+GatherMate: 
+- Update locale koKR
+------------------------------------------------------------------------
+r80275 | doktorjet | 2008-08-12 10:55:19 -0400 (Tue, 12 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: few nodes translations added for ruRU
+------------------------------------------------------------------------
 r80183 | doktorjet | 2008-08-11 11:46:12 -0400 (Mon, 11 Aug 2008) | 1 line
 Changed paths:
    M /trunk/GatherMate/Locales/GatherMate-ruRU.lua

@@ -49,7 +49,7 @@ L:RegisterTranslations("deDE", function() return {
 
 L:RegisterTranslations("ruRU", function() return {
 	nova = "Горящее кольцо",
-	nova_desc = "Предупреждать о Горящем кольце ",
+	nova_desc = "Предупреждать о Горящем кольце",
 	nova_message = "Надвигается Горящее кольцо!",
 } end )
 
@@ -64,7 +64,7 @@ mod.zonename = BZ["The Blood Furnace"]
 mod.enabletrigger = boss 
 mod.guid = 17377
 mod.toggleoptions = {"nova", "bosskill"}
-mod.revision = tonumber(("$Revision: 79681 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80291 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

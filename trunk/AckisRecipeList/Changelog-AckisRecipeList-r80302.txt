@@ -1,4 +1,22 @@
 ------------------------------------------------------------------------
+r80302 | ackis | 2008-08-12 19:31:06 -0400 (Tue, 12 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList
+   D /trunk/AckisRecipeList/AboutPanel.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   M /trunk/AckisRecipeList/embeds.xml
+   M /trunk/AckisRecipeList/externals.txt
+
+AckisRecipeList:
+- Point to LibAboutPanel
+------------------------------------------------------------------------
+r80274 | next96 | 2008-08-12 10:24:17 -0400 (Tue, 12 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
+
+AckisRecipeList:
+- Update locale koKR
+------------------------------------------------------------------------
 r80247 | zhinjio | 2008-08-12 01:14:29 -0400 (Tue, 12 Aug 2008) | 3 lines
 Changed paths:
    M /trunk/AckisRecipeList/ARLColour.lua

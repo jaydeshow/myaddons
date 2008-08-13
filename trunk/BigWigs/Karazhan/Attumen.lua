@@ -104,7 +104,7 @@ L:RegisterTranslations("esES", function() return {
 	curse_desc = "Avisar cuando un guerrero o un druida tiene Presencia intangible.",
 	curse_message = "Presencia intangible - %s",
 } end)
-
+-- Translated by wow.playhard.ru translators
 L:RegisterTranslations("ruRU", function() return {
 	phase = "Фаза",
 	phase_desc = "Предупреждать о смене фаз.",
@@ -127,7 +127,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {horse, boss}
 mod.guid = 16152
 mod.toggleoptions = {"phase", "curse", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80294 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

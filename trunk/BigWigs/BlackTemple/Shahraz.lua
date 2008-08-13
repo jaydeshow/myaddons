@@ -132,6 +132,20 @@ L:RegisterTranslations("deDE", function() return {
 	enrage_message = "10% - Wütend",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	engage_trigger = "Итак… дела или удовольствие?",
+
+	attraction = "Fatal Attraction",
+	attraction_desc = "Warn who has Fatal Attraction.",
+	attraction_message = "Attraction: %s",
+
+	debuff = "Debuff Timers",
+	debuff_desc = "Show the current debuff and the time until the next one.",
+
+	enrage_warning = "Enrage soon!",
+	enrage_message = "10% - Enraged",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -141,7 +155,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22947
 mod.toggleoptions = {"attraction", "debuff", "berserk", "enrage", "bosskill"}
-mod.revision = tonumber(sub("$Revision: 79612 $", 12, -3))
+mod.revision = tonumber(sub("$Revision: 80299 $", 12, -3))
 
 ------------------------------
 --      Initialization      --

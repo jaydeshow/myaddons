@@ -1,8 +1,8 @@
 --[[
 ****************************************************************************************
 LibAboutPanel
-$Date: 2008-07-11 18:38:16 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78268 $
+$Date: 2008-08-12 11:14:51 -0400 (Tue, 12 Aug 2008) $
+$Rev: 2 $
 
 Author: Tekkub
 Modifications: Ackis on Illidan US Horde

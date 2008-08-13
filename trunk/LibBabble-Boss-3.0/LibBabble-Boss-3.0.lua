@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 80109 $
+Revision: $Rev: 80314 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 80109 $"
+local MINOR_VERSION = "$Revision: 80314 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -5442,7 +5442,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Vazruden"] = "Вазруден",
 		["Watchkeeper Gargolmar"] = "Начальник стражи Гарголмар",
 --Magtheridon's Lair
-		["Hellfire Channeler"] = "Заклинатель Ярого Пламени",
+		["Hellfire Channeler"] = "Чаротворец из цитадели Адского Пламени",
 		["Magtheridon"] = "Магтеридон",
 --The Blood Furnace
 		["Broggok"] = "Броггок",

@@ -210,6 +210,12 @@ NL["Khorium Vein"] = "코륨 광맥"
 --NL["Large Obsidian Chunk"] = "큰 흑요석 덩어리"
 --NL["Small Obsidian Chunk"] = "작은 흑요석 덩어리"
 NL["Nethercite Deposit"] = "황천연 광맥" --check
+NL["Cobalt Node"] = "코발트 광맥"
+NL["Rich Cobalt Node"] = "풍부한 코발트 광맥"
+NL["Titanium Node"] = "티타늄 광맥"
+NL["Saronite Node"] = "사로나이트 광맥"
+NL["Rich Saronite Node"] = "풍부한 사로나이트 광맥"
+
 
 -- gas clouds
 NL["Windy Cloud"] = "흩어지는 구름"
@@ -260,6 +266,15 @@ NL["Nightmare Vine"] = "악몽의 덩굴"
 NL["Ragveil"] = "가림막이버섯"
 NL["Flame Cap"] = "불꽃송이"
 NL["Netherdust Bush"] = "황천티끌 덤불"
+NL["Adder's Tongue"] = true
+NL["Constrictor Grass"] = true
+NL["Deadnettle"] = true
+NL["Goldclover"] = true
+NL["Icethorn"] = true
+NL["Lickbloom"] = true
+NL["Talandra's Rose"] = true
+NL["Tiger Lily"] = true
+
 -- Treasure
 NL["Giant Clam"] = "대합"
 NL["Battered Chest"] = "낡은 궤짝"

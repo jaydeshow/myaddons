@@ -98,7 +98,7 @@ L:RegisterTranslations("ruRU", function() return {
 	enrage_message = "Исступление через %s секунд",
 	enrage_bar = "Исступление",
 
-	engage_message = "%s has been engaged!",
+	engage_message = "Контакт с %s!",
 } end )
 
 ----------------------------------
@@ -112,7 +112,7 @@ mod.zonename = BZ["Shadow Labyrinth"]
 mod.enabletrigger = boss
 mod.guid = 18731
 mod.toggleoptions = {"fear", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 79781 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80291 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

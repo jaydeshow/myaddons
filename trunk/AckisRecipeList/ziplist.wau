@@ -1,9 +1,8 @@
-AckisRecipeList/Changelog-AckisRecipeList-r80247.txt
+AckisRecipeList/Changelog-AckisRecipeList-r80302.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/AckisRecipeList.lua
 AckisRecipeList/externals.txt
-AckisRecipeList/AboutPanel.lua
 AckisRecipeList/ARLFrame.lua
 AckisRecipeList/RecipeMiner.lua
 AckisRecipeList/LICENSE.txt
@@ -61,3 +60,8 @@ AckisRecipeList/Locals/ARLLocals-deDE.lua
 AckisRecipeList/Locals/ARLLocals-esES.lua
 AckisRecipeList/Locals/ARLLocals-zhTW.lua
 AckisRecipeList/Locals/ARLLocals-frFR.lua
+AckisRecipeList/libs/LibAboutPanel/embeds.xml
+AckisRecipeList/libs/LibAboutPanel/lib.xml
+AckisRecipeList/libs/LibAboutPanel/LibAboutPanel.lua
+AckisRecipeList/libs/LibAboutPanel/LibAboutPanel.toc
+AckisRecipeList/libs/LibAboutPanel/.pkgmeta

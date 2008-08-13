@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Ore-2.2
-Revision: $Rev: 79692 $
+Revision: $Rev: 80316 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Ore-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Ore-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79692 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 80316 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -641,8 +641,8 @@ BabbleOre:RegisterTranslations("ruRU", function() return {
 	["Rich Thorium Vein"] = "Богатая ториевая жила",
 	["Hakkari Thorium Vein"] = "Hakkari Thorium Vein",
 	["Dark Iron Deposit"] = "Залежи Темной Стали",
-	["Lesser Bloodstone Deposit"] = "Lesser Bloodstone Deposit",
-	["Incendicite Mineral Vein"] = "Incendicite Mineral Vein",
+	["Lesser Bloodstone Deposit"] = "Малое месторождение кровавого камня",
+	["Incendicite Mineral Vein"] = "Ароматитовая жила",
 	["Indurium Mineral Vein"] = "Индарилиевые залежи",
 	["Fel Iron Deposit"] = "Месторождение оскверненного железа",
 	["Adamantite Deposit"] = "Залежи адамантита",

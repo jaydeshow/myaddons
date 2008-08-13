@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 79622 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 80321 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-08-01 16:02:02 -0400 (Fri, 01 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-13 01:40:17 -0400 (Wed, 13 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("CombatEventsData", "LibRockEvent-1.0")
@@ -70,7 +70,11 @@ local coloredDamageAmount = function(info)
 end
 
 local damageTypeString = function(info)
-	return L[info.damageType]
+	if info.damageType then
+		return L[info.damageType]
+	else
+		return ""
+	end
 
 end
 
@@ -1369,7 +1373,7 @@ Parrot:RegisterCombatEvent{
 		{
 		eventType = "SPELL_HEAL",
 		func = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, critical)
-			if dstGUID ~= UnitGUID("player") or srcGUID == UnitGUID("player") then
+			if dstGUID ~= UnitGUID("player") or srcGUID == UnitGUID("player") or srcGUID == UnitGUID("pet") then
 				return nil
 			end
 			
@@ -1547,7 +1551,7 @@ Parrot:RegisterCombatEvent{
 		{
 		eventType = "SPELL_PERIODIC_HEAL",
 		func = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, critical)
-			if dstGUID ~= UnitGUID("player") or srcGUID == UnitGUID("player") then
+			if dstGUID ~= UnitGUID("player") or srcGUID == UnitGUID("player") or srcGUID == UnitGUID("pet") then
 				return nil
 			end
 			
@@ -2934,7 +2938,7 @@ Parrot:RegisterCombatEvent{
 
 Parrot:RegisterCombatEvent{
 	category = "Incoming",
-	subCategory = L["Heals"],
+	subCategory = L["Pet heals"],
 	name = "Pet heals over time",
 	localName = L["Pet heals over time"],
 	defaultTag = PET .. " ([Skill] - [Name]) +[Amount]",
@@ -4323,7 +4327,7 @@ Parrot:RegisterCombatEvent{
 		{
 		eventType = "SPELL_HEAL",
 		func = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, critical)
-			if srcGUID ~= UnitGUID("player") or dstGUID == UnitGUID("player") then
+			if srcGUID ~= UnitGUID("player") or dstGUID == UnitGUID("player") or dstGUID == UnitGUID("pet") then
 				return nil
 			end
 			
@@ -4508,7 +4512,7 @@ Parrot:RegisterCombatEvent{
 		{
 		eventType = "SPELL_PERIODIC_HEAL",
 		func = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, critical)
-			if srcGUID ~= UnitGUID("player") or dstGUID == UnitGUID("player") then
+			if srcGUID ~= UnitGUID("player") or dstGUID == UnitGUID("player") or dstGUID == UnitGUID("pet") then
 				return nil
 			end
 			
@@ -5766,7 +5770,7 @@ Parrot:RegisterCombatEvent{
 }
 Parrot:RegisterCombatEvent{
 	category = "Outgoing",
-	subCategory = L["Heals"],
+	subCategory = L["Pet heals"],
 	name = "Pet heals over time",
 	localName = L["Pet heals over time"],
 	defaultTag = PET .. " ([Skill] - [Name]) +[Amount]",
