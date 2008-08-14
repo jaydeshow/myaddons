@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r80404 | 7destiny | 2008-08-14 02:38:15 -0400 (Thu, 14 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- koKR Update
+------------------------------------------------------------------------
 r80108 | pettigrow | 2008-08-10 11:05:50 -0400 (Sun, 10 Aug 2008) | 1 line
 Changed paths:
    M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
@@ -82,11 +89,4 @@ Changed paths:
 
 LibBabble-Zone-3.0:
 - updated ruRU localization
-------------------------------------------------------------------------
-r78342 | gchudov | 2008-07-13 12:02:38 -0400 (Sun, 13 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
-
-LibBabble-Zone-3.0:
-- ruRU localization
 ------------------------------------------------------------------------

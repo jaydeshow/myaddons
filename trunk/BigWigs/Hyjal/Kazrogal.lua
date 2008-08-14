@@ -98,6 +98,16 @@ L:RegisterTranslations("esES", function() return {
 	mark_bar = "~Marca (%d)",
 	mark_warn = "Marca en 5 seg",
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	range = "Проверка досягаемости",
+	range_desc = "Отображения панели близости когда у вас мало маны и вы с Меткой Каз'рогала.",
+
+	mark = "Метка Каз'рогала ",
+	mark_desc = "Отображения таймера Метки Каз'рогала.",
+	mark_bar = "След Матка (%d)",
+	mark_warn = "Метка за 5 сек!",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -108,7 +118,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17888
 mod.toggleoptions = {"mark", "range", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 79612 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 mod.proximityCheck = function( unit )
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

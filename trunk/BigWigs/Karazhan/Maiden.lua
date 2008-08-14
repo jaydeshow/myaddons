@@ -153,7 +153,7 @@ L:RegisterTranslations("ruRU", function() return {
 	repentance = "Покаяние",
 	repentance_desc = "Таймер отсчета до Покаяния.",
 	repentance_message = "Покаяние! Следующее за ~33сек",
-	repentance_warning = "Покаяние перезаредилось - скоро будет!",
+	repentance_warning = "Покаяние перезарядилось - скоро будет!",
 	repentance_bar = "Покаяние",
 	repentance_nextbar = "Перезарядка Покаяния",
 
@@ -174,7 +174,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16457
 mod.toggleoptions = {"repentance", -1, "holyfire", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

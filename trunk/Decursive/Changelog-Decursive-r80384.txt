@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------
+r80384 | StingerSoft | 2008-08-13 22:54:12 -0400 (Wed, 13 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/localization.ru.lua
+
+Decursive:
+- update ruRU
+------------------------------------------------------------------------
+r80375 | archarodim | 2008-08-13 18:53:39 -0400 (Wed, 13 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Decursive/QuoiDeNeuf.txt
+   M /trunk/Decursive/WhatsNew.txt
+
+Decursive:
+- update WhatsNew.txt and QuoiDeNeuf.txt
+------------------------------------------------------------------------
 r80233 | archarodim | 2008-08-11 22:58:49 -0400 (Mon, 11 Aug 2008) | 5 lines
 Changed paths:
    M /trunk/Decursive/localization.lua

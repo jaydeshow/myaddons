@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r80363 | ackis | 2008-08-13 15:38:44 -0400 (Wed, 13 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/externals.txt
+
+AckisRecipeList:
+- Change on init a bit
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
 r80302 | ackis | 2008-08-12 19:31:06 -0400 (Tue, 12 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList

@@ -153,6 +153,26 @@ L:RegisterTranslations("zhCN", function() return {
 	icon = "团队标记",
 	icon_desc = "给受到诅咒的队员打上标记。（需要权限）",
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	doom = "Рок",
+	doom_desc = "Предупреждать о Doom.",
+	doom_other = "Рок на %s",
+	doom_you = "Рок на ВАС!",
+
+	howl = "Вой Азгалора",
+	howl_desc = "Предупреждать о Вое Азгалора.",
+	howl_bar = "~перезарядка Воя",
+	howl_message = "МАСС Молчание",
+	howl_warning = "Скоро МАСС Молчание!",
+
+	fire = "Огненный ливень",
+	fire_desc = "Предупреждать когда вы под Огненным ливнем.",
+	fire_you = "Вы под Огненным ливнем!",
+
+	icon = "Иконка Рейда",
+	icon_desc = "Помечает иконкой рейда персонажа пораженного Роком (требуются полномочия).",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -163,7 +183,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17842
 mod.toggleoptions = {"doom", "howl", "fire", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

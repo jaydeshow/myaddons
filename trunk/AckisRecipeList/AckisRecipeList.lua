@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-08-12 01:14:29 -0400 (Tue, 12 Aug 2008) $
-$Rev: 80247 $
+$Date: 2008-08-13 15:38:44 -0400 (Wed, 13 Aug 2008) $
+$Rev: 80363 $
 
 Author: Ackis on Illidan US Horde
 
@@ -1014,7 +1014,7 @@ function addon:OnInitialize()
 	self.db = LibStub("AceDB-3.0"):New("AckisRecipeListDB", defaults, "char")
 
 	-- Create the options with Ace3
-	LibStub("AceConfig-3.0"):RegisterOptionsTable("Ackis Recipe List",giveARLOptions,"Ackis Recipe List")
+	LibStub("AceConfig-3.0"):RegisterOptionsTable("Ackis Recipe List",giveARLOptions)
 	AceConfigReg:RegisterOptionsTable("Ackis Recipe List Display",giveDisplay)
 	AceConfigReg:RegisterOptionsTable("Ackis Recipe List Sorting",giveSorting)
 	AceConfigReg:RegisterOptionsTable("Ackis Recipe List Filter",giveFilter)

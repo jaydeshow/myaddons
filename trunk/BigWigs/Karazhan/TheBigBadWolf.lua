@@ -130,7 +130,7 @@ L:RegisterTranslations("ruRU", function() return {
 	riding_bar = "%s БЕГИ!!!",
 
 	icon = "Иконка Рейда",
-	icon_desc = "Помечает иконкой рейда персонажа превращенного в красную шапочку. (Для этого требуются права в руйде).",
+	icon_desc = "Помечает иконкой рейда персонажа превращенного в красную шапочку. (Для этого требуются права в рейде).",
 } end )
 
 ----------------------------------
@@ -142,7 +142,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {lady, boss}
 mod.guid = 17521
 mod.toggleoptions = {"youriding", "elseriding", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80398 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
