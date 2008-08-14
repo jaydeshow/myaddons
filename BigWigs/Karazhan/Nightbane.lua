@@ -253,13 +253,13 @@ L:RegisterTranslations("ruRU", function() return {
 	summon_trigger = "Древнее существо пробуждается вдалеке…",
 
 	engage = "Контакт",
-	engage_desc = "Предупреждать о кантакте с боссом.",
+	engage_desc = "Предупреждать о контакте с боссом.",
 	engage_trigger = "Ну и глупцы! Я быстро покончу с вашими страданиями!",
 	engage_message = "Контакт с %s",
 
 	bones = "Костяной Дождь",
-	bones_desc = "Предупреждать куда направляеться Костяной Дождь.",
-	bones_message = "Массоввый Костяной Дождь!",
+	bones_desc = "Предупреждать когда направляется Костяной Дождь.",
+	bones_message = "Массовый Костяной Дождь!",
 } end )
 
 ----------------------------------
@@ -271,7 +271,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 17225
 mod.toggleoptions = {"engage", "phase", "fear", "charr", "bones", "bosskill"}
-mod.revision = tonumber(("$Revision: 80236 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

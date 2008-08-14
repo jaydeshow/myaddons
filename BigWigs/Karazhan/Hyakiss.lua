@@ -56,8 +56,8 @@ L:RegisterTranslations("esES", function() return {
 -- Translated by wow.playhard.ru translators
 L:RegisterTranslations("ruRU", function() return {
 	web = "Цепь",
-	web_desc = "Предупреждать о поподании игроков в цепи.",
-	web_message = "%s затачен в цепи!",
+	web_desc = "Предупреждать о попадании игроков в цепи.",
+	web_message = "%s заточен в цепи!",
 	web_bar = "Цепи на: %s",
 } end )
 
@@ -70,7 +70,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16179
 mod.toggleoptions = {"web", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

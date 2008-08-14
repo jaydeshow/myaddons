@@ -102,6 +102,19 @@ L:RegisterTranslations("zhCN", function() return {
 	icon = "团队标记",
 	icon_desc = "给中了寒冰箭的玩家打上标记。（需要权限）",
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	decay = "Смерть и разложение на вас",
+	decay_desc = "Предупреждать когда на вас Смерть и разложение.",
+	decay_message = "На ВАС Смерть и разложение!",
+
+	icebolt = "Морозная стрела",
+	icebolt_desc = "Предупреждения о Морозной стреле.",
+	icebolt_message = "Морозная стрела на %s!",
+
+	icon = "Иконка рейда",
+	icon_desc = "Помечает иконкой рейда персонажа пораженного Морозной стрелой (требуются права в рейде).",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -112,7 +125,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17767
 mod.toggleoptions = {"decay", -1, "icebolt", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76590 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -157,7 +157,7 @@ L:RegisterTranslations("ruRU", function() return {
 	inferno_bar = "~перезарядка Инфернала",
 
 	icon = "Рейдовая иконка",
-	icon_desc = "PПомечать рейдовой иконкой человека на которого будет применяться Инфернал (Необходимо иметь прова доступа).",
+	icon_desc = "Помечать рейдовой иконкой человека на которого будет применяться Инфернал (Необходимо иметь права доступа).",
 
 	swarm = "Темная стая",
 	swarm_desc = "Таймеры перезарядки Темной стаи.",
@@ -174,7 +174,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17808
 mod.toggleoptions = {"inferno", "icon", "swarm", "bosskill"}
-mod.revision = tonumber(("$Revision: 80294 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

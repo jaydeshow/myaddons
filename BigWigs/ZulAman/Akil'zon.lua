@@ -145,17 +145,17 @@ L:RegisterTranslations("ruRU", function() return {
 	engage_message = "Контакт с %s - Буря за ~55сек!",
 
 	elec = "Электрическая буря",
-	elec_desc = "Warn who has Electrical Storm.",
+	elec_desc = "Предупреждать на ком Электрическая буря.",
 	elec_bar = "~перезарядка Бури",
 	elec_message = "Буря на %s!",
 	elec_warning = "Скоро Буря!",
 
-	ping = "Ping",
-	ping_desc = "Ping your current location if you are afflicted by Electrical Storm.",
-	ping_message = "Storm - Pinging your location!",
+	ping = "Сигнализирование",
+	ping_desc = "Сообщить ваше местоположение если вы поражены Электрической бурей.",
+	ping_message = "Буря - сигнализированная на миникарте!",
 
-	icon = "Raid Icon",
-	icon_desc = "Place a Raid Target Icon on the player with Electrical Storm. (requires promoted or higher)",
+	icon = "Иконка Рейда",
+	icon_desc = "Помечает иконкой рейда персонажа на котором Электрическая буря. (требуются права в рейде)",
 } end )
 
 ----------------------------------
@@ -167,7 +167,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23574
 mod.toggleoptions = {"elec", "ping", "icon", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80398 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

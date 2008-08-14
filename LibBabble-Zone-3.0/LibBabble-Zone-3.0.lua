@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 80108 $
+Revision: $Rev: 80404 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 80108 $"
+local MINOR_VERSION = "$Revision: 80404 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -1618,7 +1618,7 @@ elseif GAME_LOCALE == "koKR" then
 		["The Oculus"] = "마력의 눈",
 		--["The Violet Hold"] = true,	-- check
 		["Ulduar"] = "울두아", --Site seem uncertain on the name
-		["Utgarde Keep"] = "우트가르드 요새",
+		["Utgarde Keep"] = "우트가르드 성채",
 		["Utgarde Pinnacle"] = "우트가르드 첨탑",
 		--["Stratholme Past"] = true,	-- check
 	}

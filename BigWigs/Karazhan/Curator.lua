@@ -167,7 +167,7 @@ L:RegisterTranslations("ruRU", function() return {
 	enrage_warning = "Скоро Исступление!",
 
 	weaken = "Ослабление",
-	weaken_desc = "Предупреждать о стадии ослаблени.",
+	weaken_desc = "Предупреждать о стадии ослабления.",
 	weaken_message = "Прилив сил - Ослабление на 20сек!",
 	weaken_bar = "Прилив сил",
 	weaken_fade_message = "Прилив сил закончился - Ослабление рассеялось!",
@@ -190,7 +190,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 15691
 mod.toggleoptions = {"weaken", "weaktime", "berserk", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

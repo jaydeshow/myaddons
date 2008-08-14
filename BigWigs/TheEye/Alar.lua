@@ -159,6 +159,27 @@ L:RegisterTranslations("deDE", function() return {
 	icon = "Schlachtzug Symbol",
 	icon_desc = "Plaziert ein Schlachtzug Symbol auf Spielern mit Rüstungsschmelze(benötigt Assistent oder höher).",
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	--Renamed from Meteor to Dive Bomb as of Patch 2.3.0
+	meteor = "Пикирующая бомба",
+	meteor_desc = "Таймеры Пикирующей бомбы.",
+	meteor_warning = "Пикирующая бомба за ~5сек",
+	meteor_message = "Пикирующая бомба! след.за ~52сек",
+	meteor_nextbar = "~Пикирующая бомба",
+
+	flamepatch = "Язык огня на Вас",
+	flamepatch_desc = "Предупреждать когда на вас Язык огня.",
+	flamepatch_message = "На ВАС Язык огня!",
+
+	armor = "Расплавленная броня",
+	armor_desc = "Предупреждать кто получил Расплавленную броню.",
+	armor_other = "Расплавленная броня на: %s",
+	armor_you = "На ВАС Расплавленная броня!",
+
+	icon = "Иконка Рейда",
+	icon_desc = "Помечает иконкой рейда персонажа с Расплавленной броней!(требуются права в рейде).",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -170,7 +191,7 @@ mod.otherMenu = "The Eye"
 mod.enabletrigger = boss
 mod.guid = 19514
 mod.toggleoptions = {"meteor", "flamepatch", -1, "armor", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76588 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
