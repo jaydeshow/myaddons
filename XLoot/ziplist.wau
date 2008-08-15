@@ -1,4 +1,4 @@
-XLoot/Changelog-XLoot-r73744.txt
+XLoot/Changelog-XLoot-r80473.txt
 XLoot/XLootRowTools.lua
 XLoot/XLootOptions.lua
 XLoot/XLootSkin.lua
@@ -12,5 +12,6 @@ XLoot/locales/deDE.lua
 XLoot/locales/zhCN.lua
 XLoot/locales/enUS.lua
 XLoot/locales/koKR.lua
+XLoot/locales/ruRU.lua
 XLoot/locales/esES.lua
 XLoot/locales/zhTW.lua

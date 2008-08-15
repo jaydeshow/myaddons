@@ -123,13 +123,13 @@ L:RegisterTranslations("deDE", function() return {
 
 	attraction = "Verhängnisvolle Affäre",
 	attraction_desc = "Warnt wer die Verhängnisvolle Affäre hat.",
-	attraction_message = "Affäre: %s",
+	attraction_message = "Verhängnisvolle Affäre: %s",
 
 	debuff = "Debuff Timer",
 	debuff_desc = "Zeigt den gegenwärtigen Debuff und die Zeit bis zum nächsten an.",
 
-	enrage_warning = "Wütend bald!",
-	enrage_message = "10% - Wütend",
+	enrage_warning = "Enrage bald!",
+	enrage_message = "10% - Enrage!",
 } end )
 -- Translated by wow.playhard.ru translators
 L:RegisterTranslations("ruRU", function() return {
@@ -155,7 +155,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22947
 mod.toggleoptions = {"attraction", "debuff", "berserk", "enrage", "bosskill"}
-mod.revision = tonumber(sub("$Revision: 80361 $", 12, -3))
+mod.revision = tonumber(sub("$Revision: 80479 $", 12, -3))
 
 ------------------------------
 --      Initialization      --

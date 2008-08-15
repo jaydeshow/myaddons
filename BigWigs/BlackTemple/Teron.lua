@@ -63,16 +63,16 @@ L:RegisterTranslations("deDE", function() return {
 	shadow_other = "Schatten des Todes: %s!",
 	shadow_you = "Schatten des Todes auf DIR!",
 
-	ghost = "Geist",
-	ghost_desc = "Geist Timer.",
-	ghost_bar = "Geist: %s",
+	ghost = "Rachsüchtiger Geist",
+	ghost_desc = "Timer für Rachsüchtige Geister.",
+	ghost_bar = "Rachsüchtiger Geist: %s",
 
 	icon = "Schlachtzug Symbol",
 	icon_desc = "Plaziert ein Schlachtzug Icon auf dem Spieler mit Schatten des Todes (benötigt Assistent oder höher).",
 
-	--crush = "Crushing Shadows",
-	--crush_desc = "Warn who gets crushing shadows.",
-	--crush_warn = "Crushed: %s",
+	crush = "Zerschmetternde Schatten",
+	crush_desc = "Warnt wer Zerschmetternde Schatten bekommt.",
+	crush_warn = "Zerschmetternde Schatten: %s",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -184,7 +184,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22871
 mod.toggleoptions = {"shadow", "ghost", "icon", "crush", "bosskill"}
-mod.revision = tonumber(("$Revision: 80262 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -199,10 +199,10 @@ L:RegisterTranslations("deDE", function() return {
 
 	totem = "Blitzschlagtotem",
 	totem_desc = "Warnt wenn Halazzi ein Verderbtes Blitzschlagtotem herbeizaubert.",
-	totem_message = "Blitzschlagtotem gleich!",
+	totem_message = "Verderbtes Blitzschlagtotem!",
 
 	phase = "Phasen",
-	phase_desc = "Warnung bei Phasenänderrungen.",
+	phase_desc = "Warnt vor Phasenwechsel.",
 	phase_spirit = "Ich kämpfe mit wildem Geist...",
 	phase_normal = "Geist, zurück zu mir!",
 	normal_message = "Normale Phase!",
@@ -216,7 +216,7 @@ L:RegisterTranslations("deDE", function() return {
 	frenzy_message = "Blutrausch!",
 
 	flame = "Flammenschock",
-	flame_desc = "Warnen wenn ein Spieler von Flammenschock betroffen ist.",
+	flame_desc = "Warnt wenn ein Spieler von Flammenschock betroffen ist.",
 	flame_message = "Flammenschock: %s",
 
 	icon = "Schlachtzug Symbol",
@@ -261,7 +261,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23577
 mod.toggleoptions = {"totem", "phase", "frenzy", -1, "flame", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 80398 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -82,21 +82,21 @@ L:RegisterTranslations("deDE", function() return {
 	engage_trigger = "Die Geister der Winde besiegeln Euer Schicksal!",
 
 	flame = "Flammenatem",
-	flame_desc = "Warnt auf wen Flammenatem von Jan'alai gewirkt wird.",
+	flame_desc = "Warnt auf wen Flammenatem gewirkt wird.",
 	flame_message = "Flammenatem auf %s!",
 
 	icon = "Schlachtzug Symbol",
-	icon_desc = "Plaziert ein Schlachtgruppen Symbol auf Spielern auf die Flammenatem gewirkt wird(benötigt Assistent oder höher).",
+	icon_desc = "Plaziert ein Schlachtgruppen Symbol auf Spielern auf die Flammenatem gewirkt wird (benötigt Assistent oder höher).",
 
 	bomb = "Feuerbombe",
 	bomb_desc = "Zeigt Timer für Feuerbomben an.",
 	bomb_trigger = "Jetzt sollt Ihr brennen!",
-	bomb_message = "Neue Feuerbomben!",
+	bomb_message = "Feuerbomben!",
 
 	adds = "Brutwächter",
 	adds_desc = "Warnt wenn Brutwächter gerufen werden.",
 	adds_trigger = "Wo is' meine Brut? Was ist mit den Eiern?",
-	adds_message = "Brutwächter wurden gerufen!",
+	adds_message = "Brutwächter!",
 } end )
 
 
@@ -167,7 +167,7 @@ L:RegisterTranslations("ruRU", function() return {
 	engage_trigger = "Да покарают вас духи ветра!",
 
 	flame = "Пламенное дыхание",
-	flame_desc = "Предупреждать когда Джаналайя применяет Поражение пламенем.",
+	flame_desc = "Предупреждать когда Джан'алай применяет Поражение пламенем.",
 	flame_message = "Пламенное дыхание в %s!",
 
 	icon = "Иконка Рейда",
@@ -179,7 +179,7 @@ L:RegisterTranslations("ruRU", function() return {
 	bomb_message = "Надвигается Огненная бомба!",
 
 	adds = "Прибавление",
-	adds_desc = "Предупреждать о надвигающимся прибавлении.",
+	adds_desc = "Предупреждать о надвигающемся прибавлении.",
 	adds_trigger = "Где мои Наседки? Пора за яйца приниматься!",
 	adds_message = "Надвигается прибавление!",
 } end )
@@ -193,7 +193,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23578
 mod.toggleoptions = {"bomb", "adds", -1, "flame", "icon", "enrage", "berserk", "bosskill"}
-mod.revision = tonumber(("$Revision: 80398 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -1,0 +1,23 @@
+------------------------------------------------------------------------
+r80475 | StingerSoft | 2008-08-15 06:38:51 -0400 (Fri, 15 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/XLootMonitor/XLootMonitor.toc
+   A /trunk/XLootMonitor/locales
+   A /trunk/XLootMonitor/locales/deDE.lua
+   A /trunk/XLootMonitor/locales/enUS.lua
+   A /trunk/XLootMonitor/locales/esES.lua
+   A /trunk/XLootMonitor/locales/frFR.lua
+   A /trunk/XLootMonitor/locales/koKR.lua
+   A /trunk/XLootMonitor/locales/ruRU.lua
+   A /trunk/XLootMonitor/locales/zhCN.lua
+   A /trunk/XLootMonitor/locales/zhTW.lua
+   D /trunk/XLootMonitor/localization.deDE.lua
+   D /trunk/XLootMonitor/localization.enUS.lua
+   D /trunk/XLootMonitor/localization.esES.lua
+   D /trunk/XLootMonitor/localization.frFR.lua
+   D /trunk/XLootMonitor/localization.koKR.lua
+   D /trunk/XLootMonitor/localization.zhCN.lua
+   D /trunk/XLootMonitor/localization.zhTW.lua
+
+XLootMonitor: added ruRU, organized localizations.
+------------------------------------------------------------------------

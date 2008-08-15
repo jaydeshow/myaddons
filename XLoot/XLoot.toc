@@ -1,6 +1,7 @@
 ﻿## Interface: 20400
 ## Title: XLoot |cff7fff7f -Ace2-|r
 ## Notes: A remake of the built-in lootframe. |cffff4488By Xuerian|r.
+## Notes-ruRU: Переделывает встроенные окна добычи. |cffff4488Xuerian|r.
 ## Notes-esES: Un reemplazo de la ventana de botín. |cffff4488Por Xuerian|r.
 ## Notes-zhTW: 拾取物品增強 |cffff4488By Xuerian|r.
 ## Notes-deDE: Ein Remake des eingebauten Lootfensters. |cffff4488By Xuerian|r.
@@ -28,6 +29,7 @@ XLootRowTools.lua
 XLootTooltip.lua
 
 locales\enUS.lua
+locales\ruRU.lua
 locales\koKR.lua
 locales\zhTW.lua
 locales\zhCN.lua

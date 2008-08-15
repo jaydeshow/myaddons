@@ -40,13 +40,13 @@ L:RegisterTranslations("enUS", function() return {
 } end )
 
 L:RegisterTranslations("deDE", function() return {
-	range = "Reichweite Überprüfen",
-	range_desc = "Aktiviert die Nähe Anzeige wenn du wenig Mana und das Mal von Kaz'rogal hast.",
+	range = "Reichweite",
+	range_desc = "Aktiviert die Anzeige für nahe Spieler wenn du wenig Mana und das Mal von Kaz'rogal hast.",
 
-	--mark = "Mark of Kaz'rogal",
-	--mark_desc = "Show a Mark of Kaz'rogal timer bar.",
-	--mark_bar = "Next Mark (%d)",
-	--mark_warn = "Mark in 5 sec!",
+	mark = "Mal von Kaz'rogal",
+	mark_desc = "Zeigt einen Timer für das Mal von Kaz'rogal.",
+	mark_bar = "Nächstes Mal von Kaz'rogal (%d)",
+	mark_warn = "Mal von Kaz'rogal in 5sek!",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -118,7 +118,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17888
 mod.toggleoptions = {"mark", "range", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80486 $"):sub(12, -3))
 mod.proximityCheck = function( unit )
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

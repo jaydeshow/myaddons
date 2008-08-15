@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r80453 | sylvanaar | 2008-08-14 20:08:48 -0400 (Thu, 14 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/ACP/ACP.lua
+   M /trunk/ACP/ACP.toc
+
+ACP: Change the embedded library discovery method
+------------------------------------------------------------------------
 r79593 | sylvanaar | 2008-08-01 00:52:56 -0400 (Fri, 01 Aug 2008) | 1 line
 Changed paths:
    M /trunk/ACP/ACP.lua

@@ -73,8 +73,8 @@ L:RegisterTranslations("deDE", function() return {
 	engage_message = "%s angegriffen - Sturm in ~55sec!",
 
 	elec = "Elektrischer Sturm",
-	elec_desc = "Gib Warnung mit dem Spielernamen des Ziels von Elektrischer Sturm aus.",
-	elec_bar = "~Sturm Cooldown",
+	elec_desc = "Warnt wer Ziel von Elektrischer Sturm ist.",
+	elec_bar = "~Sturm",
 	elec_message = "Sturm auf %s!",
 	elec_warning = "Sturm bald!",
 
@@ -167,7 +167,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23574
 mod.toggleoptions = {"elec", "ping", "icon", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80398 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

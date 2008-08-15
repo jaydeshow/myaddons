@@ -169,41 +169,42 @@ L:RegisterTranslations("frFR", function() return {
 } end )
 
 L:RegisterTranslations("deDE", function() return {
-	whirlwind = "Wirbelwind",
-	whirlwind_desc = "Wirbelwind Timer",
-
-	phase = "D\195\164monenphase",
-	phase_desc = "Gesch\195\164tzte Timer f\195\188r D\195\164monenphase",
-
-	image = "Schatten von Leotheras",
-	image_desc = "15% Schatten Abspaltung Alarm",
-
-	whisper = "Heimt\195\188ckisches Gefl\195\188ster",
-	whisper_desc = "Zeigt an, welche Spieler von Heimt\195\188ckisches Gefl\195\188ster betroffen sind",
-
+	
 	enrage_trigger = "Endlich hat meine Verbannung ein Ende!",
-
-	whirlwind_gain = "Wirbelwind f\195\188r 12sec",
-	whirlwind_fade = "Wirbelwind vorbei",
+	
+	whirlwind = "Wirbelwind",
+	whirlwind_desc = "Wirbelwind Timer.",
+	whirlwind_gain = "Wirbelwind f\195\188r 12sec!",
+	whirlwind_fade = "Wirbelwind vorbei!",
 	whirlwind_bar = "Wirbelwind",
-	whirlwind_bar2 = "~Wirbelwind Cooldown",
-	whirlwind_warn = "Wirbelwind Cooldown vorbei",
-
+	whirlwind_bar2 = "~M\195\182glicher Wirbelwind",
+	whirlwind_warn = "Wirbelwind bald!",
+	
+	phase = "D\195\164monenphase",
+	phase_desc = "Gesch\195\164tzte Timer f\195\188r die D\195\164monenphase.",
 	phase_trigger = "Hinfort, unbedeutender Elf. Ich habe jetzt die Kontrolle!",
-	phase_demon = "D\195\164monenphase Phase f\195\188r 60sec",
+	phase_demon = "D\195\164monenphase f\195\188r 60sec!",
 	phase_demonsoon = "D\195\164monenphase in 5sec!",
 	phase_normalsoon = "Normale Phase in 5sec",
 	phase_normal = "Normale Phase!",
 	demon_bar = "D\195\164monenphase",
-	demon_nextbar = "n\195\164chste D\195\164monenphase",
-
+	demon_nextbar = "N\195\164chste D\195\164monenphase",
+	
+	mindcontrol = "Gedankenkontrolle",
+	mindcontrol_desc = "Warnt vor \195\188bernommenen Spielern.",
+	mindcontrol_warning = "Gedankenkontrolle: %s",
+	
+	image = "Schatten von Leotheras",
+	image_desc = "Meldet die 15% Schatten Abspaltung.",
 	image_trigger = "Ich bin der Meister! H\195\182rt Ihr?",
 	image_message = "15% - Schatten von Leotheras!",
 	image_warning = "Schatten von Leotheras bald!",
-
+	
+	whisper = "Heimt\195\188ckisches Gefl\195\188ster",
+	whisper_desc = "Zeigt an, welche Spieler von Heimt\195\188ckisches Gefl\195\188ster betroffen sind.",
 	whisper_message = "D\195\164mon: %s",
-	whisper_bar = "D\195\164monen Despawn",
-	whisper_soon = "~D\195\164monen Cooldown",
+	whisper_bar = "D\195\164monen verschwinden",
+	whisper_soon = "~D\195\164monen",
 } end )
 
 L:RegisterTranslations("zhCN", function() return {
@@ -286,7 +287,7 @@ L:RegisterTranslations("ruRU", function() return {
 	enrage_trigger = "Наконец-то завершается мое изгнание!",
 
 	whirlwind = "Вихрь",
-	whirlwind_desc = "Таймеры Вихрz.",
+	whirlwind_desc = "Таймеры Вихря.",
 	whirlwind_gain = "Вихрь в течении 12 сек",
 	whirlwind_fade = "Вихрь закончился",
 	whirlwind_bar = "Вихрь",
@@ -314,7 +315,7 @@ L:RegisterTranslations("ruRU", function() return {
 	image_warning = "Скоро Изображение!",
 
 	whisper = "Коварный шепот",
-	whisper_desc = "Предупреждать когда игроку получает Коварный шепот.",
+	whisper_desc = "Предупреждать когда игрок получает Коварный шепот.",
 	whisper_message = "Демон: %s",
 	whisper_bar = "Исчезновение Демонов",
 	whisper_soon = "~перезарядка Демона",
@@ -329,7 +330,7 @@ mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
 mod.guid = 21215
 mod.toggleoptions = {"enrage", "whirlwind", "phase", "image", "whisper", "mindcontrol", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
