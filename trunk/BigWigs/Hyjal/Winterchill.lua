@@ -65,8 +65,8 @@ L:RegisterTranslations("koKR", function() return {
 } end )
 
 L:RegisterTranslations("deDE", function() return {
-	decay = "Tod & Verfall auf dir",
-	decay_desc = "Warnt vor Tod & Verfall auf dir.",
+	decay = "Tod & Verfall",
+	decay_desc = "Warnt vor Tod & Verfall auf Dir.",
 	decay_message = "Tod & Verfall auf DIR!",
 
 	icebolt = "Eisblitz",
@@ -125,7 +125,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17767
 mod.toggleoptions = {"decay", -1, "icebolt", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80486 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

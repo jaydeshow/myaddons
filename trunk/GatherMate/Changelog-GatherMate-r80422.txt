@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r80422 | doktorjet | 2008-08-14 11:04:43 -0400 (Thu, 14 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: small fix in ruRU locale
+------------------------------------------------------------------------
 r80276 | next96 | 2008-08-12 11:16:12 -0400 (Tue, 12 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/GatherMate/Locales/GatherMate-koKR.lua

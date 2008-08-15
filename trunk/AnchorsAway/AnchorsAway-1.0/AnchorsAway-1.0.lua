@@ -9,7 +9,7 @@ Description: Row stacking and anchoring template
 Dependencies: AceLibrary, AceEvent-2.0, AceLocale-2.2
 ]]
 
-local vmajor, vminor = "AnchorsAway-1.0", "$Revision: 59197 $"
+local vmajor, vminor = "AnchorsAway-1.0", "$Revision: 80419 $"
 
 if not AceLibrary then error(vmajor .. " requires AceLibrary.") end
 if not AceLibrary:IsNewVersion(vmajor, vminor) then return end
@@ -197,6 +197,42 @@ L:RegisterTranslations("esES", function()
 			BOTTOM = "Abajo",
 			BOTTOMLEFT = "Esquina Inferior Izquierda",
 			LEFT = "Izquierda"
+		},
+	}
+end)
+
+L:RegisterTranslations("ruRU", function()
+	return {
+		catGrowth = "Рост ряда",
+		catPosSelf = "Место якоря...",
+		catPosTarget = "В...",
+		catPosOffset = "Смещение фрейма...",
+				
+		optPositioning = "Расположение",
+		optLock = "Закрепить",
+		optAnchor = "Показать якорь",
+		optPosVert = "Вертикально",
+		optPosHoriz = "Горизонтально",
+		optTimeout = "Простой",
+		optThreshold = "Предел стопки",
+		
+		descPositioning = "Позиция и приклепление рядов в стопке",
+		descAnchor = "Отображать якорь для данного набора",
+		descPosVert = "Смещение ряда по вертикали от места якоря",
+		descPosHoriz = "Смещение ряда по горизонтали от места якоря",
+		descTimeout = "Время перед затуханием ряда. |cFFFF5522Установив значение на 0 вы полностью отключите время затухания",
+		descDirection = "Направление роста стопки",
+		descThreshold = "Максимально число отображаемых рядов",
+		
+		optPos = {
+			TOPLEFT = "Верхний левый угол",
+			TOP = "Сверху",
+			TOPRIGHT = "Верхний правый угол",
+			RIGHT = "Справо",
+			BOTTOMRIGHT = "Нижний правый угол",
+			BOTTOM = "Снизу",
+			BOTTOMLEFT = "Нижний левый угол",
+			LEFT = "Слево"
 		},
 	}
 end)

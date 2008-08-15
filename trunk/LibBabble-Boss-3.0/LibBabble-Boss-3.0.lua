@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 80314 $
+Revision: $Rev: 80484 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 80314 $"
+local MINOR_VERSION = "$Revision: 80484 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -5485,7 +5485,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Julianne"] = "Джулианна",
 		["Kil'rek"] = "Килрек",
 		["King Llane Piece"] = "King Llane Piece",
-		["Maiden of Virtue"] = "Благочистивая дева",
+		["Maiden of Virtue"] = "Благочестивая дева",
 		["Midnight"] = "Полночь",
 		["Moroes"] = "Мороуз",
 		["Netherspite"] = "Пустогнев",

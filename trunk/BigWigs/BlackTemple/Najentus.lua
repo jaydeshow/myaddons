@@ -64,7 +64,7 @@ L:RegisterTranslations("deDE", function() return {
 
 	spine = "Aufspießender Stachel",
 	spine_desc = "Sagt euch, wer aufgespießt wird.",
-	spine_message = "Aufspießender Stachel auf %s!",
+	spine_message = "Aufspießender Stachel: %s!",
 
 	spinesay = "Stachel Sagen",
 	spinesay_desc = "Schreibe in /sagen wenn du das Ziel vom Aufspießender Stachel bist, dies kann angrenzenden Membern mit aktivierten Sprechblasen helfen.",
@@ -200,7 +200,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22887
 mod.toggleoptions = {"enrage", "shield", -1, "spine", "spinesay", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80166 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 2 ) end
 mod.proximitySilent = true
 

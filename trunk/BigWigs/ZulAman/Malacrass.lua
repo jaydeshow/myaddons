@@ -47,7 +47,7 @@ L:RegisterTranslations("deDE", function() return {
 	bolts = "Geistblitze",
 	bolts_desc = "Warnt wenn Geistblitze gecastet werden.",
 	bolts_message = "Geistblitze!",
-	bolts_warning = "Geistblitze in 5 Sek!",
+	bolts_warning = "Geistblitze in 5sek!",
 	bolts_nextbar = "N\195\164chsten Geistblitze",
 
 	soul = "Seele entziehen",
@@ -62,10 +62,10 @@ L:RegisterTranslations("deDE", function() return {
 	heal_desc = "Warnt wenn eine Heilung gecastet wird.",
 	heal_message = "Heilung!",
 
-	--consecration = "Consecration",
-	--consecration_desc = "Warn when Consecration is cast.",
-	--consecration_bar = "Consecration (%d)",
-	--consecration_warn = "Casted Consecration!",
+	consecration = "Weihe",
+	consecration_desc = "Warnt wenn Weihe gewirkt wird.",
+	consecration_bar = "Weihe (%d)",
+	consecration_warn = "Weihe!",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -207,7 +207,7 @@ L:RegisterTranslations("ruRU", function() return {
 	engage_trigger = "На вас падет тень…",
 
 	bolts = "Духовные молнии",
-	bolts_desc = "Предупреждать когда Малакрасс начинает напровлять Духовные молнии.",
+	bolts_desc = "Предупреждать когда Малакрасс начинает направлять Духовные молнии.",
 	bolts_message = "Надвиг.Духовные молнии!",
 	bolts_warning = "Духовные молнии за 5 сек!",
 	bolts_nextbar = "След.Духовные молнии",
@@ -239,7 +239,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 24239
 mod.toggleoptions = {"bolts", "soul", "totem", "heal", "consecration", "bosskill"}
-mod.revision = tonumber(("$Revision: 80398 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

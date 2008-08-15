@@ -230,7 +230,7 @@ NL["School of Tastyfish"] = "Косяк вкуснорыбы"
 -- mine nodes
 NL["Copper Vein"] = "Медная жила"
 NL["Tin Vein"] = "Оловянная жила"
-NL["Iron Deposit"] = "Залежь Железа"
+NL["Iron Deposit"] = "Залежи Железа"
 NL["Silver Vein"] = "Серебряная жила"
 NL["Gold Vein"] = "Золотая жила"
 NL["Mithril Deposit"] = "Митриловые залежи"

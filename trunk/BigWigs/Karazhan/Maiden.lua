@@ -158,7 +158,7 @@ L:RegisterTranslations("ruRU", function() return {
 	repentance_nextbar = "Перезарядка Покаяния",
 
 	holyfire = "Священный огонь",
-	holyfire_desc = "Предупреждать о зарашении игроков Священным огонем.",
+	holyfire_desc = "Предупреждать о заражении игроков Священным огонем.",
 	holyfire_message = "Священный огонь: %s",
 
 	icon = "Рейдовая иконка",
@@ -174,7 +174,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16457
 mod.toggleoptions = {"repentance", -1, "holyfire", "icon", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80442 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

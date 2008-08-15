@@ -1752,10 +1752,11 @@ do
 	-- /script ACP:LocateEmbeds()
 	function ACP:LocateEmbeds()
 		local embeds = LibStub.libs
+		local minors = LibStub.minors
 	
 		for k,v in pairs(embeds) do
-			if self.embedded_libs[k] ~= v then
-				self.embedded_libs[k] = v
+			if self.embedded_libs[k] == nil or self.embedded_libs[k] < minors[k] then
+				self.embedded_libs[k] = minors[k]
 				self.embedded_libs_owners[k] = true
 			end
 		end

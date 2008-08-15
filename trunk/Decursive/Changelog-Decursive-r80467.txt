@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r80467 | archarodim | 2008-08-15 01:21:36 -0400 (Fri, 15 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/Decursive/DCR_init.lua
+   M /trunk/Decursive/Readme.txt
+   M /trunk/Decursive/lisez-moi.txt
+   M /trunk/Decursive/localization.lua
+
+Decursive:
+- WotLK: Added support for "Cleanse Spirit", a new talent for shamans to clean 1 curse, 1 disease and 1 poison
+  ( http://wotlk.wowhead.com/?spell=51886 )
+- Typos fixes in support .txt files.
+------------------------------------------------------------------------
 r80384 | StingerSoft | 2008-08-13 22:54:12 -0400 (Wed, 13 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/Decursive/localization.ru.lua
@@ -262,19 +274,4 @@ Changed paths:
 
 Decursive:
 - added ruRU translation
-------------------------------------------------------------------------
-r78433 | archarodim | 2008-07-14 20:15:26 -0400 (Mon, 14 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/Decursive/Dcr_Events.lua
-
-Decursive:
-- (inactive code) fix Boolean mask logic in WIP combat log buff/debuff detection code
-------------------------------------------------------------------------
-r78429 | archarodim | 2008-07-14 19:09:03 -0400 (Mon, 14 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/Decursive/DCR_init.lua
-   M /trunk/Decursive/Dcr_Events.lua
-
-Decursive:
-- (inactive code) Starting to implement buff/debuff event detection using combat log events instead of SpecialEvents-Aura-2.0
 ------------------------------------------------------------------------

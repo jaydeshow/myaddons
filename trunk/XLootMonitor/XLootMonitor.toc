@@ -11,13 +11,13 @@
 
 ## OptionalDeps: Ace2, DewdropLib, AnchorsAway
 
-localization.enUS.lua
-localization.deDE.lua
-localization.frFR.lua
-localization.koKR.lua
-localization.esES.lua
-localization.zhTW.lua
-localization.zhCN.lua
+locales\enUS.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\koKR.lua
+locales\esES.lua
+locales\zhTW.lua
+locales\zhCN.lua
 
 XLootMonitor.lua
 XLootMonitorOptions.lua

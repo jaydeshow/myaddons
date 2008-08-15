@@ -23,8 +23,8 @@
 
 ## Interface: 20400
 ## Version: 0.935
-## X-Revision: $Rev: 80302 $
-## X-Date: $Date: 2008-08-12 19:31:06 -0400 (Tue, 12 Aug 2008) $
+## X-Revision: $Rev: 80433 $
+## X-Date: $Date: 2008-08-14 14:47:29 -0400 (Thu, 14 Aug 2008) $
 
 ## X-credits: FGWarmonger, Kagaro, Speeddymon, Xinhuan, Zhinjio
 
@@ -47,6 +47,8 @@
 ## SavedVariables: AckisRecipeListDB
 
 embeds.xml
+# Hack because LibAboutPanel is on CFSVN and not WoWAce SVN
+libs\LibAboutPanel\lib.xml
 
 # Localization files
 Locals\ARLLocals-enUS.lua

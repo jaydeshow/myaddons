@@ -102,12 +102,12 @@ L:RegisterTranslations("deDE", function() return {
 
 	howl = "Geheul des Azgalor",
 	howl_desc = "Warnt vor Geheul des Azgalor.",
-	howl_bar = "~Geheul Cooldown",
-	howl_message = "AOE Stille",
-	howl_warning = "AOE Stille Bald!",
+	howl_bar = "~Nächstes Geheul",
+	howl_message = "AoE Stille",
+	howl_warning = "AoE Stille bald!",
 
 	fire = "Feuerregen",
-	fire_desc = "Warnt wenn Feuerregen auf dir ist.",
+	fire_desc = "Warnt wenn du im Feuerregen stehst.",
 	fire_you = "Feuerregen auf DIR!",
 
 	icon = "Schlachtzug Symbol",
@@ -183,7 +183,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17842
 mod.toggleoptions = {"doom", "howl", "fire", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80486 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
