@@ -1,4 +1,4 @@
-local VERSION = tonumber(("$Revision: 78982 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 80487 $"):match("%d+"))
 
 local Parrot = Parrot, Parrot
 local Parrot_CombatEvents = Parrot:NewModule("CombatEvents", "LibRockEvent-1.0", "LibRockTimer-1.0")
@@ -6,7 +6,7 @@ local self = Parrot_CombatEvents
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-07-23 08:17:53 -0400 (Wed, 23 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-15 10:25:35 -0400 (Fri, 15 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- to track XP and Honor-gains
@@ -2456,6 +2456,7 @@ function Parrot_CombatEvents:OnSkillgainEvent(_, eventName, chatmsg)
 end
 
 function Parrot_CombatEvents:HandleEvent(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
+	
 	if not Parrot:IsModuleActive(Parrot_CombatEvents) then
 		return
 	end
@@ -2464,6 +2465,7 @@ function Parrot_CombatEvents:HandleEvent(timestamp, eventtype, srcGUID, srcName,
 		for _, v in ipairs(registeredHandlers) do
 			local info = v.infofunc(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
 			if info then
+				info.uid = (srcGUID or 0) + (dstGUID or 0) + timestamp
 				self:TriggerCombatEvent(v.category, v.name, info)
 				info = del( info )
 			end

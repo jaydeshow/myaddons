@@ -156,7 +156,7 @@ L["FAQ"] = "ЧаВо"
 L["Frequently Asked Questions"] = "Часто Задаваемые Вопросы"
 L["FAQ_TEXT"] = [[
 |cffffd200
-Я только что поставил GatherMate, но на крате нет ни одной ноды. Что не так?
+Я только что поставил GatherMate, но на карте нет ни одной ноды. Что не так?
 |r
 GatherMate не поставляется вместе с данными. По мере того, как вы собираете травы, добываете полезные ископаемые или рыбачите, GatherMate будет добавлять новые записи на карту. Также, проверьте настройки Внешнего вида.
 
@@ -229,11 +229,11 @@ NL["Steam Pump Flotsam"] = "Смытый в море паровой насос"
 NL["School of Tastyfish"] = "Косяк вкуснорыбы"
 -- mine nodes
 NL["Copper Vein"] = "Медная жила"
-NL["Tin Vein"] = "Оловянная жила"
-NL["Iron Deposit"] = "Залежи Железа"
+NL["Tin Vein"] = "Оловянная Жила"
+NL["Iron Deposit"] = "Залежи железа"
 NL["Silver Vein"] = "Серебряная жила"
 NL["Gold Vein"] = "Золотая жила"
-NL["Mithril Deposit"] = "Митриловые залежи"
+NL["Mithril Deposit"] = "Мифриловые залежи"
 NL["Ooze Covered Mithril Deposit"] = "Покрытые слизью мифриловые залежи"
 NL["Truesilver Deposit"] = "Залежи истинного серебра"
 NL["Ooze Covered Silver Vein"] = "Покрытая слизью серебрянная жила"
@@ -300,7 +300,7 @@ NL["Terocone"] = "Терошишка"
 --NL["Ancient Lichen"] = true instance only
 NL["Bloodthistle"] =  "Кровопийка"
 NL["Mana Thistle"] = "Манрепейник"
-NL["Netherbloom"] = "Роза Хаоса"
+NL["Netherbloom"] = "Пустоцвет"
 NL["Nightmare Vine"] = "Лозный кошмарник"
 NL["Ragveil"] = "Кисейница"
 NL["Flame Cap"] = "Огнеголовик"

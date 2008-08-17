@@ -1,4 +1,4 @@
-local VERSION = tonumber(("$Revision: 79289 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 80495 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_TriggerConditions = Parrot:NewModule("TriggerConditions", "LibRockEvent-1.0")
@@ -6,7 +6,7 @@ local self = Parrot_TriggerConditions
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-07-27 17:11:17 -0400 (Sun, 27 Jul 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-15 14:11:58 -0400 (Fri, 15 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- #AUTODOC_NAMESPACE Parrot_TriggerConditions
@@ -338,10 +338,6 @@ function Parrot_TriggerConditions:DoesSecondaryTriggerConditionPass(name, arg)
 	end
 end
 
--- onEnableFuncs[#onEnableFuncs+1] = function()
--- 	self:AddEventListener("COMBAT_LOG_EVENT_UNFILTERED", "OnCombatEvent")
--- end
-
 function Parrot_TriggerConditions:COMBAT_LOG_EVENT_UNFILTERED(_, _, timestamp, eventType, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
 	
 	if not Parrot:IsModuleActive(Parrot_TriggerConditions) then
@@ -351,15 +347,13 @@ function Parrot_TriggerConditions:COMBAT_LOG_EVENT_UNFILTERED(_, _, timestamp, e
 	local registeredHandlers = self.combatLogEvents[eventType]
 	if registeredHandlers then
 		for _, v in ipairs(registeredHandlers) do
-			if v.triggerData then
-				local arg1, arg2, arg3 = v.triggerData(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
-				if arg1 then
-					if not arg3 then
-						arg3 = srcGUID + dstGUID + GetTime()
-					end
-					
-					self:FirePrimaryTriggerCondition(arg1, arg2, arg3)
-				end
+			local arg = v.triggerData(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, ...)
+			if arg == true then
+				local uid = (srcGUID or 0) + (dstGUID or 0) - timestamp
+				self:FirePrimaryTriggerCondition(v.name, nil, uid)
+			elseif arg then
+				local uid = (srcGUID or 0) + (dstGUID or 0) - timestamp
+				self:FirePrimaryTriggerCondition(v.name, arg, uid)
 			end
 		end
 	end

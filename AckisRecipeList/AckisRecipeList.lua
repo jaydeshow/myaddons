@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-08-13 15:38:44 -0400 (Wed, 13 Aug 2008) $
-$Rev: 80363 $
+$Date: 2008-08-15 17:16:34 -0400 (Fri, 15 Aug 2008) $
+$Rev: 80505 $
 
 Author: Ackis on Illidan US Horde
 
@@ -104,7 +104,6 @@ Second half of Command
 
 --]]
 
-
 local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
 local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 
@@ -123,25 +122,40 @@ addon.FilteredRecipes = nil
 addon.NumberOfRecipes = nil
 addon.ResetOkayBlizz = nil
 addon.ResetOkayARL = nil
+addon.wrath = false
 -- To make tabbing between professions easier
-addon.KnowProfession = {
+addon.KnownProfessions = {
 	["Alchemy"] = false,
 	["Blacksmithing"] = false,
 	["Cooking"] = false,
-	["Engineering"] = false,
 	["Enchanting"] = false,
+	["Engineering"] = false,
 	["First Aid"] = false,
 	["Leatherworking"] = false,
-	["Poisons"] = false,
+	["Poisons"]	= false,
 	["Smelting"] = false,
 	["Tailoring"] = false,
 	["Jewelcrafting"] = false,
 	["Beast Training"] = false,
 	["Inscription"] = false,
-	}
-addon.wrath = false
--- Added by ZJ for gui stuff
-addon.CurrentProf = "alchemy"
+}
+addon.SortedProfessions = {
+	{ name = "Alchemy",			texture = "alchemy" },		-- 1
+	{ name = "Beast Training",	texture = "beast" },		-- 2
+	{ name = "Blacksmithing",	texture = "blacksmith" },	-- 3
+	{ name = "Cooking",			texture = "cooking" },		-- 4
+	{ name = "Enchanting",		texture = "enchant" },		-- 5
+	{ name = "Engineering",		texture = "engineer" },		-- 6
+	{ name = "First Aid",		texture = "firstaid" },		-- 7
+	{ name = "Inscribing",		texture = "inscribe" },		-- 8
+	{ name = "Jewelcrafting",	texture = "jewel" },		-- 9
+	{ name = "Leatherworking",	texture = "leather" },		-- 10
+	{ name = "Poisong",			texture = "poison" },		-- 11
+	{ name = "Smelting",		texture = "smelting" },		-- 12
+	{ name = "Tailoring",		texture = "tailor" },		-- 13
+}
+addon.MaxProfessions = 13
+addon.CurrentProf = 0
 addon.maxVisibleRecipes = 19
 
 -- Frame variables
@@ -2165,20 +2179,33 @@ end
 -- Scans the first 24 entries in the spellbook to find out which professions you know.
 
 function addon:GetKnownProfessions()
-
+	-- reset all professions to false (someone may have unlearned something
+	-- who knows
+	addon.KnownProfessions = {
+		["Alchemy"] = false,
+		["Blacksmithing"] = false,
+		["Cooking"] = false,
+		["Enchanting"] = false,
+		["Engineering"] = false,
+		["First Aid"] = false,
+		["Leatherworking"] = false,
+		["Poisons"]	= false,
+		["Smelting"] = false,
+		["Tailoring"] = false,
+		["Jewelcrafting"] = false,
+		["Beast Training"] = false,
+		["Inscription"] = false,
+	}
 	for index=1,25,1 do
 		local spellName = GetSpellName(index, BOOKTYPE_SPELL)
-
-		-- Nothing found
 		if (not spellName) or (index == 25) then
+			-- Nothing found
 			break
 		end
-
-		if (addon.KnowProfession[spellName] == false) then
-			addon.KnowProfession[spellName] = true
+		if ( addon.KnownProfessions[spellName] == false ) then
+			addon.KnownProfessions[spellName] = true
 		end
 	end
-
 end
 
 --[[

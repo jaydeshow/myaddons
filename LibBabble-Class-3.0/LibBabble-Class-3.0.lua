@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Class-3.0
-Revision: $Rev: 80352 $
+Revision: $Rev: 80548 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for classes.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Class-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 80352 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 80548 $"):match("(%d+)"))
 
 if not LibStub then error("LibBabble-Class-3.0 requires LibStub.") end
 local lib = LibStub("LibBabble-3.0"):New(MAJOR_VERSION, MINOR_VERSION)
@@ -189,12 +189,14 @@ elseif l == "ruRU" then
 		["Paladin"] = "Паладин",
 		["Shaman"] = "Шаман",
 		["Rogue"] = "Разбойник",
+		["Deathknight"] = "Рыцарь Смерти",
 		
 		["WARLOCK"] = "Чернокнижница",
 		["HUNTER"] = "Охотница",
 		["PRIEST"] = "Жрица",
 		["SHAMAN"] = "Шаманка",
 		["ROGUE"] = "Разбойница",
+		["DEATHKNIGHT"] = "Рыцарь Смерти",
 	}
 else
 	error(("%s: Locale %q not supported"):format(MAJOR_VERSION, GAME_LOCALE))

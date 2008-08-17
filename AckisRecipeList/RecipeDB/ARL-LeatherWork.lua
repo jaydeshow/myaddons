@@ -4,8 +4,8 @@ ARL-LeatherWork.lua
 
 LeatherWorking data for all of AckisRecipeList
 
-$Date: 2008-08-06 20:55:52 -0400 (Wed, 06 Aug 2008) $
-$Rev: 79904 $
+$Date: 2008-08-16 14:46:12 -0400 (Sat, 16 Aug 2008) $
+$Rev: 80547 $
 
 ]]--
 
@@ -404,8 +404,8 @@ function addon:InitLeatherWorking()
 	self:addTradeSkillSpell(35589, 375, L["Trainer"],GetSpellInfo(10659),1)
 
 	-- Tribal Leatherworking
-	self:addTradeSkillSpell(10621, 225, L["Trainer"],1)
-	self:addTradeSkillSpell(10647, 250, L["Trainer"],1)
+	self:addTradeSkillSpell(10621, 225, L["Trainer"],GetSpellInfo(10661),1)
+	self:addTradeSkillSpell(10647, 250, L["Trainer"],GetSpellInfo(10661),1)
 	self:addTradeSkillSpell(36075, 260, L["Trainer"],GetSpellInfo(10661),1)
 	self:addTradeSkillSpell(36078, 330, L["Trainer"],GetSpellInfo(10661),1)
 	self:addTradeSkillSpell(35587, 375, L["Trainer"],GetSpellInfo(10661),1)

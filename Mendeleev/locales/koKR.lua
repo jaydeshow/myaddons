@@ -108,4 +108,11 @@ L:RegisterTranslations("koKR", function() return {
 	["Badge of Justice"] = "정의의 휘장",
 	["G'eras"] = "게라스",
 	["Smith Hauthaa"] = "Smith Hauthaa", -- check
+
+	-- Timed Reward Chest
+--	["Timed Reward Chest1"] = true,
+--	["Timed Reward Chest2"] = true,
+--	["Timed Reward Chest3"] = true,
+--	["Timed Reward Chest4"] = true,
+
 }end)

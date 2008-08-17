@@ -114,4 +114,11 @@ L:RegisterTranslations("zhCN", function() return {
 	["G'eras"] = "基厄拉斯",
 	["Smith Hauthaa"] = "铁匠霍尔萨",
 	["Trash Mobs"] = "小怪掉落",
+
+	-- Timed Reward Chest
+	["Timed Reward Chest1"] = "限时击杀首领奖励1",
+	["Timed Reward Chest2"] = "限时击杀首领奖励2",
+	["Timed Reward Chest3"] = "限时击杀首领奖励3",
+	["Timed Reward Chest4"] = "限时击杀首领奖励4",
+
 }end)

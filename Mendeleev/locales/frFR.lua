@@ -103,5 +103,12 @@ L:RegisterTranslations("frFR", function() return {
 	["G'eras"] = "G'eras",
 	["Smith Hauthaa"] = "Forgeron Hauthaa",
 	["Trash Mobs"] = "Trash Mobs",
+
+	-- Timed Reward Chest
+--	["Timed Reward Chest1"] = true,
+--	["Timed Reward Chest2"] = true,
+--	["Timed Reward Chest3"] = true,
+--	["Timed Reward Chest4"] = true,
+
 }end)
 

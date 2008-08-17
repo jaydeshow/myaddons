@@ -1,4 +1,48 @@
 ------------------------------------------------------------------------
+r80547 | ascalia | 2008-08-16 14:46:12 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
+
+AckisRecipeList:
+- fixed two Leatherworking recipes
+------------------------------------------------------------------------
+r80505 | zhinjio | 2008-08-15 17:16:34 -0400 (Fri, 15 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   A /trunk/AckisRecipeList/img/inscribe_down.blp
+   A /trunk/AckisRecipeList/img/inscribe_up.blp
+   A /trunk/AckisRecipeList/img/runeforge_down.blp
+   A /trunk/AckisRecipeList/img/runeforge_up.blp
+
+AckisRecipeList:
+- gui2 - switcher working with known professions
+- gui2 - added wotlk icons
+------------------------------------------------------------------------
+r80496 | ackis | 2008-08-15 14:25:51 -0400 (Fri, 15 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
+
+AckisRecipeList:
+- deDE update thanks to Darugo
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r80490 | ackis | 2008-08-15 12:29:31 -0400 (Fri, 15 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Update onload Wrath compatibility message
+lua> print("Dry-coded (compiles with luac -p)")
+------------------------------------------------------------------------
+r80489 | ackis | 2008-08-15 12:22:26 -0400 (Fri, 15 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+
+AckisRecipeList:
+- Fix ticket 41 (spelling error in localization)
+>lua print("Dry-coded (compiles with luac -p)")
+------------------------------------------------------------------------
 r80433 | ackis | 2008-08-14 14:47:29 -0400 (Thu, 14 Aug 2008) | 3 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.toc
@@ -552,47 +596,4 @@ AckisRecipeList:
 - Frame header now large enough with some font scaling things
 - Interface options in the right order
 ~lart Arrowmaster
-------------------------------------------------------------------------
-r78527 | kurax | 2008-07-15 22:58:25 -0400 (Tue, 15 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-
-AckisRecipeList: Update zhCN locale
-------------------------------------------------------------------------
-r78488 | ackis | 2008-07-15 11:50:36 -0400 (Tue, 15 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Change order of Display options
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78487 | ackis | 2008-07-15 11:36:11 -0400 (Tue, 15 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-
-AckisRecipeList:
-- Ticket 24 fix (LW drums rep levels fixed)
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78484 | ackis | 2008-07-15 11:23:30 -0400 (Tue, 15 Jul 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Tailor.lua
-
-AckisRecipeList:
-- Philosopher's Stone -> 200 per patch notes
-- Removed conditionals for new 2.4.3 tailoring patterns
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78483 | next96 | 2008-07-15 11:17:11 -0400 (Tue, 15 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- toc koKR translation (thank you Ackis)
 ------------------------------------------------------------------------

@@ -336,6 +336,10 @@
 			["InstanceLoot.Zul'Aman.Halazzi"]=BB["Halazzi"],
 			["InstanceLoot.Zul'Aman.Malacrass"]=BB["Malacrass"],
 			["InstanceLoot.Zul'Aman.Zul'jin"]=BB["Zul'jin"],
+			["InstanceLoot.Zul'Aman.Chest1"]=L["Timed Reward Chest1"],
+			["InstanceLoot.Zul'Aman.Chest2"]=L["Timed Reward Chest2"],
+			["InstanceLoot.Zul'Aman.Chest3"]=L["Timed Reward Chest3"],
+			["InstanceLoot.Zul'Aman.Chest4"]=L["Timed Reward Chest4"],
 		},
 	})
 

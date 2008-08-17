@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 66234 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 80530 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_Unit_MINOR_VERSION then
 	_G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
@@ -94,6 +94,7 @@ DogTag_Unit_funcs[#DogTag_Unit_funcs+1] = function(DogTag_Unit, DogTag)
 	L["Focus"] = "주시"
 	L["Energy"] = "기력"
 	L["Mana"] = "마나"
+	L["Runic Power"] = "룬 마력"
 	
 	L["PvP"] = "전쟁" -- PVP
 	L["FFA"] = "전투 지역"
