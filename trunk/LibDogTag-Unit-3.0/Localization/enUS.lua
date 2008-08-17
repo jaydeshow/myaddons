@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 66279 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 80518 $"):match("%d+")) or 0
 
 _G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
 
@@ -111,6 +111,7 @@ DogTag_Unit.L = {
 	["Focus"] = FOCUS,
 	["Energy"] = ENERGY,
 	["Mana"] = MANA,
+	["Runic Power"] = RUNIC_POWER,
 
 	["PvP"] = PVP,
 	["FFA"] = "FFA",

@@ -1,4 +1,13 @@
 ------------------------------------------------------------------------
+r80521 | 7destiny | 2008-08-16 02:07:26 -0400 (Sat, 16 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/BigWigs/TheEye/Kaelthas.lua
+
+BigWigs: TheEye/Kaelthas:
+- add Toy removal
+- fix Pyro stopbar when phase5
+- koKR Update for pyro trigger
+------------------------------------------------------------------------
 r80486 | oojoo | 2008-08-15 09:20:12 -0400 (Fri, 15 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/BigWigs/Hyjal/Anetheron.lua
@@ -383,13 +392,4 @@ Changed paths:
    M /trunk/Omen/Omen.toc
 
 .trunk: remove SavedVariablesPerCharacter from a few addons that don't even use them, preventing a file with nothing but 'VAR = nil' from being created for each character
-------------------------------------------------------------------------
-r78512 | funkydude | 2008-07-15 19:01:12 -0400 (Tue, 15 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Extras/Tranq.lua
-   M /trunk/BigWigs/Hyjal/Archimonde.lua
-   M /trunk/BigWigs/Sunwell/Twins.lua
-   M /trunk/BigWigs/ZulAman/Halazzi.lua
-
-BigWigs: Changed to 2.4.3 dispel events, total guess no idea if it works. :)
 ------------------------------------------------------------------------

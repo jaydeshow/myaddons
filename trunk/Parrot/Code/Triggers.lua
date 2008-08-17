@@ -1,11 +1,11 @@
-local VERSION = tonumber(("$Revision: 80351 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 80487 $"):match("%d+"))
 
 local Parrot = Parrot
 local Parrot_Triggers = Parrot:NewModule("Triggers", "LibRockTimer-1.0")
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-08-13 08:18:15 -0400 (Wed, 13 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-15 10:25:35 -0400 (Fri, 15 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 -- local L = Parrot:L("Parrot_Triggers")
@@ -409,12 +409,6 @@ local function hexColorToTuple(color)
 	local num = tonumber(color, 16)
 	return math.floor(num / 256^2)/255, math.floor((num / 256)%256)/255, (num%256)/255
 end
-
-local oldIconName = {
-	["Backlash"] = 34939,
-	["Nightfall"] = 18095,
-	["Stormstrike"] = 17364,
-}
 
 -- to find the icon for old saved variables
 

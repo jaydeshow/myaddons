@@ -1,13 +1,13 @@
 --[[
 Name: LibDogTag-3.0
-Revision: $Rev: 77057 $
+Revision: $Rev: 80517 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: A library to provide a markup syntax
 ]]
 
 local MAJOR_VERSION = "LibDogTag-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 77057 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 80517 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_MINOR_VERSION then
 	_G.DogTag_MINOR_VERSION = MINOR_VERSION
@@ -91,6 +91,7 @@ DogTag.__colors = {
 	energy = { 1, 220/255, 25/255 },
 	focus = { 1, 210/255, 0 },
 	mana = { 48/255, 113/255, 191/255 },
+	runicPower = { 0, 209/255, 1 },
 }
 for class, data in pairs(_G.RAID_CLASS_COLORS) do
 	DogTag.__colors[class] = { data.r, data.g, data.b, }

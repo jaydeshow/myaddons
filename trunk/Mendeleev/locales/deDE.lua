@@ -108,4 +108,11 @@ L:RegisterTranslations("deDE", function() return {
 	["Badge of Justice"] = "Abzeichen der Gerechtigkeit",
 	["G'eras"] = "G'eras",
 	["Smith Hauthaa"] = "Schmiedin Hauthaa",
+
+	-- Timed Reward Chest
+--	["Timed Reward Chest1"] = true,
+--	["Timed Reward Chest2"] = true,
+--	["Timed Reward Chest3"] = true,
+--	["Timed Reward Chest4"] = true,
+
 }end)

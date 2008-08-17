@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-08-12 01:14:29 -0400 (Tue, 12 Aug 2008) $
-$Rev: 80247 $
+$Date: 2008-08-15 12:22:26 -0400 (Fri, 15 Aug 2008) $
+$Rev: 80489 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -284,7 +284,7 @@ L["Fel Regeneration Potion Obt"] = "Deathforge Imp, Deathforge Guardian, Deathfo
 L["Fel Strength Elixir Obt"] = "Mo'arg Weaponsmiths, Terrormasters, Wrathwalkers, Shadow Council Warlocks"
 L["Gift of Arthas Obt"] = "Skeletal Flayer, Slavering Ghoul"
 L["Greater Arcane Protection Potion Obt"] = "Cobalt Mageweavers"
-L["Greater Fire Protection Potion Obt"] = "Firebrand Invoker, Firebrand Pyromance"
+L["Greater Fire Protection Potion Obt"] = "Firebrand Invoker, Firebrand Pyromancer"
 L["Greater Frost Protection Potion Obt"] = "Frostmaul Giants"
 L["Greater Nature Protection Potion Obt"] = "Decaying Horror, Rotting Behemoths"
 L["Greater Shadow Protection Potion Obt"] = "Dark Adepts, Shadowmages"

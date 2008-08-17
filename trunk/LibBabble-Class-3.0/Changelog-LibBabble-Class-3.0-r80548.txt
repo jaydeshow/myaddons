@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r80548 | StingerSoft | 2008-08-16 15:33:07 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.lua
+
+LibBabble-Class-3.0
+- update ruRU (Deathknight)
+------------------------------------------------------------------------
 r80352 | cwdg | 2008-08-13 09:59:35 -0400 (Wed, 13 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.lua
@@ -40,11 +47,4 @@ Changed paths:
 
 LibBabble-Class-3.0
 - Merged in 2.2 feminine translations. Users still need to provide their own implementations of reverse lookup+struppr, and their own lookup of class color
-------------------------------------------------------------------------
-r78464 | Cybersea | 2008-07-15 05:18:41 -0400 (Tue, 15 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.lua
-
-LibBabble-Class-3.0
-- added ruRU translation
 ------------------------------------------------------------------------

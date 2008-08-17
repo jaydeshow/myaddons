@@ -90,5 +90,12 @@ L:RegisterTranslations("esES", function() return {
 	["Arena - Season 2 Set"] = "Arena - Conjunto de Temporada 2",
 	["Arena - Season 3 Set"] = "Arena - Conjunto de Temporada 3",
 	["Arena - Season 4 Set"] = "Arena - Conjunto de Temporada 4",
+
+	-- Timed Reward Chest
+--	["Timed Reward Chest1"] = true,
+--	["Timed Reward Chest2"] = true,
+--	["Timed Reward Chest3"] = true,
+--	["Timed Reward Chest4"] = true,
+
 }end)
 

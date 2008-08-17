@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r80524 | 7destiny | 2008-08-16 03:08:41 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: MT/Kael'thasSunstrider:
+- koKR Update
+------------------------------------------------------------------------
 r80291 | StingerSoft | 2008-08-12 17:03:30 -0400 (Tue, 12 Aug 2008) | 1 line
 Changed paths:
    M /trunk/LittleWigs/Auchindoun/Blackheart.lua

@@ -1,4 +1,4 @@
-AckisRecipeList/Changelog-AckisRecipeList-r80433.txt
+AckisRecipeList/Changelog-AckisRecipeList-r80547.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/AckisRecipeList.lua
@@ -25,8 +25,10 @@ AckisRecipeList/RecipeDB/ARL-Smelt.lua
 AckisRecipeList/RecipeDB/ARL-Inscription.lua
 AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
 AckisRecipeList/img/firstaid_down.blp
+AckisRecipeList/img/runeforge_down.blp
 AckisRecipeList/img/expanded.blp
 AckisRecipeList/img/leather_up.blp
+AckisRecipeList/img/inscribe_down.blp
 AckisRecipeList/img/poison_down.blp
 AckisRecipeList/img/poison_up.blp
 AckisRecipeList/img/jewel_down.blp
@@ -36,10 +38,12 @@ AckisRecipeList/img/tailor_up.blp
 AckisRecipeList/img/main.blp
 AckisRecipeList/img/smelting_up.blp
 AckisRecipeList/img/jewel_up.blp
+AckisRecipeList/img/runeforge_up.blp
 AckisRecipeList/img/enchant_down.blp
 AckisRecipeList/img/blacksmith_down.blp
 AckisRecipeList/img/blacksmith_up.blp
 AckisRecipeList/img/cooking_down.blp
+AckisRecipeList/img/inscribe_up.blp
 AckisRecipeList/img/beast_down.blp
 AckisRecipeList/img/alchemy_down.blp
 AckisRecipeList/img/tailor_down.blp

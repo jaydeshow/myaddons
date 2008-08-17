@@ -1,0 +1,44 @@
+------------------------------------------------------------------------
+r80530 | 7destiny | 2008-08-16 05:02:42 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
+
+LibDogTag-Unit-3.0:
+- fix koKR
+------------------------------------------------------------------------
+r80529 | 7destiny | 2008-08-16 04:55:49 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
+
+LibDogTag-Unit-3.0:
+- fix koKR
+------------------------------------------------------------------------
+r80527 | 7destiny | 2008-08-16 03:31:08 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
+
+LibDogTag-Unit-3.0:
+- koKR Update
+------------------------------------------------------------------------
+r80518 | ckknight | 2008-08-16 01:41:39 -0400 (Sat, 16 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Power.lua
+   M /trunk/LibDogTag-Unit-3.0/Localization/enUS.lua
+
+LibDogTag-Unit-3.0 - add runic power capability.
+------------------------------------------------------------------------
+r78569 | ckknight | 2008-07-16 13:34:39 -0400 (Wed, 16 Jul 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/TooltipScanning.lua
+
+LibDogTag-Unit-3.0 - don't mess with the faction thingy when in combat.
+------------------------------------------------------------------------
+r78564 | nightik | 2008-07-16 12:30:56 -0400 (Wed, 16 Jul 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0
+   A /trunk/LibDogTag-Unit-3.0/Localization/ruRU.lua
+   M /trunk/LibDogTag-Unit-3.0/lib.xml
+
+LibDogTag-Unit-3.0:
+- added ruRU locale
+------------------------------------------------------------------------

@@ -114,4 +114,11 @@ L:RegisterTranslations("zhTW", function() return {
 	["G'eras"] = "吉爾拉斯",
 	["Smith Hauthaa"] = "鐵匠荷莎",
 	["Trash Mobs"] = "小怪掉落",
+
+	-- Timed Reward Chest
+	["Timed Reward Chest1"] = "限時任務獎勵箱子 1",
+	["Timed Reward Chest2"] = "限時任務獎勵箱子 2",
+	["Timed Reward Chest3"] = "限時任務獎勵箱子 3",
+	["Timed Reward Chest4"] = "限時任務獎勵箱子 4",
+
 }end)

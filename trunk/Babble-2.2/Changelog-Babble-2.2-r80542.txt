@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r80542 | StingerSoft | 2008-08-16 13:16:52 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Spell-2.2/Babble-Spell-2.2.lua
+
+Babble-2.2:
+- fix/update ruRU
+------------------------------------------------------------------------
 r80316 | StingerSoft | 2008-08-12 21:14:13 -0400 (Tue, 12 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/Babble-2.2/Babble-Ore-2.2/Babble-Ore-2.2.lua
@@ -126,11 +133,4 @@ Changed paths:
 
 Babble-2.2:
 -Adв ruRU translation for Babble-Faction-2.2
-------------------------------------------------------------------------
-r78463 | Cybersea | 2008-07-15 05:05:01 -0400 (Tue, 15 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Class-2.2/Babble-Class-2.2.lua
-
-Babble-2.2:
-- Babble-Class: Added ruRU translation
 ------------------------------------------------------------------------

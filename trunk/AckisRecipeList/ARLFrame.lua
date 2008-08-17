@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-08-12 01:14:29 -0400 (Tue, 12 Aug 2008) $
-$Rev: 80247 $
+$Date: 2008-08-15 17:16:34 -0400 (Fri, 15 Aug 2008) $
+$Rev: 80505 $
 
 ****************************************************************************************
 ]]--
@@ -391,6 +391,7 @@ function addon.ToggleFilters()
 		ARL_ResetButton:Hide()
 		ARL_ApplyButton:Hide()
 		-- Hide the Filter CBs
+--[[
 		ARL_FLTGenText:Hide()
 		ARL_AllianceCB:Hide()
 		ARL_HordeCB:Hide()
@@ -424,7 +425,7 @@ function addon.ToggleFilters()
 		ARL_MeleeCB:Hide()
 		ARL_HealerCB:Hide()
 		ARL_CasterCB:Hide()
-
+]]--
 		-- and finally, show our frame
 		addon.Frame:Show()
 	else
@@ -445,6 +446,7 @@ function addon.ToggleFilters()
 		ARL_ResetButton:Show()
 		ARL_ApplyButton:Show()
 		-- Show the Filter CBs
+--[[
 		ARL_FLTGenText:Show()
 		ARL_AllianceCB:Show()
 		ARL_HordeCB:Show()
@@ -478,7 +480,7 @@ function addon.ToggleFilters()
 		ARL_MeleeCB:Show()
 		ARL_HealerCB:Show()
 		ARL_CasterCB:Show()
-
+]]--
 		-- and finally, show our frame
 		addon.Frame:Show()
 	end
@@ -652,35 +654,46 @@ end
 -- Switch the displayed profession in the main panel
 
 function addon.SwitchProfs()
--- eventually, this will only switch between available professions.
--- For now, just flip through them all
-	if ( addon.CurrentProf == "alchemy" ) then
-		addon.CurrentProf = "beast"
-	elseif ( addon.CurrentProf == "beast" ) then
-		addon.CurrentProf = "blacksmith"
-	elseif ( addon.CurrentProf == "blacksmith" ) then
-		addon.CurrentProf = "cooking"
-	elseif ( addon.CurrentProf == "cooking" ) then
-		addon.CurrentProf = "enchant"
-	elseif ( addon.CurrentProf == "enchant" ) then
-		addon.CurrentProf = "engineer"
-	elseif ( addon.CurrentProf == "engineer" ) then
-		addon.CurrentProf = "firstaid"
-	elseif ( addon.CurrentProf == "firstaid" ) then
-		addon.CurrentProf = "jewel"
-	elseif ( addon.CurrentProf == "jewel" ) then
-		addon.CurrentProf = "leather"
-	elseif ( addon.CurrentProf == "leather" ) then
-		addon.CurrentProf = "poison"
-	elseif ( addon.CurrentProf == "poison" ) then
-		addon.CurrentProf = "smelting"
-	elseif ( addon.CurrentProf == "smelting" ) then
-		addon.CurrentProf = "tailor"
+	-- Figure out what professions we know...
+	addon:GetKnownProfessions()
+
+	-- This loop is gonna be weird. The reason is because we need to
+	-- ensure that we cycle through all the known professions, but also
+	-- that we do so in order. That means that if the currently displayed
+	-- profession is the last one in the list, we're actually going to
+	-- iterate completely once to get to the currently displayed profession
+	-- and then iterate again to make sure we display the next one in line.
+	-- Further, there is the nuance that the person may not know any
+	-- professions yet at all. User are so annoying.
+	local startLoop = 0
+	local endLoop = 0
+	local displayProf = 0
+
+	-- ok, so first off, if we've never done this before, there is no "current"
+	-- and a single iteration will do nicely, thank you
+	if ( addon.CurrentProf == 0 ) then
+		startLoop = 1
+		endLoop = addon.MaxProfessions + 1
 	else
-		addon.CurrentProf = "alchemy"
+		startLoop = addon.CurrentProf + 1
+		endLoop = addon.CurrentProf
+	end
+	local index = startLoop
+	while ( index ~= endLoop ) do
+		if ( index > addon.MaxProfessions ) then
+			index = 1
+		else
+			if ( addon.KnownProfessions[addon.SortedProfessions[index].name] == true ) then
+				displayProf = index
+				addon.CurrentProf = index
+				break
+			else
+				index = index + 1
+			end
+		end
 	end
 	-- Redisplay the button with the new skill
-	addon.SetSwitcherTexture( addon.CurrentProf )
+	addon.SetSwitcherTexture( addon.SortedProfessions[addon.CurrentProf].texture )
 end
 
 -- What to do if someone clicks on a recipe button
@@ -1013,12 +1026,12 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				25, 90, "TOPRIGHT", addon.Frame, "TOPRIGHT", -8, -40, "GameFontNormalSmall",
 				"GameFontHighlightSmall", L["FILTER_OPEN"], "CENTER", L["FILTER_OPEN_TT"], 1 )
 				ARL_FilterButton:SetScript( "OnClick", addon.ToggleFilters )
-
+--[[
 			local ARL_ResetButton = addon:GenericCreateButton( "ARL_ResetButton", addon.Frame,
 				25, 90, "TOPRIGHT", ARL_FilterButton, "BOTTOMRIGHT", 0, -2, "GameFontNormalSmall",
 				"GameFontHighlightSmall", L["Reset"], "CENTER", L["RESET_TT"], 1 )
 			ARL_ResetButton:Hide()
-
+--]]
 			local ARL_SortButton = addon:GenericCreateButton( "ARL_SortButton", addon.Frame,
 				25, 90, "TOPLEFT", addon.Frame, "TOPLEFT", 80, -40, "GameFontNormalSmall",
 				"GameFontHighlightSmall", L["Sort"], "CENTER", L["SORT_TT"], 1 )
@@ -1044,12 +1057,12 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 						this:GetParent():Hide()
 					end
 				)
-
+--[[
 			local ARL_ApplyButton = addon:GenericCreateButton( "ARL_ApplyButton", addon.Frame,
 				22, 69, "RIGHT", ARL_CloseButton, "LEFT", -80, 0, "GameFontNormalSmall",
 				"GameFontHighlightSmall", L["Apply"], "CENTER", L["Apply_TT"], 1 )
 			ARL_ApplyButton:Hide()
-
+]]--
 			local ARL_PlusList = {}
 			local ARL_RecipeList = {}
 			for i = 1, addon.maxVisibleRecipes do
@@ -1087,8 +1100,8 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 			( ) Craft Specialty recipes
 			( ) All skill levels
 			( ) Horde     ( ) Alliance
-			( ) Known	  ( ) Unknown			]]--
-
+			( ) Known	  ( ) Unknown		]]--
+--[[
 			local ARL_FLTGenText = addon.Frame:CreateFontString( "ARL_FLTGenText", "OVERLAY", "GameFontHighlight" )
 			ARL_FLTGenText:SetText( L["General"] )
 			ARL_FLTGenText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -5 )
@@ -1118,13 +1131,14 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 			local ARL_UnknownCB = CreateFrame( "CheckButton", "ARL_UnknownCB", addon.Frame, "UICheckButtonTemplate" )
 				addon:GenericMakeCB( ARL_UnknownCB, ARL_FLTGenText, L["UNKNOWN_TT"], 7, 5, 2 )
 				ARL_UnknownCBText:SetText( L["Unknown"] )
-
+]]--
 --[[		Obtain:
 				( ) Instance  ( ) Raid
 				( ) Quest     ( ) Seasonal
 				( ) Trainer   ( ) Vendor
 				( ) PVP		  ( ) Discovery
 				( ) Reputation **					]]--
+--[[
 			local ARL_FLTObtText = addon.Frame:CreateFontString( "ARL_FLTObtText", "OVERLAY", "GameFontHighlight" )
 			ARL_FLTObtText:SetText( L["Obtain"] )
 			ARL_FLTObtText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -113 )
@@ -1165,10 +1179,11 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				16, 16, "LEFT", ARL_ReputationCBText, "RIGHT", 1, -1, "GameFontNormalSmall",
 				"GameFontHighlightSmall", "", "LEFT", "testTT", 2 )
 			ARL_RepPlus:Hide()
-
+]]--
 --[[		Item Type:
 				( ) Armor **  ( ) Weapon **
 				( ) BoP								]]--
+--[[
 			local ARL_FLTITypeText = addon.Frame:CreateFontString( "ARL_FLTITypeText", "OVERLAY", "GameFontHighlight" )
 			ARL_FLTITypeText:SetText( L["Item Type"] )
 			ARL_FLTITypeText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -220 )
@@ -1203,10 +1218,11 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				"GameFontHighlightSmall", "", "LEFT", "testTT", 2 )
 				ARL_WeaponPlus:Disable()
 				ARL_WeaponPlus:Hide()
-
+]]--
 --[[		Player Type:
 				( ) Tank	  ( ) Melee DPS
 				( ) Healer	  ( ) Caster DPS		]]--
+--[[
 			local ARL_FLTPTypeText = addon.Frame:CreateFontString( "ARL_FLTPTypeText", "OVERLAY", "GameFontHighlight" )
 			ARL_FLTPTypeText:SetText( L["Player Type"] )
 			ARL_FLTPTypeText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -273 )
@@ -1241,6 +1257,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				-- Disabled for now...
 				ARL_CasterCBText:SetText( addon:Grey( L["Caster DPS"] ) )
 				ARL_CasterCB:Disable()
+]]--
 		end
 	end
 end
