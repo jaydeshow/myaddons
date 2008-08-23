@@ -4,8 +4,8 @@ ARL-LeatherWork.lua
 
 LeatherWorking data for all of AckisRecipeList
 
-$Date: 2008-08-16 14:46:12 -0400 (Sat, 16 Aug 2008) $
-$Rev: 80547 $
+$Date: 2008-08-20 11:40:24 -0400 (Wed, 20 Aug 2008) $
+$Rev: 80730 $
 
 ]]--
 
@@ -102,7 +102,6 @@ function addon:InitLeatherWorking()
 	self:addTradeSkillSpell(32456, 300, L["Trainer"],1)
 	self:addTradeSkillSpell(32454, 300, L["Trainer"],1)
 	self:addTradeSkillSpell(32466, 300, L["Trainer"],1)
-	self:addTradeSkillSpell(32471, 300, L["Trainer"],1)
 	self:addTradeSkillSpell(32478, 300, L["Trainer"],1)
 	self:addTradeSkillSpell(32463, 310, L["Trainer"],1)
 	self:addTradeSkillSpell(32467, 310, L["Trainer"],1)
@@ -119,7 +118,7 @@ function addon:InitLeatherWorking()
 	self:addTradeSkillSpell(35540, 340, L["Trainer"],1)
 	self:addTradeSkillSpell(44344, 315, L["Trainer"],1) -- was 305, confirm?
 	self:addTradeSkillSpell(44343, 315, L["Trainer"],1) -- wsa 305, confirm?
-	self:addTradeSkillSpell(45100, 290, L["Trainer"],1)
+	self:addTradeSkillSpell(45100, 300, L["Trainer"],1)
 	self:addTradeSkillSpell(44970, 350, L["Trainer"],1)
 	self:addTradeSkillSpell(44770, 350, L["Trainer"],1)
 
@@ -358,7 +357,6 @@ function addon:InitLeatherWorking()
 	-- Raid Drops
 	self:addTradeSkillSpell(22727, 300, L["MOLTENCORE"], 6)
 	self:addTradeSkillSpell(19093, 300, self:CombineQuests(L["Onyxia Scale Cloak Obt"],0,BZONE["Onyxia's Lair"]),6,8)
-	self:addTradeSkillSpell(41162, 375, L["BT/HYJALBoP"], 6)
 	self:addTradeSkillSpell(36359, 375, L["SSC/TKBoE"], 6)
 	self:addTradeSkillSpell(36353, 375, L["SSC/TKBoP"], 6)
 	self:addTradeSkillSpell(36351, 375, L["SSC/TKBoP"], 6)

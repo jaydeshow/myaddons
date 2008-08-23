@@ -1,4 +1,4 @@
-﻿## Interface: 20400
+﻿## Interface: 20300
 
 ## Title: Lib: SharedMedia-1.0
 ## Notes: Shared handling of media data (fonts, sounds, textures, ...) between addons.

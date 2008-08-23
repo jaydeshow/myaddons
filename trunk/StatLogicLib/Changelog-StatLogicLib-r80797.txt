@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r80797 | whitetooth | 2008-08-22 07:06:28 -0400 (Fri, 22 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: frFR update: Purified Shadowsong Amethyst
+------------------------------------------------------------------------
+r80626 | StingerSoft | 2008-08-18 17:40:21 -0400 (Mon, 18 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: added ruRU (credit by Gezz)
+------------------------------------------------------------------------
 r79963 | whitetooth | 2008-08-08 09:05:16 -0400 (Fri, 08 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
@@ -35,11 +47,4 @@ Changed paths:
 
 StatLogicLib: 
 - 2.4.3: Parry Rating, Defense Rating, and Block Rating: Low-level players will now convert these ratings into their corresponding defensive stats at the same rate as level 34 players.
-------------------------------------------------------------------------
-r78815 | scorpio0920 | 2008-07-20 17:18:31 -0400 (Sun, 20 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
-
-StatLogicLib:
-- Try to fix IGNORE_ARMOR statistics for zhTW & zhCN.
 ------------------------------------------------------------------------

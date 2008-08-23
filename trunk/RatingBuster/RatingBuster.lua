@@ -1,6 +1,6 @@
 --[[
 Name: RatingBuster
-Revision: $Revision: 79946 $
+Revision: $Revision: 80752 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
 Description: Converts combat ratings in tooltips into normal percentages.
@@ -22,8 +22,8 @@ local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
 -- AceAddon Initialization
 RatingBuster = AceLibrary("AceAddon-2.0"):new("AceDB-2.0", "AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0")
 RatingBuster.title = "Rating Buster"
-RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 79946 $", "(%d+)", "%1")..")"
-RatingBuster.date = gsub("$Date: 2008-08-08 02:48:43 -0400 (Fri, 08 Aug 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
+RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 80752 $", "(%d+)", "%1")..")"
+RatingBuster.date = gsub("$Date: 2008-08-21 00:11:45 -0400 (Thu, 21 Aug 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 
 -------------------
@@ -2283,7 +2283,12 @@ function RatingBuster:ProcessText(text)
 							infoString = "%0 "..infoString
 						end
 						-- Insert info into text
-						return (gsub(text, strsub(text, s, e), infoString, 1)) -- because gsub has 2 return values, but we only want 1
+						RusLocalstr = gsub(strsub(text, s, e),"%(","%%(")
+						RusLocalstr = gsub(RusLocalstr,"%)","%%)")
+						--RatingBuster:Print("Итоговая строка состоит из " .. text .. " в котором " .. strsub(text, s, e) .. " меняется на " .. infoString ..", в итоге " .. gsub(text, RusLocalstr, infoString, 1))
+						--RatingBuster:Print(RusLocalstr)
+						--RatingBuster:Print("-----------------------") 
+						return (gsub(text, RusLocalstr, infoString, 1)) -- because gsub has 2 return values, but we only want 1
 					end
 					return text
 				end

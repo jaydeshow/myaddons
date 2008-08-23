@@ -1,9 +1,9 @@
-ï»¿## Interface: 20400
+## Interface: 20400
 ## LoadOnDemand: 1
 ## Title: Lib: Babble-Class-3.0
 ## Notes: A library to help with localization of classes.
 ## Notes-deDE: BabbleLib ist eine Bibliothek, die bei der Lokalisierung helfen soll.
-## Notes-frFR: Une bibliothèque d'aide à la localisation.
+## Notes-frFR: Une bibliothÃ¨que d'aide Ã  la localisation.
 ## Notes-esES: Una biblioteca para ayudar con las localizaciones.
 ## Author: ckknight
 ## X-eMail: ckknight@gmail.com

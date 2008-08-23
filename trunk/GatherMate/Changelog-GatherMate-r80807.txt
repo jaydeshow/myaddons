@@ -1,4 +1,16 @@
 ------------------------------------------------------------------------
+r80807 | doktorjet | 2008-08-22 09:50:04 -0400 (Fri, 22 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: another tiny fix 4 ruRU...
+------------------------------------------------------------------------
+r80617 | doktorjet | 2008-08-18 10:56:03 -0400 (Mon, 18 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: minor update for ruRU. Gas nodes and interface text.
+------------------------------------------------------------------------
 r80506 | doktorjet | 2008-08-15 17:17:54 -0400 (Fri, 15 Aug 2008) | 1 line
 Changed paths:
    M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
@@ -154,36 +166,4 @@ Changed paths:
    M /trunk/GatherMate/Locales/GatherMate-zhTW.lua
 
 GatherMate: Remove "Bound Adamantite Chest" from the list of treasure objects we consider because 1. It only spawns in instances which can't be tracked 2. Some languages have the  translation of it the same as "Adamantite Bound Chest", causing route creation issues in Routes due to conflicting reverse translations.
-------------------------------------------------------------------------
-r78840 | kagaro | 2008-07-21 08:14:43 -0400 (Mon, 21 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Config.lua
-
-GatherMate: changed launcher = true to type = "launcher"
-------------------------------------------------------------------------
-r78838 | kagaro | 2008-07-21 07:53:38 -0400 (Mon, 21 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Config.lua
-
-GatherMate: updated the o to O for linux and fixed global launcher to local variable. Thanks vharr and ammo
-------------------------------------------------------------------------
-r78837 | kagaro | 2008-07-21 07:49:50 -0400 (Mon, 21 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/GatherMate.toc
-
-GatherMate: toc fix
-------------------------------------------------------------------------
-r78835 | kagaro | 2008-07-21 07:18:08 -0400 (Mon, 21 Jul 2008) | 1 line
-Changed paths:
-   A /trunk/GatherMate/Artwork/Icon.tga
-   M /trunk/GatherMate/Config.lua
-   M /trunk/GatherMate/GatherMate.toc
-
-GatherMate: added libdatabroker support (a launcher has been requested alot so its been added asa LDB option now), updated teh toc for 2.4.3 and added an icon, credits to OttaDeFe for the icon.
-------------------------------------------------------------------------
-r78567 | kunda | 2008-07-16 13:06:38 -0400 (Wed, 16 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Locales/GatherMate-deDE.lua
-
-GatherMate: deDE update (Patch 2.4.3)
 ------------------------------------------------------------------------

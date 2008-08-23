@@ -28,6 +28,7 @@ Data\Name-frFR.lua
 Data\Name-koKR.lua
 Data\Name-zhTW.lua
 Data\Name-zhCN.lua
+Data\Name-ruRU.lua
 Data\Name-enUS.lua
 
 Locale\Locale-enUS.lua

@@ -5,8 +5,8 @@ ARLLocals-ruRU.lua
 
 ruRU localization strings for Ackis Recipe List
 
-$Date: 2008-08-09 18:05:16 -0400 (Sat, 09 Aug 2008) $
-$Rev: 80048 $
+$Date: 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) $
+$Rev: 80812 $
 
 Original translated by: 
 Currently maintaince by: 
@@ -49,6 +49,10 @@ L["Sort"] = "Sorting"
 L["SORT_OPTIONS"] = "Sorting Options"
 L["SORT_OPTIONS_LONG"] = "Allows you to customize the way missing recipes are sorted and displayed."
 L["Profile"] = true
+L["Scan Recipes"] = true
+L["Scans an open tradeskill for missing recipes."] = true
+L["Text Dump"] = true
+L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."] = true
 
 -- Display Options
 L["Use GUI"] = true
@@ -152,6 +156,45 @@ L["Alliance"] = true
 L["Known"] = true
 L["Unknown"] = true
 
+-- More stuff for new gui, ZJ 7/26/08
+L["General"] = true
+L["Class Specific recipes"] = true
+L["Craft Specialty recipes"] = true
+L["All Skill Levels"] = true
+L["Item Type"] = true
+L["Armor"] = true
+L["Weapon"] = true
+L["Player Type"] = true
+L["Tank"] = true
+L["Healer"] = true
+L["Melee DPS"] = true
+L["All"] = true
+L["None"] = true
+L["Dagger"] = true
+L["1H"] = true
+L["2H"] = true
+L["Axe"] = true
+L["Mace"] = true
+L["Sword"] = true
+L["Polearm"] = true
+L["Thrown"] = true
+L["Ammo"] = true
+-- unused, but included anyway. Who knows what the future may bring
+L["Bow"] = true
+L["Crossbow"] = true
+L["Staff"] = true
+-- More stuff for new GUI, ZJ 8/11/08
+L["Search"] = true
+L["SEARCH_TT"] = "Filter to recipes that contain text at left"
+L["Apply"] = true
+L["Apply_TT"] = "Apply the above selected filters to the recipe list"
+L["ExpandAll"] = "+ All"
+L["EXPAND_TT"] = "Expand all recipes listed below"
+L["ContractAll"] = "- All"
+L["CONTRACT_TT"] = "Minimize all recipes listed below"
+L["Clear"] = "(X)"
+L["CLEAR_TT"] = "Clear the search textbox"
+
 -- Tooltip Text
 L["Scan Skills Long"] = "Scan for missing recipes using Ackis Recipe List."
 L["Close Window"] = "Close the Ackis Recipe List Window."
@@ -174,6 +217,9 @@ L["HORDE_TT"] = "Check to include Horde only recipes in the list."
 L["ALLIANCE_TT"] = "Check to include Alliance only recipes in the list."
 L["KNOWN_TT"] = "Check to include known recipes in the list."
 L["UNKNOWN_TT"] = "Check to include unknwon recipes in the list."
+L["DISCOVERY_TT"] = "Check to include discovered recipes in the list."
+L["ARMOR_TT"] = "Check to include Armor recipes in the list."
+L["WEAPON_TT"] = "Check to include Weapon recipes in the list."
 
 -- Recipe Database
 L["Trainer"] = true
@@ -242,7 +288,7 @@ L["Fel Regeneration Potion Obt"] = "Deathforge Imp, Deathforge Guardian, Deathfo
 L["Fel Strength Elixir Obt"] = "Mo'arg Weaponsmiths, Terrormasters, Wrathwalkers, Shadow Council Warlocks"
 L["Gift of Arthas Obt"] = "Skeletal Flayer, Slavering Ghoul"
 L["Greater Arcane Protection Potion Obt"] = "Cobalt Mageweavers"
-L["Greater Fire Protection Potion Obt"] = "Firebrand Invoker, Firebrand Pyromance"
+L["Greater Fire Protection Potion Obt"] = "Firebrand Invoker, Firebrand Pyromancer"
 L["Greater Frost Protection Potion Obt"] = "Frostmaul Giants"
 L["Greater Nature Protection Potion Obt"] = "Decaying Horror, Rotting Behemoths"
 L["Greater Shadow Protection Potion Obt"] = "Dark Adepts, Shadowmages"

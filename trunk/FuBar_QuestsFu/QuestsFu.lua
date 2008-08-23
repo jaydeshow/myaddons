@@ -1,4 +1,4 @@
-local VERSION = tonumber(("$Revision: 70154 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 80825 $"):match("%d+"))
 
 local tablet = AceLibrary("Tablet-2.0")
 local tourist = AceLibrary:HasInstance("Tourist-2.0") and AceLibrary("Tourist-2.0") or nil
@@ -15,11 +15,13 @@ local QuestsFu = QuestsFu
 
 QuestsFu.version = "r"..VERSION
 QuestsFu.revision = VERSION
-QuestsFu.date = ("$Date: 2008-04-16 23:39:35 -0400 (Wed, 16 Apr 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+QuestsFu.date = ("$Date: 2008-08-22 21:24:46 -0400 (Fri, 22 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 QuestsFu.hasIcon = true
 QuestsFu.clickableTooltip = true
 QuestsFu.cannotHideText = true
 QuestsFu.hideWithoutStandby = true
+
+local WotLK = select(4,GetBuildInfo()) >= 30000
 
 local new, del, newHash, newSet, deepCopy, deepDel, clear
 do
@@ -740,7 +742,11 @@ function QuestsFu:ToggleQuestWatch(questid)
 end
 
 function QuestsFu:OnClick()
-	ToggleQuestLog()
+	if WotLK then
+		ToggleFrame(QuestLogFrame)
+	else
+		ToggleQuestLog()
+	end
 end
 
 ----------------------------------------------------

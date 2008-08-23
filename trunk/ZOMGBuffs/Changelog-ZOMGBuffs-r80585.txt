@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r80585 | zeksie | 2008-08-17 14:23:13 -0400 (Sun, 17 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/ZOMGBuffs/ZOMGBuffs.lua
+
+ZOMGBuffs: Fixed icon alignment problems in raid popup for blank icons. Seems hidden textures do not obey anchoring rules as well as shown and blank textures.
+
+------------------------------------------------------------------------
 r80156 | zeksie | 2008-08-10 20:34:31 -0400 (Sun, 10 Aug 2008) | 4 lines
 Changed paths:
    M /trunk/ZOMGBuffs/ZOMGBuffs.lua

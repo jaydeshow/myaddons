@@ -411,7 +411,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = { boss, sath }
 mod.guid = 24892
 mod.toggleoptions = {"portal", "buffet", "realm", "curse", "strike", -1, "magichealing", "magiccast", "magichit", "magicthreat", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 79924 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80742 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 
@@ -489,7 +489,7 @@ function mod:BigWigs_RecvSync(sync, rest, nick)
 			self:DelayedMessage(15, L["portal_message"], "Urgent", nil, "Alert")
 		end
 		if db.realm then
-			local groupNo = self:GetGroupNumber(rest)
+			local groupNo = self:GetGroupNumber(rest) or 0
 			self:IfMessage(fmt(L["realm_message"], rest, groupNo), "Urgent", 44866, "Alert")
 		end
 	elseif sync == "KalecgosCurse" and rest and db.curse then

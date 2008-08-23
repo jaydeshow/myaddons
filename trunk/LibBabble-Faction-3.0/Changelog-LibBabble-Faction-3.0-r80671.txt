@@ -1,14 +1,13 @@
 ------------------------------------------------------------------------
+r80671 | daviesh | 2008-08-19 08:23:56 -0400 (Tue, 19 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibBabble-Faction-3.0/LibBabble-Faction-3.0.lua
+
+LibBabble-Faction-3.0: Correction to the Shattered Sun Offensive in German submitted by a user.
+------------------------------------------------------------------------
 r79388 | Swix | 2008-07-29 08:19:24 -0400 (Tue, 29 Jul 2008) | 1 line
 Changed paths:
    M /trunk/LibBabble-Faction-3.0/LibBabble-Faction-3.0.lua
 
 LibBabble-Faction-3.0: small ruRU fix
-------------------------------------------------------------------------
-r78541 | Swix | 2008-07-16 08:10:58 -0400 (Wed, 16 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/LibBabble-Faction-3.0/LibBabble-Faction-3.0.lua
-   M /trunk/LibBabble-Faction-3.0/LibBabble-Faction-3.0.toc
-
-LibBabble-Faction-3.0: Add ruRU translation.
 ------------------------------------------------------------------------

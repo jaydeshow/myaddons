@@ -28,6 +28,7 @@ embeds.xml
 # Localization Files #
 ######################
 RatingBuster-Locale-enUS.lua
+RatingBuster-Locale-ruRU.lua
 RatingBuster-Locale-zhCN.lua
 RatingBuster-Locale-zhTW.lua
 RatingBuster-Locale-deDE.lua

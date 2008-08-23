@@ -1,4 +1,4 @@
-Cartographer_QuestInfo/Changelog-Cartographer_QuestInfo-r79725.txt
+Cartographer_QuestInfo/Changelog-Cartographer_QuestInfo-r80769.txt
 Cartographer_QuestInfo/Cartographer_QuestInfo.toc
 Cartographer_QuestInfo/Map.lua
 Cartographer_QuestInfo/Core.lua
@@ -32,6 +32,7 @@ Cartographer_QuestInfo/Data/Zone.lua
 Cartographer_QuestInfo/Data/Name-zhTW.lua
 Cartographer_QuestInfo/Data/NPC.lua
 Cartographer_QuestInfo/Data/Name-deDE.lua
+Cartographer_QuestInfo/Data/Name-ruRU.lua
 Cartographer_QuestInfo/Data/Name-koKR.lua
 Cartographer_QuestInfo/Data/Name-zhCN.lua
 Cartographer_QuestInfo/Data/Name-enUS.lua

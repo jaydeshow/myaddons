@@ -1,8 +1,8 @@
 ﻿--[[
 ****************************************************************************************
 AckisRecipeList
-$Date: 2008-08-15 17:16:34 -0400 (Fri, 15 Aug 2008) $
-$Rev: 80505 $
+$Date: 2008-08-22 21:21:25 -0400 (Fri, 22 Aug 2008) $
+$Rev: 80824 $
 
 Author: Ackis on Illidan US Horde
 
@@ -247,10 +247,18 @@ local function giveARLOptions()
 			run = 
 			{
 				type = "execute",
-				name = "Scan Recipes",
-				desc = "Scans an open tradeskill for missing recipes.",
+				name = L["Scan Recipes"],
+				desc = L["Scans an open tradeskill for missing recipes."],
 				func = function(info) addon:AckisRecipeList_Command() end,
 				order = 50,
+			},
+			textdump = 
+			{
+				type = "execute",
+				name = L["Text Dump"],
+				desc = L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."],
+				func = function(info) addon:TextDump() end,
+				order = 55,
 			},
 		}
 	}
@@ -2332,6 +2340,7 @@ function addon:AckisRecipeList_Command()
 	if (addon.SkillType == nil) then
 
 		self:Print(L["OpenTradeSkillWindow"])
+		return
 
 	-- Trade type skills
 	elseif (addon.SkillType == "Trade") then
@@ -2349,22 +2358,98 @@ function addon:AckisRecipeList_Command()
 		self:ScanTradeSkills()
 		self:ScanMissingRecipes()
 
-		local sorttype = addon.db.profile.sorting
+	-- Craft type skills
+	elseif (addon.SkillType == "Craft") then
 
-		if (sorttype == "Skill") then
-			SortedRecipeIndex = self:SortMissingRecipes(SortMissingSkill)
-		elseif (sorttype == "Name") then
-			SortedRecipeIndex = self:SortMissingRecipes(SortMissingName)
-		elseif (sorttype == "Aquisition") then
-			SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
-		end
+		if (not addon.wrath) then
+			-- Get the name of the current craft.
+			CurrentProfession = GetCraftName()
+			CurrentProfessionLevel = InitializeCraftRecipes(CurrentProfession)
+			CurrentSpeciality = self:GetTradeSpeciality(CurrentProfession)
+			self:ScanCraftSkills()
+			self:ScanMissingRecipes()
 
-		if (addon.db.profile.usegui) then
-			self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
 		else
-			self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
-			self:DisplayRecipeResults(CurrentProfessionLevel, SortedRecipeIndex, CurrentProfession, CurrentSpeciality)
+
+			self:Print("The crafting frame is not supported in Wrath of the Lich King. If you see this message submit a ticket on CurseForge please.")
+			return
+
 		end
+
+	end
+
+	local sorttype = addon.db.profile.sorting
+
+	if (sorttype == "Skill") then
+		SortedRecipeIndex = self:SortMissingRecipes(SortMissingSkill)
+	elseif (sorttype == "Name") then
+		SortedRecipeIndex = self:SortMissingRecipes(SortMissingName)
+	elseif (sorttype == "Aquisition") then
+		SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
+	end
+	if (addon.db.profile.usegui) then
+		self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
+	else
+		self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
+		self:DisplayRecipeResults(CurrentProfessionLevel, SortedRecipeIndex, CurrentProfession, CurrentSpeciality)
+	end
+
+end
+
+-- Returns a text dump of everything about recipes, so the user can copy and paste it into another program
+
+function addon:GetTextDump()
+
+	local texttable = {}
+
+	for i in pairs(addon.RecipeListing) do
+
+		if (addon.RecipeListing[i]["Known"]) then
+			table.insert(texttable,i .. "," .. addon.RecipeListing[i]["Level"] .. "," .. addon.RecipeListing[i]["Acquire"] .. ",true")
+		else
+			table.insert(texttable,i .. "," .. addon.RecipeListing[i]["Level"] .. "," .. addon.RecipeListing[i]["Acquire"] .. ",false")
+		end
+
+	end
+
+	return table.concat(texttable,"\n")
+
+end
+
+-- Opens up a GUI window with a text dump in it
+
+function addon:TextDump()
+
+	local CurrentProfession, CurrentProfessionLevel, CurrentSpeciality, SortedRecipeIndex
+
+	-- Initializes the vendor list
+	if (addon.VendorList == nil) then
+		addon.VendorList = {}
+		self:InitVendor()
+	end
+
+	self:InitializeRecipeArray()
+
+	if (addon.SkillType == nil) then
+
+		self:Print(L["OpenTradeSkillWindow"])
+		return
+
+	-- Trade type skills
+	elseif (addon.SkillType == "Trade") then
+
+		-- Get the name of the current trade skill opened, along with the current level of the skill.
+		CurrentProfession, CurrentProfessionLevel = GetTradeSkillLine()
+		CurrentSpeciality = self:GetTradeSpeciality(CurrentProfession)
+		InitializeTradeRecipes(CurrentProfession)
+
+		if (CurrentProfession == GetSpellInfo(2842)) then
+			-- Player level = profession level for rogue poisons
+			CurrentProfessionLevel = UnitLevel("player")
+		end
+
+		self:ScanTradeSkills()
+		self:ScanMissingRecipes()
 
 	-- Craft type skills
 	elseif (addon.SkillType == "Craft") then
@@ -2377,26 +2462,14 @@ function addon:AckisRecipeList_Command()
 			self:ScanCraftSkills()
 			self:ScanMissingRecipes()
 
-			local sorttype = addon.db.profile.sorting
-
-			if (sorttype == "Skill") then
-				SortedRecipeIndex = self:SortMissingRecipes(SortMissingSkill)
-			elseif (sorttype == "Name") then
-				SortedRecipeIndex = self:SortMissingRecipes(SortMissingName)
-			elseif (sorttype == "Aquisition") then
-				SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
-			end
-			if (addon.db.profile.usegui) then
-				self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
-			else
-				self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
-				self:DisplayRecipeResults(CurrentProfessionLevel, SortedRecipeIndex, CurrentProfession, CurrentSpeciality)
-			end
 		else
 			self:Print("The crafting frame is not supported in Wrath of the Lich King. If you see this message submit a ticket on CurseForge please.")
 		end
 
 	end
 
-end
+	local temptext = self:GetTextDump()
 
+	self:DisplayTextDump(temptext)
+
+end

@@ -22,14 +22,14 @@
 ## X-Donate: Donate a few bucks/hours at your local animal shelter, or send me UDE Point codes, a Murky Code, or an account upgrade certificate.
 
 ## Interface: 20400
-## Version: 0.935
-## X-Revision: $Rev: 80433 $
-## X-Date: $Date: 2008-08-14 14:47:29 -0400 (Thu, 14 Aug 2008) $
+## Version: 0.936
+## X-Revision: $Rev: 80812 $
+## X-Date: $Date: 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) $
 
 ## X-credits: FGWarmonger, Kagaro, Speeddymon, Xinhuan, Zhinjio
 
 ## X-Category: Tradeskill
-## X-Localizations: enUS, enGB, frFR, zhCN, zhTW, deDE, koKR, esES, esMX
+## X-Localizations: enUS, frFR, zhCN, zhTW, deDE, koKR, esES, esMX, ruRU
 ## X-Website: http://www.wowwiki.com/AckisRecipeList/
 ## X-Feedback: http://www.curse.com/downloads/details/10057/
 ## X-AceForum: 11798
@@ -52,7 +52,6 @@ libs\LibAboutPanel\lib.xml
 
 # Localization files
 Locals\ARLLocals-enUS.lua
-Locals\ARLLocals-enGB.lua
 Locals\ARLLocals-koKR.lua
 Locals\ARLLocals-frFR.lua
 Locals\ARLLocals-zhCN.lua
@@ -60,6 +59,7 @@ Locals\ARLLocals-zhTW.lua
 Locals\ARLLocals-deDE.lua
 Locals\ARLLocals-esES.lua
 Locals\ARLLocals-esMX.lua
+Locals\ARLLocals-ruRU.lua
 
 AboutPanel.lua
 

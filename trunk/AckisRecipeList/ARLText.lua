@@ -5,8 +5,8 @@ ARLText.lua
 
 Text based output functions for all of AckisRecipeList
 
-$Date: 2008-08-05 23:10:11 -0400 (Tue, 05 Aug 2008) $
-$Rev: 79836 $
+$Date: 2008-08-22 21:21:25 -0400 (Fri, 22 Aug 2008) $
+$Rev: 80824 $
 
 ****************************************************************************************
 ]]--
@@ -116,7 +116,7 @@ end
 
 ]]--
 
--- Prints out to chat a message stating that a current recipe is missing from the internal database.
+-- Prints out to chat a message stating that a current recipe is missing from the internal database.  Output will be in a comma seperated value.
 
 function addon:printMissingSkill(RecipeName,spellID)
 

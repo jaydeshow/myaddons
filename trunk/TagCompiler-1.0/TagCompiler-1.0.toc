@@ -1,4 +1,4 @@
-﻿## Interface: 20400
+﻿## Interface: 20300
 ## LoadOnDemand: 1
 ## Title: Lib: TagCompiler-1.0
 ## Notes: A library to provide configuration via simple tag syntax

@@ -56,7 +56,8 @@ local function add_items_to_queue(skillIndex, recipe, count)
             end
 
             if have < needed then
-                local item = Skillet.stitch:GetItemDataByName(reagent.name)
+				-- see if we can make this! only scan current trade though.  (adding items to OTHER trades might also be interesting, but needs a bit of rewriting /mikk)
+                local item = Skillet.stitch:GetItemDataByName(reagent.name, Skillet.currentTrade)
 
                 if item and item.link == reagent.link then
                     -- we can craft this

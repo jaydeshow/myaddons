@@ -9,14 +9,19 @@ L:RegisterTranslations("koKR", function() return {
 	["Toggle showing the item level in the tooltip."] = "툴팁에 아이템 등급을 표시합니다.",
 	["Show item identifier"] = "아이템 식별자 표시",
 	["Toggle showing the item identifier in the tooltip."] = "툴팁에 아이템 식별자를 표시합니다.",
+	["Show item count"] = "아이템 갯수 표시",
+	["Toggle showing the item count in the tooltip."] = "툴팁에 아이템 보유 갯수를 표시합니다.",
 	["Show stack size"] = "묶음 크기 표시",
 	["Toggle showing the stack size in the tooltip."] = "툴팁에 묶음 크기를 표시합니다.",
 	["Show 'used in' tree"] = "'사용처' 목록 표시",
 	["Toggle showing the 'used in' tree in the tooltip."] = "툴팁에 '사용처' 목록을 표시합니다.",
 	["Limit 'used in' tree to craftable"] = "제작가능한 것에만 '사용처' 목록 제한",
 	["Toggle limiting the 'used in' tree to items the char can craft."] = "케릭터가 제작할 수 있는 아이템에만 사용처 목록을 표시하도록 제한합니다.",
+	["Show icons in 'used in' tree"] = "'사용처' 목록에 아이콘 표시",
+	["Toggle showing of icons in the 'used in' tree."] = "툴팁에 '사용처' 목록에 아이콘들을 표시합니다.",
 	["Item ID"] = "아이템 ID",
 	["iLevel"] = "아이템 레벨",
+	["You have"] = "보유갯수",
 	["Stacksize"] = "묶음크기",
 
 	["Crafted by"] = "제작 기술",
@@ -107,12 +112,13 @@ L:RegisterTranslations("koKR", function() return {
 	
 	["Badge of Justice"] = "정의의 휘장",
 	["G'eras"] = "게라스",
-	["Smith Hauthaa"] = "Smith Hauthaa", -- check
+	["Smith Hauthaa"] = "대장장이 하우타",
+	["Trash Mobs"] = "일반몹",
 
 	-- Timed Reward Chest
---	["Timed Reward Chest1"] = true,
---	["Timed Reward Chest2"] = true,
---	["Timed Reward Chest3"] = true,
---	["Timed Reward Chest4"] = true,
+	["Timed Reward Chest1"] = "줄아만 첫번째 공물함",
+	["Timed Reward Chest2"] = "줄아만 두번째 공물함",
+	["Timed Reward Chest3"] = "줄아만 세번째 공물함",
+	["Timed Reward Chest4"] = "줄아만 네번째 공물함",
 
 }end)

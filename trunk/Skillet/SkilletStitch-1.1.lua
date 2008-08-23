@@ -1,6 +1,6 @@
 --[[
 Name: SkilletStitch-1.1
-Revision: $Rev: 60836 $
+Revision: $Rev: 80574 $
 Author(s): Nymbia (nymbia@gmail.com)
 Website: http://www.wowace.com/wiki/Stitch-1.1
 Documentation: http://www.wowace.com/wiki/Stitch-1.1
@@ -29,7 +29,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ]]
 local MAJOR_VERSION = "SkilletStitch-1.1"
-local MINOR_VERSION = "$Rev: 60836 $"
+local MINOR_VERSION = "$Rev: 80574 $"
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -381,26 +381,30 @@ function SkilletStitch:GetItemDataByIndex(profession, index)
 	return cache[profession][index]
 end
 
-function SkilletStitch:GetItemDataByName(name)
+function SkilletStitch:GetItemDataByName(name,prof)
 	assert(tostring(name) ,"Usage: GetItemDataByName('name')")
 	for k,v in pairs(cache) do
-		for l,w in pairs(v) do
-			if w.name == name then
-				return cache[k][l]
+		if not prof or k==prof then
+			for l,w in pairs(v) do
+				if w.name == name then
+					return cache[k][l]
+				end
 			end
 		end
 	end
 	name = string.gsub(name, "([%.%(%)%%%+%-%*%?%[%]%^%$])", "%%%1")
 	for k,v in pairs(self.data) do
-		for l,w in pairs(v) do
-			-- protection against old manufac savedvars, remove eventually
-			if type(w) ~= "string" then
-				ManufacPerCharDB = nil
-				error('Invalid DB, try reloading your ui.')
-			end
-			local chunk = w:match("^([^;]-;[^;]-;)")
-			if chunk:match("^"..name) or chunk:match("|"..name..";") then
-				return cache[k][l]
+		if not prof or k==prof then
+			for l,w in pairs(v) do
+				-- protection against old manufac savedvars, remove eventually
+				if type(w) ~= "string" then
+					ManufacPerCharDB = nil
+					error('Invalid DB, try reloading your ui.')
+				end
+				local chunk = w:match("^([^;]-;[^;]-;)")
+				if chunk:match("^"..name) or chunk:match("|"..name..";") then
+					return cache[k][l]
+				end
 			end
 		end
 	end
