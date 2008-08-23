@@ -217,7 +217,7 @@ do
 	end
 end
 
-z.version = tonumber(string.sub("$Revision: 80156 $", 12, -3)) or 1
+z.version = tonumber(string.sub("$Revision: 80585 $", 12, -3)) or 1
 z.versionCompat = 65478
 z.title = L["TITLE"]
 z.titleColour = L["TITLECOLOUR"]
@@ -3120,7 +3120,7 @@ local function MakePalaIcons(self)
 		end
 
 		for i = 1,#self.palaIcon do
-			self.palaIcon[i]:Hide()
+			self.palaIcon[i]:SetTexture(nil)
 		end
 
 		if (z.db.profile.track.blessings and z.classcount.PALADIN > 0) then
@@ -3258,13 +3258,13 @@ local function DrawCell(self)
 	for j,icon in ipairs(self.buff) do
 		local b = z.buffs[j]
 		if (not b or (b.class and z.classcount[b.class] == 0)) then
-			icon:Hide()
+			icon:SetTexture(nil)
 		else
 			if (UnitIsDeadOrGhost(partyid) or not UnitIsConnected(partyid)) then
-				icon:Hide()
+				icon:SetTexture(nil)
 			else
 				if (b.manaOnly and (class == "ROGUE" or class == "WARRIOR")) then
-					icon:Hide()
+					icon:SetTexture(nil)
 				else
 					if (b.type == "FLASK") then
 						local oldPot = z.oldPots and z.oldPots[unitname]
@@ -3273,7 +3273,7 @@ local function DrawCell(self)
 							icon:Show()
 							icon:SetAlpha(offAlpha)
 						else
-							icon:Hide()
+							icon:SetTexture(nil)
 						end
 					else
 						if (b.icon) then
@@ -3392,7 +3392,7 @@ local function DrawCell(self)
 								b:SetVertexColor(1, 1, 1)
 							end
 						else
-							b:Hide()
+							b:SetTexture(nil)
 						end
 						palaIcon = palaIcon + 1
 					end
@@ -3440,7 +3440,7 @@ local function DrawCell(self)
 							b:SetAlpha(onAlpha)
 							palaIcon = palaIcon + 1
 						else
-							b:Hide()
+							b:SetTexture(nil)
 						end
 					end
 				end
@@ -3456,7 +3456,7 @@ local function DrawCell(self)
 							b:SetAlpha(offAlpha)
 							palaIcon = palaIcon + 1
 						else
-							b:Hide()
+							b:SetTexture(nil)
 						end
 					end
 					lastFlags[i] = lastFlags[i] or palaFlags[i]
@@ -3465,7 +3465,7 @@ local function DrawCell(self)
 
 			-- Hide excess
 			while (palaIcon <= #self.palaIcon) do
-				self.palaIcon[palaIcon]:Hide()
+				self.palaIcon[palaIcon]:SetTexture(nil)
 				palaIcon = palaIcon + 1
 			end
 		else
@@ -3476,7 +3476,7 @@ local function DrawCell(self)
 		-- Hide excess
 		if (self.palaIcon) then
 			for i = 1,#self.palaIcon do
-				self.palaIcon[i]:Hide()
+				self.palaIcon[i]:SetTexture(nil)
 			end
 		end
 	end

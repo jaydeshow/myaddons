@@ -1,4 +1,28 @@
 ------------------------------------------------------------------------
+r80833 | Ghostar | 2008-08-23 02:31:26 -0400 (Sat, 23 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+
+Parrot: 
+- Fixed zhCN/zhTW typo again.(oops...)
+------------------------------------------------------------------------
+r80782 | Ghostar | 2008-08-21 22:56:43 -0400 (Thu, 21 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
+   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
+
+Parrot: 
+- fixed zhCN/zhTW typo.
+------------------------------------------------------------------------
+r80745 | profalbert | 2008-08-20 14:33:59 -0400 (Wed, 20 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/Parrot/Data/Auras.lua
+
+Parrot:
+- fix Aura-triggers breakage from last commit
+
+------------------------------------------------------------------------
 r80495 | profalbert | 2008-08-15 14:11:58 -0400 (Fri, 15 Aug 2008) | 3 lines
 Changed paths:
    M /trunk/Parrot/Code/TriggerConditions.lua
@@ -158,84 +182,4 @@ Changed paths:
 Parrot:
 - add some missing events (including some Mana-gain-events)
 
-------------------------------------------------------------------------
-r78904 | scorpion | 2008-07-22 03:57:31 -0400 (Tue, 22 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
-
-Parrot:
-- zhTW readjust
-------------------------------------------------------------------------
-r78875 | profalbert | 2008-07-21 18:31:51 -0400 (Mon, 21 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/Parrot/Data/CombatEvents.lua
-
-Parrot:
-- fix typo that prevented HoTs from showing
-
-------------------------------------------------------------------------
-r78865 | saroz | 2008-07-21 13:22:21 -0400 (Mon, 21 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/Parrot/Data/CombatEvents.lua
-
-Parrot: Merge this fix
-------------------------------------------------------------------------
-r78856 | ananhaid | 2008-07-21 11:24:20 -0400 (Mon, 21 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
-   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
-
-Parrot: 
-- zhCN/zhTW update.
-------------------------------------------------------------------------
-r78847 | profalbert | 2008-07-21 09:26:11 -0400 (Mon, 21 Jul 2008) | 9 lines
-Changed paths:
-   M /trunk/Parrot/Code/CombatEvents.lua
-   M /trunk/Parrot/Code/TriggerConditions.lua
-   M /trunk/Parrot/Data/Auras.lua
-   M /trunk/Parrot/Data/CombatEvents.lua
-   M /trunk/Parrot/Data/TriggerConditions.lua
-   M /trunk/Parrot/Locales/ParrotLocale-enUS.lua
-   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
-   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
-   M /trunk/Parrot/Parrot.toc
-
-Parrot:
-- merge with changes in the "new combatlog"-branch
-- weapon-enchants now working
-- can now distinguish between "player killing blow" and "NPC killing 
-blow"
-- fix overheal-calculation
-- support for DAMAGE_SHIELD-events (reactive skills like thorns)
-- changed some localisations to use built-in constants (like PET)
-
-------------------------------------------------------------------------
-r78832 | ananhaid | 2008-07-21 06:19:20 -0400 (Mon, 21 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/Parrot/Data/CombatEvents.lua
-   M /trunk/Parrot/Locales/ParrotLocale-deDE.lua
-   M /trunk/Parrot/Locales/ParrotLocale-enUS.lua
-   M /trunk/Parrot/Locales/ParrotLocale-frFR.lua
-   M /trunk/Parrot/Locales/ParrotLocale-koKR.lua
-   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
-   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
-
-Parrot:
-- revert last fix about the pet's combatevent change,the locale is not correct.
-------------------------------------------------------------------------
-r78796 | saroz | 2008-07-20 13:53:07 -0400 (Sun, 20 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/Parrot/Data/CombatEvents.lua
-
-Parrot: Fix nil error for Shadow+Nature damagetype
-------------------------------------------------------------------------
-r78786 | ananhaid | 2008-07-20 11:09:43 -0400 (Sun, 20 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/Parrot/Data/CombatEvents.lua
-   M /trunk/Parrot/Locales/ParrotLocale-zhCN.lua
-   M /trunk/Parrot/Locales/ParrotLocale-zhTW.lua
-
-Parrot: 
-- The pet's combatevent compare with the locale.
-- zhCN/zhTW update.
 ------------------------------------------------------------------------

@@ -71,14 +71,14 @@ mod.zonename = BZ["The Botanica"]
 mod.enabletrigger = boss 
 mod.guid = 17975
 mod.toggleoptions = {"tranq", "bosskill"}
-mod.revision = tonumber(("$Revision: 79841 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80759 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
 ------------------------------
 
 function mod:OnEnable()
-	self:RegisterEvent("SPELL_CAST_SUCCESS", "Tranq", 34557)
+	self:RegisterEvent("SPELL_CAST_SUCCESS", "Tranq", 34550)
 	self:AddCombatListener("UNIT_DIED", "BossDeath")
 end
 

@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-08-15 12:22:26 -0400 (Fri, 15 Aug 2008) $
-$Rev: 80489 $
+$Date: 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) $
+$Rev: 80812 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -49,6 +49,10 @@ L["Sort"] = "Sorting"
 L["SORT_OPTIONS"] = "Sorting Options"
 L["SORT_OPTIONS_LONG"] = "Allows you to customize the way missing recipes are sorted and displayed."
 L["Profile"] = true
+L["Scan Recipes"] = true
+L["Scans an open tradeskill for missing recipes."] = true
+L["Text Dump"] = true
+L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."] = true
 
 -- Display Options
 L["Use GUI"] = true

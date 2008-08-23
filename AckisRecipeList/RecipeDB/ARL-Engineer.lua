@@ -4,8 +4,8 @@ ARL-Engineering.lua
 
 Engineering data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-08-20 11:28:07 -0400 (Wed, 20 Aug 2008) $
+$Rev: 80729 $
 
 ]]--
 
@@ -199,7 +199,7 @@ function addon:InitEngineering()
 	self:addTradeSkillSpell(26420, 175, L["Lunar Festival"], 7)
 	self:addTradeSkillSpell(26421, 175, L["Lunar Festival"], 7)
 	self:addTradeSkillSpell(26422, 175, L["Lunar Festival"], 7)
-	self:addTradeSkillSpell(21935, 190, L["WintersVeil"], 7)
+	self:addTradeSkillSpell(21940, 190, L["WintersVeil"], 7)
 	self:addTradeSkillSpell(26423, 225, L["Lunar Festival"], 7)
 	self:addTradeSkillSpell(26424, 225, L["Lunar Festival"], 7)
 	self:addTradeSkillSpell(26425, 225, L["Lunar Festival"], 7)

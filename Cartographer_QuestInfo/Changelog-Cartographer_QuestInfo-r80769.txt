@@ -1,4 +1,26 @@
 ------------------------------------------------------------------------
+r80769 | StingerSoft | 2008-08-21 10:17:55 -0400 (Thu, 21 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Locale/Locale-ruRU.lua
+
+Cartographer_QuestInfo:
+- update ruRU
+------------------------------------------------------------------------
+r80768 | StingerSoft | 2008-08-21 10:13:43 -0400 (Thu, 21 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Data/Name-ruRU.lua
+
+Cartographer_QuestInfo:
+- fix fckng typo
+------------------------------------------------------------------------
+r80767 | StingerSoft | 2008-08-21 10:11:18 -0400 (Thu, 21 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/Cartographer_QuestInfo/Cartographer_QuestInfo.toc
+   A /trunk/Cartographer_QuestInfo/Data/Name-ruRU.lua
+
+Cartographer_QuestInfo:
+- added ruRU quest data
+------------------------------------------------------------------------
 r79725 | lahow | 2008-08-03 05:18:30 -0400 (Sun, 03 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/Cartographer_QuestInfo/Data/NPC.lua

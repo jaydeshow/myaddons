@@ -1,4 +1,4 @@
-## Interface: 20400
+## Interface: 20300
 ## Title: FuBar - |cffffffffQuests|r|cff00ff00Fu|r [|cffeda55fBlizz|r]
 ## Notes: Improvements to the default UI
 ## Version: 2.0

@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-08-15 17:16:34 -0400 (Fri, 15 Aug 2008) $
-$Rev: 80505 $
+$Date: 2008-08-22 21:21:25 -0400 (Fri, 22 Aug 2008) $
+$Rev: 80824 $
 
 ****************************************************************************************
 ]]--
@@ -1260,4 +1260,50 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 ]]--
 		end
 	end
+end
+
+-- Creates a frame where you can copy and paste contents from.  Adds the textdump text into that frame.
+-- Code stolen from Antiarc and Chatter
+
+function addon:DisplayTextDump(textdump)
+
+	local PaneBackdrop  = {
+		bgFile = [[Interface\DialogFrame\UI-DialogBox-Background]],
+		edgeFile = [[Interface\DialogFrame\UI-DialogBox-Border]],
+		tile = true, tileSize = 16, edgeSize = 16,
+		insets = { left = 3, right = 3, top = 5, bottom = 3 }
+	}
+
+	local frame = CreateFrame("Frame", "ARLCopyFrame", UIParent)
+	tinsert(UISpecialFrames, "ChatterCopyFrame")
+	frame:SetBackdrop(PaneBackdrop)
+	frame:SetBackdropColor(0,0,0,1)
+	frame:SetWidth(500)
+	frame:SetHeight(400)
+	frame:SetPoint("CENTER", UIParent, "CENTER")
+	frame:SetFrameStrata("DIALOG")
+	
+	local scrollArea = CreateFrame("ScrollFrame", "ARLCopyScroll", frame, "UIPanelScrollFrameTemplate")
+	scrollArea:SetPoint("TOPLEFT", frame, "TOPLEFT", 8, -30)
+	scrollArea:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -30, 8)
+	
+	local editBox = CreateFrame("EditBox", nil, frame)
+	editBox:SetMultiLine(true)
+	editBox:SetMaxLetters(99999)
+	editBox:EnableMouse(true)
+	editBox:SetAutoFocus(false)
+	editBox:SetFontObject(ChatFontNormal)
+	editBox:SetWidth(400)
+	editBox:SetHeight(270)
+	editBox:SetScript("OnEscapePressed", function() frame:Hide() end)
+	editBox:SetText(textdump)
+	editBox:HighlightText(0)
+	
+	scrollArea:SetScrollChild(editBox)
+	
+	local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
+	close:SetPoint("TOPRIGHT", frame, "TOPRIGHT")
+
+	frame:Show()
+
 end

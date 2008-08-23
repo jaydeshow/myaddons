@@ -1,4 +1,4 @@
-LittleWigs/Changelog-LittleWigs-r80524.txt
+LittleWigs/Changelog-LittleWigs-r80764.txt
 LittleWigs/littlewigs-lod.sh
 LittleWigs/modules.xml
 LittleWigs/filelist.wau
@@ -20,6 +20,7 @@ LittleWigs/MagistersTerrace/SelinFireheart.lua
 LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
 LittleWigs/TempestKeep/Capacitus.lua
 LittleWigs/TempestKeep/Thorngrin.lua
+LittleWigs/TempestKeep/Sarannis.lua
 LittleWigs/TempestKeep/Ironhand.lua
 LittleWigs/TempestKeep/Dalliah.lua
 LittleWigs/TempestKeep/Freywinn.lua
@@ -28,6 +29,7 @@ LittleWigs/TempestKeep/Pathaleon.lua
 LittleWigs/TempestKeep/LittleWigs_TempestKeep.toc
 LittleWigs/TempestKeep/Laj.lua
 LittleWigs/TempestKeep/Gyrokill.lua
+LittleWigs/TempestKeep/Splinter.lua
 LittleWigs/TempestKeep/Soccothrates.lua
 LittleWigs/TempestKeep/Zereketh.lua
 LittleWigs/Auchindoun/Hellmaw.lua

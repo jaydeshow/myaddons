@@ -1,4 +1,25 @@
 ------------------------------------------------------------------------
+r80608 | andyca | 2008-08-18 08:06:38 -0400 (Mon, 18 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.lua
+
+LibBabble-Class-3.0
+- update zhTW
+------------------------------------------------------------------------
+r80604 | nevcairiel | 2008-08-18 06:57:02 -0400 (Mon, 18 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.lua
+
+LibBabble-Class-3.0
+- add DK to deDE
+------------------------------------------------------------------------
+r80593 | archarodim | 2008-08-17 18:47:56 -0400 (Sun, 17 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.toc
+
+LibBabble-Class-3.0
+- Fix French description that was not in utf-8
+------------------------------------------------------------------------
 r80548 | StingerSoft | 2008-08-16 15:33:07 -0400 (Sat, 16 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/LibBabble-Class-3.0/LibBabble-Class-3.0.lua

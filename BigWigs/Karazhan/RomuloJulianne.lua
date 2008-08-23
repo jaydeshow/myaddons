@@ -190,11 +190,11 @@ L:RegisterTranslations("esES", function() return {
 L:RegisterTranslations("ruRU", function() return {
 	phase = "Фазы",
 	phase_desc = "Предупреждать о начале новой фазы.",
-	phase1_trigger = "What devil art thou, that dost torment me thus?",
+	phase1_trigger = "Что же за демон ты есмь, коий мучает меня так?",
 	phase1_message = "Акт I - %s",
-	phase2_trigger = "Wilt thou provoke me? Then have at thee, boy!",
+	phase2_trigger = "Твоя меня дразнить – твоя получать, малявка!",
 	phase2_message = "Акт II - %s",
-	phase3_trigger = "Come, gentle night; and give me back my Romulo!",
+	phase3_trigger = "Ночь, добрая и строгая, приди! Верни мне моего Ромуло!",
 	phase3_message = "Акт III - Вместе",
 
 	poison = "Яд",
@@ -219,7 +219,7 @@ local mod = BigWigs:NewModule(boss)
 mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {boy, girl}
 mod.toggleoptions = {"phase", "heal", "buff", "poison"}
-mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80734 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

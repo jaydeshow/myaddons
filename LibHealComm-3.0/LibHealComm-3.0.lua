@@ -1,5 +1,5 @@
 ﻿local MAJOR_VERSION = "LibHealComm-3.0";
-local MINOR_VERSION = tonumber(("$Revision: 79995 $"):match("%d+")); 
+local MINOR_VERSION = tonumber(("$Revision: 80690 $"):match("%d+")); 
  
 local lib = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION);
 if not lib then return end
@@ -1107,6 +1107,13 @@ end
 function lib:CHAT_MSG_ADDON(prefix, msg, distribution, sender)
     if (prefix ~= "HealComm") then return end
     if (sender == playerName) then return end
+
+    -- Workaround: Sometimes in battlegrounds the sender argument is not a 
+    -- fully qualified name (the realm is missing), even though the sender is 
+    -- from a different realm.
+    if (distribution == "BATTLEGROUND") then
+        sender = unitFullName(sender) or sender;       
+    end
 
     -- Get message type
     local msgtype = tonumber(msg:sub(1, 3));

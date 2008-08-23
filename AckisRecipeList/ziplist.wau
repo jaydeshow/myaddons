@@ -1,4 +1,4 @@
-AckisRecipeList/Changelog-AckisRecipeList-r80547.txt
+AckisRecipeList/Changelog-AckisRecipeList-r80837.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/ARLText.lua
 AckisRecipeList/AckisRecipeList.lua
@@ -54,7 +54,6 @@ AckisRecipeList/img/alchemy_up.blp
 AckisRecipeList/img/firstaid_up.blp
 AckisRecipeList/img/smelting_down.blp
 AckisRecipeList/img/leather_down.blp
-AckisRecipeList/Locals/ARLLocals-enGB.lua
 AckisRecipeList/Locals/ARLLocals-koKR.lua
 AckisRecipeList/Locals/ARLLocals-zhCN.lua
 AckisRecipeList/Locals/ARLLocals-esMX.lua

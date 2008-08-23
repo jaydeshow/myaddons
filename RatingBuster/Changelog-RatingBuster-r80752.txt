@@ -1,4 +1,23 @@
 ------------------------------------------------------------------------
+r80752 | StingerSoft | 2008-08-21 00:11:45 -0400 (Thu, 21 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: fix ruRU
+------------------------------------------------------------------------
+r80692 | StingerSoft | 2008-08-19 17:00:51 -0400 (Tue, 19 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-ruRU.lua
+
+RatingBuster: update ruRU
+------------------------------------------------------------------------
+r80627 | StingerSoft | 2008-08-18 17:56:45 -0400 (Mon, 18 Aug 2008) | 1 line
+Changed paths:
+   A /trunk/RatingBuster/RatingBuster-Locale-ruRU.lua
+   M /trunk/RatingBuster/RatingBuster.toc
+
+RatingBuster: added ruRU (credit by Orsana)
+------------------------------------------------------------------------
 r79946 | whitetooth | 2008-08-08 02:48:43 -0400 (Fri, 08 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/RatingBuster/RatingBuster.lua

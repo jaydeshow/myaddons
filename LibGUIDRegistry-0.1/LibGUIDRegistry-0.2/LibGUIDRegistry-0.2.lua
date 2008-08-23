@@ -80,12 +80,12 @@ function lib:ProcessActor(GUID, name, flags)
 end
 
 function lib:PLAYER_TARGET_CHANGED()
-	if UnitExists("target")
+	if UnitExists("target") then
 		processUnit("target", UnitGUID("target"))
 	end
 end
 function lib:PLAYER_FOCUS_CHANGED()
-	if UnitExists("focus")
+	if UnitExists("focus") then
 		processUnit("focus", UnitGUID("focus"))
 	end
 end
@@ -97,7 +97,7 @@ lib.UNIT_CLASSIFICATION_CHANGED = FlagForUpdate
 lib.UNIT_LEVEL = FlagForUpdate
 lib.UNIT_NAME_UPDATE = FlagForUpdate
 lib.UPDATE_MOUSEOVER_UNIT = function (self, ...)
-	if UnitExists("mouseover")
+	if UnitExists("mouseover") then
 		processUnit("mouseover", UnitGUID("mouseover"))
 	end
 end
@@ -150,4 +150,4 @@ local function OnTooltipSetUnit(self, ...)
 end
 lib.tooltip:SetScript("OnTooltipSetUnit", OnTooltipSetUnit)
 
-LibGUIDRegistry-0.2_ref = lib
+LibGUIDRegistry_02_ref = lib

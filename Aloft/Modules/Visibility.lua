@@ -1,4 +1,4 @@
-﻿-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
 local L = AceLibrary("AceLocale-2.2"):new("AloftVisibility")
 
@@ -18,6 +18,10 @@ L:RegisterTranslations("zhTW", function() return {
 
 L:RegisterTranslations("zhCN", function() return {
 	["Critter"] = "小动目",
+} end)
+
+L:RegisterTranslations("ruRU", function() return {
+	["Critter"] = "Существо",
 } end)
 
 -----------------------------------------------------------------------------
@@ -59,17 +63,17 @@ function AloftVisibility:RegisterEvents()
 	if not profile.showHostilePlayers then
 		self:RegisterEvent("Aloft:OnClassDataChanged", "OnClassDataChanged")
 	end
-	
+
 	if profile.showNeutralUnits and not profile.showCritters then
 		self:RegisterEvent("Aloft:OnCreatureTypeDataChanged", "OnCreatureTypeDataChanged")
 	end
-   
+
 	if not profile.showHostilePets or
 	   not profile.showFriendlyPets then
 		self:RegisterEvent("Aloft:OnIsPetDataChanged", "OnNameplateShow")
 	end
 
-	if not profile.showCritters or 
+	if not profile.showCritters or
 	   not profile.showHostilePlayers or
 	   not profile.showHostilePets or
 	   not profile.showHostileNPCs or
@@ -79,7 +83,7 @@ function AloftVisibility:RegisterEvents()
 	   not profile.showGroupPets or
 	   not profile.showPet or
 	   profile.friendlyPlayers ~= "ALL" then
-	   
+
 		self:RegisterEvent("Aloft:OnNameplateShow", "OnNameplateShow")
 	end
 end
@@ -94,10 +98,10 @@ function AloftVisibility:OnEnable()
 	self:RegisterEvents()
 end
 
-function AloftVisibility:OnDisable()	
+function AloftVisibility:OnDisable()
 	self:UnregisterAllEvents()
 
-	if not profile.showCritters or 
+	if not profile.showCritters or
 	   not profile.showHostilePlayers or
 	   not profile.showHostilePets or
 	   not profile.showHostileNPCs or
@@ -122,7 +126,7 @@ function AloftVisibility:RequiresData()
 		table.insert(dataRequiredList, "class")
 	end
 
-	if profile.showHostilePets ~= profile.showHostileNPCs or 
+	if profile.showHostilePets ~= profile.showHostileNPCs or
 	   profile.showFriendlyPets ~= profile.showFriendlyNPCs then
 		table.insert(dataRequiredList, "isPet")
 	end
@@ -157,13 +161,13 @@ local friendlyPlayerMethods =
 
 local showTypeMethods =
 {
-	["friendlyPlayer"] = function(frame, aloftData) 
+	["friendlyPlayer"] = function(frame, aloftData)
 							local friendlyPlayerMethod = friendlyPlayerMethods[profile.friendlyPlayers]
 							if friendlyPlayerMethod then
 								friendlyPlayerMethod(frame, aloftData)
 							end
 						 end,
-	["friendlyNPC"] = function(frame, aloftData) 
+	["friendlyNPC"] = function(frame, aloftData)
 						if UnitName("pet") == aloftData.name then
 							if not profile.showPet then
 								frame:Hide()
@@ -178,19 +182,19 @@ local showTypeMethods =
 								frame:Hide()
 							end
 						else
-							if not profile.showFriendlyNPCs then 
-								frame:Hide() 
+							if not profile.showFriendlyNPCs then
+								frame:Hide()
 							end
 						end
 					  end,
-	["neutral"] = function(frame, aloftData) 
-					if not profile.showNeutralUnits or (not profile.showCritters and aloftData.creatureType == L["Critter"]) then 
+	["neutral"] = function(frame, aloftData)
+					if not profile.showNeutralUnits or (not profile.showCritters and aloftData.creatureType == L["Critter"]) then
 						frame:Hide()
 					end
 				  end,
 	["hostile"] = function(frame, aloftData)
 					-- Is it a player?
-					if aloftData.class then 
+					if aloftData.class then
 						if not profile.showHostilePlayers then
 							frame:Hide()
 						end

@@ -1,0 +1,8 @@
+------------------------------------------------------------------------
+r80825 | shefki | 2008-08-22 21:24:46 -0400 (Fri, 22 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_QuestsFu/QuestsFu.lua
+
+FuBar_QuestsFu: Fix the QuestsLog toggle to work in WotLK beta.
+
+------------------------------------------------------------------------

@@ -1,4 +1,73 @@
 ------------------------------------------------------------------------
+r80837 | pettigrow | 2008-08-23 04:29:52 -0400 (Sat, 23 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList: frFR Update
+------------------------------------------------------------------------
+r80824 | ackis | 2008-08-22 21:21:25 -0400 (Fri, 22 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/ARLText.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Fixed some issues with the text dump... works kind of now (no scroll bar :P)
+- Optimized some scan code
+------------------------------------------------------------------------
+r80813 | ackis | 2008-08-22 14:04:24 -0400 (Fri, 22 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+
+AckisRecipeList:
+- Fixed a minor typo
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r80812 | ackis | 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) | 12 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/ARLText.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+   D /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-ruRU.lua
+
+AckisRecipeList:
+- Added four new localizations:
+	L["Scan Recipes"]
+	L["Scans an open tradeskill for missing recipes."]
+	L["Text Dump"]
+	L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."]
+- Add 100% dry-coded implemetnation of a text dump.  This will go through your recipe list and display all recipes for a profession, and the information about them in a CSV format.  I will be playing around with this in the future to make it look prettier.
+- You can access the text dump by typing /arl and clicking on the text dump button.  Chances are things will blow up however.
+- Removed enGB as Ace3 just does enUS == enGB
+- New framework for ruRU and esMX
+- Version update
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r80744 | pettigrow | 2008-08-20 14:12:19 -0400 (Wed, 20 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
+
+AckisRecipeList: frFR Update
+------------------------------------------------------------------------
+r80730 | ackis | 2008-08-20 11:40:24 -0400 (Wed, 20 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
+
+AckisRecipeList:
+- Fix ticket 44
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r80729 | ackis | 2008-08-20 11:28:07 -0400 (Wed, 20 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
+
+AckisRecipeList:
+- Fix ticket 45
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
 r80547 | ascalia | 2008-08-16 14:46:12 -0400 (Sat, 16 Aug 2008) | 2 lines
 Changed paths:
    M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
@@ -492,108 +561,4 @@ Changed paths:
 
 AckisRecipeList:
 - Update locale koKR
-------------------------------------------------------------------------
-r78947 | ackis | 2008-07-22 18:40:22 -0400 (Tue, 22 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/DataMiner.lua
-
-AckisRecipeList:
-- Update dataminer a bit
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78941 | ackis | 2008-07-22 17:52:52 -0400 (Tue, 22 Jul 2008) | 4 lines
-Changed paths:
-   A /trunk/AckisRecipeList/DataMiner.lua
-   M /trunk/AckisRecipeList/DownloadCount.lua
-
-AckisRecipeList:
-- Add frame for dataminer
-- Optimize download count
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78937 | pettigrow | 2008-07-22 16:35:29 -0400 (Tue, 22 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList:
-- frFR Update
-------------------------------------------------------------------------
-r78932 | ackis | 2008-07-22 15:30:32 -0400 (Tue, 22 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Localize an error message (L["SpellIDCache"]) needs translations please :)
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78924 | ackis | 2008-07-22 11:12:01 -0400 (Tue, 22 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Removed Skinner from ToC
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78807 | ackis | 2008-07-20 15:23:58 -0400 (Sun, 20 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/DownloadCount.lua
-
-AckisRecipeList:
-- Update download counts
-------------------------------------------------------------------------
-r78799 | ackis | 2008-07-20 14:20:03 -0400 (Sun, 20 Jul 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fix ticket 27 with error messages popping up with skillet/ATSW and when you reslect a trade skill
-------------------------------------------------------------------------
-r78750 | arrowmaster | 2008-07-19 17:15:05 -0400 (Sat, 19 Jul 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/BigWigs/BigWigs.toc
-   M /trunk/BigWigs/Core.lua
-   M /trunk/Incubator/Core.lua
-   M /trunk/Incubator/Incubator.toc
-   M /trunk/Omen/Omen.toc
-
-.trunk: remove SavedVariablesPerCharacter from a few addons that don't even use them, preventing a file with nothing but 'VAR = nil' from being created for each character
-------------------------------------------------------------------------
-r78647 | ackis | 2008-07-17 17:23:52 -0400 (Thu, 17 Jul 2008) | 2 lines
-Changed paths:
-   D /trunk/AckisRecipeList/ARL-DownloadCount.lua
-   A /trunk/AckisRecipeList/DownloadCount.lua (from /trunk/AckisRecipeList/ARL-DownloadCount.lua:78645)
-
-AckisRecipeList:
-- Rename file
-------------------------------------------------------------------------
-r78645 | ackis | 2008-07-17 17:00:31 -0400 (Thu, 17 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARL-DownloadCount.lua
-
-AckisRecipeList:
-- Removed pause
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78643 | ackis | 2008-07-17 16:22:07 -0400 (Thu, 17 Jul 2008) | 3 lines
-Changed paths:
-   A /trunk/AckisRecipeList/ARL-DownloadCount.lua
-
-AckisRecipeList:
-- Add download counter file
-- Dry-coded (compiles w/ luac -p)
-------------------------------------------------------------------------
-r78606 | ackis | 2008-07-17 02:31:03 -0400 (Thu, 17 Jul 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Frame header now large enough with some font scaling things
-- Interface options in the right order
-~lart Arrowmaster
 ------------------------------------------------------------------------

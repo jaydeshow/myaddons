@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Faction-3.0
-Revision: $Rev: 79388 $
+Revision: $Rev: 80671 $
 Author(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Faction-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Faction-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Faction-3.0"
-local MINOR_VERSION = "$Revision: 79388 $"
+local MINOR_VERSION = "$Revision: 80671 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -401,7 +401,7 @@ elseif GAME_LOCALE == "deDE" then
 	["Silverwing Sentinels"] = "Silberschwingen",
 	["The Sha'tar"] = "Die Sha'tar",
 	["Sha'tari Skyguard"] = "Himmelswache der Sha'tari",
-	["Shattered Sun Offensive"] = "Offensive der Zerschlagenen Sonne",
+	["Shattered Sun Offensive"] = "Offensive der Zerschmetterten Sonne",
 	["Sporeggar"] = "Sporeggar",
 	["Stormpike Guard"] = "Sturmlanzengarde",
 	["Thorium Brotherhood"] = "Thoriumbruderschaft",

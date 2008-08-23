@@ -327,8 +327,8 @@ function AtlasLoot_AtlasScrollBar_Update()
                 getglobal("AtlasBossLine"..line):Hide();
             end
         end
-    else
-        Hooked_AtlasScrollBar_Update();
+    --else
+    --    Hooked_AtlasScrollBar_Update();
     end
 end
 

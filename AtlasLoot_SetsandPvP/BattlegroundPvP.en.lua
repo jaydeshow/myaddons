@@ -192,7 +192,7 @@ AtlasLoot_Data["AtlasLootBGItems"] = {
 		{ 0,"","","" },
 		{ 0,"","","" },
 		{ 0, "INV_BannerPVP_01", "=q6=#m6#", "=q5=#b6#" },
-		{ 20166, "", "=q3=Defiler's Cloth Girdle", "=ds=", "258 #horde# 0 #ab#" },
+		{ 20166, "", "=q3=Defiler's Cloth Girdle", "=ds=", "258 #horde# 20 #ab#" },
 		{ 20161, "", "=q3=Defiler's Cloth Boots", "=ds=", "258 #horde# 20 #ab#" },
 		{ 20192, "", "=q3=Defiler's Leather Girdle", "=ds=", "258 #horde# 20 #ab#" },
 		{ 20173, "", "=q3=Defiler's Lizardhide Girdle", "=ds=", "258 #horde# 20 #ab#" },
