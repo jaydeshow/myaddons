@@ -237,7 +237,7 @@ mod.zonename = BZ["The Black Morass"]
 mod.synctoken = "The Black Morass"
 mod.enabletrigger = boss
 mod.toggleoptions = {"portal", "portalbar", -1, "hasten", -1, "frenzy", "bosskill"}
-mod.revision = tonumber(("$Revision: 79681 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80911 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --
@@ -324,7 +324,6 @@ function mod:UPDATE_WORLD_STATES()
 		end
 		if self.db.profile.portalbar then
 			self:TriggerEvent("BigWigs_StopBar", self, L["multiportal_bar"])
-			self:Bar(L["multiportal_bar"], 127, "INV_Misc_ShadowEgg")
 			if wave == 6 then
 				self:Bar(L["portal_bar"]:format(boss1, wave), 15, "INV_Misc_ShadowEgg")
 			elseif wave == 12 then
@@ -332,6 +331,7 @@ function mod:UPDATE_WORLD_STATES()
 			elseif wave == 18 then
 				self:Bar(L["portal_bar"]:format(boss3, wave), 15, "INV_Misc_ShadowEgg")
 			else
+				self:Bar(L["multiportal_bar"], 127, "INV_Misc_ShadowEgg")
 				self:Bar(L["portal_bar"]:format(L["next_portal"], wave), 15, "INV_Misc_ShadowEgg")
 			end
 		end

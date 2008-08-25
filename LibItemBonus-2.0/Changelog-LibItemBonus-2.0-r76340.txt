@@ -1,8 +1,0 @@
-------------------------------------------------------------------------
-r76340 | cwdg | 2008-06-09 08:31:03 -0400 (Mon, 09 Jun 2008) | 2 lines
-Changed paths:
-   M /trunk/LibItemBonus-2.0/LibItemBonus-2.0/locales/zhCN.lua
-
-LibItemBonus-2.0:
--update zhCN locale
-------------------------------------------------------------------------

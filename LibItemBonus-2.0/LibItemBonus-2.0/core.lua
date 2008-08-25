@@ -1,4 +1,4 @@
-local lib = LibStub:NewLibrary("LibItemBonus-2.0", "$Revision: 72834 $")
+local lib = LibStub:NewLibrary("LibItemBonus-2.0", "$Revision: 80899 $")
 
 if not lib then return end
 
@@ -48,13 +48,15 @@ do -- tooltip, frame & events
 	end)
 	local init_update_elapsed = -1
 	frame:SetScript("OnUpdate", function (frame, elapsed)
+		if lib.OnInitialize then
+			lib:OnInitialize()
+		end
 		if init_update_elapsed < 0 then
 			init_update_elapsed = 0
 			return
 		end
 		init_update_elapsed = init_update_elapsed + elapsed
 		if init_update_elapsed > 1 then
-			lib:OnInitialize()
 			lib:ScanEquipment()
 			frame:RegisterEvent("UNIT_INVENTORY_CHANGED")
 			frame:SetScript("OnUpdate", nil)
@@ -579,6 +581,7 @@ do -- options & OnInitialize()
 		if l then l:RegisterOptionsTable("LibItemBonus", options) end
 		l = LibStub("AceConfigCmd-3.0", true)
 		if l then l:CreateChatCommand(CHAT_COMMAND, "LibItemBonus") end
+		self.OnInitialize = nil
 	end
 end
 

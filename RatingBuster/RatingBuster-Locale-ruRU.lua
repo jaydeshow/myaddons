@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster ruRU locale
-Revision: $Revision: 80692 $
+Revision: $Revision: 80908 $
 Translated by: 
 - Orsana
 ]]
@@ -78,8 +78,8 @@ L:RegisterTranslations("ruRU", function() return {
 	["Strength"] = "Сила",
 	["Changes the display of Strength"] = "Показывать изменение силы",
 	-- /rb stat str ap
-	["Show Attack Power"] = "Показывать изменение СА",
-	["Show Attack Power from Strength"] = "Показывать изменение СА от силы",
+	["Show Attack Power"] = "Показывать изменение АП",
+	["Show Attack Power from Strength"] = "Показывать изменение АП от силы",
 	-- /rb stat str block
 	["Show Block Value"] = "Показывать изменение блокирования",
 	["Show Block Value from Strength"] = "Показывать изменение блокирования силы",
@@ -100,11 +100,11 @@ L:RegisterTranslations("ruRU", function() return {
 	["Show Dodge"] = "Показывать изменение уклонения",
 	["Show Dodge chance from Agility"] = "Показывать изменение уклонения от ловкости",
 	-- /rb stat agi ap
-	["Show Attack Power"] = "Показывать изменение СА",
-	["Show Attack Power from Agility"] = "Показывать изменение СА от ловкости",
+	["Show Attack Power"] = "Показывать изменение АП",
+	["Show Attack Power from Agility"] = "Показывать изменение АП от ловкости",
 	-- /rb stat agi rap
-	["Show Ranged Attack Power"] = "Показывать изменение САДБ",
-	["Show Ranged Attack Power from Agility"] = "Показывать изменение САДБ от ловкости",
+	["Show Ranged Attack Power"] = "Показывать изменение РАП",
+	["Show Ranged Attack Power from Agility"] = "Показывать изменение РАП от ловкости",
 	-- /rb stat agi armor
 	["Show Armor"] = "Показывать изменение армора",
 	["Show Armor from Agility"] = "Показывать изменение армора от ловкости",
@@ -141,11 +141,11 @@ L:RegisterTranslations("ruRU", function() return {
 	["Show Mana Regen"] = "Показывать изменение манарегена",
 	["Show Mana Regen while casting from Intellect"] = "Показывать изменение манарегена от интеллекта",
 	-- /rb stat int mp5nc
-	["Show Mana Regen while NOT casting"] = "Показывать изменение манарегена(вне применения)",
-	["Show Mana Regen while NOT casting from Intellect"] = "Показывать изменение манарегена (вне применения)",
+	["Show Mana Regen while NOT casting"] = "Показывать изменение манарегена(вне каста)",
+	["Show Mana Regen while NOT casting from Intellect"] = "Показывать изменение манарегена (вне каста)",
 	-- /rb stat int rap
-	["Show Ranged Attack Power"] = "Показывать изменение СА",
-	["Show Ranged Attack Power from Intellect"] = "Показывать изменение СА от интеллекта",
+	["Show Ranged Attack Power"] = "Показывать изменение АП",
+	["Show Ranged Attack Power from Intellect"] = "Показывать изменение АП от интеллекта",
 	-- /rb stat int armor
 	["Show Armor"] = "Показывать изменение армора",
 	["Show Armor from Intellect"] = "Показывать изменение армора от интеллекта",
@@ -157,8 +157,8 @@ L:RegisterTranslations("ruRU", function() return {
 	["Show Mana Regen"] = "Показывать изменение манарегена",
 	["Show Mana Regen while casting from Spirit"] = "Показывать изменение манарегена от духа",
 	-- /rb stat spi mp5nc
-	["Show Mana Regen while NOT casting"] = "Показывать изменение манарегена (вне применения)",
-	["Show Mana Regen while NOT casting from Spirit"] = "Показывать изменение манарегена (вне применения)",
+	["Show Mana Regen while NOT casting"] = "Показывать изменение манарегена (вне каста)",
+	["Show Mana Regen while NOT casting from Spirit"] = "Показывать изменение манарегена (вне каста)",
 	-- /rb stat spi hp5
 	["Show Health Regen"] = "Показывать изменение восстановления хитов",
 	["Show Health Regen from Spirit"] = "Показывать изменение восстановления хитов",
@@ -185,8 +185,8 @@ L:RegisterTranslations("ruRU", function() return {
 	["Ignore equipped items"] = "Не показывать для надетых вещей",
 	["Hide stat summary for equipped items"] = "Не показывать для надетых вещей",
 	-- /rb sum ignore enchant
-	["Ignore enchants"] = "Игнорировать зачарования",
-	["Ignore enchants on items when calculating the stat summary"] = "Игнорировать зачарования при расчете итога",
+	["Ignore enchants"] = "Игнорировать энчанты",
+	["Ignore enchants on items when calculating the stat summary"] = "Игнорировать энчанты при расчете итога",
 	-- /rb sum ignore gem
 	["Ignore gems"] = "Игнорировать камни",
 	["Ignore gems on items when calculating the stat summary"] = "Игнорировать камни при расчете итога",
@@ -496,7 +496,7 @@ L:RegisterTranslations("ruRU", function() return {
 	["numberPatterns"] = {
 		--{pattern = " на (%d+)", addInfo = "AfterStat",},
 		{pattern = "([%+%-]%d+)", addInfo = "AfterNumber",},
-		{pattern = "(%d+)", addInfo = "AfterNumber"}, -- тест
+		{pattern = "(%d+) к ", addInfo = "AfterNumber"}, -- тест
 		{pattern = "увеличение (%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
 		{pattern = "дополнительно (%d+)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
 		-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
@@ -543,17 +543,18 @@ L:RegisterTranslations("ruRU", function() return {
 	-- 
 
 	["statList"] = {
+		{pattern = string.lower("Силе атаки"), id = SPELL_STAT1115_NAME}, --чтобы Сила атаки не распознавалась как Сила
 		{pattern = string.lower("Сила атаки"), id = SPELL_STAT1115_NAME}, -- эти строки должны быть впереди
 		{pattern = string.lower("Силу атаки"), id = SPELL_STAT1115_NAME},
-		{pattern = string.lower(SPELL_STAT1_NAME), id = SPELL_STAT1_NAME}, -- Сила
+		{pattern = string.lower(SPELL_STAT1_NAME), id = SPELL_STAT1_NAME}, -- Strength
 		{pattern = string.lower("Силе"), id = SPELL_STAT1_NAME},
-		{pattern = string.lower(SPELL_STAT2_NAME), id = SPELL_STAT2_NAME}, -- Ловкость
+		{pattern = string.lower(SPELL_STAT2_NAME), id = SPELL_STAT2_NAME}, -- Agility
 		{pattern = string.lower("Ловкости"), id = SPELL_STAT2_NAME},
-		{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Выносливость
+		{pattern = string.lower(SPELL_STAT3_NAME), id = SPELL_STAT3_NAME}, -- Stamina
 		{pattern = string.lower("Выносливости"), id = SPELL_STAT3_NAME},
-		{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, --Иинтеллект
+		{pattern = string.lower(SPELL_STAT4_NAME), id = SPELL_STAT4_NAME}, -- Intellect
 		{pattern = string.lower("Интеллекту"), id = SPELL_STAT4_NAME},
-		{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Дух
+		{pattern = string.lower(SPELL_STAT5_NAME), id = SPELL_STAT5_NAME}, -- Spirit
 		{pattern = string.lower("Духу"), id = SPELL_STAT5_NAME},
 
 		{pattern = "рейтинг защиты", id = CR_DEFENSE_SKILL},
@@ -565,7 +566,7 @@ L:RegisterTranslations("ruRU", function() return {
 		{pattern = "рейтинг блокирования щитом", id = CR_BLOCK}, -- block enchant: "+10 Shield Block Rating"
 		{pattern = "рейтинга блокирования щитом", id = CR_BLOCK},
 		{pattern = "рейтингу блокирования щитом", id = CR_BLOCK},
-		{pattern = "рейтинга блокирования щита", id = CR_BLOCK},
+		{pattern = "увеличение рейтинга блокирования щита на", id = CR_BLOCK},
 		{pattern = "рейтинга блока", id = CR_BLOCK},
 		{pattern = "рейтинг парирования", id = CR_PARRY},
 		{pattern = "рейтинга парирования", id = CR_PARRY},
@@ -587,6 +588,7 @@ L:RegisterTranslations("ruRU", function() return {
 		{pattern = "рейтинг критического удара", id = CR_CRIT_MELEE},
 		{pattern = "рейтингу критического удара", id = CR_CRIT_MELEE},
 		{pattern = "рейтинга критического удара", id = CR_CRIT_MELEE},
+		{pattern = "рейтинг крит. удара оруж. ближнего боя", id = CR_CRIT_MELEE},
 		{pattern = "critical hit rating", id = CR_CRIT_MELEE},
 		{pattern = "critical rating", id = CR_CRIT_MELEE},
 		{pattern = "crit rating", id = CR_CRIT_MELEE},
@@ -596,6 +598,7 @@ L:RegisterTranslations("ruRU", function() return {
 		{pattern = "рейтинга меткости %(заклинания%)", id = CR_HIT_SPELL},
 		{pattern = "рейтингу меткости заклинаний", id = CR_HIT_SPELL},
 		{pattern = "ranged hit rating", id = CR_HIT_RANGED},
+		{pattern = "рейтинга нанесения удара ближнего боя", id = CR_HIT_MELEE},
 		{pattern = "рейтинг меткости", id = CR_HIT_MELEE},
 		{pattern = "рейтинга меткости", id = CR_HIT_MELEE},
 		{pattern = "рейтингу меткости", id = CR_HIT_MELEE},
@@ -647,21 +650,21 @@ L:RegisterTranslations("ruRU", function() return {
 	["$value% Crit"] = "$value% крит",
 	["$value% Spell Crit"] = "$value% крит закл",
 	["$value% Dodge"] = "$value% уклонение",
-	["$value HP"] = "$value ХП",
-	["$value MP"] = "$value МН",
-	["$value AP"] = "$value СА",
-	["$value RAP"] = "$value САДБ",
-	["$value Dmg"] = "$value Урн",
-	["$value Heal"] = "$value Исц",
-	["$value Armor"] = "$value Броня",
+	["$value HP"] = "$value Здор",
+	["$value MP"] = "$value Мана",
+	["$value AP"] = "$value Сила атаки",
+	["$value RAP"] = "$value Сила атаки",
+	["$value Dmg"] = "$value Дмг",
+	["$value Heal"] = "$value Хилл",
+	["$value Armor"] = "$value Армор",
 	["$value Block"] = "$value% Блок",
-	["$value MP5"] = "$value МН5",
-	["$value MP5(NC)"] = "$value МН5НК",
-	["$value HP5"] = "$value ХП5",
+	["$value MP5"] = "$value МП5сек",
+	["$value MP5(NC)"] = "$value МП 5сек НК",
+	["$value HP5"] = "$value Здор 5сек",
 	["$value to be Dodged/Parried"] = "$value% уклон/парир",
 	["$value to be Crit"] = "$value% крит",
-	["$value Crit Dmg Taken"] = "$value урон крита",
-	["$value DOT Dmg Taken"] = "$value урон дотов",
+	["$value Crit Dmg Taken"] = "$value дамаг крита",
+	["$value DOT Dmg Taken"] = "$value дамаг дотов",
 	
 	------------------
 	-- Stat Summary --

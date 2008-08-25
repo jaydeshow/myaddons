@@ -76,7 +76,7 @@ L:RegisterTranslations("deDE", function() return {
 	kite_phase_message = "%s Kitephase!",
 	kite_phase_trigger = "Der Boden beginnt aufzubrechen!",
 	next_phase_bar = "Nächste Phase",
-	next_phase_message = "Phasenwechsel in 10sec!",
+	next_phase_message = "Phasenwechsel in 10sek!",
 
 	punch = "Glühender Hieb",
 	punch_desc = "Warnt, wenn Supremus Glühender Hieb benutzt und zeigt einen Countdown an.",
@@ -227,7 +227,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = boss
 mod.guid = 22898
 mod.toggleoptions = {"punch", "target", "icon", "phase", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80896 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

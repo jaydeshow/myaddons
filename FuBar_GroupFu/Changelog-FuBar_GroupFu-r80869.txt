@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r80869 | Swix | 2008-08-23 19:50:20 -0400 (Sat, 23 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_GroupFu/FuBar_GroupFu.toc
+   A /trunk/FuBar_GroupFu/GroupFuLocal-ruRU.lua
+
+FuBar_GroupFu:
+-Added ruRU localization (by Star_Hobbit)
+------------------------------------------------------------------------
 r79981 | 7destiny | 2008-08-08 18:57:41 -0400 (Fri, 08 Aug 2008) | 1 line
 Changed paths:
    M /trunk/FuBar_GroupFu/GroupFuLocal-koKR.lua

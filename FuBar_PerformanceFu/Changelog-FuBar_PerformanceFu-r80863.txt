@@ -1,0 +1,9 @@
+------------------------------------------------------------------------
+r80863 | Swix | 2008-08-23 18:39:13 -0400 (Sat, 23 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/FuBar_PerformanceFu/FuBar_PerformanceFu.toc
+   A /trunk/FuBar_PerformanceFu/locales/PerformanceFuLocale-ruRU.lua
+
+FuBar_PerformanceFu:
+-Added ruRU localization
+------------------------------------------------------------------------
