@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 80794 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 80858 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_Unit_MINOR_VERSION then
 	_G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
@@ -10,7 +10,7 @@ DogTag_Unit_funcs[#DogTag_Unit_funcs+1] = function(DogTag_Unit, DogTag)
 local L = DogTag_Unit.L
 
 DogTag:AddTag("Unit", "Combos", {
-	code = function () GetComboPoints("player") end,
+	code = function () return GetComboPoints("player") end,
 	ret = "number",
 	events = "PLAYER_COMBO_POINTS",
 	doc = L["Return the number of combo points you have"],

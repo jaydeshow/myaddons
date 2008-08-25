@@ -1,4 +1,4 @@
-## Interface: 20400
+﻿## Interface: 20400
 ## Title: FuBar - |cffffffffPerformance|r|cff00ff00Fu|r
 ## Title-koKR: |CFF99FF99F|CFFFFFFFFu|CFF99FF99B|CFFFFFFFFar - |cffffffffPerformance|r|cff00ff00Fu|r
 ## Notes: Keeps track of performance of memory, latency, and framerate.
@@ -6,6 +6,7 @@
 ## Notes-zhTW: 持續追蹤執行效能、網路狀況及每秒的畫面頁數。
 ## Notes-esES: Informa sobre el rendimiento de la memoria, latencia y framerate.
 ## Notes-zhCN: 持续追踪内存运行、网络状况及每秒的画面帧数。
+## Notes-ruRU: Отслеживает производительность игры - загрузку памяти, пинг и фпс.
 ## Author: ckknight
 ## X-eMail: ckknight AT gmail DOT com
 ## X-Donate: PayPal:ckknight AT gmail DOT com
@@ -27,5 +28,6 @@ locales\PerformanceFuLocale-koKR.lua
 locales\PerformanceFuLocale-zhCN.lua
 locales\PerformanceFuLocale-zhTW.lua
 locales\PerformanceFuLocale-esES.lua
+locales\PerformanceFuLocale-ruRU.lua
 
 PerformanceFu.lua

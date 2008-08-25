@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster frFR locale (incomplete)
-Revision: $Revision: 73696 $
+Revision: $Revision: 80891 $
 Translated by:
 - Tixu@Curse
 - Silaor
@@ -406,7 +406,7 @@ L:RegisterTranslations("frFR", function() return {
 		{pattern = "score de hâte", id = CR_HASTE_MELEE},
 		{pattern = "scores de vitesse", id = CR_HASTE_MELEE}, -- [Tambours de Bataille]
 		
-		
+		{pattern = "score d'expertise", id = CR_EXPERTISE},
 		{pattern = "score de la compétence dagues", id = CR_WEAPON_SKILL},
 		{pattern = "score de la compétence epées", id = CR_WEAPON_SKILL},
 		{pattern = "score de la compétence epées à deux mains", id = CR_WEAPON_SKILL},

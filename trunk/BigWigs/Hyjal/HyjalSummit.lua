@@ -206,9 +206,9 @@ L:RegisterTranslations("frFR", function() return {
 
 L:RegisterTranslations("deDE", function() return {
 	waves = "Wellen",
-	waves_desc = "Ausgeben von Warnungs Nachrichten für die nächste Welle.",
+	waves_desc = "Zeigt Warnungen für die nächste Welle an.",
 
-	detail = "Detaillierte Warnungen",
+	detail = "Detaillierte Wellen",
 	detail_desc = "Zeigt detaillierte Warnungen, welche Monster als nächstes kommen.",
 
 	["~%s spawn"] = "~%s spawnt.",
@@ -325,6 +325,48 @@ L:RegisterTranslations("zhTW", function() return {
 	["Infernals"] = "巨型地獄火",
 
 } end )
+-- Translated by wow.playhard.ru translators
+L:RegisterTranslations("ruRU", function() return {
+	waves = "Wave Warnings",
+	waves_desc = "Announce approximate warning messages for the next wave.",
+
+	detail = "Detailed Warnings",
+	detail_desc = "Show detailed warnings of what mobs are incoming.",
+
+	["~%s spawn"] = "~%s порождение",
+	["~Wave %d spawn"] = "~Волна %d порождение",
+	["Wave %d incoming!"] = "Надвигается %d Волна!",
+	["Wave %d! %d %s"] = "Волна %d! %d %s", --1 set of mobs
+	["Wave %d! %d %s, %d %s"] = "Волна %d! %d %s, %d %s", --2 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s"] = "Волна %d! %d %s, %d %s, %d %s", --3 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s"] = "Волна %d! %d %s, %d %s, %d %s, %d %s", --4 sets of mobs
+	["Wave %d! %d %s, %d %s, %d %s, %d %s, %d %s"] = "Волна %d! %d %s, %d %s, %d %s, %d %s, %d %s", --5 sets of mobs
+	["%s in ~%d sec!"] = "%s за ~%d сек!",
+	["Wave %d in ~%d sec!"] = "Волна %d за ~%d сек!",
+
+	["Boss"] = "Босс",
+	["Thrall"] = "Тралл",
+	["Lady Jaina Proudmoore"] = "Леди Джайна Праудмур",
+
+	["My companions and I are with you, Lady Proudmoore."] = "My companions and I are with you, Lady Proudmoore.", -- Rage Winterchill
+	["We are ready for whatever Archimonde might send our way, Lady Proudmoore."] = "We are ready for whatever Archimonde might send our way, Lady Proudmoore.", -- Anatheron
+	["I am with you, Thrall."] = "I am with you, Thrall.", -- Kaz'Rogal
+	["We have nothing to fear."] = "We have nothing to fear.", -- Az'Galor
+
+	["Please remove BigWigs_WaveTimers, it is deprecated."] = "Please remove BigWigs_WaveTimers, it is deprecated.",
+
+	["Ghouls"] = "Вурдалаки",
+	["Crypt Fiends"] = "Некрорахниды",
+	["Abominations"] = "Поганище",
+	["Necromancers"] = "Некроманты",
+	["Banshees"] = "Банши",
+	["Gargoyles"] = "Горгулии",
+	["Frost Wyrm"] = "Ледяные змеи",
+	["Fel Stalkers"] = "Ловчии Скверны",
+	["Infernals"] = "Инферналы",
+
+	["Ghoul"] = "Вурдалак",
+} end )
 
 ----------------------------------
 --      Module Declaration      --
@@ -337,7 +379,7 @@ local mod = BigWigs:NewModule(name)
 mod.zonename = name
 mod.enabletrigger = { thrall, proudmoore, L["Ghoul"] }
 mod.toggleoptions = {"waves", "detail"}
-mod.revision = tonumber(match("$Revision: 80486 $", "%d+"))
+mod.revision = tonumber(match("$Revision: 80896 $", "%d+"))
 mod.synctoken = "Hyjal Summit"
 
 ------------------------------

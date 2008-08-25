@@ -1,4 +1,14 @@
 ------------------------------------------------------------------------
+r80880 | StingerSoft | 2008-08-24 02:28:15 -0400 (Sun, 24 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Illidan.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Supremus.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/CoilfangReservoir/SerpentshrineCavern/Leotheras.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/Karazhan/Nightbane.lua
+   M /trunk/Threat-2.0/Threat-2.0/NPCModules/ZulAman/Zuljin.lua
+
+Threat-2.0: added NPCModules ruRU triggers
+------------------------------------------------------------------------
 r79785 | xinhuan | 2008-08-05 04:32:42 -0400 (Tue, 05 Aug 2008) | 1 line
 Changed paths:
    M /trunk/Threat-2.0/Threat-2.0/NPCModules/BlackTemple/Council.lua
@@ -78,80 +88,4 @@ Changed paths:
 
 Threat-2.0: Remove unused AceLocale-3.0 and LibGUIDRegistry-0.1 from embeds.xml
 
-------------------------------------------------------------------------
-r78949 | xinhuan | 2008-07-22 19:33:17 -0400 (Tue, 22 Jul 2008) | 3 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
-   M /trunk/Threat-2.0/Threat-2.0/ThreatNPCModuleCore.lua
-
-Threat-2.0:
-- Update Petrify skill to zero the tank's threat (Chaos Gazer, Sunwell Plateau).
-- Fix an error from occurring if the player uses Sunder Armor while mind controlled.
-------------------------------------------------------------------------
-r78939 | charon | 2008-07-22 17:06:38 -0400 (Tue, 22 Jul 2008) | 12 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
-   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
-
-Threat-2.0: Fix paladin healing threat
-
-As pointed out by Zappster[1], paladin healing threat has been broken
-since 2.4.2.  Since the general belief[2] seems to be that all healing
-by a paladin---even that caused by other classes and hence spell
-schools---is affected, we introduce a new modifier for healing and
-have paladins set it to 0.25.
-
-Extensively discussed with Xinhuan, kalahassi and nevcairiel.
-
-[1] http://www.wowace.com/forums/index.php?topic=13767.0
-[2] http://www.wowwiki.com/Threat/Modifier_table
-------------------------------------------------------------------------
-r78412 | charon | 2008-07-14 14:39:36 -0400 (Mon, 14 Jul 2008) | 6 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Paladin.lua
-
-Threat-2.0: Publish Paladin threat immediately after Righteous Defense
-
-We publish on the first event after an RD debuff series.  Note that
-unlike with Taunt/Growl, other debuffs can actually break the chain,
-but this is a minor problem: it just triggers an additional comm
-message.
-------------------------------------------------------------------------
-r78411 | charon | 2008-07-14 14:39:20 -0400 (Mon, 14 Jul 2008) | 4 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
-
-Threat-2.0: Do not set the 'force' flag in Taunt publishes
-
-That flag overrides the check whether the last published threat is
-still accurate, and is not needed.
-------------------------------------------------------------------------
-r78410 | charon | 2008-07-14 14:35:29 -0400 (Mon, 14 Jul 2008) | 4 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/Threat-2.0.lua
-
-Threat-2.0: Move lastPublishTime update to PublishTime()
-
-Mainly so that the forced publishes I am spreading around are counted
-towards the publish interval code.
-------------------------------------------------------------------------
-r78353 | charon | 2008-07-13 17:52:09 -0400 (Sun, 13 Jul 2008) | 12 lines
-Changed paths:
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Druid.lua
-   M /trunk/Threat-2.0/Threat-2.0/ClassModules/Warrior.lua
-   M /trunk/Threat-2.0/Threat-2.0/ThreatClassModuleCore.lua
-
-Threat-2.0: Detect Growl/Taunt misses quickly, use this to publish right after
-
-Note that this change depends on the fact (empirically shown in logs
-since late March) that a Taunt resist is always of the form
-
-  SPELL_CAST_SUCCESS,...,355,"Taunt",0x1
-  SPELL_MISSED,...,355,"Taunt",0x1,RESIST
-
-with no events in between.  We exploit this to detect a successful
-Taunt on the event directly following the cast, and publish threat
-immediately.  This should improve accuracy with Taunts in quick
-succession.
 ------------------------------------------------------------------------

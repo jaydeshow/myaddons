@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 80797 $
+Revision: $Revision: 80890 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-08-22 07:06:28 -0400 (Fri, 22 Aug 2008) $
+LastUpdate: $Date: 2008-08-24 07:03:40 -0400 (Sun, 24 Aug 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -28,7 +28,7 @@ Features:
 -- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 80797 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 80890 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -3133,6 +3133,9 @@ PatternLocale.frFR = {
 		--["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
 		--["Improves ranged haste rating"] = {"SPELL_HASTE_RATING"},
 		--["Improves spell haste rating"] = {"RANGED_HASTE_RATING"},
+		
+		["votre score d'expertise"] = {"EXPERTISE_RATING"},
+		["le score d'expertise"] = {"EXPERTISE_RATING"},
 
 		["le score de la compétence dagues"] = {"DAGGER_WEAPON_RATING"},
 		["score de la compétence dagues"] = {"DAGGER_WEAPON_RATING"},
@@ -3272,7 +3275,8 @@ DisplayLocale.frFR = {
 		["BOW_WEAPON_RATING"] = {"Bow "..SKILL.." "..RATING, "Bow "..RATING},
 		["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 		["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
-
+		["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING},
+		
 		---------------------------------------------------------------------------
 		-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
 		-- Str -> AP, Block Value
@@ -3317,6 +3321,7 @@ DisplayLocale.frFR = {
 		["BOW_WEAPON"] = {"Bow "..SKILL, "Bow"},
 		["FERAL_WEAPON"] = {"Feral "..SKILL, "Feral"},
 		["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"},
+		["EXPERTISE"] = {"Expertise", "Expertise"},
 
 		---------------------------------------------------------------------------
 		-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat

@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r80858 | shefki | 2008-08-23 16:12:38 -0400 (Sat, 23 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Misc.lua
+
+LibDogTag-Unit-3.0: Fix small mistake I made adding WoTLK ComboPoint compatability in r80794.
+
+------------------------------------------------------------------------
 r80794 | shefki | 2008-08-22 05:35:42 -0400 (Fri, 22 Aug 2008) | 3 lines
 Changed paths:
    M /trunk/LibDogTag-Unit-3.0/Categories/Misc.lua

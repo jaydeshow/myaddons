@@ -45,7 +45,7 @@ L:RegisterTranslations("deDE", function() return {
 
 	mark = "Mal von Kaz'rogal",
 	mark_desc = "Zeigt einen Timer für das Mal von Kaz'rogal.",
-	mark_bar = "Nächstes Mal von Kaz'rogal (%d)",
+	mark_bar = "Mal von Kaz'rogal (%d)",
 	mark_warn = "Mal von Kaz'rogal in 5sek!",
 } end )
 
@@ -118,7 +118,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17888
 mod.toggleoptions = {"mark", "range", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80486 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80896 $"):sub(12, -3))
 mod.proximityCheck = function( unit )
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

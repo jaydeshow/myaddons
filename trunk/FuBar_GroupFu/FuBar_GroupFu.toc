@@ -22,5 +22,6 @@ GroupFuLocal-zhTW.lua
 GroupFuLocal-zhCN.lua
 GroupFuLocal-esES.lua
 GroupFuLocal-frFR.lua
+GroupFuLocal-ruRU.lua
 GroupFu.lua
 
