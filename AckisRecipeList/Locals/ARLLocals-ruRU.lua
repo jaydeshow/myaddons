@@ -5,8 +5,8 @@ ARLLocals-ruRU.lua
 
 ruRU localization strings for Ackis Recipe List
 
-$Date: 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) $
-$Rev: 80812 $
+$Date: 2008-08-25 17:00:42 -0400 (Mon, 25 Aug 2008) $
+$Rev: 80948 $
 
 Original translated by: 
 Currently maintaince by: 
@@ -119,7 +119,7 @@ L["WORLD_DROP_TOGGLE"] = "Patterns that are World Drops should be included in th
 -- Sorting options
 L["Name"] = true
 L["Skill"] = true
-L["Aquisition"] = true
+L["Acquisition"] = true
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "Include %s faction."

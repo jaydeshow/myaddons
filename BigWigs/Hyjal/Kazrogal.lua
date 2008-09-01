@@ -106,7 +106,7 @@ L:RegisterTranslations("ruRU", function() return {
 	mark = "Метка Каз'рогала ",
 	mark_desc = "Отображения таймера Метки Каз'рогала.",
 	mark_bar = "След Матка (%d)",
-	mark_warn = "Метка за 5 сек!",
+	mark_warn = "Метка через 5 сек!",
 } end )
 
 ----------------------------------
@@ -118,7 +118,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17888
 mod.toggleoptions = {"mark", "range", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80896 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 mod.proximityCheck = function( unit )
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

@@ -217,7 +217,7 @@ do
 	end
 end
 
-z.version = tonumber(string.sub("$Revision: 80585 $", 12, -3)) or 1
+z.version = tonumber(string.sub("$Revision: 81185 $", 12, -3)) or 1
 z.versionCompat = 65478
 z.title = L["TITLE"]
 z.titleColour = L["TITLECOLOUR"]
@@ -4695,12 +4695,12 @@ do
 		if (IsAddOnLoaded("Cellular") and Cellular) then
 			self:Hook(Cellular, "CHAT_MSG_WHISPER", function()
 				if (self:MatchChat(event, arg1)) then return end
-				return self.hooks[Cellular]["CHAT_MSG_WHISPER"](Cellular)
+				return self.hooks[Cellular]["CHAT_MSG_WHISPER"](Cellular,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12)
 			end,
 			true)
 			self:Hook(Cellular, "CHAT_MSG_WHISPER_INFORM", function()
 				if (self:MatchChat(event, arg1)) then return end
-				return self.hooks[Cellular]["CHAT_MSG_WHISPER_INFORM"](Cellular,arg1,arg2)
+				return self.hooks[Cellular]["CHAT_MSG_WHISPER_INFORM"](Cellular,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12)
 			end, true)
 		end
 
@@ -5061,12 +5061,14 @@ function z:SendClass(class, ...)
 	for unit, unitname, unitclass, subgroup, index in self:IterateRoster() do
 		if (unitclass == class and UnitIsConnected(unit)) then
 			local name, server = UnitName(unit)
-			if (server and server ~= "") then
-				if (self:IsInBattlegrounds()) then
-					self:SendCommMessage("WHISPER", format("%s-%s", name, server), ...)
+			if (name ~= UNKNOWN) then
+				if (server and server ~= "") then
+					if (self:IsInBattlegrounds()) then
+						self:SendCommMessage("WHISPER", format("%s-%s", name, server), ...)
+					end
+				else
+					self:SendCommMessage("WHISPER", name, ...)
 				end
-			else
-				self:SendCommMessage("WHISPER", name, ...)
 			end
 		end
 	end

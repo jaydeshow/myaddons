@@ -1,13 +1,13 @@
 --[[
 Name: LibDogTag-3.0
-Revision: $Rev: 78003 $
+Revision: $Rev: 81131 $
 Author: Cameron Kenneth Knight (ckknight@gmail.com)
 Website: http://www.wowace.com/
 Description: A library to provide a markup syntax
 ]]
 
 local MAJOR_VERSION = "LibDogTag-Unit-3.0"
-local MINOR_VERSION = tonumber(("$Revision: 78003 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 81131 $"):match("%d+")) or 0
 
 if MINOR_VERSION > _G.DogTag_Unit_MINOR_VERSION then
 	_G.DogTag_Unit_MINOR_VERSION = MINOR_VERSION
@@ -293,16 +293,12 @@ DogTag:AddEventHandler("Unit", "PLAYER_FOCUS_CHANGED", function(event, ...)
 	DogTag:FireEvent("UnitChanged", "focus")
 end)
 
-DogTag:AddEventHandler("Unit", "PLAYER_PET_CHANGED", function(event, ...)
-	refreshGUID("pet")
-	DogTag:FireEvent("UnitChanged", "pet")
-end)
-
 DogTag:AddEventHandler("Unit", "UNIT_TARGET", function(event, unit)
 	DogTag:FireEvent("UnitChanged", unit .. "target")
 end)
 
 DogTag:AddEventHandler("Unit", "UNIT_PET", function(event, unit)
+	if unit == "player" then unit = "" end
 	local unit_pet = unit .. "pet"
 	refreshGUID(unit_pet)
 	DogTag:FireEvent("UnitChanged", unit_pet)

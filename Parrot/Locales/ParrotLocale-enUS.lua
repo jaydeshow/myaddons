@@ -1,4 +1,4 @@
--- $Rev: 78847 $
+-- $Rev: 81000 $
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot")
 L:AddTranslations("enUS", function() return {
@@ -566,6 +566,7 @@ L_Cooldowns:AddTranslations("enUS", function() return {
 		["Divine Shield"] = true,
 		["%s Tree"] = true,
 		["Spell ready"] = true,
+		["Spell usable"] = true,
 		["<Spell name>"] = true,
 }end)
 

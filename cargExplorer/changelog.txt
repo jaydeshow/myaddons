@@ -1,0 +1,21 @@
+Version 1.1
+- clicking on the frame will start an auto-scan through all areas
+
+Version 1.0.5:
+- Bloodmyst Isle data update (+1 area)
+
+Version 1.0.4
+- hook fix implemented
+
+Version 1.0.3
+- Stonetalon Mountains data update (+1 area)
+
+Version 1.0.2
+- MozzFullWorldMap support added
+
+Version 1.0.1
+- Cartographer FogLight support added
+
+Version 1.0
+- initial release
+- log messages prior to this version and minor changes are at the svn repository

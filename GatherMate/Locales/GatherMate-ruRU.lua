@@ -206,7 +206,7 @@ We have a second translation list to handle just nodes, this needs to be in REVE
 local NL = LibStub("AceLocale-3.0"):NewLocale("GatherMateNodes","ruRU")
 if not NL then return end
 -- fish schools
-NL["Floating Wreckage"] = "Плавающие обломки"
+NL["Floating Wreckage"] = "Плавающий мусор"
 NL["Patch of Elemental Water"] = true -- нет данных
 NL["Floating Debris"] = true -- нет данных
 NL["Oil Spill"] = true -- нет данных
@@ -277,7 +277,7 @@ NL["Kingsblood"] = "Королевская кровь"
 NL["Liferoot"] = "Жизнекорень"
 NL["Fadeleaf"] = "Бледнолист"
 NL["Goldthorn"] = "Златошип"
-NL["Khadgar's Whisker"] = "Хадгаров ус"
+NL["Khadgar's Whisker"] = "Кадгаров ус"
 NL["Wintersbite"] = "Зимник"
 NL["Firebloom"] = "Огненный Цветок"
 NL["Purple Lotus"] = "Пурпурный лотос"

@@ -5,8 +5,8 @@ ARLLocals-zhTW.lua
 
 zhTW localization strings for Ackis Recipe List
 
-$Date: 2008-07-11 13:55:14 -0400 (Fri, 11 Jul 2008) $
-$Rev: 78247 $
+$Date: 2008-08-25 17:00:42 -0400 (Mon, 25 Aug 2008) $
+$Rev: 80948 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: apa1102, zhucc
@@ -94,7 +94,7 @@ L["HEALING_TOGGLE"] = "掃瞄中包含用於治療的配方。"
 -- Sorting options
 L["Name"] = "名稱"
 L["Skill"] = "技能"
-L["Aquisition"] = "獲取"
+L["Acquisition"] = "獲取"
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "包含%s陣營。"

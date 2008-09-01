@@ -161,7 +161,7 @@ L:RegisterTranslations("ruRU", function() return {
 
 	swarm = "Темная стая",
 	swarm_desc = "Таймеры перезарядки Темной стаи.",
-	swarm_message = "Стая! - След. за ~11сек",
+	swarm_message = "Стая! - Следущая через ~11сек",
 	swarm_bar = "~перезарядка Стаи",
 } end )
 
@@ -174,7 +174,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17808
 mod.toggleoptions = {"inferno", "icon", "swarm", "bosskill"}
-mod.revision = tonumber(("$Revision: 80486 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

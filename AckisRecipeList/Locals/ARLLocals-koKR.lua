@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-08-12 10:24:17 -0400 (Tue, 12 Aug 2008) $
-$Rev: 80274 $
+$Date: 2008-08-31 22:44:57 -0400 (Sun, 31 Aug 2008) $
+$Rev: 81209 $
 
 Original translated by: damjau
 Currently maintaince by: next96
@@ -30,6 +30,7 @@ L["Display"] = "보기"
 L["DISPLAY_OPTIONS"] = "보기 설정"
 L["DISPLAY_OPTIONS_LONG"] = "보기 설정"
 L["Filter"] = "필터링"
+L["Filters"] = "필터"
 L["FILTER_OPTIONS"] = "필터링 설정"
 L["FILTER_OPTIONS_LONG"] = "표시할 제조법 필터링에 관한 설정입니다."
 L["Reputation"] = "평판"
@@ -51,10 +52,12 @@ L["Sort"] = "정렬"
 L["SORT_OPTIONS"] = "제조법 정렬 방식을 설정합니다."
 L["SORT_OPTIONS_LONG"] = "표시되는 제조법의 정렬 방식에 관한 설정입니다."
 L["Profile"] = "프로필"
+L["Scan Recipes"] = "제조법 조사"
+L["Scans an open tradeskill for missing recipes."] = "전문기술창을 열어 빠진 제조법을 조사합니다."
+L["Text Dump"] = "텍스트 덤프"
+L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."] = "다른 클라이언트로부터 복사한 형식을 컴마 단위로 구분하여 표시합니다."
 
 -- Display Options
-L["Use GUI"] = "GUI 사용"
-L["GUI_TOGGLE"] = "GUI창을 사용합니다."
 L["Include Filtered"] = "필터링 포함"
 L["FILTERCOUNT_TOGGLE"] = "총 제조법의 숫자에서 필터링된 제조법 포함"
 L["Close GUI"] = "GUI 닫기"
@@ -113,11 +116,12 @@ L["Healing"] = "치유 아이템"
 L["HEALING_TOGGLE"] = "검색시에 치유 관련 아이템을 포함합니다."
 L["World Drop"] = "월드 드랍"
 L["WORLD_DROP_TOGGLE"] = "검색시에 월드 드랍 제조법을 포함합니다."
+L["MOB_DROP_TOGGLE"] = "검색시에 몹 드랍 제조법을 포함합니다."
 
 -- Sorting options
 L["Name"] = "이름" 
 L["Skill"] = "숙련도"
-L["Aquisition"] = "습득"
+L["Acquisition"] = "습득"
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "%s 평판 포함"
@@ -192,6 +196,51 @@ L["ContractAll"] = "- 모두"
 L["CONTRACT_TT"] = "모든 제조법을 축소표시합니다."
 L["Clear"] = "(X)"
 L["CLEAR_TT"] = "검색어를 삭제합니다."
+-- new GUI, ZJ 8/26/08
+L["General_TT"] = "클릭하면 일반 분류 설정을 할 수 있습니다."
+L["Obtain_TT"] = "클릭하면 획득 분류 설정을 할 수 있습니다."
+L["Binding_TT"] = "클릭하면 착용 분류 설정을 할 수 있습니다."
+L["Item_TT"] = "클릭하면 아이템 분류 설정을 할 수 있습니다."
+L["Player_TT"] = "클릭하면 플레이어 분류 설정을 할 수 있습니다."
+L["Reputation_TT"] = "클릭하면 평판 분류 설정을 할 수 있습니다."
+L["IBOE_TT"] = "착용시 귀속 제작아이템을 검색에 포함합니다."
+L["IBOE"] = "착용시 귀속 제작아이템"
+L["IBOP_TT"] = "획득시 귀속 제작아이템을 검색에 포함합니다."
+L["IBOP"] = "획득시 귀속 제작아이템"
+L["RBOE_TT"] = "사용시 귀속 제조법을 검색에 포함합니다."
+L["RBOE"] = "사용시 귀속 제조법"
+L["RBOP_TT"] = "획득시 귀속 제조법을 검색에 포함합니다."
+L["RBOP"] = "획득시 귀속 제조법"
+L["ArmorAll_TT"] = "방어구를 검색에 포함합니다."
+L["ArmorNone_TT"] = "방어구를 검색에서 제외합니다."
+L["WeaponAll_TT"] = "모든 무기를 검색에 포함합니다."
+L["WeaponNone_TT"] = "무기를 검색에서 제외합니다."
+L["Weapon1H_TT"] = "한손 무기를 검색에 포함합니다."
+L["Weapon2H_TT"] = "한손 무기를 검색에서 제외합니다."
+L["WeaponDagger_TT"] = "단검을 검색에 포함합니다."
+L["WeaponAxe_TT"] = "도끼를 검색에 포함합니다."
+L["WeaponMace_TT"] = "둔기를 검색에 포함합니다."
+L["WeaponSword_TT"] = "도검을 검색에 포함합니다."
+L["WeaponPolearm_TT"] = "장창을 검색에 포함합니다."
+L["WeaponThrown_TT"] = "투척무기를 검색에 포함합니다."
+L["WeaponBow_TT"] = "활을 검색에 포함합니다."
+L["WeaponCrossbow_TT"] = "석궁을 검색에 포함합니다."
+L["WeaponStaff_TT"] = "지팡이를 검색에 포함합니다."
+L["WeaponAmmo_TT"] = "탄약을 검색에 포함합니다."
+L["WeaponWand_TT"] = "마법봉을 검색에 포함합니다."
+L["MOB_DROP_TT"] = "몹드랍을 검색에 포함합니다."
+-- ZJ 8/28/08
+L["CLOAK_TOGGLE"] = "망토를 검색에 포함합니다."
+L["Cloak"] = "망토"
+L["NECKLACE_TOGGLE"] = "목걸이를 검색에 포함합니다."
+L["Necklace"] = "목걸이"
+L["RING_TOGGLE"] = "반지를 검색에 포함합니다."
+L["Ring"] = "반지"
+L["TRINKET_TOGGLE"] = "장신구를 검색에 포함합니다."
+L["Trinket"] = "장신구"
+L["Wand"] = "마법봉"
+L["OLD_WORLD_REP_TT"] = "클릭하면 지난 평판 분류를 설정할 수 있습니다."
+L["BC_REP_TT"] = "클릭하면 불타는 성전 평판 분류를 설정할 수 있습니다."
 
 -- Tooltip Text
 L["Scan Skills Long"] = "ARL에서 빠진 제조법 검색"

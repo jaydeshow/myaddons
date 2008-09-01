@@ -242,6 +242,38 @@ L:RegisterTranslations("deDE", function() return {
 	--gravity_spawned = "Schwerkraftkugel spawned!",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+    darkness = "Тьма",
+    darkness_desc = "Предупреждать и попавших во Тьму",
+    darkness_message = "Тьма сгущается вокруг %s",
+    darkness_next = "Прилив Тьмы",
+    darkness_soon = "Тьма приближается, у Вас есть 5 секунд!",
+
+    void = "Часовой бездны",
+    void_desc = "Предупреждать о появлении Часового Бездны.",
+    void_next = "%d-й Часовой Бездны",
+    void_soon = "%d-й Часовой Бездны явится через 5 секунд!",
+
+    humanoid = "Воины клана Темного Меча",
+    humanoid_desc = "Предупреждать о приходе воинов клана Темного Меча.",
+    humanoid_next = "Воины Темного Меча (%d)",
+    humanoid_soon = "%d-й отряд Воинов клана Темного Меча прибудет через 5 секунд!",
+
+    fiends = "Исчадие тьмы",
+    fiends_desc = "Предупреджать о призыве Исчадий Тьмы.",
+    fiends_message = "Призваны Исчадия Тьмы!",
+
+    phase = "Фазы",
+    phase_desc = "Предупреждать о смене фаз.",
+    phase2_message = "Вторая фаза!",
+
+    gravity = "Гравитационные Шары",
+    gravity_desc = "Предупреждать Гравитационных Шарах.",
+    gravity_next = "Следующий Гравитационный Шар",
+    gravity_soon = "Приближается Гравитационный Шар!",
+    gravity_spawned = "Рождается Гравитационный Шар!",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -251,7 +283,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.guid = 25840
 mod.toggleoptions = {"phase", -1, "darkness", "void", "humanoid", "fiends", "gravity", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 76755 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81072 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

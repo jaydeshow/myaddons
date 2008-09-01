@@ -1,5 +1,6 @@
 local _G = getfenv(0)
 local GetCursorPosition = GetCursorPosition
+local function nada() end
 
 -- someone wanted the feature to hide the dressing rooms' backgrounds
 local function ToggleBG(notog)
@@ -74,8 +75,8 @@ local function Apply(model, w, h, x, y, sigh, norotate)
 	
 	gmodel:EnableMouse(true)
 	gmodel:EnableMouseWheel(true)
-	gmodel.pMouseDown = gmodel:GetScript("OnMouseDown") or function() end
-	gmodel.pMouseUp = gmodel:GetScript("OnMouseUp") or function() end
+	gmodel.pMouseDown = gmodel:GetScript("OnMouseDown") or nada
+	gmodel.pMouseUp = gmodel:GetScript("OnMouseUp") or nada
 	gmodel:SetScript("OnMouseDown", OnMouseDown)
 	gmodel:SetScript("OnMouseUp", OnMouseUp)
 	gmodel:SetScript("OnMouseWheel", OnMouseWheel)
@@ -190,3 +191,7 @@ Apply("TabardModel", nil, nil, nil, nil, "TabardCharacterModel")
 Apply("PetModelFrame")
 Apply("PetStableModel")
 PetPaperDollPetInfo:SetFrameStrata("HIGH")
+
+if CompanionModelFrame then
+	Apply("CompanionModelFrame")
+end

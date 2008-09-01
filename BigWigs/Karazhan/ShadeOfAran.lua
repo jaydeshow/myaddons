@@ -221,7 +221,7 @@ L:RegisterTranslations("ruRU", function() return {
 	adds = "Элементали",
 	adds_desc = "Предупреждать о появлении водных элементалей.",
 	adds_message = "Надвигаются Элементали!",
-	adds_warning = "Скоро Элементали",
+	adds_warning = "Скоро Элементали!",
 	adds_bar = "Исчезновение Элементалей",
 
 	drink = "Выпивание",
@@ -255,7 +255,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 16524
 mod.toggleoptions = {"adds", "drink", -1, "blizzard", "pull", "flame", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

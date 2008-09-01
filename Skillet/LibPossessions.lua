@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 
 local MAJOR_VERSION = "LibPossessions"
-local MINOR_VERSION = tonumber(("$Revision: 72011 $"):match("(%d+)"))
+local MINOR_VERSION = tonumber(("$Revision: 81029 $"):match("(%d+)"))
 local COMMON_API    = "Common API" -- do not localize
 
 -- Ace addons will store realm data under "realm - faction"
@@ -333,6 +333,26 @@ local function arkinventory_GetItemCount(itemid)
 
 end
 
+-- ========================================================================
+--                        Baggins_AnywhereBags Methods
+-- ========================================================================
+
+local baggins_GetItemCount
+do
+	local warned
+	function baggins_GetItemCount(itemid)
+		if BagginsAnywhereBags.GetItemCount then
+			return BagginsAnywhereBags:GetItemCount(itemid)	+ GetItemCount(itemid)	
+		end
+		
+		if not warned then
+			ChatFrame1:AddMessage(MAJOR_VERSION .. ": Baggins_AnywhereBags needs to be upgraded to be able to count items on alts. (BagginsAnywhereBags.GetItemCount is missing)")
+			warned = true
+		end
+		
+		return 0
+	end
+end
 
 -- ========================================================================
 --                         Library Initialization
@@ -344,36 +364,23 @@ if not LibPossessions then
     return
 end
 
-local oldLib
-if oldMinor then
-    -- Another (older) version of LibPossessions has been loaded,
-    -- stuff all our methods and data into that library.
-    oldLib = {}
-    for k, v in pairs(LibPossessions) do
-        oldLib[k] = v
-        LibPossessions[k] = nil
-    end
-    setmetatable(oldLib, getmetatable(LibPossessions))
-    setmetatable(LibPossessions, nil)
-end
-
 -- And put the newly created/discovered library into the global namespace
 _G.LibPossessions = LibPossessions
 
 -- Need a frame to register event handler's with
-LibPossessions.frame = (oldLib and oldLib.frame) or (_G.CreateFrame("Frame"))
-local frame = LibPossessions.frame
+local frame = LibPossessions.frame or (_G.CreateFrame("Frame"))
+LibPossessions.frame = frame
 
 -- And a place to cache item lookups, for speed.
-LibPossessions.cache = (oldLib and oldLib.cache) or ( {n = 0} )
-local cache = LibPossessions.cache
+local cache = LibPossessions.cache or ( {n = 0} )
+LibPossessions.cache = cache
 
 -- And the version of the library
-LibPossessions.version = (oldLib and oldLib.version) or (MAJOR_VERSION .. "-" .. MINOR_VERSION)
+LibPossessions.version = MAJOR_VERSION .. "-" .. MINOR_VERSION
 
 -- @table supportedAddons
 -- @brief A list of the inventory addons supported by this library
-LibPossessions.supportedAddons = (oldLib and oldLib.supportedAddons) or {
+LibPossessions.supportedAddons = {
     -- GetInventoryCount might be nil and that would remove the entry
     -- [COMMON_API]                = (GetInventoryCount or ""),
     ["CharacterInfoStorage"]    = characterinfostorage_GetItemCount,
@@ -384,10 +391,11 @@ LibPossessions.supportedAddons = (oldLib and oldLib.supportedAddons) or {
     ["Bagnon_Forever"]          = bagnondb_GetItemCount,
     ["OneView"]                 = oneview_GetItemCount, -- Requires OneBag and OneBank as well.
     ["ArkInventory"]            = arkinventory_GetItemCount,
+	["Baggins_AnywhereBags"]	= baggins_GetItemCount,
 }
 
 -- Currently selected inventory addon
-LibPossessions.inventoryAddon = oldLib and oldLib.inventoryAddon or nil
+LibPossessions.inventoryAddon = LibPossessions.inventoryAddon or nil
 
 -- Tracks when the number of items on hand changes. This invalidates our local cache
 frame:RegisterEvent("BAG_UPDATE")

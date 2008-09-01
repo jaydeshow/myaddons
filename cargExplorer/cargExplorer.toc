@@ -1,0 +1,15 @@
+## Interface: 20400
+## Title: cargExplorer
+## Title-zhCN: 地图探索 cargExplorer
+## Title-zhTW: 地圖探索 cargExplorer
+## Notes: Shows the percentage you discovered the map
+## Notes-zhCN: 显示地图探索完成度
+## Notes-zhTW: 顯示地圖探索完成度
+## Author: Cargor
+## Version: 1.1
+## SavedVariablesPerCharacter: ceData
+
+embeds.xml
+
+core.lua
+data.lua

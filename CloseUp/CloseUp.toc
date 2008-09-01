@@ -2,7 +2,7 @@
 ## Title: CloseUp
 ## Notes: Adds model viewing flexibility
 ## Author: TotalPackage
-## Version: 2.4.002
+## Version: 2.4.003
 ## X-Category: Interface Enhancements
 ## SavedVariables: CU_HideBG
 

@@ -117,7 +117,7 @@ L:RegisterTranslations("ruRU", function() return {
 	spawns = "Таймер появления",
 	spawns_desc = "Таймеры активации персонажей.",
 	spawns_bar = "%s атакован!",
-	spawns_warning = "%s за 5 сек",
+	spawns_warning = "%s через 5 сек",
 
 	light = "Цепная молния",
 	light_desc = "Предупреждать о выполнении Цепной молнии.",
@@ -133,7 +133,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = {roar, tinhead, strawman, dorothee}
 mod.guid = 18168
 mod.toggleoptions = {"spawns", "light", "bosskill"}
-mod.revision = tonumber(("$Revision: 80470 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

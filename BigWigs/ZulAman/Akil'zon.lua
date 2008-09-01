@@ -142,7 +142,7 @@ L:RegisterTranslations("esES", function() return {
 -- Translated by wow.playhard.ru translators
 L:RegisterTranslations("ruRU", function() return {
 	engage_trigger = "Я хищник! Ты – моя добыча!",
-	engage_message = "Контакт с %s - Буря за ~55сек!",
+	engage_message = "Контакт с %s - Буря через ~55сек!",
 
 	elec = "Электрическая буря",
 	elec_desc = "Предупреждать на ком Электрическая буря.",
@@ -167,7 +167,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23574
 mod.toggleoptions = {"elec", "ping", "icon", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

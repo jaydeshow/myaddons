@@ -176,7 +176,7 @@ L:RegisterTranslations("ruRU", function() return {
 	weak = "Ослабление",
 	weak_desc = "Предупреждение о Ослабление статов.",
 	weak_message = "Ослабление на ~45сек!",
-	weak_warning1 = "Ослабление исчезнет за ~5сек!",
+	weak_warning1 = "Ослабление исчезнет через ~5сек!",
 	weak_warning2 = "Ослабление прошло!",
 	weak_bar = "~Ослабление исчезает",
 } end )
@@ -190,7 +190,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 15688
 mod.toggleoptions = {"weak", "enrage", -1, "sacrifice", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

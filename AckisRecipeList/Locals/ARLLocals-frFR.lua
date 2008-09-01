@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-08-23 04:29:52 -0400 (Sat, 23 Aug 2008) $
-$Rev: 80837 $
+$Date: 2008-08-29 16:43:38 -0400 (Fri, 29 Aug 2008) $
+$Rev: 81111 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher
@@ -28,6 +28,7 @@ L["Display"] = "Affichage"
 L["DISPLAY_OPTIONS"] = "Options d'affichage"
 L["DISPLAY_OPTIONS_LONG"] = "Vous permet de personnaliser le comportement de l'IUG."
 L["Filter"] = "Filtrage"
+L["Filters"] = "Filtres"
 L["FILTER_OPTIONS"] = "Options de filtrage"
 L["FILTER_OPTIONS_LONG"] = "Vous permet de personnaliser les recettes qui sont filtrées."
 L["Reputation"] = "Réputation"
@@ -55,8 +56,6 @@ L["Text Dump"] = "Transfert"
 L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."] = "Affiche toutes les recettes dans un format de valeurs séparées par des virgules qui peut être copié et collé dans un autre client."
 
 -- Display Options
-L["Use GUI"] = "Utiliser l'IUG"
-L["GUI_TOGGLE"] = "Utilise ou non l'IUG."
 L["Include Filtered"] = "Compter les filtrés"
 L["FILTERCOUNT_TOGGLE"] = "Intègre les recettes filtrées dans le nombre total des recettes."
 L["Close GUI"] = "Fermer l'IUG"
@@ -114,12 +113,13 @@ L["TANKING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabr
 L["Healing"] = "Soigneur"
 L["HEALING_TOGGLE"] = "Intègre ou non les recettes avec lesquelles on peut fabriquer des objets pour soigneur dans l'analyse."
 L["World Drop"] = "Butin mondial"
-L["WORLD_DROP_TOGGLE"] = "Intègre ou non les recettes trouvés aléatoirement sur les monstres d'une même fourchette de niveaux dans l'analyse."
+L["WORLD_DROP_TOGGLE"] = "Intègre ou non les recettes trouvées dans le monde dans l'analyse."
+L["MOB_DROP_TOGGLE"] = "Intègre ou non les recettes trouvées aléatoirement sur les monstres d'une même fourchette de niveaux dans l'analyse."
 
 -- Sorting options
 L["Name"] = "Nom"
 L["Skill"] = "Compétence"
-L["Aquisition"] = "Acquisition"
+L["Acquisition"] = "Acquisition"
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "Intègre ou non les recettes spécifiques à la faction %s."
@@ -194,6 +194,51 @@ L["ContractAll"] = "- Tous"
 L["CONTRACT_TT"] = "Minimise toutes les recettes listées ci-dessous."
 L["Clear"] = "(X)"
 L["CLEAR_TT"] = "Efface le texte de la boîte de saisie de la recherche."
+-- new GUI, ZJ 8/26/08
+L["General_TT"] = "Cliquez pour configurer les options générales de filtration."
+L["Obtain_TT"] = "Cliquez pour configurer les options de filtration des obtentions."
+L["Binding_TT"] = "Cliquez pour configurer les options de filtration des liens."
+L["Item_TT"] = "Cliquez pour configurer les options de filtration des objets."
+L["Player_TT"] = "Cliquez pour configurer les options de filtration des joueurs."
+L["Reputation_TT"] = "Cliquez pour configurer les options de filtration des réputations."
+L["IBOE_TT"] = "Les objets liés quand équipés seront intégrés dans l'analyse."
+L["IBOE"] = "Objet LqE"
+L["IBOP_TT"] = "Les objets fabriqués liés quand ramassés seront intégrés dans l'analyse"
+L["IBOP"] = "Objet LqR"
+L["RBOE_TT"] = "Les recettes liées quand équipées seront intégrées dans l'analyse."
+L["RBOE"] = "Recette LqE"
+L["RBOP_TT"] = "Les recettes liées quand ramassées seront intégrées dans l'analyse."
+L["RBOP"] = "Recette LqR"
+L["ArmorAll_TT"] = "Intègre toutes les recettes permettant de fabriquer des pièces d'armure dans l'analyse"
+L["ArmorNone_TT"] = "N'intègre aucune recette permettant de fabriquer des pièces d'armure dans l'analyse."
+L["WeaponAll_TT"] = "Intègre toutes les recettes permettant de fabriquer des armes dans l'analyse."
+L["WeaponNone_TT"] = "N'intégre aucune recette permettant de fabriquer des armes dans l'analyse."
+L["Weapon1H_TT"] = "Intègre les recettes permettant de fabriquer des armes à 1 main dans l'analyse."
+L["Weapon2H_TT"] = "Intègre les recettes permettant de fabriquer des armes à 2 mains dans l'analyse."
+L["WeaponDagger_TT"] = "Intègre les recettes permettant de fabriquer des dagues dans l'analyse."
+L["WeaponAxe_TT"] = "Intègre les recettes permettant de fabriquer des haches dans l'analyse."
+L["WeaponMace_TT"] = "Intègre les recettes permettant de fabriquer des masses dans l'analyse."
+L["WeaponSword_TT"] = "Intègre les recettes permettant de fabriquer des épées dans l'analyse."
+L["WeaponPolearm_TT"] = "Intègre les recettes permettant de fabriquer des armes d'hast dans l'analyse."
+L["WeaponThrown_TT"] = "Intègre les recettes permettant de fabriquer des armes de jet dans l'analyse."
+L["WeaponBow_TT"] = "Intègre les recettes permettant de fabriquer des arcs dans l'analyse."
+L["WeaponCrossbow_TT"] = "Intègre les recettes permettant de fabriquer des arbalètes dans l'analyse."
+L["WeaponStaff_TT"] = "Intègre les recettes permettant de fabriquer des bâtons dans l'analyse."
+L["WeaponAmmo_TT"] = "Intègre les recettes permettant de fabriquer des munitions dans l'analyse."
+L["WeaponWand_TT"] = "Intègre les recettes permettant de fabriquer des baguettes dans l'analyse."
+L["MOB_DROP_TT"] = "Intègre les recettes tombant sur les montres dans l'analyse."
+-- ZJ 8/28/08
+L["CLOAK_TOGGLE"] = "Intègre les recettes permettant de fabriquer des capes dans l'analyse."
+L["Cloak"] = "Cape"
+L["NECKLACE_TOGGLE"] = "Intègre les recettes permettant de fabriquer des colliers dans l'analyse."
+L["Necklace"] = "Collier"
+L["RING_TOGGLE"] = "Intègre les recettes permettant de fabriquer des anneaux dans l'analyse."
+L["Ring"] = "Anneau"
+L["TRINKET_TOGGLE"] = "Intègre les recettes permettant de fabriquer des bijoux dans l'analyse."
+L["Trinket"] = "Bijou"
+L["Wand"] = "Baguette"
+L["OLD_WORLD_REP_TT"] = "Cliquez pour configurer les options de filtration des réputations de WoW classique."
+L["BC_REP_TT"] = "Cliquez pour configurer les options de filtration des réputations de Burning Crusade."
 
 -- Tooltip Text
 L["Scan Skills Long"] = "Analyse les recettes manquantes à l'aide de Ackis Recipe List."

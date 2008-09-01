@@ -238,7 +238,7 @@ L:RegisterTranslations("ruRU", function() return {
 
 	grasp = "Хватка",
 	grasp_desc = "Grasp warnings and timers.",
-	grasp_message = "Прах земной - Раскалывание за ~10сек!",
+	grasp_message = "Прах земной - Раскалывание через ~10сек!",
 	grasp_warning = "Скоро Прах земной",
 	grasp_bar = "~Прах земной",
 
@@ -265,7 +265,7 @@ mod.otherMenu = "Outland"
 mod.enabletrigger = boss
 mod.guid = 19044
 mod.toggleoptions = {"grasp", "grow", -1, "cavein", "silence", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 mod.proximityCheck = function(unit)
 	for k, v in pairs(bandages) do
 		if IsItemInRange(k, unit) == 1 then
