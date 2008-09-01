@@ -318,10 +318,10 @@ L:RegisterTranslations("ruRU", function() return {
 
 	whirlwind = "Вихрь",
 	whirlwind_desc = "Warn when Maulgar gains Whirlwind.",
-	whirlwind_message = "Молгар - Вихрь за 15сек!",
+	whirlwind_message = "Молгар - Вихрь через 15сек!",
 	whirlwind_bar = "Вихрь",
 	whirlwind_nextbar = "~перезарядка Вихря",
-	whirlwind_warning1 = "Контакт с Молгаром - Вихрь за ~50сек!",
+	whirlwind_warning1 = "Контакт с Молгаром - Вихрь через ~50сек!",
 	whirlwind_warning2 = "Скоро Вихрь!",
 
 	flurry = "Шквал",
@@ -344,7 +344,7 @@ mod.otherMenu = "Outland"
 mod.enabletrigger = {boss, mage, lock, priest, shaman}
 mod.guid = 18831
 mod.toggleoptions = {"shield", "spellshield", "heal", -1, "summon", -1, "whirlwind", "flurry", "smash", "bosskill"}
-mod.revision = tonumber(("$Revision: 80469 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

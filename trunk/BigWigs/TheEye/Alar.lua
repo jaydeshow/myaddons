@@ -164,8 +164,8 @@ L:RegisterTranslations("ruRU", function() return {
 	--Renamed from Meteor to Dive Bomb as of Patch 2.3.0
 	meteor = "Пикирующая бомба",
 	meteor_desc = "Таймеры Пикирующей бомбы.",
-	meteor_warning = "Пикирующая бомба за ~5сек",
-	meteor_message = "Пикирующая бомба! след.за ~52сек",
+	meteor_warning = "Пикирующая бомба через ~5сек",
+	meteor_message = "Пикирующая бомба! следующая через ~52сек",
 	meteor_nextbar = "~Пикирующая бомба",
 
 	flamepatch = "Язык огня на Вас",
@@ -191,7 +191,7 @@ mod.otherMenu = "The Eye"
 mod.enabletrigger = boss
 mod.guid = 19514
 mod.toggleoptions = {"meteor", "flamepatch", -1, "armor", "icon", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 80486 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

@@ -1,7 +1,9 @@
-## Interface: 20400
+﻿## Interface: 20400
 ## Title: InFlight
+## Notes-ruRU: Таймеры полётов - местонахождение/пути полетов.
 ## Notes: Statusbar timers for your flightpaths.
 ## Author: TotalPackage
+## Author-ruRU: TotalPackage (Перевод: StingerSoft)
 ## Version: 2.4.013
 ## X-Website: http://www.wowace.com/wiki/InFlight
 

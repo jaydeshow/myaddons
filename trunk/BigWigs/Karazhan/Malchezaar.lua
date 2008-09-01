@@ -300,9 +300,9 @@ L:RegisterTranslations("ruRU", function() return {
 
 	enfeeble = "Ослабление",
 	enfeeble_desc = "Показывает перерывы для слабости.",
-	enfeeble_message = "Ослабление! следующие 30сек",
-	enfeeble_warning1 = "Ослабление за 5сек!",
-	enfeeble_warning2 = "Ослабление за 10сек!",
+	enfeeble_message = "Ослабление! следующие через 30сек",
+	enfeeble_warning1 = "Ослабление через 5сек!",
+	enfeeble_warning2 = "Ослабление через 10сек!",
 	enfeeble_bar = "Ослабление",
 	enfeeble_nextbar = "Следующее Ослабление",
 	enfeeble_you = "Вы поражены Ослаблением.",
@@ -334,7 +334,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 15690
 mod.toggleoptions = {"phase", "enfeeble", "nova", -1, "infernals", "despawn", "bosskill"}
-mod.revision = tonumber(("$Revision: 80206 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81072 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

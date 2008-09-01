@@ -175,9 +175,9 @@ L:RegisterTranslations("ruRU", function() return {
 
 	weaktime = "Перезарядка Ослабления",
 	weaktime_desc = "Полоса перезарядки до следующего ослабления.",
-	weaktime_message1 = "Прилив сил за ~10 секунд",
-	weaktime_message2 = "Прилив сил за ~30 секунд",
-	weaktime_message3 = "Прилив сил за ~70 секунд",
+	weaktime_message1 = "Прилив сил через ~10 секунд",
+	weaktime_message2 = "Прилив сил через ~30 секунд",
+	weaktime_message3 = "Прилив сил через ~70 секунд",
 	weaktime_bar = "~Перезарядка Прилива сил",
 } end )
 
@@ -190,7 +190,7 @@ mod.zonename = BZ["Karazhan"]
 mod.enabletrigger = boss
 mod.guid = 15691
 mod.toggleoptions = {"weaken", "weaktime", "berserk", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80409 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 
 ------------------------------

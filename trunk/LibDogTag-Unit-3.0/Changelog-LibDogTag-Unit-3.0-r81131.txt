@@ -1,0 +1,62 @@
+------------------------------------------------------------------------
+r81131 | ellipsis | 2008-08-30 11:54:17 -0400 (Sat, 30 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.lua
+
+LibDogTag-Unit-3.0: Continuing the crusade against PLAYER_PET_CHANGED, one addon at a time. Potential bugfixings but likely nothing significant.
+------------------------------------------------------------------------
+r81020 | ckknight | 2008-08-26 18:36:24 -0400 (Tue, 26 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Auras.lua
+
+LibDogTag-Unit-3.0 - Simplify some of the Aura code so that it dispatches less events. This will cause any aura-based tags to update when the unit's auras update, which although it may cause more tags to update, it simplifies so much of the event dispatch logic that it is likely worthwhile.
+------------------------------------------------------------------------
+r80953 | ckknight | 2008-08-25 18:40:20 -0400 (Mon, 25 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Auras.lua
+
+LibDogTag-Unit-3.0 - Change the update time for aura events to be longer.
+------------------------------------------------------------------------
+r80858 | shefki | 2008-08-23 16:12:38 -0400 (Sat, 23 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Misc.lua
+
+LibDogTag-Unit-3.0: Fix small mistake I made adding WoTLK ComboPoint compatability in r80794.
+
+------------------------------------------------------------------------
+r80794 | shefki | 2008-08-22 05:35:42 -0400 (Fri, 22 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Misc.lua
+
+LibDogTag-Unit-3.0:
+  - Add forward compatability for Wrath API change in GetComboPoints()
+
+------------------------------------------------------------------------
+r80530 | 7destiny | 2008-08-16 05:02:42 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
+
+LibDogTag-Unit-3.0:
+- fix koKR
+------------------------------------------------------------------------
+r80529 | 7destiny | 2008-08-16 04:55:49 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
+
+LibDogTag-Unit-3.0:
+- fix koKR
+------------------------------------------------------------------------
+r80527 | 7destiny | 2008-08-16 03:31:08 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
+
+LibDogTag-Unit-3.0:
+- koKR Update
+------------------------------------------------------------------------
+r80518 | ckknight | 2008-08-16 01:41:39 -0400 (Sat, 16 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Power.lua
+   M /trunk/LibDogTag-Unit-3.0/Localization/enUS.lua
+
+LibDogTag-Unit-3.0 - add runic power capability.
+------------------------------------------------------------------------

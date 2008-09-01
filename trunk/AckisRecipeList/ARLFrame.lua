@@ -5,12 +5,13 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-08-22 21:21:25 -0400 (Fri, 22 Aug 2008) $
-$Rev: 80824 $
+$Date: 2008-09-01 01:21:33 -0400 (Mon, 01 Sep 2008) $
+$Rev: 81210 $
 
 ****************************************************************************************
 ]]--
 
+local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
 local L			= LibStub("AceLocale-3.0"):GetLocale("Ackis Recipe List")
 
 local addon = AckisRecipeList
@@ -20,6 +21,27 @@ local ipairs = ipairs
 local tinsert = tinsert
 local CraftIsPetTraining = CraftIsPetTraining
 
+-- used by our frame to maintain the list that will be displayed. will be wiped and recreated
+-- anytime CreateFrame is used.
+addon.DisplayStrings = {}
+
+-- Some variables I want to use in creating the GUI later... (ZJ 8/26/08)
+local ExpButtonText = {
+	L["General"],		-- 1
+	L["Obtain"],		-- 2
+	L["Binding"],		-- 3
+	L["Item"],			-- 4
+	L["Player"],		-- 5
+	L["Reputation"]		-- 6
+}
+local ExpButtonTT = {
+	L["General_TT"],	-- 1
+	L["Obtain_TT"],		-- 2
+	L["Binding_TT"],	-- 3
+	L["Item_TT"],		-- 4
+	L["Player_TT"],		-- 5
+	L["Reputation_TT"]	-- 6
+}
 -- Prototype: http://i30.tinypic.com/2hoxncl.jpg
 -- I want to turn the GUI into that, but prettier... most functionality is in already, all the tables etc are created, just need to actually use the information now.
 
@@ -48,7 +70,7 @@ local function OnClickExpandRecipe()
 		local RecipeText = nil
 
 		local sorttype = addon.db.profile.sorting
-		if (sorttype == "Skill") or (sorttype == "Aquisition") then
+		if (sorttype == "Skill") or (sorttype == "Acquisition") then
 			--RecipeText = string.match(this:GetText(), "|c.*%[.*%]|r %- |c%x*(.*)|r")
 			RecipeText = string.match(this:GetText(), "%- |c%x%x%x%x%x%x%x%x(.*)|r$")
 		elseif (sorttype == "Name") then
@@ -175,7 +197,7 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 
 			local sorttype = addon.db.profile.sorting
 
-			if (sorttype == "Skill") or (sorttype == "Aquisition") then
+			if (sorttype == "Skill") or (sorttype == "Acquisition") then
 				if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
 					temprecipetext = addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
 				else
@@ -367,10 +389,216 @@ function addon:TooltipDisplay( this, textLabel )
 	)
 end
 
-function addon.filterSwitch( val )
+function addon.numFilters ( )
+	local total = 0
+	local active = 0
+
+	for i = 1, addon.MaxFilterIndex do
+		if ( ( addon.FilterValueMap[i].svroot == "disabled" ) or
+			 ( addon.FilterValueMap[i].svroot == "special case handler" ) ) then
+			-- ignore these filters in the totals
+		elseif ( addon.FilterValueMap[i].svroot[ addon.FilterValueMap[i].svval ] == true ) then
+			active = active + 1
+			total = total + 1
+		else
+			total = total + 1
+		end
+	end
+	return active, total
 end
 
-function addon.ToggleFilters()
+function addon.resetTitle( )
+	-- reset the frame title line
+	local myTitle = ""
+	if ( addon.Frame._Expanded == true ) then
+		local aFil, tFil = addon.numFilters()
+		myTitle = addon.ARLTitle .. " - " .. addon.CurrentProfession ..
+			" (" .. aFil .. "/" .. tFil .. " " .. L["Filters"] .. ")"
+	else
+		myTitle = addon.ARLTitle .. " - " .. addon.CurrentProfession
+	end
+--	addon.Frame.HeadingText:SetText( addon:White( myTitle ) )
+	addon.Frame.HeadingText:SetText( addon:Yellow( myTitle ) )
+end
+
+function addon.filterSwitch( val )
+	-- This function is the all-encompassing checkbox handler for the ZJGUI
+
+	-- Special cases first, then general case
+	if ( val == 19 ) then
+		-- Armor "All" checkbox
+		if ( ARL_ArmorAllCB:GetChecked( ) ) then
+			addon.db.profile.filters.item.armor.cloth = true
+			addon.db.profile.filters.item.armor.leather = true
+			addon.db.profile.filters.item.armor.mail = true
+			addon.db.profile.filters.item.armor.plate = true
+			addon.db.profile.filters.item.armor.cloak = true
+			addon.db.profile.filters.item.armor.necklace = true
+			addon.db.profile.filters.item.armor.ring = true
+			addon.db.profile.filters.item.armor.trinket = true
+			ARL_ArmorClothCB:SetChecked( true )
+			ARL_ArmorLeatherCB:SetChecked( true )
+			ARL_ArmorMailCB:SetChecked( true )
+			ARL_ArmorPlateCB:SetChecked( true )
+			ARL_ArmorCloakCB:SetChecked( true )
+			ARL_ArmorNecklaceCB:SetChecked( true )
+			ARL_ArmorRingCB:SetChecked( true )
+			ARL_ArmorTrinketCB:SetChecked( true )
+			ARL_ArmorNoneCB:SetChecked( false )
+		end
+	elseif ( val == 20 ) then
+		-- Armor "None" checkbox
+		if ( ARL_ArmorNoneCB:GetChecked( ) ) then
+			addon.db.profile.filters.item.armor.cloth = false
+			addon.db.profile.filters.item.armor.leather = false
+			addon.db.profile.filters.item.armor.mail = false
+			addon.db.profile.filters.item.armor.plate = false
+			addon.db.profile.filters.item.armor.cloak = false
+			addon.db.profile.filters.item.armor.necklace = false
+			addon.db.profile.filters.item.armor.ring = false
+			addon.db.profile.filters.item.armor.trinket = false
+			ARL_ArmorClothCB:SetChecked( false )
+			ARL_ArmorLeatherCB:SetChecked( false )
+			ARL_ArmorMailCB:SetChecked( false )
+			ARL_ArmorPlateCB:SetChecked( false )
+			ARL_ArmorCloakCB:SetChecked( false )
+			ARL_ArmorNecklaceCB:SetChecked( false )
+			ARL_ArmorRingCB:SetChecked( false )
+			ARL_ArmorTrinketCB:SetChecked( false )
+			ARL_ArmorAllCB:SetChecked( false )
+		end
+	elseif ( ( val == 21 ) or ( val == 22 ) or ( val == 23 ) or ( val == 24 ) or
+			 ( val == 64 ) or ( val == 65 ) or ( val == 66 ) or ( val == 67 ) ) then
+		-- in this case, we need to check if the checkbox we just hit either
+		-- makes everthing checked, or everything empty. If so, we check the All/None
+		-- checkboxes
+		if ( addon.FilterValueMap[val].cb:GetChecked() ) then
+			addon.FilterValueMap[val].svroot[ addon.FilterValueMap[val].svval ] = true
+			if ( ( addon.db.profile.filters.item.armor.cloth == true ) and
+				 ( addon.db.profile.filters.item.armor.leather == true ) and
+				 ( addon.db.profile.filters.item.armor.mail == true ) and
+				 ( addon.db.profile.filters.item.armor.plate == true ) and
+				 ( addon.db.profile.filters.item.armor.cloak == true ) and
+				 ( addon.db.profile.filters.item.armor.necklace == true ) and
+				 ( addon.db.profile.filters.item.armor.ring == true ) and
+				 ( addon.db.profile.filters.item.armor.trinket == true ) ) then
+				ARL_ArmorAllCB:SetChecked( true )
+			end
+			ARL_ArmorNoneCB:SetChecked( false )
+		else
+			addon.FilterValueMap[val].svroot[ addon.FilterValueMap[val].svval ] = false
+			if ( ( addon.db.profile.filters.item.armor.cloth == false ) and
+				 ( addon.db.profile.filters.item.armor.leather == false ) and
+				 ( addon.db.profile.filters.item.armor.mail == false ) and
+				 ( addon.db.profile.filters.item.armor.plate == false ) and
+				 ( addon.db.profile.filters.item.armor.cloak == false ) and
+				 ( addon.db.profile.filters.item.armor.necklace == false ) and
+				 ( addon.db.profile.filters.item.armor.ring == false ) and
+				 ( addon.db.profile.filters.item.armor.trinket == false ) ) then
+				ARL_ArmorNoneCB:SetChecked( true )
+			end
+			ARL_ArmorAllCB:SetChecked( false )
+		end
+	elseif ( val == 25 ) then
+		-- Weapon "All" special case
+		if ( ARL_WeaponAllCB:GetChecked() ) then
+			addon.db.profile.filters.item.weapon.onehand = true
+			addon.db.profile.filters.item.weapon.twohand = true
+			addon.db.profile.filters.item.weapon.dagger = true
+			addon.db.profile.filters.item.weapon.axe = true
+			addon.db.profile.filters.item.weapon.mace = true
+			addon.db.profile.filters.item.weapon.sword = true
+			addon.db.profile.filters.item.weapon.polearm = true
+			addon.db.profile.filters.item.weapon.wand = true
+			addon.db.profile.filters.item.weapon.thrown = true
+			addon.db.profile.filters.item.weapon.ammo = true
+			ARL_Weapon1HCB:SetChecked( true )
+			ARL_Weapon2HCB:SetChecked( true )
+			ARL_WeaponDaggerCB:SetChecked( true )
+			ARL_WeaponAxeCB:SetChecked( true )
+			ARL_WeaponMaceCB:SetChecked( true )
+			ARL_WeaponSwordCB:SetChecked( true )
+			ARL_WeaponPolearmCB:SetChecked( true )
+			ARL_WeaponWandCB:SetChecked( true )
+			ARL_WeaponThrownCB:SetChecked( true )
+			ARL_WeaponAmmoCB:SetChecked( true )
+			ARL_WeaponNoneCB:SetChecked( false )
+		end
+	elseif ( val == 26 ) then
+		-- Weapon "None" special case
+		if ( ARL_WeaponNoneCB:GetChecked() ) then
+			addon.db.profile.filters.item.weapon.onehand = false
+			addon.db.profile.filters.item.weapon.twohand = false
+			addon.db.profile.filters.item.weapon.dagger = false
+			addon.db.profile.filters.item.weapon.axe = false
+			addon.db.profile.filters.item.weapon.mace = false
+			addon.db.profile.filters.item.weapon.sword = false
+			addon.db.profile.filters.item.weapon.polearm = false
+			addon.db.profile.filters.item.weapon.wand = false
+			addon.db.profile.filters.item.weapon.thrown = false
+			addon.db.profile.filters.item.weapon.ammo = false
+			ARL_Weapon1HCB:SetChecked( false )
+			ARL_Weapon2HCB:SetChecked( false )
+			ARL_WeaponDaggerCB:SetChecked( false )
+			ARL_WeaponAxeCB:SetChecked( false )
+			ARL_WeaponMaceCB:SetChecked( false )
+			ARL_WeaponSwordCB:SetChecked( false )
+			ARL_WeaponPolearmCB:SetChecked( false )
+			ARL_WeaponWandCB:SetChecked( false )
+			ARL_WeaponThrownCB:SetChecked( false )
+			ARL_WeaponAmmoCB:SetChecked( false )
+			ARL_WeaponAllCB:SetChecked( false )
+		end
+	elseif ( ( val == 34 ) or ( val == 36 ) or ( val == 37 ) ) then
+		-- Weapon disable case ... there's really no way to reach this code
+	elseif ( ( val == 27 ) or ( val == 28 ) or ( val == 29 ) or ( val == 30 ) or ( val == 31 ) or
+			 ( val == 32 ) or ( val == 33 ) or ( val == 68 ) or ( val == 35 ) or ( val == 38 ) ) then
+		-- we've clicked on a weapon thinger. If all of them are either checked or unchecked,
+		-- we should automagically check the "All" or "None" checkbox
+		if ( addon.FilterValueMap[val].cb:GetChecked() ) then
+			addon.FilterValueMap[val].svroot[ addon.FilterValueMap[val].svval ] = true
+			if ( ( addon.db.profile.filters.item.weapon.onehand == true ) and
+				 ( addon.db.profile.filters.item.weapon.twohand == true ) and
+				 ( addon.db.profile.filters.item.weapon.dagger == true ) and
+				 ( addon.db.profile.filters.item.weapon.axe == true ) and
+				 ( addon.db.profile.filters.item.weapon.mace == true ) and
+				 ( addon.db.profile.filters.item.weapon.sword == true ) and
+				 ( addon.db.profile.filters.item.weapon.polearm == true ) and
+				 ( addon.db.profile.filters.item.weapon.wand == true ) and
+				 ( addon.db.profile.filters.item.weapon.thrown == true ) and
+				 ( addon.db.profile.filters.item.weapon.ammo == true ) ) then
+				ARL_WeaponAllCB:SetChecked( true )
+			end
+			ARL_WeaponNoneCB:SetChecked( false )
+		else
+			addon.FilterValueMap[val].svroot[ addon.FilterValueMap[val].svval ] = false
+			if ( ( addon.db.profile.filters.item.weapon.onehand == false ) and
+				 ( addon.db.profile.filters.item.weapon.twohand == false ) and
+				 ( addon.db.profile.filters.item.weapon.dagger == false ) and
+				 ( addon.db.profile.filters.item.weapon.axe == false ) and
+				 ( addon.db.profile.filters.item.weapon.mace == false ) and
+				 ( addon.db.profile.filters.item.weapon.sword == false ) and
+				 ( addon.db.profile.filters.item.weapon.polearm == false ) and
+				 ( addon.db.profile.filters.item.weapon.wand == false ) and
+				 ( addon.db.profile.filters.item.weapon.thrown == false ) and
+				 ( addon.db.profile.filters.item.weapon.ammo == false ) ) then
+				ARL_WeaponNoneCB:SetChecked( true )
+			end
+			ARL_WeaponAllCB:SetChecked( false )
+		end
+	else
+		-- General case
+		if ( addon.FilterValueMap[val].cb:GetChecked() ) then
+			addon.FilterValueMap[val].svroot[ addon.FilterValueMap[val].svval ] = true
+		else
+			addon.FilterValueMap[val].svroot[ addon.FilterValueMap[val].svval ] = false
+		end
+	end
+
+	addon.resetTitle()
+end
+
+function addon.ToggleFilters( )
 	local xPos = addon.Frame:GetLeft()
 	local yPos = addon.Frame:GetBottom()
 	if ( addon.Frame._Expanded == true ) then
@@ -388,114 +616,85 @@ function addon.ToggleFilters()
 		ARL_FilterButton:SetText( L["FILTER_OPEN"] )
 		addon:TooltipDisplay( ARL_FilterButton, L["FILTER_OPEN_TT"] )
 
+		-- Hide my 5 buttons
+		ARL_ExpGeneralOptCB:Hide()
+		ARL_ExpObtainOptCB:Hide()
+		ARL_ExpBindingOptCB:Hide()
+		ARL_ExpItemOptCB:Hide()
+		ARL_ExpPlayerOptCB:Hide()
+		ARL_ExpRepOptCB:Hide()
+		-- uncheck them as well
+		ARL_ExpGeneralOptCB:SetChecked( false )
+		ARL_ExpObtainOptCB:SetChecked( false )
+		ARL_ExpBindingOptCB:SetChecked( false )
+		ARL_ExpItemOptCB:SetChecked( false )
+		ARL_ExpPlayerOptCB:SetChecked( false )
+		ARL_ExpRepOptCB:SetChecked( false )
+		-- hide the flyaway
+		addon.Flyaway:Hide()
+
 		ARL_ResetButton:Hide()
 		ARL_ApplyButton:Hide()
-		-- Hide the Filter CBs
---[[
-		ARL_FLTGenText:Hide()
-		ARL_AllianceCB:Hide()
-		ARL_HordeCB:Hide()
-		ARL_LevelCB:Hide()
-		ARL_SpecialtyCB:Hide()
-		ARL_ClassCB:Hide()
-		ARL_KnownCB:Hide()
-		ARL_UnknownCB:Hide()
 
-		ARL_FLTObtText:Hide()
-		ARL_InstanceCB:Hide()
-		ARL_RaidCB:Hide()
-		ARL_QuestCB:Hide()
-		ARL_SeasonalCB:Hide()
-		ARL_TrainerCB:Hide()
-		ARL_VendorCB:Hide()
-		ARL_PVPCB:Hide()
-		ARL_DiscoveryCB:Hide()
-		ARL_ReputationCB:Hide()
-		ARL_RepPlus:Hide()
-
-		ARL_FLTITypeText:Hide()
-		ARL_ArmorCB:Hide()
-		ARL_WeaponCB:Hide()
-		ARL_BOPCB:Hide()
-		ARL_ArmorPlus:Hide()
-		ARL_WeaponPlus:Hide()
-
-		ARL_FLTPTypeText:Hide()
-		ARL_TankCB:Hide()
-		ARL_MeleeCB:Hide()
-		ARL_HealerCB:Hide()
-		ARL_CasterCB:Hide()
-]]--
 		-- and finally, show our frame
 		addon.Frame:Show()
 	else
 		-- Adjust the frame size and texture
 		addon.Frame:Hide()
 		addon.Frame:ClearAllPoints()
-		addon.Frame:SetWidth(512)
+		addon.Frame:SetWidth(444)
 		addon.Frame:SetHeight(447)
 		addon.bgTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\expanded]] )
 		addon.bgTexture:SetAllPoints( addon.Frame )
-		addon.bgTexture:SetTexCoord( 0, 1, 0, (447/512) )
+		addon.bgTexture:SetTexCoord( 0, (444/512), 0, (447/512) )
 		addon.Frame._Expanded = true
 		addon.Frame:SetPoint( "BOTTOMLEFT", UIParent, "BOTTOMLEFT", xPos, yPos )
 		-- Change the text and tooltip for the filter button
 		ARL_FilterButton:SetText( L["FILTER_CLOSE"] )
 		addon:TooltipDisplay( ARL_FilterButton, L["FILTER_CLOSE_TT"] )
 
+		-- Show my 5 buttons
+		ARL_ExpGeneralOptCB:Show()
+		ARL_ExpObtainOptCB:Show()
+		ARL_ExpBindingOptCB:Show()
+		ARL_ExpItemOptCB:Show()
+		ARL_ExpPlayerOptCB:Show()
+		ARL_ExpRepOptCB:Show()
+
 		ARL_ResetButton:Show()
 		ARL_ApplyButton:Show()
-		-- Show the Filter CBs
---[[
-		ARL_FLTGenText:Show()
-		ARL_AllianceCB:Show()
-		ARL_HordeCB:Show()
-		ARL_LevelCB:Show()
-		ARL_SpecialtyCB:Show()
-		ARL_ClassCB:Show()
-		ARL_KnownCB:Show()
-		ARL_UnknownCB:Show()
 
-		ARL_FLTObtText:Show()
-		ARL_InstanceCB:Show()
-		ARL_RaidCB:Show()
-		ARL_QuestCB:Show()
-		ARL_SeasonalCB:Show()
-		ARL_TrainerCB:Show()
-		ARL_VendorCB:Show()
-		ARL_PVPCB:Show()
-		ARL_DiscoveryCB:Show()
-		ARL_ReputationCB:Show()
-		ARL_RepPlus:Show()
-
-		ARL_FLTITypeText:Show()
-		ARL_ArmorCB:Show()
-		ARL_WeaponCB:Show()
-		ARL_BOPCB:Show()
-		ARL_ArmorPlus:Show()
-		ARL_WeaponPlus:Show()
-
-		ARL_FLTPTypeText:Show()
-		ARL_TankCB:Show()
-		ARL_MeleeCB:Show()
-		ARL_HealerCB:Show()
-		ARL_CasterCB:Show()
-]]--
 		-- and finally, show our frame
 		addon.Frame:Show()
 	end
+	-- Reset our title
+	addon.resetTitle()
 end
 
-function addon:GenericMakeCB( cButton, anchorFrame, ttText, scriptVal, row, col  )
-	cButton:SetHeight( 24 )
-	cButton:SetWidth( 24 )
-	local xPos = 5 + ( ( col - 1 ) * 100 )
-	local yPos = 3 - ( ( row - 1 ) * 18 )
-	cButton:SetPoint( "TOPLEFT", anchorFrame, "BOTTOMLEFT", xPos, yPos )
+function addon:GenericMakeCB( cButton, anchorFrame, ttText, scriptVal, row, col, logo  )
+	local pushdown = {
+		[64] = 1, [65] = 1, [66] = 1, [67] = 1, [25] = 1, [26] = 1, [27] = 1, [28] = 1, [29] = 1,
+		[30] = 1, [31] = 1, [32] = 1, [33] = 1, [34] = 1, [68] = 1, [35] = 1, [36] = 1, [37] = 1,
+		[38] = 1,
+	}
+	-- set the position of the new checkbox
+	local xPos = 2 + ( ( col - 1 ) * 100 )
+	local yPos = -3 - ( ( row - 1 ) * 17 )
+	if ( pushdown[scriptVal] ) then yPos = yPos - 5 end
+	cButton:SetPoint( "TOPLEFT", anchorFrame, "TOPLEFT", xPos, yPos )
+
+	-- depending if we're on the rep logo thingers or not, set the height and an OnClick method
+	if ( logo == 0 ) then
+		cButton:SetHeight( 24 )
+		cButton:SetWidth( 24 )
+		cButton:SetScript( "OnClick", function() addon.filterSwitch( scriptVal ) end )
+	else
+		cButton:SetHeight( 46 )
+		cButton:SetWidth( 100 )
+		cButton:SetScript( "OnClick", function() addon.filterSwitch( scriptVal ) end )
+	end
 
 	addon:TooltipDisplay( cButton, ttText, 1 )
-	cButton:SetScript( "OnClick", function() addon.filterSwitch( scriptVal ) end )
-	cButton:Hide()
 end
 
 function addon:GenericCreateButton(
@@ -601,9 +800,9 @@ function addon:GenericCreateButton(
 	text:SetPoint("RIGHT", button, "RIGHT", -7, 0)
 	text:SetJustifyH( tAlign )
 
-	button:SetTextFontObject(bNormFont)
-	button:SetHighlightFontObject(bHighFont)
-	button:SetDisabledFontObject(GameFontDisableSmall)
+	text:SetFontObject(bNormFont)
+--	text:SetHighlightFontObject(bHighFont)
+--	text:SetDisabledFontObject(GameFontDisableSmall)
 
 	text:SetText( initText )		
 
@@ -613,6 +812,90 @@ function addon:GenericCreateButton(
 	end
 
 	return button
+end
+
+-- Generic function for creating my expanded panel buttons
+function addon:CreateExpCB( bName, bTex, panelIndex )
+	if ( ( bName == "ARL_RepOldWorldCB" ) or ( bName == "ARL_RepBCCB" ) ) then
+		local cButton = CreateFrame( "CheckButton", bName, addon.Fly_Rep ) -- , "UICheckButtonTemplate" )
+			cButton:SetWidth( 100 )
+			cButton:SetHeight( 46 )
+			cButton:SetChecked( false )
+	
+		local iconTex = cButton:CreateTexture( cButton:GetName() .. "buttonTex", "BORDER" )
+			iconTex:SetTexture( 'Interface/Glues/Common/' .. bTex )
+			iconTex:SetWidth( 100 )
+			iconTex:SetHeight( 46 )
+			iconTex:SetAllPoints( cButton )
+
+		local pushedTexture = cButton:CreateTexture( cButton:GetName() .. "pTex", "ARTWORK" )
+			pushedTexture:SetTexture( 'Interface/Buttons/UI-Quickslot-Depress' )
+			pushedTexture:SetAllPoints( cButton )
+			cButton:SetPushedTexture( pushedTexture )
+		local highlightTexture = cButton:CreateTexture()
+			highlightTexture:SetTexture( 'Interface/Buttons/ButtonHilight-Square' )
+			highlightTexture:SetAllPoints( cButton )
+			highlightTexture:SetBlendMode( 'ADD' )
+			cButton:SetHighlightTexture( highlightTexture )
+		local checkedTexture = cButton:CreateTexture()
+			checkedTexture:SetTexture( 'Interface/Buttons/CheckButtonHilight' )
+			checkedTexture:SetAllPoints( cButton )
+			checkedTexture:SetBlendMode( 'ADD' )
+			cButton:SetCheckedTexture( checkedTexture )
+
+		-- And throw up a tooltip
+		if ( bName == "ARL_RepOldWorldCB" ) then
+			addon:TooltipDisplay( cButton, L["OLD_WORLD_REP_TT"] )
+		else
+			addon:TooltipDisplay( cButton, L["BC_REP_TT"] )
+		end
+			
+		return cButton
+	else 
+		local cButton = CreateFrame( "CheckButton", bName, addon.Frame ) -- , "UICheckButtonTemplate" )
+			cButton:SetWidth( addon.ExpTextureSize )
+			cButton:SetHeight( addon.ExpTextureSize )
+			cButton:SetScript( "OnClick", function() 
+				addon.DoFlyaway( panelIndex )
+			end )
+
+		local bgTex = cButton:CreateTexture( cButton:GetName() .. "bgTex", "BACKGROUND" )
+			bgTex:SetTexture( 'Interface/SpellBook/UI-Spellbook-SpellBackground' )
+			bgTex:SetHeight( addon.ExpTextureSize + 6 )
+			bgTex:SetWidth( addon.ExpTextureSize + 4 )
+			bgTex:SetTexCoord( 0, (43/64), 0, (43/64) )
+			bgTex:SetPoint( "CENTER", cButton, "CENTER", 0, 0 )
+		local iconTex = cButton:CreateTexture( cButton:GetName() .. "iconTex", "BORDER" )
+			iconTex:SetTexture( 'Interface/Icons/' .. bTex )
+			iconTex:SetAllPoints( cButton )
+		local pushedTexture = cButton:CreateTexture( cButton:GetName() .. "pTex", "ARTWORK" )
+			pushedTexture:SetTexture( 'Interface/Buttons/UI-Quickslot-Depress' )
+			pushedTexture:SetAllPoints( cButton )
+			cButton:SetPushedTexture( pushedTexture )
+		local highlightTexture = cButton:CreateTexture()
+			highlightTexture:SetTexture( 'Interface/Buttons/ButtonHilight-Square' )
+			highlightTexture:SetAllPoints( cButton )
+			highlightTexture:SetBlendMode( 'ADD' )
+			cButton:SetHighlightTexture( highlightTexture )
+		local checkedTexture = cButton:CreateTexture()
+			checkedTexture:SetTexture( 'Interface/Buttons/CheckButtonHilight' )
+			checkedTexture:SetAllPoints( cButton )
+			checkedTexture:SetBlendMode( 'ADD' )
+			cButton:SetCheckedTexture( checkedTexture )
+		-- Create the text object to go along with it
+		local cbText = cButton:CreateFontString( "cbText", "OVERLAY", "GameFontHighlight" )
+			cbText:SetText( addon:Yellow( ExpButtonText[panelIndex] ) )
+			cbText:SetPoint( "LEFT", cButton, "RIGHT", 5, 0 )
+			cbText:SetHeight( 14 )
+			cbText:SetWidth( 100 )
+			cbText:SetJustifyH( "LEFT" )
+			cButton.text = cbText
+
+		-- And throw up a tooltip
+		addon:TooltipDisplay( cButton, ExpButtonTT[panelIndex] )
+		cButton:Hide()
+		return cButton
+	end
 end
 
 -- Allows the scan button to close the scan window
@@ -706,13 +989,526 @@ end
 
 -- Scrollframe update stuff
 function addon.RecipeList_Update()
+	local entries = #addon.DisplayStrings
+
+	FauxScrollFrame_Update( ARL_RecipeScrollFrame, entries, addon.maxVisibleRecipes, 16 )
+
+	-- addon.Print( "in rlu")
+	-- now fill in our buttons
+	local listOffset = FauxScrollFrame_GetOffset( ARL_RecipeScrollFrame )
+	-- addon.Print( "listOffset = " .. listOffset)
+	local buttonIndex = 1
+	local stringsIndex = buttonIndex + listOffset
+
+	local stayInLoop = true
+	while ( stayInLoop == true ) do
+		-- addon.Print( "buttonIndex/stringsIndex = " .. buttonIndex .. "/" .. stringsIndex )
+		-- addon.PlusListButton = {},  addon.RecipeListButton = {}
+		if ( addon.DisplayStrings[stringsIndex].IsRecipe ) then
+			-- display the + symbol
+			addon.PlusListButton[buttonIndex]:Show()
+		else
+			addon.PlusListButton[buttonIndex]:Hide()
+		end
+		addon.RecipeListButton[buttonIndex]:SetText( addon.DisplayStrings[stringsIndex].String )
+		buttonIndex = buttonIndex + 1
+		stringsIndex = stringsIndex + 1
+		if ( ( buttonIndex > addon.maxVisibleRecipes ) or
+			 ( stringsIndex > entries ) ) then
+			stayInLoop = false
+		end
+	end
+end
+
+-- Rep Filtering panel switcher
+function addon.RepFilterSwitch( whichrep )
+	-- only have two to deal with at the moment
+	-- 1	ARL_RepOldWorldCB		Old World Rep
+	-- 2	ARL_RepBCCB				Burning Crusade
+	-- 3	Wrath of the Lich King (soon)
+	local ShowPanel = false
+	if ( whichrep == 1 ) then
+		if ( ARL_RepOldWorldCB:GetChecked() ) then
+			ShowPanel = true
+			addon.Fly_Rep_OW:Show()
+			addon.Fly_Rep_BC:Hide()
+			ARL_RepBCCB:SetChecked( false )
+		else
+			ShowPanel = false
+		end
+	elseif ( whichrep == 2 ) then
+		if ( ARL_RepBCCB:GetChecked() ) then
+			ShowPanel = true
+			addon.Fly_Rep_OW:Hide()
+			addon.Fly_Rep_BC:Show()
+			ARL_RepOldWorldCB:SetChecked( false )
+		else
+			ShowPanel = false
+		end
+	end
+	if ( ShowPanel == true ) then
+		addon.flyTexture:ClearAllPoints()
+		addon.Flyaway:SetWidth(296)
+		addon.Flyaway:SetHeight(312)
+		addon.flyTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\fly_repcol]] )
+		addon.flyTexture:SetAllPoints( addon.Flyaway )
+		addon.flyTexture:SetTexCoord( 0, (296/512), 0, (312/512) )
+
+		addon.Fly_Rep_OW:SetPoint( "TOPRIGHT", addon.Flyaway, "TOPRIGHT", -7, -20 )
+		addon.Fly_Rep_BC:SetPoint( "TOPRIGHT", addon.Flyaway, "TOPRIGHT", -7, -20 )
+else
+		addon.flyTexture:ClearAllPoints()
+		addon.Flyaway:SetWidth(136)
+		addon.Flyaway:SetHeight(312)
+		addon.flyTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\fly_1col]] )
+		addon.flyTexture:SetAllPoints( addon.Flyaway )
+		addon.flyTexture:SetTexCoord( 0, (136/256), 0, (312/512) )
+		addon.Fly_Rep_OW:Hide()
+		addon.Fly_Rep_BC:Hide()
+		ARL_RepBCCB:SetChecked( false )
+		ARL_RepOldWorldCB:SetChecked( false )
+	end
+end
+
+function addon.setFlyawayState ( ) 
+	-- This function sets all the current options in the flyaway panel to make
+	-- sure they are consistent with the SV options. This is run every time the
+	-- Flyaway panel "OnShow" triggers
+
+	-- General Options
+	ARL_ClassCB:SetChecked( addon.db.profile.filters.general.class )
+	ARL_SpecialtyCB:SetChecked( addon.db.profile.filters.general.specialty )
+	ARL_LevelCB:SetChecked( addon.db.profile.filters.general.skill )
+	ARL_FactionCB:SetChecked( addon.db.profile.filters.general.faction )
+	ARL_KnownCB:SetChecked( addon.db.profile.filters.general.known )
+	ARL_UnknownCB:SetChecked( addon.db.profile.filters.general.unknown )
+	-- Obtain Options
+	ARL_InstanceCB:SetChecked( addon.db.profile.filters.obtain.instance )
+	ARL_RaidCB:SetChecked( addon.db.profile.filters.obtain.raid )
+	ARL_QuestCB:SetChecked( addon.db.profile.filters.obtain.quest )
+	ARL_SeasonalCB:SetChecked( addon.db.profile.filters.obtain.seasonal )
+	ARL_TrainerCB:SetChecked( addon.db.profile.filters.obtain.trainer )
+	ARL_VendorCB:SetChecked( addon.db.profile.filters.obtain.vendor )
+	ARL_PVPCB:SetChecked( addon.db.profile.filters.obtain.pvp )
+	ARL_DiscoveryCB:SetChecked( addon.db.profile.filters.obtain.discovery )
+	ARL_WorldDropCB:SetChecked( addon.db.profile.filters.obtain.worlddrop )
+	ARL_MobDropCB:SetChecked( addon.db.profile.filters.obtain.mobdrop )
+	-- Binding Options
+	ARL_iBoECB:SetChecked( addon.db.profile.filters.binding.itemboe )
+	ARL_iBoPCB:SetChecked( addon.db.profile.filters.binding.itembop )
+	ARL_rBoECB:SetChecked( addon.db.profile.filters.binding.recipeboe )
+	ARL_rBoPCB:SetChecked( addon.db.profile.filters.binding.recipebop )
+	-- Armor Options
+	if ( ( addon.db.profile.filters.item.armor.cloth == true ) and
+		 ( addon.db.profile.filters.item.armor.leather == true ) and
+		 ( addon.db.profile.filters.item.armor.mail == true ) and
+		 ( addon.db.profile.filters.item.armor.plate == true ) and
+		 ( addon.db.profile.filters.item.armor.cloak == true ) and
+		 ( addon.db.profile.filters.item.armor.necklace == true ) and
+		 ( addon.db.profile.filters.item.armor.ring == true ) and
+		 ( addon.db.profile.filters.item.armor.trinket == true ) ) then
+		ARL_ArmorAllCB:SetChecked( true )
+	else
+		ARL_ArmorAllCB:SetChecked( false )
+	end
+	if ( ( addon.db.profile.filters.item.armor.cloth == false ) and
+		 ( addon.db.profile.filters.item.armor.leather == false ) and
+		 ( addon.db.profile.filters.item.armor.mail == false ) and
+		 ( addon.db.profile.filters.item.armor.plate == false ) and
+		 ( addon.db.profile.filters.item.armor.cloak == false ) and
+		 ( addon.db.profile.filters.item.armor.necklace == false ) and
+		 ( addon.db.profile.filters.item.armor.ring == false ) and
+		 ( addon.db.profile.filters.item.armor.trinket == false ) ) then
+		ARL_ArmorNoneCB:SetChecked( true )
+	else
+		ARL_ArmorNoneCB:SetChecked( false )
+	end
+	ARL_ArmorClothCB:SetChecked( addon.db.profile.filters.item.armor.cloth )
+	ARL_ArmorLeatherCB:SetChecked( addon.db.profile.filters.item.armor.leather )
+	ARL_ArmorMailCB:SetChecked( addon.db.profile.filters.item.armor.mail )
+	ARL_ArmorPlateCB:SetChecked( addon.db.profile.filters.item.armor.plate )
+
+	ARL_ArmorCloakCB:SetChecked( addon.db.profile.filters.item.armor.cloak )
+	ARL_ArmorNecklaceCB:SetChecked( addon.db.profile.filters.item.armor.necklace )
+	ARL_ArmorRingCB:SetChecked( addon.db.profile.filters.item.armor.ring )
+	ARL_ArmorTrinketCB:SetChecked( addon.db.profile.filters.item.armor.trinket )
+	-- Weapon Options
+	if ( ( addon.db.profile.filters.item.weapon.onehand == true ) and
+		 ( addon.db.profile.filters.item.weapon.twohand == true ) and
+		 ( addon.db.profile.filters.item.weapon.dagger == true ) and
+		 ( addon.db.profile.filters.item.weapon.axe == true ) and
+		 ( addon.db.profile.filters.item.weapon.mace == true ) and
+		 ( addon.db.profile.filters.item.weapon.sword == true ) and
+		 ( addon.db.profile.filters.item.weapon.polearm == true ) and
+		 ( addon.db.profile.filters.item.weapon.wand == true ) and
+		 ( addon.db.profile.filters.item.weapon.thrown == true ) and
+		 ( addon.db.profile.filters.item.weapon.ammo == true ) ) then
+		ARL_WeaponAllCB:SetChecked( true )
+	else
+		ARL_WeaponAllCB:SetChecked( false )
+	end
+	if ( ( addon.db.profile.filters.item.weapon.onehand == false ) and
+		 ( addon.db.profile.filters.item.weapon.twohand == false ) and
+		 ( addon.db.profile.filters.item.weapon.dagger == false ) and
+		 ( addon.db.profile.filters.item.weapon.axe == false ) and
+		 ( addon.db.profile.filters.item.weapon.mace == false ) and
+		 ( addon.db.profile.filters.item.weapon.sword == false ) and
+		 ( addon.db.profile.filters.item.weapon.polearm == false ) and
+		 ( addon.db.profile.filters.item.weapon.wand == false ) and
+		 ( addon.db.profile.filters.item.weapon.thrown == false ) and
+		 ( addon.db.profile.filters.item.weapon.ammo == false ) ) then
+		ARL_WeaponNoneCB:SetChecked( true )
+	else
+		ARL_WeaponNoneCB:SetChecked( false )
+	end
+	ARL_Weapon1HCB:SetChecked( addon.db.profile.filters.item.weapon.onehand )
+	ARL_Weapon2HCB:SetChecked( addon.db.profile.filters.item.weapon.twohand )
+	ARL_WeaponDaggerCB:SetChecked( addon.db.profile.filters.item.weapon.dagger )
+	ARL_WeaponAxeCB:SetChecked( addon.db.profile.filters.item.weapon.axe )
+	ARL_WeaponMaceCB:SetChecked( addon.db.profile.filters.item.weapon.mace )
+	ARL_WeaponSwordCB:SetChecked( addon.db.profile.filters.item.weapon.sword )
+	ARL_WeaponPolearmCB:SetChecked( addon.db.profile.filters.item.weapon.polearm )
+	ARL_WeaponWandCB:SetChecked( addon.db.profile.filters.item.weapon.wand )
+	ARL_WeaponThrownCB:SetChecked( addon.db.profile.filters.item.weapon.thrown )
+	ARL_WeaponAmmoCB:SetChecked( addon.db.profile.filters.item.weapon.ammo )
+--[[
+	--Disable weapon options. Probably don't need to touch these...
+	ARL_WeaponStaffCB
+	ARL_WeaponBowCB
+	ARL_WeaponCrossbowCB ]]--
+	-- Player Type Options
+	ARL_PlayerTankCB:SetChecked( addon.db.profile.filters.player.tank )
+	ARL_PlayerMeleeCB:SetChecked( addon.db.profile.filters.player.melee )
+	ARL_PlayerHealerCB:SetChecked( addon.db.profile.filters.player.healer )
+	ARL_PlayerCasterCB:SetChecked( addon.db.profile.filters.player.caster )
+	-- Old World Rep Options
+	ARL_RepArgentDawnCB:SetChecked( addon.db.profile.filters.rep.argentdawn )
+	ARL_RepCenarionCircleCB:SetChecked( addon.db.profile.filters.rep.cenarioncircle )
+	ARL_RepThoriumCB:SetChecked( addon.db.profile.filters.rep.thoriumbrotherhood )
+	ARL_RepTimbermawCB:SetChecked( addon.db.profile.filters.rep.timbermaw )
+	ARL_RepZandalarCB:SetChecked( addon.db.profile.filters.rep.zandalar )
+	-- BC Rep Options
+	ARL_RepAldorCB:SetChecked( addon.db.profile.filters.rep.aldor )
+	ARL_RepAshtongueCB:SetChecked( addon.db.profile.filters.rep.ashtonguedeathsworn )
+	ARL_RepCenarionExpeditionCB:SetChecked( addon.db.profile.filters.rep.cenarionexpedition )
+	ARL_RepConsortiumCB:SetChecked( addon.db.profile.filters.rep.consortium )
+	ARL_RepHonorHoldCB:SetChecked( addon.db.profile.filters.rep.hellfire )
+	ARL_RepKeepersOfTimeCB:SetChecked( addon.db.profile.filters.rep.keepersoftime )
+	ARL_RepKurenaiCB:SetChecked( addon.db.profile.filters.rep.nagrand )
+	ARL_RepLowerCityCB:SetChecked( addon.db.profile.filters.rep.lowercity )
+	ARL_RepScaleSandsCB:SetChecked( addon.db.profile.filters.rep.scaleofthesands )
+	ARL_RepScryersCB:SetChecked( addon.db.profile.filters.rep.scryer )
+	ARL_RepShatarCB:SetChecked( addon.db.profile.filters.rep.shatar )
+	ARL_RepShatteredSunCB:SetChecked( addon.db.profile.filters.rep.shatteredsun )
+	ARL_RepSporeggarCB:SetChecked( addon.db.profile.filters.rep.sporeggar )
+	ARL_RepVioletEyeCB:SetChecked( addon.db.profile.filters.rep.violeteye )
+end
+
+function addon.resetFilters() 
+	-- reset all filters to their default values
+	addon.db.profile.filters.general.faction = true
+	addon.db.profile.filters.general.class = false
+	addon.db.profile.filters.general.specialty = false
+	addon.db.profile.filters.general.skill = true
+	addon.db.profile.filters.general.known = false
+	addon.db.profile.filters.general.unknown = true
+
+	addon.db.profile.filters.obtain.trainer = true
+	addon.db.profile.filters.obtain.vendor = true
+	addon.db.profile.filters.obtain.instance = true
+	addon.db.profile.filters.obtain.raid = true
+	addon.db.profile.filters.obtain.seasonal = true
+	addon.db.profile.filters.obtain.quest = true
+	addon.db.profile.filters.obtain.pvp = true
+	addon.db.profile.filters.obtain.discovery = true
+	addon.db.profile.filters.obtain.worlddrop = true
+	addon.db.profile.filters.obtain.mobdrop = true
+
+	addon.db.profile.filters.binding.itemboe = true
+	addon.db.profile.filters.binding.itembop = true
+	addon.db.profile.filters.binding.recipebop = true
+	addon.db.profile.filters.binding.recipeboe = true
+
+	addon.db.profile.filters.item.armor.cloth = true
+	addon.db.profile.filters.item.armor.leather = true
+	addon.db.profile.filters.item.armor.mail = true
+	addon.db.profile.filters.item.armor.plate = true
+	addon.db.profile.filters.item.armor.trinket = true
+	addon.db.profile.filters.item.armor.cloak = true
+	addon.db.profile.filters.item.armor.ring = true
+	addon.db.profile.filters.item.armor.necklace = true
+
+	addon.db.profile.filters.item.weapon.onehand = true
+	addon.db.profile.filters.item.weapon.twohand = true
+	addon.db.profile.filters.item.weapon.axe = true
+	addon.db.profile.filters.item.weapon.sword = true
+	addon.db.profile.filters.item.weapon.mace = true
+	addon.db.profile.filters.item.weapon.polearm = true
+	addon.db.profile.filters.item.weapon.dagger = true
+	addon.db.profile.filters.item.weapon.staff = true
+	addon.db.profile.filters.item.weapon.wand = true
+	addon.db.profile.filters.item.weapon.thrown = true
+	addon.db.profile.filters.item.weapon.bow = true
+	addon.db.profile.filters.item.weapon.crossbow = true
+	addon.db.profile.filters.item.weapon.ammo = true
+
+	addon.db.profile.filters.player.melee = true
+	addon.db.profile.filters.player.tank = true
+	addon.db.profile.filters.player.healer = true
+	addon.db.profile.filters.player.caster = true
+
+	addon.db.profile.filters.rep.aldor = true
+	addon.db.profile.filters.rep.scryer = true
+	addon.db.profile.filters.rep.argentdawn = true
+	addon.db.profile.filters.rep.ashtonguedeathsworn = true
+	addon.db.profile.filters.rep.cenarioncircle = true
+	addon.db.profile.filters.rep.cenarionexpedition = true
+	addon.db.profile.filters.rep.consortium = true
+	addon.db.profile.filters.rep.hellfire = true
+	addon.db.profile.filters.rep.keepersoftime = true
+	addon.db.profile.filters.rep.nagrand = true
+	addon.db.profile.filters.rep.lowercity = true
+	addon.db.profile.filters.rep.scaleofthesands = true
+	addon.db.profile.filters.rep.shatar = true
+	addon.db.profile.filters.rep.shatteredsun = true
+	addon.db.profile.filters.rep.sporeggar = true
+	addon.db.profile.filters.rep.thoriumbrotherhood = true
+	addon.db.profile.filters.rep.timbermaw = true
+	addon.db.profile.filters.rep.violeteye = true
+	addon.db.profile.filters.rep.zandalar = true
+
+	addon.Flyaway:Hide()
+end
+
+function addon.DoFlyaway( panel )
+	-- This is going to manage the flyaway panel, as well as checking or unchecking the
+	-- buttons that got us here in the first place
+	--
+	-- our panels are:
+	-- 1	ARL_ExpGeneralOptCB			General Filters
+	-- 2	ARL_ExpObtainOptCB			Obtain Filters
+	-- 3	ARL_ExpBindingOptCB			Binding Filters
+	-- 4	ARL_ExpItemOptCB			Item Filters
+
+	local ChangeFilters = false
+	addon.Fly_Rep_OW:Hide()
+	addon.Fly_Rep_BC:Hide()
+	ARL_RepBCCB:SetChecked( false )
+	ARL_RepOldWorldCB:SetChecked( false )
+	if ( panel == 1 ) then
+		if ( ARL_ExpGeneralOptCB:GetChecked() ) then
+			-- uncheck all other buttons
+			ARL_ExpObtainOptCB:SetChecked( false )
+			ARL_ExpBindingOptCB:SetChecked( false )
+			ARL_ExpItemOptCB:SetChecked( false )
+			ARL_ExpPlayerOptCB:SetChecked( false )
+			ARL_ExpRepOptCB:SetChecked( false )
+			-- change text colors to match selection
+			ARL_ExpGeneralOptCB.text:SetText( addon:White( ExpButtonText[1] ) ) 
+			ARL_ExpObtainOptCB.text:SetText( addon:Yellow( ExpButtonText[2] ) ) 
+			ARL_ExpBindingOptCB.text:SetText( addon:Yellow( ExpButtonText[3] ) ) 
+			ARL_ExpItemOptCB.text:SetText( addon:Yellow( ExpButtonText[4] ) ) 
+			ARL_ExpPlayerOptCB.text:SetText( addon:Yellow( ExpButtonText[5] ) ) 
+			ARL_ExpRepOptCB.text:SetText( addon:Yellow( ExpButtonText[6] ) )
+			-- display the correct subframe with all the buttons and such, hide the others
+			addon.Fly_General:Show()
+			addon.Fly_Obtain:Hide()
+			addon.Fly_Binding:Hide()
+			addon.Fly_Item:Hide()
+			addon.Fly_Player:Hide()
+			addon.Fly_Rep:Hide()
+
+			ChangeFilters = true
+		else
+			ARL_ExpGeneralOptCB.text:SetText( addon:Yellow( ExpButtonText[1] ) ) 
+			ChangeFilters = false
+		end
+	elseif ( panel == 2 ) then
+		if ( ARL_ExpObtainOptCB:GetChecked() ) then
+			-- uncheck all other buttons
+			ARL_ExpGeneralOptCB:SetChecked( false )
+			ARL_ExpBindingOptCB:SetChecked( false )
+			ARL_ExpItemOptCB:SetChecked( false )
+			ARL_ExpPlayerOptCB:SetChecked( false )
+			ARL_ExpRepOptCB:SetChecked( false )
+			-- change text colors to match selection
+			ARL_ExpGeneralOptCB.text:SetText( addon:Yellow( ExpButtonText[1] ) ) 
+			ARL_ExpObtainOptCB.text:SetText( addon:White( ExpButtonText[2] ) ) 
+			ARL_ExpBindingOptCB.text:SetText( addon:Yellow( ExpButtonText[3] ) ) 
+			ARL_ExpItemOptCB.text:SetText( addon:Yellow( ExpButtonText[4] ) ) 
+			ARL_ExpPlayerOptCB.text:SetText( addon:Yellow( ExpButtonText[5] ) ) 
+			ARL_ExpRepOptCB.text:SetText( addon:Yellow( ExpButtonText[6] ) )
+			-- display the correct subframe with all the buttons and such, hide the others
+			addon.Fly_General:Hide()
+			addon.Fly_Obtain:Show()
+			addon.Fly_Binding:Hide()
+			addon.Fly_Item:Hide()
+			addon.Fly_Player:Hide()
+			addon.Fly_Rep:Hide()
+
+			ChangeFilters = true
+		else
+			ARL_ExpObtainOptCB.text:SetText( addon:Yellow( ExpButtonText[2] ) ) 
+			ChangeFilters = false
+		end
+	elseif ( panel == 3 ) then
+		if ( ARL_ExpBindingOptCB:GetChecked() ) then
+			-- uncheck all other buttons
+			ARL_ExpGeneralOptCB:SetChecked( false )
+			ARL_ExpObtainOptCB:SetChecked( false )
+			ARL_ExpItemOptCB:SetChecked( false )
+			ARL_ExpPlayerOptCB:SetChecked( false )
+			ARL_ExpRepOptCB:SetChecked( false )
+			-- change text colors to match selection
+			ARL_ExpGeneralOptCB.text:SetText( addon:Yellow( ExpButtonText[1] ) ) 
+			ARL_ExpObtainOptCB.text:SetText( addon:Yellow( ExpButtonText[2] ) ) 
+			ARL_ExpBindingOptCB.text:SetText( addon:White( ExpButtonText[3] ) ) 
+			ARL_ExpItemOptCB.text:SetText( addon:Yellow( ExpButtonText[4] ) ) 
+			ARL_ExpPlayerOptCB.text:SetText( addon:Yellow( ExpButtonText[5] ) ) 
+			ARL_ExpRepOptCB.text:SetText( addon:Yellow( ExpButtonText[6] ) )
+			-- display the correct subframe with all the buttons and such, hide the others
+			addon.Fly_General:Hide()
+			addon.Fly_Obtain:Hide()
+			addon.Fly_Binding:Show()
+			addon.Fly_Item:Hide()
+			addon.Fly_Player:Hide()
+			addon.Fly_Rep:Hide()
+
+			ChangeFilters = true
+		else
+			ARL_ExpBindingOptCB.text:SetText( addon:Yellow( ExpButtonText[3] ) ) 
+			ChangeFilters = false
+		end
+	elseif ( panel == 4 ) then
+		if ( ARL_ExpItemOptCB:GetChecked() ) then
+			-- uncheck all other buttons
+			ARL_ExpGeneralOptCB:SetChecked( false )
+			ARL_ExpObtainOptCB:SetChecked( false )
+			ARL_ExpBindingOptCB:SetChecked( false )
+			ARL_ExpPlayerOptCB:SetChecked( false )
+			ARL_ExpRepOptCB:SetChecked( false )
+			-- change text colors to match selection
+			ARL_ExpGeneralOptCB.text:SetText( addon:Yellow( ExpButtonText[1] ) ) 
+			ARL_ExpObtainOptCB.text:SetText( addon:Yellow( ExpButtonText[2] ) ) 
+			ARL_ExpBindingOptCB.text:SetText( addon:Yellow( ExpButtonText[3] ) ) 
+			ARL_ExpItemOptCB.text:SetText( addon:White( ExpButtonText[4] ) ) 
+			ARL_ExpPlayerOptCB.text:SetText( addon:Yellow( ExpButtonText[5] ) ) 
+			ARL_ExpRepOptCB.text:SetText( addon:Yellow( ExpButtonText[6] ) )
+			-- display the correct subframe with all the buttons and such, hide the others
+			addon.Fly_General:Hide()
+			addon.Fly_Obtain:Hide()
+			addon.Fly_Binding:Hide()
+			addon.Fly_Item:Show()
+			addon.Fly_Player:Hide()
+			addon.Fly_Rep:Hide()
+
+			ChangeFilters = true
+		else
+			ARL_ExpItemOptCB.text:SetText( addon:Yellow( ExpButtonText[4] ) ) 
+			ChangeFilters = false
+		end
+	elseif ( panel == 5 ) then
+		if ( ARL_ExpPlayerOptCB:GetChecked() ) then
+			-- uncheck all other buttons
+			ARL_ExpGeneralOptCB:SetChecked( false )
+			ARL_ExpObtainOptCB:SetChecked( false )
+			ARL_ExpBindingOptCB:SetChecked( false )
+			ARL_ExpItemOptCB:SetChecked( false )
+			ARL_ExpRepOptCB:SetChecked( false )
+			-- change text colors to match selection
+			ARL_ExpGeneralOptCB.text:SetText( addon:Yellow( ExpButtonText[1] ) ) 
+			ARL_ExpObtainOptCB.text:SetText( addon:Yellow( ExpButtonText[2] ) ) 
+			ARL_ExpBindingOptCB.text:SetText( addon:Yellow( ExpButtonText[3] ) ) 
+			ARL_ExpItemOptCB.text:SetText( addon:Yellow( ExpButtonText[4] ) ) 
+			ARL_ExpPlayerOptCB.text:SetText( addon:White( ExpButtonText[5] ) ) 
+			ARL_ExpRepOptCB.text:SetText( addon:Yellow( ExpButtonText[6] ) )
+			-- display the correct subframe with all the buttons and such, hide the others
+			addon.Fly_General:Hide()
+			addon.Fly_Obtain:Hide()
+			addon.Fly_Binding:Hide()
+			addon.Fly_Item:Hide()
+			addon.Fly_Player:Show()
+			addon.Fly_Rep:Hide()
+
+			ChangeFilters = true
+		else
+			ARL_ExpPlayerOptCB.text:SetText( addon:Yellow( ExpButtonText[5] ) ) 
+			ChangeFilters = false
+		end
+	elseif ( panel == 6 ) then
+		if ( ARL_ExpRepOptCB:GetChecked() ) then
+			-- uncheck all other buttons
+			ARL_ExpGeneralOptCB:SetChecked( false )
+			ARL_ExpObtainOptCB:SetChecked( false )
+			ARL_ExpBindingOptCB:SetChecked( false )
+			ARL_ExpItemOptCB:SetChecked( false )
+			ARL_ExpPlayerOptCB:SetChecked( false )
+			-- change text colors to match selection
+			ARL_ExpGeneralOptCB.text:SetText( addon:Yellow( ExpButtonText[1] ) ) 
+			ARL_ExpObtainOptCB.text:SetText( addon:Yellow( ExpButtonText[2] ) ) 
+			ARL_ExpBindingOptCB.text:SetText( addon:Yellow( ExpButtonText[3] ) ) 
+			ARL_ExpItemOptCB.text:SetText( addon:Yellow( ExpButtonText[4] ) ) 
+			ARL_ExpPlayerOptCB.text:SetText( addon:Yellow( ExpButtonText[5] ) ) 
+			ARL_ExpRepOptCB.text:SetText( addon:White( ExpButtonText[6] ) )
+			-- display the correct subframe with all the buttons and such, hide the others
+			addon.Fly_General:Hide()
+			addon.Fly_Obtain:Hide()
+			addon.Fly_Binding:Hide()
+			addon.Fly_Item:Hide()
+			addon.Fly_Player:Hide()
+			addon.Fly_Rep:Show()
+
+			ChangeFilters = true
+		else
+			ARL_ExpRepOptCB.text:SetText( addon:Yellow( ExpButtonText[6] ) ) 
+			ChangeFilters = false
+		end
+	end
+
+	if ( ChangeFilters == true ) then
+		-- Depending on which panel we're showing, either display one column
+		-- or two column
+		if ( ( panel == 1 ) or ( panel == 3 ) or ( panel == 4 ) ) then
+			addon.flyTexture:ClearAllPoints()
+			addon.Flyaway:SetWidth(234)
+			addon.Flyaway:SetHeight(312)
+			addon.flyTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\fly_2col]] )
+			addon.flyTexture:SetAllPoints( addon.Flyaway )
+			addon.flyTexture:SetTexCoord( 0, (234/256), 0, (312/512) )
+		elseif ( ( panel == 2 ) or ( panel == 5 ) or ( panel == 6 ) ) then
+			addon.flyTexture:ClearAllPoints()
+			addon.Flyaway:SetWidth(136)
+			addon.Flyaway:SetHeight(312)
+			addon.flyTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\fly_1col]] )
+			addon.flyTexture:SetAllPoints( addon.Flyaway )
+			addon.flyTexture:SetTexCoord( 0, (136/256), 0, (312/512) )
+		end
+		-- Change the filters to the current panel
+		addon.Flyaway:Show()
+	else
+		-- We're hiding, don't bother changing anything
+		addon.Flyaway:Hide()
+	end
+end
+
+-- This does the initial fillup of the DisplayStrings structure.
+-- This won't run if all we're doing is expanding/contracting a recipe
+function addon.initDisplayStrings( sortedList )
+	for i, RecipeName in ipairs( sortedList ) do
+		-- include filtering for search string here?
+		local t = {}
+		t.String = RecipeName
+		t.IsRecipe = true
+		t.Expanded = false
+		tinsert( addon.DisplayStrings, i, t )
+	end
 end
 
 -- Creates the initial frame to display recipes into
-
 function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
 
 	addon.ResetOkayARL = false
+	addon.CurrentProfession = CurrentProfession
 
 	-- Normal GUI
 	if (not addon.db.profile.testgui) then
@@ -978,6 +1774,17 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 	else
 		-- New dev GUI
 		self:Print("Test purposes only.")
+
+		-- Adding a check in to see if we're Horde or Alliance, and change the displayed reputation
+		-- strings to be faction correct (eg, Honor Hold / Thrallmar )
+		if ( UnitFactionGroup( "player" ) == "Alliance" ) then
+			addon.HonorHold_Thrallmar_FactionText = BFAC["Honor Hold"]
+			addon.Kurenai_Maghar_FactionText = BFAC["Kurenai"]
+		else
+			addon.HonorHold_Thrallmar_FactionText = BFAC["Thrallmar"]
+			addon.Kurenai_Maghar_FactionText = BFAC["The Mag'har"]
+		end
+
 		if (not addon.Frame) then
 			-- Create the main frame
 			addon.Frame = CreateFrame("Frame", "addon.Frame", UIParent)
@@ -1006,13 +1813,21 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 			addon.Frame:Show()
 			addon.Frame._Expanded = false
 
-			local ARL_SwitcherButton = CreateFrame( "Button", "ARL_SwitcherButton", addon.Frame, "UIPanelButtonTemplate" )
-			ARL_SwitcherButton:SetWidth( 64 )
-			ARL_SwitcherButton:SetHeight( 64 )
-			ARL_SwitcherButton:SetPoint( "TOPLEFT", addon.Frame, "TOPLEFT", 1, -2 )
-			addon.SetSwitcherTexture( addon.CurrentProf )
-			ARL_SwitcherButton:SetScript( "OnClick", addon.SwitchProfs )
+			addon.Frame.HeadingText = addon.Frame:CreateFontString( "addon.Frame.HeadingText", "ARTWORK" )
+				
+			addon.Frame.HeadingText:SetFontObject( "GameFontHighlightSmall" )
+			addon.Frame.HeadingText:ClearAllPoints()
+			addon.Frame.HeadingText:SetPoint("TOP", addon.Frame, "TOP", 20, -16)
+			addon.Frame.HeadingText:SetJustifyH( "CENTER" )
 
+			local ARL_SwitcherButton = CreateFrame( "Button", "ARL_SwitcherButton", addon.Frame, "UIPanelButtonTemplate" )
+				ARL_SwitcherButton:SetWidth( 64 )
+				ARL_SwitcherButton:SetHeight( 64 )
+				ARL_SwitcherButton:SetPoint( "TOPLEFT", addon.Frame, "TOPLEFT", 1, -2 )
+				addon.SetSwitcherTexture( addon.CurrentProf )
+				ARL_SwitcherButton:SetScript( "OnClick", addon.SwitchProfs )
+
+			-- Stuff in the non-expanded frame (or both)
 			local ARL_CloseXButton = CreateFrame( "Button", "ARL_CloseXButton", addon.Frame, "UIPanelCloseButton" )
 				ARL_CloseXButton:SetFrameLevel( 5 )
 				ARL_CloseXButton:SetScript( "OnClick",
@@ -1026,12 +1841,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				25, 90, "TOPRIGHT", addon.Frame, "TOPRIGHT", -8, -40, "GameFontNormalSmall",
 				"GameFontHighlightSmall", L["FILTER_OPEN"], "CENTER", L["FILTER_OPEN_TT"], 1 )
 				ARL_FilterButton:SetScript( "OnClick", addon.ToggleFilters )
---[[
-			local ARL_ResetButton = addon:GenericCreateButton( "ARL_ResetButton", addon.Frame,
-				25, 90, "TOPRIGHT", ARL_FilterButton, "BOTTOMRIGHT", 0, -2, "GameFontNormalSmall",
-				"GameFontHighlightSmall", L["Reset"], "CENTER", L["RESET_TT"], 1 )
-			ARL_ResetButton:Hide()
---]]
+
 			local ARL_SortButton = addon:GenericCreateButton( "ARL_SortButton", addon.Frame,
 				25, 90, "TOPLEFT", addon.Frame, "TOPLEFT", 80, -40, "GameFontNormalSmall",
 				"GameFontHighlightSmall", L["Sort"], "CENTER", L["SORT_TT"], 1 )
@@ -1057,24 +1867,21 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 						this:GetParent():Hide()
 					end
 				)
---[[
-			local ARL_ApplyButton = addon:GenericCreateButton( "ARL_ApplyButton", addon.Frame,
-				22, 69, "RIGHT", ARL_CloseButton, "LEFT", -80, 0, "GameFontNormalSmall",
-				"GameFontHighlightSmall", L["Apply"], "CENTER", L["Apply_TT"], 1 )
-			ARL_ApplyButton:Hide()
-]]--
-			local ARL_PlusList = {}
-			local ARL_RecipeList = {}
+
+			-- The main recipe list buttons and scrollframe
+
+			addon.PlusListButton = {}
+			addon.RecipeListButton = {}
 			for i = 1, addon.maxVisibleRecipes do
-				local Temp_Plus = addon:GenericCreateButton( "ARL_PlusList" .. i, addon.Frame,
+				local Temp_Plus = addon:GenericCreateButton( "ARL_PlusListButton" .. i, addon.Frame,
 					16, 16, "TOPLEFT", addon.Frame, "TOPLEFT", 20, -98, "GameFontNormalSmall",
 					"GameFontHighlightSmall", "", "LEFT", "testTT", 2 )
-				local Temp_Recipe = addon:GenericCreateButton( "ARL_RecipeList" .. i, addon.Frame,
+				local Temp_Recipe = addon:GenericCreateButton( "ARL_RecipeListButton" .. i, addon.Frame,
 					17, 224, "TOPLEFT", addon.Frame, "TOPLEFT", 37, -97, "GameFontNormalSmall",
-					"GameFontHighlightSmall", "Blort", "LEFT", "blortTT", 1 )
+					"GameFontHighlightSmall", "Blort", "LEFT", "blortTT", 0 )
 				if not ( i == 1 ) then
-					Temp_Plus:SetPoint( "TOPLEFT", ARL_PlusList[i-1], "BOTTOMLEFT", 0, -1 )
-					Temp_Recipe:SetPoint( "TOPLEFT", ARL_RecipeList[i-1], "BOTTOMLEFT", 0, 0 )
+					Temp_Plus:SetPoint( "TOPLEFT", addon.PlusListButton[i-1], "BOTTOMLEFT", 0, -1 )
+					Temp_Recipe:SetPoint( "TOPLEFT", addon.RecipeListButton[i-1], "BOTTOMLEFT", 0, 0 )
 				end
 				Temp_Plus:SetScript( "OnClick", function ()
 					addon.PlusItem_OnClick( i )
@@ -1082,8 +1889,8 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				Temp_Recipe:SetScript( "OnClick", function ()
 					addon.RecipeItem_OnClick( i )
 				end )
-				ARL_PlusList[i] = Temp_Plus
-				ARL_RecipeList[i] = Temp_Recipe
+				addon.PlusListButton[i] = Temp_Plus
+				addon.RecipeListButton[i] = Temp_Recipe
 			end
 
 			local ARL_RecipeScrollFrame = CreateFrame( "ScrollFrame", "ARL_RecipeScrollFrame",
@@ -1092,172 +1899,560 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 			ARL_RecipeScrollFrame:SetWidth( 243 )
 			ARL_RecipeScrollFrame:SetPoint( "TOPLEFT", addon.Frame, "TOPLEFT", 20, -97 )
 			ARL_RecipeScrollFrame:SetScript( "OnVerticalScroll", function()
-				FauxScrollFrame_OnVerticalScroll( 17, addon.RecipeList_Update )
+				FauxScrollFrame_OnVerticalScroll( 16, addon.RecipeList_Update )
 			end )
 
---[[	General:
-			( ) Class Specific recipes
-			( ) Craft Specialty recipes
-			( ) All skill levels
-			( ) Horde     ( ) Alliance
-			( ) Known	  ( ) Unknown		]]--
---[[
-			local ARL_FLTGenText = addon.Frame:CreateFontString( "ARL_FLTGenText", "OVERLAY", "GameFontHighlight" )
-			ARL_FLTGenText:SetText( L["General"] )
-			ARL_FLTGenText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -5 )
-			ARL_FLTGenText:SetHeight( 14 )
-			ARL_FLTGenText:SetWidth( 150 )
-			ARL_FLTGenText:SetJustifyH( "LEFT" )
-			ARL_FLTGenText:Hide()
+			-- Stuff that appears on the main frame only when expanded
 
-			local ARL_ClassCB = CreateFrame( "CheckButton", "ARL_ClassCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_ClassCB, ARL_FLTGenText, L["CLASS_TOGGLE"], 1, 1, 1 )
-				ARL_ClassCBText:SetText( L["Class Specific recipes"] )
-			local ARL_SpecialtyCB = CreateFrame( "CheckButton", "ARL_SpecialtyCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_SpecialtyCB, ARL_FLTGenText, L["SPECIALITY_TOGGLE"], 2, 2, 1 )
-				ARL_SpecialtyCBText:SetText( L["Craft Specialty recipes"] )
-			local ARL_LevelCB = CreateFrame( "CheckButton", "ARL_LevelCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_LevelCB, ARL_FLTGenText, L["SKILL_TOGGLE"], 3, 3, 1 )
-				ARL_LevelCBText:SetText( L["All Skill Levels"] )
-			local ARL_HordeCB = CreateFrame( "CheckButton", "ARL_HordeCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_HordeCB, ARL_FLTGenText, L["HORDE_TT"], 4, 4, 1 )
-				ARL_HordeCBText:SetText( L["Horde"] )
-			local ARL_AllianceCB = CreateFrame( "CheckButton", "ARL_AllianceCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_AllianceCB, ARL_FLTGenText, L["ALLIANCE_TT"], 5, 4, 2 )
-				ARL_AllianceCBText:SetText( L["Alliance"] )
-			local ARL_KnownCB = CreateFrame( "CheckButton", "ARL_KnownCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_KnownCB, ARL_FLTGenText, L["KNOWN_TT"], 6, 5, 1 )
-				ARL_KnownCBText:SetText( L["Known"] )
-			local ARL_UnknownCB = CreateFrame( "CheckButton", "ARL_UnknownCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_UnknownCB, ARL_FLTGenText, L["UNKNOWN_TT"], 7, 5, 2 )
-				ARL_UnknownCBText:SetText( L["Unknown"] )
-]]--
---[[		Obtain:
-				( ) Instance  ( ) Raid
-				( ) Quest     ( ) Seasonal
-				( ) Trainer   ( ) Vendor
-				( ) PVP		  ( ) Discovery
-				( ) Reputation **					]]--
---[[
-			local ARL_FLTObtText = addon.Frame:CreateFontString( "ARL_FLTObtText", "OVERLAY", "GameFontHighlight" )
-			ARL_FLTObtText:SetText( L["Obtain"] )
-			ARL_FLTObtText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -113 )
-			ARL_FLTObtText:SetHeight( 14 )
-			ARL_FLTObtText:SetWidth( 150 )
-			ARL_FLTObtText:SetJustifyH( "LEFT" )
-			ARL_FLTObtText:Hide()
+			local ARL_ResetButton = addon:GenericCreateButton( "ARL_ResetButton", addon.Frame,
+				25, 90, "TOPRIGHT", ARL_FilterButton, "BOTTOMRIGHT", 0, -2, "GameFontNormalSmall",
+				"GameFontHighlightSmall", L["Reset"], "CENTER", L["RESET_TT"], 1 )
+				ARL_ResetButton:SetScript( "OnClick", addon.resetFilters )
+				ARL_ResetButton:Hide()
 
-			local ARL_InstanceCB = CreateFrame( "CheckButton", "ARL_InstanceCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_InstanceCB, ARL_FLTObtText, L["INSTANCE_TOGGLE"], 8, 1, 1 )
-				ARL_InstanceCBText:SetText( L["Instance"] )
-			local ARL_RaidCB = CreateFrame( "CheckButton", "ARL_RaidCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_RaidCB, ARL_FLTObtText, L["RAID_TOGGLE"], 9, 1, 2 )
-				ARL_RaidCBText:SetText( L["Raid"] )
-			local ARL_QuestCB = CreateFrame( "CheckButton", "ARL_QuestCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_QuestCB, ARL_FLTObtText, L["QUEST_TOGGLE"], 10, 2, 1 )
-				ARL_QuestCBText:SetText( L["Quest"] )
-			local ARL_SeasonalCB = CreateFrame( "CheckButton", "ARL_SeasonalCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_SeasonalCB, ARL_FLTObtText, L["SEASONAL_TOGGLE"], 11, 2, 2 )
-				ARL_SeasonalCBText:SetText( L["Seasonal"] )
-			local ARL_TrainerCB = CreateFrame( "CheckButton", "ARL_TrainerCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_TrainerCB, ARL_FLTObtText, L["TRAINER_TOGGLE"], 12, 3, 1 )
-				ARL_TrainerCBText:SetText( L["Trainer"] )
-			local ARL_VendorCB = CreateFrame( "CheckButton", "ARL_VendorCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_VendorCB, ARL_FLTObtText, L["VENDOR_TOGGLE"], 13, 3, 2 )
-				ARL_VendorCBText:SetText( L["Vendor"] )
-			local ARL_PVPCB = CreateFrame( "CheckButton", "ARL_PVPCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_PVPCB, ARL_FLTObtText, L["PVP_TOGGLE"], 14, 4, 1 )
-				ARL_PVPCBText:SetText( L["PVP"] )
-			local ARL_DiscoveryCB = CreateFrame( "CheckButton", "ARL_DiscoveryCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_DiscoveryCB, ARL_FLTObtText, L["DISCOVERY_TT"], 15, 4, 2 )
-				ARL_DiscoveryCBText:SetText( L["Discovery"] )
-			local ARL_ReputationCB = CreateFrame( "CheckButton", "ARL_ReputationCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_ReputationCB, ARL_FLTObtText, L["REP_TT"], 16, 5, 1 )
-				ARL_ReputationCBText:SetText( L["Reputation"] )
+			local ARL_ApplyButton = addon:GenericCreateButton( "ARL_ApplyButton", addon.Frame,
+				22, 69, "RIGHT", ARL_CloseButton, "LEFT", -80, 0, "GameFontNormalSmall",
+				"GameFontHighlightSmall", L["Apply"], "CENTER", L["Apply_TT"], 1 )
+			ARL_ApplyButton:Hide()
 
-			local ARL_RepPlus = addon:GenericCreateButton( "ARL_RepPlus", addon.Frame,
-				16, 16, "LEFT", ARL_ReputationCBText, "RIGHT", 1, -1, "GameFontNormalSmall",
-				"GameFontHighlightSmall", "", "LEFT", "testTT", 2 )
-			ARL_RepPlus:Hide()
-]]--
---[[		Item Type:
-				( ) Armor **  ( ) Weapon **
-				( ) BoP								]]--
---[[
-			local ARL_FLTITypeText = addon.Frame:CreateFontString( "ARL_FLTITypeText", "OVERLAY", "GameFontHighlight" )
-			ARL_FLTITypeText:SetText( L["Item Type"] )
-			ARL_FLTITypeText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -220 )
-			ARL_FLTITypeText:SetHeight( 14 )
-			ARL_FLTITypeText:SetWidth( 150 )
-			ARL_FLTITypeText:SetJustifyH( "LEFT" )
-			ARL_FLTITypeText:Hide()
+			-- EXPANDED : 5 buttons for opening/closing the flyaway
 
-			local ARL_ArmorCB = CreateFrame( "CheckButton", "ARL_ArmorCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_ArmorCB, ARL_FLTITypeText, L["ARMOR_TT"], 17, 1, 1 )
-				ARL_ArmorCBText:SetText( L["Armor"] )
-				-- Disabled for now
-				ARL_ArmorCBText:SetText( addon:Grey( L["Armor"] ) )
-				ARL_ArmorCB:Disable()
-			local ARL_WeaponCB = CreateFrame( "CheckButton", "ARL_WeaponCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_WeaponCB, ARL_FLTITypeText, L["WEAPON_TT"], 18, 1, 2 )
-				ARL_WeaponCBText:SetText( L["Weapon"] )
-				-- Disabled for now
-				ARL_WeaponCBText:SetText( addon:Grey( L["Weapon"] ) )
-				ARL_WeaponCB:Disable()
-			local ARL_BOPCB = CreateFrame( "CheckButton", "ARL_BOPCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_BOPCB, ARL_FLTITypeText, L["BOP_TOGGLE"], 19, 2, 1 )
-				ARL_BOPCBText:SetText( L["BoPMenu"] )
+			ARL_ExpGeneralOptCB = addon:CreateExpCB( "ARL_ExpGeneralOptCB", "INV_Misc_Note_06", 1 )
+			ARL_ExpGeneralOptCB:SetPoint( "TOPRIGHT", ARL_FilterButton, "BOTTOMLEFT", -1, -50 )
 
-			local ARL_ArmorPlus = addon:GenericCreateButton( "ARL_ArmorPlus", addon.Frame,
-				16, 16, "LEFT", ARL_ArmorCBText, "RIGHT", 1, -1, "GameFontNormalSmall",
-				"GameFontHighlightSmall", "", "LEFT", "testTT", 2 )
-				ARL_ArmorPlus:Disable()
-				ARL_ArmorPlus:Hide()
-			local ARL_WeaponPlus = addon:GenericCreateButton( "ARL_WeaponPlus", addon.Frame,
-				16, 16, "LEFT", ARL_WeaponCBText, "RIGHT", 1, -1, "GameFontNormalSmall",
-				"GameFontHighlightSmall", "", "LEFT", "testTT", 2 )
-				ARL_WeaponPlus:Disable()
-				ARL_WeaponPlus:Hide()
-]]--
---[[		Player Type:
-				( ) Tank	  ( ) Melee DPS
+			ARL_ExpObtainOptCB = addon:CreateExpCB( "ARL_ExpObtainOptCB", "Spell_Shadow_MindRot", 2 )
+			ARL_ExpObtainOptCB:SetPoint( "TOPLEFT", ARL_ExpGeneralOptCB, "BOTTOMLEFT", 0, -8 )
+
+			ARL_ExpBindingOptCB = addon:CreateExpCB( "ARL_ExpBindingOptCB", "INV_Belt_20", 3 )
+			ARL_ExpBindingOptCB:SetPoint( "TOPLEFT", ARL_ExpObtainOptCB, "BOTTOMLEFT", -0, -8 )
+
+			ARL_ExpItemOptCB = addon:CreateExpCB( "ARL_ExpItemOptCB", "INV_Misc_EngGizmos_19", 4 )
+			ARL_ExpItemOptCB:SetPoint( "TOPLEFT", ARL_ExpBindingOptCB, "BOTTOMLEFT", -0, -8 )
+
+			ARL_ExpPlayerOptCB = addon:CreateExpCB( "ARL_ExpPlayerOptCB", "INV_Misc_GroupLooking", 5 )
+			ARL_ExpPlayerOptCB:SetPoint( "TOPLEFT", ARL_ExpItemOptCB, "BOTTOMLEFT", -0, -8 )
+
+			ARL_ExpRepOptCB = addon:CreateExpCB( "ARL_ExpRepOptCB", "INV_Scroll_05", 6 )
+			ARL_ExpRepOptCB:SetPoint( "TOPLEFT", ARL_ExpPlayerOptCB, "BOTTOMLEFT", -0, -8 )
+
+		-- Frame for the flyaway pane
+			addon.Flyaway = CreateFrame("Frame", "addon.Flyaway", addon.Frame)
+				addon.Flyaway:SetWidth(234)
+				addon.Flyaway:SetHeight(312)
+
+				addon.flyTexture = addon.Flyaway:CreateTexture( "AckisRecipeList.flyTexture", "ARTWORK" )
+				addon.flyTexture:SetTexture( [[Interface\Addons\AckisRecipeList\img\fly_2col]] )
+				addon.flyTexture:SetAllPoints( addon.Flyaway )
+				addon.flyTexture:SetTexCoord( 0, (234/256), 0, (312/512) )
+				addon.Flyaway:SetFrameStrata( "LOW" )
+				addon.Flyaway:SetHitRectInsets( 5, 5, 5, 5 )
+
+				addon.Flyaway:EnableMouse(true)
+				addon.Flyaway:EnableKeyboard(true)
+				addon.Flyaway:SetMovable(false)
+
+				addon.Flyaway:ClearAllPoints()
+				addon.Flyaway:SetPoint("TOPLEFT", addon.Frame, "TOPRIGHT", -6, -102)
+
+				addon.Flyaway:SetScript( "OnShow", addon.setFlyawayState ) 
+				addon.Flyaway:Hide()
+
+		-- Flyaway virtual frames to group buttons/text easily (and make them easy to show/hide)
+
+			addon.Fly_General = CreateFrame( "Frame", "addon.Fly_General", addon.Flyaway )
+				addon.Fly_General:SetWidth( 210 )
+				addon.Fly_General:SetHeight( 280 )
+				addon.Fly_General:SetFrameStrata( "MEDIUM" )
+				addon.Fly_General:EnableMouse( true )
+				addon.Fly_General:EnableKeyboard( true )
+				addon.Fly_General:SetMovable( false )
+				addon.Fly_General:SetPoint( "TOPLEFT", addon.Flyaway, "TOPLEFT", 17, -16 )
+				addon.Fly_General:Hide()
+--[[			( ) Class Specific recipes
+				( ) Craft Specialty recipes
+				( ) All skill levels
+				( ) Cross-Faction
+				( ) Known	  ( ) Unknown		]]--
+				local ARL_ClassCB = CreateFrame( "CheckButton", "ARL_ClassCB", addon.Fly_General, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ClassCB, addon.Fly_General, L["CLASS_TOGGLE"], 1, 1, 1, 0 )
+					ARL_ClassCBText:SetText( L["Class Specific recipes"] )
+				local ARL_SpecialtyCB = CreateFrame( "CheckButton", "ARL_SpecialtyCB", addon.Fly_General, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_SpecialtyCB, addon.Fly_General, L["SPECIALITY_TOGGLE"], 2, 2, 1, 0 )
+					ARL_SpecialtyCBText:SetText( L["Craft Specialty recipes"] )
+				local ARL_LevelCB = CreateFrame( "CheckButton", "ARL_LevelCB", addon.Fly_General, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_LevelCB, addon.Fly_General, L["SKILL_TOGGLE"], 3, 3, 1, 0 )
+					ARL_LevelCBText:SetText( L["All Skill Levels"] )
+				local ARL_FactionCB = CreateFrame( "CheckButton", "ARL_FactionCB", addon.Fly_General, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_FactionCB, addon.Fly_General, L["FACTION_TOGGLE"], 4, 4, 1, 0 )
+					ARL_FactionCBText:SetText( L["Faction"] )
+				local ARL_KnownCB = CreateFrame( "CheckButton", "ARL_KnownCB", addon.Fly_General, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_KnownCB, addon.Fly_General, L["KNOWN_TT"], 5, 5, 1, 0 )
+					ARL_KnownCBText:SetText( L["Known"] )
+				local ARL_UnknownCB = CreateFrame( "CheckButton", "ARL_UnknownCB", addon.Fly_General, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_UnknownCB, addon.Fly_General, L["UNKNOWN_TT"], 6, 5, 2, 0 )
+					ARL_UnknownCBText:SetText( L["Unknown"] )
+
+			addon.Fly_Obtain = CreateFrame( "Frame", "addon.Fly_Obtain", addon.Flyaway )
+				addon.Fly_Obtain:SetWidth( 210 )
+				addon.Fly_Obtain:SetHeight( 280 )
+				addon.Fly_Obtain:SetFrameStrata( "MEDIUM" )
+				addon.Fly_Obtain:EnableMouse( true )
+				addon.Fly_Obtain:EnableKeyboard( true )
+				addon.Fly_Obtain:SetMovable( false )
+				addon.Fly_Obtain:SetPoint( "TOPLEFT", addon.Flyaway, "TOPLEFT", 17, -16 )
+				addon.Fly_Obtain:Hide()
+--[[			( ) Instance	( ) Raid
+				( ) Quest		( ) Seasonal
+				( ) Trainer		( ) Vendor
+				( ) PVP			( ) Discovery
+				( ) World Drop	( ) Mob Drop					]]--
+				local ARL_InstanceCB = CreateFrame( "CheckButton", "ARL_InstanceCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_InstanceCB, addon.Fly_Obtain, L["INSTANCE_TOGGLE"], 7, 1, 1, 0 )
+					ARL_InstanceCBText:SetText( L["Instance"] )
+				local ARL_RaidCB = CreateFrame( "CheckButton", "ARL_RaidCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RaidCB, addon.Fly_Obtain, L["RAID_TOGGLE"], 8, 2, 1, 0 )
+					ARL_RaidCBText:SetText( L["Raid"] )
+				local ARL_QuestCB = CreateFrame( "CheckButton", "ARL_QuestCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_QuestCB, addon.Fly_Obtain, L["QUEST_TOGGLE"], 9, 3, 1, 0 )
+					ARL_QuestCBText:SetText( L["Quest"] )
+				local ARL_SeasonalCB = CreateFrame( "CheckButton", "ARL_SeasonalCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_SeasonalCB, addon.Fly_Obtain, L["SEASONAL_TOGGLE"], 10, 4, 1, 0 )
+					ARL_SeasonalCBText:SetText( L["Seasonal"] )
+				local ARL_TrainerCB = CreateFrame( "CheckButton", "ARL_TrainerCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_TrainerCB, addon.Fly_Obtain, L["TRAINER_TOGGLE"], 11, 5, 1, 0 )
+					ARL_TrainerCBText:SetText( L["Trainer"] )
+				local ARL_VendorCB = CreateFrame( "CheckButton", "ARL_VendorCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_VendorCB, addon.Fly_Obtain, L["VENDOR_TOGGLE"], 12, 6, 1, 0 )
+					ARL_VendorCBText:SetText( L["Vendor"] )
+				local ARL_PVPCB = CreateFrame( "CheckButton", "ARL_PVPCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_PVPCB, addon.Fly_Obtain, L["PVP_TOGGLE"], 13, 7, 1, 0 )
+					ARL_PVPCBText:SetText( L["PVP"] )
+				local ARL_DiscoveryCB = CreateFrame( "CheckButton", "ARL_DiscoveryCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_DiscoveryCB, addon.Fly_Obtain, L["DISCOVERY_TT"], 14, 8, 1, 0 )
+					ARL_DiscoveryCBText:SetText( L["Discovery"] )
+				local ARL_WorldDropCB = CreateFrame( "CheckButton", "ARL_WorldDropCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WorldDropCB, addon.Fly_Obtain, L["WORLD_DROP_TOGGLE"], 39, 9, 1, 0 )
+					ARL_WorldDropCBText:SetText( L["World Drop"] )
+				local ARL_MobDropCB = CreateFrame( "CheckButton", "ARL_MobDropCB", addon.Fly_Obtain, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_MobDropCB, addon.Fly_Obtain, L["MOB_DROP_TT"], 40, 10, 1, 0 )
+					ARL_MobDropCBText:SetText( L["Mob Drop"] )
+
+			addon.Fly_Binding = CreateFrame( "Frame", "addon.Fly_Binding", addon.Flyaway )
+				addon.Fly_Binding:SetWidth( 210 )
+				addon.Fly_Binding:SetHeight( 280 )
+				addon.Fly_Binding:SetFrameStrata( "MEDIUM" )
+				addon.Fly_Binding:EnableMouse( true )
+				addon.Fly_Binding:EnableKeyboard( true )
+				addon.Fly_Binding:SetMovable( false )
+				addon.Fly_Binding:SetPoint( "TOPLEFT", addon.Flyaway, "TOPLEFT", 17, -16 )
+				addon.Fly_Binding:Hide()
+--[[			( ) Crafted Item is Bind on Equip
+				( ) Crafted Item is Bind on Pickup
+				( ) Recipe is Bind on Equip
+				( ) Recipe is Bind on Pickup		]]--
+				local ARL_iBoECB = CreateFrame( "CheckButton", "ARL_iBoECB", addon.Fly_Binding, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_iBoECB, addon.Fly_Binding, L["IBOE_TT"], 15, 1, 1, 0 )
+					ARL_iBoECBText:SetText( L["IBOE"] )
+				local ARL_iBoPCB = CreateFrame( "CheckButton", "ARL_iBoPCB", addon.Fly_Binding, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_iBoPCB, addon.Fly_Binding, L["IBOP_TT"], 16, 2, 1, 0 )
+					ARL_iBoPCBText:SetText( L["IBOP"] )
+				local ARL_rBoECB = CreateFrame( "CheckButton", "ARL_rBoECB", addon.Fly_Binding, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_rBoECB, addon.Fly_Binding, L["RBOE_TT"], 17, 3, 1, 0 )
+					ARL_rBoECBText:SetText( L["RBOE"] )
+				local ARL_rBoPCB = CreateFrame( "CheckButton", "ARL_rBoPCB", addon.Fly_Binding, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_rBoPCB, addon.Fly_Binding, L["RBOP_TT"], 18, 4, 1, 0 )
+					ARL_rBoPCBText:SetText( L["RBOP"] )
+
+			addon.Fly_Item = CreateFrame( "Frame", "addon.Fly_Item", addon.Flyaway )
+				addon.Fly_Item:SetWidth( 210 )
+				addon.Fly_Item:SetHeight( 280 )
+				addon.Fly_Item:SetFrameStrata( "MEDIUM" )
+				addon.Fly_Item:EnableMouse( true )
+				addon.Fly_Item:EnableKeyboard( true )
+				addon.Fly_Item:SetMovable( false )
+				addon.Fly_Item:SetPoint( "TOPLEFT", addon.Flyaway, "TOPLEFT", 17, -16 )
+				addon.Fly_Item:Hide()
+--[[			Armor:
+					( ) All		( ) None
+					( ) Cloth	( ) Leather
+					( ) Mail	( ) Plate
+					
+					( ) Cloak	( ) Necklace
+					( ) Rings	( ) Trinkets ]]--
+				local ARL_ArmorText = addon.Fly_Item:CreateFontString( "ARL_ArmorText", "OVERLAY", "GameFontHighlight" )
+					ARL_ArmorText:SetText( L["Armor"] .. ":" )
+					ARL_ArmorText:SetPoint( "TOPLEFT", addon.Fly_Item, "TOPLEFT", 5, -8 )
+					ARL_ArmorText:SetHeight( 14 )
+					ARL_ArmorText:SetWidth( 150 )
+					ARL_ArmorText:SetJustifyH( "LEFT" )
+				local ARL_ArmorAllCB = CreateFrame( "CheckButton", "ARL_ArmorAllCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorAllCB, addon.Fly_Item, L["ArmorAll_TT"], 19, 2, 1, 0 )
+					ARL_ArmorAllCBText:SetText( L["All"] )
+				local ARL_ArmorNoneCB = CreateFrame( "CheckButton", "ARL_ArmorNoneCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorNoneCB, addon.Fly_Item, L["ArmorNone_TT"], 20, 2, 2, 0 )
+					ARL_ArmorNoneCBText:SetText( L["None"] )
+				local ARL_ArmorClothCB = CreateFrame( "CheckButton", "ARL_ArmorClothCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorClothCB, addon.Fly_Item, L["CLOTH_TOGGLE"], 21, 3, 1, 0 )
+					ARL_ArmorClothCBText:SetText( L["Cloth"] )
+				local ARL_ArmorLeatherCB = CreateFrame( "CheckButton", "ARL_ArmorLeatherCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorLeatherCB, addon.Fly_Item, L["LEATHER_TOGGLE"], 22, 3, 2, 0 )
+					ARL_ArmorLeatherCBText:SetText( L["Leather"] )
+				local ARL_ArmorMailCB = CreateFrame( "CheckButton", "ARL_ArmorMailCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorMailCB, addon.Fly_Item, L["MAIL_TOGGLE"], 23, 4, 1, 0 )
+					ARL_ArmorMailCBText:SetText( L["Mail"] )
+				local ARL_ArmorPlateCB = CreateFrame( "CheckButton", "ARL_ArmorPlateCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorPlateCB, addon.Fly_Item, L["PLATE_TOGGLE"], 24, 4, 2, 0 )
+					ARL_ArmorPlateCBText:SetText( L["Plate"] )
+
+				local ARL_ArmorCloakCB = CreateFrame( "CheckButton", "ARL_ArmorCloakCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorCloakCB, addon.Fly_Item, L["CLOAK_TOGGLE"], 64, 5, 1, 0 )
+					ARL_ArmorCloakCBText:SetText( L["Cloak"] )
+				local ARL_ArmorNecklaceCB = CreateFrame( "CheckButton", "ARL_ArmorNecklaceCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorNecklaceCB, addon.Fly_Item, L["NECKLACE_TOGGLE"], 65, 5, 2, 0 )
+					ARL_ArmorNecklaceCBText:SetText( L["Necklace"] )
+				local ARL_ArmorRingCB = CreateFrame( "CheckButton", "ARL_ArmorRingCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorRingCB, addon.Fly_Item, L["RING_TOGGLE"], 66, 6, 1, 0 )
+					ARL_ArmorRingCBText:SetText( L["Ring"] )
+				local ARL_ArmorTrinketCB = CreateFrame( "CheckButton", "ARL_ArmorTrinketCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_ArmorTrinketCB, addon.Fly_Item, L["TRINKET_TOGGLE"], 67, 6, 2, 0 )
+					ARL_ArmorTrinketCBText:SetText( L["Trinket"] )
+--[[			Weapon:
+					( ) All		( ) None
+					( ) 1H		( ) 2H
+					( ) Dagger	( ) Axe
+					( ) Mace	( ) Sword
+					( ) Polearm	( ) Thrown
+					( ) Bow		( ) Crossbow
+					( ) Staff						]]--
+				local ARL_WeaponText = addon.Fly_Item:CreateFontString( "ARL_WeaponText", "OVERLAY", "GameFontHighlight" )
+					ARL_WeaponText:SetText( L["Weapon"] .. ":" )
+					ARL_WeaponText:SetPoint( "TOPLEFT", addon.Fly_Item, "TOPLEFT", 5, -116 )
+					ARL_WeaponText:SetHeight( 14 )
+					ARL_WeaponText:SetWidth( 150 )
+					ARL_WeaponText:SetJustifyH( "LEFT" )
+				local ARL_WeaponAllCB = CreateFrame( "CheckButton", "ARL_WeaponAllCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponAllCB, addon.Fly_Item, L["WeaponAll_TT"], 25, 8, 1, 0 )
+					ARL_WeaponAllCBText:SetText( L["All"] )
+				local ARL_WeaponNoneCB = CreateFrame( "CheckButton", "ARL_WeaponNoneCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponNoneCB, addon.Fly_Item, L["WeaponNone_TT"], 26, 8, 2, 0 )
+					ARL_WeaponNoneCBText:SetText( L["None"] )
+				local ARL_Weapon1HCB = CreateFrame( "CheckButton", "ARL_Weapon1HCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_Weapon1HCB, addon.Fly_Item, L["Weapon1H_TT"], 27, 9, 1, 0 )
+					ARL_Weapon1HCBText:SetText( L["1H"] )
+				local ARL_Weapon2HCB = CreateFrame( "CheckButton", "ARL_Weapon2HCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_Weapon2HCB, addon.Fly_Item, L["Weapon2H_TT"], 28, 9, 2, 0 )
+					ARL_Weapon2HCBText:SetText( L["2H"] )
+				local ARL_WeaponDaggerCB = CreateFrame( "CheckButton", "ARL_WeaponDaggerCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponDaggerCB, addon.Fly_Item, L["WeaponDagger_TT"], 29, 10, 1, 0 )
+					ARL_WeaponDaggerCBText:SetText( L["Dagger"] )
+				local ARL_WeaponAxeCB = CreateFrame( "CheckButton", "ARL_WeaponAxeCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponAxeCB, addon.Fly_Item, L["WeaponAxe_TT"], 30, 10, 2, 0 )
+					ARL_WeaponAxeCBText:SetText( L["Axe"] )
+				local ARL_WeaponMaceCB = CreateFrame( "CheckButton", "ARL_WeaponMaceCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponMaceCB, addon.Fly_Item, L["WeaponMace_TT"], 31, 11, 1, 0 )
+					ARL_WeaponMaceCBText:SetText( L["Mace"] )
+				local ARL_WeaponSwordCB = CreateFrame( "CheckButton", "ARL_WeaponSwordCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponSwordCB, addon.Fly_Item, L["WeaponSword_TT"], 32, 11, 2, 0 )
+					ARL_WeaponSwordCBText:SetText( L["Sword"] )
+				local ARL_WeaponPolearmCB = CreateFrame( "CheckButton", "ARL_WeaponPolearmCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponPolearmCB, addon.Fly_Item, L["WeaponPolearm_TT"], 33, 12, 1, 0 )
+					ARL_WeaponPolearmCBText:SetText( L["Polearm"] )
+				local ARL_WeaponStaffCB = CreateFrame( "CheckButton", "ARL_WeaponStaffCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponStaffCB, addon.Fly_Item, L["WeaponStaff_TT"], 34, 12, 2, 0 )
+					ARL_WeaponStaffCBText:SetText( L["Staff"] )
+					-- Disabled for now...
+					ARL_WeaponStaffCBText:SetText( addon:Grey( L["Staff"] ) )
+					ARL_WeaponStaffCB:Disable()
+				local ARL_WeaponWandCB = CreateFrame( "CheckButton", "ARL_WeaponWandCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponWandCB, addon.Fly_Item, L["WeaponWand_TT"], 68, 13, 1, 0 )
+					ARL_WeaponWandCBText:SetText( L["Wand"] )
+				local ARL_WeaponThrownCB = CreateFrame( "CheckButton", "ARL_WeaponThrownCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponThrownCB, addon.Fly_Item, L["WeaponThrown_TT"], 35, 13, 2, 0 )
+					ARL_WeaponThrownCBText:SetText( L["Thrown"] )
+				local ARL_WeaponBowCB = CreateFrame( "CheckButton", "ARL_WeaponBowCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponBowCB, addon.Fly_Item, L["WeaponBow_TT"], 36, 14, 1, 0 )
+					ARL_WeaponBowCBText:SetText( L["Bow"] )
+					-- Disabled for now...
+					ARL_WeaponBowCBText:SetText( addon:Grey( L["Bow"] ) )
+					ARL_WeaponBowCB:Disable()
+				local ARL_WeaponCrossbowCB = CreateFrame( "CheckButton", "ARL_WeaponCrossbowCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponCrossbowCB, addon.Fly_Item, L["WeaponCrossbow_TT"], 37, 14, 2, 0 )
+					ARL_WeaponCrossbowCBText:SetText( L["Crossbow"] )
+					-- Disabled for now...
+					ARL_WeaponCrossbowCBText:SetText( addon:Grey( L["Crossbow"] ) )
+					ARL_WeaponCrossbowCB:Disable()
+				local ARL_WeaponAmmoCB = CreateFrame( "CheckButton", "ARL_WeaponAmmoCB", addon.Fly_Item, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_WeaponAmmoCB, addon.Fly_Item, L["WeaponAmmo_TT"], 38, 15, 1, 0 )
+					ARL_WeaponAmmoCBText:SetText( L["Ammo"] )
+
+			addon.Fly_Player= CreateFrame( "Frame", "addon.Fly_Player", addon.Flyaway )
+				addon.Fly_Player:SetWidth( 112 )
+				addon.Fly_Player:SetHeight( 280 )
+				addon.Fly_Player:SetFrameStrata( "MEDIUM" )
+				addon.Fly_Player:EnableMouse( true )
+				addon.Fly_Player:EnableKeyboard( true )
+				addon.Fly_Player:SetMovable( false )
+				addon.Fly_Player:SetPoint( "TOPLEFT", addon.Flyaway, "TOPLEFT", 17, -16 )
+				addon.Fly_Player:Hide()
+--[[			( ) Tank	  ( ) Melee DPS
 				( ) Healer	  ( ) Caster DPS		]]--
---[[
-			local ARL_FLTPTypeText = addon.Frame:CreateFontString( "ARL_FLTPTypeText", "OVERLAY", "GameFontHighlight" )
-			ARL_FLTPTypeText:SetText( L["Player Type"] )
-			ARL_FLTPTypeText:SetPoint( "TOPLEFT", ARL_SearchButton, "BOTTOMRIGHT", 15, -273 )
-			ARL_FLTPTypeText:SetHeight( 14 )
-			ARL_FLTPTypeText:SetWidth( 150 )
-			ARL_FLTPTypeText:SetJustifyH( "LEFT" )
-			-- Since this function is disabled for now, throw this in:
-			ARL_FLTPTypeText:SetText( addon:Grey( L["Player Type"] ) )
-			ARL_FLTPTypeText:Hide()
+				local ARL_PlayerTankCB = CreateFrame( "CheckButton", "ARL_PlayerTankCB", addon.Fly_Player, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_PlayerTankCB, addon.Fly_Player, L["TANKING_TOGGLE"], 41, 1, 1, 0 )
+					ARL_PlayerTankCBText:SetText( L["Tank"] )
+				local ARL_PlayerMeleeCB = CreateFrame( "CheckButton", "ARL_PlayerMeleeCB", addon.Fly_Player, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_PlayerMeleeCB, addon.Fly_Player, L["MELEE_TOGGLE"], 42, 2, 1, 0 )
+					ARL_PlayerMeleeCBText:SetText( L["Melee DPS"] )
+				local ARL_PlayerHealerCB = CreateFrame( "CheckButton", "ARL_PlayerHealerCB", addon.Fly_Player, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_PlayerHealerCB, addon.Fly_Player, L["HEALING_TOGGLE"], 43, 3, 1, 0 )
+					ARL_PlayerHealerCBText:SetText( L["Healer"] )
+				local ARL_PlayerCasterCB = CreateFrame( "CheckButton", "ARL_PlayerCasterCB", addon.Fly_Player, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_PlayerCasterCB, addon.Fly_Player, L["CASTERDPS_TOGGLE"], 44, 4, 1, 0 )
+					ARL_PlayerCasterCBText:SetText( L["Caster DPS"] )
 
-			local ARL_TankCB = CreateFrame( "CheckButton", "ARL_TankCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_TankCB, ARL_FLTPTypeText, L["TANKING_TOGGLE"], 20, 1, 1 )
-				ARL_TankCBText:SetText( L["Tank"] )
-				-- Disabled for now...
-				ARL_TankCBText:SetText( addon:Grey( L["Tank"] ) )
-				ARL_TankCB:Disable()
-			local ARL_MeleeCB = CreateFrame( "CheckButton", "ARL_MeleeCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_MeleeCB, ARL_FLTPTypeText, L["MELEE_TOGGLE"], 21, 1, 2 )
-				ARL_MeleeCBText:SetText( L["Melee DPS"] )
-				-- Disabled for now...
-				ARL_MeleeCBText:SetText( addon:Grey( L["Melee DPS"] ) )
-				ARL_MeleeCB:Disable()
-			local ARL_HealerCB = CreateFrame( "CheckButton", "ARL_HealerCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_HealerCB, ARL_FLTPTypeText, L["HEALING_TOGGLE"], 22, 2, 1 )
-				ARL_HealerCBText:SetText( L["Healer"] )
-				-- Disabled for now...
-				ARL_HealerCBText:SetText( addon:Grey( L["Healer"] ) )
-				ARL_HealerCB:Disable()
-			local ARL_CasterCB = CreateFrame( "CheckButton", "ARL_CasterCB", addon.Frame, "UICheckButtonTemplate" )
-				addon:GenericMakeCB( ARL_CasterCB, ARL_FLTPTypeText, L["CASTERDPS_TOGGLE"], 23, 2, 2 )
-				ARL_CasterCBText:SetText( L["Caster DPS"] )
-				-- Disabled for now...
-				ARL_CasterCBText:SetText( addon:Grey( L["Caster DPS"] ) )
-				ARL_CasterCB:Disable()
-]]--
+			addon.Fly_Rep = CreateFrame( "Frame", "addon.Fly_Rep", addon.Flyaway )
+				addon.Fly_Rep:SetWidth( 112 )
+				addon.Fly_Rep:SetHeight( 280 )
+				addon.Fly_Rep:SetFrameStrata( "MEDIUM" )
+				addon.Fly_Rep:EnableMouse( true )
+				addon.Fly_Rep:EnableKeyboard( true )
+				addon.Fly_Rep:SetMovable( false )
+				addon.Fly_Rep:SetPoint( "TOPLEFT", addon.Flyaway, "TOPLEFT", 17, -16 )
+				addon.Fly_Rep:Hide()
+
+				ARL_RepOldWorldCB = addon:CreateExpCB( "ARL_RepOldWorldCB", "Glues-WoW-Logo", 1 )
+				ARL_RepOldWorldCB:SetPoint( "TOPLEFT", addon.Fly_Rep, "TOPLEFT", 0, -10 )
+				ARL_RepOldWorldCB:SetScript( "OnClick", function()
+					addon.RepFilterSwitch( 1 )
+				end )
+
+				ARL_RepBCCB = addon:CreateExpCB( "ARL_RepBCCB", "GLUES-WOW-BCLOGO", 1 )
+				ARL_RepBCCB:SetPoint( "TOPLEFT", addon.Fly_Rep, "TOPLEFT", 0, -60 )
+				ARL_RepBCCB:SetScript( "OnClick", function()
+					addon.RepFilterSwitch( 2 )
+				end )
+
+				addon.Fly_Rep_OW= CreateFrame( "Frame", "addon.Fly_Rep_OW", addon.Fly_Rep )
+				addon.Fly_Rep_OW:SetWidth( 150 )
+				addon.Fly_Rep_OW:SetHeight( 280 )
+				addon.Fly_Rep_OW:SetFrameStrata( "MEDIUM" )
+				addon.Fly_Rep_OW:EnableMouse( true )
+				addon.Fly_Rep_OW:EnableKeyboard( true )
+				addon.Fly_Rep_OW:SetMovable( false )
+				addon.Fly_Rep_OW:SetPoint( "TOPRIGHT", addon.Flyaway, "TOPRIGHT", -7, -16 )
+				addon.Fly_Rep_OW:Hide()
+--[[			( ) Argent Dawn
+				( ) Cenarion Circle
+				( ) Thorium Brotherhood
+				( ) Timbermaw Hold
+				( ) Zandalar Tribe				]]--
+				local ARL_RepArgentDawnCB = CreateFrame( "CheckButton", "ARL_RepArgentDawnCB", addon.Fly_Rep_OW, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepArgentDawnCB, addon.Fly_Rep_OW,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Argent Dawn"] ), 45, 1, 1, 0 )
+					ARL_RepArgentDawnCBText:SetText( BFAC["Argent Dawn"] )
+					ARL_RepArgentDawnCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepCenarionCircleCB = CreateFrame( "CheckButton", "ARL_RepCenarionCircleCB", addon.Fly_Rep_OW, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepCenarionCircleCB, addon.Fly_Rep_OW,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Cenarion Circle"] ), 46, 2, 1, 0 )
+					ARL_RepCenarionCircleCBText:SetText( BFAC["Cenarion Circle"] )
+					ARL_RepCenarionCircleCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepThoriumCB = CreateFrame( "CheckButton", "ARL_RepThoriumCB", addon.Fly_Rep_OW, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepThoriumCB, addon.Fly_Rep_OW,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Thorium Brotherhood"] ), 47, 3, 1, 0 )
+					ARL_RepThoriumCBText:SetText( BFAC["Thorium Brotherhood"] )
+					ARL_RepThoriumCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepTimbermawCB = CreateFrame( "CheckButton", "ARL_RepTimbermawCB", addon.Fly_Rep_OW, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepTimbermawCB, addon.Fly_Rep_OW,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Timbermaw Hold"] ), 48, 4, 1, 0 )
+					ARL_RepTimbermawCBText:SetText( BFAC["Timbermaw Hold"] )
+					ARL_RepTimbermawCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepZandalarCB = CreateFrame( "CheckButton", "ARL_RepZandalarCB", addon.Fly_Rep_OW, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepZandalarCB, addon.Fly_Rep_OW,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Zandalar Tribe"] ), 49, 5, 1, 0 )
+					ARL_RepZandalarCBText:SetText( BFAC["Zandalar Tribe"] )
+					ARL_RepZandalarCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+
+				addon.Fly_Rep_BC= CreateFrame( "Frame", "addon.Fly_Rep_BC", addon.Fly_Rep )
+				addon.Fly_Rep_BC:SetWidth( 150 )
+				addon.Fly_Rep_BC:SetHeight( 280 )
+				addon.Fly_Rep_BC:SetFrameStrata( "MEDIUM" )
+				addon.Fly_Rep_BC:EnableMouse( true )
+				addon.Fly_Rep_BC:EnableKeyboard( true )
+				addon.Fly_Rep_BC:SetMovable( false )
+				addon.Fly_Rep_BC:SetPoint( "TOPRIGHT", addon.Flyaway, "TOPRIGHT", -7, -16 )
+				addon.Fly_Rep_BC:Hide()
+--[[			( ) The Aldor
+				( ) Ashtongue Deathsworn
+				( ) Cenarion Expedition
+				( ) The Consortium
+				( ) Honor Hold / Thrallmar
+				( ) Keepers of Time
+				( ) Kurenai / The Mag'har
+				( ) Lower City
+				( ) The Scale of the Sands
+				( ) The Scryers
+				( ) The Sha'tar
+				( ) Shattered Sun Offensive
+				( ) Sporeggar
+				( ) The Violet Eye				]]--
+				local ARL_RepAldorCB = CreateFrame( "CheckButton", "ARL_RepAldorCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepAldorCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["The Aldor"] ), 50, 1, 1, 0 )
+					ARL_RepAldorCBText:SetText( BFAC["The Aldor"] )
+					ARL_RepAldorCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepAshtongueCB = CreateFrame( "CheckButton", "ARL_RepAshtongueCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepAshtongueCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Ashtongue Deathsworn"] ), 51, 2, 1, 0 )
+					ARL_RepAshtongueCBText:SetText( BFAC["Ashtongue Deathsworn"] )
+					ARL_RepAshtongueCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepCenarionExpeditionCB = CreateFrame( "CheckButton", "ARL_RepCenarionExpeditionCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepCenarionExpeditionCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Cenarion Expedition"] ), 52, 3, 1, 0 )
+					ARL_RepCenarionExpeditionCBText:SetText( BFAC["Cenarion Expedition"] )
+					ARL_RepCenarionExpeditionCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepConsortiumCB = CreateFrame( "CheckButton", "ARL_RepConsortiumCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepConsortiumCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["The Consortium"] ), 53, 4, 1, 0 )
+					ARL_RepConsortiumCBText:SetText( BFAC["The Consortium"] )
+					ARL_RepConsortiumCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepHonorHoldCB = CreateFrame( "CheckButton", "ARL_RepHonorHoldCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepHonorHoldCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], addon.HonorHold_Thrallmar_FactionText ), 54, 5, 1, 0 )
+					ARL_RepHonorHoldCBText:SetText( addon.HonorHold_Thrallmar_FactionText )
+					ARL_RepHonorHoldCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepKeepersOfTimeCB = CreateFrame( "CheckButton", "ARL_RepKeepersOfTimeCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepKeepersOfTimeCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Keepers of Time"] ), 55, 6, 1, 0 )
+					ARL_RepKeepersOfTimeCBText:SetText( BFAC["Keepers of Time"] )
+					ARL_RepKeepersOfTimeCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepKurenaiCB = CreateFrame( "CheckButton", "ARL_RepKurenaiCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepKurenaiCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], addon.Kurenai_Maghar_FactionText ), 56, 7, 1, 0 )
+					ARL_RepKurenaiCBText:SetText( addon.Kurenai_Maghar_FactionText )
+					ARL_RepKurenaiCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepLowerCityCB = CreateFrame( "CheckButton", "ARL_RepLowerCityCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepLowerCityCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Lower City"] ), 57, 8, 1, 0 )
+					ARL_RepLowerCityCBText:SetText( BFAC["Lower City"] )
+					ARL_RepLowerCityCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepScaleSandsCB = CreateFrame( "CheckButton", "ARL_RepScaleSandsCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepScaleSandsCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["The Scale of the Sands"] ), 58, 9, 1, 0 )
+					ARL_RepScaleSandsCBText:SetText( BFAC["The Scale of the Sands"] )
+					ARL_RepScaleSandsCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepScryersCB = CreateFrame( "CheckButton", "ARL_RepScryersCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepScryersCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["The Scryers"] ), 59, 10, 1, 0 )
+					ARL_RepScryersCBText:SetText( BFAC["The Scryers"] )
+					ARL_RepScryersCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepShatarCB = CreateFrame( "CheckButton", "ARL_RepShatarCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepShatarCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["The Sha'tar"] ), 60, 11, 1, 0 )
+					ARL_RepShatarCBText:SetText( BFAC["The Sha'tar"] )
+					ARL_RepShatarCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepShatteredSunCB = CreateFrame( "CheckButton", "ARL_RepShatteredSunCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepShatteredSunCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Shattered Sun Offensive"] ), 61, 12, 1, 0 )
+					ARL_RepShatteredSunCBText:SetText( BFAC["Shattered Sun Offensive"] )
+					ARL_RepShatteredSunCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepSporeggarCB = CreateFrame( "CheckButton", "ARL_RepSporeggarCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepSporeggarCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["Sporeggar"] ), 62, 13, 1, 0 )
+					ARL_RepSporeggarCBText:SetText( BFAC["Sporeggar"] )
+					ARL_RepSporeggarCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				local ARL_RepVioletEyeCB = CreateFrame( "CheckButton", "ARL_RepVioletEyeCB", addon.Fly_Rep_BC, "UICheckButtonTemplate" )
+					addon:GenericMakeCB( ARL_RepVioletEyeCB, addon.Fly_Rep_BC,
+						string.format( L["SPECIFIC_REP_TOGGLE"], BFAC["The Violet Eye"] ), 63, 14, 1, 0 )
+					ARL_RepVioletEyeCBText:SetText( BFAC["The Violet Eye"] )
+					ARL_RepVioletEyeCBText:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+
+			-- Now that everything exists, populate the global filter table
+			addon.FilterValueMap = {
+			-- General Options
+				[1]  = { cb = ARL_ClassCB,					svroot = addon.db.profile.filters.general, svval = "class" },
+				[2]  = { cb = ARL_SpecialtyCB,				svroot = addon.db.profile.filters.general, svval = "specialty" },
+				[3]  = { cb = ARL_LevelCB,					svroot = addon.db.profile.filters.general, svval = "skill" },
+				[4]  = { cb = ARL_FactionCB,				svroot = addon.db.profile.filters.general, svval = "faction" },
+				[5]  = { cb = ARL_KnownCB,					svroot = addon.db.profile.filters.general, svval = "known" },
+				[6]  = { cb = ARL_UnknownCB,				svroot = addon.db.profile.filters.general, svval = "unknown" },
+			-- Obtain Options
+				[7]  = { cb = ARL_InstanceCB,				svroot = addon.db.profile.filters.obtain, svval = "instance" },
+				[8]  = { cb = ARL_RaidCB,					svroot = addon.db.profile.filters.obtain, svval = "raid" },
+				[9]  = { cb = ARL_QuestCB,					svroot = addon.db.profile.filters.obtain, svval = "quest" },
+				[10] = { cb = ARL_SeasonalCB,				svroot = addon.db.profile.filters.obtain, svval = "seasonal" },
+				[11] = { cb = ARL_TrainerCB,				svroot = addon.db.profile.filters.obtain, svval = "trainer" },
+				[12] = { cb = ARL_VendorCB,					svroot = addon.db.profile.filters.obtain, svval = "vendor" },
+				[13] = { cb = ARL_PVPCB,					svroot = addon.db.profile.filters.obtain, svval = "pvp" },
+				[14] = { cb = ARL_DiscoveryCB,				svroot = addon.db.profile.filters.obtain, svval = "discovery" },
+				[39] = { cb = ARL_WorldDropCB,				svroot = addon.db.profile.filters.obtain, svval = "worlddrop" },
+				[40] = { cb = ARL_MobDropCB,				svroot = addon.db.profile.filters.obtain, svval = "mobdrop" },
+			-- Binding Options
+				[15] = { cb = ARL_iBoECB,					svroot = addon.db.profile.filters.binding, svval = "itemboe" },
+				[16] = { cb = ARL_iBoPCB,					svroot = addon.db.profile.filters.binding, svval = "itembop" },
+				[17] = { cb = ARL_rBoECB,					svroot = addon.db.profile.filters.binding, svval = "recipeboe" },
+				[18] = { cb = ARL_rBoPCB,					svroot = addon.db.profile.filters.binding, svval = "recipebop" },
+			-- Armor Options
+				[19] = { cb = ARL_ArmorAllCB,				svroot = "special case handler",			  svval = "" },
+				[20] = { cb = ARL_ArmorNoneCB,				svroot = "special case handler",			  svval = "" },
+				[21] = { cb = ARL_ArmorClothCB,				svroot = addon.db.profile.filters.item.armor, svval = "cloth" },
+				[22] = { cb = ARL_ArmorLeatherCB,			svroot = addon.db.profile.filters.item.armor, svval = "leather" },
+				[23] = { cb = ARL_ArmorMailCB,				svroot = addon.db.profile.filters.item.armor, svval = "mail" },
+				[24] = { cb = ARL_ArmorPlateCB,				svroot = addon.db.profile.filters.item.armor, svval = "plate" },
+				[64] = { cb = ARL_ArmorCloakCB,				svroot = addon.db.profile.filters.item.armor, svval = "cloak" },
+				[65] = { cb = ARL_ArmorNecklaceCB,			svroot = addon.db.profile.filters.item.armor, svval = "necklace" },
+				[66] = { cb = ARL_ArmorRingCB,				svroot = addon.db.profile.filters.item.armor, svval = "ring" },
+				[67] = { cb = ARL_ArmorTrinketCB,			svroot = addon.db.profile.filters.item.armor, svval = "trinket" },
+			-- Weapon Options
+				[25] = { cb = ARL_WeaponAllCB,				svroot = "special case handler",			   svval = "" },
+				[26] = { cb = ARL_WeaponNoneCB,				svroot = "special case handler",			   svval = "" },
+				[27] = { cb = ARL_Weapon1HCB,				svroot = addon.db.profile.filters.item.weapon, svval = "onehand" },
+				[28] = { cb = ARL_Weapon2HCB,				svroot = addon.db.profile.filters.item.weapon, svval = "twohand" },
+				[29] = { cb = ARL_WeaponDaggerCB,			svroot = addon.db.profile.filters.item.weapon, svval = "dagger" },
+				[30] = { cb = ARL_WeaponAxeCB,				svroot = addon.db.profile.filters.item.weapon, svval = "axe" },
+				[31] = { cb = ARL_WeaponMaceCB,				svroot = addon.db.profile.filters.item.weapon, svval = "mace" },
+				[32] = { cb = ARL_WeaponSwordCB,			svroot = addon.db.profile.filters.item.weapon, svval = "sword" },
+				[33] = { cb = ARL_WeaponPolearmCB,			svroot = addon.db.profile.filters.item.weapon, svval = "polearm" },
+				[34] = { cb = ARL_WeaponStaffCB,			svroot = "disabled",						   svval = "" },
+				[68] = { cb = ARL_WeaponWandCB,				svroot = addon.db.profile.filters.item.weapon, svval = "wand" },
+				[35] = { cb = ARL_WeaponThrownCB,			svroot = addon.db.profile.filters.item.weapon, svval = "thrown" },
+				[36] = { cb = ARL_WeaponBowCB,				svroot = "disabled",						   svval = "" },
+				[37] = { cb = ARL_WeaponCrossbowCB,			svroot = "disabled",						   svval = "" },
+				[38] = { cb = ARL_WeaponAmmoCB,				svroot = addon.db.profile.filters.item.weapon, svval = "ammo" },
+			-- Player Type Options
+				[41] = { cb = ARL_PlayerTankCB,				svroot = addon.db.profile.filters.player, svval = "tank" },
+				[42] = { cb = ARL_PlayerMeleeCB,			svroot = addon.db.profile.filters.player, svval = "melee" },
+				[43] = { cb = ARL_PlayerHealerCB,			svroot = addon.db.profile.filters.player, svval = "healer" },
+				[44] = { cb = ARL_PlayerCasterCB,			svroot = addon.db.profile.filters.player, svval = "caster" },
+			-- Old World Rep Options
+				[45] = { cb = ARL_RepArgentDawnCB,			svroot = addon.db.profile.filters.rep, svval = "argentdawn" },
+				[46] = { cb = ARL_RepCenarionCircleCB,		svroot = addon.db.profile.filters.rep, svval = "cenarioncircle" },
+				[47] = { cb = ARL_RepThoriumCB,				svroot = addon.db.profile.filters.rep, svval = "thoriumbrotherhood" },
+				[48] = { cb = ARL_RepTimbermawCB,			svroot = addon.db.profile.filters.rep, svval = "timbermaw" },
+				[49] = { cb = ARL_RepZandalarCB,			svroot = addon.db.profile.filters.rep, svval = "zandalar" },
+			-- BC Rep Options
+				[50] = { cb = ARL_RepAldorCB,				svroot = addon.db.profile.filters.rep, svval = "aldor" },
+				[51] = { cb = ARL_RepAshtongueCB,			svroot = addon.db.profile.filters.rep, svval = "ashtonguedeathsworn" },
+				[52] = { cb = ARL_RepCenarionExpeditionCB,	svroot = addon.db.profile.filters.rep, svval = "cenarionexpedition" },
+				[53] = { cb = ARL_RepConsortiumCB,			svroot = addon.db.profile.filters.rep, svval = "consortium" },
+				[54] = { cb = ARL_RepHonorHoldCB,			svroot = addon.db.profile.filters.rep, svval = "hellfire" },
+				[55] = { cb = ARL_RepKeepersOfTimeCB,		svroot = addon.db.profile.filters.rep, svval = "keepersoftime" },
+				[56] = { cb = ARL_RepKurenaiCB,				svroot = addon.db.profile.filters.rep, svval = "nagrand" },
+				[57] = { cb = ARL_RepLowerCityCB,			svroot = addon.db.profile.filters.rep, svval = "lowercity" },
+				[58] = { cb = ARL_RepScaleSandsCB,			svroot = addon.db.profile.filters.rep, svval = "scaleofthesands" },
+				[59] = { cb = ARL_RepScryersCB,				svroot = addon.db.profile.filters.rep, svval = "scryer" },
+				[60] = { cb = ARL_RepShatarCB,				svroot = addon.db.profile.filters.rep, svval = "shatar" },
+				[61] = { cb = ARL_RepShatteredSunCB,		svroot = addon.db.profile.filters.rep, svval = "shatteredsun" },
+				[62] = { cb = ARL_RepSporeggarCB,			svroot = addon.db.profile.filters.rep, svval = "sporeggar" },
+				[63] = { cb = ARL_RepVioletEyeCB,			svroot = addon.db.profile.filters.rep, svval = "violeteye" },
+			}
+
+			-- Reset our addon title text
+			addon.resetTitle()
+
+			-- Take our sorted list, and fill up DisplayStrings
+			addon.initDisplayStrings( SortedRecipeIndex )
+
+			-- And update our scrollframe
+			addon.RecipeList_Update( )
 		end
 	end
 end

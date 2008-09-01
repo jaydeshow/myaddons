@@ -1,56 +1,57 @@
 ﻿--[[
-****************************************************************************************
+************************************************************************
 AckisRecipeList
-$Date: 2008-08-22 21:21:25 -0400 (Fri, 22 Aug 2008) $
-$Rev: 80824 $
+$Date: 2008-09-01 02:51:17 -0400 (Mon, 01 Sep 2008) $
+$Rev: 81212 $
 
 Author: Ackis on Illidan US Horde
+GUI done by Zhinjio
 
-****************************************************************************************
+************************************************************************
 
 Please see Wowace.com for more information.
 
-****************************************************************************************
+************************************************************************
 
 Documentation:
-
-The mod is segmented into different files, based on what they do.
+	The mod is segmented into different files, based on what they do.
 
 Localization:
-
-All the localization files are located in the "Locals" sub-directory.  Feel free to edit locals in any
-language, make the enUS more effecient, correct typos, etc.  All I would ask is if you do edit something,
-check in-game first to make sure the change works.
+	All the localization files are located in the "Locals" sub-
+	directory.  Feel free to edit locals in any language, make the enUS
+	more effecient, correct typos, etc.  All I would ask is if you do
+	edit something, check in-game first to make sure the change works.
 
 Graphical Interface:
-
-All the graphical interface functions are located in ARLFrame.lua  This file contains all the functions
-needed for the GUI.  If you have enhancements, know how to fix an issue, etc please feel free to
-contribute.  Just leave a detailed commit note.  If it's a new feature please run it by me first before
-adding anything.
-
-Text Based Interface:
-
-The text based interface is located in the ARLText.lua file.  This hasn't really been touched since initial
-releases as people are using the GUI.
+	All the graphical interface functions are located in ARLFrame.lua.
+	This file contains all the functions needed for the GUI.  If you
+	have enhancements, know how to fix an issue, etc please feel free to
+	contribute.  Just leave a detailed commit note.  If it's a new
+	feature please run it by me first before adding anything.
 
 Recipe Database:
+	The recipe database (for professions, and beast skills) as well as
+	the vendor data base are all located in the RecipeDB folder.  The
+	basic format for the function to add recipes is:
+	
+	Spell ID, Skill Level, Obtain Information, Flags
 
-The recipe database (for professions, and beast skills) as well as the vendor data base are all located in
-the RecipeDB folder.  The basic format for the function to add recipes is:
-Spell ID, Skill Level, Obtain Information, Flags
+	Spell ID is the IDs of the spell that creates the item.  For example,
+	Robe of Winter Night is item ID 14136
+		(http://www.wowdb.com/item.aspx?id=14136)
+	It's created by spell ID 18436
+		(http://www.wowdb.com/spell.aspx?id=18436)
 
-Spell ID is the IDsof the spell that creates the item.  For example, Robe of Winter Night is item ID
-14136 (http://www.wowdb.com/item.aspx?id=14136).  It's created by spell ID 18436
-(http://www.wowdb.com/spell.aspx?id=18436).
+	Skill level is the level of the profession in which you can learn
+	the specified pattern.
 
-Skill level is the level of the profession in which you  can learn the specified pattern.
+	Obtain information is how the recipe is learned.  For world drops,
+	it's as simple as listing the type of world drop, same for trainers.
+	However, for monster drops, quest rewards, faction rewards, there is
+	a function which will add the information in an easy to read format.
 
-Obtain information is how the recipe is learnt.  For world drops, it's as simple as listing the type of
-world drop, same for trainers.  However, for monster drops, quest rewards, faction rewards, there is a 
-function which will add the information in an easy to read format.
-
-Flags are different flags which allow me to filter out the recipes.  These flags are defined as:
+	Flags are different flags which allow me to filter out the recipes.
+	These flags are defined as:
 		-- ALLIANCE= Alliance faction only
 		-- HORDE = Horde faction only
 		-- 1 = Trainer
@@ -73,20 +74,136 @@ Flags are different flags which allow me to filter out the recipes.  These flags
 		-- 18 = world drop
 		-- 19 = Recipe BoE
 		-- 20 = Recipe BoP
+		-- 21 = 1H
+		-- 22 = 2H
+		-- 23 = Cloak
+		-- 24 = Trinket
+		-- 25 = Ring
+		-- 26 = Necklace
+		-- 27 = Axe
+		-- 28 = Sword
+		-- 29 = Mace
+		-- 30 = Polearm
+		-- 31 = Dagger
+		-- 32 = Staff
+		-- 33 = Wand
+		-- 34 = Thrown
+		-- 35 = Bow
+		-- 36 = Crossbow
+		-- 37 = Ammo
 
-There are additional flags based off of which faction reputation you can obtain the recipe from.
+	There are additional flags based off of:
+		-- Reputation
+		-- Player class
+		-- Player tradeskill speciality
 
-Feel free to update any recipes with flags, new recipes, correcting the obtain information, etc.  Just
-please ensure you leave a detailed commit note.
+Feel free to update any recipes with flags, new recipes, correcting
+the obtain information, etc.  Just please ensure you leave a detailed
+commit note.
 
-I'm hoping to one day have a dataminer which will automate this process but until that happens, I will
-have to do things manually.  If you know how to do this and want to help me out, feel free to contact me.
+************************************************************************
+SavedVariable Structure
 
-****************************************************************************************
+addon.db.profile---->
+	testgui = [true|false],								-- display Zhinjio's suckass gui
+	includefiltered = [true|false],						-- include filtered recipes in totals
+	closeguionskillclose = [true|false],				-- close the GUI when the skill frame closes
+	sorting = ["Name"|"Skill"|"Acquisition"],			-- sort method in the gui
+	filteredrecipes = {									
+		"RecipeNameToNotDisplay",						-- a structure that holds recipes the user does
+		"AnotherRecipeNameToNotDisplay",				-- not want to display
+		...
+	},
+	filters = {
+		general = {
+			class = [true|false],						-- display all class specific recipes
+			specialty = [true|false],					-- display all crafting specialty recipes
+			skill = [true|false],						-- display all skill levels
+			faction = [true|false],						-- display cross faction recipes
+			known = [true|false],						-- display known recipes
+			unknown = [true|false],						-- display unknown recipes
+		},
+		obtain = {
+			instance = [true|false],					-- show recipes obtained from instances
+			raid = [true|false],						-- show recipes obtained from raids
+			quest = [true|false],						-- show recipes obtained from quests
+			seasonal = [true|false],					-- show recipes obtained during seasonal events
+			trainer = [true|false],						-- show recipes obtained from trainers
+			vendor = [true|false],						-- show recipes obtained from vendors
+			pvp = [true|false],							-- show recipes obtained from PVP
+			discovery = [true|false],					-- show recipes obtained by discovery
+			worlddrop = [true|false],					-- show recipes that are world drops
+			mobdrop = [true|false],						-- show recipes that are specific mob drops
+		},
+		binding = {
+			itembop = [true|false],						-- show recipes where the crafted item is BoP
+			itemboe = [true|false],						-- show recipes where the crafted item is BoE
+			recipebop = [true|false],					-- show recipes where the recipe itself is BoP
+			recipeboe = [true|false],					-- show recipes where the recipe itself is BoE
+		},
+		item = {
+			armor = {
+				cloth = [true|false],					-- show recipes that create cloth armor items
+				leather = [true|false],					-- show recipes that create leather armor items
+				mail = [true|false],					-- show recipes that create mail armor items
+				plate = [true|false],					-- show recipes that create plate armor items
+				cloak = [true|false],					-- show recipes that create cloak items
+				trinket = [true|false],					-- show recipes that create trinket items
+				ring = [true|false],					-- show recipes that create ring items
+				necklace = [true|false],				-- show recipes that create necklace items
+			},
+			weapon = {
+				onehand = [true|false],					-- show recipes that create one-handed weapon items
+				twohand = [true|false],					-- show recipes that create two-handed weapon items
+				axe = [true|false],						-- show recipes that create axe weapon items
+				sword = [true|false],					-- show recipes that create sword weapon items
+				mace = [true|false],					-- show recipes that create mace weapon items
+				polearm = [true|false],					-- show recipes that create polearm weapon items
+				dagger = [true|false],					-- show recipes that create dagger weapon items
+				staff = [true|false],					-- show recipes that create staff weapon items
+				wand = [true|false],					-- show recipes that create wand items
+				thrown = [true|false],					-- show recipes that create thrown weapon items
+				bow = [true|false],						-- show recipes that create bow weapon items
+				crossbow = [true|false],				-- show recipes that create crossbow weapon items
+				ammo = [true|false],					-- show recipes that create ammunition
+			},
+		},
+		player = {
+			caster = [true|false],						-- show recipes that caster dps players can use
+			melee = [true|false],						-- show recipes that melee dps players can use
+			tank = [true|false],						-- show recipes that tank players can use
+			healer = [true|false],						-- show recipes that healer players can use
+		},
+		rep = {
+			aldor = [true|false],						-- show recipes obtained from aldir rep
+			argentdawn = [true|false],					-- show recipes obtained from argent dawn rep
+			ashtonguedeathsworn = [true|false],			-- show recipes obtained from ashtongue deathsworn rep
+			cenarioncircle = [true|false],				-- show recipes obtained from cenarion circle rep
+			cenarionexpedition = [true|false],			-- show recipes obtained from cenarion expedition rep
+			hellfire = [true|false],					-- show recipes obtained from (honor hold / thrallmar) rep
+			consortium = [true|false],					-- show recipes obtained from consortium rep
+			keepersoftime = [true|false],				-- show recipes obtained from keepers of time rep
+			lowercity = [true|false],					-- show recipes obtained from lower city rep
+			nagrand = [true|false],						-- show recipes obtained from (kurenai / mag'har) rep
+			scaleofthesands = [true|false],				-- show recipes obtained from scale of the sands rep
+			scryer = [true|false],						-- show recipes obtained from scryer rep
+			shatar = [true|false],						-- show recipes obtained from sha'tar rep
+			shatteredsun = [true|false],				-- show recipes obtained from shattered sun offensive rep
+			sporeggar = [true|false],					-- show recipes obtained from sporeggar rep
+			thoriumbrotherhood = [true|false],			-- show recipes obtained from thorium brotherhood rep
+			timbermaw = [true|false],					-- show recipes obtained from timbermaw hold rep
+			violeteye = [true|false],					-- show recipes obtained from violet eye rep
+			zandalar = [true|false],					-- show recipes obtained from zandalar tribe rep
+		}
+	}
+
+************************************************************************
 --]]
 
 --[[
-Wrath compatibility
+Wrath compatibility (God I can't wait)
+
+REMOVE:
 
 addon.SkillType
 addon.PetList
@@ -100,7 +217,7 @@ addon:addTradeSkillBeast
 InitializeCraftRecipes(CurrentProfession)
 Remove addon:ScanCraftSkills()
 
-Second half of Command
+Second half of Command Function and TextDump Function
 
 --]]
 
@@ -111,6 +228,7 @@ AckisRecipeList = LibStub("AceAddon-3.0"):NewAddon("Ackis Recipe List", "AceCons
 
 local addon = AckisRecipeList
 
+-- We should probably clean thes up and use arguments/return values
 -- Global variables which are used between multiple files
 addon.RecipeListing = nil
 addon.MissingRecipeListing = nil
@@ -156,7 +274,13 @@ addon.SortedProfessions = {
 }
 addon.MaxProfessions = 13
 addon.CurrentProf = 0
+addon.CurrentProfession = ""
 addon.maxVisibleRecipes = 19
+addon.ExpTextureSize = 34
+addon.HonorHold_Thrallmar_FactionText = ""
+addon.Kurenai_Maghar_FactionText = ""
+addon.FilterValueMap = {}
+addon.MaxFilterIndex = 68
 
 -- Frame variables
 addon.ScanButton = nil
@@ -186,38 +310,23 @@ local UnitClass = UnitClass
 local InterfaceOptionsFrame_OpenToFrame = InterfaceOptionsFrame_OpenToFrame
 local BOOKTYPE_SPELL = BOOKTYPE_SPELL
 
+-- We use playerFaction quite often, lets just get it once and reuse it
+local playerFaction = UnitFactionGroup("player")
+
 -- Constants which are used everytime the add-on is loaded
-local addonversion = GetAddOnMetadata("AckisRecipeList", "Version") .. " v." .. string.sub(GetAddOnMetadata("AckisRecipeList", "X-Revision"):gsub("$Rev:", ""),1,-2) -- No spaces because GetAddOnMetadata doesn't like it
+
+-- New Shiny addonversion without Revision
+local addonversion = GetAddOnMetadata("AckisRecipeList", "Version")
 local nagrandfac = BFAC["Kurenai"] .. "\\" .. BFAC["The Mag'har"]
 local hellfirefac = BFAC["Honor Hold"] .. "\\" .. BFAC["Thrallmar"]
 local factionlevels = {}
 
 -- Global constants which are used between multiple files
-addon.ARLTitle = "Ackis Recipe List v." .. addonversion
+addon.ARLTitle = "ARL (v." .. addonversion .. ")"
+addon.FullTitle = "Ackis Recipe List (v." .. addonversion .. ")"
+
+-- We use line breaks quite often lets make it a constant send you can't use \t in WoW
 addon.br = "\n    - "
-
-local playerFaction = UnitFactionGroup("player")
-
-local banlist = {
-	"Stun",
-	"Stunstunstun",
-	"Xzar",
-	"Xzr",
-	"Nition",
-}
-
-local playername = UnitName("player")
-
-for i,k in pairs(banlist) do
-
-	if (k == playername) then
-
-		addon:Print("You are not authorized to use this mod.")
-		return
-
-	end
-
-end
 
 --[[
 
@@ -226,7 +335,7 @@ end
 ]]--
 
 -- Returns configuration options for ARL
-local function giveARLOptions()
+local function giveOptions()
 
 	local command_options = {
 	    type = "group",
@@ -298,15 +407,6 @@ local function giveDisplay()
 				type = "description",
 				name = L["DISPLAY_OPTIONS_LONG"] .. "\n",
 			},
-			usegui =
-			{
-				name	= L["Use GUI"],
-				desc	= L["GUI_TOGGLE"],
-				type	= "toggle",
-				get		= function() return addon.db.profile.usegui end,
-				set		= function() addon.db.profile.usegui = not addon.db.profile.usegui end,
-				order	= 3,
-			},
 			testgui =
 			{
 				name	= "Test GUI",
@@ -369,8 +469,8 @@ local function giveFilter()
 				name	= L["Faction"],
 				desc	= L["FACTION_TOGGLE"],
 				type	= "toggle",
-				get		= function() return addon.db.profile.faction end,
-				set		= function() addon.db.profile.faction = not addon.db.profile.faction end,
+				get		= function() return addon.db.profile.filters.general.faction end,
+				set		= function() addon.db.profile.filters.general.faction = not addon.db.profile.filters.general.faction end,
 				order	= 5,
 			},
 			classes =
@@ -378,8 +478,8 @@ local function giveFilter()
 				name      = L["Classes"],
 				desc      = L["CLASS_TOGGLE"],
 				type      = "toggle",
-				get       = function() return addon.db.profile.classes end,
-				set       = function() addon.db.profile.classes = not addon.db.profile.classes end,
+				get       = function() return addon.db.profile.filters.general.class end,
+				set       = function() addon.db.profile.filters.general.class = not addon.db.profile.filters.general.class end,
 				order     = 10,
 			},
 			specialities =
@@ -387,8 +487,8 @@ local function giveFilter()
 				name      = L["Specialities"],
 				desc      = L["SPECIALITY_TOGGLE"],
 				type      = "toggle",
-				get       = function() return addon.db.profile.specialities end,
-				set       = function() addon.db.profile.specialities = not addon.db.profile.specialities end,
+				get       = function() return addon.db.profile.filters.general.specialty end,
+				set       = function() addon.db.profile.filters.general.specialty = not addon.db.profile.specialty end,
 				order     = 15,
 			},
 			skill =
@@ -396,8 +496,8 @@ local function giveFilter()
 				name      = L["Skill"],
 				desc      = L["SKILL_TOGGLE"],
 				type      = "toggle",
-				get       = function() return addon.db.profile.skill end,
-				set       = function() addon.db.profile.skill = not addon.db.profile.skill end,
+				get       = function() return addon.db.profile.filters.general.skill end,
+				set       = function() addon.db.profile.filters.general.skill = not addon.db.profile.filters.general.skill end,
 				order     = 20,
 			},
 			armour =
@@ -425,8 +525,8 @@ local function giveFilter()
 						name      = L["Cloth"],
 						desc      = L["CLOTH_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.cloth end,
-						set       = function() addon.db.profile.cloth = not addon.db.profile.cloth end,
+						get       = function() return addon.db.profile.filters.item.armor.cloth end,
+						set       = function() addon.db.profile.filters.item.armor.cloth = not addon.db.profile.filters.item.armor.cloth end,
 						order     = 90,
 					},
 					leather =
@@ -434,8 +534,8 @@ local function giveFilter()
 						name      = L["Leather"],
 						desc      = L["LEATHER_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.leather end,
-						set       = function() addon.db.profile.leather = not addon.db.profile.leather end,
+						get       = function() return addon.db.profile.filters.item.armor.leather end,
+						set       = function() addon.db.profile.filters.item.armor.leather = not addon.db.profile.filters.item.armor.leather end,
 						order     = 91,
 					},
 					mail =
@@ -443,8 +543,8 @@ local function giveFilter()
 						name      = L["Mail"],
 						desc      = L["MAIL_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.mail end,
-						set       = function() addon.db.profile.mail = not addon.db.profile.mail end,
+						get       = function() return addon.db.profile.filters.item.armor.mail end,
+						set       = function() addon.db.profile.filters.item.armor.mail = not addon.db.profile.filters.item.armor.mail end,
 						order     = 92,
 					},
 					plate =
@@ -452,9 +552,45 @@ local function giveFilter()
 						name      = L["Plate"],
 						desc      = L["PLATE_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.plate end,
-						set       = function() addon.db.profile.plate = not addon.db.profile.plate end,
+						get       = function() return addon.db.profile.filters.item.armor.plate end,
+						set       = function() addon.db.profile.filters.item.armor.plate = not addon.db.profile.filters.item.armor.plate end,
 						order     = 93,
+					},
+					cloak =
+					{
+						name      = L["Cloak"],
+						desc      = L["CLOAK_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.filters.item.armor.cloak end,
+						set       = function() addon.db.profile.filters.item.armor.cloak = not addon.db.profile.filters.item.armor.cloak end,
+						order     = 94,
+					},
+					ring =
+					{
+						name      = L["Ring"],
+						desc      = L["RING_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.filters.item.armor.ring end,
+						set       = function() addon.db.profile.filters.item.armor.ring = not addon.db.profile.filters.item.armor.ring end,
+						order     = 95,
+					},
+					trinket =
+					{
+						name      = L["Trinket"],
+						desc      = L["TRINKET_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.filters.item.armor.trinket end,
+						set       = function() addon.db.profile.filters.item.armor.trinket = not addon.db.profile.filters.item.armor.trinket end,
+						order     = 96,
+					},
+					necklace =
+					{
+						name      = L["Necklace"],
+						desc      = L["NECKLACE_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.filters.item.armor.necklace end,
+						set       = function() addon.db.profile.filters.item.armor.necklace = not addon.db.profile.filters.item.armor.necklace end,
+						order     = 97,
 					},
 				}
 			},
@@ -483,8 +619,8 @@ local function giveFilter()
 						name	= L["BOEFilter"],
 						desc	= L["BOE_TOGGLE"],
 						type	= "toggle",
-						get		= function() return addon.db.profile.boe end,
-						set		= function() addon.db.profile.boe = not addon.db.profile.boe end,
+						get		= function() return addon.db.profile.filters.binding.itemboe end,
+						set		= function() addon.db.profile.filters.binding.itemboe = not addon.db.profile.filters.binding.itemboe end,
 						order	= 5,
 					},
 					BOP =
@@ -492,8 +628,8 @@ local function giveFilter()
 						name	= L["BOPFilter"],
 						desc	= L["BOP_TOGGLE"],
 						type	= "toggle",
-						get		= function() return addon.db.profile.bop end,
-						set		= function() addon.db.profile.bop = not addon.db.profile.bop end,
+						get		= function() return addon.db.profile.filters.binding.itembop end,
+						set		= function() addon.db.profile.filters.binding.itembop = not addon.db.profile.filters.binding.itembop end,
 						order	= 6,
 					},
 					RecipeBOE =
@@ -501,8 +637,8 @@ local function giveFilter()
 						name	= L["RecipeBOEFilter"],
 						desc	= L["RECIPE_BOE_TOGGLE"],
 						type	= "toggle",
-						get		= function() return addon.db.profile.recipeboe end,
-						set		= function() addon.db.profile.recipeboe = not addon.db.profile.recipeboe end,
+						get		= function() return addon.db.profile.filters.binding.recipeboe end,
+						set		= function() addon.db.profile.filters.binding.recipeboe = not addon.db.profile.filters.binding.recipeboe end,
 						order	= 7,
 					},
 					RecipeBOP =
@@ -510,8 +646,8 @@ local function giveFilter()
 						name	= L["RecipeBOPFilter"],
 						desc	= L["RECIPE_BOP_TOGGLE"],
 						type	= "toggle",
-						get		= function() return addon.db.profile.recipebop end,
-						set		= function() addon.db.profile.recipebop = not addon.db.profile.recipebop end,
+						get		= function() return addon.db.profile.filters.binding.recipebop end,
+						set		= function() addon.db.profile.filters.binding.recipebop = not addon.db.profile.filters.binding.recipebop end,
 						order	= 8,
 					},
 				}
@@ -541,8 +677,8 @@ local function giveFilter()
 						name      = L["Melee"],
 						desc      = L["MELEE_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.melee end,
-						set       = function() addon.db.profile.melee = not addon.db.profile.melee end,
+						get       = function() return addon.db.profile.filters.player.melee end,
+						set       = function() addon.db.profile.filters.player.melee = not addon.db.profile.filters.player.melee end,
 						order     = 5,
 					},
 					tanking =
@@ -550,8 +686,8 @@ local function giveFilter()
 						name      = L["Tanking"],
 						desc      = L["TANKING_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.tanking end,
-						set       = function() addon.db.profile.tanking = not addon.db.profile.tanking end,
+						get       = function() return addon.db.profile.filters.player.tank end,
+						set       = function() addon.db.profile.filters.player.tank = not addon.db.profile.filters.player.tank end,
 						order     = 10,
 					},
 					casterdps =
@@ -559,8 +695,8 @@ local function giveFilter()
 						name      = L["Caster DPS"],
 						desc      = L["CASTERDPS_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.casterdps end,
-						set       = function() addon.db.profile.casterdps = not addon.db.profile.casterdps end,
+						get       = function() return addon.db.profile.filters.player.caster end,
+						set       = function() addon.db.profile.filters.player.caster = not addon.db.profile.filters.player.caster end,
 						order     = 15,
 					},
 					healing =
@@ -568,8 +704,8 @@ local function giveFilter()
 						name      = L["Healing"],
 						desc      = L["HEALING_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.healing end,
-						set       = function() addon.db.profile.healing = not addon.db.profile.healing end,
+						get       = function() return addon.db.profile.filters.player.healer end,
+						set       = function() addon.db.profile.filters.player.healer = not addon.db.profile.filters.player.healer end,
 						order     = 20,
 					},
 				}
@@ -599,8 +735,8 @@ local function giveFilter()
 						name	= L["Instance"],
 						desc	= L["INSTANCE_TOGGLE"],
 						type	= "toggle",
-						get		= function() return addon.db.profile.instance end,
-						set		= function() addon.db.profile.instance = not addon.db.profile.instance end,
+						get		= function() return addon.db.profile.filters.obtain.instance end,
+						set		= function() addon.db.profile.filters.obtain.instance = not addon.db.profile.filters.obtain.instance end,
 						order	= 10,
 					},
 					raid =
@@ -608,8 +744,8 @@ local function giveFilter()
 						name      = L["Raid"],
 						desc      = L["RAID_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.raid end,
-						set       = function() addon.db.profile.raid = not addon.db.profile.raid end,
+						get       = function() return addon.db.profile.filters.obtain.raid end,
+						set       = function() addon.db.profile.filters.obtain.raid = not addon.db.profile.filters.obtain.raid end,
 						order     = 11,
 					},
 					PVP =
@@ -617,8 +753,8 @@ local function giveFilter()
 						name	= L["PVP"],
 						desc	= L["PVP_TOGGLE"],
 						type	= "toggle",
-						get		= function() return addon.db.profile.pvp end,
-						set		= function() addon.db.profile.pvp = not addon.db.profile.pvp end,
+						get		= function() return addon.db.profile.filters.obtain.pvp end,
+						set		= function() addon.db.profile.filters.obtain.pvp = not addon.db.profile.filters.obtain.pvp end,
 						order	= 20,
 					},
 					quest =
@@ -626,8 +762,8 @@ local function giveFilter()
 						name	= L["Quest"],
 						desc	= L["QUEST_TOGGLE"],
 						type	= "toggle",
-						get		= function() return addon.db.profile.quest end,
-						set		= function() addon.db.profile.quest = not addon.db.profile.quest end,
+						get		= function() return addon.db.profile.filters.obtain.quest end,
+						set		= function() addon.db.profile.filters.obtain.quest = not addon.db.profile.filters.obtain.quest end,
 						order	= 30,
 					},
 					trainer =
@@ -635,8 +771,8 @@ local function giveFilter()
 						name      = L["Trainer"],
 						desc      = L["TRAINER_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.trainer end,
-						set       = function() addon.db.profile.trainer = not addon.db.profile.trainer end,
+						get       = function() return addon.db.profile.filters.obtain.trainer end,
+						set       = function() addon.db.profile.filters.obtain.trainer = not addon.db.profile.filters.obtain.trainer end,
 						order     = 60,
 					},
 					vendor =
@@ -644,8 +780,8 @@ local function giveFilter()
 						name      = L["Vendor"],
 						desc      = L["VENDOR_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.vendor end,
-						set       = function() addon.db.profile.vendor = not addon.db.profile.vendor end,
+						get       = function() return addon.db.profile.filters.obtain.vendor end,
+						set       = function() addon.db.profile.filters.obtain.vendor = not addon.db.profile.filters.obtain.vendor end,
 						order     = 70,
 					},
 					seasonal =
@@ -653,18 +789,36 @@ local function giveFilter()
 						name      = L["Seasonal"],
 						desc      = L["SEASONAL_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.seasonal end,
-						set       = function() addon.db.profile.seasonal = not addon.db.profile.seasonal end,
+						get       = function() return addon.db.profile.filters.obtain.seasonal end,
+						set       = function() addon.db.profile.filters.obtain.seasonal = not addon.db.profile.filters.obtain.seasonal end,
 						order     = 80,
+					},
+					discovery =
+					{
+						name      = L["Discovery"],
+						desc      = L["DISCOVERY_TT"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.filters.obtain.discovery end,
+						set       = function() addon.db.profile.filters.obtain.discovery = not addon.db.profile.filters.obtain.discovery end,
+						order     = 81,
 					},
 					worlddrop =
 					{
 						name      = L["World Drop"],
 						desc      = L["WORLD_DROP_TOGGLE"],
 						type      = "toggle",
-						get       = function() return addon.db.profile.worlddrop end,
-						set       = function() addon.db.profile.worlddrop = not addon.db.profile.worlddrop end,
-						order     = 81,
+						get       = function() return addon.db.profile.filters.obtain.worlddrop end,
+						set       = function() addon.db.profile.filters.obtain.worlddrop = not addon.db.profile.filters.obtain.worlddrop end,
+						order     = 82,
+					},
+					mobdrop =
+					{
+						name      = L["Mob Drop"],
+						desc      = L["MOB_DROP_TOGGLE"],
+						type      = "toggle",
+						get       = function() return addon.db.profile.filters.obtain.mobdrop end,
+						set       = function() addon.db.profile.filters.obtain.mobdrop = not addon.db.profile.filters.obtain.mobdrop end,
+						order     = 83,
 					},
 				}
 			},
@@ -713,8 +867,8 @@ local function giveFilter()
 								name	= BFAC["Argent Dawn"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Argent Dawn"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.argentdawn end,
-								set		= function() addon.db.profile.argentdawn = not addon.db.profile.argentdawn end,
+								get		= function() return addon.db.profile.filters.rep.argentdawn end,
+								set		= function() addon.db.profile.filters.rep.argentdawn = not addon.db.profile.filters.rep.argentdawn end,
 								order	= 3,
 							},
 							CenarionCircle =
@@ -722,8 +876,8 @@ local function giveFilter()
 								name	= BFAC["Cenarion Circle"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Cenarion Circle"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.cenarioncircle end,
-								set		= function() addon.db.profile.cenarioncircle = not addon.db.profile.cenarioncircle end,
+								get		= function() return addon.db.profile.filters.rep.cenarioncircle end,
+								set		= function() addon.db.profile.filters.rep.cenarioncircle = not addon.db.profile.filters.rep.cenarioncircle end,
 								order	= 15,
 							},
 							TB =
@@ -731,8 +885,8 @@ local function giveFilter()
 								name	= BFAC["Thorium Brotherhood"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Thorium Brotherhood"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.thoriumbrotherhood end,
-								set		= function() addon.db.profile.thoriumbrotherhood = not addon.db.profile.thoriumbrotherhood end,
+								get		= function() return addon.db.profile.filters.rep.thoriumbrotherhood end,
+								set		= function() addon.db.profile.filters.rep.thoriumbrotherhood = not addon.db.profile.filters.rep.thoriumbrotherhood end,
 								order	= 75,
 							},
 							Timbermaw =
@@ -740,8 +894,8 @@ local function giveFilter()
 								name	= BFAC["Timbermaw Hold"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Timbermaw Hold"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.timbermaw end,
-								set		= function() addon.db.profile.timbermaw = not addon.db.profile.timbermaw end,
+								get		= function() return addon.db.profile.filters.rep.timbermaw end,
+								set		= function() addon.db.profile.filters.rep.timbermaw = not addon.db.profile.filters.rep.timbermaw end,
 								order	= 80,
 							},
 							Zandalar =
@@ -749,8 +903,8 @@ local function giveFilter()
 								name	= BFAC["Zandalar Tribe"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Zandalar Tribe"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.zandalar end,
-								set		= function() addon.db.profile.zandalar = not addon.db.profile.zandalar end,
+								get		= function() return addon.db.profile.filters.rep.zandalar end,
+								set		= function() addon.db.profile.filters.rep.zandalar = not addon.db.profile.filters.rep.zandalar end,
 								order	= 90,
 							},
 						},
@@ -780,8 +934,8 @@ local function giveFilter()
 								name	= BFAC["The Aldor"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Aldor"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.aldor end,
-								set		= function() addon.db.profile.aldor = not addon.db.profile.aldor end,
+								get		= function() return addon.db.profile.filters.rep.aldor end,
+								set		= function() addon.db.profile.filters.rep.aldor = not addon.db.profile.filters.rep.aldor end,
 								order	= 3,
 							},
 							Ashtongue =
@@ -789,17 +943,17 @@ local function giveFilter()
 								name	= BFAC["Ashtongue Deathsworn"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Ashtongue Deathsworn"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.ashtonguedeathsworn end,
-								set		= function() addon.db.profile.ashtonguedeathsworn = not addon.db.profile.ashtonguedeathsworn end,
+								get		= function() return addon.db.profile.filters.rep.ashtonguedeathsworn end,
+								set		= function() addon.db.profile.filters.rep.ashtonguedeathsworn = not addon.db.profile.filters.rep.ashtonguedeathsworn end,
 								order	= 10,
 							},
-							CenarionExpidition =
+							CenarionExpedition =
 							{
 								name	= BFAC["Cenarion Expedition"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Cenarion Expedition"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.cenarionexpidition end,
-								set		= function() addon.db.profile.cenarionexpidition = not addon.db.profile.cenarionexpidition end,
+								get		= function() return addon.db.profile.filters.rep.cenarionexpedition end,
+								set		= function() addon.db.profile.filters.rep.cenarionexpedition = not addon.db.profile.filters.rep.cenarionexpedition end,
 								order	= 20,
 							},
 							Consortium =
@@ -807,8 +961,8 @@ local function giveFilter()
 								name	= BFAC["The Consortium"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Consortium"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.consortium end,
-								set		= function() addon.db.profile.consortium = not addon.db.profile.consortium end,
+								get		= function() return addon.db.profile.filters.rep.consortium end,
+								set		= function() addon.db.profile.filters.rep.consortium = not addon.db.profile.filters.rep.consortium end,
 								order	= 25,
 							},
 							HellfireFactions =
@@ -816,8 +970,8 @@ local function giveFilter()
 								name	= hellfirefac,
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],hellfirefac),
 								type	= "toggle",
-								get		= function() return addon.db.profile.hellfirefac end,
-								set		= function() addon.db.profile.hellfirefac = not addon.db.profile.hellfirefac end,
+								get		= function() return addon.db.profile.filters.rep.hellfire end,
+								set		= function() addon.db.profile.filters.rep.hellfire = not addon.db.profile.filters.rep.hellfire end,
 								order	= 30,
 							},
 							KoT =
@@ -825,8 +979,8 @@ local function giveFilter()
 								name	= BFAC["Keepers of Time"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Keepers of Time"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.kot end,
-								set		= function() addon.db.profile.kot = not addon.db.profile.kot end,
+								get		= function() return addon.db.profile.filters.rep.keepersoftime end,
+								set		= function() addon.db.profile.filters.rep.keepersoftime = not addon.db.profile.filters.rep.keepersoftime end,
 								order	= 35,
 							},
 							NagrandFactions =
@@ -834,8 +988,8 @@ local function giveFilter()
 								name	= nagrandfac,
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],nagrandfac),
 								type	= "toggle",
-								get		= function() return addon.db.profile.nagrandfac end,
-								set		= function() addon.db.profile.nagrandfac = not addon.db.profile.nagrandfac end,
+								get		= function() return addon.db.profile.filters.rep.nagrand end,
+								set		= function() addon.db.profile.filters.rep.nagrand = not addon.db.profile.filters.rep.nagrand end,
 								order	= 40,
 							},
 							LowerCity =
@@ -843,8 +997,8 @@ local function giveFilter()
 								name	= BFAC["Lower City"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Lower City"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.lowercity end,
-								set		= function() addon.db.profile.lowercity = not addon.db.profile.lowercity end,
+								get		= function() return addon.db.profile.filters.rep.lowercity end,
+								set		= function() addon.db.profile.filters.rep.lowercity = not addon.db.profile.filters.rep.lowercity end,
 								order	= 45,
 							},
 							Scale =
@@ -852,8 +1006,8 @@ local function giveFilter()
 								name	= BFAC["The Scale of the Sands"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Scale of the Sands"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.scaleofsands end,
-								set		= function() addon.db.profile.scaleofsands = not addon.db.profile.scaleofsands end,
+								get		= function() return addon.db.profile.filters.rep.scaleofthesands end,
+								set		= function() addon.db.profile.filters.rep.scaleofthesands = not addon.db.profile.filters.rep.scaleofthesands end,
 								order	= 50,
 							},
 							Scryer =
@@ -861,8 +1015,8 @@ local function giveFilter()
 								name	= BFAC["The Scryers"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Scryers"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.scryer end,
-								set		= function() addon.db.profile.scryer = not addon.db.profile.scryer end,
+								get		= function() return addon.db.profile.filters.rep.scryer end,
+								set		= function() addon.db.profile.filters.rep.scryer = not addon.db.profile.filters.rep.scryer end,
 								order	= 55,
 							},
 							Shatar =
@@ -870,8 +1024,8 @@ local function giveFilter()
 								name	= BFAC["The Sha'tar"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Sha'tar"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.shatar end,
-								set		= function() addon.db.profile.shatar = not addon.db.profile.shatar end,
+								get		= function() return addon.db.profile.filters.rep.shatar end,
+								set		= function() addon.db.profile.filters.rep.shatar = not addon.db.profile.filters.rep.shatar end,
 								order	= 60,
 							},
 							SSO =
@@ -879,8 +1033,8 @@ local function giveFilter()
 								name	= BFAC["Shattered Sun Offensive"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Shattered Sun Offensive"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.sso end,
-								set		= function() addon.db.profile.sso = not addon.db.profile.sso end,
+								get		= function() return addon.db.profile.filters.rep.shatteredsun end,
+								set		= function() addon.db.profile.filters.rep.shatteredsun = not addon.db.profile.filters.rep.shatteredsun end,
 								order	= 65,
 							},
 							Sporeggar =
@@ -888,8 +1042,8 @@ local function giveFilter()
 								name	= BFAC["Sporeggar"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["Sporeggar"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.sporeggar end,
-								set		= function() addon.db.profile.sporeggar = not addon.db.profile.sporeggar end,
+								get		= function() return addon.db.profile.filters.rep.sporeggar end,
+								set		= function() addon.db.profile.filters.rep.sporeggar = not addon.db.profile.filters.rep.sporeggar end,
 								order	= 70,
 							},
 							Violeteye =
@@ -897,8 +1051,8 @@ local function giveFilter()
 								name	= BFAC["The Violet Eye"],
 								desc	= format(L["SPECIFIC_REP_TOGGLE"],BFAC["The Violet Eye"]),
 								type	= "toggle",
-								get		= function() return addon.db.profile.violeteye end,
-								set		= function() addon.db.profile.violeteye = not addon.db.profile.violeteye end,
+								get		= function() return addon.db.profile.filters.rep.violeteye end,
+								set		= function() addon.db.profile.filters.rep.violeteye = not addon.db.profile.filters.rep.violeteye end,
 								order	= 85,
 							},
 						}
@@ -961,7 +1115,7 @@ local function giveSorting()
 				name	= L["Sort"],
 				desc	= L["SORT_OPTIONS"],
 				type	= "select",
-				values	= function() return {Name = L["Name"], Skill = L["Skill"], Aquisition = L["Aquisition"]} end,
+				values	= function() return {Name = L["Name"], Skill = L["Skill"], Acquisition = L["Acquisition"]} end,
 				get		= function() return addon.db.profile.sorting end,
 				-- This will probably cause people in multiple locals to have issues
 				set		= function(info,name) addon.db.profile.sorting = name end,
@@ -1030,13 +1184,14 @@ end
 
 function addon:OnInitialize()
 
+	local AceConfig = LibStub("AceConfig-3.0")
 	local AceConfigReg = LibStub("AceConfigRegistry-3.0")
 	local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
 	self.db = LibStub("AceDB-3.0"):New("AckisRecipeListDB", defaults, "char")
 
 	-- Create the options with Ace3
-	LibStub("AceConfig-3.0"):RegisterOptionsTable("Ackis Recipe List",giveARLOptions)
+	AceConfig:RegisterOptionsTable("Ackis Recipe List",giveOptions)
 	AceConfigReg:RegisterOptionsTable("Ackis Recipe List Display",giveDisplay)
 	AceConfigReg:RegisterOptionsTable("Ackis Recipe List Sorting",giveSorting)
 	AceConfigReg:RegisterOptionsTable("Ackis Recipe List Filter",giveFilter)
@@ -1055,16 +1210,10 @@ function addon:OnInitialize()
 
 	-- Set default options, which are to include everything in the scan
 	self.db:RegisterDefaults(
-		{ profile =
-			{
-			-- Filter Options
-		    faction = true,
-			classes = false,
-			specialities = false,
-			skill = true,
-
+	{
+		profile = {
 			-- Sorting Options
-			sorting = "Skill",
+			sorting = L["Skill"],
 
 			-- Display Options
 			usegui = true,
@@ -1072,54 +1221,94 @@ function addon:OnInitialize()
 			closeguionskillclose = false,
 			testgui = false,
 
-			-- Obtain Options
-			trainer = true,
-			vendor = true,
-			boe = true,
-			bop = true,
-			instance = true,
-			raid = true,
-			seasonal = true,
-			quest = true,
-			pvp = true,
-			worlddrop = true,
-			cloth = true,
-			leather = true,
-			mail = true,
-			plate = true,
-			melee = true,
-			tank = true,
-			healer = true,
-			casterdps = true,
-			recipebop = true,
-			recipeboe = true,
-			
-			-- Reputation Options
-			aldor = true,
-			scryer = true,
-			argentdawn = true,
-			ashtonguedeathsworn = true,
-			cenarioncircle = true,
-			cenarionexpidition = true,
-			consortium = true,
-			hellfirefac = true,
-			kot = true,
-			nagrandfac = true,
-			lowercity = true,
-			scaleofsands = true,
-			shatar = true,
-			sso = true,
-			sporeggar = true,
-			thoriumbrotherhood = true,
-			timbermaw = true,
-			violeteye = true,
-			zandalar = true,
-
 			-- Filtered recipe list
-			filteredrecipes = {}
+			filteredrecipes = {},
+
+			-- Filter Options
+			filters = {
+				general = {			-- General Filters
+				    faction = true,
+					class = false,
+					specialty = false,
+					skill = true,
+					known = false,
+					unknown = true,
+				},
+				obtain = {			-- Obtain Options
+					trainer = true,
+					vendor = true,
+					instance = true,
+					raid = true,
+					seasonal = true,
+					quest = true,
+					pvp = true,
+					discovery = true,
+					worlddrop = true,
+					mobdrop = true,
+				},
+				item = {			-- Item Filters (Armor/Weapon)
+					armor = {
+						cloth = true,
+						leather = true,
+						mail = true,
+						plate = true,
+						trinket = true,
+						cloak = true,
+						ring = true,
+						necklace = true,
+					},
+					weapon = {
+						onehand = true,
+						twohand = true,
+						axe = true,
+						sword = true,
+						mace = true,
+						polearm = true,
+						dagger = true,
+						staff = true,
+						wand = true,
+						thrown = true,
+						bow = true,
+						crossbow = true,
+						ammo = true,
+					},
+				},
+				binding = {
+					itemboe = true,
+					itembop = true,
+					recipebop = true,
+					recipeboe = true,
+				},
+				player = {
+					melee = true,
+					tank = true,
+					healer = true,
+					caster = true,
+				},
+				rep = {			-- Reputation Options
+					aldor = true,
+					scryer = true,
+					argentdawn = true,
+					ashtonguedeathsworn = true,
+					cenarioncircle = true,
+					cenarionexpedition = true,
+					consortium = true,
+					hellfire = true,
+					keepersoftime = true,
+					nagrand = true,
+					lowercity = true,
+					scaleofthesands = true,
+					shatar = true,
+					shatteredsun = true,
+					sporeggar = true,
+					thoriumbrotherhood = true,
+					timbermaw = true,
+					violeteye = true,
+					zandalar = true,
+				}
 			}
 		}
-	)
+	} )
 
 	-- Populate the repuatation level
 	self:GetFactionLevels()
@@ -1545,27 +1734,27 @@ do
 			RepTable = {}
 		end
 
-		RepTable[BFAC["The Scryers"]] = addon.db.profile.scryer
-		RepTable[BFAC["The Aldor"]] = addon.db.profile.aldor
-		RepTable[BFAC["Argent Dawn"]] = addon.db.profile.argentdawn
-		RepTable[BFAC["Ashtongue Deathsworn"]] = addon.db.profile.ashtonguedeathsworn
-		RepTable[BFAC["Cenarion Circle"]] = addon.db.profile.cenarioncircle
-		RepTable[BFAC["Cenarion Expedition"]] = addon.db.profile.cenarionexpidition
-		RepTable[BFAC["The Consortium"]] = addon.db.profile.consortium
-		RepTable[BFAC["Honor Hold"]] = addon.db.profile.hellfirefac
-		RepTable[BFAC["Thrallmar"]] = addon.db.profile.hellfirefac
-		RepTable[BFAC["Keepers of Time"]] = addon.db.profile.kot
-		RepTable[BFAC["Kurenai"]] = addon.db.profile.nagrandfac
-		RepTable[BFAC["The Mag'har"]] = addon.db.profile.nagrandfac
-		RepTable[BFAC["Lower City"]] = addon.db.profile.lowercity
-		RepTable[BFAC["The Scale of the Sands"]] = addon.db.profile.scaleofsands
-		RepTable[BFAC["The Sha'tar"]] = addon.db.profile.shatar
-		RepTable[BFAC["Shattered Sun Offensive"]] = addon.db.profile.sso
-		RepTable[BFAC["Sporeggar"]] = addon.db.profile.sporeggar
-		RepTable[BFAC["Thorium Brotherhood"]] = addon.db.profile.thoriumbrotherhood
-		RepTable[BFAC["Timbermaw Hold"]] = addon.db.profile.timbermaw
-		RepTable[BFAC["The Violet Eye"]] = addon.db.profile.violeteye
-		RepTable[BFAC["Zandalar Tribe"]] = addon.db.profile.zandalar
+		RepTable[BFAC["The Scryers"]] = addon.db.profile.filters.rep.scryer
+		RepTable[BFAC["The Aldor"]] = addon.db.profile.filters.rep.aldor
+		RepTable[BFAC["Argent Dawn"]] = addon.db.profile.filters.rep.argentdawn
+		RepTable[BFAC["Ashtongue Deathsworn"]] = addon.db.profile.filters.rep.ashtonguedeathsworn
+		RepTable[BFAC["Cenarion Circle"]] = addon.db.profile.filters.rep.cenarioncircle
+		RepTable[BFAC["Cenarion Expedition"]] = addon.db.profile.filters.rep.cenarionexpedition
+		RepTable[BFAC["The Consortium"]] = addon.db.profile.filters.rep.consortium
+		RepTable[BFAC["Honor Hold"]] = addon.db.profile.filters.rep.hellfire
+		RepTable[BFAC["Thrallmar"]] = addon.db.profile.filters.rep.hellfire
+		RepTable[BFAC["Keepers of Time"]] = addon.db.profile.filters.rep.keepersoftime
+		RepTable[BFAC["Kurenai"]] = addon.db.profile.filters.rep.nagrand
+		RepTable[BFAC["The Mag'har"]] = addon.db.profile.filters.rep.nagrand
+		RepTable[BFAC["Lower City"]] = addon.db.profile.filters.rep.lowercity
+		RepTable[BFAC["The Scale of the Sands"]] = addon.db.profile.filters.rep.scaleofthesands
+		RepTable[BFAC["The Sha'tar"]] = addon.db.profile.filters.rep.shatar
+		RepTable[BFAC["Shattered Sun Offensive"]] = addon.db.profile.filters.rep.shatteredsun
+		RepTable[BFAC["Sporeggar"]] = addon.db.profile.filters.rep.sporeggar
+		RepTable[BFAC["Thorium Brotherhood"]] = addon.db.profile.filters.rep.thoriumbrotherhood
+		RepTable[BFAC["Timbermaw Hold"]] = addon.db.profile.filters.rep.timbermaw
+		RepTable[BFAC["The Violet Eye"]] = addon.db.profile.filters.rep.violeteye
+		RepTable[BFAC["Zandalar Tribe"]] = addon.db.profile.filters.rep.zandalar
 
 	end
 
@@ -1584,29 +1773,7 @@ do
 
 	function addon:CheckDisplayRecipe(RecipeName, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
-		-- ALLIANCE= Alliance faction only
-		-- HORDE = Horde faction only
-		-- 1 = Trainer
-		-- 2 = Vendor
-		-- 3 = Item BoE
-		-- 4 = Item BoP
-		-- 5 = Instance
-		-- 6 = Raid
-		-- 7 = Seasonal
-		-- 8 = Quest
-		-- 9 = PVP
-		-- 10 = cloth
-		-- 11 = leather
-		-- 12 = mail
-		-- 13 = plate
-		-- 14 = physical dps (melee/hunters)
-		-- 15 = tanking
-		-- 16 = healing
-		-- 17 = caster DPS
-		-- 18 = world drop
-		-- 19 = Recipe BoE
-		-- 20 = Recipe BoP
-
+		-- For flag info see comments at start of file
 
 		-- Update the rep table with appropiate flags
 		PopulateReptable()
@@ -1618,7 +1785,7 @@ do
 		end
 
 		-- Display all skill levels
-		if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) and (not addon.db.profile.skill) then
+		if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) and (not addon.db.profile.filters.general.skill) then
 			addon.FilteredRecipes = addon.FilteredRecipes + 1
 			return false
 		end
@@ -1632,127 +1799,127 @@ do
 			for i, CurrentCheck in pairs(addon.MissingRecipeListing[RecipeName]["Speciality"]) do
 
 				-- Display trainer recipes
-				if (not addon.db.profile.trainer) and (CurrentCheck == 1) then
+				if (not addon.db.profile.filters.obtain.trainer) and (CurrentCheck == 1) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display vendor recipes
-				if (not addon.db.profile.vendor) and (CurrentCheck == 2) then
+				if (not addon.db.profile.filters.obtain.vendor) and (CurrentCheck == 2) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display BoE recipes
-				if (not addon.db.profile.boe) and (CurrentCheck == 3) then
+				if (not addon.db.profile.filters.binding.itemboe) and (CurrentCheck == 3) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display BoP recipes
-				if (not addon.db.profile.bop) and (CurrentCheck == 4) then
+				if (not addon.db.profile.filters.binding.itembop) and (CurrentCheck == 4) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display instance recipes
-				if (not addon.db.profile.instance) and (CurrentCheck == 5) then
+				if (not addon.db.profile.filters.obtain.instance) and (CurrentCheck == 5) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display hard to obtain raid recipes
-				if (not addon.db.profile.raid) and (CurrentCheck == 6) then
+				if (not addon.db.profile.filters.obtain.raid) and (CurrentCheck == 6) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display seasonal recipes
-				if (not addon.db.profile.seasonal) and (CurrentCheck == 7) then
+				if (not addon.db.profile.filters.obtain.seasonal) and (CurrentCheck == 7) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display pvp recipes
-				if (not addon.db.profile.pvp) and (CurrentCheck == 8) then
+				if (not addon.db.profile.filters.obtain.pvp) and (CurrentCheck == 8) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display quest recipes
-				if (not addon.db.profile.quest) and (CurrentCheck == 9) then
+				if (not addon.db.profile.filters.obtain.quest) and (CurrentCheck == 9) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display cloth recipes
-				if (not addon.db.profile.cloth) and (CurrentCheck == 10) then
+				if (not addon.db.profile.filters.item.armor.cloth) and (CurrentCheck == 10) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display leather recipes
-				if (not addon.db.profile.leather) and (CurrentCheck == 11) then
+				if (not addon.db.profile.filters.item.armor.leather) and (CurrentCheck == 11) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display mail recipes
-				if (not addon.db.profile.mail) and (CurrentCheck == 12) then
+				if (not addon.db.profile.filters.item.armor.mail) and (CurrentCheck == 12) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display plate recipes
-				if (not addon.db.profile.plate) and (CurrentCheck == 13) then
+				if (not addon.db.profile.filters.item.armor.plate) and (CurrentCheck == 13) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display melee dps recipes
-				if (not addon.db.profile.melee) and (CurrentCheck == 14) then
+				if (not addon.db.profile.filters.player.melee) and (CurrentCheck == 14) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display tanking recipes
-				if (not addon.db.profile.tanking) and (CurrentCheck == 15) then
+				if (not addon.db.profile.filters.player.tank) and (CurrentCheck == 15) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display healer recipes
-				if (not addon.db.profile.healer) and (CurrentCheck == 16) then
+				if (not addon.db.profile.filters.player.healer) and (CurrentCheck == 16) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display caster dps recipes
-				if (not addon.db.profile.casterdps) and (CurrentCheck == 17) then
+				if (not addon.db.profile.filters.player.caster) and (CurrentCheck == 17) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 				
 				-- Display world drop recipes
-				if (not addon.db.profile.worlddrop) and (CurrentCheck == 18) then
+				if (not addon.db.profile.filters.obtain.worlddrop) and (CurrentCheck == 18) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display recipe bop recipes
-				if (not addon.db.profile.recipebop) and (CurrentCheck == 19) then
+				if (not addon.db.profile.filters.binding.recipebop) and (CurrentCheck == 19) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display recipe boe recipes
-				if (not addon.db.profile.recipeboe) and (CurrentCheck == 20) then
+				if (not addon.db.profile.filters.binding.recipeboe) and (CurrentCheck == 20) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
 
 				-- Display all faction recipes -and make sure the check is Horde or Alliance
-				if (not addon.db.profile.faction) and ((CurrentCheck == BFAC["Horde"]) or (CurrentCheck == BFAC["Alliance"])) and (CurrentCheck ~= playerFaction) then
+				if (not addon.db.profile.filters.general.faction) and ((CurrentCheck == BFAC["Horde"]) or (CurrentCheck == BFAC["Alliance"])) and (CurrentCheck ~= playerFaction) then
 					addon.FilteredRecipes = addon.FilteredRecipes + 1
 					return false
 				end
@@ -1765,7 +1932,7 @@ do
 				end
 
 				-- Display all specialities (ie: Primal Mooncloth, Spellcloth, etc.)
-				if (not addon.db.profile.specialities) then
+				if (not addon.db.profile.filters.general.specialty) then
 					-- Are we looking at a speciality and is the current profession a profession that has a speciality?
 					if (SpecialtyTable[CurrentProfession]) and (AllSpecialitiesTable[CurrentCheck]) then
 						if (CurrentSpeciality ~= CurrentCheck) then
@@ -1776,7 +1943,7 @@ do
 				end
 
 				-- Display all class type recipes
-				if (not addon.db.profile.classes) and (ClassTable[CurrentCheck]) then
+				if (not addon.db.profile.filters.general.class) and (ClassTable[CurrentCheck]) then
 					-- Set that a class check has occured in the case of multiple classes.
 					classoccur = true
 					if (CurrentCheck == playerClass) then
@@ -1831,7 +1998,25 @@ end
 
 --[[
 
-	RecipeAquisition Functions
+	Text output functions
+
+]]--
+
+-- Prints out to chat a message stating that a current recipe is missing from the internal database.  Output will be in a comma seperated value.
+
+function addon:printMissingSkill(RecipeName,spellID)
+
+	if (spellID) then
+		self:Print(self:Red(RecipeName .. " " .. spellID) .. self:White(L["MissingFromDB"]))	
+	else
+		self:Print(self:Red(RecipeName) .. self:White(L["MissingFromDB"]))
+	end
+
+end
+
+--[[
+
+	RecipeAcquisition Functions
 
 ]]--
 
@@ -1868,11 +2053,11 @@ do
 		for i=1,numvars,3 do
 			local QuestName, QuestFaction, QuestLoc = select(i,...)
 			if (QuestFaction == 1) then
-				if (addon.db.profile.faction or playerFaction == BFAC["Alliance"]) then
+				if (addon.db.profile.filters.general.faction or playerFaction == BFAC["Alliance"]) then
 					table.insert(t,self:Cyan(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 				end
 			elseif (QuestFaction == 2) then
-				if (addon.db.profile.faction or playerFaction == BFAC["Horde"]) then
+				if (addon.db.profile.filters.general.faction or playerFaction == BFAC["Horde"]) then
 					table.insert(t,self:Red(format("%s%s (%s)",L["QuestReward"],QuestName,QuestLoc)))
 				end
 			elseif (QuestFaction == 0) then
@@ -1951,11 +2136,11 @@ do
 		for i=1,(numvars-1),1 do
 			local CurrentCheck = select(i, ...)
 			if (addon.VendorList[CurrentCheck]["Faction"] == BFAC["Alliance"]) then
-				if (addon.db.profile.faction or playerFaction == BFAC["Alliance"]) then
+				if (addon.db.profile.filters.general.faction or playerFaction == BFAC["Alliance"]) then
 					table.insert(t,self:Cyan(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
 				end
 			elseif (addon.VendorList[CurrentCheck]["Faction"] == BFAC["Horde"]) then
-				if (addon.db.profile.faction or playerFaction == BFAC["Horde"]) then
+				if (addon.db.profile.filters.general.faction or playerFaction == BFAC["Horde"]) then
 					table.insert(t,self:Red(format("%s - %s: %s", addon.VendorList[CurrentCheck]["Name"], addon.VendorList[CurrentCheck]["Location"], addon.VendorList[CurrentCheck]["Coords"])))
 				end
 			elseif (addon.VendorList[CurrentCheck]["Faction"] == BFAC["Neutral"]) then
@@ -2001,7 +2186,7 @@ end
 
 function addon:AddDoubleReputation(RepLevel, Faction1, Faction2)
 
-	if (not addon.db.profile.faction) then
+	if (not addon.db.profile.filters.general.faction) then
 		local tempfac = ""
 		-- Only return Alliance specific factions
 		if (playerFaction == BFAC["Alliance"]) then
@@ -2025,7 +2210,7 @@ end
 
 ]]--
 
--- Searches through the recipe name and aquisition information, setting the display flag to false if the search string does not appear
+-- Searches through the recipe name and acquisition information, setting the display flag to false if the search string does not appear
 
 function addon:SearchRecipeDB(searchstring)
 
@@ -2071,7 +2256,7 @@ end
 
 -- Returns true if a Recipe1 come before Recipe2 in the alphabet
 
-local function SortMissingAquisition(Recipe1, Recipe2)
+local function SortMissingAcquisition(Recipe1, Recipe2)
 
 	return addon.RecipeListing[Recipe1]["Acquire"] < addon.RecipeListing[Recipe2]["Acquire"]
 
@@ -2095,6 +2280,7 @@ function addon:SortMissingRecipes(SortFunction)
 end
 
 --[[
+
 	Recipe Array Functions
 
 ]]--
@@ -2384,15 +2570,11 @@ function addon:AckisRecipeList_Command()
 		SortedRecipeIndex = self:SortMissingRecipes(SortMissingSkill)
 	elseif (sorttype == "Name") then
 		SortedRecipeIndex = self:SortMissingRecipes(SortMissingName)
-	elseif (sorttype == "Aquisition") then
-		SortedRecipeIndex = self:SortMissingRecipes(SortMissingAquisition)
+	elseif (sorttype == "Acquisition") then
+		SortedRecipeIndex = self:SortMissingRecipes(SortMissingAcquisition)
 	end
-	if (addon.db.profile.usegui) then
-		self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
-	else
-		self:InitiateScan(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
-		self:DisplayRecipeResults(CurrentProfessionLevel, SortedRecipeIndex, CurrentProfession, CurrentSpeciality)
-	end
+
+	self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
 
 end
 
@@ -2405,9 +2587,9 @@ function addon:GetTextDump()
 	for i in pairs(addon.RecipeListing) do
 
 		if (addon.RecipeListing[i]["Known"]) then
-			table.insert(texttable,i .. "," .. addon.RecipeListing[i]["Level"] .. "," .. addon.RecipeListing[i]["Acquire"] .. ",true")
+			table.insert(texttable,i .. "," .. addon.RecipeListing[i]["Level"] .. "," .. string.gsub(addon.RecipeListing[i]["Acquire"],addon.br," -") .. ",true")
 		else
-			table.insert(texttable,i .. "," .. addon.RecipeListing[i]["Level"] .. "," .. addon.RecipeListing[i]["Acquire"] .. ",false")
+			table.insert(texttable,i .. "," .. addon.RecipeListing[i]["Level"] .. "," .. string.gsub(addon.RecipeListing[i]["Acquire"],addon.br," -") .. ",false")
 		end
 
 	end

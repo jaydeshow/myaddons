@@ -377,7 +377,7 @@ L:RegisterTranslations("ruRU", function() return {
 
 	vanish = "Исчезновение",
 	vanish_desc = "Таймеры для исчезновения.",
-	vanish_message = "Верас: Исчез! Возврат за ~30сек",
+	vanish_message = "Верас: Исчез! Возврат через ~30сек",
 	vanish_warning = "Исчезновение закончено - %s вернулся!",
 	vanish_bar = "Незаметность Вераса",
 
@@ -405,8 +405,8 @@ L:RegisterTranslations("ruRU", function() return {
 	circle_desc = "Предупреждать когда Маланда начинает выполнение Исцеляющего круга.",
 	circle_trigger = "Леди Маланда начинает выполнять заклинание Исцеляющего круга.",
 	circle_message = "Выполнение Исцеляющего круга!",
-	circle_heal_message = "Исцелен! - Следующее за ~20сек",
-	circle_fail_message = "Прервал %s! - Следующее за ~12sec",
+	circle_heal_message = "Исцелен! - Следующее через ~20сек",
+	circle_fail_message = "Прервал %s! - Следующее через ~12sec",
 	circle_bar = "~перезарядка Исцеляющего круга",
 
 	res = "Аура сопротивления",
@@ -428,7 +428,7 @@ mod.zonename = BZ["Black Temple"]
 mod.enabletrigger = {malande, gathios, zerevor, veras}
 mod.guid = 22951
 mod.toggleoptions = {"immune", "res", "shield", -1, "vanish", "circle", -1, "poison", "icon", -1, "blizzard", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

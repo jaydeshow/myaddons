@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) $
-$Rev: 80812 $
+$Date: 2008-08-29 14:14:08 -0400 (Fri, 29 Aug 2008) $
+$Rev: 81103 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -28,6 +28,7 @@ L["Display"] = true
 L["DISPLAY_OPTIONS"] = "Display Options"
 L["DISPLAY_OPTIONS_LONG"] = "Allows you to customize how the GUI behaves."
 L["Filter"] = true
+L["Filters"] = true
 L["FILTER_OPTIONS"] = "Filtering Options"
 L["FILTER_OPTIONS_LONG"] = "Allows you to customize which recipes are filtered."
 L["Reputation"] = true
@@ -55,8 +56,6 @@ L["Text Dump"] = true
 L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."] = true
 
 -- Display Options
-L["Use GUI"] = true
-L["GUI_TOGGLE"] = "Toggle the use of the GUI on or off."
 L["Include Filtered"] = true
 L["FILTERCOUNT_TOGGLE"] = "Include filtered recipes in the count of total recipes."
 L["Close GUI"] = true
@@ -115,11 +114,12 @@ L["Healing"] = true
 L["HEALING_TOGGLE"] = "Patterns that are used for healing should be included in the scan."
 L["World Drop"] = true
 L["WORLD_DROP_TOGGLE"] = "Patterns that are World Drops should be included in the scan."
+L["MOB_DROP_TOGGLE"] = "Patterns that are Mob Drops should be included in the scan."
 
 -- Sorting options
 L["Name"] = true
 L["Skill"] = true
-L["Aquisition"] = true
+L["Acquisition"] = true
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "Include %s faction."
@@ -161,18 +161,18 @@ L["General"] = true
 L["Class Specific recipes"] = true
 L["Craft Specialty recipes"] = true
 L["All Skill Levels"] = true
-L["Item Type"] = true
+L["Item"] = true
 L["Armor"] = true
 L["Weapon"] = true
-L["Player Type"] = true
+L["Player"] = true
 L["Tank"] = true
-L["Healer"] = true
+L["Healer"] = true1
 L["Melee DPS"] = true
 L["All"] = true
 L["None"] = true
 L["Dagger"] = true
-L["1H"] = true
-L["2H"] = true
+L["1H"] = "One Hand"
+L["2H"] = "Two Hand"
 L["Axe"] = true
 L["Mace"] = true
 L["Sword"] = true
@@ -194,6 +194,51 @@ L["ContractAll"] = "- All"
 L["CONTRACT_TT"] = "Minimize all recipes listed below"
 L["Clear"] = "(X)"
 L["CLEAR_TT"] = "Clear the search textbox"
+-- new GUI, ZJ 8/26/08
+L["General_TT"] = "Click to configure General Filtering Options"
+L["Obtain_TT"] = "Click to configure Obtain Filtering Options"
+L["Binding_TT"] = "Click to configure Binding Filtering Options"
+L["Item_TT"] = "Click to configure Item Filtering Options"
+L["Player_TT"] = "Click to configure Player Filtering options"
+L["Reputation_TT"] = "Click to configure Reputation Filtering options"
+L["IBOE_TT"] = "Bind on Equip Crafted items will be included in the scan"
+L["IBOE"] = "Crafted Item is Bind on Equip"
+L["IBOP_TT"] = "Bind on Pickup Crafted items will be included in the scan"
+L["IBOP"] = "Crafted Item is Bind on Pickup"
+L["RBOE_TT"] = "Bind on Equip Recipes will be included in the scan"
+L["RBOE"] = "Recipe is Bind on Equip"
+L["RBOP_TT"] = "Bind on Pickup Recipes will be included in the scan"
+L["RBOP"] = "Recipe is Bind on Pickup"
+L["ArmorAll_TT"] = "Include all Armor recipes in the scan"
+L["ArmorNone_TT"] = "Do not include any Armor recipes in the scan"
+L["WeaponAll_TT"] = "Include all Weapon recipes in the scan"
+L["WeaponNone_TT"] = "Do not include any Weapon recipes in the scan"
+L["Weapon1H_TT"] = "Include one handed Weapon recipes in the scan"
+L["Weapon2H_TT"] = "Include two handed Weapon recipes in the scan"
+L["WeaponDagger_TT"] = "Include Dagger recipes in the scan"
+L["WeaponAxe_TT"] = "Include Axe recipes in the scan"
+L["WeaponMace_TT"] = "Include Mace recipes in the scan"
+L["WeaponSword_TT"] = "Include Sword recipes in the scan"
+L["WeaponPolearm_TT"] = "Include Polearm recipes in the scan"
+L["WeaponThrown_TT"] = "Include Thrown Weapon recipes in the scan"
+L["WeaponBow_TT"] = "Include Bow recipes in the scan"
+L["WeaponCrossbow_TT"] = "Include Crossbow recipes in the scan"
+L["WeaponStaff_TT"] = "Include Staff recipes in the scan"
+L["WeaponAmmo_TT"] = "Include Ammunition recipes in the scan"
+L["WeaponWand_TT"] = "Include Wand recipes in the scan"
+L["MOB_DROP_TT"] = "Include Mob Drop recipes in the scan"
+-- ZJ 8/28/08
+L["CLOAK_TOGGLE"] = "Include Cloak item recipes in the scan"
+L["Cloak"] = true
+L["NECKLACE_TOGGLE"] = "Include Necklace item recipes in the scan"
+L["Necklace"] = true
+L["RING_TOGGLE"] = "Include Ring recipes in the scan"
+L["Ring"] = true
+L["TRINKET_TOGGLE"] = "Include Trinket recipes in the scan"
+L["Trinket"] = true
+L["Wand"] = true
+L["OLD_WORLD_REP_TT"] = "Click to configure Old World Reputation Filtering Options"
+L["BC_REP_TT"] = "Click to configure Burning Crusade Reputation Filtering Options"
 
 -- Tooltip Text
 L["Scan Skills Long"] = "Scan for missing recipes using Ackis Recipe List."
@@ -202,7 +247,7 @@ L["Expand All"] = "Expands all recipes."
 L["Collapse All"] = "Collapses all recipes."
 L["FILTER_OPEN_TT"] = "Open filter option panel."
 L["FILTER_CLOSE_TT"] = "Close filter option panel."
-L["RESET_TT"] = "Reset the search string."
+L["RESET_TT"] = "Reset Filters to default values."
 L["SORT_TT"] = "Change the sort order for the list."
 L["VENDOR_TT"] = "Check to include Vendor recipes in the list."
 L["TRAINER_TT"]= "Check to include Trained recipes in the list."
@@ -216,7 +261,7 @@ L["BOP_TT"] = "Check to only view Bind on Pickup recipes in the list."
 L["HORDE_TT"] = "Check to include Horde only recipes in the list."
 L["ALLIANCE_TT"] = "Check to include Alliance only recipes in the list."
 L["KNOWN_TT"] = "Check to include known recipes in the list."
-L["UNKNOWN_TT"] = "Check to include unknwon recipes in the list."
+L["UNKNOWN_TT"] = "Check to include unknown recipes in the list."
 L["DISCOVERY_TT"] = "Check to include discovered recipes in the list."
 L["ARMOR_TT"] = "Check to include Armor recipes in the list."
 L["WEAPON_TT"] = "Check to include Weapon recipes in the list."

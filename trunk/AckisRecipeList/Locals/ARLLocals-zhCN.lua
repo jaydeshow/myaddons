@@ -5,8 +5,8 @@ ARLLocals-zhCN.lua
 
 zhCN localization strings for Ackis Recipe List
 
-$Date: 2008-07-28 22:02:21 -0400 (Mon, 28 Jul 2008) $
-$Rev: 79362 $
+$Date: 2008-08-25 17:00:42 -0400 (Mon, 25 Aug 2008) $
+$Rev: 80948 $
 
 Original translated by: iCat (msn: lucifer_icat@hotmail.com)
 Currently maintaince by: Kurax, 冰焱妩魅 @ CWDG
@@ -93,7 +93,7 @@ L["HEALING_TOGGLE"] = "扫描中包含成品适用于治疗职业的配方。"
 -- Sorting options
 L["Name"] = "名称"
 L["Skill"] = "技能"
-L["Aquisition"] = "获取"
+L["Acquisition"] = "获取"
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "包含%s阵营。"

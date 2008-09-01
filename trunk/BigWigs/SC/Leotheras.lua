@@ -298,8 +298,8 @@ L:RegisterTranslations("ruRU", function() return {
 	phase_desc = "Примерные таймеры Фазы Демона.",
 	phase_trigger = "Уйди, эльфийская мелюзга. Я теперь контролирую ситуацию!",
 	phase_demon = "Фаза демона в течении 60 сек",
-	phase_demonsoon = "Фаза демона за 5 сек!",
-	phase_normalsoon = "Нормальная Фаза за 5 сек",
+	phase_demonsoon = "Фаза демона через 5 сек!",
+	phase_normalsoon = "Нормальная Фаза через 5 сек",
 	phase_normal = "Нормальная Фаза!",
 	demon_bar = "Фаза Демона",
 	demon_nextbar = "След. Фаза Демона",
@@ -330,7 +330,7 @@ mod.zonename = BZ["Serpentshrine Cavern"]
 mod.enabletrigger = boss
 mod.guid = 21215
 mod.toggleoptions = {"enrage", "whirlwind", "phase", "image", "whisper", "mindcontrol", "bosskill"}
-mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

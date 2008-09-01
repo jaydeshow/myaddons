@@ -12,7 +12,7 @@
 ## Notes-esES: Muestra una lista de recetas inexistentes para sus Habilidades de Comercio. Funciona con todas las habilidades comerciales, incluidas venenos y entrenamiento de bestias del cazador.
 ## Notes-zhCN: 全面详细的商业技能信息插件，包括毒药和宠物技能.
 ## Notes-koKR: 캐릭터가 배우지 못한 제조법을 표시합니다. 모든 전문기술 및 도적의 독과 사냥꾼의 야수 훈련도 포함합니다.
-
+ 
 ## Author: Ackis
 ## X-Author-Server: Illidan US
 ## X-Author-Faction: Horde
@@ -23,8 +23,8 @@
 
 ## Interface: 20400
 ## Version: 0.936
-## X-Revision: $Rev: 80812 $
-## X-Date: $Date: 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) $
+## X-Revision: $Rev: 81141 $
+## X-Date: $Date: 2008-08-30 14:30:28 -0400 (Sat, 30 Aug 2008) $
 
 ## X-credits: FGWarmonger, Kagaro, Speeddymon, Xinhuan, Zhinjio
 
@@ -48,39 +48,15 @@
 
 embeds.xml
 # Hack because LibAboutPanel is on CFSVN and not WoWAce SVN
+# Remove this when WoWAce merges with CF
 libs\LibAboutPanel\lib.xml
 
 # Localization files
-Locals\ARLLocals-enUS.lua
-Locals\ARLLocals-koKR.lua
-Locals\ARLLocals-frFR.lua
-Locals\ARLLocals-zhCN.lua
-Locals\ARLLocals-zhTW.lua
-Locals\ARLLocals-deDE.lua
-Locals\ARLLocals-esES.lua
-Locals\ARLLocals-esMX.lua
-Locals\ARLLocals-ruRU.lua
-
-AboutPanel.lua
+local.xml
 
 AckisRecipeList.lua
 ARLFrame.lua
-ARLText.lua
 ARLColour.lua
 
 # Recipe database files
-RecipeDB\ARL-Alchemy.lua
-RecipeDB\ARL-BeastTrain.lua
-RecipeDB\ARL-BlackSmith.lua
-RecipeDB\ARL-Cook.lua
-RecipeDB\ARL-Enchant.lua
-RecipeDB\ARL-Engineer.lua
-RecipeDB\ARL-FirstAid.lua
-RecipeDB\ARL-Inscription.lua
-RecipeDB\ARL-Jewelcraft.lua
-RecipeDB\ARL-LeatherWork.lua
-RecipeDB\ARL-RoguePoison.lua
-RecipeDB\ARL-RuneForge.lua
-RecipeDB\ARL-Smelt.lua
-RecipeDB\ARL-Tailor.lua
-RecipeDB\ARL-Vendor.lua
+database.xml

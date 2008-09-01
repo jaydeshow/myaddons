@@ -5,8 +5,8 @@ ARLLocals-esMX.lua
 
 esES localization strings for Ackis Recipe List
 
-$Date: 2008-08-09 18:05:16 -0400 (Sat, 09 Aug 2008) $
-$Rev: 80048 $
+$Date: 2008-08-25 17:00:42 -0400 (Mon, 25 Aug 2008) $
+$Rev: 80948 $
 
 Original translated by: StiviS
 Currently maintaince by: StiviS
@@ -94,7 +94,7 @@ L["HEALING_TOGGLE"] = "Los patrones que se utilizan para la curación serán inc
 -- Sorting options
 L["Name"] = "Nombre"
 L["Skill"] = "Habilidad"
-L["Aquisition"] = "Adquisición"
+L["Acquisition"] = "Adquisición"
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "Incluir facción %s."

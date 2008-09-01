@@ -4,8 +4,8 @@ ARL-Vendor.lua
 
 Vendor data for all of AckisRecipeList
 
-$Date: 2008-07-26 15:00:04 -0400 (Sat, 26 Jul 2008) $
-$Rev: 79207 $
+$Date: 2008-08-25 10:36:26 -0400 (Mon, 25 Aug 2008) $
+$Rev: 80938 $
 
 ]]--
 
@@ -60,7 +60,7 @@ function addon:InitVendor()
 	self:addVendorList(41, L["Leo Sarn"], BFAC["Horde"], BZONE["Silverpine Forest"], "53, 82")
 	self:addVendorList(42, L["Lilly"], BFAC["Horde"], BZONE["Silverpine Forest"], "43, 50")
 	self:addVendorList(43, L["Lyna"], BFAC["Horde"], BZONE["Silvermoon City"], "69, 24")
-	self:addVendorList(44, L["Madame Ruby"], BFAC["Neutral"], BZONE["Shattrath City"], "32, 30")
+	self:addVendorList(44, L["Madame Ruby"], BFAC["Neutral"], BZONE["Shattrath City"], "63, 70")
 	self:addVendorList(45, L["Nata Dawnstrider"], BFAC["Horde"], BZONE["Thunder Bluff"], "45, 39")
 	self:addVendorList(46, L["Thaddeus Webb"], BFAC["Horde"], BZONE["Undercity"], "62, 60")
 	self:addVendorList(47, L["Tilli Thistlefuzz"], BFAC["Alliance"], BZONE["Ironforge"], "60, 44")

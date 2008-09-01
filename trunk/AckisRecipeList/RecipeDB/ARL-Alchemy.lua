@@ -4,8 +4,8 @@ ARL-Alchemy.lua
 
 Alchemy data for all of AckisRecipeList
 
-$Date: 2008-08-05 23:41:34 -0400 (Tue, 05 Aug 2008) $
-$Rev: 79837 $
+$Date: 2008-08-26 15:24:55 -0400 (Tue, 26 Aug 2008) $
+$Rev: 81004 $
 
 ]]--
 
@@ -188,10 +188,10 @@ function addon:InitAlchemy()
 	self:addTradeSkillSpell(39637, 320, self:AddSingleReputation(2, BFAC["Cenarion Expedition"]), BFAC["Cenarion Expedition"])
 	self:addTradeSkillSpell(28553, 330, self:AddDoubleReputation(2, BFAC["Honor Hold"], BFAC["Thrallmar"]), BFAC["Thrallmar"])
 	self:addTradeSkillSpell(28554, 335, self:AddSingleReputation(4, BFAC["Sporeggar"]), BFAC["Sporeggar"])
-	self:addTradeSkillSpell(47046, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
-	self:addTradeSkillSpell(47048, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
-	self:addTradeSkillSpell(47049, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
-	self:addTradeSkillSpell(47050, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"])
+	self:addTradeSkillSpell(47046, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"], 15)
+	self:addTradeSkillSpell(47048, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"], 17)
+	self:addTradeSkillSpell(47049, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"], 16)
+	self:addTradeSkillSpell(47050, 375, self:AddSingleReputation(4, BFAC["Shattered Sun Offensive"]), BFAC["Shattered Sun Offensive"], 14)
 
 	-- Raid Drops
 	self:addTradeSkillSpell(22732, 300, L["MOLTENCORE"], 6)

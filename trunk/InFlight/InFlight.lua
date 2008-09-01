@@ -111,6 +111,30 @@ elseif gl == "esES" then
 	L_FontSize = "Tamaño"
 	L_FontColor = "Color"
 	L_ConfirmFlight = "Confirmar Vuelo"
+-- Translated by StingerSoft (Эритнулл ака Шептун)
+elseif gl == "ruRU" then
+	L_destparse = ", (.+)"  -- удаляет название основной зоны, оставляя только подзону
+	L_duration = "Продолжительность полета: "
+	L_tooltipoption2 = " <Shift левый-клик> для перемещения."
+	L_tooltipoption3 = " <Правый-клик> для опций."
+	L_confirmpopup = "Литеть в |cffffff00%s%s|r?"
+	L_BarOptions = "Опции полосы"
+	L_FillUp = "Заполнять"
+	L_Texture = "Текстура"
+	L_Width = "Ширина"
+	L_Height = "Высота"
+	L_Border = "Края"
+	L_FillColor = "Цвет заполнения"
+	L_UnknownColor = "Неизвестный цвет"
+	L_BackgroundColor = "Цвет фона"
+	L_BorderColor = "Цвет края"
+	L_TextOptions = "Опции текста"
+	L_CompactMode = "Компактный режим"
+	L_ToText = "\"в\" Текст"
+	L_Font = "Шрифт"
+	L_FontSize = "Размер шрифта"
+	L_FontColor = "Цвет шрифта"
+	L_ConfirmFlight = "Подтверждать полет"
 end
 
 -- LOCAL FUNCTIONS

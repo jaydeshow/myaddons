@@ -1,0 +1,94 @@
+------------------------------------------------------------------------
+r81152 | pneumatus | 2008-08-30 23:13:51 -0400 (Sat, 30 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Reputation/LibPeriodicTable-3.1-Reputation.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Reputation.Turnin updates to bring them in line with live.
+------------------------------------------------------------------------
+r81144 | pneumatus | 2008-08-30 16:23:49 -0400 (Sat, 30 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+   M /trunk/LibPeriodicTable-3.1/dataminer.lua
+
+LibPeriodicTable-3.1:
+- Fix Misc.Usable.StartsQuest handler to fetch more than 200 results.
+- Misc.Usable.StartsQuest fully populated
+- Admiral's Hat removed from Misc.Minipet.Normal
+------------------------------------------------------------------------
+r80525 | scorpio0920 | 2008-08-16 03:26:14 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLoot/LibPeriodicTable-3.1-InstanceLoot.lua
+
+LibPeriodicTable-3.1:
+- Added Zul'Aman timed reward chest loot.
+------------------------------------------------------------------------
+r80342 | jerry | 2008-08-13 06:00:50 -0400 (Wed, 13 Aug 2008) | 5 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLoot/LibPeriodicTable-3.1-InstanceLoot.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLootHeroic/LibPeriodicTable-3.1-InstanceLootHeroic.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+   M /trunk/LibPeriodicTable-3.1/dataminer.lua
+
+LibPeriodicTable-3.1:
+_ update the dataminer to fix the buggy "Junkdrop" handling. As a result, most loot table have become smaller for old world bosses. Generic drops like Badge of Justice, Primal Nether and Spirit Shard are also removed.
+_ run the dataminer on all Loot table entries.
+
+
+------------------------------------------------------------------------
+r80292 | toadkiller | 2008-08-12 17:07:43 -0400 (Tue, 12 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Vengeful Nether Drake
+ 32458
+------------------------------------------------------------------------
+r80208 | toadkiller | 2008-08-11 19:25:03 -0400 (Mon, 11 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+-- Gold Medal 37297, Empty Thaumaturgy Vessel 7866
+------------------------------------------------------------------------
+r80060 | toadkiller | 2008-08-09 20:04:59 -0400 (Sat, 09 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+
+LibPeriodicTable-3.1:
+- Swift Zhevra
+- Restore some items people deleted.  Please, MERGE, don't just delete other peoples work through overwrites.
+
+------------------------------------------------------------------------
+r80059 | toadkiller | 2008-08-09 20:01:20 -0400 (Sat, 09 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Swift Zhevra
+- Restore some items people deleted.  Please, MERGE, don't just delete other peoples work through overwrites.
+------------------------------------------------------------------------
+r80052 | nymbia | 2008-08-09 18:31:32 -0400 (Sat, 09 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-AutoBar/LibPeriodicTable-3.1-AutoBar.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-ClassSpell/LibPeriodicTable-3.1-ClassSpell.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Gear/LibPeriodicTable-3.1-Gear.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLoot/LibPeriodicTable-3.1-InstanceLoot.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-InstanceLootHeroic/LibPeriodicTable-3.1-InstanceLootHeroic.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Misc/LibPeriodicTable-3.1-Misc.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-Tradeskill/LibPeriodicTable-3.1-Tradeskill.lua
+   M /trunk/LibPeriodicTable-3.1/LibPeriodicTable-3.1-TradeskillResultMats/LibPeriodicTable-3.1-TradeskillResultMats.lua
+   M /trunk/LibPeriodicTable-3.1/data.lua
+
+LibPeriodicTable-3.1:
+- Dataminer run
+
+------------------------------------------------------------------------

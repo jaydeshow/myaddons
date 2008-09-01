@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("Reputation", "$Rev: 77260 $", {
+LibStub("LibPeriodicTable-3.1"):AddData("Reputation", "$Rev: 81152 $", {
 	["Reputation.Reward.Argent Dawn"]="18171:7,18182:8,18169:7,18170:7,18172:7,18173:7,13482:6,13810:7,13813:7,13724:5,19447:7,19446:6,19442:6,19216:6,19217:7,19328:6,19329:7,19203:6,19205:7",
 	["Reputation.Reward.Ashtongue Deathsworn"]="32490:8,32486:8,32488:8,32492:8,32493:8,32487:8,32485:8,32491:8,32489:8,32429:5,32430:5,32431:6,32447:6,32436:5,32435:5,32433:6,32434:6,32438:5,32440:5,32439:6,32437:6,32432:6,32442:5,32444:5,32443:6,32441:6",
 	["Reputation.Reward.Bloodsail Buccaneers"]="22744:4,22745:4,22743:4,22742:4,12185:5",
@@ -48,12 +48,12 @@ LibStub("LibPeriodicTable-3.1"):AddData("Reputation", "$Rev: 77260 $", {
 	["Reputation.Reward.Zandalar Tribe"]="20757:5,20756:6,19772:7,19773:6,19766:5,19765:6,19764:7,19771:5,19770:6,19769:7,19776:7,19778:5,19777:6,19779:7,19780:6,19781:5,20012:5,20013:8,20011:7,20014:6,20000:6,20001:5",
 	["Reputation.Reward.Shattered Sun Offensive"]="34675:8,34676:8,34677:8,34680:8,34679:8,34678:8,35753:8,35754:8,35752:8,35755:8,35270:8,35265:8,35245:8,35242:8,35258:8,35267:8,35257:8,35247:8,35221:8,29193:7,34674:7,34666:7,34670:7,34673:7,34671:7,34672:7,34665:7,34667:7,35708:7,35698:7,35699:7,35696:7,35695:7,35697:7,35502:7,35505:7,35271:7,35766:7,35241:7,35259:7,35767:7,35768:7,35769:7,35252:7,34872:6,35500:6,35254:6,35269:6,35268:6,35253:6,35240:6,35239:6,35266:6,35251:6,35238:6,34780:5,35261:5,35250:5,35249:5,35264:5,35263:5,35260:5,35248:5,35262:5,35256:5,35246:5,35255:5,35245:5",
 
-	["Reputation.Turnin.Argent Dawn"]="12840:v50/20,12841:v50/10,12843:v50,12844:v25,22529:v10/30,22525:v10/30,22526:v10/30,22527:v10/30,22528:v10/30",
+	["Reputation.Turnin.Argent Dawn"]="12840:v50/20,12841:v50/10,12843:v50,12844:v100,22529:v20/30,22525:v20/30,22526:v20/30,22527:v20/30,22528:v20/30",
 	["Reputation.Turnin.Brood of Nozdormu"]="21229:v500,21230:v1000,20384:v1;stop2999",
-	["Reputation.Turnin.Cenarion Circle"]="20404:v25,21229:v100,20513:v50/3,20514:v100/3,20515:v50",
+	["Reputation.Turnin.Cenarion Circle"]="20404:v50,21229:v100,20513:v50,20514:v500/3,20515:v700/3",
 	["Reputation.Turnin.Cenarion Expedition"]="24401:v25;stop9000,24368:v75",
 	["Reputation.Turnin.Darkspear Trolls"]="14047:v75/20",
-	["Reputation.Turnin.Darnassus"]="14047:v75/20,11040:v5",
+	["Reputation.Turnin.Darnassus"]="14047:v75/20,11040:v75/10",
 	["Reputation.Turnin.Exodar"]="14047:v75/20",
 	["Reputation.Turnin.Gadgetzan"]="8483:v10/5",
 	["Reputation.Turnin.Gnomeregan Exiles"]="14047:v75/20",
@@ -62,7 +62,7 @@ LibStub("LibPeriodicTable-3.1"):AddData("Reputation", "$Rev: 77260 $", {
 	["Reputation.Turnin.Lower City"]="25719:v250/30;stop9000",
 	["Reputation.Turnin.Netherwing"]="32427:v25/4,32464:v25/4,32468:v25/4,32470:v250/35,32506:v250,32509:v250/10,32723:v350/15",
 	["Reputation.Turnin.Orgrimmar"]="14047:v75/20",
-	["Reputation.Turnin.Ravenholdt"]="17124:v100;stop3000,16885:v10",
+	["Reputation.Turnin.Ravenholdt"]="17124:v250;stop3000,16885:v75/5",
 	["Reputation.Turnin.Silvermoon City"]="14047:v75/20",
 	["Reputation.Turnin.Sporeggar"]="24291:v125;stop0,24290:v75;stop0,24245:v75;stop3000,24449:v75,24246:v150",
 	["Reputation.Turnin.Stormwind"]="14047:v75/20",
@@ -70,9 +70,9 @@ LibStub("LibPeriodicTable-3.1"):AddData("Reputation", "$Rev: 77260 $", {
 	["Reputation.Turnin.The Consortium"]="25416:v25;stop3000,25463:v250/3,25433:v25,29209:v25",
 	["Reputation.Turnin.The Mag'har"]="25433:v50",
 	["Reputation.Turnin.The Scryers"]="29426:v25;stop21000,30810:v25,29739:v350,25744:v250/8;stop0",
-	["Reputation.Turnin.Thorium Brotherhood"]="18945:v25/4,11370:v5,17012:v175,17010:v500,17011:v500,11382:v500",
+	["Reputation.Turnin.Thorium Brotherhood"]="18945:v25/4,11370:v75/10,17012:v175,17010:v500,17011:v500,11382:v500",
 	["Reputation.Turnin.Thunder Bluff"]="14047:v75/20",
-	["Reputation.Turnin.Timbermaw Hold"]="21383:v150/5,21377:v150/5",
+	["Reputation.Turnin.Timbermaw Hold"]="21383:v30,21377:v30",
 	["Reputation.Turnin.Undercity"]="14047:v75/20",
-	["Reputation.Turnin.Zandalar Tribe"]="19802:v200,19708:v125,19713:v125,19711:v125,19710:v125,19712:v125,19707:v125,19714:v125,19709:v125,19715:v125,19706:v25,19701:v25,19700:v25,19699:v25,19704:v25,19705:v25,19702:v25,19703:v25,19698:v25,19858:v50",
+	["Reputation.Turnin.Zandalar Tribe"]="19802:v500,19708:v125,19713:v125,19711:v125,19710:v125,19712:v125,19707:v125,19714:v125,19709:v125,19715:v125,19706:v25,19701:v25,19700:v25,19699:v25,19704:v25,19705:v25,19702:v25,19703:v25,19698:v25,19858:v50",
 })

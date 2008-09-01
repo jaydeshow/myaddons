@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 80484 $
+Revision: $Rev: 81208 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 80484 $"
+local MINOR_VERSION = "$Revision: 81208 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -550,6 +550,11 @@ lib:SetBaseTranslations {
 	["Tsu'zee"] = true,
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+	["Elder Nakox"] = true,
+	["Herald Volazj"]=  true,
+	["Jedoga Shadowseeker"] = true,
+	["Prince Taldaram"] = true,
 --Azjol-Nerub
 	["Anub'arak"] = true,
 	["Hadronox"] = true,
@@ -920,6 +925,17 @@ lib:SetBaseTranslations {
 	["Obsidian Sentinel"] = true,
 	["Revelosh"] = true,
 
+-- Ulduar
+-- Halls of Lightning
+	["General Gjarngrin"] = true,
+	["Ionar"] = true,
+	["Kronus"] = true,
+	["Volkhan"] = true,
+-- Halls of Stone
+	["Krystallus"] = true,
+	["Maiden of Grief"] = true,
+	["Sjonnir the Ironshaper"] = true,
+
 --Wailing Caverns
 	["Boahn"] = true,
 	["Deviate Faerie Dragon"] = true,
@@ -978,6 +994,13 @@ lib:SetBaseTranslations {
 	["Witch Doctor Zum'rah"] = true,
 	["Zerillis"] = true,
 	["Zul'Farrak Dead Hero"] = true,
+
+-- Zul'Drak
+-- Gundrak
+	["Bloodstone Annihilator"] = true,
+	["Gal'darah"] = true,
+	["Moorabi"] = true,
+	["Slad'ran"] = true,
 
 --Zul'Gurub
 	["Bloodlord Mandokir"] = true,
@@ -1246,6 +1269,11 @@ elseif GAME_LOCALE == "deDE" then
 		["Tsu'zee"] = "Tsu'zee",
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+		--["Elder Nakox"] = true,
+		--["Herald Volazj"]=  true,
+		--["Jedoga Shadowseeker"] = true,
+		--["Prince Taldaram"] = true,
 --Azjol-Nerub
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
@@ -1616,6 +1644,17 @@ elseif GAME_LOCALE == "deDE" then
 		["Obsidian Sentinel"] = "Obsidianschildwache",
 		["Revelosh"] = "Revelosh",
 
+-- Ulduar
+-- Halls of Lightning
+		--["General Gjarngrin"] = true,
+		--["Ionar"] = true,
+		--["Kronus"] = true,
+		--["Volkhan"] = true,
+-- Halls of Stone
+		--["Krystallus"] = true,
+		--["Maiden of Grief"] = true,
+		--["Sjonnir the Ironshaper"] = true,
+
 --Wailing Caverns
 		["Boahn"] = "Boahn",
 		["Deviate Faerie Dragon"] = "Deviatfeendrache",
@@ -1674,6 +1713,13 @@ elseif GAME_LOCALE == "deDE" then
 		["Witch Doctor Zum'rah"] = "Hexendoktor Zum'rah" ,
 		["Zerillis"] = "Zerillis",
 		["Zul'Farrak Dead Hero"] = "Untoter Held aus Zul'Farrak",
+
+-- Zul'Drak
+-- Gundrak
+		--["Bloodstone Annihilator"] = true,
+		--["Gal'darah"] = true,
+		--["Moorabi"] = true,
+		--["Slad'ran"] = true,
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "Blutfürst Mandokir",
@@ -1939,6 +1985,11 @@ elseif GAME_LOCALE == "frFR" then
 		["Tsu'zee"] = "Tsu'zee",
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+		["Elder Nakox"] = "Ancien Nakox",
+		["Herald Volazj"]=  "Héraut Volazj",
+		["Jedoga Shadowseeker"] = "Jedoga Cherchelombre",
+		["Prince Taldaram"] = "Prince Taldaram",
 --Azjol-Nerub
 		["Anub'arak"] = "Anub'arak",
 		["Hadronox"] = "Hadronox",
@@ -2309,6 +2360,17 @@ elseif GAME_LOCALE == "frFR" then
 		["Obsidian Sentinel"] = "Sentinelle d'obsidienne",
 		["Revelosh"] = "Revelosh",
 
+-- Ulduar
+-- Halls of Lightning
+		["General Gjarngrin"] = "Général Gjarngrin",
+		["Ionar"] = "Ionar",
+		["Kronus"] = "Kronus",
+		["Volkhan"] = "Volkhan",
+-- Halls of Stone
+		["Krystallus"] = "Krystallus",
+		["Maiden of Grief"] = "Damoiselle de peine",
+		["Sjonnir the Ironshaper"] = "Sjonnir le Sculptefer",
+
 --Wailing Caverns
 		["Boahn"] = "Boahn",
 		["Deviate Faerie Dragon"] = "Dragon féérique déviant",
@@ -2367,6 +2429,13 @@ elseif GAME_LOCALE == "frFR" then
 		["Witch Doctor Zum'rah"] = "Sorcier-docteur Zum'rah",
 		["Zerillis"] = "Zerillis",
 		["Zul'Farrak Dead Hero"] = "Héros mort de Zul'Farrak",
+
+-- Zul'Drak
+-- Gundrak
+		--["Bloodstone Annihilator"] = true,
+		["Gal'darah"] = "Gal'darah",
+		["Moorabi"] = "Moorabi",
+		["Slad'ran"] = "Slad'ran",
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "Seigneur sanglant Mandokir",
@@ -2632,6 +2701,11 @@ elseif GAME_LOCALE == "zhCN" then
 		["Tsu'zee"] = "苏斯",
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+		--["Elder Nakox"] = true,
+		--["Herald Volazj"]=  true,
+		--["Jedoga Shadowseeker"] = true,
+		--["Prince Taldaram"] = true,
 --Azjol-Nerub
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
@@ -3002,6 +3076,17 @@ elseif GAME_LOCALE == "zhCN" then
 		["Obsidian Sentinel"] = "黑曜石哨兵",
 		["Revelosh"] = "鲁维罗什",
 
+-- Ulduar
+-- Halls of Lightning
+		--["General Gjarngrin"] = true,
+		--["Ionar"] = true,
+		--["Kronus"] = true,
+		--["Volkhan"] = true,
+-- Halls of Stone
+		--["Krystallus"] = true,
+		--["Maiden of Grief"] = true,
+		--["Sjonnir the Ironshaper"] = true,
+
 --Wailing Caverns
 		["Boahn"] = "博艾恩",
 		["Deviate Faerie Dragon"] = "变异精灵龙",
@@ -3060,6 +3145,13 @@ elseif GAME_LOCALE == "zhCN" then
 		["Witch Doctor Zum'rah"] = "巫医祖穆拉恩",
 		["Zerillis"] = "泽雷利斯",
 		["Zul'Farrak Dead Hero"] = "祖尔法拉克阵亡英雄",
+
+-- Zul'Drak
+-- Gundrak
+		--["Bloodstone Annihilator"] = true,
+		--["Gal'darah"] = true,
+		--["Moorabi"] = true,
+		--["Slad'ran"] = true,
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "血领主曼多基尔",
@@ -3326,6 +3418,11 @@ elseif GAME_LOCALE == "zhTW" then
 		["Tsu'zee"] = "蘇斯",
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+		--["Elder Nakox"] = true,
+		--["Herald Volazj"]=  true,
+		--["Jedoga Shadowseeker"] = true,
+		--["Prince Taldaram"] = true,
 --Azjol-Nerub
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
@@ -3696,6 +3793,17 @@ elseif GAME_LOCALE == "zhTW" then
 		["Obsidian Sentinel"] = "黑曜石哨兵",
 		["Revelosh"] = "魯維羅什",
 
+-- Ulduar
+-- Halls of Lightning
+		--["General Gjarngrin"] = true,
+		--["Ionar"] = true,
+		--["Kronus"] = true,
+		--["Volkhan"] = true,
+-- Halls of Stone
+		--["Krystallus"] = true,
+		--["Maiden of Grief"] = true,
+		--["Sjonnir the Ironshaper"] = true,
+
 --Wailing Caverns
 		["Boahn"] = "博艾恩",
 		["Deviate Faerie Dragon"] = "變異精靈龍",
@@ -3754,6 +3862,13 @@ elseif GAME_LOCALE == "zhTW" then
 		["Witch Doctor Zum'rah"] = "巫醫·祖穆拉恩",
 		["Zerillis"] = "澤雷利斯",
 		["Zul'Farrak Dead Hero"] = "祖爾法拉克陣亡英雄",
+
+-- Zul'Drak
+-- Gundrak
+		--["Bloodstone Annihilator"] = true,
+		--["Gal'darah"] = true,
+		--["Moorabi"] = true,
+		--["Slad'ran"] = true,
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "血領主曼多基爾",
@@ -3935,10 +4050,10 @@ elseif GAME_LOCALE == "koKR" then
 		["Keristrasza"] = "케리스트라자",
 		["Ormorok the Tree-Shaper"] = "정원사 오르모로크",
 --The Oculus
-		--["Drakos the Interrogator"] = true,
-		--["Ley-Guardian Eregos"] = true,
-		--["Mage-Lord Urom"] = true,
-		--["Varos Cloudstrider"] = true,
+		["Drakos the Interrogator"] = "심문관 드라코스",
+		["Ley-Guardian Eregos"] = "지맥 수호자 에레고스",
+		["Mage-Lord Urom"] = "마법사 군주 우롬",
+		["Varos Cloudstrider"] = "바로스 클라우드스트라이더",
 
 --Caverns of Time
 --Old Hillsbrad Foothills
@@ -3946,10 +4061,10 @@ elseif GAME_LOCALE == "koKR" then
 		["Epoch Hunter"] = "시대의 사냥꾼",
 		["Lieutenant Drake"] = "부관 드레이크",
 --Stratholme
-		--["Meathook"] = true,
-		--["Chrono-Lord Epoch"] = true,
-		--["Mal'Ganis"] = true,
-		--["Salramm the Fleshcrafter"] = true,
+		["Meathook"] = "살덩이고리",
+		["Chrono-Lord Epoch"] = "시간의 군주 에포크",
+		["Mal'Ganis"] = "말가니스",
+		["Salramm the Fleshcrafter"] = "살덩이창조자 살람",
 --The Black Morass
 		["Aeonus"] = "아에누스",
 		["Chrono Lord Deja"] = "시간의 군주 데자",
@@ -4019,10 +4134,15 @@ elseif GAME_LOCALE == "koKR" then
 		["Tsu'zee"] = "츄지",
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+		["Elder Nakox"] = "장로 나독스",
+		["Herald Volazj"]= "사자 볼라즈",
+		["Jedoga Shadowseeker"] = "어둠추적자 제도가",
+		["Prince Taldaram"] = "공작 탈다람",
 --Azjol-Nerub
-		--["Anub'arak"] = true,
-		--["Hadronox"] = true,
-		--["Krik'thir the Gatewatcher"] = true,
+		["Anub'arak"] = "아눕아락",
+		["Hadronox"] = "하드로녹스",
+		["Krik'thir the Gatewatcher"] = "문지기 크릭시르",
 --Chamber of Aspects
 --Naxxramas
 
@@ -4037,10 +4157,10 @@ elseif GAME_LOCALE == "koKR" then
 
 --Grizzly Hills
 --Drak�tharon Keep
-		--["King Dred"] = true,
-		--["Novos the Summoner"] = true,
-		--["The Prophet Tharon'ja"] = true,
-		--["Trollgore"] = true,
+		["King Dred"] = "랩터왕 서슬발톱",
+		["Novos the Summoner"] = "소환사 노보스",
+		["The Prophet Tharon'ja"] = "예언자 타론자",
+		["Trollgore"] = "트롤고어",
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "현자 블라인드아이",
@@ -4078,10 +4198,10 @@ elseif GAME_LOCALE == "koKR" then
 		["Prince Keleseth"] = "공작 켈레세스",
 		["Skarvald the Constructor"] = "건축가 스카발드",
 --Utgarde Pinnacle
-		--["Skadi the Ruthless"] = true,
-		--["King Ymiron"] = true,
-		--["Svala Sorrowgrave"] = true,
-		--["Gortok Palehoof"] = true,
+		["Skadi the Ruthless"] = "학살자 스카디",
+		["King Ymiron"] = "왕 이미론",
+		["Svala Sorrowgrave"] = "소발라 소로우그레이브",
+		["Gortok Palehoof"] = "고르톡 페일후프",
 
 --Hyjal Summit
 		["Anetheron"] = "아네테론",
@@ -4389,6 +4509,17 @@ elseif GAME_LOCALE == "koKR" then
 		["Obsidian Sentinel"] = "흑요석 파수꾼",
 		["Revelosh"] = "레벨로쉬",
 
+-- Ulduar
+-- Halls of Lightning
+		["General Gjarngrin"] = "장군 야르그린",
+		["Ionar"] = "이오나",
+		["Kronus"] = "로켄",
+		["Volkhan"] = "볼칸",
+-- Halls of Stone
+		["Krystallus"] = "크리스탈루스",
+		["Maiden of Grief"] = "고뇌의 여신",
+		["Sjonnir the Ironshaper"] = "무쇠구체자 쇼니르",
+
 --Wailing Caverns
 		["Boahn"] = "보안",
 		["Deviate Faerie Dragon"] = "돌연변이 요정용",
@@ -4447,6 +4578,13 @@ elseif GAME_LOCALE == "koKR" then
 		["Witch Doctor Zum'rah"] = "의술사 줌라",
 		["Zerillis"] = "제릴리스",
 		["Zul'Farrak Dead Hero"] = "줄파락 죽음의 영웅",
+
+-- Zul'Drak
+-- Gundrak
+		--["Bloodstone Annihilator"] = true,
+		["Gal'darah"] = "갈다라",
+		["Moorabi"] = "무라비",
+		["Slad'ran"] = "슬라드란",
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "혈군주 만도키르",
@@ -4711,6 +4849,11 @@ elseif GAME_LOCALE == "esES" then
 		["Tsu'zee"] = "Tsu'zee",
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+		--["Elder Nakox"] = true,
+		--["Herald Volazj"]=  true,
+		--["Jedoga Shadowseeker"] = true,
+		--["Prince Taldaram"] = true,
 --Azjol-Nerub
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
@@ -5079,6 +5222,17 @@ elseif GAME_LOCALE == "esES" then
 		["Obsidian Sentinel"] = "Centinela Obsidiano",
 		["Revelosh"] = "Revelosh",
 
+-- Ulduar
+-- Halls of Lightning
+		--["General Gjarngrin"] = true,
+		--["Ionar"] = true,
+		--["Kronus"] = true,
+		--["Volkhan"] = true,
+-- Halls of Stone
+		--["Krystallus"] = true,
+		--["Maiden of Grief"] = true,
+		--["Sjonnir the Ironshaper"] = true,
+
 --Wailing Caverns
 		["Boahn"] = "Boahn",
 		["Deviate Faerie Dragon"] = "Drag\195\179n f\195\169rico descarriado",
@@ -5137,6 +5291,13 @@ elseif GAME_LOCALE == "esES" then
 		["Witch Doctor Zum'rah"] = "M\195\169dico brujo Zum'rah",
 		["Zerillis"] = "Zerillis",
 		["Zul'Farrak Dead Hero"] = "H\195\169roe muerto Zul'Farrak",
+
+-- Zul'Drak
+-- Gundrak
+		--["Bloodstone Annihilator"] = true,
+		--["Gal'darah"] = true,
+		--["Moorabi"] = true,
+		--["Slad'ran"] = true,
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "Se\195\177or sangriento Mandokir",
@@ -5403,6 +5564,11 @@ elseif GAME_LOCALE == "ruRU" then
 		["Tsu'zee"] = "Цу'зи",
 
 --Dragonblight
+-- Ahn'kahet: The Old Kingdom
+		--["Elder Nakox"] = true,
+		--["Herald Volazj"]=  true,
+		--["Jedoga Shadowseeker"] = true,
+		--["Prince Taldaram"] = true,
 --Azjol-Nerub
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
@@ -5775,6 +5941,17 @@ elseif GAME_LOCALE == "ruRU" then
 		["Obsidian Sentinel"] = "Обсидиановый часовой",
 		["Revelosh"] = "Ревелош",
 
+-- Ulduar
+-- Halls of Lightning
+		--["General Gjarngrin"] = true,
+		--["Ionar"] = true,
+		--["Kronus"] = true,
+		--["Volkhan"] = true,
+-- Halls of Stone
+		--["Krystallus"] = true,
+		--["Maiden of Grief"] = true,
+		--["Sjonnir the Ironshaper"] = true,
+
 --Wailing Caverns
 		["Boahn"] = "Боан",
 		["Deviate Faerie Dragon"] = "Загадочный волшебный дракон",
@@ -5833,6 +6010,13 @@ elseif GAME_LOCALE == "ruRU" then
 		["Witch Doctor Zum'rah"] = "Знахарь Зум'рах",
 		["Zerillis"] = "Зериллис",
 		["Zul'Farrak Dead Hero"] = "Мертвый Герой Зул'Фаррака",
+
+-- Zul'Drak
+-- Gundrak
+		--["Bloodstone Annihilator"] = true,
+		--["Gal'darah"] = true,
+		--["Moorabi"] = true,
+		--["Slad'ran"] = true,
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "Мандокир Повелитель Крови",

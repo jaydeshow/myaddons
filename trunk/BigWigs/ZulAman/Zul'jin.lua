@@ -282,11 +282,11 @@ L:RegisterTranslations("ruRU", function() return {
 
 	paralyze = "Парализация",
 	paralyze_desc = "Предупреждать о Ползучем параличе и грядущей парализации.",
-	paralyze_warning = "Ползучий паралич - паралич за 5 сек!",
+	paralyze_warning = "Ползучий паралич - паралич через 5 сек!",
 	paralyze_message = "Парализован!",
 	paralyze_bar = "Наступ. Паралич",
 	paralyze_warnbar = "След Паралич",
-	paralyze_soon = "Ползучий паралич за 5 сек",
+	paralyze_soon = "Ползучий паралич через 5 сек",
 
 	claw = "Яростные когти",
 	claw_desc = "Предупреждать кто получил Яростными когтями.",
@@ -303,7 +303,7 @@ mod.zonename = BZ["Zul'Aman"]
 mod.enabletrigger = boss
 mod.guid = 23863
 mod.toggleoptions = {"form", "paralyze", -1, "throw", "claw", "icon", "bosskill"}
-mod.revision = tonumber(("$Revision: 80479 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

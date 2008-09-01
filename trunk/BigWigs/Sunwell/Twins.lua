@@ -238,6 +238,37 @@ L:RegisterTranslations("deDE", function() return {
 	blades_bar = "Nächste Klingen",
 } end )
 
+L:RegisterTranslations("ruRU", function() return {
+	wipe_bar = "Возрождение",
+
+	nova = "Кольцо Тьмы",
+	nova_desc = "Предупреждать о появлении Кольца Тьмы.",
+	nova_message = "%s получает Кольцо Тьмы",
+	nova_bar = "Кольцо Тьмы",
+
+	conflag = "Воспламенение",
+	conflag_desc = "Предупреждать о Воспламенении.",
+	conflag_message = "%s получает Воспламенение!",
+	conflag_you = "Вы охвачены пламенем!",
+	conflag_bar = "Воспламенение",
+
+	icon = "Иконка",
+	icon_desc = "Помещать Иконку на игроков, которые стали целью для Кольца Тьмы и Воспламенения.",
+
+	pyro = "Пирогенез",
+	pyro_desc = "Предупреждать о тех, кто получает и снимает Пирогенез.",
+	pyro_gain = "%s получает Пирогенез",
+	pyro_remove = "%s снимает Пирогенез",
+
+	blow = "Сбитие с толку",
+	blow_desc = "Показывать таймер перезарядки способности Ошеломления.",
+	blow_bar = "Ошеломление",
+
+	blades = "Теневые Клинки",
+	blades_desc = "Показывать таймер Теневых Клинков.",
+	blades_bar = "Следующие Клинки",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -247,7 +278,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {lady, lock, boss}
 mod.guid = 25166
 mod.toggleoptions = {"nova", "conflag", "icon", -1, "pyro", -1, "blow", "blades", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 78512 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81072 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

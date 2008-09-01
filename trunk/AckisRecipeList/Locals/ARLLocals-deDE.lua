@@ -5,8 +5,8 @@ ARLLocals-deDE.lua
 
 deDE localization strings for Ackis Recipe List
 
-$Date: 2008-08-15 14:25:51 -0400 (Fri, 15 Aug 2008) $
-$Rev: 80496 $
+$Date: 2008-08-25 17:00:42 -0400 (Mon, 25 Aug 2008) $
+$Rev: 80948 $
 
 Original translated by: 
 Currently maintaince by:  Winkiller
@@ -84,7 +84,7 @@ L["Healing"] = "Heiler"
 L["HEALING_TOGGLE"] = "Bezieht Rezepte für Heiler in den Scan ein."
 
 -- Sorting options
-L["Aquisition"] = "Quelle"
+L["Acquisition"] = "Quelle"
 
 -- Reputation Toggles
 L["SPECIFIC_REP_TOGGLE"] = "inkl. %s."

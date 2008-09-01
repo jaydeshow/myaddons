@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 80745 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 81001 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-08-20 14:33:59 -0400 (Wed, 20 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-26 13:58:15 -0400 (Tue, 26 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Auras")
@@ -174,13 +174,6 @@ Parrot:RegisterCombatEvent{
 			eventType = "SPELL_AURA_REMOVED",
 			func = function(srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, spellId, spellName, spellSchool, auraType, amount)
 				if auraType ~= "BUFF" or dstGUID ~= UnitGUID("player") then
-					return nil
-				end
-				
-				-- don't fire the event if the buff is still present
-				-- may just have been a refresh
-				-- TODO
-				if GetPlayerBuffName(spellName) then
 					return nil
 				end
 				

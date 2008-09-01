@@ -1134,7 +1134,14 @@ handlers["Misc%.Container%.ItemsInType"] = function (set, data)
 end
 
 handlers["^Misc%.Usable%.StartsQuest$"] = function (set, data)
-	return basic_listview_handler("http://www.wowhead.com/?items&filter=cr=6;crs=1;crv=0")
+	local tmp = {}
+	for q = 0, 6 do
+		local l = basic_listview_handler(string.format("http://www.wowhead.com/?items&filter=qu=%d;cr=6;crs=1;crv=0", q))
+		if l and l ~= "" then
+			tmp[#tmp + 1] = l
+		end
+	end
+	return table.concat(tmp, ",")
 end
 --[[
 -- For the love of god, there is no way in HELL for wowhead to return the right stuff.  Do not ever enable this rubbish.  I spent a LOT of time getting the list correct.

@@ -233,7 +233,7 @@ L:RegisterTranslations("ruRU", function() return {
 
 	fear = "Страх",
 	fear_desc = "таймеры страха.",
-	fear_message = "Страх, след. за ~ 42сек!",
+	fear_message = "Страх! Следующий через ~ 42сек!",
 	fear_bar = "~перезарядка Страха",
 	fear_warning = "Перезарядка закончена - Скоро Страх!",
 
@@ -256,7 +256,7 @@ mod.zonename = BZ["Hyjal Summit"]
 mod.enabletrigger = boss
 mod.guid = 17968
 mod.toggleoptions = {"grip", "icon", "fear", "burst", "burstsay", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80486 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

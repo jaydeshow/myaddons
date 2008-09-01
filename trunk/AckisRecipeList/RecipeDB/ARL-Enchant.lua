@@ -4,8 +4,8 @@ ARL-Enchant.lua
 
 Enchanting data for all of AckisRecipeList
 
-$Date: 2008-08-05 23:10:11 -0400 (Tue, 05 Aug 2008) $
-$Rev: 79836 $
+$Date: 2008-08-25 10:36:26 -0400 (Mon, 25 Aug 2008) $
+$Rev: 80938 $
 
 ]]--
 
@@ -105,7 +105,7 @@ function addon:InitEnchanting()
 	self:addTradeSkillSpell(44383, 330, L["Trainer"], 1)
 	self:addTradeSkillSpell(33990, 320, L["Trainer"], 1)
 	self:addTradeSkillSpell(28027, 325, L["Trainer"], 1)
-	self:addTradeSkillSpell(42615, 325, L["Trainer"], 1)
+	self:addTradeSkillSpell(42615, 335, L["Trainer"], 1)
 	self:addTradeSkillSpell(33995, 340, L["Trainer"], 1)
 	self:addTradeSkillSpell(28028, 350, L["Trainer"], 1)
 	self:addTradeSkillSpell(42613, 350, L["Trainer"], 1)
