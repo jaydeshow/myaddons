@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 80890 $
+Revision: $Revision: 81561 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-08-24 07:03:40 -0400 (Sun, 24 Aug 2008) $
+LastUpdate: $Date: 2008-09-09 04:29:39 -0400 (Tue, 09 Sep 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -24,11 +24,8 @@ Features:
 	ItemStatParser - Fast multi level indexing algorithm instead of calling strfind for every stat
 ]]
 
--- This library is still in early development, please consider not using this library until the documentation is writen on wowace.
--- Unless you don't mind putting up with breaking changes that may or may not happen during early development.
-
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 80890 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 81561 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -53,10 +50,24 @@ end
 SlashCmdList["STATLOGICDEBUG"] = CmdHandler
 SLASH_STATLOGICDEBUG1 = "/sldebug";
 
+----------------------
+-- Version checking --
+----------------------
+wowBuildNo = select(2, GetBuildInfo()) -- need a global for loadstring
+local wowBuildNo = wowBuildNo
+local toc = select(4, GetBuildInfo())
 
 -------------------------
 -- Localization Tables --
 -------------------------
+--[[
+Localization tips
+1. Enable debugging in game with /sldebug
+2. There are often ItemIDs in comments for you to check if the items works correctly in game
+3. Use the addon Sniff(http://www.wowinterface.com/downloads/info6259/) to get a link in game from an ItemID, Usage: /item 19316
+4. Atlas + AtlasLoot is also a good source of items to check
+5. Red colored text output from debug means that line does not have a match
+--]]
 local PatternLocale = {}
 local DisplayLocale = {}
 PatternLocale.enUS = {
@@ -453,8 +464,8 @@ PatternLocale.enUS = {
 
 		["Hit Rating"] = {"MELEE_HIT_RATING",},
 		["Improves hit rating"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
-		["Improves melee hit rating"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
 		["Increases your hit rating"] = {"MELEE_HIT_RATING",},
+		["Improves melee hit rating"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_MELEE_RATING
 		["Spell Hit"] = {"SPELL_HIT_RATING",}, -- Presence of Sight +18 Healing and Spell Damage/+8 Spell Hit http://wow.allakhazam.com/db/spell.html?wspell=24164
 		["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
 		["Improves spell hit rating"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
@@ -492,11 +503,11 @@ PatternLocale.enUS = {
 		["Improves spell critical avoidance rating"] = {"SPELL_CRIT_AVOID_RATING",},
 
 		["Haste Rating"] = {"MELEE_HASTE_RATING"},
-		["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
-		["Ranged Haste Rating"] = {"RANGED_HASTE_RATING"},
 		["Improves haste rating"] = {"MELEE_HASTE_RATING"},
 		["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
+		["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
 		["Improves spell haste rating"] = {"SPELL_HASTE_RATING"},
+		["Ranged Haste Rating"] = {"RANGED_HASTE_RATING"},
 		["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
 
 		["Increases dagger skill rating"] = {"DAGGER_WEAPON_RATING"},
@@ -994,14 +1005,15 @@ PatternLocale.koKR = {
 
 		["전투력"] = {"AP",},
 		["전투력이 증가합니다"] = {"AP",},
+		["전투력 증가"] = {"AP",}, -- some items of WotLK beta
 		["언데드 공격 시 전투력"] = {"AP_UNDEAD",},
 		-- [Wristwraps of Undead Slaying] ID:23093
 		["언데드 공격 시 전투력이 증가합니다"] = {"AP_UNDEAD",}, -- [Seal of the Dawn] ID:13209
 		["언데드와 전투 시 전투력이 증가합니다. 또한 은빛여명회의 대리인으로서 스컬지석을 모을 수 있습니다"] = {"AP_UNDEAD",},
 		["악마에 대한 전투력이 증가합니다"] = {"AP_DEMON",},
 		["언데드 및 악마에 대한 전투력이 증가합니다"] = {"AP_UNDEAD", "AP_DEMON",}, -- [Mark of the Champion] ID:23206
-		["달빛야수 변신 상태일 때 전투력"] = {"FERAL_AP",},
-		["달빛야수 변신 상태일 때 전투력이 증가합니다"] = {"FERAL_AP",},
+		["표범, 광포한 곰, 곰, 달빛야수 변신 상태일 때 전투력"] = {"FERAL_AP",},
+		["표범, 광포한 곰, 곰, 달빛야수 변신 상태일 때 전투력이 증가합니다"] = {"FERAL_AP",},
 		["원거리 전투력"] = {"RANGED_AP",},
 		["원거리 전투력이 증가합니다"] = {"RANGED_AP",}, -- [High Warlord's Crossbow] ID: 18837
 
@@ -1042,7 +1054,9 @@ PatternLocale.koKR = {
 		["주문 공격력 및 치유량"] = {"SPELL_DMG", "HEAL",}, --StatLogic:GetSum("item:22630")
 		["공격력"] = {"SPELL_DMG",},
 		["주문 공격력이 증가합니다"] = {"SPELL_DMG",}, -- Atiesh ID:22630, 22631, 22632, 22589
-		["주문 위력"] = {"SPELL_DMG",},
+		["주문력"] = {"SPELL_DMG", "HEAL",},
+		["주문력이 증가합니다"] = {"SPELL_DMG", "HEAL",}, -- WotLK
+		["주문력 증가"] = {"SPELL_DMG", "HEAL",}, -- some items of WotLK beta
 		["신성 피해"] = {"HOLY_SPELL_DMG",},
 		["비전 피해"] = {"ARCANE_SPELL_DMG",},
 		["화염 피해"] = {"FIRE_SPELL_DMG",},
@@ -1077,7 +1091,7 @@ PatternLocale.koKR = {
 		["치유량 증가"] = {"HEAL",},
 		["치유량"] = {"HEAL",},
 		["healing Spells"] = {"HEAL",},
-		["주문 공격력"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
+		--["주문 공격력"] = {"SPELL_DMG",}, -- 2.3.0 StatLogic:GetSum("item:23344:2343")
 		["Healing Spells"] = {"HEAL",}, -- [Royal Nightseye] ID: 24057
 		["모든 주문 및 효과에 의한 치유량이"] = {"HEAL",}, -- 2.3.0
 		["공격력이 증가합니다"] = {"SPELL_DMG",}, -- 2.3.0
@@ -1094,10 +1108,10 @@ PatternLocale.koKR = {
 		["회피 숙련도가 증가합니다."] = {"DODGE_RATING",},
 		["무기 막기 숙련도"] = {"PARRY_RATING",},
 		["무기 막기 숙련도가 증가합니다"] = {"PARRY_RATING",},
-		["방패 막기 숙련도"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
+		--["방패 막기 숙련도"] = {"BLOCK_RATING",}, -- Enchant Shield - Lesser Block +10 Shield Block Rating http://wow.allakhazam.com/db/spell.html?wspell=13689
 		["방패 막기 숙련도"] = {"BLOCK_RATING",},
 		["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
-		["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
+		--["방패 막기 숙련도가 증가합니다"] = {"BLOCK_RATING",},
 
 		["적중도"] = {"MELEE_HIT_RATING",},
 		["적중도가 증가합니다"] = {"MELEE_HIT_RATING",}, -- ITEM_MOD_HIT_RATING
@@ -1126,12 +1140,12 @@ PatternLocale.koKR = {
 		["주문 극대화 적중도가 증가합니다"] = {"SPELL_CRIT_RATING",},
 		["원거리 치명타 적중도가 증가합니다"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
 
-		["공격 회피 숙련도가 증가합니다"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RATING
-		["근접 공격 회피 숙련도가 증가합니다"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_MELEE_RATING
-		["원거리 공격 회피 숙련도가 증가합니다"] = {"RANGED_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RANGED_RATING
-		["주문 공격 회피 숙련도가 증가합니다"] = {"SPELL_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_SPELL_RATING
+		--["공격 회피 숙련도가 증가합니다"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RATING
+		--["근접 공격 회피 숙련도가 증가합니다"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_MELEE_RATING
+		--["원거리 공격 회피 숙련도가 증가합니다"] = {"RANGED_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RANGED_RATING
+		--["주문 공격 회피 숙련도가 증가합니다"] = {"SPELL_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_SPELL_RATING
 		["탄력도"] = {"RESILIENCE_RATING",},
-		["탄력도"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
+		--["탄력도"] = {"RESILIENCE_RATING",}, -- Enchant Chest - Major Resilience "+15 Resilience Rating" http://wow.allakhazam.com/db/spell.html?wspell=33992
 		["탄력도가 증가합니다"] = {"RESILIENCE_RATING",},
 		["치명타 회피 숙련도가 증가합니다"] = {"MELEE_CRIT_AVOID_RATING",},
 		["근접 치명타 회피 숙련도가 증가합니다"] = {"MELEE_CRIT_AVOID_RATING",},
@@ -1157,11 +1171,12 @@ PatternLocale.koKR = {
 		["총기류 숙련도가 증가합니다"] = {"GUN_WEAPON_RATING"},
 		["석궁류 숙련도가 증가합니다"] = {"CROSSBOW_WEAPON_RATING"},
 		["활류 숙련도가 증가합니다"] = {"BOW_WEAPON_RATING"},
-		["야생 전투 숙련도가 증가합니다"] = {"FERAL_WEAPON_RATING"},
+		["야성 전투 숙련도가 증가합니다"] = {"FERAL_WEAPON_RATING"},
 		["장착 무기류 숙련도가 증가합니다"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator
 		["맨손 전투 숙련도가 증가합니다"] = {"FIST_WEAPON_RATING"}, -- Demonblood Eviscerator ID:27533
 		["지팡이류 숙련도가 증가합니다."] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
 		
+		["숙련"] = {"EXPERTISE_RATING"}, -- WotLK beta Gem
 		["숙련도가 증가합니다"] = {"EXPERTISE_RATING"},
 		-- Exclude
 		["초"] = false,
@@ -1219,7 +1234,7 @@ DisplayLocale.koKR = {
 
 		["AP"] = {"전투력", "AP"},
 		["RANGED_AP"] = {RANGED_ATTACK_POWER, "RAP"},
-		["FERAL_AP"] = {"야생 전투력", "Feral AP"},
+		["FERAL_AP"] = {"야성 전투력", "Feral AP"},
 		["AP_UNDEAD"] = {"전투력 (언데드)", "AP(Undead)"},
 		["AP_DEMON"] = {"전투력 (악마)", "AP(Demon)"},
 
@@ -1239,8 +1254,8 @@ DisplayLocale.koKR = {
 
 		["HEALTH"] = {HEALTH, HP},
 		["MANA"] = {MANA, MP},
-		["HEALTH_REG"] = {HEALTH.." 재생", "HP5"},
-		["MANA_REG"] = {MANA.." 재생", "MP5"},
+		["HEALTH_REG"] = {HEALTH.." 회복", "HP5"},
+		["MANA_REG"] = {MANA.." 회복", "MP5"},
 
 		["MAX_DAMAGE"] = {"최대 공격력", "Max Dmg"},
 		["DPS"] = {"초당 공격력", "DPS"},
@@ -1252,15 +1267,15 @@ DisplayLocale.koKR = {
 		["MELEE_HIT_RATING"] = {COMBAT_RATING_NAME6, COMBAT_RATING_NAME6}, -- COMBAT_RATING_NAME6 = "Hit Rating"
 		["RANGED_HIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_RANGED_COMBAT = "Ranged"
 		["SPELL_HIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME6}, -- PLAYERSTAT_SPELL_COMBAT = "Spell"
-		["MELEE_HIT_AVOID_RATING"] = {"근접 공격 회피 "..RATING, "Hit Avoidance "..RATING},
-		["RANGED_HIT_AVOID_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 공격 회피 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Hit Avoidance "..RATING},
-		["SPELL_HIT_AVOID_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 공격 회피 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Hit Avoidance "..RATING},
+		["MELEE_HIT_AVOID_RATING"] = {"근접 빗맞힘(자신) "..RATING, "Hit Avoidance "..RATING},
+		["RANGED_HIT_AVOID_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 빗맞힘(자신) "..RATING, PLAYERSTAT_RANGED_COMBAT.." Hit Avoidance "..RATING},
+		["SPELL_HIT_AVOID_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 빗맞힘(자신) "..RATING, PLAYERSTAT_SPELL_COMBAT.." Hit Avoidance "..RATING},
 		["MELEE_CRIT_RATING"] = {COMBAT_RATING_NAME9, COMBAT_RATING_NAME9}, -- COMBAT_RATING_NAME9 = "Crit Rating"
 		["RANGED_CRIT_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_RANGED_COMBAT.." "..COMBAT_RATING_NAME9},
 		["SPELL_CRIT_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9, PLAYERSTAT_SPELL_COMBAT.." "..COMBAT_RATING_NAME9},
-		["MELEE_CRIT_AVOID_RATING"] = {"근접 치명타 공격 회피 "..RATING, "Crit Avoidance "..RATING},
-		["RANGED_CRIT_AVOID_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 공격 회피 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Crit Avoidance "..RATING},
-		["SPELL_CRIT_AVOID_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 공격 회피 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Crit Avoidance "..RATING},
+		["MELEE_CRIT_AVOID_RATING"] = {"근접 치명타(적중됨) 감소 "..RATING, "Crit Avoidance "..RATING},
+		["RANGED_CRIT_AVOID_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타(적중됨) 감소 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Crit Avoidance "..RATING},
+		["SPELL_CRIT_AVOID_RATING"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타(적중됨) 감소 "..RATING, PLAYERSTAT_SPELL_COMBAT.." Crit Avoidance "..RATING},
 		["RESILIENCE_RATING"] = {COMBAT_RATING_NAME15, COMBAT_RATING_NAME15}, -- COMBAT_RATING_NAME15 = "Resilience"
 		["MELEE_HASTE_RATING"] = {"가속도 "..RATING, "Haste "..RATING}, --
 		["RANGED_HASTE_RATING"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도 "..RATING, PLAYERSTAT_RANGED_COMBAT.." Haste "..RATING},
@@ -1275,7 +1290,7 @@ DisplayLocale.koKR = {
 		["GUN_WEAPON_RATING"] = {"총기류 "..SKILL.." "..RATING, "Gun "..RATING},
 		["CROSSBOW_WEAPON_RATING"] = {"석궁류 "..SKILL.." "..RATING, "Crossbow "..RATING},
 		["BOW_WEAPON_RATING"] = {"활류 "..SKILL.." "..RATING, "Bow "..RATING},
-		["FERAL_WEAPON_RATING"] = {"야생 "..SKILL.." "..RATING, "Feral "..RATING},
+		["FERAL_WEAPON_RATING"] = {"야성 "..SKILL.." "..RATING, "Feral "..RATING},
 		["FIST_WEAPON_RATING"] = {"장착 무기류 "..SKILL.." "..RATING, "Unarmed "..RATING},
 		["STAFF_WEAPON_RATING"] = {"지팡이류 "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
@@ -1289,8 +1304,8 @@ DisplayLocale.koKR = {
 		-- Int -> Mana, Spell Crit
 		-- Spi -> mp5nc, hp5oc
 		-- Ratings -> Effect
-		["HEALTH_REG_OUT_OF_COMBAT"] = {HEALTH.." 재생 (비전투)", "HP5(OC)"},
-		["MANA_REG_NOT_CASTING"] = {MANA.." 재생 (미시전)", "MP5(NC)"},
+		["HEALTH_REG_OUT_OF_COMBAT"] = {HEALTH.." 회복 (비전투)", "HP5(OC)"},
+		["MANA_REG_NOT_CASTING"] = {MANA.." 회복 (비시전중)", "MP5(NC)"},
 		["MELEE_CRIT_DMG_REDUCTION"] = {"치명타 피해 감소(%)", "Crit Dmg Reduc(%)"},
 		["RANGED_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 피해 감소(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Dmg Reduc(%)"},
 		["SPELL_CRIT_DMG_REDUCTION"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 피해 감소(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Dmg Reduc(%)"},
@@ -1298,19 +1313,19 @@ DisplayLocale.koKR = {
 		["DODGE"] = {DODGE.."(%)", DODGE.."(%)"},
 		["PARRY"] = {PARRY.."(%)", PARRY.."(%)"},
 		["BLOCK"] = {BLOCK.."(%)", BLOCK.."(%)"},
-		["AVOIDANCE"] = {"공격 회피(%)", "Avoidance(%)"},
-		["MELEE_HIT"] = {"적중률(%)", "Hit(%)"},
-		["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." 적중률(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"},
-		["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." 적중률(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"},
-		["MELEE_HIT_AVOID"] = {"근접 공격 회피(%)", "Hit Avd(%)"},
-		["RANGED_HIT_AVOID"] = {PLAYERSTAT_RANGED_COMBAT.." 공격 회피(%)", PLAYERSTAT_RANGED_COMBAT.." Hit Avd(%)"},
-		["SPELL_HIT_AVOID"] = {PLAYERSTAT_SPELL_COMBAT.." 공격 회피(%)", PLAYERSTAT_SPELL_COMBAT.." Hit Avd(%)"},
+		["AVOIDANCE"] = {"빗맞힘(자신)(%)", "Avoidance(%)"},
+		["MELEE_HIT"] = {"적중(%)", "Hit(%)"},
+		["RANGED_HIT"] = {PLAYERSTAT_RANGED_COMBAT.." 적중(%)", PLAYERSTAT_RANGED_COMBAT.." Hit(%)"},
+		["SPELL_HIT"] = {PLAYERSTAT_SPELL_COMBAT.." 적중(%)", PLAYERSTAT_SPELL_COMBAT.." Hit(%)"},
+		["MELEE_HIT_AVOID"] = {"근접 빗맞힘(자신)(%)", "Hit Avd(%)"},
+		["RANGED_HIT_AVOID"] = {PLAYERSTAT_RANGED_COMBAT.." 빗맞힘(자신)(%)", PLAYERSTAT_RANGED_COMBAT.." Hit Avd(%)"},
+		["SPELL_HIT_AVOID"] = {PLAYERSTAT_SPELL_COMBAT.." 빗맞힘(자신)(%)", PLAYERSTAT_SPELL_COMBAT.." Hit Avd(%)"},
 		["MELEE_CRIT"] = {MELEE_CRIT_CHANCE.."(%)", "Crit(%)"}, -- MELEE_CRIT_CHANCE = "Crit Chance"
 		["RANGED_CRIT"] = {PLAYERSTAT_RANGED_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_RANGED_COMBAT.." Crit(%)"},
 		["SPELL_CRIT"] = {PLAYERSTAT_SPELL_COMBAT.." "..MELEE_CRIT_CHANCE.."(%)", PLAYERSTAT_SPELL_COMBAT.." Crit(%)"},
-		["MELEE_CRIT_AVOID"] = {"근접 치명타 공격 회피(%)", "Crit Avd(%)"},
-		["RANGED_CRIT_AVOID"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타 공격 회피(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Avd(%)"},
-		["SPELL_CRIT_AVOID"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타 공격 회피(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Avd(%)"},
+		["MELEE_CRIT_AVOID"] = {"근접 치명타(적중됨) 감소(%)", "Crit Avd(%)"},
+		["RANGED_CRIT_AVOID"] = {PLAYERSTAT_RANGED_COMBAT.." 치명타(적중됨) 감소(%)", PLAYERSTAT_RANGED_COMBAT.." Crit Avd(%)"},
+		["SPELL_CRIT_AVOID"] = {PLAYERSTAT_SPELL_COMBAT.." 치명타(적중됨) 감소(%)", PLAYERSTAT_SPELL_COMBAT.." Crit Avd(%)"},
 		["MELEE_HASTE"] = {"가속도(%)", "Haste(%)"}, --
 		["RANGED_HASTE"] = {PLAYERSTAT_RANGED_COMBAT.." 가속도(%)", PLAYERSTAT_RANGED_COMBAT.." Haste(%)"},
 		["SPELL_HASTE"] = {PLAYERSTAT_SPELL_COMBAT.." 가속도(%)", PLAYERSTAT_SPELL_COMBAT.." Haste(%)"},
@@ -1324,7 +1339,7 @@ DisplayLocale.koKR = {
 		["GUN_WEAPON"] = {"총기류 "..SKILL, "Gun"},
 		["CROSSBOW_WEAPON"] = {"석궁류 "..SKILL, "Crossbow"},
 		["BOW_WEAPON"] = {"활류 "..SKILL, "Bow"},
-		["FERAL_WEAPON"] = {"야생 "..SKILL, "Feral"},
+		["FERAL_WEAPON"] = {"야성 "..SKILL, "Feral"},
 		["FIST_WEAPON"] = {"장착 무기류 "..SKILL, "Unarmed"},
 		["STAFF_WEAPON"] = {"지팡이류 "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
@@ -4107,10 +4122,7 @@ DisplayLocale.zhCN = {
 	},
 }
 
-	-------------------------------------------------------
-	--BEGIN RUSSIAN Localization by Gezz--
-	-------------------------------------------------------
-	
+-- ruRU localization by Gezz
 PatternLocale.ruRU = {
 	["tonumber"] = function(s)
 		local n = tonumber(s)
@@ -4538,19 +4550,77 @@ PatternLocale.ruRU = {
 		["к рейтингу мастерства"] = {"EXPERTISE_RATING"},
 	},
 }
-
 DisplayLocale.ruRU = DisplayLocale.enUS
 
-	------------------------------------------
-	--END RUSSIAN Localization --
-	------------------------------------------
-
---[[
-PatternLocale.esES = {
-}
-DisplayLocale.esES = {
-}
---]]
+-- In 3.0, Hit Rating, Critical Strike Rating, and Haste Rating now modify both melee attacks and spells.
+-- Strings that have "melee" in it should not be in the table below, 
+-- I've tried to do all languages, but need localizers to check if there are any melee only stuff in it.
+if wowBuildNo >= "8885" then
+PatternLocale.enUS["StatIDLookup"]["Hit Rating"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Improves hit rating"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",} -- ITEM_MOD_HIT_RATING
+PatternLocale.enUS["StatIDLookup"]["Increases your hit rating"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Crit Rating"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Critical Rating"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Critical Strike Rating"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Increases your critical hit rating"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Increases your critical strike rating"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Improves critical strike rating"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Haste Rating"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.enUS["StatIDLookup"]["Improves haste rating"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.koKR["StatIDLookup"]["적중도"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.koKR["StatIDLookup"]["적중도가 증가합니다"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",} -- ITEM_MOD_HIT_RATING
+PatternLocale.koKR["StatIDLookup"]["치명타 적중도"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.koKR["StatIDLookup"]["치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.koKR["StatIDLookup"]["근접 치명타 적중도가 증가합니다"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.koKR["StatIDLookup"]["공격 가속도"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.koKR["StatIDLookup"]["공격 가속도가 증가합니다"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["命中等級"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["提高命中等級"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",} -- ITEM_MOD_HIT_RATING
+PatternLocale.zhTW["StatIDLookup"]["使你的命中等級"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["致命一擊"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",} -- ID:31868
+PatternLocale.zhTW["StatIDLookup"]["致命一擊等級"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["提高致命一擊等級"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["使你的致命一擊等級"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["加速等級"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",} -- Enchant Gloves
+PatternLocale.zhTW["StatIDLookup"]["攻擊速度"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["攻擊速度等級"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.zhTW["StatIDLookup"]["提高加速等級"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.deDE["StatIDLookup"]["Trefferwertung"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.deDE["StatIDLookup"]["Erhöht Trefferwertung"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",} -- ITEM_MOD_HIT_RATING
+PatternLocale.deDE["StatIDLookup"]["kritische Trefferwertung"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.deDE["StatIDLookup"]["Erhöht kritische Trefferwertung"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.deDE["StatIDLookup"]["Angriffstempowertung"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.deDE["StatIDLookup"]["Erhöht Tempowertung"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",} -- [Pfeilabwehrender Brustschutz] ID:33328
+PatternLocale.deDE["StatIDLookup"]["Erhöht Angriffstempowertung"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.frFR["StatIDLookup"]["score de toucher"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["le score de toucher"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["votre score de toucher"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["au score de toucher"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["score de coup critique"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["score de critique"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["le score de coup critique"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["votre score de coup critique"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["au score de coup critique"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["au score de critique"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.frFR["StatIDLookup"]["score de hâte"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.zhCN["StatIDLookup"]["命中等级"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.zhCN["StatIDLookup"]["提高命中等级"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",} -- ITEM_MOD_HIT_RATING
+PatternLocale.zhCN["StatIDLookup"]["使你的命中等级"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.zhCN["StatIDLookup"]["爆击等级"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.zhCN["StatIDLookup"]["提高爆击等级"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.zhCN["StatIDLookup"]["使你的爆击等级"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.zhCN["StatIDLookup"]["急速等级"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",} -- Enchant Gloves
+PatternLocale.zhCN["StatIDLookup"]["攻击速度"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.zhCN["StatIDLookup"]["提高急速等级"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["рейтинг меткости"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["к рейтингу меткости"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["увеличение рейтинга меткости наед"] = {"MELEE_HIT_RATING","SPELL_HIT_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["рейтинг критического удара"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["к рейтингу критического удара"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["рейтинг крит%. удара оруж%. ближнего боя"] = {"MELEE_CRIT_RATING","SPELL_CRIT_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["рейтинг скорости боя"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+PatternLocale.ruRU["StatIDLookup"]["к рейтингу скорости боя"] = {"MELEE_HASTE_RATING","SPELL_HASTE_RATING",}
+end
 
 -- Uncomment below to print out print out every missing translation for each locale
 -- L:EnableDebugging()
@@ -4645,11 +4715,6 @@ end
 local _, playerClass = UnitClass("player")
 local _, playerRace = UnitRace("player")
 
--- BuildInfo
-wowBuildNo = select(2, GetBuildInfo()) -- need a global for loadstring
-local wowBuildNo = wowBuildNo
-local toc = select(4, GetBuildInfo())
-
 -- Localize globals
 local _G = getfenv(0)
 local strfind = strfind
@@ -4683,6 +4748,7 @@ if toc >= 30000 then
 	end
 end
 local GetTalentInfo = GetTalentInfo
+local GetSpellInfo = GetSpellInfo
 
 -- Cached GetItemInfo
 local GetItemInfoCached = setmetatable({}, { __index = function(self, n)
@@ -5048,10 +5114,14 @@ local function GetStanceIcon()
 	end
 end
 
-local function GetPlayerBuffRank(buff)
-	local hasBuff, rank = GetPlayerBuffName(buff)
+local function GetPlayerBuffRankCount(buff)
+	--name, rank, icon, count, debuffType, duration, expirationTime, isMine, isStealable = UnitAura("player", buff)
+	local hasBuff, rank, _, count = GetPlayerBuffName(buff)
 	if hasBuff then
-		return strmatch(rank, "(%d+)") or 1
+		if not count or count == 0 then
+			count = 1
+		end
+		return strmatch(rank, "(%d+)") or 1, count
 	end
 end
 
@@ -5340,7 +5410,7 @@ Apply Aura: Mod Skill Talent (Defense)
 "MOD_CRIT_DAMAGE_TAKEN", school,
 --"MOD_THREAT", school,
 
-"ADD_DODGE",
+"ADD_DODGE", -- Used in StatLogic:GetDodgePerAgi()
 --"ADD_PARRY",
 --"ADD_BLOCK",
 --"ADD_STEALTH_DETECT",
@@ -5351,17 +5421,25 @@ Apply Aura: Mod Skill Talent (Defense)
 "ADD_CRIT_TAKEN", school,
 
 --Talents
-"ADD_SPELL_DMG_MOD_INT"
-"ADD_HEALING_MOD_INT"
+"ADD_AP_MOD_STA" -- Hunter: Hunter vs. Wild
+"ADD_AP_MOD_ARMOR" -- Death Knight: Bladed Armor
+"ADD_AP_MOD_INT" -- Shaman: Mental Dexterity
+"ADD_AP_MOD_SPELL_DMG" -- Warlock: Metamorphosis
+"ADD_CR_PARRY_MOD_STR" -- Death Knight: Forceful Deflection - Passive
 "ADD_MANA_REG_MOD_INT"
 "ADD_RANGED_AP_MOD_INT"
 "ADD_ARMOR_MOD_INT"
+"ADD_SCHOOL_SP_MOD_SPI" -- Priest: Twisted Faith
 "ADD_SPELL_DMG_MOD_STA"
+"ADD_SPELL_DMG_MOD_INT"
 "ADD_SPELL_DMG_MOD_SPI"
-"ADD_SPELL_DMG_MOD_AP" -- Shaman Mental Quickness
-"ADD_HEALING_MOD_SPI"
+"ADD_SPELL_DMG_MOD_AP" -- Shaman: Mental Quickness, Paladin: Sheath of Light
 "ADD_HEALING_MOD_STR"
-"ADD_HEALING_MOD_AP" -- Shaman Mental Quickness
+"ADD_HEALING_MOD_AGI"
+"ADD_HEALING_MOD_STA" -- Paladin: Touched by the Light
+"ADD_HEALING_MOD_INT"
+"ADD_HEALING_MOD_SPI"
+"ADD_HEALING_MOD_AP" -- Shaman: Mental Quickness
 "ADD_MANA_REG_MOD_NORMAL_MANA_REG"
 "MOD_AP"
 "MOD_RANGED_AP"
@@ -5407,11 +5485,23 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_SPELL_DMG_MOD_INT"] = {
+	["ADD_AP_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_HEALING_MOD_INT"] = {
+	["ADD_AP_MOD_STA"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_AP_MOD_ARMOR"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_AP_MOD_SPELL_DMG"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_CR_PARRY_MOD_STR"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -5427,7 +5517,20 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
+	["ADD_SCHOOL_SP_MOD_SPI"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+		school = true,
+	},
+	["ADD_SPELL_DMG_MOD_AP"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
 	["ADD_SPELL_DMG_MOD_STA"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_SPELL_DMG_MOD_INT"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -5435,11 +5538,7 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_SPELL_DMG_MOD_AP"] = {
-		initialValue = 0,
-		finalAdjust = 0,
-	},
-	["ADD_HEALING_MOD_SPI"] = {
+	["ADD_HEALING_MOD_AP"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -5451,7 +5550,15 @@ local StatModInfo = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
-	["ADD_HEALING_MOD_AP"] = {
+	["ADD_HEALING_MOD_STA"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_HEALING_MOD_INT"] = {
+		initialValue = 0,
+		finalAdjust = 0,
+	},
+	["ADD_HEALING_MOD_SPI"] = {
 		initialValue = 0,
 		finalAdjust = 0,
 	},
@@ -5538,51 +5645,103 @@ local StatModInfo = {
 ------------------
 local StatModTable = {
 	["DRUID"] = {
+		-- Druid: Master Shapeshifter (Rank 2) - 3,9
+		--        Moonkin Form - Increases spell damage by 2%/4%.
+		["MOD_SPELL_DMG"] = {
+			[1] = {
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Druid: Master Shapeshifter (Rank 2) - 3,9
+		--        Tree of Life Form - Increases healing by 2%/4%.
+		["MOD_HEALING"] = {
+			[1] = {
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["buff"] = GetSpellInfo(33891),		-- ["Tree of Life"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
 		-- Druid: Lunar Guidance (Rank 3) - 1,12
 		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
+		-- 3.0.1: Increases your spell damage and healing by 4%/8%/12% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			[1] = {
 				["tab"] = 1,
 				["num"] = 12,
 				["rank"] = {
-					0.08, 0.16, 0.25,
+					0.04, 0.08, 0.12,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
-		},
-		-- Druid: Lunar Guidance (Rank 3) - 1,12
-		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
-		["ADD_HEALING_MOD_INT"] = {
-			[1] = {
+			[2] = {
 				["tab"] = 1,
 				["num"] = 12,
 				["rank"] = {
 					0.08, 0.16, 0.25,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Druid: Nurturing Instinct (Rank 2) - 2,14
+		-- Druid: Lunar Guidance (Rank 3) - 1,12
+		--        Increases your spell damage and healing by 8%/16%/25% of your total Intellect.
+		-- 3.0.1: Increases your spell damage and healing by 4%/8%/12% of your total Intellect.
+		["ADD_HEALING_MOD_INT"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 12,
+				["rank"] = {
+					0.04, 0.08, 0.12,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 12,
+				["rank"] = {
+					0.08, 0.16, 0.25,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Druid: Nurturing Instinct (Rank 2) - 2,14 - 2,15
 		--        Increases your healing spells by up to 25%/50% of your Strength.
-		-- 2.4.0 Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
+		-- 2.4.0: Increases your healing spells by up to 50%/100% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
+		-- 3.0.1: Increases your healing spells by up to 35%/70% of your Agility, and increases healing done to you by 10%/20% while in Cat form.
 		["ADD_HEALING_MOD_AGI"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.35, 0.7,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 14,
 				["rank"] = {
 					0.5, 1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Druid: Intensity (Rank 3) - 3,6
+		-- Druid: Intensity (Rank 3) - 3,6 - 3,7
 		--        Allows 5%/10%/15% of your Mana regeneration to continue while casting and causes your Enrage ability to instantly generate 10 rage.
 		-- 2.3.0 increased to 10/20/30% mana regeneration.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			[1] = {
 				["tab"] = 3,
-				["num"] = 6,
+				["num"] = 7,
 				["rank"] = {
-					0.05, 0.10, 0.15,
+					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo < '7382'",
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["tab"] = 3,
@@ -5590,22 +5749,33 @@ local StatModTable = {
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Druid: Dreamstate (Rank 3) - 1,17
+		-- Druid: Dreamstate (Rank 3) - 1,17 - 1,15
 		--        Regenerate mana equal to 4%/7%/10% of your Intellect every 5 sec, even while casting.
 		["ADD_MANA_REG_MOD_INT"] = {
 			[1] = {
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
+					0.04, 0.07, 0.10,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 1,
 				["num"] = 17,
 				["rank"] = {
 					0.04, 0.07, 0.10,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Druid: Feral Swiftness (Rank 2) - 2,6
 		--        Increases your movement speed by 15%/30% while outdoors in Cat Form and increases your chance to dodge while in Cat Form, Bear Form and Dire Bear Form by 2%/4%.
+		-- Druid: Natural Reaction (Rank 3) - 2,16
+		--        Increases your dodge while in Bear Form or Dire Bear Form by 2%/4%/6%, and you regenerate 3 rage eveyrtime you dodge while in Bear Form or Dire Bear Form.
 		["ADD_DODGE"] = {
 			[1] = {
 				["tab"] = 2,
@@ -5631,10 +5801,28 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
 			},
+			[4] = {
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					2, 4, 6,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
 		},
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
+		-- Druid: Survival of the Fittest (Rank 3) - 2,16 - 2,18
 		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
+		-- 3.0.1: 2,18 Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
 		["ADD_CRIT_TAKEN"] = {
+			[1] = {
+				["MELEE"] = true,
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
 			[1] = {
 				["MELEE"] = true,
 				["tab"] = 2,
@@ -5642,25 +5830,68 @@ local StatModTable = {
 				["rank"] = {
 					-0.01, -0.02, -0.03,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Druid: Natural Perfection (Rank 3) - 3,18
 		--        Your critical strike chance with all spells is increased by 3% and melee and ranged critical strikes against you cause 4%/7%/10% less damage.
-		["MOD_CRIT_DAMAGE_TAKEN"] = {
+		-- 2.4.0: Your critical strike chance with all spells is increased by 3% and critical strikes against you give you the Natural Perfection effect reducing all damage taken by 2%/3%/4%.
+		-- 3.0.1: 3,19
+		["MOD_DMG_TAKEN"] = {
 			[1] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 19,
+				["rank"] = {
+					-0.02, -0.03, -0.04,
+				},
+				["buff"] = GetSpellInfo(45283),		-- ["Natural Perfection"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
 				["tab"] = 3,
 				["num"] = 18,
 				["rank"] = {
-					-0.04, -0.07, -0.1,
+					-0.02, -0.03, -0.04,
 				},
+				["buff"] = GetSpellInfo(45283),		-- ["Natural Perfection"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Druid: Balance of Power (Rank 2) - 1,16
 		--        Increases your chance to hit with all spells and reduces the chance you'll be hit by spells by 2%/4%.
+		-- 3.0.1: 1,17
 		["ADD_HIT_TAKEN"] = {
 			[1] = {
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["HOLY"] = true,
 				["FIRE"] = true,
 				["NATURE"] = true,
@@ -5672,6 +5903,7 @@ local StatModTable = {
 				["rank"] = {
 					-0.02, -0.04,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Druid: Thick Hide (Rank 3) - 2,5
@@ -5682,6 +5914,8 @@ local StatModTable = {
 		--        Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 400%, and stamina by 25%.
 		-- Druid: Moonkin Form - Buff
 		--        While in this form the armor contribution from items is increased by 400%, attack power is increased by 150% of your level and all party members within 30 yards have their spell critical chance increased by 5%.
+		-- Druid: Improved Tree of Life (Rank 3) - 3,24
+		--        Increases your Armor while in Tree of Life Form by 33%/66%/100%
 		["MOD_ARMOR"] = {
 			[1] = {
 				["tab"] = 2,
@@ -5708,38 +5942,52 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
 			},
+			[5] = {
+				["tab"] = 3,
+				["num"] = 24,
+				["rank"] = {
+					1.33, 1.66, 2,
+				},
+				["buff"] = GetSpellInfo(33891),		-- ["Tree of Life"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
 		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
+		-- 3.0.1: 2,17
 		-- Druid: Bear Form - Stance (use stance because bear and dire bear increases are the same)
 		--        Shapeshift into a bear, increasing melee attack power by 30, armor contribution from items by 180%, and stamina by 25%.
 		-- Druid: Dire Bear Form - Stance (use stance because bear and dire bear increases are the same)
 		--        Shapeshift into a dire bear, increasing melee attack power by 120, armor contribution from items by 400%, and stamina by 25%.
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
 		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
+		-- 3.0.1: 2,18 Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
 		["MOD_STA"] = { -- Heart of the Wild: +4%/8%/12%/16%/20% stamina in bear / dire bear
 			[1] = {
 				["tab"] = 2,
-				["num"] = 15,
+				["num"] = 17,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
 				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["tab"] = 2,
-				["num"] = 15,
+				["num"] = 17,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
-			[3] = { -- Survival of the Fittest: +1%/2%/3% all stats
+			[3] = { -- Survival of the Fittest: 2%/4%/6% all stats
 				["tab"] = 2,
-				["num"] = 16,
+				["num"] = 18,
 				["rank"] = {
-					0.01, 0.02, 0.03,
+					0.02, 0.04, 0.06,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[4] = { -- Bear Form / Dire Bear Form: +25% stamina
 				["rank"] = {
@@ -5753,20 +6001,44 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
 			},
-		},
-		-- Druid: Heart of the Wild (Rank 5) - 2,15
-		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
-		-- Druid: Survival of the Fittest (Rank 3) - 2,16
-		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
-		["MOD_STR"] = {
-			[1] = {
+			[6] = {
 				["tab"] = 2,
 				["num"] = 15,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
-				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
-				["condition"] = "wowBuildNo < '7382'",
+				["buff"] = GetSpellInfo(32357),		-- ["Bear Form"],
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[7] = {
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+				["buff"] = GetSpellInfo(9634),		-- ["Dire Bear Form"],
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[8] = { -- Survival of the Fittest: +1%/2%/3% all stats
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Druid: Survival of the Fittest (Rank 3) - 2,16
+		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
+		-- 3.0.1: 2,18 Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		["MOD_STR"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["tab"] = 2,
@@ -5774,80 +6046,337 @@ local StatModTable = {
 				["rank"] = {
 					0.01, 0.02, 0.03,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
 		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
-		-- 2.3.0 This talent no longer provides 4/8/12/16/20% bonus Strength in Cat Form. Instead it provides 2/4/6/8/10% bonus attack power.
+		-- 2.3.0: This talent no longer provides 4/8/12/16/20% bonus Strength in Cat Form. Instead it provides 2/4/6/8/10% bonus attack power.
+		-- 3.0.1: 2,17
 		["MOD_AP"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 17,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 15,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 				["buff"] = GetSpellInfo(32356),		-- ["Cat Form"],
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
 		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
+		-- 3.0.1: 2,18 Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
 		["MOD_AGI"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 16,
 				["rank"] = {
 					0.01, 0.02, 0.03,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Druid: Heart of the Wild (Rank 5) - 2,15
 		--        Increases your Intellect by 4%/8%/12%/16%/20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 4%/8%/12%/16%/20% and while in Cat Form your Strength is increased by 4%/8%/12%/16%/20%.
+		-- 3.0.1: 2,17
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
 		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
+		-- 3.0.1: 2,18 Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+		-- Druid: Furor (Rank 5) - 3,3
+		--        Increases your total Intellect while in Moonkin form by 2%/4%/6%/8%/10%.
 		["MOD_INT"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 17,
+				["rank"] = {
+					0.04, 0.08, 0.12, 0.16, 0.2,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
 				["tab"] = 2,
 				["num"] = 15,
 				["rank"] = {
 					0.04, 0.08, 0.12, 0.16, 0.2,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[2] = {
+			[4] = {
 				["tab"] = 2,
 				["num"] = 16,
 				["rank"] = {
 					0.01, 0.02, 0.03,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[5] = {
+				["tab"] = 3,
+				["num"] = 3,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = GetSpellInfo(24858),		-- ["Moonkin Form"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Druid: Living Spirit (Rank 3) - 3,16
 		--        Increases your total Spirit by 5%/10%/15%.
+		-- 3.0.1: 3,17
 		-- Druid: Survival of the Fittest (Rank 3) - 2,16
 		--        Increases all attributes by 1%/2%/3% and reduces the chance you'll be critically hit by melee attacks by 1%/2%/3%.
+		-- 3.0.1: 2,18 Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
 		["MOD_SPI"] = {
 			[1] = {
+				["tab"] = 3,
+				["num"] = 17,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
 				["tab"] = 3,
 				["num"] = 16,
 				["rank"] = {
 					0.05, 0.1, 0.15,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[2] = {
+			[4] = {
 				["tab"] = 2,
 				["num"] = 16,
 				["rank"] = {
 					0.01, 0.02, 0.03,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 	},
 	["DEATHKNIGHT"] = {
+		-- Death Knight: Forceful Deflection - Passive
+		--               Increases your Parry Rating by 25% of your total Strength.
+		["ADD_CR_PARRY_MOD_STR"] = {
+			[1] = {
+				["rank"] = {
+					0.25,
+				},
+			},
+		},
+		-- Death Knight: Bladed Armor (Rank 5) - 1,4
+		--               You gain 5/10/15/20/25 attack power for every 1000 points of your armor value.
+		["ADD_AP_MOD_ARMOR"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					0.005, 0.01, 0.015, 0.02, 0.025,
+				},
+			},
+		},
+		-- Death Knight: Icebound Fortitude - Buff
+		--               Damage taken reduced by 50%.
+		-- Death Knight: Anti-Magic Shell - Buff
+		--               Spell damage reduced by 75%.
+		["MOD_DMG_TAKEN"] = {
+			[1] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.50,
+				},
+				["buff"] = GetSpellInfo(48792),		-- ["Icebound Fortitude"],
+			},
+			[1] = {
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.75,
+				},
+				["buff"] = GetSpellInfo(48707),		-- ["Anti-Magic Shell"],
+			},
+		},
+		-- Death Knight: Anticipation (Rank 5) - 3,3
+		--               Increases your Dodge chance by 1%/2%/3%/4%/5%.
+		["ADD_DODGE"] = {
+			[1] = {
+				["tab"] = 3,
+				["num"] = 3,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+			},
+		},
+		-- Death Knight: Lichborne - Buff
+		--               Chance to be hit by melee attacks reduced by 25%.
+		["ADD_HIT_TAKEN"] = {
+			[1] = {
+				["MELEE"] = true,
+				["rank"] = {
+					-0.25,
+				},
+				["buff"] = GetSpellInfo(49039),		-- ["Lichborne"],
+			},
+		},
+		-- Death Knight: Will of the Necropolis (Rank 3) - 1,23
+		--               When you have less than 35% health, your total armor increases by 10%/20%/30%.
+		-- Death Knight: Toughness (Rank 5) - 2,3
+		--               Increases your armor value from items by 3%/6%/9%/12%/15% and reduces the duration of all movement slowing effects by 50%.
+		-- Death Knight: Unbreakable Armor - Buff
+		--               Increases your armor by 25%, your total Strength by 10% and your Parry chance by 5% for 20 sec.
+		-- Death Knight: Frost Presence - Buff
+		--               Increases armor by 45%, threat generated by 45%, and magic resistance by 57.
+		["MOD_ARMOR"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 23,
+				["rank"] = {
+					1.1, 1.2, 1.3,
+				},
+				["condition"] = "(UnitHealth('player') / UnitHealthMax('player')) < 0.35",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					1.03, 1.06, 1.09, 1.12, 1.15,
+				},
+			},
+			[3] = {
+				["rank"] = {
+					1.25,
+				},
+				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
+			},
+			[3] = {
+				["rank"] = {
+					1.45,
+				},
+				["buff"] = GetSpellInfo(48263),		-- ["Frost Presence"],
+			},
+		},
+		-- Death Knight: Veteran of the Third War (Rank 3) - 1,14
+		--               Increases your total Strength by 2%/4%/6% and your total Stamina by 1%/2%/3%.
+		-- Death Knight: Shadow of Death - 3,13
+		--               Increases your total Strength and Stamina by 2%.
+		["MOD_STA"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+			},
+			[2] = {
+				["tab"] = 3,
+				["num"] = 13,
+				["rank"] = {
+					0.02,
+				},
+			},
+		},
+		-- Death Knight: Veteran of the Third War (Rank 3) - 1,14
+		--               Increases your total Strength by 6% and your total Stamina by 3%.
+		-- Death Knight: Unbreakable Armor - Buff
+		--               Increases your armor by 25%, your total Strength by 10% and your Parry chance by 5% for 20 sec.
+		-- Death Knight: Ravenous Dead (Rank 3) - 3,7
+		--               Increases the total Strength of you and your Ghouls by 1%/2%/3% and increases the duration of Raise Dead by 90 sec.
+		-- Death Knight: Shadow of Death - 3,13
+		--               Increases your total Strength and Stamina by 2%.
+		["MOD_STR"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+			},
+			[2] = {
+				["rank"] = {
+					0.1,
+				},
+				["buff"] = GetSpellInfo(51271),		-- ["Unbreakable Armor"],
+			},
+			[3] = {
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+			},
+			[4] = {
+				["tab"] = 3,
+				["num"] = 13,
+				["rank"] = {
+					0.02,
+				},
+			},
+		},
 	},
 	["HUNTER"] = {
+		-- Hunter: Hunter vs. Wild (Rank 3) - 3,14
+		--         Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
+		["ADD_AP_MOD_STA"] = {
+			[1] = {
+				["tab"] = 3,
+				["num"] = 14,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
 		-- Hunter: Aspect of the Viper - Buff
 		--         The hunter takes on the aspects of a viper, regenerating mana equal to 25% of his Intellect every 5 sec.
+		--  2.2.0: The hunter takes on the aspects of a viper, regenerating mana equal to up to 55% of Intellect every 5 sec.
+		--  2.4.2: The hunter takes on the aspects of a viper, regenerating mana equal to up to 55% of his Intellect plus 35% of his level every 5 sec. 
+		--  3.0.1: The hunter takes on the aspect of the viper, instantly regenerating mana equal to 100% of the damage done by any ranged attack or ability,  but reduces your total damage done by 50%.
+		--
 		-- TODO: Gronnstalker's Armor, (2) Set: Increases the mana you gain from your Aspect of the Viper by an additional 5% of your Intellect.
+		--
 		-- 2.2.0: Aspect of the Viper: This ability has received a slight redesign. The
 		-- amount of mana regained will increase as the Hunters percentage of 
 		-- mana remaining decreases. At about 60% mana, it is equivalent to the
@@ -5855,17 +6384,24 @@ local StatModTable = {
 		-- better (up to twice as much mana as the old version); while above 
 		-- that margin, it will be less effective. The mana regained never drops
 		-- below 10% of intellect every 5 sec. or goes above 50% of intellect 
-		-- every 5 sec. 
+		-- every 5 sec.
+		--
+		-- With at least 90% mana, the effect is 11% of total Intellect. This is followed by 
+		-- a linear increase up to 55% of total Intellect until the mana bar is down to 20%.
+		--
+		-- We'll just use the mean here: 55*0.2+11*0.1+(55+11)*0.7/2 = 35.2%
 		["ADD_MANA_REG_MOD_INT"] = {
 			[1] = {
 				["rank"] = {
-					0.25,
+					0.352,
 				},
 				["buff"] = GetSpellInfo(34074),			-- ["Aspect of the Viper"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Hunter: Careful Aim (Rank 3) - 2,16
+		-- Hunter: Careful Aim (Rank 3) - 2,16 - 2,4
 		--         Increases your ranged attack power by an amount equal to 15%/30%/45% of your total Intellect.
+		--  3.0.1: Increases your ranged attack power by an amount equal to 33%/66%/100% of your total Intellect.
 		["ADD_RANGED_AP_MOD_INT"] = {
 			[1] = {
 				["tab"] = 2,
@@ -5873,29 +6409,58 @@ local StatModTable = {
 				["rank"] = {
 					0.15, 0.30, 0.45,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 4,
+				["rank"] = {
+					0.33, 0.66, 1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Hunter: Survival Instincts (Rank 2) - 3,14
 		--         Reduces all damage taken by 2%/4%.
-		-- 2.1.0 "Survival Instincts" now also increase attack power by 2/4%.
+		--  2.1.0: Survival Instincts" now also increase attack power by 2/4%.
+		--  3.0.1: 3,7
 		["MOD_AP"] = {
 			[1] = {
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 3,
 				["num"] = 14,
 				["rank"] = {
 					0.02, 0.04,
-				}
+				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Hunter: Master Marksman (Rank 5) - 2,19
 		--         Increases your ranged attack power by 2%/4%/6%/8%/10%.
+		--  3.0.1: 2,21
 		["MOD_RANGED_AP"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 19,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Hunter: Catlike Reflexes (Rank 3) - 1,19
@@ -5935,9 +6500,11 @@ local StatModTable = {
 				["buff"] = GetSpellInfo(31567),		-- ["Deterrence"],
 			},
 		},
-		-- Hunter: Survival Instincts (Rank 2) - 1,14
+		-- Hunter: Survival Instincts (Rank 2) - 3,14
 		--         Reduces all damage taken by 2%/4%.
-
+		--  3.0.1: 3,7
+		-- Hunter: Aspect Mastery - 1,8
+		--         Aspect of the Monkey - Reduces the damage done to you while active by 10%.
 		["MOD_DMG_TAKEN"] = {
 			[1] = {
 				["MELEE"] = true,
@@ -5948,11 +6515,45 @@ local StatModTable = {
 				["FROST"] = true,
 				["SHADOW"] = true,
 				["ARCANE"] = true,
-				["tab"] = 1,
+				["tab"] = 3,
+				["num"] = 7,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
 				["num"] = 14,
 				["rank"] = {
 					-0.02, -0.04,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[3] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 8,
+				["rank"] = {
+					-0.1,
+				},
+				["buff"] = GetSpellInfo(13163),		-- ["Aspect of the Monkey"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Hunter: Thick Hide (Rank 3) - 1,5
@@ -5968,6 +6569,7 @@ local StatModTable = {
 		},
 		-- Hunter: Survivalist (Rank 5) - 3,9
 		--         Increases total health by 2%/4%/6%/8%/10%.
+		--  3.0.1: 3,8: Increases your Stamina by 2%/4%/6%/8%/10%.
 		-- Hunter: Endurance Training (Rank 5) - 1,2
 		--         Increases the Health of your pet by 2%/4%/6%/8%/10% and your total health by 1%/2%/3%/4%/5%.
 		["MOD_HEALTH"] = {
@@ -5977,6 +6579,7 @@ local StatModTable = {
 				["rank"] = {
 					1.02, 1.04, 1.06, 1.08, 1.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 			[2] = {
 				["tab"] = 1,
@@ -5986,62 +6589,116 @@ local StatModTable = {
 				},
 			},
 		},
+		-- Hunter: Survivalist (Rank 5) - 3,9
+		--         Increases total health by 2%/4%/6%/8%/10%.
+		--  3.0.1: 3,8: Increases your Stamina by 2%/4%/6%/8%/10%.
+		["MOD_STA"] = {
+			[1] = {
+				["tab"] = 3,
+				["num"] = 8,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
 		-- Hunter: Combat Experience (Rank 2) - 2,14
 		--         Increases your total Agility by 1%/2% and your total Intellect by 3%/6%.
+		--  3.0.1: 2,16: Increases your total Agility by 3%/6% and your total Intellect by 3%/6%.
 		-- Hunter: Lightning Reflexes (Rank 5) - 3,18
 		--         Increases your Agility by 3%/6%/9%/12%/15%.
+		--  3.0.1: 3,17
 		["MOD_AGI"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.03, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 3,
+				["num"] = 17,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
 				["tab"] = 2,
 				["num"] = 14,
 				["rank"] = {
 					0.01, 0.02,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[2] = {
+			[4] = {
 				["tab"] = 3,
 				["num"] = 18,
 				["rank"] = {
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Hunter: Combat Experience (Rank 2) - 2,14
 		--         Increases your total Agility by 1%/2% and your total Intellect by 3%/6%.
+		--  3.0.1: 2,16: Increases your total Agility by 3%/6% and your total Intellect by 3%/6%.
 		["MOD_INT"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.03, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 14,
 				["rank"] = {
 					0.03, 0.06,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 	},
 	["MAGE"] = {
 		-- Mage: Arcane Fortitude - 1,9
 		--       Increases your armor by an amount equal to 50% of your Intellect.
-		-- 2.4.0 Increases your armor by an amount equal to 100% of your Intellect.
+		-- 2.4.0: Increases your armor by an amount equal to 100% of your Intellect.
+		-- 3.0.1: 1,4: Increases your armor by an amount equal to 50%/100%/150% of your Intellect.
 		["ADD_ARMOR_MOD_INT"] = {
 			[1] = {
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					0.5, 1, 1.5,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 1,
 				["num"] = 9,
 				["rank"] = {
 					1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Mage: Arcane Meditation (Rank 3) - 1,12
 		--       Allows 5%/10%/15% of your Mana regeneration to continue while casting.
-		-- 2.3.0 increased to 10/20/30% mana regeneration.
+		-- 2.3.0: increased to 10/20/30% mana regeneration.
+		-- 3.0.1: 1,13
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			[1] = {
 				["tab"] = 1,
-				["num"] = 12,
+				["num"] = 13,
 				["rank"] = {
-					0.05, 0.1, 0.15,
+					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo < '7382'",
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["tab"] = 1,
@@ -6049,24 +6706,75 @@ local StatModTable = {
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Mage: Mind Mastery (Rank 5) - 1,22
 		--       Increases spell damage by up to 5%/10%/15%/20%/25% of your total Intellect.
+		-- 3.0.1: 1,25: Increases spell power by up to 3%/6%/9%/12%/15% of your total Intellect.
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			[1] = {
+				["tab"] = 1,
+				["num"] = 25,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 1,
 				["num"] = 22,
 				["rank"] = {
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		["ADD_HEALING_MOD_INT"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 25,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Mage: Arctic Winds (Rank 5) - 3,20
 		--       Reduces the chance melee and ranged attacks will hit you by 1%/2%/3%/4%/5%.
+		-- 3.0.1: 3,21
+		-- Mage: Improved Blink (Rank 2) - Buff - 1,13
+		--       Chance to be hit by all attacks and spells reduced by 13%/25%.
+		-- 3.0.1: 1,15: Chance to be hit by all attacks and spells reduced by 15%/30%.
 		["ADD_HIT_TAKEN"] = {
 			[1] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["tab"] = 3,
+				["num"] = 21,
+				["rank"] = {
+					-0.01, -0.02, -0.03, -0.04, -0.05,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
+					-0.15, -0.30,
+				},
+				["buff"] = GetSpellInfo(46989),		-- ["Improved Blink"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["tab"] = 3,
@@ -6074,16 +6782,77 @@ local StatModTable = {
 				["rank"] = {
 					-0.01, -0.02, -0.03, -0.04, -0.05,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[4] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 13,
+				["rank"] = {
+					-0.13, -0.25,
+				},
+				["buff"] = GetSpellInfo(46989),		-- ["Improved Blink"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Mage: Prismatic Cloak (Rank 2) - 1,16
+		-- Mage: Prismatic Cloak (Rank 3) - 1,16
 		--       Reduces all damage taken by 2%/4%.
+		-- 3.0.1: 1,18: Reduces all damage taken by 2%/4%/6%.
 		-- Mage: Playing with Fire (Rank 3) - 2,13
-		--       Increases all spell damage caused by 1%/2%/3% and all spell damage taken by 1%/2%/3%.
+		--       Increases all spell damage caused by 1%/2%/3%(doesn't effect char tab stat) and all spell damage taken by 1%/2%/3%.
+		-- 3.0.1: 2,14
 		-- Mage: Frozen Core (Rank 3) - 3,14
 		--       Reduces the damage taken by Frost and Fire effects by 2%/4%/6%.
+		-- 3.0.1: 3,16
 		["MOD_DMG_TAKEN"] = {
 			[1] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 18,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 14,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
+				["FIRE"] = true,
+				["FROST"] = true,
+				["tab"] = 3,
+				["num"] = 16,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[4] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["HOLY"] = true,
@@ -6097,8 +6866,9 @@ local StatModTable = {
 				["rank"] = {
 					-0.02, -0.04,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[2] = {
+			[5] = {
 				["HOLY"] = true,
 				["FIRE"] = true,
 				["NATURE"] = true,
@@ -6110,8 +6880,9 @@ local StatModTable = {
 				["rank"] = {
 					-0.01, -0.02, -0.03,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[3] = {
+			[6] = {
 				["FIRE"] = true,
 				["FROST"] = true,
 				["tab"] = 3,
@@ -6119,62 +6890,154 @@ local StatModTable = {
 				["rank"] = {
 					-0.02, -0.04, -0.06,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Mage: Arcane Instability (Rank 3) - 1,17
+		--       Increases your spell damage and critical strike chance by 1%/2%/3%.
+		-- 3.0.1: 1,19
+		["MOD_SPELL_DMG"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 19,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					0.01, 0.02, 0.03,
+				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Mage: Arcane Mind (Rank 5) - 1,15
 		--       Increases your total Intellect by 3%/6%/9%/12%/15%.
+		-- 3.0.1: 1,17
 		["MOD_INT"] = {
 			[1] = {
+				["tab"] = 1,
+				["num"] = 17,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 1,
 				["num"] = 15,
 				["rank"] = {
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Mage: Student of the Mind (Rank 3) - 1,9
+		--       Increases your total Spirit by 4%/7%/10%.
+		["MOD_SPI"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 9,
+				["rank"] = {
+					0.04, 0.07, 0.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 	},
 	["PALADIN"] = {
-		-- Paladin: Pursuit of Justice (Rank 2) - 3,9
-		--          Reduces the chance you'll be hit by spells by 1%/2%/3% and increases movement and mounted movement speed by 5%/10%/15%. This does not stack with other movement speed increasing effects.
-		["ADD_HIT_TAKEN"] = {
+		-- Paladin: Sheath of Light (Rank 3) - 3,15
+		--          Increases your spell power by an amount equal to 10%/20%/30% of your attack power
+		["ADD_SPELL_DMG_MOD_AP"] = {
 			[1] = {
-				["HOLY"] = true,
-				["FIRE"] = true,
-				["NATURE"] = true,
-				["FROST"] = true,
-				["SHADOW"] = true,
-				["ARCANE"] = true,
 				["tab"] = 3,
-				["num"] = 9,
+				["num"] = 15,
 				["rank"] = {
-					-0.05, -0.1, -0.15,
+					0.1, 0.2, 0.3,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		["ADD_HEALING_MOD_AP"] = {
+			[1] = {
+				["tab"] = 3,
+				["num"] = 15,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Paladin: Touched by the Light (Rank 3) - 2,22
+		--          Increases your spell power by an amount equal to 10%/20%/30% of your Stamina
+		["ADD_SPELL_DMG_MOD_STA"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		["ADD_HEALING_MOD_STA"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 22,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Paladin: Holy Guidance (Rank 5) - 1,19
 		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
+		--   3.0.1: 1,21
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			[1] = {
 				["tab"] = 1,
-				["num"] = 19,
+				["num"] = 21,
 				["rank"] = {
 					0.07, 0.14, 0.21, 0.28, 0.35,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
-		},
-		-- Paladin: Holy Guidance (Rank 5) - 1,19
-		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
-		["ADD_HEALING_MOD_INT"] = {
-			[1] = {
+			[2] = {
 				["tab"] = 1,
 				["num"] = 19,
 				["rank"] = {
 					0.07, 0.14, 0.21, 0.28, 0.35,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Paladin: Holy Guidance (Rank 5) - 1,19
+		--          Increases your spell damage and healing by 7%/14%/21%/28%/35% of your total Intellect.
+		--   3.0.1: 1,21
+		["ADD_HEALING_MOD_INT"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 21,
+				["rank"] = {
+					0.07, 0.14, 0.21, 0.28, 0.35,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 19,
+				["rank"] = {
+					0.07, 0.14, 0.21, 0.28, 0.35,
+				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Paladin: Divine Purpose (Rank 3) - 3,20
 		--          Melee and ranged critical strikes against you cause 4%/7%/10% less damage.
+		--   3.0.1: Reduces your chance to be hit by spells and ranged attacks by 1%/2%/3% and reduces the duration of movement slowing effects by 30%.
 		["MOD_CRIT_DAMAGE_TAKEN"] = {
 			[1] = {
 				["MELEE"] = true,
@@ -6184,16 +7047,69 @@ local StatModTable = {
 				["rank"] = {
 					-0.04, -0.07, -0.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Paladin: Anticipation (Rank 5) - 2,2
+		--          Increases your chance to dodge by 1%/2%/3%/4%/5%.
+		["ADD_DODGE"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 2,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Paladin: Divine Purpose (Rank 3) - 3,20
+		--          Melee and ranged critical strikes against you cause 4%/7%/10% less damage.
+		--   3.0.1: Reduces your chance to be hit by spells and ranged attacks by 1%/2%/3% and reduces the duration of movement slowing effects by 30%.
+		-- Paladin: Pursuit of Justice (Rank 3) - 3,9
+		--          Reduces the chance you'll be hit by spells by 1%/2%/3% and increases movement and mounted movement speed by 5%/10%/15%. This does not stack with other movement speed increasing effects.
+		--   3.0.1: Reduces the chance you'll be hit by spells by 1%/2% and increases movement and mounted movement speed by 8%/15%.
+		["ADD_HIT_TAKEN"] = {
+			[1] = {
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 20,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 9,
+				["rank"] = {
+					-0.01, -0.02, -0.03,
+				},
 			},
 		},
 		-- Paladin: Blessed Life (Rank 3) - 1,18
 		--          All attacks against you have a 4%/7%/10% chance to cause half damage.
+		--   3.0.1: 1,19
 		-- Paladin: Ardent Defender (Rank 5) - 2,19
-		--          When you have less than 20% health, all damage taken is reduced by 6%/12%/18%/24%/30%.
+		--          When you have less than 35% health, all damage taken is reduced by 6%/12%/18%/24%/30%.
+		--   3.0.1: 2,20
 		-- Paladin: Spell Warding (Rank 2) - 2,13
 		--          All spell damage taken is reduced by 2%/4%.
 		-- Paladin: Improved Righteous Fury (Rank 3) - 2,7
-		--          While Righteous Fury is active, all damage taken is reduced by 2%/4%/6% and increases the amount of threat generated by your Righteous Fury spell by 16%/33%/50%.
+		--          While Righteous Fury is active, all damage taken is reduced by 2%/4%/6%.
+		-- Paladin: The Art of War (Rank 3) - 3,25
+		--          Reduces all damage taken by 1%/2%/3% and gives your Hand of Freedom a 100% chance to remove Stun effects.
 		["MOD_DMG_TAKEN"] = {
 			[1] = {
 				["MELEE"] = true,
@@ -6205,10 +7121,11 @@ local StatModTable = {
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["tab"] = 1,
-				["num"] = 18,
+				["num"] = 19,
 				["rank"] = {
 					-0.02, -0.035, -0.05,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["MELEE"] = true,
@@ -6220,11 +7137,11 @@ local StatModTable = {
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["tab"] = 2,
-				["num"] = 19,
+				["num"] = 20,
 				["rank"] = {
 					-0.06, -0.12, -0.18, -0.24, -0.3,
 				},
-				["condition"] = "(UnitHealth('player') / UnitHealthMax('player')) < 0.35",
+				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35) and (wowBuildNo >= '8885')",
 			},
 			[3] = {
 				["HOLY"] = true,
@@ -6255,27 +7172,95 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(25781),		-- ["Righteous Fury"],
 			},
+			[5] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 18,
+				["rank"] = {
+					-0.02, -0.035, -0.05,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[6] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 19,
+				["rank"] = {
+					-0.06, -0.12, -0.18, -0.24, -0.3,
+				},
+				["condition"] = "((UnitHealth('player') / UnitHealthMax('player')) < 0.35) and (wowBuildNo < '8885')",
+			},
+			[7] = { --The Art of War
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 25,
+				["rank"] = {
+					-0.01, -0.02, -0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
 		},
 		-- Paladin: Toughness (Rank 5) - 2,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
+		--   3.0.1: 2,9
 		["MOD_ARMOR"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 9,
+				["rank"] = {
+					1.02, 1.04, 1.06, 1.08, 1.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 5,
 				["rank"] = {
 					1.02, 1.04, 1.06, 1.08, 1.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Paladin: Divine Strength (Rank 5) - 1,1
 		--          Increases your total Strength by 2%/4%/6%/8%/10%.
+		--   3.0.1: 2,1: Increases your total Strength by 3%/6%/9%/12%/15%.
 		["MOD_STR"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 1,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 1,
 				["num"] = 1,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Paladin: Sacred Duty (Rank 2) - 2,16
@@ -6296,18 +7281,27 @@ local StatModTable = {
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
 			},
 		},
 		-- Paladin: Divine Intellect (Rank 5) - 1,2
 		--          Increases your total Intellect by 2%/4%/6%/8%/10%.
+		--   3.0.1: 1,4: Increases your total Intellect by 3%/6%/9%/12%/15%.
 		["MOD_INT"] = {
 			[1] = {
+				["tab"] = 1,
+				["num"] = 4,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 1,
 				["num"] = 2,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Paladin: Shield Specialization (Rank 3) - 2,8
@@ -6323,31 +7317,81 @@ local StatModTable = {
 		},
 	},
 	["PRIEST"] = {
+		-- Priest: Twisted Faith (Rank 5) - 3,26
+		--         Increases your Shadow spell power by 6%/12%/18%/24%/30% of your total Spirit
+		["ADD_SCHOOL_SP_MOD_SPI"] = {
+			[1] = {
+				["SHADOW"] = true,
+				["tab"] = 3,
+				["num"] = 26,
+				["rank"] = {
+					0.06, 0.12, 0.18, 0.24, 0.30,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Priest: Twin Disciplines (Rank 5) - 1,2
+		--         Increases your spell damage and healing by 1%/2%/3%/4%/5%.
+		-- Priest: Focused Power (Rank 2) - 1,16
+		--         Increases your total spell damage and healing done by 2%/4%.
+		["MOD_SPELL_DMG"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 2,
+				["rank"] = {
+					0.01, 0.02, 0.03, 0.04, 0.05,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 16,
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Priest: Twin Disciplines (Rank 5) - 1,2
+		--         Increases your spell damage and healing by 1%/2%/3%/4%/5%.
+		-- Priest: Focused Power (Rank 2) - 1,16
+		--         Increases your total spell damage and healing done by 2%/4%.
+		["MOD_HEALING"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 2,
+				["rank"] = {
+					0.01, 0.02, 0.03, 0.04, 0.05,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 16,
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
 		-- Priest: Meditation (Rank 3) - 1,9
 		--         Allows 5%/10%/15% of your Mana regeneration to continue while casting.
-		-- 2.3.0 increased to 10/20/30% mana regeneration.
+		--  2.3.0: Increased to 10/20/30% mana regeneration.
 		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
 			[1] = {
 				["tab"] = 1,
 				["num"] = 9,
 				["rank"] = {
-					0.05, 0.1, 0.15,
-				},
-				["condition"] = "wowBuildNo < '7382'",
-			},
-			[2] = {
-				["tab"] = 1,
-				["num"] = 9,
-				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
-				["condition"] = "wowBuildNo >= '7382'",
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
 		--         Increases spell damage and healing by up to 5%/10%/15%/20%/25% of your total Spirit.
+		--  3.0.1: Increases spell power by up to 5%/10%/15%/20%/25% of your total Spirit.
 		-- Priest: Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		--         Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 5%/10% of their total Spirit.
+		--  3.0.1: Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 3%/6% of their total Spirit.
 		["ADD_SPELL_DMG_MOD_SPI"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6360,23 +7404,45 @@ local StatModTable = {
 				["tab"] = 1,
 				["num"] = 15,
 				["rank"] = {
+					0.03, 0.06,
+				},
+				["buff"] = GetSpellInfo(39234),		-- ["Divine Spirit"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
+					0.03, 0.06,
+				},
+				["buff"] = GetSpellInfo(32999),		-- ["Prayer of Spirit"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[4] = {
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
 					0.05, 0.1,
 				},
 				["buff"] = GetSpellInfo(39234),		-- ["Divine Spirit"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[3] = {
+			[5] = {
 				["tab"] = 1,
 				["num"] = 15,
 				["rank"] = {
 					0.05, 0.1,
 				},
 				["buff"] = GetSpellInfo(32999),		-- ["Prayer of Spirit"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Priest: Spiritual Guidance (Rank 5) - 2,14
 		--         Increases spell damage and healing by up to 5%/10%/15%/20%/25% of your total Spirit.
+		--  3.0.1: Increases spell power by up to 5%/10%/15%/20%/25% of your total Spirit.
 		-- Priest: Improved Divine Spirit (Rank 2) - 1,15 - Buff
 		--         Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 5%/10% of their total Spirit.
+		--  3.0.1: Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 3%/6% of their total Spirit.
 		["ADD_HEALING_MOD_SPI"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6389,37 +7455,56 @@ local StatModTable = {
 				["tab"] = 1,
 				["num"] = 15,
 				["rank"] = {
+					0.03, 0.06,
+				},
+				["buff"] = GetSpellInfo(39234),		-- ["Divine Spirit"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
+					0.03, 0.06,
+				},
+				["buff"] = GetSpellInfo(32999),		-- ["Prayer of Spirit"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[4] = {
+				["tab"] = 1,
+				["num"] = 15,
+				["rank"] = {
 					0.05, 0.1,
 				},
 				["buff"] = GetSpellInfo(39234),		-- ["Divine Spirit"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[3] = {
+			[5] = {
 				["tab"] = 1,
 				["num"] = 15,
 				["rank"] = {
 					0.05, 0.1,
 				},
 				["buff"] = GetSpellInfo(32999),		-- ["Prayer of Spirit"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Priest: OLD: Elune's Grace (Rank 6) - Buff, NE priest only
-		--         OLD: Ranged damage taken reduced by 167 and chance to dodge increased by 10%.
-		-- 2.3.0 Elune's Grace (Night Elf) effect changed to reduce chance to be hit by melee and ranged attacks by 20% for 15 seconds. There is now only 1 rank of the spell.
-		-- Priest: Elune's Grace (Rank 1) - Buff, NE priest only
-		--         Reduces the chance you'll be hit by melee and ranged attacks by 20% for 15 sec.
+		-- Priest: Elune's Grace - Buff, NE priest only
+		--         Ranged damage taken reduced by 167 and chance to dodge increased by 10%.
+		--  2.3.0: Reduces the chance you'll be hit by melee and ranged attacks by 20% for 15 sec.
 		["ADD_HIT_TAKEN"] = {
 			[1] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["rank"] = {
-					20,
+					-0.2,
 				},
 				["buff"] = GetSpellInfo(2651),		-- ["Elune's Grace"],
 			},
 		},
 		-- Priest: Shadow Resilience (Rank 2) - 3,16
 		--         Reduces the chance you'll be critically hit by all spells by 2%/4%.
-		["MOD_CRIT_DAMAGE_TAKEN"] = {
+		--  3.0.1: 3,17: Reduces physical damage taken by 2%/4%.
+		["ADD_CRIT_TAKEN"] = {
 			[1] = {
 				["HOLY"] = true,
 				["FIRE"] = true,
@@ -6432,16 +7517,16 @@ local StatModTable = {
 				["rank"] = {
 					-0.02, -0.04,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Priest: Spell Warding (Rank 5) - 2,4
 		--         Reduces all spell damage taken by 2%/4%/6%/8%/10%.
-		-- Priest: OLD: Pain Suppression - Buff
-		--         OLD: Reduces all damage taken by 60% for 8 sec.
-		-- 2.1.0 "Pain Suppression" now reduces damage taken by 65% and increases resistance to Dispel mechanics by 65% for the duration.
-		-- 2.3.0 Pain Suppression (Discipline Talent) is now usable on friendly targets, instantly reduces the target's threat by 5%, reduces damage taken by 40% and its cooldown has been reduced to 2 minutes.
-		-- Priest: 2.3.0: Pain Suppression - Buff
-		--         2.3.0: Instantly reduces a friendly target's threat by 5%, reduces all damage taken by 40% and increases resistance to Dispel mechanics by 65% for 8 sec.
+		-- Priest: Shadow Resilience (Rank 2) - 3,16
+		--         Reduces the chance you'll be critically hit by all spells by 2%/4%.
+		--  3.0.1: 3,17: Reduces physical damage taken by 2%/4%.
+		-- Priest: Dispersion - Buff
+		--         Reduces all damage by 90%
 		["MOD_DMG_TAKEN"] = {
 			[1] = {
 				["HOLY"] = true,
@@ -6459,6 +7544,16 @@ local StatModTable = {
 			[2] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
+				["tab"] = 3,
+				["num"] = 17,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
 				["HOLY"] = true,
 				["FIRE"] = true,
 				["NATURE"] = true,
@@ -6466,13 +7561,15 @@ local StatModTable = {
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["rank"] = {
-					-0.4,
+					-0.9,
 				},
-				["buff"] = GetSpellInfo(33206),		-- ["Pain Suppression"],
+				["buff"] = GetSpellInfo(47585),		-- ["Dispersion"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Priest: Mental Strength (Rank 5) - 1,13
-		--         IIncreases your maximum Mana by 2%/4%/6%/8%/10%.
+		--         Increases your maximum Mana by 2%/4%/6%/8%/10%.
+		--  3.0.1: Increases your total Intellect by 3%/6%/9%/12%/15%.
 		["MOD_MANA"] = {
 			[1] = {
 				["tab"] = 1,
@@ -6480,21 +7577,36 @@ local StatModTable = {
 				["rank"] = {
 					1.02, 1.04, 1.06, 1.08, 1.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Priest: Enlightenment (Rank 5) - 1,20
 		--         Increases your total Stamina, Intellect and Spirit by 1%/2%/3%/4%/5%.
+		--  3.0.1: 1,12: Increases your total Stamina and Spirit by 1%/2%/3%/4%/5% and increases your spell haste by 1%/2%/3%/4%/5%.
 		["MOD_STA"] = {
 			[1] = {
+				["tab"] = 1,
+				["num"] = 12,
+				["rank"] = {
+					0.01, 0.02, 0.03, 0.04, 0.05,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 1,
 				["num"] = 20,
 				["rank"] = {
 					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Priest: Enlightenment (Rank 5) - 1,20
 		--         Increases your total Stamina, Intellect and Spirit by 1%/2%/3%/4%/5%.
+		--  3.0.1: 1,12: Increases your total Stamina and Spirit by 1%/2%/3%/4%/5% and increases your spell haste by 1%/2%/3%/4%/5%.
+		-- Priest: Mental Strength (Rank 5) - 1,13
+		--         Increases your maximum Mana by 2%/4%/6%/8%/10%.
+		--  3.0.1: Increases your total Intellect by 3%/6%/9%/12%/15%.
 		["MOD_INT"] = {
 			[1] = {
 				["tab"] = 1,
@@ -6502,19 +7614,30 @@ local StatModTable = {
 				["rank"] = {
 					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 13,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Priest: Enlightenment (Rank 5) - 1,20
 		--         Increases your total Stamina, Intellect and Spirit by 1%/2%/3%/4%/5%.
+		--  3.0.1: 1,12: Increases your total Stamina and Spirit by 1%/2%/3%/4%/5% and increases your spell haste by 1%/2%/3%/4%/5%.
 		-- Priest: Spirit of Redemption - 2,13
 		--         Increases total Spirit by 5% and upon death, the priest becomes the Spirit of Redemption for 15 sec.
 		["MOD_SPI"] = {
 			[1] = {
 				["tab"] = 1,
-				["num"] = 20,
+				["num"] = 12,
 				["rank"] = {
 					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["tab"] = 2,
@@ -6523,22 +7646,41 @@ local StatModTable = {
 					0.05,
 				},
 			},
+			[3] = {
+				["tab"] = 1,
+				["num"] = 20,
+				["rank"] = {
+					0.01, 0.02, 0.03, 0.04, 0.05,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
 		},
 	},
 	["ROGUE"] = {
 		-- Rogue: Deadliness (Rank 5) - 3,17
 		--        Increases your attack power by 2%/4%/6%/8%/10%.
+		-- 3.0.1: 3,18
 		["MOD_AP"] = {
 			[1] = {
+				["tab"] = 3,
+				["num"] = 18,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 3,
 				["num"] = 17,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Rogue: Lightning Reflexes (Rank 5) - 2,3
 		--        Increases your Dodge chance by 1%/2%/3%/4%/5%.
+		-- 3.0.1: 2,12
 		-- Rogue: Evasion (Rank 1/2) - Buff
 		--        Dodge chance increased by 50%/50% and chance ranged attacks hit you reduced by 0%/25%.
 		-- Rogue: Ghostly Strike - Buff
@@ -6546,10 +7688,11 @@ local StatModTable = {
 		["ADD_DODGE"] = {
 			[1] = {
 				["tab"] = 2,
-				["num"] = 3,
+				["num"] = 12,
 				["rank"] = {
 					1, 2, 3, 4, 5,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["rank"] = {
@@ -6563,22 +7706,43 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(31022),		-- ["Ghostly Strike"],
 			},
+			[4] = {
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
 		},
 		-- Rogue: Sleight of Hand (Rank 2) - 3,3
-		--        Reduces the chance you are critically hit by melee and ranged attacks by 2% and increases the threat reduction of your Feint ability by 20%.
+		--        Reduces the chance you are critically hit by melee and ranged attacks by 1%/2% and increases the threat reduction of your Feint ability by 10%/20%.
+		-- 3.0.1: 3,4
 		["ADD_CRIT_TAKEN"] = {
 			[1] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["tab"] = 3,
+				["num"] = 4,
+				["rank"] = {
+					-0.01, -0.02,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["tab"] = 3,
 				["num"] = 3,
 				["rank"] = {
-					-0.02, -0.04,
+					-0.01, -0.02,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Rogue: Heightened Senses (Rank 2) - 3,12
 		--        Increases your Stealth detection and reduces the chance you are hit by spells and ranged attacks by 2%/4%.
+		-- 3.0.1: 3,13
 		-- Rogue: Cloak of Shadows - buff
 		--        Instantly removes all existing harmful spell effects and increases your chance to resist all spells by 90% for 5 sec. Does not remove effects that prevent you from using Cloak of Shadows.
 		-- Rogue: Evasion (Rank 1/2) - Buff
@@ -6593,10 +7757,11 @@ local StatModTable = {
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["tab"] = 3,
-				["num"] = 12,
+				["num"] = 13,
 				["rank"] = {
 					-0.02, -0.04,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["HOLY"] = true,
@@ -6617,11 +7782,43 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(26669),		-- ["Evasion"],
 			},
+			[4] = {
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 12,
+				["rank"] = {
+					-0.02, -0.04,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
 		},
-		-- Rogue: Deadened Nerves (Rank 5) - 1,19
+		-- Rogue: Deadened Nerves (Rank 3) - 1,19
 		--        Decreases all physical damage taken by 1%/2%/3%/4%/5%
+		-- 3.0.1: 1,20: Reduces all damage taken by 2%/4%/6%.
 		["MOD_DMG_TAKEN"] = {
 			[1] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 1,
+				["num"] = 20,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["tab"] = 1,
@@ -6629,46 +7826,250 @@ local StatModTable = {
 				["rank"] = {
 					-0.01, -0.02, -0.03, -0.04, -0.05,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Rogue: Vitality (Rank 2) - 2,20
 		--        Increases your total Stamina by 2%/4% and your total Agility by 1%/2%.
+		-- 3.0.1: 2,19
 		-- Rogue: Sinister Calling (Rank 5) - 3,21
 		--        Increases your total Agility by 3%/6%/9%/12%/15%.
+		-- 3.0.1: 3,22
 		["MOD_AGI"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 19,
+				["rank"] = {
+					0.01, 0.02,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 3,
+				["num"] = 22,
+				["rank"] = {
+					0.03, 0.06, 0.09, 0.12, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
 				["tab"] = 2,
 				["num"] = 20,
 				["rank"] = {
 					0.01, 0.02,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
-			[2] = {
+			[4] = {
 				["tab"] = 3,
 				["num"] = 21,
 				["rank"] = {
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Rogue: Vitality (Rank 2) - 2,20
 		--        Increases your total Stamina by 2%/4% and your total Agility by 1%/2%.
+		-- 3.0.1: 2,19
 		["MOD_STA"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 19,
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 20,
 				["rank"] = {
 					0.02, 0.04,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 	},
 	["SHAMAN"] = {
+		-- Shaman: Unleashed Rage - Buff
+		--         Melee attack power increased by 10%.
+		["MOD_AP"] = {
+			[1] = {
+				["rank"] = {
+					0.1,
+				},
+				["buff"] = GetSpellInfo(30807),		-- ["Unleashed Rage"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Shaman: Mental Dexterity (Rank 3) - 2,8
+		--         Increases your Attack Power by 33%/66%/100% of your Intellect.
+		["ADD_AP_MOD_INT"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 8,
+				["rank"] = {
+					0.33, 0.66, 1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Shaman: Mental Quickness (Rank 3) - 2,15
+		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
+		--  3.0.1: 2,16. Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell power equal to 10%/20%/30% of your attack power.
+		["ADD_SPELL_DMG_MOD_AP"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Mental Quickness (Rank 3) - 2,15
+		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
+		--  3.0.1: 2,16. Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell power equal to 10%/20%/30% of your attack power.
+		["ADD_HEALING_MOD_AP"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 15,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Unrelenting Storm (Rank 5) - 1,14
+		--         Regenerate mana equal to 2%/4%/6%/8%/10% of your Intellect every 5 sec, even while casting.
+		--  3.0.1: 1,13
+		["ADD_MANA_REG_MOD_INT"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 13,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Nature's Blessing (Rank 3) - 3,18
+		--         Increases your spell damage and healing by an amount equal to 10%/20%/30% of your Intellect.
+		--  3.0.1: 3,21. Increases your healing by an amount equal to 5%/10%/15% of your Intellect.
+		["ADD_SPELL_DMG_MOD_INT"] = {
+			[1] = {
+				["tab"] = 3,
+				["num"] = 18,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Nature's Blessing (Rank 3) - 3,18
+		--         Increases your spell damage and healing by an amount equal to 10%/20%/30% of your Intellect.
+		--  3.0.1: 3,21. Increases your healing by an amount equal to 5%/10%/15% of your Intellect.
+		["ADD_HEALING_MOD_INT"] = {
+			[1] = {
+				["tab"] = 3,
+				["num"] = 21,
+				["rank"] = {
+					0.05, 0.1, 0.15,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 3,
+				["num"] = 18,
+				["rank"] = {
+					0.1, 0.2, 0.3,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Anticipation (Rank 5) - 2,9
+		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
+		--  3.0.1: 2,10. Increases your chance to dodge by an additional 1%/2%/3%
+		["ADD_DODGE"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					1, 2, 3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 9,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Elemental Shields (Rank 3) - 1,18
+		--         Reduces the chance you will be critically hit by melee and ranged attacks by 2%/4%/6%.
+		--  3.0.1: 1,17. Reduces all physical damage taken by 2%/4%/6%.
+		["ADD_CRIT_TAKEN"] = {
+			[1] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["tab"] = 1,
+				["num"] = 18,
+				["rank"] = {
+					-0.02, -0.04, -0.06,
+				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Elemental Warding (Rank 3) - 1,4
+		--         Reduces damage taken from Fire, Frost and Nature effects by 4%/7%/10%.
 		-- Shaman: Shamanistic Rage - Buff
 		--         Reduces all damage taken by 30% and gives your successful melee attacks a chance to regenerate mana equal to 15% of your attack power. Lasts 30 sec.
-		-- 2.3.0 Shamanistic Rage (Enhancement) now also reduces all damage taken by 30% for the duration.
+		--  2.3.0: Shamanistic Rage (Enhancement) now also reduces all damage taken by 30% for the duration.
+		-- Shaman: Elemental Shields (Rank 3) - 1,18
+		--         Reduces the chance you will be critically hit by melee and ranged attacks by 2%/4%/6%.
+		--  3.0.1: 1,17. Reduces all physical damage taken by 2%/4%/6%.
+		-- Shaman: Astral Shift - Buff
+		--         When stunned, feared or silenced you shift into the Astral Plane reducing all damage taken by 30% for the duration of the stun, fear or silence effect.
 		["MOD_DMG_TAKEN"] = {
 			[1] = {
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["tab"] = 1,
+				["num"] = 14,
+				["rank"] = {
+					-0.04, -0.07, -0.1,
+				},
+			},
+			[2] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["HOLY"] = true,
@@ -6682,113 +8083,56 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(30823),		-- ["Shamanistic Rage"],
 			},
-		},
-		-- Shaman: Mental Quickness (Rank 3) - 2,15
-		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
-		["ADD_SPELL_DMG_MOD_AP"] = {
-			[1] = {
-				["tab"] = 2,
-				["num"] = 15,
-				["rank"] = {
-					0.1, 0.2, 0.3,
-				},
-			},
-		},
-		-- Shaman: Mental Quickness (Rank 3) - 2,15
-		--         Reduces the mana cost of your instant cast spells by 2%/4%/6% and increases your spell damage and healing equal to 10%/20%/30% of your attack power.
-		["ADD_HEALING_MOD_AP"] = {
-			[1] = {
-				["tab"] = 2,
-				["num"] = 15,
-				["rank"] = {
-					0.1, 0.2, 0.3,
-				},
-			},
-		},
-		-- Shaman: Unrelenting Storm (Rank 5) - 1,14
-		--         Regenerate mana equal to 2%/4%/6%/8%/10% of your Intellect every 5 sec, even while casting.
-		["ADD_MANA_REG_MOD_INT"] = {
-			[1] = {
-				["tab"] = 1,
-				["num"] = 14,
-				["rank"] = {
-					0.02, 0.04, 0.06, 0.08, 0.1,
-				},
-			},
-		},
-		-- Shaman: Nature's Blessing (Rank 3) - 3,18
-		--         Increases your spell damage and healing by an amount equal to 10%/20%/30% of your Intellect.
-		["ADD_SPELL_DMG_MOD_INT"] = {
-			[1] = {
-				["tab"] = 3,
-				["num"] = 18,
-				["rank"] = {
-					0.1, 0.2, 0.3,
-				},
-			},
-		},
-		-- Shaman: Nature's Blessing (Rank 3) - 3,18
-		--         Increases your spell damage and healing by an amount equal to 10%/20%/30% of your Intellect.
-		["ADD_HEALING_MOD_INT"] = {
-			[1] = {
-				["tab"] = 3,
-				["num"] = 18,
-				["rank"] = {
-					0.1, 0.2, 0.3,
-				},
-			},
-		},
-		-- Shaman: Anticipation (Rank 5) - 2,9
-		--         Increases your chance to dodge by an additional 1%/2%/3%/4%/5%.
-		["ADD_DODGE"] = {
-			[1] = {
-				["tab"] = 2,
-				["num"] = 9,
-				["rank"] = {
-					1, 2, 3, 4, 5,
-				},
-			},
-		},
-		-- Shaman: Elemental Shields (Rank 3) - 1,18
-		--         Reduces the chance you will be critically hit by melee and ranged attacks by 2%/4%/6%.
-		["ADD_CRIT_TAKEN"] = {
-			[1] = {
+			[3] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["tab"] = 1,
-				["num"] = 18,
+				["num"] = 17,
 				["rank"] = {
 					-0.02, -0.04, -0.06,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
-		},
-		-- Shaman: Elemental Warding (Rank 3) - 1,4
-		--         Reduces damage taken from Fire, Frost and Nature effects by 4%/7%/10%.
-		["MOD_DMG_TAKEN"] = {
-			[1] = {
+			[4] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
 				["FIRE"] = true,
 				["NATURE"] = true,
 				["FROST"] = true,
-				["tab"] = 1,
-				["num"] = 14,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
 				["rank"] = {
-					-0.04, -0.07, -0.1,
+					-0.3,
 				},
+				["buff"] = GetSpellInfo(51479),		-- ["Astral Shift"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Shaman: Toughness (Rank 5) - 2,11
 		--         Increases your armor value from items by 2%/4%/6%/8%/10%.
+		--  3.0.1: 2,12
 		["MOD_ARMOR"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 12,
+				["rank"] = {
+					1.02, 1.04, 1.06, 1.08, 1.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 11,
 				["rank"] = {
 					1.02, 1.04, 1.06, 1.08, 1.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Shaman: Ancestral Knowledge (Rank 5) - 2,1
 		--         Increases your maximum Mana by 1%/2%/3%/4%/5%.
+		--  3.0.1: 2,3. Increases your intellect by 2%/4%/6%/8%/10%.
 		["MOD_MANA"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6796,10 +8140,25 @@ local StatModTable = {
 				["rank"] = {
 					1.01, 1.02, 1.03, 1.04, 1.05,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Shaman: Ancestral Knowledge (Rank 5) - 2,1
+		--         Increases your maximum Mana by 1%/2%/3%/4%/5%.
+		--  3.0.1: 2,3. Increases your intellect by 2%/4%/6%/8%/10%.
+		["MOD_INT"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Shaman: Shield Specialization 5/5 - 2,2
 		--         Increases your chance to block attacks with a shield by 5% and increases the amount blocked by 5%/10%/15%/20%/25%.
+		--  3.0.1: Removed
 		["MOD_BLOCK_VALUE"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6807,14 +8166,129 @@ local StatModTable = {
 				["rank"] = {
 					0.05, 0.1, 0.15, 0.2, 0.25,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 	},
 	["WARLOCK"] = {
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
+		-- Warlock: Metamorphosis - Buff
+		--          You gain Demon Form, increasing your armor by 360%, reducing the duration of stun and snare effects on you by 50% and increasing your attack power equal to 75% of your spell power.
+		["ADD_AP_MOD_SPELL_DMG"] = {
+			[1] = {
+				["rank"] = {
+					0.75,
+				},
+				["buff"] = GetSpellInfo(47241),		-- ["Metamorphosis"],
+			},
+		},
+		-- Warlock: Metamorphosis - Buff
+		--          You gain Demon Form, increasing your armor by 360%, reducing the duration of stun and snare effects on you by 50% and increasing your attack power equal to 75% of your spell power.
+		["MOD_ARMOR"] = {
+			[1] = {
+				["rank"] = {
+					4.6,
+				},
+				["buff"] = GetSpellInfo(47241),		-- ["Metamorphosis"],
+			},
+		},
+		-- Warlock: Demonic Pact - 2,26
+		--          Your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2%/4%/6%/8%/10% of your Spell Damage for 12 sec.
+		["MOD_SPELL_DMG"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 26,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = GetSpellInfo(47240),		-- ["Demonic Pact"],
+			},
+		},
+		-- Warlock: Demonic Pact - 2,26
+		--          Your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2%/4%/6%/8%/10% of your Spell Damage for 12 sec.
+		["MOD_HEALING"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 26,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["buff"] = GetSpellInfo(47240),		-- ["Demonic Pact"],
+			},
+		},
+		-- Warlock: Fel Armor (Rank 4) - Buff
+		--          Surrounds the caster with fel energy, increasing spell power by 50/100/150/180 plus additional spell power equal to 30% of your Spirit.
+		--          In addition, allows 30% of your mana regeneration to continue while casting.
+		-- Warlock: Demonic Aegis (Rank 3) - 2,10
+		--          Increases the effectiveness of your Demon Armor and Fel Armor spells by 10%/20%/30%.
+		["ADD_SPELL_DMG_MOD_SPI"] = {
+			[1] = {
+				["rank"] = {
+					0.3,
+				},
+				["buff"] = GetSpellInfo(47893),		-- ["Fel Armor"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.03, 0.06, 0.09,
+				},
+				["buff"] = GetSpellInfo(47893),		-- ["Fel Armor"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Warlock: Fel Armor (Rank 4) - Buff
+		--          Surrounds the caster with fel energy, increasing spell power by 50/100/150/180 plus additional spell power equal to 30% of your Spirit.
+		--          In addition, allows 30% of your mana regeneration to continue while casting.
+		-- Warlock: Demonic Aegis (Rank 3) - 2,10
+		--          Increases the effectiveness of your Demon Armor and Fel Armor spells by 10%/20%/30%.
+		["ADD_HEALING_MOD_SPI"] = {
+			[1] = {
+				["rank"] = {
+					0.3,
+				},
+				["buff"] = GetSpellInfo(47893),		-- ["Fel Armor"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.03, 0.06, 0.09,
+				},
+				["buff"] = GetSpellInfo(47893),		-- ["Fel Armor"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Warlock: Fel Armor (Rank 4) - Buff
+		--          Surrounds the caster with fel energy, increasing spell power by 50/100/150/180 plus additional spell power equal to 30% of your Spirit.
+		--          In addition, allows 30% of your mana regeneration to continue while casting.
+		-- Warlock: Demonic Aegis (Rank 3) - 2,10
+		--          Increases the effectiveness of your Demon Armor and Fel Armor spells by 10%/20%/30%.
+		["ADD_MANA_REG_MOD_NORMAL_MANA_REG"] = {
+			[1] = {
+				["rank"] = {
+					0.3,
+				},
+				["buff"] = GetSpellInfo(47893),		-- ["Fel Armor"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 10,
+				["rank"] = {
+					0.03, 0.06, 0.09,
+				},
+				["buff"] = GetSpellInfo(47893),		-- ["Fel Armor"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_INT"] = 0.3;
 		--          Increases your spell damage by an amount equal to 5%/10%/15% of the total of your active demon's Stamina plus Intellect.
-		-- WARLOCK_PET_BONUS["PET_BONUS_INT"] = 0.3;
-		-- 2.4.0 It will now increase your spell damage by an amount equal to 4/8/12%, down from 5/10/15%. 
+		--   2.4.0: It will now increase your spell damage by an amount equal to 4/8/12%, down from 5/10/15%. 
+		-- Warlock: Fel Synergy (Rank 2) - 2,22
+		--          Your Summoned Demons share an additional 5%/10% of your Armor, Intellect and Stamina, and you have a 50%/100% chance to heal your pet for 15% of the amount of damage done by you.
 		["ADD_SPELL_DMG_MOD_INT"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6824,11 +8298,28 @@ local StatModTable = {
 				},
 				["condition"] = "UnitExists('pet')",
 			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.002, 0.004, 0.006,
+				},
+				["condition"] = "UnitExists('pet') and (select(5, GetTalentInfo(2, 22)) == 1) and (wowBuildNo >= '8885')",
+			},
+			[3] = {
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.004, 0.008, 0.0012,
+				},
+				["condition"] = "UnitExists('pet') and (select(5, GetTalentInfo(2, 22)) == 2) and (wowBuildNo >= '8885')",
+			},
 		},
-		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet")
+		-- Warlock: Demonic Knowledge (Rank 3) - 2,20 - UnitExists("pet") - WARLOCK_PET_BONUS["PET_BONUS_STAM"] = 0.3;
 		--          Increases your spell damage by an amount equal to 5%/10%/15% of the total of your active demon's Stamina plus Intellect.
-		-- WARLOCK_PET_BONUS["PET_BONUS_STAM"] = 0.3;
-		-- 2.4.0 It will now increase your spell damage by an amount equal to 4/8/12%, down from 5/10/15%. 
+		--   2.4.0: It will now increase your spell damage by an amount equal to 4/8/12%, down from 5/10/15%. 
+		-- Warlock: Fel Synergy (Rank 2) - 2,22
+		--          Your Summoned Demons share an additional 5%/10% of your Armor, Intellect and Stamina, and you have a 50%/100% chance to heal your pet for 15% of the amount of damage done by you.
 		["ADD_SPELL_DMG_MOD_STA"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6837,6 +8328,22 @@ local StatModTable = {
 					0.012, 0.024, 0.036,
 				},
 				["condition"] = "UnitExists('pet')",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.002, 0.004, 0.006,
+				},
+				["condition"] = "UnitExists('pet') and (select(5, GetTalentInfo(2, 22)) == 1) and (wowBuildNo >= '8885')",
+			},
+			[3] = {
+				["tab"] = 2,
+				["num"] = 20,
+				["rank"] = {
+					0.004, 0.008, 0.0012,
+				},
+				["condition"] = "UnitExists('pet') and (select(5, GetTalentInfo(2, 22)) == 2) and (wowBuildNo >= '8885')",
 			},
 		},
 		-- Warlock: Demonic Resilience (Rank 3) - 2,18
@@ -6859,10 +8366,69 @@ local StatModTable = {
 		},
 		-- Warlock: Master Demonologist (Rank 5) - 2,17
 		--          Voidwalker - Reduces physical damage taken by 2%/4%/6%/8%/10%.
-		-- Warlock: Soul Link (Rank 1) - 2,19
+		--   3.0.1: 2,16
+		--          Felhunter - Reduces all spell damage taken by 2%/4%/6%/8%/10%.
+		--          Felguard - Increases all damage done by 5%, and reduces all damage taken by 1%/2%/3%/4%/5%.
+		-- Warlock: Soul Link (Rank 1) - Buff
 		--          When active, 20% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Felhunter or Felguard demon instead. In addition, both the demon and master will inflict 5% more damage. Lasts as long as the demon is active.
+		--   3.0.1: When active, 15% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Felhunter, Felguard, or enslaved demon instead.  That damage cannot be prevented. Lasts as long as the demon is active and controlled.
 		["MOD_DMG_TAKEN"] = {
-			[1] = {
+			[1] = { -- Voidwalker
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					-0.02, -0.04, -0.06, -0.08, -0.1,
+				},
+				["condition"] = "IsUsableSpell('"..(GetSpellInfo(27490) or "").."') and (wowBuildNo >= '8885')" -- ["Torment"]
+			},
+			[2] = { -- Felhunter
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					-0.02, -0.04, -0.06, -0.08, -0.1,
+				},
+				["condition"] = "IsUsableSpell('"..(GetSpellInfo(27496) or "").."') and (wowBuildNo >= '8885')" -- ["Devour Magic"]
+			},
+			[3] = { -- Felguard
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 2,
+				["num"] = 16,
+				["rank"] = {
+					-0.01, -0.02, -0.03, -0.04, -0.05,
+				},
+				["condition"] = "IsUsableSpell('"..(GetSpellInfo(47993) or "").."') and (wowBuildNo >= '8885')" -- ["Anguish"]
+			},
+			[4] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.15,
+				},
+				["buff"] = GetSpellInfo(25228),		-- ["Soul Link"],
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[5] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["tab"] = 2,
@@ -6870,9 +8436,9 @@ local StatModTable = {
 				["rank"] = {
 					-0.02, -0.04, -0.06, -0.08, -0.1,
 				},
-				["condition"] = "IsUsableSpell('"..(GetSpellInfo(27490)).."')" --"UnitCreatureFamily('pet') == '"..L["Voidwalker"].."'",	-- ["Torment"]
+				["condition"] = "IsUsableSpell('"..(GetSpellInfo(27490) or "").."') and (wowBuildNo < '8885')" --"UnitCreatureFamily('pet') == '"..L["Voidwalker"].."'",	-- ["Torment"]
 			},
-			[2] = {
+			[6] = {
 				["MELEE"] = true,
 				["RANGED"] = true,
 				["HOLY"] = true,
@@ -6885,21 +8451,35 @@ local StatModTable = {
 					-0.2,
 				},
 				["buff"] = GetSpellInfo(25228),		-- ["Soul Link"],
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Warlock: Fel Stamina (Rank 3) - 2,9
 		--          Increases the Stamina of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 5%/10%/15% and increases your maximum health by 1%/2%/3%.
+		-- Warlock: Fel Vitality (Rank 3) - 2,6
+		--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
 		["MOD_HEALTH"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					1.01, 1.02, 1.03,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 9,
 				["rank"] = {
 					1.01, 1.02, 1.03,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Warlock: Fel Intellect (Rank 3) - 2,6
 		--          Increases the Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 5%/10%/15% and increases your maximum mana by 1%/2%/3%.
+		-- Warlock: Fel Vitality (Rank 3) - 2,6
+		--          Increases the Stamina and Intellect of your Imp, Voidwalker, Succubus, Felhunter and Felguard by 15% and increases your maximum health and mana by 1%/2%/3%.
 		["MOD_MANA"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6907,21 +8487,41 @@ local StatModTable = {
 				["rank"] = {
 					1.01, 1.02, 1.03,
 				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 2,
+				["num"] = 6,
+				["rank"] = {
+					1.01, 1.02, 1.03,
+				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
 		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
+		--   3.0.1: Increases your total Stamina by 2%/4%/6%/8%/10%.
 		["MOD_STA"] = {
+			[1] = {
+				["tab"] = 2,
+				["num"] = 3,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
 			[1] = {
 				["tab"] = 2,
 				["num"] = 3,
 				["rank"] = {
 					0.03, 0.06, 0.09, 0.12, 0.15,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Warlock: Demonic Embrace (Rank 5) - 2,3
 		--          Increases your total Stamina by 3%/6%/9%/12%/15% but reduces your total Spirit by 1%/2%/3%/4%/5%.
+		--   3.0.1: Increases your total Stamina by 2%/4%/6%/8%/10%.
 		["MOD_SPI"] = {
 			[1] = {
 				["tab"] = 2,
@@ -6929,24 +8529,49 @@ local StatModTable = {
 				["rank"] = {
 					-0.01, -0.02, -0.03, -0.04, -0.05,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 	},
 	["WARRIOR"] = {
+		-- Warrior: Anticipation (Rank 5) - 3,5
+		--          Increases your Dodge chance by 1%/2%/3%/4%/5%.
+		["ADD_DODGE"] = {
+			[1] = {
+				["tab"] = 3,
+				["num"] = 5,
+				["rank"] = {
+					1, 2, 3, 4, 5,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+		},
 		-- Warrior: Improved Berserker Stance (Rank 5) - 2,20 - Stance
 		--          Increases attack power by 2%/4%/6%/8%/10% while in Berserker Stance.
+		--   3.0.1: 2,21
 		["MOD_AP"] = {
 			[1] = {
+				["tab"] = 2,
+				["num"] = 21,
+				["rank"] = {
+					0.02, 0.04, 0.06, 0.08, 0.1,
+				},
+				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 2,
 				["num"] = 20,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
 				["stance"] = "Interface\\Icons\\Ability_Racial_Avatar",
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Warrior: Shield Wall - Buff
 		--          Reduces the Physical and magical damage taken by the caster by 75% for 10 sec.
+		--   3.0.1: All damage taken reduced by 60%.
 		-- Warrior: Defensive Stance - stance
 		--          A defensive combat stance. Decreases damage taken by 10% and damage caused by 10%. Increases threat generated.
 		-- Warrior: Berserker Stance - stance
@@ -6955,8 +8580,9 @@ local StatModTable = {
 		--          When activated, increases your physical damage by 20% and makes you immune to Fear effects, but increases all damage taken by 5%. Lasts 30 sec.
 		-- Warrior: Recklessness - Buff
 		--          The warrior will cause critical hits with most attacks and will be immune to Fear effects for the next 15 sec, but all damage taken is increased by 20%.
-		-- Warrior: Improved Defensive Stance (Rank 3) - 3,18
-				--          Reduces all spell damage taken while in Defensive Stance by 2%/4%/6%.
+		-- Warrior: Improved Defensive Stance (Rank 2) - 3,18
+		--          Reduces all spell damage taken while in Defensive Stance by 2%/4%/6%.
+		--   3.0.1: 3,16. While in Defensive Stance all spell damage is reduced by 3%/6%.
 		["MOD_DMG_TAKEN"] = {
 			[1] = {
 				["MELEE"] = true,
@@ -6968,9 +8594,10 @@ local StatModTable = {
 				["SHADOW"] = true,
 				["ARCANE"] = true,
 				["rank"] = {
-					-0.75,
+					-0.6,
 				},
 				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 			[2] = {
 				["MELEE"] = true,
@@ -7028,7 +8655,36 @@ local StatModTable = {
 				},
 				["buff"] = GetSpellInfo(13847),		-- ["Recklessness"],
 			},
-			[6] = {
+			[6] = { -- Improved Defensive Stance
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["tab"] = 3,
+				["num"] = 16,
+				["rank"] = {
+					-0.03, -0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[7] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.75,
+				},
+				["buff"] = GetSpellInfo(41196),		-- ["Shield Wall"],
+				["condition"] = "wowBuildNo < '8885'",
+			},
+			[8] = { -- Improved Defensive Stance
 				["HOLY"] = true,
 				["FIRE"] = true,
 				["NATURE"] = true,
@@ -7040,54 +8696,161 @@ local StatModTable = {
 				["rank"] = {
 					-0.02, -0.04, -0.06,
 				},
+				["condition"] = "wowBuildNo < '8885'",
+			},
+		},
+		-- Warrior: Strength of Arms (Rank 2) - 1,23
+		--          Increases your total Strength and total health by 2%/4%.
+		-- Warrior: Last Stand - Buff
+		--          When activated, this ability temporarily grants you 30% of your maximum health for 20 sec.
+		["MOD_HEALTH"] = {
+			[1] = {
+				["tab"] = 1,
+				["num"] = 23,
+				["rank"] = {
+					1.02, 1.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["rank"] = {
+					1.3,
+				},
+				["buff"] = GetSpellInfo(12975),		-- ["Last Stand"],
 			},
 		},
 		-- Warrior: Toughness (Rank 5) - 3,5
 		--          Increases your armor value from items by 2%/4%/6%/8%/10%.
+		--   3.0.1: 3,9
 		["MOD_ARMOR"] = {
 			[1] = {
+				["tab"] = 3,
+				["num"] = 9,
+				["rank"] = {
+					1.02, 1.04, 1.06, 1.08, 1.1,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 3,
 				["num"] = 5,
 				["rank"] = {
 					1.02, 1.04, 1.06, 1.08, 1.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Warrior: Vitality (Rank 5) - 3,21
+		-- Warrior: Vitality (Rank 3) - 3,21
 		--          Increases your total Stamina by 1%/2%/3%/4%/5% and your total Strength by 2%/4%/6%/8%/10%.
+		--   3.0.1: 3,19. Increases your total Strength and Stamina by 2%/4%/6% and your Expertise by 2/4/6.
 		["MOD_STA"] = {
 			[1] = {
+				["tab"] = 3,
+				["num"] = 19,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 3,
 				["num"] = 21,
 				["rank"] = {
 					0.01, 0.02, 0.03, 0.04, 0.05,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
-		-- Warrior: Vitality (Rank 5) - 3,21
+		-- Warrior: Vitality (Rank 3) - 3,21
 		--          Increases your total Stamina by 1%/2%/3%/4%/5% and your total Strength by 2%/4%/6%/8%/10%.
+		--   3.0.1: 3,19. Increases your total Strength and Stamina by 2%/4%/6% and your Expertise by 2/4/6.
+		-- Warrior: Strength of Arms (Rank 2) - 1,23
+		--          Increases your total Strength and total health by 2%/4%.
 		["MOD_STR"] = {
 			[1] = {
+				["tab"] = 3,
+				["num"] = 19,
+				["rank"] = {
+					0.02, 0.04, 0.06,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
+				["tab"] = 1,
+				["num"] = 23,
+				["rank"] = {
+					0.02, 0.04,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[3] = {
 				["tab"] = 3,
 				["num"] = 21,
 				["rank"] = {
 					0.02, 0.04, 0.06, 0.08, 0.1,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 		-- Warrior: Shield Mastery (Rank 3) - 3,16
 		--          Increases the amount of damage absorbed by your shield by 10%/20%/30%.
+		--   3.0.1: 3,8. Increases your block value by 15%/30% and reduces the cooldown of your Shield Block ability by 10/20 sec.
 		["MOD_BLOCK_VALUE"] = {
 			[1] = {
+				["tab"] = 3,
+				["num"] = 8,
+				["rank"] = {
+					0.15, 0.3,
+				},
+				["condition"] = "wowBuildNo >= '8885'",
+			},
+			[2] = {
 				["tab"] = 3,
 				["num"] = 16,
 				["rank"] = {
 					0.1, 0.2, 0.3,
 				},
+				["condition"] = "wowBuildNo < '8885'",
 			},
 		},
 	},
 	["ALL"] = {
+		-- Priest: Pain Suppression - Buff
+		--         Reduces all damage taken by 60% for 8 sec.
+		--  2.1.0: Reduces damage taken by 65% and increases resistance to Dispel mechanics by 65% for the duration.
+		--  2.3.0: Instantly reduces a friendly target's threat by 5%, reduces all damage taken by 40% and increases resistance to Dispel mechanics by 65% for 8 sec.
+		-- Priest: Grace - Buff
+		--         Reduces damage taken by 1%.
+		["MOD_DMG_TAKEN"] = {
+			[1] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.4,
+				},
+				["buff"] = GetSpellInfo(33206),		-- ["Pain Suppression"],
+			},
+			[2] = {
+				["MELEE"] = true,
+				["RANGED"] = true,
+				["HOLY"] = true,
+				["FIRE"] = true,
+				["NATURE"] = true,
+				["FROST"] = true,
+				["SHADOW"] = true,
+				["ARCANE"] = true,
+				["rank"] = {
+					-0.01,
+				},
+				["buff"] = GetSpellInfo(47930),		-- ["Grace"],
+			},
+		},
 		-- Priest: Power Infusion - Buff
 		--         Infuses the target with power, increasing their spell damage and healing by 20%. Lasts 15 sec.
 		["MOD_SPELL_DMG"] = {
@@ -7110,12 +8873,21 @@ local StatModTable = {
 		},
 		-- Night Elf : Quickness - Racial
 		--             Dodge chance increased by 1%.
+		-- Warrior: Vigilance - Buff
+		--          Chance to Dodge increased by 5% and all threat caused reduced by 10%.
 		["ADD_DODGE"] = {
 			[1] = {
 				["rank"] = {
 					1,
 				},
 				["race"] = "NightElf",
+			},
+			[2] = {
+				["rank"] = {
+					5,
+				},
+				["buff"] = GetSpellInfo(50720),		-- ["Vigilance"],
+				["condition"] = "wowBuildNo >= '8885'",
 			},
 		},
 		-- Paladin: Lay on Hands (Rank 1/2) - Buff
@@ -7152,6 +8924,16 @@ local StatModTable = {
 					1.05,
 				},
 				["race"] = "Tauren",
+			},
+		},
+		-- Death Knight: Abominable Might - Buff
+		--               Attack power increased by 10%.
+		["MOD_AP"] = {
+			[1] = {
+				["rank"] = {
+					0.1,
+				},
+				["buff"] = GetSpellInfo(55972),		-- ["Abominable Might"],
 			},
 		},
 		-- Blessing of Kings - Buff
@@ -7278,21 +9060,25 @@ function StatLogic:GetStatMod(stat, school)
 			if ok and case.stance and case.stance ~= GetStanceIcon() then ok = nil end
 			if ok then
 				local r, _
+				local c = 1
 				-- if talant field
 				if case.tab and case.num then
 					_, _, _, _, r = GetTalentInfo(case.tab, case.num)
+					if case.buff then
+						_, c = GetPlayerBuffRankCount(case.buff)
+					end
 				-- no talant but buff is given
 				elseif case.buff then
-					r = GetPlayerBuffRank(case.buff)
+					r, c = GetPlayerBuffRankCount(case.buff)
 				-- no talant but all other given conditions are statisfied
-				elseif case.condition or case.stance then
+				else--if case.condition or case.stance then
 					r = 1
 				end
 				if r and r ~= 0 and case.rank[r] then
 					if statModInfo.initialValue == 0 then
-						mod = mod + case.rank[r]
+						mod = mod + case.rank[r] * c
 					else
-						mod = mod * case.rank[r]
+						mod = mod * ((case.rank[r] - 1) * c + 1)
 					end
 				end
 			end
@@ -7312,7 +9098,7 @@ function StatLogic:GetStatMod(stat, school)
 				-- there are no talants in non class specific mods
 				-- check buff
 				if case.buff then
-					r = GetPlayerBuffRank(case.buff)
+					r = GetPlayerBuffRankCount(case.buff)
 				-- no talant but all other given conditions are statisfied
 				elseif case.condition or case.stance or case.race then
 					r = 1
@@ -7509,6 +9295,21 @@ local APPerStr = {
 	--["WARLOCK"] = 1,
 	--["DRUID"] = 2,
 }
+if toc >= 30000 then
+APPerStr = {
+	2, 2, 1, 1, 1, 2, 1, 1, 1, 2,
+	--["WARRIOR"] = 2,
+	--["PALADIN"] = 2,
+	--["HUNTER"] = 1,
+	--["ROGUE"] = 1,
+	--["PRIEST"] = 1,
+	--["DEATHKNIGHT"] = 2,
+	--["SHAMAN"] = 1,
+	--["MAGE"] = 1,
+	--["WARLOCK"] = 1,
+	--["DRUID"] = 2,
+}
+end
 
 function StatLogic:GetAPPerStr(class)
 	-- argCheck for invalid input
@@ -7599,19 +9400,19 @@ local BlockValuePerStr = {
 	--["DRUID"] = 0,
 }
 if toc >= 30000 then
-	BlockValuePerStr = {
-		0.5, 0.5, 0, 0, 0, 0, 0.5, 0, 0, 0,
-		--["WARRIOR"] = 0.5,
-		--["PALADIN"] = 0.5,
-		--["HUNTER"] = 0,
-		--["ROGUE"] = 0,
-		--["PRIEST"] = 0,
-		--["DEATHKNIGHT"] = 0,
-		--["SHAMAN"] = 0.5,
-		--["MAGE"] = 0,
-		--["WARLOCK"] = 0,
-		--["DRUID"] = 0,
-	}
+BlockValuePerStr = {
+	0.5, 0.5, 0, 0, 0, 0, 0.5, 0, 0, 0,
+	--["WARRIOR"] = 0.5,
+	--["PALADIN"] = 0.5,
+	--["HUNTER"] = 0,
+	--["ROGUE"] = 0,
+	--["PRIEST"] = 0,
+	--["DEATHKNIGHT"] = 0,
+	--["SHAMAN"] = 0.5,
+	--["MAGE"] = 0,
+	--["WARLOCK"] = 0,
+	--["DRUID"] = 0,
+}
 end
 
 function StatLogic:GetBlockValuePerStr(class)
@@ -7708,6 +9509,21 @@ local APPerAgi = {
 	--["WARLOCK"] = 0,
 	--["DRUID"] = 0,
 }
+if toc >= 30000 then
+APPerAgi = {
+	0, 0, 1, 1, 0, 0, 1, 0, 0, 0,
+	--["WARRIOR"] = 0,
+	--["PALADIN"] = 0,
+	--["HUNTER"] = 1,
+	--["ROGUE"] = 1,
+	--["PRIEST"] = 0,
+	--["DEATHKNIGHT"] = 0,
+	--["SHAMAN"] = 1,
+	--["MAGE"] = 0,
+	--["WARLOCK"] = 0,
+	--["DRUID"] = 0,
+}
+end
 
 function StatLogic:GetAPPerAgi(class)
 	-- argCheck for invalid input
@@ -9471,7 +11287,7 @@ local getSlotID = {
 }
 
 function StatLogic:GetDiffID(item, ignoreEnchant, ignoreGem, red, yellow, blue, meta)
-	local name, itemType, link, linkDiff1, linkDiff2
+	local _, name, itemType, link, linkDiff1, linkDiff2
 	-- Check item
 	if (type(item) == "string") or (type(item) == "number") then
 	elseif type(item) == "table" and type(item.GetItem) == "function" then

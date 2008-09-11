@@ -5,7 +5,7 @@ local me={}
 local FreeWindows={}
 local WindowNum=1
 
-local revision = tonumber(string.sub("$Revision: 79898 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81353 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 local _, _, _, tocversion =  GetBuildInfo()
@@ -140,8 +140,10 @@ local function Opacity_Change()
 	Recount.Colors:SetColor(Cur_Branch,Cur_Name,TempColor)
 end
 
+
 local info = {}
-local function Recount_CreateColorDropdown(level)
+if tocversion == 30000 then
+function Recount_CreateColorDropdown(self,level)
 	if (not level) then return end
 	for k in pairs(info) do info[k] = nil end
 	if (level == 1) then
@@ -180,6 +182,47 @@ local function Recount_CreateColorDropdown(level)
 		UIDropDownMenu_AddButton(info, level)
 	end
 end
+else
+function Recount_CreateColorDropdown(level)
+	if (not level) then return end
+	for k in pairs(info) do info[k] = nil end
+	if (level == 1) then
+		-- Create the title of the menu
+		local TopColor,BotColor
+
+		TopColor=Recount.Colors:GetColor("Realtime",WhichWindow.TitleText.." Top")
+		BotColor=Recount.Colors:GetColor("Realtime",WhichWindow.TitleText.." Bottom")
+
+		
+		
+		info.isTitle		= 1
+		info.hasColorSwatch = 1
+		info.r = TopColor.r
+		info.g = TopColor.g
+		info.b = TopColor.b
+		info.hasOpacity = 1
+		info.opacity = TopColor.a
+		info.text		= L["Top Color"].." "
+		info.notCheckable	= 1
+		info.swatchFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Top"; Color_Change() end
+		info.opacityFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Top"; Opacity_Change() end
+		UIDropDownMenu_AddButton(info, level)
+
+		info.isTitle		= 1
+		info.hasColorSwatch = 1
+		info.r = BotColor.r
+		info.g = BotColor.g
+		info.b = BotColor.b
+		info.hasOpacity = 1
+		info.opacity = BotColor.a
+		info.text		= L["Bottom Color"].." "
+		info.notCheckable	= 1
+		info.swatchFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Bottom"; Color_Change() end
+		info.opacityFunc = function() Cur_Branch = "Realtime"; Cur_Name = WhichWindow.TitleText.." Bottom"; Opacity_Change() end
+		UIDropDownMenu_AddButton(info, level)
+	end
+end
+end
 
 function Recount:ColorDropDownOpen(myframe)
 	Recount_ColorDropDownMenu = CreateFrame("Frame", "Recount_ColorDropDownMenu", myframe);
@@ -207,9 +250,9 @@ function Recount:ColorDropDownOpen(myframe)
 	end
 
 	if tocversion == 30000 then
-		UIDropDownMenu_SetAnchor(0, 0, Recount_ColorDropDownMenu , oside, myframe, side)
-	else
 		UIDropDownMenu_SetAnchor(Recount_ColorDropDownMenu , 0, 0, oside, myframe, side)
+	else
+		UIDropDownMenu_SetAnchor(0, 0, Recount_ColorDropDownMenu , oside, myframe, side)
 	end
 end
 
@@ -288,8 +331,12 @@ function me:CreateRealtimeWindow(who,tracking,ending) -- Elsia: This function cr
 
 	g:EnableMouse(true)
 
+if tocversion == 30000 then
+	g:SetScript("OnMouseDown",function(self,button) WhichWindow=self.Window;Recount:ColorDropDownOpen(WhichWindow);ToggleDropDownMenu(1, nil, Recount_ColorDropDownMenu) end) --, WhichWindow, 0, WhichWindow:GetHeight()); end)
+else
 	g:SetScript("OnMouseDown",function() WhichWindow=this.Window;Recount:ColorDropDownOpen(WhichWindow);ToggleDropDownMenu(1, nil, Recount_ColorDropDownMenu) end) --, WhichWindow, 0, WhichWindow:GetHeight()); end)
-	
+end
+
 	theFrame.DetermineGridSpacing=me.DetermineGridSpacing
 	theFrame.Graph=g
 	

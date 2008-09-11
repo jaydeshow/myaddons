@@ -1,6 +1,6 @@
---[[ $Id: AceTab-3.0.lua 60131 2008-02-03 13:03:56Z nevcairiel $ ]]
+--[[ $Id: AceTab-3.0.lua 81438 2008-09-06 13:44:36Z nevcairiel $ ]]
 
-local ACETAB_MAJOR, ACETAB_MINOR = 'AceTab-3.0', 2
+local ACETAB_MAJOR, ACETAB_MINOR = 'AceTab-3.0', 3
 local AceTab, oldminor = LibStub:NewLibrary(ACETAB_MAJOR, ACETAB_MINOR)
 
 if not AceTab then return end -- No upgrade needed
@@ -104,7 +104,11 @@ function AceTab:RegisterTabCompletion(descriptor, prematches, wordlist, usagefun
 	-- Make prematches into a one-element table if it was passed as a string.
 	elseif type(prematches) == 'string' then
 		pmtable[1] = prematches
-		notfallbacks[descriptor] = true
+		if prematches == "" then
+			fallbacks[descriptor] = true
+		else
+			notfallbacks[descriptor] = true
+		end
 	end
 
 	-- Make listenframes into a one-element table if it was not passed a table of frames.

@@ -572,27 +572,31 @@ return {
 		items = { [L["Netherwing Egg"]] = 1 }
 	},
 	
+	
+--[[		I deactiveted those because WotLK is coming and I guess(!) most players will hoard MoH's and
+		it would be very unfortunate if they get turned in accidently.
+
 -- 2.4 Battleground mark turn-in
 
 	-- Alliance
-  [L["Concerted Efforts"]] = {
+  [L["Concerted Efforts"] ] = {
   	items = {
-  	 	[L["Alterac Valley Mark of Honor"]] = 1,
-			[L["Arathi Basin Mark of Honor"]] = 1,
-			[L["Warsong Gulch Mark of Honor"]] = 1,
-			[L["Eye of the Storm Mark of Honor"]] = 1,
+  	 	[L["Alterac Valley Mark of Honor"] ] = 1,
+			[L["Arathi Basin Mark of Honor"] ] = 1,
+			[L["Warsong Gulch Mark of Honor"] ] = 1,
+			[L["Eye of the Storm Mark of Honor"] ]  = 1,
   	}
   },
   
   -- Horde
-  [L["For Great Honor"]] = {
+  [L["For Great Honor"] ] = {
   	items = {
-  	 	[L["Alterac Valley Mark of Honor"]] = 1,
-			[L["Arathi Basin Mark of Honor"]] = 1,
-			[L["Warsong Gulch Mark of Honor"]] = 1,
-			[L["Eye of the Storm Mark of Honor"]] = 1,
+  	 	[L["Alterac Valley Mark of Honor"] ] = 1,
+			[L["Arathi Basin Mark of Honor"] ] = 1,
+			[L["Warsong Gulch Mark of Honor"] ] = 1,
+			[L["Eye of the Storm Mark of Honor"] ] = 1,
   	}
   },
-  
+	--]]  
 }
 end

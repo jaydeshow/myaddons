@@ -1,4 +1,4 @@
-local revision = tonumber(string.sub("$Revision: 78940 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81237 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 local Fights={}
@@ -59,6 +59,10 @@ function Fights:MoveFights()
 		end		
 	end
 
+	if RecountDeathTrack then
+	   RecountDeathTrack:CopyFight()
+	end
+
 	--Main Window Display Cache needs to be reset should fix several bugs
 	Recount:FullRefreshMainWindow() -- Elsia: Made a function for this as it's also needed for deleting combatants and refreshing when options change
 	
@@ -74,6 +78,9 @@ function Fights:DeleteOverflowFights(newmax)
 	        for i=newmax+1, Recount.db.profile.MaxFights, 1 do
 			v.Fights["Fight"..i]=nil
 			Recount.db2.FoughtWho[i]=nil
+			if RecountDeathTrack then
+			   RecountDeathTrack:DeleteDeathTrackEntry(i)
+			end
 		end
 	end
 end

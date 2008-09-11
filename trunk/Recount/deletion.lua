@@ -1,6 +1,6 @@
 -- Elsia: For delete on instance entry
 -- Deletes data whenever a new, not the same instance is entered. This should safe-guard against corpse-run-reenters and the like.
-local revision = tonumber(string.sub("$Revision: 78174 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81247 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 function Recount:DetectInstanceChange() -- Elsia: With thanks to Loggerhead
@@ -23,7 +23,7 @@ function Recount:DetectInstanceChange() -- Elsia: With thanks to Loggerhead
 		return
 	end
 	
-	if inInstance and (not Recount.db.profile.DeleteNewInstanceOnly or Recount.db.profile.LastInstanceName ~= zone) and CurrentDataCollect then
+	if inInstance and (not Recount.db.profile.DeleteNewInstanceOnly or Recount.db.profile.LastInstanceName ~= zone) and Recount.CurrentDataCollect then
 	   
 		if Recount.db.profile.ConfirmDeleteInstance == true then
 			Recount:ShowReset() -- Elsia: Confirm & Delete!

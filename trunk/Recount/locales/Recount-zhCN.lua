@@ -202,7 +202,7 @@ if not L then return end
 	L["Do you wish to reset the data?"] = "你希望重置数据么？"
 	L["Yes"] = "是"
 	L["No"] = "否"
-	L["Show Details (Left Click)"] = "显示细节（左键 点击）"
+	L["Show Details (Left Click)"] = "显示细节（左键点击）"
 	L["Show Graph (Shift Click)"] = "显示图表（Shift 点击）"
 	L["Add to Current Graph (Alt Click)"] = "添加到当前图表（Alt 点击）"
 	L["Show Realtime Graph (Ctrl Click)"] = "显示实时图表（Ctrl 点击）"
@@ -374,3 +374,14 @@ if not L then return end
 	L["HoT"] = "治疗/跳"
 	L["Recorded Fights"] = "已记录战斗"
 	L["Set the maximum number of recorded fight segments"] = "设定最高数量战斗记录分段"
+	L["pause"] = "暂停"
+	L["Pause"] = "暂停"
+	L["Toggle pause of global data collection"] = "开关全局数据收集"
+	L["Data collection turned off"] = "开启数据收集"
+	L["Data collection turned on"] = "关闭数据收集"
+
+	L["Death Track"] = "死亡记录"
+	L["Report the DeathTrack Window Data"] = "报告死亡记录窗口的数据"
+	L["Show Death Track (Left Click)"] = "显示死亡记录（左键点击）"
+	L[" dies."]="死亡。"
+	

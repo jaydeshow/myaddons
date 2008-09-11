@@ -4,8 +4,8 @@ ARL-LeatherWork.lua
 
 LeatherWorking data for all of AckisRecipeList
 
-$Date: 2008-08-20 11:40:24 -0400 (Wed, 20 Aug 2008) $
-$Rev: 80730 $
+$Date: 2008-09-02 13:23:53 -0400 (Tue, 02 Sep 2008) $
+$Rev: 81278 $
 
 ]]--
 
@@ -123,7 +123,7 @@ function addon:InitLeatherWorking()
 	self:addTradeSkillSpell(44770, 350, L["Trainer"],1)
 
 	-- Vendor Recipes
-	self:addTradeSkillSpell(6702, 190, self:CombineVendors(6, 7, 96, false),2)
+	self:addTradeSkillSpell(6702, 90, self:CombineVendors(6, 7, 96, false),2)
 	self:addTradeSkillSpell(7953, 90, self:CombineVendors(97, false),2)
 	self:addTradeSkillSpell(6703, 95, self:CombineVendors(6, 7, 96, false),2)
 	self:addTradeSkillSpell(9070, 100, self:CombineVendors(98, false), BFAC["Alliance"],2)

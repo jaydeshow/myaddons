@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r81415 | ulic | 2008-09-05 13:49:41 -0400 (Fri, 05 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Dalliah.lua
+   M /trunk/LittleWigs/TempestKeep/Skyriss.lua
+   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
+
+LittleWigs: TK- added some missing spellIds
+------------------------------------------------------------------------
 r80911 | ulic | 2008-08-24 19:31:14 -0400 (Sun, 24 Aug 2008) | 1 line
 Changed paths:
    M /trunk/LittleWigs/CoT/BlackMorass.lua
@@ -105,43 +113,4 @@ Changed paths:
    M /trunk/LittleWigs/TempestKeep/Zereketh.lua
 
 LittleWigs: added/fixed ruRU
-------------------------------------------------------------------------
-r79781 | StingerSoft | 2008-08-04 17:35:31 -0400 (Mon, 04 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/Auchindoun/Blackheart.lua
-   M /trunk/LittleWigs/Auchindoun/Hellmaw.lua
-   M /trunk/LittleWigs/Auchindoun/Ikiss.lua
-   M /trunk/LittleWigs/Auchindoun/LittleWigs_Auchindoun.toc
-   M /trunk/LittleWigs/Coilfang/Ahune.lua
-   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
-   M /trunk/LittleWigs/Coilfang/Mennu.lua
-
-LittleWigs: added/fixed typo ruRU
-------------------------------------------------------------------------
-r79696 | StingerSoft | 2008-08-02 20:47:38 -0400 (Sat, 02 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/Coilfang/Ahune.lua
-   M /trunk/LittleWigs/Coilfang/Hungarfen.lua
-   M /trunk/LittleWigs/Coilfang/Kalithresh.lua
-   M /trunk/LittleWigs/Coilfang/LittleWigs_Coilfang.toc
-   M /trunk/LittleWigs/Coilfang/Mennu.lua
-   M /trunk/LittleWigs/Coilfang/Rokmar.lua
-   M /trunk/LittleWigs/Coilfang/Steamrigger.lua
-   M /trunk/LittleWigs/Coilfang/Thespia.lua
-
-LittleWigs: added ruRU localization
-------------------------------------------------------------------------
-r79681 | StingerSoft | 2008-08-02 14:46:23 -0400 (Sat, 02 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/LittleWigs/CoT/BlackMorass.lua
-   M /trunk/LittleWigs/CoT/LittleWigs_CoT.toc
-   M /trunk/LittleWigs/HellfireCitadel/Broggok.lua
-   M /trunk/LittleWigs/HellfireCitadel/Kelidan.lua
-   M /trunk/LittleWigs/HellfireCitadel/LittleWigs_HellfireCitadel.toc
-   M /trunk/LittleWigs/HellfireCitadel/Maker.lua
-   M /trunk/LittleWigs/HellfireCitadel/Omor.lua
-   M /trunk/LittleWigs/HellfireCitadel/Warchief.lua
-   M /trunk/LittleWigs/LittleWigs.toc
-
-LittleWigs: added ruRU localization
 ------------------------------------------------------------------------

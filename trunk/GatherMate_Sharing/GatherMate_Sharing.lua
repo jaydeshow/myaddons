@@ -96,16 +96,26 @@ function Sharing:OnMessage(prefix, message, distribution, sender)
 	if not coord or coord <= 0 or coord >= 1e8 or coord ~= floor(coord) then
 		return -- invalid coord
 	end
+	if not GatherMate.reverseNodeIDs[ dbIndexes[nodeType] ][nodeID] then
+		return -- invalid nodeID
+	end
+	local x,y = GatherMate:getXY(coord)
+	local nodeName = GatherMate.reverseNodeIDs[dbIndexes[nodeType]][nodeID]
+	local zoneName = nil
+	for name,data in pairs(GatherMate.zoneData) do 
+		if data[3] == zone then
+			zoneName = name
+		end 
+	end
 	if cmd == 'A' and db.syncAdds then
-		if not GatherMate.reverseNodeIDs[ dbIndexes[nodeType] ][nodeID] then
-			return -- invalid nodeID
-		end
 		actingOnComm = true
-		GatherMate:InjectNode(zone, coord, dbIndexes[nodeType], nodeID)
+		--GatherMate:InjectNode(zone, coord, dbIndexes[nodeType], nodeID)
+		GatherMate:AddNode(zoneName,x,y,dbIndexes[nodeType],nodeName)
 		actingOnComm = false
 	elseif cmd == 'D' and db.syncDeletes then
 		actingOnComm = true
-		GatherMate:DeleteNode(zone, coord, dbIndexes[nodeType])
+		--GatherMate:DeleteNode(zone, coord, dbIndexes[nodeType])
+		GatherMate:RemoveNodeByID(zoneName, dbIndexes[nodeType], coord)
 		actingOnComm = false
 	end
 end

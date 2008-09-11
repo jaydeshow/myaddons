@@ -229,6 +229,7 @@ function AtlasLoot_Refresh()
         local f;
         if (not getglobal("AtlasBossLine"..i)) then
             f = CreateFrame("Button", "AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate");
+            f:SetFrameStrata("HIGH");
             if i==1 then
                 f:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -3);
             else

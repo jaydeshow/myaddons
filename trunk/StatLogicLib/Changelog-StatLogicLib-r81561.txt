@@ -1,0 +1,230 @@
+------------------------------------------------------------------------
+r81561 | whitetooth | 2008-09-09 04:29:39 -0400 (Tue, 09 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: koKR update by jyounkim
+------------------------------------------------------------------------
+r81540 | 7destiny | 2008-09-08 11:28:55 -0400 (Mon, 08 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: koKR Update for WotLK Gem(thanks jyounk1m)
+
+------------------------------------------------------------------------
+r81539 | 7destiny | 2008-09-08 11:11:52 -0400 (Mon, 08 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: koKR Update for spell power
+
+------------------------------------------------------------------------
+r81485 | whitetooth | 2008-09-07 14:28:33 -0400 (Sun, 07 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: Localize _ in GetDiffID
+------------------------------------------------------------------------
+r81469 | whitetooth | 2008-09-07 06:30:04 -0400 (Sun, 07 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: Sorry for my bad wording, I meant for localizers to check in the wotlk area, starting line: 4551, no need to change current stuff.
+------------------------------------------------------------------------
+r81467 | whitetooth | 2008-09-07 06:17:02 -0400 (Sun, 07 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- Fixed line 8410 error
+------------------------------------------------------------------------
+r81461 | 7destiny | 2008-09-07 03:09:45 -0400 (Sun, 07 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: koKR Update
+------------------------------------------------------------------------
+r81460 | whitetooth | 2008-09-07 02:05:33 -0400 (Sun, 07 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- Hit Rating, Critical Strike Rating, and Haste Rating now modify both melee attacks and spells.
+- Localizers please check the wotlk area(starting line: 4551) and see if there are any melee only stuff in it.
+------------------------------------------------------------------------
+r81446 | whitetooth | 2008-09-06 14:34:59 -0400 (Sat, 06 Sep 2008) | 68 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+WotLK: GetStatMod(stat, school) supports stacking buffs
+WotLK: Warrior
+- Added Talent: Strength of Arms: Increases your total Strength and total health by 2%/4%.
+- Added Talent: Anticipation: Increases your Dodge chance by 1%/2%/3%/4%/5%.
+- Added Buff(TBC): Last Stand: When activated, this ability temporarily grants you 30% of your maximum health for 20 sec.
+- Updated Talent: Improved Berserker Stance: Moved to 2,21
+- Updated Talent: Improved Defensive Stance: Moved to 3,16. 2%/4%/6% -> 3%/6%.
+- Updated Talent: Toughness: Moved to 3,9
+- Updated Talent: Vitality: Moved to 3,19. Increases your total Strength and Stamina by 2%/4%/6%
+- Updated Talent: Shield Mastery: Moved to 3,8. 10%/20%/30% -> 15%/30%
+- Updated Buff: Shield Wall: 75% -> 60%
+WotLK: Warlock
+- Added Talent: Demonic Aegis: Increases the effectiveness of your Demon Armor and Fel Armor spells by 10%/20%/30%.
+- Added Talent: Fel Synergy: Your Summoned Demons share an additional 5%/10% of your Armor, Intellect and Stamina
+- Added Talent: Fel Vitality: Increases your maximum health and mana by 1%/2%/3%.
+- Added Buff: Fel Armor: Increases spell power equal to 30% of your Spirit. Allows 30% of your mana regeneration to continue while casting.
+- Added Buff: Demonic Pact: Your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2%/4%/6%/8%/10% of your Spell Damage for 12 sec.
+- Added Buff: Metamorphosis: You gain Demon Form, increasing your armor by 360%, increasing your attack power equal to 75% of your spell power.
+- Removed Talent: Fel Stamina
+- Removed Talent: Fel Intellect
+- Updated Talent: Master Demonologist: Moved to 2,16. Felhunter - Reduces all spell damage taken by 2%/4%/6%/8%/10%. Felguard - Increases all damage done by 5%, and reduces all damage taken by 1%/2%/3%/4%/5%.
+- Updated Talent: Demonic Embrace: No longer reduces spirit. Stamina 3%/6%/9%/12%/15% -> 2%/4%/6%/8%/10%
+- Updated Buff: Soul Link: 20% -> 15%
+WotLK: Shaman
+- Added Buff: Astral Shift: When stunned, feared or silenced you shift into the Astral Plane reducing all damage taken by 30%
+- Added Buff: Unleashed Rage: Melee attack power increased by 10%.
+- Removed Talent: Shield Specialization
+- Updated Talent: Mental Quickness: Moved to 2,16
+- Updated Talent: Nature's Blessing: Moved to 3,21. spell damage and healing -> healing, 10%/20%/30% -> 5%/10%/15%
+- Updated Talent: Anticipation: Moved to 2,10. 1%/2%/3%/4%/5% -> 1%/2%/3%
+- Updated Talent: Elemental Shields: Moved to 1,17. Reduces the chance you will be critically hit by melee and ranged attacks -> Reduces all physical damage taken
+- Updated Talent: Toughness: Moved to 2,12
+- Updated Talent: Ancestral Knowledge: Moved to 2,3. maximum Mana -> intellect. 1%/2%/3%/4%/5% -> 2%/4%/6%/8%/10%.
+- Fixed Buff(TBC): Shamanistic Rage: Now works
+WotLK: Rogue
+- Updated Talent: Deadliness: Moved to 3,18
+- Updated Talent: Lightning Reflexes: Moved to 2,12
+- Updated and Fixed Talent(WotLK & TBC): Sleight of Hand: Moved to 3,4
+- Updated Talent: Heightened Senses: Moved to 3,13
+- Updated Talent: Deadened Nerves: Moved to 1,20: Decreases all physical damage taken by 1%/2%/3%/4%/5% -> Reduces all damage taken by 2%/4%/6%.
+- Updated Talent: Vitality: Moved to 2,19
+- Updated Talent: Sinister Calling: Moved to 3,22
+WotLK: Priest
+- Added Talent: Twin Disciplines: Increases your spell damage and healing by 1%/2%/3%/4%/5%
+- Added Talent: Focused Power: Increases your total spell damage and healing done by 2%/4%.
+- Added Talent: Twisted Faith: Increases your Shadow spell power by 6%/12%/18%/24%/30% of your total Spirit
+- Added Buff: Grace: Reduces damage taken by 1%. This effect will stack up to 3 times.
+- Added Buff: Dispersion: Reduces all damage by 90%
+- Fixed Buff(TBC): Elune's Grace: Now works correctly
+- Fixed Buff(TBC): Pain Suppression: Will now check this buff for everyone
+- Updated and Fixed Talent(WotLK & TBC): Shadow Resilience: Moved to 3,17. Reduces the chance you'll be critically hit by all spells -> Reduces physical damage taken
+- Updated Talent: Improved Divine Spirit: 5%/10% -> 3%/6% of their total Spirit
+- Updated Talent: Mental Strength: Increases your maximum Mana -> total Intellect
+- Updated Talent: Enlightenment: Moved to 1,12. Stamina, Intellect and Spirit -> Stamina, Spirit and Spell Haste
+WotLK: Paladin
+- Added Talent: Anticipation: Increases your chance to dodge by 1%/2%/3%/4%/5%
+- Added Talent: Touched by the Light: Increases your spell power by an amount equal to 10%/20%/30% of your Stamina
+- Added Talent: Sheath of Light: Increases your spell power by an amount equal to 10%/20%/30% of your attack power
+- Added Talent: The Art of War: Reduces all damage taken by 1%/2%/3%
+- Updated and Fixed Talent(WotLK & TBC): Pursuit of Justice: Reduces the chance you'll be hit by spells by 1%/2%
+- Fixed Talent(TBC): Pursuit of Justice: Now works
+- Updated Talent: Holy Guidance: Moved to 1,21
+- Updated Talent: Divine Purpose: Reduces your chance to be hit by spells and ranged attacks by 1%/2%/3%
+- Updated Talent: Blessed Life: Moved to 1,19
+- Updated Talent: Ardent Defender: Moved to 2,20
+- Updated Talent: Toughness: Moved to 2,9
+- Updated Talent: Divine Strength: Moved to 2,1. Increases your total Strength by 3%/6%/9%/12%/15%
+------------------------------------------------------------------------
+r81420 | nevcairiel | 2008-09-05 16:15:40 -0400 (Fri, 05 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: fix typos
+------------------------------------------------------------------------
+r81412 | whitetooth | 2008-09-05 13:01:21 -0400 (Fri, 05 Sep 2008) | 12 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: WotLK: Mage
+- Updated Talent: Arcane Fortitude: Moved to 1,4. Increases your armor by an amount equal to 50%/100%/150% of your Intellect.
+- Updated Talent: Arcane Meditation: Moved to 1,13
+- Updated Talent: Mind Mastery: Moved to 1,25. Increases spell damage by up to 3%/6%/9%/12%/15% of your total Intellect.
+- Updated Talent: Arctic Winds: Moved to 3,21
+- Updated Talent: Prismatic Cloak: Moved to 1,18. Reduces all damage taken by 2%/4%/6%.
+- Updated Talent: Playing with Fire: Moved to 2,14
+- Updated Talent: Frozen Core: Moved to 3,16
+- Updated Talent: Arcane Mind: Moved to 1,17
+- Added Talent: Student of the Mind: Increases your total Spirit by 4%/7%/10%.
+- Added Talent: Improved Blink: Moved to 1,15. Chance to be hit by all attacks and spells reduced by 15%/30%.
+- Added Talent: Arcane Instability: Moved to 1,19. Increases your spell damage and critical strike chance by 1%/2%/3%.
+------------------------------------------------------------------------
+r81410 | whitetooth | 2008-09-05 11:34:26 -0400 (Fri, 05 Sep 2008) | 7 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- WotLK: Hunter Talent: Survival Instincts: Moved to 3,7
+- WotLK: Hunter Talent: Survivalist: Moved to 3,8. Increases your Stamina by 2%/4%/6%/8%/10%.
+- WotLK: Hunter Talent: Combat Experience: Moved to 2,16. Increases your total Agility by 3%/6%.
+- WotLK: Hunter Talent: Lightning Reflexes: Moved to 3,17
+- WotLK: Hunter Talent: Aspect Mastery: Aspect of the Monkey - Reduces the damage done to you while active by 10%.
+- WotLK: Hunter Talent: Hunter vs. Wild: Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
+------------------------------------------------------------------------
+r81407 | whitetooth | 2008-09-05 10:44:05 -0400 (Fri, 05 Sep 2008) | 14 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- WotLK: DeathKnight Talent: Bladed Armor: You gain 5/10/15/20/25 attack power for every 1000 points of your armor value.
+- WotLK: DeathKnight Talent: Veteran of the Third War: Increases your total Strength by 2%/4%/6% and your total Stamina by 1%/2%/3%.
+- WotLK: DeathKnight Talent: Will of the Necropolis: When you have less than 35% health, your total armor increases by 10%/20%/30%.
+- WotLK: DeathKnight Talent: Toughness: Increases your armor value from items by 3%/6%/9%/12%/15%
+- WotLK: DeathKnight Talent: Anticipation: Increases your Dodge chance by 1%/2%/3%/4%/5%.
+- WotLK: DeathKnight Talent: Ravenous Dead: Increases the total Strength of you by 1%/2%/3%
+- WotLK: DeathKnight Talent: Shadow of Death: Increases your total Strength and Stamina by 2%.
+- WotLK: DeathKnight Buff: Abominable Might: Attack power increased by 10%.
+- WotLK: DeathKnight Buff: Lichborne: Chance to be hit by melee attacks reduced by 25%.
+- WotLK: DeathKnight Buff: Unbreakable Armor: Increases your armor by 25%, your total Strength by 10%.
+- WotLK: DeathKnight Buff: Frost Presence: Increases armor by 45%
+- WotLK: DeathKnight Buff:: Anti-Magic Shell: Damage taken reduced by 50%.
+- WotLK: DeathKnight Buff:: Icebound Fortitude: Spell damage reduced by 75%.
+------------------------------------------------------------------------
+r81394 | whitetooth | 2008-09-05 07:58:44 -0400 (Fri, 05 Sep 2008) | 16 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- WotLK: Druid Talent: Lunar Guidance: Increases your spell damage and healing by 4%/8%/12% of your total Intellect
+- WotLK: Druid Talent: Nurturing Instinct: Increases your healing spells by up to 35%/70% of your Agility
+- WotLK: Druid Talent: Intensity: moved to 3,7
+- WotLK: Druid Talent: Dreamstate: moved to 1,15
+- Druid Talent Buff: Natural Perfection: effect reducing all damage taken by 2%/3%/4%
+- WotLK: Druid Talent: Natural Perfection: moved to 3,19
+- WotLK: Druid Talent: Balance of Power: moved to 1,17
+- WotLK: Druid Talent: Heart of the Wild: moved to 2,17
+- WotLK: Druid Talent: Survival of the Fittest: moved to 2,18, Increases all attributes by 2%/4%/6% and reduces the chance you'll be critically hit by melee attacks by 2%/4%/6%.
+- WotLK: Druid Talent: Living Spirit: moved to 3,17
+- WotLK: Druid Talent: Natural Reaction: Increases your dodge while in Bear Form or Dire Bear Form by 2%/4%/6%
+- WotLK: Druid Talent: Furor: Increases your total Intellect while in Moonkin form by 2%/4%/6%/8%/10%.
+- WotLK: Druid Talent: Master Shapeshifter: Moonkin Form - Increases spell damage by 2%/4%.
+- WotLK: Druid Talent: Master Shapeshifter: Tree of Life Form - Increases healing by 2%/4%.
+- WotLK: Druid Talent: Improved Tree of Life: Increases your Armor while in Tree of Life Form by 33%/66%/100%.
+------------------------------------------------------------------------
+r81392 | whitetooth | 2008-09-05 06:05:46 -0400 (Fri, 05 Sep 2008) | 5 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- WotLK: DeathKnight Pasive: Forceful Deflection (Increases your Parry Rating by 25% of your total Strength.)
+- WotLK: Hunter Buff: Aspect of the Viper no longer gives MP5 from Int
+- WotLK: Hunter Talent: Careful Aim now adds 33%/66%/100% RAP from Int
+- WotLK: Shaman: 1 AP from 1 Agi, 1AP from 1 Str
+------------------------------------------------------------------------
+r80890 | whitetooth | 2008-08-24 07:03:40 -0400 (Sun, 24 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: frFR update for expertise
+------------------------------------------------------------------------
+r80797 | whitetooth | 2008-08-22 07:06:28 -0400 (Fri, 22 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: frFR update: Purified Shadowsong Amethyst
+------------------------------------------------------------------------
+r80626 | StingerSoft | 2008-08-18 17:40:21 -0400 (Mon, 18 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: added ruRU (credit by Gezz)
+------------------------------------------------------------------------

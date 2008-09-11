@@ -2,7 +2,7 @@ local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 local Epsilon=0.000000000000000001
 
-local revision = tonumber(string.sub("$Revision: 73072 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81545 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --.MainTitle = What you see on the window title 
@@ -633,8 +633,8 @@ function TooltipFuncs:ActiveTime(name,data)
 	GameTooltip:AddLine(name)
 	Recount:AddSortedTooltipData(L["Top 3"].." "..L["Attacked/Healed"],data and data.Fights[Recount.db.profile.CurDataSet] and data.Fights[Recount.db.profile.CurDataSet].TimeSpent,3)
 	local Heal,Damage
-	Heal=data.Fights[Recount.db.profile.CurDataSet].TimeHeal or 0
-	Damage=data.Fights[Recount.db.profile.CurDataSet].TimeDamage or 0
+	Heal=data and data.Fights[Recount.db.profile.CurDataSet].TimeHeal or 0
+	Damage=data and data.Fights[Recount.db.profile.CurDataSet].TimeDamage or 0
 	local Total=Heal+Damage+Epsilon
 	Heal=100*Heal/Total
 	Damage=100*Damage/Total

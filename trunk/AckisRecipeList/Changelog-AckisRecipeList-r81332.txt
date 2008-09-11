@@ -1,4 +1,126 @@
 ------------------------------------------------------------------------
+r81332 | ackis | 2008-09-03 23:32:22 -0400 (Wed, 03 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- What was once broke is now unbroke.
+~botsnack
+------------------------------------------------------------------------
+r81329 | ackis | 2008-09-03 19:58:36 -0400 (Wed, 03 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- What was once broke is now unbroke.
+~botsnack
+------------------------------------------------------------------------
+r81320 | ackis | 2008-09-03 12:53:50 -0400 (Wed, 03 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Doc updates for new DB structure, should be finalized... so much info to track
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r81318 | ackis | 2008-09-03 12:09:19 -0400 (Wed, 03 Sep 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLDataminer.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- DM updates
+- Doc updates for new DB structure
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r81304 | ackis | 2008-09-02 23:47:35 -0400 (Tue, 02 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
+
+AckisRecipeList:
+- Vendor loc update for Hula'mah
+------------------------------------------------------------------------
+r81303 | ackis | 2008-09-02 23:45:49 -0400 (Tue, 02 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLDataminer.lua
+
+AckisRecipeList:
+- DMupdate
+------------------------------------------------------------------------
+r81297 | ackis | 2008-09-02 19:33:13 -0400 (Tue, 02 Sep 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Updated a few comments
+- Zhinjio, you're going to have to check if addon.RecipeListing[RecipeName]["Display"] == true to display with the changes
+- Standard gui works it seems
+------------------------------------------------------------------------
+r81289 | ackis | 2008-09-02 16:53:15 -0400 (Tue, 02 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLDataminer.lua
+
+AckisRecipeList:
+- More dataminer updates.  It will now parse as much as it can and identify the recipes as vendor or trainer.
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r81287 | ackis | 2008-09-02 16:18:09 -0400 (Tue, 02 Sep 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLDataminer.lua
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- More dataminer updates
+- Fixed a possible bug in the scanning from earlier changes today
+- Added debugging code.  Sorry, this will spam you until I remove it later tonight.
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r81283 | ackis | 2008-09-02 13:41:16 -0400 (Tue, 02 Sep 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Make the toggling based on filter a seperate distinct step addon:UpdateFilters(Recipes, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
+- Started documenting functions a bit more detailed
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r81278 | ackis | 2008-09-02 13:23:53 -0400 (Tue, 02 Sep 2008) | 7 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLDataminer.lua
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-Jewelcraft.lua
+   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
+
+AckisRecipeList:
+- Dataminer update (it now will actually scan and print out all the info for alchemy recipes zomg!!)
+- LWDB Update (Murloc Scale Belt -> 90)
+- JCDB: L["Chaotic Skyfire Diamond Obt"] = "Coilskar Siren"
+- JCDB: Chaotic Skyfire Diamond Location updated to Shadowmoon Valley
+- Remove references to MissingRecipeListing
+- Dry-coded (compiles with luac -p)
+------------------------------------------------------------------------
+r81255 | zhinjio | 2008-09-01 22:22:07 -0400 (Mon, 01 Sep 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- fixed more typos
+- newgui: fixes for expandall/contractall
+- reasonably sure I haven't broken anything
+------------------------------------------------------------------------
+r81250 | kurax | 2008-09-01 19:19:09 -0400 (Mon, 01 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
+   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
+
+AckisRecipeList:
+- zhCN locale update
+------------------------------------------------------------------------
 r81212 | ackis | 2008-09-01 02:51:17 -0400 (Mon, 01 Sep 2008) | 4 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.lua
@@ -614,124 +736,5 @@ Changed paths:
 
 AckisRecipeList:
 - Angry Ackis is ANGRY!!!
-
-------------------------------------------------------------------------
-r79737 | next96 | 2008-08-03 10:53:22 -0400 (Sun, 03 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r79686 | pettigrow | 2008-08-02 16:44:33 -0400 (Sat, 02 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList:
-- frFR Update
-- little bugfix to alchemy specialities
-------------------------------------------------------------------------
-r79683 | ackis | 2008-08-02 15:38:20 -0400 (Sat, 02 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Updated version number
-
-------------------------------------------------------------------------
-r79682 | ackis | 2008-08-02 15:34:23 -0400 (Sat, 02 Aug 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Added a few new filters (BoE/BoP recipes opposed to items)
-- Reorganized how all the filters are done.  There are now new categories.  Reputations have been broken down to expansion pack.  Makes things a bit more easy to read.
-
-------------------------------------------------------------------------
-r79666 | pettigrow | 2008-08-02 09:05:00 -0400 (Sat, 02 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList: frFR Update
-------------------------------------------------------------------------
-r79663 | next96 | 2008-08-02 08:46:12 -0400 (Sat, 02 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-
-AckisRecipeList:
-- Update locale koKR
-------------------------------------------------------------------------
-r79649 | ackis | 2008-08-02 05:18:05 -0400 (Sat, 02 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Change wording of BoE/BoP flags to be more clear.
-
-------------------------------------------------------------------------
-r79647 | ackis | 2008-08-02 05:10:56 -0400 (Sat, 02 Aug 2008) | 5 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- Added "World Drop" flag.  No recipes have this yet, feel free to mark them yourself if you have svn access.
-- Two new localizations L["World Drop"] and L["WORLD_DROP_TOGGLE"]
-- Addresses Ticket 30
-
-------------------------------------------------------------------------
-r79646 | ackis | 2008-08-02 05:00:56 -0400 (Sat, 02 Aug 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-
-AckisRecipeList:
-- If you don't have the reputation for a recipe, we'll make the aquistition information red!
-- Added L["FactionError"] to localizations (needs translation)
-
-------------------------------------------------------------------------
-r79644 | ackis | 2008-08-02 04:30:55 -0400 (Sat, 02 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLColour.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-
-AckisRecipeList:
-- Change reputation colours to mimic those from FactionsFu
-
-------------------------------------------------------------------------
-r79642 | ackis | 2008-08-02 04:09:56 -0400 (Sat, 02 Aug 2008) | 4 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   A /trunk/AckisRecipeList/RecipeDB/ARL-Inscription.lua
-
-AckisRecipeList:
-- Implement known profession code (not called yet, Zhinjio you can call it when you want it, variables are stored in AckisRecipeList.KnowProfession[foo], you populate the table by calling addon:GetKnownProfessions()
-- Add inscription database (empty file)
-
-------------------------------------------------------------------------
-r79641 | ackis | 2008-08-02 03:47:05 -0400 (Sat, 02 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Alchemy.lua
-
-AckisRecipeList:
-- Fix Restorative Potion (ticket 33)
-
-------------------------------------------------------------------------
-r79617 | ackis | 2008-08-01 15:12:07 -0400 (Fri, 01 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   A /trunk/AckisRecipeList/recipe-miner.lua
-
-AckisRecipeList:
-- Add recipe miner by Kagaro :D
 
 ------------------------------------------------------------------------

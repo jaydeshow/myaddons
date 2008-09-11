@@ -5,8 +5,8 @@ ARLLocals-enUS.lua
 
 enUS localization strings for Ackis Recipe List
 
-$Date: 2008-08-29 14:14:08 -0400 (Fri, 29 Aug 2008) $
-$Rev: 81103 $
+$Date: 2008-09-02 13:23:53 -0400 (Tue, 02 Sep 2008) $
+$Rev: 81278 $
 
 Original translated by: Ackis
 Currently maintaince by: Ackis
@@ -166,7 +166,7 @@ L["Armor"] = true
 L["Weapon"] = true
 L["Player"] = true
 L["Tank"] = true
-L["Healer"] = true1
+L["Healer"] = true
 L["Melee DPS"] = true
 L["All"] = true
 L["None"] = true
@@ -505,7 +505,7 @@ L["Zapthrottle Mote Extractor Obt"] = "Zapthrottle Mote Extractor!"
 L["Blades Edge Summon Bosses"] = "Ogri'la summon bosses"
 -- Mob Drop
 L["Arcane Khorium Band Obt"] = "Mageslayers"
-L["Chaotic Skyfire Diamond Obt"] = "Coilskar Sirens"
+L["Chaotic Skyfire Diamond Obt"] = "Coilskar Siren"
 L["Coronet of the Verdant Flame Obt"] = "Sunseeker Botanists"
 L["Khorium Band of Frost Obt"] = "Coilfang Sorceresses"
 L["Khorium Band of Leaves Obt"] = "Vekh'nir Dreadhawks"

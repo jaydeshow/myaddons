@@ -374,3 +374,14 @@ if not L then return end
 	L["HoT"] = "治療/跳"
 	L["Recorded Fights"] = "已記錄戰鬥"
 	L["Set the maximum number of recorded fight segments"] = "設定戰鬥記錄部份的最大數量"
+	L["pause"] = "暫停"
+	L["Pause"] = "暫停"
+	L["Toggle pause of global data collection"] = "開啟/關閉暫停整體資料收集"
+	L["Data collection turned off"] = "開啟資料收集"
+	L["Data collection turned on"] = "關閉資料收集"
+
+	L["Death Track"] = "死亡記錄"
+	L["Report the DeathTrack Window Data"] = "發送死亡記錄視窗的資料"
+	L["Show Death Track (Left Click)"] = "顯示死亡記錄 (左鍵點擊)"
+	L[" dies."]="死亡."
+	

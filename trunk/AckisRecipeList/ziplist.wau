@@ -1,4 +1,4 @@
-AckisRecipeList/Changelog-AckisRecipeList-r81212.txt
+AckisRecipeList/Changelog-AckisRecipeList-r81332.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/AckisRecipeList.lua
 AckisRecipeList/externals.txt
@@ -74,6 +74,7 @@ AckisRecipeList/DataMiner/dbc_file.rb
 AckisRecipeList/DataMiner/wowdb-mapdata.txt
 AckisRecipeList/DataMiner/wowdb_helper.rb
 AckisRecipeList/DataMiner/wowdb_maps.rb
+AckisRecipeList/DataMiner/wowdb_pets_and_mounts.rb
 AckisRecipeList/DataMiner/core.rb
 AckisRecipeList/DataMiner/recipe-list.txt
 AckisRecipeList/DataMiner/GatherMate/gathermate_data.rb

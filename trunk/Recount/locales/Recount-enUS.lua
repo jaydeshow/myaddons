@@ -373,4 +373,15 @@ if not L then return end
 	L["DoT"]=true
 	L["HoT"]=true
 	L["Recorded Fights"]=true
-	 L["Set the maximum number of recorded fight segments"]=true
+	L["Set the maximum number of recorded fight segments"]=true
+	L["pause"]=true
+	L["Pause"]=true
+	L["Toggle pause of global data collection"]=true
+	L["Data collection turned off"]=true
+	L["Data collection turned on"]=true
+
+	L["Death Track"]=true
+	L["Report the DeathTrack Window Data"]=true
+	L["Show Death Track (Left Click)"]=true
+	L[" dies."]=true
+	

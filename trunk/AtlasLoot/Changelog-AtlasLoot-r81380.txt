@@ -1,0 +1,24 @@
+------------------------------------------------------------------------
+r81380 | daviesh | 2008-09-04 21:22:33 -0400 (Thu, 04 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/AtlasLoot.toc
+   M /trunk/AtlasLoot/Core/AtlasLoot.lua
+   M /trunk/AtlasLoot/Documentation/Release Notes.txt
+
+AtlasLoot:
+- v4.06.04 released
+------------------------------------------------------------------------
+r81265 | daviesh | 2008-09-02 08:44:42 -0400 (Tue, 02 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/HooksandAPI.lua
+
+AtlasLoot:
+- Fixed a bug where Atlas would hide the AtlasLoot boss buttons due to having a higher frame strata.
+------------------------------------------------------------------------
+r80756 | daviesh | 2008-08-21 01:56:32 -0400 (Thu, 21 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/AtlasLoot/Core/HooksandAPI.lua
+
+AtlasLoot:
+- Minor tweak that MIGHT fix an Atlas bug people are reporting, but as none of the dev team or Atlas or AtlasLoot can replicate the bug and get more information, I am shooting in the dark.
+------------------------------------------------------------------------

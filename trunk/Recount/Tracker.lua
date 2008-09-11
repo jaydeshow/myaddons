@@ -1,8 +1,10 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 79898 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81548 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
+
+local _, _, _, tocversion =  GetBuildInfo()
 
 --Data for Recount is tracked within this file
 local Tracking={}
@@ -282,10 +284,53 @@ function Recount:MatchGUID(nName,nGUID,nFlags)
 	end
 end
 
+if tocversion == 30000 then
+function Recount:SwingDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,amount, overkill,school, resisted, blocked, absorbed, critical, glancing, crushing)
+	Recount:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,0, L["Melee"], SPELLSCHOOL_PHYSICAL, amount, overkill,school, resisted, blocked, absorbed, critical, glancing, crushing)
+end
+else
 function Recount:SwingDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
 	Recount:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,0, L["Melee"], SPELLSCHOOL_PHYSICAL, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
 end
+end
 
+function Recount:SpellBuildingDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
+-- Ignoring these for now
+end
+
+if tocversion == 30000 then
+function Recount:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
+
+	amount = amount - overkill -- Taking out overdamage on killing blows
+
+	local HitType=L["Hit"]
+	if critical then
+		HitType=L["Crit"]
+	end
+	if eventtype == "SPELL_PERIODIC_DAMAGE" then
+		HitType=L["Tick"]
+		spellName = spellName .." ("..L["DoT"]..")"
+	end
+	if eventtype == "DAMAGE_SPLIT" then
+		HitType=L["Split"]
+	end
+	if crushing then
+		HitType=L["Crushing"]
+	end
+	if glancing	then
+		HitType=L["Glancing"]
+	end
+--[[	if blocked then
+		HitType="Block"
+	end
+	if absorbed then
+		HitType="Absorbed"
+	end--]]
+	if eventtype == "RANGE_DAMAGE" then spellSchool = school end
+
+	Recount:AddDamageData(srcName, dstName, spellName, Recount.SpellSchoolName[spellSchool], HitType, amount, resisted, srcGUID, srcFlags, dstGUID, dstFlags, spellId, blocked, absorbed)
+end
+else
 function Recount:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
 
 	local HitType=L["Hit"]
@@ -315,7 +360,31 @@ function Recount:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, d
 
 	Recount:AddDamageData(srcName, dstName, spellName, Recount.SpellSchoolName[spellSchool], HitType, amount, resisted, srcGUID, srcFlags, dstGUID, dstFlags, spellId, blocked, absorbed)
 end
+end
 
+if tocversion == 30000 then
+function Recount:EnvironmentalDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,enviromentalType, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
+
+	local HitType = L["Hit"]
+	if critical then
+		HitType=L["Crit"]
+	end
+	if crushing then
+		HitType=L["Crushing"]
+	end
+	if glancing	then
+		HitType=L["Glancing"]
+	end
+	--[[if blocked then
+		HitType="Block"
+	end
+	if absorbed then
+		HitType="Absorbed"
+	end--]]
+
+	Recount:AddDamageData("Environment", dstName, Recount:FixCaps(enviromentalType), Recount.SpellSchoolName[school], HitType, amount, resisted, srcGUID, 0, dstGUID, dstFlags, spellId, blocked, absorbed)
+end
+else
 function Recount:EnvironmentalDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,enviromentalType, amount, school, resisted, blocked, absorbed, critical, glancing, crushing)
 
 	local HitType = L["Hit"]
@@ -337,6 +406,7 @@ function Recount:EnvironmentalDamage(timestamp, eventtype, srcGUID, srcName, src
 
 	Recount:AddDamageData("Environment", dstName, Recount:FixCaps(enviromentalType), Recount.SpellSchoolName[school], HitType, amount, resisted, srcGUID, 0, dstGUID, dstFlags, spellId, blocked, absorbed)
 end
+end
 
 function Recount:FixCaps(capsstr)
 	if type(capsstr)=="string" then
@@ -346,6 +416,17 @@ function Recount:FixCaps(capsstr)
 	end
 end
 
+if tocversion == 30000 then
+function Recount:SwingMissed(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags, missType, missAmount)
+	
+	Recount:AddDamageData(srcName, dstName, L["Melee"], nil, Recount:FixCaps(missType),nil,nil, srcGUID, srcFlags, dstGUID, dstFlags, spellId)
+end
+
+function Recount:SpellMissed(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, missType, missAmount)
+
+	Recount:AddDamageData(srcName, dstName, spellName, nil, Recount:FixCaps(missType),nil,nil, srcGUID, srcFlags, dstGUID, dstFlags, spellId)
+end
+else
 function Recount:SwingMissed(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,missType)
 	
 	Recount:AddDamageData(srcName, dstName, L["Melee"], nil, Recount:FixCaps(missType),nil,nil, srcGUID, srcFlags, dstGUID, dstFlags, spellId)
@@ -354,6 +435,7 @@ end
 function Recount:SpellMissed(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, missType)
 
 	Recount:AddDamageData(srcName, dstName, spellName, nil, Recount:FixCaps(missType),nil,nil, srcGUID, srcFlags, dstGUID, dstFlags, spellId)
+end
 end
 
 function Recount:SpellHeal(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, overheal,critical)
@@ -579,6 +661,7 @@ local EventParse =
 	["SPELL_DISPEL"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3
 	["SPELL_STOLEN"] = Recount.SpellAuraDispelledStolen, -- Post 2.4.3
 	["SPELL_RESURRECT"] = Recount.SpellResurrect, -- Post WotLK
+	["SPELL_BUILDING_DAMAGE"] = Recount.SpellBuildingDamage -- Post WotLK
 }
 
 function Recount:CheckRetentionFromFlags(nameFlags)
@@ -1458,6 +1541,8 @@ function Recount:AddDamageData(source, victim, ability, element, hittype, damage
 		
 		--For identifying who killed when no message is triggered
 		victimData.LastAttackedBy=source
+		victimData.LastDamageTaken=damage
+		victimData.LastDamageAbility=ability
 		
 
 		--Tracking for passing data to other functions	
@@ -1891,6 +1976,8 @@ function Recount:AddDeathData(source, victim, skill,srcGUID,srcFlags,dstGUID,dst
 	local owner
 	local ownerID
 	
+	Recount:DPrint("Add Death: "..victim)
+	
 	if not Recount.InCombat and Recount.db.profile.RecordCombatOnly then
 		--Recount:Print("Death out of combat, not recorded")
 		return
@@ -1930,7 +2017,7 @@ function Recount:AddDeathData(source, victim, skill,srcGUID,srcFlags,dstGUID,dst
 		Recount:AddCurrentEvent(sourceData, "MISC", false)
 	end	
 	
-	Recount.cleventtext = victim.." dies."
+	Recount.cleventtext = victim..L[" dies."]
 	Recount:AddCurrentEvent(victimData, "MISC", true,nil,Recount.cleventtext)
 
 	--This saves who/what killed the victim
@@ -1948,11 +2035,13 @@ function Recount:AddDeathData(source, victim, skill,srcGUID,srcFlags,dstGUID,dst
 	--We delay the saving of the event logs just in case more messages come later
 	if Recount.db.profile.Filters.TrackDeaths[victimData.type] then
 		--Recount:ScheduleTimer(Recount.HandleDeath,2,Recount,victim,GetTime(),dstGUID,dstFlags)
+		deathargs={} -- Elsia: Make sure we create new ones in case of overlapping deaths!
 		deathargs[1]=victim
 		deathargs[2]=GetTime()
 		deathargs[3]=dstGUID
 		deathargs[4]=dstFlags
 		Recount:ScheduleTimer("HandleDeath",2,deathargs)
+		--Recount:HandleDeath(deathargs)
 	else
 			Recount:CheckRetention(victim)
 	end
@@ -1966,7 +2055,7 @@ function Recount:HandleDeath(arg)
 
 	local victim,DeathTime,dstGUID,dstFlags = unpack(arg)
 	
-	
+	Recount:DPrint("death: "..victim)
 	
 --[[	victim, owner, ownerID, SpecialEvent = Recount:DetectPet(victim, dstGUID, dstFlags)
 
@@ -2016,6 +2105,12 @@ function Recount:HandleDeath(arg)
 
 	who.DeathLogs = who.DeathLogs or {}
 	tinsert(who.DeathLogs,1,DeathLog)
+
+	if RecountDeathTrack then
+		--Recount:DPrint(who.LastDamageTaken)
+		RecountDeathTrack:AddDeath(victim, DeathTime-Recount.InCombatT2, who.LastDamageTaken , who, who.DeathLogs)--[[who.LastDamageAbility.." "..who.LastDamageTaken]]--
+	end
+
 	--who.DeathLogs[#who.DeathLogs+1]=DeathLog
 	Recount:CheckRetention(victim)
 end
@@ -2097,6 +2192,7 @@ function Recount:AddCCBreaker(source, victim, ability,srcGUID,srcFlags,dstGUID,d
 	Recount:SetActive(sourceData)
 	Recount:SetActive(victimData)
 
+	if not victimData then return end -- Elsia: No victim around?
 	--Is this friendly fire?
 	local FriendlyFire=(sourceData.isFriend==victimData.isFriend) and (sourceData.isPlayer and victimData.isPlayer) -- We only care for friendly fire between players now
 	--local FriendlyFire=sourceData.isFriend==victimData.isFriend

@@ -4,7 +4,7 @@
 ## Notes-zhCN: 在物品链接上显示珠宝及附魔的额外信息。
 ## Notes-zhTW: 在工具提示上顯示珠寶及附魔的額外資訊。
 ## Author: Siz
-## Version: 0.5.7
+## Version: 0.6.0
 ## OptionalDeps: Ace2
 ## X-Embeds: Ace2
 ## X-Category: Interface Enhancements
