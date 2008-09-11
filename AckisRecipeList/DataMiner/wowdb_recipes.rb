@@ -1,5 +1,123 @@
 require "wowdb_helper"
 
+=begin rdoc
+This class handles parsing of WoWdb.com Receipe data from its json info.
+see WoWDBHelper for details on constants
+:section: Overview
+Once you create a WoWDBRecipes object, you want to get a list of items
+use one of the list methods. Once you obtain the high level object, you
+may want to get exact detils of said object, at that point you should use
+add_recipe_details to add the futher details to you object.
+=end
+
+=begin rdoc
+Base Keys
+:section: Base keys
+Base keys that are available from after a get_xxx_list
+
+:produces 
+  ARRAY - [item id, count]
+:skillup 
+  ARRAY - [orange level,yellow level ,green level ,gray level]
+:rarity 
+  INTEGER
+:reagents
+  ARRAY - [ [item id, count] ...]
+:learned 
+  INTEGER - skill level required to learn this recipe
+:id
+  INTEGER - pattern item id
+=end
+
+=begin rdoc  
+Detaled keys
+:section: Detailed Keys
+Keys that are available after a add_details call
+
+:specialty 
+  INTEGER (optional) - Speciality skill required to learn this pattern
+:spellid 
+  INTEGER - spell id the recipe teaches
+:method 
+  STRING -list of methods to aquire this recipe, each method corresponds to a sub key for details
+  possible methods
+    *taugth-by (provides method_trainers) ARRAY
+    *sold-by (provides method_vendors) ARRAY
+    *contained-in-object, dropped-by, ontained-in-item (provides method_drops) ARRAY 
+      method_drops, contains an array entry for each method listed in the order it is found i.e. 
+      example:
+        method=dropped-by,contained-in-object
+        method_drops[0] = mob list
+        method_drops[1] = container list
+    *rewardfrom (provides method_quests) ARRAY
+=end
+
+=begin rdoc
+NPC data formats
+:section: Hash format for an NPC (trainer, vendor)
+Trainers and Vendors
+
+:locs 
+  ARRAY - list of wowdb location ids (currently not supported by the miner)
+:type 
+  INTEGER - npc type , see WoWDBHelper
+:desc 
+  STRING - description of the NPC
+:minlevel 
+  INTEGER - npc min level
+:name 
+  STRING - name of the trainer
+:id 
+  INTEGER - wowhead NPC id
+:react 
+  ARRAY - [alliance, horde]
+=end
+
+=begin rdoc
+NPC data formats for drop mobs
+:section: Hash format for NPC (drops)
+NPC spcifics for drop npcs
+
+:react 
+  ARRAY - [alliance,horde]
+:type 
+  INTEGER - wowdb npc types
+:minlevel 
+  INTEGER - min level of the mob
+:maxlevel 
+  INTEGER - max level of the mob
+:name 
+  STRING - mob name
+:locs 
+  ARRAY - wowdb location ids
+:lootCount 
+  INTEGER - number of times this item was looted from this mob
+:totalLootCount 
+  INTEGER - total number of times this mob was looted
+:id 
+  INTEGER - wowdb npc id
+:classification 
+  INTEGER (Optional)
+=end
+
+=begin rdoc
+:section: example usage
+
+-- lookup a single item
+  recipes = WoWDBRecipes.new
+  bs_recipes = recipes.get_blacksmithing_list
+  chain = bs_recipes['Steel Weapon Chain']
+  recipes.add_recipe_details(chain)
+  puts "Weaon chain aquired by #{chain[:method]}"
+
+-- print out all items
+  recipes = WoWDBRecipes.new
+  bs_recipes = recipes.get_blacksmithing_list
+  bs_recipes.each_pair do |name,data|
+  puts "#{name} Skill: #{data[:skillups].join(",")}"
+end 
+
+=end
 class WoWDBRecipes
   include JsonHelper
   include WoWDBHelper
@@ -14,7 +132,11 @@ class WoWDBRecipes
     @@tailoring = Hash.new
     @@specialities = Hash.new
   end
-  
+=begin rdoc
+  Get a list of all Alchemy Receipes
+  returns 
+    a Hash keyed by recipe name
+=end
   def get_alchemy_list
     if @@alchemy.length == 0
       map = search_list("6.11.171")
@@ -22,6 +144,11 @@ class WoWDBRecipes
     end
     return @@alchemy
   end
+=begin rdoc
+  Get a list of all Blacksmithing Receipes
+  returns 
+    a Hash keyed by recipe name
+=end
   def get_blacksmithing_list
     if @@blacksmithing.length == 0
       map = search_list("6.11.164")
@@ -29,6 +156,10 @@ class WoWDBRecipes
     end
     return @@blacksmithing
   end
+=begin rdoc
+  Get a list of all Enchanting Receipes
+  returns: a hash keyed by recipe name
+=end
   def get_enchanting_list
     if @@enchanting.length == 0
       map = search_list("6.11.333")
@@ -36,6 +167,10 @@ class WoWDBRecipes
     end
     return @@enchanting
   end
+=begin rdoc
+  Get a list of all Engineering Receipes
+  returns: a hash keyed by recipe name
+=end  
   def get_engineering_list
     if @@engineering.length == 0
       map = search_list("6.11.202")
@@ -43,6 +178,10 @@ class WoWDBRecipes
     end
     return @@engineering
   end
+=begin rdoc
+  Get a list of all Inscription Receipes
+  returns: a hash keyed by recipe name
+=end
   def get_inscription_list
     if @@inscription.length == 0
       map = search_list("6.11.773")
@@ -50,7 +189,10 @@ class WoWDBRecipes
     end
     return @@inscription
   end
-  
+=begin rdoc
+  Get a list of all Jewelcrafting Receipes
+  returns: a hash keyed by recipe name
+=end  
   def get_jewelcrafting_list
     if @@jewelcrafting.length == 0
       map = search_list("6.11.755")
@@ -58,7 +200,10 @@ class WoWDBRecipes
     end
     return @@jewelcrafting
   end
-  
+=begin rdoc
+  Get a list of all Leatherworking Receipes
+  returns: a hash keyed by recipe name
+=end  
   def get_leatherworking_list
     if @@leatherworking.length == 0
       map = search_list("6.11.165")
@@ -66,7 +211,10 @@ class WoWDBRecipes
     end
     return @@leatherworking
   end
-  
+=begin rdoc
+  Get a list of all Tailoring Receipes
+  returns: a hash keyed by recipe name
+=end  
   def get_tailoring_list
     if @@tailoring.length == 0
       map = search_list("6.11.197")
@@ -74,6 +222,15 @@ class WoWDBRecipes
     end
     return @@tailoring
   end
+=begin rdoc
+  Get the name of a speciality for a given profession
+  params: 
+    skill
+        Profession name that has a speciality  [Alchemy,Tailoring,Engineering,Blacksmithing,Leatherworking]
+    id
+        The speciality spell id, as provided in the recipe object after an add_recipe_details call.
+  returns: the speciality skill name
+=end
   def get_speciality(skill,id)
     if skill.eql?("Alchemy")
       get_alchemy_list
@@ -90,12 +247,22 @@ class WoWDBRecipes
     end
     return @@specialities[id]
   end
-  
-  # This method
+=begin rdoc
+  Add details to a recipe you retrieved from the list
+  params:
+    recipe_object
+          Hash object retrieved via a list method
+    is_item
+          Wether this is a spell or item (defaults to false) normally not supplied by end user, used for recursive lookups
+  returns: none
+=end  
   def add_recipe_details(recipe_object, is_item = false)
     if is_item
       response = Net::HTTP.get(URI.parse("http://www.wowdb.com/item.aspx?id=#{recipe_object[:id]}"))      
     else
+      if recipe_object[:spellid].nil?
+        recipe_object[:spellid] = recipe_object[:id]
+      end
       response = Net::HTTP.get(URI.parse("http://www.wowdb.com/spell.aspx?id=#{recipe_object[:id]}"))
     end
     unless response
@@ -136,7 +303,11 @@ class WoWDBRecipes
         tab.gsub!(/cg_primaryTabGroup/,"'cg_primaryTabGroup'")
         tab.gsub!(/Curse.DataGrid.Utility.processCounts/,"'preprocess'")
         tab.gsub!(/cg_json_(.)/,'\'cg_json_\1\'')
+        tab.gsub!(/cg_comments(.)/,'\'cg_comments\'\1')
+        tab.gsub!(/cg_screenshots(.)/,'\'cg_screenshots\'\1')
         tab = from_json(tab)
+        tab[:id].downcase!
+        tab[:template].downcase!
         # Trainers
         if tab[:id].eql?("taught-by") and tab[:template].eql?("npcs")
           recipe_object[:method] += "#{tab[:id]},"
@@ -160,7 +331,7 @@ class WoWDBRecipes
           # method source now has another array with the actual receipe id for later lookup
         end        
         # Quests
-        if tab[:id].eql?("rewardFrom") and tab[:template].eql?("quest")
+        if tab[:id].eql?("rewardfrom") and tab[:template].eql?("quests")
           jd = json_data[tab[:data]]
           recipe_object[:method] += "#{tab[:id]},"
           recipe_object[:method_quests] = jd
@@ -168,16 +339,21 @@ class WoWDBRecipes
         end
         if (tab[:id].eql?("enchantment") and tab[:template].eql?("items")) and recipe_object[:method].length == 0
           # possible from trainer, vendor or drop
-          puts "possible recurse"
           jd = json_data[tab[:data]].first
           unless jd.nil?
             rid = jd[:id]
+            recipe_object[:spellid] = recipe_object[:id]
             recipe_object[:id] = rid
             # recuse the lookup to get details
             add_recipe_details(recipe_object,true)
           end
         end
       end
+      unless recipe_object[:method].nil?
+        if recipe_object[:method].rindex(",") == recipe_object[:method].length-1
+          recipe_object[:method].chop!
+        end
+      end      
     end
   end
   

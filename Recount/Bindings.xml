@@ -25,4 +25,5 @@
 	<Binding name="RECOUNT_SHOW_MAIN">Recount.MainWindow:Show();Recount:RefreshMainWindow()</Binding>
 	<Binding name="RECOUNT_HIDE_MAIN">Recount.MainWindow:Hide()</Binding>
 	<Binding name="RECOUNT_TOGGLE_MAIN">if Recount.MainWindow:IsShown() then Recount.MainWindow:Hide() else Recount.MainWindow:Show();Recount:RefreshMainWindow() end</Binding>
+	<Binding name="RECOUNT_TOGGLE_PAUSE">Recount:SetGlobalDataCollect(not Recount.db.profile.GlobalDataCollect)</Binding>
 </Bindings>

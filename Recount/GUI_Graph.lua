@@ -3,8 +3,10 @@ local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 local me={}
 
-local revision = tonumber(string.sub("$Revision: 72353 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81350 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
+
+local _, _, _, tocversion =  GetBuildInfo()
 
 local GraphColors={
 	Damage={1.0,0.0,0.0,1.0},
@@ -1148,7 +1150,11 @@ function Recount:CreateGraphWindow()
 	end
 
 	theFrame.ScrollBar1=CreateFrame("SCROLLFRAME","Recount_GraphWindow_ScrollBar1",theFrame,"FauxScrollFrameTemplate")
+if tocversion == 30000 then
+	theFrame.ScrollBar1:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,20, Recount.GraphRefreshData) end)
+else
 	theFrame.ScrollBar1:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(20, Recount.GraphRefreshData) end)
+end
 	theFrame.ScrollBar1:SetPoint("TOPLEFT",theFrame.Rows[1],"TOPLEFT")	
 	theFrame.ScrollBar1:SetPoint("BOTTOMRIGHT",theFrame.Rows[10],"BOTTOMRIGHT")
 	Recount:SetupScrollbar("Recount_GraphWindow_ScrollBar1")
@@ -1216,7 +1222,11 @@ function Recount:CreateGraphWindow()
 	end
 
 	theFrame.ScrollBar2=CreateFrame("SCROLLFRAME","Recount_GraphWindow_ScrollBar2",theFrame,"FauxScrollFrameTemplate")
+if tocversion == 30000 then
+	theFrame.ScrollBar2:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,20, Recount.GraphRefreshCombat) end)
+else
 	theFrame.ScrollBar2:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(20, Recount.GraphRefreshCombat) end)
+end
 	theFrame.ScrollBar2:SetPoint("TOPLEFT",theFrame.TimeRows[1],"TOPLEFT")	
 	theFrame.ScrollBar2:SetPoint("BOTTOMRIGHT",theFrame.TimeRows[10],"BOTTOMRIGHT")
 	Recount:SetupScrollbar("Recount_GraphWindow_ScrollBar2")

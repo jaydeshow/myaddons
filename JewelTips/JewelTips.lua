@@ -1,5 +1,5 @@
 --[[
-	JewelTips 0.5.7
+	JewelTips 0.6.0
 ]]--
 
 local L = AceLibrary("AceLocale-2.2"):new("JewelTips")
@@ -150,10 +150,28 @@ JewelTips.Jewels = {
 	[931] = {GetSpellInfo(13948), 13948},
 	[943] = {GetSpellInfo(13529), 13529},
 	[963] = {GetSpellInfo(13937), 13937},
+	[983] = {
+		multi = true,
+		INVTYPE_FEET = {GetSpellInfo(44589), 44589}, --Enchant Boots - Superior Agility
+		INVTYPE_CLOAK = {GetSpellInfo(44500), 44500}, --Enchant Cloak - Superior Agility
+	},
 	[1071] = {GetSpellInfo(34009), 34009},
+	[1075] = {
+		multi = true,
+		INVTYPE_FEET = {GetSpellInfo(44528), 44528}, --Enchant Boots - Greater Fortitude
+		INVTYPE_SHIELD = {GetSpellInfo(44597), 44597}, --Enchant Shield - Exceptional Stamina
+	},
+	[1103] = {GetSpellInfo(44633), 44633}, --Enchant Weapon - Exceptional Agility
 	[1144] = {GetSpellInfo(33990), 33990}, -- +15 Spirit
+	[1147] = {GetSpellInfo(44593), 44593}, --Enchant Bracers - Major Spirit
+	[1225] = {GetSpellInfo(44497), 44497}, --Enchant Weapon - Exceptional Intellect
+	[1231] = {GetSpellInfo(44510), 44510}, --Enchant Weapon - Exceptional Spirit
 	[1257] = {GetSpellInfo(34005), 34005}, --+15 Arcane Resistance
+	[1262] = {GetSpellInfo(44596), 44596}, --Enchant Cloak - Superior Arcane Resistance
+	[1354] = {GetSpellInfo(44556), 44556}, --Enchant Cloak - Superior Fire Resistance
+	[1400] = {GetSpellInfo(44494), 44494}, --Enchant Cloak - Superior Nature Resistance
 	[1441] = {GetSpellInfo(34006), 34006},
+	[1446] = {GetSpellInfo(44590), 44590}, --Enchant Cloak - Superior Shadow Resistance
 	[1483] = 11622, --Lesser Arcanum of Rumination
 	[1503] = 11642, --Lesser Arcanum of Constitution
 	[1504] = 11643, --Lesser Arcanum of Tenacity
@@ -163,8 +181,12 @@ JewelTips.Jewels = {
 	[1508] = 11647, --Lesser Arcanum of Voracity
 	[1509] = 11648, --Lesser Arcanum of Voracity
 	[1510] = 11649, --Lesser Arcanum of Voracity
-	[1593] = {GetSpellInfo(34002), 34002},-- +24 Attack Power
-	[1594] = {GetSpellInfo(33996), 33996},-- +26 Attack Power
+	[1593] = {GetSpellInfo(34002), 34002}, -- +24 Attack Power
+	[1594] = {GetSpellInfo(33996), 33996}, -- +26 Attack Power
+	[1597] = {GetSpellInfo(44513), 44513}, --Enchant Gloves - Greater Assault
+	[1600] = {GetSpellInfo(44575), 44575}, --Enchant Bracers - Greater Assault
+	[1601] = {GetSpellInfo(44645), 44645}, --Enchant Ring - Assault
+	[1626] = {GetSpellInfo(44630), 44630}, --Enchant Weapon - Greater Savagery
 	[1704] = 12645, --Thorium Spike (20-30)
 	[1843] = 15564, --Rugged Armor Kit
 	[1883] = {GetSpellInfo(20008), 20008},
@@ -177,19 +199,23 @@ JewelTips.Jewels = {
 		INVTYPE_SHIELD = {GetSpellInfo(27947), 27947},
 	},
 	[1889] = {GetSpellInfo(20015), 20015},
-	[1891] = {GetSpellInfo(27905), 27905},--+4 All Stats
-	[1892] = {GetSpellInfo(20026), 20026},-- +100 Health
-	[1893] = {GetSpellInfo(20028), 20028},--+100 Mana
+	[1891] = {GetSpellInfo(27905), 27905}, --+4 All Stats
+	[1892] = {GetSpellInfo(20026), 20026}, -- +100 Health
+	[1893] = {GetSpellInfo(20028), 20028}, --+100 Mana
 	[1894] = {GetSpellInfo(20029), 20029}, --Icy Weapon
 	[1896] = {GetSpellInfo(20030), 20030},
 	[1897] = {GetSpellInfo(13695), 13695}, --+5 Weapon Damage
-	[1898] = {GetSpellInfo(20032), 20032}, --life stolen        
-	[1899] = {GetSpellInfo(20033), 20033},--Unholy Weapon
+	[1898] = {GetSpellInfo(20032), 20032}, --life stolen
+	[1899] = {GetSpellInfo(20033), 20033}, --Unholy Weapon
 	[1900] = {GetSpellInfo(20034), 20034}, -- Crusader
 	[1903] = {GetSpellInfo(20035), 20035},
 	[1904] = {GetSpellInfo(20036), 20036},
 	[1950] = {GetSpellInfo(46594), 46594}, --+15 Defense Rating
+	[1951] = {GetSpellInfo(44591), 44591}, --Enchant Cloak - Titanweave
+--	[1951] = {GetSpellInfo(47766), 47766}, --Enchant Chest - Greater Defense
+	[1952] = {GetSpellInfo(44489), 44489}, --Enchant Shield - Defense
 	[2322] = {GetSpellInfo(33999), 33999},
+	[2327] = {GetSpellInfo(44634), 44634}, --Enchant Bracers - Major Healing
 	[2343] = {GetSpellInfo(34010), 34010},
 	[2376] = {GetSpellInfo(33991), 33991}, -- changed?
 	[2443] = {GetSpellInfo(21931), 21931},
@@ -259,7 +285,11 @@ JewelTips.Jewels = {
 	[2658] = {GetSpellInfo(27954), 27954},
 	[2659] = {GetSpellInfo(27957), 27957}, -- +150 Health
 	[2660] = {GetSpellInfo(27958), 27958}, -- +150 Mana
-	[2661] = {GetSpellInfo(27960), 27960}, -- +6 All Stats
+	[2661] = {
+		multi = true,
+		INVTYPE_CHEST = {GetSpellInfo(27960), 27960}, -- +6 All Stats
+		INVTYPE_WRIST = {GetSpellInfo(44616), 44616}, --Enchant Bracers - Greater Stats
+	},
 	[2662] = {GetSpellInfo(27961), 27961},
 	[2664] = {GetSpellInfo(27962), 27962},
 	[2665] = {GetSpellInfo(27964), 27964}, -- +35 Spirit (NYI)
@@ -310,7 +340,11 @@ JewelTips.Jewels = {
 	[2933] = {GetSpellInfo(33992), 33992},
 	[2934] = {GetSpellInfo(33993), 33993},
 	[2935] = {GetSpellInfo(33994), 33994},
-	[2937] = {GetSpellInfo(33997), 33997},
+	[2937] = {
+		multi = true,
+		INVTYPE_HAND = {GetSpellInfo(33997), 33997}, --+20 Spell
+		INVTYPE_WRIST = {GetSpellInfo(44635), 44635}, --Enchant Bracers - Greater Spellpower
+	},
 	[2938] = {GetSpellInfo(34003), 34003},
 	[2939] = {GetSpellInfo(34007), 34007},
 	[2940] = {GetSpellInfo(34008), 34008},
@@ -354,13 +388,69 @@ JewelTips.Jewels = {
 	[3013] = 29536, --Nethercleft Leg Armor
 	[3096] = 30846, --Glyph of the Outcast
 	[3150] = {GetSpellInfo(33991), 33991}, --New enchant id?
-	[3222] = {GetSpellInfo(42620), 42620}, --+20 Agility
+	[3222] = {
+		multi = true,
+		INVTYPE_WEAPON = {GetSpellInfo(42620), 42620}, --+20 Agility
+		INVTYPE_WEAPONMAINHAND = {GetSpellInfo(42620), 42620}, --+20 Agility
+		INVTYPE_WEAPONOFFHAND = {GetSpellInfo(42620), 42620}, --+20 Agility
+		INVTYPE_2HWEAPON = {GetSpellInfo(42620), 42620}, --+20 Agility
+		INVTYPE_HAND = {GetSpellInfo(44529), 44529}, --Enchant Gloves - Major Agility
+	},
 	[3223] = 33185, --Adamantite Weapon Chain
 	[3225] = {GetSpellInfo(42974), 42974},	--Executioner
 	[3229] = {GetSpellInfo(44383), 44383}, --+12 Resilience Rating
+	[3230] = {GetSpellInfo(44483), 44483}, --Enchant Cloak - Superior Frost Resistance
+	[3231] = {GetSpellInfo(44598), 44598}, --Enchant Bracer - Expertise
+	[3232] = {GetSpellInfo(47901), 47901}, --Enchant Boots - Tuskarr's Vitality
+	[3234] = {GetSpellInfo(44488), 44488}, --Enchant Gloves - Greater Spell Strike
+	[3236] = {GetSpellInfo(44492), 44492}, --Enchant Chest - Major Health
+	[3237] = {GetSpellInfo(44496), 44496}, --Enchant Weapon - Exceptional Striking
+	[3239] = {GetSpellInfo(44524), 44524}, --Enchant Weapon - Icebreaker
+	[3240] = {
+		multi = true,
+		INVTYPE_FINGER = {GetSpellInfo(44638), 44638}, --Enchant Ring - Greater Healing Power
+		INVTYPE_HAND = {GetSpellInfo(44558), 44558}, --Enchant Gloves - Exceptional Healing
+	},
+	[3241] = {GetSpellInfo(44576), 44576}, --Enchant Weapon - Lifeward
+	[3243] = {GetSpellInfo(44582), 44582}, --Enchant Cloak - Spell Piercing
+	[3245] = {GetSpellInfo(44588), 44588}, --Enchant Chest - Exceptional Resilience
+	[3246] = {GetSpellInfo(44592), 44592}, --Enchant Gloves - Exceptional Spellpower
+	[3247] = {GetSpellInfo(44595), 44595}, --Enchant Weapon - Scourgebane
+	[3249] = {GetSpellInfo(44612), 44612}, --Enchant Gloves - Greater Blasting
+	[3250] = {GetSpellInfo(44613), 44613}, --Enchant Boots - Icewalker
+	[3251] = {GetSpellInfo(44621), 44621}, --Enchant Weapon - Giant Slayer
+	[3252] = {GetSpellInfo(44623), 44623}, --Enchant Chest - Super Stats
+	[3253] = {GetSpellInfo(44625), 44625}, --Enchant Gloves - Armsman
+	[3255] = {GetSpellInfo(44629), 44629}, --Enchant Weapon - Exceptional Spellpower
+	[3256] = {GetSpellInfo(44631), 44631}, --Enchant Cloak - Shadow Armor
+	[3257] = {GetSpellInfo(44632), 44632}, --Enchant Weapon - Exceptional Healing
 	[3260] = 34207, --Glove Reinforcements
 	[3269] = 34836, --Spun Truesilver Fishing Line
 	[3273] = {GetSpellInfo(46578), 46578}, --Deathfrost 
+	[3295] = {
+		INVTYPE_CLOAK = {GetSpellInfo(47898), 47898}, --Enchant Cloak - Haste
+		INVTYPE_RING = {GetSpellInfo(44637), 44637}, --Enchant Ring - Haste
+	},
+	[3296] = {GetSpellInfo(47899), 47899}, --Enchant Cloak - Wisdom
+	[3300] = {GetSpellInfo(44636), 44636}, --Enchant Ring - Greater Spellpower
+
+--	[3322] = {GetSpellInfo(49142), 49142}, --Frozen Rune Weapon
+	[3329] = 38375, --Borean Armor Kit
+	[3330] = 38376, --Heavy Borean Armor Kit
+	[3365] = {GetSpellInfo(53323), 53323}, --Rune of Swordshattering
+	[3366] = {GetSpellInfo(53331), 53331}, --Rune of Lichbane
+	[3367] = {GetSpellInfo(53342), 53342}, --Rune of Spellshattering
+	[3368] = {GetSpellInfo(53344), 53344}, --Rune of the Fallen Crusader
+	[3369] = {GetSpellInfo(53341), 53341}, --Rune of Cinderglacier
+	[3370] = {GetSpellInfo(53343), 53343}, --Rune of Razorice
+	[3594] = {GetSpellInfo(54446), 54446}, --Rune of Swordbreaking
+	[3595] = {GetSpellInfo(54447), 54447}, --Rune of Spellbreaking
+
+	[3718] = 41601, --Shining Spellthread
+	[3720] = 41603, --Azure Spellthread
+	[3729] = 41611, --Titanium Belt Buckle
+	[3731] = 41976, --Titanium Weapon Chain
+--	[] = {GetSpellInfo(), }, --
 
 	[5000] = 0
 }

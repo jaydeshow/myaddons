@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-09-01 01:21:33 -0400 (Mon, 01 Sep 2008) $
-$Rev: 81210 $
+$Date: 2008-09-02 16:18:09 -0400 (Tue, 02 Sep 2008) $
+$Rev: 81287 $
 
 ****************************************************************************************
 ]]--
@@ -53,7 +53,7 @@ local function CalculateChildHeight()
 	local RecipeFrame = AckisRecipeListRecipe1
 
 	while (RecipeFrame ~= nil) do
-		tempheight = RecipeFrame:GetHeight() + RecipeFrame.RecipeAquireText:GetHeight() + tempheight
+		tempheight = RecipeFrame:GetHeight() + RecipeFrame.RecipeAcquireText:GetHeight() + tempheight
 		RecipeFrame = RecipeFrame.NextRecipe
 	end
 
@@ -64,6 +64,7 @@ end
 -- Adds recipe text info to the frames
 -- Function to run when the + is clicked in the frame.  Will expand the recipe name and print out how to obtain it.
 
+-- Convert this to use self
 local function OnClickExpandRecipe()
 
 	if (this.IsPushed == false) then
@@ -87,20 +88,20 @@ local function OnClickExpandRecipe()
 		this.IsPushed = true
 
 		-- Show expanded text
-		if (addon.MissingRecipeListing[RecipeText] == nil) then
-			this.RecipeAquireText:SetText(addon:White(L["Unknown"]))
+		if (addon.RecipeListing[RecipeText] == nil) then
+			this.RecipeAcquireText:SetText(addon:White(L["Unknown"]))
 		else
-			this.RecipeAquireText:SetText(addon:White("    - " .. addon.MissingRecipeListing[RecipeText]["Acquire"]))
+			this.RecipeAcquireText:SetText(addon:White("    - " .. addon.RecipeListing[RecipeText]["Acquire"]))
 		end
 
-		this.RecipeAquireText:SetWidth(300)
+		this.RecipeAcquireText:SetWidth(300)
 
-		this.RecipeAquireText:Show()
+		this.RecipeAcquireText:Show()
 
 		-- Reposition the next recipe entry
 		if (this.NextRecipe ~= nil) then
 			this.NextRecipe:ClearAllPoints()
-			this.NextRecipe:SetPoint("TOPLEFT", this.RecipeAquireText, "BOTTOMLEFT", -20, -5)
+			this.NextRecipe:SetPoint("TOPLEFT", this.RecipeAcquireText, "BOTTOMLEFT", -20, -5)
 		end
 
 	else
@@ -114,8 +115,8 @@ local function OnClickExpandRecipe()
 		this.IsPushed = false
 
 		-- Hide expanded text
-		this.RecipeAquireText:SetText("")
-		this.RecipeAquireText:Hide()
+		this.RecipeAcquireText:SetText("")
+		this.RecipeAcquireText:Hide()
 
 		-- Reposition the next recipe entry
 		if (this.NextRecipe ~= nil) then
@@ -130,15 +131,16 @@ end
 
 -- Adds recipe text info to the frames
 
-local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedList, CurrentSpeciality)
+local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
 
 	local OldFrame = nil
 	local RecipeFrame = nil
 	local RecipeCount = 1
 	
-	for i, RecipeName in ipairs(SortedList) do
+	for i, RecipeName in ipairs(addon.SortedRecipeIndex) do
 
-		if (addon:CheckDisplayRecipe(RecipeName, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)) then
+		-- Only display unknown recipes and recipes which are flagged for display
+		if (addon.RecipeListing[RecipeName]["Known"] == false) and (addon.RecipeListing[RecipeName]["Display"] == true) then
 
 			-- If the frame isn't created, then create it and set the parameters for it, otherwise use the current frame (recycle it)
 			if (not _G["AckisRecipeListRecipe" .. RecipeCount]) then
@@ -156,13 +158,13 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 							)
 				RecipeFrame.IsPushed = false
 
-				-- Create aquire text for the recipe
-				RecipeFrame.RecipeAquireText = RecipeFrame:CreateFontString("AckisRecipeListRecipe" .. RecipeCount .. "Text", "DIALOG")
+				-- Create acquire text for the recipe
+				RecipeFrame.RecipeAcquireText = RecipeFrame:CreateFontString("AckisRecipeListRecipe" .. RecipeCount .. "Text", "DIALOG")
 
-				RecipeFrame.RecipeAquireText:ClearAllPoints()
-				RecipeFrame.RecipeAquireText:SetPoint("TOPLEFT", RecipeFrame, "BOTTOMLEFT", 20, 0)
-				RecipeFrame.RecipeAquireText:SetFontObject("GameFontNormalSmall")
-				RecipeFrame.RecipeAquireText:SetJustifyH("LEFT")
+				RecipeFrame.RecipeAcquireText:ClearAllPoints()
+				RecipeFrame.RecipeAcquireText:SetPoint("TOPLEFT", RecipeFrame, "BOTTOMLEFT", 20, 0)
+				RecipeFrame.RecipeAcquireText:SetFontObject("GameFontNormalSmall")
+				RecipeFrame.RecipeAcquireText:SetJustifyH("LEFT")
 
 			else
 
@@ -198,16 +200,16 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 			local sorttype = addon.db.profile.sorting
 
 			if (sorttype == "Skill") or (sorttype == "Acquisition") then
-				if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
-					temprecipetext = addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
+				if (addon.RecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
+					temprecipetext = addon:Red("[" .. addon.RecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
 				else
-					temprecipetext = addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
+					temprecipetext = addon:White("[" .. addon.RecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
 				end
 			elseif (sorttype == "Name") then
-				if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
-					temprecipetext = addon:White(RecipeName) .. " - " .. addon:Red("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
+				if (addon.RecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
+					temprecipetext = addon:White(RecipeName) .. " - " .. addon:Red("[" .. addon.RecipeListing[RecipeName]["Level"] .. "]")
 				else
-					temprecipetext = addon:White(RecipeName) .. " - " .. addon:White("[" .. addon.MissingRecipeListing[RecipeName]["Level"] .. "]")
+					temprecipetext = addon:White(RecipeName) .. " - " .. addon:White("[" .. addon.RecipeListing[RecipeName]["Level"] .. "]")
 				end
 			end
 
@@ -215,9 +217,9 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 			RecipeFrame:SetScript("OnEnter", function(this)
 					GameTooltip_SetDefaultAnchor(GameTooltip, this)
 					if (addon.RecipeListing[RecipeName]["RecipeLink"] ~= nil) then
-						GameTooltip:SetHyperlink(temprecipetext .. addon.br .. addon.RecipeListing[RecipeName]["RecipeLink"] .. addon.br ..  addon.MissingRecipeListing[RecipeName]["Acquire"])
+						GameTooltip:SetHyperlink(temprecipetext .. addon.br .. addon.RecipeListing[RecipeName]["RecipeLink"] .. addon.br ..  addon.RecipeListing[RecipeName]["Acquire"])
 					else
-						GameTooltip:SetText(temprecipetext .. addon.br ..  addon.MissingRecipeListing[RecipeName]["Acquire"]) 
+						GameTooltip:SetText(temprecipetext .. addon.br ..  addon.RecipeListing[RecipeName]["Acquire"]) 
 					end
 					GameTooltip:Show()
 				end
@@ -227,6 +229,7 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedLi
 			RecipeCount = RecipeCount + 1
 		end
 	end
+
 end
 
 -- Closes the frame and cleans sets everything that was displayed to nil
@@ -238,8 +241,8 @@ function addon:CloseWindow()
 
 	-- Clear x number of entries for all missing recipes
 	while (RecipeFrame ~= nil) do
-		RecipeFrame.RecipeAquireText:SetText("")
-		RecipeFrame.RecipeAquireText:Hide()
+		RecipeFrame.RecipeAcquireText:SetText("")
+		RecipeFrame.RecipeAcquireText:Hide()
 
 		RecipeFrame:SetText("")
 		RecipeFrame:Hide()
@@ -252,8 +255,8 @@ function addon:CloseWindow()
 			RecipeFrame.IsPushed = false
 		end
 
-		RecipeFrame.RecipeAquireText:SetText("")
-		RecipeFrame.RecipeAquireText:Hide()
+		RecipeFrame.RecipeAcquireText:SetText("")
+		RecipeFrame.RecipeAcquireText:Hide()
 		RecipeFrame = RecipeFrame.NextRecipe
 	end
 
@@ -603,7 +606,7 @@ function addon.ToggleFilters( )
 	local yPos = addon.Frame:GetBottom()
 	if ( addon.Frame._Expanded == true ) then
 		-- Adjust the frame size and texture
-		addon.Frame:Hide()
+--		addon.Frame:Hide()
 		addon.Frame:ClearAllPoints()
 		addon.Frame:SetWidth(293)
 		addon.Frame:SetHeight(447)
@@ -637,10 +640,10 @@ function addon.ToggleFilters( )
 		ARL_ApplyButton:Hide()
 
 		-- and finally, show our frame
-		addon.Frame:Show()
+--		addon.Frame:Show()
 	else
 		-- Adjust the frame size and texture
-		addon.Frame:Hide()
+--		addon.Frame:Hide()
 		addon.Frame:ClearAllPoints()
 		addon.Frame:SetWidth(444)
 		addon.Frame:SetHeight(447)
@@ -665,7 +668,7 @@ function addon.ToggleFilters( )
 		ARL_ApplyButton:Show()
 
 		-- and finally, show our frame
-		addon.Frame:Show()
+--		addon.Frame:Show()
 	end
 	-- Reset our title
 	addon.resetTitle()
@@ -981,14 +984,62 @@ end
 
 -- What to do if someone clicks on a recipe button
 function addon.RecipeItem_OnClick( button )
-end
-
--- What to do if someone click on a plus button
-function addon.PlusItem_OnClick( button )
+	local clickedIndex = addon.RecipeListButton[button].sI
+	local isRecipe = addon.DisplayStrings[clickedIndex].IsRecipe
+	local isExpanded = addon.DisplayStrings[clickedIndex].IsExpanded
+	local dString = addon.DisplayStrings[clickedIndex].String
+	local traverseIndex = 0
+	-- three possibilities here
+	-- 1) We clicked on the recipe button on a closed recipe
+	-- 2) We clicked on the recipe button of an open recipe
+	-- 3) we clicked on the expanded text of an open recipe
+	if ( isRecipe ) then
+		if ( isExpanded ) then
+			-- get rid of our expanded lines
+			traverseIndex = clickedIndex + 1
+			while ( addon.DisplayStrings[traverseIndex].IsRecipe == false ) do
+				tremove( addon.DisplayStrings, traverseIndex )
+			end
+			addon.DisplayStrings[clickedIndex].IsExpanded = false
+		else
+			-- add in our expanded lines
+			-- for the moment, just add the acquire text without parsing out \n's
+			local insertIndex = clickedIndex + 1
+			local t = {}
+			t.String = addon.RecipeListing[dString]["Acquire"]
+			t.IsRecipe = false
+			t.IsExpanded = true
+			tinsert( addon.DisplayStrings, insertIndex, t )
+			-- set our current recipe to expanded
+			addon.DisplayStrings[clickedIndex].IsExpanded = true
+		end
+	else
+		-- this inherently implies that we're on an expanded recipe
+		-- first, back up in the list of buttons until we find our recipe line
+		traverseIndex = clickedIndex - 1
+		while ( addon.DisplayStrings[traverseIndex].IsRecipe == false ) do
+			traverseIndex = traverseIndex - 1
+		end
+		-- unexpand it
+		addon.DisplayStrings[traverseIndex].IsExpanded = false
+		-- now remove the expanded lines until we get to a recipe again
+		traverseIndex = traverseIndex + 1
+		while ( addon.DisplayStrings[traverseIndex].IsRecipe == false ) do
+			tremove( addon.DisplayStrings, traverseIndex )
+		end
+	end
+	-- finally, call our scrollframe updater
+	addon.RecipeList_Update()
 end
 
 -- Scrollframe update stuff
 function addon.RecipeList_Update()
+	-- Clear out the current buttons
+	for i = 1, addon.maxVisibleRecipes do
+		addon.RecipeListButton[i]:SetText( "" )
+		addon.RecipeListButton[i].sI = 0
+		addon.PlusListButton[i]:Hide()
+	end
 	local entries = #addon.DisplayStrings
 
 	FauxScrollFrame_Update( ARL_RecipeScrollFrame, entries, addon.maxVisibleRecipes, 16 )
@@ -1007,10 +1058,23 @@ function addon.RecipeList_Update()
 		if ( addon.DisplayStrings[stringsIndex].IsRecipe ) then
 			-- display the + symbol
 			addon.PlusListButton[buttonIndex]:Show()
+			-- Is it expanded or not?
+			if ( addon.DisplayStrings[stringsIndex].IsExpanded ) then
+				addon.PlusListButton[buttonIndex]:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
+				addon.PlusListButton[buttonIndex]:SetPushedTexture("Interface\\Buttons\\UI-MinusButton-Down")
+				addon.PlusListButton[buttonIndex]:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
+				addon.PlusListButton[buttonIndex]:SetDisabledTexture("Interface\\Buttons\\UI-MinusButton-Disabled")
+			else
+				addon.PlusListButton[buttonIndex]:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
+				addon.PlusListButton[buttonIndex]:SetPushedTexture("Interface\\Buttons\\UI-PlusButton-Down")
+				addon.PlusListButton[buttonIndex]:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
+				addon.PlusListButton[buttonIndex]:SetDisabledTexture("Interface\\Buttons\\UI-PlusButton-Disabled")
+			end
 		else
 			addon.PlusListButton[buttonIndex]:Hide()
 		end
 		addon.RecipeListButton[buttonIndex]:SetText( addon.DisplayStrings[stringsIndex].String )
+		addon.RecipeListButton[buttonIndex].sI = stringsIndex
 		buttonIndex = buttonIndex + 1
 		stringsIndex = stringsIndex + 1
 		if ( ( buttonIndex > addon.maxVisibleRecipes ) or
@@ -1493,19 +1557,66 @@ end
 
 -- This does the initial fillup of the DisplayStrings structure.
 -- This won't run if all we're doing is expanding/contracting a recipe
-function addon.initDisplayStrings( sortedList )
-	for i, RecipeName in ipairs( sortedList ) do
+function addon.initDisplayStrings()
+	addon.DisplayStrings = nil
+	addon.DisplayStrings = {}
+	for i, RecipeName in ipairs( addon.SortedRecipeIndex ) do
 		-- include filtering for search string here?
 		local t = {}
 		t.String = RecipeName
 		t.IsRecipe = true
-		t.Expanded = false
+		t.IsExpanded = false
 		tinsert( addon.DisplayStrings, i, t )
 	end
 end
 
+-- This does an initial fillup of the DisplayStrings, as above.
+-- However, in this case, it expands every recipe
+function addon.expandallDisplayStrings( )
+	addon.DisplayStrings = nil
+	addon.DisplayStrings = {}
+	local insertIndex = 1
+	for i, RecipeName in ipairs( addon.SortedRecipeIndex ) do
+		-- include filtering for search string here?
+		local t = {}
+		t.String = RecipeName
+		t.IsRecipe = true
+		if ( addon.RecipeListing[RecipeName]["Acquire"] ) then
+			t.IsExpanded = true
+			tinsert( addon.DisplayStrings, insertIndex, t )
+			insertIndex = insertIndex + 1
+			-- for now, just insert it as a single string. eventually, I need to pick
+			-- this apart into individual strings...
+			t = {}
+			t.String = addon.RecipeListing[RecipeName]["Acquire"]
+			t.IsRecipe = false
+			t.IsExpanded = true
+			tinsert( addon.DisplayStrings, insertIndex, t )
+			insertIndex = insertIndex + 1
+		else
+			t.IsExpanded = false
+			tinsert( addon.DisplayStrings, insertIndex, t )
+			insertIndex = insertIndex + 1
+		end
+	end
+end
+
+function addon.ExpandAll_Clicked( )
+	-- Called when the expand all button is clicked
+	if ( ARL_ExpandButton:GetText() == L["ExpandAll"] ) then
+		ARL_ExpandButton:SetText( L["ContractAll"] )
+		addon:TooltipDisplay( ARL_ExpandButton, L["CONTRACT_TT"] )
+		addon.expandallDisplayStrings( addon.SortedRecipeIndex )
+	else
+		ARL_ExpandButton:SetText( L["ExpandAll"] )
+		addon:TooltipDisplay( ARL_ExpandButton, L["EXPAND_TT"] )
+		addon.initDisplayStrings( addon.SortedRecipeIndex )
+	end
+	addon.RecipeList_Update()
+end
+
 -- Creates the initial frame to display recipes into
-function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
+function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
 
 	addon.ResetOkayARL = false
 	addon.CurrentProfession = CurrentProfession
@@ -1757,7 +1868,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 		addon.Frame:Show()
 
 		-- Add frame elements
-		AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
+		AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
 
 		-- Include filtered recipes in overall count
 		if (addon.db.profile.includefiltered) then
@@ -1850,6 +1961,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				21, 40, "TOPRIGHT", ARL_SortButton, "BOTTOMLEFT", -26, -6, "GameFontNormalSmall",
 				"GameFontHighlightSmall", L["ExpandAll"], "CENTER", L["EXPAND_TT"], 1 )
 --			ARL_ExpandButton:SetFont( [[Fonts\ARIALN.TTF]], 11 )
+				ARL_ExpandButton:SetScript( "OnClick", addon.ExpandAll_Clicked )
 
 			local ARL_SearchButton = addon:GenericCreateButton( "ARL_SearchButton", addon.Frame,
 				25, 74, "TOPLEFT", ARL_SortButton, "BOTTOMRIGHT", 41, -2, "GameFontNormalSmall",
@@ -1884,7 +1996,7 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 					Temp_Recipe:SetPoint( "TOPLEFT", addon.RecipeListButton[i-1], "BOTTOMLEFT", 0, 0 )
 				end
 				Temp_Plus:SetScript( "OnClick", function ()
-					addon.PlusItem_OnClick( i )
+					addon.RecipeItem_OnClick( i )
 				end )
 				Temp_Recipe:SetScript( "OnClick", function ()
 					addon.RecipeItem_OnClick( i )
@@ -2445,15 +2557,20 @@ function addon:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedReci
 				[63] = { cb = ARL_RepVioletEyeCB,			svroot = addon.db.profile.filters.rep, svval = "violeteye" },
 			}
 
-			-- Reset our addon title text
-			addon.resetTitle()
-
-			-- Take our sorted list, and fill up DisplayStrings
-			addon.initDisplayStrings( SortedRecipeIndex )
-
-			-- And update our scrollframe
-			addon.RecipeList_Update( )
 		end
+		-- We'll be in "ExpandAll" mode to start with. Make sure the button knows that:
+		ARL_ExpandButton:SetText( L["ExpandAll"] )
+		addon:TooltipDisplay( ARL_ExpandButton, L["EXPAND_TT"] )
+
+		-- Reset our addon title text
+		addon.resetTitle()
+
+		-- Take our sorted list, and fill up DisplayStrings
+		addon.initDisplayStrings( )
+
+		-- And update our scrollframe
+		addon.RecipeList_Update( )
+		addon.Frame:Show()
 	end
 end
 

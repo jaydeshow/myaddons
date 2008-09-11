@@ -61,7 +61,7 @@ local function recyclePin(pin)
 	pin.zone = nil
 	pin.title = nil
 	pin.worldmap = false
-	pin.id = 0
+	pin.nodeID = 0
 	pin.keep = nil
 	pinCache[pin] = true
 end
@@ -100,9 +100,17 @@ local function showPin(self)
 		
 		local t = db.trackColors
 		local text = format(tooltip_template, t[self.nodeType].Alpha*255, t[self.nodeType].Red*255, t[self.nodeType].Green*255, t[self.nodeType].Blue*255, self.title)
+		local lvl = GatherMate.nodeMinHarvest[self.nodeType][self.nodeID]
+		if lvl then
+			text = text..format(" (%d)", lvl)
+		end
 		for id, pin in pairs(pinset) do
 			if MouseIsOver(pin) and pin.title and pin ~= self then
 				text = text .. "\n" .. format(tooltip_template, t[pin.nodeType].Alpha*255, t[pin.nodeType].Red*255, t[pin.nodeType].Green*255, t[pin.nodeType].Blue*255, pin.title)
+				local lvl = GatherMate.nodeMinHarvest[pin.nodeType][pin.nodeID]
+				if lvl then
+					text = text..format(" (%d)", lvl)
+				end
 			end
 		end
 		tooltip:SetText(text)
@@ -119,9 +127,13 @@ end
 	Pin click handler
 ]]
 local function pinClick(self, button)
-	if button == "RightButton"  and self.worldmap then
+	if button == "RightButton" and self.worldmap then
 		pinClickedOn = self
 		ToggleDropDownMenu(1, nil, GatherMate_GenericDropDownMenu, self:GetName(), 0, 0)
+	elseif self.worldmap == false then
+		-- This "simulates" clickthru on the minimap to ping the minimap, by roughknight
+		local point, parent, relPoint, x, y = self:GetPoint()
+		Minimap:PingLocation(x, y)
 	end
 end
 --[[
@@ -383,9 +395,9 @@ function Display:getMapPin()
 	texture:SetTexture(trackingCircle)
 	texture:SetTexCoord(0, 1, 0, 1)
 	pin:RegisterForClicks("LeftButtonUp", "RightButtonUp");
-	pin:SetScript("OnEnter", showPin);
-	pin:SetScript("OnLeave", hidePin);
-	pin:SetScript("OnClick", pinClick);
+	pin:SetScript("OnEnter", showPin)
+	pin:SetScript("OnLeave", hidePin)
+	pin:SetScript("OnClick", pinClick)
 	pin:Hide()
 	return pin
 end
@@ -400,6 +412,7 @@ function Display:addWorldPin(coord, nodeID, nodeType, zone, index)
 		pin.coords = coord
 		pin.title = GatherMate:GetNameForNode(nodeType, nodeID)
 		pin.zone = zone
+		pin.nodeID = nodeID
 		pin.nodeType = nodeType
 		pin.worldmap = true
 		pin:SetParent(WorldMapButton)

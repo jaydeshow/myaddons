@@ -311,8 +311,14 @@ local sortedFilter = setmetatable({}, {__index = function(t, k)
 			new[name] = name
 		end
 	else
+		local minHarvestTable = GatherMate.nodeMinHarvest[k]
 		for name, id in pairs(GatherMate.nodeIDs[k]) do
-			new[name] = name
+			local lvl = minHarvestTable[id]
+			if lvl then
+				new[name] = "("..lvl..") "..name
+			else
+				new[name] = name
+			end
 		end
 	end
 	rawset(t, k, new)

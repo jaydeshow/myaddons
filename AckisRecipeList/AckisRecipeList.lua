@@ -1,8 +1,8 @@
 ﻿--[[
 ************************************************************************
 AckisRecipeList
-$Date: 2008-09-01 02:51:17 -0400 (Mon, 01 Sep 2008) $
-$Rev: 81212 $
+$Date: 2008-09-03 23:32:22 -0400 (Wed, 03 Sep 2008) $
+$Rev: 81332 $
 
 Author: Ackis on Illidan US Horde
 GUI done by Zhinjio
@@ -93,9 +93,9 @@ Recipe Database:
 		-- 37 = Ammo
 
 	There are additional flags based off of:
-		-- Reputation
-		-- Player class
-		-- Player tradeskill speciality
+		-- Reputation (All reps in the game that have recipes)
+		-- Player class (All classes in the game)
+		-- Player tradeskill speciality (All specific tradeskill specialities)
 
 Feel free to update any recipes with flags, new recipes, correcting
 the obtain information, etc.  Just please ensure you leave a detailed
@@ -216,6 +216,7 @@ References to CRAFTING window (event for example)
 addon:addTradeSkillBeast
 InitializeCraftRecipes(CurrentProfession)
 Remove addon:ScanCraftSkills()
+Anything else to do with hunters or rogue poisons
 
 Second half of Command Function and TextDump Function
 
@@ -231,7 +232,7 @@ local addon = AckisRecipeList
 -- We should probably clean thes up and use arguments/return values
 -- Global variables which are used between multiple files
 addon.RecipeListing = nil
-addon.MissingRecipeListing = nil
+addon.SortedRecipeIndex = nil
 addon.VendorList = nil
 addon.PetList = nil
 addon.SkillType = nil
@@ -268,7 +269,7 @@ addon.SortedProfessions = {
 	{ name = "Inscribing",		texture = "inscribe" },		-- 8
 	{ name = "Jewelcrafting",	texture = "jewel" },		-- 9
 	{ name = "Leatherworking",	texture = "leather" },		-- 10
-	{ name = "Poisong",			texture = "poison" },		-- 11
+	{ name = "Poisons",			texture = "poison" },		-- 11
 	{ name = "Smelting",		texture = "smelting" },		-- 12
 	{ name = "Tailoring",		texture = "tailor" },		-- 13
 }
@@ -1146,7 +1147,6 @@ end
 function addon:ResetVariables()
 
 	addon.RecipeListing = nil
-	addon.MissingRecipeListing = nil
 
 	addon.SkillType = nil
 	addon.FoundRecipes = nil
@@ -1161,7 +1161,6 @@ function addon:InitializeRecipeArray()
 
 	-- Reset namespace to be empty
 	addon.RecipeListing = {}
-	addon.MissingRecipeListing = {}
 
 	-- Sets the total number of recipes to 0.
 	addon.NumberOfRecipes = 0
@@ -1484,7 +1483,6 @@ function addon:ChatCommand(input)
 
 end
 
-
 --[[
 
 	Tradeskill functions
@@ -1493,13 +1491,127 @@ end
 
 -- Adds a specifc recipe to the recipe list array. 
 
-function addon:addTradeSkill(RecipeName, RecipeLevel, RecipeAquire, RecipeLink, ...)
+function addon:addTradeSkill(RecipeName, RecipeLevel, RecipeAcquire, RecipeLink, ...)
+
+	--[[
+
+	************************************************************************
+
+	Recipe Array Structure:
+	
+	SpellID = {
+		Level - Skill level at which you can learn the recipe
+		RecipeLink - String containing the recipe link
+		Known - Boolean determining if you know the recipe
+		Display - Boolean determing if we display the recipe or not
+		Item - ID of the item created by the recipe
+		Name - Name of the recipe
+		Acquire = {
+			ID = {
+				Type - Type of acquire (vendor, trainer, mob, quest, faction)
+				Name - Name of acquire info
+				Location - World location
+				Coords - Specific coordinates
+				Faction - Faction information (neutral/horde/alliance) <- Only for vendor, trainer, quest
+				ID - Quest, Mob or NPC ID
+				Limited Supply - Is the recipe limited supply (vendor only)
+			}
+		}
+		Flags = {
+			class:
+				deathknight
+				druid
+				hunter
+				mage
+				paladin
+				priest
+				rogue
+				warlock
+				warrior
+			specialty:
+				speciality1 (Gnomish engineering, primal mooncloth, elemental, weaponsmith)
+				speciality2 (Gobling engineering, shadowcloth, dragonscale, hammersmith)
+				speciality3 (spellcloth, tribal, axesmith)
+				speciality4 (swordsmith)
+				speciality5 (armorsmith)
+			obtain:
+				instance
+				raid
+				quest
+				seasonal
+				trainer
+				vendor
+				pvp
+				discovery
+				worlddrop
+				mobdrop
+			binding:
+				itembop
+				itemboe
+				recipebop
+				recipeboe
+			item:
+				armor:
+					cloth
+					leather
+					mail
+					plate
+					cloak
+					trinket
+					ring
+					necklace
+				weapon:
+					onehand
+					twohand
+					axe
+					sword
+					mace
+					polearm
+					dagger
+					staff
+					wand
+					thrown
+					bow
+					crossbow
+					ammo
+			player:
+				caster
+				melee
+				tank
+				healer
+			rep:
+				aldor
+				argentdawn
+				ashtonguedeathsworn
+				cenarioncircle
+				cenarionexpedition
+				hellfire
+				consortium
+				keepersoftime
+				lowercity
+				nagrand
+				scaleofthesands
+				scryer
+				shatar
+				shatteredsun
+				sporeggar
+				thoriumbrotherhood
+				timbermaw
+				violeteye
+				zandalar
+		}
+	}
+
+	************************************************************************
+	
+	]]--
+
 
 	-- Creates a table in the addon.RecipeListing table storing all information about a recipe
 	addon.RecipeListing[RecipeName] = {}
-	-- Set the name and aquire information
+	-- Set the name and acquire information
 	addon.RecipeListing[RecipeName]["Level"] = RecipeLevel
-	addon.RecipeListing[RecipeName]["Acquire"] = RecipeAquire
+	addon.RecipeListing[RecipeName]["Acquire"] = RecipeAcquire
 	addon.RecipeListing[RecipeName]["RecipeLink"] = RecipeLink
 
 	-- All recipes are unknown until scan occurs
@@ -1524,13 +1636,13 @@ end
 
 -- Same as previous function but uses spell ID to get recipe name
 
-function addon:addTradeSkillSpell(RecipeName, RecipeLevel, RecipeAquire, ...)
+function addon:addTradeSkillSpell(RecipeName, RecipeLevel, RecipeAcquire, ...)
 
 	if (GetSpellInfo(RecipeName) ~= nil) then
 		local spelllink = GetSpellLink(RecipeName)
-		self:addTradeSkill(GetSpellInfo(RecipeName), RecipeLevel, RecipeAquire, spelllink, ...)
+		self:addTradeSkill(GetSpellInfo(RecipeName), RecipeLevel, RecipeAcquire, spelllink, ...)
 	else
-		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, nil, ...)
+		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAcquire, nil, ...)
 		self:Print(format(L["SpellIDCache"],RecipeName))
 	end
 
@@ -1538,7 +1650,7 @@ end
 
 -- Same as previous but combines spell rank for beast training
 
-function addon:addTradeSkillBeast(RecipeName, RecipeLevel, RecipeAquire, ...)
+function addon:addTradeSkillBeast(RecipeName, RecipeLevel, RecipeAcquire, ...)
 
 	-- Variables named after friends on an old server because they both really wanted to be in my mod :P
 	local Jimo,Megadopolous = GetSpellInfo(RecipeName)
@@ -1546,9 +1658,9 @@ function addon:addTradeSkillBeast(RecipeName, RecipeLevel, RecipeAquire, ...)
 	if (Jimo ~= nil) then
 		local TempHunterSkill = Jimo .. " (" .. Megadopolous .. ")"
 		local spelllink = GetSpellLink(RecipeName)
-		self:addTradeSkill(TempHunterSkill, RecipeLevel, RecipeAquire, spelllink, ...)
+		self:addTradeSkill(TempHunterSkill, RecipeLevel, RecipeAcquire, spelllink, ...)
 	else
-		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAquire, nil, ...)
+		self:addTradeSkill(tostring(RecipeName), RecipeLevel, RecipeAcquire, nil, ...)
 		self:Print(format(L["SpellIDCache"],RecipeName))
 	end
 
@@ -1773,9 +1885,10 @@ do
 
 	function addon:CheckDisplayRecipe(RecipeName, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
-		-- For flag info see comments at start of file
+		-- For flag info see comments at start of file in comments
 
 		-- Update the rep table with appropiate flags
+		-- May want to change this so that we don't update the table for every scan
 		PopulateReptable()
 
 		-- Check to see if we're filtering this recipe due to search results or as a specific filter
@@ -1785,7 +1898,7 @@ do
 		end
 
 		-- Display all skill levels
-		if (addon.MissingRecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) and (not addon.db.profile.filters.general.skill) then
+		if (addon.RecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) and (not addon.db.profile.filters.general.skill) then
 			addon.FilteredRecipes = addon.FilteredRecipes + 1
 			return false
 		end
@@ -1794,9 +1907,9 @@ do
 		local classoccur = false
 		local displaycheck = true
 
-		if (addon.MissingRecipeListing[RecipeName]["Speciality"] ~= nil) then
+		if (addon.RecipeListing[RecipeName]["Speciality"] ~= nil) then
 
-			for i, CurrentCheck in pairs(addon.MissingRecipeListing[RecipeName]["Speciality"]) do
+			for i, CurrentCheck in pairs(addon.RecipeListing[RecipeName]["Speciality"]) do
 
 				-- Display trainer recipes
 				if (not addon.db.profile.filters.obtain.trainer) and (CurrentCheck == 1) then
@@ -2242,7 +2355,7 @@ end
 
 local function SortMissingSkill(Recipe1, Recipe2)
 
-	return addon.MissingRecipeListing[Recipe1]["Level"] < addon.MissingRecipeListing[Recipe2]["Level"]
+	return addon.RecipeListing[Recipe1]["Level"] < addon.RecipeListing[Recipe2]["Level"]
 
 end
 
@@ -2262,21 +2375,21 @@ local function SortMissingAcquisition(Recipe1, Recipe2)
 
 end
 
--- Sorts the addon.MissingRecipeListing with the given sorting function
+-- Sorts the RecipeListing with the given sorting function  and adds them to the global sorted recipe list
 
 function addon:SortMissingRecipes(SortFunction)
 
-	local TempRecipeSort = {}
-
-	-- Get all the indexes of the addon.MissingRecipeListing
-	for n in pairs(addon.MissingRecipeListing) do
-		table.insert(TempRecipeSort, n)
+--	local TempRecipeSort = {}
+	addon.SortedRecipeIndex = {}
+	-- Get all the indexes of the RecipeListing
+	for n in pairs(addon.RecipeListing) do
+		table.insert(addon.SortedRecipeIndex, n)
 	end
 
 	-- Sort the indexes according to the function
-	table.sort(TempRecipeSort, SortFunction)
+	table.sort(addon.SortedRecipeIndex, SortFunction)
 
-	return TempRecipeSort
+--	return TempRecipeSort
 end
 
 --[[
@@ -2445,27 +2558,6 @@ function addon:ScanTradeSkills()
 
 end
 
--- Scans the addon.RecipeListing adding all missing recipes to the addon.MissingRecipeListing
-
-function addon:ScanMissingRecipes()
-
-	-- Parse the recipe listing table, adding entries to the addon.MissingRecipeListing table
-	if (addon.RecipeListing ~= nil) then
-		local RecipeName = next(addon.RecipeListing, nil)
-			while (RecipeName ~= nil) do
-				-- If the recipe is not known then print out the info
-				if (addon.RecipeListing[RecipeName]["Known"] == false) then
-					addon.MissingRecipeListing[RecipeName] = {}
-					addon.MissingRecipeListing[RecipeName]["Level"] = addon.RecipeListing[RecipeName]["Level"]
-					addon.MissingRecipeListing[RecipeName]["Acquire"] = addon.RecipeListing[RecipeName]["Acquire"]
-					addon.MissingRecipeListing[RecipeName]["Speciality"] = addon.RecipeListing[RecipeName]["Speciality"]
-				end
-				-- Move on to the next entry in the table
-				RecipeName = next(addon.RecipeListing, RecipeName)
-			end
-	end
-end
-
 -- Scans your recipe book for Craft Skill Recipes (enchanting and beast training are handled differently than other trade skills)
 
 function addon:ScanCraftSkills()
@@ -2509,11 +2601,31 @@ function addon:ScanCraftSkills()
 	end
 end
 
+-- Description: Scans the recipe listing and updates the filters according to user preferences
+-- Expected result: The array of Recipes will have all Display flags toggles according to display preferences
+-- Input: Recipe Array, Skill level for current profession, name of current profession, and current profession speciality
+-- Output: None, array is passed as a reference
+
+function addon:UpdateFilters(Recipes, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
+
+	-- Parse through all the entries in the Recipe array
+	for RecipeName in pairs(Recipes) do
+
+		-- Determine if we are to display this recipe or not
+		local displayflag = self:CheckDisplayRecipe(RecipeName, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
+
+		-- Set the display flag
+		Recipes[RecipeName]["Display"] = displayflag
+
+	end
+
+end
+
 -- Main logic for add-on, will call all sub-functions
 
 function addon:AckisRecipeList_Command()
 
-	local CurrentProfession, CurrentProfessionLevel, CurrentSpeciality, SortedRecipeIndex
+	local CurrentProfession, CurrentProfessionLevel, CurrentSpeciality
 
 	-- Initializes the vendor list
 	if (addon.VendorList == nil) then
@@ -2542,18 +2654,20 @@ function addon:AckisRecipeList_Command()
 		end
 
 		self:ScanTradeSkills()
-		self:ScanMissingRecipes()
+		self:UpdateFilters(addon.RecipeListing, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
 	-- Craft type skills
 	elseif (addon.SkillType == "Craft") then
 
 		if (not addon.wrath) then
+
 			-- Get the name of the current craft.
 			CurrentProfession = GetCraftName()
 			CurrentProfessionLevel = InitializeCraftRecipes(CurrentProfession)
 			CurrentSpeciality = self:GetTradeSpeciality(CurrentProfession)
+
 			self:ScanCraftSkills()
-			self:ScanMissingRecipes()
+			self:UpdateFilters(addon.RecipeListing, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
 		else
 
@@ -2564,19 +2678,26 @@ function addon:AckisRecipeList_Command()
 
 	end
 
+	-- Sort the recipe list now
 	local sorttype = addon.db.profile.sorting
 
 	if (sorttype == "Skill") then
-		SortedRecipeIndex = self:SortMissingRecipes(SortMissingSkill)
+		self:SortMissingRecipes(SortMissingSkill)
 	elseif (sorttype == "Name") then
-		SortedRecipeIndex = self:SortMissingRecipes(SortMissingName)
+		self:SortMissingRecipes(SortMissingName)
 	elseif (sorttype == "Acquisition") then
-		SortedRecipeIndex = self:SortMissingRecipes(SortMissingAcquisition)
+		self:SortMissingRecipes(SortMissingAcquisition)
 	end
 
-	self:CreateFrame(CurrentProfession, CurrentProfessionLevel, SortedRecipeIndex, CurrentSpeciality)
+	self:CreateFrame(CurrentProfession, CurrentProfessionLevel, CurrentSpeciality)
 
 end
+
+--[[
+
+	Text dumping functions
+
+]]--
 
 -- Returns a text dump of everything about recipes, so the user can copy and paste it into another program
 
@@ -2602,7 +2723,7 @@ end
 
 function addon:TextDump()
 
-	local CurrentProfession, CurrentProfessionLevel, CurrentSpeciality, SortedRecipeIndex
+	local CurrentProfession, CurrentProfessionLevel, CurrentSpeciality
 
 	-- Initializes the vendor list
 	if (addon.VendorList == nil) then
@@ -2631,23 +2752,39 @@ function addon:TextDump()
 		end
 
 		self:ScanTradeSkills()
-		self:ScanMissingRecipes()
+		self:UpdateFilters(addon.RecipeListing, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
 	-- Craft type skills
 	elseif (addon.SkillType == "Craft") then
 
 		if (not addon.wrath) then
+
 			-- Get the name of the current craft.
 			CurrentProfession = GetCraftName()
 			CurrentProfessionLevel = InitializeCraftRecipes(CurrentProfession)
 			CurrentSpeciality = self:GetTradeSpeciality(CurrentProfession)
+
 			self:ScanCraftSkills()
-			self:ScanMissingRecipes()
+			self:UpdateFilters(addon.RecipeListing, CurrentProfessionLevel, CurrentProfession, CurrentSpeciality)
 
 		else
+
 			self:Print("The crafting frame is not supported in Wrath of the Lich King. If you see this message submit a ticket on CurseForge please.")
+			return
+
 		end
 
+	end
+
+	-- Sort the recipe list now
+	local sorttype = addon.db.profile.sorting
+
+	if (sorttype == "Skill") then
+		self:SortMissingRecipes(SortMissingSkill)
+	elseif (sorttype == "Name") then
+		self:SortMissingRecipes(SortMissingName)
+	elseif (sorttype == "Acquisition") then
+		self:SortMissingRecipes(SortMissingAcquisition)
 	end
 
 	local temptext = self:GetTextDump()

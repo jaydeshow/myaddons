@@ -313,7 +313,7 @@ NL["Constrictor Grass"] = true
 NL["Deadnettle"] = true
 NL["Goldclover"] = true
 NL["Icethorn"] = true
-NL["Lickbloom"] = true
+NL["Lichbloom"] = true
 NL["Talandra's Rose"] = true
 NL["Tiger Lily"] = true
 

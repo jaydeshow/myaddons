@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Faction-3.0
-Revision: $Rev: 80671 $
+Revision: $Rev: 81429 $
 Author(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Faction-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Faction-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Faction-3.0"
-local MINOR_VERSION = "$Revision: 80671 $"
+local MINOR_VERSION = "$Revision: 81429 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -736,7 +736,7 @@ elseif GAME_LOCALE == "ruRU" then
 	["Friendly"] = "Дружелюбие",
 	["Honored"] = "Уважение",
 	["Revered"] = "Почтение",
-	["Exalted"] = "Восторг",
+	["Exalted"] = "Превознесение",
 }
 else
 	error(("%s: Locale %q not supported"):format(MAJOR_VERSION, GAME_LOCALE))

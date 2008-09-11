@@ -26,6 +26,7 @@ local bandages = {
 	[2581] = true, -- Heavy Linen Bandage
 	[1251] = true, -- Linen Bandage
 }
+local pName = UnitName("player")
 
 ----------------------------
 --      Localization      --
@@ -47,6 +48,7 @@ L:RegisterTranslations("enUS", function() return {
 	vapor = "Demonic Vapor",
 	vapor_desc = "Warn who gets Demonic Vapor.",
 	vapor_message = "Vapor: %s",
+	vapor_you = "Vapor on You!",
 
 	icon = "Icon",
 	icon_desc = "Place a Raid Target Icon on players with Encapsulate or Demonic Vapor. (requires promoted or higher)",
@@ -163,6 +165,7 @@ L:RegisterTranslations("zhCN", function() return {
 	vapor = "恶魔蒸汽",
 	vapor_desc = "当玩家受到恶魔蒸汽时发出警报。",
 	vapor_message = "恶魔蒸汽：>%s<！",
+	vapor_you = ">你< 恶魔蒸汽！",
 
 	icon = "团队标记",
 	icon_desc = "为中了压缩或恶魔蒸汽的玩家打上团队标记。（需要权限）",
@@ -201,6 +204,7 @@ L:RegisterTranslations("koKR", function() return {
 	vapor = "악령의 증기",
 	vapor_desc = "악령의 증기에 걸린 플레이어를 알립니다.",
 	vapor_message = "증기: %s",
+	vapor_you = "당신은 증기!",
 
 	icon = "전술 표시",
 	icon_desc = "가두기 또는 악령의 증기에 걸린 플레이어에게 전술 표시를 지정합니다. (승급자 이상 권한 필요)",
@@ -239,6 +243,7 @@ L:RegisterTranslations("frFR", function() return {
 	vapor = "Vapeur démoniaque",
 	vapor_desc = "Prévient quand un joueur subit les effets de la Vapeur démoniaque.",
 	vapor_message = "Vapeur : %s",
+	vapor_you = "Vapeur sur VOUS !",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur la dernière personne affectée par Enfermer ou Vapeur démoniaque (nécessite d'être promu ou mieux).",
@@ -277,6 +282,7 @@ L:RegisterTranslations("zhTW", function() return {
 	vapor = "惡魔煙霧",
 	vapor_desc = "隊友受到惡魔煙霧時發出警報",
 	vapor_message = "惡魔煙霧: [%s]",
+	vapor_you = "[你]:惡魔煙霧!",
 
 	icon = "團隊標記",
 	icon_desc = "為中了封印或惡魔煙霧的隊友標上團隊標記（需要權限）",
@@ -315,6 +321,7 @@ L:RegisterTranslations("ruRU", function() return {
 	vapor = "Демонический луч",
 	vapor_desc = "Предупреждение о демоническом луче.",
 	vapor_message = "Демонический луч преследует %s",
+	vapor_you = "Демонический луч на Вас!",
 
 	icon = "Иконка",
 	icon_desc = "Помечает иконкой игрока под демоническим лучем или капсулой (необходим промоут)",
@@ -348,7 +355,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.guid = 25038
 mod.toggleoptions = {"phase", "breath", "vapor", "icon", -1, "encaps", "gas", "dispel", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 81072 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81525 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then
@@ -403,9 +410,14 @@ end
 
 function mod:Vapor(_, _, source)
 	if db.vapor then
-		local msg = L["vapor_message"]:format(source)
-		self:IfMessage(msg, "Urgent", 45402)
-		self:Bar(msg, 10, 45402)
+		local other = L["vapor_message"]:format(source)
+		if source == pName then
+			self:LocalMessage(L["vapor_you"], "Personal", nil, "Long")
+			self:WideMessage(other)
+		else
+			self:IfMessage(other, "Urgent", 45402)
+		end
+		self:Bar(other, 10, 45402)
 		self:Icon(source, "icon")
 	end
 end

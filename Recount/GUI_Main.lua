@@ -4,7 +4,7 @@ local Events = LibStub("AceEvent-3.0")
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 79898 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81350 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 local string_format = string.format
@@ -146,19 +146,36 @@ function me:CreateRow(num)
 	row:SetHeight(Recount.db.profile.MainWindow.RowHeight)
 	row:SetWidth(Recount.MainWindow:GetWidth()-4)
 	if num ~= 0 then
-		row:SetScript("OnClick", function() 
-						if arg1=="RightButton" then
-							Recount:BarDropDownOpen(this)
-							CloseDropDownMenus(1)
-							ToggleDropDownMenu(1, nil, Recount_BarDropDownMenu)
-						elseif type(this.clickFunc)=="function" and this.clickData then
-							this:clickFunc(this.clickData)						
-						end
-					end)
-		row:SetScript("OnEnter", function() GameTooltip:SetOwner(this, "ANCHOR_TOPRIGHT");Recount.MainWindow:TooltipFunc(this.Name,this.TooltipData);GameTooltip:Show() end)
-		row:SetScript("OnLeave", function() GameTooltip:Hide() end)
+		if tocversion == 30000 then
+			row:SetScript("OnClick", function(self,button) 
+							if button=="RightButton" then
+								Recount:BarDropDownOpen(self)
+								CloseDropDownMenus(1)
+								ToggleDropDownMenu(1, nil, Recount_BarDropDownMenu)
+							elseif type(self.clickFunc)=="function" and self.clickData then
+								self:clickFunc(self.clickData)						
+							end
+						end)
+			row:SetScript("OnEnter", function(self) GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");Recount.MainWindow:TooltipFunc(self.Name,self.TooltipData);GameTooltip:Show() end)
+			row:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
+		else
+			row:SetScript("OnClick", function() 
+							if arg1=="RightButton" then
+								Recount:BarDropDownOpen(this)
+								CloseDropDownMenus(1)
+								ToggleDropDownMenu(1, nil, Recount_BarDropDownMenu)
+							elseif type(this.clickFunc)=="function" and this.clickData then
+								this:clickFunc(this.clickData)						
+							end
+						end)
+			row:SetScript("OnEnter", function() GameTooltip:SetOwner(this, "ANCHOR_TOPRIGHT");Recount.MainWindow:TooltipFunc(this.Name,this.TooltipData);GameTooltip:Show() end)
+			row:SetScript("OnLeave", function() GameTooltip:Hide() end)
+		end
 		row:EnableMouse(true)
 		row:RegisterForClicks("LeftButtonDown","RightButtonUp")
+	elseif RecountDeathTrack then
+	       Recount:DPrint("click")
+	       RecountDeathTrack:AddDropDown(row)
 	else
 		row:EnableMouse(false)
 	end
@@ -174,6 +191,64 @@ function me:CreateRow(num)
 end
 
 local info = {}
+if tocversion == 30000 then
+function Recount_CreateBarDropdown(self,level)
+	if (not level) then return end
+	for k in pairs(info) do info[k] = nil end
+	if (level == 1) then
+	if self and self.relativeTo.LeftText then
+		info.isTitle		= 1
+		info.text		= self.relativeTo.LeftText:GetText()
+		info.notCheckable	= 1
+		UIDropDownMenu_AddButton(info, level)
+
+		info = {}
+		
+		info.isTitle		= nil
+		info.notCheckable	= 1
+		info.disabled		= nil
+
+		info.text		= L["Show Details (Left Click)"]
+		info.notCheckable	= 1
+		info.func = me.ShowDetail
+		--info.arg1 = me
+		info.arg1 = self.relativeTo.name
+		UIDropDownMenu_AddButton(info, level)
+
+		info.text		= L["Show Graph (Shift Click)"]
+		info.notCheckable	= 1
+		info.func = me.ShowGraphWindow
+		--info.arg1 = me
+		info.arg1 = self.relativeTo.name
+		UIDropDownMenu_AddButton(info, level)
+		
+		info.text		= L["Add to Current Graph (Alt Click)"]
+		info.notCheckable	= 1
+		info.func = me.AddCombatantToGraph
+		--info.arg1 = me
+		info.arg1 = self.relativeTo.name
+		UIDropDownMenu_AddButton(info, level)
+
+		local Settings=Recount.MainWindow.RealtimeSettings
+		if Settings then
+			info.text		= L["Show Realtime Graph (Ctrl Click)"]
+			info.notCheckable	= 1
+			info.func = me.ShowRealtime
+			--info.arg1 = me
+			info.arg1 = self.relativeTo.name
+			UIDropDownMenu_AddButton(info, level)
+		end
+
+		info.text		= L["Delete Combatant (Ctrl-Alt Click)"]
+		info.notCheckable	= 1
+		info.func = me.DeleteCombatant
+		--info.arg1 = me
+		info.arg1 = self.relativeTo.name
+		UIDropDownMenu_AddButton(info, level)
+	end
+	end
+end
+else
 function Recount_CreateBarDropdown(level)
 	if (not level) then return end
 	for k in pairs(info) do info[k] = nil end
@@ -229,6 +304,7 @@ function Recount_CreateBarDropdown(level)
 		UIDropDownMenu_AddButton(info, level)
 	end
 	end
+end
 end
 
 function Recount:DeleteCombatant(name)
@@ -414,6 +490,16 @@ function Recount:CreateMainWindow()
 
 	theFrame.SaveMainWindowPosition = Recount.SaveMainWindowPosition
 	
+if tocversion == 30000 then
+	theFrame:SetScript("OnSizeChanged", function(self)
+						if ( self.isResizing ) then
+							Recount:ResizeMainWindow()
+							
+							Recount.db.profile.MainWindowHeight=self:GetHeight()
+							Recount.db.profile.MainWindowWidth=self:GetWidth()
+						end
+					end)
+else
 	theFrame:SetScript("OnSizeChanged", function()
 						if ( this.isResizing ) then
 							Recount:ResizeMainWindow()
@@ -422,10 +508,34 @@ function Recount:CreateMainWindow()
 							Recount.db.profile.MainWindowWidth=this:GetWidth()
 						end
 					end)
+end
 
 	theFrame.TitleClick=CreateFrame("FRAME",nil,theFrame)
 	theFrame.TitleClick:SetAllPoints(theFrame.Title)
 	theFrame.TitleClick:EnableMouse(true)
+if tocversion == 30000 then
+	theFrame.TitleClick:SetScript("OnMouseDown",function(self,button) 
+							if button=="RightButton" then
+								Recount:ModeDropDownOpen(self)
+								ToggleDropDownMenu(1, nil, Recount_ModeDropDownMenu)
+							end
+
+							local parent=self:GetParent()
+							if ( ( ( not parent.isLocked ) or ( parent.isLocked == 0 ) ) and ( button == "LeftButton" ) ) then
+							  Recount:SetWindowTop(parent)
+							  parent:StartMoving();
+							  parent.isMoving = true;
+							 end
+							end)
+	theFrame.TitleClick:SetScript("OnMouseUp", function(self) 
+						local parent=self:GetParent()
+						if ( parent.isMoving ) then
+						  parent:StopMovingOrSizing();
+						  parent.isMoving = false;
+						  parent:SaveMainWindowPosition()
+						 end
+						end)
+else
 	theFrame.TitleClick:SetScript("OnMouseDown",function() 
 							if arg1=="RightButton" then
 								Recount:ModeDropDownOpen(this)
@@ -447,10 +557,14 @@ function Recount:CreateMainWindow()
 						  parent:SaveMainWindowPosition()
 						 end
 						end)
-
+end
 
 	theFrame.ScrollBar=CreateFrame("SCROLLFRAME","Recount_MainWindow_ScrollBar",theFrame,"FauxScrollFrameTemplate")
+if tocversion == 30000 then
+	theFrame.ScrollBar:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,20, Recount.RefreshMainWindow) end)
+else
 	theFrame.ScrollBar:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(20, Recount.RefreshMainWindow) end)
+end
 	Recount:SetupScrollbar("Recount_MainWindow_ScrollBar")
 
 	if not Recount.db.profile.MainWindow.ShowScrollbar then
@@ -466,9 +580,13 @@ function Recount:CreateMainWindow()
 	theFrame.DragBottomRight:SetHeight(16)
 	theFrame.DragBottomRight:SetPoint("BOTTOMRIGHT", theFrame, "BOTTOMRIGHT", 0, 0)
 	theFrame.DragBottomRight:EnableMouse(true)
+if tocversion == 30000 then
+	theFrame.DragBottomRight:SetScript("OnMouseDown", function(self,button) if ((( not self:GetParent().isLocked ) or ( self:GetParent().isLocked == 0 ) ) and ( button == "LeftButton" ) ) then self:GetParent().isResizing = true; self:GetParent():StartSizing("BOTTOMRIGHT") end end ) -- Elsia: disallow resizing when locked.
+	theFrame.DragBottomRight:SetScript("OnMouseUp", function(self,button) if self:GetParent().isResizing == true then self:GetParent():StopMovingOrSizing(); self:GetParent():SaveMainWindowPosition(); self:GetParent().isResizing = false; end end )
+else
 	theFrame.DragBottomRight:SetScript("OnMouseDown", function() if ((( not this:GetParent().isLocked ) or ( this:GetParent().isLocked == 0 ) ) and ( arg1 == "LeftButton" ) ) then this:GetParent().isResizing = true; this:GetParent():StartSizing("BOTTOMRIGHT") end end ) -- Elsia: disallow resizing when locked.
 	theFrame.DragBottomRight:SetScript("OnMouseUp", function() if this:GetParent().isResizing == true then this:GetParent():StopMovingOrSizing(); this:GetParent():SaveMainWindowPosition(); this:GetParent().isResizing = false; end end )
-
+end
 	theFrame.DragBottomLeft = CreateFrame("Button", "RecountResizeGripLeft", theFrame)
 	theFrame.DragBottomLeft:Show()
 	theFrame.DragBottomLeft:SetFrameLevel( theFrame:GetFrameLevel() + 10)
@@ -478,9 +596,13 @@ function Recount:CreateMainWindow()
 	theFrame.DragBottomLeft:SetHeight(16)
 	theFrame.DragBottomLeft:SetPoint("BOTTOMLEFT", theFrame, "BOTTOMLEFT", 0, 0)
 	theFrame.DragBottomLeft:EnableMouse(true)
+if tocversion == 30000 then
+	theFrame.DragBottomLeft:SetScript("OnMouseDown", function(self,button) if ((( not self:GetParent().isLocked ) or ( self:GetParent().isLocked == 0 ) ) and ( button == "LeftButton" ) ) then self:GetParent().isResizing = true; self:GetParent():StartSizing("BOTTOMLEFT") end end ) -- Elsia: disallow resizing when locked.
+	theFrame.DragBottomLeft:SetScript("OnMouseUp", function(self,button) if self:GetParent().isResizing == true then self:GetParent():StopMovingOrSizing(); self:GetParent():SaveMainWindowPosition(); self:GetParent().isResizing = false; end end )
+else
 	theFrame.DragBottomLeft:SetScript("OnMouseDown", function() if ((( not this:GetParent().isLocked ) or ( this:GetParent().isLocked == 0 ) ) and ( arg1 == "LeftButton" ) ) then this:GetParent().isResizing = true; this:GetParent():StartSizing("BOTTOMLEFT") end end ) -- Elsia: disallow resizing when locked.
 	theFrame.DragBottomLeft:SetScript("OnMouseUp", function() if this:GetParent().isResizing == true then this:GetParent():StopMovingOrSizing(); this:GetParent():SaveMainWindowPosition(); this:GetParent().isResizing = false; end end )
-
+end
 	--Recount:ShowGrips(not Recount.db.profile.Locked)
 	
 	theFrame.RightButton=CreateFrame("Button",nil,theFrame)
@@ -519,10 +641,17 @@ function Recount:CreateMainWindow()
 	theFrame.FileButton:SetWidth(16)
 	theFrame.FileButton:SetHeight(16)
 	theFrame.FileButton:SetPoint("RIGHT",theFrame.ResetButton,"LEFT",0,0)
+if tocversion == 30000 then
+	theFrame.FileButton:SetScript("OnClick",function(self) 
+						Recount:FightDropDownOpen(self)
+						ToggleDropDownMenu(1, nil, Recount_FightDropDownMenu) 
+						end)
+else
 	theFrame.FileButton:SetScript("OnClick",function() 
 						Recount:FightDropDownOpen(this)
 						ToggleDropDownMenu(1, nil, Recount_FightDropDownMenu) 
 						end)
+end
 	theFrame.FileButton:SetFrameLevel(theFrame.FileButton:GetFrameLevel()+1)
 
 	theFrame.ConfigButton=CreateFrame("Button",nil,theFrame)
@@ -993,7 +1122,7 @@ function me:CreateFightDropdown(level)
 		if Recount.db.profile.CurDataSet == "OverallData" then
 			info.checked = 1
 		end
-		info.func = function() Recount.db.profile.CurDataSet="OverallData";me:UpdateDetailData();Recount.MainWindow.DispTableSorted={};Recount.MainWindow.DispTableLookup={};Recount.FightName="Overall Data";Recount:RefreshMainWindow() end
+		info.func = function() Recount.db.profile.CurDataSet="OverallData";me:UpdateDetailData();Recount.MainWindow.DispTableSorted={};Recount.MainWindow.DispTableLookup={};Recount.FightName="Overall Data";Recount:RefreshMainWindow();if RecountDeathTrack then RecountDeathTrack:SetFight(Recount.db.profile.CurDataSet) end end
 		UIDropDownMenu_AddButton(info, level)
 
 		info.checked = nil
@@ -1002,7 +1131,7 @@ function me:CreateFightDropdown(level)
 		if Recount.db.profile.CurDataSet == "CurrentFightData" or Recount.db.profile.CurDataSet == "LastFightData" then
 			info.checked = 1
 		end
-		info.func = function() if Recount.InCombat then Recount.db.profile.CurDataSet="CurrentFightData" else Recount.db.profile.CurDataSet="LastFightData" end;me:UpdateDetailData();Recount.MainWindow.DispTableSorted={};Recount.MainWindow.DispTableLookup={}; Recount.FightName="Current Fight";Recount:RefreshMainWindow() end
+		info.func = function() if Recount.InCombat then Recount.db.profile.CurDataSet="CurrentFightData" else Recount.db.profile.CurDataSet="LastFightData" end;me:UpdateDetailData();Recount.MainWindow.DispTableSorted={};Recount.MainWindow.DispTableLookup={}; Recount.FightName="Current Fight";Recount:RefreshMainWindow();if RecountDeathTrack then RecountDeathTrack:SetFight(Recount.db.profile.CurDataSet) end  end
 		UIDropDownMenu_AddButton(info, level)
 
 		for k, v in pairs(Recount.db2.FoughtWho) do
@@ -1011,7 +1140,7 @@ function me:CreateFightDropdown(level)
 			if Recount.db.profile.CurDataSet == "Fight"..k then
 				info.checked = 1
 			end
-			info.func = function() Recount.db.profile.CurDataSet="Fight"..k;me:UpdateDetailData();Recount.MainWindow.DispTableSorted={};Recount.MainWindow.DispTableLookup={};Recount.FightName=v;Recount:RefreshMainWindow() end
+			info.func = function() Recount.db.profile.CurDataSet="Fight"..k;me:UpdateDetailData();Recount.MainWindow.DispTableSorted={};Recount.MainWindow.DispTableLookup={};Recount.FightName=v;Recount:RefreshMainWindow();if RecountDeathTrack then RecountDeathTrack:SetFight(Recount.db.profile.CurDataSet) end  end
 			UIDropDownMenu_AddButton(info, level)
 		end
 end
@@ -1085,7 +1214,7 @@ function Recount:ReportData(amount,loc,loc2)
 		for k,v in pairs(data) do
 			if v and v.type and Recount.db.profile.Filters.Show[v.type]  and not (v.type == "Pet" and v.Owner and not Recount.db.profile.Filters.Show[Recount.db2.combatants[v.Owner].type])  then -- Elsia: Added owner inheritance filtering for pets
 				if v.Fights[Recount.db.profile.CurDataSet] then
-					Value,PerSec=dataMode[2](this,v,1)
+					Value,PerSec=dataMode[2](this,v,1) -- Elsia: WotLK evil "this" here.
 					if Value>0 then
 						if (v.type ~= "Pet" or not Recount.db.profile.MergePets) then -- Elsia: Only add to total if not merging pets.
 							Total=Total+Value

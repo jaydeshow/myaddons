@@ -1,4 +1,30 @@
 ------------------------------------------------------------------------
+r81595 | xinhuan | 2008-09-10 21:34:07 -0400 (Wed, 10 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/GatherMate/Config.lua
+   M /trunk/GatherMate/Constants.lua
+   M /trunk/GatherMate/Display.lua
+   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
+   M /trunk/GatherMate/Locales/GatherMate-koKR.lua
+
+GatherMate: - Add minimum skill level to harvest herbs and ore to the tooltips and config.
+- Add roughknight's code to the minimap icons to simulate click-through and ping the minimap.
+- Also fix Lickbloom to Lichbloom (WotLK herb).
+------------------------------------------------------------------------
+r81266 | kagaro | 2008-09-02 09:26:13 -0400 (Tue, 02 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/GatherMate/Collector.lua
+
+GatherMate: updated collector spell list. Blizzard decided the spell that was cast for items like Ungoro soil, from Opening to Opening - No Text
+
+Changed and tested on live.
+------------------------------------------------------------------------
+r81262 | doktorjet | 2008-09-02 04:53:13 -0400 (Tue, 02 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: minor update for ruRU
+------------------------------------------------------------------------
 r81155 | doktorjet | 2008-08-31 00:56:59 -0400 (Sun, 31 Aug 2008) | 1 line
 Changed paths:
    M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
@@ -66,55 +92,4 @@ Changed paths:
    M /trunk/GatherMate/Locales/GatherMate-enUS.lua
 
 GatherMate: fixed typo in rich cobalt node
-------------------------------------------------------------------------
-r80125 | doktorjet | 2008-08-10 15:12:55 -0400 (Sun, 10 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
-
-GatherMate: ruRU locale - minor fixes
-------------------------------------------------------------------------
-r80124 | xinhuan | 2008-08-10 14:47:39 -0400 (Sun, 10 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Constants.lua
-   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
-
-GatherMate: Typo fix for herb name, Adder's Tonhue -> Adder's Tongue
-------------------------------------------------------------------------
-r80113 | xinhuan | 2008-08-10 11:51:21 -0400 (Sun, 10 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
-
-GatherMate: Add new WotLK nodes to base enUS locale so that the addon doesn't error.
-------------------------------------------------------------------------
-r80102 | kagaro | 2008-08-10 09:37:23 -0400 (Sun, 10 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Constants.lua
-
-GatherMate: added new herb and mining node placeholder data. Will get a real graphic before beta ends, and since the mineral nodes in wrath currently have a placeholder name, expect this ti change before wraht goes live
-------------------------------------------------------------------------
-r80086 | xinhuan | 2008-08-10 03:42:44 -0400 (Sun, 10 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Collector.lua
-   M /trunk/GatherMate/Constants.lua
-   M /trunk/GatherMate/Display.lua
-
-GatherMate: Add temporary code to collector, display and constants to ignore Scarlet Enclave map (Death Knight starting zone) because both EPL and SE translates to "Eastern Plaguelands" on the map and causes issues.
-------------------------------------------------------------------------
-r80084 | kagaro | 2008-08-10 02:33:57 -0400 (Sun, 10 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/Constants.lua
-
-GatherMate: added northrend zones as calculated from latest path. Please note these could change any time from now till launch of WOTLK
-------------------------------------------------------------------------
-r79804 | kagaro | 2008-08-05 08:15:25 -0400 (Tue, 05 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/GatherMate.toc
-
-GatherMate: fixed name to match case as author tag on the wiki
-------------------------------------------------------------------------
-r79794 | kagaro | 2008-08-05 07:47:59 -0400 (Tue, 05 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/GatherMate/GatherMate.toc
-
-GatherMate: toc update to fix author name to be unified
 ------------------------------------------------------------------------

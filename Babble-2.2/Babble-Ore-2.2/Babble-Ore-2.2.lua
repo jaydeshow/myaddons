@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Ore-2.2
-Revision: $Rev: 80316 $
+Revision: $Rev: 81462 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Ore-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Ore-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 80316 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 81462 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -648,8 +648,8 @@ BabbleOre:RegisterTranslations("ruRU", function() return {
 	["Adamantite Deposit"] = "Залежи адамантита",
 	["Rich Adamantite Deposit"] = "Богатые залежи адамантита",
 	["Khorium Vein"] = "Кориевая жила",
-	["Large Obsidian Chunk"] = "Large Obsidian Chunk",
-	["Small Obsidian Chunk"] = "Small Obsidian Chunk",
+	["Large Obsidian Chunk"] = "Большая обсидиановая глыба", -- AQ 20/40
+	["Small Obsidian Chunk"] = "Маленький кусочек обсидиана", -- AQ 40
 	["Nethercite Deposit"] = "Месторождение хаотита",
 	
 } end)

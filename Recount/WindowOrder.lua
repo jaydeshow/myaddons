@@ -1,4 +1,4 @@
-local revision = tonumber(string.sub("$Revision: 71617 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81350 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 --Code for organizing the frame order
@@ -94,7 +94,7 @@ function Recount:ScaleWindows(scale,first)
 			
 			if v:GetScript("OnMouseUp") then
 				v.isMoving=true
-				this=v
+				--this=v
 				v:GetScript("OnMouseUp")(v)
 				v.isMoving=false
 			end

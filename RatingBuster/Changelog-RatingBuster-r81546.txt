@@ -1,0 +1,151 @@
+------------------------------------------------------------------------
+r81546 | whitetooth | 2008-09-08 13:31:15 -0400 (Mon, 08 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
+
+RatingBuster: enUS: Don't convert Gronnstalker bonus
+------------------------------------------------------------------------
+r81534 | 7destiny | 2008-09-08 09:10:06 -0400 (Mon, 08 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-koKR.lua
+
+RatingBuster: koKR Update
+------------------------------------------------------------------------
+r81486 | whitetooth | 2008-09-07 14:28:42 -0400 (Sun, 07 Sep 2008) | 86 lines
+Changed paths:
+   M /trunk/RatingBuster/About RatingBuster.txt
+   M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: WotLK support:
+- Option to show physical hit, spell hit or both from hit rating(crit and haste are the same for physical and spell)
+- StatSummery: Hit Rating, Critical Strike Rating, and Haste Rating now modify both melee attacks and spells.
+- Support for WotLK talent and buff stat mods
+- Detailed change log for each class:
+Warrior
+- Added Talent: Strength of Arms: Increases your total Strength and total health by 2%/4%.
+- Added Buff(TBC): Last Stand: When activated, this ability temporarily grants you 30% of your maximum health for 20 sec.
+- Updated Talent: Improved Berserker Stance: Moved to 2,21
+- Updated Talent: Toughness: Moved to 3,9
+- Updated Talent: Vitality: Moved to 3,19. Increases your total Strength and Stamina by 2%/4%/6%
+- Updated Talent: Shield Mastery: Moved to 3,8. 10%/20%/30% -> 15%/30%
+Warlock
+- Added Talent: Demonic Aegis: Increases the effectiveness of your Demon Armor and Fel Armor spells by 10%/20%/30%.
+- Added Talent: Fel Synergy: Your Summoned Demons share an additional 5%/10% of your Armor, Intellect and Stamina
+- Added Talent: Fel Vitality: Increases your maximum health and mana by 1%/2%/3%.
+- Added Buff: Fel Armor: Increases spell power equal to 30% of your Spirit. Allows 30% of your mana regeneration to continue while casting.
+- Added Buff: Demonic Pact: Your pet's criticals apply the Demonic Pact effect to your party or raid members. Demonic Pact increases spell power by 2%/4%/6%/8%/10% of your Spell Damage for 12 sec.
+- Added Buff: Metamorphosis: You gain Demon Form, increasing your armor by 360%, increasing your attack power equal to 75% of your spell power.
+- Removed Talent: Fel Stamina
+- Removed Talent: Fel Intellect
+- Updated Talent: Demonic Embrace: No longer reduces spirit. Stamina 3%/6%/9%/12%/15% -> 2%/4%/6%/8%/10%
+Shaman
+- Updated Formula: 1 AP from 1 Agi, 1AP from 1 Str
+- Added Buff: Astral Shift: When stunned, feared or silenced you shift into the Astral Plane reducing all damage taken by 30%
+- Added Buff: Unleashed Rage: Melee attack power increased by 10%.
+- Removed Talent: Shield Specialization
+- Updated Talent: Mental Quickness: Moved to 2,16
+- Updated Talent: Nature's Blessing: Moved to 3,21. spell damage and healing -> healing, 10%/20%/30% -> 5%/10%/15%
+- Updated Talent: Anticipation: Moved to 2,10. 1%/2%/3%/4%/5% -> 1%/2%/3%
+- Updated Talent: Toughness: Moved to 2,12
+- Updated Talent: Ancestral Knowledge: Moved to 2,3. maximum Mana -> intellect. 1%/2%/3%/4%/5% -> 2%/4%/6%/8%/10%.
+Rogue
+- Updated Talent: Deadliness: Moved to 3,18
+- Updated Talent: Vitality: Moved to 2,19
+- Updated Talent: Sinister Calling: Moved to 3,22
+Priest
+- Added Talent: Twin Disciplines: Increases your spell damage and healing by 1%/2%/3%/4%/5%
+- Added Talent: Focused Power: Increases your total spell damage and healing done by 2%/4%.
+- Added Talent: Twisted Faith: Increases your Shadow spell power by 6%/12%/18%/24%/30% of your total Spirit
+- Updated Talent: Improved Divine Spirit: 5%/10% -> 3%/6% of their total Spirit
+- Updated Talent: Mental Strength: Increases your maximum Mana -> total Intellect
+- Updated Talent: Enlightenment: Moved to 1,12. Stamina, Intellect and Spirit -> Stamina, Spirit and Spell Haste
+Paladin
+- Added Talent: Touched by the Light: Increases your spell power by an amount equal to 10%/20%/30% of your Stamina
+- Added Talent: Sheath of Light: Increases your spell power by an amount equal to 10%/20%/30% of your attack power
+- Updated Talent: Holy Guidance: Moved to 1,21
+- Updated Talent: Toughness: Moved to 2,9
+- Updated Talent: Divine Strength: Moved to 2,1. Increases your total Strength by 3%/6%/9%/12%/15%
+Mage
+- Added Talent: Student of the Mind: Increases your total Spirit by 4%/7%/10%.
+- Added Talent(WotLK & TBC): Arcane Instability: Moved to 1,19. Increases your spell damage and critical strike chance by 1%/2%/3%.
+- Updated Talent: Arcane Fortitude: Moved to 1,4. Increases your armor by an amount equal to 50%/100%/150% of your Intellect.
+- Updated Talent: Arcane Meditation: Moved to 1,13
+- Updated Talent: Mind Mastery: Moved to 1,25. Increases spell damage by up to 3%/6%/9%/12%/15% of your total Intellect.
+- Updated Talent: Arcane Mind: Moved to 1,17
+Hunter
+- Added Talent: Hunter vs. Wild: Increases you and your pet's attack power and ranged attack power equal to 10%/20%/30% of your total Stamina.
+- Updated Buff: Aspect of the Viper: no longer gives MP5 from Int
+- Updated Talent: Careful Aim: now adds 33%/66%/100% RAP from Int
+- Updated Talent: Survivalist: Moved to 3,8. Increases your Stamina by 2%/4%/6%/8%/10%.
+- Updated Talent: Combat Experience: Moved to 2,16. Increases your total Agility by 3%/6%.
+- Updated Talent: Lightning Reflexes: Moved to 3,17
+DeathKnight
+- Added Pasive: Forceful Deflection (Increases your Parry Rating by 25% of your total Strength.)
+- Added Talent: Bladed Armor: You gain 5/10/15/20/25 attack power for every 1000 points of your armor value.
+- Added Talent: Veteran of the Third War: Increases your total Strength by 2%/4%/6% and your total Stamina by 1%/2%/3%.
+- Added Talent: Will of the Necropolis: When you have less than 35% health, your total armor increases by 10%/20%/30%.
+- Added Talent: Toughness: Increases your armor value from items by 3%/6%/9%/12%/15%
+- Added Talent: Ravenous Dead: Increases the total Strength of you by 1%/2%/3%
+- Added Talent: Shadow of Death: Increases your total Strength and Stamina by 2%.
+- Added Buff: Abominable Might: Attack power increased by 10%.
+- Added Buff: Unbreakable Armor: Increases your armor by 25%, your total Strength by 10%.
+- Added Buff: Frost Presence: Increases armor by 45%
+Druid
+- Added Talent: Furor: Increases your total Intellect while in Moonkin form by 2%/4%/6%/8%/10%.
+- Added Talent: Master Shapeshifter: Moonkin Form - Increases spell damage by 2%/4%.
+- Added Talent: Master Shapeshifter: Tree of Life Form - Increases healing by 2%/4%.
+- Added Talent: Improved Tree of Life: Increases your Armor while in Tree of Life Form by 33%/66%/100%.
+- Updated Talent: Lunar Guidance: 8%/16%/25% -> 4%/8%/12%
+- Updated Talent: Nurturing Instinct: 50%/100% -> 35%/70% of your Agility
+- Updated Talent: Intensity: moved to 3,7
+- Updated Talent: Dreamstate: moved to 1,15
+- Updated Talent: Heart of the Wild: moved to 2,17
+- Updated Talent: Survival of the Fittest: moved to 2,18. 1%/2%/3% -> 2%/4%/6%
+- Updated Talent: Living Spirit: moved to 3,17
+------------------------------------------------------------------------
+r80908 | StingerSoft | 2008-08-24 18:05:07 -0400 (Sun, 24 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-ruRU.lua
+
+RatingBuster: update/fix ruRU
+------------------------------------------------------------------------
+r80891 | whitetooth | 2008-08-24 07:05:01 -0400 (Sun, 24 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-frFR.lua
+
+RatingBuster: frFR update for Expertise
+------------------------------------------------------------------------
+r80752 | StingerSoft | 2008-08-21 00:11:45 -0400 (Thu, 21 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: fix ruRU
+------------------------------------------------------------------------
+r80692 | StingerSoft | 2008-08-19 17:00:51 -0400 (Tue, 19 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-ruRU.lua
+
+RatingBuster: update ruRU
+------------------------------------------------------------------------
+r80627 | StingerSoft | 2008-08-18 17:56:45 -0400 (Mon, 18 Aug 2008) | 1 line
+Changed paths:
+   A /trunk/RatingBuster/RatingBuster-Locale-ruRU.lua
+   M /trunk/RatingBuster/RatingBuster.toc
+
+RatingBuster: added ruRU (credit by Orsana)
+------------------------------------------------------------------------
+r79946 | whitetooth | 2008-08-08 02:48:43 -0400 (Fri, 08 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: 
+- WotLK: Fixed errors for the Death Knight class
+------------------------------------------------------------------------
+r79938 | whitetooth | 2008-08-07 23:52:17 -0400 (Thu, 07 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster/UTF8/utf8.lua
+
+RatingBuster: 
+- WotLK: Fixed UTF8 error
+------------------------------------------------------------------------

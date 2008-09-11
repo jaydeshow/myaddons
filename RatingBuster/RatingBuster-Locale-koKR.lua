@@ -1,8 +1,8 @@
 ﻿--[[
 Name: RatingBuster koKR locale
-Revision: $Revision: 73696 $
+Revision: $Revision: 81534 $
 Translated by: 
-- kcgcom, fenlis (jungseop.park@gmail.com)
+- 7destiny, kcgcom, fenlis (jungseop.park@gmail.com)
 ]]
 
 local L = AceLibrary("AceLocale-2.2"):new("RatingBuster")
@@ -55,6 +55,12 @@ L:RegisterTranslations("koKR", function() return {
 	-- /rb rating show
 	["Show Rating conversions"] = "평점 변화 표시",
 	["Show Rating conversions in tooltips"] = "툴팁에 평점 변화를 표시합니다.",
+	-- /rb rating spell
+	["Show Spell Hit"] = "주문 적중 표시",
+	["Show Spell Hit from Hit Rating"] = "적중으로부터 주문 적중을 표시합니다.",
+	-- /rb rating physical
+	["Show Physical Hit"] = "물리 적중 표시",
+	["Show Physical Hit from Hit ratings"] = "적중으로부터 물리 적중을 표시합니다.",
 	-- /rb rating detail
 	["Show detailed conversions text"] = "세부적인 평점 변화 표시",
 	["Show detailed text for Resiliance and Expertise conversions"] = "탄력도와 숙련의 세부적인 평점 변화 표시를 사용합니다.",
@@ -69,7 +75,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Convert Expertise into Dodge Neglect and Parry Neglect"] = "회피 무시와 무기막기 무시 등으로 숙련을 세분화 합니다.",
 	
 	-- /rb stat
-	--["Stat Breakdown"] = "능력치",
+	["Stat Breakdown"] = "능력치",
 	["Changes the display of base stats"] = "기본 능력치 표시방법을 변경합니다.",
 	-- /rb stat show
 	["Show base stat conversions"] = "기본 능력치 변화 표시",
@@ -85,10 +91,13 @@ L:RegisterTranslations("koKR", function() return {
 	["Show Block Value from Strength"] = "힘에 의한 피해 방어량을 표시합니다.",
 	-- /rb stat str dmg
 	["Show Spell Damage"] = "주문 공격력 표시",
-	--["Show Spell Damage from Strength"] = "지능에 의한 주문 공격력을 표시합니다.",
+	["Show Spell Damage from Strength"] = "지능에 의한 주문 공격력을 표시합니다.",
 	-- /rb stat str heal
 	["Show Healing"] = "치유량 표시",
-	--["Show Healing from Strength"] = "지능에 의한 치유량을 표시합니다.",
+	["Show Healing from Strength"] = "지능에 의한 치유량을 표시합니다.",
+	-- /rb stat str parry
+	["Show Parry"] = "무기 막기",
+	["Show Parry from Strength"] = "힘에 의한 무기 막기 확률을 표시합니다.",
 	
 	-- /rb stat agi
 	["Agility"] = "민첩성",
@@ -110,7 +119,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Show Armor from Agility"] = "민첩에 의한 방어도를 표시합니다.",
 	-- /rb stat agi heal
 	["Show Healing"] = "치유량 표시",
-	--["Show Healing from Agility"] = "힘에 의한 치유량을 표시합니다.",
+	["Show Healing from Agility"] = "힘에 의한 치유량을 표시합니다.",
 	
 	-- /rb stat sta
 	["Stamina"] = "체력",
@@ -121,6 +130,12 @@ L:RegisterTranslations("koKR", function() return {
 	-- /rb stat sta dmg
 	["Show Spell Damage"] = "주문 공격력 표시",
 	["Show Spell Damage from Stamina"] = "체력에 의한 주문 공격력을 표시합니다.",
+	-- /rb stat sta heal
+	["Show Healing"] = "치유량 표시",
+	["Show Healing from Stamina"] = "체력에 의한 치유량을 표시합니다.",
+	-- /rb stat sta ap
+	["Show Attack Power"] = "전투력 표시",
+	["Show Attack Power from Stamina"] = "체력에 의한 전투력을 표시합니다.",
 	
 	-- /rb stat int
 	["Intellect"] = "지능",
@@ -149,6 +164,9 @@ L:RegisterTranslations("koKR", function() return {
 	-- /rb stat int armor
 	["Show Armor"] = "방어도 표시",
 	["Show Armor from Intellect"] = "지능에 의한 방어도를 표시합니다.",
+	-- /rb stat int ap
+	["Show Attack Power"] = "전투력 표시",
+	["Show Attack Power from Intellect"] = "지능에 의한 전투력을 표시합니다.",
 	
 	-- /rb stat spi
 	["Spirit"] = "정신력",

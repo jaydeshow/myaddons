@@ -1,6 +1,6 @@
 ﻿--[[
 Name: RatingBuster enUS locale
-Revision: $Revision: 73696 $
+Revision: $Revision: 81546 $
 Translated by: 
 - Whitetooth (hotdogee [at] gmail [dot] com)
 ]]
@@ -55,6 +55,12 @@ L:RegisterTranslations("enUS", function() return {
 	-- /rb rating show
 	["Show Rating conversions"] = true,
 	["Show Rating conversions in tooltips"] = true,
+	-- /rb rating spell
+	["Show Spell Hit"] = true,
+	["Show Spell Hit from Hit Rating"] = true,
+	-- /rb rating physical
+	["Show Physical Hit"] = true,
+	["Show Physical Hit from Hit ratings"] = true,
 	-- /rb rating detail
 	["Show detailed conversions text"] = true,
 	["Show detailed text for Resiliance and Expertise conversions"] = true,
@@ -89,6 +95,9 @@ L:RegisterTranslations("enUS", function() return {
 	-- /rb stat str heal
 	["Show Healing"] = true,
 	["Show Healing from Strength"] = true,
+	-- /rb stat str parry
+	["Show Parry"] = true,
+	["Show Parry from Strength"] = true,
 	
 	-- /rb stat agi
 	["Agility"] = true,
@@ -121,6 +130,12 @@ L:RegisterTranslations("enUS", function() return {
 	-- /rb stat sta dmg
 	["Show Spell Damage"] = true,
 	["Show Spell Damage from Stamina"] = true,
+	-- /rb stat sta heal
+	["Show Healing"] = true,
+	["Show Healing from Stamina"] = true,
+	-- /rb stat sta ap
+	["Show Attack Power"] = true,
+	["Show Attack Power from Stamina"] = true,
 	
 	-- /rb stat int
 	["Intellect"] = true,
@@ -149,6 +164,9 @@ L:RegisterTranslations("enUS", function() return {
 	-- /rb stat int armor
 	["Show Armor"] = true,
 	["Show Armor from Intellect"] = true,
+	-- /rb stat int ap
+	["Show Attack Power"] = true,
+	["Show Attack Power from Intellect"] = true,
 	
 	-- /rb stat spi
 	["Spirit"] = true,
@@ -496,9 +514,9 @@ L:RegisterTranslations("enUS", function() return {
 	["numberPatterns"] = {
 		{pattern = " by (%d+)", addInfo = "AfterNumber",},
 		{pattern = "([%+%-]%d+)", addInfo = "AfterStat",},
-		{pattern = "grant.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar, Assassination Armor set
-		{pattern = "add.-(%d+)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone
-		-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID: 24261
+		--{pattern = "grant.-(%d+)", addInfo = "AfterNumber",}, -- for "grant you xx stat" type pattern, ex: Quel'Serrar ID:18348, Assassination Armor set
+		--{pattern = "add.-(%d+)", addInfo = "AfterNumber",}, -- for "add xx stat" type pattern, ex: Adamantite Sharpening Stone ID:23529
+		-- Added [^%%] so that it doesn't match strings like "Increases healing by up to 10% of your total Intellect." [Whitemend Pants] ID:24261
 		-- Added [^|] so that it doesn't match enchant strings (JewelTips)
 		{pattern = "(%d+)([^%d%%|]+)", addInfo = "AfterStat",}, -- [發光的暗影卓奈石] +6法術傷害及5耐力
 	},
@@ -617,6 +635,11 @@ L:RegisterTranslations("enUS", function() return {
 	["$value to be Crit"] = true,
 	["$value Crit Dmg Taken"] = true,
 	["$value DOT Dmg Taken"] = true,
+	["$value% Parry"] = true,
+	-- for hit rating showing both physical and spell conversions
+	-- (+1.21%, S+0.98%)
+	-- (+1.21%, +0.98% S)
+	["$value Spell"] = true,
 	
 	------------------
 	-- Stat Summary --

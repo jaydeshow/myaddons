@@ -1,5 +1,36 @@
 require "core"
 require "net/http"
+=begin rdoc
+ Some WoWDB constants
+ NPC types:
+  1 - Beast
+  2 - Dragonkin
+  3 - Demon
+  4 - Elemental
+  5 - Giant
+  6 - Undead 
+  7 - Humanoid
+  8 - Critter
+  9 - Mechanical
+  10 - Unknown
+  11 - Totem
+  12 - Non Combat Pet
+  13 - Gas Cloud
+ Rarity levels:
+  5 - Legendary
+  4 - Epic
+  3 - Rare
+  2 - Uncommon
+  1 - Common
+ NPC Classifications:
+  1 - Elite
+  3 - Boss
+  4 - Rare
+ Reaction Types:
+  1 - Hated
+  2 - Neutral
+  3 - Friendly
+=end
 module WoWDBHelper
   include JsonHelper
   def search_list(search_id)

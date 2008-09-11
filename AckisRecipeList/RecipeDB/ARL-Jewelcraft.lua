@@ -4,8 +4,8 @@ ARL-Jewelcraft.lua
 
 Jewelcrafting data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-09-02 13:23:53 -0400 (Tue, 02 Sep 2008) $
+$Rev: 81278 $
 
 ]]--
 
@@ -188,7 +188,7 @@ function addon:InitJewelcrafting()
 	self:addTradeSkillSpell(26914, 300, self:CombineMobs(false,BBOSS["Golem Lord Argelmach"],BZONE["Blackrock Depths"]),4,5)
 	self:addTradeSkillSpell(31077, 370, self:CombineMobs(false,L["Coronet of the Verdant Flame Obt"],BZONE["The Botanica"]),4,5)
 	self:addTradeSkillSpell(31078, 370, self:CombineMobs(false,BBOSS["Epoch Hunter"],BZONE["Old Hillsbrad Foothills"]),4,5)
-	self:addTradeSkillSpell(44794, 365, self:CombineMobs(false,L["Chaotic Skyfire Diamond Obt"],BZONE["The Steamvault"]),4,5)
+	self:addTradeSkillSpell(44794, 365, self:CombineMobs(false,L["Chaotic Skyfire Diamond Obt"],BZONE["Shadowmoon Valley"]),4)
 
 	-- Reputations
 	self:addTradeSkillSpell(42588, 360, self:AddSingleReputation(2, BFAC["The Sha'tar"]), BFAC["The Sha'tar"])	

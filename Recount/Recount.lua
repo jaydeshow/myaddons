@@ -10,7 +10,7 @@ local FilterSize	= 20
 local RampUp		= 5
 local RampDown		= 10
       
-Recount.Version = tonumber(string.sub("$Revision: 78940 $", 12, -3))
+Recount.Version = tonumber(string.sub("$Revision: 81237 $", 12, -3))
 
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
@@ -438,6 +438,7 @@ BINDING_NAME_RECOUNT_RESET_DATA = L["Resets the data"]
 BINDING_NAME_RECOUNT_SHOW_MAIN = L["Shows the main window"]
 BINDING_NAME_RECOUNT_HIDE_MAIN = L["Hides the main window"]
 BINDING_NAME_RECOUNT_TOGGLE_MAIN = L["Toggles the main window"]
+BINDING_NAME_RECOUNT_TOGGLE_PAUSE = L["Toggle pause of global data collection"]
 
 local optFrame
 
@@ -539,6 +540,19 @@ Recount.consoleOptions = {
 			func = function() Recount.MainWindow:Show();Recount:RefreshMainWindow() end,
 			dialogHidden = true
 		},
+		[L["pause"]] = {
+			order = 23,
+			name = L["Pause"],
+			desc = L["Toggle pause of global data collection"],
+			type = 'execute',
+			func = function() if not Recount.db.profile.GlobalDataCollect then
+			     Recount:SetGlobalDataCollect(true);
+			     Recount:Print(L["Data collection turned on"]);
+			else
+			     Recount:SetGlobalDataCollect(false);
+			     Recount:Print(L["Data collection turned off"]);
+			end end,
+		},		
 		hide = {
 			order = 13,
 			name = L["Hide"],
@@ -764,6 +778,11 @@ function Recount:ResetData()
 	
 	if Recount.db.profile.CurDataSet ~= "CurrentFightData" and Recount.db.profile.CurDataSet ~= "LastFightData" then
 		Recount.db.profile.CurDataSet = "OverallData"
+	end
+	
+	if RecountDeathTrack then
+		RecountDeathTrack:DeleteAllTracks()
+		RecountDeathTrack:SetFight(Recount.db.profile.CurDataSet)
 	end
 	
 	Recount.db2.FightNum=0
@@ -1774,6 +1793,7 @@ end
 function Recount:PutInCombat()
 	Recount.InCombat=true
 	Recount.InCombatT=Recount.CurTime
+	Recount.InCombatT2=GetTime()
 	Recount.InCombatF=date("%H:%M:%S")
 	Recount.FightingWho=""
 	Recount.FightingLevel=0
@@ -1788,9 +1808,13 @@ function Recount:PutInCombat()
 	end
 
 	--If current mode is not overall data we need to reset disp table
-	if Recount.db.profile.CurDataSet~="OverallData" then -- Elsia: Fix for double entry in CurAndLast mode
+	if Recount.db.profile.CurDataSet=="CurrentFightData" then -- Elsia: Fix for double entry in CurAndLast mode
 		Recount.MainWindow.DispTableSorted=Recount:GetTable()
 		Recount.MainWindow.DispTableLookup=Recount:GetTable()
+	end
+	
+	if RecountDeathTrack then
+		RecountDeathTrack:SetFight(fight)
 	end
 end
 
@@ -2088,6 +2112,10 @@ function Recount:OnEnable(first)
 	
 	Recount.Pets:ScanRoster()
 
+	if RecountDeathTrack then
+		RecountDeathTrack:SetFight(Recount.db.profile.CurDataSet)
+	end
+	
 	Recount.HasEnabled=true
 end
 

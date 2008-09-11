@@ -15,6 +15,7 @@ local herbSkill = (GetSpellInfo(9134))
 local fishSpell = (GetSpellInfo(33095))
 local gasSpell = (GetSpellInfo(30427))
 local openSpell = (GetSpellInfo(3365))
+local openNoTextSpell = (GetSpellInfo(22810))
 local pickSpell = (GetSpellInfo(1804))
 
 local spells = { -- spellname to "database name"
@@ -23,6 +24,7 @@ local spells = { -- spellname to "database name"
 	[fishSpell] = "Fishing",
 	[gasSpell] = "Extract Gas",
 	[openSpell] = "Treasure",
+	[openNoTextSpell] = "Treasure",
 	[pickSpell] = "Treasure",
 }
 local tooltipLeftText1 = _G["GameTooltipTextLeft1"]

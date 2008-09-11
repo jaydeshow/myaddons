@@ -8,6 +8,8 @@ local BC = LibStub("LibBabble-Class-3.0"):GetLookupTable()
 -- Elsia: Note, most strings here haven't been localized. Need to grab all button and text labels here and put into localization registration.
 -- Just started with the color selection ones to give an example. See Recount.lua.
 
+local _, _, _, tocversion =  GetBuildInfo()
+
 local me={}
 
 local SavedCheckVars={}
@@ -644,7 +646,11 @@ function me:CreateTextureSelection(parent)
 	end
 
 	theFrame.ScrollBar=CreateFrame("SCROLLFRAME","Recount_Config_StatusBar_Scrollbar",theFrame,"FauxScrollFrameTemplate")
+if tocversion == 30000 then
+	theFrame.ScrollBar:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,12, me.RefreshStatusBars) end)
+else
 	theFrame.ScrollBar:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(12, me.RefreshStatusBars) end)
+end
 	theFrame.ScrollBar:SetPoint("TOPLEFT",theFrame.Rows[1],"TOPLEFT")	
 	theFrame.ScrollBar:SetPoint("BOTTOMRIGHT",theFrame.Rows[13],"BOTTOMRIGHT",-5,0)
 
@@ -737,7 +743,12 @@ function me:CreateFontSelection(parent)
 	end
 
 	theFrame.ScrollBar=CreateFrame("SCROLLFRAME","Recount_Config_Fonts_Scrollbar",theFrame,"FauxScrollFrameTemplate")
+
+if tocversion == 30000 then
+	theFrame.ScrollBar:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,12, me.RefreshFonts) end)
+else
 	theFrame.ScrollBar:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(12, me.RefreshFonts) end)
+end
 	theFrame.ScrollBar:SetPoint("TOPLEFT",theFrame.Rows[1],"TOPLEFT")	
 	theFrame.ScrollBar:SetPoint("BOTTOMRIGHT",theFrame.Rows[13],"BOTTOMRIGHT",-5,0)
 
@@ -977,7 +988,7 @@ function me:SetupMiscOptions(parent)
 
 	theFrame.GlobalData=me:CreateSavedCheckbox(L["Global Data Collection"],theFrame,"Data","GlobalData")
 	theFrame.GlobalData:SetPoint("TOPLEFT",theFrame,"TOPLEFT",10,-59-i*16-3)
-	theFrame.GlobalData:SetScript("OnClick",function () if this:GetChecked() then this:SetChecked(true); Recount.db.profile.GlobalDataCollect = true; for k,_ in pairs(ZoneLabels) do theFrame[k]:Enable() end if Recount.db.profile.HideCollect then Recount.MainWindow:Show() end else this:SetChecked(false); Recount.db.profile.GlobalDataCollect = false; for k,_ in pairs(ZoneLabels) do theFrame[k]:Disable() end if Recount.db.profile.HideCollect then Recount.MainWindow:Hide() end end end)
+	theFrame.GlobalData:SetScript("OnClick",function () Recount:SetGlobalDataCollect(this:GetChecked()) end)
 
 	i = i+1
 	
@@ -1352,6 +1363,11 @@ function me:LoadConfig()
 	
 	for k, v in pairs(ZoneLabels) do
 		me.MiscOptions[k]:SetChecked(Recount.db.profile.ZoneFilters[k])
+		if Recount.db.profile.GlobalDataCollect then
+		   me.MiscOptions[k]:Enable()
+		else				
+		   me.MiscOptions[k]:Disable()
+		end
 	end
 	
 	for k, v in pairs(Recount.db.profile.MainWindow.Buttons) do
@@ -1483,3 +1499,40 @@ function Recount:ConfigWindowStatus()
 	Recount:Print(below.." Config "..above)
 end
 
+function Recount:SetGlobalDataCollect(checked)
+
+	 local this
+	 local theFrame
+
+	 if me.MiscOptions then
+	    this = me.MiscOptions.GlobalData
+	    theFrame = me.MiscOptions
+	 end
+
+	 if checked then
+	    if this then
+	       this:SetChecked(true)
+	       for k,_ in pairs(ZoneLabels) do
+	       	   theFrame[k]:Enable()
+	       end
+	    end
+	    Recount.db.profile.GlobalDataCollect = true
+
+	    if Recount.db.profile.HideCollect then
+	       Recount.MainWindow:Show()
+	       Recount:RefreshMainWindow()
+	    end
+	 else
+	    if this then
+	       this:SetChecked(false)
+	       for k,_ in pairs(ZoneLabels) do
+		  theFrame[k]:Disable()
+	       end
+	    end
+	    Recount.db.profile.GlobalDataCollect = false;
+
+	    if Recount.db.profile.HideCollect then
+	       Recount.MainWindow:Hide()
+	    end
+	 end
+end

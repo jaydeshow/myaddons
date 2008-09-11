@@ -4,8 +4,10 @@ local L = AceLocale:GetLocale( "Recount" )
 local me={}
 local Epsilon=0.000000000000000001
 
-local revision = tonumber(string.sub("$Revision: 73286 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81545 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
+
+local _, _, _, tocversion =  GetBuildInfo()
 
 local RowHeight=14
 local function RecountSortFunc(a,b)
@@ -977,7 +979,7 @@ function me:CreateDataItem(parent,text,value,font)
 end
 
 function me:GetTextDataItem()
-	return self.Text:GetText().." "..self.Value:GetText()
+	return self.Text:GetText().." "..(self.Value:GetText() or "0")
 end
 
 function me:GetTextTitle()
@@ -1599,7 +1601,11 @@ function Recount:CreateDetailWindow()
 	end
 
 	PieMode.ScrollBar1=CreateFrame("SCROLLFRAME","Recount_PieMode_Scrollbar2",PieMode,"FauxScrollFrameTemplate")
+if tocversion == 30000 then
+	PieMode.ScrollBar1:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,12, me.RefreshUpperDetails) end)
+else
 	PieMode.ScrollBar1:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(12, me.RefreshUpperDetails) end)
+end
 	PieMode.ScrollBar1:SetPoint("TOPLEFT",PieMode.TopRows[1],"TOPLEFT")	
 	PieMode.ScrollBar1:SetPoint("BOTTOMRIGHT",PieMode.TopRows[8],"BOTTOMRIGHT")
 	Recount:SetupScrollbar("Recount_PieMode_Scrollbar2")
@@ -1793,7 +1799,11 @@ function Recount:CreateDetailWindow()
 	end
 
 	DeathMode.ScrollBar1=CreateFrame("SCROLLFRAME",DeathMode:GetName().."_Scrollbar1",DeathMode,"FauxScrollFrameTemplate")
+if tocversion == 30000 then
+	DeathMode.ScrollBar1:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,17, me.RefreshDeathDetails) end)
+else
 	DeathMode.ScrollBar1:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(17, me.RefreshDeathDetails) end)
+end
 	DeathMode.ScrollBar1:SetPoint("TOPLEFT",DeathMode.Deaths[1],"TOPLEFT")	
 	DeathMode.ScrollBar1:SetPoint("BOTTOMRIGHT",DeathMode.Deaths[17],"BOTTOMRIGHT",-1,0)
 
@@ -1850,7 +1860,11 @@ function Recount:CreateDetailWindow()
 	Recount.Colors:RegisterTexture("Other Windows","Title",Graph:DrawLine(DeathMode,150+25,1,150+25,DeathMode:GetHeight()+1+13,24,{0.5,0.0,0.0,1.0},"ARTWORK"),{r=0.5,g=0.5,b=0.5,a=1})
 
 	DeathMode.ScrollBar2=CreateFrame("SCROLLFRAME",DeathMode:GetName().."_Scrollbar2",DeathMode,"FauxScrollFrameTemplate")
+if tocversion == 30000 then
+	DeathMode.ScrollBar2:SetScript("OnVerticalScroll", function(self,offset) FauxScrollFrame_OnVerticalScroll(self,offset,12, me.RefreshDeathLogDetails) end)
+else
 	DeathMode.ScrollBar2:SetScript("OnVerticalScroll", function() FauxScrollFrame_OnVerticalScroll(12, me.RefreshDeathLogDetails) end)
+end
 	DeathMode.ScrollBar2:SetPoint("TOPLEFT",DeathMode.DeathLog[1],"TOPLEFT")	
 	DeathMode.ScrollBar2:SetPoint("BOTTOMRIGHT",DeathMode.DeathLog[20],"BOTTOMRIGHT")
 

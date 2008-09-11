@@ -4,8 +4,8 @@ ARL-Vendor.lua
 
 Vendor data for all of AckisRecipeList
 
-$Date: 2008-08-25 10:36:26 -0400 (Mon, 25 Aug 2008) $
-$Rev: 80938 $
+$Date: 2008-09-02 23:47:35 -0400 (Tue, 02 Sep 2008) $
+$Rev: 81304 $
 
 ]]--
 
@@ -149,7 +149,7 @@ function addon:InitVendor()
 	self:addVendorList(130, L["Defias Profiteer"], BFAC["Neutral"], BZONE["Westfall"], "43, 66")
 	self:addVendorList(131, L["Hagrus"], BFAC["Horde"], BZONE["Orgrimmar"], "46, 45")
 	self:addVendorList(132, L["Xandar Goodbeard"], BFAC["Alliance"], BZONE["Loch Modan"], "82, 63")
-	self:addVendorList(133, L["Hula'mahi"], BFAC["Horde"], BZONE["The Barrens"], "66, 51")
+	self:addVendorList(133, L["Hula'mahi"], BFAC["Horde"], BZONE["The Barrens"], "51, 30")
 	self:addVendorList(134, L["Ulthir"], BFAC["Alliance"], BZONE["Darnassus"], "56, 24")
 	self:addVendorList(135, L["Harklan Moongrove"], BFAC["Alliance"], BZONE["Ashenvale"], "50, 67")
 	self:addVendorList(136, L["Kor'geld"], BFAC["Horde"], BZONE["Orgrimmar"], "55, 34")

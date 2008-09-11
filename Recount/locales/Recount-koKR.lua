@@ -374,4 +374,14 @@ if not L then return end
 	L["HoT"] = "지속 치유"
 	L["Recorded Fights"] = "전투 기록"
 	L["Set the maximum number of recorded fight segments"] = "전투 세분화 기록의 최대 수 설정"
+	L["pause"] = "중단"
+	L["Pause"] = "중단"
+	L["Toggle pause of global data collection"] = "전체적인 데이터 수집 일시 중지 전환"
+	L["Data collection turned off"] = "데이터 수집 취소"
+	L["Data collection turned on"] = "데이터 수집 작동"
+
+	L["Death Track"] = "죽음 기록"
+	L["Report the DeathTrack Window Data"] = "죽음기록창 데이터 보고"
+	L["Show Death Track (Left Click)"] = "죽음 기록 보기(좌-클릭)"
+	L[" dies."] = " 죽음."
 	
