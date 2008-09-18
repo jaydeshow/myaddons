@@ -2,17 +2,19 @@ require "core"
 require "wowdb_maps"
 require "wowdb_recipes"
 require "wowdb_pets_and_mounts"
+require "wowdb_factions"
+
 class Test
   include JsonHelper
   def doit(d)
     from_json(d)
   end
 end
-
 $testmaps = false
 $testrecipes = true
 $testpets = false
 $testdbc = false
+$test_factions = false
 d = Test.new()
 
 
@@ -49,30 +51,59 @@ nodes = WoWDBMaps.new
 results = nodes.get_map_locations(1617)
 puts results["Westfall"].inspect
 end
-
 if $testrecipes
 recipes = WoWDBRecipes.new
 results = recipes.get_blacksmithing_list
-thunder = results['Steel Weapon Chain']
-puts "PRE"
-puts thunder.inspect
-#puts "Copper #{results['Copper Bracers']}"
-#puts "Runed Copper Pants #{results['Runed Copper Pants']}"
-#puts "Shining Silver Breastplate #{results['Shining Silver Breastplate']}"
+thunder = results['Light Earthforged Blade']
 recipes.add_recipe_details(thunder)
-puts "POST"
-if thunder[:method].include?("dropped-by")
-  dropped = thunder[:method_drops]
-  dropped.first.each do |drop|
-    puts drop.inspect
-  end
-end
-#puts thunder.inspect
+puts "Light Earthforged Blade: #{recipes.get_speciality('Blacksmithing',thunder[:specialty])} #{thunder[:profession]} #{thunder[:is_weapon]}"
 
 pots = recipes.get_alchemy_list
-dream = pots['Transmute: Iron to Gold']
+dream = pots['Flask of Supreme Power']
 recipes.add_recipe_details(dream)
-#puts dream.inspect
+puts "Flask of Supreme Power rarity: #{dream[:rarity]} #{dream[:is_armor]}"
+
+eng = recipes.get_tailoring_list
+goggles = eng['Swiftheal Mantle']
+recipes.add_recipe_details(goggles)
+puts "Mantle: #{goggles[:profession]} #{goggles[:is_armor]} #{goggles[:armor_slot]} #{goggles[:armor_type]}"
+
+bandaids = recipes.get_firstaid_list
+v = bandaids['Heavy Silk Bandage']
+#bandaids.each_pair do |k,v|
+  recipes.add_recipe_details(v)
+  puts "Heavy Silk Bandage = #{v[:method]} #{v[:is_armor]} #{v[:armor_slot]} #{v[:armor_type]}"
+#end
+linen = bandaids['Heavy Mageweave Bandage']
+recipes.add_recipe_details(linen)
+puts "Heavy Mageweave Bandage: #{linen[:method]}"
+mining = recipes.get_mining_list
+#mining.each_pair do |k,v|
+#  puts "Skill #{k}"
+#end
+
+
+cooking = recipes.get_cooking_list
+puts "Cooking #{cooking.size}"
+#bandaids.each_pair do |k,v|
+#  recipes.add_recipe_details(v)
+#  puts "First aid skill: #{k} = #{v.inspect}"
+#end
+jc = recipes.get_jewelcrafting_list
+hear = jc['Ornate Tigerseye Necklace']
+recipes.add_recipe_details(hear)
+puts "Ornate Tigerseye Necklace #{hear.inspect}"
+
+engl = recipes.get_engineering_list
+cgoogle = engl['Deathblow X11 Goggles']
+recipes.add_recipe_details(cgoogle)
+puts "Deathblow X11 Goggles: #{cgoogle.inspect}"
+
+philstone = pots['Alchemist\'s Stone']
+recipes.add_recipe_details(philstone)
+puts "Philo stone #{philstone.inspect}"
+
+
 end
 
 if $testpets
@@ -95,4 +126,12 @@ if $testpets
   list.add_item_details(questonly)
   puts "Mount: #{questonly.inspect}"
   #end
+end
+if $test_factions
+  # Get the list of reputations 	 
+  	factions = WoWDBFactions.new 
+  	reputations = factions.get_faction_list   	  
+    reputations.keys.sort_by {|k|reputations[k] = reputations[k][:id];reputations[k]}.each do |k|
+      puts "Faction: (#{reputations[k]}) #{k}"  
+    end
 end

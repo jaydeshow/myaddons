@@ -5,6 +5,7 @@
 # 'i' unsigned int
 # 'I' signed int
 # 'b' byte
+# 'x' 4 byte value unkown format
 class DBCFile
   def initialize(file,format)
     @records = Array.new
@@ -12,7 +13,6 @@ class DBCFile
     io.binmode
     load(io,format)
   end
-  
   def load(io,format)
     header = io.read(4)
     if not header.eql?("WDBC") 
@@ -26,7 +26,7 @@ class DBCFile
     field_types = Array.new
     format.scan(/./m) do |x| field_types << x end
     if field_types.length != field_count
-      raise "Format mismatch!"
+      raise "Format mismatch! Found #{field_count} but only #{field_types.length} provided."
     end
     @records = Array.new()
     for i in 0..(@record_count-1)
@@ -38,7 +38,10 @@ class DBCFile
             @records[i][y] = @records[i][y].unpack("i")[0]
           end
         end
-        if field_types[y].eql?("i")
+        if field_types[y].eql?("x")
+           @records[i][y] = io.read(4)
+        end
+        if field_types[y].eql?("i") or field_types[y].eql?("n")
           @records[i][y] = io.read(4)
           if not @records[i][y].nil?
             @records[i][y] = @records[i][y].unpack("I")[0]

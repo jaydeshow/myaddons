@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 80404 $
+Revision: $Rev: 81653 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 80404 $"
+local MINOR_VERSION = "$Revision: 81653 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -337,7 +337,6 @@ lib:SetBaseTranslations {
 	["Blackwing Lair"] = true,
 	["Blasted Lands"] = true,
 	["Booty Bay"] = true,
-	["Borean Tundra"] = true,
 	["Burning Steppes"] = true,
 	["Darkshore"] = true,
 	["Darnassus"] = true,
@@ -349,7 +348,6 @@ lib:SetBaseTranslations {
 	["Dire Maul (East)"] = true,
 	["Dire Maul (West)"] = true,
 	["Dire Maul (North)"] = true,
-	["Dragonblight"] = true,
 	["Dun Morogh"] = true,
 	["Durotar"] = true,
 	["Duskwood"] = true,
@@ -364,17 +362,13 @@ lib:SetBaseTranslations {
 	["Gates of Ahn'Qiraj"] = true,
 	["Gnomeregan"] = true,
 	["The Great Sea"] = true,
-	["Grizzly Hills"] = true,
 	["Grom'gol Base Camp"] = true,
 	["Hall of Legends"] = true,
 	["Hillsbrad Foothills"] = true,
-	["Howling Fjord"] = true,
 	["The Hinterlands"] = true,
 	["Hyjal"] = true,
 	["Hyjal Summit"] = true,
-	["Icecrown"] = true,
 	["Ironforge"] = true,
-	["Lake Wintergrasp"] = true,
 	["Loch Modan"] = true,
 	["Lower Blackrock Spire"] = true,
 	["Maraudon"] = true,
@@ -395,13 +389,11 @@ lib:SetBaseTranslations {
 	["Scholomance"] = true,
 	["Searing Gorge"] = true,
 	["Shadowfang Keep"] = true,
-	["Sholazar Basin"] = true,
 	["Silithus"] = true,
 	["Silverpine Forest"] = true,
 	["The Stockade"] = true,
 	["Stonard"] = true,
 	["Stonetalon Mountains"] = true,
-	["The Storm Peaks"] = true,
 	["Stormwind City"] = true,
 	["Stormwind"] = true,
 	["Stranglethorn Vale"] = true,
@@ -425,7 +417,6 @@ lib:SetBaseTranslations {
 	["Westfall"] = true,
 	["Wetlands"] = true,
 	["Winterspring"] = true,
-	["Zul'Drak"] = true,
 	["Zul'Farrak"] = true,
 	["Zul'Gurub"] = true,
 
@@ -519,10 +510,8 @@ lib:SetBaseTranslations {
 	["Tirisfal"] = true,
 	["Sunken Temple"] = true,
 
-	-- Wrath of the Lich King - All will need translations
-	
-	-- Subzones used for displaying instances.
-		
+	-- WRATH OF THE LICH KING
+	-- Zones
 	["Borean Tundra"] = true,
 	["Crystalsong Forest"] = true,
 	["Dalaran"] = true,
@@ -530,25 +519,34 @@ lib:SetBaseTranslations {
 	["Grizzly Hills"] = true,
 	["Howling Fjord"] = true,
 	["Icecrown"] = true,
-	["Wintergrasp"] = true,
 	["Sholazar Basin"] = true,
 	["The Storm Peaks"] = true,
+	["Wintergrasp"] = true,
 	["Zul'Drak"] = true,
-	
+
+	-- Instances (and subzones used for displaying these instances)
+	["Ahn'kahet: The Old Kingdom"] = true,
 	["Azjol-Nerub"] = true,
-	["Chamber of Aspects"] = true,
+	["Coldarra"] = true,
+	["The Culling of Stratholme"] = true,
 	["Drak'Tharon Keep"] = true,
-	["Gundrak"] = true,
-	["Halls of Stone"] = true,
-	["Halls of Lightning"] = true,
 	["The Eye of Eternity"] = true,
+	["Gundrak"] = true,
+	["Halls of Lightning"] = true,
+	["Halls of Stone"] = true,
 	["The Nexus"] = true,
+	["The Obsidian Sanctum"] = true,
 	["The Oculus"] = true,
-	["The Violet Hold"] = true,
-	["Ulduar"] = true, --Site seem uncertain on the name
+	["Ulduar"] = true,
 	["Utgarde Keep"] = true,
 	["Utgarde Pinnacle"] = true,
-	["Stratholme Past"] = true,
+	["The Violet Hold"] = true,
+	["Wyrmrest Temple"] = true,
+
+	-- PvP Instances
+	["Dalaran Sewers"] = true,
+	["The Ring of Valor"] = true,
+	["Strand of the Ancients"] = true,
 }
 
 if GAME_LOCALE == "enUS" then
@@ -558,6 +556,7 @@ elseif GAME_LOCALE == "deDE" then
 		["Azeroth"] = "Azeroth",
 		["Eastern Kingdoms"] = "Östliche Königreiche",
 		["Kalimdor"] = "Kalimdor",
+		--["Northrend"] = true,
 		["Outland"] = "Scherbenwelt",
 		["Cosmic map"] = "Kosmische Karte",
 
@@ -750,6 +749,44 @@ elseif GAME_LOCALE == "deDE" then
 
 		["Tirisfal"] = "Tirisfal",
 		["Sunken Temple"] = "Versunkener Tempel",
+
+-- WRATH OF THE LICH KING
+-- Zones
+		--["Borean Tundra"] = true,
+		--["Crystalsong Forest"] = true,
+		--["Dalaran"] = true,
+		--["Dragonblight"] = true,
+		--["Grizzly Hills"] = true,
+		--["Howling Fjord"] = true,
+		--["Icecrown"] = true,
+		--["Sholazar Basin"] = true,
+		--["The Storm Peaks"] = true,
+		--["Wintergrasp"] = true,
+		--["Zul'Drak"] = true,
+
+-- Instances (and subzones used for displaying these instances)
+		--["Ahn'kahet: The Old Kingdom"] = true,
+		--["Azjol-Nerub"] = true,
+		--["Coldarra"] = true,
+		--["The Culling of Stratholme"] = true,
+		--["Drak'Tharon Keep"] = true,
+		--["The Eye of Eternity"] = true,
+		--["Gundrak"] = true,
+		--["Halls of Lightning"] = true,
+		--["Halls of Stone"] = true,
+		--["The Nexus"] = true,
+		--["The Obsidian Sanctum"] = true,
+		--["The Oculus"] = true,
+		--["Ulduar"] = true,
+		--["Utgarde Keep"] = true,
+		--["Utgarde Pinnacle"] = true,
+		--["The Violet Hold"] = true,
+		--["Wyrmrest Temple"] = true,
+
+-- PvP Instances
+		--["Dalaran Sewers"] = true,
+		--["The Ring of Valor"] = true,
+		--["Strand of the Ancients"] = true,
 	}
 elseif GAME_LOCALE == "frFR" then
 	lib:SetCurrentTranslations {
@@ -777,7 +814,6 @@ elseif GAME_LOCALE == "frFR" then
 		["Blackwing Lair"] = "Repaire de l'Aile noire",
 		["Blasted Lands"] = "Terres foudroyées",
 		["Booty Bay"] = "Baie-du-Butin",
-		["Borean Tundra"] = "Toundra Boréenne",
 		["Burning Steppes"] = "Steppes ardentes",
 		["Darkshore"] = "Sombrivage",
 		["Darnassus"] = "Darnassus",
@@ -789,7 +825,6 @@ elseif GAME_LOCALE == "frFR" then
 		["Dire Maul (East)"] = "Hache-tripes (Est)",
 		["Dire Maul (West)"] = "Hache-tripes (Ouest)",
 		["Dire Maul (North)"] = "Hache-tripes (Nord)",
-		["Dragonblight"] = "Désolation des dragons",
 		["Dun Morogh"] = "Dun Morogh",
 		["Durotar"] = "Durotar",
 		["Duskwood"] = "Bois de la Pénombre",
@@ -804,17 +839,13 @@ elseif GAME_LOCALE == "frFR" then
 		["Gates of Ahn'Qiraj"] = "Portes d'Ahn'Qiraj",
 		["Gnomeregan"] = "Gnomeregan",
 		["Grom'gol Base Camp"] = "Campement Grom'gol",
-		["Grizzly Hills"] = "Les Grisonnes",
 		["The Great Sea"] = "La Grande mer",
 		["Hall of Legends"] = "Hall des Légendes",
 		["Hillsbrad Foothills"] = "Contreforts de Hautebrande",
-		["Howling Fjord"] = "Fjord Hurlant",
 		["The Hinterlands"] = "Les Hinterlands",
 		["Hyjal"] = "Hyjal",
 		["Hyjal Summit"] = "Sommet d'Hyjal",
-		["Icecrown"] = "La Couronne de glace",
 		["Ironforge"] = "Forgefer",
-		--["Lake Wintergrasp"] = true,
 		["Loch Modan"] = "Loch Modan",
 		["Lower Blackrock Spire"] = "Pic de Rochenoire inférieur",
 		["Maraudon"] = "Maraudon",
@@ -835,13 +866,11 @@ elseif GAME_LOCALE == "frFR" then
 		["Scholomance"] = "Scholomance",
 		["Searing Gorge"] = "Gorge des Vents brûlants",
 		["Shadowfang Keep"] = "Donjon d'Ombrecroc",
-		["Sholazar Basin"] = "Bassin de Sholazar",
 		["Silithus"] = "Silithus",
 		["Silverpine Forest"] = "Forêt des Pins argentés",
 		["The Stockade"] = "La Prison",
 		["Stonard"] = "Pierrêche",
 		["Stonetalon Mountains"] = "Les Serres-Rocheuses",
-		["The Storm Peaks"] = "Les pics Foudroyés",
 		["Stormwind City"] = "Hurlevent",
 		["Stormwind"] = "Hurlevent",
 		["Stranglethorn Vale"] = "Vallée de Strangleronce",
@@ -865,7 +894,6 @@ elseif GAME_LOCALE == "frFR" then
 		["Westfall"] = "Marche de l'Ouest",
 		["Wetlands"] = "Les Paluns",
 		["Winterspring"] = "Berceau-de-l'Hiver",
-		["Zul'Drak"] = "Zul'Drak",
 		["Zul'Farrak"] = "Zul'Farrak",
 		["Zul'Gurub"] = "Zul'Gurub",
 
@@ -959,10 +987,8 @@ elseif GAME_LOCALE == "frFR" then
 		["Tirisfal"] = "Tirisfal",
 		["Sunken Temple"] = "Temple englouti",
 
-		-- Wrath of the Lich King - All will need translations
-
-		-- Subzones used for displaying instances.
-
+-- WRATH OF THE LICH KING
+-- Zones
 		["Borean Tundra"] = "Toundra Boréenne",
 		["Crystalsong Forest"] = "Forêt du Chant de cristal",
 		["Dalaran"] = "Dalaran",
@@ -970,31 +996,41 @@ elseif GAME_LOCALE == "frFR" then
 		["Grizzly Hills"] = "Les Grisonnes",
 		["Howling Fjord"] = "Fjord Hurlant",
 		["Icecrown"] = "La Couronne de glace",
-		["Wintergrasp"] = "Joug-d'hiver",
 		["Sholazar Basin"] = "Bassin de Sholazar",
 		["The Storm Peaks"] = "Les pics Foudroyés",
+		["Wintergrasp"] = "Joug-d'hiver",
 		["Zul'Drak"] = "Zul'Drak",
 
-		["Azjol-Nerub"] = "Azjol-Nerub",
-		["Chamber of Aspects"] = "La Chambre des Aspects",
+-- Instances (and subzones used for displaying these instances)
+		["Ahn'kahet: The Old Kingdom"] = "Ahn'kahet : l'Ancien royaume",
+		["Azjol-Nerub"] = "Azjol-Nérub",
+		["Coldarra"] = "Frimarra",
+		["The Culling of Stratholme"] = "L'épuration de Stratholme",
 		["Drak'Tharon Keep"] = "Donjon de Drak'Tharon",
-		["Gundrak"] = "Gundrak",
-		["Halls of Stone"] = "Les salles de Pierre",
-		["Halls of Lightning"] = "Les salles de Foudre",
 		["The Eye of Eternity"] = "L'Œil d'Eternité",
+		["Gundrak"] = "Gundrak",
+		["Halls of Lightning"] = "Les salles de Foudre",
+		["Halls of Stone"] = "Les salles de Pierre",
 		["The Nexus"] = "Le Nexus",
+		["The Obsidian Sanctum"] = "Le sanctum Obsidien",
 		["The Oculus"] = "L'Oculus",
-		["The Violet Hold"] = "Le Fort pourpre",
-		["Ulduar"] = "Ulduar", --Site seem uncertain on the name
+		["Ulduar"] = "Ulduar",
 		["Utgarde Keep"] = "Donjon d'Utgarde",
 		["Utgarde Pinnacle"] = "Cime d'Utgarde",
-		["Stratholme Past"] = "Stratholme du passé",
+		["The Violet Hold"] = "Le Fort pourpre",
+		["Wyrmrest Temple"] = "Temple du Repos du ver",
+
+-- PvP Instances
+		["Dalaran Sewers"] = "Égouts de Dalaran",
+		["The Ring of Valor"] = "L'Arène des valeureux",
+		["Strand of the Ancients"] = "Rivage des anciens",
 	}
 elseif GAME_LOCALE == "zhCN" then
 	lib:SetCurrentTranslations {
 		["Azeroth"] = "艾泽拉斯",
 		["Eastern Kingdoms"] = "东部王国",
 		["Kalimdor"] = "卡利姆多",
+		--["Northrend"] = true,
 		["Outland"] = "外域",
 		["Cosmic map"] = "全部地图",
 
@@ -1187,12 +1223,51 @@ elseif GAME_LOCALE == "zhCN" then
 
 		["Tirisfal"] = "提里斯法林地",--TaxiNodesDBC
 		["Sunken Temple"] = "沉没的神庙",--AreaTableDBC
+
+-- WRATH OF THE LICH KING
+-- Zones
+		--["Borean Tundra"] = true,
+		--["Crystalsong Forest"] = true,
+		--["Dalaran"] = true,
+		--["Dragonblight"] = true,
+		--["Grizzly Hills"] = true,
+		--["Howling Fjord"] = true,
+		--["Icecrown"] = true,
+		--["Sholazar Basin"] = true,
+		--["The Storm Peaks"] = true,
+		--["Wintergrasp"] = true,
+		--["Zul'Drak"] = true,
+
+-- Instances (and subzones used for displaying these instances)
+		--["Ahn'kahet: The Old Kingdom"] = true,
+		--["Azjol-Nerub"] = true,
+		--["Coldarra"] = true,
+		--["The Culling of Stratholme"] = true,
+		--["Drak'Tharon Keep"] = true,
+		--["The Eye of Eternity"] = true,
+		--["Gundrak"] = true,
+		--["Halls of Lightning"] = true,
+		--["Halls of Stone"] = true,
+		--["The Nexus"] = true,
+		--["The Obsidian Sanctum"] = true,
+		--["The Oculus"] = true,
+		--["Ulduar"] = true,
+		--["Utgarde Keep"] = true,
+		--["Utgarde Pinnacle"] = true,
+		--["The Violet Hold"] = true,
+		--["Wyrmrest Temple"] = true,
+
+-- PvP Instances
+		--["Dalaran Sewers"] = true,
+		--["The Ring of Valor"] = true,
+		--["Strand of the Ancients"] = true,
 	}
 elseif GAME_LOCALE == "zhTW" then
 	lib:SetCurrentTranslations {
 		["Azeroth"] = "艾澤拉斯",
 		["Eastern Kingdoms"] = "東部王國",
 		["Kalimdor"] = "卡林多",
+		--["Northrend"] = true,
 		["Outland"] = "外域",
 		["Cosmic map"] = "宇宙地圖",
 
@@ -1271,6 +1346,7 @@ elseif GAME_LOCALE == "zhTW" then
 		["Stonard"] = "斯通納德",
 		["Stonetalon Mountains"] = "石爪山脈",
 		["Stormwind City"] = "暴風城",
+		--["Stormwind"] = true,
 		["Stranglethorn Vale"] = "荊棘谷",
 		["Stratholme"] = "斯坦索姆",
 		["Swamp of Sorrows"] = "悲傷沼澤",
@@ -1296,6 +1372,7 @@ elseif GAME_LOCALE == "zhTW" then
 		["Zul'Gurub"] = "祖爾格拉布",
 
 		["Champions' Hall"] = "勇士大廳",
+		--["Hall of Champions"] = true,
 		["Blade's Edge Arena"] = "劍刃競技場",
 		["Nagrand Arena"] = "納葛蘭競技場",
 		["Ruins of Lordaeron"] = "羅德隆廢墟",
@@ -1353,6 +1430,7 @@ elseif GAME_LOCALE == "zhTW" then
 		["The Eye"] = "風暴要塞",
 		["Eye of the Storm"] = "暴風之眼",
 		["Shattrath City"] = "撒塔斯城",
+		--["Shattrath"] = true,
 		["Karazhan"] = "卡拉贊",
 		["Caverns of Time"] = "時光之穴",
 		["Old Hillsbrad Foothills"] = "希爾斯布萊德丘陵舊址",
@@ -1382,6 +1460,44 @@ elseif GAME_LOCALE == "zhTW" then
 
 		["Tirisfal"] = "提里斯法林地",
 		["Sunken Temple"] = "沉沒的神廟",
+
+-- WRATH OF THE LICH KING
+-- Zones
+		--["Borean Tundra"] = true,
+		--["Crystalsong Forest"] = true,
+		--["Dalaran"] = true,
+		--["Dragonblight"] = true,
+		--["Grizzly Hills"] = true,
+		--["Howling Fjord"] = true,
+		--["Icecrown"] = true,
+		--["Sholazar Basin"] = true,
+		--["The Storm Peaks"] = true,
+		--["Wintergrasp"] = true,
+		--["Zul'Drak"] = true,
+
+-- Instances (and subzones used for displaying these instances)
+		--["Ahn'kahet: The Old Kingdom"] = true,
+		--["Azjol-Nerub"] = true,
+		--["Coldarra"] = true,
+		--["The Culling of Stratholme"] = true,
+		--["Drak'Tharon Keep"] = true,
+		--["The Eye of Eternity"] = true,
+		--["Gundrak"] = true,
+		--["Halls of Lightning"] = true,
+		--["Halls of Stone"] = true,
+		--["The Nexus"] = true,
+		--["The Obsidian Sanctum"] = true,
+		--["The Oculus"] = true,
+		--["Ulduar"] = true,
+		--["Utgarde Keep"] = true,
+		--["Utgarde Pinnacle"] = true,
+		--["The Violet Hold"] = true,
+		--["Wyrmrest Temple"] = true,
+
+-- PvP Instances
+		--["Dalaran Sewers"] = true,
+		--["The Ring of Valor"] = true,
+		--["Strand of the Ancients"] = true,
 	}
 elseif GAME_LOCALE == "koKR" then
 	lib:SetCurrentTranslations {
@@ -1409,7 +1525,6 @@ elseif GAME_LOCALE == "koKR" then
 		["Blackwing Lair"] = "검은날개 둥지",
 		["Blasted Lands"] = "저주받은 땅",
 		["Booty Bay"] = "무법항",
-		["Borean Tundra"] = "북풍의 땅",
 		["Burning Steppes"] = "불타는 평원",
 		["Darkshore"] = "어둠의 해안",
 		["Darnassus"] = "다르나서스",
@@ -1421,7 +1536,6 @@ elseif GAME_LOCALE == "koKR" then
 		["Dire Maul (East)"] = "혈투의 전장 동부",
 		["Dire Maul (West)"] = "혈투의 전장 서부",
 		["Dire Maul (North)"] = "혈투의 전장 북부",
-		["Dragonblight"] = "용의 안식처",
 		["Dun Morogh"] = "던 모로",
 		["Durotar"] = "듀로타",
 		["Duskwood"] = "그늘숲",
@@ -1436,17 +1550,13 @@ elseif GAME_LOCALE == "koKR" then
 		["Gates of Ahn'Qiraj"] = "안퀴라즈 성문",
 		["Gnomeregan"] = "놈리건",
 		["The Great Sea"] = "대해",
-		["Grizzly Hills"] = "회색 구릉지",
 		["Grom'gol Base Camp"] = "그롬골 주둔지",
 		["Hall of Legends"] = "전설의 전당",
 		["Hillsbrad Foothills"] = "힐스브래드 구릉지",
-		["Howling Fjord"] = "울부짖는 협만",
 		["The Hinterlands"] = "동부 내륙지",
 		["Hyjal"] = "하이잘",
 		["Hyjal Summit"] = "하이잘 정상",
-		["Icecrown"] = "얼음왕관",
 		["Ironforge"] = "아이언포지",
-		["Lake Wintergrasp"] = "겨울손아귀 호수",
 		["Loch Modan"] = "모단 호수",
 		["Lower Blackrock Spire"] = "검은바위 첨탑 하층",
 		["Maraudon"] = "마라우돈",
@@ -1467,13 +1577,11 @@ elseif GAME_LOCALE == "koKR" then
 		["Scholomance"] = "스칼로맨스",
 		["Searing Gorge"] = "이글거리는 협곡",
 		["Shadowfang Keep"] = "그림자송곳니 성채",
-		["Sholazar Basin"] = "숄라자르 분지",
 		["Silithus"] = "실리더스",
 		["Silverpine Forest"] = "은빛소나무 숲",
 		["The Stockade"] = "스톰윈드 지하감옥",
 		["Stonard"] = "스토나드",
 		["Stonetalon Mountains"] = "돌발톱 산맥",
-		["The Storm Peaks"] = "폭풍우 봉우리",
 		["Stormwind City"] = "스톰윈드",
 		["Stormwind"] = "스톰윈드",
 		["Stranglethorn Vale"] = "가시덤불 골짜기",
@@ -1497,7 +1605,6 @@ elseif GAME_LOCALE == "koKR" then
 		["Westfall"] = "서부 몰락지대",
 		["Wetlands"] = "저습지",
 		["Winterspring"] = "여명의 설원",
-		["Zul'Drak"] = "줄드락",
 		["Zul'Farrak"] = "줄파락",
 		["Zul'Gurub"] = "줄구룹",
 
@@ -1590,11 +1697,9 @@ elseif GAME_LOCALE == "koKR" then
 
 		["Tirisfal"] = "티리스팔",
 		["Sunken Temple"] = "가라앉은 사원",
-		
-		-- Wrath of the Lich King - All will need translations
-	
-		-- Subzones used for displaying instances.
-		
+
+-- WRATH OF THE LICH KING
+-- Zones
 		["Borean Tundra"] = "북풍의 땅",
 		["Crystalsong Forest"] = "수정노래 숲",
 		["Dalaran"] = "달라란",
@@ -1602,31 +1707,41 @@ elseif GAME_LOCALE == "koKR" then
 		["Grizzly Hills"] = "회색 구릉지",
 		["Howling Fjord"] = "울부짖는 협만",
 		["Icecrown"] = "얼음왕관",
-		["Wintergrasp"] = "겨울손아귀",
 		["Sholazar Basin"] = "숄라자르 분지",
 		["The Storm Peaks"] = "폭풍우 봉우리",
+		["Wintergrasp"] = "겨울손아귀",
 		["Zul'Drak"] = "줄드락",
-	
+
+-- Instances (and subzones used for displaying these instances)
+		--["Ahn'kahet: The Old Kingdom"] = true,
 		["Azjol-Nerub"] = "아졸네룹",
-		["Chamber of Aspects"] = "위상의 방",	-- check
+		--["Coldarra"] = true,
+		--["The Culling of Stratholme"] = true,
 		["Drak'Tharon Keep"] = "드랙타론 요새",
+		--["The Eye of Eternity"] = true,
 		["Gundrak"] = "군드락",
+		["Halls of Lightning"] = "전격의 전당", -- check
 		["Halls of Stone"] = "돌의 전당",
-		["Halls of Lightning"] = "전격의 전당",	-- check
-		--["The Eye of Eternity"] = true,	-- check
 		["The Nexus"] = "마력의 탑",
+		--["The Obsidian Sanctum"] = true,
 		["The Oculus"] = "마력의 눈",
-		--["The Violet Hold"] = true,	-- check
-		["Ulduar"] = "울두아", --Site seem uncertain on the name
+		["Ulduar"] = "울두아",
 		["Utgarde Keep"] = "우트가르드 성채",
 		["Utgarde Pinnacle"] = "우트가르드 첨탑",
-		--["Stratholme Past"] = true,	-- check
+		--["The Violet Hold"] = true,
+		--["Wyrmrest Temple"] = true,
+
+-- PvP Instances
+		--["Dalaran Sewers"] = true,
+		--["The Ring of Valor"] = true,
+		--["Strand of the Ancients"] = true,
 	}
 elseif GAME_LOCALE == "esES" then
 	lib:SetCurrentTranslations {
 		["Azeroth"] = "Azeroth",
 		["Eastern Kingdoms"] = "Reinos del Este",
 		["Kalimdor"] = "Kalimdor",
+		--["Northrend"] = true,
 		["Outland"] = "Terrallende",
 		["Cosmic map"] = "Mapa cósmico",
 
@@ -1819,12 +1934,51 @@ elseif GAME_LOCALE == "esES" then
 
 		["Tirisfal"] = "Tirisfal",
 		["Sunken Temple"] = "El Templo de Sunken",
+
+-- WRATH OF THE LICH KING
+-- Zones
+		--["Borean Tundra"] = true,
+		--["Crystalsong Forest"] = true,
+		--["Dalaran"] = true,
+		--["Dragonblight"] = true,
+		--["Grizzly Hills"] = true,
+		--["Howling Fjord"] = true,
+		--["Icecrown"] = true,
+		--["Sholazar Basin"] = true,
+		--["The Storm Peaks"] = true,
+		--["Wintergrasp"] = true,
+		--["Zul'Drak"] = true,
+
+-- Instances (and subzones used for displaying these instances)
+		--["Ahn'kahet: The Old Kingdom"] = true,
+		--["Azjol-Nerub"] = true,
+		--["Coldarra"] = true,
+		--["The Culling of Stratholme"] = true,
+		--["Drak'Tharon Keep"] = true,
+		--["The Eye of Eternity"] = true,
+		--["Gundrak"] = true,
+		--["Halls of Lightning"] = true,
+		--["Halls of Stone"] = true,
+		--["The Nexus"] = true,
+		--["The Obsidian Sanctum"] = true,
+		--["The Oculus"] = true,
+		--["Ulduar"] = true,
+		--["Utgarde Keep"] = true,
+		--["Utgarde Pinnacle"] = true,
+		--["The Violet Hold"] = true,
+		--["Wyrmrest Temple"] = true,
+
+-- PvP Instances
+		--["Dalaran Sewers"] = true,
+		--["The Ring of Valor"] = true,
+		--["Strand of the Ancients"] = true,
 	}
 elseif GAME_LOCALE == "esMX" then
 	lib:SetCurrentTranslations {
 		["Azeroth"] = "Azeroth",
 		["Eastern Kingdoms"] = "Reinos del Este",
 		["Kalimdor"] = "Kalimdor",
+		--["Northrend"] = true,
 		["Outland"] = "Terrallende",
 		["Cosmic map"] = "Mapa cósmico",
 
@@ -2017,12 +2171,51 @@ elseif GAME_LOCALE == "esMX" then
 
 		["Tirisfal"] = "Tirisfal",
 		["Sunken Temple"] = "El Templo de Sunken",
+
+-- WRATH OF THE LICH KING
+-- Zones
+		--["Borean Tundra"] = true,
+		--["Crystalsong Forest"] = true,
+		--["Dalaran"] = true,
+		--["Dragonblight"] = true,
+		--["Grizzly Hills"] = true,
+		--["Howling Fjord"] = true,
+		--["Icecrown"] = true,
+		--["Sholazar Basin"] = true,
+		--["The Storm Peaks"] = true,
+		--["Wintergrasp"] = true,
+		--["Zul'Drak"] = true,
+
+-- Instances (and subzones used for displaying these instances)
+		--["Ahn'kahet: The Old Kingdom"] = true,
+		--["Azjol-Nerub"] = true,
+		--["Coldarra"] = true,
+		--["The Culling of Stratholme"] = true,
+		--["Drak'Tharon Keep"] = true,
+		--["The Eye of Eternity"] = true,
+		--["Gundrak"] = true,
+		--["Halls of Lightning"] = true,
+		--["Halls of Stone"] = true,
+		--["The Nexus"] = true,
+		--["The Obsidian Sanctum"] = true,
+		--["The Oculus"] = true,
+		--["Ulduar"] = true,
+		--["Utgarde Keep"] = true,
+		--["Utgarde Pinnacle"] = true,
+		--["The Violet Hold"] = true,
+		--["Wyrmrest Temple"] = true,
+
+-- PvP Instances
+		--["Dalaran Sewers"] = true,
+		--["The Ring of Valor"] = true,
+		--["Strand of the Ancients"] = true,
 	}
 elseif GAME_LOCALE == "ruRU" then
 	lib:SetCurrentTranslations {
 		["Azeroth"] = "Азерот",
 		["Eastern Kingdoms"] = "Восточные королевства",
 		["Kalimdor"] = "Калимдор",
+		--["Northrend"] = true,
 		["Outland"] = "Запределье",
 		["Cosmic map"] = "Карта Вселенной",
 
@@ -2215,6 +2408,44 @@ elseif GAME_LOCALE == "ruRU" then
 
 		["Tirisfal"] = "Тирисфальские леса",
 		["Sunken Temple"] = "Затонувший храм",
+
+-- WRATH OF THE LICH KING
+-- Zones
+		--["Borean Tundra"] = true,
+		--["Crystalsong Forest"] = true,
+		--["Dalaran"] = true,
+		--["Dragonblight"] = true,
+		--["Grizzly Hills"] = true,
+		--["Howling Fjord"] = true,
+		--["Icecrown"] = true,
+		--["Sholazar Basin"] = true,
+		--["The Storm Peaks"] = true,
+		--["Wintergrasp"] = true,
+		--["Zul'Drak"] = true,
+
+-- Instances (and subzones used for displaying these instances)
+		--["Ahn'kahet: The Old Kingdom"] = true,
+		--["Azjol-Nerub"] = true,
+		--["Coldarra"] = true,
+		--["The Culling of Stratholme"] = true,
+		--["Drak'Tharon Keep"] = true,
+		--["The Eye of Eternity"] = true,
+		--["Gundrak"] = true,
+		--["Halls of Lightning"] = true,
+		--["Halls of Stone"] = true,
+		--["The Nexus"] = true,
+		--["The Obsidian Sanctum"] = true,
+		--["The Oculus"] = true,
+		--["Ulduar"] = true,
+		--["Utgarde Keep"] = true,
+		--["Utgarde Pinnacle"] = true,
+		--["The Violet Hold"] = true,
+		--["Wyrmrest Temple"] = true,
+
+-- PvP Instances
+		--["Dalaran Sewers"] = true,
+		--["The Ring of Valor"] = true,
+		--["Strand of the Ancients"] = true,
 	}
 else
 	error(("%s: Locale %q not supported"):format(MAJOR_VERSION, GAME_LOCALE))

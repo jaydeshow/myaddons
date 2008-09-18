@@ -1,6 +1,6 @@
 --[[
 Name: RatingBuster
-Revision: $Revision: 81486 $
+Revision: $Revision: 81720 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
 Description: Converts combat ratings in tooltips into normal percentages.
@@ -22,8 +22,8 @@ local BI = AceLibrary("LibBabble-Inventory-3.0"):GetLookupTable()
 -- AceAddon Initialization
 RatingBuster = AceLibrary("AceAddon-2.0"):new("AceDB-2.0", "AceConsole-2.0", "AceEvent-2.0", "AceDebug-2.0")
 RatingBuster.title = "RatingBuster"
-RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 81486 $", "(%d+)", "%1")..")"
-RatingBuster.date = gsub("$Date: 2008-09-07 14:28:42 -0400 (Sun, 07 Sep 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
+RatingBuster.version = "1.3.8 (r"..gsub("$Revision: 81720 $", "(%d+)", "%1")..")"
+RatingBuster.date = gsub("$Date: 2008-09-14 08:14:02 -0400 (Sun, 14 Sep 2008) $", "^.-(%d%d%d%d%-%d%d%-%d%d).-$", "%1")
 
 
 -------------------
@@ -176,11 +176,17 @@ Spi -> MP5, MP5NC, HP5, SpellDmg, Healing
 	sumRAP = false,
 	sumFAP = false,
 	sumHit = false,
-	sumHitRating = false, -- new
+	sumHitRating = false,
+	sumRangedHit = false,
+	sumRangedHitRating = false,
 	sumCrit = false,
-	sumCritRating = false, -- new
-	sumHaste = false, -- new
-	sumHasteRating = false, -- new
+	sumCritRating = false,
+	sumRangedCrit = false,
+	sumRangedCritRating = false,
+	sumHaste = false,
+	sumHasteRating = false,
+	sumRangedHaste = false,
+	sumRangedHasteRating = false,
 	sumExpertise = false,
 	sumWeaponSkill = false,
 	sumDodgeNeglect = false,
@@ -188,7 +194,9 @@ Spi -> MP5, MP5NC, HP5, SpellDmg, Healing
 	sumBlockNeglect = false,
 	sumWeaponMaxDamage = false,
 	sumWeaponDPS = false,
-	sumIgnoreArmor = false, -- new
+	sumIgnoreArmor = false,
+	sumArmorPenetration = false, -- new
+	sumArmorPenetrationRating = false, -- new
 	-- Spell
 	sumSpellDmg = false,
 	sumArcaneDmg = false,
@@ -199,20 +207,20 @@ Spi -> MP5, MP5NC, HP5, SpellDmg, Healing
 	sumHolyDmg = false,
 	sumHealing = false,
 	sumSpellHit = false,
-	sumSpellHitRating = false, -- new
+	sumSpellHitRating = false,
 	sumSpellCrit = false,
-	sumSpellCritRating = false, -- new
-	sumSpellHaste = false, -- new
-	sumSpellHasteRating = false, -- new
-	sumPenetration = false, -- new
+	sumSpellCritRating = false,
+	sumSpellHaste = false,
+	sumSpellHasteRating = false,
+	sumPenetration = false,
 	-- Tank
 	sumArmor = false,
 	sumDodge = false,
-	sumDodgeRating = false, -- new
+	sumDodgeRating = false,
 	sumParry = false,
-	sumParryRating = false, -- new
+	sumParryRating = false,
 	sumBlock = false,
-	sumBlockRating = false, -- new
+	sumBlockRating = false,
 	sumBlockValue = false,
 	sumHitAvoid = false,
 	sumCritAvoid = false,
@@ -221,7 +229,7 @@ Spi -> MP5, MP5NC, HP5, SpellDmg, Healing
 	sumNatureResist = false,
 	sumFireResist = false,
 	sumShadowResist = false,
-	sumResilience = false, -- new
+	sumResilience = false,
 	sumDefense = false,
 	sumTankPoints = false,
 	sumTotalReduction = false,
@@ -678,24 +686,6 @@ local consoleOptions = {
 					get = getProfileOption,
 					set = setProfileOptionAndClearCache,
 				},
-				test = {
-				    type = 'group',
-					name = "test",
-				    desc = "Other stuff",
-				    pass = true,
-				    func = function(key)
-				        if key == "fire" then
-				            RatingBuster:Print("Fired!")
-				        end
-				    end,
-				    args = {
-				        fire = {
-				            type = 'execute',
-							name = "testfire",
-				            desc = "Fire the cannon!"
-				        }
-				    }
-				},
 				space = {
 					type = 'group',
 					name = L["Add empty line"],
@@ -915,6 +905,22 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
+						rangedhit = {
+							type = 'toggle',
+							name = L["Sum Ranged Hit Chance"],
+							desc = L["Ranged Hit Chance <- Hit Rating, Weapon Skill Rating, Ranged Hit Rating"],
+							passValue = "sumRangedHit",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
+						rangedhitrating = {
+							type = 'toggle',
+							name = L["Sum Ranged Hit Rating"],
+							desc = L["Ranged Hit Rating Summary"],
+							passValue = "sumRangedHitRating",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
 						crit = {
 							type = 'toggle',
 							name = L["Sum Crit Chance"],
@@ -931,6 +937,22 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
+						rangedcrit = {
+							type = 'toggle',
+							name = L["Sum Ranged Crit Chance"],
+							desc = L["Ranged Crit Chance <- Crit Rating, Agility, Weapon Skill Rating, Ranged Crit Rating"],
+							passValue = "sumRangedCrit",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
+						rangedcritrating = {
+							type = 'toggle',
+							name = L["Sum Ranged Crit Rating"],
+							desc = L["Ranged Crit Rating Summary"],
+							passValue = "sumRangedCritRating",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
 						haste = {
 							type = 'toggle',
 							name = L["Sum Haste"],
@@ -944,6 +966,22 @@ local consoleOptions = {
 							name = L["Sum Haste Rating"],
 							desc = L["Haste Rating Summary"],
 							passValue = "sumHasteRating",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
+						rangedhaste = {
+							type = 'toggle',
+							name = L["Sum Ranged Haste"],
+							desc = L["Ranged Haste <- Haste Rating, Ranged Haste Rating"],
+							passValue = "sumRangedHaste",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
+						rangedhasterating = {
+							type = 'toggle',
+							name = L["Sum Ranged Haste Rating"],
+							desc = L["Ranged Haste Rating Summary"],
+							passValue = "sumRangedHasteRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -1013,6 +1051,22 @@ local consoleOptions = {
 							name = L["Sum Ignore Armor"],
 							desc = L["Ignore Armor Summary"],
 							passValue = "sumIgnoreArmor",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
+						arp = {
+							type = 'toggle',
+							name = L["Sum Armor Penetration"],
+							desc = L["Armor Penetration Summary"],
+							passValue = "sumArmorPenetration",
+							get = getProfileOption,
+							set = setProfileOptionAndClearCache,
+						},
+						arprating = {
+							type = 'toggle',
+							name = L["Sum Armor Penetration Rating"],
+							desc = L["Armor Penetration Rating Summary"],
+							passValue = "sumArmorPenetrationRating",
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
@@ -1087,7 +1141,7 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hitspell = {
+						hit = {
 							type = 'toggle',
 							name = L["Sum Spell Hit Chance"],
 							desc = L["Spell Hit Chance <- Spell Hit Rating"],
@@ -1095,7 +1149,7 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hitspellrating = {
+						hitrating = {
 							type = 'toggle',
 							name = L["Sum Spell Hit Rating"],
 							desc = L["Spell Hit Rating Summary"],
@@ -1103,7 +1157,7 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						critspell = {
+						crit = {
 							type = 'toggle',
 							name = L["Sum Spell Crit Chance"],
 							desc = L["Spell Crit Chance <- Spell Crit Rating, Intellect"],
@@ -1111,7 +1165,7 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						critspellrating = {
+						critrating = {
 							type = 'toggle',
 							name = L["Sum Spell Crit Rating"],
 							desc = L["Spell Crit Rating Summary"],
@@ -1119,7 +1173,7 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hastespell = {
+						haste = {
 							type = 'toggle',
 							name = L["Sum Spell Haste"],
 							desc = L["Spell Haste <- Spell Haste Rating"],
@@ -1127,7 +1181,7 @@ local consoleOptions = {
 							get = getProfileOption,
 							set = setProfileOptionAndClearCache,
 						},
-						hastespellrating = {
+						hasterating = {
 							type = 'toggle',
 							name = L["Sum Spell Haste Rating"],
 							desc = L["Spell Haste Rating Summary"],
@@ -1393,6 +1447,7 @@ if class == "DRUID" then
 	profileDefault.sumCrit = true
 	profileDefault.sumHaste = true
 	profileDefault.sumExpertise = true
+	profileDefault.sumArmorPenetration = true
 	profileDefault.sumDodge = true
 	profileDefault.sumArmor = true
 	profileDefault.sumResilience = true
@@ -1446,9 +1501,10 @@ if class == "HUNTER" then
 	profileDefault.sumMP = true
 	profileDefault.sumResilience = true
 	profileDefault.sumRAP = true
-	profileDefault.sumHit = true
-	profileDefault.sumCrit = true
-	profileDefault.sumHaste = true
+	profileDefault.sumRangedHit = true
+	profileDefault.sumRangedCrit = true
+	profileDefault.sumRangedHaste = true
+	profileDefault.sumArmorPenetration = true
 	profileDefault.sumMP5 = true
 	profileDefault.showMP5FromInt = true -- Aspect of the Viper
 	profileDefault.showDodgeFromAgi = false
@@ -1524,6 +1580,7 @@ if class == "PALADIN" then
 	profileDefault.sumCrit = true
 	profileDefault.sumHaste = true
 	profileDefault.sumExpertise = true
+	profileDefault.sumArmorPenetration = true
 	profileDefault.sumHolyDmg = true
 	profileDefault.sumSpellHit = true
 	profileDefault.sumSpellCrit = true
@@ -1654,6 +1711,7 @@ if class == "ROGUE" then
 	profileDefault.sumCrit = true
 	profileDefault.sumHaste = true
 	profileDefault.sumExpertise = true
+	profileDefault.sumArmorPenetration = true
 	profileDefault.showSpellCritFromInt = false
 end
 if class == "SHAMAN" then
@@ -1785,6 +1843,7 @@ if class == "WARRIOR" then
 	profileDefault.sumCrit = true
 	profileDefault.sumHaste = true
 	profileDefault.sumExpertise = true
+	profileDefault.sumArmorPenetration = true
 	profileDefault.sumDodge = true
 	profileDefault.sumParry = true
 	profileDefault.sumBlock = true
@@ -1801,6 +1860,7 @@ if class == "DEATHKNIGHT" then
 	profileDefault.sumCrit = true
 	profileDefault.sumHaste = true
 	profileDefault.sumExpertise = true
+	profileDefault.sumArmorPenetration = true
 	profileDefault.sumDodge = true
 	profileDefault.sumParry = true
 	profileDefault.sumDefense = true
@@ -2123,7 +2183,7 @@ function RatingBuster:ProcessText(text)
 				if (not partialtext and strfind(lowerText, stat.pattern)) or (partialtext and strfind(partialtext, stat.pattern)) then
 					value = tonumber(value)
 					local infoString = ""
-					if type(stat.id) == "number" and stat.id >= 1 and stat.id <= 24 and profileDB.showRatings then
+					if type(stat.id) == "number" and stat.id >= 1 and stat.id <= 25 and profileDB.showRatings then
 						--------------------
 						-- Combat Ratings --
 						--------------------
@@ -2177,7 +2237,7 @@ function RatingBuster:ProcessText(text)
 							--self:Debug(text..", "..tostring(effect)..", "..value..", "..stat.id..", "..calcLevel)
 							-- Build info string
 							infoString = format("%+.2f", effect)
-							if stat.id > 2 and stat.id < 21 then -- if rating is a percentage
+							if (stat.id > 2 and stat.id < 21) or stat.id == 25 then -- if rating is a percentage
 								infoString = infoString.."%"
 							end
 						end
@@ -2776,6 +2836,29 @@ local summaryCalcData = {
 		name = "MELEE_HIT_RATING",
 		func = function(sum) return (sum["MELEE_HIT_RATING"] or 0) end,
 	},
+	-- Ranged Hit Chance - MELEE_HIT_RATING, WEAPON_RATING, RANGED_HIT_RATING
+	{
+		option = "sumRangedHit",
+		name = "RANGED_HIT",
+		func = function(sum)
+			local s = 0
+			for id, v in pairs(sum) do
+				if strsub(id, -13) == "WEAPON_RATING" then
+					s = s + StatLogic:GetEffectFromRating(v, CR_WEAPON_SKILL, calcLevel) * 0.04
+					break
+				end
+			end
+			return s + StatLogic:GetEffectFromRating((sum["MELEE_HIT_RATING"] or 0), "MELEE_HIT_RATING", calcLevel)
+					 + StatLogic:GetEffectFromRating((sum["RANGED_HIT_RATING"] or 0), "RANGED_HIT_RATING", calcLevel)
+		end,
+		ispercent = true,
+	},
+	-- Ranged Hit Rating - MELEE_HIT_RATING, RANGED_HIT_RATING
+	{
+		option = "sumRangedHitRating",
+		name = "RANGED_HIT_RATING",
+		func = function(sum) return (sum["MELEE_HIT_RATING"] or 0) + (sum["RANGED_HIT_RATING"] or 0) end,
+	},
 	-- Crit Chance - MELEE_CRIT_RATING, WEAPON_RATING, AGI
 	{
 		option = "sumCrit",
@@ -2799,6 +2882,30 @@ local summaryCalcData = {
 		name = "MELEE_CRIT_RATING",
 		func = function(sum) return (sum["MELEE_CRIT_RATING"] or 0) end,
 	},
+	-- Ranged Crit Chance - MELEE_CRIT_RATING, WEAPON_RATING, AGI, RANGED_CRIT_RATING
+	{
+		option = "sumRangedCrit",
+		name = "RANGED_CRIT",
+		func = function(sum)
+			local s = 0
+			for id, v in pairs(sum) do
+				if strsub(id, -13) == "WEAPON_RATING" then
+					s = s + StatLogic:GetEffectFromRating(v, CR_WEAPON_SKILL, calcLevel) * 0.04
+					break
+				end
+			end
+			return s + StatLogic:GetEffectFromRating((sum["MELEE_CRIT_RATING"] or 0), "MELEE_CRIT_RATING", calcLevel)
+					 + StatLogic:GetEffectFromRating((sum["RANGED_CRIT_RATING"] or 0), "RANGED_CRIT_RATING", calcLevel)
+					 + StatLogic:GetCritFromAgi(sum["AGI"], class, calcLevel)
+		end,
+		ispercent = true,
+	},
+	-- Ranged Crit Rating - MELEE_CRIT_RATING, RANGED_CRIT_RATING
+	{
+		option = "sumRangedCritRating",
+		name = "RANGED_CRIT_RATING",
+		func = function(sum) return (sum["MELEE_CRIT_RATING"] or 0) + (sum["RANGED_CRIT_RATING"] or 0) end,
+	},
 	-- Haste - MELEE_HASTE_RATING
 	{
 		option = "sumHaste",
@@ -2812,11 +2919,40 @@ local summaryCalcData = {
 		name = "MELEE_HASTE_RATING",
 		func = function(sum) return (sum["MELEE_HASTE_RATING"] or 0) end,
 	},
+	-- Ranged Haste - MELEE_HASTE_RATING, RANGED_HASTE_RATING
+	{
+		option = "sumRangedHaste",
+		name = "RANGED_HASTE",
+		func = function(sum)
+			return StatLogic:GetEffectFromRating((sum["MELEE_HASTE_RATING"] or 0), "MELEE_HASTE_RATING", calcLevel)
+				+ StatLogic:GetEffectFromRating((sum["RANGED_HASTE_RATING"] or 0), "RANGED_HASTE_RATING", calcLevel)
+		end,
+		ispercent = true,
+	},
+	-- Ranged Haste Rating - MELEE_HASTE_RATING, RANGED_HASTE_RATING
+	{
+		option = "sumRangedHasteRating",
+		name = "RANGED_HASTE_RATING",
+		func = function(sum) return (sum["MELEE_HASTE_RATING"] or 0) + (sum["RANGED_HASTE_RATING"] or 0) end,
+	},
 	-- Expertise - EXPERTISE_RATING
 	{
 		option = "sumExpertise",
 		name = "EXPERTISE",
 		func = function(sum) return StatLogic:GetEffectFromRating((sum["EXPERTISE_RATING"] or 0), "EXPERTISE_RATING", calcLevel) end,
+	},
+	-- Armor Penetration - ARMOR_PENETRATION_RATING
+	{
+		option = "sumArmorPenetration",
+		name = "ARMOR_PENETRATION",
+		func = function(sum) return StatLogic:GetEffectFromRating((sum["ARMOR_PENETRATION_RATING"] or 0), "ARMOR_PENETRATION_RATING", calcLevel) end,
+		ispercent = true,
+	},
+	-- Armor Penetration Rating - ARMOR_PENETRATION_RATING
+	{
+		option = "sumArmorPenetrationRating",
+		name = "ARMOR_PENETRATION_RATING",
+		func = function(sum) return (sum["ARMOR_PENETRATION_RATING"] or 0) end,
 	},
 	-- Dodge Neglect - EXPERTISE_RATING, WEAPON_RATING -- 2.3.0
 	{

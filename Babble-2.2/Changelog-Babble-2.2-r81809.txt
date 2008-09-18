@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------
+r81809 | StingerSoft | 2008-09-17 12:51:47 -0400 (Wed, 17 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Gas-2.2/Babble-Gas-2.2.lua
+   M /trunk/Babble-2.2/Babble-Spell-2.2/Babble-Spell-2.2.lua
+
+Babble-2.2:
+- update ruRU
+------------------------------------------------------------------------
+r81633 | StingerSoft | 2008-09-11 23:26:42 -0400 (Thu, 11 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/Babble-2.2/Babble-Spell-2.2/Babble-Spell-2.2.lua
+
+Babble-2.2:
+-update/fix ruRU
+------------------------------------------------------------------------
 r81462 | StingerSoft | 2008-09-07 03:41:33 -0400 (Sun, 07 Sep 2008) | 2 lines
 Changed paths:
    M /trunk/Babble-2.2/Babble-Ore-2.2/Babble-Ore-2.2.lua
@@ -6,19 +21,4 @@ Changed paths:
 
 Babble-2.2:
 - update ruRU (fix typo in spell names, add AQ ore)
-------------------------------------------------------------------------
-r80542 | StingerSoft | 2008-08-16 13:16:52 -0400 (Sat, 16 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Spell-2.2/Babble-Spell-2.2.lua
-
-Babble-2.2:
-- fix/update ruRU
-------------------------------------------------------------------------
-r80316 | StingerSoft | 2008-08-12 21:14:13 -0400 (Tue, 12 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/Babble-2.2/Babble-Ore-2.2/Babble-Ore-2.2.lua
-   M /trunk/Babble-2.2/Babble-Trainer-2.2/Babble-Trainer-2.2.lua
-
-Babble-2.2:
-- fix ruRU
 ------------------------------------------------------------------------

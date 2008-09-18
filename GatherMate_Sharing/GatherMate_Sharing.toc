@@ -4,6 +4,7 @@
 ## Notes-frFR: Module de partage de base de données pour GatherMate.
 ## Title: GatherMate_Sharing
 ## Author: kagaro, Xinhuan
+## X-Email: sal.scotto@gmail.com
 ## SavedVariables: GatherMate_SharingDB
 ## X-Category: Map
 ## Version: 1.0

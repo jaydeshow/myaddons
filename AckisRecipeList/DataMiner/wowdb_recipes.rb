@@ -130,7 +130,47 @@ class WoWDBRecipes
     @@jewelcrafting = Hash.new
     @@leatherworking = Hash.new
     @@tailoring = Hash.new
+    @@first_aid = Hash.new
+    @@mining = Hash.new
     @@specialities = Hash.new
+    @@cooking = Hash.new
+  end
+=begin rdoc
+  Get a list of all smelting recipes
+  returns
+    a Hash keys by receip name
+=end
+  def get_cooking_list
+    if @@cooking.length == 0
+      map = search_list("6.9.185")
+      cleanup_list(map,@@cooking)
+    end
+    return @@cooking
+  end
+
+=begin rdoc
+  Get a list of all smelting recipes
+  returns
+    a Hash keys by receip name
+=end
+  def get_mining_list
+    if @@mining.length == 0
+      map = search_list("6.11.186")
+      cleanup_list(map,@@mining)
+    end
+    return @@mining
+  end
+=begin rdoc
+  Get a list of All first aid recipes
+  returns
+    a Hash keyed by recipe name
+=end
+  def get_firstaid_list
+    if @@first_aid.length == 0
+      map = search_list("6.9.129")
+      cleanup_list(map,@@first_aid)
+    end
+    return @@first_aid    
   end
 =begin rdoc
   Get a list of all Alchemy Receipes
@@ -268,23 +308,85 @@ class WoWDBRecipes
     unless response
       raise "No recipe data found for #{recipe_object[:id]}"
     end
+    response.gsub!(/\[\,/,"[")
     data_line = response.scan(/cg_items.addData\((.*)\);/).first
     unless data_line.nil?
       data_line = from_json(data_line.first)
       # check for specialities
       data_line.each do |line|
         if line.has_key?(:tooltip)
-          mastery = line[:tooltip].scan(/Requires <a href=\\"spell\.aspx\?id=(\d+)\\"/).first
+          mastery = line[:tooltip].match(/Requires <a href=\\"spell\.aspx\?id=(\d+)\\"/)
           unless mastery.nil? or mastery.length == 0
-            mastery_id = mastery.first.to_i
+            mastery_id = mastery[1].to_i
             recipe_object[:specialty] = mastery_id
+          end
+          bop = line[:tooltip].match(/>Binds.*?picked.*?</)
+          boa = line[:tooltip].match(/>Binds.*?account.*></)
+          boe = line[:tooltip].match(/>Binds.*?equip.*></)
+          if !bop.nil?
+            recipe_object[:item_binds] = 'BOP'
+          elsif !boa.nil?
+            recipe_object[:item_binds] = 'BOA'
+          elsif !boe.nil?
+            recipe_object[:item_binds] = 'BOE'
+          end
+          # heck for classes
+          classes = line[:tooltip].match(/<br>Classes:(.*?)</)
+          unless classes.nil? or classes.length == 0
+            klasses = classes[1]
+            klasses.rstrip!
+            klasses.lstrip!
+            recipe_object[:classes] = klasses
+          end
+          skills = line[:tooltip].match(/Requires.<a href=\# class=r1>(.*?)<\/a/)
+          unless skills.nil? or skills.length == 0
+            prof = skills[1]
+            prof.lstrip!
+            prof.rstrip!
+            recipe_object[:profession] = prof
+          end
+          faction = line[:tooltip].match(/<br>Requires.*faction.*?>(.*?)<..>.-.(.*?)</)
+          unless faction.nil? or faction.length == 0
+            fact = faction[1]
+            amount = faction[2]
+            recipe_object[:faction] = fact
+            recipe_object[:faction_level] = amount
+          end
+          isArmor = line[:tooltip].match(/Armor|Ring|Trinket|Relic|Cloak|Totem|Libram|Off.Hand|Amulet/)
+          isWeapon = line[:tooltip].match(/damage per second/)
+          hasEquip = line[:tooltip].match(/Equip:/)
+          if !isArmor.nil? or !hasEquip.nil?
+            recipe_object[:is_armor] = true
+            armor_slot = line[:tooltip].match(/>(Chest|Legs|Feet|Hands|Wrist|Shoulder|Back|Waist|Head|Neck|Finger|Trinket|Relic|Off.Hand)</)
+            unless armor_slot.nil?
+              recipe_object[:armor_slot] = armor_slot[1]
+            else
+              recipe_object[:armor_slot] = "Trinket"
+            end
+            armor_type = line[:tooltip].match(/>(Cloth|Plate|Mail|Leather|Idol|Totem|Libram|Trinket|Amulet|Cloak|Shield|Ring)</)
+            unless armor_type.nil?
+              recipe_object[:armor_type] = armor_type[1]
+            else
+              recipe_object[:armor_type] = "Trinket"
+            end
+          end
+          unless isWeapon.nil?
+            recipe_object[:is_weapon] = true
+            # what type of weapon?
+            weapon_slot = line[:tooltip].match(/(Sword|Axe|Bow|Gun|Mace|Polearm|Staff|Fist|Dagger|Thrown|Crossbow|Wand|Misc|Fishing.Pole)/)
+            unless weapon_slot.nil?
+              recipe_object[:weapon_slot] = weapon_slot[1]
+            end
+            weapon_hands = line[:tooltip].match(/(One-Hand|Two-Hand)/)
+            unless weapon_hands.nil?
+              recipe_object[:weapon_handed] = weapon_hands[1]
+            end
           end
         end
       end
     end
     # check for type
     recipe_object[:method] = ""
-    recipe_object[:method_drops] = Array.new
     json_data = Hash.new
     if response.include?("cg_json_1")
       json_data["cg_json_1"] = from_json(response.scan(/cg_json_1=(.*);/).first.first)
@@ -305,6 +407,7 @@ class WoWDBRecipes
         tab.gsub!(/cg_json_(.)/,'\'cg_json_\1\'')
         tab.gsub!(/cg_comments(.)/,'\'cg_comments\'\1')
         tab.gsub!(/cg_screenshots(.)/,'\'cg_screenshots\'\1')
+        tab.gsub!(/\[\,/,"[")
         tab = from_json(tab)
         tab[:id].downcase!
         tab[:template].downcase!
@@ -324,10 +427,24 @@ class WoWDBRecipes
           recipe_object[:method_vendors] = jd
           # method source now has another array with the actual receipe id for later lookup
         end
-        if (tab[:id].eql?("dropped-by") and tab[:template].eql?("npcs")) or (tab[:id].eql?("contained-in-object") and tab[:template].eql?("objects")) or (tab[:id].eql?("contained-in-item") and tab[:template].eql?("items"))
+
+        if (tab[:id].eql?("dropped-by") and tab[:template].eql?("npcs")) 
           jd = json_data[tab[:data]]
           recipe_object[:method] += "#{tab[:id]},"
-          recipe_object[:method_drops] << jd
+          recipe_object[:method_dropped_by] = jd
+          # method source now has another array with the actual receipe id for later lookup
+        end        
+        if (tab[:id].eql?("contained-in-object") and tab[:template].eql?("objects")) 
+          jd = json_data[tab[:data]]
+          recipe_object[:method] += "#{tab[:id]},"
+          recipe_object[:method_contained_in_objects] = jd
+          # method source now has another array with the actual receipe id for later lookup
+        end        
+        
+        if (tab[:id].eql?("contained-in-item") and tab[:template].eql?("items"))
+          jd = json_data[tab[:data]]
+          recipe_object[:method] += "#{tab[:id]},"
+          recipe_object[:method_contained_in_items] = jd
           # method source now has another array with the actual receipe id for later lookup
         end        
         # Quests
@@ -344,6 +461,13 @@ class WoWDBRecipes
             rid = jd[:id]
             recipe_object[:spellid] = recipe_object[:id]
             recipe_object[:id] = rid
+            if jd[:rarity]
+              recipe_object[:rarity] = jd[:rarity]
+            end
+            if !recipe_object[:item_binds].nil?
+              recipe_object[:recipe_binds] = recipe_object[:item_binds]
+              recipe_object[:item_binds] = ""
+            end
             # recuse the lookup to get details
             add_recipe_details(recipe_object,true)
           end
@@ -353,7 +477,11 @@ class WoWDBRecipes
         if recipe_object[:method].rindex(",") == recipe_object[:method].length-1
           recipe_object[:method].chop!
         end
-      end      
+      end  
+      if recipe_object[:method].length == 0
+        recipe_object[:method] = "taught-by"
+        recipe_object[:method_trainers] = [{:desc=>"Unknown", :type=>7, :minlevel=>0, :locs=>[0], :name=>"Unknown", :react=>[2, 2], :id=>0}]    
+      end
     end
   end
   

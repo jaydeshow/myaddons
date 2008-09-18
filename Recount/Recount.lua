@@ -10,7 +10,7 @@ local FilterSize	= 20
 local RampUp		= 5
 local RampDown		= 10
       
-Recount.Version = tonumber(string.sub("$Revision: 81237 $", 12, -3))
+Recount.Version = tonumber(string.sub("$Revision: 81640 $", 12, -3))
 
 local UnitLevel = UnitLevel
 local UnitClass = UnitClass
@@ -432,6 +432,7 @@ BINDING_NAME_RECOUNT_ACTIVITY = L["Display"].." "..L["Activity"]
 BINDING_NAME_RECOUNT_MANA = L["Display"].." "..L["Mana Gained"]
 BINDING_NAME_RECOUNT_ENERGY = L["Display"].." "..L["Energy Gained"]
 BINDING_NAME_RECOUNT_RAGE = L["Display"].." "..L["Rage Gained"]
+--BINDING_NAME_RECOUNT_RUNICPOWER = L["Display"].." "..L["Runic Power Gained"]
 BINDING_NAME_RECOUNT_REPORT_MAIN = L["Report the Main Window Data"]
 BINDING_NAME_RECOUNT_REPORT_DETAILS = L["Report the Detail Window Data"]
 BINDING_NAME_RECOUNT_RESET_DATA = L["Resets the data"]
@@ -835,6 +836,9 @@ function Recount:ResetFightData(data)
 	data.ManaGain=0
 	data.EnergyGain=0
 	data.RageGain=0
+if tocversion == 30000 then
+	data.RunicPowerGain=0
+end
 	data.Ressed=0
 
 	for k, v in pairs(data) do
@@ -874,6 +878,9 @@ function Recount:InitFightData(data)
 	data.ManaGain=0
 	data.EnergyGain=0
 	data.RageGain=0
+if tocversion == 30000 then
+	data.RunicPowerGain=0
+end
 	data.Ressed=0
 
 	--Ability Data
@@ -900,9 +907,15 @@ function Recount:InitFightData(data)
 	data.ManaGained=Recount:GetTable()	--Where did I gain mana
 	data.EnergyGained=Recount:GetTable() --Where did I gain energy
 	data.RageGained=Recount:GetTable() --Where did I gain rage
+if tocversion == 30000 then
+	data.RunicPowerGained=Recount:GetTable() --Where did I gain runic power
+end
 	data.ManaGainedFrom=Recount:GetTable()	--Where did I gain mana
 	data.EnergyGainedFrom=Recount:GetTable() --Where did I gain energy
 	data.RageGainedFrom=Recount:GetTable() --Where did I gain rage
+if tocversion == 30000 then
+	data.RunicPowerGainedFrom=Recount:GetTable() --Where did I gain runic power
+end
 	data.PartialResist=Recount:GetTable()	--What spells partially resisted
 	data.PartialBlock=Recount:GetTable() -- What attacks partially blocked
 	data.PartialAbsorb=Recount:GetTable() -- What damage partially absorbed

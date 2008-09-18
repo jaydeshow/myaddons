@@ -1,0 +1,16 @@
+------------------------------------------------------------------------
+r81653 | pettigrow | 2008-09-12 13:14:13 -0400 (Fri, 12 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- Added some WotLK zones
+- Reorganized a bit the WotLK zones
+------------------------------------------------------------------------
+r80404 | 7destiny | 2008-08-14 02:38:15 -0400 (Thu, 14 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LibBabble-Zone-3.0/LibBabble-Zone-3.0.lua
+
+LibBabble-Zone-3.0:
+- koKR Update
+------------------------------------------------------------------------

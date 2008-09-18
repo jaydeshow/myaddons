@@ -42,7 +42,7 @@ L:RegisterTranslations("enUS", function() return {
 	bloom_desc = "Tells you who has been hit by Fire Bloom.",
 	bloom_other = "Fire Bloom on %s!",
 	bloom_bar = "Fire Blooms",
-	bloom_message = "Next Fire Bloom in 5 seconds!",
+	bloom_message = "Fire Bloom in 5sec!",
 
 	bloomsay = "Fire Bloom Say",
 	bloomsay_desc = "Place a msg in say notifying that you have Fire Bloom",
@@ -57,9 +57,9 @@ L:RegisterTranslations("enUS", function() return {
 
 	shadow = "Shadow Spike",
 	shadow_desc = "Raid warn of casting of Shadow Spike.",
-	shadow_message = "Shadow Spikes Inc For 28sec! WATCH OUT!",
+	shadow_message = "Shadow Spikes for 28sec!",
 	shadow_bar = "Shadow Spikes Expire",
-	shadow_warning = "Shadow Spikes Done in 5 sec!",
+	shadow_warning = "Shadow Spikes done in 5sec!",
 	shadow_debuff_bar = "Reduced Healing on %s",
 
 	shadowdebuff = "Disable Shadow Bars",
@@ -67,8 +67,8 @@ L:RegisterTranslations("enUS", function() return {
 
 	flame = "Flame Dart",
 	flame_desc = "Show Flame Dart timer bar.",
-	flame_bar = "Next Flame Dart",
-	flame_message = "Next Flame Dart in 5 seconds!",
+	flame_bar = "Flame Dart",
+	flame_message = "Flame Dart in 5sec!",
 
 	sinister = "Sinister Reflections",
 	sinister_desc = "Warns on Sinister Reflection spawns.",
@@ -78,7 +78,7 @@ L:RegisterTranslations("enUS", function() return {
 	blueorb = "Dragon Orb",
 	blueorb_desc = "Warns on Blue Dragonflight Orb spawns.",
 	blueorb_message = "Blue Dragonflight Orb ready!",
-	blueorb_warning = "Dragon Orb in ~5 Sec!",
+	blueorb_warning = "Dragon Orb in ~5sec!",
 
 	shield_up = "Shield is UP!",
 
@@ -190,7 +190,7 @@ L:RegisterTranslations("frFR", function() return {
 	bloom_desc = "Prévient quand des joueurs subissent les effets de la Fleur du feu.",
 	bloom_other = "Fleur du feu sur %s !",
 	bloom_bar = "Fleurs du feu",
-	bloom_message = "Prochaines Fleurs du feu dans 5 sec. !",
+	bloom_message = "Fleurs du feu dans 5 sec. !",
 
 	bloomsay = "Dire - Fleur du feu",
 	bloomsay_desc = "Fait dire à votre personnage qu'il subit les effets de la Fleur du feu quand c'est le cas, afin d'aider les membres proches ayant les bulles de dialogue activées.",
@@ -215,8 +215,8 @@ L:RegisterTranslations("frFR", function() return {
 
 	flame = "Fléchettes des flammes",
 	flame_desc = "Affiche une barre temporelle pour les Flèchettes des flammes.",
-	flame_bar = "Prochaines Fléchettes",
-	flame_message = "Prochaines Fléchettes des flammes dans 5 sec. !",
+	flame_bar = "Fléchettes des flammes",
+	flame_message = "Fléchettes des flammes dans 5 sec. !",
 
 	sinister = "Reflets sinistres",
 	sinister_desc = "Prévient quand les Reflets sinistres apparaissent.",
@@ -361,7 +361,7 @@ L:RegisterTranslations("ruRU", function() return {
 	shadowdebuff = "Убрать таймер Теневых Шипов",
 	shadowdebuff_desc = "Таймер для игроков под воздействием Теневых Шипов",
 
-      flame = "Пламенный дротик",
+	flame = "Пламенный дротик",
 	flame_desc = "Показывать таймер на Пламенный Дротик",
 	flame_bar = "Следующий Пламенный Дротик",
 	flame_message = "Следующий Пламенный Дротик через 5 секунд!",
@@ -392,6 +392,80 @@ L:RegisterTranslations("ruRU", function() return {
 	phase5_message = "Фаза 5 - жертва Анвины",
 } end )
 
+L:RegisterTranslations("deDE", function() return {
+	bomb = "Dunkelheit",
+	bomb_desc = "Warnt wenn Dunkelheit der tausend Seelen gewirkt wird.",
+	bomb_cast = "Eingehende Große Bombe!",
+	bomb_bar = "Explosion!",
+	bomb_nextbar = "~Mögliche Bombe",
+	bomb_warning = "Mögliche Bombe in ~10sek",
+	kalec_yell = "I will channel my powers into the orbs! Be ready!",
+	kalec_yell2 = "I have empowered another orb! Use it quickly!",
+	kalec_yell3 = "Another orb is ready! Make haste!",
+	kalec_yell4 = "I have channeled all I can! The power is in your hands!",
+
+	orb = "Schildkugel",
+	orb_desc = "Warnt wenn eine Schildkugel Schattenblitze schleudert.",
+	orb_shooting = "Kugel Lebend - Schiessen Leute!",
+
+	bloom = "Feuerblüte",
+	bloom_desc = "Sagt dir wer von Feuerblüte getroffen wird.",
+	bloom_other = "Feuerblüte auf %s!",
+	bloom_bar = "Feuerblüten",
+	bloom_message = "Nächste Feuerblüten in 5 Sekunden!",
+
+	bloomsay = "Feuerblüten Ansagen",
+	bloomsay_desc = "Gibt eine Nachricht im Sagen Kanal aus, die Mitspieler darüber informiert das du von einer Feuerblüte betroffen bist",
+	bloom_say = "Feuerblüte auf "..strupper(pName).."!",
+
+	bloomwhisper = "Feuerblüte Flüstern",
+	bloomwhisper_desc = "Flüstere Spieler an die von einer Feuerblüte betroffen sind.",
+	bloom_you = "Feuerblüte auf DIR!",
+
+	icons = "Feuerblüte Symbole",
+	icons_desc = "Place random Raid Icons on players with Fire Bloom (requires promoted or higher)",
+
+	shadow = "Schattenstachel",
+	shadow_desc = "Schlachtgruppenwarnung wenn Schattenstachel gezaubert wird.",
+	shadow_message = "Schattenstachel gewirkt für 28sek! PASST AUF!",
+	shadow_bar = "Schattenstacheldauer",
+	shadow_warning = "Schattenstachel beendet in 5 sek!",
+	shadow_debuff_bar = "Verringerte Heilung auf %s",
+
+	shadowdebuff = "Deaktiviere Schatten Balken",
+	shadowdebuff_desc = "Zeitbalken für Spieler die vom Schattendebuff betroffen sind.",
+
+	flame = "Feuerpfeil",
+	flame_desc = "anzeigen eines Feuerpfeil Intervall Zeitbalken.",
+	flame_bar = "Nächster Feuerpfeil",
+	flame_message = "Nächster Feuerpfeil in 5 Sekunden!",
+
+	sinister = "Finstere Spiegelung",
+	sinister_desc = "Warnt wenn Finstere Spiegelungen erscheinen.",
+	sinister_warning = "Finstere Spiegelungen Bald!",
+	sinister_message = "Finstere Spiegelungen erschienen!",
+
+	blueorb = "Drachenkugel",
+	blueorb_desc = "Warnt wenn eine Blaue Drachenschwarm Kugel erscheint.",
+	blueorb_message = "Blaue Drachenschwarm Kugel Bereit!",
+	blueorb_warning = "Drachenkugel in ~5 Sek!",
+
+	shield_up = "Schild ist Oben!",
+
+	deceiver_dies = "Betrüger #%d getötet",
+	["Hand of the Deceiver"] = "Hand des Betrügers",
+
+	phase = "Phasen",
+	phase_desc = "Warnen bei Phasenänderrungen.",
+	phase2_message = "Phase 2 - Kil'jaeden kommt!",
+	phase3_trigger = "I will not be denied! This world shall fall!",
+	phase3_message = "Phase 3 - dazu Dunkelheit",
+	phase4_trigger = "Do not harbor false hope. You cannot win!",
+	phase4_message = "Phase 4 - dazu Meteor",
+	phase5_trigger = "Ragh! The powers of the Sunwell turn against me! What have you done? What have you done?!",
+	phase5_message = "Phase 5 - Opferrung von Anveena",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
@@ -402,7 +476,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {deceiver, boss}
 mod.guid = 25315
 mod.toggleoptions = {"phase", -1, "bomb", "orb", "flame", -1, "bloom", "bloomwhisper", "bloomsay", "icons", -1, "sinister", "blueorb", "shadow", "shadowdebuff", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 80977 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81813 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

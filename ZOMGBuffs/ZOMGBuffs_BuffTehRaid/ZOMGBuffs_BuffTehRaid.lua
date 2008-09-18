@@ -1,3 +1,5 @@
+local wow3 = GetBuildInfo() >= "3.0.0"
+
 if (ZOMGBuffTehRaid) then
 	z:Print("Installation error, duplicate copy of ZOMGBuffs_BuffTehRaid (Addons\ZOMGBuffs\ZOMGBuffs_BuffTehRaid and Addons\ZOMGBuffs_BuffTehRaid)")
 	return
@@ -9,13 +11,11 @@ local SM = LibStub("LibSharedMedia-3.0")
 local playerClass
 local template
 
-local wow24 = GetBuildInfo() < "1.0.0" or GetBuildInfo() >= "2.4.0"
-
 local z = ZOMGBuffs
 local zg = z:NewModule("ZOMGBuffTehRaid")
 ZOMGBuffTehRaid = zg
 
-z:CheckVersion("$Revision: 75360 $")
+z:CheckVersion("$Revision: 81802 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 local InCombatLockdown	= InCombatLockdown
@@ -31,6 +31,8 @@ local UnitIsPVP			= UnitIsPVP
 local UnitInRaid		= UnitInRaid
 local UnitIsUnit		= UnitIsUnit
 local UnitPowerType		= UnitPowerType
+
+--local kiru = GetSpellInfo(46302)			-- Counts as both STA and INT
 
 local function getOption(k)
 	return zg.db.char[k]
@@ -576,13 +578,23 @@ function zg:GetBuffedMembers()
 
 				totals[grp] = totals[grp] + 1
 				for i = 1,40 do
-					local name, rank, buff, count, max, dur = UnitBuff(unitid, i)
+					local name, rank, buff, count, _, maxDuration, endTime, untilCancelled = z:UnitBuff(unitid, i)
 					if (not name) then
 						break
 					end
-
+					
 					local buff = self.lookup[name]
+					--if (not buff) then
+					--	if (name == kiru) then		-- K'iru's Song of Victory overrides both STA & INT
+					--		if (playerClass == "PRIEST") then
+					--			buff = self.buffs.STA
+					--		elseif (playerClass == "MAGE") then
+					--			buff = self.buffs.INT
+					--		end
+					--	end
+					--end
 					if (buff) then
+						local dur = endTime and (endTime - GetTime())
 						if (template[buff.type]) then
 							if (not manaUser) then
 								foundBuffs[buff.type] = true
@@ -666,13 +678,23 @@ function zg:FindUnitInRangeMissing(group, typ)
 					if (UnitIsConnected(unitid) and UnitCanAssist("player", unitid) and IsSpellInRange(rangeCheckSpell, unitid) == 1 and ((not z.db.profile.skippvp or not UnitIsPVP(unitid)) or UnitIsPVP("player"))) then
 						local got
 						for i = 1,40 do
-							local name, rank, buff, count, max, dur = UnitBuff(unitid, i)
+							local name, rank, buff, count, _, max, endTime = z:UnitBuff(unitid, i)
 							if (not name) then
 								break
 							end
 
 							local buff = self.lookup[name]
+							--if (not buff) then
+							--	if (name == kiru) then		-- K'iru's Song of Victory overrides both STA & INT
+							--		if (playerClass == "PRIEST") then
+							--			buff = self.buffs.STA
+							--		elseif (playerClass == "MAGE") then
+							--			buff = self.buffs.INT
+							--		end
+							--	end
+							--end
 							if (buff and buff.type == typ) then
+								local dur = endTime and (endTime - GetTime())
 								if (dur and dur < requiredTimeLeft) then
 									return unitid
 								end
@@ -781,13 +803,14 @@ function zg:CheckBuffs()
  				if (db.groups[subgroup]) then
  					local manaUser = UnitPowerType(unitid) == 0
 					for i = 1,40 do
-						local name, rank, buff, count, max, dur = UnitBuff(unitid, i)
+						local name, rank, buff, count, _, max, endTime = z:UnitBuff(unitid, i)
 						if (not name) then
 							break
 						end
 
 						local buff = self.lookup[name]
 						if (buff) then
+							local dur = endTime and (endTime - GetTime())
 							if (template[buff.type]) then
 								local requiredTimeLeft = (db.rebuff and db.rebuff[buff.type]) or db.rebuff.default
 								if ((not requiredTimeLeft or not dur or dur > requiredTimeLeft) and (buff.onlyManaUsers and not manaUser)) then
@@ -853,7 +876,7 @@ function zg:UNIT_AURA(unit)
 						if (match) then
 							local found
 							for i = 1,40 do
-								local name, rank, buff, count, max, dur = UnitBuff(unitid, i)
+								local name = UnitBuff(unitid, i)
 								if (not name) then
 									break
 								end
@@ -888,7 +911,7 @@ function zg:GetActions()
 		for i,key in ipairs(list) do
 			local buff = self.buffs[key]
 
-			if (GetSpellInfo(buff.list[1])) then		-- GetSpellCooldown(buff.list[1])) then
+			if (buff.list and GetSpellInfo(buff.list[1])) then		-- GetSpellCooldown(buff.list[1])) then
 				if (buff.keycode) then
 					if (buff.group and buff.list[2]) then
 						for j = 1,#buff.list do
@@ -917,7 +940,7 @@ function zg:RebuffQuery(unit)
 		local got = new()
 
 		for i = 1,40 do
-			local name, rank, buff, count, max, dur = UnitBuff(unit, i)
+			local name = UnitBuff(unit, i)
 			if (not name) then
 				break
 			end
@@ -1138,7 +1161,7 @@ function zg:OnModuleInitialize()
 			},
 			SACRIFICE = {
 				o = 2,
-				ids = {27148},						-- Blessing of Sacrifice
+				ids = {wow3 and 6940 or 27148},		-- Blessing of Sacrifice
 				colour = {1, 0, 0},
 				limited = true,						-- Allow limited targets config
 				exclusive = true,
@@ -1159,6 +1182,9 @@ function zg:OnModuleInitialize()
 		info.list = new()
 		for i,id in ipairs(info.ids) do
 			local name, _, icon = GetSpellInfo(id)
+			if (not name) then
+				error("No spell info for SpellID "..id)
+			end
 			tinsert(info.list, name)
 			self.spellIcons[name] = icon
 		end
@@ -1758,6 +1784,10 @@ end
 
 -- SayWhatWeDid
 function zg:SayWhatWeDid(icon, spell, name, rank)
+	if (not z.db.profile.info) then
+		return
+	end
+
 	local s = spell or icon:GetAttribute("spell")
 	if (s) then
 		local found = self.lookup[s]
@@ -1856,26 +1886,26 @@ do
 
 	local function iconGetSpellFromUnit(self)
 		for i = 1,40 do
-			local name, rank, buff, count, maxDuration, duration = UnitBuff(self.target, i)
+			local name, rank, buff, count, _, maxDuration, endTime = z:UnitBuff(self.target, i)
 			if (not name) then
 				return
 			end
 			if (name == self.spell) then
-				if (duration) then
-					self.timeLeft = duration
+				if (endTime) then
+					self.timeLeft = endTime - GetTime()
 					self.maxTime = maxDuration
 				end
-				return name ~= nil, count, duration, maxDuration
+				return name ~= nil, count, endTime, maxDuration
 			end
 		end
 		self.timeLeft = nil
 	end
 
 	local function iconUpdateAura(self)
-		local got, count, duration, maxDuration = self:GetSpellFromUnit()
+		local got, count, endTime, maxDuration = self:GetSpellFromUnit()
 		if (got) then
-			if (duration) then
-				self.timeLeft = duration
+			if (endTime) then
+				self.timeLeft = endTime - GetTime()
 			end
 
 			self.stacks = count
@@ -1918,7 +1948,7 @@ do
 	end
 
 	local function iconUpdateTooltip(self)
-		local got, count, duration, maxDuration = self:GetSpellFromUnit()
+		local got, count, endTime, maxDuration = self:GetSpellFromUnit()
 		local buff = zg.buffs[self.key]
 		local buffColour = z:HexColour(unpack(buff.colour))
 		local keyb
@@ -1940,9 +1970,9 @@ do
 				r, g, b = SmoothColour(self.stacks / self.initialStacks)
 				GameTooltip:AddLine(format(L["%d of %d stacks remain"], self.stacks or 0, self.initialStacks or 0), r, g, b)
 			end
-			if (duration) then
-				local r, g, b = SmoothColour(duration / maxDuration)
-				GameTooltip:AddLine(format("%s remains", date("%M:%S", duration)), r, g, b)
+			if (endTime) then
+				local r, g, b = SmoothColour((endTime - GetTime()) / maxDuration)
+				GameTooltip:AddLine(format("%s remains", date("%M:%S", duration - GetTime())), r, g, b)
 			end
 		end
 
@@ -2103,13 +2133,20 @@ do
 		icon:SetWidth(36)
 		icon:SetHeight(36)
 		
-		icon.swirl = CreateFrame("Model", nil, icon)
-		icon.swirl:SetModel("Interface\\Buttons\\UI-AutoCastButton.mdx")
-		icon.swirl:Hide()
-		icon.swirl:SetAllPoints()
-		icon.swirl:SetSequence(0)
-		icon.swirl:SetSequenceTime(0, 0)
-		icon.swirl:SetScale(1.4)
+		if (wow3) then
+			icon.swirl = CreateFrame("Frame", iname.."Swirl", icon, "AutoCastShineTemplate")
+			icon.swirl:Hide()
+			icon.swirl:SetAllPoints()
+			AutoCastShine_AutoCastStart(icon.swirl, 1, 0.5, 0.5)
+		else
+			icon.swirl = CreateFrame("Model", nil, icon)
+			icon.swirl:SetModel("Interface\\Buttons\\UI-AutoCastButton.mdx")
+			icon.swirl:Hide()
+			icon.swirl:SetAllPoints()
+			icon.swirl:SetSequence(0)
+			icon.swirl:SetSequenceTime(0, 0)
+			icon.swirl:SetScale(1.4)
+		end
 
 		icon:RegisterForClicks("AnyUp")
 		icon:RegisterForDrag("LeftButton")

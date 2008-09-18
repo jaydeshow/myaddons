@@ -252,6 +252,12 @@ NL["Khorium Vein"] = "Filon de khorium"
 --NL["Large Obsidian Chunk"] = "Grand morceau d'obsidienne"
 --NL["Small Obsidian Chunk"] = "Petit morceau d'obsidienne"
 NL["Nethercite Deposit"] = "Gisement de néanticite"
+NL["Cobalt Node"] = "Gisement de cobalt"
+NL["Rich Cobalt Node"] = "Riche gisement de cobalt"
+NL["Titanium Node"] = "Gisement de titanium"
+NL["Saronite Node"] = "Gisement de saronite"
+NL["Rich Saronite Node"] = "Riche gisement de saronite"
+
 
 -- gas clouds
 NL["Windy Cloud"] = "Nuage venteux"
@@ -302,6 +308,15 @@ NL["Nightmare Vine"] = "Cauchemardelle"
 NL["Ragveil"] = "Voile-misère"
 NL["Flame Cap"] = "Chapeflamme"
 NL["Netherdust Bush"] = "Buisson de pruinéante"
+NL["Adder's Tongue"] = "Verpérenne"
+NL["Constrictor Grass"] = "Pythonelle"
+NL["Deadnettle"] = "Ortie blanche"
+NL["Goldclover"] = "Trèfle doré"
+NL["Icethorn"] = "Glacépine"
+NL["Lichbloom"] = "Fleur-de-liche"
+NL["Talandra's Rose"] = "Rose de Talandra"
+NL["Tiger Lily"] = "Lys tigré"
+
 -- Treasure
 NL["Giant Clam"] = "Palourde géante"
 NL["Battered Chest"] = "Coffre endommagé"

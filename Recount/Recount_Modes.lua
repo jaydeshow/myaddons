@@ -2,8 +2,10 @@ local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 local Epsilon=0.000000000000000001
 
-local revision = tonumber(string.sub("$Revision: 81545 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81640 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
+
+local _, _, _, tocversion =  GetBuildInfo()
 
 --.MainTitle = What you see on the window title 
 --.TopNames = Names of the entries for the top data
@@ -446,6 +448,16 @@ function DataModes:RageGained(data, num)
 	return (data.Fights[Recount.db.profile.CurDataSet].RageGain or 0), {{data.Fights[Recount.db.profile.CurDataSet].RageGained,L["'s Rage Gained"],DetailTitles.Gained},{data.Fights[Recount.db.profile.CurDataSet].RageGainedFrom,L["'s Rage Gained From"],DetailTitles.GainedFrom}}
 end
 
+if tocversion == 30000 then
+function DataModes:RunicPowerGained(data, num)
+	if not data then return 0 end
+	if num==1 then
+		return (data.Fights[Recount.db.profile.CurDataSet].RunicPowerGain or 0)
+	end
+	return (data.Fights[Recount.db.profile.CurDataSet].RunicPowerGain or 0), {{data.Fights[Recount.db.profile.CurDataSet].RunicPowerGained,L["'s RunicPower Gained"],DetailTitles.Gained},{data.Fights[Recount.db.profile.CurDataSet].RunicPowerGainedFrom,L["'s RunicPower Gained From"],DetailTitles.GainedFrom}}
+end
+end
+
 --Some code for table management from Ace2
 local new, del
 do
@@ -671,6 +683,18 @@ function TooltipFuncs:RageGained(name,data)
 
 end
 
+if tocversion == 30000 then
+function TooltipFuncs:RunicPowerGained(name,data)
+	local SortedData,total
+	GameTooltip:ClearLines()
+	GameTooltip:AddLine(name)
+	Recount:AddSortedTooltipData(L["Top 3"].." "..L["RunicPower Abilities"],data and data.Fights[Recount.db.profile.CurDataSet] and data.Fights[Recount.db.profile.CurDataSet].RunicPowerGained,3)
+	Recount:AddSortedTooltipData(L["Top 3"].." "..L["RunicPower Sources"],data and data.Fights[Recount.db.profile.CurDataSet] and data.Fights[Recount.db.profile.CurDataSet].RunicPowerGainedFrom,3)
+	GameTooltip:AddLine("<"..L["Click for more Details"]..">",0,0.9,0)
+
+end
+end
+
 function TooltipFuncs:DeathCounts(name,data)
 	local SortedData,total
 	GameTooltip:ClearLines()
@@ -714,6 +738,10 @@ local MainWindowModes={
 {L["Energy Gained"],DataModes.EnergyGained,TooltipFuncs.EnergyGained},
 {L["Rage Gained"],DataModes.RageGained,TooltipFuncs.RageGained},
 }
+
+if tocversion == 30000 then
+MainWindowModes[#MainWindowModes+1]={L["Runic Power Gained"],DataModes.RunicPowerGained,TooltipFuncs.RunicPowerGained}
+end
 
 function Recount:AddModeTooltip(lname,modefunc,toolfunc,...)
 	tinsert(MainWindowModes,{lname,modefunc,toolfunc,...})

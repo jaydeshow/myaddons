@@ -1,0 +1,119 @@
+------------------------------------------------------------------------
+r81780 | kagaro | 2008-09-16 08:09:54 -0400 (Tue, 16 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/GatherMate.toc
+
+GatherMate: updated email tag for transition.
+------------------------------------------------------------------------
+r81657 | kagaro | 2008-09-12 14:09:59 -0400 (Fri, 12 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/GatherMate/Artwork/Fish/anglefish.tga
+   A /trunk/GatherMate/Artwork/Fish/bonescale.tga
+   A /trunk/GatherMate/Artwork/Fish/goby.tga
+   A /trunk/GatherMate/Artwork/Fish/herring.tga
+   A /trunk/GatherMate/Artwork/Fish/magiceater.tga
+   A /trunk/GatherMate/Artwork/Fish/manowar.tga
+   A /trunk/GatherMate/Artwork/Fish/manta.tga
+   A /trunk/GatherMate/Artwork/Fish/minnow.tga
+   A /trunk/GatherMate/Artwork/Fish/musselback.tga
+   A /trunk/GatherMate/Artwork/Fish/nettlefish.tga
+   A /trunk/GatherMate/Artwork/Fish/rockfin_grouper.tga
+   A /trunk/GatherMate/Artwork/Fish/salmon.tga
+   A /trunk/GatherMate/Artwork/Fish/suckerfish.tga
+   A /trunk/GatherMate/Artwork/Herb/constrictor.tga
+   A /trunk/GatherMate/Artwork/Herb/evergreen.tga
+   A /trunk/GatherMate/Artwork/Herb/frostlotus.tga
+   A /trunk/GatherMate/Artwork/Herb/goldclover.tga
+   A /trunk/GatherMate/Artwork/Herb/icethorn.tga
+   A /trunk/GatherMate/Artwork/Herb/misc_flower.tga
+   A /trunk/GatherMate/Artwork/Herb/tigerlily.tga
+   A /trunk/GatherMate/Artwork/Herb/trose.tga
+   A /trunk/GatherMate/Artwork/Herb/whispervine.tga
+   A /trunk/GatherMate/Artwork/Mine/cobolt.tga
+   A /trunk/GatherMate/Artwork/Mine/saronite.tga
+   A /trunk/GatherMate/Artwork/Mine/titanium.tga
+
+GatherMate: added wrath icons. Icon files only
+------------------------------------------------------------------------
+r81651 | kagaro | 2008-09-12 12:17:19 -0400 (Fri, 12 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Collector.lua
+   M /trunk/GatherMate/Constants.lua
+   M /trunk/GatherMate/Locales/GatherMate-deDE.lua
+   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
+
+GatherMate: added new fish schools for wrath,
+------------------------------------------------------------------------
+r81645 | kagaro | 2008-09-12 10:53:07 -0400 (Fri, 12 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/GatherMate/Constants.lua
+   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
+   M /trunk/GatherMate/Locales/GatherMate-koKR.lua
+
+GatherMate: added some wrath missing herb nodes
+
+
+------------------------------------------------------------------------
+r81641 | kagaro | 2008-09-12 09:01:43 -0400 (Fri, 12 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/GatherMate/Constants.lua
+
+GatherMate: updated zone sizes after wrath patch changes
+
+------------------------------------------------------------------------
+r81617 | pettigrow | 2008-09-11 13:57:40 -0400 (Thu, 11 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-frFR.lua
+
+GatherMate: frFR Update
+------------------------------------------------------------------------
+r81595 | xinhuan | 2008-09-10 21:34:07 -0400 (Wed, 10 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/GatherMate/Config.lua
+   M /trunk/GatherMate/Constants.lua
+   M /trunk/GatherMate/Display.lua
+   M /trunk/GatherMate/Locales/GatherMate-enUS.lua
+   M /trunk/GatherMate/Locales/GatherMate-koKR.lua
+
+GatherMate: - Add minimum skill level to harvest herbs and ore to the tooltips and config.
+- Add roughknight's code to the minimap icons to simulate click-through and ping the minimap.
+- Also fix Lickbloom to Lichbloom (WotLK herb).
+------------------------------------------------------------------------
+r81266 | kagaro | 2008-09-02 09:26:13 -0400 (Tue, 02 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/GatherMate/Collector.lua
+
+GatherMate: updated collector spell list. Blizzard decided the spell that was cast for items like Ungoro soil, from Opening to Opening - No Text
+
+Changed and tested on live.
+------------------------------------------------------------------------
+r81262 | doktorjet | 2008-09-02 04:53:13 -0400 (Tue, 02 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: minor update for ruRU
+------------------------------------------------------------------------
+r81155 | doktorjet | 2008-08-31 00:56:59 -0400 (Sun, 31 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: few fixes in ruRU locale
+------------------------------------------------------------------------
+r80900 | doktorjet | 2008-08-24 11:52:07 -0400 (Sun, 24 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Constants.lua
+
+GatherMate: fixed typo in Constants.lua - "Mine\\rich_throium.tga" -> "Mine\\rich_thorium.tga"
+------------------------------------------------------------------------
+r80807 | doktorjet | 2008-08-22 09:50:04 -0400 (Fri, 22 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: another tiny fix 4 ruRU...
+------------------------------------------------------------------------
+r80617 | doktorjet | 2008-08-18 10:56:03 -0400 (Mon, 18 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate/Locales/GatherMate-ruRU.lua
+
+GatherMate: minor update for ruRU. Gas nodes and interface text.
+------------------------------------------------------------------------

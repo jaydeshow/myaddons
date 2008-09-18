@@ -14,9 +14,15 @@ local abCount = 0
 -- Constants
 local SHOW_CELL_EXCEPTIONS_COUNT = 3
 
-local wow24 = GetBuildInfo() < "1.0.0" or GetBuildInfo() >= "2.4.0"
+local wow3 = GetBuildInfo() >= "3.0.0"
 
-local blessingCycle = {"BOM", "BOK", "BOW", "BOL", "BOS", "SAN"}
+local blessingCycle
+if (wow3) then
+	blessingCycle = {"BOM", "BOK", "BOW", "SAN"}
+else
+	blessingCycle = {"BOM", "BOK", "BOW", "BOL", "BOS", "SAN"}
+end
+
 local blessingCycleIndex = {}
 for k,v in ipairs(blessingCycle) do blessingCycleIndex[v] = k end
 
@@ -24,21 +30,26 @@ local z = ZOMGBuffs
 local man = z:NewModule("ZOMGBlessingsManager")
 ZOMGBlessingsManager = man
 
-z:CheckVersion("$Revision: 72456 $")
+z:CheckVersion("$Revision: 81716 $")
 
 do
 	local specWeight1 = function(t1, t2, t3) return t1 > t2 and t1 > t3 end
 	local specWeight2 = function(t1, t2, t3) return t2 > t1 and t2 > t3 end
 	local specWeight3 = function(t1, t2, t3) return t3 > t1 and t3 > t2 end
 	local specWeight1or2 = function(t1, t2, t3) return t1 > t3 or t2 > t3 end
+	local specWeight1or3 = function(t1, t2, t3) return t1 > t2 or t3 > t2 end
 
 	man.classSplits = {
 		WARRIOR	= {[1] = {title = L["Tank"], discover = specWeight3},	[2] = {title = L["Melee DPS"],	code = "m", discover = specWeight1or2}},
-		DRUID	= {[1] = {title = L["Healer"], discover = specWeight3},	[2] = {title = L["Tank"],	code = "t", discover = specWeight2}, [3] = {title = L["Melee DPS"], code = "m", discover = specWeight2}, [4] = {title = L["Caster DPS"], code = "c", discover = specWeight1}},
+		DRUID	= {[1] = {title = L["Healer"], discover = specWeight3},	[2] = {title = L["Tank"],		code = "t", discover = specWeight2}, [3] = {title = L["Melee DPS"], code = "m", discover = specWeight2}, [4] = {title = L["Caster DPS"], code = "c", discover = specWeight1}},
 		SHAMAN	= {[1] = {title = L["Healer"], discover = specWeight3},	[2] = {title = L["Melee DPS"],	code = "m", discover = specWeight2}, [3] = {title = L["Caster DPS"], code = "c", discover = specWeight1}},
-		PALADIN	= {[1] = {title = L["Healer"], discover = specWeight1},	[2] = {title = L["Tank"],	code = "t", discover = specWeight2}, [3] = {title = L["Melee DPS"], code = "m", discover = specWeight3}},
+		PALADIN	= {[1] = {title = L["Healer"], discover = specWeight1},	[2] = {title = L["Tank"],		code = "t", discover = specWeight2}, [3] = {title = L["Melee DPS"], code = "m", discover = specWeight3}},
 		PRIEST	= {[1] = {title = L["Healer"], discover = specWeight1or2}, [2] = {title = L["Caster DPS"],code = "c", discover = specWeight3}},
 	}
+
+	if (wow3) then	
+		man.classSplits.DEATHKNIGHT = {[1] = {title = L["Tank"], discover = specWeight2}, [2] = {title = L["Melee DPS"],	code = "c", discover = specWeight1or3}}
+	end
 end
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
@@ -245,44 +256,93 @@ local function SetClassIcon(icon, class)
 end
 
 -- DefaultTemplateSubclass
-local function DefaultTemplateSubclass()
-	return {
-		WARRIOR = {
-			m = {"BOS", "BOM", "BOK", "BOL", "SAN"},
-		},
-		DRUID = {
-			c = {"BOS", "BOW", "BOK", "BOL", "SAN"},
-			m = {"BOS", "BOM", "BOK", "BOL", "SAN", "BOW"},
-			t = {"BOK", "BOM", "BOL", "SAN", "BOW"},
-		},
-		SHAMAN = {
-			c = {"BOS", "BOK", "BOW", "BOL", "SAN"},
-			m = {"BOS", "BOM", "BOK", "BOW", "BOL", "SAN"},
-		},
-		PALADIN = {
-			m = {"BOS", "BOM", "BOK", "BOW", "BOL", "SAN"},
-			t = {"BOK", "BOW", "SAN", "BOL", "BOM"},
-		},
-		PRIEST = {
-			c = {"BOS", "BOW", "BOK", "BOL", "SAN"},
-		},
-	}
+local DefaultTemplateSubclass
+if (wow3) then
+	function DefaultTemplateSubclass()
+		return {
+			WARRIOR = {
+				m = {"BOM", "BOK", "SAN"},
+			},
+			DEATHKNIGHT = {
+				m = {"BOM", "BOK", "SAN"},
+			},
+			DRUID = {
+				c = {"BOW", "BOK", "SAN"},
+				m = {"BOM", "BOK", "SAN", "BOW"},
+				t = {"BOK", "BOM", "SAN", "BOW"},
+			},
+			SHAMAN = {
+				c = {"BOK", "BOW", "SAN"},
+				m = {"BOM", "BOK", "BOW", "SAN"},
+			},
+			PALADIN = {
+				m = {"BOM", "BOK", "BOW", "SAN"},
+				t = {"BOK", "BOW", "SAN", "BOM"},
+			},
+			PRIEST = {
+				c = {"BOW", "BOK", "SAN"},
+			},
+		}
+	end
+else
+	function DefaultTemplateSubclass()
+		return {
+			WARRIOR = {
+				m = {"BOS", "BOM", "BOK", "BOL", "SAN"},
+			},
+			DRUID = {
+				c = {"BOS", "BOW", "BOK", "BOL", "SAN"},
+				m = {"BOS", "BOM", "BOK", "BOL", "SAN", "BOW"},
+				t = {"BOK", "BOM", "BOL", "SAN", "BOW"},
+			},
+			SHAMAN = {
+				c = {"BOS", "BOK", "BOW", "BOL", "SAN"},
+				m = {"BOS", "BOM", "BOK", "BOW", "BOL", "SAN"},
+			},
+			PALADIN = {
+				m = {"BOS", "BOM", "BOK", "BOW", "BOL", "SAN"},
+				t = {"BOK", "BOW", "SAN", "BOL", "BOM"},
+			},
+			PRIEST = {
+				c = {"BOS", "BOW", "BOK", "BOL", "SAN"},
+			},
+		}
+	end
 end
 
 -- DefaultTemplate
-local function DefaultTemplate()
-	return {
-		WARRIOR	= {"BOK", "BOL", "BOM", "SAN"},
-		ROGUE	= {"BOS", "BOM", "BOK", "BOL", "SAN"},
-		HUNTER	= {"BOS", "BOM", "BOK", "BOW", "BOL", "SAN"},
-		DRUID	= {"BOW", "BOK", "BOS", "BOL", "SAN"},
-		SHAMAN	= {"BOW", "BOK", "BOS", "BOL", "SAN", "BOM"},
-		PALADIN	= {"BOW", "BOK", "BOS", "BOL", "SAN", "BOM"},
-		PRIEST	= {"BOW", "BOK", "BOS", "BOL", "SAN"},
-		MAGE	= {"BOS", "BOW", "BOK", "BOL", "SAN"},
-		WARLOCK	= {"BOS", "BOW", "BOK", "BOL", "SAN"},
-		subclass = DefaultTemplateSubclass(),
-	}
+local DefaultTemplate
+if (wow3) then
+	function DefaultTemplate()
+		return {
+			WARRIOR	= {"BOK", "BOM", "SAN"},
+			DEATHKNIGHT = {"BOK", "BOM", "SAN"},
+			ROGUE	= {"BOM", "BOK", "SAN"},
+			HUNTER	= {"BOM", "BOK", "BOW", "SAN"},
+			DRUID	= {"BOW", "BOK", "SAN"},
+			SHAMAN	= {"BOW", "BOK", "SAN", "BOM"},
+			PALADIN	= {"BOW", "BOK", "SAN", "BOM"},
+			PRIEST	= {"BOW", "BOK", "SAN"},
+			MAGE	= {"BOW", "BOK", "SAN"},
+			WARLOCK	= {"BOW", "BOK", "SAN"},
+			subclass = DefaultTemplateSubclass(),
+		}
+	end
+else
+	function DefaultTemplate()
+		return {
+			WARRIOR	= {"BOK", "BOL", "BOM", "SAN"},
+			ROGUE	= {"BOS", "BOM", "BOK", "BOL", "SAN"},
+			HUNTER	= {"BOS", "BOM", "BOK", "BOW", "BOL", "SAN"},
+			DRUID	= {"BOW", "BOK", "BOS", "BOL", "SAN"},
+			SHAMAN	= {"BOW", "BOK", "BOS", "BOL", "SAN", "BOM"},
+			PALADIN	= {"BOW", "BOK", "BOS", "BOL", "SAN", "BOM"},
+			PRIEST	= {"BOW", "BOK", "BOS", "BOL", "SAN"},
+			MAGE	= {"BOS", "BOW", "BOK", "BOL", "SAN"},
+			WARLOCK	= {"BOS", "BOW", "BOK", "BOL", "SAN"},
+			subclass = DefaultTemplateSubclass(),
+		}
+	end
 end
 
 -- SetSelf
@@ -840,6 +900,10 @@ function man:SplitCreateColumns()
 				tick:SetChecked(self.db.profile.useguild)
 				tick:SetPoint("TOPLEFT", column, "BOTTOMLEFT")
 				f.useGuild = tick
+				if (not IsInGuild()) then
+					tick:Disable()
+					getglobal(tick:GetName().."Text"):SetTextColor(0.5, 0.5, 0.5)
+				end
 
 				f.rankButton = self:MakeButton(column, L["Ranks"], L["Select the guild ranks to include"], man.SplitSetMinRank)
 				f.rankButton:SetPoint("TOPLEFT", tick, "BOTTOMLEFT", 0, 0)
@@ -1171,7 +1235,10 @@ function man:SplitPositionCells()
 		end
 	end
 
-	self.frame:SetSize(502 + extraWidth, 318)
+	local h, w
+	h = 66 + #blessingCycle * 42
+	w = 124 + 42 * #classOrder + extraWidth
+	self.frame:SetSize(w, h)
 end
 
 -- splitExpandOnUpdate
@@ -1284,7 +1351,7 @@ function man:SplitPanelColumnPopulate(col)
 	local panel = self.expandpanel
 	local class = panel.class
 	if (class) then
-		for i = 1,6 do
+		for i = 1,#blessingCycle do
 			local Type = self:GetCell(i, col.col, true)
 			local cell = col.cell[i]
 			if (Type) then
@@ -1377,7 +1444,7 @@ function man:SplitCreateExpandPanelColumns()
 		end
 
 		local cell
-		for i = 1,6 do
+		for i = 1,#blessingCycle do
 			prev = cell
 
 			abCount = abCount + 1
@@ -1546,12 +1613,12 @@ function man:AssignPaladins()
 	-- plus each letter thru name until unique one found
 	local temp = new()
 	for i,name in ipairs(names) do
-		local n = name:sub(1, 2)
+		local n = name:utf8sub(1, 2)
 		if (temp[n]) then
-			n = name:sub(1,1) .. name:sub(-1, -1)
+			n = name:utf8sub(1,1) .. name:utf8sub(-1, -1)
 			if (temp[n]) then
-				for i = 3,strlen(name) - 1 do
-					n = name:sub(1,1) .. name:sub(i, i)
+				for i = 3,name:utf8len(name) - 1 do
+					n = name:utf8sub(1,1) .. name:utf8sub(i, i)
 					if (not temp[n]) then
 						break
 					end
@@ -3375,7 +3442,7 @@ function man:GetCell(row, col, panel)
 				end
 			end
 		end
-		return template[class][row]
+		return template[class] and template[class][row]
 	else
 		local class = classOrder[col]
 		if (man.configuring) then
@@ -3421,7 +3488,7 @@ function man:SetCell(row, col, Type, panel)
 			template.modified = true
 
 			local diff
-			for i = 1,6 do
+			for i = 1,#blessingCycle do
 				if (t[code][row] ~= template[class][row]) then
 					diff = true
 					break
@@ -3644,7 +3711,7 @@ function man:UnitContextMenu(row, col)
 				}
 
 				for j,buff in ipairs(blessingCycle) do
-					if (buff ~= mainBuff and ((class ~= "ROGUE" and class ~= "WARRIOR") or buff ~= "BOW") and (not pala.gotCapabilities or (buff == "SAN" and pala.canSanctuary) or (buff == "BOK" and pala.canKings) or (buff ~= "SAN" and buff ~= "BOK"))) then
+					if (buff ~= mainBuff and ((class ~= "ROGUE" and class ~= "WARRIOR" and class ~= "DEATHKNIGHT") or buff ~= "BOW") and (not pala.gotCapabilities or (buff == "SAN" and pala.canSanctuary) or (buff == "BOK" and pala.canKings) or (buff ~= "SAN" and buff ~= "BOK"))) then
 						contextMenu.args[unitname].args[buff] = {
 							type = "toggle",
 							order = j + 2,
@@ -3711,7 +3778,7 @@ function man:OnCellClick(row, col, button, panel)
 				elseif (pala.gotCapabilities) then
 					if ((Type == "BOK" and pala.canKings) or
 						(Type == "SAN" and pala.canSanctuary) or
-						(Type == "BOW" and (class ~= "ROGUE" and class ~= "WARRIOR")) or
+						(Type == "BOW" and (class ~= "ROGUE" and class ~= "WARRIOR" and class ~= "DEATHKNIGHT")) or
 						(Type ~= "BOK" and Type ~= "SAN" and Type ~= "BOW")) then
 						break
 					end
@@ -4257,11 +4324,51 @@ function man:OnSelectTemplate(templateName)
 			self:SelectTemplate(L["Default"])
 		end
 	end
+	self:ValidateTemplate(template)
 
 	self:AssignPaladins()
 
 	if (self.frame and self.frame:IsOpen()) then
 		self:DrawAll()
+	end
+end
+
+-- ValidateSubClassTemplate
+if (wow3) then
+	function man:ValidateSubClassTemplate(list)
+		for i = #list,1,-1 do
+			if (list[i] == "BOL" or list[i] == "BOS") then
+				tremove(list, i)
+			end
+		end
+	end
+end
+
+-- ValidateTemplate
+function man:ValidateTemplate(template)
+	if (wow3) then
+		for class, buffs in pairs(template) do
+			if (class ~= "modified" and class ~= "state" and class ~= "subclass") then
+				self:ValidateSubClassTemplate(buffs)
+			end
+		end
+
+		for class, list in pairs(template.subclass) do
+			for class, codes in pairs(list) do
+				self:ValidateSubClassTemplate(codes)
+			end
+		end
+
+		local defTemp
+		for i,class in pairs(classOrder) do
+			if (not template[class]) then
+				if (not defTemp) then
+					defTemp = DefaultTemplate()
+				end
+				template[class] = copy(defTemp[class])
+			end
+		end
+		deepDel(defTemp)
 	end
 end
 

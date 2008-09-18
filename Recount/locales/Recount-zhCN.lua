@@ -385,3 +385,6 @@ if not L then return end
 	L["Show Death Track (Left Click)"] = "显示死亡记录（左键点击）"
 	L[" dies."]="死亡。"
 	
+	L["Runic Power Gained"] = "获得符文能量"
+	L["RunicPower Abilities"] = "符文能量技能"
+	L["RunicPower Sources"] = "符文能量源"

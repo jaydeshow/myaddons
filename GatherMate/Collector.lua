@@ -32,6 +32,8 @@ local strfind, stringmatch = string.find, string.match
 local pii = math.pi
 local sin = math.sin
 local cos = math.cos
+local gsub = gsub
+local strtrim = strtrim
 --[[
 	This search string code no longer needed since we use CombatEvent to detect gas clouds harvesting
 ]]

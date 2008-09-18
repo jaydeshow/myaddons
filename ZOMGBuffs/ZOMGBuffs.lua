@@ -1,7 +1,19 @@
+local wow3 = GetBuildInfo() >= "3.0.0"
+
+if (wow3) then
+	-- Temporary fix while WoW's LoD stuff is broke
+	LoadAddOn("LibBabble-Class-3.0")
+	LoadAddOn("LibSink-2.0")
+	LoadAddOn("LibSharedMedia-3.0")
+	LoadAddOn("Tablet-2.0")
+	LoadAddOn("Dewdrop-2.0")
+end
+
 local L = LibStub("AceLocale-2.2"):new("ZOMGBuffs")
 local BC = LibStub("LibBabble-Class-3.0"):GetLookupTable()
 local Sink, SinkVersion = LibStub("LibSink-2.0")
 local SM = LibStub("LibSharedMedia-3.0")
+
 local tablet = LibStub("Tablet-2.0")
 local dewdrop = LibStub("Dewdrop-2.0")
 local RockComm
@@ -26,8 +38,6 @@ local UnitInRaid		= UnitInRaid
 local UnitIsUnit		= UnitIsUnit
 local UnitPowerType		= UnitPowerType
 
-local wow24 = GetBuildInfo() < "1.0.0" or GetBuildInfo() >= "2.4.0"
-
 local classIcons = {
 	WARRIOR	= "Interface\\Icons\\Ability_Warrior_BattleShout",
 	ROGUE	= "Interface\\Icons\\Ability_Stealth",
@@ -41,6 +51,9 @@ local classIcons = {
 }
 
 local classOrder = {"WARRIOR", "ROGUE", "HUNTER", "DRUID", "SHAMAN", "PALADIN", "PRIEST", "MAGE", "WARLOCK"}
+if (wow3) then
+	tinsert(classOrder, 2, "DEATHKNIGHT")
+end
 if (type(CLASS_BUTTONS) == "table") then
 	for class in pairs(CLASS_BUTTONS) do
 		local got
@@ -175,25 +188,37 @@ do
 	end
 
 	local blessings	= {
-		{id = 27144, type = "BOL", dur = 5,					short = L["Light"]},	-- Blessing of Light
-		{id = 27145, type = "BOL", dur = 30,	class = true},						-- Greater Blessing of Light
-		{id = 1038,  type = "BOS", dur = 5,					short = L["Salvation"]},-- Blessing of Salvation
-		{id = 25895, type = "BOS", dur = 30,	class = true},						-- Greater Blessing of Salvation
 		{id = 27142, type = "BOW", dur = 5,					short = L["Wisdom"]},	-- Blessing of Wisdom
 		{id = 27143, type = "BOW", dur = 30,	class = true},						-- Greater Blessing of Wisdom
 		{id = 27140, type = "BOM", dur = 5,					short = L["Might"]},	-- Blessing of Might
 		{id = 27141, type = "BOM", dur = 30,	class = true},						-- Greater Blessing of Might
 		{id = 20217, type = "BOK", dur = 5,					short = L["Kings"]},	-- Blessing of Kings
 		{id = 25898, type = "BOK", dur = 30,	class = true},						-- Greater Blessing of Kings
-		{id = 27168, type = "SAN", dur = 5,					short = L["Sanctuary"]},-- Blessing of Sanctuary
-		{id = 27169, type = "SAN", dur = 30,	class = true},						-- Greater Blessing of Sanctuary
-		{id = 27148, type = "SAC", dur = 0.5,	noTemplate = true},					-- Blessing of Sacrifice
-		{id = 1044,  type = "BOF", dur = 0.267,	noTemplate = true},					-- Blessing of Freedom
-		{id = 5599,  type = "BOP", dur = 0.2,	noTemplate = true},					-- Blessing of Protection
 	}
+
+	if (wow3) then
+		tinsert(blessings, {id = 10278, type = "BOP", dur = 0.2, noTemplate = true})	-- Hand of Protection
+		tinsert(blessings, {id = 20911, type = "SAN", dur = 5, short = L["Sanctuary"]}) -- Blessing of Sanctuary
+		tinsert(blessings, {id = 25899, type = "SAN", dur = 30,	class = true})			-- Greater Blessing of Sanctuary
+	else
+		tinsert(blessings, {id = 1044,  type = "BOF", dur = 0.267,	noTemplate = true})	-- Blessing of Freedom
+		tinsert(blessings, {id = 5599,  type = "BOP", dur = 0.2,	noTemplate = true})	-- Blessing of Protection
+		tinsert(blessings, {id = 27144, type = "BOL", dur = 5, short = L["Light"]})		-- Blessing of Light
+		tinsert(blessings, {id = 27145, type = "BOL", dur = 30,	class = true})			-- Greater Blessing of Light
+		tinsert(blessings, {id = 1038,  type = "BOS", dur = 5, short = L["Salvation"]}) -- Blessing of Salvation
+		tinsert(blessings, {id = 25895, type = "BOS", dur = 30,	class = true})			-- Greater Blessing of Salvation
+		tinsert(blessings, {id = 27148, type = "SAC", dur = 0.5,	noTemplate = true})	-- Blessing of Sacrifice
+		tinsert(blessings, {id = 27168, type = "SAN", dur = 5, short = L["Sanctuary"]})	-- Blessing of Sanctuary
+		tinsert(blessings, {id = 27169, type = "SAN", dur = 30,	class = true})			-- Greater Blessing of Sanctuary
+	end
+
 	z.blessings = {}
 	for i,info in pairs(blessings) do
 		local name, _, icon = GetSpellInfo(info.id)
+		if (not name) then
+			error("No spell for ID "..info.id)
+		end
+
 		info.icon = icon
 		z.blessings[name] = info
 	end
@@ -217,7 +242,7 @@ do
 	end
 end
 
-z.version = tonumber(string.sub("$Revision: 81185 $", 12, -3)) or 1
+z.version = tonumber(string.sub("$Revision: 81790 $", 12, -3)) or 1
 z.versionCompat = 65478
 z.title = L["TITLE"]
 z.titleColour = L["TITLECOLOUR"]
@@ -1385,6 +1410,7 @@ do
 				return name == who and 2 or 0
 			end
 		end
+		return 0
 	end
 
 	function z:GetUnitID(name)
@@ -1843,7 +1869,7 @@ end
 
 -- LinkSpellRaw
 function z:LinkSpellRaw(name, overrideName)
-	if (z.linkSpells and wow24) then
+	if (z.linkSpells) then
 		local spellLink = GetSpellLink(name)
 		local spellID
 		if (spellLink) then
@@ -1860,7 +1886,11 @@ end
 
 -- LinkSpell
 function z:LinkSpell(name, hexColor, icon, overrideName)
-	if (z.linkSpells and wow24 and icon) then
+	if (not name) then
+		return "?"
+	end
+	
+	if (z.linkSpells and icon) then
 		local icon
 		if (self.db.profile.spellIcons) then
 			icon = select(3, GetSpellInfo(name))
@@ -1893,15 +1923,23 @@ end
 -- HideMeLaterz
 local function HideMeLaterz()
 	if (not InCombatLockdown()) then
-		z.menu:SetAttribute("state", 0)
+		if (wow3) then
+			z.members:Hide()
+		else
+			z.menu:SetAttribute("state", 0)
+		end
 	end
 end
 
 -- OptionsShowList
 function z:OptionsShowList()
 	if (not InCombatLockdown()) then
-		self.menu:SetAttribute("state", 0)
-		self.menu:SetAttribute("state", 1)
+		if (wow3) then
+			self.members:Show()
+		else
+			self.menu:SetAttribute("state", 0)
+			self.menu:SetAttribute("state", 1)
+		end
 		self:ScheduleEvent("ZOMGBuffs_HideMeLaterz", HideMeLaterz, 5)
 	end
 end
@@ -2230,6 +2268,21 @@ function z:Notice(notice, sound)
 	end
 end
 
+-- UnitBuff
+function z:UnitBuff(...)
+	if (wow3) then
+		return UnitBuff(...)
+	else
+		-- Convert WoW 2.4 return format into WoW 3.0 format
+		local name, rank, buff, count, maxDuration, timeLeft = UnitBuff(...)
+		local endTime
+		if (maxDuration and timeLeft) then
+			endTime = GetTime() + timeLeft
+		end
+		return name, rank, buff, count, "", maxDuration, endTime, (maxDuration ~= nil) and 1 or nil, nil
+	end
+end
+
 -- Report
 function z:Report(option)
 	if (not IsRaidOfficer() or not IsRaidLeader()) then
@@ -2263,7 +2316,7 @@ function z:Report(option)
 			if (UnitIsConnected(partyid) and not UnitIsDeadOrGhost(partyid)) then
 				groupCounts[subgroup] = groupCounts[subgroup] + 1
 				for i = 1,40 do
-					local name, rank, buff, count, max, dur = UnitBuff(partyid, i)
+					local name, rank, buff, count, _, max, endTime = self:UnitBuff(partyid, i)
 					if (not name) then
 						break
 					end
@@ -2299,7 +2352,7 @@ function z:Report(option)
 					tinsert(list.MARK, name)
 					groupList[subgroup].MARK = (groupList[subgroup].MARK or 0) + 1
 				end
-				if (not (class == "ROGUE" or class == "WARRIOR")) then
+				if (not (class == "ROGUE" or class == "WARRIOR" or class == "DEATHKNIGHT")) then
 					if (not flags.INT and self.classcount.MAGE > 0) then
 						if (not list.INT) then
 							list.INT = new()
@@ -2382,30 +2435,54 @@ end
 
 -- SetIconSize
 function z:SetIconSize()
-	self.icon.auto:SetScale(1.2 * (self.db.char.iconsize / 32))
+	if (not wow3) then
+		self.icon.auto:SetScale(1.2 * (self.db.char.iconsize / 32))
+	end
 
 	if (self.db.char.showicon) then
-		self.menu:Show()
+		if (wow3) then
+			self.icon:Show()
+		else
+			self.menu:Show()
+		end
 		self.icon.tex:Show()
 		self.icon:SetWidth(self.db.char.iconsize)
 		self.icon:SetHeight(self.db.char.iconsize)
-		self.icon.auto:SetModel("Interface\\Buttons\\UI-AutoCastButton.mdx")
+		if (not wow3) then
+			self.icon.auto:SetModel("Interface\\Buttons\\UI-AutoCastButton.mdx")
+		end
 		self.icon:SetAttribute("*childstate-OnEnter", "enter")
 	else
-		self.menu:Hide()
+		if (wow3) then
+			self.icon:Hide()
+		else
+			self.menu:Hide()
+		end
 		self.icon.tex:Hide()
 		self.icon:SetHeight(1)		-- Can't hide it, needs to be visible
 		self.icon:SetWidth(1)
-		self.icon.auto:ClearModel()
+		if (not wow3) then
+			self.icon.auto:ClearModel()
+		end
 		self.icon:SetAttribute("*childstate-OnEnter", nil)
 	end
 
 	-- Border
-	local border = self.menu.border
+	local border
+	if (wow3) then
+		border = self.icon.border
+	else
+		border = self.menu.border
+	end
 	if (self.db.char.iconborder) then
 		if (not border) then
-			border = self:CreateBorder(self.menu)
-			self.menu.border = border
+			if (wow3) then
+				border = self:CreateBorder(self.icon)
+				self.icon.border = border
+			else
+				border = self:CreateBorder(self.menu)
+				self.menu.border = border
+			end
 		end
 		border:Show()
 	else
@@ -2460,7 +2537,11 @@ end
 -- z:SetAnchors()
 function z:SetAnchors()
 	self.members:ClearAllPoints()
-	self.members:SetPoint(z.db.char.anchor or "BOTTOMRIGHT", self.menu, z.db.char.relpoint or "TOPLEFT", 0, 0)
+	if (wow3) then
+		self.members:SetPoint(z.db.char.anchor or "BOTTOMRIGHT", self.icon, z.db.char.relpoint or "TOPLEFT", 0, 0)
+	else
+		self.members:SetPoint(z.db.char.anchor or "BOTTOMRIGHT", self.menu, z.db.char.relpoint or "TOPLEFT", 0, 0)
+	end
 	self:OptionsShowList()
 end
 
@@ -2494,6 +2575,9 @@ function z:CanCheckBuffs(allowCombat, soloBuffs)
 		icon = "disabled"
 	elseif (UnitOnTaxi("player")) then
 		lastCheckFail = L["TAXI"]
+		icon = "flying"
+	elseif (UnitHasVehicleUI and UnitHasVehicleUI("player")) then
+		lastCheckFail = L["VEHICLE"]
 		icon = "flying"
 	elseif (InCombatLockdown() and not allowCombat) then
 		lastCheckFail = L["COMBAT"]
@@ -2587,6 +2671,9 @@ function z:SetStatusIcon(t, spellIcon)
 	elseif (t == "flying") then
 		status = "Interface\\Icons\\Ability_Mount_Wyvern_01"
 		coords = new(0.05, 0.95, 0.05, 0.95)
+
+	elseif (t == "vehicle") then
+		status = "Interface\\Icons\\Ability_Mount_Wyvern_01"
 
 	elseif (t == "mounted") then
 		status = "Interface\\Icons\\Ability_Mount_Wyvern_01"
@@ -2859,9 +2946,206 @@ function z:SetSort(show)
 	end
 end
 
+if (wow3) then
+
+-- z:OnStartup
+function z:OnStartup()
+	local icon = CreateFrame("Button", "ZOMGBuffsButton", UIParent, "SecureUnitButtonTemplate,SecureHandlerEnterLeaveTemplate")
+
+	self:UpdateListWidth()
+
+	self.icon = icon
+	icon:SetClampedToScreen(true)
+	icon:SetHeight(32)
+	icon:SetWidth(32)
+	icon.tex = icon:CreateTexture(nil, "BACKGROUND")
+	icon.tex:SetAllPoints()
+	icon.tex:SetTexture("Interface\\AddOns\\ZOMGBuffs\\Textures\\Icon")
+	icon:SetPoint("CENTER")
+	icon:SetMovable(true)
+	icon:RegisterForClicks("AnyUp")
+
+	icon.name = icon:CreateTexture(nil, "OVERLAY")
+	icon.name:SetAllPoints()
+	icon.name:SetTexture("Interface\\AddOns\\ZOMGBuffs\\Textures\\IconText")
+
+	icon.status = icon:CreateTexture(nil, "OVERLAY")
+	icon.status:SetPoint("BOTTOMRIGHT", -1, 1)
+	icon.status:SetWidth(18)
+	icon.status:SetHeight(18)
+	icon.status:Hide()
+
+	icon.auto = CreateFrame("Frame", "ZOMGBuffsIconSwirl", icon, "AutoCastShineTemplate")
+	icon.auto:Hide()
+	icon.auto:SetAllPoints()
+	AutoCastShine_AutoCastStart(icon.auto, 1, 1, 0.8)
+
+	icon.count = icon:CreateFontString(nil, "OVERLAY", "NumberFontNormal")
+	icon.count:Hide()
+	icon.count:SetPoint("TOPLEFT")
+	icon.count:SetPoint("BOTTOMRIGHT", -2, 2)
+	icon.count:SetJustifyH("RIGHT")
+	icon.count:SetJustifyV("BOTTOM")
+
+	icon:SetScript("OnDragStart",
+		function(self)
+			if (not z.db.char.iconlocked) then
+				self:StartMoving()
+			end
+		end)
+	icon:SetScript("OnDragStop",
+		function(self)
+			self:StopMovingOrSizing()
+			z.db.char.pos = z:GetPosition(self)
+		end)
+	icon:HookScript("OnEnter", CellOnEnter)
+	icon:HookScript("OnLeave", CellOnLeave)
+	icon:HookScript("OnClick",
+		function(self, button)
+			local command
+			if (z.db.profile.mousewheel) then
+				command = GetBindingAction(button)
+			elseif (z.db.profile.keybinding) then
+				command = GetBindingAction(z.db.profile.keybinding)
+			end
+			if (command) then
+				pcall(RunBinding, command)
+			end
+
+			if (self:GetAttribute("*type*")) then
+				z.clickCast = true
+				z.clickList = nil
+
+				if (z.noticeWindow) then
+					z.noticeWindow:Hide()
+				end
+
+				z.globalCooldownEnd = GetTime() + (self.castTimeToGCD or 1.5)
+				z:GlobalCDSchedule()
+
+				z:SetupForSpell()
+			end
+		end)
+
+	icon.UpdateTooltip = CellOnEnter
+
+	icon:RegisterForDrag("LeftButton")
+	--icon:SetAttribute("closeTime", nil)
+
+	icon:SetAttribute("_onenter",
+		[[ 
+			self:GetFrameRef("list"):SetAlpha(1)
+			self:GetFrameRef("list"):Show()
+			self:SetAttribute("closeTime", nil)
+			control:SetAnimating(true)
+		]]
+	)
+	icon:SetAttribute("_onleave",
+		[[
+			self:SetAttribute("closeTime", 1)
+			self:SetAttribute("fadeTime", nil)
+		]]
+	)
+
+	-- TODO timer dispatch when that's fixed
+	icon:SetAttribute("_onupdate",
+		[[
+			local list = self:GetFrameRef("list")
+			if (list:IsUnderMouse(true)) then
+				list:SetAlpha(1)
+				self:SetAttribute("closeTime", 1)
+				return
+			end
+
+			local closeTime = self:GetAttribute("closeTime")
+			if (closeTime) then
+				closeTime = closeTime - elapsed
+				if (closeTime <= 0) then
+					closeTime = nil
+					self:SetAttribute("fadeTime", 0.33)
+				end
+				self:SetAttribute("closeTime", closeTime)
+			else
+				local fadeTime = self:GetAttribute("fadeTime")
+				if (fadeTime) then
+					fadeTime = fadeTime - elapsed
+					list:SetAlpha(fadeTime * 3)
+					if (fadeTime <= 0) then
+						fadeTime = nil
+						list:Hide()
+						list:SetAlpha(1)
+						control:SetAnimating(false)
+					end
+					self:SetAttribute("fadeTime", fadeTime)
+				end
+			end
+		]]
+	)
+
+	local members = CreateFrame("Frame", "ZOMGBuffsList", icon, "SecureRaidGroupHeaderTemplate")
+	members:Hide()
+	self.members = members
+	self:SetVisibilityOption()
+	members:UnregisterEvent("UNIT_NAME_UPDATE")				-- Fix for that old lockup issue
+	members:SetClampedToScreen(true)
+	members:SetClampRectInsets(0, 8, z.db.char.height, 0)
+	members:SetWidth(z.totalListWidth or self.db.char.width)
+	members:SetHeight(self.db.char.height)
+	members:SetFrameStrata("DIALOG")
+
+	icon:SetFrameRef("list", members)				-- So the icon can access the list via GetFrameRef shown above
+
+	members:HookScript("OnShow", function(self) z:DrawGroupNumbers() z:RegisterEvent("MODIFIER_STATE_CHANGED") end)
+	members:HookScript("OnHide", function(self) z:UnregisterEvent("MODIFIER_STATE_CHANGED") end)
+
+	members.initialConfigFunction = function(self)
+		-- This is the only place we're allowed to set attributes whilst in combat
+
+		z:SetTargetClick(self, true)
+
+		self:SetAttribute("initial-width", z.totalListWidth or z.db.char.width)
+		self:SetAttribute("initial-height", z.db.char.height)
+
+		z:InitCell(self)
+
+		-- Get initial list item spell, even works in-combat! zomg
+		z.canChangeFlagsIC = true
+		z:UpdateOneCellSpells(self)
+		z.canChangeFlagsIC = nil
+	end
+
+	members:SetAttribute("template", "SecureUnitButtonTemplate")
+	members:SetAttribute("sortMethod", "NAME")
+
+	WorldFrame:HookScript("OnMouseDown", function()
+		if (not InCombatLockdown()) then
+			if (wow3) then
+				z.members:Hide()
+			else
+				if (z.menu:GetAttribute("state") == 1) then
+					z.menu:SetAttribute("state", 0)
+				end
+			end
+		end
+	end)
+
+	self:SetAnchors()
+
+	if (not InCombatLockdown()) then
+		self.members:Hide()
+	end
+
+	self.OnStartup = nil
+end
+
+else
+	
 -- z:OnStartup
 function z:OnStartup()
 	local icon = CreateFrame("Button", "ZOMGBuffsButton", UIParent, "SecureUnitButtonTemplate,SecureAnchorEnterTemplate")
+
+	self:UpdateListWidth()
+
 	self.icon = icon
 	icon:SetClampedToScreen(true)
 	icon:SetHeight(32)
@@ -2964,7 +3248,7 @@ function z:OnStartup()
 	members:UnregisterEvent("UNIT_NAME_UPDATE")				-- Fix for that old lockup issue
 	members:SetClampedToScreen(true)
 	members:SetClampRectInsets(0, 8, z.db.char.height, 0)
-	members:SetWidth(self.db.char.width)
+	members:SetWidth(z.totalListWidth or self.db.char.width)
 	members:SetHeight(self.db.char.height)
 	members:SetFrameStrata("DIALOG")
 
@@ -2976,7 +3260,7 @@ function z:OnStartup()
 
 		z:SetTargetClick(self, true)
 
-		self:SetAttribute("initial-width", z.db.char.width)
+		self:SetAttribute("initial-width", z.totalListWidth or z.db.char.width)
 		self:SetAttribute("initial-height", z.db.char.height)
 
 		z:InitCell(self)
@@ -3010,6 +3294,8 @@ function z:OnStartup()
 	end
 
 	self.OnStartup = nil
+end
+
 end
 
 -- SetTargetClick
@@ -3110,6 +3396,7 @@ local function MakePalaIcons(self)
 			prev = b
 		end
 	end
+
 	prev = self.buff[#z.buffs]
 	if (self.palaIcon[1]) then
 		self.palaIcon[1]:ClearAllPoints()
@@ -3143,8 +3430,9 @@ end
 
 -- z:SetAllBarSizes()
 function z:SetAllBarSizes()
-	if (AllFrameArray and not InCombatLockdown()) then
-		local w = self.db.char.width
+	self:UpdateListWidth()
+	if (AllFrameArray and not InCombatLockdown() and self.members) then
+		local w = self.totalListWidth or self.db.char.width
 		local h = self.db.char.height
 
 		self.members:SetClampRectInsets(0, 8, h, 0)
@@ -3263,7 +3551,7 @@ local function DrawCell(self)
 			if (UnitIsDeadOrGhost(partyid) or not UnitIsConnected(partyid)) then
 				icon:SetTexture(nil)
 			else
-				if (b.manaOnly and (class == "ROGUE" or class == "WARRIOR")) then
+				if (b.manaOnly and (class == "ROGUE" or class == "WARRIOR" or class == "DEATHKNIGHT")) then
 					icon:SetTexture(nil)
 				else
 					if (b.type == "FLASK") then
@@ -3292,29 +3580,29 @@ local function DrawCell(self)
 		palaFlags[j] = false
 	end
 
-	local myMax, myDur
+	local myMax, myEnd
 
 	MakePalaIcons(self)
-
+	
 	local gotPalaBuffs = 0
 	local doBlessings = z.db.profile.track.blessings
 	if (not UnitIsDeadOrGhost(partyid) and UnitIsConnected(partyid)) then
 		for i = 1,40 do
-			local name, rank, tex, count, max, dur = UnitBuff(partyid, i)
+			local name, rank, tex, count, _, maxDuration, endTime = z:UnitBuff(partyid, i)
 			if (not name) then
 				break
 			end
 
-			if (max and max > 0 and (not myMax or myMax > max)) then
+			if (maxDuration and maxDuration > 0 and (not myMax or myMax > maxDuration)) then
 				if (z:ShowBuffBar(self, name)) then
-					myMax, myDur = max, dur
+					myMax, myEnd = maxDuration, endTime
 				end
 			end
 
 			for j,icon in pairs(self.buff) do
 				local buff = z.buffs[j]
 				if (buff and (not buff.class or z.classcount[buff.class] > 0)) then
-					if (not buff.manaOnly or not (class == "ROGUE" or class == "WARRIOR")) then
+					if (not buff.manaOnly or not (class == "ROGUE" or class == "WARRIOR" or class == "DEATHKNIGHT")) then
 						if (buff.list and buff.list[name]) then
 							icon:Show()
 							icon:SetAlpha(onAlpha)
@@ -3344,8 +3632,8 @@ local function DrawCell(self)
 						palaFlags[key] = tex
 						gotPalaBuffs = gotPalaBuffs + 1
 
-						if (max and max > 0 and (not myMax or myMax > max)) then
-							myMax, myDur = max, dur
+						if (maxDuration and maxDuration > 0 and (not myMax or myMax > maxDuration)) then
+							myMax, myEnd = maxDuration, endTime
 						end
 					end
 				end
@@ -3383,7 +3671,7 @@ local function DrawCell(self)
 							end
 
 							if (Type == "BOW") then
-								if (class == "WARRIOR" or class == "ROGUE") then
+								if (class == "WARRIOR" or class == "ROGUE" or class == "DEATHKNIGHT") then
 									b:SetVertexColor(1, 0.5, 0.5)
 								else
 									b:SetVertexColor(1, 1, 1)
@@ -3484,8 +3772,8 @@ local function DrawCell(self)
 	local bar = self.bar
 	if (myMax) then
 		local now = GetTime()
-		local startTime = now - (myMax - myDur)
-		local endTime = now + myDur
+		local startTime = myEnd - myMax
+		local endTime = myEnd
 		bar:SetMinMaxValues(startTime, endTime)
 		bar:SetValue(endTime - now)
 		bar:SetScript("OnUpdate", CellBarOnUpdate)
@@ -4113,8 +4401,31 @@ function z:OnRaidRosterUpdate()
 
 	self.StartupDone = true
 	self:UpdateCellSpells()
+	if (self:UpdateListWidth()) then
+		self:SetAllBarSizes()
+	end
 
 	del(delList)
+end
+
+-- UpdateListWidth
+function z:UpdateListWidth()
+	local old = self.totalListWidth
+	-- Work out how wide the list will be in total. The width option now specifies the list of
+	-- the name part only, the actual width varies based on how many icons will be shown
+	if (not InCombatLockdown()) then
+		local icons = z.db.profile.track.blessings and z.classcount.PALADIN or 0
+		icons = icons + #self.buffs
+
+		self.totalListWidth = self.db.char.width + icons * z.db.char.height
+		if (self.members) then
+			self.members:SetWidth(self.totalListWidth)
+		end
+	else
+		self.updateListWidthOOC = true
+	end
+
+	return self.totalListWidth ~= old
 end
 
 -- RegisterBuffer
@@ -4203,6 +4514,12 @@ function z:UNIT_AURA(unit)
 	local u = FrameArray[unit]
 	if (u) then
 		u:DrawCell()
+	end
+
+	if (wow3) then
+		if (unit == "player" and self:UnitHasBuff("player", 46755) or self:UnitHasBuff("player", 46898)) then	-- Food/Drink
+			self:SetupForSpell()
+		end
 	end
 end
 
@@ -4327,6 +4644,11 @@ function z:PLAYER_REGEN_ENABLED()
 	for name, module in self:IterateModulesWithMethod("OnRegenEnabled") do
 		module:OnRegenEnabled()
 	end
+
+	if (self.updateListWidthOOC) then
+		self.updateListWidthOOC = nil
+		self:UpdateListWidth()
+	end
 end
 
 -- PLAYER_REGEN_DISABLED
@@ -4354,10 +4676,12 @@ function z:PLAYER_CONTROL_GAINED()
 	self:RequestSpells()
 end
 
--- PLAYER_AURAS_CHANGED
-function z:PLAYER_AURAS_CHANGED()
-	if (self:UnitHasBuff("player", 46755) or self:UnitHasBuff("player", 46898)) then	-- Food/Drink
-		self:SetupForSpell()
+if (not wow3) then
+	-- PLAYER_AURAS_CHANGED
+	function z:PLAYER_AURAS_CHANGED()
+		if (self:UnitHasBuff("player", 46755) or self:UnitHasBuff("player", 46898)) then	-- Food/Drink
+			self:SetupForSpell()
+		end
 	end
 end
 
@@ -4531,17 +4855,8 @@ function z:SetupAutoBuy()
 	end
 end
 
--- MERCHANT_SHOW
-function z:MERCHANT_SHOW()
-	if (not self.db.char.autobuyreagents) then
-		return
-	end
-
-	if (self.lastMerchantBuy and GetTime() < self.lastMerchantBuy + 5) then
-		return
-	end
-	self.lastMerchantBuy = GetTime()
-
+-- GetMerchantBuyItemList
+function z:GetMerchantBuyItemList()
 	local list = new()
 	local level = UnitLevel("player")
 	for name, module in z:IterateModules() do
@@ -4556,6 +4871,21 @@ function z:MERCHANT_SHOW()
 			end
 		end
 	end
+	return list
+end
+
+-- MERCHANT_SHOW
+function z:MERCHANT_SHOW()
+	if (not self.db.char.autobuyreagents) then
+		return
+	end
+
+	if (self.lastMerchantBuy and GetTime() < self.lastMerchantBuy + 5) then
+		return
+	end
+	self.lastMerchantBuy = GetTime()
+
+	local list = z:GetMerchantBuyItemList()
 
 	if (next(list)) then
 		local numMerchantItems = GetMerchantNumItems()
@@ -4805,24 +5135,6 @@ z.OnCommReceive = {
 	CAPABILITY = function(self, prefix, sender, channel, cap)
 		z:OnReceiveCapability(sender, cap)
 	end,
-	REQUESTBUFFTIMES = function(self, prefix, sender, channel)
-		if (not reqHistoryBT[sender] or reqHistoryBT[sender] < GetTime() - 15) then
-			reqHistoryBT[sender] = GetTime()
-
-			local buffTimes = new()
-			for i = 1,40 do
-				local name, rank, tex, dur, maxDur = UnitBuff("player", i)
-				if (not name) then
-					break
-				end
-				if (maxDur > 10) then
-					buffTimes[name] = new(maxDur, dur)
-				end
-			end
-			z:SendComm(sender, "BUFFTIMES", buffTimes)
-			del(buffTimes)
-		end
-	end,
 	GIVETEMPLATEPART = function(self, prefix, sender, channel, name, class, buff)
 		z:OnReceiveTemplatePart(sender, name, class, buff)
 	end
@@ -4830,7 +5142,6 @@ z.OnCommReceive = {
 
 -- OnReceiveSpec
 function z:OnReceiveSpec(sender, spec)
---self:Print("z:OnReceiveSpec("..sender..")")
 	if (not rawget(z.talentSpecs, sender)) then
 		z.talentSpecs[sender] = {spec[1], spec[2], spec[3]}
 	else
@@ -4997,7 +5308,6 @@ function z:OnInitialize()
 			"HELLO", "VERSION",
 			"default", "modified", "never", "solo", "party", "raid",
 			"BOM", "BOK", "BOW", "BOL", "BOS", "SAN",
-			"REQUESTBUFFTIMES", "BUFFTIMES",
 			"MODIFIEDTEMPLATE",
 			"canKings", "canSanctuary", "impMight", "impWisdom", "canSpirit", "mark",
 			"SPELLS_CHANGED", "GIVEMASTERTEMPLATE", "GIVESUBCLASSES", "SYMBOLCOUNT",
@@ -5397,7 +5707,9 @@ function z:OnEnable()
 	self:RegisterEvent("PLAYER_CONTROL_GAINED")
 	self:RegisterEvent("CHAT_MSG_ADDON")				-- For PallyPower Load on Demand support
 	self:RegisterEvent("INSPECT_TALENT_READY")
-	self:RegisterEvent("PLAYER_AURAS_CHANGED")
+	if (not wow3) then
+		self:RegisterEvent("PLAYER_AURAS_CHANGED")
+	end
 	self:RegisterEvent("CHAT_MSG_WHISPER")
 	--self:RegisterEvent("CHAT_MSG_COMBAT_FRIENDLY_DEATH")		-- Might need to change with new combat log system?
 

@@ -1,4 +1,10 @@
 ------------------------------------------------------------------------
+r81777 | kagaro | 2008-09-16 07:47:31 -0400 (Tue, 16 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/GatherMate_Sharing/GatherMate_Sharing.toc
+
+GatherMate_Sharing updated email for transition.
+------------------------------------------------------------------------
 r81608 | kagaro | 2008-09-11 11:03:26 -0400 (Thu, 11 Sep 2008) | 1 line
 Changed paths:
    M /trunk/GatherMate_Sharing/GatherMate_Sharing.lua
