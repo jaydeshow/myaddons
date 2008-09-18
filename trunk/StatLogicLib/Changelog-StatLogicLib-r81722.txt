@@ -1,4 +1,33 @@
 ------------------------------------------------------------------------
+r81722 | whitetooth | 2008-09-14 09:13:59 -0400 (Sun, 14 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- Added pattern "Increases your armor penetration rating"
+------------------------------------------------------------------------
+r81718 | whitetooth | 2008-09-14 08:11:51 -0400 (Sun, 14 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- Support for [Heartseeker Scope] "Ranged Critical Strike"
+- Added some comments about debugging enchants
+------------------------------------------------------------------------
+r81705 | whitetooth | 2008-09-14 04:18:16 -0400 (Sun, 14 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: 
+- StatIDToName table: Added "RANGED_DMG", "ARMOR_PENETRATION_RATING", "ARMOR_PENETRATION", needs localization
+- Support for "Scope (Damage)" and "Scope (Critical Strike Rating)"
+------------------------------------------------------------------------
+r81643 | whitetooth | 2008-09-12 09:34:43 -0400 (Fri, 12 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: Support for Armor Penetration Rating
+------------------------------------------------------------------------
 r81561 | whitetooth | 2008-09-09 04:29:39 -0400 (Tue, 09 Sep 2008) | 1 line
 Changed paths:
    M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua

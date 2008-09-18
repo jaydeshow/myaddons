@@ -18,7 +18,7 @@ local z = ZOMGBuffs
 local zb = z:NewModule("ZOMGBlessings")
 ZOMGBlessings = zb
 
-z:CheckVersion("$Revision: 74413 $")
+z:CheckVersion("$Revision: 81802 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 local classOrder, classIndex = z.classOrder, z.classIndex
@@ -35,44 +35,86 @@ local UnitInRaid		= UnitInRaid
 local UnitIsUnit		= UnitIsUnit
 local UnitPowerType		= UnitPowerType
 
-local classOrder = {"WARRIOR", "ROGUE", "HUNTER", "DRUID", "SHAMAN", "PALADIN", "PRIEST", "MAGE", "WARLOCK"}
-
-local function DefaultTemplates()
-	return {
-		[L["DPS"]] = {
-			WARRIOR = "BOM",
-			ROGUE = "BOM",
-			HUNTER = "BOM",
-			DRUID = "BOM",
-			SHAMAN = "BOM",
-			PALADIN = "BOW",
-			PRIEST = "BOW",
-			MAGE = "BOW",
-			WARLOCK = "BOW",
-		},
-		[L["5-Man"]] = {
-			WARRIOR = "BOK",
-			ROGUE = "BOS",
-			HUNTER = "BOS",
-			DRUID = "BOS",
-			SHAMAN = "BOS",
-			PALADIN = "BOW",
-			PRIEST = "BOS",
-			MAGE = "BOS",
-			WARLOCK = "BOS",
-		},
-		[L["Kings"]] = {
-			WARRIOR = "BOK",
-			ROGUE = "BOK",
-			HUNTER = "BOK",
-			DRUID = "BOK",
-			SHAMAN = "BOK",
-			PALADIN = "BOK",
-			PRIEST = "BOK",
-			MAGE = "BOK",
-			WARLOCK = "BOK",
-		},
-	}
+local DefaultTemplates
+if (wow3) then
+	function DefaultTemplates()
+		return {
+			[L["DPS"]] = {
+				WARRIOR = "BOM",
+				DEATHKNIGHT = "BOM",
+				ROGUE = "BOM",
+				HUNTER = "BOM",
+				DRUID = "BOM",
+				SHAMAN = "BOM",
+				PALADIN = "BOW",
+				PRIEST = "BOW",
+				MAGE = "BOW",
+				WARLOCK = "BOW",
+			},
+			[L["5-Man"]] = {
+				WARRIOR = "BOK",
+				DEATHKNIGHT = "BOM",
+				ROGUE = "BOM",
+				HUNTER = "BOM",
+				DRUID = "BOM",
+				SHAMAN = "BOW",
+				PALADIN = "BOW",
+				PRIEST = "BOW",
+				MAGE = "BOW",
+				WARLOCK = "BOW",
+			},
+			[L["Kings"]] = {
+				WARRIOR = "BOK",
+				DEATHKNIGHT = "BOK",
+				ROGUE = "BOK",
+				HUNTER = "BOK",
+				DRUID = "BOK",
+				SHAMAN = "BOK",
+				PALADIN = "BOK",
+				PRIEST = "BOK",
+				MAGE = "BOK",
+				WARLOCK = "BOK",
+			},
+		}
+	end
+else
+	function DefaultTemplates()
+		return {
+			[L["DPS"]] = {
+				WARRIOR = "BOM",
+				ROGUE = "BOM",
+				HUNTER = "BOM",
+				DRUID = "BOM",
+				SHAMAN = "BOM",
+				PALADIN = "BOW",
+				PRIEST = "BOW",
+				MAGE = "BOW",
+				WARLOCK = "BOW",
+			},
+			[L["5-Man"]] = {
+				WARRIOR = "BOK",
+				ROGUE = "BOS",
+				HUNTER = "BOS",
+				DRUID = "BOS",
+				SHAMAN = "BOS",
+				PALADIN = "BOW",
+				PRIEST = "BOS",
+				MAGE = "BOS",
+				WARLOCK = "BOS",
+			},
+			[L["Kings"]] = {
+				WARRIOR = "BOK",
+				ROGUE = "BOK",
+				HUNTER = "BOK",
+				DRUID = "BOK",
+				SHAMAN = "BOK",
+				PALADIN = "BOK",
+				PRIEST = "BOK",
+				MAGE = "BOK",
+				WARLOCK = "BOK",
+			},
+		}
+	end
 end
 
 local function getOption(v)
@@ -309,17 +351,17 @@ end
 local function GetUnitPalaBuffs(unitid, other)
 	local myBuff, otherBuffs, myBuffTimeLeft, myBuffTimeMax
 	for i = 1,40 do
-		local name, rank, buff, count, max, dur = UnitBuff(unitid, i)
+		local name, rank, buff, count, _, maxDuration, endTime, isMine = z:UnitBuff(unitid, i)
 		if (not name) then
 			break
 		end
 
 		local b = z.blessings[name]
 		if (b) then
-			if (max) then
+			if (isMine) then
 				myBuff = b
-				myBuffTimeLeft = dur
-				myBuffTimeMax = max
+				myBuffTimeLeft = endTime - GetTime()
+				myBuffTimeMax = maxDuration
 			elseif (other) then
 				if (not otherBuffs) then
 					otherBuffs = new()
@@ -706,20 +748,6 @@ function zb:OutOfRangeCheck()
 	end
 end
 
--- MyBuffOnUnit
-local function MyBuffOnUnit(partyid)
-	local list
-	for i = 1,40 do
-		local name, rank, buff, count, max, dur = UnitBuff(partyid, i)
-		if (not name) then
-			return
-		end
-		if (max and z.blessings[name]) then
-			return name, rank, buff, count, max, dur
-		end
-	end
-end
-
 -- OnModifyTemplate
 function zb:OnModifyTemplate(class, type, response)
 	self:argCheck(class, 1, "string")
@@ -832,6 +860,10 @@ end
 
 -- SayWhatWeDid
 function zb:SayWhatWeDid(icon, spell, name)
+	if (not z.db.profile.info) then
+		return
+	end
+
 	local s = spell or icon:GetAttribute("spell")
 	if (s) then
 		local b = z.blessings[s]
@@ -1333,35 +1365,68 @@ end
 -- ValidateTemplate
 function zb:ValidateTemplate(template, tell)
 	if (template and (not self.zoneFlag or self.zoneFlag < GetTime() - 5)) then
-		local any
-		for className,buff in pairs(template) do
-			local single,class = z:GetBlessingFromType(buff)
-			if (single) then
-				if (not GetSpellInfo(single)) then			-- not IsSpellInRange(single, "player")) then
-					if (buff == "BOK") then
-						newBuff = "BOM"
-					else
-						newBuff = "BOS"
-					end
-					local newSingle = z:GetBlessingFromType(newBuff)
-					if (not IsSpellInRange(newSingle, "player")) then	-- Is only <no value> if it doesn't exist, else it's 1 or 0
-						newBuff = nil
-					end
-					if (not any) then
-						any = true
-						if (tell) then
-							self:Print(L["You can no longer do certain buffs as defined in your template, these have been replaced."])
-						end
-					end
-					if (tell) then
-						if (newBuff) then
-							self:Print(L["Replaced %s with %s"], z:ColourBlessing(buff), z:ColourBlessing(newBuff))
-						else
-							self:Print(L["Removed %s"], z:ColourBlessing(buff))
-						end
-					end
+		local any, any2
+		
+		local defTemp
+		for i,class in pairs(classOrder) do
+			if (not template[class]) then
+				if (not defTemp) then
+					defTemp = DefaultTemplates()
+				end
 
-					template[className] = newBuff
+				local sel = self.db.char.selectedTemplate
+				if (not defTemp[sel]) then
+					sel = "5-Man"
+					if (not defTemp[sel]) then
+						sel = next(defTemp)
+					end
+				end
+				template[class] = copy(defTemp[sel][class])
+			end
+		end
+		deepDel(defTemp)
+		
+		for className,buff in pairs(template) do
+			if (wow3) then
+				if (buff == "BOS" or buff == "BOL") then
+					if (not any2) then
+						any2 = true
+						self:Print(L["Removed obsolete (pre Lich King) buffs from your template."])
+					end
+					template[className] = nil
+					buff = nil
+				end
+			end
+
+			if (buff) then
+				local single,class = z:GetBlessingFromType(buff)
+				if (single) then
+					if (not GetSpellInfo(single)) then			-- not IsSpellInRange(single, "player")) then
+						if (buff == "BOK") then
+							newBuff = "BOM"
+						else
+							newBuff = wow3 and "BOM" or "BOS"
+						end
+						local newSingle = z:GetBlessingFromType(newBuff)
+						if (not IsSpellInRange(newSingle, "player")) then	-- Is only <no value> if it doesn't exist, else it's 1 or 0
+							newBuff = nil
+						end
+						if (not any) then
+							any = true
+							if (tell) then
+								self:Print(L["You can no longer do certain buffs as defined in your template, these have been replaced."])
+							end
+						end
+						if (tell) then
+							if (newBuff) then
+								self:Print(L["Replaced %s with %s"], z:ColourBlessing(buff), z:ColourBlessing(newBuff))
+							else
+								self:Print(L["Removed %s"], z:ColourBlessing(buff))
+							end
+						end
+	
+						template[className] = newBuff
+					end
 				end
 			end
 		end
@@ -1550,7 +1615,9 @@ function zb:OnModuleInitialize()
 	z.OnCommReceive.GIVETEMPLATE = function(self, prefix, sender, channel, newTemplate, quiet, playerRequested, retry)
 		if (zb:IsAllowedToChangeMe(sender)) then
 			if (not newTemplate or not next(newTemplate)) then
-				z:SendCommMessage("WHISPER", sender, "NACK", not retry)
+				if (sender ~= UNKNOWN and UnitExists(sender)) then
+					z:SendCommMessage("WHISPER", sender, "NACK", not retry)
+				end
 				return
 			end
 
@@ -1580,7 +1647,9 @@ function zb:OnModuleInitialize()
 			z:UpdateTooltip()
 
 			zb:BroadcastTemplate(true)			-- Need to do this so that other non-paladins will see the update in manager
-			z:SendCommMessage("WHISPER", sender, "ACK", nil)
+			if (sender ~= UNKNOWN and UnitExists(sender)) then
+				z:SendCommMessage("WHISPER", sender, "ACK", nil)
+			end
 		end
 	end
 
@@ -1594,8 +1663,10 @@ function zb:OnModuleInitialize()
 				return
 			end
 		end
-		z:SendCommMessage("WHISPER", sender, "TEMPLATE", template)
-		z:SendCommMessage("WHISPER", sender, "SYMBOLCOUNT", GetItemCount(21177))
+		if (sender ~= UNKNOWN and UnitExists(sender)) then
+			z:SendCommMessage("WHISPER", sender, "TEMPLATE", template)
+			z:SendCommMessage("WHISPER", sender, "SYMBOLCOUNT", GetItemCount(21177))
+		end
 	end
 
 	if (not self.db.char.templates.current or not self.db.char.selectedTemplate) then

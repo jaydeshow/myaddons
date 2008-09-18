@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Boss-3.0
-Revision: $Rev: 81208 $
+Revision: $Rev: 81656 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for bosses.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Boss-3.0"
-local MINOR_VERSION = "$Revision: 81208 $"
+local MINOR_VERSION = "$Revision: 81656 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -476,7 +476,7 @@ lib:SetBaseTranslations {
 	["Captain Skarloc"] = true,
 	["Epoch Hunter"] = true,
 	["Lieutenant Drake"] = true,
---Stratholme
+--The Culling of Stratholme
 	["Meathook"] = true,
 	["Chrono-Lord Epoch"] = true,
 	["Mal'Ganis"] = true,
@@ -486,6 +486,13 @@ lib:SetBaseTranslations {
 	["Chrono Lord Deja"] = true,
 	["Medivh"] = true,
 	["Temporus"] = true,
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+	["Sartharion"] = true,
+	["Shadron"] = true,
+	["Tenebron"] = true,
+	["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -551,7 +558,7 @@ lib:SetBaseTranslations {
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-	["Elder Nakox"] = true,
+	["Elder Nadox"] = true,
 	["Herald Volazj"]=  true,
 	["Jedoga Shadowseeker"] = true,
 	["Prince Taldaram"] = true,
@@ -559,8 +566,6 @@ lib:SetBaseTranslations {
 	["Anub'arak"] = true,
 	["Hadronox"] = true,
 	["Krik'thir the Gatewatcher"] = true,
---Chamber of Aspects
---Naxxramas
 
 --Gnomeregan
 	["Crowd Pummeler 9-60"] = true,
@@ -927,14 +932,24 @@ lib:SetBaseTranslations {
 
 -- Ulduar
 -- Halls of Lightning
-	["General Gjarngrin"] = true,
+	["General Bjarngrim"] = true,
 	["Ionar"] = true,
-	["Kronus"] = true,
+	["Loken"] = true,
 	["Volkhan"] = true,
 -- Halls of Stone
 	["Krystallus"] = true,
 	["Maiden of Grief"] = true,
 	["Sjonnir the Ironshaper"] = true,
+	["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+	["Cyanigosa"] = true,
+	["Erekem"] = true,
+	["Ichoron"] = true,
+	["Lavanthor"] = true,
+	["Moragg"] = true,
+	["Xevozz"] = true,
+	["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 	["Boahn"] = true,
@@ -997,7 +1012,7 @@ lib:SetBaseTranslations {
 
 -- Zul'Drak
 -- Gundrak
-	["Bloodstone Annihilator"] = true,
+	["Drakkari Colossus"] = true,
 	["Gal'darah"] = true,
 	["Moorabi"] = true,
 	["Slad'ran"] = true,
@@ -1188,14 +1203,14 @@ elseif GAME_LOCALE == "deDE" then
 		--["Drakos the Interrogator"] = true,
 		--["Ley-Guardian Eregos"] = true,
 		--["Mage-Lord Urom"] = true,
-		--["Varos Cloudstrider"] = true,		
+		--["Varos Cloudstrider"] = true,	
 
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "Kapitän Skarloc",
 		["Epoch Hunter"] = "Epochenjäger",
 		["Lieutenant Drake"] = "Leutnant Drach",
---Stratholme
+--The Culling of Stratholme
 		--["Meathook"] = true,
 		--["Chrono-Lord Epoch"] = true,
 		--["Mal'Ganis"] = true,
@@ -1205,6 +1220,13 @@ elseif GAME_LOCALE == "deDE" then
 		["Chrono Lord Deja"] = "Chronolord Deja",
 		["Medivh"] = "Medivh",
 		["Temporus"] = "Temporus",
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+		--["Sartharion"] = true,
+		--["Shadron"] = true,
+		--["Tenebron"] = true,
+		--["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -1270,7 +1292,7 @@ elseif GAME_LOCALE == "deDE" then
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-		--["Elder Nakox"] = true,
+		--["Elder Nadox"] = true,
 		--["Herald Volazj"]=  true,
 		--["Jedoga Shadowseeker"] = true,
 		--["Prince Taldaram"] = true,
@@ -1278,8 +1300,6 @@ elseif GAME_LOCALE == "deDE" then
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
 		--["Krik'thir the Gatewatcher"] = true,
---Chamber of Aspects
---Naxxramas
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Meuteverprügler 9-60",
@@ -1291,7 +1311,7 @@ elseif GAME_LOCALE == "deDE" then
 		["Viscous Fallout"] = "Verflüssigte Ablagerung",
 
 --Grizzly Hills
---Drak�tharon Keep
+--Draktharon Keep
 		--["King Dred"] = true,
 		--["Novos the Summoner"] = true,
 		--["The Prophet Tharon'ja"] = true,
@@ -1646,14 +1666,24 @@ elseif GAME_LOCALE == "deDE" then
 
 -- Ulduar
 -- Halls of Lightning
-		--["General Gjarngrin"] = true,
+		--["General Bjarngrim"] = true,
 		--["Ionar"] = true,
-		--["Kronus"] = true,
+		--["Loken"] = true,
 		--["Volkhan"] = true,
 -- Halls of Stone
 		--["Krystallus"] = true,
 		--["Maiden of Grief"] = true,
 		--["Sjonnir the Ironshaper"] = true,
+		--["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+		--["Cyanigosa"] = true,
+		--["Erekem"] = true,
+		--["Ichoron"] = true,
+		--["Lavanthor"] = true,
+		--["Moragg"] = true,
+		--["Xevozz"] = true,
+		--["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 		["Boahn"] = "Boahn",
@@ -1716,7 +1746,7 @@ elseif GAME_LOCALE == "deDE" then
 
 -- Zul'Drak
 -- Gundrak
-		--["Bloodstone Annihilator"] = true,
+		--["Drakkari Colossus"] = true,
 		--["Gal'darah"] = true,
 		--["Moorabi"] = true,
 		--["Slad'ran"] = true,
@@ -1911,7 +1941,7 @@ elseif GAME_LOCALE == "frFR" then
 		["Captain Skarloc"] = "Capitaine Skarloc",
 		["Epoch Hunter"] = "Chasseur d'époques",
 		["Lieutenant Drake"] = "Lieutenant Drake",
---Stratholme
+--The Culling of Stratholme
 		["Meathook"] = "Grancrochet",
 		["Chrono-Lord Epoch"] = "Chronoseigneur Epoch",
 		["Mal'Ganis"] = "Mal'Ganis",
@@ -1921,6 +1951,13 @@ elseif GAME_LOCALE == "frFR" then
 		["Chrono Lord Deja"] = "Chronoseigneur Déjà",
 		["Medivh"] = "Medivh",
 		["Temporus"] = "Temporus",
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+		--["Sartharion"] = true,
+		--["Shadron"] = true,
+		--["Tenebron"] = true,
+		--["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -1986,7 +2023,7 @@ elseif GAME_LOCALE == "frFR" then
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-		["Elder Nakox"] = "Ancien Nakox",
+		["Elder Nadox"] = "Ancien Nadox",
 		["Herald Volazj"]=  "Héraut Volazj",
 		["Jedoga Shadowseeker"] = "Jedoga Cherchelombre",
 		["Prince Taldaram"] = "Prince Taldaram",
@@ -1994,8 +2031,6 @@ elseif GAME_LOCALE == "frFR" then
 		["Anub'arak"] = "Anub'arak",
 		["Hadronox"] = "Hadronox",
 		["Krik'thir the Gatewatcher"] = "Krik'thir le Gardien de porte",
---Chamber of Aspects
---Naxxramas
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Faucheur de foule 9-60",
@@ -2362,14 +2397,24 @@ elseif GAME_LOCALE == "frFR" then
 
 -- Ulduar
 -- Halls of Lightning
-		["General Gjarngrin"] = "Général Gjarngrin",
+		["General Bjarngrim"] = "Général Bjarngrim",
 		["Ionar"] = "Ionar",
-		["Kronus"] = "Kronus",
+		["Loken"] = "Loken",
 		["Volkhan"] = "Volkhan",
 -- Halls of Stone
 		["Krystallus"] = "Krystallus",
 		["Maiden of Grief"] = "Damoiselle de peine",
 		["Sjonnir the Ironshaper"] = "Sjonnir le Sculptefer",
+		--["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+		--["Cyanigosa"] = true,
+		--["Erekem"] = true,
+		--["Ichoron"] = true,
+		--["Lavanthor"] = true,
+		--["Moragg"] = true,
+		--["Xevozz"] = true,
+		--["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 		["Boahn"] = "Boahn",
@@ -2432,7 +2477,7 @@ elseif GAME_LOCALE == "frFR" then
 
 -- Zul'Drak
 -- Gundrak
-		--["Bloodstone Annihilator"] = true,
+		["Drakkari Colossus"] = "Colosse drakkari",
 		["Gal'darah"] = "Gal'darah",
 		["Moorabi"] = "Moorabi",
 		["Slad'ran"] = "Slad'ran",
@@ -2627,7 +2672,7 @@ elseif GAME_LOCALE == "zhCN" then
 		["Captain Skarloc"] = "斯卡洛克上尉",
 		["Epoch Hunter"] = "时空猎手",
 		["Lieutenant Drake"] = "德拉克中尉",
---Stratholme
+--The Culling of Stratholme
 		--["Meathook"] = true,
 		--["Chrono-Lord Epoch"] = true,
 		--["Mal'Ganis"] = true,
@@ -2637,6 +2682,13 @@ elseif GAME_LOCALE == "zhCN" then
 		["Chrono Lord Deja"] = "时空领主德亚",
 		["Medivh"] = "麦迪文",
 		["Temporus"] = "坦普卢斯",
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+		--["Sartharion"] = true,
+		--["Shadron"] = true,
+		--["Tenebron"] = true,
+		--["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -2702,7 +2754,7 @@ elseif GAME_LOCALE == "zhCN" then
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-		--["Elder Nakox"] = true,
+		--["Elder Nadox"] = true,
 		--["Herald Volazj"]=  true,
 		--["Jedoga Shadowseeker"] = true,
 		--["Prince Taldaram"] = true,
@@ -2710,8 +2762,6 @@ elseif GAME_LOCALE == "zhCN" then
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
 		--["Krik'thir the Gatewatcher"] = true,
---Chamber of Aspects
---Naxxramas
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "群体打击者9-60",
@@ -2723,7 +2773,7 @@ elseif GAME_LOCALE == "zhCN" then
 		["Viscous Fallout"] = "粘性辐射尘",
 
 --Grizzly Hills
---Drak�tharon Keep
+--Draktharon Keep
 		--["King Dred"] = true,
 		--["Novos the Summoner"] = true,
 		--["The Prophet Tharon'ja"] = true,
@@ -3078,14 +3128,24 @@ elseif GAME_LOCALE == "zhCN" then
 
 -- Ulduar
 -- Halls of Lightning
-		--["General Gjarngrin"] = true,
+		--["General Bjarngrim"] = true,
 		--["Ionar"] = true,
-		--["Kronus"] = true,
+		--["Loken"] = true,
 		--["Volkhan"] = true,
 -- Halls of Stone
 		--["Krystallus"] = true,
 		--["Maiden of Grief"] = true,
 		--["Sjonnir the Ironshaper"] = true,
+		--["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+		--["Cyanigosa"] = true,
+		--["Erekem"] = true,
+		--["Ichoron"] = true,
+		--["Lavanthor"] = true,
+		--["Moragg"] = true,
+		--["Xevozz"] = true,
+		--["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 		["Boahn"] = "博艾恩",
@@ -3148,7 +3208,7 @@ elseif GAME_LOCALE == "zhCN" then
 
 -- Zul'Drak
 -- Gundrak
-		--["Bloodstone Annihilator"] = true,
+		--["Drakkari Colossus"] = true,
 		--["Gal'darah"] = true,
 		--["Moorabi"] = true,
 		--["Slad'ran"] = true,
@@ -3326,33 +3386,40 @@ elseif GAME_LOCALE == "zhTW" then
 
 --Borean Tundra
 --The Eye of Eternity
-		--["Malygos"] = true,
+		["Malygos"] = "瑪里苟斯",
 --The Nexus
-		--["Anomalus"] = true,
-		--["Grand Magus Telestra"] = true,
-		--["Keristrasza"] = true,
-		--["Ormorok the Tree-Shaper"] = true,
+		["Anomalus"] = "艾諾瑪路斯",
+		["Grand Magus Telestra"] = "大魔導師特雷斯翠",
+		["Keristrasza"] = "凱瑞史卓莎",
+		["Ormorok the Tree-Shaper"] = "『樹木造形者』歐爾莫洛克",
 --The Oculus
-		--["Drakos the Interrogator"] = true,
-		--["Ley-Guardian Eregos"] = true,
-		--["Mage-Lord Urom"] = true,
-		--["Varos Cloudstrider"] = true,
+		["Drakos the Interrogator"] = "『審問者』德拉高斯",
+		["Ley-Guardian Eregos"] = "地脈守護者伊瑞茍斯",
+		["Mage-Lord Urom"] = "法師領主厄隆",
+		["Varos Cloudstrider"] = "瓦羅斯·雲行者",
 
 --Caverns of Time
 --Old Hillsbrad Foothills
 		["Captain Skarloc"] = "史卡拉克上尉",
 		["Epoch Hunter"] = "紀元狩獵者",
 		["Lieutenant Drake"] = "中尉崔克",
---Stratholme
-		--["Meathook"] = true,
-		--["Chrono-Lord Epoch"] = true,
-		--["Mal'Ganis"] = true,
-		--["Salramm the Fleshcrafter"] = true,
+--The Culling of Stratholme
+		["Meathook"] = "肉鉤",
+		["Chrono-Lord Epoch"] = "紀元時間領主",
+		["Mal'Ganis"] = "瑪爾加尼斯",
+		["Salramm the Fleshcrafter"] = "『血肉工匠』塞歐朗姆",
 --The Black Morass
 		["Aeonus"] = "艾奧那斯",
 		["Chrono Lord Deja"] = "時間領主迪賈",
 		["Medivh"] = "麥迪文",
 		["Temporus"] = "坦普拉斯",
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+		--["Sartharion"] = true,
+		--["Shadron"] = true,
+		--["Tenebron"] = true,
+		--["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -3419,16 +3486,14 @@ elseif GAME_LOCALE == "zhTW" then
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-		--["Elder Nakox"] = true,
-		--["Herald Volazj"]=  true,
-		--["Jedoga Shadowseeker"] = true,
-		--["Prince Taldaram"] = true,
+		--["Elder Nadox"] = true,
+		["Herald Volazj"]=  "信使沃菈齊",
+		["Jedoga Shadowseeker"] = "潔杜佳·尋影者",
+		["Prince Taldaram"] = "泰爾達朗王子",
 --Azjol-Nerub
-		--["Anub'arak"] = true,
-		--["Hadronox"] = true,
-		--["Krik'thir the Gatewatcher"] = true,
---Chamber of Aspects
---Naxxramas
+		["Anub'arak"] = "阿努巴拉克",
+		["Hadronox"] = "哈卓諾克斯",
+		["Krik'thir the Gatewatcher"] = "『守門者』齊力克西爾",
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "群體打擊者9-60",
@@ -3440,11 +3505,11 @@ elseif GAME_LOCALE == "zhTW" then
 		["Viscous Fallout"] = "粘性輻射塵",
 
 --Grizzly Hills
---Drak�tharon Keep
-		--["King Dred"] = true,
-		--["Novos the Summoner"] = true,
-		--["The Prophet Tharon'ja"] = true,
-		--["Trollgore"] = true,
+--Draktharon Keep
+		["King Dred"] = "崔德國王",
+		["Novos the Summoner"] = "『召喚者』諾沃司",
+		["The Prophet Tharon'ja"] = "預言者薩隆杰",
+		["Trollgore"] = "血角食人妖",
 
 --Gruul's Lair
 		["Blindeye the Seer"] = "先知盲眼",
@@ -3477,15 +3542,15 @@ elseif GAME_LOCALE == "zhTW" then
 --Howling Fjord
 --Utgarde Keep
 		--["Constructor & Controller"] = true, --these are one encounter, so we do this as an encounter name
-		--["Dalronn the Controller"] = true,
-		--["Ingvar the Plunderer"] = true,
-		--["Prince Keleseth"] = true,
-		--["Skarvald the Constructor"] = true,
+		["Dalronn the Controller"] = "『控制者』達隆恩",
+		["Ingvar the Plunderer"] = "『盜掠者』因格瓦",
+		["Prince Keleseth"] = "凱雷希斯王子",
+		["Skarvald the Constructor"] = "『建造者』史卡沃",
 --Utgarde Pinnacle
-		--["Skadi the Ruthless"] = true,
-		--["King Ymiron"] = true,
-		--["Svala Sorrowgrave"] = true,
-		--["Gortok Palehoof"] = true,
+		["Skadi the Ruthless"] = "『無情』斯卡迪",
+		["King Ymiron"] = "依米倫國王",
+		["Svala Sorrowgrave"] = "司瓦拉禍害使者",
+		["Gortok Palehoof"] = "戈托克·白蹄",
 
 --Hyjal Summit
 		["Anetheron"] = "安納塞隆",
@@ -3795,14 +3860,24 @@ elseif GAME_LOCALE == "zhTW" then
 
 -- Ulduar
 -- Halls of Lightning
-		--["General Gjarngrin"] = true,
-		--["Ionar"] = true,
-		--["Kronus"] = true,
-		--["Volkhan"] = true,
+		["General Bjarngrim"] = "賈恩格林將軍",
+		["Ionar"] = "埃歐納",
+		["Loken"] = "克羅努斯",
+		["Volkhan"] = "渥克瀚",
 -- Halls of Stone
-		--["Krystallus"] = true,
-		--["Maiden of Grief"] = true,
-		--["Sjonnir the Ironshaper"] = true,
+		["Krystallus"] = "克利斯托魯斯",
+		["Maiden of Grief"] = "悲痛侍女",
+		["Sjonnir the Ironshaper"] = "『塑鐵者』斯雍尼爾",
+		--["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+		--["Cyanigosa"] = true,
+		--["Erekem"] = true,
+		--["Ichoron"] = true,
+		--["Lavanthor"] = true,
+		--["Moragg"] = true,
+		--["Xevozz"] = true,
+		--["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 		["Boahn"] = "博艾恩",
@@ -3865,10 +3940,10 @@ elseif GAME_LOCALE == "zhTW" then
 
 -- Zul'Drak
 -- Gundrak
-		--["Bloodstone Annihilator"] = true,
-		--["Gal'darah"] = true,
-		--["Moorabi"] = true,
-		--["Slad'ran"] = true,
+		--["Drakkari Colossus"] = true,
+		["Gal'darah"] = "蓋爾達拉",
+		["Moorabi"] = "慕拉比",
+		["Slad'ran"] = "史拉德銳",
 
 --Zul'Gurub
 		["Bloodlord Mandokir"] = "血領主曼多基爾",
@@ -4060,7 +4135,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Captain Skarloc"] = "경비대장 스칼록",
 		["Epoch Hunter"] = "시대의 사냥꾼",
 		["Lieutenant Drake"] = "부관 드레이크",
---Stratholme
+--The Culling of Stratholme
 		["Meathook"] = "살덩이고리",
 		["Chrono-Lord Epoch"] = "시간의 군주 에포크",
 		["Mal'Ganis"] = "말가니스",
@@ -4070,6 +4145,13 @@ elseif GAME_LOCALE == "koKR" then
 		["Chrono Lord Deja"] = "시간의 군주 데자",
 		["Medivh"] = "메디브",
 		["Temporus"] = "템퍼루스",
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+		--["Sartharion"] = true,
+		--["Shadron"] = true,
+		--["Tenebron"] = true,
+		--["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -4135,7 +4217,7 @@ elseif GAME_LOCALE == "koKR" then
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-		["Elder Nakox"] = "장로 나독스",
+		["Elder Nadox"] = "장로 나독스",
 		["Herald Volazj"]= "사자 볼라즈",
 		["Jedoga Shadowseeker"] = "어둠추적자 제도가",
 		["Prince Taldaram"] = "공작 탈다람",
@@ -4143,8 +4225,6 @@ elseif GAME_LOCALE == "koKR" then
 		["Anub'arak"] = "아눕아락",
 		["Hadronox"] = "하드로녹스",
 		["Krik'thir the Gatewatcher"] = "문지기 크릭시르",
---Chamber of Aspects
---Naxxramas
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "고철 압축기 9-60",
@@ -4156,7 +4236,7 @@ elseif GAME_LOCALE == "koKR" then
 		["Viscous Fallout"] = "방사성 폐기물",
 
 --Grizzly Hills
---Drak�tharon Keep
+--Draktharon Keep
 		["King Dred"] = "랩터왕 서슬발톱",
 		["Novos the Summoner"] = "소환사 노보스",
 		["The Prophet Tharon'ja"] = "예언자 타론자",
@@ -4511,14 +4591,24 @@ elseif GAME_LOCALE == "koKR" then
 
 -- Ulduar
 -- Halls of Lightning
-		["General Gjarngrin"] = "장군 야르그린",
+		["General Bjarngrim"] = "장군 야르그린",
 		["Ionar"] = "이오나",
-		["Kronus"] = "로켄",
+		["Loken"] = "로켄",
 		["Volkhan"] = "볼칸",
 -- Halls of Stone
 		["Krystallus"] = "크리스탈루스",
 		["Maiden of Grief"] = "고뇌의 여신",
 		["Sjonnir the Ironshaper"] = "무쇠구체자 쇼니르",
+		--["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+		--["Cyanigosa"] = true,
+		--["Erekem"] = true,
+		--["Ichoron"] = true,
+		--["Lavanthor"] = true,
+		--["Moragg"] = true,
+		--["Xevozz"] = true,
+		--["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 		["Boahn"] = "보안",
@@ -4581,7 +4671,7 @@ elseif GAME_LOCALE == "koKR" then
 
 -- Zul'Drak
 -- Gundrak
-		--["Bloodstone Annihilator"] = true,
+		--["Drakkari Colossus"] = true,
 		["Gal'darah"] = "갈다라",
 		["Moorabi"] = "무라비",
 		["Slad'ran"] = "슬라드란",
@@ -4776,7 +4866,7 @@ elseif GAME_LOCALE == "esES" then
 		["Captain Skarloc"] = "Capitán Skarloc",
 		["Epoch Hunter"] = "Cazador de eras",
 		["Lieutenant Drake"] = "Teniente Draco",
---Stratholme
+--The Culling of Stratholme
 		--["Meathook"] = true,
 		--["Chrono-Lord Epoch"] = true,
 		--["Mal'Ganis"] = true,
@@ -4786,6 +4876,13 @@ elseif GAME_LOCALE == "esES" then
 		["Chrono Lord Deja"] = "Cronolord Deja",
 		["Medivh"] = "Medivh",
 		["Temporus"] = "Temporus",
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+		--["Sartharion"] = true,
+		--["Shadron"] = true,
+		--["Tenebron"] = true,
+		--["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -4834,7 +4931,7 @@ elseif GAME_LOCALE == "esES" then
 		["Captain Kromcrush"] = "Capit\195\161n Kromcrush",
 		["Cho'Rush the Observer"] = "Cho'Rush el Observador",
 		["Guard Fengus"] = "Guardia Fengus",
-		["Guard Mol'dar"] = "	Guardia Mol'dar",
+		["Guard Mol'dar"] = "Guardia Mol'dar",
 		["Guard Slip'kik"] = "Guardia Slip'kik",
 		["King Gordok"] = "Rey Gordok",
 		["Knot Thimblejack's Cache"] = "Carretilla de Knot Llavededo",
@@ -4850,7 +4947,7 @@ elseif GAME_LOCALE == "esES" then
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-		--["Elder Nakox"] = true,
+		--["Elder Nadox"] = true,
 		--["Herald Volazj"]=  true,
 		--["Jedoga Shadowseeker"] = true,
 		--["Prince Taldaram"] = true,
@@ -4858,8 +4955,6 @@ elseif GAME_LOCALE == "esES" then
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
 		--["Krik'thir the Gatewatcher"] = true,
---Chamber of Aspects
---Naxxramas
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Gopleamasa 9-60",
@@ -4871,7 +4966,7 @@ elseif GAME_LOCALE == "esES" then
 		["Viscous Fallout"] = "Radiactivo viscoso",
 
 --Grizzly Hills
---Drak�tharon Keep
+--Draktharon Keep
 		--["King Dred"] = true,
 		--["Novos the Summoner"] = true,
 		--["The Prophet Tharon'ja"] = true,
@@ -5224,14 +5319,24 @@ elseif GAME_LOCALE == "esES" then
 
 -- Ulduar
 -- Halls of Lightning
-		--["General Gjarngrin"] = true,
+		--["General Bjarngrim"] = true,
 		--["Ionar"] = true,
-		--["Kronus"] = true,
+		--["Loken"] = true,
 		--["Volkhan"] = true,
 -- Halls of Stone
 		--["Krystallus"] = true,
 		--["Maiden of Grief"] = true,
 		--["Sjonnir the Ironshaper"] = true,
+		--["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+		--["Cyanigosa"] = true,
+		--["Erekem"] = true,
+		--["Ichoron"] = true,
+		--["Lavanthor"] = true,
+		--["Moragg"] = true,
+		--["Xevozz"] = true,
+		--["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 		["Boahn"] = "Boahn",
@@ -5294,7 +5399,7 @@ elseif GAME_LOCALE == "esES" then
 
 -- Zul'Drak
 -- Gundrak
-		--["Bloodstone Annihilator"] = true,
+		--["Drakkari Colossus"] = true,
 		--["Gal'darah"] = true,
 		--["Moorabi"] = true,
 		--["Slad'ran"] = true,
@@ -5490,7 +5595,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Captain Skarloc"] = "Капитан Скарлок",
 		["Epoch Hunter"] = "Охотник Вечности",
 		["Lieutenant Drake"] = "Лейтенант Дрейк",
---Stratholme
+--The Culling of Stratholme
 		--["Meathook"] = true,
 		--["Chrono-Lord Epoch"] = true,
 		--["Mal'Ganis"] = true,
@@ -5500,6 +5605,13 @@ elseif GAME_LOCALE == "ruRU" then
 		["Chrono Lord Deja"] = "Повелитель времени Дежа",
 		["Medivh"] = "Медив",
 		["Temporus"] = "Темпорус",
+
+--Chamber of Aspects
+--The Obsidian Sanctum
+		--["Sartharion"] = true,
+		--["Shadron"] = true,
+		--["Tenebron"] = true,
+		--["Vesperon"] = true,
 
 --Coilfang Reservoir
 --Serpentshrine Cavern
@@ -5565,7 +5677,7 @@ elseif GAME_LOCALE == "ruRU" then
 
 --Dragonblight
 -- Ahn'kahet: The Old Kingdom
-		--["Elder Nakox"] = true,
+		--["Elder Nadox"] = true,
 		--["Herald Volazj"]=  true,
 		--["Jedoga Shadowseeker"] = true,
 		--["Prince Taldaram"] = true,
@@ -5573,8 +5685,6 @@ elseif GAME_LOCALE == "ruRU" then
 		--["Anub'arak"] = true,
 		--["Hadronox"] = true,
 		--["Krik'thir the Gatewatcher"] = true,
---Chamber of Aspects
---Naxxramas
 
 --Gnomeregan
 		["Crowd Pummeler 9-60"] = "Толпогон 9-60",
@@ -5586,7 +5696,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Viscous Fallout"] = "Липкая муть",
 
 --Grizzly Hills
---Drak�tharon Keep
+--Draktharon Keep
 		--["King Dred"] = true,
 		--["Novos the Summoner"] = true,
 		--["The Prophet Tharon'ja"] = true,
@@ -5943,14 +6053,24 @@ elseif GAME_LOCALE == "ruRU" then
 
 -- Ulduar
 -- Halls of Lightning
-		--["General Gjarngrin"] = true,
+		--["General Bjarngrim"] = true,
 		--["Ionar"] = true,
-		--["Kronus"] = true,
+		--["Loken"] = true,
 		--["Volkhan"] = true,
 -- Halls of Stone
 		--["Krystallus"] = true,
 		--["Maiden of Grief"] = true,
 		--["Sjonnir the Ironshaper"] = true,
+		--["The Tribunal of Ages"] = true,
+
+-- The Violet Hold
+		--["Cyanigosa"] = true,
+		--["Erekem"] = true,
+		--["Ichoron"] = true,
+		--["Lavanthor"] = true,
+		--["Moragg"] = true,
+		--["Xevozz"] = true,
+		--["Zuramat the Obliterator"] = true,
 
 --Wailing Caverns
 		["Boahn"] = "Боан",
@@ -6013,7 +6133,7 @@ elseif GAME_LOCALE == "ruRU" then
 
 -- Zul'Drak
 -- Gundrak
-		--["Bloodstone Annihilator"] = true,
+		--["Drakkari Colossus"] = true,
 		--["Gal'darah"] = true,
 		--["Moorabi"] = true,
 		--["Slad'ran"] = true,

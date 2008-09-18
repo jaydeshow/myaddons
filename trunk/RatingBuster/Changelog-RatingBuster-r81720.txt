@@ -1,4 +1,34 @@
 ------------------------------------------------------------------------
+r81720 | whitetooth | 2008-09-14 08:14:02 -0400 (Sun, 14 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: 
+- StatSummary: Added Ranged Hit Chance, Ranged Hit Rating, Ranged Haste, Ranged Haste Rating
+------------------------------------------------------------------------
+r81712 | whitetooth | 2008-09-14 06:39:28 -0400 (Sun, 14 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
+
+RatingBuster: Fixed locale error
+------------------------------------------------------------------------
+r81708 | whitetooth | 2008-09-14 05:24:11 -0400 (Sun, 14 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster:
+- Removed test code in options table
+- StatSummary: Added Ranged Crit Chance, and Ranged Crit Rating
+------------------------------------------------------------------------
+r81644 | whitetooth | 2008-09-12 09:35:18 -0400 (Fri, 12 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster/RatingBuster.lua
+
+RatingBuster: Support for Armor Penetration Rating
+------------------------------------------------------------------------
 r81546 | whitetooth | 2008-09-08 13:31:15 -0400 (Mon, 08 Sep 2008) | 1 line
 Changed paths:
    M /trunk/RatingBuster/RatingBuster-Locale-enUS.lua
@@ -134,18 +164,4 @@ Changed paths:
    M /trunk/RatingBuster/RatingBuster.toc
 
 RatingBuster: added ruRU (credit by Orsana)
-------------------------------------------------------------------------
-r79946 | whitetooth | 2008-08-08 02:48:43 -0400 (Fri, 08 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/RatingBuster/RatingBuster.lua
-
-RatingBuster: 
-- WotLK: Fixed errors for the Death Knight class
-------------------------------------------------------------------------
-r79938 | whitetooth | 2008-08-07 23:52:17 -0400 (Thu, 07 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/RatingBuster/UTF8/utf8.lua
-
-RatingBuster: 
-- WotLK: Fixed UTF8 error
 ------------------------------------------------------------------------

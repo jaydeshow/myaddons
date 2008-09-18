@@ -224,6 +224,36 @@ NL["Sporefish School"] = true
 NL["Steam Pump Flotsam"] = true 
 NL["School of Tastyfish"] = true
 
+NL["Borean Man O' War School"] = true
+NL["Deep Sea Monsterbelly School"] = true
+NL["Dragonfin Angelfish School"] = true
+NL["Fangtooth Herring School"] = true
+NL["Floating Wreckage Pool"] = true
+NL["Glacial Salmon School"] = true
+NL["Glassfin Minnow School"] = true
+NL["Imperial Manta Ray School"] = true
+NL["Moonglow Cuttlefish School"] = true
+NL["Musselback Sculpin School"] = true
+NL["Nettlefish School"] = true
+NL["Strange Pool"] = true
+NL["Schooner Wreckage"] = true
+NL["Waterlogged Wreckage"] = true
+NL["Bloodsail Wreckage"] = true
+NL["Lesser Sagefish School"] = true
+NL["Lesser Oily Blackmouth School"] = true
+NL["Sparse Oily Blackmouth School"] = true
+NL["Abundant Oily Blackmouth School"] = true
+NL["Teeming Oily Blackmouth School"] = true
+NL["Lesser Firefin Snapper School"] = true
+NL["Sparse Firefin Snapper School"] = true
+NL["Abundant Firefin Snapper School"] = true
+NL["Teeming Firefin Snapper School"] = true
+NL["Lesser Floating Debris"] = true
+NL["Sparse Schooner Wreckage"] = true
+NL["Abundant Bloodsail Wreckage"] = true
+NL["Teeming Floating Wreckage"] = true
+
+
 -- mine nodes
 NL["Copper Vein"] = true
 NL["Tin Vein"] = true
@@ -316,7 +346,8 @@ NL["Icethorn"] = true
 NL["Lichbloom"] = true
 NL["Talandra's Rose"] = true
 NL["Tiger Lily"] = true
-
+NL["Firethorn"] = true
+NL["Frozen Herb"] = true
 -- Treasure
 NL["Giant Clam"] = true
 NL["Battered Chest"] = true

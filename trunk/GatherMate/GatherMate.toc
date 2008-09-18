@@ -5,6 +5,7 @@
 ## Notes-koKR: 약초, 광맥, 가스, 낚시 위치를 저장하여 월드맵과 미니맵에 표시합니다.
 ## Title: GatherMate
 ## Author: kagaro, Xinhuan, Ammo, Nevcairiel
+## X-Email: sal.scotto@gmail.com
 ## X-Credits: OttoDeFe for the launher icon.
 ## SavedVariables: GatherMateDB, GatherMateHerbDB, GatherMateMineDB, GatherMateFishDB, GatherMateGasDB, GatherMateTreasureDB
 ## X-Category: Map

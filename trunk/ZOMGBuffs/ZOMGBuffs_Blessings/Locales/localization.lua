@@ -58,6 +58,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Reset default position of exception icon anchor"]	= true,
 	["%s blacklisted for 10 seconds"]					= true,
 	["You can no longer do certain buffs as defined in your template, these have been replaced."] = true,
+	["Removed obsolete (pre Lich King) buffs from your template."] = true,
 	["Replaced %s with %s"]								= true,
 	["Removed %s"]										= true,
 } end)

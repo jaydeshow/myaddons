@@ -37,7 +37,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	encaps = "Encapsulate",
 	encaps_desc = "Warn who has Encapsulate.",
-	encaps_warning = "Encapsulate in ~5 Seconds!",
+	encaps_warning = "Encapsulate in ~5sec!",
 	encaps_message = "Encapsulate: %s",
 
 	gas = "Gas Nova",
@@ -57,9 +57,9 @@ L:RegisterTranslations("enUS", function() return {
 	phase_desc = "Warn for takeoff and landing phases.",
 	airphase_trigger = "I am stronger than ever before!",
 	takeoff_bar = "Takeoff",
-	takeoff_message = "Taking off in 5 Seconds!",
+	takeoff_message = "Taking off in 5sec!",
 	landing_bar = "Landing",
-	landing_message = "Landing in 10 Seconds!",
+	landing_message = "Landing in 10sec!",
 
 	breath = "Deep Breath",
 	breath_desc = "Deep Breath warnings.",
@@ -355,7 +355,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.guid = 25038
 mod.toggleoptions = {"phase", "breath", "vapor", "icon", -1, "encaps", "gas", "dispel", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 81525 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81774 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) 
 	for k, v in pairs( bandages ) do
 		if IsItemInRange( k, unit) == 1 then

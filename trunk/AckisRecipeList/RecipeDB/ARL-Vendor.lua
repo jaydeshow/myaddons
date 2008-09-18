@@ -4,8 +4,8 @@ ARL-Vendor.lua
 
 Vendor data for all of AckisRecipeList
 
-$Date: 2008-09-02 23:47:35 -0400 (Tue, 02 Sep 2008) $
-$Rev: 81304 $
+$Date: 2008-09-15 13:22:49 -0400 (Mon, 15 Sep 2008) $
+$Rev: 81746 $
 
 ]]--
 
@@ -128,7 +128,7 @@ function addon:InitVendor()
 	self:addVendorList(109, L["Blixrez Goodstitch"], BFAC["Neutral"], BZONE["Stranglethorn Vale"], "28, 77")
 	self:addVendorList(110, L["Christoph Jeffcoat"], BFAC["Horde"], BZONE["Hillsbrad Foothills"], "62, 19")
 	self:addVendorList(111, L["Hammon Karwn"], BFAC["Alliance"], BZONE["Arathi Highlands"], "46, 47")
-	self:addVendorList(112, L["Jandia"], BFAC["Horde"], BZONE["Thousand Needles"], "46, 55")
+	self:addVendorList(112, L["Jandia"], BFAC["Horde"], BZONE["Thousand Needles"], "46, 51")
 	self:addVendorList(113, L["Keena"], BFAC["Horde"], BZONE["Arathi Highlands"], "74.1, 32.7")
 	self:addVendorList(114, L["Lardan"], BFAC["Alliance"], BZONE["Ashenvale"], "34, 49")
 	self:addVendorList(115, L["Rikqiz"], BFAC["Neutral"], BZONE["Stranglethorn Vale"], "28, 76")

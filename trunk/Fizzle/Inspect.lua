@@ -74,6 +74,7 @@ function mod:UpdateBorders()
 	if not self:IsHooked("InspectFrame_UnitChanged") then
 		self:SecureHook("InspectFrame_UnitChanged", "UpdateBorders")
 	end
+	self:RegisterEvent("UNIT_INVENTORY_CHANGED", "UpdateBorders")
 	for _, item in ipairs(slots) do
 		local id
 		if _G["Character".. item .."Slot"] then
@@ -124,4 +125,5 @@ end
 
 function mod:InspectFrame_OnHide()
 	self:Unhook("InspectFrame_UnitChanged")
+	self:UnregisterEvent("UNIT_INVENTORY_CHANGED")
 end

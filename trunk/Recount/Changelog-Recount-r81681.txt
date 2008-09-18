@@ -1,4 +1,30 @@
 ------------------------------------------------------------------------
+r81681 | ananhaid | 2008-09-13 09:08:12 -0400 (Sat, 13 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/Recount/locales/Recount-zhCN.lua
+
+Recount:
+- zhCN update.(Is not obvious for current version)
+------------------------------------------------------------------------
+r81640 | elsia | 2008-09-12 06:08:35 -0400 (Fri, 12 Sep 2008) | 5 lines
+Changed paths:
+   M /trunk/Recount/Recount.lua
+   M /trunk/Recount/Recount_Modes.lua
+   M /trunk/Recount/Tracker.lua
+
+Recount:
+- Removed old commented out debug code
+- Added WotLK Runic Power support as data mode.
+- Temorarily removed overkill removal from killing blows to allow damage cycle tests on small target dummies in Dalaran to work as expected on WotLK beta.
+
+------------------------------------------------------------------------
+r81639 | elsia | 2008-09-12 06:07:30 -0400 (Fri, 12 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/Recount/locales/Recount-enUS.lua
+
+Recount:
+- Added locales and fised inconsistent EOL style.
+------------------------------------------------------------------------
 r81569 | ananhaid | 2008-09-09 08:06:32 -0400 (Tue, 09 Sep 2008) | 2 lines
 Changed paths:
    M /trunk/Recount/locales/Recount-zhCN.lua

@@ -1,7 +1,7 @@
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale( "Recount" )
 
-local revision = tonumber(string.sub("$Revision: 81548 $", 12, -3))
+local revision = tonumber(string.sub("$Revision: 81640 $", 12, -3))
 if Recount.Version < revision then Recount.Version = revision end
 
 local _, _, _, tocversion =  GetBuildInfo()
@@ -301,7 +301,7 @@ end
 if tocversion == 30000 then
 function Recount:SpellDamage(timestamp, eventtype, srcGUID, srcName, srcFlags, dstGUID, dstName, dstFlags,spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
 
-	amount = amount - overkill -- Taking out overdamage on killing blows
+--	amount = amount - overkill -- Taking out overdamage on killing blows
 
 	local HitType=L["Hit"]
 	if critical then
@@ -2257,6 +2257,10 @@ function Recount:AddGain(source, victim, ability, amount, attribute,srcGUID,srcF
 		DataAmount="RageGain"
 		DataTable="RageGained"
 		DataTable2="RageGainedFrom"
+	elseif attribute=="Runic Power" then
+		DataAmount="RunicPowerGain"
+		DataTable="RunicPowerGained"
+		DataTable2="RunicPowerGainedFrom"
 	else
 		Recount:CheckRetention(source)
 		Recount:CheckRetention(victim)

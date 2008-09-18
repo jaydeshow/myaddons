@@ -385,3 +385,6 @@ if not L then return end
 	L["Show Death Track (Left Click)"]=true
 	L[" dies."]=true
 	
+	L["Runic Power Gained"]=true
+	L["RunicPower Abilities"]=true
+	L["RunicPower Sources"]=true

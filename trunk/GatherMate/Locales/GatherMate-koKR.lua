@@ -274,7 +274,8 @@ NL["Icethorn"] = true
 NL["Lichbloom"] = true
 NL["Talandra's Rose"] = true
 NL["Tiger Lily"] = true
-
+NL["Firethorn"] = true
+NL["Frozen Herb"] = true
 -- Treasure
 NL["Giant Clam"] = "대합"
 NL["Battered Chest"] = "낡은 궤짝"

@@ -1,8 +1,8 @@
 ﻿--[[
 ************************************************************************
 AckisRecipeList
-$Date: 2008-09-03 23:32:22 -0400 (Wed, 03 Sep 2008) $
-$Rev: 81332 $
+$Date: 2008-09-18 00:30:26 -0400 (Thu, 18 Sep 2008) $
+$Rev: 81825 $
 
 Author: Ackis on Illidan US Horde
 GUI done by Zhinjio
@@ -2681,11 +2681,11 @@ function addon:AckisRecipeList_Command()
 	-- Sort the recipe list now
 	local sorttype = addon.db.profile.sorting
 
-	if (sorttype == "Skill") then
+	if (sorttype == L["Skill"]) then
 		self:SortMissingRecipes(SortMissingSkill)
-	elseif (sorttype == "Name") then
+	elseif (sorttype == L["Name"]) then
 		self:SortMissingRecipes(SortMissingName)
-	elseif (sorttype == "Acquisition") then
+	elseif (sorttype == L["Acquisition"]) then
 		self:SortMissingRecipes(SortMissingAcquisition)
 	end
 
@@ -2779,11 +2779,11 @@ function addon:TextDump()
 	-- Sort the recipe list now
 	local sorttype = addon.db.profile.sorting
 
-	if (sorttype == "Skill") then
+	if (sorttype == L["Skill"]) then
 		self:SortMissingRecipes(SortMissingSkill)
-	elseif (sorttype == "Name") then
+	elseif (sorttype == L["Name"]) then
 		self:SortMissingRecipes(SortMissingName)
-	elseif (sorttype == "Acquisition") then
+	elseif (sorttype == L["Acquisition"]) then
 		self:SortMissingRecipes(SortMissingAcquisition)
 	end
 

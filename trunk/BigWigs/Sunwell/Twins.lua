@@ -33,7 +33,7 @@ L:RegisterTranslations("enUS", function() return {
 	conflag_desc = "Warn for Conflagration being cast.",
 	conflag_message = "Conflag on %s",
 	conflag_you = "Conflag on YOU!",
-	conflag_bar = "Next Conflag",
+	conflag_bar = "Conflag",
 
 	icon = "Raid Icon",
 	icon_desc = "Place a Raid Target Icon on the player that Shadow Nova and Conflagration is being cast on.",
@@ -45,11 +45,11 @@ L:RegisterTranslations("enUS", function() return {
 
 	blow = "Confounding Blow",
 	blow_desc = "Show a timer bar for Confounding Blow.",
-	blow_bar = "Next Blow",
+	blow_bar = "Confounding Blow",
 
 	blades = "Shadow Blades",
 	blades_desc = "Show a timer bar for Shadow Blades.",
-	blades_bar = "Next Blades",
+	blades_bar = "Shadow Blades",
 } end )
 
 L:RegisterTranslations("esES", function() return {
@@ -95,7 +95,7 @@ L:RegisterTranslations("frFR", function() return {
 	conflag_desc = "Prévient quand une Déflagration est incantée.",
 	conflag_message = "Déflagration sur %s",
 	conflag_you = "Déflagration sur VOUS !",
-	conflag_bar = "Prochaine Déflagration",
+	conflag_bar = "Déflagration",
 
 	icon = "Icône",
 	icon_desc = "Place une icône de raid sur le dernier joueur sur lequel Nova de l'ombre ou Déflagration est incantée.",
@@ -107,11 +107,11 @@ L:RegisterTranslations("frFR", function() return {
 
 	blow = "Coup déconcertant",
 	blow_desc = "Affiche une barre temporelle pour le Coup déconcertant.",
-	blow_bar = "Prochain Coup",
+	blow_bar = "Coup déconcertant",
 
 	blades = "Lames de l'ombre",
 	blades_desc = "Affiche une barre temporelle pour les Lames de l'ombre.",
-	blades_bar = "Prochaines Lames",
+	blades_bar = "Lames de l'ombre",
 } end )
 
 L:RegisterTranslations("koKR", function() return {
@@ -278,7 +278,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = {lady, lock, boss}
 mod.guid = 25166
 mod.toggleoptions = {"nova", "conflag", "icon", -1, "pyro", -1, "blow", "blades", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 81072 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81813 $"):sub(12, -3))
 mod.proximityCheck = function( unit ) return CheckInteractDistance( unit, 3 ) end
 mod.proximitySilent = true
 

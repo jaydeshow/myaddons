@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Gas-2.2
-Revision: $Rev: 79351 $
+Revision: $Rev: 81809 $
 Authors(s): hyperactiveChipmunk (hyperactiveChipmunk@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Gas-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Gas-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79351 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 81809 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -165,11 +165,11 @@ BabbleGas:RegisterTranslations("deDE", function() return {
 -- Translator: StingerSoft
 BabbleGas:RegisterTranslations("ruRU", function() return {
 -- Motes
-	["Mote of Air"] = "Мощь Воздуха",
-	["Mote of Life"] = "Мощь Жизни",
-	["Mote of Mana"] = "Мощь Маны",
-	["Mote of Shadow"] = "Мощь Тени",
-	["Mote of Water"] = "Мощь Воды",
+	["Mote of Air"] = "Частичка Воздуха",
+	["Mote of Life"] = "Частичка Жизни",
+	["Mote of Mana"] = "Частичка Маны",
+	["Mote of Shadow"] = "Частичка Тьмы",
+	["Mote of Water"] = "Частичка Воды",
 -- Types
 	["Air"] = "Воздух",
 	["Life"] = "Жизнь",
@@ -177,9 +177,9 @@ BabbleGas:RegisterTranslations("ruRU", function() return {
 	["Shadow"] = "Тень",
 	["Water"] = "Вода",
 -- Nodes
-	["Windy Cloud"] = "Ветренное облако",
+	["Windy Cloud"] = "Грозовое облако",
 	["Swamp Gas"] = "Болотный газ",
-	["Arcane Vortex"] = "Магический вихрь",
+	["Arcane Vortex"] = "Волбшебное завихрение",
 	["Felmist"] = "Туман Скверны",
 } end)
 

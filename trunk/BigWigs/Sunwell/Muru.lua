@@ -22,17 +22,17 @@ L:RegisterTranslations("enUS", function() return {
 	darkness = "Darkness",
 	darkness_desc = "Warn who has Darkness.",
 	darkness_message = "Darkness: %s",
-	darkness_next = "Next Darkness",
+	darkness_next = "Darkness",
 	darkness_soon = "Darkness in 5sec!",
 
 	void = "Void Sentinel",
 	void_desc = "Warn when the Void Sentinel spawns.",
-	void_next = "Next Void Sentinel (%d)",
-	void_soon = "Sentinel (%d) in 5 sec!",
+	void_next = "Sentinel (%d)",
+	void_soon = "Sentinel (%d) in 5sec!",
 
 	humanoid = "Humanoid Adds",
 	humanoid_desc = "Warn when the Humanoid Adds spawn.",
-	humanoid_next = "Next Humanoids (%d)",
+	humanoid_next = "Humanoids (%d)",
 	humanoid_soon = "Humanoids (%d) in 5sec!",
 
 	fiends = "Dark Fiends",
@@ -45,7 +45,7 @@ L:RegisterTranslations("enUS", function() return {
 
 	gravity = "Gravity Balls",
 	gravity_desc = "Warn for Gravity Balls.",
-	gravity_next = "Next Gravity Ball Timer",
+	gravity_next = "Gravity Ball",
 	gravity_soon = "Gravity Ball soon!",
 	gravity_spawned = "Gravity Ball spawned!",
 } end )
@@ -86,17 +86,17 @@ L:RegisterTranslations("frFR", function() return {
 	darkness = "Ténèbres",
 	darkness_desc = "Prévient quand quelqu'un subit les effets des Ténèbres.",
 	darkness_message = "Ténèbres : %s",
-	darkness_next = "Prochaines Ténèbres",
+	darkness_next = "Ténèbres",
 	darkness_soon = "Ténèbres dans 5 sec. !",
 
 	void = "Sentinelles du Vide",
 	void_desc = "Prévient quand les Sentinelles du Vide apparaissent.",
-	void_next = "Prochaine Sentinelle (%d)",
+	void_next = "Sentinelle (%d)",
 	void_soon = "Sentinelle (%d) dans 5 sec. !",
 
 	humanoid = "Renforts humanoïdes",
 	humanoid_desc = "Prévient quand les renforts humanoïdes apparaissent.",
-	humanoid_next = "Prochains humanoïdes (%d)",
+	humanoid_next = "Humanoïdes (%d)",
 	humanoid_soon = "Humanoïdes (%d) dans 5 sec. !",
 
 	fiends = "Sombres fiels",
@@ -109,7 +109,7 @@ L:RegisterTranslations("frFR", function() return {
 
 	gravity = "Singularité",
 	gravity_desc = "Prévient de l'arrivée des Singularités.",
-	gravity_next = "Prochaine Singularité",
+	gravity_next = "Singularité",
 	gravity_soon = "Singularité imminente !",
 	gravity_spawned = "Singularité apparue !",
 } end )
@@ -239,7 +239,7 @@ L:RegisterTranslations("deDE", function() return {
 	gravity_desc = "Warnung wann die Schwerkraftkugel erscheint.",
 	gravity_next = "Nächste Schwerkraftkugel",
 	gravity_soon = "Schwerkraftkugel bald!",
-	--gravity_spawned = "Schwerkraftkugel spawned!",
+	gravity_spawned = "Schwerkraftkugel erschienen!",
 } end )
 
 L:RegisterTranslations("ruRU", function() return {
@@ -283,7 +283,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.guid = 25840
 mod.toggleoptions = {"phase", -1, "darkness", "void", "humanoid", "fiends", "gravity", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 81072 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81813 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

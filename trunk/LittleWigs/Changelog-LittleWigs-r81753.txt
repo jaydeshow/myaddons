@@ -1,0 +1,56 @@
+------------------------------------------------------------------------
+r81753 | ulic | 2008-09-15 17:15:08 -0400 (Mon, 15 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/LittleWigs.toc
+
+LittleWigs: Added e-mail to .toc file
+------------------------------------------------------------------------
+r81415 | ulic | 2008-09-05 13:49:41 -0400 (Fri, 05 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Dalliah.lua
+   M /trunk/LittleWigs/TempestKeep/Skyriss.lua
+   M /trunk/LittleWigs/TempestKeep/Zereketh.lua
+
+LittleWigs: TK- added some missing spellIds
+------------------------------------------------------------------------
+r80911 | ulic | 2008-08-24 19:31:14 -0400 (Sun, 24 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/CoT/BlackMorass.lua
+
+LittleWigs: CoT/BlackMorass- Only show multiple waves bar on non-boss waves.
+------------------------------------------------------------------------
+r80883 | ananhaid | 2008-08-24 05:18:19 -0400 (Sun, 24 Aug 2008) | 4 lines
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Sarannis.lua
+   M /trunk/LittleWigs/TempestKeep/Splinter.lua
+
+LittleWigs: 
+- TempestKeep zhCN update.
+
+
+------------------------------------------------------------------------
+r80764 | 7destiny | 2008-08-21 06:45:45 -0400 (Thu, 21 Aug 2008) | 1 line
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Splinter.lua
+
+LittleWigs: koKR Update
+------------------------------------------------------------------------
+r80759 | 7destiny | 2008-08-21 02:51:31 -0400 (Thu, 21 Aug 2008) | 3 lines
+Changed paths:
+   M /trunk/LittleWigs/TempestKeep/Freywinn.lua
+   M /trunk/LittleWigs/TempestKeep/LittleWigs_TempestKeep.toc
+   A /trunk/LittleWigs/TempestKeep/Sarannis.lua
+   A /trunk/LittleWigs/TempestKeep/Splinter.lua
+   M /trunk/LittleWigs/modules.xml
+
+LittleWigs: TempestKeep:
+- Freywinn: fix Tranq spellID
+- added Sarannis & Splinter
+------------------------------------------------------------------------
+r80524 | 7destiny | 2008-08-16 03:08:41 -0400 (Sat, 16 Aug 2008) | 2 lines
+Changed paths:
+   M /trunk/LittleWigs/MagistersTerrace/Kael'thasSunstrider.lua
+
+LittleWigs: MT/Kael'thasSunstrider:
+- koKR Update
+------------------------------------------------------------------------

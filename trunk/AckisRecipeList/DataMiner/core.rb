@@ -1,7 +1,12 @@
 # Helper mixin to convert json to ruby objects
 module JsonHelper
   def from_json(json)
-    return eval(json.gsub(/(\w*)(\:)\s*([-_'a-z"0-9tfn\[{])/,'\2\1=>\3'))
+    begin
+      return eval(json.gsub(/(\w*)(\:)\s*([-_'a-z"0-9tfn\[{])/,'\2\1=>\3'))
+    rescue Exception => excep
+      puts "#{json} was bad #{excep}"
+      return nil
+    end
   end
 end
 # Lua serializer helper
@@ -17,6 +22,7 @@ end
 # Mixings to Array and Hash to serialize to lua
 class Array
   include LuaHelper
+  include Enumerable
   def to_lua(depth=1)
     result = "{"
     each {|v|
@@ -35,6 +41,7 @@ class Array
 end
 class Hash
   include LuaHelper
+  include Enumerable
   def to_lua(depth=1)
     # code here to generate lua out
     result = ("\t" * depth) +"{\n"

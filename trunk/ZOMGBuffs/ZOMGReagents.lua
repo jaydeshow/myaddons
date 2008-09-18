@@ -20,6 +20,7 @@ R:RegisterTranslations("enUS", function() return {
 	["Wild Berries"]			= true,
 	["Wild Quillvine"]			= true,
 	["Wild Thornroot"]			= true,
+	["Corpse Dust"]				= true,
 } end)
 
 R:RegisterTranslations("deDE", function() return{
@@ -42,6 +43,7 @@ R:RegisterTranslations("deDE", function() return{
 	["Wild Berries"]			= "Wilde Beeren",
 	["Wild Quillvine"]			= "Wilde Federranke",
 	["Wild Thornroot"]			= "Wilder Dornwurz",
+--	["Corpse Dust"]				= true,
 } end)
 
 R:RegisterTranslations("frFR", function() return{
@@ -64,6 +66,7 @@ R:RegisterTranslations("frFR", function() return{
 	["Wild Berries"]			= "Baie sauvage",
 	["Wild Quillvine"]			= "Vigneplume sauvage",
 	["Wild Thornroot"]			= "Ronceterre sauvage",
+--	["Corpse Dust"]				= true,
 } end)
 
 R:RegisterTranslations("esES", function() return{
@@ -86,6 +89,7 @@ R:RegisterTranslations("esES", function() return{
 	["Wild Berries"]			= "Frutos silvestres",
 	["Wild Quillvine"]			= "Videpluma salvaje",
 	["Wild Thornroot"]			= "Raíz de espina salvaje",
+--	["Corpse Dust"]				= true,
 } end)
 
 R:RegisterTranslations("zhCN", function() return{
@@ -108,6 +112,7 @@ R:RegisterTranslations("zhCN", function() return{
 	["Wild Berries"]			= "野生漿果",
 	["Wild Quillvine"]			= "野生刺藤",
 	["Wild Thornroot"]			= "野生棘根草",
+--	["Corpse Dust"]				= true,
 } end)
 
 R:RegisterTranslations("zhTW", function() return{
@@ -130,6 +135,7 @@ R:RegisterTranslations("zhTW", function() return{
 	["Wild Berries"]			= "野性漿果",
 	["Wild Quillvine"]			= "野生羽蔓",
 	["Wild Thornroot"]			= "野生棘根草",
+--	["Corpse Dust"]				= true,
 } end)
 
 R:RegisterTranslations("koKR", function() return {
@@ -152,6 +158,30 @@ R:RegisterTranslations("koKR", function() return {
 	["Wild Berries"]			= "야생 가지",
 	["Wild Quillvine"]			= "야생 가시덩굴",
 	["Wild Thornroot"]			= "야생 가시",
+--	["Corpse Dust"]				= true,
+} end )
+
+R:RegisterTranslations("ruRU", function() return{
+	["Ankh"]					= "Крест",
+	["Arcane Powder"]			= "Порошок чар",
+	["Flash Powder"]			= "Воспламеняющийся порошок",
+	["Maple Seed"]				= "Семена клена",
+	["Stranglethorn Seed"]		= "Семена из Тернистой долины",
+	["Ashwood Seed"]			= "Семена ясеня",
+	["Hornbeam Seed"]			= "Семена граба",
+	["Ironwood Seed"]			= "Семена железного дерева",
+	["Flintweed Seed"]			= "Семена кремень-травы",
+	["Holy Candle"]				= "Святая свеча",
+	["Rune of Portals"]			= "Руна порталов",
+	["Rune of Teleportation"]	= "Руна телепортации",
+	["Sacred Candle"]			= "Священная свеча",
+	["Soul Shard"]				= "Осколок души",
+	["Symbol of Divinity"]		= "Символ божественности",
+	["Symbol of Kings"]			= "Символ королей",
+	["Wild Berries"]			= "Лесные ягоды",
+	["Wild Quillvine"]			= "Дикая перьелоза",
+	["Wild Thornroot"]			= "Дикий шипокорень",
+--	["Corpse Dust"]				= true,
 } end )
 
 R = nil

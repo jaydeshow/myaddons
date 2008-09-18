@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 81561 $
+Revision: $Revision: 81722 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-09-09 04:29:39 -0400 (Tue, 09 Sep 2008) $
+LastUpdate: $Date: 2008-09-14 09:13:59 -0400 (Sun, 14 Sep 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -25,7 +25,7 @@ Features:
 ]]
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 81561 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 81722 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -67,6 +67,20 @@ Localization tips
 3. Use the addon Sniff(http://www.wowinterface.com/downloads/info6259/) to get a link in game from an ItemID, Usage: /item 19316
 4. Atlas + AtlasLoot is also a good source of items to check
 5. Red colored text output from debug means that line does not have a match
+6. Building your own ItemStrings(Ex: "item:28484:1503:0:2946:2945:0:0:0"): http://www.wowwiki.com/ItemString
+   linkType, itemId, enchantId, jewelId1, jewelId2, jewelId3, jewelId4, suffixId, uniqueId
+7. Getting a visual on your ItemString:
+	a. Display the ItemRefTooltip by clicking on a link in chat
+	b. /dump StatLogic:SetTip("item:23344:2746")
+6. Testing Enchants:
+	a. Obtain the enchantId from wowhead.
+		EX: Find the enchantId for [Golden Spellthread]:
+		Find the spell page for the enchant: http://www.wowhead.com/?spell=31370
+		Under Spell Details, look for "Enchant Item Permanent (2746)"
+		2746 is the enchantId
+	b. We need an item to attach the enchant, I like to use [Scout's Pants] ID:23344. (/item 23344 if you don't have it in your cache)
+		ItemString: "item:23344:2746"
+	c. /dump StatLogic:GetSum("item:23344:2746")
 --]]
 local PatternLocale = {}
 local DisplayLocale = {}
@@ -309,6 +323,8 @@ PatternLocale.enUS = {
 	-- Stat Lookup Table --
 	-----------------------
 	["StatIDLookup"] = {
+		["Scope (Damage)"] = {"RANGED_DMG"}, -- Khorium Scope EnchantID: 2723
+		["Scope (Critical Strike Rating)"] = {"RANGED_CRIT_RATING"}, -- Stabilized Eternium Scope EnchantID: 2724
 		["Your attacks ignoreof your opponent's armor"] = {"IGNORE_ARMOR"}, -- StatLogic:GetSum("item:33733")
 		["% Threat"] = {"THREAT_MOD"}, -- StatLogic:GetSum("item:23344:2613")
 		["Increases your effective stealth level"] = {"STEALTH_LEVEL"}, -- [Nightscape Boots] ID: 8197
@@ -470,7 +486,7 @@ PatternLocale.enUS = {
 		["Spell Hit Rating"] = {"SPELL_HIT_RATING",},
 		["Improves spell hit rating"] = {"SPELL_HIT_RATING",}, -- ITEM_MOD_HIT_SPELL_RATING
 		["Increases your spell hit rating"] = {"SPELL_HIT_RATING",},
-		["Ranged Hit Rating"] = {"RANGED_HIT_RATING",},
+		["Ranged Hit Rating"] = {"RANGED_HIT_RATING",}, -- Biznicks 247x128 Accurascope EnchantID: 2523
 		["Improves ranged hit rating"] = {"RANGED_HIT_RATING",}, -- ITEM_MOD_HIT_RANGED_RATING
 		["Increases your ranged hit rating"] = {"RANGED_HIT_RATING",},
 
@@ -489,6 +505,7 @@ PatternLocale.enUS = {
 		["Increases the spell critical strike rating of all party members within 30 yards"] = {"SPELL_CRIT_RATING",},
 		["Improves spell critical strike rating"] = {"SPELL_CRIT_RATING",},
 		["Increases your ranged critical strike rating"] = {"RANGED_CRIT_RATING",}, -- Fletcher's Gloves ID:7348
+		["Ranged Critical Strike"] = {"RANGED_CRIT_RATING",}, -- Heartseeker Scope EnchantID: 3608
 
 		["Improves hit avoidance rating"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_RATING
 		["Improves melee hit avoidance rating"] = {"MELEE_HIT_AVOID_RATING"}, -- ITEM_MOD_HIT_TAKEN_MELEE_RATING
@@ -507,7 +524,7 @@ PatternLocale.enUS = {
 		["Improves melee haste rating"] = {"MELEE_HASTE_RATING"},
 		["Spell Haste Rating"] = {"SPELL_HASTE_RATING"},
 		["Improves spell haste rating"] = {"SPELL_HASTE_RATING"},
-		["Ranged Haste Rating"] = {"RANGED_HASTE_RATING"},
+		["Ranged Haste Rating"] = {"RANGED_HASTE_RATING"}, -- Micro Stabilizer EnchantID: 3607
 		["Improves ranged haste rating"] = {"RANGED_HASTE_RATING"},
 
 		["Increases dagger skill rating"] = {"DAGGER_WEAPON_RATING"},
@@ -527,6 +544,9 @@ PatternLocale.enUS = {
 		["Increases staff skill rating"] = {"STAFF_WEAPON_RATING"}, -- Leggings of the Fang ID:10410
 		
 		["Increases your expertise rating"] = {"EXPERTISE_RATING"},
+		["Increases armor penetration rating"] = {"ARMOR_PENETRATION_RATING"},
+		["Increases your armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- ID 43178
+		
 		-- Exclude
 		["sec"] = false,
 		["to"] = false,
@@ -556,6 +576,7 @@ DisplayLocale.enUS = {
 		["THREAT_MOD"] = {"Threat(%)", "Threat(%)"},
 		["STEALTH_LEVEL"] = {"Stealth Level", "Stealth"},
 		["MELEE_DMG"] = {"Melee Weapon "..DAMAGE, "Wpn Dmg"}, -- DAMAGE = "Damage"
+		["RANGED_DMG"] = {"Ranged Weapon "..DAMAGE, "Ranged Dmg"}, -- DAMAGE = "Damage"
 		["MOUNT_SPEED"] = {"Mount Speed(%)", "Mount Spd(%)"},
 		["RUN_SPEED"] = {"Run Speed(%)", "Run Spd(%)"},
 
@@ -643,6 +664,7 @@ DisplayLocale.enUS = {
 		["STAFF_WEAPON_RATING"] = {"Staff "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
 		["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING},
+		["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING},
 
 		---------------------------------------------------------------------------
 		-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -692,6 +714,7 @@ DisplayLocale.enUS = {
 		["STAFF_WEAPON"] = {"Staff "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
 		["EXPERTISE"] = {"Expertise", "Expertise"},
+		["ARMOR_PENETRATION"] = {"Armor Penetration(%)", "ArP(%)"},
 
 		---------------------------------------------------------------------------
 		-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -1208,6 +1231,7 @@ DisplayLocale.koKR = {
 		["THREAT_MOD"] = {"위협(%)", "Threat(%)"},
 		["STEALTH_LEVEL"] = {"은신 등급", "Stealth"},
 		["MELEE_DMG"] = {"근접 무기 "..DAMAGE, "Wpn Dmg"}, -- DAMAGE = "Damage"
+		["RANGED_DMG"] = {"Ranged Weapon "..DAMAGE, "Ranged Dmg"}, -- DAMAGE = "Damage"
 		["MOUNT_SPEED"] = {"탈것 속도(%)", "Mount Spd(%)"},
 		["RUN_SPEED"] = {"이동 속도(%)", "Run Spd(%)"},
 
@@ -1295,6 +1319,7 @@ DisplayLocale.koKR = {
 		["STAFF_WEAPON_RATING"] = {"지팡이류 "..SKILL.." "..RATING, "Staff "..RATING}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
 		["EXPERTISE_RATING"] = {"숙련 ".." "..RATING, "Expertise".." "..RATING},
+		["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING},
 
 		---------------------------------------------------------------------------
 		-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -1344,6 +1369,7 @@ DisplayLocale.koKR = {
 		["STAFF_WEAPON"] = {"지팡이류 "..SKILL, "Staff"}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
 		["EXPERTISE"] = {"숙련 ", "Expertise"},
+		["ARMOR_PENETRATION"] = {"Armor Penetration(%)", "ArP(%)"},
 
 		---------------------------------------------------------------------------
 		-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -1917,6 +1943,7 @@ DisplayLocale.zhTW = {
 		["THREAT_MOD"] = {"威脅(%)", "威脅(%)"},
 		["STEALTH_LEVEL"] = {"偷竊等級", "偷竊"},
 		["MELEE_DMG"] = {"近戰傷害", "近戰"}, -- DAMAGE = "Damage"
+		["RANGED_DMG"] = {"Ranged Weapon "..DAMAGE, "Ranged Dmg"}, -- DAMAGE = "Damage"
 		["MOUNT_SPEED"] = {"騎乘速度(%)", "騎速(%)"},
 		["RUN_SPEED"] = {"奔跑速度(%)", "跑速(%)"},
 
@@ -2004,6 +2031,7 @@ DisplayLocale.zhTW = {
 		["STAFF_WEAPON_RATING"] = {"法杖技能等級", "法杖等級"}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE_RATING"] = {STAT_EXPERTISE.." "..RATING, STAT_EXPERTISE.." "..RATING},
 		["EXPERTISE_RATING"] = {"熟練等級", "熟練等級"},
+		["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING},
 
 		---------------------------------------------------------------------------
 		-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -2052,6 +2080,7 @@ DisplayLocale.zhTW = {
 		["STAFF_WEAPON"] = {"法杖技能", "法杖"}, -- Leggings of the Fang ID:10410
 		--["EXPERTISE"] = {STAT_EXPERTISE, STAT_EXPERTISE},
 		["EXPERTISE"] = {"熟練", "熟練"},
+		["ARMOR_PENETRATION"] = {"Armor Penetration(%)", "ArP(%)"},
 
 		---------------------------------------------------------------------------
 		-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -2532,6 +2561,7 @@ DisplayLocale.deDE = {
 		["IGNORE_ARMOR"] = {"Rüstung ignorieren", "Rüstung igno."},
 		["STEALTH_LEVEL"] = {"Verstohlenheitslevel", "Verstohlenheit"},
 		["MELEE_DMG"] = {"Waffenschaden", "Waffenschaden"}, -- DAMAGE = "Damage"
+		["RANGED_DMG"] = {"Ranged Weapon "..DAMAGE, "Ranged Dmg"}, -- DAMAGE = "Damage"
 		["MOUNT_SPEED"] = {"Reitgeschwindigkeit(%)", "Reitgeschw.(%)"},
 		["RUN_SPEED"] = {"Laufgeschwindigkeit(%)", "Laufgeschw.(%)"},
 
@@ -2617,6 +2647,7 @@ DisplayLocale.deDE = {
 		["BOW_WEAPON_RATING"] = {"Bow "..SKILL.." "..RATING, "Bow "..RATING},
 		["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 		["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
+		["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING},
 
 		---------------------------------------------------------------------------
 		-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -2664,6 +2695,7 @@ DisplayLocale.deDE = {
 		["BOW_WEAPON"] = {"Bow "..SKILL, "Bow"},
 		["FERAL_WEAPON"] = {"Feral "..SKILL, "Feral"},
 		["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"},
+		["ARMOR_PENETRATION"] = {"Armor Penetration(%)", "ArP(%)"},
 
 		---------------------------------------------------------------------------
 		-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -3206,6 +3238,7 @@ DisplayLocale.frFR = {
 		["IGNORE_ARMOR"] = {"Ignore Armor", "Ignore Armor"},
 		["STEALTH_LEVEL"] = {"Stealth Level", "Stealth"},
 		["MELEE_DMG"] = {"Melee Weapon "..DAMAGE, "Wpn Dmg"}, -- DAMAGE = "Damage"
+		["RANGED_DMG"] = {"Ranged Weapon "..DAMAGE, "Ranged Dmg"}, -- DAMAGE = "Damage"
 		["MOUNT_SPEED"] = {"Mount Speed(%)", "Mount Spd(%)"},
 		["RUN_SPEED"] = {"Run Speed(%)", "Run Spd(%)"},
 
@@ -3291,6 +3324,7 @@ DisplayLocale.frFR = {
 		["FERAL_WEAPON_RATING"] = {"Feral "..SKILL.." "..RATING, "Feral "..RATING},
 		["FIST_WEAPON_RATING"] = {"Unarmed "..SKILL.." "..RATING, "Unarmed "..RATING},
 		["EXPERTISE_RATING"] = {"Expertise".." "..RATING, "Expertise".." "..RATING},
+		["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING},
 		
 		---------------------------------------------------------------------------
 		-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -3337,6 +3371,7 @@ DisplayLocale.frFR = {
 		["FERAL_WEAPON"] = {"Feral "..SKILL, "Feral"},
 		["FIST_WEAPON"] = {"Unarmed "..SKILL, "Unarmed"},
 		["EXPERTISE"] = {"Expertise", "Expertise"},
+		["ARMOR_PENETRATION"] = {"Armor Penetration(%)", "ArP(%)"},
 
 		---------------------------------------------------------------------------
 		-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -3923,6 +3958,7 @@ DisplayLocale.zhCN = {
 		["STEALTH_LEVEL"] = {"潜行等级", "潜行"},
 		["IGNORE_ARMOR"] = {"你的攻击无视目标的 %d+ 点护甲值。", "忽略护甲"},
 		["MELEE_DMG"] = {"近战伤害", "近战伤害"}, -- DAMAGE = "Damage"
+		["RANGED_DMG"] = {"Ranged Weapon "..DAMAGE, "Ranged Dmg"}, -- DAMAGE = "Damage"
 		["MOUNT_SPEED"] = {"骑乘速度(%)", "骑速(%)"},
 		["RUN_SPEED"] = {"移动速度(%)", "跑速(%)"},
 
@@ -4009,6 +4045,7 @@ DisplayLocale.zhCN = {
 		["FIST_WEAPON_RATING"] = {"徒手技能等级", "徒手等级"},
 		["STAFF_WEAPON_RATING"] = {"法杖技能等级", "法杖等级"}, -- Leggings of the Fang ID:10410
 		["EXPERTISE_RATING"] = {"精准等级", "精准等级"},
+		["ARMOR_PENETRATION_RATING"] = {"Armor Penetration".." "..RATING, "ArP".." "..RATING},
 
 		---------------------------------------------------------------------------
 		-- Tier2 Stats - Stats that only show up when broken down from a Tier1 stat
@@ -4057,6 +4094,7 @@ DisplayLocale.zhCN = {
 		["FIST_WEAPON"] = {"徒手战斗技能", "徒手"},
 		["STAFF_WEAPON_RATING"] = {"法杖技能", "法杖"}, -- Leggings of the Fang ID:10410
 		["EXPERTISE"] = {"精准", "精准"},
+		["ARMOR_PENETRATION"] = {"Armor Penetration(%)", "ArP(%)"},
 
 		---------------------------------------------------------------------------
 		-- Tier3 Stats - Stats that only show up when broken down from a Tier2 stat
@@ -4928,7 +4966,7 @@ local function print(text)
 end
 
 -- SetTip("item:3185:0:0:0:0:0:1957")
-function SetTip(item)
+function StatLogic:SetTip(item)
 	local name, link, _, _, reqLv, _, _, _, itemType = GetItemInfo(item)
 	ItemRefTooltip:ClearLines()
 	ItemRefTooltip:SetHyperlink(link)
@@ -5011,6 +5049,9 @@ CR_WEAPON_SKILL_OFFHAND = 22;
 CR_WEAPON_SKILL_RANGED = 23;
 CR_EXPERTISE = 24;
 --]]
+if not CR_ARMOR_PENETRATION then
+	CR_ARMOR_PENETRATION = 25
+end
 
 local RatingNameToID = {
 	[CR_WEAPON_SKILL] = "WEAPON_RATING",
@@ -5037,6 +5078,7 @@ local RatingNameToID = {
 	[CR_WEAPON_SKILL_OFFHAND] = "OFFHAND_WEAPON_RATING",
 	[CR_WEAPON_SKILL_RANGED] = "RANGED_WEAPON_RATING",
 	[CR_EXPERTISE] = "EXPERTISE_RATING",
+	[CR_ARMOR_PENETRATION] = "ARMOR_PENETRATION_RATING",
 	["DEFENSE_RATING"] = CR_DEFENSE_SKILL,
 	["DODGE_RATING"] = CR_DODGE,
 	["PARRY_RATING"] = CR_PARRY,
@@ -5074,6 +5116,7 @@ local RatingNameToID = {
 	["OFFHAND_WEAPON_RATING"] = CR_WEAPON_SKILL_OFFHAND,
 	["RANGED_WEAPON_RATING"] = CR_WEAPON_SKILL_RANGED,
 	["EXPERTISE_RATING"] = CR_EXPERTISE,
+	["ARMOR_PENETRATION_RATING"] = CR_ARMOR_PENETRATION,
 }
 
 function StatLogic:GetRatingIDFromName(rating)
@@ -5105,6 +5148,7 @@ local RatingIDToConvertedStat = {
 	"WEAPON_SKILL",
 	"WEAPON_SKILL",
 	"EXPERTISE",
+	"ARMOR_PENETRATION",
 }
 
 local function GetStanceIcon()
@@ -9220,6 +9264,7 @@ local RatingBase = {
 	[CR_WEAPON_SKILL_OFFHAND] = 2.5,
 	[CR_WEAPON_SKILL_RANGED] = 2.5,
 	[CR_EXPERTISE] = 2.5,
+	[CR_ARMOR_PENETRATION] = 4.69512176513672,
 }
 
 -- Formula reverse engineered by Whitetooth@Cenarius(US) (hotdogee [at] gmail [dot] com)
@@ -9239,7 +9284,7 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 		id = RatingNameToID[id]
 	end
 	-- check for invalid input
-	if type(rating) ~= "number" or id < 1 or id > 24 then return 0 end
+	if type(rating) ~= "number" or id < 1 or id > 25 then return 0 end
 	-- defaults to player level if not given
 	level = level or UnitLevel("player")
 	--2.4.3  Parry Rating, Defense Rating, and Block Rating: Low-level players 

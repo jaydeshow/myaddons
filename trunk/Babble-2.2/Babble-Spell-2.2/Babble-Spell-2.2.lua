@@ -1,6 +1,6 @@
 --[[
 Name: Babble-Spell-2.2
-Revision: $Rev: 81462 $
+Revision: $Rev: 81809 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Documentation: http://wiki.wowace.com/index.php/Babble-Spell-2.2
@@ -11,7 +11,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Spell-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 81462 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 81809 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -9427,7 +9427,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Demoralizing Roar"] = "Устрашающий рык",
 		["Demoralizing Shout"] = "Устрашающий возглас",
 		["Dense Sharpening Stone"] = "Плотное точило",
-		["Desperate Prayer"] = "Отчаянная молитва",
+		["Desperate Prayer"] = "Молитва отчаяния",
 		["Destructive Reach"] = "Пределы разрушения",
 		["Detect"] = "Обнаружение",
 		["Detect Greater Invisibility"] = "Обнаружение большей невидимости",
@@ -9595,7 +9595,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Flametongue Totem"] = "Тотем языка пламени",
 		["Flametongue Weapon"] = "Оружие языка пламени",
 		["Flare"] = "Осветительная ракета",
-		["Flash Heal"] = "Мгновенное лечение",
+		["Flash Heal"] = "Быстрое исцеление",
 		["Flash of Light"] = "Небесная вспышка",
 		["Flight Form"] = "Воздушный облик",
 		["Flurry"] = "Беспокойство",
@@ -9705,7 +9705,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Horse Riding"] = "Верховая езда: конь",
 		["Howl of Terror"] = "Вой ужаса",
 		["Humanoid Slaying"] = "Убийство гуманоидов",
-		["Hunter's Mark"] = "Знак Охотника",
+		["Hunter's Mark"] = "Метка охотника",
 		["Hurricane"] = "Ураган",
 		["Hypothermia"] = "Гипотермия",
 		["Ice Armor"] = "Ледяная броня",
@@ -9783,7 +9783,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Improved Heroic Strike"] = "Улучшенный удар героя",
 		["Improved Holy Shield"] = "Улучшенный священный щит",
 		["Improved Howl of Terror"] = "Улучшенный вой ужаса",
-		["Improved Hunter's Mark"] = "Улучшенный знак охотника",
+		["Improved Hunter's Mark"] = "Улучшенная метка охотника",
 		["Improved Immolate"] = "Улучшенный Жар Преисподней",
 		["Improved Imp"] = "Улучшенный бес",
 		["Improved Inner Fire"] = "Улучшенный внутренний огонь",
@@ -9803,7 +9803,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Improved Mana Shield"] = "Улучшенный щит маны",
 		["Improved Mana Spring Totem"] = "Улучшенный тотем источника маны",
 		["Improved Mark of the Wild"] = "Улучшенный знак дикой природы",
-		["Improved Mend Pet"] = "Улучшенное исцеление питомца",
+		["Improved Mend Pet"] = "Улучшенное лечение питомца",
 		["Improved Mind Blast"] = "Улучшенный вызрыв разума",
 		["Improved Moonfire"] = "Улучшенный лунный огонь",
 		["Improved Mortal Strike"] = "Улучшенный убийственный удар",
@@ -9890,7 +9890,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Kick"] = "Пинок",
 		["Kick - Silenced"] = "Пинок - немота",
 		["Kidney Shot"] = "Удар по почкам",
-		["Kill Command"] = "Убить команду",
+		["Kill Command"] = " Команда \"Взять!\"",
 		["Killer Instinct"] = "Инстинкт убийцы",
 		["Kiss of the Spider"] = "Поцелуй паука",
 		["Kodo Riding"] = "Верховая езда: кодой",
@@ -9959,7 +9959,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Meditation"] = "Медитация",
 		["Melee Specialization"] = "Специализация - ближний бой",
 		["Melt Armor"] = "Расплавленная броня",
-		["Mend Pet"] = "Исцеление питомца",
+		["Mend Pet"] = "Лечение питомца",
 		["Mental Agility"] = "Подвижность мысли",
 		["Mental Strength"] = "Ментальная сила",
 		["Mind Blast"] = "Взрыв разума",
@@ -10181,7 +10181,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Serpent Sting"] = "Жало змеи",
 		["Serrated Blades"] = "Зазубренные клинки",
 		["Setup"] = "Настройка",
-		["Shackle Undead"] = "Сковывание мертвых",
+		["Shackle Undead"] = "Сковывание нежити",
 		["Shadow Affinity"] = "Близость Тьме",
 		["Shadow Bolt"] = "Теневая стрела",
 		["Shadow Embrace"] = "Объятья Тьмы",
@@ -10395,7 +10395,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Unstable Power"] = "Изменчивая сила",
 		["Unyielding Faith"] = "Непреклонная вера",
 		["Upset Tummy"] = "Расстроенный животик",
-		["Vampiric Embrace"] = "Вампирские объятия",
+		["Vampiric Embrace"] = "Объятия вампира",
 		["Vampiric Touch"] = "Касание вампира",
 		["Vanish"] = "Исчезновение",
 		["Vanished"] = "Исчезнувший",

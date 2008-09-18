@@ -1,4 +1,6 @@
-﻿if (ZOMGSelfBuffs) then
+﻿local wow3 = GetBuildInfo() >= "3.0.0"
+
+if (ZOMGSelfBuffs) then
 	z:Print("Installation error, duplicate copy of ZOMGBuffs_SelfBuffs (Addons\ZOMGBuffs\ZOMGBuffs_SelfBuffs and Addons\ZOMGBuffs_SelfBuffs)")
 	return
 end
@@ -12,7 +14,7 @@ local z = ZOMGBuffs
 local zs = z:NewModule("ZOMGSelfBuffs")
 ZOMGSelfBuffs = zs
 
-z:CheckVersion("$Revision: 80156 $")
+z:CheckVersion("$Revision: 81716 $")
 
 local mismatchList		-- Rogue poisons that don't match their spell names
 if (GetLocale() == "deDE") then
@@ -120,11 +122,12 @@ zs.moduleOptions = zs.options
 function zs:GetMyBuffs()
 	local myBuffs
 	for i = 1,40 do
-		local name, rank, buff, count, max, dur = UnitBuff("player", i)
+		local name, rank, buff, count, _, max, endTime, isMine, isStealable = z:UnitBuff("player", i)
 		if (not name) then
 			break
 		end
-		if (max) then
+		if (isMine) then
+			local dur = endTime and (endTime - GetTime())
 			if (not myBuffs) then
 				myBuffs = new()
 			end
@@ -340,7 +343,8 @@ function zs:CheckBuffs()
 	end
 
 	if (not z:CanCheckBuffs(self.db.char.combatnotice, true)) then
-		if (self.mounted and not z.db.profile.notmounted) then
+		--if (self.mounted and not z.db.profile.notmounted) then
+		if (IsMounted() and not z.db.profile.notmounted) then
 			z:SetupForSpell()
 		end
 		del(myBuffs)
@@ -562,6 +566,15 @@ function zs:GetClassBuffs()
 			{id = 43461, o = 5, dup = 1, duration = 30, who = "weapon", c = "A0A040", sequence = {"", " II", " III", " IV", " V"}},					-- Wound Poison
 			{id = 26786, o = 6, dup = 1, duration = 30, who = "weapon", c = "209080"},																-- Anesthetic Poison
 		}
+		if (wow3) then
+			-- TODO Crippling, Mind Numbing, Anesthetic Poisons being changed.. to what?
+			classBuffs[3].id = 3408				-- Crippling
+			classBuffs[3].sequence = nil
+			classBuffs[4].id = 5761				-- Mind-numbing
+			classBuffs[4].sequence = nil
+			classBuffs[6].id = 57982			-- Anesthetic
+			classBuffs[6].sequence = nil
+		end
 		self.reagents = {
 			[R["Flash Powder"]] = {20, 1, 100},
 		}
@@ -571,18 +584,11 @@ function zs:GetClassBuffs()
 
 	elseif (playerClass == "PALADIN") then
 		local function skipFunc()
-			return zs.db.char.useauto and zs.mounted and not z.db.profile.notmounted
+			--return zs.db.char.useauto and zs.mounted and not z.db.profile.notmounted
+			return zs.db.char.useauto and IsMounted() and not z.db.profile.notmounted
 		end
 
 		classBuffs = {
-			{id = 27155, o = 1,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "C0C0FF", rebuff = L["Seals"]},	-- Seal of Righteousness
-			{id = 27170, o = 2,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFD010", rebuff = L["Seals"]},	-- Seal of Command
-			{id = 27166, o = 3,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "6070FF", rebuff = L["Seals"]},	-- Seal of Wisdom
-			{id = 27160, o = 4,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA040", rebuff = L["Seals"]},	-- Seal of Light
-			{id = 31895, o = 5,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFD020", rebuff = L["Seals"]},	-- Seal of Justice
-			{id = 27158, o = 6,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFFF30", rebuff = L["Seals"]},	-- Seal of the Crusader
-			{id = 31892, o = 7,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA0A0", rebuff = L["Seals"]},	-- Seal of Blood
-			{id = 31801, o = 8,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA0A0", rebuff = L["Seals"]},	-- Seal of Vengeance
 			{id = 25780, o = 10, duration = 30, who = "self", c = "FFD020", cancancel = true},								-- Righteous Fury
 			{id = 27179, o = 11, duration = 0.165, who = "self", c = "FFF0E0", noauto = true},								-- Holy Shield
 			{id = 27149, o = 13, duration = -1, who = "self", dup = 2, mounted = true, c = "8090C0", checkdups = true, skip = skipFunc},		-- Devotion Aura
@@ -591,11 +597,42 @@ function zs:GetClassBuffs()
 			{id = 27151, o = 16, duration = -1, who = "self", dup = 2, mounted = true, c = "8020FF", checkdups = true, skip = skipFunc},		-- Shadow Resistance Aura
 			{id = 27152, o = 17, duration = -1, who = "self", dup = 2, mounted = true, c = "2020FF", checkdups = true, skip = skipFunc},		-- Frost Resistance Aura
 			{id = 27153, o = 18, duration = -1, who = "self", dup = 2, mounted = true, c = "E06020", checkdups = true, skip = skipFunc},		-- Fire Resistance Aura
-			{id = 20218, o = 19, duration = -1, who = "self", dup = 2, mounted = true, c = "FFFF90", checkdups = true, skip = skipFunc},		-- Sanctity Aura
-			{id = 32223, o = 20, duration = -1, who = "self", dup = 2, mounted = true, noauto = true, auto = function(v) return (IsMounted() or zs.mounted) end, c = "FFFFFF"},	-- Crusader Aura
+			--{id = 20218, o = 19, duration = -1, who = "self", dup = 2, mounted = true, c = "FFFF90", checkdups = true, skip = skipFunc},		-- Sanctity Aura
+			{id = 32223, o = 20, duration = -1, who = "self", dup = 2, mounted = true, noauto = true, auto = function(v) return IsMounted() end, c = "FFFFFF"},	-- Crusader Aura
 		}
+		
+		if (wow3) then
+			tinsert(classBuffs, {id = 21084, o = 1,  duration = 2, who = "self", dup = 1, noauto = true, c = "C0C0FF", rebuff = L["Seals"]})	-- Seal of Righteousness
+			tinsert(classBuffs, {id = 20375, o = 2,  duration = 2, who = "self", dup = 1, noauto = true, c = "FFD010", rebuff = L["Seals"]})	-- Seal of Command
+			tinsert(classBuffs, {id = 20166, o = 3,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "6070FF", rebuff = L["Seals"]})	-- Seal of Wisdom
+			tinsert(classBuffs, {id = 20165, o = 4,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA040", rebuff = L["Seals"]})	-- Seal of Light
+			tinsert(classBuffs, {id = 53736, o = 5,  duration = 2, who = "self", dup = 1, noauto = true, c = "FFD010", rebuff = L["Seals"]})	-- Seal of Corruption
+			tinsert(classBuffs, {id = 31892, o = 6,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA0A0", rebuff = L["Seals"]})	-- Seal of Blood
+		else
+			tinsert(classBuffs, {id = 27155, o = 1,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "C0C0FF", rebuff = L["Seals"]})	-- Seal of Righteousness
+			tinsert(classBuffs, {id = 27170, o = 2,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFD010", rebuff = L["Seals"]})	-- Seal of Command (Old)
+			tinsert(classBuffs, {id = 27166, o = 3,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "6070FF", rebuff = L["Seals"]})	-- Seal of Wisdom
+			tinsert(classBuffs, {id = 27160, o = 4,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA040", rebuff = L["Seals"]})	-- Seal of Light
+			tinsert(classBuffs, {id = 31895, o = 5,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFD020", rebuff = L["Seals"]})	-- Seal of Justice
+			tinsert(classBuffs, {id = 27158, o = 6,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFFF30", rebuff = L["Seals"]})	-- Seal of the Crusader
+			tinsert(classBuffs, {id = 31892, o = 7,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA0A0", rebuff = L["Seals"]})	-- Seal of Blood
+			tinsert(classBuffs, {id = 31801, o = 8,  duration = 0.5, who = "self", dup = 1, noauto = true, c = "FFA0A0", rebuff = L["Seals"]})	-- Seal of Vengeance
+		end
+
 		self.notifySpells = {
 			[GetSpellInfo(19752)] = R["Symbol of Divinity"],		-- Divine Intervention
+		}
+	elseif (playerClass == "DEATHKNIGHT") then
+		classBuffs = {
+			{id = 49222, o = 1, duration = 5, who = "self", c = "209020"},			-- Bone Armor
+			{id = 49142, o = 2, duration = 30, who = "weapon", c = "204090"},		-- Frozen Rune Weapon
+			{id = 57623, o = 3, duration = 2, who = "self", c = "808080"},			-- Horn of Winter
+		}
+		self.notifySpells = {
+			[GetSpellInfo(46584)] = R["Corpse Dust"],				-- Raise Dead
+		}
+		self.reagents = {
+			[R["Corpse Dust"]]	= {20, 1, 200},
 		}
 	end
 
@@ -604,7 +641,9 @@ function zs:GetClassBuffs()
 		for i,data in pairs(classBuffs) do
 			if (data.id) then
 				local name, _, icon = GetSpellInfo(data.id)
-				assert(name)
+				if (not name) then
+					error("No spell for spellID "..data.id)
+				end
 				self.classBuffs[name] = data
 			else
 				self.classBuffs[i] = data
@@ -943,26 +982,47 @@ function zs:SpellCastFailed(spell, rank, manual)
 	end
 end
 
--- UNIT_AURA
-function zs:UNIT_AURA(unit)
-	if (unit == "player" and not InCombatLockdown()) then
-		z:CheckForChange(self)
-	end
-end
-
--- UNIT_AURA
-function zs:PLAYER_AURAS_CHANGED()
-	local m = IsMounted()
-	if (self.mounted ~= m) then
-		self.mounted = m
-		if (m) then
-			z:SetupForSpell()
-			self:CheckBuffs()
-			return
+if (wow3) then
+	-- UNIT_AURA
+	function zs:UNIT_AURA(unit)
+		if (unit == "player") then
+			if (not InCombatLockdown()) then
+				local m = IsMounted()
+				if (self.mounted ~= m) then
+					self.mounted = m
+					if (m) then
+						z:SetupForSpell()
+						self:CheckBuffs()
+						return
+					end
+				end
+	
+				z:CheckForChange(self)
+			end
 		end
 	end
-
-	z:CheckForChange(self)
+else
+	-- UNIT_AURA
+	function zs:UNIT_AURA(unit)
+		if (unit == "player" and not InCombatLockdown()) then
+			z:CheckForChange(self)
+		end
+	end
+	
+	-- UNIT_AURA
+	function zs:PLAYER_AURAS_CHANGED()
+		local m = IsMounted()
+		if (self.mounted ~= m) then
+			self.mounted = m
+			if (m) then
+				z:SetupForSpell()
+				self:CheckBuffs()
+				return
+			end
+		end
+	
+		z:CheckForChange(self)
+	end
 end
 
 -- ChecksAfterItemChanges
@@ -1242,17 +1302,20 @@ function zs:OnResetDB()
 end
 
 -- hookCancelPlayerBuff
-local function hookCancelPlayerBuff(name, rank)
-	if (z:IsActive() and z:IsModuleActive(zs)) then
-		if (type(name) == "number") then
-			name = GetPlayerBuffName(name)
-		end
-
-		if (type(name) == "string") then
-			local buff = z.classBuffs and z.classBuffs[name]
-			if (buff and buff.cancancel) then
-				if (template[name]) then
-					zs:ModifyTemplate(name, nil)
+local hookCancelPlayerBuff
+if (not wow3) then
+	function hookCancelPlayerBuff(name, rank)
+		if (z:IsActive() and z:IsModuleActive(zs)) then
+			if (type(name) == "number") then
+				name = GetPlayerBuffName(name)
+			end
+	
+			if (type(name) == "string") then
+				local buff = z.classBuffs and z.classBuffs[name]
+				if (buff and buff.cancancel) then
+					if (template[name]) then
+						zs:ModifyTemplate(name, nil)
+					end
 				end
 			end
 		end
@@ -1280,10 +1343,12 @@ function zs:OnModuleEnable()
 	self:RegisterBucketEvent("CHARACTER_POINTS_CHANGED", 0.2)
 	self:RegisterEvent("UNIT_AURA")
 	self:RegisterEvent("UNIT_INVENTORY_CHANGED")
-	self:RegisterBucketEvent("PLAYER_AURAS_CHANGED", 0.2)
+	if (not wow3) then
+		self:RegisterBucketEvent("PLAYER_AURAS_CHANGED", 0.2)
+	end
 	z:CheckForChange(self)
 
-	if (not self.hooked) then
+	if (not wow3 and not self.hooked) then
 		self.hooked = true
 		hooksecurefunc("CancelPlayerBuff", hookCancelPlayerBuff)
 	end

@@ -4,8 +4,8 @@ ARL-Jewelcraft.lua
 
 Jewelcrafting data for all of AckisRecipeList
 
-$Date: 2008-09-02 13:23:53 -0400 (Tue, 02 Sep 2008) $
-$Rev: 81278 $
+$Date: 2008-09-15 12:38:21 -0400 (Mon, 15 Sep 2008) $
+$Rev: 81745 $
 
 ]]--
 
@@ -39,7 +39,7 @@ function addon:InitJewelcrafting()
 	self:addTradeSkillSpell(36523, 75, L["Trainer"],1)
 	self:addTradeSkillSpell(38175, 80, L["Trainer"],1)
 	self:addTradeSkillSpell(25305, 90, L["Trainer"],1)
-	self:addTradeSkillSpell(25317, 100, L["Trainer"],1)
+	self:addTradeSkillSpell(25317, 80, L["Trainer"],1)
 	self:addTradeSkillSpell(25318, 100, L["Trainer"],1)
 	self:addTradeSkillSpell(36524, 105, L["Trainer"],1)
 	self:addTradeSkillSpell(25498, 110, L["Trainer"],1)

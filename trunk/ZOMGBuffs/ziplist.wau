@@ -1,4 +1,4 @@
-ZOMGBuffs/Changelog-ZOMGBuffs-r81185.txt
+ZOMGBuffs/Changelog-ZOMGBuffs-r81802.txt
 ZOMGBuffs/modules.xml
 ZOMGBuffs/filelist.wau
 ZOMGBuffs/embeds.xml
@@ -14,6 +14,8 @@ ZOMGBuffs/Locales/localization.lua
 ZOMGBuffs/Locales/Locales.xml
 ZOMGBuffs/Locales/localization.zhCN.lua
 ZOMGBuffs/Locales/localization.frFR.lua
+ZOMGBuffs/UTF8/utf8.lua
+ZOMGBuffs/UTF8/utf8data.lua
 ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.lua
 ZOMGBuffs/ZOMGBuffs_SelfBuffs/ZOMGBuffs_SelfBuffs.toc
 ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.lua

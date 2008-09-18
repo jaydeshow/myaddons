@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "LibGuild-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 75756 $"):match("%d+")) or 0
+local MINOR_VERSION = tonumber(("$Revision: 81803 $"):match("%d+")) or 0
 
 local lib, oldMinor = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 if not lib then return end
@@ -120,6 +120,7 @@ end
 
 local playersOnlineOld, playersOld, playerLevelsOld = {}, {}, {}
 function frame:GUILD_ROSTER_UPDATE()
+	timeSoFar = 0 -- in case other things than our repeater are prompting this
 	if not IsInGuild() then
 		doAll(clear,
 			players, playersOnline, playerOfflineTimes, playerRanks, playerRankIndexes, playerLevels,

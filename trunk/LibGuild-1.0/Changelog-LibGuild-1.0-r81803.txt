@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r81803 | kemayo | 2008-09-17 04:15:44 -0400 (Wed, 17 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/LibGuild-1.0/LibGuild-1.0/LibGuild-1.0.lua
+
+LibGuild-1.0: Reset the GuildRoster() calling-thingy whenever GUILD_ROSTER_UPDATE shows up, so as to play nice with other things calling GuildRoster.
+------------------------------------------------------------------------

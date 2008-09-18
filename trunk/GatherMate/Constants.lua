@@ -87,15 +87,15 @@ local zone_data = { -- {width, height, zoneID}
 	Dragonblight = {5608.33312988281,3739.58337402344,68,},
 	GrizzlyHills = {5249.999878,3499.999878,69,},
 	HowlingFjord = {6045.83288574219,4031.24981689453,70,},
-	IcecrownGlacier = {5199.99967193604,3466.666015625,71,},
+	IcecrownGlacier = {6270.83331298828, 4181.25,71,},
 	SholazarBasin = {4356.25,2904.166504,72,},
 	TheStormPeaks = {7112.49963378906,4741.666015625,73,},
 	ZulDrak = {4993.75,3329.166504,74,},
-	LakeWintergrasp = {3166.666382,2110.416748,75,},
+	LakeWintergrasp = {2974.99987792969,1983.33325195312,75,},
 	ScarletEnclave = {3162.5,2108.333374,76,},
 	CrystalsongForest = {2722.91662597656,1814.5830078125,77,},
 	LakeWintergrasp = {2974.99987792969,1983.33325195312,78,},
-	StrandoftheAncients = {2339.58325195312,1560.41668701172,79,},
+	StrandoftheAncients = {1743.74993896484,1162.49993896484,79,},
 }
 -- meta table to return 0 for all unknown zones, instances, and what not
 local emptyZoneTbl = {0,0,0}
@@ -149,6 +149,37 @@ local node_ids = {
 		[NL["Sporefish School"]] 				= 118, -- sporefish.tga
 		[NL["Steam Pump Flotsam"]] 				= 119, -- steampump.tga
 		[NL["School of Tastyfish"]] 			= 120, -- net.tga
+		-- new wrath schools
+		[NL["Borean Man O' War School"]]        = 121,
+		[NL["Deep Sea Monsterbelly School"]]	= 122,
+		[NL["Dragonfin Angelfish School"]]		= 123,
+		[NL["Fangtooth Herring School"]]		= 124,
+		[NL["Floating Wreckage Pool"]]			= 125,
+		[NL["Glacial Salmon School"]]			= 126,
+		[NL["Glassfin Minnow School"]]			= 127,
+		[NL["Imperial Manta Ray School"]]		= 128,
+		[NL["Moonglow Cuttlefish School"]]		= 129,
+		[NL["Musselback Sculpin School"]]		= 130,
+		[NL["Nettlefish School"]]				= 131,
+		[NL["Strange Pool"]]					= 132,
+		[NL["Schooner Wreckage"]]				= 133,
+		[NL["Waterlogged Wreckage"]]			= 134,
+		[NL["Bloodsail Wreckage"]]				= 135,
+		-- Begin tediuous prefix mapping	
+		[NL["Lesser Sagefish School"]]			= 136, -- sagefish.tga
+		[NL["Lesser Oily Blackmouth School"]] 	= 137, -- oilyblackmouth.tga
+		[NL["Sparse Oily Blackmouth School"]] 	= 138, -- oilyblackmouth.tga
+		[NL["Abundant Oily Blackmouth School"]]	= 139, -- oilyblackmouth.tga
+		[NL["Teeming Oily Blackmouth School"]]	= 140, -- oilyblackmouth.tga
+		[NL["Lesser Firefin Snapper School"]] 	= 141, -- firefin.tga
+		[NL["Sparse Firefin Snapper School"]] 	= 142, -- firefin.tga
+		[NL["Abundant Firefin Snapper School"]]	= 143, -- firefin.tga
+		[NL["Teeming Firefin Snapper School"]] 	= 144, -- firefin.tga
+		[NL["Lesser Floating Debris"]] 			= 145, -- debris.tga
+		[NL["Sparse Schooner Wreckage"]]		= 146,
+		[NL["Abundant Bloodsail Wreckage"]]		= 147,
+		[NL["Teeming Floating Wreckage"]]		= 148,	
+		-- end of new schools
 	},
 	["Mining"] = {
 		[NL["Copper Vein"]] 					= 201,
@@ -236,13 +267,15 @@ local node_ids = {
 		[NL["Netherdust Bush"]] 				= 442,
 		-- Wrath herbs
 		[NL["Adder's Tongue"]]					= 443,
-		[NL["Constrictor Grass"]]				= 444,
-		[NL["Deadnettle"]]						= 445,
+		[NL["Constrictor Grass"]]				= 444, -- drop form others
+		[NL["Deadnettle"]]						= 445, --looted from other plants
 		[NL["Goldclover"]]						= 446,
-		[NL["Icethorn"]]						= 447,
+		[NL["Icethorn"]]						= 447, -- drop form mobs
 		[NL["Lichbloom"]]						= 448,
 		[NL["Talandra's Rose"]]					= 449,
 		[NL["Tiger Lily"]]						= 450,
+		[NL["Firethorn"]]						= 451,
+		[NL["Frozen Herb"]]						= 452,
 	},
 	["Treasure"] = {
 		[NL["Giant Clam"]] 						= 501,
@@ -301,7 +334,22 @@ local rare_spawns = {
 	[217] = {[206]=true,[214]=true,[215]=true}, -- dark iron
 	[224] = {[222]=true,[223]=true,[221]=true}, -- khorium
 	[223] = {[222]=true}, -- rich adamantite
-	[441] = {[440]=true} --flame cap
+	[441] = {[440]=true}, --flame cap
+	
+	[136] = {[108]=true}, -- sage fish
+	[137] = {[107]=true}, --oily
+	[138] = {[107]=true}, --oily
+	[139] = {[107]=true}, --oily
+	[140] = {[107]=true}, --oily
+	[141] = {[105]=true}, --snapper
+	[142] = {[105]=true}, --snapper
+	[143] = {[105]=true}, --snapper
+	[144] = {[105]=true}, --snapper
+	[145] = {[103]=true}, --debris
+	[146] = {[133]=true}, --schooner
+	[147] = {[135]=true}, --bloodsail
+	[148] = {[101]=true}, -- floating wreckage
+
 }
 Collector.rareNodes = rare_spawns
 
@@ -348,6 +396,34 @@ local node_textures = {
 		[118] = icon_path.."Fish\\sporefish.tga",
 		[119] = icon_path.."Fish\\steampump.tga",
 		[120] = icon_path.."Fish\\net.tga",
+		[121] = icon_path.."Fish\\net.tga",
+		[122] = icon_path.."Fish\\net.tga",
+		[123] = icon_path.."Fish\\net.tga",
+		[124] = icon_path.."Fish\\net.tga",
+		[125] = icon_path.."Fish\\net.tga",
+		[126] = icon_path.."Fish\\net.tga",
+		[127] = icon_path.."Fish\\net.tga",
+		[128] = icon_path.."Fish\\net.tga",
+		[129] = icon_path.."Fish\\net.tga",
+		[130] = icon_path.."Fish\\net.tga",
+		[131] = icon_path.."Fish\\net.tga",
+		[132] = icon_path.."Fish\\net.tga",
+		[133] = icon_path.."Fish\\treasure.tga",
+		[134] = icon_path.."Fish\\treasure.tga",
+		[135] = icon_path.."Fish\\treasure.tga",
+		[136] = icon_path.."Fish\\sagefish.tga",
+		[137] = icon_path.."Fish\\oilyblackmouth.tga",
+		[138] = icon_path.."Fish\\oilyblackmouth.tga",
+		[139] = icon_path.."Fish\\oilyblackmouth.tga",
+		[140] = icon_path.."Fish\\oilyblackmouth.tga",
+		[141] = icon_path.."Fish\\firefin.tga",
+		[142] = icon_path.."Fish\\firefin.tga",
+		[143] = icon_path.."Fish\\firefin.tga",
+		[144] = icon_path.."Fish\\firefin.tga",
+		[145] = icon_path.."Fish\\debris.tga",
+		[146] = icon_path.."Fish\\treasure.tga",
+		[147] = icon_path.."Fish\\treasure.tga",
+		[148] = icon_path.."Fish\\treasure.tga",
 	},
 	["Mining"] = {
 		[201] = icon_path.."Mine\\copper.tga",
@@ -442,6 +518,8 @@ local node_textures = {
 		[448] = icon_path.."Herb\\felweed.tga",
 		[449] = icon_path.."Herb\\felweed.tga",
 		[450] = icon_path.."Herb\\felweed.tga",
+		[451] = icon_path.."Herb\\felweed.tga",
+		[452] = icon_path.."Herb\\felweed.tga",
 	},
 	["Treasure"] = {
 		[501] = icon_path.."Treasure\\clam.tga",
@@ -575,6 +653,9 @@ local node_minharvest = {
 		[448] = 425,
 		[449] = 385,
 		[450] = 400,
+		[451] = 360,
+		[452] = 415,
+		
 	},
 	["Treasure"] = {
 	},

@@ -11,6 +11,7 @@ L["Herbalism"] = "Kräuterkunde"
 L["Engineering"] = "Ingenieurskunst"
 L["Opening"] = "Öffnen"
 L["Pick Lock"] = "Schloss knacken"
+
 -- Display module
 L["GatherMate Pin Options"] = "GatherMate Pin Optionen"
 L["Delete: "] = "Löschen: "

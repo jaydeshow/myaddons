@@ -117,6 +117,7 @@ L:RegisterTranslations("enUS", function() return {
 	["ERRORICON"]			= "ERROR: Missing self.icon",
 	["DISABLED"]			= "ZOMGBuffs is disabled",
 	["TAXI"]				= "you are on a taxi",
+	["VEHICLE"]				= "you are in a vehicle",
 	["COMBAT"]				= "you are in combat",
 	["MOUNTED"]				= "you are mounted and the |cFFFFFF80Not When Mounted|r option is enabled",
 	["RESTING"]				= "you are resting and the |cFFFFFF80Not When Resting|r option is enabled",
