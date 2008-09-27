@@ -1,5 +1,5 @@
 if (ZOMGLog) then
-	z:Print("Installation error, duplicate copy of ZOMGBuffs_Log (Addons\ZOMGBuffs\ZOMGBuffs_Log and Addons\ZOMGBuffs_Log)")
+	ZOMGBuffs:Print("Installation error, duplicate copy of ZOMGBuffs_Log (Addons\ZOMGBuffs\ZOMGBuffs_Log and Addons\ZOMGBuffs_Log)")
 	return
 end
 
@@ -10,7 +10,7 @@ local z = ZOMGBuffs
 local mod = z:NewModule("ZOMGLog")
 ZOMGLog = mod
 
-z:CheckVersion("$Revision: 70639 $")
+z:CheckVersion("$Revision: 81969 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 

@@ -1,4 +1,59 @@
 ------------------------------------------------------------------------
+r82082 | ackis | 2008-09-26 12:33:21 -0400 (Fri, 26 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Another attempt at a fix
+------------------------------------------------------------------------
+r82043 | ackis | 2008-09-25 18:27:35 -0400 (Thu, 25 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- Fix for profile stuff not being saved.
+------------------------------------------------------------------------
+r82036 | ackis | 2008-09-25 12:01:27 -0400 (Thu, 25 Sep 2008) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList:
+- Renamed saved vars files
+- Renamed sorting -> sortmethod
+- Redid sort options function
+- Added a piece of debug code in
+------------------------------------------------------------------------
+r82011 | ackis | 2008-09-24 15:08:51 -0400 (Wed, 24 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList: Change default option for sorting to follow the new format
+------------------------------------------------------------------------
+r81984 | ackis | 2008-09-23 18:14:36 -0400 (Tue, 23 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.toc
+
+AckisRecipeList: Update version and switch saved var files to reset all saved vars
+------------------------------------------------------------------------
+r81948 | ackis | 2008-09-21 22:23:00 -0400 (Sun, 21 Sep 2008) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList/ARLFrame.lua
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList:
+- I think this bug is really fixed now.
+- esMX didn't work so I just changed the values, should work now.
+
+------------------------------------------------------------------------
+r81852 | ackis | 2008-09-18 15:52:22 -0400 (Thu, 18 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList/AckisRecipeList.lua
+
+AckisRecipeList: Add some debug text to help non-english clients with bug squashing. Also removed some comments that have been dealt with.
+------------------------------------------------------------------------
 r81825 | ackis | 2008-09-18 00:30:26 -0400 (Thu, 18 Sep 2008) | 3 lines
 Changed paths:
    M /trunk/AckisRecipeList/AckisRecipeList.lua
@@ -400,101 +455,4 @@ AckisRecipeList:
 - exp pane is done (new buttons)
 - flyaway pane needs checkboxen
 - ackis needs to chill
-------------------------------------------------------------------------
-r80948 | zhinjio | 2008-08-25 17:00:42 -0400 (Mon, 25 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-deDE.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esES.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-esMX.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-koKR.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-ruRU.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhCN.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-zhTW.lua
-   M /trunk/AckisRecipeList/RecipeMiner.lua
-
-AckisRecipeList:
-- The spelling errors, they hurtses me
-------------------------------------------------------------------------
-r80938 | ackis | 2008-08-25 10:36:26 -0400 (Mon, 25 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Enchant.lua
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Vendor.lua
-
-AckisRecipeList:
-- Enchanting and vendor update to address ticket 47
-- Dry-coded (compiles with luac -p)
-------------------------------------------------------------------------
-r80837 | pettigrow | 2008-08-23 04:29:52 -0400 (Sat, 23 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList: frFR Update
-------------------------------------------------------------------------
-r80824 | ackis | 2008-08-22 21:21:25 -0400 (Fri, 22 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/ARLText.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-
-AckisRecipeList:
-- Fixed some issues with the text dump... works kind of now (no scroll bar :P)
-- Optimized some scan code
-------------------------------------------------------------------------
-r80813 | ackis | 2008-08-22 14:04:24 -0400 (Fri, 22 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-
-AckisRecipeList:
-- Fixed a minor typo
-- Dry-coded (compiles with luac -p)
-------------------------------------------------------------------------
-r80812 | ackis | 2008-08-22 14:02:19 -0400 (Fri, 22 Aug 2008) | 12 lines
-Changed paths:
-   M /trunk/AckisRecipeList/ARLFrame.lua
-   M /trunk/AckisRecipeList/ARLText.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.lua
-   M /trunk/AckisRecipeList/AckisRecipeList.toc
-   D /trunk/AckisRecipeList/Locals/ARLLocals-enGB.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-enUS.lua
-   M /trunk/AckisRecipeList/Locals/ARLLocals-ruRU.lua
-
-AckisRecipeList:
-- Added four new localizations:
-	L["Scan Recipes"]
-	L["Scans an open tradeskill for missing recipes."]
-	L["Text Dump"]
-	L["Displays all recipes in a comma seperated value format which can be copied and pasted into another client."]
-- Add 100% dry-coded implemetnation of a text dump.  This will go through your recipe list and display all recipes for a profession, and the information about them in a CSV format.  I will be playing around with this in the future to make it look prettier.
-- You can access the text dump by typing /arl and clicking on the text dump button.  Chances are things will blow up however.
-- Removed enGB as Ace3 just does enUS == enGB
-- New framework for ruRU and esMX
-- Version update
-- Dry-coded (compiles with luac -p)
-------------------------------------------------------------------------
-r80744 | pettigrow | 2008-08-20 14:12:19 -0400 (Wed, 20 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/AckisRecipeList/Locals/ARLLocals-frFR.lua
-
-AckisRecipeList: frFR Update
-------------------------------------------------------------------------
-r80730 | ackis | 2008-08-20 11:40:24 -0400 (Wed, 20 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-LeatherWork.lua
-
-AckisRecipeList:
-- Fix ticket 44
-- Dry-coded (compiles with luac -p)
-------------------------------------------------------------------------
-r80729 | ackis | 2008-08-20 11:28:07 -0400 (Wed, 20 Aug 2008) | 3 lines
-Changed paths:
-   M /trunk/AckisRecipeList/RecipeDB/ARL-Engineer.lua
-
-AckisRecipeList:
-- Fix ticket 45
-- Dry-coded (compiles with luac -p)
 ------------------------------------------------------------------------

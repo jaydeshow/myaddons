@@ -11,6 +11,7 @@
 ## X-Category: Development Tools
 ## X-RelSite-WoWI: 5995
 ## X-AceForum: 1769
+## X-Email: rabbit.magtheridon@gmail.com
 ## SavedVariables: BugGrabberDB
 
 BugGrabber.lua

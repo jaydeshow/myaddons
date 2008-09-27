@@ -1,6 +1,6 @@
-﻿--[[
+--[[
 Name: LibBabble-Faction-3.0
-Revision: $Rev: 81429 $
+Revision: $Rev: 81970 $
 Author(s): Daviesh (oma_daviesh@hotmail.com)
 Documentation: http://www.wowace.com/wiki/Babble-Faction-3.0
 SVN: http://svn.wowace.com/wowace/trunk/LibBabble-Faction-3.0
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Faction-3.0"
-local MINOR_VERSION = "$Revision: 81429 $"
+local MINOR_VERSION = "$Revision: 81970 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -356,6 +356,23 @@ lib:SetBaseTranslations {
 	["Warsong Outriders"] = true,
 	["Wintersaber Trainers"] = true,
 	["Zandalar Tribe"] = true,
+    
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = true,
+    ["Frenzyheart Tribe"] = true,
+    ["Knights of the Ebon Blade"] = true,
+    ["Kirin Tor"] = true,
+    ["The Sons of Hodir"] = true,
+    ["The Kalu'ak"] = true,
+    ["The Oracles"] = true,
+    ["The Wyrmrest Accord"] = true,
+    ["The Silver Convenant"] = true,
+    ["The Sunreavers"] = true,
+    ["Explorer's League"] = true,
+    ["Valiance Expedition"] = true,
+    ["The Hand of Vengeance"] = true,
+    ["The Taunka"] = true,
+    ["Warsong Offensive"] = true,
 
 	--Rep Levels
 	["Neutral"] = true,
@@ -413,6 +430,23 @@ elseif GAME_LOCALE == "deDE" then
 	["Wintersaber Trainers"] = "Wintersäblerausbilder",
 	["Zandalar Tribe"] = "Stamm der Zandalar",
 
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = "Argent Crusade",
+    ["Frenzyheart Tribe"] = "Frenzyheart Tribe",
+    ["Knights of the Ebon Blade"] = "Knights of the Ebon Blade",
+    ["Kirin Tor"] = "Kirin Tor",
+    ["The Sons of Hodir"] = "The Sons of Hodir",
+    ["The Kalu'ak"] = "The Kalu'ak",
+    ["The Oracles"] = "The Oracles",
+    ["The Wyrmrest Accord"] = "The Wyrmrest Accord",
+    ["The Silver Convenant"] = "The Silver Convenant",
+    ["The Sunreavers"] = "The Sunreavers",
+    ["Explorer's League"] = "Explorer's League",
+    ["Valiance Expedition"] = "Valiance Expedition",
+    ["The Hand of Vengeance"] = "The Hand of Vengeance",
+    ["The Taunka"] = "The Taunka",
+    ["Warsong Offensive"] = "Warsong Offensive",
+    
 	--Rep Levels
 	["Neutral"] = "Neutral",
 	["Friendly"] = "Freundlich",
@@ -466,6 +500,23 @@ elseif GAME_LOCALE == "frFR" then
 	["Wintersaber Trainers"] = "Éleveurs de sabres-d'hiver",
 	["Zandalar Tribe"] = "Tribu Zandalar",
 
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = "Argent Crusade",
+    ["Frenzyheart Tribe"] = "Frenzyheart Tribe",
+    ["Knights of the Ebon Blade"] = "Knights of the Ebon Blade",
+    ["Kirin Tor"] = "Kirin Tor",
+    ["The Sons of Hodir"] = "The Sons of Hodir",
+    ["The Kalu'ak"] = "The Kalu'ak",
+    ["The Oracles"] = "The Oracles",
+    ["The Wyrmrest Accord"] = "The Wyrmrest Accord",
+    ["The Silver Convenant"] = "The Silver Convenant",
+    ["The Sunreavers"] = "The Sunreavers",
+    ["Explorer's League"] = "Explorer's League",
+    ["Valiance Expedition"] = "Valiance Expedition",
+    ["The Hand of Vengeance"] = "The Hand of Vengeance",
+    ["The Taunka"] = "The Taunka",
+    ["Warsong Offensive"] = "Warsong Offensive",
+    
 	--Rep Levels
 	["Neutral"] = "Neutre",
 	["Friendly"] = "Amical",
@@ -519,6 +570,23 @@ elseif GAME_LOCALE == "zhTW" then
 	["Wintersaber Trainers"] = "冬刃豹訓練師",
 	["Zandalar Tribe"] = "贊達拉部族",
 
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = "銀白十字軍",
+    ["Frenzyheart Tribe"] = "狂心部族",
+    ["Knights of the Ebon Blade"] = "黯刃騎士團",
+    ["Kirin Tor"] = "祈倫托",
+    ["The Sons of Hodir"] = "霍迪爾之子",
+    ["The Kalu'ak"] = "卡魯耶克",
+    ["The Oracles"] = "神諭者",
+    ["The Wyrmrest Accord"] = "龍眠協調者",
+    ["The Silver Convenant"] = "白銀誓盟",
+    ["The Sunreavers"] = "奪日者",
+    ["Explorer's League"] = "探險者協會",
+    ["Valiance Expedition"] = "驍勇遠征隊",
+    ["The Hand of Vengeance"] = "復仇之手",
+    ["The Taunka"] = "坦卡族",
+    ["Warsong Offensive"] = "戰歌進攻部隊",
+    
 	--Rep Levels
 	["Neutral"] = "中立",
 	["Friendly"] = "友好",
@@ -572,6 +640,23 @@ elseif GAME_LOCALE == "zhCN" then
 	["Wintersaber Trainers"] = "冬刃豹训练师",
 	["Zandalar Tribe"] = "赞达拉部族",
 
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = "银色北伐军",
+    ["Frenzyheart Tribe"] = "狂心氏族",
+    ["Knights of the Ebon Blade"] = "黑锋骑士团",
+    ["Kirin Tor"] = "肯瑞托",
+    ["The Sons of Hodir"] = "霍迪尔之子",
+    ["The Kalu'ak"] = "卡鲁亚克",
+    ["The Oracles"] = "神谕者",
+    ["The Wyrmrest Accord"] = "龙眠联军",
+    ["The Silver Convenant"] = "银色盟约",
+    ["The Sunreavers"] = "夺日者",
+    ["Explorer's League"] = "探险者协会",
+    ["Valiance Expedition"] = "无畏远征军",
+    ["The Hand of Vengeance"] = "复仇之手",
+    ["The Taunka"] = "牦牛人",
+    ["Warsong Offensive"] = "战歌远征军",
+    
 	--Rep Levels
 	["Neutral"] = "中立",
 	["Friendly"] = "友善",
@@ -625,6 +710,23 @@ elseif GAME_LOCALE == "esES" then
 	["Wintersaber Trainers"] = "Entrenadores Sable de Invierno", -- check
 	["Zandalar Tribe"] = "Tribu Zandalar",
 
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = "Argent Crusade",
+    ["Frenzyheart Tribe"] = "Frenzyheart Tribe",
+    ["Knights of the Ebon Blade"] = "Knights of the Ebon Blade",
+    ["Kirin Tor"] = "Kirin Tor",
+    ["The Sons of Hodir"] = "The Sons of Hodir",
+    ["The Kalu'ak"] = "The Kalu'ak",
+    ["The Oracles"] = "The Oracles",
+    ["The Wyrmrest Accord"] = "The Wyrmrest Accord",
+    ["The Silver Convenant"] = "The Silver Convenant",
+    ["The Sunreavers"] = "The Sunreavers",
+    ["Explorer's League"] = "Explorer's League",
+    ["Valiance Expedition"] = "Valiance Expedition",
+    ["The Hand of Vengeance"] = "The Hand of Vengeance",
+    ["The Taunka"] = "The Taunka",
+    ["Warsong Offensive"] = "Warsong Offensive",
+    
 	--Rep Levels
 	["Neutral"] = "Neutral",
 	["Friendly"] = "Amistoso",
@@ -678,6 +780,23 @@ elseif GAME_LOCALE == "koKR" then
 	["Wintersaber Trainers"] = "눈호랑이 조련사",
 	["Zandalar Tribe"] = "잔달라 부족",
 
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = "Argent Crusade",
+    ["Frenzyheart Tribe"] = "Frenzyheart Tribe",
+    ["Knights of the Ebon Blade"] = "Knights of the Ebon Blade",
+    ["Kirin Tor"] = "Kirin Tor",
+    ["The Sons of Hodir"] = "The Sons of Hodir",
+    ["The Kalu'ak"] = "The Kalu'ak",
+    ["The Oracles"] = "The Oracles",
+    ["The Wyrmrest Accord"] = "The Wyrmrest Accord",
+    ["The Silver Convenant"] = "The Silver Convenant",
+    ["The Sunreavers"] = "The Sunreavers",
+    ["Explorer's League"] = "Explorer's League",
+    ["Valiance Expedition"] = "Valiance Expedition",
+    ["The Hand of Vengeance"] = "The Hand of Vengeance",
+    ["The Taunka"] = "The Taunka",
+    ["Warsong Offensive"] = "Warsong Offensive",
+    
 	--Rep Levels
 	["Neutral"] = "중립적",
 	["Friendly"] = "약간 우호적",
@@ -731,6 +850,23 @@ elseif GAME_LOCALE == "ruRU" then
 	["Wintersaber Trainers"] = "Укротители ледопардов",
 	["Zandalar Tribe"] = "Племя Зандалар",
 
+    --WotLK Factions (Beta data, may change)
+    ["Argent Crusade"] = "Argent Crusade",
+    ["Frenzyheart Tribe"] = "Frenzyheart Tribe",
+    ["Knights of the Ebon Blade"] = "Knights of the Ebon Blade",
+    ["Kirin Tor"] = "Kirin Tor",
+    ["The Sons of Hodir"] = "The Sons of Hodir",
+    ["The Kalu'ak"] = "The Kalu'ak",
+    ["The Oracles"] = "The Oracles",
+    ["The Wyrmrest Accord"] = "The Wyrmrest Accord",
+    ["The Silver Convenant"] = "The Silver Convenant",
+    ["The Sunreavers"] = "The Sunreavers",
+    ["Explorer's League"] = "Explorer's League",
+    ["Valiance Expedition"] = "Valiance Expedition",
+    ["The Hand of Vengeance"] = "The Hand of Vengeance",
+    ["The Taunka"] = "The Taunka",
+    ["Warsong Offensive"] = "Warsong Offensive",
+    
 	--Rep Levels
 	["Neutral"] = "Равнодушие",
 	["Friendly"] = "Дружелюбие",

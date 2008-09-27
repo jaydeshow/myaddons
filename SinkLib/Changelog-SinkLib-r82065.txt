@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------
-r79983 | StingerSoft | 2008-08-08 19:57:04 -0400 (Fri, 08 Aug 2008) | 1 line
+r82065 | rabbit | 2008-09-26 04:22:28 -0400 (Fri, 26 Sep 2008) | 1 line
 Changed paths:
-   M /trunk/SinkLib/Sink-1.0/Sink-1.0.lua
+   M /trunk/SinkLib/SinkLib.toc
 
-SinkLib: added ruRU
+SinkLib: X-Email.
 ------------------------------------------------------------------------

@@ -1,12 +1,7 @@
 # Helper mixin to convert json to ruby objects
 module JsonHelper
   def from_json(json)
-    begin
       return eval(json.gsub(/(\w*)(\:)\s*([-_'a-z"0-9tfn\[{])/,'\2\1=>\3'))
-    rescue Exception => excep
-      puts "#{json} was bad #{excep}"
-      return nil
-    end
   end
 end
 # Lua serializer helper

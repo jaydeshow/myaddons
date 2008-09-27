@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------
-r80402 | StingerSoft | 2008-08-14 02:34:25 -0400 (Thu, 14 Aug 2008) | 1 line
+r82063 | rabbit | 2008-09-26 04:21:39 -0400 (Fri, 26 Sep 2008) | 1 line
 Changed paths:
-   M /trunk/LibSink-2.0/LibSink-2.0/LibSink-2.0.lua
+   M /trunk/Mendeleev/Mendeleev.toc
 
-LibSink-2.0: added ruRU
+Mendeleev: X-Email.
 ------------------------------------------------------------------------

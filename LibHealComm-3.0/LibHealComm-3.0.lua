@@ -1,6 +1,7 @@
 ﻿local MAJOR_VERSION = "LibHealComm-3.0";
-local MINOR_VERSION = tonumber(("$Revision: 80690 $"):match("%d+")); 
- 
+local MINOR_VERSION = tonumber(("$Revision: 81869 $"):match("%d+")); 
+local WoTLK = select(4,GetBuildInfo()) >= 30000
+
 local lib = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION);
 if not lib then return end
 
@@ -232,7 +233,6 @@ local healingDebuffs =
     [GetSpellInfo(13218)] = function (count) return (1.0 - count * 0.10) end, -- Wound Poison
     [GetSpellInfo(19434)] = 0.50,   -- Aimed Shot
 --    [GetSpellInfo(31306)] = 0.25,   -- Carrion Swarm (Anetheron - Mount Hyjal) - TODO: This affects the casting part, not the receiving part
-    [GetSpellInfo(9035)]  = 0.80,   -- Hex of Weakness
     [GetSpellInfo(12294)] = 0.50,   -- Mortal Strike
     [GetSpellInfo(40599)] = 0.50,   -- Arcing Smash (Gurtogg Bloodboil)
     [GetSpellInfo(20572)] = 0.50,   -- Blood Fury (Orc Racial)
@@ -258,6 +258,10 @@ local healingDebuffs =
     [GetSpellInfo(41350)] = 2.00,   -- Aura of Desire (Essence of Souls - Black Temple)
     [GetSpellInfo(30843)] = 0.00,   -- Enfeeble (Prince Malchezaar - Karazhan)
 }
+if not WoTLK then
+    -- Priest racial removed in expansion.
+    healingBuffs[GetSpellInfo(9035)]  = 0.80   -- Hex of Weakness
+end
 
 local function calculateHealModifier(unit)
     local modifier = 1.0;

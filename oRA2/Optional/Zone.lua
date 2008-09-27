@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -83,6 +83,19 @@ L:RegisterTranslations("deDE", function() return {
 	["Perform zone check"] = "Starte einen Zonen-Check",
 	["Check the raid's location."] = "Überprüft die Standorte der Schlachtzugsmitglieder.",
 } end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRUS", function() return {
+	["Zone"] = "Зона",
+	["Options for zone checks."] = "Опции проверки зоны.",
+	["Refresh"] = "Обновить",
+	["Close"] = "Закрыть",
+	["Unknown"] = "Неизвестно",
+	["Name"] = "Имя",
+	["Optional/Zone"] = "Дополнительно/Зона",
+	["Perform zone check"] = "Выполнить проверку зоны",
+	["Check the raid's location."] = "Проверка местонахождения рейда.",
+} end )
+
 
 ----------------------------------
 --      Module Declaration      --

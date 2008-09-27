@@ -154,6 +154,9 @@ NL["Windy Cloud"] = "Nube Ventosa" -- check me
 NL["Swamp Gas"] = "Gas de pantano" -- fix
 NL["Arcane Vortex"] = "Vórtice arcano" -- fix
 NL["Felmist"] = "Niebla vil" -- fix
+NL["Steam Cloud"] = "Steam Cloud"
+NL["Cinder Cloud"] = "Cinder Cloud"
+NL["Arctic Cloud"] = "Arctic Cloud"
 
 -- herb bushes
 NL["Peacebloom"] = "Flor de paz"

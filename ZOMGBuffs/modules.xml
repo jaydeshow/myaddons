@@ -11,5 +11,7 @@
 	<Script file="ZOMGBuffs_Log\ZOMGBuffs_Log.lua"/>
 	<Include file="ZOMGBuffs_SelfBuffs\Locales\Locales.xml"/>
 	<Script file="ZOMGBuffs_SelfBuffs\ZOMGBuffs_SelfBuffs.lua"/>
+	<Include file="ZOMGBuffs_Portalz\Locales\Locales.xml"/>
+	<Script file="ZOMGBuffs_Portalz\ZOMGBuffs_Portalz.lua"/>
 </Ui>
 

@@ -294,6 +294,9 @@ NL["Windy Cloud"] = true
 NL["Swamp Gas"] = true
 NL["Arcane Vortex"] = true
 NL["Felmist"] = true
+NL["Steam Cloud"] = true
+NL["Cinder Cloud"] = true
+NL["Arctic Cloud"] = true
 
 -- herb bushes
 NL["Peacebloom"] = true

@@ -1,8 +1,10 @@
 ﻿## Interface: 20400
 ## Title: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80Raid Buffer|r] by |cFFFF8080Zek|r
 ## Notes: ZOMGBuffs, Group Buffing Module
+## Title-zhCN: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80自动Buff模块|r] by |cFFFF8080Zek|r
+## Notes-zhCN: ZOMGBuffs的群体自动Buff模块
 ## Author: Zek
-## Version: $Revision: 65891 $
+## Version: $Revision: 81994 $
 ## LoadOnDemand: 1
 ## RequiredDeps: ZOMGBuffs
 ## X-ZOMGBuffs: yes

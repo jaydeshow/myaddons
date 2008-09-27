@@ -1,5 +1,5 @@
 if (ZOMGBlessingsManager) then
-	z:Print("Installation error, duplicate copy of ZOMGBuffs_BlessingsManager (Addons\ZOMGBuffs\ZOMGBuffs_BlessingsManager and Addons\ZOMGBuffs_BlessingsManager)")
+	ZOMGBuffs:Print("Installation error, duplicate copy of ZOMGBuffs_BlessingsManager (Addons\ZOMGBuffs\ZOMGBuffs_BlessingsManager and Addons\ZOMGBuffs_BlessingsManager)")
 	return
 end
 
@@ -30,7 +30,7 @@ local z = ZOMGBuffs
 local man = z:NewModule("ZOMGBlessingsManager")
 ZOMGBlessingsManager = man
 
-z:CheckVersion("$Revision: 81716 $")
+z:CheckVersion("$Revision: 81969 $")
 
 do
 	local specWeight1 = function(t1, t2, t3) return t1 > t2 and t1 > t3 end

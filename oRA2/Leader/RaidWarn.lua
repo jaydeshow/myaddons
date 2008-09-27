@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -88,6 +88,19 @@ L:RegisterTranslations("deDE", function() return {
 	["Old Style"] = "CTRA Meldung",
 	["Send RS Messages to Raid as well."] = "Sendet RS Nachrichten auch an den Schlachtzug.",
 	["Use CTRA RS Messages instead of RaidWarning."] = "Benutzt CTRA RS Nachrichten anstatt Schlachtzugswarnungen.",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Raidwarning"] = "Объявление рейду",
+	["Options for raid warning."] = "Опции для объявления рейду.",
+	["Leader/RaidWarn"] = "Лидер/Об.Рейду",
+	["Send"] = "Послать",
+	["Send an RS Message."] = "Посылать все RS сообщения.",
+	["<message>"] = "<сообщение>",
+	["To Raid"] = "В рейд",
+	["Old Style"] ="Старый стиль",
+	["Send RS Messages to Raid as well."] =  "Послать RS сообщение также в Рейд.",
+	["Use CTRA RS Messages instead of RaidWarning."] = "Использовать CTRA RS сообщения вмеcто Объявления рейду.",
 } end )
 
 ----------------------------------

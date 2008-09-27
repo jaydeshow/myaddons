@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -82,6 +82,18 @@ L:RegisterTranslations("deDE", function() return {
 	["Name"] = "Name",
 	["Perform latency check"] = "Starte einen Latenz-Check",
 	["Check the raid's latencies."] = "Überprüft die Latenzen des Schlachtzugs.",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Options for latency checks."] = "Опции проверки задержки",
+	["Leader/Latency"] = "Лидер/Задержка",
+	["Latency"] = "Задержка",
+	["Latency checks disabled."] = "Проверка задержки отключена",
+	["Refresh"] = "Обновить",
+	["Close"] = "Закрыть",
+	["Name"] = "Имя",
+	["Perform latency check"] = "Выполнить проверку задержки",
+	["Check the raid's latencies."] = "Проверяеет задержку(пинг) рейда",
 } end )
 
 ----------------------------------

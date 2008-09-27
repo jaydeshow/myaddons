@@ -10,8 +10,8 @@ class Test
     from_json(d)
   end
 end
-$testmaps = false
-$testrecipes = true
+$testmaps = true
+$testrecipes = false
 $testpets = false
 $testdbc = false
 $test_factions = false
@@ -50,33 +50,36 @@ if $testmaps
 nodes = WoWDBMaps.new
 results = nodes.get_map_locations(1617)
 puts results["Westfall"].inspect
+
+puts "Testing npc locations"
+npc = nodes.get_npc_locations(2412)
+puts npc.inspect
+
+nodes.get_raid_maps.each_pair do |id,name|
+  puts "Map #{id} is #{name[:name]}"
+end
 end
 if $testrecipes
 recipes = WoWDBRecipes.new
 results = recipes.get_blacksmithing_list
 thunder = results['Light Earthforged Blade']
-recipes.add_recipe_details(thunder)
-puts "Light Earthforged Blade: #{recipes.get_speciality('Blacksmithing',thunder[:specialty])} #{thunder[:profession]} #{thunder[:is_weapon]}"
+#recipes.add_recipe_details(thunder)
+#puts "Light Earthforged Blade: #{recipes.get_speciality('Blacksmithing',thunder[:specialty])} #{thunder[:profession]} #{thunder[:is_weapon]}"
 
 pots = recipes.get_alchemy_list
-dream = pots['Flask of Supreme Power']
+dream = pots['Elixir of Major Shadow Power']
 recipes.add_recipe_details(dream)
-puts "Flask of Supreme Power rarity: #{dream[:rarity]} #{dream[:is_armor]}"
+puts "Elixir of Major Shadow Power rarity: #{dream[:recipe_binds]} produces #{dream[:item_binds]} Rarity #{dream[:rarity]}"
 
 eng = recipes.get_tailoring_list
 goggles = eng['Swiftheal Mantle']
-recipes.add_recipe_details(goggles)
-puts "Mantle: #{goggles[:profession]} #{goggles[:is_armor]} #{goggles[:armor_slot]} #{goggles[:armor_type]}"
+#recipes.add_recipe_details(goggles)
+#puts "Mantle: #{goggles[:profession]} #{goggles[:is_armor]} #{goggles[:armor_slot]} #{goggles[:armor_type]}"
 
-bandaids = recipes.get_firstaid_list
-v = bandaids['Heavy Silk Bandage']
-#bandaids.each_pair do |k,v|
-  recipes.add_recipe_details(v)
-  puts "Heavy Silk Bandage = #{v[:method]} #{v[:is_armor]} #{v[:armor_slot]} #{v[:armor_type]}"
-#end
-linen = bandaids['Heavy Mageweave Bandage']
-recipes.add_recipe_details(linen)
-puts "Heavy Mageweave Bandage: #{linen[:method]}"
+vest = eng['Blue Linen Vest']
+#recipes.add_recipe_details(vest)
+#puts "Vest #{vest[:method_vendors].inspect}"
+
 mining = recipes.get_mining_list
 #mining.each_pair do |k,v|
 #  puts "Skill #{k}"
@@ -84,24 +87,44 @@ mining = recipes.get_mining_list
 
 
 cooking = recipes.get_cooking_list
-puts "Cooking #{cooking.size}"
-#bandaids.each_pair do |k,v|
-#  recipes.add_recipe_details(v)
-#  puts "First aid skill: #{k} = #{v.inspect}"
-#end
+#puts "Cooking #{cooking.size}"
+
+enchants = recipes.get_enchanting_list
+#puts "Enchanting count #{enchants.size}"
+
+claw = cooking['Sagefish Delight']
+#recipes.add_recipe_details(claw)
+#first_vendor = claw[:method_vendors].first
+#puts "First vendor #{first_vendor.inspect}"
+maps = WoWDBMaps.new
+#mapdata = maps.get_npc_locations(first_vendor[:id])
+#puts "First pass #{mapdata.inspect}"
+#first_map = mapdata[mapdata.keys[1]]
+#puts "First map #{first_map.inspect} avergaed to #{maps.average_location(first_map).inspect}"
+
 jc = recipes.get_jewelcrafting_list
 hear = jc['Ornate Tigerseye Necklace']
-recipes.add_recipe_details(hear)
-puts "Ornate Tigerseye Necklace #{hear.inspect}"
+#recipes.add_recipe_details(hear)
 
 engl = recipes.get_engineering_list
-cgoogle = engl['Deathblow X11 Goggles']
-recipes.add_recipe_details(cgoogle)
-puts "Deathblow X11 Goggles: #{cgoogle.inspect}"
+#engl.each_pair do |k,val|
+#  puts "Getting details for #{k}"
+#  recipes.add_recipe_details(val)
+#end
+seaform = engl['Small Seaforium Charge']
+#recipes.add_recipe_details(seaform)
+#cgoogle = engl['Deathblow X11 Goggles']
+#recipes.add_recipe_details(cgoogle)
 
 philstone = pots['Alchemist\'s Stone']
-recipes.add_recipe_details(philstone)
-puts "Philo stone #{philstone.inspect}"
+#recipes.add_recipe_details(philstone)
+#puts philstone.inspect
+
+bandaids = recipes.get_firstaid_list
+#bandaids.each_pair do |k,v|
+#recipes.add_recipe_details(v)
+#puts "Bandage: #{k} is #{v[:recipe_binds]} produces #{v[:item_binds]} Rarity #{v[:rarity]}"
+#end
 
 
 end

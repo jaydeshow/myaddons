@@ -261,6 +261,9 @@ NL["Windy Cloud"] = "Грозовое облако"
 NL["Swamp Gas"] = "Болотный газ"
 NL["Arcane Vortex"] = "Волбшебное завихрение"
 NL["Felmist"] = "Туман Скверны"
+NL["Steam Cloud"] = "Steam Cloud"
+NL["Cinder Cloud"] = "Cinder Cloud"
+NL["Arctic Cloud"] = "Arctic Cloud"
 
 -- herb bushes
 NL["Peacebloom"] = "Мироцвет"

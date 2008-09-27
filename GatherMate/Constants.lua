@@ -221,6 +221,9 @@ local node_ids = {
 		[NL["Swamp Gas"]] 						= 302,
 		[NL["Arcane Vortex"]] 					= 303,
 		[NL["Felmist"]] 						= 304,
+		[NL["Steam Cloud"]]					= 305,
+		[NL["Cinder Cloud"]]					= 306,
+		[NL["Arctic Cloud"]]					= 307,
 	},
 	["Herb Gathering"] = {
 		[NL["Peacebloom"]] 						= 401,
@@ -465,6 +468,9 @@ local node_textures = {
 		[302] = icon_path.."Gas\\swamp_gas.tga",
 		[303] = icon_path.."Gas\\arcane_vortex.tga",
 		[304] = icon_path.."Gas\\felmist.tga",
+		[305] = icon_path.."Gas\\swamp_gas.tga",
+		[306] = icon_path.."Gas\\felmist.tga",
+		[307] = icon_path.."Gas\\arcane_vortex.tga",
 	},
 	["Herb Gathering"] = {
 		[401] = icon_path.."Herb\\peacebloom.tga",
@@ -601,6 +607,9 @@ local node_minharvest = {
 		[302] = 305,
 		[303] = 305,
 		[304] = 305,
+		[305] = 305,
+		[306] = 305,
+		[307] = 305,
 	},
 	["Herb Gathering"] = {
 		[401] = 1,

@@ -1,4 +1,11 @@
 ------------------------------------------------------------------------
+r81862 | shefki | 2008-09-18 19:08:15 -0400 (Thu, 18 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/LibDogTag-Unit-3.0/Categories/Auras.lua
+
+LibDogTag-Unit-3.0: Shadowmeld has a new spellid on WoTLK.
+
+------------------------------------------------------------------------
 r81131 | ellipsis | 2008-08-30 11:54:17 -0400 (Sat, 30 Aug 2008) | 1 line
 Changed paths:
    M /trunk/LibDogTag-Unit-3.0/LibDogTag-Unit-3.0.lua
@@ -31,32 +38,4 @@ Changed paths:
 LibDogTag-Unit-3.0:
   - Add forward compatability for Wrath API change in GetComboPoints()
 
-------------------------------------------------------------------------
-r80530 | 7destiny | 2008-08-16 05:02:42 -0400 (Sat, 16 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
-
-LibDogTag-Unit-3.0:
-- fix koKR
-------------------------------------------------------------------------
-r80529 | 7destiny | 2008-08-16 04:55:49 -0400 (Sat, 16 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
-
-LibDogTag-Unit-3.0:
-- fix koKR
-------------------------------------------------------------------------
-r80527 | 7destiny | 2008-08-16 03:31:08 -0400 (Sat, 16 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/LibDogTag-Unit-3.0/Localization/koKR.lua
-
-LibDogTag-Unit-3.0:
-- koKR Update
-------------------------------------------------------------------------
-r80518 | ckknight | 2008-08-16 01:41:39 -0400 (Sat, 16 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/LibDogTag-Unit-3.0/Categories/Power.lua
-   M /trunk/LibDogTag-Unit-3.0/Localization/enUS.lua
-
-LibDogTag-Unit-3.0 - add runic power capability.
 ------------------------------------------------------------------------

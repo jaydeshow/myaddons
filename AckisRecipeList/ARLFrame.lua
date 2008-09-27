@@ -5,8 +5,8 @@ ARLFrame.lua
 
 Frame functions for all of AckisRecipeList
 
-$Date: 2008-09-13 12:28:21 -0400 (Sat, 13 Sep 2008) $
-$Rev: 81686 $
+$Date: 2008-09-25 12:01:27 -0400 (Thu, 25 Sep 2008) $
+$Rev: 82036 $
 
 ****************************************************************************************
 ]]--
@@ -70,11 +70,11 @@ local function OnClickExpandRecipe()
 	if (this.IsPushed == false) then
 		local RecipeText = nil
 
-		local sorttype = addon.db.profile.sorting
-		if (sorttype == L["Skill"]) or (sorttype == L["Acquisition"]) then
+		local sorttype = addon.db.profile.sortmethod
+		if (sorttype == 2) or (sorttype == 3) then
 			--RecipeText = string.match(this:GetText(), "|c.*%[.*%]|r %- |c%x*(.*)|r")
 			RecipeText = string.match(this:GetText(), "%- |c%x%x%x%x%x%x%x%x(.*)|r$")
-		elseif (sorttype == L["Name"]) then
+		elseif (sorttype == 1) then
 			--RecipeText = string.match(this:GetText(), "|c%x*(.*)|r %- |c.*%[.*%]|r")
 			RecipeText = string.match(this:GetText(), "|c%x%x%x%x%x%x%x%x(.-)|r")
 		end
@@ -197,15 +197,15 @@ local function AddRecipeInfo(CurrentProfession, CurrentProfessionLevel, CurrentS
 
 			local temprecipetext
 
-			local sorttype = addon.db.profile.sorting
+			local sorttype = addon.db.profile.sortmethod
 
-			if (sorttype == L["Skill"]) or (sorttype == L["Acquisition"]) then
+			if (sorttype == 2) or (sorttype == 3) then
 				if (addon.RecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
 					temprecipetext = addon:Red("[" .. addon.RecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
 				else
 					temprecipetext = addon:White("[" .. addon.RecipeListing[RecipeName]["Level"] .. "]") .. " - " .. addon:White(RecipeName)
 				end
-			elseif (sorttype == L["Name"]) then
+			elseif (sorttype == 1) then
 				if (addon.RecipeListing[RecipeName]["Level"] > CurrentProfessionLevel) then
 					temprecipetext = addon:White(RecipeName) .. " - " .. addon:Red("[" .. addon.RecipeListing[RecipeName]["Level"] .. "]")
 				else

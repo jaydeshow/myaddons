@@ -1,8 +1,10 @@
 ﻿## Interface: 20400
 ## Title: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80Blessings Manager|r] by |cFFFF8080Zek|r
 ## Notes: ZOMGBuffs, The Blessings Manager allows one raid leader/assistant/paladin to configure all paladin's blessings at once
+## Title-zhCN: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80祝福管理器|r] by |cFFFF8080Zek|r
+## Notes-zhCN: 祝福管理器可以让团长，助理以及圣骑士一次性分配所有团队骑士的祝福
 ## Author: Zek
-## Version: $Revision: 73261 $
+## Version: $Revision: 81994 $
 ## LoadOnDemand: 1
 ## RequiredDeps: ZOMGBuffs
 ## OptionalDeps: Ace2, DewdropLib

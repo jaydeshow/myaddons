@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -279,6 +279,51 @@ L:RegisterTranslations("frFR", function() return {
 	["Invite all guild members of the specified rank and higher to the raid."] = "Invite tous les membres de la guilde du rang spécifié et supérieur dans le raid.",
 	["<rank name>"] = "<nom du rang>",
 	--["off"] = true,
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Promote all"] = "Повысить всех",
+	["Promote all members of your raid group automatically."] = "Повысить всех игроков вашей рейд группы автоматически",
+	["Promote guild"] = "Повысить согульчан",
+	["Promote all guild members who join your raid group automatically."] = "Повысить всех участников гильдии вступающих в вашу рейдовую группу автоматически",
+	["Invite"] = "Пригласить",
+	["Leader/Invite"] = "Лидер/Пригласить",
+	["<oRA> Sorry, the group is full."] = "<oRA> Извините, эта группа полна.",
+	["Inviting: "] = "Приглашение: ",
+	["Autopromoting: "] = "Автоповышение: ",
+	["Keyword inviting disabled."] = "Приглошение по фразе отключено.",
+	["Invitation keyword set to: "] = "Ключевые слова для приглашения: ",
+	["To turn off keyword inviting set it to 'off'."] = "Чтобы отключить приглашение, введите 'откл'.",
+	["<oRA> Raid disbanding on request by: "] = "<oRA> Отключение запросов в рейд: ",
+	["Disabling Auto-Promote for: "] = "Выключить Автоповышение для: ",
+	["Enabling Auto-Promote for: "] = "Включить Автоповышение для: ",
+	["Autopromoting: "] = "Автоповышение: ",
+	["You have no-one in your Auto-Promote list"] = "Никого нет в списке Автоповышения",
+	["Options for inviting people to your raid."] = "Опции для приглашения людей в ваш рейд.",
+	["Autopromote"] = "Автоповышение",
+	["Set/Unset an autopromotion."] = "Выбрать/Скинуть автоповышение.",
+	["<name>"] = "<имя>",
+	["Keyword"] = "Ключевые слова",
+	["Set/Unset an invitation keyword. People can whisper you this keyword to be invited to your group automatically."] = "Набрать/Скинуть ключевое слово для автоприглашения. Люди могут вам шепнуть данное ключевое слово для приглошения в вашу группу автоматически",
+	["<keyword>"] = "<Ключевое слово>",
+	["Disband"] = "Распустить",
+	["Disband the raid."] = "Распустить рейд.",
+	["List"] = "Список",
+	["List autopromotions."] = "Список автоповышения.",
+	["Invite Guild"] = "Пригласить из гильдии",
+	["Invite all characters of the specified level in the guild to raid."] = "Пригласить всех персонажей из гильдии по заданному уровню.",
+	["Invite Zone"] = "Пригласть с Зоны",
+	["Invite all characters in guild in your current zone to raid."] = "Пригласить в рейд всех персонажей из гильдии находящихся в вашей зоне.",
+	["<level or empty>"] = "<уровень или пусто>",
+	["You are not in a guild."] = "Вы не в гильдии.",
+	["All level %d or higher characters will be invited to raid in 10 seconds. Please leave your groups."] = "Все уровни %d или выше будут приглашены в рейд через 10 секунд. Пожалуйста покиньте свои группы.",
+	["All characters in %s will be invited to raid in 10 seconds. Please leave your groups."] = "Все игроки в %s будут приглашены в рейд через 10 секунд. Пожалуйста покиньте свои группы.",
+	["All characters of rank %s or higher will be invited to raid in 10 seconds. Please leave your groups."] = "Все игроки звания %s и выше будут приглашены в рейд через 10 секунд. Пожалуйста покиньте свои группы.",
+	["Invalid guild rank specified: %s"] = "Заданно неверное звание: %s",
+	["Invite Rank"] = "Пригласить по рангу",
+	["Invite all guild members of the specified rank and higher to the raid."] = "Пригласить в рейд всех участников гильдии по заданному званию и выше его.",
+	["<rank name>"] = "<имя ранга>",
+	["off"] = "откл",
 } end )
 
 ----------------------------------

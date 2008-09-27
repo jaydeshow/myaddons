@@ -177,6 +177,25 @@ L:RegisterTranslations("frFR", function() return {
 	["Transparency"] = "Transparence",
 	["Change the transparency of the window."] = "Modifie la transparence de la fenêtre.",
 } end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["You have to be Raid Leader or Assistant to do that."] = "Вы должны быть рейд лидером или помощником чтобы сделать это.",
+	["Requested a status update."] = "Требуется обновление данных.",
+	["Request status"] = "Запрос данных",
+	["Request a status update"] = "Заросить обновление данных.",
+	["Textures"] = "Текстуры",
+	["Set all statusbar textures."] = "Настройка текстур панели данных.",
+
+	-- standard draggable window texts
+	["Toggle"] = "Показать",
+	["Show or hide the window"] = "Показать или Скрыть окно.",
+	["Lock"] = "Закрепить",
+	["Make the window unclickable"] = "Делает окно неподвижным.",
+	["Size"] = "Размер",
+	["Change the size of the window."] = "Настраивает размер окна.",
+	["Transparency"] = "Прозрачность",
+	["Change the transparency of the window."] = "Настраивает прозрачность окна.",
+} end)
 
 ---------------------------------
 --   Shorthand/Check Handler   --
@@ -347,7 +366,7 @@ oRA:SetModuleMixins("AceEvent-2.0", CTRACL10)
 oRA.defaults = {
 	bartexture = "BantoBar",
 }
-oRA.version = tonumber(string.sub("$Revision: 75170 $", 12, -3))
+oRA.version = tonumber(string.sub("$Revision: 81915 $", 12, -3))
 
 oRA.consoleOptions = {
 	type = "group",

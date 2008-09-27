@@ -163,7 +163,7 @@ L:RegisterTranslations("koKR", function() return {
 
 	strike = "타락의 일격",
 	strike_desc = "타락의 일격에 걸린 플레이어를 알립니다.",
-	strike_message = "%s: 타락의 일격",
+	strike_message = "타락의 일격: %s",
 } end )
 
 L:RegisterTranslations("frFR", function() return {
@@ -410,7 +410,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = { boss, sath }
 mod.guid = 24892
 mod.toggleoptions = {"portal", "buffet", "realm", "curse", "strike", -1, "magichealing", "magiccast", "magichit", "magicthreat", "enrage", "proximity", "bosskill"}
-mod.revision = tonumber(("$Revision: 81774 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 81955 $"):sub(12, -3))
 mod.proximityCheck = function(unit) return CheckInteractDistance(unit, 3) end
 mod.proximitySilent = true
 

@@ -1,4 +1,12 @@
 ------------------------------------------------------------------------
+r81866 | whitetooth | 2008-09-18 23:41:55 -0400 (Thu, 18 Sep 2008) | 3 lines
+Changed paths:
+   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
+
+StatLogicLib: WotLK Build 8962
+- Mp5 from Spirit nerfed at levels 71 to 80, BASE_REGEN table updated.
+- Players lower then level 34 will now convert resilience ratings at the same rate as level 34 players
+------------------------------------------------------------------------
 r81722 | whitetooth | 2008-09-14 09:13:59 -0400 (Sun, 14 Sep 2008) | 2 lines
 Changed paths:
    M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
@@ -250,10 +258,4 @@ Changed paths:
    M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
 
 StatLogicLib: frFR update: Purified Shadowsong Amethyst
-------------------------------------------------------------------------
-r80626 | StingerSoft | 2008-08-18 17:40:21 -0400 (Mon, 18 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua
-
-StatLogicLib: added ruRU (credit by Gezz)
 ------------------------------------------------------------------------

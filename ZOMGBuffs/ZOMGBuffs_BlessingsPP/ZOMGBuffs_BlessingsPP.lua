@@ -1,5 +1,5 @@
 ﻿if (ZOMGBlessingsPP) then
-	z:Print("Installation error, duplicate copy of ZOMGBuffs_BlessingsPP (Addons\ZOMGBuffs\ZOMGBuffs_BlessingsPP and Addons\ZOMGBuffs_BlessingsPP)")
+	ZOMGBuffs:Print("Installation error, duplicate copy of ZOMGBuffs_BlessingsPP (Addons\ZOMGBuffs\ZOMGBuffs_BlessingsPP and Addons\ZOMGBuffs_BlessingsPP)")
 	return
 end
 

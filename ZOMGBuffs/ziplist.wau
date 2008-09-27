@@ -1,4 +1,5 @@
-ZOMGBuffs/Changelog-ZOMGBuffs-r81802.txt
+ZOMGBuffs/Changelog-ZOMGBuffs-r82089.txt
+ZOMGBuffs/Bindings.xml
 ZOMGBuffs/modules.xml
 ZOMGBuffs/filelist.wau
 ZOMGBuffs/embeds.xml
@@ -25,10 +26,15 @@ ZOMGBuffs/ZOMGBuffs_SelfBuffs/Locales/localization.frFR.lua
 ZOMGBuffs/Textures/otravi-semi-full-border-grey.blp
 ZOMGBuffs/Textures/BantoBar.blp
 ZOMGBuffs/Textures/IconOff.blp
+ZOMGBuffs/Textures/MagePortal_Silvermoon.blp
+ZOMGBuffs/Textures/MagePortal_Theramore.blp
+ZOMGBuffs/Textures/MagePortal_Shattrath.blp
+ZOMGBuffs/Textures/MagePortal_Exodar.blp
 ZOMGBuffs/Textures/FrameBack.blp
 ZOMGBuffs/Textures/Clock.blp
 ZOMGBuffs/Textures/Icon.blp
 ZOMGBuffs/Textures/IconText.blp
+ZOMGBuffs/Textures/MagePortal_Dalaran.blp
 ZOMGBuffs/Textures/Elements.blp
 ZOMGBuffs/Textures/Overlay.blp
 ZOMGBuffs/ZOMGBuffs_BlessingsManager/ZOMGBuffs_BlessingsManager.lua
@@ -40,6 +46,11 @@ ZOMGBuffs/ZOMGBuffs_BlessingsManager/Locales/localization.frFR.lua
 ZOMGBuffs/ZOMGBuffs_BlessingsManager/Images/ZOMGManagerTab.blp
 ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.lua
 ZOMGBuffs/ZOMGBuffs_BlessingsPP/ZOMGBuffs_BlessingsPP.toc
+ZOMGBuffs/ZOMGBuffs_Portalz/ZOMGBuffs_Portalz.toc
+ZOMGBuffs/ZOMGBuffs_Portalz/ZOMGBuffs_Portalz.lua
+ZOMGBuffs/ZOMGBuffs_Portalz/Locales/localization.lua
+ZOMGBuffs/ZOMGBuffs_Portalz/Locales/Locales.xml
+ZOMGBuffs/ZOMGBuffs_Portalz/Locales/localization.zhCN.lua
 ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.lua
 ZOMGBuffs/ZOMGBuffs_BuffTehRaid/ZOMGBuffs_BuffTehRaid.toc
 ZOMGBuffs/ZOMGBuffs_BuffTehRaid/Locales/localization.lua

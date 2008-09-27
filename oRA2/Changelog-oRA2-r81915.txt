@@ -1,0 +1,33 @@
+------------------------------------------------------------------------
+r81915 | StingerSoft | 2008-09-20 03:11:16 -0400 (Sat, 20 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/oRA2/Core.lua
+   M /trunk/oRA2/Leader/Durability.lua
+   M /trunk/oRA2/Leader/Invite.lua
+   M /trunk/oRA2/Leader/Item.lua
+   M /trunk/oRA2/Leader/Latency.lua
+   M /trunk/oRA2/Leader/Loot.lua
+   M /trunk/oRA2/Leader/MainTank.lua
+   M /trunk/oRA2/Leader/RaidWarn.lua
+   M /trunk/oRA2/Leader/Ready.lua
+   M /trunk/oRA2/Leader/Resist.lua
+   M /trunk/oRA2/Leader/oRA2_Leader.toc
+   M /trunk/oRA2/Optional/CoolDown.lua
+   M /trunk/oRA2/Optional/Group.lua
+   M /trunk/oRA2/Optional/MainTank.lua
+   M /trunk/oRA2/Optional/PlayerTarget.lua
+   M /trunk/oRA2/Optional/Resurrection.lua
+   M /trunk/oRA2/Optional/Version.lua
+   M /trunk/oRA2/Optional/Zone.lua
+   M /trunk/oRA2/Optional/oRA2_Optional.toc
+   M /trunk/oRA2/Options.lua
+   M /trunk/oRA2/Participant/Item.lua
+   M /trunk/oRA2/Participant/MainTank.lua
+   M /trunk/oRA2/Participant/Participant.lua
+   M /trunk/oRA2/Participant/RaidWarn.lua
+   M /trunk/oRA2/Participant/Ready.lua
+   M /trunk/oRA2/Participant/oRA2_Participant.toc
+   M /trunk/oRA2/oRA2.toc
+
+oRA2: added ruRU localization
+------------------------------------------------------------------------

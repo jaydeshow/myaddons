@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r81923 | StingerSoft | 2008-09-20 05:44:58 -0400 (Sat, 20 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/LibSharedMedia-2.0/LibSharedMedia-2.0.lua
+
+LibSharedMedia-2.0: added ruRU local
+------------------------------------------------------------------------

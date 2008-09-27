@@ -1,10 +1,10 @@
 ﻿--[[
 Name: StatLogic-1.0
 Description: A Library for stat conversion, calculation and summarization.
-Revision: $Revision: 81722 $
+Revision: $Revision: 81866 $
 Author: Whitetooth
 Email: hotdogee [at] gmail [dot] com
-LastUpdate: $Date: 2008-09-14 09:13:59 -0400 (Sun, 14 Sep 2008) $
+LastUpdate: $Date: 2008-09-18 23:41:55 -0400 (Thu, 18 Sep 2008) $
 Website:
 Documentation:
 SVN: $URL: svn://dev.wowace.com/wowace/trunk/StatLogicLib/StatLogic-1.0/StatLogic-1.0.lua $
@@ -25,7 +25,7 @@ Features:
 ]]
 
 local MAJOR_VERSION = "StatLogic-1.0"
-local MINOR_VERSION = tonumber(("$Revision: 81722 $"):sub(12, -3))
+local MINOR_VERSION = tonumber(("$Revision: 81866 $"):sub(12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION.." requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
@@ -545,7 +545,7 @@ PatternLocale.enUS = {
 		
 		["Increases your expertise rating"] = {"EXPERTISE_RATING"},
 		["Increases armor penetration rating"] = {"ARMOR_PENETRATION_RATING"},
-		["Increases your armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- ID 43178
+		["Increases your armor penetration rating"] = {"ARMOR_PENETRATION_RATING"}, -- ID:43178
 		
 		-- Exclude
 		["sec"] = false,
@@ -9290,7 +9290,7 @@ function StatLogic:GetEffectFromRating(rating, id, level)
 	--2.4.3  Parry Rating, Defense Rating, and Block Rating: Low-level players 
 	--   will now convert these ratings into their corresponding defensive 
 	--   stats at the same rate as level 34 players.
-	if (id == CR_DEFENSE_SKILL or id == CR_PARRY or id == CR_BLOCK) and level < 34 then
+	if (id == CR_DEFENSE_SKILL or id == CR_PARRY or id == CR_BLOCK or id == CR_CRIT_TAKEN_MELEE or id == CR_CRIT_TAKEN_RANGED or id == CR_CRIT_TAKEN_SPELL) and level < 34 then
 		level = 34
 	end
 	if level >= 70 then
@@ -10497,16 +10497,16 @@ if wowBuildNo >= '7897' then
 		[68] = 0.009553,
 		[69] = 0.009445,
 		[70] = 0.009327,
-		[71] = 0.009079,
-		[72] = 0.008838,
-		[73] = 0.008603,
-		[74] = 0.008375,
-		[75] = 0.008152,
-		[76] = 0.007936,
-		[77] = 0.007725,
-		[78] = 0.00752,
-		[79] = 0.00732,
-		[80] = 0.007125,
+		[71] = 0.008859,
+		[72] = 0.008415,
+		[73] = 0.007993,
+		[74] = 0.007592,
+		[75] = 0.007211,
+		[76] = 0.006849,
+		[77] = 0.006506,
+		[78] = 0.006179,
+		[79] = 0.005869,
+		[80] = 0.005575,
 	}
 
 	function StatLogic:GetNormalManaRegenFromSpi(spi, int, level)

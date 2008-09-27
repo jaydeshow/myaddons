@@ -13,6 +13,7 @@
 ## X-Category: Inventory
 ## SavedVariables: MendeleevDB
 ## X-Embeds: Ace2, LibBabble-Boss-3.0, LibBabble-Zone-3.0, LibBabble-Class-3.0, Babble-Ore-2.2, LibPeriodicTable-3.1
+## X-Email: rabbit.magtheridon@gmail.com
 
 embeds.xml
 

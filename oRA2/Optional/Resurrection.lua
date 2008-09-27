@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -46,6 +46,12 @@ L:RegisterTranslations("deDE", function() return {
 	["Resurrections"] = "Wiederbelebungen",
 	["Optional/Resurrection"] = "Wahlweise/Wiederbelebung",
 	["Options for the resurrection monitor."] = "Optionen für den Wiederbelebungsmonitor.",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Resurrections"] = "Воскрешение",
+	["Optional/Resurrection"] = "Дополнительно/Воскрешения",
+	["Options for the resurrection monitor."] = "Опции для монитоинга Воскрешения.",
 } end)
 
 ----------------------------------

@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibSharedMedia-2.0
-Revision: $Revision: 69860 $
+Revision: $Revision: 81923 $
 Author: ckknight
 Based on: SharedMediaLib-1.0 by elkano
 Inspired By: SurfaceLib by Haste/Otravi (troeks@gmail.com)
@@ -12,7 +12,7 @@ Dependencies: None
 License: LGPL v2.1
 ]]
 
-local vmajor, vminor = "LibSharedMedia-2.0", "$Revision: 69860 $"
+local vmajor, vminor = "LibSharedMedia-2.0", "$Revision: 81923 $"
 
 local lib, oldMinor = LibStub:NewLibrary(vmajor, vminor)
 if not lib then
@@ -118,6 +118,12 @@ elseif locale == "zhCN" then
 	mediaTable["font"]["伤害数字"] = "Fonts\\ZYKai_C.ttf"
 	mediaTable["font"]["默认"] = "Fonts\\ZYKai_T.ttf"
 	mediaTable["font"]["聊天"] = "Fonts\\ZYHei.ttf"
+elseif locale == "ruRU" then
+	mediaTable["font"]["Arial Narrow"] = "Fonts\\ARIALN.TTF"
+	mediaTable["font"]["Friz Quadrata TT"] = "Fonts\\FRIZQT__.TTF"
+	mediaTable["font"]["Morpheus"] = "Fonts\\MORPHEUS.TTF"
+	mediaTable["font"]["Nimrod MT"] = "Fonts\\NIM_____.ttf"
+	mediaTable["font"]["Skurri"] = "Fonts\\SKURRI.TTF"
 end
 
 lib.mediaList = oldLib and oldLib.mediaList or {}
@@ -134,6 +140,8 @@ if not defaultMedia then
 		defaultMedia["font"] = "預設"
 	elseif locale == "koKR" then
 		defaultMedia["font"] = "기본 글꼴"
+	elseif locale == "ruRU" then
+		defaultMedia["font"] = "Friz Quadrata TT"
 	elseif locale == "zhCN" then
 		defaultMedia["font"] = "默认"
 	end

@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -494,6 +494,85 @@ L:RegisterTranslations("deDE", function() return {
 
 	["Lock"] = "Sperren",
 	["Lock the PT frames."] = "Sperrt den PT Rahmen.",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Player"] = "Игрок",
+	["PlayerTarget"] = "Цель игрока",
+	["Optional/PlayerTarget"] = "Дополнительно/Цели игрока",
+	["Options for the playertargets."] = "Опции для целей игрока.",
+	["Targettarget"] = "Цель Цели",
+	["Toggle TargetTarget frames."] = "Вкл/Выкл фреймы Цель Цели.",
+	["Scale"] = "Масштаб",
+	["Set frame scale."] = "Настройка Масштаба Фрейма.",
+	["Alpha"] = "Прозрачность",
+	["Set frame alpha."] = "Настройка прозрачность фрейма.",
+	["Raidicon"] = "Иконка рейда",
+	["Toggle raid icons."] = "Вкл/Выкл иконки рейда.",
+	["Frames"] = "Фреймы",
+	["Options for the playertarget frames."] = "Опции фреймов целей игрока.",
+	["Growup"] = "Рост вверх",
+	["Toggle growup."] = "Вкл/Выкл рост вверх.",
+	["Inverse"] = "Инверсия",
+	["Toggle inverse healthbar."] = "Вкд/Выкл инверсиию полосы здоровья.",
+	["Deficit"] = "Нехватка",
+	["Toggle deficit health."] = "Вкд/Выкл нехватку здоровья.",
+	["Target"] = "Цель",
+	["TargetTarget"] = "Цель Цели",
+	["Set the maximum number of player tanks you want to show."] = "Установите максимальное количество игроков(второстепенных) танков которое вы хотите видеть.",
+	["Amount"] = "Количество.",
+	["Classcolor"] = "Цвет Класса",
+	["Color healthbars by class."] = "Цвет полосы жизни по классу.",
+	["Enemycolor"] = "Цвет врага",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Выберите цвет полосы врага. (использовать при включенном класс цвете)",
+	["Color Aggro"] = "Цвет аггро",
+	["Color aggro status for PTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Цвет статуса аггро ВТов на их именах. Оранжевый - имеет цель, Зеленый - танкует, Красный - без аггро.",
+	["Backdrop"] = "Фон",
+	["Toggle the backdrop."] = "Вкл/Выкл Фон.",
+	["Highlight"] = "Выделение",
+	["Toggle highlighting your target."] = "Вкл/Выкл выделение вашей цели.",
+	["Reverse"] = "Перевернуть",
+	["Toggle reverse order."] = "Вкл/Выкл переворачивание расположения.",
+	["Numbers"] = "Номера",
+	["Toggle showing of PT numbers."] = "Вкл/Выкл отображение номеров ВТ.",
+	["Tooltips"] = "Подсказки",
+	["Toggle showing of tooltips."] = "Вкл/Выкл отображение подсказок.",
+	["Show"] = "Отображение",
+	["Show player."] = "Отображать игрока.",
+	["Show target."] = "Отображать цель.",
+	["Show targettarget."] = "Отображать цель цели.",
+	["Define which frames you want to see."] = "Определять который фрейм вы хотите видеть.",
+	["Layout"] = "Располжение",
+	["Set the layout for the PT frames."] = "Установка расположение для фрейма ВТов.",
+	["Vertical"] = "Вертикальное",
+	["Horizontal"] = "Горизонтальное",
+
+	["Set"] = "Назначить",
+	["Set a player."]= "Назначить игрока.",
+	["<nr> <name>"] = "<№> <имя>",
+	["<nr>"] = "<№>",
+	["<name>"] = "<имя>",
+	["Remove"] = "Удалить",
+	["Remove a player."] = "Удаляет игрока.",
+	["Removed player: "] = "Удаленный игрок: ",
+	["Set player: "] = "Назначить игрока: ",
+
+	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
+
+	["<Not Assigned>"] = "<Не назначен>",
+
+	["Style"] = "Стиль",
+	["Set the frame style."] = "Установить стиль фреймов.",
+	["<style>"] = "<стиль>",
+
+	["Default"] = "Стандартный",
+	["Compact"] = "Компактно",
+
+	["Backwards"] = "Вернуть",
+	["Order PT|PTT|PTTT Backwards."] = "Сортирует обратно ВТ|ВTЦ|ВTЦЦ.",
+
+	["Lock"] = "Закрепить",
+	["Lock the PT frames."] = "Закрепить ВT фреймы.",
 } end)
 
 ----------------------------------

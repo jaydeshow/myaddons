@@ -1,6 +1,6 @@
 ﻿--[[
 Name: LibBabble-Zone-3.0
-Revision: $Rev: 81653 $
+Revision: $Rev: 82035 $
 Author(s): ckknight (ckknight@gmail.com)
 Website: http://ckknight.wowinterface.com/
 Description: A library to provide localizations for zones.
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "LibBabble-Zone-3.0"
-local MINOR_VERSION = "$Revision: 81653 $"
+local MINOR_VERSION = "$Revision: 82035 $"
 
 -- #AUTODOC_NAMESPACE prototype
 
@@ -1030,7 +1030,7 @@ elseif GAME_LOCALE == "zhCN" then
 		["Azeroth"] = "艾泽拉斯",
 		["Eastern Kingdoms"] = "东部王国",
 		["Kalimdor"] = "卡利姆多",
-		--["Northrend"] = true,
+		["Northrend"] = "诺森德",
 		["Outland"] = "外域",
 		["Cosmic map"] = "全部地图",
 
@@ -1226,41 +1226,41 @@ elseif GAME_LOCALE == "zhCN" then
 
 -- WRATH OF THE LICH KING
 -- Zones
-		--["Borean Tundra"] = true,
-		--["Crystalsong Forest"] = true,
-		--["Dalaran"] = true,
-		--["Dragonblight"] = true,
-		--["Grizzly Hills"] = true,
-		--["Howling Fjord"] = true,
-		--["Icecrown"] = true,
-		--["Sholazar Basin"] = true,
-		--["The Storm Peaks"] = true,
-		--["Wintergrasp"] = true,
-		--["Zul'Drak"] = true,
+		["Borean Tundra"] = "北风苔原",
+		["Crystalsong Forest"] = "晶歌森林",
+		["Dalaran"] = "达拉然",
+		["Dragonblight"] = "龙骨荒野",
+		["Grizzly Hills"] = "灰熊丘陵",
+		["Howling Fjord"] = "嚎风峡湾",
+		["Icecrown"] = "冰冠冰川",
+		["Sholazar Basin"] = "索拉查盆地",
+		["The Storm Peaks"] = "风暴峭壁",
+		["Wintergrasp"] = "冬拥湖",
+		["Zul'Drak"] = "祖达克",
+		
+	-- Instances (and subzones used for displaying these instances)
+		["Ahn'kahet: The Old Kingdom"] = "安卡雷：古代王国",
+		["Azjol-Nerub"] = "艾卓-尼鲁布",
+		["Coldarra"] = "考达拉",
+		["The Culling of Stratholme"] = "净化斯坦索姆",
+		["Drak'Tharon Keep"] = "达克萨隆要塞",
+		["The Eye of Eternity"] = "永恒之眼",
+		["Gundrak"] = "古达克",
+		["Halls of Lightning"] = "闪电大厅",
+		["Halls of Stone"] = "岩石大厅",
+		["The Nexus"] = "魔枢",
+		["The Obsidian Sanctum"] = "黑曜聖所",
+		["The Oculus"] = "魔环",
+		["Ulduar"] = "奥杜尔", 
+		["Utgarde Keep"] = "乌特加德城堡",
+		["Utgarde Pinnacle"] = "乌特加德之巅",
+		["The Violet Hold"] = "紫罗兰监狱",
+		["Wyrmrest Temple"] = "龙眠神殿",
 
--- Instances (and subzones used for displaying these instances)
-		--["Ahn'kahet: The Old Kingdom"] = true,
-		--["Azjol-Nerub"] = true,
-		--["Coldarra"] = true,
-		--["The Culling of Stratholme"] = true,
-		--["Drak'Tharon Keep"] = true,
-		--["The Eye of Eternity"] = true,
-		--["Gundrak"] = true,
-		--["Halls of Lightning"] = true,
-		--["Halls of Stone"] = true,
-		--["The Nexus"] = true,
-		--["The Obsidian Sanctum"] = true,
-		--["The Oculus"] = true,
-		--["Ulduar"] = true,
-		--["Utgarde Keep"] = true,
-		--["Utgarde Pinnacle"] = true,
-		--["The Violet Hold"] = true,
-		--["Wyrmrest Temple"] = true,
-
--- PvP Instances
-		--["Dalaran Sewers"] = true,
-		--["The Ring of Valor"] = true,
-		--["Strand of the Ancients"] = true,
+	-- PvP Instances
+		["Dalaran Sewers"] = "达拉然下水道",
+		["The Ring of Valor"] = "勇武之环",--check
+		["Strand of the Ancients"] = "远古海滩",
 	}
 elseif GAME_LOCALE == "zhTW" then
 	lib:SetCurrentTranslations {
@@ -1713,28 +1713,28 @@ elseif GAME_LOCALE == "koKR" then
 		["Zul'Drak"] = "줄드락",
 
 -- Instances (and subzones used for displaying these instances)
-		--["Ahn'kahet: The Old Kingdom"] = true,
+		["Ahn'kahet: The Old Kingdom"] = "앙크헤트: 고대 왕국",
 		["Azjol-Nerub"] = "아졸네룹",
-		--["Coldarra"] = true,
-		--["The Culling of Stratholme"] = true,
+		["Coldarra"] = "콜다라",
+		["The Culling of Stratholme"] = "옛 스트라솔름",
 		["Drak'Tharon Keep"] = "드랙타론 요새",
-		--["The Eye of Eternity"] = true,
+		["The Eye of Eternity"] = "영원의 눈",	-- check
 		["Gundrak"] = "군드락",
-		["Halls of Lightning"] = "전격의 전당", -- check
+		["Halls of Lightning"] = "전격의 전당",	-- check
 		["Halls of Stone"] = "돌의 전당",
 		["The Nexus"] = "마력의 탑",
-		--["The Obsidian Sanctum"] = true,
+		["The Obsidian Sanctum"] = "흑요석 성소",	-- check
 		["The Oculus"] = "마력의 눈",
 		["Ulduar"] = "울두아",
 		["Utgarde Keep"] = "우트가르드 성채",
 		["Utgarde Pinnacle"] = "우트가르드 첨탑",
-		--["The Violet Hold"] = true,
-		--["Wyrmrest Temple"] = true,
+		["The Violet Hold"] = "보라빛 성채",
+		["Wyrmrest Temple"] = "고룡 요새",
 
 -- PvP Instances
-		--["Dalaran Sewers"] = true,
-		--["The Ring of Valor"] = true,
-		--["Strand of the Ancients"] = true,
+		["Dalaran Sewers"] = "달라란 하수도",	-- check
+		["The Ring of Valor"] = "용맹의 투기장",
+		["Strand of the Ancients"] = "고대의 해안",
 	}
 elseif GAME_LOCALE == "esES" then
 	lib:SetCurrentTranslations {
@@ -2230,7 +2230,7 @@ elseif GAME_LOCALE == "ruRU" then
 		["Badlands"] = "Бесплодные земли",
 		["The Barrens"] = "Степи",
 		["Blackfathom Deeps"] = "Непроглядная Пучина",
-		["Blackrock Depths"] = "Глубины Черной Горы",
+		["Blackrock Depths"] = "Глубины Черной горы",
 		["Blackrock Mountain"] = "Черная гора",
 		["Blackrock Spire"] = "Вершина Черной горы",
 		["Blackwing Lair"] = "Логово Крыла Тьмы",

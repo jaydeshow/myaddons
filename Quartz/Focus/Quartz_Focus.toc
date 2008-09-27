@@ -2,6 +2,8 @@
 ## LoadOnDemand: 1
 ## Title: Quartz |cff7777ffFocus|r
 ## Notes: Quartz module to display casting bar for your focus.
+## Title-ruRU: Кварц |cff7777ffФокус|r
+## Notes-ruRU: Модуль Кварца отображающий баффы и дебаффы цели/фокуса.
 ## Author: Nymbia
 ## Version: 1.0
 ## Dependencies: Quartz

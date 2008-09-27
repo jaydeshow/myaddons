@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Trainer-2.2
-Revision: $Rev: 80316 $
+Revision: $Rev: 81991 $
 Authors(s): Kodewulf (kodewulf@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Trainer-2.2
@@ -9,7 +9,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Trainer-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 80316 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 81991 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -305,6 +305,7 @@ BabbleTrainer:RegisterTranslations("frFR", function() return {
 
 BabbleTrainer:RegisterTranslations("koKR", function() return {
 	-- Trainer types
+	["Armor Crafter"] = "방어구 전문가",
 	["Artisan Alchemist"] = "전문 연금술사",
 	["Artisan Blacksmith"] = "전문 대장장이",
 	["Artisan Enchanter"] = "전문 마법부여사",
@@ -312,28 +313,32 @@ BabbleTrainer:RegisterTranslations("koKR", function() return {
 	["Artisan Leatherworker"] = "전문 가죽세공인",
 	["Artisan Tailor"] = "전문 재봉사",
 	["Bael'dun Chief Engineer"] = "바엘던 선임기술자",
-	["Bat Handler"] = "Bat Handler", -- check
+	["Bat Handler"] = "박쥐 조련사",
 	["Blacksmith"] = "대장장이",
 	["Chief Engineer"] = "선임기술자",
 	["Cooking Trainer"] = "전문 요리사",
 	["Demon Trainer"] = "악마 훈련사",
 	["Druid Trainer"] = "상급 드루이드",
 	["Engineer"] = "기술자",
+	["Engineering Trainer"] = "전문 기계공학",
 	["Expert Alchemist"] = "숙련 연금술사",
 	["Expert Blacksmith"] = "숙련 대장장이",
 	["Expert Enchanter"] = "숙련 마법부여사",
 	["Expert Engineer"] = "숙련 기술자",
+	["Expert Jewelcrafter"] = "보석세공 전문가",
 	["Expert Leatherworker"] = "숙련 가죽세공인",
 	["Expert Tailor"] = "숙련 재봉사",
-	["Explorers' League"] = "Explorers' League", -- check
+	["Explorers' League"] = "연맹 전초기지", -- check
 	["First Aid Trainer"] = "전문 응급치료사",
 	["Fishing Trainer"] = "전문 낚시꾼",
+	["Goblin Engineering Trainer"] = "전문 고블린 기계공학",
 	["Grand Master Alchemist"] = "연금술의 거장",
 	["Grand Master Blacksmith"] = "대장기술의 거장",
 	["Grand Master Enchanter"] = "마법부여의 거장",
 	["Grand Master Engineer"] = "기계공학의 거장",
 	["Grand Master Jewelcrafter"] = "보석세공의 거장",
 	["Grand Master Leatherworker"] = "가죽세공의 거장",
+	["Grand Master Skinner"] = "무두질의 거장",
 	["Grand Master Tailor"] = "재봉술의 거장",
 	["Head Eco-Dome Engineer"] = "수석 생태지구 기술자",
 	["Herbalism Trainer"] = "전문 약초채집사",
@@ -358,7 +363,7 @@ BabbleTrainer:RegisterTranslations("koKR", function() return {
 	["Master Engineer"] = "기계공학의 대가",
 	["Master Gnome Engineer"] = "노움 기술자 조합장",
 	["Master Goblin Engineer"] = "고블린 기술자 조합장",
-	["Master Jewelcrafter"] = "보석세공의 거장", -- check
+	["Master Jewelcrafter"] = "보석세공의 거장",
 	["Master Leatherworker"] = "가죽세공의 대가",
 	["Master Leatherworking Trainer"] = "가죽세공의 대가",
 	["Master Shadoweave Tailor"] = "그림자 재봉술의 대가",
@@ -372,15 +377,16 @@ BabbleTrainer:RegisterTranslations("koKR", function() return {
 	["Portal Trainer"] = "순간이동 전문 마법사",
 	["Priest Trainer"] = "상급 사제",
 	["Ram Riding Instructor"] = "전문 산양 기수",
-	["Raptor Handler"] = "Raptor Handler", -- check
+	["Raptor Handler"] = "랩터 조련사",
 	["Raptor Riding Trainer"] = "랩터 조련사",
 	["Riding Instructor"] = "전문 기수",
 	["Rogue Trainer"] = "상급 도적",
 	["Royal Apothecary Society"] = "왕립 연금술 학회",
-	["Saber Handler"] = "Saber Handler", -- check
+	["Saber Handler"] = "호랑이 조련사",
 	["Shaman Trainer"] = "상급 주술사",
+	["Skinner"] = "무두질",
 	["Skinning Trainer"] = "전문 무두장이",
-	["Speciality Engineer"] = "Speciality Engineer", -- check
+	["Speciality Engineer"] = "특수 기술자",
 	["Superior Leatherworker"] = "최상급 가죽세공인",
 	["Transportation Engineer"] = "순간이동 기술자",
 	["Trauma Surgeon"] = "군의관",

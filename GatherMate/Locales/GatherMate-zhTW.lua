@@ -266,6 +266,9 @@ NL["Windy Cloud"] = "多風之雲"
 NL["Swamp Gas"] = "沼氣"
 NL["Arcane Vortex"] = "秘法漩渦"
 NL["Felmist"] = "魔化霧"
+NL["Steam Cloud"] = "Steam Cloud"
+NL["Cinder Cloud"] = "Cinder Cloud"
+NL["Arctic Cloud"] = "Arctic Cloud"
 
 -- herb bushes
 NL["Peacebloom"] = "寧神花"

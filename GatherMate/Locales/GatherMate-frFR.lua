@@ -223,6 +223,34 @@ NL["School of Darter"] = "Banc de dards"
 NL["Sporefish School"] = "Banc de poissons-spores"
 NL["Steam Pump Flotsam"] = "Détritus de la pompe à vapeur"
 NL["School of Tastyfish"] = "Banc de courbine"
+NL["Borean Man O' War School"] = "Banc de poissons-méduses boréens"
+NL["Deep Sea Monsterbelly School"] = "Banc de baudroies abyssales"
+NL["Dragonfin Angelfish School"] = "Banc de demoiselles aileron-de-dragon"
+NL["Fangtooth Herring School"] = "Banc de harengs crocs-pointus"
+NL["Floating Wreckage Pool"] = true
+NL["Glacial Salmon School"] = "Banc de saumons glaciaires"
+NL["Glassfin Minnow School"] = "Banc de vairons nageverres"
+NL["Imperial Manta Ray School"] = "Banc de raies manta impériales"
+NL["Moonglow Cuttlefish School"] = "Banc de seiches lueur-de-lune"
+NL["Musselback Sculpin School"] = "Banc de rascasses dos-de-moule"
+NL["Nettlefish School"] = "Banc de méduses"
+NL["Strange Pool"] = "Bassin étrange"
+NL["Schooner Wreckage"] = "Débris de goélette"
+NL["Waterlogged Wreckage"] = "Débris trempés"
+NL["Bloodsail Wreckage"] = "Débris de la Voile sanglante"
+NL["Lesser Sagefish School"] = true
+NL["Lesser Oily Blackmouth School"] = true
+NL["Sparse Oily Blackmouth School"] = true
+NL["Abundant Oily Blackmouth School"] = true
+NL["Teeming Oily Blackmouth School"] = true
+NL["Lesser Firefin Snapper School"] = true
+NL["Sparse Firefin Snapper School"] = true
+NL["Abundant Firefin Snapper School"] = true
+NL["Teeming Firefin Snapper School"] = true
+NL["Lesser Floating Debris"] = true
+NL["Sparse Schooner Wreckage"] = true
+NL["Abundant Bloodsail Wreckage"] = true
+NL["Teeming Floating Wreckage"] = true
 
 -- mine nodes
 NL["Copper Vein"] = "Filon de cuivre"
@@ -258,12 +286,14 @@ NL["Titanium Node"] = "Gisement de titanium"
 NL["Saronite Node"] = "Gisement de saronite"
 NL["Rich Saronite Node"] = "Riche gisement de saronite"
 
-
 -- gas clouds
 NL["Windy Cloud"] = "Nuage venteux"
 NL["Swamp Gas"] = "Gaz des marais"
 NL["Arcane Vortex"] = "Vortex arcanique"
 NL["Felmist"] = "Gangrebrume"
+NL["Steam Cloud"] = "Steam Cloud"
+NL["Cinder Cloud"] = "Cinder Cloud"
+NL["Arctic Cloud"] = "Arctic Cloud"
 
 -- herb bushes
 NL["Peacebloom"] = "Pacifique"
@@ -316,6 +346,8 @@ NL["Icethorn"] = "Glacépine"
 NL["Lichbloom"] = "Fleur-de-liche"
 NL["Talandra's Rose"] = "Rose de Talandra"
 NL["Tiger Lily"] = "Lys tigré"
+NL["Firethorn"] = "Epine de feu"
+NL["Frozen Herb"] = "Herbe gelée"
 
 -- Treasure
 NL["Giant Clam"] = "Palourde géante"

@@ -1,6 +1,8 @@
 
 ## Title: Quartz  |cff7fff7f-Ace2-|r
 ## Notes: Modular casting bar.
+## Title-ruRU: Кварц  |cff7fff7f-Ace2-|r
+## Notes-ruRU: Модульная полоса применений.
 ## Author: Nymbia
 ## X-eMail: nymbia@gmail.com
 
@@ -33,6 +35,7 @@
 embeds.xml
 
 locale\Quartz-enUS.lua
+locale\Quartz-ruRU.lua
 locale\Quartz-deDE.lua
 locale\Quartz-frFR.lua
 locale\Quartz-koKR.lua

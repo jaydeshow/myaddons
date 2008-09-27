@@ -15,6 +15,9 @@
 	with this program; if not, write to the Free Software Foundation, Inc.,
 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ]]
+
+local WotLK = select(4, GetBuildInfo()) >= 30000
+
 local media = LibStub("LibSharedMedia-3.0")
 local L = AceLibrary("AceLocale-2.2"):new("Quartz")
 
@@ -239,7 +242,18 @@ do
 			end
 			if db.targetbuffs then
 				for i = 1, 32 do
-					local name, _, texture, applications, duration, remaining = UnitBuff('target', i)
+					local name, texture, applications, duration, remaining, _
+					if WotLK then
+						-- name, rank, icon, count, debuffType, duration, expirationTime, isMine, isStealable = UnitAura
+						local expirationTime, isMine
+						name, _, texture, applications, _, duration, expirationTime, isMine = UnitBuff('target', i)
+						if not isMine then
+							duration = nil
+						end
+						remaining = expirationTime and (expirationTime - GetTime()) or nil
+					else
+						name, _, texture, applications, duration, remaining = UnitBuff('target', i)
+					end
 					if not name then
 						break
 					end
@@ -257,7 +271,17 @@ do
 			end
 			if db.targetdebuffs then
 				for i = 1, 40 do
-					local name, _, texture, applications, dispeltype, duration, remaining = UnitDebuff('target', i)
+					local name, _, texture, applications, dispeltype, duration, remaining
+					if WotLK then
+						local expirationTime, isMine
+						name, _, texture, applications, dispeltype, duration, expirationTime, isMine = UnitDebuff('target', i)
+						if not isMine then
+							duration = nil
+						end
+						remaining =  expirationTime and (expirationTime - GetTime()) or nil
+					else
+						name, _, texture, applications, dispeltype, duration, remaining = UnitDebuff('target', i)
+					end
 					if not name then
 						break
 					end

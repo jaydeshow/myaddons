@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -94,6 +94,20 @@ L:RegisterTranslations("deDE", function() return {
 	["Perc"] = "Proz",
 	["Close"] = "Schließen",
 	["Refresh"] = "Erneuern",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Durability"] = "Прочность",
+	["Leader/Durability"] = "Лидер/Прочность",
+	["Options for durability checks."] = "Опции проверки прочности.",
+	["Perform durability check"] = "Выполнить проверку прочности",
+	["Check the raid's durability."] = "Проверка прочности рейда.",
+	["Name"] = "Имя",
+	["Percent"] = "Процент",
+	["Broken"] = "Cломан",
+	["Perc"] = "%",
+	["Close"] = "Закрыть",
+	["Refresh"] = "Обновить",
 } end )
 
 ----------------------------------

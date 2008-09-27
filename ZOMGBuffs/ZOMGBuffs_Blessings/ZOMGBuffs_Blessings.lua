@@ -1,5 +1,5 @@
 if (ZOMGBlessings) then
-	z:Print("Installation error, duplicate copy of ZOMGBuffs_Blessings (Addons\ZOMGBuffs\ZOMGBuffs_Blessings and Addons\ZOMGBuffs_Blessings)")
+	ZOMGBuffs:Print("Installation error, duplicate copy of ZOMGBuffs_Blessings (Addons\ZOMGBuffs\ZOMGBuffs_Blessings and Addons\ZOMGBuffs_Blessings)")
 	return
 end
 
@@ -18,7 +18,7 @@ local z = ZOMGBuffs
 local zb = z:NewModule("ZOMGBlessings")
 ZOMGBlessings = zb
 
-z:CheckVersion("$Revision: 81802 $")
+z:CheckVersion("$Revision: 81969 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 local classOrder, classIndex = z.classOrder, z.classIndex
@@ -916,6 +916,7 @@ end
 
 -- OnRaidRosterUpdate
 function zb:OnRaidRosterUpdate()
+	self:CheckStateChange()
 	if (template) then
 		z:CheckForChange(zb)		-- Because raid IDs can change
 		z:SendClass("PALADIN", "HELLO", z.version)
@@ -1510,6 +1511,11 @@ function zb:TooltipOnClickException(name)
 	end
 end
 
+-- PARTY_MEMBERS_CHANGED
+function zb:PARTY_MEMBERS_CHANGED()
+	self:CheckStateChange()
+end
+
 -- TooltipUpdate
 function zb:TooltipUpdate(cat)
 	if (template) then
@@ -1735,6 +1741,7 @@ function zb:OnModuleEnable()
 		self:RegisterBucketEvent("UNIT_INVENTORY_CHANGED", 0.2)
 		self:RegisterBucketEvent("SPELLS_CHANGED", 0.2)
 		self:RegisterBucketEvent("CHARACTER_POINTS_CHANGED", 5)		-- Throttle points spending spam from Talented by clumping
+		self:RegisterEvent("PARTY_MEMBERS_CHANGED")
 	end
 	z:CheckForChange(self)
 

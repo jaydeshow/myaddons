@@ -325,11 +325,6 @@ function z.modulePrototype:SelectTemplate(templateName, reason)
 	end
 end
 
--- RAID_ROSTER_UPDATE
-function z.modulePrototype:RAID_ROSTER_UPDATE()
-	self:CheckStateChange()
-end
-
 -- CheckStateChange
 function z.modulePrototype:CheckStateChange()
 	if (self:CanChangeState()) then
@@ -350,8 +345,8 @@ function z.modulePrototype:CheckStateChange()
 			state, reason = "solo", L["You are now solo"]
 		end
 
-		if (state ~= z.state) then
-			z.state = state
+		if (state ~= self.state) then
+			self.state = state
 			self:OnStateChanged(state, reason)
 		end
 	end
@@ -418,7 +413,7 @@ end
 
 -- OnEnable
 function z.modulePrototype:OnEnable()
-	self:RegisterBucketEvent("RAID_ROSTER_UPDATE", 0.2)			-- We don't care who
+	--self:RegisterBucketEvent("RAID_ROSTER_UPDATE", 0.2)			-- We don't care who
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("AceDB20_ResetDB")
 	self:SetupDB()

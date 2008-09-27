@@ -1,8 +1,8 @@
-﻿--[[
+--[[
 Name: RatingBuster koKR locale
-Revision: $Revision: 81534 $
+Revision: $Revision: 81971 $
 Translated by: 
-- 7destiny, kcgcom, fenlis (jungseop.park@gmail.com)
+- Slowhand, 7destiny, kcgcom, fenlis
 ]]
 
 local L = AceLibrary("AceLocale-2.2"):new("RatingBuster")
@@ -18,16 +18,16 @@ L:RegisterTranslations("koKR", function() return {
 	-- Waterfall --
 	---------------
 	["RatingBuster Options"] = "RatingBuster 설정",
-	["Waterfall-1.0 is required to access the GUI."] = "GUI를 표시하려면 Waterfall-1.0 라이브러리가 필요합니다.",
+	["Waterfall-1.0 is required to access the GUI."] = "GUI를 표시하려면 Waterfall-1.0 라이브러리가 필요합니다!",
 	---------------------------
 	-- Slash Command Options --
 	---------------------------
 	-- /rb win
 	["Options Window"] = "설정창",
-	["Shows the Options Window"] = "설정창을 표시합니다.",
+	["Shows the Options Window"] = "설정창을 보여줍니다.",
 	-- /rb statmod
-	["Enable Stat Mods"] = "능력치 애드온 사용",
-	["Enable support for Stat Mods"] = "능력치 애드온 지원을 사용합니다.",
+	["Enable Stat Mods"] = "애드온 사용",
+	["Enable support for Stat Mods"] = "애드온을 활성화합니다.",
 	-- /rb itemid
 	["Show ItemID"] = "아이템 ID 표시",
 	["Show the ItemID in tooltips"] = "툴팁에 아이템 ID를 표시합니다.",
@@ -39,50 +39,50 @@ L:RegisterTranslations("koKR", function() return {
 	["Calculate using the required level if you are below the required level"] = "레벨이 낮아 사용하지 못하는 경우 최소 요구 레벨에 따라 계산합니다.",
 	-- /rb setlevel
 	["Set level"] = "레벨 설정",
-	["Set the level used in calculations (0 = your level)"] = "계산에 적용할 레벨을 설정합니다. (0 = 자신 레벨)",
+	["Set the level used in calculations (0 = your level)"] = "계산에 적용할 레벨을 설정합니다. (0 = 자신의 레벨)",
 	-- /rb color
 	["Change text color"] = "글자 색상 변경",
 	["Changes the color of added text"] = "추가된 글자의 색상을 변경합니다.",
 	-- /rb color pick
-	["Pick color"] = "색상 선택",
+	["Pick color"] = "색상",
 	["Pick a color"] = "색상을 선택합니다.",
 	-- /rb color enable
 	["Enable color"] = "색상 사용",
-	["Enable colored text"] = "글자에 색상을 사용합니다.",
+	["Enable colored text"] = "글자에 색상을 적용합니다.",
 	-- /rb rating
-	["Rating"] = "평점",
-	["Options for Rating display"] = "평점 표시에 대한 설정입니다.",
+	["Rating"] = "전투 숙련도",
+	["Options for Rating display"] = "전투 숙련도 표시에 대한 설정입니다.",
 	-- /rb rating show
-	["Show Rating conversions"] = "평점 변화 표시",
-	["Show Rating conversions in tooltips"] = "툴팁에 평점 변화를 표시합니다.",
+	["Show Rating conversions"] = "전투 숙련도 계산 표시",
+	["Show Rating conversions in tooltips"] = "툴팁에 전투 숙련도를 전투 능력치로 계산하여 표시합니다.",
 	-- /rb rating spell
 	["Show Spell Hit"] = "주문 적중 표시",
-	["Show Spell Hit from Hit Rating"] = "적중으로부터 주문 적중을 표시합니다.",
+	["Show Spell Hit from Hit Rating"] = "적중도에 의한 주문 적중을 표시합니다.",
 	-- /rb rating physical
-	["Show Physical Hit"] = "물리 적중 표시",
-	["Show Physical Hit from Hit ratings"] = "적중으로부터 물리 적중을 표시합니다.",
+	["Show Physical Hit"] = "물리 적중 표시",	 
+	["Show Physical Hit from Hit ratings"] = "적중도에 의한 물리 적중을 표시합니다.",
 	-- /rb rating detail
-	["Show detailed conversions text"] = "세부적인 평점 변화 표시",
-	["Show detailed text for Resiliance and Expertise conversions"] = "탄력도와 숙련의 세부적인 평점 변화 표시를 사용합니다.",
+	["Show detailed conversions text"] = "세부적인 전투 숙련도 계산 표시",
+	["Show detailed text for Resiliance and Expertise conversions"] = "탄력도와 숙련을 세부적인 전투 능력치로 계산해서 표시합니다.",
 	-- /rb rating def
 	["Defense breakdown"] = "방어 숙련 세분화",
-	["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = "치명타 공격 회피, 공격 회피, 회피, 무기 막기, 방패 막기 등으로 방어 숙련을 세분화합니다.",
+	["Convert Defense into Crit Avoidance, Hit Avoidance, Dodge, Parry and Block"] = "방어 숙련을 치명타(자신) 감소, 빗맞힘(자신), 회피, 무기 막기, 방패 막기로 계산해서 표시합니다.",
 	-- /rb rating wpn
 	["Weapon Skill breakdown"] = "무기 숙련 세분화",
-	["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "치명타, 공격, 회피 무시, 무기 막기 무시, 방패 막기 무시 등으로 무기 숙련를 세분화합니다.",
+	["Convert Weapon Skill into Crit, Hit, Dodge Neglect, Parry Neglect and Block Neglect"] = "무기 숙련을 치명타(공격), 적중, 회피 무시, 무기막기 무시, 방패막기 무시로 계산해서 표시합니다.",
 	-- /rb rating exp -- 2.3.0
 	["Expertise breakdown"] = "숙련 세분화",
-	["Convert Expertise into Dodge Neglect and Parry Neglect"] = "회피 무시와 무기막기 무시 등으로 숙련을 세분화 합니다.",
+	["Convert Expertise into Dodge Neglect and Parry Neglect"] = "숙련을 회피 무시와 무기막기 무시로 계산해서 표시합니다.",
 	
 	-- /rb stat
 	["Stat Breakdown"] = "능력치",
-	["Changes the display of base stats"] = "기본 능력치 표시방법을 변경합니다.",
+	["Changes the display of base stats"] = "기본 능력치의 표시 방법을 변경합니다.",
 	-- /rb stat show
-	["Show base stat conversions"] = "기본 능력치 변화 표시",
-	["Show base stat conversions in tooltips"] = "툴팁에 기본 능력치의 변화를 표시합니다.",
+	["Show base stat conversions"] = "기본 능력치 계산 표시",
+	["Show base stat conversions in tooltips"] = "툴팁에 기본 능력치를 전투 능력치로 계산하여 표시합니다.",
 	-- /rb stat str
 	["Strength"] = "힘",
-	["Changes the display of Strength"] = "힘에 대한 표시방법을 변경합니다.",
+	["Changes the display of Strength"] = "힘의 표시 방법을 변경합니다.",
 	-- /rb stat str ap
 	["Show Attack Power"] = "전투력 표시",
 	["Show Attack Power from Strength"] = "힘에 의한 전투력을 표시합니다.",
@@ -91,39 +91,39 @@ L:RegisterTranslations("koKR", function() return {
 	["Show Block Value from Strength"] = "힘에 의한 피해 방어량을 표시합니다.",
 	-- /rb stat str dmg
 	["Show Spell Damage"] = "주문 공격력 표시",
-	["Show Spell Damage from Strength"] = "지능에 의한 주문 공격력을 표시합니다.",
+	["Show Spell Damage from Strength"] = "힘에 의한 주문 공격력을 표시합니다.",
 	-- /rb stat str heal
 	["Show Healing"] = "치유량 표시",
-	["Show Healing from Strength"] = "지능에 의한 치유량을 표시합니다.",
+	["Show Healing from Strength"] = "힘에 의한 치유량을 표시합니다.",
 	-- /rb stat str parry
 	["Show Parry"] = "무기 막기",
-	["Show Parry from Strength"] = "힘에 의한 무기 막기 확률을 표시합니다.",
+	["Show Parry from Strength"] = "힘에 의한 무기 막기를 표시합니다.",
 	
 	-- /rb stat agi
 	["Agility"] = "민첩성",
-	["Changes the display of Agility"] = "민첩성 표시방법을 변경합니다.",
+	["Changes the display of Agility"] = "민첩성의 표시 방법을 변경합니다.",
 	-- /rb stat agi crit
 	["Show Crit"] = "치명타 표시",
-	["Show Crit chance from Agility"] = "민첩성에 의한 치명타 표시",
+	["Show Crit chance from Agility"] = "민첩성에 의한 치명타 확률을 표시합니다.",
 	-- /rb stat agi dodge
 	["Show Dodge"] = "회피 표시",
-	["Show Dodge chance from Agility"] = "민첩에 의한 회피율을 표시합니다.",
+	["Show Dodge chance from Agility"] = "민첩성에 의한 회피율을 표시합니다.",
 	-- /rb stat agi ap
 	["Show Attack Power"] = "전투력 표시",
-	["Show Attack Power from Agility"] = "민첩에 의한 전투력을 표시합니다.",
+	["Show Attack Power from Agility"] = "민첩성에 의한 전투력을 표시합니다.",
 	-- /rb stat agi rap
 	["Show Ranged Attack Power"] = "원거리 전투력 표시",
-	["Show Ranged Attack Power from Agility"] = "민첩에 의한 원거리 전투력을 표시합니다.",
+	["Show Ranged Attack Power from Agility"] = "민첩성에 의한 원거리 전투력을 표시합니다.",
 	-- /rb stat agi armor
 	["Show Armor"] = "방어도 표시",
-	["Show Armor from Agility"] = "민첩에 의한 방어도를 표시합니다.",
+	["Show Armor from Agility"] = "민첩성에 의한 방어도를 표시합니다.",
 	-- /rb stat agi heal
 	["Show Healing"] = "치유량 표시",
-	["Show Healing from Agility"] = "힘에 의한 치유량을 표시합니다.",
+	["Show Healing from Agility"] = "민첩성에 의한 치유량을 표시합니다.",
 	
 	-- /rb stat sta
 	["Stamina"] = "체력",
-	["Changes the display of Stamina"] = "체력의 표시방법을 변경합니다.",
+	["Changes the display of Stamina"] = "체력의 표시 방법을 변경합니다.",
 	-- /rb stat sta hp
 	["Show Health"] = "생명력 표시",
 	["Show Health from Stamina"] = "체력에 의한 생명력을 표시합니다.",
@@ -153,11 +153,11 @@ L:RegisterTranslations("koKR", function() return {
 	["Show Healing"] = "치유량 표시",
 	["Show Healing from Intellect"] = "지능에 의한 치유량을 표시합니다.",
 	-- /rb stat int mp5
-	["Show Mana Regen"] = "마나 재생 표시",
-	["Show Mana Regen while casting from Intellect"] = "지능에 의해 시전 시 마나 재생량을 표시합니다.",
+	["Show Mana Regen"] = "마나 회복 표시",
+	["Show Mana Regen while casting from Intellect"] = "지능에 의한 시전중 마나 회복량을 표시합니다.",
 	-- /rb stat int mp5nc
-	["Show Mana Regen while NOT casting"] = "평상시 마나 재생 표시",
-	["Show Mana Regen while NOT casting from Intellect"] = "지능에 의한 평상시 마나 재생량을 표시합니다.",
+	["Show Mana Regen while NOT casting"] = "비시전중 마나 회복 표시",
+	["Show Mana Regen while NOT casting from Intellect"] = "지능에 의한 비시전중 마나 회복량을 표시합니다.",
 	-- /rb stat int rap
 	["Show Ranged Attack Power"] = "원거리 전투력 표시",
 	["Show Ranged Attack Power from Intellect"] = "지능에 의한 원거리 전투력을 표시합니다.",
@@ -172,14 +172,14 @@ L:RegisterTranslations("koKR", function() return {
 	["Spirit"] = "정신력",
 	["Changes the display of Spirit"] = "정신력의 표시방법을 변경합니다.",
 	-- /rb stat spi mp5
-	["Show Mana Regen"] = "마나 재생 표시",
-	["Show Mana Regen while casting from Spirit"] = "정신력에 의해 시전 시 마나 재생량을 표시합니다.",
+	["Show Mana Regen"] = "마나 회복 표시",
+	["Show Mana Regen while casting from Spirit"] = "정신력에 의한 시전중 마나 회복량을 표시합니다.",
 	-- /rb stat spi mp5nc
-	["Show Mana Regen while NOT casting"] = "평상시 마나 재생 표시",
-	["Show Mana Regen while NOT casting from Spirit"] = "정신력에 의한 평상시 마나 재생량을 표시합니다.",
+	["Show Mana Regen while NOT casting"] = "비시전중 마나 회복 표시",
+	["Show Mana Regen while NOT casting from Spirit"] = "정신력에 의한 비시전중 마나 회복량을 표시합니다.",
 	-- /rb stat spi hp5
-	["Show Health Regen"] = "생명력 재생 표시",
-	["Show Health Regen from Spirit"] = "정신력에 의한 생명력 재생량을 표시합니다.",
+	["Show Health Regen"] = "생명력 회복 표시",
+	["Show Health Regen from Spirit"] = "정신력에 의한 (비전투중) 생명력 회복량을 표시합니다.",
 	-- /rb stat spi dmg
 	["Show Spell Damage"] = "주문 공격력 표시",
 	["Show Spell Damage from Spirit"] = "정신력에 의한 주문 공격력을 표시합니다.",
@@ -188,38 +188,38 @@ L:RegisterTranslations("koKR", function() return {
 	["Show Healing from Spirit"] = "정신력에 의한 치유량을 표시합니다.",
 	
 	-- /rb sum
-	["Stat Summary"] = "능력치 요약",
+	--["Stat Summary"] = "능력치 요약",
 	["Options for stat summary"] = "능력치 요약에 대한 설정입니다.",
 	-- /rb sum show
 	["Show stat summary"] = "능력치 요약 표시",
 	["Show stat summary in tooltips"] = "툴팁에 능력치 요약을 표시합니다.",
 	-- /rb sum ignore
 	["Ignore settings"] = "제외 설정",
-	["Ignore stuff when calculating the stat summary"] = "능력치 요약 계산에 포함되지 않습니다.",
+	["Ignore stuff when calculating the stat summary"] = "능력치 요약 계산에서 제외시킬 항목들을 설정합니다.",
 	-- /rb sum ignore unused
 	["Ignore unused items types"] = "쓸모없는 아이템 제외",
-	["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "Show stat summary only for highest level armor type and items you can use with uncommon quality and up",
+	["Show stat summary only for highest level armor type and items you can use with uncommon quality and up"] = "능력치 요약 계산에 자신이 사용할 수 있는 가장 높은 방어도 유형과 고급(녹색) 품질 이상의 아이템만 포함시킵니다.",
 	-- /rb sum ignore equipped
 	["Ignore equipped items"] = "착용 아이템 제외",
-	["Hide stat summary for equipped items"] = "착용하고 있는 아이템에 대한 능력치 요약은 표시하지 않습니다.",
+	["Hide stat summary for equipped items"] = "능력치 요약 계산에 착용한 아이템은 포함시키지 않습니다.",
 	-- /rb sum ignore enchant
 	["Ignore enchants"] = "마법부여 제외",
-	["Ignore enchants on items when calculating the stat summary"] = "능력치 요약 계산에 아이템의 마법부여를 포함하지 않습니다.",
+	["Ignore enchants on items when calculating the stat summary"] = "능력치 요약 계산에 아이템에 부여한 마법부여를 포함시키지 않습니다.",
 	-- /rb sum ignore gem
 	["Ignore gems"] = "보석 제외",
-	["Ignore gems on items when calculating the stat summary"] = "능력치 요약 계산에 아이템의 보석을 포함하지 않습니다.",
+	["Ignore gems on items when calculating the stat summary"] = "능력치 요약 계산에 아이템에 장착한 보석을 포함시키지 않습니다.",
 	-- /rb sum diffstyle
-	["Display style for diff value"] = "차이값 표시 형식",
-	["Display diff values in the main tooltip or only in compare tooltips"] = "주요 툴팁 이나 비교 툴팁에만 차이값을 표시합니다.",
+	["Display style for diff value"] = "차이값 표시 방식",
+	["Display diff values in the main tooltip or only in compare tooltips"] = "기본 툴팁 또는 비교 툴팁에 차이값을 표시합니다.",
 	-- /rb sum space
 	["Add empty line"] = "구분선 추가",
-	["Add a empty line before or after stat summary"] = "능력치 요약 앞 혹은 뒤에 구분선을 추가합니다.",
+	["Add a empty line before or after stat summary"] = "능력치 요약 앞/뒤에 구분선을 추가합니다.",
 	-- /rb sum space before
 	["Add before summary"] = "요약 앞에 추가",
-	["Add a empty line before stat summary"] = "능력치 요약의 앞에 구분선을 추가합니다.",
+	["Add a empty line before stat summary"] = "능력치 요약 앞에 구분선을 추가합니다.",
 	-- /rb sum space after
 	["Add after summary"] = "요약 뒤에 추가",
-	["Add a empty line after stat summary"] = "능력치 요약의 뒤에 구분선을 추가합니다.",
+	["Add a empty line after stat summary"] = "능력치 요약 뒤에 구분선을 추가합니다.",
 	-- /rb sum icon
 	["Show icon"] = "아이콘 표시",
 	["Show the sigma icon before summary listing"] = "요약 목록 앞에 시그마 아이콘을 표시합니다.",
@@ -228,230 +228,230 @@ L:RegisterTranslations("koKR", function() return {
 	["Show the title text before summary listing"] = "요약 목록 앞에 제목을 표시합니다.",
 	-- /rb sum showzerostat
 	["Show zero value stats"] = "제로 능력치 표시",
-	["Show zero value stats in summary for consistancy"] = "구성에 대한 요약에 제로 능력치를 표시합니다.",
+	["Show zero value stats in summary for consistancy"] = "통일되게 보이도록 대한 요약에 제로값의 능력치를 표시합니다.",
 	-- /rb sum calcsum
 	["Calculate stat sum"] = "능력치 합계 계산",
 	["Calculate the total stats for the item"] = "아이템에 대한 총 능력치를 계산합니다.",
 	-- /rb sum calcdiff
 	["Calculate stat diff"] = "능력치 차이 계산",
-	["Calculate the stat difference for the item and equipped items"] = "아이템과 착용한 아이템과의 능력치 차이를 계산합니다.",
+	["Calculate the stat difference for the item and equipped items"] = "선택한 아이템과 착용한 아이템의 능력치 차이를 계산합니다.",
 	-- /rb sum sort
 	["Sort StatSummary alphabetically"] = "능력치 요약 정렬",
-	["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"] = "능력치 요약을 알파벳순으로 정렬합니다, 능력치별로 정렬하려면 비활성화하세요.(기본, 물리적, 주문, 탱크)",
+	["Enable to sort StatSummary alphabetically, disable to sort according to stat type(basic, physical, spell, tank)"] = "능력치 요약을 알파벳순으로 정렬합니다, 능력치별로 정렬하려면 비활성화하세요.(기본, 물리, 주문, 방어)",
 	-- /rb sum avoidhasblock
-	["Include block chance in Avoidance summary"] = "회피 요약에 방어율 포함",
-	["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"] = "회피 요약에 방어율을 포함시킵니다. 회피, 무기 막기, 빗맞힘만 사용하려면 비활성화하세요.",
+	["Include block chance in Avoidance summary"] = "완전방어 요약에 방패 막기 포함",
+	["Enable to include block chance in Avoidance summary, Disable for only dodge, parry, miss"] = "완전방어 요약에 방패박기를 포함시킵니다. 회피, 무기 막기, 빗맞힘(자신)만 포함시키려면 비활성화하세요.",
 	-- /rb sum basic
 	["Stat - Basic"] = "능력치 - 기본",
 	["Choose basic stats for summary"] = "기본 능력치를 선택합니다.",
 	-- /rb sum physical
-	["Stat - Physical"] = "능력치 - 물리적",
-	["Choose physical damage stats for summary"] = "물리적 공격력 능력치를 선택합니다.",
+	["Stat - Physical"] = "능력치 - 물리",
+	["Choose physical damage stats for summary"] = "물리 공격력 능력치를 선택합니다.",
 	-- /rb sum spell
 	["Stat - Spell"] = "능력치 - 주문",
-	["Choose spell damage and healing stats for summary"] = "주문 공격려과 치유량을 선택합니다.",
+	["Choose spell damage and healing stats for summary"] = "주문 공격력과 치유량 능력치를 선택합니다.",
 	-- /rb sum tank
-	["Stat - Tank"] = "능력치 - 탱크",
-	["Choose tank stats for summary"] = "탱크 능력치를 선택합니다.",
+	["Stat - Tank"] = "능력치 - 방어",
+	["Choose tank stats for summary"] = "방어 능력치를 선택합니다.",
 	-- /rb sum stat hp
-	["Sum Health"] = "생명력",
+	["Sum Health"] = "생명력 합계",
 	["Health <- Health, Stamina"] = "생명력 <- 생명력, 체력",
 	-- /rb sum stat mp
-	["Sum Mana"] = "마나",
+	["Sum Mana"] = "마나 합계",
 	["Mana <- Mana, Intellect"] = "마나 < 마나, 지능",
 	-- /rb sum stat ap
-	["Sum Attack Power"] = "전투력",
+	["Sum Attack Power"] = "전투력 합계",
 	["Attack Power <- Attack Power, Strength, Agility"] = "전투력 <- 전투력, 힘, 민첩성",
 	-- /rb sum stat rap
-	["Sum Ranged Attack Power"] = "원거리 전투력",
+	["Sum Ranged Attack Power"] = "원거리 전투력 합계",
 	["Ranged Attack Power <- Ranged Attack Power, Intellect, Attack Power, Strength, Agility"] = "원거리 전투력 <- 원거리 전투력, 지능, 전투력, 힘, 민첩성",
 	-- /rb sum stat fap
-	["Sum Feral Attack Power"] = "야생 전투력",
-	["Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility"] = "야생 전투력 <- 야생 전투력, 전투력, 힘, 민첩성",
+	["Sum Feral Attack Power"] = "야성 전투력 합계",
+	["Feral Attack Power <- Feral Attack Power, Attack Power, Strength, Agility"] = "야성 전투력 <- 야성 전투력, 전투력, 힘, 민첩성",
 	-- /rb sum stat dmg
-	["Sum Spell Damage"] = "주문 공격력",
+	["Sum Spell Damage"] = "주문 공격력 합계",
 	["Spell Damage <- Spell Damage, Intellect, Spirit, Stamina"] = "주문 공격력 <- 주문 공격력, 지능, 정신력, 체력",
 	-- /rb sum stat dmgholy
-	["Sum Holy Spell Damage"] = "신성 주문 공격력",
+	["Sum Holy Spell Damage"] = "신성 주문 공격력 합계",
 	["Holy Spell Damage <- Holy Spell Damage, Spell Damage, Intellect, Spirit"] = "신성 주문 공격력 <- 신성 주문 공격력, 주문 공격력, 지능, 정신력",
 	-- /rb sum stat dmgarcane
-	["Sum Arcane Spell Damage"] = "비전 주문 공격력",
+	["Sum Arcane Spell Damage"] = "비전 주문 공격력 합계",
 	["Arcane Spell Damage <- Arcane Spell Damage, Spell Damage, Intellect"] = "비전 주문 공격력 <- 비전 주문 공격력, 주문 공격력, 지능",
 	-- /rb sum stat dmgfire
-	["Sum Fire Spell Damage"] = "화염 주문 공격력",
+	["Sum Fire Spell Damage"] = "화염 주문 공격력 합계",
 	["Fire Spell Damage <- Fire Spell Damage, Spell Damage, Intellect, Stamina"] = "화염 주문 공격력 <- 화염 주문 공격력, 주문 공격력, 지능, 체력",
 	-- /rb sum stat dmgnature
-	["Sum Nature Spell Damage"] = "자연 주문 공격력",
+	["Sum Nature Spell Damage"] = "자연 주문 공격력 합계",
 	["Nature Spell Damage <- Nature Spell Damage, Spell Damage, Intellect"] = "자연 주문 공격력 <- 자연 주문 공격력, 주문 공격력, 지능",
 	-- /rb sum stat dmgfrost
-	["Sum Frost Spell Damage"] = "냉기 주문 공격력",
+	["Sum Frost Spell Damage"] = "냉기 주문 공격력 합계",
 	["Frost Spell Damage <- Frost Spell Damage, Spell Damage, Intellect"] = "냉기 주문 공격력 <- 냉기 주문 공격력, 주문 공격력, 지능",
 	-- /rb sum stat dmgshadow
-	["Sum Shadow Spell Damage"] = "암흑 주문 공격력",
+	["Sum Shadow Spell Damage"] = "암흑 주문 공격력 합계",
 	["Shadow Spell Damage <- Shadow Spell Damage, Spell Damage, Intellect, Spirit, Stamina"] = "암흑 주문 공격력 <- 암흑 주문 공격력, 주문 공격력, 지능, 정신력, 체력",
 	-- /rb sum stat heal
-	["Sum Healing"] = "치유량",
-	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "치유량 <- 치유량, 지능, 정신력, 민첩, 힘",
+	["Sum Healing"] = "치유량 합계",
+	["Healing <- Healing, Intellect, Spirit, Agility, Strength"] = "치유량 <- 치유량, 지능, 정신력, 민첩성, 힘",
 	-- /rb sum stat hit
-	["Sum Hit Chance"] = "적중률",
-	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "적중률 <- 적중도, 무기 숙력도",
+	["Sum Hit Chance"] = "적중률 합계",
+	["Hit Chance <- Hit Rating, Weapon Skill Rating"] = "적중률 <- 적중도, 무기 숙련도",
 	-- /rb sum stat crit
-	["Sum Crit Chance"] = "치명타율",
+	["Sum Crit Chance"] = "치명타율 합계",
 	["Crit Chance <- Crit Rating, Agility, Weapon Skill Rating"] = "치명타율 <- 치명타 적중도, 민첩성, 무기 숙련도",
 	-- /rb sum stat haste
-	["Sum Haste"] = "공격 가속",
+	["Sum Haste"] = "공격 가속 합계",
 	["Haste <- Haste Rating"] = "공격 가속 <- 공격 가속도",
 	-- /rb sum stat critspell
-	["Sum Spell Crit Chance"] = "주문 극대화율",
+	["Sum Spell Crit Chance"] = "주문 극대화율 합계",
 	["Spell Crit Chance <- Spell Crit Rating, Intellect"] = "주문 극대화율 <- 주문 극대화 적중도, 지능",
 	-- /rb sum stat hitspell
-	["Sum Spell Hit Chance"] = "주문 적중율",
+	["Sum Spell Hit Chance"] = "주문 적중율 합계",
 	["Spell Hit Chance <- Spell Hit Rating"] = "주문 적중율 <- 주문 적중도",
 	-- /rb sum stat hastespell
-	["Sum Spell Haste"] = "주문 가속",
+	["Sum Spell Haste"] = "주문 가속 합계",
 	["Spell Haste <- Spell Haste Rating"] = "주문 가속 <- 주문 가속도",
 	-- /rb sum stat mp5
-	["Sum Mana Regen"] = "마나 재생",
-	["Mana Regen <- Mana Regen, Spirit"] = "마나 재생 <- 마나 재생, 정신력",
+	["Sum Mana Regen"] = "마나 회복 합계",
+	["Mana Regen <- Mana Regen, Spirit"] = "마나 회복 <- 마나 회복, 정신력",
 	-- /rb sum stat mp5nc
-	["Sum Mana Regen while not casting"] = "미시전 시 마나 재생",
-	["Mana Regen while not casting <- Spirit"] = "미시전 시 마나 재생 <- 정신력",
+	["Sum Mana Regen while not casting"] = "비시전중 마나 회복",
+	["Mana Regen while not casting <- Spirit"] = "비시전중 마나 회복 <- 정신력",
 	-- /rb sum stat hp5
-	["Sum Health Regen"] = "생명력 재생",
-	["Health Regen <- Health Regen"] = "생명력 재생 <- 생명력 재생",
+	["Sum Health Regen"] = "생명력 회복 합계",
+	["Health Regen <- Health Regen"] = "생명력 회복 <- 생명력 회복",
 	-- /rb sum stat hp5oc
-	["Sum Health Regen when out of combat"] = "비전투중 생명력 재생",
-	["Health Regen when out of combat <- Spirit"] = "비전투중 생명력 재생 <- 정신력",
+	["Sum Health Regen when out of combat"] = "비전투중 생명력 회복",
+	["Health Regen when out of combat <- Spirit"] = "비전투중 생명력 회복 <- 정신력",
 	-- /rb sum stat armor
-	["Sum Armor"] = "방어도",
-	["Armor <- Armor from items, Armor from bonuses, Agility, Intellect"] = "방어도 <- 아이템의 방어도, 효과의 방어도, 민첩성, 지능",
+	["Sum Armor"] = "방어도 합계",
+	["Armor <- Armor from items, Armor from bonuses, Agility, Intellect"] = "방어도 <- 아이템 방어도, 방어도 보너스, 민첩성, 지능",
 	-- /rb sum stat blockvalue
-	["Sum Block Value"] = "피해 방어량",
+	["Sum Block Value"] = "피해 방어량 합계",
 	["Block Value <- Block Value, Strength"] = "피해 방어량 <- 피해 방어량, 힘",
 	-- /rb sum stat dodge
-	["Sum Dodge Chance"] = "회피율",
+	["Sum Dodge Chance"] = "회피율 합계",
 	["Dodge Chance <- Dodge Rating, Agility, Defense Rating"] = "회피율 <- 회피 숙련도, 민첩성, 방어 숙련도",
 	-- /rb sum stat parry
-	["Sum Parry Chance"] = "무기 막기 확률",
+	["Sum Parry Chance"] = "무기 막기 확률 합계",
 	["Parry Chance <- Parry Rating, Defense Rating"] = "무기 막기 확률 <- 무기 막기 숙련도, 방어 숙련도",
 	-- /rb sum stat block
-	["Sum Block Chance"] = "방패 막기 확률",
+	["Sum Block Chance"] = "방패 막기 확률 합계",
 	["Block Chance <- Block Rating, Defense Rating"] = "방패 막기 확률 <- 방패 막기 숙련도, 방어 숙련도",
 	-- /rb sum stat avoidhit
-	["Sum Hit Avoidance"] = "공격 회피",
-	["Hit Avoidance <- Defense Rating"] = "공격 회피 <- 방어 숙련도",
+	["Sum Hit Avoidance"] = "빗맞힘(자신) 합계",
+	["Hit Avoidance <- Defense Rating"] = "빗맞힘(자신) <- 방어 숙련도",
 	-- /rb sum stat avoidcrit
-	["Sum Crit Avoidance"] = "치명타 공격 회피",
-	["Crit Avoidance <- Defense Rating, Resilience"] = "치명타 공격 회피 <- 방어 숙련도, 탄력도",
+	["Sum Crit Avoidance"] = "치명타 감소 합계",
+	["Crit Avoidance <- Defense Rating, Resilience"] = "치명타 감소 <- 방어 숙련도, 탄력도",
 	-- /rb sum stat neglectdodge
-	["Sum Dodge Neglect"] = "회피 무시",
+	["Sum Dodge Neglect"] = "회피 무시 합계",
 	["Dodge Neglect <- Expertise, Weapon Skill Rating"] = "회피 무시 <- 숙련도, 무기 숙련도", -- 2.3.0
 	-- /rb sum stat neglectparry
-	["Sum Parry Neglect"] = "무기 막기 무시",
-	["Parry Neglect <- Expertise, Weapon Skill Rating"] = "무기 막기 무시 <- 숙련도, 무기 숙련도", -- 2.3.0
+	["Sum Parry Neglect"] = "무기막기 무시 합계",
+	["Parry Neglect <- Expertise, Weapon Skill Rating"] = "무기막기 무시 <- 숙련도, 무기 숙련도", -- 2.3.0
 	-- /rb sum stat neglectblock
-	["Sum Block Neglect"] = "방패 막기 무시",
-	["Block Neglect <- Weapon Skill Rating"] = "방패 막기 무시 <- 무기 숙련도",
+	["Sum Block Neglect"] = "방패막기 무시 합계",
+	["Block Neglect <- Weapon Skill Rating"] = "방패막기 무시 <- 무기 숙련도",
 	-- /rb sum stat resarcane
-	["Sum Arcane Resistance"] = "비전 저항력",
+	["Sum Arcane Resistance"] = "비전 저항력 합계",
 	["Arcane Resistance Summary"] = "비전 저항력 요약",
 	-- /rb sum stat resfire
-	["Sum Fire Resistance"] = "화염 저항력",
+	["Sum Fire Resistance"] = "화염 저항력 합계",
 	["Fire Resistance Summary"] = "화염 저항력 요약",
 	-- /rb sum stat resnature
-	["Sum Nature Resistance"] = "자연 저항력",
+	["Sum Nature Resistance"] = "자연 저항력 합계",
 	["Nature Resistance Summary"] = "자연 저항력 요약",
 	-- /rb sum stat resfrost
-	["Sum Frost Resistance"] = "냉기 저항력",
+	["Sum Frost Resistance"] = "냉기 저항력 합계",
 	["Frost Resistance Summary"] = "냉기 저항력 요약",
 	-- /rb sum stat resshadow
-	["Sum Shadow Resistance"] = "암흑 저항력",
+	["Sum Shadow Resistance"] = "암흑 저항력 합계",
 	["Shadow Resistance Summary"] = "암흑 저항력 요약",
 	-- /rb sum stat maxdamage
-	["Sum Weapon Max Damage"] = "무기 최대 공격력",
+	["Sum Weapon Max Damage"] = "무기 최대 공격력 합계",
 	["Weapon Max Damage Summary"] = "무기 최대 공격력 요약",
 	-- /rb sum stat pen
-	["Sum Penetration"] = "관통력",
+	["Sum Penetration"] = "관통력 합계",
 	["Spell Penetration Summary"] = "주문 관통력 요약",
 	-- /rb sum stat ignorearmor
-	["Sum Ignore Armor"] = "방어도 무시",
+	["Sum Ignore Armor"] = "방어도 무시 합계",
 	["Ignore Armor Summary"] = "방어도 무시 요약",
 	-- /rb sum stat weapondps
 	--["Sum Weapon DPS"] = true,
 	--["Weapon DPS Summary"] = true,
 	-- /rb sum statcomp str
-	["Sum Strength"] = "힘",
+	["Sum Strength"] = "힘 합계",
 	["Strength Summary"] = "힘 요약",
 	-- /rb sum statcomp agi
-	["Sum Agility"] = "민첩성",
+	["Sum Agility"] = "민첩성 합계",
 	["Agility Summary"] = "민첩성 요약",
 	-- /rb sum statcomp sta
-	["Sum Stamina"] = "체력",
+	["Sum Stamina"] = "체력 합계",
 	["Stamina Summary"] = "체력 요약",
 	-- /rb sum statcomp int
-	["Sum Intellect"] = "지능",
+	["Sum Intellect"] = "지능 합계",
 	["Intellect Summary"] = "지능 요약",
 	-- /rb sum statcomp spi
-	["Sum Spirit"] = "정신력",
+	["Sum Spirit"] = "정신력 합계",
 	["Spirit Summary"] = "정신력 요약",
 	-- /rb sum statcomp hitrating
-	["Sum Hit Rating"] = "적중도",
+	["Sum Hit Rating"] = "적중도 합계",
 	["Hit Rating Summary"] = "적중도 요약",
 	-- /rb sum statcomp critrating
-	["Sum Crit Rating"] = "치명타율",
-	["Crit Rating Summary"] = "치명타율 요약",
+	["Sum Crit Rating"] = "치명타 적중도 합계",
+	["Crit Rating Summary"] = "치명타 적중도 요약",
 	-- /rb sum statcomp hasterating
-	["Sum Haste Rating"] = "공격 가속도",
+	["Sum Haste Rating"] = "공격 가속도 합계",
 	["Haste Rating Summary"] = "공격 가속도 요약",
 	-- /rb sum statcomp hitspellrating
-	["Sum Spell Hit Rating"] = "주문 적중도",
+	["Sum Spell Hit Rating"] = "주문 적중도 합계",
 	["Spell Hit Rating Summary"] = "주문 적중도 요약",
 	-- /rb sum statcomp critspellrating
-	["Sum Spell Crit Rating"] = "주문 극대화율",
-	["Spell Crit Rating Summary"] = "주문 극대화율 요약",
+	["Sum Spell Crit Rating"] = "주문 극대화 적중도 합계",
+	["Spell Crit Rating Summary"] = "주문 극대화 적중도 요약",
 	-- /rb sum statcomp hastespellrating
 	["Sum Spell Haste Rating"] = "주문 가속도",
 	["Spell Haste Rating Summary"] = "주문 가속도 요약",
 	-- /rb sum statcomp dodgerating
-	["Sum Dodge Rating"] = "회피율",
-	["Dodge Rating Summary"] = "회피율 요약",
+	["Sum Dodge Rating"] = "회피 숙련도 합계",
+	["Dodge Rating Summary"] = "회피 숙련도 요약",
 	-- /rb sum statcomp parryrating
-	["Sum Parry Rating"] = "무기 막기율",
-	["Parry Rating Summary"] = "무기 막기율 요약",
+	["Sum Parry Rating"] = "무기 막기 합계",
+	["Parry Rating Summary"] = "무기 막기 숙련도 요약",
 	-- /rb sum statcomp blockrating
-	["Sum Block Rating"] = "방어율",
-	["Block Rating Summary"] = "방어율 요약",
+	["Sum Block Rating"] = "방패 막기 숙련도 합계",
+	["Block Rating Summary"] = "방어막기 숙련도 요약",
 	-- /rb sum statcomp res
-	["Sum Resilience"] = "탄력도",
-	["Resilience Summary"] = "탄력도 요약",
+	["Sum Resilience"] = "탄력 합계",
+	["Resilience Summary"] = "탄력 요약",
 	-- /rb sum statcomp def
-	["Sum Defense"] = "방어 숙련",
+	["Sum Defense"] = "방어 숙련 합계",
 	["Defense <- Defense Rating"] = "방어 숙련 <- 방어 숙련도",
 	-- /rb sum statcomp wpn
-	["Sum Weapon Skill"] = "무기 숙련",
+	["Sum Weapon Skill"] = "무기 숙련 합계",
 	["Weapon Skill <- Weapon Skill Rating"] = "무기 숙련 <- 무기 숙련도",
 	-- /rb sum statcomp exp -- 2.3.0
-	["Sum Expertise"] = "숙련",
+	["Sum Expertise"] = "숙련 합계",
 	["Expertise <- Expertise Rating"] = "숙련 <- 숙련도",
 	-- /rb sum statcomp tp
-	["Sum TankPoints"] = "탱킹점수",
-	["TankPoints <- Health, Total Reduction"] = "탱커점수 <- 체력, 총 감소량",
+	["Sum TankPoints"] = "탱커점수(TankPoint) 합계",
+	["TankPoints <- Health, Total Reduction"] = "탱커점수 <- 생명력, 총 피해감소",
 	-- /rb sum statcomp tr
-	["Sum Total Reduction"] = "총 감소량",
-	["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "총 감소량 <- 방어도, 회피, 무기 막기, 방어, 피해 방어량, 방어, 탄력도, 몹회피, 몹치명타, 몹강타, 적용전 데미지",
+	["Sum Total Reduction"] = "총 피해감소 합계",
+	["Total Reduction <- Armor, Dodge, Parry, Block, Block Value, Defense, Resilience, MobMiss, MobCrit, MobCrush, DamageTakenMods"] = "총 피해감소 <- 방어도, 회피, 무기 막기, 방패 막기, 피해 방어량, 방어 숙련, 탄력, 빗맞힘(자신), 치명타 감소, 몹강타, 피해감소 효과",
 	-- /rb sum statcomp avoid
-	["Sum Avoidance"] = "회피량",
-	["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "회피량 <- 회피, 무기 막기, 몹빗맞힘, 방어(선택적)",
+	["Sum Avoidance"] = "완전방어 합계",
+	["Avoidance <- Dodge, Parry, MobMiss, Block(Optional)"] = "완전방어 <- 회피, 무기 막기, 빗맞힘(자신), 방패 막기(선택적)",
 	
 	-- /rb sum gem
 	["Gems"] = "보석",
 	["Auto fill empty gem slots"] = "빈 보석 슬롯을 자동으로 채웁니다.",
 	-- /rb sum gem red
 	["Red Socket"] = EMPTY_SOCKET_RED,
-	["ItemID or Link of the gem you would like to auto fill"] = "당신이 좋아하는 보석의 아이템ID & 링크로 자동으로 채웁니다.",
+	["ItemID or Link of the gem you would like to auto fill"] = "자동으로 채우고 싶은 보석의 아이템ID & 링크를 입력하세요.",
 	["<ItemID|Link>"] = "<아이템ID|링크>",
 	["%s is now set to %s"] = "현재 %s에 %s 설정",
-	["Queried server for Gem: %s. Try again in 5 secs."] = "서버에서 알수없는 보석: %s. 5초뒤 다시하세요.",
+	["Queried server for Gem: %s. Try again in 5 secs."] = "서버에 보석 조회중: %s. 5초뒤 다시하세요.",
 	-- /rb sum gem yellow
 	["Yellow Socket"] = EMPTY_SOCKET_YELLOW,
 	-- /rb sum gem blue
@@ -623,17 +623,22 @@ L:RegisterTranslations("koKR", function() return {
 	["$value MP"] = "마나 $value",
 	["$value AP"] = "전투력 $value",
 	["$value RAP"] = "원거리 전투력 $value",
-	["$value Dmg"] = "공격력 $value",
+	["$value Dmg"] = "주문 공격력 $value",
 	["$value Heal"] = "치유량 $value",
 	["$value Armor"] = "방어도 $value",
 	["$value Block"] = "방어 $value",
 	["$value MP5"] = "$value MP5",
 	["$value MP5(NC)"] = "$value MP5(NC)",
 	["$value HP5"] = "$value HP5",
-	["$value to be Dodged/Parried"] = "이후 회피 감소/무기막기 감소 $value",
-	["$value to be Crit"] = "이후 치명타 $value",
-	["$value Crit Dmg Taken"] = "가질 치명타 데미지 $value",
-	["$value DOT Dmg Taken"] = "가질 DOT 데미지 $value",
+	["$value to be Dodged/Parried"] = "상대 회피/막기 $value",
+	["$value to be Crit"] = "치명타 적중 $value",
+	["$value Crit Dmg Taken"] = "치명타 피해 $value",
+	["$value DOT Dmg Taken"] = "DoT 피해 $value",
+	["$value% Parry"] = "무기 막기 $value%",
+	-- for hit rating showing both physical and spell conversions
+	-- (+1.21%, S+0.98%)
+	-- (+1.21%, +0.98% S)
+	["$value Spell"] = "주문 $value",
 	
 	------------------
 	-- Stat Summary --

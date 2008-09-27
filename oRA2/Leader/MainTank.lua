@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 75012 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -161,6 +161,31 @@ L:RegisterTranslations("deDE", function() return {
 	["All"] = "Alle",
 	["Delete all Maintanks"] = "Lösche alle MainTanks",
 	["<Not Assigned>"] = "<nicht zugewiesen>",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["MainTank"] = "Главный танк",
+	["Options for the maintanks."] = "Опции ГТ.",
+	["Set"] = "Назначить",
+	["Set a maintank."]= "Назначить гланого танка",
+	["<nr> <name>"] = "<№> <имя>",
+	["<nr>"] = "<№>",
+	["<name>"] = "<имя>",
+	["Remove"] = "Удалить",
+	["Remove a maintank."] = "Удалить ГТ.",
+	["Removed maintank: "] = "Удалённый ГТ: ",
+	["Set maintank: "] = "Назначенные танки: ",
+	["Leader/MainTank"] = "Лидер/ГТ",
+	["Broadcast"] = "Передача списка ГТов",
+	["Send the raid your main tank list, in case someone didn't pick it up automatically."] = "Показывать рейду список танков, в случае, если у когото это не зделалось автоматически.",
+
+	["(%S+)%s*(.*)"] = "(%S+)%s*(.*)",
+
+	["Set target on a free mt-slot"] = "Поставить цель в свободный ГТ-слот",
+	["Free"] = "Свободный",
+	["All"] = "Всех",
+	["Delete all Maintanks"] = "Удалить всех ГТ",
+	["<Not Assigned>"] = "<Не задан>",
 } end)
 
 ----------------------------------
