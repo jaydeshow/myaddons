@@ -27,9 +27,21 @@ require "net/http"
   3 - Boss
   4 - Rare
  Reaction Types:
+  0 - Unknown
   1 - Hated
   2 - Neutral
   3 - Friendly
+ Quest Sides:
+  1 - Both
+  2 - Alliance
+  4 - Horde
+ Quest Types:
+  0 - normal
+  62 - Raid
+  60 - PVP
+  81 - Dungeon
+  
+  
 =end
 module WoWDBHelper
   include JsonHelper

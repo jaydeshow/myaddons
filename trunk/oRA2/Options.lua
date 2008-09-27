@@ -81,6 +81,17 @@ L:RegisterTranslations("deDE", function() return {
 	["Minimap"] = "Minikarte",
 	["Toggle the minimap button."] = "Minikarten Button ein-/ausblenden.",
 } end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	tablethint = "|cffeda55fShift-Клик|r открывает oRA Настройки. |cffeda55fCtrl-Alt-Click|r выключает oRA полностью. |cffeda55fAlt-Тащить|r перемещение ГТ,ВТ мониторов.",
+	tablethint_disabled = "|cffeda55fClick|r для включения.",
+	["oRA is currently disabled."] = "oRA отключен.",
+	["oRA Options"] = "Oпции oRA",
+	["Hidden"] = "Скрыть",
+	["Shown"] = "Показать",
+	["Minimap"] = "Мини-карта",
+	["Toggle the minimap button."] = "Вкл/Выкл отображение значка у мини-карты.",
+} end)
 
 ----------------------------------
 --      Module Declaration      --

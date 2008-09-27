@@ -102,10 +102,10 @@ L:RegisterTranslations("zhTW", function() return {
 
 	["Star"] = "星星",
 	["Circle"] = "圓圈",
-	["Diamond"] = "方塊",
+	["Diamond"] = "菱形",
 	["Triangle"] = "三角",
 	["Moon"] = "月亮",
-	["Square"] = "方形",
+	["Square"] = "方塊",
 	["Cross"] = "十字",
 	["Skull"] = "骷髏",
 } end )
@@ -218,7 +218,7 @@ L:RegisterTranslations("ruRU", function() return {
 
 local plugin = BigWigs:NewModule("Raid Icons")
 
-plugin.revision = tonumber(("$Revision: 79982 $"):sub(12, -3))
+plugin.revision = tonumber(("$Revision: 82069 $"):sub(12, -3))
 plugin.defaultDB = {
 	place = true,
 	icon = 8,

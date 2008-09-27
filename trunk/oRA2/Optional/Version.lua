@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -101,6 +101,22 @@ L:RegisterTranslations("deDE", function() return {
 	["oRA"] = "oRA",
 	["n/a"] = "n/a",
 } end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Version"] = "Версия",
+	["Options for version checks."] = "Опции проверки версии.",
+	["Refresh"] = "Обновить",
+	["Close"] = "Закрыть",
+	["Unknown"] = "Неизвестно",
+	["Name"] = "Имя",
+	["Optional/Version"] = "Дополнительно/Версия",
+	["Perform version check"] = "Выполнить проверку версии",
+	["Check the raid's versions."] = "Проверка версий у рейда.",
+	["CTRA"] = "CTRA",
+	["oRA"] = "oRA",
+	["n/a"] = "нет данных",
+} end )
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------

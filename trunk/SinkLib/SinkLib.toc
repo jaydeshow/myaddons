@@ -3,7 +3,7 @@
 ## Title: Lib: Sink-1.0
 ## Notes: Library that handles chat output.
 ## Author: Rabbit
-## eMail: rabbit.magtheridon@mail.com
+## X-eMail: rabbit.magtheridon@mail.com
 ## X-Category: Library
 ## OptionalDeps: Ace2, SharedMedia-1.0
 ## X-AceLibrary-Sink-1.0: true

@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 76320 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -94,6 +94,20 @@ L:RegisterTranslations("deDE", function() return {
 	["Tank %s has died!"] = "MainTank %s ist gestorben!",
 
 	maintankdies = "^([^%s]+) stirbt%.$",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+    ["MainTank"] = "Главный танк",
+	["Options for the maintanks."] = "Опции главного танка.",
+	["The local maintank list has been refreshed."] = "Местный список танков был обновлен.",
+	["Refresh"] = "Обновить",
+	["Refresh the local main tank list, in case changes were done locally that were not picked up by the display for any reason.\n\nNote that this does not fetch main tank lists from other people in your raid, it just updates your local display."] = "Обновляет локальный список главных танков, которые были у вас ранее не показаные.\n\nЗамечу это  не обновить списко людей рейда, это обновить только локальный список.",
+	["Participant/MainTank"] = "Участник/ГлавныйТанк",
+	["Notify deaths"] = "Сообщать о смерти",
+	["Notifies you when a main tank dies."] = "Извещать о смерти танков.",
+	["Tank %s has died!"] = "Танк %s умер!",
+
+	maintankdies = "^([^%s]+) умер%.$",
 } end )
 
 ----------------------------------

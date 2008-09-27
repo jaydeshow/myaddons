@@ -1,8 +1,10 @@
 ﻿## Interface: 20400
 ## Title: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80PallyPower Comms|r] by |cFFFF8080Zek|r
 ## Notes: ZOMGBuffs, Pally Power communications module
+## Title-zhCN: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs|r [|cFF80FF80PallyPower协作模块|r] by |cFFFF8080Zek|r
+## Notes-zhCN: ZOMGBuffs负责和Pally Power插件进行沟通的模块
 ## Author: Zek
-## Version: $Revision: 68049 $
+## Version: $Revision: 81994 $
 ## LoadOnDemand: 1
 ## RequiredDeps: ZOMGBuffs, ZOMGBuffs_BlessingsManager
 ## OptDeps: Ace2

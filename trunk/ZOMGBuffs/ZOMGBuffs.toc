@@ -1,8 +1,9 @@
 ﻿## Interface: 20400
 ## Title: |cFFFF8080Z|cFFFFFF80O|cFF80FF80M|cFF8080FFG|cFEFFFFFFBuffs |rby |cFFFF8080Zek|r
 ## Notes: All in one buffing mod for all classes. Paladin buff generated assignments based on Paladin capabilities and raid member sub-classes (druid tank vs. druid healer etc.). Plus overview of important raid buffs, and instant access rebuff on right click.
+## Notes-zhCN: 多样合一的全职业Buff插件。可以基于圣骑士的能力和团队成员的角色（例如德鲁伊坦克和德鲁伊治疗）来分配圣骑Buff。以及包含总览团队的重要Buff的功能，并且可以右键立刻重新Buff。
 ## Author: Zek
-## Version: $Revision: 81716 $
+## Version: $Revision: 81994 $
 ## SavedVariables: ZOMGBuffsDB
 ## SavedVariablesPerCharacter: ZOMGBuffsPerCharDB
 

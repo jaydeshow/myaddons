@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -142,6 +142,28 @@ L:RegisterTranslations("deDE", function() return {
 	["Close"] = "Schließen",
 	["Perform resistance check"] = "Starte einen Resistenz-Check",
 	["Check the raid's resistances."] = "Überprüft die Resistenzen des Schlachtzugs.",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Options for resistance checks."] = "Опции проверки сопротивления",
+	["Leader/Resist"] = "Лидер/Сопрот.",
+	["Name"] = "Название",
+	["Fire"] = "Огоню",
+	["Nature"] = "Природе",
+	["Frost"] = "Льду",
+	["Shadow"] = "Тьме",
+	["Arcane"] = "Тайной магии",
+	["Resistance checks disabled."] = "Проверка сопротивления выключена.",
+	["Resistances"] = "Сопротивления ",
+	["Fr"] = "Ог",
+	["Ft"] = "Лед",
+	["N"] = "П",
+	["A"] = "ТМ",
+	["S"] = "Т",
+	["Refresh"] = "Обновить",
+	["Close"] = "Закрыть",
+	["Perform resistance check"] = "Выполнить проверку сопротивления",
+	["Check the raid's resistances."] = "Проверка сопротивления рейда",
 } end )
 
 ----------------------------------

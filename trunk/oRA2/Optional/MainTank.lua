@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 75012 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -468,6 +468,81 @@ L:RegisterTranslations("frFR", function() return {
 
 	["Reset Position"] = "RÀZ de la position",
 	["Moves MT Window back to the center of your screen"] = "Replace la fenêtre des tanks principaux au centre de l'écran.",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["MainTank"] = "Главный Танк",
+	["Optional/MainTank"] = "Дополнительно/Главный Танк",
+	["Options for the maintanks."] = "Опции Главного Танка.",
+	["Targettarget"] = "Цель Цели",
+	["Toggle TargetTarget frames."] = "Вкл/Выкл фреймы Цель Цели.",
+	["Scale"] = "Масштаб",
+	["Set frame scale."] = "Настройка масштаба фреймов.",
+	["Alpha"] = "Прозрачность",
+	["Set frame alpha."] = "Настройка прозрачности фреймов.",
+	["Raidicon"] = "Иконка рейда",
+	["Toggle raid icons."] = "Вкл/Выкл иконки рейда.",
+	["Frames"] = "Фреймы",
+	["Options for the maintank frames."] = "Опции фреймов главных тагков (ГТ).",
+	["Growup"] = "Рост вверх",
+	["Toggle growup."] = "Вкд/Выкл рост вверх.",
+	["Inverse"] = "Инверсия",
+	["Toggle inverse healthbar."] = "Вкд/Выкл инверсиию полосы здоровья.",
+	["Deficit"] = "Нехватка",
+	["Toggle deficit health."] = "Вкд/Выкл нехватку здоровья.",
+	["Clickcast"] = "Применение по клику",
+	["Toggle clickcast support."] ="Вкд/Выкл поддержку клика для применения.",
+	["Clicktarget"] = "Цель по клику",
+	["Define clicktargets."] = "Определять Цель по клику.",
+	["Define the clicktarget for maintank."] = "Определять Цель по клику для Главного Танка.",
+	["Define the clicktarget for target."] = "Определять Цель по клику для цели.",
+	["Define the clicktarget for targettarget."] = "Определять Цель по клику для Цель цели.",
+	["Target"] = "Цель",
+	["Maintank"] = "Главный танк",
+	["TargetTarget"] = "Цель Цели",
+	["Set the maximum number of main tanks you want to show."] = "Установите максимальное количество главных танков отображаемых в вашем окне.",
+	["Amount"] = "Количество",
+	["Classcolor"] = "Цвет класса",
+	["Color healthbars by class."] = "Цвет полосы жизни по классу.",
+	["Enemycolor"] = "Цвет врагов",
+	["Set the color for enemies. (used when classcolor is enabled)"] = "Выберите цвет полосы врага. (использовать при включенном класс цвете)",
+	["Color Aggro"] = "Цвет аггро",
+	["Color aggro status for MTs on their names. Orange has target, Green is tanking, Red has no aggro."] = "Цвет статуса аггро ГТов на их именах. Оранжевый - имеет цель, Зеленый - танкует, Красный - без аггро.",
+	["Backdrop"] = "Фон",
+	["Toggle the backdrop."] = "Вкл/Выкл Фон.",
+	["Highlight"] = "Выделение",
+	["Toggle highlighting your target."] = "Вкл/Выкл выделение вашей цели.",
+	["Reverse"] = "Перевернуть",
+	["Toggle reverse order."] = "Вкл/Выкл переворачивание расположения.",
+	["Numbers"] = "Номера",
+	["Toggle showing of MT numbers."] = "Вкл/Выкл отображение номеров ГТ.",
+	["Tooltips"] = "Подсказки",
+	["Toggle showing of tooltips."] = "Вкл/Выкл отображение подсказок.",
+	["Show"] = "Отображение",
+	["Show maintank."] = "Отображать ГТ",
+	["Show target."] = "Отображать цель.",
+	["Show targettarget."] = "Отображать цель цели.",
+	["Define which frames you want to see."] = "Определять который фрейм вы хотите видеть.",
+	["Layout"] = "Располжение",
+	["Set the layout for the MT frames."] = "Установка расположение для фрейма ГТов.",
+	["Vertical"] = "Вертикальное",
+	["Horizontal"] = "Горизонтальное",
+
+	["Style"] = "Стиль",
+	["Set the frame style."] = "Установка стиля фреймов.",
+	["<style>"] = "<стиль>",
+
+	["Default"] = "Стандартный",
+	["Compact"] = "Копактный",
+
+	["Backwards"] = "Вернуть",
+	["Order MT|MTT|MTTT Backwards."] = "Сортирует обратно ГТ|ГТЦ|ГТЦЦ.",
+
+	["Lock"] = "Закрепить",
+	["Lock the MT frames."] = "Закрепить фреймы ГТ.",
+
+	["Reset Position"] = "Сбросить Позицию",
+	["Moves MT Window back to the center of your screen"] = "Перемещает окно ГТ назад, в центер вашего экрана",
 } end)
 
 ----------------------------------

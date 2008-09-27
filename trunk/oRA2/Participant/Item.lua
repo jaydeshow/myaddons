@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -80,6 +80,16 @@ L:RegisterTranslations("frFR", function() return {
 	["Disable responding to item checks."] = "Désactive l'envoi d'une réponse lors des vérifications des objets.",
 	["Disable reagent checks"] = "Désactiver les vérifications des composants",
 	["Disable responding to reagent checks."] = "Désactive l'envoi d'une réponse lors des vérifications des composants.",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Item"] = "Предмет",
+	["Options for item checks."] = "Опции проверки предметов.",
+	["Participant/Item"] = "Участник/Предмет",
+	["Disable item checks"] = "Отключить проверку предметов",
+	["Disable responding to item checks."] = "Отключить ответ на проверку предметов.",
+	["Disable reagent checks"] = "Отключить проверку реагентов",
+	["Disable responding to reagent checks."] = "Отключить ответ на проверку реагентов.",
 } end )
 
 ----------------------------------

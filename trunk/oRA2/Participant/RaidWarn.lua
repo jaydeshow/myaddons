@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -60,6 +60,14 @@ L:RegisterTranslations("deDE", function() return {
 	["Participant/RaidWarn"] = "Teilnehmer/Schlachtzugswarnung",
 	["Bossblock"] = "BossMods blockieren",
 	["Block messages from Bossmods."] = "Blockiert Meldungen die von BossMods versendet werden.",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Raidwarning"] = "Объявление рейду",
+	["Options for raid warning."] = "Опции объявления рейду.",
+	["Participant/RaidWarn"] = "Участник/Об.Рейду",
+	["Bossblock"] = "Блокировать БоссМод",
+	["Block messages from Bossmods."] = "Блокировать сообщения БоссМода.",
 } end )
 
 ----------------------------------

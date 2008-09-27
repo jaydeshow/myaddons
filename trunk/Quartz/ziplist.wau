@@ -1,4 +1,4 @@
-Quartz/Changelog-Quartz-r75509.txt
+Quartz/Changelog-Quartz-r81937.txt
 Quartz/Quartz.lua
 Quartz/GPLv2.txt
 Quartz/modules.xml
@@ -37,6 +37,7 @@ Quartz/locale/Quartz-zhCN.lua
 Quartz/locale/Quartz-enUS.lua
 Quartz/locale/Quartz-deDE.lua
 Quartz/locale/Quartz-koKR.lua
+Quartz/locale/Quartz-ruRU.lua
 Quartz/Latency/Latency.lua
 Quartz/Latency/Quartz_Latency.toc
 Quartz/Timer/Timer.lua

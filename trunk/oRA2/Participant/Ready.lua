@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -110,6 +110,23 @@ L:RegisterTranslations("deDE", function() return {
 	["Participant/Ready"] = "Teilnehmer/Bereitschaft",
 	["Closing Vote"] = "Schließe Abstimmung",
 	["Closing Check"] = "Schließe Bereitschaftcheck",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Options for ready checks and votes."] = "Опции проверки готовности и голосования.",
+	["Sound"] = "Звук",
+	["Toggle an audio warning upon a ready check or vote."] = "Вкл/Выкл звуковое предупреждение при проверке или голосовании.",
+	["Ready"] = "Готов",
+	["Not Ready"] = "Не готов",
+	["Are you Ready?"] = "Вы готовы?",
+	["Yes"] = "Да",
+	["No"] = "Нет",
+	["Ready Check"] = "Проверка готовности",
+	["check"] = "Проверка",
+	["Vote"] = "Голосование",
+	["Participant/Ready"] = "Участник/Готов",
+	["Closing Vote"] = "Закрыть голосование",
+	["Closing Check"] = "Закрыть проверку",
 } end)
 
 ----------------------------------

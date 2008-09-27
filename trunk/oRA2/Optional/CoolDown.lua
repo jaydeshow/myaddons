@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -47,6 +47,12 @@ L:RegisterTranslations("deDE", function() return {
 	["Cooldowns"] = "Cooldowns",
 	["Optional/CoolDown"] = "Wahlweise/Cooldown",
 	["Options for the cooldown monitor."] = "Optionen für den Cooldown-Monitor.",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Cooldowns"] = "Перезарядки",
+	["Optional/CoolDown"] = "Дополнительно/Перезарядка",
+	["Options for the cooldown monitor."] = "Опции мониторинга перезарядкок."
 } end)
 
 ----------------------------------

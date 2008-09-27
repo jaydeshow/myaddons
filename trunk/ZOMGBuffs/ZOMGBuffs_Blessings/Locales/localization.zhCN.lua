@@ -58,6 +58,7 @@ L:RegisterTranslations("zhCN", function() return {
 	["Reset default position of exception icon anchor"]	= "重新放置例外图标锚点到默认位置",
 	["%s blacklisted for 10 seconds"]					= "%s 暂时屏蔽10秒钟",
 	["You can no longer do certain buffs as defined in your template, these have been replaced."] = "在你的模板里有些Buff不能再用了，它们已经被替换掉了。",
+	["Removed obsolete (pre Lich King) buffs from your template."] = "从模板里移除过期的（巫妖王之前）的Buff",
 	["Replaced %s with %s"]								= "将%s替换为%s",
 	["Removed %s"]										= "已删除%s",
 } end)

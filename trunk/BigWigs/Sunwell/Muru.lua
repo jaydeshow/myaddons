@@ -118,17 +118,17 @@ L:RegisterTranslations("koKR", function() return {
 	darkness = "어둠",
 	darkness_desc = "어둠에 걸린 플레이어를 알립니다.",
 	darkness_message = "어둠: %s",
-	darkness_next = "다음 어둠",
+	darkness_next = "어둠",
 	darkness_soon = "5초 후 어둠!",
 
 	void = "공허의 파수병",
 	void_desc = "공허의 파수병의 소환을 알립니다.",
-	void_next = "다음 공허의 파수병(%d)",
+	void_next = "공허의 파수병(%d)",
 	void_soon = "5초 이내 파수병(%d)!",
 
 	humanoid = "타락한 엘프",
 	humanoid_desc = "타락한 엘프 등장을 알립니다.",
-	humanoid_next = "다음 타락한 엘프(%d)",
+	humanoid_next = "타락한 엘프(%d)",
 	humanoid_soon = "5초 이내 타락한 엘프(%d)!",
 
 	fiends = "어둠 마귀",
@@ -141,7 +141,7 @@ L:RegisterTranslations("koKR", function() return {
 
 	gravity = "중력 구체",
 	gravity_desc = "중력 구체를 알립니다.",
-	gravity_next = "다음 중력 구체",
+	gravity_next = "중력 구체",
 	gravity_soon = "잠시 후 중력 구체!",
 	gravity_spawned = "중력 구체 소환!",
 } end )
@@ -180,34 +180,34 @@ L:RegisterTranslations("zhCN", function() return {
 
 L:RegisterTranslations("zhTW", function() return {
 	darkness = "黑暗",
-	darkness_desc = "警報誰受到黑暗效果",
-	darkness_message = "黑暗: [%s]",
+	darkness_desc = "當玩家受到黑暗效果時發出警報",
+	darkness_message = "黑暗：%s",
 	darkness_next = "下一次黑暗",
-	darkness_soon = "約 5 秒內施放黑暗!",
+	darkness_soon = "5秒後施放黑暗",
 
 	void = "虛無哨兵",
 	void_desc = "當虛無哨兵出現時發出警報",
 	void_next = "下一波虛無哨兵：%d",
-	void_soon = "約 5 秒內虛無哨兵出現：>%d<!",
+	void_soon = "5秒後，虛無哨兵出現：%d",
 
-	humanoid = "虛無哨兵召喚者",
-	humanoid_desc = "當虛無哨兵召喚者出現時發出警報",
-	humanoid_next = "下一波召喚者：%d",
-	humanoid_soon = "約 5 秒內召喚者出現：>%d<!",
+	humanoid = "影劍怒法師和影劍狂戰士",
+	humanoid_desc = "當影劍怒法師和影劍狂戰士出現時發出警報",
+	humanoid_next = "下一波影劍怒法師和影劍狂戰士：%d",
+	humanoid_soon = "5秒後，影劍怒法師和影劍狂戰士出現：%d",
 
-	--fiends = "Dark Fiends",
-	--fiends_desc = "Warn for Dark Fiends spawning.",
-	--fiends_message = "Dark Fiends Inc!",
+	fiends = "暗魔",
+	fiends_desc = "當暗魔出現時發出警報",
+	fiends_message = "暗魔出現",
 
-	--phase = "Phases",
-	--phase_desc = "Warn for phase changes.",
-	--phase2_message = "Phase 2!",
+	phase = "階段",
+	phase_desc = "當進入不同階段時發出警報",
+	phase2_message = "第二階段",
 
-	--gravity = "Gravity Balls",
-	--gravity_desc = "Warn for Gravity Balls.",
-	--gravity_next = "Next Gravity Ball Timer",
-	--gravity_soon = "Gravity Ball soon!",
-	--gravity_spawned = "Gravity Ball spawned!",
+	gravity = "黑洞",
+	gravity_desc = "當施放黑洞時發出警報",
+	gravity_next = "下一波黑洞",
+	gravity_soon = "即將出現黑洞",
+	gravity_spawned = "黑洞出現",
 } end )
 
 L:RegisterTranslations("deDE", function() return {
@@ -283,7 +283,7 @@ mod.zonename = BZ["Sunwell Plateau"]
 mod.enabletrigger = boss
 mod.guid = 25840
 mod.toggleoptions = {"phase", -1, "darkness", "void", "humanoid", "fiends", "gravity", "enrage", "bosskill"}
-mod.revision = tonumber(("$Revision: 81813 $"):sub(12, -3))
+mod.revision = tonumber(("$Revision: 82038 $"):sub(12, -3))
 
 ------------------------------
 --      Initialization      --

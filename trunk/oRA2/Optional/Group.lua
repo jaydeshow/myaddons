@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -108,6 +108,22 @@ L:RegisterTranslations("deDE", function() return {
 	["You are now in group %d."] = "Du bist nun in Gruppe %d.",
 	["%s has left your group."] = "%s hat Deine Gruppe verlassen.",
 	["%s has joined your group."] = "%s ist Deiner Gruppe beigetreten.",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Group"] = "Группа",
+	["Optional/Group"] = "Дополнительно/Группа",
+	["Options for group change notifications."] = "Опции оповещения о изменениях в группах.",
+	["%s has joined your group."] = "%s присоединился в вашу группу.",
+	["%s has left your group."] = "%s покинул вашу группу.",
+	["You have joined group %d."] = "Вы присоединились к группе %d.",
+	["Player"] = "Игрок",
+	["Print a notification when you are changed to another group."] = "Оповещать когда вы перемещатесь в другую группу",
+	["Others"] = "Другие",
+	["Print a notification when your group members are changed."] = "Оповещать когда расположение участников вашей группы изменяются",
+	["You are now in group %d."] = "Вы теперь в группе %d.",
+	["%s has left your group."] = "%s покинул вашу группу.",
+	["%s has joined your group."] = "%s присоединился к вашей группе.",
 } end )
 
 ----------------------------------

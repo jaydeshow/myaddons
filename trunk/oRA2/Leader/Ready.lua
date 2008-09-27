@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -167,6 +167,32 @@ L:RegisterTranslations("deDE", function() return {
 	["Show Other Results"] = "Zeige Ergebnisse von anderen",
 	["Show Results when someone else starts a readycheck. (Requires assistant/leader)"] = "Zeigt Ergebnisse, wenn ein anderer einen Bereitschaftscheck gestartet hast. (Benötigt Assistent/Anführer)",
 	["Show Results when you start a readycheck."] = "Zeigt Ergebnisse, wenn Du einen Bereitschaftscheck gestartet hast.",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Options for ready checks and votes."] = "Опции проверки готовности и голосования.",
+	["Ready"] = "Готов",
+	["Not Ready"] = "Не готов",
+	["Are you Ready?"] = "Вы готовы?",
+	["Yes"] = "Да",
+	["No"] = "Нет",
+	["Ready Check"] = "Проверка готовности",
+	["Perform a ready check."] = "Выполнить проверку готовности.",
+	["Close"] = "Закрыть",
+	["<CTRaid> %s has performed a ready check."] = "<CTRaid> %s выполнил проверку рейда.",
+	["AFK: "] = "Отошел: ",
+	["Not Ready: "] = "Не готов: ",
+	["Yes: %d No: %d AFK: %d"] = "Да: %d Нет: %d Отошел: %d",
+	["Vote Results for: "] = "Результаты проверки: ",
+	["<CTRaid> %s has performed a vote: %s"] = "<CTRaid> %s выполнил голосование: %s",
+	["Vote"] = "Голосовать",
+	["Perform a vote."] = "Выполнить голосование.",
+	["<vote>"] = "<голосование>",
+	["Leader/Ready"] = "Лидер/Готовность",
+	["Show Results"] = "Показать результат",
+	["Show Other Results"] = "Показать другие результаты",
+	["Show Results when someone else starts a readycheck. (Requires assistant/leader)"] = "Показывать результаты если ктото выполнил проверку готовности. (Требуется помощник/лидер)",
+	["Show Results when you start a readycheck."] = "Показывает результат когда вы выполняете проверку готовности",
 } end)
 
 ----------------------------------

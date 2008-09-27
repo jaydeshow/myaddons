@@ -222,6 +222,9 @@ NL["Windy Cloud"] = "흩어지는 구름"
 NL["Swamp Gas"] = "늪지대 가스"
 NL["Arcane Vortex"] = "비전 소용돌이"
 NL["Felmist"] = "지옥 안개"
+NL["Steam Cloud"] = "Steam Cloud"
+NL["Cinder Cloud"] = "Cinder Cloud"
+NL["Arctic Cloud"] = "Arctic Cloud"
 
 -- herb bushes
 NL["Peacebloom"] = "평온초"

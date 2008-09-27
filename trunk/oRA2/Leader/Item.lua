@@ -1,5 +1,5 @@
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -185,6 +185,35 @@ L:RegisterTranslations("frFR", function() return {
 	SymbolofDivinity = "Symbole de divinité",
 	FlashPowder = "Poudre aveuglante",
 	SoulShard = "Fragment d'âme",
+} end)
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Options for item checks."] = "Опции проверки предметов .",
+	["Checks Disabled"] = "Проверка выключена",
+	["Items"] = "Предметы",
+	["Reagents"] = "Реагенты",
+	["Close"] = "Закрыть",
+	["Refresh"] = "Обновить",
+	["Name"] = "Имя",
+	["Item"] = "Предмет",
+	["Amount"] = "Количество",
+	["Nr"] = "№",
+	["Perform item check"] = "Выполнить проверку предметов",
+	["Check the raid for an item."] = "Проверка рейда на предметы.",
+	["<item>"] = "<предмет>",
+	["Perform reagent check"] = "Выпонить проверку реагентов",
+	["Check the raid for reagents."] = "Проверка рейда на Реагенты.",
+	["Leader/Item"] = "Лидер/Предмет",
+	["Use item-ID if available"] = "Использовать ID предмета (если знаете)",
+	["Prefer using item-ID when checking for items."] = "Использование ID-предмета при проверки предметов.",
+
+	SacredCandle = "Священная свеча",
+	ArcanePowder = "Порошок чар",
+	WildThornroot = "Дикий шипокорень",
+	Ankh = "Крест",
+	SymbolofDivinity = "Символ божественности",
+	FlashPowder = "Воспламеняющийся порошок",
+	SoulShard = "Осколок души",
 } end)
 
 ----------------------------------

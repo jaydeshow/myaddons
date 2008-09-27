@@ -1,6 +1,6 @@
 ﻿--[[
 Name: Babble-Herbs-2.2
-Revision: $Rev: 79351 $
+Revision: $Rev: 81944 $
 Authors(s): kagaro (sal.scotto@gmail.com)
 Website: www.wowace.com
 Documentation: http://www.wowace.com/wiki/Babble-Herbs-2.2
@@ -10,7 +10,7 @@ License: MIT
 ]]
 
 local MAJOR_VERSION = "Babble-Herbs-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 79351 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 81944 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -361,7 +361,7 @@ BabbleHerbs:RegisterTranslations("ruRU", function() return {
 	["Goldthorn"] = "Златошип",
 	["Khadgar's Whisker"] = "Кадгаров ус",
 	["Wintersbite"] = "Зимник",
-	["Firebloom"] = "Огненный Цветок",
+	["Firebloom"] = "Огнецвет",
 	["Purple Lotus"] = "Пурпурный лотос",
 	["Wildvine"] = "Дикий виноград",
 	["Arthas' Tears"] = "Слезы Артаса",
@@ -378,16 +378,16 @@ BabbleHerbs:RegisterTranslations("ruRU", function() return {
 	["Black Lotus"] = "Черный лотос",
 	["Felweed"] = "Скверноплевел",
 	["Dreaming Glory"] = "Соннославник",
-	["Terocone"] = "Терошишечник",
+	["Terocone"] = "Терошишка",
 	["Ancient Lichen"] = "Древний лишайник",
 	["Bloodthistle"] = "Кровопийка",
 	["Mana Thistle"] = "Манрепейник",
-	["Netherbloom"] = "Роза Хаоса",
+	["Netherbloom"] = "Пустоцвет",
 	["Nightmare Vine"] = "Лозный кошмарник",
 	["Ragveil"] = "Кисейница",
 	["Flame Cap"] = "Огнеголовик",
 	["Fel Lotus"] = "Оскверненный лотос",
-	["Netherdust Bush"] = "Пыльник хаотический",
+	["Netherdust Bush"] = "Пыльца Хаотического Пыльника",
 } end)
 
 BabbleHerbs:Debug()

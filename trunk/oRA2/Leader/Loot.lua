@@ -3,7 +3,7 @@
 -- Adapted further by Ammo
 
 assert(oRA, "oRA not found!")
-local revision = tonumber(("$Revision: 74053 $"):match("%d+"))
+local revision = tonumber(("$Revision: 81915 $"):match("%d+"))
 if oRA.version < revision then oRA.version = revision end
 
 ------------------------------
@@ -144,6 +144,25 @@ L:RegisterTranslations("koKR", function() return {
 	["<threshold>"] = "<품질>",
 	["Toggle whether or not setting the loot method/threshold is enabled."] = "설정되지 않은 전리품 획득 방식/품질의 활성화 여부를 전환합니다.",
 	["Enable"] = "활성화",
+} end )
+-- Translated by by StingerSoft (Эритнулл aka Шептун)
+L:RegisterTranslations("ruRU", function() return {
+	["Loot"] = "Добыча",
+	["Leader/Loot"] = "Лидер/Добыча",
+	["Automatically set the loot method and threshold when forming a raid."] = "Автоматически установить метод добычи и величину при формировании рейда",
+	["Method"] = "Метод",
+	["Threshold"] = "Величина",
+	["Set the loot method."] = "Выбрать метод добычи.",
+	["Set the loot threshold."] = "Установить величину добычи.",
+	["Free for all"] = "каждый за себя",
+	["Round robin"] = "по очереди",
+	["Master looter"] = "ответственный за добычу",
+	["Group loot"] = "Групповая очередь",
+	["Need before greed"] = "'Нужно' перед 'Не откажусь'",
+	["<method>"] = "<метод>",
+	["<threshold>"] = "<величина>",
+	["Toggle whether or not setting the loot method/threshold is enabled."] = "Вкл/Выкл любую из двух настроек добычи/велечины включены.",
+	["Enable"] = "Включено",
 } end )
 
 ----------------------------------

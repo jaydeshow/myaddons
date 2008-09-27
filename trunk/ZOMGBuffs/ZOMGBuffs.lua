@@ -14,6 +14,9 @@ local BC = LibStub("LibBabble-Class-3.0"):GetLookupTable()
 local Sink, SinkVersion = LibStub("LibSink-2.0")
 local SM = LibStub("LibSharedMedia-3.0")
 
+BINDING_HEADER_ZOMGBUFFS = L["TITLECOLOUR"]
+BINDING_NAME_ZOMGBUFFS_PORTAL = L["PORTALZ_HOTKEY"]
+
 local tablet = LibStub("Tablet-2.0")
 local dewdrop = LibStub("Dewdrop-2.0")
 local RockComm
@@ -48,6 +51,7 @@ local classIcons = {
 	PRIEST	= "Interface\\Icons\\Spell_Holy_WordFortitude",
 	MAGE	= "Interface\\Icons\\Spell_Holy_MagicalSentry",
 	WARLOCK	= "Interface\\Icons\\Spell_Shadow_DemonBreath",
+	DEATHKNIGHT = "Interface\\Icons\\Spell_DeathKnight_Subversion",
 }
 
 local classOrder = {"WARRIOR", "ROGUE", "HUNTER", "DRUID", "SHAMAN", "PALADIN", "PRIEST", "MAGE", "WARLOCK"}
@@ -79,10 +83,13 @@ local function ShortDesc(a)
 	if (a == "MARK") then		return L["Mark"]
 	elseif (a == "STA") then	return L["Stamina"]
 	elseif (a == "INT") then	return L["Intellect"]
+	elseif (a == "SHADOWPROT") then return L["Shadow Protection"]
 	elseif (a == "SPIRIT") then	return L["Spirit"]
 	elseif (a == "BLESSINGS") then	return L["Blessings"]
 	end
 end
+
+local kiru = GetSpellInfo(46302)			-- Counts as INT (Ignoring STA because talented is still better)
 
 local new, del, copy, deepDel
 do
@@ -242,7 +249,7 @@ do
 	end
 end
 
-z.version = tonumber(string.sub("$Revision: 81790 $", 12, -3)) or 1
+z.version = tonumber(string.sub("$Revision: 82089 $", 12, -3)) or 1
 z.versionCompat = 65478
 z.title = L["TITLE"]
 z.titleColour = L["TITLECOLOUR"]
@@ -834,6 +841,24 @@ z.options = {
 							passValue = "iconborder",
 							order = 6,
 						},
+						name = {
+							type = 'toggle',
+							name = L["Name"],
+							desc = L["Display the ZOMGBuffs logo on icon"],
+							get = getOption,
+							set = function(k,v) setOption(k,v) z:SetIconSize() end,
+							passValue = "iconname",
+							order = 8,
+						},
+						swirl = {
+							type = 'toggle',
+							name = L["Swirl"],
+							desc = L["Display the spell ready swirl when an autocast spell is loaded on the main icon"],
+							get = getOption,
+							set = function(k,v) setOption(k,v) end,
+							passValue = "iconswirl",
+							order = 8,
+						},
 						size = {
 							type = 'range',
 							name = L["Icon Size"],
@@ -1085,7 +1110,7 @@ z.options = {
 							order = 201,
 							hidden = function() return not SM end,
 							get = getOption,
-							set = function(k,v) setOption(k,v) z:SetAllBarTextures() end,
+							set = function(k,v) setOption(k,v) z:SetAllBarTextures() z:OptionsShowList() end,
 							passValue = "bartexture",
 						},
 						width = {
@@ -1093,7 +1118,7 @@ z.options = {
 							name = L["Width"],
 							desc = L["Adjust width of unit list"],
 							get = getPCOption,
-							set = function(k,v) setPCOption(k,v) z:SetAllBarSizes() end,
+							set = function(k,v) setPCOption(k,v) z:SetAllBarSizes() z:OptionsShowList() end,
 							disabled = InCombatLockdown,
 							passValue = "width",
 							min = 100,
@@ -1107,7 +1132,7 @@ z.options = {
 							name = L["Bar Height"],
 							desc = L["Adjust height of the bars"],
 							get = getPCOption,
-							set = function(k,v) setPCOption(k,v) z:SetAllBarSizes() end,
+							set = function(k,v) setPCOption(k,v) z:SetAllBarSizes() z:OptionsShowList() end,
 							disabled = InCombatLockdown,
 							passValue = "height",
 							min = 10,
@@ -1126,7 +1151,7 @@ z.options = {
 									name = L["Font"],
 									desc = L["Font"],
 									get = getPCOption,
-									set = function(k,v) setPCOption(k,v) z:ApplyFont() end,
+									set = function(k,v) setPCOption(k,v) z:ApplyFont() z:OptionsShowList() end,
 									validate = SM and SM:List("font") or {},
 									passValue = "fontface",
 								},
@@ -1138,7 +1163,7 @@ z.options = {
 									max = 25,
 									step = 1,
 									get = getPCOption,
-									set = function(k,v) setPCOption(k,v) z:ApplyFont() end,
+									set = function(k,v) setPCOption(k,v) z:ApplyFont() z:OptionsShowList() end,
 									passValue = "fontsize",
 								},
 								outlining = {
@@ -1146,7 +1171,7 @@ z.options = {
 									name = L["Outlining"],
 									desc = L["Outlining"],
 									get = getPCOption,
-									set = function(k,v) setPCOption(k,v) z:ApplyFont() end,
+									set = function(k,v) setPCOption(k,v) z:ApplyFont() z:OptionsShowList() end,
 									validate = outlines,
 									passValue = "fontoutline",
 								},
@@ -1159,7 +1184,7 @@ z.options = {
 							validate = points,
 							order = 220,
 							get = getPCOption,
-							set = function(k,v) z.db.char.anchor = v z:SetAnchors() end,
+							set = function(k,v) z.db.char.anchor = v z:SetAnchors() z:OptionsShowList() end,
 							disabled = InCombatLockdown,
 							passValue = "anchor",
 						},
@@ -1170,7 +1195,7 @@ z.options = {
 							validate = points,
 							order = 221,
 							get = getPCOption,
-							set = function(k,v) z.db.char.relpoint = v z:SetAnchors() end,
+							set = function(k,v) z.db.char.relpoint = v z:SetAnchors() z:OptionsShowList() end,
 							disabled = InCombatLockdown,
 							passValue = "relpoint",
 						},
@@ -2005,7 +2030,6 @@ end
 -- SetAllBarTextures()
 function z:SetAllBarTextures()
 	local tex = self:GetBarTexture()
-	self:OptionsShowList()
 	for k,cell in pairs(AllFrameArray) do
 		cell.bar:SetStatusBarTexture(tex)
 	end
@@ -2028,7 +2052,6 @@ function z:ApplyFont()
 	for k,cell in pairs(AllFrameArray) do
 		cell.name:SetFont(a, b, c)
 	end
-	self:OptionsShowList()
 end
 
 -- LinkPlayer
@@ -2490,14 +2513,21 @@ function z:SetIconSize()
 			border:Hide()
 		end
 	end
+
+	if (self.db.profile.iconname) then
+		self.icon.name:Show()
+	else
+		self.icon.name:Hide()
+	end
 end
 
 -- CreateBorder
 function z:CreateBorder(parent)
 	local border = CreateFrame("Frame", nil, parent)
-	border:SetPoint("TOPLEFT", -2, 2)
-	border:SetPoint("BOTTOMRIGHT", 2, -2)
+	border:SetPoint("TOPLEFT", -4, 4)
+	border:SetPoint("BOTTOMRIGHT", 4, -4)
 	border:SetFrameStrata("LOW")
+	border:SetFrameLevel(parent:GetFrameLevel() + 1)
 
 	border:SetBackdrop({
 		--bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", tile = true, tileSize = 16,
@@ -2542,7 +2572,6 @@ function z:SetAnchors()
 	else
 		self.members:SetPoint(z.db.char.anchor or "BOTTOMRIGHT", self.menu, z.db.char.relpoint or "TOPLEFT", 0, 0)
 	end
-	self:OptionsShowList()
 end
 
 -- CanLearn
@@ -2723,7 +2752,9 @@ function z:SetStatusIcon(t, spellIcon)
 				self.icon.name:Hide()
 			else
 				icon = i
-				self.icon.name:Show()
+				if (self.db.profile.iconname) then
+					self.icon.name:Show()
+				end
 				if (self.db.profile.enabled) then
 					self.icon.tex:SetVertexColor(1, 1, 1)
 					self.icon.tex:SetDesaturated(nil)
@@ -2863,7 +2894,11 @@ function z:SetupForSpell(unit, spell, mod, reagentCount)
 			self.icon.count:Hide()
 		end
 		self:SetStatusIcon(t, mod:GetSpellIcon(spell))
-		self.icon.auto:Show()
+		if (self.db.profile.iconswirl) then
+			self.icon.auto:Show()
+		else
+			self.icon.auto:Hide()
+		end
 	else
 		self:ClearNotice()
 		self:SetStatusIcon()
@@ -2893,7 +2928,11 @@ function z:SetupForItem(slot, item, mod, spell, castTime)
 	if (item) then
 		local itemName, itemString, itemQuality, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = GetItemInfo(item)
 		self:SetStatusIcon(nil, itemTexture)
-		icon.auto:Show()
+		if (self.db.profile.iconswirl) then
+			icon.auto:Show()
+		else
+			icon.auto:Hide()
+		end
 
 		local reagentCount = GetItemCount(item)
 		if (reagentCount) then
@@ -2904,7 +2943,11 @@ function z:SetupForItem(slot, item, mod, spell, castTime)
 		end
 	elseif (spell) then
 		self:SetStatusIcon(nil, mod:GetSpellIcon(spell))
-		icon.auto:Show()
+		if (self.db.profile.iconswirl) then
+			icon.auto:Show()
+		else
+			icon.auto:Hide()
+		end
 		icon.count:Hide()
 	else
 		self:ClearNotice()
@@ -3453,8 +3496,6 @@ function z:SetAllBarSizes()
 				icon:SetHeight(h)
 			end
 		end
-
-		self:OptionsShowList()
 	end
 end
 
@@ -3480,7 +3521,7 @@ function z:PeriodicListCheck()
 		end
 	end
 
-	if (any) then
+	if (any and self.db.profile.iconswirl) then
 		self.icon.auto:Show()
 	else
 		self.icon.auto:Hide()
@@ -3591,6 +3632,10 @@ local function DrawCell(self)
 			local name, rank, tex, count, _, maxDuration, endTime = z:UnitBuff(partyid, i)
 			if (not name) then
 				break
+			end
+
+			if (name == kiru) then
+				name = GetSpellInfo(27126)
 			end
 
 			if (maxDuration and maxDuration > 0 and (not myMax or myMax > maxDuration)) then
@@ -3818,7 +3863,11 @@ local function DrawCell(self)
 		else
 			self.name:SetTextColor(c.r, c.g, c.b)
 			if (InCombatLockdown()) then
-				z.icon.auto:Show()
+				if (z.db.profile.iconswirl) then
+					z.icon.auto:Show()
+				else
+					z.icon.auto:Hide()
+				end
 			end
 		end
 	else
@@ -5259,6 +5308,8 @@ function z:OnInitialize()
 		buffreminder = "None",
 		spellIcons = true,
 		showroles = true,
+		iconname = true,
+		iconswirl = true,
 	} )
 	self:RegisterDefaults("char", {
 		firstStartup = true,
@@ -5689,7 +5740,6 @@ function z:OnEnable()
 	self:SetKeyBindings()
 
 	self:RegisterEvent("RAID_ROSTER_UPDATE")
-	self:RegisterEvent("PARTY_MEMBERS_CHANGED", "RAID_ROSTER_UPDATE")
 	self:RegisterEvent("UNIT_AURA")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED")

@@ -1,8 +1,8 @@
 ﻿--[[
 ************************************************************************
 AckisRecipeList
-$Date: 2008-09-18 00:30:26 -0400 (Thu, 18 Sep 2008) $
-$Rev: 81825 $
+$Date: 2008-09-26 12:33:21 -0400 (Fri, 26 Sep 2008) $
+$Rev: 82082 $
 
 Author: Ackis on Illidan US Horde
 GUI done by Zhinjio
@@ -198,28 +198,6 @@ addon.db.profile---->
 	}
 
 ************************************************************************
---]]
-
---[[
-Wrath compatibility (God I can't wait)
-
-REMOVE:
-
-addon.SkillType
-addon.PetList
-local GetNumCrafts = GetNumCrafts
-local GetCraftInfo = GetCraftInfo
-local GetCraftName = GetCraftName
-local CraftIsPetTraining = CraftIsPetTraining
-L["TwoCraftingWindows"]
-References to CRAFTING window (event for example)
-addon:addTradeSkillBeast
-InitializeCraftRecipes(CurrentProfession)
-Remove addon:ScanCraftSkills()
-Anything else to do with hunters or rogue poisons
-
-Second half of Command Function and TextDump Function
-
 --]]
 
 local BFAC		= LibStub("LibBabble-Faction-3.0"):GetLookupTable()
@@ -1092,6 +1070,10 @@ end
 -- Returns configuraion options for sorintg
 local function giveSorting()
 
+	addon:Print("Debug: Sorting parameters called")
+
+	local sortlist = {L["Name"], L["Skill"], L["Acquisition"]}
+
 	local sorting =
 	{
 		type = "group",
@@ -1116,10 +1098,9 @@ local function giveSorting()
 				name	= L["Sort"],
 				desc	= L["SORT_OPTIONS"],
 				type	= "select",
-				values	= function() return {Name = L["Name"], Skill = L["Skill"], Acquisition = L["Acquisition"]} end,
-				get		= function() return addon.db.profile.sorting end,
-				-- This will probably cause people in multiple locals to have issues
-				set		= function(info,name) addon.db.profile.sorting = name end,
+				values	= function() return sortlist end,
+				get		= function() return addon.db.profile.sortmethod end,
+				set		= function(info,name) addon.db.profile.sortmethod = name end,
 				order	= 3,
 				},
 		},
@@ -1187,7 +1168,9 @@ function addon:OnInitialize()
 	local AceConfigReg = LibStub("AceConfigRegistry-3.0")
 	local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
-	self.db = LibStub("AceDB-3.0"):New("AckisRecipeListDB", defaults, "char")
+	-- Defaults to char
+	--self.db = LibStub("AceDB-3.0"):New("ARL-1-DB", defaults, "char")
+	self.db = LibStub("AceDB-3.0"):New("ARLDB")
 
 	-- Create the options with Ace3
 	AceConfig:RegisterOptionsTable("Ackis Recipe List",giveOptions)
@@ -1212,16 +1195,13 @@ function addon:OnInitialize()
 	{
 		profile = {
 			-- Sorting Options
-			sorting = L["Skill"],
+			sortmethod = 2,
 
 			-- Display Options
 			usegui = true,
 			includefiltered = false,
 			closeguionskillclose = false,
 			testgui = false,
-
-			-- Filtered recipe list
-			filteredrecipes = {},
 
 			-- Filter Options
 			filters = {
@@ -1311,8 +1291,6 @@ function addon:OnInitialize()
 
 	-- Populate the repuatation level
 	self:GetFactionLevels()
-	-- Populate the known professions
-	--self:GetKnownProfessions()
 
 end
 
@@ -2379,7 +2357,6 @@ end
 
 function addon:SortMissingRecipes(SortFunction)
 
---	local TempRecipeSort = {}
 	addon.SortedRecipeIndex = {}
 	-- Get all the indexes of the RecipeListing
 	for n in pairs(addon.RecipeListing) do
@@ -2389,7 +2366,6 @@ function addon:SortMissingRecipes(SortFunction)
 	-- Sort the indexes according to the function
 	table.sort(addon.SortedRecipeIndex, SortFunction)
 
---	return TempRecipeSort
 end
 
 --[[
@@ -2679,13 +2655,13 @@ function addon:AckisRecipeList_Command()
 	end
 
 	-- Sort the recipe list now
-	local sorttype = addon.db.profile.sorting
+	local sorttype = addon.db.profile.sortmethod
 
-	if (sorttype == L["Skill"]) then
+	if (sorttype == 2) then
 		self:SortMissingRecipes(SortMissingSkill)
-	elseif (sorttype == L["Name"]) then
+	elseif (sorttype == 1) then
 		self:SortMissingRecipes(SortMissingName)
-	elseif (sorttype == L["Acquisition"]) then
+	elseif (sorttype == 3) then
 		self:SortMissingRecipes(SortMissingAcquisition)
 	end
 
@@ -2777,13 +2753,13 @@ function addon:TextDump()
 	end
 
 	-- Sort the recipe list now
-	local sorttype = addon.db.profile.sorting
+	local sorttype = addon.db.profile.sortmethod
 
-	if (sorttype == L["Skill"]) then
+	if (sorttype == 2) then
 		self:SortMissingRecipes(SortMissingSkill)
-	elseif (sorttype == L["Name"]) then
+	elseif (sorttype == 1) then
 		self:SortMissingRecipes(SortMissingName)
-	elseif (sorttype == L["Acquisition"]) then
+	elseif (sorttype == 3) then
 		self:SortMissingRecipes(SortMissingAcquisition)
 	end
 

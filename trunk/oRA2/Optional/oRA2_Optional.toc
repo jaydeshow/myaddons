@@ -2,6 +2,8 @@
 
 ## Title: oRA2 [|cffeda55fOptional|r]
 ## Notes: oRA2 Optional modules
+## Title-ruRU: oRA2 [|cffeda55fДополнительный|r]
+## Notes-ruRU: oRA2 модуль дополнений
 ## Author: Ammo, Haste & Others
 ## Version: 2.0
 ## LoadOnDemand: 1

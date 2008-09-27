@@ -12,6 +12,7 @@ class WoWDBMaps
     @@containers = Hash.new
     @@pickable = Hash.new
     @@fishes = Hash.new
+    @@npcs = Hash.new
   end
   def get_fish_list
     # Fish schools http://www.wowdb.com/search.aspx?browse=5.25
@@ -91,6 +92,61 @@ class WoWDBMaps
         return get_map_locations(@@fishes[object_name])
     end
     raise "Maps not found for #{object_name} either you mis-spelled the name or you have fetched the list yet"
+  end
+  def get_dungeon_maps
+     return search_list("3.3")
+     maps = {}
+     list.each do |entry|
+       maps[entry[:id]] = entry
+     end
+     return maps
+  end
+  def get_raid_maps
+    list = search_list("3.4")
+    maps = {}
+    list.each do |entry|
+      maps[entry[:id]] = entry
+    end
+    return maps
+  end
+  def get_npc_locations(npc_id)
+    if @@npcs.has_key?(npc_id)
+      return @@npcs[npc_id]
+    end
+    response = Net::HTTP.get(URI.parse("http://www.wowdb.com/npc.aspx?id=#{npc_id}"))
+    unless response
+      raise "Data not available for object #{npc_id}"
+    end
+    lst = response.scan(/<script>addMapLocations\((.*)\)<\/script>/).first
+    if lst.nil?
+      raise "No map data for #{npc_id}"
+    end
+    data = from_json(lst.first)
+    # sort data into a map
+    results = Hash.new
+    data.each do |entry|
+      zone = entry[:mapLabel]
+      coords = entry[:coords]
+      coords.each do |coordset|
+        coordset.delete_if do |record|
+          record.kind_of?(String)
+        end
+      end
+      results[zone] = coords
+    end
+    @@npcs[npc_id] = results
+    return results
+  end
+  def average_location(locations)
+    if locations.length == 0
+      return [0,0]
+    end
+    x, y = 0,0
+    locations.each do |entry|
+      x = x + entry[0]
+      y = y + entry[1]
+    end
+    return [x/locations.length,y/locations.length]
   end
   # returns a Has keyed by Zone name, containing an array of coord arrays
   def get_map_locations(object_id)

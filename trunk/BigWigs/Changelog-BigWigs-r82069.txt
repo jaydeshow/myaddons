@@ -1,4 +1,54 @@
 ------------------------------------------------------------------------
+r82069 | kjheng | 2008-09-26 06:35:29 -0400 (Fri, 26 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Core.lua
+   M /trunk/BigWigs/Extras/Proximity.lua
+   M /trunk/BigWigs/Plugins/RaidIcon.lua
+   M /trunk/BigWigs/Prototype.lua
+
+BigWigs: update zhTW
+------------------------------------------------------------------------
+r82040 | kjheng | 2008-09-25 17:11:11 -0400 (Thu, 25 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: add zhTW
+------------------------------------------------------------------------
+r82038 | kjheng | 2008-09-25 15:00:18 -0400 (Thu, 25 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Muru.lua
+
+BigWigs: update zhTW
+------------------------------------------------------------------------
+r81973 | 7destiny | 2008-09-23 09:24:19 -0400 (Tue, 23 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: koKR Update
+------------------------------------------------------------------------
+r81955 | 7destiny | 2008-09-22 12:57:47 -0400 (Mon, 22 Sep 2008) | 2 lines
+Changed paths:
+   M /trunk/BigWigs/Sunwell/Brutallus.lua
+   M /trunk/BigWigs/Sunwell/Kalecgos.lua
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+   M /trunk/BigWigs/Sunwell/Muru.lua
+   M /trunk/BigWigs/Sunwell/Twins.lua
+
+BigWigs: Sunwell:
+- koKR Update
+------------------------------------------------------------------------
+r81949 | rabbit | 2008-09-22 04:21:15 -0400 (Mon, 22 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Plugins/BossBlock.lua
+
+BigWigs: BossBlock: WotLK fix.
+------------------------------------------------------------------------
+r81856 | pettigrow | 2008-09-18 17:13:33 -0400 (Thu, 18 Sep 2008) | 1 line
+Changed paths:
+   M /trunk/BigWigs/Sunwell/KilJaeden.lua
+
+BigWigs: frFR Update
+------------------------------------------------------------------------
 r81813 | pettigrow | 2008-09-17 16:15:56 -0400 (Wed, 17 Sep 2008) | 1 line
 Changed paths:
    M /trunk/BigWigs/Sunwell/Brutallus.lua
@@ -111,52 +161,4 @@ Changed paths:
    M /trunk/BigWigs/ZulAman/Zul'jin.lua
 
 BigWigs: update/fix ruRU
-------------------------------------------------------------------------
-r80907 | StingerSoft | 2008-08-24 17:47:46 -0400 (Sun, 24 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: funkydude, very sorry.. fix line 321 (duplicate value)
-------------------------------------------------------------------------
-r80896 | oojoo | 2008-08-24 11:04:32 -0400 (Sun, 24 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/Najentus.lua
-   M /trunk/BigWigs/BlackTemple/Supremus.lua
-   M /trunk/BigWigs/Hyjal/HyjalSummit.lua
-   M /trunk/BigWigs/Hyjal/Kazrogal.lua
-
-BigWigs: small deDE tweaks
-------------------------------------------------------------------------
-r80892 | funkydude | 2008-08-24 07:25:09 -0400 (Sun, 24 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Hyjal/HyjalSummit.lua
-
-BigWigs: Hyjal/HyjalSummit: Fix line 340, stinger test your changes, breaking bigwigs is reserved for me.
-------------------------------------------------------------------------
-r80881 | StingerSoft | 2008-08-24 02:34:12 -0400 (Sun, 24 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/BlackTemple/Teron.lua
-   M /trunk/BigWigs/Hyjal/HyjalSummit.lua
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: update/fix ruRU
-------------------------------------------------------------------------
-r80742 | funkydude | 2008-08-20 13:45:20 -0400 (Wed, 20 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Sunwell/Kalecgos.lua
-
-BigWigs: Sunwell/Kalecgos: Fix Silviu- 's 1 in a million chance error
-------------------------------------------------------------------------
-r80734 | Cybersea | 2008-08-20 12:34:01 -0400 (Wed, 20 Aug 2008) | 1 line
-Changed paths:
-   M /trunk/BigWigs/Karazhan/RomuloJulianne.lua
-
-BigWigs: ruRU fix/update
-------------------------------------------------------------------------
-r80592 | funkydude | 2008-08-17 17:30:02 -0400 (Sun, 17 Aug 2008) | 2 lines
-Changed paths:
-   M /trunk/BigWigs/Sunwell/KilJaeden.lua
-
-BigWigs: Sunwell/KilJaeden:
-- Fix typo in deceiver, don't rely on localization for proximity.
 ------------------------------------------------------------------------

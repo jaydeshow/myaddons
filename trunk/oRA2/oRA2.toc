@@ -1,11 +1,12 @@
 ﻿## Interface: 20400
 ## Title: oRA2 |cff7fff7f -Ace2-|r
 ## Notes: A CT_RaidAssist alternative
+## Notes-ruRU: Альтернатива CT_RaidAssist
 ## Notes-koKR: 공격대 도우미(CT_RaidAssist) 애드온의 대체 애드온
 ## Notes-zhCN: CT_RaidAssist 外的另一个选择。
 ## Notes-zhTW: 除了 CT_RaidAssist 以外的另一個選擇。
 ## Notes-frFR: Alternative à CT_RaidAssist.
-## Version: 2.0.$Revision: 70972 $
+## Version: 2.0.$Revision: 81915 $
 ## Author: Ammo, Rabbit
 ## OptionalDeps: Ace2, FuBar, SharedMedia, LibSharedMedia-3.0
 ## X-Embeds: Ace2, TabletLib, FuBarPlugin-2.0, DewdropLib, CandyBar, LibSharedMedia-3.0, Waterfall-1.0, WindowLib

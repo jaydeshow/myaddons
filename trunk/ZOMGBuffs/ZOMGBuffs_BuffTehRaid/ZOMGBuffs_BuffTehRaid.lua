@@ -1,7 +1,7 @@
 local wow3 = GetBuildInfo() >= "3.0.0"
 
 if (ZOMGBuffTehRaid) then
-	z:Print("Installation error, duplicate copy of ZOMGBuffs_BuffTehRaid (Addons\ZOMGBuffs\ZOMGBuffs_BuffTehRaid and Addons\ZOMGBuffs_BuffTehRaid)")
+	ZOMGBuffs:Print("Installation error, duplicate copy of ZOMGBuffs_BuffTehRaid (Addons\ZOMGBuffs\ZOMGBuffs_BuffTehRaid and Addons\ZOMGBuffs_BuffTehRaid)")
 	return
 end
 
@@ -15,7 +15,7 @@ local z = ZOMGBuffs
 local zg = z:NewModule("ZOMGBuffTehRaid")
 ZOMGBuffTehRaid = zg
 
-z:CheckVersion("$Revision: 81802 $")
+z:CheckVersion("$Revision: 82001 $")
 
 local new, del, deepDel, copy = z.new, z.del, z.deepDel, z.copy
 local InCombatLockdown	= InCombatLockdown
@@ -32,7 +32,7 @@ local UnitInRaid		= UnitInRaid
 local UnitIsUnit		= UnitIsUnit
 local UnitPowerType		= UnitPowerType
 
---local kiru = GetSpellInfo(46302)			-- Counts as both STA and INT
+local kiru = GetSpellInfo(46302)			-- Counts as INT (Ignoring STA because talented is still better)
 
 local function getOption(k)
 	return zg.db.char[k]
@@ -578,23 +578,21 @@ function zg:GetBuffedMembers()
 
 				totals[grp] = totals[grp] + 1
 				for i = 1,40 do
-					local name, rank, buff, count, _, maxDuration, endTime, untilCancelled = z:UnitBuff(unitid, i)
+					local name, rank, buff, count, _, maxDuration, endTime, isMine = z:UnitBuff(unitid, i)
 					if (not name) then
 						break
 					end
 					
 					local buff = self.lookup[name]
-					--if (not buff) then
-					--	if (name == kiru) then		-- K'iru's Song of Victory overrides both STA & INT
-					--		if (playerClass == "PRIEST") then
-					--			buff = self.buffs.STA
-					--		elseif (playerClass == "MAGE") then
-					--			buff = self.buffs.INT
-					--		end
-					--	end
-					--end
+					if (not buff) then
+						if (name == kiru) then		-- K'iru's Song of Victory counts as INT
+							if (playerClass == "MAGE") then
+								buff = self.buffs.INT
+							end
+						end
+					end
 					if (buff) then
-						local dur = endTime and (endTime - GetTime())
+						local dur = maxDuration and maxDuration ~= 0 and endTime and (endTime - GetTime())
 						if (template[buff.type]) then
 							if (not manaUser) then
 								foundBuffs[buff.type] = true
@@ -684,18 +682,16 @@ function zg:FindUnitInRangeMissing(group, typ)
 							end
 
 							local buff = self.lookup[name]
-							--if (not buff) then
-							--	if (name == kiru) then		-- K'iru's Song of Victory overrides both STA & INT
-							--		if (playerClass == "PRIEST") then
-							--			buff = self.buffs.STA
-							--		elseif (playerClass == "MAGE") then
-							--			buff = self.buffs.INT
-							--		end
-							--	end
-							--end
+							if (not buff) then
+								if (name == kiru) then		-- K'iru's Song of Victory counts as INT
+									if (playerClass == "MAGE") then
+										buff = self.buffs.INT
+									end
+								end
+							end
 							if (buff and buff.type == typ) then
 								local dur = endTime and (endTime - GetTime())
-								if (dur and dur < requiredTimeLeft) then
+								if (max and max ~= 0 and dur and dur < requiredTimeLeft) then
 									return unitid
 								end
 								got = true
@@ -809,6 +805,14 @@ function zg:CheckBuffs()
 						end
 
 						local buff = self.lookup[name]
+						if (not buff) then
+							if (name == kiru) then		-- K'iru's Song of Victory counts as INT
+								if (playerClass == "MAGE") then
+									buff = self.buffs.INT
+								end
+							end
+						end
+
 						if (buff) then
 							local dur = endTime and (endTime - GetTime())
 							if (template[buff.type]) then
@@ -881,6 +885,10 @@ function zg:UNIT_AURA(unit)
 									break
 								end
 
+								if (name == kiru) then
+									name = GetSpellInfo(27126)
+								end
+
 								local buff2 = self.lookup[name]
 								if (buff2) then
 									if (buff2.type == buff.type) then
@@ -948,6 +956,12 @@ function zg:RebuffQuery(unit)
 			local info = self.lookup[name]
 			if (info) then
 				got[info.type] = true
+			else
+				if (name == kiru) then		-- K'iru's Song of Victory counts as INT
+					if (playerClass == "MAGE") then
+						got.INT = true
+					end
+				end
 			end
 		end
 
@@ -1972,7 +1986,7 @@ do
 			end
 			if (endTime) then
 				local r, g, b = SmoothColour((endTime - GetTime()) / maxDuration)
-				GameTooltip:AddLine(format("%s remains", date("%M:%S", duration - GetTime())), r, g, b)
+				GameTooltip:AddLine(format("%s remains", date("%M:%S", endTime - GetTime())), r, g, b)
 			end
 		end
 
@@ -2463,6 +2477,11 @@ function zg:SortedBuffList()
 	return list
 end
 
+-- RAID_ROSTER_UPDATE
+function zg:RAID_ROSTER_UPDATE()
+	self:CheckStateChange()
+end
+
 -- TooltipUpdate
 function zg:TooltipUpdate(cat)
 	if (template) then
@@ -2534,6 +2553,8 @@ function zg:OnModuleEnable()
 
 		self:RegisterBucketEvent("UNIT_AURA", 0.2)				-- We don't care who
 		self:RegisterBucketEvent("SPELLS_CHANGED", 2)
+		self:RegisterEvent("RAID_ROSTER_UPDATE")
+		self:RegisterEvent("PARTY_MEMBERS_CHANGED", "RAID_ROSTER_UPDATE")
 		z:CheckForChange(self)
 	end
 end
