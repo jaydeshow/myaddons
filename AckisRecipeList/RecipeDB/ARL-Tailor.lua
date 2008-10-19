@@ -4,8 +4,8 @@ ARL-Tailor.lua
 
 Tailoring data for all of AckisRecipeList
 
-$Date: 2008-07-15 11:23:30 -0400 (Tue, 15 Jul 2008) $
-$Rev: 78484 $
+$Date: 2008-07-15 15:23:30 +0000 (Tue, 15 Jul 2008) $
+$Rev: 748 $
 
 ]]--
 

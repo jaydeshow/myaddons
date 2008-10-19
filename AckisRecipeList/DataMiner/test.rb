@@ -3,6 +3,7 @@ require "wowdb_maps"
 require "wowdb_recipes"
 require "wowdb_pets_and_mounts"
 require "wowdb_factions"
+require "wowdb_quests"
 
 class Test
   include JsonHelper
@@ -10,11 +11,12 @@ class Test
     from_json(d)
   end
 end
-$testmaps = true
+$testmaps = false
 $testrecipes = false
-$testpets = false
+$testpets = true
 $testdbc = false
 $test_factions = false
+$test_quests = false
 d = Test.new()
 
 
@@ -61,24 +63,40 @@ end
 end
 if $testrecipes
 recipes = WoWDBRecipes.new
-results = recipes.get_blacksmithing_list
-thunder = results['Light Earthforged Blade']
-#recipes.add_recipe_details(thunder)
+maps = WoWDBMaps.new
+results = recipes.get_leatherworking_list
+thunder = results['Wild Leather Leggings']
+recipes.add_recipe_details(thunder)
+#puts "Leggings #{thunder.inspect}"
+#q = maps.get_quest_map_info(thunder[:method_quests].first[:id])
+#puts "#{q.inspect}"
+#v = maps.get_npc_locations(maps.get_quest_map_info(thunder[:method_quests].first[:id])[:quest_starter])
+#puts "Imperial plate Helm pattern from Quest #{thunder[:method_quests].first[:name]} given by #{q[:quest_starter]} located in #{v.keys.first} @ #{v.values.first.inspect}"
 #puts "Light Earthforged Blade: #{recipes.get_speciality('Blacksmithing',thunder[:specialty])} #{thunder[:profession]} #{thunder[:is_weapon]}"
 
 pots = recipes.get_alchemy_list
-dream = pots['Elixir of Major Shadow Power']
+dream = pots['Shadow Oil']
 recipes.add_recipe_details(dream)
-puts "Elixir of Major Shadow Power rarity: #{dream[:recipe_binds]} produces #{dream[:item_binds]} Rarity #{dream[:rarity]}"
+vendors = dream[:method_vendors]
+vendors.each do |npc|
+  mapdata = maps.get_npc_locations(npc[:id])
+  puts "Vendor #{npc[:id]} is #{mapdata.inspect}"
+end
+#mapdata = maps.get_npc_locations(first_vendor[:id])
+#quest_info = maps.get_quest_map_info(dream[:method_quests].first[:id])
+#puts "Quest info #{quest_info.inspect}"
+#puts "Elixir of Major Shadow Power rarity: #{dream[:recipe_binds]} produces #{dream[:item_binds]} Rarity #{dream[:rarity]} #{dream[:classes]}"
 
 eng = recipes.get_tailoring_list
-goggles = eng['Swiftheal Mantle']
+goggles = eng['Frozen Shadoweave Shoulders']
+recipes.populate_receipe_details(goggles)
+#puts "NEW CODE: #{goggles.inspect}"
 #recipes.add_recipe_details(goggles)
 #puts "Mantle: #{goggles[:profession]} #{goggles[:is_armor]} #{goggles[:armor_slot]} #{goggles[:armor_type]}"
 
 vest = eng['Blue Linen Vest']
 #recipes.add_recipe_details(vest)
-#puts "Vest #{vest[:method_vendors].inspect}"
+#puts "Vest #{vest.inspect}"
 
 mining = recipes.get_mining_list
 #mining.each_pair do |k,v|
@@ -90,13 +108,16 @@ cooking = recipes.get_cooking_list
 #puts "Cooking #{cooking.size}"
 
 enchants = recipes.get_enchanting_list
+lspriti = enchants['Enchant Bracer - Lesser Intellect']
+recipes.add_recipe_details(lspriti)
+puts "Lesser int enahcnt: #{lspriti.inspect}"
 #puts "Enchanting count #{enchants.size}"
 
 claw = cooking['Sagefish Delight']
 #recipes.add_recipe_details(claw)
 #first_vendor = claw[:method_vendors].first
 #puts "First vendor #{first_vendor.inspect}"
-maps = WoWDBMaps.new
+
 #mapdata = maps.get_npc_locations(first_vendor[:id])
 #puts "First pass #{mapdata.inspect}"
 #first_map = mapdata[mapdata.keys[1]]
@@ -113,18 +134,19 @@ engl = recipes.get_engineering_list
 #end
 seaform = engl['Small Seaforium Charge']
 #recipes.add_recipe_details(seaform)
-#cgoogle = engl['Deathblow X11 Goggles']
+cgoogle = engl['Deathblow X11 Goggles']
 #recipes.add_recipe_details(cgoogle)
+#puts "Deathblow X11 Goggles #{cgoogle.inspect}"
 
 philstone = pots['Alchemist\'s Stone']
 #recipes.add_recipe_details(philstone)
 #puts philstone.inspect
 
 bandaids = recipes.get_firstaid_list
-#bandaids.each_pair do |k,v|
-#recipes.add_recipe_details(v)
-#puts "Bandage: #{k} is #{v[:recipe_binds]} produces #{v[:item_binds]} Rarity #{v[:rarity]}"
-#end
+bandaids.each_pair do |k,v|
+recipes.add_recipe_details(v)
+puts "Bandage: #{k} is #{v[:recipe_binds]} produces #{v[:item_binds]} Rarity #{v[:rarity]} ID #{v[:id]} Spell ID #{v[:spellid]}"
+end
 
 
 end
@@ -132,14 +154,14 @@ end
 if $testpets
   list = WoWDBPetsAndMounts.new
   pets = list.get_pet_list
-  data = pets['Lifelike Mechanical Toad']
-  #pets.each_pair do |name,data|
+  #data = pets['Lifelike Mechanical Toad']
+  pets.each_pair do |name,data|
     list.add_item_details(data)
-    puts "Pet: #{data.inspect}"
-  #end
-  #pdata = pets['Dragon Kite']
-  #list.add_item_details(pdata)
-  #puts "\nPet: #{pdata.inspect}\n\n"
+    puts "Pet: Name #{name} #{data[:method]} #{data[:method_redemption]}"
+  end
+  pdata = pets['Dragon Kite']
+  list.add_item_details(pdata)
+  puts "\nPet: #{pdata.inspect}\n\n"
   mounts = list.get_mount_list
   data = mounts['Reins of the Veridian Netherwing Drake']
   #mounts.each_pair do |name,data|
@@ -157,4 +179,9 @@ if $test_factions
     reputations.keys.sort_by {|k|reputations[k] = reputations[k][:id];reputations[k]}.each do |k|
       puts "Faction: (#{reputations[k]}) #{k}"  
     end
+end
+if $test_quests
+  quests = WoWDBQuests.new
+  q = quests.get_quest_info(2852)
+  puts "Q #{q.inspect}"
 end

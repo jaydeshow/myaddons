@@ -24,7 +24,7 @@
     </Anchors>
     <Layers>
       <Layer level="ARTWORK">
-        <FontString inherits="GameFontHighlightSmall" text="单价">
+        <FontString inherits="GameFontHighlightSmall" text="Unit Price">
           <Anchors>
             <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
               <Offset><AbsDimension x="-3" y="2"/></Offset>

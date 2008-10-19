@@ -4,8 +4,8 @@ ARL-Engineering.lua
 
 Engineering data for all of AckisRecipeList
 
-$Date: 2008-08-20 11:28:07 -0400 (Wed, 20 Aug 2008) $
-$Rev: 80729 $
+$Date: 2008-08-20 15:28:07 +0000 (Wed, 20 Aug 2008) $
+$Rev: 817 $
 
 ]]--
 

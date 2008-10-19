@@ -1,11 +1,22 @@
 ﻿--简体中文
-DEBUG=false
-TYPE_BAG="容器"
-TYPE_QUEST="任务"
-TYPE_WEAPON="武器"
-TYPE_CONSUMABLE="消耗品"
-superItems={"炉石","矿工锄","剥皮小刀","鱼竿"}
+local version="0.5.0"
+local TYPE_BAG="容器"
+
+local SUBTYPE_ARROW="箭"
+local SUBTYPE_BULLET="弹药"
+local JPACK_MAXMOVE_ONCE=3
+-- '#XX'代表XX类别,没有'#'代表物品名称，'#',代表其他物品，前面是超级物品，后面是超级垃圾,
+--JPACK_ORDER={"炉石","#坐骑","矿工锄","剥皮小刀","#鱼竿","#其它","#武器","#护甲","#","#消耗品","#任务","#材料","肉类","鱼油"}
+JPACK_ORDER={}
+JPACK_DEPOSIT={}
+JPACK_DRAW={}
+
+local TYPEMAP={
+--	["箭袋"]=["箭"],
+}
+
 --[[
+TODO:
 PlayerClass 对应 物品类型列表
 可用装备(布甲,皮甲,锁甲,板甲,盾牌,)
 消耗物,药剂,装置,爆炸物
@@ -13,16 +24,18 @@ PlayerClass 对应 物品类型列表
 材料,商品,其他,宝石
 ]]--
 JPack={
-	asc=true,
-	packing=false,
+	asc=false,
+	--packing=false,
 	packingBank=false,
 	bankOpened=false,
-	
+	deposit=false,
+	draw=false,
 	bagGroups={},
 	packingGroupIndex=1,
 	packingBags={}
 }
-JPack.asc=true;
+-- 默认按逆序
+--JPack.asc=false;
 --[[
 function i18n()
 	if locale == "zhCN" then
@@ -50,15 +63,6 @@ local packingBags={}
 --itemStackCount， GetItemInfo   stack>1 then tryZip
 --GetItemCount(itemID or "itemLink", [includeBank]) 
 --[[
-IsEquippedItem
-     IsUsableItem(item)   - Returns usable, noMana.  可使用
-    IsConsumableItem(item)   -  可消耗
-    IsCurrentItem(item)   - 
-    IsEquippedItem(item)   -  可装备
-    IsEquippableItem(itemid or "name" or itemLink)  - Returns 1 or nil. 
-    IsEquippedItemType("type")   - Where "type" is any valid inventory type, item class, or item subclass.
-]]--
---[[
 比较用的字符串,与排序直接相关的函数
 ]]--
 function getCompareStr(item)
@@ -67,7 +71,6 @@ function getCompareStr(item)
 	elseif(not item.compareStr)then
 		local _,_,textureType,textureIndex=string.find(item.texture,"\\.*\\([^_]+_?[^_]*_?[^_]*)_?(%d*)")
 		if(not item.rarity)then item.rarity='1' end
-		--去掉 ..item.type.." "..item.subType
 		item.compareStr= getPerffix(item).." "..item.rarity..item.type.." "..item.subType.." "..textureType.." "
 			..string.format("%2d",item.minLevel).." "..string.format("%2d",item.level).." "..(textureIndex or "00")..item.name
 	end
@@ -75,50 +78,34 @@ function getCompareStr(item)
 end
 
 --[[
-return 
-超级物品 | 可使用 | 非消耗 | 装备品 
-9xx -- 超级物品
-81x -- 可使用非消耗品
-80x -- 可使用消耗品
-7xx -- 优秀装备品
-6xx -- 任务物品
-5xx -- 普通物品
-09x -- 垃圾物品
-08-- 不可用武器
-07-- 不可用护甲
+return 1xxx 非垃圾 ，0xxx for 垃圾，xxx为（999-JPACK_ORDER中所定的位置）
 ]]--
 function getPerffix(item)
+	debug(JPACK_ORDER[1])
 	if(item==nil)then return nil end
-	for i=1,table.getn(superItems) do
-		if(item.name==superItems[i])then
-			return '9'..string.format("%2d",100-i)..' '
-		end
+	--按名称获取顺序
+	local i=IndexOfTable(JPACK_ORDER,item.name);
+	if(i<=0)then
+		--按子类别获取顺序
+		i=IndexOfTable(JPACK_ORDER,"#"..item.subType);
 	end
-	if(IsEquippableItem(item.name) and item.type~=TYPE_BAG) then 
-		if(item.rarity > 1 and IsUsableItem(item.name)) then
-			return '7 ' 
-		else
-			if(item.type==TYPE_WEAPON)then
-				return '08 '
-			else
-				return '07 '
-			end
-			return '0 '
-		end
-	elseif(item.type==TYPE_QUEST)then
-		return '6 '
-	elseif(item.rarity==0)then
-		return '09 ' 
-	elseif(item.type==TYPE_CONSUMABLE) then
-		return '81'
-		--[[
-	elseif(IsConsumableItem(item.name))then 
-		return '81 '
-	elseif(IsUsableItem(item.name))then 
-		return '80 '
-		]]--
+	if(i<=0)then
+		--按类别获取顺序
+		i=IndexOfTable(JPACK_ORDER,"#"..item.type);
 	end
-	return '5 ';
+	if(i<=0)then
+		--默认类别顺序
+		i=IndexOfTable(JPACK_ORDER,"#");
+	end
+	if(i<=0)then
+		--默认顺序
+		i=999;
+	end
+	local s=string.format("%3d",999-i);
+	if(item.rarity==0)then
+		return "0"..s;
+	end
+	return "1"..s;
 end
 
 --[[
@@ -128,11 +115,128 @@ bagID --- wow 的bagId
 slotId ---- wow 的slotId
 ]]--
 function pack()
-	groupBags()
-	groupBank()
-	JPack.packingGroupIndex=1
-	JPack.packingBags=JPack.bagGroups[1]
-	startPack()
+	if (CursorHasItem() or CursorHasMoney() or CursorHasSpell()) then
+		print("JPack: \"请先拿掉你鼠标上的物品.\"",2,0.28,2);
+	else
+		groupBags();
+		JPACK_STEP=JPACK_STARTED;
+		JPackFrame:SetScript("OnUpdate",JPackFrame.OnUpdate);
+	end
+end
+
+function shouldSaveToBank(bag,slot)
+	local item=getJPackItem(bag,slot)
+	return item~=nil and ((IndexOfTable(JPACK_DEPOSIT,"#"..item.type)>0) or (IndexOfTable(JPACK_DEPOSIT,"##"..item.subType)>0) or (IndexOfTable(JPACK_DEPOSIT,item.name)>0))
+end
+
+function shouldLoadFromBank(bag,slot)
+	local item=getJPackItem(bag,slot)
+	return item~=nil and ((IndexOfTable(JPACK_DRAW,"#"..item.type)>0) or (IndexOfTable(JPACK_DRAW,"##"..item.subType)>0) or (IndexOfTable(JPACK_DRAW,item.name)>0))
+end
+
+function getPrevSlot(bags,bag,slot)
+	if(slot>1)then
+		slot=slot-1
+	elseif(bag>1)then
+		bag=bag-1
+		slot=GetContainerNumSlots(bags[bag])
+	else
+		bag=-1
+	end
+	return bag,slot
+end
+
+--保存到银行
+function saveToBank()
+	if(not JPack.bankOpened)then
+		return ;
+	end
+	
+	--保存
+	for k,v in pairs(JPack.bankSlotTypes) do
+		--针对每种不同的背包,k is type,v is slots
+		local bkTypes,bagTypes=JPack.bankSlotTypes[k],JPack.bagSlotTypes[k]
+		local bkBag,bag=table.getn(bkTypes),table.getn(bagTypes)
+		local bkSlot,slot=GetContainerNumSlots(bkTypes[bkBag]),GetContainerNumSlots(bagTypes[bag])
+		--保存
+		while(true) do
+			while(bkBag>0 and GetContainerItemLink(bkTypes[bkBag],bkSlot))do
+				--直到找到一个空格
+				bkBag,bkSlot=getPrevSlot(bkTypes,bkBag,bkSlot)
+			end
+			
+			while(bag>0 and (not shouldSaveToBank(bagTypes[bag],slot)))do
+				bag,slot=getPrevSlot(bagTypes,bag,slot)
+			end
+			
+			if(bkBag<=0 or bag <=0 or bkSlot<=0 or slot<=0)then 
+				debug("break to save")
+				break;
+			end
+			if (CursorHasItem() or CursorHasMoney() or CursorHasSpell()) then
+				print("JPack: \"鼠标上有物品。整理时不要抓起物品、金钱、法术.\"",2,0.28,2);
+			end
+			PickupContainerItem(bagTypes[bag],slot);
+			PickupContainerItem(bkTypes[bkBag],bkSlot);
+			--next
+			bkBag,bkSlot=getPrevSlot(bkTypes,bkBag,bkSlot)
+			bag,slot=getPrevSlot(bagTypes,bag,slot)
+		end
+	end
+end
+
+--从银行取出
+function loadFromBank()
+	if(not JPack.bankOpened)then
+		return ;
+	end
+	
+	--保存
+	for k,v in pairs(JPack.bankSlotTypes) do
+		--针对每种不同的背包,k is type,v is slots
+		local bkTypes,bagTypes=JPack.bankSlotTypes[k],JPack.bagSlotTypes[k]
+		local bkBag,bag=table.getn(bkTypes),table.getn(bagTypes)
+		local bkSlot,slot=GetContainerNumSlots(bkTypes[bkBag]),GetContainerNumSlots(bagTypes[bag])
+		--保存
+		while(true) do
+			while(bag>0 and GetContainerItemLink(bagTypes[bag],slot))do
+				--直到找到一个空格
+				bag,slot=getPrevSlot(bagTypes,bag,slot)
+			end
+			while(bkBag>0 and (not shouldLoadFromBank(bkTypes[bkBag],bkSlot)))do
+				bkBag,bkSlot=getPrevSlot(bkTypes,bkBag,bkSlot)
+			end
+			
+			if(bkBag<=0 or bag <=0 or bkSlot<=0 or slot<=0)then 
+				break;
+			end
+			if (CursorHasItem() or CursorHasMoney() or CursorHasSpell()) then
+				print("JPack: \"在整啥？整理时不要抓起物品、金钱、法术.\"",2,0.28,2);
+			end
+			PickupContainerItem(bkTypes[bkBag],bkSlot);
+			PickupContainerItem(bagTypes[bag],slot);
+			--next
+			bkBag,bkSlot=getPrevSlot(bkTypes,bkBag,bkSlot)
+			bag,slot=getPrevSlot(bagTypes,bag,slot)
+		end
+	end
+end
+
+function isBagReady(bag)
+	for i=1,GetContainerNumSlots(bag) do
+		local _, _, locked = GetContainerItemInfo(bag,i);
+		if(locked)then return false end
+	end
+	return true
+end
+
+function isAllBagReady()
+	for i=1,table.getn(JPack.bagGroups) do
+		for j=1,table.getn(JPack.bagGroups[i]) do
+			if(not isBagReady(JPack.bagGroups[i][j])) then return false; end
+		end
+	end
+	return true;
 end
 
 --[[
@@ -144,50 +248,53 @@ packingTypeIndex
 packingBags
 ]]--
 function groupBags()
-	local groups={}
-	groups[TYPE_BAG]={}
-	groups[TYPE_BAG][1]=0
+	local bagTypes={}
+	bagTypes[TYPE_BAG]={}
+	bagTypes[TYPE_BAG][1]=0
 	for i=1,4 do
 		local name=GetBagName(i);
 		if(name)then
 			local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, subType, itemStackCount,
 itemEquipLoc, itemTexture = GetItemInfo(name)
-			if(groups[subType]==nil)then
-				groups[subType]={}
+			debug("背包["..i.."]类型："..subType)
+			if(bagTypes[subType]==nil)then
+				bagTypes[subType]={}
 			end
-			local t = groups[subType]
+			local t = bagTypes[subType]
 			t[table.getn(t)+1]=i
 		end
 	end
-	local j=1
-	for k,v in pairs(groups) do
-		JPack.bagGroups[j]=v
-		j=j+1
-	end
-end
 
-function groupBank()
-	if(not JPack.bankOpened)then return end
-	local groups={}
-	groups[TYPE_BAG]={}
-	groups[TYPE_BAG][1]=-1
-	for i=5,11 do
-		local name=GetBagName(i);
-		if(name)then
-			local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, subType, itemStackCount,
+	local bankSlotTypes={}
+	if(JPack.bankOpened)then
+		bankSlotTypes[TYPE_BAG]={}
+		bankSlotTypes[TYPE_BAG][1]=-1
+		for i=5,11 do
+			local name=GetBagName(i);
+			if(name)then
+				local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, subType, itemStackCount,
 itemEquipLoc, itemTexture = GetItemInfo(name)
-			if(groups[subType]==nil)then
-				groups[subType]={}
+				if(bankSlotTypes[subType]==nil)then
+					bankSlotTypes[subType]={}
+				end
+				local t = bankSlotTypes[subType]
+				t[table.getn(t)+1]=i
 			end
-			local t = groups[subType]
-			t[table.getn(t)+1]=i
 		end
 	end
-	local j=table.getn(JPack.bagGroups)+1
-	for k,v in pairs(groups) do
+	JPack.bagSlotTypes=bagTypes;
+	JPack.bankSlotTypes=bankSlotTypes;
+	local j=1
+	for k,v in pairs(bankSlotTypes) do
 		JPack.bagGroups[j]=v
 		j=j+1
 	end
+	--local j=table.getn(JPack.bagGroups)+1
+	for k,v in pairs(bagTypes) do
+		JPack.bagGroups[j]=v
+		j=j+1
+	end
+	
 end
 
 function startPack()
@@ -201,6 +308,18 @@ function startPack()
 	sortTo(items,sorted)
 end
 
+function getJPackItem(bag,slot)
+	local link = GetContainerItemLink(bag,slot) 
+	if(link == nil)then return nil end
+	local item={}
+	item={}
+	item.slotId=c;
+	item.name, item.link, item.rarity, 
+	item.level, item.minLevel, item.type, item.subType, item.stackCount,
+	item.equipLoc, item.texture = GetItemInfo(link) 
+	return item;
+end
+
 function getPackingItems()
 	local c=1
 	local items={}
@@ -208,14 +327,7 @@ function getPackingItems()
 		for i=1,table.getn(JPack.packingBags) do
 			local num = GetContainerNumSlots(JPack.packingBags[i]) 
 			for j = 1,num do
-				local link = GetContainerItemLink(JPack.packingBags[i],j) 
-				if(link ~= nil)then
-					items[c]={}
-					items[c].name, items[c].link, items[c].rarity, 
-					items[c].level, items[c].minLevel, items[c].type, items[c].subType, items[c].stackCount,
-					items[c].equipLoc, items[c].texture = GetItemInfo(link) 
-					--debug("items:"..c.."="..items[c].name..","..items[c].type..","..items[c].subType..","..items[c].level..","..items[c].minLevel)
-				end
+				items[c]=getJPackItem(JPack.packingBags[i],j);
 				c = c+1
 			end
 		end
@@ -223,14 +335,7 @@ function getPackingItems()
 		for i=table.getn(JPack.packingBags),1,-1 do
 			local num = GetContainerNumSlots(JPack.packingBags[i]) 
 			for j = num,1,-1 do
-				local link = GetContainerItemLink(JPack.packingBags[i],j) 
-				if(link ~= nil)then
-					items[c]={}
-					items[c].name, items[c].link, items[c].rarity, 
-					items[c].level, items[c].minLevel, items[c].type, items[c].subType, items[c].stackCount,
-					items[c].equipLoc, items[c].texture = GetItemInfo(link) 
-					--debug("items:"..c.."="..items[c].name..","..items[c].type..","..items[c].subType..","..items[c].level..","..items[c].minLevel)
-				end
+				items[c]=getJPackItem(JPack.packingBags[i],j);
 				c = c+1
 			end
 		end
@@ -243,9 +348,7 @@ end
 ]]--
 function getSlotId(packIndex)
 	local slot=packIndex
-	debug('get slot id');
 	if(JPack.asc==true)then
-		debug('asc = true');
 		for i=1,table.getn(JPack.packingBags) do
 			local num=GetContainerNumSlots(JPack.packingBags[i]) 
 			if(slot<=num)then
@@ -254,7 +357,6 @@ function getSlotId(packIndex)
 			slot = slot - num;
 		end
 	else
-		debug('JPack.asc = false');
 		for i=table.getn(JPack.packingBags),1,-1 do
 			local num=GetContainerNumSlots(JPack.packingBags[i]) 
 			if(slot<=num)then
@@ -361,8 +463,19 @@ function jsort(items)
 	return clone;
 end
 
+local current,to,lockedSlots;
 function isLocked(index)
+	local il=IndexOfTable(lockedSlots,index);
 	local texture, itemCount, locked, quality, readable = GetContainerItemInfo(getSlotId(index));
+	if(texture==nil)then
+		--TODO:检查本地 locked,空格也可能被锁定
+		if(il>0)then		debug("il of "..index.." is "..il); end
+		locked= il >0
+	elseif(il>0)then
+		debug("在lockedSlots中删除");
+		--lockedSlots[il]=nil
+		table.remove(lockedSlots,il)
+	end
 	return locked
 end
 
@@ -381,19 +494,27 @@ function GetLastItemIndex(items,key)
 	return -1;
 end
 
-local current,to;
 --[[
 移动一次
 ]]--
 function moveOnce()
 	local continue=false;
 	local i=1;
+	local lockCount=0;
 	while(to[i] ~=nil)do
+		local locked=isLocked(i)
+		if(locked==nil)then locked=false end
+		if(locked)then
+			lockCount=lockCount+1
+		end
+		if(lockCount>JPACK_MAXMOVE_ONCE)then
+			return true;
+		end
 		--debug("to"..i.."="..to[i].name)
 		--if(current[i] == nil or (to[i].name ~= current[i].name and not current[i].moving))then
 		if(current[i] == nil or to[i].name ~= current[i].name)then
 			continue = true
-			if(not isLocked(i))then
+			if(not locked)then
 				local slot =GetLastItemIndex(current, to[i].name);
 				if(slot ~= -1)then
 					--debug("move "..to[i].name.." from "..slot .." to "..i);
@@ -401,12 +522,18 @@ function moveOnce()
 					local x=current[slot];
 					current[slot]=current[i];
 					current[i]=x;
+					if(current[slot]==nil)then
+						--锁定空格
+						lockedSlots[table.getn(lockedSlots)+1]=i
+					end
 				end
 			end
+			
 		end
 		i=i+1
 	end
-	return continue;
+	debug("move once. lockCount = "..lockCount)
+	return continue or lockCount>0
 end
 
 JPackFrame=CreateFrame("Frame",nil,UIParent)
@@ -415,13 +542,14 @@ local moving=false;
 function sortTo(_current, _to)
 	current=_current
 	to=_to
-	--JPack:RegisterEvent("ITEM_LOCK_CHANGED")
-	JPack.packing=true;
+	lockedSlots={}
+	JPACK_STEP=JPACK_PACKING;
 end
+
 PackOnBagOpen=true
 function JPackFrame:OnEvent()
 	debug(event)
-	if(event=="PLAYER_ENTERING_WORLD")then
+	if(event=="VARIABLES_LOADED")then
 		self:Init();
 	elseif(event=="BAG_OPEN")then
 		if(PackOnBagOpen)then
@@ -437,7 +565,42 @@ function JPackFrame:OnEvent()
 end
 
 function JPackFrame:OnUpdate()
-	if(JPack.packing)then
+	--debug("JPACK_STEP="..JPACK_STEP)
+	if(JPACK_STEP==JPACK_STARTED)then
+		if(isAllBagReady())then
+			debug("JPACK准备完毕,JPack_STEP="..JPACK_STEP);
+			if(JPack.deposit)then
+				saveToBank()
+			end
+			JPACK_STEP=JPACK_DEPOSITING
+		end
+	elseif(JPACK_STEP==JPACK_DEPOSITING)then
+		if(isAllBagReady())then
+			debug("保存物品完毕,JPack_STEP="..JPACK_STEP);
+			if(JPack.draw)then
+				loadFromBank()
+			end
+			JPACK_STEP=JPACK_DRAWING
+		end
+	elseif(JPACK_STEP==JPACK_DRAWING)then
+		if(isAllBagReady())then
+			debug("提取物品完毕,JPack_STEP="..JPACK_STEP);
+			JPACK_STEP=JPACK_STACKING
+			Stackpack_Command("start")
+		end
+	elseif(JPACK_STEP==JPACK_STACK_OVER)then
+		debug("堆叠完毕,开始整理,JPACK_STEP="..JPACK_STEP)
+		if(isAllBagReady)then
+			--groupBags()
+			JPack.packingGroupIndex=1
+			JPack.packingBags=JPack.bagGroups[1]
+			--计算排序
+			startPack();
+			JPACK_STEP=JPACK_PACKING
+		end
+	elseif(JPACK_STEP==JPACK_PACKING)then
+		--排序结束
+		--移动物品
 		local oncePacking=moveOnce()
 		if(not oncePacking)then
 			JPack.packingGroupIndex=JPack.packingGroupIndex + 1
@@ -450,9 +613,13 @@ function JPackFrame:OnUpdate()
 				end
 			end
 			if(JPack.packingBags==nil)then
-				JPack.packing=false
+				--整理结束
+				JPACK_STEP=JPACK_STOPPED;
 				JPack.bagGroups={}
-				print(JPackFinish)
+				print("Pack up complete...")
+				JPackFrame:SetScript("OnUpdate",nil);
+				current=nil
+				to=nil
 			else
 				debug("Packing "..JPack.packingGroupIndex)
 				startPack()
@@ -461,13 +628,14 @@ function JPackFrame:OnUpdate()
 	end
 end
 
-JPackFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-JPackFrame:RegisterEvent("PLAYER_LOGIN")
+--JPackFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+JPackFrame:RegisterEvent("VARIABLES_LOADED")
 JPackFrame:RegisterEvent("UPDATE_FACTION")
 
 JPackFrame:SetScript("OnEvent",JPackFrame.OnEvent);
-JPackFrame:SetScript("OnUpdate",JPackFrame.OnUpdate);
+
 function JPackFrame:Init()
+	print("已加载JPack "..version..". 输入'/jpack help'获取帮助.");
 	JPackFrame:RegisterEvent("BAG_OPEN")
 	JPackFrame:RegisterEvent("BANKFRAME_OPENED")
 	JPackFrame:RegisterEvent("BANKFRAME_CLOSED")	
@@ -481,15 +649,33 @@ function JPackFrame_Slash(msg)
 	if(a~=nil)then
 		debug('a='..a..' b='..b..' c='..c);
 	end
+	
+	JPack.deposit=false
+	JPack.draw=false
+	
 	if(c=="asc")then
 		JPack.asc=true
 	elseif(c=="desc")then
 		JPack.asc=false
+	elseif(c=="deposit" or c=="save")then
+		JPack.deposit=true
+	elseif(c=="draw" or c=="load")then
+		JPack.draw=true
 	elseif(c=="debug")then
-		DEBUG=true
+		JPACK_DEBUG=true
 		return;
 	elseif(c=="nodebug")then
-		DEBUG=false
+		JPACK_DEBUG=false
+		return;
+	elseif(c=="help")then
+		print("你可以修改Interface/Addons/JPack/JPackConfig.lua来调整物品整理顺序");
+		print("/jpack /jp 按上一次的整理顺序整理");
+		print("/jp asc 正序整理");
+		print("/jp desc 逆序整理");
+		print("/jp deposit 或 save 保存到银行");
+		print("/jp draw 或 load 从银行取出");
+		print("/jp debug 显示调试信息，用于查看背包及物品分类信息");
+		print("/jp nodebug 关闭调试信息");
 		return;
 	end
 	pack();

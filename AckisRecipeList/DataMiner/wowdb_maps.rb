@@ -109,6 +109,35 @@ class WoWDBMaps
     end
     return maps
   end
+  def get_quest_map_info(quest_id)
+    response = Net::HTTP.get(URI.parse("http://www.wowdb.com/quest.aspx?id=#{quest_id}"))
+    unless response
+      raise "Data not available for quest #{quest_id}"
+    end
+    lst = response.scan(/<script>addMapLocations\((.*)\)<\/script>/).first
+    if lst.nil?
+      raise "No map data for #{quest_id}"
+    end
+    mapdata = from_json(lst.first)
+    zone= {}
+    starting_npc = response.match(/Starting NPC: <a href=\"npc.aspx\?id=(\d+)\">/)
+    unless starting_npc.nil? or starting_npc.length == 0
+      starting_npc = starting_npc[1].to_i
+    else
+      starting_npc = 0
+    end    
+    ending_npc = response.match(/Finishing NPC: <a href=\"npc.aspx\?id=(\d+)\">/)
+    unless ending_npc.nil? or ending_npc.length == 0
+      ending_npc = ending_npc[1].to_i
+    else
+      ending_npc = 0
+    end
+    mapdata.each do |entry|
+      zone[entry[:mapLabel]] = entry[:locationID]
+    end
+    return {:quest_zones => zone, :quest_starter => starting_npc, :quest_finisher=> ending_npc}
+  end
+  
   def get_npc_locations(npc_id)
     if @@npcs.has_key?(npc_id)
       return @@npcs[npc_id]

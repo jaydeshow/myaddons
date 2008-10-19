@@ -33,7 +33,7 @@ local SetSize = {6,NUM_BANKBAGSLOTS + 1};
 local MaxCont = {1,1};
 local NumCont = {};
 local BankOpen = false;
-local FadeTime = 0.2;
+local FadeTime = 0;
 local BagsReady;
 local Config;
 

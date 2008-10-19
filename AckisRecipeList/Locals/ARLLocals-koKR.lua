@@ -5,8 +5,8 @@ ARLLocals-koKR.lua
 
 koKR localization strings for Ackis Recipe List
 
-$Date: 2008-08-31 22:44:57 -0400 (Sun, 31 Aug 2008) $
-$Rev: 81209 $
+$Date: 2008-09-01 02:44:57 +0000 (Mon, 01 Sep 2008) $
+$Rev: 849 $
 
 Original translated by: damjau
 Currently maintaince by: next96

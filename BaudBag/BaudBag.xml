@@ -2,7 +2,9 @@
   <!--Script file="Localization.lua"/-->
   <Script file="BaudBag.lua"/>
   <Script file="JLib.lua"/>
+  <Script file="Stackpack.lua"/>
   <Script file="JPack.lua"/>
+  <Script file="JPackConfig.lua"/>
 
   <Frame name="BaudBagContainerDropDown" inherits="UIDropDownMenuTemplate" id="1" hidden="true">
     <Scripts>

@@ -4,8 +4,8 @@ ARL-RuneForge.lua
 
 Runeforging data for all of AckisRecipeList
 
-$Date: 2008-08-09 18:05:16 -0400 (Sat, 09 Aug 2008) $
-$Rev: 80048 $
+$Date: 2008-08-09 22:05:16 +0000 (Sat, 09 Aug 2008) $
+$Rev: 800 $
 
 ]]--
 

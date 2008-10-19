@@ -6,16 +6,16 @@
 ## Author: Tekkub, Ackis
 
 ## Interface: 20400
-## Version: 1.0
-## X-Revision: $Rev: 12 $
-## X-Date: $Date: 2008-08-13 13:26:43 -0400 (Wed, 13 Aug 2008) $
+## Version: 1.1
+## X-Revision: $Rev: 15 $
+## X-Date: $Date: 2008-10-02 15:27:35 +0000 (Thu, 02 Oct 2008) $
 
 ## X-credits: 
 
 ## X-Category: Libraries
 ## X-Localizations: enUS
 ## X-Website: http://www.wowwiki.com/LibAboutPanel
-## X-Feedback: http://wow.curseforge.com/projects/libaboutpanel/
+## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/libaboutpanel.aspx
 ## X-RelSite-Curse: 13459
 ## X-RelSite-WoWI: 
 ## X-RelSite-WoWUI: 

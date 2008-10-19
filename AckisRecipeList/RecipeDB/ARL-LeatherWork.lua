@@ -4,8 +4,8 @@ ARL-LeatherWork.lua
 
 LeatherWorking data for all of AckisRecipeList
 
-$Date: 2008-09-02 13:23:53 -0400 (Tue, 02 Sep 2008) $
-$Rev: 81278 $
+$Date: 2008-09-02 17:23:53 +0000 (Tue, 02 Sep 2008) $
+$Rev: 855 $
 
 ]]--
 

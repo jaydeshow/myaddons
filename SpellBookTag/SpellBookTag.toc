@@ -1,4 +1,0 @@
-## Interface: 20400
-## Title: Spell Book Tag 0.43
-## Notes: by evil.oz
-SpellBookTag.xml

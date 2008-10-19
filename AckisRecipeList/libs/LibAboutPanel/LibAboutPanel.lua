@@ -1,7 +1,7 @@
 --[[
 ****************************************************************************************
 LibAboutPanel
-$Date: 2008-08-12 11:14:51 -0400 (Tue, 12 Aug 2008) $
+$Date: 2008-08-12 15:14:51 +0000 (Tue, 12 Aug 2008) $
 $Rev: 2 $
 
 Author: Tekkub
@@ -74,7 +74,7 @@ if GAME_LOCALE == "enUS" then
 	L["About"] = true
 	L["Click and press Ctrl-C to copy"] = true
 elseif GAME_LOCALE == "frFR" then
-	L["About"] = "à propos de"
+	L["About"] = "Ã  propos de"
 	L["Click and press Ctrl-C to copy"] = true
 end
 

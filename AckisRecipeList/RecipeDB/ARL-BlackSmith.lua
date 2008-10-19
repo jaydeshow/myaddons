@@ -4,8 +4,8 @@ ARLBlackSmith-.lua
 
 Blacksmithing data for all of AckisRecipeList
 
-$Date: 2008-07-07 18:23:13 -0400 (Mon, 07 Jul 2008) $
-$Rev: 78025 $
+$Date: 2008-07-07 22:23:13 +0000 (Mon, 07 Jul 2008) $
+$Rev: 732 $
 
 ]]--
 

@@ -4,8 +4,8 @@ ARL-Vendor.lua
 
 Vendor data for all of AckisRecipeList
 
-$Date: 2008-09-15 13:22:49 -0400 (Mon, 15 Sep 2008) $
-$Rev: 81746 $
+$Date: 2008-09-15 17:22:49 +0000 (Mon, 15 Sep 2008) $
+$Rev: 868 $
 
 ]]--
 
