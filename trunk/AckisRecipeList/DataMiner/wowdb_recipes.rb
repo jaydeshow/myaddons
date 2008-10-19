@@ -356,16 +356,18 @@ class WoWDBRecipes
     boa = tooltip.match(/>Binds.*?account.*></)
     boe = tooltip.match(/>Binds.*?equip.*></)
     if !bop.nil?
-      recipe_object[:item_binds] = 'BOP'
+      item_binds = 'BOP'
     elsif !boa.nil?
-      recipe_object[:item_binds] = 'BOA'
+      item_binds = 'BOA'
     elsif !boe.nil?
-      recipe_object[:item_binds] = 'BOE'
+      item_binds = 'BOE'
     else
-      recipe_object[:item_binds] = 'BOE'
+      item_binds = 'BOE'
     end
     unless is_item
-      recipe_object[:recipe_binds] = recipe_object[:item_binds]
+      recipe_object[:recipe_binds] = item_binds
+    else
+      recipe_object[:item_binds] = item_binds
     end
     # heck for classes
     classes = tooltip.match(/<br>Classes:(.*?)</)
@@ -421,196 +423,159 @@ class WoWDBRecipes
     end
     
   end
-  def add_recipe_details(recipe_object, is_item = false)
-    if is_item
-      response = Net::HTTP.get(URI.parse("http://www.wowdb.com/item.aspx?id=#{recipe_object[:id]}"))      
-    else
-      if recipe_object[:spellid].nil?
-        recipe_object[:spellid] = recipe_object[:id]
-      end
-      response = Net::HTTP.get(URI.parse("http://www.wowdb.com/spell.aspx?id=#{recipe_object[:id]}"))
-    end
-    unless response
+  
+  def populate_receipe_details(recipe_object)
+    data = get_spell_data(recipe_object[:id])
+    if data.nil?
       raise "No recipe data found for #{recipe_object[:id]}"
     end
-    response.gsub!(/\[\,/,"[")
-    data_line = response.scan(/cg_items.addData\((.*)\);/).first
-    cgData = {}
-    unless data_line.nil?
-      data_line = from_json(data_line.first)
-      # check for specialities
-      data_line.each do |line|
-        #puts "Processing line #{line.inspect}"
-        if line.has_key?(:id) and line.has_key?(:tooltip)
-          cgData[line[:id]] = line[:tooltip]
-        end
-        if line.has_key?(:tooltip)
-          process_tooltip(line[:tooltip],recipe_object,is_item)
-        end
+    tooltips = data[0]
+    tab_data = data[1]
+    tabs = data[2]
+    # we now have all info needed for a given spell
+    if recipe_object[:produces]
+      create_tip_id = recipe_object[:produces].first
+      created_item_tooltip = tooltips[create_tip_id]
+    else
+      # must be enchanting or a tranmute 
+      recipe_object[:item_binds] = "BOE"
+    end
+    if created_item_tooltip
+      process_tooltip(created_item_tooltip,recipe_object,true)
+      if tooltips["#{create_tip_id}_stats"] and tooltips["#{create_tip_id}_stats"].length > 0
+        recipe_object[:item_stats] = tooltips["#{create_tip_id}_stats"]
       end
     end
-    # check for type
     recipe_object[:method] = ""
-    json_data = Hash.new
-    if response.include?("cg_json_1")
-      json_data["cg_json_1"] = from_json(response.scan(/cg_json_1=(.*);/).first.first)
-    end
-    if response.include?("cg_json_2")
-      json_data["cg_json_2"] = from_json(response.scan(/cg_json_2=(.*);/).first.first)
-    end
-    if response.include?("cg_json_3")
-      json_data["cg_json_3"] = from_json(response.scan(/cg_json_3=(.*);/).first.first)
-    end
-    if response.include?("cg_json_4")
-      json_data["cg_json_4"] = from_json(response.scan(/cg_json_4=(.*);/).first.first)
-    end
-    if response.include?("cg_json_5")
-      json_data["cg_json_5"] = from_json(response.scan(/cg_json_5=(.*);/).first.first)
-    end
-    if response.include?("cg_json_6")
-      json_data["cg_json_6"] = from_json(response.scan(/cg_json_6=(.*);/).first.first)
-    end
-    if response.include?("cg_json_7")
-      json_data["cg_json_7"] = from_json(response.scan(/cg_json_7=(.*);/).first.first)
-    end
-    if response.include?("cg_json_8")
-      json_data["cg_json_8"] = from_json(response.scan(/cg_json_8=(.*);/).first.first)
-    end
-    response.gsub!(/;/,";\n")
-    tabs = response.scan(/DataGrid\((.*)\);/)
-    unless tabs.nil?
-      tabs.each do |tabd|
-        tab = tabd.first
-        tab.gsub!(/cg_primaryTabGroup/,"'cg_primaryTabGroup'")
-        tab.gsub!(/Curse.DataGrid.Utility.processCounts/,"'preprocess'")
-        tab.gsub!(/cg_json_(.)/,'\'cg_json_\1\'')
-        tab.gsub!(/cg_comments(.)/,'\'cg_comments\'\1')
-        tab.gsub!(/cg_screenshots(.)/,'\'cg_screenshots\'\1')
-        tab.gsub!(/\[\,/,"[")
-        tab = from_json(tab)
-        tab[:id].downcase!
-        tab[:template].downcase!
-        if tab[:id].eql?("teaches-spell") and tab[:template].eql?("spells")
-          jd = json_data[tab[:data]]
-          unless jd.nil? and !recipe_object[:produces].nil?
-            jd = jd.first
-            unless cgData[recipe_object[:produces][0]].nil?
-              process_tooltip(cgData[recipe_object[:id]],recipe_object,false)
-              process_tooltip(cgData[recipe_object[:produces][0]],recipe_object,true)
-            end
-          end
+    tabs.each do |tab|
+      #puts "Root tab #{tab.inspect}"
+      tab[:id].downcase!
+      tab[:template].downcase!
+      if (tab[:id].eql?("sold-by") and tab[:template].eql?("npcs"))
+        jd = tab_data[tab[:data]]
+        if recipe_object[:recipe_binds].nil?
+          recipe_object[:recipe_binds] = 'BOE'
         end
-        # Trainers
-        if tab[:id].eql?("taught-by") and tab[:template].eql?("npcs")
-          recipe_object[:method] += "#{tab[:id]},"
-          recipe_object[:rarity] = 1
-          recipe_object[:recipe_binds] = 'BOP'
-          jd = json_data[tab[:data]]
-          unless jd.nil?
-            #jd.each do |h| h.delete(:locs) end
-            # method_source will have an array of hashs of each trainer info
-            recipe_object[:method_trainers] = jd
-          end
-        end
-        # Receipes
-        if (tab[:id].eql?("sold-by") and tab[:template].eql?("npcs"))
-          jd = json_data[tab[:data]]
-          #unless jd.nil?
-          #  jd.each do |h| h.delete(:locs) end
-          #end
-          if recipe_object[:recipe_binds].nil?
-            recipe_object[:recipe_binds] = 'BOE'
-          end
-          recipe_object[:method] += "#{tab[:id]},"
-          recipe_object[:method_vendors] = jd
-          # method source now has another array with the actual receipe id for later lookup
-        end
-
-        if (tab[:id].eql?("dropped-by") and tab[:template].eql?("npcs")) 
-          jd = json_data[tab[:data]]
-          #unless jd.nil?
-          #  jd.each do |h| h.delete(:locs) end
-          #end
-          if recipe_object[:recipe_binds].nil?
-            recipe_object[:recipe_binds] = 'BOE'
-          end
-          recipe_object[:method] += "#{tab[:id]},"
-          recipe_object[:method_dropped_by] = jd
-          # method source now has another array with the actual receipe id for later lookup
-        end        
-        if (tab[:id].eql?("contained-in-object") and tab[:template].eql?("objects")) 
-          jd = json_data[tab[:data]]
-          #unless jd.nil?
-          #  jd.each do |h| h.delete(:locs) end
-          #end
-          if recipe_object[:recipe_binds].nil?
-            recipe_object[:recipe_binds] = 'BOE'
-          end
-          recipe_object[:method] += "#{tab[:id]},"
-          recipe_object[:method_contained_in_objects] = jd
-          # method source now has another array with the actual receipe id for later lookup
-        end        
-        
-        if (tab[:id].eql?("contained-in-item") and tab[:template].eql?("items"))
-          jd = json_data[tab[:data]]
-          #unless jd.nil?
-          #  jd.each do |h| h.delete(:locs) end
-          #end
-          if recipe_object[:recipe_binds].nil?
-            recipe_object[:recipe_binds] = 'BOE'
-          end
-          recipe_object[:method] += "#{tab[:id]},"
-          recipe_object[:method_contained_in_items] = jd
-          # method source now has another array with the actual receipe id for later lookup
-        end        
-        # Quests
-        if tab[:id].eql?("rewardfrom") and tab[:template].eql?("quests")
-          jd = json_data[tab[:data]]
-          #unless jd.nil?
-          #  jd.each do |h| h.delete(:locs) end
-          #end
-          if recipe_object[:recipe_binds].nil?
-            recipe_object[:recipe_binds] = 'BOP'
-          end
-          recipe_object[:method] += "#{tab[:id]},"
-          recipe_object[:method_quests] = jd
-          # method source now has another array with the actual receipe id for later lookup
-        end
-        if (tab[:id].eql?("enchantment") and tab[:template].eql?("items")) and recipe_object[:method].length == 0
-          # possible from trainer, vendor or drop
-          jd = json_data[tab[:data]].first
-          unless jd.nil?
-            #jd.each do |h| h.delete(:locs) end
-            rid = jd[:id]
-            recipe_object[:spellid] = recipe_object[:id]
-            recipe_object[:id] = rid
-            if jd[:rarity]
-              recipe_object[:rarity] = jd[:rarity]
-            end
-            if !recipe_object[:item_binds].nil?
-              recipe_object[:recipe_binds] = recipe_object[:item_binds]
-            end
-            recipe_object[:item_binds] = nil
-            # recuse the lookup to get details
-            add_recipe_details(recipe_object,true)
-          end
-        end
-      end
-      unless recipe_object[:method].nil?
-        if recipe_object[:method].rindex(",") == recipe_object[:method].length-1
-          recipe_object[:method].chop!
-        end
-      end  
-      if recipe_object[:method].length == 0
-        recipe_object[:method] = "taught-by"
+        recipe_object[:method] += "#{tab[:id]},"
+        recipe_object[:method_vendors] = jd
+      end  # end Vendors
+      if tab[:id].eql?("taught-by") and tab[:template].eql?("npcs")
+        recipe_object[:method] += "#{tab[:id]},"
+        recipe_object[:rarity] = 1
         recipe_object[:recipe_binds] = 'BOP'
-        recipe_object[:method_trainers] = [{:desc=>"Unknown", :type=>7, :minlevel=>0, :name=>"Unknown", :react=>[2, 2], :id=>0}]    
-      end
-      # Special Cases for certain types of objects
-      if recipe_object[:profession].eql?("First Aid") or recipe_object[:profession].eql?("Enchanting")
-        recipe_object[:item_binds] = "BOE"
+        jd = tab_data[tab[:data]]
+        unless jd.nil?
+          recipe_object[:method_trainers] = jd
+        end
+      end # end Trainers  
+      # Quests
+      if tab[:id].eql?("rewardfrom") and tab[:template].eql?("quests")
+        jd = tab_data[tab[:data]]
+        if recipe_object[:recipe_binds].nil?
+          recipe_object[:recipe_binds] = 'BOP'
+        end
+        recipe_object[:method] += "#{tab[:id]},"
+        recipe_object[:method_quests] = jd
       end      
+      # start for Recipes objects that teach the spell
+      if (tab[:id].eql?("enchantment") and tab[:template].eql?("items"))
+        jd = tab_data[tab[:data]].first
+        unless jd.nil?
+          rid = jd[:id]
+          recipe_object[:spellid] = recipe_object[:id]
+          recipe_object[:id] = rid
+          if jd[:rarity]
+            recipe_object[:rarity] = jd[:rarity]
+          end
+          recipe_data = get_item_data(recipe_object[:id])   
+          # get its info
+          rtips = recipe_data[0]
+          if rtips[recipe_object[:id]]
+            process_tooltip(rtips[recipe_object[:id]],recipe_object,false)
+            if rtips["#{recipe_object[:id]}_stats"] and rtips["#{recipe_object[:id]}_stats"].length > 0
+              recipe_object[:item_stats] = rtips["#{recipe_object[:id]}_stats"]
+            end
+          end
+          rtab_data = recipe_data[1]
+          rtabs = recipe_data[2]
+          # now we have the data for th real item
+          rtabs.each do |rtab|
+            rtab[:id].downcase!
+            rtab[:template].downcase!
+            #puts "Pattern info #{rtab.inspect}"
+            if tab[:id].eql?("teaches-spell")
+              spell_data = rtips[tab_data[tab[:data]].first]
+              recipe_object[:id] = spell_data[:id]
+              if recipe_object[:produces]
+                tip_id = recipe_object[:produces].first
+                tooltip = rtips[tip_id]
+                process_tooltip(tooltip,recipe_object,true)
+                if rtips["#{tip_id}_stats"] and rtips["#{tip_id}_stats"].length > 0
+                  recipe_object[:item_stats] = rtips["#{tip_id}_stats"]
+                end
+              end
+            end
+            if (rtab[:id].eql?("dropped-by") and rtab[:template].eql?("npcs")) 
+              jd = rtab_data[rtab[:data]]
+              if recipe_object[:recipe_binds].nil?
+                recipe_object[:recipe_binds] = 'BOE'
+              end
+              recipe_object[:method] += "#{rtab[:id]},"
+              recipe_object[:method_dropped_by] = jd
+            end        
+            if (rtab[:id].eql?("contained-in-object") and rtab[:template].eql?("objects")) 
+              jd = rtab_data[rtab[:data]]
+              if recipe_object[:recipe_binds].nil?
+                recipe_object[:recipe_binds] = 'BOE'
+              end
+              recipe_object[:method] += "#{rtab[:id]},"
+              recipe_object[:method_contained_in_objects] = jd
+            end        
+            if (rtab[:id].eql?("contained-in-item") and rtab[:template].eql?("items"))
+              jd = rtab_data[rtab[:data]]
+              if recipe_object[:recipe_binds].nil?
+                recipe_object[:recipe_binds] = 'BOE'
+              end
+              recipe_object[:method] += "#{rtab[:id]},"
+              recipe_object[:method_contained_in_items] = jd
+            end
+            if (rtab[:id].eql?("sold-by") and rtab[:template].eql?("npcs"))
+              jd = rtab_data[rtab[:data]]
+              if recipe_object[:recipe_binds].nil?
+                recipe_object[:recipe_binds] = 'BOE'
+              end
+              recipe_object[:method] += "#{rtab[:id]},"
+              recipe_object[:method_vendors] = jd
+            end  # end Vendors
+            if rtab[:id].eql?("rewardfrom") and rtab[:template].eql?("quests")
+              jd = rtab_data[rtab[:data]]
+              if recipe_object[:recipe_binds].nil?
+                recipe_object[:recipe_binds] = 'BOP'
+              end
+              recipe_object[:method] += "#{rtab[:id]},"
+              recipe_object[:method_quests] = jd
+            end      
+          end
+        end
+      end   
     end
+    if recipe_object[:spellid].nil?
+      recipe_object[:spellid] = recipe_object[:id]
+    end
+    unless recipe_object[:method].nil?
+      if recipe_object[:method].rindex(",") == recipe_object[:method].length-1
+        recipe_object[:method].chop!
+      end
+    end  
+    if recipe_object[:method].length == 0
+      recipe_object[:method] = "taught-by"
+      recipe_object[:recipe_binds] = 'BOP'
+      recipe_object[:method_trainers] = [{:desc=>"Unknown", :type=>7, :minlevel=>0, :name=>"Unknown", :react=>[2, 2], :id=>0}]    
+    end
+  end
+  
+  def add_recipe_details(recipe_object, is_item = false)
+      return populate_receipe_details(recipe_object)
   end
   
   private

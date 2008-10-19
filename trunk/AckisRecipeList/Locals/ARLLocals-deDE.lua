@@ -5,8 +5,8 @@ ARLLocals-deDE.lua
 
 deDE localization strings for Ackis Recipe List
 
-$Date: 2008-08-25 17:00:42 -0400 (Mon, 25 Aug 2008) $
-$Rev: 80948 $
+$Date: 2008-08-25 21:00:42 +0000 (Mon, 25 Aug 2008) $
+$Rev: 825 $
 
 Original translated by: 
 Currently maintaince by:  Winkiller

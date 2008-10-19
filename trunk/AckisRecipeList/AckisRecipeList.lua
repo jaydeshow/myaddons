@@ -1,8 +1,8 @@
 ﻿--[[
 ************************************************************************
 AckisRecipeList
-$Date: 2008-09-26 12:33:21 -0400 (Fri, 26 Sep 2008) $
-$Rev: 82082 $
+$Date: 2008-10-02 16:05:27 +0000 (Thu, 02 Oct 2008) $
+$Rev: 888 $
 
 Author: Ackis on Illidan US Horde
 GUI done by Zhinjio
@@ -207,7 +207,6 @@ AckisRecipeList = LibStub("AceAddon-3.0"):NewAddon("Ackis Recipe List", "AceCons
 
 local addon = AckisRecipeList
 
--- We should probably clean thes up and use arguments/return values
 -- Global variables which are used between multiple files
 addon.RecipeListing = nil
 addon.SortedRecipeIndex = nil
@@ -467,7 +466,7 @@ local function giveFilter()
 				desc      = L["SPECIALITY_TOGGLE"],
 				type      = "toggle",
 				get       = function() return addon.db.profile.filters.general.specialty end,
-				set       = function() addon.db.profile.filters.general.specialty = not addon.db.profile.specialty end,
+				set       = function() addon.db.profile.filters.general.specialty = not addon.db.profile.filters.general.specialty end,
 				order     = 15,
 			},
 			skill =

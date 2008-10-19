@@ -4,8 +4,8 @@ ARL-Alchemy.lua
 
 Alchemy data for all of AckisRecipeList
 
-$Date: 2008-08-26 15:24:55 -0400 (Tue, 26 Aug 2008) $
-$Rev: 81004 $
+$Date: 2008-08-26 19:24:55 +0000 (Tue, 26 Aug 2008) $
+$Rev: 827 $
 
 ]]--
 

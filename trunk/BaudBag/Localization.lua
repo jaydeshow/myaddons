@@ -38,7 +38,7 @@ if(Locale=="zhTW")then -- Translator: Isler
     FeatureFrameName = "背包設定";
     FeatureFrameTooltip = "設定背包整合的各種參數";
   };
-	JPackFinish = "整理完成";
+	JPackFinish = "整理完成...";
 	JPackButtonText = "整理";
 elseif(Locale=="zhCN")then  -- Translator: Isler
   BaudBagLocalized = {
@@ -77,7 +77,7 @@ elseif(Locale=="zhCN")then  -- Translator: Isler
     FeatureFrameName = "背包设定";
     FeatureFrameTooltip = "设定背包整合的各种参数";
   };
-	JPackFinish = "整理完成";
+	JPackFinish = "整理完成...";
 	JPackButtonText = "整理";
 else --enUS (default)
   BaudBagLocalized = {
@@ -116,6 +116,6 @@ else --enUS (default)
     FeatureFrameName = "BaudBag Options",
     FeatureFrameTooltip = "BaudBag Options",
   };
-    JPackFinish = "JPack complete";
+    JPackFinish = "Pack up complete...";
     JPackButtonText = "Packup";
 end

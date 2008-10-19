@@ -7,7 +7,7 @@ Website: http://www.wowace.com/
 -- http://code.google.com/p/autobar/
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 80061 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 588 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')

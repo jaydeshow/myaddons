@@ -1,4 +1,4 @@
-AckisRecipeList/Changelog-AckisRecipeList-r82082.txt
+AckisRecipeList/Changelog-AckisRecipeList-r81212.txt
 AckisRecipeList/embeds.xml
 AckisRecipeList/AckisRecipeList.lua
 AckisRecipeList/externals.txt
@@ -71,15 +71,11 @@ AckisRecipeList/DataMiner/wowdb_recipes.rb
 AckisRecipeList/DataMiner/mineral-list.txt
 AckisRecipeList/DataMiner/herb-list.txt
 AckisRecipeList/DataMiner/dbc_file.rb
-AckisRecipeList/DataMiner/wowdb_factions.rb
 AckisRecipeList/DataMiner/wowdb-mapdata.txt
 AckisRecipeList/DataMiner/wowdb_helper.rb
 AckisRecipeList/DataMiner/wowdb_maps.rb
-AckisRecipeList/DataMiner/wowdb_pets_and_mounts.rb
 AckisRecipeList/DataMiner/core.rb
 AckisRecipeList/DataMiner/recipe-list.txt
-AckisRecipeList/DataMiner/Spells/spell_ids_wrath.txt
-AckisRecipeList/DataMiner/Spells/spells.rb
 AckisRecipeList/DataMiner/GatherMate/gathermate_data.rb
 AckisRecipeList/DataMiner/ZoneInfo/zone_data.rb
 AckisRecipeList/libs/LibAboutPanel/embeds.xml

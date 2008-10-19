@@ -5,8 +5,8 @@ ARLLocals-frFR.lua
 
 frFR localization strings for Ackis Recipe List
 
-$Date: 2008-08-29 16:43:38 -0400 (Fri, 29 Aug 2008) $
-$Rev: 81111 $
+$Date: 2008-08-29 20:43:38 +0000 (Fri, 29 Aug 2008) $
+$Rev: 845 $
 
 Original translated by: Pettigrow
 Currently maintaince by: Pettigrow & Trasher

@@ -80,7 +80,7 @@
 [url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
 (Please click in a "Labels:" field to label your issue appropriately.)
 
-"$Revision: 80061 $"
+"$Revision: 588 $"
 AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
 -- 2.04.03.01 release (79885)

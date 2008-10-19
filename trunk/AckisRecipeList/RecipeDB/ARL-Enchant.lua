@@ -4,8 +4,8 @@ ARL-Enchant.lua
 
 Enchanting data for all of AckisRecipeList
 
-$Date: 2008-08-25 10:36:26 -0400 (Mon, 25 Aug 2008) $
-$Rev: 80938 $
+$Date: 2008-08-25 14:36:26 +0000 (Mon, 25 Aug 2008) $
+$Rev: 824 $
 
 ]]--
 

@@ -2,7 +2,7 @@
 ## Title: Baud Auction
 ## Notes: Modifies Blizzard's auction house display so it can display and sort multiple pages of items at once.
 ## Author: Baudzilla
-## Version: 1.011
+## Version: 1.012
 ## LoadOnDemand: 1
 ## LoadWith: Blizzard_AuctionUI
 ## RequiredDeps: Blizzard_AuctionUI

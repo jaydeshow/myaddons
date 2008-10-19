@@ -4,8 +4,8 @@ ARL-Cook.lua
 
 Cooking data for all of AckisRecipeList
 
-$Date: 2008-07-07 00:27:15 -0400 (Mon, 07 Jul 2008) $
-$Rev: 77962 $
+$Date: 2008-07-07 04:27:15 +0000 (Mon, 07 Jul 2008) $
+$Rev: 729 $
 
 ]]--
 

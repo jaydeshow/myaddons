@@ -4,8 +4,8 @@ ARL-FirstAId.lua
 
 First Aid data for all of AckisRecipeList
 
-$Date: 2008-08-08 22:19:35 -0400 (Fri, 08 Aug 2008) $
-$Rev: 79992 $
+$Date: 2008-08-09 02:19:35 +0000 (Sat, 09 Aug 2008) $
+$Rev: 799 $
 
 ]]--
 

@@ -155,6 +155,7 @@ function BaudAuction_OnLoad(self)
     Entry:SetPoint("RIGHT", -6, 0);
     Entry:SetPoint("TOP", 0, -3 - (Index - 1) * 16);
     Entry:Hide();
+    Entry:SetID(0); --Hack for using Blizzard's on enter function
     Button = CreateFrame("Button", Entry:GetName().."Icon", Entry);
     Button:SetPoint("LEFT");
     Button:SetHeight(16);
@@ -162,7 +163,6 @@ function BaudAuction_OnLoad(self)
     Button:CreateTexture(Entry:GetName().."Texture", "ARTWORK"):SetAllPoints();
     Button:EnableMouse(true);
     Button:SetScript("OnEnter", BaudAuctionBrowseEntry_OnEnter);
-    Button.UpdateTooltip = BaudAuctionBrowseEntry_OnEnter;
     Button:SetScript("OnLeave", BaudAuctionBrowseEntry_OnLeave);
     Button:SetScript("OnClick", ChildClickFunc);
     --Button:SetScript("OnUpdate", BaudAuctionBrowseEntry_OnUpdate);
@@ -439,11 +439,11 @@ end
 
 function BaudAuctionBrowseEntry_OnClick(self)
   if IsControlKeyDown()then
-    DressUpItemLink(SearchResults[self:GetID()][14]);
+    DressUpItemLink(SearchResults[self.Index][14]);
   elseif ( IsShiftKeyDown() ) then
-    ChatEdit_InsertLink(SearchResults[self:GetID()][14]);
+    ChatEdit_InsertLink(SearchResults[self.Index][14]);
   else
-    SelectedItem = self:GetID();
+    SelectedItem = self.Index;
     if(AUCTION_DISPLAY_ON_CHARACTER == "1")then
       DressUpItemLink(SearchResults[SelectedItem][14]);
     end
@@ -455,14 +455,40 @@ function BaudAuctionBrowseEntry_OnClick(self)
 end
 
 
-function BaudAuctionBrowseEntry_OnEnter(self)
-  local Index = self:GetParent():GetID();
-	GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-  if(CurrentPage==floor((Index - 1) / NUM_AUCTION_ITEMS_PER_PAGE))then
-  	GameTooltip:SetAuctionItem("list", (Index - 1) % NUM_AUCTION_ITEMS_PER_PAGE + 1);
+local HackFrame = CreateFrame("Frame", "BrowseButton0");
+local RefreshFunc = function(self)
+  if GameTooltip:IsOwned(self)then
+    BaudAuctionBrowseEntry_OnEnter(self);
   else
-    local ItemString = string.match(SearchResults[Index][14], "(item[:%-%d]+)");
-    GameTooltip:SetHyperlink(ItemString);
+    self:SetScript("OnUpdate", nil);
+  end
+end
+function BaudAuctionBrowseEntry_OnEnter(self)
+  local Index = self:GetParent().Index;
+  local Item = SearchResults[Index];
+  if(CurrentPage==floor((Index - 1) / NUM_AUCTION_ITEMS_PER_PAGE))then
+  	--GameTooltip:SetAuctionItem("list", (Index - 1) % NUM_AUCTION_ITEMS_PER_PAGE + 1);
+  	--The way this is designed is to work using the original Blizzard function so that other addons can hook on
+    HackFrame.itemCount = Item[3];
+    HackFrame.bidAmount = (Item[10]~=0)and Item[10]or Item[7];
+    HackFrame.buyoutPrice = Item[9];
+  	AuctionFrameItem_OnEnter("list", (Index - 1) % NUM_AUCTION_ITEMS_PER_PAGE + 1);
+    self.UpdateTooltip = nil;
+  	self:SetScript("OnUpdate", RefreshFunc);
+  	return;
+  end
+  self.UpdateTooltip = BaudAuctionBrowseEntry_OnEnter;
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+  GameTooltip:SetHyperlink(string.match(Item[14], "(item[:%-%d]+)"));
+  if(Item[3] > 1)then
+    if Item[11]then
+      GameTooltip:AddLine("|n");
+      SetTooltipMoney(GameTooltip, ceil(Item[10] / Item[3]), "STATIC", "<"..AUCTION_TOOLTIP_BID_PREFIX, ">");
+    end
+    if(Item[9] > 0)then
+      SetTooltipMoney(GameTooltip, ceil(Item[9] / Item[3]), "STATIC", "<"..AUCTION_TOOLTIP_BUYOUT_PREFIX, ">");
+    end
+    GameTooltip:Show();
   end
 	GameTooltip_ShowCompareItem();
 	if IsModifiedClick("DRESSUP")then
@@ -555,7 +581,7 @@ function BaudAuctionBrowseScrollBar_Update()
       Entry:Hide();
     else
       Index = BrowseDisplay[Index];
-      Entry:SetID(Index);
+      Entry.Index = Index;
       SearchItem = SearchResults[Index];
       getglobal(Entry:GetName().."Texture"):SetTexture(SearchItem[2]);
       for Key, Value in ipairs(Columns)do

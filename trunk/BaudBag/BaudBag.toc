@@ -2,10 +2,10 @@
 ## Title: Baud Bag
 ## Notes: Allows you to combine bags as well as customize their display.
 ## Title-zhCN: 背包整合 Baud Bag
-## Notes-zhCN: 以整合方式显示你的背包和银行|N本地化:Isler
+## Notes-zhCN: 以整合方式显示你的背包和银行,含一键整理(JPack)
 ## Title-zhTW: 背包整合 Baud Bag
-## Notes-zhTW: 以整合方式顯示你的背包和銀行|N本地化:Isler
-## Author: Baudzilla
+## Notes-zhTW: 以整合方式顯示你的背包和銀行,含一鍵整理(JPack)
+## Author: Baudzilla, 桂健雄(JPack)
 ## Version: 1.3
 ## SavedVariablesPerCharacter: BaudBag_Cfg, BaudBag_Cache, JPack
 Localization.lua

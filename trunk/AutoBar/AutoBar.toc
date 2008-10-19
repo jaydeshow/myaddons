@@ -4,7 +4,7 @@
 ## Title-zhCN: 消耗品助手 |cff7fff7f -Ace2-|r
 ## Title-zhTW: AutoBar |cff7fff7f -Ace2-|r
 ## Author: Toadkiller
-## Version: 2.04.03.01 release
+## Version: 2.04.03.02 release
 ## Notes: Dynamic bars with buttons that automatically add potions, water, food and other items you specify into a button for use. Does not use action slots.
 ## Notes-ruRU: Динамические панели с кнопками, которые автоматически добавляют зелья, воду, пищу и другие предметы для которых вы определяете кнопки использования. Не использует слоты на панели команд.
 ## Notes-koKR: 자동으로 물약, 음료, 음식등이 포함된 버튼을 제공하며 슬롯에 사용할 아이템을 별도로 추가할 수 있습니다. 이것은 액션 슬롯에 여유를 가져다 줄것입니다.

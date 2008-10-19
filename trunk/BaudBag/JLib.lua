@@ -1,17 +1,41 @@
-﻿
+﻿JPACK_STEP=0;--0,not started, 1,start_save_load ,2 start stack,3,stack over 
+JPACK_STARTED=1
+JPACK_DEPOSITING=2
+JPACK_DRAWING=3
+JPACK_STACKING=4
+JPACK_STACK_OVER=5
+JPACK_SORTING=6
+JPACK_PACKING=7
+JPACK_STOPPED=0
+
+JPACK_DEBUG=false;
 if table.getn == nil then
 	local fun, err = loadstring("return function(tb) return #tb end")
 	table.getn = fun()
 end 
 
-function print(msg)
-	DEFAULT_CHAT_FRAME:AddMessage(msg)
+function print(msg,r,g,b)
+	if (r == nil or g == nil or b == nil) then
+		r = 0.36;
+		g = 0.74;
+		b = 0.74;
+	end
+	DEFAULT_CHAT_FRAME:AddMessage(msg,r,g,b)
 end
 
 function debug(msg)
---	if(DEBUG)then
---		print(msg)
---	end
+	if(JPACK_DEBUG)then
+		print(msg)
+	end
+end
+
+function IndexOfTable(t,v)
+	for i=1,table.getn(t) do
+		if(v==t[i])then
+			return i;
+		end
+	end
+	return 0;
 end
 
 --继承
