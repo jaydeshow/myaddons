@@ -1,0 +1,12 @@
+## Interface: 20400
+## Title: ClearFont |r|cFF0099FFby Ice|r
+## Title-zhCN: ClearFont |r|cFF0099FFby 逆袭的蓝|r
+## Notes: Modify Game Fonts and Size, Color, Shadow Of Them.(For FontShow Enhanced Mode)
+## Notes-zhCN: 修改游戏字体以及大小、颜色、阴影等特效（在FontShow增强模式下使用）
+## Version: v2.30a
+## Author: Kirkburn
+## URL: http://bbs.game.mop.com/viewthread.php?tid=1503056
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+ClearFont.lua
