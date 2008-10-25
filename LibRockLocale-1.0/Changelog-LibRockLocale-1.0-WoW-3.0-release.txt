@@ -1,0 +1,304 @@
+------------------------------------------------------------------------
+r235 | ckknight | 2008-10-14 20:32:20 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   A /tags/WoW-3.0-release (from /trunk:234)
+
+Tagging as WoW-3.0-release.
+------------------------------------------------------------------------
+r234 | stanzilla | 2008-10-14 16:29:59 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockLocale-1.0.toc
+
+Update TOC for WotLK
+------------------------------------------------------------------------
+r233 | nevcairiel | 2008-10-09 21:53:42 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockLocale-1.0.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------
+r232 | root | 2008-09-29 22:20:37 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r230 | root | 2008-09-29 20:58:18 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/LibRockLocale-1.0
+   A /trunk (from /tmp/trunk/LibRockLocale-1.0:229)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r227 | ckknight | 2008-07-20 18:35:51 +0000 (Sun, 20 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+LibRockLocale-1.0 - fix a possible bug in an error message
+------------------------------------------------------------------------
+r225 | arrowmaster | 2008-04-01 07:16:23 +0000 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+
+.You are not a special or unique snowflake. Get back in line and use the 'Lib: ...' title format like everybody else to save the sanity of those of us looking through an alpha sorted addon list
+------------------------------------------------------------------------
+r224 | snago | 2008-03-28 20:52:57 +0000 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+LibRockLocale-1.0: Fix syntax in examples
+------------------------------------------------------------------------
+r223 | helium | 2008-03-28 08:29:44 +0000 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+
+LibRockLocale-1.0: TOC 20400
+------------------------------------------------------------------------
+r221 | ckknight | 2008-02-13 06:32:54 +0000 (Wed, 13 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+.LibRock-1.0 - don't use negative reversion numbers because the LibStub patch for supporting that was never accepted.
+------------------------------------------------------------------------
+r220 | silviu | 2007-11-15 10:09:51 +0000 (Thu, 15 Nov 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+
+LibRockLocale-1.0: Bump toc to 20300
+------------------------------------------------------------------------
+r219 | ckknight | 2007-09-25 18:47:54 +0000 (Tue, 25 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.toc
+
+.Lib* - upgrade TOC to 20200
+
+------------------------------------------------------------------------
+r218 | ckknight | 2007-09-21 01:23:30 +0000 (Fri, 21 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+LibRockLocale-1.0 - fix error message.
+------------------------------------------------------------------------
+r217 | ckknight | 2007-09-19 04:35:51 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+LibRockLocale-1.0 - remove __mode='v' on namespaces, as it seems to mess things up.
+------------------------------------------------------------------------
+r216 | ckknight | 2007-09-18 02:06:56 +0000 (Tue, 18 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+LibRockLocale-1.0 - make error messages better.
+------------------------------------------------------------------------
+r215 | ckknight | 2007-09-17 23:01:36 +0000 (Mon, 17 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+LibRockLocale-1.0 - make error messages slightly better
+------------------------------------------------------------------------
+r214 | ckknight | 2007-09-03 03:50:22 +0000 (Mon, 03 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+.LibRock*-1.0 - remove stray "" at the end of lua files. (Thank you, Windows).
+LibRock-1.0 - make !BugGrabber and !Swatter optional deps, so they load before.
+------------------------------------------------------------------------
+r213 | ckknight | 2007-09-02 19:45:48 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/lib.xml
+
+.LibRock*-1.0 - fix lib.xml
+------------------------------------------------------------------------
+r212 | ckknight | 2007-09-02 09:30:05 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockLocale-1.0/LibRockLocale-1.0.lua
+
+.LibRock*-1.0 - touching files so the wiki will update
+------------------------------------------------------------------------
+r209 | ckknight | 2007-09-02 06:49:51 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   D /tmp/branches/Joker/ckknight/LibRockLocale-1.0
+   A /tmp/trunk/LibRockLocale-1.0 (from /tmp/branches/Joker/ckknight/LibRockLocale-1.0:208)
+
+LibRockLocale-1.0 - moving to trunk
+------------------------------------------------------------------------
+r201 | ckknight | 2007-09-02 06:13:23 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibRock-1.0/LibRock-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRock-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibRockComm-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibRockConfig-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibRockConsole-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibRockDB-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibRockEvent-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibRockHook-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibRockLocale-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibRockTimer-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0/lib.xml
+
+Rock - add lib.xml to all libraries.
+------------------------------------------------------------------------
+r200 | ckknight | 2007-09-02 05:55:01 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   D /tmp/branches/Joker/ckknight/JokerTest
+   D /tmp/branches/Joker/ckknight/LibJoker-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerComm-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerConfig-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerConsole-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerDB-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerEvent-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerHook-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerLocale-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerTimer-1.0
+   A /tmp/branches/Joker/ckknight/LibRock-1.0 (from /tmp/branches/Joker/ckknight/LibJoker-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRock-1.0/LibJoker-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRock-1.0/LibJoker-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRock-1.0/LibRock-1.0.lua (from /tmp/branches/Joker/ckknight/LibJoker-1.0/LibJoker-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRock-1.0/LibRock-1.0.toc (from /tmp/branches/Joker/ckknight/LibJoker-1.0/LibJoker-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0 (from /tmp/branches/Joker/ckknight/LibJokerComm-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibJokerComm-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibJokerComm-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibRockComm-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerComm-1.0/LibJokerComm-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibRockComm-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerComm-1.0/LibJokerComm-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0 (from /tmp/branches/Joker/ckknight/LibJokerConfig-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibJokerConfig-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibJokerConfig-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibRockConfig-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibRockConfig-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0 (from /tmp/branches/Joker/ckknight/LibJokerConsole-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibJokerConsole-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibJokerConsole-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibRockConsole-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerConsole-1.0/LibJokerConsole-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibRockConsole-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerConsole-1.0/LibJokerConsole-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0 (from /tmp/branches/Joker/ckknight/LibJokerDB-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibJokerDB-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibJokerDB-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibRockDB-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerDB-1.0/LibJokerDB-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibRockDB-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerDB-1.0/LibJokerDB-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0 (from /tmp/branches/Joker/ckknight/LibJokerEvent-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibJokerEvent-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibJokerEvent-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibRockEvent-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerEvent-1.0/LibJokerEvent-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibRockEvent-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerEvent-1.0/LibJokerEvent-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0 (from /tmp/branches/Joker/ckknight/LibJokerHook-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibJokerHook-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibJokerHook-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibRockHook-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerHook-1.0/LibJokerHook-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibRockHook-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerHook-1.0/LibJokerHook-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0 (from /tmp/branches/Joker/ckknight/LibJokerLocale-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibJokerLocale-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibJokerLocale-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibRockLocale-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibRockLocale-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0 (from /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibJokerModuleCore-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibJokerModuleCore-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibRockModuleCore-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0/LibJokerModuleCore-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0/LibJokerModuleCore-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0 (from /tmp/branches/Joker/ckknight/LibJokerTimer-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibJokerTimer-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibJokerTimer-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibRockTimer-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerTimer-1.0/LibJokerTimer-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibRockTimer-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerTimer-1.0/LibJokerTimer-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/RockTest (from /tmp/branches/Joker/ckknight/JokerTest:197)
+   D /tmp/branches/Joker/ckknight/RockTest/JokerTest.lua
+   D /tmp/branches/Joker/ckknight/RockTest/JokerTest.toc
+   A /tmp/branches/Joker/ckknight/RockTest/RockTest.lua (from /tmp/branches/Joker/ckknight/JokerTest/JokerTest.lua:197)
+   A /tmp/branches/Joker/ckknight/RockTest/RockTest.toc (from /tmp/branches/Joker/ckknight/JokerTest/JokerTest.toc:197)
+
+Joker - rename to Rock. Will be moving to trunk soon.
+------------------------------------------------------------------------
+r171 | ckknight | 2007-08-24 02:15:33 +0000 (Fri, 24 Aug 2007) | 3 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJoker-1.0/LibJoker-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerComm-1.0/LibJokerComm-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerConsole-1.0/LibJokerConsole-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerDB-1.0/LibJokerDB-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerEvent-1.0/LibJokerEvent-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerHook-1.0/LibJokerHook-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0/LibJokerModuleCore-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerTimer-1.0/LibJokerTimer-1.0.lua
+
+LibJoker-1.0 - add :GetContractFunctions("namespace", ...)
+- make all libraries use the contract functions instead of doing it in the normal function itself.
+- options to disable the contracts from running will be added in a bit.
+------------------------------------------------------------------------
+r131 | ckknight | 2007-08-15 09:37:29 +0000 (Wed, 15 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+
+LibJokerLocale-1.0 - add :HasBaseTranslation("text")
+------------------------------------------------------------------------
+r112 | ckknight | 2007-08-03 22:26:35 +0000 (Fri, 03 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJoker-1.0/LibJoker-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerConsole-1.0/LibJokerConsole-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerEvent-1.0/LibJokerEvent-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerHook-1.0/LibJokerHook-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0/LibJokerModuleCore-1.0.lua
+   M /tmp/branches/Joker/ckknight/LibJokerTimer-1.0/LibJokerTimer-1.0.lua
+
+LibJoker-1.0 - rename :GetRecycleFunctions => :GetRecyclingFunctions
+------------------------------------------------------------------------
+r109 | ckknight | 2007-08-02 21:38:55 +0000 (Thu, 02 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+
+LibJokerLocale-1.0 - cache globals
+------------------------------------------------------------------------
+r108 | ckknight | 2007-08-02 21:27:12 +0000 (Thu, 02 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+
+LibJokerLocale-1.0 - fix some documentation
+------------------------------------------------------------------------
+r107 | ckknight | 2007-08-02 20:53:54 +0000 (Thu, 02 Aug 2007) | 3 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+
+LibJokerLocale-1.0 - fix issues with __newindex.
+- add proper support for locale namespaces-as-libraries (e.g. Babble)
+- add unit test
+------------------------------------------------------------------------
+r102 | ckknight | 2007-08-02 20:04:03 +0000 (Thu, 02 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+
+LibJokerLocale-1.0 - document reverse
+------------------------------------------------------------------------
+r101 | ckknight | 2007-08-02 19:57:10 +0000 (Thu, 02 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+
+LibJokerLocale-1.0 - have locale objects clear 5 seconds after registration, to save memory later on if it's a 1-time thing.
+- since initial translations are calculated and cached, repeated translations are very fast, but it uses a bit of memory. By clearing after 5 seconds, the one-time-only translations will have been taken care of, but repeated translations will recache and be fast throughout.
+------------------------------------------------------------------------
+r100 | ckknight | 2007-08-02 19:30:35 +0000 (Thu, 02 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+
+LibJokerLocale-1.0 - fix Autodoc in two places
+------------------------------------------------------------------------
+r99 | ckknight | 2007-08-02 19:29:33 +0000 (Thu, 02 Aug 2007) | 3 lines
+Changed paths:
+   A /tmp/branches/Joker/ckknight/LibJokerLocale-1.0
+   A /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua
+   A /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.toc
+
+LibJokerLocale-1.0 - initial commit.
+- see http://wowace.com/wiki/LibJokerLocale-1.0 for API
+- this acts like a slimmed-down AceLocale-2.2, no frills.
+------------------------------------------------------------------------

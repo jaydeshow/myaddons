@@ -1,0 +1,1475 @@
+------------------------------------------------------------------------
+r398 | arrowmaster | 2008-10-18 01:24:33 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   A /tags/WoW-3.0-release-2-death-of-the-minimap-icon (from /trunk:397)
+
+Tagging as WoW-3.0-release-2-death-of-the-minimap-icon.
+------------------------------------------------------------------------
+r396 | arrowmaster | 2008-10-18 01:13:28 +0000 (Sat, 18 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0.lua
+
+DIE MINIMAP ICON DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE
+------------------------------------------------------------------------
+r395 | arrowmaster | 2008-10-16 17:28:31 +0000 (Thu, 16 Oct 2008) | 1 line
+Changed paths:
+   M /trunk
+   M /trunk/LibRockConfig-1.0.lua
+
+DIE ADDON PREFERENCES BUTTON DIE!
+------------------------------------------------------------------------
+r393 | stanzilla | 2008-10-14 16:36:32 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0.toc
+
+Update TOC for WotLK
+------------------------------------------------------------------------
+r392 | nevcairiel | 2008-10-09 21:53:32 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibRockConfig-1.0.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------
+r391 | root | 2008-09-29 21:53:54 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r389 | root | 2008-09-29 20:58:18 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/LibRockConfig-1.0
+   A /trunk (from /tmp/trunk/LibRockConfig-1.0:388)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r386 | ckknight | 2008-07-20 18:05:44 +0000 (Sun, 20 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - use SetNormalFontObject instead of SetTextFontObject if in WotLK
+------------------------------------------------------------------------
+r385 | ckknight | 2008-07-07 20:45:42 +0000 (Mon, 07 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix a bug with FuBarPlugin-2.0 support if you're not using the official FuBarPlugin-2.0
+------------------------------------------------------------------------
+r383 | jjsheets | 2008-04-06 00:33:51 +0000 (Sun, 06 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Fix to make sure that recycled string controls use the correct OnEnterPressed and OnTextChanged scripts.  Single-liners would sometimes not accept an Enter key if it is a recycled multiline.
+------------------------------------------------------------------------
+r382 | ckknight | 2008-04-05 03:08:13 +0000 (Sat, 05 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix issue where putting in a literal color string into an editbox would return wrong values.
+------------------------------------------------------------------------
+r381 | arrowmaster | 2008-04-01 07:16:23 +0000 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+
+.You are not a special or unique snowflake. Get back in line and use the 'Lib: ...' title format like everybody else to save the sanity of those of us looking through an alpha sorted addon list
+------------------------------------------------------------------------
+r380 | jjsheets | 2008-04-01 03:53:36 +0000 (Tue, 01 Apr 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Fixed bug on line 6817 caused by inline group resizing with multiline string controls.
+------------------------------------------------------------------------
+r379 | jjsheets | 2008-03-31 22:01:11 +0000 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: Fixed JIRA ticket ROCK-146.
+------------------------------------------------------------------------
+r378 | helium | 2008-03-31 10:08:28 +0000 (Mon, 31 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: updated zhTW localization
+------------------------------------------------------------------------
+r377 | ckknight | 2008-03-29 15:10:19 +0000 (Sat, 29 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - apparently I removed a line accidentally which prevented automatic editbox expansion.
+------------------------------------------------------------------------
+r376 | ckknight | 2008-03-28 23:44:02 +0000 (Fri, 28 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - using trickery, fix the delete key and the right-arrow key for syntax-colored editboxes.
+- also use :GetCursorPosition and :SetCursorPosition properly.
+------------------------------------------------------------------------
+r375 | helium | 2008-03-28 08:28:45 +0000 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+
+LibRockConfig-1.0: TOC 20400
+------------------------------------------------------------------------
+r374 | ckknight | 2008-03-27 21:14:38 +0000 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix editboxes clearing when pressing escape.
+------------------------------------------------------------------------
+r373 | ckknight | 2008-03-27 18:45:24 +0000 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix another nil bug
+------------------------------------------------------------------------
+r372 | ckknight | 2008-03-27 18:28:57 +0000 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix nil issue
+------------------------------------------------------------------------
+r371 | ckknight | 2008-03-27 16:52:51 +0000 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - reposition slider editboxes slightly
+------------------------------------------------------------------------
+r370 | ckknight | 2008-03-27 16:47:25 +0000 (Thu, 27 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add a bit more spacing to multiline edit boxes
+------------------------------------------------------------------------
+r369 | ckknight | 2008-03-27 05:25:54 +0000 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - for the string type, add syntaxHighlighter function, which will feed in a string and get a colored string out of it.
+- e.g. syntaxHighlighter = function(text) return LibStub("LibDogTag-3.0"):ColorizeCode(text) end ;-)
+------------------------------------------------------------------------
+r367 | jjsheets | 2008-03-19 07:08:29 +0000 (Wed, 19 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Fixed a bug with new Multiline string control causing warning indicator to show up when using Multilines.
+------------------------------------------------------------------------
+r366 | jjsheets | 2008-03-19 04:04:53 +0000 (Wed, 19 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:  Added support for Multi-Line string controls.
+------------------------------------------------------------------------
+r365 | ckknight | 2008-03-05 05:50:28 +0000 (Wed, 05 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make sure to reset the texture on choice controls no matter what.
+------------------------------------------------------------------------
+r364 | ckknight | 2008-03-01 17:24:54 +0000 (Sat, 01 Mar 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix bug in error message.
+------------------------------------------------------------------------
+r363 | ckknight | 2008-02-25 04:49:05 +0000 (Mon, 25 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - only clear cache out of combat and gc at said point if needed.
+------------------------------------------------------------------------
+r362 | ckknight | 2008-02-24 12:26:15 +0000 (Sun, 24 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make the keybinding type more sane with modifiers
+------------------------------------------------------------------------
+r361 | ckknight | 2008-02-22 23:26:45 +0000 (Fri, 22 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add iconTexCoord and choiceIconTexCoords
+------------------------------------------------------------------------
+r360 | ckknight | 2008-02-19 07:03:14 +0000 (Tue, 19 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - reset look for multiChoice
+------------------------------------------------------------------------
+r359 | pettigrow | 2008-02-15 10:22:41 +0000 (Fri, 15 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: frFR Update
+------------------------------------------------------------------------
+r358 | ckknight | 2008-02-13 06:32:54 +0000 (Wed, 13 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+.LibRock-1.0 - don't use negative reversion numbers because the LibStub patch for supporting that was never accepted.
+------------------------------------------------------------------------
+r357 | ckknight | 2008-02-11 16:24:12 +0000 (Mon, 11 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix a bad typo with choiceOrder
+------------------------------------------------------------------------
+r356 | ckknight | 2008-02-11 06:22:27 +0000 (Mon, 11 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add choiceOrder ability
+------------------------------------------------------------------------
+r355 | ckknight | 2008-02-10 07:44:11 +0000 (Sun, 10 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make options-as-functions work properly
+------------------------------------------------------------------------
+r354 | ckknight | 2008-02-10 06:19:15 +0000 (Sun, 10 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add ability to cache results of functions by adding "@cache" to the front of the return, so function() return "@cache", { stuff } end would only be run once until the cache is cleared (180 seconds after closing the config menu)
+------------------------------------------------------------------------
+r353 | 7destiny | 2008-02-06 08:16:52 +0000 (Wed, 06 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: -Update locale koKR
+------------------------------------------------------------------------
+r352 | ckknight | 2008-02-06 07:23:21 +0000 (Wed, 06 Feb 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add :IsConfigMenuOpen([object])
+------------------------------------------------------------------------
+r351 | helium | 2008-01-28 10:02:38 +0000 (Mon, 28 Jan 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: updated zhTW localization
+------------------------------------------------------------------------
+r350 | cwdg | 2008-01-24 12:20:51 +0000 (Thu, 24 Jan 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:zhCN update
+do not add unnecessary locale author info plz
+------------------------------------------------------------------------
+r349 | ckknight | 2008-01-23 18:14:08 +0000 (Wed, 23 Jan 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add option to hide in combat.
+fixes ROCK-112
+------------------------------------------------------------------------
+r348 | ckknight | 2007-12-22 09:22:30 +0000 (Sat, 22 Dec 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix ROCK-127
+------------------------------------------------------------------------
+r347 | silviu | 2007-11-15 10:08:21 +0000 (Thu, 15 Nov 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+
+LibRockConfig-1.0: Bump toc to 20300
+------------------------------------------------------------------------
+r346 | helium | 2007-10-22 09:28:44 +0000 (Mon, 22 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: updated zhTW localization
+------------------------------------------------------------------------
+r345 | ckknight | 2007-10-14 22:28:29 +0000 (Sun, 14 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add onChange handler for type = 'string', which is called every time the string changes.
+------------------------------------------------------------------------
+r344 | pb_ee1 | 2007-10-08 11:11:29 +0000 (Mon, 08 Oct 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+- Updating frFR localization.
+- Fixing a few erroneous tabs in chinese translation.
+------------------------------------------------------------------------
+r343 | andyca | 2007-10-08 01:59:26 +0000 (Mon, 08 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:Added zhTW localization
+------------------------------------------------------------------------
+r342 | grum | 2007-10-07 17:44:09 +0000 (Sun, 07 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+- Reapplied fix done in rev. 51084. xionglingfeng: l2svnup before you push.
+------------------------------------------------------------------------
+r341 | sayclub | 2007-10-06 09:25:40 +0000 (Sat, 06 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+- Fixed localization koKR
+------------------------------------------------------------------------
+r340 | xionglingfeng | 2007-10-06 01:17:59 +0000 (Sat, 06 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - Chs updated.
+------------------------------------------------------------------------
+r339 | ckknight | 2007-10-05 22:17:28 +0000 (Fri, 05 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix funky issue with inline groups and color controls
+------------------------------------------------------------------------
+r338 | cwdg | 2007-10-05 19:09:58 +0000 (Fri, 05 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+-Update zhCN local
+------------------------------------------------------------------------
+r337 | ckknight | 2007-10-05 06:59:36 +0000 (Fri, 05 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix possible bug with inline groups
+------------------------------------------------------------------------
+r336 | ckknight | 2007-10-05 06:47:08 +0000 (Fri, 05 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - a few touchups
+------------------------------------------------------------------------
+r335 | ckknight | 2007-10-05 06:37:21 +0000 (Fri, 05 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - give editboxes a beveled look
+------------------------------------------------------------------------
+r334 | sayclub | 2007-10-04 22:46:23 +0000 (Thu, 04 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+- Updated localization koKR
+------------------------------------------------------------------------
+r333 | ckknight | 2007-10-04 22:07:35 +0000 (Thu, 04 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix
+------------------------------------------------------------------------
+r332 | ckknight | 2007-10-04 20:11:11 +0000 (Thu, 04 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - Gleam third-party settings from FuBarPlugin-2.0 as well as AceConsole-2.0.
+------------------------------------------------------------------------
+r331 | ckknight | 2007-10-04 07:06:25 +0000 (Thu, 04 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix ...maybe
+------------------------------------------------------------------------
+r330 | ckknight | 2007-10-04 03:51:52 +0000 (Thu, 04 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix saving issue for addon/talent comm options
+------------------------------------------------------------------------
+r329 | ckknight | 2007-10-04 00:54:48 +0000 (Thu, 04 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make the name show up as "Addon Preferences" in FuBar's options.
+------------------------------------------------------------------------
+r328 | ckknight | 2007-10-03 23:27:50 +0000 (Wed, 03 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix
+------------------------------------------------------------------------
+r327 | ckknight | 2007-10-03 21:23:08 +0000 (Wed, 03 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - set up for a generic simplified sv system for later use.
+------------------------------------------------------------------------
+r326 | ckknight | 2007-10-03 20:46:20 +0000 (Wed, 03 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix another theoretical bug
+------------------------------------------------------------------------
+r325 | ckknight | 2007-10-03 20:44:23 +0000 (Wed, 03 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix possible bug
+------------------------------------------------------------------------
+r324 | ckknight | 2007-10-01 23:55:15 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix check to see if the FuBar plugin is hidden.
+------------------------------------------------------------------------
+r323 | ckknight | 2007-10-01 09:50:45 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix nil bug.
+------------------------------------------------------------------------
+r322 | ckknight | 2007-10-01 09:23:36 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix a stack overflow.
+------------------------------------------------------------------------
+r321 | ckknight | 2007-10-01 07:13:33 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add a check for coming into focus to make sure that if you're hovering over something that's technically in Rock Config's space, it won't raise the strata until you move your mouse away from that.
+------------------------------------------------------------------------
+r320 | ckknight | 2007-10-01 05:37:25 +0000 (Mon, 01 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-75
+- allow scale from [50%, 200%] instead of [50%, 100%].
+------------------------------------------------------------------------
+r319 | ckknight | 2007-10-01 05:20:27 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add some bugfixes to the FuBar plugin.
+------------------------------------------------------------------------
+r318 | ckknight | 2007-10-01 04:54:58 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make ScriptErrors a higher frame strata, above LibRockConfig-1.0's frame.
+------------------------------------------------------------------------
+r317 | ckknight | 2007-10-01 04:46:31 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make editbox for sliders slightly bigger.
+------------------------------------------------------------------------
+r316 | ckknight | 2007-10-01 04:43:02 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - save and restore the scroll of the main pane.
+------------------------------------------------------------------------
+r315 | ckknight | 2007-10-01 04:37:08 +0000 (Mon, 01 Oct 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - if scrolling and you hit a slider, it will no longer alter the slider's value, but just keep scrolling the pane. It has a 1-second buffer time to keep track of this.
+------------------------------------------------------------------------
+r314 | sayclub | 2007-10-01 04:11:12 +0000 (Mon, 01 Oct 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+- Updated localization koKR
+------------------------------------------------------------------------
+r313 | ckknight | 2007-09-30 23:13:59 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix texture issue with the main pane.
+------------------------------------------------------------------------
+r312 | ckknight | 2007-09-30 22:53:34 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make normal choice dropdowns able to click the text as well as the arrow button to change them.
+------------------------------------------------------------------------
+r311 | ckknight | 2007-09-30 22:33:27 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - now clicking on the text part of the addon chooser opens the dropdown as well.
+------------------------------------------------------------------------
+r310 | ckknight | 2007-09-30 22:28:19 +0000 (Sun, 30 Sep 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0
+- make the treeview resize a bit more flexible
+- make the pullout background non-transparent.
+------------------------------------------------------------------------
+r309 | ckknight | 2007-09-30 21:42:08 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - allow hiding of the FuBar plugin.
+------------------------------------------------------------------------
+r308 | ckknight | 2007-09-30 21:38:45 +0000 (Sun, 30 Sep 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 -
+- add in ability to attach the minimap button to FuBar (lazy support of LibFuBarPlugin-3.0)
+- add fix for pullouts that are inside inline groups.
+------------------------------------------------------------------------
+r307 | ckknight | 2007-09-30 20:16:46 +0000 (Sun, 30 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-71
+- only collapse treelines when clicking on the line if it is already selected, otherwise always expand.
+------------------------------------------------------------------------
+r306 | ckknight | 2007-09-30 20:11:46 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make the addon chooser show the right addon marked off.
+------------------------------------------------------------------------
+r305 | ckknight | 2007-09-30 20:09:10 +0000 (Sun, 30 Sep 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 -
+- make it so when dragging, it doesn't fade out the window.
+- change the window background and border
+- change the window title bar to be more Blizzard-esque.
+------------------------------------------------------------------------
+r304 | ckknight | 2007-09-30 19:02:39 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - will only fadeout after initially mousing over.
+------------------------------------------------------------------------
+r303 | ckknight | 2007-09-30 17:07:02 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix
+------------------------------------------------------------------------
+r302 | ckknight | 2007-09-30 15:56:49 +0000 (Sun, 30 Sep 2007) | 4 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 -
+- rearrange a whole bunch of code
+- make it so instead of having a giant tree on the left, there's a dropdown with which to choose which addon you're looking at.
+- make the dropdown button blink if you're looking at it initially.
+------------------------------------------------------------------------
+r301 | ckknight | 2007-09-30 07:03:49 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - rename Configuration to Preferences, for consistency.
+------------------------------------------------------------------------
+r300 | ckknight | 2007-09-30 06:03:14 +0000 (Sun, 30 Sep 2007) | 6 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 
+- remove all traces of the words "Rock Configuration".
+- The icon is now a wrench
+- There is a single title bar (instead of two)
+- localize some things
+- make the slider not bug out halfway through if someone refreshes.
+------------------------------------------------------------------------
+r299 | ckknight | 2007-09-30 03:57:11 +0000 (Sun, 30 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-18
+- add copy/paste buttons for the color picker.
+------------------------------------------------------------------------
+r298 | ckknight | 2007-09-30 02:53:18 +0000 (Sun, 30 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix bug with pullout and fading.
+------------------------------------------------------------------------
+r297 | pb_ee1 | 2007-09-28 09:53:31 +0000 (Fri, 28 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+
+LibRockConfig-1.0: Adding Notes-frFR translation in TOC.
+------------------------------------------------------------------------
+r296 | ckknight | 2007-09-26 10:15:20 +0000 (Wed, 26 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix possible bug
+------------------------------------------------------------------------
+r295 | ckknight | 2007-09-25 18:47:54 +0000 (Tue, 25 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.toc
+
+.Lib* - upgrade TOC to 20200
+
+------------------------------------------------------------------------
+r294 | ckknight | 2007-09-25 03:44:34 +0000 (Tue, 25 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-67
+- fix bug where callConfigField couldn't pick up passing groups
+------------------------------------------------------------------------
+r293 | ckknight | 2007-09-25 03:42:04 +0000 (Tue, 25 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add ability to gleam icon from third-party addons that use FuBarPlugin-2.0
+------------------------------------------------------------------------
+r292 | ckknight | 2007-09-22 17:18:30 +0000 (Sat, 22 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix nil bug
+------------------------------------------------------------------------
+r291 | ckknight | 2007-09-22 00:30:13 +0000 (Sat, 22 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-45
+- indent submenus a bit more.
+------------------------------------------------------------------------
+r290 | ckknight | 2007-09-22 00:19:53 +0000 (Sat, 22 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - actually fix the issue where the close button became obscured and unclickable
+------------------------------------------------------------------------
+r289 | ckknight | 2007-09-22 00:00:08 +0000 (Sat, 22 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 add a possible fix for stratas not coming back correctly.
+------------------------------------------------------------------------
+r288 | ckknight | 2007-09-21 23:45:12 +0000 (Fri, 21 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - some texture positioning adjustments for choiceTextures.
+------------------------------------------------------------------------
+r287 | ckknight | 2007-09-21 23:40:18 +0000 (Fri, 21 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - show choiceTexture on the main pane as well, not just on the pullout..
+- optimization for choice* if get returns false or nil.
+------------------------------------------------------------------------
+r286 | ckknight | 2007-09-21 23:23:49 +0000 (Fri, 21 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-65
+- add type = 'choices', choiceTextures = {}
+------------------------------------------------------------------------
+r285 | ckknight | 2007-09-21 23:09:08 +0000 (Fri, 21 Sep 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-20
+- allow scrolling of pullout menus
+- save scroll position and restore it if something changes.
+------------------------------------------------------------------------
+r284 | ckknight | 2007-09-21 22:08:40 +0000 (Fri, 21 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-64
+- properly recognize validate = "keybinding".
+------------------------------------------------------------------------
+r283 | ckknight | 2007-09-21 21:58:00 +0000 (Fri, 21 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-60
+- if the mouse is off the frame, then make everything's strata "BACKGROUND". When put back on, go back to "FULLSCREEN_DIALOG". This makes it so things that are underneath properly show.
+------------------------------------------------------------------------
+r282 | ckknight | 2007-09-21 21:45:27 +0000 (Fri, 21 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix issue where CowTip/TinyTip wouldn't position the tooltip.
+------------------------------------------------------------------------
+r281 | ckknight | 2007-09-21 21:34:40 +0000 (Fri, 21 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-59
+- add ability to change the fadein/fadeout alphas.
+------------------------------------------------------------------------
+r280 | ckknight | 2007-09-21 18:05:10 +0000 (Fri, 21 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix a config message.
+------------------------------------------------------------------------
+r279 | ckknight | 2007-09-21 02:27:24 +0000 (Fri, 21 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - when checking third-party addons for config, check to see if they are subgroups of other config tables.
+------------------------------------------------------------------------
+r278 | sayclub | 2007-09-21 01:39:33 +0000 (Fri, 21 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+- koKR typo fix
+------------------------------------------------------------------------
+r277 | ckknight | 2007-09-21 01:05:47 +0000 (Fri, 21 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix with sliders trying to get data that doesn't exist.
+------------------------------------------------------------------------
+r276 | ckknight | 2007-09-21 00:43:15 +0000 (Fri, 21 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - disabled and hidden can now not necessarily return booleans.
+------------------------------------------------------------------------
+r275 | ckknight | 2007-09-20 21:43:06 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - allow type = 'string' to accept a number.
+------------------------------------------------------------------------
+r274 | ckknight | 2007-09-20 21:04:21 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix issue where validate would be called if it was a function.
+------------------------------------------------------------------------
+r273 | pb_ee1 | 2007-09-20 11:19:11 +0000 (Thu, 20 Sep 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0:
+- Adding tsvn:logtemplate.
+- frFR localization of SHOW_MINIMAP_ICON, SHOW_MINIMAP_ICON_DESC, SCALE, SCALE_DESC.
+------------------------------------------------------------------------
+r272 | ckknight | 2007-09-20 06:51:03 +0000 (Thu, 20 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make the inline groups spaced out slightly more
+- make the top horizontal line for inline groups go to the right of the label text.
+------------------------------------------------------------------------
+r271 | ckknight | 2007-09-20 06:25:42 +0000 (Thu, 20 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - PB-54
+- save the state on hide and restore the state if /rock is called or the minimap button is pressed.
+------------------------------------------------------------------------
+r270 | ckknight | 2007-09-20 06:03:47 +0000 (Thu, 20 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - PB-54
+- if your mouse isn't hovered over the config frame, it drops down to 25% alpha, allowing you to see what's under it.
+------------------------------------------------------------------------
+r269 | ckknight | 2007-09-20 05:09:30 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix scaling bug
+------------------------------------------------------------------------
+r268 | ckknight | 2007-09-20 05:06:10 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix
+------------------------------------------------------------------------
+r267 | ckknight | 2007-09-20 04:45:18 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - big optimization: if you change a setting on one addon, it will only refresh that one addon's tree, not every addon anymore.
+------------------------------------------------------------------------
+r266 | sayclub | 2007-09-20 03:36:08 +0000 (Thu, 20 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: 
+- Updated localization koKR
+------------------------------------------------------------------------
+r265 | ckknight | 2007-09-20 03:34:44 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add a possible fix for duplicate addons showing.
+------------------------------------------------------------------------
+r264 | ckknight | 2007-09-20 03:31:17 +0000 (Thu, 20 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add the ability to scale the frame.
+- also save position.
+------------------------------------------------------------------------
+r263 | ckknight | 2007-09-20 01:28:55 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - now properly show if UIParent is hidden.
+------------------------------------------------------------------------
+r262 | ckknight | 2007-09-20 01:17:48 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make sure to only gleam options where the option table has type = 'group'.
+------------------------------------------------------------------------
+r261 | ckknight | 2007-09-20 01:16:45 +0000 (Thu, 20 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - check to see if subgroups are hidden before showing the +/- expand dealy.
+------------------------------------------------------------------------
+r260 | sayclub | 2007-09-20 00:54:45 +0000 (Thu, 20 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: 
+- Updated localization koKR
+------------------------------------------------------------------------
+r259 | ckknight | 2007-09-20 00:41:23 +0000 (Thu, 20 Sep 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - now if any field is prefixed with "gui", e.g. name => guiName, it will be looked at.
+- add better support for AceOptions.
+- add a system to check AceConsole for config tables (like Niagara).
+------------------------------------------------------------------------
+r258 | ckknight | 2007-09-19 23:41:07 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - don't unexpand unnecessarily.
+------------------------------------------------------------------------
+r257 | ckknight | 2007-09-19 22:35:05 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - move a line around, preventing an error.
+------------------------------------------------------------------------
+r256 | ckknight | 2007-09-19 22:29:47 +0000 (Wed, 19 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add support for AceOptions passing groups.
+- theoretically, it should support all of the AceOptions spec now.
+------------------------------------------------------------------------
+r255 | ckknight | 2007-09-19 18:42:14 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add some hacks to minimally support the old AceOptions format. note: doesn't support passing groups.
+------------------------------------------------------------------------
+r254 | xionglingfeng | 2007-09-19 18:15:11 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - Add Chinese Simplify translation.
+------------------------------------------------------------------------
+r253 | ckknight | 2007-09-19 17:49:14 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - adjusting settings on the right no longer resets the scroll on the left.
+------------------------------------------------------------------------
+r252 | ckknight | 2007-09-19 06:50:24 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix
+------------------------------------------------------------------------
+r251 | ckknight | 2007-09-19 06:46:50 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - align labels to the left. We'll see how people react to it.
+------------------------------------------------------------------------
+r250 | ckknight | 2007-09-19 06:39:58 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - save state of the pullout, so that if a refresh happens, properly open it again.
+------------------------------------------------------------------------
+r249 | ckknight | 2007-09-19 03:54:29 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - upon opening the trees of an addon, close the trees of all other addons.
+------------------------------------------------------------------------
+r248 | ckknight | 2007-09-19 03:41:29 +0000 (Wed, 19 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - automatically expand the left tree when a line is clicked (not just the +/- button)
+------------------------------------------------------------------------
+r247 | ckknight | 2007-09-18 06:09:49 +0000 (Tue, 18 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix nasty bug where nil was passed instead of false. (like farts - silent but deadly)
+------------------------------------------------------------------------
+r246 | ckknight | 2007-09-18 06:00:50 +0000 (Tue, 18 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - using massive hax, make a little texture thing in the bottom-right to show that it can be dragged.
+------------------------------------------------------------------------
+r245 | ckknight | 2007-09-18 03:15:47 +0000 (Tue, 18 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make error messages more descriptive.
+------------------------------------------------------------------------
+r244 | ckknight | 2007-09-18 02:46:08 +0000 (Tue, 18 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - commas are the devil's playthings.
+------------------------------------------------------------------------
+r243 | ckknight | 2007-09-18 02:36:57 +0000 (Tue, 18 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - allow `1` to be an acceptable boolean value.
+- have a standard config group, which allows the user to show/hide the minimap button. Other core Rock libraries can add their own options to it as well.
+------------------------------------------------------------------------
+r242 | ckknight | 2007-09-17 21:14:09 +0000 (Mon, 17 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - fix an impossible bug
+------------------------------------------------------------------------
+r241 | ckknight | 2007-09-17 20:22:47 +0000 (Mon, 17 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make the frame slightly smaller, because people are whiny.
+- note, dammit, learn to drag the damn edge.
+------------------------------------------------------------------------
+r240 | sayclub | 2007-09-17 11:07:21 +0000 (Mon, 17 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: 
+- Updated localization koKR
+------------------------------------------------------------------------
+r239 | pb_ee1 | 2007-09-17 08:41:04 +0000 (Mon, 17 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: Adding frFR translation for USAGE_COLON.
+------------------------------------------------------------------------
+r238 | ckknight | 2007-09-17 06:33:17 +0000 (Mon, 17 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - size the config window based on screen size instead of an arbitrary number.
+------------------------------------------------------------------------
+r237 | ckknight | 2007-09-17 05:51:27 +0000 (Mon, 17 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make the minimap button work properly if the minimap is scaled (which you can do with simpleMinimap). Also clamp it to the screen.
+------------------------------------------------------------------------
+r236 | ckknight | 2007-09-16 19:49:50 +0000 (Sun, 16 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-17
+- make minimap button in the top-left instead of the far-right
+------------------------------------------------------------------------
+r235 | ckknight | 2007-09-16 19:43:18 +0000 (Sun, 16 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-17
+- add a simple minimap button.
+------------------------------------------------------------------------
+r234 | ckknight | 2007-09-16 18:41:54 +0000 (Sun, 16 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-14
+- allow dragging of items and spells onto editboxes.
+------------------------------------------------------------------------
+r233 | ckknight | 2007-09-16 18:08:56 +0000 (Sun, 16 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make inline groups look a bit nicer
+------------------------------------------------------------------------
+r232 | ckknight | 2007-09-16 17:50:19 +0000 (Sun, 16 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make inline groups look a lot nicer.
+------------------------------------------------------------------------
+r231 | ckknight | 2007-09-16 00:28:50 +0000 (Sun, 16 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-6
+- type = 'group', groupType = 'inline' now shows groups inline with the rest of the controls instead of on the left.
+------------------------------------------------------------------------
+r230 | ckknight | 2007-09-15 06:08:15 +0000 (Sat, 15 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-13
+- fix issue where confirmText didn't gray out when the control is disabled.
+------------------------------------------------------------------------
+r229 | ckknight | 2007-09-15 06:00:43 +0000 (Sat, 15 Sep 2007) | 5 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-12
+- add support for half-toggles.
+- if a type = 'boolean' returns "HALF", it'll show up grayed-out.
+- if a type = 'multichoice' returns "HALF", it'll show up grayed out.
+
+------------------------------------------------------------------------
+r228 | ckknight | 2007-09-15 05:32:24 +0000 (Sat, 15 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-9
+- adjust scroll bar in tree view when lines are expanded and contracted, making the overall position stay the same but the scroll bar itself change position.
+------------------------------------------------------------------------
+r227 | ckknight | 2007-09-15 05:19:13 +0000 (Sat, 15 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-8
+- be sure to show alpha sliders after hiding them
+------------------------------------------------------------------------
+r226 | ckknight | 2007-09-15 05:09:33 +0000 (Sat, 15 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-5
+- make type = 'string' require a usage field.
+------------------------------------------------------------------------
+r225 | ckknight | 2007-09-15 02:26:37 +0000 (Sat, 15 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - ROCK-2
+- add :SetConfigSlashCommand(...)
+------------------------------------------------------------------------
+r224 | ckknight | 2007-09-15 01:34:01 +0000 (Sat, 15 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make :RefreshConfigMenu work and update lazily.
+------------------------------------------------------------------------
+r223 | ckknight | 2007-09-15 00:27:43 +0000 (Sat, 15 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - make child_passValue and similar situations work properly. (zomg, this makes things freaky simple).
+------------------------------------------------------------------------
+r222 | ckknight | 2007-09-14 02:53:36 +0000 (Fri, 14 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - raise the config frame to FULLSCREEN_DIALOG instead of DIALOG
+------------------------------------------------------------------------
+r221 | ckknight | 2007-09-12 20:21:04 +0000 (Wed, 12 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add arguments to :OpenConfigMenu, which open to a specific spot.
+------------------------------------------------------------------------
+r220 | pb_ee1 | 2007-09-05 10:05:35 +0000 (Wed, 05 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0: Adding frFR translation for KEYBINDING_COLON & ROCK_CONFIGURATION.
+------------------------------------------------------------------------
+r219 | ckknight | 2007-09-05 07:04:26 +0000 (Wed, 05 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add in a hack to not error on type = 'header'
+- this might be added later in a different form.
+------------------------------------------------------------------------
+r218 | ckknight | 2007-09-05 06:36:29 +0000 (Wed, 05 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - bugfix to allow tables without extraArgs to show
+------------------------------------------------------------------------
+r217 | ckknight | 2007-09-05 06:21:51 +0000 (Wed, 05 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - add in some checks in case a treeLine crashes and burns.
+- args can now be a function properly, though more testing needs to be done.
+------------------------------------------------------------------------
+r216 | ckknight | 2007-09-04 01:27:40 +0000 (Tue, 04 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - now the main window shows up as "Rock Configuration".
+- moved translations to the top, so translators will have easy access.
+------------------------------------------------------------------------
+r215 | ckknight | 2007-09-04 01:02:19 +0000 (Tue, 04 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+LibRockConfig-1.0 - when accepting an icon that starts with Interface\Icons\, trim the edges.
+------------------------------------------------------------------------
+r214 | ckknight | 2007-09-03 03:50:22 +0000 (Mon, 03 Sep 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+.LibRock*-1.0 - remove stray "" at the end of lua files. (Thank you, Windows).
+LibRock-1.0 - make !BugGrabber and !Swatter optional deps, so they load before.
+------------------------------------------------------------------------
+r213 | ckknight | 2007-09-02 19:45:48 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/lib.xml
+
+.LibRock*-1.0 - fix lib.xml
+------------------------------------------------------------------------
+r212 | ckknight | 2007-09-02 09:30:05 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/trunk/LibRockConfig-1.0/LibRockConfig-1.0.lua
+
+.LibRock*-1.0 - touching files so the wiki will update
+------------------------------------------------------------------------
+r204 | ckknight | 2007-09-02 06:38:42 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   D /tmp/branches/Joker/ckknight/LibRockConfig-1.0
+   A /tmp/trunk/LibRockConfig-1.0 (from /tmp/branches/Joker/ckknight/LibRockConfig-1.0:203)
+
+LibRockConfig-1.0 - moving to trunk
+------------------------------------------------------------------------
+r201 | ckknight | 2007-09-02 06:13:23 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibRock-1.0/LibRock-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRock-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibRockComm-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibRockConfig-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibRockConsole-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibRockDB-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibRockEvent-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibRockHook-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibRockLocale-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/lib.xml
+   M /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibRockTimer-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0/lib.xml
+
+Rock - add lib.xml to all libraries.
+------------------------------------------------------------------------
+r200 | ckknight | 2007-09-02 05:55:01 +0000 (Sun, 02 Sep 2007) | 1 line
+Changed paths:
+   D /tmp/branches/Joker/ckknight/JokerTest
+   D /tmp/branches/Joker/ckknight/LibJoker-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerComm-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerConfig-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerConsole-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerDB-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerEvent-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerHook-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerLocale-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0
+   D /tmp/branches/Joker/ckknight/LibJokerTimer-1.0
+   A /tmp/branches/Joker/ckknight/LibRock-1.0 (from /tmp/branches/Joker/ckknight/LibJoker-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRock-1.0/LibJoker-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRock-1.0/LibJoker-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRock-1.0/LibRock-1.0.lua (from /tmp/branches/Joker/ckknight/LibJoker-1.0/LibJoker-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRock-1.0/LibRock-1.0.toc (from /tmp/branches/Joker/ckknight/LibJoker-1.0/LibJoker-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0 (from /tmp/branches/Joker/ckknight/LibJokerComm-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibJokerComm-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibJokerComm-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibRockComm-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerComm-1.0/LibJokerComm-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockComm-1.0/LibRockComm-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerComm-1.0/LibJokerComm-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0 (from /tmp/branches/Joker/ckknight/LibJokerConfig-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibJokerConfig-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibJokerConfig-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibRockConfig-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockConfig-1.0/LibRockConfig-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0 (from /tmp/branches/Joker/ckknight/LibJokerConsole-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibJokerConsole-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibJokerConsole-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibRockConsole-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerConsole-1.0/LibJokerConsole-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockConsole-1.0/LibRockConsole-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerConsole-1.0/LibJokerConsole-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0 (from /tmp/branches/Joker/ckknight/LibJokerDB-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibJokerDB-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibJokerDB-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibRockDB-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerDB-1.0/LibJokerDB-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockDB-1.0/LibRockDB-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerDB-1.0/LibJokerDB-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0 (from /tmp/branches/Joker/ckknight/LibJokerEvent-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibJokerEvent-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibJokerEvent-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibRockEvent-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerEvent-1.0/LibJokerEvent-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockEvent-1.0/LibRockEvent-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerEvent-1.0/LibJokerEvent-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0 (from /tmp/branches/Joker/ckknight/LibJokerHook-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibJokerHook-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibJokerHook-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibRockHook-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerHook-1.0/LibJokerHook-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockHook-1.0/LibRockHook-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerHook-1.0/LibJokerHook-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0 (from /tmp/branches/Joker/ckknight/LibJokerLocale-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibJokerLocale-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibJokerLocale-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibRockLocale-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockLocale-1.0/LibRockLocale-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerLocale-1.0/LibJokerLocale-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0 (from /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibJokerModuleCore-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibJokerModuleCore-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibRockModuleCore-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0/LibJokerModuleCore-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockModuleCore-1.0/LibRockModuleCore-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerModuleCore-1.0/LibJokerModuleCore-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0 (from /tmp/branches/Joker/ckknight/LibJokerTimer-1.0:197)
+   D /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibJokerTimer-1.0.lua
+   D /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibJokerTimer-1.0.toc
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibRockTimer-1.0.lua (from /tmp/branches/Joker/ckknight/LibJokerTimer-1.0/LibJokerTimer-1.0.lua:199)
+   A /tmp/branches/Joker/ckknight/LibRockTimer-1.0/LibRockTimer-1.0.toc (from /tmp/branches/Joker/ckknight/LibJokerTimer-1.0/LibJokerTimer-1.0.toc:197)
+   A /tmp/branches/Joker/ckknight/RockTest (from /tmp/branches/Joker/ckknight/JokerTest:197)
+   D /tmp/branches/Joker/ckknight/RockTest/JokerTest.lua
+   D /tmp/branches/Joker/ckknight/RockTest/JokerTest.toc
+   A /tmp/branches/Joker/ckknight/RockTest/RockTest.lua (from /tmp/branches/Joker/ckknight/JokerTest/JokerTest.lua:197)
+   A /tmp/branches/Joker/ckknight/RockTest/RockTest.toc (from /tmp/branches/Joker/ckknight/JokerTest/JokerTest.toc:197)
+
+Joker - rename to Rock. Will be moving to trunk soon.
+------------------------------------------------------------------------
+r193 | ckknight | 2007-08-30 03:55:37 +0000 (Thu, 30 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add "Keybinding: " to the start of keybindings, so things are more obvious.
+------------------------------------------------------------------------
+r191 | ckknight | 2007-08-30 03:48:31 +0000 (Thu, 30 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add keybinding support.
+------------------------------------------------------------------------
+r190 | ckknight | 2007-08-28 04:56:55 +0000 (Tue, 28 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add choiceFonts, which is very useful to have for a list of fonts, and coincidentally works with LibSharedMedia:HashTable('font').
+------------------------------------------------------------------------
+r189 | ckknight | 2007-08-28 04:27:39 +0000 (Tue, 28 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add choiceIcons, allowing you to specify per-choice icons that'll show in the dropdown next to each choice.
+------------------------------------------------------------------------
+r188 | ckknight | 2007-08-28 03:57:35 +0000 (Tue, 28 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add icon and iconSize support.
+------------------------------------------------------------------------
+r187 | ckknight | 2007-08-28 03:40:10 +0000 (Tue, 28 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - renaming of internal functions for consistency's sake.
+------------------------------------------------------------------------
+r186 | ckknight | 2007-08-28 01:48:42 +0000 (Tue, 28 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - move the edit box for the slider to the right instead of underneath. This should make things a bit easier as far as being able to click on it properly.
+- also fix a bug with dropdown tooltips.
+------------------------------------------------------------------------
+r184 | ckknight | 2007-08-28 01:09:52 +0000 (Tue, 28 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - for the dropdown pullout buttons, show a tooltip.
+- add support for choiceDescs (like validateDesc in AceOptions).
+------------------------------------------------------------------------
+r181 | ckknight | 2007-08-26 05:44:35 +0000 (Sun, 26 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add a check to whether the method exists in the validation.
+------------------------------------------------------------------------
+r179 | ckknight | 2007-08-26 03:26:06 +0000 (Sun, 26 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add preliminary config table validation. Only checks if contracts are enabled.
+- due to the way lua's garbage collection works, if contracts aren't enabled, all the validation functions et al are destroyed, saving memory :-)
+------------------------------------------------------------------------
+r175 | ckknight | 2007-08-25 06:12:31 +0000 (Sat, 25 Aug 2007) | 3 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - fix bug with tree view being moved around and not repositioned.
+- fix bug with scroll bar and tree view
+- add /Joker (also /JokerConfig) slash command, which opens the generic config menu.
+------------------------------------------------------------------------
+r172 | ckknight | 2007-08-24 02:18:50 +0000 (Fri, 24 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add contracts.
+------------------------------------------------------------------------
+r170 | ckknight | 2007-08-23 20:30:52 +0000 (Thu, 23 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - reposition after 1 frame has passed, thus fixing all the scroll bar issues, since the height of everything isn't known until said frame has passed.
+------------------------------------------------------------------------
+r166 | ckknight | 2007-08-22 02:41:58 +0000 (Wed, 22 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - If any function or method returns "@dict", "@list", or "@set", followed by a tuple, it will automatically turn the tuple into the proper table type (a dict, list, or set), which will later be automatically recycled.
+- this hasn't been implemented for .args yet, but works for any other field.
+------------------------------------------------------------------------
+r164 | ckknight | 2007-08-21 23:10:14 +0000 (Tue, 21 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add mechanism for Joker's addon system and any mixins to provide options to objects with :GetEmbedJokerConfigOptions(addon)
+------------------------------------------------------------------------
+r162 | ckknight | 2007-08-21 19:01:16 +0000 (Tue, 21 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - now if a table is registered that has extraArgs specified alongwith args, it will be used, but only on the base level. This is where mixins should register their options, so extraArgs = { profile = {} } and the like.
+------------------------------------------------------------------------
+r160 | ckknight | 2007-08-21 04:32:04 +0000 (Tue, 21 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add choiceType for the type = 'choice'
+------------------------------------------------------------------------
+r156 | ckknight | 2007-08-20 21:26:53 +0000 (Mon, 20 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - make getConfigTable return all the tables leading up to it, as a tuple.
+- make checking for the parent's child_type a lot easier and more streamlined.
+------------------------------------------------------------------------
+r151 | ckknight | 2007-08-20 05:10:06 +0000 (Mon, 20 Aug 2007) | 3 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - cache globals
+- fix bug with dropdowns.
+- add documentation on icons (not implemented, though)
+------------------------------------------------------------------------
+r149 | ckknight | 2007-08-20 04:27:43 +0000 (Mon, 20 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add validate capabilities.
+- shows a warning sign next to the edit box, on tooltip hover it says the proper error in red, and prevents enter from being pressed.
+------------------------------------------------------------------------
+r148 | ckknight | 2007-08-20 02:58:34 +0000 (Mon, 20 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - fix some bugs with scrolling
+- bugfix with the default slider positions for hsl
+------------------------------------------------------------------------
+r146 | ckknight | 2007-08-20 02:30:14 +0000 (Mon, 20 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add confirmText for the execute type. With it, the button is grayed out, a checkbox appears near it with the text from confirmText. When the checkbox is clicked, the real button becomes enabled.
+------------------------------------------------------------------------
+r145 | ckknight | 2007-08-20 02:03:43 +0000 (Mon, 20 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - use HSL instead of HSV.
+------------------------------------------------------------------------
+r144 | ckknight | 2007-08-20 01:24:44 +0000 (Mon, 20 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - make scrolling work properly.
+------------------------------------------------------------------------
+r142 | ckknight | 2007-08-19 23:38:29 +0000 (Sun, 19 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - instead of execute's button text being the same as .name, instead use .buttonText.
+------------------------------------------------------------------------
+r141 | ckknight | 2007-08-19 23:23:17 +0000 (Sun, 19 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add a note and documentation about strings needing to be validated.
+------------------------------------------------------------------------
+r140 | ckknight | 2007-08-19 23:13:11 +0000 (Sun, 19 Aug 2007) | 4 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add more checks
+- when refreshing, refresh the tree view as well as the main pane.
+- implement checking of .disabled and .hidden
+
+------------------------------------------------------------------------
+r139 | ckknight | 2007-08-19 21:11:20 +0000 (Sun, 19 Aug 2007) | 2 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - make enabling and disabling controls still show the tooltip, and turn the tooltip gray in the process.
+- this is also done for the tree, which will also collapse if it is disabled.
+------------------------------------------------------------------------
+r138 | ckknight | 2007-08-19 19:43:36 +0000 (Sun, 19 Aug 2007) | 5 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add support for negated methods, i.e. "~IsEnabled" works as function() return self:IsEnabled() end.
+- if no handler is given, then it is implicitly the addon which registered the config table.
+- clean up getPassValues
+- add unit test to check for basic things
+- bugfix with :SetConfigTable
+------------------------------------------------------------------------
+r137 | ckknight | 2007-08-19 18:45:19 +0000 (Sun, 19 Aug 2007) | 1 line
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add the spec to the top of the file, which should match the wiki
+------------------------------------------------------------------------
+r135 | ckknight | 2007-08-17 10:07:42 +0000 (Fri, 17 Aug 2007) | 3 lines
+Changed paths:
+   M /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+
+LibJokerConfig-1.0 - add documentation and comments to function.
+- spec is still not properly documented.
+- rename :AddConfigTable => :SetConfigTable
+------------------------------------------------------------------------
+r133 | ckknight | 2007-08-17 08:31:28 +0000 (Fri, 17 Aug 2007) | 3 lines
+Changed paths:
+   A /tmp/branches/Joker/ckknight/LibJokerConfig-1.0
+   A /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.lua
+   A /tmp/branches/Joker/ckknight/LibJokerConfig-1.0/LibJokerConfig-1.0.toc
+
+LibJokerConfig-1.0 - initial commit, it's neither commented nor documented, nor is the spec it uses documented, that'll come later.
+- this commit is mostly to get _something_ on the SVN.
+- this is missing inline groups, tabs, and keybindings, as well as quite a few other important data features, but has the general controls in it.
+------------------------------------------------------------------------
