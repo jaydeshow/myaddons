@@ -1,0 +1,1091 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+  <Script file="comix_options.lua"/>
+  
+    <Button name="Comix_OptionButton" inherits="MainMenuBarMicroButton" text="DIALOG" parent="GameMenuFrame" toplevel="true">
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT" relativeTo="GameMenuFrame" relativePoint="BOTTOMLEFT">
+        <Offset>
+          <AbsDimension x="3" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnLoad>
+this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				this:RegisterEvent("UPDATE_BINDINGS");
+				this:SetNormalTexture("Interface\\Buttons\\UI-MicroButton-LFG-Up.blp");
+				this:SetPushedTexture("Interface\\Buttons\\UI-MicroButton-LFG-Down.blp");
+				this:SetDisabledTexture("Interface\\Buttons\\UI-MicroButton-LFG-Disabled.blp");
+				this:SetHighlightTexture("Interface\\Buttons\\UI-MicroButton-Hilight");
+			</OnLoad>
+      <OnClick>
+				PlaySound("igMainMenuOption");
+				HideUIPanel(GameMenuFrame);
+				ShowUIPanel(comix_options_frame);
+			</OnClick>
+		<OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_TOPRIGHT");
+GameTooltip:SetText("COMIX设置界面", nil, nil, nil, nil, 1);			
+		</OnEnter>
+    </Scripts>
+  </Button>
+  	<FontString name="ComixFont" outline="THIN" font="Interface\Addons\Comix\Fonts\comix.ttf" virtual="true">
+		<Shadow>
+			<Offset>
+				<AbsDimension x="1" y="-1"/>
+			</Offset>
+			<Color r="0" g="0" b="0"/>
+		</Shadow>
+		<FontHeight>
+			<AbsValue val="12"/>
+		</FontHeight>
+		<Color r="1.0" g="0.82" b="0.0"/>
+	</FontString>  
+	
+  
+	<CheckButton name="comix_tmplt_chkbttn" inherits="OptionsCheckButtonTemplate" virtual="true">
+    <Scripts>
+	     <OnEnter>
+			if this.ttext then
+				GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+				GameTooltip:SetText(this.ttext, nil, nil, nil, nil, 1);
+			end
+    </OnEnter>
+    <OnLeave>
+        GameTooltip:Hide();
+    </OnLeave>
+    </Scripts>
+	</CheckButton>
+	<Button name="comix_btnz" inherits="OptionsButtonTemplate" virtual="true">
+		<Scripts>
+			<OnEnter>
+				if this.ttext then
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+					GameTooltip:SetText(this.ttext, nil, nil, nil, nil, 1);
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+	<Slider name="comix_sliderz" inherits="OptionsSliderTemplate" virtual="true">
+		<Scripts>
+			<OnEnter>
+				if this.ttext then
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+					GameTooltip:SetText(this.ttext, nil, nil, nil, nil, 1);
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+  </Slider>
+  <Frame name="comix_options_frame" hidden="false" movable="true">
+     <Size><AbsDimension x="310" y="400"/></Size>
+      <Anchors>
+        <Anchor point="Center"/>
+      </Anchors>
+  	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" 
+		edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+		<BackgroundInsets>
+			<AbsInset left="11" right="12" top="12" bottom="11"/>
+		</BackgroundInsets>
+		<TileSize><AbsValue val="32"/></TileSize>
+		<EdgeSize><AbsValue val="32"/></EdgeSize>
+	 </Backdrop>
+	 <Layers>
+		<Layer level="ARTWORK">
+			<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+				<Size><AbsDimension x="256" y="64"/></Size>
+				<Anchors>
+					<Anchor point="TOP">
+					<Offset><AbsDimension x="0" y="12"/></Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString inherits="ComixFont" text="Comix Options">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent"><Offset><AbsDimension x="0" y="-3"/></Offset></Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+    <Scripts>
+      <OnShow>
+        comix_options_cancel_function();
+      </OnShow>
+      <OnLoad>
+		if ( GetLocale() == "zhCN" ) then
+	          comix_options_enable.ttext="关闭或打开整个Comix面板"
+	          comix_options_enable_sound.ttext="开启或关闭所有的声音效果"
+	          comix_options_enable_images.ttext="开启或关闭所有的动画效果"
+			  comix_options_enable_critsounds.ttext="启动爆击时的特殊声音效果"
+			  comix_options_enable_critflash.ttext="当你被爆击时屏幕闪红光！"
+			  comix_options_enable_critheals.ttext="启动治疗爆击时的特殊声音"
+			  comix_options_enable_healflash.ttext="被极效治疗后屏幕闪绿光!"
+			  comix_options_enable_demoshout.ttext="挫志怒吼/挫志咆哮的特殊画面效果，觉得不好就关掉吧……"
+			  comix_options_enable_demoshoutsound.ttext="关掉的话挫志怒吼/挫志咆哮就没特殊音效了哦"
+			comix_options_enable_battleshout.ttext="基本上和挫志怒吼/挫志咆哮一样酷的特殊画面效果，但这个是设置战斗怒吼的"
+			  comix_options_enable_battleshoutsound.ttext="关掉的话战斗怒吼就没特殊声音效果了"
+			  comix_options_enable_bouncesound.ttext="点*这里*关掉那个烦人的跳跃声音……"
+			  comix_options_enable_abilitysound.ttext="使用特殊技能／效果时发出声音，如冰箱，疾跑等"
+			  comix_options_enable_ressound.ttext="复活的时候喊: Extra Liiiiife!!!!"
+			  comix_options_enable_readysound.ttext="团长发出就位确认时播放音效"
+			  comix_options_enable_onlyskill.ttext="关闭此选项则近身平砍(白字伤害)爆击时不发出特效"
+			  comix_options_enable_killemote.ttext="是否在击杀后发出表情"
+	          comix_options_enable_zoning.ttext="打开/关闭切换地图时的特殊音效"
+	          comix_options_enable_killcount.ttext="从虚幻竞技场偷来的杀人音效  (- -b)"
+	          comix_options_enable_deathsound.ttext="挂的时候说“衰人！”"
+	          comix_options_enable_specials.ttext="各种特殊情况下发声，如目标为松饼人等等"
+	          comix_options_enable_bam.ttext="这是把所有声音换成'BAM'"
+	          comix_options_enable_nightfall.ttext="有一个武器叫“夜幕”，启动这个的话，应该会有一些“效果”"
+	          comix_options_enable_nightfallautotarget.ttext="自动选取身上有夜幕特效的目标"
+	          comix_options_enable_finishenabled.ttext="对低生命目标提示“干掉他！”"
+	          comix_options_enable_shakes.ttext="爆击后出现LaVendetta风格的屏幕震动"
+	          comix_options_enable_critgap.ttext="将爆击效果替换为一击效果"
+	          comix_options_scale_slider.ttext="调节图片的大小"
+	          comix_options_critpercent_slider.ttext="爆击后出现效果的几率"
+	          comix_options_finishgap_slider.ttext="调节出现“干掉他！”的目标剩余HP比例"
+	          comix_options_anispeed_slider.ttext="调节动画效果出现的速度"
+	          comix_options_maxcrit_slider.ttext="调节判断“绝妙爆击”所需的连续爆击数量"
+	          Comix_AdvancedButton.ttext="比你想象的选项更多……"
+	          comix_options_ok_button.ttext="点这里保存选项"
+	          comix_options_cancel_button.ttext="我饿了，快点让我离开！"
+	          comix_options_create.ttext="音效测试"
+	          comix_options_pic.ttext="显示一个示例图片特效"
+	          comix_options_reporthug.ttext="在聊天频道报告你拥抱的次数（已和谐）"
+	          comix_options_showhug.ttext="显示拥抱次数"
+	          comix_options_clearhug.ttext="清除统计"
+			  comix_options_reportjump.ttext="在聊天频道报告你跳跃的次数"
+	          comix_options_showjump.ttext="显示跳跃次数"
+	          comix_options_clearjump.ttext="清除统计"
+
+		elseif ( GetLocale() == "zhTW" ) then
+		      comix_options_enable.ttext="關閉或打開整個Comix面板"
+	          comix_options_enable_sound.ttext="沒有什麼東西比這些聲音更贊，打開牠吧！"
+	          comix_options_enable_images.ttext="不想要那些圖像？關掉……"
+			  comix_options_enable_critsounds.ttext="啟動致命一擊的特殊聲音效果"
+			  comix_options_enable_critflash.ttext="當你被致命一擊的時屏幕閃紅光！"
+			  comix_options_enable_critheals.ttext="啟動治療的特殊聲音"
+			  comix_options_enable_healflash.ttext="被極效治療後屏幕闪绿光!"
+			  comix_options_enable_demoshout.ttext="挫銳怒吼/吼叫的特殊畫面效果，覺得不好就關掉吧……"
+			  comix_options_enable_demoshoutsound.ttext="關掉的話挫銳怒吼/吼叫就沒特殊音效了哦"
+			comix_options_enable_battleshout.ttext="基本上和挫銳怒吼/吼叫一樣酷的特殊畫面效果，但這個是設置戰鬥怒吼的"
+			  comix_options_enable_battleshoutsound.ttext="關掉的話戰鬥怒吼就沒特殊聲音效果了哦"
+			  comix_options_enable_bouncesound.ttext="點*這裏*關掉那個煩人的跳躍聲音……"
+			  comix_options_enable_abilitysound.ttext="使用特殊技能／效果時發出聲音，如冰箱，疾跑等"
+			  comix_options_enable_ressound.ttext="復活的時候喊: Extra Liiiiife!!!!"
+			  comix_options_enable_readysound.ttext="團長發出就位確認時播放音效"
+			  comix_options_enable_onlyskill.ttext="關閉此選項則平砍(白字傷害)爆擊時不發出特效"
+			  comix_options_enable_killemote.ttext="是否在擊殺後發出表情"
+	          comix_options_enable_zoning.ttext="打開/關閉切換地圖時的特殊音效"
+	          comix_options_enable_killcount.ttext="從虛幻競技場偷來的殺人音效  (- -b)"
+	          comix_options_enable_deathsound.ttext="官方發音：“衰人！”"
+	          comix_options_enable_specials.ttext="各種特殊情況下發聲，如目標爲松餅人時，被復活時等等"
+	          comix_options_enable_bam.ttext="這是把所有聲音換成'BAM'"
+	          comix_options_enable_nightfall.ttext="有一個武器叫“夜幕”，啟動這個的話，應該會有一些“效果”"
+	          comix_options_enable_nightfallautotarget.ttext="自動選取身上有夜幕特效的目標"
+	          comix_options_enable_finishenabled.ttext="對低生命目標提示“干掉他！”"
+	          comix_options_enable_shakes.ttext="致命一擊後出現LaVendetta風格的螢幕震動"
+	          comix_options_enable_critgap.ttext="將暴擊效果替換爲一擊效果"
+	          comix_options_scale_slider.ttext="調節圖片的大小"
+	          comix_options_critpercent_slider.ttext="致命一擊後出現效果的幾率"
+	          comix_options_finishgap_slider.ttext="調節出現“干掉他！”的目標剩餘HP比例"
+	          comix_options_anispeed_slider.ttext="調節動畫效果出現的速度"
+	          comix_options_maxcrit_slider.ttext="調節判斷“絕妙致命一擊”所需的連續致命一擊數量"
+	          Comix_AdvancedButton.ttext="比你想像的選項更多……"
+	          comix_options_ok_button.ttext="點這裏保存選項"
+	          comix_options_cancel_button.ttext="我餓了，快點讓我離開！"
+	          comix_options_create.ttext="音效測試"
+	          comix_options_pic.ttext="顯示一個示例圖片特效"
+	          comix_options_reporthug.ttext="在聊天頻道報告你擁抱的次數（已和諧）"
+	          comix_options_showhug.ttext="顯示擁抱次數"
+	          comix_options_clearhug.ttext="清除統計"
+			  comix_options_reportjump.ttext="在聊天頻道報告你跳躍的次數"
+	          comix_options_showjump.ttext="顯示跳躍次數"
+	          comix_options_clearjump.ttext="清除統計"
+		else
+		          comix_options_enable.ttext="This thing is capable of disabling the addon (and enabling!!)"
+          comix_options_enable_sound.ttext="There is nothing better than sound, always leave this enabled !"
+          comix_options_enable_images.ttext="You don't like images ? Disable them here."
+		  comix_options_enable_critsounds.ttext="Toggle the Crit sounds for damage"
+		  comix_options_enable_critflash.ttext="Super fancy flashes when you crit or are crit by something"
+		  comix_options_enable_critheals.ttext="Toggle the heal sounds"
+		  comix_options_enable_healflash.ttext="Kind of like the crit flash except replace the word crit with heal"
+		  comix_options_enable_demoshout.ttext="Fun stuff for Demoralizing Shout/Roar can be disabled if annoying"
+		  comix_options_enable_demoshoutsound.ttext="Disable the Demo Shout sound, has no effect if Demo Shout is off"
+          comix_options_enable_battleshout.ttext="Almost as cool as Demoralizing Shout, only for battles."
+		  comix_options_enable_battleshoutsound.ttext="Disable the Battle Shout sound, has no effect if Battle Shout is off"
+		  comix_options_enable_bouncesound.ttext="Disable the annoying boing sound for jumping by unchecking this here box"
+		  comix_options_enable_abilitysound.ttext="This option controls the ability sounds, why would you want to turn them off?"
+		  comix_options_enable_ressound.ttext="Extra Liiiiife!!!!"
+		  comix_options_enable_readysound.ttext="Are you ready?  yes/no"
+          comix_options_enable_zoning.ttext="Yes, there is a sound for zone changes, toggle it on/off with this."
+          comix_options_enable_killcount.ttext="Killcounter stuff stolen from UT"
+          comix_options_enable_deathsound.ttext="This Turns on the Death Sounds and Images, makes dying much more demoralizing, but funny at the same time"
+          comix_options_enable_specials.ttext="Not even i know what this is, ask Zabuza (says Florix).. he says: 'various things'"
+          comix_options_enable_bam.ttext="Genau wie damals, als ich deine Freunde fertiggemacht habe. (Replace all sounds with 'BAM')"
+          comix_options_enable_nightfall.ttext="There is a weapon called 'Nightfall'. If it procs, this thing does 'stuff'"
+          comix_options_enable_nightfallautotarget.ttext="Someone has a nightfall proc and you want his target ? enable this !"
+          comix_options_enable_finishenabled.ttext="'Finish Him'-Sound for low-Health foes."
+          comix_options_enable_shakes.ttext="LaVendetta-style screen shakes on melee crits (big fun!)."
+          comix_options_enable_critgap.ttext="Only want fun at really impressive crits ? try this."
+          comix_options_scale_slider.ttext="Adjust the size of the images."
+          comix_options_critpercent_slider.ttext="Percentage of Crits that are actually shown."
+          comix_options_finishgap_slider.ttext="Adjust the maximum life percentage of your enemy until 'Finish him' rings your ears."
+          comix_options_anispeed_slider.ttext="Turn the speed of the animations up, or down"
+          comix_options_maxcrit_slider.ttext="the amount of crits needed for an Impressive"
+          Comix_AdvancedButton.ttext="There are more options than you might think."
+          comix_options_ok_button.ttext="Save the changes you may have made."
+          comix_options_cancel_button.ttext="Save nothing, get free food."
+          comix_options_create.ttext="This Button is stupid"
+          comix_options_pic.ttext="View a pic to check some changes you made (only some, i won't say which)"
+          comix_options_reporthug.ttext="Annoy people around you with strange statistics"
+          comix_options_showhug.ttext="Annoy only yourself."
+          comix_options_clearhug.ttext="Clear annoying statistics"
+		  comix_options_reportjump.ttext="Annoy people around you with strange statistics"
+          comix_options_showjump.ttext="Annoy only yourself."
+          comix_options_clearjump.ttext="Clear annoying statistics"
+		  comix_options_enable_onlyskill.ttext="turn off this to forbid swing(white number) crit effects"
+		  comix_options_enable_killemote.ttext="Send emote when killed enemy with combo"
+		end
+         int2bool = function(intval) if intval then return true else return false end end
+         comix_options_cancel_function = function ()
+          comix_options_temp_scale=Comix_Max_Scale;
+          comix_options_temp_speed=ComixAniSpeed;
+          comix_options_enable:SetChecked(Comix_AddOnEnabled);
+          comix_options_enable_sound:SetChecked(Comix_SoundEnabled);
+		  comix_options_enable_critsounds:SetChecked(Comix_CritSoundsEnabled);
+		  comix_options_enable_critflash:SetChecked(Comix_CritFlashEnabled);
+		  comix_options_enable_critheals:SetChecked(Comix_CritHealsEnabled);
+		  comix_options_enable_healflash:SetChecked(Comix_HealFlashEnabled);
+          comix_options_enable_demoshout:SetChecked(Comix_DemoShoutEnabled);
+		  comix_options_enable_demoshoutsound:SetChecked(Comix_DSSounds);
+          comix_options_enable_battleshout:SetChecked(Comix_BSEnabled);
+		  comix_options_enable_battleshoutsound:SetChecked(Comix_BSSounds);
+		  comix_options_enable_bouncesound:SetChecked(Comix_BounceSoundEnabled);
+		  comix_options_enable_abilitysound:SetChecked(Comix_AbilitySoundsEnabled);
+          comix_options_enable_zoning:SetChecked(Comix_ZoneEnabled);
+          comix_options_enable_killcount:SetChecked(Comix_KillCountEnabled);
+          comix_options_enable_deathsound:SetChecked(Comix_DeathSoundEnabled);
+          comix_options_scale_slider:SetValue(comix_options_temp_scale);
+          comix_options_anispeed_slider:SetValue(comix_options_temp_speed);
+          comix_options_maxcrit_slider:SetValue(ComixMaxCrits);
+          comix_options_critpercent_slider:SetValue(Comix_CritPercent);
+          comix_options_finishgap_slider:SetValue(Comix_FinishHimGap);
+          comix_options_enable_specials:SetChecked(Comix_SpecialsEnabled);
+          comix_options_enable_bam:SetChecked(Comix_BamEnabled);
+          comix_options_enable_images:SetChecked(Comix_ImagesEnabled);
+          comix_options_enable_nightfall:SetChecked(Comix_NightfallEnabled);
+          comix_options_enable_nightfallautotarget:SetChecked(Comix_NightfallAutoTarget);
+          comix_options_enable_finishenabled:SetChecked(Comix_FinishhimEnabled);
+          comix_options_enable_shakes:SetChecked(Comix_ShakeEnabled);
+          comix_options_enable_critgap:SetChecked(Comix_CritGapEnabled);
+		  comix_options_enable_ressound:SetChecked(Comix_ResSoundEnabled);
+		  comix_options_enable_readysound:SetChecked(Comix_ReadySoundEnabled);
+		  comix_options_enable_onlyskill:SetChecked(Comix_SwingCritSilent);
+		  comix_options_enable_killemote:SetChecked(Comix_KillEmoteEnabled);
+          comix_options_critgap:SetText(Comix_CritGap);
+         end
+         this:RegisterForDrag("LeftButton");
+         comix_advanced_options_frame:RegisterForDrag("LeftButton");
+         comix_options_frame:Hide(); 
+		if ( GetLocale() == "zhCN" ) then
+	         comix_options_enableText:SetText("打开Comix");
+			 comix_options_enable_soundText:SetText("打开声音效果");
+			 comix_options_enable_critsoundsText:SetText("打开爆击声音");
+			 comix_options_enable_critflashText:SetText("打开爆击闪屏");
+			 comix_options_enable_crithealsText:SetText("打开治疗爆击声音");
+			 comix_options_enable_healflashText:SetText("打开治疗爆击闪屏");
+	         comix_options_enable_battleshoutText:SetText("打开战斗怒吼动画");
+	         comix_options_enable_demoshoutText:SetText("打开挫志怒吼动画");
+			 comix_options_enable_battleshoutsoundText:SetText("打开战斗怒吼声音");
+			 comix_options_enable_demoshoutsoundText:SetText("打开挫志怒吼声音");
+			 comix_options_enable_bouncesoundText:SetText("打开跳跃声音");
+			 comix_options_enable_abilitysoundText:SetText("打开技能声音");
+			 comix_options_enable_ressoundText:SetText("打开复活音效");
+			 comix_options_enable_readysoundText:SetText("打开准备音效");
+			 comix_options_enable_onlyskillText:SetText("平砍特效开关");
+			 comix_options_enable_killemoteText:SetText("打开击杀表情");
+	         comix_options_enable_zoningText:SetText("打开区域声音");
+	         comix_options_enable_deathsoundText:SetText("打开死亡声音");
+	         comix_options_enable_killcountText:SetText("打开击杀计数");
+	         comix_options_enable_specialsText:SetText("打开特殊效果");
+	         comix_options_enable_bamText:SetText("打开Bam");
+	         comix_options_enable_imagesText:SetText("打开图片效果");
+	         comix_options_enable_nightfallText:SetText("打开夜幕效果");
+	         comix_options_enable_nightfallautotargetText:SetText("自动选取夜幕的目标");
+	         comix_options_enable_finishenabledText:SetText("打开“干掉他！”");
+	         comix_options_enable_shakesText:SetText("打开屏幕震动");
+			 comix_options_enable_critgapText:SetText("打开一击效果");
+
+		 elseif ( GetLocale() == "zhTW" ) then
+			 comix_options_enableText:SetText("打開Comix");
+			 comix_options_enable_soundText:SetText("打開聲音效果");
+			 comix_options_enable_critsoundsText:SetText("打開致命一擊聲音");
+			 comix_options_enable_critflashText:SetText("打開致命一擊閃屏");
+			 comix_options_enable_crithealsText:SetText("打開治療聲音");
+			 comix_options_enable_healflashText:SetText("打開治療閃屏");
+	         comix_options_enable_battleshoutText:SetText("打開戰鬥怒吼動畫");
+	         comix_options_enable_demoshoutText:SetText("打開挫銳吼動畫");
+			 comix_options_enable_battleshoutsoundText:SetText("打開戰鬥怒吼聲音");
+			 comix_options_enable_demoshoutsoundText:SetText("打開挫銳吼聲音");
+			 comix_options_enable_bouncesoundText:SetText("打開跳躍聲音");
+			 comix_options_enable_abilitysoundText:SetText("打開技能聲音");
+			 comix_options_enable_ressoundText:SetText("打開復活音效");
+			 comix_options_enable_readysoundText:SetText("打開準備音效");
+			 comix_options_enable_onlyskillText:SetText("平砍特效開關");
+	         comix_options_enable_zoningText:SetText("打開區域聲音");
+	         comix_options_enable_deathsoundText:SetText("打開死亡聲音");
+	         comix_options_enable_killcountText:SetText("打開擊殺計數");
+	         comix_options_enable_specialsText:SetText("打開特殊效果");
+	         comix_options_enable_bamText:SetText("打開Bam");
+	         comix_options_enable_imagesText:SetText("打開圖片效果");
+	         comix_options_enable_nightfallText:SetText("打開夜幕效果");
+	         comix_options_enable_nightfallautotargetText:SetText("自動選取夜幕的目標");
+	         comix_options_enable_finishenabledText:SetText("打開“乾掉他！”");
+	         comix_options_enable_shakesText:SetText("打開螢幕震動");
+			 comix_options_enable_critgapText:SetText("打開絕妙致命一擊");
+			 comix_options_enable_killemoteText:SetText("打開擊殺表情");
+			else
+			 comix_options_enableText:SetText("Enable Comix");
+		 comix_options_enable_soundText:SetText("Enable Sound");
+		 comix_options_enable_critsoundsText:SetText("Enable Crit Sounds");
+		 comix_options_enable_critflashText:SetText("Enable Crit Flash");
+		 comix_options_enable_crithealsText:SetText("Enable Heal Sounds");
+		 comix_options_enable_healflashText:SetText("Enable Heal Flash");
+         comix_options_enable_battleshoutText:SetText("Enable Battle Shout");
+         comix_options_enable_demoshoutText:SetText("Enable Demo Shout/Roar");
+		 comix_options_enable_battleshoutsoundText:SetText("Enable Battle Shout Sound");
+		 comix_options_enable_demoshoutsoundText:SetText("Enable Demo Shout Sound");
+		 comix_options_enable_bouncesoundText:SetText("Enable Boing Sound");
+		 comix_options_enable_abilitysoundText:SetText("Enable Ability Sounds");
+		 comix_options_enable_ressoundText:SetText("Enable Res Sounds");
+		 comix_options_enable_readysoundText:SetText("Enable Ready Check Sounds");
+         comix_options_enable_zoningText:SetText("Enable Zoning");
+         comix_options_enable_deathsoundText:SetText("Enable Death Sounds/Images");
+         comix_options_enable_killcountText:SetText("Enable KillCount");
+         comix_options_enable_specialsText:SetText("Enable Specials");
+         comix_options_enable_bamText:SetText("Enable Bam");
+         comix_options_enable_imagesText:SetText("Enable Images");
+         comix_options_enable_nightfallText:SetText("Enable Nightfall");
+         comix_options_enable_nightfallautotargetText:SetText("Autotarget for Nightfall");
+         comix_options_enable_finishenabledText:SetText("Enable 'Finish Him'");
+         comix_options_enable_shakesText:SetText("Enable screen shakes");comix_options_enable_critgapText:SetText("Enable Crit Gap");
+		 comix_options_enable_onlyskillText:SetText("Enable Swing Crit Effects");
+		 comix_options_enable_killemoteText:SetText("Enable Finish Combo Emote");
+		 end
+         comix_advanced_options_frame:Hide();
+      </OnLoad>
+      <OnDragStart>
+       this:StartMoving();
+       this.isMoving = true;
+      </OnDragStart>
+      <OnDragStop>
+       this:StopMovingOrSizing();
+       this.isMoving = false;
+      </OnDragStop>
+    </Scripts>
+    <Frames>  
+      <CheckButton name="comix_options_enable" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT">
+			     <Offset>
+				    <AbsDimension x="20" y="-40"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+      <CheckButton name="comix_options_enable_sound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+        <CheckButton name="comix_options_enable_images" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_sound">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>         
+      
+      
+      <Slider name="comix_options_scale_slider" inherits="comix_sliderz" minValue="1.5" maxValue="3" defaultValue="2" valueStep="0.1">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_images">
+			     <Offset>
+				    <AbsDimension x="130" y="-40"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>      
+	       <Scripts>
+	         <OnValueChanged>
+	          getglobal("comix_options_scale_sliderText"):SetText(math.floor((this:GetValue()+0.05)*10)/10);
+	          Comix_Max_Scale=comix_options_scale_slider:GetValue();
+	         </OnValueChanged>
+	       </Scripts>
+	       <Layers>
+	         <Layer level="OVERLAY">
+       			<FontString inherits="GameFontNormal" text="COMIX_SCALE_TEXT">
+    				<Anchors>
+		    			<Anchor point="TOPLEFT" relativeTo="$parent">
+                <Offset>
+                  <AbsDimension x="-120" />
+                </Offset>
+              </Anchor>
+				    </Anchors>
+			     </FontString>
+	         </Layer>
+	       </Layers>
+      </Slider>
+      <Slider name="comix_options_anispeed_slider" inherits="comix_sliderz" minValue="1" maxValue="3" defaultValue="1" valueStep="0.1">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_scale_slider">
+			     <Offset>
+				    <AbsDimension y="-30"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>      
+	       <Scripts>
+	         <OnValueChanged>
+	          getglobal("comix_options_anispeed_sliderText"):SetText(math.floor((this:GetValue()+0.05)*10)/10);
+	          ComixAniSpeed=comix_options_anispeed_slider:GetValue();
+	         </OnValueChanged>
+	       </Scripts>
+	       <Layers>
+	         <Layer level="OVERLAY">
+       			<FontString inherits="GameFontNormal" text="COMIX_ANISPEED_TEXT">
+    				<Anchors>
+		    			<Anchor point="TOPLEFT" relativeTo="$parent">
+                <Offset>
+                  <AbsDimension x="-120" />
+                </Offset>
+              </Anchor>
+				    </Anchors>
+			     </FontString>
+	         </Layer>
+	       </Layers>
+      </Slider>
+      <Slider name="comix_options_maxcrit_slider" inherits="comix_sliderz" minValue="1" maxValue="10" defaultValue="3" valueStep="1">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_anispeed_slider">
+			     <Offset>
+				    <AbsDimension y="-30"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>      
+	       <Scripts>
+	         <OnValueChanged>
+	          getglobal("comix_options_maxcrit_sliderText"):SetText(math.floor((this:GetValue()+0.05)*10)/10);
+	          
+	         </OnValueChanged>
+	       </Scripts>
+	       <Layers>
+	         <Layer level="OVERLAY">
+       			<FontString inherits="GameFontNormal" text="COMIX_MAXCRIT_TEXT">
+    				<Anchors>
+		    			<Anchor point="TOPLEFT" relativeTo="$parent">
+                <Offset>
+                  <AbsDimension x="-120" />
+                </Offset>
+              </Anchor>
+				    </Anchors>
+			     </FontString>
+	         </Layer>
+	       </Layers>
+      </Slider>
+      <Slider name="comix_options_critpercent_slider" inherits="comix_sliderz" minValue="1" maxValue="100" defaultValue="100" valueStep="1">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_maxcrit_slider">
+			     <Offset>
+				    <AbsDimension y="-30"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>      
+	       <Scripts>
+	         <OnValueChanged>
+	          getglobal("comix_options_critpercent_sliderText"):SetText(this:GetValue());
+	         </OnValueChanged>
+	       </Scripts>
+	       <Layers>
+	         <Layer level="OVERLAY">
+       			<FontString inherits="GameFontNormal" text="COMIX_CRIOPERCENT_TEXT">
+    				<Anchors>
+		    			<Anchor point="TOPLEFT" relativeTo="$parent">
+                <Offset>
+                  <AbsDimension x="-120" />
+                </Offset>
+              </Anchor>
+				    </Anchors>
+			     </FontString>
+	         </Layer>
+	       </Layers>
+      </Slider>
+      <Slider name="comix_options_finishgap_slider" inherits="comix_sliderz" minValue="1" maxValue="50" defaultValue="20" valueStep="1">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_critpercent_slider">
+			     <Offset>
+				    <AbsDimension y="-30"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>      
+	       <Scripts>
+	         <OnValueChanged>
+	          getglobal("comix_options_finishgap_sliderText"):SetText(math.floor((this:GetValue()+0.05)*10)/10);
+	         </OnValueChanged>
+	       </Scripts>
+	       <Layers>
+	         <Layer level="OVERLAY">
+       			<FontString inherits="GameFontNormal" text="COMIX_FINISHGAP_TEXT">
+    				<Anchors>
+		    			<Anchor point="TOPLEFT" relativeTo="$parent">
+                <Offset>
+                  <AbsDimension x="-120" />
+                </Offset>
+              </Anchor>
+				    </Anchors>
+			     </FontString>
+	         </Layer>
+	       </Layers>
+      </Slider>      
+      
+      
+      
+      
+      
+      
+      <Button name="comix_options_reporthug" inherits="comix_btnz" text="COMIX_REPORTHUG_TEXT"> 
+        <Anchors>
+          <Anchor point="BOTTOMLEFT">
+            <OFFSET>
+              <AbsDimension x="20" y="60" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("reporthug");
+          </OnClick>
+        </Scripts>
+      </Button>      
+       <Button name="comix_options_showhug" inherits="comix_btnz" text="COMIX_SHOWHUG_TEXT"> 
+        <Anchors>
+          <Anchor point="CENTER">
+            <OFFSET>
+              <AbsDimension y="-130" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("showhug");
+          </OnClick>
+        </Scripts>
+      </Button>      
+      <Button name="comix_options_clearhug" inherits="comix_btnz" text="COMIX_CLEARHUG_TEXT"> 
+        <Anchors>
+          <Anchor point="BOTTOMRIGHT">
+            <OFFSET>
+              <AbsDimension x="-20" y="60" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("clearhug");
+          </OnClick>
+        </Scripts>
+      </Button>
+
+
+
+      <Button name="comix_options_reportjump" inherits="comix_btnz" text="COMIX_REPORTJUMP_TEXT"> 
+        <Anchors>
+          <Anchor point="BOTTOMLEFT">
+            <OFFSET>
+              <AbsDimension x="20" y="90" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("reportjump");
+          </OnClick>
+        </Scripts>
+      </Button>      
+       <Button name="comix_options_showjump" inherits="comix_btnz" text="COMIX_SHOWJUMP_TEXT"> 
+        <Anchors>
+          <Anchor point="CENTER">
+            <OFFSET>
+              <AbsDimension y="-100" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("showjump");
+          </OnClick>
+        </Scripts>
+      </Button>      
+      <Button name="comix_options_clearjump" inherits="comix_btnz" text="COMIX_CLEARJUMP_TEXT"> 
+        <Anchors>
+          <Anchor point="BOTTOMRIGHT">
+            <OFFSET>
+              <AbsDimension x="-20" y="90" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("clearjump");
+          </OnClick>
+        </Scripts>
+      </Button>      
+      
+      
+      
+      <Button name="comix_options_create" inherits="comix_btnz" text="COMIX_CREATE_TEXT"> 
+        <Anchors>
+          <Anchor point="TOPRIGHT">
+            <OFFSET>
+              <AbsDimension x="-20" y="-40" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("create");
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="comix_options_pic" inherits="comix_btnz" text="COMIX_PIC_TEXT"> 
+        <Anchors>
+          <Anchor point="TOPRIGHT">
+            <OFFSET>
+              <AbsDimension x="-20" y="-65" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            Comix_Command("pic");
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="Comix_AdvancedButton" inherits="comix_btnz" text="COMIX_MORE_TEXT"> 
+        <Anchors>
+          <Anchor point="TOPRIGHT">
+            <OFFSET>
+              <AbsDimension x="-20" y="-90" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            if (this:GetText()==COMIX_MORE_TEXT) then comix_advanced_options_frame:Show() this:SetText(COMIX_LESS_TEXT) else comix_advanced_options_frame:Hide() this:SetText(COMIX_MORE_TEXT) end
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="comix_options_cancel_button" inherits="comix_btnz" text="COMIX_CANCEL_TEXT">
+        <Anchors>
+          <Anchor point="BOTTOMRIGHT">
+            <OFFSET>
+              <AbsDimension x="-20" y="20" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            comix_options_cancel_function()
+            comix_options_frame:Hide();
+          </OnClick>
+        </Scripts>
+      </Button>
+      <Button name="comix_options_ok_button" inherits="comix_btnz" text="COMIX_OK_TEXT">
+        <Anchors>
+          <Anchor point="BOTTOMLEFT">
+            <OFFSET>
+              <AbsDimension x="20" y="20" />
+            </OFFSET>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+			Comix_CritSoundsEnabled=int2bool(comix_options_enable_critsounds:GetChecked());
+			Comix_CritFlashEnabled=int2bool(comix_options_enable_critflash:GetChecked());
+			Comix_CritHealsEnabled=int2bool(comix_options_enable_critheals:GetChecked());
+			Comix_HealFlashEnabled=int2bool(comix_options_enable_healflash:GetChecked());
+          	Comix_ShakeEnabled=int2bool(comix_options_enable_shakes:GetChecked());
+            Comix_CritGapEnabled=int2bool(comix_options_enable_critgap:GetChecked());
+            Comix_NightfallEnabled=int2bool(comix_options_enable_nightfall:GetChecked());
+            Comix_NightfallAutoTarget=int2bool(comix_options_enable_nightfallautotarget:GetChecked());
+            Comix_FinishhimEnabled=int2bool(comix_options_enable_finishenabled:GetChecked());
+            Comix_SpecialsEnabled=int2bool(comix_options_enable_specials:GetChecked());
+            Comix_BamEnabled=int2bool(comix_options_enable_bam:GetChecked());
+            Comix_ImagesEnabled=int2bool(comix_options_enable_images:GetChecked());
+            Comix_KillCountEnabled=int2bool(comix_options_enable_killcount:GetChecked());
+            Comix_DeathSoundEnabled=int2bool(comix_options_enable_deathsound:GetChecked());
+            Comix_AddOnEnabled=int2bool(comix_options_enable:GetChecked());
+            Comix_SoundEnabled=int2bool(comix_options_enable_sound:GetChecked());
+            Comix_DemoShoutEnabled=int2bool(comix_options_enable_demoshout:GetChecked());
+			Comix_DSSounds=int2bool(comix_options_enable_demoshoutsound:GetChecked());
+            Comix_BSEnabled=int2bool(comix_options_enable_battleshout:GetChecked());
+			Comix_BSSounds=int2bool(comix_options_enable_battleshoutsound:GetChecked());
+			Comix_ReadySoundEnabled=int2bool(comix_options_enable_readysound:GetChecked());
+			Comix_SwingCritSilent=int2bool(comix_options_enable_onlyskill:GetChecked());
+			Comix_KillEmoteEnabled=int2bool(comix_options_enable_killemote:GetChecked());
+			Comix_BounceSoundEnabled=int2bool(comix_options_enable_bouncesound:GetChecked());
+			Comix_AbilitySoundsEnabled=int2bool(comix_options_enable_abilitysound:GetChecked());
+			Comix_ResSoundEnabled=int2bool(comix_options_enable_ressound:GetChecked());
+            Comix_ZoneEnabled=int2bool(comix_options_enable_zoning:GetChecked());
+            Comix_Max_Scale=comix_options_scale_slider:GetValue();
+            ComixMaxCrits=comix_options_maxcrit_slider:GetValue();
+            ComixAniSpeed=comix_options_anispeed_slider:GetValue();
+            if tonumber(comix_options_critgap:GetText()) then Comix_CritGap=tonumber(comix_options_critgap:GetText()) end
+            Comix_FinishHimGap=comix_options_finishgap_slider:GetValue();
+            Comix_CritPercent=comix_options_critpercent_slider:GetValue();
+           comix_options_frame:Hide();
+          </OnClick>
+        </Scripts>
+      </Button>
+   <Frame name="comix_advanced_options_frame" hidden="false" movable="true">
+     <Size><AbsDimension x="420" y="400"/></Size>
+      <Anchors>
+        <Anchor point="Center">
+        			     <Offset>
+				    <AbsDimension x="350"></AbsDimension>
+			     </Offset>
+        </Anchor>
+      </Anchors>
+  	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" 
+		 tile="true">
+		<BackgroundInsets>
+			<AbsInset left="11" right="12" top="12" bottom="11"/>
+		</BackgroundInsets>
+		<TileSize><AbsValue val="32"/></TileSize>
+		<EdgeSize><AbsValue val="32"/></EdgeSize>
+	 </Backdrop>
+	 <Layers>
+		<Layer level="OVERLAY">
+			<FontString inherits="ComixFont" text="高級">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent"></Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+		
+	</Layers>
+	<Frames>
+	<CheckButton name="comix_options_enable_critsounds" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT">
+			     <Offset>
+				    <AbsDimension x="30" y="-10"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_critheals" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_critsounds">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+       <CheckButton name="comix_options_enable_demoshout" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_critheals">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+      <CheckButton name="comix_options_enable_battleshout" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_demoshout">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  	  
+      <CheckButton name="comix_options_enable_zoning" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_battleshout">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>   
+      <CheckButton name="comix_options_enable_deathsound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_zoning">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>   
+      <CheckButton name="comix_options_enable_killcount" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_deathsound">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>  	
+       <CheckButton name="comix_options_enable_specials" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_killcount">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>        
+      <CheckButton name="comix_options_enable_bam" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_specials">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+      <CheckButton name="comix_options_enable_nightfall" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_bam">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+      <CheckButton name="comix_options_enable_nightfallautotarget" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_nightfall">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+      <CheckButton name="comix_options_enable_finishenabled" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_nightfallautotarget">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+      <CheckButton name="comix_options_enable_shakes" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_finishenabled">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>      
+      <CheckButton name="comix_options_enable_critgap" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_shakes">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_critflash" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="RIGHT" relativeto="comix_options_enable_critsounds">
+			     <Offset>
+				    <AbsDimension x="200" y="0"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_healflash" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="RIGHT" relativeto="comix_options_enable_critheals">
+			     <Offset>
+				    <AbsDimension x="200" y="0"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_battleshoutsound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="RIGHT" relativeto="comix_options_enable_battleshout">
+			     <Offset>
+				    <AbsDimension x="200" y="0"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_demoshoutsound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="RIGHT" relativeto="comix_options_enable_demoshout">
+			     <Offset>
+				    <AbsDimension x="200" y="0"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  
+	  <CheckButton name="comix_options_enable_bouncesound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_battleshoutsound">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  
+	  <CheckButton name="comix_options_enable_abilitysound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_bouncesound">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  	  <CheckButton name="comix_options_enable_ressound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_abilitysound">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_readysound" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_ressound">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_onlyskill" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_readysound">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+	  <CheckButton name="comix_options_enable_killemote" inherits="comix_tmplt_chkbttn" checked="true">
+      	<Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_onlyskill">
+			     <Offset>
+				    <AbsDimension x="0" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	       </Anchors>
+      </CheckButton>
+      <EditBox name="comix_options_critgap" letters="4">
+        <Size>
+      		<AbsDimension x="40" y="32"></AbsDimension>
+	      </Size>
+	      <Anchors>
+		      <Anchor point="TOPLEFT" relativeto="comix_options_enable_critgap">
+			     <Offset>
+				    <AbsDimension x="80" y="-25"></AbsDimension>
+			     </Offset>
+		      </Anchor>
+	      </Anchors>
+	      <Layers>
+	      	  <Layer level="OVERLAY">
+       			<FontString inherits="GameFontNormalSmall" text="COMIX_CRITGAP_TEXT">
+    				<Anchors>
+		    			<Anchor point="TOPLEFT" relativeTo="$parent">
+                <Offset>
+                  <AbsDimension x="-80" y="-10"/>
+                </Offset>
+              </Anchor>
+				    </Anchors>
+			     </FontString>
+	         </Layer>
+		      <Layer level="BACKGROUND">
+			      <Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+				      <Size>
+      					<AbsDimension x="30" y="32"></AbsDimension>
+      				</Size>
+			<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="-10" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+				<Size>
+					<AbsDimension x="30" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+		</Layer>
+	</Layers>
+	<FontString inherits="ChatFontNormal"></FontString>
+	    <Scripts>
+      <OnEnter>
+          GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
+		  if ( GetLocale() == "zhCN" ) then
+				  GameTooltip:SetText("爆击伤害下限(例如设为100则伤害低于100的爆击不会发出特效)", nil, nil, nil, nil, 1);
+			elseif ( GetLocale() == "zhTW" ) then
+				GameTooltip:SetText("致命一擊下限(例如設爲100則傷害低於100的致命一擊不會發出特效)", nil, nil, nil, nil, 1);
+			else
+			GameTooltip:SetText("The value a crit has to have at minimum to be important for your e-peen)", nil, nil, nil, nil, 1);
+			end
+      </OnEnter>
+      <OnLeave>
+        GameTooltip:Hide();
+      </OnLeave>
+    </Scripts>
+      </EditBox>
+	</Frames>
+	<Scripts>
+	      <OnDragStart>
+       comix_options_frame:StartMoving();
+       comix_options_frame.isMoving = true;
+      </OnDragStart>
+      <OnDragStop>
+       comix_options_frame:StopMovingOrSizing();
+       comix_options_frame.isMoving = false;
+      </OnDragStop>
+	</Scripts>
+	</Frame>
+    </Frames>
+  </Frame>
+</Ui>

@@ -1,10 +1,7 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
   <!--Script file="Localization.lua"/-->
   <Script file="BaudBag.lua"/>
-  <Script file="JLib.lua"/>
-  <Script file="Stackpack.lua"/>
-  <Script file="JPack.lua"/>
-  <Script file="JPackConfig.lua"/>
+  <Script file="BaudBag_JPack.lua"/>
 
   <Frame name="BaudBagContainerDropDown" inherits="UIDropDownMenuTemplate" id="1" hidden="true">
     <Scripts>
@@ -79,7 +76,7 @@
         </Anchors>
         <Scripts>
           <OnClick>
-            pack();
+            BaudBag_JPack_Click();
           </OnClick>
         </Scripts>
       </Button> 

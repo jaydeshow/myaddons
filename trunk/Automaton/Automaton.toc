@@ -1,5 +1,7 @@
 ﻿## Interface: 20400
-## Title: Automaton
+## Title: [|cff32cd32Global|r] Automaton
+## Title-zhCN: [|cff32cd32综合|r] Automaton
+## Title-zhTW: [|cff32cd32綜合|r] Automaton
 ## Notes: Reduces interface tedium by doing the little things for you.
 ## Notes-zhCN: 自动帮你完成一些界面上的操作。
 ## Notes-zhTW: 為您減少些介面的沉悶.
@@ -16,7 +18,7 @@
 ## SavedVariables: AutomatonDB
 
 ## X-Embeds: Ace2, AbacusLib, DewdropLib, FuBarPlugin-2.0
-embeds.xml
+#embeds.xml
 
 Core.lua
 modules\Ding.lua

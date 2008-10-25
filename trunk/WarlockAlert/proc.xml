@@ -1,0 +1,445 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<Script file="WarlockAlert.lua"/>
+
+<Frame name="WaConfigFrameProc" shown="true" parent="WaConfigFrame" toplevel="true" movable="true" frameStrata="DIALOG" enableMouse="true">
+	<Size>
+		<AbsDimension x="384" y="512" />
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT" relativeTo="WaConfigFrameProc" />
+	</Anchors>
+	<Scripts>
+		<OnShow>
+			WaConfigFrameHPMana:Hide(); 
+			PlaySound("igSpellBokPageTurn");
+			WaConfigFrameProc_OnShow();
+		</OnShow>
+	</Scripts>
+			<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="WaConfigFrameIcon" file="Interface\AddOns\WarlockAlert\Texture\ConfigIcon.tga">
+					<Size>
+						<AbsDimension x="64" y="64" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="WaConfigFrame">
+							<Offset>
+								<AbsDimension x="7" y="-7" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="ShadowTrance" inherits="GameFontNormal" text="WARLOCKALERT_PROC_SHADOWTRANCEL">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="-120" y="-90" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="Backlash" inherits="GameFontNormal" text="WARLOCKALERT_PROC_BACKLASHL">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="-120" y="-260" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="NFTextMessage" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="WARLOCKALERT_SETMESSAGE">
+					<FontHeight>
+						<AbsValue val="10"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-132" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="BLSetMessage" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="WARLOCKALERT_SETMESSAGE">
+					<FontHeight>
+						<AbsValue val="10"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-132" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	<Frames>
+<CheckButton name="WaConfigFrameNFFlashCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-15"/></Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_FULL_SCREEN_FLASH);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_NFFlashCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Enable Flash")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="WaConfigFrameNFTextCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-95"/></Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_TEXT_MESSAGE);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_NFTextCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Color Change")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Enable Textmessage")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+		<Slider name="WaConfigFrameTextureNFSlider" inherits="OptionsSliderTemplate">
+			<Size>
+				<AbsDimension x="110" y="16"/>
+			</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="25" y="-50"/></Offset>
+					</Anchor>
+				</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_TEXTURE);
+					getglobal(this:GetName().."High"):SetText("5");
+					getglobal(this:GetName().."Low"):SetText("1");
+					this:SetMinMaxValues(1,5);
+					this:SetValueStep(1);
+				</OnLoad>
+				<OnValueChanged>
+				WaConfigFrameTextureNFSlider_OnValueChanged();  
+				GameTooltip:SetText(WaConfigFrameTextureNFSlider:GetValue())
+				GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+		<Slider name="WaConfigFrameTextureNFSize" inherits="OptionsSliderTemplate">
+			<Size>
+				<AbsDimension x="110" y="16"/>
+			</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="25" y="-75"/></Offset>
+					</Anchor>
+				</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_SIZE);
+					getglobal(this:GetName().."High"):SetText("200%");
+					getglobal(this:GetName().."Low"):SetText("0%");
+					this:SetMinMaxValues(0,2);
+					this:SetValueStep(0.1);
+				</OnLoad>
+				<OnValueChanged>
+				WaConfigFrameTextureNFSize_OnValueChanged();  
+				GameTooltip:SetText(WaConfigFrameTextureNFSize:GetValue())
+				GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+				</OnValueChanged>
+			</Scripts>
+		</Slider>
+			<Button name="WaNFColorChangeButton" inherits="WaConfigFrame">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-25" y="-23"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentSwatchBg">
+							<Size>
+								<AbsDimension x="14" y="14" /> 
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0" /> 
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1.0" g="1.0" b="1.0" /> 
+						</Texture>
+					</Layer>
+				</Layers>
+				<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch"/>
+				<Scripts>
+					<OnEnter>
+						getglobal(this:GetName().."SwatchBg"):SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+					</OnEnter>
+					<OnLeave>
+						getglobal(this:GetName().."SwatchBg"):SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+					</OnLeave>
+					<OnClick>
+						WaNFColorChangeButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="NFMessageEditBox" autoFocus="false" letters="20" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="130" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="95" y="-122"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+					NFMessageEditBox_OnChar()
+					this:ClearFocus()
+					</OnEnterPressed>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"></FontString>
+			</EditBox>
+			<CheckButton name="WaConfigFrameBLFlashCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-15"/></Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_FULL_SCREEN_FLASH);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_BLFlashCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Enable Flash")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="WaConfigFrameBLTextCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-95"/></Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_TEXT_MESSAGE);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_BLTextCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Enable Textmessage")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<Slider name="WaConfigFrameTextureBLSlider" inherits="OptionsSliderTemplate">
+				<Size>
+					<AbsDimension x="110" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="25" y="-50"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+				<OnLoad>
+						getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_TEXTURE);
+						getglobal(this:GetName().."High"):SetText("5");
+						getglobal(this:GetName().."Low"):SetText("1");
+						this:SetMinMaxValues(1,5);
+						this:SetValueStep(1);
+					</OnLoad>
+					<OnValueChanged>
+					WaConfigFrameTextureBLSlider_OnValueChanged();  
+					GameTooltip:SetText(WaConfigFrameTextureBLSlider:GetValue())
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+				</OnValueChanged>
+				</Scripts>
+			</Slider>
+			<Slider name="WaConfigFrameTextureBLSize" inherits="OptionsSliderTemplate">
+				<Size>
+					<AbsDimension x="110" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="25" y="-75"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_SIZE);
+						getglobal(this:GetName().."High"):SetText("200%");
+						getglobal(this:GetName().."Low"):SetText("0%");
+						this:SetMinMaxValues(0,2);
+						this:SetValueStep(0.1);
+					</OnLoad>
+					<OnValueChanged>
+					WaConfigFrameTextureBLSize_OnValueChanged();  
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+					GameTooltip:SetText(WaConfigFrameTextureBLSize:GetValue())
+				</OnValueChanged>
+				</Scripts>
+			</Slider>
+			<Button name="WaBLColorChangeButton" inherits="WaConfigFrame">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-25" y="-23"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentSwatchBg">
+							<Size>
+								<AbsDimension x="14" y="14" /> 
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="0" /> 
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<Color r="1.0" g="1.0" b="1.0" /> 
+						</Texture>
+					</Layer>
+				</Layers>
+				<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch"/>
+				<Scripts>
+					<OnEnter>
+						getglobal(this:GetName().."SwatchBg"):SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+					</OnEnter>
+					<OnLeave>
+						getglobal(this:GetName().."SwatchBg"):SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+					</OnLeave>
+					<OnClick>
+						WaBLColorChangeButton_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="BLMessageEditBox" autoFocus="false" letters="20" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="130" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="95" y="-122"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+					BLMessageEditBox_OnChar()
+					this:ClearFocus()
+					</OnEnterPressed>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"></FontString>
+			</EditBox>
+		<Button name="BLTestButton" shown="true" parent="WaConfigFrameProc">
+			<Size>
+				<AbsDimension x="32" y="32" /> 
+			</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Backlash" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="170" y="-55"/></Offset>
+					</Anchor>
+				</Anchors>
+			<Scripts>
+				<OnClick>
+					BLTest()
+				</OnClick> 
+				<OnEnter>
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+					GameTooltip:SetText("Test Flash 'Start/Stop'")
+				</OnEnter>
+				<OnLeave>
+					GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+			<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up" /> 
+			<HighlightTexture alphaMode="ADD" file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down" /> 
+		</Button>
+		<Button name="NFTestButton" shown="true" parent="WaConfigFrameProc">
+			<Size>
+				<AbsDimension x="32" y="32" /> 
+			</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="ShadowTrance" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="170" y="-55"/></Offset>
+					</Anchor>
+				</Anchors>
+			<Scripts>
+				<OnClick>
+					NFTest()
+				</OnClick> 
+				<OnEnter>
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+					GameTooltip:SetText("Test Flash 'Start/Stop'")
+				</OnEnter>
+				<OnLeave>
+					GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+			<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up" /> 
+			<HighlightTexture alphaMode="ADD" file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down" /> 
+		</Button>
+	</Frames>
+</Frame>
+</Ui>

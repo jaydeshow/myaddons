@@ -7,7 +7,7 @@ Website: http://www.wowace.com/
 -- http://code.google.com/p/autobar/
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 588 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -52,13 +52,14 @@ AutoBarSearch.subZoneGroup[BZ["Furywing's Perch"]] = "BE Plateaus"
 
 -- Recycle lists will avoid garbage collection and memory thrashing but potentially grow over time
 -- A simple 2 list aproach that recycles objects specific to that type of list so the bulk of operations should be only initing recycled objects.
+-- We shall see if this is a good thing
 local Recycle = AceOO.Class()
-Recycle.virtual = true
+Recycle.virtual = true -- this means that it cannot be instantiated. (cannot call :new())
 Recycle.prototype.recycleList = 0
 Recycle.prototype.dataList = 0
 
 function Recycle.prototype:init()
-	Recycle.super.prototype.init(self) -- Mandatory init.
+	Recycle.super.prototype.init(self) -- very important. Will fail without this.
 	self.recycleList = {}
 	self.dataList = {}
 end
@@ -1157,7 +1158,7 @@ function AutoBarSearch:RegisterMacro(macroId, macroIndex, macroName, macroText)
 end
 
 
--- Call once only
+-- Only call this once
 function AutoBarSearch:Initialize()
 --AutoBar:Print("AutoBarSearch:Initialize")
 	AutoBarSearch.space = SearchSpace:new()		-- All items to search for

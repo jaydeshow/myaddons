@@ -10,7 +10,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 588 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 77301 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -79,7 +79,7 @@ end
 
 
 function AutoBar.Class.Bar.prototype:init(barKey)
-	AutoBar.Class.Bar.super.prototype.init(self) -- Mandatory init.
+	AutoBar.Class.Bar.super.prototype.init(self) -- very important. Will fail without this.
 
 	self.barKey = barKey
 	self:UpdateShared()

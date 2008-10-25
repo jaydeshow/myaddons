@@ -1,7 +1,7 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3104 (BillyGoat)
-	Revision: $Id: AucBidManager.lua 2469 2007-11-14 06:08:37Z jslagle $
+	Version: 5.0.PRE.3471 (BillyGoat)
+	Revision: $Id: AucBidManager.lua 3191 2008-06-30 03:50:07Z RockSlice $
 
 	BidManager - manages bid requests in the AH
 
@@ -28,7 +28,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
 
-Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/AucBidManager.lua $", "$Rev: 2469 $")
+Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/AucBidManager.lua $", "$Rev: 3191 $")
 
 -------------------------------------------------------------------------------
 -- Function Imports
@@ -263,6 +263,15 @@ end
 -- Checks if a bid is allowed on the specified auction.
 -------------------------------------------------------------------------------
 function isBidAllowed(listType, index)
+	--If AucAdv bidding, let it through
+	if AucAdvanced then
+		local AAindex = AucAdvanced.Buy.Private.CurAuction["index"]
+		if AAindex and AAindex == index then
+			debugPrint("Letting AucAdv bid go through", "Letting AucAdv bid go through", DebugLib.Level.Info)
+			return true
+		end
+	end
+	
 	-- Must be a valid auction.
 	local auction = Auctioneer.QueryManager.GetAuctionByIndex(listType, index)
 	if (not Auctioneer.QueryManager.IsAuctionValid(auction)) then

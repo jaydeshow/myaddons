@@ -1,6 +1,6 @@
 --[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3104 (BillyGoat)
+	Version: 5.0.PRE.3471 (BillyGoat)
 	Revision: $Id: ListTemplate.lua 1354 2007-01-17 05:27:36Z dinesh $
 
 	List Frame Template

@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 80487 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 425 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-08-15 10:25:35 -0400 (Fri, 15 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-08-15 16:25:35 +0200 (Fri, 15 Aug 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local mod = Parrot:NewModule("CombatEventsData", "LibRockEvent-1.0")

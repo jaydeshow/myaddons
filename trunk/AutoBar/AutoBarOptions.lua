@@ -9,7 +9,7 @@
 -- Custom Category:
 --  AutoBar.db.account.customCategories[customCategoryIndex]
 --	A separate list of Categories that is global to all players
---	Users add custom Categories to list.
+--	Users can add their own custom Categories to this list.
 --	Custom Categories can have specific items and spells dragged into their list.
 --	Custom Categories can also be set to PT3 Sets, one regular Set & one priority Set
 --	A priority Set item has priority over a regular Set item with the same value.
@@ -36,7 +36,7 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 588 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 78817 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -548,10 +548,13 @@ end
 
 
 function AutoBar:OnProfileDisable()
+    -- this is called every time your profile changes (before the change)
+--AutoBar:Print("OnProfileDisable")
 end
 
 
 function AutoBar:OnProfileEnable()
+    -- this is called every time your profile changes (after the change)
 --AutoBar:Print("OnProfileEnable")
 	AutoBar:UpgradeVersion()
 --	AutoBar:PopulateBars(true)

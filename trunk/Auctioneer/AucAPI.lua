@@ -1,6 +1,6 @@
 --[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3104 (BillyGoat)
+	Version: 5.0.PRE.3471 (BillyGoat)
 	Revision: $Id: AucAPI.lua 2502 2007-11-16 01:43:33Z speeddymon $
 
 	Auctioneer data access and management.

@@ -77,7 +77,7 @@
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="1.">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="1.">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
@@ -140,7 +140,7 @@
             </Texture>
           </Layer>
         </Layers>
-        <FontString font="Fonts\ARIALN.TTF">
+        <FontString font="ChatFontNormal">
           <FontHeight>
             <AbsValue val="12" />
           </FontHeight>
@@ -167,7 +167,7 @@
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="SCCN_GUI_HIGHLIGHT1">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="SCCN_GUI_HIGHLIGHT1">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
@@ -304,7 +304,7 @@ SCCNConfigForm:Show();
             </Texture>
           </Layer>
         </Layers>
-        <FontString font="Fonts\ARIALN.TTF">
+        <FontString font="ChatFontNormal">
           <FontHeight>
             <AbsValue val="14" />
           </FontHeight>
@@ -361,7 +361,7 @@ SCCNConfigForm:Show();
             </Texture>
           </Layer>
         </Layers>
-        <FontString font="Fonts\ARIALN.TTF">
+        <FontString font="ChatFontNormal">
           <FontHeight>
             <AbsValue val="14" />
           </FontHeight>
@@ -388,7 +388,7 @@ SCCNConfigForm:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="2.">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="2.">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
@@ -421,7 +421,7 @@ SCCNConfigForm:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="3.">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="3.">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
@@ -503,7 +503,7 @@ SCCNConfigForm:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="SCCN_HELP[15]" justifyV="TOP" justifyH="LEFT">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="SCCN_HELP[15]" justifyV="TOP" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
@@ -585,7 +585,7 @@ SCCNConfigForm:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="SCCN_HELP[11]" justifyV="TOP" justifyH="LEFT">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="SCCN_HELP[11]" justifyV="TOP" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
@@ -618,7 +618,7 @@ SCCNConfigForm:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="SCCN_HELP[17]" justifyV="TOP" justifyH="LEFT">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="SCCN_HELP[17]" justifyV="TOP" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />
@@ -749,7 +749,7 @@ SCCNConfigForm:Show();
         </Anchors>
         <Layers>
           <Layer>
-            <FontString name="$parentLabel" font="GameFontNormalSmall" text="SCCN_HELP[22]" justifyV="TOP" justifyH="LEFT">
+            <FontString name="$parentLabel" font="ChatFontNormal" text="SCCN_HELP[22]" justifyV="TOP" justifyH="LEFT">
               <Anchors>
                 <Anchor point="TOPLEFT" />
                 <Anchor point="BOTTOMRIGHT" />

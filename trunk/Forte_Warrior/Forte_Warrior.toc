@@ -1,8 +1,0 @@
-## Interface: 20400
-## Title: Forte Warrior
-## Notes: Forte Warrior Module
-## SavedVariables:
-## OptionalDeps:Forte_Casting, Forte_Timer, Forte_Cooldown
-## Dependencies:Forte_Core
-Localization.lua
-Forte_Warrior.lua

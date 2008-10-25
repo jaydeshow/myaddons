@@ -137,7 +137,7 @@ SCCNConfigForm:Show();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -465,7 +465,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -505,7 +505,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -545,7 +545,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -585,7 +585,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -625,7 +625,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -665,7 +665,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -705,7 +705,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -745,7 +745,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -785,7 +785,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -854,7 +854,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -894,7 +894,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -934,7 +934,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -974,7 +974,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -1014,7 +1014,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -1054,7 +1054,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -1094,7 +1094,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>
@@ -1134,7 +1134,7 @@ SCCN_Config_OnLoad();
             <AbsValue val="8" />
           </EdgeSize>
         </Backdrop>
-        <FontString font="Fonts\ARIALN.TTF" justifyH="LEFT">
+        <FontString font="ChatFontNormal" justifyH="LEFT">
           <FontHeight>
             <AbsValue val="10" />
           </FontHeight>

@@ -1,8 +1,0 @@
-## Interface: 20400
-## Title: Forte Warlock
-## Notes: Forte Warlock Module
-## SavedVariables:
-## OptionalDeps:Forte_Casting, Forte_Timer, Forte_Cooldown
-## Dependencies:Forte_Core
-Localization.lua
-Forte_Warlock.lua

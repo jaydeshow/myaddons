@@ -4,10 +4,10 @@
 ## Notes-frFR: Addon permettant la manipulation de la carte.
 ## Notes-esES: Accesorio para manipular el mapa
 ## Notes-koKR: 지도에 관련된 여러 기능을 조작하기 위한 애드온입니다.
-## Title: Cartographer
-## Title-ruRU: Картограф
-## Notes-zhTW: 增強地圖的處理功能。
-## Notes-zhCN: 增强地图处理功能。
+## Title: [|cff32cd32Map|r] Cartographer
+## Title-ruRU: [|cff32cd32Map|r] Картограф
+## Notes-zhTW: [|cff32cd32Map|r] 增強地圖的處理功能。
+## Notes-zhCN: [|cff32cd32Map|r] 增强地图处理功能。
 ## Author: ckknight
 ## DefaultState: enabled
 ## LoadOnDemand: 0
@@ -23,7 +23,7 @@
 ## X-IssueTracker: Wowace:10024
 ## Version: 2.0
 
-embeds.xml
+#embeds.xml
 
 Cartographer.lua
 

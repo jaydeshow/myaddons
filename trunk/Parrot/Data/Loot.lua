@@ -1,10 +1,10 @@
-local VERSION = tonumber(("$Revision: 73895 $"):match("%d+"))
+local VERSION = tonumber(("$Revision: 340 $"):match("%d+"))
 
 local Parrot = Parrot
 if Parrot.revision < VERSION then
 	Parrot.version = "r" .. VERSION
 	Parrot.revision = VERSION
-	Parrot.date = ("$Date: 2008-05-14 18:14:30 -0400 (Wed, 14 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
+	Parrot.date = ("$Date: 2008-05-15 00:14:30 +0200 (Thu, 15 May 2008) $"):match("%d%d%d%d%-%d%d%-%d%d")
 end
 
 local L = Rock("LibRockLocale-1.0"):GetTranslationNamespace("Parrot_Loot")

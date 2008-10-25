@@ -25,7 +25,7 @@ local AutoBar = AutoBar
 local spellNameList = AutoBar.spellNameList
 local spellIconList = AutoBar.spellIconList
 
-local REVISION = tonumber(("$Revision: 588 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 78327 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -83,10 +83,10 @@ end
 -- Optional attributes:
 --		targeted, nonCombat, location, battleground, notUsable
 AutoBarCategory = AceOO.Class()
-AutoBarCategory.virtual = true
+AutoBarCategory.virtual = true -- this means that it cannot be instantiated. (cannot call :new())
 
 function AutoBarCategory.prototype:init(description, texture)
-	AutoBarCategory.super.prototype.init(self) -- Mandatory init.
+	AutoBarCategory.super.prototype.init(self) -- very important. Will fail without this.
 	self.categoryKey = description
 
 	self.description = L[description]
@@ -216,7 +216,7 @@ AutoBarItems = AceOO.Class(AutoBarCategory)
 -- ptItems, ptPriorityItems are PeriodicTable sets
 -- priorityItems sort higher than items at the same value
 function AutoBarItems.prototype:init(description, shortTexture, ptItems, ptPriorityItems)
-	AutoBarItems.super.prototype.init(self, description, "Interface\\Icons\\" .. shortTexture) -- Mandatory init.
+	AutoBarItems.super.prototype.init(self, description, "Interface\\Icons\\" .. shortTexture) -- very important. Will fail without this.
 	self.ptItems = ptItems
 	self.ptPriorityItems = ptPriorityItems
 
@@ -297,7 +297,7 @@ AutoBarSpells = AceOO.Class(AutoBarCategory)
 -- Pass in only one of castList, rightClickList
 -- Icon from castList is used unless not available but rightClickList is
 function AutoBarSpells.prototype:init(description, texture, castList, rightClickList)
-	AutoBarSpells.super.prototype.init(self, description, texture) -- Mandatory init.
+	AutoBarSpells.super.prototype.init(self, description, texture) -- very important. Will fail without this.
 	local spellName, index
 --AutoBar:Print("AutoBarSpells.prototype:init " .. description .. " castList " .. tostring(castList))
 
@@ -1542,7 +1542,7 @@ function AutoBarCategory:Initialize2()
 --			"PRIEST", spellNameList["Silence"],
 			})
 
-	-- ToDo: Deprecate in favor of Spell.Debuff.Single
+	-- ToDo: Deprecate this
 	local spellWyvernStingIcon
 	_, _, spellWyvernStingIcon = GetSpellInfo(27068)
 	AutoBarCategoryList["Spell.Sting"] = AutoBarSpells:new(

@@ -22,8 +22,8 @@ if (GetLocale() == "ruRU") then
 		["Align Buttons"] = "Выравнять кнопки",
 		["Always Show"] = "Всегда показывать";
 		["Always Show %s, even if empty."] = "Всегда показывать %s, даже если пустой.";
-		["Always Popup"] = "Всегда всплывать";
-		["Always keep Popups open for %s"] = "Всегда всплывать для %s";
+		["Always Popup"] = "Always Popup";
+		["Always keep Popups open for %s"] = "Always keep Popups open for %s";
 		["Announce to Party"] = "Сообщать в Группу",
 		["Announce to Raid"] = "Сообщать в Рейд",
 		["Announce to Say"] = "Сообщать в \"Сказать\"",
@@ -133,10 +133,10 @@ if (GetLocale() == "ruRU") then
 		["Show Tooltips in Combat"] = "Тултип в Бою";
 		["Shuffle"] = "Смешивать",
 		["Shuffle replaces depleted items during combat with the next best item"] = "Смешивая заменяет исчерпанные предметы во время боя на самые подходящие предметы",
-		["Snap Bars while moving"] = "Захват панелей при движении",
+		["Snap Bars while moving"] = "захват панелей пока двигаются",
 		["Sticky Frames"] = "Клейкие Фреймы",
 		["Style"] = "Стиль",
-		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "Изменить стиль панели. Требуется ButtonFacade для не-Blizzardских стилей.",
+		["Change the style of the bar.  Requires ButtonFacade for non-Blizzard styles."] = "Изменить стиль панели.  Требуется ButtonFacade для не-Blizzardских стилей.",
 		["Targeted"] = "Нацеленный",
 		["<Any String>"] = "<Любая строка>",
 		["Move the Bars"] = "Перенести Бары",
@@ -200,11 +200,11 @@ if (GetLocale() == "ruRU") then
 		["AutoBarButtonAura"] = "Ауры / Духи",
 		["AutoBarButtonBandages"] = "Бинты",
 		["AutoBarButtonBattleStandards"] = "Боевые Стандарты",
-		["AutoBarButtonBuff"] = "Баффыы",
-		["AutoBarButtonBuffWeapon1"] = "Баффы на оружие ОР",
-		["AutoBarButtonBuffWeapon2"] = "Баффы на оружие ВР",
+		["AutoBarButtonBuff"] = "Полож.Эффекты",
+		["AutoBarButtonBuffWeapon1"] = "Полож.Эффект на оружие ОР",
+		["AutoBarButtonBuffWeapon2"] = "Полож.Эффект на оружие ВР",
 		["AutoBarButtonCharge"] = "Charge",
-		["AutoBarButtonClassBuff"] = "Классовые Баффыы",
+		["AutoBarButtonClassBuff"] = "Классовые Полож.Эффекты",
 		["AutoBarButtonClassPet"] = "Классовые питомцы",
 		["AutoBarButtonConjure"] = "Сотворение",
 		["AutoBarButtonCooldownDrums"] = "Перезарядка: Барабаны",
@@ -217,7 +217,7 @@ if (GetLocale() == "ruRU") then
 		["AutoBarButtonCooldownStoneMana"] = "Перезарядка Камней: Маны",
 		["AutoBarButtonCooldownStoneRejuvenation"] = "Перезарядка Камней: Омоложения",
 		["AutoBarButtonCrafting"] = "Ремесло",
-		["AutoBarButtonDebuff"] = "Дебаффыы",
+		["AutoBarButtonDebuff"] = "Отриц.Эффекты",
 		["AutoBarButtonElixirBattle"] = "Боевые Эликсиры",
 		["AutoBarButtonElixirGuardian"] = "Защитные Эликсиры",
 		["AutoBarButtonElixirBoth"] = "Фляги",
@@ -225,7 +225,7 @@ if (GetLocale() == "ruRU") then
 		["AutoBarButtonExplosive"] = "Взрывчатка ",
 		["AutoBarButtonFishing"] = "Рыбная ловля",
 		["AutoBarButtonFood"] = "Еда",
-		["AutoBarButtonFoodBuff"] = "Еда с Баффами",
+		["AutoBarButtonFoodBuff"] = "Еда с полож.эффектом",
 		["AutoBarButtonFoodCombo"] = "Еда с сочетанием",
 		["AutoBarButtonFoodPet"] = "Еда питомца",
 		["AutoBarButtonFreeAction"] = "Свободные команды",
@@ -255,7 +255,7 @@ if (GetLocale() == "ruRU") then
 		["AutoBarButtonTrinket2"] = "Серьга 2",
 		["AutoBarButtonWarlockStones"] = "Камни Чернокнижника",
 		["AutoBarButtonWater"] = "Вода",
-		["AutoBarButtonWaterBuff"] = "Вода с Баффами",
+		["AutoBarButtonWaterBuff"] = "Вода с Полож.Эффектом",
 
 		["AutoBarButtonBear"] = "Медведь",
 		["AutoBarButtonBoomkinTree"] = "Древо Жизни / Лунный совух",
@@ -370,31 +370,31 @@ if (GetLocale() == "ruRU") then
 		["Consumable.Food.Buff.HP Regen"] = "Еда: Бонус к регену ЗД";
 		["Consumable.Food.Buff.Other"] = "Еда: Другая";
 
-		["Consumable.Buff.Health"] = "Баффы: Здоровье";
-		["Consumable.Buff.Armor"] = "Баффы: Броня";
-		["Consumable.Buff.Regen Health"] = "Баффы: реген здоровья";
-		["Consumable.Buff.Agility"] = "Баффы: Ловкость";
-		["Consumable.Buff.Intellect"] = "Баффы: Интеллект";
-		["Consumable.Buff.Protection"] = "Баффы: Защита";
-		["Consumable.Buff.Spirit"] = "Баффы: Дух";
-		["Consumable.Buff.Stamina"] = "Баффы: Выносливость";
-		["Consumable.Buff.Strength"] = "Баффы: Сила";
-		["Consumable.Buff.Attack Power"] = "Баффы: Сила Атаки";
-		["Consumable.Buff.Attack Speed"] = "Баффы: Скорость Атаки";
-		["Consumable.Buff.Dodge"] = "Баффы: Уворот";
-		["Consumable.Buff.Resistance"] = "Баффы: Сопротивление";
+		["Consumable.Buff.Health"] = "Полож.Эффект: Здоровье";
+		["Consumable.Buff.Armor"] = "Полож.Эффект: Броня";
+		["Consumable.Buff.Regen Health"] = "Полож.Эффект: Regen Health";
+		["Consumable.Buff.Agility"] = "Полож.Эффект: Ловкость";
+		["Consumable.Buff.Intellect"] = "Полож.Эффект: Интеллект";
+		["Consumable.Buff.Protection"] = "Полож.Эффект: Защита";
+		["Consumable.Buff.Spirit"] = "Полож.Эффект: Дух";
+		["Consumable.Buff.Stamina"] = "Полож.Эффект: Выносливость";
+		["Consumable.Buff.Strength"] = "Полож.Эффект: Сила";
+		["Consumable.Buff.Attack Power"] = "Полож.Эффект: Сила Атаки";
+		["Consumable.Buff.Attack Speed"] = "Полож.Эффект: Скорость Атаки";
+		["Consumable.Buff.Dodge"] = "Полож.Эффект: Уворот";
+		["Consumable.Buff.Resistance"] = "Полож.Эффект: Сопротивление";
 
-		["Consumable.Buff Group.General.Self"] = "Баффы: Общий";
-		["Consumable.Buff Group.General.Target"] = "Баффы: Общий на цель";
-		["Consumable.Buff Group.Caster.Self"] = "Баффы: Caster";
-		["Consumable.Buff Group.Caster.Target"] = "Баффы: Caster Target";
-		["Consumable.Buff Group.Melee.Self"] = "Баффы: Рукопашный";
-		["Consumable.Buff Group.Melee.Target"] = "Баффы: Рукопашный на цель";
-		["Consumable.Buff.Other.Self"] = "Баффы: Другое";
-		["Consumable.Buff.Other.Target"] = "Баффы: Другое на цель";
-		["Consumable.Buff.Chest"] = "Баффы: Грудь";
-		["Consumable.Buff.Shield"] = "Баффы: Щит";
-		["Consumable.Weapon Buff"] = "Баффы: Оружие";
+		["Consumable.Buff Group.General.Self"] = "Полож.Эффект: Общий";
+		["Consumable.Buff Group.General.Target"] = "Полож.Эффект: Общий на цель";
+		["Consumable.Buff Group.Caster.Self"] = "Полож.Эффект: Caster";
+		["Consumable.Buff Group.Caster.Target"] = "Полож.Эффект: Caster Target";
+		["Consumable.Buff Group.Melee.Self"] = "Полож.Эффект: Рукопашный";
+		["Consumable.Buff Group.Melee.Target"] = "Полож.Эффект: Рукопашный на цель";
+		["Consumable.Buff.Other.Self"] = "Полож.Эффект: Другое";
+		["Consumable.Buff.Other.Target"] = "Полож.Эффект: Другое на цель";
+		["Consumable.Buff.Chest"] = "Полож.Эффект: Грудь";
+		["Consumable.Buff.Shield"] = "Полож.Эффект: Щит";
+		["Consumable.Weapon Buff"] = "Полож.Эффект: Оружие";
 
 		["Misc.Usable.BossItem"] = "Предметы на Босса";
 		["Misc.Usable.Permanent"] = "Постоянно исп. предметы";
@@ -420,7 +420,7 @@ if (GetLocale() == "ruRU") then
 		["Consumable.Weapon Buff.Oil.Mana"] = "Масло маны";
 		["Consumable.Weapon Buff.Oil.Wizard"] = "Волшебное масло";
 		["Consumable.Weapon Buff.Stone.Sharpening Stone"] = "Точило";
-		["Consumable.Weapon Buff.Stone.Weight Stone"] = "Тежелые камни";
+		["Consumable.Weapon Buff.Stone.Weight Stone"] = "Weight Stone";
 
 		["Consumable.Bandage.Basic"] = "Бинты";
 		["Consumable.Bandage.Battleground.Alterac Valley"] = "Бинты Альтерака";
@@ -446,14 +446,14 @@ if (GetLocale() == "ruRU") then
 		["Consumable.Food.Pet.Fungus"] = "Еда: Пит Грибы";
 		["Consumable.Food.Pet.Meat"] = "Еда: Пит Мясо";
 
-		["Consumable.Buff Pet"] = "Баффы: Питомец";
+		["Consumable.Buff Pet"] = "Полож.Эффект: Питомец";
 
 		["Custom"] = "Custom";
 		["Misc.Minipet.Normal"] = "Питомец";
-		["Misc.Minipet.Snowball"] = "Праздничные питомци";
+		["Misc.Minipet.Snowball"] = "Holiday Pet";
 		["AUTOBAR_CLASS_UNGORORESTORE"] = "Ун'Горо: Кристаллы";
 
-		["Consumable.Anti-Venom"] = "Противоядие";
+		["Consumable.Anti-Venom"] = "Anti-Venom";
 
 		["Consumable.Warlock.Firestone"] = "Камни огня";
 		["Consumable.Warlock.Soulstone"] = "Камни души";
@@ -478,7 +478,7 @@ if (GetLocale() == "ruRU") then
 
 		["Misc.Battle Standard.Battleground"] = "Боевые Стандарты";
 		["Misc.Battle Standard.Alterac Valley"] = "Боевые Стандарты АД";
-		["Consumable.Cooldown.Stone.Health.Other"] = "Исцеляющие предметы: Другие";
+		["Consumable.Cooldown.Stone.Health.Other"] = "Heal Items: Other";
 		["Consumable.Cooldown.Stone.Mana.Other"] = "Демонические и Темные Руны";
 		["AUTOBAR_CLASS_ARCANE_PROTECTION"] = "Защита от теневой магии";
 		["AUTOBAR_CLASS_FIRE_PROTECTION"] = "Защита от огня";
@@ -488,18 +488,18 @@ if (GetLocale() == "ruRU") then
 		["AUTOBAR_CLASS_SPELL_REFLECTION"] = "Защита от заклинаний";
 		["AUTOBAR_CLASS_HOLY_PROTECTION"] = "Защита света";
 		["AUTOBAR_CLASS_INVULNERABILITY_POTIONS"] = "Зелья неуязвимости";
-		["Consumable.Buff.Free Action"] = "Баффы: Свободные команды";
+		["Consumable.Buff.Free Action"] = "Полож.Эффект: Свободные команды";
 
 		["Misc.Lockboxes"] = LOCKED;
 		["Gear.Trinket"] = INVTYPE_TRINKET;
 
 		["Spell.Aura"] = "Ауры / Аспекты";
-		["Spell.Buff.Weapon"] = "Баффы: Оружие";
-		["Spell.Class.Buff"] = "Классовые Баффыы";
+		["Spell.Buff.Weapon"] = "Buff Spells: Оружие";
+		["Spell.Class.Buff"] = "Классовые полож.эффекты";
 		["Spell.Class.Pet"] = "Классовые питомцы";
 		["Spell.Crafting"] = "Ремесло";
-		["Spell.Debuff.Multiple"] = "Дебаффы: Многоч-ный";
-		["Spell.Debuff.Single"] = "Дебаффы: Одиночный";
+		["Spell.Debuff.Multiple"] = "Отриц.Эффект: Многоч-ный";
+		["Spell.Debuff.Single"] = "Отриц.Эффект: Одиночный";
 		["Spell.Fishing"] = "Рыбная ловля";
 		["Spell.Portals"] = "Порталы и Телепорты";
 		["Spell.Sting"] = "Стрелы-яды";
@@ -521,19 +521,19 @@ if (GetLocale() == "ruRU") then
 		["Consumable.Water.Buff"] = "Вода: Бонус";
 		["Consumable.Buff.Rage"] = "Зелья ярости";
 		["Consumable.Buff.Energy"] = "Зелья энергии";
-		["Consumable.Buff.Speed"] = "Баффы: Скорость";
-		["Consumable.Buff Type.Battle"] = "Баффы: Боевые Эликсиры";
-		["Consumable.Buff Type.Guardian"] = "Баффы: Защитные Эликсиры";
-		["Consumable.Buff Type.Flask"] = "Баффы: Фляжка";
+		["Consumable.Buff.Speed"] = "Полож.Эффект: Скорость";
+		["Consumable.Buff Type.Battle"] = "Полож.Эффект: Боевые Эликсиры";
+		["Consumable.Buff Type.Guardian"] = "Полож.Эффект: Защитные Эликсиры";
+		["Consumable.Buff Type.Flask"] = "Полож.Эффект: Фляжка";
 		["AUTOBAR_CLASS_SOULSHARDS"] = "Осколки души";
 		["Misc.Reagent.Ammo.Arrow"] = "Стрелы";
 		["Misc.Reagent.Ammo.Bullet"] = "Пули";
 		["Misc.Reagent.Ammo.Thrown"] = "Метательное Оружие";
 		["Misc.Explosives"] = "Взрывчатка";
-		["Misc.Mount.Normal"] = "Транспорт";
-		["Misc.Mount.Summoned"] = "Транспорт: Вызываемый";
-		["Misc.Mount.Ahn'Qiraj"] = "Транспорт: Киражи";
-		["Misc.Mount.Flying"] = "Транспорт: Летучие";
+		["Misc.Mount.Normal"] = "Ездовые Животные";
+		["Misc.Mount.Summoned"] = "Mounts: Summoned";
+		["Misc.Mount.Ahn'Qiraj"] = "Mounts: Qiraji";
+		["Misc.Mount.Flying"] = "Mounts: Flying";
 	}
 
 --AUTOBAR_CHAT_MESSAGE1 = "Config for this character is old version. Clearing. No attempt to upgrade config is being done.";

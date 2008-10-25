@@ -9,7 +9,7 @@
 --
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 588 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 76860 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
 	AutoBar.date = ('$Date: 2007-09-26 14:04:31 -0400 (Wed, 26 Sep 2007) $'):match('%d%d%d%d%-%d%d%-%d%d')
@@ -109,7 +109,7 @@ function AutoBar.Class.Button.prototype:Refresh(parentBar, buttonDB)
 end
 
 
--- Disable the Button
+-- Disable this button
 function AutoBar.Class.Button.prototype:Disable()
 --	self.frame:SetAttribute("showstates", nil)
 --	self.frame:SetAttribute("hidestates", "*")
@@ -119,7 +119,7 @@ function AutoBar.Class.Button.prototype:Disable()
 --AutoBar:Print("AutoBar.Class.Button.prototype:Disable " .. tostring(self.buttonName))
 end
 
--- Return the name of the global frame of the button.  Keybinds are made to it.
+-- Return the name of the global frame for this button.  Keybinds are made to this.
 function AutoBar.Class.Button.prototype:GetButtonFrameName()
 	return self.buttonDB.buttonKey .. "Frame"
 end
@@ -204,7 +204,7 @@ function AutoBar.Class.Button.prototype:BindingsUpdate()
 end
 
 
--- Update the keybinds for the Button.
+-- Update the keybinds for this Button.
 -- Copied from Bartender3
 -- Create Override Bindings from the Blizzard bindings to our dummy binds in Bindings.xml.
 -- These do not clash with the real frames to bind to, so all is happy.
@@ -295,12 +295,12 @@ end
 
 -- Handle a click on a popped up button
 function AutoBar.Class.Button.prototype:PreClick(mousebutton, down)
-	local frame = self.class.frame
+	local self = this.class
 	if (down) then
-		frame:SetChecked(1)
+		self.frame:SetChecked(1)
 		return nil
 	else
-		frame:SetChecked(0)
+		self.frame:SetChecked(0)
 	end
 --AutoBar:Print("AutoBar.Class.Button.prototype:PreClick buttonKey " .. self.buttonName .. " mousebutton " .. tostring(mousebutton))
 end
@@ -344,11 +344,11 @@ function AutoBar.Class.Button:ShuffleItem(itemId, targetBag, targetSlot, isNewIt
 --AutoBar:Print("ShuffleItem done with  index " .. tostring(index) .. " bag " .. tostring(bag) .. " slot " .. tostring(slot) .. " spell " .. tostring(spell))
 			until index <= 0
 		else
-			-- Redo scan for item only then call ShuffleItem again
+			-- Redo scan for this item only then call ShuffleItem again
 		end
 		return true
 	elseif (totalCount == 1) then
-		-- Redo scan for item only then call ShuffleItem again
+		-- Redo scan for this item only then call ShuffleItem again
 	end
 
 	-- Nothing left to shuffle in
@@ -389,7 +389,8 @@ end
 
 -- Handle shuffle buttons
 function AutoBar.Class.Button.prototype:PostClick(mouseButton, down)
-	local self = self.class
+	local self = this.class
+--AutoBar:Print("PostClick " .. self.buttonDB.buttonKey .. " " .. tostring(self) .. " this.class " .. tostring(this.class) .. " mouseButton " .. tostring(mouseButton) .. " down " .. tostring(down))
 
 	if (self.buttonDB.shuffle and InCombatLockdown()) then
 		local itemType = self.frame:GetAttribute("*type1")
@@ -620,7 +621,7 @@ function AutoBar.Class.Button:SetCount(frame)
 			local spellName1 = frame:GetAttribute("*spell1")
 			count1 = GetSpellCount(spellName1) or 0
 			local spellName2 = frame:GetAttribute("*spell2")
-			if (spellName2 and spellName2 ~= spellName1) then
+			if (spellName2) then
 				count2 = GetSpellCount(spellName2) or 0
 			end
 		end
@@ -876,7 +877,7 @@ function AutoBar.Class.Button.prototype:UpdateCooldown()
 		end
 
 		if (start and duration and enabled and start > 0 and duration > 0) then
-			self.frame.cooldown:Show() -- ToDo: necessary?
+			self.frame.cooldown:Show() -- IS this necessary?
 			CooldownFrame_SetTimer(self.frame.cooldown, start, duration, enabled)
 		else
 			CooldownFrame_SetTimer(self.frame.cooldown, 0, 0, 0)

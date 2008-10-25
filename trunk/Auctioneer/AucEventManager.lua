@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3104 (BillyGoat)
+	Version: 5.0.PRE.3471 (BillyGoat)
 	Revision: $Id: AucEventManager.lua 1746 2007-04-24 22:16:19Z luke1410 $
 
 	AucEventManager - Auctioneer eventing system

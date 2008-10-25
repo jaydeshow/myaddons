@@ -39,7 +39,7 @@
 	if( not SCCN_COM_GUILD) then SCCN_COM_GUILD = 1; end;
 	if( not SCCN_CHATLINK) then SCCN_CHATLINK = 1; end;
 	if( not SCCN_SHOWLEVEL) then SCCN_SHOWLEVEL = 1; end;
-
+	if( not SCCN_SHOWICON) then SCCN_SHOWICON = 1; end;
 	
 
 -------------------------------------------------

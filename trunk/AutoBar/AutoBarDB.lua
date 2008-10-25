@@ -9,7 +9,7 @@
 -- Custom Category:
 --  AutoBar.db.account.customCategories[categoryKey]
 --	A separate list of Categories that is global to all players
---	Users can add their own custom Categories to the list.
+--	Users can add their own custom Categories to this list.
 --	Custom Categories can have specific items and spells dragged into their list.
 --	Custom Categories can also be set to PT3 Sets, one regular Set & one priority Set
 --	A priority Set item has priority over a regular Set item with the same value.
@@ -26,7 +26,7 @@
 --  Contains the defaults for Button settings & changes to the settings are stored here.
 --  Enable / Disable state is recorded here
 --  Only one buttonKey per button found in a Bar
---  barKey.  Defaults to default bar to place on.  Moving Button changes barKey to match.  Removing Button nils it.
+--  barKey.  Defaults to default bar to place on.  Moving Button changes barKey to match.  Removing Button, nils this.
 --  defaultButtonIndex (#, "*" for at end, "~" for do not place, "buttonKey" to insert after a button).
 --    Buttons are placed in their barKey at defaultButtonIndex on initialize.
 --  deleted: false. Can be deleted by deleting from a Bar.
@@ -53,10 +53,10 @@
 
 
 local AutoBar = AutoBar
-local REVISION = tonumber(("$Revision: 588 $"):match("%d+"))
+local REVISION = tonumber(("$Revision: 79885 $"):match("%d+"))
 if AutoBar.revision < REVISION then
 	AutoBar.revision = REVISION
-	AutoBar.date = ('$Date: 2008-08-10 00:26:05 +0000 (Sun, 10 Aug 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
+	AutoBar.date = ('$Date: 2008-08-06 16:26:33 -0400 (Wed, 06 Aug 2008) $'):match('%d%d%d%d%-%d%d%-%d%d')
 end
 
 local L = AutoBar.locale
@@ -1306,7 +1306,7 @@ function AutoBar:RemoveDuplicateButtons()
 						-- ToDo: This implies placement on class or character only bar.  Should change sharing when doing that for the Button.
 						buttonDB.barKey = barKey
 					elseif (AutoBar:ButtonExists(currentBarDB, buttonDB)) then
-						-- Exists in official location.  Remove duplicate.
+						-- Exists in official location.  Remove this duplicate.
 						buttonKeys[buttonKeyIndex] = false
 						delete = true
 					else

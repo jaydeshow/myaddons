@@ -1,7 +1,7 @@
 ﻿-- settings
-ZUF_Style = true -- 是否使用清新风格（去除边框）
+ZUF_Style = nil -- 是否使用清新风格（去除边框）
 local ZUF_Gold = nil -- 是否更改边框为金色
-local ZUF_Move = nil -- 是否移动头像(命令行 /zuf lock 来解锁；目标头像的偏移同下)
+local ZUF_Move = true -- 是否移动头像(命令行 /zuf lock 来解锁；目标头像的偏移同下)
 local zUF_Target_OfsX = 250 -- 目标头像水平偏移，zUF默认：280；系统默认：250。
 local zUF_Target_HP_Percent = nil -- 是否在目标头像左边显示血量百分比
 local zUF_Target_Health = true -- 是否显示目标血量（无法取得时显示为百分比）

@@ -80,14 +80,17 @@
 [url=http://code.google.com/p/autobar/issues/list]Bug Reports, Feature or Documentation Requests[/url]
 (Please click in a "Labels:" field to label your issue appropriately.)
 
-"$Revision: 588 $"
+"$Revision: 79885 $"
 AutoBar:Print("AutoBar:DragStop " .. tostring() .. "  " .. tostring())
 --]]
--- 2.04.03.01 release (79885)
+#showtooltip
+/run local f="Cat Form";f=GetSpellCooldown(f)>0 or UnitMana('player')>15 or not IsUsableSpell(f) or CancelPlayerBuff(f)
+/cast [form] Mangle (Cat)()
+/stopmacro [form]
+/cast !Cat Form
+-- 2.04.03.01 release ()
 -- Fix Stealth button not working for mages.
 -- Restore deleted keys in ruRU
--- For spell counts dont display right click count if it is the same spell as left click.
--- Swift Zhevra Mount
 --- Trelis: disable/enable bar during move bars or buttons orphans it and other glitches.
 --- Shuffle: handle locations and cooldowns and equipped items.
 --- Shuffle: swap popup icons properly.
