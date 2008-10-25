@@ -1,17 +1,32 @@
-﻿-- 汉化: Duke 2008/04/10
-
+-- Chinese Simplified by q09q09
+-- q09q09' Profile: http://wiki.cwowaddon.com/%E6%80%A5%E4%BA%91
+-- Last Update 09/04/2008
 if ( GetLocale() == "zhCN" ) then
 	SCCN_INIT_CHANNEL_LOCAL			= "常规";
 	SCCN_GUI_HIGHLIGHT1				= "在这对话输入你要 SCCN 显示的词。 每行输入一个词";
-	SCCN_LOCAL_CLASS["WARLOCK"] 	= "术士";
-	SCCN_LOCAL_CLASS["HUNTER"] 	= "猎人";
-	SCCN_LOCAL_CLASS["PRIEST"] 	= "牧师";
-	SCCN_LOCAL_CLASS["PALADIN"] 	= "圣骑士";
-	SCCN_LOCAL_CLASS["MAGE"] 	= "法师";
-	SCCN_LOCAL_CLASS["ROGUE"] 	= "潜行者";
-	SCCN_LOCAL_CLASS["DRUID"] 	= "德鲁伊";
-	SCCN_LOCAL_CLASS["SHAMAN"] 	= "萨满祭司";
-	SCCN_LOCAL_CLASS["WARRIOR"] 	= "战士";
+	SCCN_LOCAL_CLASS["WARLOCK"] 	= "Warlock";
+	SCCN_LOCAL_CLASS["HUNTER"] 	= "Hunter";
+	SCCN_LOCAL_CLASS["PRIEST"] 	= "Priest";
+	SCCN_LOCAL_CLASS["PALADIN"] 	= "Paladin";
+	SCCN_LOCAL_CLASS["MAGE"] 	= "Mage";
+	SCCN_LOCAL_CLASS["ROGUE"] 	= "Rogue";
+	SCCN_LOCAL_CLASS["DRUID"] 	= "Druid";
+	SCCN_LOCAL_CLASS["SHAMAN"] 	= "Shaman";
+	SCCN_LOCAL_CLASS["WARRIOR"] 	= "Warrior";
+	SCCN_LOCAL_CLASS["DEATHKNIGHT"]	= "Deathknight";
+	--  Female Classnames
+	-- What the heck are the Engliosh female names for the classes ? How do you say to "Hexenmeisterin" ?
+	SCCN_LOCAL_CLASS["WARLOCKF"]	= "术士";
+	SCCN_LOCAL_CLASS["HUNTERF"]	= "猎人";
+	SCCN_LOCAL_CLASS["PRIESTF"]	= "牧师";
+	SCCN_LOCAL_CLASS["MAGEF"]	= "法师";
+	SCCN_LOCAL_CLASS["ROGUEF"]	= "潜行者";
+	SCCN_LOCAL_CLASS["DRUIDF"]	= "德鲁伊";
+	SCCN_LOCAL_CLASS["SHAMANF"]	= "萨满祭司";
+	SCCN_LOCAL_CLASS["WARRIORF"]	= "战士";
+	SCCN_LOCAL_CLASS["DEATHKNIGHTF"]= "死亡骑士";
+	SCCN_LOCAL_CLASS["PALADINF"]	= "圣骑士";
+
 	-- Zones
 	SCCN_LOCAL_ZONE["alterac"]	= "奥特兰克山谷";
 	SCCN_LOCAL_ZONE["warsong"]	= "战歌峡谷";
@@ -34,7 +49,6 @@ if ( GetLocale() == "zhCN" ) then
 	SCCN_HELP[15] 			= "|cff68ccef".."/chatmod selfhighlightmsg".."\n|cffffffff".." 包含自己名字的对话消息会另外显示在屏幕上方，须开启 /chatmod selfhighlight";
 	SCCN_HELP[16]			= "|cff68ccef".."/chatmod hidechatbuttons".."\n|cffffffff".." 隐藏聊天按钮。";
 	SCCN_HELP[17]			= "|cff68ccef".."/chatmod highlight".."\n|cffffffff".." 在聊天中高亮显示自定义词.";
-	SCCN_HELP[18]			= "|cff68ccef".."/chatmod AutoBGMap".."\n|cffffffff".." 自动打开战场迷你地图.";
 	SCCN_HELP[19]			= "|cff68ccef".."/chatmod shortchanname ".."\n|cffffffff".." 显示简略频道名.";
 	SCCN_HELP[20]			= "|cff68ccef".."/chatmod autogossipskip ".."\n|cffffffff".." 自动跳过闲谈窗口. |cffa0a0a0(按住 <CTRL> 则撤销跳过)";
 	SCCN_HELP[21]			= "|cff68ccef".."/chatmod autodismount ".."\n|cffffffff".." 与飞行点管理员对话时自动下马";
@@ -45,7 +59,8 @@ if ( GetLocale() == "zhCN" ) then
 	SCCN_HELP[26]			= "|cff68ccef".."/chatmod chaticon".."\n|cffffffff".."显示/关闭文字滚动提示图标";
 	SCCN_HELP[27]			= "|cff68ccef".."/chatmod showlevel".."\n|cffffffff".."显示/关闭名字处显示等级";
 	SCCN_HELP[28]			= "|cff68ccef".."/chatmod chatcolorname".."\n|cffffffff".."显示/关闭聊天文本中名字着色";
-	SCCN_HELP[99]			= "|cff68ccef".."\n/chatmod status".."|cffffffff".." 显示目前设置。";
+
+	SCCN_HELP[99]					= "|cff68ccef".."/chatmod status".."|cffffffff".."\n 显示目前设置。";
 	SCCN_TS_HELP  			= "|cff68ccef".."/chatmod timestamp |cffFF0000FORMAT|cffffffff\n".."格式:\n$h = 小时 (0-24) \n$t = 小时 (0-12) \n$m = 分钟 \n$s = 秒 \n$p = 上午/下午 (am / pm)\n".."|cff909090例如: /chatmod timestamp [$t:$m:$s $p]";
 	SCCN_CMDSTATUS[1]		= "隐藏频道名称:";
 	SCCN_CMDSTATUS[2]		= "以职业颜色显示玩家名字:";
@@ -71,6 +86,7 @@ if ( GetLocale() == "zhCN" ) then
 	SCCN_CMDSTATUS[22]				= "聊天滚动图标:";
 	SCCN_CMDSTATUS[23]				= "名字处显示等级:";
 	SCCN_CMDSTATUS[24]      = "聊天文字中名字着色:";
+	SCCN_CMDSTATUS[25]              = "聊天图标标记:";
 	-- cursom invite word in the local language
 	SCCN_CUSTOM_INV[0]		= "邀请";
 	SCCN_CUSTOM_INV[1] 		= "邀请";
@@ -103,4 +119,5 @@ if ( GetLocale() == "zhCN" ) then
 	SCCN_Config						= "ChatMOD 设置";
 	SCCN_Changelog					= "ChatMOD 更新日志";
 	SCCN_NewVer                     = "发现 ChatMOD 新版本.请检查更新www.solariz.de";
-end;
+
+end

@@ -1,0 +1,134 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<Script file="WarlockAlert.lua"/>
+
+	<Frame name="WaConfigFrame" hidden="true" parent="UIParent" toplevel="true" movable="true" frameStrata="DIALOG" enableMouse="true">
+		<Size>
+			<AbsDimension x="384" y="512" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="-104" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames, "WaConfigFrame");
+				this:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnShow>
+				PlaySound("igCharacterInfoOpen");
+				WaConfigFrame_OnShow();
+			</OnShow>
+			<OnHide>
+				PlaySound("igCharacterInfoClose");
+				WaConfigFrame_OnHide();
+			</OnHide>
+			<OnDragStart>
+				this:StartMoving();
+				this.isMoving = true;
+			</OnDragStart>
+			<OnDragStop>
+				this:StopMovingOrSizing();
+				this.isMoving = false;
+			</OnDragStop>
+		</Scripts>
+		<Layers>
+			<Layer level="BORDER">
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+					<Size>
+						<AbsDimension x="256" y="256" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" />
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-TopRight">
+					<Size>
+						<AbsDimension x="128" y="256" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" />
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-BottomLeft">
+					<Size>
+						<AbsDimension x="256" y="256" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" />
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\PaperDollInfoFrame\UI-Character-General-BottomRight">
+					<Size>
+						<AbsDimension x="128" y="256" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" />
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="WarlockAlert" inherits="GameFontNormal" text="WarlockAlert">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="WaConfigFrame">
+							<Offset>
+								<AbsDimension x="0" y="-18" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentButtonClose" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="WaConfigFrame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-46" y="-24" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick> WaConfigFrame:Hide(); </OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentProcMenu" inherits="OptionsButtonTemplate" text="WARLOCKALERT_PROC">
+				<Size>
+					<AbsDimension x="75" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="WaConfigFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="-40" y="-55" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						WaConfigFrameProc:Show(); 
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentHPManaMenu" inherits="OptionsButtonTemplate" text="WARLOCKALERT_HP_MANA">
+				<Size>
+					<AbsDimension x="75" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="WaConfigFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="40" y="-55" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						WaConfigFrameHPMana:Show(); 
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

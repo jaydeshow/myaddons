@@ -1,5 +1,7 @@
 
-## Title: Quartz  |cff7fff7f-Ace2-|r
+## Title: [|cff32cd32Combat|r] Quartz  |cff7fff7f-Ace2-|r
+## Title-zhCN: [|cff32cd32Combat|r] Quartz  |cff7fff7f-Ace2-|r
+## Title-zhTW: [|cff32cd32Combat|r] Quartz  |cff7fff7f-Ace2-|r
 ## Notes: Modular casting bar.
 ## Title-ruRU: Кварц  |cff7fff7f-Ace2-|r
 ## Notes-ruRU: Модульная полоса применений.
@@ -32,7 +34,7 @@
 ## X-LoadOn-NotResting: true
 ## X-LoadOn-Slash: /quartz
 
-embeds.xml
+#embeds.xml
 
 locale\Quartz-enUS.lua
 locale\Quartz-ruRU.lua

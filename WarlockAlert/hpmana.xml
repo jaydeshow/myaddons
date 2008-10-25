@@ -1,0 +1,362 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<Script file="WarlockAlert.lua"/>
+
+<Frame name="WaConfigFrameHPMana" hidden="true" parent="WaConfigFrame" toplevel="true" movable="true" frameStrata="DIALOG" enableMouse="true">
+	<Size>
+		<AbsDimension x="384" y="512" />
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT" relativeTo="WaConfigFrameProc" />
+	</Anchors>
+	<Scripts>
+		<OnShow>
+			WaConfigFrameProc:Hide(); 
+			PlaySound("igSpellBokPageTurn");
+			WaConfigFrameHPMANA_OnShow();
+		</OnShow>
+	</Scripts>
+		<Layers>
+		<Layer level="BACKGROUND">
+			<Texture name="WaConfigFrameIcon" file="Interface\AddOns\WarlockAlert\Texture\HealthIcon.tga">
+				<Size>
+					<AbsDimension x="64" y="64" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="WaConfigFrame">
+						<Offset>
+							<AbsDimension x="7" y="-7" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+		</Layer>
+		<Layer level="OVERLAY">
+				<FontString name="Health" inherits="GameFontNormal" text="WARLOCKALERT_HEALTH_WARNING">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="-120" y="-90" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			<FontString name="Mana" inherits="GameFontNormal" text="WARLOCKALERT_MANA_WARNING">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="-120" y="-210" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="Misc" inherits="GameFontNormal" text="Misc.">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="-120" y="-350" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="SoulShard" inherits="GameFontNormal" text="WARLOCKALERT_SOULSHARD">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="-90" y="-375" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="Sounds" inherits="GameFontNormal" text="WARLOCKALERT_SOUNDS">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="10" y="-375" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="IGS" inherits="GameFontNormal" text="IGS">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="-90" y="-410" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	<Frames>
+		<CheckButton name="WaConfigFrameHPFlashCheckButton" inherits="OptionsCheckButtonTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="Health" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-15"/></Offset>
+				</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_FULL_SCREEN_FLASH);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_HPFlashCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Enable Flash")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="WaConfigFrameHPInCombatButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Health" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-40"/></Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_ONLY_IN_COMBAT);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_HPInCombatCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Only flash when in Combat")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+		<Slider name="WaConfigFrameTextureHPSlider" inherits="OptionsSliderTemplate">
+			<Size>
+				<AbsDimension x="120" y="16"/>
+			</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Health" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="10" y="-83"/></Offset>
+					</Anchor>
+				</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_HEALTH_TRESHOLD);
+					getglobal(this:GetName().."High"):SetText("100%");
+					getglobal(this:GetName().."Low"):SetText("0%");
+					this:SetMinMaxValues(0,99);
+					this:SetValueStep(1);
+				</OnLoad>
+				<OnValueChanged>
+				WaConfigFrameTextureHPSlider_OnValueChanged();  
+				GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+				GameTooltip:SetText(WaConfigFrameTextureHPSlider:GetValue())
+				</OnValueChanged>
+				<OnLeave>
+				GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+		</Slider>
+		<CheckButton name="WaConfigFrameManaFlashCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Mana" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-15"/></Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_FULL_SCREEN_FLASH);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_ManaFlashCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Enable Flash")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="WaConfigFrameManaInCombatButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Mana" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="-5" y="-40"/></Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_ONLY_IN_COMBAT);
+					</OnLoad>
+					<OnClick>
+					WarlockAlert_ManaInCombatCheckbuttononclick();					
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+						GameTooltip:SetText("Color Change")
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+		<Slider name="WaConfigFrameTextureManaSlider" inherits="OptionsSliderTemplate">
+			<Size>
+				<AbsDimension x="120" y="16"/>
+			</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="Mana" relativePoint="TOPLEFT">
+					<Offset><AbsDimension x="10" y="-83"/></Offset>
+					</Anchor>
+				</Anchors>
+			<Scripts>
+				<OnLoad>
+					getglobal(this:GetName().."Text"):SetText(WARLOCKALERT_MANA_TRESHOLD);
+					getglobal(this:GetName().."High"):SetText("100%");
+					getglobal(this:GetName().."Low"):SetText("0%");
+					this:SetMinMaxValues(0,99);
+					this:SetValueStep(1);
+				</OnLoad>
+				<OnValueChanged>
+				WaConfigFrameTextureManaSlider_OnValueChanged();  
+				GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+				GameTooltip:SetText(WaConfigFrameTextureManaSlider:GetValue())
+				</OnValueChanged>
+				<OnLeave>
+				GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+		</Slider>
+		<CheckButton name="WaConfigFrameSSFlashCheckButton" inherits="OptionsCheckButtonTemplate">
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="WaConfigFrame" relativePoint="TOPLEFT">
+				<Offset><AbsDimension x="85" y="-375"/></Offset>
+				</Anchor>
+			</Anchors>
+			<HitRectInsets>
+				<AbsInset left="0" right="0" top="0" bottom="0" />
+			</HitRectInsets>
+			<Scripts>
+				<OnClick>
+				WarlockAlert_WaConfigFrameSSFlashCheckButtononclick();					
+				</OnClick>
+				<OnEnter>
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+					GameTooltip:SetText("Enable SoulShard-Flash")
+				</OnEnter>
+				<OnLeave>
+					GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+		</CheckButton>
+		<CheckButton name="WaConfigFrameSoundCheckButton" inherits="OptionsCheckButtonTemplate">
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="WaConfigFrame" relativePoint="TOPLEFT">
+				<Offset><AbsDimension x="185" y="-375"/></Offset>
+				</Anchor>
+			</Anchors>
+			<HitRectInsets>
+				<AbsInset left="0" right="0" top="0" bottom="0" />
+			</HitRectInsets>
+			<Scripts>
+				<OnClick>
+				WarlockAlert_WaConfigFrameSoundCheckButtononclick();					
+				</OnClick>
+				<OnEnter>
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+					GameTooltip:SetText("Enable Sounds")
+				</OnEnter>
+				<OnLeave>
+					GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+		</CheckButton>
+		<CheckButton name="WaConfigFrameIGSCheckButton" inherits="OptionsCheckButtonTemplate">
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="WaConfigFrame" relativePoint="TOPLEFT">
+				<Offset><AbsDimension x="85" y="-410"/></Offset>
+				</Anchor>
+			</Anchors>
+			<HitRectInsets>
+				<AbsInset left="0" right="0" top="0" bottom="0" />
+			</HitRectInsets>
+			<Scripts>
+				<OnClick>
+				WarlockAlert_IGSCheckButtononclick();					
+				</OnClick>
+				<OnEnter>
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+					GameTooltip:SetText("Use InGameSounds")
+				</OnEnter>
+				<OnLeave>
+					GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+		</CheckButton>
+		<EditBox name="IGSNameEditBox" autoFocus="false" letters="20" inherits="InputBoxTemplate">
+			<Size>
+				<AbsDimension x="130" y="32"></AbsDimension>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="140" y="-410"></AbsDimension>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnEnterPressed>
+				IGSNameEditBox_OnChar()
+				this:ClearFocus()
+				</OnEnterPressed>
+			</Scripts>
+			<FontString inherits="ChatFontNormal"></FontString>
+		</EditBox>
+		<Button name="SoundTest" shown="true" parent="WaConfigFrameHPMana">
+			<Size>
+				<AbsDimension x="32" y="32" /> 
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="WaConfigFrame" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="280" y="-410"></AbsDimension>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					PlaySound(WarlockAlert.db.profile.SoundName);
+				</OnClick> 
+				<OnEnter>
+					GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+					GameTooltip:SetText("Play Sound")
+				</OnEnter>
+				<OnLeave>
+					GameTooltip:Hide()
+				</OnLeave>
+			</Scripts>
+			<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up" /> 
+			<HighlightTexture alphaMode="ADD" file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down" /> 
+		</Button>
+	</Frames>
+</Frame>
+</Ui>

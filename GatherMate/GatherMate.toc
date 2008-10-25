@@ -3,7 +3,7 @@
 ## Notes-frFR: Enregistre les positions des herbes, mines, nuages de gaz et poissons et les ajoute sur la carte du monde et la minicarte.
 ## Notes-ruRU: Собирает информацию о расположении трав, руды, газовых облаков и рыбных мест и показывает её на карте и миникарте
 ## Notes-koKR: 약초, 광맥, 가스, 낚시 위치를 저장하여 월드맵과 미니맵에 표시합니다.
-## Title: GatherMate
+## Title: [|cff32cd32Map|r] GatherMate
 ## Author: kagaro, Xinhuan, Ammo, Nevcairiel
 ## X-Email: sal.scotto@gmail.com
 ## X-Credits: OttoDeFe for the launher icon.
@@ -17,7 +17,7 @@
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
 
-embeds.xml
+#embeds.xml
 Locales.xml
 
 GatherMate.lua

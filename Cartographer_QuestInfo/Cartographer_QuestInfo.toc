@@ -1,13 +1,13 @@
 ## Interface: 20400
-## Title: Cartographer [|cffeda55fQuestInfo|r]
+## Title: [|cff32cd32Quest|r] Cartographer [|cffeda55fQuestInfo|r]
 ## Notes: Quest library for mob location and other information
-## Title-ruRU: Картограф [|cffeda55fИнфо-Задания|r]
+## Title-ruRU: [|cff32cd32Quest|r] Картограф [|cffeda55fИнфо-Задания|r]
 ## Notes-ruRU: Библиотека заданий о местонахождение монстров и другой информации
-## Title-zhCN: |cFF00FF00[地图]|r任务资料 Cartographer [|cffeda55fQuestInfo|r]
+## Title-zhCN: [|cff32cd32Quest|r] |cFF00FF00[地图]|r任务资料 Cartographer [|cffeda55fQuestInfo|r]
 ## Notes-zhCN: 制图大师的配件，提供任务资料库
-## Title-zhTW: |cFF00FF00[地圖]|r任務資訊 Cartographer [|cffeda55fQuestInfo|r]
+## Title-zhTW: [|cff32cd32Quest|r] |cFF00FF00[地圖]|r任務資訊 Cartographer [|cffeda55fQuestInfo|r]
 ## Notes-zhTW: 製圖大師模組，提供任務資料庫功能
-## Title-koKR:Cartographer [|cffeda55f퀘스트 정보|r]
+## Title-koKR: [|cff32cd32Quest|r] Cartographer [|cffeda55f퀘스트 정보|r]
 ## Notes-koKR: 지도와 미니맵에 퀘스트 관련 정보를 출력해줍니다.
 ## Author: lahow (aka purple@bahamut)
 ## SavedVariables: Cartographer_QuestInfoDB
@@ -17,7 +17,7 @@
 ## RequiredDeps: Cartographer
 ## OptionalDeps: Cartographer_Notes, Cartographer_Quests, Cartographer_QuestObjectives, LibQuixote-2.0, LibGratuity-3.0
 
-embeds.xml
+#embeds.xml
 
 Data\Quest.lua
 Data\NPC.lua
@@ -28,7 +28,6 @@ Data\Name-frFR.lua
 Data\Name-koKR.lua
 Data\Name-zhTW.lua
 Data\Name-zhCN.lua
-Data\Name-ruRU.lua
 Data\Name-enUS.lua
 
 Locale\Locale-enUS.lua

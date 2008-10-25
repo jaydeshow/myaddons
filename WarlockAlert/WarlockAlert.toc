@@ -1,0 +1,30 @@
+## Interface: 20100
+## Title: [|cff32cd32Warlock|r] WarlockAlert |cFF0000FF-BIG-|r
+## Title-zh: [|cff32cd32术|r] 术士提醒 |cFF0000FF-BIG-|r
+## Notes: Never miss an instant shadowbolt or forgett to use a healthstone again!
+## Author: Bigwood
+## Version: 1.2
+## OptionalDeps: Ace2
+## SavedVariables: WarlockAlertDB
+## X-Category: Warlock
+
+#Libs\AceLibrary\AceLibrary.lua
+#Libs\AceOO-2.0\AceOO-2.0.lua
+#Libs\AceAddon-2.0\AceAddon-2.0.lua
+#Libs\AceDB-2.0\AceDB-2.0.lua
+#Libs\AceConsole-2.0\AceConsole-2.0.lua
+#Libs\AceEvent-2.0\AceEvent-2.0.lua
+#Libs\AceLocale-2.2\AceLocale-2.2.lua
+
+Locale-enUS.lua
+Locale-deDE.lua
+Locale-esES.lua
+Locale-frFR.lua
+Locale-zhCN.lua
+
+WarlockAlert.lua
+WarlockAlert.xml
+proc.xml
+hpmana.xml
+textures.xml
+

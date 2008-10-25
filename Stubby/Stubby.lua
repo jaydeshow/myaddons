@@ -1,7 +1,7 @@
 --[[
 	Stubby AddOn for World of Watcraft (tm)
-	Version: 5.0.PRE.3104 (BillyGoat)
-	Revision: $Id: Stubby.lua 52 2007-12-14 01:32:36Z RockSlice $
+	Version: 5.0.PRE.3471 (BillyGoat)
+	Revision: $Id: Stubby.lua 93 2008-07-19 03:02:03Z zespri $
 	URL: http://auctioneeraddon.com/dl/Stubby/
 
 	Stubby is an addon that allows you to register boot code for
@@ -163,7 +163,7 @@
 	This constant is Stubby's revision number, a simple positive
 	integer that will increase by an arbitrary amount with each
 	new version of Stubby.
-	Current $Revision: 52 $
+	Current $Revision: 93 $
 
 	Example:
 	-------------------------------------------
@@ -645,6 +645,9 @@ end
 --[[
 	This function registers a given function to be called when a given addon is loaded, or immediatly if it is already loaded (this can be
 	used to setup a hooking function to execute when an addon is loaded but not before)
+	In certain cenarios IsAddOnLoaded returns 1 even though addon is not fully loaded yet. See http://jira.norganna.org/browse/STUB-8 
+	for details. In these cases the hook function will be called twice. It should check by querting a global variable form the addon 
+	if the addon was actually loaded, before accessing its functionality
  ]]
 function registerAddOnHook(triggerAddOn, ownerAddOn, hookFunction, ...)
 	if (IsAddOnLoaded(triggerAddOn)) then
@@ -653,21 +656,20 @@ function registerAddOnHook(triggerAddOn, ownerAddOn, hookFunction, ...)
 		else
 			hookFunction({...})
 		end
-	else
-		local addon = triggerAddOn:lower()
-		if (not config.loads[addon]) then config.loads[addon] = {} end
-		config.loads[addon][ownerAddOn] = nil
-		if (hookFunction) then
-			if (select("#", ...) == 0) then
-				config.loads[addon][ownerAddOn] = {
-					f = hookFunction,
-				}
-			else
-				config.loads[addon][ownerAddOn] = {
-					f = hookFunction,
-					a = {...},
-				}
-			end
+	end
+	local addon = triggerAddOn:lower()
+	if (not config.loads[addon]) then config.loads[addon] = {} end
+	config.loads[addon][ownerAddOn] = nil
+	if (hookFunction) then
+		if (select("#", ...) == 0) then
+			config.loads[addon][ownerAddOn] = {
+				f = hookFunction,
+			}
+		else
+			config.loads[addon][ownerAddOn] = {
+				f = hookFunction,
+				a = {...},
+			}
 		end
 	end
 end
@@ -1021,7 +1023,7 @@ end
 
 -- Extract the revision number from SVN keyword string
 function getRevision()
-	return tonumber(("$Revision: 52 $"):match("(%d+)"))
+	return tonumber(("$Revision: 93 $"):match("(%d+)"))
 end
 
 -------------------------------------------------------------------------------

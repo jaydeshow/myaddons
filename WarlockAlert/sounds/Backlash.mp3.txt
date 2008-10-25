@@ -1,0 +1,1 @@
+place your soundfile here, named "ShadowTrance.mp3" to be played when shadow trance procs or "Backlash.mp3" to be played when backlash procs.

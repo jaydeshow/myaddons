@@ -1,0 +1,167 @@
+commit 9bb36cb800b5267414b6a57a7718dc8bca6bdb81
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Oct 14 12:03:59 2008 +0200
+
+    fix .pkgmeta (fixes the missing RockDB-issue)
+
+commit 7e97e14cefe21ad843c71786e3925b1ad8637afe
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Mon Oct 13 11:32:11 2008 +0200
+
+    fix .pkgmeta
+
+commit 1efcf6a5c35b7d2e81d46515093ec56488a2cd07
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Mon Oct 13 11:31:14 2008 +0200
+
+    fix .pkgmeta
+
+commit 148f8bc10f32f8274630444a5943ccc18e68de35
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Mon Oct 13 11:29:02 2008 +0200
+
+    actually add .pkgmeta (d'oh)
+
+commit b301079ca670bc36c6a328a07f1e59f48c94ffa5
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Mon Oct 13 11:26:06 2008 +0200
+
+    recreate .pkgmeta
+
+commit 5843fd6047b15ac20c5b0b961e81634144f60614
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Thu Oct 9 21:01:04 2008 +0200
+
+    merged with new wowace-svn
+
+commit 18cadadd6e474eb28367114dc1442f8cb245f165
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 26 19:54:18 2008 +0200
+
+    Parrot:
+    revert that Aura-refresh-fix that broke buff-fades
+
+commit df226d5aa14cad5893f5b0b5fdfe93817aad1146
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 26 19:49:21 2008 +0200
+
+    add newline at end of file
+
+commit 5c9cff1e8d290b5dfff5ca3eee0be4026d35ed5e
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 26 19:46:52 2008 +0200
+
+    spell-ready-fix
+    merge svn-trunk
+
+commit 06fbf537f69b99113e34b052b0f67bac7af68772
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 26 19:39:37 2008 +0200
+
+    Revert "add Spell-usable-condition"
+    
+    This reverts commit 8b3a94640ea12533c2da74c98319e3dbdecf0956.
+
+commit 8b3a94640ea12533c2da74c98319e3dbdecf0956
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 26 19:38:25 2008 +0200
+
+    add Spell-usable-condition
+    make riposte work
+
+commit 25d4369bb3fc45137bd2d061de837997a917b53b
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Wed Aug 20 20:23:20 2008 +0200
+
+    fix aura-triggers
+
+commit c4742496c3d8a4df1c899656138b1f547bc76b87
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Fri Aug 15 20:10:24 2008 +0200
+
+    fix in uid-calculation for triggers
+
+commit 341282c1d93cd1f4975d4fd30d46794c71d7c144
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Fri Aug 15 16:21:20 2008 +0200
+
+    uid-calculation-tweak
+
+commit e0aa325f3299f27bffe448dd283abedd3b99db22
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Fri Aug 15 15:17:14 2008 +0200
+
+    cleanup
+
+commit 865297b403fe401d1738153cfba2e12bbb1f6ba1
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Fri Aug 15 14:36:43 2008 +0200
+
+    typo fix
+
+commit 31dd69e006b9e2c4cadfcd524caea135835a1149
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Fri Aug 15 13:50:27 2008 +0200
+
+    Trigger-system-tweak
+
+commit 7c698268ba04fbeadec1c69c582189810de9ee17
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Wed Aug 13 14:16:02 2008 +0200
+
+    Execute-Trigger 20%->19% life-percent
+
+commit 40d8328e9b64f2b8f3bdfd5460c506193ab2d372
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Wed Aug 13 13:45:45 2008 +0200
+
+    add Angled2 (Angled w/o the shaking)
+
+commit 9be99416b57ec65854130ec1d697ec02098729b8
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Wed Aug 13 13:24:39 2008 +0200
+
+    typo-fix in Petheals
+
+commit ad1beb32add9dfd73420d60dba04d25615574e54
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Wed Aug 13 13:24:07 2008 +0200
+
+    fix sprinkler2
+
+commit 7bb4277b8fc5a06b982dfb10819dfb8e5b6d89cb
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Wed Aug 13 12:36:14 2008 +0200
+
+    add animationstyle Sprinkler2 (without the shaking)
+
+commit 1e55858e1fe04fba3e26b7b21f249cb44785392a
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 12 19:22:34 2008 +0200
+
+    stop petheal from showing as outgoing heal
+
+commit 3b9e4a6e53deb8bba15dd8cd3eb14271eb7a4c45
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 12 19:20:31 2008 +0200
+
+    fix pet-heal showing up twice
+    fix "pet heal over time" showing up in wrong category in options
+
+commit e5e8c57211c5c96f672d88e2a49149e75217ccb5
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Tue Aug 12 19:08:34 2008 +0200
+
+    fix issue with nil-damagetypes
+
+commit 5f5d6239903d6c8e4f280553b1c62a891d957deb
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Fri Aug 1 22:00:13 2008 +0200
+
+    prevent selfdamage from showing in Outgoing
+
+commit 50850410ef489e0683b9d36ae6815bf3bb5ea9ed
+Author: profalbert <profalbert@profalbert-laptop.(none)>
+Date:   Thu Jul 31 12:28:13 2008 +0200
+
+    init

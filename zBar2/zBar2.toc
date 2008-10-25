@@ -1,10 +1,10 @@
 ﻿## Interface: 20400
 
-## Title: zBar2
+## Title: [|cff32cd32Bar|r] zBar2
 ## Notes: ZeroFire's ActionBar Mod. |n Second Edition.
 ## Author: Zero Fire
 
-## Title-zhCN: zBar2 - |cffFF3300炽火|r|cff33AAFF动作条|r
+## Title-zhCN: [|cff32cd32Bar|r] zBar2 - |cffFF3300炽火|r|cff33AAFF动作条|r
 ## Notes-zhCN: 让你感受燃烧的快感！|n 作者：炽火 Zero ℃
 ## Author-zhCN: 炽火 Zero ℃
 

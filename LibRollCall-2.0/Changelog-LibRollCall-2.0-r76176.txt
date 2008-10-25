@@ -1,7 +1,0 @@
-------------------------------------------------------------------------
-r76176 | arrowmaster | 2008-06-06 15:14:57 -0400 (Fri, 06 Jun 2008) | 1 line
-Changed paths:
-   M /trunk/LibRollCall-2.0/LibRollCall-2.0.lua
-
-LibRollCall-2.0: fix GetClassColor and GetClassHexColor for languages with male and female class names
-------------------------------------------------------------------------

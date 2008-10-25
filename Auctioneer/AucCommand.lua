@@ -1,7 +1,7 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3104 (BillyGoat)
-	Revision: $Id: AucCommand.lua 2991 2008-04-01 01:36:04Z RockSlice $
+	Version: 5.0.PRE.3471 (BillyGoat)
+	Revision: $Id: AucCommand.lua 3350 2008-08-13 05:53:38Z Hirsute $
 
 	Auctioneer command functions.
 	Functions to allow setting of values, switching commands etc.
@@ -29,7 +29,7 @@
 		http://www.fsf.org/licensing/licenses/gpl-faq.html#InterpreterIncompat
 ]]
 
-Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/AucCommand.lua $", "$Rev: 2991 $")
+Auctioneer_RegisterRevision("$URL: http://svn.norganna.org/auctioneer/trunk/Auctioneer/AucCommand.lua $", "$Rev: 3350 $")
 
 --Local function prototypes
 local register
@@ -1929,20 +1929,45 @@ function protectWindow(param, khaosCommand)
 	local mode;
 
 	if (param == 'never' or param == 'off' or param == _AUCT('CmdProtectWindow0') or param == _AUCT('CmdOff') or tonumber(param) == 0) then
-		mode = 0;
-		Auctioneer.Util.ProtectAuctionFrame(false);
+		--If AucAdvanced is Loaded, defer to it
+		if AucAdvanced then 
+			if AucAdvanced.Modules.Util.AHWindowControl then
+				AucAdvanced.Settings.SetSetting("util.protectwindow.protectwindow", 1)
+				mode = 0;
+			end
+		--Otherwise, behave as normal	
+		else
+			mode = 0;
+			Auctioneer.Util.ProtectAuctionFrame(false);
+		end
 
 	elseif (param == 'scan' or param == _AUCT('CmdProtectWindow1') or tonumber(param) == 1) then
 		mode = 1;
-		if (Auctioneer.ScanManager.IsScanning()) then
-			Auctioneer.Util.ProtectAuctionFrame(true);
+		--If AucAdvanced is loaded, defer to it.
+		if AucAdvanced then
+			if AucAdvanced.Modules.Util.AHWindowControl then
+				AucAdvanced.Settings.SetSetting("util.protectwindow.protectwindow", 3)
+			end
+		--Otherwise, behave as normal.
 		else
-			Auctioneer.Util.ProtectAuctionFrame(false);
+			if (Auctioneer.ScanManager.IsScanning()) then
+				Auctioneer.Util.ProtectAuctionFrame(true);
+			else
+				Auctioneer.Util.ProtectAuctionFrame(false);
+			end
 		end
 
 	elseif (param == 'always' or param == _AUCT('CmdProtectWindow2') or tonumber(param) == 2) then
 		mode = 2;
-		Auctioneer.Util.ProtectAuctionFrame(true);
+		--If AucAdvanced is loaded, defer to it.
+		if AucAdvanced then
+			if AucAdvanced.Modules.Util.AHWindowControl then
+				AucAdvanced.Settings.SetSetting("util.protectwindow.protectwindow", 2)
+			end
+		--Otherwise, behave as normal.
+		else
+			Auctioneer.Util.ProtectAuctionFrame(true);
+		end
 
 	else
 		Auctioneer.Util.ChatPrint(_AUCT('FrmtUnknownArg'):format(param, Auctioneer.Util.LocalizeCommand("protect-window")));

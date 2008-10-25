@@ -1,0 +1,141 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<Script file="WarlockAlert.lua"/>
+
+<Frame name="WaTexturesFrame" shown="true" parent="WorldUI" setAllPoints="true" toplevel="true" movable="false" frameStrata="DIALOG">
+	<Frames>
+		<Frame name="WaTexturesFrameTextureNF" hidden="true" parent="WaTexturesFrame" toplevel="true" movable="false" frameStrata="BACKGROUND">
+			<Size>
+				<AbsDimension x="512" y="512" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="WaTexturesFrame">
+				</Anchor>
+			</Anchors>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureNF1" file="Interface\AddOns\WarlockAlert\Texture\Texture1.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureNF2" file="Interface\AddOns\WarlockAlert\Texture\Texture2.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureNF3" file="Interface\AddOns\WarlockAlert\Texture\Texture3.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureNF4" file="Interface\AddOns\WarlockAlert\Texture\Texture4.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureNF5" file="Interface\AddOns\WarlockAlert\Texture\Texture5.tga">
+					</Texture>
+				</Layer>
+			</Layers>
+		</Frame>
+		<Frame name="WaTexturesFrameTextureBL" hidden="true" parent="WaTexturesFrame" toplevel="true" movable="false" frameStrata="BACKGROUND">
+			<Size>
+				<AbsDimension x="512" y="512" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="WaTexturesFrame">
+				</Anchor>
+			</Anchors>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureBL1" file="Interface\AddOns\WarlockAlert\Texture\Texture1.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureBL2" file="Interface\AddOns\WarlockAlert\Texture\Texture2.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureBL3" file="Interface\AddOns\WarlockAlert\Texture\Texture3.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureBL4" file="Interface\AddOns\WarlockAlert\Texture\Texture4.tga">
+					</Texture>
+				</Layer>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureBL5" file="Interface\AddOns\WarlockAlert\Texture\Texture5.tga">
+					</Texture>
+				</Layer>
+			</Layers>
+		</Frame>
+
+
+		<Frame name="WaTexturesFrameTextureHP" hidden="true" parent="WorldUI" setAllPoints="true" toplevel="true" movable="false" frameStrata="BACKGROUND" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="512" y="512" />
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureHP" file="Interface\FullScreenTextures\LowHealth" alphaMode="ADD">
+					</Texture>
+				</Layer>
+			</Layers>
+		</Frame>
+		<Frame name="WaTexturesFrameTextureMana" hidden="true" parent="WorldUI" setAllPoints="true" toplevel="true" movable="false" frameStrata="BACKGROUND" alphaMode="ADD">
+			<Size>
+				<AbsDimension x="512" y="512" />
+			</Size>
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureMana" file="Interface\FullScreenTextures\OutOfControl" alphaMode="ADD">
+					</Texture>
+				</Layer>
+			</Layers>
+		</Frame>
+		<Frame name="WaTexturesFrameProcText" shown="true" parent="WorldUI" toplevel="true" movable="false" frameStrata="OVERLAY">
+			<Size>
+				<AbsDimension x="128" y="128" />
+			</Size>
+			<Anchors>
+				<Anchor point="CENTER" relativeTo="WorldUI">
+				</Anchor>
+			</Anchors>
+			<Layers>
+				<Layer level="OVERLAY">
+					<FontString name="ShadowTranceTextStr" hidden="true" outline="NORMAL" monochrome="true" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="WARLOCKALERT_SHADOWTRANCE!">
+					<FontHeight>
+						<AbsValue val="40"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="WaTexturesFrame">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="BacklashTextStr" hidden="true" outline="NORMAL" monochrome="true" font="Fonts\FRIZQT__.TTF" inherits="GameFontNormal" text="WARLOCKALERT_BACKLASH">
+					<FontHeight>
+						<AbsValue val="40"/>
+					</FontHeight>
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="WaTexturesFrame">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				</Layer>
+			</Layers>
+		</Frame>
+		<Frame name="WaTexturesFrameTextureSS" hidden="true" parent="WorldUI" setAllPoints="true" toplevel="true" movable="false" frameStrata="BACKGROUND">
+			<Layers>
+				<Layer level="BACKGROUND">
+					<Texture name="WaTexturesFrameTextureSST" file="Interface\AddOns\WarlockAlert\Texture\Texture2.tga">
+					</Texture>
+				</Layer>
+			</Layers>
+		</Frame>
+	</Frames>
+</Frame>
+</Ui>
+

@@ -29,7 +29,7 @@ L:AddTranslations("ruRU", function() return {
 	["Quest Info"] = "Инфо Задания",
 	["Module description"] = "Библиотека заданий о местонахождение монстров и другой информации",
 	["Exporting %d quest givers..."] = "Экспорт %d дающих задания...",
-	["Total %d quest givers have been exported."] = "Всего экспортировано %d НИПов дающих задания.",
+	["Total %d quest givers have been exported."] = "Всего экспортировано %d дающих задания.",
 	["Clear old exported quest givers first."] = "Очистить старых экспортированных НИП дающих задания",
 	["Begin exporting new quest givers."] = "Экспортирование новых НИП дающих задания",
 	["Exporting %d quest objects..."] = "Экспорт %d объектов заданий...",

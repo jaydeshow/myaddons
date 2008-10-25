@@ -277,7 +277,14 @@ function solColorChatNicks_ChatFrame_MessageEventHandler(event)
 			this.ORG_AddMessage = this.AddMessage
 			this.AddMessage = S_AddMessage
 		end;
-		if SCCN_colornicks == 1 then 
+        -- GM workaround
+	    if ( event == "CHAT_MSG_WHISPER" ) then
+		   if (arg6 == "GM") then
+              ChatMOD_debug("solColorChatNicks_ChatFrame_MessageEventHandler","GM Message, skip all filters")
+              ChatFrame_MessageEventHandler_Org(event);
+		   end
+        end
+		if SCCN_colornicks == 1 then
 			this.solColorChatNicks_Name = arg2;
 		end
 		-- Strip channel name
@@ -286,12 +293,18 @@ function solColorChatNicks_ChatFrame_MessageEventHandler(event)
 			this.solColorChatNicks_Channelname = strippedChannelName;
 		end	 
 	 -- Call original handler
-	if event and ChatFrame_MessageEventHandler_Org then ChatFrame_MessageEventHandler_Org(event); end;
+	if (ChatFrame_MessageEventHandler_Org) then
+       ChatFrame_MessageEventHandler_Org(event)
+    end
 end
 
-function S_AddMessage(this,text,r,g,b,id)
-	
-	if text and event and string.find(event,"CHAT_MSG") then
+function S_AddMessage(this,text,r,g,b,id,addToStart)
+	if ( addToStart ) then
+        -- skip filtering of Combat Log reorderd messages
+		this:ORG_AddMessage(text,r,g,b,id,addToStart)
+        return
+    end
+    if text and event and string.find(event,"CHAT_MSG") then
 		-- Check to Ignore / Hide spam of GEM and CTRA / CastParty
 		-- this:ORG_AddMessage(text,r,g,b,id);
 		local SkipMessage = false;
@@ -455,6 +468,21 @@ function S_AddMessage(this,text,r,g,b,id)
 		end
 		this.solColorChatNicks_Name = nil;
 		
+		-- Icon Mark
+		if( SCCN_SHOWICON == 1) then
+           if( arg2 == UnitName("player") ) then    -- Self
+               text = SCCN_AddIcon("self")..text;
+           elseif( event == "CHAT_MSG_RAID_LEADER" or event == "CHAT_MSG_OFFICER") then -- Important Icon
+               text = SCCN_AddIcon("important")..text;
+           elseif( event == "CHAT_MSG_PARTY" ) then     -- Group Event
+               text = SCCN_AddIcon("group")..text;
+           elseif( SCCN_InMyGuild(arg2) == true ) then    -- Guildy
+               text = SCCN_AddIcon("guild")..text;
+           elseif( SCCN_IsMyFriend(arg2) == true ) then    -- Friendlist
+               text = SCCN_AddIcon("friend")..text;
+           end
+        end
+
 		-- Timestamp
 		if( SCCN_timestamp == 1 and text ~= nil ) then
 			-- fix for timestamp error on other OS than windows, mentioned by Nevarin on world of war
@@ -488,7 +516,7 @@ function S_AddMessage(this,text,r,g,b,id)
 	end	
 	-- output
 	if (this.ORG_AddMessage ~= nil) then
-		this:ORG_AddMessage(text,r,g,b,id);
+		this:ORG_AddMessage(text,r,g,b,id,addToStart);
 	end
 end
 
@@ -863,24 +891,26 @@ end
 -- CONVERTER / GET FROM ARRAY   FUNCTIONS
 -------------------------------------------------
 function solColorChatNicks_ClassToNum(class)
-	if(class == "WARLOCK" or class == SCCN_LOCAL_CLASS["WARLOCK"]) then
+	if(class == "WARLOCK" or class == SCCN_LOCAL_CLASS["WARLOCK"] or class == SCCN_LOCAL_CLASS["WARLOCKF"]) then
 		return 1;
-	elseif(class == "HUNTER" or class == SCCN_LOCAL_CLASS["HUNTER"]) then
+	elseif(class == "HUNTER" or class == SCCN_LOCAL_CLASS["HUNTER"] or class == SCCN_LOCAL_CLASS["HUNTERF"]) then
 		return 2;
-	elseif(class == "PRIEST" or class == SCCN_LOCAL_CLASS["PRIEST"]) then
+	elseif(class == "PRIEST" or class == SCCN_LOCAL_CLASS["PRIEST"] or class == SCCN_LOCAL_CLASS["PRIESTF"]) then
 		return 3;
 	elseif(class == "PALADIN" or class == SCCN_LOCAL_CLASS["PALADIN"]) then		
 		return 4;
-	elseif(class == "MAGE" or class == SCCN_LOCAL_CLASS["MAGE"]) then	
+	elseif(class == "MAGE" or class == SCCN_LOCAL_CLASS["MAGE"] or class == SCCN_LOCAL_CLASS["MAGEF"]) then
 		return 5;
-	elseif(class == "ROGUE" or class == SCCN_LOCAL_CLASS["ROGUE"]) then
+	elseif(class == "ROGUE" or class == SCCN_LOCAL_CLASS["ROGUE"] or class == SCCN_LOCAL_CLASS["ROGUEF"]) then
 		return 6;
-	elseif(class == "DRUID" or class == SCCN_LOCAL_CLASS["DRUID"]) then
+	elseif(class == "DRUID" or class == SCCN_LOCAL_CLASS["DRUID"] or class == SCCN_LOCAL_CLASS["DRUIDF"] ) then
 		return 7;
-	elseif(class == "SHAMAN" or class == SCCN_LOCAL_CLASS["SHAMAN"]) then
+	elseif(class == "SHAMAN" or class == SCCN_LOCAL_CLASS["SHAMAN"] or class == SCCN_LOCAL_CLASS["SHAMANF"] ) then
 		return 8;
-	elseif(class == "WARRIOR" or class == SCCN_LOCAL_CLASS["WARRIOR"]) then
+	elseif(class == "WARRIOR" or class == SCCN_LOCAL_CLASS["WARRIOR"] or class == SCCN_LOCAL_CLASS["WARRIORF"] ) then
 		return 9;
+	elseif(class == "DEATHKNIGHT" or class == SCCN_LOCAL_CLASS["DEATHKNIGHT"] or class == SCCN_LOCAL_CLASS["DEATHKNIGHTF"] ) then
+		return 10;
 	end
 	return 0;
 end
@@ -895,6 +925,7 @@ function solColorChatNicks_ClassNumToRGB(classnum)
 	elseif(classnum == 7) then return {r=240,g=136,b=0}
 	elseif(classnum == 8) then return {r=16,g=155,b=146}
 	elseif(classnum == 9) then return {r=147,g=112,b=67}
+	elseif(classnum == 10) then return {r=150,g=0,b=0}
 	else return {r=0,g=0,b=0}; end
 end
 
@@ -908,6 +939,7 @@ function solColorChatNicks_GetClassColor(class)
 	elseif(class == 7) 	then return ChatMOD_ReadClassColor("DRUID");
 	elseif(class == 8) 	then return ChatMOD_ReadClassColor("SHAMAN");
 	elseif(class == 9) 	then return ChatMOD_ReadClassColor("WARRIOR");
+	elseif(class == 10) 	then return ChatMOD_ReadClassColor("DEATHKNIGHT");
 	end
 	return "";
 end
@@ -1257,6 +1289,26 @@ elseif( cmd == "sticky" ) then
 			SCCN_SHOWLEVEL = 1;
 			SCCN_write(SCCN_CMDSTATUS[23].."|cff00ff00".." ON");
 		end
+	elseif( cmd == "icon" ) then
+		if(SCCN_SHOWICON == 1) then
+			SCCN_SHOWICON = 0;
+			SCCN_write(SCCN_CMDSTATUS[25].."|cffff0000".." OFF");
+			MyFriendList = nil
+			MyGuildMembers = nil
+		else
+			SCCN_SHOWICON = 1;
+			SCCN_write(SCCN_CMDSTATUS[25].."|cff00ff00".." ON");
+		end
+    elseif( cmd == "tst") then
+        ChatMOD_debug("Command","tst")
+        SCCN_InMyGuild("Dwarfser")
+    elseif( cmd == "ico") then
+        ChatMOD_debug("Command","ico")
+        SCCN_write(SCCN_AddIcon("important").." Important persons like Officer or Raid Leader")
+        SCCN_write(SCCN_AddIcon("group").." Members of your Group")
+        SCCN_write(SCCN_AddIcon("guild").." Your Guild Mates")
+        SCCN_write(SCCN_AddIcon("friend").." On your Friendlist")
+        SCCN_write(SCCN_AddIcon("self").." You Self")
 	elseif( cmd == "help" or cmd == "?" ) then
 		SCCN_write(SCCN_HELP[1]);
 		SCCN_write(SCCN_HELP[4]);
@@ -1317,7 +1369,7 @@ function SCCN_Config_OnLoad()
 	-- Setzen der UI Eigenschaften
 	-- * Version	
 		getglobal("SCCNConfigForm".."ver1".."Label"):SetText(CHATMOD_COLOR["SILVER"].."SVN REVISION "..CHATMOD_REVISION);
-	-- * Help Eintr«œge
+	-- * Help Eintrge
 		getglobal("SCCNShortchanForm".."HLP1".."Label"):SetText(SCCN_HELP[2]);
 		getglobal("SCCNShortchanForm".."HLP2".."Label"):SetText(SCCN_HELP[19]);
 		getglobal("SCCNConfigForm".."HLP2".."Label"):SetText(SCCN_HELP[3]);
@@ -1361,6 +1413,9 @@ function SCCN_Config_OnLoad()
 		SCCN_Config_SetButtonState(SCCN_selfhighlight,101);
 		SCCN_Config_SetButtonState(SCCN_selfhighlightmsg,102);
 		SCCN_Config_SetButtonState(SCCN_InChatHighlight,103);
+		SCCN_Config_SetButtonState(SCCN_SHOWICON,104);
+		
+		
 end 
 
 function SCCN_Config_SetButtonState(val,buttonnr)
@@ -1374,8 +1429,71 @@ end
 --------------------------------------------------------
 -- Misc functions
 --------------------------------------------------------
+function SCCN_InMyGuild(ToonName)
+     ChatMOD_debug("SCCN_InMyGuild","init")
+     if(not ToonName or not IsInGuild()) then
+            ChatMOD_debug("SCCN_InMyGuild","return false 1")
+            return
+     end
+     ChatMOD_debug("SCCN_InMyGuild","Toon:"..ToonName)
+     if(not MyGuildMembers) then
+            GuildRoster()
+            ChatMOD_debug("SCCN_InMyGuild","Re Creating Guildmate List, Members="..GetNumGuildMembers())
+            MyGuildMembers = {}
+            for i = 1, GetNumGuildMembers() do
+                local name,_ = GetGuildRosterInfo(i);
+                local LOWname = ChatMOD_prepName(name);
+                MyGuildMembers[LOWname] = 1;
+            end
+     end
+     local tmp = ChatMOD_prepName(ToonName)
+     if( MyGuildMembers[tmp] ) then
+         ChatMOD_debug("SCCN_InMyGuild","return true")
+         return true
+     end
+     ChatMOD_debug("SCCN_InMyGuild","return false default")
+end
 
-function SCCN_OnGOSSIP() 
+function SCCN_IsMyFriend(ToonName)
+     ChatMOD_debug("SCCN_IsMyFriend","init")
+     if(not ToonName) then
+            ChatMOD_debug("SCCN_IsMyFriend","return false 1")
+            return
+     end
+     if(not MyFriendList) then
+            MyFriendList = {}
+            ChatMOD_debug("SCCN_IsMyFriend","Re Creating Friend List, Members="..GetNumGuildMembers())
+            for i = 1, GetNumFriends() do
+                local name,_ = GetFriendInfo(i);
+                LOWname = ChatMOD_prepName(name);
+				if(LOWname ~= nil) then
+					MyFriendList[LOWname] = 1;
+				end
+            end
+     end
+     local tmp = ChatMOD_prepName(ToonName)
+     if( MyFriendList[tmp] ) then
+         ChatMOD_debug("SCCN_IsMyFriend","return true")
+         return true
+     end
+     ChatMOD_debug("SCCN_IsMyFriend","return false default")
+end
+
+function SCCN_AddIcon(ico)
+    local icons={
+          ["important"]="Interface\\AddOns\\ChatMOD\\gfx\\important.tga",
+          ["self"]="Interface\\AddOns\\ChatMOD\\gfx\\self.tga",
+          ["group"]="Interface\\AddOns\\ChatMOD\\gfx\\group.tga",
+          ["guild"]="Interface\\AddOns\\ChatMOD\\gfx\\guild.tga",
+          ["friend"]="Interface\\AddOns\\ChatMOD\\gfx\\friend.tga",
+    }
+    if( icons[ico] ~= nil ) then
+        return "|T"..icons[ico]..":0:0:0:-1|t"
+    end
+    return nil
+end
+
+function SCCN_OnGOSSIP()
     -- bugged function
 	local GossipSkipped = nil;
 	if SCCN_AutoGossipSkip == 1 and event == "GOSSIP_SHOW" and not IsControlKeyDown() and not GetGossipAvailableQuests() and not GetGossipActiveQuests() then	
@@ -1399,6 +1517,7 @@ function SCCN_OnGOSSIP()
 		SCCN_GossipFrame_OnEvent_org();
 	end
 end
+
 
 function SCCN_GOSSIP()
     -- reverted to 1.3 behavior. Slower but works for all.

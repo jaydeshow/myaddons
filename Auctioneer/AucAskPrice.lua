@@ -1,6 +1,6 @@
 ﻿--[[
 	Auctioneer Addon for World of Warcraft(tm).
-	Version: 5.0.PRE.3104 (BillyGoat)
+	Version: 5.0.PRE.3471 (BillyGoat)
 	Revision: $Id: AucAskPrice.lua 1935 2007-05-30 21:22:09Z mentalpower $
 
 	Auctioneer AskPrice created by Mikezter and merged into Auctioneer by MentalPower.

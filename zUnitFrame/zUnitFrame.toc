@@ -1,6 +1,5 @@
-﻿## Interface: 20400
-## Title: zUnitFrame
-## Title: zUF - |cffFF3300炽火|r|cff99AA33头像|r
+﻿## Interface: 20100
+## Title: [|cff32cd32UI|r] zUnitFrame - |cffFF3300炽火|r|cff99AA33头像|r
 ## Notes: Very Simply Unit Frames mod
 ## Notes-zhCN: 简单头像增强插件。
 ## Author: Zero Fire

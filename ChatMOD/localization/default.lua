@@ -1,4 +1,4 @@
-if ( GetLocale() ~= "deDE" and GetLocale() ~= "frFR" and GetLocale() ~= "zhCN" and GetLocale() ~= "zhTW" and GetLocale() ~= "koKR" ) then    
+if ( GetLocale() ~= "deDE" and GetLocale() ~= "frFR" and GetLocale() ~= "zhCN" and GetLocale() ~= "zhTW" and GetLocale() ~= "koKR" ) then
     SCCN_INIT_CHANNEL_LOCAL			= "General";
 	SCCN_GUI_HIGHLIGHT1				= "In this Dialogue you can enter Words which ChatMOD should Highlight. Each Line is one Word.";
 	SCCN_LOCAL_CLASS["WARLOCK"] 	= "Warlock";
@@ -10,6 +10,19 @@ if ( GetLocale() ~= "deDE" and GetLocale() ~= "frFR" and GetLocale() ~= "zhCN" a
 	SCCN_LOCAL_CLASS["DRUID"] 		= "Druid";
 	SCCN_LOCAL_CLASS["SHAMAN"] 		= "Shaman";
 	SCCN_LOCAL_CLASS["WARRIOR"] 	= "Warrior";
+	SCCN_LOCAL_CLASS["DEATHKNIGHT"] = "Deathknight";
+	--  Female Classnames
+	-- What the heck are the Engliosh female names for the classes ? How do you say to "Hexenmeisterin" ?
+    SCCN_LOCAL_CLASS["WARLOCKF"] 	= "Warlockf"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["HUNTERF"]     = "Huntress"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["PRIESTF"]     = "Priestress"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["MAGEF"]       = "Mage"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["ROGUEF"]      = "Schurkin"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["DRUIDF"]      = "Druidin"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["SHAMANF"]     = "Schamanin"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["WARRIORF"]    = "Kriegerin"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["DEATHKNIGHTF"] = "Todesritterin"; -- Female Classname in English ?
+    SCCN_LOCAL_CLASS["PALADINF"]    = "Paladin";
 	-- Zones
 	SCCN_LOCAL_ZONE["alterac"]	= "Alterac Valley";
 	SCCN_LOCAL_ZONE["warsong"]	= "Warsong Gulch";
@@ -29,22 +42,21 @@ if ( GetLocale() ~= "deDE" and GetLocale() ~= "frFR" and GetLocale() ~= "zhCN" a
 	SCCN_HELP[12]					= "|cff68ccef".."/chatmod clickinvite".."|cffffffff".." Make the word [invite] clickable in chats (invite on click).";
 	SCCN_HELP[13] 					= "|cff68ccef".."/chatmod editboxkeys".."|cffffffff".." Use Chat Editbox keys without pressing <ALT> & increase History Buffer.";
 	SCCN_HELP[14] 					= "|cff68ccef".."/chatmod chatstring".."|cffffffff".." Custom chat Strings.";
-	SCCN_HELP[15] 					= "|cff68ccef".."/chatmod selfhighlightmsg".."|cffffffff".." Print OnScreen msg containing own nick on Screen.";	
-	SCCN_HELP[16]					= "|cff68ccef".."/chatmod hidechatbuttons".."|cffffffff".." Hide Chat Buttons.";	
-	SCCN_HELP[17]					= "|cff68ccef".."/chatmod highlight".."|cffffffff".." Custom filter dialogue for highlighting Words in Chat.";	
+	SCCN_HELP[15] 					= "|cff68ccef".."/chatmod selfhighlightmsg".."|cffffffff".." Print OnScreen msg containing own nick on Screen.";
+	SCCN_HELP[16]					= "|cff68ccef".."/chatmod hidechatbuttons".."|cffffffff".." Hide Chat Buttons.";
+	SCCN_HELP[17]					= "|cff68ccef".."/chatmod highlight".."|cffffffff".." Custom filter dialogue for highlighting Words in Chat.";
 	SCCN_HELP[19] = "|cff68ccef".."/chatmod shortchanname ".."|cffffffff".." Displays Short channelname.";
 	SCCN_HELP[20] = "|cff68ccef".."/chatmod autogossipskip ".."|cffffffff".." Skip the gossip Window automaticaly. |cffa0a0a0(Press <CTRL> to deactivate skip)";
-	SCCN_HELP[21] = "|cff68ccef".."/chatmod autodismount ".."|cffffffff".." Auto Dismounts at taxi NPCs";	
-	SCCN_HELP[22]					= "|cff68ccef".."/chatmod inchathighlight ".."|cffffffff".."Highlight Known Nicknames";	
-	SCCN_HELP[22]					= "|cff68ccef".."/chatmod sticky ".."|cffffffff".."Sticky Chat behavior";	
-	SCCN_HELP[23]					= "|cff68ccef".."/chatmod sticky ".."|cffffffff".."Sticky Chat behavior";	
-	SCCN_HELP[24]					= "|cff68ccef".."/chatmod initchan <channelname>".."|cffffffff".."Set the specified <channelname> to default chatfram on startup.";	
+	SCCN_HELP[21] = "|cff68ccef".."/chatmod autodismount ".."|cffffffff".." Auto Dismounts at taxi NPCs";
+	SCCN_HELP[22]					= "|cff68ccef".."/chatmod inchathighlight ".."|cffffffff".."Highlight Known Nicknames";
+	SCCN_HELP[23]					= "|cff68ccef".."/chatmod sticky ".."|cffffffff".."Sticky Chat behavior";
+	SCCN_HELP[24]					= "|cff68ccef".."/chatmod initchan <channelname>".."|cffffffff".."Set the specified <channelname> to default chatfram on startup.";
 	SCCN_HELP[25]					= "|cff68ccef".."/chatmod nofade".."|cffffffff".."Disable fading of Chattext";
 	SCCN_HELP[26]					= "|cff68ccef".."/chatmod chaticon".."|cffffffff".."Toggle Chatcroll indicator Icon";
 	SCCN_HELP[27]					= "|cff68ccef".."/chatmod showlevel".."|cffffffff".."Toggle Leveldisplay in Name";
 	SCCN_HELP[28]					= "|cff68ccef".."/chatmod chatcolorname".."|cffffffff".."Toggle Namecoloring in Chattext";
-	
-	SCCN_HELP[99]					= "|cff68ccef".."/chatmod status".."|cffffffff".." Show current configuration.";	
+
+	SCCN_HELP[99]					= "|cff68ccef".."/chatmod status".."|cffffffff".." Show current configuration.";
 	SCCN_TS_HELP  					= "|cff68ccef".."/chatmod timestamp |cffFF0000FORMAT|cffffffff\n".."FORMAT:\n$h = hour (0-24) \n$t = hour (0-12) \n$m = minute \n$s = second \n$p = periode (am / pm)\n".."|cff909090Example: /chatmod timestamp [$t:$m:$s $p]";
 	SCCN_CMDSTATUS[1]				= "Supress Channelname:";
 	SCCN_CMDSTATUS[2]				= "Chat nicknames in classcolor:";
@@ -63,13 +75,14 @@ if ( GetLocale() ~= "deDE" and GetLocale() ~= "frFR" and GetLocale() ~= "zhCN" a
 	SCCN_CMDSTATUS[15] 				= "Custom Highlight:";
 	SCCN_CMDSTATUS[16] 				= "Short Channelname:";
 	SCCN_CMDSTATUS[17]				= "Auto Gossip Skip:";
-	SCCN_CMDSTATUS[18]				= "Auto Dismount:";	
-	SCCN_CMDSTATUS[19]				= "In Chat Highlight:";	
+	SCCN_CMDSTATUS[18]				= "Auto Dismount:";
+	SCCN_CMDSTATUS[19]				= "In Chat Highlight:";
 	SCCN_CMDSTATUS[20]				= "Remeber last Chatroom (sticky):";
 	SCCN_CMDSTATUS[21]				= "Don't Fade chattext automaticaly:";
 	SCCN_CMDSTATUS[22]				= "Chat Scoll Icon:";
 	SCCN_CMDSTATUS[23]				= "Leveldisplay in Name:";
 	SCCN_CMDSTATUS[24]      = "Color names in Chattext:";
+	SCCN_CMDSTATUS[25]              = "Chat Icon Markers:";
 	-- cursom invite word in the local language
 	SCCN_CUSTOM_INV[0] 				= "1nv1t3"; --   :D
 	SCCN_CUSTOM_INV[1] 				= "einladen"; --   :D
@@ -82,11 +95,11 @@ if ( GetLocale() ~= "deDE" and GetLocale() ~= "frFR" and GetLocale() ~= "zhCN" a
 	SCCN_STRIPCHAN[3]				= "Party";
 	SCCN_STRIPCHAN[4]				= "LocalDefense";
 	SCCN_STRIPCHAN[5]				= "WorldDefense";
-	SCCN_STRIPCHAN[6]				= "LookingForGroup";	
+	SCCN_STRIPCHAN[6]				= "LookingForGroup";
 	SCCN_STRIPCHAN[7]				= "Trade";
 	SCCN_STRIPCHAN[8]				= "General";
 	SCCN_STRIPCHAN[9]				= "Battleground";
-	
+
 	-- ItemLink Channels
     SCCN_ILINK[1]                   = "General -"
     SCCN_ILINK[2]                   = "Trade -"
@@ -103,5 +116,5 @@ if ( GetLocale() ~= "deDE" and GetLocale() ~= "frFR" and GetLocale() ~= "zhCN" a
 	SCCN_Config						= "ChatMOD Config";
 	SCCN_Changelog					= "ChatMOD Changelog";
 	SCCN_NewVer                     = "There is a new ChatMOD Version available. Check http://www.solariz.de for Update!";
-	
-end;
+
+end
