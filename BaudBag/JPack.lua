@@ -1,15 +1,14 @@
 ﻿--简体中文
-local version="0.5.0"
-local TYPE_BAG="容器"
+local version="0.5.1"
 
 local SUBTYPE_ARROW="箭"
 local SUBTYPE_BULLET="弹药"
 local JPACK_MAXMOVE_ONCE=3
 -- '#XX'代表XX类别,没有'#'代表物品名称，'#',代表其他物品，前面是超级物品，后面是超级垃圾,
 --JPACK_ORDER={"炉石","#坐骑","矿工锄","剥皮小刀","#鱼竿","#其它","#武器","#护甲","#","#消耗品","#任务","#材料","肉类","鱼油"}
-JPACK_ORDER={}
-JPACK_DEPOSIT={}
-JPACK_DRAW={}
+--JPACK_ORDER={}
+--JPACK_DEPOSIT={}
+--JPACK_DRAW={}
 
 local TYPEMAP={
 --	["箭袋"]=["箭"],
@@ -40,13 +39,13 @@ JPack={
 function i18n()
 	if locale == "zhCN" then
 	--简体中文
-		TYPE_BAG="容器"
+		JPackLocale.TYPE_BAG="容器"
 		TYPE_QUEST="任务"
 		TYPE_CONSUMABLE="消耗品"
 		superItems={"炉石","矿工锄","剥皮小刀","鱼竿"}
 	elseif locale == "zhTW" then
 	--繁体中文
-		TYPE_BAG="容器"
+		JPackLocale.TYPE_BAG="容器"
 		TYPE_QUEST="任务"
 		TYPE_CONSUMABLE="消耗品"
 		superItems={"炉石","矿工锄","剥皮小刀","鱼竿"}
@@ -81,13 +80,20 @@ end
 return 1xxx 非垃圾 ，0xxx for 垃圾，xxx为（999-JPACK_ORDER中所定的位置）
 ]]--
 function getPerffix(item)
-	debug(JPACK_ORDER[1])
 	if(item==nil)then return nil end
+	
 	--按名称获取顺序
 	local i=IndexOfTable(JPACK_ORDER,item.name);
 	if(i<=0)then
 		--按子类别获取顺序
-		i=IndexOfTable(JPACK_ORDER,"#"..item.subType);
+		i=IndexOfTable(JPACK_ORDER,"#"..item.type.."##"..item.subType);
+	else
+		--名称匹配直接返回
+		return '1'..string.format("%3d",999-i);
+	end
+	if(i<=0)then
+		--按子类别获取顺序
+		i=IndexOfTable(JPACK_ORDER,"##"..item.subType);
 	end
 	if(i<=0)then
 		--按类别获取顺序
@@ -102,10 +108,17 @@ function getPerffix(item)
 		i=999;
 	end
 	local s=string.format("%3d",999-i);
+	--灰色物品、可装备的非优秀物品
 	if(item.rarity==0)then
-		return "0"..s;
+		return "00"..s;
+	elseif(IsEquippableItem(item.name) and item.type~=JPackLocale.TYPE_BAG) then 
+		debug("USEABLE:"..item.name.."="..IsUsableItem(item.name))
+		if(item.rarity <= 2 or (not IsUsableItem(item.name))) then
+			return '01'..s
+		end
 	end
 	return "1"..s;
+	
 end
 
 --[[
@@ -249,14 +262,17 @@ packingBags
 ]]--
 function groupBags()
 	local bagTypes={}
-	bagTypes[TYPE_BAG]={}
-	bagTypes[TYPE_BAG][1]=0
+	bagTypes[JPackLocale.TYPE_BAG]={}
+	bagTypes[JPackLocale.TYPE_BAG][1]=0
 	for i=1,4 do
 		local name=GetBagName(i);
 		if(name)then
 			local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, subType, itemStackCount,
 itemEquipLoc, itemTexture = GetItemInfo(name)
-			debug("背包["..i.."]类型："..subType)
+			debug("Bag["..i.."]Type："..subType)
+			if( i==1 and JPackLocale.locale ~= "zhCN")then
+				print("Now only support zhCN well.For "..JPackLocale.locale..",I want you to send \"local="..JPackLocale.locale..";Bag[1]Type="..subType.."\" to guileen@gmail.com to make it better.")
+			end
 			if(bagTypes[subType]==nil)then
 				bagTypes[subType]={}
 			end
@@ -267,8 +283,8 @@ itemEquipLoc, itemTexture = GetItemInfo(name)
 
 	local bankSlotTypes={}
 	if(JPack.bankOpened)then
-		bankSlotTypes[TYPE_BAG]={}
-		bankSlotTypes[TYPE_BAG][1]=-1
+		bankSlotTypes[JPackLocale.TYPE_BAG]={}
+		bankSlotTypes[JPackLocale.TYPE_BAG][1]=-1
 		for i=5,11 do
 			local name=GetBagName(i);
 			if(name)then
@@ -469,10 +485,8 @@ function isLocked(index)
 	local texture, itemCount, locked, quality, readable = GetContainerItemInfo(getSlotId(index));
 	if(texture==nil)then
 		--TODO:检查本地 locked,空格也可能被锁定
-		if(il>0)then		debug("il of "..index.." is "..il); end
 		locked= il >0
 	elseif(il>0)then
-		debug("在lockedSlots中删除");
 		--lockedSlots[il]=nil
 		table.remove(lockedSlots,il)
 	end
@@ -532,7 +546,7 @@ function moveOnce()
 		end
 		i=i+1
 	end
-	debug("move once. lockCount = "..lockCount)
+	--debug("move once. lockCount = "..lockCount)
 	return continue or lockCount>0
 end
 
@@ -647,7 +661,7 @@ end
 function JPackFrame_Slash(msg)
 	local a,b,c=strfind(msg, "(%S+)");
 	if(a~=nil)then
-		debug('a='..a..' b='..b..' c='..c);
+		--debug('a='..a..' b='..b..' c='..c);
 	end
 	
 	JPack.deposit=false

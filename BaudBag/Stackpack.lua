@@ -271,8 +271,8 @@ function Stackpack_Command(cmd)
 		elseif (cmd == "scan" or cmd == "start" or cmd == "go" or cmd == "stack") then
 			if (CursorHasItem() or CursorHasMoney() or CursorHasSpell()) then
 				Push("Stackpack tells you, \"请先拿掉你鼠标上的物品.\"",2,0.28,2);
-			elseif (Stacking == 1) then
-				Push("Stackpack tells you, \"系统繁忙, 请稍后重试.\"",2,0.28,2);				
+			--elseif (Stacking == 1) then
+			--	Push("Stackpack tells you, \"系统繁忙, 请稍后重试.\"",2,0.28,2);				
 			else
 				ForceScan = 1;
 				InitScan();
